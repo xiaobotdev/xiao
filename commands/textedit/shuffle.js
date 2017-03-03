@@ -28,7 +28,12 @@ class ShuffleCommand extends commando.Command {
             }
             return a.join("");
         }
-        message.channel.sendMessage(message.content.split(" ").slice(1).join(" ").shuffle());
+        let shuffled = message.content.split(" ").slice(1).join(" ");
+        if(shuffled === '') {
+            message.channel.sendMessage(":x: Error! Nothing to shuffle!");
+        } else {
+            message.channel.sendMessage(shuffled.shuffle());
+        }
     }
 }
 
