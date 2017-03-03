@@ -17,13 +17,12 @@ class MagicBall extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        let username = message.author;
         let question = message.content.split(" ").slice(1).join(" ");
         let coin = ['It seems the answer is yes, yes?', 'It seems the answer is no.', 'It is a little doubtful, yes?', 'It seems it is very likely to be true.'][Math.floor(Math.random() * 4)];
         if(question === "") {
             question = "Not Specified."
         }
-        message.channel.sendMessage(username.username + " asked: " + question + "\n:8ball: " + coin + " :8ball:");
+        message.channel.sendMessage("Question: " + question + "\n:8ball: " + coin + " :8ball:");
     }
 }
 
