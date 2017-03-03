@@ -22,7 +22,7 @@ class ZalgoCommand extends commando.Command {
         if(zalgoified === '') {
             message.channel.sendMessage(":x: Error! Nothing to zalgoify!");
         } else {
-            message.channel.sendMessage(zalgoified, {split:{maxLength:1900}});
+            message.channel.sendMessage(zalgoified, {split:{maxLength:1000}});
         }
     }
 }
