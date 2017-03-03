@@ -21,7 +21,7 @@ class RomajiCommand extends commando.Command {
         let romajify = message.content.split(" ").slice(1).join(" ");
         if(hepburn.containsKana(romajify)) {
             let romajified = hepburn.fromKana(romajify);
-            message.channel.sendMessage(romajified);
+            message.channel.sendMessage(romajified, {split:{maxLength:1900}});
         } else {
             message.channel.sendMessage(":x: Error! Message contains no Kana!\n:notepad_spiral: Note: You cannot use this command on Kanji!");
         }

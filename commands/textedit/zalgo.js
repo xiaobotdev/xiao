@@ -19,7 +19,7 @@ class ZalgoCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let zalgoified = zalgo(message.content.split(" ").slice(1).join(" "));
-        message.channel.sendMessage(zalgoified, {split:{maxLength: 1900}});
+        message.channel.sendMessage(zalgoified, {split:{maxLength:1900}});
     }
 }
 
