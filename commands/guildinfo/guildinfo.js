@@ -20,7 +20,7 @@ class GuildInfoCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.channel.type === 'dm') {
-            message.reply(":x: This is a DM!");
+            message.channel.sendMessage(":x: This is a DM!");
         } else {
             const embed = new Discord.RichEmbed()
             .setColor(0x00AE86)

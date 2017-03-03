@@ -19,9 +19,9 @@ class LotteryCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let lotterynumber = ['Winner'][Math.floor(Math.random() * 100)];
         if(lotterynumber === "Winner") {
-            message.reply("Wow! You actually won! Great job!");
+            message.channel.sendMessage("Wow " + message.author.username + "! You actually won! Great job!");
         } else {
-            message.reply("Nope, sorry, you lost. RIP you.");
+            message.channel.sendMessage("Nope, sorry, " + message.author.username + ", you lost. RIP you.");
         }
     }
 }

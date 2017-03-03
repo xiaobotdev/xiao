@@ -20,10 +20,10 @@ class ContactCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let banid = message.author.id;
         if (message.author.id === banlist.banned[banid]) {
-            message.reply("Sorry, you've been banned from using this command.");
+            message.channel.sendMessage("Sorry, you've been banned from using this command.");
         } else {
             this.client.users.get('242699360352206850').sendMessage("**" + message.author.username + '#' + message.author.discriminator + " (" + message.author.id + ")" + ":**\n" + message.content.split(" ").slice(1).join(" "));
-            message.reply('Message Sent! Thanks for your support!');
+            message.channel.sendMessage('Message Sent! Thanks for your support!');
         }
     }
 }

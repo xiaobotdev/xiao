@@ -23,7 +23,7 @@ class MagicBall extends commando.Command {
         if(question === "") {
             question = "Not Specified."
         }
-        message.channel.sendMessage(username + " asked: " + question + "\n:8ball: " + coin + " :8ball:");
+        message.channel.sendMessage(username.username + " asked: " + question + "\n:8ball: " + coin + " :8ball:");
     }
 }
 

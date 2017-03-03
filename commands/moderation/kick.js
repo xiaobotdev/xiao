@@ -22,13 +22,13 @@ class KickCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.channel.type === 'dm') {
-            message.reply(":x: This is a DM!");
+            message.channel.sendMessage(":x: This is a DM!");
         } else {
             let username = message.mentions.users.first();
             let member = message.guild.member(message.mentions.users.first());
             let reason = message.content.split(" ").slice(2).join(" ");
             if (message.mentions.users.size !== 1) {
-                message.reply(":x: Either too many or no members, only mention one person!");
+                message.channel.sendMessage(":x: Either too many or no members, only mention one person!");
             } else {
                 if(message.member.hasPermission('KICK_MEMBERS')) {
                     if(member.kickable === true) {
@@ -44,13 +44,13 @@ class KickCommand extends commando.Command {
                             '**Member:** ' + username.username + '#' + username.discriminator + ' (' + username.id + ')\n**Action:** Kick\n**Reason:** ' + reason);
                             message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
                         } else {
-                            message.reply("**Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
+                            message.channel.sendMessage("**Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
                         }
                     } else {
-                        message.reply(":x: This member cannot be kicked!");
+                        message.channel.sendMessage(":x: This member cannot be kicked!");
                     }
                 } else {
-                    message.reply(":x: You don't have the Kick Members Permission!");
+                    message.channel.sendMessage(":x: You don't have the Kick Members Permission!");
                 }
             }
         }

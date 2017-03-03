@@ -21,9 +21,9 @@ class ChooseCommand extends commando.Command {
             let choice2 = message.content.split("|").slice(1).join(" ");
             let choice1 = " " + message.content.replace(choice2, "").split(" ").slice(1).join(" ");
             let coin = [choice1, choice2][Math.floor(Math.random() * 2)];
-            message.reply("I choose" + coin.replace("|", ""));
+            message.channel.sendMessage("I choose" + coin.replace("|", ""));
         } else {
-            message.reply(":x: Split your two choices with a ' | '!");
+            message.channel.sendMessage(":x: Split your two choices with a ' | '!");
         }
     }
 }

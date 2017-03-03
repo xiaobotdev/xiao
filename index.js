@@ -36,19 +36,19 @@ client.on('message', (message) => {
         if(message.author.id !== config.owner) return;
         console.log("[Command] " + message.content);
         console.log(client.guilds.array().length + " Servers: " + client.guilds.map(g => g.name + " (" + g.id + ")").join(", "));
-        message.reply("Sent the information to the console!");
+        message.channel.sendMessage("Sent the information to the console!");
     }
     if(message.content.startsWith(';leave')) {
         if(message.author.id !== config.owner) return;
         console.log("[Command] " + message.content);
-        message.reply("Reminder: To leave a server, eval `this.client.guilds.get(<ID>).leave();`");
+        message.channel.sendMessage("Reminder: To leave a server, eval `this.client.guilds.get(<ID>).leave();`");
     }
     if(message.content.includes("(╯°□°）╯︵ ┻━┻")) {
         if(message.channel.type !== 'dm') {
             if(message.guild.id === "110373943822540800") return;
         }
         console.log("[Command] " + message.content);
-        message.reply("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
+        message.channel.sendMessage("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
     }
     if(message.content.includes(":Swagolor:")) {
         if(message.guild.id !== "252317073814978561") return;
