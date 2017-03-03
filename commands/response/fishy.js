@@ -4,7 +4,7 @@ class FishyCommand extends commando.Command {
     constructor(Client){
         super(Client, {
             name: 'fishy', 
-            group: 'random',
+            group: 'response',
             memberName: 'fishy',
             description: 'Catches a fish. (;fishy)',
             examples: [';fishy']
