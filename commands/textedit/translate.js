@@ -41,7 +41,7 @@ class TranslateCommand extends commando.Command {
                     res.text);
                     message.channel.sendEmbed(embed).catch(console.error);
                 }).catch(err => {
-                    console.error(err);
+                    message.channel.sendMessage(":x: Error!");
                 });
             }
         } else {
