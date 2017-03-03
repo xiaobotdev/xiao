@@ -28,8 +28,6 @@ class YearsCommand extends commando.Command {
                 let avatarurl = message.mentions.users.first().avatarURL;
                 avatarurl = avatarurl.replace(".jpg", ".png");
                 avatarurl = avatarurl.replace(".gif", ".png");
-                let username = message.content.split(" ").slice(1).join(" ");
-                message.channel.sendMessage("It's been 3000 years " + username.username + "...");
                 let images = [];
                 images.push(Jimp.read(avatarurl));
                 images.push(Jimp.read("./images/3000years.png"));

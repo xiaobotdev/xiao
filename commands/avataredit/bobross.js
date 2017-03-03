@@ -28,8 +28,6 @@ class BobRossCommand extends commando.Command {
                 let avatarurl = message.mentions.users.first().avatarURL;
                 avatarurl = avatarurl.replace(".jpg", ".png");
                 avatarurl = avatarurl.replace(".gif", ".png");
-                let username = message.content.split(" ").slice(1).join(" ");
-                message.channel.sendMessage(username.username + "...");
                 let images = [];
                 images.push(Jimp.read(avatarurl));
                 images.push(Jimp.read("./images/BobRoss.png"));
