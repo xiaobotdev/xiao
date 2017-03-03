@@ -18,7 +18,7 @@ class FishyCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let coin = [':fish:', ':tropical_fish:', ':blowfish:'][Math.floor(Math.random() * 3)];
-        message.reply("You caught a: " + coin);
+        message.channel.sendMessage("You caught a: " + coin);
     }
 }
 

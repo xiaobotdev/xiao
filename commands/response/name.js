@@ -22,11 +22,11 @@ class RandomNameGen extends commando.Command {
         let randomlast = ["Walker", "Tworni", "Ross", "Smith", "Odendahl", "Deere", "Brown", "Williams", "Jones", "Miles", "Moss", "Roberto", "McFly", "McDonald", "Lewis", "Armstrong", "Stevenson", "Schwarzenegger", "Robinson", "Parker", "Piper", "Johnson", "Brantley", "Stewart", "Ree", "Talbot", "Seville", "Peace", "Spielberg", "Baggins", "Wilborn", "Vankirk", "Shireman", "Jimerson", "Masters", "Hack", "Satcher", "Younkin", "Aguila", "Duffey", "Burgin", "Highfall", "Wee", "Solari", "Tomaselli", "Basler", "Difranco", "Latch", "Rives", "Dolan", "Abraham", "Holter", "Portugal", "Lininger", "Holst", "Mccroy", "Follmer", "Hotchkiss", "Gassaway", "Wang", "Agron", "Raasch", "Gourd", "Czaja", "Marquart", "Papadopoulos", "Ringer", "Lax", "Sperling", "Galusha", "Alston"][Math.floor(Math.random() * 71)];
         let randomfirstboth = [randomfirstmale, randomfirstfemale][Math.floor(Math.random() * 2)];
         if(message.content.toLowerCase().split(" ").slice(1).includes("male")) {
-            message.reply(randomfirstmale + " " + randomlast);
+            message.channel.sendMessage(randomfirstmale + " " + randomlast);
         } else if(message.content.toLowerCase().split(" ").slice(1).includes("female")) {
-            message.reply(randomfirstfemale + " " + randomlast);
+            message.channel.sendMessage(randomfirstfemale + " " + randomlast);
         } else {
-            message.reply(randomfirstboth + " " + randomlast);
+            message.channel.sendMessage(randomfirstboth + " " + randomlast);
         }
     }
 }

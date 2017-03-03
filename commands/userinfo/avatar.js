@@ -18,12 +18,12 @@ class AvatarCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.mentions.users.size !== 1) {
-            message.reply(':x: Either too many or no members, only mention one person!');
+            message.channel.sendMessage(':x: Either too many or no members, only mention one person!');
         } else {
             if(message.mentions.users.first().avatarURL === null) {
-                message.reply(":x: This person has no avatar!");
+                message.channel.sendMessage(":x: This person has no avatar!");
             } else {
-                message.reply(message.mentions.users.first().avatarURL);
+                message.channel.sendMessage(message.mentions.users.first().avatarURL);
             }
         }
     }

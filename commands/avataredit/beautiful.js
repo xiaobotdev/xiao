@@ -20,16 +20,16 @@ class BeautifulCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.mentions.users.size !== 1) {
-            message.reply(':x: Either too many or no members, only mention one person!');
+            message.channel.sendMessage(':x: Either too many or no members, only mention one person!');
         } else {
             if(message.mentions.users.first().avatarURL === null) {
-                message.reply(":x: This person has no avatar!");
+                message.channel.sendMessage(":x: This person has no avatar!");
             } else {
                 let avatarurl = message.mentions.users.first().avatarURL;
                 avatarurl = avatarurl.replace(".jpg", ".png");
                 avatarurl = avatarurl.replace(".gif", ".png");
                 let username = message.content.split(" ").slice(1).join(" ");
-                message.channel.sendMessage('This? ' + username + " is beautiful.");
+                message.channel.sendMessage('This? ' + username.username + " is beautiful.");
                 let images = [];
                 images.push(Jimp.read(avatarurl));
                 images.push(Jimp.read("./images/beautiful.jpg"));

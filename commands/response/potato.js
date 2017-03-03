@@ -19,7 +19,7 @@ class PotatoCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let potato = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.gif", "6.png", "7.jpg", "8.jpg", "9.jpg"][Math.floor(Math.random() * 9)];
-        message.reply("Potatoes!");
+        message.channel.sendMessage("Potatoes!");
         message.channel.sendFile("./images/Potato" + potato);
     }
 }

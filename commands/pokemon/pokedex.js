@@ -34,7 +34,7 @@ class PokedexCommand extends commando.Command {
             .addField('Type',
             pokedex.type[pokemon]);
             message.channel.sendEmbed(embed).catch(console.error);
-        } else {message.reply(":x: This Pokémon either doesn't exist, or isn't implemented yet.");}
+        } else {message.channel.sendMessage(":x: This Pokémon either doesn't exist, or isn't implemented yet.");}
     }
 }
 

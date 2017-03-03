@@ -21,7 +21,7 @@ class PirateCommand extends commando.Command {
         let messagecontent = message.content.split(" ").slice(1).join(" ");
         let pirate = pirateSpeak.translate(messagecontent);
         if(messagecontent === "") {
-            message.reply(":x: Error! Nothing to translate!");
+            message.channel.sendMessage(":x: Error! Nothing to translate!");
         } else {
             message.channel.sendMessage(pirate);
         }

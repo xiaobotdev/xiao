@@ -20,12 +20,12 @@ class RollChooseCommand extends commando.Command {
         let [value] = message.content.split(" ").slice(1);
         if(value === undefined) {
             let roll = Math.floor(Math.random() * 6) + 1;
-            message.reply("You rolled a " + roll)
+            message.channel.sendMessage("You rolled a " + roll)
         } else if(value.match("^[0-9]+$")) {
             let roll = Math.floor(Math.random() * value) + 1;
-            message.reply("You rolled a " + roll);
+            message.channel.sendMessage("You rolled a " + roll);
         } else {
-            message.reply(":x: Error! Your message either contains a number but the number is invalid, or the number is in the wrong place.\n:notepad_spiral: (Note: When using numbers such as 1,000, do not use a comma)");
+            message.channel.sendMessage(":x: Error! Your message either contains a number but the number is invalid, or the number is in the wrong place.\n:notepad_spiral: (Note: When using numbers such as 1,000, do not use a comma)");
         }
     }
 }

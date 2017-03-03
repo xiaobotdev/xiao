@@ -17,7 +17,7 @@ class CanYouNot extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        message.reply('Can YOU not?');
+        message.channel.sendMessage('Can YOU not?');
     }
 }
 
