@@ -28,6 +28,8 @@ class TranslateCommand extends commando.Command {
         } else if(languages.entries[languageto]) {
             if(messagecontent === "") {
                 message.channel.sendMessage(":x: Error! Nothing to translate!");
+            } else if(messagecontent.length > 200) {
+                message.channel.sendMessage(":x: Error! Please keep translations below 200 characters!");
             } else {
                 translate(messagecontent, {to: languageto}).then(res => {
                     let languagefrom = res.from.language.iso;
