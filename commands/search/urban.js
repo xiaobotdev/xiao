@@ -6,7 +6,7 @@ class UrbanDictionary extends commando.Command {
     constructor(Client){
         super(Client, {
             name: 'urban', 
-            group: 'random',
+            group: 'search',
             memberName: 'urban',
             description: 'Searches Urban Dictionary. (;urban Cat)',
             examples: [';urban Cat']
