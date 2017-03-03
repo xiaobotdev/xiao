@@ -30,9 +30,10 @@ class TranslateCommand extends commando.Command {
                 message.reply(":x: Error! Nothing to translate!");
             } else {
                 translate(messagecontent, {to: languageto}).then(res => {
+                    let languagefrom = res.from.language.iso;
                     const embed = new Discord.RichEmbed()
                     .setColor(0x00AE86)
-                    .addField('Input:',
+                    .addField('Input (From: ' + languages.entries[languagefrom] + '):',
                     messagecontent)
                     .addField('Translation (To: ' + languages.entries[languageto] + '):',
                     res.text);
