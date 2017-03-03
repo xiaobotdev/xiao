@@ -17,6 +17,7 @@
     "discord.js-commando": "^0.9.0",
     "google-translate-api": "^2.2.2",
     "jimp": "^0.2.27",
-    "pirate-speak": "^1.0.1"
+    "pirate-speak": "^1.0.1",
+    "urban": "^0.3.1"
   }
 }
