@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class FishyCommand extends commando.Command {
+class RouletteCommand extends commando.Command {
     constructor(Client){
         super(Client, {
             name: 'roulette', 
@@ -17,8 +17,8 @@ class FishyCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        message.channel.sendMessage("I choose " + message.guild.members.random() + "!");
+        message.channel.sendMessage("I choose " + message.guild.members.random().displayName + "!");
     }
 }
 
-module.exports = FishyCommand;
+module.exports = RouletteCommand;
