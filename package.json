@@ -18,6 +18,7 @@
     "google-translate-api": "^2.2.2",
     "jimp": "^0.2.27",
     "pirate-speak": "^1.0.1",
-    "urban": "^0.3.1"
+    "urban": "^0.3.1",
+    "zalgolize": "^1.2.4"
   }
 }
