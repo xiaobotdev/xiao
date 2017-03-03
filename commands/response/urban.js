@@ -27,23 +27,9 @@ class UrbanDictionary extends commando.Command {
             } else if(json.definition === '') {
                 message.reply(":x: Error! Word has no definition!");
             } else if(json.example === '') {
-                const embed = new Discord.RichEmbed()
-                .setColor(0x0000FF)
-                .setAuthor('Urban Dictionary', 'https://lh3.googleusercontent.com/4hpSJ4pAfwRUg-RElZ2QXNh_pV01Z96iJGT2BFuk_RRsNc-AVY7cZhbN2g1zWII9PBQ=w170', json.permalink)
-                .setDescription(json.word)
-                .addField('Definition:',
-                json.definition);
-                message.channel.sendEmbed(embed).catch(console.error);       
+                message.channel.sendMessage("**Definition:**\n" + json.definition, {split:{maxLength:1900}});
             } else {
-                const embed = new Discord.RichEmbed()
-                .setColor(0x0000FF)
-                .setAuthor('Urban Dictionary', 'https://lh3.googleusercontent.com/4hpSJ4pAfwRUg-RElZ2QXNh_pV01Z96iJGT2BFuk_RRsNc-AVY7cZhbN2g1zWII9PBQ=w170', json.permalink)
-                .setDescription(json.word)
-                .addField('Definition:',
-                json.definition)
-                .addField('Example:',
-                json.example);
-                message.channel.sendEmbed(embed).catch(console.error);
+                message.channel.sendMessage("**Definition:**\n" + json.definition + "\n\n**Example:**\n" + json.example, {split:{maxLength:1900}});
             }
         });
     }
