@@ -22,6 +22,7 @@ client.registry
     ['response', 'Random Response'],
     ['avataredit', 'Avatar Manipulation'],
     ['textedit', 'Text Manipulation'],
+    ['search', 'Search'],
     ['pokemon', 'Pokémon'],
     ['random', 'Random/Other'],
     ['roleplay', 'Roleplay']
