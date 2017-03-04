@@ -23,7 +23,6 @@ client.registry
     ['avataredit', 'Avatar Manipulation'],
     ['textedit', 'Text Manipulation'],
     ['search', 'Search'],
-    ['pokemon', 'Pokémon'],
     ['random', 'Random/Other'],
     ['roleplay', 'Roleplay']
 ])

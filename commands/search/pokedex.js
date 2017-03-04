@@ -6,7 +6,7 @@ class PokedexCommand extends commando.Command {
     constructor(Client){
         super(Client, {
             name: 'pokedex', 
-            group: 'pokemon',
+            group: 'search',
             memberName: 'pokedex',
             description: 'Gives the pokedex entry for a Pokemon. (;pokedex Pikachu)',
             examples: [';pokedex Pikachu']
@@ -34,7 +34,9 @@ class PokedexCommand extends commando.Command {
             .addField('Type',
             pokedex.type[pokemon]);
             message.channel.sendEmbed(embed).catch(console.error);
-        } else {message.channel.sendMessage(":x: This Pokémon either doesn't exist, or isn't implemented yet.");}
+        } else {
+            message.channel.sendMessage(":x: This Pokémon either doesn't exist, or isn't implemented yet.");
+        }
     }
 }
 
