@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-const Discord = require('discord.js');
 const urban = require('urban');
 
 class UrbanDictionary extends commando.Command {
