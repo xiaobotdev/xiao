@@ -26,7 +26,7 @@ class OsuCommand extends commando.Command {
             "u": usernametosearch,
             "type": 'string'
         }, function(result) {
-            if(result[0].username === undefined) {
+            if(result[0] === undefined) {
                 message.channel.sendMessage(":x: Error! User not found!");
             } else {
                 const embed = new Discord.RichEmbed()
