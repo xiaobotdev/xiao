@@ -21,7 +21,7 @@ class RomajiCommand extends commando.Command {
         let romajify = message.content.split(" ").slice(1).join(" ");
         if(hepburn.containsKana(romajify)) {
             let romajified = hepburn.fromKana(romajify);
-            if(romajified.length > 1900) {
+            if(romajified.length > 1950) {
                 message.channel.sendMessage(":x: Error! Your message is too long!");
             } else {
                 message.channel.sendMessage(romajified);
