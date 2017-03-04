@@ -24,7 +24,7 @@ class WeatherCommand extends commando.Command {
         weather(locationtosearch, 'f').then(info => {
             const embed = new Discord.RichEmbed()
             .setColor(0x0000FF)
-            .setAuthor(info.title, 'http://static.dnaindia.com/sites/default/files/2015/08/21/367776-yahoo2.jpg')
+            .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
             .setURL(info.link)
             .setTimestamp()
             .addField('**City:**',
