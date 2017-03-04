@@ -21,8 +21,10 @@ class ZalgoCommand extends commando.Command {
         let zalgoified = zalgo(message.content.split(" ").slice(1).join(" "));
         if(zalgoified === '') {
             message.channel.sendMessage(":x: Error! Nothing to zalgoify!");
+        } else if(zalgoified.length > 1950) {
+            message.channel.sendMessage(":x: Error! Your message is too long!");
         } else {
-            message.channel.sendMessage(zalgoified, {split:true});
+            message.channel.sendMessage(zalgoified);
         }
     }
 }
