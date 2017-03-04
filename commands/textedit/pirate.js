@@ -23,7 +23,7 @@ class PirateCommand extends commando.Command {
         if(messagecontent === "") {
             message.channel.sendMessage(":x: Error! Nothing to translate!");
         } else {
-            message.channel.sendMessage(pirate, {split:{maxLength:1900}});
+            message.channel.sendMessage(pirate, {split:true});
         }
     }
 }

@@ -26,9 +26,9 @@ class UrbanDictionary extends commando.Command {
             } else if(json.definition === '') {
                 message.channel.sendMessage(":x: Error! Word has no definition!");
             } else if(json.example === '') {
-                message.channel.sendMessage("**Definition:**\n" + json.definition, {split:{maxLength:1900}});
+                message.channel.sendMessage("**Definition:**\n" + json.definition, {split:true});
             } else {
-                message.channel.sendMessage("**Definition:**\n" + json.definition + "\n\n**Example:**\n" + json.example, {split:{maxLength:1900}});
+                message.channel.sendMessage("**Definition:**\n" + json.definition + "\n\n**Example:**\n" + json.example, {split:true});
             }
         });
     }
