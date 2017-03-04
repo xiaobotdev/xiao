@@ -36,7 +36,7 @@ class WeatherCommand extends commando.Command {
             .addField('**Condition:**',
             info.item.condition.text, true)
             .addField('**Temperature:**',
-            info.item.condition.temp + "°", true)
+            info.item.condition.temp + "°F", true)
             .addField('**Humidity:**',
             info.atmosphere.humidity, true)
             .addField('**Pressure:**',
