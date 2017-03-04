@@ -9,7 +9,7 @@ class OsuCommand extends commando.Command {
             name: 'osu', 
             group: 'search',
             memberName: 'osu',
-            description: 'Searches Osu data. (;osu dragonfire535)',
+            description: 'Searches Osu user data. (;osu dragonfire535)',
             examples: [';osu dragonfire535']
         });
     }
