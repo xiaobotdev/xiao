@@ -32,6 +32,7 @@ class OsuCommand extends commando.Command {
                 const embed = new Discord.RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')
+                .setURL('https://osu.ppy.sh/')
                 .addField('**Username:**',
                 result[0].username, true)
                 .addField('**ID:**',
@@ -44,7 +45,7 @@ class OsuCommand extends commando.Command {
                 result[0].pp_rank, true)
                 .addField('**Play Count:**',
                 result[0].playcount, true)
-                .addField('**County:**',
+                .addField('**Country:**',
                 result[0].country, true)
                 .addField('**Ranked Score:**',
                 result[0].ranked_score, true)
