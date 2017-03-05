@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const commando = require('discord.js-commando');
 const config = require('./config.json');
+const request = require('request-promise');
 const clevusers = require('./clevusers.json');
 const client = new commando.Client({
     commandPrefix: ';',
@@ -89,10 +90,38 @@ client.on('guildMemberRemove', member => {
 
 client.on('guildCreate', guild => {
     console.log("[Guild] I have joined the guild: " + guild.name + " (" + guild.id + ")...");
+    const carbonPOST = {
+        method: 'POST',
+        uri: 'https://www.carbonitex.net/discord/data/botdata.php',
+        body: {
+            key: config.carbonkey,
+            servercount: client.guilds.size
+        },
+        json: true
+    }
+    request(carbonPOST).then(function (parsedBody) {
+        console.log("[Carbon] Carbon POST Succeeded!");
+    }).catch(function (err) {
+        console.log("[Carbon] " + err);
+    });
 });
 
 client.on('guildDelete', guild => {
     console.log("[Guild] I have left the guild: " + guild.name + " (" + guild.id + ")...");
+    const carbonPOST = {
+        method: 'POST',
+        uri: 'https://www.carbonitex.net/discord/data/botdata.php',
+        body: {
+            key: config.carbonkey,
+            servercount: client.guilds.size
+        },
+        json: true
+    }
+    request(carbonPOST).then(function (parsedBody) {
+        console.log("[Carbon] Carbon POST Succeeded!");
+    }).catch(function (err) {
+        console.log("[Carbon] " + err);
+    });
 });
     
 client.setInterval(()=>{
