@@ -45,16 +45,14 @@ class WattpadCommand extends commando.Command {
             response.stories[0].user, true)
             .addField('**Parts:**',
             response.stories[0].numParts, true)
-            .addField('**Story ID:**',
-            response.stories[0].id, true)
+            .addField('**Created On:**',
+            response.stories[0].createDate, true)
             .addField('**Votes:**',
             response.stories[0].voteCount, true)
             .addField('**Reads:**',
             response.stories[0].readCount, true)
             .addField('**Comments:**',
-            response.stories[0].commentCount, true)
-            .addField('**Created On:**',
-            response.stories[0].createDate, true);
+            response.stories[0].commentCount, true);
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(function (err) {
             message.channel.sendMessage(":x: Error! Book not Found!");
