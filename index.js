@@ -52,12 +52,12 @@ client.on('message', (message) => {
         message.channel.sendMessage("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
     }
     if(message.content.includes(":Swagolor:")) {
-        if(message.guild.id !== "252317073814978561") return;
+        if(message.guild.id !== config.server) return;
         message.channel.sendMessage(message.guild.emojis.get('254827709459333120').toString());
     }
     if(message.channel.type !== 'dm') {
         if (message.content.startsWith("<@" + client.user.id + ">")){
-            if(message.guild.id === "252317073814978561") {
+            if(message.guild.id === config.server) {
                 console.log("[Cleverbot] " + message.content);
                 if(message.author.id === clevusers.allowed[message.author.id]) {
                     let cleverMessage = message.content.replace("<@" + client.user.id + ">", "");
@@ -76,14 +76,14 @@ client.on('message', (message) => {
 });
 
 client.on('guildMemberAdd', member => {
-    if(member.guild.id !== "252317073814978561") return;
+    if(member.guild.id !== config.server) return;
     member.addRole(member.guild.roles.find('name', 'Members'));
     let username = member.user.username;
     member.guild.defaultChannel.send('Welcome ' + username + '!');
 });
 
 client.on('guildMemberRemove', member => {
-    if(member.guild.id !== "252317073814978561") return;
+    if(member.guild.id !== config.server) return;
     let username = member.user.username;
     member.guild.defaultChannel.send('Bye ' + username + '...');
 });
