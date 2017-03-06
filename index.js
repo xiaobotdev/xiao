@@ -104,6 +104,29 @@ client.on('guildCreate', guild => {
     }).catch(function (err) {
         console.log("[Carbon] " + err);
     });
+    const DBotsPOST = {
+        method: 'POST',
+        uri: 'https://bots.discord.pw/api/bots/:278305350804045834/stats',
+        body: {
+            server_count: client.guilds.size
+        },
+  	    headers: {
+    	    'Authorization': config.botskey
+        },
+        json: true
+    }
+    request(carbonPOST).then(function (parsedBody) {
+        console.log("[Carbon] Carbon POST Succeeded!");
+        console.log(parsedBody);
+    }).catch(function (err) {
+        console.log("[Carbon] " + err);
+    });
+    request(DBotsPOST).then(function (parsedBody) {
+        console.log("[Discord Bots] Discord Bots POST Succeeded!");
+        console.log(parsedBody);
+    }).catch(function (err) {
+        console.log("[Discord Bots] " + err);
+    });
 });
 
 client.on('guildDelete', guild => {
@@ -117,10 +140,26 @@ client.on('guildDelete', guild => {
         },
         json: true
     }
+    const DBotsPOST = {
+        method: 'POST',
+        uri: 'https://bots.discord.pw/api/bots/:278305350804045834/stats',
+        body: {
+            server_count: client.guilds.size
+        },
+  	    headers: {
+    	    'Authorization': config.botskey
+        },
+        json: true
+    }
     request(carbonPOST).then(function (parsedBody) {
         console.log("[Carbon] Carbon POST Succeeded!");
     }).catch(function (err) {
         console.log("[Carbon] " + err);
+    });
+    request(DBotsPOST).then(function (parsedBody) {
+        console.log("[Discord Bots] Discord Bots POST Succeeded!");
+    }).catch(function (err) {
+        console.log("[Discord Bots] " + err);
     });
 });
     
