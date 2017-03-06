@@ -106,7 +106,7 @@ client.on('guildCreate', guild => {
     });
     const DBotsPOST = {
         method: 'POST',
-        uri: 'https://bots.discord.pw/api/bots/:278305350804045834/stats',
+        uri: 'https://bots.discord.pw/api/bots/278305350804045834/stats',
         body: {
             server_count: client.guilds.size
         },
@@ -142,7 +142,7 @@ client.on('guildDelete', guild => {
     }
     const DBotsPOST = {
         method: 'POST',
-        uri: 'https://bots.discord.pw/api/bots/:278305350804045834/stats',
+        uri: 'https://bots.discord.pw/api/bots/278305350804045834/stats',
         body: {
             server_count: client.guilds.size
         },
