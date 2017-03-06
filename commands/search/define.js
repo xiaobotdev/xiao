@@ -28,9 +28,9 @@ class DefineCommand extends commando.Command {
         }
         request(options).then(function (response) {
             const embed = new Discord.RichEmbed()
-            .setColor(0xF89C34)
+            .setColor(0x0000FF)
             .setTitle(definethis)
-            .setDescription(response[0].defenition)
+            .setDescription(response[0].defenition);
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(function (err) {
             message.channel.sendMessage(":x: Error! Word not Found!");
