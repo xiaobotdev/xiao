@@ -17,6 +17,7 @@
     "discord.js-commando": "^0.9.0",
     "google-translate-api": "^2.2.2",
     "hepburn": "^1.0.0",
+    "imdb-api": "^2.2.1",
     "jimp": "^0.2.27",
     "osu": "^1.0.1",
     "pirate-speak": "^1.0.1",
