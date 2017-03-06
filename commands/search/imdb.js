@@ -41,9 +41,9 @@ class IMDBCommand extends commando.Command {
                 movie.rated, true)
                 .addField('**Runtime:**',
                 movie.runtime, true)
-                .addField('**Director:**',
+                .addField('**Directors:**',
                 movie.director, true)
-                .addField('**Writer:**',
+                .addField('**Writers:**',
                 movie.writer, true)
                 .addField('**Actors:**',
                 movie.actors, true);
