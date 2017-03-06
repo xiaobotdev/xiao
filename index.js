@@ -111,14 +111,12 @@ client.on('guildCreate', guild => {
         json: true
     }
     request(carbonPOST).then(function (parsedBody) {
-        console.log("[Carbon] Carbon POST Succeeded!");
-        console.log(parsedBody);
+        console.log('[Carbon] ' + parsedBody);
     }).catch(function (err) {
         console.log("[Carbon] " + err);
     });
     request(DBotsPOST).then(function (parsedBody) {
-        console.log("[Discord Bots] Discord Bots POST Succeeded!");
-        console.log(parsedBody);
+        console.log('[Discord Bots] ' + parsedBody);
     }).catch(function (err) {
         console.log("[Discord Bots] " + err);
     });
@@ -147,14 +145,12 @@ client.on('guildDelete', guild => {
         json: true
     }
     request(carbonPOST).then(function (parsedBody) {
-        console.log("[Carbon] Carbon POST Succeeded!");
-        console.log(parsedBody);
+        console.log('[Carbon] ' + parsedBody);
     }).catch(function (err) {
         console.log("[Carbon] " + err);
     });
     request(DBotsPOST).then(function (parsedBody) {
-        console.log("[Discord Bots] Discord Bots POST Succeeded!");
-        console.log(parsedBody);
+        console.log('[Discord Bots] ' + parsedBody);
     }).catch(function (err) {
         console.log("[Discord Bots] " + err);
     });
