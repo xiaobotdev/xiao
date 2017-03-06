@@ -153,11 +153,13 @@ client.on('guildDelete', guild => {
     }
     request(carbonPOST).then(function (parsedBody) {
         console.log("[Carbon] Carbon POST Succeeded!");
+        console.log(parsedBody);
     }).catch(function (err) {
         console.log("[Carbon] " + err);
     });
     request(DBotsPOST).then(function (parsedBody) {
         console.log("[Discord Bots] Discord Bots POST Succeeded!");
+        console.log(parsedBody);
     }).catch(function (err) {
         console.log("[Discord Bots] " + err);
     });
