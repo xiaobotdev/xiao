@@ -99,11 +99,6 @@ client.on('guildCreate', guild => {
         },
         json: true
     }
-    request(carbonPOST).then(function (parsedBody) {
-        console.log("[Carbon] Carbon POST Succeeded!");
-    }).catch(function (err) {
-        console.log("[Carbon] " + err);
-    });
     const DBotsPOST = {
         method: 'POST',
         uri: 'https://bots.discord.pw/api/bots/278305350804045834/stats',
