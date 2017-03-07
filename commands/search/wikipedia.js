@@ -8,7 +8,7 @@ class WikipediaCommand extends commando.Command {
             name: 'wikipedia', 
             group: 'search',
             memberName: 'wikipedia',
-            description: 'Searches Wikipedia for something. (;wikipedia Cat)',
+            description: 'Searches Wikipedia for something. (;wikipedia Cat **Note: CAsE SenSiTiVe!**)',
             examples: [';wikipedia Cat']
         });
     }
@@ -20,7 +20,7 @@ class WikipediaCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
         }
         console.log("[Command] " + message.content);
-        let wikied = message.content.toLowerCase().split(" ").slice(1).join("_");
+        let wikied = message.content.split(" ").slice(1).join("%20");
         const options = {
 	        method: 'GET',
 	        uri: "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=" + wikied + "&exintro=&explaintext=&redirects=&formatversion=2",
