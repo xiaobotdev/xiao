@@ -20,7 +20,7 @@ class WikipediaCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
         }
         console.log("[Command] " + message.content);
-        let wikied = message.content.toLowerCase().split(" ").slice(1).join("%20");
+        let wikied = message.content.toLowerCase().split(" ").slice(1).join("_");
         const options = {
 	        method: 'GET',
 	        uri: "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=" + wikied + "&exintro=&explaintext=&redirects=&formatversion=2",
@@ -31,19 +31,31 @@ class WikipediaCommand extends commando.Command {
             let name = response.query.pages[0].title;
             description = description.substr(0, 1900);
             description = description.replace(/\n/, "\n\n");
+            wikied = wikied.replace(")", "%29");
             if(description === undefined) {
                 message.channel.sendMessage(":x: Error! Entry Not Found!");
             } else {
-                const embed = new Discord.RichEmbed()
-                .setColor(0xE7E7E7)
-                .setTitle(name)
-                .setURL("https://en.wikipedia.org/wiki/" + wikied)
-                .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
-                .setDescription(description + '...' + "\n\n" + "[Read the Rest Here!](https://en.wikipedia.org/wiki/" + wikied + ")");
-                message.channel.sendEmbed(embed).catch(console.error);
+                if(description.length > 1900) {
+                    const embed = new Discord.RichEmbed()
+                    .setColor(0xE7E7E7)
+                    .setTitle(name)
+                    .setURL("https://en.wikipedia.org/wiki/" + wikied)
+                    .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
+                    .setDescription(description + '...' + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
+                    message.channel.sendEmbed(embed).catch(console.error);
+                } else {
+                    const embed = new Discord.RichEmbed()
+                    .setColor(0xE7E7E7)
+                    .setTitle(name)
+                    .setURL("https://en.wikipedia.org/wiki/" + wikied)
+                    .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
+                    .setDescription(description + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
+                    message.channel.sendEmbed(embed).catch(console.error);
+                }
             }
         }).catch(function (err) {
             message.channel.sendMessage(":x: Error! Unknown error!");
+            console.log(err);
         });
     }
 }
