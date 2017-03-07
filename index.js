@@ -23,6 +23,7 @@ client.registry
     ['response', 'Random Response'],
     ['avataredit', 'Avatar Manipulation'],
     ['textedit', 'Text Manipulation'],
+    ['imageedit', 'Image Manipulation'],
     ['search', 'Search'],
     ['random', 'Random/Other'],
     ['roleplay', 'Roleplay']
