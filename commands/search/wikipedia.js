@@ -54,8 +54,7 @@ class WikipediaCommand extends commando.Command {
                 }
             }
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! Unknown error!");
-            console.log(err);
+            message.channel.sendMessage(":x: Error! Entry Not Found!");
         });
     }
 }
