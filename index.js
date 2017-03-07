@@ -68,7 +68,7 @@ client.on('message', (message) => {
                         message.channel.stopTyping();
                     });
                 } else {
-                    message.reply(":x: Error! You are either not verified for Cleverbot, or banned from it. Please check #rules for a link to the forum to sign-up for Cleverbot.");
+                    message.channel.sendMessage(":x: Error! You are either not verified for Cleverbot, or banned from it. Please check #rules for a link to the forum to sign-up for Cleverbot.");
                 }
             }
         }
