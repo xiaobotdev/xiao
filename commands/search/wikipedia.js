@@ -29,12 +29,12 @@ class WikipediaCommand extends commando.Command {
         request(options).then(function (response) {
             let description = response.query.pages[0].extract;
             let name = response.query.pages[0].title;
-            description = description.substr(0, 1900);
-            description = description.replace(/\n/, "\n\n");
             wikied = wikied.replace(")", "%29");
             if(description === undefined) {
                 message.channel.sendMessage(":x: Error! Entry Not Found!");
             } else {
+                description = description.substr(0, 1900);
+                description = description.replace(/\n/, "\n\n");
                 if(description.length > 1900) {
                     const embed = new Discord.RichEmbed()
                     .setColor(0xE7E7E7)
