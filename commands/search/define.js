@@ -24,7 +24,14 @@ class DefineCommand extends commando.Command {
         let definethis = message.content.toLowerCase().split(" ").slice(1).join("%20");
         const options = {
 	        method: 'GET',
-	        uri: 'http://api.wordnik.com:80/v4/word.json/' + definethis + '/definitions?limit=1&includeRelated=false&useCanonical=false&includeTags=false&api_key=' + config.wordnikkey,
+	        uri: 'http://api.wordnik.com:80/v4/word.json/' + definethis + '/definitions',
+	        qs: {
+    	        limit: 1,
+                includeRelated: false,
+                useCononical: false,
+                includeTags: false,
+                api_key: config.wordnikkey
+  	        },
   	        json: true
         }
         request(options).then(function (response) {
