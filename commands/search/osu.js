@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const config = require('../../config.json');
-const osu = require('osu')(config.osukey);
+const request = require('request-promise');
 
 class OsuCommand extends commando.Command {
     constructor(Client){
@@ -22,11 +22,18 @@ class OsuCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let usernametosearch = message.content.split(" ").slice(1).join(" ");
-        osu.get_user({
-            "u": usernametosearch,
-            "type": 'string'
-        }, function(result) {
-            if(result[0] === undefined) {
+        const options = {
+	        method: 'GET',
+	        uri: 'https://osu.ppy.sh/api/get_user',
+	        qs: {
+    	        k: config.osukey,
+                u: usernametosearch,
+                type: "string"
+  	        },
+  	        json: true
+        }
+        request(options).then(function (response) {
+            if(response[0] === undefined) {
                 message.channel.sendMessage(":x: Error! User not found!");
             } else {
                 const embed = new Discord.RichEmbed()
@@ -34,31 +41,33 @@ class OsuCommand extends commando.Command {
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')
                 .setURL('https://osu.ppy.sh/')
                 .addField('**Username:**',
-                result[0].username, true)
+                response[0].username, true)
                 .addField('**ID:**',
-                result[0].user_id, true)
+                response[0].user_id, true)
                 .addField('**Level:**',
-                result[0].level, true)
+                response[0].level, true)
                 .addField('**Accuracy**',
-                result[0].accuracy, true)
+                response[0].accuracy, true)
                 .addField('**Rank:**',
-                result[0].pp_rank, true)
+                response[0].pp_rank, true)
                 .addField('**Play Count:**',
-                result[0].playcount, true)
+                response[0].playcount, true)
                 .addField('**Country:**',
-                result[0].country, true)
+                response[0].country, true)
                 .addField('**Ranked Score:**',
-                result[0].ranked_score, true)
+                response[0].ranked_score, true)
                 .addField('**Total Score:**',
-                result[0].total_score, true)
+                response[0].total_score, true)
                 .addField('**SS:**',
-                result[0].count_rank_ss, true)
+                response[0].count_rank_ss, true)
                 .addField('**S:**',
-                result[0].count_rank_s, true)
+                response[0].count_rank_s, true)
                 .addField('**A:**',
-                result[0].count_rank_a, true);
+                response[0].count_rank_a, true);
                 message.channel.sendEmbed(embed).catch(console.error);
             }
+        }).catch(function (err) {
+            message.channel.sendMessage(":x: Error! User not Found!");
         });
     }
 }
