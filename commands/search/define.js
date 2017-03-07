@@ -28,7 +28,7 @@ class DefineCommand extends commando.Command {
 	        qs: {
     	        limit: 1,
                 includeRelated: false,
-                useCononical: false,
+                useCanonical: false,
                 includeTags: false,
                 api_key: config.wordnikkey
   	        },
