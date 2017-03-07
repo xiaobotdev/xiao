@@ -36,7 +36,7 @@ class DefineCommand extends commando.Command {
         }
         request(options).then(function (response) {
             const embed = new Discord.RichEmbed()
-            .setColor(0x0000FF)
+            .setColor(0x9797FF)
             .setTitle(response[0].word)
             .setDescription(response[0].text);
             message.channel.sendEmbed(embed).catch(console.error);
