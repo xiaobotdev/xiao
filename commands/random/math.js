@@ -21,7 +21,7 @@ class MathCommand extends commando.Command {
         let messagecontent = message.content.split(" ").slice(1).join(" ");
         try {
             let solved = math.eval(messagecontent);
-            message.channel.sendMessage(solved).catch(error => message.channel.sendMessage(":x: Error! Invalid statment!"));
+            message.channel.sendMessage(solved).catch(error => message.channel.sendMessage(":x: Error! Invalid statement!"));
         } catch(err) {
             message.channel.sendMessage(":x: Error! Invalid statement!");
         }
