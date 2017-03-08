@@ -8,7 +8,7 @@ class MemeCommand extends commando.Command {
             group: 'imageedit',
             memberName: 'meme',
             description: "Sends a Meme with text of your choice, and a background of your choice. Split first and second lines with a | (;meme facepalm I can't even | comprehend this)",
-            examples: [';cat']
+            examples: [";meme facepalm I can't even | comprehend this"]
         });
     }
 
@@ -30,14 +30,16 @@ class MemeCommand extends commando.Command {
                 bottomrow = bottomrow.replace("?", "~q");
                 toprow = toprow.replace("?", "~q");
                 let link = "https://memegen.link/" + type + "/" + toprow + "/" + bottomrow + ".jpg";
-                if(type !== "") {
+                if(bottomrow.length > 80) {
+                    message.channel.sendMessage(":x: Error! Bottom text is over 80 characters!");
+                } else if(toprow.length > 80) {
+                    message.channel.sendMessage(":x: Error! Top text is over 80 characters!");
+                } else {
                     if(memecodes.memecodes[type]) { 
                         message.channel.sendFile(link);
                     } else {
-                        message.channel.sendMessage(":x: Error! Meme type not found!");
+                        message.channel.sendMessage(":x: Error! Meme type not found! (View list with ;meme list)");
                     }
-                } else {
-                    message.channel.sendMessage(":x: Error! No meme type set! (View list with ;meme list)");
                 }
             } else {
                 message.channel.sendMessage(":x: Error! Only letters, numbers, periods, commas, exclamation points, and question marks are allowed!");
