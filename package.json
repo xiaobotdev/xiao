@@ -19,6 +19,7 @@
     "hepburn": "^1.0.0",
     "imdb-api": "^2.2.1",
     "jimp": "^0.2.27",
+    "mathjs": "^3.10.0",
     "pirate-speak": "^1.0.1",
     "request-promise": "^4.1.1",
     "urban": "^0.3.1",
