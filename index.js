@@ -29,7 +29,7 @@ client.registry
     ['roleplay', 'Roleplay']
 ])
 .registerDefaultGroups()
-.registerDefaultCommands()
+.registerDefaultCommands({prefix:false})
 .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('message', (message) => {
