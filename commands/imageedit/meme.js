@@ -23,10 +23,12 @@ class MemeCommand extends commando.Command {
         if(type === "list") {
             message.channel.sendMessage("**Type Codes:** tenguy, afraid, older, aag, tried, biw, blb, kermit, bd, ch, cbg, wonka, cb, keanu, dsm, live, ants, doge, alwaysonbeat, ermg, facepalm, fwp, fa, fbf, fry, hipster, icanhas, crazypills, mw, noidea, regret, boat, hagrid, sohappy, captain, inigo, iw, ackbar, happening, joker, ive, ll, morpheus, mb, badchoice, mmm, jetpack, red, mordor, oprah, oag, remembers, philosoraptor, jw, patrick, rollsafe, sad-obama, sad-clinton, sadfrog, sad-bush, sad-biden, sad-boehner, saltbae, sarcasticbear, dwight, sb, ss, sf, dodgson, money, sohot, nice, awesome-awkward, awesome, awkward-awesome, awkward, fetch, success, scc, ski, officespace, interesting, toohigh, bs, center, both, winter, xy, buzz, yodawg, uno, yallgot, bad, elf, chosen");
         } else if(message.content.includes("|")) {
-            if(message.content.split(" ").slice(1).join(" ").match(/^[a-zA-Z0-9|\s]+$/)) {
+            if(message.content.split(" ").slice(1).join(" ").match(/^[a-zA-Z0-9|.,!?\s]+$/)) {
                 let bottomrow = message.content.toLowerCase().split("|").slice(1).join("-");
                 let toprow = " " + message.content.toLowerCase().replace(bottomrow, "").split(" ").slice(2).join("-");
                 toprow = toprow.replace("|", "");
+                bottomrow = bottomrow.replace("?", "~q");
+                toprow = toprow.replace("?", "~q");
                 let link = "https://memegen.link/" + type + "/" + toprow + "/" + bottomrow + ".jpg";
                 if(type !== "") {
                     if(memecodes.memecodes[type]) { 
@@ -38,7 +40,7 @@ class MemeCommand extends commando.Command {
                     message.channel.sendMessage(":x: Error! No meme type set! (View list with ;meme list)");
                 }
             } else {
-                message.channel.sendMessage(":x: Error! Only Letters and Numbers are allowed!");
+                message.channel.sendMessage(":x: Error! Only letters, numbers, periods, commas, exclamation points, and question marks are allowed!");
             }
         } else {
             message.channel.sendMessage(":x: Split your two choices with a ' | '!");

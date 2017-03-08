@@ -61,7 +61,7 @@ class InfoCommand extends commando.Command {
         .addField('Modules',
         "[Commando](https://github.com/Gawdl3y/discord.js-commando) (0.9.0), [cleverbot-node](https://github.com/fojas/cleverbot-node) (0.3.5), [pirate-speak](https://github.com/mikewesthad/pirate-speak) (1.0.1), [JIMP](https://github.com/oliver-moran/jimp) (0.2.27), [google-translate-api](https://github.com/matheuss/google-translate-api) (2.2.2), [urban](https://github.com/mvrilo/urban) (0.3.1), [zalgoize](https://github.com/clux/zalgolize) (1.2.4), [hepburn](https://github.com/lovell/hepburn) (1.0.0), [wikifakt](https://github.com/coffee-cup/wikifakt) (1.0.3), [yahoo-weather](https://github.com/mamal72/node-yahoo-weather) (2.2.2), [imdb-api](https://github.com/worr/node-imdb-api) (2.2.1), [request-promise](https://github.com/request/request-promise) (4.1.1)")
         .addField('Other Credit',
-        "[Cleverbot API](https://www.cleverbot.com/api/), [Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api)")
+        "[Cleverbot API](https://www.cleverbot.com/api/), [Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/)")
         .addField('My Server',
         "[Click Here to Join!](https://discord.gg/fqQF8mc)")
         .addField('Invite Link:',
