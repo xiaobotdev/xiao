@@ -30,6 +30,8 @@ class InfoCommand extends commando.Command {
             if (seconds < 10) seconds = "0" + seconds;
             return hours + ":" + minutes + ":" + seconds;
         };
+        let guilds = this.client.guilds.size;
+        let users = this.client.users.size;
         const embed = new Discord.RichEmbed()
         .setTitle('Welcome to XiaoBot!')
         .setAuthor(this.client.user.username, this.client.user.avatarURL)
@@ -41,17 +43,17 @@ class InfoCommand extends commando.Command {
         .addField('Commands',
         "There are a variety of commands XiaoBot can use! Use ';help' to view a list of all commands!")
         .addField('Servers',
-        this.client.guilds.size, true)
+        guilds, true)
         .addField('Users',
-        this.client.users.size, true)
+        users, true)
+        .addField('Shards',
+        this.client.options.shardCount + " (This is Shard: " + this.client.shard.id + ")", true)
         .addField('Commands',
         config.commandcount, true)
         .addField('Owner',
         "dragonfire535#8081", true)
         .addField('Uptime',
         toHHMMSS(process.uptime()), true)
-        .addField('Node Version',
-        "7.6.0", true)
         .addField('Host',
         "[Heroku](https://www.heroku.com/)", true)
         .addField('Source Code',
