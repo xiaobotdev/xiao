@@ -47,7 +47,7 @@ class InfoCommand extends commando.Command {
         .addField('Users',
         users, true)
         .addField('Shards',
-        this.client.options.shardCount, true)
+        this.client.options.shardCount + " (This is Shard: " + this.client.shard.id + ")", true)
         .addField('Commands',
         config.commandcount, true)
         .addField('Owner',
