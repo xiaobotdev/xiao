@@ -97,13 +97,13 @@ client.on('guildCreate', guild => {
     console.log("[Guild] I have joined the guild: " + guild.name + " (" + guild.id + ")...");
     if(client.shard.id !== 0) return;
     client.shard.fetchClientValues('guilds.size').then(results => {
-        console.log("[POST] " + results);
+        console.log("[POST] " + results.reduce((prev, val) => prev + val, 0));
         const carbonPOST = {
             method: 'POST',
             uri: 'https://www.carbonitex.net/discord/data/botdata.php',
             body: {
                 key: config.carbonkey,
-                servercount: results
+                servercount: results.reduce((prev, val) => prev + val, 0)
             },
             json: true
         }
@@ -111,7 +111,7 @@ client.on('guildCreate', guild => {
             method: 'POST',
             uri: 'https://bots.discord.pw/api/bots/278305350804045834/stats',
             body: {
-                server_count: results
+                server_count: results.reduce((prev, val) => prev + val, 0)
             },
   	        headers: {
     	        'Authorization': config.botskey
@@ -135,13 +135,13 @@ client.on('guildDelete', guild => {
     if(client.shard.id !== 0) return;
     console.log("[Guild] I have left the guild: " + guild.name + " (" + guild.id + ")...");
     client.shard.fetchClientValues('guilds.size').then(results => {
-        console.log("[POST] " + results);
+        console.log("[POST] " + results.reduce((prev, val) => prev + val, 0));
         const carbonPOST = {
             method: 'POST',
             uri: 'https://www.carbonitex.net/discord/data/botdata.php',
             body: {
                 key: config.carbonkey,
-                servercount: results
+                servercount: results.reduce((prev, val) => prev + val, 0)
             },
             json: true
         }
@@ -149,7 +149,7 @@ client.on('guildDelete', guild => {
             method: 'POST',
             uri: 'https://bots.discord.pw/api/bots/278305350804045834/stats',
             body: {
-                server_count: results
+                server_count: results.reduce((prev, val) => prev + val, 0)
             },
   	        headers: {
     	        'Authorization': config.botskey

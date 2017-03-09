@@ -44,7 +44,7 @@ class InfoCommand extends commando.Command {
             .addField('Commands',
             "There are a variety of commands XiaoBot can use! Use ';help' to view a list of all commands!")
             .addField('Servers',
-            guilds + "/" + results, true)
+            guilds + "/" + results.reduce((prev, val) => prev + val, 0), true)
             .addField('Shards',
             this.client.options.shardCount + " (This is Shard: " + this.client.shard.id + ")", true)
             .addField('Commands',
