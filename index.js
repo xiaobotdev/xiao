@@ -95,10 +95,76 @@ client.on('guildMemberRemove', member => {
 
 client.on('guildCreate', guild => {
     console.log("[Guild] I have joined the guild: " + guild.name + " (" + guild.id + ")...");
+    client.shard.fetchClientValues('guilds.size').then(results => {
+        console.log("[POST] " + results);
+        const carbonPOST = {
+            method: 'POST',
+            uri: 'https://www.carbonitex.net/discord/data/botdata.php',
+            body: {
+                key: config.carbonkey,
+                servercount: results
+            },
+            json: true
+        }
+        const DBotsPOST = {
+            method: 'POST',
+            uri: 'https://bots.discord.pw/api/bots/278305350804045834/stats',
+            body: {
+                server_count: results
+            },
+  	        headers: {
+    	        'Authorization': config.botskey
+            },
+            json: true
+        }
+        request(carbonPOST).then(function (parsedBody) {
+            console.log('[Carbon] ' + parsedBody);
+        }).catch(function (err) {
+            console.log("[Carbon] " + err);
+        });
+        request(DBotsPOST).then(function (parsedBody) {
+            console.log('[Discord Bots] ' + parsedBody);
+        }).catch(function (err) {
+            console.log("[Discord Bots] " + err);
+        });
+    });
 });
 
 client.on('guildDelete', guild => {
     console.log("[Guild] I have left the guild: " + guild.name + " (" + guild.id + ")...");
+    console.log("[POST] " + results);
+    client.shard.fetchClientValues('guilds.size').then(results => {
+        const carbonPOST = {
+            method: 'POST',
+            uri: 'https://www.carbonitex.net/discord/data/botdata.php',
+            body: {
+                key: config.carbonkey,
+                servercount: results
+            },
+            json: true
+        }
+        const DBotsPOST = {
+            method: 'POST',
+            uri: 'https://bots.discord.pw/api/bots/278305350804045834/stats',
+            body: {
+                server_count: results
+            },
+  	        headers: {
+    	        'Authorization': config.botskey
+            },
+            json: true
+        }
+        request(carbonPOST).then(function (parsedBody) {
+            console.log('[Carbon] ' + parsedBody);
+        }).catch(function (err) {
+            console.log("[Carbon] " + err);
+        });
+        request(DBotsPOST).then(function (parsedBody) {
+            console.log('[Discord Bots] ' + parsedBody);
+        }).catch(function (err) {
+            console.log("[Discord Bots] " + err);
+        });
+    });
 });
 
 client.once('ready', () => {
