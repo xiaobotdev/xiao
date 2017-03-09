@@ -23,7 +23,6 @@
     "pirate-speak": "^1.0.1",
     "request-promise": "^4.1.1",
     "urban": "^0.3.1",
-    "wikifakt": "^1.0.3",
     "yahoo-weather": "^2.2.2",
     "zalgolize": "^1.2.4"
   }
