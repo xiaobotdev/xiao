@@ -103,7 +103,7 @@ client.on('guildDelete', guild => {
 
 client.setInterval(()=>{
     let games = ["with a cardboard box", "with Rem", "with my cat", "in the fridge", "in ", " servers", "with dragonfire535", "at the Inn", "with your heart", "with a knife", "with a murderous cow", ";help | dragonfire535", "with Cleverbot", "like a pirate", "with all my games", "against Miki"][Math.floor(Math.random() * 14)];
-    Manager.broadcastEval("client.user.setGame(games)");
+    client.shard.broadcastEval("client.user.setGame(games)");
 }, 300000);
 
 client.once('ready', () => {
