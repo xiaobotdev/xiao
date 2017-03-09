@@ -132,8 +132,8 @@ client.on('guildCreate', guild => {
 
 client.on('guildDelete', guild => {
     console.log("[Guild] I have left the guild: " + guild.name + " (" + guild.id + ")...");
-    console.log("[POST] " + results);
     client.shard.fetchClientValues('guilds.size').then(results => {
+        console.log("[POST] " + results);
         const carbonPOST = {
             method: 'POST',
             uri: 'https://www.carbonitex.net/discord/data/botdata.php',
