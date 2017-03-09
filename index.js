@@ -101,14 +101,9 @@ client.on('guildDelete', guild => {
     console.log("[Guild] I have left the guild: " + guild.name + " (" + guild.id + ")...");
 });
 
-client.setInterval(()=>{
-    let games = ["with a cardboard box", "with Rem", "with my cat", "in the fridge", "in ", " servers", "with dragonfire535", "at the Inn", "with your heart", "with a knife", "with a murderous cow", ";help | dragonfire535", "with Cleverbot", "like a pirate", "with all my games", "against Miki"][Math.floor(Math.random() * 14)];
-    client.shard.broadcastEval("client.user.setGame(games)");
-}, 300000);
-
 client.once('ready', () => {
     console.log('[Ready] Logged in!');
-    client.user.setGame("Just Started Up!");
+    client.user.setGame(";help | dragonfire535");
 });
 
 client.login(config.token);
