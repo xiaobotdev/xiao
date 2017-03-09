@@ -95,6 +95,7 @@ client.on('guildMemberRemove', member => {
 
 client.on('guildCreate', guild => {
     console.log("[Guild] I have joined the guild: " + guild.name + " (" + guild.id + ")...");
+    if(client.shard.id !== 0) return;
     client.shard.fetchClientValues('guilds.size').then(results => {
         console.log("[POST] " + results);
         const carbonPOST = {
@@ -131,6 +132,7 @@ client.on('guildCreate', guild => {
 });
 
 client.on('guildDelete', guild => {
+    if(client.shard.id !== 0) return;
     console.log("[Guild] I have left the guild: " + guild.name + " (" + guild.id + ")...");
     client.shard.fetchClientValues('guilds.size').then(results => {
         console.log("[POST] " + results);
