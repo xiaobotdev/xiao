@@ -40,8 +40,7 @@ class KickCommand extends commando.Command {
                             .setColor(0xFFA500)
                             .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                             .setTimestamp()
-                            .addField('Information',
-                            '**Member:** ' + username.username + '#' + username.discriminator + ' (' + username.id + ')\n**Action:** Kick\n**Reason:** ' + reason);
+                            .setDescription('**Member:** ' + username.username + '#' + username.discriminator + ' (' + username.id + ')\n**Action:** Kick\n**Reason:** ' + reason);
                             message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
                         } else {
                             message.channel.sendMessage("**Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");

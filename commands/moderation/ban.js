@@ -40,8 +40,7 @@ class BanCommand extends commando.Command {
                             .setColor(0xFF0000)
                             .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                             .setTimestamp()
-                            .addField('Information',
-                            '**Member:** ' + username.username + '#' + username.discriminator + ' (' + username.id + ')\n**Action:** Ban\n**Reason:** ' + reason);
+                            .setDescription('**Member:** ' + username.username + '#' + username.discriminator + ' (' + username.id + ')\n**Action:** Ban\n**Reason:** ' + reason);
                             message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
                         } else {
                             message.channel.sendMessage("**Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
