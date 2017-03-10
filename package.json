@@ -1,13 +1,17 @@
 {
-  "name": "XiaoBot",
+  "name": "xiaobot",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Discord Bot",
   "main": "shardingmanager.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://dragonfire535@bitbucket.org/dragonfire535/xiaobot.git"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node shardingmanager.js"
   },
   "engines": {
-    "node": "7.6.0"
+    "node": "7.7.2"
   },
   "author": "dragonfire535",
   "license": "ISC",
