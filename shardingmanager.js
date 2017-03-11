@@ -1,3 +1,6 @@
 const Discord = require('discord.js');
-const Manager = new Discord.ShardingManager('./index.js');
-Manager.spawn(1);
+const config = require('./config.json');
+const Manager = new Discord.ShardingManager('./index.js', {
+    token: config.token
+});
+Manager.spawn();
