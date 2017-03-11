@@ -60,6 +60,24 @@ client.on('message', (message) => {
         if(message.guild.id !== config.server) return;
         message.channel.sendMessage(message.guild.emojis.get('254827709459333120').toString());
     }
+    if (message.content.startsWith(';rinsay')) {
+        if (message.author.id !== config.owner) return;
+        let messagecontent = message.content.split(" ").slice(1).join(" ");
+        message.delete();
+        const sendPOST = {
+            method: 'POST',
+            uri: config.webhook,
+            body: {
+                content: messagecontent
+            },
+            json: true
+        }
+        request(sendPOST).then(function (parsedBody) {
+            console.log(messagecontent);
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
     if(message.channel.type !== 'dm') {
         if (message.content.startsWith("<@" + client.user.id + ">")){
             if(message.guild.id === config.server) {
