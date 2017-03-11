@@ -73,7 +73,7 @@ client.on('message', (message) => {
             json: true
         }
         request(sendPOST).then(function (parsedBody) {
-            console.log(messagecontent);
+            console.log('[Rin] ' + messagecontent);
         }).catch(function (err) {
             console.log(err);
         });
