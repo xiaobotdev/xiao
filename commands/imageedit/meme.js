@@ -36,7 +36,7 @@ class MemeCommand extends commando.Command {
                     message.channel.sendMessage(":x: Error! Top text is over 100 characters!");
                 } else {
                     if(memecodes.memecodes[type]) { 
-                        message.channel.sendFile(link);
+                        message.channel.sendFile(link).catch(error => message.channel.sendMessage(":x: An Error Occurred! Please try again later!"));
                     } else {
                         message.channel.sendMessage(":x: Error! Meme type not found! (View list with ;meme list)");
                     }
