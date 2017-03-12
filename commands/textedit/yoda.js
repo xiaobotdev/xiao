@@ -19,7 +19,7 @@ class YodaCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        let yodaspeak = message.content.split(" ").slice(1).join("+");
+        let yodaspeak = message.content.split(" ").slice(1).join(" ");
         if(yodaspeak === "") {
             message.channel.sendMessage(':x: Error! Nothing to translate!');
         } else {
