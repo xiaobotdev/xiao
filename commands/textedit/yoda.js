@@ -19,7 +19,7 @@ class YodaCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        let yodaspeak = message.content.split(" ").slice(1).join("-");
+        let yodaspeak = message.content.split(" ").slice(1).join("+");
         if(yodaspeak === "") {
             message.channel.sendMessage(':x: Error! Nothing to translate!');
         } else {
@@ -39,8 +39,7 @@ class YodaCommand extends commando.Command {
                 if(response === undefined) {
                     message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.');
                 } else {
-                    let translated = response.split('-').join(" ");
-                    message.channel.sendMessage(translated).catch(error => message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
+                    message.channel.sendMessage(response).catch(error => message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
                 }
             }).catch(function (err) {
                 message.channel.sendMessage(":x: Error! Unknown Error. Try again later!");
