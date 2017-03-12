@@ -49,7 +49,7 @@ class YouTubeCommand extends commando.Command {
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! Daily Quota Reached! Try again tomorrow!");
+            message.channel.sendMessage(":x: Error! An error has occurred! Try again (if this continues to occur, the daily quota may have been reached).");
         });
     }
 }
