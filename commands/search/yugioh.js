@@ -24,9 +24,6 @@ class YuGiOhCommand extends commando.Command {
         const options = {
 	        method: 'GET',
 	        uri: 'http://yugiohprices.com/api/card_data/' + cardname,
-            headers: {
-                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
-            },
   	        json: true
         }
         request(options).then(function (response) {

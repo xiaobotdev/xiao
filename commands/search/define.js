@@ -32,9 +32,6 @@ class DefineCommand extends commando.Command {
                 includeTags: false,
                 api_key: config.wordnikkey
   	        },
-            headers: {
-                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
-            },
   	        json: true
         }
         request(options).then(function (response) {

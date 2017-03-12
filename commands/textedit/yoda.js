@@ -31,8 +31,7 @@ class YodaCommand extends commando.Command {
   	            },
                 headers: {
                     'X-Mashape-Key': config.mashapekey,
-                    'Accept': "text/plain",
-                    'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
+                    'Accept': "text/plain"
                 },
   	            json: true
             } 
