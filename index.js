@@ -70,9 +70,6 @@ client.on('message', (message) => {
             body: {
                 content: messagecontent
             },
-            headers: {
-                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
-            },
             json: true
         }
         request(sendPOST).then(function (parsedBody) {
@@ -125,9 +122,6 @@ client.on('guildCreate', guild => {
                 key: config.carbonkey,
                 servercount: results.reduce((prev, val) => prev + val, 0)
             },
-            headers: {
-                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
-            },
             json: true
         }
         const DBotsPOST = {
@@ -137,8 +131,7 @@ client.on('guildCreate', guild => {
                 server_count: results.reduce((prev, val) => prev + val, 0)
             },
   	        headers: {
-    	        'Authorization': config.botskey,
-                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
+    	        'Authorization': config.botskey
             },
             json: true
         }
@@ -166,9 +159,6 @@ client.on('guildDelete', guild => {
                 key: config.carbonkey,
                 servercount: results.reduce((prev, val) => prev + val, 0)
             },
-            headers: {
-                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
-            },
             json: true
         }
         const DBotsPOST = {
@@ -178,8 +168,7 @@ client.on('guildDelete', guild => {
                 server_count: results.reduce((prev, val) => prev + val, 0)
             },
   	        headers: {
-    	        'Authorization': config.botskey,
-                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
+    	        'Authorization': config.botskey
             },
             json: true
         }
