@@ -190,8 +190,8 @@ client.once('ready', () => {
     client.user.setGame(";help | dragonfire535");
 });
 
-//process.on('unhandledRejection', function(reason, p){
-//    console.log("A Possibly Unhandled Rejection has Occurred.");
-//});
+process.on('unhandledRejection', function(reason, p){
+    console.log("A Possibly Unhandled Rejection has Occurred.");
+});
 
 client.login(config.token);
