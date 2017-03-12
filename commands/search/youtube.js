@@ -33,6 +33,9 @@ class YouTubeCommand extends commando.Command {
                 order: 'viewCount',
                 key: config.youtubekey
   	        },
+            headers: {
+                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
+            },
   	        json: true
         } 
         request(options).then(function (response) {
