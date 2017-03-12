@@ -32,7 +32,7 @@ class TranslateCommand extends commando.Command {
                 message.channel.sendMessage(":x: Error! Please keep translations below 200 characters!");
             } else {
                 translate(messagecontent, {to: languageto}).then(res => {
-                    let languagefrom = res.from.language.iso;
+                    let languagefrom = res.from.language.iso.toLowerCase();
                     const embed = new Discord.RichEmbed()
                     .setColor(0x00AE86)
                     .addField('Input (From: ' + languages.entries[languagefrom] + '):',
