@@ -37,7 +37,7 @@ class YodaCommand extends commando.Command {
                 message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.');
             } else {
                 let translated = response.split('-').join(" ");
-                message.channel.sendMessage(translated);
+                message.channel.sendMessage(translated).catch(error => message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
             }
         }).catch(function (err) {
             message.channel.sendMessage(":x: Error!");
