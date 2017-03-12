@@ -25,10 +25,10 @@ class UptimeCommand extends commando.Command {
             if (hours < 10) hours = "0" + hours;
             if (minutes < 10) minutes = "0" + minutes;
             if (seconds < 10) seconds = "0" + seconds;
-            return hours + "Hours, " + minutes + "Minutes, and " + seconds + "Seconds";
+            return hours + " Hours, " + minutes + " Minutes, and " + seconds + " Seconds";
         };
         let guilds = this.client.guilds.array().length;
-        message.channel.sendMessage("I've been active on this shard for: " + toHHMMSS(process.uptime()) + " in a total of " + guilds + " Servers.");
+        message.channel.sendMessage("I've been active on this shard for: **" + toHHMMSS(process.uptime()) + "** in a total of " + guilds + " Servers.");
     }
 }
 
