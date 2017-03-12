@@ -20,28 +20,32 @@ class YodaCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let yodaspeak = message.content.split(" ").slice(1).join("-");
-        const options = {
-	        method: 'GET',
-	        uri: 'https://yoda.p.mashape.com/yoda',
-	        qs: {
-    	        sentence: yodaspeak
-  	        },
-            headers: {
-                'X-Mashape-Key': config.mashapekey,
-                'Accept': "text/plain"
-            },
-  	        json: true
-        } 
-        request(options).then(function (response) {
-            if(response === undefined) {
-                message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.');
-            } else {
-                let translated = response.split('-').join(" ");
-                message.channel.sendMessage(translated).catch(error => message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
-            }
-        }).catch(function (err) {
-            message.channel.sendMessage(":x: Error!");
-        });
+        if(yodaspeak === "") {
+            message.channel.sendMessage(':x: Error! Nothing to translate!');
+        } else {
+            const options = {
+	            method: 'GET',
+	            uri: 'https://yoda.p.mashape.com/yoda',
+	            qs: {
+    	            sentence: yodaspeak
+  	            },
+                headers: {
+                    'X-Mashape-Key': config.mashapekey,
+                    'Accept': "text/plain"
+                },
+  	            json: true
+            } 
+            request(options).then(function (response) {
+                if(response === undefined) {
+                    message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.');
+                } else {
+                    let translated = response.split('-').join(" ");
+                    message.channel.sendMessage(translated).catch(error => message.channel.sendMessage(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
+                }
+            }).catch(function (err) {
+                message.channel.sendMessage(":x: Error! Unknown Error. Try again later!");
+            });
+        }
     }
 }
 
