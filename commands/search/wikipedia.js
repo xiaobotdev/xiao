@@ -24,6 +24,9 @@ class WikipediaCommand extends commando.Command {
         const options = {
 	        method: 'GET',
 	        uri: "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=" + wikied + "&exintro=&explaintext=&redirects=&formatversion=2",
+            headers: {
+                'User-Agent': 'XiaoBot - dragonfire535 (http://dragonfire535.tk)'
+            },
   	        json: true
         }
         request(options).then(function (response) {
