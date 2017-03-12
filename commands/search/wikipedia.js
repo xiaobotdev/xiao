@@ -38,17 +38,15 @@ class WikipediaCommand extends commando.Command {
                 if(description.length > 1900) {
                     const embed = new Discord.RichEmbed()
                     .setColor(0xE7E7E7)
-                    .setTitle(name)
                     .setURL("https://en.wikipedia.org/wiki/" + wikied)
-                    .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
+                    .setAuthor("Wikipedia - " + name, "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
                     .setDescription(description + '...' + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
                     message.channel.sendEmbed(embed).catch(console.error);
                 } else {
                     const embed = new Discord.RichEmbed()
                     .setColor(0xE7E7E7)
-                    .setTitle(name)
                     .setURL("https://en.wikipedia.org/wiki/" + wikied)
-                    .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
+                    .setAuthor("Wikipedia - " + name, "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
                     .setDescription(description + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
                     message.channel.sendEmbed(embed).catch(console.error);
                 }
