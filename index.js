@@ -40,15 +40,6 @@ client.on('message', (message) => {
         console.log(client.guilds.array().length + " Servers: " + client.guilds.map(g => g.name + " (" + g.id + ")").join(", "));
         message.channel.sendMessage("Sent the information to the console!");
     }
-    if(message.content.startsWith(';shards')) {
-        if(message.author.id !== config.owner) return;
-        message.channel.sendMessage(client.options.shardCount);
-    }
-    if(message.content.startsWith(';leave')) {
-        if(message.author.id !== config.owner) return;
-        console.log("[Command] " + message.content);
-        message.channel.sendMessage("Reminder: To leave a server, eval `this.client.guilds.get(<ID>).leave();`");
-    }
     if(message.content.includes("(╯°□°）╯︵ ┻━┻")) {
         if(message.channel.type !== 'dm') {
             if(message.guild.id === "110373943822540800") return;
