@@ -29,7 +29,7 @@ class GoogleCommand extends commando.Command {
                 if(link === undefined) {
                     message.channel.sendMessage(':x: Error! No Results Found!');
                 } else {
-                    if(link[0].href === undefined) {
+                    if(link[0].href === null) {
                         message.channel.sendMessage(':x: Error! No Results Found!');
                     } else {
                         message.channel.sendMessage(link[0].href).catch(error => message.channel.sendMessage(':x: An Error Occurred! Try again later!'));
