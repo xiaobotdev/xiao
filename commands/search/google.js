@@ -24,7 +24,6 @@ class GoogleCommand extends commando.Command {
         } else {
             google.resultsPerPage = 2
             google(searchQuery, function (err, res) {
-                console.log(res);
                 if (err) message.channel.sendMessage(':x: An Error Occurred! Try again later!');
                 let link = res.links;
                 if(link === undefined) {
