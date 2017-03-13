@@ -24,15 +24,20 @@ class GoogleCommand extends commando.Command {
         } else {
             google.resultsPerPage = 2
             google(searchQuery, function (err, res) {
+                console.log(res);
                 if (err) message.channel.sendMessage(':x: An Error Occurred! Try again later!');
                 let link = res.links;
                 if(link === undefined) {
                     message.channel.sendMessage(':x: Error! No Results Found!');
                 } else {
-                    if(link[0].href === null) {
+                    if(link[0] === undefined) {
                         message.channel.sendMessage(':x: Error! No Results Found!');
                     } else {
-                        message.channel.sendMessage(link[0].href).catch(error => message.channel.sendMessage(':x: An Error Occurred! Try again later!'));
+                        if(link[0].href === null) {
+                            message.channel.sendMessage(':x: Error! No Results Found!');
+                        } else {
+                            message.channel.sendMessage(link[0].href).catch(error => message.channel.sendMessage(':x: An Error Occurred! Try again later!'));
+                        }
                     }
                 }
             });
