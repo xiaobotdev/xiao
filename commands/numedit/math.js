@@ -5,7 +5,7 @@ class MathCommand extends commando.Command {
     constructor(Client){
         super(Client, {
             name: 'math', 
-            group: 'random',
+            group: 'numedit',
             memberName: 'math',
             description: 'Does Math (;math 2 + 2)',
             examples: [';math 2 + 2']
