@@ -23,38 +23,20 @@ class MathGameCommand extends commando.Command {
         let [level] = message.content.toLowerCase().split(" ").slice(1);
         let randomType = ['+', '-', '*'];
         randomType = randomType[Math.floor(Math.random() * randomType.length)];
-        if(randomType === '*') {
-            let randomValue;
-            switch (level) {
-                case "easy":
-                randomValue = 10;
-                break;
-                case "medium":
-                randomValue = 12;
-                break;
-                case "hard":
-                randomValue = 15;
-                break;
-                case "extreme": 
-                randomValue = 20;
-                break;
-            }
-        } else {
-            let randomValue;
-            switch (level) {
-                case "easy":
-                randomValue = 10;
-                break;
-                case "medium":
-                randomValue = 50;
-                break;
-                case "hard":
-                randomValue = 100;
-                break;
-                case "extreme": 
-                randomValue = 1000;
-                break;
-            }
+        let randomValue;
+        switch (level) {
+            case "easy":
+            randomValue = 10;
+            break;
+            case "medium":
+            randomValue = 50;
+            break;
+            case "hard":
+            randomValue = 100;
+            break;
+            case "extreme": 
+            randomValue = 1000;
+            break;
         }
         let randomValue1 = Math.floor(Math.random() * randomValue) + 1;
         let randomValue2 = Math.floor(Math.random() * randomValue) + 1;
