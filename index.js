@@ -72,11 +72,10 @@ client.on('message', (message) => {
     }
     if(message.channel.type !== 'dm') {
         if (message.content.startsWith("<@" + client.user.id + ">")){
-            if(message.guild.id === config.server) {
+            if(message.guild.id === config.server || message.author.id === config.owner) {
                 console.log("[Cleverbot] " + message.content);
                 if(message.author.id === clevusers.allowed[message.author.id]) {
                     let cleverMessage = message.content.replace("<@" + client.user.id + ">", "");
-                    cleverMessage = cleverMessage.replace("", '');
                     message.channel.startTyping();
                     cleverbot.write(cleverMessage, function (response) {
                         message.reply(response.output);
