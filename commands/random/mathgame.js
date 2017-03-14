@@ -8,8 +8,8 @@ class MathGameCommand extends commando.Command {
             name: 'mathgame', 
             group: 'random',
             memberName: 'mathgame',
-            description: 'See how fast you can answer a math problem in a given time limit. (;typinggame easy)',
-            examples: [';typinggame easy', ';typinggame medium', ';typinggame hard', ';typinggame extreme']
+            description: 'See how fast you can answer a math problem in a given time limit. (;mathgame easy)',
+            examples: [';mathgame easy', ';mathgame medium', ';mathgame hard', ';mathgame extreme']
         });
     }
 
