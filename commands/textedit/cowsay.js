@@ -18,14 +18,18 @@ class CowsayCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        let turnToCowsay = message.content.split(" ").slice(1).join(" ");
-        message.channel.sendCode(null, cowsay.say({
-            text : turnToCowsay,
-            e : "oO",
-            T : "U "
-        })).catch(error => {
-            message.channel.sendMessage(':x: Error! Perhaps you entered nothing? Or perhaps the content is too long?');
-        });
+        if(message.content.split(" ").slice(1).join(" ") === "") {
+            message.channel.sendMessage(":x: Error! You entered nothing!");
+        } else {
+            let turnToCowsay = message.content.split(" ").slice(1).join(" ");
+            message.channel.sendCode(null, cowsay.say({
+                text : turnToCowsay,
+                e : "oO",
+                T : "U "
+            })).catch(error => {
+                message.channel.sendMessage(':x: Error! Perhaps the content is too long?');
+            });
+        }
     }
 }
 

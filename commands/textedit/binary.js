@@ -19,7 +19,7 @@ class BinaryCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let turnToBinary = message.content.split(" ").slice(1).join(" ");
-        message.channel.sendMessage(stringToBinary(turnToBinary)).catch(error => message.channel.sendMessage(':x: Error! Translation is too long!'));
+        message.channel.sendMessage(stringToBinary(turnToBinary)).catch(error => message.channel.sendMessage(':x: Error! Translation is too long, or nothing was entered!'));
     }
 }
 
