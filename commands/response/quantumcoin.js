@@ -17,7 +17,8 @@ class QuantumCoin extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        let qcoin = ['on nothing', 'on NaN', 'on 0', 'in the air', 'on null'][Math.floor(Math.random() * 5)];
+        let qcoin = ['on nothing', 'on NaN', 'on 0', 'in the air', 'on null'];
+        qcoin = qcoin[Math.floor(Math.random() * qcoin.length)];
         message.channel.sendMessage("It landed " + qcoin);
     }
 }

@@ -17,7 +17,8 @@ class CoinFlipCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        let coin = ['Heads', 'Tails'][Math.floor(Math.random() * 2)];
+        let coin = ['Heads', 'Tails'];
+        coin = coin[Math.floor(Math.random() * coin.length)];
         message.channel.sendMessage("It landed on " + coin);
     }
 }

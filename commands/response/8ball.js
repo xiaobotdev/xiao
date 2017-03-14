@@ -18,7 +18,8 @@ class MagicBall extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let question = message.content.split(" ").slice(1).join(" ");
-        let coin = ['It seems the answer is yes, yes?', 'It seems the answer is no.', 'It is a little doubtful, yes?', 'It seems it is very likely to be true.'][Math.floor(Math.random() * 4)];
+        let coin = ['It seems the answer is yes, yes?', 'It seems the answer is no.', 'It is a little doubtful, yes?', 'It seems it is very likely to be true.'];
+        coin = coin[Math.floor(Math.random() * coin.length)];
         if(question === "") {
             question = "Not Specified."
         }

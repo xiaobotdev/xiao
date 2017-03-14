@@ -20,7 +20,8 @@ class TypingGameCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let [level] = message.content.toLowerCase().split(" ").slice(1);
-        let randomSentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'][Math.floor(Math.random() * 4)];
+        let randomSentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
+        randomSentence = randomSentence[Math.floor(Math.random() * randomSentence.length)];
         let time;
         switch (level) {
             case "easy":
