@@ -17,7 +17,11 @@ class RouletteCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        message.channel.sendMessage("I choose " + message.guild.members.random().displayName + "!");
+        if(message.channel.type === 'dm') {
+            message.channel.sendMessage(':x: Error! This is a DM!');
+        } else {
+            message.channel.sendMessage("I choose " + message.guild.members.random().displayName + "!");
+        }
     }
 }
 

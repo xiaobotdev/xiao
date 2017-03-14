@@ -17,7 +17,8 @@ class OffspringCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        let gender = ['boy', 'girl'][Math.floor(Math.random() * 2)];
+        let gender = ['boy', 'girl'];
+        gender = gender[Math.floor(Math.random() * gender.length)];
         message.channel.sendMessage("It's a " + gender + "!");
     }
 }

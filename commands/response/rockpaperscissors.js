@@ -18,7 +18,8 @@ class RockPaperScissors extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let [rps] = message.content.toLowerCase().split(" ").slice(1);
-        let response = ['Paper', 'Rock', 'Scissors'][Math.floor(Math.random() * 3)];
+        let response = ['Paper', 'Rock', 'Scissors'];
+        response = response[Math.floor(Math.random() * response.length)];
         if(rps === undefined) {
             message.channel.sendMessage(":x: Error! Your message contains nothing!");
         } else if(rps.includes("rock")) {

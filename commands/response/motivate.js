@@ -18,7 +18,8 @@ class MotivateCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let username = message.content.split(" ").slice(1).join(" ");
-        let coin = ['https://www.youtube.com/watch?v=ZXsQAXx_ao0'][Math.floor(Math.random() * 1)];
+        let coin = ['https://www.youtube.com/watch?v=ZXsQAXx_ao0'];
+        coin = coin[Math.floor(Math.random() * coin.length)];
         if(username === '') {
             message.reply(coin);
         } else {
