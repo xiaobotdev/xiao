@@ -29,7 +29,7 @@ class MathGameCommand extends commando.Command {
             randomValue = 10;
             break;
             case "medium":
-            randomValue = 100;
+            randomValue = 50;
             break;
             case "hard":
             randomValue = 100;
@@ -40,48 +40,18 @@ class MathGameCommand extends commando.Command {
         }
         let randomValue1 = Math.floor(Math.random() * randomValue) + 1;
         let randomValue2 = Math.floor(Math.random() * randomValue) + 1;
-        let time;
-        switch (level) {
-            case "easy":
-            time = 15000;
-            break;
-            case "medium":
-            time = 10000;
-            break;
-            case "hard":
-            time = 5000;
-            break;
-            case "extreme": 
-            time = 3000;
-            break;
-        }
-        let levelWord;
-        switch (level) {
-            case "easy":
-            levelWord = "fifteen";
-            break;
-            case "medium":
-            levelWord = "ten";
-            break;
-            case "hard":
-            levelWord = "five";
-            break;
-            case "extreme": 
-            levelWord = "three";
-            break;
-        }
         let randomExpression = randomValue1 + randomType + randomValue2;
         let solved = math.eval(randomExpression);
         if(time === undefined) {
             message.channel.sendMessage(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         } else {
             const embed = new Discord.RichEmbed()
-            .setTitle('You have **' + levelWord + '** seconds to answer:')
+            .setTitle('You have **ten** seconds to answer:')
             .setDescription(randomExpression);
             message.channel.sendEmbed(embed).then(() => {
                 message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
                     max: 1,
-                    time: time,
+                    time: 10000,
                     errors: ['time'],
                 }).then((collected) => {
                     message.channel.sendMessage(`Good Job! You won!`);
