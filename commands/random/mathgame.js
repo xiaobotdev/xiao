@@ -1,13 +1,14 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
+const math = require('mathjs');
 
-class TypingGameCommand extends commando.Command {
+class MathGameCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'typinggame', 
+            name: 'mathgame', 
             group: 'random',
-            memberName: 'typinggame',
-            description: 'See how fast you can type a sentence in a given time limit. (;typinggame easy)',
+            memberName: 'mathgame',
+            description: 'See how fast you can answer a math problem in a given time limit. (;typinggame easy)',
             examples: [';typinggame easy', ';typinggame medium', ';typinggame hard', ';typinggame extreme']
         });
     }
@@ -20,57 +21,76 @@ class TypingGameCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let [level] = message.content.toLowerCase().split(" ").slice(1);
-        let randomSentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
-        randomSentence = randomSentence[Math.floor(Math.random() * randomSentence.length)];
+        let randomType = ['+', '-', '*'];
+        randomType = randomType[Math.floor(Math.random() * randomType.length)];
+        let randomValue;
+        switch (level) {
+            case "easy":
+            randomValue = 10;
+            break;
+            case "medium":
+            randomValue = 100;
+            break;
+            case "hard":
+            randomValue = 100;
+            break;
+            case "extreme": 
+            randomValue = 1000;
+            break;
+        }
+        let randomValue1 = Math.floor(Math.random() * randomValue) + 1;
+        let randomValue2 = Math.floor(Math.random() * randomValue) + 1;
         let time;
         switch (level) {
             case "easy":
-            time = 25000;
-            break;
-            case "medium":
-            time = 20000;
-            break;
-            case "hard":
             time = 15000;
             break;
-            case "extreme": 
+            case "medium":
             time = 10000;
+            break;
+            case "hard":
+            time = 5000;
+            break;
+            case "extreme": 
+            time = 3000;
             break;
         }
         let levelWord;
         switch (level) {
             case "easy":
-            levelWord = "twenty-five";
-            break;
-            case "medium":
-            levelWord = "twenty";
-            break;
-            case "hard":
             levelWord = "fifteen";
             break;
-            case "extreme": 
+            case "medium":
             levelWord = "ten";
             break;
+            case "hard":
+            levelWord = "five";
+            break;
+            case "extreme": 
+            levelWord = "three";
+            break;
         }
+        let randomExpression = randomValue1 + randomType + randomValue2;
+        let solved = math.eval(randomExpression);
         if(time === undefined) {
             message.channel.sendMessage(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         } else {
             const embed = new Discord.RichEmbed()
-            .setTitle('You have **' + levelWord + '** seconds to type:')
-            .setDescription(randomSentence);
+            .setTitle('You have **' + levelWord + '** seconds to answer:')
+            .setDescription(randomExpression);
             message.channel.sendEmbed(embed).then(() => {
-                message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
+                message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
                     max: 1,
                     time: time,
                     errors: ['time'],
                 }).then((collected) => {
                     message.channel.sendMessage(`Good Job! You won!`);
                 }).catch(() => {
-                    message.channel.sendMessage('Aw... Too bad, try again next time!');
+                    message.channel.sendMessage('Aw... Too bad, try again next time! The correct answer was: ' + solved);
                 });
             });
         }
     }
 }
 
-module.exports = TypingGameCommand;
+module.exports = MathGameCommand;
