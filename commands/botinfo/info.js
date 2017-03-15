@@ -48,9 +48,11 @@ class InfoCommand extends commando.Command {
             .addField('Memory Usage', 
             `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
             .addField('Uptime',
-            moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]'))
+            moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
+            .addField('Node Version',
+            "7.7.3", true)
             .addField('Library',
-            "[discord.js](https://discord.js.org/#/) + [discord.js-commando](https://github.com/Gawdl3y/discord.js-commando)")
+            "[discord.js](https://discord.js.org/#/) and [discord.js-commando](https://github.com/Gawdl3y/discord.js-commando)")
             .addField('Modules',
             "[cleverbot-node](https://github.com/fojas/cleverbot-node), [pirate-speak](https://github.com/mikewesthad/pirate-speak), [JIMP](https://github.com/oliver-moran/jimp), [google-translate-api](https://github.com/matheuss/google-translate-api), [urban](https://github.com/mvrilo/urban), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [yahoo-weather](https://github.com/mamal72/node-yahoo-weather), [imdb-api](https://github.com/worr/node-imdb-api), [request-promise](https://github.com/request/request-promise), [mathjs](http://mathjs.org/), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [google](https://github.com/jprichardson/node-google), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [moment](http://momentjs.com), [moment-duration-format](https://github.com/jsmreese/moment-duration-format)")
             .addField('Other Credit',
