@@ -44,15 +44,15 @@ class InfoCommand extends commando.Command {
             .addField('Owner',
             "dragonfire535#8081", true)
             .addField('Uptime',
-            moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]'), true)
+            moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
             .addField('Source Code',
             "[View Here](https://github.com/dragonfire535/xiaobot)", true)
             .addField('Memory Usage', 
             `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
             .addField('Library',
-            "[discord.js](https://discord.js.org/#/)", true)
+            "[discord.js](https://discord.js.org/#/) + [discord.js-commando](https://github.com/Gawdl3y/discord.js-commando)", true)
             .addField('Modules',
-            "[Commando](https://github.com/Gawdl3y/discord.js-commando), [cleverbot-node](https://github.com/fojas/cleverbot-node), [pirate-speak](https://github.com/mikewesthad/pirate-speak), [JIMP](https://github.com/oliver-moran/jimp), [google-translate-api](https://github.com/matheuss/google-translate-api), [urban](https://github.com/mvrilo/urban), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [yahoo-weather](https://github.com/mamal72/node-yahoo-weather), [imdb-api](https://github.com/worr/node-imdb-api), [request-promise](https://github.com/request/request-promise), [mathjs](http://mathjs.org/), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [google](https://github.com/jprichardson/node-google), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [moment-duration-format](https://github.com/jsmreese/moment-duration-format)")
+            "[cleverbot-node](https://github.com/fojas/cleverbot-node), [pirate-speak](https://github.com/mikewesthad/pirate-speak), [JIMP](https://github.com/oliver-moran/jimp), [google-translate-api](https://github.com/matheuss/google-translate-api), [urban](https://github.com/mvrilo/urban), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [yahoo-weather](https://github.com/mamal72/node-yahoo-weather), [imdb-api](https://github.com/worr/node-imdb-api), [request-promise](https://github.com/request/request-promise), [mathjs](http://mathjs.org/), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [google](https://github.com/jprichardson/node-google), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [moment](http://momentjs.com), [moment-duration-format](https://github.com/jsmreese/moment-duration-format)")
             .addField('Other Credit',
             "[Cleverbot API](https://www.cleverbot.com/api/), [Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/), [Heroku](https://www.heroku.com/)")
             .addField('My Server',
