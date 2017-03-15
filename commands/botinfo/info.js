@@ -1,6 +1,8 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const config = require("../../config.json");
+const moment = require('moment');
+require('moment-duration-format');
 
 class InfoCommand extends commando.Command {
     constructor(Client){
@@ -20,16 +22,6 @@ class InfoCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
         }
         console.log("[Command] " + message.content);
-        const toHHMMSS = seconds => {
-            let secNum = parseInt(seconds, 10);
-            let hours = Math.floor(secNum / 3600);
-            let minutes = Math.floor((secNum - (hours * 3600)) / 60);
-            seconds = secNum - (hours * 3600) - (minutes * 60);   
-            if (hours < 10) hours = "0" + hours;
-            if (minutes < 10) minutes = "0" + minutes;
-            if (seconds < 10) seconds = "0" + seconds;
-            return hours + ":" + minutes + ":" + seconds;
-        };
         let guilds = this.client.guilds.size;
         let users = this.client.users.size;
         this.client.shard.fetchClientValues('guilds.size').then(results => {
@@ -52,15 +44,15 @@ class InfoCommand extends commando.Command {
             .addField('Owner',
             "dragonfire535#8081", true)
             .addField('Uptime',
-            toHHMMSS(process.uptime()), true)
+            moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]'), true)
             .addField('Source Code',
             "[View Here](https://github.com/dragonfire535/xiaobot)", true)
-            .addField('Node Version',
-            "7.7.2", true)
-            .addField('Lib', 
+            .addField('Memory Usage', 
+            `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
+            .addField('Library',
             "[discord.js](https://discord.js.org/#/)", true)
             .addField('Modules',
-            "[Commando](https://github.com/Gawdl3y/discord.js-commando), [cleverbot-node](https://github.com/fojas/cleverbot-node), [pirate-speak](https://github.com/mikewesthad/pirate-speak), [JIMP](https://github.com/oliver-moran/jimp), [google-translate-api](https://github.com/matheuss/google-translate-api), [urban](https://github.com/mvrilo/urban), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [yahoo-weather](https://github.com/mamal72/node-yahoo-weather), [imdb-api](https://github.com/worr/node-imdb-api), [request-promise](https://github.com/request/request-promise), [mathjs](http://mathjs.org/), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [google](https://github.com/jprichardson/node-google), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay)")
+            "[Commando](https://github.com/Gawdl3y/discord.js-commando), [cleverbot-node](https://github.com/fojas/cleverbot-node), [pirate-speak](https://github.com/mikewesthad/pirate-speak), [JIMP](https://github.com/oliver-moran/jimp), [google-translate-api](https://github.com/matheuss/google-translate-api), [urban](https://github.com/mvrilo/urban), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [yahoo-weather](https://github.com/mamal72/node-yahoo-weather), [imdb-api](https://github.com/worr/node-imdb-api), [request-promise](https://github.com/request/request-promise), [mathjs](http://mathjs.org/), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [google](https://github.com/jprichardson/node-google), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [moment-duration-format](https://github.com/jsmreese/moment-duration-format)")
             .addField('Other Credit',
             "[Cleverbot API](https://www.cleverbot.com/api/), [Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/), [Heroku](https://www.heroku.com/)")
             .addField('My Server',

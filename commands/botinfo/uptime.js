@@ -1,4 +1,6 @@
 const commando = require('discord.js-commando');
+const moment = require('moment');
+require('moment-duration-format');
 
 class UptimeCommand extends commando.Command {
     constructor(Client){
@@ -17,18 +19,8 @@ class UptimeCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        const toHHMMSS = seconds => {
-            let secNum = parseInt(seconds, 10);
-            let hours = Math.floor(secNum / 3600);
-            let minutes = Math.floor((secNum - (hours * 3600)) / 60);
-            seconds = secNum - (hours * 3600) - (minutes * 60);
-            if (hours < 10) hours = "0" + hours;
-            if (minutes < 10) minutes = "0" + minutes;
-            if (seconds < 10) seconds = "0" + seconds;
-            return hours + " Hours, " + minutes + " Minutes, and " + seconds + " Seconds";
-        };
         let guilds = this.client.guilds.array().length;
-        message.channel.sendMessage("I've been active on this shard for: **" + toHHMMSS(process.uptime()) + "** in a total of " + guilds + " Servers.");
+        message.channel.sendMessage("I've been active on this shard for: **" + moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]') + "** in a total of " + guilds + " Servers.");
     }
 }
 
