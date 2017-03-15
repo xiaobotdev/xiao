@@ -48,7 +48,7 @@ class InfoCommand extends commando.Command {
             .addField('Memory Usage', 
             `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
             .addField('Uptime',
-            moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]'));
+            moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]'))
             .addField('Library',
             "[discord.js](https://discord.js.org/#/) + [discord.js-commando](https://github.com/Gawdl3y/discord.js-commando)")
             .addField('Modules',
