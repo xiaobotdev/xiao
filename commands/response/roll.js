@@ -21,7 +21,7 @@ class RollChooseCommand extends commando.Command {
         if(value === undefined) {
             let roll = Math.floor(Math.random() * 6) + 1;
             message.channel.send("You rolled a " + roll)
-        } else if(value.match("^[0-9]+$")) {
+        } else if(value.match(/^[0-9]+$/)) {
             let roll = Math.floor(Math.random() * value) + 1;
             message.channel.send("You rolled a " + roll);
         } else {
