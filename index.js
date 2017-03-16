@@ -178,6 +178,10 @@ client.on('guildDelete', guild => {
     });
 });
 
+client.on('disconnect', () => {
+    process.exit(0);
+});
+
 client.once('ready', () => {
     console.log('[Ready] Logged in!');
     client.user.setGame(";help | dragonfire535");
