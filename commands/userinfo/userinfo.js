@@ -20,7 +20,7 @@ class UserInfoCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.channel.type === 'dm') {
-            message.channel.sendMessage(":x: This is a DM!");
+            message.channel.send(":x: This is a DM!");
         } else {
             let member = message.guild.member(message.mentions.users.first());
             let stat;
@@ -54,7 +54,7 @@ class UserInfoCommand extends commando.Command {
                 break;
             }
             if (message.mentions.users.size !== 1) {
-                message.channel.sendMessage(':x: Either too many or no members, only mention one person!');
+                message.channel.send(':x: Either too many or no members, only mention one person!');
             } else {
                 if (message.mentions.users.first().presence.game === null) {
                     const embed = new Discord.RichEmbed()

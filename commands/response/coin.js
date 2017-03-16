@@ -19,7 +19,7 @@ class CoinFlipCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let coin = ['Heads', 'Tails'];
         coin = coin[Math.floor(Math.random() * coin.length)];
-        message.channel.sendMessage("It landed on " + coin);
+        message.channel.send("It landed on " + coin);
     }
 }
 

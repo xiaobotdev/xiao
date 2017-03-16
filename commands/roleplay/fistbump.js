@@ -18,7 +18,7 @@ class FistBumpCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.sendMessage(message.author + ' *fistbumps* ' + username + ' *badalalala* ');
+        message.channel.send(message.author + ' *fistbumps* ' + username + ' *badalalala* ');
     }
 }
 

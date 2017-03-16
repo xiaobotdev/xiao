@@ -18,7 +18,7 @@ class InhaleCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.sendMessage(message.author + ' *inhales* ' + username + ' *but gained no ability...* ');
+        message.channel.send(message.author + ' *inhales* ' + username + ' *but gained no ability...* ');
     }
 }
 

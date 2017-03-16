@@ -30,9 +30,9 @@ class ShuffleCommand extends commando.Command {
         }
         let shuffled = message.content.split(" ").slice(1).join(" ");
         if(shuffled === '') {
-            message.channel.sendMessage(":x: Error! Nothing to shuffle!");
+            message.channel.send(":x: Error! Nothing to shuffle!");
         } else {
-            message.channel.sendMessage(shuffled.shuffle());
+            message.channel.send(shuffled.shuffle());
         }
     }
 }

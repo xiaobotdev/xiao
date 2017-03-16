@@ -20,7 +20,7 @@ class UptimeCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let guilds = this.client.guilds.array().length;
-        message.channel.sendMessage("I've been active on this shard for: **" + moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]') + "** in a total of " + guilds + " Servers.");
+        message.channel.send("I've been active on this shard for: **" + moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]') + "** in a total of " + guilds + " Servers.");
     }
 }
 

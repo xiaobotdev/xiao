@@ -53,7 +53,7 @@ class WeatherCommand extends commando.Command {
             info.wind.speed, true);
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(err => {
-            message.channel.sendMessage(":x: Error! Make sure you typed the location correctly!");
+            message.channel.send(":x: Error! Make sure you typed the location correctly!");
         });
     }
 }

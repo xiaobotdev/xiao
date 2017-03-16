@@ -19,7 +19,7 @@ class OffspringCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let gender = ['boy', 'girl'];
         gender = gender[Math.floor(Math.random() * gender.length)];
-        message.channel.sendMessage("It's a " + gender + "!");
+        message.channel.send("It's a " + gender + "!");
     }
 }
 

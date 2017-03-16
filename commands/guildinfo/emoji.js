@@ -19,9 +19,9 @@ class EmojiCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.channel.type === 'dm') {
-            message.channel.sendMessage(":x: This is a DM!");
+            message.channel.send(":x: This is a DM!");
         } else {
-            message.channel.sendMessage(message.guild.emojis.map(e => e).join(" "));
+            message.channel.send(message.guild.emojis.map(e => e).join(" "));
         }
     }
 }

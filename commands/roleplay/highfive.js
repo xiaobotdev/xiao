@@ -18,7 +18,7 @@ class HighFivesCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.sendMessage(message.author + ' *high fives* ' + username);
+        message.channel.send(message.author + ' *high fives* ' + username);
     }
 }
 

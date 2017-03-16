@@ -23,7 +23,7 @@ class ComplimentCommand extends commando.Command {
         if(username === '') {
             message.reply(coin);
         } else {
-            message.channel.sendMessage(username + ", " + coin);
+            message.channel.send(username + ", " + coin);
         }
     }
 }

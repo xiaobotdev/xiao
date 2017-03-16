@@ -19,7 +19,7 @@ class RateWaifuCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let username = message.content.split(" ").slice(1).join(" ");
         let percentage = Math.floor(Math.random() * 10) + 1;
-        message.channel.sendMessage("I'd give " + username + " a " + percentage + "/10!");
+        message.channel.send("I'd give " + username + " a " + percentage + "/10!");
     }
 }
 

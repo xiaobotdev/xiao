@@ -25,7 +25,7 @@ class IMDBCommand extends commando.Command {
         imdb.getReq({ name: querymovie }, (err, things) => {
             movie = things;
             if(movie === undefined) {
-                message.channel.sendMessage(":x: Error! Movie not found!");
+                message.channel.send(":x: Error! Movie not found!");
             } else {
                 const embed = new Discord.RichEmbed()
                 .setColor(0xDBA628)

@@ -21,7 +21,7 @@ class EmbedCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let embedmessage = message.content.split(" ").slice(1).join(" ");
         if(embedmessage === "") {
-            message.channel.sendMessage(":x: Error! Nothing to embed!");
+            message.channel.send(":x: Error! Nothing to embed!");
         } else {
             const embed = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)

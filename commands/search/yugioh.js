@@ -57,7 +57,7 @@ class YuGiOhCommand extends commando.Command {
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!");
+            message.channel.send(":x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!");
         });
     }
 }

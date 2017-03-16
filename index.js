@@ -41,18 +41,18 @@ client.on('message', (message) => {
         if(message.author.id !== config.owner) return;
         console.log("[Command] " + message.content);
         console.log(client.guilds.array().length + " Servers: " + client.guilds.map(g => g.name + " (" + g.id + ")").join(", "));
-        message.channel.sendMessage("Sent the information to the console!");
+        message.channel.send("Sent the information to the console!");
     }
     if(message.content.includes("(╯°□°）╯︵ ┻━┻")) {
         if(message.channel.type !== 'dm') {
             if(message.guild.id === "110373943822540800") return;
         }
         console.log("[Command] " + message.content);
-        message.channel.sendMessage("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
+        message.channel.send("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
     }
     if(message.content.includes(":Swagolor:")) {
         if(message.guild.id !== config.server) return;
-        message.channel.sendMessage(message.guild.emojis.get('254827709459333120').toString());
+        message.channel.send(message.guild.emojis.get('254827709459333120').toString());
     }
     if (message.content.startsWith(';rinsay')) {
         if (message.author.id !== config.owner) return;
@@ -84,7 +84,7 @@ client.on('message', (message) => {
                         message.channel.stopTyping();
                     });
                 } else {
-                    message.channel.sendMessage(":x: Error! You are either not verified for Cleverbot, or banned from it. Please check #rules for a link to the forum to sign-up for Cleverbot.");
+                    message.channel.send(":x: Error! You are either not verified for Cleverbot, or banned from it. Please check #rules for a link to the forum to sign-up for Cleverbot.");
                 }
             }
         }

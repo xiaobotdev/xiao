@@ -20,10 +20,10 @@ class YearsCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.mentions.users.size !== 1) {
-            message.channel.sendMessage(':x: Either too many or no members, only mention one person!');
+            message.channel.send(':x: Either too many or no members, only mention one person!');
         } else {
             if(message.mentions.users.first().avatarURL === null) {
-                message.channel.sendMessage(":x: This person has no avatar!");
+                message.channel.send(":x: This person has no avatar!");
             } else {
                 let avatarurl = message.mentions.users.first().avatarURL;
                 avatarurl = avatarurl.replace(".jpg", ".png");

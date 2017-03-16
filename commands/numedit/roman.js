@@ -21,9 +21,9 @@ class RomanCommand extends commando.Command {
         let messagecontent = message.content.split(" ").slice(1).join(" ");
         let numberified = Number(messagecontent);
         if(numberified > 1000000) {
-            message.channel.sendMessage(':x: Error! Number is too high!');
+            message.channel.send(':x: Error! Number is too high!');
         } else {
-            message.channel.sendMessage(romanNumeralConverter.getRomanFromInteger(numberified)).catch(error => message.channel.sendMessage(':x: Error! Something went wrong! Perhaps you entered nothing?'));
+            message.channel.send(romanNumeralConverter.getRomanFromInteger(numberified)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered nothing?'));
         }
     }
 }

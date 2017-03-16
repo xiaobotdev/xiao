@@ -20,24 +20,24 @@ class GoogleCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let searchQuery = message.content.split(" ").slice(1).join(" ");
         if(searchQuery === "") {
-            message.channel.sendMessage(':x: Error! I cannot search google for nothing!');
+            message.channel.send(':x: Error! I cannot search google for nothing!');
         } else {
             google.resultsPerPage = 2
             google(searchQuery, function (err, res) {
                 if (res === undefined) {
-                    message.channel.sendMessage(':x: Error! Too many requests! Try again later! (Much later)');
+                    message.channel.send(':x: Error! Too many requests! Try again later! (Much later)');
                 } else {
                     let link = res.links;
                     if(link === undefined) {
-                        message.channel.sendMessage(':x: Error! No Results Found!');
+                        message.channel.send(':x: Error! No Results Found!');
                     } else {
                         if(link[0] === undefined) {
-                            message.channel.sendMessage(':x: Error! No Results Found!');
+                            message.channel.send(':x: Error! No Results Found!');
                         } else {
                             if(link[0].href === null) {
-                                message.channel.sendMessage(':x: Error! No Results Found!');
+                                message.channel.send(':x: Error! No Results Found!');
                             } else {
-                                message.channel.sendMessage(link[0].href).catch(error => message.channel.sendMessage(':x: An Error Occurred! Try again later!'));
+                                message.channel.send(link[0].href).catch(error => message.channel.send(':x: An Error Occurred! Try again later!'));
                             }
                         }
                     }

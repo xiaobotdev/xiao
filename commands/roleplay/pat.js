@@ -18,7 +18,7 @@ class PatCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.sendMessage(message.author + ' *pats* ' + username);
+        message.channel.send(message.author + ' *pats* ' + username);
     }
 }
 

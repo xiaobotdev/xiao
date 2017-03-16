@@ -18,7 +18,7 @@ class DivorceCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.sendMessage(message.author + ' *divorces* ' + username);
+        message.channel.send(message.author + ' *divorces* ' + username);
     }
 }
 
