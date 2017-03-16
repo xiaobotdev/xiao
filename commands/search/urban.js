@@ -31,7 +31,7 @@ class UrbanDictionary extends commando.Command {
                 .setAuthor('Urban Dictionary', 'http://a1.mzstatic.com/eu/r30/Purple71/v4/66/54/68/6654683f-cacd-4a55-1784-f14257f77874/icon175x175.png')
                 .setURL(json.permalink)
                 .setTitle(json.word)
-                .setDescription(json.definition.substr(0, 1900) + '... [Read the Rest Here!](' + json.permalink + ')')
+                .setDescription(json.definition.substr(0, 1900) + ' [Read the Rest Here!](' + json.permalink + ')')
                 .addField('**Example:**',
                 json.example.substr(0, 1900));
                 message.channel.sendEmbed(embed).catch(console.error);
@@ -41,7 +41,7 @@ class UrbanDictionary extends commando.Command {
                 .setAuthor('Urban Dictionary', 'http://a1.mzstatic.com/eu/r30/Purple71/v4/66/54/68/6654683f-cacd-4a55-1784-f14257f77874/icon175x175.png')
                 .setURL(json.permalink)
                 .setTitle(json.word)
-                .setDescription(json.definition.substr(0, 1900) + '... [Read the Rest Here!](' + json.permalink + ')');
+                .setDescription(json.definition.substr(0, 1900) + ' [Read the Rest Here!](' + json.permalink + ')');
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         });

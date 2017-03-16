@@ -40,7 +40,7 @@ class WattpadCommand extends commando.Command {
             .setAuthor('Wattpad', 'http://www.selfpubtoolbox.com/wp-content/uploads/2015/05/a6044fd3a88acd5043860484db972ca6.png')
             .setURL(response.stories[0].url)
             .setTitle(response.stories[0].title)
-            .setDescription(response.stories[0].description.substr(0, 1500) + "... [Read the Rest Here!](" + response.stories[0].url + ")")
+            .setDescription(response.stories[0].description.substr(0, 1500) + " [Read the Rest Here!](" + response.stories[0].url + ")")
             .addField('**Author:**',
             response.stories[0].user, true)
             .addField('**Parts:**',
