@@ -46,10 +46,10 @@ class BotSearchCommand extends commando.Command {
                     '[Here](' + response.invite_url + ')', true);
                 message.channel.sendEmbed(embed).catch(console.error);
             }).catch(function (err) {
-                message.channel.sendMessage(":x: Error! Bot not Found!");
+                message.channel.send(":x: Error! Bot not Found!");
             });
         } else {
-            message.channel.sendMessage(':x: Either too many or no bots, only mention one bot!');
+            message.channel.send(':x: Either too many or no bots, only mention one bot!');
         }
     }
 }

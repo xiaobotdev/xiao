@@ -41,7 +41,7 @@ class DefineCommand extends commando.Command {
             .setDescription(response[0].text);
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! Word not Found!");
+            message.channel.send(":x: Error! Word not Found!");
         });
     }
 }

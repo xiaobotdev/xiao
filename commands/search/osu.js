@@ -34,7 +34,7 @@ class OsuCommand extends commando.Command {
         }
         request(options).then(function (response) {
             if(response[0] === undefined) {
-                message.channel.sendMessage(":x: Error! User not found!");
+                message.channel.send(":x: Error! User not found!");
             } else {
                 const embed = new Discord.RichEmbed()
                 .setColor(0xFF66AA)
@@ -67,7 +67,7 @@ class OsuCommand extends commando.Command {
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! User not Found!");
+            message.channel.send(":x: Error! User not Found!");
         });
     }
 }

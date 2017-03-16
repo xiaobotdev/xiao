@@ -22,10 +22,10 @@ class ReverseCommand extends commando.Command {
         }
         let messagecontent = message.content.split(" ").slice(1).join(" ");
         if(messagecontent === "") {
-            message.channel.sendMessage(":x: Error! Nothing to reverse!");
+            message.channel.send(":x: Error! Nothing to reverse!");
         } else {
             let reversed = reverseString(messagecontent);
-            message.channel.sendMessage(reversed);
+            message.channel.send(reversed);
         }
     }
 }

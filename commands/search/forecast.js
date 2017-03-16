@@ -43,7 +43,7 @@ class ForecastCommand extends commando.Command {
             '**High:** ' + info.item.forecast[6].high + ', **Low:** ' + info.item.forecast[6].low + ', **Condition:** ' + info.item.forecast[6].text);
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(err => {
-            message.channel.sendMessage(":x: Error! Make sure you typed the location correctly!");
+            message.channel.send(":x: Error! Make sure you typed the location correctly!");
         });
     }
 }

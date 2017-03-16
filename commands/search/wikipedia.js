@@ -31,7 +31,7 @@ class WikipediaCommand extends commando.Command {
             let name = response.query.pages[0].title;
             wikied = wikied.replace(")", "%29");
             if(description === undefined) {
-                message.channel.sendMessage(":x: Error! Entry Not Found!");
+                message.channel.send(":x: Error! Entry Not Found!");
             } else {
                 description = description.substr(0, 1900);
                 description = description.split('\n').join("\n\n");
@@ -54,7 +54,7 @@ class WikipediaCommand extends commando.Command {
                 }
             }
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! Entry Not Found!");
+            message.channel.send(":x: Error! Entry Not Found!");
         });
     }
 }

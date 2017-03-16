@@ -19,7 +19,7 @@ class ShipCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let ship = message.content.split(" ").slice(1).join(" ");
         let percentage = Math.floor(Math.random() * 100) + 1;
-        message.channel.sendMessage("I'd give " + ship + " a " + percentage + "%!");
+        message.channel.send("I'd give " + ship + " a " + percentage + "%!");
     }
 }
 

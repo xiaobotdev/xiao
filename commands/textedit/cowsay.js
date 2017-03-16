@@ -19,7 +19,7 @@ class CowsayCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if(message.content.split(" ").slice(1).join(" ") === "") {
-            message.channel.sendMessage(":x: Error! You entered nothing!");
+            message.channel.send(":x: Error! You entered nothing!");
         } else {
             let turnToCowsay = message.content.split(" ").slice(1).join(" ");
             message.channel.sendCode(null, cowsay.say({
@@ -27,7 +27,7 @@ class CowsayCommand extends commando.Command {
                 e : "oO",
                 T : "U "
             })).catch(error => {
-                message.channel.sendMessage(':x: Error! Perhaps the content is too long?');
+                message.channel.send(':x: Error! Perhaps the content is too long?');
             });
         }
     }

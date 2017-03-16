@@ -18,7 +18,7 @@ class SpamCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return;
         }
         console.log("[Command] " + message.content);
-        message.channel.sendMessage("Spam!");
+        message.channel.send("Spam!");
         message.channel.sendFile("./images/Spam.jpg");
     }
 }

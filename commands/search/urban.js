@@ -22,9 +22,9 @@ class UrbanDictionary extends commando.Command {
         let wordtodefine = message.content.split(" ").slice(1).join(" ");
         urban(wordtodefine).first(function(json) {
             if(json === undefined) {
-                message.channel.sendMessage(":x: Error! Word not found!");
+                message.channel.send(":x: Error! Word not found!");
             } else if(json.definition === '') {
-                message.channel.sendMessage(":x: Error! Word has no definition!");
+                message.channel.send(":x: Error! Word has no definition!");
             } else if(json.example !== '') {
                 const embed = new Discord.RichEmbed()
                 .setColor(0x32a8f0)

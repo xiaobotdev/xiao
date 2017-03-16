@@ -55,7 +55,7 @@ class WattpadCommand extends commando.Command {
             response.stories[0].commentCount, true);
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! Book not Found!");
+            message.channel.send(":x: Error! Book not Found!");
         });
     }
 }

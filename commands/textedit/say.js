@@ -19,9 +19,9 @@ class SayCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let Copycat = message.content.split(" ").slice(1).join(" ");
         if(Copycat === "") {
-            message.channel.sendMessage(":x: Error! Nothing to say!");
+            message.channel.send(":x: Error! Nothing to say!");
         } else {
-            message.channel.sendMessage(Copycat);
+            message.channel.send(Copycat);
             if (message.channel.type === 'dm') return;
             message.delete();
         }

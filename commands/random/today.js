@@ -35,7 +35,7 @@ class TodayCommand extends commando.Command {
             .setDescription(response.data.Events[randomNumber].text + ' (' + response.data.Events[randomNumber].year + ')');
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! Something went wrong!");
+            message.channel.send(":x: Error! Something went wrong!");
         });
     }
 }

@@ -53,7 +53,7 @@ class TypingGameCommand extends commando.Command {
             break;
         }
         if(time === undefined) {
-            message.channel.sendMessage(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
+            message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         } else {
             const embed = new Discord.RichEmbed()
             .setTitle('You have **' + levelWord + '** seconds to type:')
@@ -64,9 +64,9 @@ class TypingGameCommand extends commando.Command {
                     time: time,
                     errors: ['time'],
                 }).then((collected) => {
-                    message.channel.sendMessage(`Good Job! You won!`);
+                    message.channel.send(`Good Job! You won!`);
                 }).catch(() => {
-                    message.channel.sendMessage('Aw... Too bad, try again next time!');
+                    message.channel.send('Aw... Too bad, try again next time!');
                 });
             });
         }

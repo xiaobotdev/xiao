@@ -26,11 +26,11 @@ class RandomNameGen extends commando.Command {
         let randomfirstboth = [randomfirstmale, randomfirstfemale]
         randomfirstboth = randomfirstboth[Math.floor(Math.random() * randomfirstboth.length)];
         if(message.content.toLowerCase().split(" ").slice(1).includes("male")) {
-            message.channel.sendMessage(randomfirstmale + " " + randomlast);
+            message.channel.send(randomfirstmale + " " + randomlast);
         } else if(message.content.toLowerCase().split(" ").slice(1).includes("female")) {
-            message.channel.sendMessage(randomfirstfemale + " " + randomlast);
+            message.channel.send(randomfirstfemale + " " + randomlast);
         } else {
-            message.channel.sendMessage(randomfirstboth + " " + randomlast);
+            message.channel.send(randomfirstboth + " " + randomlast);
         }
     }
 }

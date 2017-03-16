@@ -37,7 +37,7 @@ class YouTubeCommand extends commando.Command {
         } 
         request(options).then(function (response) {
             if(response.items[0].snippet === undefined) {
-                message.channel.sendMessage(':x: Error! No Video Found!');
+                message.channel.send(':x: Error! No Video Found!');
             } else {
                 const embed = new Discord.RichEmbed()
                 .setColor(0xDD2825)
@@ -49,7 +49,7 @@ class YouTubeCommand extends commando.Command {
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
-            message.channel.sendMessage(":x: Error! An error has occurred! Try again (if this continues to occur, the daily quota may have been reached).");
+            message.channel.send(":x: Error! An error has occurred! Try again (if this continues to occur, the daily quota may have been reached).");
         });
     }
 }
