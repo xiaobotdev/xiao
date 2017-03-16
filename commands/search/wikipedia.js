@@ -35,23 +35,13 @@ class WikipediaCommand extends commando.Command {
             } else {
                 description = description.substr(0, 1900);
                 description = description.split('\n').join("\n\n");
-                if(description.length > 1900) {
-                    const embed = new Discord.RichEmbed()
-                    .setColor(0xE7E7E7)
-                    .setTitle(name)
-                    .setURL("https://en.wikipedia.org/wiki/" + wikied)
-                    .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
-                    .setDescription(description + '...' + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
-                    message.channel.sendEmbed(embed).catch(console.error);
-                } else {
-                    const embed = new Discord.RichEmbed()
-                    .setColor(0xE7E7E7)
-                    .setTitle(name)
-                    .setURL("https://en.wikipedia.org/wiki/" + wikied)
-                    .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
-                    .setDescription(description + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
-                    message.channel.sendEmbed(embed).catch(console.error);
-                }
+                const embed = new Discord.RichEmbed()
+                .setColor(0xE7E7E7)
+                .setTitle(name)
+                .setURL("https://en.wikipedia.org/wiki/" + wikied)
+                .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
+                .setDescription(description + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
+                message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
             message.channel.send(":x: Error! Entry Not Found!");
