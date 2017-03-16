@@ -37,40 +37,16 @@ client.registry
 
 client.on('message', (message) => {
     if(message.author.bot) return;
-    if(message.content.startsWith(';servers')) {
-        if(message.author.id !== config.owner) return;
-        console.log("[Command] " + message.content);
-        console.log(client.guilds.array().length + " Servers: " + client.guilds.map(g => g.name + " (" + g.id + ")").join(", "));
-        message.channel.send("Sent the information to the console!");
-    }
     if(message.content.includes("(╯°□°）╯︵ ┻━┻")) {
-        if(message.channel.type !== 'dm') {
-            if(message.guild.id === "110373943822540800") return;
-        }
+        if(message.channel.type === 'dm') return;
+        if(message.guild.id === "110373943822540800") return;
         console.log("[Command] " + message.content);
         message.channel.send("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
     }
     if(message.content.includes(":Swagolor:")) {
+        if(message.channel.type === 'dm') return;
         if(message.guild.id !== config.server) return;
         message.channel.send(message.guild.emojis.get('254827709459333120').toString());
-    }
-    if (message.content.startsWith(';rinsay')) {
-        if (message.author.id !== config.owner) return;
-        let messagecontent = message.content.split(" ").slice(1).join(" ");
-        message.delete();
-        const sendPOST = {
-            method: 'POST',
-            uri: config.webhook,
-            body: {
-                content: messagecontent
-            },
-            json: true
-        }
-        request(sendPOST).then(function (parsedBody) {
-            console.log('[Rin] ' + messagecontent);
-        }).catch(function (err) {
-            console.log(err);
-        });
     }
     if(message.channel.type !== 'dm') {
         if (message.content.startsWith("<@" + client.user.id + ">")){
@@ -188,7 +164,7 @@ client.once('ready', () => {
 });
 
 process.on('unhandledRejection', function(reason, p){
-    console.log("A Possibly Unhandled Rejection has Occurred.");
+    console.log("A Possibly Unhandled Rejection has Occurred. " + reason);
 });
 
 client.login(config.token);
