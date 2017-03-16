@@ -37,31 +37,28 @@ client.registry
 
 client.on('message', (message) => {
     if(message.author.bot) return;
+    if(message.channel.type === 'dm') return;
     if(message.content.includes("(╯°□°）╯︵ ┻━┻")) {
-        if(message.channel.type === 'dm') return;
         if(message.guild.id === "110373943822540800") return;
         console.log("[Command] " + message.content);
         message.channel.send("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
     }
     if(message.content.includes(":Swagolor:")) {
-        if(message.channel.type === 'dm') return;
         if(message.guild.id !== config.server) return;
         message.channel.send(message.guild.emojis.get('254827709459333120').toString());
     }
-    if(message.channel.type !== 'dm') {
-        if (message.content.startsWith("<@" + client.user.id + ">")){
-            if(message.guild.id === config.server || message.author.id === config.owner) {
-                console.log("[Cleverbot] " + message.content);
-                if(message.author.id === clevusers.allowed[message.author.id]) {
-                    let cleverMessage = message.content.replace("<@" + client.user.id + ">", "");
-                    message.channel.startTyping();
-                    cleverbot.write(cleverMessage, function (response) {
-                        message.reply(response.output);
-                        message.channel.stopTyping();
-                    });
-                } else {
-                    message.channel.send(":x: Error! You are either not verified for Cleverbot, or banned from it. Please check #rules for a link to the forum to sign-up for Cleverbot.");
-                }
+    if (message.content.startsWith("<@" + client.user.id + ">")){
+        if(message.guild.id === config.server || message.author.id === config.owner) {
+            console.log("[Cleverbot] " + message.content);
+            if(message.author.id === clevusers.allowed[message.author.id]) {
+                let cleverMessage = message.content.replace("<@" + client.user.id + ">", "");
+                message.channel.startTyping();
+                cleverbot.write(cleverMessage, function (response) {
+                    message.reply(response.output);
+                    message.channel.stopTyping();
+                });
+            } else {
+                message.channel.send(":x: Error! You are either not verified for Cleverbot, or banned from it. Please check #rules for a link to the forum to sign-up for Cleverbot.");
             }
         }
     }
