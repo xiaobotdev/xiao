@@ -42,11 +42,11 @@ class IMDBCommand extends commando.Command {
                 .addField('**Runtime:**',
                 movie.runtime, true)
                 .addField('**Directors:**',
-                movie.director, true)
+                movie.director)
                 .addField('**Writers:**',
-                movie.writer, true)
+                movie.writer)
                 .addField('**Actors:**',
-                movie.actors, true);
+                movie.actors);
                 message.channel.sendEmbed(embed).catch(console.error);            
             }
         });

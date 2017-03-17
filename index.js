@@ -45,7 +45,7 @@ client.on('message', (message) => {
     }
     if(message.content.includes(":Swagolor:")) {
         if(message.guild.id !== config.server) return;
-        message.channel.send(message.guild.emojis.get('254827709459333120').toString());
+        message.react(message.guild.emojis.get('254827709459333120'));
     }
     if (message.content.startsWith("<@" + client.user.id + ">")){
         if(message.guild.id === config.server || message.author.id === config.owner) {
@@ -78,7 +78,7 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('guildCreate', guild => {
-    console.log("[Guild] I have joined the guild: " + guild.name + " (" + guild.id + ")...");
+    console.log("[Guild] I have joined the guild: " + guild.name + " (" + guild.id + ")!");
     client.shard.fetchClientValues('guilds.size').then(results => {
         console.log("[POST] " + results.reduce((prev, val) => prev + val, 0));
         const carbonPOST = {
