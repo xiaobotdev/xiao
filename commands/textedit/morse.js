@@ -21,7 +21,7 @@ class MorseCommand extends commando.Command {
         let [methodToUse] = message.content.toLowerCase().split(" ").slice(1);
         let toMorse = message.content.split(" ").slice(2).join(" ");
         if(toMorse === "") {
-            message.channel.send(":x: Error! Nothing to translate!");
+            message.channel.send(":x: Error! Nothing to translate! Perhaps you forgot to set the method? Use either encode or decode before your text.");
         } else if(methodToUse === 'encode') {
             message.channel.send(morse.encode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
         } else if(methodToUse === 'decode') {
