@@ -30,7 +30,6 @@ class YouTubeCommand extends commando.Command {
                 type: 'video',
                 maxResults: 1,
                 q: videotosearch,
-                order: 'viewCount',
                 key: config.youtubekey
   	        },
   	        json: true
