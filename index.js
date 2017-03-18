@@ -152,8 +152,7 @@ client.on('guildDelete', guild => {
 });
 
 client.on('disconnect', () => {
-    console.log('[Disconnect] A disconnection has occurred. Attempting to reboot...');
-    process.exit(0);
+    console.log('[Disconnect] A disconnection has occurred. Attempting to reboot...').then(p => process.exit(0));
 });
 
 client.once('ready', () => {
