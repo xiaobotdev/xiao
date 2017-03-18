@@ -10,7 +10,7 @@ class TranslateCommand extends commando.Command {
             group: 'textedit',
             memberName: 'translate',
             description: 'Translates text to a given language. (;translate ja Give me the money!) (;translate list to see avaliable language codes!)',
-            examples: [';translate ja Give me the the money!', ';translate']
+            examples: [';translate ja Give me the the money!', ';translate list']
         });
     }
 
