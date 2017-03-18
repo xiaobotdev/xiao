@@ -48,9 +48,9 @@ client.on('message', (message) => {
         message.react(message.guild.emojis.get('254827709459333120'));
     }
     if (message.content.startsWith("<@" + client.user.id + ">")){
-        if(message.guild.id === config.server || message.author.id === config.owner || message.guild.id !== '292362632386576384') {
+        if(message.guild.id === config.server || message.author.id === config.owner || message.guild.id === config.personalServer) {
             console.log("[Cleverbot] " + message.content);
-            if(message.author.id === clevusers.allowed[message.author.id] || message.guild.id !== '292362632386576384') {
+            if(message.author.id === clevusers.allowed[message.author.id] || message.guild.id === config.personalServer) {
                 let cleverMessage = message.content.replace("<@" + client.user.id + ">", "");
                 message.channel.startTyping();
                 cleverbot.write(cleverMessage, function (response) {
