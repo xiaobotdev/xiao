@@ -10,7 +10,9 @@
         "dun dun dun": "dun dun dun",
         "spongebob": "spongebob",
         "ugly barnacle": "ugly barnacle",
-        "woo hoo": "woo hoo"
+        "woo hoo": "woo hoo",
+        "space": "space",
+        "glados bird": "glados bird"
     },
     "paths": {
         "cat": "./sounds/cat.mp3",
@@ -23,6 +25,8 @@
         "dun dun dun": "./sounds/dun-dun-dun.mp3",
         "spongebob": "./sounds/spongebob.mp3",
         "ugly barnacle": "./sounds/ugly-barnacle.mp3",
-        "woo hoo": "./sounds/woohoo.mp3"
+        "woo hoo": "./sounds/woohoo.mp3",
+        "space": "./sounds/space.mp3",
+        "glados bird": "./sounds/glados-bird.mp3"
     }
 }
