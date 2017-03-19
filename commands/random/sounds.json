@@ -6,7 +6,11 @@
         "doh": "doh",
         "it's a trap": "it's a trap",
         "mario death": "mario death",
-        "pokemon center": "pokemon center"
+        "pokemon center": "pokemon center",
+        "dun dun dun": "dun dun dun",
+        "spongebob": "spongebob",
+        "ugly barnacle": "ugly barnacle",
+        "woo hoo": "woo hoo"
     },
     "paths": {
         "cat": "./sounds/cat.mp3",
@@ -15,6 +19,10 @@
         "doh": "./sounds/doh.mp3",
         "it's a trap": "./sounds/its-a-trap.mp3",
         "mario death": "./sounds/mario-death.mp3",
-        "pokemon center": "./sounds/pokemon-center.mp3"
+        "pokemon center": "./sounds/pokemon-center.mp3",
+        "dun dun dun": "./sounds/dun-dun-dun.mp3",
+        "spongebob": "./sounds/spongebob.mp3",
+        "ugly barnacle": "./sounds/ugly-barnacle.mp3",
+        "woo hoo": "./sounds/woohoo.mp3"
     }
 }
