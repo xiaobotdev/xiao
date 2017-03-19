@@ -43,6 +43,8 @@ class SoundBoardCommand extends commando.Command {
 		            message.channel.send(':x: Error! Sound not found! Please use ;soundboard list to see a list of sounds you can play.');
 	            }
             }
+        } else {
+            message.channel.send(':x: This is a DM!');
         }
     }
 }
