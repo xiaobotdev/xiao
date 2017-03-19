@@ -5,7 +5,8 @@
         "vader": "vader",
         "doh": "doh",
         "it's a trap": "it's a trap",
-        "mario death": "mario death"
+        "mario death": "mario death",
+        "pokemon center": "pokemon center"
     },
     "paths": {
         "cat": "./sounds/cat.mp3",
@@ -13,6 +14,7 @@
         "vader": "./sounds/vader.mp3",
         "doh": "./sounds/doh.mp3",
         "it's a trap": "./sounds/its-a-trap.mp3",
-        "mario death": "./sounds/mario-death.mp3"
+        "mario death": "./sounds/mario-death.mp3",
+        "pokemon center": "./sounds/pokemon-center.mp3"
     }
 }
