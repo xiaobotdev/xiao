@@ -32,13 +32,22 @@ class SoundBoardCommand extends commando.Command {
 	            } else if(soundToPlay === 'list') {
 		            message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest");
 	            } else if(soundToPlay === sounds.avaliable[soundToPlay]) {
-	                voiceChannel.join().then(connnection => {
-		                let stream = sounds.paths[soundToPlay];
-    	                let dispatcher = connnection.playStream(stream);
-    	                dispatcher.on('end', () => {
-        	                voiceChannel.leave();
-    	                });
-	                });
+                    let alreadyConnected = this.client.voiceConnections.get(voiceChannel.guild.id)
+                    if(alreadyConnected) {
+                        if(alreadyConnected.channel.id === voiceChannel.id) {
+                            message.channel.send(':x: Error! I am already playing a sound!');
+                        } else {
+                            message.channel.send(':x: Error! I am already playing a sound!');
+                        }
+                    } else {
+	                    voiceChannel.join().then(connnection => {
+		                    let stream = sounds.paths[soundToPlay];
+    	                    let dispatcher = connnection.playStream(stream);
+    	                    dispatcher.on('end', () => {
+        	                    voiceChannel.leave();
+    	                    });
+	                    });
+                    }
 	            } else {
 		            message.channel.send(':x: Error! Sound not found! Please use ;soundboard list to see a list of sounds you can play.');
 	            }
