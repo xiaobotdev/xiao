@@ -60,7 +60,7 @@ class InfoCommand extends commando.Command {
             .addField('My Server',
             "[Click Here to Join!](https://discord.gg/fqQF8mc)")
             .addField('Invite Link:',
-            "[Click Here to Add Me to Your Server!](https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=519238)");
+            "[Click Here to Add Me to Your Server!](https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=1345846343)");
             message.channel.sendEmbed(embed).catch(console.error);
         });
     }

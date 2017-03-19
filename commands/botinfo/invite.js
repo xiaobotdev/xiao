@@ -17,7 +17,7 @@ class InviteCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
         }
         console.log("[Command] " + message.content);
-        message.channel.send("\nAdd me to your server with this link:\n" + "https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=519238" + "\nOr, come to my server with this link:\n" + "https://discord.gg/fqQF8mc");
+        message.channel.send("\nAdd me to your server with this link:\n" + "https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=1345846343" + "\nOr, come to my server with this link:\n" + "https://discord.gg/fqQF8mc");
     }
 }
 
