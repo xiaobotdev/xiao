@@ -2,11 +2,17 @@
     "avaliable": {
         "cat": "cat",
         "pikachu": "pikachu",
-        "vader": "vader"
+        "vader": "vader",
+        "doh": "doh",
+        "it's a trap": "it's a trap",
+        "mario death": "mario death"
     },
     "paths": {
         "cat": "./sounds/cat.mp3",
         "pikachu": "./sounds/pikachu.mp3",
-        "vader": "./sounds/vader.mp3"
+        "vader": "./sounds/vader.mp3",
+        "doh": "./sounds/doh.mp3",
+        "it's a trap": "./sounds/its-a-trap.mp3",
+        "mario death": "./sounds/mario-death.mp3"
     }
 }

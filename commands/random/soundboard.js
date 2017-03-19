@@ -30,7 +30,7 @@ class SoundBoardCommand extends commando.Command {
 	            if(soundToPlay === "") {
 		            message.channel.send(':x: Error! No sound set. Please use ;soundboard list to see a list of sounds you can play.');
 	            } else if(soundToPlay === 'list') {
-		            message.channel.send('**Available Sounds:** Cat, Pikachu, Vader');
+		            message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death");
 	            } else if(soundToPlay === sounds.avaliable[soundToPlay]) {
 	                voiceChannel.join().then(connnection => {
 		                let stream = sounds.paths[soundToPlay];
