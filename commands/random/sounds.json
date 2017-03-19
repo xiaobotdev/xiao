@@ -1,8 +1,12 @@
 {
     "avaliable": {
-        "cat": "cat"
+        "cat": "cat",
+        "pikachu": "pikachu",
+        "vader": "vader"
     },
     "paths": {
-        "cat": "./sounds/cat.mp3"
+        "cat": "./sounds/cat.mp3",
+        "pikachu": "./sounds/pikachu.mp3",
+        "vader": "./sounds/vader.mp3"
     }
 }
