@@ -12,7 +12,8 @@
         "ugly barnacle": "ugly barnacle",
         "woo hoo": "woo hoo",
         "space": "space",
-        "glados bird": "glados bird"
+        "glados bird": "glados bird",
+        "airhorn": "airhorn"
     },
     "paths": {
         "cat": "./sounds/cat.mp3",
@@ -27,6 +28,7 @@
         "ugly barnacle": "./sounds/ugly-barnacle.mp3",
         "woo hoo": "./sounds/woohoo.mp3",
         "space": "./sounds/space.mp3",
-        "glados bird": "./sounds/glados-bird.mp3"
+        "glados bird": "./sounds/glados-bird.mp3",
+        "airhorn": "./sounds/airhorn.mp3"
     }
 }
