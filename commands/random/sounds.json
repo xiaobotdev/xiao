@@ -13,7 +13,8 @@
         "woo hoo": "woo hoo",
         "space": "space",
         "glados bird": "glados bird",
-        "airhorn": "airhorn"
+        "airhorn": "airhorn",
+        "zelda chest": "zelda chest"
     },
     "paths": {
         "cat": "./sounds/cat.mp3",
@@ -29,6 +30,7 @@
         "woo hoo": "./sounds/woohoo.mp3",
         "space": "./sounds/space.mp3",
         "glados bird": "./sounds/glados-bird.mp3",
-        "airhorn": "./sounds/airhorn.mp3"
+        "airhorn": "./sounds/airhorn.mp3",
+        "zelda chest": "./sounds/zelda-chest.mp3"
     }
 }
