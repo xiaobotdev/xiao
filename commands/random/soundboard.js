@@ -19,7 +19,7 @@ class SoundBoardCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('CONNECT' || 'SPEAK')) {
+            if(!message.channel.permissionsFor(this.client.user).hasPermission('CONNECT' && 'SPEAK')) {
                 message.channel.send(':x: Error! In order to do this command, you must give me the permissions to "Connect" and "Speak"!');
             } else {
                 let voiceChannel = message.member.voiceChannel;
