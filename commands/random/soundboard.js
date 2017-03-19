@@ -19,7 +19,7 @@ class SoundBoardCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('CONNECT' && 'SPEAK')) {
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['CONNECT', 'SPEAK'])) {
                 message.channel.send(':x: Error! In order to do this command, you must give me the permissions to "Connect" and "Speak"!');
             } else {
                 let voiceChannel = message.member.voiceChannel;
@@ -30,7 +30,7 @@ class SoundBoardCommand extends commando.Command {
 	            if(soundToPlay === "") {
 		            message.channel.send(':x: Error! No sound set. Please use ;soundboard list to see a list of sounds you can play.');
 	            } else if(soundToPlay === 'list') {
-		            message.channel.send('**Avaliable Sounds:** Cat');
+		            message.channel.send('**Available Sounds:** Cat, Pikachu, Vader');
 	            } else if(soundToPlay === sounds.avaliable[soundToPlay]) {
 	                voiceChannel.join().then(connnection => {
 		                let stream = sounds.paths[soundToPlay];
