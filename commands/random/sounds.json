@@ -1,0 +1,8 @@
+{
+    "avaliable": {
+        "meow": "meow"
+    }
+    "paths": {
+        "meow": "./sounds/cat.mp3"
+    }
+}
