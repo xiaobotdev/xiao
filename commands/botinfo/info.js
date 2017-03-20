@@ -30,7 +30,7 @@ class InfoCommand extends commando.Command {
             .setAuthor(this.client.user.username, this.client.user.avatarURL)
             .setColor(0x00AE86)
             .setDescription('XiaoBot is your personal companion for your Discord Server!')
-            .setFooter('©2017 dragonfire535 | Created ' + moment.duration(this.client.user.createdTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks], d[ days], h[ hours], m[ minutes, and ]s[ seconds]') + ' ago!', this.client.user.avatarURL)
+            .setFooter('©2017 dragonfire535\nCreated ' + moment.duration(this.client.user.createdTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks], d[ days], h[ hours], m[ minutes, and ]s[ seconds]') + ' ago!')
             .setThumbnail(this.client.user.avatarURL)
             .setURL('http://dragonfire535.weebly.com/xiaobot.html')
             .addField('Commands',
