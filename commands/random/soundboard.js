@@ -32,7 +32,7 @@ class SoundBoardCommand extends commando.Command {
 	            } else if(soundToPlay === 'list') {
 		            message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest");
 	            } else if(soundToPlay === sounds.avaliable[soundToPlay]) {
-                    let alreadyConnected = this.client.voiceConnections.get(voiceChannel.guild.id)
+                    let alreadyConnected = this.client.voiceConnections.get(voiceChannel.guild.id);
                     if(alreadyConnected) {
                         if(alreadyConnected.channel.id === voiceChannel.id) {
                             message.channel.send(':x: Error! I am already playing a sound!');
