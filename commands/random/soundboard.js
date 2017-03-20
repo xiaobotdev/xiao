@@ -19,8 +19,8 @@ class SoundBoardCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['CONNECT', 'SPEAK'])) {
-                message.channel.send(':x: Error! In order to do this command, you must give me the permissions to "Connect" and "Speak"!');
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['CONNECT', 'SPEAK', 'ADD_REACTIONS'])) {
+                message.channel.send(':x: Error! In order to do this command, you must give me the permissions to "Connect" and "Speak", as well as the permission to Add Reactions!');
             } else {
                 let voiceChannel = message.member.voiceChannel;
                 if (!voiceChannel) {
@@ -43,8 +43,10 @@ class SoundBoardCommand extends commando.Command {
 	                    voiceChannel.join().then(connnection => {
 		                    let stream = sounds.paths[soundToPlay];
     	                    let dispatcher = connnection.playStream(stream);
+    	                    message.react('🔊');
     	                    dispatcher.on('end', () => {
         	                    voiceChannel.leave();
+        	                    message.react('✅');
     	                    });
 	                    });
                     }
