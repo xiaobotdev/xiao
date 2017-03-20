@@ -51,8 +51,10 @@ class InfoCommand extends commando.Command {
             moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
             .addField('Node Version',
             process.version, true)
+            .addField('Voice Connections',
+            this.client.voiceConnections.size, true)
             .addField('Library',
-            "[discord.js](https://discord.js.org/#/) / [commando](https://github.com/Gawdl3y/discord.js-commando)")
+            "[discord.js](https://discord.js.org/#/) / [commando](https://github.com/Gawdl3y/discord.js-commando)", true)
             .addField('Modules',
             "[cleverbot-node](https://github.com/fojas/cleverbot-node), [pirate-speak](https://github.com/mikewesthad/pirate-speak), [google-translate-api](https://github.com/matheuss/google-translate-api), [urban](https://github.com/mvrilo/urban), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [yahoo-weather](https://github.com/mamal72/node-yahoo-weather), [imdb-api](https://github.com/worr/node-imdb-api), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [morse](https://github.com/ecto/morse)")
             .addField('Utility Modules',
