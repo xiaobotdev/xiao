@@ -14,7 +14,9 @@
         "space": "space",
         "glados bird": "glados bird",
         "airhorn": "airhorn",
-        "zelda chest": "zelda chest"
+        "zelda chest": "zelda chest",
+        "eat my shorts": "eat my shorts",
+        "no this is patrick": "no this is patrick"
     },
     "paths": {
         "cat": "./sounds/cat.mp3",
@@ -31,6 +33,8 @@
         "space": "./sounds/space.mp3",
         "glados bird": "./sounds/glados-bird.mp3",
         "airhorn": "./sounds/airhorn.mp3",
-        "zelda chest": "./sounds/zelda-chest.mp3"
+        "zelda chest": "./sounds/zelda-chest.mp3",
+        "eat my shorts": "./sounds/eat-my-shorts.mp3",
+        "no this is patrick": "./sounds/no-this-is-patrick.mp3"
     }
 }
