@@ -80,7 +80,7 @@ client.on('guildMemberRemove', member => {
 client.on('guildCreate', guild => {
     console.log("[Guild] I have joined the guild: " + guild.name + " (" + guild.id + ")!");
     client.shard.fetchClientValues('guilds.size').then(results => {
-        console.log("[POST] " + results.reduce((prev, val) => prev + val, 0));
+        console.log("[Guild Count] " + results.reduce((prev, val) => prev + val, 0));
         const carbonPOST = {
             method: 'POST',
             uri: 'https://www.carbonitex.net/discord/data/botdata.php',
@@ -102,14 +102,14 @@ client.on('guildCreate', guild => {
             json: true
         }
         request(carbonPOST).then(function (parsedBody) {
-            console.log('[Carbon] ' + parsedBody);
+            console.log('[Carbon] Successfully posted to Carbon.');
         }).catch(function (err) {
-            console.log("[Carbon] " + err);
+            console.log("[Carbon] Failed to post to Carbon.");
         });
         request(DBotsPOST).then(function (parsedBody) {
-            console.log('[Discord Bots] ' + parsedBody);
+            console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
-            console.log("[Discord Bots] " + err);
+            console.log("[Discord Bots] Failed to post to Discord Bots.");
         });
     });
 });
@@ -117,7 +117,7 @@ client.on('guildCreate', guild => {
 client.on('guildDelete', guild => {
     console.log("[Guild] I have left the guild: " + guild.name + " (" + guild.id + ")...");
     client.shard.fetchClientValues('guilds.size').then(results => {
-        console.log("[POST] " + results.reduce((prev, val) => prev + val, 0));
+        console.log("[Guild Count] " + results.reduce((prev, val) => prev + val, 0));
         const carbonPOST = {
             method: 'POST',
             uri: 'https://www.carbonitex.net/discord/data/botdata.php',
@@ -139,14 +139,14 @@ client.on('guildDelete', guild => {
             json: true
         }
         request(carbonPOST).then(function (parsedBody) {
-            console.log('[Carbon] ' + parsedBody);
+            console.log('[Carbon] Successfully posted to Carbon.');
         }).catch(function (err) {
-            console.log("[Carbon] " + err);
+            console.log("[Carbon] Failed to post to Carbon.");
         });
         request(DBotsPOST).then(function (parsedBody) {
-            console.log('[Discord Bots] ' + parsedBody);
+            console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
-            console.log("[Discord Bots] " + err);
+            console.log("[Discord Bots] Failed to post to Discord Bots.");
         });
     });
 });
@@ -160,8 +160,8 @@ client.once('ready', () => {
     client.user.setGame(";help | dragonfire535");
 });
 
-process.on('unhandledRejection', function(reason, p){
-    console.log("A Possibly Unhandled Rejection has Occurred. " + reason);
+process.on('unhandledRejection', function (reason, p) {
+    console.log("[Error] A Possibly Unhandled Rejection has Occurred. " + reason);
 });
 
 client.login(config.token);
