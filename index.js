@@ -93,6 +93,7 @@ client.on('guildCreate', guild => {
         .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
+            console.log(err);
             console.log("[Discord Bots] Failed to post to Discord Bots.");
         });
     });
@@ -118,6 +119,7 @@ client.on('guildDelete', guild => {
         .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
+            console.log(err);
             console.log("[Discord Bots] Failed to post to Discord Bots.");
         });
     });

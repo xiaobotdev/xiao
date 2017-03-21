@@ -27,11 +27,12 @@ module.exports = class YodaCommand extends commando.Command {
             .set({ 'X-Mashape-Key': config.mashapekey, 'Accept': 'text/plain' })
             .query({ sentence: turnToYoda })
             .then(function (response) {
-                if(response.body === undefined) {
+                if(response === undefined) {
                     message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
                     console.log(response.body);
                 } else {
-                    message.channel.send(response.body).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
+                    console.log(response);
+                    message.channel.send(response).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
                 }
             }).catch(function (err) {
                 message.channel.send(":x: Error! Unknown Error. Try again later!");
