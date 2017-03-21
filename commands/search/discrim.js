@@ -1,10 +1,14 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-class DiscrimCommand extends commando.Command {
+module.exports = class DiscrimCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'discrim', 
+            name: 'discrim',
+            aliases: [
+                'discriminator',
+                'searchdiscrim'
+            ],
             group: 'search',
             memberName: 'discrim',
             description: 'Searches the server for a certain discriminator. (;discrim 8081)',
@@ -12,11 +16,9 @@ class DiscrimCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
         let userToSearch = message.content.split(" ").slice(1).join(" ");
@@ -30,6 +32,4 @@ class DiscrimCommand extends commando.Command {
             message.channel.send(':x: Error! This discriminator is invalid!');
         }
     }
-}
-
-module.exports = DiscrimCommand;
+};

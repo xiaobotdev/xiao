@@ -2,10 +2,10 @@ const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const math = require('mathjs');
 
-class MathGameCommand extends commando.Command {
+module.exports = class MathGameCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'mathgame', 
+            name: 'mathgame',
             group: 'random',
             memberName: 'mathgame',
             description: 'See how fast you can answer a math problem in a given time limit. (;mathgame easy)',
@@ -13,11 +13,9 @@ class MathGameCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
         let [level] = message.content.toLowerCase().split(" ").slice(1);
@@ -61,6 +59,4 @@ class MathGameCommand extends commando.Command {
             });
         }
     }
-}
-
-module.exports = MathGameCommand;
+};

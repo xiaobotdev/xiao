@@ -1,10 +1,15 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-class UserInfoCommand extends commando.Command {
+module.exports = class UserInfoCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'user', 
+            name: 'user',
+            aliases: [
+                'userinfo',
+                'member',
+                'memberinfo'
+            ],
             group: 'userinfo',
             memberName: 'user',
             description: "Gives some info on a user. (;user @User)",
@@ -12,17 +17,12 @@ class UserInfoCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        if (message.channel.type === 'dm') {
-            message.channel.send(":x: This is a DM!");
-        } else {
-            let member = message.guild.member(message.mentions.users.first());
+        if (message.channel.type !== 'dm') {
             let stat;
             switch (message.mentions.users.first().presence.status) {
                 case "online":
@@ -54,7 +54,7 @@ class UserInfoCommand extends commando.Command {
                 break;
             }
             if (message.mentions.users.size !== 1) {
-                message.channel.send(':x: Either too many or no members, only mention one person!');
+                message.channel.send(':x: Error! Please mention one user!');
             } else {
                 if (message.mentions.users.first().presence.game === null) {
                     const embed = new Discord.RichEmbed()
@@ -67,7 +67,7 @@ class UserInfoCommand extends commando.Command {
                     .addField('**Joined Discord On:**',
                     message.mentions.users.first().createdAt, true)
                     .addField('**Joined Server On:**',
-                    member.joinedAt, true)
+                    message.guild.member(message.mentions.users.first()).joinedAt, true)
                     .addField('**Status:**',
                     stat, true)
                     .addField('**Playing:**',
@@ -84,7 +84,7 @@ class UserInfoCommand extends commando.Command {
                     .addField('**Joined Discord On:**',
                     message.mentions.users.first().createdAt, true)
                     .addField('**Joined Server On:**',
-                    member.joinedAt, true)
+                    message.guild.member(message.mentions.users.first()).joinedAt, true)
                     .addField('**Status:**',
                     stat, true)
                     .addField('**Playing:**',
@@ -92,8 +92,8 @@ class UserInfoCommand extends commando.Command {
                     message.channel.sendEmbed(embed).catch(console.error);
                 }
             }
+        } else {
+            message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
-}
-
-module.exports = UserInfoCommand;
+};

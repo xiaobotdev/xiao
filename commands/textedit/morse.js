@@ -1,10 +1,13 @@
 const commando = require('discord.js-commando');
 const morse = require('morse');
 
-class MorseCommand extends commando.Command {
+module.exports = class MorseCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'morse', 
+            name: 'morse',
+            aliases: [
+                'morsecode'
+            ],
             group: 'textedit',
             memberName: 'morse',
             description: 'Translates text to and from morse code. (;morse encode This is Morse Code.)',
@@ -12,10 +15,9 @@ class MorseCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let [methodToUse] = message.content.toLowerCase().split(" ").slice(1);
@@ -30,6 +32,4 @@ class MorseCommand extends commando.Command {
             message.channel.send(":x: Error! Method not set/not correct! Use either encode or decode.");
         }
     }
-}
-
-module.exports = MorseCommand;
+};

@@ -1,9 +1,12 @@
 const commando = require('discord.js-commando');
 
-class ChooseCommand extends commando.Command {
+module.exports = class ChooseCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'choose', 
+            name: 'choose',
+            aliases: [
+                'pick'
+            ],
             group: 'response',
             memberName: 'choose',
             description: 'Chooses between two things. (;choose Cow | Sheep)',
@@ -11,10 +14,9 @@ class ChooseCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         if(message.content.includes("|")) {
@@ -27,6 +29,4 @@ class ChooseCommand extends commando.Command {
             message.channel.send(":x: Split your two choices with a ' | '!");
         }
     }
-}
-
-module.exports = ChooseCommand;
+};

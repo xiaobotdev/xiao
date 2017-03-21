@@ -1,9 +1,9 @@
 const commando = require('discord.js-commando');
 
-class SpamCommand extends commando.Command {
+module.exports = class SpamCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'spam', 
+            name: 'spam',
             group: 'random',
             memberName: 'spam',
             description: 'Puts a picture of Spam. (;spam)',
@@ -11,16 +11,11 @@ class SpamCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log("[Command] " + message.content);
-        message.channel.send("Spam!");
         message.channel.sendFile("./images/Spam.jpg");
     }
-}
-
-module.exports = SpamCommand;
+};

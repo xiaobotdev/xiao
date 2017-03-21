@@ -2,10 +2,10 @@ const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const weather = require('yahoo-weather');
 
-class WeatherCommand extends commando.Command {
+module.exports = class WeatherCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'weather', 
+            name: 'weather',
             group: 'search',
             memberName: 'weather',
             description: 'Searches weather for a specified location. (;weather San Francisco)',
@@ -13,15 +13,13 @@ class WeatherCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        let locationtosearch = message.content.split(" ").slice(1).join(" ");
-        weather(locationtosearch, 'f').then(info => {
+        let locationToSearch = message.content.split(" ").slice(1).join(" ");
+        weather(locationToSearch, 'f').then(info => {
             const embed = new Discord.RichEmbed()
             .setColor(0x0000FF)
             .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
@@ -56,6 +54,4 @@ class WeatherCommand extends commando.Command {
             message.channel.send(":x: Error! Make sure you typed the location correctly!");
         });
     }
-}
-
-module.exports = WeatherCommand;
+};

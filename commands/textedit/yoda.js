@@ -1,11 +1,11 @@
 const commando = require('discord.js-commando');
-const request = require('request-promise');
+const request = require('superagent');
 const config = require('../../config.json');
 
-class YodaCommand extends commando.Command {
+module.exports = class YodaCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'yoda', 
+            name: 'yoda',
             group: 'textedit',
             memberName: 'yoda',
             description: 'Converts text to Yoda Speak. (;yoda This is Yoda.)',
@@ -13,39 +13,28 @@ class YodaCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        let yodaspeak = message.content.split(" ").slice(1).join(" ");
-        if(yodaspeak === "") {
+        let turnToYoda = message.content.split(" ").slice(1).join(" ");
+        if(turnToYoda === "") {
             message.channel.send(':x: Error! Nothing to translate!');
         } else {
-            const options = {
-	            method: 'GET',
-	            uri: 'https://yoda.p.mashape.com/yoda',
-	            qs: {
-    	            sentence: yodaspeak
-  	            },
-                headers: {
-                    'X-Mashape-Key': config.mashapekey,
-                    'Accept': "text/plain"
-                },
-  	            json: true
-            } 
-            request(options).then(function (response) {
+            request
+            .get('https://yoda.p.mashape.com/yoda')
+            .set({ 'X-Mashape-Key': config.mashapekey, 'Accept': 'text/plain' })
+            .query({ sentence: turnToYoda })
+            .then(function (response) {
                 if(response === undefined) {
                     message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
                 } else {
-                    message.channel.send(response).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
+                    message.channel.send(response.body).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
                 }
             }).catch(function (err) {
                 message.channel.send(":x: Error! Unknown Error. Try again later!");
             });
         }
     }
-}
-
-module.exports = YodaCommand;
+};

@@ -1,9 +1,14 @@
 const commando = require('discord.js-commando');
 
-class EmojiCommand extends commando.Command {
+module.exports = class EmojiCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'emoji', 
+            name: 'emoji',
+            aliases: [
+				'emoticons',
+				'emojilist',
+				'emoticonlist'
+			],
             group: 'guildinfo',
             memberName: 'emoji',
             description: "Gives a list of the current server's emoji. (;emoji)",
@@ -11,19 +16,15 @@ class EmojiCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        if (message.channel.type === 'dm') {
-            message.channel.send(":x: This is a DM!");
-        } else {
+        if (message.channel.type !== 'dm') {
             message.channel.send(message.guild.emojis.map(e => e).join(" "));
+        } else {
+            message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
-}
-
-module.exports = EmojiCommand;
+};

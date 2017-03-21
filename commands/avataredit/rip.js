@@ -1,10 +1,14 @@
 const commando = require('discord.js-commando');
 const Jimp = require("jimp");
 
-class RIPCommand extends commando.Command {
+module.exports = class RIPCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'rip', 
+            name: 'rip',
+			aliases: [
+				'grave',
+				'gravestone'
+			],
             group: 'avataredit',
             memberName: 'rip',
             description: 'Puts a profile picture over a gravestone. (;rip @User)',
@@ -12,24 +16,22 @@ class RIPCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log("[Command] " + message.content);
         if (message.mentions.users.size !== 1) {
-            message.channel.send(':x: Either too many or no members, only mention one person!');
+            message.channel.send(':x: Error! Please mention one user!');
         } else {
             if(message.mentions.users.first().avatarURL === null) {
-                message.channel.send(":x: This person has no avatar!");
+                message.channel.send(":x: Error! This user has no avatar!");
             } else {
-                let avatarurl = message.mentions.users.first().avatarURL;
-                avatarurl = avatarurl.replace(".jpg", ".png");
-                avatarurl = avatarurl.replace(".gif", ".png");
+                let userAvatar = message.mentions.users.first().avatarURL;
+                userAvatar = userAvatar.replace(".jpg", ".png");
+                userAvatar = userAvatar.replace(".gif", ".png");
                 let images = [];
-                images.push(Jimp.read(avatarurl));
+                images.push(Jimp.read(userAvatar));
                 images.push(Jimp.read("./images/gravestone.jpg"));
                 Promise.all(images).then(([avatar, gravestone]) => {
                     avatar.resize(200, 200);
@@ -42,6 +44,4 @@ class RIPCommand extends commando.Command {
             }
         }
     }
-}
-
-module.exports = RIPCommand;
+};

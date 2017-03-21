@@ -1,9 +1,9 @@
 const commando = require('discord.js-commando');
 
-class ReverseCommand extends commando.Command {
+module.exports = class ReverseCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'reverse', 
+            name: 'reverse',
             group: 'textedit',
             memberName: 'reverse',
             description: 'Reverses text (;reverse This text please)',
@@ -11,23 +11,17 @@ class ReverseCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        function reverseString(str) {
-            return str.split("").reverse().join("");
-        }
-        let messagecontent = message.content.split(" ").slice(1).join(" ");
-        if(messagecontent === "") {
+        let stringToReverse = message.content.split(" ").slice(1).join(" ");
+        if(stringToReverse === "") {
             message.channel.send(":x: Error! Nothing to reverse!");
         } else {
-            let reversed = reverseString(messagecontent);
+            let reversed = stringToReverse.split("").reverse().join("");
             message.channel.send(reversed);
         }
     }
-}
-
-module.exports = ReverseCommand;
+};

@@ -1,9 +1,9 @@
 const commando = require('discord.js-commando');
 
-class PunchCommand extends commando.Command {
+module.exports = class PunchCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'punch', 
+            name: 'punch',
             group: 'roleplay',
             memberName: 'punch',
             description: 'Punches someone. (;punch @User)',
@@ -11,15 +11,12 @@ class PunchCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(message.author + ' *punches* ' + username);
+        let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
+        message.channel.send(message.author + ' *punches* ' + thingToRoleplay);
     }
-}
-
-module.exports = PunchCommand;
+};
