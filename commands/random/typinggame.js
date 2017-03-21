@@ -1,10 +1,10 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-class TypingGameCommand extends commando.Command {
+module.exports = class TypingGameCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'typinggame', 
+            name: 'typinggame',
             group: 'random',
             memberName: 'typinggame',
             description: 'See how fast you can type a sentence in a given time limit. (;typinggame easy)',
@@ -12,11 +12,9 @@ class TypingGameCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
         let [level] = message.content.toLowerCase().split(" ").slice(1);
@@ -71,6 +69,4 @@ class TypingGameCommand extends commando.Command {
             });
         }
     }
-}
-
-module.exports = TypingGameCommand;
+};

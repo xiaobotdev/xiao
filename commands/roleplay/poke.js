@@ -1,9 +1,9 @@
 const commando = require('discord.js-commando');
 
-class PokeCommand extends commando.Command {
+module.exports = class PokeCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'poke', 
+            name: 'poke',
             group: 'roleplay',
             memberName: 'poke',
             description: 'Pokes someone. (;poke @User)',
@@ -11,15 +11,12 @@ class PokeCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(message.author + ' *pokes* ' + username);
+        let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
+        message.channel.send(message.author + ' *pokes* ' + thingToRoleplay);
     }
-}
-
-module.exports = PokeCommand;
+};

@@ -1,10 +1,15 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-class GuildInfoCommand extends commando.Command {
+module.exports = class GuildInfoCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'server', 
+            name: 'server',
+            aliases: [
+				'guild',
+				'serverinfo',
+				'guildinfo'
+			],
             group: 'guildinfo',
             memberName: 'server',
             description: 'Gives some info on the current server. (;server)',
@@ -12,16 +17,12 @@ class GuildInfoCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        if (message.channel.type === 'dm') {
-            message.channel.send(":x: This is a DM!");
-        } else {
+        if (message.channel.type !== 'dm') {
             const embed = new Discord.RichEmbed()
             .setColor(0x00AE86)
             .setThumbnail(message.guild.iconURL)
@@ -40,8 +41,8 @@ class GuildInfoCommand extends commando.Command {
             .addField("**Users:**",
             message.guild.memberCount, true);
             message.channel.sendEmbed(embed).catch(console.error);
+        } else {
+            message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
-}
-
-module.exports = GuildInfoCommand;
+};

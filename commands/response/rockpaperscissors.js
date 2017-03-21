@@ -1,9 +1,12 @@
 const commando = require('discord.js-commando');
 
-class RockPaperScissors extends commando.Command {
+module.exports = class RockPaperScissors extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'rps', 
+            name: 'rps',
+            aliases: [
+                'rockpaperscissors'
+            ],
             group: 'response',
             memberName: 'rps',
             description: 'Play Rock Paper Scissors (;rps Rock)',
@@ -11,10 +14,9 @@ class RockPaperScissors extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let [rps] = message.content.toLowerCase().split(" ").slice(1);
@@ -56,6 +58,4 @@ class RockPaperScissors extends commando.Command {
             message.channel.send(":x: Error! Your choice is not Rock, Paper, or Scissors!");
         }
     }
-}
-
-module.exports = RockPaperScissors;
+};

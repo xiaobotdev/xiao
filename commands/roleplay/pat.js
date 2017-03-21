@@ -1,9 +1,9 @@
 const commando = require('discord.js-commando');
 
-class PatCommand extends commando.Command {
+module.exports = class PatCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'pat', 
+            name: 'pat',
             group: 'roleplay',
             memberName: 'pat',
             description: 'Pats someone. (;pat @User)',
@@ -11,15 +11,12 @@ class PatCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        let username = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(message.author + ' *pats* ' + username);
+        let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
+        message.channel.send(message.author + ' *pats* ' + thingToRoleplay);
     }
-}
-
-module.exports = PatCommand;
+};

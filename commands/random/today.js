@@ -1,11 +1,14 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const request = require('request-promise');
+const request = require('superagent');
 
-class TodayCommand extends commando.Command {
+module.exports = class TodayCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'today', 
+            name: 'today',
+            aliases: [
+                'history'
+            ],
             group: 'random',
             memberName: 'today',
             description: 'Tells you what happened today. (;today)',
@@ -13,31 +16,24 @@ class TodayCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        const options = {
-            method: 'GET',
-            uri: 'http://history.muffinlabs.com/date',
-            json: true
-        }
-        request(options).then(function (response) {
-            let randomNumber = Math.floor(Math.random() * response.data.Events.length);
+        request
+        .get('http://history.muffinlabs.com/date')
+        .then(function (response) {
+            let randomNumber = Math.floor(Math.random() * response.body.data.Events.length);
             const embed = new Discord.RichEmbed()
             .setColor(0x9797FF)
-            .setURL(response.url)
-            .setTitle('On this day (' + response.date + ')...')
+            .setURL(response.body.url)
+            .setTitle('On this day (' + response.body.date + ')...')
             .setTimestamp()
-            .setDescription(response.data.Events[randomNumber].text + ' (' + response.data.Events[randomNumber].year + ')');
+            .setDescription(response.body.data.Events[randomNumber].text + ' (' + response.body.data.Events[randomNumber].year + ')');
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(function (err) {
             message.channel.send(":x: Error! Something went wrong!");
         });
     }
-}
-
-module.exports = TodayCommand;
+};

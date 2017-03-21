@@ -1,10 +1,14 @@
 const commando = require('discord.js-commando');
 const sounds = require('./sounds.json');
 
-class SoundBoardCommand extends commando.Command {
+module.exports = class SoundBoardCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'soundboard', 
+            name: 'soundboard',
+            aliases: [
+                'sound',
+                'play'
+            ],
             group: 'random',
             memberName: 'soundboard',
             description: 'Plays a sound in your voice channel. (;soundboard cat)',
@@ -12,10 +16,9 @@ class SoundBoardCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         if(message.channel.type !== 'dm') {
@@ -40,9 +43,9 @@ class SoundBoardCommand extends commando.Command {
                             message.channel.send(':x: Error! I am already playing a sound!');
                         }
                     } else {
-	                    voiceChannel.join().then(connnection => {
+	                    voiceChannel.join().then(connection => {
 		                    let stream = sounds.paths[soundToPlay];
-    	                    let dispatcher = connnection.playStream(stream);
+    	                    let dispatcher = connection.playStream(stream);
     	                    message.react('🔊');
     	                    dispatcher.on('end', () => {
         	                    voiceChannel.leave();
@@ -51,13 +54,11 @@ class SoundBoardCommand extends commando.Command {
 	                    });
                     }
 	            } else {
-		            message.channel.send(':x: Error! Sound not found! Please use ;soundboard list to see a list of sounds you can play.');
+		            message.channel.send(':x: Error! Sound not found! Use `;soundboard list` to see a list of sounds you can play.');
 	            }
             }
         } else {
             message.channel.send(':x: This is a DM!');
         }
     }
-}
-
-module.exports = SoundBoardCommand;
+};

@@ -1,9 +1,9 @@
 const commando = require('discord.js-commando');
 
-class SlotsCommand extends commando.Command {
+module.exports = class SlotsCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'slots', 
+            name: 'slots',
             group: 'response',
             memberName: 'slots',
             description: 'Play slots. (;slots)',
@@ -11,10 +11,9 @@ class SlotsCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let slotThing = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
@@ -28,6 +27,4 @@ class SlotsCommand extends commando.Command {
         	message.channel.send(slotOne + '|' + slotTwo + '|' + slotThree + '|' + slotFour + "\nAww... You lost... Guess it's just bad luck, huh?");
         }
     }
-}
-
-module.exports = SlotsCommand;
+};

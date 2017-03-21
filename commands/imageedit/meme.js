@@ -1,10 +1,13 @@
 const commando = require('discord.js-commando');
 const memecodes = require('./memecodes.json');
 
-class MemeCommand extends commando.Command {
+module.exports = class MemeCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'meme', 
+            name: 'meme',
+            aliases: [
+				'memegen'
+			],
             group: 'imageedit',
             memberName: 'meme',
             description: "Sends a Meme with text of your choice, and a background of your choice. Split first and second lines with a | (;meme facepalm I can't even | comprehend this)",
@@ -12,11 +15,9 @@ class MemeCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log("[Command] " + message.content);
         let [type] = message.content.toLowerCase().split(" ").slice(1);
@@ -26,9 +27,9 @@ class MemeCommand extends commando.Command {
             if(message.content.split(" ").slice(1).join(" ").match(/^[a-zA-Z0-9|.,!?'-\s]+$/)) {
                 let bottomrow = message.content.toLowerCase().split("|").slice(1).join("-");
                 let toprow = " " + message.content.toLowerCase().replace(bottomrow, "").split(" ").slice(2).join("-");
-                toprow = toprow.replace("|", "");
-                bottomrow = bottomrow.replace("?", "~q");
-                toprow = toprow.replace("?", "~q");
+                toprow = toprow.split("|").join("");
+                bottomrow = bottomrow.split("?").join("~q");
+                toprow = toprow.split("?").join("~q");
                 let link = "https://memegen.link/" + type + "/" + toprow + "/" + bottomrow + ".jpg";
                 if(bottomrow.length > 100) {
                     message.channel.send(":x: Error! Bottom text is over 100 characters!");
@@ -38,7 +39,7 @@ class MemeCommand extends commando.Command {
                     if(memecodes.memecodes[type]) { 
                         message.channel.sendFile(link).catch(error => message.channel.send(":x: An Error Occurred! Please try again later!"));
                     } else {
-                        message.channel.send(":x: Error! Meme type not found! (View list with ;meme list)");
+                        message.channel.send(":x: Error! Meme type not found! Use `;meme list` to view of list of meme codes!");
                     }
                 }
             } else {
@@ -48,6 +49,4 @@ class MemeCommand extends commando.Command {
             message.channel.send(":x: Split your two choices with a ' | '!");
         }
     }
-}
-
-module.exports = MemeCommand;
+};

@@ -1,12 +1,17 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const config = require('../../config.json');
-const request = require('request-promise');
+const request = require('superagent');
 
-class OsuCommand extends commando.Command {
+module.exports = class OsuCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'osu', 
+            name: 'osu',
+            aliases: [
+                'osuuser',
+                'osudata',
+                'osuinfo'
+            ],
             group: 'search',
             memberName: 'osu',
             description: 'Searches Osu user data. (;osu dragonfire535)',
@@ -14,25 +19,16 @@ class OsuCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        let usernametosearch = message.content.split(" ").slice(1).join(" ");
-        const options = {
-	        method: 'GET',
-	        uri: 'https://osu.ppy.sh/api/get_user',
-	        qs: {
-    	        k: config.osukey,
-                u: usernametosearch,
-                type: "string"
-  	        },
-  	        json: true
-        }
-        request(options).then(function (response) {
+        let usernameToSearch = message.content.split(" ").slice(1).join(" ");
+        request
+        .get('https://osu.ppy.sh/api/get_user')
+        .query({ k: config.osukey, u: usernameToSearch, type: 'string' })
+        .then(function (response) {
             if(response[0] === undefined) {
                 message.channel.send(":x: Error! User not found!");
             } else {
@@ -70,6 +66,4 @@ class OsuCommand extends commando.Command {
             message.channel.send(":x: Error! User not Found!");
         });
     }
-}
-
-module.exports = OsuCommand;
+};

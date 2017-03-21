@@ -1,10 +1,10 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-class EmbedCommand extends commando.Command {
+module.exports = class EmbedCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'embed', 
+            name: 'embed',
             group: 'textedit',
             memberName: 'embed',
             description: 'Sends a message in an embed. (;embed This is an example.)',
@@ -12,27 +12,23 @@ class EmbedCommand extends commando.Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        let embedmessage = message.content.split(" ").slice(1).join(" ");
-        if(embedmessage === "") {
+        let embedMessage = message.content.split(" ").slice(1).join(" ");
+        if(embedMessage === "") {
             message.channel.send(":x: Error! Nothing to embed!");
         } else {
             const embed = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setColor(0x00AE86)
             .setTimestamp()
-            .setDescription(embedmessage);
+            .setDescription(embedMessage);
             message.channel.sendEmbed(embed).catch(console.error);
             if (message.channel.type === 'dm') return;
             message.delete();
         }
     }
-}
-
-module.exports = EmbedCommand;
+};

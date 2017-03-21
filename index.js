@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const commando = require('discord.js-commando');
 const config = require('./config.json');
-const request = require('request-promise');
+const request = require('superagent');
 const clevusers = require('./clevusers.json');
 const client = new commando.Client({
     commandPrefix: ';',
@@ -43,10 +43,6 @@ client.on('message', (message) => {
         console.log("[Command] " + message.content);
         message.channel.send("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
     }
-    if(message.content.includes(":Swagolor:")) {
-        if(message.guild.id !== config.server) return;
-        message.react(message.guild.emojis.get('254827709459333120'));
-    }
     if (message.content.startsWith("<@" + client.user.id + ">")){
         if(message.guild.id === config.server || message.author.id === config.owner || message.guild.id === config.personalServer) {
             console.log("[Cleverbot] " + message.content);
@@ -79,35 +75,22 @@ client.on('guildMemberRemove', member => {
 
 client.on('guildCreate', guild => {
     console.log("[Guild] I have joined the guild: " + guild.name + ", " + guild.owner.user.username + " (" + guild.id + ")!");
-    client.guilds.get(config.server).channels.get('265503171835592704').send("I have joined the guild: " + guild.name + " (Owner: " + guild.owner.user.username + ")!");
+    client.guilds.get(config.server).channels.get(config.announcementChannel).send("I have joined the guild: " + guild.name + " (Owner: " + guild.owner.user.username + ")!");
     client.shard.fetchClientValues('guilds.size').then(results => {
         console.log("[Guild Count] " + results.reduce((prev, val) => prev + val, 0));
-        const carbonPOST = {
-            method: 'POST',
-            uri: 'https://www.carbonitex.net/discord/data/botdata.php',
-            body: {
-                key: config.carbonkey,
-                servercount: results.reduce((prev, val) => prev + val, 0)
-            },
-            json: true
-        }
-        const DBotsPOST = {
-            method: 'POST',
-            uri: 'https://bots.discord.pw/api/bots/' + config.botid + '/stats',
-            body: {
-                server_count: results.reduce((prev, val) => prev + val, 0)
-            },
-  	        headers: {
-    	        'Authorization': config.botskey
-            },
-            json: true
-        }
-        request(carbonPOST).then(function (parsedBody) {
+        request
+        .post('https://www.carbonitex.net/discord/data/botdata.php')
+        .send({ key: config.carbonkey, servercount: results.reduce((prev, val) => prev + val, 0) })
+        .then(function (parsedBody) {
             console.log('[Carbon] Successfully posted to Carbon.');
         }).catch(function (err) {
             console.log("[Carbon] Failed to post to Carbon.");
         });
-        request(DBotsPOST).then(function (parsedBody) {
+        request
+        .post('https://bots.discord.pw/api/bots/' + config.botid + '/stats')
+        .set({ 'Authorization': config.botskey })
+        .send({ server_count: results.reduce((prev, val) => prev + val, 0) })
+        .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
             console.log("[Discord Bots] Failed to post to Discord Bots.");
@@ -120,32 +103,19 @@ client.on('guildDelete', guild => {
     client.guilds.get(config.server).channels.get('265503171835592704').send("I have left the guild: " + guild.name + " (Owner: " + guild.owner.user.username + ")...");
     client.shard.fetchClientValues('guilds.size').then(results => {
         console.log("[Guild Count] " + results.reduce((prev, val) => prev + val, 0));
-        const carbonPOST = {
-            method: 'POST',
-            uri: 'https://www.carbonitex.net/discord/data/botdata.php',
-            body: {
-                key: config.carbonkey,
-                servercount: results.reduce((prev, val) => prev + val, 0)
-            },
-            json: true
-        }
-        const DBotsPOST = {
-            method: 'POST',
-            uri: 'https://bots.discord.pw/api/bots/' + config.botid + '/stats',
-            body: {
-                server_count: results.reduce((prev, val) => prev + val, 0)
-            },
-  	        headers: {
-    	        'Authorization': config.botskey
-            },
-            json: true
-        }
-        request(carbonPOST).then(function (parsedBody) {
+        request
+        .post('https://www.carbonitex.net/discord/data/botdata.php')
+        .send({ key: config.carbonkey, servercount: results.reduce((prev, val) => prev + val, 0) })
+        .then(function (parsedBody) {
             console.log('[Carbon] Successfully posted to Carbon.');
         }).catch(function (err) {
             console.log("[Carbon] Failed to post to Carbon.");
         });
-        request(DBotsPOST).then(function (parsedBody) {
+        request
+        .post('https://bots.discord.pw/api/bots/' + config.botid + '/stats')
+        .set({ 'Authorization': config.botskey })
+        .send({ server_count: results.reduce((prev, val) => prev + val, 0) })
+        .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
             console.log("[Discord Bots] Failed to post to Discord Bots.");

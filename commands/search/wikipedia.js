@@ -1,35 +1,30 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const request = require('request-promise');
+const request = require('superagent');
 
-class WikipediaCommand extends commando.Command {
+module.exports = class WikipediaCommand extends commando.Command {
     constructor(Client){
         super(Client, {
-            name: 'wikipedia', 
+            name: 'wikipedia',
             group: 'search',
             memberName: 'wikipedia',
-            description: 'Searches Wikipedia for something. (;wikipedia Cat **Note: CAsE SenSiTiVe!**)',
+            description: 'Searches Wikipedia for something. (;wikipedia Cat)',
             examples: [';wikipedia Cat']
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('SEND_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGES')) return;
-            if(!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return;
+            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        let wikied = message.content.split(" ").slice(1).join("%20");
-        const options = {
-	        method: 'GET',
-	        uri: "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=" + wikied + "&exintro=&explaintext=&redirects=&formatversion=2",
-  	        json: true
-        }
-        request(options).then(function (response) {
-            let description = response.query.pages[0].extract;
-            let name = response.query.pages[0].title;
-            wikied = wikied.replace(")", "%29");
+        let thingToSearch = message.content.split(" ").slice(1).join("%20");
+        request
+        .get("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=" + thingToSearch + "&exintro=&explaintext=&redirects=&formatversion=2")
+        .then(function (response) {
+            let description = response.body.query.pages[0].extract;
+            let name = response.body.query.pages[0].title;
+            thingToSearch = thingToSearch.split(")").join("%29");
             if(description === undefined) {
                 message.channel.send(":x: Error! Entry Not Found!");
             } else {
@@ -38,15 +33,13 @@ class WikipediaCommand extends commando.Command {
                 const embed = new Discord.RichEmbed()
                 .setColor(0xE7E7E7)
                 .setTitle(name)
-                .setURL("https://en.wikipedia.org/wiki/" + wikied)
+                .setURL("https://en.wikipedia.org/wiki/" + thingToSearch)
                 .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
-                .setDescription(description + "\n\n" + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + wikied + ")");
+                .setDescription(description + "[Read the Rest Here](https://en.wikipedia.org/wiki/" + thingToSearch + ")");
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
             message.channel.send(":x: Error! Entry Not Found!");
         });
     }
-}
-
-module.exports = WikipediaCommand;
+};
