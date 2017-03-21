@@ -22,7 +22,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
         request
         .get('http://yugiohprices.com/api/card_data/' + cardName)
         .then(function (response) {
-            if(response.data.card_type === 'monster') {
+            if(response.body.data.card_type === 'monster') {
                 const embed = new Discord.RichEmbed()
                 .setColor(0xBE5F1F)
                 .setTitle(response.body.data.name)
