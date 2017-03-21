@@ -10,7 +10,7 @@ const client = new commando.Client({
 });
 const Cleverbot = require('cleverbot-node');
 const cleverbot = new Cleverbot;
-cleverbot.configure({botapi: config.clevkey});
+cleverbot.configure({ botapi: config.clevkey });
 const path = require('path');
 
 client.registry
@@ -30,9 +30,7 @@ client.registry
     ['roleplay', 'Roleplay']
 ])
 .registerDefaultGroups()
-.registerDefaultCommands({
-    prefix: false
-})
+.registerDefaultCommands({ prefix: false })
 .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('message', (message) => {
