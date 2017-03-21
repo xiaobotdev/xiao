@@ -48,7 +48,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
                 .setDescription(response.body.data.text)
                 .setAuthor('Yu-Gi-Oh!', 'http://vignette3.wikia.nocookie.net/yugioh/images/1/10/Back-TF-EN-VG.png/revision/latest?cb=20120824043558')
                 .addField('**Card Type:**',
-                response.data.body.card_type, true);
+                response.body.data.card_type, true);
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
