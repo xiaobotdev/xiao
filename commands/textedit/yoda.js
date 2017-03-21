@@ -29,10 +29,8 @@ module.exports = class YodaCommand extends commando.Command {
             .then(function (response) {
                 if(response === undefined) {
                     message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
-                    console.log(response.body);
                 } else {
-                    console.log(response);
-                    message.channel.send(response).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
+                    message.channel.send(response.text).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
                 }
             }).catch(function (err) {
                 message.channel.send(":x: Error! Unknown Error. Try again later!");
