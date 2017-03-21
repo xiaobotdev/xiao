@@ -87,13 +87,12 @@ client.on('guildCreate', guild => {
             console.log("[Carbon] Failed to post to Carbon.");
         });
         request
-        .post('https://bots.discord.pw/api/bots/' + config.botid + '/stats')
+        .post('https://bots.discord.pw/api/bots/' + config.botID + '/stats')
         .set({ 'Authorization': config.botskey })
         .send({ server_count: results.reduce((prev, val) => prev + val, 0) })
         .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
-            console.log(err);
             console.log("[Discord Bots] Failed to post to Discord Bots.");
         });
     });
@@ -113,13 +112,12 @@ client.on('guildDelete', guild => {
             console.log("[Carbon] Failed to post to Carbon.");
         });
         request
-        .post('https://bots.discord.pw/api/bots/' + config.botid + '/stats')
+        .post('https://bots.discord.pw/api/bots/' + config.botID + '/stats')
         .set({ 'Authorization': config.botskey })
         .send({ server_count: results.reduce((prev, val) => prev + val, 0) })
         .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
-            console.log(err);
             console.log("[Discord Bots] Failed to post to Discord Bots.");
         });
     });
