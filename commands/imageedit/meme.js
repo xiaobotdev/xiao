@@ -25,11 +25,9 @@ module.exports = class MemeCommand extends commando.Command {
             message.channel.send("**Type Codes:** tenguy, afraid, older, aag, tried, biw, blb, kermit, bd, ch, cbg, wonka, cb, keanu, dsm, live, ants, doge, alwaysonbeat, ermg, facepalm, fwp, fa, fbf, fry, hipster, icanhas, crazypills, mw, noidea, regret, boat, hagrid, sohappy, captain, inigo, iw, ackbar, happening, joker, ive, ll, morpheus, mb, badchoice, mmm, jetpack, red, mordor, oprah, oag, remembers, philosoraptor, jw, patrick, rollsafe, sad-obama, sad-clinton, sadfrog, sad-bush, sad-biden, sad-boehner, saltbae, sarcasticbear, dwight, sb, ss, sf, dodgson, money, sohot, nice, awesome-awkward, awesome, awkward-awesome, awkward, fetch, success, scc, ski, officespace, interesting, toohigh, bs, center, both, winter, xy, buzz, yodawg, uno, yallgot, bad, elf, chosen");
         } else if(message.content.includes("|")) {
             if(message.content.split(" ").slice(1).join(" ").match(/^[a-zA-Z0-9|.,!?'-\s]+$/)) {
-                let bottomrow = message.content.toLowerCase().split("|").slice(1).join("-");
-                let toprow = " " + message.content.toLowerCase().replace(bottomrow, "").split(" ").slice(2).join("-");
-                toprow = toprow.split("|").join("");
-                bottomrow = bottomrow.split("?").join("~q");
-                toprow = toprow.split("?").join("~q");
+                let memeQuery = message.content.split(" ").slice(1).join("-").split(' | ');
+                let toprow = memeQuery[0].split("?").join("~q");
+                let bottomrow = memeQuery[1].split("?").join("~q");
                 let link = "https://memegen.link/" + type + "/" + toprow + "/" + bottomrow + ".jpg";
                 if(bottomrow.length > 100) {
                     message.channel.send(":x: Error! Bottom text is over 100 characters!");

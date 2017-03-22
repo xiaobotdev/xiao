@@ -25,7 +25,7 @@ module.exports = class ChooseCommand extends commando.Command {
             let choice2 = choices[1];
             let randomChoice = [choice1, choice2];
             randomChoice = randomChoice[Math.floor(Math.random() * randomChoice.length)];
-            message.channel.send("I choose " + randomChoice);
+            message.channel.send("I choose " + randomChoice + "!");
         } else {
             message.channel.send(":x: Split your two choices with a ' | '!");
         }
