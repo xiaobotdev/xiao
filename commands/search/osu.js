@@ -29,7 +29,7 @@ module.exports = class OsuCommand extends commando.Command {
         .get('https://osu.ppy.sh/api/get_user')
         .query({ k: config.osukey, u: usernameToSearch, type: 'string' })
         .then(function (response) {
-            if(response[0] === undefined) {
+            if(response.body[0] === undefined) {
                 message.channel.send(":x: Error! User not found!");
             } else {
                 const embed = new Discord.RichEmbed()
@@ -37,29 +37,29 @@ module.exports = class OsuCommand extends commando.Command {
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')
                 .setURL('https://osu.ppy.sh/')
                 .addField('**Username:**',
-                response[0].username, true)
+                response.body[0].username, true)
                 .addField('**ID:**',
-                response[0].user_id, true)
+                response.body[0].user_id, true)
                 .addField('**Level:**',
-                response[0].level, true)
+                response.body[0].level, true)
                 .addField('**Accuracy**',
-                response[0].accuracy, true)
+                response.body[0].accuracy, true)
                 .addField('**Rank:**',
-                response[0].pp_rank, true)
+                response.body[0].pp_rank, true)
                 .addField('**Play Count:**',
-                response[0].playcount, true)
+                response.body[0].playcount, true)
                 .addField('**Country:**',
-                response[0].country, true)
+                response.body[0].country, true)
                 .addField('**Ranked Score:**',
-                response[0].ranked_score, true)
+                response.body[0].ranked_score, true)
                 .addField('**Total Score:**',
-                response[0].total_score, true)
+                response.body[0].total_score, true)
                 .addField('**SS:**',
-                response[0].count_rank_ss, true)
+                response.body[0].count_rank_ss, true)
                 .addField('**S:**',
-                response[0].count_rank_s, true)
+                response.body[0].count_rank_s, true)
                 .addField('**A:**',
-                response[0].count_rank_a, true);
+                response.body[0].count_rank_a, true);
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         }).catch(function (err) {
