@@ -20,7 +20,7 @@ module.exports = class ChooseCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if(message.content.includes(" | ")) {
-            let choices = message.content.split(" | ");
+            let choices = message.content.split(" | ").slice(1);
             let choice1 = choices[0];
             let choice2 = choices[1];
             let randomChoice = [choice1, choice2];
