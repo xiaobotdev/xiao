@@ -21,6 +21,8 @@ module.exports = class WarnCommand extends commando.Command {
             let userToWarn = message.mentions.users.first();
             let reason = message.content.split(" ").slice(2).join(" ");
             if (message.mentions.users.size !== 1) {
+                message.channel.send(":x: Error! Please mention one user!");
+            } else {
                 if(message.member.hasPermission('MANAGE_MESSAGES')) {
                     message.channel.send(":ok_hand:");
                     if(message.guild.channels.exists("name", "mod_logs")) {
@@ -37,8 +39,6 @@ module.exports = class WarnCommand extends commando.Command {
                 } else {
                     message.channel.send(":x: Error! You don't have the Manage Messages Permission!");
                 }
-            } else {
-                message.channel.send(":x: Error! Please mention one user!");
             }
         } else {
             message.channel.send(":x: Error! This command does not work in DM!");
