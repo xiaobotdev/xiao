@@ -61,14 +61,14 @@ client.on('message', (message) => {
 client.on('guildMemberAdd', member => {
     if(member.guild.id !== config.server) return;
     member.addRole(member.guild.roles.find('name', 'Members'));
-    let username = member.user.username;
-    member.guild.defaultChannel.send('Welcome ' + username + '!');
+    let addedMemberName = member.user.username;
+    member.guild.defaultChannel.send('Welcome ' + addedMemberName + '!');
 });
 
 client.on('guildMemberRemove', member => {
     if(member.guild.id !== config.server) return;
-    let username = member.user.username;
-    member.guild.defaultChannel.send('Bye ' + username + '...');
+    let removedMemberName = member.user.username;
+    member.guild.defaultChannel.send('Bye ' + removedMemberName + '...');
 });
 
 client.on('guildCreate', guild => {
