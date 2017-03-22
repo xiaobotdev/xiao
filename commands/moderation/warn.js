@@ -18,8 +18,6 @@ module.exports = class WarnCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         if (message.channel.type !== 'dm') {
-            message.channel.send(":x: Error! This command does not work in DM!");
-        } else {
             let userToWarn = message.mentions.users.first();
             let reason = message.content.split(" ").slice(2).join(" ");
             if (message.mentions.users.size !== 1) {
@@ -42,6 +40,8 @@ module.exports = class WarnCommand extends commando.Command {
             } else {
                 message.channel.send(":x: Error! Please mention one user!");
             }
+        } else {
+            message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };
