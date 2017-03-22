@@ -1,8 +1,6 @@
-const Discord = require('discord.js');
 const commando = require('discord.js-commando');
-const config = require('./config.json');
 const request = require('superagent');
-const clevusers = require('./clevusers.json');
+const config = require('./config.json');
 const client = new commando.Client({
     commandPrefix: ';',
     unknownCommandResponse: false,
@@ -11,6 +9,7 @@ const client = new commando.Client({
 const Cleverbot = require('cleverbot-node');
 const cleverbot = new Cleverbot;
 cleverbot.configure({ botapi: config.clevkey });
+const clevusers = require('./clevusers.json');
 const path = require('path');
 
 client.registry
@@ -36,23 +35,16 @@ client.registry
 client.on('message', (message) => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
-    if(message.content.includes("(╯°□°）╯︵ ┻━┻")) {
-        if(message.guild.id === "110373943822540800") return;
-        console.log("[Command] " + message.content);
-        message.channel.send("Calm down!   ┬─┬ ノ( ゜-゜ノ)");
-    }
-    if (message.content.startsWith("<@" + client.user.id + ">")){
-        if(message.guild.id === config.server || message.author.id === config.owner || message.guild.id === config.personalServer) {
-            console.log("[Cleverbot] " + message.content);
-            if(message.author.id === clevusers.allowed[message.author.id] || message.guild.id === config.personalServer) {
+    if(message.content.startsWith("<@" + client.user.id + ">")) {
+        if(message.guild.id === config.server || message.guild.id === config.personalServer || message.author.id === config.owner) {
+            if(message.author.id === clevusers.allowed[message.author.id]) {
                 let cleverMessage = message.content.replace("<@" + client.user.id + ">", "");
+                console.log("[Cleverbot] " + cleverMessage);
                 message.channel.startTyping();
                 cleverbot.write(cleverMessage, function (response) {
                     message.reply(response.output);
                     message.channel.stopTyping();
                 });
-            } else {
-                message.channel.send(":x: Error! You are either not verified for Cleverbot, or banned from it. Please check <#274669940852785152> for a link to the forum to sign-up for Cleverbot.");
             }
         }
     }
@@ -62,13 +54,13 @@ client.on('guildMemberAdd', member => {
     if(member.guild.id !== config.server) return;
     member.addRole(member.guild.roles.find('name', 'Members'));
     let addedMemberName = member.user.username;
-    member.guild.defaultChannel.send('Welcome ' + addedMemberName + '!');
+    member.guild.channels.get(config.announcementChannel).send('Welcome ' + addedMemberName + '!');
 });
 
 client.on('guildMemberRemove', member => {
     if(member.guild.id !== config.server) return;
     let removedMemberName = member.user.username;
-    member.guild.defaultChannel.send('Bye ' + removedMemberName + '...');
+    member.guild.channels.get(config.announcementChannel).send('Bye ' + removedMemberName + '...');
 });
 
 client.on('guildCreate', guild => {
@@ -82,7 +74,7 @@ client.on('guildCreate', guild => {
         .then(function (parsedBody) {
             console.log('[Carbon] Successfully posted to Carbon.');
         }).catch(function (err) {
-            console.log("[Carbon] Failed to post to Carbon.");
+            console.log("[Carbon] Failed to post to Carbon. " + err);
         });
         request
         .post('https://bots.discord.pw/api/bots/' + config.botID + '/stats')
@@ -91,7 +83,7 @@ client.on('guildCreate', guild => {
         .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
-            console.log("[Discord Bots] Failed to post to Discord Bots.");
+            console.log("[Discord Bots] Failed to post to Discord Bots. " + err);
         });
     });
 });
@@ -107,7 +99,7 @@ client.on('guildDelete', guild => {
         .then(function (parsedBody) {
             console.log('[Carbon] Successfully posted to Carbon.');
         }).catch(function (err) {
-            console.log("[Carbon] Failed to post to Carbon.");
+            console.log("[Carbon] Failed to post to Carbon. " + err);
         });
         request
         .post('https://bots.discord.pw/api/bots/' + config.botID + '/stats')
@@ -116,13 +108,13 @@ client.on('guildDelete', guild => {
         .then(function (parsedBody) {
             console.log('[Discord Bots] Successfully posted to Discord Bots.');
         }).catch(function (err) {
-            console.log("[Discord Bots] Failed to post to Discord Bots.");
+            console.log("[Discord Bots] Failed to post to Discord Bots. " + err);
         });
     });
 });
 
 client.on('disconnect', () => {
-    console.log('[Disconnect] A disconnection has occurred. Attempting to reboot...').then(p => process.exit(0));
+    process.exit(0);
 });
 
 client.once('ready', () => {

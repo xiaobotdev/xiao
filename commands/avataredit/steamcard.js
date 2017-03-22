@@ -6,7 +6,6 @@ module.exports = class SteamCardCommand extends commando.Command {
         super(Client, {
             name: 'steamcard',
 			aliases: [
-				'steam',
 				'card'
 			],
             group: 'avataredit',
