@@ -143,7 +143,7 @@ function isLetter(character) {
 	return true;
 }
 
-const translator = function(text) {
+function translator(text) {
 	let translatedText = "";
 	let word = "";
 	for (let i = 0; i < text.length; i += 1) {
@@ -164,6 +164,13 @@ const translator = function(text) {
 	if (word !== "") translatedText += translateWord(word);
 
 	return translatedText;
+}
+
+const temmize = function(text) {
+	let currentTranslation = translator(text);
+	let temmify = currentTranslation.split("ing").join("in").split("!").join("!!!!111!11!1!!!1!!!1111!").split("'").join("");
+	
+	return temmify;
 };
 
 
@@ -184,11 +191,7 @@ module.exports = class TemmieCommand extends commando.Command {
 		}
 		console.log("[Command] " + message.content);
 		let thingToTranslate = message.content.split(" ").slice(1).join(" ");
-		let temspeak = translator(thingToTranslate);
-		let noing = temspeak.split("ing").join("in");
-		let noExclaim = noing.split("!").join("!!!!111!11!1!!!1!!!1111!");
-		let noApostrophe = noExclaim.split("'").join("");
-		let translated = noApostrophe;
-		message.channel.send(translated);
+		let temmized = temmize(thingToTranslate);
+		message.channel.send(temmized);
 	}
 };
