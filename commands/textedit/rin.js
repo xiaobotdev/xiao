@@ -29,7 +29,6 @@ module.exports = class RinSayCommand extends commando.Command {
         .post(config.webhook)
         .send({ content: rinContent })
         .then(function (parsedBody) {
-            message.channel.send('Message sent to the Rin Webhook!');
             if(message.content.type === 'dm') return;
             message.delete();
         }).catch(function (err) {
