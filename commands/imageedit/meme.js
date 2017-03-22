@@ -11,7 +11,7 @@ module.exports = class MemeCommand extends commando.Command {
             group: 'imageedit',
             memberName: 'meme',
             description: "Sends a Meme with text of your choice, and a background of your choice. Split first and second lines with a | (;meme facepalm I can't even | comprehend this)",
-            examples: [";meme facepalm I can't even | comprehend this"]
+            examples: [";meme facepalm I can't even | comprehend this", ";meme list"]
         });
     }
 

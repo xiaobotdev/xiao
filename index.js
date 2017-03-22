@@ -98,7 +98,7 @@ client.on('guildCreate', guild => {
 
 client.on('guildDelete', guild => {
     console.log("[Guild] I have left the guild: " + guild.name + ", " + guild.owner.user.username + " (" + guild.id + ")...");
-    client.guilds.get(config.server).channels.get('265503171835592704').send("I have left the guild: " + guild.name + " (Owner: " + guild.owner.user.username + ")...");
+    client.guilds.get(config.server).channels.get(config.announcementChannel).send("I have left the guild: " + guild.name + " (Owner: " + guild.owner.user.username + ")...");
     client.shard.fetchClientValues('guilds.size').then(results => {
         console.log("[Guild Count] " + results.reduce((prev, val) => prev + val, 0));
         request
