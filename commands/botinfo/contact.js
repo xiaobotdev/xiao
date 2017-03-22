@@ -1,5 +1,6 @@
 const commando = require('discord.js-commando');
 const banlist = require('./banlist.json');
+const config = require('../../config.json');
 
 module.exports = class ContactCommand extends commando.Command {
     constructor(Client){
@@ -23,11 +24,16 @@ module.exports = class ContactCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let banID = message.author.id;
+        let messageToReport = message.content.split(" ").slice(1).join(" ");
         if (message.author.id === banlist.banned[banID]) {
             message.channel.send("Sorry, you've been banned from using this command.");
         } else {
-            this.client.users.get('242699360352206850').send("**" + message.author.username + '#' + message.author.discriminator + " (" + message.author.id + ")" + ":**\n" + message.content.split(" ").slice(1).join(" "));
-            message.channel.send('Message Sent! Thanks for your support!');
+            if(messageToReport === '') {
+                message.channel.send(':x: Error! Please do not report nothing!');
+            } else {
+                this.client.users.get(config.owner).send("**" + message.author.username + '#' + message.author.discriminator + " (" + message.author.id + ")" + ":**\n" + messageToReport);
+                message.channel.send('Message Sent! Thanks for your support!');
+            }
         }
     }
 };
