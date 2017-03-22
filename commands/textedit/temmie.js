@@ -150,8 +150,7 @@ function translator(text) {
 		let character = text[i];
 		if (isLetter(character)) {
 			word += character;
-		}
-		else {
+		} else {
 			if (word != "") {
 				let wordTranslate = translateWord(word);
 				translatedText += wordTranslate;
