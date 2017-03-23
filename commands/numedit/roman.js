@@ -20,10 +20,15 @@ module.exports = class RomanCommand extends commando.Command {
         let numberToRoman = message.content.split(" ").slice(1).join(" ");
         let romanInterger = Number(numberToRoman);
         if (romanInterger > 1000000) {
-            return message.channel.send(':x: Error! Number is too high!');
+            let numberErr = await message.channel.send(':x: Error! Number is too high!');
         }
         else {
-            return message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered nothing?'));
+            try {
+                let romanMes = await message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger));
+            }
+            catch (err) {
+                let errMes = await message.channel.send(':x: Error! Something went wrong! Perhaps you entered nothing?');
+            }
         }
     }
 };

@@ -18,6 +18,6 @@ module.exports = class UptimeCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        return message.channel.send(`I've been active on this shard for: **${moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]')}** in **${this.client.guilds.size} Servers.**`);
+        let uptimeMes = await message.channel.send(`I've been active on this shard for: **${moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]')}** in **${this.client.guilds.size} Servers.**`);
     }
 };
