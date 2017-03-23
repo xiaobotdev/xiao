@@ -19,6 +19,7 @@ module.exports = class WikipediaCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
+        thingToSearch = thingToSearch.split(")").join("%29");
         request
             .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${thingToSearch}&exintro=&explaintext=&redirects=&formatversion=2`)
             .then(function(response) {
