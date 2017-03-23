@@ -1,19 +1,19 @@
 const commando = require('discord.js-commando');
 const request = require('superagent');
 const cheerio = require('cheerio');
-const querystring = require('querystring');
 
 module.exports = class DefineCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
-            name: 'google',
+            name: 'image',
             aliases: [
-                'search'
+                'searchimage',
+                'googleimages'
             ],
             group: 'search',
-            memberName: 'google',
-            description: 'Searches Google. (;google Cat)',
-            examples: [';google Cat']
+            memberName: 'image',
+            description: 'Searches Google for an Image. (;image Cat)',
+            examples: [';image Cat']
         });
     }
 
@@ -25,13 +25,11 @@ module.exports = class DefineCommand extends commando.Command {
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
         message.channel.send('Searching...').then(msg => {
             request
-                .get(`https://www.google.com/search?q=${thingToSearch}`)
+                .get(`https://www.google.com/search?tbm=isch&gs_l=img&q=${encodeURI(thingToSearch)}`)
                 .then(function(response) {
                     const $ = cheerio.load(response.text);
-                    let href = $('.r').first().find('a').first().attr('href');
-                    if (!href) return Promise.reject(new Error('NO RESULTS'));
-                    href = querystring.parse(href.replace('/url?', ''));
-                    msg.edit(href.q);
+                    const result = $('.images_table').find('img').first().attr('src');
+                    msg.edit(result);
                 }).catch(function(err) {
                     msg.edit(':x: Error! No Results Found!');
                 });
