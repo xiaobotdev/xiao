@@ -39,11 +39,11 @@ client.registry
 client.on('message', (message) => {
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
-    if (message.content.startsWith("<@" + client.user.id + ">")) {
+    if (message.content.startsWith(`<@${client.user.id}>`)) {
         if (message.guild.id === config.server || message.guild.id === config.personalServer || message.author.id === config.owner) {
             if (message.author.id === clevusers.allowed[message.author.id]) {
-                let cleverMessage = message.content.replace("<@" + client.user.id + ">", "");
-                console.log("[Cleverbot] " + cleverMessage);
+                let cleverMessage = message.content.replace(`<@${client.user.id}>`, "");
+                console.log(`[Cleverbot] ${cleverMessage}`);
                 message.channel.startTyping();
                 cleverbot.write(cleverMessage, function(response) {
                     message.reply(response.output);
@@ -58,20 +58,20 @@ client.on('guildMemberAdd', member => {
     if (member.guild.id !== config.server) return;
     member.addRole(member.guild.roles.find('name', 'Members'));
     let addedMemberName = member.user.username;
-    member.guild.channels.get(config.announcementChannel).send('Welcome ' + addedMemberName + '!');
+    member.guild.channels.get(config.announcementChannel).send(`Welcome ${addedMemberName}!`);
 });
 
 client.on('guildMemberRemove', member => {
     if (member.guild.id !== config.server) return;
     let removedMemberName = member.user.username;
-    member.guild.channels.get(config.announcementChannel).send('Bye ' + removedMemberName + '...');
+    member.guild.channels.get(config.announcementChannel).send(`Bye ${removedMemberName}...`);
 });
 
 client.on('guildCreate', guild => {
-    console.log("[Guild] I have joined the guild: " + guild.name + ", " + guild.owner.user.username + " (" + guild.id + ")!");
-    client.guilds.get(config.server).channels.get(config.announcementChannel).send("I have joined the guild: " + guild.name + " (Owner: " + guild.owner.user.username + ")!");
+    console.log(`[Guild] I have joined the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
+    client.guilds.get(config.server).channels.get(config.announcementChannel).send(`I have joined the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
     client.shard.fetchClientValues('guilds.size').then(results => {
-        console.log("[Guild Count] " + results.reduce((prev, val) => prev + val, 0));
+        console.log(`[Guild Count] ${results.reduce((prev, val) => prev + val, 0)}`);
         request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
@@ -81,10 +81,10 @@ client.on('guildCreate', guild => {
             .then(function(parsedBody) {
                 console.log('[Carbon] Successfully posted to Carbon.');
             }).catch(function(err) {
-                console.log("[Carbon] Failed to post to Carbon. " + err);
+                console.log(`[Carbon] Failed to post to Carbon. ${err}`);
             });
         request
-            .post('https://bots.discord.pw/api/bots/' + config.botID + '/stats')
+            .post(`https://bots.discord.pw/api/bots/${config.botID}/stats`)
             .set({
                 'Authorization': config.botskey
             })
@@ -94,16 +94,16 @@ client.on('guildCreate', guild => {
             .then(function(parsedBody) {
                 console.log('[Discord Bots] Successfully posted to Discord Bots.');
             }).catch(function(err) {
-                console.log("[Discord Bots] Failed to post to Discord Bots. " + err);
+                console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
             });
     });
 });
 
 client.on('guildDelete', guild => {
-    console.log("[Guild] I have left the guild: " + guild.name + ", " + guild.owner.user.username + " (" + guild.id + ")...");
-    client.guilds.get(config.server).channels.get(config.announcementChannel).send("I have left the guild: " + guild.name + " (Owner: " + guild.owner.user.username + ")...");
+    console.log(`[Guild] I have left the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
+    client.guilds.get(config.server).channels.get(config.announcementChannel).send(`I have left the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
     client.shard.fetchClientValues('guilds.size').then(results => {
-        console.log("[Guild Count] " + results.reduce((prev, val) => prev + val, 0));
+        console.log(`[Guild Count] ${results.reduce((prev, val) => prev + val, 0)}`);
         request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
@@ -113,10 +113,10 @@ client.on('guildDelete', guild => {
             .then(function(parsedBody) {
                 console.log('[Carbon] Successfully posted to Carbon.');
             }).catch(function(err) {
-                console.log("[Carbon] Failed to post to Carbon. " + err);
+                console.log(`[Carbon] Failed to post to Carbon. ${err}`);
             });
         request
-            .post('https://bots.discord.pw/api/bots/' + config.botID + '/stats')
+            .post(`https://bots.discord.pw/api/bots/${config.botID}/stats`)
             .set({
                 'Authorization': config.botskey
             })
@@ -126,7 +126,7 @@ client.on('guildDelete', guild => {
             .then(function(parsedBody) {
                 console.log('[Discord Bots] Successfully posted to Discord Bots.');
             }).catch(function(err) {
-                console.log("[Discord Bots] Failed to post to Discord Bots. " + err);
+                console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
             });
     });
 });
@@ -141,7 +141,7 @@ client.once('ready', () => {
 });
 
 process.on('unhandledRejection', function(reason, p) {
-    console.log("[Error] A Possibly Unhandled Rejection has Occurred. " + reason);
+    console.log(`[Error] A Possibly Unhandled Rejection has Occurred. ${reason}`);
 });
 
 client.login(config.token);

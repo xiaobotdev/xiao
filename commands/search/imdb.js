@@ -22,7 +22,7 @@ module.exports = class IMDBCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let queryMovie = message.content.split(" ").slice(1).join(" ");
         let movie;
         imdb.getReq({
@@ -38,7 +38,7 @@ module.exports = class IMDBCommand extends commando.Command {
                     .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
                     .setURL(movie.imdburl)
                     .setTitle(movie.title + ' (' + movie.rating + ' Score)')
-                    .setDescription(movie.plot.substr(0, 1500) + " [Read the Rest Here!](" + movie.imdburl + ")")
+                    .setDescription(`${movie.plot.substr(0, 1500)} [Read the Rest Here!](${movie.imdburl})`)
                     .addField('**Genres:**',
                         movie.genres)
                     .addField('**Year:**',

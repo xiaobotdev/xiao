@@ -21,8 +21,8 @@ module.exports = class ServersCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
-        console.log(this.client.guilds.array().length + " Servers: " + this.client.guilds.map(g => g.name + " (" + g.id + ")").join(", "));
+        console.log(`[Command] ${message.content}`);
+        console.log(`${this.client.guilds.array().length} Servers: ${this.client.guilds.map(g => g.name + "(" + g.id + ")").join(", ")}`);
         message.channel.send("Sent the information to the console!");
     }
 };

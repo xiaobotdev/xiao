@@ -9,8 +9,8 @@ module.exports = class ChooseCommand extends commando.Command {
             ],
             group: 'response',
             memberName: 'choose',
-            description: 'Chooses between two things. (;choose Cow | Sheep)',
-            examples: [';choose Cow | Sheep']
+            description: 'Chooses between things. (;choose Cow | Sheep)',
+            examples: [';choose Cow | Sheep', ';choose Bark | Woof | Meow | Moo']
         });
     }
 
@@ -18,14 +18,11 @@ module.exports = class ChooseCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         if (message.content.includes(" | ")) {
             let choices = message.content.split(" ").slice(1).join(" ").split(' | ');
-            let choice1 = choices[0];
-            let choice2 = choices[1];
-            let randomChoice = [choice1, choice2];
-            randomChoice = randomChoice[Math.floor(Math.random() * randomChoice.length)];
-            message.channel.send("I choose " + randomChoice + "!");
+            choices = choices[Math.floor(Math.random() * choices.length)];
+            message.channel.send(`I choose ${choices}!`);
         }
         else {
             message.channel.send(":x: Split your two choices with a ' | '!");

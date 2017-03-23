@@ -15,8 +15,8 @@ module.exports = class SlapCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(message.author + ' *slaps* ' + thingToRoleplay);
+        message.channel.send(`${message.author} *slaps* ${thingToRoleplay}`);
     }
 };

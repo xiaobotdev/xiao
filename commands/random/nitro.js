@@ -16,7 +16,7 @@ module.exports = class NitroCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         const embed = new Discord.RichEmbed()
             .setAuthor("Discord Nitro")
             .setThumbnail("https://pbs.twimg.com/profile_images/814184180649197568/y2eZcVMq.jpg")

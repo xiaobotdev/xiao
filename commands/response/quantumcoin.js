@@ -20,9 +20,9 @@ module.exports = class QuantumCoin extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let qcoin = ['on nothing', 'on NaN', 'on 0', 'in the air', 'on null'];
         qcoin = qcoin[Math.floor(Math.random() * qcoin.length)];
-        message.channel.send("It landed " + qcoin);
+        message.channel.send(`It landed ${qcoin}`);
     }
 };

@@ -17,7 +17,7 @@ module.exports = class YodaCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let turnToYoda = message.content.split(" ").slice(1).join(" ");
         if (!turnToYoda) {
             message.channel.send(':x: Error! Nothing to translate!');

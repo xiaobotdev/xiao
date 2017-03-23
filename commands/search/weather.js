@@ -17,7 +17,7 @@ module.exports = class WeatherCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let locationToSearch = message.content.split(" ").slice(1).join(" ");
         weather(locationToSearch, 'f').then(info => {
             const embed = new Discord.RichEmbed()
@@ -34,7 +34,7 @@ module.exports = class WeatherCommand extends commando.Command {
                 .addField('**Condition:**',
                     info.item.condition.text, true)
                 .addField('**Temperature:**',
-                    info.item.condition.temp + "°F", true)
+                    `${info.item.condition.temp}°F`, true)
                 .addField('**Humidity:**',
                     info.atmosphere.humidity, true)
                 .addField('**Pressure:**',

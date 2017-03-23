@@ -22,11 +22,11 @@ module.exports = class BotSearchCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size === 1) {
             let botToFind = message.mentions.users.first().id;
             request
-                .get('https://bots.discord.pw/api/bots/' + botToFind)
+                .get(`https://bots.discord.pw/api/bots/${botToFind}`)
                 .set({
                     'Authorization': config.botskey
                 })
@@ -42,7 +42,7 @@ module.exports = class BotSearchCommand extends commando.Command {
                         .addField('**Prefix:**',
                             response.body.prefix, true)
                         .addField('**Invite:**',
-                            '[Here](' + response.body.invite_url + ')', true);
+                            `[Here](${response.body.invite_url})`, true);
                     message.channel.sendEmbed(embed).catch(console.error);
                 }).catch(function(err) {
                     message.channel.send(":x: Error! Bot not Found!");

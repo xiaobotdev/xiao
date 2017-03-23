@@ -23,7 +23,7 @@ module.exports = class InfoCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         this.client.shard.fetchClientValues('guilds.size').then(guilds => {
             this.client.shard.fetchClientValues('voiceConnections.size').then(vCConnections => {
                 const embed = new Discord.RichEmbed()
@@ -31,15 +31,15 @@ module.exports = class InfoCommand extends commando.Command {
                     .setAuthor(this.client.user.username, this.client.user.avatarURL)
                     .setColor(0x00AE86)
                     .setDescription('XiaoBot is your personal companion for your Discord Server!')
-                    .setFooter('©2017 dragonfire535 | Created ' + moment.duration(this.client.user.createdTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks, and ]d[ days]') + ' ago!')
+                    .setFooter(`©2017 dragonfire535 | Created ${moment.duration(this.client.user.createdTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
                     .setThumbnail(this.client.user.avatarURL)
                     .setURL('http://dragonfire535.weebly.com/xiaobot.html')
                     .addField('Commands',
                         "There are a variety of commands XiaoBot can use! Use ';help' to view a list of all commands!")
                     .addField('Servers',
-                        this.client.guilds.size + " / " + guilds.reduce((prev, val) => prev + val, 0), true)
+                        `${this.client.guilds.size} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
                     .addField('Shards',
-                        this.client.options.shardCount + " (This is Shard: " + this.client.shard.id + ")", true)
+                        `${this.client.options.shardCount} (This is Shard: ${this.client.shard.id})`, true)
                     .addField('Commands',
                         config.commandCount, true)
                     .addField('Owner',
@@ -53,7 +53,7 @@ module.exports = class InfoCommand extends commando.Command {
                     .addField('Node Version',
                         process.version, true)
                     .addField('Voice Connections',
-                        this.client.voiceConnections.size + " / " + vCConnections.reduce((prev, val) => prev + val, 0), true)
+                        `${this.client.voiceConnections.size} / ${vCConnections.reduce((prev, val) => prev + val, 0)}`, true)
                     .addField('Library',
                         "[discord.js](https://discord.js.org/#/) / [commando](https://github.com/Gawdl3y/discord.js-commando)", true)
                     .addField('Modules',

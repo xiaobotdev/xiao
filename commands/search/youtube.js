@@ -21,7 +21,7 @@ module.exports = class YouTubeCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let videoToSearch = message.content.split(" ").slice(1).join("-");
         request
             .get('https://www.googleapis.com/youtube/v3/search')
@@ -41,13 +41,13 @@ module.exports = class YouTubeCommand extends commando.Command {
                         .setColor(0xDD2825)
                         .setTitle(response.body.items[0].snippet.title)
                         .setDescription(response.body.items[0].snippet.description)
-                        .setAuthor('YouTube - ' + response.body.items[0].snippet.channelTitle, 'https://cdn3.iconfinder.com/data/icons/social-icons-5/607/YouTube_Play.png')
-                        .setURL('https://www.youtube.com/watch?v=' + response.body.items[0].id.videoId)
+                        .setAuthor(`YouTube - ${response.body.items[0].snippet.channelTitle}`, 'https://cdn3.iconfinder.com/data/icons/social-icons-5/607/YouTube_Play.png')
+                        .setURL(`https://www.youtube.com/watch?v=${response.body.items[0].id.videoId}`)
                         .setThumbnail(response.body.items[0].snippet.thumbnails.default.url);
                     message.channel.sendEmbed(embed).catch(console.error);
                 }
             }).catch(function(err) {
-                message.channel.send(":x: Error! An error has occurred! Try again (if this continues to occur, the daily quota may have been reached).");
+                message.channel.send(":x: Error! An error has occurred! Try again later! (If this continues to occur, the daily quota may have been reached).");
             });
     }
 };

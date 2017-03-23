@@ -18,7 +18,7 @@ module.exports = class TranslateCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let [languageto] = message.content.toLowerCase().split(" ").slice(1);
         let thingToTranslate = message.content.split(" ").slice(2).join(" ");
         if (languageto === "list") {
@@ -38,9 +38,9 @@ module.exports = class TranslateCommand extends commando.Command {
                     let languagefrom = res.from.language.iso.toLowerCase();
                     const embed = new Discord.RichEmbed()
                         .setColor(0x00AE86)
-                        .addField('Input (From: ' + languages.entries[languagefrom] + '):',
+                        .addField(`Input (From: ${languages.entries[languagefrom]}):`,
                             thingToTranslate)
-                        .addField('Translation (To: ' + languages.entries[languageto] + '):',
+                        .addField(`Translation (To: ${languages.entries[languageto]}):`,
                             res.text);
                     message.channel.sendEmbed(embed).catch(console.error);
                 }).catch(err => {
