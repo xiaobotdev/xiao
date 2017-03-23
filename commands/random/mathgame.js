@@ -55,7 +55,7 @@ module.exports = class MathGameCommand extends commando.Command {
                 }).then((collected) => {
                     return message.channel.send(`Good Job! You won!`);
                 }).catch(() => {
-                    return message.channel.send(`Aw... Too bad, try again next time! The correct answer was: ${solved}`);
+                    return message.channel.send(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${solved}`);
                 });
             });
         }

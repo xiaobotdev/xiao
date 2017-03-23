@@ -55,7 +55,7 @@ module.exports = class TypingGameCommand extends commando.Command {
         }
         else {
             const embed = new Discord.RichEmbed()
-                .setTitle('You have **' + levelWord + '** seconds to type:')
+                .setTitle(`You have **${levelWord}** seconds to type:`)
                 .setDescription(randomSentence);
             await message.channel.sendEmbed(embed).then(() => {
                 message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
