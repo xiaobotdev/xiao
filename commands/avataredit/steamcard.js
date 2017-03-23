@@ -22,11 +22,11 @@ module.exports = class SteamCardCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
             if (message.mentions.users.size !== 1) {
-                return message.channel.send(':x: Error! Please mention one user!');
+                let errorMes1 = await message.channel.send(':x: Error! Please mention one user!');
             }
             else {
                 if (!message.mentions.users.first().avatarURL) {
-                    return message.channel.send(":x: Error! This user has no avatar!");
+                    let errorMes2 = await message.channel.send(":x: Error! This user has no avatar!");
                 }
                 else {
                     let userDisplayName = message.guild.member(message.mentions.users.first()).displayName;
@@ -37,17 +37,15 @@ module.exports = class SteamCardCommand extends commando.Command {
                     images.push(Jimp.read(userAvatar));
                     images.push(Jimp.read("./images/SteamCard.png"));
                     images.push(Jimp.read("./images/SteamCardBlank.png"));
-                    await Promise.all(images).then(([avatar, steamcard, nothing]) => {
-                        Jimp.loadFont(Jimp.FONT_SANS_32_WHITE).then(function(font) {
-                            avatar.resize(450, 450);
-                            nothing.composite(avatar, 25, 25);
-                            nothing.composite(steamcard, 0, 0);
-                            nothing.print(font, 38, 20, userDisplayName);
-                            nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-                                if (err) throw err;
-                                return message.channel.sendFile(buff);
-                            });
-                        });
+                    let [avatar, steamcard, nothing] = await Promise.all(images);
+                    let font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
+                    avatar.resize(450, 450);
+                    nothing.composite(avatar, 25, 25);
+                    nothing.composite(steamcard, 0, 0);
+                    nothing.print(font, 38, 20, userDisplayName);
+                    nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
+                        if (err) throw err;
+                        message.channel.sendFile(buff);
                     });
                 }
             }

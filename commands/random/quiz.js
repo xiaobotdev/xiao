@@ -29,7 +29,7 @@ module.exports = class QuizCommand extends commando.Command {
                 });
             const embed = new Discord.RichEmbed()
                 .setTitle('You have **fifteen** seconds to answer this question:')
-                .setDescription(`**Category: ${response.body[0].category}**\n${response.body[0].question}`);
+                .setDescription(`**Category: ${response.body[0].category.title}**\n${response.body[0].question}`);
             let embededMessage = await message.channel.sendEmbed(embed);
             try {
                 let collected = await message.channel.awaitMessages(res => res.content.toLowerCase() === response.body[0].answer.toLowerCase() && res.author.id === message.author.id, {
