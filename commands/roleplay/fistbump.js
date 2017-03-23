@@ -17,6 +17,6 @@ module.exports = class FistBumpCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(`${message.author} *cuddles* ${thingToRoleplay} *badalalala*`);
+        message.channel.send(`${message.author} *fist-bumps* ${thingToRoleplay} *badalalala*`);
     }
 };
