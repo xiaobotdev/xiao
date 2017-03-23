@@ -22,7 +22,7 @@ module.exports = class UrbanDictionary extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let wordToDefine = message.content.split(" ").slice(1).join(" ");
         urban(wordToDefine).first(function(response) {
             if (!response) {
@@ -37,7 +37,7 @@ module.exports = class UrbanDictionary extends commando.Command {
                     .setAuthor('Urban Dictionary', 'http://a1.mzstatic.com/eu/r30/Purple71/v4/66/54/68/6654683f-cacd-4a55-1784-f14257f77874/icon175x175.png')
                     .setURL(response.permalink)
                     .setTitle(response.word)
-                    .setDescription(response.definition.substr(0, 1900) + ' [Read the Rest Here!](' + response.permalink + ')')
+                    .setDescription(`${response.definition.substr(0, 1900)} [Read the Rest Here!](${response.permalink})`)
                     .addField('**Example:**',
                         response.example.substr(0, 1900));
                 message.channel.sendEmbed(embed).catch(console.error);
@@ -48,7 +48,7 @@ module.exports = class UrbanDictionary extends commando.Command {
                     .setAuthor('Urban Dictionary', 'http://a1.mzstatic.com/eu/r30/Purple71/v4/66/54/68/6654683f-cacd-4a55-1784-f14257f77874/icon175x175.png')
                     .setURL(response.permalink)
                     .setTitle(response.word)
-                    .setDescription(response.definition.substr(0, 1900) + ' [Read the Rest Here!](' + response.permalink + ')');
+                    .setDescription(`${response.definition.substr(0, 1900)} [Read the Rest Here!](${response.permalink})`);
                 message.channel.sendEmbed(embed).catch(console.error);
             }
         });

@@ -21,7 +21,7 @@ module.exports = class GuildInfoCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
             const embed = new Discord.RichEmbed()
                 .setColor(0x00AE86)
@@ -37,7 +37,7 @@ module.exports = class GuildInfoCommand extends commando.Command {
                 .addField('**Region:**',
                     message.guild.region, true)
                 .addField('**Owner:**',
-                    message.guild.owner.user.username + '#' + message.guild.owner.user.discriminator, true)
+                    `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
                 .addField("**Users:**",
                     message.guild.memberCount, true);
             message.channel.sendEmbed(embed).catch(console.error);

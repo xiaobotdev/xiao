@@ -18,12 +18,12 @@ module.exports = class WattpadCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let queryBook = message.content.split(" ").slice(1).join(" ");
         request
             .get('https://api.wattpad.com:443/v4/stories')
             .set({
-                'Authorization': 'Basic ' + config.wattpadkey
+                'Authorization': `Basic ${config.wattpadkey}`
             })
             .query({
                 query: queryBook,
@@ -35,7 +35,7 @@ module.exports = class WattpadCommand extends commando.Command {
                     .setAuthor('Wattpad', 'http://www.selfpubtoolbox.com/wp-content/uploads/2015/05/a6044fd3a88acd5043860484db972ca6.png')
                     .setURL(response.body.stories[0].url)
                     .setTitle(response.body.stories[0].title)
-                    .setDescription(response.body.stories[0].description.substr(0, 1500) + " [Read the Rest Here!](" + response.body.stories[0].url + ")")
+                    .setDescription(`${response.body.stories[0].description.substr(0, 1500)} [Read the Rest Here!](${response.body.stories[0].url})`)
                     .addField('**Author:**',
                         response.body.stories[0].user, true)
                     .addField('**Parts:**',

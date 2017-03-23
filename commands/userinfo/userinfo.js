@@ -21,7 +21,7 @@ module.exports = class UserInfoCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
             let stat;
             switch (message.mentions.users.first().presence.status) {
@@ -62,7 +62,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                         .setColor(color)
                         .setThumbnail(message.mentions.users.first().avatarURL)
                         .addField('**Name:**',
-                            message.mentions.users.first().username + '#' + message.mentions.users.first().discriminator, true)
+                            `${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}`, true)
                         .addField('**ID:**',
                             message.mentions.users.first().id, true)
                         .addField('**Joined Discord On:**',
@@ -80,7 +80,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                         .setColor(color)
                         .setThumbnail(message.mentions.users.first().avatarURL)
                         .addField('**Name:**',
-                            message.mentions.users.first().username + '#' + message.mentions.users.first().discriminator, true)
+                            `${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}`, true)
                         .addField('**ID:**',
                             message.mentions.users.first().id, true)
                         .addField('**Joined Discord On:**',

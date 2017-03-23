@@ -16,7 +16,7 @@ module.exports = class KickCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
             let userToKick = message.mentions.users.first();
             let reason = message.content.split(" ").slice(2).join(" ");
@@ -30,11 +30,11 @@ module.exports = class KickCommand extends commando.Command {
                         message.guild.member(userToKick).kick();
                         if (message.guild.channels.exists("name", "mod_logs")) {
                             const embed = new Discord.RichEmbed()
-                                .setAuthor(message.author.username + '#' + message.author.discriminator, message.author.avatarURL)
+                                .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                                 .setColor(0xFFA500)
                                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                                 .setTimestamp()
-                                .setDescription('**Member:** ' + userToKick.username + '#' + userToKick.discriminator + ' (' + userToKick.id + ')\n**Action:** Kick\n**Reason:** ' + reason);
+                                .setDescription(`**Member:** ${userToKick.username}#${userToKick.discriminator} (${userToKick.id})\n**Action:** Kick\n**Reason:** ${reason}`);
                             message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
                         }
                         else {

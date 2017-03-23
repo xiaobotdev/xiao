@@ -24,10 +24,10 @@ module.exports = class DefineCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let defineThis = encodeURI(message.content.split(" ").slice(1).join(" "));
         request
-            .get('http://api.wordnik.com:80/v4/word.json/' + defineThis + '/definitions')
+            .get(`http://api.wordnik.com:80/v4/word.json/${defineThis}/definitions`)
             .query({
                 limit: 1,
                 includeRelated: false,

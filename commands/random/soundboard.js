@@ -20,7 +20,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['CONNECT', 'SPEAK', 'ADD_REACTIONS'])) {
                 message.channel.send(':x: Error! In order to do this command, you must give me the permissions to "Connect" and "Speak", as well as the permission to Add Reactions!');

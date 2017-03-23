@@ -18,9 +18,9 @@ module.exports = class RateWaifuCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let waifuToRate = message.content.split(" ").slice(1).join(" ");
-        let percentage = Math.floor(Math.random() * 10) + 1;
-        message.channel.send("I'd give " + waifuToRate + " a " + percentage + "/10!");
+        let rating = Math.floor(Math.random() * 10) + 1;
+        message.channel.send(`I'd give ${waifuToRate} a ${rating}/10!`);
     }
 };

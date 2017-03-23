@@ -19,9 +19,9 @@ module.exports = class CoinFlipCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let coin = ['Heads', 'Tails'];
         coin = coin[Math.floor(Math.random() * coin.length)];
-        message.channel.send("It landed on " + coin);
+        message.channel.send(`It landed on ${coin}`);
     }
 };

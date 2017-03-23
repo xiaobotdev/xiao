@@ -19,7 +19,7 @@ module.exports = class BanCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
             let userToBan = message.mentions.users.first();
             let reason = message.content.split(" ").slice(2).join(" ");
@@ -33,11 +33,11 @@ module.exports = class BanCommand extends commando.Command {
                         message.guild.member(userToBan).ban();
                         if (message.guild.channels.exists("name", "mod_logs")) {
                             const embed = new Discord.RichEmbed()
-                                .setAuthor(message.author.username + '#' + message.author.discriminator, message.author.avatarURL)
+                                .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                                 .setColor(0xFF0000)
                                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                                 .setTimestamp()
-                                .setDescription('**Member:** ' + userToBan.username + '#' + userToBan.discriminator + ' (' + userToBan.id + ')\n**Action:** Ban\n**Reason:** ' + reason);
+                                .setDescription(`**Member:** ${userToBan.username}#${userToBan.discriminator} (${userToBan.id})\n**Action:** Ban\n**Reason:** ${reason}`);
                             message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
                         }
                         else {

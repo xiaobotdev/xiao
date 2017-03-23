@@ -20,9 +20,9 @@ module.exports = class OffspringCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let gender = ['boy', 'girl'];
         gender = gender[Math.floor(Math.random() * gender.length)];
-        message.channel.send("It's a " + gender + "!");
+        message.channel.send(`It's a ${gender}!`);
     }
 };

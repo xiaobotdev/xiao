@@ -17,14 +17,13 @@ module.exports = class WikipediaCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
         request
-            .get("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=" + thingToSearch + "&exintro=&explaintext=&redirects=&formatversion=2")
+            .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${thingToSearch}&exintro=&explaintext=&redirects=&formatversion=2`)
             .then(function(response) {
                 let description = response.body.query.pages[0].extract;
                 let name = response.body.query.pages[0].title;
-                thingToSearch = thingToSearch.split(")").join("%29");
                 if (!description) {
                     message.channel.send(":x: Error! Entry Not Found!");
                 }
@@ -34,9 +33,9 @@ module.exports = class WikipediaCommand extends commando.Command {
                     const embed = new Discord.RichEmbed()
                         .setColor(0xE7E7E7)
                         .setTitle(name)
-                        .setURL("https://en.wikipedia.org/wiki/" + thingToSearch)
+                        .setURL(`https://en.wikipedia.org/wiki/${thingToSearch}`)
                         .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
-                        .setDescription(description + " [Read the Rest Here](https://en.wikipedia.org/wiki/" + thingToSearch + ")");
+                        .setDescription(`${description} [Read the Rest Here](https://en.wikipedia.org/wiki/${thingToSearch})`);
                     message.channel.sendEmbed(embed).catch(console.error);
                 }
             }).catch(function(err) {

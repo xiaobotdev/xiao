@@ -17,7 +17,7 @@ module.exports = class MathGameCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log(`[Command] ${message.content}`);
         let [level] = message.content.toLowerCase().split(" ").slice(1);
         let randomType = ['+', '-', '*'];
         randomType = randomType[Math.floor(Math.random() * randomType.length)];
@@ -55,7 +55,7 @@ module.exports = class MathGameCommand extends commando.Command {
                 }).then((collected) => {
                     message.channel.send(`Good Job! You won!`);
                 }).catch(() => {
-                    message.channel.send('Aw... Too bad, try again next time! The correct answer was: ' + solved);
+                    message.channel.send(`Aw... Too bad, try again next time! The correct answer was: ${solved}`);
                 });
             });
         }
