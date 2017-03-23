@@ -22,9 +22,9 @@ module.exports = class DefineCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        let thingtoSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
+        let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
         message.channel.send('Searching...');
-        const SEARCH_URL = 'https://www.google.com/search?q=' + thingtoSearch;
+        const SEARCH_URL = `https://www.google.com/search?q=${encodeURI(thingToSearch)}`;
         request
         .get(SEARCH_URL)
         .then(function (response) {
