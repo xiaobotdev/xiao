@@ -96,7 +96,7 @@ const memecodes = {
     "bad": "bad",
     "elf": "elf",
     "chosen": "chosen"
-}
+};
 
 module.exports = class MemeCommand extends commando.Command {
     constructor(Client) {
