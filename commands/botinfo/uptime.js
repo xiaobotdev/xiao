@@ -3,7 +3,7 @@ const moment = require('moment');
 require('moment-duration-format');
 
 module.exports = class UptimeCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'uptime',
             group: 'botinfo',
@@ -14,8 +14,8 @@ module.exports = class UptimeCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         message.channel.send("I've been active on this shard for: **" + moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]') + "** in a total of " + this.client.guilds.size + " Servers.");

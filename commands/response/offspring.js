@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class OffspringCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'offspring',
             aliases: [
@@ -17,8 +17,8 @@ module.exports = class OffspringCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let gender = ['boy', 'girl'];

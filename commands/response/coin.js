@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class CoinFlipCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'coin',
             aliases: [
@@ -16,8 +16,8 @@ module.exports = class CoinFlipCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let coin = ['Heads', 'Tails'];

@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const hepburn = require('hepburn');
 
 module.exports = class RomajiCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'romaji',
             aliases: [
@@ -16,19 +16,21 @@ module.exports = class RomajiCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let romajify = message.content.split(" ").slice(1).join(" ");
-        if(hepburn.containsKana(romajify)) {
+        if (hepburn.containsKana(romajify)) {
             let romajified = hepburn.fromKana(romajify);
-            if(romajified.length > 1950) {
+            if (romajified.length > 1950) {
                 message.channel.send(":x: Error! Your message is too long!");
-            } else {
+            }
+            else {
                 message.channel.send(romajified);
             }
-        } else {
+        }
+        else {
             message.channel.send(":x: Error! Message contains no Kana!\n:notepad_spiral: Note: You cannot use this command on Kanji!");
         }
     }

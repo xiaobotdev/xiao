@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const querystring = require('querystring');
 
 module.exports = class DefineCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'google',
             aliases: [
@@ -18,23 +18,24 @@ module.exports = class DefineCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
-        message.channel.send('Searching...');
-        const SEARCH_URL = `https://www.google.com/search?q=${thingToSearch}`;
-        request
-        .get(SEARCH_URL)
-        .then(function (response) {
-            const $ = cheerio.load(response.text);
-            let href = $('.r').first().find('a').first().attr('href');
-            if (!href) return Promise.reject(new Error('NO RESULTS'));
-            href = querystring.parse(href.replace('/url?', ''));
-            message.channel.send(href.q);
-        }).catch(function (err) {
-            message.channel.send(':x: Error! No Results Found!');
+        message.channel.send('Searching...').then(msg => {
+            const SEARCH_URL = `https://www.google.com/search?q=${thingToSearch}`;
+            request
+                .get(SEARCH_URL)
+                .then(function(response) {
+                    const $ = cheerio.load(response.text);
+                    let href = $('.r').first().find('a').first().attr('href');
+                    if (!href) return Promise.reject(new Error('NO RESULTS'));
+                    href = querystring.parse(href.replace('/url?', ''));
+                    msg.edit(href.q);
+                }).catch(function(err) {
+                    message.channel.send(':x: Error! No Results Found!');
+                });
         });
     }
 };

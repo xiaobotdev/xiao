@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class ServersCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'servers',
             aliases: [
@@ -13,16 +13,16 @@ module.exports = class ServersCommand extends commando.Command {
             examples: [";servers"]
         });
     }
-	hasPermission(msg) {
-		return this.client.isOwner(msg.author);
-	}
+    hasPermission(msg) {
+        return this.client.isOwner(msg.author);
+    }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-	    console.log(this.client.guilds.array().length + " Servers: " + this.client.guilds.map(g => g.name + " (" + g.id + ")").join(", "));
+        console.log(this.client.guilds.array().length + " Servers: " + this.client.guilds.map(g => g.name + " (" + g.id + ")").join(", "));
         message.channel.send("Sent the information to the console!");
     }
 };

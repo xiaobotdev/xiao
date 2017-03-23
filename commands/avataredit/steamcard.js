@@ -2,12 +2,12 @@ const commando = require('discord.js-commando');
 const Jimp = require("jimp");
 
 module.exports = class SteamCardCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'steamcard',
-			aliases: [
-				'card'
-			],
+            aliases: [
+                'card'
+            ],
             group: 'avataredit',
             memberName: 'steamcard',
             description: "Put an avatar on a Steam Card. (;steamcard @User)",
@@ -16,17 +16,19 @@ module.exports = class SteamCardCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log("[Command] " + message.content);
-        if(message.channel.type !== 'dm') {
+        if (message.channel.type !== 'dm') {
             if (message.mentions.users.size !== 1) {
                 message.channel.send(':x: Error! Please mention one user!');
-            } else {
-                if(message.mentions.users.first().avatarURL === null) {
+            }
+            else {
+                if (message.mentions.users.first().avatarURL === null) {
                     message.channel.send(":x: Error! This user has no avatar!");
-                } else {
+                }
+                else {
                     let userDisplayName = message.guild.member(message.mentions.users.first()).displayName;
                     let userAvatar = message.mentions.users.first().avatarURL;
                     userAvatar = userAvatar.replace(".jpg", ".png");
@@ -36,7 +38,7 @@ module.exports = class SteamCardCommand extends commando.Command {
                     images.push(Jimp.read("./images/SteamCard.png"));
                     images.push(Jimp.read("./images/SteamCardBlank.png"));
                     Promise.all(images).then(([avatar, steamcard, nothing]) => {
-                        Jimp.loadFont(Jimp.FONT_SANS_32_WHITE).then(function (font) {
+                        Jimp.loadFont(Jimp.FONT_SANS_32_WHITE).then(function(font) {
                             avatar.resize(450, 450);
                             nothing.composite(avatar, 25, 25);
                             nothing.composite(steamcard, 0, 0);
@@ -49,7 +51,8 @@ module.exports = class SteamCardCommand extends commando.Command {
                     });
                 }
             }
-        } else {
+        }
+        else {
             message.channel.send(':x: Error! This command does not work in DM!');
         }
     }

@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
 module.exports = class TypingGameCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'typinggame',
             group: 'random',
@@ -13,8 +13,8 @@ module.exports = class TypingGameCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
         let [level] = message.content.toLowerCase().split(" ").slice(1);
@@ -23,39 +23,40 @@ module.exports = class TypingGameCommand extends commando.Command {
         let time;
         switch (level) {
             case "easy":
-            time = 25000;
-            break;
+                time = 25000;
+                break;
             case "medium":
-            time = 20000;
-            break;
+                time = 20000;
+                break;
             case "hard":
-            time = 15000;
-            break;
-            case "extreme": 
-            time = 10000;
-            break;
+                time = 15000;
+                break;
+            case "extreme":
+                time = 10000;
+                break;
         }
         let levelWord;
         switch (level) {
             case "easy":
-            levelWord = "twenty-five";
-            break;
+                levelWord = "twenty-five";
+                break;
             case "medium":
-            levelWord = "twenty";
-            break;
+                levelWord = "twenty";
+                break;
             case "hard":
-            levelWord = "fifteen";
-            break;
-            case "extreme": 
-            levelWord = "ten";
-            break;
+                levelWord = "fifteen";
+                break;
+            case "extreme":
+                levelWord = "ten";
+                break;
         }
-        if(time === undefined) {
+        if (time === undefined) {
             message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
-        } else {
+        }
+        else {
             const embed = new Discord.RichEmbed()
-            .setTitle('You have **' + levelWord + '** seconds to type:')
-            .setDescription(randomSentence);
+                .setTitle('You have **' + levelWord + '** seconds to type:')
+                .setDescription(randomSentence);
             message.channel.sendEmbed(embed).then(() => {
                 message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
                     max: 1,

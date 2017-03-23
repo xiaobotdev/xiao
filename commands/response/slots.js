@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class SlotsCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'slots',
             group: 'response',
@@ -12,8 +12,8 @@ module.exports = class SlotsCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let slotThing = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
@@ -21,10 +21,11 @@ module.exports = class SlotsCommand extends commando.Command {
         let slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
         let slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
         let slotFour = slotThing[Math.floor(Math.random() * slotThing.length)];
-        if(slotOne === slotTwo && slotOne === slotThree && slotOne === slotFour) {
-        	message.channel.send(slotOne + '|' + slotTwo + '|' + slotThree + '|' + slotFour + "\nWow! You won! Great job... er... luck!");
-        } else {
-        	message.channel.send(slotOne + '|' + slotTwo + '|' + slotThree + '|' + slotFour + "\nAww... You lost... Guess it's just bad luck, huh?");
+        if (slotOne === slotTwo && slotOne === slotThree && slotOne === slotFour) {
+            message.channel.send(slotOne + '|' + slotTwo + '|' + slotThree + '|' + slotFour + "\nWow! You won! Great job... er... luck!");
+        }
+        else {
+            message.channel.send(slotOne + '|' + slotTwo + '|' + slotThree + '|' + slotFour + "\nAww... You lost... Guess it's just bad luck, huh?");
         }
     }
 };
