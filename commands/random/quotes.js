@@ -31,6 +31,8 @@ module.exports = class QuotesCommand extends commando.Command {
                 cat: randomTypes
             })
             .then(function(response) {
+                console.log(response);
+                console.log(response.body);
                 return message.channel.send(`"${response.body.quote}"\n - *${response.body.author}*`).catch(error => message.channel.send(':x: Error! Something went wrong!'));
             }).catch(function(err) {
                 console.log(err);
