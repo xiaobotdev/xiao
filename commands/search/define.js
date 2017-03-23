@@ -4,7 +4,7 @@ const request = require('superagent');
 const config = require('../../config.json');
 
 module.exports = class DefineCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'define',
             aliases: [
@@ -21,22 +21,28 @@ module.exports = class DefineCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
         let defineThis = encodeURI(message.content.split(" ").slice(1).join(" "));
         request
-        .get('http://api.wordnik.com:80/v4/word.json/' + defineThis + '/definitions')
-        .query({ limit: 1, includeRelated: false, useCanonical: false, includeTags: false, api_key: config.wordnikkey })
-        .then(function (response) {
-            const embed = new Discord.RichEmbed()
-            .setColor(0x9797FF)
-            .setTitle(response.body[0].word)
-            .setDescription(response.body[0].text);
-            message.channel.sendEmbed(embed).catch(console.error);
-        }).catch(function (err) {
-            message.channel.send(":x: Error! Word not Found!");
-        });
+            .get('http://api.wordnik.com:80/v4/word.json/' + defineThis + '/definitions')
+            .query({
+                limit: 1,
+                includeRelated: false,
+                useCanonical: false,
+                includeTags: false,
+                api_key: config.wordnikkey
+            })
+            .then(function(response) {
+                const embed = new Discord.RichEmbed()
+                    .setColor(0x9797FF)
+                    .setTitle(response.body[0].word)
+                    .setDescription(response.body[0].text);
+                message.channel.sendEmbed(embed).catch(console.error);
+            }).catch(function(err) {
+                message.channel.send(":x: Error! Word not Found!");
+            });
     }
 };

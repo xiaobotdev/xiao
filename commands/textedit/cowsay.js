@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const cowsay = require('cowsay');
 
 module.exports = class CowsayCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'cowsay',
             group: 'textedit',
@@ -13,18 +13,19 @@ module.exports = class CowsayCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        if(message.content.split(" ").slice(1).join(" ") === "") {
+        if (message.content.split(" ").slice(1).join(" ") === "") {
             message.channel.send(":x: Error! You entered nothing!");
-        } else {
+        }
+        else {
             let turnToCowsay = message.content.split(" ").slice(1).join(" ");
             message.channel.sendCode(null, cowsay.say({
-                text : turnToCowsay,
-                e : "oO",
-                T : "U "
+                text: turnToCowsay,
+                e: "oO",
+                T: "U "
             })).catch(error => {
                 message.channel.send(':x: Error! Perhaps the content is too long?');
             });

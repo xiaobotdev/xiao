@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class RouletteCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'roulette',
             aliases: [
@@ -18,13 +18,14 @@ module.exports = class RouletteCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        if(message.channel.type !== 'dm') {
+        if (message.channel.type !== 'dm') {
             message.channel.send("I choose " + message.guild.members.random().displayName + "!");
-        } else {
+        }
+        else {
             message.channel.send(':x: Error! This command does not work in DM!');
         }
     }

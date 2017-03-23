@@ -150,7 +150,8 @@ function translator(text) {
 		let character = text[i];
 		if (isLetter(character)) {
 			word += character;
-		} else {
+		}
+		else {
 			if (word != "") {
 				let wordTranslate = translateWord(word);
 				translatedText += wordTranslate;
@@ -168,7 +169,7 @@ function translator(text) {
 const temmize = function(text) {
 	let currentTranslation = translator(text);
 	let temmify = currentTranslation.split("ing").join("in").split("!").join("!!!!111!11!1!!!1!!!1111!").split("'").join("");
-	
+
 	return temmify;
 };
 

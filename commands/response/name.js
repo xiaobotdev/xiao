@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class RandomNameGen extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'name',
             aliases: [
@@ -16,8 +16,8 @@ module.exports = class RandomNameGen extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let randomFirstMale = ["Bob", "Daniel", "Logan", "Chris", "Nathan", "George", "Mart", "Charlie", "Felix", "Ralph", "William", "Max", "Jerry", "Marty", "Joshua", "Cody", "Richard", "Alex", "Alexander", "Jordan", "Zachary", "Bill", "Alfred", "Bruce", "Caiden", "Calvin", "Eric", "Robert", "Mark", "Miles", "Nash", "Ronald", "Ivan", "Edgar", "Royal", "Augustine", "Dominic", "Noel", "Rocky", "Grover", "Paul", "Jeremy", "Stevie", "Brock", "Jc", "Tony", "Enoch", "Zachery", "Harvey", "Gilbert", "Chang", "Emery", "Carroll", "Odell", "Jean", "Archie", "Russ", "Barry", "Lowell", "Jacob", "Riku", "Frederic", "Levi", "Faustino", "Leland", "Domenic", "Irwin", "Moises", "Louie", "Larry", "Victor"];
@@ -28,11 +28,13 @@ module.exports = class RandomNameGen extends commando.Command {
         randomLast = randomLast[Math.floor(Math.random() * randomLast.length)];
         let randomFirstBoth = [randomFirstMale, randomFirstFemale]
         randomFirstBoth = randomFirstBoth[Math.floor(Math.random() * randomFirstBoth.length)];
-        if(message.content.toLowerCase().split(" ").slice(1).includes("male")) {
+        if (message.content.toLowerCase().split(" ").slice(1).includes("male")) {
             message.channel.send(randomFirstMale + " " + randomLast);
-        } else if(message.content.toLowerCase().split(" ").slice(1).includes("female")) {
+        }
+        else if (message.content.toLowerCase().split(" ").slice(1).includes("female")) {
             message.channel.send(randomFirstFemale + " " + randomLast);
-        } else {
+        }
+        else {
             message.channel.send(randomFirstBoth + " " + randomLast);
         }
     }

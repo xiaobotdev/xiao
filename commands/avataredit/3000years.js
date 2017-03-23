@@ -2,12 +2,12 @@ const commando = require('discord.js-commando');
 const Jimp = require("jimp");
 
 module.exports = class YearsCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: '3000years',
-			aliases: [
-				'az'
-			],
+            aliases: [
+                'az'
+            ],
             group: 'avataredit',
             memberName: '3000years',
             description: "It's been 3000 years... (;3000years @User)",
@@ -16,16 +16,18 @@ module.exports = class YearsCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log("[Command] " + message.content);
         if (message.mentions.users.size !== 1) {
             message.channel.send(':x: Error! Please mention one user!');
-        } else {
-            if(message.mentions.users.first().avatarURL === null) {
+        }
+        else {
+            if (message.mentions.users.first().avatarURL === null) {
                 message.channel.send(":x: Error! This user has no avatar!");
-            } else {
+            }
+            else {
                 let userAvatar = message.mentions.users.first().avatarURL;
                 userAvatar = userAvatar.replace(".jpg", ".png");
                 userAvatar = userAvatar.replace(".gif", ".png");

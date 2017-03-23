@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class AvatarCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'avatar',
             group: 'userinfo',
@@ -12,16 +12,18 @@ module.exports = class AvatarCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         if (message.mentions.users.size !== 1) {
             message.channel.send(':x: Error! Please mention one user!');
-        } else {
-            if(message.mentions.users.first().avatarURL === null) {
+        }
+        else {
+            if (message.mentions.users.first().avatarURL === null) {
                 message.channel.send(":x: Error! This person has no avatar!");
-            } else {
+            }
+            else {
                 message.channel.send(message.mentions.users.first().avatarURL);
             }
         }

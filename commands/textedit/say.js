@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class SayCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'say',
             aliases: [
@@ -17,14 +17,15 @@ module.exports = class SayCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let copycat = message.content.split(" ").slice(1).join(" ");
-        if(copycat === "") {
+        if (copycat === "") {
             message.channel.send(":x: Error! Nothing to say!");
-        } else {
+        }
+        else {
             message.channel.send(copycat);
             if (message.channel.type === 'dm') return;
             message.delete();

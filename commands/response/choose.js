@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 
 module.exports = class ChooseCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'choose',
             aliases: [
@@ -15,18 +15,19 @@ module.exports = class ChooseCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        if(message.content.includes(" | ")) {
+        if (message.content.includes(" | ")) {
             let choices = message.content.split(" ").slice(1).join(" ").split(' | ');
             let choice1 = choices[0];
             let choice2 = choices[1];
             let randomChoice = [choice1, choice2];
             randomChoice = randomChoice[Math.floor(Math.random() * randomChoice.length)];
             message.channel.send("I choose " + randomChoice + "!");
-        } else {
+        }
+        else {
             message.channel.send(":x: Split your two choices with a ' | '!");
         }
     }

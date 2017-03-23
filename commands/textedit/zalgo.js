@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const zalgo = require('zalgolize');
 
 module.exports = class ZalgoCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'zalgo',
             group: 'textedit',
@@ -13,16 +13,18 @@ module.exports = class ZalgoCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
         let zalgoified = zalgo(message.content.split(" ").slice(1).join(" "));
-        if(zalgoified === '') {
+        if (zalgoified === '') {
             message.channel.send(":x: Error! Nothing to zalgoify!");
-        } else if(zalgoified.length > 1950) {
+        }
+        else if (zalgoified.length > 1950) {
             message.channel.send(":x: Error! Your message is too long!");
-        } else {
+        }
+        else {
             message.channel.send(zalgoified);
         }
     }

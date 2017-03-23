@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const sounds = require('./sounds.json');
 
 module.exports = class SoundBoardCommand extends commando.Command {
-    constructor(Client){
+    constructor(Client) {
         super(Client, {
             name: 'soundboard',
             aliases: [
@@ -17,47 +17,54 @@ module.exports = class SoundBoardCommand extends commando.Command {
     }
 
     async run(message) {
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        if(message.channel.type !== 'dm') {
-            if(!message.channel.permissionsFor(this.client.user).hasPermission(['CONNECT', 'SPEAK', 'ADD_REACTIONS'])) {
+        if (message.channel.type !== 'dm') {
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['CONNECT', 'SPEAK', 'ADD_REACTIONS'])) {
                 message.channel.send(':x: Error! In order to do this command, you must give me the permissions to "Connect" and "Speak", as well as the permission to Add Reactions!');
-            } else {
+            }
+            else {
                 let voiceChannel = message.member.voiceChannel;
                 if (!voiceChannel) {
-	                return message.channel.send(`:x: Error! Please be in a voice channel first!`);
+                    return message.channel.send(`:x: Error! Please be in a voice channel first!`);
                 }
-	            let soundToPlay = message.content.toLowerCase().split(" ").slice(1).join(" ");
-	            if(soundToPlay === "") {
-		            message.channel.send(':x: Error! No sound set. Please use ;soundboard list to see a list of sounds you can play.');
-	            } else if(soundToPlay === 'list') {
-		            message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo");
-	            } else if(soundToPlay === sounds.avaliable[soundToPlay]) {
+                let soundToPlay = message.content.toLowerCase().split(" ").slice(1).join(" ");
+                if (soundToPlay === "") {
+                    message.channel.send(':x: Error! No sound set. Please use ;soundboard list to see a list of sounds you can play.');
+                }
+                else if (soundToPlay === 'list') {
+                    message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo");
+                }
+                else if (soundToPlay === sounds.avaliable[soundToPlay]) {
                     let alreadyConnected = this.client.voiceConnections.get(voiceChannel.guild.id);
-                    if(alreadyConnected) {
-                        if(alreadyConnected.channel.id === voiceChannel.id) {
-                            message.channel.send(':x: Error! I am already playing a sound!');
-                        } else {
+                    if (alreadyConnected) {
+                        if (alreadyConnected.channel.id === voiceChannel.id) {
                             message.channel.send(':x: Error! I am already playing a sound!');
                         }
-                    } else {
-	                    voiceChannel.join().then(connection => {
-		                    let stream = sounds.paths[soundToPlay];
-    	                    let dispatcher = connection.playStream(stream);
-    	                    message.react('🔊');
-    	                    dispatcher.on('end', () => {
-        	                    voiceChannel.leave();
-        	                    message.react('✅');
-    	                    });
-	                    });
+                        else {
+                            message.channel.send(':x: Error! I am already playing a sound!');
+                        }
                     }
-	            } else {
-		            message.channel.send(':x: Error! Sound not found! Use `;soundboard list` to see a list of sounds you can play.');
-	            }
+                    else {
+                        voiceChannel.join().then(connection => {
+                            let stream = sounds.paths[soundToPlay];
+                            let dispatcher = connection.playStream(stream);
+                            message.react('🔊');
+                            dispatcher.on('end', () => {
+                                voiceChannel.leave();
+                                message.react('✅');
+                            });
+                        });
+                    }
+                }
+                else {
+                    message.channel.send(':x: Error! Sound not found! Use `;soundboard list` to see a list of sounds you can play.');
+                }
             }
-        } else {
+        }
+        else {
             message.channel.send(':x: This is a DM!');
         }
     }
