@@ -18,7 +18,7 @@ module.exports = class WikipediaCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        let thingToSearch = message.content.split(" ").slice(1).join("%20");
+        let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
         request
         .get("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=" + thingToSearch + "&exintro=&explaintext=&redirects=&formatversion=2")
         .then(function (response) {
