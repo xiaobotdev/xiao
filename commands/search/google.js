@@ -32,7 +32,7 @@ module.exports = class DefineCommand extends commando.Command {
             let href = $('.r').first().find('a').first().attr('href');
             if (!href) return Promise.reject(new Error('NO RESULTS'));
             href = querystring.parse(href.replace('/url?', ''));
-            message.channel.send(href.q);
+            message.channel.send(href.q).catch(console.error);
         }).catch(function (err) {
             console.log(err);
             message.channel.send(':x: Error! No Results Found!');
