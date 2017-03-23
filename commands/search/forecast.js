@@ -29,19 +29,19 @@ module.exports = class ForecastCommand extends commando.Command {
                 .setURL(info.link)
                 .setTimestamp()
                 .addField(`**${info.item.forecast[0].day} - ${info.item.forecast[0].date}:**`,
-                    `**High:** ${info.item.forecast[0].high}°F, **Low:** ${info.item.forecast[0].low}F, **Condition:** ${info.item.forecast[0].text}`)
+                    `**High:** ${info.item.forecast[0].high}°F, **Low:** ${info.item.forecast[0].low}°F, **Condition:** ${info.item.forecast[0].text}`)
                 .addField(`**${info.item.forecast[1].day} - ${info.item.forecast[1].date}:**`,
-                    `**High:** ${info.item.forecast[1].high}°F, **Low:** ${info.item.forecast[1].low}F, **Condition:** ${info.item.forecast[1].text}`)
+                    `**High:** ${info.item.forecast[1].high}°F, **Low:** ${info.item.forecast[1].low}°F, **Condition:** ${info.item.forecast[1].text}`)
                 .addField(`**${info.item.forecast[2].day} - ${info.item.forecast[2].date}:**`,
-                    `**High:** ${info.item.forecast[2].high}°F, **Low:** ${info.item.forecast[2].low}F, **Condition:** ${info.item.forecast[2].text}`)
+                    `**High:** ${info.item.forecast[2].high}°F, **Low:** ${info.item.forecast[2].low}°F, **Condition:** ${info.item.forecast[2].text}`)
                 .addField(`**${info.item.forecast[3].day} - ${info.item.forecast[3].date}:**`,
-                    `**High:** ${info.item.forecast[3].high}°F, **Low:** ${info.item.forecast[3].low}F, **Condition:** ${info.item.forecast[3].text}`)
+                    `**High:** ${info.item.forecast[3].high}°F, **Low:** ${info.item.forecast[3].low}°F, **Condition:** ${info.item.forecast[3].text}`)
                 .addField(`**${info.item.forecast[4].day} - ${info.item.forecast[4].date}:**`,
-                    `**High:** ${info.item.forecast[4].high}°F, **Low:** ${info.item.forecast[4].low}F, **Condition:** ${info.item.forecast[4].text}`)
+                    `**High:** ${info.item.forecast[4].high}°F, **Low:** ${info.item.forecast[4].low}°F, **Condition:** ${info.item.forecast[4].text}`)
                 .addField(`**${info.item.forecast[5].day} - ${info.item.forecast[5].date}:**`,
-                    `**High:** ${info.item.forecast[5].high}°F, **Low:** ${info.item.forecast[5].low}F, **Condition:** ${info.item.forecast[5].text}`)
+                    `**High:** ${info.item.forecast[5].high}°F, **Low:** ${info.item.forecast[5].low}°F, **Condition:** ${info.item.forecast[5].text}`)
                 .addField(`**${info.item.forecast[6].day} - ${info.item.forecast[6].date}:**`,
-                    `**High:** ${info.item.forecast[6].high}°F, **Low:** ${info.item.forecast[6].low}F, **Condition:** ${info.item.forecast[6].text}`);
+                    `**High:** ${info.item.forecast[6].high}°F, **Low:** ${info.item.forecast[6].low}°F, **Condition:** ${info.item.forecast[6].text}`);
             message.channel.sendEmbed(embed).catch(console.error);
         }).catch(err => {
             message.channel.send(":x: Error! Make sure you typed the location correctly!");
