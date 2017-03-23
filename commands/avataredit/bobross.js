@@ -36,15 +36,14 @@ module.exports = class BobRossCommand extends commando.Command {
                 images.push(Jimp.read(userAvatar));
                 images.push(Jimp.read("./images/BobRoss.png"));
                 images.push(Jimp.read("./images/BlankWhite.png"));
-                await Promise.all(images).then(([avatar, bob, nothing]) => {
-                    avatar.rotate(2);
-                    avatar.resize(300, 300);
-                    nothing.composite(avatar, 44, 85);
-                    nothing.composite(bob, 0, 0);
-                    nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-                        if (err) throw err;
-                        return message.channel.sendFile(buff);
-                    });
+                let [avatar, bob, nothing] = await Promise.all(images);
+                avatar.rotate(2);
+                avatar.resize(300, 300);
+                nothing.composite(avatar, 44, 85);
+                nothing.composite(bob, 0, 0);
+                nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
+                    if (err) throw err;
+                    message.channel.sendFile(buff);
                 });
             }
         }
