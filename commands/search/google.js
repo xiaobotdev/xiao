@@ -22,6 +22,7 @@ module.exports = class DefineCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
+        message.channel.send('Searching...');
         const SEARCH_URL = `https://www.google.com/search?q=${encodeURI(message.content)}`;
         request
         .get(SEARCH_URL)
@@ -30,7 +31,7 @@ module.exports = class DefineCommand extends commando.Command {
             let href = $('.r').first().find('a').first().attr('href');
             if (!href) return Promise.reject(new Error('NO RESULTS'));
             href = querystring.parse(href.replace('/url?', ''));
-            return message.edit(href.q);
+            message.edit(href.q);
         }).catch(function (err) {
             message.channel.send(':x: Error! No Results Found!');
         });
