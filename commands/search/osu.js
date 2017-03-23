@@ -33,7 +33,7 @@ module.exports = class OsuCommand extends commando.Command {
                 type: 'string'
             })
             .then(function(response) {
-                if (response.body[0] === undefined) {
+                if (!response.body[0]) {
                     message.channel.send(":x: Error! User not found!");
                 }
                 else {

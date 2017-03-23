@@ -17,7 +17,7 @@ module.exports = class ReverseCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let stringToReverse = message.content.split(" ").slice(1).join(" ");
-        if (stringToReverse === "") {
+        if (!stringToReverse) {
             message.channel.send(":x: Error! Nothing to reverse!");
         }
         else {

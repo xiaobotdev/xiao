@@ -7,7 +7,8 @@ module.exports = class SayCommand extends commando.Command {
             aliases: [
                 'copy',
                 'repeat',
-                'parrot'
+                'parrot',
+                'echo'
             ],
             group: 'textedit',
             memberName: 'say',
@@ -22,7 +23,7 @@ module.exports = class SayCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let copycat = message.content.split(" ").slice(1).join(" ");
-        if (copycat === "") {
+        if (!copycat) {
             message.channel.send(":x: Error! Nothing to say!");
         }
         else {

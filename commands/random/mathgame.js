@@ -40,7 +40,7 @@ module.exports = class MathGameCommand extends commando.Command {
         let randomValue2 = Math.floor(Math.random() * randomValue) + 1;
         let randomExpression = randomValue1 + randomType + randomValue2;
         let solved = math.eval(randomExpression);
-        if (randomValue === undefined) {
+        if (!randomValue) {
             message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         }
         else {

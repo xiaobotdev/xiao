@@ -25,7 +25,7 @@ module.exports = class WikipediaCommand extends commando.Command {
                 let description = response.body.query.pages[0].extract;
                 let name = response.body.query.pages[0].title;
                 thingToSearch = thingToSearch.split(")").join("%29");
-                if (description === undefined) {
+                if (!description) {
                     message.channel.send(":x: Error! Entry Not Found!");
                 }
                 else {

@@ -23,7 +23,7 @@ module.exports = class PirateCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let turnToPirate = message.content.split(" ").slice(1).join(" ");
         let pirate = pirateSpeak.translate(turnToPirate);
-        if (turnToPirate === "") {
+        if (!turnToPirate) {
             message.channel.send(":x: Error! Nothing to translate!");
         }
         else {

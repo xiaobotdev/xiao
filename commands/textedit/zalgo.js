@@ -18,7 +18,7 @@ module.exports = class ZalgoCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let zalgoified = zalgo(message.content.split(" ").slice(1).join(" "));
-        if (zalgoified === '') {
+        if (!zalgoified) {
             message.channel.send(":x: Error! Nothing to zalgoify!");
         }
         else if (zalgoified.length > 1950) {

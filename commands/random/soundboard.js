@@ -31,7 +31,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
                     return message.channel.send(`:x: Error! Please be in a voice channel first!`);
                 }
                 let soundToPlay = message.content.toLowerCase().split(" ").slice(1).join(" ");
-                if (soundToPlay === "") {
+                if (!soundToPlay) {
                     message.channel.send(':x: Error! No sound set. Please use ;soundboard list to see a list of sounds you can play.');
                 }
                 else if (soundToPlay === 'list') {

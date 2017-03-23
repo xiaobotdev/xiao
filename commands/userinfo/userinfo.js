@@ -57,7 +57,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                 message.channel.send(':x: Error! Please mention one user!');
             }
             else {
-                if (message.mentions.users.first().presence.game === null) {
+                if (!message.mentions.users.first().presence.game) {
                     const embed = new Discord.RichEmbed()
                         .setColor(color)
                         .setThumbnail(message.mentions.users.first().avatarURL)

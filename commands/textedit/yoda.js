@@ -19,7 +19,7 @@ module.exports = class YodaCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let turnToYoda = message.content.split(" ").slice(1).join(" ");
-        if (turnToYoda === "") {
+        if (!turnToYoda) {
             message.channel.send(':x: Error! Nothing to translate!');
         }
         else {

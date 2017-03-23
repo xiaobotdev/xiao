@@ -18,7 +18,7 @@ module.exports = class EmbedCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let embedMessage = message.content.split(" ").slice(1).join(" ");
-        if (embedMessage === "") {
+        if (!embedMessage) {
             message.channel.send(":x: Error! Nothing to embed!");
         }
         else {

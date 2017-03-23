@@ -29,7 +29,7 @@ module.exports = class ContactCommand extends commando.Command {
             message.channel.send("Sorry, you've been banned from using this command.");
         }
         else {
-            if (messageToReport === '') {
+            if (!messageToReport) {
                 message.channel.send(':x: Error! Please do not report nothing!');
             }
             else {

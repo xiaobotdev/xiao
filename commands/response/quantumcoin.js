@@ -6,7 +6,8 @@ module.exports = class QuantumCoin extends commando.Command {
             name: 'quantumcoin',
             aliases: [
                 'oddcoin',
-                'brokencoin'
+                'brokencoin',
+                'qcoin'
             ],
             group: 'response',
             memberName: 'quantumcoin',
