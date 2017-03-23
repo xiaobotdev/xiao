@@ -23,6 +23,6 @@ module.exports = class NitroCommand extends commando.Command {
             .setColor(0x748BD9)
             .setURL("https://discordapp.com/nitro")
             .setDescription("This Message can only be viewed by members with Discord Nitro.\n\n\n[More Information](https://discordapp.com/nitro)");
-        message.channel.sendEmbed(embed).catch(console.error);
+        return message.channel.sendEmbed(embed).catch(console.error);
     }
 };

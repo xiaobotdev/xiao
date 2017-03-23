@@ -16,6 +16,6 @@ module.exports = class SlowClapCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        message.channel.send('*slow clap*');
+        return message.channel.send('*slow clap*');
     }
 };

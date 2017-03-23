@@ -22,10 +22,10 @@ module.exports = class MotivateCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let userToMotivate = message.content.split(" ").slice(1).join(" ");
         if (!userToMotivate) {
-            message.reply('https://www.youtube.com/watch?v=ZXsQAXx_ao0');
+            return message.reply('https://www.youtube.com/watch?v=ZXsQAXx_ao0');
         }
         else {
-            message.channel.send(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
+            return message.channel.send(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
         }
     }
 };

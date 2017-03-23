@@ -16,6 +16,6 @@ module.exports = class LennyCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        message.channel.send('( ͡° ͜ʖ ͡°)');
+        return message.channel.send('( ͡° ͜ʖ ͡°)');
     }
 };

@@ -20,13 +20,13 @@ module.exports = class WikipediaCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
         thingToSearch = thingToSearch.split(")").join("%29");
-        request
+        await request
             .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${thingToSearch}&exintro=&explaintext=&redirects=&formatversion=2`)
             .then(function(response) {
                 let description = response.body.query.pages[0].extract;
                 let name = response.body.query.pages[0].title;
                 if (!description) {
-                    message.channel.send(":x: Error! Entry Not Found!");
+                    return message.channel.send(":x: Error! Entry Not Found!");
                 }
                 else {
                     description = description.substr(0, 1900);
@@ -37,10 +37,11 @@ module.exports = class WikipediaCommand extends commando.Command {
                         .setURL(`https://en.wikipedia.org/wiki/${thingToSearch}`)
                         .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
                         .setDescription(`${description} [Read the Rest Here](https://en.wikipedia.org/wiki/${thingToSearch})`);
-                    message.channel.sendEmbed(embed).catch(console.error);
+                    return message.channel.sendEmbed(embed).catch(console.error);
                 }
             }).catch(function(err) {
-                message.channel.send(":x: Error! Entry Not Found!");
+                console.log(err);
+                return message.channel.send(":x: Error! Entry Not Found!");
             });
     }
 };

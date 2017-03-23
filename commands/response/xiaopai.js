@@ -21,6 +21,6 @@ module.exports = class RandomXiaoPai extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let XiaoPai = ["1.png", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.png", "9.png", "10.png", "11.png", "12.png", "13.jpg", "14.jpg", "15.png", "16.jpg", "17.png", "18.gif", "19.png", "20.jpg", "21.jpg"];
         XiaoPai = XiaoPai[Math.floor(Math.random() * XiaoPai.length)];
-        message.channel.sendFile(`./images/Xiao${XiaoPai}`);
+        return message.channel.sendFile(`./images/Xiao${XiaoPai}`);
     }
 };

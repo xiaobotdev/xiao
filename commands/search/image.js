@@ -23,15 +23,16 @@ module.exports = class DefineCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
-        message.channel.send('Searching...').then(msg => {
-            request
+        await message.channel.send('Searching...').then(msg => {
+            await request
                 .get(`https://www.google.com/search?tbm=isch&gs_l=img&q=${encodeURI(thingToSearch)}`)
                 .then(function(response) {
                     const $ = cheerio.load(response.text);
                     const result = $('.images_table').find('img').first().attr('src');
-                    msg.edit(result);
+                    return msg.edit(result);
                 }).catch(function(err) {
-                    msg.edit(':x: Error! No Results Found!');
+                    console.log(err);
+                    return msg.edit(':x: Error! No Results Found!');
                 });
         });
     }

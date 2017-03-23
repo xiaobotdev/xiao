@@ -24,14 +24,14 @@ module.exports = class RomajiCommand extends commando.Command {
         if (hepburn.containsKana(romajify)) {
             let romajified = hepburn.fromKana(romajify);
             if (romajified.length > 1950) {
-                message.channel.send(":x: Error! Your message is too long!");
+                return message.channel.send(":x: Error! Your message is too long!");
             }
             else {
-                message.channel.send(romajified);
+                return message.channel.send(romajified);
             }
         }
         else {
-            message.channel.send(":x: Error! Message contains no Kana!\n:notepad_spiral: Note: You cannot use this command on Kanji!");
+            return message.channel.send(":x: Error! Message contains no Kana!\n:notepad_spiral: Note: You cannot use this command on Kanji!");
         }
     }
 };

@@ -30,7 +30,8 @@ module.exports = class IMDBCommand extends commando.Command {
         }, (err, response) => {
             movie = response;
             if (!movie) {
-                message.channel.send(":x: Error! Movie not found!");
+                console.log(err);
+                return message.channel.send(":x: Error! Movie not found!");
             }
             else {
                 const embed = new Discord.RichEmbed()
@@ -53,7 +54,7 @@ module.exports = class IMDBCommand extends commando.Command {
                         movie.writer)
                     .addField('**Actors:**',
                         movie.actors);
-                message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed).catch(console.error);
             }
         });
     }

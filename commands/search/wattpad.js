@@ -20,7 +20,7 @@ module.exports = class WattpadCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let queryBook = message.content.split(" ").slice(1).join(" ");
-        request
+        await request
             .get('https://api.wattpad.com:443/v4/stories')
             .set({
                 'Authorization': `Basic ${config.wattpadkey}`
@@ -48,9 +48,10 @@ module.exports = class WattpadCommand extends commando.Command {
                         response.body.stories[0].readCount, true)
                     .addField('**Comments:**',
                         response.body.stories[0].commentCount, true);
-                message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed).catch(console.error);
             }).catch(function(err) {
-                message.channel.send(":x: Error! Book not Found!");
+                console.log(err);
+                return message.channel.send(":x: Error! Book not Found!");
             });
     }
 };

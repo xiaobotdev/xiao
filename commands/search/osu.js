@@ -25,7 +25,7 @@ module.exports = class OsuCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let usernameToSearch = message.content.split(" ").slice(1).join(" ");
-        request
+        await request
             .get('https://osu.ppy.sh/api/get_user')
             .query({
                 k: config.osukey,
@@ -34,7 +34,7 @@ module.exports = class OsuCommand extends commando.Command {
             })
             .then(function(response) {
                 if (!response.body[0]) {
-                    message.channel.send(":x: Error! User not found!");
+                    return message.channel.send(":x: Error! User not found!");
                 }
                 else {
                     const embed = new Discord.RichEmbed()
@@ -65,10 +65,11 @@ module.exports = class OsuCommand extends commando.Command {
                             response.body[0].count_rank_s, true)
                         .addField('**A:**',
                             response.body[0].count_rank_a, true);
-                    message.channel.sendEmbed(embed).catch(console.error);
+                    return message.channel.sendEmbed(embed).catch(console.error);
                 }
             }).catch(function(err) {
-                message.channel.send(":x: Error! User not Found!");
+                console.log(err);
+                return message.channel.send(":x: Error! User not Found!");
             });
     }
 };

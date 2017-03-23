@@ -20,10 +20,10 @@ module.exports = class YodaCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let turnToYoda = message.content.split(" ").slice(1).join(" ");
         if (!turnToYoda) {
-            message.channel.send(':x: Error! Nothing to translate!');
+            return message.channel.send(':x: Error! Nothing to translate!');
         }
         else {
-            request
+            await request
                 .get('https://yoda.p.mashape.com/yoda')
                 .set({
                     'X-Mashape-Key': config.mashapekey,
@@ -34,13 +34,14 @@ module.exports = class YodaCommand extends commando.Command {
                 })
                 .then(function(response) {
                     if (response === undefined) {
-                        message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
+                        return message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
                     }
                     else {
-                        message.channel.send(response.text).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
+                        return message.channel.send(response.text).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
                     }
                 }).catch(function(err) {
-                    message.channel.send(":x: Error! Unknown Error. Try again later!");
+                    console.log(err);
+                    return message.channel.send(":x: Error! Unknown Error. Try again later!");
                 });
         }
     }

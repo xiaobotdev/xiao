@@ -25,7 +25,7 @@ module.exports = class BotSearchCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size === 1) {
             let botToFind = message.mentions.users.first().id;
-            request
+            await request
                 .get(`https://bots.discord.pw/api/bots/${botToFind}`)
                 .set({
                     'Authorization': config.botskey
@@ -43,13 +43,14 @@ module.exports = class BotSearchCommand extends commando.Command {
                             response.body.prefix, true)
                         .addField('**Invite:**',
                             `[Here](${response.body.invite_url})`, true);
-                    message.channel.sendEmbed(embed).catch(console.error);
+                    return message.channel.sendEmbed(embed).catch(console.error);
                 }).catch(function(err) {
-                    message.channel.send(":x: Error! Bot not Found!");
+                    console.log(err);
+                    return message.channel.send(":x: Error! Bot not Found!");
                 });
         }
         else {
-            message.channel.send(':x: Please mention one bot!');
+            return message.channel.send(':x: Please mention one bot!');
         }
     }
 };

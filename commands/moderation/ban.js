@@ -24,13 +24,13 @@ module.exports = class BanCommand extends commando.Command {
             let userToBan = message.mentions.users.first();
             let reason = message.content.split(" ").slice(2).join(" ");
             if (message.mentions.users.size !== 1) {
-                message.channel.send(":x: Error! Please mention one user!");
+                return message.channel.send(":x: Error! Please mention one user!");
             }
             else {
                 if (message.member.hasPermission('BAN_MEMBERS')) {
                     if (message.guild.member(userToBan).bannable) {
-                        message.channel.send(":ok_hand:");
-                        message.guild.member(userToBan).ban();
+                        await message.channel.send(":ok_hand:");
+                        await message.guild.member(userToBan).ban();
                         if (message.guild.channels.exists("name", "mod_logs")) {
                             const embed = new Discord.RichEmbed()
                                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
@@ -38,23 +38,23 @@ module.exports = class BanCommand extends commando.Command {
                                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                                 .setTimestamp()
                                 .setDescription(`**Member:** ${userToBan.username}#${userToBan.discriminator} (${userToBan.id})\n**Action:** Ban\n**Reason:** ${reason}`);
-                            message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
+                            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
                         }
                         else {
-                            message.channel.send(":notepad_spiral: **Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
+                            return message.channel.send(":notepad_spiral: **Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
                         }
                     }
                     else {
-                        message.channel.send(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
+                        return message.channel.send(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
                     }
                 }
                 else {
-                    message.channel.send(":x: Error! You don't have the Ban Members Permission!");
+                    return message.channel.send(":x: Error! You don't have the Ban Members Permission!");
                 }
             }
         }
         else {
-            message.channel.send(":x: Error! This command does not work in DM!");
+            return message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };

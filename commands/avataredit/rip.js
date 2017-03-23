@@ -22,11 +22,11 @@ module.exports = class RIPCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size !== 1) {
-            message.channel.send(':x: Error! Please mention one user!');
+            return message.channel.send(':x: Error! Please mention one user!');
         }
         else {
             if (!message.mentions.users.first().avatarURL) {
-                message.channel.send(":x: Error! This user has no avatar!");
+                return message.channel.send(":x: Error! This user has no avatar!");
             }
             else {
                 let userAvatar = message.mentions.users.first().avatarURL;
@@ -35,12 +35,12 @@ module.exports = class RIPCommand extends commando.Command {
                 let images = [];
                 images.push(Jimp.read(userAvatar));
                 images.push(Jimp.read("./images/gravestone.jpg"));
-                Promise.all(images).then(([avatar, gravestone]) => {
+                await Promise.all(images).then(([avatar, gravestone]) => {
                     avatar.resize(200, 200);
                     gravestone.blit(avatar, 60, 65);
                     gravestone.getBuffer(Jimp.MIME_PNG, (err, buff) => {
                         if (err) throw err;
-                        message.channel.sendFile(buff);
+                        return message.channel.sendFile(buff);
                     });
                 });
             }
