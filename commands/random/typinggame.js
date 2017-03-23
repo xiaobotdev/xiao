@@ -58,7 +58,7 @@ module.exports = class TypingGameCommand extends commando.Command {
                 .setTitle('You have **' + levelWord + '** seconds to type:')
                 .setDescription(randomSentence);
             await message.channel.sendEmbed(embed).then(() => {
-                await message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
+                message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
                     max: 1,
                     time: time,
                     errors: ['time'],
