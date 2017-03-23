@@ -25,7 +25,7 @@ module.exports = class QuotesCommand extends commando.Command {
             .set({
                 'X-Mashape-Key': config.mashapekey,
                 'Accept': 'application/json',
-                'Content-Type": "application/x-www-form-urlencoded"
+                'Content-Type': 'application/x-www-form-urlencoded'
             })
             .query({
                 cat: randomTypes
