@@ -30,7 +30,7 @@ module.exports = class QuizCommand extends commando.Command {
                 const embed = new Discord.RichEmbed()
                     .setTitle('You have **fifteen** seconds to answer this question:')
                     .setDescription(`**Category: ${response.body.category}**\n${response.body.question}`);
-                await message.channel.sendEmbed(embed).then(() => {
+                message.channel.sendEmbed(embed).then(() => {
                     message.channel.awaitMessages(res => res.content.toLowerCase() === response.body.answer.toLowerCase() && res.author.id === message.author.id, {
                         max: 1,
                         time: 15000,
