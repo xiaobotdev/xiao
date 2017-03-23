@@ -17,6 +17,6 @@ module.exports = class PokeCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(`${message.author} *pokes* ${thingToRoleplay}`);
+        return message.channel.send(`${message.author} *pokes* ${thingToRoleplay}`);
     }
 };

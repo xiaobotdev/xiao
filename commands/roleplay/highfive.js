@@ -17,6 +17,6 @@ module.exports = class HighFivesCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(`${message.author} *high-fives* ${thingToRoleplay}`);
+        return message.channel.send(`${message.author} *high-fives* ${thingToRoleplay}`);
     }
 };
