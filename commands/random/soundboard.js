@@ -52,9 +52,9 @@ module.exports = class SoundBoardCommand extends commando.Command {
                             await voiceChannel.join().then(connection => {
                                 let stream = sounds.paths[soundToPlay];
                                 let dispatcher = connection.playStream(stream);
-                                await message.react('🔊');
+                                message.react('🔊');
                                 dispatcher.on('end', () => {
-                                    await message.react('✅');
+                                    message.react('✅');
                                     return voiceChannel.leave();
                                 });
                             });
