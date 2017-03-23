@@ -24,7 +24,7 @@ module.exports = class DefineCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
         await message.channel.send('Searching...').then(msg => {
-            await request
+            return request
                 .get(`https://www.google.com/search?tbm=isch&gs_l=img&q=${encodeURI(thingToSearch)}`)
                 .then(function(response) {
                     const $ = cheerio.load(response.text);

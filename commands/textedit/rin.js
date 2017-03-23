@@ -25,7 +25,7 @@ module.exports = class RinSayCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let rinContent = message.content.split(" ").slice(1).join(" ");
-        await request
+        return request
             .post(config.webhook)
             .send({
                 content: rinContent

@@ -25,7 +25,7 @@ module.exports = class OsuCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let usernameToSearch = message.content.split(" ").slice(1).join(" ");
-        await request
+        return request
             .get('https://osu.ppy.sh/api/get_user')
             .query({
                 k: config.osukey,
