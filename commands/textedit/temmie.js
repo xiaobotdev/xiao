@@ -18,6 +18,7 @@ const dictionary = {
 	"meal": "tem flakes",
 	"meals": "tem flakes",
 	"human": "hooman",
+	"humans": "hoomans",
 	"chocolate": "choco",
 	"cute": "coot",
 	"allergic": "allergics",
@@ -191,7 +192,12 @@ module.exports = class TemmieCommand extends commando.Command {
 		}
 		console.log("[Command] " + message.content);
 		let thingToTranslate = message.content.split(" ").slice(1).join(" ");
-		let temmized = temmize(thingToTranslate);
-		message.channel.send(temmized);
+		if (!thingToTranslate) {
+			message.channel.send(':x: Error! Nothing to translate!');
+		}
+		else {
+			let temmized = temmize(thingToTranslate);
+			message.channel.send(temmized);
+		}
 	}
 };

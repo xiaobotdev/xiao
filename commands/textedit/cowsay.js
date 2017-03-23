@@ -17,7 +17,7 @@ module.exports = class CowsayCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log("[Command] " + message.content);
-        if (message.content.split(" ").slice(1).join(" ") === "") {
+        if (!message.content.split(" ").slice(1).join(" ")) {
             message.channel.send(":x: Error! You entered nothing!");
         }
         else {

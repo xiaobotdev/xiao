@@ -141,7 +141,7 @@ client.once('ready', () => {
 });
 
 process.on('unhandledRejection', function(reason, p) {
-    console.log("[Error] A Possibly Unhandled Rejection has Occurred. " + reason + p);
+    console.log("[Error] A Possibly Unhandled Rejection has Occurred. " + reason);
 });
 
 client.login(config.token);

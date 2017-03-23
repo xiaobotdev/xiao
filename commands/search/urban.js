@@ -25,13 +25,13 @@ module.exports = class UrbanDictionary extends commando.Command {
         console.log("[Command] " + message.content);
         let wordToDefine = message.content.split(" ").slice(1).join(" ");
         urban(wordToDefine).first(function(response) {
-            if (response === undefined) {
+            if (!response) {
                 message.channel.send(":x: Error! Word not found!");
             }
-            else if (response.definition === '') {
+            else if (!response.definition) {
                 message.channel.send(":x: Error! Word has no definition!");
             }
-            else if (response.example !== '') {
+            else if (response.example) {
                 const embed = new Discord.RichEmbed()
                     .setColor(0x32a8f0)
                     .setAuthor('Urban Dictionary', 'http://a1.mzstatic.com/eu/r30/Purple71/v4/66/54/68/6654683f-cacd-4a55-1784-f14257f77874/icon175x175.png')

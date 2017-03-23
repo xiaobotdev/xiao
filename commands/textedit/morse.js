@@ -22,7 +22,7 @@ module.exports = class MorseCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let [methodToUse] = message.content.toLowerCase().split(" ").slice(1);
         let toMorse = message.content.split(" ").slice(2).join(" ");
-        if (toMorse === "") {
+        if (!toMorse) {
             message.channel.send(":x: Error! Nothing to translate! Perhaps you forgot to set the method? Use either encode or decode before your text.");
         }
         else if (methodToUse === 'encode') {

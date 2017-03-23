@@ -22,7 +22,7 @@ module.exports = class RockPaperScissors extends commando.Command {
         let [rps] = message.content.toLowerCase().split(" ").slice(1);
         let response = ['Paper', 'Rock', 'Scissors'];
         response = response[Math.floor(Math.random() * response.length)];
-        if (rps === undefined) {
+        if (!rps) {
             message.channel.send(":x: Error! Your message contains nothing!");
         }
         else if (rps.includes("rock")) {

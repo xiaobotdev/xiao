@@ -34,7 +34,7 @@ module.exports = class DefineCommand extends commando.Command {
                     href = querystring.parse(href.replace('/url?', ''));
                     msg.edit(href.q);
                 }).catch(function(err) {
-                    message.channel.send(':x: Error! No Results Found!');
+                    msg.edit(':x: Error! No Results Found!');
                 });
         });
     }

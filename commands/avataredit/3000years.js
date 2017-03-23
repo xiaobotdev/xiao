@@ -24,7 +24,7 @@ module.exports = class YearsCommand extends commando.Command {
             message.channel.send(':x: Error! Please mention one user!');
         }
         else {
-            if (message.mentions.users.first().avatarURL === null) {
+            if (!message.mentions.users.first().avatarURL) {
                 message.channel.send(":x: Error! This user has no avatar!");
             }
             else {

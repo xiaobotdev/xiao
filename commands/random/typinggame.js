@@ -50,7 +50,7 @@ module.exports = class TypingGameCommand extends commando.Command {
                 levelWord = "ten";
                 break;
         }
-        if (time === undefined) {
+        if (!time) {
             message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         }
         else {

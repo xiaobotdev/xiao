@@ -29,7 +29,7 @@ module.exports = class IMDBCommand extends commando.Command {
             name: queryMovie
         }, (err, response) => {
             movie = response;
-            if (movie === undefined) {
+            if (!movie) {
                 message.channel.send(":x: Error! Movie not found!");
             }
             else {

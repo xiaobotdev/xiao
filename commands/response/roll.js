@@ -21,7 +21,7 @@ module.exports = class RollChooseCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         let [value] = message.content.split(" ").slice(1);
-        if (value === undefined) {
+        if (!value) {
             let roll = Math.floor(Math.random() * 6) + 1;
             message.channel.send("You rolled a " + roll);
         }

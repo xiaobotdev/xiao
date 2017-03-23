@@ -20,7 +20,7 @@ module.exports = class AvatarCommand extends commando.Command {
             message.channel.send(':x: Error! Please mention one user!');
         }
         else {
-            if (message.mentions.users.first().avatarURL === null) {
+            if (!message.mentions.users.first().avatarURL) {
                 message.channel.send(":x: Error! This person has no avatar!");
             }
             else {

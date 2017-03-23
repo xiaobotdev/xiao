@@ -33,7 +33,7 @@ module.exports = class YouTubeCommand extends commando.Command {
                 key: config.youtubekey
             })
             .then(function(response) {
-                if (response.body.items[0].snippet === undefined) {
+                if (!response.body.items[0].snippet) {
                     message.channel.send(':x: Error! No Video Found!');
                 }
                 else {
