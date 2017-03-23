@@ -51,7 +51,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
                         else {
                             await voiceChannel.join().then(connection => {
                                 let stream = sounds.paths[soundToPlay];
-                                let dispatcher = await connection.playStream(stream);
+                                let dispatcher = connection.playStream(stream);
                                 await message.react('🔊');
                                 dispatcher.on('end', () => {
                                     await message.react('✅');
