@@ -36,7 +36,7 @@ client.registry
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.on('message', (message) => {
+client.on('message', message => {
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
     if (message.content.startsWith(`<@${client.user.id}>`)) {

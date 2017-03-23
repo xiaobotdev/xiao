@@ -25,17 +25,17 @@ module.exports = class RinSayCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let rinContent = message.content.split(" ").slice(1).join(" ");
-        request
+        await request
             .post(config.webhook)
             .send({
                 content: rinContent
             })
             .then(function(parsedBody) {
                 if (message.content.type === 'dm') return;
-                message.delete();
+                return message.delete();
             }).catch(function(err) {
-                message.channel.send(':x: Error! Message failed to send! Check the logs for details.');
                 console.log(err);
+                return message.channel.send(':x: Error! Message failed to send! Check the logs for details.');
             });
     }
 };

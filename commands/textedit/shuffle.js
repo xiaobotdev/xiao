@@ -30,10 +30,10 @@ module.exports = class ShuffleCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let thingToShuffle = message.content.split(" ").slice(1).join(" ");
         if (!thingToShuffle) {
-            message.channel.send(":x: Error! Nothing to shuffle!");
+            return message.channel.send(":x: Error! Nothing to shuffle!");
         }
         else {
-            message.channel.send(thingToShuffle.shuffle());
+            return message.channel.send(thingToShuffle.shuffle());
         }
     }
 };

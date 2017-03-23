@@ -19,7 +19,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let cardName = encodeURI(message.content.split(" ").slice(1).join(" "));
-        request
+        await request
             .get(`http://yugiohprices.com/api/card_data/${cardName}`)
             .then(function(response) {
                 if (response.body.data.card_type === 'monster') {
@@ -40,7 +40,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
                             response.body.data.def, true)
                         .addField('**Level:**',
                             response.body.data.level, true);
-                    message.channel.sendEmbed(embed).catch(console.error);
+                    return message.channel.sendEmbed(embed).catch(console.error);
                 }
                 else {
                     const embed = new Discord.RichEmbed()
@@ -50,10 +50,11 @@ module.exports = class YuGiOhCommand extends commando.Command {
                         .setAuthor('Yu-Gi-Oh!', 'http://vignette3.wikia.nocookie.net/yugioh/images/1/10/Back-TF-EN-VG.png/revision/latest?cb=20120824043558')
                         .addField('**Card Type:**',
                             response.body.data.card_type, true);
-                    message.channel.sendEmbed(embed).catch(console.error);
+                    return message.channel.sendEmbed(embed).catch(console.error);
                 }
             }).catch(function(err) {
-                message.channel.send(":x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!");
+                console.log(err);
+                return message.channel.send(":x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!");
             });
     }
 };

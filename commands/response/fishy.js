@@ -22,6 +22,6 @@ module.exports = class FishyCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let fish = [':fish:', ':tropical_fish:', ':blowfish:'];
         fish = fish[Math.floor(Math.random() * fish.length)];
-        message.channel.send(`You caught a: ${fish}`);
+        return message.channel.send(`You caught a: ${fish}`);
     }
 };

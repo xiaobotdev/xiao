@@ -26,10 +26,10 @@ module.exports = class UrbanDictionary extends commando.Command {
         let wordToDefine = message.content.split(" ").slice(1).join(" ");
         urban(wordToDefine).first(function(response) {
             if (!response) {
-                message.channel.send(":x: Error! Word not found!");
+                return message.channel.send(":x: Error! Word not found!");
             }
             else if (!response.definition) {
-                message.channel.send(":x: Error! Word has no definition!");
+                return message.channel.send(":x: Error! Word has no definition!");
             }
             else if (response.example) {
                 const embed = new Discord.RichEmbed()
@@ -40,7 +40,7 @@ module.exports = class UrbanDictionary extends commando.Command {
                     .setDescription(`${response.definition.substr(0, 1900)} [Read the Rest Here!](${response.permalink})`)
                     .addField('**Example:**',
                         response.example.substr(0, 1900));
-                message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed).catch(console.error);
             }
             else {
                 const embed = new Discord.RichEmbed()
@@ -49,7 +49,7 @@ module.exports = class UrbanDictionary extends commando.Command {
                     .setURL(response.permalink)
                     .setTitle(response.word)
                     .setDescription(`${response.definition.substr(0, 1900)} [Read the Rest Here!](${response.permalink})`);
-                message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed).catch(console.error);
             }
         });
     }

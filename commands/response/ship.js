@@ -21,6 +21,6 @@ module.exports = class ShipCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let thingToShip = message.content.split(" ").slice(1).join(" ");
         let percentage = Math.floor(Math.random() * 100) + 1;
-        message.channel.send(`I'd give ${thingToShip} a ${percentage}%!`);
+        return message.channel.send(`I'd give ${thingToShip} a ${percentage}%!`);
     }
 };

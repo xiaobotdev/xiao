@@ -288,11 +288,11 @@ module.exports = class TemmieCommand extends commando.Command {
 		console.log(`[Command] ${message.content}`);
 		let thingToTranslate = message.content.split(" ").slice(1).join(" ");
 		if (!thingToTranslate) {
-			message.channel.send(':x: Error! Nothing to translate!');
+			return message.channel.send(':x: Error! Nothing to translate!');
 		}
 		else {
 			let temmized = temmize(thingToTranslate);
-			message.channel.send(temmized);
+			return message.channel.send(temmized);
 		}
 	}
 };

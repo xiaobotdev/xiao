@@ -21,11 +21,11 @@ module.exports = class BeautifulCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size !== 1) {
-            message.channel.send(':x: Error! Please mention one user!');
+            return message.channel.send(':x: Error! Please mention one user!');
         }
         else {
             if (!message.mentions.users.first().avatarURL) {
-                message.channel.send(":x: Error! This user has no avatar!");
+                return message.channel.send(":x: Error! This user has no avatar!");
             }
             else {
                 let userAvatar = message.mentions.users.first().avatarURL;
@@ -34,14 +34,14 @@ module.exports = class BeautifulCommand extends commando.Command {
                 let images = [];
                 images.push(Jimp.read(userAvatar));
                 images.push(Jimp.read("./images/beautiful.jpg"));
-                Promise.all(images).then(([avatar, beautiful]) => {
+                await Promise.all(images).then(([avatar, beautiful]) => {
                     avatar.resize(200, 200);
                     beautiful.blit(avatar, 432, 42);
                     avatar.resize(190, 190);
                     beautiful.blit(avatar, 451, 434);
                     beautiful.getBuffer(Jimp.MIME_PNG, (err, buff) => {
                         if (err) throw err;
-                        message.channel.sendFile(buff);
+                        return message.channel.sendFile(buff);
                     });
                 });
             }

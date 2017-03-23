@@ -24,14 +24,14 @@ module.exports = class PirateCommand extends commando.Command {
         let turnToPirate = message.content.split(" ").slice(1).join(" ");
         let pirate = pirateSpeak.translate(turnToPirate);
         if (!turnToPirate) {
-            message.channel.send(":x: Error! Nothing to translate!");
+            return message.channel.send(":x: Error! Nothing to translate!");
         }
         else {
             if (pirate.length > 1950) {
-                message.channel.send(":x: Error! Your message is too long!");
+                return message.channel.send(":x: Error! Your message is too long!");
             }
             else {
-                message.channel.send(pirate);
+                return message.channel.send(pirate);
             }
         }
     }

@@ -41,21 +41,21 @@ module.exports = class MathGameCommand extends commando.Command {
         let randomExpression = randomValue1 + randomType + randomValue2;
         let solved = math.eval(randomExpression);
         if (!randomValue) {
-            message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
+            return message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         }
         else {
             const embed = new Discord.RichEmbed()
                 .setTitle('You have **ten** seconds to answer:')
                 .setDescription(randomExpression);
-            message.channel.sendEmbed(embed).then(() => {
-                message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
+            await message.channel.sendEmbed(embed).then(() => {
+                await message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
                     max: 1,
                     time: 10000,
                     errors: ['time'],
                 }).then((collected) => {
-                    message.channel.send(`Good Job! You won!`);
+                    return message.channel.send(`Good Job! You won!`);
                 }).catch(() => {
-                    message.channel.send(`Aw... Too bad, try again next time! The correct answer was: ${solved}`);
+                    return message.channel.send(`Aw... Too bad, try again next time! The correct answer was: ${solved}`);
                 });
             });
         }

@@ -22,11 +22,11 @@ module.exports = class BobRossCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size !== 1) {
-            message.channel.send(':x: Error! Please mention one user!');
+            return message.channel.send(':x: Error! Please mention one user!');
         }
         else {
             if (!message.mentions.users.first().avatarURL) {
-                message.channel.send(":x: Error! This user has no avatar!");
+                return message.channel.send(":x: Error! This user has no avatar!");
             }
             else {
                 let userAvatar = message.mentions.users.first().avatarURL;
@@ -36,14 +36,14 @@ module.exports = class BobRossCommand extends commando.Command {
                 images.push(Jimp.read(userAvatar));
                 images.push(Jimp.read("./images/BobRoss.png"));
                 images.push(Jimp.read("./images/BlankWhite.png"));
-                Promise.all(images).then(([avatar, bob, nothing]) => {
+                await Promise.all(images).then(([avatar, bob, nothing]) => {
                     avatar.rotate(2);
                     avatar.resize(300, 300);
                     nothing.composite(avatar, 44, 85);
                     nothing.composite(bob, 0, 0);
                     nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
                         if (err) throw err;
-                        message.channel.sendFile(buff);
+                        return message.channel.sendFile(buff);
                     });
                 });
             }

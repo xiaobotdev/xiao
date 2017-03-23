@@ -24,8 +24,8 @@ module.exports = class InfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        this.client.shard.fetchClientValues('guilds.size').then(guilds => {
-            this.client.shard.fetchClientValues('voiceConnections.size').then(vCConnections => {
+        await this.client.shard.fetchClientValues('guilds.size').then(guilds => {
+            await this.client.shard.fetchClientValues('voiceConnections.size').then(vCConnections => {
                 const embed = new Discord.RichEmbed()
                     .setTitle('Welcome to XiaoBot!')
                     .setAuthor(this.client.user.username, this.client.user.avatarURL)
@@ -68,7 +68,7 @@ module.exports = class InfoCommand extends commando.Command {
                         "[Click Here to Join!](https://discord.gg/fqQF8mc)")
                     .addField('Invite Link:',
                         "[Click Here to Add Me to Your Server!](https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=1345846343)");
-                message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed).catch(console.error);
             });
         });
     }

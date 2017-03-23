@@ -18,16 +18,16 @@ module.exports = class CowsayCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (!message.content.split(" ").slice(1).join(" ")) {
-            message.channel.send(":x: Error! You entered nothing!");
+            return message.channel.send(":x: Error! You entered nothing!");
         }
         else {
             let turnToCowsay = message.content.split(" ").slice(1).join(" ");
-            message.channel.sendCode(null, cowsay.say({
+            return message.channel.sendCode(null, cowsay.say({
                 text: turnToCowsay,
                 e: "oO",
                 T: "U "
             })).catch(error => {
-                message.channel.send(':x: Error! Perhaps the content is too long?');
+                return message.channel.send(':x: Error! Perhaps the content is too long?');
             });
         }
     }
