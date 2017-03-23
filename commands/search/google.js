@@ -33,10 +33,6 @@ module.exports = class DefineCommand extends commando.Command {
             if (!href) return Promise.reject(new Error('NO RESULTS'));
             href = querystring.parse(href.replace('/url?', ''));
             message.channel.send(href.q);
-            console.log(href.q);
-            console.log(href);
-            console.log(thingToSearch);
-            console.log(SEARCH_URL);
         }).catch(function (err) {
             message.channel.send(':x: Error! No Results Found!');
         });
