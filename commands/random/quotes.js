@@ -24,8 +24,7 @@ module.exports = class QuotesCommand extends commando.Command {
             .get('https://andruxnet-random-famous-quotes.p.mashape.com/')
             .set({
                 'X-Mashape-Key': config.mashapekey,
-                'Accept': 'application/json',
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Accept': 'application/json'
             })
             .query({
                 cat: randomTypes
