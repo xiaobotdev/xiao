@@ -18,7 +18,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        let cardName = message.content.split(" ").slice(1).join("%20");
+        let cardName = encodeURI(message.content.split(" ").slice(1).join(" "));
         request
         .get('http://yugiohprices.com/api/card_data/' + cardName)
         .then(function (response) {

@@ -25,9 +25,9 @@ module.exports = class DefineCommand extends commando.Command {
             if(!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log("[Command] " + message.content);
-        let defineThis = message.content.toLowerCase().split(" ").slice(1).join("%20");
+        let defineThis = encodeURI(message.content.split(" ").slice(1).join(" "));
         request
-        .get('http://api.wordnik.com:80/v4/word.json/' + defineThis + '/definitions')
+        .get('http://api.wordnik.com:80/v4/word.json/' + encodeURI(defineThis) + '/definitions')
         .query({ limit: 1, includeRelated: false, useCanonical: false, includeTags: false, api_key: config.wordnikkey })
         .then(function (response) {
             const embed = new Discord.RichEmbed()
