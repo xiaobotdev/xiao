@@ -24,7 +24,7 @@ module.exports = class DefineCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
         message.channel.send('Searching...');
-        const SEARCH_URL = `https://www.google.com/search?q=${encodeURI(thingToSearch)}`;
+        const SEARCH_URL = `https://www.google.com/search?q=${thingToSearch}`;
         request
         .get(SEARCH_URL)
         .then(function (response) {
