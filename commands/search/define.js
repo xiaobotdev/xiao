@@ -27,7 +27,7 @@ module.exports = class DefineCommand extends commando.Command {
         console.log("[Command] " + message.content);
         let defineThis = encodeURI(message.content.split(" ").slice(1).join(" "));
         request
-        .get('http://api.wordnik.com:80/v4/word.json/' + encodeURI(defineThis) + '/definitions')
+        .get('http://api.wordnik.com:80/v4/word.json/' + defineThis + '/definitions')
         .query({ limit: 1, includeRelated: false, useCanonical: false, includeTags: false, api_key: config.wordnikkey })
         .then(function (response) {
             const embed = new Discord.RichEmbed()
