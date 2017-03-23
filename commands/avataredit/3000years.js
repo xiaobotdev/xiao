@@ -39,7 +39,7 @@ module.exports = class YearsCommand extends commando.Command {
                 years.blit(avatar, 461, 127);
                 years.getBuffer(Jimp.MIME_PNG, (err, buff) => {
                     if (err) throw err;
-                    let yearsImage = await message.channel.sendFile(buff);
+                    message.channel.sendFile(buff);
                 });
             }
         }
