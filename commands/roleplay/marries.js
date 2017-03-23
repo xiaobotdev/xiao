@@ -17,6 +17,6 @@ module.exports = class MarryCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(`${message.author} *marries* ${thingToRoleplay}`);
+        return message.channel.send(`${message.author} *marries* ${thingToRoleplay}`);
     }
 };
