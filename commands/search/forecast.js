@@ -22,7 +22,7 @@ module.exports = class ForecastCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let locationToSearch = message.content.split(" ").slice(1).join(" ");
-        await weather(locationToSearch, 'f').then(info => {
+        return weather(locationToSearch, 'f').then(info => {
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')

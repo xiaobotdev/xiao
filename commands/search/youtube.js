@@ -23,7 +23,7 @@ module.exports = class YouTubeCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let videoToSearch = message.content.split(" ").slice(1).join("-");
-        await request
+        return request
             .get('https://www.googleapis.com/youtube/v3/search')
             .query({
                 part: 'snippet',

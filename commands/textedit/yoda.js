@@ -23,7 +23,7 @@ module.exports = class YodaCommand extends commando.Command {
             return message.channel.send(':x: Error! Nothing to translate!');
         }
         else {
-            await request
+            return request
                 .get('https://yoda.p.mashape.com/yoda')
                 .set({
                     'X-Mashape-Key': config.mashapekey,

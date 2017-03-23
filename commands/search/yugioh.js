@@ -19,7 +19,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let cardName = encodeURI(message.content.split(" ").slice(1).join(" "));
-        await request
+        return request
             .get(`http://yugiohprices.com/api/card_data/${cardName}`)
             .then(function(response) {
                 if (response.body.data.card_type === 'monster') {

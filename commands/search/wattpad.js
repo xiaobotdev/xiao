@@ -20,7 +20,7 @@ module.exports = class WattpadCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let queryBook = message.content.split(" ").slice(1).join(" ");
-        await request
+        return request
             .get('https://api.wattpad.com:443/v4/stories')
             .set({
                 'Authorization': `Basic ${config.wattpadkey}`

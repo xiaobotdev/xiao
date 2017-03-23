@@ -25,7 +25,7 @@ module.exports = class BotSearchCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size === 1) {
             let botToFind = message.mentions.users.first().id;
-            await request
+            return request
                 .get(`https://bots.discord.pw/api/bots/${botToFind}`)
                 .set({
                     'Authorization': config.botskey

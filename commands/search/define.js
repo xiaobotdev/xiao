@@ -26,7 +26,7 @@ module.exports = class DefineCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let defineThis = encodeURI(message.content.split(" ").slice(1).join(" "));
-        await request
+        return request
             .get(`http://api.wordnik.com:80/v4/word.json/${defineThis}/definitions`)
             .query({
                 limit: 1,

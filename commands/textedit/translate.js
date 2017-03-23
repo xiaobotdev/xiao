@@ -138,7 +138,7 @@ module.exports = class TranslateCommand extends commando.Command {
                 return message.channel.send(":x: Error! Please keep translations below 200 characters!");
             }
             else {
-                await translate(thingToTranslate, {
+                return translate(thingToTranslate, {
                     to: languageto
                 }).then(res => {
                     let languagefrom = res.from.language.iso.toLowerCase();
