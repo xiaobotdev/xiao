@@ -21,11 +21,11 @@ module.exports = class WarnCommand extends commando.Command {
             let userToWarn = message.mentions.users.first();
             let reason = message.content.split(" ").slice(2).join(" ");
             if (message.mentions.users.size !== 1) {
-                return message.channel.send(":x: Error! Please mention one user!");
+                let mentionError = await message.channel.send(":x: Error! Please mention one user!");
             }
             else {
                 if (message.member.hasPermission('MANAGE_MESSAGES')) {
-                    await message.channel.send(":ok_hand:");
+                    let okHandMes = await message.channel.send(":ok_hand:");
                     if (message.guild.channels.exists("name", "mod_logs")) {
                         const embed = new Discord.RichEmbed()
                             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
@@ -33,19 +33,19 @@ module.exports = class WarnCommand extends commando.Command {
                             .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                             .setTimestamp()
                             .setDescription(`**Member:** ${userToWarn.username}#${userToWarn.discriminator} (${userToWarn.id})\n**Action:** Warn\n**Reason:** ${reason}`);
-                        return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
+                        let modLog = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed).catch(console.error);
                     }
                     else {
-                        return message.channel.send("**Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
+                        let modLogNote = await message.channel.send("**Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
                     }
                 }
                 else {
-                    return message.channel.send(":x: Error! You don't have the Manage Messages Permission!");
+                    let permissionErr = await message.channel.send(":x: Error! You don't have the Manage Messages Permission!");
                 }
             }
         }
         else {
-            return message.channel.send(":x: Error! This command does not work in DM!");
+            let dmErr = await message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };
