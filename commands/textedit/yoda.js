@@ -33,7 +33,7 @@ module.exports = class YodaCommand extends commando.Command {
                     sentence: turnToYoda
                 })
                 .then(function(response) {
-                    if (response === undefined) {
+                    if (!response) {
                         return message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
                     }
                     else {
