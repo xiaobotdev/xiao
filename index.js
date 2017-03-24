@@ -68,6 +68,8 @@ client.on('messageReactionAdd', (reaction, user) => {
     else {
         const embed = new Discord.RichEmbed()
             .setAuthor(user.username, user.avatarURL)
+            .setColor(0xFFA500)
+            .setTimestamp()
             .setDescription(reaction.message.content);
         starboard.sendEmbed(embed);
     }
