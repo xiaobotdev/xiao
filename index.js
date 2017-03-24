@@ -68,7 +68,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     else {
         if (reaction.message.attachments.size > 0 && reaction.message.attachments.first().height) {
             const embed = new Discord.RichEmbed()
-                .setAuthor(user.username, user.avatarURL)
+                .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
                 .setColor(0xFFA500)
                 .setTimestamp()
                 .setImage(reaction.message.attachments.first().url)
