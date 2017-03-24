@@ -77,7 +77,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         }
         else {
             const embed = new Discord.RichEmbed()
-                .setAuthor(user.username, user.avatarURL)
+                .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
                 .setColor(0xFFA500)
                 .setTimestamp()
                 .setDescription(reaction.message.content);
