@@ -68,7 +68,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     else {*/
         const embed = new Discord.RichEmbed()
         .setAuthor(user.username, user.avatarURL)
-        .setDescription('Message',
+        .addField('Message',
         reaction.message.content);
         starboard.sendEmbed(embed);
     //}
