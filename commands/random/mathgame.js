@@ -54,7 +54,7 @@ module.exports = class MathGameCommand extends commando.Command {
                     time: 10000,
                     errors: ['time'],
                 });
-                message.channel.send(`Good Job! You won! ${collected} is the correct answer!`);
+                message.channel.send(`Good Job! You won! ${solved} is the correct answer!`);
             }
             catch (err) {
                 message.channel.send(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);

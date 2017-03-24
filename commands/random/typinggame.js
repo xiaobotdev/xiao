@@ -64,7 +64,7 @@ module.exports = class TypingGameCommand extends commando.Command {
                     time: time,
                     errors: ['time']
                 });
-                message.channel.send(`Good Job! You won!\n${collected} was typed fast enough!`);
+                message.channel.send(`Good Job! You won!`);
             }
             catch (err) {
                 message.channel.send('Aw... Too bad, try again next time!');
