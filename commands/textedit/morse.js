@@ -26,20 +26,10 @@ module.exports = class MorseCommand extends commando.Command {
             message.channel.send(":x: Error! Nothing to translate! Perhaps you forgot to set the method? Use either encode or decode before your text.");
         }
         else if (methodToUse === 'encode') {
-            try {
-                message.channel.send(morse.encode(toMorse));
-            }
-            catch (err) {
-                message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?');
-            }
+            message.channel.send(morse.encode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
         }
         else if (methodToUse === 'decode') {
-            try {
-                message.channel.send(morse.decode(toMorse));
-            }
-            catch (err) {
-                message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?');
-            }
+            message.channel.send(morse.decode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
         }
         else {
             message.channel.send(":x: Error! Method not set/not correct! Use either encode or decode.");
