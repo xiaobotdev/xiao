@@ -12,6 +12,7 @@ module.exports = class KickCommand extends commando.Command {
         });
     }
     hasPermission(msg) {
+        if (msg.channel.type === 'dm') return;
         return msg.member.hasPermission('KICK_MEMBERS');
     }
 
