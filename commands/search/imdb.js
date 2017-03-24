@@ -38,7 +38,7 @@ module.exports = class IMDBCommand extends commando.Command {
                     .setColor(0xDBA628)
                     .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
                     .setURL(movie.imdburl)
-                    .setTitle(movie.title + ' (' + movie.rating + ' Score)')
+                    .setTitle(`${movie.title} (${movie.rating} Score)`)
                     .setDescription(`${movie.plot.substr(0, 1500)} [Read the Rest Here!](${movie.imdburl})`)
                     .addField('**Genres:**',
                         movie.genres)

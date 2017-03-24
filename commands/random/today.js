@@ -34,9 +34,9 @@ module.exports = class TodayCommand extends commando.Command {
             const embed = new Discord.RichEmbed()
                 .setColor(0x9797FF)
                 .setURL(responseData.url)
-                .setTitle('On this day (' + responseData.date + ')...')
+                .setTitle(`On this day (${responseData.date})...`)
                 .setTimestamp()
-                .setDescription(responseData.data.Events[randomNumber].text + ' (' + responseData.data.Events[randomNumber].year + ')');
+                .setDescription(`${responseData.data.Events[randomNumber].text} (${responseData.data.Events[randomNumber].year})`);
             message.channel.sendEmbed(embed);
         }
         catch (err) {
