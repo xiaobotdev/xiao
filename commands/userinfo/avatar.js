@@ -17,14 +17,14 @@ module.exports = class AvatarCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size !== 1) {
-            return message.channel.send(':x: Error! Please mention one user!');
+            message.channel.send(':x: Error! Please mention one user!');
         }
         else {
             if (!message.mentions.users.first().avatarURL) {
-                return message.channel.send(":x: Error! This person has no avatar!");
+                message.channel.send(":x: Error! This person has no avatar!");
             }
             else {
-                return message.channel.send(message.mentions.users.first().avatarURL);
+                message.channel.send(message.mentions.users.first().avatarURL);
             }
         }
     }

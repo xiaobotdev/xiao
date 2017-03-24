@@ -20,6 +20,6 @@ module.exports = class GiveFlowerCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        return message.channel.send('Ooh, what a pretty flower. What, I may have it? Thanks! I like flowers, yes? ♪');
+        message.channel.send('Ooh, what a pretty flower. What, I may have it? Thanks! I like flowers, yes? ♪');
     }
 };

@@ -29,13 +29,13 @@ module.exports = class RandomNameGen extends commando.Command {
         let randomFirstBoth = [randomFirstMale, randomFirstFemale];
         randomFirstBoth = randomFirstBoth[Math.floor(Math.random() * randomFirstBoth.length)];
         if (message.content.toLowerCase().split(" ").slice(1).includes("male")) {
-            return message.channel.send(`${randomFirstMale} ${randomLast}`);
+            message.channel.send(`${randomFirstMale} ${randomLast}`);
         }
         else if (message.content.toLowerCase().split(" ").slice(1).includes("female")) {
-            return message.channel.send(`${randomFirstFemale} ${randomLast}`);
+            message.channel.send(`${randomFirstFemale} ${randomLast}`);
         }
         else {
-            return message.channel.send(`${randomFirstBoth} ${randomLast}`);
+            message.channel.send(`${randomFirstBoth} ${randomLast}`);
         }
     }
 };

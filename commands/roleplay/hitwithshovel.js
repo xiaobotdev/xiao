@@ -17,6 +17,6 @@ module.exports = class HitwithShovelCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        return message.channel.send(`${message.author} *hits* ${thingToRoleplay} *with a shovel*`);
+        message.channel.send(`${message.author} *hits* ${thingToRoleplay} *with a shovel*`);
     }
 };

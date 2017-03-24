@@ -25,32 +25,32 @@ module.exports = class BotSearchCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size === 1) {
             let botToFind = message.mentions.users.first().id;
-            return request
-                .get(`https://bots.discord.pw/api/bots/${botToFind}`)
-                .set({
-                    'Authorization': config.botskey
-                })
-                .then(function(response) {
-                    const embed = new Discord.RichEmbed()
-                        .setColor(0x9797FF)
-                        .setAuthor('Discord Bots', 'https://cdn.discordapp.com/icons/110373943822540800/47336ad0631ac7aac0a48a2ba6246c65.jpg')
-                        .setTitle(response.body.name)
-                        .setURL('https://bots.discord.pw/')
-                        .setDescription(response.body.description)
-                        .addField('**Library:**',
-                            response.body.library, true)
-                        .addField('**Prefix:**',
-                            response.body.prefix, true)
-                        .addField('**Invite:**',
-                            `[Here](${response.body.invite_url})`, true);
-                    return message.channel.sendEmbed(embed).catch(console.error);
-                }).catch(function(err) {
-                    console.log(err);
-                    return message.channel.send(":x: Error! Bot not Found!");
-                });
+            try {
+                let response = await request
+                    .get(`https://bots.discord.pw/api/bots/${botToFind}`)
+                    .set({
+                        'Authorization': config.botskey
+                    });
+                const embed = new Discord.RichEmbed()
+                    .setColor(0x9797FF)
+                    .setAuthor('Discord Bots', 'https://cdn.discordapp.com/icons/110373943822540800/47336ad0631ac7aac0a48a2ba6246c65.jpg')
+                    .setTitle(response.body.name)
+                    .setURL('https://bots.discord.pw/')
+                    .setDescription(response.body.description)
+                    .addField('**Library:**',
+                        response.body.library, true)
+                    .addField('**Prefix:**',
+                        response.body.prefix, true)
+                    .addField('**Invite:**',
+                        `[Here](${response.body.invite_url})`, true);
+                message.channel.sendEmbed(embed);
+            }
+            catch (err) {
+                message.channel.send(":x: Error! Bot not Found!");
+            }
         }
         else {
-            return message.channel.send(':x: Please mention one bot!');
+            message.channel.send(':x: Error! Please mention one bot!');
         }
     }
 };

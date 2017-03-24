@@ -213,7 +213,24 @@ const dictionary = {
 	"sorcery": "magics",
 	"superpower": "magics",
 	"superpowers": "magics",
-	"sorceries": "magics"
+	"sorceries": "magics",
+	"and": "n",
+	"my": "tem's",
+	"mine": "tem's",
+	"everyone": "everytem",
+	"anyone": "anytem",
+	"someone": "sometem",
+	"everbody": "everytemmie",
+	"anybody": "anytemmie",
+	"somebody": "sometemmie",
+	"beautiful": "booftifull",
+	"pretty": "prety",
+	"so": "soooo",
+	"help": "halp",
+	"uh-uh": "nuh",
+	"nope": "nuh",
+	"nuh-uh": "nuh",
+	"please": "pls"
 };
 
 function translateWord(word) {
@@ -288,11 +305,11 @@ module.exports = class TemmieCommand extends commando.Command {
 		console.log(`[Command] ${message.content}`);
 		let thingToTranslate = message.content.split(" ").slice(1).join(" ");
 		if (!thingToTranslate) {
-			return message.channel.send(':x: Error! Nothing to translate!');
+			message.channel.send(':x: Error! Nothing to translate!');
 		}
 		else {
 			let temmized = temmize(thingToTranslate);
-			return message.channel.send(temmized);
+			message.channel.send(temmized);
 		}
 	}
 };

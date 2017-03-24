@@ -27,10 +27,10 @@ module.exports = class DiscrimCommand extends commando.Command {
             const embed = new Discord.RichEmbed()
                 .setTitle(`${users.length} Users with the discriminator: ${userToSearch}`)
                 .setDescription(users.join(', '));
-            return message.channel.sendEmbed(embed).catch(console.error);
+            message.channel.sendEmbed(embed);
         }
         else {
-            return message.channel.send(':x: Error! This discriminator is invalid!');
+            message.channel.send(':x: Error! This discriminator is invalid!');
         }
     }
 };

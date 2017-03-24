@@ -21,11 +21,11 @@ module.exports = class BeautifulCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size !== 1) {
-            let errorMes1 = await message.channel.send(':x: Error! Please mention one user!');
+            message.channel.send(':x: Error! Please mention one user!');
         }
         else {
             if (!message.mentions.users.first().avatarURL) {
-                let errorMes2 = await message.channel.send(":x: Error! This user has no avatar!");
+                message.channel.send(":x: Error! This user has no avatar!");
             }
             else {
                 let userAvatar = message.mentions.users.first().avatarURL;
@@ -41,7 +41,7 @@ module.exports = class BeautifulCommand extends commando.Command {
                 beautiful.blit(avatar, 451, 434);
                 beautiful.getBuffer(Jimp.MIME_PNG, (err, buff) => {
                     if (err) throw err;
-                    message.channel.sendFile(buff);
+                    return message.channel.sendFile(buff);
                 });
             }
         }

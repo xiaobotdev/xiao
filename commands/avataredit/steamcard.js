@@ -22,11 +22,11 @@ module.exports = class SteamCardCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
             if (message.mentions.users.size !== 1) {
-                let errorMes1 = await message.channel.send(':x: Error! Please mention one user!');
+                message.channel.send(':x: Error! Please mention one user!');
             }
             else {
                 if (!message.mentions.users.first().avatarURL) {
-                    let errorMes2 = await message.channel.send(":x: Error! This user has no avatar!");
+                    message.channel.send(":x: Error! This user has no avatar!");
                 }
                 else {
                     let userDisplayName = message.guild.member(message.mentions.users.first()).displayName;
@@ -45,7 +45,7 @@ module.exports = class SteamCardCommand extends commando.Command {
                     nothing.print(font, 38, 20, userDisplayName);
                     nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
                         if (err) throw err;
-                        message.channel.sendFile(buff);
+                        return message.channel.sendFile(buff);
                     });
                 }
             }

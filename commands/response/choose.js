@@ -22,10 +22,10 @@ module.exports = class ChooseCommand extends commando.Command {
         if (message.content.includes(" | ")) {
             let choices = message.content.split(" ").slice(1).join(" ").split(' | ');
             choices = choices[Math.floor(Math.random() * choices.length)];
-            return message.channel.send(`I choose ${choices}!`);
+            message.channel.send(`I choose ${choices}!`);
         }
         else {
-            return message.channel.send(":x: Split your two choices with a ' | '!");
+            message.channel.send(":x: Split your two choices with a ' | '!");
         }
     }
 };

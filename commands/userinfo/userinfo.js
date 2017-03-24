@@ -54,7 +54,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                     break;
             }
             if (message.mentions.users.size !== 1) {
-                return message.channel.send(':x: Error! Please mention one user!');
+                message.channel.send(':x: Error! Please mention one user!');
             }
             else {
                 if (!message.mentions.users.first().presence.game) {
@@ -73,7 +73,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                             stat, true)
                         .addField('**Playing:**',
                             "None", true);
-                    return message.channel.sendEmbed(embed).catch(console.error);
+                    message.channel.sendEmbed(embed).catch(console.error);
                 }
                 else {
                     const embed = new Discord.RichEmbed()
@@ -91,12 +91,12 @@ module.exports = class UserInfoCommand extends commando.Command {
                             stat, true)
                         .addField('**Playing:**',
                             message.mentions.users.first().presence.game.name, true);
-                    return message.channel.sendEmbed(embed).catch(console.error);
+                    message.channel.sendEmbed(embed).catch(console.error);
                 }
             }
         }
         else {
-            return message.channel.send(":x: Error! This command does not work in DM!");
+            message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };

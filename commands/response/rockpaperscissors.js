@@ -23,43 +23,43 @@ module.exports = class RockPaperScissors extends commando.Command {
         let response = ['Paper', 'Rock', 'Scissors'];
         response = response[Math.floor(Math.random() * response.length)];
         if (!rps) {
-            return message.channel.send(":x: Error! Your message contains nothing!");
+            message.channel.send(":x: Error! Your message contains nothing!");
         }
         else if (rps.includes("rock")) {
             if (response === "Rock") {
-                return message.channel.send("Rock! Aw, it's a tie!");
+                message.channel.send("Rock! Aw, it's a tie!");
             }
             if (response === "Paper") {
-                return message.channel.send("Paper! Yes! I win!");
+                message.channel.send("Paper! Yes! I win!");
             }
             if (response === "Scissors") {
-                return message.channel.send("Scissors! Aw... I lose...");
+                message.channel.send("Scissors! Aw... I lose...");
             }
         }
         else if (rps.includes("paper")) {
             if (response === "Rock") {
-                return message.channel.send("Rock! Aw... I lose...");
+                message.channel.send("Rock! Aw... I lose...");
             }
             if (response === "Paper") {
-                return message.channel.send("Paper! Aw, it's a tie!");
+                message.channel.send("Paper! Aw, it's a tie!");
             }
             if (response === "Scissors") {
-                return message.channel.send("Scissors! Yes! I win!");
+                message.channel.send("Scissors! Yes! I win!");
             }
         }
         else if (rps.includes("scissors")) {
             if (response === "Rock") {
-                return message.channel.send("Rock! Yes! I win!");
+                message.channel.send("Rock! Yes! I win!");
             }
             if (response === "Paper") {
-                return message.channel.send("Paper! Aw... I lose...");
+                message.channel.send("Paper! Aw... I lose...");
             }
             if (response === "Scissors") {
-                return message.channel.send("Scissors! Aw, it's a tie!");
+                message.channel.send("Scissors! Aw, it's a tie!");
             }
         }
         else {
-            return message.channel.send(":x: Error! Your choice is not Rock, Paper, or Scissors!");
+            message.channel.send(":x: Error! Your choice is not Rock, Paper, or Scissors!");
         }
     }
 };

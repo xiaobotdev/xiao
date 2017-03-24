@@ -40,10 +40,10 @@ module.exports = class GuildInfoCommand extends commando.Command {
                     `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
                 .addField("**Users:**",
                     message.guild.memberCount, true);
-            let embededMessage = await message.channel.sendEmbed(embed);
+            message.channel.sendEmbed(embed);
         }
         else {
-            let errorMessage = await message.channel.send(":x: Error! This command does not work in DM!");
+            message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };

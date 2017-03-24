@@ -18,6 +18,11 @@ module.exports = class BinaryCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let turnToBinary = message.content.split(" ").slice(1).join(" ");
-        return message.channel.send(stringToBinary(turnToBinary)).catch(error => message.channel.send(':x: Error! Translation is too long, or nothing was entered!'));
+        try {
+            message.channel.send(stringToBinary(turnToBinary));
+        }
+        catch (err) {
+            message.channel.send(':x: Error! Translation is too long, or nothing was entered!');
+        }
     }
 };
