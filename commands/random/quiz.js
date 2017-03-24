@@ -27,20 +27,21 @@ module.exports = class QuizCommand extends commando.Command {
                 .query({
                     count: 1
                 });
+            let answer = response.body[0].answer.toLowerCase().split("<i>").join("").split("</i>").join("");
             const embed = new Discord.RichEmbed()
                 .setTitle('You have **fifteen** seconds to answer this question:')
                 .setDescription(`**Category: ${response.body[0].category.title}**\n${response.body[0].question}`);
             let embedMsg = await message.channel.sendEmbed(embed);
             try {
-                let collected = await message.channel.awaitMessages(res => res.content.toLowerCase() === response.body[0].answer.toLowerCase() && res.author.id === message.author.id, {
+                let collected = await message.channel.awaitMessages(res => res.content.toLowerCase() === answer && res.author.id === message.author.id, {
                     max: 1,
                     time: 15000,
                     errors: ['time']
                 });
-                return message.channel.send(`Good Job! You won! ${response.body[0].answer} is the correct answer!`);
+                return message.channel.send(`Good Job! You won! ${answer} is the correct answer!`);
             }
             catch (err) {
-                return message.channel.send(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${response.body[0].answer}`);
+                return message.channel.send(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
             }
         }
         catch (err) {
