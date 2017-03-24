@@ -12,7 +12,7 @@ module.exports = class WarnCommand extends commando.Command {
         });
     }
     hasPermission(msg) {
-        return msg.author.hasPermission('MANAGE_MESSAGES');
+        return msg.member.hasPermission('MANAGE_MESSAGES');
     }
 
     async run(message) {

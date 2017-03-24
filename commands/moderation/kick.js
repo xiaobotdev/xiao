@@ -12,7 +12,7 @@ module.exports = class KickCommand extends commando.Command {
         });
     }
     hasPermission(msg) {
-        return msg.author.hasPermission('KICK_MEMBERS');
+        return msg.member.hasPermission('KICK_MEMBERS');
     }
 
     async run(message) {
