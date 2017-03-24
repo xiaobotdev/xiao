@@ -61,17 +61,17 @@ client.on('messageReactionAdd', (reaction, user) => {
     if (reaction.count > 1) return;
     let starboard = reaction.message.guild.channels.find('name', 'starboard');
     if (!starboard) return;
-    if (reaction.message.author.id === user.id) {
+    /*if (reaction.message.author.id === user.id) {
         reaction.remove(user.id);
         reaction.message.channel.send(`:x: Error! ${user.username}, you can't star your own messages!`);
     }
-    else {
+    else {*/
         const embed = new Discord.RichEmbed()
         .setAuthor(user.username, user.avatarURL)
         .setDescription('Message',
         reaction.message.content);
         starboard.sendEmbed(embed);
-    }
+    //}
 });
 
 client.on('guildMemberAdd', (member) => {
