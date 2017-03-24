@@ -11,7 +11,7 @@ module.exports = class SlotsCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -22,10 +22,10 @@ module.exports = class SlotsCommand extends commando.Command {
         let slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
         let slotFour = slotThing[Math.floor(Math.random() * slotThing.length)];
         if (slotOne === slotTwo && slotOne === slotThree && slotOne === slotFour) {
-            message.channel.send(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nWow! You won! Great job... er... luck!`);
+            return message.channel.send(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nWow! You won! Great job... er... luck!`);
         }
         else {
-            message.channel.send(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nAww... You lost... Guess it's just bad luck, huh?`);
+            return message.channel.send(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nAww... You lost... Guess it's just bad luck, huh?`);
         }
     }
 };

@@ -29,10 +29,10 @@ module.exports = class DefineCommand extends commando.Command {
                 .get(`https://www.google.com/search?tbm=isch&gs_l=img&q=${encodeURI(thingToSearch)}`);
             const $ = cheerio.load(response.text);
             const result = $('.images_table').find('img').first().attr('src');
-            searchMsg.edit(result);
+            return searchMsg.edit(result);
         }
         catch (err) {
-            searchMsg.edit(':x: Error! No Results Found!');
+            return searchMsg.edit(':x: Error! No Results Found!');
         }
     }
 };

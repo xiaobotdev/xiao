@@ -37,14 +37,14 @@ module.exports = class QuizCommand extends commando.Command {
                     time: 15000,
                     errors: ['time']
                 });
-                message.channel.send(`Good Job! You won! ${response.body[0].answer} is the correct answer!`);
+                return message.channel.send(`Good Job! You won! ${response.body[0].answer} is the correct answer!`);
             }
             catch (err) {
-                message.channel.send(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${response.body[0].answer}`);
+                return message.channel.send(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${response.body[0].answer}`);
             }
         }
         catch (err) {
-            message.channel.send(":x: Error! Something went wrong!");
+            return message.channel.send(":x: Error! Something went wrong!");
         }
     }
 };

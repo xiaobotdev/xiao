@@ -12,17 +12,17 @@ module.exports = class CowsayCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         if (!message.content.split(" ").slice(1).join(" ")) {
-            message.channel.send(":x: Error! You entered nothing!");
+            return message.channel.send(":x: Error! You entered nothing!");
         }
         else {
             let turnToCowsay = message.content.split(" ").slice(1).join(" ");
-            message.channel.sendCode(null, cowsay.say({
+            return message.channel.sendCode(null, cowsay.say({
                 text: turnToCowsay,
                 e: "oO",
                 T: "U "

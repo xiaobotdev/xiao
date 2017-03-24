@@ -41,7 +41,7 @@ module.exports = class MathGameCommand extends commando.Command {
         let randomExpression = randomValue1 + randomType + randomValue2;
         let solved = math.eval(randomExpression);
         if (!randomValue) {
-            message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
+            return message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         }
         else {
             const embed = new Discord.RichEmbed()
@@ -54,10 +54,10 @@ module.exports = class MathGameCommand extends commando.Command {
                     time: 10000,
                     errors: ['time'],
                 });
-                message.channel.send(`Good Job! You won! ${solved} is the correct answer!`);
+                return message.channel.send(`Good Job! You won! ${solved} is the correct answer!`);
             }
             catch (err) {
-                message.channel.send(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+                return message.channel.send(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
             }
         }
     }

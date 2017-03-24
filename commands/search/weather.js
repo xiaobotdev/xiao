@@ -50,10 +50,10 @@ module.exports = class WeatherCommand extends commando.Command {
                     info.wind.direction, true)
                 .addField('**Wind Speed:**',
                     info.wind.speed, true);
-            message.channel.sendEmbed(embed);
+            return message.channel.sendEmbed(embed);
         }
         catch (err) {
-            message.channel.send(":x: Error! Make sure you typed the location correctly!");
+            return message.channel.send(":x: Error! Make sure you typed the location correctly!");
         }
     }
 };

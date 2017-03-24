@@ -15,7 +15,7 @@ module.exports = class RollChooseCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -23,14 +23,14 @@ module.exports = class RollChooseCommand extends commando.Command {
         let [value] = message.content.split(" ").slice(1);
         if (!value) {
             let roll = Math.floor(Math.random() * 6) + 1;
-            message.channel.send(`You rolled a ${roll}.`);
+            return message.channel.send(`You rolled a ${roll}.`);
         }
         else if (value.match(/^[0-9]+$/)) {
             let roll = Math.floor(Math.random() * value) + 1;
-            message.channel.send(`You rolled a ${roll}.`);
+            return message.channel.send(`You rolled a ${roll}.`);
         }
         else {
-            message.channel.send(":x: Error! Your message either contains a number but the number is invalid, or the number is in the wrong place.\n:notepad_spiral: (Note: When using numbers such as 1,000, do not use a comma)");
+            return message.channel.send(":x: Error! Your message either contains a number but the number is invalid, or the number is in the wrong place.\n:notepad_spiral: (Note: When using numbers such as 1,000, do not use a comma)");
         }
     }
 };

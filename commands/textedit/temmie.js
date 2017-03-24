@@ -298,18 +298,18 @@ module.exports = class TemmieCommand extends commando.Command {
 		});
 	}
 
-	async run(message) {
+	run(message) {
 		if (message.channel.type !== 'dm') {
 			if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
 		}
 		console.log(`[Command] ${message.content}`);
 		let thingToTranslate = message.content.split(" ").slice(1).join(" ");
 		if (!thingToTranslate) {
-			message.channel.send(':x: Error! Nothing to translate!');
+			return message.channel.send(':x: Error! Nothing to translate!');
 		}
 		else {
 			let temmized = temmize(thingToTranslate);
-			message.channel.send(temmized);
+			return message.channel.send(temmized);
 		}
 	}
 };

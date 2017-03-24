@@ -34,7 +34,7 @@ module.exports = class OsuCommand extends commando.Command {
                     type: 'string'
                 });
             if (!response.body[0]) {
-                message.channel.send(":x: Error! User not found!");
+                return message.channel.send(":x: Error! User not found!");
             }
             else {
                 const embed = new Discord.RichEmbed()
@@ -65,11 +65,11 @@ module.exports = class OsuCommand extends commando.Command {
                         response.body[0].count_rank_s, true)
                     .addField('**A:**',
                         response.body[0].count_rank_a, true);
-                message.channel.sendEmbed(embed);
+                return message.channel.sendEmbed(embed);
             }
         }
         catch (err) {
-            message.channel.send(":x: Error! User not Found!");
+            return message.channel.send(":x: Error! User not Found!");
         }
     }
 };

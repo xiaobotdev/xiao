@@ -15,13 +15,13 @@ module.exports = class OffspringCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         let gender = ['boy', 'girl'];
         gender = gender[Math.floor(Math.random() * gender.length)];
-        message.channel.send(`It's a ${gender}!`);
+        return message.channel.send(`It's a ${gender}!`);
     }
 };

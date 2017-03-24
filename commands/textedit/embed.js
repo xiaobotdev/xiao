@@ -12,14 +12,14 @@ module.exports = class EmbedCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
         let embedMessage = message.content.split(" ").slice(1).join(" ");
         if (!embedMessage) {
-            message.channel.send(":x: Error! Nothing to embed!");
+            return message.channel.send(":x: Error! Nothing to embed!");
         }
         else {
             if (message.channel.type === 'dm') {
@@ -28,7 +28,7 @@ module.exports = class EmbedCommand extends commando.Command {
                     .setColor(0x00AE86)
                     .setTimestamp()
                     .setDescription(embedMessage);
-                message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed);
             }
             else {
                 const embed = new Discord.RichEmbed()
@@ -37,7 +37,7 @@ module.exports = class EmbedCommand extends commando.Command {
                     .setTimestamp()
                     .setDescription(embedMessage);
                 message.delete();
-                message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed);
             }
         }
     }

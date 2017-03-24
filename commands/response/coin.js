@@ -15,13 +15,13 @@ module.exports = class CoinFlipCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         let coin = ['heads', 'tails'];
         coin = coin[Math.floor(Math.random() * coin.length)];
-        message.channel.send(`It landed on ${coin}!`);
+        return message.channel.send(`It landed on ${coin}!`);
     }
 };

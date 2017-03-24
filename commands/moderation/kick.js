@@ -16,7 +16,7 @@ module.exports = class KickCommand extends commando.Command {
         return msg.member.hasPermission('KICK_MEMBERS');
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'])) return;
         }
@@ -25,7 +25,7 @@ module.exports = class KickCommand extends commando.Command {
             let userToKick = message.mentions.users.first();
             let reason = message.content.split(" ").slice(2).join(" ");
             if (message.mentions.users.size !== 1) {
-                message.channel.send(":x: Error! Please mention one user!");
+                return message.channel.send(":x: Error! Please mention one user!");
             }
             else {
                 if (message.guild.member(userToKick).kickable) {
@@ -38,19 +38,19 @@ module.exports = class KickCommand extends commando.Command {
                             .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                             .setTimestamp()
                             .setDescription(`**Member:** ${userToKick.username}#${userToKick.discriminator} (${userToKick.id})\n**Action:** Kick\n**Reason:** ${reason}`);
-                        message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+                        return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
                     }
                     else {
-                        message.channel.send(":notepad_spiral: **Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
+                        return message.channel.send(":notepad_spiral: **Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
                     }
                 }
                 else {
-                    message.channel.send(":x: Error! This member cannot be kicked! Perhaps they have a higher role than me?");
+                    return message.channel.send(":x: Error! This member cannot be kicked! Perhaps they have a higher role than me?");
                 }
             }
         }
         else {
-            message.channel.send(":x: Error! This command does not work in DM!");
+            return message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };

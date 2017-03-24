@@ -17,16 +17,16 @@ module.exports = class RouletteCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         if (message.channel.type !== 'dm') {
-            message.channel.send(`I choose ${message.guild.members.random().displayName}!`);
+            return message.channel.send(`I choose ${message.guild.members.random().displayName}!`);
         }
         else {
-            message.channel.send(':x: Error! This command does not work in DM!');
+            return message.channel.send(':x: Error! This command does not work in DM!');
         }
     }
 };

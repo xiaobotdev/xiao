@@ -51,7 +51,7 @@ module.exports = class TypingGameCommand extends commando.Command {
                 break;
         }
         if (!time) {
-            message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
+            return message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         }
         else {
             const embed = new Discord.RichEmbed()
@@ -64,10 +64,10 @@ module.exports = class TypingGameCommand extends commando.Command {
                     time: time,
                     errors: ['time']
                 });
-                message.channel.send(`Good Job! You won!`);
+                return message.channel.send(`Good Job! You won!`);
             }
             catch (err) {
-                message.channel.send('Aw... Too bad, try again next time!');
+                return message.channel.send('Aw... Too bad, try again next time!');
             }
         }
     }

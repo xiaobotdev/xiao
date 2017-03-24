@@ -11,7 +11,7 @@ module.exports = class MagicBall extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -22,6 +22,6 @@ module.exports = class MagicBall extends commando.Command {
         if (!question) {
             question = "Not Specified.";
         }
-        message.channel.send(`Question: ${question}\n:8ball: ${answers} :8ball:`);
+        return message.channel.send(`Question: ${question}\n:8ball: ${answers} :8ball:`);
     }
 };

@@ -17,7 +17,7 @@ module.exports = class UserInfoCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
@@ -54,7 +54,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                     break;
             }
             if (message.mentions.users.size !== 1) {
-                message.channel.send(':x: Error! Please mention one user!');
+                return message.channel.send(':x: Error! Please mention one user!');
             }
             else {
                 if (!message.mentions.users.first().presence.game) {
@@ -73,7 +73,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                             stat, true)
                         .addField('**Playing:**',
                             "None", true);
-                    message.channel.sendEmbed(embed).catch(console.error);
+                    return message.channel.sendEmbed(embed);
                 }
                 else {
                     const embed = new Discord.RichEmbed()
@@ -91,12 +91,12 @@ module.exports = class UserInfoCommand extends commando.Command {
                             stat, true)
                         .addField('**Playing:**',
                             message.mentions.users.first().presence.game.name, true);
-                    message.channel.sendEmbed(embed).catch(console.error);
+                    return message.channel.sendEmbed(embed);
                 }
             }
         }
         else {
-            message.channel.send(":x: Error! This command does not work in DM!");
+            return message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };
