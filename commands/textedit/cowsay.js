@@ -22,16 +22,11 @@ module.exports = class CowsayCommand extends commando.Command {
         }
         else {
             let turnToCowsay = message.content.split(" ").slice(1).join(" ");
-            try {
-                message.channel.sendCode(null, cowsay.say({
-                    text: turnToCowsay,
-                    e: "oO",
-                    T: "U "
-                }));
-            }
-            catch (err) {
-                message.channel.send(':x: Error! Perhaps the content is too long?');
-            }
+            message.channel.sendCode(null, cowsay.say({
+                text: turnToCowsay,
+                e: "oO",
+                T: "U "
+            })).catch(error => message.channel.send(':x: Error! Perhaps the content is too long?'));
         }
     }
 };

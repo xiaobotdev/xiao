@@ -23,12 +23,7 @@ module.exports = class RomanCommand extends commando.Command {
             message.channel.send(':x: Error! Number is too high!');
         }
         else {
-            try {
-                message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger));
-            }
-            catch (err) {
-                message.channel.send(':x: Error! Something went wrong! Perhaps you entered nothing?');
-            }
+            message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger)).catch(error => message.channel.send(':x: Error! Translation is too long, or nothing was entered!'));
         }
     }
 };
