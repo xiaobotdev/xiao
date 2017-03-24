@@ -15,7 +15,7 @@ module.exports = class BanCommand extends commando.Command {
         });
     }
     hasPermission(msg) {
-        return msg.author.hasPermission('BAN_MEMBERS');
+        return msg.member.hasPermission('BAN_MEMBERS');
     }
 
     async run(message) {
