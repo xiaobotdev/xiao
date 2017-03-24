@@ -28,14 +28,10 @@ module.exports = class ContactCommand extends commando.Command {
         if (message.author.id === banlist.banned[banID]) {
             return message.channel.send("Sorry, you've been banned from using this command.");
         }
-        else {
-            if (!messageToReport) {
-                return message.channel.send(':x: Error! Please do not report nothing!');
-            }
-            else {
-                this.client.users.get(config.owner).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
-                return message.channel.send('Message Sent! Thanks for your support!');
-            }
+        else if (!messageToReport) {
+            return message.channel.send(':x: Error! Please do not report nothing!');
         }
+        this.client.users.get(config.owner).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
+        return message.channel.send('Message Sent! Thanks for your support!');
     }
 };

@@ -22,12 +22,17 @@ module.exports = class RemindCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let remindMe = message.content.split(" ").slice(1).join(" ");
-        let remindTime = sherlock.parse(remindMe);
-        let time = remindTime.startDate.getTime() - Date.now();
-        let preRemind = await message.channel.send(`I will remind you '${remindTime.eventTitle}' ${moment().add(time, 'ms').fromNow()}.`);
-        const remindMessage = await new Promise(resolve => {
-            setTimeout(() => resolve(message.channel.send(`${message.author} you wanted me to remind you of: '${remindTime.eventTitle}'`)), time);
-        });
-        return [preRemind, remindMessage];
+        try {
+            let remindTime = sherlock.parse(remindMe);
+            let time = remindTime.startDate.getTime() - Date.now();
+            let preRemind = await message.channel.send(`I will remind you '${remindTime.eventTitle}' ${moment().add(time, 'ms').fromNow()}.`);
+            const remindMessage = await new Promise(resolve => {
+                setTimeout(() => resolve(message.channel.send(`${message.author} you wanted me to remind you of: '${remindTime.eventTitle}'`)), time);
+            });
+            return [preRemind, remindMessage];
+        }
+        catch (err) {
+            return message.channel.send(":x: Error! Something went wrong! Perhaps you didn't enter a valid time with your data?");
+        }
     }
 };
