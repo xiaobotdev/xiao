@@ -18,7 +18,7 @@ module.exports = class ContactCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -26,15 +26,15 @@ module.exports = class ContactCommand extends commando.Command {
         let banID = message.author.id;
         let messageToReport = message.content.split(" ").slice(1).join(" ");
         if (message.author.id === banlist.banned[banID]) {
-            message.channel.send("Sorry, you've been banned from using this command.");
+            return message.channel.send("Sorry, you've been banned from using this command.");
         }
         else {
             if (!messageToReport) {
-                message.channel.send(':x: Error! Please do not report nothing!');
+                return message.channel.send(':x: Error! Please do not report nothing!');
             }
             else {
                 this.client.users.get(config.owner).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
-                message.channel.send('Message Sent! Thanks for your support!');
+                return message.channel.send('Message Sent! Thanks for your support!');
             }
         }
     }
