@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 const moment = require('moment');
-const sherlock = require('sherlockjs');
+const sherlock = require('Sherlock');
 
 module.exports = class RemindCommand extends commando.Command {
     constructor(Client) {
