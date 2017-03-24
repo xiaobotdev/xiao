@@ -32,6 +32,7 @@
     "opusscript": "0.0.3",
     "pirate-speak": "^1.0.1",
     "roman-numeral-converter-mmxvi": "^1.0.5",
+    "sherlockjs": "^0.0.9",
     "string-to-binary": "^0.1.2",
     "superagent": "^3.5.1",
     "urban": "^0.3.1",
