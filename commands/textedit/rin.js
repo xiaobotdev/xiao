@@ -32,11 +32,11 @@ module.exports = class RinSayCommand extends commando.Command {
                     content: rinContent
                 });
             if (message.content.type !== 'dm') {
-                message.delete();
+                return message.delete();
             }
         }
         catch (err) {
-            message.channel.send(':x: Error! Message failed to send!');
+            return message.channel.send(':x: Error! Message failed to send!');
         }
     }
 };

@@ -20,7 +20,7 @@ module.exports = class YodaCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let turnToYoda = message.content.split(" ").slice(1).join(" ");
         if (!turnToYoda) {
-            message.channel.send(':x: Error! Nothing to translate!');
+            return message.channel.send(':x: Error! Nothing to translate!');
         }
         else {
             try {
@@ -34,14 +34,14 @@ module.exports = class YodaCommand extends commando.Command {
                         sentence: turnToYoda
                     });
                 if (!response) {
-                    message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
+                    return message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
                 }
                 else {
-                    message.channel.send(response.text);
+                    return message.channel.send(response.text);
                 }
             }
             catch (err) {
-                message.channel.send(":x: Error! Something went wrong!");
+                return message.channel.send(":x: Error! Something went wrong!");
             }
         }
     }

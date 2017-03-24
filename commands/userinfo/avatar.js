@@ -11,20 +11,20 @@ module.exports = class AvatarCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         if (message.mentions.users.size !== 1) {
-            message.channel.send(':x: Error! Please mention one user!');
+            return message.channel.send(':x: Error! Please mention one user!');
         }
         else {
             if (!message.mentions.users.first().avatarURL) {
-                message.channel.send(":x: Error! This person has no avatar!");
+                return message.channel.send(":x: Error! This person has no avatar!");
             }
             else {
-                message.channel.send(message.mentions.users.first().avatarURL);
+                return message.channel.send(message.mentions.users.first().avatarURL);
             }
         }
     }

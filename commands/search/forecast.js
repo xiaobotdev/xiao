@@ -43,10 +43,10 @@ module.exports = class ForecastCommand extends commando.Command {
                     `**High:** ${info.item.forecast[5].high}°F, **Low:** ${info.item.forecast[5].low}°F, **Condition:** ${info.item.forecast[5].text}`)
                 .addField(`**${info.item.forecast[6].day} - ${info.item.forecast[6].date}:**`,
                     `**High:** ${info.item.forecast[6].high}°F, **Low:** ${info.item.forecast[6].low}°F, **Condition:** ${info.item.forecast[6].text}`);
-            message.channel.sendEmbed(embed);
+            return message.channel.sendEmbed(embed);
         }
         catch (err) {
-            message.channel.send(":x: Error! Make sure you typed the location correctly!");
+            return message.channel.send(":x: Error! Make sure you typed the location correctly!");
         }
     }
 };

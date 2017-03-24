@@ -31,10 +31,10 @@ module.exports = class DefineCommand extends commando.Command {
             let href = $('.r').first().find('a').first().attr('href');
             if (!href) return Promise.reject(new Error('NO RESULTS'));
             href = querystring.parse(href.replace('/url?', ''));
-            searchMsg.edit(href.q);
+            return searchMsg.edit(href.q);
         }
         catch (err) {
-            searchMsg.edit(':x: Error! No Results Found!');
+            return searchMsg.edit(':x: Error! No Results Found!');
         }
     }
 };

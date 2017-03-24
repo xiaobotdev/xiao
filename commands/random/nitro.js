@@ -12,7 +12,7 @@ module.exports = class NitroCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
@@ -23,6 +23,6 @@ module.exports = class NitroCommand extends commando.Command {
             .setColor(0x748BD9)
             .setURL("https://discordapp.com/nitro")
             .setDescription("This Message can only be viewed by members with Discord Nitro.\n\n\n[More Information](https://discordapp.com/nitro)");
-        message.channel.sendEmbed(embed);
+        return message.channel.sendEmbed(embed);
     }
 };

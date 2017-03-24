@@ -11,17 +11,17 @@ module.exports = class LotteryCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         let lotteryNumber = ['Winner'][Math.floor(Math.random() * 100)];
         if (lotteryNumber === "Winner") {
-            message.channel.send(`Wow ${message.author.username}! You actually won! Great job!`);
+            return message.channel.send(`Wow ${message.author.username}! You actually won! Great job!`);
         }
         else {
-            message.channel.send(`Nope, sorry ${message.author.username}, you lost.`);
+            return message.channel.send(`Nope, sorry ${message.author.username}, you lost.`);
         }
     }
 };

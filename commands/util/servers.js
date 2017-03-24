@@ -17,7 +17,7 @@ module.exports = class ServersCommand extends commando.Command {
         return this.client.isOwner(msg.author);
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -25,6 +25,6 @@ module.exports = class ServersCommand extends commando.Command {
         let guildCount = this.client.guilds.size;
         let guildNames = this.client.guilds.map(g => `${g.name} (${g.id})`).join(", ");
         console.log(`${guildCount} Servers: ${guildNames}`);
-        message.channel.send("Sent the information to the console!");
+        return message.channel.send("Sent the information to the console!");
     }
 };

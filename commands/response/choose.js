@@ -14,7 +14,7 @@ module.exports = class ChooseCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -22,10 +22,10 @@ module.exports = class ChooseCommand extends commando.Command {
         if (message.content.includes(" | ")) {
             let choices = message.content.split(" ").slice(1).join(" ").split(' | ');
             choices = choices[Math.floor(Math.random() * choices.length)];
-            message.channel.send(`I choose ${choices}!`);
+            return message.channel.send(`I choose ${choices}!`);
         }
         else {
-            message.channel.send(":x: Split your two choices with a ' | '!");
+            return message.channel.send(":x: Split your two choices with a ' | '!");
         }
     }
 };

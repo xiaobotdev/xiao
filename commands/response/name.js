@@ -15,7 +15,7 @@ module.exports = class RandomNameGen extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -29,13 +29,13 @@ module.exports = class RandomNameGen extends commando.Command {
         let randomFirstBoth = [randomFirstMale, randomFirstFemale];
         randomFirstBoth = randomFirstBoth[Math.floor(Math.random() * randomFirstBoth.length)];
         if (message.content.toLowerCase().split(" ").slice(1).includes("male")) {
-            message.channel.send(`${randomFirstMale} ${randomLast}`);
+            return message.channel.send(`${randomFirstMale} ${randomLast}`);
         }
         else if (message.content.toLowerCase().split(" ").slice(1).includes("female")) {
-            message.channel.send(`${randomFirstFemale} ${randomLast}`);
+            return message.channel.send(`${randomFirstFemale} ${randomLast}`);
         }
         else {
-            message.channel.send(`${randomFirstBoth} ${randomLast}`);
+            return message.channel.send(`${randomFirstBoth} ${randomLast}`);
         }
     }
 };

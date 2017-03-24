@@ -12,7 +12,7 @@ module.exports = class RomanCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -20,10 +20,10 @@ module.exports = class RomanCommand extends commando.Command {
         let numberToRoman = message.content.split(" ").slice(1).join(" ");
         let romanInterger = Number(numberToRoman);
         if (romanInterger > 1000000) {
-            message.channel.send(':x: Error! Number is too high!');
+            return message.channel.send(':x: Error! Number is too high!');
         }
         else {
-            message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger)).catch(error => message.channel.send(':x: Error! Translation is too long, or nothing was entered!'));
+            return message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger)).catch(error => message.channel.send(':x: Error! Translation is too long, or nothing was entered!'));
         }
     }
 };

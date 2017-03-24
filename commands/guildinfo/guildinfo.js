@@ -17,7 +17,7 @@ module.exports = class GuildInfoCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
@@ -40,10 +40,10 @@ module.exports = class GuildInfoCommand extends commando.Command {
                     `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
                 .addField("**Users:**",
                     message.guild.memberCount, true);
-            message.channel.sendEmbed(embed);
+            return message.channel.sendEmbed(embed);
         }
         else {
-            message.channel.send(":x: Error! This command does not work in DM!");
+            return message.channel.send(":x: Error! This command does not work in DM!");
         }
     }
 };

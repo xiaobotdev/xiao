@@ -18,7 +18,7 @@ module.exports = class MathCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
@@ -26,15 +26,13 @@ module.exports = class MathCommand extends commando.Command {
         let expression = message.content.split(" ").slice(1).join(" ");
         try {
             let solved = math.eval(expression);
-            try {
-                message.channel.send(solved);
-            }
-            catch (err) {
+            return message.channel.send(solved).catch(err => {
+                console.log(err);
                 message.channel.send(":x: Error! Invalid statement!");
-            }
+            });
         }
         catch (err) {
-            message.channel.send(":x: Error! Invalid statement!");
+            return message.channel.send(":x: Error! Invalid statement!");
         }
     }
 };

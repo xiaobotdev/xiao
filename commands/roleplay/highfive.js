@@ -11,12 +11,12 @@ module.exports = class HighFivesCommand extends commando.Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        message.channel.send(`${message.author} *high-fives* ${thingToRoleplay}`);
+        return message.channel.send(`${message.author} *high-fives* ${thingToRoleplay}`);
     }
 };
