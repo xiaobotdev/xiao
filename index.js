@@ -71,7 +71,7 @@ client.on('messageReactionAdd', (reaction, user) => {
                 .setAuthor(user.username, user.avatarURL)
                 .setColor(0xFFA500)
                 .setTimestamp()
-                .setImage(reaction.message.attachments.first())
+                .setImage(reaction.message.attachments.first().url)
                 .setDescription(reaction.message.content);
             starboard.sendEmbed(embed);
         }
