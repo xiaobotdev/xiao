@@ -15,6 +15,7 @@ module.exports = class BanCommand extends commando.Command {
         });
     }
     hasPermission(msg) {
+        if (msg.channel.type === 'dm') return;
         return msg.member.hasPermission('BAN_MEMBERS');
     }
 
