@@ -66,12 +66,23 @@ client.on('messageReactionAdd', (reaction, user) => {
         reaction.message.channel.send(`:x: Error! ${user.username}, you can't star your own messages!`);
     }
     else {
-        const embed = new Discord.RichEmbed()
-            .setAuthor(user.username, user.avatarURL)
-            .setColor(0xFFA500)
-            .setTimestamp()
-            .setDescription(reaction.message.content);
-        starboard.sendEmbed(embed);
+        if (reaction.message.attachments.size < 0 && reaction.message.attachments.first().height) {
+            const embed = new Discord.RichEmbed()
+                .setAuthor(user.username, user.avatarURL)
+                .setColor(0xFFA500)
+                .setTimestamp()
+                .setImage(reaction.message.attachments.first())
+                .setDescription(reaction.message.content);
+            starboard.sendEmbed(embed);
+        }
+        else {
+            const embed = new Discord.RichEmbed()
+                .setAuthor(user.username, user.avatarURL)
+                .setColor(0xFFA500)
+                .setTimestamp()
+                .setDescription(reaction.message.content);
+            starboard.sendEmbed(embed);
+        }
     }
 });
 
