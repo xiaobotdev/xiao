@@ -19,7 +19,7 @@ module.exports = class EmbedCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let embedMessage = message.content.split(" ").slice(1).join(" ");
         if (!embedMessage) {
-            return message.channel.send(":x: Error! Nothing to embed!");
+            message.channel.send(":x: Error! Nothing to embed!");
         }
         else {
             if (message.channel.type === 'dm') {
@@ -28,7 +28,7 @@ module.exports = class EmbedCommand extends commando.Command {
                     .setColor(0x00AE86)
                     .setTimestamp()
                     .setDescription(embedMessage);
-                return message.channel.sendEmbed(embed).catch(console.error);
+                message.channel.sendEmbed(embed).catch(console.error);
             }
             else {
                 const embed = new Discord.RichEmbed()
@@ -36,8 +36,8 @@ module.exports = class EmbedCommand extends commando.Command {
                     .setColor(0x00AE86)
                     .setTimestamp()
                     .setDescription(embedMessage);
-                await message.delete();
-                return message.channel.sendEmbed(embed).catch(console.error);
+                message.delete();
+                message.channel.sendEmbed(embed).catch(console.error);
             }
         }
     }

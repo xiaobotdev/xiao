@@ -54,7 +54,7 @@ module.exports = class IMDBCommand extends commando.Command {
                         movie.writer)
                     .addField('**Actors:**',
                         movie.actors);
-                return message.channel.sendEmbed(embed).catch(console.error);
+                return message.channel.sendEmbed(embed);
             }
         });
     }

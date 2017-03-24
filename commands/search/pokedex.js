@@ -34,10 +34,10 @@ module.exports = class PokedexCommand extends commando.Command {
                     pokedex.entry[pokemon])
                 .addField('Type',
                     pokedex.type[pokemon]);
-            return message.channel.sendEmbed(embed).catch(console.error);
+            message.channel.sendEmbed(embed).catch(console.error);
         }
         else {
-            return message.channel.send(":x: This Pokémon either doesn't exist, or isn't implemented yet.");
+            message.channel.send(":x: This Pokémon either doesn't exist, or isn't implemented yet.");
         }
     }
 };

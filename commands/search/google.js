@@ -23,19 +23,18 @@ module.exports = class DefineCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
-        await message.channel.send('Searching...').then(msg => {
-            return request
-                .get(`https://www.google.com/search?q=${thingToSearch}`)
-                .then(function(response) {
-                    const $ = cheerio.load(response.text);
-                    let href = $('.r').first().find('a').first().attr('href');
-                    if (!href) return Promise.reject(new Error('NO RESULTS'));
-                    href = querystring.parse(href.replace('/url?', ''));
-                    return msg.edit(href.q);
-                }).catch(function(err) {
-                    console.log(err);
-                    return msg.edit(':x: Error! No Results Found!');
-                });
-        });
+        let searchMsg = await message.channel.send('Searching...');
+        try {
+            let response = await request
+                .get(`https://www.google.com/search?q=${thingToSearch}`);
+            const $ = cheerio.load(response.text);
+            let href = $('.r').first().find('a').first().attr('href');
+            if (!href) return Promise.reject(new Error('NO RESULTS'));
+            href = querystring.parse(href.replace('/url?', ''));
+            searchMsg.edit(href.q);
+        }
+        catch (err) {
+            searchMsg.edit(':x: Error! No Results Found!');
+        }
     }
 };

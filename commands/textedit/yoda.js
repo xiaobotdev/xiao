@@ -20,29 +20,29 @@ module.exports = class YodaCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let turnToYoda = message.content.split(" ").slice(1).join(" ");
         if (!turnToYoda) {
-            return message.channel.send(':x: Error! Nothing to translate!');
+            message.channel.send(':x: Error! Nothing to translate!');
         }
         else {
-            return request
-                .get('https://yoda.p.mashape.com/yoda')
-                .set({
-                    'X-Mashape-Key': config.mashapekey,
-                    'Accept': 'text/plain'
-                })
-                .query({
-                    sentence: turnToYoda
-                })
-                .then(function(response) {
-                    if (!response) {
-                        return message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
-                    }
-                    else {
-                        return message.channel.send(response.text).catch(error => message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.'));
-                    }
-                }).catch(function(err) {
-                    console.log(err);
-                    return message.channel.send(":x: Error! Unknown Error. Try again later!");
-                });
+            try {
+                let response = await request
+                    .get('https://yoda.p.mashape.com/yoda')
+                    .set({
+                        'X-Mashape-Key': config.mashapekey,
+                        'Accept': 'text/plain'
+                    })
+                    .query({
+                        sentence: turnToYoda
+                    });
+                if (!response) {
+                    message.channel.send(':x: Error! Something went wrong! Keep it simple to avoid this error.');
+                }
+                else {
+                    message.channel.send(response.text);
+                }
+            }
+            catch (err) {
+                message.channel.send(":x: Error! Something went wrong!");
+            }
         }
     }
 };

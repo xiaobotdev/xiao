@@ -27,14 +27,14 @@ module.exports = class MathCommand extends commando.Command {
         try {
             let solved = math.eval(expression);
             try {
-                let solvedMes = await message.channel.send(solved);
+                message.channel.send(solved);
             }
             catch (err) {
-                let invalidErr1 = await message.channel.send(":x: Error! Invalid statement!");
+                message.channel.send(":x: Error! Invalid statement!");
             }
         }
         catch (err) {
-            let invalidErr2 = await message.channel.send(":x: Error! Invalid statement!");
+            message.channel.send(":x: Error! Invalid statement!");
         }
     }
 };

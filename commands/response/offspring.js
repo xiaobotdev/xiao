@@ -6,8 +6,7 @@ module.exports = class OffspringCommand extends commando.Command {
             name: 'offspring',
             aliases: [
                 'child',
-                'baby',
-                'sex'
+                'baby'
             ],
             group: 'response',
             memberName: 'offspring',
@@ -23,6 +22,6 @@ module.exports = class OffspringCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let gender = ['boy', 'girl'];
         gender = gender[Math.floor(Math.random() * gender.length)];
-        return message.channel.send(`It's a ${gender}!`);
+        message.channel.send(`It's a ${gender}!`);
     }
 };

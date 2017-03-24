@@ -61,13 +61,13 @@ module.exports = class InfoCommand extends commando.Command {
             .addField('Utility Modules',
                 "[superagent](https://github.com/visionmedia/superagent), [mathjs](http://mathjs.org/), [moment](http://momentjs.com), [moment-duration-format](https://github.com/jsmreese/moment-duration-format), [opusscript](https://github.com/abalabahaha/opusscript), [jimp](https://github.com/oliver-moran/jimp), [cheerio](https://cheerio.js.org/)")
             .addField('APIs',
-                "[Cleverbot API](https://www.cleverbot.com/api/), [Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/#api)")
+                "[Cleverbot API](https://www.cleverbot.com/api/), [Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/#api), [jService API](http://jservice.io/)")
             .addField('Other Credit',
                 "[Heroku](https://www.heroku.com/), [Cloud9](https://c9.io/), [heroku-buildpack-ffmpeg-latest](https://elements.heroku.com/buildpacks/jonathanong/heroku-buildpack-ffmpeg-latest)")
             .addField('My Server',
                 "[Click Here to Join!](https://discord.gg/fqQF8mc)")
             .addField('Invite Link:',
                 "[Click Here to Add Me to Your Server!](https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=1345846343)");
-        let embededMessage = await message.channel.sendEmbed(embed);
+        message.channel.sendEmbed(embed);
     }
 };

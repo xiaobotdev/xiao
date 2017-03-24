@@ -24,15 +24,15 @@ module.exports = class SayCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let copycat = message.content.split(" ").slice(1).join(" ");
         if (!copycat) {
-            return message.channel.send(":x: Error! Nothing to say!");
+            message.channel.send(":x: Error! Nothing to say!");
         }
         else {
             if (message.channel.type === 'dm') {
-                return message.channel.send(copycat);
+                message.channel.send(copycat);
             }
             else {
-                await message.delete();
-                return message.channel.send(copycat);
+                message.delete();
+                message.channel.send(copycat);
             }
         }
     }

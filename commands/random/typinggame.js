@@ -51,23 +51,24 @@ module.exports = class TypingGameCommand extends commando.Command {
                 break;
         }
         if (!time) {
-            return message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
+            message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
         }
         else {
             const embed = new Discord.RichEmbed()
                 .setTitle(`You have **${levelWord}** seconds to type:`)
                 .setDescription(randomSentence);
-            await message.channel.sendEmbed(embed).then(() => {
-                message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
+            let embedMsg = await message.channel.sendEmbed(embed);
+            try {
+                let collected = await message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
                     max: 1,
                     time: time,
-                    errors: ['time'],
-                }).then((collected) => {
-                    return message.channel.send(`Good Job! You won!`);
-                }).catch(() => {
-                    return message.channel.send('Aw... Too bad, try again next time!');
+                    errors: ['time']
                 });
-            });
+                message.channel.send(`Good Job! You won!\n${collected} was typed fast enough!`);
+            }
+            catch (err) {
+                message.channel.send('Aw... Too bad, try again next time!');
+            }
         }
     }
 };

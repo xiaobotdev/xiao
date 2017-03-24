@@ -22,7 +22,8 @@ module.exports = class ForecastCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let locationToSearch = message.content.split(" ").slice(1).join(" ");
-        return weather(locationToSearch, 'f').then(info => {
+        try {
+            let info = await weather(locationToSearch, 'f');
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
@@ -42,10 +43,10 @@ module.exports = class ForecastCommand extends commando.Command {
                     `**High:** ${info.item.forecast[5].high}°F, **Low:** ${info.item.forecast[5].low}°F, **Condition:** ${info.item.forecast[5].text}`)
                 .addField(`**${info.item.forecast[6].day} - ${info.item.forecast[6].date}:**`,
                     `**High:** ${info.item.forecast[6].high}°F, **Low:** ${info.item.forecast[6].low}°F, **Condition:** ${info.item.forecast[6].text}`);
-            return message.channel.sendEmbed(embed).catch(console.error);
-        }).catch(err => {
-            console.log(err);
-            return message.channel.send(":x: Error! Make sure you typed the location correctly!");
-        });
+            message.channel.sendEmbed(embed);
+        }
+        catch (err) {
+            message.channel.send(":x: Error! Make sure you typed the location correctly!");
+        }
     }
 };

@@ -17,6 +17,6 @@ module.exports = class SlapCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
-        return message.channel.send(`${message.author} *slaps* ${thingToRoleplay}`);
+        message.channel.send(`${message.author} *slaps* ${thingToRoleplay}`);
     }
 };

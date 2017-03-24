@@ -26,24 +26,24 @@ module.exports = class DefineCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let defineThis = encodeURI(message.content.split(" ").slice(1).join(" "));
-        return request
-            .get(`http://api.wordnik.com:80/v4/word.json/${defineThis}/definitions`)
-            .query({
-                limit: 1,
-                includeRelated: false,
-                useCanonical: false,
-                includeTags: false,
-                api_key: config.wordnikkey
-            })
-            .then(function(response) {
-                const embed = new Discord.RichEmbed()
-                    .setColor(0x9797FF)
-                    .setTitle(response.body[0].word)
-                    .setDescription(response.body[0].text);
-                return message.channel.sendEmbed(embed).catch(console.error);
-            }).catch(function(err) {
-                console.log(err);
-                return message.channel.send(":x: Error! Word not Found!");
-            });
+        try {
+            let response = await request
+                .get(`http://api.wordnik.com:80/v4/word.json/${defineThis}/definitions`)
+                .query({
+                    limit: 1,
+                    includeRelated: false,
+                    useCanonical: false,
+                    includeTags: false,
+                    api_key: config.wordnikkey
+                });
+            const embed = new Discord.RichEmbed()
+                .setColor(0x9797FF)
+                .setTitle(response.body[0].word)
+                .setDescription(response.body[0].text);
+            message.channel.sendEmbed(embed).catch(console.error);
+        }
+        catch (err) {
+            message.channel.send(":x: Error! Word not Found!");
+        }
     }
 };
