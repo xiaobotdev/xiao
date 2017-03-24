@@ -59,7 +59,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     if(reaction.message.channel.type === 'dm') return;
     if (reaction.emoji.name !== '⭐') return;
     if (reaction.count > 1) return;
-    let starboard = user.guild.channels.find('name', 'starboard');
+    let starboard = reaction.message.guild.channels.find('name', 'starboard');
     if (!starboard) return;
     if (reaction.message.author.id === user.id) {
         reaction.remove(user.id);
