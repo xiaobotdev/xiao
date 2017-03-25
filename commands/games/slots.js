@@ -4,7 +4,7 @@ module.exports = class SlotsCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'slots',
-            group: 'response',
+            group: 'games',
             memberName: 'slots',
             description: 'Play slots. (;slots)',
             examples: [';slots']

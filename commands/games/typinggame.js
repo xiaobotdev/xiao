@@ -5,19 +5,27 @@ module.exports = class TypingGameCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'typinggame',
-            group: 'random',
+            group: 'games',
             memberName: 'typinggame',
             description: 'See how fast you can type a sentence in a given time limit. (;typinggame easy)',
-            examples: [';typinggame easy', ';typinggame medium', ';typinggame hard', ';typinggame extreme']
+            examples: [';typinggame easy', ';typinggame medium', ';typinggame hard', ';typinggame extreme'],
+            args: [{
+                key: 'difficulty',
+                prompt: 'What difficulty should the typing game be? Easy, Medium, Hard, or Extreme?',
+                type: 'string',
+                validate: (str) => {
+                    str.toLowerCase() === 'easy' || str.toLowerCase() === 'medium' || str.toLowerCase() === 'hard' || str.toLowerCase() === 'extreme';
+                }
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let [level] = message.content.toLowerCase().split(" ").slice(1);
+        let level = args.difficulty;
         let randomSentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
         randomSentence = randomSentence[Math.floor(Math.random() * randomSentence.length)];
         let time;
@@ -50,25 +58,22 @@ module.exports = class TypingGameCommand extends commando.Command {
                 levelWord = "ten";
                 break;
         }
-        if (!time) {
-            return message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
+        const embed = new Discord.RichEmbed()
+            .setTitle(`You have **${levelWord}** seconds to type:`)
+            .setDescription(randomSentence);
+        let embedMsg = await message.channel.sendEmbed(embed);
+        try {
+            let collected = await message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
+                max: 1,
+                time: time,
+                errors: ['time']
+            });
+            let victoryMsg = await message.channel.send(`Good Job! You won!`);
+            return [embedMsg, collected, victoryMsg];
         }
-        else {
-            const embed = new Discord.RichEmbed()
-                .setTitle(`You have **${levelWord}** seconds to type:`)
-                .setDescription(randomSentence);
-            let embedMsg = await message.channel.sendEmbed(embed);
-            try {
-                let collected = await message.channel.awaitMessages(response => response.content === randomSentence && response.author.id === message.author.id, {
-                    max: 1,
-                    time: time,
-                    errors: ['time']
-                });
-                return message.channel.send(`Good Job! You won!`);
-            }
-            catch (err) {
-                return message.channel.send('Aw... Too bad, try again next time!');
-            }
+        catch (err) {
+            let loseMsg = await message.channel.send('Aw... Too bad, try again next time!');
+            return [embedMsg, loseMsg];
         }
     }
 };

@@ -8,22 +8,23 @@ module.exports = class RomanCommand extends commando.Command {
             group: 'numedit',
             memberName: 'roman',
             description: 'Converts numbers to Roman Numerals. (;roman 2)',
-            examples: [';roman 2']
+            examples: [';roman 2'],
+            args: [{
+                key: 'number',
+                prompt: 'What do you want to convert to Roman?',
+                type: 'integer'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let numberToRoman = message.content.split(" ").slice(1).join(" ");
-        let romanInterger = Number(numberToRoman);
-        if (romanInterger > 1000000) {
-            return message.channel.send(':x: Error! Number is too high!');
-        }
-        else {
-            return message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger)).catch(error => message.channel.send(':x: Error! Translation is too long, or nothing was entered!'));
-        }
+        let numberToRoman = args.number;
+        let romanInterger = numberToRoman;
+        if (romanInterger > 1000000) return message.channel.send(':x: Error! Number is too high!');
+        return message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger));
     }
 };

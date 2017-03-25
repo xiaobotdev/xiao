@@ -7,16 +7,21 @@ module.exports = class SlapCommand extends commando.Command {
             group: 'roleplay',
             memberName: 'slap',
             description: 'Slaps someone. (;slap @User)',
-            examples: [';slap @User']
+            examples: [';slap @User'],
+            args: [{
+                key: 'thing',
+                prompt: 'What do you want to roleplay with?',
+                type: 'string'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToRoleplay = message.content.split(" ").slice(1).join(" ");
+        let thingToRoleplay = args.thing;
         return message.channel.send(`${message.author} *slaps* ${thingToRoleplay}`);
     }
 };

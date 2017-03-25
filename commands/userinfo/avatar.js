@@ -7,25 +7,21 @@ module.exports = class AvatarCommand extends commando.Command {
             group: 'userinfo',
             memberName: 'avatar',
             description: "Gives a link to someone's avatar. (;avatar @User)",
-            examples: [";avatar @XiaoBot"]
+            examples: [";avatar @XiaoBot"],
+            args: [{
+                key: 'user',
+                prompt: 'Which user would you like to get the avatar of?',
+                type: 'user'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (message.mentions.users.size !== 1) {
-            return message.channel.send(':x: Error! Please mention one user!');
-        }
-        else {
-            if (!message.mentions.users.first().avatarURL) {
-                return message.channel.send(":x: Error! This person has no avatar!");
-            }
-            else {
-                return message.channel.send(message.mentions.users.first().avatarURL);
-            }
-        }
+        let user = args.user;
+        return message.channel.send(user.displayAvatarURL);
     }
 };

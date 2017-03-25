@@ -12,22 +12,22 @@ module.exports = class RIPCommand extends commando.Command {
             group: 'avataredit',
             memberName: 'rip',
             description: 'Puts a profile picture over a gravestone. (;rip @User)',
-            examples: [';rip @User']
+            examples: [';rip @User'],
+            args: [{
+                key: 'user',
+                prompt: 'Which user would you like to edit the avatar of?',
+                type: 'user'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (message.mentions.users.size !== 1) {
-            return message.channel.send(':x: Error! Please mention one user!');
-        }
-        else if (!message.mentions.users.first().avatarURL) {
-            return message.channel.send(":x: Error! This user has no avatar!");
-        }
-        let userAvatar = message.mentions.users.first().avatarURL;
+        let user = args.user;
+        let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace(".jpg", ".png");
         userAvatar = userAvatar.replace(".gif", ".png");
         let images = [];
@@ -37,7 +37,7 @@ module.exports = class RIPCommand extends commando.Command {
         avatar.resize(200, 200);
         gravestone.blit(avatar, 60, 65);
         gravestone.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return;
+            if (err) return message.channel.send(':x: Error! Something went wrong!');
             return message.channel.sendFile(buff);
         });
     }

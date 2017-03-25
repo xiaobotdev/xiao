@@ -9,7 +9,7 @@ module.exports = class QuizCommand extends commando.Command {
             aliases: [
                 'jeopardy'
             ],
-            group: 'random',
+            group: 'games',
             memberName: 'quiz',
             description: 'Answer a quiz question. (;quiz)',
             examples: [';quiz']
@@ -38,10 +38,12 @@ module.exports = class QuizCommand extends commando.Command {
                     time: 15000,
                     errors: ['time']
                 });
-                return message.channel.send(`Good Job! You won! ${answer} is the correct answer!`);
+                let victoryMsg = await message.channel.send(`Good Job! You won! ${answer} is the correct answer!`);
+                return [embedMsg, collected, victoryMsg];
             }
             catch (err) {
-                return message.channel.send(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
+                let loseMsg = await message.channel.send(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
+                return [embedMsg, loseMsg];
             }
         }
         catch (err) {

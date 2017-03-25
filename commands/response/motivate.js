@@ -11,21 +11,21 @@ module.exports = class MotivateCommand extends commando.Command {
             group: 'response',
             memberName: 'motivate',
             description: 'Motivates someone. (;motivate @User)',
-            examples: [';motivate @User']
+            examples: [';motivate @User'],
+            args: [{
+                key: 'thing',
+                prompt: 'What do you want to motivate?',
+                type: 'string'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let userToMotivate = message.content.split(" ").slice(1).join(" ");
-        if (!userToMotivate) {
-            return message.reply('https://www.youtube.com/watch?v=ZXsQAXx_ao0');
-        }
-        else {
-            return message.channel.send(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
-        }
+        let userToMotivate = args.thing || message.author;
+        return message.channel.send(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
     }
 };

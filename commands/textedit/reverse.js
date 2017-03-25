@@ -7,22 +7,22 @@ module.exports = class ReverseCommand extends commando.Command {
             group: 'textedit',
             memberName: 'reverse',
             description: 'Reverses text (;reverse This text please)',
-            examples: [';reverse This text please']
+            examples: [';reverse This text please'],
+            args: [{
+                key: 'text',
+                prompt: 'What text would you like to reverse?',
+                type: 'string'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let stringToReverse = message.content.split(" ").slice(1).join(" ");
-        if (!stringToReverse) {
-            return message.channel.send(":x: Error! Nothing to reverse!");
-        }
-        else {
-            let reversed = stringToReverse.split("").reverse().join("");
-            return message.channel.send(reversed);
-        }
+        let stringToReverse = args.text;
+        let reversed = stringToReverse.split("").reverse().join("");
+        return message.channel.send(reversed);
     }
 };

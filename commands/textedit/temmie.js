@@ -286,7 +286,6 @@ const temmize = function(text) {
 	return temmify;
 };
 
-
 module.exports = class TemmieCommand extends commando.Command {
 	constructor(Client) {
 		super(Client, {
@@ -294,22 +293,22 @@ module.exports = class TemmieCommand extends commando.Command {
 			group: 'textedit',
 			memberName: 'temmie',
 			description: "Translate text to Temmie speak. (;temmie I am Temmie)",
-			examples: [";temmie I am Temmie."]
+			examples: [";temmie I am Temmie."],
+			args: [{
+                key: 'text',
+                prompt: 'What text would you like to convert to Temmie speak?',
+                type: 'string'
+            }]
 		});
 	}
 
-	run(message) {
+	run(message, args) {
 		if (message.channel.type !== 'dm') {
 			if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
 		}
 		console.log(`[Command] ${message.content}`);
-		let thingToTranslate = message.content.split(" ").slice(1).join(" ");
-		if (!thingToTranslate) {
-			return message.channel.send(':x: Error! Nothing to translate!');
-		}
-		else {
-			let temmized = temmize(thingToTranslate);
-			return message.channel.send(temmized);
-		}
+		let thingToTranslate = args.text;
+		let temmized = temmize(thingToTranslate);
+		return message.channel.send(temmized);
 	}
 };

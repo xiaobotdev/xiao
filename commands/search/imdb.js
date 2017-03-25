@@ -14,48 +14,48 @@ module.exports = class IMDBCommand extends commando.Command {
             group: 'search',
             memberName: 'imdb',
             description: 'Searches IMDB for a specified movie. (;imdb How to Train Your Dragon)',
-            examples: [';imdb How to Train Your Dragon']
+            examples: [';imdb How to Train Your Dragon'],
+            args: [{
+                key: 'movie',
+                prompt: 'What movie or TV Show would you like to search for?',
+                type: 'string'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let queryMovie = message.content.split(" ").slice(1).join(" ");
+        let queryMovie = args.movie;
         let movie;
         imdb.getReq({
             name: queryMovie
         }, (err, response) => {
             movie = response;
-            if (!movie) {
-                console.log(err);
-                return message.channel.send(":x: Error! Movie not found!");
-            }
-            else {
-                const embed = new Discord.RichEmbed()
-                    .setColor(0xDBA628)
-                    .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
-                    .setURL(movie.imdburl)
-                    .setTitle(`${movie.title} (${movie.rating} Score)`)
-                    .setDescription(`${movie.plot.substr(0, 1500)} [Read the Rest Here!](${movie.imdburl})`)
-                    .addField('**Genres:**',
-                        movie.genres)
-                    .addField('**Year:**',
-                        movie.year, true)
-                    .addField('**Rated:**',
-                        movie.rated, true)
-                    .addField('**Runtime:**',
-                        movie.runtime, true)
-                    .addField('**Directors:**',
-                        movie.director)
-                    .addField('**Writers:**',
-                        movie.writer)
-                    .addField('**Actors:**',
-                        movie.actors);
-                return message.channel.sendEmbed(embed);
-            }
+            if (!movie) return message.channel.send(":x: Error! Movie not found!");
+            const embed = new Discord.RichEmbed()
+                .setColor(0xDBA628)
+                .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
+                .setURL(movie.imdburl)
+                .setTitle(`${movie.title} (${movie.rating} Score)`)
+                .setDescription(`${movie.plot.substr(0, 1500)} [Read the Rest Here!](${movie.imdburl})`)
+                .addField('**Genres:**',
+                    movie.genres)
+                .addField('**Year:**',
+                    movie.year, true)
+                .addField('**Rated:**',
+                    movie.rated, true)
+                .addField('**Runtime:**',
+                    movie.runtime, true)
+                .addField('**Directors:**',
+                    movie.director)
+                .addField('**Writers:**',
+                    movie.writer)
+                .addField('**Actors:**',
+                    movie.actors);
+            return message.channel.sendEmbed(embed);
         });
     }
 };

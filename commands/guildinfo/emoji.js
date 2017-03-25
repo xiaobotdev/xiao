@@ -12,7 +12,8 @@ module.exports = class EmojiCommand extends commando.Command {
             group: 'guildinfo',
             memberName: 'emoji',
             description: "Gives a list of the current server's emoji. (;emoji)",
-            examples: [';emoji']
+            examples: [';emoji'],
+            guildOnly: true
         });
     }
 
@@ -21,9 +22,6 @@ module.exports = class EmojiCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (message.channel.type === 'dm') {
-            return message.channel.send(":x: Error! This command does not work in DM!");
-        }
         return message.channel.send(message.guild.emojis.map(e => e).join(" "));
     }
 };

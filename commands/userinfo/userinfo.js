@@ -1,5 +1,7 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
+const moment = require('moment');
+require('moment-duration-format');
 
 module.exports = class UserInfoCommand extends commando.Command {
     constructor(Client) {
@@ -13,90 +15,71 @@ module.exports = class UserInfoCommand extends commando.Command {
             group: 'userinfo',
             memberName: 'user',
             description: "Gives some info on a user. (;user @User)",
-            examples: [";user @User"]
+            examples: [";user @User"],
+            guildOnly: true,
+            args: [{
+                key: 'user',
+                prompt: 'Which user would you like to get info on?',
+                type: 'user'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (message.channel.type !== 'dm') {
-            let stat;
-            switch (message.mentions.users.first().presence.status) {
-                case "online":
-                    stat = "<:vpOnline:212789758110334977> Online";
-                    break;
-                case "idle":
-                    stat = "<:vpAway:212789859071426561> Idle";
-                    break;
-                case "dnd":
-                    stat = "<:vpDnD:230093576355184640> Do Not Disturb";
-                    break;
-                case "offline":
-                    stat = "<:vpOffline:212790005943369728> Offline";
-                    break;
-            }
-            let color;
-            switch (message.mentions.users.first().presence.status) {
-                case "online":
-                    color = 0x00AE86;
-                    break;
-                case "idle":
-                    color = 0xFFFF00;
-                    break;
-                case "dnd":
-                    color = 0xFF0000;
-                    break;
-                case "offline":
-                    color = 0x808080;
-                    break;
-            }
-            if (message.mentions.users.size !== 1) {
-                return message.channel.send(':x: Error! Please mention one user!');
-            }
-            else {
-                if (!message.mentions.users.first().presence.game) {
-                    const embed = new Discord.RichEmbed()
-                        .setColor(color)
-                        .setThumbnail(message.mentions.users.first().avatarURL)
-                        .addField('**Name:**',
-                            `${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}`, true)
-                        .addField('**ID:**',
-                            message.mentions.users.first().id, true)
-                        .addField('**Joined Discord On:**',
-                            message.mentions.users.first().createdAt, true)
-                        .addField('**Joined Server On:**',
-                            message.guild.member(message.mentions.users.first()).joinedAt, true)
-                        .addField('**Status:**',
-                            stat, true)
-                        .addField('**Playing:**',
-                            "None", true);
-                    return message.channel.sendEmbed(embed);
-                }
-                else {
-                    const embed = new Discord.RichEmbed()
-                        .setColor(color)
-                        .setThumbnail(message.mentions.users.first().avatarURL)
-                        .addField('**Name:**',
-                            `${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}`, true)
-                        .addField('**ID:**',
-                            message.mentions.users.first().id, true)
-                        .addField('**Joined Discord On:**',
-                            message.mentions.users.first().createdAt, true)
-                        .addField('**Joined Server On:**',
-                            message.guild.member(message.mentions.users.first()).joinedAt, true)
-                        .addField('**Status:**',
-                            stat, true)
-                        .addField('**Playing:**',
-                            message.mentions.users.first().presence.game.name, true);
-                    return message.channel.sendEmbed(embed);
-                }
-            }
+        let user = args.user;
+        let stat;
+        switch (user.presence.status) {
+            case "online":
+                stat = "<:vpOnline:212789758110334977> Online";
+                break;
+            case "idle":
+                stat = "<:vpAway:212789859071426561> Idle";
+                break;
+            case "dnd":
+                stat = "<:vpDnD:230093576355184640> Do Not Disturb";
+                break;
+            case "offline":
+                stat = "<:vpOffline:212790005943369728> Offline";
+                break;
         }
-        else {
-            return message.channel.send(":x: Error! This command does not work in DM!");
+        let color;
+        switch (user.presence.status) {
+            case "online":
+                color = 0x00AE86;
+                break;
+            case "idle":
+                color = 0xFFFF00;
+                break;
+            case "dnd":
+                color = 0xFF0000;
+                break;
+            case "offline":
+                color = 0x808080;
+                break;
         }
+        let userGame = user.presence.game;
+        if (!user.presence.game) {
+            userGame = "None";
+        }
+        const embed = new Discord.RichEmbed()
+            .setColor(color)
+            .setThumbnail(user.displayAvatarURL)
+            .addField('**Name:**',
+                `${user.username}#${user.discriminator}`, true)
+            .addField('**ID:**',
+                user.id, true)
+            .addField('**Joined Discord On:**',
+                `${user.createdAt} (${moment.duration(user.createdTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago)`, true)
+            .addField('**Joined Server On:**',
+                `${message.guild.member(user).joinedAt} (${moment.duration(message.guild.member(user).joinedTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago)`, true)
+            .addField('**Status:**',
+                stat, true)
+            .addField('**Playing:**',
+                userGame, true);
+        return message.channel.sendEmbed(embed);
     }
 };

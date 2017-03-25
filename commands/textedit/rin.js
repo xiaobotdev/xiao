@@ -12,28 +12,33 @@ module.exports = class RinSayCommand extends commando.Command {
             group: 'textedit',
             memberName: 'rin',
             description: "Posts a message to the Rin webhook in Heroes of Dreamland. (;rin Hey guys!)",
-            examples: [";rin Hey guys!"]
+            examples: [";rin Hey guys!"],
+            guildOnly: true,
+            args: [{
+                key: 'text',
+                prompt: 'What text would you like Rin to say?',
+                type: 'string'
+            }]
         });
     }
     hasPermission(msg) {
         return this.client.isOwner(msg.author);
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'MANAGE_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let rinContent = message.content.split(" ").slice(1).join(" ");
+        let rinContent = args.text;
         try {
             let post = await request
                 .post(config.webhook)
                 .send({
                     content: rinContent
                 });
-            if (message.content.type !== 'dm') {
-                return message.delete();
-            }
+            let deleteMsg = await message.delete();
+            return [post, deleteMsg];
         }
         catch (err) {
             return message.channel.send(':x: Error! Message failed to send!');

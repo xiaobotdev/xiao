@@ -11,49 +11,41 @@ module.exports = class BanCommand extends commando.Command {
             group: 'moderation',
             memberName: 'ban',
             description: 'Bans a user. (;ban @User being a jerk.)',
-            examples: [";ban @User being a jerk."]
+            examples: [";ban @User being a jerk."],
+            guildOnly: true,
+            args: [{
+                key: 'member',
+                prompt: 'What member do you want to ban?',
+                type: 'member'
+            }, {
+                key: 'reason',
+                prompt: 'What do you want to set the reason as?',
+                type: 'string'
+            }]
         });
     }
     hasPermission(msg) {
-        if (msg.channel.type === 'dm') return;
         return msg.member.hasPermission('BAN_MEMBERS');
     }
 
-    run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (message.channel.type !== 'dm') {
-            let userToBan = message.mentions.users.first();
-            let reason = message.content.split(" ").slice(2).join(" ");
-            if (message.mentions.users.size !== 1) {
-                return message.channel.send(":x: Error! Please mention one user!");
-            }
-            else {
-                if (message.guild.member(userToBan).bannable) {
-                    message.channel.send(":ok_hand:");
-                    message.guild.member(userToBan).ban();
-                    if (message.guild.channels.exists("name", "mod_logs")) {
-                        const embed = new Discord.RichEmbed()
-                            .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-                            .setColor(0xFF0000)
-                            .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
-                            .setTimestamp()
-                            .setDescription(`**Member:** ${userToBan.username}#${userToBan.discriminator} (${userToBan.id})\n**Action:** Ban\n**Reason:** ${reason}`);
-                        return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
-                    }
-                    else {
-                        return message.channel.send(":notepad_spiral: **Note: No log will be sent, as there is not a channel named 'mod_logs'. Please create it to use the logging feature.**");
-                    }
-                }
-                else {
-                    return message.channel.send(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
-                }
-            }
-        }
-        else {
-            return message.channel.send(":x: Error! This command does not work in DM!");
-        }
+        if (!message.guild.channels.exists("name", "mod_logs")) return message.channel.send(":x: Error! Could not find the mod_logs channel! Please create it!");
+        let member = args.member;
+        let reason = args.reason;
+        if (!message.guild.member(member).bannable) return message.channel.send(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
+        let banUser = await message.guild.member(member).ban();
+        let okHandMsg = await message.channel.send(":ok_hand:");
+        const embed = new Discord.RichEmbed()
+            .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+            .setColor(0xFF0000)
+            .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
+            .setTimestamp()
+            .setDescription(`**Member:** ${member.username}#${member.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
+        let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+        return [banUser, okHandMsg, modLogMsg];
     }
 };

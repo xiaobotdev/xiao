@@ -8,16 +8,23 @@ module.exports = class BinaryCommand extends commando.Command {
             group: 'textedit',
             memberName: 'binary',
             description: 'Converts text to binary. (;binary This text)',
-            examples: [';binary This text']
+            examples: [';binary This text'],
+            args: [{
+                key: 'text',
+                prompt: 'What text would you like to convert to binary?',
+                type: 'string'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let turnToBinary = message.content.split(" ").slice(1).join(" ");
-        return message.channel.send(stringToBinary(turnToBinary)).catch(error => message.channel.send(':x: Error! Translation is too long, or nothing was entered!'));
+        let turnToBinary = args.text;
+        let binaryText = stringToBinary(turnToBinary);
+        if (binaryText.length > 1950) return message.channel.send(":x: Error! Your message is too long!");
+        return message.channel.send(binaryText);
     }
 };

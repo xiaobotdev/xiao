@@ -15,7 +15,8 @@ module.exports = class GuildInfoCommand extends commando.Command {
             group: 'guildinfo',
             memberName: 'server',
             description: 'Gives some info on the current server. (;server)',
-            examples: [';server']
+            examples: [';server'],
+            guildOnly: true
         });
     }
 
@@ -24,9 +25,6 @@ module.exports = class GuildInfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (message.channel.type === 'dm') {
-            return message.channel.send(":x: Error! This command does not work in DM!");
-        }
         const embed = new Discord.RichEmbed()
             .setColor(0x00AE86)
             .setThumbnail(message.guild.iconURL)

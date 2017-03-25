@@ -16,16 +16,21 @@ module.exports = class DefineCommand extends commando.Command {
             group: 'search',
             memberName: 'define',
             description: 'Defines a word. (;define Cat)',
-            examples: [';define Cat']
+            examples: [';define Cat'],
+            args: [{
+                key: 'word',
+                prompt: 'What would you like to define?',
+                type: 'string'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let defineThis = encodeURI(message.content.split(" ").slice(1).join(" "));
+        let defineThis = encodeURI(args.word);
         try {
             let response = await request
                 .get(`http://api.wordnik.com:80/v4/word.json/${defineThis}/definitions`)

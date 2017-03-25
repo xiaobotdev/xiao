@@ -9,36 +9,37 @@ module.exports = class WikipediaCommand extends commando.Command {
             group: 'search',
             memberName: 'wikipedia',
             description: 'Searches Wikipedia for something. (;wikipedia Cat)',
-            examples: [';wikipedia Cat']
+            examples: [';wikipedia Cat'],
+            args: [{
+                key: 'query',
+                prompt: 'What would you like to search for?',
+                type: 'string'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
+        let thingToSearch = encodeURI(args.query);
         thingToSearch = thingToSearch.split(")").join("%29");
         try {
             let response = await request
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${thingToSearch}&exintro=&explaintext=&redirects=&formatversion=2`);
             let description = response.body.query.pages[0].extract;
             let name = response.body.query.pages[0].title;
-            if (!description) {
-                return message.channel.send(":x: Error! Entry Not Found!");
-            }
-            else {
-                description = description.substr(0, 1900);
-                description = description.split('\n').join("\n\n");
-                const embed = new Discord.RichEmbed()
-                    .setColor(0xE7E7E7)
-                    .setTitle(name)
-                    .setURL(`https://en.wikipedia.org/wiki/${thingToSearch}`)
-                    .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
-                    .setDescription(`${description} [Read the Rest Here](https://en.wikipedia.org/wiki/${thingToSearch})`);
-                return message.channel.sendEmbed(embed);
-            }
+            if (!description) return message.channel.send(":x: Error! Entry Not Found!");
+            description = description.substr(0, 1900);
+            description = description.split('\n').join("\n\n");
+            const embed = new Discord.RichEmbed()
+                .setColor(0xE7E7E7)
+                .setTitle(name)
+                .setURL(`https://en.wikipedia.org/wiki/${thingToSearch}`)
+                .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
+                .setDescription(`${description} [Read the Rest Here](https://en.wikipedia.org/wiki/${thingToSearch})`);
+            return message.channel.sendEmbed(embed);
         }
         catch (err) {
             return message.channel.send(":x: Error! Entry Not Found!");

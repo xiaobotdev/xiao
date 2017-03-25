@@ -12,61 +12,38 @@ module.exports = class SoundBoardCommand extends commando.Command {
             group: 'random',
             memberName: 'soundboard',
             description: 'Plays a sound in your voice channel. (;soundboard cat)',
-            examples: [';soundboard cat']
+            examples: [';soundboard cat'],
+            guildOnly: true,
+            args: [{
+                key: 'sound',
+                prompt: 'What sound do you want me to play?',
+                type: 'string'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'CONNECT', 'SPEAK', 'ADD_REACTIONS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['CONNECT', 'SPEAK', 'ADD_REACTIONS'])) {
-                return message.channel.send(':x: Error! In order to do this command, you must give me the permissions to "Connect" and "Speak", as well as the permission to Add Reactions!');
-            }
-            else {
-                let voiceChannel = message.member.voiceChannel;
-                if (!voiceChannel) {
-                    return message.channel.send(`:x: Error! Please be in a voice channel first!`);
-                }
-                else {
-                    let soundToPlay = message.content.toLowerCase().split(" ").slice(1).join(" ");
-                    if (!soundToPlay) {
-                        return message.channel.send(':x: Error! No sound set. Please use ;soundboard list to see a list of sounds you can play.');
-                    }
-                    else if (soundToPlay === 'list') {
-                        return message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo");
-                    }
-                    else if (soundToPlay === sounds.avaliable[soundToPlay]) {
-                        let alreadyConnected = await this.client.voiceConnections.get(voiceChannel.guild.id);
-                        if (alreadyConnected) {
-                            if (alreadyConnected.channel.id === voiceChannel.id) {
-                                return message.channel.send(':x: Error! I am already playing a sound!');
-                            }
-                            else {
-                                return message.channel.send(':x: Error! I am already playing a sound!');
-                            }
-                        }
-                        else {
-                            let connection = await voiceChannel.join();
-                            let stream = sounds.paths[soundToPlay];
-                            let dispatcher = connection.playStream(stream);
-                            message.react('🔊');
-                            dispatcher.on('end', () => {
-                                message.react('✅');
-                                return voiceChannel.leave();
-                            });
-                        }
-                    }
-                    else {
-                        return message.channel.send(':x: Error! Sound not found! Use `;soundboard list` to see a list of sounds you can play.');
-                    }
-                }
-            }
+        let voiceChannel = message.member.voiceChannel;
+        if (!voiceChannel) return message.channel.send(`:x: Error! Please be in a voice channel first!`);
+        let soundToPlay = args.sound;
+        if (soundToPlay === 'list') return message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo");
+        if (soundToPlay !== sounds.avaliable[soundToPlay]) return message.channel.send(':x: Error! Sound not found! Use `;soundboard list` to see a list of sounds you can play.');
+        let alreadyConnected = await this.client.voiceConnections.get(voiceChannel.guild.id);
+        if (alreadyConnected) {
+            if (alreadyConnected.channel.id === voiceChannel.id) return message.channel.send(':x: Error! I am already playing a sound!');
+            return message.channel.send(':x: Error! I am already playing a sound!');
         }
-        else {
-            return message.channel.send(':x: This is a DM!');
-        }
+        let connection = await voiceChannel.join();
+        let stream = sounds.paths[soundToPlay];
+        let dispatcher = connection.playStream(stream);
+        message.react('🔊');
+        dispatcher.on('end', () => {
+            message.react('✅');
+            return voiceChannel.leave();
+        });
     }
 };

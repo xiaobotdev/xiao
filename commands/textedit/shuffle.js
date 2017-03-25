@@ -19,21 +19,21 @@ module.exports = class ShuffleCommand extends commando.Command {
             group: 'textedit',
             memberName: 'shuffle',
             description: 'Shuffles text (;shuffle This Text)',
-            examples: [';shuffle This Text']
+            examples: [';shuffle This Text'],
+            args: [{
+                key: 'text',
+                prompt: 'What text would you like to shuffle?',
+                type: 'string'
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToShuffle = message.content.split(" ").slice(1).join(" ");
-        if (!thingToShuffle) {
-            return message.channel.send(":x: Error! Nothing to shuffle!");
-        }
-        else {
-            return message.channel.send(thingToShuffle.shuffle());
-        }
+        let thingToShuffle = args.text;
+        return message.channel.send(thingToShuffle.shuffle());
     }
 };

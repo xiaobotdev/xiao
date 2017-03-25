@@ -12,25 +12,28 @@ module.exports = class DiscrimCommand extends commando.Command {
             group: 'search',
             memberName: 'discrim',
             description: 'Searches the server for a certain discriminator. (;discrim 8081)',
-            examples: [';discrim 8081']
+            examples: [';discrim 8081'],
+            args: [{
+                key: 'discrim',
+                prompt: 'Which discriminator would you like to search for?',
+                type: 'string',
+                validate: (str) => {
+                    str.match(/^[0-9]+$/) && str.length === 4;
+                }
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let userToSearch = message.content.split(" ").slice(1).join(" ");
-        if (userToSearch.match(/^[0-9]+$/) && userToSearch.split("").length === 4) {
-            let users = await this.client.users.filter(u => u.discriminator === userToSearch).map(u => u.username).sort();
-            const embed = new Discord.RichEmbed()
-                .setTitle(`${users.length} Users with the discriminator: ${userToSearch}`)
-                .setDescription(users.join(', '));
-            return message.channel.sendEmbed(embed);
-        }
-        else {
-            return message.channel.send(':x: Error! This discriminator is invalid!');
-        }
+        let userToSearch = args.discrim;
+        let users = await this.client.users.filter(u => u.discriminator === userToSearch).map(u => u.username).sort();
+        const embed = new Discord.RichEmbed()
+            .setTitle(`${users.length} Users with the discriminator: ${userToSearch}`)
+            .setDescription(users.join(', '));
+        return message.channel.sendEmbed(embed);
     }
 };
