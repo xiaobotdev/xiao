@@ -16,10 +16,7 @@ module.exports = class DiscrimCommand extends commando.Command {
             args: [{
                 key: 'discrim',
                 prompt: 'Which discriminator would you like to search for?',
-                type: 'string',
-                validate: (str) => {
-                    str.match(/^[0-9]+$/) && str.length === 4;
-                }
+                type: 'string'
             }]
         });
     }
@@ -30,6 +27,7 @@ module.exports = class DiscrimCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let userToSearch = args.discrim;
+        if (!userToSearch.match(/^[0-9]+$/) || userToSearch.length !== 4) return message.channel.send(':x: Error! Invalid Discriminator!');
         let users = await this.client.users.filter(u => u.discriminator === userToSearch).map(u => u.username).sort();
         const embed = new Discord.RichEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${userToSearch}`)

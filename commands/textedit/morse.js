@@ -15,10 +15,7 @@ module.exports = class MorseCommand extends commando.Command {
             args: [{
                 key: 'method',
                 prompt: 'Would you like to encode or decode the text?',
-                type: 'string',
-                validate: (str) => {
-                    str.toLowerCase() === 'encode' || str.toLowerCase() === 'decode';
-                }
+                type: 'string'
             }, {
                 key: 'text',
                 prompt: 'What text would you like to convert to morse?',
@@ -33,6 +30,7 @@ module.exports = class MorseCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let methodToUse = args.method;
+        if (methodToUse.toLowerCase() !== 'encode' || methodToUse.toLowerCase() !== 'decode') return message.channel.send(':x: Error! Please set either encode or decode!');
         let toMorse = args.text;
         if (methodToUse === 'encode') return message.channel.send(morse.encode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
         if (methodToUse === 'decode') return message.channel.send(morse.decode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));

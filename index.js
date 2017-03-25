@@ -38,19 +38,20 @@ client.registry
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.on('message', message => {
+client.on('message', (message) => {
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
-    if (!message.content.startsWith(`<@${client.user.id}>`)) {
-        if (message.guild.id !== config.server || message.guild.id !== config.personalServer || message.author.id !== config.owner) return;
-        if (clevusers.allowed[message.author.id]) {
-            let cleverMessage = message.content.replace(`<@${client.user.id}>`, "");
-            console.log(`[Cleverbot] ${cleverMessage}`);
-            message.channel.startTyping();
-            cleverbot.write(cleverMessage, function(response) {
-                message.reply(response.output);
-                message.channel.stopTyping();
-            });
+    if (message.content.startsWith(`<@${client.user.id}>`)) {
+        if (message.guild.id === config.server || message.guild.id === config.personalServer || message.author.id === config.owner) {
+            if (message.author.id === clevusers.allowed[message.author.id]) {
+                let cleverMessage = message.content.replace(`<@${client.user.id}>`, "");
+                console.log(`[Cleverbot] ${cleverMessage}`);
+                message.channel.startTyping();
+                cleverbot.write(cleverMessage, function(response) {
+                    message.reply(response.output);
+                    message.channel.stopTyping();
+                });
+            }
         }
     }
 });
