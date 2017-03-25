@@ -15,6 +15,12 @@ module.exports = class RockPaperScissors extends commando.Command {
                 key: 'choice',
                 prompt: 'Rock, Paper, or Scissors?',
                 type: 'string',
+                validate: rps => {
+                    if (rps.toLowerCase() === 'rock' || rps.toLowerCase() === 'paper' || rps.toLowerCase() === 'scissors') {
+                        return true;
+                    }
+                    return 'Please enter either `rock`, `paper`, or `scissors`.';
+                }
             }]
         });
     }
@@ -27,7 +33,7 @@ module.exports = class RockPaperScissors extends commando.Command {
         let rps = args.choice.toLowerCase();
         let response = ['Paper', 'Rock', 'Scissors'];
         response = response[Math.floor(Math.random() * response.length)];
-        if (rps.includes("rock")) {
+        if (rps === "rock") {
             if (response === "Rock") {
                 return message.channel.send("Rock! Aw, it's a tie!");
             }
@@ -38,7 +44,7 @@ module.exports = class RockPaperScissors extends commando.Command {
                 return message.channel.send("Scissors! Aw... I lose...");
             }
         }
-        else if (rps.includes("paper")) {
+        else if (rps === "paper") {
             if (response === "Rock") {
                 return message.channel.send("Rock! Aw... I lose...");
             }
@@ -49,7 +55,7 @@ module.exports = class RockPaperScissors extends commando.Command {
                 return message.channel.send("Scissors! Yes! I win!");
             }
         }
-        else if (rps.includes("scissors")) {
+        else if (rps === "scissors") {
             if (response === "Rock") {
                 return message.channel.send("Rock! Yes! I win!");
             }
@@ -60,6 +66,5 @@ module.exports = class RockPaperScissors extends commando.Command {
                 return message.channel.send("Scissors! Aw, it's a tie!");
             }
         }
-        else return message.channel.send(':x: Error! Please enter rock, paper, or scissors!');
     }
 };
