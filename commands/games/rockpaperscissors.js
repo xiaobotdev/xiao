@@ -15,9 +15,6 @@ module.exports = class RockPaperScissors extends commando.Command {
                 key: 'choice',
                 prompt: 'Rock, Paper, or Scissors?',
                 type: 'string',
-                validate: (str) => {
-                    str.toLowerCase() === 'rock' || str.toLowerCase() === 'paper' || str.toLowerCase() === 'scissors';
-                }
             }]
         });
     }
@@ -27,7 +24,7 @@ module.exports = class RockPaperScissors extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let rps = args.choice;
+        let rps = args.choice.toLowerCase();
         let response = ['Paper', 'Rock', 'Scissors'];
         response = response[Math.floor(Math.random() * response.length)];
         if (rps.includes("rock")) {
@@ -63,5 +60,6 @@ module.exports = class RockPaperScissors extends commando.Command {
                 return message.channel.send("Scissors! Aw, it's a tie!");
             }
         }
+        else return message.channel.send(':x: Error! Please enter rock, paper, or scissors!');
     }
 };

@@ -15,10 +15,7 @@ module.exports = class RandomNameGen extends commando.Command {
             args: [{
                 key: 'gender',
                 prompt: 'Which gender do you want to generate a name for?',
-                type: 'string',
-                validate: (str) => {
-                    str.toLowerCase() === 'male' || str.toLowerCase() === 'female';
-                }
+                type: 'string'
             }]
         });
     }
@@ -40,6 +37,9 @@ module.exports = class RandomNameGen extends commando.Command {
         }
         else if (gender === "female") {
             return message.channel.send(`${randomFirstFemale} ${randomLast}`);
+        }
+        else {
+            return message.channel.send(':x: Error! Please set either male or female!');
         }
     }
 };

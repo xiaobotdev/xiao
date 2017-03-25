@@ -16,10 +16,7 @@ module.exports = class PokedexCommand extends commando.Command {
             args: [{
                 key: 'pokemon',
                 prompt: 'What Pokémon would you like to get info on?',
-                type: 'string',
-                validate: (str) => {
-                    pokedex.name[str.toLowerCase()];
-                }
+                type: 'string'
             }]
         });
     }
@@ -30,6 +27,7 @@ module.exports = class PokedexCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let pokemon = args.pokemon;
+        if (!pokedex.name[pokemon.toLowerCase()]) return message.channel.send(':x: Error! This Pokémon is either not valid, or is not yet implemented!');
         const embed = new Discord.RichEmbed()
             .setTitle('Information')
             .setAuthor(`#${pokedex.index[pokemon]} ${pokedex.name[pokemon]}`, `http://www.serebii.net/pokedex-sm/icon/${pokedex.index[pokemon]}.png`)

@@ -27,7 +27,9 @@ module.exports = class ChooseCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let choices = args.choices.split(' | ');
+        let choices = args.choices;
+        if (!choices.includes(' | ')) return message.channel.send(':x: Error! Split your messages with a " | "!');
+        choices = choices.split(" | ");
         choices = choices[Math.floor(Math.random() * choices.length)];
         return message.channel.send(`I choose ${choices}!`);
     }

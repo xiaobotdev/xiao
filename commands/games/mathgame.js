@@ -13,10 +13,7 @@ module.exports = class MathGameCommand extends commando.Command {
             args: [{
                 key: 'difficulty',
                 prompt: 'What difficulty should the math game be? Easy, Medium, Hard, or Extreme?',
-                type: 'string',
-                validate: (str) => {
-                    str.toLowerCase() === 'easy' || str.toLowerCase() === 'medium' || str.toLowerCase() === 'hard' || str.toLowerCase() === 'extreme';
-                }
+                type: 'string'
             }]
         });
     }
@@ -26,7 +23,8 @@ module.exports = class MathGameCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let level = args.difficulty;
+        let level = args.difficulty.toLowerCase();
+        if (level !== 'easy' || level !== 'medium' || level !== 'hard' || level !== 'extreme') return message.channel.send(':x: Error! Please set the difficulty to either easy, medium, hard, or extreme!');
         let randomType = ['+', '-', '*'];
         randomType = randomType[Math.floor(Math.random() * randomType.length)];
         let randomValue;

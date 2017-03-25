@@ -15,10 +15,7 @@ module.exports = class RomajiCommand extends commando.Command {
             args: [{
                 key: 'kana',
                 prompt: 'What kana would you like to convert to romaji?',
-                type: 'string',
-                validate: (str) => {
-                    hepburn.containsKana(str);
-                }
+                type: 'string'
             }]
         });
     }
@@ -29,6 +26,7 @@ module.exports = class RomajiCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let romajify = args.kana;
+        if (!hepburn.containsKana(romajify)) return message.channel.send(':x: Error! Message contains no Katakana or Hiragana!');
         let romajified = hepburn.fromKana(romajify);
         if (romajified.length > 1950) return message.channel.send(":x: Error! Your message is too long!");
         return message.channel.send(romajified);
