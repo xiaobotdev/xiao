@@ -5,8 +5,8 @@ const math = require('mathjs');
 module.exports = class MathGameCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
-            name: 'games',
-            group: 'random',
+            name: 'mathgame',
+            group: 'games',
             memberName: 'mathgame',
             description: 'See how fast you can answer a math problem in a given time limit. (;mathgame easy)',
             examples: [';mathgame easy', ';mathgame medium', ';mathgame hard', ';mathgame extreme'],
@@ -15,10 +15,19 @@ module.exports = class MathGameCommand extends commando.Command {
                 prompt: 'What difficulty should the math game be? Easy, Medium, Hard, or Extreme?',
                 type: 'string',
                 validate: difficulty => {
-                    if (difficulty.toLowerCase() !== 'easy' || difficulty.toLowerCase() !== 'medium' || difficulty.toLowerCase() !== 'hard' || difficulty.toLowerCase() !== 'extreme') {
-                        return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
+                    if (difficulty === 'easy') {
+                        return true;
                     }
-                    return true;
+                    else if (difficulty === 'medium') {
+                        return true;
+                    }
+                    else if (difficulty === 'hard') {
+                        return true;
+                    }
+                    else if (difficulty === 'extreme') {
+                        return true;
+                    }
+                    return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
                 },
                 parse: (str) => {
                     str.toLowerCase();
