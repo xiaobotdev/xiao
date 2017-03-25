@@ -61,7 +61,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                 color = 0x808080;
                 break;
         }
-        let userGame = user.presence.game;
+        let userGame = user.presence.game.name;
         if (!user.presence.game) {
             userGame = "None";
         }
