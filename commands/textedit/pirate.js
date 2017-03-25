@@ -16,7 +16,13 @@ module.exports = class PirateCommand extends commando.Command {
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to pirate?',
-                type: 'string'
+                type: 'string',
+                validate: content => {
+                    if (pirateSpeak.translate(content).length > 1950) {
+                        return 'Your message content is too long.';
+                    }
+                    return true;
+                }
             }]
         });
     }

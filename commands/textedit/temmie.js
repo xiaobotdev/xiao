@@ -297,7 +297,13 @@ module.exports = class TemmieCommand extends commando.Command {
 			args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to Temmie speak?',
-                type: 'string'
+                type: 'string',
+                validate: content => {
+                	if (temmize(content).length > 1950) {
+                		return 'Your message content is too long.';
+                	}
+                	return true;
+                }
             }]
 		});
 	}

@@ -26,7 +26,6 @@ module.exports = class YearsCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let user = args.user;
-        if (!user.displayAvatarURL) return message.channel.send(":x: Error! This user has no avatar!");
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace(".jpg", ".png");
         userAvatar = userAvatar.replace(".gif", ".png");

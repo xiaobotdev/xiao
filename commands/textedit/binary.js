@@ -12,7 +12,13 @@ module.exports = class BinaryCommand extends commando.Command {
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to binary?',
-                type: 'string'
+                type: 'string',
+                validate: content => {
+                    if (stringToBinary(content).length > 1950) {
+                        return 'Your message content is too long.';
+                    }
+                    return true;
+                }
             }]
         });
     }
@@ -24,7 +30,6 @@ module.exports = class BinaryCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let turnToBinary = args.text;
         let binaryText = stringToBinary(turnToBinary);
-        if (binaryText.length > 1950) return message.channel.send(":x: Error! Your message is too long!");
         return message.channel.send(binaryText);
     }
 };
