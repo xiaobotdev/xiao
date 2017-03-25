@@ -112,11 +112,23 @@ module.exports = class MemeCommand extends commando.Command {
             args: [{
                 key: 'type',
                 prompt: 'What meme type do you want to use?',
-                type: 'string'
+                type: 'string',
+                validate: type => {
+                    if (memecodes[type.toLowerCase()] || type.toLowerCase() === 'list') {
+                        return true;
+                    }
+                    return 'Please enter a valid meme type. Enter `list` to view a list of types.';
+                }
             }, {
                 key: 'content',
                 prompt: 'What should the meme content be?',
-                type: 'string'
+                type: 'string',
+                validate: content => {
+                    if (content.includes(' | ') && content.match(/^[a-zA-Z0-9|.,!?'-\s]+$/)) {
+                        return true;
+                    }
+                    return 'Please split your choices with ` | ` and do not use special characters.';
+                }
             }]
         });
     }
@@ -127,9 +139,7 @@ module.exports = class MemeCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let type = args.type.toLowerCase();
-        if (!memecodes[type] || type !== 'list') return message.channel.send(':x: Error! Meme type not found! Use `;meme list` to view a list of meme types.');
         let content = args.content;
-        if (!content.includes(' | ') || !content.match(/^[a-zA-Z0-9|.,!?'-\s]+$/)) return message.channel.send(':x: Error! Invalid content! Split your choices with a " | " or do not use special characters!');
         if (type === "list") return message.channel.send("**Type Codes:** tenguy, afraid, older, aag, tried, biw, blb, kermit, bd, ch, cbg, wonka, cb, keanu, dsm, live, ants, doge, alwaysonbeat, ermg, facepalm, fwp, fa, fbf, fry, hipster, icanhas, crazypills, mw, noidea, regret, boat, hagrid, sohappy, captain, inigo, iw, ackbar, happening, joker, ive, ll, morpheus, mb, badchoice, mmm, jetpack, red, mordor, oprah, oag, remembers, philosoraptor, jw, patrick, rollsafe, sad-obama, sad-clinton, sadfrog, sad-bush, sad-biden, sad-boehner, saltbae, sarcasticbear, dwight, sb, ss, sf, dodgson, money, sohot, nice, awesome-awkward, awesome, awkward-awesome, awkward, fetch, success, scc, ski, officespace, interesting, toohigh, bs, center, both, winter, xy, buzz, yodawg, uno, yallgot, bad, elf, chosen");
         let memeQuery = content.split(" ").join("-").split("-|-");
         let toprow = memeQuery[0].split("?").join("~q");

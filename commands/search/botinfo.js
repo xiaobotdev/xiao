@@ -18,7 +18,13 @@ module.exports = class BotSearchCommand extends commando.Command {
             args: [{
                 key: 'bot',
                 prompt: 'Which bot do you want to get information for?',
-                type: 'user'
+                type: 'user',
+                validate: user => {
+                    if (user.bot) {
+                        return true;
+                    }
+                    return 'Please mention a bot account, not a user account.';
+                }
             }]
         });
     }
