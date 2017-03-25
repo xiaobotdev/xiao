@@ -24,6 +24,6 @@ module.exports = class MagicBall extends commando.Command {
         let question = args.question;
         let answers = ['It seems the answer is yes, yes?', 'It seems the answer is no.', 'It is a little doubtful, yes?', 'It seems it is very likely to be true.'];
         answers = answers[Math.floor(Math.random() * answers.length)];
-        return message.channel.send(`Question: ${question}\n:8ball: ${answers} :8ball:`);
+        return message.say(`Question: ${question}\n:8ball: ${answers} :8ball:`);
     }
 };

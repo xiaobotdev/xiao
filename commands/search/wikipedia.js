@@ -30,7 +30,7 @@ module.exports = class WikipediaCommand extends commando.Command {
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${thingToSearch}&exintro=&explaintext=&redirects=&formatversion=2`);
             let description = response.body.query.pages[0].extract;
             let name = response.body.query.pages[0].title;
-            if (!description) return message.channel.send(":x: Error! Entry Not Found!");
+            if (!description) return message.say(":x: Error! Entry Not Found!");
             description = description.substr(0, 1900);
             description = description.split('\n').join("\n\n");
             const embed = new Discord.RichEmbed()
@@ -39,10 +39,10 @@ module.exports = class WikipediaCommand extends commando.Command {
                 .setURL(`https://en.wikipedia.org/wiki/${thingToSearch}`)
                 .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
                 .setDescription(`${description} [Read the Rest Here](https://en.wikipedia.org/wiki/${thingToSearch})`);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! Entry Not Found!");
+            return message.say(":x: Error! Entry Not Found!");
         }
     }
 };

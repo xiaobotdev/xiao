@@ -30,8 +30,8 @@ module.exports = class UrbanDictionary extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let wordToDefine = args.word;
         urban(wordToDefine).first(function(response) {
-            if (!response) return message.channel.send(":x: Error! Word not found!");
-            if (!response.definition) return message.channel.send(":x: Error! Word has no definition!");
+            if (!response) return message.say(":x: Error! Word not found!");
+            if (!response.definition) return message.say(":x: Error! Word has no definition!");
             if (!response.example) {
                 const embed = new Discord.RichEmbed()
                     .setColor(0x32a8f0)
@@ -39,7 +39,7 @@ module.exports = class UrbanDictionary extends commando.Command {
                     .setURL(response.permalink)
                     .setTitle(response.word)
                     .setDescription(`${response.definition.substr(0, 1900)} [Read the Rest Here!](${response.permalink})`);
-                return message.channel.sendEmbed(embed);
+                return message.embed(embed);
             }
             const embed = new Discord.RichEmbed()
                 .setColor(0x32a8f0)
@@ -49,7 +49,7 @@ module.exports = class UrbanDictionary extends commando.Command {
                 .setDescription(`${response.definition.substr(0, 1900)} [Read the Rest Here!](${response.permalink})`)
                 .addField('**Example:**',
                     response.example.substr(0, 1900));
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         });
     }
 };

@@ -44,6 +44,6 @@ module.exports = class PokedexCommand extends commando.Command {
                 pokedex.entry[pokemon])
             .addField('Type',
                 pokedex.type[pokemon]);
-        return message.channel.sendEmbed(embed);
+        return message.embed(embed);
     }
 };

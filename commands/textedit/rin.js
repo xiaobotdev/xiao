@@ -41,7 +41,7 @@ module.exports = class RinSayCommand extends commando.Command {
             return [post, deleteMsg];
         }
         catch (err) {
-            return message.channel.send(':x: Error! Message failed to send!');
+            return message.say(':x: Error! Message failed to send!');
         }
     }
 };

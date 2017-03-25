@@ -53,10 +53,10 @@ module.exports = class WattpadCommand extends commando.Command {
                     response.body.stories[0].readCount, true)
                 .addField('**Comments:**',
                     response.body.stories[0].commentCount, true);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! Book not Found!");
+            return message.say(":x: Error! Book not Found!");
         }
     }
 };

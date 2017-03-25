@@ -23,10 +23,10 @@ module.exports = class CowsayCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let turnToCowsay = args.text;
-        return message.channel.sendCode(null, cowsay.say({
+        return message.code(null, cowsay.say({
             text: turnToCowsay,
             e: "oO",
             T: "U "
-        })).catch(error => message.channel.send(':x: Error! Perhaps the content is too long?'));
+        })).catch(error => message.say(':x: Error! Perhaps the content is too long?'));
     }
 };

@@ -22,6 +22,6 @@ module.exports = class SlapCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *slaps* ${thingToRoleplay}`);
+        return message.say(`${message.author} *slaps* ${thingToRoleplay}`);
     }
 };

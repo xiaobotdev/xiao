@@ -34,7 +34,7 @@ module.exports = class IMDBCommand extends commando.Command {
             name: queryMovie
         }, (err, response) => {
             movie = response;
-            if (!movie) return message.channel.send(":x: Error! Movie not found!");
+            if (!movie) return message.say(":x: Error! Movie not found!");
             const embed = new Discord.RichEmbed()
                 .setColor(0xDBA628)
                 .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
@@ -55,7 +55,7 @@ module.exports = class IMDBCommand extends commando.Command {
                     movie.writer)
                 .addField('**Actors:**',
                     movie.actors);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         });
     }
 };

@@ -22,6 +22,6 @@ module.exports = class EatCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *eats* ${thingToRoleplay}`);
+        return message.say(`${message.author} *eats* ${thingToRoleplay}`);
     }
 };

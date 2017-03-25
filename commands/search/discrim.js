@@ -37,6 +37,6 @@ module.exports = class DiscrimCommand extends commando.Command {
         const embed = new Discord.RichEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${userToSearch}`)
             .setDescription(users.join(', '));
-        return message.channel.sendEmbed(embed);
+        return message.embed(embed);
     }
 };

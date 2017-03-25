@@ -45,10 +45,10 @@ module.exports = class DefineCommand extends commando.Command {
                 .setColor(0x9797FF)
                 .setTitle(response.body[0].word)
                 .setDescription(response.body[0].text);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! Word not Found!");
+            return message.say(":x: Error! Word not Found!");
         }
     }
 };

@@ -35,12 +35,12 @@ module.exports = class SoundBoardCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let voiceChannel = message.member.voiceChannel;
-        if (!voiceChannel) return message.channel.send(`:x: Error! Please be in a voice channel first!`);
+        if (!voiceChannel) return message.say(`:x: Error! Please be in a voice channel first!`);
         let soundToPlay = args.sound.toLowerCase();
         let alreadyConnected = await this.client.voiceConnections.get(voiceChannel.guild.id);
         if (alreadyConnected) {
-            if (alreadyConnected.channel.id === voiceChannel.id) return message.channel.send(':x: Error! I am already playing a sound!');
-            return message.channel.send(':x: Error! I am already playing a sound!');
+            if (alreadyConnected.channel.id === voiceChannel.id) return message.say(':x: Error! I am already playing a sound!');
+            return message.say(':x: Error! I am already playing a sound!');
         }
         let connection = await voiceChannel.join();
         let stream = sounds.paths[soundToPlay];

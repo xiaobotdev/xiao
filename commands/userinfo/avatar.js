@@ -22,6 +22,6 @@ module.exports = class AvatarCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let user = args.user;
-        return message.channel.send(user.displayAvatarURL);
+        return message.say(user.displayAvatarURL);
     }
 };

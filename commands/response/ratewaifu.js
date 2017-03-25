@@ -26,6 +26,6 @@ module.exports = class RateWaifuCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let waifuToRate = args.waifu;
         let rating = Math.floor(Math.random() * 10) + 1;
-        return message.channel.send(`I'd give ${waifuToRate} a ${rating}/10!`);
+        return message.say(`I'd give ${waifuToRate} a ${rating}/10!`);
     }
 };

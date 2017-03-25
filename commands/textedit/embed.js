@@ -30,7 +30,7 @@ module.exports = class EmbedCommand extends commando.Command {
             .setTimestamp()
             .setDescription(embedMessage);
         let deleteMsg = await message.delete();
-        let embedSend = await message.channel.sendEmbed(embed);
+        let embedSend = await message.embed(embed);
         return [deleteMsg, embedSend];
     }
 };

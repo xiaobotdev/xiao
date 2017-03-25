@@ -30,6 +30,6 @@ module.exports = class BinaryCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let turnToBinary = args.text;
         let binaryText = stringToBinary(turnToBinary);
-        return message.channel.send(binaryText);
+        return message.say(binaryText);
     }
 };

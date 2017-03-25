@@ -34,7 +34,7 @@ module.exports = class PirateCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let turnToPirate = args.text;
         let pirate = pirateSpeak.translate(turnToPirate);
-        if (pirate.length > 1950) return message.channel.send(":x: Error! Your message is too long!");
-        return message.channel.send(pirate);
+        if (pirate.length > 1950) return message.say(":x: Error! Your message is too long!");
+        return message.say(pirate);
     }
 };

@@ -34,6 +34,6 @@ module.exports = class ShuffleCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToShuffle = args.text;
-        return message.channel.send(thingToShuffle.shuffle());
+        return message.say(thingToShuffle.shuffle());
     }
 };

@@ -32,7 +32,7 @@ module.exports = class RoastMeCommand extends commando.Command {
             return message.reply(roasts);
         }
         else {
-            return message.channel.send(`${userToRoast}, ${roasts}`);
+            return message.say(`${userToRoast}, ${roasts}`);
         }
     }
 };

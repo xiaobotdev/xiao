@@ -30,6 +30,6 @@ module.exports = class RomanCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let numberToRoman = args.number;
         let romanInterger = numberToRoman;
-        return message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger));
+        return message.say(romanNumeralConverter.getRomanFromInteger(romanInterger));
     }
 };

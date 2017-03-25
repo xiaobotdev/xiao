@@ -22,6 +22,6 @@ module.exports = class InhaleCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *inhales* ${thingToRoleplay} *but gained no ability...*`);
+        return message.say(`${message.author} *inhales* ${thingToRoleplay} *but gained no ability...*`);
     }
 };

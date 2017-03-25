@@ -315,6 +315,6 @@ module.exports = class TemmieCommand extends commando.Command {
 		console.log(`[Command] ${message.content}`);
 		let thingToTranslate = args.text;
 		let temmized = temmize(thingToTranslate);
-		return message.channel.send(temmized);
+		return message.say(temmized);
 	}
 };

@@ -29,6 +29,6 @@ module.exports = class ZalgoCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let zalgoified = zalgo(args.text);
-        return message.channel.send(zalgoified);
+        return message.say(zalgoified);
     }
 };

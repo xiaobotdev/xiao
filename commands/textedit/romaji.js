@@ -36,6 +36,6 @@ module.exports = class RomajiCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let romajify = args.kana;
         let romajified = hepburn.fromKana(romajify);
-        return message.channel.send(romajified);
+        return message.say(romajified);
     }
 };

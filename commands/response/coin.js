@@ -22,6 +22,6 @@ module.exports = class CoinFlipCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let coin = ['heads', 'tails'];
         coin = coin[Math.floor(Math.random() * coin.length)];
-        return message.channel.send(`It landed on ${coin}!`);
+        return message.say(`It landed on ${coin}!`);
     }
 };

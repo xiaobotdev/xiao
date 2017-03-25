@@ -45,7 +45,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
                         response.body.data.def, true)
                     .addField('**Level:**',
                         response.body.data.level, true);
-                return message.channel.sendEmbed(embed);
+                return message.embed(embed);
             }
             const embed = new Discord.RichEmbed()
                 .setColor(0xBE5F1F)
@@ -54,10 +54,10 @@ module.exports = class YuGiOhCommand extends commando.Command {
                 .setAuthor('Yu-Gi-Oh!', 'http://vignette3.wikia.nocookie.net/yugioh/images/1/10/Back-TF-EN-VG.png/revision/latest?cb=20120824043558')
                 .addField('**Card Type:**',
                     response.body.data.card_type, true);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!");
+            return message.say(":x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!");
         }
     }
 };

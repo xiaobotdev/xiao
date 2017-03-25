@@ -54,18 +54,18 @@ module.exports = class MathGameCommand extends commando.Command {
         const embed = new Discord.RichEmbed()
             .setTitle('You have **ten** seconds to answer:')
             .setDescription(randomExpression);
-        let embedMsg = await message.channel.sendEmbed(embed);
+        let embedMsg = await message.embed(embed);
         try {
             let collected = await message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
                 max: 1,
                 time: 10000,
                 errors: ['time'],
             });
-            let victoryMsg = await message.channel.send(`Good Job! You won! ${solved} is the correct answer!`);
+            let victoryMsg = await message.say(`Good Job! You won! ${solved} is the correct answer!`);
             return [embedMsg, collected, victoryMsg];
         }
         catch (err) {
-            let loseMsg = await message.channel.send(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+            let loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
             return [embedMsg, loseMsg];
         }
     }

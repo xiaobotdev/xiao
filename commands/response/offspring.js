@@ -22,6 +22,6 @@ module.exports = class OffspringCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let gender = ['boy', 'girl'];
         gender = gender[Math.floor(Math.random() * gender.length)];
-        return message.channel.send(`It's a ${gender}!`);
+        return message.say(`It's a ${gender}!`);
     }
 };

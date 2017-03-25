@@ -17,7 +17,7 @@ module.exports = class LotteryCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let lotteryNumber = ['Winner'][Math.floor(Math.random() * 100)];
-        if (lotteryNumber !== "Winner") return message.channel.send(`Nope, sorry ${message.author.username}, you lost.`);
-        return message.channel.send(`Wow ${message.author.username}! You actually won! Great job!`);
+        if (lotteryNumber !== "Winner") return message.say(`Nope, sorry ${message.author.username}, you lost.`);
+        return message.say(`Wow ${message.author.username}! You actually won! Great job!`);
     }
 };

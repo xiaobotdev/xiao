@@ -37,10 +37,10 @@ module.exports = class TodayCommand extends commando.Command {
                 .setTitle(`On this day (${responseData.date})...`)
                 .setTimestamp()
                 .setDescription(`${responseData.data.Events[randomNumber].text} (${responseData.data.Events[randomNumber].year})`);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! Something went wrong!");
+            return message.say(":x: Error! Something went wrong!");
         }
     }
 };
