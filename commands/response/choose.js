@@ -14,10 +14,7 @@ module.exports = class ChooseCommand extends commando.Command {
             args: [{
                 key: 'choices',
                 prompt: 'What choices do you want me pick from? Split them with " | "!',
-                type: 'string',
-                validate: (str) => {
-                    str.includes(" | ");
-                }
+                type: 'string'
             }]
         });
     }
