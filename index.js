@@ -4,7 +4,8 @@ const config = require('./config.json');
 const client = new commando.Client({
     commandPrefix: ';',
     unknownCommandResponse: false,
-    owner: config.owner
+    owner: config.owner,
+    disableEveryone: true
 });
 const Cleverbot = require('cleverbot-node');
 const cleverbot = new Cleverbot;
