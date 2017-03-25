@@ -12,7 +12,13 @@ module.exports = class TypingGameCommand extends commando.Command {
             args: [{
                 key: 'difficulty',
                 prompt: 'What difficulty should the typing game be? Easy, Medium, Hard, or Extreme?',
-                type: 'string'
+                type: 'string',
+                validate: difficulty => {
+                    if (difficulty.toLowerCase() === 'easy' || difficulty.toLowerCase() === 'medium' || difficulty.toLowerCase() === 'hard' || difficulty.toLowerCase() === 'extreme') {
+                        return true;
+                    }
+                    return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
+                }
             }]
         });
     }

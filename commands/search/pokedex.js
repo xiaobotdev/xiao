@@ -16,7 +16,13 @@ module.exports = class PokedexCommand extends commando.Command {
             args: [{
                 key: 'pokemon',
                 prompt: 'What Pokémon would you like to get info on?',
-                type: 'string'
+                type: 'string',
+                validate: pokemon => {
+                    if (pokedex.name[pokemon.toLowerCase()]) {
+                        return true;
+                    }
+                    return 'Please enter a valid Pokémon from either Kanto or Johto.';
+                }
             }]
         });
     }
@@ -26,8 +32,7 @@ module.exports = class PokedexCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let pokemon = args.pokemon;
-        if (!pokedex.name[pokemon.toLowerCase()]) return message.channel.send(':x: Error! This Pokémon is either not valid, or is not yet implemented!');
+        let pokemon = args.pokemon.toLowerCase();
         const embed = new Discord.RichEmbed()
             .setTitle('Information')
             .setAuthor(`#${pokedex.index[pokemon]} ${pokedex.name[pokemon]}`, `http://www.serebii.net/pokedex-sm/icon/${pokedex.index[pokemon]}.png`)

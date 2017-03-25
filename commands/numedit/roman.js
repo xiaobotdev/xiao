@@ -12,7 +12,13 @@ module.exports = class RomanCommand extends commando.Command {
             args: [{
                 key: 'number',
                 prompt: 'What do you want to convert to Roman?',
-                type: 'integer'
+                type: 'integer',
+                validate: number => {
+                    if (number > 1000000) {
+                        return 'Please enter a number below one million.';
+                    }
+                    return true;
+                }
             }]
         });
     }
@@ -24,7 +30,6 @@ module.exports = class RomanCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let numberToRoman = args.number;
         let romanInterger = numberToRoman;
-        if (romanInterger > 1000000) return message.channel.send(':x: Error! Number is too high!');
         return message.channel.send(romanNumeralConverter.getRomanFromInteger(romanInterger));
     }
 };

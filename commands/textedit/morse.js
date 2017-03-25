@@ -15,7 +15,13 @@ module.exports = class MorseCommand extends commando.Command {
             args: [{
                 key: 'method',
                 prompt: 'Would you like to encode or decode the text?',
-                type: 'string'
+                type: 'string',
+                validate: method => {
+                    if (method.toLowerCase() === 'encode' || method.toLowerCase() === 'decode') {
+                        return true;
+                    }
+                    return 'Please enter either `encode` or `decode`.'
+                }
             }, {
                 key: 'text',
                 prompt: 'What text would you like to convert to morse?',
@@ -29,10 +35,13 @@ module.exports = class MorseCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let methodToUse = args.method;
-        if (methodToUse.toLowerCase() !== 'encode' || methodToUse.toLowerCase() !== 'decode') return message.channel.send(':x: Error! Please set either encode or decode!');
+        let methodToUse = args.method.toLowerCase();
         let toMorse = args.text;
-        if (methodToUse === 'encode') return message.channel.send(morse.encode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
-        if (methodToUse === 'decode') return message.channel.send(morse.decode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
+        if (methodToUse === 'encode') {
+            return message.channel.send(morse.encode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
+        }
+        else if (methodToUse === 'decode') {
+            return message.channel.send(morse.decode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
+        }
     }
 };
