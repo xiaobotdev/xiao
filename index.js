@@ -28,6 +28,7 @@ client.registry
         ['numedit', 'Number Manipulation'],
         ['imageedit', 'Image Manipulation'],
         ['search', 'Search'],
+        ['games', 'Games'],
         ['random', 'Random/Other'],
         ['roleplay', 'Roleplay']
     ])
