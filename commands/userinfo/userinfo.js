@@ -76,9 +76,9 @@ module.exports = class UserInfoCommand extends commando.Command {
             .addField('**ID:**',
                 user.id, true)
             .addField('**Joined Discord On:**',
-                `${user.createdAt}\n${moment.duration(user.createdTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                `${user.createdAt}\n${moment.duration(Date.now() - user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Joined Server On:**',
-                `${message.guild.member(user).joinedAt}\n${moment.duration(message.guild.member(user).joinedTimestamp - Date.now()).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                `${message.guild.member(user).joinedAt}\n${moment.duration(Date.now() - message.guild.member(user).joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',
