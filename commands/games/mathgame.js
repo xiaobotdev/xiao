@@ -28,9 +28,6 @@ module.exports = class MathGameCommand extends commando.Command {
                         return true;
                     }
                     return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
-                },
-                parse: (str) => {
-                    str.toLowerCase();
                 }
             }]
         });
