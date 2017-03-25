@@ -44,7 +44,7 @@ module.exports = class BanCommand extends commando.Command {
             .setColor(0xFF0000)
             .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
             .setTimestamp()
-            .setDescription(`**Member:** ${member.username}#${member.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
+            .setDescription(`**Member:** ${banUser.user.username}#${banUser.user.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
         let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
         return [banUser, okHandMsg, modLogMsg];
     }

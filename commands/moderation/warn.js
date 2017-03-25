@@ -39,7 +39,7 @@ module.exports = class WarnCommand extends commando.Command {
             .setColor(0xFFFF00)
             .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
             .setTimestamp()
-            .setDescription(`**Member:** ${userToWarn.username}#${userToWarn.discriminator} (${userToWarn.id})\n**Action:** Warn\n**Reason:** ${reason}`);
+            .setDescription(`**Member:** ${userToWarn.user.username}#${userToWarn.user.discriminator} (${userToWarn.id})\n**Action:** Warn\n**Reason:** ${reason}`);
         let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
         return [okHandMsg, modLogMsg];
     }
