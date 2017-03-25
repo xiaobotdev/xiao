@@ -19,7 +19,7 @@ module.exports = class ChooseCommand extends commando.Command {
                     if (content.includes(' | ')) {
                         return true;
                     }
-                    return 'Please split your choices with ` | `.';
+                    return 'Please split your choices with " | ".';
                 }
             }]
         });

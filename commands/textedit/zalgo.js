@@ -12,7 +12,13 @@ module.exports = class ZalgoCommand extends commando.Command {
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to zalgo?',
-                type: 'string'
+                type: 'string',
+                validate: content => {
+                    if (zalgo(content).length > 1950) {
+                        return 'Your message content is too long.';
+                    }
+                    return true;
+                }
             }]
         });
     }
@@ -23,7 +29,6 @@ module.exports = class ZalgoCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let zalgoified = zalgo(args.text);
-        if (zalgoified.length > 1950) return message.channel.send(":x: Error! Your message is too long!");
         return message.channel.send(zalgoified);
     }
 };

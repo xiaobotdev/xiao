@@ -121,13 +121,13 @@ module.exports = class MemeCommand extends commando.Command {
                 }
             }, {
                 key: 'content',
-                prompt: 'What should the meme content be?',
+                prompt: 'What should the meme content be? Split the bottom and top text of the meme with " | ".',
                 type: 'string',
                 validate: content => {
                     if (content.includes(' | ') && content.match(/^[a-zA-Z0-9|.,!?'-\s]+$/)) {
                         return true;
                     }
-                    return 'Please split your choices with ` | ` and do not use special characters.';
+                    return 'Please split your choices with " | " and do not use special characters.';
                 }
             }]
         });

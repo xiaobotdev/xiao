@@ -24,7 +24,7 @@ module.exports = class MorseCommand extends commando.Command {
                 }
             }, {
                 key: 'text',
-                prompt: 'What text would you like to convert to morse?',
+                prompt: 'What text would you like to convert to/from morse?',
                 type: 'string'
             }]
         });

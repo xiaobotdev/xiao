@@ -18,6 +18,9 @@ module.exports = class RomajiCommand extends commando.Command {
                 type: 'string',
                 validate: kana => {
                     if (hepburn.containsKana(kana)) {
+                        if (hepburn.fromKana(kana).length > 1950) {
+                            return 'Your message content is too long.';
+                        }
                         return true;
                     }
                     return 'Please enter text in either Hiragana or Katakana.';
@@ -33,7 +36,6 @@ module.exports = class RomajiCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let romajify = args.kana;
         let romajified = hepburn.fromKana(romajify);
-        if (romajified.length > 1950) return message.channel.send(":x: Error! Your message is too long!");
         return message.channel.send(romajified);
     }
 };
