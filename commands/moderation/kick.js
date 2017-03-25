@@ -41,7 +41,7 @@ module.exports = class KickCommand extends commando.Command {
             .setColor(0xFFA500)
             .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
             .setTimestamp()
-            .setDescription(`**Member:** ${member.username}#${member.discriminator} (${member.id})\n**Action:** Kick\n**Reason:** ${reason}`);
+            .setDescription(`**Member:** ${kickUser.user.username}#${kickUser.user.discriminator} (${member.id})\n**Action:** Kick\n**Reason:** ${reason}`);
         let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
         return [kickUser, okHandMsg, modLogMsg];
     }
