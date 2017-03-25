@@ -12,6 +12,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
             group: 'random',
             memberName: 'soundboard',
             description: 'Plays a sound in your voice channel. (;soundboard cat)',
+            details: "**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo",
             examples: [';soundboard cat'],
             guildOnly: true,
             args: [{
@@ -22,7 +23,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
                     if (sounds.avaliable[sound.toLowerCase()] || sound.toLowerCase() === 'list') {
                         return true;
                     }
-                    return 'Sound not found. Enter `list` to view a list of sounds.';
+                    return 'Sound not found. Use `;help soundboard` to view a list of sounds.';
                 }
             }]
         });
@@ -36,7 +37,6 @@ module.exports = class SoundBoardCommand extends commando.Command {
         let voiceChannel = message.member.voiceChannel;
         if (!voiceChannel) return message.channel.send(`:x: Error! Please be in a voice channel first!`);
         let soundToPlay = args.sound.toLowerCase();
-        if (soundToPlay === 'list') return message.channel.send("**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo");
         let alreadyConnected = await this.client.voiceConnections.get(voiceChannel.guild.id);
         if (alreadyConnected) {
             if (alreadyConnected.channel.id === voiceChannel.id) return message.channel.send(':x: Error! I am already playing a sound!');
