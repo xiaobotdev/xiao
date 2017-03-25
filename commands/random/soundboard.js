@@ -12,7 +12,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
             group: 'random',
             memberName: 'soundboard',
             description: 'Plays a sound in your voice channel. (;soundboard cat)',
-            details: "**Available Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo",
+            details: "**Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo",
             examples: [';soundboard cat'],
             guildOnly: true,
             args: [{
