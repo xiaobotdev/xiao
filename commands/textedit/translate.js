@@ -123,7 +123,7 @@ module.exports = class TranslateCommand extends commando.Command {
                 prompt: 'What language would you like to translate to?',
                 type: 'string',
                 validate: to => {
-                    if (languages[to.toLowerCase()] || to.toLowerCase() === 'list') {
+                    if (languages[to.toLowerCase()]) {
                         return true;
                     }
                     return 'Please enter a valid language code. Use `;help translate` for a list of codes.';

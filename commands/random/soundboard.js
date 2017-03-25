@@ -20,7 +20,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
                 prompt: 'What sound do you want me to play?',
                 type: 'string',
                 validate: sound => {
-                    if (sounds.avaliable[sound.toLowerCase()] || sound.toLowerCase() === 'list') {
+                    if (sounds.avaliable[sound.toLowerCase()]) {
                         return true;
                     }
                     return 'Sound not found. Use `;help soundboard` to view a list of sounds.';

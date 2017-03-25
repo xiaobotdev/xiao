@@ -115,7 +115,7 @@ module.exports = class MemeCommand extends commando.Command {
                 prompt: 'What meme type do you want to use?',
                 type: 'string',
                 validate: type => {
-                    if (memecodes[type.toLowerCase()] || type.toLowerCase() === 'list') {
+                    if (memecodes[type.toLowerCase()]) {
                         return true;
                     }
                     return 'Please enter a valid meme type. Use `;help meme` to view a list of types.';
