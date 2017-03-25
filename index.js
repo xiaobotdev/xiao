@@ -44,7 +44,7 @@ client.on('message', (message) => {
     if (message.content.startsWith(`<@${client.user.id}>`)) {
         if (message.guild.id === config.server || message.guild.id === config.personalServer || message.author.id === config.owner) {
             if (message.author.id === clevusers.allowed[message.author.id]) {
-                let cleverMessage = message.content.replace(`<@${client.user.id}>`, "");
+                let cleverMessage = message.content.split(" ").slice(1).join(" ");
                 console.log(`[Cleverbot] ${cleverMessage}`);
                 message.channel.startTyping();
                 cleverbot.write(cleverMessage, function(response) {
@@ -54,33 +54,6 @@ client.on('message', (message) => {
             }
         }
     }
-});
-
-client.on('messageReactionAdd', (reaction, user) => {
-    if (reaction.message.channel.type === 'dm') return;
-    if (reaction.emoji.name !== '⭐') return;
-    if (reaction.count > 1) return;
-    let starboard = reaction.message.guild.channels.find('name', 'starboard');
-    if (!starboard) return;
-    if (reaction.message.author.id === user.id) {
-        reaction.remove(user.id);
-        return reaction.message.channel.send(`:x: Error! ${user.username}, you can't star your own messages!`);
-    }
-    if (reaction.message.attachments.size > 0 && reaction.message.attachments.first().height) {
-        const embed = new Discord.RichEmbed()
-            .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
-            .setColor(0xFFA500)
-            .setTimestamp()
-            .setImage(reaction.message.attachments.first().url)
-            .setDescription(reaction.message.content);
-        return starboard.sendEmbed(embed);
-    }
-    const embed = new Discord.RichEmbed()
-        .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
-        .setColor(0xFFA500)
-        .setTimestamp()
-        .setDescription(reaction.message.content);
-    return starboard.sendEmbed(embed);
 });
 
 client.on('guildMemberAdd', (member) => {
