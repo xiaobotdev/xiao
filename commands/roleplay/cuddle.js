@@ -22,6 +22,6 @@ module.exports = class CuddleCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *cuddles* ${thingToRoleplay}`);
+        return message.say(`${message.author} *cuddles* ${thingToRoleplay}`);
     }
 };

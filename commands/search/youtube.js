@@ -38,7 +38,7 @@ module.exports = class YouTubeCommand extends commando.Command {
                     q: videoToSearch,
                     key: config.youtubekey
                 });
-            if (!response.body.items[0].snippet) return message.channel.send(':x: Error! No Video Found!');
+            if (!response.body.items[0].snippet) return message.say(':x: Error! No Video Found!');
             const embed = new Discord.RichEmbed()
                 .setColor(0xDD2825)
                 .setTitle(response.body.items[0].snippet.title)
@@ -46,10 +46,10 @@ module.exports = class YouTubeCommand extends commando.Command {
                 .setAuthor(`YouTube - ${response.body.items[0].snippet.channelTitle}`, 'https://cdn3.iconfinder.com/data/icons/social-icons-5/607/YouTube_Play.png')
                 .setURL(`https://www.youtube.com/watch?v=${response.body.items[0].id.videoId}`)
                 .setThumbnail(response.body.items[0].snippet.thumbnails.default.url);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! An error has occurred! Try again later! (If this continues to occur, the daily quota may have been reached).");
+            return message.say(":x: Error! An error has occurred! Try again later! (If this continues to occur, the daily quota may have been reached).");
         }
     }
 };

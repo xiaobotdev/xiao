@@ -25,6 +25,6 @@ module.exports = class ServersCommand extends commando.Command {
         let guildCount = this.client.guilds.size;
         let guildNames = this.client.guilds.map(g => `${g.name} (${g.id})`).join(", ");
         console.log(`${guildCount} Servers: ${guildNames}`);
-        return message.channel.send("Sent the information to the console!");
+        return message.say("Sent the information to the console!");
     }
 };

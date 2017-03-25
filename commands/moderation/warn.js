@@ -32,8 +32,8 @@ module.exports = class WarnCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let userToWarn = args.member;
         let reason = args.reason;
-        if (!message.guild.channels.exists("name", "mod_logs")) return message.channel.send(":x: Error! Could not find the mod_logs channel! Please create it!");
-        let okHandMsg = await message.channel.send(":ok_hand:");
+        if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
+        let okHandMsg = await message.say(":ok_hand:");
         const embed = new Discord.RichEmbed()
             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
             .setColor(0xFFFF00)

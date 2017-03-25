@@ -27,6 +27,6 @@ module.exports = class MotivateCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let userToMotivate = args.thing || message.author;
-        return message.channel.send(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
+        return message.say(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
     }
 };

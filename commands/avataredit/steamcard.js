@@ -42,7 +42,7 @@ module.exports = class SteamCardCommand extends commando.Command {
         nothing.composite(steamcard, 0, 0);
         nothing.print(font, 38, 20, userDisplayName);
         nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return message.channel.send(':x: Error! Something went wrong!');
+            if (err) return message.say(':x: Error! Something went wrong!');
             return message.channel.sendFile(buff);
         });
     }

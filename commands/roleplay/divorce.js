@@ -22,6 +22,6 @@ module.exports = class DivorceCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *divorces* ${thingToRoleplay}`);
+        return message.say(`${message.author} *divorces* ${thingToRoleplay}`);
     }
 };

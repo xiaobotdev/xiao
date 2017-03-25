@@ -39,10 +39,10 @@ module.exports = class RandomNameGen extends commando.Command {
         randomLast = randomLast[Math.floor(Math.random() * randomLast.length)];
         let gender = args.gender.toLowerCase();
         if (gender === "male") {
-            return message.channel.send(`${randomFirstMale} ${randomLast}`);
+            return message.say(`${randomFirstMale} ${randomLast}`);
         }
         else if (gender === "female") {
-            return message.channel.send(`${randomFirstFemale} ${randomLast}`);
+            return message.say(`${randomFirstFemale} ${randomLast}`);
         }
     }
 };

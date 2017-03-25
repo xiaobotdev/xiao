@@ -28,6 +28,6 @@ module.exports = class RollChooseCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let value = args.number;
         let roll = Math.floor(Math.random() * value) + 1;
-        return message.channel.send(`You rolled a ${roll}.`);
+        return message.say(`You rolled a ${roll}.`);
     }
 };

@@ -66,10 +66,10 @@ module.exports = class OsuCommand extends commando.Command {
                     response.body[0].count_rank_s, true)
                 .addField('**A:**',
                     response.body[0].count_rank_a, true);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! User not Found!");
+            return message.say(":x: Error! User not Found!");
         }
     }
 };

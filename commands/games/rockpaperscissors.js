@@ -35,35 +35,35 @@ module.exports = class RockPaperScissors extends commando.Command {
         response = response[Math.floor(Math.random() * response.length)];
         if (rps === "rock") {
             if (response === "Rock") {
-                return message.channel.send("Rock! Aw, it's a tie!");
+                return message.say("Rock! Aw, it's a tie!");
             }
             if (response === "Paper") {
-                return message.channel.send("Paper! Yes! I win!");
+                return message.say("Paper! Yes! I win!");
             }
             if (response === "Scissors") {
-                return message.channel.send("Scissors! Aw... I lose...");
+                return message.say("Scissors! Aw... I lose...");
             }
         }
         else if (rps === "paper") {
             if (response === "Rock") {
-                return message.channel.send("Rock! Aw... I lose...");
+                return message.say("Rock! Aw... I lose...");
             }
             if (response === "Paper") {
-                return message.channel.send("Paper! Aw, it's a tie!");
+                return message.say("Paper! Aw, it's a tie!");
             }
             if (response === "Scissors") {
-                return message.channel.send("Scissors! Yes! I win!");
+                return message.say("Scissors! Yes! I win!");
             }
         }
         else if (rps === "scissors") {
             if (response === "Rock") {
-                return message.channel.send("Rock! Yes! I win!");
+                return message.say("Rock! Yes! I win!");
             }
             if (response === "Paper") {
-                return message.channel.send("Paper! Aw... I lose...");
+                return message.say("Paper! Aw... I lose...");
             }
             if (response === "Scissors") {
-                return message.channel.send("Scissors! Aw, it's a tie!");
+                return message.say("Scissors! Aw, it's a tie!");
             }
         }
     }

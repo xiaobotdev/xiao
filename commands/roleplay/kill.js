@@ -22,6 +22,6 @@ module.exports = class KillCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *kills* ${thingToRoleplay}`);
+        return message.say(`${message.author} *kills* ${thingToRoleplay}`);
     }
 };

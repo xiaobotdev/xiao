@@ -145,8 +145,8 @@ module.exports = class MemeCommand extends commando.Command {
         let toprow = memeQuery[0].split("?").join("~q");
         let bottomrow = memeQuery[1].split("?").join("~q");
         let link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
-        if (bottomrow.length > 100) return message.channel.send(":x: Error! Bottom text is over 100 characters!");
-        if (toprow.length > 100) return message.channel.send(":x: Error! Top text is over 100 characters!");
-        return message.channel.sendFile(link).catch(err => message.channel.send(':x: Error! Something went wrong!'));
+        if (bottomrow.length > 100) return message.say(":x: Error! Bottom text is over 100 characters!");
+        if (toprow.length > 100) return message.say(":x: Error! Top text is over 100 characters!");
+        return message.channel.sendFile(link).catch(err => message.say(':x: Error! Something went wrong!'));
     }
 };

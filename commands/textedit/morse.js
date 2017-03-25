@@ -38,10 +38,10 @@ module.exports = class MorseCommand extends commando.Command {
         let methodToUse = args.method.toLowerCase();
         let toMorse = args.text;
         if (methodToUse === 'encode') {
-            return message.channel.send(morse.encode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
+            return message.say(morse.encode(toMorse)).catch(error => message.say(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
         }
         else if (methodToUse === 'decode') {
-            return message.channel.send(morse.decode(toMorse)).catch(error => message.channel.send(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
+            return message.say(morse.decode(toMorse)).catch(error => message.say(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
         }
     }
 };

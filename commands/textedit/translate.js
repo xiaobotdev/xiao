@@ -160,10 +160,10 @@ module.exports = class TranslateCommand extends commando.Command {
                     thingToTranslate)
                 .addField(`Translation (To: ${languages[languageto]}):`,
                     res.text);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! Something went wrong!");
+            return message.say(":x: Error! Something went wrong!");
         }
     }
 };

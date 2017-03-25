@@ -33,12 +33,12 @@ module.exports = class BanCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (!message.guild.channels.exists("name", "mod_logs")) return message.channel.send(":x: Error! Could not find the mod_logs channel! Please create it!");
+        if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
         let member = args.member;
         let reason = args.reason;
-        if (!message.guild.member(member).bannable) return message.channel.send(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
+        if (!message.guild.member(member).bannable) return message.say(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
         let banUser = await message.guild.member(member).ban();
-        let okHandMsg = await message.channel.send(":ok_hand:");
+        let okHandMsg = await message.say(":ok_hand:");
         const embed = new Discord.RichEmbed()
             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
             .setColor(0xFF0000)

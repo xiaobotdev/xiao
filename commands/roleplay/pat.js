@@ -22,6 +22,6 @@ module.exports = class PatCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *pats* ${thingToRoleplay}`);
+        return message.say(`${message.author} *pats* ${thingToRoleplay}`);
     }
 };

@@ -47,10 +47,10 @@ module.exports = class BotSearchCommand extends commando.Command {
                     response.body.prefix, true)
                 .addField('**Invite:**',
                     `[Here](${response.body.invite_url})`, true);
-            return message.channel.sendEmbed(embed);
+            return message.embed(embed);
         }
         catch (err) {
-            return message.channel.send(":x: Error! Bot not Found!");
+            return message.say(":x: Error! Bot not Found!");
         }
     }
 };

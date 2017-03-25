@@ -42,6 +42,6 @@ module.exports = class GuildInfoCommand extends commando.Command {
                 `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
             .addField("**Users:**",
                 message.guild.memberCount, true);
-        return message.channel.sendEmbed(embed);
+        return message.embed(embed);
     }
 };

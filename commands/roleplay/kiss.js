@@ -22,6 +22,6 @@ module.exports = class KissCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let thingToRoleplay = args.thing;
-        return message.channel.send(`${message.author} *kisses* ${thingToRoleplay}`);
+        return message.say(`${message.author} *kisses* ${thingToRoleplay}`);
     }
 };

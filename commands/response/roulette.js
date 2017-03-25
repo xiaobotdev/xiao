@@ -23,6 +23,6 @@ module.exports = class RouletteCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        return message.channel.send(`I choose ${message.guild.members.random().displayName}!`);
+        return message.say(`I choose ${message.guild.members.random().displayName}!`);
     }
 };

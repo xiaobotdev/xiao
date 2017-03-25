@@ -33,7 +33,7 @@ module.exports = class ContactCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let messageToReport = args.report;
         let reportedMsg = await this.client.users.get(config.owner).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
-        let successMsg = await message.channel.send('Message Sent! Thanks for your support!');
+        let successMsg = await message.say('Message Sent! Thanks for your support!');
         return [reportedMsg, successMsg];
     }
 };

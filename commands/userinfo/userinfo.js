@@ -83,6 +83,6 @@ module.exports = class UserInfoCommand extends commando.Command {
                 stat, true)
             .addField('**Playing:**',
                 userGame, true);
-        return message.channel.sendEmbed(embed);
+        return message.embed(embed);
     }
 };

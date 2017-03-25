@@ -30,7 +30,7 @@ module.exports = class SayCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let copycat = args.text;
         let deleteMsg = await message.delete();
-        let copyMsg = await message.channel.send(copycat);
+        let copyMsg = await message.say(copycat);
         return [deleteMsg, copyMsg];
     }
 };
