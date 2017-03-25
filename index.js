@@ -37,22 +37,20 @@ client.registry
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.on('message', (message) => {
+client.on('message', message => {
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
-    if (message.content.startsWith(`<@${client.user.id}>`)) {
-        if (message.guild.id === config.server || message.guild.id === config.personalServer || message.author.id === config.owner) {
-            if (message.author.id === clevusers.allowed[message.author.id]) {
-                let cleverMessage = message.content.replace(`<@${client.user.id}>`, "");
-                console.log(`[Cleverbot] ${cleverMessage}`);
-                message.channel.startTyping();
-                cleverbot.write(cleverMessage, function(response) {
-                    message.reply(response.output);
-                    message.channel.stopTyping();
-                });
-            }
-        }
-    }
+    if (!message.content.startsWith(`<@${client.user.id}>`)) return;
+    if (message.guild.id !== config.server || message.guild.id !== config.personalServer || message.author.id !== config.owner) return;
+    if (!clevusers.allowed[message.author.id]) return;
+    let cleverMessage = message.content.replace(`<@${client.user.id}>`, "");
+    console.log(`[Cleverbot] ${cleverMessage}`);
+    message.channel.startTyping();
+    cleverbot.write(cleverMessage, async function(response) {
+        let responseMsg = await message.reply(response.output);
+        let stopType = await message.channel.stopTyping();
+        return [responseMsg, stopType];
+    });
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
@@ -63,40 +61,36 @@ client.on('messageReactionAdd', (reaction, user) => {
     if (!starboard) return;
     if (reaction.message.author.id === user.id) {
         reaction.remove(user.id);
-        reaction.message.channel.send(`:x: Error! ${user.username}, you can't star your own messages!`);
+        return reaction.message.channel.send(`:x: Error! ${user.username}, you can't star your own messages!`);
     }
-    else {
-        if (reaction.message.attachments.size > 0 && reaction.message.attachments.first().height) {
-            const embed = new Discord.RichEmbed()
-                .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
-                .setColor(0xFFA500)
-                .setTimestamp()
-                .setImage(reaction.message.attachments.first().url)
-                .setDescription(reaction.message.content);
-            starboard.sendEmbed(embed);
-        }
-        else {
-            const embed = new Discord.RichEmbed()
-                .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
-                .setColor(0xFFA500)
-                .setTimestamp()
-                .setDescription(reaction.message.content);
-            starboard.sendEmbed(embed);
-        }
+    if (reaction.message.attachments.size > 0 && reaction.message.attachments.first().height) {
+        const embed = new Discord.RichEmbed()
+            .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
+            .setColor(0xFFA500)
+            .setTimestamp()
+            .setImage(reaction.message.attachments.first().url)
+            .setDescription(reaction.message.content);
+        return starboard.sendEmbed(embed);
     }
+    const embed = new Discord.RichEmbed()
+        .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
+        .setColor(0xFFA500)
+        .setTimestamp()
+        .setDescription(reaction.message.content);
+    return starboard.sendEmbed(embed);
 });
 
 client.on('guildMemberAdd', (member) => {
     if (member.guild.id !== config.server) return;
     member.addRole(member.guild.roles.find('name', 'Members'));
     let addedMemberName = member.user.username;
-    member.guild.channels.get(config.announcementChannel).send(`Welcome ${addedMemberName}!`);
+    return member.guild.channels.get(config.announcementChannel).send(`Welcome ${addedMemberName}!`);
 });
 
 client.on('guildMemberRemove', (member) => {
     if (member.guild.id !== config.server) return;
     let removedMemberName = member.user.username;
-    member.guild.channels.get(config.announcementChannel).send(`Bye ${removedMemberName}...`);
+    return member.guild.channels.get(config.announcementChannel).send(`Bye ${removedMemberName}...`);
 });
 
 client.on('guildCreate', (guild) => {

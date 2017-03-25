@@ -11,27 +11,26 @@ module.exports = class RomajiCommand extends commando.Command {
             group: 'textedit',
             memberName: 'romaji',
             description: 'Convert Hiragana and Katakana to Romaji (;romaji ひらがな)',
-            examples: [';romaji ひらがな']
+            examples: [';romaji ひらがな'],
+            args: [{
+                key: 'kana',
+                prompt: 'What kana would you like to convert to romaji?',
+                type: 'string',
+                validate: (str) => {
+                    hepburn.containsKana(str);
+                }
+            }]
         });
     }
 
-    run(message) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let romajify = message.content.split(" ").slice(1).join(" ");
-        if (hepburn.containsKana(romajify)) {
-            let romajified = hepburn.fromKana(romajify);
-            if (romajified.length > 1950) {
-                return message.channel.send(":x: Error! Your message is too long!");
-            }
-            else {
-                return message.channel.send(romajified);
-            }
-        }
-        else {
-            return message.channel.send(":x: Error! Message contains no Kana!\n:notepad_spiral: Note: You cannot use this command on Kanji!");
-        }
+        let romajify = args.kana;
+        let romajified = hepburn.fromKana(romajify);
+        if (romajified.length > 1950) return message.channel.send(":x: Error! Your message is too long!");
+        return message.channel.send(romajified);
     }
 };

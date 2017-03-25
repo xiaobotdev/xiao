@@ -4,6 +4,9 @@ module.exports = class PotatoCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'potato',
+            aliases: [
+                'tater'
+            ],
             group: 'response',
             memberName: 'potato',
             description: 'Sends a random Potato picture. (;potato)',

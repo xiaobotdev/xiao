@@ -12,16 +12,21 @@ module.exports = class RemindCommand extends commando.Command {
             group: 'random',
             memberName: 'remind',
             description: 'Reminds you of something at a certain time. (;remind Eat Food tomorrow)',
-            examples: [';remind Eat Food tomorrow']
+            examples: [';remind Eat Food tomorrow'],
+            args: [{
+                key: 'remind',
+                prompt: 'What should I remind you of?',
+                type: 'string'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let remindMe = message.content.split(" ").slice(1).join(" ");
+        let remindMe = args.remind;
         try {
             let remindTime = sherlock.parse(remindMe);
             let time = remindTime.startDate.getTime() - Date.now();

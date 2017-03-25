@@ -10,16 +10,21 @@ module.exports = class WattpadCommand extends commando.Command {
             group: 'search',
             memberName: 'wattpad',
             description: 'Searches Wattpad for a specified book. (;wattpad Heroes of Dreamland)',
-            examples: [';wattpad Heroes of Dreamland']
+            examples: [';wattpad Heroes of Dreamland'],
+            args: [{
+                key: 'book',
+                prompt: 'What book would you like to search for?',
+                type: 'string'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let queryBook = message.content.split(" ").slice(1).join(" ");
+        let queryBook = args.book;
         try {
             let response = await request
                 .get('https://api.wattpad.com:443/v4/stories')

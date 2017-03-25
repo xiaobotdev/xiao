@@ -5,20 +5,28 @@ const math = require('mathjs');
 module.exports = class MathGameCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
-            name: 'mathgame',
+            name: 'games',
             group: 'random',
             memberName: 'mathgame',
             description: 'See how fast you can answer a math problem in a given time limit. (;mathgame easy)',
-            examples: [';mathgame easy', ';mathgame medium', ';mathgame hard', ';mathgame extreme']
+            examples: [';mathgame easy', ';mathgame medium', ';mathgame hard', ';mathgame extreme'],
+            args: [{
+                key: 'difficulty',
+                prompt: 'What difficulty should the math game be? Easy, Medium, Hard, or Extreme?',
+                type: 'string',
+                validate: (str) => {
+                    str.toLowerCase() === 'easy' || str.toLowerCase() === 'medium' || str.toLowerCase() === 'hard' || str.toLowerCase() === 'extreme';
+                }
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let [level] = message.content.toLowerCase().split(" ").slice(1);
+        let level = args.difficulty;
         let randomType = ['+', '-', '*'];
         randomType = randomType[Math.floor(Math.random() * randomType.length)];
         let randomValue;
@@ -40,25 +48,22 @@ module.exports = class MathGameCommand extends commando.Command {
         let randomValue2 = Math.floor(Math.random() * randomValue) + 1;
         let randomExpression = randomValue1 + randomType + randomValue2;
         let solved = math.eval(randomExpression);
-        if (!randomValue) {
-            return message.channel.send(':x: Error! No difficulty set! (Choose Easy, Medium, Hard, or Extreme)');
+        const embed = new Discord.RichEmbed()
+            .setTitle('You have **ten** seconds to answer:')
+            .setDescription(randomExpression);
+        let embedMsg = await message.channel.sendEmbed(embed);
+        try {
+            let collected = await message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
+                max: 1,
+                time: 10000,
+                errors: ['time'],
+            });
+            let victoryMsg = await message.channel.send(`Good Job! You won! ${solved} is the correct answer!`);
+            return [embedMsg, collected, victoryMsg];
         }
-        else {
-            const embed = new Discord.RichEmbed()
-                .setTitle('You have **ten** seconds to answer:')
-                .setDescription(randomExpression);
-            let embedMsg = await message.channel.sendEmbed(embed);
-            try {
-                let collected = await message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
-                    max: 1,
-                    time: 10000,
-                    errors: ['time'],
-                });
-                return message.channel.send(`Good Job! You won! ${solved} is the correct answer!`);
-            }
-            catch (err) {
-                return message.channel.send(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
-            }
+        catch (err) {
+            let loseMsg = await message.channel.send(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+            return [embedMsg, loseMsg];
         }
     }
 };

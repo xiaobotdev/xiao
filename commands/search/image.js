@@ -13,16 +13,21 @@ module.exports = class DefineCommand extends commando.Command {
             group: 'search',
             memberName: 'image',
             description: 'Searches Google for an Image. (;image Cat)',
-            examples: [';image Cat']
+            examples: [';image Cat'],
+            args: [{
+                key: 'query',
+                prompt: 'What would you like to search for?',
+                type: 'string'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToSearch = encodeURI(message.content.split(" ").slice(1).join(" "));
+        let thingToSearch = encodeURI(args.query);
         let searchMsg = await message.channel.send('Searching...');
         try {
             let response = await request

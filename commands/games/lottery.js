@@ -4,7 +4,7 @@ module.exports = class LotteryCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'lottery',
-            group: 'random',
+            group: 'games',
             memberName: 'lottery',
             description: '1 in 100 Chance of Winning. Winners get... The feeling of winning? (;lottery)',
             examples: [';lottery']
@@ -17,11 +17,7 @@ module.exports = class LotteryCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let lotteryNumber = ['Winner'][Math.floor(Math.random() * 100)];
-        if (lotteryNumber === "Winner") {
-            return message.channel.send(`Wow ${message.author.username}! You actually won! Great job!`);
-        }
-        else {
-            return message.channel.send(`Nope, sorry ${message.author.username}, you lost.`);
-        }
+        if (lotteryNumber !== "Winner") return message.channel.send(`Nope, sorry ${message.author.username}, you lost.`);
+        return message.channel.send(`Wow ${message.author.username}! You actually won! Great job!`);
     }
 };

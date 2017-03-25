@@ -12,13 +12,11 @@ module.exports = class YearsCommand extends commando.Command {
             memberName: '3000years',
             description: "It's been 3000 years... (;3000years @User)",
             examples: [';3000years @user'],
-			args: [
-				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?\n',
-					type: 'user'
-				}
-			]
+            args: [{
+                key: 'user',
+                prompt: 'Which user would you like to edit the avatar of?',
+                type: 'user'
+            }]
         });
     }
 

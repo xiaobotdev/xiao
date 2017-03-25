@@ -9,16 +9,21 @@ module.exports = class WeatherCommand extends commando.Command {
             group: 'search',
             memberName: 'weather',
             description: 'Searches weather for a specified location. (;weather San Francisco)',
-            examples: [';weather San Francisco']
+            examples: [';weather San Francisco'],
+            args: [{
+                key: 'locationQ',
+                prompt: 'What location would you like to get the current weather for?',
+                type: 'string'
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let locationToSearch = message.content.split(" ").slice(1).join(" ");
+        let locationToSearch = args.locationQ;
         try {
             let info = await weather(locationToSearch, 'f');
             const embed = new Discord.RichEmbed()

@@ -13,27 +13,24 @@ module.exports = class SayCommand extends commando.Command {
             group: 'textedit',
             memberName: 'say',
             description: 'Make XiaoBot say what you wish. (;say I can talk!)',
-            examples: [';say I can talk!']
+            examples: [';say I can talk!'],
+            guildOnly: true,
+            args: [{
+                key: 'text',
+                prompt: 'What text would you like XiaoBot to say?',
+                type: 'string'
+            }]
         });
     }
 
-    run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'MANAGE_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let copycat = message.content.split(" ").slice(1).join(" ");
-        if (!copycat) {
-            return message.channel.send(":x: Error! Nothing to say!");
-        }
-        else {
-            if (message.channel.type === 'dm') {
-                return message.channel.send(copycat);
-            }
-            else {
-                message.delete();
-                return message.channel.send(copycat);
-            }
-        }
+        let copycat = args.text;
+        let deleteMsg = await message.delete();
+        let copyMsg = await message.channel.send(copycat);
+        return [deleteMsg, copyMsg];
     }
 };
