@@ -12,19 +12,19 @@ module.exports = class MathGameCommand extends commando.Command {
             examples: [';mathgame easy', ';mathgame medium', ';mathgame hard', ';mathgame extreme'],
             args: [{
                 key: 'difficulty',
-                prompt: 'What difficulty should the math game be? Easy, Medium, Hard, or Extreme?',
+                prompt: 'What difficulty should the math game be? easy, medium, hard, or extreme?',
                 type: 'string',
                 validate: difficulty => {
-                    if (difficulty === 'easy') {
+                    if (difficulty.toLowerCase() === 'easy') {
                         return true;
                     }
-                    else if (difficulty === 'medium') {
+                    else if (difficulty.toLowerCase() === 'medium') {
                         return true;
                     }
-                    else if (difficulty === 'hard') {
+                    else if (difficulty.toLowerCase() === 'hard') {
                         return true;
                     }
-                    else if (difficulty === 'extreme') {
+                    else if (difficulty.toLowerCase() === 'extreme') {
                         return true;
                     }
                     return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
