@@ -15,7 +15,8 @@ module.exports = class MotivateCommand extends commando.Command {
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to motivate?',
-                type: 'string'
+                type: 'string',
+                default: ''
             }]
         });
     }
