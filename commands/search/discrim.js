@@ -18,7 +18,7 @@ module.exports = class DiscrimCommand extends commando.Command {
                 prompt: 'Which discriminator would you like to search for?',
                 type: 'string',
                 validate: discrim => {
-                    if (discrim.match(/^[0-9]+$/) || discrim.length === 4) {
+                    if (discrim.match(/^[0-9]+$/) && discrim.length === 4) {
                         return true;
                     }
                     return 'Invalid discriminator.';
