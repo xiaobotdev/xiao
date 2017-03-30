@@ -34,7 +34,7 @@ module.exports = class DefineCommand extends commando.Command {
                 .get(`https://www.google.com/search?q=${thingToSearch}`);
             const $ = cheerio.load(response.text);
             let href = $('.r').first().find('a').first().attr('href');
-            if (!href) return message.say(':x: Error! No Results Found!');
+            if (!href) return searchMsg.edit(':x: Error! No Results Found!');
             href = querystring.parse(href.replace('/url?', ''));
             return searchMsg.edit(href.q);
         }
