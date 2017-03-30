@@ -64,7 +64,6 @@ module.exports = class UnbanCommand extends commando.Command {
             return [unbanUser, okHandMsg, modLogMsg];
         }
         catch (err) {
-            console.log(err);
             return message.say(':x: Error! Something went wrong!');
         }
     }
