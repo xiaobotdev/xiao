@@ -1,19 +1,28 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-module.exports = class KickCommand extends commando.Command {
+module.exports = class UnbanCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
-            name: 'kick',
+            name: 'unban',
+            aliases: [
+                'unbanne'
+            ],
             group: 'moderation',
-            memberName: 'kick',
-            description: 'Kicks a user. (;kick @User being a jerk.)',
-            examples: [";kick @User being a jerk."],
+            memberName: 'unban',
+            description: 'Unbans a user. (;unban @User not being a jerk.)',
+            examples: [";unban @User not being a jerk."],
             guildOnly: true,
             args: [{
-                key: 'member',
-                prompt: 'What member do you want to kick?',
-                type: 'member'
+                key: 'memberID',
+                prompt: 'What member do you want to unban? Please enter the ID of the user.',
+                type: 'integer',
+                validate: userID => {
+                    if (userID.length === 18) {
+                        return true;
+                    }
+                    return "Invalid ID. Please enter the user you wish to unban's ID.";
+                }
             }, {
                 key: 'reason',
                 prompt: 'What do you want to set the reason as?',
@@ -28,29 +37,30 @@ module.exports = class KickCommand extends commando.Command {
         });
     }
     hasPermission(msg) {
-        return msg.member.hasPermission('KICK_MEMBERS');
+        return msg.member.hasPermission('BAN_MEMBERS');
     }
 
     async run(message, args) {
         if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'])) return;
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'])) return;
         }
         console.log(`[Command] ${message.content}`);
         if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
-        let member = args.member;
+        let memberID = args.memberID;
         let reason = args.reason;
-        if (!message.guild.member(member).bannable) return message.say(":x: Error! This member cannot be kicked! Perhaps they have a higher role than me?");
+        let bans = await message.guild.fetchBans();
+        if (!bans.has(memberID)) return message.say(':x: Error! Could not find this user in the bans.');
         try {
-            let kickUser = await message.guild.member(member).kick();
+            let unbanUser = await bans.get(memberID).unban();
             let okHandMsg = await message.say(":ok_hand:");
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-                .setColor(0xFFA500)
+                .setColor(0xFF0000)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
-                .setDescription(`**Member:** ${kickUser.user.username}#${kickUser.user.discriminator} (${member.id})\n**Action:** Kick\n**Reason:** ${reason}`);
+                .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Ban\n**Reason:** ${reason}`);
             let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
-            return [kickUser, okHandMsg, modLogMsg];
+            return [unbanUser, okHandMsg, modLogMsg];
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');
