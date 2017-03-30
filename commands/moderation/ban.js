@@ -20,7 +20,13 @@ module.exports = class BanCommand extends commando.Command {
             }, {
                 key: 'reason',
                 prompt: 'What do you want to set the reason as?',
-                type: 'string'
+                type: 'string',
+                validate: reason => {
+                    if (reason.length < 141) {
+                        return true;
+                    }
+                    return "Please keep your reason under 140 characters.";
+                }
             }]
         });
     }
@@ -37,15 +43,20 @@ module.exports = class BanCommand extends commando.Command {
         let member = args.member;
         let reason = args.reason;
         if (!message.guild.member(member).bannable) return message.say(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
-        let banUser = await message.guild.member(member).ban();
-        let okHandMsg = await message.say(":ok_hand:");
-        const embed = new Discord.RichEmbed()
-            .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-            .setColor(0xFF0000)
-            .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
-            .setTimestamp()
-            .setDescription(`**Member:** ${banUser.user.username}#${banUser.user.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
-        let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
-        return [banUser, okHandMsg, modLogMsg];
+        try {
+            let banUser = await message.guild.member(member).ban();
+            let okHandMsg = await message.say(":ok_hand:");
+            const embed = new Discord.RichEmbed()
+                .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+                .setColor(0xFF0000)
+                .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
+                .setTimestamp()
+                .setDescription(`**Member:** ${banUser.user.username}#${banUser.user.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
+            let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            return [banUser, okHandMsg, modLogMsg];
+        }
+        catch (err) {
+            return message.say(':x: Error! Something went wrong!');
+        }
     }
 };
