@@ -10,8 +10,8 @@ module.exports = class UnbanCommand extends commando.Command {
             ],
             group: 'moderation',
             memberName: 'unban',
-            description: 'Unbans a user. (;unban @User not being a jerk.)',
-            examples: [";unban @User not being a jerk."],
+            description: 'Unbans a user. (;unban USERID not being a jerk.)',
+            examples: [";unban USERID not being a jerk."],
             guildOnly: true,
             args: [{
                 key: 'memberID',
