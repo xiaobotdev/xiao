@@ -32,32 +32,22 @@ module.exports = class UserInfoCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let user = args.user;
         let stat;
-        switch (user.presence.status) {
-            case "online":
-                stat = "<:vpOnline:212789758110334977> Online";
-                break;
-            case "idle":
-                stat = "<:vpAway:212789859071426561> Idle";
-                break;
-            case "dnd":
-                stat = "<:vpDnD:230093576355184640> Do Not Disturb";
-                break;
-            case "offline":
-                stat = "<:vpOffline:212790005943369728> Offline";
-                break;
-        }
         let color;
         switch (user.presence.status) {
             case "online":
+                stat = "<:vpOnline:212789758110334977> Online";
                 color = 0x00AE86;
                 break;
             case "idle":
+                stat = "<:vpAway:212789859071426561> Idle";
                 color = 0xFFFF00;
                 break;
             case "dnd":
+                stat = "<:vpDnD:230093576355184640> Do Not Disturb";
                 color = 0xFF0000;
                 break;
             case "offline":
+                stat = "<:vpOffline:212790005943369728> Offline";
                 color = 0x808080;
                 break;
         }

@@ -16,7 +16,7 @@ module.exports = class UnbanCommand extends commando.Command {
             args: [{
                 key: 'memberID',
                 prompt: 'What member do you want to unban? Please enter the ID of the user.',
-                type: 'integer',
+                type: 'string',
                 validate: userID => {
                     if (userID.length === 18) {
                         return true;
@@ -55,7 +55,7 @@ module.exports = class UnbanCommand extends commando.Command {
             let okHandMsg = await message.say(":ok_hand:");
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-                .setColor(0xFF0000)
+                .setColor(0x00AE86)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
                 .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Ban\n**Reason:** ${reason}`);
