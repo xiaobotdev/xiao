@@ -47,12 +47,16 @@ module.exports = class UnbanCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
         let memberID = args.memberID;
+        console.log(memberID);
         let reason = args.reason;
         let bans = await message.guild.fetchBans();
         if (!bans.has(memberID)) return message.say(':x: Error! Could not find this user in the bans.');
         try {
             let unbanUser = await bans.get(memberID).unban();
             let okHandMsg = await message.say(":ok_hand:");
+            console.log(unbanUser.username);
+            console.log(unbanUser.discriminator);
+            console.log(unbanUser.id);
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0x00AE86)
@@ -63,6 +67,7 @@ module.exports = class UnbanCommand extends commando.Command {
             return [unbanUser, okHandMsg, modLogMsg];
         }
         catch (err) {
+            console.log(err);
             return message.say(':x: Error! Something went wrong!');
         }
     }
