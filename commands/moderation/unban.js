@@ -59,7 +59,7 @@ module.exports = class UnbanCommand extends commando.Command {
                 .setColor(0x00AE86)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
-                .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Ban\n**Reason:** ${reason}`);
+                .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
             let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
             return [unbanUser, okHandMsg, modLogMsg];
         }
