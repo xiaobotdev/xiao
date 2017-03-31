@@ -49,8 +49,8 @@ module.exports = class UnbanCommand extends commando.Command {
         let memberID = args.memberID;
         let reason = args.reason;
         let bans = await message.guild.fetchBans();
-        let unbanUserObj = await bans.get(memberID);
         if (!bans.has(memberID)) return message.say(':x: Error! Could not find this user in the bans.');
+        let unbanUserObj = await bans.get(memberID);
         try {
             let unbanUser = await message.guild.unban(unbanUserObj);
             let okHandMsg = await message.say(":ok_hand:");
