@@ -66,7 +66,7 @@ module.exports = class MathGameCommand extends commando.Command {
                 errors: ['time'],
             });
             let victoryMsg = await message.say(`Good Job! You won! ${solved} is the correct answer!`);
-            return [embedMsg, collected, victoryMsg];
+            return [embedMsg, victoryMsg];
         }
         catch (err) {
             let loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
