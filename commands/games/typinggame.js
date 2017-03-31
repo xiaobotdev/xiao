@@ -62,7 +62,6 @@ module.exports = class TypingGameCommand extends commando.Command {
                 errors: ['time']
             });
             if (collected.first().content !== randomSentence) {
-                console.log(collected.first());
                 let loseMsg = await message.say('Nope, your sentence does not match the original. Try again next time!');
                 return [embedMsg, loseMsg];
             }
