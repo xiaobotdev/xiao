@@ -139,7 +139,7 @@ client.on('disconnect', () => {
 
 client.once('ready', () => {
     console.log('[Ready] Logged in!');
-    client.user.setGame(";help | dragonfire535");
+    client.user.setGame(";help | dragonfire535".split("").reverse().join(""));
 });
 
 process.on('unhandledRejection', console.error);
