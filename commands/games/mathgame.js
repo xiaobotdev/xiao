@@ -10,10 +10,6 @@ module.exports = class MathGameCommand extends commando.Command {
             memberName: 'mathgame',
             description: 'See how fast you can answer a math problem in a given time limit. (;mathgame easy)',
             examples: [';mathgame easy', ';mathgame medium', ';mathgame hard', ';mathgame extreme'],
-            throttling: {
-				usages: 1,
-				duration: 10
-			},
             args: [{
                 key: 'difficulty',
                 prompt: 'What difficulty should the math game be? easy, medium, hard, or extreme?',
@@ -60,11 +56,15 @@ module.exports = class MathGameCommand extends commando.Command {
             .setDescription(randomExpression);
         let embedMsg = await message.embed(embed);
         try {
-            let collected = await message.channel.awaitMessages(response => response.content === solved.toString() && response.author.id === message.author.id, {
+            let collected = await message.channel.awaitMessages(response => response.author.id === message.author.id, {
                 max: 1,
                 time: 10000,
                 errors: ['time'],
             });
+            if (collected.first() !== solved.toString()) {
+                let loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+                return [embedMsg, loseMsg];
+            }
             let victoryMsg = await message.say(`Good Job! You won! ${solved} is the correct answer!`);
             return [embedMsg, victoryMsg];
         }
