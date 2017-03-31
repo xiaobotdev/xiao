@@ -38,8 +38,7 @@ module.exports = class QuizCommand extends commando.Command {
                     time: 15000,
                     errors: ['time']
                 });
-                if (collected.first().toLowerCase() !== answer) {
-                    console.log(collected.first());
+                if (collected.first().content.toLowerCase() !== answer) {
                     let loseMsg = await message.say(`The correct answer is: ${answer}`);
                     return [embedMsg, loseMsg];
                 }

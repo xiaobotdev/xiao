@@ -61,8 +61,7 @@ module.exports = class MathGameCommand extends commando.Command {
                 time: 10000,
                 errors: ['time']
             });
-            if (collected.first() !== solved.toString()) {
-                console.log(collected.first());
+            if (collected.first().content !== solved.toString()) {
                 let loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
                 return [embedMsg, loseMsg];
             }
