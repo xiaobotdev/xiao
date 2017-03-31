@@ -12,11 +12,7 @@ module.exports = class QuizCommand extends commando.Command {
             group: 'games',
             memberName: 'quiz',
             description: 'Answer a quiz question. (;quiz)',
-            examples: [';quiz'],
-            throttling: {
-				usages: 1,
-				duration: 15
-			},
+            examples: [';quiz']
         });
     }
 
@@ -37,12 +33,16 @@ module.exports = class QuizCommand extends commando.Command {
                 .setDescription(`**Category: ${response.body[0].category.title}**\n${response.body[0].question}`);
             let embedMsg = await message.embed(embed);
             try {
-                let collected = await message.channel.awaitMessages(res => res.content.toLowerCase() === answer && res.author.id === message.author.id, {
+                let collected = await message.channel.awaitMessages(res => res.author.id === message.author.id, {
                     max: 1,
                     time: 15000,
                     errors: ['time']
                 });
-                let victoryMsg = await message.say(`Good Job! You won! ${answer} is the correct answer!`);
+                if (collected.first().toLowerCase() !== answer) {
+                    let loseMsg = await message.say(`The correct answer is: ${answer}`);
+                    return [embedMsg, loseMsg];
+                }
+                let victoryMsg = await message.say(`The correct answer is: ${answer}`);
                 return [embedMsg, victoryMsg];
             }
             catch (err) {
