@@ -22,7 +22,7 @@ module.exports = class PruneCommand extends commando.Command {
                 prompt: 'How many messages do you want to delete? Limit of up to 99.',
                 type: 'integer',
                 validate: count => {
-                    if (count > 99 || count < 1) {
+                    if (count < 100 && count > 0) {
                         return true;
                     }
                     return "Too many or two few messages to delete. Limit 1-99.";
