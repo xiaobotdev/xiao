@@ -29,7 +29,6 @@ module.exports = class TypingGameCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let level = args.difficulty.toLowerCase();
-        if (level !== 'easy' || level !== 'medium' || level !== 'hard' || level !== 'extreme') return message.say(':x: Error! Please set the difficulty to either easy, medium, hard, or extreme!');
         let randomSentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
         randomSentence = randomSentence[Math.floor(Math.random() * randomSentence.length)];
         let time;
@@ -63,6 +62,7 @@ module.exports = class TypingGameCommand extends commando.Command {
                 errors: ['time']
             });
             if (collected.first() !== randomSentence) {
+                console.log(collected.first());
                 let loseMsg = await message.say('Nope, your sentence does not match the original. Try again next time!');
                 return [embedMsg, loseMsg];
             }

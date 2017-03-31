@@ -59,9 +59,10 @@ module.exports = class MathGameCommand extends commando.Command {
             let collected = await message.channel.awaitMessages(response => response.author.id === message.author.id, {
                 max: 1,
                 time: 10000,
-                errors: ['time'],
+                errors: ['time']
             });
             if (collected.first() !== solved.toString()) {
+                console.log(collected.first());
                 let loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
                 return [embedMsg, loseMsg];
             }
