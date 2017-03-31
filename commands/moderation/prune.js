@@ -44,10 +44,11 @@ module.exports = class PruneCommand extends commando.Command {
             let messages = await message.channel.fetchMessages({
                 limit: count
             });
-            message.channel.bulkDelete(messages, true);
+            let deletion = await message.channel.bulkDelete(messages, true);
+            return deletion;
         }
         catch (err) {
-            return message.say(':x: Error! Something went wrong!');
+            return message.say(':x: Error! Something went wrong! Perhaps there are not enough messages in the channel from earlier than two weeks?');
         }
     }
 };
