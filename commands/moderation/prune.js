@@ -17,6 +17,10 @@ module.exports = class PruneCommand extends commando.Command {
             description: 'Deletes a defined number of messages from the current channel, up to 99. (;prune 45)',
             examples: [";prune 45"],
             guildOnly: true,
+            throttling: {
+				usages: 1,
+				duration: 60
+			},
             args: [{
                 key: 'count',
                 prompt: 'How many messages do you want to delete? Limit of up to 99.',

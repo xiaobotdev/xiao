@@ -9,6 +9,10 @@ module.exports = class TypingGameCommand extends commando.Command {
             memberName: 'typinggame',
             description: 'See how fast you can type a sentence in a given time limit. (;typinggame easy)',
             examples: [';typinggame easy', ';typinggame medium', ';typinggame hard', ';typinggame extreme'],
+            throttling: {
+				usages: 1,
+				duration: 25
+			},
             args: [{
                 key: 'difficulty',
                 prompt: 'What difficulty should the typing game be? Easy, Medium, Hard, or Extreme?',

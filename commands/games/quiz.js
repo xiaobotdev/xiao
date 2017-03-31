@@ -12,7 +12,11 @@ module.exports = class QuizCommand extends commando.Command {
             group: 'games',
             memberName: 'quiz',
             description: 'Answer a quiz question. (;quiz)',
-            examples: [';quiz']
+            examples: [';quiz'],
+            throttling: {
+				usages: 1,
+				duration: 15
+			},
         });
     }
 
