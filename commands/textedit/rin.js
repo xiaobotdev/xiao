@@ -2,21 +2,22 @@ const commando = require('discord.js-commando');
 const request = require('superagent');
 const config = require('../../config.json');
 
-module.exports = class RinSayCommand extends commando.Command {
+module.exports = class WebhookCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
-            name: 'rin',
+            name: 'webhook',
             aliases: [
+                'rin',
                 'rinsay'
             ],
             group: 'textedit',
-            memberName: 'rin',
-            description: "Posts a message to the Rin webhook in Heroes of Dreamland. (;rin Hey guys!)",
-            examples: [";rin Hey guys!"],
+            memberName: 'webhook',
+            description: "Posts a message to the webhook defined in config. (;webhook Hey guys!)",
+            examples: [";webhook Hey guys!"],
             guildOnly: true,
             args: [{
                 key: 'text',
-                prompt: 'What text would you like Rin to say?',
+                prompt: 'What text would you like the webhook to say?',
                 type: 'string'
             }]
         });
@@ -30,12 +31,12 @@ module.exports = class RinSayCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'MANAGE_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let rinContent = args.text;
+        let content = args.text;
         try {
             let post = await request
                 .post(config.webhook)
                 .send({
-                    content: rinContent
+                    content: content
                 });
             let deleteMsg = await message.delete();
             return [post, deleteMsg];

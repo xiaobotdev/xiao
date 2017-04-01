@@ -32,7 +32,7 @@ module.exports = class YodaCommand extends commando.Command {
                     'Accept': 'text/plain'
                 })
                 .query({
-                    sentence: turnToYoda
+                    sentence: encodeURI(turnToYoda)
                 });
             if (!response.text) return message.say(':x: Error! Something went wrong! Keep it simple to avoid this error.');
             return message.say(response.text);

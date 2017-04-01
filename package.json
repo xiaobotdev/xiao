@@ -19,7 +19,7 @@
     "Sherlock": "github:neilgupta/Sherlock",
     "cheerio": "^0.22.0",
     "cowsay": "^1.1.9",
-    "discord.js": "github:hydrabolt/discord.js#1cb227d6d845318bee47916e9e429ae094c4936a",
+    "discord.js": "github:hydrabolt/discord.js",
     "discord.js-commando": "github:gawdl3y/discord.js-commando",
     "google-translate-api": "^2.2.2",
     "hepburn": "^1.0.0",

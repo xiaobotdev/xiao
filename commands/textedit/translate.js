@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const translate = require('google-translate-api');
-
 const languages = {
     "auto": "Automatic",
     "af": "Afrikaans",
