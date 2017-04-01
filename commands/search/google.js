@@ -3,7 +3,7 @@ const request = require('superagent');
 const cheerio = require('cheerio');
 const querystring = require('querystring');
 
-module.exports = class DefineCommand extends commando.Command {
+module.exports = class GoogleCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'google',
