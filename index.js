@@ -34,7 +34,6 @@ client.registry
 
 client.on('guildMemberAdd', (member) => {
     if (member.guild.id !== config.server) return;
-    member.addRole(member.guild.roles.find('name', 'Members'));
     let addedMemberName = member.user.username;
     return member.guild.channels.get(config.announcementChannel).send(`Welcome ${addedMemberName}!`);
 });
