@@ -38,6 +38,9 @@ module.exports = class LockdownCommand extends commando.Command {
                 await message.channel.overwritePermissions(message.guild.defaultRole, {
                     SEND_MESSAGES: false
                 });
+                await message.channel.overwritePermissions(message.guild.member(this.client.user), {
+                    SEND_MESSAGES: true
+                });
                 return message.say('**Lockdown Started, users without Administrator can no longer post messages. Please use ;lockdown stop to end the lockdown.**');
             }
             catch (err) {
