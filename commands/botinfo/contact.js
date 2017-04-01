@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-const banlist = require('./banlist.json');
 const config = require('../../config.json');
 
 module.exports = class ContactCommand extends commando.Command {
@@ -21,9 +20,6 @@ module.exports = class ContactCommand extends commando.Command {
                 type: 'string'
             }]
         });
-    }
-    hasPermission(msg) {
-        return !banlist.banned[msg.author.id];
     }
 
     async run(message, args) {

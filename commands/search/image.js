@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const request = require('superagent');
 const cheerio = require('cheerio');
 
-module.exports = class DefineCommand extends commando.Command {
+module.exports = class ImageSearchCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'image',
