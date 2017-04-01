@@ -23,7 +23,7 @@ module.exports = class LockdownCommand extends commando.Command {
         });
     }
     hasPermission(msg) {
-        return msg.member.hasPermission('MANAGE_CHANNELS');
+        return msg.member.hasPermission('ADMINISTRATOR');
     }
 
     async run(message, args) {
@@ -38,7 +38,7 @@ module.exports = class LockdownCommand extends commando.Command {
                 await message.channel.overwritePermissions(message.guild.defaultRole, {
                     SEND_MESSAGES: false
                 });
-                return message.say('**Lockdown Started, users with no roles can no longer post messages. Please use ;lockdown stop to end the lockdown.**');
+                return message.say('**Lockdown Started, users without Administrator can no longer post messages. Please use ;lockdown stop to end the lockdown.**');
             }
             catch (err) {
                 return message.say(':x: Error! Something went wrong!');
@@ -49,7 +49,7 @@ module.exports = class LockdownCommand extends commando.Command {
                 await message.channel.overwritePermissions(message.guild.defaultRole, {
                     SEND_MESSAGES: true
                 });
-                return message.say('**Lockdown Ended, users with no roles can now post messages.**');
+                return message.say('**Lockdown Ended, users without Administrator can now post messages.**');
             }
             catch (err) {
                 return message.say(':x: Error! Something went wrong!');
