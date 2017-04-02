@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const weather = require('yahoo-weather');
+const request = require('superagent');
 
 module.exports = class ForecastCommand extends commando.Command {
     constructor(Client) {
@@ -28,7 +28,9 @@ module.exports = class ForecastCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let locationToSearch = args.locationQ;
         try {
-            let info = await weather(locationToSearch, 'f');
+            let response = await request
+                .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`);
+            let info = response.body.query.results.channel;
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')

@@ -27,39 +27,39 @@ module.exports = class WeatherCommand extends commando.Command {
         try {
             let response = await request
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`);
+            let info = response.body.query.results.channel;
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(response.body.query.results.channel.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
-                .setURL(response.body.query.results.channel.link)
+                .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
+                .setURL(info.link)
                 .setTimestamp()
                 .addField('**City:**',
-                    response.body.query.results.channel.location.city, true)
+                    info.location.city, true)
                 .addField('**Country**',
-                    response.body.query.results.channel.location.country, true)
+                    info.location.country, true)
                 .addField('**Region:**',
-                    response.body.query.results.channel.location.region, true)
+                    info.location.region, true)
                 .addField('**Condition:**',
-                    response.body.query.results.channel.item.condition.text, true)
+                    info.item.condition.text, true)
                 .addField('**Temperature:**',
-                    `${response.body.query.results.channel.item.condition.temp}°F`, true)
+                    `${info.item.condition.temp}°F`, true)
                 .addField('**Humidity:**',
-                    response.body.query.results.channel.atmosphere.humidity, true)
+                    info.atmosphere.humidity, true)
                 .addField('**Pressure:**',
-                    response.body.query.results.channel.atmosphere.pressure, true)
+                    info.atmosphere.pressure, true)
                 .addField('**Rising:**',
-                    response.body.query.results.channel.atmosphere.rising, true)
+                    info.atmosphere.rising, true)
                 .addField('**Visibility:**',
-                    response.body.query.results.channel.atmosphere.visibility, true)
+                    info.atmosphere.visibility, true)
                 .addField('**Wind Chill:**',
-                    response.body.query.results.channel.wind.chill, true)
+                    info.wind.chill, true)
                 .addField('**Wind Direction:**',
-                    response.body.query.results.channel.wind.direction, true)
+                    info.wind.direction, true)
                 .addField('**Wind Speed:**',
-                    response.body.query.results.channel.wind.speed, true);
+                    info.wind.speed, true);
             return message.embed(embed);
         }
         catch (err) {
-            console.log(err);
             return message.say(":x: Error! Make sure you typed the location correctly!");
         }
     }
