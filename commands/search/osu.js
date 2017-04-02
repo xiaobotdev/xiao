@@ -29,7 +29,7 @@ module.exports = class OsuCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let usernameToSearch = encodeURI(args.username);
+        let usernameToSearch = args.username;
         try {
             let response = await request
                 .get('https://osu.ppy.sh/api/get_user')
