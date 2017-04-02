@@ -14,10 +14,10 @@ module.exports = class RomanCommand extends commando.Command {
                 prompt: 'What do you want to convert to Roman?',
                 type: 'integer',
                 validate: number => {
-                    if (number > 1000000 || number < 1) {
-                        return 'Please enter a number below one million and above zero.';
+                    if (number < 1000001 && number > 0) {
+                        return true;
                     }
-                    return true;
+                    return 'Please enter a number below one million and above zero.';
                 }
             }]
         });
