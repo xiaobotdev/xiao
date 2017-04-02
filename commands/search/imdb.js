@@ -28,7 +28,7 @@ module.exports = class IMDBCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let queryMovie = encodeURI(args.movie);
+        let queryMovie = args.movie;
         try {
             let response = await request
                 .get(`http://www.omdbapi.com/`)

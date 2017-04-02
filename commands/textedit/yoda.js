@@ -23,7 +23,7 @@ module.exports = class YodaCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let turnToYoda = encodeURI(args.text);
+        let turnToYoda = args.text;
         try {
             let response = await request
                 .get('https://yoda.p.mashape.com/yoda')
