@@ -4,3 +4,5 @@ const Manager = new Discord.ShardingManager('./index.js', {
     token: config.token
 });
 Manager.spawn();
+
+process.on('unhandledRejection', console.error);
