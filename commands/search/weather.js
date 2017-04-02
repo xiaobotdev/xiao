@@ -29,8 +29,8 @@ module.exports = class WeatherCommand extends commando.Command {
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`);
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(response.body.query.results.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
-                .setURL(response.body.query.results.link)
+                .setAuthor(response.body.query.results.channel.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
+                .setURL(response.body.query.results.channel.link)
                 .setTimestamp()
                 .addField('**City:**',
                     response.body.query.results.channel.location.city, true)
