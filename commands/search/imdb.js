@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const imdb = require('imdb-api');
+const request = require('superagent');
 
 module.exports = class IMDBCommand extends commando.Command {
     constructor(Client) {
@@ -23,39 +23,43 @@ module.exports = class IMDBCommand extends commando.Command {
         });
     }
 
-    run(message, args) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let queryMovie = args.movie;
-        let movie;
-        imdb.getReq({
-            name: queryMovie
-        }, (err, response) => {
-            movie = response;
-            if (!movie) return message.say(":x: Error! Movie not found!");
+        let queryMovie = encodeURI(args.movie);
+        try {
+            let response = await request
+                .get(`http://www.omdbapi.com/`)
+                .query({
+                    t: queryMovie,
+                    plot: 'full'
+                });
             const embed = new Discord.RichEmbed()
                 .setColor(0xDBA628)
                 .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
-                .setURL(movie.imdburl)
-                .setTitle(`${movie.title} (${movie.rating} Score)`)
-                .setDescription(`${movie.plot.substr(0, 1500)} [Read the Rest Here!](${movie.imdburl})`)
+                .setURL(`http://www.imdb.com/title/${response.body.imdbID}`)
+                .setTitle(`${response.body.Title} (${response.body.imdbRating} Score)`)
+                .setDescription(`${response.body.Plot.substr(0, 1500)} [Read the Rest Here!](http://www.imdb.com/title/${response.body.imdbID})`)
                 .addField('**Genres:**',
-                    movie.genres)
+                    response.body.Genre)
                 .addField('**Year:**',
-                    movie.year, true)
+                    response.body.Year, true)
                 .addField('**Rated:**',
-                    movie.rated, true)
+                    response.body.Rated, true)
                 .addField('**Runtime:**',
-                    movie.runtime, true)
+                    response.body.Runtime, true)
                 .addField('**Directors:**',
-                    movie.director)
+                    response.body.Director)
                 .addField('**Writers:**',
-                    movie.writer)
+                    response.body.Writer)
                 .addField('**Actors:**',
-                    movie.actors);
+                    response.body.Actors);
             return message.embed(embed);
-        });
+        }
+        catch (err) {
+            return message.say(':x: Error! Movie not found!');
+        }
     }
 };
