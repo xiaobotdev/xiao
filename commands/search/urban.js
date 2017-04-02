@@ -42,7 +42,7 @@ module.exports = class UrbanDictionary extends commando.Command {
                 .setTitle(response.body.list[0].word)
                 .setDescription(`${response.body.list[0].definition.substr(0, 1900)} [Read the Rest Here!](${response.body.list[0].permalink})`)
                 .addField('**Example:**',
-                    response.body.list[0].example.substr(0, 1900));
+                    response.body.list[0].example.substr(0, 1900) || 'None');
             return message.embed(embed);
         }
         catch (err) {
