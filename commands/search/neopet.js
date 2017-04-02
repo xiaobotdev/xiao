@@ -7,7 +7,7 @@ module.exports = class NeopetCommand extends commando.Command {
             group: 'search',
             memberName: 'neopet',
             description: "Gives a Neopet's image, searchable by ID. (;neopet rjwlsb8k)",
-            examples: [';neopet rjwlsb8k', ';neopet getID'],
+            examples: [';neopet rjwlsb8k'],
             args: [{
                 key: 'pet',
                 prompt: 'What pet ID would you like to get the image of?',
