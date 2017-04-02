@@ -27,7 +27,7 @@ module.exports = class YouTubeCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let videoToSearch = encodeURI(args.video);
+        let videoToSearch = args.video;
         try {
             let response = await request
                 .get('https://www.googleapis.com/youtube/v3/search')
