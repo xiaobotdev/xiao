@@ -33,7 +33,6 @@
     "roman-numeral-converter-mmxvi": "^1.0.5",
     "string-to-binary": "^0.1.2",
     "superagent": "^3.5.1",
-    "urban": "^0.3.1",
     "yahoo-weather": "^2.2.2",
     "zalgolize": "^1.2.4"
   }
