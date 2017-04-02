@@ -23,7 +23,7 @@ module.exports = class YodaCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let turnToYoda = args.text;
+        let turnToYoda = encodeURI(args.text);
         try {
             let response = await request
                 .get('https://yoda.p.mashape.com/yoda')
@@ -32,7 +32,7 @@ module.exports = class YodaCommand extends commando.Command {
                     'Accept': 'text/plain'
                 })
                 .query({
-                    sentence: encodeURI(turnToYoda)
+                    sentence: turnToYoda
                 });
             if (!response.text) return message.say(':x: Error! Something went wrong! Keep it simple to avoid this error.');
             return message.say(response.text);

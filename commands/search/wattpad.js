@@ -24,7 +24,7 @@ module.exports = class WattpadCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let queryBook = args.book;
+        let queryBook = encodeURI(args.book);
         try {
             let response = await request
                 .get('https://api.wattpad.com:443/v4/stories')

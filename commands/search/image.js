@@ -31,7 +31,7 @@ module.exports = class ImageSearchCommand extends commando.Command {
         let searchMsg = await message.say('Searching...');
         try {
             let response = await request
-                .get(`https://www.google.com/search?tbm=isch&gs_l=img&q=${encodeURI(thingToSearch)}`);
+                .get(`https://www.google.com/search?tbm=isch&gs_l=img&q=${thingToSearch}`);
             const $ = cheerio.load(response.text);
             const result = $('.images_table').find('img').first().attr('src');
             return searchMsg.edit(result);
