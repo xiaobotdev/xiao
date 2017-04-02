@@ -29,33 +29,33 @@ module.exports = class WeatherCommand extends commando.Command {
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`);
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(response.body.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
-                .setURL(response.body.link)
+                .setAuthor(response.body.query.results.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
+                .setURL(response.body.query.results.link)
                 .setTimestamp()
                 .addField('**City:**',
-                    response.body.location.city, true)
+                    response.body.query.results.location.city, true)
                 .addField('**Country**',
-                    response.body.location.country, true)
+                    response.body.query.results.location.country, true)
                 .addField('**Region:**',
-                    response.body.location.region, true)
+                    response.body.query.results.location.region, true)
                 .addField('**Condition:**',
-                    response.body.item.condition.text, true)
+                    response.body.query.results.item.condition.text, true)
                 .addField('**Temperature:**',
-                    `${response.body.item.condition.temp}°F`, true)
+                    `${response.body.query.results.item.condition.temp}°F`, true)
                 .addField('**Humidity:**',
-                    response.body.atmosphere.humidity, true)
+                    response.body.query.results.atmosphere.humidity, true)
                 .addField('**Pressure:**',
-                    response.body.atmosphere.pressure, true)
+                    response.body.query.results.atmosphere.pressure, true)
                 .addField('**Rising:**',
-                    response.body.atmosphere.rising, true)
+                    response.body.query.results.atmosphere.rising, true)
                 .addField('**Visibility:**',
-                    response.body.atmosphere.visibility, true)
+                    response.body.query.results.atmosphere.visibility, true)
                 .addField('**Wind Chill:**',
-                    response.body.wind.chill, true)
+                    response.body.query.results.wind.chill, true)
                 .addField('**Wind Direction:**',
-                    response.body.wind.direction, true)
+                    response.body.query.results.wind.direction, true)
                 .addField('**Wind Speed:**',
-                    response.body.wind.speed, true);
+                    response.body.query.results.wind.speed, true);
             return message.embed(embed);
         }
         catch (err) {
