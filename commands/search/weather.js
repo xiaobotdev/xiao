@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const weather = require('yahoo-weather');
+const request = require('superagent');
 
 module.exports = class WeatherCommand extends commando.Command {
     constructor(Client) {
@@ -25,36 +25,37 @@ module.exports = class WeatherCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         let locationToSearch = args.locationQ;
         try {
-            let info = await weather(locationToSearch, 'f');
+            let response = await request
+                .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`);
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
-                .setURL(info.link)
+                .setAuthor(response.body.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
+                .setURL(response.body.link)
                 .setTimestamp()
                 .addField('**City:**',
-                    info.location.city, true)
+                    response.body.location.city, true)
                 .addField('**Country**',
-                    info.location.country, true)
+                    response.body.location.country, true)
                 .addField('**Region:**',
-                    info.location.region, true)
+                    response.body.location.region, true)
                 .addField('**Condition:**',
-                    info.item.condition.text, true)
+                    response.body.item.condition.text, true)
                 .addField('**Temperature:**',
-                    `${info.item.condition.temp}°F`, true)
+                    `${response.body.item.condition.temp}°F`, true)
                 .addField('**Humidity:**',
-                    info.atmosphere.humidity, true)
+                    response.body.atmosphere.humidity, true)
                 .addField('**Pressure:**',
-                    info.atmosphere.pressure, true)
+                    response.body.atmosphere.pressure, true)
                 .addField('**Rising:**',
-                    info.atmosphere.rising, true)
+                    response.body.atmosphere.rising, true)
                 .addField('**Visibility:**',
-                    info.atmosphere.visibility, true)
+                    response.body.atmosphere.visibility, true)
                 .addField('**Wind Chill:**',
-                    info.wind.chill, true)
+                    response.body.wind.chill, true)
                 .addField('**Wind Direction:**',
-                    info.wind.direction, true)
+                    response.body.wind.direction, true)
                 .addField('**Wind Speed:**',
-                    info.wind.speed, true);
+                    response.body.wind.speed, true);
             return message.embed(embed);
         }
         catch (err) {
