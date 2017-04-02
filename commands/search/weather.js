@@ -33,32 +33,33 @@ module.exports = class WeatherCommand extends commando.Command {
                 .setURL(response.body.query.results.link)
                 .setTimestamp()
                 .addField('**City:**',
-                    response.body.query.results.location.city, true)
+                    response.body.query.results.channel.location.city, true)
                 .addField('**Country**',
-                    response.body.query.results.location.country, true)
+                    response.body.query.results.channel.location.country, true)
                 .addField('**Region:**',
-                    response.body.query.results.location.region, true)
+                    response.body.query.results.channel.location.region, true)
                 .addField('**Condition:**',
-                    response.body.query.results.item.condition.text, true)
+                    response.body.query.results.channel.item.condition.text, true)
                 .addField('**Temperature:**',
-                    `${response.body.query.results.item.condition.temp}°F`, true)
+                    `${response.body.query.results.channel.item.condition.temp}°F`, true)
                 .addField('**Humidity:**',
-                    response.body.query.results.atmosphere.humidity, true)
+                    response.body.query.results.channel.atmosphere.humidity, true)
                 .addField('**Pressure:**',
-                    response.body.query.results.atmosphere.pressure, true)
+                    response.body.query.results.channel.atmosphere.pressure, true)
                 .addField('**Rising:**',
-                    response.body.query.results.atmosphere.rising, true)
+                    response.body.query.results.channel.atmosphere.rising, true)
                 .addField('**Visibility:**',
-                    response.body.query.results.atmosphere.visibility, true)
+                    response.body.query.results.channel.atmosphere.visibility, true)
                 .addField('**Wind Chill:**',
-                    response.body.query.results.wind.chill, true)
+                    response.body.query.results.channel.wind.chill, true)
                 .addField('**Wind Direction:**',
-                    response.body.query.results.wind.direction, true)
+                    response.body.query.results.channel.wind.direction, true)
                 .addField('**Wind Speed:**',
-                    response.body.query.results.wind.speed, true);
+                    response.body.query.results.channel.wind.speed, true);
             return message.embed(embed);
         }
         catch (err) {
+            console.log(err);
             return message.say(":x: Error! Make sure you typed the location correctly!");
         }
     }
