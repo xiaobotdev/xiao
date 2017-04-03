@@ -43,12 +43,13 @@ module.exports = class PruneCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['READ_MESSAGES', 'MANAGE_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let count = args.count + 1;
+        const count = args.count + 1;
         try {
-            let messages = await message.channel.fetchMessages({
+            const messages = await message.channel.fetchMessages({
                 limit: count
             });
             await message.channel.bulkDelete(messages, true);
+            return null;
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong! Perhaps there are not enough messages in the channel from earlier than two weeks?');

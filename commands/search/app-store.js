@@ -27,9 +27,9 @@ module.exports = class AppStoreCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let query = args.query;
+        const query = args.query;
         try {
-            let response = await request
+            const response = await request
                 .get('https://itunes.apple.com/search')
                 .query({
                     term: query,
@@ -37,8 +37,8 @@ module.exports = class AppStoreCommand extends commando.Command {
                     entity: 'software',
                     limit: 1
                 });
-            let parsedResponse = JSON.parse(response.text);
-            let data = parsedResponse.results[0];
+            const parsedResponse = JSON.parse(response.text);
+            const data = parsedResponse.results[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0x1BA3F7)
                 .setAuthor('App Store', 'https://upload.wikimedia.org/wikipedia/en/1/1f/App_Store_Logo.png')

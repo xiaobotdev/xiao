@@ -34,8 +34,8 @@ module.exports = class RomajiCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let romajify = args.kana;
-        let romajified = hepburn.fromKana(romajify);
+        const romajify = args.kana;
+        const romajified = hepburn.fromKana(romajify);
         return message.say(romajified);
     }
 };

@@ -40,19 +40,19 @@ module.exports = class BanCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
-        let member = args.member;
-        let reason = args.reason;
+        const member = args.member;
+        const reason = args.reason;
         if (!message.guild.member(member).bannable) return message.say(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
         try {
-            let banUser = await message.guild.member(member).ban();
-            let okHandMsg = await message.say(":ok_hand:");
+            const banUser = await message.guild.member(member).ban();
+            const okHandMsg = await message.say(":ok_hand:");
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0xFF0000)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
                 .setDescription(`**Member:** ${banUser.user.username}#${banUser.user.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
-            let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            const modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
             return [banUser, okHandMsg, modLogMsg];
         }
         catch (err) {

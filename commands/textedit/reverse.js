@@ -21,8 +21,8 @@ module.exports = class ReverseCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let stringToReverse = args.text;
-        let reversed = stringToReverse.split("").reverse().join("");
+        const stringToReverse = args.text;
+        const reversed = stringToReverse.split("").reverse().join("");
         return message.say(reversed);
     }
 };

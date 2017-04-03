@@ -24,8 +24,8 @@ module.exports = class InfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let guilds = await this.client.shard.fetchClientValues('guilds.size');
-        let vCConnections = await this.client.shard.fetchClientValues('voiceConnections.size');
+        const guilds = await this.client.shard.fetchClientValues('guilds.size');
+        const vCConnections = await this.client.shard.fetchClientValues('voiceConnections.size');
         const embed = new Discord.RichEmbed()
             .setTitle('Welcome to XiaoBot!')
             .setAuthor(this.client.user.username, this.client.user.avatarURL)
@@ -57,11 +57,9 @@ module.exports = class InfoCommand extends commando.Command {
             .addField('Library',
                 "[discord.js](https://discord.js.org/#/) / [commando](https://github.com/Gawdl3y/discord.js-commando)", true)
             .addField('Modules',
-                "[pirate-speak](https://github.com/mikewesthad/pirate-speak), [google-translate-api](https://github.com/matheuss/google-translate-api), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [morse](https://github.com/ecto/morse)")
-            .addField('Utility Modules',
-                "[superagent](https://github.com/visionmedia/superagent), [mathjs](http://mathjs.org/), [moment](http://momentjs.com), [moment-duration-format](https://github.com/jsmreese/moment-duration-format), [opusscript](https://github.com/abalabahaha/opusscript), [jimp](https://github.com/oliver-moran/jimp), [cheerio](https://cheerio.js.org/), [sherlockjs](https://github.com/maytis/sherlockjs)")
+                "[pirate-speak](https://github.com/mikewesthad/pirate-speak), [google-translate-api](https://github.com/matheuss/google-translate-api), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [morse](https://github.com/ecto/morse), [superagent](https://github.com/visionmedia/superagent), [mathjs](http://mathjs.org/), [moment](http://momentjs.com), [moment-duration-format](https://github.com/jsmreese/moment-duration-format), [opusscript](https://github.com/abalabahaha/opusscript), [jimp](https://github.com/oliver-moran/jimp), [cheerio](https://cheerio.js.org/), [sherlockjs](https://github.com/maytis/sherlockjs)")
             .addField('APIs',
-                "[Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/#api), [jService API](http://jservice.io/), [Strawpoll API](https://github.com/strawpoll/strawpoll/wiki/API), [Urban Dictionary API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation), [OMDB API](http://www.omdbapi.com/), [Yahoo Weather API](https://developer.yahoo.com/weather/)")
+                "[Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/#api), [jService API](http://jservice.io/), [Strawpoll API](https://github.com/strawpoll/strawpoll/wiki/API), [Urban Dictionary API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation), [OMDB API](http://www.omdbapi.com/), [Yahoo Weather API](https://developer.yahoo.com/weather/), [iTunes Store Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)")
             .addField('Other Credit',
                 "[Heroku](https://www.heroku.com/), [Cloud9](https://c9.io/), [heroku-buildpack-ffmpeg-latest](https://elements.heroku.com/buildpacks/jonathanong/heroku-buildpack-ffmpeg-latest)")
             .addField('My Server',

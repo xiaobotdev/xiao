@@ -42,12 +42,12 @@ module.exports = class MemeCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let type = args.type.toLowerCase();
-        let content = args.content;
-        let memeQuery = content.split(" ").join("-").split("-|-");
-        let toprow = memeQuery[0].split("?").join("~q");
-        let bottomrow = memeQuery[1].split("?").join("~q");
-        let link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
+        const type = args.type.toLowerCase();
+        const content = args.content;
+        const memeQuery = content.split(" ").join("-").split("-|-");
+        const toprow = memeQuery[0].split("?").join("~q");
+        const bottomrow = memeQuery[1].split("?").join("~q");
+        const link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
         if (bottomrow.length > 100) return message.say(":x: Error! Bottom text is over 100 characters!");
         if (toprow.length > 100) return message.say(":x: Error! Top text is over 100 characters!");
         return message.channel.sendFile(link).catch(err => message.say(':x: Error! Something went wrong!'));

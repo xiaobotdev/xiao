@@ -146,13 +146,13 @@ module.exports = class TranslateCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let languageto = args.to.toLowerCase();
-        let thingToTranslate = args.text;
+        const languageto = args.to.toLowerCase();
+        const thingToTranslate = args.text;
         try {
-            let res = await translate(thingToTranslate, {
+            const res = await translate(thingToTranslate, {
                 to: languageto
             });
-            let languagefrom = res.from.language.iso.toLowerCase();
+            const languagefrom = res.from.language.iso.toLowerCase();
             const embed = new Discord.RichEmbed()
                 .setColor(0x00AE86)
                 .addField(`Input (From: ${languages[languagefrom]}):`,

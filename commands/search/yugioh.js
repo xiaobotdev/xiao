@@ -23,11 +23,11 @@ module.exports = class YuGiOhCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let cardName = encodeURI(args.card);
+        const cardName = encodeURI(args.card);
         try {
-            let response = await request
+            const response = await request
                 .get(`http://yugiohprices.com/api/card_data/${cardName}`);
-            let data = response.body.data;
+            const data = response.body.data;
             if (data.card_type === 'monster') {
                 const embed = new Discord.RichEmbed()
                     .setColor(0xBE5F1F)

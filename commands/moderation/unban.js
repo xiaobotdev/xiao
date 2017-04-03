@@ -46,21 +46,21 @@ module.exports = class UnbanCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
-        let memberID = args.memberID;
-        let reason = args.reason;
-        let bans = await message.guild.fetchBans();
+        const memberID = args.memberID;
+        const reason = args.reason;
+        const bans = await message.guild.fetchBans();
         if (!bans.has(memberID)) return message.say(':x: Error! Could not find this user in the bans.');
-        let unbanUserObj = await bans.get(memberID);
+        const unbanUserObj = await bans.get(memberID);
         try {
-            let unbanUser = await message.guild.unban(unbanUserObj);
-            let okHandMsg = await message.say(":ok_hand:");
+            const unbanUser = await message.guild.unban(unbanUserObj);
+            const okHandMsg = await message.say(":ok_hand:");
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0x00AE86)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
                 .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
-            let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            const modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
             return [unbanUser, okHandMsg, modLogMsg];
         }
         catch (err) {

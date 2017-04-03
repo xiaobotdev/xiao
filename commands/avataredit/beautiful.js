@@ -25,14 +25,14 @@ module.exports = class BeautifulCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let user = args.user;
+        const user = args.user;
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace(".jpg", ".png");
         userAvatar = userAvatar.replace(".gif", ".png");
         let images = [];
         images.push(Jimp.read(userAvatar));
         images.push(Jimp.read("./images/beautiful.jpg"));
-        let [avatar, beautiful] = await Promise.all(images);
+        const [avatar, beautiful] = await Promise.all(images);
         avatar.resize(200, 200);
         beautiful.blit(avatar, 432, 42);
         avatar.resize(190, 190);

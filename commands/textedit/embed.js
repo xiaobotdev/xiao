@@ -23,14 +23,13 @@ module.exports = class EmbedCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let embedMessage = message.content.split(" ").slice(1).join(" ");
+        const embedMessage = message.content.split(" ").slice(1).join(" ");
         const embed = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setColor(0x00AE86)
             .setTimestamp()
             .setDescription(embedMessage);
-        let deleteMsg = await message.delete();
-        let embedSend = await message.embed(embed);
-        return [deleteMsg, embedSend];
+        await message.delete();
+        return message.embed(embed);
     }
 };

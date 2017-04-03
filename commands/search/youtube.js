@@ -27,9 +27,9 @@ module.exports = class YouTubeCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let videoToSearch = args.video;
+        const videoToSearch = args.video;
         try {
-            let response = await request
+            const response = await request
                 .get('https://www.googleapis.com/youtube/v3/search')
                 .query({
                     part: 'snippet',
@@ -38,7 +38,7 @@ module.exports = class YouTubeCommand extends commando.Command {
                     q: videoToSearch,
                     key: config.youtubekey
                 });
-            let data = response.body.items[0];
+            const data = response.body.items[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0xDD2825)
                 .setTitle(data.snippet.title)

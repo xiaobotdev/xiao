@@ -20,7 +20,7 @@ module.exports = class MorseCommand extends commando.Command {
                     if (method.toLowerCase() === 'encode' || method.toLowerCase() === 'decode') {
                         return true;
                     }
-                    return 'Please enter either `encode` or `decode`.'
+                    return 'Please enter either `encode` or `decode`.';
                 }
             }, {
                 key: 'text',
@@ -35,8 +35,8 @@ module.exports = class MorseCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let methodToUse = args.method.toLowerCase();
-        let toMorse = args.text;
+        const methodToUse = args.method.toLowerCase();
+        const toMorse = args.text;
         if (methodToUse === 'encode') {
             return message.say(morse.encode(toMorse)).catch(error => message.say(':x: Error! Something went wrong! Perhaps you entered incorrect text?'));
         }

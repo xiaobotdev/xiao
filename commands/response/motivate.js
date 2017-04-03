@@ -26,7 +26,7 @@ module.exports = class MotivateCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let userToMotivate = args.thing || message.author;
+        const userToMotivate = args.thing || message.author;
         return message.say(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
     }
 };

@@ -28,14 +28,14 @@ module.exports = class BotSearchCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let botToFind = args.bot.id;
+        const botToFind = args.bot.id;
         try {
-            let response = await request
+            const response = await request
                 .get(`https://bots.discord.pw/api/bots/${botToFind}`)
                 .set({
                     'Authorization': config.botskey
                 });
-            let data = response.body;
+            const data = response.body;
             const embed = new Discord.RichEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://cdn.discordapp.com/icons/110373943822540800/47336ad0631ac7aac0a48a2ba6246c65.jpg')

@@ -16,7 +16,7 @@ module.exports = class LotteryCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let lotteryNumber = ['Winner'][Math.floor(Math.random() * 100)];
+        const lotteryNumber = ['Winner'][Math.floor(Math.random() * 100)];
         if (lotteryNumber !== "Winner") return message.say(`Nope, sorry ${message.author.username}, you lost.`);
         return message.say(`Wow ${message.author.username}! You actually won! Great job!`);
     }

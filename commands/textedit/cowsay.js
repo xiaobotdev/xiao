@@ -22,7 +22,7 @@ module.exports = class CowsayCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let turnToCowsay = args.text;
+        const turnToCowsay = args.text;
         return message.code(null, cowsay.say({
             text: turnToCowsay,
             e: "oO",

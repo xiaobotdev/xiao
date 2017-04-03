@@ -26,11 +26,11 @@ module.exports = class RemindCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let remindMe = args.remind;
+        const remindMe = args.remind;
         try {
-            let remindTime = sherlock.parse(remindMe);
-            let time = remindTime.startDate.getTime() - Date.now();
-            let preRemind = await message.say(`I will remind you '${remindTime.eventTitle}' ${moment().add(time, 'ms').fromNow()}.`);
+            const remindTime = sherlock.parse(remindMe);
+            const time = remindTime.startDate.getTime() - Date.now();
+            const preRemind = await message.say(`I will remind you '${remindTime.eventTitle}' ${moment().add(time, 'ms').fromNow()}.`);
             const remindMessage = await new Promise(resolve => {
                 setTimeout(() => resolve(message.say(`${message.author} you wanted me to remind you of: '${remindTime.eventTitle}'`)), time);
             });

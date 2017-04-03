@@ -22,15 +22,15 @@ module.exports = class TodayCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         try {
-            let response = await request
+            const response = await request
                 .get('http://history.muffinlabs.com/date')
                 .set({
                     'Accept': 'application/json'
                 })
                 .buffer(true);
-            let parsedResponse = JSON.parse(response.text);
-            let events = parsedResponse.data.Events;
-            let randomNumber = Math.floor(Math.random() * events.length);
+            const parsedResponse = JSON.parse(response.text);
+            const events = parsedResponse.data.Events;
+            const randomNumber = Math.floor(Math.random() * events.length);
             const embed = new Discord.RichEmbed()
                 .setColor(0x9797FF)
                 .setURL(parsedResponse.url)

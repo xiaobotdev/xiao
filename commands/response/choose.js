@@ -31,7 +31,6 @@ module.exports = class ChooseCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let choices = args.choices;
-        if (!choices.includes(' | ')) return message.say(':x: Error! Split your messages with a " | "!');
         choices = choices.split(" | ");
         choices = choices[Math.floor(Math.random() * choices.length)];
         return message.say(`I choose ${choices}!`);

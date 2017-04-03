@@ -22,32 +22,32 @@ module.exports = class QuizCommand extends commando.Command {
         }
         console.log("[Command] " + message.content);
         try {
-            let response = await request
+            const response = await request
                 .get('http://jservice.io/api/random')
                 .query({
                     count: 1
                 });
-            let data = response.body[0];
-            let answer = data.answer.toLowerCase().split("<i>").join("").split("</i>").join("");
+            const data = response.body[0];
+            const answer = data.answer.toLowerCase().split("<i>").join("").split("</i>").join("");
             const embed = new Discord.RichEmbed()
                 .setTitle('You have **fifteen** seconds to answer this question:')
                 .setDescription(`**Category: ${data.category.title}**\n${data.question}`);
-            let embedMsg = await message.embed(embed);
+            const embedMsg = await message.embed(embed);
             try {
-                let collected = await message.channel.awaitMessages(res => res.author.id === message.author.id, {
+                const collected = await message.channel.awaitMessages(res => res.author.id === message.author.id, {
                     max: 1,
                     time: 15000,
                     errors: ['time']
                 });
                 if (collected.first().content.toLowerCase() !== answer) {
-                    let loseMsg = await message.say(`The correct answer is: ${answer}`);
+                    const loseMsg = await message.say(`The correct answer is: ${answer}`);
                     return [embedMsg, loseMsg];
                 }
-                let victoryMsg = await message.say(`The correct answer is: ${answer}`);
+                const victoryMsg = await message.say(`The correct answer is: ${answer}`);
                 return [embedMsg, victoryMsg];
             }
             catch (err) {
-                let loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
+                const loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
                 return [embedMsg, loseMsg];
             }
         }

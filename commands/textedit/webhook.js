@@ -31,15 +31,15 @@ module.exports = class WebhookCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'MANAGE_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let content = args.text;
+        const content = args.text;
         try {
-            let post = await request
+            await message.delete();
+            const post = await request
                 .post(config.webhook)
                 .send({
                     content: content
                 });
-            let deleteMsg = await message.delete();
-            return [post, deleteMsg];
+            return post;
         }
         catch (err) {
             return message.say(':x: Error! Message failed to send!');

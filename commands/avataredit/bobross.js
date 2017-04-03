@@ -26,7 +26,7 @@ module.exports = class BobRossCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let user = args.user;
+        const user = args.user;
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace(".jpg", ".png");
         userAvatar = userAvatar.replace(".gif", ".png");
@@ -34,7 +34,7 @@ module.exports = class BobRossCommand extends commando.Command {
         images.push(Jimp.read(userAvatar));
         images.push(Jimp.read("./images/BobRoss.png"));
         images.push(Jimp.read("./images/BlankWhite.png"));
-        let [avatar, bob, nothing] = await Promise.all(images);
+        const [avatar, bob, nothing] = await Promise.all(images);
         avatar.rotate(2);
         avatar.resize(300, 300);
         nothing.composite(avatar, 44, 85);

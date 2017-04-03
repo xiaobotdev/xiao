@@ -28,9 +28,9 @@ module.exports = class MathCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let expression = args.expression;
+        const expression = args.expression;
         try {
-            let solved = math.eval(expression);
+            const solved = math.eval(expression);
             return message.say(solved).catch(err => message.say(":x: Error! Invalid statement!"));
         }
         catch (err) {

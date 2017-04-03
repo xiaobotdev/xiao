@@ -23,11 +23,10 @@ module.exports = class WikipediaCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToSearch = args.query;
-        thingToSearch = thingToSearch.split(")").join("%29");
-        let title = encodeURI(thingToSearch);
+        const thingToSearch = args.query.split(")").join("%29");
+        const title = encodeURI(thingToSearch);
         try {
-            let response = await request
+            const response = await request
                 .get(`https://en.wikipedia.org/w/api.php`)
                 .query({
                     action: 'query',
@@ -39,8 +38,8 @@ module.exports = class WikipediaCommand extends commando.Command {
                     redirects: '',
                     formatversion: 2
                 });
-            let data = response.body.query.pages[0];
-            let description = data.extract.substr(0, 1900).split('\n').join('\n\n');
+            const data = response.body.query.pages[0];
+            const description = data.extract.substr(0, 1900).split('\n').join('\n\n');
             const embed = new Discord.RichEmbed()
                 .setColor(0xE7E7E7)
                 .setTitle(data.title)

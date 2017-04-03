@@ -23,9 +23,9 @@ module.exports = class YodaCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let turnToYoda = args.text;
+        const turnToYoda = args.text;
         try {
-            let response = await request
+            const response = await request
                 .get('https://yoda.p.mashape.com/yoda')
                 .set({
                     'X-Mashape-Key': config.mashapekey,

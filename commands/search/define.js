@@ -30,9 +30,9 @@ module.exports = class DefineCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let defineThis = encodeURI(args.word);
+        const defineThis = encodeURI(args.word);
         try {
-            let response = await request
+            const response = await request
                 .get(`http://api.wordnik.com:80/v4/word.json/${defineThis}/definitions`)
                 .query({
                     limit: 1,
@@ -41,7 +41,7 @@ module.exports = class DefineCommand extends commando.Command {
                     includeTags: false,
                     api_key: config.wordnikkey
                 });
-            let data = response.body[0];
+            const data = response.body[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0x9797FF)
                 .setTitle(data.word)
