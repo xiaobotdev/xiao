@@ -46,7 +46,7 @@ module.exports = class WikipediaCommand extends commando.Command {
                 .setTitle(data.name)
                 .setURL(`https://en.wikipedia.org/wiki/${title}`)
                 .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
-                .setDescription(`${description} [Read the Rest Here](https://en.wikipedia.org/wiki/${title})`);
+                .setDescription(description);
             return message.embed(embed);
         }
         catch (err) {

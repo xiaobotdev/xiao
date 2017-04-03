@@ -41,7 +41,7 @@ module.exports = class WattpadCommand extends commando.Command {
                 .setAuthor('Wattpad', 'http://www.selfpubtoolbox.com/wp-content/uploads/2015/05/a6044fd3a88acd5043860484db972ca6.png')
                 .setURL(data.url)
                 .setTitle(data.title)
-                .setDescription(`${data.description.substr(0, 1500)} [Read the Rest Here!](${data.url})`)
+                .setDescription(data.description.substr(0, 1500))
                 .addField('**Author:**',
                     data.user, true)
                 .addField('**Parts:**',

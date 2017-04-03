@@ -42,7 +42,7 @@ module.exports = class IMDBCommand extends commando.Command {
                 .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
                 .setURL(`http://www.imdb.com/title/${data.imdbID}`)
                 .setTitle(`${data.Title} (${data.imdbRating} Score)`)
-                .setDescription(`${data.Plot.substr(0, 1500)} [Read the Rest Here!](http://www.imdb.com/title/${data.imdbID})`)
+                .setDescription(data.Plot.substr(0, 1900))
                 .addField('**Genres:**',
                     data.Genre)
                 .addField('**Year:**',

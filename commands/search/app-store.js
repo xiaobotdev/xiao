@@ -44,7 +44,7 @@ module.exports = class AppStoreCommand extends commando.Command {
                 .setAuthor('App Store', 'https://upload.wikimedia.org/wikipedia/en/1/1f/App_Store_Logo.png')
                 .setTitle(data.trackName)
                 .setURL(data.trackViewUrl)
-                .setDescription(data.description)
+                .setDescription(data.description.substr(0, 1900))
                 .setThumbnail(data.artworkUrl512)
                 .addField('**Version:**',
                     data.version, true)

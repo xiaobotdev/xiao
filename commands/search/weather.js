@@ -28,7 +28,8 @@ module.exports = class WeatherCommand extends commando.Command {
             let response = await request
                 .get('https://query.yahooapis.com/v1/public/yql')
                 .query({
-                    q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`
+                    q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")`,
+                    format: 'json'
                 });
             let data = response.body.query.results.channel;
             const embed = new Discord.RichEmbed()
