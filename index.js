@@ -38,7 +38,7 @@ client.on('guildCreate', async(guild) => {
     const results = await client.shard.fetchClientValues('guilds.size');
     console.log(`[Guild Count] ${results.reduce((prev, val) => prev + val, 0)}`);
     try {
-        let response = await request
+        const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
                 key: config.carbonkey,
@@ -50,7 +50,7 @@ client.on('guildCreate', async(guild) => {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        let response = await request
+        const response = await request
             .post(`https://bots.discord.pw/api/bots/${config.botID}/stats`)
             .set({
                 'Authorization': config.botskey
@@ -71,7 +71,7 @@ client.on('guildDelete', async(guild) => {
     const results = await client.shard.fetchClientValues('guilds.size');
     console.log(`[Guild Count] ${results.reduce((prev, val) => prev + val, 0)}`);
     try {
-        let response = await request
+        const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
                 key: config.carbonkey,
@@ -83,7 +83,7 @@ client.on('guildDelete', async(guild) => {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        let response = await request
+        const response = await request
             .post(`https://bots.discord.pw/api/bots/${config.botID}/stats`)
             .set({
                 'Authorization': config.botskey
