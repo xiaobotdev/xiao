@@ -51,6 +51,13 @@ module.exports = class UserInfoCommand extends commando.Command {
                 color = 0x808080;
                 break;
         }
+        let userGame;
+        if (!user.presence.game) {
+            userGame = 'None';
+        }
+        else {
+            userGame = user.presence.game.name;
+        }
         const embed = new Discord.RichEmbed()
             .setColor(color)
             .setThumbnail(user.displayAvatarURL)
@@ -65,7 +72,7 @@ module.exports = class UserInfoCommand extends commando.Command {
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',
-                user.presence.game.name || 'None', true);
+                userGame, true);
         return message.embed(embed);
     }
 };
