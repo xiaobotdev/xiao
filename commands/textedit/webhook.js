@@ -34,12 +34,12 @@ module.exports = class WebhookCommand extends commando.Command {
         const content = args.text;
         try {
             await message.delete();
-            const post = await request
+            await request
                 .post(config.webhook)
                 .send({
                     content: content
                 });
-            return post;
+            return;
         }
         catch (err) {
             return message.say(':x: Error! Message failed to send!');
