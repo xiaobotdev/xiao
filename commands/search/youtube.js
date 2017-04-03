@@ -38,7 +38,6 @@ module.exports = class YouTubeCommand extends commando.Command {
                     q: videoToSearch,
                     key: config.youtubekey
                 });
-            //if (!response.body.items[0].snippet) return message.say(':x: Error! No Video Found!');
             let data = response.body.items[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0xDD2825)

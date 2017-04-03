@@ -43,7 +43,7 @@ module.exports = class WikipediaCommand extends commando.Command {
             let description = data.extract.substr(0, 1900).split('\n').join('\n\n');
             const embed = new Discord.RichEmbed()
                 .setColor(0xE7E7E7)
-                .setTitle(data.name)
+                .setTitle(data.title)
                 .setURL(`https://en.wikipedia.org/wiki/${title}`)
                 .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
                 .setDescription(description);
