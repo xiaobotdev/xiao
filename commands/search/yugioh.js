@@ -27,15 +27,12 @@ module.exports = class YuGiOhCommand extends commando.Command {
         try {
             let response = await request
                 .get(`http://yugiohprices.com/api/card_data/${cardName}`);
-            let response2 = await request
-                .get(`http://yugiohprices.com/api/card_image/${cardName}`);
             if (response.body.data.card_type === 'monster') {
                 const embed = new Discord.RichEmbed()
                     .setColor(0xBE5F1F)
                     .setTitle(response.body.data.name)
                     .setDescription(response.body.data.text)
                     .setAuthor('Yu-Gi-Oh!', 'http://vignette3.wikia.nocookie.net/yugioh/images/1/10/Back-TF-EN-VG.png/revision/latest?cb=20120824043558')
-                    .setThumbnail(response2.redirects[0])
                     .addField('**Card Type:**',
                         response.body.data.card_type, true)
                     .addField('**Species:**',
