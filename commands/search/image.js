@@ -27,11 +27,16 @@ module.exports = class ImageSearchCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToSearch = encodeURI(args.query);
+        let thingToSearch = args.query;
         let searchMsg = await message.say('Searching...');
         try {
             let response = await request
-                .get(`https://www.google.com/search?tbm=isch&gs_l=img&q=${thingToSearch}`);
+                .get('https://www.google.com/search')
+                .query({
+                    tbm: 'isch',
+                    gs_1: 'img',
+                    q: thingToSearch
+                });
             const $ = cheerio.load(response.text);
             const result = $('.images_table').find('img').first().attr('src');
             return searchMsg.edit(result);

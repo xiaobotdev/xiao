@@ -27,33 +27,34 @@ module.exports = class YuGiOhCommand extends commando.Command {
         try {
             let response = await request
                 .get(`http://yugiohprices.com/api/card_data/${cardName}`);
-            if (response.body.data.card_type === 'monster') {
+            let data = response.body.data;
+            if (data.card_type === 'monster') {
                 const embed = new Discord.RichEmbed()
                     .setColor(0xBE5F1F)
-                    .setTitle(response.body.data.name)
-                    .setDescription(response.body.data.text)
+                    .setTitle(data.name)
+                    .setDescription(data.text)
                     .setAuthor('Yu-Gi-Oh!', 'http://vignette3.wikia.nocookie.net/yugioh/images/1/10/Back-TF-EN-VG.png/revision/latest?cb=20120824043558')
                     .addField('**Card Type:**',
-                        response.body.data.card_type, true)
-                    .addField('**Species:**',
-                        response.body.data.type, true)
+                        'Monster', true)
+                    .addField('**Type:**',
+                        data.type, true)
                     .addField('**Attribute:**',
-                        response.body.data.family, true)
+                        data.family, true)
                     .addField('**ATK:**',
-                        response.body.data.atk, true)
+                        data.atk, true)
                     .addField('**DEF:**',
-                        response.body.data.def, true)
+                        data.def, true)
                     .addField('**Level:**',
-                        response.body.data.level, true);
+                        data.level, true);
                 return message.embed(embed);
             }
             const embed = new Discord.RichEmbed()
                 .setColor(0xBE5F1F)
-                .setTitle(response.body.data.name)
-                .setDescription(response.body.data.text)
+                .setTitle(data.name)
+                .setDescription(data.text)
                 .setAuthor('Yu-Gi-Oh!', 'http://vignette3.wikia.nocookie.net/yugioh/images/1/10/Back-TF-EN-VG.png/revision/latest?cb=20120824043558')
                 .addField('**Card Type:**',
-                    response.body.data.card_type, true);
+                    data.card_type, true);
             return message.embed(embed);
         }
         catch (err) {

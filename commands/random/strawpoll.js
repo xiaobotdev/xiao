@@ -56,7 +56,8 @@ module.exports = class StrawpollCommand extends commando.Command {
                     title: title,
                     options: choices
                 });
-            return message.say(`${response.body.title}\nhttp://strawpoll.me/${response.body.id}`);
+            let data = response.body;
+            return message.say(`${data.title}\nhttp://strawpoll.me/${data.id}`);
         }
         catch (err) {
             return message.say(":x: Error! Something went wrong!");

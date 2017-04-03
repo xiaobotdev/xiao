@@ -29,27 +29,31 @@ module.exports = class ForecastCommand extends commando.Command {
         let locationToSearch = args.locationQ;
         try {
             let response = await request
-                .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`);
+                .get('https://query.yahooapis.com/v1/public/yql')
+                .query({
+                    q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")&format=json`
+                });
             let info = response.body.query.results.channel;
+            let data = info.item.forecast;
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
                 .setURL(info.link)
                 .setTimestamp()
-                .addField(`**${info.item.forecast[0].day} - ${info.item.forecast[0].date}:**`,
-                    `**High:** ${info.item.forecast[0].high}°F, **Low:** ${info.item.forecast[0].low}°F, **Condition:** ${info.item.forecast[0].text}`)
-                .addField(`**${info.item.forecast[1].day} - ${info.item.forecast[1].date}:**`,
-                    `**High:** ${info.item.forecast[1].high}°F, **Low:** ${info.item.forecast[1].low}°F, **Condition:** ${info.item.forecast[1].text}`)
-                .addField(`**${info.item.forecast[2].day} - ${info.item.forecast[2].date}:**`,
-                    `**High:** ${info.item.forecast[2].high}°F, **Low:** ${info.item.forecast[2].low}°F, **Condition:** ${info.item.forecast[2].text}`)
-                .addField(`**${info.item.forecast[3].day} - ${info.item.forecast[3].date}:**`,
-                    `**High:** ${info.item.forecast[3].high}°F, **Low:** ${info.item.forecast[3].low}°F, **Condition:** ${info.item.forecast[3].text}`)
-                .addField(`**${info.item.forecast[4].day} - ${info.item.forecast[4].date}:**`,
-                    `**High:** ${info.item.forecast[4].high}°F, **Low:** ${info.item.forecast[4].low}°F, **Condition:** ${info.item.forecast[4].text}`)
-                .addField(`**${info.item.forecast[5].day} - ${info.item.forecast[5].date}:**`,
-                    `**High:** ${info.item.forecast[5].high}°F, **Low:** ${info.item.forecast[5].low}°F, **Condition:** ${info.item.forecast[5].text}`)
-                .addField(`**${info.item.forecast[6].day} - ${info.item.forecast[6].date}:**`,
-                    `**High:** ${info.item.forecast[6].high}°F, **Low:** ${info.item.forecast[6].low}°F, **Condition:** ${info.item.forecast[6].text}`);
+                .addField(`**${data.day} - ${data.date}:**`,
+                    `**High:** ${data[0].high}°F, **Low:** ${data[0].low}°F, **Condition:** ${data[0].text}`)
+                .addField(`**${data[1].day} - ${data[1].date}:**`,
+                    `**High:** ${data[1].high}°F, **Low:** ${data[1].low}°F, **Condition:** ${data[1].text}`)
+                .addField(`**${data[2].day} - ${data[2].date}:**`,
+                    `**High:** ${data[2].high}°F, **Low:** ${data[2].low}°F, **Condition:** ${data[2].text}`)
+                .addField(`**${data[3].day} - ${data[3].date}:**`,
+                    `**High:** ${data[3].high}°F, **Low:** ${data[3].low}°F, **Condition:** ${data[3].text}`)
+                .addField(`**${data[4].day} - ${data[4].date}:**`,
+                    `**High:** ${data[4].high}°F, **Low:** ${data[4].low}°F, **Condition:** ${data[4].text}`)
+                .addField(`**${data[5].day} - ${data[5].date}:**`,
+                    `**High:** ${data[5].high}°F, **Low:** ${data[5].low}°F, **Condition:** ${data[5].text}`)
+                .addField(`**${data[6].day} - ${data[6].date}:**`,
+                    `**High:** ${data[6].high}°F, **Low:** ${data[6].low}°F, **Condition:** ${data[6].text}`);
             return message.embed(embed);
         }
         catch (err) {
