@@ -44,10 +44,12 @@ client.on('guildCreate', async(guild) => {
                 key: config.carbonkey,
                 servercount: results.reduce((prev, val) => prev + val, 0)
             });
-        console.log(`[Carbon] Successfully posted to Carbon. ${response}`);
+        console.log(`[Carbon] Successfully posted to Carbon.`);
+        console.log(response);
     }
     catch (err) {
-        console.log(`[Carbon] Failed to post to Carbon. ${err}`);
+        console.log(`[Carbon] Failed to post to Carbon.`);
+        console.log(err);
     }
     try {
         let response = await request
@@ -58,10 +60,12 @@ client.on('guildCreate', async(guild) => {
             .send({
                 server_count: results.reduce((prev, val) => prev + val, 0)
             });
-        console.log(`[Discord Bots] Successfully posted to Discord Bots. ${response}`);
+        console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
+        console.log(response);
     }
     catch (err) {
-        console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
+        console.log(`[Discord Bots] Failed to post to Discord Bots.`);
+        console.log(err);
     }
 });
 
@@ -77,10 +81,12 @@ client.on('guildDelete', async(guild) => {
                 key: config.carbonkey,
                 servercount: results.reduce((prev, val) => prev + val, 0)
             });
-        console.log(`[Carbon] Successfully posted to Carbon. ${response}`);
+        console.log(`[Carbon] Successfully posted to Carbon.`);
+        console.log(response);
     }
     catch (err) {
-        console.log(`[Carbon] Failed to post to Carbon. ${err}`);
+        console.log(`[Carbon] Failed to post to Carbon.`);
+        console.log(err);
     }
     try {
         let response = await request
@@ -91,10 +97,12 @@ client.on('guildDelete', async(guild) => {
             .send({
                 server_count: results.reduce((prev, val) => prev + val, 0)
             });
-        console.log(`[Discord Bots] Successfully posted to Discord Bots. ${response}`);
+        console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
+        console.log(response);
     }
     catch (err) {
-        console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
+        console.log(`[Discord Bots] Failed to post to Discord Bots.`);
+        console.log(err);
     }
 });
 
