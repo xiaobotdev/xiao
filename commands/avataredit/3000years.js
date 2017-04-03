@@ -25,6 +25,7 @@ module.exports = class YearsCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log(`[Command] ${message.content}`);
+        message.channel.startTyping();
         let user = args.user;
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace(".jpg", ".png");
@@ -37,7 +38,10 @@ module.exports = class YearsCommand extends commando.Command {
         years.blit(avatar, 461, 127);
         years.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
-            return message.channel.sendFile(buff);
+            message.channel.sendFile(buff).then(snd => {
+                message.channel.stopTyping();
+                return;
+            });
         });
     }
 };
