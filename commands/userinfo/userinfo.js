@@ -51,7 +51,6 @@ module.exports = class UserInfoCommand extends commando.Command {
                 color = 0x808080;
                 break;
         }
-        const userGame = user.presence.game;
         const embed = new Discord.RichEmbed()
             .setColor(color)
             .setThumbnail(user.displayAvatarURL)
@@ -66,7 +65,7 @@ module.exports = class UserInfoCommand extends commando.Command {
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',
-                userGame.name || 'None', true);
+                user.presence.game.name || 'None', true);
         return message.embed(embed);
     }
 };
