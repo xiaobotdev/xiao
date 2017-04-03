@@ -41,10 +41,11 @@ module.exports = class DefineCommand extends commando.Command {
                     includeTags: false,
                     api_key: config.wordnikkey
                 });
+            let data = response.body[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0x9797FF)
-                .setTitle(response.body[0].word)
-                .setDescription(response.body[0].text);
+                .setTitle(data.word)
+                .setDescription(data.text);
             return message.embed(embed);
         }
         catch (err) {

@@ -35,14 +35,15 @@ module.exports = class UrbanDictionary extends commando.Command {
                 .query({
                     term: wordToDefine
                 });
+            let data = response.body.list[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0x32a8f0)
                 .setAuthor('Urban Dictionary', 'http://a1.mzstatic.com/eu/r30/Purple71/v4/66/54/68/6654683f-cacd-4a55-1784-f14257f77874/icon175x175.png')
-                .setURL(response.body.list[0].permalink)
-                .setTitle(response.body.list[0].word)
-                .setDescription(`${response.body.list[0].definition.substr(0, 1900)} [Read the Rest Here!](${response.body.list[0].permalink})`)
+                .setURL(data.permalink)
+                .setTitle(data.word)
+                .setDescription(`${data.definition.substr(0, 1900)} [Read the Rest Here!](${data.permalink})`)
                 .addField('**Example:**',
-                    response.body.list[0].example.substr(0, 1900) || 'None');
+                    data.example.substr(0, 1900) || 'None');
             return message.embed(embed);
         }
         catch (err) {

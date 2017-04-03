@@ -38,34 +38,35 @@ module.exports = class OsuCommand extends commando.Command {
                     u: usernameToSearch,
                     type: 'string'
                 });
+            let data = response.body[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')
                 .setURL('https://osu.ppy.sh/')
                 .addField('**Username:**',
-                    response.body[0].username, true)
+                    data.username, true)
                 .addField('**ID:**',
-                    response.body[0].user_id, true)
+                    data.user_id, true)
                 .addField('**Level:**',
-                    response.body[0].level, true)
+                    data.level, true)
                 .addField('**Accuracy**',
-                    response.body[0].accuracy, true)
+                    data.accuracy, true)
                 .addField('**Rank:**',
-                    response.body[0].pp_rank, true)
+                    data.pp_rank, true)
                 .addField('**Play Count:**',
-                    response.body[0].playcount, true)
+                    data.playcount, true)
                 .addField('**Country:**',
-                    response.body[0].country, true)
+                    data.country, true)
                 .addField('**Ranked Score:**',
-                    response.body[0].ranked_score, true)
+                    data.ranked_score, true)
                 .addField('**Total Score:**',
-                    response.body[0].total_score, true)
+                    data.total_score, true)
                 .addField('**SS:**',
-                    response.body[0].count_rank_ss, true)
+                    data.count_rank_ss, true)
                 .addField('**S:**',
-                    response.body[0].count_rank_s, true)
+                    data.count_rank_s, true)
                 .addField('**A:**',
-                    response.body[0].count_rank_a, true);
+                    data.count_rank_a, true);
             return message.embed(embed);
         }
         catch (err) {

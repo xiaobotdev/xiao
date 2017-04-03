@@ -35,18 +35,19 @@ module.exports = class BotSearchCommand extends commando.Command {
                 .set({
                     'Authorization': config.botskey
                 });
+            let data = response.body;
             const embed = new Discord.RichEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://cdn.discordapp.com/icons/110373943822540800/47336ad0631ac7aac0a48a2ba6246c65.jpg')
-                .setTitle(response.body.name)
+                .setTitle(data.name)
                 .setURL('https://bots.discord.pw/')
-                .setDescription(response.body.description)
+                .setDescription(data.description)
                 .addField('**Library:**',
-                    response.body.library, true)
+                    data.library, true)
                 .addField('**Prefix:**',
-                    response.body.prefix, true)
+                    data.prefix, true)
                 .addField('**Invite:**',
-                    `[Here](${response.body.invite_url})`, true);
+                    `[Here](${data.invite_url})`, true);
             return message.embed(embed);
         }
         catch (err) {
