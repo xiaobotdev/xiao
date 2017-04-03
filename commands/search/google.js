@@ -37,7 +37,6 @@ module.exports = class GoogleCommand extends commando.Command {
                 });
             const $ = cheerio.load(response.text);
             let href = $('.r').first().find('a').first().attr('href');
-            //if (!href) return searchMsg.edit(':x: Error! No Results Found!');
             href = querystring.parse(href.replace('/url?', ''));
             return searchMsg.edit(href.q);
         }
