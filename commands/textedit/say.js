@@ -28,9 +28,8 @@ module.exports = class SayCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'MANAGE_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let copycat = args.text;
-        let deleteMsg = await message.delete();
-        let copyMsg = await message.say(copycat);
-        return [deleteMsg, copyMsg];
+        const copycat = args.text;
+        await message.delete();
+        return message.say(copycat);
     }
 };

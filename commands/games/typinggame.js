@@ -28,7 +28,7 @@ module.exports = class TypingGameCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let level = args.difficulty.toLowerCase();
+        const level = args.difficulty.toLowerCase();
         let randomSentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
         randomSentence = randomSentence[Math.floor(Math.random() * randomSentence.length)];
         let time;
@@ -54,22 +54,22 @@ module.exports = class TypingGameCommand extends commando.Command {
         const embed = new Discord.RichEmbed()
             .setTitle(`You have **${levelWord}** seconds to type:`)
             .setDescription(randomSentence);
-        let embedMsg = await message.embed(embed);
+        const embedMsg = await message.embed(embed);
         try {
-            let collected = await message.channel.awaitMessages(response => response.author.id === message.author.id, {
+            const collected = await message.channel.awaitMessages(response => response.author.id === message.author.id, {
                 max: 1,
                 time: time,
                 errors: ['time']
             });
             if (collected.first().content !== randomSentence) {
-                let loseMsg = await message.say('Nope, your sentence does not match the original. Try again next time!');
+                const loseMsg = await message.say('Nope, your sentence does not match the original. Try again next time!');
                 return [embedMsg, loseMsg];
             }
-            let victoryMsg = await message.say(`Good Job! You won!`);
+            const victoryMsg = await message.say(`Good Job! You won!`);
             return [embedMsg, victoryMsg];
         }
         catch (err) {
-            let loseMsg = await message.say('Aw... Too bad, try again next time!');
+            const loseMsg = await message.say('Aw... Too bad, try again next time!');
             return [embedMsg, loseMsg];
         }
     }

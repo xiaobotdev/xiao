@@ -24,8 +24,8 @@ module.exports = class ShipCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToShip = args.things;
-        let percentage = Math.floor(Math.random() * 100) + 1;
+        const thingToShip = args.things;
+        const percentage = Math.floor(Math.random() * 100) + 1;
         return message.say(`I'd give ${thingToShip} a ${percentage}%!`);
     }
 };

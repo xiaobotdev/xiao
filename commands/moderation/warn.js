@@ -36,18 +36,18 @@ module.exports = class WarnCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let userToWarn = args.member;
-        let reason = args.reason;
+        const userToWarn = args.member;
+        const reason = args.reason;
         if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
         try {
-            let okHandMsg = await message.say(":ok_hand:");
+            const okHandMsg = await message.say(":ok_hand:");
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0xFFFF00)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
                 .setDescription(`**Member:** ${userToWarn.user.username}#${userToWarn.user.discriminator} (${userToWarn.id})\n**Action:** Warn\n**Reason:** ${reason}`);
-            let modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            const modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
             return [okHandMsg, modLogMsg];
         }
         catch (err) {

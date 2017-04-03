@@ -27,9 +27,9 @@ module.exports = class ContactCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let messageToReport = args.report;
-        let reportedMsg = await this.client.users.get(config.owner).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
-        let successMsg = await message.say('Message Sent! Thanks for your support!');
+        const messageToReport = args.report;
+        const reportedMsg = await this.client.users.get(config.owner).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
+        const successMsg = await message.say('Message Sent! Thanks for your support!');
         return [reportedMsg, successMsg];
     }
 };

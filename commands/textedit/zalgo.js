@@ -28,7 +28,7 @@ module.exports = class ZalgoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let zalgoified = zalgo(args.text);
+        const zalgoified = zalgo(args.text);
         return message.say(zalgoified);
     }
 };

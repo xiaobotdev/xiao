@@ -37,7 +37,7 @@ module.exports = class RandomNameGen extends commando.Command {
         randomFirstFemale = randomFirstFemale[Math.floor(Math.random() * randomFirstFemale.length)];
         let randomLast = ["Walker", "Tworni", "Ross", "Smith", "Odendahl", "Deere", "Brown", "Williams", "Jones", "Miles", "Moss", "Roberto", "McFly", "McDonald", "Lewis", "Armstrong", "Stevenson", "Schwarzenegger", "Robinson", "Parker", "Piper", "Johnson", "Brantley", "Stewart", "Ree", "Talbot", "Seville", "Peace", "Spielberg", "Baggins", "Wilborn", "Vankirk", "Shireman", "Jimerson", "Masters", "Hack", "Satcher", "Younkin", "Aguila", "Duffey", "Burgin", "Highfall", "Wee", "Solari", "Tomaselli", "Basler", "Difranco", "Latch", "Rives", "Dolan", "Abraham", "Holter", "Portugal", "Lininger", "Holst", "Mccroy", "Follmer", "Hotchkiss", "Gassaway", "Wang", "Agron", "Raasch", "Gourd", "Czaja", "Marquart", "Papadopoulos", "Ringer", "Lax", "Sperling", "Galusha", "Alston"];
         randomLast = randomLast[Math.floor(Math.random() * randomLast.length)];
-        let gender = args.gender.toLowerCase();
+        const gender = args.gender.toLowerCase();
         if (gender === "male") {
             return message.say(`${randomFirstMale} ${randomLast}`);
         }

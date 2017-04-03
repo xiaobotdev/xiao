@@ -28,8 +28,8 @@ module.exports = class RomanCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let numberToRoman = args.number;
-        let romanInterger = numberToRoman;
+        const numberToRoman = args.number;
+        const romanInterger = numberToRoman;
         return message.say(romanNumeralConverter.getRomanFromInteger(romanInterger));
     }
 };

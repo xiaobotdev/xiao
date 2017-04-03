@@ -26,14 +26,14 @@ module.exports = class RIPCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'ATTACH_FILES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let user = args.user;
+        const user = args.user;
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace(".jpg", ".png");
         userAvatar = userAvatar.replace(".gif", ".png");
         let images = [];
         images.push(Jimp.read(userAvatar));
         images.push(Jimp.read("./images/gravestone.jpg"));
-        let [avatar, gravestone] = await Promise.all(images);
+        const [avatar, gravestone] = await Promise.all(images);
         avatar.resize(200, 200);
         gravestone.blit(avatar, 60, 65);
         gravestone.getBuffer(Jimp.MIME_PNG, (err, buff) => {

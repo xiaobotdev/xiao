@@ -28,15 +28,15 @@ module.exports = class IMDBCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let queryMovie = args.movie;
+        const queryMovie = args.movie;
         try {
-            let response = await request
+            const response = await request
                 .get(`http://www.omdbapi.com/`)
                 .query({
                     t: queryMovie,
                     plot: 'full'
                 });
-            let data = response.body;
+            const data = response.body;
             const embed = new Discord.RichEmbed()
                 .setColor(0xDBA628)
                 .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')

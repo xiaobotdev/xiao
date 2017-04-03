@@ -32,8 +32,8 @@ module.exports = class DiscrimCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let userToSearch = args.discrim;
-        let users = await this.client.users.filter(u => u.discriminator === userToSearch).map(u => u.username).sort();
+        const userToSearch = args.discrim;
+        const users = await this.client.users.filter(u => u.discriminator === userToSearch).map(u => u.username).sort();
         const embed = new Discord.RichEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${userToSearch}`)
             .setDescription(users.join(', '));

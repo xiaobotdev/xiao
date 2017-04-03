@@ -21,7 +21,7 @@ module.exports = class FalconPunchCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToRoleplay = args.thing;
+        const thingToRoleplay = args.thing;
         return message.say(`${message.author} *falcon punches* ${thingToRoleplay}`);
     }
 };

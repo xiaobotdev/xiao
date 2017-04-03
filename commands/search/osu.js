@@ -29,16 +29,16 @@ module.exports = class OsuCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let usernameToSearch = args.username;
+        const usernameToSearch = args.username;
         try {
-            let response = await request
+            const response = await request
                 .get('https://osu.ppy.sh/api/get_user')
                 .query({
                     k: config.osukey,
                     u: usernameToSearch,
                     type: 'string'
                 });
-            let data = response.body[0];
+            const data = response.body[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')

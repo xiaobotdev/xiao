@@ -27,10 +27,10 @@ module.exports = class GoogleCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let thingToSearch = args.query;
-        let searchMsg = await message.say('Searching...');
+        const thingToSearch = args.query;
+        const searchMsg = await message.say('Searching...');
         try {
-            let response = await request
+            const response = await request
                 .get(`https://www.google.com/search`)
                 .query({
                     q: thingToSearch

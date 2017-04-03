@@ -26,16 +26,16 @@ module.exports = class ForecastCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let locationToSearch = args.locationQ;
+        const locationToSearch = args.locationQ;
         try {
-            let response = await request
+            const response = await request
                 .get('https://query.yahooapis.com/v1/public/yql')
                 .query({
                     q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${locationToSearch}")`,
                     format: 'json'
                 });
-            let info = response.body.query.results.channel;
-            let data = info.item.forecast;
+            const info = response.body.query.results.channel;
+            const data = info.item.forecast;
             const embed = new Discord.RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')

@@ -21,7 +21,7 @@ module.exports = class AvatarCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        let user = args.user;
+        const user = args.user;
         return message.say(user.displayAvatarURL);
     }
 };

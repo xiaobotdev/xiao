@@ -32,7 +32,7 @@ module.exports = class LockdownCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_CHANNELS')) return message.say(":x: Error! I don't have permission to Manage Channels!");
         }
         console.log(`[Command] ${message.content}`);
-        let type = args.type;
+        const type = args.type;
         if (type.toLowerCase() === 'start') {
             try {
                 await message.channel.overwritePermissions(message.guild.defaultRole, {
