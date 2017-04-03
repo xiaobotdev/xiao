@@ -41,7 +41,7 @@ module.exports = class ForecastCommand extends commando.Command {
                 .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
                 .setURL(info.link)
                 .setTimestamp()
-                .addField(`**${data.day} - ${data.date}:**`,
+                .addField(`**${data[0].day} - ${data[0].date}:**`,
                     `**High:** ${data[0].high}°F, **Low:** ${data[0].low}°F, **Condition:** ${data[0].text}`)
                 .addField(`**${data[1].day} - ${data[1].date}:**`,
                     `**High:** ${data[1].high}°F, **Low:** ${data[1].low}°F, **Condition:** ${data[1].text}`)
