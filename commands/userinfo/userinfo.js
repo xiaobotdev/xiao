@@ -51,13 +51,7 @@ module.exports = class UserInfoCommand extends commando.Command {
                 color = 0x808080;
                 break;
         }
-        let userGame;
-        if (!user.presence.game) {
-            userGame = 'None';
-        }
-        else {
-            userGame = user.presence.game.name;
-        }
+        const userGame = user.presence.game ? user.presence.game.name : 'None';
         const embed = new Discord.RichEmbed()
             .setColor(color)
             .setThumbnail(user.displayAvatarURL)
