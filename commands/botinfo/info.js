@@ -26,14 +26,13 @@ module.exports = class InfoCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
-        const vCConnections = await this.client.shard.fetchClientValues('voiceConnections.size');
         const embed = new Discord.RichEmbed()
             .setColor(0x00AE86)
             .setFooter(`©2017 dragonfire535 | Version ${pkg.version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
             .addField('Servers',
                 `${this.client.guilds.size} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
             .addField('Shards',
-                `${this.client.options.shardCount} (This is Shard: ${this.client.shard.id})`, true)
+                this.client.options.shardCount, true)
             .addField('Commands',
                 config.commandCount, true)
             .addField('Owner',
@@ -51,7 +50,7 @@ module.exports = class InfoCommand extends commando.Command {
             .addField('Modules',
                 '[commando](https://github.com/Gawdl3y/discord.js-commando), [pirate-speak](https://github.com/mikewesthad/pirate-speak), [google-translate-api](https://github.com/matheuss/google-translate-api), [zalgoize](https://github.com/clux/zalgolize), [hepburn](https://github.com/lovell/hepburn), [string-to-binary](https://www.npmjs.com/package/string-to-binary), [roman-numeral-converter-mmxvi](https://github.com/Cein-Markey/roman-numeral-conversion-library), [cowsay](https://github.com/piuccio/cowsay), [morse](https://github.com/ecto/morse), [superagent](https://github.com/visionmedia/superagent), [mathjs](http://mathjs.org/), [moment](http://momentjs.com), [moment-duration-format](https://github.com/jsmreese/moment-duration-format), [jimp](https://github.com/oliver-moran/jimp), [cheerio](https://cheerio.js.org/)')
             .addField('APIs',
-                '[Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/#api), [jService API](http://jservice.io/), [Strawpoll API](https://github.com/strawpoll/strawpoll/wiki/API), [Urban Dictionary API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation), [OMDB API](http://www.omdbapi.com/), [Yahoo Weather API](https://developer.yahoo.com/weather/), [iTunes Store Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)');
+                '[Wattpad API](https://developer.wattpad.com/docs/api), [Wordnik API](http://developer.wordnik.com/docs.html), [osu! API](https://osu.ppy.sh/p/api), [memegen.link](https://memegen.link/), [Yugioh Prices API](http://docs.yugiohprices.apiary.io/#), [YouTube Data API](https://developers.google.com/youtube/v3/), [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak), [Discord Bots API](https://bots.discord.pw/api), [Today in History API](http://history.muffinlabs.com/#api), [jService API](http://jservice.io/), [Strawpoll API](https://github.com/strawpoll/strawpoll/wiki/API), [Urban Dictionary API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation), [OMDB API](http://www.omdbapi.com/), [Yahoo Weather API](https://developer.yahoo.com/weather/)');
         return message.embed(embed);
     }
 };
