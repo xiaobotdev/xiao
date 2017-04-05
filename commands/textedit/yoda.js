@@ -37,6 +37,7 @@ module.exports = class YodaCommand extends commando.Command {
             return message.say(response.text);
         }
         catch (err) {
+            console.error(err);
             return message.say(':x: Error! Something went wrong!');
         }
     }
