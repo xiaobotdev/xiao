@@ -162,7 +162,6 @@ module.exports = class TranslateCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            console.error(err);
             return message.say(':x: Error! Something went wrong!');
         }
     }
