@@ -1,6 +1,7 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const config = require('../../config.json');
+const pkg = require('../../package.json');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -31,8 +32,7 @@ module.exports = class InfoCommand extends commando.Command {
             .setAuthor(this.client.user.username, this.client.user.avatarURL)
             .setColor(0x00AE86)
             .setDescription('XiaoBot is your personal companion for your Discord Server!')
-            .setFooter(`©2017 dragonfire535 | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
-            .setThumbnail(this.client.user.avatarURL)
+            .setFooter(`©2017 dragonfire535 | Version ${pkg.version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
             .setURL('http://dragonfire535.weebly.com/xiaobot.html')
             .addField('Commands',
                 'There are a variety of commands XiaoBot can use! Use `;help` to view a list of all commands!')
