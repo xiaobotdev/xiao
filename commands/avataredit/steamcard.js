@@ -26,7 +26,7 @@ module.exports = class SteamCardCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         const user = args.user;
-        const userDisplayName = message.guild ? message.member(user).displayName : user.username;
+        const userDisplayName = message.guild ? message.guild.member(user).displayName : user.username;
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace('.jpg', '.png');
         userAvatar = userAvatar.replace('.gif', '.png');
