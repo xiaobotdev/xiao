@@ -22,7 +22,7 @@ module.exports = class NitroCommand extends commando.Command {
             .setThumbnail('https://pbs.twimg.com/profile_images/814184180649197568/y2eZcVMq.jpg')
             .setColor(0x748BD9)
             .setURL('https://discordapp.com/nitro')
-            .setDescription('This Message can only be viewed by members with Discord Nitro.\n\n[More Information](https://discordapp.com/nitro)');
+            .setDescription('This Message can only be viewed by members with Discord Nitro.\n\n\n[More Information](https://discordapp.com/nitro)');
         return message.embed(embed);
     }
 };
