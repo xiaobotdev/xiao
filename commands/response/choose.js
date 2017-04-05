@@ -13,7 +13,7 @@ module.exports = class ChooseCommand extends commando.Command {
             examples: [';choose Cow | Sheep', ';choose Bark | Woof | Meow | Moo'],
             args: [{
                 key: 'choices',
-                prompt: 'What choices do you want me pick from? Split them with ' | '!',
+                prompt: 'What choices do you want me pick from? Split them with " | ".',
                 type: 'string',
                 validate: content => {
                     if (content.includes(' | ')) {
