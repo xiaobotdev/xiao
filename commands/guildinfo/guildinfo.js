@@ -40,7 +40,7 @@ module.exports = class GuildInfoCommand extends commando.Command {
                 message.guild.region, true)
             .addField('**Owner:**',
                 `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
-            .addField("**Users:**",
+            .addField('**Users:**',
                 message.guild.memberCount, true);
         return message.embed(embed);
     }

@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const request = require('superagent');
 
-module.exports = class UrbanDictionary extends commando.Command {
+module.exports = class UrbanCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'urban',

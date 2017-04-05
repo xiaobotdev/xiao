@@ -28,7 +28,13 @@ client.registry
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
-        prefix: false
+        prefix: false,
+        groups: false,
+        enable: false,
+        disable: false,
+        reload: false,
+        load: false,
+        unload: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
@@ -104,7 +110,7 @@ client.on('disconnect', () => {
 
 client.once('ready', () => {
     console.log('[Ready] Logged in!');
-    client.user.setGame(";help | dragonfire535");
+    client.user.setGame(';help | dragonfire535');
 });
 
 process.on('unhandledRejection', console.error);

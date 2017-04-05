@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const Jimp = require("jimp");
+const Jimp = require('jimp');
 
 module.exports = class YearsCommand extends commando.Command {
     constructor(Client) {
@@ -10,7 +10,7 @@ module.exports = class YearsCommand extends commando.Command {
             ],
             group: 'avataredit',
             memberName: '3000years',
-            description: "It's been 3000 years... (;3000years @User)",
+            description: 'It\'s been 3000 years... (;3000years @User)',
             examples: [';3000years @user'],
             args: [{
                 key: 'user',
@@ -27,11 +27,11 @@ module.exports = class YearsCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         const user = args.user;
         let userAvatar = user.displayAvatarURL;
-        userAvatar = userAvatar.replace(".jpg", ".png");
-        userAvatar = userAvatar.replace(".gif", ".png");
+        userAvatar = userAvatar.replace('.jpg', '.png');
+        userAvatar = userAvatar.replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read("./images/3000years.png"));
+        images.push(Jimp.read('./images/3000years.png'));
         const [avatar, years] = await Promise.all(images);
         avatar.resize(200, 200);
         years.blit(avatar, 461, 127);

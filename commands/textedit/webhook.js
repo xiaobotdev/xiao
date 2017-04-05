@@ -12,8 +12,8 @@ module.exports = class WebhookCommand extends commando.Command {
             ],
             group: 'textedit',
             memberName: 'webhook',
-            description: "Posts a message to the webhook defined in config. (;webhook Hey guys!)",
-            examples: [";webhook Hey guys!"],
+            description: 'Posts a message to the webhook defined in config. (;webhook Hey guys!)',
+            examples: [';webhook Hey guys!'],
             guildOnly: true,
             args: [{
                 key: 'text',
@@ -39,7 +39,7 @@ module.exports = class WebhookCommand extends commando.Command {
                 .send({
                     content: content
                 });
-            return;
+            return null;
         }
         catch (err) {
             return message.say(':x: Error! Message failed to send!');

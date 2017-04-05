@@ -20,7 +20,7 @@ module.exports = class TodayCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
-        console.log("[Command] " + message.content);
+        console.log('[Command] ' + message.content);
         try {
             const response = await request
                 .get('http://history.muffinlabs.com/date')
@@ -40,7 +40,7 @@ module.exports = class TodayCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Something went wrong!");
+            return message.say(':x: Error! Something went wrong!');
         }
     }
 };

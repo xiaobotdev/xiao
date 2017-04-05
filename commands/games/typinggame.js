@@ -34,21 +34,21 @@ module.exports = class TypingGameCommand extends commando.Command {
         let time;
         let levelWord;
         switch (level) {
-            case "easy":
+            case 'easy':
                 time = 25000;
-                levelWord = "twenty-five";
+                levelWord = 'twenty-five';
                 break;
-            case "medium":
+            case 'medium':
                 time = 20000;
-                levelWord = "twenty";
+                levelWord = 'twenty';
                 break;
-            case "hard":
+            case 'hard':
                 time = 15000;
-                levelWord = "fifteen";
+                levelWord = 'fifteen';
                 break;
-            case "extreme":
+            case 'extreme':
                 time = 10000;
-                levelWord = "ten";
+                levelWord = 'ten';
                 break;
         }
         const embed = new Discord.RichEmbed()

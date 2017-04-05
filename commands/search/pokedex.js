@@ -38,7 +38,7 @@ module.exports = class PokedexCommand extends commando.Command {
             .setAuthor(`#${pokedex.index[pokemon]} ${pokedex.name[pokemon]}`, `http://www.serebii.net/pokedex-sm/icon/${pokedex.index[pokemon]}.png`)
             .setColor(0xFF0000)
             .setDescription(pokedex.species[pokemon])
-            .setFooter("Pokédex", "http://cdn.bulbagarden.net/upload/thumb/3/36/479Rotom-Pokédex.png/250px-479Rotom-Pokédex.png")
+            .setFooter('Pokédex', 'http://cdn.bulbagarden.net/upload/thumb/3/36/479Rotom-Pokédex.png/250px-479Rotom-Pokédex.png')
             .setThumbnail(`http://www.serebii.net/sunmoon/pokemon/${pokedex.index[pokemon]}.png`)
             .addField('Entry',
                 pokedex.entry[pokemon])

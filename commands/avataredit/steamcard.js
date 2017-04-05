@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const Jimp = require("jimp");
+const Jimp = require('jimp');
 
 module.exports = class SteamCardCommand extends commando.Command {
     constructor(Client) {
@@ -10,7 +10,7 @@ module.exports = class SteamCardCommand extends commando.Command {
             ],
             group: 'avataredit',
             memberName: 'steamcard',
-            description: "Put an avatar on a Steam Card. (;steamcard @User)",
+            description: 'Put an avatar on a Steam Card. (;steamcard @User)',
             examples: [';steamcard @user'],
             guildOnly: true,
             args: [{
@@ -29,12 +29,12 @@ module.exports = class SteamCardCommand extends commando.Command {
         const user = args.user;
         const userDisplayName = message.guild.member(args.user).displayName;
         let userAvatar = user.displayAvatarURL;
-        userAvatar = userAvatar.replace(".jpg", ".png");
-        userAvatar = userAvatar.replace(".gif", ".png");
+        userAvatar = userAvatar.replace('.jpg', '.png');
+        userAvatar = userAvatar.replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read("./images/SteamCard.png"));
-        images.push(Jimp.read("./images/SteamCardBlank.png"));
+        images.push(Jimp.read('./images/SteamCard.png'));
+        images.push(Jimp.read('./images/SteamCardBlank.png'));
         const [avatar, steamcard, nothing] = await Promise.all(images);
         const font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
         avatar.resize(450, 450);

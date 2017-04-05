@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const Jimp = require("jimp");
+const Jimp = require('jimp');
 
 module.exports = class BobRossCommand extends commando.Command {
     constructor(Client) {
@@ -11,7 +11,7 @@ module.exports = class BobRossCommand extends commando.Command {
             ],
             group: 'avataredit',
             memberName: 'bobross',
-            description: "Make Bob Ross draw your avatar. (;bobross @User)",
+            description: 'Make Bob Ross draw your avatar. (;bobross @User)',
             examples: [';bobross @User'],
             args: [{
                 key: 'user',
@@ -28,12 +28,12 @@ module.exports = class BobRossCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         const user = args.user;
         let userAvatar = user.displayAvatarURL;
-        userAvatar = userAvatar.replace(".jpg", ".png");
-        userAvatar = userAvatar.replace(".gif", ".png");
+        userAvatar = userAvatar.replace('.jpg', '.png');
+        userAvatar = userAvatar.replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read("./images/BobRoss.png"));
-        images.push(Jimp.read("./images/BlankWhite.png"));
+        images.push(Jimp.read('./images/BobRoss.png'));
+        images.push(Jimp.read('./images/BlankWhite.png'));
         const [avatar, bob, nothing] = await Promise.all(images);
         avatar.rotate(2);
         avatar.resize(300, 300);

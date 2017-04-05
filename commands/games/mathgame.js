@@ -34,16 +34,16 @@ module.exports = class MathGameCommand extends commando.Command {
         randomType = randomType[Math.floor(Math.random() * randomType.length)];
         let randomValue;
         switch (level) {
-            case "easy":
+            case 'easy':
                 randomValue = 10;
                 break;
-            case "medium":
+            case 'medium':
                 randomValue = 50;
                 break;
-            case "hard":
+            case 'hard':
                 randomValue = 100;
                 break;
-            case "extreme":
+            case 'extreme':
                 randomValue = 1000;
                 break;
         }

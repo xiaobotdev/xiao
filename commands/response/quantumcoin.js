@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-module.exports = class QuantumCoin extends commando.Command {
+module.exports = class QuantumCoinCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'quantumcoin',

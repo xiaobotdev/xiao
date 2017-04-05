@@ -16,7 +16,6 @@
   "author": "dragonfire535",
   "license": "ISC",
   "dependencies": {
-    "Sherlock": "neilgupta/Sherlock",
     "cheerio": "^0.22.0",
     "cowsay": "^1.1.9",
     "discord.js": "hydrabolt/discord.js",

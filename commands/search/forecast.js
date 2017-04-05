@@ -58,7 +58,7 @@ module.exports = class ForecastCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Make sure you typed the location correctly!");
+            return message.say(':x: Error! Make sure you typed the location correctly!');
         }
     }
 };

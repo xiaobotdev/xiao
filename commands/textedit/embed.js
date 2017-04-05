@@ -23,7 +23,7 @@ module.exports = class EmbedCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        const embedMessage = message.content.split(" ").slice(1).join(" ");
+        const embedMessage = message.content.split(' ').slice(1).join(' ');
         const embed = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setColor(0x00AE86)

@@ -6,8 +6,8 @@ module.exports = class AvatarCommand extends commando.Command {
             name: 'avatar',
             group: 'userinfo',
             memberName: 'avatar',
-            description: "Gives a link to someone's avatar. (;avatar @User)",
-            examples: [";avatar @XiaoBot"],
+            description: 'Gives a link to someone\'s avatar. (;avatar @User)',
+            examples: [';avatar @XiaoBot'],
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to get the avatar of?',

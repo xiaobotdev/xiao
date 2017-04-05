@@ -57,7 +57,7 @@ module.exports = class AppStoreCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Something went wrong!");
+            return message.say(':x: Error! Something went wrong!');
         }
     }
 };

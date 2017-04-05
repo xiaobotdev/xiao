@@ -8,7 +8,7 @@ module.exports = class WarnCommand extends commando.Command {
             group: 'moderation',
             memberName: 'warn',
             description: 'Warns a user. (;warn @User being a jerk)',
-            examples: [";warn @User being a jerk."],
+            examples: [';warn @User being a jerk.'],
             guildOnly: true,
             args: [{
                 key: 'member',
@@ -22,7 +22,7 @@ module.exports = class WarnCommand extends commando.Command {
                     if (reason.length < 141) {
                         return true;
                     }
-                    return "Please keep your reason under 140 characters.";
+                    return 'Please keep your reason under 140 characters.';
                 }
             }]
         });
@@ -38,9 +38,9 @@ module.exports = class WarnCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         const userToWarn = args.member;
         const reason = args.reason;
-        if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
+        if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         try {
-            const okHandMsg = await message.say(":ok_hand:");
+            const okHandMsg = await message.say(':ok_hand:');
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0xFFFF00)

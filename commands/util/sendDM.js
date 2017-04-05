@@ -10,8 +10,8 @@ module.exports = class SendDMCommand extends commando.Command {
             ],
             group: 'util',
             memberName: 'senddm',
-            description: "Sends a DM to a user ID.",
-            examples: [";senddm 278305350804045834 This is a DM."],
+            description: 'Sends a DM to a user ID.',
+            examples: [';senddm 278305350804045834 This is a DM.'],
             args: [{
                 key: 'userid',
                 prompt: 'What is the User ID of the user you wish to contact?',
@@ -20,7 +20,7 @@ module.exports = class SendDMCommand extends commando.Command {
                     if (userID.length === 18) {
                         return true;
                     }
-                    return "Invalid ID.";
+                    return 'Invalid ID.';
                 }
             }, {
                 key: 'content',
