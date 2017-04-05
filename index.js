@@ -1,10 +1,9 @@
 const commando = require('discord.js-commando');
 const request = require('superagent');
-const config = require('./config.json');
 const client = new commando.Client({
     commandPrefix: ';',
     unknownCommandResponse: false,
-    owner: config.owner,
+    owner: process.env.OWNER_ID,
     disableEveryone: true
 });
 const path = require('path');
@@ -34,14 +33,14 @@ client.registry
 
 client.on('guildCreate', async(guild) => {
     console.log(`[Guild] I have joined the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
-    client.guilds.get(config.server).channels.get(config.announcementChannel).send(`I have joined the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
+    client.guilds.get(process.env.SERVER_ID).channels.get(process.env.ANNOUNCEMENT_CHANNEL_ID).send(`I have joined the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
     const results = await client.shard.fetchClientValues('guilds.size');
     console.log(`[Guild Count] ${results.reduce((prev, val) => prev + val, 0)}`);
     try {
         const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
-                key: config.carbonkey,
+                key: process.env.CARBON_KEY,
                 servercount: results.reduce((prev, val) => prev + val, 0)
             });
         console.log(`[Carbon] Successfully posted to Carbon. ${response.text}`);
@@ -51,9 +50,9 @@ client.on('guildCreate', async(guild) => {
     }
     try {
         const response = await request
-            .post(`https://bots.discord.pw/api/bots/${config.botID}/stats`)
+            .post(`https://bots.discord.pw/api/bots/${process.env.BOT_ID}/stats`)
             .set({
-                'Authorization': config.botskey
+                'Authorization': process.env.DISCORD_BOTS_KEY
             })
             .send({
                 server_count: results.reduce((prev, val) => prev + val, 0)
@@ -67,14 +66,14 @@ client.on('guildCreate', async(guild) => {
 
 client.on('guildDelete', async(guild) => {
     console.log(`[Guild] I have left the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
-    client.guilds.get(config.server).channels.get(config.announcementChannel).send(`I have left the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
+    client.guilds.get(process.env.SERVER_ID).channels.get(process.env.ANNOUNCEMENT_CHANNEL_ID).send(`I have left the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
     const results = await client.shard.fetchClientValues('guilds.size');
     console.log(`[Guild Count] ${results.reduce((prev, val) => prev + val, 0)}`);
     try {
         const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
-                key: config.carbonkey,
+                key: process.env.CARBON_KEY,
                 servercount: results.reduce((prev, val) => prev + val, 0)
             });
         console.log(`[Carbon] Successfully posted to Carbon. ${response.text}`);
@@ -84,9 +83,9 @@ client.on('guildDelete', async(guild) => {
     }
     try {
         const response = await request
-            .post(`https://bots.discord.pw/api/bots/${config.botID}/stats`)
+            .post(`https://bots.discord.pw/api/bots/${process.env.BOT_ID}/stats`)
             .set({
-                'Authorization': config.botskey
+                'Authorization': process.env.DISCORD_BOTS_KEY
             })
             .send({
                 server_count: results.reduce((prev, val) => prev + val, 0)
@@ -109,4 +108,4 @@ client.once('ready', () => {
 
 process.on('unhandledRejection', console.error);
 
-client.login(config.token);
+client.login(process.env.TOKEN);

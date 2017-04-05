@@ -1,6 +1,5 @@
 const commando = require('discord.js-commando');
 const request = require('superagent');
-const config = require('../../config.json');
 
 module.exports = class YodaCommand extends commando.Command {
     constructor(Client) {
@@ -28,7 +27,7 @@ module.exports = class YodaCommand extends commando.Command {
             const response = await request
                 .get('https://yoda.p.mashape.com/yoda')
                 .set({
-                    'X-Mashape-Key': config.mashapekey,
+                    'X-Mashape-Key': process.env.MASHAPE_KEY,
                     'Accept': 'text/plain'
                 })
                 .query({

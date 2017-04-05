@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const request = require('superagent');
-const config = require('../../config.json');
 
 module.exports = class DefineCommand extends commando.Command {
     constructor(Client) {
@@ -39,7 +38,7 @@ module.exports = class DefineCommand extends commando.Command {
                     includeRelated: false,
                     useCanonical: false,
                     includeTags: false,
-                    api_key: config.wordnikkey
+                    api_key: process.env.WORDNIK_KEY
                 });
             const data = response.body[0];
             const embed = new Discord.RichEmbed()
