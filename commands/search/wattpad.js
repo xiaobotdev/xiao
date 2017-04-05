@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const request = require('superagent');
-const config = require('../../config.json');
 
 module.exports = class WattpadCommand extends commando.Command {
     constructor(Client) {
@@ -29,7 +28,7 @@ module.exports = class WattpadCommand extends commando.Command {
             const response = await request
                 .get('https://api.wattpad.com:443/v4/stories')
                 .set({
-                    'Authorization': `Basic ${config.wattpadkey}`
+                    'Authorization': `Basic ${process.env.WATTPAD_KEY}`
                 })
                 .query({
                     query: queryBook,

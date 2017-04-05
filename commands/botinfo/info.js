@@ -1,6 +1,5 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const config = require('../../config.json');
 const pkg = require('../../package.json');
 const moment = require('moment');
 require('moment-duration-format');
@@ -34,7 +33,7 @@ module.exports = class InfoCommand extends commando.Command {
             .addField('Shards',
                 this.client.options.shardCount, true)
             .addField('Commands',
-                config.commandCount, true)
+                '113', true)
             .addField('Owner',
                 'dragonfire535#8081', true)
             .addField('Source Code',

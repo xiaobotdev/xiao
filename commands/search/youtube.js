@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const request = require('superagent');
-const config = require('../../config.json');
 
 module.exports = class YouTubeCommand extends commando.Command {
     constructor(Client) {
@@ -36,7 +35,7 @@ module.exports = class YouTubeCommand extends commando.Command {
                     type: 'video',
                     maxResults: 1,
                     q: videoToSearch,
-                    key: config.youtubekey
+                    key: process.env.YOUTUBE_KEY
                 });
             const data = response.body.items[0];
             const embed = new Discord.RichEmbed()

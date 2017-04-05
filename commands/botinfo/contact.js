@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-const config = require('../../config.json');
 
 module.exports = class ContactCommand extends commando.Command {
     constructor(Client) {
@@ -28,7 +27,7 @@ module.exports = class ContactCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         const messageToReport = args.report;
-        const reportedMsg = await this.client.users.get(config.owner).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
+        const reportedMsg = await this.client.users.get(process.env.OWNER_ID).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
         const successMsg = await message.say('Message Sent! Thanks for your support!');
         return [reportedMsg, successMsg];
     }

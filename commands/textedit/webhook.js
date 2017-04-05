@@ -1,6 +1,5 @@
 const commando = require('discord.js-commando');
 const request = require('superagent');
-const config = require('../../config.json');
 
 module.exports = class WebhookCommand extends commando.Command {
     constructor(Client) {
@@ -12,7 +11,7 @@ module.exports = class WebhookCommand extends commando.Command {
             ],
             group: 'textedit',
             memberName: 'webhook',
-            description: 'Posts a message to the webhook defined in config. (;webhook Hey guys!)',
+            description: 'Posts a message to the webhook defined in your `process.env`. (;webhook Hey guys!)',
             examples: [';webhook Hey guys!'],
             guildOnly: true,
             args: [{
@@ -35,7 +34,7 @@ module.exports = class WebhookCommand extends commando.Command {
         try {
             await message.delete();
             await request
-                .post(config.webhook)
+                .post(process.env.WEBHOOK_URL)
                 .send({
                     content: content
                 });

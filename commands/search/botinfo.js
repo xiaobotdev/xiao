@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const request = require('superagent');
-const config = require('../../config.json');
 
 module.exports = class BotSearchCommand extends commando.Command {
     constructor(Client) {
@@ -33,7 +32,7 @@ module.exports = class BotSearchCommand extends commando.Command {
             const response = await request
                 .get(`https://bots.discord.pw/api/bots/${botToFind}`)
                 .set({
-                    'Authorization': config.botskey
+                    'Authorization': process.env.DISCORD_BOTS_KEY
                 });
             const data = response.body;
             const embed = new Discord.RichEmbed()

@@ -1,6 +1,5 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const config = require('../../config.json');
 const request = require('superagent');
 
 module.exports = class OsuCommand extends commando.Command {
@@ -34,7 +33,7 @@ module.exports = class OsuCommand extends commando.Command {
             const response = await request
                 .get('https://osu.ppy.sh/api/get_user')
                 .query({
-                    k: config.osukey,
+                    k: process.env.OSU_KEY,
                     u: usernameToSearch,
                     type: 'string'
                 });
