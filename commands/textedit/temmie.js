@@ -7,8 +7,8 @@ module.exports = class TemmieCommand extends commando.Command {
 			name: 'temmie',
 			group: 'textedit',
 			memberName: 'temmie',
-			description: "Translate text to Temmie speak. (;temmie I am Temmie)",
-			examples: [";temmie I am Temmie."],
+			description: 'Translate text to Temmie speak. (;temmie I am Temmie)',
+			examples: [';temmie I am Temmie.'],
 			args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to Temmie speak?',

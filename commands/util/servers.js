@@ -9,8 +9,8 @@ module.exports = class ServersCommand extends commando.Command {
             ],
             group: 'util',
             memberName: 'servers',
-            description: "Sends a list of all server names and IDs to the log.",
-            examples: [";servers"]
+            description: 'Sends a list of all server names and IDs to the log.',
+            examples: [';servers']
         });
     }
     hasPermission(msg) {
@@ -23,8 +23,8 @@ module.exports = class ServersCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         const guildCount = this.client.guilds.size;
-        const guildNames = this.client.guilds.map(g => `${g.name} (${g.id})`).join(", ");
+        const guildNames = this.client.guilds.map(g => `${g.name} (${g.id})`).join(', ');
         console.log(`${guildCount} Servers: ${guildNames}`);
-        return message.say("Sent the information to the console!");
+        return message.say('Sent the information to the console!');
     }
 };

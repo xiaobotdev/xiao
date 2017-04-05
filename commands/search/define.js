@@ -49,7 +49,7 @@ module.exports = class DefineCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Word not Found!");
+            return message.say(':x: Error! Word not Found!');
         }
     }
 };

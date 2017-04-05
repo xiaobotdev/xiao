@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const Jimp = require("jimp");
+const Jimp = require('jimp');
 
 module.exports = class RIPCommand extends commando.Command {
     constructor(Client) {
@@ -28,11 +28,11 @@ module.exports = class RIPCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         const user = args.user;
         let userAvatar = user.displayAvatarURL;
-        userAvatar = userAvatar.replace(".jpg", ".png");
-        userAvatar = userAvatar.replace(".gif", ".png");
+        userAvatar = userAvatar.replace('.jpg', '.png');
+        userAvatar = userAvatar.replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read("./images/gravestone.jpg"));
+        images.push(Jimp.read('./images/gravestone.jpg'));
         const [avatar, gravestone] = await Promise.all(images);
         avatar.resize(200, 200);
         gravestone.blit(avatar, 60, 65);

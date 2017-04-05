@@ -13,13 +13,13 @@ module.exports = class ChooseCommand extends commando.Command {
             examples: [';choose Cow | Sheep', ';choose Bark | Woof | Meow | Moo'],
             args: [{
                 key: 'choices',
-                prompt: 'What choices do you want me pick from? Split them with " | "!',
+                prompt: 'What choices do you want me pick from? Split them with ' | '!',
                 type: 'string',
                 validate: content => {
                     if (content.includes(' | ')) {
                         return true;
                     }
-                    return 'Please split your choices with " | ".';
+                    return 'Please split your choices with ' | '.';
                 }
             }]
         });
@@ -31,7 +31,7 @@ module.exports = class ChooseCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         let choices = args.choices;
-        choices = choices.split(" | ");
+        choices = choices.split(' | ');
         choices = choices[Math.floor(Math.random() * choices.length)];
         return message.say(`I choose ${choices}!`);
     }

@@ -255,31 +255,31 @@ function isLetter(character) {
 }
 
 function translator(text) {
-    let translatedText = "";
-    let word = "";
+    let translatedText = '';
+    let word = '';
     for (let i = 0; i < text.length; i += 1) {
         let character = text[i];
         if (isLetter(character)) {
             word += character;
         }
         else {
-            if (word != "") {
+            if (word != '') {
                 let wordTranslate = translateWord(word);
                 translatedText += wordTranslate;
-                word = "";
+                word = '';
             }
             translatedText += character;
         }
     }
 
-    if (word !== "") translatedText += translateWord(word);
+    if (word !== '') translatedText += translateWord(word);
 
     return translatedText;
 }
 
 module.exports = function(text) {
     let currentTranslation = translator(text);
-    let temmify = currentTranslation.split("ing").join("in").split("!").join("!!!!111!11!1!!!1!!!1111!").split("'").join("");
+    let temmify = currentTranslation.split('ing').join('in').split('!').join('!!!!111!11!1!!!1!!!1111!').split("'").join('');
 
     return temmify;
 };

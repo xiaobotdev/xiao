@@ -57,7 +57,7 @@ module.exports = class WattpadCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Book not Found!");
+            return message.say(':x: Error! Book not Found!');
         }
     }
 };

@@ -49,7 +49,7 @@ module.exports = class YouTubeCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Something went wrong! Maybe no video was found?");
+            return message.say(':x: Error! Something went wrong! Maybe no video was found?');
         }
     }
 };

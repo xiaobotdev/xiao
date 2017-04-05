@@ -15,7 +15,7 @@ module.exports = class PruneCommand extends commando.Command {
             group: 'moderation',
             memberName: 'prune',
             description: 'Deletes a defined number of messages from the current channel, up to 99. (;prune 45)',
-            examples: [";prune 45"],
+            examples: [';prune 45'],
             guildOnly: true,
             throttling: {
 				usages: 1,
@@ -29,7 +29,7 @@ module.exports = class PruneCommand extends commando.Command {
                     if (count < 100 && count > 0) {
                         return true;
                     }
-                    return "Too many or two few messages to delete. Limit 1-99.";
+                    return 'Too many or two few messages to delete. Limit 1-99.';
                 }
             }]
         });
@@ -40,7 +40,7 @@ module.exports = class PruneCommand extends commando.Command {
 
     async run(message, args) {
         if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['READ_MESSAGES', 'MANAGE_MESSAGES'])) return;
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['READ_MESSAGES', 'MANAGE_MESSAGES', 'READ_MESSAGE_HISTORY'])) return;
         }
         console.log(`[Command] ${message.content}`);
         const count = args.count + 1;

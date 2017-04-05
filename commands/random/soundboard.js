@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const sounds = ['cat', 'pikachu', 'vader', 'doh', "it's a trap", 'mario death', 'pokemon center', 'dun dun dun', 'spongebob', 'ugly barnacle', 'woo hoo', 'space', 'glados bird', 'airhorn', 'zelda chest', 'eat my shorts', 'no this is patrick', 'wumbo'];
+const sounds = ['cat', 'pikachu', 'vader', 'doh', 'it\'s a trap', 'mario death', 'pokemon center', 'dun dun dun', 'spongebob', 'ugly barnacle', 'woo hoo', 'space', 'glados bird', 'airhorn', 'zelda chest', 'eat my shorts', 'no this is patrick', 'wumbo'];
 const paths = {
     "cat": "./sounds/cat.mp3",
     "pikachu": "./sounds/pikachu.mp3",
@@ -32,7 +32,7 @@ module.exports = class SoundBoardCommand extends commando.Command {
             group: 'random',
             memberName: 'soundboard',
             description: 'Plays a sound in your voice channel. (;soundboard cat)',
-            details: "**Sounds:** Cat, Pikachu, Vader, Doh, It's a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo",
+            details: '**Sounds:** Cat, Pikachu, Vader, Doh, It\'s a Trap, Mario Death, Pokemon Center, Dun Dun Dun, Spongebob, Ugly Barnacle, Woo Hoo, Space, GLaDOS Bird, Airhorn, Zelda Chest, Eat my Shorts, No This is Patrick, Wumbo',
             examples: [';soundboard cat'],
             guildOnly: true,
             args: [{

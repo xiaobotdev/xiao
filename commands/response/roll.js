@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-module.exports = class RollChooseCommand extends commando.Command {
+module.exports = class RollCommand extends commando.Command {
     constructor(Client) {
         super(Client, {
             name: 'roll',

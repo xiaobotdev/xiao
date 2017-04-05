@@ -70,7 +70,7 @@ module.exports = class OsuCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! User not Found!");
+            return message.say(':x: Error! User not Found!');
         }
     }
 };

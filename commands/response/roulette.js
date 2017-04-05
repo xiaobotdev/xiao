@@ -13,7 +13,7 @@ module.exports = class RouletteCommand extends commando.Command {
             group: 'response',
             memberName: 'roulette',
             description: 'Chooses a random member. (;roulette Who is the best?)',
-            examples: [";roulette Who is the best?"],
+            examples: [';roulette Who is the best?'],
             guildOnly: true
         });
     }

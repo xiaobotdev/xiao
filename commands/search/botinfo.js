@@ -51,7 +51,7 @@ module.exports = class BotSearchCommand extends commando.Command {
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Bot not Found!");
+            return message.say(':x: Error! Bot not Found!');
         }
     }
 };

@@ -11,7 +11,7 @@ module.exports = class BanCommand extends commando.Command {
             group: 'moderation',
             memberName: 'ban',
             description: 'Bans a user. (;ban @User being a jerk.)',
-            examples: [";ban @User being a jerk."],
+            examples: [';ban @User being a jerk.'],
             guildOnly: true,
             args: [{
                 key: 'member',
@@ -25,7 +25,7 @@ module.exports = class BanCommand extends commando.Command {
                     if (reason.length < 141) {
                         return true;
                     }
-                    return "Please keep your reason under 140 characters.";
+                    return 'Please keep your reason under 140 characters.';
                 }
             }]
         });
@@ -39,13 +39,13 @@ module.exports = class BanCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        if (!message.guild.channels.exists("name", "mod_logs")) return message.say(":x: Error! Could not find the mod_logs channel! Please create it!");
+        if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         const member = args.member;
         const reason = args.reason;
-        if (!message.guild.member(member).bannable) return message.say(":x: Error! This member cannot be banned! Perhaps they have a higher role than me?");
+        if (!message.guild.member(member).bannable) return message.say(':x: Error! This member cannot be banned! Perhaps they have a higher role than me?');
         try {
             const banUser = await message.guild.member(member).ban();
-            const okHandMsg = await message.say(":ok_hand:");
+            const okHandMsg = await message.say(':ok_hand:');
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0xFF0000)

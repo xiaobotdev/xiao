@@ -25,8 +25,8 @@ module.exports = class CowsayCommand extends commando.Command {
         const turnToCowsay = args.text;
         return message.code(null, cowsay.say({
             text: turnToCowsay,
-            e: "oO",
-            T: "U "
+            e: 'oO',
+            T: 'U '
         })).catch(error => message.say(':x: Error! Perhaps the content is too long?'));
     }
 };

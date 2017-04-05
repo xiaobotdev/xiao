@@ -12,7 +12,7 @@ module.exports = class StrawpollCommand extends commando.Command {
             group: 'random',
             memberName: 'strawpoll',
             description: 'Creates a Strawpoll with your options. (;strawpoll "Who likes chips?" Me | Not Me)',
-            examples: [';;strawpoll "Who likes chips?" Me | Not Me'],
+            examples: [';strawpoll "Who likes chips?" Me | Not Me'],
             args: [{
                 key: 'title',
                 prompt: 'What would you like the title of the Strawpoll to be? Surround in "" for multiple words.',
@@ -25,7 +25,7 @@ module.exports = class StrawpollCommand extends commando.Command {
                 }
             }, {
                 key: 'choices',
-                prompt: 'What choices do you want me pick from? Split them with " | "!',
+                prompt: 'What choices do you want me pick from? Split them with " | ".',
                 type: 'string',
                 validate: content => {
                     if (content.includes(' | ')) {
@@ -34,7 +34,7 @@ module.exports = class StrawpollCommand extends commando.Command {
                     if (content.length > 160) {
                         return 'Please limit your options to 160 characters.';
                     }
-                    return 'Please split your choices with " | ".';
+                    return 'Please split your choices with ' | '.';
                 }
             }]
         });
@@ -46,7 +46,7 @@ module.exports = class StrawpollCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         const title = args.title;
-        const choices = args.choices.split(" | ");
+        const choices = args.choices.split(' | ');
         if (choices.length < 2) return message.say(':x: Error! You provided less than two choices!');
         if (choices.length > 31) return message.say(':x: Error! You provided more than thirty choices!');
         try {
@@ -60,7 +60,7 @@ module.exports = class StrawpollCommand extends commando.Command {
             return message.say(`${data.title}\nhttp://strawpoll.me/${data.id}`);
         }
         catch (err) {
-            return message.say(":x: Error! Something went wrong!");
+            return message.say(':x: Error! Something went wrong!');
         }
     }
 };

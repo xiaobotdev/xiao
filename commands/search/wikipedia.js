@@ -23,7 +23,7 @@ module.exports = class WikipediaCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS'])) return;
         }
         console.log(`[Command] ${message.content}`);
-        const thingToSearch = args.query.split(")").join("%29");
+        const thingToSearch = args.query.split(')').join('%29');
         const title = encodeURI(thingToSearch);
         try {
             const response = await request
@@ -44,12 +44,12 @@ module.exports = class WikipediaCommand extends commando.Command {
                 .setColor(0xE7E7E7)
                 .setTitle(data.title)
                 .setURL(`https://en.wikipedia.org/wiki/${title}`)
-                .setAuthor("Wikipedia", "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png")
+                .setAuthor('Wikipedia', 'https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png')
                 .setDescription(description);
             return message.embed(embed);
         }
         catch (err) {
-            return message.say(":x: Error! Entry Not Found!");
+            return message.say(':x: Error! Entry Not Found!');
         }
     }
 };

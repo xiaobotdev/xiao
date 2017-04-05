@@ -7,7 +7,7 @@ module.exports = class LockdownCommand extends commando.Command {
             group: 'moderation',
             memberName: 'lockdown',
             description: 'Locks down the current server or removes a lockdown, which prevents non-roled members from speaking. (;lockdown start)',
-            examples: [";lockdown start", ";lockdown stop"],
+            examples: [';lockdown start', ';lockdown stop'],
             guildOnly: true,
             args: [{
                 key: 'type',
@@ -17,7 +17,7 @@ module.exports = class LockdownCommand extends commando.Command {
                     if (type.toLowerCase() === 'start' || type.toLowerCase() === 'stop') {
                         return true;
                     }
-                    return "Please enter either start or stop.";
+                    return 'Please enter either start or stop.';
                 }
             }]
         });
@@ -29,7 +29,7 @@ module.exports = class LockdownCommand extends commando.Command {
     async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['READ_MESSAGES', 'SEND_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ADMINISTRATOR')) return message.say(":x: Error! I don't have the Administrator permission! This is not given by default, as that's quite bad practice. Please give it to me to use the lockdown command!");
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('ADMINISTRATOR')) return message.say(':x: Error! I don\'t have the Administrator permission! This is not given by default, as that\'s quite bad practice. Please give it to me to use the lockdown command!');
         }
         console.log(`[Command] ${message.content}`);
         const type = args.type;
