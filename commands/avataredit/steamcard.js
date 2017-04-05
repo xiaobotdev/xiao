@@ -12,7 +12,6 @@ module.exports = class SteamCardCommand extends commando.Command {
             memberName: 'steamcard',
             description: 'Put an avatar on a Steam Card. (;steamcard @User)',
             examples: [';steamcard @user'],
-            guildOnly: true,
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to edit the avatar of?',
@@ -27,7 +26,7 @@ module.exports = class SteamCardCommand extends commando.Command {
         }
         console.log(`[Command] ${message.content}`);
         const user = args.user;
-        const userDisplayName = message.guild.member(args.user).displayName;
+        const userDisplayName = message.guild.member(user).displayName || user.username;
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace('.jpg', '.png');
         userAvatar = userAvatar.replace('.gif', '.png');
