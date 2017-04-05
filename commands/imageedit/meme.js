@@ -25,7 +25,7 @@ module.exports = class MemeCommand extends commando.Command {
                 }
             }, {
                 key: 'content',
-                prompt: 'What should the meme content be? Split the bottom and top text of the meme with ' | '.',
+                prompt: 'What should the meme content be? Split the bottom and top text of the meme with " | ".',
                 type: 'string',
                 validate: content => {
                     if (content.includes(' | ') && content.match(/^[a-zA-Z0-9|.,!?'-\s]+$/)) {
