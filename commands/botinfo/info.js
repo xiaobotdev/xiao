@@ -33,7 +33,7 @@ module.exports = class InfoCommand extends commando.Command {
             .addField('Shards',
                 this.client.options.shardCount, true)
             .addField('Commands',
-                '113', true)
+                '112', true)
             .addField('Owner',
                 'dragonfire535#8081', true)
             .addField('Source Code',
