@@ -1,24 +1,19 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
-const translate = require('google-translate-api');
+const request = require('superagent');
 const languages = {
     "auto": "Automatic",
     "af": "Afrikaans",
     "sq": "Albanian",
     "ar": "Arabic",
-    "hy": "Armenian",
     "az": "Azerbaijani",
     "eu": "Basque",
-    "be": "Belarusian",
     "bn": "Bengali",
-    "bs": "Bosnian",
+    "be": "Belarusian",
     "bg": "Bulgarian",
     "ca": "Catalan",
-    "ceb": "Cebuano",
-    "ny": "Chichewa",
     "zh-cn": "Chinese Simplified",
     "zh-tw": "Chinese Traditional",
-    "co": "Corsican",
     "hr": "Croatian",
     "cs": "Czech",
     "da": "Danish",
@@ -29,83 +24,50 @@ const languages = {
     "tl": "Filipino",
     "fi": "Finnish",
     "fr": "French",
-    "fy": "Frisian",
     "gl": "Galician",
     "ka": "Georgian",
     "de": "German",
     "el": "Greek",
     "gu": "Gujarati",
     "ht": "Haitian Creole",
-    "ha": "Hausa",
-    "haw": "Hawaiian",
     "iw": "Hebrew",
     "hi": "Hindi",
-    "hmn": "Hmong",
     "hu": "Hungarian",
     "is": "Icelandic",
-    "ig": "Igbo",
     "id": "Indonesian",
     "ga": "Irish",
     "it": "Italian",
     "ja": "Japanese",
-    "jw": "Javanese",
     "kn": "Kannada",
-    "kk": "Kazakh",
-    "km": "Khmer",
     "ko": "Korean",
-    "ku": "Kurdish (Kurmanji)",
-    "ky": "Kyrgyz",
-    "lo": "Lao",
     "la": "Latin",
     "lv": "Latvian",
     "lt": "Lithuanian",
-    "lb": "Luxembourgish",
     "mk": "Macedonian",
-    "mg": "Malagasy",
     "ms": "Malay",
-    "ml": "Malayalam",
     "mt": "Maltese",
-    "mi": "Maori",
-    "mr": "Marathi",
-    "mn": "Mongolian",
-    "my": "Myanmar (Burmese)",
-    "ne": "Nepali",
     "no": "Norwegian",
-    "ps": "Pashto",
     "fa": "Persian",
     "pl": "Polish",
     "pt": "Portuguese",
-    "ma": "Punjabi",
     "ro": "Romanian",
     "ru": "Russian",
-    "sm": "Samoan",
     "gd": "Scots Gaelic",
     "sr": "Serbian",
-    "st": "Sesotho",
-    "sn": "Shona",
-    "sd": "Sindhi",
-    "si": "Sinhala",
     "sk": "Slovak",
     "sl": "Slovenian",
-    "so": "Somali",
     "es": "Spanish",
-    "su": "Sudanese",
     "sw": "Swahili",
     "sv": "Swedish",
-    "tg": "Tajik",
     "ta": "Tamil",
     "te": "Telugu",
     "th": "Thai",
     "tr": "Turkish",
     "uk": "Ukrainian",
     "ur": "Urdu",
-    "uz": "Uzbek",
     "vi": "Vietnamese",
     "cy": "Welsh",
-    "xh": "Xhosa",
-    "yi": "Yiddish",
-    "yo": "Yoruba",
-    "zu": "Zulu"
+    "yi": "Yiddish"
 };
 
 module.exports = class TranslateCommand extends commando.Command {
@@ -115,7 +77,7 @@ module.exports = class TranslateCommand extends commando.Command {
             group: 'textedit',
             memberName: 'translate',
             description: 'Translates text to a given language. (;translate ja Give me the money!)',
-            details: '**Codes:** af: Afrikaans, sq: Albanian, ar: Arabic, hy: Armenian, az: Azerbaijani, eu: Basque, be: Belarusian, bn: Bengali, bs: Bosnian, bg: Bulgarian, ca: Catalan, ceb: Cebuano, ny: Chichewa, zh-cn: Chinese Simplified, zh-tw: Chinese Traditional, co: Corsican, hr: Croatian, cs: Czech, da: Danish, nl: Dutch, en: English, eo: Esperanto, et: Estonian, tl: Filipino, fi: Finnish, fr: French, fy: Frisian, gl: Galician, ka: Georgian, de: German, el: Greek, gu: Gujarati, ht: Haitian Creole, ha: Hausa, haw: Hawaiian, iw: Hebrew, hi: Hindi, hmn: Hmong, hu: Hungarian, is: Icelandic, ig: Igbo, id: Indonesian, ga: Irish, it: Italian, ja: Japanese, jw: Javanese, kn: Kannada, kk: Kazakh, km: Khmer, ko: Korean, ku: Kurdish (Kurmanji), ky: Kyrgyz, lo: Lao, la: Latin, lv: Latvian, lt: Lithuanian, lb: Luxembourgish, mk: Macedonian, mg: Malagasy, ms: Malay, ml: Malayalam, mt: Maltese, mi: Maori, mr: Marathi, mn: Mongolian, my: Myanmar (Burmese), ne: Nepali, no: Norwegian, ps: Pashto, fa: Persian, pl: Polish, pt: Portuguese, ma: Punjabi, ro: Romanian, ru: Russian, sm: Samoan, gd: Scots Gaelic, sr: Serbian, st: Sesotho, sn: Shona, sd: Sindhi, si: Sinhala, sk: Slovak, sl: Slovenian, so: Somali, es: Spanish, su: Sudanese, sw: Swahili, sv: Swedish, tg: Tajik, ta: Tamil, te: Telugu, th: Thai, tr: Turkish, uk: Ukrainian, ur: Urdu, uz: Uzbek, vi: Vietnamese, cy: Welsh, xh: Xhosa, yi: Yiddish, yo: Yoruba, zu: Zulu',
+            details: '**Codes:** af: Afrikaans, sq: Albanian, ar: Arabic, az: Azerbaijani, eu: Basque, bn: Bengali, be: Belarusian, bg: Bulgarian, ca: Catalan, zh-cn: Chinese Simplified, zh-tw: Chinese Traditional, hr: Croatian, cs: Czech, da: Danish, nl: Dutch, en: English, eo: Esperanto, et: Estonian, tl: Filipino, fi: Finnish, fr: French, gl: Galician, ka: Georgian, de: German, el: Greek, gu: Gujarati, ht: Haitian Creole, iw: Hebrew, hi: Hindi, hu: Hungarian, is: Icelandic, id: Indonesian, ga: Irish, it: Italian, ja: Japanese, kn: Kannada, ko: Korean, la: Latin, lv: Latvian, lt: Lithuanian, mk: Macedonian, ms: Malay, mt: Maltese, no: Norwegian, fa: Persian, pl: Polish, pt: Portuguese, ro: Romanian, ru: Russian, gd: Scots Gaelic, sr: Serbian, sk: Slovak, sl: Slovenian, es: Spanish, sw: Swahili, sv: Swedish, ta: Tamil, te: Telugu, th: Thai, tr: Turkish, uk: Ukrainian, ur: Urdu, vi: Vietnamese, cy: Welsh, yi: Yiddish',
             examples: [';translate ja Give me the the money!'],
             args: [{
                 key: 'to',
@@ -149,16 +111,24 @@ module.exports = class TranslateCommand extends commando.Command {
         const languageto = args.to.toLowerCase();
         const thingToTranslate = args.text;
         try {
-            const res = await translate(thingToTranslate, {
-                to: languageto
-            });
-            const languagefrom = res.from.language.iso.toLowerCase();
+            const response = await request
+                .get('https://translate.googleapis.com/translate_a/single')
+                .query({
+                    client: 'gtx',
+                    sl: 'auto',
+                    tl: languageto,
+                    dt: 't',
+                    q: thingToTranslate
+                });
+            const data = JSON.parse(response.text);
+            const translated = data[0][0][0];
+            const languagefrom = data[8][3][0];
             const embed = new Discord.RichEmbed()
                 .setColor(0x00AE86)
                 .addField(`Input (From: ${languages[languagefrom]}):`,
                     thingToTranslate)
                 .addField(`Translation (To: ${languages[languageto]}):`,
-                    res.text);
+                    translated);
             return message.embed(embed);
         }
         catch (err) {
