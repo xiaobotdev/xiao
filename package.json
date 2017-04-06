@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "20.0.1",
+  "version": "20.1.0",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "repository": {
@@ -20,7 +20,6 @@
     "cowsay": "^1.1.9",
     "discord.js": "hydrabolt/discord.js",
     "discord.js-commando": "gawdl3y/discord.js-commando",
-    "google-translate-api": "^2.2.2",
     "hepburn": "^1.0.0",
     "jimp": "^0.2.27",
     "mathjs": "^3.11.0",
