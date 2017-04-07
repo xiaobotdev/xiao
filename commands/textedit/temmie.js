@@ -30,6 +30,6 @@ module.exports = class TemmieCommand extends commando.Command {
 		console.log(`[Command] ${message.content}`);
 		const thingToTranslate = args.text;
 		const temmized = temmize(thingToTranslate);
-		return message.say(temmized);
+		return message.say(`\u180E${temmized}`);
 	}
 };

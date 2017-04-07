@@ -35,6 +35,6 @@ module.exports = class PirateCommand extends commando.Command {
         const turnToPirate = args.text;
         const pirate = pirateSpeak.translate(turnToPirate);
         if (pirate.length > 1950) return message.say(':x: Error! Your message is too long!');
-        return message.say(pirate);
+        return message.say(`\u180E${pirate}`);
     }
 };

@@ -23,6 +23,6 @@ module.exports = class ReverseCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         const stringToReverse = args.text;
         const reversed = stringToReverse.split('').reverse().join('');
-        return message.say(reversed);
+        return message.say(`\u180E${reversed}`);
     }
 };

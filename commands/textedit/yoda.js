@@ -33,7 +33,7 @@ module.exports = class YodaCommand extends commando.Command {
                 .query({
                     sentence: turnToYoda
                 });
-            return message.say(response.text);
+            return message.say(`\u180E${response.text}`);
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');
