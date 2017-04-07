@@ -38,10 +38,12 @@ module.exports = class GuildInfoCommand extends commando.Command {
                 message.guild.defaultChannel, true)
             .addField('**Region:**',
                 message.guild.region, true)
+            .addField('**XiaoBot Shard:**',
+                this.client.shard.id)
             .addField('**Owner:**',
                 `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
             .addField('**Users:**',
-                message.guild.memberCount, true);
+                `${message.guild.memberCount} (With Bots) / ${message.guild.members.filter(member => !member.user.bot).size} (Without Bots)`, true);
         return message.embed(embed);
     }
 };
