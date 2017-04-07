@@ -33,13 +33,19 @@ module.exports = class SendDMCommand extends commando.Command {
         return this.client.isOwner(msg.author);
     }
 
-    run(message, args) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         console.log(`[Command] ${message.content}`);
         const userID = args.userid;
         const content = args.content;
-        return this.client.users.get(userID).send(content).catch(err => message.say(':x: Error! Something went wrong!'));
+        try {
+            await this.client.users.get(userID).send(content);
+            return message.say('Success!');
+        }
+        catch (err) {
+            return message.say(':x: Error! Something went wrong!');
+        }
     }
 };
