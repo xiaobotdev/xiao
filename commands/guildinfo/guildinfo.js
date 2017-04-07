@@ -39,7 +39,7 @@ module.exports = class GuildInfoCommand extends commando.Command {
             .addField('**Region:**',
                 message.guild.region, true)
             .addField('**XiaoBot Shard:**',
-                this.client.shard.id)
+                this.client.shard.id, true)
             .addField('**Owner:**',
                 `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
             .addField('**Users:**',
