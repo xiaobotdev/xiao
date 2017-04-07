@@ -151,9 +151,15 @@ module.exports = class TranslateCommand extends commando.Command {
         try {
             const response = await request
                 .get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${languageto}&dt=t&q=${query}`);
+            console.log(response.text);
+            console.log(query);
+            console.log(languageto);
             const data = JSON.parse(response.text);
             const translated = data[0][0][0];
             const languagefrom = data[8][3][0];
+            console.log(data);
+            console.log(translated);
+            console.log(languagefrom);
             const embed = new Discord.RichEmbed()
                 .setColor(0x00AE86)
                 .addField(`Input (From: ${languages[languagefrom]}):`,
