@@ -36,7 +36,9 @@ module.exports = class BanCommand extends commando.Command {
 
     async run(message, args) {
         if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'])) return;
+            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('BAN_MEMBERS')) return message.say(':x: Error! I don\'t have the Ban Members Permission!');
         }
         console.log(`[Command] ${message.content}`);
         if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
