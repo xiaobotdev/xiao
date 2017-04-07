@@ -30,6 +30,6 @@ module.exports = class SayCommand extends commando.Command {
         console.log(`[Command] ${message.content}`);
         const copycat = args.text;
         await message.delete();
-        return message.say(copycat);
+        return message.say(`\u180E${copycat}`);
     }
 };
