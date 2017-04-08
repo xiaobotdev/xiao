@@ -148,9 +148,9 @@ module.exports = class TranslateCommand extends commando.Command {
                 });
             const data = response.body;
             const translated = data.text[0];
-            const languages = data.lang.split('-');
-            const langTo = languages[1];
-            const langFrom = languages[0];
+            const langs = data.lang.split('-');
+            const langTo = langs[1];
+            const langFrom = langs[0];
             const embed = new Discord.RichEmbed()
                 .setColor(0x00AE86)
                 .addField(`Input (From: ${languages[langFrom]}):`,
