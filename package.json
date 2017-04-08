@@ -30,6 +30,7 @@
     "roman-numeral-converter-mmxvi": "^1.0.5",
     "string-to-binary": "^0.1.2",
     "superagent": "^3.5.2",
+    "yandex.translate": "^1.0.1",
     "zalgolize": "^1.2.4"
   }
 }
