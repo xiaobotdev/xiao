@@ -20,7 +20,6 @@ module.exports = class NeopetCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log(`[Command] ${message.content}`);
         const petID = args.pet;
         return message.say(`http://pets.neopets.com/cp/${petID}/1/5.png`);
     }

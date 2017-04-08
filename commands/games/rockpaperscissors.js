@@ -29,7 +29,6 @@ module.exports = class RockPaperScissorsCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log(`[Command] ${message.content}`);
         const rps = args.choice.toLowerCase();
         let response = ['Paper', 'Rock', 'Scissors'];
         response = response[Math.floor(Math.random() * response.length)];

@@ -37,7 +37,6 @@ module.exports = class KickCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
             if (!message.channel.permissionsFor(this.client.user).hasPermission('KICK_MEMBERS')) return message.say(':x: Error! I don\'t have the Kick Members Permission!');
         }
-        console.log(`[Command] ${message.content}`);
         if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         const member = args.member;
         const reason = args.reason;

@@ -25,7 +25,6 @@ module.exports = class ContactCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log(`[Command] ${message.content}`);
         const messageToReport = args.report;
         const reportedMsg = await this.client.users.get(process.env.OWNER_ID).send(`**${message.author.username}#${message.author.discriminator} (${message.author.id}):**\n${messageToReport}`);
         const successMsg = await message.say('Message Sent! Thanks for your support!');

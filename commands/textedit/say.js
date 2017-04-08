@@ -28,7 +28,6 @@ module.exports = class SayCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
         }
-        console.log(`[Command] ${message.content}`);
         const copycat = args.text;
         await message.delete();
         return message.say(`\u180E${copycat}`);

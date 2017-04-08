@@ -32,7 +32,6 @@ module.exports = class DiscrimCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        console.log(`[Command] ${message.content}`);
         const userToSearch = args.discrim;
         const users = await this.client.users.filter(u => u.discriminator === userToSearch).map(u => u.username).sort();
         const embed = new Discord.RichEmbed()

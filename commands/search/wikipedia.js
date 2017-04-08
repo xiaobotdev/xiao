@@ -23,7 +23,6 @@ module.exports = class WikipediaCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        console.log(`[Command] ${message.content}`);
         const thingToSearch = args.query.split(')').join('%29');
         const title = encodeURI(thingToSearch);
         try {

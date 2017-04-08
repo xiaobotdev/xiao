@@ -25,7 +25,6 @@ module.exports = class GuildInfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        console.log(`[Command] ${message.content}`);
         const embed = new Discord.RichEmbed()
             .setColor(0x00AE86)
             .setThumbnail(message.guild.iconURL)

@@ -31,7 +31,6 @@ module.exports = class LockdownCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['READ_MESSAGES', 'SEND_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ADMINISTRATOR')) return message.say(':x: Error! I don\'t have the Administrator permission! This is not given by default, as that\'s quite bad practice. Please give it to me to use the lockdown command!');
         }
-        console.log(`[Command] ${message.content}`);
         const type = args.type;
         if (type.toLowerCase() === 'start') {
             try {
