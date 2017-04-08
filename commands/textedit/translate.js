@@ -148,7 +148,7 @@ module.exports = class TranslateCommand extends commando.Command {
                 });
             const data = response.body;
             const translated = data.text[0];
-            const languages = data.split('-');
+            const languages = data.lang.split('-');
             const langTo = languages[1];
             const langFrom = languages[0];
             const embed = new Discord.RichEmbed()
