@@ -27,7 +27,6 @@ module.exports = class TemmieCommand extends commando.Command {
 		if (message.channel.type !== 'dm') {
 			if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
 		}
-		console.log(`[Command] ${message.content}`);
 		const thingToTranslate = args.text;
 		const temmized = temmize(thingToTranslate);
 		return message.say(`\u180E${temmized}`);
