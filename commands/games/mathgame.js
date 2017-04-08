@@ -29,7 +29,6 @@ module.exports = class MathGameCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        console.log(`[Command] ${message.content}`);
         const level = args.difficulty.toLowerCase();
         let randomType = ['+', '-', '*'];
         randomType = randomType[Math.floor(Math.random() * randomType.length)];

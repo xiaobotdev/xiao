@@ -31,7 +31,6 @@ module.exports = class PirateCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log(`[Command] ${message.content}`);
         const turnToPirate = args.text;
         const pirate = pirateSpeak.translate(turnToPirate);
         if (pirate.length > 1950) return message.say(':x: Error! Your message is too long!');

@@ -37,7 +37,6 @@ module.exports = class SendDMCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log(`[Command] ${message.content}`);
         const userID = args.userid;
         const content = args.content;
         try {

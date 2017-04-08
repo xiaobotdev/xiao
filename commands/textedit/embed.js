@@ -24,7 +24,6 @@ module.exports = class EmbedCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
         }
-        console.log(`[Command] ${message.content}`);
         const embedMessage = args.text;
         const embed = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)

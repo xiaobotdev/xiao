@@ -25,7 +25,6 @@ module.exports = class RollCommand extends commando.Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        console.log(`[Command] ${message.content}`);
         const value = args.number;
         const roll = Math.floor(Math.random() * value) + 1;
         return message.say(`You rolled a ${roll}.`);
