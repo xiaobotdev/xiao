@@ -18,9 +18,8 @@ module.exports = class InfoCommand extends commando.Command {
             examples: [';info'],
             args: [{
                 key: 'shardID',
-                prompt: 'Which Shard would you like to get data for?',
-                type: 'integer',
-                default: ''
+                prompt: 'Which Shard would you like to get data for? You can find your shard with `;server`.',
+                type: 'integer'
             }]
         });
     }
@@ -30,14 +29,7 @@ module.exports = class InfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        let shardID = args.shardID + 1;
-        if (shardID === 0) {
-            return message.say(':x: Error! Invalid Shard!');
-        }
-        if (!shardID) {
-            shardID = this.client.shard.id + 1;
-        }
-        shardID = shardID - 1;
+        const shardID = args.shardID;
         if (shardID > this.client.options.shardCount - 1 || shardID < 0) {
             return message.say(':x: Error! Invalid Shard!');
         }
