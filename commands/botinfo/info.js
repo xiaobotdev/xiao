@@ -20,13 +20,7 @@ module.exports = class InfoCommand extends commando.Command {
                 key: 'shardID',
                 prompt: 'Which Shard would you like to get data for?',
                 type: 'integer',
-                validate: shardID => {
-                    if (shardID < this.client.shardCount && shardID > -1) {
-                        return true;
-                    }
-                    return 'Invalid Shard ID.';
-                },
-                default: this.client.shard.id
+                default: ''
             }]
         });
     }
@@ -36,7 +30,13 @@ module.exports = class InfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const shardID = args.shardID;
+        let shardID = args.shardID;
+        if (!shardID) {
+            shardID = this.client.shard.id;
+        }
+        else if (shardID > this.client.shardCount - 1 && shardID < 0) {
+            return message.say(':x: Error! Invalid Shard!');
+        }
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
