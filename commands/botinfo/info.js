@@ -30,11 +30,15 @@ module.exports = class InfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
+        console.log(args.shardID + ' (Plain Arg)');
         let shardID = args.shardID + 1 || this.client.shardID + 1;
+        console.log(shardID + ' (After || Check)');
         shardID = shardID - 1;
+        console.log(shardID + ' (After - 1)');
         if (shardID > this.client.options.shardCount - 1 || shardID < 0) {
             return message.say(':x: Error! Invalid Shard!');
         }
+        console.log(shardID + ' (After Invalid Check)');
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
