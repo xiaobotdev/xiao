@@ -32,7 +32,7 @@ module.exports = class InfoCommand extends commando.Command {
         }
         let shardID = args.shardID + 1;
         if (!shardID) {
-            shardID = this.client.shard.id;
+            shardID = this.client.shard.id + 1;
         }
         shardID = shardID - 1;
         if (shardID > this.client.options.shardCount - 1 || shardID < 0) {
