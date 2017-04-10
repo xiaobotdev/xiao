@@ -31,6 +31,9 @@ module.exports = class InfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         let shardID = args.shardID + 1;
+        if (shardID === 0) {
+            return message.say(':x: Error! Invalid Shard!');
+        }
         if (!shardID) {
             shardID = this.client.shard.id + 1;
         }
