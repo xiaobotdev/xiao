@@ -6,7 +6,7 @@ module.exports = class InviteCommand extends commando.Command {
             name: 'invite',
             group: 'botinfo',
             memberName: 'invite',
-            description: 'Sends you an invite for the bot, or an invite to my server, Heroes of Dreamland. (;invite)',
+            description: 'Sends you an invite for the bot and an invite to my server. (;invite)',
             examples: [';invite']
         });
     }
