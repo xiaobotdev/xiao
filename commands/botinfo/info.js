@@ -44,7 +44,7 @@ module.exports = class InfoCommand extends commando.Command {
             .setColor(0x00AE86)
             .setFooter(`©2017 dragonfire535 | Version ${pkg.version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
             .addField('Servers',
-                `${this.client.guilds.size} / ${guilds[shardID]}`, true)
+                `${guilds[shardID]} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
             .addField('Shards',
                 `${this.client.options.shardCount} (${shardID})`, true)
             .addField('Commands',
