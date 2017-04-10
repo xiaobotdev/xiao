@@ -33,7 +33,6 @@ client.registry
 
 client.on('guildCreate', async(guild) => {
     console.log(`[Guild] I have joined the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
-    client.guilds.get(process.env.SERVER_ID).channels.get(process.env.ANNOUNCEMENT_CHANNEL_ID).send(`I have joined the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
     const results = await client.shard.fetchClientValues('guilds.size');
     const count = results.reduce((prev, val) => prev + val, 0);
     console.log(`[Guild Count] ${count}`);
@@ -67,7 +66,6 @@ client.on('guildCreate', async(guild) => {
 
 client.on('guildDelete', async(guild) => {
     console.log(`[Guild] I have left the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
-    client.guilds.get(process.env.SERVER_ID).channels.get(process.env.ANNOUNCEMENT_CHANNEL_ID).send(`I have left the server: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
     const results = await client.shard.fetchClientValues('guilds.size');
     const count = results.reduce((prev, val) => prev + val, 0);
     console.log(`[Guild Count] ${count}`);
