@@ -33,9 +33,6 @@ module.exports = class GoogleCommand extends commando.Command {
                 .get(`https://www.google.com/search`)
                 .query({
                     q: thingToSearch
-                })
-                .set({
-                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.138 Safari/537.36 Vivaldi/1.8.770.54'
                 });
             const $ = cheerio.load(response.text);
             let href = $('.r').first().find('a').first().attr('href');
