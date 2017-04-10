@@ -15,23 +15,38 @@ module.exports = class InfoCommand extends commando.Command {
             group: 'botinfo',
             memberName: 'info',
             description: 'Gives some bot info. (;info)',
-            examples: [';info']
+            examples: [';info'],
+            args: [{
+                key: 'shardID',
+                prompt: 'Which Shard would you like to get data for?',
+                type: 'integer',
+                validate: shardID => {
+                    if (shardID < this.client.shardCount && shardID > -1) {
+                        return true;
+                    }
+                    return 'Invalid Shard ID.';
+                },
+                default: this.client.shard.id
+            }]
         });
     }
 
-    async run(message) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
+        const shardID = args.shardID;
+        const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
+        const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
         const embed = new Discord.RichEmbed()
             .setColor(0x00AE86)
             .setFooter(`©2017 dragonfire535 | Version ${pkg.version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
             .addField('Servers',
-                `${this.client.guilds.size} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
+                `${this.client.guilds.size} / ${guilds[shardID]}`, true)
             .addField('Shards',
-                this.client.options.shardCount, true)
+                `${this.client.options.shardCount} (${shardID})`, true)
             .addField('Commands',
                 '113', true)
             .addField('Owner',
@@ -39,9 +54,9 @@ module.exports = class InfoCommand extends commando.Command {
             .addField('Source Code',
                 '[View Here](https://github.com/dragonfire535/xiaobot)', true)
             .addField('Memory Usage',
-                `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
+                `${memory[shardID]}MB`, true)
             .addField('Uptime',
-                moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
+                moment.duration(uptime[shardID]).format('d[d]h[h]m[m]s[s]'), true)
             .addField('Node Version',
                 process.version, true)
             .addField('Library',
