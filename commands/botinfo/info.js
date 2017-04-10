@@ -34,7 +34,7 @@ module.exports = class InfoCommand extends commando.Command {
         if (!shardID) {
             shardID = this.client.shard.id;
         }
-        else if (shardID > this.client.shardCount - 1 && shardID < 0) {
+        else if (shardID > this.client.options.shardCount - 1 && shardID < 0) {
             return message.say(':x: Error! Invalid Shard!');
         }
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
