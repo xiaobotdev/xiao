@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class YuGiOhCommand extends commando.Command {
+module.exports = class YuGiOhCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'yugioh',
@@ -29,7 +29,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
                 .get(`http://yugiohprices.com/api/card_data/${cardName}`);
             const data = response.body.data;
             if (data.card_type === 'monster') {
-                const embed = new Discord.RichEmbed()
+                const embed = new RichEmbed()
                     .setColor(0xBE5F1F)
                     .setTitle(data.name)
                     .setDescription(data.text)
@@ -48,7 +48,7 @@ module.exports = class YuGiOhCommand extends commando.Command {
                         data.level, true);
                 return message.embed(embed);
             }
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0xBE5F1F)
                 .setTitle(data.name)
                 .setDescription(data.text)

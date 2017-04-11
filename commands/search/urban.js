@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class UrbanCommand extends commando.Command {
+module.exports = class UrbanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'urban',
@@ -36,7 +36,7 @@ module.exports = class UrbanCommand extends commando.Command {
                     term: wordToDefine
                 });
             const data = response.body.list[0];
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0x32a8f0)
                 .setAuthor('Urban Dictionary', 'http://a1.mzstatic.com/eu/r30/Purple71/v4/66/54/68/6654683f-cacd-4a55-1784-f14257f77874/icon175x175.png')
                 .setURL(data.permalink)

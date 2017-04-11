@@ -1,6 +1,6 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 
-module.exports = class FactCoreCommand extends commando.Command {
+module.exports = class FactCoreCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'factcore',

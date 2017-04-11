@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class TypingGameCommand extends commando.Command {
+module.exports = class TypingGameCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'typinggame',
@@ -51,7 +51,7 @@ module.exports = class TypingGameCommand extends commando.Command {
                 levelWord = 'ten';
                 break;
         }
-        const embed = new Discord.RichEmbed()
+        const embed = new RichEmbed()
             .setTitle(`You have **${levelWord}** seconds to type:`)
             .setDescription(randomSentence);
         const embedMsg = await message.embed(embed);

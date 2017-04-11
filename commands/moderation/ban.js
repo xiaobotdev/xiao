@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class BanCommand extends commando.Command {
+module.exports = class BanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'ban',
@@ -47,7 +47,7 @@ module.exports = class BanCommand extends commando.Command {
         try {
             const banUser = await message.guild.member(member).ban();
             const okHandMsg = await message.say(':ok_hand:');
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0xFF0000)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)

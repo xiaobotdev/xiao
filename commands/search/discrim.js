@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class DiscrimCommand extends commando.Command {
+module.exports = class DiscrimCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'discrim',
@@ -34,7 +34,7 @@ module.exports = class DiscrimCommand extends commando.Command {
         }
         const userToSearch = args.discrim;
         const users = await this.client.users.filter(u => u.discriminator === userToSearch).map(u => u.username).sort();
-        const embed = new Discord.RichEmbed()
+        const embed = new RichEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${userToSearch}`)
             .setDescription(users.join(', '));
         return message.embed(embed);

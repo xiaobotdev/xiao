@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const request = require('superagent');
 
-module.exports = class WebhookCommand extends commando.Command {
+module.exports = class WebhookCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'webhook',

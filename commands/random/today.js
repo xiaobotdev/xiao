@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class TodayCommand extends commando.Command {
+module.exports = class TodayCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'today',
@@ -31,7 +31,7 @@ module.exports = class TodayCommand extends commando.Command {
             const parsedResponse = JSON.parse(response.text);
             const events = parsedResponse.data.Events;
             const randomNumber = Math.floor(Math.random() * events.length);
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setURL(parsedResponse.url)
                 .setTitle(`On this day (${parsedResponse.date})...`)

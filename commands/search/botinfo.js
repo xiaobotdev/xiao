@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class BotSearchCommand extends commando.Command {
+module.exports = class BotSearchCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'botinfo',
@@ -35,7 +35,7 @@ module.exports = class BotSearchCommand extends commando.Command {
                     'Authorization': process.env.DISCORD_BOTS_KEY
                 });
             const data = response.body;
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://cdn.discordapp.com/icons/110373943822540800/47336ad0631ac7aac0a48a2ba6246c65.jpg')
                 .setTitle(data.name)

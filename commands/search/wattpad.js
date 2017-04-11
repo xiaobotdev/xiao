@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class WattpadCommand extends commando.Command {
+module.exports = class WattpadCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'wattpad',
@@ -35,7 +35,7 @@ module.exports = class WattpadCommand extends commando.Command {
                     limit: 1
                 });
             const data = response.body.stories[0];
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0xF89C34)
                 .setAuthor('Wattpad', 'http://www.selfpubtoolbox.com/wp-content/uploads/2015/05/a6044fd3a88acd5043860484db972ca6.png')
                 .setURL(data.url)

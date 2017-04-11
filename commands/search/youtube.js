@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class YouTubeCommand extends commando.Command {
+module.exports = class YouTubeCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'youtube',
@@ -38,7 +38,7 @@ module.exports = class YouTubeCommand extends commando.Command {
                     key: process.env.YOUTUBE_KEY
                 });
             const data = response.body.items[0];
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0xDD2825)
                 .setTitle(data.snippet.title)
                 .setDescription(data.snippet.description)

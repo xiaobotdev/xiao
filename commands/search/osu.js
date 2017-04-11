@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class OsuCommand extends commando.Command {
+module.exports = class OsuCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'osu',
@@ -38,7 +38,7 @@ module.exports = class OsuCommand extends commando.Command {
                     type: 'string'
                 });
             const data = response.body[0];
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')
                 .setURL('https://osu.ppy.sh/')

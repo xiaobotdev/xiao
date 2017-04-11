@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class KickCommand extends commando.Command {
+module.exports = class KickCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'kick',
@@ -44,7 +44,7 @@ module.exports = class KickCommand extends commando.Command {
         try {
             const kickUser = await message.guild.member(member).kick();
             const okHandMsg = await message.say(':ok_hand:');
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0xFFA500)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)

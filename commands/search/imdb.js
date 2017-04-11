@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class IMDBCommand extends commando.Command {
+module.exports = class IMDBCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'imdb',
@@ -37,7 +37,7 @@ module.exports = class IMDBCommand extends commando.Command {
                     plot: 'full'
                 });
             const data = response.body;
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0xDBA628)
                 .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
                 .setURL(`http://www.imdb.com/title/${data.imdbID}`)

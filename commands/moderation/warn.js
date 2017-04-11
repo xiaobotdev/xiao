@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class WarnCommand extends commando.Command {
+module.exports = class WarnCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'warn',
@@ -41,7 +41,7 @@ module.exports = class WarnCommand extends commando.Command {
         if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         try {
             const okHandMsg = await message.say(':ok_hand:');
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0xFFFF00)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)

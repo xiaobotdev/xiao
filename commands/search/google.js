@@ -1,9 +1,9 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const request = require('superagent');
 const cheerio = require('cheerio');
 const querystring = require('querystring');
 
-module.exports = class GoogleCommand extends commando.Command {
+module.exports = class GoogleCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'google',

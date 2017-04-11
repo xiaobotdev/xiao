@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const Jimp = require('jimp');
 
-module.exports = class RIPCommand extends commando.Command {
+module.exports = class RIPCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'rip',

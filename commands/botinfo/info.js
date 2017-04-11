@@ -1,10 +1,10 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
-const pkg = require('../../package.json');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
+const { version } = require('../../package.json');
 const moment = require('moment');
 require('moment-duration-format');
 
-module.exports = class InfoCommand extends commando.Command {
+module.exports = class InfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'info',
@@ -36,9 +36,9 @@ module.exports = class InfoCommand extends commando.Command {
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
-        const embed = new Discord.RichEmbed()
+        const embed = new RichEmbed()
             .setColor(0x00AE86)
-            .setFooter(`©2017 dragonfire535 | Version ${pkg.version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
+            .setFooter(`©2017 dragonfire535 | Version ${version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
             .addField('Servers',
                 `${guilds[shardID]} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
             .addField('Shards',
