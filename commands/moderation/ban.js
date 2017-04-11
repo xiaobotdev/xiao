@@ -52,7 +52,7 @@ module.exports = class BanCommand extends Command {
                 .setColor(0xFF0000)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.username}#${member.user.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
-            return message.guild.channels.find('name', 'mod_logs').embed(embed);
+            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');
