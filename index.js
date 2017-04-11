@@ -50,7 +50,7 @@ client.on('guildCreate', async(guild) => {
     }
     try {
         const response = await request
-            .post(`https://bots.discord.pw/api/bots/${process.env.BOT_ID}/stats`)
+            .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
             .set({
                 'Authorization': process.env.DISCORD_BOTS_KEY
             })
@@ -83,7 +83,7 @@ client.on('guildDelete', async(guild) => {
     }
     try {
         const response = await request
-            .post(`https://bots.discord.pw/api/bots/${process.env.BOT_ID}/stats`)
+            .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
             .set({
                 'Authorization': process.env.DISCORD_BOTS_KEY
             })
