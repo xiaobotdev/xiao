@@ -13,8 +13,8 @@ String.prototype.shuffle = function() {
 };
 
 module.exports = class ShuffleCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'shuffle',
             group: 'textedit',
             memberName: 'shuffle',

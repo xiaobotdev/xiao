@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 const request = require('superagent');
 
 module.exports = class WikipediaCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'wikipedia',
             group: 'search',
             memberName: 'wikipedia',

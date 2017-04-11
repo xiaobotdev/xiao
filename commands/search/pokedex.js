@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 const pokedex = require('./pkdex.json');
 
 module.exports = class PokedexCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'pokedex',
             aliases: [
                 'pokemon'

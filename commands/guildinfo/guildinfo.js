@@ -4,8 +4,8 @@ const moment = require('moment');
 require('moment-duration-format');
 
 module.exports = class GuildInfoCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'server',
             aliases: [
                 'guild',

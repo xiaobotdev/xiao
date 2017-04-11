@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 const request = require('superagent');
 
 module.exports = class YouTubeCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'youtube',
             aliases: [
                 'video'

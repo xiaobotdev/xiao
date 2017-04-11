@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 const math = require('mathjs');
 
 module.exports = class MathGameCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'mathgame',
             group: 'games',
             memberName: 'mathgame',

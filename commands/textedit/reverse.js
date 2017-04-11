@@ -1,8 +1,8 @@
 const commando = require('discord.js-commando');
 
 module.exports = class ReverseCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'reverse',
             group: 'textedit',
             memberName: 'reverse',

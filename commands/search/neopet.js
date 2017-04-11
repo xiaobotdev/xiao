@@ -1,8 +1,8 @@
 const commando = require('discord.js-commando');
 
 module.exports = class NeopetCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'neopet',
             group: 'search',
             memberName: 'neopet',
