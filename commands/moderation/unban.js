@@ -61,7 +61,7 @@ module.exports = class UnbanCommand extends Command {
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
                 .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
-            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            return message.guild.channels.find('name', 'mod_logs').embed(embed);
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');
