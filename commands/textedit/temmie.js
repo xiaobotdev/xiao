@@ -2,8 +2,8 @@ const { Command } = require('discord.js-commando');
 const temmize = require('./temmize.js');
 
 module.exports = class TemmieCommand extends Command {
-	constructor(Client) {
-		super(Client, {
+	constructor(client) {
+		super(client, {
 			name: 'temmie',
 			group: 'textedit',
 			memberName: 'temmie',
