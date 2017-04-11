@@ -11,8 +11,8 @@ module.exports = class StrawpollCommand extends Command {
             ],
             group: 'random',
             memberName: 'strawpoll',
-            description: 'Creates a Strawpoll with your options. (;strawpoll "Who likes chips?" Me | Not Me)',
-            examples: [';strawpoll "Who likes chips?" Me | Not Me'],
+            description: 'Creates a Strawpoll with your options. (;strawpoll "Who likes chips?" "Me" "Not Me")',
+            examples: [';strawpoll "Who likes chips?" "Me" "Not Me"'],
             args: [{
                 key: 'title',
                 prompt: 'What would you like the title of the Strawpoll to be? Surround in "" for multiple words.',
@@ -25,17 +25,9 @@ module.exports = class StrawpollCommand extends Command {
                 }
             }, {
                 key: 'choices',
-                prompt: 'What choices do you want me pick from? Split them with " | ".',
+                prompt: 'What choices do you want me pick from? Surround each choice in "".',
                 type: 'string',
-                validate: content => {
-                    if (content.includes(' | ')) {
-                        return true;
-                    }
-                    if (content.length > 160) {
-                        return 'Please limit your options to 160 characters.';
-                    }
-                    return 'Please split your choices with ' | '.';
-                }
+                infinite: true
             }]
         });
     }
