@@ -39,13 +39,12 @@ module.exports = class ShardInfoCommand extends Command {
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
         const embed = new RichEmbed()
             .setColor(0x00AE86)
-            .setFooter(`©2017 dragonfire535 | Version ${version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
             .addField('Servers',
                 `${guilds[shardID]} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
             .addField('Shards',
                 `${this.client.options.shardCount} (${shardID})`, true)
-            .addField('Commands',
-                '108', true)
+            .addField('Version',
+                version, true)
             .addField('Memory Usage',
                 `${memory[shardID]}MB`, true)
             .addField('Uptime',

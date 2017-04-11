@@ -33,7 +33,7 @@ module.exports = class InfoCommand extends Command {
             .addField('Shards',
                 `${this.client.options.shardCount} (${this.client.shard.id})`, true)
             .addField('Commands',
-                '108', true)
+                '114', true)
             .addField('Owner',
                 'dragonfire535#8081', true)
             .addField('Source Code',
