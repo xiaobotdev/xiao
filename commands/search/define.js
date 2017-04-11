@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class DefineCommand extends commando.Command {
+module.exports = class DefineCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'define',
@@ -41,7 +41,7 @@ module.exports = class DefineCommand extends commando.Command {
                     api_key: process.env.WORDNIK_KEY
                 });
             const data = response.body[0];
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setTitle(data.word)
                 .setDescription(data.text);

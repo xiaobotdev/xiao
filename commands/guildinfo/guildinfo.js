@@ -1,9 +1,9 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
 
-module.exports = class GuildInfoCommand extends commando.Command {
+module.exports = class GuildInfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'server',
@@ -25,7 +25,7 @@ module.exports = class GuildInfoCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const embed = new Discord.RichEmbed()
+        const embed = new RichEmbed()
             .setColor(0x00AE86)
             .setThumbnail(message.guild.iconURL)
             .addField('**Name:**',

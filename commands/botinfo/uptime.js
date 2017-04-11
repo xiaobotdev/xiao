@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const moment = require('moment');
 require('moment-duration-format');
 
-module.exports = class UptimeCommand extends commando.Command {
+module.exports = class UptimeCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'uptime',

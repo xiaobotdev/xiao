@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const math = require('mathjs');
 
-module.exports = class MathGameCommand extends commando.Command {
+module.exports = class MathGameCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'mathgame',
@@ -51,7 +51,7 @@ module.exports = class MathGameCommand extends commando.Command {
         const randomValue2 = Math.floor(Math.random() * randomValue) + 1;
         const randomExpression = randomValue1 + randomType + randomValue2;
         const solved = math.eval(randomExpression);
-        const embed = new Discord.RichEmbed()
+        const embed = new RichEmbed()
             .setTitle('You have **ten** seconds to answer:')
             .setDescription(randomExpression);
         const embedMsg = await message.embed(embed);

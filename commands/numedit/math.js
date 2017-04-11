@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const math = require('mathjs');
 
-module.exports = class MathCommand extends commando.Command {
+module.exports = class MathCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'math',

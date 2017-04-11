@@ -1,5 +1,5 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 const languages = {
     "af": "Afrikaans",
@@ -97,7 +97,7 @@ const languages = {
     "zh": "Chinese"
 };
 
-module.exports = class TranslateCommand extends commando.Command {
+module.exports = class TranslateCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'translate',
@@ -150,7 +150,7 @@ module.exports = class TranslateCommand extends commando.Command {
             const langs = data.lang.split('-');
             const langTo = langs[1];
             const langFrom = langs[0];
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setColor(0x00AE86)
                 .addField(`Input (From: ${languages[langFrom]}):`,
                     query)

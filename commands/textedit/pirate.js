@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const pirateSpeak = require('pirate-speak');
 
-module.exports = class PirateCommand extends commando.Command {
+module.exports = class PirateCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'pirate',

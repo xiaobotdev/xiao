@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const request = require('superagent');
 
-module.exports = class QuizCommand extends commando.Command {
+module.exports = class QuizCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'quiz',
@@ -29,7 +29,7 @@ module.exports = class QuizCommand extends commando.Command {
                 });
             const data = response.body[0];
             const answer = data.answer.toLowerCase().split('<i>').join('').split('</i>').join('');
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setTitle('You have **fifteen** seconds to answer this question:')
                 .setDescription(`**Category: ${data.category.title}**\n${data.question}`);
             const embedMsg = await message.embed(embed);

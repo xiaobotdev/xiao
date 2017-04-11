@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class UnbanCommand extends commando.Command {
+module.exports = class UnbanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'unban',
@@ -55,7 +55,7 @@ module.exports = class UnbanCommand extends commando.Command {
         try {
             const unbanUser = await message.guild.unban(unbanUserObj);
             const okHandMsg = await message.say(':ok_hand:');
-            const embed = new Discord.RichEmbed()
+            const embed = new RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0x00AE86)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)

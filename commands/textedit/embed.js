@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 
-module.exports = class EmbedCommand extends commando.Command {
+module.exports = class EmbedCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'embed',
@@ -25,7 +25,7 @@ module.exports = class EmbedCommand extends commando.Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
         }
         const embedMessage = args.text;
-        const embed = new Discord.RichEmbed()
+        const embed = new RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setColor(0x00AE86)
             .setTimestamp()

@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const stringToBinary = require('string-to-binary');
 
-module.exports = class BinaryCommand extends commando.Command {
+module.exports = class BinaryCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'binary',
