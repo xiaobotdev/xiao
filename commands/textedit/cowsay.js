@@ -26,6 +26,6 @@ module.exports = class CowsayCommand extends Command {
             text: turnToCowsay,
             e: 'oO',
             T: 'U '
-        })).catch(error => message.say(':x: Error! Perhaps the content is too long?'));
+        })).catch(() => message.say(':x: Error! Perhaps the content is too long?'));
     }
 };
