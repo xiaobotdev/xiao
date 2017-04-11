@@ -2,8 +2,8 @@ const commando = require('discord.js-commando');
 const Jimp = require('jimp');
 
 module.exports = class BobRossCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'bobross',
             aliases: [
                 'bob',

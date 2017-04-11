@@ -1,8 +1,8 @@
 const commando = require('discord.js-commando');
 
 module.exports = class InviteCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'invite',
             group: 'botinfo',
             memberName: 'invite',

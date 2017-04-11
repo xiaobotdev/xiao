@@ -1,8 +1,8 @@
 const commando = require('discord.js-commando');
 
 module.exports = class PunchCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'punch',
             group: 'roleplay',
             memberName: 'punch',

@@ -2,8 +2,8 @@ const commando = require('discord.js-commando');
 const Jimp = require('jimp');
 
 module.exports = class YearsCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: '3000years',
             aliases: [
                 'az'

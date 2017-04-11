@@ -2,8 +2,8 @@ const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
 module.exports = class UnbanCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'unban',
             aliases: [
                 'unbanne'

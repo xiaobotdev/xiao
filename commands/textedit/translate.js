@@ -98,8 +98,8 @@ const languages = {
 };
 
 module.exports = class TranslateCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'translate',
             group: 'textedit',
             memberName: 'translate',

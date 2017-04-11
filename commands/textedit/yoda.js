@@ -2,8 +2,8 @@ const commando = require('discord.js-commando');
 const request = require('superagent');
 
 module.exports = class YodaCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'yoda',
             group: 'textedit',
             memberName: 'yoda',

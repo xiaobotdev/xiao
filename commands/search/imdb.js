@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 const request = require('superagent');
 
 module.exports = class IMDBCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'imdb',
             aliases: [
                 'movie',

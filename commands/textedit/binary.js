@@ -2,8 +2,8 @@ const commando = require('discord.js-commando');
 const stringToBinary = require('string-to-binary');
 
 module.exports = class BinaryCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'binary',
             group: 'textedit',
             memberName: 'binary',

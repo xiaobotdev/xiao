@@ -1,8 +1,8 @@
 const commando = require('discord.js-commando');
 
 module.exports = class MagicBallCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: '8ball',
             group: 'response',
             memberName: '8ball',

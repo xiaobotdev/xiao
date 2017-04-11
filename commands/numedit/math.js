@@ -2,8 +2,8 @@ const commando = require('discord.js-commando');
 const math = require('mathjs');
 
 module.exports = class MathCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'math',
             aliases: [
                 'add',

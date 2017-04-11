@@ -1,8 +1,8 @@
 const commando = require('discord.js-commando');
 
 module.exports = class RollCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'roll',
             aliases: [
                 'randomnumber',

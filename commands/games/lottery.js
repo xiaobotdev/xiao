@@ -1,8 +1,8 @@
 const commando = require('discord.js-commando');
 
 module.exports = class LotteryCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'lottery',
             group: 'games',
             memberName: 'lottery',

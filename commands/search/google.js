@@ -4,8 +4,8 @@ const cheerio = require('cheerio');
 const querystring = require('querystring');
 
 module.exports = class GoogleCommand extends commando.Command {
-    constructor(Client) {
-        super(Client, {
+    constructor(client) {
+        super(client, {
             name: 'google',
             aliases: [
                 'search'
