@@ -27,7 +27,8 @@ client.registry
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
-        prefix: false
+        prefix: false,
+        commandState: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 

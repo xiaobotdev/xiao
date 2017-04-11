@@ -9,18 +9,13 @@ module.exports = class ChooseCommand extends Command {
             ],
             group: 'response',
             memberName: 'choose',
-            description: 'Chooses between things. (;choose Cow | Sheep)',
-            examples: [';choose Cow | Sheep', ';choose Bark | Woof | Meow | Moo'],
+            description: 'Chooses between things. (;choose "Cow" "Sheep")',
+            examples: [';choose "Cow" "Sheep"', ';choose "Bark" "Woof" "Meow" "Moo"'],
             args: [{
                 key: 'choices',
-                prompt: 'What choices do you want me pick from? Split them with " | ".',
+                prompt: 'What choices do you want me pick from? Surround each choice in "".',
                 type: 'string',
-                validate: content => {
-                    if (content.includes(' | ')) {
-                        return true;
-                    }
-                    return 'Please split your choices with ' | '.';
-                }
+                infinite: true
             }]
         });
     }
@@ -30,7 +25,6 @@ module.exports = class ChooseCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         let choices = args.choices;
-        choices = choices.split(' | ');
         choices = choices[Math.floor(Math.random() * choices.length)];
         return message.say(`I choose ${choices}!`);
     }
