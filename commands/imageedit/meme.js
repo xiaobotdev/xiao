@@ -53,9 +53,9 @@ module.exports = class MemeCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
         const type = args.type.toLowerCase();
-        const toprow = args.toprow.replace(/[ ]/g, '-');
+        let toprow = args.toprow.replace(/[ ]/g, '-');
         toprow = toprow.replace(/[?]/g, '~q');
-        const bottomrow = args.bottomrow.replace(/[ ]/g, '-');
+        let bottomrow = args.bottomrow.replace(/[ ]/g, '-');
         bottomrow = bottomrow.replace(/[?]/g, '~q');
         const link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
         return message.channel.sendFile(link).catch(() => message.say(':x: Error! Something went wrong!'));
