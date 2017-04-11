@@ -20,7 +20,7 @@ You can Self-Host the bot easily, provided you have API keys and a Discord Bot T
 
 APIs that require API Keys:
 
-[Wattpad API](https://developer.wattpad.com/docs/api) | [Wordnik API](http://developer.wordnik.com/docs.html) | [osu! API](https://osu.ppy.sh/p/api) | [YouTube Data API](https://developers.google.com/youtube/v3/) | [Yoda Speak API](https://market.mashape.com/ismaelc/yoda-speak) | [Yandex.Translate API](https://translate.yandex.com/developers)
+[Wattpad](https://developer.wattpad.com/docs/api) | [Wordnik](http://developer.wordnik.com/docs.html) | [osu!](https://osu.ppy.sh/p/api) | [YouTube Data](https://developers.google.com/youtube/v3/) | [Yoda Speak](https://market.mashape.com/ismaelc/yoda-speak) | [Yandex.Translate](https://translate.yandex.com/developers)
 
 > Note: If you do self-host, you will need to go into the file `index.js` and remove the entries for requests to Discord Bots and Carbon.
 

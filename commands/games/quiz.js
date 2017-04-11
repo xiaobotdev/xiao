@@ -28,11 +28,11 @@ module.exports = class QuizCommand extends Command {
                     count: 1
                 });
             const data = response.body[0];
-            const answer = data.answer.toLowerCase().split('<i>').join('').split('</i>').join('');
+            const answer = data.answer.toLowerCase().replace(/(<i>|<\/i>)/g, '');
             const embed = new RichEmbed()
                 .setTitle('You have **fifteen** seconds to answer this question:')
                 .setDescription(`**Category: ${data.category.title}**\n${data.question}`);
-            const embedMsg = await message.embed(embed);
+            await message.embed(embed);
             try {
                 const collected = await message.channel.awaitMessages(res => res.author.id === message.author.id, {
                     max: 1,
@@ -40,15 +40,12 @@ module.exports = class QuizCommand extends Command {
                     errors: ['time']
                 });
                 if (collected.first().content.toLowerCase() !== answer) {
-                    const loseMsg = await message.say(`The correct answer is: ${answer}`);
-                    return [embedMsg, loseMsg];
+                    return message.say(`The correct answer is: ${answer}`);
                 }
-                const victoryMsg = await message.say(`The correct answer is: ${answer}`);
-                return [embedMsg, victoryMsg];
+                return message.say(`Perfect! The correct answer is: ${answer}`);
             }
             catch (err) {
-                const loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
-                return [embedMsg, loseMsg];
+                return message.say(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
             }
         }
         catch (err) {

@@ -30,31 +30,31 @@ module.exports = class MathGameCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         const level = args.difficulty.toLowerCase();
-        let randomType = ['+', '-', '*'];
-        randomType = randomType[Math.floor(Math.random() * randomType.length)];
-        let randomValue;
+        let operation = ['+', '-', '*'];
+        operation = operation[Math.floor(Math.random() * operation.length)];
+        let value;
         switch (level) {
             case 'easy':
-                randomValue = 10;
+                value = 10;
                 break;
             case 'medium':
-                randomValue = 50;
+                value = 50;
                 break;
             case 'hard':
-                randomValue = 100;
+                value = 100;
                 break;
             case 'extreme':
-                randomValue = 1000;
+                value = 1000;
                 break;
         }
-        const randomValue1 = Math.floor(Math.random() * randomValue) + 1;
-        const randomValue2 = Math.floor(Math.random() * randomValue) + 1;
-        const randomExpression = randomValue1 + randomType + randomValue2;
-        const solved = math.eval(randomExpression);
+        const value1 = Math.floor(Math.random() * value) + 1;
+        const value2 = Math.floor(Math.random() * value) + 1;
+        const expression = value1 + operation + value2;
+        const solved = math.eval(expression);
         const embed = new RichEmbed()
             .setTitle('You have **ten** seconds to answer:')
-            .setDescription(randomExpression);
-        const embedMsg = await message.embed(embed);
+            .setDescription(expression);
+        await message.embed(embed);
         try {
             const collected = await message.channel.awaitMessages(response => response.author.id === message.author.id, {
                 max: 1,
@@ -62,15 +62,12 @@ module.exports = class MathGameCommand extends Command {
                 errors: ['time']
             });
             if (collected.first().content !== solved.toString()) {
-                const loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
-                return [embedMsg, loseMsg];
+                return message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
             }
-            const victoryMsg = await message.say(`Good Job! You won! ${solved} is the correct answer!`);
-            return [embedMsg, victoryMsg];
+            return message.say(`Good Job! You won! ${solved} is the correct answer!`);
         }
         catch (err) {
-            const loseMsg = await message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
-            return [embedMsg, loseMsg];
+            return message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
         }
     }
 };

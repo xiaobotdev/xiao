@@ -4,7 +4,7 @@ module.exports = class RandomPunCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'pun',
-            group: 'response',
+            group: 'randomimg',
             memberName: 'pun',
             description: 'Sends a random pun image. (;pun)',
             examples: [';pun']

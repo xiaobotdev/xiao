@@ -21,7 +21,7 @@ module.exports = class YodaCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const turnToYoda = args.text;
+        const text = args.text;
         try {
             const response = await request
                 .get('https://yoda.p.mashape.com/yoda')
@@ -30,7 +30,7 @@ module.exports = class YodaCommand extends Command {
                     'Accept': 'text/plain'
                 })
                 .query({
-                    sentence: turnToYoda
+                    sentence: text
                 });
             return message.say(`\u180E${response.text}`);
         }

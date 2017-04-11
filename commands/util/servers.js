@@ -9,7 +9,7 @@ module.exports = class ServersCommand extends Command {
             ],
             group: 'util',
             memberName: 'servers',
-            description: 'Sends a list of all server names and IDs to the log.',
+            description: 'Sends a list of all server names and IDs to the log. (;servers)',
             examples: [';servers']
         });
     }

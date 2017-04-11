@@ -30,8 +30,8 @@ module.exports = class MorseCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const toMorse = args.text;
-        const morseEncoded = morse.encode(toMorse);
-        return message.say(morseEncoded);
+        const text = args.text;
+        const encoded = morse.encode(text);
+        return message.say(encoded);
     }
 };

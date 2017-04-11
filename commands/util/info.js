@@ -12,7 +12,7 @@ module.exports = class InfoCommand extends Command {
                 'data',
                 'information'
             ],
-            group: 'botinfo',
+            group: 'util',
             memberName: 'info',
             description: 'Gives some bot info for your shard. (;info)',
             examples: [';info']
@@ -33,7 +33,7 @@ module.exports = class InfoCommand extends Command {
             .addField('Shards',
                 `${this.client.options.shardCount} (${this.client.shard.id})`, true)
             .addField('Commands',
-                '114', true)
+                '112', true)
             .addField('Owner',
                 'dragonfire535#8081', true)
             .addField('Source Code',

@@ -27,8 +27,8 @@ module.exports = class BinaryCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const turnToBinary = args.text;
-        const binaryText = stringToBinary(turnToBinary);
-        return message.say(binaryText);
+        const text = args.text;
+        const binary = stringToBinary(text);
+        return message.say(binary);
     }
 };

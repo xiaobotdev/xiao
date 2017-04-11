@@ -23,7 +23,7 @@ module.exports = class WattpadCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const queryBook = args.book;
+        const book = args.book;
         try {
             const response = await request
                 .get('https://api.wattpad.com:443/v4/stories')
@@ -31,7 +31,7 @@ module.exports = class WattpadCommand extends Command {
                     'Authorization': `Basic ${process.env.WATTPAD_KEY}`
                 })
                 .query({
-                    query: queryBook,
+                    query: book,
                     limit: 1
                 });
             const data = response.body.stories[0];

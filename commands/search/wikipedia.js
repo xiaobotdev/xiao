@@ -23,8 +23,8 @@ module.exports = class WikipediaCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const thingToSearch = args.query.split(')').join('%29');
-        const title = encodeURI(thingToSearch);
+        const query = args.query.replace(/[)]/g, '%29');
+        const title = encodeURI(query);
         try {
             const response = await request
                 .get(`https://en.wikipedia.org/w/api.php`)
@@ -32,7 +32,7 @@ module.exports = class WikipediaCommand extends Command {
                     action: 'query',
                     prop: 'extracts',
                     format: 'json',
-                    titles: thingToSearch,
+                    titles: query,
                     exintro: '',
                     explaintext: '',
                     redirects: '',

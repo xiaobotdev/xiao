@@ -29,10 +29,10 @@ module.exports = class DefineCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const defineThis = encodeURI(args.word);
+        const word = encodeURI(args.word);
         try {
             const response = await request
-                .get(`http://api.wordnik.com:80/v4/word.json/${defineThis}/definitions`)
+                .get(`http://api.wordnik.com:80/v4/word.json/${word}/definitions`)
                 .query({
                     limit: 1,
                     includeRelated: false,

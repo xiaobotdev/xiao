@@ -27,7 +27,8 @@ module.exports = class ZalgoCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const zalgoified = zalgo(args.text);
+        const text = args.text;
+        const zalgoified = zalgo(text);
         return message.say(`\u180E${zalgoified}`);
     }
 };

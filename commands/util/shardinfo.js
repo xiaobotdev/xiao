@@ -11,12 +11,13 @@ module.exports = class ShardInfoCommand extends Command {
             aliases: [
                 'shard-info',
                 'shard-data',
-                'sharddata'
+                'sharddata',
+                'shard'
             ],
-            group: 'botinfo',
+            group: 'util',
             memberName: 'shardinfo',
-            description: 'Gives some bot info for the Shard you specify. (;info 0)',
-            examples: [';info 0'],
+            description: 'Gives some bot info for the Shard you specify. (;shardinfo 0)',
+            examples: [';shardinfo 0'],
             args: [{
                 key: 'shardID',
                 prompt: 'Which Shard would you like to get data for?',
@@ -40,15 +41,15 @@ module.exports = class ShardInfoCommand extends Command {
         const embed = new RichEmbed()
             .setColor(0x00AE86)
             .addField('Servers',
-                `${guilds[shardID]} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
-            .addField('Shards',
-                `${this.client.options.shardCount} (${shardID})`, true)
-            .addField('Version',
-                version, true)
+                guilds[shardID], true)
+            .addField('Shard ID',
+                shardID, true)
             .addField('Memory Usage',
                 `${memory[shardID]}MB`, true)
             .addField('Uptime',
                 moment.duration(uptime[shardID]).format('d[d]h[h]m[m]s[s]'), true)
+            .addField('Version',
+                version, true)
             .addField('Node Version',
                 process.version, true);
         return message.embed(embed);

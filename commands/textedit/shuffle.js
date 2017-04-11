@@ -32,7 +32,8 @@ module.exports = class ShuffleCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const thingToShuffle = args.text;
-        return message.say(`\u180E${thingToShuffle.shuffle()}`);
+        const text = args.text;
+        const shuffled = text.shuffle();
+        return message.say(`\u180E${shuffled}`);
     }
 };

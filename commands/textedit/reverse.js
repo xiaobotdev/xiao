@@ -20,8 +20,8 @@ module.exports = class ReverseCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const stringToReverse = args.text;
-        const reversed = stringToReverse.split('').reverse().join('');
+        const text = args.text;
+        const reversed = text.split('').reverse().join('');
         return message.say(`\u180E${reversed}`);
     }
 };
