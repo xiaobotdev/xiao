@@ -13,7 +13,7 @@ module.exports = class ChooseCommand extends Command {
             examples: [';choose "Cow" "Sheep"', ';choose "Bark" "Woof" "Meow" "Moo"'],
             args: [{
                 key: 'choices',
-                prompt: 'What choices do you want me pick from? Surround each choice in "".',
+                prompt: 'What choices do you want me pick from?',
                 type: 'string',
                 infinite: true
             }]

@@ -25,7 +25,7 @@ module.exports = class MemeCommand extends Command {
                 }
             }, {
                 key: 'toprow',
-                prompt: 'What should the top row of the meme to be? Surround in "" for multiple words.',
+                prompt: 'What should the top row of the meme to be?',
                 type: 'string',
                 validate: toprow => {
                     if (toprow.match(/^[a-zA-Z0-9|.,!?'-\s]+$/) && toprow.length < 101) {
@@ -35,7 +35,7 @@ module.exports = class MemeCommand extends Command {
                 }
             }, {
                 key: 'bottomrow',
-                prompt: 'What should the bottom row of the meme to be? Surround in "" for multiple words.',
+                prompt: 'What should the bottom row of the meme to be?',
                 type: 'string',
                 validate: bottomrow => {
                     if (bottomrow.match(/^[a-zA-Z0-9|.,!?'-\s]+$/) && bottomrow.length < 101) {
