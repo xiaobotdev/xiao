@@ -20,7 +20,7 @@ module.exports = class HugCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const thingToRoleplay = args.thing;
-        return message.say(`${message.author} *hugs* ${thingToRoleplay}`);
+        const roleplayed = args.thing;
+        return message.say(`${message.author} *hugs* ${roleplayed}`);
     }
 };

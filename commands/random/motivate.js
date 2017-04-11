@@ -8,7 +8,7 @@ module.exports = class MotivateCommand extends Command {
                 'encourage',
                 'justdoit'
             ],
-            group: 'response',
+            group: 'random',
             memberName: 'motivate',
             description: 'Motivates someone. (;motivate @User)',
             examples: [';motivate @User'],
@@ -25,7 +25,7 @@ module.exports = class MotivateCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const userToMotivate = args.thing || message.author;
-        return message.say(`${userToMotivate}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
+        const motivated = args.thing || message.author;
+        return message.say(`${motivated}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
     }
 };

@@ -29,8 +29,8 @@ module.exports = class TypingGameCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         const level = args.difficulty.toLowerCase();
-        let randomSentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
-        randomSentence = randomSentence[Math.floor(Math.random() * randomSentence.length)];
+        let sentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
+        sentence = sentence[Math.floor(Math.random() * sentence.length)];
         let time;
         let levelWord;
         switch (level) {
@@ -53,24 +53,21 @@ module.exports = class TypingGameCommand extends Command {
         }
         const embed = new RichEmbed()
             .setTitle(`You have **${levelWord}** seconds to type:`)
-            .setDescription(randomSentence);
-        const embedMsg = await message.embed(embed);
+            .setDescription(sentence);
+        await message.embed(embed);
         try {
             const collected = await message.channel.awaitMessages(response => response.author.id === message.author.id, {
                 max: 1,
                 time: time,
                 errors: ['time']
             });
-            if (collected.first().content !== randomSentence) {
-                const loseMsg = await message.say('Nope, your sentence does not match the original. Try again next time!');
-                return [embedMsg, loseMsg];
+            if (collected.first().content !== sentence) {
+                return message.say('Nope, your sentence does not match the original. Try again next time!');
             }
-            const victoryMsg = await message.say(`Good Job! You won!`);
-            return [embedMsg, victoryMsg];
+            return message.say(`Good Job! You won!`);
         }
         catch (err) {
-            const loseMsg = await message.say('Aw... Too bad, try again next time!');
-            return [embedMsg, loseMsg];
+           return message.say('Aw... Too bad, try again next time!');
         }
     }
 };

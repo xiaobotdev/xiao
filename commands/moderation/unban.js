@@ -51,18 +51,17 @@ module.exports = class UnbanCommand extends Command {
         const reason = args.reason;
         const bans = await message.guild.fetchBans();
         if (!bans.has(memberID)) return message.say(':x: Error! Could not find this user in the bans.');
-        const unbanUserObj = await bans.get(memberID);
+        const unbanUser = await bans.get(memberID);
         try {
-            const unbanUser = await message.guild.unban(unbanUserObj);
-            const okHandMsg = await message.say(':ok_hand:');
+            await message.guild.unban(unbanUser);
+            await message.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
                 .setColor(0x00AE86)
                 .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
                 .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
-            const modLogMsg = await message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
-            return [unbanUser, okHandMsg, modLogMsg];
+            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');

@@ -31,19 +31,19 @@ module.exports = class LockdownCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['READ_MESSAGES', 'SEND_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ADMINISTRATOR')) return message.say(':x: Error! I don\'t have the Administrator permission! This is not given by default, as that\'s quite bad practice. Please give it to me to use the lockdown command!');
         }
-        const type = args.type;
-        if (type.toLowerCase() === 'start') {
+        const type = args.type.toLowerCase();
+        if (type === 'start') {
             try {
                 await message.channel.overwritePermissions(message.guild.defaultRole, {
                     SEND_MESSAGES: false
                 });
-                return message.say('**Lockdown Started, users without Administrator can no longer post messages. Please use ;lockdown stop to end the lockdown.**');
+                return message.say('**Lockdown Started, users without Administrator can no longer post messages. Please use `;lockdown stop` to end the lockdown.**');
             }
             catch (err) {
                 return message.say(':x: Error! Something went wrong!');
             }
         }
-        if (type.toLowerCase() === 'stop') {
+        if (type === 'stop') {
             try {
                 await message.channel.overwritePermissions(message.guild.defaultRole, {
                     SEND_MESSAGES: true

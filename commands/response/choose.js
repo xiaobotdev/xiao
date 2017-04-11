@@ -24,8 +24,8 @@ module.exports = class ChooseCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        let choices = args.choices;
-        choices = choices[Math.floor(Math.random() * choices.length)];
-        return message.say(`I choose ${choices}!`);
+        let choice = args.choices;
+        choice = choice[Math.floor(Math.random() * choice.length)];
+        return message.say(`I choose ${choice}!`);
     }
 };

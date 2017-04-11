@@ -26,21 +26,21 @@ module.exports = class GoogleCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const thingToSearch = args.query;
-        const searchMsg = await message.say('Searching...');
+        const query = args.query;
+        const msg = await message.say('Searching...');
         try {
             const response = await request
                 .get(`https://www.google.com/search`)
                 .query({
-                    q: thingToSearch
+                    q: query
                 });
             const $ = cheerio.load(response.text);
             let href = $('.r').first().find('a').first().attr('href');
             href = querystring.parse(href.replace('/url?', ''));
-            return searchMsg.edit(href.q);
+            return msg.edit(href.q);
         }
         catch (err) {
-            return searchMsg.edit(':x: Error! No Results Found!');
+            return msg.edit(':x: Error! No Results Found!');
         }
     }
 };

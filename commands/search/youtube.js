@@ -26,7 +26,7 @@ module.exports = class YouTubeCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const videoToSearch = args.video;
+        const video = args.video;
         try {
             const response = await request
                 .get('https://www.googleapis.com/youtube/v3/search')
@@ -34,7 +34,7 @@ module.exports = class YouTubeCommand extends Command {
                     part: 'snippet',
                     type: 'video',
                     maxResults: 1,
-                    q: videoToSearch,
+                    q: video,
                     key: process.env.YOUTUBE_KEY
                 });
             const data = response.body.items[0];

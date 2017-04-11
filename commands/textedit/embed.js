@@ -24,12 +24,12 @@ module.exports = class EmbedCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
         }
-        const embedMessage = args.text;
+        const text = args.text;
         const embed = new RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setColor(0x00AE86)
             .setTimestamp()
-            .setDescription(embedMessage);
+            .setDescription(text);
         await message.delete();
         return message.embed(embed);
     }

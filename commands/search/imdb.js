@@ -28,12 +28,12 @@ module.exports = class IMDBCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const queryMovie = args.movie;
+        const movie = args.movie;
         try {
             const response = await request
                 .get(`http://www.omdbapi.com/`)
                 .query({
-                    t: queryMovie,
+                    t: movie,
                     plot: 'full'
                 });
             const data = response.body;

@@ -33,8 +33,8 @@ module.exports = class RomajiCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const romajify = args.kana;
-        const romajified = hepburn.fromKana(romajify);
-        return message.say(romajified);
+        const kana = args.kana;
+        const romaji = hepburn.fromKana(kana);
+        return message.say(romaji);
     }
 };

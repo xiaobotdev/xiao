@@ -1,21 +1,21 @@
 const commando = require('discord.js-commando');
 const request = require('superagent');
+const path = require('path');
 const client = new commando.Client({
     commandPrefix: ';',
     unknownCommandResponse: false,
     owner: process.env.OWNER_ID,
     disableEveryone: true
 });
-const path = require('path');
 
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['botinfo', 'Bot Info'],
         ['userinfo', 'User Info'],
         ['guildinfo', 'Server Info'],
         ['moderation', 'Moderation'],
         ['response', 'Random Response'],
+        ['randomimg', 'Random Image'],
         ['avataredit', 'Avatar Manipulation'],
         ['textedit', 'Text Manipulation'],
         ['numedit', 'Number Manipulation'],
@@ -33,9 +33,9 @@ client.registry
 
 client.on('guildCreate', async(guild) => {
     console.log(`[Guild] I have joined the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
-    const results = await client.shard.fetchClientValues('guilds.size');
-    const count = results.reduce((prev, val) => prev + val, 0);
-    console.log(`[Guild Count] ${count}`);
+    const guilds = await client.shard.fetchClientValues('guilds.size');
+    const count = guilds.reduce((prev, val) => prev + val, 0);
+    console.log(`[Count] ${count}`);
     try {
         const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
@@ -66,9 +66,9 @@ client.on('guildCreate', async(guild) => {
 
 client.on('guildDelete', async(guild) => {
     console.log(`[Guild] I have left the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
-    const results = await client.shard.fetchClientValues('guilds.size');
-    const count = results.reduce((prev, val) => prev + val, 0);
-    console.log(`[Guild Count] ${count}`);
+    const guilds = await client.shard.fetchClientValues('guilds.size');
+    const count = guilds.reduce((prev, val) => prev + val, 0);
+    console.log(`[Count] ${count}`);
     try {
         const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
@@ -97,13 +97,14 @@ client.on('guildDelete', async(guild) => {
     }
 });
 
-client.on('disconnect', () => {
+client.on('disconnect', (event) => {
+    console.log(`[Disconnect] The Shard ${client.shard.id} disconnected with Code ${event.code}.`);
     process.exit(0);
 });
 
-client.once('ready', () => {
-    console.log('[Ready] Logged in!');
-    client.user.setGame(';help | dragonfire535');
+client.on('ready', () => {
+    console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
+    client.user.setGame(`;help | Shard ${client.shard.id}`);
 });
 
 process.on('unhandledRejection', console.error);

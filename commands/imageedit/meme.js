@@ -28,7 +28,7 @@ module.exports = class MemeCommand extends Command {
                 prompt: 'What should the top row of the meme to be?',
                 type: 'string',
                 validate: toprow => {
-                    if (toprow.match(/^[a-zA-Z0-9|.,!?'-\s]+$/) && toprow.length < 101) {
+                    if (toprow.match(/^[a-zA-Z0-9.,!?'\s]+$/) && toprow.length < 101) {
                         return true;
                     }
                     return 'Please do not use special characters and keep the rows under 100 characters each.';
@@ -38,7 +38,7 @@ module.exports = class MemeCommand extends Command {
                 prompt: 'What should the bottom row of the meme to be?',
                 type: 'string',
                 validate: bottomrow => {
-                    if (bottomrow.match(/^[a-zA-Z0-9|.,!?'-\s]+$/) && bottomrow.length < 101) {
+                    if (bottomrow.match(/^[a-zA-Z0-9.,!?'\s]+$/) && bottomrow.length < 101) {
                         return true;
                     }
                     return 'Please do not use special characters and keep the rows under 100 characters each.';
@@ -53,8 +53,10 @@ module.exports = class MemeCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
         const type = args.type.toLowerCase();
-        const toprow = args.toprow.split(' ').join('-').split('?').join('~q');
-        const bottomrow = args.bottomrow.split(' ').join('-').split('?').join('~q');
+        const toprow = args.toprow.replace(/[ ]/g, '-');
+        toprow = toprow.replace(/[?]/g, '~q');
+        const bottomrow = args.bottomrow.replace(/[ ]/g, '-');
+        bottomrow = bottomrow.replace(/[?]/g, '~q');
         const link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
         return message.channel.sendFile(link).catch(() => message.say(':x: Error! Something went wrong!'));
     }

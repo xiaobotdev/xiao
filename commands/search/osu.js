@@ -28,13 +28,13 @@ module.exports = class OsuCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const usernameToSearch = args.username;
+        const username = args.username;
         try {
             const response = await request
                 .get('https://osu.ppy.sh/api/get_user')
                 .query({
                     k: process.env.OSU_KEY,
-                    u: usernameToSearch,
+                    u: username,
                     type: 'string'
                 });
             const data = response.body[0];

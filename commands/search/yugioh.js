@@ -23,10 +23,10 @@ module.exports = class YuGiOhCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const cardName = encodeURI(args.card);
+        const card = encodeURI(args.card);
         try {
             const response = await request
-                .get(`http://yugiohprices.com/api/card_data/${cardName}`);
+                .get(`http://yugiohprices.com/api/card_data/${card}`);
             const data = response.body.data;
             if (data.card_type === 'monster') {
                 const embed = new RichEmbed()

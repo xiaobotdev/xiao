@@ -135,14 +135,14 @@ module.exports = class TranslateCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const languageto = args.to.toLowerCase();
+        const language = args.to.toLowerCase();
         const query = args.text;
         try {
             const response = await request
                 .get(`https://translate.yandex.net/api/v1.5/tr.json/translate`)
                 .query({
                     key: process.env.YANDEX_KEY,
-                    lang: languageto,
+                    lang: language,
                     text: query
                 });
             const data = response.body;

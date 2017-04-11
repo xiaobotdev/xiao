@@ -30,13 +30,13 @@ module.exports = class WebhookCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
         }
-        const content = args.text;
+        const text = args.text;
         try {
             await message.delete();
             await request
                 .post(process.env.WEBHOOK_URL)
                 .send({
-                    content: content
+                    content: text
                 });
             return null;
         }

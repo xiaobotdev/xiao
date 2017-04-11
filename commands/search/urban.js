@@ -28,12 +28,12 @@ module.exports = class UrbanCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const wordToDefine = args.word;
+        const word = args.word;
         try {
             const response = await request
                 .get('http://api.urbandictionary.com/v0/define')
                 .query({
-                    term: wordToDefine
+                    term: word
                 });
             const data = response.body.list[0];
             const embed = new RichEmbed()

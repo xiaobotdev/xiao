@@ -27,10 +27,10 @@ module.exports = class BotSearchCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const botToFind = args.bot.id;
+        const bot = args.bot.id;
         try {
             const response = await request
-                .get(`https://bots.discord.pw/api/bots/${botToFind}`)
+                .get(`https://bots.discord.pw/api/bots/${bot}`)
                 .set({
                     'Authorization': process.env.DISCORD_BOTS_KEY
                 });

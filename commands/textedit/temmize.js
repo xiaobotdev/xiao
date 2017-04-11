@@ -232,7 +232,7 @@ const dictionary = {
 };
 
 function translateWord(word) {
-    let wordTranslate = dictionary[word.toLowerCase()];
+    var wordTranslate = dictionary[word.toLowerCase()];
     if (wordTranslate === undefined) return word;
     else return applyCase(word, wordTranslate);
 }
@@ -241,8 +241,8 @@ function applyCase(wordA, wordB) {
     if (wordA.length === 1 && wordB.length !== 1) return wordB;
     if (wordA === wordA.toUpperCase()) return wordB.toUpperCase();
     if (wordA === wordA.toLowerCase()) return wordB.toLowerCase();
-    let firstChar = wordA.slice(0, 1);
-    let otherChars = wordA.slice(1);
+    var firstChar = wordA.slice(0, 1);
+    var otherChars = wordA.slice(1);
     if (firstChar === firstChar.toUpperCase() && otherChars === otherChars.toLowerCase()) {
         return wordB.slice(0, 1).toUpperCase() + wordB.slice(1).toLowerCase();
     }
@@ -255,16 +255,16 @@ function isLetter(character) {
 }
 
 function translator(text) {
-    let translatedText = '';
-    let word = '';
-    for (let i = 0; i < text.length; i += 1) {
-        let character = text[i];
+    var translatedText = '';
+    var word = '';
+    for (var i = 0; i < text.length; i += 1) {
+        var character = text[i];
         if (isLetter(character)) {
             word += character;
         }
         else {
             if (word != '') {
-                let wordTranslate = translateWord(word);
+                var wordTranslate = translateWord(word);
                 translatedText += wordTranslate;
                 word = '';
             }
@@ -278,8 +278,10 @@ function translator(text) {
 }
 
 module.exports = function(text) {
-    let currentTranslation = translator(text);
-    let temmify = currentTranslation.split('ing').join('in').split('!').join('!!!!111!11!1!!!1!!!1111!').split("'").join('');
+    const currentTranslation = translator(text);
+    let temmify = currentTranslation.replace(/[ing]/g, 'in');
+    temmify = temmify.replace(/[!]/g, '!!!!111!11!1!!!1!!!1111!');
+    temmify - temmify.replace(/[']/g, '');
 
     return temmify;
 };

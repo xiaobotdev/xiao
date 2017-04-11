@@ -7,7 +7,7 @@ module.exports = class PotatoCommand extends Command {
             aliases: [
                 'tater'
             ],
-            group: 'response',
+            group: 'randomimg',
             memberName: 'potato',
             description: 'Sends a random Potato picture. (;potato)',
             examples: [';potato']

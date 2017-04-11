@@ -21,9 +21,9 @@ module.exports = class CowsayCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const turnToCowsay = args.text;
+        const text = args.text;
         return message.code(null, cowsay.say({
-            text: turnToCowsay,
+            text: text,
             e: 'oO',
             T: 'U '
         })).catch(() => message.say(':x: Error! Perhaps the content is too long?'));
