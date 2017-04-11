@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { getRomanFromInteger } = require('roman-numeral-converter-mmxvi');
+const romanNumeralConverter = require('roman-numeral-converter-mmxvi');
 
 module.exports = class RomanCommand extends Command {
     constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class RomanCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const number = args.number;
-        const roman = getRomanFromInteger(number);
+        const roman = romanNumeralConverter.getRomanFromInteger(number);
         return message.say(roman);
     }
 };
