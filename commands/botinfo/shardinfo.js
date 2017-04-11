@@ -45,7 +45,7 @@ module.exports = class ShardInfoCommand extends Command {
             .addField('Shards',
                 `${this.client.options.shardCount} (${shardID})`, true)
             .addField('Commands',
-                '114', true)
+                '108', true)
             .addField('Memory Usage',
                 `${memory[shardID]}MB`, true)
             .addField('Uptime',
