@@ -15,7 +15,7 @@ module.exports = class StrawpollCommand extends Command {
             examples: [';strawpoll "Who likes chips?" "Me" "Not Me"'],
             args: [{
                 key: 'title',
-                prompt: 'What would you like the title of the Strawpoll to be? Surround in "" for multiple words.',
+                prompt: 'What would you like the title of the Strawpoll to be?',
                 type: 'string',
                 validate: title => {
                     if (title.length > 200) {
@@ -25,7 +25,7 @@ module.exports = class StrawpollCommand extends Command {
                 }
             }, {
                 key: 'choices',
-                prompt: 'What choices do you want me pick from? Surround each choice in "".',
+                prompt: 'What choices do you want me pick from?',
                 type: 'string',
                 infinite: true
             }]
