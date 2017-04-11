@@ -99,7 +99,6 @@ client.on('guildDelete', async(guild) => {
 
 client.on('disconnect', (event) => {
     console.log(`[Disconnect] The Shard ${client.shard.id} disconnected with Code ${event.code}.`);
-    process.exit(0);
 });
 
 client.on('ready', () => {
