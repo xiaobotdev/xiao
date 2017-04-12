@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
-const temmize = require('./temmize.js');
+const translator = require('../../functions/translator.js');
+const { dictionary } = require('./temmieDictionary.json');
 
 module.exports = class TemmieCommand extends Command {
 	constructor(client) {
@@ -14,7 +15,7 @@ module.exports = class TemmieCommand extends Command {
                 prompt: 'What text would you like to convert to Temmie speak?',
                 type: 'string',
                 validate: content => {
-                	if (temmize(content).length > 1950) {
+                	if (translator.wordTrans(content, dictionary).length > 1950) {
                 		return 'Your message content is too long.';
                 	}
                 	return true;
@@ -28,7 +29,7 @@ module.exports = class TemmieCommand extends Command {
 			if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
 		}
 		const text = args.text;
-		const temmized = temmize(text);
+		const temmized = translator.wordTrans(text, dictionary);
 		return message.say(`\u180E${temmized}`);
 	}
 };

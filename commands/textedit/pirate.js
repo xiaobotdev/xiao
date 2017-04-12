@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
-const pirateSpeak = require('pirate-speak');
+const translator = require('../../functions/translator.js');
+const { dictionary } = require('./pirateDictionary.json');
 
 module.exports = class PirateCommand extends Command {
     constructor(client) {
@@ -18,7 +19,7 @@ module.exports = class PirateCommand extends Command {
                 prompt: 'What text would you like to convert to pirate?',
                 type: 'string',
                 validate: content => {
-                    if (pirateSpeak.translate(content).length > 1950) {
+                    if (translator.wordTrans(content, dictionary).length > 1950) {
                         return 'Your message content is too long.';
                     }
                     return true;
@@ -32,7 +33,7 @@ module.exports = class PirateCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const text = args.text;
-        const pirate = pirateSpeak.translate(text);
+        const pirate = translator.wordTrans(text, dictionary);
         return message.say(`\u180E${pirate}`);
     }
 };
