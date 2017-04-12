@@ -2,7 +2,7 @@ module.exports.wordTrans = (text, words) => {
     text = text.split(' ');
     let translation = [];
     for (let i = 0; i < text.length; i++) {
-        const word = text[i];
+        const word = text[i].toLowerCase();
         const wordPuncStrip = word.replace(/[.,?!-]/g, '');
         if (words[wordPuncStrip]) {
             const reg = new RegExp(wordPuncStrip, 'gi');
@@ -19,7 +19,7 @@ module.exports.letterTrans = (text, letters) => {
     text = text.split('');
     let translation = [];
     for (let i = 0; i < text.length; i++) {
-        const letter = text[i];
+        const letter = text[i].toLowerCase();
         if (letters[letter]) {
             const reg = new RegExp(letter, 'gi');
             translation.push(letter.replace(reg, letters[letter]));
