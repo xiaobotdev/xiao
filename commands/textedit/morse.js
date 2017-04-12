@@ -59,7 +59,7 @@ module.exports = class MorseCommand extends Command {
                 prompt: 'What text would you like to convert to morse?',
                 type: 'string',
                 validate: content => {
-                    if (translator.letterTrans(content, morse).length < 1900) {
+                    if (translator.letterTrans(content, morse, ' ').length < 1900) {
                         return true;
                     }
                     return 'Your text to encode is too long.';
