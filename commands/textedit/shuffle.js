@@ -1,5 +1,4 @@
 const { Command } = require('discord.js-commando');
-
 String.prototype.shuffle = function() {
     let a = this.split(''),
         n = a.length;
