@@ -107,6 +107,10 @@ client.setTimeout(() => {
     process.exit(0);
 }, 14400000);
 
+client.setInterval(() => {
+    console.log(`Shard ${client.shard.id} using ${process.memoryUsage().heapUsed} Bytes of Memory.`);
+}, 60000);
+
 client.on('ready', () => {
     console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
     client.user.setGame(`;help | Shard ${client.shard.id}`);
