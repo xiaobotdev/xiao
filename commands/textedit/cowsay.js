@@ -1,5 +1,4 @@
 const { Command } = require('discord.js-commando');
-const cowsay = require('cowsay');
 
 module.exports = class CowsayCommand extends Command {
     constructor(client) {
@@ -12,7 +11,13 @@ module.exports = class CowsayCommand extends Command {
             args: [{
                 key: 'text',
                 prompt: 'What text would you like the cow to say?',
-                type: 'string'
+                type: 'string',
+                validate: text => {
+                    if (text.length < 1500) {
+                        return true;
+                    }
+                    return 'Your message content is too long.';
+                }
             }]
         });
     }
@@ -22,10 +27,6 @@ module.exports = class CowsayCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const text = args.text;
-        return message.code(null, cowsay.say({
-            text: text,
-            e: 'oO',
-            T: 'U '
-        })).catch(() => message.say(':x: Error! Perhaps the content is too long?'));
+        return message.code(null, `< ${text} >\n       \\   ^__^\n        \\  (oO)\\_______\n           (__)\\       )\\/\\\n             U  ||----w |\n                ||     ||`);
     }
 };
