@@ -15,7 +15,7 @@ module.exports.wordTrans = (text, words) => {
     return translation.join(' ');
 };
 
-module.exports.letterTrans = (text, letters) => {
+module.exports.letterTrans = (text, letters, joinWith) => {
     text = text.split('');
     let translation = [];
     for (let i = 0; i < text.length; i++) {
@@ -27,5 +27,6 @@ module.exports.letterTrans = (text, letters) => {
             translation.push(letter);
         }
     }
-    return translation.join('');
+    joinWith = joinWith || '';
+    return translation.join(joinWith);
 };

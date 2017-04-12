@@ -37,7 +37,6 @@ const morse = {
     "7": "--...",
     "8": "---..",
     "9": "----.",
-    " ": "/",
     ".": ".-.-.-",
     "?": "..--..",
     ",": "--..--",
@@ -74,7 +73,7 @@ module.exports = class MorseCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const text = args.text.toLowerCase();
-        const encoded = translator.letterTrans(text, morse);
+        const encoded = translator.letterTrans(text, morse, ' ');
         return message.say(encoded);
     }
 };
