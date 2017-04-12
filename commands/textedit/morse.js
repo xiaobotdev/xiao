@@ -36,7 +36,12 @@ const morse = {
     "6": "-....",
     "7": "--...",
     "8": "---..",
-    "9": "----."
+    "9": "----.",
+    " ": "  ",
+    ".": ".-.-.-",
+    "?": "..--..",
+    ",": "--..--",
+    "'": ".----."
 };
 
 module.exports = class MorseCommand extends Command {
@@ -68,8 +73,8 @@ module.exports = class MorseCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const text = args.text;
-        const encoded = translator.letterTrans(text, morse);
+        const text = args.text.toLowerCase();
+        const encoded = translator.letterTrans(text, morse).split('').join(' ');
         return message.say(encoded);
     }
 };
