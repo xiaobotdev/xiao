@@ -74,7 +74,7 @@ module.exports = class MorseCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const text = args.text.toLowerCase();
-        const encoded = translator.letterTrans(text, morse).split('').join(' ');
+        const encoded = translator.letterTrans(text, morse).split(' ').join('');
         return message.say(encoded);
     }
 };
