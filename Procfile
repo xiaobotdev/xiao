@@ -1,1 +1,1 @@
-worker: node shardingmanager.js --debug --inspect
+worker: node shardingmanager.js
