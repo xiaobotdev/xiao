@@ -56,7 +56,7 @@ module.exports = class UserInfoCommand extends Command {
             .setColor(color)
             .setThumbnail(user.displayAvatarURL)
             .addField('**Name:**',
-                `${user.username}#${user.discriminator}`, true)
+                user.tag, true)
             .addField('**ID:**',
                 user.id, true)
             .addField('**Joined Discord On:**',

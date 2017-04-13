@@ -56,11 +56,10 @@ module.exports = class UnbanCommand extends Command {
             await message.guild.unban(unbanUser);
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+                .setAuthor(message.author.tag, message.author.avatarURL)
                 .setColor(0x00AE86)
-                .setFooter('XiaoBot Moderation', this.client.user.avatarURL)
                 .setTimestamp()
-                .setDescription(`**Member:** ${unbanUser.username}#${unbanUser.discriminator} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
+                .setDescription(`**Member:** ${unbanUser.tag} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
             return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
         }
         catch (err) {
