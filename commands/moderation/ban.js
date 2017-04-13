@@ -48,10 +48,10 @@ module.exports = class BanCommand extends Command {
             await member.ban();
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+                .setAuthor(message.author.tag, message.author.avatarURL)
                 .setColor(0xFF0000)
                 .setTimestamp()
-                .setDescription(`**Member:** ${member.user.username}#${member.user.discriminator} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
+                .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
             return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
         }
         catch (err) {
