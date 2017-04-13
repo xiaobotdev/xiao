@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const translator = require('../../functions/translator.js');
+const translator = require('custom-translate');
 const { dictionary } = require('./temmiewords.json');
 
 module.exports = class TemmieCommand extends Command {
