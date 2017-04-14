@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "24.3.1",
+  "version": "24.3.2",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "repository": {
@@ -11,7 +11,7 @@
     "start": "node shardingmanager.js"
   },
   "engines": {
-    "node": "7.8.0"
+    "node": "7.9.0"
   },
   "author": "dragonfire535",
   "license": "ISC",
