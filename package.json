@@ -1,20 +1,32 @@
 {
   "name": "xiaobot",
-  "version": "24.3.2",
+  "version": "24.3.3",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dragonfire535/xiaobot.git"
-  },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node shardingmanager.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragonfire535/xiaobot.git"
+  },
+  "keywords": [
+    "discord-bot",
+    "commando",
+    "discord-js",
+    "discord",
+    "discord-api"
+  ],
+  "author": "dragonfire535",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragonfire535/xiaobot/issues"
+  },
+  "homepage": "http://dragonfire535.weebly.com/xiaobot.html",
   "engines": {
     "node": "7.9.0"
   },
-  "author": "dragonfire535",
-  "license": "ISC",
   "dependencies": {
     "cheerio": "^0.22.0",
     "custom-translate": "dragonfire535/custom-translate",
