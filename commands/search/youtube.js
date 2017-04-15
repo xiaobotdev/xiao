@@ -35,7 +35,7 @@ module.exports = class YouTubeCommand extends Command {
                     type: 'video',
                     maxResults: 1,
                     q: video,
-                    key: process.env.YOUTUBE_KEY
+                    key: process.env.GOOGLE_KEY
                 });
             const data = response.body.items[0];
             const embed = new RichEmbed()
