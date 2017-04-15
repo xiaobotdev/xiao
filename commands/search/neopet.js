@@ -1,4 +1,6 @@
 const { Command } = require('discord.js-commando');
+const request = require('superagent');
+const cheerio = require('cheerio');
 
 module.exports = class NeopetCommand extends Command {
     constructor(client) {
@@ -6,21 +8,37 @@ module.exports = class NeopetCommand extends Command {
             name: 'neopet',
             group: 'search',
             memberName: 'neopet',
-            description: 'Gives a Neopet\'s image, searchable by ID. (;neopet rjwlsb8k)',
-            examples: [';neopet rjwlsb8k'],
+            description: 'Gives a Neopet\'s image, searchable by name. (;neopet Pikachu53535)',
+            examples: [';neopet Pikachu53535'],
             args: [{
                 key: 'pet',
-                prompt: 'What pet ID would you like to get the image of?',
+                prompt: 'What pet would you like to get the image of?',
                 type: 'string'
             }]
         });
     }
 
-    run(message, args) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
-        const petID = args.pet;
-        return message.say(`http://pets.neopets.com/cp/${petID}/1/5.png`);
+        const pet = args.pet;
+        try {
+            const response = await request
+                .get('http://www.sunnyneo.com/petimagefinder.php')
+                .query({
+                    name: pet,
+                    size: 5,
+                    mood: 1
+                });
+            const $ = cheerio.load(response.text);
+            const link = $('textarea').first().text();
+            if (!link) return message.say(':x: Error! Pet not found!');
+            return message.say(link);
+        }
+        catch (err) {
+            return message.say(':x: Error! Something went wrong!');
+        }
     }
 };
