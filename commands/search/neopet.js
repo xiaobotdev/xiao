@@ -34,7 +34,7 @@ module.exports = class NeopetCommand extends Command {
                 });
             const $ = cheerio.load(response.text);
             const link = $('textarea').first().text();
-            if (!link) return message.say(':x: Error! Pet not found!');
+            if (!link.includes('cp')) return message.say(':x: Error! Pet not found!');
             return message.say(link);
         }
         catch (err) {
