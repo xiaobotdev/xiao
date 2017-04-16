@@ -51,6 +51,7 @@ module.exports = class StrawpollCommand extends Command {
                     options: choices
                 });
             const data = response.body;
+            console.log(response);
             console.log(title);
             console.log(choices);
             console.log(data);
