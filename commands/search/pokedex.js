@@ -36,7 +36,7 @@ module.exports = class PokedexCommand extends Command {
         const embed = new RichEmbed()
             .setAuthor(`#${pokedex.index[pokemon]} ${pokedex.name[pokemon]}`, `http://www.serebii.net/pokedex-sm/icon/${pokedex.index[pokemon]}.png`)
             .setColor(0xFF0000)
-            .setDescription(`pokedex.species[pokemon] Pokémon`)
+            .setDescription(`${pokedex.species[pokemon]} Pokémon`)
             .setFooter('Pokédex - 001-251 Implemented', 'http://cdn.bulbagarden.net/upload/thumb/3/36/479Rotom-Pokédex.png/250px-479Rotom-Pokédex.png')
             .setThumbnail(`http://www.serebii.net/sunmoon/pokemon/${pokedex.index[pokemon]}.png`)
             .addField('Entry',
