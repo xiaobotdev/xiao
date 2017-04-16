@@ -43,6 +43,9 @@ module.exports = class PokedexCommand extends Command {
                 location2 = 'foomoon';
             }
             try {
+                index = index.toString();
+                const pad = '000'.slice(index.length);
+                index = `${pad}${index}`;
                 const response = await snekfetch
                     .get(`http://www.serebii.net/pokedex-${dex}/${index}.shtml`);
                 const $ = cheerio.load(response.text);
