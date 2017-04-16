@@ -33,7 +33,7 @@ module.exports = class PokedexCommand extends Command {
                 .get(`http://pokeapi.co/api/v2/pokemon/${pokemon}`);
             const data = response.body;
             const entry = pokedex.entry[pokemon] || 'Not Yet Implemented';
-            const indexZero = '000'.slice(data.id.length);
+            const indexZero = '000'.slice(data.id.toString().length);
             const type1 = data.types[1] ? data.types[1].type.name : '-';
             const type2 = data.types[0] ? data.types[0].type.name : '-';
             const embed = new RichEmbed()
