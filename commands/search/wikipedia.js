@@ -23,7 +23,8 @@ module.exports = class WikipediaCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const query = encodeURIComponent(args.query.replace(/[)]/g, '%29'));
+        let query = encodeURIComponent(args.query);
+        query = query.replace(/[)]/g, '%29');
         try {
             const response = await snekfetch
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${query}&exintro=&explaintext=&redirects=&formatversion=2`);

@@ -23,8 +23,7 @@ module.exports = class TodayCommand extends Command {
         }
         try {
             const response = await snekfetch
-                .get('http://history.muffinlabs.com/date')
-                .buffer();
+                .get('http://history.muffinlabs.com/date');
             const parsedResponse = JSON.parse(response.text);
             const events = parsedResponse.data.Events;
             const randomNumber = Math.floor(Math.random() * events.length);
