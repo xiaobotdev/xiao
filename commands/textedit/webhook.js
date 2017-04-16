@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class WebhookCommand extends Command {
     constructor(client) {
@@ -33,7 +33,7 @@ module.exports = class WebhookCommand extends Command {
         const text = args.text;
         try {
             await message.delete();
-            await request
+            await snekfetch
                 .post(process.env.WEBHOOK_URL)
                 .send({
                     content: text

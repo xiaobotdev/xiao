@@ -25,12 +25,16 @@ module.exports = class UserInfoCommand extends Command {
         });
     }
 
-    run(message, args) {
+    async run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         const user = args.user;
+        let member = message.guild.member(user);
+        if (!member) {
+            member = await message.guild.fetchMember(user);
+        }
         let stat;
         let color;
         switch (user.presence.status) {
@@ -62,7 +66,7 @@ module.exports = class UserInfoCommand extends Command {
             .addField('**Joined Discord On:**',
                 `${user.createdAt}\n${moment.duration(Date.now() - user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Joined Server On:**',
-                `${message.guild.member(user).joinedAt}\n${moment.duration(Date.now() - message.guild.member(user).joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                `${member.joinedAt}\n${moment.duration(Date.now() - member.joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',

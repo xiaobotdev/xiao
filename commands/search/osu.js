@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class OsuCommand extends Command {
     constructor(client) {
@@ -28,15 +28,10 @@ module.exports = class OsuCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const username = args.username;
+        const username = encodeURIComponent(args.username);
         try {
-            const response = await request
-                .get('https://osu.ppy.sh/api/get_user')
-                .query({
-                    k: process.env.OSU_KEY,
-                    u: username,
-                    type: 'string'
-                });
+            const response = await snekfetch
+                .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${username}&type=string`);
             const data = response.body[0];
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)

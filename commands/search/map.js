@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class MapCommand extends Command {
     constructor(client) {
@@ -36,16 +36,10 @@ module.exports = class MapCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
         const zoom = args.zoom;
-        const locationQ = args.locationQ;
+        const location = encodeURIComponent(args.locationQ);
         try {
-            const response = await request
-                .get('https://maps.googleapis.com/maps/api/staticmap')
-                .query({
-                    center: locationQ,
-                    zoom: zoom,
-                    size: '500x500',
-                    key: process.env.GOOGLE_KEY
-                });
+            const response = await snekfetch
+                .get(`https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
             return message.channel.sendFile(response.body);
         }
         catch (err) {

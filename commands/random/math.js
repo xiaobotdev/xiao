@@ -11,7 +11,7 @@ module.exports = class MathCommand extends Command {
                 'multiply',
                 'divide'
             ],
-            group: 'numedit',
+            group: 'random',
             memberName: 'math',
             description: 'Does Math (;math 2 + 2)',
             examples: [';math 2 + 2'],

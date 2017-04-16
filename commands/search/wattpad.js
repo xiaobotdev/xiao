@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class WattpadCommand extends Command {
     constructor(client) {
@@ -23,16 +23,12 @@ module.exports = class WattpadCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const book = args.book;
+        const book = encodeURIComponent(args.book);
         try {
-            const response = await request
-                .get('https://api.wattpad.com:443/v4/stories')
+            const response = await snekfetch
+                .get(`https://api.wattpad.com:443/v4/stories?query=${book}&limit=1`)
                 .set({
                     'Authorization': `Basic ${process.env.WATTPAD_KEY}`
-                })
-                .query({
-                    query: book,
-                    limit: 1
                 });
             const data = response.body.stories[0];
             const embed = new RichEmbed()

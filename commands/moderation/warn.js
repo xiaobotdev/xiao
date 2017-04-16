@@ -13,7 +13,7 @@ module.exports = class WarnCommand extends Command {
             args: [{
                 key: 'member',
                 prompt: 'What member do you want to warn?',
-                type: 'member'
+                type: 'user'
             }, {
                 key: 'reason',
                 prompt: 'What do you want to set the reason as?',
@@ -36,7 +36,10 @@ module.exports = class WarnCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const member = args.member;
+        let member = message.guild.member(args.member);
+        if (!member) {
+            member = await message.guild.fetchMember(args.member);
+        }
         const reason = args.reason;
         if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         try {

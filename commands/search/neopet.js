@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const cheerio = require('cheerio');
 
 module.exports = class NeopetCommand extends Command {
@@ -23,15 +23,10 @@ module.exports = class NeopetCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
-        const pet = args.pet;
+        const pet = encodeURIComponent(args.pet);
         try {
-            const response = await request
-                .get('http://www.sunnyneo.com/petimagefinder.php')
-                .query({
-                    name: pet,
-                    size: 5,
-                    mood: 1
-                });
+            const response = await snekfetch
+                .get(`http://www.sunnyneo.com/petimagefinder.php?name=${pet}&size=5&mood=1`);
             const $ = cheerio.load(response.text);
             const link = $('textarea').first().text();
             if (!link.includes('cp')) return message.say(':x: Error! Pet not found!');
