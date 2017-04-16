@@ -34,8 +34,8 @@ module.exports = class PokedexCommand extends Command {
             const data = response.body;
             const entry = pokedex.entry[pokemon] || 'Not Yet Implemented';
             const indexZero = '000'.slice(data.id.length);
-            const type1 = data.types[1].type.name || '-';
-            const type2 = data.types[0].type.name || '-';
+            const type1 = data.types[1] ? data.types[1].type.name : '-';
+            const type2 = data.types[0] ? data.types[0].type.name : '-';
             const embed = new RichEmbed()
                 .setAuthor(`#${indexZero}${data.id} ${data.name}`, `http://www.serebii.net/pokedex-sm/icon/${indexZero}${data.id}.png`)
                 .setColor(0xFF0000)
@@ -63,6 +63,7 @@ module.exports = class PokedexCommand extends Command {
             return message.embed(embed);
         }
         catch (err) {
+            console.error(err);
             return message.say(':x: Error! Something went wrong!');
         }
     }
