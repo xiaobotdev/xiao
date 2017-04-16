@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class BotSearchCommand extends Command {
     constructor(client) {
@@ -29,7 +29,7 @@ module.exports = class BotSearchCommand extends Command {
         }
         const bot = args.bot.id;
         try {
-            const response = await request
+            const response = await snekfetch
                 .get(`https://bots.discord.pw/api/bots/${bot}`)
                 .set({
                     'Authorization': process.env.DISCORD_BOTS_KEY

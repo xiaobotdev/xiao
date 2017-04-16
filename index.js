@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const path = require('path');
 const client = new commando.Client({
     commandPrefix: ';',
@@ -18,7 +18,6 @@ client.registry
         ['randomimg', 'Random Image'],
         ['avataredit', 'Avatar Manipulation'],
         ['textedit', 'Text Manipulation'],
-        ['numedit', 'Number Manipulation'],
         ['imageedit', 'Image Manipulation'],
         ['search', 'Search'],
         ['games', 'Games'],
@@ -37,7 +36,7 @@ client.on('guildCreate', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const response = await request
+        const response = await snekfetch
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
                 key: process.env.CARBON_KEY,
@@ -49,7 +48,7 @@ client.on('guildCreate', async(guild) => {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const response = await request
+        const response = await snekfetch
             .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
             .set({
                 'Authorization': process.env.DISCORD_BOTS_KEY
@@ -70,7 +69,7 @@ client.on('guildDelete', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const response = await request
+        const response = await snekfetch
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
                 key: process.env.CARBON_KEY,
@@ -82,7 +81,7 @@ client.on('guildDelete', async(guild) => {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const response = await request
+        const response = await snekfetch
             .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
             .set({
                 'Authorization': process.env.DISCORD_BOTS_KEY

@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class YodaCommand extends Command {
     constructor(client) {
@@ -21,16 +21,13 @@ module.exports = class YodaCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const text = args.text;
+        const text = encodeURIComponent(args.text);
         try {
-            const response = await request
-                .get('https://yoda.p.mashape.com/yoda')
+            const response = await snekfetch
+                .get(`https://yoda.p.mashape.com/yoda?sentence=${text}`)
                 .set({
                     'X-Mashape-Key': process.env.MASHAPE_KEY,
                     'Accept': 'text/plain'
-                })
-                .query({
-                    sentence: text
                 });
             return message.say(`\u180E${response.text}`);
         }

@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class QuizCommand extends Command {
     constructor(client) {
@@ -22,11 +22,8 @@ module.exports = class QuizCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         try {
-            const response = await request
-                .get('http://jservice.io/api/random')
-                .query({
-                    count: 1
-                });
+            const response = await snekfetch
+                .get('http://jservice.io/api/random?count=1');
             const data = response.body[0];
             const answer = data.answer.toLowerCase().replace(/(<i>|<\/i>)/g, '');
             const embed = new RichEmbed()

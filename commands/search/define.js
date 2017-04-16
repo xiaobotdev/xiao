@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class DefineCommand extends Command {
     constructor(client) {
@@ -29,17 +29,10 @@ module.exports = class DefineCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const word = encodeURI(args.word);
+        const word = encodeURIComponent(args.word);
         try {
-            const response = await request
-                .get(`http://api.wordnik.com:80/v4/word.json/${word}/definitions`)
-                .query({
-                    limit: 1,
-                    includeRelated: false,
-                    useCanonical: false,
-                    includeTags: false,
-                    api_key: process.env.WORDNIK_KEY
-                });
+            const response = await snekfetch
+                .get(`http://api.wordnik.com:80/v4/word.json/${word}/definitions?limit=1&includeRelated=false&useCanonical=false&api_key=${process.env.WORDNIK_KEY}`);
             const data = response.body[0];
             const embed = new RichEmbed()
                 .setColor(0x9797FF)

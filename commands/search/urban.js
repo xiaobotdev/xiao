@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class UrbanCommand extends Command {
     constructor(client) {
@@ -28,13 +28,10 @@ module.exports = class UrbanCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const word = args.word;
+        const word = encodeURIComponent(args.word);
         try {
-            const response = await request
-                .get('http://api.urbandictionary.com/v0/define')
-                .query({
-                    term: word
-                });
+            const response = await snekfetch
+                .get(`http://api.urbandictionary.com/v0/define?term=${word}`);
             const data = response.body.list[0];
             const embed = new RichEmbed()
                 .setColor(0x32a8f0)
