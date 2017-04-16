@@ -43,6 +43,9 @@ module.exports = class StrawpollCommand extends Command {
         try {
             const response = await snekfetch
                 .post('https://strawpoll.me/api/v2/polls')
+                .set({
+                    'Content-Type': 'application/json'
+                })
                 .send({
                     title: title,
                     options: choices
