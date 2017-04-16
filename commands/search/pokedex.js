@@ -33,7 +33,7 @@ module.exports = class PokedexCommand extends Command {
                 if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
                 if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
             }
-            const index = args.index;
+            let index = args.index;
             let dex = 'xy';
             let location = 'foox';
             let location2 = 'fooy';
@@ -42,10 +42,10 @@ module.exports = class PokedexCommand extends Command {
                 location = 'foosun';
                 location2 = 'foomoon';
             }
+            index = index.toString();
+            const pad = '000'.slice(index.length);
+            index = `${pad}${index}`;
             try {
-                index = index.toString();
-                const pad = '000'.slice(index.length);
-                index = `${pad}${index}`;
                 const response = await snekfetch
                     .get(`http://www.serebii.net/pokedex-${dex}/${index}.shtml`);
                 const $ = cheerio.load(response.text);
