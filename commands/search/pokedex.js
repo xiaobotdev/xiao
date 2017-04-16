@@ -12,8 +12,8 @@ module.exports = class PokedexCommand extends Command {
             ],
             group: 'search',
             memberName: 'pokedex',
-            description: 'Gives the pokedex entry for a Pokemon. (;pokedex Pikachu)',
-            examples: [';pokedex Pikachu'],
+            description: 'Gives the pokedex entry for a Pokemon. (;pokedex 001)',
+            examples: [';pokedex 001'],
             args: [{
                 key: 'index',
                 prompt: 'What Pokémon would you like to get info on?',
