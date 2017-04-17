@@ -37,7 +37,7 @@ module.exports = class YearsCommand extends Command {
         years.blit(avatar, 461, 127);
         years.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
-            return message.channel.sendFile(buff);
+            return message.channel.send({file: {attachment: buff} });
         });
     }
 };
