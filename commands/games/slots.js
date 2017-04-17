@@ -23,8 +23,6 @@ module.exports = class SlotsCommand extends Command {
         if (slotOne === slotTwo && slotOne === slotThree && slotOne === slotFour) {
             return message.say(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nWow! You won! Great job... er... luck!`);
         }
-        else {
-            return message.say(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nAww... You lost... Guess it's just bad luck, huh?`);
-        }
+        return message.say(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nAww... You lost... Guess it's just bad luck, huh?`);
     }
 };

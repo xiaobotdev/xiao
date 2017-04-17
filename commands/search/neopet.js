@@ -31,8 +31,7 @@ module.exports = class NeopetCommand extends Command {
             const link = $('textarea').first().text();
             if (!link.includes('cp')) return message.say(':x: Error! Pet not found!');
             return message.say(link);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong!');
         }
     }

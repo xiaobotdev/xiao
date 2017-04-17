@@ -34,8 +34,7 @@ module.exports = class TodayCommand extends Command {
                 .setTimestamp()
                 .setDescription(`${events[randomNumber].text} (${events[randomNumber].year})`);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong!');
         }
     }

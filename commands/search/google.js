@@ -35,8 +35,7 @@ module.exports = class GoogleCommand extends Command {
             let href = $('.r').first().find('a').first().attr('href');
             href = querystring.parse(href.replace('/url?', ''));
             return msg.edit(href.q);
-        }
-        catch (err) {
+        } catch (err) {
             return msg.edit(':x: Error! No Results Found!');
         }
     }

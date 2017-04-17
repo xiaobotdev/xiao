@@ -34,6 +34,7 @@ module.exports = class PruneCommand extends Command {
             }]
         });
     }
+    
     hasPermission(msg) {
         return msg.member.hasPermission('MANAGE_MESSAGES');
     }
@@ -51,8 +52,7 @@ module.exports = class PruneCommand extends Command {
             });
             await message.channel.bulkDelete(messages, true);
             return null;
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong! Perhaps there are not enough messages in the channel from earlier than two weeks?');
         }
     }

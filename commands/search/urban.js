@@ -42,8 +42,7 @@ module.exports = class UrbanCommand extends Command {
                 .addField('**Example:**',
                     data.example.substr(0, 1900) || 'None');
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Word not found!');
         }
     }

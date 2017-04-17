@@ -27,6 +27,7 @@ module.exports = class WarnCommand extends Command {
             }]
         });
     }
+    
     hasPermission(msg) {
         return msg.member.hasPermission('MANAGE_MESSAGES');
     }
@@ -37,9 +38,7 @@ module.exports = class WarnCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         let member = message.guild.member(args.member);
-        if (!member) {
-            member = await message.guild.fetchMember(args.member);
-        }
+        if (!member) member = await message.guild.fetchMember(args.member);
         const reason = args.reason;
         if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         try {
@@ -50,8 +49,7 @@ module.exports = class WarnCommand extends Command {
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Warn\n**Reason:** ${reason}`);
             return message.guild.channels.find('name', 'mod_logs').send({embed});
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong!');
         }
     }

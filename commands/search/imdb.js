@@ -54,8 +54,7 @@ module.exports = class IMDBCommand extends Command {
                 .addField('**Actors:**',
                     data.Actors);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Movie not found!');
         }
     }

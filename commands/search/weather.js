@@ -58,8 +58,7 @@ module.exports = class WeatherCommand extends Command {
                 .addField('**Wind Speed:**',
                     data.wind.speed, true);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Make sure you typed the location correctly!');
         }
     }

@@ -31,8 +31,7 @@ module.exports = class MathCommand extends Command {
         try {
             const solved = math.eval(expression);
             return message.say(solved).catch(() => message.say(':x: Error! Invalid statement!'));
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Invalid statement!');
         }
     }

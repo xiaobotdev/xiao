@@ -39,8 +39,7 @@ module.exports = class DefineCommand extends Command {
                 .setTitle(data.word)
                 .setDescription(data.text);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Word not Found!');
         }
     }

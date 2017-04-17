@@ -62,8 +62,7 @@ module.exports = class OsuCommand extends Command {
                 .addField('**A:**',
                     data.count_rank_a, true);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! User not Found!');
         }
     }
