@@ -35,7 +35,7 @@ module.exports = class YearsCommand extends Command {
         const [avatar, years] = await Promise.all(images);
         avatar.resize(200, 200);
         years.blit(avatar, 461, 127);
-        return years.getBuffer(Jimp.MIME_PNG, (err, buff) => {
+        years.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
             return message.channel.send({file: buff});
         });
