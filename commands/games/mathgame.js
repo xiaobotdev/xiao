@@ -49,7 +49,7 @@ module.exports = class MathGameCommand extends Command {
         }
         const value1 = Math.floor(Math.random() * value) + 1;
         const value2 = Math.floor(Math.random() * value) + 1;
-        const expression = value1 + operation + value2;
+        const expression = `${value1} ${operation}${value2}`;
         const solved = math.eval(expression);
         const embed = new RichEmbed()
             .setTitle('You have **ten** seconds to answer:')
@@ -65,8 +65,7 @@ module.exports = class MathGameCommand extends Command {
                 return message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
             }
             return message.say(`Good Job! You won! ${solved} is the correct answer!`);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
         }
     }

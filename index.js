@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { CommandoClient } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const client = new commando.Client({
+const client = new CommandoClient({
     commandPrefix: 'x;',
     owner: process.env.OWNER_ID,
     disableEveryone: true
@@ -42,8 +42,7 @@ client.on('guildCreate', async(guild) => {
                 servercount: count
             });
         console.log(`[Carbon] Successfully posted to Carbon. ${response.text}`);
-    }
-    catch (err) {
+    } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
@@ -56,8 +55,7 @@ client.on('guildCreate', async(guild) => {
                 server_count: count
             });
         console.log(`[Discord Bots] Successfully posted to Discord Bots. ${response.body.stats[0].server_count}`);
-    }
-    catch (err) {
+    } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
 });
@@ -75,8 +73,7 @@ client.on('guildDelete', async(guild) => {
                 servercount: count
             });
         console.log(`[Carbon] Successfully posted to Carbon. ${response.text}`);
-    }
-    catch (err) {
+    } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
@@ -89,8 +86,7 @@ client.on('guildDelete', async(guild) => {
                 server_count: count
             });
         console.log(`[Discord Bots] Successfully posted to Discord Bots. ${response.body.stats[0].server_count}`);
-    }
-    catch (err) {
+    } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
 });

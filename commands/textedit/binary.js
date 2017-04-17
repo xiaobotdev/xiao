@@ -1,10 +1,10 @@
 const { Command } = require('discord.js-commando');
 const stringToBinary = (str) => {
-    const pad = "00000000";
+    const pad = '00000000';
     return unescape(encodeURIComponent(str))
         .split('').map(str => {
             const binary = str.charCodeAt(0).toString(2);
-            return pad.slice(binary.length) + binary;
+            return `${pad.slice(binary.length)}${binary}`;
         }).join('');
 };
 

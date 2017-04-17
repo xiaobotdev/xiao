@@ -32,9 +32,7 @@ module.exports = class ShardInfoCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         const shardID = args.shardID;
-        if (shardID > this.client.options.shardCount - 1 || shardID < 0) {
-            return message.say(':x: Error! Invalid Shard!');
-        }
+        if (shardID > this.client.options.shardCount - 1 || shardID < 0) return message.say(':x: Error! Invalid Shard!');
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');

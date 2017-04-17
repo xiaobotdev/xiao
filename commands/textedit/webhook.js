@@ -21,6 +21,7 @@ module.exports = class WebhookCommand extends Command {
             }]
         });
     }
+    
     hasPermission(msg) {
         return this.client.isOwner(msg.author);
     }
@@ -39,8 +40,7 @@ module.exports = class WebhookCommand extends Command {
                     content: text
                 });
             return null;
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Message failed to send!');
         }
     }

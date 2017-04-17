@@ -30,6 +30,7 @@ module.exports = class BanCommand extends Command {
             }]
         });
     }
+    
     hasPermission(msg) {
         return msg.member.hasPermission('BAN_MEMBERS');
     }
@@ -42,9 +43,7 @@ module.exports = class BanCommand extends Command {
         }
         if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         let member = message.guild.member(args.member);
-        if (!member) {
-            member = await message.guild.fetchMember(args.member);
-        }
+        if (!member) member = await message.guild.fetchMember(args.member);
         const reason = args.reason;
         if (!member.bannable) return message.say(':x: Error! This member cannot be banned! Perhaps they have a higher role than me?');
         try {
@@ -56,8 +55,7 @@ module.exports = class BanCommand extends Command {
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
             return message.guild.channels.find('name', 'mod_logs').send({embed});
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong!');
         }
     }

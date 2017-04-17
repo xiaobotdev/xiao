@@ -22,6 +22,7 @@ module.exports = class LockdownCommand extends Command {
             }]
         });
     }
+    
     hasPermission(msg) {
         return msg.member.hasPermission('ADMINISTRATOR');
     }
@@ -38,8 +39,7 @@ module.exports = class LockdownCommand extends Command {
                     SEND_MESSAGES: false
                 });
                 return message.say('**Lockdown Started, users without Administrator can no longer post messages. Please use `;lockdown stop` to end the lockdown.**');
-            }
-            catch (err) {
+            } catch (err) {
                 return message.say(':x: Error! Something went wrong!');
             }
         }
@@ -49,8 +49,7 @@ module.exports = class LockdownCommand extends Command {
                     SEND_MESSAGES: true
                 });
                 return message.say('**Lockdown Ended, users without Administrator can now post messages.**');
-            }
-            catch (err) {
+            } catch (err) {
                 return message.say(':x: Error! Something went wrong!');
             }
         }

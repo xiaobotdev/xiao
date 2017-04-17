@@ -39,8 +39,7 @@ module.exports = class YouTubeCommand extends Command {
                 .setURL(`https://www.youtube.com/watch?v=${data.id.videoId}`)
                 .setThumbnail(data.snippet.thumbnails.default.url);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong! Maybe no video was found?');
         }
     }

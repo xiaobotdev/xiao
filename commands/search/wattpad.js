@@ -50,8 +50,7 @@ module.exports = class WattpadCommand extends Command {
                 .addField('**Comments:**',
                     data.commentCount, true);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Book not Found!');
         }
     }

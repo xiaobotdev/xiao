@@ -36,6 +36,7 @@ module.exports = class UnbanCommand extends Command {
             }]
         });
     }
+    
     hasPermission(msg) {
         return msg.member.hasPermission('BAN_MEMBERS');
     }
@@ -61,8 +62,7 @@ module.exports = class UnbanCommand extends Command {
                 .setTimestamp()
                 .setDescription(`**Member:** ${unbanUser.tag} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
             return message.guild.channels.find('name', 'mod_logs').send({embed});
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong!');
         }
     }

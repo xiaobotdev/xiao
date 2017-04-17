@@ -56,8 +56,7 @@ module.exports = class YuGiOhCommand extends Command {
                 .addField('**Card Type:**',
                     data.card_type, true);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!');
         }
     }

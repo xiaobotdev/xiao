@@ -52,8 +52,7 @@ module.exports = class ForecastCommand extends Command {
                 .addField(`**${data[6].day} - ${data[6].date}:**`,
                     `**High:** ${data[6].high}°F, **Low:** ${data[6].low}°F, **Condition:** ${data[6].text}`);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Make sure you typed the location correctly!');
         }
     }

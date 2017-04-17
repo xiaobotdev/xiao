@@ -48,8 +48,7 @@ module.exports = class BotSearchCommand extends Command {
                 .addField('**Invite:**',
                     `[Here](${data.invite_url})`, true);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Bot not Found!');
         }
     }

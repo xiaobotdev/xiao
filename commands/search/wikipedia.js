@@ -37,8 +37,7 @@ module.exports = class WikipediaCommand extends Command {
                 .setAuthor('Wikipedia', 'https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png')
                 .setDescription(description);
             return message.embed(embed);
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Entry Not Found!');
         }
     }

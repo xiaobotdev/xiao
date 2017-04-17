@@ -40,12 +40,10 @@ module.exports = class QuizCommand extends Command {
                     return message.say(`The correct answer is: ${answer}`);
                 }
                 return message.say(`Perfect! The correct answer is: ${answer}`);
-            }
-            catch (err) {
+            } catch (err) {
                 return message.say(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
             }
-        }
-        catch (err) {
+        } catch (err) {
             return message.say(':x: Error! Something went wrong!');
         }
     }

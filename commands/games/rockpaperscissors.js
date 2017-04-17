@@ -36,13 +36,11 @@ module.exports = class RockPaperScissorsCommand extends Command {
             if (response === 'Rock') return message.say('Rock! Aw, it\'s a tie!');
             if (response === 'Paper') return message.say('Paper! Yes! I win!');
             if (response === 'Scissors') return message.say('Scissors! Aw... I lose...');
-        }
-        else if (rps === 'paper') {
+        } else if (rps === 'paper') {
             if (response === 'Rock') return message.say('Rock! Aw... I lose...');
             if (response === 'Paper') return message.say('Paper! Aw, it\'s a tie!');
             if (response === 'Scissors') return message.say('Scissors! Yes! I win!');
-        }
-        else if (rps === 'scissors') {
+        } else if (rps === 'scissors') {
             if (response === 'Rock') return message.say('Rock! Yes! I win!');
             if (response === 'Paper') return message.say('Paper! Aw... I lose...');
             if (response === 'Scissors') return message.say('Scissors! Aw, it\'s a tie!');

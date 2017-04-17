@@ -19,7 +19,7 @@ module.exports = class InfoCommand extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
@@ -33,7 +33,7 @@ module.exports = class InfoCommand extends Command {
             .addField('Shards',
                 `${this.client.options.shardCount} (${this.client.shard.id})`, true)
             .addField('Commands',
-                '108', true)
+                '106', true)
             .addField('Owner',
                 'dragonfire535#8081', true)
             .addField('Source Code',
