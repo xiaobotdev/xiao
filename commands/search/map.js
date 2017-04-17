@@ -40,7 +40,7 @@ module.exports = class MapCommand extends Command {
         try {
             const response = await snekfetch
                 .get(`https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
-            return message.channel.send({file: response.body});
+            return message.channel.sendFile(response.body);
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong! Make sure you entered the location correctly!');
