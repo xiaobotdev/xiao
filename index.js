@@ -2,8 +2,7 @@ const commando = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const path = require('path');
 const client = new commando.Client({
-    commandPrefix: ';',
-    unknownCommandResponse: false,
+    commandPrefix: 'x;',
     owner: process.env.OWNER_ID,
     disableEveryone: true
 });
@@ -108,7 +107,7 @@ client.setTimeout(() => {
 
 client.on('ready', () => {
     console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
-    client.user.setGame(`;help | Shard ${client.shard.id}`);
+    client.user.setGame(`x;help | Shard ${client.shard.id}`);
 });
 
 process.on('unhandledRejection', console.error);

@@ -58,6 +58,6 @@ module.exports = class MemeCommand extends Command {
         let bottomrow = args.bottomrow.replace(/[ ]/g, '-');
         bottomrow = bottomrow.replace(/[?]/g, '~q');
         const link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
-        return message.channel.sendFile(link).catch(() => message.say(':x: Error! Something went wrong!'));
+        return message.channel.send({file: link}).catch(() => message.say(':x: Error! Something went wrong!'));
     }
 };

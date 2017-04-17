@@ -60,7 +60,7 @@ module.exports = class UnbanCommand extends Command {
                 .setColor(0x00AE86)
                 .setTimestamp()
                 .setDescription(`**Member:** ${unbanUser.tag} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
-            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            return message.guild.channels.find('name', 'mod_logs').send({embed});
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');
