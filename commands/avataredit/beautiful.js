@@ -37,9 +37,9 @@ module.exports = class BeautifulCommand extends Command {
         beautiful.blit(avatar, 432, 42);
         avatar.resize(190, 190);
         beautiful.blit(avatar, 451, 434);
-        beautiful.getBuffer(Jimp.MIME_PNG, (err, buff) => {
+        return beautiful.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
-            return message.channel.sendFile(buff);
+            return message.channel.send({file: buff});
         });
     }
 };

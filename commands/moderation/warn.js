@@ -49,7 +49,7 @@ module.exports = class WarnCommand extends Command {
                 .setColor(0xFFFF00)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Warn\n**Reason:** ${reason}`);
-            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            return message.guild.channels.find('name', 'mod_logs').send({embed});
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');

@@ -48,14 +48,14 @@ module.exports = class BanCommand extends Command {
         const reason = args.reason;
         if (!member.bannable) return message.say(':x: Error! This member cannot be banned! Perhaps they have a higher role than me?');
         try {
-            await member.ban();
+            await member.ban(7);
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(message.author.tag, message.author.avatarURL)
                 .setColor(0xFF0000)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
-            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            return message.guild.channels.find('name', 'mod_logs').send({embed});
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');

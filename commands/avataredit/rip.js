@@ -36,9 +36,9 @@ module.exports = class RIPCommand extends Command {
         const [avatar, gravestone] = await Promise.all(images);
         avatar.resize(200, 200);
         gravestone.blit(avatar, 60, 65);
-        gravestone.getBuffer(Jimp.MIME_PNG, (err, buff) => {
+        return gravestone.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
-            return message.channel.sendFile(buff);
+            return message.channel.send({file: buff});
         });
     }
 };

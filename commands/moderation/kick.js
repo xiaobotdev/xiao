@@ -52,7 +52,7 @@ module.exports = class KickCommand extends Command {
                 .setColor(0xFFA500)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Kick\n**Reason:** ${reason}`);
-            return message.guild.channels.find('name', 'mod_logs').sendEmbed(embed);
+            return message.guild.channels.find('name', 'mod_logs').send({embed});
         }
         catch (err) {
             return message.say(':x: Error! Something went wrong!');
