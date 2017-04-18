@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class IMDBCommand extends Command {
     constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class IMDBCommand extends Command {
         }
         const movie = encodeURIComponent(args.movie);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`http://www.omdbapi.com/?t=${movie}&plot=full`);
             const data = response.body;
             const embed = new RichEmbed()

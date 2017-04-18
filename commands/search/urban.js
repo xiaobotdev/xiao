@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class UrbanCommand extends Command {
     constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class UrbanCommand extends Command {
         }
         const word = encodeURIComponent(args.word);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`http://api.urbandictionary.com/v0/define?term=${word}`);
             const data = response.body.list[0];
             const embed = new RichEmbed()

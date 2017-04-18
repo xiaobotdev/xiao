@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class YouTubeCommand extends Command {
     constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class YouTubeCommand extends Command {
         }
         const video = encodeURIComponent(args.video);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${video}&key=${process.env.GOOGLE_KEY}`);
             const data = response.body.items[0];
             const embed = new RichEmbed()

@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class OsuCommand extends Command {
     constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class OsuCommand extends Command {
         }
         const username = encodeURIComponent(args.username);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${username}&type=string`);
             const data = response.body[0];
             const embed = new RichEmbed()

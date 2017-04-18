@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class WikipediaCommand extends Command {
     constructor(client) {
@@ -26,7 +26,7 @@ module.exports = class WikipediaCommand extends Command {
         let query = encodeURIComponent(args.query);
         query = query.replace(/[)]/g, '%29');
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${query}&exintro=&explaintext=&redirects=&formatversion=2`);
             const data = response.body.query.pages[0];
             const description = data.extract.substr(0, 1900).split('\n').join('\n\n');

@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class MapCommand extends Command {
     constructor(client) {
@@ -38,7 +38,7 @@ module.exports = class MapCommand extends Command {
         const zoom = args.zoom;
         const location = encodeURIComponent(args.locationQ);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
             return message.channel.send({file: {attachment: response.body}});
         } catch (err) {
