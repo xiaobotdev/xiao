@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "28.0.0",
+  "version": "28.0.1",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "scripts": {
