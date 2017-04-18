@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class DefineCommand extends Command {
     constructor(client) {
@@ -31,7 +31,7 @@ module.exports = class DefineCommand extends Command {
         }
         const word = encodeURIComponent(args.word);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`http://api.wordnik.com:80/v4/word.json/${word}/definitions?limit=1&includeRelated=false&useCanonical=false&api_key=${process.env.WORDNIK_KEY}`);
             const data = response.body[0];
             const embed = new RichEmbed()

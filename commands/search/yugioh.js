@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class YuGiOhCommand extends Command {
     constructor(client) {
@@ -25,7 +25,7 @@ module.exports = class YuGiOhCommand extends Command {
         }
         const card = encodeURIComponent(args.card);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`http://yugiohprices.com/api/card_data/${card}`);
             const data = response.body.data;
             if (data.card_type === 'monster') {

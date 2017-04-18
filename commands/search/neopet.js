@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const cheerio = require('cheerio');
 
 module.exports = class NeopetCommand extends Command {
@@ -25,7 +25,7 @@ module.exports = class NeopetCommand extends Command {
         }
         const pet = encodeURIComponent(args.pet);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`http://www.sunnyneo.com/petimagefinder.php?name=${pet}&size=5&mood=1`);
             const $ = cheerio.load(response.text);
             const link = $('textarea').first().text();

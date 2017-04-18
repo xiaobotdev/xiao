@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class WattpadCommand extends Command {
     constructor(client) {
@@ -25,7 +25,7 @@ module.exports = class WattpadCommand extends Command {
         }
         const book = encodeURIComponent(args.book);
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`https://api.wattpad.com:443/v4/stories?query=${book}&limit=1`)
                 .set({
                     'Authorization': `Basic ${process.env.WATTPAD_KEY}`

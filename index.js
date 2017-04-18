@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const path = require('path');
 const client = new CommandoClient({
     commandPrefix: 'x;',
@@ -35,7 +35,7 @@ client.on('guildCreate', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const response = await snekfetch
+        const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
                 key: process.env.CARBON_KEY,
@@ -46,7 +46,7 @@ client.on('guildCreate', async(guild) => {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const response = await snekfetch
+        const response = await request
             .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
             .set({
                 'Authorization': process.env.DISCORD_BOTS_KEY
@@ -66,7 +66,7 @@ client.on('guildDelete', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const response = await snekfetch
+        const response = await request
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({
                 key: process.env.CARBON_KEY,
@@ -77,7 +77,7 @@ client.on('guildDelete', async(guild) => {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const response = await snekfetch
+        const response = await request
             .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
             .set({
                 'Authorization': process.env.DISCORD_BOTS_KEY

@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class ForecastCommand extends Command {
     constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class ForecastCommand extends Command {
         }
         const location = args.locationQ;
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${location}")&format=json`);
             const info = response.body.query.results.channel;
             const data = info.item.forecast;

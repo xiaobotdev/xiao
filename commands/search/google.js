@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const cheerio = require('cheerio');
 const querystring = require('querystring');
 
@@ -29,7 +29,7 @@ module.exports = class GoogleCommand extends Command {
         const query = encodeURIComponent(args.query);
         const msg = await message.say('Searching...');
         try {
-            const response = await snekfetch
+            const response = await request
                 .get(`https://www.google.com/search?q=${query}`);
             const $ = cheerio.load(response.text);
             let href = $('.r').first().find('a').first().attr('href');
