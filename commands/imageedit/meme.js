@@ -31,7 +31,7 @@ module.exports = class MemeCommand extends Command {
                 prompt: 'What should the top row of the meme to be?',
                 type: 'string',
                 validate: toprow => {
-                    if (toprow.match(/^[a-zA-Z0-9.,!?'\s]+$/) && toprow.length < 101) {
+                    if (toprow.match(/^[a-zA-Z0-9.,!?'\s]+$/) && toprow.length < 100) {
                         return true;
                     }
                     return `Please do not use special characters and keep the rows under 100 characters each, you have ${toprow.length}.`;
@@ -44,7 +44,7 @@ module.exports = class MemeCommand extends Command {
                 prompt: 'What should the bottom row of the meme to be?',
                 type: 'string',
                 validate: bottomrow => {
-                    if (bottomrow.match(/^[a-zA-Z0-9.,!?'\s]+$/) && bottomrow.length < 101) {
+                    if (bottomrow.match(/^[a-zA-Z0-9.,!?'\s]+$/) && bottomrow.length < 100) {
                         return true;
                     }
                     return `Please do not use special characters and keep the rows under 100 characters each, you have ${bottomrow.length}.`;
