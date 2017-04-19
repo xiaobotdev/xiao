@@ -18,12 +18,6 @@ module.exports = class BotSearchCommand extends Command {
                 key: 'bot',
                 prompt: 'Which bot do you want to get information for?',
                 type: 'user',
-                validate: user => {
-                    if (user.bot) {
-                        return true;
-                    }
-                    return 'Please only use a bot account.';
-                },
                 parse: bot => {
                     return bot.id;
                 }
