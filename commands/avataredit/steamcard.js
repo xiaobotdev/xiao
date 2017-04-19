@@ -25,7 +25,7 @@ module.exports = class SteamCardCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
-        const user = args.user;
+        const { user } = args;
         const userDisplayName = user.username;
         let userAvatar = user.displayAvatarURL;
         userAvatar = userAvatar.replace('.jpg', '.png');

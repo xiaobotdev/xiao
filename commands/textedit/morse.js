@@ -22,6 +22,9 @@ module.exports = class MorseCommand extends Command {
                         return true;
                     }
                     return 'Your text to encode is too long.';
+                },
+                parse: text => {
+                    return translator.letterTrans(text.toLowerCase(), dictionary, ' ');
                 }
             }]
         });
@@ -31,8 +34,7 @@ module.exports = class MorseCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const text = args.text.toLowerCase();
-        const encoded = translator.letterTrans(text, dictionary, ' ');
-        return message.say(encoded);
+        const { text } = args;
+        return message.say(text);
     }
 };

@@ -18,7 +18,10 @@ module.exports = class OsuCommand extends Command {
             args: [{
                 key: 'username',
                 prompt: 'What osu username would you like to search for?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text);
+                }
             }]
         });
     }
@@ -28,7 +31,7 @@ module.exports = class OsuCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const username = encodeURIComponent(args.username);
+        const { username } = args;
         try {
             const response = await request
                 .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${username}&type=string`);

@@ -18,6 +18,9 @@ module.exports = class LockdownCommand extends Command {
                         return true;
                     }
                     return 'Please enter either start or stop.';
+                },
+                parse: text => {
+                    return text.toLowerCase();
                 }
             }]
         });
@@ -32,7 +35,7 @@ module.exports = class LockdownCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['READ_MESSAGES', 'SEND_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ADMINISTRATOR')) return message.say(':x: Error! I don\'t have the Administrator permission! This is not given by default, as that\'s quite bad practice. Please give it to me to use the lockdown command!');
         }
-        const type = args.type.toLowerCase();
+        const { type } = args;
         if (type === 'start') {
             try {
                 await message.channel.overwritePermissions(message.guild.defaultRole, {

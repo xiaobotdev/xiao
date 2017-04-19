@@ -18,6 +18,9 @@ module.exports = class TypingGameCommand extends Command {
                         return true;
                     }
                     return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
+                },
+                parse: text => {
+                    return text.toLowerCase();
                 }
             }]
         });
@@ -28,12 +31,12 @@ module.exports = class TypingGameCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const level = args.difficulty.toLowerCase();
+        const { difficulty } = args;
         let sentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
         sentence = sentence[Math.floor(Math.random() * sentence.length)];
         let time;
         let levelWord;
-        switch (level) {
+        switch (difficulty) {
             case 'easy':
                 time = 25000;
                 levelWord = 'twenty-five';

@@ -17,7 +17,10 @@ module.exports = class GoogleCommand extends Command {
             args: [{
                 key: 'query',
                 prompt: 'What would you like to search for?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text);
+                }
             }]
         });
     }
@@ -26,7 +29,7 @@ module.exports = class GoogleCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const query = encodeURIComponent(args.query);
+        const { query } = args;
         const msg = await message.say('Searching...');
         try {
             const response = await request

@@ -30,11 +30,8 @@ module.exports = class UserInfoCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const user = args.user;
-        let member = message.guild.member(user);
-        if (!member) {
-            member = await message.guild.fetchMember(user);
-        }
+        const { user } = args;
+        const member = await message.guild.fetchMember(user);
         let stat;
         let color;
         switch (user.presence.status) {
@@ -55,7 +52,6 @@ module.exports = class UserInfoCommand extends Command {
                 color = 0x808080;
                 break;
         }
-        const userGame = user.presence.game ? user.presence.game.name : 'None';
         const embed = new RichEmbed()
             .setColor(color)
             .setThumbnail(user.displayAvatarURL)
@@ -70,7 +66,7 @@ module.exports = class UserInfoCommand extends Command {
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',
-                userGame, true);
+                user.presence.game ? user.presence.game.name : 'None', true);
         return message.embed(embed);
     }
 };

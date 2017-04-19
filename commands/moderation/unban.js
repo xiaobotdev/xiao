@@ -48,8 +48,7 @@ module.exports = class UnbanCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('BAN_MEMBERS')) return message.say(':x: Error! I don\'t have the Ban Members Permission!');
         }
         if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
-        const memberID = args.memberID;
-        const reason = args.reason;
+        const { memberID, reason } = args;
         const bans = await message.guild.fetchBans();
         if (!bans.has(memberID)) return message.say(':x: Error! Could not find this user in the bans.');
         const unbanUser = await bans.get(memberID);

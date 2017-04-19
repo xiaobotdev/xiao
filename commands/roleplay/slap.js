@@ -20,7 +20,7 @@ module.exports = class SlapCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const roleplayed = args.thing;
-        return message.say(`${message.author} *slaps* ${roleplayed}`);
+        const { thing } = args;
+        return message.say(`${message.author} *slaps* ${thing}`);
     }
 };

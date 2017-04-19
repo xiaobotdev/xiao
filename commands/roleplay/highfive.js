@@ -20,7 +20,7 @@ module.exports = class HighFivesCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const roleplayed = args.thing;
-        return message.say(`${message.author} *high-fives* ${roleplayed}`);
+        const { thing } = args;
+        return message.say(`${message.author} *high-fives* ${thing}`);
     }
 };

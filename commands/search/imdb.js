@@ -18,7 +18,10 @@ module.exports = class IMDBCommand extends Command {
             args: [{
                 key: 'movie',
                 prompt: 'What movie or TV Show would you like to search for?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text);
+                }
             }]
         });
     }
@@ -28,7 +31,7 @@ module.exports = class IMDBCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const movie = encodeURIComponent(args.movie);
+        const { movie } = args;
         try {
             const response = await request
                 .get(`http://www.omdbapi.com/?t=${movie}&plot=full`);

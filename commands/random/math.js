@@ -27,7 +27,7 @@ module.exports = class MathCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const expression = args.expression;
+        const { expression } = args;
         try {
             const solved = math.eval(expression);
             return message.say(solved).catch(() => message.say(':x: Error! Invalid statement!'));

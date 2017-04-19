@@ -20,7 +20,7 @@ module.exports = class AvatarCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const user = args.user;
+        const { user } = args;
         return message.say(user.displayAvatarURL);
     }
 };

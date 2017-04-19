@@ -18,7 +18,10 @@ module.exports = class UrbanCommand extends Command {
             args: [{
                 key: 'word',
                 prompt: 'What would you like to define?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text);
+                }
             }]
         });
     }
@@ -28,7 +31,7 @@ module.exports = class UrbanCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const word = encodeURIComponent(args.word);
+        const { word } = args;
         try {
             const response = await request
                 .get(`http://api.urbandictionary.com/v0/define?term=${word}`);

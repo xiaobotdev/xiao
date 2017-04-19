@@ -23,7 +23,7 @@ module.exports = class RateWaifuCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const waifu = args.waifu;
+        const { waifu } = args;
         const rating = Math.floor(Math.random() * 10) + 1;
         return message.say(`I'd give ${waifu} a ${rating}/10!`);
     }

@@ -11,7 +11,10 @@ module.exports = class ReverseCommand extends Command {
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to reverse?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return text.split('').reverse().join('');
+                }
             }]
         });
     }
@@ -20,8 +23,7 @@ module.exports = class ReverseCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const text = args.text;
-        const reversed = text.split('').reverse().join('');
-        return message.say(`\u180E${reversed}`);
+        const { text } = args;
+        return message.say(`\u180E${text}`);
     }
 };

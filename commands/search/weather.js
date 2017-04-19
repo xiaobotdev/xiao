@@ -11,7 +11,7 @@ module.exports = class WeatherCommand extends Command {
             description: 'Searches weather for a specified location. (;weather San Francisco)',
             examples: [';weather San Francisco'],
             args: [{
-                key: 'locationQ',
+                key: 'location',
                 prompt: 'What location would you like to get the current weather for?',
                 type: 'string'
             }]
@@ -23,7 +23,7 @@ module.exports = class WeatherCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const location = args.locationQ;
+        const { location } = args;
         try {
             const response = await request
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${location}")&format=json`);
