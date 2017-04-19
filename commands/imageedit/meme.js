@@ -21,7 +21,7 @@ module.exports = class MemeCommand extends Command {
                     if (memecodes.includes(type.toLowerCase())) {
                         return true;
                     }
-                    return `${type.toLowerCase()} is not a valid meme type. Use \`;help meme\` to view a list of types.`;
+                    return `${type.toLowerCase()} is not a valid meme type. Use \`x;help meme\` to view a list of types.`;
                 },
                 parse: text => {
                     return text.toLowerCase();
