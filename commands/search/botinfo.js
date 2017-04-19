@@ -17,10 +17,7 @@ module.exports = class BotSearchCommand extends Command {
             args: [{
                 key: 'bot',
                 prompt: 'Which bot do you want to get information for?',
-                type: 'user',
-                parse: bot => {
-                    return bot.id;
-                }
+                type: 'user'
             }]
         });
     }
@@ -31,6 +28,7 @@ module.exports = class BotSearchCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         let { bot } = args;
+        bot = bot.id;
         try {
             const response = await request
                 .get(`https://bots.discord.pw/api/bots/${bot}`)
