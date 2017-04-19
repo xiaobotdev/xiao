@@ -14,7 +14,7 @@ module.exports = class RollCommand extends Command {
             examples: [';roll 6'],
             args: [{
                 key: 'value',
-                prompt: 'Which number do you want to roll?',
+                prompt: 'What is the maximum number you wish to appear?',
                 type: 'integer'
             }]
         });
