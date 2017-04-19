@@ -31,9 +31,9 @@ module.exports = class YouTubeCommand extends Command {
         }
         const { video } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${video}&key=${process.env.GOOGLE_KEY}`);
-            const data = response.body.items[0];
+            const data = body.items[0];
             const embed = new RichEmbed()
                 .setColor(0xDD2825)
                 .setTitle(data.snippet.title)

@@ -21,17 +21,17 @@ module.exports = class UnbanCommand extends Command {
                     if (userID.length === 18) {
                         return true;
                     }
-                    return 'Invalid ID. Please enter the user you wish to unban\'s ID.';
+                    return `${userID} is not a valid ID. Please enter the user you wish to unban's ID.`;
                 }
             }, {
                 key: 'reason',
                 prompt: 'What do you want to set the reason as?',
                 type: 'string',
                 validate: reason => {
-                    if (reason.length < 141) {
+                    if (reason.length < 140) {
                         return true;
                     }
-                    return 'Please keep your reason under 140 characters.';
+                    return `Please keep your reason under 140 characters, you have ${reason.length}.`;
                 }
             }]
         });

@@ -23,14 +23,13 @@ module.exports = class WouldYouRatherCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         try {
-            const response = await request
+            const { body } = await request
                 .get('http://www.rrrather.com/botapi');
-            const data = response.body;
             const embed = new RichEmbed()
-                .setTitle(`${data.title}...`)
-                .setURL(data.link)
+                .setTitle(`${body.title}...`)
+                .setURL(body.link)
                 .setColor(0x9797FF)
-                .setDescription(`${data.choicea} OR ${data.choiceb}?`);
+                .setDescription(`${body.choicea} OR ${body.choiceb}?`);
             return message.embed(embed);
         } catch (err) {
             return message.say(':x: Error! Something went wrong!');

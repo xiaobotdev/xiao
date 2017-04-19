@@ -21,10 +21,10 @@ module.exports = class BinaryCommand extends Command {
                 prompt: 'What text would you like to convert to binary?',
                 type: 'string',
                 validate: content => {
-                    if (stringToBinary(content).length > 1950) {
-                        return 'Your message content is too long.';
+                    if (stringToBinary(content).length < 2000) {
+                        return true;
                     }
-                    return true;
+                    return 'Your message content is too long.';
                 },
                 parse: text => {
                     return stringToBinary(text);

@@ -9,7 +9,8 @@ module.exports = class IMDBCommand extends Command {
             aliases: [
                 'movie',
                 'tvshow',
-                'film'
+                'film',
+                'omdb'
             ],
             group: 'search',
             memberName: 'imdb',
@@ -33,29 +34,28 @@ module.exports = class IMDBCommand extends Command {
         }
         const { movie } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`http://www.omdbapi.com/?t=${movie}&plot=full`);
-            const data = response.body;
             const embed = new RichEmbed()
                 .setColor(0xDBA628)
                 .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
-                .setURL(`http://www.imdb.com/title/${data.imdbID}`)
-                .setTitle(`${data.Title} (${data.imdbRating} Score)`)
-                .setDescription(data.Plot.substr(0, 1900))
+                .setURL(`http://www.imdb.com/title/${body.imdbID}`)
+                .setTitle(`${body.Title} (${body.imdbRating} Score)`)
+                .setDescription(body.Plot.substr(0, 2000))
                 .addField('**Genres:**',
-                    data.Genre)
+                    body.Genre)
                 .addField('**Year:**',
-                    data.Year, true)
+                    body.Year, true)
                 .addField('**Rated:**',
-                    data.Rated, true)
+                    body.Rated, true)
                 .addField('**Runtime:**',
-                    data.Runtime, true)
+                    body.Runtime, true)
                 .addField('**Directors:**',
-                    data.Director)
+                    body.Director)
                 .addField('**Writers:**',
-                    data.Writer)
+                    body.Writer)
                 .addField('**Actors:**',
-                    data.Actors);
+                    body.Actors);
             return message.embed(embed);
         } catch (err) {
             return message.say(':x: Error! Movie not found!');

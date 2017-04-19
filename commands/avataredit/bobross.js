@@ -27,9 +27,7 @@ module.exports = class BobRossCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
         const { user } = args;
-        let userAvatar = user.displayAvatarURL;
-        userAvatar = userAvatar.replace('.jpg', '.png');
-        userAvatar = userAvatar.replace('.gif', '.png');
+        const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
         images.push(Jimp.read('./images/BobRoss.png'));

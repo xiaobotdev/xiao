@@ -32,9 +32,9 @@ module.exports = class GoogleCommand extends Command {
         const { query } = args;
         const msg = await message.say('Searching...');
         try {
-            const response = await request
+            const { text } = await request
                 .get(`https://www.google.com/search?q=${query}`);
-            const $ = cheerio.load(response.text);
+            const $ = cheerio.load(text);
             let href = $('.r').first().find('a').first().attr('href');
             href = querystring.parse(href.replace('/url?', ''));
             return msg.edit(href.q);

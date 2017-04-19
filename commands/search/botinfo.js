@@ -30,24 +30,23 @@ module.exports = class BotSearchCommand extends Command {
         let { bot } = args;
         bot = bot.id;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`https://bots.discord.pw/api/bots/${bot}`)
                 .set({
                     'Authorization': process.env.DISCORD_BOTS_KEY
                 });
-            const data = response.body;
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://cdn.discordapp.com/icons/110373943822540800/47336ad0631ac7aac0a48a2ba6246c65.jpg')
-                .setTitle(data.name)
+                .setTitle(body.name)
                 .setURL('https://bots.discord.pw/')
-                .setDescription(data.description)
+                .setDescription(body.description)
                 .addField('**Library:**',
-                    data.library, true)
-                .addField('**Prefix:**',
-                    data.prefix, true)
+                    body.library, true)
                 .addField('**Invite:**',
-                    `[Here](${data.invite_url})`, true);
+                    `[Here](${body.invite_url})`, true)
+                .addField('**Prefix:**',
+                    body.prefix, true);
             return message.embed(embed);
         } catch (err) {
             return message.say(':x: Error! Bot not Found!');

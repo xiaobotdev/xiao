@@ -28,10 +28,10 @@ module.exports = class WikipediaCommand extends Command {
         }
         const { query } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${query}&exintro=&explaintext=&redirects=&formatversion=2`);
-            const data = response.body.query.pages[0];
-            const description = data.extract.substr(0, 1900).split('\n').join('\n\n');
+            const data = body.query.pages[0];
+            const description = data.extract.substr(0, 2000).split('\n').join('\n\n');
             const embed = new RichEmbed()
                 .setColor(0xE7E7E7)
                 .setTitle(data.title)

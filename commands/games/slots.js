@@ -19,10 +19,9 @@ module.exports = class SlotsCommand extends Command {
         const slotOne = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
-        const slotFour = slotThing[Math.floor(Math.random() * slotThing.length)];
-        if (slotOne === slotTwo && slotOne === slotThree && slotOne === slotFour) {
-            return message.say(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nWow! You won! Great job... er... luck!`);
+        if (slotOne === slotTwo && slotOne === slotThree) {
+            return message.say(`${slotOne}|${slotTwo}|${slotThree}\nWow! You won! Great job... er... luck!`);
         }
-        return message.say(`${slotOne}|${slotTwo}|${slotThree}|${slotFour}\nAww... You lost... Guess it's just bad luck, huh?`);
+        return message.say(`${slotOne}|${slotTwo}|${slotThree}\nAww... You lost... Guess it's just bad luck, huh?`);
     }
 };

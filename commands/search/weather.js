@@ -25,9 +25,9 @@ module.exports = class WeatherCommand extends Command {
         }
         const { location } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${location}")&format=json`);
-            const data = response.body.query.results.channel;
+            const data = body.query.results.channel;
             const embed = new RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(data.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
