@@ -28,9 +28,9 @@ module.exports = class ForecastCommand extends Command {
         }
         const { location } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${location}")&format=json`);
-            const info = response.body.query.results.channel;
+            const info = body.query.results.channel;
             const data = info.item.forecast;
             const embed = new RichEmbed()
                 .setColor(0x0000FF)

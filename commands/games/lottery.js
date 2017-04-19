@@ -16,8 +16,7 @@ module.exports = class LotteryCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const lottery = Math.floor(Math.random() * 100) + 1;
-        const userName = message.author.username;
-        if (lottery < 100) return message.say(`Nope, sorry ${userName}, you lost.`);
-        return message.say(`Wow ${userName}! You actually won! Great job!`);
+        if (lottery < 99) return message.say(`Nope, sorry ${message.author.username}, you lost.`);
+        return message.say(`Wow ${message.author.username}! You actually won! Great job!`);
     }
 };

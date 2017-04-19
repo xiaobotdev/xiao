@@ -28,18 +28,18 @@ module.exports = class WattpadCommand extends Command {
         }
         const { book } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`https://api.wattpad.com:443/v4/stories?query=${book}&limit=1`)
                 .set({
                     'Authorization': `Basic ${process.env.WATTPAD_KEY}`
                 });
-            const data = response.body.stories[0];
+            const data = body.stories[0];
             const embed = new RichEmbed()
                 .setColor(0xF89C34)
                 .setAuthor('Wattpad', 'http://www.selfpubtoolbox.com/wp-content/uploads/2015/05/a6044fd3a88acd5043860484db972ca6.png')
                 .setURL(data.url)
                 .setTitle(data.title)
-                .setDescription(data.description.substr(0, 1500))
+                .setDescription(data.description.substr(0, 2000))
                 .addField('**Author:**',
                     data.user, true)
                 .addField('**Parts:**',

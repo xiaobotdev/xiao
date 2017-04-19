@@ -16,7 +16,7 @@ module.exports = class CowsayCommand extends Command {
                     if (text.length < 1500) {
                         return true;
                     }
-                    return 'Your message content is too long.';
+                    return `Please keep your content under 1500 characters, you have ${text.length}.`;
                 }
             }]
         });

@@ -21,7 +21,7 @@ module.exports = class DiscrimCommand extends Command {
                     if (discrim.match(/^[0-9]+$/) && discrim.length === 4) {
                         return true;
                     }
-                    return 'Invalid discriminator.';
+                    return `${discrim} is not a valid discriminator.`;
                 }
             }]
         });

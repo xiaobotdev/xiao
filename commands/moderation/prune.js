@@ -29,7 +29,7 @@ module.exports = class PruneCommand extends Command {
                     if (count < 100 && count > 0) {
                         return true;
                     }
-                    return 'Too many or two few messages to delete. Limit 1-99.';
+                    return `${count} is not a valid amount of messages. Limit 1-99.`;
                 }
             }]
         });

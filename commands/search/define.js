@@ -34,9 +34,9 @@ module.exports = class DefineCommand extends Command {
         }
         const { word } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`http://api.wordnik.com:80/v4/word.json/${word}/definitions?limit=1&includeRelated=false&useCanonical=false&api_key=${process.env.WORDNIK_KEY}`);
-            const data = response.body[0];
+            const data = body[0];
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setTitle(data.word)

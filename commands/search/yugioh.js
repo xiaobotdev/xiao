@@ -28,9 +28,9 @@ module.exports = class YuGiOhCommand extends Command {
         }
         const { card } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`http://yugiohprices.com/api/card_data/${card}`);
-            const data = response.body.data;
+            const data = body.data;
             if (data.card_type === 'monster') {
                 const embed = new RichEmbed()
                     .setColor(0xBE5F1F)

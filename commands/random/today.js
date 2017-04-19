@@ -22,16 +22,16 @@ module.exports = class TodayCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         try {
-            const response = await request
+            const { text } = await request
                 .get('http://history.muffinlabs.com/date')
                 .buffer(true);
-            const parsedResponse = JSON.parse(response.text);
-            const events = parsedResponse.data.Events;
+            const data = JSON.parse(text);
+            const events = data.data.Events;
             const randomNumber = Math.floor(Math.random() * events.length);
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
-                .setURL(parsedResponse.url)
-                .setTitle(`On this day (${parsedResponse.date})...`)
+                .setURL(data.url)
+                .setTitle(`On this day (${data.date})...`)
                 .setTimestamp()
                 .setDescription(`${events[randomNumber].text} (${events[randomNumber].year})`);
             return message.embed(embed);

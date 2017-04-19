@@ -33,9 +33,9 @@ module.exports = class OsuCommand extends Command {
         }
         const { username } = args;
         try {
-            const response = await request
+            const { body } = await request
                 .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${username}&type=string`);
-            const data = response.body[0];
+            const data = body[0];
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')

@@ -28,9 +28,9 @@ module.exports = class NeopetCommand extends Command {
         }
         const { pet } = args;
         try {
-            const response = await request
+            const { text } = await request
                 .get(`http://www.sunnyneo.com/petimagefinder.php?name=${pet}&size=5&mood=1`);
-            const $ = cheerio.load(response.text);
+            const $ = cheerio.load(text);
             const link = $('textarea').first().text();
             if (!link.includes('cp')) return message.say(':x: Error! Pet not found!');
             return message.say(link);
