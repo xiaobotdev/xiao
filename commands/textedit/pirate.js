@@ -23,6 +23,9 @@ module.exports = class PirateCommand extends Command {
                         return 'Your message content is too long.';
                     }
                     return true;
+                },
+                parse: text => {
+                    return translator.wordTrans(text, dictionary);
                 }
             }]
         });
@@ -32,8 +35,7 @@ module.exports = class PirateCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const text = args.text;
-        const pirate = translator.wordTrans(text, dictionary);
-        return message.say(`\u180E${pirate}`);
+        const { text } = args;
+        return message.say(`\u180E${text}`);
     }
 };

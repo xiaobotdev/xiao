@@ -16,7 +16,10 @@ module.exports = class YouTubeCommand extends Command {
             args: [{
                 key: 'video',
                 prompt: 'What would you like to search for?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text);
+                }
             }]
         });
     }
@@ -26,7 +29,7 @@ module.exports = class YouTubeCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const video = encodeURIComponent(args.video);
+        const { video } = args;
         try {
             const response = await request
                 .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${video}&key=${process.env.GOOGLE_KEY}`);

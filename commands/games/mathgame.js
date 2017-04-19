@@ -19,6 +19,9 @@ module.exports = class MathGameCommand extends Command {
                         return true;
                     }
                     return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
+                },
+                parse: text => {
+                    return text.toLowerCase();
                 }
             }]
         });
@@ -29,11 +32,11 @@ module.exports = class MathGameCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const level = args.difficulty.toLowerCase();
+        const { difficulty } = args;
         let operation = ['+', '-', '*'];
         operation = operation[Math.floor(Math.random() * operation.length)];
         let value;
-        switch (level) {
+        switch (difficulty) {
             case 'easy':
                 value = 10;
                 break;

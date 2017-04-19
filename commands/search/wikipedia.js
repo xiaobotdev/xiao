@@ -13,7 +13,10 @@ module.exports = class WikipediaCommand extends Command {
             args: [{
                 key: 'query',
                 prompt: 'What would you like to search for?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text).replace(/[)]/g, '%29');
+                }
             }]
         });
     }
@@ -23,8 +26,7 @@ module.exports = class WikipediaCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        let query = encodeURIComponent(args.query);
-        query = query.replace(/[)]/g, '%29');
+        const { query } = args;
         try {
             const response = await request
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${query}&exintro=&explaintext=&redirects=&formatversion=2`);

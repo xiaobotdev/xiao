@@ -32,7 +32,7 @@ module.exports = class DiscrimCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const discrim = args.discrim;
+        const { discrim } = args;
         const users = await this.client.users.filter(u => u.discriminator === discrim).map(u => u.username).sort();
         const embed = new RichEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${discrim}`)

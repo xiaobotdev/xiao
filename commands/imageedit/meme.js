@@ -22,6 +22,9 @@ module.exports = class MemeCommand extends Command {
                         return true;
                     }
                     return 'Please enter a valid meme type. Use `;help meme` to view a list of types.';
+                },
+                parse: text => {
+                    return text.toLowerCase();
                 }
             }, {
                 key: 'toprow',
@@ -32,6 +35,9 @@ module.exports = class MemeCommand extends Command {
                         return true;
                     }
                     return 'Please do not use special characters and keep the rows under 100 characters each.';
+                },
+                parse: text => {
+                    return text.replace(/[ ]/g, '-').replace(/[?]/g, '~q');
                 }
             }, {
                 key: 'bottomrow',
@@ -42,6 +48,9 @@ module.exports = class MemeCommand extends Command {
                         return true;
                     }
                     return 'Please do not use special characters and keep the rows under 100 characters each.';
+                },
+                parse: text => {
+                    return text.replace(/[ ]/g, '-').replace(/[?]/g, '~q');
                 }
             }]
         });
@@ -52,11 +61,7 @@ module.exports = class MemeCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
-        const type = args.type.toLowerCase();
-        let toprow = args.toprow.replace(/[ ]/g, '-');
-        toprow = toprow.replace(/[?]/g, '~q');
-        let bottomrow = args.bottomrow.replace(/[ ]/g, '-');
-        bottomrow = bottomrow.replace(/[?]/g, '~q');
+        const { type, toprow, bottomrow } = args;
         const link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
         return message.channel.send({file: link}).catch(() => message.say(':x: Error! Something went wrong!'));
     }

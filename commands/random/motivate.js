@@ -15,8 +15,7 @@ module.exports = class MotivateCommand extends Command {
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to motivate?',
-                type: 'string',
-                default: ''
+                type: 'string'
             }]
         });
     }
@@ -25,7 +24,7 @@ module.exports = class MotivateCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const motivated = args.thing || message.author;
-        return message.say(`${motivated}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
+        const { thing } = args;
+        return message.say(`${thing}, https://www.youtube.com/watch?v=ZXsQAXx_ao0`);
     }
 };

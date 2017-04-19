@@ -13,7 +13,10 @@ module.exports = class WattpadCommand extends Command {
             args: [{
                 key: 'book',
                 prompt: 'What book would you like to search for?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text);
+                }
             }]
         });
     }
@@ -23,7 +26,7 @@ module.exports = class WattpadCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
-        const book = encodeURIComponent(args.book);
+        const { book } = args;
         try {
             const response = await request
                 .get(`https://api.wattpad.com:443/v4/stories?query=${book}&limit=1`)

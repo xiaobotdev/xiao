@@ -18,19 +18,19 @@ module.exports = class EmbedCommand extends Command {
         });
     }
 
-    async run(message, args) {
+    run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
         }
-        const text = args.text;
+        const { text } = args;
         const embed = new RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setColor(0x00AE86)
             .setTimestamp()
             .setDescription(text);
-        await message.delete();
+        message.delete();
         return message.embed(embed);
     }
 };

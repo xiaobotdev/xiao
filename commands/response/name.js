@@ -21,6 +21,9 @@ module.exports = class RandomNameCommand extends Command {
                         return true;
                     }
                     return 'Please enter either `male` or `female`.';
+                },
+                parse: text => {
+                    return text.toLowerCase();
                 }
             }]
         });
@@ -30,7 +33,7 @@ module.exports = class RandomNameCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const gender = args.gender.toLowerCase();
+        const { gender } = args;
         let lastName = ['Walker', 'Tworni', 'Ross', 'Smith', 'Odendahl', 'Deere', 'Brown', 'Williams', 'Jones', 'Miles', 'Moss', 'Roberto', 'McFly', 'McDonald', 'Lewis', 'Armstrong', 'Stevenson', 'Schwarzenegger', 'Robinson', 'Parker', 'Piper', 'Johnson', 'Brantley', 'Stewart', 'Ree', 'Talbot', 'Seville', 'Peace', 'Spielberg', 'Baggins', 'Wilborn', 'Vankirk', 'Shireman', 'Jimerson', 'Masters', 'Hack', 'Satcher', 'Younkin', 'Aguila', 'Duffey', 'Burgin', 'Highfall', 'Wee', 'Solari', 'Tomaselli', 'Basler', 'Difranco', 'Latch', 'Rives', 'Dolan', 'Abraham', 'Holter', 'Portugal', 'Lininger', 'Holst', 'Mccroy', 'Follmer', 'Hotchkiss', 'Gassaway', 'Wang', 'Agron', 'Raasch', 'Gourd', 'Czaja', 'Marquart', 'Papadopoulos', 'Ringer', 'Lax', 'Sperling', 'Galusha', 'Alston'];
         lastName = lastName[Math.floor(Math.random() * lastName.length)];
         if (gender === 'male') {

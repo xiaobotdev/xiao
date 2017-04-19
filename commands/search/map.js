@@ -23,9 +23,12 @@ module.exports = class MapCommand extends Command {
                     return 'Please enter a zoom value from 1-20';
                 }
             }, {
-                key: 'locationQ',
+                key: 'location',
                 prompt: 'What location you like to get a map image for?',
-                type: 'string'
+                type: 'string',
+                parse: text => {
+                    return encodeURIComponent(text);
+                }
             }]
         });
     }
@@ -35,8 +38,7 @@ module.exports = class MapCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
-        const zoom = args.zoom;
-        const location = encodeURIComponent(args.locationQ);
+        const { zoom, location } = args;
         try {
             const response = await request
                 .get(`https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);

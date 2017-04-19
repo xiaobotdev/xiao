@@ -30,6 +30,9 @@ module.exports = class PruneCommand extends Command {
                         return true;
                     }
                     return 'Too many or two few messages to delete. Limit 1-99.';
+                },
+                parse: count => {
+                    return count + 1;
                 }
             }]
         });
@@ -45,7 +48,7 @@ module.exports = class PruneCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGE_HISTORY')) return message.say(':x: Error! I don\'t have the Read Message History Permission!');
             if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
         }
-        const count = args.count + 1;
+        const { count } = args;
         try {
             const messages = await message.channel.fetchMessages({
                 limit: count
