@@ -1,5 +1,5 @@
 {
-    lastNames: [
+    "lastNames": [
         "Walker",
         "Tworni",
         "Ross",
@@ -72,7 +72,7 @@
         "Galusha",
         "Alston"
     ],
-    maleNames: [
+    "maleNames": [
         "Bob",
         "Daniel",
         "Logan",
@@ -145,7 +145,7 @@
         "Larry",
         "Victor"
     ],
-    femaleNames: [
+    "femaleNames": [
         "Elizabeth",
         "Chelsey",
         "Rachel",
