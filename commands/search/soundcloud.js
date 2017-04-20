@@ -42,7 +42,7 @@ module.exports = class SoundCloudCommand extends Command {
                 .setURL(data.permalink_url)
                 .setThumbnail(data.artwork_url)
                 .addField('**Link:**',
-                    data.permalink_url)
+                    `[Here](${data.permalink_url})`)
                 .addField('**Artist:**',
                     data.user.username)
                 .addField('**Download Count:**',
