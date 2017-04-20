@@ -39,7 +39,7 @@ module.exports = class BobRossCommand extends Command {
         nothing.composite(bob, 0, 0);
         nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
-            return message.channel.send({file: {attachment: buff}});
+            return message.channel.send({files: [{attachment: buff}]});
         });
     }
 };

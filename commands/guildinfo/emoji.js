@@ -21,6 +21,6 @@ module.exports = class EmojiCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        return message.say(message.guild.emojis.map(e => e).join(' '));
+        return message.say(message.guild.emojis.map(e => e).join('')).catch(() => message.say(':x: Error! Something went wrong!'));
     }
 };
