@@ -6,8 +6,8 @@ module.exports = class PokeCommand extends Command {
             name: 'poke',
             group: 'roleplay',
             memberName: 'poke',
-            description: 'Pokes someone. (;poke @User)',
-            examples: [';poke @User'],
+            description: 'Pokes someone. (x;poke @User)',
+            examples: ['x;poke @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

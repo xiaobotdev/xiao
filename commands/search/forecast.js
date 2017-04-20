@@ -11,8 +11,8 @@ module.exports = class ForecastCommand extends Command {
             ],
             group: 'search',
             memberName: 'forecast',
-            description: 'Gets the seven-day forecast for a specified location. (;forecast San Francisco)',
-            examples: [';forecast San Francisco'],
+            description: 'Gets the seven-day forecast for a specified location. (x;forecast San Francisco)',
+            examples: ['x;forecast San Francisco'],
             args: [{
                 key: 'location',
                 prompt: 'What location would you like to get the forecast for?',

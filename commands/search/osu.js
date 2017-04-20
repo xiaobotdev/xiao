@@ -13,8 +13,8 @@ module.exports = class OsuCommand extends Command {
             ],
             group: 'search',
             memberName: 'osu',
-            description: 'Searches Osu user data. (;osu dragonfire535)',
-            examples: [';osu dragonfire535'],
+            description: 'Searches Osu user data. (x;osu dragonfire535)',
+            examples: ['x;osu dragonfire535'],
             args: [{
                 key: 'username',
                 prompt: 'What osu username would you like to search for?',

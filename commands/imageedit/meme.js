@@ -10,9 +10,9 @@ module.exports = class MemeCommand extends Command {
             ],
             group: 'imageedit',
             memberName: 'meme',
-            description: 'Sends a Meme with text of your choice, and a background of your choice. (;meme facepalm "I can\'t even" "comprehend this")',
+            description: 'Sends a Meme with text of your choice, and a background of your choice. (x;meme facepalm "I can\'t even" "comprehend this")',
             details: '**Codes:** tenguy, afraid, older, aag, tried, biw, blb, kermit, bd, ch, cbg, wonka, cb, keanu, dsm, live, ants, doge, alwaysonbeat, ermg, facepalm, fwp, fa, fbf, fry, hipster, icanhas, crazypills, mw, noidea, regret, boat, hagrid, sohappy, captain, inigo, iw, ackbar, happening, joker, ive, ll, morpheus, mb, badchoice, mmm, jetpack, red, mordor, oprah, oag, remembers, philosoraptor, jw, patrick, rollsafe, sad-obama, sad-clinton, sadfrog, sad-bush, sad-biden, sad-boehner, saltbae, sarcasticbear, dwight, sb, ss, sf, dodgson, money, sohot, nice, awesome-awkward, awesome, awkward-awesome, awkward, fetch, success, scc, ski, officespace, interesting, toohigh, bs, center, both, winter, xy, buzz, yodawg, uno, yallgot, bad, elf, chosen',
-            examples: [';meme facepalm "I can\'t even" "comprehend this"'],
+            examples: ['x;meme facepalm "I can\'t even" "comprehend this"'],
             args: [{
                 key: 'type',
                 prompt: 'What meme type do you want to use?',

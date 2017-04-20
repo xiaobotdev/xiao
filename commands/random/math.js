@@ -13,8 +13,8 @@ module.exports = class MathCommand extends Command {
             ],
             group: 'random',
             memberName: 'math',
-            description: 'Does Math (;math 2 + 2)',
-            examples: [';math 2 + 2'],
+            description: 'Does Math (x;math 2 + 2)',
+            examples: ['x;math 2 + 2'],
             args: [{
                 key: 'expression',
                 prompt: 'What do you want to answer?',

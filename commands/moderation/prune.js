@@ -14,8 +14,8 @@ module.exports = class PruneCommand extends Command {
             ],
             group: 'moderation',
             memberName: 'prune',
-            description: 'Deletes a defined number of messages from the current channel, up to 99. (;prune 45)',
-            examples: [';prune 45'],
+            description: 'Deletes a defined number of messages from the current channel, up to 99. (x;prune 45)',
+            examples: ['x;prune 45'],
             guildOnly: true,
             throttling: {
 				usages: 1,

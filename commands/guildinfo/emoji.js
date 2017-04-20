@@ -11,8 +11,8 @@ module.exports = class EmojiCommand extends Command {
             ],
             group: 'guildinfo',
             memberName: 'emoji',
-            description: 'Gives a list of the current server\'s emoji. (;emoji)',
-            examples: [';emoji'],
+            description: 'Gives a list of the current server\'s emoji. (x;emoji)',
+            examples: ['x;emoji'],
             guildOnly: true
         });
     }

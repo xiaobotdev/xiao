@@ -10,8 +10,8 @@ module.exports = class CoinFlipCommand extends Command {
             ],
             group: 'response',
             memberName: 'coin',
-            description: 'Flips a coin. (;coin)',
-            examples: [';coin']
+            description: 'Flips a coin. (x;coin)',
+            examples: ['x;coin']
         });
     }
 

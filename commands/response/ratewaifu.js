@@ -9,8 +9,8 @@ module.exports = class RateWaifuCommand extends Command {
             ],
             group: 'response',
             memberName: 'ratewaifu',
-            description: 'Rates your Waifu. (;ratewaifu Xiao Pai)',
-            examples: [';ratewaifu Xiao Pai'],
+            description: 'Rates your Waifu. (x;ratewaifu Xiao Pai)',
+            examples: ['x;ratewaifu Xiao Pai'],
             args: [{
                 key: 'waifu',
                 prompt: 'Who do you want to rate?',

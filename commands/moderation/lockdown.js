@@ -6,8 +6,8 @@ module.exports = class LockdownCommand extends Command {
             name: 'lockdown',
             group: 'moderation',
             memberName: 'lockdown',
-            description: 'Locks down the current server or removes a lockdown, which prevents non-roled members from speaking. (;lockdown start)',
-            examples: [';lockdown start', ';lockdown stop'],
+            description: 'Locks down the current server or removes a lockdown, which prevents non-roled members from speaking. (x;lockdown start)',
+            examples: ['x;lockdown start', 'x;lockdown stop'],
             guildOnly: true,
             args: [{
                 key: 'type',

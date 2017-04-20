@@ -8,8 +8,8 @@ module.exports = class MathGameCommand extends Command {
             name: 'mathgame',
             group: 'games',
             memberName: 'mathgame',
-            description: 'See how fast you can answer a math problem in a given time limit. (;mathgame easy)',
-            examples: [';mathgame easy', ';mathgame medium', ';mathgame hard', ';mathgame extreme'],
+            description: 'See how fast you can answer a math problem in a given time limit. (x;mathgame easy)',
+            examples: ['x;mathgame easy', 'x;mathgame medium', 'x;mathgame hard', 'x;mathgame extreme'],
             args: [{
                 key: 'difficulty',
                 prompt: 'What difficulty should the math game be? easy, medium, hard, or extreme?',

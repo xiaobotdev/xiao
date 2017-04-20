@@ -14,8 +14,8 @@ module.exports = class DefineCommand extends Command {
             ],
             group: 'search',
             memberName: 'define',
-            description: 'Defines a word. (;define Cat)',
-            examples: [';define Cat'],
+            description: 'Defines a word. (x;define Cat)',
+            examples: ['x;define Cat'],
             args: [{
                 key: 'word',
                 prompt: 'What would you like to define?',

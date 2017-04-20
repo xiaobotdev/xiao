@@ -16,8 +16,8 @@ module.exports = class ShardInfoCommand extends Command {
             ],
             group: 'util',
             memberName: 'shardinfo',
-            description: 'Gives some bot info for the Shard you specify. (;shardinfo 0)',
-            examples: [';shardinfo 0'],
+            description: 'Gives some bot info for the Shard you specify. (x;shardinfo 0)',
+            examples: ['x;shardinfo 0'],
             args: [{
                 key: 'shardID',
                 prompt: 'Which Shard would you like to get data for?',

@@ -14,8 +14,8 @@ module.exports = class GuildInfoCommand extends Command {
             ],
             group: 'guildinfo',
             memberName: 'server',
-            description: 'Gives some info on the current server. (;server)',
-            examples: [';server'],
+            description: 'Gives some info on the current server. (x;server)',
+            examples: ['x;server'],
             guildOnly: true
         });
     }

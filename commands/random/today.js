@@ -11,8 +11,8 @@ module.exports = class TodayCommand extends Command {
             ],
             group: 'random',
             memberName: 'today',
-            description: 'Tells you what happened today. (;today)',
-            examples: [';today']
+            description: 'Tells you what happened today. (x;today)',
+            examples: ['x;today']
         });
     }
 

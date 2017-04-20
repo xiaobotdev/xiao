@@ -12,8 +12,8 @@ module.exports = class PirateCommand extends Command {
             ],
             group: 'textedit',
             memberName: 'pirate',
-            description: 'Talk like a pirate! (;pirate This is being said like a pirate!)',
-            examples: [';pirate This is being said like a pirate!'],
+            description: 'Talk like a pirate! (x;pirate This is being said like a pirate!)',
+            examples: ['x;pirate This is being said like a pirate!'],
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to pirate?',

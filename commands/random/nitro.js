@@ -7,8 +7,8 @@ module.exports = class NitroCommand extends Command {
             name: 'nitro',
             group: 'random',
             memberName: 'nitro',
-            description: 'Sends a "This Message Can Only be viewed by Nitro Members" message. (;nitro)',
-            examples: [';nitro']
+            description: 'Sends a "This Message Can Only be viewed by Nitro Members" message. (x;nitro)',
+            examples: ['x;nitro']
         });
     }
 

@@ -10,8 +10,8 @@ module.exports = class YearsCommand extends Command {
             ],
             group: 'avataredit',
             memberName: '3000years',
-            description: 'It\'s been 3000 years... (;3000years @User)',
-            examples: [';3000years @user'],
+            description: 'It\'s been 3000 years... (x;3000years @User)',
+            examples: ['x;3000years @user'],
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to edit the avatar of?',

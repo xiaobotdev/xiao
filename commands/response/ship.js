@@ -9,8 +9,8 @@ module.exports = class ShipCommand extends Command {
             ],
             group: 'response',
             memberName: 'ship',
-            description: 'Ships two people. (;ship @Rem and @Nate)',
-            examples: [';ship @Rem and @Nate'],
+            description: 'Ships two people. (x;ship @Rem and @Nate)',
+            examples: ['x;ship @Rem and @Nate'],
             args: [{
                 key: 'things',
                 prompt: 'What do you want to ship together?',

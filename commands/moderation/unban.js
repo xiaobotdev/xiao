@@ -10,8 +10,8 @@ module.exports = class UnbanCommand extends Command {
             ],
             group: 'moderation',
             memberName: 'unban',
-            description: 'Unbans a user. (;unban USERID not being a jerk.)',
-            examples: [';unban USERID not being a jerk.'],
+            description: 'Unbans a user. (x;unban USERID not being a jerk.)',
+            examples: ['x;unban USERID not being a jerk.'],
             guildOnly: true,
             args: [{
                 key: 'memberID',

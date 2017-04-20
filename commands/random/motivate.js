@@ -10,8 +10,8 @@ module.exports = class MotivateCommand extends Command {
             ],
             group: 'random',
             memberName: 'motivate',
-            description: 'Motivates someone. (;motivate @User)',
-            examples: [';motivate @User'],
+            description: 'Motivates someone. (x;motivate @User)',
+            examples: ['x;motivate @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to motivate?',
