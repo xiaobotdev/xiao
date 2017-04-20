@@ -12,6 +12,7 @@ module.exports = class MemeCommand extends Command {
             memberName: 'meme',
             description: 'Sends a Meme with text of your choice, and a background of your choice. (x;meme facepalm "I can\'t even" "comprehend this")',
             details: `**Codes:** ${memecodes.join(', ')}`,
+            examples: ['x;meme facepalm "I can\'t even" "comprehend this"'],
             args: [{
                 key: 'type',
                 prompt: 'What meme type do you want to use?',
