@@ -11,8 +11,8 @@ module.exports = class YouTubeCommand extends Command {
             ],
             group: 'search',
             memberName: 'youtube',
-            description: 'Searches YouTube for a video. (;youtube video)',
-            examples: [';youtube video'],
+            description: 'Searches YouTube for a video. (x;youtube video)',
+            examples: ['x;youtube video'],
             args: [{
                 key: 'video',
                 prompt: 'What would you like to search for?',

@@ -6,8 +6,8 @@ module.exports = class CanYouNotCommand extends Command {
             name: 'canyounot',
             group: 'random',
             memberName: 'canyounot',
-            description: 'Can YOU not? (;canyounot)',
-            examples: [';canyounot']
+            description: 'Can YOU not? (x;canyounot)',
+            examples: ['x;canyounot']
         });
     }
 

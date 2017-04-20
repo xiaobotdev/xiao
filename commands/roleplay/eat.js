@@ -6,8 +6,8 @@ module.exports = class EatCommand extends Command {
             name: 'eat',
             group: 'roleplay',
             memberName: 'eat',
-            description: 'Eats something/someone. (;eat @User)',
-            examples: [';eat @User'],
+            description: 'Eats something/someone. (x;eat @User)',
+            examples: ['x;eat @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

@@ -6,8 +6,8 @@ module.exports = class LennyCommand extends Command {
             name: 'lenny',
             group: 'random',
             memberName: 'lenny',
-            description: 'Responds with the lenny face. (;lenny)',
-            examples: [';lenny']
+            description: 'Responds with the lenny face. (x;lenny)',
+            examples: ['x;lenny']
         });
     }
 

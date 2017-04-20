@@ -12,8 +12,8 @@ module.exports = class WouldYouRatherCommand extends Command {
             ],
             group: 'random',
             memberName: 'wouldyourather',
-            description: 'Gets a random would you rather question. (;wouldyourather)',
-            examples: [';wouldyourather']
+            description: 'Gets a random would you rather question. (x;wouldyourather)',
+            examples: ['x;wouldyourather']
         });
     }
 

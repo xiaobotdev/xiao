@@ -10,8 +10,8 @@ module.exports = class SteamCardCommand extends Command {
             ],
             group: 'avataredit',
             memberName: 'steamcard',
-            description: 'Put an avatar on a Steam Card. (;steamcard @User)',
-            examples: [';steamcard @user'],
+            description: 'Put an avatar on a Steam Card. (x;steamcard @User)',
+            examples: ['x;steamcard @user'],
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to edit the avatar of?',

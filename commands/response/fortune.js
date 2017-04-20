@@ -9,8 +9,8 @@ module.exports = class FortuneCookieCommand extends Command {
             ],
             group: 'response',
             memberName: 'fortune',
-            description: 'Fortune Cookie. (;fortune)',
-            examples: [';fortune']
+            description: 'Fortune Cookie. (x;fortune)',
+            examples: ['x;fortune']
         });
     }
 

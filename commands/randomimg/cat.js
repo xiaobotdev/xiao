@@ -6,8 +6,8 @@ module.exports = class CatCommand extends Command {
             name: 'cat',
             group: 'randomimg',
             memberName: 'cat',
-            description: 'Sends a random cat picture. (;cat)',
-            examples: [';cat']
+            description: 'Sends a random cat picture. (x;cat)',
+            examples: ['x;cat']
         });
     }
 

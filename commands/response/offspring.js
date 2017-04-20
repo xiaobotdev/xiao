@@ -10,8 +10,8 @@ module.exports = class OffspringCommand extends Command {
             ],
             group: 'response',
             memberName: 'offspring',
-            description: 'Tells you if your new child is a boy or a girl. (;offspring)',
-            examples: [';offspring']
+            description: 'Tells you if your new child is a boy or a girl. (x;offspring)',
+            examples: ['x;offspring']
         });
     }
 

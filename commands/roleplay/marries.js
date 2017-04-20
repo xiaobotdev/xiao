@@ -6,8 +6,8 @@ module.exports = class MarryCommand extends Command {
             name: 'marry',
             group: 'roleplay',
             memberName: 'marry',
-            description: 'Marries someone. (;marry @User)',
-            examples: [';marry @User'],
+            description: 'Marries someone. (x;marry @User)',
+            examples: ['x;marry @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

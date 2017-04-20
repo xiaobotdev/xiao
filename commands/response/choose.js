@@ -9,8 +9,8 @@ module.exports = class ChooseCommand extends Command {
             ],
             group: 'response',
             memberName: 'choose',
-            description: 'Chooses between things. (;choose "Cow" "Sheep")',
-            examples: [';choose "Cow" "Sheep"', ';choose "Bark" "Woof" "Meow" "Moo"'],
+            description: 'Chooses between things. (x;choose "Cow" "Sheep")',
+            examples: ['x;choose "Cow" "Sheep"', 'x;choose "Bark" "Woof" "Meow" "Moo"'],
             args: [{
                 key: 'choices',
                 prompt: 'What choices do you want me pick from?',

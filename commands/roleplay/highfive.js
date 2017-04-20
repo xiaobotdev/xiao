@@ -6,8 +6,8 @@ module.exports = class HighFivesCommand extends Command {
             name: 'highfive',
             group: 'roleplay',
             memberName: 'highfive',
-            description: 'High Fives someone. (;highfive @User)',
-            examples: [';highfive @User'],
+            description: 'High Fives someone. (x;highfive @User)',
+            examples: ['x;highfive @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

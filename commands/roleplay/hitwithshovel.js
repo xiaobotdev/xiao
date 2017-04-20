@@ -6,8 +6,8 @@ module.exports = class HitwithShovelCommand extends Command {
             name: 'hitwithshovel',
             group: 'roleplay',
             memberName: 'hitwithsovel',
-            description: 'Hits someone with a shovel. (;hitwithshovel @User)',
-            examples: [';hitwithshovel @User'],
+            description: 'Hits someone with a shovel. (x;hitwithshovel @User)',
+            examples: ['x;hitwithshovel @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

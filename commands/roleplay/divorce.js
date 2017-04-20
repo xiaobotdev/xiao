@@ -6,8 +6,8 @@ module.exports = class DivorceCommand extends Command {
             name: 'divorce',
             group: 'roleplay',
             memberName: 'divorce',
-            description: 'Divorces someone. (;divorce @User)',
-            examples: [';divorce @User'],
+            description: 'Divorces someone. (x;divorce @User)',
+            examples: ['x;divorce @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

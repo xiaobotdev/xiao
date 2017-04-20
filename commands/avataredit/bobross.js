@@ -11,8 +11,8 @@ module.exports = class BobRossCommand extends Command {
             ],
             group: 'avataredit',
             memberName: 'bobross',
-            description: 'Make Bob Ross draw your avatar. (;bobross @User)',
-            examples: [';bobross @User'],
+            description: 'Make Bob Ross draw your avatar. (x;bobross @User)',
+            examples: ['x;bobross @User'],
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to edit the avatar of?',

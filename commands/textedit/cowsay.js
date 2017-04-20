@@ -6,8 +6,8 @@ module.exports = class CowsayCommand extends Command {
             name: 'cowsay',
             group: 'textedit',
             memberName: 'cowsay',
-            description: 'Converts text to cowsay. (;cowsay This text)',
-            examples: [';cowsay This text'],
+            description: 'Converts text to cowsay. (x;cowsay This text)',
+            examples: ['x;cowsay This text'],
             args: [{
                 key: 'text',
                 prompt: 'What text would you like the cow to say?',

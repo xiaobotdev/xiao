@@ -12,8 +12,8 @@ module.exports = class RouletteCommand extends Command {
             ],
             group: 'response',
             memberName: 'roulette',
-            description: 'Chooses a random member. (;roulette Who is the best?)',
-            examples: [';roulette Who is the best?'],
+            description: 'Chooses a random member. (x;roulette Who is the best?)',
+            examples: ['x;roulette Who is the best?'],
             guildOnly: true
         });
     }

@@ -14,8 +14,8 @@ module.exports = class BinaryCommand extends Command {
             name: 'binary',
             group: 'textedit',
             memberName: 'binary',
-            description: 'Converts text to binary. (;binary This text)',
-            examples: [';binary This text'],
+            description: 'Converts text to binary. (x;binary This text)',
+            examples: ['x;binary This text'],
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to binary?',

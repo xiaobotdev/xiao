@@ -11,8 +11,8 @@ module.exports = class MorseCommand extends Command {
             ],
             group: 'textedit',
             memberName: 'morse',
-            description: 'Translates text to morse code. (;morse This is Morse Code.)',
-            examples: [';morse This is Morse Code.'],
+            description: 'Translates text to morse code. (x;morse This is Morse Code.)',
+            examples: ['x;morse This is Morse Code.'],
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to morse?',

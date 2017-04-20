@@ -6,8 +6,8 @@ module.exports = class PunchCommand extends Command {
             name: 'punch',
             group: 'roleplay',
             memberName: 'punch',
-            description: 'Punches someone. (;punch @User)',
-            examples: [';punch @User'],
+            description: 'Punches someone. (x;punch @User)',
+            examples: ['x;punch @User'],
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

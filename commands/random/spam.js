@@ -6,8 +6,8 @@ module.exports = class SpamCommand extends Command {
             name: 'spam',
             group: 'random',
             memberName: 'spam',
-            description: 'Puts a picture of Spam. (;spam)',
-            examples: [';spam']
+            description: 'Puts a picture of Spam. (x;spam)',
+            examples: ['x;spam']
         });
     }
 

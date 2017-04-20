@@ -6,8 +6,8 @@ module.exports = class SlowClapCommand extends Command {
             name: 'slowclap',
             group: 'random',
             memberName: 'slowclap',
-            description: '*Slow Clap*. (;slowclap)',
-            examples: [';slowclap']
+            description: '*Slow Clap*. (x;slowclap)',
+            examples: ['x;slowclap']
         });
     }
 

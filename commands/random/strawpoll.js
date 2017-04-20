@@ -11,8 +11,8 @@ module.exports = class StrawpollCommand extends Command {
             ],
             group: 'random',
             memberName: 'strawpoll',
-            description: 'Creates a Strawpoll with your options. (;strawpoll "Who likes chips?" "Me" "Not Me")',
-            examples: [';strawpoll "Who likes chips?" "Me" "Not Me"'],
+            description: 'Creates a Strawpoll with your options. (x;strawpoll "Who likes chips?" "Me" "Not Me")',
+            examples: ['x;strawpoll "Who likes chips?" "Me" "Not Me"'],
             args: [{
                 key: 'title',
                 prompt: 'What would you like the title of the Strawpoll to be?',

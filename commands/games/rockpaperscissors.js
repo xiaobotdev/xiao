@@ -9,8 +9,8 @@ module.exports = class RockPaperScissorsCommand extends Command {
             ],
             group: 'games',
             memberName: 'rps',
-            description: 'Play Rock Paper Scissors (;rps Rock)',
-            examples: [';rps Rock'],
+            description: 'Play Rock Paper Scissors (x;rps Rock)',
+            examples: ['x;rps Rock'],
             args: [{
                 key: 'choice',
                 prompt: 'Rock, Paper, or Scissors?',

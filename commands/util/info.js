@@ -14,8 +14,8 @@ module.exports = class InfoCommand extends Command {
             ],
             group: 'util',
             memberName: 'info',
-            description: 'Gives some bot info for your shard. (;info)',
-            examples: [';info']
+            description: 'Gives some bot info for your shard. (x;info)',
+            examples: ['x;info']
         });
     }
 

@@ -12,8 +12,8 @@ module.exports = class BotSearchCommand extends Command {
             ],
             group: 'search',
             memberName: 'botinfo',
-            description: 'Searches Discord Bots for info on a bot. (;botinfo @Bot)',
-            examples: [';botinfo @Bot'],
+            description: 'Searches Discord Bots for info on a bot. (x;botinfo @Bot)',
+            examples: ['x;botinfo @Bot'],
             args: [{
                 key: 'bot',
                 prompt: 'Which bot do you want to get information for?',

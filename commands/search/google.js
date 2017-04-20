@@ -12,8 +12,8 @@ module.exports = class GoogleCommand extends Command {
             ],
             group: 'search',
             memberName: 'google',
-            description: 'Searches Google. (;google Cat)',
-            examples: [';google Cat'],
+            description: 'Searches Google. (x;google Cat)',
+            examples: ['x;google Cat'],
             args: [{
                 key: 'query',
                 prompt: 'What would you like to search for?',

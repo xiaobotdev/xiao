@@ -11,8 +11,8 @@ module.exports = class DiscrimCommand extends Command {
             ],
             group: 'search',
             memberName: 'discrim',
-            description: 'Searches the server for a certain discriminator. (;discrim 8081)',
-            examples: [';discrim 8081'],
+            description: 'Searches the server for a certain discriminator. (x;discrim 8081)',
+            examples: ['x;discrim 8081'],
             args: [{
                 key: 'discrim',
                 prompt: 'Which discriminator would you like to search for?',

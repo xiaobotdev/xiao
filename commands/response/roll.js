@@ -10,8 +10,8 @@ module.exports = class RollCommand extends Command {
             ],
             group: 'response',
             memberName: 'roll',
-            description: 'Rolls a Dice of your choice. (;roll 6)',
-            examples: [';roll 6'],
+            description: 'Rolls a Dice of your choice. (x;roll 6)',
+            examples: ['x;roll 6'],
             args: [{
                 key: 'value',
                 prompt: 'What is the maximum number you wish to appear?',
