@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const translator = require('custom-translate');
-const { dictionary } = require('./piratewords.json');
+const dictionary = require('./piratewords.json');
 
 module.exports = class PirateCommand extends Command {
     constructor(client) {

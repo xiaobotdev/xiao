@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const translator = require('custom-translate');
-const { dictionary } = require('./morsemappings.json');
+const dictionary = require('./morsemappings.json');
 
 module.exports = class MorseCommand extends Command {
     constructor(client) {
