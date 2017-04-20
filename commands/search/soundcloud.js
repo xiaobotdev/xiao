@@ -38,11 +38,9 @@ module.exports = class SoundCloudCommand extends Command {
             const data = body[0];
             const embed = new RichEmbed()
                 .setColor(0xF15A22)
-                .setAuthor(data.title, data.user.avatar_url)
+                .setAuthor(data.title, 'http://icons.iconarchive.com/icons/danleech/simple/1024/soundcloud-icon.png')
                 .setURL(data.permalink_url)
                 .setThumbnail(data.artwork_url)
-                .addField('**Link:**',
-                    `[Here](${data.permalink_url})`)
                 .addField('**Artist:**',
                     data.user.username)
                 .addField('**Download Count:**',
