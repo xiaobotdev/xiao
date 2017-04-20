@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const genders = ['boy', 'girl'];
 
 module.exports = class OffspringCommand extends Command {
     constructor(client) {
@@ -19,8 +20,7 @@ module.exports = class OffspringCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        let gender = ['boy', 'girl'];
-        gender = gender[Math.floor(Math.random() * gender.length)];
+        const gender = genders[Math.floor(Math.random() * genders.length)];
         return message.say(`It's a ${gender}!`);
     }
 };

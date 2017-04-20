@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const sides = ['heads', 'tails'];
 
 module.exports = class CoinFlipCommand extends Command {
     constructor(client) {
@@ -19,8 +20,7 @@ module.exports = class CoinFlipCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        let coin = ['heads', 'tails'];
-        coin = coin[Math.floor(Math.random() * coin.length)];
+        const coin = sides[Math.floor(Math.random() * sides.length)];
         return message.say(`It landed on ${coin}!`);
     }
 };

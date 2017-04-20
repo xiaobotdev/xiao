@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const fishes = [':fish:', ':tropical_fish:', ':blowfish:'];
 
 module.exports = class FishyCommand extends Command {
     constructor(client) {
@@ -19,8 +20,8 @@ module.exports = class FishyCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        let fish = [':fish:', ':tropical_fish:', ':blowfish:'];
-        fish = fish[Math.floor(Math.random() * fish.length)];
+        
+        const fish = fishes[Math.floor(Math.random() * fishes.length)];
         return message.say(`You caught a: ${fish}`);
     }
 };

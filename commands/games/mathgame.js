@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const math = require('mathjs');
+const operations = ['+', '-', '*'];
 
 module.exports = class MathGameCommand extends Command {
     constructor(client) {
@@ -33,8 +34,7 @@ module.exports = class MathGameCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         const { difficulty } = args;
-        let operation = ['+', '-', '*'];
-        operation = operation[Math.floor(Math.random() * operation.length)];
+        const operation = operations[Math.floor(Math.random() * operations.length)];
         let value;
         switch (difficulty) {
             case 'easy':

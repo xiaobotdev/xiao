@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const potatoes = require('./potatoes.json');
 
 module.exports = class PotatoCommand extends Command {
     constructor(client) {
@@ -19,8 +20,7 @@ module.exports = class PotatoCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
-        let potato = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.gif', '6.png', '7.jpg', '8.jpg', '9.jpg'];
-        potato = potato[Math.floor(Math.random() * potato.length)];
-        return message.channel.send({file: `./images/Potato${potato}`});
+        const potato = potatoes[Math.floor(Math.random() * potatoes.length)];
+        return message.channel.send({files: [`./images/Potato${potato}`]});
     }
 };

@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const sides = ['on nothing', 'on NaN', 'on 0', 'in the air', 'on null'];
 
 module.exports = class QuantumCoinCommand extends Command {
     constructor(client) {
@@ -20,8 +21,7 @@ module.exports = class QuantumCoinCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        let qcoin = ['on nothing', 'on NaN', 'on 0', 'in the air', 'on null'];
-        qcoin = qcoin[Math.floor(Math.random() * qcoin.length)];
+        const qcoin = sides[Math.floor(Math.random() * sides.length)];
         return message.say(`It landed ${qcoin}.`);
     }
 };
