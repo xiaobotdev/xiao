@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const sentences = require('./sentences.json');
 
 module.exports = class TypingGameCommand extends Command {
     constructor(client) {
@@ -32,8 +33,7 @@ module.exports = class TypingGameCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         }
         const { difficulty } = args;
-        let sentence = ['The quick brown fox jumps over the lazy dog.', 'Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.', 'How razorback-jumping frogs can level six piqued gymnasts!', 'Amazingly few discotheques provide jukeboxes.'];
-        sentence = sentence[Math.floor(Math.random() * sentence.length)];
+        const sentence = sentences[Math.floor(Math.random() * sentences.length)];
         let time;
         let levelWord;
         switch (difficulty) {

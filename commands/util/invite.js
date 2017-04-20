@@ -11,10 +11,11 @@ module.exports = class InviteCommand extends Command {
         });
     }
 
-    run(message) {
+    async run(message) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        return message.say('Add me to your server with this link:\nhttps://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=1345846343\nOr, come to my server with this link:\nhttps://discord.gg/fqQF8mc');
+        const invite = await this.client.generateInvite('1345846343');
+        return message.say(`Add me to your server with this link:\n${invite}\nOr, come to my server with this link:\n${this.client.options.invite}`);
     }
 };

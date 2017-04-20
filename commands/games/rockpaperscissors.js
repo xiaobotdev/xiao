@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const responses = ['Paper', 'Rock', 'Scissors'];
 
 module.exports = class RockPaperScissorsCommand extends Command {
     constructor(client) {
@@ -33,8 +34,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const { choice } = args;
-        let response = ['Paper', 'Rock', 'Scissors'];
-        response = response[Math.floor(Math.random() * response.length)];
+        const response = responses[Math.floor(Math.random() * responses.length)];
         if (choice === 'rock') {
             if (response === 'Rock') return message.say('Rock! Aw, it\'s a tie!');
             if (response === 'Paper') return message.say('Paper! Yes! I win!');

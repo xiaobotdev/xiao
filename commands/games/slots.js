@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const slotThing = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
 
 module.exports = class SlotsCommand extends Command {
     constructor(client) {
@@ -15,7 +16,6 @@ module.exports = class SlotsCommand extends Command {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
-        const slotThing = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
         const slotOne = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
