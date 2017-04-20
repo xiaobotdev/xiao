@@ -33,9 +33,9 @@ module.exports = class InfoCommand extends Command {
             .addField('Shards',
                 `${this.client.options.shardCount} (${this.client.shard.id})`, true)
             .addField('Commands',
-                '109', true)
+                this.client.registry.commands.size, true)
             .addField('Owner',
-                'dragonfire535#8081', true)
+                this.client.owners.map(o => o.tag).join(', '), true)
             .addField('Source Code',
                 '[View Here](https://github.com/dragonfire535/xiaobot)', true)
             .addField('Memory Usage',
