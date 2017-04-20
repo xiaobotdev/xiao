@@ -3,8 +3,9 @@ const request = require('superagent');
 const path = require('path');
 const client = new CommandoClient({
     commandPrefix: 'x;',
-    owner: process.env.OWNER_ID,
-    disableEveryone: true
+    owner: '242699360352206850',
+    disableEveryone: true,
+    invite: 'https://discord.gg/fqQF8mc'
 });
 
 client.registry
