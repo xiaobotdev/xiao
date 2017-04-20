@@ -22,6 +22,9 @@ module.exports = class EasterEggCommand extends Command {
                         return true;
                     }
                     return 'Nope, that\'s not a valid easter egg. Try again!';
+                },
+                parse: text => {
+                    return text.toLowerCase();
                 }
             }]
         });
@@ -32,6 +35,6 @@ module.exports = class EasterEggCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
         }
         const { tag } = args;
-        return message.say(eastereggs[tag.toLowerCase()]);
+        return message.say(eastereggs[tag]);
     }
 };
