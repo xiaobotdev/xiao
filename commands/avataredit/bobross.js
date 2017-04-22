@@ -28,16 +28,16 @@ module.exports = class BobRossCommand extends Command {
         }
         const { user } = args;
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
+        const blank = new Jimp(600, 775, 0xFFFFFF);
         let images = [];
         images.push(Jimp.read(userAvatar));
         images.push(Jimp.read('./images/BobRoss.png'));
-        images.push(Jimp.read('./images/BlankWhite.png'));
-        const [avatar, bob, nothing] = await Promise.all(images);
+        const [avatar, bob] = await Promise.all(images);
         avatar.rotate(2);
         avatar.resize(300, 300);
-        nothing.composite(avatar, 44, 85);
-        nothing.composite(bob, 0, 0);
-        nothing.getBuffer(Jimp.MIME_PNG, (err, buff) => {
+        blank.composite(avatar, 44, 85);
+        blank.composite(bob, 0, 0);
+        blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
             return message.channel.send({files: [{attachment: buff}]});
         });
