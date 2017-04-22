@@ -26,7 +26,7 @@ module.exports = class SteamCardCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
         const { user } = args;
-        const username = message.guild.member(user) ? message.guild.member(user).displayName : user.username;
+        const username = message.guild ? message.guild.member(user).displayName : user.username;
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         const blank = new Jimp(494, 568, 0xFFFFFF);
         let images = [];
