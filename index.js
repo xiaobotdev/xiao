@@ -34,13 +34,13 @@ client.on('guildCreate', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const carbonStats = carbon(count);
+        const carbonStats = await carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon. ${carbonStats}`);
     } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const dbStats = discordBots(count, client.user.id);
+        const dbStats = await discordBots(count, client.user.id);
         console.log(`[Discord Bots] Successfully posted to Discord Bots. ${dbStats}`);
     } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
@@ -53,13 +53,13 @@ client.on('guildDelete', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const carbonStats = carbon(count);
+        const carbonStats = await carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon. ${carbonStats}`);
     } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const dbStats = discordBots(count, client.user.id);
+        const dbStats = await discordBots(count, client.user.id);
         console.log(`[Discord Bots] Successfully posted to Discord Bots. ${dbStats}`);
     } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
