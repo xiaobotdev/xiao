@@ -30,10 +30,10 @@ module.exports = class RIPCommand extends Command {
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read('./images/gravestone.jpg'));
+        images.push(Jimp.read('./images/gravestone.png'));
         const [avatar, gravestone] = await Promise.all(images);
         avatar.resize(200, 200);
-        gravestone.blit(avatar, 60, 65);
+        gravestone.blit(avatar, 158, 51);
         gravestone.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say(':x: Error! Something went wrong!');
             return message.channel.send({files: [{attachment: buff}]});
