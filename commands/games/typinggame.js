@@ -19,9 +19,7 @@ module.exports = class TypingGameCommand extends Command {
                     }
                     return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
                 },
-                parse: text => {
-                    return text.toLowerCase();
-                }
+                parse: text => text.toLowerCase()
             }]
         });
     }

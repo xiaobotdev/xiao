@@ -22,9 +22,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
                     }
                     return 'Please enter either `rock`, `paper`, or `scissors`.';
                 },
-                parse: text => {
-                    return text.toLowerCase();
-                }
+                parse: text => text.toLowerCase()
             }]
         });
     }

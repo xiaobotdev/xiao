@@ -22,9 +22,7 @@ module.exports = class MemeCommand extends Command {
                     }
                     return `${type.toLowerCase()} is not a valid meme type. Use \`x;help meme\` to view a list of types.`;
                 },
-                parse: text => {
-                    return text.toLowerCase();
-                }
+                parse: text => text.toLowerCase()
             }, {
                 key: 'toprow',
                 prompt: 'What should the top row of the meme to be?',
@@ -35,9 +33,7 @@ module.exports = class MemeCommand extends Command {
                     }
                     return `Please do not use special characters and keep the rows under 100 characters each, you have ${toprow.length}.`;
                 },
-                parse: text => {
-                    return text.replace(/[ ]/g, '-').replace(/[?]/g, '~q');
-                }
+                parse: text => text.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
             }, {
                 key: 'bottomrow',
                 prompt: 'What should the bottom row of the meme to be?',
@@ -48,9 +44,7 @@ module.exports = class MemeCommand extends Command {
                     }
                     return `Please do not use special characters and keep the rows under 100 characters each, you have ${bottomrow.length}.`;
                 },
-                parse: text => {
-                    return text.replace(/[ ]/g, '-').replace(/[?]/g, '~q');
-                }
+                parse: text => text.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
             }]
         });
     }

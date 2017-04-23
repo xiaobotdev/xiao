@@ -25,9 +25,7 @@ module.exports = class MapCommand extends Command {
                 key: 'location',
                 prompt: 'What location you like to get a map image for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

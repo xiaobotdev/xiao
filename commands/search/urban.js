@@ -18,9 +18,7 @@ module.exports = class UrbanCommand extends Command {
                 key: 'word',
                 prompt: 'What would you like to define?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

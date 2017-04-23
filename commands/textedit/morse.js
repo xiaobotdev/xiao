@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const translator = require('custom-translate');
+const { letterTrans } = require('custom-translate');
 const dictionary = require('./morsemappings.json');
 
 module.exports = class MorseCommand extends Command {
@@ -17,14 +17,12 @@ module.exports = class MorseCommand extends Command {
                 prompt: 'What text would you like to convert to morse?',
                 type: 'string',
                 validate: content => {
-                    if (translator.letterTrans(content, dictionary, ' ').length < 1999) {
+                    if (letterTrans(content, dictionary, ' ').length < 1999) {
                         return true;
                     }
                     return 'Your message content is too long.';
                 },
-                parse: text => {
-                    return translator.letterTrans(text.toLowerCase(), dictionary, ' ');
-                }
+                parse: text => letterTrans(text.toLowerCase(), dictionary, ' ')
             }]
         });
     }

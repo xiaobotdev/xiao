@@ -13,9 +13,7 @@ module.exports = class WikipediaCommand extends Command {
                 key: 'query',
                 prompt: 'What would you like to search for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text).replace(/[)]/g, '%29');
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

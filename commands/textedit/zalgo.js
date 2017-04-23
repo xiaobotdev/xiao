@@ -18,9 +18,7 @@ module.exports = class ZalgoCommand extends Command {
                     }
                     return `Please keep your text under 500 characters, you have ${content.length}.`;
                 },
-                parse: text => {
-                    return zalgo(text);
-                }
+                parse: text => zalgo(text)
             }]
         });
     }

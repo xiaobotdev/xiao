@@ -17,9 +17,7 @@ module.exports = class SoundCloudCommand extends Command {
                 key: 'query',
                 prompt: 'What do you want to search SoundCloud for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

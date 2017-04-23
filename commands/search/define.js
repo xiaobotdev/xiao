@@ -19,9 +19,7 @@ module.exports = class DefineCommand extends Command {
                 key: 'word',
                 prompt: 'What would you like to define?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

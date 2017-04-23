@@ -17,9 +17,7 @@ module.exports = class GoogleCommand extends Command {
                 key: 'query',
                 prompt: 'What would you like to search for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

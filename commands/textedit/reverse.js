@@ -11,9 +11,7 @@ module.exports = class ReverseCommand extends Command {
                 key: 'text',
                 prompt: 'What text would you like to reverse?',
                 type: 'string',
-                parse: text => {
-                    return text.split('').reverse().join('');
-                }
+                parse: text => text.split('').reverse().join('')
             }]
         });
     }

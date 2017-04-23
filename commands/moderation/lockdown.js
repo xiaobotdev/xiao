@@ -18,9 +18,7 @@ module.exports = class LockdownCommand extends Command {
                     }
                     return 'Please enter either `start` or `stop`.';
                 },
-                parse: text => {
-                    return text.toLowerCase();
-                }
+                parse: text => text.toLowerCase()
             }]
         });
     }

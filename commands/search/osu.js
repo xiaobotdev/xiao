@@ -18,9 +18,7 @@ module.exports = class OsuCommand extends Command {
                 key: 'username',
                 prompt: 'What osu username would you like to search for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }
