@@ -28,7 +28,6 @@
     "node": "7.9.0"
   },
   "dependencies": {
-    "canvas": "^1.6.5",
     "cheerio": "^0.22.0",
     "custom-translate": "dragonfire535/custom-translate",
     "discord.js": "hydrabolt/discord.js",
