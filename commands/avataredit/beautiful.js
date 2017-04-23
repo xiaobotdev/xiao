@@ -10,8 +10,7 @@ module.exports = class BeautifulCommand extends Command {
             ],
             group: 'avataredit',
             memberName: 'beautiful',
-            description: 'Oh, this? This is beautiful. (x;beautiful @User)',
-            examples: ['x;beautiful @User'],
+            description: 'Oh, this? This is beautiful.',
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to edit the avatar of?',

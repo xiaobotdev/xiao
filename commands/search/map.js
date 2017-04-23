@@ -10,8 +10,7 @@ module.exports = class MapCommand extends Command {
             ],
             group: 'search',
             memberName: 'map',
-            description: 'Gets a map image for the location you define with the zoom level you define (1-20). (x;map 15 Cartersville, GA)',
-            examples: ['x;map 15 Cartersville, GA'],
+            description: 'Gets a map image for the location you define with the zoom level you define (1-20).',
             args: [{
                 key: 'zoom',
                 prompt: 'What would you like the zoom level for the map to be? Limit 1-20.',

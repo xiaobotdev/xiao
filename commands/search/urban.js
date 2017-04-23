@@ -13,8 +13,7 @@ module.exports = class UrbanCommand extends Command {
             ],
             group: 'search',
             memberName: 'urban',
-            description: 'Searches Urban Dictionary. (x;urban Cat)',
-            examples: ['x;urban Cat'],
+            description: 'Searches Urban Dictionary for a word.',
             args: [{
                 key: 'word',
                 prompt: 'What would you like to define?',

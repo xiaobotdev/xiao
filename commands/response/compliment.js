@@ -7,8 +7,7 @@ module.exports = class ComplimentCommand extends Command {
             name: 'compliment',
             group: 'response',
             memberName: 'compliment',
-            description: 'Compliments the user of your choice. (x;compliment @User)',
-            examples: ['x;compliment @User'],
+            description: 'Compliments something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to compliment?',

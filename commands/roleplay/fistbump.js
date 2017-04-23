@@ -6,8 +6,7 @@ module.exports = class FistBumpCommand extends Command {
             name: 'fistbump',
             group: 'roleplay',
             memberName: 'fistbump',
-            description: 'Fistbumps someone. (x;fistbump @User)',
-            examples: ['x;fistbump @User'],
+            description: 'Fistbumps something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

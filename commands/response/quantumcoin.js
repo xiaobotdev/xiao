@@ -12,8 +12,7 @@ module.exports = class QuantumCoinCommand extends Command {
             ],
             group: 'response',
             memberName: 'quantumcoin',
-            description: 'Flips a coin that lands on nothing. (x;quantumcoin)',
-            examples: ['x;quantumcoin']
+            description: 'Flips a coin that lands on nothing.'
         });
     }
 

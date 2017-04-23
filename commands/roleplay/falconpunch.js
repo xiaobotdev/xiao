@@ -6,8 +6,7 @@ module.exports = class FalconPunchCommand extends Command {
             name: 'falconpunch',
             group: 'roleplay',
             memberName: 'falconpunch',
-            description: 'Falcon Punches someone. (x;falconpunch @User)',
-            examples: ['x;falconpunch @User'],
+            description: 'Falcon Punches something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

@@ -8,8 +8,7 @@ module.exports = class NeopetCommand extends Command {
             name: 'neopet',
             group: 'search',
             memberName: 'neopet',
-            description: 'Gives a Neopet\'s image, searchable by name. (x;neopet Pikachu53535)',
-            examples: ['x;neopet Pikachu53535'],
+            description: 'Gives a Neopet\'s image, searchable by name.',
             args: [{
                 key: 'pet',
                 prompt: 'What pet would you like to get the image of?',

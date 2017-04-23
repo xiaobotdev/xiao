@@ -6,8 +6,7 @@ module.exports = class ReverseCommand extends Command {
             name: 'reverse',
             group: 'textedit',
             memberName: 'reverse',
-            description: 'Reverses text (x;reverse This text please)',
-            examples: ['x;reverse This text please'],
+            description: 'Reverses text.',
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to reverse?',

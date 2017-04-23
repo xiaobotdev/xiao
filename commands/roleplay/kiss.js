@@ -6,8 +6,7 @@ module.exports = class KissCommand extends Command {
             name: 'kiss',
             group: 'roleplay',
             memberName: 'kiss',
-            description: 'Kisses someone. (x;kiss @User)',
-            examples: ['x;kiss @User'],
+            description: 'Kisses something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

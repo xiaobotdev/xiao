@@ -8,8 +8,7 @@ module.exports = class WeatherCommand extends Command {
             name: 'weather',
             group: 'search',
             memberName: 'weather',
-            description: 'Searches weather for a specified location. (x;weather San Francisco)',
-            examples: ['x;weather San Francisco'],
+            description: 'Gets weather information for a specified location.',
             args: [{
                 key: 'location',
                 prompt: 'What location would you like to get the current weather for?',

@@ -6,8 +6,7 @@ module.exports = class SlapCommand extends Command {
             name: 'slap',
             group: 'roleplay',
             memberName: 'slap',
-            description: 'Slaps someone. (x;slap @User)',
-            examples: ['x;slap @User'],
+            description: 'Slaps something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

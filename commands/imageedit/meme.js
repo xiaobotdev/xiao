@@ -10,9 +10,8 @@ module.exports = class MemeCommand extends Command {
             ],
             group: 'imageedit',
             memberName: 'meme',
-            description: 'Sends a Meme with text of your choice, and a background of your choice. (x;meme facepalm "I can\'t even" "comprehend this")',
+            description: 'Sends a Meme with text of your choice, and a background of your choice.',
             details: `**Codes:** ${memecodes.join(', ')}`,
-            examples: ['x;meme facepalm "I can\'t even" "comprehend this"'],
             args: [{
                 key: 'type',
                 prompt: 'What meme type do you want to use?',
@@ -59,10 +58,8 @@ module.exports = class MemeCommand extends Command {
     run(message, args) {
         if (message.channel.type !== 'dm') {
             if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         }
         const { type, toprow, bottomrow } = args;
-        const link = `https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`;
-        return message.channel.send({files: [link]}).catch(() => message.say(':x: Error! Something went wrong!'));
+        return message.channel.send({files: [`https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`]});
     }
 };

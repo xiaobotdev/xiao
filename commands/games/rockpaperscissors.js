@@ -6,12 +6,12 @@ module.exports = class RockPaperScissorsCommand extends Command {
         super(client, {
             name: 'rps',
             aliases: [
-                'rockpaperscissors'
+                'rockpaperscissors',
+                'rock-paper-scissors'
             ],
             group: 'games',
             memberName: 'rps',
-            description: 'Play Rock Paper Scissors (x;rps Rock)',
-            examples: ['x;rps Rock'],
+            description: 'Play Rock-Paper-Scissors.',
             args: [{
                 key: 'choice',
                 prompt: 'Rock, Paper, or Scissors?',

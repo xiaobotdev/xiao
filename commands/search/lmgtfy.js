@@ -6,8 +6,7 @@ module.exports = class LMGTFYCommand extends Command {
             name: 'lmgtfy',
             group: 'search',
             memberName: 'lmgtfy',
-            description: 'Responds with a LMGTFY link. (x;lmgtfy How to Internet)',
-            examples: ['x;lmgtfy How to Internet'],
+            description: 'Responds with a LMGTFY link.',
             args: [{
                 key: 'query',
                 prompt: 'What would you like to the link to search for?',

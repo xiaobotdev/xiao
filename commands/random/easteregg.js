@@ -11,8 +11,7 @@ module.exports = class EasterEggCommand extends Command {
             ],
             group: 'random',
             memberName: 'easteregg',
-            description: 'Can you discover all the easter eggs? (x;easteregg I\'m an easter egg)',
-            examples: ['x;easteregg I\'m an easter egg'],
+            description: 'Can you discover all the easter eggs?',
             args: [{
                 key: 'tag',
                 prompt: 'What easter egg do you want to view?',

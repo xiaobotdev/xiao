@@ -8,13 +8,11 @@ module.exports = class SoundCloudCommand extends Command {
             name: 'soundcloud',
             aliases: [
                 'cloudsound',
-                'scloud',
-                'csound'
+                'scloud'
             ],
             group: 'search',
             memberName: 'soundcloud',
-            description: 'Searches SoundCloud for a song. (x;soundcloud Turtle Dreams)',
-            examples: ['x;soundcloud Turtle Dreams'],
+            description: 'Searches SoundCloud for a song.',
             args: [{
                 key: 'query',
                 prompt: 'What do you want to search SoundCloud for?',

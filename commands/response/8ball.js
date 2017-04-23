@@ -7,8 +7,7 @@ module.exports = class MagicBallCommand extends Command {
             name: '8ball',
             group: 'response',
             memberName: '8ball',
-            description: 'Predicts your future. (x;8ball Am I stupid?)',
-            examples: ['x;8ball Am I stupid?'],
+            description: 'Predicts your future.',
             args: [{
                 key: 'question',
                 prompt: 'What do you want to ask the 8 ball?',

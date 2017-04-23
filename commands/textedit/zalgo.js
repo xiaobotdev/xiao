@@ -7,8 +7,7 @@ module.exports = class ZalgoCommand extends Command {
             name: 'zalgo',
             group: 'textedit',
             memberName: 'zalgo',
-            description: 'Zalgoizes Text (x;zalgo This Text)',
-            examples: ['x;zalgo This Text'],
+            description: 'Zalgoizes Text.',
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to zalgo?',

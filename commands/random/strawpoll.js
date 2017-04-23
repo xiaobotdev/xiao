@@ -6,13 +6,11 @@ module.exports = class StrawpollCommand extends Command {
         super(client, {
             name: 'strawpoll',
             aliases: [
-                'poll',
-                'survey'
+                'poll'
             ],
             group: 'random',
             memberName: 'strawpoll',
-            description: 'Creates a Strawpoll with your options. (x;strawpoll "Who likes chips?" "Me" "Not Me")',
-            examples: ['x;strawpoll "Who likes chips?" "Me" "Not Me"'],
+            description: 'Creates a Strawpoll with your options.',
             args: [{
                 key: 'title',
                 prompt: 'What would you like the title of the Strawpoll to be?',

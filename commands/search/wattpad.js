@@ -8,8 +8,7 @@ module.exports = class WattpadCommand extends Command {
             name: 'wattpad',
             group: 'search',
             memberName: 'wattpad',
-            description: 'Searches Wattpad for a specified book. (x;wattpad Heroes of Dreamland)',
-            examples: ['x;wattpad Heroes of Dreamland'],
+            description: 'Searches Wattpad for a book.',
             args: [{
                 key: 'book',
                 prompt: 'What book would you like to search for?',

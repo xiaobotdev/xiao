@@ -8,8 +8,7 @@ module.exports = class WikipediaCommand extends Command {
             name: 'wikipedia',
             group: 'search',
             memberName: 'wikipedia',
-            description: 'Searches Wikipedia for something. (x;wikipedia Cat)',
-            examples: ['x;wikipedia Cat'],
+            description: 'Searches Wikipedia for something.',
             args: [{
                 key: 'query',
                 prompt: 'What would you like to search for?',

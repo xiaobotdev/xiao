@@ -7,8 +7,7 @@ module.exports = class WarnCommand extends Command {
             name: 'warn',
             group: 'moderation',
             memberName: 'warn',
-            description: 'Warns a user. (x;warn @User being a jerk)',
-            examples: ['x;warn @User being a jerk.'],
+            description: 'Warns a user and logs the warn to the mod_logs.',
             guildOnly: true,
             args: [{
                 key: 'member',

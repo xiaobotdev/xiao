@@ -11,8 +11,7 @@ module.exports = class QuizCommand extends Command {
             ],
             group: 'games',
             memberName: 'quiz',
-            description: 'Answer a quiz question. (x;quiz)',
-            examples: ['x;quiz']
+            description: 'Answer a quiz question.'
         });
     }
 

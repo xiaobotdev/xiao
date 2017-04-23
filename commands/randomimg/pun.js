@@ -7,8 +7,7 @@ module.exports = class RandomPunCommand extends Command {
             name: 'pun',
             group: 'randomimg',
             memberName: 'pun',
-            description: 'Sends a random pun image. (x;pun)',
-            examples: ['x;pun']
+            description: 'Sends a random pun image.'
         });
     }
 

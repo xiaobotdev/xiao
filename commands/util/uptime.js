@@ -8,8 +8,7 @@ module.exports = class UptimeCommand extends Command {
             name: 'uptime',
             group: 'util',
             memberName: 'uptime',
-            description: 'Displays how long the bot has been active. (x;uptime)',
-            examples: ['x;uptime']
+            description: 'Displays how long the bot has been active on this shard.'
         });
     }
 
