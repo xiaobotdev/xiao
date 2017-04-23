@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const translator = require('custom-translate');
+const { wordTrans } = require('custom-translate');
 const dictionary = require('./temmiewords.json');
 
 module.exports = class TemmieCommand extends Command {
@@ -14,14 +14,12 @@ module.exports = class TemmieCommand extends Command {
                 prompt: 'What text would you like to convert to Temmie speak?',
                 type: 'string',
                 validate: content => {
-                	if (translator.wordTrans(content, dictionary).length < 1999) {
+                	if (wordTrans(content, dictionary).length < 1999) {
                 		return true;
                 	}
                 	return 'Your message content is too long.';
                 },
-                parse: text => {
-                	return translator.wordTrans(text, dictionary);
-                }
+                parse: text => wordTrans(text, dictionary)
             }]
 		});
 	}

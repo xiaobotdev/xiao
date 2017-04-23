@@ -13,9 +13,7 @@ module.exports = class NeopetCommand extends Command {
                 key: 'pet',
                 prompt: 'What pet would you like to get the image of?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

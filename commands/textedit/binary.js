@@ -25,9 +25,7 @@ module.exports = class BinaryCommand extends Command {
                     }
                     return 'Your message content is too long.';
                 },
-                parse: text => {
-                    return stringToBinary(text);
-                }
+                parse: text => stringToBinary(text)
             }]
         });
     }

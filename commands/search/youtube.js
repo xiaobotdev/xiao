@@ -16,9 +16,7 @@ module.exports = class YouTubeCommand extends Command {
                 key: 'video',
                 prompt: 'What would you like to search for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

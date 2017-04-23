@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const translator = require('custom-translate');
+const { letterTrans } = require('custom-translate');
 const dictionary = require('./udmappings.json');
 
 module.exports = class UpsideDownCommand extends Command {
@@ -17,9 +17,7 @@ module.exports = class UpsideDownCommand extends Command {
                 key: 'text',
                 prompt: 'What text would you like to flip upside-down?',
                 type: 'string',
-                parse: text => {
-                    return translator.letterTrans(text, dictionary);
-                }
+                parse: text => letterTrans(text, dictionary)
             }]
         });
     }

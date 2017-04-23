@@ -22,9 +22,7 @@ module.exports = class RandomNameCommand extends Command {
                     }
                     return 'Please enter either `male` or `female`.';
                 },
-                parse: text => {
-                    return text.toLowerCase();
-                }
+                parse: text => text.toLowerCase()
             }]
         });
     }

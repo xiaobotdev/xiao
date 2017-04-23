@@ -19,9 +19,7 @@ module.exports = class IMDBCommand extends Command {
                 key: 'movie',
                 prompt: 'What movie or TV Show would you like to search for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

@@ -13,9 +13,7 @@ module.exports = class YuGiOhCommand extends Command {
                 key: 'card',
                 prompt: 'What card would you like to get data for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

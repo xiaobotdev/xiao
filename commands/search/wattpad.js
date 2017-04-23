@@ -13,9 +13,7 @@ module.exports = class WattpadCommand extends Command {
                 key: 'book',
                 prompt: 'What book would you like to search for?',
                 type: 'string',
-                parse: text => {
-                    return encodeURIComponent(text);
-                }
+                parse: text => encodeURIComponent(text)
             }]
         });
     }

@@ -22,9 +22,7 @@ module.exports = class EasterEggCommand extends Command {
                     }
                     return 'Nope, that\'s not a valid easter egg. Try again!';
                 },
-                parse: text => {
-                    return text.toLowerCase();
-                }
+                parse: text => text.toLowerCase()
             }]
         });
     }
