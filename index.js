@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const request = require('superagent');
+const { discordBots, carbon } = require('./poststats.js');
 const path = require('path');
 const client = new CommandoClient({
     commandPrefix: 'x;',
@@ -25,68 +25,42 @@ client.registry
         ['roleplay', 'Roleplay']
     ])
     .registerDefaultGroups()
-    .registerDefaultCommands({
-        prefix: false
-    })
+    .registerDefaultCommands()
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('guildCreate', async(guild) => {
-    console.log(`[Guild] I have joined the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})!`);
+    console.log(`[Guild] I have joined ${guild.name}!`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const response = await request
-            .post('https://www.carbonitex.net/discord/data/botdata.php')
-            .send({
-                key: process.env.CARBON_KEY,
-                servercount: count
-            });
-        console.log(`[Carbon] Successfully posted to Carbon. ${response.text}`);
+        const carbonStats = carbon(count);
+        console.log(`[Carbon] Successfully posted to Carbon. ${carbonStats}`);
     } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const response = await request
-            .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
-            .set({
-                'Authorization': process.env.DISCORD_BOTS_KEY
-            })
-            .send({
-                server_count: count
-            });
-        console.log(`[Discord Bots] Successfully posted to Discord Bots. ${response.body.stats[0].server_count}`);
+        const dbStats = discordBots(count, client.user.id);
+        console.log(`[Discord Bots] Successfully posted to Discord Bots. ${dbStats}`);
     } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
 });
 
 client.on('guildDelete', async(guild) => {
-    console.log(`[Guild] I have left the guild: ${guild.name}, Owned by: ${guild.owner.user.username} (${guild.id})...`);
+    console.log(`[Guild] I have left ${guild.name}...`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        const response = await request
-            .post('https://www.carbonitex.net/discord/data/botdata.php')
-            .send({
-                key: process.env.CARBON_KEY,
-                servercount: count
-            });
-        console.log(`[Carbon] Successfully posted to Carbon. ${response.text}`);
+        const carbonStats = carbon(count);
+        console.log(`[Carbon] Successfully posted to Carbon. ${carbonStats}`);
     } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const response = await request
-            .post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
-            .set({
-                'Authorization': process.env.DISCORD_BOTS_KEY
-            })
-            .send({
-                server_count: count
-            });
-        console.log(`[Discord Bots] Successfully posted to Discord Bots. ${response.body.stats[0].server_count}`);
+        const dbStats = discordBots(count, client.user.id);
+        console.log(`[Discord Bots] Successfully posted to Discord Bots. ${dbStats}`);
     } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
