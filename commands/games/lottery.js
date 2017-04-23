@@ -6,8 +6,7 @@ module.exports = class LotteryCommand extends Command {
             name: 'lottery',
             group: 'games',
             memberName: 'lottery',
-            description: '1 in 100 Chance of Winning. Winners get... The feeling of winning? (x;lottery)',
-            examples: ['x;lottery']
+            description: '1 in 100 chance of winning. Winners get... The feeling of winning?'
         });
     }
 

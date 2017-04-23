@@ -10,8 +10,7 @@ module.exports = class BanCommand extends Command {
             ],
             group: 'moderation',
             memberName: 'ban',
-            description: 'Bans a user. (x;ban @User being a jerk.)',
-            examples: ['x;ban @User being a jerk.'],
+            description: 'Bans a user and logs the ban to the mod_logs.',
             guildOnly: true,
             args: [{
                 key: 'member',

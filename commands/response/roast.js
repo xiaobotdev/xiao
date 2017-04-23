@@ -10,8 +10,7 @@ module.exports = class RoastCommand extends Command {
             ],
             group: 'response',
             memberName: 'roast',
-            description: 'Roasts the user of your choice. (x;roast @User)',
-            examples: ['x;roast @username'],
+            description: 'Roasts something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roast?',

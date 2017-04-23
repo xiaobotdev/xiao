@@ -6,8 +6,7 @@ module.exports = class InhaleCommand extends Command {
             name: 'inhale',
             group: 'roleplay',
             memberName: 'inhale',
-            description: 'Inhales someone. (x;inhale @User)',
-            examples: ['x;inhale @User'],
+            description: 'Inhales something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

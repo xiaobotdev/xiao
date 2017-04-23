@@ -12,8 +12,7 @@ module.exports = class SayCommand extends Command {
             ],
             group: 'textedit',
             memberName: 'say',
-            description: 'Make XiaoBot say what you wish. (x;say I can talk!)',
-            examples: ['x;say I can talk!'],
+            description: 'Make XiaoBot say what you wish.',
             guildOnly: true,
             args: [{
                 key: 'text',

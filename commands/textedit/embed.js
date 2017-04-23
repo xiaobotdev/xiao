@@ -7,8 +7,7 @@ module.exports = class EmbedCommand extends Command {
             name: 'embed',
             group: 'textedit',
             memberName: 'embed',
-            description: 'Sends a message in an embed. (x;embed This is an example.)',
-            examples: ['x;embed This is an example.'],
+            description: 'Sends a message in an embed.',
             guildOnly: true,
             args: [{
                 key: 'text',

@@ -11,8 +11,7 @@ module.exports = class WebhookCommand extends Command {
             ],
             group: 'textedit',
             memberName: 'webhook',
-            description: 'Posts a message to the webhook defined in your `process.env`. (x;webhook Hey guys!)',
-            examples: ['x;webhook Hey guys!'],
+            description: 'Posts a message to the webhook defined in your `process.env`.',
             guildOnly: true,
             args: [{
                 key: 'text',

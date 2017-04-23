@@ -6,8 +6,7 @@ module.exports = class CuddleCommand extends Command {
             name: 'cuddle',
             group: 'roleplay',
             memberName: 'cuddle',
-            description: 'Cuddles someone. (x;cuddle @User)',
-            examples: ['x;cuddle @User'],
+            description: 'Cuddles something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

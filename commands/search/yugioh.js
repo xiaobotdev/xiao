@@ -8,8 +8,7 @@ module.exports = class YuGiOhCommand extends Command {
             name: 'yugioh',
             group: 'search',
             memberName: 'yugioh',
-            description: 'Gets info on a Yu-Gi-Oh! Card. (x;yugioh Blue-Eyes White Dragon)',
-            examples: ['x;yugioh Blue-Eyes White Dragon'],
+            description: 'Gets info on a Yu-Gi-Oh! Card.',
             args: [{
                 key: 'card',
                 prompt: 'What card would you like to get data for?',

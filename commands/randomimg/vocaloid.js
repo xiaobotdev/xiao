@@ -10,8 +10,7 @@ module.exports = class VocaloidCommand extends Command {
             ],
             group: 'randomimg',
             memberName: 'vocaloid',
-            description: 'Sends a random VOCALOID song. (x;vocaloid)',
-            examples: ['x;vocaloid']
+            description: 'Sends a random VOCALOID song.'
         });
     }
 

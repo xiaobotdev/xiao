@@ -6,8 +6,7 @@ module.exports = class HugCommand extends Command {
             name: 'hug',
             group: 'roleplay',
             memberName: 'hug',
-            description: 'Hugs someone. (x;hug @User)',
-            examples: ['x;hug @User'],
+            description: 'Hugs something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

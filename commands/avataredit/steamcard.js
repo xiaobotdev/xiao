@@ -5,13 +5,9 @@ module.exports = class SteamCardCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'steamcard',
-            aliases: [
-                'card'
-            ],
             group: 'avataredit',
             memberName: 'steamcard',
-            description: 'Put an avatar on a Steam Card. (x;steamcard @User)',
-            examples: ['x;steamcard @user'],
+            description: 'Put an avatar on a Steam Card.',
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to edit the avatar of?',

@@ -6,8 +6,7 @@ module.exports = class KillCommand extends Command {
             name: 'kill',
             group: 'roleplay',
             memberName: 'kill',
-            description: 'Kills someone. (x;kill @User)',
-            examples: ['x;kill @User'],
+            description: 'Kills something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

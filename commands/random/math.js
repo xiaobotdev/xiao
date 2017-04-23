@@ -5,16 +5,9 @@ module.exports = class MathCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'math',
-            aliases: [
-                'add',
-                'subtract',
-                'multiply',
-                'divide'
-            ],
             group: 'random',
             memberName: 'math',
-            description: 'Does Math (x;math 2 + 2)',
-            examples: ['x;math 2 + 2'],
+            description: 'Does math.',
             args: [{
                 key: 'expression',
                 prompt: 'What do you want to answer?',

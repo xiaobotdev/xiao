@@ -6,8 +6,7 @@ module.exports = class PatCommand extends Command {
             name: 'pat',
             group: 'roleplay',
             memberName: 'pat',
-            description: 'Pats someone. (x;pat @User)',
-            examples: ['x;pat @User'],
+            description: 'Pats something/someone.',
             args: [{
                 key: 'thing',
                 prompt: 'What do you want to roleplay with?',

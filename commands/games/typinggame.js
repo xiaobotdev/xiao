@@ -8,8 +8,7 @@ module.exports = class TypingGameCommand extends Command {
             name: 'typinggame',
             group: 'games',
             memberName: 'typinggame',
-            description: 'See how fast you can type a sentence in a given time limit. (x;typinggame easy)',
-            examples: ['x;typinggame easy', 'x;typinggame medium', 'x;typinggame hard', 'x;typinggame extreme'],
+            description: 'See how fast you can type a sentence in a given time limit.',
             args: [{
                 key: 'difficulty',
                 prompt: 'What difficulty should the typing game be? Easy, Medium, Hard, or Extreme?',

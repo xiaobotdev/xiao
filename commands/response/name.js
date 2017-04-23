@@ -11,8 +11,7 @@ module.exports = class RandomNameCommand extends Command {
             ],
             group: 'response',
             memberName: 'name',
-            description: 'Generates a random name (x;name Male)',
-            examples: ['x;name', 'x;name male', 'x;name female'],
+            description: 'Generates a random name.',
             args: [{
                 key: 'gender',
                 prompt: 'Which gender do you want to generate a name for?',

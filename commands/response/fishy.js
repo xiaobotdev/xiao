@@ -11,8 +11,7 @@ module.exports = class FishyCommand extends Command {
             ],
             group: 'response',
             memberName: 'fishy',
-            description: 'Catches a fish. (x;fishy)',
-            examples: ['x;fishy']
+            description: 'Catches a fish.'
         });
     }
 

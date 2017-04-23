@@ -10,8 +10,7 @@ module.exports = class PotatoCommand extends Command {
             ],
             group: 'randomimg',
             memberName: 'potato',
-            description: 'Sends a random Potato picture. (x;potato)',
-            examples: ['x;potato']
+            description: 'Sends a random potato image.'
         });
     }
 

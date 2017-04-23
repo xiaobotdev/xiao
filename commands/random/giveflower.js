@@ -10,8 +10,7 @@ module.exports = class GiveFlowerCommand extends Command {
             ],
             group: 'random',
             memberName: 'giveflower',
-            description: 'Gives Xiao Pai a flower. (x;giveflower)',
-            examples: ['x;giveflower']
+            description: 'Gives Xiao Pai a flower.'
         });
     }
 

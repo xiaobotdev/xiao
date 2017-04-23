@@ -14,8 +14,7 @@ module.exports = class IMDBCommand extends Command {
             ],
             group: 'search',
             memberName: 'imdb',
-            description: 'Searches IMDB for a specified movie. (x;imdb How to Train Your Dragon)',
-            examples: ['x;imdb How to Train Your Dragon'],
+            description: 'Searches IMDB for a specified movie.',
             args: [{
                 key: 'movie',
                 prompt: 'What movie or TV Show would you like to search for?',

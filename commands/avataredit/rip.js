@@ -11,8 +11,7 @@ module.exports = class RIPCommand extends Command {
             ],
             group: 'avataredit',
             memberName: 'rip',
-            description: 'Puts a profile picture over a gravestone. (x;rip @User)',
-            examples: ['x;rip @User'],
+            description: 'Puts a user\'s avatar over a gravestone.',
             args: [{
                 key: 'user',
                 prompt: 'Which user would you like to edit the avatar of?',

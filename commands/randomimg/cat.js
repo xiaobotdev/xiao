@@ -5,10 +5,12 @@ module.exports = class CatCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'cat',
+            aliases: [
+                'neko'
+            ],
             group: 'randomimg',
             memberName: 'cat',
-            description: 'Sends a random cat picture. (x;cat)',
-            examples: ['x;cat']
+            description: 'Sends a random cat image.'
         });
     }
 

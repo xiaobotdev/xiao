@@ -8,8 +8,7 @@ module.exports = class TemmieCommand extends Command {
 			name: 'temmie',
 			group: 'textedit',
 			memberName: 'temmie',
-			description: 'Translate text to Temmie speak. (x;temmie I am Temmie)',
-			examples: ['x;temmie I am Temmie.'],
+			description: 'Translate text to Temmie speak.',
 			args: [{
                 key: 'text',
                 prompt: 'What text would you like to convert to Temmie speak?',

@@ -7,8 +7,7 @@ module.exports = class SlotsCommand extends Command {
             name: 'slots',
             group: 'games',
             memberName: 'slots',
-            description: 'Play slots. (x;slots)',
-            examples: ['x;slots']
+            description: 'Play slots.'
         });
     }
 

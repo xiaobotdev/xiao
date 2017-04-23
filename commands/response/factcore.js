@@ -7,8 +7,7 @@ module.exports = class FactCoreCommand extends Command {
             name: 'factcore',
             group: 'response',
             memberName: 'factcore',
-            description: 'Says a random Fact Core quote. (x;factcore)',
-            examples: ['x;factcore']
+            description: 'Says a random Fact Core quote.'
         });
     }
 
