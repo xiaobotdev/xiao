@@ -12,7 +12,7 @@ module.exports.discordBots = async(count, userID) => {
     return body.stats[0].server_count;
 };
 
-module.exports.carbon = (count) => {
+module.exports.carbon = async(count) => {
     const { text } = await request
         .post('https://www.carbonitex.net/discord/data/botdata.php')
         .send({
