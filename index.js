@@ -35,14 +35,14 @@ client.on('guildCreate', async(guild) => {
     console.log(`[Count] ${count}`);
     webhook(`Joined ${guild.name}!\nOwned by: ${guild.owner.user.tag}\nID: ${guild.id}`, `Shard ${client.shard.id}`, 0x33CC33);
     try {
-        const carbonStats = await carbon(count);
-        console.log(`[Carbon] Successfully posted to Carbon. ${carbonStats}`);
+        await carbon(count);
+        console.log(`[Carbon] Successfully posted to Carbon.`);
     } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        const dbStats = await discordBots(count, client.user.id);
-        console.log(`[Discord Bots] Successfully posted to Discord Bots. ${dbStats}`);
+        await discordBots(count, client.user.id);
+        console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
     } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
