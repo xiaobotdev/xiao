@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const { discordBots, carbon, webhook } = require('./poststats.js');
+const { discordBots, carbon } = require('./poststats.js');
 const path = require('path');
 const client = new CommandoClient({
     commandPrefix: 'x;',
@@ -33,7 +33,6 @@ client.on('guildCreate', async(guild) => {
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
-    webhook(`Joined ${guild.name}!\nOwned by: ${guild.owner.user.tag}\nID: ${guild.id}`, `Shard ${client.shard.id}`, 0x33CC33);
     try {
         await carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon.`);
@@ -53,7 +52,6 @@ client.on('guildDelete', async(guild) => {
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
-    webhook(`Left ${guild.name}...\nOwned by: ${guild.owner.user.tag}\nID: ${guild.id}`, `Shard ${client.shard.id}`, 0xFF3300);
     try {
         await carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon.`);
@@ -70,7 +68,7 @@ client.on('guildDelete', async(guild) => {
 
 client.on('disconnect', (event) => {
     console.log(`[Disconnect] Shard ${client.shard.id} disconnected with Code ${event.code}.`);
-    webhook(`Disconnected with Code ${event.code}...`, `Shard ${client.shard.id}`, 0xFF3300);
+    process.exit(0);
 });
 
 client.setTimeout(() => {
