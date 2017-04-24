@@ -21,3 +21,19 @@ module.exports.carbon = async(count) => {
         });
     return text;
 };
+
+module.exports.webhook = async(description, author, color) => {
+    const embed = {
+        description: description,
+        author: {
+            name: author
+        },
+        color: color
+    };
+    await request
+        .post(process.env.LOGGER_URL)
+        .send({
+            embeds: [embed]
+        });
+    return null;
+};
