@@ -71,7 +71,6 @@ client.on('guildDelete', async(guild) => {
 client.on('disconnect', (event) => {
     console.log(`[Disconnect] Shard ${client.shard.id} disconnected with Code ${event.code}.`);
     webhook(`Disconnected...`, `Shard ${client.shard.id}`, 0xFF3300);
-    process.exit(0);
 });
 
 client.setTimeout(() => {
