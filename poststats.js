@@ -1,7 +1,7 @@
 const request = require('superagent');
 
-module.exports.discordBots = async(count, userID) => {
-    const { body } = await request
+module.exports.discordBots = (count, userID) => {
+    return request
         .post(`https://bots.discord.pw/api/bots/${userID}/stats`)
         .set({
             'Authorization': process.env.DISCORD_BOTS_KEY
@@ -9,20 +9,18 @@ module.exports.discordBots = async(count, userID) => {
         .send({
             server_count: count
         });
-    return body.stats[0].server_count;
 };
 
-module.exports.carbon = async(count) => {
-    const { text } = await request
+module.exports.carbon = (count) => {
+    return request
         .post('https://www.carbonitex.net/discord/data/botdata.php')
         .send({
             key: process.env.CARBON_KEY,
             servercount: count
         });
-    return text;
 };
 
-module.exports.webhook = async(description, author, color) => {
+module.exports.webhook = (description, author, color) => {
     const embed = {
         description: description,
         author: {
@@ -30,10 +28,9 @@ module.exports.webhook = async(description, author, color) => {
         },
         color: color
     };
-    await request
+    return request
         .post(process.env.LOGGER_URL)
         .send({
             embeds: [embed]
         });
-    return null;
 };
