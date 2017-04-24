@@ -19,18 +19,3 @@ module.exports.carbon = (count) => {
             servercount: count
         });
 };
-
-module.exports.webhook = (description, author, color) => {
-    const embed = {
-        description: description,
-        author: {
-            name: author
-        },
-        color: color
-    };
-    return request
-        .post(process.env.LOGGER_URL)
-        .send({
-            embeds: [embed]
-        });
-};
