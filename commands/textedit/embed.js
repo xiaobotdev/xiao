@@ -8,7 +8,6 @@ module.exports = class EmbedCommand extends Command {
             group: 'textedit',
             memberName: 'embed',
             description: 'Sends a message in an embed.',
-            guildOnly: true,
             args: [{
                 key: 'text',
                 prompt: 'What text would you like to embed?',
@@ -18,18 +17,15 @@ module.exports = class EmbedCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES')) return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { text } = args;
         const embed = new RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setColor(0x00AE86)
             .setTimestamp()
             .setDescription(text);
-        message.delete();
         return message.embed(embed);
     }
 };

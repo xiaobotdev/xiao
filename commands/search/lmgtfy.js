@@ -17,9 +17,6 @@ module.exports = class LMGTFYCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { query } = args;
         return message.say(`http://lmgtfy.com/?iie=1&q=${query}`);
     }

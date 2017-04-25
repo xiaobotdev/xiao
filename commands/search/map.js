@@ -5,9 +5,6 @@ module.exports = class MapCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'map',
-            aliases: [
-                'location'
-            ],
             group: 'search',
             memberName: 'map',
             description: 'Gets a map image for the location you define with the zoom level you define (1-20).',
@@ -16,9 +13,8 @@ module.exports = class MapCommand extends Command {
                 prompt: 'What would you like the zoom level for the map to be? Limit 1-20.',
                 type: 'integer',
                 validate: zoom => {
-                    if (zoom < 21 && zoom > 0) {
+                    if (zoom < 21 && zoom > 0)
                         return true;
-                    }
                     return 'Please enter a zoom value from 1-20';
                 }
             }, {
@@ -31,10 +27,9 @@ module.exports = class MapCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
+                return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         const { zoom, location } = args;
         try {
             const { body } = await request

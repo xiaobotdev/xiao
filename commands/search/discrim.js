@@ -17,9 +17,8 @@ module.exports = class DiscrimCommand extends Command {
                 prompt: 'Which discriminator would you like to search for?',
                 type: 'string',
                 validate: discrim => {
-                    if (discrim.match(/^[0-9]+$/) && discrim.length === 4) {
+                    if (/[0-9]+$/g.test(discrim) && discrim.length === 4)
                         return true;
-                    }
                     return `${discrim} is not a valid discriminator.`;
                 }
             }]
@@ -27,10 +26,9 @@ module.exports = class DiscrimCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { discrim } = args;
         const users = await this.client.users.filter(u => u.discriminator === discrim).map(u => u.username).sort();
         const embed = new RichEmbed()

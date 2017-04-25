@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const xiaos = require('./xiaos.json');
+const xiaos = require('./xiaos');
 
 module.exports = class XiaoCommand extends Command {
     constructor(client) {
@@ -15,10 +15,9 @@ module.exports = class XiaoCommand extends Command {
     }
 
     run(message) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
+                return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         const xiao = xiaos[Math.floor(Math.random() * xiaos.length)];
         return message.channel.send({files: [`./images/Xiao${xiao}`]});
     }

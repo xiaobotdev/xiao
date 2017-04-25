@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const sentences = require('./sentences.json');
+const sentences = require('./sentences');
 
 module.exports = class TypingGameCommand extends Command {
     constructor(client) {
@@ -11,13 +11,12 @@ module.exports = class TypingGameCommand extends Command {
             description: 'See how fast you can type a sentence in a given time limit.',
             args: [{
                 key: 'difficulty',
-                prompt: 'What difficulty should the typing game be? Easy, Medium, Hard, or Extreme?',
+                prompt: 'What should the difficulty of the typing game be? Easy, Medium, Hard, Extreme, or Impossible?',
                 type: 'string',
                 validate: difficulty => {
-                    if (difficulty.toLowerCase() === 'easy' || difficulty.toLowerCase() === 'medium' || difficulty.toLowerCase() === 'hard' || difficulty.toLowerCase() === 'extreme') {
+                    if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
                         return true;
-                    }
-                    return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
+                    return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                 },
                 parse: text => text.toLowerCase()
             }]
@@ -25,10 +24,9 @@ module.exports = class TypingGameCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { difficulty } = args;
         const sentence = sentences[Math.floor(Math.random() * sentences.length)];
         let time;
@@ -49,6 +47,10 @@ module.exports = class TypingGameCommand extends Command {
             case 'extreme':
                 time = 10000;
                 levelWord = 'ten';
+                break;
+            case 'impossible':
+                time = 5000;
+                levelWord = 'five';
                 break;
         }
         const embed = new RichEmbed()

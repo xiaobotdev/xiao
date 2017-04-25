@@ -19,10 +19,9 @@ module.exports = class WattpadCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { book } = args;
         try {
             const { body } = await request

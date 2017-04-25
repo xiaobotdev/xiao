@@ -1,13 +1,12 @@
 const { Command } = require('discord.js-commando');
 const { letterTrans } = require('custom-translate');
-const dictionary = require('./udmappings.json');
+const dictionary = require('./udmappings');
 
 module.exports = class UpsideDownCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'upsidedown',
             aliases: [
-                'upside-down',
                 'udown'
             ],
             group: 'textedit',
@@ -23,9 +22,6 @@ module.exports = class UpsideDownCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { text } = args;
         return message.say(text);
     }

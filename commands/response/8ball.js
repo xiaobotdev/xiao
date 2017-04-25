@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const answers = require('./8ballanswers.json');
+const answers = require('./8ballanswers');
 
 module.exports = class MagicBallCommand extends Command {
     constructor(client) {
@@ -17,9 +17,6 @@ module.exports = class MagicBallCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { question } = args;
         const answer = answers[Math.floor(Math.random() * answers.length)];
         return message.say(`Question: ${question}\n:8ball: ${answer} :8ball:`);

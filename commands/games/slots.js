@@ -12,15 +12,11 @@ module.exports = class SlotsCommand extends Command {
     }
 
     run(message) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const slotOne = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
-        if (slotOne === slotTwo && slotOne === slotThree) {
+        if (slotOne === slotTwo && slotOne === slotThree)
             return message.say(`${slotOne}|${slotTwo}|${slotThree}\nWow! You won! Great job... er... luck!`);
-        }
         return message.say(`${slotOne}|${slotTwo}|${slotThree}\nAww... You lost... Guess it's just bad luck, huh?`);
     }
 };

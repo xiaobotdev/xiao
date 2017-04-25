@@ -13,9 +13,6 @@ module.exports = class UptimeCommand extends Command {
     }
 
     run(message) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         return message.say(`I've been active on this shard for: **${moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]')}**!`);
     }
 };

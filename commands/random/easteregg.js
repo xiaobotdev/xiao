@@ -1,13 +1,12 @@
 const { Command } = require('discord.js-commando');
-const eastereggs = require('./eastereggs.json');
+const eastereggs = require('./eastereggs');
 
 module.exports = class EasterEggCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'easteregg',
             aliases: [
-                'tag',
-                'easter-egg'
+                'tag'
             ],
             group: 'random',
             memberName: 'easteregg',
@@ -17,9 +16,8 @@ module.exports = class EasterEggCommand extends Command {
                 prompt: 'What easter egg do you want to view?',
                 type: 'string',
                 validate: tag => {
-                    if (eastereggs[tag.toLowerCase()]) {
+                    if (eastereggs[tag.toLowerCase()])
                         return true;
-                    }
                     return 'Nope, that\'s not a valid easter egg. Try again!';
                 },
                 parse: text => text.toLowerCase()
@@ -28,9 +26,6 @@ module.exports = class EasterEggCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { tag } = args;
         return message.say(eastereggs[tag]);
     }

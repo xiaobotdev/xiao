@@ -7,9 +7,6 @@ module.exports = class GoogleCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'google',
-            aliases: [
-                'search'
-            ],
             group: 'search',
             memberName: 'google',
             description: 'Searches Google.',
@@ -23,9 +20,6 @@ module.exports = class GoogleCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { query } = args;
         const msg = await message.say('Searching...');
         try {

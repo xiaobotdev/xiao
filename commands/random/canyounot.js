@@ -11,9 +11,6 @@ module.exports = class CanYouNotCommand extends Command {
     }
 
     run(message) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         return message.say('Can YOU not?');
     }
 };

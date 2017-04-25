@@ -12,10 +12,9 @@ module.exports = class NitroCommand extends Command {
     }
 
     run(message) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const embed = new RichEmbed()
             .setAuthor('Discord Nitro')
             .setThumbnail('https://pbs.twimg.com/profile_images/814184180649197568/y2eZcVMq.jpg')
