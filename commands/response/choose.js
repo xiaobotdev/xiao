@@ -4,9 +4,6 @@ module.exports = class ChooseCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'choose',
-            aliases: [
-                'pick'
-            ],
             group: 'response',
             memberName: 'choose',
             description: 'Chooses between things.',
@@ -20,9 +17,6 @@ module.exports = class ChooseCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { choices } = args;
         const choice = choices[Math.floor(Math.random() * choices.length)];
         return message.say(`I choose ${choice}!`);

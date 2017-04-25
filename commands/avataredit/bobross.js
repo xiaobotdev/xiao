@@ -6,7 +6,6 @@ module.exports = class BobRossCommand extends Command {
         super(client, {
             name: 'bobross',
             aliases: [
-                'bob',
                 'ross'
             ],
             group: 'avataredit',
@@ -21,10 +20,9 @@ module.exports = class BobRossCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) return message.say(':x: Error! I don\'t have the Attach Files Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
+                return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         const { user } = args;
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         const blank = new Jimp(600, 775, 0xFFFFFF);

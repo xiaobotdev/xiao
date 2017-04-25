@@ -5,7 +5,6 @@ module.exports = class RollCommand extends Command {
         super(client, {
             name: 'roll',
             aliases: [
-                'randomnumber',
                 'dice'
             ],
             group: 'response',
@@ -20,9 +19,6 @@ module.exports = class RollCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { value } = args;
         const roll = Math.floor(Math.random() * value) + 1;
         return message.say(`You rolled a ${roll}.`);

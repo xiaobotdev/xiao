@@ -18,9 +18,8 @@ module.exports = class WarnCommand extends Command {
                 prompt: 'What do you want to set the reason as?',
                 type: 'string',
                 validate: reason => {
-                    if (reason.length < 140) {
+                    if (reason.length < 140)
                         return true;
-                    }
                     return `Please keep your reason under 140 characters, you have ${reason.length}.`;
                 }
             }]
@@ -32,12 +31,14 @@ module.exports = class WarnCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (!message.channel.permissionsFor(this.client.user).hasPermission('BAN_MEMBERS'))
+            return message.say(':x: Error! I don\'t have the Ban Members Permission!');
+        const modlogs = message.guild.channels.find('name', 'mod_logs');
+        if (!modlogs)
+            return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
+        if (!modlogs.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+            return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { member, reason } = args;
-        if (!message.guild.channels.exists('name', 'mod_logs')) return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
         try {
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
@@ -45,7 +46,7 @@ module.exports = class WarnCommand extends Command {
                 .setColor(0xFFFF00)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Warn\n**Reason:** ${reason}`);
-            return message.guild.channels.find('name', 'mod_logs').send({embed});
+            return modlogs.send({embed});
         } catch (err) {
             return message.say(':x: Error! Something went wrong!');
         }

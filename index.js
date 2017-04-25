@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const { discordBots, carbon } = require('./poststats.js');
+const { discordBots, carbon } = require('./poststats');
 const path = require('path');
 const client = new CommandoClient({
     commandPrefix: 'x;',

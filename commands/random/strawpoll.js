@@ -5,9 +5,6 @@ module.exports = class StrawpollCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'strawpoll',
-            aliases: [
-                'poll'
-            ],
             group: 'random',
             memberName: 'strawpoll',
             description: 'Creates a Strawpoll with your options.',
@@ -16,9 +13,8 @@ module.exports = class StrawpollCommand extends Command {
                 prompt: 'What would you like the title of the Strawpoll to be?',
                 type: 'string',
                 validate: title => {
-                    if (title.length < 200) {
+                    if (title.length < 200)
                         return true;
-                    }
                     return `Please keep your title under 200 characters, you have ${title.length}.`;
                 }
             }, {
@@ -27,9 +23,8 @@ module.exports = class StrawpollCommand extends Command {
                 type: 'string',
                 infinite: true,
                 validate: choice => {
-                    if (choice.length < 160) {
+                    if (choice.length < 160)
                         return true;
-                    }
                     return `Please keep your choices under 160 characters each, you have ${choice.length}.`;
                 }
             }]
@@ -37,12 +32,11 @@ module.exports = class StrawpollCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { title, choices } = args;
-        if (choices.length < 2) return message.say(':x: Error! You provided less than two choices!');
-        if (choices.length > 31) return message.say(':x: Error! You provided more than thirty choices!');
+        if (choices.length < 2)
+            return message.say(':x: Error! You provided less than two choices!');
+        if (choices.length > 31)
+            return message.say(':x: Error! You provided more than thirty choices!');
         try {
             const { body } = await request
                 .post('https://strawpoll.me/api/v2/polls')

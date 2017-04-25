@@ -12,13 +12,12 @@ module.exports = class MathGameCommand extends Command {
             description: 'See how fast you can answer a math problem in a given time limit.',
             args: [{
                 key: 'difficulty',
-                prompt: 'What difficulty should the math game be? easy, medium, hard, or extreme?',
+                prompt: 'What should the difficulty of the math game be? Easy, Medium, Hard, Extreme, or Impossible?',
                 type: 'string',
                 validate: difficulty => {
-                    if (difficulty.toLowerCase() === 'easy' || difficulty.toLowerCase() === 'medium' || difficulty.toLowerCase() === 'hard' || difficulty.toLowerCase() === 'extreme') {
+                    if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
                         return true;
-                    }
-                    return 'Please set the difficulty to either `easy`, `medium`, `hard`, or `extreme`.';
+                    return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                 },
                 parse: text => text.toLowerCase()
             }]
@@ -26,10 +25,9 @@ module.exports = class MathGameCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
         let value;
@@ -45,6 +43,9 @@ module.exports = class MathGameCommand extends Command {
                 break;
             case 'extreme':
                 value = 1000;
+                break;
+            case 'impossible':
+                value = 10000;
                 break;
         }
         const value1 = Math.floor(Math.random() * value) + 1;

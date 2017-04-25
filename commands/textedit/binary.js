@@ -20,9 +20,8 @@ module.exports = class BinaryCommand extends Command {
                 prompt: 'What text would you like to convert to binary?',
                 type: 'string',
                 validate: content => {
-                    if (stringToBinary(content).length < 2000) {
+                    if (stringToBinary(content).length < 2000)
                         return true;
-                    }
                     return 'Your message content is too long.';
                 },
                 parse: text => stringToBinary(text)
@@ -31,9 +30,6 @@ module.exports = class BinaryCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { text } = args;
         return message.say(text);
     }

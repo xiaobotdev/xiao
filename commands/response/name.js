@@ -1,14 +1,10 @@
 const { Command } = require('discord.js-commando');
-const { lastNames, maleNames, femaleNames } = require('./names.json');
+const { lastNames, maleNames, femaleNames } = require('./names');
 
 module.exports = class RandomNameCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'name',
-            aliases: [
-                'namegen',
-                'randomname'
-            ],
             group: 'response',
             memberName: 'name',
             description: 'Generates a random name.',
@@ -17,9 +13,8 @@ module.exports = class RandomNameCommand extends Command {
                 prompt: 'Which gender do you want to generate a name for?',
                 type: 'string',
                 validate: gender => {
-                    if (gender.toLowerCase() === 'male' || gender.toLowerCase() === 'female') {
+                    if (['male', 'female'].includes(gender.toLowerCase()))
                         return true;
-                    }
                     return 'Please enter either `male` or `female`.';
                 },
                 parse: text => text.toLowerCase()
@@ -28,9 +23,6 @@ module.exports = class RandomNameCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { gender } = args;
         const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
         if (gender === 'male') {

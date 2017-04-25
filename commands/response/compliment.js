@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const compliments = require('./compliments.json');
+const compliments = require('./compliments');
 
 module.exports = class ComplimentCommand extends Command {
     constructor(client) {
@@ -17,9 +17,6 @@ module.exports = class ComplimentCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { thing } = args;
         const compliment = compliments[Math.floor(Math.random() * compliments.length)];
         return message.say(`${thing}, ${compliment}`);

@@ -16,9 +16,6 @@ module.exports = class PatCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { thing } = args;
         return message.say(`${message.author} *pats* ${thing}`);
     }

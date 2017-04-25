@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const facts = require('./facts.json');
+const facts = require('./facts');
 
 module.exports = class FactCoreCommand extends Command {
     constructor(client) {
@@ -12,9 +12,6 @@ module.exports = class FactCoreCommand extends Command {
     }
 
     run(message) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const fact = facts[Math.floor(Math.random() * facts.length)];
         return message.say(fact);
     }

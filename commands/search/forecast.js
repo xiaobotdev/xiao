@@ -6,9 +6,6 @@ module.exports = class ForecastCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'forecast',
-            aliases: [
-                'weatherforecast'
-            ],
             group: 'search',
             memberName: 'forecast',
             description: 'Gets the seven-day forecast for a specified location.',
@@ -21,10 +18,9 @@ module.exports = class ForecastCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { location } = args;
         try {
             const { body } = await request

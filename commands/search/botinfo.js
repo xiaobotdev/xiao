@@ -6,10 +6,6 @@ module.exports = class BotSearchCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'botinfo',
-            aliases: [
-                'bot',
-                'botdata'
-            ],
             group: 'search',
             memberName: 'botinfo',
             description: 'Searches Discord Bots for info on a bot.',
@@ -22,10 +18,9 @@ module.exports = class BotSearchCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         let { bot } = args;
         bot = bot.id;
         try {

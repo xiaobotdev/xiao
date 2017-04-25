@@ -19,9 +19,6 @@ module.exports = class ShipCommand extends Command {
     }
 
     run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-        }
         const { things } = args;
         const percentage = Math.floor(Math.random() * 100) + 1;
         return message.say(`I'd give ${things} a ${percentage}%!`);

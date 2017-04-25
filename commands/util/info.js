@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const { version } = require('../../package.json');
+const { version } = require('../../package');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -9,7 +9,6 @@ module.exports = class InfoCommand extends Command {
         super(client, {
             name: 'info',
             aliases: [
-                'data',
                 'information'
             ],
             group: 'util',
@@ -19,10 +18,9 @@ module.exports = class InfoCommand extends Command {
     }
 
     async run(message) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
         const embed = new RichEmbed()
             .setColor(0x00AE86)

@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const { version } = require('../../package.json');
+const { version } = require('../../package');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -9,9 +9,6 @@ module.exports = class ShardInfoCommand extends Command {
         super(client, {
             name: 'shardinfo',
             aliases: [
-                'shard-info',
-                'shard-data',
-                'sharddata',
                 'shard'
             ],
             group: 'util',
@@ -26,12 +23,12 @@ module.exports = class ShardInfoCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm') {
-            if (!message.channel.permissionsFor(this.client.user).hasPermission(['SEND_MESSAGES', 'READ_MESSAGES'])) return;
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS')) return message.say(':x: Error! I don\'t have the Embed Links Permission!');
-        }
+        if (message.channel.type !== 'dm')
+            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
         const { shardID } = args;
-        if (shardID > this.client.options.shardCount - 1 || shardID < 0) return message.say(':x: Error! Invalid Shard!');
+        if (shardID > this.client.options.shardCount - 1 || shardID < 0)
+            return message.say(':x: Error! Invalid Shard!');
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
