@@ -13,7 +13,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
             description: 'Play Rock-Paper-Scissors.',
             args: [{
                 key: 'choice',
-                prompt: 'Rock, Paper, or Scissors?',
+                prompt: '`Rock`, `Paper`, or `Scissors`?',
                 type: 'string',
                 validate: rps => {
                     if (['rock', 'paper', 'scissors'].includes(rps.toLowerCase()))

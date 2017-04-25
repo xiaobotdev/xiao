@@ -21,7 +21,7 @@ module.exports = class IMDBCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { movie } = args;
         try {
             const { body } = await request
@@ -48,7 +48,7 @@ module.exports = class IMDBCommand extends Command {
                     body.Actors);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Movie not found!');
+            return message.say('An Error Occurred. The film may not have been found.');
         }
     }
 };

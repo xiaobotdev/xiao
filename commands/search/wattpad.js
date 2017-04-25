@@ -21,7 +21,7 @@ module.exports = class WattpadCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { book } = args;
         try {
             const { body } = await request
@@ -50,7 +50,7 @@ module.exports = class WattpadCommand extends Command {
                     data.commentCount, true);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Book not Found!');
+            return message.say('An Error Occurred. The book may not have been found.');
         }
     }
 };

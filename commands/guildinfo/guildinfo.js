@@ -21,7 +21,7 @@ module.exports = class GuildInfoCommand extends Command {
 
     run(message) {
         if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-            return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+            return message.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setColor(0x00AE86)
             .setThumbnail(message.guild.iconURL)

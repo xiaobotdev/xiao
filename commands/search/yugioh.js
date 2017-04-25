@@ -21,7 +21,7 @@ module.exports = class YuGiOhCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { card } = args;
         try {
             const { body } = await request
@@ -56,7 +56,7 @@ module.exports = class YuGiOhCommand extends Command {
                     data.card_type, true);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Card not Found!\n:notepad_spiral: Note: This command is **extremely** sensitive to casing and dashes and whatnot. Type the *exact* card name to get data!');
+            return message.say('An Error Occurred. The card may not have been found.');
         }
     }
 };

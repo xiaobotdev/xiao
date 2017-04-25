@@ -22,7 +22,7 @@ module.exports = class YearsCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES')) 
-                return message.say(':x: Error! I don\'t have the Attach Files Permission!');
+                return message.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         let images = [];
@@ -32,7 +32,7 @@ module.exports = class YearsCommand extends Command {
         avatar.resize(200, 200);
         years.blit(avatar, 461, 127);
         years.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return message.say(':x: Error! Something went wrong!');
+            if (err) return message.say('An Unknown Error Occurred.');
             return message.channel.send({files: [{attachment: buff}]});
         });
     }

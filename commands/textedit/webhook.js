@@ -27,7 +27,7 @@ module.exports = class WebhookCommand extends Command {
 
     async run(message, args) {
         if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES'))
-            return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
+            return message.say('This Command requires the `Manage Messages` Permission.');
         const { text } = args;
         try {
             message.delete();
@@ -38,7 +38,7 @@ module.exports = class WebhookCommand extends Command {
                 });
             return null;
         } catch (err) {
-            return message.say(':x: Error! Message failed to send!');
+            return message.say('An Unknown Error Occurred.');
         }
     }
 };

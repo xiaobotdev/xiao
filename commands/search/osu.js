@@ -21,7 +21,7 @@ module.exports = class OsuCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { username } = args;
         try {
             const { body } = await request
@@ -57,7 +57,7 @@ module.exports = class OsuCommand extends Command {
                     data.count_rank_a, true);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! User not Found!');
+            return message.say('An Error Occurred. The user may not have been found.');
         }
     }
 };

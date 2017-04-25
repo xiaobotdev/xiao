@@ -31,13 +31,11 @@ module.exports = class WarnCommand extends Command {
     }
 
     async run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).hasPermission('BAN_MEMBERS'))
-            return message.say(':x: Error! I don\'t have the Ban Members Permission!');
         const modlogs = message.guild.channels.find('name', 'mod_logs');
         if (!modlogs)
-            return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
+            return message.say('This Command requires a channel named `mod_logs`.');
         if (!modlogs.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-            return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+            return message.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
         try {
             await message.say(':ok_hand:');
@@ -48,7 +46,7 @@ module.exports = class WarnCommand extends Command {
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Warn\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
-            return message.say(':x: Error! Something went wrong!');
+            return message.say('An Unknown Error Occurred.');
         }
     }
 };

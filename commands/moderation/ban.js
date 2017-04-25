@@ -36,16 +36,21 @@ module.exports = class BanCommand extends Command {
 
     async run(message, args) {
         if (!message.channel.permissionsFor(this.client.user).hasPermission('BAN_MEMBERS'))
-            return message.say(':x: Error! I don\'t have the Ban Members Permission!');
+            return message.say('This Command requires the `Ban Members` Permission.');
         const modlogs = message.guild.channels.find('name', 'mod_logs');
         if (!modlogs)
-            return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
+            return message.say('This Command requires a channel named `mod_logs`.');
         if (!modlogs.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-            return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+            return message.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
         if (!member.bannable)
-            return message.say(':x: Error! This member cannot be banned! Perhaps they have a higher role than me?');
+            return message.say('This member is not bannable. Perhaps they have a higher role than me?');
         try {
+            try {
+                await member.send(`You were banned from ${message.guild.name}!\nReason: ${reason}.`);
+            } catch (err) {
+                await message.say('Failed to send DM to user.');
+            }
             await member.ban(7);
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
@@ -55,7 +60,7 @@ module.exports = class BanCommand extends Command {
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
-            return message.say(':x: Error! Something went wrong!');
+            return message.say('An Unknown Error Occurred.');
         }
     }
 };

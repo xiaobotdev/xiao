@@ -12,7 +12,7 @@ module.exports = class MathGameCommand extends Command {
             description: 'See how fast you can answer a math problem in a given time limit.',
             args: [{
                 key: 'difficulty',
-                prompt: 'What should the difficulty of the math game be? Easy, Medium, Hard, Extreme, or Impossible?',
+                prompt: 'What should the difficulty of the math game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
                 type: 'string',
                 validate: difficulty => {
                     if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
@@ -27,7 +27,7 @@ module.exports = class MathGameCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
         let value;
