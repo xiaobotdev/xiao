@@ -29,7 +29,7 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('guildCreate', async(guild) => {
-    console.log(`[Guild] I have joined ${guild.name}! (Owned by ${guild.owner.user.tag}) (${guild.id})`);
+    console.log(`[Guild] I have joined ${guild.name}! (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
@@ -48,7 +48,7 @@ client.on('guildCreate', async(guild) => {
 });
 
 client.on('guildDelete', async(guild) => {
-    console.log(`[Guild] I have left ${guild.name}... (Owned by ${guild.owner.user.tag}) (${guild.id})`);
+    console.log(`[Guild] I have left ${guild.name}... (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
