@@ -34,9 +34,8 @@ module.exports = class QuizCommand extends Command {
                     time: 15000,
                     errors: ['time']
                 });
-                if (collected.first().content.toLowerCase() !== answer) {
+                if (collected.first().content.toLowerCase() !== answer)
                     return message.say(`The correct answer is: ${answer}`);
-                }
                 return message.say(`Perfect! The correct answer is: ${answer}`);
             } catch (err) {
                 return message.say(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);

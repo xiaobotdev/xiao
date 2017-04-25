@@ -48,6 +48,7 @@ module.exports = class MemeCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
                 return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         const { type, toprow, bottomrow } = args;
-        return message.channel.send({files: [`https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`]});
+        return message.channel.send({files: [`https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`]})
+            .catch(() => message.say(':x: Error! Something went wrong!'));
     }
 };
