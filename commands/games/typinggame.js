@@ -11,7 +11,7 @@ module.exports = class TypingGameCommand extends Command {
             description: 'See how fast you can type a sentence in a given time limit.',
             args: [{
                 key: 'difficulty',
-                prompt: 'What should the difficulty of the typing game be? Easy, Medium, Hard, Extreme, or Impossible?',
+                prompt: 'What should the difficulty of the typing game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
                 type: 'string',
                 validate: difficulty => {
                     if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
@@ -26,7 +26,7 @@ module.exports = class TypingGameCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const sentence = sentences[Math.floor(Math.random() * sentences.length)];
         let time;

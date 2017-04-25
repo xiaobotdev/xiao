@@ -20,7 +20,7 @@ module.exports = class WeatherCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { location } = args;
         try {
             const { body } = await request
@@ -57,7 +57,7 @@ module.exports = class WeatherCommand extends Command {
                     data.wind.speed, true);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Make sure you typed the location correctly!');
+            return message.say('An Error Occurred. The location may not have been found.');
         }
     }
 };

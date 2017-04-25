@@ -21,7 +21,7 @@ module.exports = class YouTubeCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { video } = args;
         try {
             const { body } = await request
@@ -36,7 +36,7 @@ module.exports = class YouTubeCommand extends Command {
                 .setThumbnail(data.snippet.thumbnails.default.url);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Something went wrong! Maybe no video was found?');
+            return message.say('An Error Occurred. The video may not have been found.');
         }
     }
 };

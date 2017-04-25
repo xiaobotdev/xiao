@@ -20,7 +20,7 @@ module.exports = class ForecastCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { location } = args;
         try {
             const { body } = await request
@@ -48,7 +48,7 @@ module.exports = class ForecastCommand extends Command {
                     `**High:** ${data[6].high}°F, **Low:** ${data[6].low}°F, **Condition:** ${data[6].text}`);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Make sure you typed the location correctly!');
+            return message.say('An Error Occurred. The location may not have been found.');
         }
     }
 };

@@ -20,7 +20,7 @@ module.exports = class InfoCommand extends Command {
     async run(message) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
         const embed = new RichEmbed()
             .setColor(0x00AE86)

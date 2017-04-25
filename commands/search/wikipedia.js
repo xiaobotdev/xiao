@@ -21,7 +21,7 @@ module.exports = class WikipediaCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
@@ -36,7 +36,7 @@ module.exports = class WikipediaCommand extends Command {
                 .setDescription(description);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Entry Not Found!');
+            return message.say('An Error Occurred. The page may not have been found.');
         }
     }
 };

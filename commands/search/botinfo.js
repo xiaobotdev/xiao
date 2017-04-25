@@ -20,7 +20,7 @@ module.exports = class BotSearchCommand extends Command {
     async run(message, args) {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-                return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+                return message.say('This Command requires the `Embed Links` Permission.');
         let { bot } = args;
         bot = bot.id;
         try {
@@ -43,7 +43,7 @@ module.exports = class BotSearchCommand extends Command {
                     body.prefix, true);
             return message.embed(embed);
         } catch (err) {
-            return message.say(':x: Error! Bot not Found!');
+            return message.say('An Error Occurred. The bot may not have been found.');
         }
     }
 };

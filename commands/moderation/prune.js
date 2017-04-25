@@ -31,9 +31,9 @@ module.exports = class PruneCommand extends Command {
 
     async run(message, args) {
         if (!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGE_HISTORY'))
-            return message.say(':x: Error! I don\'t have the Read Message History Permission!');
+            return message.say('This Command requires the `Read Message History` Permission.');
         if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES'))
-            return message.say(':x: Error! I don\'t have the Manage Messages Permission!');
+            return message.say('This Command requires the `Manage Messages` Permission.');
         let { count } = args;
         count = count + 1;
         try {
@@ -43,7 +43,7 @@ module.exports = class PruneCommand extends Command {
             await message.channel.bulkDelete(messages, true);
             return null;
         } catch (err) {
-            return message.say(':x: Error! Something went wrong! Perhaps there are not enough messages in the channel from earlier than two weeks?');
+            return message.say('There are no messages younger than two weeks that can be deleted.');
         }
     }
 };

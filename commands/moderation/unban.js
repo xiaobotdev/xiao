@@ -40,16 +40,16 @@ module.exports = class UnbanCommand extends Command {
 
     async run(message, args) {
         if (!message.channel.permissionsFor(this.client.user).hasPermission('BAN_MEMBERS'))
-            return message.say(':x: Error! I don\'t have the Ban Members Permission!');
+            return message.say('This Command requires the `Ban Members` Permission.');
         const modlogs = message.guild.channels.find('name', 'mod_logs');
         if (!modlogs)
-            return message.say(':x: Error! Could not find the mod_logs channel! Please create it!');
+            return message.say('This Command requires a channel named `mod_logs`.');
         if (!modlogs.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
-            return message.say(':x: Error! I don\'t have the Embed Links Permission!');
+            return message.say('This Command requires the `Embed Links` Permission.');
         const { memberID, reason } = args;
         const bans = await message.guild.fetchBans();
         if (!bans.has(memberID))
-            return message.say(':x: Error! Could not find this user in the bans.');
+            return message.say('This ID is not in the Guild Banlist.');
         const unbanUser = await bans.get(memberID);
         try {
             await message.guild.unban(unbanUser);
@@ -61,7 +61,7 @@ module.exports = class UnbanCommand extends Command {
                 .setDescription(`**Member:** ${unbanUser.tag} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
-            return message.say(':x: Error! Something went wrong!');
+            return message.say('An Unknown Error Occurred.');
         }
     }
 };

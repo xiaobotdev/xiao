@@ -19,9 +19,6 @@ module.exports = class NeopetCommand extends Command {
     }
 
     async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
-                return message.say(':x: Error! I don\'t have the Attach Files Permission!');
         const { pet } = args;
         try {
             const { text } = await request
@@ -29,10 +26,10 @@ module.exports = class NeopetCommand extends Command {
             const $ = cheerio.load(text);
             const link = $('textarea').first().text();
             if (!link.includes('cp'))
-                return message.say(':x: Error! Pet not found!');
+                return message.say('This is not a valid pet name.');
             return message.say(link);
         } catch (err) {
-            return message.say(':x: Error! Something went wrong!');
+            return message.say('An Unknown Error Occurred.');
         }
     }
 };

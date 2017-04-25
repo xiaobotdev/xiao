@@ -34,9 +34,9 @@ module.exports = class StrawpollCommand extends Command {
     async run(message, args) {
         const { title, choices } = args;
         if (choices.length < 2)
-            return message.say(':x: Error! You provided less than two choices!');
+            return message.say('You provided less than two choices.');
         if (choices.length > 31)
-            return message.say(':x: Error! You provided more than thirty choices!');
+            return message.say('You provided more than thirty choices.');
         try {
             const { body } = await request
                 .post('https://strawpoll.me/api/v2/polls')
@@ -47,7 +47,7 @@ module.exports = class StrawpollCommand extends Command {
             return message.say(`${body.title}\nhttp://strawpoll.me/${body.id}`);
         }
         catch (err) {
-            return message.say(':x: Error! Something went wrong!');
+            return message.say('An Unknown Error Occurred.');
         }
     }
 };
