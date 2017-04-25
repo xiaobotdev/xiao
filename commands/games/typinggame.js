@@ -63,9 +63,8 @@ module.exports = class TypingGameCommand extends Command {
                 time: time,
                 errors: ['time']
             });
-            if (collected.first().content !== sentence) {
+            if (collected.first().content !== sentence)
                 return message.say('Nope, your sentence does not match the original. Try again next time!');
-            }
             return message.say(`Good Job! You won!`);
         } catch (err) {
             return message.say('Aw... Too bad, try again next time!');

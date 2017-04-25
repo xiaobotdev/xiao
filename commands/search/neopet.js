@@ -28,7 +28,8 @@ module.exports = class NeopetCommand extends Command {
                 .get(`http://www.sunnyneo.com/petimagefinder.php?name=${pet}&size=5&mood=1`);
             const $ = cheerio.load(text);
             const link = $('textarea').first().text();
-            if (!link.includes('cp')) return message.say(':x: Error! Pet not found!');
+            if (!link.includes('cp'))
+                return message.say(':x: Error! Pet not found!');
             return message.say(link);
         } catch (err) {
             return message.say(':x: Error! Something went wrong!');

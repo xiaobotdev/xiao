@@ -12,7 +12,8 @@ module.exports = class LotteryCommand extends Command {
 
     run(message) {
         const lottery = Math.floor(Math.random() * 100) + 1;
-        if (lottery < 99) return message.say(`Nope, sorry ${message.author.username}, you lost.`);
+        if (lottery < 99)
+            return message.say(`Nope, sorry ${message.author.username}, you lost.`);
         return message.say(`Wow ${message.author.username}! You actually won! Great job!`);
     }
 };
