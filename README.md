@@ -1,15 +1,6 @@
-<div align="center">
-  <br />
-  <p>
-    <a href="http://dragonfire535.weebly.com/xiaobot.html"><img src="http://dragonfire535.weebly.com/uploads/5/2/3/5/52359877/xiaobot_1_orig.png" alt="XiaoBot" /></a>
-  </p>
-  <br />
-  <p>
-    <a href="https://discord.gg/fqQF8mc"><img src="https://discordapp.com/api/guilds/252317073814978561/embed.png" alt="Discord Server" /></a>
-  </p>
-</div>
+#XiaoBot
+[![Discord](https://discordapp.com/api/guilds/252317073814978561/embed.png)](https://discord.gg/fqQF8mc)
 
-## Info
 Public Source Code for the Discord Bot XiaoBot, a Discord bot coded in JavaScript with [discord.js](https://discord.js.org/#/) using the [Commando](https://github.com/Gawdl3y/discord.js-commando) command framework.
 
 ## Adding it to Your Server
