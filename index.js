@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const { discordBots, carbon } = require('./poststats');
+const Stats = require('./poststats');
 const path = require('path');
 const client = new CommandoClient({
     commandPrefix: 'x;',
@@ -34,13 +34,13 @@ client.on('guildCreate', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        await carbon(count);
+        await Stats.carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon.`);
     } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        await discordBots(count, client.user.id);
+        await Stats.discordBots(count, client.user.id);
         console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
     } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
@@ -53,13 +53,13 @@ client.on('guildDelete', async(guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
     try {
-        await carbon(count);
+        await Stats.carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon.`);
     } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
-        await discordBots(count, client.user.id);
+        await Stats.discordBots(count, client.user.id);
         console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
     } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
