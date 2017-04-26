@@ -14,6 +14,6 @@ module.exports = class SpamCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
-        return message.channel.send({files: ['./images/Spam.jpg']});
+        return message.channel.send({files: ['https://i.imgur.com/2JFu5xE.jpg']});
     }
 };

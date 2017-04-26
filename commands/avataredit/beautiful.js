@@ -27,7 +27,7 @@ module.exports = class BeautifulCommand extends Command {
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read('./images/beautiful.jpg'));
+        images.push(Jimp.read('https://i.imgur.com/OOQ9QwQ.jpg'));
         const [avatar, beautiful] = await Promise.all(images);
         avatar.resize(200, 200);
         beautiful.blit(avatar, 432, 42);

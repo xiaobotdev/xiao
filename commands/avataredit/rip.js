@@ -28,7 +28,7 @@ module.exports = class RIPCommand extends Command {
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read('./images/gravestone.png'));
+        images.push(Jimp.read('https://i.imgur.com/KriteWm.jpg'));
         const [avatar, gravestone] = await Promise.all(images);
         avatar.resize(200, 200);
         gravestone.blit(avatar, 158, 51);
