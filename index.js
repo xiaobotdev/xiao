@@ -27,6 +27,18 @@ client.registry
     .registerDefaultGroups()
     .registerDefaultCommands()
     .registerCommandsIn(path.join(__dirname, 'commands'));
+    
+client.on('guildMemberAdd', (member) => {
+    const channel = member.guild.channels.find('name', 'member_logs');
+    if (!channel) return;
+    channel.send(`Welcome ${member}!`);
+});
+
+client.on('guildMemberRemove', (member) => {
+    const channel = member.guild.channels.find('name', 'member_logs');
+    if (!channel) return;
+    channel.send(`Bye ${member}...`);
+});
 
 client.on('guildCreate', async(guild) => {
     console.log(`[Guild] I have joined ${guild.name}! (${guild.id})`);
