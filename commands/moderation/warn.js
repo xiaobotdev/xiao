@@ -27,7 +27,7 @@ module.exports = class WarnCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.permissions.has('MANAGE_MESSAGES');
+        return msg.member.permissions.has('KICK_MEMBERS');
     }
 
     async run(message, args) {

@@ -19,6 +19,6 @@ module.exports = class CatCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
         const cat = cats[Math.floor(Math.random() * cats.length)];
-        return message.channel.send({files: [`./images/Cat${cat}`]});
+        return message.channel.send({files: [cat]});
     }
 };

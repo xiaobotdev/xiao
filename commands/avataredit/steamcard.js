@@ -29,7 +29,7 @@ module.exports = class SteamCardCommand extends Command {
         const blank = new Jimp(494, 568, 0xFFFFFF);
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read('./images/SteamCard.png'));
+        images.push(Jimp.read('https://i.imgur.com/JF0WwQX.png'));
         const [avatar, steamcard] = await Promise.all(images);
         const font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
         avatar.resize(450, 450);

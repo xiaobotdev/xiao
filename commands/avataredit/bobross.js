@@ -28,7 +28,7 @@ module.exports = class BobRossCommand extends Command {
         const blank = new Jimp(600, 775, 0xFFFFFF);
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read('./images/BobRoss.png'));
+        images.push(Jimp.read('https://i.imgur.com/7NSiFLd.png'));
         const [avatar, bob] = await Promise.all(images);
         avatar.rotate(2);
         avatar.resize(300, 300);

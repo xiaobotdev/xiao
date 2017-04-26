@@ -27,7 +27,7 @@ module.exports = class YearsCommand extends Command {
         const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
         let images = [];
         images.push(Jimp.read(userAvatar));
-        images.push(Jimp.read('./images/3000years.png'));
+        images.push(Jimp.read('https://i.imgur.com/eScwGFS.png'));
         const [avatar, years] = await Promise.all(images);
         avatar.resize(200, 200);
         years.blit(avatar, 461, 127);
