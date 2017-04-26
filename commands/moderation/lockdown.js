@@ -23,11 +23,11 @@ module.exports = class LockdownCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.permissions.has('ADMINISTRATOR');
+        return msg.member.hasPermission('ADMINISTRATOR');
     }
 
     async run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).permissions.has('ADMINISTRATOR'))
+        if (!message.channel.permissionsFor(this.client.user).hasPermission('ADMINISTRATOR'))
             return message.say('This Command requires the `Administrator` Permission.');
         const { type } = args;
         if (type === 'start') {

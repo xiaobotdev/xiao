@@ -22,7 +22,7 @@ module.exports = class SayCommand extends Command {
     }
 
     run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).permissions.has('MANAGE_MESSAGES'))
+        if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES'))
             return message.say('This Command requires the `Manage Messages` Permission.');
         const { text } = args;
         message.delete();
