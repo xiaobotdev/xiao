@@ -26,7 +26,7 @@ module.exports = class PruneCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.has('MANAGE_MESSAGES');
+        return msg.member.permissions.has('MANAGE_MESSAGES');
     }
 
     async run(message, args) {

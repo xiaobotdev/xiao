@@ -28,7 +28,7 @@ module.exports = class KickCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.has('KICK_MEMBERS');
+        return msg.member.permissions.has('KICK_MEMBERS');
     }
 
     async run(message, args) {
