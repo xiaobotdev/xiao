@@ -23,7 +23,7 @@ module.exports = class LockdownCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.has('ADMINISTRATOR');
+        return msg.member.permissions.has('ADMINISTRATOR');
     }
 
     async run(message, args) {

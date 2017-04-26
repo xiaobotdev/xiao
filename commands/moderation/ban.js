@@ -31,7 +31,7 @@ module.exports = class BanCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.has('BAN_MEMBERS');
+        return msg.member.permissions.has('BAN_MEMBERS');
     }
 
     async run(message, args) {
