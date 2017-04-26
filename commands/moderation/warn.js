@@ -27,14 +27,14 @@ module.exports = class WarnCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.permissions.has('MANAGE_MESSAGES');
+        return msg.member.hasPermission('MANAGE_MESSAGES');
     }
 
     async run(message, args) {
         const modlogs = message.guild.channels.find('name', 'mod_logs');
         if (!modlogs)
             return message.say('This Command requires a channel named `mod_logs`.');
-        if (!modlogs.permissionsFor(this.client.user).permissions.has('EMBED_LINKS'))
+        if (!modlogs.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
             return message.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
         try {
