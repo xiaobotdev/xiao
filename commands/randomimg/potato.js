@@ -16,7 +16,7 @@ module.exports = class PotatoCommand extends Command {
 
     run(message) {
         if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
+            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
         const potato = potatoes[Math.floor(Math.random() * potatoes.length)];
         return message.channel.send({files: [`./images/Potato${potato}`]});
