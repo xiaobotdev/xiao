@@ -26,13 +26,13 @@ module.exports = class PruneCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.hasPermission('MANAGE_MESSAGES');
+        return msg.member.permissions.has('MANAGE_MESSAGES');
     }
 
     async run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).hasPermission('READ_MESSAGE_HISTORY'))
+        if (!message.channel.permissionsFor(this.client.user).permissions.has('READ_MESSAGE_HISTORY'))
             return message.say('This Command requires the `Read Message History` Permission.');
-        if (!message.channel.permissionsFor(this.client.user).hasPermission('MANAGE_MESSAGES'))
+        if (!message.channel.permissionsFor(this.client.user).permissions.has('MANAGE_MESSAGES'))
             return message.say('This Command requires the `Manage Messages` Permission.');
         let { count } = args;
         count = count + 1;

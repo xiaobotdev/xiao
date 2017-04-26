@@ -26,7 +26,7 @@ module.exports = class MathGameCommand extends Command {
 
     async run(message, args) {
         if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+            if (!message.channel.permissionsFor(this.client.user).permissions.has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];

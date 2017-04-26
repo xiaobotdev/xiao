@@ -28,7 +28,7 @@ module.exports = class MapCommand extends Command {
 
     async run(message, args) {
         if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
+            if (!message.channel.permissionsFor(this.client.user).permissions.has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
         const { zoom, location } = args;
         try {
