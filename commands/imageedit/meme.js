@@ -45,7 +45,7 @@ module.exports = class MemeCommand extends Command {
 
     run(message, args) {
         if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('ATTACH_FILES'))
+            if (!message.channel.permissionsFor(this.client.user).permissions.has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
         const { type, toprow, bottomrow } = args;
         return message.channel.send({files: [`https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`]})

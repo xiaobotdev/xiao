@@ -14,7 +14,7 @@ module.exports = class TodayCommand extends Command {
 
     async run(message) {
         if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).hasPermission('EMBED_LINKS'))
+            if (!message.channel.permissionsFor(this.client.user).permissions.has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
         try {
             const { text } = await request
