@@ -7,6 +7,12 @@ const client = new CommandoClient({
     disableEveryone: true,
     invite: 'https://discord.gg/fqQF8mc'
 });
+const SequelizeProvider = require('./providers/Sequelize');
+const Database = require('./structures/PostgreSQL');
+const database = new Database();
+database.start();
+
+client.setProvider(new SequelizeProvider(Database.db));
 
 client.registry
     .registerDefaultTypes()
@@ -80,15 +86,15 @@ client.on('guildDelete', async(guild) => {
     }
 });
 
-client.on('disconnect', (event) => {
-    console.log(`[Disconnect] Shard ${client.shard.id} disconnected with Code ${event.code}.`);
-    process.exit(0);
-});
-
 client.setTimeout(() => {
     console.log(`[Restart] Shard ${client.shard.id} Restarted.`);
     process.exit(0);
 }, 14400000);
+
+client.on('disconnect', (event) => {
+    console.log(`[Disconnect] Shard ${client.shard.id} disconnected with Code ${event.code}.`);
+    process.exit(0);
+});
 
 client.on('ready', () => {
     console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
