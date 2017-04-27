@@ -25,7 +25,7 @@ module.exports = class SteamCardCommand extends Command {
                 return message.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const username = message.guild ? message.guild.member(user).displayName : user.username;
-        const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
+        const userAvatar = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
         const blank = new Jimp(494, 568, 0xFFFFFF);
         let images = [];
         images.push(Jimp.read(userAvatar));
