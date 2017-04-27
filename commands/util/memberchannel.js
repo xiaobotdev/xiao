@@ -22,6 +22,7 @@ module.exports = class MemberLogCommand extends Command {
 
     run(message, args) {
         const { channel } = args;
+        console.log(channel);
         message.guild.settings.set('memberLog', channel.name);
         console.log(channel);
         console.log(message.guild.settings.get('memberLog'));

@@ -174,10 +174,7 @@ class SequelizeProvider extends SettingProvider {
 		}
 
 		// Load all command/group statuses
-		for (const command of this.client.registry.commands.values()) {
-			console.log(command);
-			this.setupGuildCommand(guild, command, settings);
-		}
+		for (const command of this.client.registry.commands.values()) this.setupGuildCommand(guild, command, settings);
 		for (const group of this.client.registry.groups.values()) this.setupGuildGroup(guild, group, settings);
 	}
 
