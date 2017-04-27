@@ -24,7 +24,7 @@ module.exports = class BobRossCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const userAvatar = user.displayAvatarURL.replace('.jpg', '.png').replace('.gif', '.png');
+        const userAvatar = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
         const blank = new Jimp(600, 775, 0xFFFFFF);
         let images = [];
         images.push(Jimp.read(userAvatar));
