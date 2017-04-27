@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "16.2.3",
+  "version": "16.2.4",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "discord-api",
     "discord-bot",
     "discord-js",
-    "discord.js-commando",
+    "discord-js-commando",
     "postgres",
     "postgresql"
   ],
