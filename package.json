@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "16.2.2",
+  "version": "16.2.3",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "scripts": {
@@ -12,11 +12,15 @@
     "url": "git+https://github.com/dragonfire535/xiaobot.git"
   },
   "keywords": [
-    "discord-bot",
+    "bot",
     "commando",
-    "discord-js",
     "discord",
-    "discord-api"
+    "discord-api",
+    "discord-bot",
+    "discord-js",
+    "discord.js-commando",
+    "postgres",
+    "postgresql"
   ],
   "author": "dragonfire535",
   "license": "ISC",
