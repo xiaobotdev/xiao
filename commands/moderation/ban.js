@@ -37,9 +37,9 @@ module.exports = class BanCommand extends Command {
     async run(message, args) {
         if (!message.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
             return message.say('This Command requires the `Ban Members` Permission.');
-        const modlogs = message.guild.channels.find('name', 'mod_logs');
+        const modlogs = message.guild.channels.find('name', message.guild.settings.get('modLog', 'mod_logs'));
         if (!modlogs)
-            return message.say('This Command requires a channel named `mod_logs`.');
+            return message.say('This Command requires a channel named `mod_logs` or one custom set with the `modchannel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return message.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
