@@ -1,12 +1,12 @@
 const { CommandoClient } = require('discord.js-commando');
-const { carbon, discordBots } = require('./poststats');
-const path = require('path');
 const client = new CommandoClient({
     commandPrefix: 'x;',
     owner: '242699360352206850',
     disableEveryone: true,
     invite: 'https://discord.gg/fqQF8mc'
 });
+const path = require('path');
+const { carbon, discordBots } = require('./structures/Stats');
 const SequelizeProvider = require('./providers/Sequelize');
 const Database = require('./structures/PostgreSQL');
 const database = new Database();

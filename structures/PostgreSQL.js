@@ -1,23 +1,20 @@
 const Sequelize = require('sequelize');
-
 const database = new Sequelize(process.env.DATABASE_URL, { logging: false });
 
-class Database {
+module.exports = class Database {
 	static get db() {
 		return database;
 	}
 
 	start() {
 		database.authenticate()
-			.then(() => console.log('Connection to database has been established successfully.'))
-			.then(() => console.log('Synchronizing database...'))
+			.then(() => console.log('[Database] Connection has been established successfully.'))
+			.then(() => console.log('[Database] Synchronizing...'))
 			.then(() => database.sync()
-				.then(() => console.log('Synchronizing database done!'))
-				.catch(error => console.error(`Error synchronizing the database: ${error}`))
+				.then(() => console.log('[Database] Synchronizing complete!'))
+				.catch(err => console.error(`[Database] Error synchronizing: ${err}`))
 			)
-			.then(() => console.log('Ready to rock!'))
-			.catch(err => console.error(`Unable to connect to the database: ${err}`));
+			.then(() => console.log('[Database] Ready!'))
+			.catch(err => console.error(`[Database] Unable to connect: ${err}`));
 	}
-}
-
-module.exports = Database;
+};
