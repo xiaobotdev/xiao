@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const Jimp = require('jimp');
-const request = require('superagent');
 
 module.exports = class YearsCommand extends Command {
     constructor(client) {
