@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const database = new Sequelize(process.env.DB_URL, { logging: false });
+const database = new Sequelize(process.env.DATABASE_URL, { logging: false });
 
 class Database {
 	static get db() {
