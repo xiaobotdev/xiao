@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const stringToBinary = (str) => {
+const binary = (str) => {
     const pad = '00000000';
     return unescape(encodeURIComponent(str))
         .split('').map(str => {
@@ -19,12 +19,12 @@ module.exports = class BinaryCommand extends Command {
                 key: 'text',
                 prompt: 'What text would you like to convert to binary?',
                 type: 'string',
-                validate: content => {
-                    if (stringToBinary(content).length < 2000)
+                validate: text => {
+                    if (binary(text).length < 2000)
                         return true;
                     return 'Your message content is too long.';
                 },
-                parse: text => stringToBinary(text)
+                parse: text => binary(text)
             }]
         });
     }

@@ -22,7 +22,7 @@ module.exports = class EmbedCommand extends Command {
                 return message.say('This Command requires the `Embed Links` Permission.');
         const { text } = args;
         const embed = new RichEmbed()
-            .setAuthor(message.author.username, message.author.avatarURL)
+            .setAuthor(message.author.username, message.author.displayAvatarURL)
             .setColor(0x00AE86)
             .setTimestamp()
             .setDescription(text);

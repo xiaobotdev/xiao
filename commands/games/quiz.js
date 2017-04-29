@@ -22,11 +22,10 @@ module.exports = class QuizCommand extends Command {
         try {
             const { body } = await request
                 .get('http://jservice.io/api/random?count=1');
-            const data = body[0];
-            const answer = data.answer.toLowerCase().replace(/(<i>|<\/i>)/g, '');
+            const answer = body[0].answer.toLowerCase().replace(/(<i>|<\/i>)/g, '');
             const embed = new RichEmbed()
-                .setTitle('You have **fifteen** seconds to answer this question:')
-                .setDescription(`**Category: ${data.category.title}**\n${data.question}`);
+                .setTitle('You have **15** seconds to answer this question:')
+                .setDescription(`**Category: ${body[0].category.title}**\n${body[0].question}`);
             await message.embed(embed);
             try {
                 const collected = await message.channel.awaitMessages(res => res.author.id === message.author.id, {
@@ -41,7 +40,7 @@ module.exports = class QuizCommand extends Command {
                 return message.say(`Aw... Too bad, try again next time!\nThe Correct Answer was: ${answer}`);
             }
         } catch (err) {
-            return message.say(':x: Error! Something went wrong!');
+            return message.say('An Unknown Error Occurred.');
         }
     }
 };

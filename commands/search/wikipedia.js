@@ -26,14 +26,12 @@ module.exports = class WikipediaCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${query}&exintro=&explaintext=&redirects=&formatversion=2`);
-            const data = body.query.pages[0];
-            const description = data.extract.substr(0, 2000).split('\n').join('\n\n');
             const embed = new RichEmbed()
                 .setColor(0xE7E7E7)
-                .setTitle(data.title)
+                .setTitle(body.query.pages[0].title)
                 .setURL(`https://en.wikipedia.org/wiki/${query}`)
                 .setAuthor('Wikipedia', 'https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png')
-                .setDescription(description);
+                .setDescription(body.query.pages[0].extract.substr(0, 2000).split('\n').join('\n\n'));
             return message.embed(embed);
         } catch (err) {
             return message.say('An Error Occurred. The page may not have been found.');

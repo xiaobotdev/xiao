@@ -17,7 +17,7 @@ module.exports = class RandomNameCommand extends Command {
                         return true;
                     return 'Please enter either `male` or `female`.';
                 },
-                parse: text => text.toLowerCase()
+                parse: gender => gender.toLowerCase()
             }]
         });
     }

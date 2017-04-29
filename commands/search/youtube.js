@@ -10,7 +10,7 @@ module.exports = class YouTubeCommand extends Command {
             memberName: 'youtube',
             description: 'Searches YouTube for a video.',
             args: [{
-                key: 'video',
+                key: 'query',
                 prompt: 'What would you like to search for?',
                 type: 'string',
                 parse: text => encodeURIComponent(text)
@@ -22,18 +22,17 @@ module.exports = class YouTubeCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
-        const { video } = args;
+        const { query } = args;
         try {
             const { body } = await request
-                .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${video}&key=${process.env.GOOGLE_KEY}`);
-            const data = body.items[0];
+                .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${process.env.GOOGLE_KEY}`);
             const embed = new RichEmbed()
                 .setColor(0xDD2825)
-                .setTitle(data.snippet.title)
-                .setDescription(data.snippet.description)
-                .setAuthor(`YouTube - ${data.snippet.channelTitle}`, 'https://cdn3.iconfinder.com/data/icons/social-icons-5/607/YouTube_Play.png')
-                .setURL(`https://www.youtube.com/watch?v=${data.id.videoId}`)
-                .setThumbnail(data.snippet.thumbnails.default.url);
+                .setTitle(body.items[0].snippet.title)
+                .setDescription(body.items[0].snippet.description)
+                .setAuthor(`YouTube - ${body.items[0].snippet.channelTitle}`, 'https://cdn3.iconfinder.com/data/icons/social-icons-5/607/YouTube_Play.png')
+                .setURL(`https://www.youtube.com/watch?v=${body.items[0].id.videoId}`)
+                .setThumbnail(body.items[0].snippet.thumbnails.default.url);
             return message.embed(embed);
         } catch (err) {
             return message.say('An Error Occurred. The video may not have been found.');

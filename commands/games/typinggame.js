@@ -18,7 +18,7 @@ module.exports = class TypingGameCommand extends Command {
                         return true;
                     return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                 },
-                parse: text => text.toLowerCase()
+                parse: difficulty => difficulty.toLowerCase()
             }]
         });
     }
@@ -30,31 +30,25 @@ module.exports = class TypingGameCommand extends Command {
         const { difficulty } = args;
         const sentence = sentences[Math.floor(Math.random() * sentences.length)];
         let time;
-        let levelWord;
         switch (difficulty) {
             case 'easy':
                 time = 25000;
-                levelWord = 'twenty-five';
                 break;
             case 'medium':
                 time = 20000;
-                levelWord = 'twenty';
                 break;
             case 'hard':
                 time = 15000;
-                levelWord = 'fifteen';
                 break;
             case 'extreme':
                 time = 10000;
-                levelWord = 'ten';
                 break;
             case 'impossible':
                 time = 5000;
-                levelWord = 'five';
                 break;
         }
         const embed = new RichEmbed()
-            .setTitle(`You have **${levelWord}** seconds to type:`)
+            .setTitle(`You have **${time / 1000}** seconds to type:`)
             .setDescription(sentence);
         await message.embed(embed);
         try {

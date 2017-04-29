@@ -19,7 +19,7 @@ module.exports = class MathGameCommand extends Command {
                         return true;
                     return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                 },
-                parse: text => text.toLowerCase()
+                parse: difficulty => difficulty.toLowerCase()
             }]
         });
     }
@@ -51,9 +51,9 @@ module.exports = class MathGameCommand extends Command {
         const value1 = Math.floor(Math.random() * value) + 1;
         const value2 = Math.floor(Math.random() * value) + 1;
         const expression = `${value1} ${operation} ${value2}`;
-        const solved = math.eval(expression);
+        const solved = math.eval(expression).toString();
         const embed = new RichEmbed()
-            .setTitle('You have **ten** seconds to answer:')
+            .setTitle('You have **10** seconds to answer:')
             .setDescription(expression);
         await message.embed(embed);
         try {
@@ -62,7 +62,7 @@ module.exports = class MathGameCommand extends Command {
                 time: 10000,
                 errors: ['time']
             });
-            if (collected.first().content !== solved.toString())
+            if (collected.first().content !== solved)
                 return message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
             return message.say(`Good Job! You won! ${solved} is the correct answer!`);
         } catch (err) {

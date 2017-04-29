@@ -34,11 +34,10 @@ module.exports = class PruneCommand extends Command {
             return message.say('This Command requires the `Read Message History` Permission.');
         if (!message.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
             return message.say('This Command requires the `Manage Messages` Permission.');
-        let { count } = args;
-        count = count + 1;
+        const { count } = args;
         try {
             const messages = await message.channel.fetchMessages({
-                limit: count
+                limit: count + 1
             });
             await message.channel.bulkDelete(messages, true);
             return null;

@@ -20,7 +20,7 @@ module.exports = class ShipCommand extends Command {
 
     run(message, args) {
         const { things } = args;
-        const percentage = Math.floor(Math.random() * 100) + 1;
-        return message.say(`I'd give ${things} a ${percentage}%!`);
+        const rating = Math.floor(Math.random() * 100) + 1;
+        return message.say(`I'd give ${things} a ${rating}%!`);
     }
 };

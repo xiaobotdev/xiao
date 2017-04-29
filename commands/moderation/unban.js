@@ -13,13 +13,13 @@ module.exports = class UnbanCommand extends Command {
             description: 'Unbans a user and logs the unban to the mod_logs.',
             guildOnly: true,
             args: [{
-                key: 'memberID',
+                key: 'id',
                 prompt: 'What member do you want to unban? Please enter the ID of the user.',
                 type: 'string',
-                validate: userID => {
-                    if (userID.length === 18)
+                validate: id => {
+                    if (id.length === 18)
                         return true;
-                    return `${userID} is not a valid ID. Please enter the user you wish to unban's ID.`;
+                    return `${id} is not a valid ID. Please enter the user you wish to unban's ID.`;
                 }
             }, {
                 key: 'reason',
@@ -46,19 +46,19 @@ module.exports = class UnbanCommand extends Command {
             return message.say('This Command requires a channel named `mod_logs` or one custom set with the `modchannel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return message.say('This Command requires the `Embed Links` Permission.');
-        const { memberID, reason } = args;
+        const { id, reason } = args;
         const bans = await message.guild.fetchBans();
-        if (!bans.has(memberID))
+        if (!bans.has(id))
             return message.say('This ID is not in the Guild Banlist.');
-        const unbanUser = await bans.get(memberID);
+        const member = await bans.get(id);
         try {
-            await message.guild.unban(unbanUser);
+            await message.guild.unban(member);
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(message.author.tag, message.author.avatarURL)
+                .setAuthor(message.author.tag, message.author.displayAvatarURL)
                 .setColor(0x00AE86)
                 .setTimestamp()
-                .setDescription(`**Member:** ${unbanUser.tag} (${unbanUser.id})\n**Action:** Unban\n**Reason:** ${reason}`);
+                .setDescription(`**Member:** ${member.tag} (${member.id})\n**Action:** Unban\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
             return message.say('An Unknown Error Occurred.');

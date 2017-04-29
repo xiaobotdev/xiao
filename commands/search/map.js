@@ -18,10 +18,10 @@ module.exports = class MapCommand extends Command {
                     return 'Please enter a zoom value from 1-20';
                 }
             }, {
-                key: 'location',
+                key: 'query',
                 prompt: 'What location you like to get a map image for?',
                 type: 'string',
-                parse: text => encodeURIComponent(text)
+                parse: query => encodeURIComponent(query)
             }]
         });
     }
@@ -30,10 +30,10 @@ module.exports = class MapCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
-        const { zoom, location } = args;
+        const { zoom, query } = args;
         try {
             const { body } = await request
-                .get(`https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
+                .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
             return message.channel.send({files: [{attachment: body}]});
         } catch (err) {
             return message.say('An Error Occurred. The location may not have been found.');

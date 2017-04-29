@@ -10,19 +10,19 @@ module.exports = class NeopetCommand extends Command {
             memberName: 'neopet',
             description: 'Gives a Neopet\'s image, searchable by name.',
             args: [{
-                key: 'pet',
+                key: 'query',
                 prompt: 'What pet would you like to get the image of?',
                 type: 'string',
-                parse: text => encodeURIComponent(text)
+                parse: query => encodeURIComponent(query)
             }]
         });
     }
 
     async run(message, args) {
-        const { pet } = args;
+        const { query } = args;
         try {
             const { text } = await request
-                .get(`http://www.sunnyneo.com/petimagefinder.php?name=${pet}&size=5&mood=1`);
+                .get(`http://www.sunnyneo.com/petimagefinder.php?name=${query}&size=5&mood=1`);
             const $ = cheerio.load(text);
             const link = $('textarea').first().text();
             if (!link.includes('cp'))

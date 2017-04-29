@@ -51,7 +51,7 @@ module.exports = class KickCommand extends Command {
             await member.kick();
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(message.author.tag, message.author.avatarURL)
+                .setAuthor(message.author.tag, message.author.displayAvatarURL)
                 .setColor(0xFFA500)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Kick\n**Reason:** ${reason}`);

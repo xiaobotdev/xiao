@@ -21,10 +21,10 @@ module.exports = class TriggeredCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const userAvatar = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
+        const avatarURL = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
         const blank = new Jimp(320, 371, 0xFFFFFFFF);
         let images = [];
-        images.push(Jimp.read(userAvatar));
+        images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/tF9yF62.png'));
         const [avatar, triggered] = await Promise.all(images);
         avatar.resize(320, 320);

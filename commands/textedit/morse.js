@@ -13,8 +13,8 @@ module.exports = class MorseCommand extends Command {
                 key: 'text',
                 prompt: 'What text would you like to convert to morse?',
                 type: 'string',
-                validate: content => {
-                    if (letterTrans(content, dictionary, ' ').length < 1999)
+                validate: text => {
+                    if (letterTrans(text, dictionary, ' ').length < 1999)
                         return true;
                     return 'Your message content is too long.';
                 },
