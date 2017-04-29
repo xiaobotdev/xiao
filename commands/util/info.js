@@ -22,6 +22,7 @@ module.exports = class InfoCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
+        const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const embed = new RichEmbed()
             .setColor(0x00AE86)
             .setFooter(`©2017 dragonfire535 | Version ${version} | Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!`)
@@ -36,7 +37,7 @@ module.exports = class InfoCommand extends Command {
             .addField('Source Code',
                 '[View Here](https://github.com/dragonfire535/xiaobot)', true)
             .addField('Memory Usage',
-                `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
+                `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB / ${memory.reduce((prev, val) => prev + val, 0)}MB`, true)
             .addField('Uptime',
                 moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
             .addField('Node Version',
