@@ -26,7 +26,7 @@ module.exports = class SteamCardCommand extends Command {
         const { user } = args;
         const username = message.guild ? message.guild.member(user).displayName : user.username;
         const userAvatar = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
-        const blank = new Jimp(494, 568, 0xFFFFFF);
+        const blank = new Jimp(494, 568, 0xFFFFFFFF);
         let images = [];
         images.push(Jimp.read(userAvatar));
         images.push(Jimp.read('https://i.imgur.com/JF0WwQX.png'));
