@@ -30,7 +30,7 @@ module.exports = class YearsCommand extends Command {
         images.push(Jimp.read('https://i.imgur.com/eScwGFS.png'));
         const [avatar, years] = await Promise.all(images);
         avatar.resize(200, 200);
-        years.blit(avatar, 461, 127);
+        years.composite(avatar, 461, 127);
         years.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say('An Unknown Error Occurred.');
             return message.channel.send({files: [{attachment: buff}]});

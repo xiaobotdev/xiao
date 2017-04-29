@@ -31,7 +31,7 @@ module.exports = class RIPCommand extends Command {
         images.push(Jimp.read('https://i.imgur.com/KriteWm.jpg'));
         const [avatar, gravestone] = await Promise.all(images);
         avatar.resize(200, 200);
-        gravestone.blit(avatar, 158, 51);
+        gravestone.composite(avatar, 158, 51);
         gravestone.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say('An Unknown Error Occurred.');
             return message.channel.send({files: [{attachment: buff}]});

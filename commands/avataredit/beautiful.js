@@ -30,9 +30,9 @@ module.exports = class BeautifulCommand extends Command {
         images.push(Jimp.read('https://i.imgur.com/OOQ9QwQ.jpg'));
         const [avatar, beautiful] = await Promise.all(images);
         avatar.resize(200, 200);
-        beautiful.blit(avatar, 432, 42);
+        beautiful.composite(avatar, 432, 42);
         avatar.resize(190, 190);
-        beautiful.blit(avatar, 451, 434);
+        beautiful.composite(avatar, 451, 434);
         beautiful.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say('An Unknown Error Occurred.');
             return message.channel.send({files: [{attachment: buff}]});
