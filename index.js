@@ -3,7 +3,8 @@ const client = new CommandoClient({
     commandPrefix: 'x;',
     owner: '242699360352206850',
     disableEveryone: true,
-    invite: 'https://discord.gg/fqQF8mc'
+    invite: 'https://discord.gg/fqQF8mc',
+    unknownCommandResponse: false
 });
 const path = require('path');
 const { carbon, discordBots } = require('./structures/Stats');
