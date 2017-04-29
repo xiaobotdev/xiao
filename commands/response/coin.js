@@ -16,7 +16,7 @@ module.exports = class CoinFlipCommand extends Command {
     }
 
     run(message) {
-        const coin = sides[Math.floor(Math.random() * sides.length)];
-        return message.say(`It landed on ${coin}!`);
+        const side = sides[Math.floor(Math.random() * sides.length)];
+        return message.say(`It landed on ${side}!`);
     }
 };

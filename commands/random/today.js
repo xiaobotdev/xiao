@@ -20,15 +20,15 @@ module.exports = class TodayCommand extends Command {
             const { text } = await request
                 .get('http://history.muffinlabs.com/date')
                 .buffer(true);
-            const data = JSON.parse(text);
-            const events = data.data.Events;
-            const randomNumber = Math.floor(Math.random() * events.length);
+            const parsed = JSON.parse(text);
+            const events = parsed.data.Events;
+            const random = Math.floor(Math.random() * events.length);
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
-                .setURL(data.url)
-                .setTitle(`On this day (${data.date})...`)
+                .setURL(parsed.url)
+                .setTitle(`On this day (${parsed.date})...`)
                 .setTimestamp()
-                .setDescription(`${events[randomNumber].text} (${events[randomNumber].year})`);
+                .setDescription(`${events[random].year}: ${events[random].text}`);
             return message.embed(embed);
         } catch (err) {
             return message.say('An Unknown Error Occurred.');

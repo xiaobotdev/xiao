@@ -40,7 +40,7 @@ module.exports = class WarnCommand extends Command {
         try {
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(message.author.tag, message.author.avatarURL)
+                .setAuthor(message.author.tag, message.author.displayAvatarURL)
                 .setColor(0xFFFF00)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Warn\n**Reason:** ${reason}`);

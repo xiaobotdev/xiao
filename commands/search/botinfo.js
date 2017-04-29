@@ -21,11 +21,10 @@ module.exports = class BotSearchCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
-        let { bot } = args;
-        bot = bot.id;
+        const { bot } = args;
         try {
             const { body } = await request
-                .get(`https://bots.discord.pw/api/bots/${bot}`)
+                .get(`https://bots.discord.pw/api/bots/${bot.id}`)
                 .set({
                     'Authorization': process.env.DISCORD_BOTS_KEY
                 });

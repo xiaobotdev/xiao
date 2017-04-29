@@ -10,7 +10,7 @@ module.exports = class ForecastCommand extends Command {
             memberName: 'forecast',
             description: 'Gets the seven-day forecast for a specified location.',
             args: [{
-                key: 'location',
+                key: 'query',
                 prompt: 'What location would you like to get the forecast for?',
                 type: 'string'
             }]
@@ -21,31 +21,30 @@ module.exports = class ForecastCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
-        const { location } = args;
+        const { query } = args;
         try {
             const { body } = await request
-                .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${location}")&format=json`);
-            const info = body.query.results.channel;
-            const data = info.item.forecast;
+                .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")&format=json`);
+            const forecasts = body.query.results.channel.item.forecast;
             const embed = new RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(info.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
-                .setURL(info.link)
+                .setAuthor(body.query.results.channel.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
+                .setURL(body.query.results.channel.link)
                 .setTimestamp()
-                .addField(`**${data[0].day} - ${data[0].date}:**`,
-                    `**High:** ${data[0].high}°F, **Low:** ${data[0].low}°F, **Condition:** ${data[0].text}`)
-                .addField(`**${data[1].day} - ${data[1].date}:**`,
-                    `**High:** ${data[1].high}°F, **Low:** ${data[1].low}°F, **Condition:** ${data[1].text}`)
-                .addField(`**${data[2].day} - ${data[2].date}:**`,
-                    `**High:** ${data[2].high}°F, **Low:** ${data[2].low}°F, **Condition:** ${data[2].text}`)
-                .addField(`**${data[3].day} - ${data[3].date}:**`,
-                    `**High:** ${data[3].high}°F, **Low:** ${data[3].low}°F, **Condition:** ${data[3].text}`)
-                .addField(`**${data[4].day} - ${data[4].date}:**`,
-                    `**High:** ${data[4].high}°F, **Low:** ${data[4].low}°F, **Condition:** ${data[4].text}`)
-                .addField(`**${data[5].day} - ${data[5].date}:**`,
-                    `**High:** ${data[5].high}°F, **Low:** ${data[5].low}°F, **Condition:** ${data[5].text}`)
-                .addField(`**${data[6].day} - ${data[6].date}:**`,
-                    `**High:** ${data[6].high}°F, **Low:** ${data[6].low}°F, **Condition:** ${data[6].text}`);
+                .addField(`**${forecasts[0].day} - ${forecasts[0].date}:**`,
+                    `**High:** ${forecasts[0].high}°F, **Low:** ${forecasts[0].low}°F, **Condition:** ${forecasts[0].text}`)
+                .addField(`**${forecasts[1].day} - ${forecasts[1].date}:**`,
+                    `**High:** ${forecasts[1].high}°F, **Low:** ${forecasts[1].low}°F, **Condition:** ${forecasts[1].text}`)
+                .addField(`**${forecasts[2].day} - ${forecasts[2].date}:**`,
+                    `**High:** ${forecasts[2].high}°F, **Low:** ${forecasts[2].low}°F, **Condition:** ${forecasts[2].text}`)
+                .addField(`**${forecasts[3].day} - ${forecasts[3].date}:**`,
+                    `**High:** ${forecasts[3].high}°F, **Low:** ${forecasts[3].low}°F, **Condition:** ${forecasts[3].text}`)
+                .addField(`**${forecasts[4].day} - ${forecasts[4].date}:**`,
+                    `**High:** ${forecasts[4].high}°F, **Low:** ${forecasts[4].low}°F, **Condition:** ${forecasts[4].text}`)
+                .addField(`**${forecasts[5].day} - ${forecasts[5].date}:**`,
+                    `**High:** ${forecasts[5].high}°F, **Low:** ${forecasts[5].low}°F, **Condition:** ${forecasts[5].text}`)
+                .addField(`**${forecasts[6].day} - ${forecasts[6].date}:**`,
+                    `**High:** ${forecasts[6].high}°F, **Low:** ${forecasts[6].low}°F, **Condition:** ${forecasts[6].text}`);
             return message.embed(embed);
         } catch (err) {
             return message.say('An Error Occurred. The location may not have been found.');

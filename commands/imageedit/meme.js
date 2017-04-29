@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const memecodes = require('./memecodes');
+const codes = require('./memecodes');
 
 module.exports = class MemeCommand extends Command {
     constructor(client) {
@@ -8,37 +8,37 @@ module.exports = class MemeCommand extends Command {
             group: 'imageedit',
             memberName: 'meme',
             description: 'Sends a Meme with text of your choice, and a background of your choice.',
-            details: `**Codes:** ${memecodes.join(', ')}`,
+            details: `**Codes:** ${codes.join(', ')}`,
             args: [{
                 key: 'type',
                 prompt: 'What meme type do you want to use?',
                 type: 'string',
                 validate: type => {
-                    if (memecodes.includes(type.toLowerCase()))
+                    if (codes.includes(type.toLowerCase()))
                         return true;
                     return `${type.toLowerCase()} is not a valid meme type. Use \`x;help meme\` to view a list of types.`;
                 },
-                parse: text => text.toLowerCase()
+                parse: type => type.toLowerCase()
             }, {
-                key: 'toprow',
+                key: 'top',
                 prompt: 'What should the top row of the meme to be?',
                 type: 'string',
-                validate: toprow => {
-                    if (/[a-zA-Z0-9.,!?'\s]+$/g.test(toprow) && toprow.length < 100)
+                validate: top => {
+                    if (/[a-zA-Z0-9.,!?'\s]+$/g.test(top) && top.length < 100)
                         return true;
-                    return `Please do not use special characters and keep the rows under 100 characters each, top row has ${toprow.length}.`;
+                    return `Please do not use special characters and keep the rows under 100 characters each, top row has ${top.length}.`;
                 },
-                parse: text => text.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
+                parse: top => top.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
             }, {
-                key: 'bottomrow',
+                key: 'bottom',
                 prompt: 'What should the bottom row of the meme to be?',
                 type: 'string',
-                validate: bottomrow => {
-                    if (/[a-zA-Z0-9.,!?'\s]+$/g.test(bottomrow) && bottomrow.length < 100)
+                validate: bottom => {
+                    if (/[a-zA-Z0-9.,!?'\s]+$/g.test(bottom) && bottom.length < 100)
                         return true;
-                    return `Please do not use special characters and keep the rows under 100 characters each, bottom row has ${bottomrow.length}.`;
+                    return `Please do not use special characters and keep the rows under 100 characters each, bottom row has ${bottom.length}.`;
                 },
-                parse: text => text.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
+                parse: bottom => bottom.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
             }]
         });
     }
@@ -47,8 +47,8 @@ module.exports = class MemeCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
-        const { type, toprow, bottomrow } = args;
-        return message.channel.send({files: [`https://memegen.link/${type}/${toprow}/${bottomrow}.jpg`]})
+        const { type, top, bottom } = args;
+        return message.channel.send({files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`]})
             .catch(() => message.say('An Unknown Error Occurred.'));
     }
 };

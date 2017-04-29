@@ -13,8 +13,8 @@ module.exports = class TemmieCommand extends Command {
                 key: 'text',
                 prompt: 'What text would you like to convert to Temmie speak?',
                 type: 'string',
-                validate: content => {
-                	if (wordTrans(content, dictionary).length < 1999)
+                validate: text => {
+                	if (wordTrans(text, dictionary).length < 1999)
                 		return true;
                 	return 'Your message content is too long.';
                 },

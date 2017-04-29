@@ -26,22 +26,21 @@ module.exports = class SoundCloudCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${process.env.SOUNDCLOUD_KEY}`);
-            const data = body[0];
             const embed = new RichEmbed()
                 .setColor(0xF15A22)
-                .setAuthor(data.title, 'http://icons.iconarchive.com/icons/danleech/simple/1024/soundcloud-icon.png')
-                .setURL(data.permalink_url)
-                .setThumbnail(data.artwork_url)
+                .setAuthor(body[0].title, 'http://icons.iconarchive.com/icons/danleech/simple/1024/soundcloud-icon.png')
+                .setURL(body[0].permalink_url)
+                .setThumbnail(body[0].artwork_url)
                 .addField('**Artist:**',
-                    data.user.username)
+                    body[0].user.username)
                 .addField('**Download Count:**',
-                    data.download_count, true)
+                    body[0].download_count, true)
                 .addField('**Comment Count**',
-                    data.comment_count, true)
+                    body[0].comment_count, true)
                 .addField('**Playback Count:**',
-                    data.playback_count, true)
+                    body[0].playback_count, true)
                 .addField('**Favorited Count:**',
-                    data.favoritings_count, true);
+                    body[0].favoritings_count, true);
             return message.embed(embed);
         } catch (err) {
             return message.say('An Error Occurred. The song may not have been found.');

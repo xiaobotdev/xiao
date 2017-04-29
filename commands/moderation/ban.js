@@ -54,7 +54,7 @@ module.exports = class BanCommand extends Command {
             await member.ban(7);
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(message.author.tag, message.author.avatarURL)
+                .setAuthor(message.author.tag, message.author.displayAvatarURL)
                 .setColor(0xFF0000)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);

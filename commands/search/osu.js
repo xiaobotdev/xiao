@@ -10,10 +10,10 @@ module.exports = class OsuCommand extends Command {
             memberName: 'osu',
             description: 'Searches Osu! user data.',
             args: [{
-                key: 'username',
+                key: 'query',
                 prompt: 'What osu username would you like to search for?',
                 type: 'string',
-                parse: text => encodeURIComponent(text)
+                parse: query => encodeURIComponent(query)
             }]
         });
     }
@@ -22,39 +22,38 @@ module.exports = class OsuCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
-        const { username } = args;
+        const { query } = args;
         try {
             const { body } = await request
-                .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${username}&type=string`);
-            const data = body[0];
+                .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${query}&type=string`);
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'http://vignette3.wikia.nocookie.net/osugame/images/c/c9/Logo.png/revision/latest?cb=20151219073209')
                 .setURL('https://osu.ppy.sh/')
                 .addField('**Username:**',
-                    data.username, true)
+                    body[0].username, true)
                 .addField('**ID:**',
-                    data.user_id, true)
+                    body[0].user_id, true)
                 .addField('**Level:**',
-                    data.level, true)
+                    body[0].level, true)
                 .addField('**Accuracy**',
-                    data.accuracy, true)
+                    body[0].accuracy, true)
                 .addField('**Rank:**',
-                    data.pp_rank, true)
+                    body[0].pp_rank, true)
                 .addField('**Play Count:**',
-                    data.playcount, true)
+                    body[0].playcount, true)
                 .addField('**Country:**',
-                    data.country, true)
+                    body[0].country, true)
                 .addField('**Ranked Score:**',
-                    data.ranked_score, true)
+                    body[0].ranked_score, true)
                 .addField('**Total Score:**',
-                    data.total_score, true)
+                    body[0].total_score, true)
                 .addField('**SS:**',
-                    data.count_rank_ss, true)
+                    body[0].count_rank_ss, true)
                 .addField('**S:**',
-                    data.count_rank_s, true)
+                    body[0].count_rank_s, true)
                 .addField('**A:**',
-                    data.count_rank_a, true);
+                    body[0].count_rank_a, true);
             return message.embed(embed);
         } catch (err) {
             return message.say('An Error Occurred. The user may not have been found.');

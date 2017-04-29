@@ -20,7 +20,7 @@ module.exports = class EasterEggCommand extends Command {
                         return true;
                     return 'Nope, that\'s not a valid easter egg. Try again!';
                 },
-                parse: text => text.toLowerCase()
+                parse: tag => tag.toLowerCase()
             }]
         });
     }

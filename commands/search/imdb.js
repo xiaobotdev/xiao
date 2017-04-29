@@ -10,10 +10,10 @@ module.exports = class IMDBCommand extends Command {
             memberName: 'imdb',
             description: 'Searches IMDB for a specified movie.',
             args: [{
-                key: 'movie',
+                key: 'query',
                 prompt: 'What movie or TV Show would you like to search for?',
                 type: 'string',
-                parse: text => encodeURIComponent(text)
+                parse: query => encodeURIComponent(query)
             }]
         });
     }
@@ -22,10 +22,10 @@ module.exports = class IMDBCommand extends Command {
         if (message.channel.type !== 'dm')
             if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return message.say('This Command requires the `Embed Links` Permission.');
-        const { movie } = args;
+        const { query } = args;
         try {
             const { body } = await request
-                .get(`http://www.omdbapi.com/?t=${movie}&plot=full`);
+                .get(`http://www.omdbapi.com/?t=${query}&plot=full`);
             const embed = new RichEmbed()
                 .setColor(0xDBA628)
                 .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')

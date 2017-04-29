@@ -24,16 +24,16 @@ module.exports = class BeautifulCommand extends Command {
             if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return message.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const userAvatar = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
+        const avatarURL = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
         let images = [];
-        images.push(Jimp.read(userAvatar));
+        images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/OOQ9QwQ.jpg'));
-        const [avatar, beautiful] = await Promise.all(images);
+        const [avatar, grunkle] = await Promise.all(images);
         avatar.resize(200, 200);
-        beautiful.composite(avatar, 432, 42);
+        grunkle.composite(avatar, 432, 42);
         avatar.resize(190, 190);
-        beautiful.composite(avatar, 451, 434);
-        beautiful.getBuffer(Jimp.MIME_PNG, (err, buff) => {
+        grunkle.composite(avatar, 451, 434);
+        grunkle.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return message.say('An Unknown Error Occurred.');
             return message.channel.send({files: [{attachment: buff}]});
         });
