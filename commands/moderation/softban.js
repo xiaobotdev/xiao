@@ -50,14 +50,17 @@ module.exports = class SoftbanCommand extends Command {
             } catch (err) {
                 await message.say('Failed to send DM to user.');
             }
-            await member.ban(7);
+            await member.ban({
+                days: 7,
+                reason
+            });
             await message.guild.unban(member.user);
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(message.author.tag, message.author.displayAvatarURL)
                 .setColor(0xFF4500)
                 .setTimestamp()
-                .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
+                .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Softban\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
             return message.say('An Unknown Error Occurred.');

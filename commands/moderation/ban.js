@@ -51,7 +51,10 @@ module.exports = class BanCommand extends Command {
             } catch (err) {
                 await message.say('Failed to send DM to user.');
             }
-            await member.ban(7);
+            await member.ban({
+                days: 7,
+                reason
+            });
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(message.author.tag, message.author.displayAvatarURL)
