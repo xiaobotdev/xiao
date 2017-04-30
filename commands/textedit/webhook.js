@@ -25,12 +25,12 @@ module.exports = class WebhookCommand extends Command {
         return this.client.isOwner(msg.author);
     }
 
-    async run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
-            return message.say('This Command requires the `Manage Messages` Permission.');
+    async run(msg, args) {
+        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
+            return msg.say('This Command requires the `Manage Messages` Permission.');
         const { text } = args;
         try {
-            message.delete();
+            msg.delete();
             await request
                 .post(process.env.WEBHOOK_URL)
                 .send({
@@ -38,7 +38,7 @@ module.exports = class WebhookCommand extends Command {
                 });
             return null;
         } catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

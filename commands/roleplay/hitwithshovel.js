@@ -15,8 +15,8 @@ module.exports = class HitwithShovelCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *hits* ${thing} *with a shovel*`);
+        return msg.say(`${msg.author} *hits* ${thing} *with a shovel*`);
     }
 };

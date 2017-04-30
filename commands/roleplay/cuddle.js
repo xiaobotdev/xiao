@@ -15,8 +15,8 @@ module.exports = class CuddleCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *cuddles* ${thing}`);
+        return msg.say(`${msg.author} *cuddles* ${thing}`);
     }
 };

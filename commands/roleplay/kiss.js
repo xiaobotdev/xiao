@@ -15,8 +15,8 @@ module.exports = class KissCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *kisses* ${thing}`);
+        return msg.say(`${msg.author} *kisses* ${thing}`);
     }
 };

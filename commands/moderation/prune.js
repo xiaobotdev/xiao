@@ -29,20 +29,20 @@ module.exports = class PruneCommand extends Command {
         return msg.member.permissions.has('MANAGE_MESSAGES') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
     }
 
-    async run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY'))
-            return message.say('This Command requires the `Read Message History` Permission.');
-        if (!message.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
-            return message.say('This Command requires the `Manage Messages` Permission.');
+    async run(msg, args) {
+        if (!msg.channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY'))
+            return msg.say('This Command requires the `Read Message History` Permission.');
+        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
+            return msg.say('This Command requires the `Manage Messages` Permission.');
         const { count } = args;
         try {
-            const messages = await message.channel.fetchMessages({
+            const messages = await msg.channel.fetchMessages({
                 limit: count + 1
             });
-            await message.channel.bulkDelete(messages, true);
+            await msg.channel.bulkDelete(messages, true);
             return null;
         } catch (err) {
-            return message.say('There are no messages younger than two weeks that can be deleted.');
+            return msg.say('There are no messages younger than two weeks that can be deleted.');
         }
     }
 };

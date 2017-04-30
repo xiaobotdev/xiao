@@ -15,8 +15,8 @@ module.exports = class DivorceCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *divorces* ${thing}`);
+        return msg.say(`${msg.author} *divorces* ${thing}`);
     }
 };

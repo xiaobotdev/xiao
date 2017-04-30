@@ -15,8 +15,8 @@ module.exports = class CoinFlipCommand extends Command {
         });
     }
 
-    run(message) {
+    run(msg) {
         const side = sides[Math.floor(Math.random() * sides.length)];
-        return message.say(`It landed on ${side}!`);
+        return msg.say(`It landed on ${side}!`);
     }
 };

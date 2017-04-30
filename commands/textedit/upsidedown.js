@@ -21,8 +21,8 @@ module.exports = class UpsideDownCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { text } = args;
-        return message.say(text);
+        return msg.say(text);
     }
 };

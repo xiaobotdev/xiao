@@ -15,10 +15,10 @@ module.exports = class WouldYouRatherCommand extends Command {
         });
     }
 
-    async run(message) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { body } = await request
                 .get('http://www.rrrather.com/botapi');
@@ -27,9 +27,9 @@ module.exports = class WouldYouRatherCommand extends Command {
                 .setURL(body.link)
                 .setColor(0x9797FF)
                 .setDescription(`${body.choicea} OR ${body.choiceb}?`);
-            return message.embed(embed);
+            return msg.embed(embed);
         } catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

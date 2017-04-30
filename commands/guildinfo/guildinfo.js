@@ -19,26 +19,26 @@ module.exports = class GuildInfoCommand extends Command {
         });
     }
 
-    run(message) {
-        if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-            return message.say('This Command requires the `Embed Links` Permission.');
+    run(msg) {
+        if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+            return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setColor(0x00AE86)
-            .setThumbnail(message.guild.iconURL)
+            .setThumbnail(msg.guild.iconURL)
             .addField('**Name:**',
-                message.guild.name, true)
+                msg.guild.name, true)
             .addField('**ID:**',
-                message.guild.id, true)
+                msg.guild.id, true)
             .addField('**Created On:**',
-                `${message.guild.createdAt}\n${moment.duration(Date.now() - message.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                `${msg.guild.createdAt}\n${moment.duration(Date.now() - msg.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Default Channel:**',
-                message.guild.defaultChannel, true)
+                msg.guild.defaultChannel, true)
             .addField('**Region:**',
-                message.guild.region, true)
+                msg.guild.region, true)
             .addField('**Owner:**',
-                message.guild.owner.user.tag, true)
+                msg.guild.owner.user.tag, true)
             .addField('**Users:**',
-                message.guild.memberCount, true);
-        return message.embed(embed);
+                msg.guild.memberCount, true);
+        return msg.embed(embed);
     }
 };

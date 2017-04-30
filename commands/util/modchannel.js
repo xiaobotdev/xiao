@@ -20,9 +20,9 @@ module.exports = class ModChannelCommand extends Command {
         return msg.member.permissions.has('ADMINISTRATOR');
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { channel } = args;
-        message.guild.settings.set('modLog', channel.name);
-        return message.say(`Mod Log channel set to ${channel.name}.`);
+        msg.guild.settings.set('modLog', channel.name);
+        return msg.say(`Mod Log channel set to ${channel.name}.`);
     }
 };

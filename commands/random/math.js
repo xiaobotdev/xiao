@@ -16,14 +16,14 @@ module.exports = class MathCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { expression } = args;
         try {
             const solved = math.eval(expression);
-            return message.say(solved)
-                .catch(() => message.say('Invalid statement.'));
+            return msg.say(solved)
+                .catch(() => msg.say('Invalid statement.'));
         } catch (err) {
-            return message.say('Invalid statement.');
+            return msg.say('Invalid statement.');
         }
     }
 };

@@ -15,8 +15,8 @@ module.exports = class PatCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *pats* ${thing}`);
+        return msg.say(`${msg.author} *pats* ${thing}`);
     }
 };

@@ -23,8 +23,8 @@ module.exports = class MorseCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { text } = args;
-        return message.say(text);
+        return msg.say(text);
     }
 };

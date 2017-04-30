@@ -10,10 +10,10 @@ module.exports = class SpamCommand extends Command {
         });
     }
 
-    run(message) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return message.say('This Command requires the `Attach Files` Permission.');
-        return message.channel.send({files: ['https://i.imgur.com/2JFu5xE.jpg']});
+    run(msg) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+                return msg.say('This Command requires the `Attach Files` Permission.');
+        return msg.channel.send({files: ['https://i.imgur.com/2JFu5xE.jpg']});
     }
 };

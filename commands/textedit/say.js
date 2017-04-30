@@ -21,11 +21,11 @@ module.exports = class SayCommand extends Command {
         });
     }
 
-    run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
-            return message.say('This Command requires the `Manage Messages` Permission.');
+    run(msg, args) {
+        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
+            return msg.say('This Command requires the `Manage Messages` Permission.');
         const { text } = args;
-        message.delete();
-        return message.say(`\u180E${text}`);
+        msg.delete();
+        return msg.say(`\u180E${text}`);
     }
 };

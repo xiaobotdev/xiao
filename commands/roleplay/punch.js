@@ -15,8 +15,8 @@ module.exports = class PunchCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *punches* ${thing}`);
+        return msg.say(`${msg.author} *punches* ${thing}`);
     }
 };

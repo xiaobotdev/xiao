@@ -15,8 +15,8 @@ module.exports = class FistBumpCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *fist-bumps* ${thing} *badalalala*`);
+        return msg.say(`${msg.author} *fist-bumps* ${thing} *badalalala*`);
     }
 };

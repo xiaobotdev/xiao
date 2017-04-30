@@ -15,8 +15,8 @@ module.exports = class FalconPunchCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *falcon punches* ${thing}`);
+        return msg.say(`${msg.author} *falcon punches* ${thing}`);
     }
 };

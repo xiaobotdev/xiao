@@ -10,8 +10,8 @@ module.exports = class InviteCommand extends Command {
         });
     }
 
-    async run(message) {
+    async run(msg) {
         const invite = await this.client.generateInvite('1345846343');
-        return message.say(`Add me to your server with this link:\n${invite}\nOr, come to my server with this link:\n${this.client.options.invite}`);
+        return msg.say(`Add me to your server with this link:\n${invite}\nOr, come to my server with this link:\n${this.client.options.invite}`);
     }
 };

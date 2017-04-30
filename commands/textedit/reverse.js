@@ -16,8 +16,8 @@ module.exports = class ReverseCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { text } = args;
-        return message.say(`\u180E${text}`);
+        return msg.say(`\u180E${text}`);
     }
 };

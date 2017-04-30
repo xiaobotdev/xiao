@@ -22,13 +22,13 @@ module.exports = class ShardInfoCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { shard } = args;
         if (shard > this.client.options.shardCount - 1 || shard < 0)
-            return message.say('The Shard ID is not valid.');
+            return msg.say('The Shard ID is not valid.');
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
@@ -41,6 +41,6 @@ module.exports = class ShardInfoCommand extends Command {
                 `${memory[shard]}MB`, true)
             .addField('Uptime',
                 moment.duration(uptime[shard]).format('d[d]h[h]m[m]s[s]'), true);
-        return message.embed(embed);
+        return msg.embed(embed);
     }
 };

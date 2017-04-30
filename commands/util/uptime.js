@@ -12,7 +12,7 @@ module.exports = class UptimeCommand extends Command {
         });
     }
 
-    run(message) {
-        return message.say(`I've been active on this shard for: **${moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]')}**!`);
+    run(msg) {
+        return msg.say(`I've been active on this shard for: **${moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]')}**!`);
     }
 };

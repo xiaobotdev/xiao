@@ -12,10 +12,10 @@ module.exports = class TodayCommand extends Command {
         });
     }
 
-    async run(message) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { text } = await request
                 .get('http://history.muffinlabs.com/date')
@@ -29,9 +29,9 @@ module.exports = class TodayCommand extends Command {
                 .setTitle(`On this day (${parsed.date})...`)
                 .setTimestamp()
                 .setDescription(`${events[random].year}: ${events[random].text}`);
-            return message.embed(embed);
+            return msg.embed(embed);
         } catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

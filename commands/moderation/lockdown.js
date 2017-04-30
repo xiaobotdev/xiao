@@ -26,27 +26,27 @@ module.exports = class LockdownCommand extends Command {
         return msg.member.permissions.has('ADMINISTRATOR');
     }
 
-    async run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).has('ADMINISTRATOR'))
-            return message.say('This Command requires the `Administrator` Permission.');
+    async run(msg, args) {
+        if (!msg.channel.permissionsFor(this.client.user).has('ADMINISTRATOR'))
+            return msg.say('This Command requires the `Administrator` Permission.');
         const { type } = args;
         if (type === 'start') {
             try {
-                await message.channel.overwritePermissions(message.guild.defaultRole, {
+                await msg.channel.overwritePermissions(msg.guild.defaultRole, {
                     SEND_MESSAGES: false
                 });
-                return message.say('Lockdown Started, users without Administrator can no longer post messages. Please use `;lockdown stop` to end the lockdown.');
+                return msg.say('Lockdown Started, users without Administrator can no longer post messages. Please use `;lockdown stop` to end the lockdown.');
             } catch (err) {
-                return message.say('Something went wrong!');
+                return msg.say('Something went wrong!');
             }
         } else if (type === 'stop') {
             try {
-                await message.channel.overwritePermissions(message.guild.defaultRole, {
+                await msg.channel.overwritePermissions(msg.guild.defaultRole, {
                     SEND_MESSAGES: true
                 });
-                return message.say('Lockdown Ended, users without Administrator can now post messages.');
+                return msg.say('Lockdown Ended, users without Administrator can now post messages.');
             } catch (err) {
-                return message.say('An Unknown Error Occurred.');
+                return msg.say('An Unknown Error Occurred.');
             }
         }
     }

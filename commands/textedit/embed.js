@@ -16,16 +16,16 @@ module.exports = class EmbedCommand extends Command {
         });
     }
 
-    run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { text } = args;
         const embed = new RichEmbed()
-            .setAuthor(message.author.username, message.author.displayAvatarURL)
+            .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
             .setColor(0x00AE86)
             .setTimestamp()
             .setDescription(text);
-        return message.embed(embed);
+        return msg.embed(embed);
     }
 };

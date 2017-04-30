@@ -34,36 +34,36 @@ module.exports = class BanCommand extends Command {
         return msg.member.permissions.has('BAN_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
     }
 
-    async run(message, args) {
-        if (!message.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
-            return message.say('This Command requires the `Ban Members` Permission.');
-        const modlogs = message.guild.channels.find('name', message.guild.settings.get('modLog', 'mod_logs'));
+    async run(msg, args) {
+        if (!msg.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
+            return msg.say('This Command requires the `Ban Members` Permission.');
+        const modlogs = msg.guild.channels.find('name', msg.guild.settings.get('modLog', 'mod_logs'));
         if (!modlogs)
-            return message.say('This Command requires a channel named `mod_logs` or one custom set with the `modchannel` command.');
+            return msg.say('This Command requires a channel named `mod_logs` or one custom set with the `modchannel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
-            return message.say('This Command requires the `Embed Links` Permission.');
+            return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
         if (!member.bannable)
-            return message.say('This member is not bannable. Perhaps they have a higher role than me?');
+            return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
         try {
             try {
-                await member.send(`You were banned from ${message.guild.name}!\nReason: ${reason}.`);
+                await member.send(`You were banned from ${msg.guild.name}!\nReason: ${reason}.`);
             } catch (err) {
-                await message.say('Failed to send DM to user.');
+                await msg.say('Failed to send DM to user.');
             }
             await member.ban({
                 days: 7,
                 reason
             });
-            await message.say(':ok_hand:');
+            await msg.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(message.author.tag, message.author.displayAvatarURL)
+                .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0xFF0000)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

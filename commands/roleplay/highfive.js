@@ -15,8 +15,8 @@ module.exports = class HighFivesCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *high-fives* ${thing}`);
+        return msg.say(`${msg.author} *high-fives* ${thing}`);
     }
 };

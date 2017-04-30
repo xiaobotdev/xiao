@@ -31,12 +31,12 @@ module.exports = class StrawpollCommand extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(msg, args) {
         const { title, choices } = args;
         if (choices.length < 2)
-            return message.say('You provided less than two choices.');
+            return msg.say('You provided less than two choices.');
         if (choices.length > 31)
-            return message.say('You provided more than thirty choices.');
+            return msg.say('You provided more than thirty choices.');
         try {
             const { body } = await request
                 .post('https://strawpoll.me/api/v2/polls')
@@ -44,10 +44,10 @@ module.exports = class StrawpollCommand extends Command {
                     title: title,
                     options: choices
                 });
-            return message.say(`${body.title}\nhttp://strawpoll.me/${body.id}`);
+            return msg.say(`${body.title}\nhttp://strawpoll.me/${body.id}`);
         }
         catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

@@ -11,7 +11,7 @@ module.exports = class RouletteCommand extends Command {
         });
     }
 
-    run(message) {
-        return message.say(`I choose ${message.guild.members.random().displayName}!`);
+    run(msg) {
+        return msg.say(`I choose ${msg.guild.members.random().displayName}!`);
     }
 };

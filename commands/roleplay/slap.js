@@ -15,8 +15,8 @@ module.exports = class SlapCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *slaps* ${thing}`);
+        return msg.say(`${msg.author} *slaps* ${thing}`);
     }
 };

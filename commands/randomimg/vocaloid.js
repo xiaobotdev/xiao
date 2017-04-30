@@ -11,8 +11,8 @@ module.exports = class VocaloidCommand extends Command {
         });
     }
 
-    run(message) {
+    run(msg) {
         const song = songs[Math.floor(Math.random() * songs.length)];
-        return message.say(song);
+        return msg.say(song);
     }
 };

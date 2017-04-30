@@ -1,10 +1,9 @@
 const { Command } = require('discord.js-commando');
 const binary = (str) => {
-    const pad = '00000000';
     return unescape(encodeURIComponent(str))
         .split('').map(str => {
             const binary = str.charCodeAt(0).toString(2);
-            return `${pad.slice(binary.length)}${binary}`;
+            return `${'00000000'.slice(binary.length)}${binary}`;
         }).join('');
 };
 
@@ -29,8 +28,8 @@ module.exports = class BinaryCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { text } = args;
-        return message.say(text);
+        return msg.say(text);
     }
 };

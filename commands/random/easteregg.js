@@ -25,8 +25,8 @@ module.exports = class EasterEggCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { tag } = args;
-        return message.say(eastereggs[tag]);
+        return msg.say(eastereggs[tag]);
     }
 };

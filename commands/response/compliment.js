@@ -16,9 +16,9 @@ module.exports = class ComplimentCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
         const compliment = compliments[Math.floor(Math.random() * compliments.length)];
-        return message.say(`${thing}, ${compliment}`);
+        return msg.say(`${thing}, ${compliment}`);
     }
 };

@@ -19,10 +19,10 @@ module.exports = class YearsCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES')) 
-                return message.say('This Command requires the `Attach Files` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES')) 
+                return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
         let images = [];
@@ -32,8 +32,8 @@ module.exports = class YearsCommand extends Command {
         avatar.resize(200, 200);
         az.composite(avatar, 461, 127);
         az.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return message.say('An Unknown Error Occurred.');
-            return message.channel.send({files: [{attachment: buff}]});
+            if (err) return msg.say('An Unknown Error Occurred.');
+            return msg.channel.send({files: [{attachment: buff}]});
         });
     }
 };

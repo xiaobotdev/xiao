@@ -15,8 +15,8 @@ module.exports = class HugCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *hugs* ${thing}`);
+        return msg.say(`${msg.author} *hugs* ${thing}`);
     }
 };

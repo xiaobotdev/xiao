@@ -18,10 +18,10 @@ module.exports = class YouTubeCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
@@ -33,9 +33,9 @@ module.exports = class YouTubeCommand extends Command {
                 .setAuthor(`YouTube - ${body.items[0].snippet.channelTitle}`, 'https://cdn3.iconfinder.com/data/icons/social-icons-5/607/YouTube_Play.png')
                 .setURL(`https://www.youtube.com/watch?v=${body.items[0].id.videoId}`)
                 .setThumbnail(body.items[0].snippet.thumbnails.default.url);
-            return message.embed(embed);
+            return msg.embed(embed);
         } catch (err) {
-            return message.say('An Error Occurred. The video may not have been found.');
+            return msg.say('An Error Occurred. The video may not have been found.');
         }
     }
 };

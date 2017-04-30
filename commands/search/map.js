@@ -26,17 +26,17 @@ module.exports = class MapCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return message.say('This Command requires the `Attach Files` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+                return msg.say('This Command requires the `Attach Files` Permission.');
         const { zoom, query } = args;
         try {
             const { body } = await request
                 .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
-            return message.channel.send({files: [{attachment: body}]});
+            return msg.channel.send({files: [{attachment: body}]});
         } catch (err) {
-            return message.say('An Error Occurred. The location may not have been found.');
+            return msg.say('An Error Occurred. The location may not have been found.');
         }
     }
 };

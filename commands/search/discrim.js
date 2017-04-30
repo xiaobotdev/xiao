@@ -25,15 +25,15 @@ module.exports = class DiscrimCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { discrim } = args;
         const users = await this.client.users.filter(u => u.discriminator === discrim).map(u => u.username).sort();
         const embed = new RichEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${discrim}`)
             .setDescription(users.join(', '));
-        return message.embed(embed);
+        return msg.embed(embed);
     }
 };

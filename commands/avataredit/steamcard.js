@@ -19,12 +19,12 @@ module.exports = class SteamCardCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return message.say('This Command requires the `Attach Files` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+                return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const username = message.guild ? message.guild.member(user).displayName : user.username;
+        const username = msg.guild ? msg.guild.member(user).displayName : user.username;
         const avatarURL = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
         const blank = new Jimp(494, 568, 0xFFFFFFFF);
         let images = [];
@@ -37,8 +37,8 @@ module.exports = class SteamCardCommand extends Command {
         blank.composite(card, 0, 0);
         blank.print(font, 38, 20, username);
         blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return message.say('An Unknown Error Occurred.');
-            return message.channel.send({files: [{attachment: buff}]});
+            if (err) return msg.say('An Unknown Error Occurred.');
+            return msg.channel.send({files: [{attachment: buff}]});
         });
     }
 };
