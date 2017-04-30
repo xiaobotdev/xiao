@@ -11,12 +11,12 @@ module.exports = class SlotsCommand extends Command {
         });
     }
 
-    run(message) {
+    run(msg) {
         const slotOne = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
         if (slotOne === slotTwo && slotOne === slotThree)
-            return message.say(`${slotOne}|${slotTwo}|${slotThree}\nWow! You won! Great job... er... luck!`);
-        return message.say(`${slotOne}|${slotTwo}|${slotThree}\nAww... You lost... Guess it's just bad luck, huh?`);
+            return msg.say(`${slotOne}|${slotTwo}|${slotThree}\nWow! You won! Great job... er... luck!`);
+        return msg.say(`${slotOne}|${slotTwo}|${slotThree}\nAww... You lost... Guess it's just bad luck, huh?`);
     }
 };

@@ -15,8 +15,8 @@ module.exports = class PokeCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *pokes* ${thing}`);
+        return msg.say(`${msg.author} *pokes* ${thing}`);
     }
 };

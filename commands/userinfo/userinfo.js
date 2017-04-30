@@ -24,12 +24,12 @@ module.exports = class UserInfoCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { user } = args;
-        const member = await message.guild.fetchMember(user);
+        const member = await msg.guild.fetchMember(user);
         let stat;
         let color;
         switch (user.presence.status) {
@@ -65,6 +65,6 @@ module.exports = class UserInfoCommand extends Command {
                 stat, true)
             .addField('**Playing:**',
                 user.presence.game ? user.presence.game.name : 'None', true);
-        return message.embed(embed);
+        return msg.embed(embed);
     }
 };

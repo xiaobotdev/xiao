@@ -11,16 +11,16 @@ module.exports = class DogCommand extends Command {
         });
     }
 
-    async run(message) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return message.say('This Command requires the `Attach Files` Permission.');
+    async run(msg) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+                return msg.say('This Command requires the `Attach Files` Permission.');
         try {
             const { body } = await request
                 .get('https://random.dog/woof.json');
-            return message.channel.send({files: [body.url]});
+            return msg.channel.send({files: [body.url]});
         } catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

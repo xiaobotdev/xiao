@@ -10,7 +10,7 @@ module.exports = class LennyCommand extends Command {
         });
     }
 
-    run(message) {
-        return message.say('( ͡° ͜ʖ ͡°)');
+    run(msg) {
+        return msg.say('( ͡° ͜ʖ ͡°)');
     }
 };

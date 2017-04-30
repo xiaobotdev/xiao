@@ -24,10 +24,10 @@ module.exports = class MathGameCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
         let value;
@@ -55,18 +55,18 @@ module.exports = class MathGameCommand extends Command {
         const embed = new RichEmbed()
             .setTitle('You have **10** seconds to answer:')
             .setDescription(expression);
-        await message.embed(embed);
+        await msg.embed(embed);
         try {
-            const collected = await message.channel.awaitMessages(response => response.author.id === message.author.id, {
+            const collected = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
                 max: 1,
                 time: 10000,
                 errors: ['time']
             });
             if (collected.first().content !== solved)
-                return message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
-            return message.say(`Good Job! You won! ${solved} is the correct answer!`);
+                return msg.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+            return msg.say(`Good Job! You won! ${solved} is the correct answer!`);
         } catch (err) {
-            return message.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+            return msg.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
         }
     }
 };

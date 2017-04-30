@@ -30,23 +30,23 @@ module.exports = class WarnCommand extends Command {
         return msg.member.permissions.has('KICK_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
     }
 
-    async run(message, args) {
-        const modlogs = message.guild.channels.find('name', message.guild.settings.get('modLog', 'mod_logs'));
+    async run(msg, args) {
+        const modlogs = msg.guild.channels.find('name', msg.guild.settings.get('modLog', 'mod_logs'));
         if (!modlogs)
-            return message.say('This Command requires a channel named `mod_logs` or one custom set with the `modchannel` command.');
+            return msg.say('This Command requires a channel named `mod_logs` or one custom set with the `modchannel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
-            return message.say('This Command requires the `Embed Links` Permission.');
+            return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
         try {
-            await message.say(':ok_hand:');
+            await msg.say(':ok_hand:');
             const embed = new RichEmbed()
-                .setAuthor(message.author.tag, message.author.displayAvatarURL)
+                .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0xFFFF00)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Warn\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

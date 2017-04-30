@@ -22,15 +22,15 @@ module.exports = class RandomNameCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { gender } = args;
         const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
         if (gender === 'male') {
             const name = maleNames[Math.floor(Math.random() * maleNames.length)];
-            return message.say(`${name} ${lastName}`);
+            return msg.say(`${name} ${lastName}`);
         } else if (gender === 'female') {
             const name = femaleNames[Math.floor(Math.random() * femaleNames.length)];
-            return message.say(`${name} ${lastName}`);
+            return msg.say(`${name} ${lastName}`);
         }
     }
 };

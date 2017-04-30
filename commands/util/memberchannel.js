@@ -20,9 +20,9 @@ module.exports = class MemberLogCommand extends Command {
         return msg.member.permissions.has('ADMINISTRATOR');
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { channel } = args;
-        message.guild.settings.set('memberLog', channel.name);
-        return message.say(`Member Log channel set to ${channel.name}.`);
+        msg.guild.settings.set('memberLog', channel.name);
+        return msg.say(`Member Log channel set to ${channel.name}.`);
     }
 };

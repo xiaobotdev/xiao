@@ -11,8 +11,8 @@ module.exports = class FishyCommand extends Command {
         });
     }
 
-    run(message) {
+    run(msg) {
         const fish = fishes[Math.floor(Math.random() * fishes.length)];
-        return message.say(`You caught a: ${fish}`);
+        return msg.say(`You caught a: ${fish}`);
     }
 };

@@ -18,7 +18,7 @@ module.exports = class NeopetCommand extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(msg, args) {
         const { query } = args;
         try {
             const { text } = await request
@@ -26,10 +26,10 @@ module.exports = class NeopetCommand extends Command {
             const $ = cheerio.load(text);
             const link = $('textarea').first().text();
             if (!link.includes('cp'))
-                return message.say('This is not a valid pet name.');
-            return message.say(link);
+                return msg.say('This is not a valid pet name.');
+            return msg.say(link);
         } catch (err) {
-            return message.say('An Unknown Error Occurred.');
+            return msg.say('An Unknown Error Occurred.');
         }
     }
 };

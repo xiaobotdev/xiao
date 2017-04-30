@@ -18,10 +18,10 @@ module.exports = class WikipediaCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
@@ -31,10 +31,10 @@ module.exports = class WikipediaCommand extends Command {
                 .setTitle(body.query.pages[0].title)
                 .setURL(`https://en.wikipedia.org/wiki/${query}`)
                 .setAuthor('Wikipedia', 'https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png')
-                .setDescription(body.query.pages[0].extract.substr(0, 2000).split('\n').join('\n\n'));
-            return message.embed(embed);
+                .setDescription(body.query.pages[0].extract.substr(0, 2000).replace(/[\n]/g, '\n\n'));
+            return msg.embed(embed);
         } catch (err) {
-            return message.say('An Error Occurred. The page may not have been found.');
+            return msg.say('An Error Occurred. The page may not have been found.');
         }
     }
 };

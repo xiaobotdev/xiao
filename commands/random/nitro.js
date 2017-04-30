@@ -11,16 +11,16 @@ module.exports = class NitroCommand extends Command {
         });
     }
 
-    run(message) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    run(msg) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setAuthor('Discord Nitro')
             .setThumbnail('https://pbs.twimg.com/profile_images/814184180649197568/y2eZcVMq.jpg')
             .setColor(0x748BD9)
             .setURL('https://discordapp.com/nitro')
             .setDescription('This Message can only be viewed by members with Discord Nitro.\n[More Information](https://discordapp.com/nitro)');
-        return message.embed(embed);
+        return msg.embed(embed);
     }
 };

@@ -14,8 +14,8 @@ module.exports = class QuantumCoinCommand extends Command {
         });
     }
 
-    run(message) {
+    run(msg) {
         const side = sides[Math.floor(Math.random() * sides.length)];
-        return message.say(`It landed ${side}.`);
+        return msg.say(`It landed ${side}.`);
     }
 };

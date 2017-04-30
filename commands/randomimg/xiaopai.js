@@ -14,11 +14,11 @@ module.exports = class XiaoCommand extends Command {
         });
     }
 
-    run(message) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return message.say('This Command requires the `Attach Files` Permission.');
+    run(msg) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+                return msg.say('This Command requires the `Attach Files` Permission.');
         const xiao = xiaos[Math.floor(Math.random() * xiaos.length)];
-        return message.channel.send({files: [xiao]});
+        return msg.channel.send({files: [xiao]});
     }
 };

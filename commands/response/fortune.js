@@ -11,8 +11,8 @@ module.exports = class FortuneCookieCommand extends Command {
         });
     }
 
-    run(message) {
+    run(msg) {
         const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-        return message.say(fortune);
+        return msg.say(fortune);
     }
 };

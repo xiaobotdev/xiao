@@ -15,8 +15,8 @@ module.exports = class AvatarCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { user } = args;
-        return message.say(user.displayAvatarURL);
+        return msg.say(user.displayAvatarURL);
     }
 };

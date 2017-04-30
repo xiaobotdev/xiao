@@ -15,8 +15,8 @@ module.exports = class EatCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *eats* ${thing}`);
+        return msg.say(`${msg.author} *eats* ${thing}`);
     }
 };

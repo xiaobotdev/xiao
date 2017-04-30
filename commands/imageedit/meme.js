@@ -43,12 +43,12 @@ module.exports = class MemeCommand extends Command {
         });
     }
 
-    run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return message.say('This Command requires the `Attach Files` Permission.');
+    run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+                return msg.say('This Command requires the `Attach Files` Permission.');
         const { type, top, bottom } = args;
-        return message.channel.send({files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`]})
-            .catch(() => message.say('An Unknown Error Occurred.'));
+        return msg.channel.send({files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`]})
+            .catch(() => msg.say('An Unknown Error Occurred.'));
     }
 };

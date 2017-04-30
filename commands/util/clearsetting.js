@@ -25,9 +25,9 @@ module.exports = class ClearSettingCommand extends Command {
         return msg.member.permissions.has('ADMINISTRATOR');
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { setting } = args;
-        message.guild.settings.remove(setting);
-        return message.say(`${setting} has been removed from your guild settings.`);
+        msg.guild.settings.remove(setting);
+        return msg.say(`${setting} has been removed from your guild settings.`);
     }
 };

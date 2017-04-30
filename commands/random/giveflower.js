@@ -10,7 +10,7 @@ module.exports = class GiveFlowerCommand extends Command {
         });
     }
 
-    run(message) {
-        return message.say('Ooh, what a pretty flower. What, I may have it? Thanks! I like flowers, yes? ♪');
+    run(msg) {
+        return msg.say('Ooh, what a pretty flower. What, I may have it? Thanks! I like flowers, yes? ♪');
     }
 };

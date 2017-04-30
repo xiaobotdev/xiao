@@ -11,8 +11,8 @@ module.exports = class EmojiCommand extends Command {
         });
     }
 
-    run(message) {
-        return message.say(message.guild.emojis.map(e => e).join(''))
-            .catch(() => message.say('There was an error sending the emoji. Perhaps you have no custom emoji?'));
+    run(msg) {
+        return msg.say(msg.guild.emojis.map(e => e).join(''))
+            .catch(() => msg.say('There was an error sending the emoji. Perhaps you have no custom emoji?'));
     }
 };

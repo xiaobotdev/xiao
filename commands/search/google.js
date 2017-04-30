@@ -19,9 +19,9 @@ module.exports = class GoogleCommand extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(msg, args) {
         const { query } = args;
-        const msg = await message.say('Searching...');
+        const message = await msg.say('Searching...');
         try {
             const { text } = await request
                 .get(`https://www.google.com/search?q=${query}`);
@@ -29,9 +29,9 @@ module.exports = class GoogleCommand extends Command {
             let href = $('.r').first().find('a').first().attr('href');
             if (!href) throw new Error('No Results');
             href = querystring.parse(href.replace('/url?', ''));
-            return msg.edit(href.q);
+            return message.edit(href.q);
         } catch (err) {
-            return msg.edit('No Results Found.');
+            return message.edit('No Results Found.');
         }
     }
 };

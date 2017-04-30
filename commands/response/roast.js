@@ -16,9 +16,9 @@ module.exports = class RoastCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
         const roast = roasts[Math.floor(Math.random() * roasts.length)];
-        return message.say(`${thing}, ${roast}`);
+        return msg.say(`${thing}, ${roast}`);
     }
 };

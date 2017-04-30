@@ -17,10 +17,10 @@ module.exports = class BotSearchCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { bot } = args;
         try {
             const { body } = await request
@@ -40,9 +40,9 @@ module.exports = class BotSearchCommand extends Command {
                     `[Here](${body.invite_url})`, true)
                 .addField('**Prefix:**',
                     body.prefix, true);
-            return message.embed(embed);
+            return msg.embed(embed);
         } catch (err) {
-            return message.say('An Error Occurred. The bot may not have been found.');
+            return msg.say('An Error Occurred. The bot may not have been found.');
         }
     }
 };

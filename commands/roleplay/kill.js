@@ -15,8 +15,8 @@ module.exports = class KillCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *kills* ${thing}`);
+        return msg.say(`${msg.author} *kills* ${thing}`);
     }
 };

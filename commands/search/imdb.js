@@ -18,10 +18,10 @@ module.exports = class IMDBCommand extends Command {
         });
     }
 
-    async run(message, args) {
-        if (message.channel.type !== 'dm')
-            if (!message.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return message.say('This Command requires the `Embed Links` Permission.');
+    async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
@@ -46,9 +46,9 @@ module.exports = class IMDBCommand extends Command {
                     body.Writer)
                 .addField('**Actors:**',
                     body.Actors);
-            return message.embed(embed);
+            return msg.embed(embed);
         } catch (err) {
-            return message.say('An Error Occurred. The film may not have been found.');
+            return msg.say('An Error Occurred. The film may not have been found.');
         }
     }
 };

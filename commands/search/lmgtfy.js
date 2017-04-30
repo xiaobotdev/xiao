@@ -16,8 +16,8 @@ module.exports = class LMGTFYCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { query } = args;
-        return message.say(`http://lmgtfy.com/?iie=1&q=${query}`);
+        return msg.say(`http://lmgtfy.com/?iie=1&q=${query}`);
     }
 };

@@ -20,9 +20,9 @@ module.exports = class StaffRoleCommand extends Command {
         return msg.member.permissions.has('ADMINISTRATOR');
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { role } = args;
-        message.guild.settings.set('staffRole', role.name);
-        return message.say(`Server Staff role set to ${role.name}.`);
+        msg.guild.settings.set('staffRole', role.name);
+        return msg.say(`Server Staff role set to ${role.name}.`);
     }
 };

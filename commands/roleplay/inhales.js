@@ -15,8 +15,8 @@ module.exports = class InhaleCommand extends Command {
         });
     }
 
-    run(message, args) {
+    run(msg, args) {
         const { thing } = args;
-        return message.say(`${message.author} *inhales* ${thing} *but gained no ability...*`);
+        return msg.say(`${msg.author} *inhales* ${thing} *but gained no ability...*`);
     }
 };
