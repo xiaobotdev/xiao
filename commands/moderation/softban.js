@@ -1,17 +1,17 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 
-module.exports = class KickCommand extends Command {
+module.exports = class SoftbanCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'kick',
+            name: 'softban',
             group: 'moderation',
-            memberName: 'kick',
-            description: 'Kicks a user and logs the kick to the mod_logs.',
+            memberName: 'softban',
+            description: 'Kicks a user and deletes their messages, and logs the softban to the mod_logs.',
             guildOnly: true,
             args: [{
                 key: 'member',
-                prompt: 'What member do you want to kick?',
+                prompt: 'What member do you want to softban?',
                 type: 'member'
             }, {
                 key: 'reason',
@@ -32,6 +32,8 @@ module.exports = class KickCommand extends Command {
     }
 
     async run(message, args) {
+        if (!message.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
+            return message.say('This Command requires the `Ban Members` Permission.');
         if (!message.channel.permissionsFor(this.client.user).has('KICK_MEMBERS'))
             return message.say('This Command requires the `Kick Members` Permission.');
         const modlogs = message.guild.channels.find('name', message.guild.settings.get('modLog', 'mod_logs'));
@@ -40,21 +42,22 @@ module.exports = class KickCommand extends Command {
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return message.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
-        if (!member.kickable)
-            return message.say('This member is not kickable. Perhaps they have a higher role than me?');
+        if (!member.bannable)
+            return message.say('This member is not bannable. Perhaps they have a higher role than me?');
         try {
             try {
-                await member.send(`You were kicked from ${message.guild.name}!\nReason: ${reason}.`);
+                await member.send(`You were softbanned from ${message.guild.name}!\nReason: ${reason}.`);
             } catch (err) {
-                await message.say('Failed to send DM.');
+                await message.say('Failed to send DM to user.');
             }
-            await member.kick();
+            await member.ban(7);
+            await message.guild.unban(member.user);
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(message.author.tag, message.author.displayAvatarURL)
-                .setColor(0xFFA500)
+                .setColor(0xFF0000)
                 .setTimestamp()
-                .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Kick\n**Reason:** ${reason}`);
+                .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
             return modlogs.send({embed});
         } catch (err) {
             return message.say('An Unknown Error Occurred.');

@@ -35,7 +35,7 @@ module.exports = class UnbanCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.permissions.has('BAN_MEMBERS');
+        return msg.member.permissions.has('BAN_MEMBERS') || msg.member.roles.exists('name', 'Server Staff');
     }
 
     async run(message, args) {
@@ -50,7 +50,7 @@ module.exports = class UnbanCommand extends Command {
         const bans = await message.guild.fetchBans();
         if (!bans.has(id))
             return message.say('This ID is not in the Guild Banlist.');
-        const member = await bans.get(id);
+        const member = bans.get(id);
         try {
             await message.guild.unban(member);
             await message.say(':ok_hand:');
