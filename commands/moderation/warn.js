@@ -27,7 +27,7 @@ module.exports = class WarnCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.permissions.has('KICK_MEMBERS') || msg.member.roles.exists('name', 'Server Staff');
+        return msg.member.permissions.has('KICK_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole'));
     }
 
     async run(message, args) {
