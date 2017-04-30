@@ -55,7 +55,7 @@ module.exports = class SoftbanCommand extends Command {
             await message.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(message.author.tag, message.author.displayAvatarURL)
-                .setColor(0xFF0000)
+                .setColor(0xFF4500)
                 .setTimestamp()
                 .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
             return modlogs.send({embed});
