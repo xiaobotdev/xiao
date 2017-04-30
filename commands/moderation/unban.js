@@ -35,7 +35,7 @@ module.exports = class UnbanCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.permissions.has('BAN_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole'));
+        return msg.member.permissions.has('BAN_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
     }
 
     async run(message, args) {
