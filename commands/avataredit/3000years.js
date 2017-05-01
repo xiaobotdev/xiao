@@ -24,7 +24,8 @@ module.exports = class YearsCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES')) 
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const avatarURL = user.displayAvatarURL.replace(/(png|jpg|jpeg|gif|webp)/, 'png');
+        const avatarURL = user.avatarURL('png', 512);
+        if (!avatarURL) return msg.say('This user has no avatar.');
         let images = [];
         images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/eScwGFS.png'));
