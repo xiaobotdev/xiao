@@ -24,7 +24,7 @@ module.exports = class BeautifulCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const avatarURL = user.avatarURL('png', 512);
+        const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
         let images = [];
         images.push(Jimp.read(avatarURL));
