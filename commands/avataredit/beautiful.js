@@ -30,7 +30,7 @@ module.exports = class BeautifulCommand extends Command {
         images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/71qLwPf.png'));
         const [avatar, grunkle] = await Promise.all(images);
-        avatar.resize(117, 145);
+        avatar.resize(117, 135);
         grunkle.composite(avatar, 341, 35);
         grunkle.composite(avatar, 342, 300);
         grunkle.getBuffer(Jimp.MIME_PNG, (err, buff) => {
