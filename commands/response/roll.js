@@ -10,11 +10,14 @@ module.exports = class RollCommand extends Command {
             group: 'response',
             memberName: 'roll',
             description: 'Rolls a dice with a maximum value you specify.',
-            args: [{
-                key: 'value',
-                prompt: 'What is the maximum number you wish to appear?',
-                type: 'integer'
-            }]
+            args: [
+                {
+                    key: 'value',
+                    label: 'maximum number',
+                    prompt: 'What is the maximum number you wish to appear?',
+                    type: 'integer'
+                }
+            ]
         });
     }
 

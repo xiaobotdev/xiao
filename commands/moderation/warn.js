@@ -9,20 +9,23 @@ module.exports = class WarnCommand extends Command {
             memberName: 'warn',
             description: 'Warns a user and logs the warn to the mod_logs.',
             guildOnly: true,
-            args: [{
-                key: 'member',
-                prompt: 'What member do you want to warn?',
-                type: 'member'
-            }, {
-                key: 'reason',
-                prompt: 'What do you want to set the reason as?',
-                type: 'string',
-                validate: reason => {
-                    if (reason.length < 140)
-                        return true;
-                    return `Please keep your reason under 140 characters, you have ${reason.length}.`;
+            args: [
+                {
+                    key: 'member',
+                    prompt: 'What member do you want to warn?',
+                    type: 'member'
+                },
+                {
+                    key: 'reason',
+                    prompt: 'What do you want to set the reason as?',
+                    type: 'string',
+                    validate: reason => {
+                        if (reason.length < 140)
+                            return true;
+                        return `Please keep your reason under 140 characters, you have ${reason.length}.`;
+                    }
                 }
-            }]
+            ]
         });
     }
     

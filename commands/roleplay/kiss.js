@@ -7,11 +7,13 @@ module.exports = class KissCommand extends Command {
             group: 'roleplay',
             memberName: 'kiss',
             description: 'Kisses something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

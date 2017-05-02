@@ -9,12 +9,14 @@ module.exports = class UrbanCommand extends Command {
             group: 'search',
             memberName: 'urban',
             description: 'Searches Urban Dictionary for a word.',
-            args: [{
-                key: 'query',
-                prompt: 'What would you like to define?',
-                type: 'string',
-                parse: text => encodeURIComponent(text)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What would you like to define?',
+                    type: 'string',
+                    parse: text => encodeURIComponent(text)
+                }
+            ]
         });
     }
 

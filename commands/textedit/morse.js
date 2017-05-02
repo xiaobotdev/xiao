@@ -9,17 +9,19 @@ module.exports = class MorseCommand extends Command {
             group: 'textedit',
             memberName: 'morse',
             description: 'Translates text to morse code.',
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like to convert to morse?',
-                type: 'string',
-                validate: text => {
-                    if (letterTrans(text, dictionary, ' ').length < 1999)
-                        return true;
-                    return 'Your message content is too long.';
-                },
-                parse: text => letterTrans(text.toLowerCase(), dictionary, ' ')
-            }]
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What text would you like to convert to morse?',
+                    type: 'string',
+                    validate: text => {
+                        if (letterTrans(text, dictionary, ' ').length < 1999)
+                            return true;
+                        return 'Your message content is too long.';
+                    },
+                    parse: text => letterTrans(text.toLowerCase(), dictionary, ' ')
+                }
+            ]
         });
     }
 

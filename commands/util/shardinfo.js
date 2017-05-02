@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const { version } = require('../../package');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -14,11 +13,13 @@ module.exports = class ShardInfoCommand extends Command {
             group: 'util',
             memberName: 'shardinfo',
             description: 'Gives some bot info for the Shard you specify.',
-            args: [{
-                key: 'shard',
-                prompt: 'Which Shard would you like to get data for?',
-                type: 'integer'
-            }]
+            args: [
+                {
+                    key: 'shard',
+                    prompt: 'Which Shard would you like to get data for?',
+                    type: 'integer'
+                }
+            ]
         });
     }
 

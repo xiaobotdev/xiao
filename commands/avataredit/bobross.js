@@ -11,11 +11,13 @@ module.exports = class BobRossCommand extends Command {
             group: 'avataredit',
             memberName: 'bobross',
             description: 'Make Bob Ross draw an avatar.',
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to edit the avatar of?',
-                type: 'user'
-            }]
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to edit the avatar of?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

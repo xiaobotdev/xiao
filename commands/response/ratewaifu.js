@@ -10,11 +10,13 @@ module.exports = class RateWaifuCommand extends Command {
             group: 'response',
             memberName: 'ratewaifu',
             description: 'Rates your Waifu.',
-            args: [{
-                key: 'waifu',
-                prompt: 'Who do you want to rate?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'waifu',
+                    prompt: 'Who do you want to rate?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

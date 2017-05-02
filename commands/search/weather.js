@@ -9,11 +9,13 @@ module.exports = class WeatherCommand extends Command {
             group: 'search',
             memberName: 'weather',
             description: 'Gets weather information for a specified location.',
-            args: [{
-                key: 'query',
-                prompt: 'What location would you like to get the current weather for?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What location would you like to get the current weather for?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

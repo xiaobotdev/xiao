@@ -9,12 +9,14 @@ module.exports = class YouTubeCommand extends Command {
             group: 'search',
             memberName: 'youtube',
             description: 'Searches YouTube for a video.',
-            args: [{
-                key: 'query',
-                prompt: 'What would you like to search for?',
-                type: 'string',
-                parse: text => encodeURIComponent(text)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What would you like to search for?',
+                    type: 'string',
+                    parse: text => encodeURIComponent(text)
+                }
+            ]
         });
     }
 

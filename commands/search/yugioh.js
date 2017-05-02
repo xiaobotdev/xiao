@@ -9,12 +9,14 @@ module.exports = class YuGiOhCommand extends Command {
             group: 'search',
             memberName: 'yugioh',
             description: 'Gets info on a Yu-Gi-Oh! Card.',
-            args: [{
-                key: 'query',
-                prompt: 'What card would you like to get data for?',
-                type: 'string',
-                parse: text => encodeURIComponent(text)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What card would you like to get data for?',
+                    type: 'string',
+                    parse: text => encodeURIComponent(text)
+                }
+            ]
         });
     }
 

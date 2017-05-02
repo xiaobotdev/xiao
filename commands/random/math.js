@@ -8,11 +8,13 @@ module.exports = class MathCommand extends Command {
             group: 'random',
             memberName: 'math',
             description: 'Does math.',
-            args: [{
-                key: 'expression',
-                prompt: 'What do you want to answer?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'expression',
+                    prompt: 'What do you want to answer?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

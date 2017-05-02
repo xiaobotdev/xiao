@@ -9,17 +9,19 @@ module.exports = class PirateCommand extends Command {
             group: 'textedit',
             memberName: 'pirate',
             description: 'Talk like a pirate!',
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like to convert to pirate?',
-                type: 'string',
-                validate: text => {
-                    if (wordTrans(text, dictionary).length < 1999)
-                        return true;
-                    return 'Your message content is too long.';
-                },
-                parse: text => wordTrans(text, dictionary)
-            }]
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What text would you like to convert to pirate?',
+                    type: 'string',
+                    validate: text => {
+                        if (wordTrans(text, dictionary).length < 1999)
+                            return true;
+                        return 'Your message content is too long.';
+                    },
+                    parse: text => wordTrans(text, dictionary)
+                }
+            ]
         });
     }
 

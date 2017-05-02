@@ -9,12 +9,14 @@ module.exports = class WikipediaCommand extends Command {
             group: 'search',
             memberName: 'wikipedia',
             description: 'Searches Wikipedia for something.',
-            args: [{
-                key: 'query',
-                prompt: 'What would you like to search for?',
-                type: 'string',
-                parse: text => encodeURIComponent(text)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What would you like to search for?',
+                    type: 'string',
+                    parse: text => encodeURIComponent(text)
+                }
+            ]
         });
     }
 

@@ -11,17 +11,19 @@ module.exports = class RockPaperScissorsCommand extends Command {
             group: 'games',
             memberName: 'rps',
             description: 'Play Rock-Paper-Scissors.',
-            args: [{
-                key: 'choice',
-                prompt: '`Rock`, `Paper`, or `Scissors`?',
-                type: 'string',
-                validate: choice => {
-                    if (['rock', 'paper', 'scissors'].includes(choice.toLowerCase()))
-                        return true;
-                    return 'Please enter either `rock`, `paper`, or `scissors`.';
-                },
-                parse: choice => choice.toLowerCase()
-            }]
+            args: [
+                {
+                    key: 'choice',
+                    prompt: '`Rock`, `Paper`, or `Scissors`?',
+                    type: 'string',
+                    validate: choice => {
+                        if (['rock', 'paper', 'scissors'].includes(choice.toLowerCase()))
+                            return true;
+                        return 'Please enter either `rock`, `paper`, or `scissors`.';
+                    },
+                    parse: choice => choice.toLowerCase()
+                }
+            ]
         });
     }
 

@@ -12,12 +12,14 @@ module.exports = class UpsideDownCommand extends Command {
             group: 'textedit',
             memberName: 'upsidedown',
             description: 'Flips text upside-down.',
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like to flip upside-down?',
-                type: 'string',
-                parse: text => letterTrans(text, dictionary)
-            }]
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What text would you like to flip upside-down?',
+                    type: 'string',
+                    parse: text => letterTrans(text, dictionary)
+                }
+            ]
         });
     }
 

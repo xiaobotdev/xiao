@@ -7,11 +7,13 @@ module.exports = class PatCommand extends Command {
             group: 'roleplay',
             memberName: 'pat',
             description: 'Pats something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

@@ -8,17 +8,19 @@ module.exports = class LockdownCommand extends Command {
             memberName: 'lockdown',
             description: 'Locks down the current channel or removes a lockdown, which prevents non-administrator members from speaking.',
             guildOnly: true,
-            args: [{
-                key: 'type',
-                prompt: 'Please enter either `start` or `stop`.',
-                type: 'string',
-                validate: type => {
-                    if (['start', 'stop'].includes(type.toLowerCase()))
-                        return true;
-                    return 'Please enter either `start` or `stop`.';
-                },
-                parse: type => type.toLowerCase()
-            }]
+            args: [
+                {
+                    key: 'type',
+                    prompt: 'Please enter either `start` or `stop`.',
+                    type: 'string',
+                    validate: type => {
+                        if (['start', 'stop'].includes(type.toLowerCase()))
+                            return true;
+                        return 'Please enter either `start` or `stop`.';
+                    },
+                    parse: type => type.toLowerCase()
+                }
+            ]
         });
     }
     

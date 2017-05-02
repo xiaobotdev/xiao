@@ -7,12 +7,14 @@ module.exports = class InvertCommand extends Command {
             name: 'invert',
             group: 'avataredit',
             memberName: 'invert',
-            description: 'Invert your avatar colors.',
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to edit the avatar of?',
-                type: 'user'
-            }]
+            description: 'Invert a user\'s avatar colors.',
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to edit the avatar of?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

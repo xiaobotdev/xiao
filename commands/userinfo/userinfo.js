@@ -16,11 +16,13 @@ module.exports = class UserInfoCommand extends Command {
             memberName: 'user',
             description: 'Gives some info on a user.',
             guildOnly: true,
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to get info on?',
-                type: 'user'
-            }]
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to get info on?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

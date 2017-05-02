@@ -7,11 +7,13 @@ module.exports = class MarryCommand extends Command {
             group: 'roleplay',
             memberName: 'marry',
             description: 'Marries something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

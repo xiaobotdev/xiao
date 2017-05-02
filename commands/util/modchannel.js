@@ -8,11 +8,13 @@ module.exports = class ModChannelCommand extends Command {
             memberName: 'modchannel',
             description: 'Sets the channel for the mod logs to be sent.',
             guildOnly: true,
-            args: [{
-                key: 'channel',
-                prompt: 'What is the channel you want to send logs to?',
-                type: 'channel'
-            }]
+            args: [
+                {
+                    key: 'channel',
+                    prompt: 'What is the channel you want to send logs to?',
+                    type: 'channel'
+                }
+            ]
         });
     }
     

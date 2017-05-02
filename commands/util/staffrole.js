@@ -8,11 +8,13 @@ module.exports = class StaffRoleCommand extends Command {
             memberName: 'staffrole',
             description: 'Sets the role that can use Mod Commands without perms.',
             guildOnly: true,
-            args: [{
-                key: 'role',
-                prompt: 'What role should be staff?',
-                type: 'role'
-            }]
+            args: [
+                {
+                    key: 'role',
+                    prompt: 'What role should be staff?',
+                    type: 'role'
+                }
+            ]
         });
     }
     

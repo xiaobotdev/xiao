@@ -7,11 +7,13 @@ module.exports = class DivorceCommand extends Command {
             group: 'roleplay',
             memberName: 'divorce',
             description: 'Divorces something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

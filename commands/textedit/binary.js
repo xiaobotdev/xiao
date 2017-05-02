@@ -14,17 +14,19 @@ module.exports = class BinaryCommand extends Command {
             group: 'textedit',
             memberName: 'binary',
             description: 'Converts text to binary.',
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like to convert to binary?',
-                type: 'string',
-                validate: text => {
-                    if (binary(text).length < 2000)
-                        return true;
-                    return 'Your message content is too long.';
-                },
-                parse: text => binary(text)
-            }]
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What text would you like to convert to binary?',
+                    type: 'string',
+                    validate: text => {
+                        if (binary(text).length < 2000)
+                            return true;
+                        return 'Your message content is too long.';
+                    },
+                    parse: text => binary(text)
+                }
+            ]
         });
     }
 

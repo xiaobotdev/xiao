@@ -7,11 +7,13 @@ module.exports = class EatCommand extends Command {
             group: 'roleplay',
             memberName: 'eat',
             description: 'Eats something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

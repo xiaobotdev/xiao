@@ -7,12 +7,14 @@ module.exports = class ReverseCommand extends Command {
             group: 'textedit',
             memberName: 'reverse',
             description: 'Reverses text.',
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like to reverse?',
-                type: 'string',
-                parse: text => text.split('').reverse().join('')
-            }]
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What text would you like to reverse?',
+                    type: 'string',
+                    parse: text => text.split('').reverse().join('')
+                }
+            ]
         });
     }
 

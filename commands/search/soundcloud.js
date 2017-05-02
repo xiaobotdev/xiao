@@ -9,12 +9,14 @@ module.exports = class SoundCloudCommand extends Command {
             group: 'search',
             memberName: 'soundcloud',
             description: 'Searches SoundCloud for a song.',
-            args: [{
-                key: 'query',
-                prompt: 'What do you want to search SoundCloud for?',
-                type: 'string',
-                parse: text => encodeURIComponent(text)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What do you want to search SoundCloud for?',
+                    type: 'string',
+                    parse: text => encodeURIComponent(text)
+                }
+            ]
         });
     }
 

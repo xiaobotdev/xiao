@@ -9,12 +9,14 @@ module.exports = class IMDBCommand extends Command {
             group: 'search',
             memberName: 'imdb',
             description: 'Searches IMDB for a specified movie.',
-            args: [{
-                key: 'query',
-                prompt: 'What movie or TV Show would you like to search for?',
-                type: 'string',
-                parse: query => encodeURIComponent(query)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What movie or TV Show would you like to search for?',
+                    type: 'string',
+                    parse: query => encodeURIComponent(query)
+                }
+            ]
         });
     }
 

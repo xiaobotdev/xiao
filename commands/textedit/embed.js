@@ -8,11 +8,13 @@ module.exports = class EmbedCommand extends Command {
             group: 'textedit',
             memberName: 'embed',
             description: 'Sends a message in an embed.',
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like to embed?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What text would you like to embed?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

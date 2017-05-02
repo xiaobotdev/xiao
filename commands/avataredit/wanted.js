@@ -8,11 +8,13 @@ module.exports = class WantedCommand extends Command {
             group: 'avataredit',
             memberName: 'wanted',
             description: 'Puts an avatar on a wanted poster.',
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to edit the avatar of?',
-                type: 'user'
-            }]
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to edit the avatar of?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

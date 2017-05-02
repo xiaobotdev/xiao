@@ -7,11 +7,13 @@ module.exports = class HighFivesCommand extends Command {
             group: 'roleplay',
             memberName: 'highfive',
             description: 'High Fives something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 
