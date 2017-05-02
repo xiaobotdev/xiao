@@ -31,7 +31,7 @@ module.exports = class BanCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.permissions.has('BAN_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
+        return msg.member.hasPermission('BAN_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
     }
 
     async run(msg, args) {
