@@ -27,7 +27,8 @@ module.exports = class HelpCommand extends Command {
     async run(msg, args) {
         const { command } = args;
         const commands = this.client.registry.findCommands(command, false, msg);
-        if (command && command !== 'all') {
+        const showAll = command && command.toLowerCase() === 'all';
+        if (command && !showAll) {
             if (commands.length === 1) {
                 msg.say(stripIndents`
                     __Command **${commands[0].name}**:__ *${commands[0].description}*
@@ -48,12 +49,12 @@ module.exports = class HelpCommand extends Command {
             }
         } else {
             const embed = new RichEmbed()
-                .setTitle(command !== 'all' ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
+                .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
                 .setDescription(`Use ${this.usage('<command>', null, null)} to view detailed information about a specific command.`)
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.array()) {
                 embed.addField(group.name,
-                    command !== 'all' ? group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available' : group.commands.map(c => `\`${c.name}\``).join(', '));
+                    !showAll ? group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available' : group.commands.map(c => `\`${c.name}\``).join(', '));
             }
             try {
                 await msg.author.send({embed});
