@@ -7,12 +7,14 @@ module.exports = class LMGTFYCommand extends Command {
             group: 'search',
             memberName: 'lmgtfy',
             description: 'Responds with a LMGTFY link.',
-            args: [{
-                key: 'query',
-                prompt: 'What would you like to the link to search for?',
-                type: 'string',
-                parse: query => encodeURIComponent(query)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What would you like to the link to search for?',
+                    type: 'string',
+                    parse: query => encodeURIComponent(query)
+                }
+            ]
         });
     }
 

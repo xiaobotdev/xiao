@@ -9,12 +9,14 @@ module.exports = class OsuCommand extends Command {
             group: 'search',
             memberName: 'osu',
             description: 'Searches Osu! user data.',
-            args: [{
-                key: 'query',
-                prompt: 'What osu username would you like to search for?',
-                type: 'string',
-                parse: query => encodeURIComponent(query)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What osu username would you like to search for?',
+                    type: 'string',
+                    parse: query => encodeURIComponent(query)
+                }
+            ]
         });
     }
 

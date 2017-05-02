@@ -12,25 +12,28 @@ module.exports = class UnbanCommand extends Command {
             memberName: 'unban',
             description: 'Unbans a user and logs the unban to the mod_logs.',
             guildOnly: true,
-            args: [{
-                key: 'id',
-                prompt: 'What member do you want to unban? Please enter the ID of the user.',
-                type: 'string',
-                validate: id => {
-                    if (id.length === 18)
-                        return true;
-                    return `${id} is not a valid ID. Please enter the user you wish to unban's ID.`;
+            args: [
+                {
+                    key: 'id',
+                    prompt: 'What member do you want to unban? Please enter the ID of the user.',
+                    type: 'string',
+                    validate: id => {
+                        if (id.length === 18)
+                            return true;
+                        return `${id} is not a valid ID. Please enter the user you wish to unban's ID.`;
+                    }
+                },
+                {
+                    key: 'reason',
+                    prompt: 'What do you want to set the reason as?',
+                    type: 'string',
+                    validate: reason => {
+                        if (reason.length < 140)
+                            return true;
+                        return `Please keep your reason under 140 characters, you have ${reason.length}.`;
+                    }
                 }
-            }, {
-                key: 'reason',
-                prompt: 'What do you want to set the reason as?',
-                type: 'string',
-                validate: reason => {
-                    if (reason.length < 140)
-                        return true;
-                    return `Please keep your reason under 140 characters, you have ${reason.length}.`;
-                }
-            }]
+            ]
         });
     }
     

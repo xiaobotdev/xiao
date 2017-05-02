@@ -8,11 +8,13 @@ module.exports = class ComplimentCommand extends Command {
             group: 'response',
             memberName: 'compliment',
             description: 'Compliments something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to compliment?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to compliment?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

@@ -7,11 +7,13 @@ module.exports = class PokeCommand extends Command {
             group: 'roleplay',
             memberName: 'poke',
             description: 'Pokes something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

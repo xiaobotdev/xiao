@@ -11,11 +11,13 @@ module.exports = class YearsCommand extends Command {
             group: 'avataredit',
             memberName: '3000years',
             description: 'It\'s been 3000 years...',
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to edit the avatar of?',
-                type: 'user'
-            }]
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to edit the avatar of?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

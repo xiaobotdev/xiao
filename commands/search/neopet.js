@@ -9,12 +9,14 @@ module.exports = class NeopetCommand extends Command {
             group: 'search',
             memberName: 'neopet',
             description: 'Gives a Neopet\'s image, searchable by name.',
-            args: [{
-                key: 'query',
-                prompt: 'What pet would you like to get the image of?',
-                type: 'string',
-                parse: query => encodeURIComponent(query)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What pet would you like to get the image of?',
+                    type: 'string',
+                    parse: query => encodeURIComponent(query)
+                }
+            ]
         });
     }
 

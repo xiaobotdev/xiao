@@ -10,11 +10,13 @@ module.exports = class ShipCommand extends Command {
             group: 'response',
             memberName: 'ship',
             description: 'Ships things/people together.',
-            args: [{
-                key: 'things',
-                prompt: 'What do you want to ship together?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'things',
+                    prompt: 'What do you want to ship together?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

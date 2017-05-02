@@ -9,12 +9,14 @@ module.exports = class WattpadCommand extends Command {
             group: 'search',
             memberName: 'wattpad',
             description: 'Searches Wattpad for a book.',
-            args: [{
-                key: 'query',
-                prompt: 'What book would you like to search for?',
-                type: 'string',
-                parse: text => encodeURIComponent(text)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What book would you like to search for?',
+                    type: 'string',
+                    parse: text => encodeURIComponent(text)
+                }
+            ]
         });
     }
 

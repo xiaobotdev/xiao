@@ -9,11 +9,13 @@ module.exports = class BotSearchCommand extends Command {
             group: 'search',
             memberName: 'botinfo',
             description: 'Searches Discord Bots for info on a bot.',
-            args: [{
-                key: 'bot',
-                prompt: 'Which bot do you want to get information for?',
-                type: 'user'
-            }]
+            args: [
+                {
+                    key: 'bot',
+                    prompt: 'Which bot do you want to get information for?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

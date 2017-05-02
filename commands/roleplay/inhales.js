@@ -7,11 +7,13 @@ module.exports = class InhaleCommand extends Command {
             group: 'roleplay',
             memberName: 'inhale',
             description: 'Inhales something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

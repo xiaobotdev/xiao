@@ -10,12 +10,14 @@ module.exports = class GoogleCommand extends Command {
             group: 'search',
             memberName: 'google',
             description: 'Searches Google.',
-            args: [{
-                key: 'query',
-                prompt: 'What would you like to search for?',
-                type: 'string',
-                parse: query => encodeURIComponent(query)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What would you like to search for?',
+                    type: 'string',
+                    parse: query => encodeURIComponent(query)
+                }
+            ]
         });
     }
 

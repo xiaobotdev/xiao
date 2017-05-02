@@ -10,17 +10,19 @@ module.exports = class MathGameCommand extends Command {
             group: 'games',
             memberName: 'mathgame',
             description: 'See how fast you can answer a math problem in a given time limit.',
-            args: [{
-                key: 'difficulty',
-                prompt: 'What should the difficulty of the math game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
-                type: 'string',
-                validate: difficulty => {
-                    if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
-                        return true;
-                    return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
-                },
-                parse: difficulty => difficulty.toLowerCase()
-            }]
+            args: [
+                {
+                    key: 'difficulty',
+                    prompt: 'What should the difficulty of the math game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
+                    type: 'string',
+                    validate: difficulty => {
+                        if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
+                            return true;
+                        return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
+                    },
+                    parse: difficulty => difficulty.toLowerCase()
+                }
+            ]
         });
     }
 
@@ -48,9 +50,7 @@ module.exports = class MathGameCommand extends Command {
                 value = 10000;
                 break;
         }
-        const value1 = Math.floor(Math.random() * value) + 1;
-        const value2 = Math.floor(Math.random() * value) + 1;
-        const expression = `${value1} ${operation} ${value2}`;
+        const expression = `${Math.floor(Math.random() * value) + 1} ${operation} ${Math.floor(Math.random() * value) + 1}`;
         const solved = math.eval(expression).toString();
         const embed = new RichEmbed()
             .setTitle('You have **10** seconds to answer:')

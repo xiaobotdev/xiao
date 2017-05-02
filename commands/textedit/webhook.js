@@ -13,11 +13,13 @@ module.exports = class WebhookCommand extends Command {
             memberName: 'webhook',
             description: 'Posts a message to the webhook defined in your `process.env`.',
             guildOnly: true,
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like the webhook to say?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'content',
+                    prompt: 'What text would you like the webhook to say?',
+                    type: 'string'
+                }
+            ]
         });
     }
     
@@ -28,14 +30,12 @@ module.exports = class WebhookCommand extends Command {
     async run(msg, args) {
         if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
             return msg.say('This Command requires the `Manage Messages` Permission.');
-        const { text } = args;
+        const { content } = args;
         try {
             msg.delete();
             await request
                 .post(process.env.WEBHOOK_URL)
-                .send({
-                    content: text
-                });
+                .send({content});
             return null;
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');

@@ -12,11 +12,13 @@ module.exports = class RIPCommand extends Command {
             group: 'avataredit',
             memberName: 'rip',
             description: 'Puts a user\'s avatar over a gravestone.',
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to edit the avatar of?',
-                type: 'user'
-            }]
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to edit the avatar of?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

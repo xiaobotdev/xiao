@@ -9,21 +9,24 @@ module.exports = class SoftbanCommand extends Command {
             memberName: 'softban',
             description: 'Kicks a user and deletes their messages, and logs the softban to the mod_logs.',
             guildOnly: true,
-            args: [{
-                key: 'member',
-                prompt: 'What member do you want to softban?',
-                type: 'member'
-            }, {
-                key: 'reason',
-                prompt: 'What do you want to set the reason as?',
-                type: 'string',
-                validate: reason => {
-                    if (reason.length < 140) {
-                        return true;
+            args: [
+                {
+                    key: 'member',
+                    prompt: 'What member do you want to softban?',
+                    type: 'member'
+                },
+                {
+                    key: 'reason',
+                    prompt: 'What do you want to set the reason as?',
+                    type: 'string',
+                    validate: reason => {
+                        if (reason.length < 140) {
+                            return true;
+                        }
+                        return `Please keep your reason under 140 characters, you have ${reason.length}.`;
                     }
-                    return `Please keep your reason under 140 characters, you have ${reason.length}.`;
                 }
-            }]
+            ]
         });
     }
     

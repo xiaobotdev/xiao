@@ -12,16 +12,18 @@ module.exports = class DiscrimCommand extends Command {
             group: 'search',
             memberName: 'discrim',
             description: 'Searches for other users with a certain discriminator.',
-            args: [{
-                key: 'discrim',
-                prompt: 'Which discriminator would you like to search for?',
-                type: 'string',
-                validate: discrim => {
-                    if (/[0-9]+$/g.test(discrim) && discrim.length === 4)
-                        return true;
-                    return `${discrim} is not a valid discriminator.`;
+            args: [
+                {
+                    key: 'discrim',
+                    prompt: 'Which discriminator would you like to search for?',
+                    type: 'string',
+                    validate: discrim => {
+                        if (/[0-9]+$/g.test(discrim) && discrim.length === 4)
+                            return true;
+                        return `${discrim} is not a valid discriminator.`;
+                    }
                 }
-            }]
+            ]
         });
     }
 

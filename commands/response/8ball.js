@@ -8,11 +8,13 @@ module.exports = class MagicBallCommand extends Command {
             group: 'response',
             memberName: '8ball',
             description: 'Predicts your future.',
-            args: [{
-                key: 'question',
-                prompt: 'What do you want to ask the 8 ball?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'question',
+                    prompt: 'What do you want to ask the 8 ball?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

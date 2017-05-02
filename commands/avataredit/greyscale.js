@@ -7,12 +7,14 @@ module.exports = class GreyscaleCommand extends Command {
             name: 'greyscale',
             group: 'avataredit',
             memberName: 'greyscale',
-            description: 'Greyscale your avatar colors.',
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to edit the avatar of?',
-                type: 'user'
-            }]
+            description: 'Greyscale a user\'s avatar colors.',
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to edit the avatar of?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

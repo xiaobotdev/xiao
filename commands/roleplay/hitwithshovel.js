@@ -7,11 +7,13 @@ module.exports = class HitwithShovelCommand extends Command {
             group: 'roleplay',
             memberName: 'hitwithsovel',
             description: 'Hits something/someone with a shovel.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

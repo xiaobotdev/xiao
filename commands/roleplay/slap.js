@@ -7,11 +7,13 @@ module.exports = class SlapCommand extends Command {
             group: 'roleplay',
             memberName: 'slap',
             description: 'Slaps something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roleplay with?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roleplay with?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

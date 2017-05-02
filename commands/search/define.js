@@ -9,12 +9,14 @@ module.exports = class DefineCommand extends Command {
             group: 'search',
             memberName: 'define',
             description: 'Defines a word.',
-            args: [{
-                key: 'query',
-                prompt: 'What would you like to define?',
-                type: 'string',
-                parse: query => encodeURIComponent(query)
-            }]
+            args: [
+                {
+                    key: 'query',
+                    prompt: 'What would you like to define?',
+                    type: 'string',
+                    parse: query => encodeURIComponent(query)
+                }
+            ]
         });
     }
 

@@ -11,17 +11,19 @@ module.exports = class EasterEggCommand extends Command {
             group: 'random',
             memberName: 'easteregg',
             description: 'Can you discover all the easter eggs?',
-            args: [{
-                key: 'tag',
-                prompt: 'What easter egg do you want to view?',
-                type: 'string',
-                validate: tag => {
-                    if (eastereggs[tag.toLowerCase()])
-                        return true;
-                    return 'Nope, that\'s not a valid easter egg. Try again!';
-                },
-                parse: tag => tag.toLowerCase()
-            }]
+            args: [
+                {
+                    key: 'tag',
+                    prompt: 'What easter egg do you want to view?',
+                    type: 'string',
+                    validate: tag => {
+                        if (eastereggs[tag.toLowerCase()])
+                            return true;
+                        return 'Nope, that\'s not a valid easter egg. Try again!';
+                    },
+                    parse: tag => tag.toLowerCase()
+                }
+            ]
         });
     }
 

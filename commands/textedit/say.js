@@ -13,11 +13,13 @@ module.exports = class SayCommand extends Command {
             memberName: 'say',
             description: 'Make XiaoBot say what you wish.',
             guildOnly: true,
-            args: [{
-                key: 'text',
-                prompt: 'What text would you like XiaoBot to say?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What text would you like XiaoBot to say?',
+                    type: 'string'
+                }
+            ]
         });
     }
 

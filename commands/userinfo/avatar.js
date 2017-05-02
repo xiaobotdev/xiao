@@ -7,11 +7,13 @@ module.exports = class AvatarCommand extends Command {
             group: 'userinfo',
             memberName: 'avatar',
             description: 'Gives a link to a user\'s avatar.',
-            args: [{
-                key: 'user',
-                prompt: 'Which user would you like to get the avatar of?',
-                type: 'user'
-            }]
+            args: [
+                {
+                    key: 'user',
+                    prompt: 'Which user would you like to get the avatar of?',
+                    type: 'user'
+                }
+            ]
         });
     }
 

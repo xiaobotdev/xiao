@@ -8,11 +8,13 @@ module.exports = class RoastCommand extends Command {
             group: 'response',
             memberName: 'roast',
             description: 'Roasts something/someone.',
-            args: [{
-                key: 'thing',
-                prompt: 'What do you want to roast?',
-                type: 'string'
-            }]
+            args: [
+                {
+                    key: 'thing',
+                    prompt: 'What do you want to roast?',
+                    type: 'string'
+                }
+            ]
         });
     }
 
