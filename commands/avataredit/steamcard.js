@@ -39,7 +39,8 @@ module.exports = class SteamCardCommand extends Command {
         blank.print(font, 38, 20, username);
         blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return msg.say('An Unknown Error Occurred.');
-            return msg.channel.send({files: [{attachment: buff}]});
+            return msg.channel.send({files: [{attachment: buff}]})
+                .catch(() => msg.say('An Unknown Error Occurred.'));
         });
     }
 };

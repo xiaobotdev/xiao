@@ -34,7 +34,8 @@ module.exports = class MapCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
-            return msg.channel.send({files: [{attachment: body}]});
+            return msg.channel.send({files: [{attachment: body}]})
+                .catch(() => msg.say('An Unknown Error Occurred.'));
         } catch (err) {
             return msg.say('An Error Occurred. The location may not have been found.');
         }

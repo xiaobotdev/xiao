@@ -31,7 +31,8 @@ module.exports = class WantedCommand extends Command {
         wanted.composite(avatar, 189, 438);
         wanted.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return msg.say('An Unknown Error Occurred.');
-            return msg.channel.send({files: [{attachment: buff}]});
+            return msg.channel.send({files: [{attachment: buff}]})
+                .catch(() => msg.say('An Unknown Error Occurred.'));
         });
     }
 };
