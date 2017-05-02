@@ -19,7 +19,7 @@ module.exports = class DogCommand extends Command {
             const { body } = await request
                 .get('https://random.dog/woof.json');
             return msg.channel.send({files: [body.url]})
-                .catch(() => msg.say('An Unknown Error Occurred.'));
+                .catch(err => msg.say(`An Error Occurred: ${err}`));
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');
         }
