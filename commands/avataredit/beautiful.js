@@ -32,7 +32,7 @@ module.exports = class BeautifulCommand extends Command {
         const [avatar, grunkle] = await Promise.all(images);
         avatar.resize(117, 135);
         grunkle.composite(avatar, 341, 35);
-        grunkle.composite(avatar, 342, 302);
+        grunkle.composite(avatar, 342, 301);
         grunkle.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return msg.say('An Unknown Error Occurred.');
             return msg.channel.send({files: [{attachment: buff}]});
