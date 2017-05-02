@@ -27,7 +27,7 @@ module.exports = class HelpCommand extends Command {
     async run(msg, args) {
         const { command } = args;
         const commands = this.client.registry.findCommands(command, false, msg);
-        if (command) {
+        if (command && command !== 'all') {
             if (commands.length === 1) {
                 msg.say(stripIndents`
                     __Command **${commands[0].name}**:__ *${commands[0].description}*
@@ -53,7 +53,7 @@ module.exports = class HelpCommand extends Command {
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.array()) {
                 embed.addField(group.name,
-                    group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available');
+                    command !== 'all' ? group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available' : group.commands);
             }
             try {
                 await msg.author.send({embed});
