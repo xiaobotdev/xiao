@@ -22,7 +22,7 @@ module.exports = class CatCommand extends Command {
             const { body } = await request
                 .get('http://random.cat/meow');
             return msg.channel.send({files: [body.file]})
-                .catch(() => msg.say('An Unknown Error Occurred.'));
+                .catch(err => msg.say(`An Error Occurred: ${err}`));
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');
         }

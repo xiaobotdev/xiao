@@ -49,6 +49,6 @@ module.exports = class MemeCommand extends Command {
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { type, top, bottom } = args;
         return msg.channel.send({files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`]})
-            .catch(() => msg.say('An Unknown Error Occurred.'));
+            .catch(err => msg.say(`An Error Occurred: ${err}`));
     }
 };

@@ -28,7 +28,7 @@ module.exports = class InvertCommand extends Command {
         avatar.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return msg.say('An Unknown Error Occurred.');
             return msg.channel.send({files: [{attachment: buff}]})
-                .catch(() => msg.say('An Unknown Error Occurred.'));
+                .catch(err => msg.say(`An Error Occurred: ${err}`));
         });
     }
 };
