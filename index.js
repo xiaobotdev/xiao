@@ -32,7 +32,9 @@ client.registry
         ['roleplay', 'Roleplay']
     ])
     .registerDefaultGroups()
-    .registerDefaultCommands()
+    .registerDefaultCommands({
+        help: false
+    })
     .registerCommandsIn(path.join(__dirname, 'commands'));
     
 client.on('guildMemberAdd', (member) => {
