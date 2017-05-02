@@ -29,6 +29,7 @@ module.exports = class TriggeredCommand extends Command {
         images.push(Jimp.read('https://i.imgur.com/tF9yF62.png'));
         const [avatar, triggered] = await Promise.all(images);
         avatar.resize(320, 320);
+        triggered.blur(10);
         blank.composite(avatar, 0, 0);
         blank.composite(triggered, 0, 0);
         blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
