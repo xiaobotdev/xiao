@@ -28,12 +28,11 @@ module.exports = class BeautifulCommand extends Command {
         if (!avatarURL) return msg.say('This user has no avatar.');
         let images = [];
         images.push(Jimp.read(avatarURL));
-        images.push(Jimp.read('https://i.imgur.com/OOQ9QwQ.jpg'));
+        images.push(Jimp.read('https://i.imgur.com/71qLwPf.png'));
         const [avatar, grunkle] = await Promise.all(images);
-        avatar.resize(200, 200);
-        grunkle.composite(avatar, 432, 42);
-        avatar.resize(190, 190);
-        grunkle.composite(avatar, 451, 434);
+        avatar.resize(117, 145);
+        grunkle.composite(avatar, 341, 35);
+        grunkle.composite(avatar, 342, 300);
         grunkle.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return msg.say('An Unknown Error Occurred.');
             return msg.channel.send({files: [{attachment: buff}]});

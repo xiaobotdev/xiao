@@ -31,6 +31,7 @@ module.exports = class RIPCommand extends Command {
         images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/KriteWm.jpg'));
         const [avatar, grave] = await Promise.all(images);
+        avatar.greyscale();
         avatar.resize(200, 200);
         grave.composite(avatar, 158, 51);
         grave.getBuffer(Jimp.MIME_PNG, (err, buff) => {
