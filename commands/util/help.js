@@ -48,7 +48,7 @@ module.exports = class HelpCommand extends Command {
             }
         } else {
             const embed = new RichEmbed()
-                .setTitle(`Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}`)
+                .setTitle(command !== 'all' ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
                 .setDescription(`Use ${this.usage('<command>', null, null)} to view detailed information about a specific command.`)
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.array()) {
