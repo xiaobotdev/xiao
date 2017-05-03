@@ -21,6 +21,9 @@ module.exports = class MagicBallCommand extends Command {
     run(msg, args) {
         const { question } = args;
         const answer = answers[Math.floor(Math.random() * answers.length)];
-        return msg.say(`Question: ${question}\n:8ball: ${answer} :8ball:`);
+        return msg.say(
+            `Question: ${question}
+            :8ball: ${answer} :8ball:`
+        );
     }
 };

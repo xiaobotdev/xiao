@@ -24,6 +24,13 @@ module.exports = class CowsayCommand extends Command {
 
     run(msg, args) {
         const { text } = args;
-        return msg.code(null, `< ${text} >\n       \\   ^__^\n        \\  (oO)\\_______\n           (__)\\       )\\/\\\n             U  ||----w |\n                ||     ||`);
+        return msg.code(null,
+            `< ${text} >
+                   \\   ^__^
+                    \\  (oO)\\_______
+                       (__)\\       )\\/\\
+                         U  ||----w |
+                            ||     ||`
+        );
     }
 };

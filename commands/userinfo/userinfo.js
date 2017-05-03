@@ -60,9 +60,11 @@ module.exports = class UserInfoCommand extends Command {
             .addField('**ID:**',
                 user.id, true)
             .addField('**Joined Discord On:**',
-                `${user.createdAt}\n${moment.duration(Date.now() - user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                `${user.createdAt}
+                ${moment.duration(Date.now() - user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Joined Server On:**',
-                `${member.joinedAt}\n${moment.duration(Date.now() - member.joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                `${member.joinedAt}
+                ${moment.duration(Date.now() - member.joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',

@@ -47,7 +47,10 @@ module.exports = class StrawpollCommand extends Command {
                     title,
                     options
                 });
-            return msg.say(`${body.title}\nhttp://strawpoll.me/${body.id}`);
+            return msg.say(
+                `${body.title}
+                http://strawpoll.me/${body.id}`
+            );
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');
         }

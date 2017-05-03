@@ -50,7 +50,10 @@ module.exports = class BanCommand extends Command {
             return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
         try {
             try {
-                await member.send(`You were banned from ${msg.guild.name}!\nReason: ${reason}.`);
+                await member.send(
+                    `You were banned from ${msg.guild.name}!
+                    Reason: ${reason}.`
+                );
             } catch (err) {
                 await msg.say('Failed to send DM to user.');
             }
@@ -63,7 +66,11 @@ module.exports = class BanCommand extends Command {
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0xFF0000)
                 .setTimestamp()
-                .setDescription(`**Member:** ${member.user.tag} (${member.id})\n**Action:** Ban\n**Reason:** ${reason}`);
+                .setDescription(
+                    `**Member:** ${member.user.tag} (${member.id})
+                    **Action:** Ban
+                    **Reason:** ${reason}`
+                );
             return modlogs.send({embed});
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');
