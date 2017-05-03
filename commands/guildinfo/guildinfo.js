@@ -25,7 +25,7 @@ module.exports = class GuildInfoCommand extends Command {
             return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setColor(0x00AE86)
-            .setThumbnail(msg.guild.iconURL('png', 2048))
+            .setThumbnail(msg.guild.iconURL('png'))
             .addField('**Name:**',
                 msg.guild.name, true)
             .addField('**ID:**',
