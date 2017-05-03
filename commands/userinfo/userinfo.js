@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -60,8 +61,10 @@ module.exports = class UserInfoCommand extends Command {
             .addField('**ID:**',
                 user.id, true)
             .addField('**Joined Discord On:**',
-                `${user.createdAt}
-                ${moment.duration(Date.now() - user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                stripIndents`
+                    ${user.createdAt}
+                    ${moment.duration(Date.now() - user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
+                `, true)
             .addField('**Joined Server On:**',
                 `${member.joinedAt}
                 ${moment.duration(Date.now() - member.joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)

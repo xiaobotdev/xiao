@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { stripIndents } = require('common-tags');
 const slotThing = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
 
 module.exports = class SlotsCommand extends Command {
@@ -16,13 +17,13 @@ module.exports = class SlotsCommand extends Command {
         const slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
         if (slotOne === slotTwo && slotOne === slotThree)
-            return msg.say(
-                `${slotOne}|${slotTwo}|${slotThree}
-                Wow! You won! Great job... er... luck!`
-            );
-        return msg.say(
-            `${slotOne}|${slotTwo}|${slotThree}
-            Aww... You lost... Guess it's just bad luck, huh?`
-        );
+            return msg.say(stripIndents`
+                ${slotOne}|${slotTwo}|${slotThree}
+                Wow! You won! Great job... er... luck!
+            `);
+        return msg.say(stripIndents`
+            ${slotOne}|${slotTwo}|${slotThree}
+            Aww... You lost... Guess it's just bad luck, huh?
+        `);
     }
 };

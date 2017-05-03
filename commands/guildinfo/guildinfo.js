@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -30,8 +31,10 @@ module.exports = class GuildInfoCommand extends Command {
             .addField('**ID:**',
                 msg.guild.id, true)
             .addField('**Created On:**',
-                `${msg.guild.createdAt}
-                ${moment.duration(Date.now() - msg.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                stripIndents`
+                    ${msg.guild.createdAt}
+                    ${moment.duration(Date.now() - msg.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
+                `, true)
             .addField('**Default Channel:**',
                 msg.guild.defaultChannel, true)
             .addField('**Region:**',
