@@ -24,7 +24,7 @@ module.exports = class ModChannelCommand extends Command {
 
     run(msg, args) {
         const { channel } = args;
-        msg.guild.settings.set('modLog', channel.name);
+        msg.guild.settings.set('modLog', channel.id);
         return msg.say(`Mod Log channel set to ${channel.name}.`);
     }
 };

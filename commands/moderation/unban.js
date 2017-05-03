@@ -39,15 +39,15 @@ module.exports = class UnbanCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.hasPermission('BAN_MEMBERS') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
+        return msg.member.hasPermission('BAN_MEMBERS') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }
 
     async run(msg, args) {
         if (!msg.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
             return msg.say('This Command requires the `Ban Members` Permission.');
-        const modlogs = msg.guild.channels.find('name', msg.guild.settings.get('modLog', 'mod_logs'));
+        const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog', 'mod_logs'));
         if (!modlogs)
-            return msg.say('This Command requires a channel named `mod_logs` or one custom set with the `modchannel` command.');
+            return msg.say('This Command requires a channel set with the `modchannel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { id, reason } = args;
