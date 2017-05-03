@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 
 module.exports = class KickCommand extends Command {
     constructor(client) {
@@ -47,10 +48,10 @@ module.exports = class KickCommand extends Command {
             return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
         try {
             try {
-                await member.send(
-                    `You were kicked from ${msg.guild.name}!
-                    Reason: ${reason}.`
-                );
+                await member.send(stripIndents`
+                    You were kicked from ${msg.guild.name}!
+                    Reason: ${reason}.
+                `);
             } catch (err) {
                 await msg.say('Failed to send DM.');
             }
@@ -62,11 +63,11 @@ module.exports = class KickCommand extends Command {
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0xFFA500)
                 .setTimestamp()
-                .setDescription(
-                    `**Member:** ${member.user.tag} (${member.id})
+                .setDescription(stripIndents`
+                    **Member:** ${member.user.tag} (${member.id})
                     **Action:** Kick
-                    **Reason:** ${reason}`
-                );
+                    **Reason:** ${reason}
+                `);
             return modlogs.send({embed});
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');

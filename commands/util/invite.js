@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { stripIndents } = require('common-tags');
 
 module.exports = class InviteCommand extends Command {
     constructor(client) {
@@ -12,11 +13,11 @@ module.exports = class InviteCommand extends Command {
 
     async run(msg) {
         const invite = await this.client.generateInvite('1345846343');
-        return msg.say(
-            `Add me to your server with this link:
+        return msg.say(stripIndents`
+            Add me to your server with this link:
             ${invite}
             Or, come to my server with this link:
-            ${this.client.options.invite}`
-        );
+            ${this.client.options.invite}
+        `);
     }
 };

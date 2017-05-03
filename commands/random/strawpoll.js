@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { stripIndents } = require('common-tags');
 const request = require('superagent');
 
 module.exports = class StrawpollCommand extends Command {
@@ -47,10 +48,10 @@ module.exports = class StrawpollCommand extends Command {
                     title,
                     options
                 });
-            return msg.say(
-                `${body.title}
-                http://strawpoll.me/${body.id}`
-            );
+            return msg.say(stripIndents`
+                ${body.title}
+                http://strawpoll.me/${body.id}
+            `);
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');
         }

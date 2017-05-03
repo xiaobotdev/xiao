@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const math = require('mathjs');
 const operations = ['+', '-', '*'];
 
@@ -63,16 +64,16 @@ module.exports = class MathGameCommand extends Command {
                 errors: ['time']
             });
             if (collected.first().content !== solved)
-                return msg.say(
-                    `Aw... Too bad, try again next time!
-                    The correct answer is: ${solved}`
-                );
+                return msg.say(stripIndents`
+                    Aw... Too bad, try again next time!
+                    The correct answer is: ${solved}
+                `);
             return msg.say(`Good Job! You won! ${solved} is the correct answer!`);
         } catch (err) {
-            return msg.say(
-                `Aw... Too bad, try again next time!
-                The correct answer is: ${solved}`
-            );
+            return msg.say(stripIndents`
+                Aw... Too bad, try again next time!
+                The correct answer is: ${solved}
+            `);
         }
     }
 };

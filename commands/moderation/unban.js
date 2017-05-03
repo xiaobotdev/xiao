@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 
 module.exports = class UnbanCommand extends Command {
     constructor(client) {
@@ -61,11 +62,11 @@ module.exports = class UnbanCommand extends Command {
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0x00AE86)
                 .setTimestamp()
-                .setDescription(
-                    `**Member:** ${member.tag} (${member.id})
+                .setDescription(stripIndents`
+                    **Member:** ${member.tag} (${member.id})
                     **Action:** Unban
-                    **Reason:** ${reason}`
-                );
+                    **Reason:** ${reason}
+                `);
             return modlogs.send({embed});
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');

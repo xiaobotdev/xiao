@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const request = require('superagent');
 
 module.exports = class QuizCommand extends Command {
@@ -25,10 +26,10 @@ module.exports = class QuizCommand extends Command {
             const answer = body[0].answer.toLowerCase().replace(/(<i>|<\/i>)/g, '');
             const embed = new RichEmbed()
                 .setTitle('You have **15** seconds to answer this question:')
-                .setDescription(
-                    `**Category: ${body[0].category.title}**
-                    ${body[0].question}`
-                );
+                .setDescription(stripIndents`
+                    **Category: ${body[0].category.title}**
+                    ${body[0].question}
+                `);
             await msg.embed(embed);
             try {
                 const collected = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
@@ -40,10 +41,10 @@ module.exports = class QuizCommand extends Command {
                     return msg.say(`The correct answer is: ${answer}`);
                 return msg.say(`Perfect! The correct answer is: ${answer}`);
             } catch (err) {
-                return msg.say(
-                    `Aw... Too bad, try again next time!
-                    The Correct Answer was: ${answer}`
-                );
+                return msg.say(stripIndents`
+                    Aw... Too bad, try again next time!
+                    The Correct Answer was: ${answer}
+                `);
             }
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');

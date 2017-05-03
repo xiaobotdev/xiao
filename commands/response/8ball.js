@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { stripIndents } = require('common-tags');
 const answers = require('./8ballanswers');
 
 module.exports = class MagicBallCommand extends Command {
@@ -21,9 +22,9 @@ module.exports = class MagicBallCommand extends Command {
     run(msg, args) {
         const { question } = args;
         const answer = answers[Math.floor(Math.random() * answers.length)];
-        return msg.say(
-            `Question: ${question}
-            :8ball: ${answer} :8ball:`
-        );
+        return msg.say(stripIndents`
+            Question: ${question}
+            :8ball: ${answer} :8ball:
+        `);
     }
 };

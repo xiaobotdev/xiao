@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 
 module.exports = class HelpCommand extends Command {
     constructor(client) {
@@ -29,14 +30,14 @@ module.exports = class HelpCommand extends Command {
         const showAll = command && command.toLowerCase() === 'all';
         if (command && !showAll) {
             if (commands.length === 1) {
-                return msg.say(
-                    `__Command **${commands[0].name}**:__ *${commands[0].description}*
+                return msg.say(stripIndents`
+                    __Command **${commands[0].name}**:__ *${commands[0].description}*
                     ${commands[0].guildOnly ? 'Usable Only in Servers' : 'Usable in Server and DM'}
                     **Format:** ${msg.anyUsage(`${commands[0].name}${commands[0].format ? ` ${commands[0].format}` : ''}`)}
                     **Aliases:** ${commands[0].aliases.join(', ') || 'None'}
                     **Group:** ${commands[0].group.name}
-                    ${commands[0].details || ''}`
-                );
+                    ${commands[0].details || ''}
+                `);
             } else if (commands.length > 1) {
                 return msg.say('Multiple Commands Found. Please be more specific.');
             } else {
