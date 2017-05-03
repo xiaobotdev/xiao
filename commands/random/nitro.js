@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 
 module.exports = class NitroCommand extends Command {
     constructor(client) {
@@ -20,7 +21,10 @@ module.exports = class NitroCommand extends Command {
             .setThumbnail('https://pbs.twimg.com/profile_images/814184180649197568/y2eZcVMq.jpg')
             .setColor(0x748BD9)
             .setURL('https://discordapp.com/nitro')
-            .setDescription('This Message can only be viewed by members with Discord Nitro.\n[More Information](https://discordapp.com/nitro)');
+            .setDescription(stripIndents`
+                This Message can only be viewed by members with Discord Nitro.
+                [More Information](https://discordapp.com/nitro)
+            `);
         return msg.embed(embed);
     }
 };

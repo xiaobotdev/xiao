@@ -54,7 +54,9 @@ module.exports = class HelpCommand extends Command {
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.array()) {
                 embed.addField(group.name,
-                    !showAll ? group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available' : group.commands.map(c => `\`${c.name}\``).join(', '));
+                    !showAll ?
+                        group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available' :
+                        group.commands.map(c => `\`${c.name}\``).join(', '));
             }
             try {
                 await msg.author.send({embed});
