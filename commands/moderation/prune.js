@@ -29,7 +29,7 @@ module.exports = class PruneCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.hasPermission('MANAGE_MESSAGES') || msg.member.roles.exists('name', msg.guild.settings.get('staffRole', 'Server Staff'));
+        return msg.member.hasPermission('MANAGE_MESSAGES') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }
 
     async run(msg, args) {

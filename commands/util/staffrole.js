@@ -24,7 +24,7 @@ module.exports = class StaffRoleCommand extends Command {
 
     run(msg, args) {
         const { role } = args;
-        msg.guild.settings.set('staffRole', role.name);
+        msg.guild.settings.set('staffRole', role.id);
         return msg.say(`Server Staff role set to ${role.name}.`);
     }
 };
