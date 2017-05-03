@@ -61,7 +61,11 @@ module.exports = class UnbanCommand extends Command {
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0x00AE86)
                 .setTimestamp()
-                .setDescription(`**Member:** ${member.tag} (${member.id})\n**Action:** Unban\n**Reason:** ${reason}`);
+                .setDescription(
+                    `**Member:** ${member.tag} (${member.id})
+                    **Action:** Unban
+                    **Reason:** ${reason}`
+                );
             return modlogs.send({embed});
         } catch (err) {
             return msg.say('An Unknown Error Occurred.');

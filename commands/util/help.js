@@ -1,5 +1,4 @@
 const { Command } = require('discord.js-commando');
-const { stripIndents } = require('common-tags');
 const { RichEmbed } = require('discord.js');
 
 module.exports = class HelpCommand extends Command {
@@ -30,18 +29,18 @@ module.exports = class HelpCommand extends Command {
         const showAll = command && command.toLowerCase() === 'all';
         if (command && !showAll) {
             if (commands.length === 1) {
-                msg.say(stripIndents`
-                    __Command **${commands[0].name}**:__ *${commands[0].description}*
+                return msg.say(
+                    `__Command **${commands[0].name}**:__ *${commands[0].description}*
                     ${commands[0].guildOnly ? 'Usable Only in Servers' : 'Usable in Server and DM'}
                     **Format:** ${msg.anyUsage(`${commands[0].name}${commands[0].format ? ` ${commands[0].format}` : ''}`)}
                     **Aliases:** ${commands[0].aliases.join(', ') || 'None'}
                     **Group:** ${commands[0].group.name}
-                    ${commands[0].details || ''}
-                `);
+                    ${commands[0].details || ''}`
+                );
             } else if (commands.length > 1) {
-                msg.say('Multiple Commands Found. Please be more specific.');
+                return msg.say('Multiple Commands Found. Please be more specific.');
             } else {
-                msg.say(
+                return msg.say(
                     `Could not identify command. Use ${msg.usage(
 					    null, msg.channel.type === 'dm' ? null : undefined, msg.channel.type === 'dm' ? null : undefined
 					)} to view a list of commands you can use.`

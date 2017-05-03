@@ -30,7 +30,8 @@ module.exports = class GuildInfoCommand extends Command {
             .addField('**ID:**',
                 msg.guild.id, true)
             .addField('**Created On:**',
-                `${msg.guild.createdAt}\n${moment.duration(Date.now() - msg.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
+                `${msg.guild.createdAt}
+                ${moment.duration(Date.now() - msg.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.`, true)
             .addField('**Default Channel:**',
                 msg.guild.defaultChannel, true)
             .addField('**Region:**',

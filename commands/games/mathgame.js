@@ -63,10 +63,16 @@ module.exports = class MathGameCommand extends Command {
                 errors: ['time']
             });
             if (collected.first().content !== solved)
-                return msg.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+                return msg.say(
+                    `Aw... Too bad, try again next time!
+                    The correct answer is: ${solved}`
+                );
             return msg.say(`Good Job! You won! ${solved} is the correct answer!`);
         } catch (err) {
-            return msg.say(`Aw... Too bad, try again next time!\nThe correct answer is: ${solved}`);
+            return msg.say(
+                `Aw... Too bad, try again next time!
+                The correct answer is: ${solved}`
+            );
         }
     }
 };
