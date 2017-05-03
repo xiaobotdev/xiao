@@ -43,7 +43,7 @@ module.exports = class HelpCommand extends Command {
             } else {
                 return msg.say(`Could not identify command. Use ${msg.usage(
                         null, msg.channel.type === 'dm' ? null : undefined, msg.channel.type === 'dm' ? null : undefined
-				    )} to view a list of commands you can use.`);
+                    )} to view a list of commands you can use.`);
             }
         } else {
             const embed = new RichEmbed()
