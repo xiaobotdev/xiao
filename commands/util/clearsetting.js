@@ -6,7 +6,7 @@ module.exports = class ClearSettingCommand extends Command {
             name: 'clearsetting',
             group: 'util',
             memberName: 'clearsetting',
-            description: 'Removes a custom-set Mod Channel, Member Channel, or Staff Role.',
+            description: 'Removes a custom-set Mod Channel, Member Channel, Staff Role, or Single Role.',
             guildOnly: true,
             args: [
                 {
