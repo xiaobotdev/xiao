@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = new Sequelize(process.env.DATABASE_URL, { logging: false });
 
-module.exports = class Database {
+class Database {
 	static get db() {
 		return database;
 	}
@@ -17,4 +17,6 @@ module.exports = class Database {
 			.then(() => console.log('[Database] Ready!'))
 			.catch(err => console.error(`[Database] Unable to connect: ${err}`));
 	}
-};
+}
+
+module.exports = Database;

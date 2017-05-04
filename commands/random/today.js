@@ -13,8 +13,8 @@ module.exports = class TodayCommand extends Command {
     }
 
     async run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { text } = await request
@@ -30,7 +30,7 @@ module.exports = class TodayCommand extends Command {
                 .setTimestamp()
                 .setDescription(`${events[random].year}: ${events[random].text}`);
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Unknown Error Occurred.');
         }
     }

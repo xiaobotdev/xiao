@@ -21,8 +21,8 @@ module.exports = class WikipediaCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
@@ -32,10 +32,10 @@ module.exports = class WikipediaCommand extends Command {
                 .setColor(0xE7E7E7)
                 .setTitle(body.query.pages[0].title)
                 .setURL(`https://en.wikipedia.org/wiki/${query}`)
-                .setAuthor('Wikipedia', 'https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png')
+                .setAuthor('Wikipedia', 'https://i.imgur.com/a4eeEhh.png')
                 .setDescription(body.query.pages[0].extract.substr(0, 2000).replace(/[\n]/g, '\n\n'));
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Error Occurred. The page may not have been found.');
         }
     }

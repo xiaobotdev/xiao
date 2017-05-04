@@ -21,8 +21,8 @@ module.exports = class SoundCloudCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
@@ -30,7 +30,7 @@ module.exports = class SoundCloudCommand extends Command {
                 .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${process.env.SOUNDCLOUD_KEY}`);
             const embed = new RichEmbed()
                 .setColor(0xF15A22)
-                .setAuthor(body[0].title, 'http://icons.iconarchive.com/icons/danleech/simple/1024/soundcloud-icon.png')
+                .setAuthor(body[0].title, 'https://i.imgur.com/lFIz7RU.png')
                 .setURL(body[0].permalink_url)
                 .setThumbnail(body[0].artwork_url)
                 .addField('**Artist:**',
@@ -44,7 +44,7 @@ module.exports = class SoundCloudCommand extends Command {
                 .addField('**Favorited Count:**',
                     body[0].favoritings_count, true);
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Error Occurred. The song may not have been found.');
         }
     }

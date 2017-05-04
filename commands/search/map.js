@@ -15,7 +15,7 @@ module.exports = class MapCommand extends Command {
                     prompt: 'What would you like the zoom level for the map to be? Limit 1-20.',
                     type: 'integer',
                     validate: zoom => {
-                        if (zoom < 21 && zoom > 0)
+                        if(zoom < 21 && zoom > 0)
                             return true;
                         return 'Please enter a zoom value from 1-20';
                     }
@@ -31,16 +31,16 @@ module.exports = class MapCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { zoom, query } = args;
         try {
             const { body } = await request
                 .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
-            return msg.channel.send({files: [{attachment: body}]})
+            return msg.channel.send({ files: [{attachment: body}] })
                 .catch(err => msg.say(`An Error Occurred: ${err}`));
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Error Occurred. The location may not have been found.');
         }
     }

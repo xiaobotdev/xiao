@@ -13,12 +13,12 @@ module.exports = class NitroCommand extends Command {
     }
 
     run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setAuthor('Discord Nitro')
-            .setThumbnail('https://pbs.twimg.com/profile_images/814184180649197568/y2eZcVMq.jpg')
+            .setThumbnail('https://i.imgur.com/wzhMMnl.jpg')
             .setColor(0x748BD9)
             .setURL('https://discordapp.com/nitro')
             .setDescription(stripIndents`

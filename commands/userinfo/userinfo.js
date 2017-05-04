@@ -28,14 +28,14 @@ module.exports = class UserInfoCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { user } = args;
-        const member = await msg.guild.fetchMember(user);
+        const member = msg.guild.member(user);
         let stat;
         let color;
-        switch (user.presence.status) {
+        switch(user.presence.status) {
             case 'online':
                 stat = '<:vpOnline:212789758110334977> Online';
                 color = 0x00AE86;

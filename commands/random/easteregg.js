@@ -17,7 +17,7 @@ module.exports = class EasterEggCommand extends Command {
                     prompt: 'What easter egg do you want to view?',
                     type: 'string',
                     validate: tag => {
-                        if (eastereggs[tag.toLowerCase()])
+                        if(eastereggs[tag.toLowerCase()])
                             return true;
                         return 'Nope, that\'s not a valid easter egg. Try again!';
                     },

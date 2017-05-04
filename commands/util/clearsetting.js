@@ -14,7 +14,7 @@ module.exports = class ClearSettingCommand extends Command {
                     prompt: 'What setting do you want to clear? `modLog`, `memberLog`, or `staffRole`?',
                     type: 'string',
                     validate: setting => {
-                        if (['modLog', 'memberLog', 'staffRole'].includes(setting))
+                        if(['modLog', 'memberLog', 'staffRole'].includes(setting))
                             return true;
                         return 'Please enter either `modLog`, `memberLog`, or `staffRole`.';
                     }

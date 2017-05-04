@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { stripIndents } = require('common-tags');
 
 module.exports = class LockdownCommand extends Command {
     constructor(client) {
@@ -14,7 +15,7 @@ module.exports = class LockdownCommand extends Command {
                     prompt: 'Please enter either `start` or `stop`.',
                     type: 'string',
                     validate: type => {
-                        if (['start', 'stop'].includes(type.toLowerCase()))
+                        if(['start', 'stop'].includes(type.toLowerCase()))
                             return true;
                         return 'Please enter either `start` or `stop`.';
                     },
@@ -29,25 +30,24 @@ module.exports = class LockdownCommand extends Command {
     }
 
     async run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).has('ADMINISTRATOR'))
+        if(!msg.channel.permissionsFor(this.client.user).has('ADMINISTRATOR'))
             return msg.say('This Command requires the `Administrator` Permission.');
         const { type } = args;
-        if (type === 'start') {
+        if(type === 'start') {
             try {
-                await msg.channel.overwritePermissions(msg.guild.defaultRole, {
-                    SEND_MESSAGES: false
-                });
-                return msg.say('Lockdown Started, users without Administrator can no longer post messages. Please use `;lockdown stop` to end the lockdown.');
-            } catch (err) {
+                await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: false });
+                return msg.say(stripIndents`
+                    Lockdown Started, users without Administrator can no longer post messages.
+                    Please use \`;lockdown stop\` to end the lockdown.
+                `);
+            } catch(err) {
                 return msg.say('Something went wrong!');
             }
-        } else if (type === 'stop') {
+        } else if(type === 'stop') {
             try {
-                await msg.channel.overwritePermissions(msg.guild.defaultRole, {
-                    SEND_MESSAGES: true
-                });
+                await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: true });
                 return msg.say('Lockdown Ended, users without Administrator can now post messages.');
-            } catch (err) {
+            } catch(err) {
                 return msg.say('An Unknown Error Occurred.');
             }
         }

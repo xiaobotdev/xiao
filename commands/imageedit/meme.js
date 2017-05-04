@@ -15,7 +15,7 @@ module.exports = class MemeCommand extends Command {
                     prompt: 'What meme type do you want to use?',
                     type: 'string',
                     validate: type => {
-                        if (codes.includes(type.toLowerCase()))
+                        if(codes.includes(type.toLowerCase()))
                             return true;
                         return `${type.toLowerCase()} is not a valid meme type. Use \`help meme\` to view a list of types.`;
                     },
@@ -26,7 +26,7 @@ module.exports = class MemeCommand extends Command {
                     prompt: 'What should the top row of the meme to be?',
                     type: 'string',
                     validate: top => {
-                        if (/[a-zA-Z0-9.,!?'\s]+$/g.test(top) && top.length < 100)
+                        if(/[a-zA-Z0-9.,!?'\s]+$/g.test(top) && top.length < 100)
                             return true;
                         return `Please do not use special characters and keep the rows under 100 characters each, top row has ${top.length}.`;
                     },
@@ -37,7 +37,7 @@ module.exports = class MemeCommand extends Command {
                     prompt: 'What should the bottom row of the meme to be?',
                     type: 'string',
                     validate: bottom => {
-                        if (/[a-zA-Z0-9.,!?'\s]+$/g.test(bottom) && bottom.length < 100)
+                        if(/[a-zA-Z0-9.,!?'\s]+$/g.test(bottom) && bottom.length < 100)
                             return true;
                         return `Please do not use special characters and keep the rows under 100 characters each, bottom row has ${bottom.length}.`;
                     },
@@ -48,11 +48,11 @@ module.exports = class MemeCommand extends Command {
     }
 
     run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { type, top, bottom } = args;
-        return msg.channel.send({files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`]})
+        return msg.channel.send({ files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`] })
             .catch(err => msg.say(`An Error Occurred: ${err}`));
     }
 };

@@ -16,8 +16,8 @@ module.exports = class WouldYouRatherCommand extends Command {
     }
 
     async run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { body } = await request
@@ -28,7 +28,7 @@ module.exports = class WouldYouRatherCommand extends Command {
                 .setColor(0x9797FF)
                 .setDescription(`${body.choicea} OR ${body.choiceb}?`);
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Unknown Error Occurred.');
         }
     }

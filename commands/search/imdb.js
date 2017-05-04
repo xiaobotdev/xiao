@@ -21,8 +21,8 @@ module.exports = class IMDBCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
@@ -30,7 +30,7 @@ module.exports = class IMDBCommand extends Command {
                 .get(`http://www.omdbapi.com/?t=${query}&plot=full`);
             const embed = new RichEmbed()
                 .setColor(0xDBA628)
-                .setAuthor('IMDB', 'http://static.wixstatic.com/media/c65cbf_31901b544fe24f1890134553bf40c8be.png')
+                .setAuthor('IMDB', 'https://i.imgur.com/sXwwIQs.png')
                 .setURL(`http://www.imdb.com/title/${body.imdbID}`)
                 .setTitle(`${body.Title} (${body.imdbRating} Score)`)
                 .setDescription(body.Plot.substr(0, 2000))
@@ -49,7 +49,7 @@ module.exports = class IMDBCommand extends Command {
                 .addField('**Actors:**',
                     body.Actors);
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Error Occurred. The film may not have been found.');
         }
     }
