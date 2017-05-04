@@ -34,7 +34,14 @@ client.registry
     .registerDefaultGroups()
     .registerDefaultCommands({ help: false })
     .registerCommandsIn(path.join(__dirname, 'commands'));
-    
+
+client.dispatcher.addInhibitor(msg => {
+    const role = msg.guild.settings.get('singleRole');
+    if(!role) return false;
+    if(!msg.member.roles.has(role))
+        return `Only the ${msg.guild.roles.get(role).name} may use commands.`;
+});
+
 client.on('guildMemberAdd', (member) => {
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
     if(!channel) return;
