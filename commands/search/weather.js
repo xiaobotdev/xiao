@@ -20,8 +20,8 @@ module.exports = class WeatherCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
@@ -57,7 +57,7 @@ module.exports = class WeatherCommand extends Command {
                 .addField('**Wind Speed:**',
                     body.query.results.channel.wind.speed, true);
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Error Occurred. The location may not have been found.');
         }
     }

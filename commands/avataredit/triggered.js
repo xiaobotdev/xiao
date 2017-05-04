@@ -19,12 +19,12 @@ module.exports = class TriggeredCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
-        if (!avatarURL) return msg.say('This user has no avatar.');
+        if(!avatarURL) return msg.say('This user has no avatar.');
         const blank = new Jimp(320, 371, 0xFFFFFFFF);
         let images = [];
         images.push(Jimp.read(avatarURL));
@@ -34,8 +34,8 @@ module.exports = class TriggeredCommand extends Command {
         blank.composite(avatar, 0, 0);
         blank.composite(triggered, 0, 0);
         blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say('An Unknown Error Occurred.');
-            return msg.channel.send({files: [{attachment: buff}]})
+            if(err) return msg.say('An Unknown Error Occurred.');
+            return msg.channel.send({ files: [{ attachment: buff, name: 'triggered.png' }] })
                 .catch(err => msg.say(`An Error Occurred: ${err}`));
         });
     }

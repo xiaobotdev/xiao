@@ -15,7 +15,7 @@ module.exports = class PirateCommand extends Command {
                     prompt: 'What text would you like to convert to pirate?',
                     type: 'string',
                     validate: text => {
-                        if (wordTrans(text, dictionary).length < 1999)
+                        if(wordTrans(text, dictionary).length < 1999)
                             return true;
                         return 'Your message content is too long.';
                     },

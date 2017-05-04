@@ -17,7 +17,7 @@ module.exports = class MathGameCommand extends Command {
                     prompt: 'What should the difficulty of the math game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
                     type: 'string',
                     validate: difficulty => {
-                        if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
+                        if(['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
                             return true;
                         return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                     },
@@ -28,13 +28,13 @@ module.exports = class MathGameCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
         let value;
-        switch (difficulty) {
+        switch(difficulty) {
             case 'easy':
                 value = 10;
                 break;
@@ -63,13 +63,13 @@ module.exports = class MathGameCommand extends Command {
                 time: 10000,
                 errors: ['time']
             });
-            if (collected.first().content !== solved)
+            if(collected.first().content !== solved)
                 return msg.say(stripIndents`
                     Aw... Too bad, try again next time!
                     The correct answer is: ${solved}
                 `);
             return msg.say(`Good Job! You won! ${solved} is the correct answer!`);
-        } catch (err) {
+        } catch(err) {
             return msg.say(stripIndents`
                 Aw... Too bad, try again next time!
                 The correct answer is: ${solved}

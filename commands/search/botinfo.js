@@ -20,21 +20,19 @@ module.exports = class BotSearchCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { bot } = args;
         try {
             const { body } = await request
                 .get(`https://bots.discord.pw/api/bots/${bot.id}`)
-                .set({
-                    'Authorization': process.env.DISCORD_BOTS_KEY
-                });
+                .set({ 'Authorization': process.env.DISCORD_BOTS_KEY });
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
-                .setAuthor('Discord Bots', 'https://cdn.discordapp.com/icons/110373943822540800/47336ad0631ac7aac0a48a2ba6246c65.jpg')
+                .setAuthor('Discord Bots', 'https://i.imgur.com/lrKYBQi.jpg')
                 .setTitle(body.name)
-                .setURL('https://bots.discord.pw/')
+                .setURL(`https://bots.discord.pw/bots/${bot.id}`)
                 .setDescription(body.description)
                 .addField('**Library:**',
                     body.library, true)
@@ -43,7 +41,7 @@ module.exports = class BotSearchCommand extends Command {
                 .addField('**Prefix:**',
                     body.prefix, true);
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Error Occurred. The bot may not have been found.');
         }
     }

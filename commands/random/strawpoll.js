@@ -15,7 +15,7 @@ module.exports = class StrawpollCommand extends Command {
                     prompt: 'What would you like the title of the Strawpoll to be?',
                     type: 'string',
                     validate: title => {
-                        if (title.length < 200)
+                        if(title.length < 200)
                             return true;
                         return `Please keep your title under 200 characters, you have ${title.length}.`;
                     }
@@ -26,7 +26,7 @@ module.exports = class StrawpollCommand extends Command {
                     type: 'string',
                     infinite: true,
                     validate: choice => {
-                        if (choice.length < 160)
+                        if(choice.length < 160)
                             return true;
                         return `Please keep your options under 160 characters each, you have ${choice.length}.`;
                     }
@@ -37,22 +37,19 @@ module.exports = class StrawpollCommand extends Command {
 
     async run(msg, args) {
         const { title, options } = args;
-        if (options.length < 2)
+        if(options.length < 2)
             return msg.say('You provided less than two choices.');
-        if (options.length > 31)
+        if(options.length > 31)
             return msg.say('You provided more than thirty choices.');
         try {
             const { body } = await request
                 .post('https://strawpoll.me/api/v2/polls')
-                .send({
-                    title,
-                    options
-                });
+                .send({ title, options });
             return msg.say(stripIndents`
                 ${body.title}
                 http://strawpoll.me/${body.id}
             `);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Unknown Error Occurred.');
         }
     }

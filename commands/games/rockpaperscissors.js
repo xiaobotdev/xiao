@@ -17,7 +17,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
                     prompt: '`Rock`, `Paper`, or `Scissors`?',
                     type: 'string',
                     validate: choice => {
-                        if (['rock', 'paper', 'scissors'].includes(choice.toLowerCase()))
+                        if(['rock', 'paper', 'scissors'].includes(choice.toLowerCase()))
                             return true;
                         return 'Please enter either `rock`, `paper`, or `scissors`.';
                     },
@@ -30,26 +30,26 @@ module.exports = class RockPaperScissorsCommand extends Command {
     run(msg, args) {
         const { choice } = args;
         const response = responses[Math.floor(Math.random() * responses.length)];
-        if (choice === 'rock') {
-            if (response === 'Rock')
+        if(choice === 'rock') {
+            if(response === 'Rock')
                 return msg.say('Rock! Aw, it\'s a tie!');
-            if (response === 'Paper')
+            if(response === 'Paper')
                 return msg.say('Paper! Yes! I win!');
-            if (response === 'Scissors')
+            if(response === 'Scissors')
                 return msg.say('Scissors! Aw... I lose...');
-        } else if (choice === 'paper') {
-            if (response === 'Rock')
+        } else if(choice === 'paper') {
+            if(response === 'Rock')
                 return msg.say('Rock! Aw... I lose...');
-            if (response === 'Paper')
+            if(response === 'Paper')
                 return msg.say('Paper! Aw, it\'s a tie!');
-            if (response === 'Scissors')
+            if(response === 'Scissors')
                 return msg.say('Scissors! Yes! I win!');
-        } else if (choice === 'scissors') {
-            if (response === 'Rock')
+        } else if(choice === 'scissors') {
+            if(response === 'Rock')
                 return msg.say('Rock! Yes! I win!');
-            if (response === 'Paper')
+            if(response === 'Paper')
                 return msg.say('Paper! Aw... I lose...');
-            if (response === 'Scissors')
+            if(response === 'Scissors')
                 return msg.say('Scissors! Aw, it\'s a tie!');
         }
     }

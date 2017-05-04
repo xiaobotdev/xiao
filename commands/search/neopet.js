@@ -27,10 +27,10 @@ module.exports = class NeopetCommand extends Command {
                 .get(`http://www.sunnyneo.com/petimagefinder.php?name=${query}&size=5&mood=1`);
             const $ = cheerio.load(text);
             const link = $('textarea').first().text();
-            if (!link.includes('cp'))
+            if(!link.includes('cp'))
                 return msg.say('This is not a valid pet name.');
             return msg.say(link);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Unknown Error Occurred.');
         }
     }

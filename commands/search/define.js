@@ -21,8 +21,8 @@ module.exports = class DefineCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
@@ -33,7 +33,7 @@ module.exports = class DefineCommand extends Command {
                 .setTitle(body[0].word)
                 .setDescription(body[0].text);
             return msg.embed(embed);
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Error Occurred. The word may not have been found.');
         }
     }

@@ -28,8 +28,8 @@ module.exports = class HelpCommand extends Command {
         const { command } = args;
         const commands = this.client.registry.findCommands(command, false, msg);
         const showAll = command && command.toLowerCase() === 'all';
-        if (command && !showAll) {
-            if (commands.length === 1) {
+        if(command && !showAll) {
+            if(commands.length === 1) {
                 return msg.say(stripIndents`
                     __Command **${commands[0].name}**:__ *${commands[0].description}*
                     ${commands[0].guildOnly ? 'Usable Only in Servers' : 'Usable in Servers and DM'}
@@ -38,17 +38,15 @@ module.exports = class HelpCommand extends Command {
                     **Group:** ${commands[0].group.name}
                     ${commands[0].details || ''}
                 `);
-            } else if (commands.length > 1) {
+            } else if(commands.length > 1) {
                 return msg.say('Multiple Commands Found. Please be more specific.');
             } else {
-                return msg.say(`Could not identify command. Use ${msg.usage(
-                        null, msg.channel.type === 'dm' ? null : undefined, msg.channel.type === 'dm' ? null : undefined
-                    )} to view a list of commands you can use.`);
+                return msg.say(`Could not identify command. Use ${msg.usage(null)} to view a list of commands you can use.`);
             }
         } else {
             const embed = new RichEmbed()
                 .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
-                .setDescription(`Use ${this.usage('<command>', null, null)} to view detailed information about a specific command.`)
+                .setDescription(`Use ${msg.usage('<command>')} to view detailed information about a specific command.`)
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.array()) {
                 embed.addField(group.name,
@@ -57,9 +55,9 @@ module.exports = class HelpCommand extends Command {
                         group.commands.map(c => `\`${c.name}\``).join(', '));
             }
             try {
-                await msg.author.send({embed});
+                await msg.author.send({ embed });
                 return msg.say(':mailbox_with_mail: Sent you a DM with information.');
-            } catch (err) {
+            } catch(err) {
                 return msg.say('Failed to send DM. You probably have DMs disabled.');
             }
         }

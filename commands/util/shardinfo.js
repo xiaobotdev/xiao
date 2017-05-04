@@ -24,11 +24,11 @@ module.exports = class ShardInfoCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { shard } = args;
-        if (shard > this.client.options.shardCount - 1 || shard < 0)
+        if(shard > this.client.options.shardCount - 1 || shard < 0)
             return msg.say('The Shard ID is not valid.');
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');

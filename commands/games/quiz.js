@@ -17,8 +17,8 @@ module.exports = class QuizCommand extends Command {
     }
 
     async run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(msg.channel.type !== 'dm')
+            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { body } = await request
@@ -37,16 +37,16 @@ module.exports = class QuizCommand extends Command {
                     time: 15000,
                     errors: ['time']
                 });
-                if (collected.first().content.toLowerCase() !== answer)
+                if(collected.first().content.toLowerCase() !== answer)
                     return msg.say(`The correct answer is: ${answer}`);
                 return msg.say(`Perfect! The correct answer is: ${answer}`);
-            } catch (err) {
+            } catch(err) {
                 return msg.say(stripIndents`
                     Aw... Too bad, try again next time!
                     The Correct Answer was: ${answer}
                 `);
             }
-        } catch (err) {
+        } catch(err) {
             return msg.say('An Unknown Error Occurred.');
         }
     }

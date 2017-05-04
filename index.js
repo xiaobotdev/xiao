@@ -32,22 +32,20 @@ client.registry
         ['roleplay', 'Roleplay']
     ])
     .registerDefaultGroups()
-    .registerDefaultCommands({
-        help: false
-    })
+    .registerDefaultCommands({ help: false })
     .registerCommandsIn(path.join(__dirname, 'commands'));
     
 client.on('guildMemberAdd', (member) => {
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
-    if (!channel) return;
-    if (!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
+    if(!channel) return;
+    if(!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     channel.send(`Welcome ${member.user.username}!`);
 });
 
 client.on('guildMemberRemove', (member) => {
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
-    if (!channel) return;
-    if (!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
+    if(!channel) return;
+    if(!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     channel.send(`Bye ${member.user.username}...`);
 });
 
@@ -59,13 +57,13 @@ client.on('guildCreate', async(guild) => {
     try {
         await carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon.`);
-    } catch (err) {
+    } catch(err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
         await discordBots(count, client.user.id);
         console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
-    } catch (err) {
+    } catch(err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
 });
@@ -78,13 +76,13 @@ client.on('guildDelete', async(guild) => {
     try {
         await carbon(count);
         console.log(`[Carbon] Successfully posted to Carbon.`);
-    } catch (err) {
+    } catch(err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
         await discordBots(count, client.user.id);
         console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
-    } catch (err) {
+    } catch(err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
 });

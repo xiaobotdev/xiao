@@ -21,7 +21,7 @@ module.exports = class WarnCommand extends Command {
                     prompt: 'What do you want to set the reason as?',
                     type: 'string',
                     validate: reason => {
-                        if (reason.length < 140)
+                        if(reason.length < 140)
                             return true;
                         return `Please keep your reason under 140 characters, you have ${reason.length}.`;
                     }
@@ -36,9 +36,9 @@ module.exports = class WarnCommand extends Command {
 
     async run(msg, args) {
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog', 'mod_logs'));
-        if (!modlogs)
+        if(!modlogs)
             return msg.say('This Command requires a channel set with the `modchannel` command.');
-        if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if(!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
         try {
@@ -52,8 +52,8 @@ module.exports = class WarnCommand extends Command {
                     **Action:** Warn
                     **Reason:** ${reason}
                 `);
-            return modlogs.send({embed});
-        } catch (err) {
+            return modlogs.send({ embed });
+        } catch(err) {
             return msg.say('An Unknown Error Occurred.');
         }
     }

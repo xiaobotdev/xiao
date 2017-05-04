@@ -16,7 +16,7 @@ module.exports = class SlotsCommand extends Command {
         const slotOne = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
         const slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
-        if (slotOne === slotTwo && slotOne === slotThree)
+        if(slotOne === slotTwo && slotOne === slotThree)
             return msg.say(stripIndents`
                 ${slotOne}|${slotTwo}|${slotThree}
                 Wow! You won! Great job... er... luck!
