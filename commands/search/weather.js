@@ -29,7 +29,7 @@ module.exports = class WeatherCommand extends Command {
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")&format=json`);
             const embed = new RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(body.query.results.channel.title, 'http://media.idownloadblog.com/wp-content/uploads/2013/12/yahoo-weather-213x220.png')
+                .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
                 .setURL(body.query.results.channel.link)
                 .setTimestamp()
                 .addField('**City:**',
