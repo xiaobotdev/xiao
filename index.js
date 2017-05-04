@@ -38,6 +38,8 @@ client.registry
 client.dispatcher.addInhibitor(msg => {
     const role = msg.guild.settings.get('singleRole');
     if(!role) return false;
+    if(client.isOwner(msg.author)) return false;
+    if(msg.member.hasPermission('ADMINISTRATOR')) return false;
     if(!msg.member.roles.has(role))
         return `Only the ${msg.guild.roles.get(role).name} may use commands.`;
 });
