@@ -41,7 +41,7 @@ client.dispatcher.addInhibitor(msg => {
     if(client.isOwner(msg.author)) return false;
     if(msg.member.hasPermission('ADMINISTRATOR')) return false;
     if(!msg.member.roles.has(role))
-        return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} may use commands.`)];
+        return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} role may use commands.`)];
 });
 
 client.on('guildMemberAdd', (member) => {
