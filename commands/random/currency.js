@@ -31,7 +31,7 @@ module.exports = class CurrencyCommand extends Command {
                             return true;
                         return `${to} is not a valid currency code. Use \`help currency\` to view a list of codes.`;
                     },
-                    parse: code => code.toUpperCase()
+                    parse: to => to.toUpperCase()
                 },
                 {
                     key: 'amount',
@@ -44,7 +44,7 @@ module.exports = class CurrencyCommand extends Command {
 
     async run(msg, args) {
         const { base, to, amount } = args;
-        if(base === to) return msg.say(`${amount} ${base} is ${amount} ${base}.`);
+        if(base === to) return msg.say(`${amount} ${base} is ${amount} ${to}.`);
         try {
             const { body } = await request
                 .get(`http://api.fixer.io/latest?base=${base}&symbols=${to}`);
