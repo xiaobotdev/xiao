@@ -7,7 +7,7 @@ module.exports = class CurrencyCommand extends Command {
         super(client, {
             name: 'currency',
             group: 'random',
-            memberName: 'currentUser',
+            memberName: 'currency',
             description: 'Converts from one currency to another.',
             details: `**Codes:** ${codes.join(', ')}`,
             args: [
