@@ -16,7 +16,7 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to use as the base?',
                     type: 'string',
                     validate: base => {
-                        if(codes[base.toUpperCase()])
+                        if(codes.includes(base.toUpperCase()))
                             return true;
                         return `${base} is not a valid currency code. Use \`help currency\` to view a list of codes.`;
                     },
@@ -27,7 +27,7 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to convert to?',
                     type: 'string',
                     validate: to => {
-                        if(codes[to.toUpperCase()])
+                        if(codes.includes(to.toUpperCase()))
                             return true;
                         return `${to} is not a valid currency code. Use \`help currency\` to view a list of codes.`;
                     },
