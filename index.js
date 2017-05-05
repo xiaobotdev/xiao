@@ -36,6 +36,7 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.dispatcher.addInhibitor(msg => {
+    if(msg.channel.type === 'dm') return false;
     const role = msg.guild.settings.get('singleRole');
     if(!role) return false;
     if(client.isOwner(msg.author)) return false;
