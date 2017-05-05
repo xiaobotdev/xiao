@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
 const math = require('mathjs');
 const operations = ['+', '-', '*'];
 
@@ -14,12 +13,11 @@ module.exports = class MathGameCommand extends Command {
             args: [
                 {
                     key: 'difficulty',
-                    prompt: 'What should the difficulty of the math game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
+                    prompt: 'What should the difficulty of the game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
                     type: 'string',
                     validate: difficulty => {
-                        if(['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
-                            return true;
-                        return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
+                        if(['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase())) return true;
+                        return 'The difficulty must be either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                     },
                     parse: difficulty => difficulty.toLowerCase()
                 }
@@ -64,16 +62,10 @@ module.exports = class MathGameCommand extends Command {
                 errors: ['time']
             });
             if(collected.first().content !== solved)
-                return msg.say(stripIndents`
-                    Aw... Too bad, try again next time!
-                    The correct answer is: ${solved}
-                `);
-            return msg.say(`Good Job! You won! ${solved} is the correct answer!`);
+                return msg.say(`Nope! The correct answer is: ${solved}.`);
+            return msg.say(`Perfect! ${solved} is the correct answer!`);
         } catch(err) {
-            return msg.say(stripIndents`
-                Aw... Too bad, try again next time!
-                The correct answer is: ${solved}
-            `);
+            return msg.say(`Time! The correct answer is ${solved}.`);
         }
     }
 };

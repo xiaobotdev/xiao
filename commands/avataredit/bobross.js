@@ -38,7 +38,7 @@ module.exports = class BobRossCommand extends Command {
         blank.composite(avatar, 44, 85);
         blank.composite(bob, 0, 0);
         blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if(err) return msg.say('An Unknown Error Occurred.');
+            if(err) return msg.say(`An Error Occurred: ${err}`);
             return msg.channel.send({ files: [{ attachment: buff, name: 'bobross.png' }] })
                 .catch(err => msg.say(`An Error Occurred: ${err}`));
         });

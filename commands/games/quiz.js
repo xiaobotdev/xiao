@@ -38,16 +38,13 @@ module.exports = class QuizCommand extends Command {
                     errors: ['time']
                 });
                 if(collected.first().content.toLowerCase() !== answer)
-                    return msg.say(`The correct answer is: ${answer}`);
-                return msg.say(`Perfect! The correct answer is: ${answer}`);
+                    return msg.say(`The correct answer is: ${answer}.`);
+                return msg.say(`Perfect! The correct answer is: ${answer}.`);
             } catch(err) {
-                return msg.say(stripIndents`
-                    Aw... Too bad, try again next time!
-                    The Correct Answer was: ${answer}
-                `);
+                return msg.say(`Time! The correct answer is: ${answer}`);
             }
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}.`);
         }
     }
 };

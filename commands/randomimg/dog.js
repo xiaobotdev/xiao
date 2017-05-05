@@ -21,7 +21,7 @@ module.exports = class DogCommand extends Command {
             return msg.channel.send({ files: [body.url] })
                 .catch(err => msg.say(`An Error Occurred: ${err}`));
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

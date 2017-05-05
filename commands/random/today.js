@@ -31,7 +31,7 @@ module.exports = class TodayCommand extends Command {
                 .setDescription(`${events[random].year}: ${events[random].text}`);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

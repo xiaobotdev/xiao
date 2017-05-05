@@ -42,7 +42,7 @@ module.exports = class BotSearchCommand extends Command {
                     body.prefix, true);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The bot may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

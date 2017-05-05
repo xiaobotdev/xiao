@@ -28,6 +28,7 @@ module.exports = class OsuCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${query}&type=string`);
+            if(body.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
@@ -58,7 +59,7 @@ module.exports = class OsuCommand extends Command {
                     body[0].count_rank_a, true);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The user may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

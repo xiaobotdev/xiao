@@ -27,6 +27,7 @@ module.exports = class ForecastCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")&format=json`);
+            if(body.query.count === 0) throw new Error('Location Not Found.');
             const forecasts = body.query.results.channel.item.forecast;
             const embed = new RichEmbed()
                 .setColor(0x0000FF)
@@ -49,7 +50,7 @@ module.exports = class ForecastCommand extends Command {
                     `**High:** ${forecasts[6].high}°F, **Low:** ${forecasts[6].low}°F, **Condition:** ${forecasts[6].text}`);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The location may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

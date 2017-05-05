@@ -41,7 +41,7 @@ module.exports = class MapCommand extends Command {
             return msg.channel.send({ files: [{ attachment: body, name: 'map.png' }] })
                 .catch(err => msg.say(`An Error Occurred: ${err}`));
         } catch(err) {
-            return msg.say('An Error Occurred. The location may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

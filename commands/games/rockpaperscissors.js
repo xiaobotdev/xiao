@@ -17,8 +17,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
                     prompt: '`Rock`, `Paper`, or `Scissors`?',
                     type: 'string',
                     validate: choice => {
-                        if(['rock', 'paper', 'scissors'].includes(choice.toLowerCase()))
-                            return true;
+                        if(['rock', 'paper', 'scissors'].includes(choice.toLowerCase())) return true;
                         return 'Please enter either `rock`, `paper`, or `scissors`.';
                     },
                     parse: choice => choice.toLowerCase()

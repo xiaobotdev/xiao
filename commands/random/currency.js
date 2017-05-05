@@ -16,9 +16,8 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to use as the base?',
                     type: 'string',
                     validate: base => {
-                        if(codes.includes(base.toUpperCase()))
-                            return true;
-                        return `${base} is not a valid currency code. Use \`help currency\` to view a list of codes.`;
+                        if(codes.includes(base.toUpperCase())) return true;
+                        return  'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
                     },
                     parse: base => base.toUpperCase()
                 },
@@ -27,9 +26,8 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to convert to?',
                     type: 'string',
                     validate: to => {
-                        if(codes.includes(to.toUpperCase()))
-                            return true;
-                        return `${to} is not a valid currency code. Use \`help currency\` to view a list of codes.`;
+                        if(codes.includes(to.toUpperCase())) return true;
+                        return 'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
                     },
                     parse: to => to.toUpperCase()
                 },
@@ -52,7 +50,7 @@ module.exports = class CurrencyCommand extends Command {
             const converted = rate * amount;
             return msg.say(`${amount} ${base} is ${converted} ${to}.`);
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };
