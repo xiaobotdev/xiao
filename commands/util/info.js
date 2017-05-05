@@ -83,7 +83,8 @@ module.exports = class InfoCommand extends Command {
                     [rrrather](http://www.rrrather.com/botapi),
                     [SoundCloud](https://developers.soundcloud.com/),
                     [random.cat](http://random.cat/),
-                    [random.dog](https://random.dog/)
+                    [random.dog](https://random.dog/),
+                    [fixer.io](http://fixer.io/)
                 `
             );
         return msg.embed(embed);
