@@ -29,7 +29,7 @@
   },
   "homepage": "http://dragonfire535.weebly.com/xiaobot.html",
   "engines": {
-    "node": "7.9.0"
+    "node": "7.10.0"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
