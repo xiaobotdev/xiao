@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const request = require('superagent');
-const codes = require('./codes');
+const codes = require('./currencycodes');
 
 module.exports = class CurrencyCommand extends Command {
     constructor(client) {
