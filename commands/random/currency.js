@@ -48,7 +48,7 @@ module.exports = class CurrencyCommand extends Command {
         try {
             const { body } = await request
                 .get(`http://api.fixer.io/latest?base=${base}`);
-            const rate = body[to];
+            const rate = body.rates[to];
             const converted = rate * amount;
             return msg.say(`${amount} ${base} is ${converted} ${to}.`);
         } catch(err) {
