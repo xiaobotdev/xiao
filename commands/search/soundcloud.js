@@ -28,6 +28,7 @@ module.exports = class SoundCloudCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${process.env.SOUNDCLOUD_KEY}`);
+            if(body.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF15A22)
                 .setAuthor(body[0].title, 'https://i.imgur.com/lFIz7RU.png')
@@ -45,7 +46,7 @@ module.exports = class SoundCloudCommand extends Command {
                     body[0].favoritings_count, true);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The song may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

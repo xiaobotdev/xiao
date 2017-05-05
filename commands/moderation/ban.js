@@ -11,7 +11,7 @@ module.exports = class BanCommand extends Command {
             ],
             group: 'moderation',
             memberName: 'ban',
-            description: 'Bans a user and logs the ban to the mod_logs.',
+            description: 'Bans a user and logs the ban to the mod logs.',
             guildOnly: true,
             args: [
                 {
@@ -24,9 +24,8 @@ module.exports = class BanCommand extends Command {
                     prompt: 'What do you want to set the reason as?',
                     type: 'string',
                     validate: reason => {
-                        if(reason.length < 140)
-                            return true;
-                        return `Please keep your reason under 140 characters, you have ${reason.length}.`;
+                        if(reason.length < 140) return true;
+                        return 'Invalid Reason. Reason must be under 140 characters.';
                     }
                 }
             ]
@@ -55,7 +54,7 @@ module.exports = class BanCommand extends Command {
                     Reason: ${reason}.
                 `);
             } catch(err) {
-                await msg.say('Failed to send DM to user.');
+                await msg.say('Failed to send DM to the user.');
             }
             await member.ban({ days: 7, reason });
             await msg.say(':ok_hand:');
@@ -70,7 +69,7 @@ module.exports = class BanCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

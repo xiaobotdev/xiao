@@ -28,6 +28,7 @@ module.exports = class WikipediaCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${query}&exintro=&explaintext=&redirects=&formatversion=2`);
+            if(body.query.pages[0].missing) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xE7E7E7)
                 .setTitle(body.query.pages[0].title)
@@ -36,7 +37,7 @@ module.exports = class WikipediaCommand extends Command {
                 .setDescription(body.query.pages[0].extract.substr(0, 2000).replace(/[\n]/g, '\n\n'));
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The page may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

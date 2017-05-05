@@ -15,9 +15,8 @@ module.exports = class StrawpollCommand extends Command {
                     prompt: 'What would you like the title of the Strawpoll to be?',
                     type: 'string',
                     validate: title => {
-                        if(title.length < 200)
-                            return true;
-                        return `Please keep your title under 200 characters, you have ${title.length}.`;
+                        if(title.length < 200) return true;
+                        return 'Invalid Title. Title must be under 200 characters.';
                     }
                 },
                 {
@@ -26,9 +25,8 @@ module.exports = class StrawpollCommand extends Command {
                     type: 'string',
                     infinite: true,
                     validate: choice => {
-                        if(choice.length < 160)
-                            return true;
-                        return `Please keep your options under 160 characters each, you have ${choice.length}.`;
+                        if(choice.length < 160) return true;
+                        return 'Invalid Choice. Choices must be under 140 characters each.';
                     }
                 }
             ]
@@ -50,7 +48,7 @@ module.exports = class StrawpollCommand extends Command {
                 http://strawpoll.me/${body.id}
             `);
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

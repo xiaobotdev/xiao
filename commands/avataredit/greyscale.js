@@ -28,7 +28,7 @@ module.exports = class GreyscaleCommand extends Command {
         const avatar = await Jimp.read(avatarURL);
         avatar.greyscale();
         avatar.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if(err) return msg.say('An Unknown Error Occurred.');
+            if(err) return msg.say(`An Error Occurred: ${err}`);
             return msg.channel.send({ files: [{ attachment: buff, name: 'greyscale.png' }] })
                 .catch(err => msg.say(`An Error Occurred: ${err}`));
         });

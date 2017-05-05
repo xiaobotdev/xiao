@@ -28,6 +28,7 @@ module.exports = class YouTubeCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${process.env.GOOGLE_KEY}`);
+            if(body.items.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xDD2825)
                 .setTitle(body.items[0].snippet.title)
@@ -37,7 +38,7 @@ module.exports = class YouTubeCommand extends Command {
                 .setThumbnail(body.items[0].snippet.thumbnails.default.url);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The video may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

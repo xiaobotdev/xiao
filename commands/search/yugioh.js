@@ -28,6 +28,7 @@ module.exports = class YuGiOhCommand extends Command {
         try {
             const { body } = await request
                 .get(`http://yugiohprices.com/api/card_data/${query}`);
+            if(body.status === 'fail') throw new Error('No Results.');
             if(body.data.card_type === 'monster') {
                 const embed = new RichEmbed()
                     .setColor(0xBE5F1F)
@@ -35,7 +36,7 @@ module.exports = class YuGiOhCommand extends Command {
                     .setDescription(body.data.text)
                     .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
                     .addField('**Card Type:**',
-                        'Monster', true)
+                        'monster', true)
                     .addField('**Type:**',
                         body.data.type, true)
                     .addField('**Attribute:**',
@@ -57,7 +58,7 @@ module.exports = class YuGiOhCommand extends Command {
                     body.data.card_type, true);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The card may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

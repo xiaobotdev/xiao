@@ -28,6 +28,7 @@ module.exports = class IMDBCommand extends Command {
         try {
             const { body } = await request
                 .get(`http://www.omdbapi.com/?t=${query}&plot=full`);
+            if(body.Error) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xDBA628)
                 .setAuthor('IMDB', 'https://i.imgur.com/sXwwIQs.png')
@@ -50,7 +51,7 @@ module.exports = class IMDBCommand extends Command {
                     body.Actors);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The film may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

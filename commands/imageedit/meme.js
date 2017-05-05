@@ -15,9 +15,8 @@ module.exports = class MemeCommand extends Command {
                     prompt: 'What meme type do you want to use?',
                     type: 'string',
                     validate: type => {
-                        if(codes.includes(type.toLowerCase()))
-                            return true;
-                        return `${type.toLowerCase()} is not a valid meme type. Use \`help meme\` to view a list of types.`;
+                        if(codes.includes(type.toLowerCase())) return true;
+                        return 'Invalid meme type. Use `help meme` to view a list of meme types.';
                     },
                     parse: type => type.toLowerCase()
                 },
@@ -25,23 +24,13 @@ module.exports = class MemeCommand extends Command {
                     key: 'top',
                     prompt: 'What should the top row of the meme to be?',
                     type: 'string',
-                    validate: top => {
-                        if(/[a-zA-Z0-9.,!?'\s]+$/g.test(top) && top.length < 100)
-                            return true;
-                        return `Please do not use special characters and keep the rows under 100 characters each, top row has ${top.length}.`;
-                    },
-                    parse: top => top.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
+                    parse: top => encodeURIComponent(top.replace(/[ ]/g, '-'))
                 },
                 {
                     key: 'bottom',
                     prompt: 'What should the bottom row of the meme to be?',
                     type: 'string',
-                    validate: bottom => {
-                        if(/[a-zA-Z0-9.,!?'\s]+$/g.test(bottom) && bottom.length < 100)
-                            return true;
-                        return `Please do not use special characters and keep the rows under 100 characters each, bottom row has ${bottom.length}.`;
-                    },
-                    parse: bottom => bottom.replace(/[ ]/g, '-').replace(/[?]/g, '~q')
+                    parse: bottom => encodeURIComponent(bottom.replace(/[ ]/g, '-'))
                 }
             ]
         });

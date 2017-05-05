@@ -29,7 +29,7 @@ module.exports = class WouldYouRatherCommand extends Command {
                 .setDescription(`${body.choicea} OR ${body.choiceb}?`);
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

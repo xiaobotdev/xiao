@@ -14,8 +14,7 @@ module.exports = class RandomNameCommand extends Command {
                     prompt: 'Which gender do you want to generate a name for?',
                     type: 'string',
                     validate: gender => {
-                        if(['male', 'female'].includes(gender.toLowerCase()))
-                            return true;
+                        if(['male', 'female'].includes(gender.toLowerCase())) return true;
                         return 'Please enter either `male` or `female`.';
                     },
                     parse: gender => gender.toLowerCase()

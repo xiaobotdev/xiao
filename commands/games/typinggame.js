@@ -12,12 +12,11 @@ module.exports = class TypingGameCommand extends Command {
             args: [
                 {
                     key: 'difficulty',
-                    prompt: 'What should the difficulty of the typing game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
+                    prompt: 'What should the difficulty of the game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
                     type: 'string',
                     validate: difficulty => {
-                        if(['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase()))
-                            return true;
-                        return 'Please set the difficulty to either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
+                        if(['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase())) return true;
+                        return 'The difficulty must be either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                     },
                     parse: difficulty => difficulty.toLowerCase()
                 }
@@ -63,7 +62,7 @@ module.exports = class TypingGameCommand extends Command {
                 return msg.say('Nope, your sentence does not match the original. Try again next time!');
             return msg.say(`Good Job! You won!`);
         } catch(err) {
-            return msg.say('Aw... Too bad, try again next time!');
+            return msg.say('Time! Try again next time!');
         }
     }
 };

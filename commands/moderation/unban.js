@@ -11,7 +11,7 @@ module.exports = class UnbanCommand extends Command {
             ],
             group: 'moderation',
             memberName: 'unban',
-            description: 'Unbans a user and logs the unban to the mod_logs.',
+            description: 'Unbans a user and logs the unban to the mod logs.',
             guildOnly: true,
             args: [
                 {
@@ -19,9 +19,8 @@ module.exports = class UnbanCommand extends Command {
                     prompt: 'What member do you want to unban? Please enter the ID of the user.',
                     type: 'string',
                     validate: id => {
-                        if(id.length === 18)
-                            return true;
-                        return `${id} is not a valid ID. Please enter the user you wish to unban's ID.`;
+                        if(id.length === 18) return true;
+                        return 'Invalid ID.';
                     }
                 },
                 {
@@ -29,9 +28,8 @@ module.exports = class UnbanCommand extends Command {
                     prompt: 'What do you want to set the reason as?',
                     type: 'string',
                     validate: reason => {
-                        if(reason.length < 140)
-                            return true;
-                        return `Please keep your reason under 140 characters, you have ${reason.length}.`;
+                        if(reason.length < 140) return true;
+                        return 'Invalid Reason. Reason must be under 140 characters.';
                     }
                 }
             ]
@@ -45,7 +43,7 @@ module.exports = class UnbanCommand extends Command {
     async run(msg, args) {
         if(!msg.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
             return msg.say('This Command requires the `Ban Members` Permission.');
-        const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog', 'mod_logs'));
+        const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
         if(!modlogs)
             return msg.say('This Command requires a channel set with the `modchannel` command.');
         if(!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
@@ -69,7 +67,7 @@ module.exports = class UnbanCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

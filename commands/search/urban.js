@@ -28,6 +28,7 @@ module.exports = class UrbanCommand extends Command {
         try {
             const { body } = await request
                 .get(`http://api.urbandictionary.com/v0/define?term=${query}`);
+            if(body.list.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x32a8f0)
                 .setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')
@@ -38,7 +39,7 @@ module.exports = class UrbanCommand extends Command {
                     body.list[0].example.substr(0, 2000) || 'None');
             return msg.embed(embed);
         } catch(err) {
-            return msg.say('An Error Occurred. The word may not have been found.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

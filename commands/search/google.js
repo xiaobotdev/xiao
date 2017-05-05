@@ -29,11 +29,11 @@ module.exports = class GoogleCommand extends Command {
                 .get(`https://www.google.com/search?q=${query}`);
             const $ = cheerio.load(text);
             let href = $('.r').first().find('a').first().attr('href');
-            if(!href) throw new Error('No Results');
+            if(!href) throw new Error('No Results.');
             href = querystring.parse(href.replace('/url?', ''));
             return message.edit(href.q);
         } catch(err) {
-            return message.edit('No Results Found.');
+            return message.edit('An Error Occurred: No Results.');
         }
     }
 };

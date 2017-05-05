@@ -8,7 +8,7 @@ module.exports = class KickCommand extends Command {
             name: 'kick',
             group: 'moderation',
             memberName: 'kick',
-            description: 'Kicks a user and logs the kick to the mod_logs.',
+            description: 'Kicks a user and logs the kick to the mod logs.',
             guildOnly: true,
             args: [
                 {
@@ -21,9 +21,8 @@ module.exports = class KickCommand extends Command {
                     prompt: 'What do you want to set the reason as?',
                     type: 'string',
                     validate: reason => {
-                        if(reason.length < 140)
-                            return true;
-                        return `Please keep your reason under 140 characters, you have ${reason.length}.`;
+                        if(reason.length < 140) return true;
+                        return 'Invalid Reason. Reason must be under 140 characters.';
                     }
                 }
             ]
@@ -67,7 +66,7 @@ module.exports = class KickCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch(err) {
-            return msg.say('An Unknown Error Occurred.');
+            return msg.say(`An Error Occurred: ${err}`);
         }
     }
 };

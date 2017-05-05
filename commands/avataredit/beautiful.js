@@ -36,7 +36,7 @@ module.exports = class BeautifulCommand extends Command {
         grunkle.composite(avatar, 341, 35);
         grunkle.composite(avatar, 342, 301);
         grunkle.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if(err) return msg.say('An Unknown Error Occurred.');
+            if(err) return msg.say(`An Error Occurred: ${err}`);
             return msg.channel.send({ files: [{ attachment: buff, name: 'beautiful.png' }] })
                 .catch(err => msg.say(`An Error Occurred: ${err}`));
         });

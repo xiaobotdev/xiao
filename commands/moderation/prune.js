@@ -19,9 +19,8 @@ module.exports = class PruneCommand extends Command {
                     prompt: 'How many messages do you want to delete? Limit of up to 99.',
                     type: 'integer',
                     validate: count => {
-                        if(count < 100 && count > 0)
-                            return true;
-                        return `${count} is not a valid amount of messages. Limit 1-99.`;
+                        if(count < 100 && count > 0) return true;
+                        return 'Invalid Count. Count must be from 1-99.';
                     }
                 }
             ]
