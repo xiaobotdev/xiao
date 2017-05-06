@@ -27,7 +27,7 @@ module.exports = class UserInfoCommand extends Command {
         });
     }
 
-    async run(msg, args) {
+    run(msg, args) {
         if(msg.channel.type !== 'dm')
             if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
