@@ -48,43 +48,43 @@ module.exports = class InfoCommand extends Command {
             .addField('Node Version',
                 process.version, true)
             .addField('Library',
-                '[discord.js](https://discord.js.org/#/)', true)
+                '[discord.js](https://discord.js.org)', true)
             .addField('Modules',
                 oneLine`
                     [commando](https://github.com/Gawdl3y/discord.js-commando),
                     [zalgoize](https://github.com/clux/zalgolize),
-                    [superagent](https://github.com/visionmedia/superagent),
-                    [mathjs](http://mathjs.org/),
+                    [superagent](https://visionmedia.github.io/superagent),
+                    [mathjs](http://mathjs.org),
                     [moment](http://momentjs.com),
                     [moment-duration-format](https://github.com/jsmreese/moment-duration-format),
                     [jimp](https://github.com/oliver-moran/jimp),
-                    [cheerio](https://cheerio.js.org/),
-                    [sequelize](http://docs.sequelizejs.com/en/v3/),
+                    [cheerio](https://cheerio.js.org),
+                    [sequelize](http://docs.sequelizejs.com),
                     [pg](https://github.com/brianc/node-postgres)
                 `
             )
             .addField('APIs',
                 oneLine`
-                    [Wattpad](https://developer.wattpad.com/docs/api),
-                    [Wordnik](http://developer.wordnik.com/docs.html),
+                    [Wattpad](https://developer.wattpad.com),
+                    [Wordnik](http://developer.wordnik.com),
                     [osu!](https://osu.ppy.sh/p/api),
-                    [memegen.link](https://memegen.link/),
-                    [Yugioh Prices](http://docs.yugiohprices.apiary.io/#),
-                    [YouTube Data](https://developers.google.com/youtube/v3/),
+                    [memegen.link](https://memegen.link),
+                    [YuGiOh](http://docs.yugiohprices.apiary.io),
+                    [YouTube](https://developers.google.com/youtube),
                     [Discord Bots](https://bots.discord.pw/api),
                     [Today in History](http://history.muffinlabs.com/#api),
-                    [jService](http://jservice.io/),
+                    [jService](http://jservice.io),
                     [Urban Dictionary](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation),
-                    [OMDB](http://www.omdbapi.com/),
-                    [Yahoo Weather](https://developer.yahoo.com/weather/),
+                    [OMDB](http://www.omdbapi.com),
+                    [Yahoo Weather](https://developer.yahoo.com/weather),
                     [Wikipedia](https://en.wikipedia.org/w/api.php),
-                    [Google Static Maps](https://developers.google.com/maps/documentation/static-maps/),
+                    [Google Maps](https://developers.google.com/maps),
                     [Strawpoll](https://github.com/strawpoll/strawpoll/wiki/API),
                     [rrrather](http://www.rrrather.com/botapi),
-                    [SoundCloud](https://developers.soundcloud.com/),
-                    [random.cat](http://random.cat/),
-                    [random.dog](https://random.dog/),
-                    [fixer.io](http://fixer.io/)
+                    [SoundCloud](https://developers.soundcloud.com),
+                    [random.cat](http://random.cat),
+                    [random.dog](https://random.dog),
+                    [fixer.io](http://fixer.io)
                 `
             );
         return msg.embed(embed);
