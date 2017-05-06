@@ -37,7 +37,7 @@ module.exports = class TemperatureCommand extends Command {
         });
     }
 
-    async run(msg, args) {
+    run(msg, args) {
         const { base, to, amount } = args;
         if(base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
         if(base === 'celsius') {
