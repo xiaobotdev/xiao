@@ -25,7 +25,7 @@ client.registry
         ['randomimg', 'Random Image'],
         ['avataredit', 'Avatar Manipulation'],
         ['textedit', 'Text Manipulation'],
-        ['imageedit', 'Image Manipulation'],
+        ['numedit', 'Number Manipulation'],
         ['search', 'Search'],
         ['games', 'Games'],
         ['random', 'Random/Other'],
