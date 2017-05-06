@@ -48,7 +48,7 @@ module.exports = class HelpCommand extends Command {
                 .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
                 .setDescription(`Use ${msg.usage('<command>')} to view detailed information about a specific command.`)
                 .setColor(0x00AE86);
-            for (const group of this.client.registry.groups.array()) {
+            for(const group of this.client.registry.groups.array()) {
                 embed.addField(group.name,
                     !showAll ?
                         group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available' :
