@@ -7,7 +7,13 @@ const client = new CommandoClient({
     unknownCommandResponse: false
 });
 const path = require('path');
+
 const { carbon, discordBots } = require('./structures/Stats');
+
+const Cleverbot = require('./structures/Cleverbot');
+const clevs = new Cleverbot();
+clevs.create();
+
 const SequelizeProvider = require('./providers/Sequelize');
 const Database = require('./structures/PostgreSQL');
 const database = new Database();
