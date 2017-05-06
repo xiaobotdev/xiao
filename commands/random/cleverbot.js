@@ -28,7 +28,7 @@ module.exports = class CleverbotCommand extends Command {
         try {
             const { body } = await request
                 .post('https://cleverbot.io/1.0/ask')
-                .send({ user: process.env.CLEVS_USER, key: process.env.CLEVS_KEY, text });
+                .send({ user: process.env.CLEVS_USER, key: process.env.CLEVS_KEY, text, nick: 'XiaoBot' });
             console.log(body.status, body.response, body);
             if(body.status !== 'success') throw new Error(body.status);
             return msg.reply(body.response);
