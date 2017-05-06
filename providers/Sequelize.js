@@ -24,7 +24,7 @@ class SequelizeProvider extends SettingProvider {
 		this.db = db;
 
 		/**
-		 * Client that the provider is for(set once the client is ready, after using {@link CommandoClient#setProvider})
+		 * Client that the provider is for (set once the client is ready, after using {@link CommandoClient#setProvider})
 		 * @name PostgreSQLProvider#client
 		 * @type {CommandoClient}
 		 * @readonly
