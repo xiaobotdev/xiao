@@ -24,7 +24,7 @@ class SequelizeProvider extends SettingProvider {
 		this.db = db;
 
 		/**
-		 * Client that the provider is for (set once the client is ready, after using {@link CommandoClient#setProvider})
+		 * Client that the provider is for(set once the client is ready, after using {@link CommandoClient#setProvider})
 		 * @name PostgreSQLProvider#client
 		 * @type {CommandoClient}
 		 * @readonly
@@ -72,7 +72,7 @@ class SequelizeProvider extends SettingProvider {
 
 		// Load all settings
 		const rows = await this.model.findAll();
-		for (const row of rows) {
+		for(const row of rows) {
 			let settings;
 			try {
 				settings = JSON.parse(row.dataValues.settings);
@@ -99,23 +99,23 @@ class SequelizeProvider extends SettingProvider {
 				this.setupGuild(guild.id, settings);
 			})
 			.set('commandRegister', command => {
-				for (const [guild, settings] of this.settings) {
+				for(const [guild, settings] of this.settings) {
 					if(guild !== 'global' && !client.guilds.has(guild)) continue;
 					this.setupGuildCommand(client.guilds.get(guild), command, settings);
 				}
 			})
 			.set('groupRegister', group => {
-				for (const [guild, settings] of this.settings) {
+				for(const [guild, settings] of this.settings) {
 					if(guild !== 'global' && !client.guilds.has(guild)) continue;
 					this.setupGuildGroup(client.guilds.get(guild), group, settings);
 				}
 			});
-		for (const [event, listener] of this.listeners) client.on(event, listener);
+		for(const [event, listener] of this.listeners) client.on(event, listener);
 	}
 
 	destroy() {
 		// Remove all listeners from the client
-		for (const [event, listener] of this.listeners) this.client.removeListener(event, listener);
+		for(const [event, listener] of this.listeners) this.client.removeListener(event, listener);
 		this.listeners.clear();
 	}
 
@@ -174,8 +174,8 @@ class SequelizeProvider extends SettingProvider {
 		}
 
 		// Load all command/group statuses
-		for (const command of this.client.registry.commands.values()) this.setupGuildCommand(guild, command, settings);
-		for (const group of this.client.registry.groups.values()) this.setupGuildGroup(guild, group, settings);
+		for(const command of this.client.registry.commands.values()) this.setupGuildCommand(guild, command, settings);
+		for(const group of this.client.registry.groups.values()) this.setupGuildGroup(guild, group, settings);
 	}
 
 	/**
