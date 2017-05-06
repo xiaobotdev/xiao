@@ -5,7 +5,7 @@ module.exports = class MathCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'math',
-            group: 'random',
+            group: 'numedit',
             memberName: 'math',
             description: 'Does math.',
             args: [

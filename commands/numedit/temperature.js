@@ -4,7 +4,7 @@ module.exports = class TemperatureCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'temperature',
-            group: 'random',
+            group: 'numedit',
             memberName: 'temperature',
             description: 'Converts temperatures to/from Celsius, Fahrenheit, or Kelvin.',
             args: [

@@ -6,7 +6,7 @@ module.exports = class CurrencyCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'currency',
-            group: 'random',
+            group: 'numedit',
             memberName: 'currency',
             description: 'Converts from one currency to another.',
             details: `**Codes:** ${codes.join(', ')}`,
@@ -47,8 +47,7 @@ module.exports = class CurrencyCommand extends Command {
             const { body } = await request
                 .get(`http://api.fixer.io/latest?base=${base}&symbols=${to}`);
             const rate = body.rates[to];
-            const converted = rate * amount;
-            return msg.say(`${amount} ${base} is ${converted} ${to}.`);
+            return msg.say(`${amount} ${base} is ${amount * rate} ${to}.`);
         } catch(err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
