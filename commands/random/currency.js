@@ -42,7 +42,7 @@ module.exports = class CurrencyCommand extends Command {
 
     async run(msg, args) {
         const { base, to, amount } = args;
-        if(base === to) return msg.say(`${amount} ${base} is ${amount} ${to}.`);
+        if(base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
         try {
             const { body } = await request
                 .get(`http://api.fixer.io/latest?base=${base}&symbols=${to}`);
