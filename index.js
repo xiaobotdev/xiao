@@ -49,14 +49,22 @@ client.on('guildMemberAdd', (member) => {
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
     if(!channel) return;
     if(!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-    channel.send(`Welcome ${member.user.username}!`);
+    const msg = member.guild.settings.get('joinMsg', 'Welcome <user>!')
+        .replace(/(<user>)/gi, member.user.username)
+        .replace(/(<server>)/gi, member.guild.name)
+        .replace(/(<mention>)/gi, member);
+    channel.send(msg);
 });
 
 client.on('guildMemberRemove', (member) => {
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
     if(!channel) return;
     if(!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-    channel.send(`Bye ${member.user.username}...`);
+    const msg = member.guild.settings.get('leaveMsg', 'Bye <user>...')
+        .replace(/(<user>)/gi, member.user.username)
+        .replace(/(<server>)/gi, member.guild.name)
+        .replace(/(<mention>)/gi, member);
+    channel.send(msg);
 });
 
 client.on('guildCreate', async(guild) => {

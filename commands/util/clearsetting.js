@@ -6,16 +6,16 @@ module.exports = class ClearSettingCommand extends Command {
             name: 'clear-setting',
             group: 'util',
             memberName: 'clear-setting',
-            description: 'Removes a custom-set Mod Channel, Member Channel, Staff Role, or Single Role.',
+            description: 'Removes a custom-set Mod Channel, Member Channel, Member Message, Staff Role, or Single Role.',
             guildOnly: true,
             args: [
                 {
                     key: 'setting',
-                    prompt: 'What setting do you want to clear? `modLog`, `memberLog`, `staffRole`, or `singleRole`?',
+                    prompt: 'What setting do you want to clear? `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`?',
                     type: 'string',
                     validate: setting => {
-                        if(['modLog', 'memberLog', 'staffRole', 'singleRole'].includes(setting)) return true;
-                        return 'Please enter either `modLog`, `memberLog`, `staffRole`, or `singleRole`.';
+                        if(['modLog', 'memberLog', 'joinMsg', 'leaveMsg', 'staffRole', 'singleRole'].includes(setting)) return true;
+                        return 'Please enter either `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`.';
                     }
                 }
             ]
