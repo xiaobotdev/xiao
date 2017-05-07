@@ -37,13 +37,11 @@ module.exports = class KickCommand extends Command {
         if(!msg.channel.permissionsFor(this.client.user).has('KICK_MEMBERS'))
             return msg.say('This Command requires the `Kick Members` Permission.');
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
-        if(!modlogs)
-            return msg.say('This Command requires a channel set with the `modchannel` command.');
+        if(!modlogs) return msg.say('This Command requires a channel set with the `modchannel` command.');
         if(!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
-        if(!member.kickable)
-            return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
+        if(!member.kickable) return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
         try {
             try {
                 await member.send(stripIndents`

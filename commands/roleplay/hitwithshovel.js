@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class HitwithShovelCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'hitwithshovel',
+            name: 'hit-with-shovel',
             group: 'roleplay',
-            memberName: 'hitwithsovel',
+            memberName: 'hit-with-shovel',
             description: 'Hits something/someone with a shovel.',
             args: [
                 {

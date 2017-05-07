@@ -5,12 +5,12 @@ const dictionary = require('./udmappings');
 module.exports = class UpsideDownCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'upsidedown',
+            name: 'upside-down',
             aliases: [
                 'udown'
             ],
             group: 'textedit',
-            memberName: 'upsidedown',
+            memberName: 'upside-down',
             description: 'Flips text upside-down.',
             args: [
                 {

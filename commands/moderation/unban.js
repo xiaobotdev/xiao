@@ -44,14 +44,12 @@ module.exports = class UnbanCommand extends Command {
         if(!msg.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
             return msg.say('This Command requires the `Ban Members` Permission.');
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
-        if(!modlogs)
-            return msg.say('This Command requires a channel set with the `modchannel` command.');
+        if(!modlogs) return msg.say('This Command requires a channel set with the `modchannel` command.');
         if(!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { id, reason } = args;
         const bans = await msg.guild.fetchBans();
-        if(!bans.has(id))
-            return msg.say('This ID is not in the Guild Banlist.');
+        if(!bans.has(id)) return msg.say('This ID is not in the Guild Banlist.');
         const member = bans.get(id);
         try {
             await msg.guild.unban(member);

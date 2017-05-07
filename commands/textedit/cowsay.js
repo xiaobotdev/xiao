@@ -4,9 +4,9 @@ const { stripIndent } = require('common-tags');
 module.exports = class CowsayCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'cowsay',
+            name: 'cow-say',
             group: 'textedit',
-            memberName: 'cowsay',
+            memberName: 'cow-say',
             description: 'Converts text to cowsay.',
             args: [
                 {

@@ -4,12 +4,12 @@ const Jimp = require('jimp');
 module.exports = class BobRossCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'bobross',
+            name: 'bob-ross',
             aliases: [
                 'ross'
             ],
             group: 'avataredit',
-            memberName: 'bobross',
+            memberName: 'bob-ross',
             description: 'Make Bob Ross draw an avatar.',
             args: [
                 {

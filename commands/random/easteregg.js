@@ -4,12 +4,12 @@ const eastereggs = require('./eastereggs');
 module.exports = class EasterEggCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'easteregg',
+            name: 'easter-egg',
             aliases: [
                 'tag'
             ],
             group: 'random',
-            memberName: 'easteregg',
+            memberName: 'easter-egg',
             description: 'Can you discover all the easter eggs?',
             args: [
                 {

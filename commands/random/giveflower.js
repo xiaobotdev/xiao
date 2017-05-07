@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class GiveFlowerCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'giveflower',
+            name: 'give-flower',
             group: 'random',
-            memberName: 'giveflower',
+            memberName: 'give-flower',
             description: 'Gives Xiao Pai a flower.'
         });
     }

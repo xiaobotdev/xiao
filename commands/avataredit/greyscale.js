@@ -5,6 +5,9 @@ module.exports = class GreyscaleCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'greyscale',
+            aliases: [
+                'grayscale'
+            ],
             group: 'avataredit',
             memberName: 'greyscale',
             description: 'Greyscale a user\'s avatar colors.',

@@ -7,7 +7,7 @@ module.exports = class DiscrimCommand extends Command {
             name: 'discrim',
             aliases: [
                 'discriminator',
-                'searchdiscrim'
+                'search-discrim'
             ],
             group: 'search',
             memberName: 'discrim',

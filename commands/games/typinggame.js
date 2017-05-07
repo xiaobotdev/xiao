@@ -5,9 +5,9 @@ const sentences = require('./sentences');
 module.exports = class TypingGameCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'typinggame',
+            name: 'typing-game',
             group: 'games',
-            memberName: 'typinggame',
+            memberName: 'typing-game',
             description: 'See how fast you can type a sentence in a given time limit.',
             args: [
                 {

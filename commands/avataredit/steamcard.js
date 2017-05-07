@@ -4,12 +4,12 @@ const Jimp = require('jimp');
 module.exports = class SteamCardCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'steamcard',
+            name: 'steam-card',
             aliases: [
                 'card'
             ],
             group: 'avataredit',
-            memberName: 'steamcard',
+            memberName: 'steam-card',
             description: 'Put an avatar on a Steam Card.',
             args: [
                 {

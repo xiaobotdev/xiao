@@ -35,10 +35,8 @@ module.exports = class StrawpollCommand extends Command {
 
     async run(msg, args) {
         const { title, options } = args;
-        if(options.length < 2)
-            return msg.say('You provided less than two choices.');
-        if(options.length > 31)
-            return msg.say('You provided more than thirty choices.');
+        if(options.length < 2) return msg.say('You provided less than two choices.');
+        if(options.length > 31) return msg.say('You provided more than thirty choices.');
         try {
             const { body } = await request
                 .post('https://strawpoll.me/api/v2/polls')

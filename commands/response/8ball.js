@@ -5,9 +5,9 @@ const answers = require('./8ballanswers');
 module.exports = class MagicBallCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '8ball',
+            name: '8-ball',
             group: 'response',
-            memberName: '8ball',
+            memberName: '8-ball',
             description: 'Predicts your future.',
             args: [
                 {
