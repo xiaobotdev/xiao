@@ -9,7 +9,7 @@ module.exports = class XiaoCommand extends Command {
                 'xiao'
             ],
             group: 'randomimg',
-            memberName: 'xiaopai',
+            memberName: 'xiao-pai',
             description: 'Sends a random image of Xiao Pai.'
         });
     }
