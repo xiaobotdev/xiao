@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class StaffRoleCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'staffrole',
+            name: 'staff-role',
             group: 'util',
-            memberName: 'staffrole',
+            memberName: 'staff-role',
             description: 'Sets the role that can use Mod Commands without perms.',
             guildOnly: true,
             args: [

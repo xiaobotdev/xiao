@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class SingleRoleCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'singlerole',
+            name: 'single-role',
             group: 'util',
-            memberName: 'singlerole',
+            memberName: 'single-role',
             description: 'Sets a single role that is able to use commands.',
             guildOnly: true,
             args: [

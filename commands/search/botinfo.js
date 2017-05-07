@@ -5,9 +5,9 @@ const request = require('superagent');
 module.exports = class BotSearchCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'botinfo',
+            name: 'bot-info',
             group: 'search',
-            memberName: 'botinfo',
+            memberName: 'bot-info',
             description: 'Searches Discord Bots for info on a bot.',
             args: [
                 {

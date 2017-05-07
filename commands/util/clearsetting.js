@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class ClearSettingCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'clearsetting',
+            name: 'clear-setting',
             group: 'util',
-            memberName: 'clearsetting',
+            memberName: 'clear-setting',
             description: 'Removes a custom-set Mod Channel, Member Channel, Staff Role, or Single Role.',
             guildOnly: true,
             args: [

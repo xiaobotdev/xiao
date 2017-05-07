@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class MemberLogCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'memberchannel',
+            name: 'member-channel',
             group: 'util',
-            memberName: 'memberchannel',
+            memberName: 'member-channel',
             description: 'Sets the channel for the member logs to be sent.',
             guildOnly: true,
             args: [

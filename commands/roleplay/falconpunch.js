@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class FalconPunchCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'falconpunch',
+            name: 'falcon-punch',
             group: 'roleplay',
-            memberName: 'falconpunch',
+            memberName: 'falcon-punch',
             description: 'Falcon Punches something/someone.',
             args: [
                 {

@@ -6,18 +6,22 @@ require('moment-duration-format');
 module.exports = class ShardInfoCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'shardinfo',
+            name: 'shard-info',
             aliases: [
                 'shard'
             ],
             group: 'util',
-            memberName: 'shardinfo',
+            memberName: 'shard-info',
             description: 'Gives some bot info for the Shard you specify.',
             args: [
                 {
                     key: 'shard',
                     prompt: 'Which Shard would you like to get data for?',
-                    type: 'integer'
+                    type: 'integer',
+                    validate: shard => {
+                        if(shard < this.client.options.shardCount || shard > -1) return true;
+                        return 'Invalid Shard ID';
+                    }
                 }
             ]
         });
@@ -28,8 +32,6 @@ module.exports = class ShardInfoCommand extends Command {
             if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { shard } = args;
-        if(shard > this.client.options.shardCount - 1 || shard < 0)
-            return msg.say('The Shard ID is not valid.');
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');

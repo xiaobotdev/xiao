@@ -4,12 +4,12 @@ const responses = ['Paper', 'Rock', 'Scissors'];
 module.exports = class RockPaperScissorsCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'rps',
+            name: 'rock-paper-scissors',
             aliases: [
-                'rockpaperscissors'
+                'rps'
             ],
             group: 'games',
-            memberName: 'rps',
+            memberName: 'rock-paper-scissors',
             description: 'Play Rock-Paper-Scissors.',
             args: [
                 {

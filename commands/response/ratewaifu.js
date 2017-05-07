@@ -3,12 +3,12 @@ const { Command } = require('discord.js-commando');
 module.exports = class RateWaifuCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'ratewaifu',
+            name: 'rate-waifu',
             aliases: [
                 'waifu'
             ],
             group: 'response',
-            memberName: 'ratewaifu',
+            memberName: 'rate-waifu',
             description: 'Rates your Waifu.',
             args: [
                 {

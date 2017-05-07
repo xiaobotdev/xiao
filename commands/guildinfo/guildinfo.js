@@ -10,8 +10,8 @@ module.exports = class GuildInfoCommand extends Command {
             name: 'server',
             aliases: [
                 'guild',
-                'serverinfo',
-                'guildinfo'
+                'server-info',
+                'guild-info'
             ],
             group: 'guildinfo',
             memberName: 'server',

@@ -4,7 +4,7 @@ const xiaos = require('./xiaos');
 module.exports = class XiaoCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'xiaopai',
+            name: 'xiao-pai',
             aliases: [
                 'xiao'
             ],

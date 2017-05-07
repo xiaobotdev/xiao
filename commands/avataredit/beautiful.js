@@ -6,7 +6,7 @@ module.exports = class BeautifulCommand extends Command {
         super(client, {
             name: 'beautiful',
             aliases: [
-                'grunklestan'
+                'grunkle-stan'
             ],
             group: 'avataredit',
             memberName: 'beautiful',

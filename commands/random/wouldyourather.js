@@ -5,12 +5,12 @@ const request = require('superagent');
 module.exports = class WouldYouRatherCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'wouldyourather',
+            name: 'would-you-rather',
             aliases: [
                 'wyrather'
             ],
             group: 'random',
-            memberName: 'wouldyourather',
+            memberName: 'would-you-rather',
             description: 'Gets a random would you rather question.'
         });
     }

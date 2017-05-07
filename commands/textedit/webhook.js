@@ -7,7 +7,7 @@ module.exports = class WebhookCommand extends Command {
             name: 'webhook',
             aliases: [
                 'rin',
-                'rinsay'
+                'rin-say'
             ],
             group: 'textedit',
             memberName: 'webhook',

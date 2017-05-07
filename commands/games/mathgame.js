@@ -6,9 +6,9 @@ const operations = ['+', '-', '*'];
 module.exports = class MathGameCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'mathgame',
+            name: 'math-game',
             group: 'games',
-            memberName: 'mathgame',
+            memberName: 'math-game',
             description: 'See how fast you can answer a math problem in a given time limit.',
             args: [
                 {

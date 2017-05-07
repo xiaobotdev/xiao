@@ -7,7 +7,7 @@ module.exports = class RIPCommand extends Command {
             name: 'rip',
             aliases: [
                 'grave',
-                'gravestone'
+                'grave-stone'
             ],
             group: 'avataredit',
             memberName: 'rip',

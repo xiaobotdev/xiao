@@ -4,9 +4,9 @@ const facts = require('./facts');
 module.exports = class FactCoreCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'factcore',
+            name: 'fact-core',
             group: 'response',
-            memberName: 'factcore',
+            memberName: 'fact-core',
             description: 'Says a random Fact Core quote.'
         });
     }

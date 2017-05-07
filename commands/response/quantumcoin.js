@@ -4,12 +4,12 @@ const sides = ['on nothing', 'on NaN', 'on 0', 'in the air', 'on null'];
 module.exports = class QuantumCoinCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'quantumcoin',
+            name: 'quantum-coin',
             aliases: [
                 'qcoin'
             ],
             group: 'response',
-            memberName: 'quantumcoin',
+            memberName: 'quantum-coin',
             description: 'Flips a coin that lands on nothing.'
         });
     }

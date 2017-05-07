@@ -5,9 +5,9 @@ const request = require('superagent');
 module.exports = class YuGiOhCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'yugioh',
+            name: 'yu-gi-oh',
             group: 'search',
-            memberName: 'yugioh',
+            memberName: 'yu-gi-oh',
             description: 'Gets info on a Yu-Gi-Oh! Card.',
             args: [
                 {
