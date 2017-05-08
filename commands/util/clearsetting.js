@@ -14,7 +14,7 @@ module.exports = class ClearSettingCommand extends Command {
                     prompt: 'What setting do you want to clear? `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`?',
                     type: 'string',
                     validate: setting => {
-                        if(['modLog', 'memberLog', 'joinMsg', 'leaveMsg', 'staffRole', 'singleRole'].includes(setting)) return true;
+                        if (['modLog', 'memberLog', 'joinMsg', 'leaveMsg', 'staffRole', 'singleRole'].includes(setting)) return true;
                         return 'Please enter either `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`.';
                     }
                 }

@@ -4,9 +4,7 @@ module.exports = class MemberMsgCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'member-message',
-            aliases: [
-                'member-msg'
-            ],
+            aliases: ['member-msg'],
             group: 'util',
             memberName: 'member-message',
             description: 'Sets the message for either join/leave logs to use.',
@@ -18,7 +16,7 @@ module.exports = class MemberMsgCommand extends Command {
                     prompt: 'Which message would you like to change? Please enter either `joinMsg` or `leaveMsg`.',
                     type: 'string',
                     validate: type => {
-                        if(['joinMsg', 'leaveMsg'].includes(type)) return true;
+                        if (['joinMsg', 'leaveMsg'].includes(type)) return true;
                         return 'Please enter either `joinMsg` or `leaveMsg`.';
                     }
                 },
@@ -27,7 +25,7 @@ module.exports = class MemberMsgCommand extends Command {
                     prompt: 'What should be sent to the channel? Use <user>, <server>, and <mention> as placeholders.',
                     type: 'string',
                     validate: message => {
-                        if(message.length < 1000) return true;
+                        if (message.length < 1000) return true;
                         return 'Invalid Message. Message must be under 1000 characters.';
                     }
                 }
@@ -41,10 +39,10 @@ module.exports = class MemberMsgCommand extends Command {
 
     run(msg, args) {
         const { type, message } = args;
-        if(type === 'joinMsg') {
+        if (type === 'joinMsg') {
             msg.guild.settings.set('joinMsg', message);
             return msg.say(`Join Message set to "${message}".`);
-        } else if(type === 'leaveMsg') {
+        } else if (type === 'leaveMsg') {
             msg.guild.settings.set('leaveMsg', message);
             return msg.say(`Leave Message set to "${message}".`);
         }

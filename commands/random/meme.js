@@ -15,7 +15,7 @@ module.exports = class MemeCommand extends Command {
                     prompt: 'What meme type do you want to use?',
                     type: 'string',
                     validate: type => {
-                        if(codes.includes(type.toLowerCase())) return true;
+                        if (codes.includes(type.toLowerCase())) return true;
                         return 'Invalid meme type. Use `help meme` to view a list of meme types.';
                     },
                     parse: type => type.toLowerCase()
@@ -37,11 +37,11 @@ module.exports = class MemeCommand extends Command {
     }
 
     run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { type, top, bottom } = args;
         return msg.channel.send({ files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`] })
-            .catch(err => msg.say(`An Error Occurred: ${err}`));
+            .catch (err => msg.say(`An Error Occurred: ${err}`));
     }
 };

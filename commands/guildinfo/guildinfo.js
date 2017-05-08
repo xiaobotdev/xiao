@@ -8,11 +8,7 @@ module.exports = class GuildInfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'server',
-            aliases: [
-                'guild',
-                'server-info',
-                'guild-info'
-            ],
+            aliases: ['guild', 'server-info', 'guild-info'],
             group: 'guildinfo',
             memberName: 'server',
             description: 'Gives some info on the current server.',
@@ -21,7 +17,7 @@ module.exports = class GuildInfoCommand extends Command {
     }
 
     run(msg) {
-        if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setColor(0x00AE86)

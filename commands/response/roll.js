@@ -4,9 +4,7 @@ module.exports = class RollCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'roll',
-            aliases: [
-                'dice'
-            ],
+            aliases: ['dice'],
             group: 'response',
             memberName: 'roll',
             description: 'Rolls a dice with a maximum value you specify.',

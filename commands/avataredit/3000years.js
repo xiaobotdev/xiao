@@ -5,9 +5,7 @@ module.exports = class YearsCommand extends Command {
     constructor(client) {
         super(client, {
             name: '3000years',
-            aliases: [
-                'az'
-            ],
+            aliases: ['az'],
             group: 'avataredit',
             memberName: '3000years',
             description: 'It\'s been 3000 years...',
@@ -22,12 +20,12 @@ module.exports = class YearsCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
-        if(!avatarURL) return msg.say('This user has no avatar.');
+        if (!avatarURL) return msg.say('This user has no avatar.');
         let images = [];
         images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/eScwGFS.png'));
@@ -35,9 +33,9 @@ module.exports = class YearsCommand extends Command {
         avatar.resize(200, 200);
         az.composite(avatar, 461, 127);
         az.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if(err) return msg.say(`An Error Occurred: ${err}`);
+            if (err) return msg.say(`An Error Occurred: ${err}`);
             return msg.channel.send({ files: [{ attachment: buff, name: 'az.png' }] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
+                .catch (err => msg.say(`An Error Occurred: ${err}`));
         });
     }
 };

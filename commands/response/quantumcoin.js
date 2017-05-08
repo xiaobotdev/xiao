@@ -5,9 +5,7 @@ module.exports = class QuantumCoinCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'quantum-coin',
-            aliases: [
-                'qcoin'
-            ],
+            aliases: ['qcoin'],
             group: 'response',
             memberName: 'quantum-coin',
             description: 'Flips a coin that lands on nothing.'

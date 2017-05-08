@@ -4,9 +4,7 @@ module.exports = class RateWaifuCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'rate-waifu',
-            aliases: [
-                'waifu'
-            ],
+            aliases: ['waifu'],
             group: 'response',
             memberName: 'rate-waifu',
             description: 'Rates your Waifu.',

@@ -5,9 +5,7 @@ module.exports = class CatCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'cat',
-            aliases: [
-                'neko'
-            ],
+            aliases: ['neko'],
             group: 'randomimg',
             memberName: 'cat',
             description: 'Sends a random cat image.'
@@ -15,15 +13,15 @@ module.exports = class CatCommand extends Command {
     }
 
     async run(msg) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         try {
             const { body } = await request
                 .get('http://random.cat/meow');
             return msg.channel.send({ files: [body.file] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
-        } catch(err) {
+                .catch (err => msg.say(`An Error Occurred: ${err}`));
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

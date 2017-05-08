@@ -5,10 +5,7 @@ module.exports = class WebhookCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'webhook',
-            aliases: [
-                'rin',
-                'rin-say'
-            ],
+            aliases: ['rin', 'rin-say'],
             group: 'textedit',
             memberName: 'webhook',
             description: 'Posts a message to the webhook defined in your `process.env`.',
@@ -28,7 +25,7 @@ module.exports = class WebhookCommand extends Command {
     }
 
     async run(msg, args) {
-        if(!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
+        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
             return msg.say('This Command requires the `Manage Messages` Permission.');
         const { content } = args;
         try {
@@ -37,7 +34,7 @@ module.exports = class WebhookCommand extends Command {
                 .post(process.env.WEBHOOK_URL)
                 .send({ content });
             return null;
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

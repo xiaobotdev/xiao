@@ -7,9 +7,7 @@ module.exports = class QuizCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'quiz',
-            aliases: [
-                'jeopardy'
-            ],
+            aliases: ['jeopardy'],
             group: 'games',
             memberName: 'quiz',
             description: 'Answer a quiz question.'
@@ -17,8 +15,8 @@ module.exports = class QuizCommand extends Command {
     }
 
     async run(msg) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { body } = await request
@@ -37,13 +35,13 @@ module.exports = class QuizCommand extends Command {
                     time: 15000,
                     errors: ['time']
                 });
-                if(collected.first().content.toLowerCase() !== answer)
+                if (collected.first().content.toLowerCase() !== answer)
                     return msg.say(`The correct answer is: ${answer}.`);
                 return msg.say(`Perfect! The correct answer is: ${answer}.`);
-            } catch(err) {
+            } catch (err) {
                 return msg.say(`Time! The correct answer is: ${answer}`);
             }
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}.`);
         }
     }

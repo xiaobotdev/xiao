@@ -36,19 +36,19 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.dispatcher.addInhibitor(msg => {
-    if(msg.channel.type === 'dm') return false;
+    if (msg.channel.type === 'dm') return false;
     const role = msg.guild.settings.get('singleRole');
-    if(!role) return false;
-    if(client.isOwner(msg.author)) return false;
-    if(msg.member.hasPermission('ADMINISTRATOR')) return false;
-    if(!msg.member.roles.has(role))
+    if (!role) return false;
+    if (client.isOwner(msg.author)) return false;
+    if (msg.member.hasPermission('ADMINISTRATOR')) return false;
+    if (!msg.member.roles.has(role))
         return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} role may use commands.`)];
 });
 
 client.on('guildMemberAdd', (member) => {
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
-    if(!channel) return;
-    if(!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
+    if (!channel) return;
+    if (!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     const msg = member.guild.settings.get('joinMsg', 'Welcome <user>!')
         .replace(/(<user>)/gi, member.user.username)
         .replace(/(<server>)/gi, member.guild.name)
@@ -58,8 +58,8 @@ client.on('guildMemberAdd', (member) => {
 
 client.on('guildMemberRemove', (member) => {
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
-    if(!channel) return;
-    if(!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
+    if (!channel) return;
+    if (!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     const msg = member.guild.settings.get('leaveMsg', 'Bye <user>...')
         .replace(/(<user>)/gi, member.user.username)
         .replace(/(<server>)/gi, member.guild.name)
@@ -67,7 +67,7 @@ client.on('guildMemberRemove', (member) => {
     return channel.send(msg);
 });
 
-client.on('guildCreate', async(guild) => {
+client.on('guildCreate', async (guild) => {
     console.log(`[Guild] I have joined ${guild.name}! (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
@@ -75,18 +75,18 @@ client.on('guildCreate', async(guild) => {
     try {
         await carbon(count);
         console.log('[Carbon] Successfully posted to Carbon.');
-    } catch(err) {
+    } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
         await discordBots(count, client.user.id);
         console.log('[Discord Bots] Successfully posted to Discord Bots.');
-    } catch(err) {
+    } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
 });
 
-client.on('guildDelete', async(guild) => {
+client.on('guildDelete', async (guild) => {
     console.log(`[Guild] I have left ${guild.name}... (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
@@ -94,13 +94,13 @@ client.on('guildDelete', async(guild) => {
     try {
         await carbon(count);
         console.log('[Carbon] Successfully posted to Carbon.');
-    } catch(err) {
+    } catch (err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
         await discordBots(count, client.user.id);
         console.log('[Discord Bots] Successfully posted to Discord Bots.');
-    } catch(err) {
+    } catch (err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
 });

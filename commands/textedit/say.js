@@ -4,10 +4,7 @@ module.exports = class SayCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'say',
-            aliases: [
-                'copy',
-                'echo'
-            ],
+            aliases: ['copy', 'echo'],
             group: 'textedit',
             memberName: 'say',
             description: 'Make XiaoBot say what you wish.',
@@ -23,7 +20,7 @@ module.exports = class SayCommand extends Command {
     }
 
     run(msg, args) {
-        if(!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
+        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
             return msg.say('This Command requires the `Manage Messages` Permission.');
         const { text } = args;
         msg.delete();

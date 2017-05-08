@@ -16,7 +16,7 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to use as the base?',
                     type: 'string',
                     validate: base => {
-                        if(codes.includes(base.toUpperCase())) return true;
+                        if (codes.includes(base.toUpperCase())) return true;
                         return  'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
                     },
                     parse: base => base.toUpperCase()
@@ -26,7 +26,7 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to convert to?',
                     type: 'string',
                     validate: to => {
-                        if(codes.includes(to.toUpperCase())) return true;
+                        if (codes.includes(to.toUpperCase())) return true;
                         return 'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
                     },
                     parse: to => to.toUpperCase()
@@ -42,13 +42,13 @@ module.exports = class CurrencyCommand extends Command {
 
     async run(msg, args) {
         const { base, to, amount } = args;
-        if(base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
+        if (base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
         try {
             const { body } = await request
                 .get(`http://api.fixer.io/latest?base=${base}&symbols=${to}`);
             const rate = body.rates[to];
             return msg.say(`${amount} ${base} is ${amount * rate} ${to}.`);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }
