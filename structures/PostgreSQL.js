@@ -12,10 +12,10 @@ class Database {
 			.then(() => console.log('[Database] Synchronizing...'))
 			.then(() => database.sync()
 				.then(() => console.log('[Database] Synchronizing complete!'))
-				.catch (err => console.error(`[Database] Error synchronizing: ${err}`))
+				.catch(err => console.error(`[Database] Error synchronizing: ${err}`))
 			)
 			.then(() => console.log('[Database] Ready!'))
-			.catch (err => console.error(`[Database] Unable to connect: ${err}`));
+			.catch(err => console.error(`[Database] Unable to connect: ${err}`));
 	}
 }
 

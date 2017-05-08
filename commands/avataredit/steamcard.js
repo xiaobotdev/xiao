@@ -40,7 +40,7 @@ module.exports = class SteamCardCommand extends Command {
         blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
             if (err) return msg.say(`An Error Occurred: ${err}`);
             return msg.channel.send({ files: [{ attachment: buff, name: 'steamcard.png' }] })
-                .catch (err => msg.say(`An Error Occurred: ${err}`));
+                .catch(err => msg.say(`An Error Occurred: ${err}`));
         });
     }
 };
