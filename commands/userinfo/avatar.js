@@ -19,6 +19,6 @@ module.exports = class AvatarCommand extends Command {
 
     run(msg, args) {
         const { user } = args;
-        return msg.say(user.avatarURL('png', 2048) || user.displayAvatarURL);
+        return msg.say(user.avatarURL('webp', 2048) || user.displayAvatarURL);
     }
 };

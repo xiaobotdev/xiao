@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const request = require('superagent');
+const { WEBHOOK_URL } = process.env;
 
 module.exports = class WebhookCommand extends Command {
     constructor(client) {
@@ -31,7 +32,7 @@ module.exports = class WebhookCommand extends Command {
         try {
             msg.delete();
             await request
-                .post(process.env.WEBHOOK_URL)
+                .post(WEBHOOK_URL)
                 .send({ content });
             return null;
         } catch (err) {

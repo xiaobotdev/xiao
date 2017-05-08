@@ -33,7 +33,7 @@ module.exports = class GoogleCommand extends Command {
             href = querystring.parse(href.replace('/url?', ''));
             return message.edit(href.q);
         } catch (err) {
-            return message.edit('An Error Occurred: No Results.');
+            return message.edit('Error: No Results.');
         }
     }
 };

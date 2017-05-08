@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const request = require('superagent');
+const { OSU_KEY } = process.env;
 
 module.exports = class OsuCommand extends Command {
     constructor(client) {
@@ -27,7 +28,7 @@ module.exports = class OsuCommand extends Command {
         const { query } = args;
         try {
             const { body } = await request
-                .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${query}&type=string`);
+                .get(`https://osu.ppy.sh/api/get_user?k=${OSU_KEY}&u=${query}&type=string`);
             if (body.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)

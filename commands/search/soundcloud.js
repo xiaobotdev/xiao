@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const request = require('superagent');
+const { SOUNDCLOUD_KEY } = process.env;
 
 module.exports = class SoundCloudCommand extends Command {
     constructor(client) {
@@ -27,7 +28,7 @@ module.exports = class SoundCloudCommand extends Command {
         const { query } = args;
         try {
             const { body } = await request
-                .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${process.env.SOUNDCLOUD_KEY}`);
+                .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${SOUNDCLOUD_KEY}`);
             if (body.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF15A22)

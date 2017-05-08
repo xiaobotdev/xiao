@@ -36,7 +36,7 @@ module.exports = class YuGiOhCommand extends Command {
                     .setDescription(body.data.text)
                     .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
                     .addField('**Card Type:**',
-                        'monster', true)
+                        body.data.card_type, true)
                     .addField('**Type:**',
                         body.data.type, true)
                     .addField('**Attribute:**',
@@ -48,15 +48,16 @@ module.exports = class YuGiOhCommand extends Command {
                     .addField('**Level:**',
                         body.data.level, true);
                 return msg.embed(embed);
+            } else {
+                const embed = new RichEmbed()
+                    .setColor(0xBE5F1F)
+                    .setTitle(body.data.name)
+                    .setDescription(body.data.text)
+                    .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
+                    .addField('**Card Type:**',
+                        body.data.card_type, true);
+                return msg.embed(embed);
             }
-            const embed = new RichEmbed()
-                .setColor(0xBE5F1F)
-                .setTitle(body.data.name)
-                .setDescription(body.data.text)
-                .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
-                .addField('**Card Type:**',
-                    body.data.card_type, true);
-            return msg.embed(embed);
         } catch (err) {
             return msg.say(err);
         }

@@ -82,7 +82,8 @@ module.exports = class InfoCommand extends Command {
                     [SoundCloud](https://developers.soundcloud.com),
                     [random.cat](http://random.cat),
                     [random.dog](https://random.dog),
-                    [fixer.io](http://fixer.io)
+                    [fixer.io](http://fixer.io),
+                    [konachan](https://konachan.net)
                 `
             );
         return msg.embed(embed);
