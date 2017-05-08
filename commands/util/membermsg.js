@@ -25,8 +25,8 @@ module.exports = class MemberMsgCommand extends Command {
                     prompt: 'What should be sent to the channel? Use <user>, <server>, and <mention> as placeholders.',
                     type: 'string',
                     validate: message => {
-                        if (message.length < 1000) return true;
-                        return 'Invalid Message. Message must be under 1000 characters.';
+                        if (message.length < 150) return true;
+                        return 'Invalid Message. Message must be under 150 characters.';
                     }
                 }
             ]
