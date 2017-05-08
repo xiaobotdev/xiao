@@ -1,10 +1,6 @@
 const request = require('superagent');
 
 class Stats {
-    constructor() {
-        throw new Error(`The ${this.constructor.name} class may not be instantiated.`);
-    }
-    
     static discordBots(server_count, userID) {
         return request
             .post(`https://bots.discord.pw/api/bots/${userID}/stats`)

@@ -10,8 +10,8 @@ const path = require('path');
 const { carbon, discordBots } = require('./structures/Stats');
 const SequelizeProvider = require('./providers/Sequelize');
 const Database = require('./structures/PostgreSQL');
-const database = new Database();
-database.start();
+
+Database.start();
 
 client.setProvider(new SequelizeProvider(Database.db));
 
@@ -74,13 +74,13 @@ client.on('guildCreate', async(guild) => {
     console.log(`[Count] ${count}`);
     try {
         await carbon(count);
-        console.log(`[Carbon] Successfully posted to Carbon.`);
+        console.log('[Carbon] Successfully posted to Carbon.');
     } catch(err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
         await discordBots(count, client.user.id);
-        console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
+        console.log('[Discord Bots] Successfully posted to Discord Bots.');
     } catch(err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
@@ -93,13 +93,13 @@ client.on('guildDelete', async(guild) => {
     console.log(`[Count] ${count}`);
     try {
         await carbon(count);
-        console.log(`[Carbon] Successfully posted to Carbon.`);
+        console.log('[Carbon] Successfully posted to Carbon.');
     } catch(err) {
         console.log(`[Carbon] Failed to post to Carbon. ${err}`);
     }
     try {
         await discordBots(count, client.user.id);
-        console.log(`[Discord Bots] Successfully posted to Discord Bots.`);
+        console.log('[Discord Bots] Successfully posted to Discord Bots.');
     } catch(err) {
         console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
     }
@@ -119,7 +119,5 @@ client.on('ready', () => {
     console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
     client.user.setGame(`x;help | Shard ${client.shard.id}`);
 });
-
-process.on('unhandledRejection', console.error);
 
 client.login(process.env.TOKEN);
