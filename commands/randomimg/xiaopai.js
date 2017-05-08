@@ -18,6 +18,6 @@ module.exports = class XiaoCommand extends Command {
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const xiao = xiaos[Math.floor(Math.random() * xiaos.length)];
         return msg.channel.send({ files: [xiao] })
-            .catch (err => msg.say(`An Error Occurred: ${err}`));
+            .catch(err => msg.say(`An Error Occurred: ${err}`));
     }
 };
