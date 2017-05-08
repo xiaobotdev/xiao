@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const request = require('superagent');
+const { DISCORD_BOTS_KEY } = process.env;
 
 module.exports = class BotSearchCommand extends Command {
     constructor(client) {
@@ -27,7 +28,7 @@ module.exports = class BotSearchCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://bots.discord.pw/api/bots/${bot.id}`)
-                .set({ 'Authorization': process.env.DISCORD_BOTS_KEY });
+                .set({ 'Authorization': DISCORD_BOTS_KEY });
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://i.imgur.com/lrKYBQi.jpg')

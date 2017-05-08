@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const request = require('superagent');
+const { WATTPAD_KEY } = process.env;
 
 module.exports = class WattpadCommand extends Command {
     constructor(client) {
@@ -28,7 +29,7 @@ module.exports = class WattpadCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://api.wattpad.com:443/v4/stories?query=${query}&limit=1`)
-                .set({ 'Authorization': `Basic ${process.env.WATTPAD_KEY}` });
+                .set({ 'Authorization': `Basic ${WATTPAD_KEY}` });
             if (body.stories.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF89C34)

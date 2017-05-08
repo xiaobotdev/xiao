@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const request = require('superagent');
+const { GOOGLE_KEY } = process.env;
 
 module.exports = class MapCommand extends Command {
     constructor(client) {
@@ -37,7 +38,7 @@ module.exports = class MapCommand extends Command {
         const { zoom, query } = args;
         try {
             const { body } = await request
-                .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
+                .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${GOOGLE_KEY}`);
             return msg.channel.send({ files: [{ attachment: body, name: 'map.png' }] })
                 .catch(err => msg.say(err));
         } catch (err) {

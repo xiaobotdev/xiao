@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const request = require('superagent');
+const { WORDNIK_KEY } = process.env;
 
 module.exports = class DefineCommand extends Command {
     constructor(client) {
@@ -27,7 +28,7 @@ module.exports = class DefineCommand extends Command {
         const { query } = args;
         try {
             const { body } = await request
-                .get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions?limit=1&includeRelated=false&useCanonical=false&api_key=${process.env.WORDNIK_KEY}`);
+                .get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions?limit=1&includeRelated=false&useCanonical=false&api_key=${WORDNIK_KEY}`);
             if (body.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
