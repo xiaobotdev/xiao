@@ -53,7 +53,7 @@ client.on('guildMemberAdd', (member) => {
         .replace(/(<user>)/gi, member.user.username)
         .replace(/(<server>)/gi, member.guild.name)
         .replace(/(<mention>)/gi, member);
-    channel.send(msg);
+    return channel.send(msg);
 });
 
 client.on('guildMemberRemove', (member) => {
@@ -64,7 +64,7 @@ client.on('guildMemberRemove', (member) => {
         .replace(/(<user>)/gi, member.user.username)
         .replace(/(<server>)/gi, member.guild.name)
         .replace(/(<mention>)/gi, member);
-    channel.send(msg);
+    return channel.send(msg);
 });
 
 client.on('guildCreate', async(guild) => {
