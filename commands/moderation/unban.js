@@ -53,7 +53,7 @@ module.exports = class UnbanCommand extends Command {
         const member = bans.get(id);
         try {
             await msg.guild.unban(member);
-            await msg.say(':ok_hand:');
+            msg.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0x00AE86)
@@ -65,7 +65,7 @@ module.exports = class UnbanCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

@@ -58,7 +58,7 @@ module.exports = class SoftbanCommand extends Command {
             }
             await member.ban({ days: 7, reason });
             await msg.guild.unban(member.user);
-            await msg.say(':ok_hand:');
+            msg.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0xFF4500)
@@ -70,7 +70,7 @@ module.exports = class SoftbanCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

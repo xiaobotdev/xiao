@@ -33,7 +33,7 @@ module.exports = class WarnCommand extends Command {
         return msg.member.hasPermission('KICK_MEMBERS') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }
 
-    async run(msg, args) {
+    run(msg, args) {
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
         if (!modlogs) return msg.say('This Command requires a channel set with the `modchannel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES'))
@@ -41,20 +41,16 @@ module.exports = class WarnCommand extends Command {
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
-        try {
-            await msg.say(':ok_hand:');
-            const embed = new RichEmbed()
-                .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
-                .setColor(0xFFFF00)
-                .setTimestamp()
-                .setDescription(stripIndents`
-                    **Member:** ${member.user.tag} (${member.id})
-                    **Action:** Warn
-                    **Reason:** ${reason}
-                `);
-            return modlogs.send({ embed });
-        } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
-        }
+        msg.say(':ok_hand:');
+        const embed = new RichEmbed()
+            .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
+            .setColor(0xFFFF00)
+            .setTimestamp()
+            .setDescription(stripIndents`
+                **Member:** ${member.user.tag} (${member.id})
+                **Action:** Warn
+                **Reason:** ${reason}
+            `);
+        return modlogs.send({ embed });
     }
 };

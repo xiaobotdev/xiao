@@ -46,7 +46,7 @@ module.exports = class StrawpollCommand extends Command {
                 http://strawpoll.me/${body.id}
             `);
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

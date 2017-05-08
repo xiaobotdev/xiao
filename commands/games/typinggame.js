@@ -51,7 +51,7 @@ module.exports = class TypingGameCommand extends Command {
         const embed = new RichEmbed()
             .setTitle(`You have **${time / 1000}** seconds to type:`)
             .setDescription(sentence);
-        await msg.embed(embed);
+        msg.embed(embed);
         try {
             const collected = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
                 max: 1,

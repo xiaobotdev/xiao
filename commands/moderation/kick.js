@@ -54,7 +54,7 @@ module.exports = class KickCommand extends Command {
                 await msg.say('Failed to send DM.');
             }
             await member.kick({ reason });
-            await msg.say(':ok_hand:');
+            msg.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0xFFA500)
@@ -66,7 +66,7 @@ module.exports = class KickCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

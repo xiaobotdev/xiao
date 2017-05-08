@@ -27,7 +27,7 @@ module.exports = class BobRossCommand extends Command {
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
         const blank = new Jimp(600, 775, 0xFFFFFFFF);
-        let images = [];
+        const images = [];
         images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/7NSiFLd.png'));
         const [avatar, bob] = await Promise.all(images);
@@ -36,9 +36,9 @@ module.exports = class BobRossCommand extends Command {
         blank.composite(avatar, 44, 85);
         blank.composite(bob, 0, 0);
         blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(`An Error Occurred: ${err}`);
+            if (err) return msg.say(err);
             return msg.channel.send({ files: [{ attachment: buff, name: 'bobross.png' }] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
+                .catch(err => msg.say(err));
         });
     }
 };

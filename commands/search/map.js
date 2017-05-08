@@ -39,9 +39,9 @@ module.exports = class MapCommand extends Command {
             const { body } = await request
                 .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${process.env.GOOGLE_KEY}`);
             return msg.channel.send({ files: [{ attachment: body, name: 'map.png' }] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
+                .catch(err => msg.say(err));
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

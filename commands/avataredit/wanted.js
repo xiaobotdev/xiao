@@ -25,16 +25,16 @@ module.exports = class WantedCommand extends Command {
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
-        let images = [];
+        const images = [];
         images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/ca09TG5.jpg'));
         const [avatar, wanted] = await Promise.all(images);
         avatar.resize(500, 500);
         wanted.composite(avatar, 189, 438);
         wanted.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(`An Error Occurred: ${err}`);
+            if (err) return msg.say(err);
             return msg.channel.send({ files: [{ attachment: buff, name: 'wanted.png' }] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
+                .catch(err => msg.say(err));
         });
     }
 };

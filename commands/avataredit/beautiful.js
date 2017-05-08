@@ -26,7 +26,7 @@ module.exports = class BeautifulCommand extends Command {
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
-        let images = [];
+        const images = [];
         images.push(Jimp.read(avatarURL));
         images.push(Jimp.read('https://i.imgur.com/71qLwPf.png'));
         const [avatar, grunkle] = await Promise.all(images);
@@ -34,9 +34,9 @@ module.exports = class BeautifulCommand extends Command {
         grunkle.composite(avatar, 341, 35);
         grunkle.composite(avatar, 342, 301);
         grunkle.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(`An Error Occurred: ${err}`);
+            if (err) return msg.say(err);
             return msg.channel.send({ files: [{ attachment: buff, name: 'beautiful.png' }] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
+                .catch(err => msg.say(err));
         });
     }
 };
