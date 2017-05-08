@@ -6,7 +6,7 @@ class Database {
 		return database;
 	}
 
-	start() {
+	static start() {
 		database.authenticate()
 			.then(() => console.log('[Database] Connection has been established successfully.'))
 			.then(() => console.log('[Database] Synchronizing...'))
