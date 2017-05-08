@@ -122,3 +122,5 @@ client.on('ready', () => {
 });
 
 client.login(TOKEN);
+
+process.on('unhandledRejection', console.error);
