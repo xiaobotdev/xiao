@@ -7,9 +7,7 @@ module.exports = class ShardInfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'shard-info',
-            aliases: [
-                'shard'
-            ],
+            aliases: ['shard'],
             group: 'util',
             memberName: 'shard-info',
             description: 'Gives some bot info for the Shard you specify.',
@@ -19,7 +17,7 @@ module.exports = class ShardInfoCommand extends Command {
                     prompt: 'Which Shard would you like to get data for?',
                     type: 'integer',
                     validate: shard => {
-                        if(shard < this.client.options.shardCount && shard > -1) return true;
+                        if (shard < this.client.options.shardCount && shard > -1) return true;
                         return 'Invalid Shard ID';
                     }
                 }
@@ -28,8 +26,8 @@ module.exports = class ShardInfoCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { shard } = args;
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');

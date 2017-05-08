@@ -8,11 +8,7 @@ module.exports = class UserInfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'user',
-            aliases: [
-                'user-info',
-                'member',
-                'member-info'
-            ],
+            aliases: ['user-info', 'member', 'member-info'],
             group: 'userinfo',
             memberName: 'user',
             description: 'Gives some info on a user.',
@@ -28,8 +24,8 @@ module.exports = class UserInfoCommand extends Command {
     }
 
     run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { user } = args;
         const member = msg.guild.member(user);

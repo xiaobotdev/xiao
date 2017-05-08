@@ -229,7 +229,7 @@ class SequelizeProvider extends SettingProvider {
 		key = JSON.stringify(key);
 		val = typeof val !== 'undefined' ? JSON.stringify(val) : 'undefined';
 		this.client.shard.broadcastEval(`
-			if(this.shard.id !== ${this.client.shard.id} && this.provider && this.provider.settings) {
+			if (this.shard.id !== ${this.client.shard.id} && this.provider && this.provider.settings) {
 				this.provider.settings.global[${key}] = ${val};
 			}
 		`);

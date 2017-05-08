@@ -15,7 +15,7 @@ module.exports = class TypingGameCommand extends Command {
                     prompt: 'What should the difficulty of the game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
                     type: 'string',
                     validate: difficulty => {
-                        if(['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase())) return true;
+                        if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase())) return true;
                         return 'The difficulty must be either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                     },
                     parse: difficulty => difficulty.toLowerCase()
@@ -25,8 +25,8 @@ module.exports = class TypingGameCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const sentence = sentences[Math.floor(Math.random() * sentences.length)];
@@ -58,10 +58,10 @@ module.exports = class TypingGameCommand extends Command {
                 time: time,
                 errors: ['time']
             });
-            if(collected.first().content !== sentence)
+            if (collected.first().content !== sentence)
                 return msg.say('Nope, your sentence does not match the original. Try again next time!');
             return msg.say(`Good Job! You won!`);
-        } catch(err) {
+        } catch (err) {
             return msg.say('Time! Try again next time!');
         }
     }

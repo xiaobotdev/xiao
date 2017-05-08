@@ -24,7 +24,7 @@ module.exports = class MathCommand extends Command {
             const solved = math.eval(expression);
             return msg.say(solved)
                 .catch(() => msg.say('Invalid statement.'));
-        } catch(err) {
+        } catch (err) {
             return msg.say('Invalid statement.');
         }
     }

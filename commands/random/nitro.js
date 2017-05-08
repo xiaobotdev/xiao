@@ -13,8 +13,8 @@ module.exports = class NitroCommand extends Command {
     }
 
     run(msg) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setAuthor('Discord Nitro')

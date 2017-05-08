@@ -21,14 +21,14 @@ module.exports = class YouTubeCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
                 .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${process.env.GOOGLE_KEY}`);
-            if(body.items.length === 0) throw new Error('No Results.');
+            if (body.items.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xDD2825)
                 .setTitle(body.items[0].snippet.title)
@@ -37,7 +37,7 @@ module.exports = class YouTubeCommand extends Command {
                 .setURL(`https://www.youtube.com/watch?v=${body.items[0].id.videoId}`)
                 .setThumbnail(body.items[0].snippet.thumbnails.default.url);
             return msg.embed(embed);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

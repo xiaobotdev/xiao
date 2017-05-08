@@ -21,14 +21,14 @@ module.exports = class SoundCloudCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
                 .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${process.env.SOUNDCLOUD_KEY}`);
-            if(body.length === 0) throw new Error('No Results.');
+            if (body.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF15A22)
                 .setAuthor(body[0].title, 'https://i.imgur.com/lFIz7RU.png')
@@ -45,7 +45,7 @@ module.exports = class SoundCloudCommand extends Command {
                 .addField('**Favorited Count:**',
                     body[0].favoritings_count, true);
             return msg.embed(embed);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

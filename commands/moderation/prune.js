@@ -19,7 +19,7 @@ module.exports = class PruneCommand extends Command {
                     prompt: 'How many messages do you want to delete? Limit of up to 99.',
                     type: 'integer',
                     validate: count => {
-                        if(count < 100 && count > 0) return true;
+                        if (count < 100 && count > 0) return true;
                         return 'Invalid Count. Count must be from 1-99.';
                     }
                 }
@@ -32,16 +32,16 @@ module.exports = class PruneCommand extends Command {
     }
 
     async run(msg, args) {
-        if(!msg.channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY'))
+        if (!msg.channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY'))
             return msg.say('This Command requires the `Read Message History` Permission.');
-        if(!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
+        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
             return msg.say('This Command requires the `Manage Messages` Permission.');
         const { count } = args;
         try {
             const messages = await msg.channel.fetchMessages({ limit: count + 1 });
             await msg.channel.bulkDelete(messages, true);
             return null;
-        } catch(err) {
+        } catch (err) {
             return msg.say('There are no messages younger than two weeks that can be deleted.');
         }
     }

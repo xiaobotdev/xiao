@@ -16,7 +16,7 @@ module.exports = class MathGameCommand extends Command {
                     prompt: 'What should the difficulty of the game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
                     type: 'string',
                     validate: difficulty => {
-                        if(['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase())) return true;
+                        if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase())) return true;
                         return 'The difficulty must be either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
                     },
                     parse: difficulty => difficulty.toLowerCase()
@@ -26,8 +26,8 @@ module.exports = class MathGameCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
@@ -61,10 +61,10 @@ module.exports = class MathGameCommand extends Command {
                 time: 10000,
                 errors: ['time']
             });
-            if(collected.first().content !== solved)
+            if (collected.first().content !== solved)
                 return msg.say(`Nope! The correct answer is: ${solved}.`);
             return msg.say(`Perfect! ${solved} is the correct answer!`);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`Time! The correct answer is ${solved}.`);
         }
     }

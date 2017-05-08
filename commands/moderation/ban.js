@@ -6,9 +6,7 @@ module.exports = class BanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'ban',
-            aliases: [
-                'banne'
-            ],
+            aliases: ['banne'],
             group: 'moderation',
             memberName: 'ban',
             description: 'Bans a user and logs the ban to the mod logs.',
@@ -24,7 +22,7 @@ module.exports = class BanCommand extends Command {
                     prompt: 'What do you want to set the reason as?',
                     type: 'string',
                     validate: reason => {
-                        if(reason.length < 140) return true;
+                        if (reason.length < 140) return true;
                         return 'Invalid Reason. Reason must be under 140 characters.';
                     }
                 }
@@ -37,23 +35,23 @@ module.exports = class BanCommand extends Command {
     }
 
     async run(msg, args) {
-        if(!msg.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
+        if (!msg.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
             return msg.say('This Command requires the `Ban Members` Permission.');
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
-        if(!modlogs) return msg.say('This Command requires a channel set with the `modchannel` command.');
-        if(!modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES'))
+        if (!modlogs) return msg.say('This Command requires a channel set with the `modchannel` command.');
+        if (!modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES'))
             return msg.say('This Command requires the `Send Messages` Permission for the Mod Log Channel.');
-        if(!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
-        if(!member.bannable) return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
+        if (!member.bannable) return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
         try {
             try {
                 await member.send(stripIndents`
                     You were banned from ${msg.guild.name}!
                     Reason: ${reason}.
                 `);
-            } catch(err) {
+            } catch (err) {
                 await msg.say('Failed to send DM to the user.');
             }
             await member.ban({ days: 7, reason });
@@ -68,7 +66,7 @@ module.exports = class BanCommand extends Command {
                     **Reason:** ${reason}
                 `);
             return modlogs.send({ embed });
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

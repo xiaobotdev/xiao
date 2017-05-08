@@ -15,7 +15,7 @@ module.exports = class TemmieCommand extends Command {
                 	prompt: 'What text would you like to convert to Temmie speak?',
                 	type: 'string',
                 	validate: text => {
-                		if(wordTrans(text, dictionary).length < 1999) return true;
+                		if (wordTrans(text, dictionary).length < 1999) return true;
                 		return 'Your text is too long.';
                 	},
                 	parse: text => wordTrans(text, dictionary)

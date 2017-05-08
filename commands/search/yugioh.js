@@ -21,15 +21,15 @@ module.exports = class YuGiOhCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
                 .get(`http://yugiohprices.com/api/card_data/${query}`);
-            if(body.status === 'fail') throw new Error('No Results.');
-            if(body.data.card_type === 'monster') {
+            if (body.status === 'fail') throw new Error('No Results.');
+            if (body.data.card_type === 'monster') {
                 const embed = new RichEmbed()
                     .setColor(0xBE5F1F)
                     .setTitle(body.data.name)
@@ -57,7 +57,7 @@ module.exports = class YuGiOhCommand extends Command {
                 .addField('**Card Type:**',
                     body.data.card_type, true);
             return msg.embed(embed);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

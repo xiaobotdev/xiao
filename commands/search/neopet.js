@@ -27,9 +27,9 @@ module.exports = class NeopetCommand extends Command {
                 .get(`http://www.sunnyneo.com/petimagefinder.php?name=${query}&size=5&mood=1`);
             const $ = cheerio.load(text);
             const link = $('textarea').first().text();
-            if(!link.includes('cp')) throw new Error('Invalid Pet Name.');
+            if (!link.includes('cp')) throw new Error('Invalid Pet Name.');
             return msg.say(link);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

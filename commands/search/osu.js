@@ -21,14 +21,14 @@ module.exports = class OsuCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
                 .get(`https://osu.ppy.sh/api/get_user?k=${process.env.OSU_KEY}&u=${query}&type=string`);
-            if(body.length === 0) throw new Error('No Results.');
+            if (body.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
@@ -58,7 +58,7 @@ module.exports = class OsuCommand extends Command {
                 .addField('**A:**',
                     body[0].count_rank_a, true);
             return msg.embed(embed);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

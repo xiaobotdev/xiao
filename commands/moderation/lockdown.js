@@ -15,7 +15,7 @@ module.exports = class LockdownCommand extends Command {
                     prompt: 'Please enter either `start` or `stop`.',
                     type: 'string',
                     validate: type => {
-                        if(['start', 'stop'].includes(type.toLowerCase())) return true;
+                        if (['start', 'stop'].includes(type.toLowerCase())) return true;
                         return 'Please enter either `start` or `stop`.';
                     },
                     parse: type => type.toLowerCase()
@@ -29,24 +29,24 @@ module.exports = class LockdownCommand extends Command {
     }
 
     async run(msg, args) {
-        if(!msg.channel.permissionsFor(this.client.user).has('ADMINISTRATOR'))
+        if (!msg.channel.permissionsFor(this.client.user).has('ADMINISTRATOR'))
             return msg.say('This Command requires the `Administrator` Permission.');
         const { type } = args;
-        if(type === 'start') {
+        if (type === 'start') {
             try {
                 await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: false });
                 return msg.say(stripIndents`
                     Lockdown Started, users without Administrator can no longer post messages.
                     Please use \`lockdown stop\` to end the lockdown.
                 `);
-            } catch(err) {
+            } catch (err) {
                 return msg.say(`An Error Occurred: ${err}`);
             }
-        } else if(type === 'stop') {
+        } else if (type === 'stop') {
             try {
                 await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: true });
                 return msg.say('Lockdown Ended, users without Administrator can now post messages.');
-            } catch(err) {
+            } catch (err) {
                 return msg.say(`An Error Occurred: ${err}`);
             }
         }

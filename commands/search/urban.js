@@ -21,14 +21,14 @@ module.exports = class UrbanCommand extends Command {
     }
 
     async run(msg, args) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await request
                 .get(`http://api.urbandictionary.com/v0/define?term=${query}`);
-            if(body.list.length === 0) throw new Error('No Results.');
+            if (body.list.length === 0) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x32a8f0)
                 .setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')
@@ -38,7 +38,7 @@ module.exports = class UrbanCommand extends Command {
                 .addField('**Example:**',
                     body.list[0].example.substr(0, 2000) || 'None');
             return msg.embed(embed);
-        } catch(err) {
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }

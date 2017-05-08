@@ -12,15 +12,15 @@ module.exports = class DogCommand extends Command {
     }
 
     async run(msg) {
-        if(msg.channel.type !== 'dm')
-            if(!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         try {
             const { body } = await request
                 .get('https://random.dog/woof.json');
             return msg.channel.send({ files: [body.url] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
-        } catch(err) {
+                .catch (err => msg.say(`An Error Occurred: ${err}`));
+        } catch (err) {
             return msg.say(`An Error Occurred: ${err}`);
         }
     }
