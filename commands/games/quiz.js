@@ -28,7 +28,7 @@ module.exports = class QuizCommand extends Command {
                     **Category: ${body[0].category.title}**
                     ${body[0].question}
                 `);
-            await msg.embed(embed);
+            msg.embed(embed);
             try {
                 const collected = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
                     max: 1,

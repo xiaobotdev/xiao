@@ -22,16 +22,16 @@ module.exports = class TodayCommand extends Command {
                 .buffer(true);
             const parsed = JSON.parse(text);
             const events = parsed.data.Events;
-            const random = Math.floor(Math.random() * events.length);
+            const event = events[Math.floor(Math.random() * events.length)];
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setURL(parsed.url)
                 .setTitle(`On this day (${parsed.date})...`)
                 .setTimestamp()
-                .setDescription(`${events[random].year}: ${events[random].text}`);
+                .setDescription(`${event.year}: ${event.text}`);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

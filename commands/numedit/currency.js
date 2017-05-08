@@ -49,7 +49,7 @@ module.exports = class CurrencyCommand extends Command {
             const rate = body.rates[to];
             return msg.say(`${amount} ${base} is ${amount * rate} ${to}.`);
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

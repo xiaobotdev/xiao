@@ -28,9 +28,9 @@ module.exports = class InvertCommand extends Command {
         const avatar = await Jimp.read(avatarURL);
         avatar.invert();
         avatar.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(`An Error Occurred: ${err}`);
+            if (err) return msg.say(err);
             return msg.channel.send({ files: [{ attachment: buff, name: 'invert.png' }] })
-                .catch(err => msg.say(`An Error Occurred: ${err}`));
+                .catch(err => msg.say(err));
         });
     }
 };

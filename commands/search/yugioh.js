@@ -58,7 +58,7 @@ module.exports = class YuGiOhCommand extends Command {
                     body.data.card_type, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };

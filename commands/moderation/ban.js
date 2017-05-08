@@ -55,7 +55,7 @@ module.exports = class BanCommand extends Command {
                 await msg.say('Failed to send DM to the user.');
             }
             await member.ban({ days: 7, reason });
-            await msg.say(':ok_hand:');
+            msg.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
                 .setColor(0xFF0000)
@@ -67,7 +67,7 @@ module.exports = class BanCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch (err) {
-            return msg.say(`An Error Occurred: ${err}`);
+            return msg.say(err);
         }
     }
 };
