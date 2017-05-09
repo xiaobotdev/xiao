@@ -23,6 +23,8 @@ const clevs = new Cleverbot({
     nick: 'XiaoBot'
 });
 
+let mention;
+
 client.setProvider(new SequelizeProvider(Database.db));
 
 client.registry
@@ -45,7 +47,6 @@ client.registry
     .registerDefaultCommands({ help: false })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-const mention = new RegExp(`(<!?@${client.user.id}>)`, 'g');
 client.on('message', async (msg) => {
     if (msg.isMentioned(client.user)) {
         const message = msg.content.replace(mention, '');
@@ -141,6 +142,7 @@ client.on('disconnect', (event) => {
 client.on('ready', () => {
     console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
     client.user.setGame(`x;help | Shard ${client.shard.id}`);
+    mention = new RegExp(`(<!?@${client.user.id}>)`, 'g');
 });
 
 client.login(TOKEN);
