@@ -50,7 +50,7 @@ client.registry
 
 client.on('message', async (msg) => {
     if (msg.author.bot) return;
-    if (msg.channel.type === 'dm')
+    if (msg.channel.type !== 'dm')
         if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     if (msg.isMentioned(client.user)) {
         msg.channel.startTyping();
