@@ -49,10 +49,12 @@ client.registry
 
 client.on('message', async (msg) => {
     if (msg.isMentioned(client.user)) {
+        msg.channel.startTyping();
         const message = msg.content.replace(mention, '');
         try {
             const { body } = await clevs.ask(message);
-            return msg.reply(body.response);
+            return msg.reply(body.response)
+                .then(() => msg.channel.stopTyping());
         } catch (err) {
             return msg.reply(err);
         }
