@@ -14,6 +14,9 @@ class Cleverbot {
 				user: this.user,
 				key: this.key,
 				nick: this.nick
+			})
+			.then(response => {
+				return response.body;
 			});
 	}
 
@@ -25,6 +28,9 @@ class Cleverbot {
 				key: this.key,
 				nick: this.nick,
 				text
+			})
+			.then(response => {
+				return response.body;
 			});
 	}
 }
