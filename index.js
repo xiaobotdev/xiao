@@ -1,4 +1,4 @@
-const { TOKEN, OWNER, PREFIX, INVITE, CLEVS_KEY, CLEVS_USER } = process.env;
+const { TOKEN, OWNER, PREFIX, INVITE, CLEVS_KEY, CLEVS_USER, CLEVS_NICK } = process.env;
 
 const { CommandoClient } = require('discord.js-commando');
 const client = new CommandoClient({
@@ -20,7 +20,7 @@ const Cleverbot = require('./structures/Cleverbot');
 const clevs = new Cleverbot({
     key: CLEVS_KEY,
     user: CLEVS_USER,
-    nick: 'XiaoBot'
+    nick: CLEVS_NICK
 });
 clevs.create();
 
