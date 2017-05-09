@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "18.8.2",
+  "version": "18.8.3",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "scripts": {
@@ -43,6 +43,7 @@
     "pg": "^6.1.5",
     "sequelize": "^3.30.4",
     "superagent": "^3.5.2",
+    "uws": "^0.14.5",
     "zalgolize": "^1.2.4"
   }
 }
