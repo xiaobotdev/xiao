@@ -56,7 +56,8 @@ client.on('message', async (msg) => {
             return msg.reply(body.response)
                 .then(() => msg.channel.stopTyping());
         } catch (err) {
-            return msg.reply(err);
+            return msg.reply(err)
+                .then(() => msg.channel.stopTyping());
         }
     } else return;
 });
