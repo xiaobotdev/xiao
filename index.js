@@ -49,12 +49,15 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('message', async (msg) => {
+    if (msg.author.bot) return;
+    if (msg.channel.type === 'dm')
+        if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     if (msg.isMentioned(client.user)) {
         msg.channel.startTyping();
         const message = msg.content.replace(mention, '');
         try {
-            const { body } = await clevs.ask(message);
-            return msg.reply(body.response)
+            const { response } = await clevs.ask(message);
+            return msg.reply(response)
                 .then(() => msg.channel.stopTyping());
         } catch (err) {
             return msg.reply(err)
