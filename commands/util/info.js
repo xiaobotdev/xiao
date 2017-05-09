@@ -83,7 +83,8 @@ module.exports = class InfoCommand extends Command {
                     [random.cat](http://random.cat),
                     [random.dog](https://random.dog),
                     [fixer.io](http://fixer.io),
-                    [konachan](https://konachan.net)
+                    [konachan](https://konachan.net),
+                    [cleverbot.io](https://cleverbot.io)
                 `
             );
         return msg.embed(embed);
