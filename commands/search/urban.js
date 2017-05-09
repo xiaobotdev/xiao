@@ -28,7 +28,7 @@ module.exports = class UrbanCommand extends Command {
         try {
             const { body } = await request
                 .get(`http://api.urbandictionary.com/v0/define?term=${query}`);
-            if (body.list.length === 0) throw new Error('No Results.');
+            if (!body.list.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x32a8f0)
                 .setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')

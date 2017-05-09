@@ -5,7 +5,7 @@ module.exports = class KonachanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'konachan',
-            group: 'randomimg',
+            group: 'search',
             memberName: 'konachan',
             description: 'Sends a random (Possibly NSFW!) anime image from Konachan, with optional query.',
             guildOnly: true,
@@ -28,6 +28,7 @@ module.exports = class KonachanCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://konachan.net/post.json?tags=${query ? `${query}%20` : ''}order:random&limit=1`);
+            if (!body.length) throw new Error('No Results.');
             return msg.channel.send(query ? `Result for ${query}:` : 'Random Image:', { files: [`https:${body[0].file_url}`] })
                 .catch(err => msg.say(err));
         } catch (err) {

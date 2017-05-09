@@ -29,7 +29,7 @@ module.exports = class SoundCloudCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${SOUNDCLOUD_KEY}`);
-            if (body.length === 0) throw new Error('No Results.');
+            if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF15A22)
                 .setAuthor(body[0].title, 'https://i.imgur.com/lFIz7RU.png')

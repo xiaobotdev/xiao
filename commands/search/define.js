@@ -29,7 +29,7 @@ module.exports = class DefineCommand extends Command {
         try {
             const { body } = await request
                 .get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions?limit=1&includeRelated=false&useCanonical=false&api_key=${WORDNIK_KEY}`);
-            if (body.length === 0) throw new Error('No Results.');
+            if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setTitle(body[0].word)

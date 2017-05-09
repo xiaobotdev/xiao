@@ -27,7 +27,7 @@ module.exports = class WeatherCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")&format=json`);
-            if (body.query.count === 0) throw new Error('Location Not Found.');
+            if (!body.query.count) throw new Error('Location Not Found.');
             const embed = new RichEmbed()
                 .setColor(0x0000FF)
                 .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
