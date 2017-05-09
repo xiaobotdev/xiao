@@ -22,6 +22,7 @@ const clevs = new Cleverbot({
     user: CLEVS_USER,
     nick: 'XiaoBot'
 });
+clevs.create();
 
 let mention;
 
