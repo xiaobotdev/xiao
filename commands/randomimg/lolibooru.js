@@ -1,13 +1,13 @@
 const { Command } = require('discord.js-commando');
 const request = require('superagent');
 
-module.exports = class NSFWAnimeCommand extends Command {
+module.exports = class LolibooruCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'nsfw-anime',
+            name: 'lolibooru',
             group: 'randomimg',
-            memberName: 'nsfw-anime',
-            description: 'Sends a random (NSFW!) anime image.',
+            memberName: 'lolibooru',
+            description: 'Sends a random (Possibly NSFW!) anime image from Lolibooru.',
             guildOnly: true
         });
     }
@@ -18,7 +18,7 @@ module.exports = class NSFWAnimeCommand extends Command {
             return msg.say('This Command requires the `Attach Files` Permission.');
         try {
             const { body } = await request
-                .get('https://konachan.net/post.json?tags=order:random&limit=1');
+                .get('https://lolibooru.moe/post/index.json?tags=order:random&limit=1');
             return msg.channel.send({ files: [`https:${body[0].file_url}`] })
                 .catch(err => msg.say(err));
         } catch (err) {
