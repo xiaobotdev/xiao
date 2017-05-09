@@ -19,7 +19,7 @@ module.exports = class LolibooruCommand extends Command {
         try {
             const { body } = await request
                 .get('https://lolibooru.moe/post/index.json?tags=order:random&limit=1');
-            return msg.channel.send({ files: [`https:${body[0].file_url}`] })
+            return msg.channel.send({ files: [body[0].file_url] })
                 .catch(err => msg.say(err));
         } catch (err) {
             return msg.say(err);
