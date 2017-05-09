@@ -29,7 +29,7 @@ module.exports = class OsuCommand extends Command {
         try {
             const { body } = await request
                 .get(`https://osu.ppy.sh/api/get_user?k=${OSU_KEY}&u=${query}&type=string`);
-            if (body.length === 0) throw new Error('No Results.');
+            if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
