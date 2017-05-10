@@ -52,16 +52,16 @@ module.exports = class CardCommand extends Command {
                 ctx.drawImage(base, 0, 0);
                 ctx.font = '18px Open Sans';
                 ctx.fillStyle = 'black';
-                ctx.fillText(member.displayName, 30, 65);
+                ctx.fillText(member.displayName, 27, 65);
                 ctx.fillText('Discord Join Date:', 148, 400);
                 ctx.fillText(moment(member.user.createdTimestamp).format('MMMM Do YYYY'), 148, 420);
                 ctx.fillText('Server Join Date:', 148, 457);
                 ctx.fillText(moment(member.joinedTimestamp).format('MMMM Do YYYY'), 148, 477);
-                ctx.fillText(rarity, 73, 416);
+                ctx.fillText(rarity, 70, 416);
                 ctx.fillText(cardID, 58, 460);
                 ctx.font = '14px Open Sans';
-                ctx.fillText(member.id, 28, 355);
-                ctx.fillText(`#${member.user.discriminator}`, 306, 359);
+                ctx.fillText(member.id, 30, 355);
+                ctx.fillText(`#${member.user.discriminator}`, 310, 355);
             };
             const cardImg = await request
                 .get('https://i.imgur.com/6j8RHk1.png');
