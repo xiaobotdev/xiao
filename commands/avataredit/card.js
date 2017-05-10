@@ -24,10 +24,6 @@ module.exports = class CardCommand extends Command {
         });
     }
 
-    hasPermission(msg) {
-        return this.client.isOwner(msg.author);
-    }
-
     async run(msg, args) {
         if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
             return msg.say('This Command requires the `Attach Files` Permission.');
