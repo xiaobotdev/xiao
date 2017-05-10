@@ -41,7 +41,7 @@ module.exports = class SteamCardCommand extends Command {
                 ctx.fillRect(0, 0, 494, 568);
                 ctx.drawImage(avatar, 25, 25, 450, 450);
                 ctx.drawImage(base, 0, 0);
-                ctx.font = '32px Open Sans';
+                ctx.font = '30px Open Sans';
 			    ctx.fillStyle = 'white';
 			    ctx.fillText(username, 35, 50);
             };
