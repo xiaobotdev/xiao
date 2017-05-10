@@ -52,12 +52,12 @@ module.exports = class CardCommand extends Command {
                 ctx.drawImage(base, 0, 0);
                 ctx.font = '18px Open Sans';
                 ctx.fillStyle = 'black';
-                ctx.fillText(member.displayName, 30, 65);
+                ctx.fillText(member.displayName, 33, 65);
                 ctx.fillText('Discord Join Date:', 148, 400);
                 ctx.fillText(moment(member.user.createdTimestamp).format('MMMM Do YYYY'), 148, 420);
                 ctx.fillText('Server Join Date:', 148, 457);
                 ctx.fillText(moment(member.joinedTimestamp).format('MMMM Do YYYY'), 148, 477);
-                ctx.fillText(rarity, 73, 413);
+                ctx.fillText(rarity, 75, 413);
                 ctx.fillText(cardID, 60, 457);
                 ctx.font = '14px Open Sans';
                 ctx.fillText(member.id, 30, 355);
