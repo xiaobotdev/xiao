@@ -10,7 +10,7 @@ const client = new CommandoClient({
 });
 const path = require('path');
 
-const { carbon, discordBots } = require('./structures/Stats');
+const { carbon, dBots } = require('./structures/Stats');
 
 const SequelizeProvider = require('./providers/Sequelize');
 const Database = require('./structures/PostgreSQL');
@@ -98,23 +98,13 @@ client.on('guildMemberRemove', (member) => {
     return channel.send(msg);
 });
 
-client.on('guildCreate', async (guild) => {
+client.on('guildCreate', (guild) => {
     console.log(`[Guild] I have joined ${guild.name}! (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
-    try {
-        await carbon(count);
-        console.log('[Carbon] Successfully posted to Carbon.');
-    } catch (err) {
-        console.log(`[Carbon] Failed to post to Carbon. ${err}`);
-    }
-    try {
-        await discordBots(count, client.user.id);
-        console.log('[Discord Bots] Successfully posted to Discord Bots.');
-    } catch (err) {
-        console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
-    }
+    carbon(count);
+    dBots(count, client.user.id);
 });
 
 client.on('guildDelete', async (guild) => {
@@ -122,18 +112,8 @@ client.on('guildDelete', async (guild) => {
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     console.log(`[Count] ${count}`);
-    try {
-        await carbon(count);
-        console.log('[Carbon] Successfully posted to Carbon.');
-    } catch (err) {
-        console.log(`[Carbon] Failed to post to Carbon. ${err}`);
-    }
-    try {
-        await discordBots(count, client.user.id);
-        console.log('[Discord Bots] Successfully posted to Discord Bots.');
-    } catch (err) {
-        console.log(`[Discord Bots] Failed to post to Discord Bots. ${err}`);
-    }
+    carbon(count);
+    dBots(count, client.user.id);
 });
 
 client.setTimeout(() => {
