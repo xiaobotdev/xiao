@@ -53,14 +53,14 @@ module.exports = class CardCommand extends Command {
                 ctx.drawImage(base, 0, 0);
                 ctx.font = '18px Open Sans';
                 ctx.fillStyle = 'black';
-                ctx.fillText(member.displayName, 30, 63);
+                ctx.fillText(member.displayName, 30, 62);
                 ctx.fillText('Discord Join Date:', 148, 400);
                 ctx.fillText(moment(member.user.createdTimestamp).format('MMMM Do YYYY'), 148, 420);
                 ctx.fillText('Server Join Date:', 148, 457);
                 ctx.fillText(moment(member.joinedTimestamp).format('MMMM Do YYYY'), 148, 477);
                 ctx.fillText(rarity, 73, 411);
                 ctx.fillText(cardID, 60, 457);
-                ctx.fillText(version.split('.')[0], 67, 503);
+                ctx.fillText(version.split('.')[0], 67, 504);
                 ctx.font = '14px Open Sans';
                 ctx.fillText(member.id, 30, 355);
                 ctx.fillText(`#${member.user.discriminator}`, 313, 355);
