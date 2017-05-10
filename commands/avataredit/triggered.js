@@ -36,6 +36,12 @@ module.exports = class TriggeredCommand extends Command {
                 ctx.fillStyle = 'white';
                 ctx.fillRect(0, 0, 320, 371);
                 ctx.drawImage(avatar, 0, 0, 320, 320);
+                const imgData = ctx.getImageData(0, 0, 320, 320);
+                const data = imgData.data;
+                for (let i = 0; i < data.length; i += 4) {
+                    data[i] = Math.max(255, data[i]);
+                }
+                ctx.putImageData(imgData, 0, 0);
                 ctx.drawImage(base, 0, 0);
             };
             const triggeredImg = await request
