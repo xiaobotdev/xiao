@@ -40,7 +40,7 @@ module.exports = class CanvasCommand extends Command {
             ctx.drawImage(avatar, 158, 51, 200, 200);
         };
         base.src = await request
-            .get('https://i.imgur.com/KriteWm.jpg').body;
+            .get('https://i.imgur.com/Gbu1B2m.png').body;
         avatar.src = await request
             .get(avatarURL).body;
         generate();
