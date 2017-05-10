@@ -35,15 +35,16 @@ module.exports = class CanvasCommand extends Command {
         const ctx = canvas.getContext('2d');
         const base = new Image();
         const avatar = new Image();
-        const generate = () => {
+        base.onload = () => {
             ctx.drawImage(base, 0, 0);
+        };
+        avatar.onload = () => {
             ctx.drawImage(avatar, 158, 51, 200, 200);
         };
         base.src = await request
             .get('https://i.imgur.com/KriteWm.jpg').body;
         avatar.src = await request
             .get(avatarURL).body;
-        generate();
         return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] })
             .catch(err => msg.say(err));
     }
