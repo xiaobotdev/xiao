@@ -63,7 +63,7 @@ module.exports = class CardCommand extends Command {
                 ctx.fillText(version.split('.')[0], 67, 504);
                 ctx.font = '14px Open Sans';
                 ctx.fillText(member.id, 30, 355);
-                ctx.fillText(`#${member.user.discriminator}`, 313, 355);
+                ctx.fillText(`#${member.user.discriminator}`, 312, 357);
             };
             const cardImg = await request
                 .get('https://i.imgur.com/6j8RHk1.png');
