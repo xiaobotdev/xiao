@@ -55,7 +55,7 @@ module.exports = class InfoCommand extends Command {
                     [mathjs](http://mathjs.org),
                     [moment](http://momentjs.com),
                     [moment-duration-format](https://github.com/jsmreese/moment-duration-format),
-                    [jimp](https://github.com/oliver-moran/jimp),
+                    [canvas](https://github.com/Automattic/node-canvas),
                     [cheerio](https://cheerio.js.org),
                     [sequelize](http://docs.sequelizejs.com),
                     [pg](https://github.com/brianc/node-postgres)
