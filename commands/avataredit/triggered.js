@@ -35,8 +35,8 @@ module.exports = class TriggeredCommand extends Command {
             const generate = () => {
                 ctx.fillStyle = 'white';
                 ctx.fillRect(0, 0, 320, 371);
-                ctx.drawImage(base, 0, 0);
                 ctx.drawImage(avatar, 0, 0, 320, 320);
+                ctx.drawImage(base, 0, 0);
             };
             const triggeredImg = await request
                 .get('https://i.imgur.com/tF9yF62.png');

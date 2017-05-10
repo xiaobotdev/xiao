@@ -35,10 +35,10 @@ module.exports = class BobRossCommand extends Command {
             const avatar = new Image();
             const generate = () => {
                 ctx.fillStyle = 'white';
-                ctx.fillRect(0, 0, 507, 338);
-                ctx.rotate(2 * Math.PI / 180);
+                ctx.fillRect(0, 0, 600, 775);
+                ctx.rotate(3 * Math.PI / 180);
                 ctx.drawImage(avatar, 44, 85, 300, 300);
-                ctx.rotate(-2 * Math.PI / 180);
+                ctx.rotate(-3 * Math.PI / 180);
                 ctx.drawImage(base, 0, 0);
             };
             const rossImg = await request

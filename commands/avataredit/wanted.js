@@ -34,7 +34,7 @@ module.exports = class WantedCommand extends Command {
             const avatar = new Image();
             const generate = () => {
                 ctx.drawImage(base, 0, 0);
-                ctx.drawImage(avatar, 149, 360, 430, 430);
+                ctx.drawImage(avatar, 150, 360, 430, 430);
             };
             const wantedImg = await request
                 .get('https://i.imgur.com/6bBDfsO.png');
