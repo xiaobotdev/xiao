@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
-const Jimp = require('jimp');
+const Canvas = require('canvas');
+const request = require('superagent');
 
 module.exports = class WantedCommand extends Command {
     constructor(client) {
@@ -25,16 +26,27 @@ module.exports = class WantedCommand extends Command {
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
-        const images = [];
-        images.push(Jimp.read(avatarURL));
-        images.push(Jimp.read('https://i.imgur.com/ca09TG5.jpg'));
-        const [avatar, wanted] = await Promise.all(images);
-        avatar.resize(500, 500);
-        wanted.composite(avatar, 189, 438);
-        wanted.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(err);
-            return msg.channel.send({ files: [{ attachment: buff, name: 'wanted.png' }] })
+        try {
+            const Image = Canvas.Image;
+            const canvas = new Canvas(741, 1000);
+            const ctx = canvas.getContext('2d');
+            const base = new Image();
+            const avatar = new Image();
+            const generate = () => {
+                ctx.drawImage(base, 0, 0);
+                ctx.drawImage(avatar, 149, 360, 430, 430);
+            };
+            const wantedImg = await request
+                .get('https://i.imgur.com/6bBDfsO.png');
+            const avatarImg = await request
+                .get(avatarURL);
+            base.src = wantedImg.body;
+            avatar.src = avatarImg.body;
+            generate();
+            return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] })
                 .catch(err => msg.say(err));
-        });
+        } catch (err) {
+            return msg.say('An Error Occurred while creating the image.');
+        }
     }
 };

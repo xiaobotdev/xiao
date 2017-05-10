@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
-const Jimp = require('jimp');
+const Canvas = require('canvas');
+const request = require('superagent');
 
 module.exports = class BobRossCommand extends Command {
     constructor(client) {
@@ -26,19 +27,31 @@ module.exports = class BobRossCommand extends Command {
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
-        const blank = new Jimp(600, 775, 0xFFFFFFFF);
-        const images = [];
-        images.push(Jimp.read(avatarURL));
-        images.push(Jimp.read('https://i.imgur.com/7NSiFLd.png'));
-        const [avatar, bob] = await Promise.all(images);
-        avatar.rotate(2);
-        avatar.resize(300, 300);
-        blank.composite(avatar, 44, 85);
-        blank.composite(bob, 0, 0);
-        blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(err);
-            return msg.channel.send({ files: [{ attachment: buff, name: 'bobross.png' }] })
+        try {
+            const Image = Canvas.Image;
+            const canvas = new Canvas(600, 775);
+            const ctx = canvas.getContext('2d');
+            const base = new Image();
+            const avatar = new Image();
+            const generate = () => {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, 507, 338);
+                ctx.rotate(2 * Math.PI / 180);
+                ctx.drawImage(avatar, 44, 85, 300, 300);
+                ctx.rotate(-2 * Math.PI / 180);
+                ctx.drawImage(base, 0, 0);
+            };
+            const rossImg = await request
+                .get('https://i.imgur.com/7NSiFLd.png');
+            const avatarImg = await request
+                .get(avatarURL);
+            base.src = rossImg.body;
+            avatar.src = avatarImg.body;
+            generate();
+            return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'ross.png' }] })
                 .catch(err => msg.say(err));
-        });
+        } catch (err) {
+            return msg.say('An Error Occurred while creating the image.');
+        }
     }
 };
