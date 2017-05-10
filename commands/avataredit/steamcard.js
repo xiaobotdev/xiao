@@ -55,7 +55,7 @@ module.exports = class SteamCardCommand extends Command {
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })
                 .catch(err => msg.say(err));
         } catch (err) {
-            return msg.say('An Error Occurred while creating the image.');
+            return msg.say('An Error Occurred while creating the image. ' + err);
         }
     }
 };
