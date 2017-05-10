@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
-const Jimp = require('jimp');
+const Canvas = require('canvas');
+const request = require('superagent');
 
 module.exports = class InvertCommand extends Command {
     constructor(client) {
@@ -25,12 +26,30 @@ module.exports = class InvertCommand extends Command {
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
-        const avatar = await Jimp.read(avatarURL);
-        avatar.invert();
-        avatar.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(err);
-            return msg.channel.send({ files: [{ attachment: buff, name: 'invert.png' }] })
+        try {
+            const Image = Canvas.Image;
+            const canvas = new Canvas(500, 500);
+            const ctx = canvas.getContext('2d');
+            const avatar = new Image();
+            const generate = () => {
+                ctx.drawImage(avatar, 0, 0, 500, 500);
+                const imgData = ctx.getImageData(0, 0, 500, 500);
+                const data = imgData.data;
+                for (let i = 0; i < data.length; i += 4) {
+                    data[i] = 255 - data[i];
+                    data[i + 1] = 255 - data[i + 1];
+                    data[i + 2] = 255 - data[i + 2];
+                }
+                ctx.putImageData(imgData, 0, 0);
+            };
+            const avatarImg = await request
+                .get(avatarURL);
+            avatar.src = avatarImg.body;
+            generate();
+            return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'invert.png' }] })
                 .catch(err => msg.say(err));
-        });
+        } catch (err) {
+            return msg.say('An Error Occurred while creating the image.');
+        }
     }
 };

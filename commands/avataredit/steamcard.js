@@ -1,5 +1,7 @@
 const { Command } = require('discord.js-commando');
-const Jimp = require('jimp');
+const Canvas = require('canvas');
+const request = require('superagent');
+const path = require('path');
 
 module.exports = class SteamCardCommand extends Command {
     constructor(client) {
@@ -27,20 +29,33 @@ module.exports = class SteamCardCommand extends Command {
         const username = msg.guild ? msg.guild.member(user).displayName : user.username;
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
-        const blank = new Jimp(494, 568, 0xFFFFFFFF);
-        const images = [];
-        images.push(Jimp.read(avatarURL));
-        images.push(Jimp.read('https://i.imgur.com/JF0WwQX.png'));
-        const [avatar, card] = await Promise.all(images);
-        const font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
-        avatar.resize(450, 450);
-        blank.composite(avatar, 25, 25);
-        blank.composite(card, 0, 0);
-        blank.print(font, 38, 20, username);
-        blank.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(err);
-            return msg.channel.send({ files: [{ attachment: buff, name: 'steamcard.png' }] })
+        try {
+            const Image = Canvas.Image;
+            Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OpenSans.ttf'), { family: 'Open Sans' });
+            const canvas = new Canvas(494, 568);
+            const ctx = canvas.getContext('2d');
+            const base = new Image();
+            const avatar = new Image();
+            const generate = () => {
+                ctx.font = '32px Open Sans';
+			    ctx.fillStyle = 'white';
+			    ctx.fillText(username, 38, 20);
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, 494, 568);
+                ctx.drawImage(avatar, 25, 25, 450, 450);
+                ctx.drawImage(base, 0, 0);
+            };
+            const cardImg = await request
+                .get('https://i.imgur.com/JF0WwQX.png');
+            const avatarImg = await request
+                .get(avatarURL);
+            base.src = cardImg.body;
+            avatar.src = avatarImg.body;
+            generate();
+            return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })
                 .catch(err => msg.say(err));
-        });
+        } catch (err) {
+            return msg.say('An Error Occurred while creating the image.');
+        }
     }
 };

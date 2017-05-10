@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
-const Jimp = require('jimp');
+const Canvas = require('canvas');
+const request = require('superagent');
 
 module.exports = class RIPCommand extends Command {
     constructor(client) {
@@ -25,18 +26,37 @@ module.exports = class RIPCommand extends Command {
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.avatarURL('png', 2048);
-        if (!avatarURL) return msg.say('This user has no avatar.');
-        const images = [];
-        images.push(Jimp.read(avatarURL));
-        images.push(Jimp.read('https://i.imgur.com/KriteWm.jpg'));
-        const [avatar, grave] = await Promise.all(images);
-        avatar.greyscale();
-        avatar.resize(200, 200);
-        grave.composite(avatar, 158, 51);
-        grave.getBuffer(Jimp.MIME_PNG, (err, buff) => {
-            if (err) return msg.say(err);
-            return msg.channel.send({ files: [{ attachment: buff, name: 'rip.png' }] })
+        if (!avatarURL) return msg.say('This User has no Avatar.');
+        try {
+            const Image = Canvas.Image;
+            const canvas = new Canvas(507, 338);
+            const ctx = canvas.getContext('2d');
+            const base = new Image();
+            const avatar = new Image();
+            const generate = () => {
+                ctx.drawImage(base, 0, 0);
+                ctx.drawImage(avatar, 158, 51, 200, 200);
+                const imgData = ctx.getImageData(158, 51, 200, 200);
+                const data = imgData.data;
+                for (let i = 0; i < data.length; i += 4) {
+                    const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
+                    data[i] = brightness;
+                    data[i + 1] = brightness;
+                    data[i + 2] = brightness;
+                }
+                ctx.putImageData(imgData, 158, 51);
+            };
+            const ripImg = await request
+                .get('https://i.imgur.com/Gbu1B2m.png');
+            const avatarImg = await request
+                .get(avatarURL);
+            base.src = ripImg.body;
+            avatar.src = avatarImg.body;
+            generate();
+            return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] })
                 .catch(err => msg.say(err));
-        });
+        } catch (err) {
+            return msg.say('An Error Occurred while creating the image.');
+        }
     }
 };
