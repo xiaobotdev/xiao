@@ -39,12 +39,14 @@ module.exports = class CanvasCommand extends Command {
             ctx.drawImage(base, 0, 0);
             ctx.drawImage(avatar, 158, 51, 200, 200);
         };
-        base.src = await request
-            .get('https://i.imgur.com/Gbu1B2m.png').body;
-        console.log(base.src);
-        avatar.src = await request
-            .get(avatarURL).body;
-        console.log(avatar.src);
+        const ripImg = await request
+            .get('https://i.imgur.com/Gbu1B2m.png');
+        const avatarImg = await request
+            .get(avatarURL);
+        console.log(ripImg);
+        console.log(avatarImg);
+        base.src = ripImg.body;
+        avatar.src = avatarImg.body;
         generate();
         return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] })
             .catch(err => msg.say(err));
