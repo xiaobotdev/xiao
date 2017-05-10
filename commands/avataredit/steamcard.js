@@ -43,7 +43,7 @@ module.exports = class SteamCardCommand extends Command {
                 ctx.drawImage(base, 0, 0);
                 ctx.font = '32px Open Sans';
 			    ctx.fillStyle = 'white';
-			    ctx.fillText(username, 38, 20);
+			    ctx.fillText(username, 28, 53);
             };
             const cardImg = await request
                 .get('https://i.imgur.com/JF0WwQX.png');
