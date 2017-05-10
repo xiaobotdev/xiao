@@ -41,8 +41,10 @@ module.exports = class CanvasCommand extends Command {
         };
         base.src = await request
             .get('https://i.imgur.com/Gbu1B2m.png').body;
+        console.log(base.src);
         avatar.src = await request
             .get(avatarURL).body;
+        console.log(avatar.src);
         generate();
         return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] })
             .catch(err => msg.say(err));
