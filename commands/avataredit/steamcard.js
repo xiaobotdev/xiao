@@ -37,13 +37,13 @@ module.exports = class SteamCardCommand extends Command {
             const base = new Image();
             const avatar = new Image();
             const generate = () => {
-                ctx.font = '32px Open Sans';
-			    ctx.fillStyle = 'white';
-			    ctx.fillText(username, 38, 20);
                 ctx.fillStyle = 'white';
                 ctx.fillRect(0, 0, 494, 568);
                 ctx.drawImage(avatar, 25, 25, 450, 450);
                 ctx.drawImage(base, 0, 0);
+                ctx.font = '32px Open Sans';
+			    ctx.fillStyle = 'white';
+			    ctx.fillText(username, 38, 20);
             };
             const cardImg = await request
                 .get('https://i.imgur.com/JF0WwQX.png');
@@ -55,7 +55,7 @@ module.exports = class SteamCardCommand extends Command {
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })
                 .catch(err => msg.say(err));
         } catch (err) {
-            return msg.say('An Error Occurred while creating the image. ' + err);
+            return msg.say('An Error Occurred while creating the image.');
         }
     }
 };

@@ -37,7 +37,7 @@ module.exports = class BobRossCommand extends Command {
                 ctx.fillStyle = 'white';
                 ctx.fillRect(0, 0, 600, 775);
                 ctx.rotate(3 * Math.PI / 180);
-                ctx.drawImage(avatar, 44, 90, 300, 300);
+                ctx.drawImage(avatar, 44, 80, 300, 300);
                 ctx.rotate(-3 * Math.PI / 180);
                 ctx.drawImage(base, 0, 0);
             };
