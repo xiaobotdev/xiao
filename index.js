@@ -98,7 +98,7 @@ client.on('guildMemberRemove', (member) => {
     return channel.send(msg);
 });
 
-client.on('guildCreate', (guild) => {
+client.on('guildCreate', async (guild) => {
     console.log(`[Guild] I have joined ${guild.name}! (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
