@@ -25,7 +25,7 @@ module.exports = class SteamCardCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        let username = msg.guild ? (msg.guild.member(user) ? msg.guild.member(user).displayName : user.username) : user.username;
+        const username = msg.guild ? (msg.guild.member(user) ? msg.guild.member(user).displayName : user.username) : user.username;
         const avatarURL = user.avatarURL('png', 2048);
         if (!avatarURL) return msg.say('This user has no avatar.');
         try {
