@@ -1,18 +1,18 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
-const answers = require('../../assets/json/8ball');
+const answers = require('../../assets/json/magicconch');
 
-module.exports = class MagicBallCommand extends Command {
+module.exports = class MagicConchCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '8-ball',
+            name: 'magic-conch',
             group: 'response',
-            memberName: '8-ball',
-            description: 'Predicts your future.',
+            memberName: 'magic-conch',
+            description: 'Maybe Someday...',
             args: [
                 {
                     key: 'question',
-                    prompt: 'What do you want to ask the 8 ball?',
+                    prompt: 'What do you want to ask the magic conch?',
                     type: 'string'
                 }
             ]
@@ -24,7 +24,7 @@ module.exports = class MagicBallCommand extends Command {
         const answer = answers[Math.floor(Math.random() * answers.length)];
         return msg.say(stripIndents`
             Question: ${question}
-            :8ball: ${answer} :8ball:
+            :shell: ${answer} :shell:
         `);
     }
 };
