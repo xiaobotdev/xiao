@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const compliments = require('./compliments');
+const compliments = require('../../assets/json/compliment');
 
 module.exports = class ComplimentCommand extends Command {
     constructor(client) {

@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const songs = require('./songs');
+const songs = require('../../assets/json/vocaloid');
 
 module.exports = class VocaloidCommand extends Command {
     constructor(client) {

@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { lastNames, maleNames, femaleNames } = require('./names');
+const { lastNames, maleNames, femaleNames } = require('../../assets/json/name');
 
 module.exports = class RandomNameCommand extends Command {
     constructor(client) {

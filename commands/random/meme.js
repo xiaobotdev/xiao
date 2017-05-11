@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const codes = require('./memecodes');
+const codes = require('../../assets/json/meme');
 
 module.exports = class MemeCommand extends Command {
     constructor(client) {

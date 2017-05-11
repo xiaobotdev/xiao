@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const xiaos = require('./xiaos');
+const xiaos = require('../../assets/json/xiaopai');
 
 module.exports = class XiaoCommand extends Command {
     constructor(client) {
