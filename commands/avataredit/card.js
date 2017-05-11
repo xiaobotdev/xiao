@@ -52,8 +52,8 @@ module.exports = class CardCommand extends Command {
                 ctx.fillText(member.displayName, 30, 62);
                 ctx.fillText('Discord Join Date:', 148, 400);
                 ctx.fillText(moment(member.user.createdTimestamp).format('MMMM Do YYYY'), 148, 420);
-                ctx.fillText('Server Join Date:', 148, 457);
-                ctx.fillText(moment(member.joinedTimestamp).format('MMMM Do YYYY'), 148, 477);
+                ctx.fillText('Role:', 148, 457);
+                ctx.fillText(member.highestRole.name, 148, 477);
                 ctx.fillText(rarity, 73, 411);
                 ctx.fillText(cardID, 60, 457);
                 ctx.fillText(version.split('.')[0], 68, 502);
