@@ -1,5 +1,5 @@
 const { TOKEN, OWNER, PREFIX, INVITE, CLEVS_KEY, CLEVS_USER, CLEVS_NICK } = process.env;
-const { CommandoClient } = require('discord.js-commando');
+const { CommandoClient, FriendlyError } = require('discord.js-commando');
 const client = new CommandoClient({
     commandPrefix: PREFIX,
     owner: OWNER,
@@ -59,7 +59,10 @@ client.on('error', console.error);
 
 client.on('warn', console.warn);
 
-client.on('commandError', (command, err) => console.error(command, err));
+client.on('commandError', (command, err) => {
+    if (err instanceof FriendlyError) return;
+    console.error(command.name, err);
+});
 
 client.on('message', async (msg) => {
     if (msg.author.bot) return;
