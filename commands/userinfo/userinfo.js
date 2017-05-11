@@ -15,9 +15,9 @@ module.exports = class UserInfoCommand extends Command {
             guildOnly: true,
             args: [
                 {
-                    key: 'user',
+                    key: 'member',
                     prompt: 'Which user would you like to get info on?',
-                    type: 'user'
+                    type: 'member'
                 }
             ]
         });
@@ -27,11 +27,10 @@ module.exports = class UserInfoCommand extends Command {
         if (msg.channel.type !== 'dm')
             if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
-        const { user } = args;
-        const member = msg.guild.member(user);
+        const { member } = args;
         let stat;
         let color;
-        switch(user.presence.status) {
+        switch(member.user.presence.status) {
             case 'online':
                 stat = '<:vpOnline:212789758110334977> Online';
                 color = 0x00AE86;
@@ -51,25 +50,25 @@ module.exports = class UserInfoCommand extends Command {
         }
         const embed = new RichEmbed()
             .setColor(color)
-            .setThumbnail(user.displayAvatarURL)
+            .setThumbnail(member.user.displayAvatarURL)
             .addField('**Name:**',
-                user.tag, true)
+                member.user.tag, true)
             .addField('**ID:**',
-                user.id, true)
+                member.id, true)
             .addField('**Joined Discord On:**',
                 stripIndents`
-                    ${user.createdAt}
-                    ${moment.duration(Date.now() - user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
+                    ${moment(member.user.createdTimestamp).format('MMMM Do YYYY h:mm:ss a')}
+                    ${moment.duration(Date.now() - member.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
                 `, true)
             .addField('**Joined Server On:**',
                 stripIndents`
-                    ${member.joinedAt}
+                    ${moment(member.joinedTimestamp).format('MMMM Do YYYY h:mm:ss a')}
                     ${moment.duration(Date.now() - member.joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
                 `, true)
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',
-                user.presence.game ? user.presence.game.name : 'None', true);
+                member.user.presence.game ? member.user.presence.game.name : 'None', true);
         return msg.embed(embed);
     }
 };
