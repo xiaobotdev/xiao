@@ -71,7 +71,7 @@ module.exports = class CardCommand extends Command {
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })
                 .catch(err => msg.say(err));
         } catch (err) {
-            return msg.say('An Error Occurred while creating the image. ' + err.stack);
+            return msg.say('An Error Occurred while creating the image.');
         }
     }
 };
