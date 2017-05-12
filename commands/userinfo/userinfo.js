@@ -59,12 +59,12 @@ module.exports = class UserInfoCommand extends Command {
                 stripIndents`
                     ${moment(member.user.createdTimestamp).format('MMMM Do YYYY h:mm:ss a')}
                     ${moment.duration(Date.now() - member.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
-                `, true)
+                `)
             .addField('**Joined Server On:**',
                 stripIndents`
                     ${moment(member.joinedTimestamp).format('MMMM Do YYYY h:mm:ss a')}
                     ${moment.duration(Date.now() - member.joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
-                `, true)
+                `)
             .addField('**Status:**',
                 stat, true)
             .addField('**Playing:**',
