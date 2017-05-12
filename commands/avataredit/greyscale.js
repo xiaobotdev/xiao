@@ -44,8 +44,7 @@ module.exports = class GreyscaleCommand extends Command {
                 }
                 ctx.putImageData(imgData, 0, 0);
             };
-            const avatarImg = await request
-                .get(avatarURL);
+            const avatarImg = await request.get(avatarURL);
             avatar.src = avatarImg.body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'greyscale.png' }] })

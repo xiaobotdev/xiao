@@ -1,6 +1,9 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
 const request = require('superagent');
+const { promisifyAll } = require('tsubaki');
+const fs = promisifyAll(require('fs'));
+const path = require('path');
 
 module.exports = class TriggeredCommand extends Command {
     constructor(client) {
@@ -44,11 +47,8 @@ module.exports = class TriggeredCommand extends Command {
                 ctx.putImageData(imgData, 0, 0);
                 ctx.drawImage(base, 0, 0);
             };
-            const triggeredImg = await request
-                .get('https://i.imgur.com/tF9yF62.png');
-            const avatarImg = await request
-                .get(avatarURL);
-            base.src = triggeredImg.body;
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'triggered.png'));
+            const avatarImg = await request.get(avatarURL);
             avatar.src = avatarImg.body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'triggered.png' }] })

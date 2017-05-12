@@ -31,7 +31,7 @@ module.exports = class BotSearchCommand extends Command {
                 .set({ 'Authorization': DISCORD_BOTS_KEY });
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
-                .setAuthor('Discord Bots', 'https://i.imgur.com/lrKYBQi.jpg')
+                .setAuthor('Discord Bots')
                 .setTitle(body.name)
                 .setURL(`https://bots.discord.pw/bots/${bot.id}`)
                 .setDescription(body.description)

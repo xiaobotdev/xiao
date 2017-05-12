@@ -57,12 +57,12 @@ module.exports = class UserInfoCommand extends Command {
                 member.id, true)
             .addField('**Joined Discord On:**',
                 stripIndents`
-                    ${moment(member.user.createdTimestamp).format('MMMM Do YYYY h:mm:ss a')}
+                    ${moment(member.user.createdTimestamp).format('MMMM Do YYYY h:mm:ss A')}
                     ${moment.duration(Date.now() - member.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
                 `)
             .addField('**Joined Server On:**',
                 stripIndents`
-                    ${moment(member.joinedTimestamp).format('MMMM Do YYYY h:mm:ss a')}
+                    ${moment(member.joinedTimestamp).format('MMMM Do YYYY h:mm:ss A')}
                     ${moment.duration(Date.now() - member.joinedTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
                 `)
             .addField('**Status:**',

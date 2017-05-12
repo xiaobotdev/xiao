@@ -31,7 +31,7 @@ module.exports = class ForecastCommand extends Command {
             const forecasts = body.query.results.channel.item.forecast;
             const embed = new RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
+                .setAuthor(body.query.results.channel.title)
                 .setURL(body.query.results.channel.link)
                 .setTimestamp()
                 .addField(`**${forecasts[0].day} - ${forecasts[0].date}:**`,
