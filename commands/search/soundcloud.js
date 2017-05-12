@@ -32,7 +32,8 @@ module.exports = class SoundCloudCommand extends Command {
             if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF15A22)
-                .setAuthor(body[0].title)
+                .setAuthor('SoundCloud')
+                .setTitle(body[0].title)
                 .setURL(body[0].permalink_url)
                 .setThumbnail(body[0].artwork_url)
                 .addField('**Artist:**',
