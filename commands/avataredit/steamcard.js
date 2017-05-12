@@ -1,6 +1,8 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
 const request = require('superagent');
+const { promisifyAll } = require('tsubaki');
+const fs = promisifyAll(require('fs'));
 const path = require('path');
 
 module.exports = class SteamCardCommand extends Command {
@@ -43,11 +45,8 @@ module.exports = class SteamCardCommand extends Command {
                 ctx.font = '30px Open Sans';
 			    ctx.fillText(username, 35, 48);
             };
-            const cardImg = await request
-                .get('https://i.imgur.com/JF0WwQX.png');
-            const avatarImg = await request
-                .get(avatarURL);
-            base.src = cardImg.body;
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'steamcard.png'));
+            const avatarImg = await request.get(avatarURL);
             avatar.src = avatarImg.body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })

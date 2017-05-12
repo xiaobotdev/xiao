@@ -30,7 +30,7 @@ module.exports = class WeatherCommand extends Command {
             if (!body.query.count) throw new Error('Location Not Found.');
             const embed = new RichEmbed()
                 .setColor(0x0000FF)
-                .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
+                .setAuthor(body.query.results.channel.title)
                 .setURL(body.query.results.channel.link)
                 .setTimestamp()
                 .addField('**City:**',

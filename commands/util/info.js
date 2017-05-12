@@ -58,7 +58,8 @@ module.exports = class InfoCommand extends Command {
                     [canvas](https://github.com/Automattic/node-canvas),
                     [cheerio](https://cheerio.js.org),
                     [sequelize](http://docs.sequelizejs.com),
-                    [pg](https://github.com/brianc/node-postgres)
+                    [pg](https://github.com/brianc/node-postgres),
+                    [tsubaki](https://github.com/iCrawl/tsubaki)
                 `
             )
             .addField('APIs',

@@ -1,6 +1,9 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
 const request = require('superagent');
+const { promisifyAll } = require('tsubaki');
+const fs = promisifyAll(require('fs'));
+const path = require('path');
 
 module.exports = class BeautifulCommand extends Command {
     constructor(client) {
@@ -36,13 +39,10 @@ module.exports = class BeautifulCommand extends Command {
             const generate = () => {
                 ctx.drawImage(base, 0, 0);
                 ctx.drawImage(avatar, 341, 35, 117, 135);
-                ctx.drawImage(avatar, 342, 301, 117, 135);
+                ctx.drawImage(avatar, 342, 303, 117, 135);
             };
-            const grunkleImg = await request
-                .get('https://i.imgur.com/71qLwPf.png');
-            const avatarImg = await request
-                .get(avatarURL);
-            base.src = grunkleImg.body;
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'beautiful.png'));
+            const avatarImg = await request.get(avatarURL);
             avatar.src = avatarImg.body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'grunkle.png' }] })

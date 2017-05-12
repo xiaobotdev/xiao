@@ -13,9 +13,6 @@ module.exports = class CatCommand extends Command {
     }
 
     async run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         try {
             const { body } = await request
                 .get('http://random.cat/meow');

@@ -2,6 +2,8 @@ const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
 const request = require('superagent');
 const moment = require('moment');
+const { promisifyAll } = require('tsubaki');
+const fs = promisifyAll(require('fs'));
 const path = require('path');
 const { version } = require('../../package');
 
@@ -61,11 +63,8 @@ module.exports = class CardCommand extends Command {
                 ctx.fillText(member.id, 30, 355);
                 ctx.fillText(`#${member.user.discriminator}`, 313, 355);
             };
-            const cardImg = await request
-                .get('https://i.imgur.com/6j8RHk1.png');
-            const avatarImg = await request
-                .get(avatarURL);
-            base.src = cardImg.body;
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'card.png'));
+            const avatarImg = await request.get(avatarURL);
             avatar.src = avatarImg.body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })

@@ -34,7 +34,7 @@ module.exports = class YuGiOhCommand extends Command {
                     .setColor(0xBE5F1F)
                     .setTitle(body.data.name)
                     .setDescription(body.data.text)
-                    .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
+                    .setAuthor('Yu-Gi-Oh!')
                     .addField('**Card Type:**',
                         body.data.card_type, true)
                     .addField('**Type:**',

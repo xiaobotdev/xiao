@@ -32,7 +32,7 @@ module.exports = class OsuCommand extends Command {
             if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)
-                .setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
+                .setAuthor('osu!')
                 .setURL('https://osu.ppy.sh/')
                 .addField('**Username:**',
                     body[0].username, true)
