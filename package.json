@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "19.2.1",
+  "version": "19.2.2",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "scripts": {
@@ -20,7 +20,8 @@
     "discord-js",
     "discord-js-commando",
     "postgres",
-    "postgresql"
+    "postgresql",
+    "cleverbot"
   ],
   "author": "dragonfire535",
   "license": "ISC",
