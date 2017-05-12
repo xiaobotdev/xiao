@@ -33,7 +33,7 @@ module.exports = class WattpadCommand extends Command {
             if (!body.stories.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF89C34)
-                .setAuthor('Wattpad')
+                .setAuthor('Wattpad', 'https://i.imgur.com/Rw9vRQB.png')
                 .setURL(body.stories[0].url)
                 .setTitle(body.stories[0].title)
                 .setDescription(body.stories[0].description.substr(0, 2000))

@@ -39,7 +39,7 @@ module.exports = class BeautifulCommand extends Command {
             const generate = () => {
                 ctx.drawImage(base, 0, 0);
                 ctx.drawImage(avatar, 341, 35, 117, 135);
-                ctx.drawImage(avatar, 342, 303, 117, 135);
+                ctx.drawImage(avatar, 343, 301, 117, 135);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'beautiful.png'));
             const avatarImg = await request.get(avatarURL);

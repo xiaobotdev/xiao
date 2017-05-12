@@ -31,7 +31,7 @@ module.exports = class UrbanCommand extends Command {
             if (!body.list.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x32a8f0)
-                .setAuthor('Urban Dictionary')
+                .setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')
                 .setURL(body.list[0].permalink)
                 .setTitle(body.list[0].word)
                 .setDescription(body.list[0].definition.substr(0, 2000))

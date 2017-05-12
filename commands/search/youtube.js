@@ -34,7 +34,7 @@ module.exports = class YouTubeCommand extends Command {
                 .setColor(0xDD2825)
                 .setTitle(body.items[0].snippet.title)
                 .setDescription(body.items[0].snippet.description)
-                .setAuthor(`YouTube - ${body.items[0].snippet.channelTitle}`)
+                .setAuthor(`YouTube - ${body.items[0].snippet.channelTitle}`, 'https://i.imgur.com/hkUafwu.png')
                 .setURL(`https://www.youtube.com/watch?v=${body.items[0].id.videoId}`)
                 .setThumbnail(body.items[0].snippet.thumbnails.default.url);
             return msg.embed(embed);

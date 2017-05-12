@@ -31,7 +31,7 @@ module.exports = class IMDBCommand extends Command {
             if (body.Error) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xDBA628)
-                .setAuthor('IMDB')
+                .setAuthor('IMDB', 'https://i.imgur.com/sXwwIQs.png')
                 .setURL(`http://www.imdb.com/title/${body.imdbID}`)
                 .setTitle(`${body.Title} (${body.imdbRating} Score)`)
                 .setDescription(body.Plot.substr(0, 2000))
