@@ -36,15 +36,15 @@ module.exports = class SoundCloudCommand extends Command {
                 .setTitle(body[0].title)
                 .setURL(body[0].permalink_url)
                 .setThumbnail(body[0].artwork_url)
-                .addField('**Artist:**',
+                .addField('Artist',
                     body[0].user.username)
-                .addField('**Download Count:**',
+                .addField('Download Count',
                     body[0].download_count, true)
-                .addField('**Comment Count**',
+                .addField('Comment Count',
                     body[0].comment_count, true)
-                .addField('**Playback Count:**',
+                .addField('Playback Count',
                     body[0].playback_count, true)
-                .addField('**Favorited Count:**',
+                .addField('Favorited Count',
                     body[0].favoritings_count, true);
             return msg.embed(embed);
         } catch (err) {

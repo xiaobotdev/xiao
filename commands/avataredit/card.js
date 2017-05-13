@@ -35,7 +35,7 @@ module.exports = class CardCommand extends Command {
         if (cardID < 5000) rarity = 'C';
         else if (cardID < 8000) rarity = 'U';
         else rarity = 'R';
-        const avatarURL = member.user.avatarURL('png', 2048);
+        const avatarURL = member.user.avatarURL('png', 512);
         if (!avatarURL) return msg.say('This user has no avatar.');
         try {
             const Image = Canvas.Image;
@@ -64,8 +64,8 @@ module.exports = class CardCommand extends Command {
                 ctx.fillText(`#${member.user.discriminator}`, 313, 355);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'card.png'));
-            const avatarImg = await request.get(avatarURL);
-            avatar.src = avatarImg.body;
+            const { body } = await request.get(avatarURL);
+            avatar.src = body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })
                 .catch(err => msg.say(err));

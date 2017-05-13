@@ -35,17 +35,17 @@ module.exports = class YuGiOhCommand extends Command {
                     .setTitle(body.data.name)
                     .setDescription(body.data.text)
                     .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
-                    .addField('**Card Type:**',
+                    .addField('Card Type',
                         body.data.card_type, true)
-                    .addField('**Type:**',
+                    .addField('Type',
                         body.data.type, true)
-                    .addField('**Attribute:**',
+                    .addField('Attribute',
                         body.data.family, true)
-                    .addField('**ATK:**',
+                    .addField('ATK',
                         body.data.atk, true)
-                    .addField('**DEF:**',
+                    .addField('DEF',
                         body.data.def, true)
-                    .addField('**Level:**',
+                    .addField('Level',
                         body.data.level, true);
                 return msg.embed(embed);
             } else {
@@ -54,7 +54,7 @@ module.exports = class YuGiOhCommand extends Command {
                     .setTitle(body.data.name)
                     .setDescription(body.data.text)
                     .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
-                    .addField('**Card Type:**',
+                    .addField('Card Type',
                         body.data.card_type, true);
                 return msg.embed(embed);
             }

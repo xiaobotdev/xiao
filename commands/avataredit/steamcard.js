@@ -28,7 +28,7 @@ module.exports = class SteamCardCommand extends Command {
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const username = msg.guild ? (msg.guild.member(user) ? msg.guild.member(user).displayName : user.username) : user.username;
-        const avatarURL = user.avatarURL('png', 2048);
+        const avatarURL = user.avatarURL('png', 512);
         if (!avatarURL) return msg.say('This user has no avatar.');
         try {
             const Image = Canvas.Image;
@@ -46,8 +46,8 @@ module.exports = class SteamCardCommand extends Command {
 			    ctx.fillText(username, 35, 48);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'steamcard.png'));
-            const avatarImg = await request.get(avatarURL);
-            avatar.src = avatarImg.body;
+            const { body } = await request.get(avatarURL);
+            avatar.src = body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })
                 .catch(err => msg.say(err));

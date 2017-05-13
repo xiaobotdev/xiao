@@ -37,7 +37,7 @@ module.exports = class HelpCommand extends Command {
                     ${commands[0].details || ''}
                 `);
             } else if (commands.length > 1) {
-                return msg.say(`Multiple Commands Found. Please be more specific: ${commands.map(c => `"${c.name}"`).join(', ')}`);
+                return msg.say(`Multiple Commands Found. Please be more specific: ${commands.map(c => c.name).join(', ')}`);
             } else {
                 return msg.say(`Could not identify command. Use ${msg.usage(null)} to view a list of commands you can use.`);
             }

@@ -33,29 +33,29 @@ module.exports = class WeatherCommand extends Command {
                 .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
                 .setURL(body.query.results.channel.link)
                 .setTimestamp()
-                .addField('**City:**',
+                .addField('City',
                     body.query.results.channel.location.city, true)
-                .addField('**Country**',
+                .addField('Country',
                     body.query.results.channel.location.country, true)
-                .addField('**Region:**',
+                .addField('Region',
                     body.query.results.channel.location.region, true)
-                .addField('**Condition:**',
+                .addField('Condition',
                     body.query.results.channel.item.condition.text, true)
-                .addField('**Temperature:**',
+                .addField('Temperature',
                     `${body.query.results.channel.item.condition.temp}°F`, true)
-                .addField('**Humidity:**',
+                .addField('Humidity',
                     body.query.results.channel.atmosphere.humidity, true)
-                .addField('**Pressure:**',
+                .addField('Pressure',
                     body.query.results.channel.atmosphere.pressure, true)
-                .addField('**Rising:**',
+                .addField('Rising',
                     body.query.results.channel.atmosphere.rising, true)
-                .addField('**Visibility:**',
+                .addField('Visibility',
                     body.query.results.channel.atmosphere.visibility, true)
-                .addField('**Wind Chill:**',
+                .addField('Wind Chill',
                     body.query.results.channel.wind.chill, true)
-                .addField('**Wind Direction:**',
+                .addField('Wind Direction',
                     body.query.results.channel.wind.direction, true)
-                .addField('**Wind Speed:**',
+                .addField('Wind Speed',
                     body.query.results.channel.wind.speed, true);
             return msg.embed(embed);
         } catch (err) {

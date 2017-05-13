@@ -35,19 +35,19 @@ module.exports = class IMDBCommand extends Command {
                 .setURL(`http://www.imdb.com/title/${body.imdbID}`)
                 .setTitle(`${body.Title} (${body.imdbRating} Score)`)
                 .setDescription(body.Plot.substr(0, 2000))
-                .addField('**Genres:**',
+                .addField('Genres',
                     body.Genre)
-                .addField('**Year:**',
+                .addField('Year',
                     body.Year, true)
-                .addField('**Rated:**',
+                .addField('Rated',
                     body.Rated, true)
-                .addField('**Runtime:**',
+                .addField('Runtime',
                     body.Runtime, true)
-                .addField('**Directors:**',
+                .addField('Directors',
                     body.Director)
-                .addField('**Writers:**',
+                .addField('Writers',
                     body.Writer)
-                .addField('**Actors:**',
+                .addField('Actors',
                     body.Actors);
             return msg.embed(embed);
         } catch (err) {

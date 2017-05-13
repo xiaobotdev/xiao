@@ -22,22 +22,22 @@ module.exports = class GuildInfoCommand extends Command {
         const embed = new RichEmbed()
             .setColor(0x00AE86)
             .setThumbnail(msg.guild.iconURL())
-            .addField('**Name:**',
+            .addField('Name',
                 msg.guild.name, true)
-            .addField('**ID:**',
+            .addField('ID',
                 msg.guild.id, true)
-            .addField('**Created On:**',
+            .addField('Creation Date',
                 stripIndents`
-                    ${msg.guild.createdAt}
+                    ${moment(msg.guild.createdTimestamp).format('MMMM Do YYYY h:mm:ss A')}
                     ${moment.duration(Date.now() - msg.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
                 `, true)
-            .addField('**Default Channel:**',
+            .addField('Default Channel',
                 msg.guild.defaultChannel, true)
-            .addField('**Region:**',
+            .addField('Region',
                 msg.guild.region, true)
-            .addField('**Owner:**',
-                msg.guild.owner.user.tag, true)
-            .addField('**Users:**',
+            .addField('Owner',
+                msg.guild.owner, true)
+            .addField('Members',
                 msg.guild.memberCount, true);
         return msg.embed(embed);
     }
