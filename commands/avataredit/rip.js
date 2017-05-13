@@ -28,7 +28,7 @@ module.exports = class RIPCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const avatarURL = user.avatarURL('png', 2048);
+        const avatarURL = user.avatarURL('png', 256);
         if (!avatarURL) return msg.say('This User has no Avatar.');
         try {
             const Image = Canvas.Image;

@@ -35,7 +35,7 @@ module.exports = class UrbanCommand extends Command {
                 .setURL(body.list[0].permalink)
                 .setTitle(body.list[0].word)
                 .setDescription(body.list[0].definition.substr(0, 2000))
-                .addField('**Example:**',
+                .addField('Example',
                     body.list[0].example.substr(0, 2000) || 'None');
             return msg.embed(embed);
         } catch (err) {

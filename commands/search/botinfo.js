@@ -35,11 +35,11 @@ module.exports = class BotSearchCommand extends Command {
                 .setTitle(body.name)
                 .setURL(`https://bots.discord.pw/bots/${bot.id}`)
                 .setDescription(body.description)
-                .addField('**Library:**',
+                .addField('Library',
                     body.library, true)
-                .addField('**Invite:**',
+                .addField('Invite',
                     `[Here](${body.invite_url})`, true)
-                .addField('**Prefix:**',
+                .addField('Prefix',
                     body.prefix, true);
             return msg.embed(embed);
         } catch (err) {

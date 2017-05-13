@@ -34,19 +34,19 @@ module.exports = class ForecastCommand extends Command {
                 .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
                 .setURL(body.query.results.channel.link)
                 .setTimestamp()
-                .addField(`**${forecasts[0].day} - ${forecasts[0].date}:**`,
+                .addField(`${forecasts[0].day} - ${forecasts[0].date}`,
                     `**High:** ${forecasts[0].high}°F, **Low:** ${forecasts[0].low}°F, **Condition:** ${forecasts[0].text}`)
-                .addField(`**${forecasts[1].day} - ${forecasts[1].date}:**`,
+                .addField(`${forecasts[1].day} - ${forecasts[1].date}`,
                     `**High:** ${forecasts[1].high}°F, **Low:** ${forecasts[1].low}°F, **Condition:** ${forecasts[1].text}`)
-                .addField(`**${forecasts[2].day} - ${forecasts[2].date}:**`,
+                .addField(`${forecasts[2].day} - ${forecasts[2].date}`,
                     `**High:** ${forecasts[2].high}°F, **Low:** ${forecasts[2].low}°F, **Condition:** ${forecasts[2].text}`)
-                .addField(`**${forecasts[3].day} - ${forecasts[3].date}:**`,
+                .addField(`${forecasts[3].day} - ${forecasts[3].date}`,
                     `**High:** ${forecasts[3].high}°F, **Low:** ${forecasts[3].low}°F, **Condition:** ${forecasts[3].text}`)
-                .addField(`**${forecasts[4].day} - ${forecasts[4].date}:**`,
+                .addField(`${forecasts[4].day} - ${forecasts[4].date}`,
                     `**High:** ${forecasts[4].high}°F, **Low:** ${forecasts[4].low}°F, **Condition:** ${forecasts[4].text}`)
-                .addField(`**${forecasts[5].day} - ${forecasts[5].date}:**`,
+                .addField(`${forecasts[5].day} - ${forecasts[5].date}`,
                     `**High:** ${forecasts[5].high}°F, **Low:** ${forecasts[5].low}°F, **Condition:** ${forecasts[5].text}`)
-                .addField(`**${forecasts[6].day} - ${forecasts[6].date}:**`,
+                .addField(`${forecasts[6].day} - ${forecasts[6].date}`,
                     `**High:** ${forecasts[6].high}°F, **Low:** ${forecasts[6].low}°F, **Condition:** ${forecasts[6].text}`);
             return msg.embed(embed);
         } catch (err) {

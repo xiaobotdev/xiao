@@ -34,29 +34,29 @@ module.exports = class OsuCommand extends Command {
                 .setColor(0xFF66AA)
                 .setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
                 .setURL('https://osu.ppy.sh/')
-                .addField('**Username:**',
+                .addField('Username',
                     body[0].username, true)
-                .addField('**ID:**',
+                .addField('ID',
                     body[0].user_id, true)
-                .addField('**Level:**',
+                .addField('Level',
                     body[0].level, true)
-                .addField('**Accuracy**',
+                .addField('Accuracy',
                     body[0].accuracy, true)
-                .addField('**Rank:**',
+                .addField('Rank',
                     body[0].pp_rank, true)
-                .addField('**Play Count:**',
+                .addField('Play Count',
                     body[0].playcount, true)
-                .addField('**Country:**',
+                .addField('Country',
                     body[0].country, true)
-                .addField('**Ranked Score:**',
+                .addField('Ranked Score',
                     body[0].ranked_score, true)
-                .addField('**Total Score:**',
+                .addField('Total Score',
                     body[0].total_score, true)
-                .addField('**SS:**',
+                .addField('SS',
                     body[0].count_rank_ss, true)
-                .addField('**S:**',
+                .addField('S',
                     body[0].count_rank_s, true)
-                .addField('**A:**',
+                .addField('A',
                     body[0].count_rank_a, true);
             return msg.embed(embed);
         } catch (err) {

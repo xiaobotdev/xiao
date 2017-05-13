@@ -37,17 +37,17 @@ module.exports = class WattpadCommand extends Command {
                 .setURL(body.stories[0].url)
                 .setTitle(body.stories[0].title)
                 .setDescription(body.stories[0].description.substr(0, 2000))
-                .addField('**Author:**',
+                .addField('Author',
                     body.stories[0].user, true)
-                .addField('**Parts:**',
+                .addField('Parts',
                     body.stories[0].numParts, true)
-                .addField('**Created On:**',
+                .addField('Created On',
                     body.stories[0].createDate, true)
-                .addField('**Votes:**',
+                .addField('Votes',
                     body.stories[0].voteCount, true)
-                .addField('**Reads:**',
+                .addField('Reads',
                     body.stories[0].readCount, true)
-                .addField('**Comments:**',
+                .addField('Comments',
                     body.stories[0].commentCount, true);
             return msg.embed(embed);
         } catch (err) {

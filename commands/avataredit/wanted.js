@@ -27,7 +27,7 @@ module.exports = class WantedCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES')) 
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const avatarURL = user.avatarURL('png', 2048);
+        const avatarURL = user.avatarURL('png', 512);
         if (!avatarURL) return msg.say('This user has no avatar.');
         try {
             const Image = Canvas.Image;
@@ -40,8 +40,8 @@ module.exports = class WantedCommand extends Command {
                 ctx.drawImage(avatar, 150, 360, 430, 430);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'wanted.png'));
-            const avatarImg = await request.get(avatarURL);
-            avatar.src = avatarImg.body;
+            const { body } = await request.get(avatarURL);
+            avatar.src = body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] })
                 .catch(err => msg.say(err));

@@ -28,7 +28,7 @@ module.exports = class BeautifulCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const avatarURL = user.avatarURL('png', 2048);
+        const avatarURL = user.avatarURL('png', 256);
         if (!avatarURL) return msg.say('This user has no avatar.');
         try {
             const Image = Canvas.Image;
@@ -42,8 +42,8 @@ module.exports = class BeautifulCommand extends Command {
                 ctx.drawImage(avatar, 343, 301, 117, 135);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'beautiful.png'));
-            const avatarImg = await request.get(avatarURL);
-            avatar.src = avatarImg.body;
+            const { body } = await request.get(avatarURL);
+            avatar.src = body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'grunkle.png' }] })
                 .catch(err => msg.say(err));

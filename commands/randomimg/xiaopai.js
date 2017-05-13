@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const xiaos = require('../../assets/json/xiaopai');
+const path = require('path');
 
 module.exports = class XiaoCommand extends Command {
     constructor(client) {
@@ -16,8 +16,8 @@ module.exports = class XiaoCommand extends Command {
         if (msg.channel.type !== 'dm')
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
-        const xiao = xiaos[Math.floor(Math.random() * xiaos.length)];
-        return msg.channel.send({ files: [xiao] })
+        const xiao = Math.floor(Math.random() * 10) + 1;
+        return msg.channel.send({ files: [path.join(__dirname, '..', '..', 'assets', 'images', `xiaopai${xiao}.png`)] })
             .catch(err => msg.say(err));
     }
 };
