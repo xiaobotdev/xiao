@@ -31,7 +31,7 @@ module.exports = class HelpCommand extends Command {
                 return msg.say(stripIndents`
                     __Command **${commands[0].name}**:__ *${commands[0].description}*
                     ${commands[0].guildOnly ? 'Usable Only in Servers' : 'Usable in Servers and DM'}
-                    **Format:** ${msg.anyUsage(`${commands[0].name}${commands[0].format ? ` ${commands[0].format}` : ''}`)}
+                    **Format:** ${msg.anyUsage(`${commands[0].name} ${commands[0].format ? commands[0].format : ''}`)}
                     **Aliases:** ${commands[0].aliases.join(', ') || 'None'}
                     **Group:** ${commands[0].group.name}
                     ${commands[0].details || ''}
@@ -48,9 +48,9 @@ module.exports = class HelpCommand extends Command {
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.array()) {
                 embed.addField(group.name,
-                    !showAll ?
-                        group.commands.filter(c => c.isUsable(msg)).map(c => `\`${c.name}\``).join(', ') || 'None Available' :
-                        group.commands.map(c => `\`${c.name}\``).join(', '));
+                    showAll ?
+                        group.commands.map(c => c.name).join(', ') :
+                        group.commands.filter(c => c.isUsable(msg)).map(c => c.name).join(', ') || 'None Available');
             }
             try {
                 await msg.author.send({ embed });

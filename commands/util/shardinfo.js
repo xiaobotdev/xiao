@@ -34,7 +34,7 @@ module.exports = class ShardInfoCommand extends Command {
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
         const embed = new RichEmbed()
-            .setTitle(`Data for Shard ${shard}:`)
+            .setTitle(`Shard ${shard}`)
             .setColor(0x00AE86)
             .addField('Servers',
                 guilds[shard], true)
