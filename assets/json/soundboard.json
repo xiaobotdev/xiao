@@ -1,5 +1,5 @@
 {
-    names: [
+    "names": [
         "airhorn",
         "cat",
         "doh",
@@ -19,7 +19,7 @@
         "wumbo",
         "zelda chest"
     ],
-    paths: {
+    "paths": {
         "airhorn": "airhorn.mp3",
         "cat": "cat.mp3",
         "doh": "doh.mp3",
