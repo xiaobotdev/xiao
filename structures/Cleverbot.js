@@ -6,7 +6,12 @@ class Cleverbot {
 		this.user = options.user;
 		this.nick = options.nick;
 	}
-	
+
+	setNick(nick) {
+		this.nick = nick;
+		return this.nick;
+	}
+
 	create() {
 		return request
 			.post('https://cleverbot.io/1.0/create')
