@@ -33,6 +33,7 @@
     "node": "7.10.0"
   },
   "dependencies": {
+    "bufferutil": "^3.0.0",
     "canvas": "automattic/node-canvas",
     "cheerio": "^0.22.0",
     "custom-translate": "dragonfire535/custom-translate",
