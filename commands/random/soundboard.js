@@ -27,11 +27,11 @@ module.exports = class SoundboardCommand extends Command {
     }
 
     async run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).hasPermission('CONNECT'))
+        if (!msg.channel.permissionsFor(this.client.user).has('CONNECT'))
             return msg.say('This Command requires the `Connect` Permission.');
-        if (!msg.channel.permissionsFor(this.client.user).hasPermission('SPEAK'))
+        if (!msg.channel.permissionsFor(this.client.user).has('SPEAK'))
             return msg.say('This Command requires the `Speak` Permission.');
-        if (!msg.channel.permissionsFor(this.client.user).hasPermission('ADD_REACTIONS'))
+        if (!msg.channel.permissionsFor(this.client.user).has('ADD_REACTIONS'))
             return msg.say('This Command requires the `Add Reactions` Permission.');
         const voiceChannel = msg.member.voiceChannel;
         if (!voiceChannel) return msg.say('Please enter a Voice Channel first.');
