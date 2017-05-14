@@ -85,7 +85,8 @@ module.exports = class InfoCommand extends Command {
                     [random.dog](https://random.dog),
                     [fixer.io](http://fixer.io),
                     [konachan](https://konachan.net),
-                    [cleverbot.io](https://cleverbot.io)
+                    [cleverbot.io](https://cleverbot.io),
+                    [My Anime List](https://myanimelist.net/modules.php?go=api)
                 `
             );
         return msg.embed(embed);
