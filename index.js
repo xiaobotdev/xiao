@@ -71,7 +71,8 @@ client.on('message', async (msg) => {
             if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
             const singleRole = msg.guild.settings.get('singleRole');
             if (singleRole)
-                if (!msg.member.roles.has(singleRole)) return;
+                if (!msg.member.roles.has(singleRole))
+                    return msg.reply(`Only the ${msg.guild.roles.get(singleRole).name} role may use commands.`);
         }
         msg.channel.startTyping();
         const message = msg.content.replace(mention, '');
