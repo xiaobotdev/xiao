@@ -29,7 +29,8 @@ module.exports = class AnimeCommand extends Command {
         const { query } = args;
         try {
             const { text } = await request
-                .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml?q=${query}`);
+                .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml?q=${query}`)
+                .buffer(true);
             const $ = cheerio.load(text, { xmlMode: true });
             const embed = new RichEmbed()
                 .setColor(0x2D54A2)
@@ -48,7 +49,7 @@ module.exports = class AnimeCommand extends Command {
                     $('end_date').first().text(), true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('Error: No Results.');
+            return msg.say(err);
         }
     }
 };
