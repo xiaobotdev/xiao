@@ -38,7 +38,7 @@ module.exports = class AnimeCommand extends Command {
                 .setURL(`https://myanimelist.net/anime/${$('id').first().text()}`)
                 .setThumbnail($('image').first().text())
                 .setTitle(`${$('title').first().text()} (${$('english').first().text()})`)
-                .setDescription($('synopsis').first().text().substr(0, 2000))
+                .setDescription($('synopsis').first().text().replace(/(<br \/>)/g, '').substr(0, 2000))
                 .addField('Type',
                     `${$('type').first().text()} - ${$('status').first().text()}`)
                 .addField('Episodes',
