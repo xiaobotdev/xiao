@@ -29,6 +29,6 @@ module.exports = class ClearSettingCommand extends Command {
     run(msg, args) {
         const { setting } = args;
         msg.guild.settings.remove(setting);
-        return msg.say(`${setting} has been removed from your guild settings.`);
+        return msg.say(`${setting} has been removed from your server settings.`);
     }
 };
