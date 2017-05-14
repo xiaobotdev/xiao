@@ -32,13 +32,19 @@ module.exports = class AnimeCommand extends Command {
                 .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml?q=${query}`)
                 .buffer(true);
             const $ = cheerio.load(text, { xmlMode: true });
+            const synopsis = $('synopsis').first().text().substr(0, 2000)
+                .replace(/(<br \/>)/g, '')
+                .replace(/(&#039;)/g, '\'')
+                .replace(/(&mdash;)/g, '—')
+                .replace(/(&#034;)/g, '"')
+                .replace(/(&#038;)/g, '&');
             const embed = new RichEmbed()
                 .setColor(0x2D54A2)
                 .setAuthor('My Anime List', 'https://i.imgur.com/R4bmNFz.png')
                 .setURL(`https://myanimelist.net/anime/${$('id').first().text()}`)
                 .setThumbnail($('image').first().text())
-                .setTitle(`${$('title').first().text()} (${$('english').first().text()})`)
-                .setDescription($('synopsis').first().text().replace(/(<br \/>)/g, '').substr(0, 2000))
+                .setTitle(`${$('title').first().text()} (English: ${$('english').first().text() || 'N/A'})`)
+                .setDescription(synopsis)
                 .addField('Type',
                     `${$('type').first().text()} - ${$('status').first().text()}`, true)
                 .addField('Episodes',
