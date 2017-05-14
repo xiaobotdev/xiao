@@ -11,7 +11,7 @@ const path = require('path');
 const { carbon, dBots } = require('./structures/Stats');
 const SequelizeProvider = require('./providers/Sequelize');
 const Database = require('./structures/PostgreSQL');
-const Cleverbot = require('./structures/Cleverbot');
+const Cleverbot = require('cleverio');
 const clevs = new Cleverbot({
     key: CLEVS_KEY,
     user: CLEVS_USER,
