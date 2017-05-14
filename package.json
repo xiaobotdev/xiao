@@ -49,6 +49,7 @@
     "sequelize": "^3.30.4",
     "superagent": "^3.5.2",
     "tsubaki": "^1.1.0",
+    "xml2js": "^0.4.17",
     "zalgolize": "^1.2.4"
   }
 }
