@@ -40,7 +40,7 @@ module.exports = class AnimeCommand extends Command {
                 .setTitle(`${$('title').first().text()} (${$('english').first().text()})`)
                 .setDescription($('synopsis').first().text().replace(/(<br \/>)/g, '').substr(0, 2000))
                 .addField('Type',
-                    `${$('type').first().text()} - ${$('status').first().text()}`)
+                    `${$('type').first().text()} - ${$('status').first().text()}`, true)
                 .addField('Episodes',
                     $('episodes').first().text(), true)
                 .addField('Start Date',
@@ -49,7 +49,7 @@ module.exports = class AnimeCommand extends Command {
                     $('end_date').first().text(), true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err);
+            return msg.say('Error: No Results.');
         }
     }
 };
