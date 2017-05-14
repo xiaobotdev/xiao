@@ -21,6 +21,12 @@ module.exports = class ShipCommand extends Command {
     run(msg, args) {
         const { things } = args;
         const rating = Math.floor(Math.random() * 100) + 1;
-        return msg.say(`I'd give ${things} a ${rating}%!`);
+        let response;
+        if (rating < 25) response = 'Ouch. Might want to keep them apart.';
+        else if (rating < 50) response = 'Meh, they should keep looking.';
+        else if (rating < 75) response = 'Could be worse, they should try it.';
+        else if (rating < 90) response = 'Not too bad. It might work out.';
+        else response = 'These guys have one bright future ahead of them!';
+        return msg.say(`I'd give ${things} a ${rating}%! ${response}`);
     }
 };
