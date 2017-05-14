@@ -46,20 +46,21 @@ module.exports = class InfoCommand extends Command {
             .addField('Node Version',
                 process.version, true)
             .addField('Library',
-                '[discord.js](https://discord.js.org)', true)
+                '[discord.js](https://github.com/hydrabolt/discord.js)', true)
             .addField('Modules',
                 oneLine`
                     [commando](https://github.com/Gawdl3y/discord.js-commando),
-                    [zalgoize](https://github.com/clux/zalgolize),
-                    [superagent](https://visionmedia.github.io/superagent),
-                    [mathjs](http://mathjs.org),
-                    [moment](http://momentjs.com),
+                    [zalgolize](https://github.com/clux/zalgolize),
+                    [superagent](https://github.com/visionmedia/superagent),
+                    [mathjs](https://github.com/josdejong/mathjs),
+                    [moment](https://github.com/moment/moment),
                     [moment-duration-format](https://github.com/jsmreese/moment-duration-format),
                     [canvas](https://github.com/Automattic/node-canvas),
-                    [cheerio](https://cheerio.js.org),
-                    [sequelize](http://docs.sequelizejs.com),
+                    [cheerio](https://github.com/cheeriojs/cheerio),
+                    [sequelize](https://github.com/sequelize/sequelize),
                     [tsubaki](https://github.com/iCrawl/tsubaki),
-                    [node-opus](https://github.com/Rantanen/node-opus)
+                    [node-opus](https://github.com/Rantanen/node-opus),
+                    [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)
                 `
             )
             .addField('APIs',
@@ -68,7 +69,7 @@ module.exports = class InfoCommand extends Command {
                     [Wordnik](https://www.wordnik.com),
                     [osu!](https://osu.ppy.sh),
                     [memegen.link](https://memegen.link),
-                    [YuGiOh](http://yugiohprices.com),
+                    [YuGiOh Prices](http://yugiohprices.com),
                     [YouTube](https://www.youtube.com),
                     [Discord Bots](https://bots.discord.pw),
                     [Today in History](http://history.muffinlabs.com),
