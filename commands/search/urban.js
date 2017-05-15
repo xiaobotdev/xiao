@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class UrbanCommand extends Command {
     constructor(client) {
@@ -13,8 +13,7 @@ module.exports = class UrbanCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What would you like to define?',
-                    type: 'string',
-                    parse: text => encodeURIComponent(text)
+                    type: 'string'
                 }
             ]
         });
@@ -26,8 +25,11 @@ module.exports = class UrbanCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`http://api.urbandictionary.com/v0/define?term=${query}`);
+            const { body } = await snekfetch
+                .get(`http://api.urbandictionary.com/v0/define`)
+                .query({
+                    term: query
+                });
             if (!body.list.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x32a8f0)

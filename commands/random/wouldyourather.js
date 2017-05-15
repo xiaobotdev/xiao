@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class WouldYouRatherCommand extends Command {
     constructor(client) {
@@ -18,7 +18,7 @@ module.exports = class WouldYouRatherCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
-            const { body } = await request
+            const { body } = await snekfetch
                 .get('http://www.rrrather.com/botapi');
             const embed = new RichEmbed()
                 .setTitle(`${body.title}...`)

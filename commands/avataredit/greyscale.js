@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class GreyscaleCommand extends Command {
     constructor(client) {
@@ -44,7 +44,7 @@ module.exports = class GreyscaleCommand extends Command {
                 }
                 ctx.putImageData(imgData, 0, 0);
             };
-            const avatarImg = await request.get(avatarURL);
+            const avatarImg = await snekfetch.get(avatarURL);
             avatar.src = avatarImg.body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'greyscale.png' }] })

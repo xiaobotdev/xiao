@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { WATTPAD_KEY } = process.env;
 
 module.exports = class WattpadCommand extends Command {
@@ -14,8 +14,7 @@ module.exports = class WattpadCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What book would you like to search for?',
-                    type: 'string',
-                    parse: text => encodeURIComponent(text)
+                    type: 'string'
                 }
             ]
         });
@@ -27,8 +26,12 @@ module.exports = class WattpadCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`https://api.wattpad.com:443/v4/stories?query=${query}&limit=1`)
+            const { body } = await snekfetch
+                .get(`https://api.wattpad.com:443/v4/stories`)
+                .query({
+                    query,
+                    limit: 1
+                })
                 .set({ 'Authorization': `Basic ${WATTPAD_KEY}` });
             if (!body.stories.length) throw new Error('No Results.');
             const embed = new RichEmbed()

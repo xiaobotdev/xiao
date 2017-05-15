@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
 const fs = promisifyAll(require('fs'));
 const path = require('path');
@@ -50,7 +50,7 @@ module.exports = class RIPCommand extends Command {
                 ctx.putImageData(imgData, 158, 51);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
-            const avatarImg = await request.get(avatarURL);
+            const avatarImg = await snekfetch.get(avatarURL);
             avatar.src = avatarImg.body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] })

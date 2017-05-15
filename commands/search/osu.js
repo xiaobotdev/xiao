@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { OSU_KEY } = process.env;
 
 module.exports = class OsuCommand extends Command {
@@ -14,8 +14,7 @@ module.exports = class OsuCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What osu username would you like to search for?',
-                    type: 'string',
-                    parse: query => encodeURIComponent(query)
+                    type: 'string'
                 }
             ]
         });
@@ -27,8 +26,13 @@ module.exports = class OsuCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`https://osu.ppy.sh/api/get_user?k=${OSU_KEY}&u=${query}&type=string`);
+            const { body } = await snekfetch
+                .get('https://osu.ppy.sh/api/get_user')
+                .query({
+                    k: OSU_KEY,
+                    u: query,
+                    type: 'string'
+                });
             if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xFF66AA)

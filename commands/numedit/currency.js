@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const codes = require('../../assets/json/currency');
 
 module.exports = class CurrencyCommand extends Command {
@@ -44,8 +44,12 @@ module.exports = class CurrencyCommand extends Command {
         const { base, to, amount } = args;
         if (base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
         try {
-            const { body } = await request
-                .get(`http://api.fixer.io/latest?base=${base}&symbols=${to}`);
+            const { body } = await snekfetch
+                .get(`http://api.fixer.io/latest`)
+                .query({
+                    base,
+                    symbols: to
+                });
             const rate = body.rates[to];
             return msg.say(`${amount} ${base} is ${amount * rate} ${to}.`);
         } catch (err) {

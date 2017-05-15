@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class YuGiOhCommand extends Command {
     constructor(client) {
@@ -26,7 +26,7 @@ module.exports = class YuGiOhCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
+            const { body } = await snekfetch
                 .get(`http://yugiohprices.com/api/card_data/${query}`);
             if (body.status === 'fail') throw new Error('No Results.');
             if (body.data.card_type === 'monster') {

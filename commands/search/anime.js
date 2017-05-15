@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { promisify } = require('tsubaki');
 const xml = promisify(require('xml2js').parseString);
 const { ANIMELIST_LOGIN } = process.env;
@@ -16,8 +16,7 @@ module.exports = class AnimeCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What anime would you like to search for?',
-                    type: 'string',
-                    parse: query => encodeURIComponent(query)
+                    type: 'string'
                 }
             ]
         });
@@ -29,9 +28,11 @@ module.exports = class AnimeCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { text } = await request
-                .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml?q=${query}`)
-                .buffer(true);
+            const { text } = await snekfetch
+                .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml`)
+                .query({
+                    q: query
+                });
             const { anime } = await xml(text);
             const synopsis = anime.entry[0].synopsis[0].substr(0, 2000)
                 .replace(/(<br \/>)/g, '')

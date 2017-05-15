@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
 const fs = promisifyAll(require('fs'));
 const path = require('path');
@@ -41,7 +41,7 @@ module.exports = class YearsCommand extends Command {
                 ctx.drawImage(avatar, 461, 127, 200, 200);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', '3000years.png'));
-            const { body } = await request.get(avatarURL);
+            const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'az.png' }] })

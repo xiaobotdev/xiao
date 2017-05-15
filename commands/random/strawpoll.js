@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class StrawpollCommand extends Command {
     constructor(client) {
@@ -38,7 +38,7 @@ module.exports = class StrawpollCommand extends Command {
         if (options.length < 2) return msg.say('You provided less than two choices.');
         if (options.length > 31) return msg.say('You provided more than thirty choices.');
         try {
-            const { body } = await request
+            const { body } = await snekfetch
                 .post('https://strawpoll.me/api/v2/polls')
                 .send({ title, options });
             return msg.say(stripIndents`

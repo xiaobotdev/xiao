@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
 const fs = promisifyAll(require('fs'));
 const path = require('path');
@@ -40,7 +40,7 @@ module.exports = class WantedCommand extends Command {
                 ctx.drawImage(avatar, 150, 360, 430, 430);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'wanted.png'));
-            const { body } = await request.get(avatarURL);
+            const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] })
