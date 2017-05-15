@@ -41,7 +41,6 @@ module.exports = class WikipediaCommand extends Command {
             const embed = new RichEmbed()
                 .setColor(0xE7E7E7)
                 .setTitle(body.query.pages[0].title)
-                .setURL(`https://en.wikipedia.org/wiki/${query}`)
                 .setAuthor('Wikipedia', 'https://i.imgur.com/a4eeEhh.png')
                 .setDescription(body.query.pages[0].extract.substr(0, 2000).replace(/[\n]/g, '\n\n'));
             return msg.embed(embed);
