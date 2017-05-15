@@ -46,50 +46,7 @@ module.exports = class InfoCommand extends Command {
             .addField('Node Version',
                 process.version, true)
             .addField('Library',
-                '[discord.js](https://github.com/hydrabolt/discord.js)', true)
-            .addField('Modules',
-                oneLine`
-                    [commando](https://github.com/Gawdl3y/discord.js-commando),
-                    [zalgolize](https://github.com/clux/zalgolize),
-                    [superagent](https://github.com/visionmedia/superagent),
-                    [mathjs](https://github.com/josdejong/mathjs),
-                    [moment](https://github.com/moment/moment),
-                    [moment-duration-format](https://github.com/jsmreese/moment-duration-format),
-                    [canvas](https://github.com/Automattic/node-canvas),
-                    [cheerio](https://github.com/cheeriojs/cheerio),
-                    [sequelize](https://github.com/sequelize/sequelize),
-                    [tsubaki](https://github.com/iCrawl/tsubaki),
-                    [node-opus](https://github.com/Rantanen/node-opus),
-                    [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)
-                `
-            )
-            .addField('APIs',
-                oneLine`
-                    [Wattpad](https://www.wattpad.com),
-                    [Wordnik](https://www.wordnik.com),
-                    [osu!](https://osu.ppy.sh),
-                    [memegen.link](https://memegen.link),
-                    [YuGiOh Prices](http://yugiohprices.com),
-                    [YouTube](https://www.youtube.com),
-                    [Discord Bots](https://bots.discord.pw),
-                    [Today in History](http://history.muffinlabs.com),
-                    [jService](http://jservice.io),
-                    [Urban Dictionary](http://www.urbandictionary.com),
-                    [OMDB](http://www.omdbapi.com),
-                    [Yahoo Weather](https://www.yahoo.com/news/weather),
-                    [Wikipedia](https://www.wikipedia.org),
-                    [Google Maps](https://www.google.com/maps),
-                    [Strawpoll](http://www.strawpoll.me),
-                    [rrrather](http://www.rrrather.com),
-                    [SoundCloud](https://soundcloud.com),
-                    [random.cat](http://random.cat),
-                    [random.dog](https://random.dog),
-                    [fixer.io](http://fixer.io),
-                    [konachan](https://konachan.net),
-                    [cleverbot.io](https://cleverbot.io),
-                    [My Anime List](https://myanimelist.net)
-                `
-            );
+                '[discord.js](https://github.com/hydrabolt/discord.js)[-commando](https://github.com/Gawdl3y/discord.js-commando)', true);
         return msg.embed(embed);
     }
 };
