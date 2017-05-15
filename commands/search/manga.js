@@ -33,8 +33,8 @@ module.exports = class MangaCommand extends Command {
                 .query({
                     q: query
                 });
-            const { anime } = await xml(text);
-            const synopsis = anime.entry[0].synopsis[0].substr(0, 2000)
+            const { manga } = await xml(text);
+            const synopsis = manga.entry[0].synopsis[0].substr(0, 2000)
                 .replace(/(<br \/>)/g, '')
                 .replace(/(&#039;)/g, '\'')
                 .replace(/(&mdash;)/g, '—')
@@ -43,18 +43,18 @@ module.exports = class MangaCommand extends Command {
             const embed = new RichEmbed()
                 .setColor(0x2D54A2)
                 .setAuthor('My Anime List', 'https://i.imgur.com/R4bmNFz.png')
-                .setURL(`https://myanimelist.net/anime/${anime.entry[0].id[0]}`)
-                .setThumbnail(anime.entry[0].image[0])
-                .setTitle(`${anime.entry[0].title[0]} (English: ${anime.entry[0].english[0] || 'N/A'})`)
+                .setURL(`https://myanimelist.net/manga/${manga.entry[0].id[0]}`)
+                .setThumbnail(manga.entry[0].image[0])
+                .setTitle(`${manga.entry[0].title[0]} (English: ${manga.entry[0].english[0] || 'N/A'})`)
                 .setDescription(synopsis)
                 .addField('Type',
-                    `${anime.entry[0].type[0]} - ${anime.entry[0].status[0]}`, true)
+                    `${manga.entry[0].type[0]} - ${manga.entry[0].status[0]}`, true)
                 .addField('Volumes / Chapters',
-                    `${anime.entry[0].volumes[0]} / ${anime.entry[0].chapters[0]}`, true)
+                    `${manga.entry[0].volumes[0]} / ${manga.entry[0].chapters[0]}`, true)
                 .addField('Start Date',
-                    anime.entry[0].start_date[0], true)
+                    manga.entry[0].start_date[0], true)
                 .addField('End Date',
-                    anime.entry[0].end_date[0], true);
+                    manga.entry[0].end_date[0], true);
             return msg.embed(embed);
         } catch (err) {
             return msg.say('Error: No Results.');
