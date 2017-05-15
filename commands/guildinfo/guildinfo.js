@@ -30,7 +30,7 @@ module.exports = class GuildInfoCommand extends Command {
                 stripIndents`
                     ${moment(msg.guild.createdTimestamp).format('MMMM Do YYYY h:mm:ss A')}
                     ${moment.duration(Date.now() - msg.guild.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago.
-                `, true)
+                `)
             .addField('Default Channel',
                 msg.guild.defaultChannel, true)
             .addField('Region',
