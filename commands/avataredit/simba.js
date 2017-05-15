@@ -36,8 +36,7 @@ module.exports = class SimbaCommand extends Command {
             const base = new Image();
             const avatar = new Image();
             const generate = () => {
-                ctx.fillStyle = 'white';
-                ctx.fillRect(0, 0, 500, 281);
+                ctx.drawImage(base, 0, 0);
                 ctx.rotate(-24 * Math.PI / 180);
                 ctx.drawImage(avatar, 115, 63, 200, 220);
                 const imgData = ctx.getImageData(115, 63, 200, 220);
@@ -47,7 +46,6 @@ module.exports = class SimbaCommand extends Command {
                 }
                 ctx.putImageData(imgData, 115, 63);
                 ctx.rotate(24 * Math.PI / 180);
-                ctx.drawImage(base, 0, 0);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'simba.png'));
             const { body } = await snekfetch.get(avatarURL);
