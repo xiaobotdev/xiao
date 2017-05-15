@@ -38,7 +38,7 @@ module.exports = class SimbaCommand extends Command {
             const generate = () => {
                 ctx.drawImage(base, 0, 0);
                 ctx.rotate(-24 * Math.PI / 180);
-                ctx.drawImage(avatar, 80, 125, 130, 150);
+                ctx.drawImage(avatar, 80, 150, 130, 150);
                 ctx.rotate(24 * Math.PI / 180);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'simba.png'));
