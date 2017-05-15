@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class ForecastCommand extends Command {
     constructor(client) {
@@ -25,8 +25,12 @@ module.exports = class ForecastCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")&format=json`);
+            const { body } = await snekfetch
+                .get('https://query.yahooapis.com/v1/public/yql')
+                .query({
+                    q: `select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")`,
+                    format: 'json'
+                });
             if (!body.query.count) throw new Error('Location Not Found.');
             const forecasts = body.query.results.channel.item.forecast;
             const embed = new RichEmbed()

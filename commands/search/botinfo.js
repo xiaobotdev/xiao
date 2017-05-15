@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { DISCORD_BOTS_KEY } = process.env;
 
 module.exports = class BotSearchCommand extends Command {
@@ -26,7 +26,7 @@ module.exports = class BotSearchCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { bot } = args;
         try {
-            const { body } = await request
+            const { body } = await snekfetch
                 .get(`https://bots.discord.pw/api/bots/${bot.id}`)
                 .set({ 'Authorization': DISCORD_BOTS_KEY });
             const embed = new RichEmbed()

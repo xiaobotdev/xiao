@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class KonachanCommand extends Command {
     constructor(client) {
@@ -26,8 +26,12 @@ module.exports = class KonachanCommand extends Command {
             return msg.say('This Command requires the `Attach Files` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`https://konachan.net/post.json?tags=${query ? `${query}%20` : ''}order:random&limit=1`);
+            const { body } = await snekfetch
+                .get('https://konachan.net/post.json')
+                .query({
+                    tags: `${query ? `${query} ` : ''}order:random`,
+                    limit: 1
+                });
             if (!body.length) throw new Error('No Results.');
             return msg.channel.send(query ? `Result for ${query}:` : 'Random Image:', { files: [`https:${body[0].file_url}`] })
                 .catch(err => msg.say(err));

@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class DogCommand extends Command {
     constructor(client) {
@@ -16,7 +16,7 @@ module.exports = class DogCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         try {
-            const { body } = await request
+            const { body } = await snekfetch
                 .get('https://random.dog/woof.json');
             return msg.channel.send({ files: [body.url] })
                 .catch(err => msg.say(err));

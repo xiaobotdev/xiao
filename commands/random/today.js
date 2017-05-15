@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class TodayCommand extends Command {
     constructor(client) {
@@ -17,9 +17,8 @@ module.exports = class TodayCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
-            const { text } = await request
-                .get('http://history.muffinlabs.com/date')
-                .buffer(true);
+            const { text } = await snekfetch
+                .get('http://history.muffinlabs.com/date');
             const parsed = JSON.parse(text);
             const events = parsed.data.Events;
             const event = events[Math.floor(Math.random() * events.length)];

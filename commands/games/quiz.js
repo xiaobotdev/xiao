@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class QuizCommand extends Command {
     constructor(client) {
@@ -19,8 +19,11 @@ module.exports = class QuizCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
-            const { body } = await request
-                .get('http://jservice.io/api/random?count=1');
+            const { body } = await snekfetch
+                .get('http://jservice.io/api/random')
+                .query({
+                    count: 1
+                });
             const answer = body[0].answer.toLowerCase().replace(/(<i>|<\/i>)/g, '');
             const embed = new RichEmbed()
                 .setTitle('You have **15** seconds to answer this question:')

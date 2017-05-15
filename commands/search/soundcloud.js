@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { SOUNDCLOUD_KEY } = process.env;
 
 module.exports = class SoundCloudCommand extends Command {
@@ -14,8 +14,7 @@ module.exports = class SoundCloudCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What do you want to search SoundCloud for?',
-                    type: 'string',
-                    parse: text => encodeURIComponent(text)
+                    type: 'string'
                 }
             ]
         });
@@ -27,8 +26,12 @@ module.exports = class SoundCloudCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`https://api.soundcloud.com/tracks?q=${query}&client_id=${SOUNDCLOUD_KEY}`);
+            const { body } = await snekfetch
+                .get(`https://api.soundcloud.com/tracks`)
+                .query({
+                    q: query,
+                    client_id: SOUNDCLOUD_KEY
+                });
             if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF15A22)

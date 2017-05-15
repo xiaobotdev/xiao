@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class MapCommand extends Command {
@@ -24,8 +24,7 @@ module.exports = class MapCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What location you like to get a map image for?',
-                    type: 'string',
-                    parse: query => encodeURIComponent(query)
+                    type: 'string'
                 }
             ]
         });
@@ -37,8 +36,14 @@ module.exports = class MapCommand extends Command {
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { zoom, query } = args;
         try {
-            const { body } = await request
-                .get(`https://maps.googleapis.com/maps/api/staticmap?center=${query}&zoom=${zoom}&size=500x500&key=${GOOGLE_KEY}`);
+            const { body } = await snekfetch
+                .get('https://maps.googleapis.com/maps/api/staticmap')
+                .query({
+                    center: query,
+                    zoom,
+                    size: '500x500',
+                    key: GOOGLE_KEY
+                });
             return msg.channel.send({ files: [{ attachment: body, name: 'map.png' }] })
                 .catch(err => msg.say(err));
         } catch (err) {

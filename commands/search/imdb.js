@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class IMDBCommand extends Command {
     constructor(client) {
@@ -13,8 +13,7 @@ module.exports = class IMDBCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What movie or TV Show would you like to search for?',
-                    type: 'string',
-                    parse: query => encodeURIComponent(query)
+                    type: 'string'
                 }
             ]
         });
@@ -26,8 +25,12 @@ module.exports = class IMDBCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`http://www.omdbapi.com/?t=${query}&plot=full`);
+            const { body } = await snekfetch
+                .get(`http://www.omdbapi.com/`)
+                .query({
+                    t: query,
+                    plot: 'full'
+                });
             if (body.Error) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xDBA628)

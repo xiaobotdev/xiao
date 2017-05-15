@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class YouTubeCommand extends Command {
@@ -14,8 +14,7 @@ module.exports = class YouTubeCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What would you like to search for?',
-                    type: 'string',
-                    parse: text => encodeURIComponent(text)
+                    type: 'string'
                 }
             ]
         });
@@ -27,8 +26,15 @@ module.exports = class YouTubeCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${GOOGLE_KEY}`);
+            const { body } = await snekfetch
+                .get('https://www.googleapis.com/youtube/v3/search')
+                .query({
+                    part: 'snippet',
+                    type: 'video',
+                    maxResults: 1,
+                    q: query,
+                    key: GOOGLE_KEY
+                });
             if (!body.items.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xDD2825)

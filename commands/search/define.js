@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { WORDNIK_KEY } = process.env;
 
 module.exports = class DefineCommand extends Command {
@@ -27,8 +27,14 @@ module.exports = class DefineCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions?limit=1&includeRelated=false&useCanonical=false&api_key=${WORDNIK_KEY}`);
+            const { body } = await snekfetch
+                .get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions`)
+                .query({
+                    limit: 1,
+                    includeRelated: false,
+                    useCanonical: false,
+                    api_key: WORDNIK_KEY
+                });
             if (!body.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0x9797FF)

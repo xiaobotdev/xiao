@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const Canvas = require('canvas');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
 const fs = promisifyAll(require('fs'));
 const path = require('path');
@@ -46,7 +46,7 @@ module.exports = class SteamCardCommand extends Command {
 			    ctx.fillText(username, 35, 48);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'steamcard.png'));
-            const { body } = await request.get(avatarURL);
+            const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();
             return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })

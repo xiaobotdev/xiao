@@ -1,9 +1,9 @@
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 const { CARBON_KEY, DBOTS_KEY } = process.env;
 
 class Stats {
     static dBots(server_count, id) {
-        request
+        snekfetch
             .post(`https://bots.discord.pw/api/bots/${id}/stats`)
             .set({ 'Authorization': DBOTS_KEY })
             .send({ server_count })
@@ -12,7 +12,7 @@ class Stats {
     }
 
     static carbon(servercount) {
-        request
+        snekfetch
             .post('https://www.carbonitex.net/discord/data/botdata.php')
             .send({ key: CARBON_KEY, servercount })
             .then(() => console.log('[DBots] Successfully posted to DBots.'))

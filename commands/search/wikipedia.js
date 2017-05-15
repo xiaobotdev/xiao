@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const request = require('superagent');
+const snekfetch = require('snekfetch');
 
 module.exports = class WikipediaCommand extends Command {
     constructor(client) {
@@ -13,8 +13,7 @@ module.exports = class WikipediaCommand extends Command {
                 {
                     key: 'query',
                     prompt: 'What would you like to search for?',
-                    type: 'string',
-                    parse: text => encodeURIComponent(text)
+                    type: 'string'
                 }
             ]
         });
@@ -26,8 +25,18 @@ module.exports = class WikipediaCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
-            const { body } = await request
-                .get(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles=${query}&exintro=&explaintext=&redirects=&formatversion=2`);
+            const { body } = await snekfetch
+                .get('https://en.wikipedia.org/w/api.php')
+                .query({
+                    action: 'query',
+                    prop: 'extracts',
+                    format: 'json',
+                    titles: query,
+                    exintro: '',
+                    explaintext: '',
+                    redirects: '',
+                    formatversion: 2
+                });
             if (body.query.pages[0].missing) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xE7E7E7)
