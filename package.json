@@ -38,7 +38,7 @@
     "cheerio": "^0.22.0",
     "cleverio": "dragonfire535/cleverio",
     "custom-translate": "dragonfire535/custom-translate",
-    "discord.js": "hydrabolt/discord.js#37a3a6baf97a08e2100211219de6515d048b554e",
+    "discord.js": "hydrabolt/discord.js#4422f2aa8a72ae8765d91c2b1847785992075c33",
     "discord.js-commando": "gawdl3y/discord.js-commando",
     "erlpack": "hammerandchisel/erlpack",
     "mathjs": "^3.12.2",
