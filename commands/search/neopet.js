@@ -34,7 +34,7 @@ module.exports = class NeopetCommand extends Command {
             if (!link.includes('cp')) throw new Error('Invalid Pet Name.');
             return msg.say(link);
         } catch (err) {
-            return msg.say(err);
+            return msg.say('An Error Occurred. There were most likely no results.');
         }
     }
 };

@@ -51,7 +51,7 @@ module.exports = class SoundCloudCommand extends Command {
                     body[0].favoritings_count, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err);
+            return msg.say('An Error Occurred. There were most likely no results.');
         }
     }
 };

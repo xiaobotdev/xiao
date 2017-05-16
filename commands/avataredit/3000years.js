@@ -45,7 +45,7 @@ module.exports = class YearsCommand extends Command {
             avatar.src = body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'az.png' }] })
-                .catch(err => msg.say(err));
+                .catch(() => msg.say('An Error Occurred while sending the image.'));
         } catch (err) {
             return msg.say('An Error Occurred while creating the image.');
         }

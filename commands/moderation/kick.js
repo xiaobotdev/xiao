@@ -66,7 +66,7 @@ module.exports = class KickCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch (err) {
-            return msg.say(err);
+            return msg.say('No Results.');
         }
     }
 };

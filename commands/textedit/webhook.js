@@ -36,7 +36,7 @@ module.exports = class WebhookCommand extends Command {
                 .send({ content });
             return null;
         } catch (err) {
-            return msg.say(err);
+            return msg.say('An Error Occurred.');
         }
     }
 };
