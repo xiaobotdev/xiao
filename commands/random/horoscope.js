@@ -10,7 +10,7 @@ module.exports = class HoroscopeCommand extends Command {
             group: 'random',
             memberName: 'horoscope',
             description: 'Gives the horoscope for today for a particular sign.',
-            details: signs.join(', '),
+            details: `**Signs:** ${signs.join(', ')}`,
             args: [
                 {
                     key: 'sign',
