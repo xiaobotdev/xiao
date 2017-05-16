@@ -30,7 +30,7 @@ module.exports = class TodayCommand extends Command {
                 .setDescription(`${event.year}: ${event.text}`);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('An Error Occurred.');
+            return msg.say(err.message);
         }
     }
 };

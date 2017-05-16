@@ -45,7 +45,7 @@ module.exports = class CurrencyCommand extends Command {
         if (base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
         try {
             const { body } = await snekfetch
-                .get(`http://api.fixer.io/latest`)
+                .get('http://api.fixer.io/latest')
                 .query({
                     base,
                     symbols: to
@@ -53,7 +53,7 @@ module.exports = class CurrencyCommand extends Command {
             const rate = body.rates[to];
             return msg.say(`${amount} ${base} is ${amount * rate} ${to}.`);
         } catch (err) {
-            return msg.say('An Error Occurred.');
+            return msg.say(err.message);
         }
     }
 };

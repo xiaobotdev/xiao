@@ -26,7 +26,7 @@ module.exports = class IMDBCommand extends Command {
         const { query } = args;
         try {
             const { body } = await snekfetch
-                .get(`http://www.omdbapi.com/`)
+                .get('http://www.omdbapi.com/')
                 .query({
                     t: query,
                     plot: 'full'
@@ -54,7 +54,7 @@ module.exports = class IMDBCommand extends Command {
                     body.Actors);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('An Error Occurred. There were most likely no results.');
+            return msg.say(err.message);
         }
     }
 };

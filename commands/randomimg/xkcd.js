@@ -41,7 +41,7 @@ module.exports = class XKCDCommand extends Command {
                     .catch(() => msg.say('An Error Occurred while sending the image.'));
             }
         } catch (err) {
-            return msg.say('An Error Occurred.');
+            return msg.say(err.message);
         }
     }
 };

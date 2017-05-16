@@ -21,7 +21,7 @@ module.exports = class DogCommand extends Command {
             return msg.say({ files: [body.url] })
                 .catch(() => msg.say('An Error Occurred while sending the image.'));
         } catch (err) {
-            return msg.say('An Error Occurred.');
+            return msg.say(err.message);
         }
     }
 };
