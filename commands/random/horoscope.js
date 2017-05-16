@@ -45,7 +45,7 @@ module.exports = class HoroscopeCommand extends Command {
                 .addField('Intensity',
                     body.meta.intensity, true)
                 .addField('Date',
-                    body.date);
+                    body.date, true);
             return msg.embed(embed);
         } catch (err) {
             return msg.say('An Error Occurred.');
