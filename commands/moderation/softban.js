@@ -70,7 +70,7 @@ module.exports = class SoftbanCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch (err) {
-            return msg.say('No Results.');
+            return msg.say('An Error Occurred.');
         }
     }
 };
