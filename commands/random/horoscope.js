@@ -36,7 +36,7 @@ module.exports = class HoroscopeCommand extends Command {
                 .get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today`);
             const body = JSON.parse(text);
             const embed = new RichEmbed()
-                .setColor()
+                .setColor(0x9797FF)
                 .setTitle(`Horoscope for ${body.sunsign}...`)
                 .setTimestamp()
                 .setDescription(body.horoscope)
