@@ -32,19 +32,19 @@ module.exports = class UserInfoCommand extends Command {
         let color;
         switch(member.user.presence.status) {
             case 'online':
-                stat = '<:vpOnline:212789758110334977> Online';
+                stat = '<:online:313956277808005120> Online';
                 color = 0x00AE86;
                 break;
             case 'idle':
-                stat = '<:vpAway:212789859071426561> Idle';
+                stat = '<:away:313956277220802560> Idle';
                 color = 0xFFFF00;
                 break;
             case 'dnd':
-                stat = '<:vpDnD:230093576355184640> Do Not Disturb';
+                stat = '<:dnd:313956276893646850> Do Not Disturb';
                 color = 0xFF0000;
                 break;
             case 'offline':
-                stat = '<:vpOffline:212790005943369728> Offline';
+                stat = '<:offline:313956277237710868> Offline';
                 color = 0x808080;
                 break;
         }
