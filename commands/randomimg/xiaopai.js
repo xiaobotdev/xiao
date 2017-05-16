@@ -17,7 +17,7 @@ module.exports = class XiaoCommand extends Command {
             if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const xiao = Math.floor(Math.random() * 10) + 1;
-        return msg.channel.send({ files: [path.join(__dirname, '..', '..', 'assets', 'images', `xiaopai${xiao}.png`)] })
+        return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', `xiaopai${xiao}.png`)] })
             .catch(err => msg.say(err));
     }
 };

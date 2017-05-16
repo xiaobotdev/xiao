@@ -18,7 +18,7 @@ module.exports = class DogCommand extends Command {
         try {
             const { body } = await snekfetch
                 .get('https://random.dog/woof.json');
-            return msg.channel.send({ files: [body.url] })
+            return msg.say({ files: [body.url] })
                 .catch(err => msg.say(err));
         } catch (err) {
             return msg.say(err);

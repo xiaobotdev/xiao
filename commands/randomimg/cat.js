@@ -19,7 +19,7 @@ module.exports = class CatCommand extends Command {
         try {
             const { body } = await snekfetch
                 .get('http://random.cat/meow');
-            return msg.channel.send({ files: [body.file] })
+            return msg.say({ files: [body.file] })
                 .catch(err => msg.say(err));
         } catch (err) {
             return msg.say(err);

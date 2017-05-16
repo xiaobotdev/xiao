@@ -45,7 +45,7 @@ module.exports = class BeautifulCommand extends Command {
             const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();
-            return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'grunkle.png' }] })
+            return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'grunkle.png' }] })
                 .catch(err => msg.say(err));
         } catch (err) {
             return msg.say('An Error Occurred while creating the image.');
