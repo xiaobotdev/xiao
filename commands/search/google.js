@@ -35,7 +35,7 @@ module.exports = class GoogleCommand extends Command {
             href = querystring.parse(href.replace('/url?', ''));
             return message.edit(href.q);
         } catch (err) {
-            return message.edit(err.message);
+            return message.edit(`${err.name}: ${err.message}`);
         }
     }
 };

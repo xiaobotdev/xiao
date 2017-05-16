@@ -64,7 +64,7 @@ module.exports = class OsuCommand extends Command {
                     body[0].count_rank_a, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

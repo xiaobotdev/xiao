@@ -54,9 +54,9 @@ module.exports = class RIPCommand extends Command {
             avatar.src = avatarImg.body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] })
-                .catch(() => msg.say(err.message));
+                .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

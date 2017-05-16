@@ -32,16 +32,16 @@ module.exports = class XKCDCommand extends Command {
             const current = await snekfetch
                 .get('https://xkcd.com/info.0.json');
             if (type === 'today') return msg.say({ files: [current.body.img] })
-                .catch(() => msg.say('An Error Occurred while sending the image.'));
+                .catch(err => msg.say(`${err.name}: ${err.message}`));
             else {
                 const random = Math.floor(Math.random() * current.body.num) + 1;
                 const { body } = await snekfetch
                     .get(`https://xkcd.com/${random}/info.0.json`);
                 return msg.say({ files: [body.img] })
-                    .catch(() => msg.say('An Error Occurred while sending the image.'));
+                    .catch(err => msg.say(`${err.name}: ${err.message}`));
             }
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

@@ -54,7 +54,7 @@ module.exports = class ForecastCommand extends Command {
                     `**High:** ${forecasts[6].high}°F, **Low:** ${forecasts[6].low}°F, **Condition:** ${forecasts[6].text}`);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

@@ -65,7 +65,7 @@ module.exports = class UnbanCommand extends Command {
                 `);
             return modlogs.send({ embed });
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

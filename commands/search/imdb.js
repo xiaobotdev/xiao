@@ -54,7 +54,7 @@ module.exports = class IMDBCommand extends Command {
                     body.Actors);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

@@ -59,7 +59,7 @@ module.exports = class YuGiOhCommand extends Command {
                 return msg.embed(embed);
             }
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

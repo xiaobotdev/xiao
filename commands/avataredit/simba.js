@@ -46,9 +46,9 @@ module.exports = class SimbaCommand extends Command {
             avatar.src = body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'simba.png' }] })
-                .catch(() => msg.say(err.message));
+                .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

@@ -49,7 +49,7 @@ module.exports = class SoundboardCommand extends Command {
                 return null;
             });
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

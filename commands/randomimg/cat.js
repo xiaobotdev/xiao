@@ -20,9 +20,9 @@ module.exports = class CatCommand extends Command {
             const { body } = await snekfetch
                 .get('http://random.cat/meow');
             return msg.say({ files: [body.file] })
-                .catch(() => msg.say('An Error Occurred while sending the image.'));
+                .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

@@ -44,9 +44,9 @@ module.exports = class WantedCommand extends Command {
             avatar.src = body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] })
-                .catch(() => msg.say(err.message));
+                .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

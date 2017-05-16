@@ -40,14 +40,14 @@ module.exports = class LockdownCommand extends Command {
                     Please use \`lockdown stop\` to end the lockdown.
                 `);
             } catch (err) {
-                return msg.say(err.message);
+                return msg.say(`${err.name}: ${err.message}`);
             }
         } else if (type === 'stop') {
             try {
                 await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: true });
                 return msg.say('Lockdown Ended, users without Administrator can now post messages.');
             } catch (err) {
-                return msg.say(err.message);
+                return msg.say(`${err.name}: ${err.message}`);
             }
         }
     }

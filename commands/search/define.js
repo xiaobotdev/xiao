@@ -42,7 +42,7 @@ module.exports = class DefineCommand extends Command {
                 .setDescription(body[0].text);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };
