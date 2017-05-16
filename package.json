@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "19.6.0",
+  "version": "19.6.2",
   "description": "A Discord Bot",
   "main": "shardingmanager.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "cheerio": "^0.22.0",
     "cleverio": "dragonfire535/cleverio",
     "custom-translate": "dragonfire535/custom-translate",
-    "discord.js": "hydrabolt/discord.js#4422f2aa8a72ae8765d91c2b1847785992075c33",
+    "discord.js": "hydrabolt/discord.js",
     "discord.js-commando": "gawdl3y/discord.js-commando",
     "erlpack": "hammerandchisel/erlpack",
     "mathjs": "^3.12.2",

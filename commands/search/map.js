@@ -44,7 +44,7 @@ module.exports = class MapCommand extends Command {
                     size: '500x500',
                     key: GOOGLE_KEY
                 });
-            return msg.channel.send({ files: [{ attachment: body, name: 'map.png' }] })
+            return msg.say({ files: [{ attachment: body, name: 'map.png' }] })
                 .catch(err => msg.say(err));
         } catch (err) {
             return msg.say(err);
