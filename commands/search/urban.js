@@ -41,7 +41,7 @@ module.exports = class UrbanCommand extends Command {
                     body.list[0].example.substr(0, 2000) || 'None');
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

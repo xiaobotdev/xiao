@@ -45,9 +45,9 @@ module.exports = class MapCommand extends Command {
                     key: GOOGLE_KEY
                 });
             return msg.say({ files: [{ attachment: body, name: 'map.png' }] })
-                .catch(() => msg.say('An Error Occurred while sending the image.'));
+                .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

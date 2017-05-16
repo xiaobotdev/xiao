@@ -49,9 +49,9 @@ module.exports = class BobRossCommand extends Command {
             avatar.src = body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ross.png' }] })
-                .catch(() => msg.say(err.message));
+                .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

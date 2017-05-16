@@ -45,7 +45,7 @@ module.exports = class QuizCommand extends Command {
                 return msg.say(`Time! The correct answer is: ${answer}`);
             }
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say(`${err.name}: ${err.message}`);
         }
     }
 };

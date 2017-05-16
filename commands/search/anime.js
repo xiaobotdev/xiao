@@ -57,7 +57,7 @@ module.exports = class AnimeCommand extends Command {
                     anime.entry[0].end_date[0], true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            return msg.say('Error: No Results.');
         }
     }
 };
