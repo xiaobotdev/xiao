@@ -63,7 +63,7 @@ module.exports = class WeatherCommand extends Command {
                     body.query.results.channel.wind.speed, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err);
+            return msg.say('An Error Occurred. There were most likely no results.');
         }
     }
 };

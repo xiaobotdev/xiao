@@ -54,7 +54,7 @@ module.exports = class WattpadCommand extends Command {
                     body.stories[0].commentCount, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err);
+            return msg.say('An Error Occurred. There were most likely no results.');
         }
     }
 };

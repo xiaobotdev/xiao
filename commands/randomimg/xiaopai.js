@@ -18,6 +18,6 @@ module.exports = class XiaoCommand extends Command {
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const xiao = Math.floor(Math.random() * 10) + 1;
         return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', `xiaopai${xiao}.png`)] })
-            .catch(err => msg.say(err));
+            .catch(() => msg.say('An Error Occurred while sending the image.'));
     }
 };

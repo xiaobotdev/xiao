@@ -48,7 +48,7 @@ module.exports = class GreyscaleCommand extends Command {
             avatar.src = avatarImg.body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'greyscale.png' }] })
-                .catch(err => msg.say(err));
+                .catch(() => msg.say('An Error Occurred while sending the image.'));
         } catch (err) {
             return msg.say('An Error Occurred while creating the image.');
         }

@@ -42,6 +42,6 @@ module.exports = class MemeCommand extends Command {
                 return msg.say('This Command requires the `Attach Files` Permission.');
         const { type, top, bottom } = args;
         return msg.say({ files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`] })
-            .catch(err => msg.say(err));
+            .catch(err => msg.say('No Results.'));
     }
 };
