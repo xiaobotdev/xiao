@@ -79,7 +79,7 @@ client.on('message', async (msg) => {
             return msg.reply(response)
                 .then(() => msg.channel.stopTyping());
         } catch (err) {
-            return msg.reply(`${err.name}: ${`${err.name}: ${`${err.name}: ${err.message}`}`}`)
+            return msg.reply(`${err.name}: ${err.message}`)
                 .then(() => msg.channel.stopTyping());
         }
     } else return;
