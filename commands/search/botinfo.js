@@ -28,7 +28,7 @@ module.exports = class BotSearchCommand extends Command {
         try {
             const { body } = await snekfetch
                 .get(`https://bots.discord.pw/api/bots/${bot.id}`)
-                .set({ 'Authorization': DISCORD_BOTS_KEY });
+                .set('Authorization', DISCORD_BOTS_KEY);
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://i.imgur.com/lrKYBQi.jpg')
