@@ -27,7 +27,7 @@ module.exports = class WattpadCommand extends Command {
         const { query } = args;
         try {
             const { body } = await snekfetch
-                .get(`https://api.wattpad.com:443/v4/stories`)
+                .get('https://api.wattpad.com:443/v4/stories')
                 .query({
                     query,
                     limit: 1
@@ -54,7 +54,7 @@ module.exports = class WattpadCommand extends Command {
                     body.stories[0].commentCount, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('An Error Occurred. There were most likely no results.');
+            return msg.say(err.message);
         }
     }
 };

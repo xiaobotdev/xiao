@@ -27,7 +27,7 @@ module.exports = class SoundCloudCommand extends Command {
         const { query } = args;
         try {
             const { body } = await snekfetch
-                .get(`https://api.soundcloud.com/tracks`)
+                .get('https://api.soundcloud.com/tracks')
                 .query({
                     q: query,
                     client_id: SOUNDCLOUD_KEY
@@ -51,7 +51,7 @@ module.exports = class SoundCloudCommand extends Command {
                     body[0].favoritings_count, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('An Error Occurred. There were most likely no results.');
+            return msg.say(err.message);
         }
     }
 };

@@ -22,7 +22,7 @@ module.exports = class CatCommand extends Command {
             return msg.say({ files: [body.file] })
                 .catch(() => msg.say('An Error Occurred while sending the image.'));
         } catch (err) {
-            return msg.say('An Error Occurred.');
+            return msg.say(err.message);
         }
     }
 };

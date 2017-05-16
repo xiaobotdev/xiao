@@ -49,9 +49,9 @@ module.exports = class BobRossCommand extends Command {
             avatar.src = body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ross.png' }] })
-                .catch(() => msg.say('An Error Occurred while sending the image.'));
+                .catch(() => msg.say(err.message));
         } catch (err) {
-            return msg.say('An Error Occurred while creating the image.');
+            return msg.say(err.message);
         }
     }
 };

@@ -47,7 +47,7 @@ module.exports = class MapCommand extends Command {
             return msg.say({ files: [{ attachment: body, name: 'map.png' }] })
                 .catch(() => msg.say('An Error Occurred while sending the image.'));
         } catch (err) {
-            return msg.say('An Error Occurred. There were most likely no results.');
+            return msg.say(err.message);
         }
     }
 };

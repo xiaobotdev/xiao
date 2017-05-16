@@ -48,7 +48,7 @@ module.exports = class HoroscopeCommand extends Command {
                     body.date, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('An Error Occurred.');
+            return msg.say(err.message);
         }
     }
 };
