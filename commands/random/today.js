@@ -19,13 +19,13 @@ module.exports = class TodayCommand extends Command {
         try {
             const { text } = await snekfetch
                 .get('http://history.muffinlabs.com/date');
-            const parsed = JSON.parse(text);
-            const events = parsed.data.Events;
+            const body = JSON.parse(text);
+            const events = body.data.Events;
             const event = events[Math.floor(Math.random() * events.length)];
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
-                .setURL(parsed.url)
-                .setTitle(`On this day (${parsed.date})...`)
+                .setURL(body.url)
+                .setTitle(`On this day (${body.date})...`)
                 .setTimestamp()
                 .setDescription(`${event.year}: ${event.text}`);
             return msg.embed(embed);
