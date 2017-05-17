@@ -33,7 +33,7 @@ module.exports = class DanbooruCommand extends Command {
                     limit: 1
                 });
             if (!body.length) throw new Error('No Results.');
-            return msg.say(query ? `Result for ${query}:` : 'Random Image:', { files: [`https://danbooru.domai.us${body[0].file_url}`] })
+            return msg.say(query ? `Result for ${query}:` : 'Random Image:', { files: [`https://danbooru.donmai.us${body[0].file_url}`] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
