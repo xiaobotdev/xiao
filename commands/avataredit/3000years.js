@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = class YearsCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '3000years',
+            name: '3000-years',
             aliases: ['az'],
             group: 'avataredit',
             memberName: '3000years',
