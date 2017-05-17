@@ -37,9 +37,9 @@ module.exports = class DexterCommand extends Command {
             const avatar = new Image();
             const generate = () => {
                 ctx.drawImage(base, 0, 0);
-                ctx.rotate(-10 * Math.PI / 180);
-                ctx.drawImage(avatar, 234, 244, 225, 225);
-                ctx.rotate(10 * Math.PI / 180);
+                ctx.rotate(-11 * Math.PI / 180);
+                ctx.drawImage(avatar, 234, 274, 225, 225);
+                ctx.rotate(11 * Math.PI / 180);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'dexter.png'));
             const { body } = await snekfetch.get(avatarURL);
