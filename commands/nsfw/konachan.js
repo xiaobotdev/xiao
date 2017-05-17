@@ -5,9 +5,9 @@ module.exports = class KonachanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'konachan',
-            group: 'search',
+            group: 'nsfw',
             memberName: 'konachan',
-            description: 'Sends a random (Possibly NSFW!) anime image from Konachan, with optional query.',
+            description: 'Sends an image from Konachan, with optional query.',
             guildOnly: true,
             args: [
                 {
