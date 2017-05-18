@@ -46,14 +46,14 @@ module.exports = class HelpCommand extends Command {
                 .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
                 .setDescription(`Use ${msg.usage('<command>')} to view detailed information about a specific command.`)
                 .setColor(0x00AE86);
-            for (const group of this.client.registry.groups.array()) {
+            for (const group of this.client.registry.groups.values()) {
                 embed.addField(group.name,
                     showAll ?
                         group.commands.map(c => c.name).join(', ') :
                         group.commands.filter(c => c.isUsable(msg)).map(c => c.name).join(', ') || 'None Available');
             }
             try {
-                await msg.author.send({ embed });
+                await msg.direct({ embed });
                 return msg.say(':mailbox_with_mail: Sent you a DM with information.');
             } catch (err) {
                 return msg.say('Failed to send DM. You probably have DMs disabled.');
