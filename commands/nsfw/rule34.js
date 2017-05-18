@@ -37,7 +37,7 @@ module.exports = class Rule34Command extends Command {
                     limit: 1
                 });
             const { posts } = await xml(text);
-            if (!posts.count) throw new Error('No Results.');
+            if (posts.count === 0) throw new Error('No Results.');
             return msg.say(`Result for ${query}:`, { files: [`https:${posts.post[0].$.file_url}`] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
