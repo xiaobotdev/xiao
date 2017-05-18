@@ -9,10 +9,10 @@ module.exports = class InfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'info',
-            aliases: ['information'],
+            aliases: ['information', 'stats'],
             group: 'util',
             memberName: 'info',
-            description: 'Gives some bot info for your shard.'
+            description: 'Gives some bot info.'
         });
     }
 
@@ -25,8 +25,7 @@ module.exports = class InfoCommand extends Command {
         const embed = new RichEmbed()
             .setColor(0x00AE86)
             .setFooter(oneLine`
-                ©2017 dragonfire535 |
-                Version ${version} |
+                ©2017 dragonfire535#8081 |
                 Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!
             `)
             .addField('Servers',
@@ -35,14 +34,14 @@ module.exports = class InfoCommand extends Command {
                 `${this.client.options.shardCount} (${this.client.shard.id})`, true)
             .addField('Commands',
                 this.client.registry.commands.size, true)
-            .addField('Owner',
-                this.client.owners.map(o => o.tag).join(', '), true)
             .addField('Source Code',
                 '[View Here](https://github.com/dragonfire535/xiaobot)', true)
             .addField('Memory Usage',
                 `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB / ${memory.reduce((prev, val) => prev + val, 0)}MB`, true)
             .addField('Uptime',
                 moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
+            .addField('Version',
+                version, true)
             .addField('Node Version',
                 process.version, true)
             .addField('Library',
