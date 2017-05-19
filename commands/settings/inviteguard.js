@@ -5,7 +5,7 @@ module.exports = class GuardCommand extends Command {
         super(client, {
             name: 'invite-guard',
             aliases: ['guard'],
-            group: 'util',
+            group: 'settings',
             memberName: 'invite-guard',
             description: 'Configures auto-delete for invites.',
             guildOnly: true

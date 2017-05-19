@@ -4,7 +4,7 @@ module.exports = class ClearSettingCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'clear-setting',
-            group: 'util',
+            group: 'settings',
             memberName: 'clear-setting',
             description: 'Removes a custom-set Guard Mode, Mod Channel, Member Channel, Member Message, Staff Role, or Single Role.',
             guildOnly: true,

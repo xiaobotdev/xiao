@@ -5,7 +5,7 @@ module.exports = class MemberMsgCommand extends Command {
         super(client, {
             name: 'member-message',
             aliases: ['member-msg'],
-            group: 'util',
+            group: 'settings',
             memberName: 'member-message',
             description: 'Sets the message for either join/leave logs to use.',
             details: '**Placeholders:** <user>: Username, <server>: Server Name, <mention>: A Mention of the User',
