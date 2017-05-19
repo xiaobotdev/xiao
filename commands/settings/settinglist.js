@@ -20,12 +20,12 @@ module.exports = class SettingListCommand extends Command {
         return msg.say(stripIndents`
             **Prefix:** ${msg.guild.commandPrefix}
             **Invite Guard:** ${msg.guild.settings.get('guard', false)}
-            **Staff Role:** ${staffRole ? msg.guild.roles.get(staffRole).name : 'None'}
-            **Mod Channel:** ${modLog ? msg.guild.channels.get(modLog).name: 'None'}
-            **Member Channel:** ${memberLog ? msg.guild.channels.get(memberLog).name : 'None'}
-            **Join Message:** ${msg.guild.settings.get('joinMsg', 'Welcome <user>! (Not Set)')}
-            **Leave Message:** ${msg.guild.settings.get('leaveMsg', 'Bye <user>... (Not Set)')}
-            **Single Role:** ${singleRole ? msg.guild.roles.get(singleRole).name : 'None'}
+            **Staff Role:** ${staffRole ? (msg.guild.roles.exists(staffRole) ? msg.guild.roles.get(staffRole).name : 'Missing') : 'None'}
+            **Mod Channel:** ${modLog ? (msg.guild.channels.exists(modLog) ? msg.guild.channels.get(modLog).name : 'Missing') : 'None'}
+            **Member Channel:** ${memberLog ? (msg.guild.channels.exists(memberLog) ? msg.guild.channels.get(memberLog).name : 'Missing') : 'None'}
+            **Join Message:** ${msg.guild.settings.get('joinMsg', 'Welcome <user>! (Default)')}
+            **Leave Message:** ${msg.guild.settings.get('leaveMsg', 'Bye <user>... (Default)')}
+            **Single Role:** ${singleRole ? (msg.guild.roles.exists(singleRole) ? msg.guild.roles.get(singleRole).name : 'Missing') : 'None'}
         `);
     }
 };
