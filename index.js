@@ -68,6 +68,7 @@ client.on('commandError', (command, err) => {
 
 client.on('message', async (msg) => {
     if (msg.guild && msg.guild.settings.get('guard') && /(discord(.gg\/|app.com\/invite\/))/g.test(msg.content)) {
+        if (msg.author.id === client.user.id) return;
         if (msg.channel.permissionsFor(client.user).has('ADMINISTRATOR')) return;
         if (msg.member.roles.has(msg.guild.settings.get('staffRole'))) return;
         if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
