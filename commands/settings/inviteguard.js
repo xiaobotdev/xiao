@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class GuardCommand extends Command {
+module.exports = class InviteGuardCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'invite-guard',
