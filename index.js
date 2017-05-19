@@ -68,10 +68,11 @@ client.on('commandError', (command, err) => {
 
 client.on('message', async (msg) => {
     if (msg.guild && msg.guild.settings.get('guard') && /(discord(.gg\/|app.com\/invite\/))/g.test(msg.content)) {
-        if (msg.author.id === client.user.id) return;
-        if (msg.member.hasPermission('ADMINISTRATOR')) return;
-        if (msg.member.roles.has(msg.guild.settings.get('staffRole'))) return;
-        if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
+        if (msg.author.bot
+            || msg.member.hasPermission('ADMINISTRATOR')
+            || msg.author.id === msg.guild.ownerID
+            || msg.member.roles.has(msg.guild.settings.get('staffRole'))
+            || !msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
         if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
         else msg.channel.send('Message could not be deleted, missing the `Manage Messages` permission.');
         return msg.reply('Invites are prohibited from being posted here.');
