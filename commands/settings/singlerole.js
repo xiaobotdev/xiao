@@ -4,7 +4,7 @@ module.exports = class SingleRoleCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'single-role',
-            group: 'util',
+            group: 'settings',
             memberName: 'single-role',
             description: 'Sets a single role that is able to use commands.',
             guildOnly: true,

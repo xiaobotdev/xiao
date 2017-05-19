@@ -4,7 +4,7 @@ module.exports = class ModChannelCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'mod-channel',
-            group: 'util',
+            group: 'settings',
             memberName: 'mod-channel',
             description: 'Sets the channel for the mod logs to be sent.',
             guildOnly: true,

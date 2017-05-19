@@ -4,7 +4,7 @@ module.exports = class StaffRoleCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'staff-role',
-            group: 'util',
+            group: 'settings',
             memberName: 'staff-role',
             description: 'Sets the role that can use Mod Commands without perms.',
             guildOnly: true,

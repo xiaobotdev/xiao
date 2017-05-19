@@ -29,6 +29,7 @@ client.registry
         ['userinfo', 'User Info'],
         ['guildinfo', 'Server Info'],
         ['moderation', 'Moderation'],
+        ['settings', 'Server Settings'],
         ['response', 'Random Response'],
         ['randomimg', 'Random Image'],
         ['avataredit', 'Avatar Manipulation'],
