@@ -1,20 +1,21 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
+const { promisify } = require('tsubaki');
+const xml = promisify(require('xml2js').parseString);
 
-module.exports = class DanbooruCommand extends Command {
+module.exports = class GelbooruCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'danbooru',
-            group: 'nsfw',
-            memberName: 'danbooru',
-            description: 'Sends an image from Danbooru, with optional query.',
+            name: 'gelbooru',
+            group: 'search',
+            memberName: 'gelbooru',
+            description: 'Sends an image from Gelbooru, with query.',
             guildOnly: true,
             args: [
                 {
                     key: 'query',
                     prompt: 'What would you like to search for?',
-                    type: 'string',
-                    default: ''
+                    type: 'string'
                 }
             ]
         });
@@ -26,14 +27,18 @@ module.exports = class DanbooruCommand extends Command {
             return msg.say('This Command requires the `Attach Files` Permission.');
         const { query } = args;
         try {
-            const { body } = await snekfetch
-                .get('https://danbooru.donmai.us/posts.json')
+            const { text } = await snekfetch
+                .get('https://gelbooru.com/index.php')
                 .query({
-                    tags: `${query ? `${query} ` : ''}order:random`,
+                    page: 'dapi',
+                    s: 'post',
+                    q: 'index',
+                    tags: query,
                     limit: 1
                 });
-            if (!body.length) throw new Error('No Results.');
-            return msg.say(query ? `Result for ${query}:` : 'Random Image:', { files: [`https://danbooru.donmai.us${body[0].file_url}`] })
+            const { posts } = await xml(text);
+            if (posts.$.count === '0') throw new Error('No Results.');
+            return msg.say(`Result for ${query}:`, { files: [`https:${posts.post[0].$.file_url}`] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
