@@ -44,6 +44,9 @@ module.exports = class TranslateCommand extends Command {
     }
 
     async run(msg, args) {
+        if (msg.channel.type !== 'dm')
+            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
+                return msg.say('This Command requires the `Embed Links` Permission.');
         const { text, to, from } = args;
         try {
             const { body } = await snekfetch
