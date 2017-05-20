@@ -66,7 +66,7 @@ client.on('commandError', (command, err) => {
 });
 
 client.on('message', async (msg) => {
-    if (msg.guild && msg.guild.settings.get('inviteGuard') && /(discord(.gg\/|app.com\/invite\/))/g.test(msg.content)) {
+    if (msg.guild && msg.guild.settings.get('inviteGuard') && /(discord(.gg\/|app.com\/invite\/))/gi.test(msg.content)) {
         if (msg.author.bot
             || msg.member.hasPermission('ADMINISTRATOR')
             || msg.author.id === msg.guild.ownerID
