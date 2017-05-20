@@ -6,16 +6,16 @@ module.exports = class ClearSettingCommand extends Command {
             name: 'clear-setting',
             group: 'settings',
             memberName: 'clear-setting',
-            description: 'Removes a custom-set Guard Mode, Mod Channel, Member Channel, Member Message, Staff Role, or Single Role.',
+            description: 'Removes a custom setting from your server.',
             guildOnly: true,
             args: [
                 {
                     key: 'setting',
-                    prompt: 'What setting do you want to clear? `guard`, `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`?',
+                    prompt: 'What setting do you want to clear? `inviteGuard`, `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`?',
                     type: 'string',
                     validate: setting => {
-                        if (['guard', 'modLog', 'memberLog', 'joinMsg', 'leaveMsg', 'staffRole', 'singleRole'].includes(setting)) return true;
-                        return 'Please enter either `guard`, `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`.';
+                        if (['inviteGuard', 'modLog', 'memberLog', 'joinMsg', 'leaveMsg', 'staffRole', 'singleRole'].includes(setting)) return true;
+                        return 'Please enter either `inviteGuard`, `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`.';
                     }
                 }
             ]

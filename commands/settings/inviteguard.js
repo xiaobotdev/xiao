@@ -16,7 +16,7 @@ module.exports = class InviteGuardCommand extends Command {
     }
 
     run(msg) {
-        msg.guild.settings.set('guard', true);
+        msg.guild.settings.set('inviteGuard', true);
         return msg.say('Invite Guard is now active.');
     }
 };
