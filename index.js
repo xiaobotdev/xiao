@@ -36,8 +36,7 @@ client.registry
         ['textedit', 'Text Manipulation'],
         ['numedit', 'Number Manipulation'],
         ['search', 'Search'],
-        ['games', 'Games'],
-        ['nsfw', 'NSFW'],
+        ['games', 'Games'],,
         ['random', 'Random/Other'],
         ['roleplay', 'Roleplay']
     ])
