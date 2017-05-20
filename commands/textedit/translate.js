@@ -23,8 +23,8 @@ module.exports = class TranslateCommand extends Command {
                     prompt: 'Which language is being translated to?',
                     type: 'string',
                     validate: to => {
-                        if (codes[to.toLowerCase()] || Object.values(codes).map(c => c.toLowerCase()).includes(to.toLowerCase())) return true;
-                        return 'Invalid Language Code or Language Name. Use `help translate` for a list of codes.';
+                        if (codes[to.toLowerCase()]) return true;
+                        return 'Invalid Language Code. Use `help translate` for a list of codes.';
                     },
                     parse: to => to.toLowerCase()
                 },
@@ -33,8 +33,8 @@ module.exports = class TranslateCommand extends Command {
                     prompt: 'Which language is being translated from?',
                     type: 'string',
                     validate: from => {
-                        if (codes[from.toLowerCase()] || Object.values(codes).map(c => c.toLowerCase()).includes(from.toLowerCase())) return true;
-                        return 'Invalid Language Code or Language Name. Use `help translate` for a list of codes.';
+                        if (codes[from.toLowerCase()]) return true;
+                        return 'Invalid Language Code. Use `help translate` for a list of codes.';
                     },
                     parse: from => from.toLowerCase(),
                     default: ''
