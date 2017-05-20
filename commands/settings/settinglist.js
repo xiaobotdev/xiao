@@ -19,7 +19,7 @@ module.exports = class SettingListCommand extends Command {
         const singleRole = msg.guild.settings.get('singleRole', false);
         return msg.say(stripIndents`
             **Prefix:** ${msg.guild.commandPrefix}
-            **Invite Guard:** ${msg.guild.settings.get('guard', false)}
+            **Invite Guard:** ${msg.guild.settings.get('inviteGuard', false)}
             **Staff Role:** ${staffRole ? (msg.guild.roles.has(staffRole) ? msg.guild.roles.get(staffRole).name : 'Missing') : 'None'}
             **Mod Channel:** ${modLog ? (msg.guild.channels.has(modLog) ? msg.guild.channels.get(modLog).name : 'Missing') : 'None'}
             **Member Channel:** ${memberLog ? (msg.guild.channels.has(memberLog) ? msg.guild.channels.get(memberLog).name : 'Missing') : 'None'}
