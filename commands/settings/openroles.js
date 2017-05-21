@@ -27,7 +27,7 @@ module.exports = class OpenRolesCommand extends Command {
             ]
         });
     }
-    
+
     hasPermission(msg) {
         return msg.member.hasPermission('ADMINISTRATOR');
     }
@@ -36,6 +36,7 @@ module.exports = class OpenRolesCommand extends Command {
         const { action, role } = args;
         const roles = msg.guild.settings.get('openRoles', new Set());
         if (action === 'add') {
+            console.log(roles);
             if (roles.size > 5) return msg.say('Only 5 roles may be open.');
             if (roles.has(role.id)) return msg.say(`${role.name} is already set to open.`);
             roles.add(role.id);
