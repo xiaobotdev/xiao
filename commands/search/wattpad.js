@@ -42,10 +42,10 @@ module.exports = class WattpadCommand extends Command {
                 .setTitle(body.stories[0].title)
                 .setDescription(body.stories[0].description.substr(0, 2000))
                 .setThumbnail(body.stories[0].cover)
+                .addField('Created On',
+                    moment(body.stories[0].createDate).format('MMMM Do YYYY'), true)
                 .addField('Author',
                     body.stories[0].user, true)
-                .addField('Created On',
-                    moment(body.stories[0].createDate).format('MMMM Do YYYY h:mm:ss A'), true)
                 .addField('Parts',
                     body.stories[0].numParts, true)
                 .addField('Reads',
