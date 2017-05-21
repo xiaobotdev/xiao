@@ -26,6 +26,7 @@ module.exports = class SettingListCommand extends Command {
             **Join Message:** ${msg.guild.settings.get('joinMsg', 'Welcome <user>! (Default)')}
             **Leave Message:** ${msg.guild.settings.get('leaveMsg', 'Bye <user>... (Default)')}
             **Single Role:** ${singleRole ? (msg.guild.roles.has(singleRole) ? msg.guild.roles.get(singleRole).name : 'Missing') : 'None'}
+            **Open Roles:** ${msg.guild.settings.get('openRoles').size}
         `);
     }
 };
