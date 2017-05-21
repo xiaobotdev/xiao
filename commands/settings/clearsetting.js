@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const settings = require('../../assets/json/clearsetting');
 
 module.exports = class ClearSettingCommand extends Command {
     constructor(client) {
@@ -11,11 +12,11 @@ module.exports = class ClearSettingCommand extends Command {
             args: [
                 {
                     key: 'setting',
-                    prompt: 'What setting do you want to clear? `inviteGuard`, `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`?',
+                    prompt: 'What setting do you want to clear?',
                     type: 'string',
                     validate: setting => {
-                        if (['inviteGuard', 'modLog', 'memberLog', 'joinMsg', 'leaveMsg', 'staffRole', 'singleRole'].includes(setting)) return true;
-                        return 'Please enter either `inviteGuard`, `modLog`, `memberLog`, `joinMsg`, `leaveMsg`, `staffRole`, or `singleRole`.';
+                        if (settings.includes(setting)) return true;
+                        return `Please enter one of the following: ${settings.join(', ')}.`;
                     }
                 }
             ]
