@@ -22,7 +22,8 @@ module.exports = class RemoveRoleCommand extends Command {
         const { role } = args;
         const roles = msg.guild.settings.get('openRoles');
         if (!roles) return msg.say('No Roles are open to join.');
-        if (!roles.has(role.id)) return msg.say('This role is not open.');
+        if (!roles.has(role.id)) return msg.say(`The ${role.name} role is not open.`);
+        if (!msg.member.roles.has(role.id)) return msg.say(`You do not have the ${role.name} role.`);
         msg.member.removeRole(role);
         return msg.say(`You have been removed from the ${role.name} role.`);
     }
