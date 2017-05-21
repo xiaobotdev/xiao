@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const moment = require('moment');
 const { WATTPAD_KEY } = process.env;
 
 module.exports = class WattpadCommand extends Command {
@@ -40,16 +41,17 @@ module.exports = class WattpadCommand extends Command {
                 .setURL(body.stories[0].url)
                 .setTitle(body.stories[0].title)
                 .setDescription(body.stories[0].description.substr(0, 2000))
+                .setThumbnail(body.stories[0].cover)
                 .addField('Author',
                     body.stories[0].user, true)
+                .addField('Created On',
+                    moment(body.stories[0].createDate).format('MMMM Do YYYY h:mm:ss A'), true)
                 .addField('Parts',
                     body.stories[0].numParts, true)
-                .addField('Created On',
-                    body.stories[0].createDate, true)
-                .addField('Votes',
-                    body.stories[0].voteCount, true)
                 .addField('Reads',
                     body.stories[0].readCount, true)
+                .addField('Votes',
+                    body.stories[0].voteCount, true)
                 .addField('Comments',
                     body.stories[0].commentCount, true);
             return msg.embed(embed);

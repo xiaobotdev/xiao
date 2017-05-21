@@ -3,6 +3,7 @@ const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { promisify } = require('tsubaki');
 const xml = promisify(require('xml2js').parseString);
+const moment = require('moment');
 const { ANIMELIST_LOGIN } = process.env;
 
 module.exports = class AnimeCommand extends Command {
@@ -52,9 +53,9 @@ module.exports = class AnimeCommand extends Command {
                 .addField('Episodes',
                     anime.entry[0].episodes[0], true)
                 .addField('Start Date',
-                    anime.entry[0].start_date[0], true)
+                    moment(anime.entry[0].start_date[0]).format('MMMM Do YYYY'), true)
                 .addField('End Date',
-                    anime.entry[0].end_date[0], true);
+                    moment(anime.entry[0].end_date[0]).format('MMMM Do YYYY'), true);
             return msg.embed(embed);
         } catch (err) {
             return msg.say('Error: No Results.');
