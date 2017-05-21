@@ -53,9 +53,9 @@ module.exports = class MangaCommand extends Command {
                 .addField('Volumes / Chapters',
                     `${manga.entry[0].volumes[0]} / ${manga.entry[0].chapters[0]}`, true)
                 .addField('Start Date',
-                    moment(anime.entry[0].start_date[0]).format('MMMM Do YYYY'), true)
+                    moment(manga.entry[0].start_date[0]).format('MMMM Do YYYY'), true)
                 .addField('End Date',
-                    moment(anime.entry[0].end_date[0]).format('MMMM Do YYYY'), true);
+                    moment(manga.entry[0].end_date[0]).format('MMMM Do YYYY'), true);
             return msg.embed(embed);
         } catch (err) {
             return msg.say('Error: No Results.');
