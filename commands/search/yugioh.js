@@ -29,15 +29,15 @@ module.exports = class YuGiOhCommand extends Command {
             const { body } = await snekfetch
                 .get(`http://yugiohprices.com/api/card_data/${query}`);
             if (body.status === 'fail') throw new Error('No Results.');
+            const embed = new RichEmbed()
+                .setColor(0xBE5F1F)
+                .setTitle(body.data.name)
+                .setDescription(body.data.text)
+                .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
+                .addField('Card Type',
+                    body.data.card_type, true);
             if (body.data.card_type === 'monster') {
-                const embed = new RichEmbed()
-                    .setColor(0xBE5F1F)
-                    .setTitle(body.data.name)
-                    .setDescription(body.data.text)
-                    .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
-                    .addField('Card Type',
-                        body.data.card_type, true)
-                    .addField('Type',
+                embed.addField('Type',
                         body.data.type, true)
                     .addField('Attribute',
                         body.data.family, true)
@@ -47,17 +47,8 @@ module.exports = class YuGiOhCommand extends Command {
                         body.data.def, true)
                     .addField('Level',
                         body.data.level, true);
-                return msg.embed(embed);
-            } else {
-                const embed = new RichEmbed()
-                    .setColor(0xBE5F1F)
-                    .setTitle(body.data.name)
-                    .setDescription(body.data.text)
-                    .setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
-                    .addField('Card Type',
-                        body.data.card_type, true);
-                return msg.embed(embed);
             }
+            return msg.embed(embed);
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
         }
