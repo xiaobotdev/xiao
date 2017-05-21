@@ -37,9 +37,9 @@ module.exports = class GithubCommand extends Command {
                 .setDescription(body.description)
                 .setThumbnail(body.owner.avatar_url)
                 .addField('Creation Date',
-                    moment(body.created_at).format('MMMM Do YYYY h:mm:ss A'), true)
+                    moment(body.created_at).format('MMMM Do YYYY'), true)
                 .addField('Last Updated On',
-                    moment(body.created_at).format('MMMM Do YYYY h:mm:ss A'), true)
+                    moment(body.created_at).format('MMMM Do YYYY'), true)
                 .addField('Stargazers',
                     body.stargazers_count, true)
                 .addField('Watchers',
