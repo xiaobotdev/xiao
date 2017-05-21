@@ -3,7 +3,6 @@ const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { promisify } = require('tsubaki');
 const xml = promisify(require('xml2js').parseString);
-const moment = require('moment');
 const { ANIMELIST_LOGIN } = process.env;
 
 module.exports = class AnimeCommand extends Command {
@@ -40,7 +39,8 @@ module.exports = class AnimeCommand extends Command {
                 .replace(/(&#039;)/g, '\'')
                 .replace(/(&mdash;)/g, '—')
                 .replace(/(&#034;)/g, '"')
-                .replace(/(&#038;)/g, '&');
+                .replace(/(&#038;)/g, '&')
+                .replace(/(&quot;)/g, '"');
             const embed = new RichEmbed()
                 .setColor(0x2D54A2)
                 .setAuthor('My Anime List', 'https://i.imgur.com/R4bmNFz.png')
@@ -53,9 +53,9 @@ module.exports = class AnimeCommand extends Command {
                 .addField('Episodes',
                     anime.entry[0].episodes[0], true)
                 .addField('Start Date',
-                    moment(anime.entry[0].start_date[0]).format('MMMM Do YYYY'), true)
+                    anime.entry[0].start_date[0], true)
                 .addField('End Date',
-                    moment(anime.entry[0].end_date[0]).format('MMMM Do YYYY'), true);
+                    anime.entry[0].end_date[0], true);
             return msg.embed(embed);
         } catch (err) {
             return msg.say('Error: No Results.');
