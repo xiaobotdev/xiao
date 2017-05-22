@@ -47,12 +47,12 @@ module.exports = class BanCommand extends Command {
         if (!member.bannable) return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
         try {
             try {
-                await member.send(stripIndents`
+                await member.user.send(stripIndents`
                     You were banned from ${msg.guild.name}!
                     Reason: ${reason}.
                 `);
             } catch (err) {
-                await msg.say('Failed to send DM to the user.');
+                await msg.say('Failed to Send DM.');
             }
             await member.ban({ days: 7, reason });
             msg.say(':ok_hand:');
