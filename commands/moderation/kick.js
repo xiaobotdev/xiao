@@ -46,12 +46,12 @@ module.exports = class KickCommand extends Command {
         if (!member.kickable) return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
         try {
             try {
-                await member.send(stripIndents`
+                await member.user.send(stripIndents`
                     You were kicked from ${msg.guild.name}!
                     Reason: ${reason}.
                 `);
             } catch (err) {
-                await msg.say('Failed to send DM.');
+                await msg.say('Failed to Send DM.');
             }
             await member.kick({ reason });
             msg.say(':ok_hand:');

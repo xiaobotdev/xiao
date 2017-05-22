@@ -33,7 +33,7 @@ module.exports = class WarnCommand extends Command {
         return msg.member.hasPermission('KICK_MEMBERS') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }
 
-    run(msg, args) {
+    async run(msg, args) {
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
         if (!modlogs) return msg.say('This Command requires a channel set with the `modchannel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES'))
@@ -41,6 +41,15 @@ module.exports = class WarnCommand extends Command {
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
+        if (!member.kickable) return msg.say('This member is not warnable. Perhaps they have a higher role than me?');
+        try {
+            await member.user.send(stripIndents`
+                You were warned in ${msg.guild.name}!
+                Reason: ${reason}.
+            `);
+        } catch (err) {
+            await msg.say('Failed to Send DM.');
+        }
         msg.say(':ok_hand:');
         const embed = new RichEmbed()
             .setAuthor(msg.author.tag, msg.author.displayAvatarURL)

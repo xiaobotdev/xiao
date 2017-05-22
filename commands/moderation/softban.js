@@ -46,15 +46,15 @@ module.exports = class SoftbanCommand extends Command {
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
             return msg.say('This Command requires the `Embed Links` Permission.');
         const { member, reason } = args;
-        if (!member.bannable) return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
+        if (!member.bannable) return msg.say('This member is not softbannable. Perhaps they have a higher role than me?');
         try {
             try {
-                await member.send(stripIndents`
+                await member.user.send(stripIndents`
                     You were softbanned from ${msg.guild.name}!
                     Reason: ${reason}.
                 `);
             } catch (err) {
-                await msg.say('Failed to send DM to user.');
+                await msg.say('Failed to Send DM.');
             }
             await member.ban({ days: 7, reason });
             await msg.guild.unban(member.user);
