@@ -28,14 +28,15 @@ module.exports = class SoundboardCommand extends Command {
     }
 
     async run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).has('CONNECT'))
-            return msg.say('This Command requires the `Connect` Permission.');
-        if (!msg.channel.permissionsFor(this.client.user).has('SPEAK'))
-            return msg.say('This Command requires the `Speak` Permission.');
         if (!msg.channel.permissionsFor(this.client.user).has('ADD_REACTIONS'))
             return msg.say('This Command requires the `Add Reactions` Permission.');
         const voiceChannel = msg.member.voiceChannel;
         if (!voiceChannel) return msg.say('Please enter a Voice Channel first.');
+        if (!voiceChannel.permissionsFor(this.client.user).has('CONNECT'))
+            return msg.say('This Command requires the `Connect` Permission.');
+        if (!voiceChannel.permissionsFor(this.client.user).has('SPEAK'))
+            return msg.say('This Command requires the `Speak` Permission.');
+        if (!voiceChannel.joinable) return msg.say('This Voice Channel is not joinable.');
         const alreadyConnected = this.client.voiceConnections.get(voiceChannel.guild.id);
         if (alreadyConnected) return msg.say('I am already playing a sound.');
         const { sound } = args;
