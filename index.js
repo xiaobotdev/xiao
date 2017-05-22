@@ -108,7 +108,8 @@ client.dispatcher.addInhibitor(msg => {
 
 client.on('guildMemberAdd', (member) => {
     const role = member.guild.roles.get(member.guild.settings.get('joinRole'));
-    if (member.guild.me.hasPermission('MANAGE_ROLES') && role) member.addRole(role);
+    if (member.guild.me.hasPermission('MANAGE_ROLES') && role) 
+        member.addRole(role).catch(() => null);
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
     if (!channel) return;
     if (!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
