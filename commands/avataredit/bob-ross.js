@@ -44,7 +44,7 @@ module.exports = class BobRossCommand extends Command {
                 ctx.rotate(-3 * Math.PI / 180);
                 ctx.drawImage(base, 0, 0);
             };
-            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'bobross.png'));
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'bob-ross.png'));
             const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();

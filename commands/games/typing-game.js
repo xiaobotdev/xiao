@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
-const sentences = require('../../assets/json/typinggame');
+const sentences = require('../../assets/json/typing-game');
 
 module.exports = class TypingGameCommand extends Command {
     constructor(client) {

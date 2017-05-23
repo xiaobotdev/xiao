@@ -45,7 +45,7 @@ module.exports = class SteamCardCommand extends Command {
                 ctx.font = '30px Open Sans';
 			    ctx.fillText(username, 35, 48);
             };
-            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'steamcard.png'));
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
             const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();

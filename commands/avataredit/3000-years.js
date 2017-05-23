@@ -40,7 +40,7 @@ module.exports = class YearsCommand extends Command {
                 ctx.drawImage(base, 0, 0);
                 ctx.drawImage(avatar, 461, 127, 200, 200);
             };
-            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', '3000years.png'));
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', '3000-years.png'));
             const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();

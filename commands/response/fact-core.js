@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const facts = require('../../assets/json/factcore');
+const facts = require('../../assets/json/fact-core');
 
 module.exports = class FactCoreCommand extends Command {
     constructor(client) {
