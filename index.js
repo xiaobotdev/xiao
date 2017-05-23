@@ -106,7 +106,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     if (!channel) return;
     if (!channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'EMBED_LINKS'])) return;
     if (user.id === msg.author.id) {
-        reaction.remove(user);
+        if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) reaction.remove(user);
         return msg.reply('You cannot star your own messages, idiot.');
     }
     const embed = new RichEmbed()
