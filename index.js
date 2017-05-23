@@ -7,6 +7,7 @@ const client = new CommandoClient({
     invite: INVITE,
     unknownCommandResponse: false
 });
+const { RichEmbed } = require('discord.js');
 const path = require('path');
 const { carbon, dBots } = require('./structures/Stats');
 const SequelizeProvider = require('./providers/Sequelize');
@@ -94,6 +95,23 @@ client.on('message', async (msg) => {
                 .then(() => msg.channel.stopTyping());
         }
     } else return;
+});
+
+client.on('messageReactionAdd', (reaction, user) => {
+    if (reaction.emoji.name !== '⭐') return;
+    if (reaction.count > 1) return;
+    if (user.bot) return;
+    const msg = reaction.message;
+    const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
+    if (!channel) return;
+    if (!channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'EMBED_LINKS'])) return;
+    const embed = new RichEmbed()
+        .setColor(0xFFFF00)
+        .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
+        .setDescription(msg.content)
+        .setImage(msg.attachments.first() ? msg.attachments.first().url : null)
+        .setFooter(msg.createdAt);
+    return channel.send({ embed });
 });
 
 client.dispatcher.addInhibitor(msg => {
