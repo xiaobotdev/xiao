@@ -28,6 +28,7 @@ module.exports = class StarCommand extends Command {
         const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
         if (!channel || !channel.permissionsFor(this.client.user).has('EMBED_LINKS')) return null;
         try {
+            console.log(msg.id);
             const message = await msg.channel.fetchMessage(id);
             if (!reaction && msg.author.id === message.author.id)
                 return msg.reply('You cannot star your own messages, idiot.');

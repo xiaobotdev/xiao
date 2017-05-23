@@ -89,6 +89,7 @@ client.on('messageReactionAdd', (reaction, user) => {
             reaction.remove(user);
         return msg.reply('You cannot star your own messages, idiot');
     }
+    console.log(msg.id);
     client.registry.resolveCommand('random:starboard').run(msg, { id: msg.id }, true);
 });
 
