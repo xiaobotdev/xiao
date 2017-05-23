@@ -25,7 +25,7 @@ module.exports = class StarCommand extends Command {
 
     async run(msg, args, reaction) {
         const { id } = args;
-        const channel = msg.guild.settings.get('starboard');
+        const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
         if (!channel || !channel.permissionsFor(this.client.user).has('EMBED_LINKS')) return null;
         try {
             const message = await msg.channel.fetchMessage(id);

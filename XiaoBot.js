@@ -82,7 +82,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     if (reaction.emoji.name !== '⭐') return;
     if (reaction.count > 1) return;
     const msg = reaction.message;
-    const channel = msg.guild.settings.get('starboard');
+    const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
     if (!channel) return;
     if (user.id === msg.author.id) {
         if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES'))
