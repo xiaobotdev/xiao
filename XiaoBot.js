@@ -76,24 +76,6 @@ client.on('message', async (msg) => {
         if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
         else msg.channel.send('Message could not be deleted, missing the `Manage Messages` permission.');
         return msg.reply('Invites are prohibited from being posted here.');
-    } else
-    if (msg.isMentioned(client.user)) {
-        if (msg.author.bot) return;
-        if (msg.channel.type !== 'dm') {
-            if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-            const role = msg.guild.settings.get('singleRole');
-            if (role && !msg.member.roles.has(role)) return;
-        }
-        msg.channel.startTyping();
-        const message = msg.content.replace(client.mentionRegex, '');
-        try {
-            const { response } = await client.cleverbot.ask(message);
-            return msg.reply(response)
-                .then(() => msg.channel.stopTyping());
-        } catch (err) {
-            return msg.reply(`${err.name}: ${err.message}`)
-                .then(() => msg.channel.stopTyping());
-        }
     } else return;
 });
 
