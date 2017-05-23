@@ -115,7 +115,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
         .setDescription(msg.content)
         .setImage(msg.attachments.first() ? msg.attachments.first().url : null)
-        .setFooter(msg.createdAt);
+        .setTimestamp();
     return channel.send({ embed });
 });
 
