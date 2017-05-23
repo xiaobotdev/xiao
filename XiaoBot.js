@@ -1,5 +1,7 @@
-const { TOKEN, OWNER, PREFIX, INVITE, CLEVS_KEY, CLEVS_USER, CLEVS_NICK } = process.env;
-const { CommandoClient, FriendlyError } = require('discord.js-commando');
+const { TOKEN, OWNER, PREFIX, INVITE } = process.env;
+const path = require('path');
+const { FriendlyError } = require('discord.js-commando');
+const CommandoClient = require('./structures/CommandoClient');
 const client = new CommandoClient({
     commandPrefix: PREFIX,
     owner: OWNER,
@@ -8,21 +10,10 @@ const client = new CommandoClient({
     unknownCommandResponse: false
 });
 const { RichEmbed } = require('discord.js');
-const path = require('path');
 const { carbon, dBots } = require('./structures/Stats');
 const SequelizeProvider = require('./providers/Sequelize');
-const Database = require('./structures/PostgreSQL');
-const Cleverbot = require('cleverio');
-const clevs = new Cleverbot({
-    key: CLEVS_KEY,
-    user: CLEVS_USER,
-    nick: CLEVS_NICK
-});
 
-Database.start();
-clevs.create();
-
-client.setProvider(new SequelizeProvider(Database.db));
+client.setProvider(new SequelizeProvider(client.database));
 
 client.registry
     .registerDefaultTypes()
@@ -45,11 +36,9 @@ client.registry
     .registerDefaultCommands({ help: false })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-let mention;
 client.on('ready', () => {
     console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
     client.user.setGame(`x;help | Shard ${client.shard.id}`);
-    mention = new RegExp(`(<!?@${client.user.id}>)`, 'g');
 });
 
 client.on('disconnect', (event) => {
@@ -64,6 +53,17 @@ client.on('warn', console.warn);
 client.on('commandError', (command, err) => {
     if (err instanceof FriendlyError) return;
     console.error(command.name, err);
+});
+
+client.dispatcher.addInhibitor(msg => {
+    if (msg.channel.type === 'dm') return false;
+    const role = msg.guild.settings.get('singleRole');
+    if (!role) return false;
+    if (!msg.guild.roles.has(role)) return false;
+    if (client.isOwner(msg.author)) return false;
+    if (msg.member.hasPermission('ADMINISTRATOR')) return false;
+    if (!msg.member.roles.has(role))
+        return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} role may use commands.`)];
 });
 
 client.on('message', async (msg) => {
@@ -85,9 +85,9 @@ client.on('message', async (msg) => {
             if (role && !msg.member.roles.has(role)) return;
         }
         msg.channel.startTyping();
-        const message = msg.content.replace(mention, '');
+        const message = msg.content.replace(client.mentionRegex, '');
         try {
-            const { response } = await clevs.ask(message);
+            const { response } = await client.cleverbot.ask(message);
             return msg.reply(response)
                 .then(() => msg.channel.stopTyping());
         } catch (err) {
@@ -119,16 +119,6 @@ client.on('messageReactionAdd', (reaction, user) => {
     return channel.send({ embed });
 });
 
-client.dispatcher.addInhibitor(msg => {
-    if (msg.channel.type === 'dm') return false;
-    const role = msg.guild.settings.get('singleRole');
-    if (!role) return false;
-    if (client.isOwner(msg.author)) return false;
-    if (msg.member.hasPermission('ADMINISTRATOR')) return false;
-    if (!msg.member.roles.has(role))
-        return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} role may use commands.`)];
-});
-
 client.on('guildMemberAdd', (member) => {
     const role = member.guild.roles.get(member.guild.settings.get('joinRole'));
     if (member.guild.me.hasPermission('MANAGE_ROLES') && role) 
@@ -158,7 +148,6 @@ client.on('guildCreate', async (guild) => {
     console.log(`[Guild] I have joined ${guild.name}! (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
-    console.log(`[Count] ${count}`);
     carbon(count);
     dBots(count, client.user.id);
 });
@@ -167,7 +156,6 @@ client.on('guildDelete', async (guild) => {
     console.log(`[Guild] I have left ${guild.name}... (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
-    console.log(`[Count] ${count}`);
     carbon(count);
     dBots(count, client.user.id);
 });

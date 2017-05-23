@@ -7,7 +7,7 @@ module.exports = class ShardInfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'shard-info',
-            aliases: ['shard'],
+            aliases: ['shard', 'shard-stats'],
             group: 'util',
             memberName: 'shard-info',
             description: 'Gives some bot info for the Shard you specify.',

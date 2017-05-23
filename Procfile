@@ -1,1 +1,1 @@
-worker: node shardingmanager.js
+worker: node Shard.js

@@ -1,11 +1,11 @@
 {
   "name": "xiaobot",
-  "version": "19.13.0",
+  "version": "20.0.0",
   "description": "A Discord Bot",
-  "main": "shardingmanager.js",
+  "main": "Shard.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node shardingmanager.js"
+    "start": "node Shard.js"
   },
   "repository": {
     "type": "git",
