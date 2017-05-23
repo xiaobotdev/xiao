@@ -25,7 +25,7 @@ module.exports = class LockdownCommand extends Command {
     }
     
     hasPermission(msg) {
-        return msg.member.hasPermission('ADMINISTRATOR');
+        return msg.member.hasPermission('ADMINISTRATOR') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }
 
     async run(msg, args) {
@@ -35,8 +35,11 @@ module.exports = class LockdownCommand extends Command {
         if (type === 'start') {
             try {
                 await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: false });
+                const staffRole = msg.guild.settings.get('staffRole');
+                if (staffRole && !msg.channel.permissionOverwrites.has(staffRole))
+                    await msg.channel.overwritePermissions(msg.guild.roles.get(staffRole), { SEND_MESSAGES: true });
                 return msg.say(stripIndents`
-                    Lockdown Started, users without Administrator can no longer post messages.
+                    Lockdown Started, users without Administrator ${staffRole ? 'or the Staff Role ' : ''}can no longer post messages.
                     Please use \`lockdown stop\` to end the lockdown.
                 `);
             } catch (err) {
@@ -44,8 +47,8 @@ module.exports = class LockdownCommand extends Command {
             }
         } else if (type === 'stop') {
             try {
-                await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: true });
-                return msg.say('Lockdown Ended, users without Administrator can now post messages.');
+                await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: null });
+                return msg.say('Lockdown Ended.');
             } catch (err) {
                 return msg.say(`${err.name}: ${err.message}`);
             }
