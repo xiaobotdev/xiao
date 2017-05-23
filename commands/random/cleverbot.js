@@ -24,7 +24,7 @@ module.exports = class CleverbotCommand extends Command {
             user: CLEVS_USER,
             nick: CLEVS_NICK
         });
-        this.clevs.create().then(res => console.log(res));
+        this.clevs.create();
     }
 
     async run(msg, args) {
