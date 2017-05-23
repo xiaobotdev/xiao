@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { letterTrans } = require('custom-translate');
-const dictionary = require('../../assets/json/upsidedown');
+const dictionary = require('../../assets/json/upside-down');
 
 module.exports = class UpsideDownCommand extends Command {
     constructor(client) {

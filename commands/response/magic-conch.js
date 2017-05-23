@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
-const answers = require('../../assets/json/magicconch');
+const answers = require('../../assets/json/magic-conch');
 
 module.exports = class MagicConchCommand extends Command {
     constructor(client) {

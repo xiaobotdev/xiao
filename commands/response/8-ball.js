@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
-const answers = require('../../assets/json/8ball');
+const answers = require('../../assets/json/8-ball');
 
 module.exports = class MagicBallCommand extends Command {
     constructor(client) {
