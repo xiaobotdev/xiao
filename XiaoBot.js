@@ -90,7 +90,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         return msg.reply('You cannot star your own messages, idiot');
     }
     console.log(msg.id);
-    client.registry.resolveCommand('random:starboard').run(msg, { id: msg.id }, true);
+    client.registry.resolveCommand('random:star').run(msg, { id: msg.id }, true);
 });
 
 client.on('guildMemberAdd', (member) => {
