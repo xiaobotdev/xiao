@@ -7,8 +7,8 @@ require('moment-duration-format');
 module.exports = class UserInfoCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'user',
-            aliases: ['user-info', 'member', 'member-info'],
+            name: 'user-info',
+            aliases: ['user', 'member', 'member-info'],
             group: 'userinfo',
             memberName: 'user',
             description: 'Gives some info on a user.',

@@ -7,10 +7,10 @@ require('moment-duration-format');
 module.exports = class GuildInfoCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'server',
-            aliases: ['guild', 'server-info', 'guild-info'],
+            name: 'server-info',
+            aliases: ['guild', 'server', 'guild-info'],
             group: 'guildinfo',
-            memberName: 'server',
+            memberName: 'server-info',
             description: 'Gives some info on the current server.',
             guildOnly: true
         });
