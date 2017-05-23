@@ -18,7 +18,8 @@ module.exports = class LockdownCommand extends Command {
                         if (['start', 'stop'].includes(type.toLowerCase())) return true;
                         return 'Please enter either `start` or `stop`.';
                     },
-                    parse: type => type.toLowerCase()
+                    parse: type => type.toLowerCase(),
+                    default: 'start'
                 }
             ]
         });
