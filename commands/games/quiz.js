@@ -20,16 +20,18 @@ module.exports = class QuizCommand extends Command {
                 return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { body } = await snekfetch
-                .get('http://jservice.io/api/random')
+                .get('https://opentdb.com/api.php')
                 .query({
-                    count: 1
+                    amount: 1,
+                    type: 'boolean'
                 });
-            const answer = body[0].answer.toLowerCase().replace(/(<i>|<\/i>)/g, '');
+            const answer = body.results[0].correct_answer.toLowerCase();
             const embed = new RichEmbed()
                 .setTitle('You have **15** seconds to answer this question:')
                 .setDescription(stripIndents`
-                    **Category: ${body[0].category.title}**
-                    ${body[0].question}
+                    **Category: ${body.results[0].category}**
+                    **Difficulty: ${body.results[0].difficulty}**
+                    ${body.results[0].question}
                 `);
             msg.embed(embed);
             try {
@@ -39,10 +41,10 @@ module.exports = class QuizCommand extends Command {
                     errors: ['time']
                 });
                 if (collected.first().content.toLowerCase() !== answer)
-                    return msg.say(`The correct answer is: ${answer}.`);
-                return msg.say(`Perfect! The correct answer is: ${answer}.`);
+                    return msg.say(`Nope, sorry, it\'s ${answer}.`);
+                return msg.say('Nice job! 10/10! You deserve some cake!');
             } catch (err) {
-                return msg.say(`Time! The correct answer is: ${answer}`);
+                return msg.say(`Time! It was ${answer}, sorry!`);
             }
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
