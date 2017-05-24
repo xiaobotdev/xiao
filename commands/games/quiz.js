@@ -30,8 +30,7 @@ module.exports = class QuizCommand extends Command {
             const embed = new RichEmbed()
                 .setTitle('You have **15** seconds to answer this question:')
                 .setDescription(stripIndents`
-                    **Category: ${decodeURIComponent(body.results[0].category)}**
-                    **Difficulty: ${decodeURIComponent(body.results[0].difficulty)}**
+                    **${decodeURIComponent(body.results[0].category)}**
                     True or False: ${decodeURIComponent(body.results[0].question)}
                 `);
             msg.embed(embed);
