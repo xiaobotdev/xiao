@@ -81,7 +81,6 @@ client.on('message', async (msg) => {
 client.on('messageReactionAdd', (reaction, user) => {
     if (reaction.emoji.name !== '⭐') return;
     if (reaction.count > 1) return;
-    console.log(reaction.count, reaction);
     const msg = reaction.message;
     const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
     if (!channel) return;
