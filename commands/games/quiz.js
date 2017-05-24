@@ -31,7 +31,7 @@ module.exports = class QuizCommand extends Command {
                 .setDescription(stripIndents`
                     **Category: ${body.results[0].category}**
                     **Difficulty: ${body.results[0].difficulty}**
-                    ${body.results[0].question}
+                    True or False: ${body.results[0].question}
                 `);
             msg.embed(embed);
             try {
