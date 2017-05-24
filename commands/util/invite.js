@@ -15,7 +15,7 @@ module.exports = class InviteCommand extends Command {
         const invite = await this.client.generateInvite('1345846343');
         return msg.say(stripIndents`
             Add me to your server with this link:
-            ${invite}
+            <${invite}>
             Or, come to my server with this link:
             ${this.client.options.invite}
         `);
