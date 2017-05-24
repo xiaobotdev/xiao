@@ -23,15 +23,16 @@ module.exports = class QuizCommand extends Command {
                 .get('https://opentdb.com/api.php')
                 .query({
                     amount: 1,
-                    type: 'boolean'
+                    type: 'boolean',
+                    encode: 'url3986'
                 });
             const answer = body.results[0].correct_answer.toLowerCase();
             const embed = new RichEmbed()
                 .setTitle('You have **15** seconds to answer this question:')
                 .setDescription(stripIndents`
-                    **Category: ${body.results[0].category}**
-                    **Difficulty: ${body.results[0].difficulty}**
-                    True or False: ${body.results[0].question}
+                    **Category: ${decodeURIComponent(body.results[0].category)}**
+                    **Difficulty: ${decodeURIComponent(body.results[0].difficulty)}**
+                    True or False: ${decodeURIComponent(body.results[0].question)}
                 `);
             msg.embed(embed);
             try {
