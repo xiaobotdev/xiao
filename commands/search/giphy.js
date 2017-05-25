@@ -32,7 +32,8 @@ module.exports = class GiphyCommand extends Command {
                     api_key: GIPHY_KEY
                 });
             if (!body.data.length) throw new Error('No Results.');
-            return msg.say({ files: [body.data[0].images.original.url] })
+            const random = Math.floor(Math.random() * body.data.length) + 1;
+            return msg.say({ files: [body.data[random].images.original.url] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
