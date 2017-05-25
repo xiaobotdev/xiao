@@ -68,7 +68,8 @@ module.exports = class SoftbanCommand extends Command {
                     **Action:** Softban
                     **Reason:** ${reason}
                 `);
-            return modlogs.send({ embed });
+            await modlogs.send({ embed });
+            return null;
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
         }

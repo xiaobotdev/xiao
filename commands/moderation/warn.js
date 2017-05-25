@@ -60,6 +60,7 @@ module.exports = class WarnCommand extends Command {
                 **Action:** Warn
                 **Reason:** ${reason}
             `);
-        return modlogs.send({ embed });
+        await modlogs.send({ embed });
+        return null;
     }
 };
