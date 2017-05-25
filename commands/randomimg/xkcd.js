@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class XKCDCommand extends Command {
@@ -31,14 +32,21 @@ module.exports = class XKCDCommand extends Command {
         try {
             const current = await snekfetch
                 .get('https://xkcd.com/info.0.json');
-            if (type === 'today') return msg.say({ files: [current.body.img] })
-                .catch(err => msg.say(`${err.name}: ${err.message}`));
-            else {
+            if (type === 'today') {
+                const embed = new RichEmbed()
+                    .setTitle(`${current.body.num} - ${current.body.title}`)
+                    .setImage(current.body.img)
+                    .setFooter(current.body.alt);
+                return msg.embed(embed);
+            } else {
                 const random = Math.floor(Math.random() * current.body.num) + 1;
                 const { body } = await snekfetch
                     .get(`https://xkcd.com/${random}/info.0.json`);
-                return msg.say({ files: [body.img] })
-                    .catch(err => msg.say(`${err.name}: ${err.message}`));
+                const embed = new RichEmbed()
+                    .setTitle(`${body.num} - ${body.title}`)
+                    .setImage(body.img)
+                    .setFooter(body.alt);
+                return msg.embed(embed);
             }
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
