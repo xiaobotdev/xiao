@@ -33,7 +33,8 @@ module.exports = class StarCommand extends Command {
                 .setDescription(message.content)
                 .setImage(message.attachments.first() ? message.attachments.first().url : null)
                 .setFooter(moment(message.createdTimestamp).format('MMMM Do YYYY h:mm:ss A'));
-            return channel.send({ embed });
+            await channel.send({ embed });
+            return null;
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
         }
