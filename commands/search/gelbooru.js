@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { promisify } = require('tsubaki');
-const xml = promisify(require('xml2js').parseString);
+const { promisifyAll } = require('tsubaki');
+const xml = promisifyAll(require('xml2js'));
 
 module.exports = class GelbooruCommand extends Command {
     constructor(client) {
@@ -33,7 +33,7 @@ module.exports = class GelbooruCommand extends Command {
                     tags: query,
                     limit: 1
                 });
-            const { posts } = await xml(text);
+            const { posts } = await xml.parseString(text);
             if (posts.$.count === '0') throw new Error('No Results.');
             return msg.say(`Result for ${query}: https:${posts.post[0].$.file_url}`);
         } catch (err) {
