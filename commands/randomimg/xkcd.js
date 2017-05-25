@@ -35,6 +35,7 @@ module.exports = class XKCDCommand extends Command {
             if (type === 'today') {
                 const embed = new RichEmbed()
                     .setTitle(`${current.body.num} - ${current.body.title}`)
+                    .setURL(`https://xkcd.com/${current.body.num}`)
                     .setImage(current.body.img)
                     .setFooter(current.body.alt);
                 return msg.embed(embed);
@@ -44,6 +45,7 @@ module.exports = class XKCDCommand extends Command {
                     .get(`https://xkcd.com/${random}/info.0.json`);
                 const embed = new RichEmbed()
                     .setTitle(`${body.num} - ${body.title}`)
+                    .setURL(`https://xkcd.com/${body.num}`)
                     .setImage(body.img)
                     .setFooter(body.alt);
                 return msg.embed(embed);
