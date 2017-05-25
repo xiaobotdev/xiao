@@ -12,6 +12,10 @@ module.exports = class SimbaCommand extends Command {
             group: 'avataredit',
             memberName: 'simba',
             description: 'Remember who you are...',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

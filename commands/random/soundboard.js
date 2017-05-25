@@ -12,6 +12,10 @@ module.exports = class SoundboardCommand extends Command {
             description: 'Plays a sound in your voice channel.',
             details: `**Sounds:** ${names.join(', ')}`,
             guildOnly: true,
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'sound',

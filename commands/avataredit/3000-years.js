@@ -13,6 +13,10 @@ module.exports = class YearsCommand extends Command {
             group: 'avataredit',
             memberName: '3000years',
             description: 'It\'s been 3000 years...',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',
