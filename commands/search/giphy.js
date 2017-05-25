@@ -20,9 +20,6 @@ module.exports = class GiphyCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { query } = args;
         try {
             const { body } = await snekfetch
@@ -34,8 +31,7 @@ module.exports = class GiphyCommand extends Command {
                 });
             if (!body.data.length) throw new Error('No Results.');
             const random = Math.floor(Math.random() * body.data.length);
-            return msg.say({ files: [body.data[random].images.original.url] })
-                .catch(err => msg.say(`${err.name}: ${err.message}`));
+            return msg.say(body.data[random].images.original.url);
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
         }
