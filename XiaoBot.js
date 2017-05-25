@@ -36,7 +36,7 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
-    console.log(`[Ready] Shard ${client.shard.id} Logged in!`);
+    console.log(`[Ready] Shard ${client.shard.id} Logged in as ${client.user.tag} (${client.user.id})!`);
     client.user.setGame(`x;help | Shard ${client.shard.id}`);
 });
 
