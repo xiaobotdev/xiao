@@ -33,7 +33,7 @@ module.exports = class GiphyCommand extends Command {
                     rating: msg.channel.nsfw ? 'r' : 'pg'
                 });
             if (!body.data.length) throw new Error('No Results.');
-            const random = Math.floor(Math.random() * body.data.length) + 1;
+            const random = Math.floor(Math.random() * body.data.length);
             return msg.say({ files: [body.data[random].images.original.url] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
