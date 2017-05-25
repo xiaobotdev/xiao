@@ -1,8 +1,8 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { promisify } = require('tsubaki');
-const xml = promisify(require('xml2js').parseString);
+const { promisifyAll } = require('tsubaki');
+const xml = promisifyAll(require('xml2js'));
 const { ANIMELIST_LOGIN } = process.env;
 
 module.exports = class AnimeCommand extends Command {
@@ -33,7 +33,7 @@ module.exports = class AnimeCommand extends Command {
                 .query({
                     q: query
                 });
-            const { anime } = await xml(text);
+            const { anime } = await xml.parseString(text);
             const synopsis = anime.entry[0].synopsis[0].substr(0, 2000)
                 .replace(/(<br \/>)/g, '')
                 .replace(/(&#039;)/g, '\'')
