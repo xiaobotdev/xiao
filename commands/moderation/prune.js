@@ -10,7 +10,7 @@ module.exports = class PruneCommand extends Command {
             guildOnly: true,
             throttling: {
 				usages: 1,
-				duration: 60
+				duration: 15
 			},
             args: [
                 {

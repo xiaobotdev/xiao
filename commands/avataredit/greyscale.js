@@ -10,6 +10,10 @@ module.exports = class GreyscaleCommand extends Command {
             group: 'avataredit',
             memberName: 'greyscale',
             description: 'Greyscale a user\'s avatar colors.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

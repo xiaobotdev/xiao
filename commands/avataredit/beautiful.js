@@ -13,6 +13,10 @@ module.exports = class BeautifulCommand extends Command {
             group: 'avataredit',
             memberName: 'beautiful',
             description: 'Oh, this? This is beautiful.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

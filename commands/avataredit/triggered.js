@@ -12,6 +12,10 @@ module.exports = class TriggeredCommand extends Command {
             group: 'avataredit',
             memberName: 'triggered',
             description: 'Put an avatar on a "Triggered" sign.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

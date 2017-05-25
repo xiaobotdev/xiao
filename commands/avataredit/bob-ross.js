@@ -13,6 +13,10 @@ module.exports = class BobRossCommand extends Command {
             group: 'avataredit',
             memberName: 'bob-ross',
             description: 'Make Bob Ross draw an avatar.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

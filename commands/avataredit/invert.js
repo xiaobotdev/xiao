@@ -9,6 +9,10 @@ module.exports = class InvertCommand extends Command {
             group: 'avataredit',
             memberName: 'invert',
             description: 'Invert a user\'s avatar colors.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

@@ -13,6 +13,10 @@ module.exports = class RIPCommand extends Command {
             group: 'avataredit',
             memberName: 'rip',
             description: 'Puts a user\'s avatar over a gravestone.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

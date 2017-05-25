@@ -12,6 +12,10 @@ module.exports = class SteamCardCommand extends Command {
             group: 'avataredit',
             memberName: 'steam-card',
             description: 'Put an avatar on a Steam Card.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

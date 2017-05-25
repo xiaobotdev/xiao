@@ -12,6 +12,10 @@ module.exports = class DexterCommand extends Command {
             group: 'avataredit',
             memberName: 'dexter',
             description: 'Who\'s that pokemon?',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',

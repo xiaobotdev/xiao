@@ -16,6 +16,10 @@ module.exports = class CardCommand extends Command {
             memberName: 'card',
             description: 'Creates a Profile Card for the User.',
             guildOnly: true,
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'member',

@@ -12,6 +12,10 @@ module.exports = class WantedCommand extends Command {
             group: 'avataredit',
             memberName: 'wanted',
             description: 'Puts an avatar on a wanted poster.',
+            throttling: {
+                usages: 1,
+                duration: 15
+            },
             args: [
                 {
                     key: 'user',
