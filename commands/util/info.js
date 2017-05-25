@@ -29,15 +29,15 @@ module.exports = class InfoCommand extends Command {
                 Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!
             `)
             .addField('Servers',
-                `${this.client.guilds.size} / ${guilds.reduce((prev, val) => prev + val, 0)}`, true)
+                guilds.reduce((prev, val) => prev + val, 0), true)
             .addField('Shards',
-                `${this.client.options.shardCount} (${this.client.shard.id})`, true)
+                this.client.options.shardCount, true)
             .addField('Commands',
                 this.client.registry.commands.size, true)
             .addField('Source Code',
                 '[View Here](https://github.com/dragonfire535/xiaobot)', true)
             .addField('Memory Usage',
-                `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB / ${memory.reduce((prev, val) => prev + val, 0)}MB`, true)
+                `${memory.reduce((prev, val) => prev + val, 0)}MB`, true)
             .addField('Uptime',
                 moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
             .addField('Version',
