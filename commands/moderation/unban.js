@@ -15,11 +15,7 @@ module.exports = class UnbanCommand extends Command {
                 {
                     key: 'id',
                     prompt: 'What member do you want to unban? Please enter the ID of the user.',
-                    type: 'string',
-                    validate: id => {
-                        if (id.length === 18) return true;
-                        return 'Invalid ID.';
-                    }
+                    type: 'string'
                 },
                 {
                     key: 'reason',

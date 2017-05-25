@@ -13,11 +13,7 @@ module.exports = class StarCommand extends Command {
                 {
                     key: 'id',
                     prompt: 'What is the ID of the message you wish to star?',
-                    type: 'string',
-                    validate: id => {
-                        if (id.length === 18) return true;
-                        return 'Invalid ID.';
-                    }
+                    type: 'string'
                 }
             ]
         });
