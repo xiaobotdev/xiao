@@ -29,7 +29,8 @@ module.exports = class GiphyCommand extends Command {
                 .get('http://api.giphy.com/v1/gifs/search')
                 .query({
                     q: query,
-                    api_key: GIPHY_KEY
+                    api_key: GIPHY_KEY,
+                    rating: msg.channel.nsfw ? 'r' : 'pg'
                 });
             if (!body.data.length) throw new Error('No Results.');
             const random = Math.floor(Math.random() * body.data.length) + 1;
