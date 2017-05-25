@@ -6,6 +6,7 @@ module.exports = class XKCDCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'xkcd',
+            aliases: ['kcd'],
             group: 'randomimg',
             memberName: 'xkcd',
             description: 'Gets an XKCD Comic, optionally opting for today\'s.',
