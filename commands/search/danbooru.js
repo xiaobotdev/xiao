@@ -8,7 +8,6 @@ module.exports = class DanbooruCommand extends Command {
             group: 'search',
             memberName: 'danbooru',
             description: 'Sends an image from Danbooru, with optional query.',
-            guildOnly: true,
             args: [
                 {
                     key: 'query',
@@ -22,8 +21,6 @@ module.exports = class DanbooruCommand extends Command {
 
     async run(msg, args) {
         if (!msg.channel.nsfw) return msg.say('This Command can only be used in NSFW Channels.');
-        if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-            return msg.say('This Command requires the `Attach Files` Permission.');
         const { query } = args;
         try {
             const { body } = await snekfetch
@@ -33,8 +30,7 @@ module.exports = class DanbooruCommand extends Command {
                     limit: 1
                 });
             if (!body.length) throw new Error('No Results.');
-            return msg.say(query ? `Result for ${query}:` : 'Random Image:', { files: [`https://danbooru.donmai.us${body[0].file_url}`] })
-                .catch(err => msg.say(`${err.name}: ${err.message}`));
+            return msg.say(`${query ? `Result for ${query}:` : 'Random Image:'} https://danbooru.donmai.us${body[0].file_url}`);
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
         }
