@@ -33,7 +33,7 @@ module.exports = class Rule34Command extends Command {
                     tags: query,
                     limit: 1
                 });
-            const { posts } = await xml.parseString(text);
+            const { posts } = await xml.parseStringAsync(text);
             if (posts.$.count === '0') throw new Error('No Results.');
             return msg.say(`Result for ${query}: https:${posts.post[0].$.file_url}`);
         } catch (err) {

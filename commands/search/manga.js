@@ -33,7 +33,7 @@ module.exports = class MangaCommand extends Command {
                 .query({
                     q: query
                 });
-            const { manga } = await xml.parseString(text);
+            const { manga } = await xml.parseStringAsync(text);
             const synopsis = manga.entry[0].synopsis[0].substr(0, 2000)
                 .replace(/(<br \/>)/g, '')
                 .replace(/(&#039;)/g, '\'')

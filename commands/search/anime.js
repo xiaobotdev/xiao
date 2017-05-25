@@ -33,7 +33,7 @@ module.exports = class AnimeCommand extends Command {
                 .query({
                     q: query
                 });
-            const { anime } = await xml.parseString(text);
+            const { anime } = await xml.parseStringAsync(text);
             const synopsis = anime.entry[0].synopsis[0].substr(0, 2000)
                 .replace(/(<br \/>)/g, '')
                 .replace(/(&#039;)/g, '\'')
