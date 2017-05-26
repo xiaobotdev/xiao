@@ -18,8 +18,8 @@ module.exports = class CleverbotCommand extends Command {
                 }
             ]
         });
-        
-        this.clevs = new Cleverbot({
+
+        this.clevs = new Cleverbot.Client({
             key: CLEVS_KEY,
             user: CLEVS_USER,
             nick: CLEVS_NICK
