@@ -10,7 +10,7 @@ module.exports = class InviteGuardCommand extends Command {
             guildOnly: true
         });
     }
-    
+
     hasPermission(msg) {
         return msg.member.hasPermission('ADMINISTRATOR');
     }

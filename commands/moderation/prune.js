@@ -26,7 +26,7 @@ module.exports = class PruneCommand extends Command {
             ]
         });
     }
-    
+
     hasPermission(msg) {
         return msg.member.hasPermission('MANAGE_MESSAGES') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }

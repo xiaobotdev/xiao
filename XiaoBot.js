@@ -80,7 +80,6 @@ client.on('message', async (msg) => {
 
 client.on('messageReactionAdd', (reaction, user) => {
     if (reaction.emoji.name !== '⭐') return;
-    if (reaction.count > 1) return;
     const msg = reaction.message;
     const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
     if (!channel) return;
@@ -94,7 +93,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 
 client.on('guildMemberAdd', (member) => {
     const role = member.guild.roles.get(member.guild.settings.get('joinRole'));
-    if (member.guild.me.hasPermission('MANAGE_ROLES') && role) 
+    if (member.guild.me.hasPermission('MANAGE_ROLES') && role)
         member.addRole(role).catch(() => null);
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
     if (!channel) return;

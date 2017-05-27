@@ -24,7 +24,7 @@ module.exports = class CowsayCommand extends Command {
 
     run(msg, args) {
         const { text } = args;
-        return msg.code(null, 
+        return msg.code(null,
             stripIndent`
                 < ${text} >
                    \\   ^__^

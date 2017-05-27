@@ -24,7 +24,7 @@ module.exports = class LockdownCommand extends Command {
             ]
         });
     }
-    
+
     hasPermission(msg) {
         return msg.member.hasPermission('ADMINISTRATOR') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }

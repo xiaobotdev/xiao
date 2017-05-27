@@ -17,7 +17,7 @@ module.exports = class StaffRoleCommand extends Command {
             ]
         });
     }
-    
+
     hasPermission(msg) {
         return msg.member.hasPermission('ADMINISTRATOR');
     }
