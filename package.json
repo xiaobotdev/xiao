@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "21.3.0",
+  "version": "21.4.0",
   "description": "A Discord Bot",
   "main": "Shard.js",
   "scripts": {
