@@ -29,7 +29,7 @@ module.exports = class UnbanCommand extends Command {
             ]
         });
     }
-    
+
     hasPermission(msg) {
         return msg.member.hasPermission('BAN_MEMBERS') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
     }

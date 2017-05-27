@@ -17,12 +17,15 @@ module.exports = class StarCommand extends Command {
                 }
             ]
         });
+
+        this.starred = [];
     }
 
     async run(msg, args, reaction) {
         const { id } = args;
         const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
         if (!channel || !channel.permissionsFor(this.client.user).has('EMBED_LINKS')) return null;
+        if (this.starred.includes(id)) return null;
         try {
             const message = await msg.channel.fetchMessage(id);
             if (!reaction && msg.author.id === message.author.id)
@@ -33,6 +36,7 @@ module.exports = class StarCommand extends Command {
                 .setDescription(message.content)
                 .setImage(message.attachments.first() ? message.attachments.first().url : null)
                 .setFooter(moment(message.createdTimestamp).format('MMMM Do YYYY h:mm:ss A'));
+            this.starred.push(id);
             await channel.send({ embed });
             return null;
         } catch (err) {

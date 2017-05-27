@@ -20,7 +20,7 @@ module.exports = class WebhookCommand extends Command {
             ]
         });
     }
-    
+
     hasPermission(msg) {
         return this.client.isOwner(msg.author);
     }
