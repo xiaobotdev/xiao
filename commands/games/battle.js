@@ -36,7 +36,11 @@ module.exports = class BattleCommand extends Command {
                 let guard = false;
                 while (userHP > 0 && oppoHP > 0) {
                     const username = userTurn ? msg.author.username : opponent.username;
-                    await msg.say(`${username}, do you fight, guard, special, or run?`);
+                    await msg.say(stripIndents`
+                        ${username}, do you fight, guard, special, or run?
+                        ${username}: ${userTurn ? userHP : oppoHP} HP
+                        ${userTurn ? opponent.username : msg.author.username}: ${userTurn ? oppoHP : userHP} HP
+                    `);
                     try {
                         const turn = await msg.channel.awaitMessages(res => res.author.id === (userTurn ? msg.author.id : opponent.id), {
                             max: 1,
