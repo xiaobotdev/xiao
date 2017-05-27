@@ -17,11 +17,16 @@ module.exports = class BattleCommand extends Command {
                 }
             ]
         });
+
+        this.fighting = new Set();
     }
 
     async run(msg, args) {
         const { opponent } = args;
         if (opponent.bot) return msg.say('You cannot fight bots!');
+        if (opponent.id === msg.author.id) return msg.say('You cannot fight yourself!');
+        if (this.fighting.has(msg.guild.id)) return msg.say('There is already a fight in this server...');
+        this.fighting.add(msg.guild.id);
         await msg.say(`${opponent.username}, do you accept this challenge? Yes or No?`);
         try {
             const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
@@ -87,13 +92,18 @@ module.exports = class BattleCommand extends Command {
                         break;
                     }
                 }
+                this.fighting.delete(msg.guild.id);
                 return msg.say(stripIndents`
                     The match is over!
                     Winner: ${(userHP > oppoHP) ? `${msg.author.username} (${userHP})` : `${opponent.username} (${oppoHP})`}!
                     Loser: ${(userHP > oppoHP) ? `${opponent.username} (${oppoHP})` : `${msg.author.username} (${userHP})`}...
                 `);
-            } else return msg.say('Guess that was a no then...');
+            } else {
+                this.fighting.delete(msg.guild.id);
+                return msg.say('Guess that was a no then...');
+            }
         } catch (err) {
+            this.fighting.delete(msg.guild.id);
             return msg.say('Looks like they declined...');
         }
     }
