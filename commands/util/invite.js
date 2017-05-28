@@ -7,7 +7,8 @@ module.exports = class InviteCommand extends Command {
             name: 'invite',
             group: 'util',
             memberName: 'invite',
-            description: 'Sends you an invite for the bot and an invite to my server.'
+            description: 'Sends you an invite for the bot and an invite to my server.',
+            guarded: true
         });
     }
 
