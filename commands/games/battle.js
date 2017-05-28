@@ -9,6 +9,7 @@ module.exports = class BattleCommand extends Command {
             group: 'games',
             memberName: 'battle',
             description: 'Choose another user and fight to the death!',
+            guildOnly: true,
             args: [
                 {
                     key: 'opponent',
