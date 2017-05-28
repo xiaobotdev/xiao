@@ -11,6 +11,7 @@ module.exports = class ShardInfoCommand extends Command {
             group: 'util',
             memberName: 'shard-info',
             description: 'Gives some bot info for the Shard you specify.',
+            guarded: true,
             args: [
                 {
                     key: 'shard',

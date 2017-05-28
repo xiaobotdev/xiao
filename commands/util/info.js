@@ -12,7 +12,8 @@ module.exports = class InfoCommand extends Command {
             aliases: ['information', 'stats'],
             group: 'util',
             memberName: 'info',
-            description: 'Gives some bot info.'
+            description: 'Gives some bot info.',
+            guarded: true
         });
     }
 
