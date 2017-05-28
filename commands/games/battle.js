@@ -44,7 +44,7 @@ module.exports = class BattleCommand extends Command {
                 while (userHP > 0 && oppoHP > 0) {
                     const username = userTurn ? msg.author.username : opponent.username;
                     await msg.say(stripIndents`
-                        ${username}, do you **fight**, **guard**, **special**, **cure** or **run**?
+                        **${username}**, do you **fight**, **guard**, **special**, **cure** or **run**?
                         **${msg.author.username}**: ${userHP}HP
                         **${opponent.username}**: ${oppoHP}HP
                     `);
@@ -57,7 +57,7 @@ module.exports = class BattleCommand extends Command {
                         const choice = turn.first().content.toLowerCase();
                         if (choice === 'fight') {
                             const damage = Math.floor(Math.random() * (guard ? 25 : 100)) + 1;
-                            await msg.say(`${username} deals ${damage} damage!`);
+                            await msg.say(`**${username}** deals **${damage}** damage!`);
                             if (userTurn) {
                                 oppoHP = oppoHP - damage;
                                 userTurn = false;
@@ -67,7 +67,7 @@ module.exports = class BattleCommand extends Command {
                             }
                             if (guard) guard = false;
                         } else if (choice === 'guard') {
-                            await msg.say(`${username} guards!`);
+                            await msg.say(`**${username}** guards!`);
                             guard = true;
                             if (userTurn) userTurn = false;
                             else userTurn = true;
@@ -75,7 +75,7 @@ module.exports = class BattleCommand extends Command {
                             const hit = Math.floor(Math.random() * 4) + 1;
                             if (hit === 1) {
                                 const damage = Math.floor(Math.random() * ((guard ? 300 : 150) - 100 + 1) + 100);
-                                await msg.say(`${username} deals ${damage} damage!`);
+                                await msg.say(`**${username}** deals **${damage}** damage!`);
                                 if (userTurn) {
                                     oppoHP = oppoHP - damage;
                                     userTurn = false;
@@ -92,7 +92,7 @@ module.exports = class BattleCommand extends Command {
                             }
                         } else if (choice === 'cure') {
                             if (userTurn ? userCure : oppoCure) {
-                                await msg.say(`${username} regains 250HP!`);
+                                await msg.say(`**${username}** regains **250HP**!`);
                                 if (userTurn) {
                                     userHP = userHP + 250;
                                     userCure = false;
