@@ -27,7 +27,7 @@ module.exports = class BattleCommand extends Command {
         if (opponent.id === msg.author.id) return msg.say('You cannot fight yourself!');
         if (this.fighting.has(msg.guild.id)) return msg.say('There is already a fight in this server...');
         this.fighting.add(msg.guild.id);
-        await msg.say(`**${opponent.username}**, do you accept this challenge? **_Y_es** or **No**?`);
+        await msg.say(`**${opponent.username}**, do you accept this challenge? **__Y__es** or **No**?`);
         try {
             const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
                 max: 1,
