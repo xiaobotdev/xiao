@@ -44,7 +44,7 @@ module.exports = class BattleCommand extends Command {
                 while (userHP > 0 && oppoHP > 0) {
                     const username = userTurn ? msg.author.username : opponent.username;
                     await msg.say(stripIndents`
-                        **${username}**, do you **fight**, **guard**, **special**, **cure** or **run**?
+                        **${username}**, do you **fight**, **guard**, **special**, **cure**, or **run**?
                         **${msg.author.username}**: ${userHP}HP
                         **${opponent.username}**: ${oppoHP}HP
                     `);
@@ -85,14 +85,14 @@ module.exports = class BattleCommand extends Command {
                                 }
                                 if (guard) guard = false;
                             } else {
-                                await msg.say('Miss!');
+                                await msg.say(`**${username}**'s attack missed!`);
                                 if (guard) guard = false;
                                 if (userTurn) userTurn = false;
                                 else userTurn = true;
                             }
                         } else if (choice === 'cure') {
                             if (userTurn ? userCure : oppoCure) {
-                                await msg.say(`**${username}** regains **250HP**!`);
+                                await msg.say(`**${username}** regains **250** health!`);
                                 if (userTurn) {
                                     userHP = userHP + 250;
                                     userCure = false;
