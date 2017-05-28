@@ -32,7 +32,7 @@ client.registry
         ['roleplay', 'Roleplay']
     ])
     .registerDefaultGroups()
-    .registerDefaultCommands({ help: false })
+    .registerDefaultCommands({ help: false, ping: false })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
