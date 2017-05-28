@@ -105,7 +105,7 @@ module.exports = class BattleCommand extends Command {
                                 if (guard) guard = false;
                             } else await msg.say('You have already cured!');
                         } else if (choice === 'run') {
-                            await msg.say(`${username} flees!`);
+                            await msg.say(`**${username}** flees!`);
                             if (userTurn) userHP = 0;
                             else oppoHP = 0;
                         } else await msg.say('I do not understand what you want to do.');
