@@ -51,7 +51,7 @@ module.exports = class UnbanCommand extends Command {
         if (!bans.has(id)) return msg.say('This ID is not in the Guild Banlist.');
         const member = bans.get(id);
         try {
-            await msg.guild.unban(member, reason);
+            await msg.guild.unban(member.id, reason);
             msg.say(':ok_hand:');
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
