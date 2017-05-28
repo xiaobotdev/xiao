@@ -85,7 +85,7 @@ module.exports = class BattleCommand extends Command {
                                 }
                                 if (guard) guard = false;
                             } else {
-                                await msg.say('It missed!');
+                                await msg.say('Miss!');
                                 if (guard) guard = false;
                                 if (userTurn) userTurn = false;
                                 else userTurn = true;
@@ -117,8 +117,8 @@ module.exports = class BattleCommand extends Command {
                 this.fighting.delete(msg.guild.id);
                 return msg.say(stripIndents`
                     The match is over!
-                    **Winner: ${(userHP > oppoHP) ? `${msg.author.username}** (${userHP})` : `${opponent.username}** (${oppoHP})`}
-                    **Loser: ${(userHP > oppoHP) ? `${opponent.username}** (${oppoHP})` : `${msg.author.username}** (${userHP})`}
+                    **Winner: ${(userHP > oppoHP) ? `${msg.author.username}** (${userHP}HP)` : `${opponent.username}** (${oppoHP}HP)`}
+                    **Loser: ${(userHP > oppoHP) ? `${opponent.username}** (${oppoHP}HP)` : `${msg.author.username}** (${userHP}HP)`}
                 `);
             } else {
                 this.fighting.delete(msg.guild.id);
