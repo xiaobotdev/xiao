@@ -39,8 +39,8 @@ module.exports = class BattleCommand extends Command {
                 let oppoHP = 500;
                 let userTurn = true;
                 let guard = false;
-                let userCure = false;
-                let oppoCure = false;
+                let userCure = true;
+                let oppoCure = true;
                 while (userHP > 0 && oppoHP > 0) {
                     const username = userTurn ? msg.author.username : opponent.username;
                     await msg.say(stripIndents`
@@ -95,11 +95,11 @@ module.exports = class BattleCommand extends Command {
                                 await msg.say(`${username} regains 250HP!`);
                                 if (userTurn) {
                                     userHP = userHP + 250;
-                                    userCure = true;
+                                    userCure = false;
                                     userTurn = false;
                                 } else {
                                     oppoHP = oppoHP + 250;
-                                    oppoCure = true;
+                                    oppoCure = false;
                                     userTurn = true;
                                 }
                                 if (guard) guard = false;
@@ -117,8 +117,8 @@ module.exports = class BattleCommand extends Command {
                 this.fighting.delete(msg.guild.id);
                 return msg.say(stripIndents`
                     The match is over!
-                    Winner: ${(userHP > oppoHP) ? `${msg.author.username} (${userHP})` : `${opponent.username} (${oppoHP})`}!
-                    Loser: ${(userHP > oppoHP) ? `${opponent.username} (${oppoHP})` : `${msg.author.username} (${userHP})`}...
+                    **Winner:** ${(userHP > oppoHP) ? `${msg.author.username} (${userHP})` : `${opponent.username} (${oppoHP})`}
+                    **Loser:** ${(userHP > oppoHP) ? `${opponent.username} (${oppoHP})` : `${msg.author.username} (${userHP})`}
                 `);
             } else {
                 this.fighting.delete(msg.guild.id);
