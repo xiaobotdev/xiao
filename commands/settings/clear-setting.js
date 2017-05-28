@@ -24,7 +24,8 @@ module.exports = class ClearSettingCommand extends Command {
     }
 
     hasPermission(msg) {
-        return msg.member.hasPermission('ADMINISTRATOR');
+        if (!msg.member.hasPermission('ADMINISTRATOR')) return 'You do not have the `Administrator` Permission.';
+        else return true;
     }
 
     run(msg, args) {

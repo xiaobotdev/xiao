@@ -28,7 +28,10 @@ module.exports = class PruneCommand extends Command {
     }
 
     hasPermission(msg) {
-        return msg.member.hasPermission('MANAGE_MESSAGES') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
+        const staffRole = msg.guild.roles.get(msg.guild.settings.get('staffRole'));
+        if (staffRole && !msg.member.roles.has(staffRole)) return `You do not have the ${staffRole.name} role.`;
+        else if (!msg.member.hasPermission('MANAGE_MESSAGES')) return 'You do not have the `Manage Messages` Permission.';
+        else return true;
     }
 
     async run(msg, args) {

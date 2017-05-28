@@ -30,7 +30,10 @@ module.exports = class KickCommand extends Command {
     }
 
     hasPermission(msg) {
-        return msg.member.hasPermission('KICK_MEMBERS') || msg.member.roles.has(msg.guild.settings.get('staffRole'));
+        const staffRole = msg.guild.roles.get(msg.guild.settings.get('staffRole'));
+        if (staffRole && !msg.member.roles.has(staffRole)) return `You do not have the ${staffRole.name} role.`;
+        else if (!msg.member.hasPermission('KICK_MEMBERS')) return 'You do not have the `Kick Members` Permission.';
+        else return true;
     }
 
     async run(msg, args) {
