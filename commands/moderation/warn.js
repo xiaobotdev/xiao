@@ -31,7 +31,7 @@ module.exports = class WarnCommand extends Command {
 
     hasPermission(msg) {
         const staffRole = msg.guild.roles.get(msg.guild.settings.get('staffRole'));
-        if (staffRole && !msg.member.roles.has(staffRole)) return `You do not have the ${staffRole.name} role.`;
+        if (staffRole && !msg.member.roles.has(staffRole.id)) return `You do not have the ${staffRole.name} role.`;
         else if (!msg.member.hasPermission('KICK_MEMBERS')) return 'You do not have the `Kick Members` Permission.';
         else return true;
     }
