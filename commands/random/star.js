@@ -29,7 +29,7 @@ module.exports = class StarCommand extends Command {
         try {
             const message = await msg.channel.fetchMessage(id);
             if (!reaction && msg.author.id === message.author.id)
-                return msg.reply('You cannot star your own messages, idiot.');
+                return msg.reply('You cannot star your own messages, baka.');
             const embed = new RichEmbed()
                 .setColor(0xFFFF00)
                 .setAuthor(message.author.tag, message.author.displayAvatarURL)
