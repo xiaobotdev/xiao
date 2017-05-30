@@ -86,7 +86,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     if (user.id === msg.author.id) {
         if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES'))
             reaction.remove(user);
-        return msg.reply('You cannot star your own messages, idiot.');
+        return msg.reply('You cannot star your own messages, baka.');
     }
     client.registry.resolveCommand('random:star').run(msg, { id: msg.id }, true);
 });
