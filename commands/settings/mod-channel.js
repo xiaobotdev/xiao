@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 
 module.exports = class ModChannelCommand extends Command {
     constructor(client) {
@@ -8,6 +8,7 @@ module.exports = class ModChannelCommand extends Command {
             memberName: 'mod-channel',
             description: 'Sets the channel for the mod logs to be sent.',
             guildOnly: true,
+            userPermissions: ['ADMINISTRATOR'],
             args: [
                 {
                     key: 'channel',
@@ -16,11 +17,6 @@ module.exports = class ModChannelCommand extends Command {
                 }
             ]
         });
-    }
-
-    hasPermission(msg) {
-        if (!msg.member.hasPermission('ADMINISTRATOR')) return 'You do not have the `Administrator` Permission.';
-        else return true;
     }
 
     run(msg, args) {

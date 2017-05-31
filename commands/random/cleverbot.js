@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Cleverbot = require('cleverio');
 const { CLEVS_KEY, CLEVS_USER, CLEVS_NICK } = process.env;
 
@@ -32,8 +32,7 @@ module.exports = class CleverbotCommand extends Command {
         msg.channel.startTyping();
         try {
             const { response } = await this.clevs.ask(text);
-            return msg.reply(response)
-                .then(() => msg.channel.stopTyping());
+            return msg.reply(response).then(() => msg.channel.stopTyping());
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);
         }

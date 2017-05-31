@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
@@ -17,6 +17,7 @@ module.exports = class RIPCommand extends Command {
                 usages: 1,
                 duration: 15
             },
+            clientPermissions: ['ATTACH_FILES'],
             args: [
                 {
                     key: 'user',
@@ -28,9 +29,6 @@ module.exports = class RIPCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.avatarURL('png', 256);
         if (!avatarURL) return msg.say('This User has no Avatar.');
@@ -44,7 +42,7 @@ module.exports = class RIPCommand extends Command {
                 ctx.drawImage(base, 0, 0);
                 ctx.drawImage(avatar, 158, 51, 200, 200);
                 const imgData = ctx.getImageData(158, 51, 200, 200);
-                const data = imgData.data;
+                const { data } = imgData;
                 for (let i = 0; i < data.length; i += 4) {
                     const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
                     data[i] = brightness;
@@ -54,8 +52,8 @@ module.exports = class RIPCommand extends Command {
                 ctx.putImageData(imgData, 158, 51);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
-            const avatarImg = await snekfetch.get(avatarURL);
-            avatar.src = avatarImg.body;
+            const { body } = await snekfetch.get(avatarURL);
+            avatar.src = body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));

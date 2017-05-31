@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 
 module.exports = class SayCommand extends Command {
     constructor(client) {
@@ -9,6 +9,7 @@ module.exports = class SayCommand extends Command {
             memberName: 'say',
             description: 'Make XiaoBot say what you wish.',
             guildOnly: true,
+            clientPermissions: ['MANAGE_MESSAGES'],
             args: [
                 {
                     key: 'text',
@@ -20,8 +21,6 @@ module.exports = class SayCommand extends Command {
     }
 
     run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
-            return msg.say('This Command requires the `Manage Messages` Permission.');
         const { text } = args;
         msg.delete();
         return msg.say(`\u180E${text}`);

@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
@@ -11,12 +11,13 @@ module.exports = class YearsCommand extends Command {
             name: '3000-years',
             aliases: ['az'],
             group: 'avataredit',
-            memberName: '3000years',
+            memberName: '3000-years',
             description: 'It\'s been 3000 years...',
             throttling: {
                 usages: 1,
                 duration: 15
             },
+            clientPermissions: ['ATTACH_FILES'],
             args: [
                 {
                     key: 'user',
@@ -28,9 +29,6 @@ module.exports = class YearsCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.avatarURL('png', 256);
         if (!avatarURL) return msg.say('This user has no avatar.');

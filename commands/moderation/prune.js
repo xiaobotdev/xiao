@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 
 module.exports = class PruneCommand extends Command {
     constructor(client) {
@@ -12,6 +12,9 @@ module.exports = class PruneCommand extends Command {
                 usages: 1,
                 duration: 15
             },
+            clientPermissions: ['READ_MESSAGE_HISTORY', 'MANAGE_MESSAGES'],
+            userPermissions: ['MANAGE_MESSAGES'],
+            allowStaff: true,
             args: [
                 {
                     key: 'count',
@@ -26,19 +29,7 @@ module.exports = class PruneCommand extends Command {
             ]
         });
     }
-
-    hasPermission(msg) {
-        const staffRole = msg.guild.roles.get(msg.guild.settings.get('staffRole'));
-        if (staffRole && !msg.member.roles.has(staffRole.id)) return `You do not have the ${staffRole.name} role.`;
-        else if (!msg.member.hasPermission('MANAGE_MESSAGES')) return 'You do not have the `Manage Messages` Permission.';
-        else return true;
-    }
-
     async run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY'))
-            return msg.say('This Command requires the `Read Message History` Permission.');
-        if (!msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES'))
-            return msg.say('This Command requires the `Manage Messages` Permission.');
         const { count } = args;
         try {
             const messages = await msg.channel.fetchMessages({ limit: count + 1 });

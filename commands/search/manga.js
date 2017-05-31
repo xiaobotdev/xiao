@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
@@ -12,6 +12,7 @@ module.exports = class MangaCommand extends Command {
             group: 'search',
             memberName: 'manga',
             description: 'Searches My Anime List for a specified manga.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'query',
@@ -23,9 +24,6 @@ module.exports = class MangaCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { text } = await snekfetch

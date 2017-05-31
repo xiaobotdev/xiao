@@ -65,7 +65,7 @@ client.dispatcher.addInhibitor(msg => {
         return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} role may use commands.`)];
 });
 
-client.on('message', async (msg) => {
+client.on('message', (msg) => {
     if (msg.guild && msg.guild.settings.get('inviteGuard') && /(discord(\.gg\/|app\.com\/invite\/|\.me\/))/gi.test(msg.content)) {
         if (msg.author.bot ||
             msg.member.hasPermission('ADMINISTRATOR') ||
@@ -73,9 +73,8 @@ client.on('message', async (msg) => {
             msg.member.roles.has(msg.guild.settings.get('staffRole')) ||
             !msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
         if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
-        else msg.channel.send('Message could not be deleted, missing the `Manage Messages` permission.');
         return msg.reply('Invites are prohibited from being posted here.');
-    } else return;
+    }
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
@@ -84,8 +83,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
     if (!channel) return;
     if (user.id === msg.author.id) {
-        if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES'))
-            reaction.remove(user);
+        if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) reaction.remove(user);
         return msg.reply('You cannot star your own messages, baka.');
     }
     client.registry.resolveCommand('random:star').run(msg, { id: msg.id }, true);
@@ -93,8 +91,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 
 client.on('guildMemberAdd', (member) => {
     const role = member.guild.roles.get(member.guild.settings.get('joinRole'));
-    if (member.guild.me.hasPermission('MANAGE_ROLES') && role)
-        member.addRole(role).catch(() => null);
+    if (role && member.guild.me.hasPermission('MANAGE_ROLES')) member.addRole(role).catch(() => null);
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
     if (!channel) return;
     if (!channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;

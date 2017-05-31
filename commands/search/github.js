@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
@@ -11,6 +11,7 @@ module.exports = class GithubCommand extends Command {
             group: 'search',
             memberName: 'github',
             description: 'Gets repo information from GitHub.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'repo',
@@ -22,9 +23,6 @@ module.exports = class GithubCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { repo } = args;
         try {
             const { body } = await snekfetch

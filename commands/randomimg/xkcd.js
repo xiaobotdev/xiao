@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
@@ -10,6 +10,7 @@ module.exports = class XKCDCommand extends Command {
             group: 'randomimg',
             memberName: 'xkcd',
             description: 'Gets an XKCD Comic, optionally opting for today\'s.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'type',
@@ -26,9 +27,6 @@ module.exports = class XKCDCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { type } = args;
         try {
             const current = await snekfetch

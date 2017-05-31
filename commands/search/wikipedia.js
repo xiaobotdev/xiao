@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
@@ -9,6 +9,7 @@ module.exports = class WikipediaCommand extends Command {
             group: 'search',
             memberName: 'wikipedia',
             description: 'Searches Wikipedia for something.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'query',
@@ -20,9 +21,6 @@ module.exports = class WikipediaCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await snekfetch

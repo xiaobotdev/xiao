@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
@@ -12,6 +12,7 @@ module.exports = class ShardInfoCommand extends Command {
             memberName: 'shard-info',
             description: 'Gives some bot info for the Shard you specify.',
             guarded: true,
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'shard',
@@ -27,9 +28,6 @@ module.exports = class ShardInfoCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { shard } = args;
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const uptime = await this.client.shard.fetchClientValues('uptime');

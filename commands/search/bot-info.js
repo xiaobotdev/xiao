@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { DBOTS_KEY } = process.env;
@@ -10,6 +10,7 @@ module.exports = class BotSearchCommand extends Command {
             group: 'search',
             memberName: 'bot-info',
             description: 'Searches Discord Bots for info on a bot.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'bot',
@@ -21,14 +22,11 @@ module.exports = class BotSearchCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { bot } = args;
         try {
             const { body } = await snekfetch
                 .get(`https://bots.discord.pw/api/bots/${bot.id}`)
-                .set({ 'Authorization': DBOTS_KEY });
+                .set({ Authorization: DBOTS_KEY });
             const embed = new RichEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://i.imgur.com/lrKYBQi.jpg')

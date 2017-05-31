@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const moment = require('moment');
@@ -13,6 +13,7 @@ module.exports = class UserInfoCommand extends Command {
             memberName: 'user',
             description: 'Gives some info on a user.',
             guildOnly: true,
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'member',
@@ -24,9 +25,6 @@ module.exports = class UserInfoCommand extends Command {
     }
 
     run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { member } = args;
         let stat;
         let color;

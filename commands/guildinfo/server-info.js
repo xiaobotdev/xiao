@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const moment = require('moment');
@@ -11,14 +11,13 @@ module.exports = class GuildInfoCommand extends Command {
             aliases: ['guild', 'server', 'guild-info'],
             group: 'guildinfo',
             memberName: 'server-info',
-            description: 'Gives some info on the current server.',
-            guildOnly: true
+            description: 'Gives some info on the server.',
+            guildOnly: true,
+            clientPermissions: ['EMBED_LINKS']
         });
     }
 
     run(msg) {
-        if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-            return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setColor(0x00AE86)
             .setThumbnail(msg.guild.iconURL())

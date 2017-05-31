@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
@@ -20,6 +20,7 @@ module.exports = class CardCommand extends Command {
                 usages: 1,
                 duration: 15
             },
+            clientPermissions: ['ATTACH_FILES'],
             args: [
                 {
                     key: 'member',
@@ -31,16 +32,14 @@ module.exports = class CardCommand extends Command {
     }
 
     async run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-            return msg.say('This Command requires the `Attach Files` Permission.');
         const { member } = args;
+        const avatarURL = member.user.avatarURL('png', 512);
+        if (!avatarURL) return msg.say('This user has no avatar.');
         const cardID = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
         let rarity;
         if (cardID < 5000) rarity = 'C';
         else if (cardID < 8000) rarity = 'U';
         else rarity = 'R';
-        const avatarURL = member.user.avatarURL('png', 512);
-        if (!avatarURL) return msg.say('This user has no avatar.');
         try {
             const Image = Canvas.Image;
             Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OpenSans.ttf'), { family: 'Open Sans' });

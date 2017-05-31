@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { GOOGLE_KEY } = process.env;
 
@@ -9,6 +9,7 @@ module.exports = class MapCommand extends Command {
             group: 'search',
             memberName: 'map',
             description: 'Gets a map image for the location you define with the zoom level you define (1-20).',
+            clientPermissions: ['ATTACH_FILES'],
             args: [
                 {
                     key: 'zoom',
@@ -31,9 +32,6 @@ module.exports = class MapCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { zoom, query } = args;
         try {
             const { body } = await snekfetch

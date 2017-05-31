@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 
 module.exports = class DiscrimCommand extends Command {
@@ -9,6 +9,7 @@ module.exports = class DiscrimCommand extends Command {
             group: 'search',
             memberName: 'discrim',
             description: 'Searches for other users with a certain discriminator.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'discrim',
@@ -24,9 +25,6 @@ module.exports = class DiscrimCommand extends Command {
     }
 
     run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { discrim } = args;
         const users = this.client.users.filter(u => u.discriminator === discrim).map(u => u.username).sort();
         const embed = new RichEmbed()

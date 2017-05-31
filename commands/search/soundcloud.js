@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { SOUNDCLOUD_KEY } = process.env;
@@ -10,6 +10,7 @@ module.exports = class SoundCloudCommand extends Command {
             group: 'search',
             memberName: 'soundcloud',
             description: 'Searches SoundCloud for a song.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'query',
@@ -21,9 +22,6 @@ module.exports = class SoundCloudCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await snekfetch

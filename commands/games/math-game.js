@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const math = require('mathjs');
 const operations = ['+', '-', '*'];
@@ -10,6 +10,7 @@ module.exports = class MathGameCommand extends Command {
             group: 'games',
             memberName: 'math-game',
             description: 'See how fast you can answer a math problem in a given time limit.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'difficulty',
@@ -26,9 +27,6 @@ module.exports = class MathGameCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
         let value;
@@ -50,22 +48,21 @@ module.exports = class MathGameCommand extends Command {
                 break;
         }
         const expression = `${Math.floor(Math.random() * value) + 1} ${operation} ${Math.floor(Math.random() * value) + 1}`;
-        const solved = math.eval(expression).toString();
+        const answer = math.eval(expression).toString();
         const embed = new RichEmbed()
             .setTitle('You have **10** seconds to answer:')
             .setDescription(expression);
-        msg.embed(embed);
+        await msg.embed(embed);
         try {
             const collected = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
                 max: 1,
                 time: 10000,
                 errors: ['time']
             });
-            if (collected.first().content !== solved)
-                return msg.say(`Nope! The correct answer is: ${solved}.`);
-            return msg.say(`Perfect! ${solved} is the correct answer!`);
+            if (collected.first().content !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
+            return msg.say('Nice job! 10/10! You deserve some cake!');
         } catch (err) {
-            return msg.say(`Time! The correct answer is ${solved}.`);
+            return msg.say(`Time! It was ${answer}, sorry!`);
         }
     }
 };

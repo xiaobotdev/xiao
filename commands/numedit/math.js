@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const math = require('mathjs');
 
 module.exports = class MathCommand extends Command {
@@ -22,10 +22,9 @@ module.exports = class MathCommand extends Command {
         const { expression } = args;
         try {
             const solved = math.eval(expression);
-            return msg.say(solved)
-                .catch(() => msg.say('Invalid statement.'));
+            return msg.say(solved).catch(() => msg.say('Invalid Statement.'));
         } catch (err) {
-            return msg.say('Invalid statement.');
+            return msg.say('Invalid Statement.');
         }
     }
 };
