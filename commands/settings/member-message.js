@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 
 module.exports = class MemberMsgCommand extends Command {
     constructor(client) {
@@ -10,6 +10,7 @@ module.exports = class MemberMsgCommand extends Command {
             description: 'Sets the message for either join/leave logs to use.',
             details: '**Placeholders:** <user>: Username, <server>: Server Name, <mention>: A Mention of the User',
             guildOnly: true,
+            userPermissions: ['ADMINISTRATOR'],
             args: [
                 {
                     key: 'type',
@@ -31,11 +32,6 @@ module.exports = class MemberMsgCommand extends Command {
                 }
             ]
         });
-    }
-
-    hasPermission(msg) {
-        if (!msg.member.hasPermission('ADMINISTRATOR')) return 'You do not have the `Administrator` Permission.';
-        else return true;
     }
 
     run(msg, args) {

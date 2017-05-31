@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
@@ -8,14 +8,12 @@ module.exports = class TodayCommand extends Command {
             name: 'today',
             group: 'random',
             memberName: 'today',
-            description: 'Tells you what happened today in history.'
+            description: 'Tells you what happened today in history.',
+            clientPermissions: ['EMBED_LINKS']
         });
     }
 
     async run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         try {
             const { text } = await snekfetch
                 .get('http://history.muffinlabs.com/date');

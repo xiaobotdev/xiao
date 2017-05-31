@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
@@ -11,6 +11,9 @@ module.exports = class UnbanCommand extends Command {
             memberName: 'unban',
             description: 'Unbans a user and logs the unban to the mod logs.',
             guildOnly: true,
+            clientPermissions: ['BAN_MEMBERS'],
+            userPermissions: ['BAN_MEMBERS'],
+            allowStaff: true,
             args: [
                 {
                     key: 'id',
@@ -30,22 +33,13 @@ module.exports = class UnbanCommand extends Command {
         });
     }
 
-    hasPermission(msg) {
-        const staffRole = msg.guild.roles.get(msg.guild.settings.get('staffRole'));
-        if (staffRole && !msg.member.roles.has(staffRole.id)) return `You do not have the ${staffRole.name} role.`;
-        else if (!msg.member.hasPermission('BAN_MEMBERS')) return 'You do not have the `Ban Members` Permission.';
-        else return true;
-    }
-
     async run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).has('BAN_MEMBERS'))
-            return msg.say('This Command requires the `Ban Members` Permission.');
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
-        if (!modlogs) return msg.say('This Command requires a channel set with the `modchannel` command.');
+        if (!modlogs) return msg.say('This Command requires a channel set with the `mod-channel` command.');
         if (!modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES'))
-            return msg.say('This Command requires the `Send Messages` Permission for the Mod Log Channel.');
+            return msg.say('This Command requires the `SEND_MESSAGES` Permission for the Mod Log Channel.');
         if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS'))
-            return msg.say('This Command requires the `Embed Links` Permission.');
+            return msg.say('This Command requires the `EMBED_LINKS` Permission for the Mod Log Channel.');
         const { id, reason } = args;
         const bans = await msg.guild.fetchBans();
         if (!bans.has(id)) return msg.say('This ID is not in the Guild Banlist.');
@@ -62,7 +56,7 @@ module.exports = class UnbanCommand extends Command {
                     **Action:** Unban
                     **Reason:** ${reason}
                 `);
-            await modlogs.send({ embed });
+            modlogs.send({ embed });
             return null;
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);

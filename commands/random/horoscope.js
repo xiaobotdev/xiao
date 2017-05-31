@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const signs = require('../../assets/json/horoscope');
@@ -11,6 +11,7 @@ module.exports = class HoroscopeCommand extends Command {
             memberName: 'horoscope',
             description: 'Gives the horoscope for today for a particular sign.',
             details: `**Signs:** ${signs.join(', ')}`,
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'sign',
@@ -27,9 +28,6 @@ module.exports = class HoroscopeCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { sign } = args;
         try {
             const { text } = await snekfetch

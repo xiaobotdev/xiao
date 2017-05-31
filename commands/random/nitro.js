@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
@@ -8,14 +8,12 @@ module.exports = class NitroCommand extends Command {
             name: 'nitro',
             group: 'random',
             memberName: 'nitro',
-            description: 'Sends a "This Message Can Only be viewed by Nitro Members" message.'
+            description: 'Sends a "This Message Can Only be viewed by Nitro Members" message.',
+            clientPermissions: ['EMBED_LINKS']
         });
     }
 
     run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const embed = new RichEmbed()
             .setAuthor('Discord Nitro')
             .setThumbnail('https://i.imgur.com/wzhMMnl.jpg')

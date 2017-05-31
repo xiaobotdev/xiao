@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 
 module.exports = class InviteGuardCommand extends Command {
     constructor(client) {
@@ -7,13 +7,9 @@ module.exports = class InviteGuardCommand extends Command {
             group: 'settings',
             memberName: 'invite-guard',
             description: 'Configures auto-delete for invites.',
-            guildOnly: true
+            guildOnly: true,
+            userPermissions: ['ADMINISTRATOR']
         });
-    }
-
-    hasPermission(msg) {
-        if (!msg.member.hasPermission('ADMINISTRATOR')) return 'You do not have the `Administrator` Permission.';
-        else return true;
     }
 
     run(msg) {

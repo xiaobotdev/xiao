@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 
 module.exports = class PingCommand extends Command {
@@ -16,9 +16,8 @@ module.exports = class PingCommand extends Command {
     async run(msg) {
         const message = await msg.say('Pinging...');
         return message.edit(stripIndents`
-            :ping_pong: Pong!
-            **Message Ping:** ${Math.round(message.createdTimestamp - msg.createdTimestamp)}ms
-            **Heartbeat Ping:** ${Math.round(this.client.ping)}ms
+            :ping_pong: Pong! \`${Math.round(message.createdTimestamp - msg.createdTimestamp)}ms\`
+            Heartbeat: \`${Math.round(this.client.ping)}ms\`
         `);
     }
 };

@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 
 module.exports = class KonachanCommand extends Command {
@@ -8,6 +8,7 @@ module.exports = class KonachanCommand extends Command {
             group: 'search',
             memberName: 'konachan',
             description: 'Sends an image from Konachan, with optional query.',
+            nsfw: true,
             args: [
                 {
                     key: 'query',
@@ -20,7 +21,6 @@ module.exports = class KonachanCommand extends Command {
     }
 
     async run(msg, args) {
-        if (!msg.channel.nsfw) return msg.say('This Command can only be used in NSFW Channels.');
         const { query } = args;
         try {
             const { body } = await snekfetch

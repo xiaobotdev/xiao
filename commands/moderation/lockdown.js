@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 
 module.exports = class LockdownCommand extends Command {
@@ -9,6 +9,9 @@ module.exports = class LockdownCommand extends Command {
             memberName: 'lockdown',
             description: 'Locks down the current channel or removes a lockdown, which prevents non-administrator members from speaking.',
             guildOnly: true,
+            clientPermissions: ['ADMINISTRATOR'],
+            userPermissions: ['ADMINISTRATOR'],
+            allowStaff: true,
             args: [
                 {
                     key: 'type',
@@ -25,16 +28,7 @@ module.exports = class LockdownCommand extends Command {
         });
     }
 
-    hasPermission(msg) {
-        const staffRole = msg.guild.roles.get(msg.guild.settings.get('staffRole'));
-        if (staffRole && !msg.member.roles.has(staffRole.id)) return `You do not have the ${staffRole.name} role.`;
-        else if (!msg.member.hasPermission('ADMINISTRATOR')) return 'You do not have the `Administrator` Permission.';
-        else return true;
-    }
-
     async run(msg, args) {
-        if (!msg.channel.permissionsFor(this.client.user).has('ADMINISTRATOR'))
-            return msg.say('This Command requires the `Administrator` Permission.');
         const { type } = args;
         if (type === 'start') {
             try {

@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const sides = ['on nothing', 'on NaN', 'on 0', 'in the air', 'on null'];
 
 module.exports = class QuantumCoinCommand extends Command {

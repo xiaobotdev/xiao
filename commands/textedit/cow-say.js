@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { stripIndent } = require('common-tags');
 
 module.exports = class CowsayCommand extends Command {

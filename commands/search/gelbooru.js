@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
 const xml = promisifyAll(require('xml2js'));
@@ -10,6 +10,7 @@ module.exports = class GelbooruCommand extends Command {
             group: 'search',
             memberName: 'gelbooru',
             description: 'Sends an image from Gelbooru, with query.',
+            nsfw: true,
             args: [
                 {
                     key: 'query',
@@ -21,7 +22,6 @@ module.exports = class GelbooruCommand extends Command {
     }
 
     async run(msg, args) {
-        if (!msg.channel.nsfw) return msg.say('This Command can only be used in NSFW Channels.');
         const { query } = args;
         try {
             const { text } = await snekfetch

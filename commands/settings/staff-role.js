@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 
 module.exports = class StaffRoleCommand extends Command {
     constructor(client) {
@@ -8,6 +8,7 @@ module.exports = class StaffRoleCommand extends Command {
             memberName: 'staff-role',
             description: 'Sets the role that can use Mod Commands without perms.',
             guildOnly: true,
+            userPermissions: ['ADMINISTRATOR'],
             args: [
                 {
                     key: 'role',
@@ -16,11 +17,6 @@ module.exports = class StaffRoleCommand extends Command {
                 }
             ]
         });
-    }
-
-    hasPermission(msg) {
-        if (!msg.member.hasPermission('ADMINISTRATOR')) return 'You do not have the `Administrator` Permission.';
-        else return true;
     }
 
     run(msg, args) {

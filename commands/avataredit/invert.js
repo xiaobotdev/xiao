@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 
@@ -13,6 +13,7 @@ module.exports = class InvertCommand extends Command {
                 usages: 1,
                 duration: 15
             },
+            clientPermissions: ['ATTACH_FILES'],
             args: [
                 {
                     key: 'user',
@@ -24,9 +25,6 @@ module.exports = class InvertCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.avatarURL('png', 256);
         if (!avatarURL) return msg.say('This user has no avatar.');
@@ -38,7 +36,7 @@ module.exports = class InvertCommand extends Command {
             const generate = () => {
                 ctx.drawImage(avatar, 0, 0, 256, 256);
                 const imgData = ctx.getImageData(0, 0, 256, 256);
-                const data = imgData.data;
+                const { data } = imgData;
                 for (let i = 0; i < data.length; i += 4) {
                     data[i] = 255 - data[i];
                     data[i + 1] = 255 - data[i + 1];
@@ -46,8 +44,8 @@ module.exports = class InvertCommand extends Command {
                 }
                 ctx.putImageData(imgData, 0, 0);
             };
-            const avatarImg = await snekfetch.get(avatarURL);
-            avatar.src = avatarImg.body;
+            const { body } = await snekfetch.get(avatarURL);
+            avatar.src = body;
             generate();
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'invert.png' }] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));

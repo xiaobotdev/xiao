@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
@@ -16,6 +16,7 @@ module.exports = class SteamCardCommand extends Command {
                 usages: 1,
                 duration: 15
             },
+            clientPermissions: ['ATTACH_FILES'],
             args: [
                 {
                     key: 'user',
@@ -27,11 +28,7 @@ module.exports = class SteamCardCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
-        const username = msg.guild ? (msg.guild.member(user) ? msg.guild.member(user).displayName : user.username) : user.username;
         const avatarURL = user.avatarURL('png', 512);
         if (!avatarURL) return msg.say('This user has no avatar.');
         try {
@@ -47,13 +44,13 @@ module.exports = class SteamCardCommand extends Command {
                 ctx.drawImage(avatar, 25, 25, 450, 450);
                 ctx.drawImage(base, 0, 0);
                 ctx.font = '30px Open Sans';
-			    ctx.fillText(username, 35, 48);
+			    ctx.fillText(user.username, 35, 48);
             };
             base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
             const { body } = await snekfetch.get(avatarURL);
             avatar.src = body;
             generate();
-            return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] })
+            return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam.png' }] })
                 .catch(err => msg.say(`${err.name}: ${err.message}`));
         } catch (err) {
             return msg.say(`${err.name}: ${err.message}`);

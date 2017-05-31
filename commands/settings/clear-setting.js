@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const settings = require('../../assets/json/clear-setting');
 
 module.exports = class ClearSettingCommand extends Command {
@@ -9,6 +9,7 @@ module.exports = class ClearSettingCommand extends Command {
             memberName: 'clear-setting',
             description: 'Removes a custom setting from your server.',
             guildOnly: true,
+            userPermissions: ['ADMINISTRATOR'],
             args: [
                 {
                     key: 'setting',
@@ -21,11 +22,6 @@ module.exports = class ClearSettingCommand extends Command {
                 }
             ]
         });
-    }
-
-    hasPermission(msg) {
-        if (!msg.member.hasPermission('ADMINISTRATOR')) return 'You do not have the `Administrator` Permission.';
-        else return true;
     }
 
     run(msg, args) {

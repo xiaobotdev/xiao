@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const moment = require('moment');
 
@@ -24,7 +24,7 @@ module.exports = class StarCommand extends Command {
     async run(msg, args, reaction) {
         const { id } = args;
         const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
-        if (!channel || !channel.permissionsFor(this.client.user).has('EMBED_LINKS')) return null;
+        if (!channel || !channel.permissionsFor(this.client.user).has(['SEND_MESSAGES', 'EMBED_LINKS'])) return null;
         if (this.starred.includes(id)) return null;
         try {
             const message = await msg.channel.fetchMessage(id);

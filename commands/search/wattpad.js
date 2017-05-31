@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
@@ -11,6 +11,7 @@ module.exports = class WattpadCommand extends Command {
             group: 'search',
             memberName: 'wattpad',
             description: 'Searches Wattpad for a book.',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'query',
@@ -22,9 +23,6 @@ module.exports = class WattpadCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { query } = args;
         try {
             const { body } = await snekfetch
@@ -33,7 +31,7 @@ module.exports = class WattpadCommand extends Command {
                     query,
                     limit: 1
                 })
-                .set({ 'Authorization': `Basic ${WATTPAD_KEY}` });
+                .set({ Authorization: `Basic ${WATTPAD_KEY}` });
             if (!body.stories.length) throw new Error('No Results.');
             const embed = new RichEmbed()
                 .setColor(0xF89C34)

@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const { oneLine } = require('common-tags');
 const { version } = require('../../package');
@@ -13,14 +13,12 @@ module.exports = class InfoCommand extends Command {
             group: 'util',
             memberName: 'info',
             description: 'Gives some bot info.',
-            guarded: true
+            guarded: true,
+            clientPermissions: ['EMBED_LINKS']
         });
     }
 
     async run(msg) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const embed = new RichEmbed()

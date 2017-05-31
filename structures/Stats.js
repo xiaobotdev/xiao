@@ -5,7 +5,7 @@ class Stats {
     static dBots(server_count, id) {
         snekfetch
             .post(`https://bots.discord.pw/api/bots/${id}/stats`)
-            .set({ 'Authorization': DBOTS_KEY })
+            .set({ Authorization: DBOTS_KEY })
             .send({ server_count })
             .then(() => console.log('[Carbon] Successfully posted to Carbon.'))
             .catch(err => console.error(`[Carbon] Failed to post to Carbon. ${err}`));

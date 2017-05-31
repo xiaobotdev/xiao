@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const codes = require('../../assets/json/translate');
@@ -12,6 +12,7 @@ module.exports = class TranslateCommand extends Command {
             memberName: 'translate',
             description: 'Translates text to a specified language.',
             details: '**Codes:** https://tech.yandex.com/translate/doc/dg/concepts/api-overview-docpage/#languages',
+            clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'text',
@@ -44,9 +45,6 @@ module.exports = class TranslateCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('EMBED_LINKS'))
-                return msg.say('This Command requires the `Embed Links` Permission.');
         const { text, to, from } = args;
         try {
             const { body } = await snekfetch

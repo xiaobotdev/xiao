@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 
@@ -14,6 +14,7 @@ module.exports = class GreyscaleCommand extends Command {
                 usages: 1,
                 duration: 15
             },
+            clientPermissions: ['ATTACH_FILES'],
             args: [
                 {
                     key: 'user',
@@ -25,9 +26,6 @@ module.exports = class GreyscaleCommand extends Command {
     }
 
     async run(msg, args) {
-        if (msg.channel.type !== 'dm')
-            if (!msg.channel.permissionsFor(this.client.user).has('ATTACH_FILES'))
-                return msg.say('This Command requires the `Attach Files` Permission.');
         const { user } = args;
         const avatarURL = user.avatarURL('png', 256);
         if (!avatarURL) return msg.say('This user has no avatar.');
@@ -39,7 +37,7 @@ module.exports = class GreyscaleCommand extends Command {
             const generate = () => {
                 ctx.drawImage(avatar, 0, 0, 256, 256);
                 const imgData = ctx.getImageData(0, 0, 256, 256);
-                const data = imgData.data;
+                const { data } = imgData;
                 for (let i = 0; i < data.length; i += 4) {
                     const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
                     data[i] = brightness;
