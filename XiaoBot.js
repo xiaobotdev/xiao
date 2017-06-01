@@ -53,8 +53,11 @@ client.on('warn', console.warn);
 client.on('commandError', (command, err) => console.error(command.name, err));
 
 client.dispatcher.addInhibitor(msg => {
+    if (msg.channel.type === 'dm') {
+        return false;
+    }
     const role = msg.guild.settings.get('singleRole');
-    if (!msg.guild || !msg.guild.roles.has(role) || msg.member.hasPermission('ADMINISTRATOR')) {
+    if (!msg.guild.roles.has(role) || msg.member.hasPermission('ADMINISTRATOR')) {
         return false;
     }
     if (!msg.member.roles.has(role)) {
