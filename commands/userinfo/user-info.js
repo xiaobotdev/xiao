@@ -1,7 +1,18 @@
 const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const moment = require('moment');
-const { statuses, colors } = require('../../assets/json/user-info');
+const statuses = {
+    online: "<:online:313956277808005120> Online",
+    idle: "<:away:313956277220802560> Idle",
+    dnd: "<:dnd:313956276893646850> Do Not Disturb",
+    offline: "<:offline:313956277237710868> Offline"
+};
+const colors = {
+    online: 0x00AE86,
+    idle: 0xFFFF00,
+    dnd: 0xFF0000,
+    offline: 0x808080
+};
 
 module.exports = class UserInfoCommand extends Command {
     constructor(client) {
