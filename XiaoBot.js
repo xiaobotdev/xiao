@@ -1,6 +1,6 @@
 const { TOKEN, OWNER, PREFIX, INVITE } = process.env;
 const path = require('path');
-const CommandoClient = require('./structures/Client');
+const CommandoClient = require('./structures/CommandoClient');
 const client = new CommandoClient({
     commandPrefix: PREFIX,
     owner: OWNER,
