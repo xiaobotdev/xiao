@@ -11,14 +11,15 @@ module.exports = class AvatarCommand extends Command {
                 {
                     key: 'user',
                     prompt: 'Which user would you like to get the avatar of?',
-                    type: 'user'
+                    type: 'user',
+                    default: ''
                 }
             ]
         });
     }
 
     run(msg, args) {
-        const { user } = args;
+        const user = args.user || msg.author;
         return msg.say(user.avatarURL('webp', 2048) || user.displayAvatarURL);
     }
 };

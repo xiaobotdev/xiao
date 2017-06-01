@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 
 module.exports = class HighFivesCommand extends Command {
     constructor(client) {
@@ -9,16 +10,19 @@ module.exports = class HighFivesCommand extends Command {
             description: 'High Fives something/someone.',
             args: [
                 {
-                    key: 'thing',
-                    prompt: 'What do you want to roleplay with?',
-                    type: 'string'
+                    key: 'user',
+                    prompt: 'What user do you want to roleplay with?',
+                    type: 'user'
                 }
             ]
         });
     }
 
     run(msg, args) {
-        const { thing } = args;
-        return msg.say(`${msg.author} *high-fives* ${thing}`);
+        const { user } = args;
+        return msg.say(stripIndents`
+            **${msg.author.username}** *high-fives* **${user.username}**
+            https://i.imgur.com/7BJ6gfM.gif
+        `);
     }
 };

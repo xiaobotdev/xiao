@@ -13,11 +13,14 @@ module.exports = class ZalgoCommand extends Command {
                     key: 'text',
                     prompt: 'What text would you like to convert to zalgo?',
                     type: 'string',
-                    validate: text => {
-                        if (text.length < 500) return true;
-                        return 'Invalid Text. Text must be under 500 characters.';
+                    validate: (text) => {
+                        if (text.length < 500) {
+                            return true;
+                        } else {
+                            return 'Invalid Text. Text must be under 500 characters.';
+                        }
                     },
-                    parse: text => zalgo(text)
+                    parse: (text) => zalgo(text)
                 }
             ]
         });

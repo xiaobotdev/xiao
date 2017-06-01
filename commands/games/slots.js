@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const slotThing = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
+const slots = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
 
 module.exports = class SlotsCommand extends Command {
     constructor(client) {
@@ -13,17 +13,19 @@ module.exports = class SlotsCommand extends Command {
     }
 
     run(msg) {
-        const slotOne = slotThing[Math.floor(Math.random() * slotThing.length)];
-        const slotTwo = slotThing[Math.floor(Math.random() * slotThing.length)];
-        const slotThree = slotThing[Math.floor(Math.random() * slotThing.length)];
-        if (slotOne === slotTwo && slotOne === slotThree)
+        const slotOne = slots[Math.floor(Math.random() * slots.length)];
+        const slotTwo = slots[Math.floor(Math.random() * slots.length)];
+        const slotThree = slots[Math.floor(Math.random() * slots.length)];
+        if (slotOne === slotTwo && slotOne === slotThree) {
             return msg.say(stripIndents`
                 ${slotOne}|${slotTwo}|${slotThree}
                 Wow! You won! Great job... er... luck!
             `);
-        return msg.say(stripIndents`
-            ${slotOne}|${slotTwo}|${slotThree}
-            Aww... You lost... Guess it's just bad luck, huh?
-        `);
+        } else {
+            return msg.say(stripIndents`
+                ${slotOne}|${slotTwo}|${slotThree}
+                Aww... You lost... Guess it's just bad luck, huh?
+            `);
+        }
     }
 };

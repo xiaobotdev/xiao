@@ -1,0 +1,21 @@
+{
+    "operations": [
+        "+",
+        "-",
+        "*"
+    ],
+    "difficulties": [
+        "easy",
+        "medium",
+        "hard",
+        "extreme",
+        "impossible"
+    ],
+    "maxValues": {
+        "easy": 10,
+        "medium": 50,
+        "hard": 100,
+        "extreme": 1000,
+        "impossible": 10000
+    }
+}

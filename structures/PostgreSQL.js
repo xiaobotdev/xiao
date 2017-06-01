@@ -9,14 +9,14 @@ class Database {
 
 	static start() {
 		database.authenticate()
-			.then(() => console.log('[Database] Connection has been established successfully.'))
-			.then(() => console.log('[Database] Synchronizing...'))
+			.then(() => console.log('[DATABASE] Connection has been established successfully.'))
+			.then(() => console.log('[DATABASE] Synchronizing...'))
 			.then(() => database.sync()
-				.then(() => console.log('[Database] Synchronizing complete!'))
-				.catch(err => console.error(`[Database] Error synchronizing: ${err}`))
+				.then(() => console.log('[DATABASE] Synchronizing complete!'))
+				.catch(err => console.error(`[DATABASE] Error synchronizing: ${err}`))
 			)
-			.then(() => console.log('[Database] Ready!'))
-			.catch(err => console.error(`[Database] Unable to connect: ${err}`));
+			.then(() => console.log('[DATABASE] Ready!'))
+			.catch(err => console.error(`[DATABASE] Unable to connect: ${err}`));
 	}
 }
 

@@ -21,10 +21,10 @@ module.exports = class MathCommand extends Command {
     run(msg, args) {
         const { expression } = args;
         try {
-            const solved = math.eval(expression);
-            return msg.say(solved).catch(() => msg.say('Invalid Statement.'));
+            const solved = math.eval(expression).toString();
+            return msg.say(solved);
         } catch (err) {
-            return msg.say('Invalid Statement.');
+            return msg.say('Invalid Statement');
         }
     }
 };

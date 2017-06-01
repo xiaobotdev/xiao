@@ -23,7 +23,6 @@ module.exports = class GelbooruCommand extends Command {
 
     async run(msg, args) {
         const { query } = args;
-        try {
             const { text } = await snekfetch
                 .get('https://gelbooru.com/index.php')
                 .query({
@@ -34,10 +33,9 @@ module.exports = class GelbooruCommand extends Command {
                     limit: 1
                 });
             const { posts } = await xml.parseStringAsync(text);
-            if (posts.$.count === '0') throw new Error('No Results.');
+            if (posts.$.count === '0') {
+                return msg.say('No Results.');
+            }
             return msg.say(`Result for ${query}: https:${posts.post[0].$.file_url}`);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
     }
 };

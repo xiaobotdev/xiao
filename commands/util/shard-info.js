@@ -18,9 +18,12 @@ module.exports = class ShardInfoCommand extends Command {
                     key: 'shard',
                     prompt: 'Which Shard would you like to get data for?',
                     type: 'integer',
-                    validate: shard => {
-                        if (shard < this.client.options.shardCount && shard > -1) return true;
-                        return 'Invalid Shard ID';
+                    validate: (shard) => {
+                        if (shard < this.client.options.shardCount && shard > -1) {
+                            return true;
+                        } else {
+                            return 'Invalid Shard ID';
+                        }
                     }
                 }
             ]
@@ -35,11 +38,11 @@ module.exports = class ShardInfoCommand extends Command {
         const embed = new RichEmbed()
             .setTitle(`Shard ${shard}`)
             .setColor(0x00AE86)
-            .addField('Servers',
+            .addField('❯ Servers',
                 guilds[shard], true)
-            .addField('Memory Usage',
+            .addField('❯ Memory Usage',
                 `${memory[shard]}MB`, true)
-            .addField('Uptime',
+            .addField('❯ Uptime',
                 moment.duration(uptime[shard]).format('d[d]h[h]m[m]s[s]'), true);
         return msg.embed(embed);
     }

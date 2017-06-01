@@ -29,12 +29,7 @@ module.exports = class CleverbotCommand extends Command {
 
     async run(msg, args) {
         const { text } = args;
-        msg.channel.startTyping();
-        try {
-            const { response } = await this.clevs.ask(text);
-            return msg.reply(response).then(() => msg.channel.stopTyping());
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
+        const { response } = await this.clevs.ask(text);
+        return msg.reply(response);
     }
 };

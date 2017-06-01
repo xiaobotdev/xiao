@@ -12,7 +12,7 @@ module.exports = class RepeatCommand extends Command {
                     key: 'text',
                     prompt: 'What text would you like to repeat over and over and over and over?',
                     type: 'string',
-                    parse: text => text.repeat(2000).substr(0, 1999)
+                    parse: (text) => text.repeat(2000).substr(0, 1999)
                 }
             ]
         });

@@ -21,20 +21,18 @@ module.exports = class NeopetCommand extends Command {
 
     async run(msg, args) {
         const { query } = args;
-        try {
-            const { text } = await snekfetch
-                .get('http://www.sunnyneo.com/petimagefinder.php')
-                .query({
-                    name: query,
-                    size: 5,
-                    mood: 1
-                });
-            const $ = cheerio.load(text);
-            const link = $('textarea').first().text();
-            if (!link.includes('cp')) throw new Error('Invalid Pet Name.');
-            return msg.say(link);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
+        const { text } = await snekfetch
+            .get('http://www.sunnyneo.com/petimagefinder.php')
+            .query({
+                name: query,
+                size: 5,
+                mood: 1
+            });
+        const $ = cheerio.load(text);
+        const link = $('textarea').first().text();
+        if (!link.includes('cp')) {
+            return msg.say('Invalid Pet Name.');
         }
+        return msg.say(link);
     }
 };

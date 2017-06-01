@@ -22,17 +22,15 @@ module.exports = class KonachanCommand extends Command {
 
     async run(msg, args) {
         const { query } = args;
-        try {
-            const { body } = await snekfetch
-                .get('https://konachan.net/post.json')
-                .query({
-                    tags: `${query ? `${query} ` : ''}order:random`,
-                    limit: 1
-                });
-            if (!body.length) throw new Error('No Results.');
-            return msg.say(`${query ? `Result for ${query}:` : 'Random Image:'} https:${body[0].file_url}`);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
+        const { body } = await snekfetch
+            .get('https://konachan.net/post.json')
+            .query({
+                tags: `${query ? `${query} ` : ''}order:random`,
+                limit: 1
+            });
+        if (!body.length) {
+            return msg.say('No Results.');
         }
+        return msg.say(`${query ? `Result for ${query}:` : 'Random Image:'} https:${body[0].file_url}`);
     }
 };

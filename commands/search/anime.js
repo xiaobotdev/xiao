@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { cleanXML } = require('../../util/Util');
 const { promisifyAll } = require('tsubaki');
 const xml = promisifyAll(require('xml2js'));
 const { ANIMELIST_LOGIN } = process.env;
@@ -32,14 +33,7 @@ module.exports = class AnimeCommand extends Command {
                     q: query
                 });
             const { anime } = await xml.parseStringAsync(text);
-            const synopsis = anime.entry[0].synopsis[0].substr(0, 2000)
-                .replace(/(<br \/>)/g, '')
-                .replace(/(&#039;)/g, '\'')
-                .replace(/(&mdash;)/g, '—')
-                .replace(/(&#034;)/g, '"')
-                .replace(/(&#038;)/g, '&')
-                .replace(/(&quot;)/g, '"')
-                .replace(/(\[i\]|\[\/i\])/g, '*');
+            const synopsis = cleanXML(anime.entry[0].synopsis[0].substr(0, 2000));
             const embed = new RichEmbed()
                 .setColor(0x2D54A2)
                 .setAuthor('My Anime List', 'https://i.imgur.com/R4bmNFz.png')
@@ -47,17 +41,17 @@ module.exports = class AnimeCommand extends Command {
                 .setThumbnail(anime.entry[0].image[0])
                 .setTitle(`${anime.entry[0].title[0]} (English: ${anime.entry[0].english[0] || 'N/A'})`)
                 .setDescription(synopsis)
-                .addField('Type',
+                .addField('❯ Type',
                     `${anime.entry[0].type[0]} - ${anime.entry[0].status[0]}`, true)
-                .addField('Episodes',
+                .addField('❯ Episodes',
                     anime.entry[0].episodes[0], true)
-                .addField('Start Date',
+                .addField('❯ Start Date',
                     anime.entry[0].start_date[0], true)
-                .addField('End Date',
+                .addField('❯ End Date',
                     anime.entry[0].end_date[0], true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('Error: No Results.');
+            return msg.say('No Results.');
         }
     }
 };

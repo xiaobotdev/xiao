@@ -16,7 +16,7 @@ module.exports = class DefineCommand extends Command {
                     key: 'query',
                     prompt: 'What would you like to define?',
                     type: 'string',
-                    parse: query => encodeURIComponent(query)
+                    parse: (query) => encodeURIComponent(query)
                 }
             ]
         });
@@ -24,23 +24,21 @@ module.exports = class DefineCommand extends Command {
 
     async run(msg, args) {
         const { query } = args;
-        try {
-            const { body } = await snekfetch
-                .get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions`)
-                .query({
-                    limit: 1,
-                    includeRelated: false,
-                    useCanonical: false,
-                    api_key: WORDNIK_KEY
-                });
-            if (!body.length) throw new Error('No Results.');
-            const embed = new RichEmbed()
-                .setColor(0x9797FF)
-                .setTitle(body[0].word)
-                .setDescription(body[0].text);
-            return msg.embed(embed);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
+        const { body } = await snekfetch
+            .get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions`)
+            .query({
+                limit: 1,
+                includeRelated: false,
+                useCanonical: false,
+                api_key: WORDNIK_KEY
+            });
+        if (!body.length) {
+            return msg.say('No Results.');
         }
+        const embed = new RichEmbed()
+            .setColor(0x9797FF)
+            .setTitle(body[0].word)
+            .setDescription(body[0].text);
+        return msg.embed(embed);
     }
 };

@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "21.4.7",
+  "version": "22.0.0",
   "description": "A Discord Bot",
   "main": "Shard.js",
   "scripts": {
@@ -23,12 +23,12 @@
     "postgresql",
     "cleverbot"
   ],
-  "author": "dragonfire535",
+  "author": "dragonfire535 <danielbodendahl@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dragonfire535/xiaobot/issues"
   },
-  "homepage": "http://dragonfire535.weebly.com/xiaobot.html",
+  "homepage": "https://github.com/dragonfire535/xiaobot#readme",
   "engines": {
     "node": "8.0.0"
   },
