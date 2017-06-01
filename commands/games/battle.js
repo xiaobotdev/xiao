@@ -49,8 +49,8 @@ module.exports = class BattleCommand extends Command {
                 if (guard) guard = false;
             };
             const dealDamage = (damage) => {
-                if (userTurn) userHP += damage;
-                else oppoHP += damage;
+                if (userTurn) userHP -= damage;
+                else oppoHP -= damage;
             };
             while (userHP > 0 && oppoHP > 0) { // eslint-disable-line no-unmodified-loop-condition
                 const username = userTurn ? msg.author.username : opponent.username;
