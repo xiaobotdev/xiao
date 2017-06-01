@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
-const { oneLine } = require('common-tags');
 const { version } = require('../../package');
 const moment = require('moment');
 require('moment-duration-format');
@@ -23,27 +22,24 @@ module.exports = class InfoCommand extends Command {
         const memory = await this.client.shard.broadcastEval('Math.round(process.memoryUsage().heapUsed / 1024 / 1024)');
         const embed = new RichEmbed()
             .setColor(0x00AE86)
-            .setFooter(oneLine`
-                ©2017 dragonfire535#8081 |
-                Created ${moment.duration(Date.now() - this.client.user.createdTimestamp).format('y[ years], M[ months], w[ weeks, and ]d[ days]')} ago!
-            `)
-            .addField('Servers',
+            .setFooter('©2017 dragonfire535#8081')
+            .addField('❯ Servers',
                 guilds.reduce((prev, val) => prev + val, 0), true)
-            .addField('Shards',
+            .addField('❯ Shards',
                 this.client.options.shardCount, true)
-            .addField('Commands',
+            .addField('❯ Commands',
                 this.client.registry.commands.size, true)
-            .addField('Source Code',
+            .addField('❯ Source Code',
                 '[View Here](https://github.com/dragonfire535/xiaobot)', true)
-            .addField('Memory Usage',
+            .addField('❯ Memory Usage',
                 `${memory.reduce((prev, val) => prev + val, 0)}MB`, true)
-            .addField('Uptime',
+            .addField('❯ Uptime',
                 moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
-            .addField('Version',
+            .addField('❯ Version',
                 `v${version}`, true)
-            .addField('Node Version',
+            .addField('❯ Node Version',
                 process.version, true)
-            .addField('Library',
+            .addField('❯ Library',
                 '[discord.js](https://github.com/hydrabolt/discord.js)[-commando](https://github.com/Gawdl3y/discord.js-commando)', true);
         return msg.embed(embed);
     }

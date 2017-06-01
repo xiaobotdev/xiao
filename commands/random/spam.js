@@ -13,7 +13,6 @@ module.exports = class SpamCommand extends Command {
     }
 
     run(msg) {
-        return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'spam.png')] })
-            .catch(err => msg.say(`${err.name}: ${err.message}`));
+        return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'spam.png')] });
     }
 };

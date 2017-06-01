@@ -15,7 +15,6 @@ module.exports = class XiaoCommand extends Command {
 
     run(msg) {
         const xiao = Math.floor(Math.random() * 10) + 1;
-        return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', `xiao${xiao}.png`)] })
-            .catch(err => msg.say(`${err.name}: ${err.message}`));
+        return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', `xiao${xiao}.png`)] });
     }
 };

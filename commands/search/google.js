@@ -23,19 +23,17 @@ module.exports = class GoogleCommand extends Command {
     async run(msg, args) {
         const { query } = args;
         const message = await msg.say('Searching...');
-        try {
-            const { text } = await snekfetch
-                .get('https://www.google.com/search')
-                .query({
-                    q: query
-                });
-            const $ = cheerio.load(text);
-            let href = $('.r').first().find('a').first().attr('href');
-            if (!href) throw new Error('No Results.');
-            href = querystring.parse(href.replace('/url?', ''));
-            return message.edit(href.q);
-        } catch (err) {
-            return message.edit(`${err.name}: ${err.message}`);
+        const { text } = await snekfetch
+            .get('https://www.google.com/search')
+            .query({
+                q: query
+            });
+        const $ = cheerio.load(text);
+        let href = $('.r').first().find('a').first().attr('href');
+        if (!href) {
+            return msg.say('No Results.');
         }
+        href = querystring.parse(href.replace('/url?', ''));
+        return message.edit(href.q);
     }
 };

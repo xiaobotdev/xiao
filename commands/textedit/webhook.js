@@ -23,20 +23,12 @@ module.exports = class WebhookCommand extends Command {
         });
     }
 
-    hasPermission(msg) {
-        return this.client.isOwner(msg.author);
-    }
-
     async run(msg, args) {
         const { content } = args;
-        try {
-            msg.delete();
-            await snekfetch
-                .post(WEBHOOK_URL)
-                .send({ content });
-            return null;
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
+        msg.delete();
+        await snekfetch
+            .post(WEBHOOK_URL)
+            .send({ content });
+        return null;
     }
 };

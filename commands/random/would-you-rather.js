@@ -15,17 +15,13 @@ module.exports = class WouldYouRatherCommand extends Command {
     }
 
     async run(msg) {
-        try {
-            const { body } = await snekfetch
-                .get('http://www.rrrather.com/botapi');
-            const embed = new RichEmbed()
-                .setTitle(`${body.title}...`)
-                .setURL(body.link)
-                .setColor(0x9797FF)
-                .setDescription(`${body.choicea} OR ${body.choiceb}?`);
-            return msg.embed(embed);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
+        const { body } = await snekfetch
+            .get('http://www.rrrather.com/botapi');
+        const embed = new RichEmbed()
+            .setTitle(`${body.title}...`)
+            .setURL(body.link)
+            .setColor(0x9797FF)
+            .setDescription(`${body.choicea} OR ${body.choiceb}?`);
+        return msg.embed(embed);
     }
 };

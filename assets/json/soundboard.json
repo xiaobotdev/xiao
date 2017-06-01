@@ -3,20 +3,14 @@
         "airhorn",
         "cat",
         "dun dun dun",
-        "mario death",
         "pikachu",
-        "pokemon center",
-        "space",
-        "zelda chest"
+        "space"
     ],
     "paths": {
         "airhorn": "airhorn.mp3",
         "cat": "cat.mp3",
         "dun dun dun": "dun-dun-dun.mp3",
-        "mario death": "mario-death.mp3",
         "pikachu": "pikachu.mp3",
-        "pokemon center": "pokemon-center.mp3",
-        "space": "space.mp3",
-        "zelda chest": "zelda-chest.mp3"
+        "space": "space.mp3"
     }
 }

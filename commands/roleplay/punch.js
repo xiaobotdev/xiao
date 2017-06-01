@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 
 module.exports = class PunchCommand extends Command {
     constructor(client) {
@@ -6,19 +7,22 @@ module.exports = class PunchCommand extends Command {
             name: 'punch',
             group: 'roleplay',
             memberName: 'punch',
-            description: 'Punches something/someone.',
+            description: 'Punches a user.',
             args: [
                 {
-                    key: 'thing',
-                    prompt: 'What do you want to roleplay with?',
-                    type: 'string'
+                    key: 'user',
+                    prompt: 'What user do you want to roleplay with?',
+                    type: 'user'
                 }
             ]
         });
     }
 
     run(msg, args) {
-        const { thing } = args;
-        return msg.say(`${msg.author} *punches* ${thing}`);
+        const { user } = args;
+        return msg.say(stripIndents`
+            **${msg.author.username}** *punches* **${user.username}**
+            https://i.imgur.com/R5KBiYV.gif
+        `);
     }
 };

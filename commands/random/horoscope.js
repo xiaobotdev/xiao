@@ -17,11 +17,14 @@ module.exports = class HoroscopeCommand extends Command {
                     key: 'sign',
                     prompt: 'Which sign would you like to get the horoscope for?',
                     type: 'string',
-                    validate: sign => {
-                        if (signs.includes(sign.toLowerCase())) return true;
-                        return 'Invalid sign. Use `help horoscope` for a list of signs.';
+                    validate: (sign) => {
+                        if (signs.includes(sign.toLowerCase())) {
+                            return true;
+                        } else {
+                            return 'Invalid sign. Use `help horoscope` for a list of signs.';
+                        }
                     },
-                    parse: sign => sign.toLowerCase()
+                    parse: (sign) => sign.toLowerCase()
                 }
             ]
         });
@@ -29,24 +32,20 @@ module.exports = class HoroscopeCommand extends Command {
 
     async run(msg, args) {
         const { sign } = args;
-        try {
-            const { text } = await snekfetch
-                .get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today`);
-            const body = JSON.parse(text);
-            const embed = new RichEmbed()
-                .setColor(0x9797FF)
-                .setTitle(`Horoscope for ${body.sunsign}...`)
-                .setTimestamp()
-                .setDescription(body.horoscope)
-                .addField('Mood',
-                    body.meta.mood, true)
-                .addField('Intensity',
-                    body.meta.intensity, true)
-                .addField('Date',
-                    body.date, true);
-            return msg.embed(embed);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
+        const { text } = await snekfetch
+            .get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today`);
+        const body = JSON.parse(text);
+        const embed = new RichEmbed()
+            .setColor(0x9797FF)
+            .setTitle(`Horoscope for ${body.sunsign}...`)
+            .setTimestamp()
+            .setDescription(body.horoscope)
+            .addField('Mood',
+                body.meta.mood, true)
+            .addField('Intensity',
+                body.meta.intensity, true)
+            .addField('Date',
+                body.date, true);
+        return msg.embed(embed);
     }
 };

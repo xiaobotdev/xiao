@@ -14,21 +14,17 @@ module.exports = class TodayCommand extends Command {
     }
 
     async run(msg) {
-        try {
-            const { text } = await snekfetch
-                .get('http://history.muffinlabs.com/date');
-            const body = JSON.parse(text);
-            const events = body.data.Events;
-            const event = events[Math.floor(Math.random() * events.length)];
-            const embed = new RichEmbed()
-                .setColor(0x9797FF)
-                .setURL(body.url)
-                .setTitle(`On this day (${body.date})...`)
-                .setTimestamp()
-                .setDescription(`${event.year}: ${event.text}`);
-            return msg.embed(embed);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
+        const { text } = await snekfetch
+            .get('http://history.muffinlabs.com/date');
+        const body = JSON.parse(text);
+        const events = body.data.Events;
+        const event = events[Math.floor(Math.random() * events.length)];
+        const embed = new RichEmbed()
+            .setColor(0x9797FF)
+            .setURL(body.url)
+            .setTitle(`On this day (${body.date})...`)
+            .setTimestamp()
+            .setDescription(`${event.year}: ${event.text}`);
+        return msg.embed(embed);
     }
 };

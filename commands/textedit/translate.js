@@ -23,22 +23,28 @@ module.exports = class TranslateCommand extends Command {
                     key: 'to',
                     prompt: 'Which language is being translated to?',
                     type: 'string',
-                    validate: to => {
-                        if (codes[to.toLowerCase()]) return true;
-                        return 'Invalid Language Code. Use `help translate` for a list of codes.';
+                    validate: (to) => {
+                        if (codes[to.toLowerCase()]) {
+                            return true;
+                        } else {
+                            return 'Invalid Language Code. Use `help translate` for a list of codes.';
+                        }
                     },
-                    parse: to => to.toLowerCase()
+                    parse: (to) => to.toLowerCase()
                 },
                 {
                     key: 'from',
                     prompt: 'Which language is being translated from?',
                     type: 'string',
-                    validate: from => {
-                        if (codes[from.toLowerCase()]) return true;
-                        return 'Invalid Language Code. Use `help translate` for a list of codes.';
+                    default: '',
+                    validate: (from) => {
+                        if (codes[from.toLowerCase()]) {
+                            return true;
+                        } else {
+                            return 'Invalid Language Code. Use `help translate` for a list of codes.';
+                        }
                     },
-                    parse: from => from.toLowerCase(),
-                    default: ''
+                    parse: (from) => from.toLowerCase()
                 }
             ]
         });
@@ -46,24 +52,20 @@ module.exports = class TranslateCommand extends Command {
 
     async run(msg, args) {
         const { text, to, from } = args;
-        try {
-            const { body } = await snekfetch
-                .get('https://translate.yandex.net/api/v1.5/tr.json/translate')
-                .query({
-                    key: YANDEX_KEY,
-                    text,
-                    lang: from ? `${from}-${to}` : to
-                });
-            const lang = body.lang.split('-');
-            const embed = new RichEmbed()
-                .setColor(0x00AE86)
-                .addField(`From: ${codes[lang[0]]}`,
-                    text)
-                .addField(`To: ${codes[lang[1]]}`,
-                    body.text[0]);
-            return msg.embed(embed);
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
+        const { body } = await snekfetch
+            .get('https://translate.yandex.net/api/v1.5/tr.json/translate')
+            .query({
+                key: YANDEX_KEY,
+                text,
+                lang: from ? `${from}-${to}` : to
+            });
+        const lang = body.lang.split('-');
+        const embed = new RichEmbed()
+            .setColor(0x00AE86)
+            .addField(`❯ From: ${codes[lang[0]]}`,
+                text)
+            .addField(`❯ To: ${codes[lang[1]]}`,
+                body.text[0]);
+        return msg.embed(embed);
     }
 };

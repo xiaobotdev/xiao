@@ -16,10 +16,12 @@ module.exports = class MapCommand extends Command {
                     label: 'zoom level',
                     prompt: 'What would you like the zoom level for the map to be? Limit 1-20.',
                     type: 'integer',
-                    validate: zoom => {
-                        if (zoom < 21 && zoom > 0)
+                    validate: (zoom) => {
+                        if (zoom < 21 && zoom > 0) {
                             return true;
-                        return 'Please enter a zoom value from 1-20';
+                        } else {
+                            return 'Please enter a zoom value from 1-20';
+                        }
                     }
                 },
                 {
@@ -33,19 +35,14 @@ module.exports = class MapCommand extends Command {
 
     async run(msg, args) {
         const { zoom, query } = args;
-        try {
-            const { body } = await snekfetch
-                .get('https://maps.googleapis.com/maps/api/staticmap')
-                .query({
-                    center: query,
-                    zoom,
-                    size: '500x500',
-                    key: GOOGLE_KEY
-                });
-            return msg.say({ files: [{ attachment: body, name: 'map.png' }] })
-                .catch(err => msg.say(`${err.name}: ${err.message}`));
-        } catch (err) {
-            return msg.say(`${err.name}: ${err.message}`);
-        }
+        const { body } = await snekfetch
+            .get('https://maps.googleapis.com/maps/api/staticmap')
+            .query({
+                center: query,
+                zoom,
+                size: '500x500',
+                key: GOOGLE_KEY
+            });
+        return msg.say({ files: [{ attachment: body, name: 'map.png' }] });
     }
 };

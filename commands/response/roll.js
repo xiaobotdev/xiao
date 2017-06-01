@@ -13,7 +13,8 @@ module.exports = class RollCommand extends Command {
                     key: 'value',
                     label: 'maximum number',
                     prompt: 'What is the maximum number you wish to appear?',
-                    type: 'integer'
+                    type: 'integer',
+                    default: 6
                 }
             ]
         });

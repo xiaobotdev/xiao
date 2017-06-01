@@ -6,7 +6,7 @@ module.exports = class PruneCommand extends Command {
             name: 'prune',
             group: 'moderation',
             memberName: 'prune',
-            description: 'Deletes a specified number of messages from the current channel, up to 99.',
+            description: 'Deletes messages from the current channel, up to 99.',
             guildOnly: true,
             throttling: {
                 usages: 1,
@@ -14,21 +14,24 @@ module.exports = class PruneCommand extends Command {
             },
             clientPermissions: ['READ_MESSAGE_HISTORY', 'MANAGE_MESSAGES'],
             userPermissions: ['MANAGE_MESSAGES'],
-            allowStaff: true,
             args: [
                 {
                     key: 'count',
                     label: 'amount of messages',
                     prompt: 'How many messages do you want to delete? Limit of up to 99.',
                     type: 'integer',
-                    validate: count => {
-                        if (count < 100 && count > 0) return true;
-                        return 'Invalid Count. Count must be from 1-99.';
+                    validate: (count) => {
+                        if (count < 100 && count > 0) {
+                            return true;
+                        } else {
+                            return 'Invalid Count. Count must be from 1-99.';
+                        }
                     }
                 }
             ]
         });
     }
+
     async run(msg, args) {
         const { count } = args;
         try {

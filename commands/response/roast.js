@@ -7,11 +7,11 @@ module.exports = class RoastCommand extends Command {
             name: 'roast',
             group: 'response',
             memberName: 'roast',
-            description: 'Roasts something/someone.',
+            description: 'Roasts a user.',
             args: [
                 {
-                    key: 'thing',
-                    prompt: 'What do you want to roast?',
+                    key: 'user',
+                    prompt: 'What user do you want to roast?',
                     type: 'string'
                 }
             ]
@@ -19,8 +19,8 @@ module.exports = class RoastCommand extends Command {
     }
 
     run(msg, args) {
-        const { thing } = args;
+        const user = args.user || msg.author;
         const roast = roasts[Math.floor(Math.random() * roasts.length)];
-        return msg.say(`${thing}, ${roast}`);
+        return msg.say(`${user}, ${roast}`);
     }
 };

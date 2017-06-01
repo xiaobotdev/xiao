@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const math = require('mathjs');
-const operations = ['+', '-', '*'];
+const { operations, difficulties, maxValues } = require('../../assets/json/math-game');
 
 module.exports = class MathGameCommand extends Command {
     constructor(client) {
@@ -14,13 +14,16 @@ module.exports = class MathGameCommand extends Command {
             args: [
                 {
                     key: 'difficulty',
-                    prompt: 'What should the difficulty of the game be? `Easy`, `Medium`, `Hard`, `Extreme`, or `Impossible`?',
+                    prompt: `What should the difficulty of the game be? One of: ${difficulties.join(', ')}`,
                     type: 'string',
-                    validate: difficulty => {
-                        if (['easy', 'medium', 'hard', 'extreme', 'impossible'].includes(difficulty.toLowerCase())) return true;
-                        return 'The difficulty must be either `easy`, `medium`, `hard`, `extreme`, or `impossible`.';
+                    validate: (difficulty) => {
+                        if (difficulties.includes(difficulty.toLowerCase())) {
+                            return true;
+                        } else {
+                            return `The difficulty must be one of: ${difficulties.join(', ')}`;
+                        }
                     },
-                    parse: difficulty => difficulty.toLowerCase()
+                    parse: (difficulty) => difficulty.toLowerCase()
                 }
             ]
         });
@@ -29,38 +32,24 @@ module.exports = class MathGameCommand extends Command {
     async run(msg, args) {
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
-        let value;
-        switch(difficulty) {
-            case 'easy':
-                value = 10;
-                break;
-            case 'medium':
-                value = 50;
-                break;
-            case 'hard':
-                value = 100;
-                break;
-            case 'extreme':
-                value = 1000;
-                break;
-            case 'impossible':
-                value = 10000;
-                break;
-        }
+        const value = maxValues[difficulty];
         const expression = `${Math.floor(Math.random() * value) + 1} ${operation} ${Math.floor(Math.random() * value) + 1}`;
         const answer = math.eval(expression).toString();
         const embed = new RichEmbed()
-            .setTitle('You have **10** seconds to answer:')
+            .setTitle('You have 10 seconds to answer:')
             .setDescription(expression);
         await msg.embed(embed);
         try {
-            const collected = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+            const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
                 max: 1,
                 time: 10000,
                 errors: ['time']
             });
-            if (collected.first().content !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
-            return msg.say('Nice job! 10/10! You deserve some cake!');
+            if (collected.first().content !== answer) {
+                return msg.say(`Nope, sorry, it's ${answer}.`);
+            } else {
+                return msg.say('Nice job! 10/10! You deserve some cake!');
+            }
         } catch (err) {
             return msg.say(`Time! It was ${answer}, sorry!`);
         }
