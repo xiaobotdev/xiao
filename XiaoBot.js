@@ -112,7 +112,7 @@ client.on('guildMemberRemove', (member) => {
 });
 
 client.on('guildCreate', async (guild) => {
-    console.log(`[Guild] I have joined ${guild.name}! (${guild.id})`);
+    console.log(`[GUILD] I have joined ${guild.name}! (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     carbon(count);
@@ -120,7 +120,7 @@ client.on('guildCreate', async (guild) => {
 });
 
 client.on('guildDelete', async (guild) => {
-    console.log(`[Guild] I have left ${guild.name}... (${guild.id})`);
+    console.log(`[GUILD] I have left ${guild.name}... (${guild.id})`);
     const guilds = await client.shard.fetchClientValues('guilds.size');
     const count = guilds.reduce((prev, val) => prev + val, 0);
     carbon(count);
@@ -128,7 +128,7 @@ client.on('guildDelete', async (guild) => {
 });
 
 client.setTimeout(() => {
-    console.log(`[Restart] Shard ${client.shard.id} Restarted.`);
+    console.log(`[RESTART] Shard ${client.shard.id} Restarted.`);
     process.exit(0);
 }, 14400000);
 
