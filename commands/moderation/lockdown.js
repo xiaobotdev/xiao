@@ -18,11 +18,8 @@ module.exports = class LockdownCommand extends Command {
                     type: 'string',
                     default: 'start',
                     validate: (type) => {
-                        if (['start', 'stop'].includes(type.toLowerCase())) {
-                            return true;
-                        } else {
-                            return 'Please enter either `start` or `stop`.';
-                        }
+                        if (['start', 'stop'].includes(type.toLowerCase())) return true;
+                        else return 'Please enter either `start` or `stop`.';
                     },
                     parse: (type) => type.toLowerCase()
                 }
@@ -38,7 +35,7 @@ module.exports = class LockdownCommand extends Command {
                 Lockdown Started, users without Administrator can no longer post messages.
                 Please use \`lockdown stop\` to end the lockdown.
             `);
-        } else if (type === 'stop') {
+        } else {
             await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: null });
             return msg.say('Lockdown Ended.');
         }

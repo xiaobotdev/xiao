@@ -29,9 +29,7 @@ module.exports = class AnimeCommand extends Command {
         try {
             const { text } = await snekfetch
                 .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml`)
-                .query({
-                    q: query
-                });
+                .query({ q: query });
             const { anime } = await xml.parseStringAsync(text);
             const synopsis = cleanXML(anime.entry[0].synopsis[0].substr(0, 2000));
             const embed = new RichEmbed()

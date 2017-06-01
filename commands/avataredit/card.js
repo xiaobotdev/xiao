@@ -35,20 +35,14 @@ module.exports = class CardCommand extends Command {
     async run(msg, args) {
         const member = args.member || msg.member;
         const avatarURL = member.user.avatarURL('png', 256);
-        if (!avatarURL) {
-            return msg.say('The User Provided has No Avatar.');
-        }
+        if (!avatarURL) return msg.say('The User Provided has No Avatar.');
         const cardID = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
         let rarity;
-        if (cardID < 5000) {
-            rarity = 'C';
-        } else if (cardID < 8000) {
-            rarity = 'U';
-        } else {
-            rarity = 'R';
-        }
+        if (cardID < 5000) rarity = 'C';
+        else if (cardID < 8000) rarity = 'U';
+        else rarity = 'R';
         const Image = Canvas.Image;
-        Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OpenSans.ttf'), { family: 'Open Sans' });
+        Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OpenSans.ttf'), { family: 'Open Sans' }); // eslint-disable-line max-len
         const canvas = new Canvas(390, 544);
         const ctx = canvas.getContext('2d');
         const base = new Image();

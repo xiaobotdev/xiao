@@ -14,8 +14,7 @@ module.exports = class UpsideDownCommand extends Command {
                 {
                     key: 'text',
                     prompt: 'What text would you like to flip upside-down?',
-                    type: 'string',
-                    parse: (text) => letterTrans(text, dictionary)
+                    type: 'string'
                 }
             ]
         });
@@ -23,6 +22,7 @@ module.exports = class UpsideDownCommand extends Command {
 
     run(msg, args) {
         const { text } = args;
-        return msg.say(text);
+        const converted = letterTrans(text, dictionary);
+        return msg.say(converted);
     }
 };

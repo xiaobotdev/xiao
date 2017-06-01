@@ -25,12 +25,10 @@ module.exports = class WeatherCommand extends Command {
         const { body } = await snekfetch
             .get('https://query.yahooapis.com/v1/public/yql')
             .query({
-                q: `select * from weather.forecast where u=\'f\' AND woeid in (select woeid from geo.places(1) where text="${query}")`,
+                q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${query}")`, // eslint-disable-line max-len
                 format: 'json'
             });
-        if (!body.query.count) {
-            return msg.say('Location Not Found.');
-        }
+        if (!body.query.count) return msg.say('Location Not Found.');
         const embed = new RichEmbed()
             .setColor(0x0000FF)
             .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')

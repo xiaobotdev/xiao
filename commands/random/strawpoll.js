@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const { FriendlyError } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
 
@@ -16,11 +15,8 @@ module.exports = class StrawpollCommand extends Command {
                     prompt: 'What would you like the title of the Strawpoll to be?',
                     type: 'string',
                     validate: (title) => {
-                        if (title.length < 200) {
-                            return true;
-                        } else {
-                            return 'Invalid Title. Title must be under 200 characters.';
-                        }
+                        if (title.length < 200) return true;
+                        else return 'Title must be under 200 characters.';
                     }
                 },
                 {
@@ -29,11 +25,8 @@ module.exports = class StrawpollCommand extends Command {
                     type: 'string',
                     infinite: true,
                     validate: (choice) => {
-                        if (choice.length < 160) {
-                            return true;
-                        } else {
-                            return 'Invalid Choice. Choices must be under 140 characters each.';
-                        }
+                        if (choice.length < 160) return true;
+                        else return 'Choices must be under 140 characters each.';
                     }
                 }
             ]
@@ -42,11 +35,8 @@ module.exports = class StrawpollCommand extends Command {
 
     async run(msg, args) {
         const { title, options } = args;
-        if (options.length < 2) {
-            throw new FriendlyError('You provided less than two choices.');
-        } else if (options.length > 31) {
-            throw new FriendlyError('You provided more than thirty choices.');
-        }
+        if (options.length < 2) return msg.say('You provided less than two choices.');
+        if (options.length > 31) return msg.say('You provided more than thirty choices.');
         const { body } = await snekfetch
             .post('https://strawpoll.me/api/v2/polls')
             .send({ title, options });

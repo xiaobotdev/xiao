@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
 
 module.exports = class KonachanCommand extends Command {
@@ -28,9 +29,10 @@ module.exports = class KonachanCommand extends Command {
                 tags: `${query ? `${query} ` : ''}order:random`,
                 limit: 1
             });
-        if (!body.length) {
-            return msg.say('No Results.');
-        }
-        return msg.say(`${query ? `Result for ${query}:` : 'Random Image:'} https:${body[0].file_url}`);
+        if (!body.length) return msg.say('No Results.');
+        return msg.say(stripIndents`
+            ${query ? `Result for ${query}:` : 'Random Image:'}
+            https:${body[0].file_url}
+        `);
     }
 };

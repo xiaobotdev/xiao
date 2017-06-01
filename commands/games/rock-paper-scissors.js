@@ -14,13 +14,6 @@ module.exports = class RockPaperScissorsCommand extends Command {
                     key: 'choice',
                     prompt: '`Rock`, `Paper`, or `Scissors`?',
                     type: 'string',
-                    validate: (choice) => {
-                        if (choices.includes(choice.toLowerCase())) {
-                            return true;
-                        } else {
-                            return 'Please enter either `rock`, `paper`, or `scissors`.';
-                        }
-                    },
                     parse: (choice) => choice.toLowerCase()
                 }
             ]
@@ -31,29 +24,19 @@ module.exports = class RockPaperScissorsCommand extends Command {
         const { choice } = args;
         const response = choices[Math.floor(Math.random() * choices.length)];
         if (choice === 'rock') {
-            if (response === 'rock') {
-                return msg.say('Rock! Aw... A tie...');
-            } else if (response === 'paper') {
-                return msg.say('Paper! Yes! I win!');
-            } else if (response === 'scissors') {
-                return msg.say('Scissors! Aw... I lose...');
-            }
+            if (response === 'rock') return msg.say('Rock! Aw... A tie...');
+            else if (response === 'paper') return msg.say('Paper! Yes! I win!');
+            else return msg.say('Scissors! Aw... I lose...');
         } else if (choice === 'paper') {
-            if (response === 'rock') {
-                return msg.say('Rock! Aw... I lose...');
-            } else if (response === 'paper') {
-                return msg.say('Paper! Aw... A tie...');
-            } else if (response === 'scissors') {
-                return msg.say('Scissors! Yes! I win!');
-            }
+            if (response === 'rock') return msg.say('Rock! Aw... I lose...');
+            else if (response === 'paper') return msg.say('Paper! Aw... A tie...');
+            else return msg.say('Scissors! Yes! I win!');
         } else if (choice === 'scissors') {
-            if (response === 'rock') {
-                return msg.say('Rock! Yes! I win!');
-            } else if (response === 'paper') {
-                return msg.say('Paper! Aw... I lose...');
-            } else if (response === 'scissors') {
-                return msg.say('Scissors! Aw... A tie...');
-            }
+            if (response === 'rock') return msg.say('Rock! Yes! I win!');
+            else if (response === 'paper') return msg.say('Paper! Aw... I lose...');
+            else return msg.say('Scissors! Aw... A tie...');
+        } else {
+            return msg.say('I win by default, you little cheater.');
         }
     }
 };

@@ -28,9 +28,7 @@ module.exports = class GiphyCommand extends Command {
                 api_key: GIPHY_KEY,
                 rating: msg.channel.nsfw ? 'r' : 'pg'
             });
-        if (!body.data.length) {
-            return msg.say('No Results.');
-        }
+        if (!body.data.length) return msg.say('No Results.');
         const random = Math.floor(Math.random() * body.data.length);
         return msg.say(body.data[random].images.original.url);
     }

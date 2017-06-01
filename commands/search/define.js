@@ -32,9 +32,7 @@ module.exports = class DefineCommand extends Command {
                 useCanonical: false,
                 api_key: WORDNIK_KEY
             });
-        if (!body.length) {
-            return msg.say('No Results.');
-        }
+        if (!body.length) return msg.say('No Results.');
         const embed = new RichEmbed()
             .setColor(0x9797FF)
             .setTitle(body[0].word)

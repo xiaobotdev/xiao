@@ -16,11 +16,8 @@ module.exports = class TypingGameCommand extends Command {
                     prompt: `What should the difficulty of the game be? One of: ${difficulties.join(', ')}`,
                     type: 'string',
                     validate: (difficulty) => {
-                        if (difficulties.includes(difficulty.toLowerCase())) {
-                            return true;
-                        } else {
-                            return `The difficulty must be one of: ${difficulties.join(', ')}`;
-                        }
+                        if (difficulties.includes(difficulty.toLowerCase())) return true;
+                        else return `The difficulty must be one of: ${difficulties.join(', ')}`;
                     },
                     parse: (difficulty) => difficulty.toLowerCase()
                 }
@@ -42,11 +39,8 @@ module.exports = class TypingGameCommand extends Command {
                 time: time,
                 errors: ['time']
             });
-            if (collected.first().content !== sentence) {
-                return msg.say('Nope, sorry!');
-            } else {
-                return msg.say('Nice job! 10/10! You deserve some cake!');
-            }
+            if (collected.first().content !== sentence) return msg.say('Nope, sorry!');
+            else return msg.say('Nice job! 10/10! You deserve some cake!');
         } catch (err) {
             return msg.say('Time! Sorry!');
         }

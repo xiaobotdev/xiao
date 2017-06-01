@@ -17,11 +17,8 @@ module.exports = class MathGameCommand extends Command {
                     prompt: `What should the difficulty of the game be? One of: ${difficulties.join(', ')}`,
                     type: 'string',
                     validate: (difficulty) => {
-                        if (difficulties.includes(difficulty.toLowerCase())) {
-                            return true;
-                        } else {
-                            return `The difficulty must be one of: ${difficulties.join(', ')}`;
-                        }
+                        if (difficulties.includes(difficulty.toLowerCase())) return true;
+                        else return `The difficulty must be one of: ${difficulties.join(', ')}`;
                     },
                     parse: (difficulty) => difficulty.toLowerCase()
                 }
@@ -32,8 +29,10 @@ module.exports = class MathGameCommand extends Command {
     async run(msg, args) {
         const { difficulty } = args;
         const operation = operations[Math.floor(Math.random() * operations.length)];
-        const value = maxValues[difficulty];
-        const expression = `${Math.floor(Math.random() * value) + 1} ${operation} ${Math.floor(Math.random() * value) + 1}`;
+        const maxValue = maxValues[difficulty];
+        const value1 = Math.floor(Math.random() * maxValue) + 1;
+        const value2 = Math.floor(Math.random() * maxValue) + 1;
+        const expression = `${value1} ${operation} ${value2}`;
         const answer = math.eval(expression).toString();
         const embed = new RichEmbed()
             .setTitle('You have 10 seconds to answer:')
@@ -45,11 +44,8 @@ module.exports = class MathGameCommand extends Command {
                 time: 10000,
                 errors: ['time']
             });
-            if (collected.first().content !== answer) {
-                return msg.say(`Nope, sorry, it's ${answer}.`);
-            } else {
-                return msg.say('Nice job! 10/10! You deserve some cake!');
-            }
+            if (collected.first().content !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
+            else return msg.say('Nice job! 10/10! You deserve some cake!');
         } catch (err) {
             return msg.say(`Time! It was ${answer}, sorry!`);
         }

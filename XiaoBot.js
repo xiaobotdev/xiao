@@ -52,14 +52,10 @@ client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
 
-client.dispatcher.addInhibitor(msg => {
-    if (msg.channel.type === 'dm') {
-        return false;
-    }
+client.dispatcher.addInhibitor((msg) => {
+    if (msg.channel.type === 'dm') return false;
     const role = msg.guild.settings.get('singleRole');
-    if (!msg.guild.roles.has(role) || msg.member.hasPermission('ADMINISTRATOR')) {
-        return false;
-    }
+    if (!msg.guild.roles.has(role) || msg.member.hasPermission('ADMINISTRATOR')) return false;
     if (!msg.member.roles.has(role)) {
         return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} role may use commands.`)];
     } else {
@@ -71,10 +67,9 @@ client.on('message', (msg) => {
     if (!msg.guild || !msg.guild.settings.get('inviteGuard')) return;
     if (/(discord(\.gg\/|app\.com\/invite\/|\.me\/))/gi.test(msg.content)) {
         if (msg.author.bot || msg.member.hasPermission('ADMINISTRATOR')) return;
-        if (msg.channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'MANAGE_MESSAGES'])) {
-            msg.delete();
-            return msg.reply('Invites are prohibited from being posted here.');
-        }
+        if (!msg.channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'MANAGE_MESSAGES'])) return;
+        msg.delete();
+        msg.reply('Invites are prohibited from being posted here.');
     }
 });
 
@@ -83,13 +78,13 @@ client.on('messageReactionAdd', (reaction, user) => {
     const { message } = reaction;
     const channel = message.guild.channels.get(message.guild.settings.get('starboard'));
     if (!channel) return;
+    if (!message.channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'MANAGE_MESSAGES'])) return;
     if (user.id === message.author.id) {
-        if (message.channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'MANAGE_MESSAGES'])) {
-            reaction.remove(user);
-            return message.reply('You cannot star your own messages, baka.');
-        } else return;
+        reaction.remove(user);
+        message.reply('You cannot star your own messages, baka.');
+        return;
     }
-    return client.registry.resolveCommand('random:star').run(message, { id: message.id }, true);
+    client.registry.resolveCommand('random:star').run(message, { id: message.id }, true);
 });
 
 client.on('guildMemberAdd', (member) => {
@@ -103,7 +98,7 @@ client.on('guildMemberAdd', (member) => {
         .replace(/(<user>)/gi, member.user.username)
         .replace(/(<server>)/gi, member.guild.name)
         .replace(/(<mention>)/gi, member);
-    return channel.send(msg);
+    channel.send(msg);
 });
 
 client.on('guildMemberRemove', (member) => {
@@ -113,7 +108,7 @@ client.on('guildMemberRemove', (member) => {
         .replace(/(<user>)/gi, member.user.username)
         .replace(/(<server>)/gi, member.guild.name)
         .replace(/(<mention>)/gi, member);
-    return channel.send(msg);
+    channel.send(msg);
 });
 
 client.on('guildCreate', async (guild) => {

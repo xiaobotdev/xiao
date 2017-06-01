@@ -18,11 +18,8 @@ module.exports = class XKCDCommand extends Command {
                     type: 'string',
                     default: 'random',
                     validate: (type) => {
-                        if (['today', 'random'].includes(type.toLowerCase())) {
-                            return true;
-                        } else {
-                            return 'Please enter either `today` or `random`';
-                        }
+                        if (['today', 'random'].includes(type.toLowerCase())) return true;
+                        else return 'Please enter either `today` or `random`';
                     }
                 }
             ]

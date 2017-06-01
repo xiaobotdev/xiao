@@ -13,21 +13,21 @@ module.exports = class SettingListCommand extends Command {
     }
 
     run(msg) {
-        const modLog = msg.guild.settings.get('modLog', false);
-        const memberLog = msg.guild.settings.get('memberLog', false);
-        const singleRole = msg.guild.settings.get('singleRole', false);
-        const joinRole = msg.guild.settings.get('joinRole', false);
-        const starboard = msg.guild.settings.get('starboard', false);
+        const modLog = msg.guild.channels.get(msg.guild.settings.get('modLog'));
+        const memberLog = msg.guild.channels.get(msg.guild.settings.get('memberLog'));
+        const singleRole = msg.guild.roles.get(msg.guild.settings.get('singleRole'));
+        const joinRole = msg.guild.roles.get(msg.guild.settings.get('joinRole'));
+        const starboard = msg.guild.channels.get(msg.guild.settings.get('starboard'));
         return msg.say(stripIndents`
             **Prefix:** ${msg.guild.commandPrefix}
             **Invite Guard:** ${msg.guild.settings.get('inviteGuard', false)}
-            **Mod Channel:** ${modLog ? msg.guild.channels.has(modLog) ? msg.guild.channels.get(modLog).name : 'Missing' : 'None'}
-            **Starboard:** ${starboard ? msg.guild.channels.has(starboard) ? msg.guild.channels.get(starboard).name : 'Missing' : 'None'}
-            **Join Role:** ${joinRole ? msg.guild.roles.has(joinRole) ? msg.guild.roles.get(joinRole).name : 'Missing' : 'None'}
-            **Member Channel:** ${memberLog ? msg.guild.channels.has(memberLog) ? msg.guild.channels.get(memberLog).name : 'Missing' : 'None'}
+            **Mod Channel:** ${modLog ? modLog.name : 'None'}
+            **Starboard:** ${starboard ? starboard.name : 'None'}
+            **Join Role:** ${joinRole ? joinRole.name : 'None'}
+            **Member Channel:** ${memberLog ? memberLog.name : 'None'}
             **Join Message:** ${msg.guild.settings.get('joinMsg', 'Welcome <user>! (Default)')}
             **Leave Message:** ${msg.guild.settings.get('leaveMsg', 'Bye <user>... (Default)')}
-            **Single Role:** ${singleRole ? msg.guild.roles.has(singleRole) ? msg.guild.roles.get(singleRole).name : 'Missing' : 'None'}
+            **Single Role:** ${singleRole ? singleRole.name : 'None'}
         `);
     }
 };

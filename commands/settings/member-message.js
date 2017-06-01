@@ -17,11 +17,8 @@ module.exports = class MemberMsgCommand extends Command {
                     prompt: 'Which message would you like to change? Please enter either `joinMsg` or `leaveMsg`.',
                     type: 'string',
                     validate: (type) => {
-                        if (['joinMsg', 'leaveMsg'].includes(type)) {
-                            return true;
-                        } else {
-                            return 'Please enter either `joinMsg` or `leaveMsg`.';
-                        }
+                        if (['joinMsg', 'leaveMsg'].includes(type)) return true;
+                        else return 'Please enter either `joinMsg` or `leaveMsg`.';
                     }
                 },
                 {
@@ -29,11 +26,8 @@ module.exports = class MemberMsgCommand extends Command {
                     prompt: 'What should be sent to the channel? Use <user>, <server>, and <mention> as placeholders.',
                     type: 'string',
                     validate: (message) => {
-                        if (message.length < 150) {
-                            return true;
-                        } else {
-                            return 'Invalid Message. Message must be under 150 characters.';
-                        }
+                        if (message.length < 150) return true;
+                        else return 'Invalid Message. Message must be under 150 characters.';
                     }
                 }
             ]
@@ -45,7 +39,7 @@ module.exports = class MemberMsgCommand extends Command {
         if (type === 'joinMsg') {
             msg.guild.settings.set('joinMsg', message);
             return msg.say(`Join Message set to "${message}".`);
-        } else if (type === 'leaveMsg') {
+        } else {
             msg.guild.settings.set('leaveMsg', message);
             return msg.say(`Leave Message set to "${message}".`);
         }

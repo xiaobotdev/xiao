@@ -30,9 +30,7 @@ module.exports = class NeopetCommand extends Command {
             });
         const $ = cheerio.load(text);
         const link = $('textarea').first().text();
-        if (!link.includes('cp')) {
-            return msg.say('Invalid Pet Name.');
-        }
+        if (!link.includes('cp')) return msg.say('Invalid Pet Name.');
         return msg.say(link);
     }
 };
