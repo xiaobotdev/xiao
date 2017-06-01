@@ -32,7 +32,7 @@ module.exports = class InfoCommand extends Command {
             .addField('❯ Source Code',
                 '[View Here](https://github.com/dragonfire535/xiaobot)', true)
             .addField('❯ Memory Usage',
-                `${Math.round(memory.reduce((prev, val) => prev + val, 0)) / 1024 / 1024}MB`, true)
+                `${Math.round(memory.reduce((prev, val) => prev + val, 0) / 1024 / 1024)}MB`, true)
             .addField('❯ Uptime',
                 moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
             .addField('❯ Version',

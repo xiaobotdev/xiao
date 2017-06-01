@@ -38,7 +38,7 @@ module.exports = class ShardInfoCommand extends Command {
             .addField('❯ Servers',
                 guilds[shard], true)
             .addField('❯ Memory Usage',
-                `${Math.round(memory[shard]) / 1024 / 1024}MB`, true)
+                `${Math.round(memory[shard] / 1024 / 1024)}MB`, true)
             .addField('❯ Uptime',
                 moment.duration(uptime[shard]).format('d[d]h[h]m[m]s[s]'), true);
         return msg.embed(embed);
