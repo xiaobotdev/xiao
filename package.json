@@ -4,7 +4,8 @@
   "description": "A Discord Bot",
   "main": "Shard.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint",
+    "lint": "eslint .",
     "start": "node Shard.js"
   },
   "repository": {
@@ -51,5 +52,8 @@
     "tsubaki": "^1.1.0",
     "xml2js": "^0.4.17",
     "zalgolize": "^1.2.4"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
   }
 }
