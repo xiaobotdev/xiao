@@ -37,7 +37,7 @@
         "hard",
         "extreme",
         "impossible"
-    ]
+    ],
     "times": {
         "easy": 25000,
         "medium": 20000,
