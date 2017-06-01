@@ -1,5 +1,6 @@
 # XiaoBot
 [![Discord](https://discordapp.com/api/guilds/252317073814978561/embed.png)](https://discord.gg/fqQF8mc)
+[![Codacy](https://api.codacy.com/project/badge/Grade/2be44c0fadf64597b4e07f95d0f6a8ef)](https://www.codacy.com/app/dragonfire535/xiaobot)
 
 Public Source Code for the Discord Bot XiaoBot, a Discord bot coded in
 JavaScript with [discord.js](https://github.com/hydrabolt/discord.js) using the
