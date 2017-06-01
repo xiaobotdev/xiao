@@ -16,11 +16,8 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to use as the base?',
                     type: 'string',
                     validate: (base) => {
-                        if (codes.includes(base.toUpperCase())) {
-                            return true;
-                        } else {
-                            return  'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
-                        }
+                        if (codes.includes(base.toUpperCase())) return true;
+                        else return 'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
                     },
                     parse: (base) => base.toUpperCase()
                 },
@@ -29,11 +26,8 @@ module.exports = class CurrencyCommand extends Command {
                     prompt: 'What currency code do you want to convert to?',
                     type: 'string',
                     validate: (to) => {
-                        if (codes.includes(to.toUpperCase())) {
-                            return true;
-                        } else {
-                            return 'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
-                        }
+                        if (codes.includes(to.toUpperCase())) return true;
+                        else return 'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
                     },
                     parse: (to) => to.toUpperCase()
                 },
@@ -48,9 +42,7 @@ module.exports = class CurrencyCommand extends Command {
 
     async run(msg, args) {
         const { base, to, amount } = args;
-        if (base === to) {
-            return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
-        }
+        if (base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
         const { body } = await snekfetch
             .get('http://api.fixer.io/latest')
             .query({

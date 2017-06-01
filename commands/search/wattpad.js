@@ -30,12 +30,8 @@ module.exports = class WattpadCommand extends Command {
                 query,
                 limit: 1
             })
-            .set({
-                Authorization: `Basic ${WATTPAD_KEY}`
-            });
-        if (!body.stories.length) {
-            return msg.say('No Results.');
-        }
+            .set({ Authorization: `Basic ${WATTPAD_KEY}` });
+        if (!body.stories.length) return msg.say('No Results.');
         const embed = new RichEmbed()
             .setColor(0xF89C34)
             .setAuthor('Wattpad', 'https://i.imgur.com/Rw9vRQB.png')

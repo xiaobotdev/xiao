@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
 const { promisifyAll } = require('tsubaki');
 const xml = promisifyAll(require('xml2js'));
@@ -33,9 +34,10 @@ module.exports = class Rule34Command extends Command {
                 limit: 1
             });
         const { posts } = await xml.parseStringAsync(text);
-        if (posts.$.count === '0') {
-            return msg.say('No Results.');
-        }
-        return msg.say(`Result for ${query}: https:${posts.post[0].$.file_url}`);
+        if (posts.$.count === '0') return msg.say('No Results.');
+        return msg.say(stripIndents`
+            Result for ${query}:
+            https:${posts.post[0].$.file_url}
+        `);
     }
 };

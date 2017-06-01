@@ -29,9 +29,7 @@ module.exports = class SoundCloudCommand extends Command {
                 q: query,
                 client_id: SOUNDCLOUD_KEY
             });
-        if (!body.length) {
-            return msg.say('No Results.');
-        }
+        if (!body.length) return msg.say('No Results.');
         const embed = new RichEmbed()
             .setColor(0xF15A22)
             .setAuthor('SoundCloud', 'https://i.imgur.com/lFIz7RU.png')

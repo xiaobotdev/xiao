@@ -24,12 +24,8 @@ module.exports = class UrbanCommand extends Command {
         const { query } = args;
         const { body } = await snekfetch
             .get('http://api.urbandictionary.com/v0/define')
-            .query({
-                term: query
-            });
-        if (!body.list.length) {
-            return msg.say('No Results.');
-        }
+            .query({ term: query });
+        if (!body.list.length) return msg.say('No Results.');
         const embed = new RichEmbed()
             .setColor(0x32a8f0)
             .setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')

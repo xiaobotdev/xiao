@@ -15,13 +15,9 @@ module.exports = class PirateCommand extends Command {
                     prompt: 'What text would you like to convert to pirate?',
                     type: 'string',
                     validate: (text) => {
-                        if (wordTrans(text, dictionary).length < 1999) {
-                            return true;
-                        } else {
-                            return 'Your text is too long.';
-                        }
-                    },
-                    parse: (text) => wordTrans(text, dictionary)
+                        if (wordTrans(text, dictionary).length < 1999) return true;
+                        else return 'Your text is too long.';
+                    }
                 }
             ]
         });
@@ -29,6 +25,7 @@ module.exports = class PirateCommand extends Command {
 
     run(msg, args) {
         const { text } = args;
-        return msg.say(`\u180E${text}`);
+        const converted = wordTrans(text, dictionary);
+        return msg.say(`\u180E${converted}`);
     }
 };

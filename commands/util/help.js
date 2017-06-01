@@ -38,18 +38,18 @@ module.exports = class HelpCommand extends Command {
                     ${commands[0].details || ''}
                 `);
             } else {
-                return msg.say(`Could not identify command. Use \`${msg.usage(null)}\` to view a list of commands you can use.`);
+                return msg.say(`Could not identify command. Use \`${msg.usage(null)}\` to view a list of commands.`);
             }
         } else {
             const embed = new RichEmbed()
                 .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
-                .setDescription(`Use \`${msg.usage('<command>')}\` to view detailed information about a specific command.`)
+                .setDescription(`Use \`${msg.usage('<command>')}\` to view detailed information about a command.`)
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.values()) {
                 embed.addField(`❯ ${group.name}`,
-                    showAll
-                        ? group.commands.map((c) => c.name).join(', ')
-                        : group.commands.filter((c) => c.isUsable(msg)).map((c) => c.name).join(', ') || 'None Available');
+                    showAll ?
+                        group.commands.map((c) => c.name).join(', ') :
+                        group.commands.filter((c) => c.isUsable(msg)).map((c) => c.name).join(', ') || 'None');
             }
             try {
                 await msg.direct({ embed });

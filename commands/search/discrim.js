@@ -17,11 +17,8 @@ module.exports = class DiscrimCommand extends Command {
                     type: 'string',
                     default: '',
                     validate: (discrim) => {
-                        if (/[0-9]+$/g.test(discrim) && discrim.length === 4) {
-                            return true;
-                        } else {
-                            return 'Invalid Discriminator.';
-                        }
+                        if (/[0-9]+$/g.test(discrim) && discrim.length === 4) return true;
+                        else return 'Invalid Discriminator.';
                     }
                 }
             ]
@@ -30,7 +27,7 @@ module.exports = class DiscrimCommand extends Command {
 
     run(msg, args) {
         const discrim = args.discrim || msg.author.discriminator;
-        const users = this.client.users.filter((u) => u.discriminator === discrim).map((u) => u.username);
+        const users = this.client.users.filter((user) => user.discriminator === discrim).map((user) => user.username);
         const embed = new RichEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${discrim}`)
             .setDescription(users.join(', '));

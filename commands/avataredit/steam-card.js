@@ -31,11 +31,9 @@ module.exports = class SteamCardCommand extends Command {
     async run(msg, args) {
         const user = args.user || msg.author;
         const avatarURL = user.avatarURL('png', 512);
-        if (!avatarURL) {
-            return msg.say('The User Provided has No Avatar.');
-        }
+        if (!avatarURL) return msg.say('The User Provided has No Avatar.');
         const Image = Canvas.Image;
-        Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OpenSans.ttf'), { family: 'Open Sans' });
+        Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OpenSans.ttf'), { family: 'Open Sans' }); // eslint-disable-line max-len
         const canvas = new Canvas(494, 568);
         const ctx = canvas.getContext('2d');
         const base = new Image();

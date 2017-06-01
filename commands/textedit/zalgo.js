@@ -14,13 +14,9 @@ module.exports = class ZalgoCommand extends Command {
                     prompt: 'What text would you like to convert to zalgo?',
                     type: 'string',
                     validate: (text) => {
-                        if (text.length < 500) {
-                            return true;
-                        } else {
-                            return 'Invalid Text. Text must be under 500 characters.';
-                        }
-                    },
-                    parse: (text) => zalgo(text)
+                        if (text.length < 500) return true;
+                        else return 'Invalid Text. Text must be under 500 characters.';
+                    }
                 }
             ]
         });
@@ -28,6 +24,7 @@ module.exports = class ZalgoCommand extends Command {
 
     run(msg, args) {
         const { text } = args;
-        return msg.say(`\u180E${text}`);
+        const converted = zalgo(text);
+        return msg.say(`\u180E${converted}`);
     }
 };

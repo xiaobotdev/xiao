@@ -34,9 +34,7 @@ module.exports = class WikipediaCommand extends Command {
                 redirects: '',
                 formatversion: 2
             });
-        if (body.query.pages[0].missing) {
-            return msg.say('No Results.');
-        }
+        if (body.query.pages[0].missing) return msg.say('No Results.');
         const embed = new RichEmbed()
             .setColor(0xE7E7E7)
             .setTitle(body.query.pages[0].title)

@@ -13,13 +13,9 @@ module.exports = class BinaryCommand extends Command {
                     prompt: 'What text would you like to convert to binary?',
                     type: 'string',
                     validate: (text) => {
-                        if (this.binary(text).length < 2000) {
-                            return true;
-                        } else {
-                            return 'Your text is too long.';
-                        }
-                    },
-                    parse: (text) => this.binary(text)
+                        if (this.binary(text).length < 2000) return true;
+                        else return 'Your text is too long.';
+                    }
                 }
             ]
         });
@@ -27,7 +23,8 @@ module.exports = class BinaryCommand extends Command {
 
     run(msg, args) {
         const { text } = args;
-        return msg.say(text);
+        const converted = this.binary(text);
+        return msg.say(converted);
     }
 
     binary(text) {

@@ -18,11 +18,8 @@ module.exports = class HoroscopeCommand extends Command {
                     prompt: 'Which sign would you like to get the horoscope for?',
                     type: 'string',
                     validate: (sign) => {
-                        if (signs.includes(sign.toLowerCase())) {
-                            return true;
-                        } else {
-                            return 'Invalid sign. Use `help horoscope` for a list of signs.';
-                        }
+                        if (signs.includes(sign.toLowerCase())) return true;
+                        else return 'Invalid sign. Use `help horoscope` for a list of signs.';
                     },
                     parse: (sign) => sign.toLowerCase()
                 }

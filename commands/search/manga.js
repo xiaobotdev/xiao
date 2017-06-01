@@ -29,9 +29,7 @@ module.exports = class MangaCommand extends Command {
         try {
             const { text } = await snekfetch
                 .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/manga/search.xml`)
-                .query({
-                    q: query
-                });
+                .query({ q: query });
             const { manga } = await xml.parseStringAsync(text);
             const synopsis = cleanXML(manga.entry[0].synopsis[0].substr(0, 2000));
             const embed = new RichEmbed()

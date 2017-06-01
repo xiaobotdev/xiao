@@ -16,11 +16,8 @@ module.exports = class MemeCommand extends Command {
                     prompt: 'What meme type do you want to use?',
                     type: 'string',
                     validate: (type) => {
-                        if (codes.includes(type.toLowerCase())) {
-                            return true;
-                        } else {
-                            return 'Invalid meme type. Use `help meme` to view a list of meme types.';
-                        }
+                        if (codes.includes(type.toLowerCase())) return true;
+                        else return 'Invalid meme type. Use `help meme` to view a list of meme types.';
                     },
                     parse: (type) => type.toLowerCase()
                 },

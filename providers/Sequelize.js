@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+
 const { SettingProvider } = require('discord.js-commando');
 const Sequelize = require('sequelize');
 
@@ -110,16 +112,12 @@ class SequelizeProvider extends SettingProvider {
 					this.setupGuildGroup(client.guilds.get(guild), group, settings);
 				}
 			});
-		for (const [event, listener] of this.listeners) {
-			client.on(event, listener);
-		}
+		for (const [event, listener] of this.listeners) client.on(event, listener);
 	}
 
 	destroy() {
 		// Remove all listeners from the client
-		for (const [event, listener] of this.listeners) {
-			this.client.removeListener(event, listener);
-		}
+		for (const [event, listener] of this.listeners) this.client.removeListener(event, listener);
 		this.listeners.clear();
 	}
 
@@ -141,18 +139,14 @@ class SequelizeProvider extends SettingProvider {
 			{ guild: guild !== 'global' ? guild : '0', settings: JSON.stringify(settings) },
 			{ where: { guild: guild !== 'global' ? guild : '0' } }
 		);
-		if (guild === 'global') {
-			this.updateOtherShards(key, val);
-		}
+		if (guild === 'global') this.updateOtherShards(key, val);
 		return val;
 	}
 
 	async remove(guild, key) {
 		guild = this.constructor.getGuildID(guild);
 		const settings = this.settings.get(guild);
-		if (!settings || typeof settings[key] === 'undefined') {
-			return undefined;
-		}
+		if (!settings || typeof settings[key] === 'undefined') return undefined;
 
 		const val = settings[key];
 		settings[key] = undefined;
@@ -160,9 +154,7 @@ class SequelizeProvider extends SettingProvider {
 			{ guild: guild !== 'global' ? guild : '0', settings: JSON.stringify(settings) },
 			{ where: { guild: guild !== 'global' ? guild : '0' } }
 		);
-		if (guild === 'global') {
-			this.updateOtherShards(key, undefined);
-		}
+		if (guild === 'global') this.updateOtherShards(key, undefined);
 		return val;
 	}
 
@@ -180,27 +172,18 @@ class SequelizeProvider extends SettingProvider {
 	 * @private
 	 */
 	setupGuild(guild, settings) {
-		if (typeof guild !== 'string') {
-			throw new TypeError('The guild must be a guild ID or "global".');
-		}
+		if (typeof guild !== 'string') throw new TypeError('The guild must be a guild ID or "global".');
 		guild = this.client.guilds.get(guild) || null;
 
 		// Load the command prefix
 		if (typeof settings.prefix !== 'undefined') {
-			if (guild) {
-				guild._commandPrefix = settings.prefix;
-			} else {
-				this.client._commandPrefix = settings.prefix;
-			}
+			if (guild) guild._commandPrefix = settings.prefix;
+			else this.client._commandPrefix = settings.prefix;
 		}
 
 		// Load all command/group statuses
-		for (const command of this.client.registry.commands.values()) {
-			this.setupGuildCommand(guild, command, settings);
-		}
-		for (const group of this.client.registry.groups.values()) {
-			this.setupGuildGroup(guild, group, settings);
-		}
+		for (const command of this.client.registry.commands.values()) this.setupGuildCommand(guild, command, settings);
+		for (const group of this.client.registry.groups.values()) this.setupGuildGroup(guild, group, settings);
 	}
 
 	/**
@@ -213,9 +196,7 @@ class SequelizeProvider extends SettingProvider {
 	setupGuildCommand(guild, command, settings) {
 		if (typeof settings[`cmd-${command.name}`] === 'undefined') return;
 		if (guild) {
-			if (!guild._commandsEnabled) {
-				guild._commandsEnabled = {};
-			}
+			if (!guild._commandsEnabled) guild._commandsEnabled = {};
 			guild._commandsEnabled[command.name] = settings[`cmd-${command.name}`];
 		} else {
 			command._globalEnabled = settings[`cmd-${command.name}`];
@@ -232,9 +213,7 @@ class SequelizeProvider extends SettingProvider {
 	setupGuildGroup(guild, group, settings) {
 		if (typeof settings[`grp-${group.id}`] === 'undefined') return;
 		if (guild) {
-			if (!guild._groupsEnabled) {
-				guild._groupsEnabled = {};
-			}
+			if (!guild._groupsEnabled) guild._groupsEnabled = {};
 			guild._groupsEnabled[group.id] = settings[`grp-${group.id}`];
 		} else {
 			group._globalEnabled = settings[`grp-${group.id}`];
@@ -252,7 +231,7 @@ class SequelizeProvider extends SettingProvider {
 		key = JSON.stringify(key);
 		val = typeof val !== 'undefined' ? JSON.stringify(val) : 'undefined';
 		this.client.shard.broadcastEval(`
-			if (this.shard.id !== ${this.client.shard.id} && this.provider && this.provider.settings) {
+			if(this.shard.id !== ${this.client.shard.id} && this.provider && this.provider.settings) {
 				this.provider.settings.global[${key}] = ${val};
 			}
 		`);

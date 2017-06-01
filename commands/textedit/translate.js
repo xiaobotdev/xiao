@@ -24,11 +24,8 @@ module.exports = class TranslateCommand extends Command {
                     prompt: 'Which language is being translated to?',
                     type: 'string',
                     validate: (to) => {
-                        if (codes[to.toLowerCase()]) {
-                            return true;
-                        } else {
-                            return 'Invalid Language Code. Use `help translate` for a list of codes.';
-                        }
+                        if (codes[to.toLowerCase()]) return true;
+                        else return 'Invalid Language Code. Use `help translate` for a list of codes.';
                     },
                     parse: (to) => to.toLowerCase()
                 },
@@ -38,11 +35,8 @@ module.exports = class TranslateCommand extends Command {
                     type: 'string',
                     default: '',
                     validate: (from) => {
-                        if (codes[from.toLowerCase()]) {
-                            return true;
-                        } else {
-                            return 'Invalid Language Code. Use `help translate` for a list of codes.';
-                        }
+                        if (codes[from.toLowerCase()]) return true;
+                        else return 'Invalid Language Code. Use `help translate` for a list of codes.';
                     },
                     parse: (from) => from.toLowerCase()
                 }

@@ -30,9 +30,7 @@ module.exports = class OsuCommand extends Command {
                 u: query,
                 type: 'string'
             });
-        if (!body.length) {
-            return msg.say('No Results.');
-        }
+        if (!body.length) return msg.say('No Results.');
         const embed = new RichEmbed()
             .setColor(0xFF66AA)
             .setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')

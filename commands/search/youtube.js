@@ -32,9 +32,7 @@ module.exports = class YouTubeCommand extends Command {
                 q: query,
                 key: GOOGLE_KEY
             });
-        if (!body.items.length) {
-            return msg.say('No Results.');
-        }
+        if (!body.items.length) return msg.say('No Results.');
         const embed = new RichEmbed()
             .setColor(0xDD2825)
             .setTitle(body.items[0].snippet.title)

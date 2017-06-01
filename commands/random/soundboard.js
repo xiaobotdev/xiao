@@ -23,11 +23,8 @@ module.exports = class SoundboardCommand extends Command {
                     prompt: 'What sound would you like to play?',
                     type: 'string',
                     validate: (sound) => {
-                        if (names.includes(sound.toLowerCase())) {
-                            return true;
-                        } else {
-                            return 'Invalid Sound. Use `help soundboard` for a list of sounds.';
-                        }
+                        if (names.includes(sound.toLowerCase())) return true;
+                        else return 'Invalid Sound. Use `help soundboard` for a list of sounds.';
                     },
                     parse: (sound) => sound.toLowerCase()
                 }
@@ -37,17 +34,12 @@ module.exports = class SoundboardCommand extends Command {
 
     async run(msg, args) {
         const voiceChannel = msg.member.voiceChannel;
-        if (!voiceChannel) {
-            return msg.say('Please enter a Voice Channel first.');
-        } else if (!voiceChannel.permissionsFor(this.client.user).has('CONNECT')) {
-            return msg.say('This Command requires the `CONNECT` Permission.');
-        } else if (!voiceChannel.permissionsFor(this.client.user).has('SPEAK')) {
-            return msg.say('This Command requires the `SPEAK` Permission.');
-        } else if (!voiceChannel.joinable) {
-            return msg.say('This Voice Channel is not joinable.');
-        } else if (this.client.voiceConnections.get(voiceChannel.guild.id)) {
-            return msg.say('I am already playing a sound.');
+        if (!voiceChannel) return msg.say('Please enter a Voice Channel first.');
+        if (!voiceChannel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
+            return msg.say('Missing the `CONNECT` or `SPEAK` Permission for the Voice Channel.');
         }
+        if (!voiceChannel.joinable) return msg.say('This Voice Channel is not joinable.');
+        if (this.client.voiceConnections.get(voiceChannel.guild.id)) return msg.say('I am already playing a sound.');
         const { sound } = args;
         const connection = await voiceChannel.join();
         msg.react('🔊');
@@ -55,7 +47,7 @@ module.exports = class SoundboardCommand extends Command {
         dispatcher.on('end', () => {
             voiceChannel.leave();
             msg.react('✅');
-            return null;
         });
+        return null;
     }
 };

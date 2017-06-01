@@ -37,11 +37,8 @@ module.exports = class QuizCommand extends Command {
                 time: 15000,
                 errors: ['time']
             });
-            if (collected.first().content.toLowerCase() !== answer) {
-                return msg.say(`Nope, sorry, it's ${answer}.`);
-            } else {
-                return msg.say('Nice job! 10/10! You deserve some cake!');
-            }
+            if (collected.first().content.toLowerCase() !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
+            else return msg.say('Nice job! 10/10! You deserve some cake!');
         } catch (err) {
             return msg.say(`Time! It was ${answer}, sorry!`);
         }

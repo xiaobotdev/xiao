@@ -31,9 +31,7 @@ module.exports = class TriggeredCommand extends Command {
     async run(msg, args) {
         const user = args.user || msg.author;
         const avatarURL = user.avatarURL('png', 512);
-        if (!avatarURL) {
-            return msg.say('The User Provided has No Avatar.');
-        }
+        if (!avatarURL) return msg.say('The User Provided has No Avatar.');
         const Image = Canvas.Image;
         const canvas = new Canvas(320, 371);
         const ctx = canvas.getContext('2d');
@@ -45,9 +43,7 @@ module.exports = class TriggeredCommand extends Command {
             ctx.drawImage(avatar, 0, 0, 320, 320);
             const imgData = ctx.getImageData(0, 0, 320, 320);
             const { data } = imgData;
-            for (let i = 0; i < data.length; i += 4) {
-                data[i] = Math.max(255, data[i]);
-            }
+            for (let i = 0; i < data.length; i += 4) data[i] = Math.max(255, data[i]);
             ctx.putImageData(imgData, 0, 0);
             ctx.drawImage(base, 0, 0);
         };
