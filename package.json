@@ -36,7 +36,7 @@
   "dependencies": {
     "bufferutil": "^3.0.1",
     "canvas": "automattic/node-canvas",
-    "cheerio": "^1.0.0",
+    "cheerio": "^1.0.0-rc.1",
     "cleverio": "dragonfire535/cleverio",
     "custom-translate": "dragonfire535/custom-translate",
     "discord.js": "hydrabolt/discord.js",
