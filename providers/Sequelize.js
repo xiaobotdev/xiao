@@ -88,7 +88,7 @@ class SequelizeProvider extends SettingProvider {
             this.setupGuild(guild, settings);
         }
 
-		// Listen for changes
+        // Listen for changes
         this.listeners
             .set('commandPrefixChange', (guild, prefix) => this.set(guild, 'prefix', prefix))
             .set('commandStatusChange', (guild, command, enabled) => this.set(guild, `cmd-${command.name}`, enabled))
@@ -114,7 +114,7 @@ class SequelizeProvider extends SettingProvider {
     }
 
     destroy() {
-		// Remove all listeners from the client
+        // Remove all listeners from the client
         for (const [event, listener] of this.listeners) this.client.removeListener(event, listener);
         this.listeners.clear();
     }
@@ -173,7 +173,7 @@ class SequelizeProvider extends SettingProvider {
         if (typeof guild !== 'string') throw new TypeError('The guild must be a guild ID or "global".');
         guild = this.client.guilds.get(guild) || null;
 
-		// Load the command prefix
+        // Load the command prefix
         if (typeof settings.prefix !== 'undefined') {
             if (guild) guild._commandPrefix = settings.prefix;
             else this.client._commandPrefix = settings.prefix;
@@ -229,10 +229,10 @@ class SequelizeProvider extends SettingProvider {
         key = JSON.stringify(key);
         val = typeof val !== 'undefined' ? JSON.stringify(val) : 'undefined';
         this.client.shard.broadcastEval(`
-			if(this.shard.id !== ${this.client.shard.id} && this.provider && this.provider.settings) {
-				this.provider.settings.global[${key}] = ${val};
-			}
-		`);
+            if(this.shard.id !== ${this.client.shard.id} && this.provider && this.provider.settings) {
+                this.provider.settings.global[${key}] = ${val};
+            }
+        `);
     }
 }
 
