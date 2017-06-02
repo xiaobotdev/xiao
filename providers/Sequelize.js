@@ -6,50 +6,50 @@ const Sequelize = require('sequelize');
  * @extends {SettingProvider}
  */
 class SequelizeProvider extends SettingProvider {
-	/**
-	 * @external PostgreSQLDatabase
-	 * @see {@link https://www.npmjs.com/package/sequelize}
-	 */
+    /**
+     * @external PostgreSQLDatabase
+     * @see {@link https://www.npmjs.com/package/sequelize}
+     */
 
-	/**
-	 * @param {SQLDatabase} db - Database for the provider
-	 */
+    /**
+     * @param {SQLDatabase} db - Database for the provider
+     */
     constructor(db) {
         super();
 
-		/**
-		 * Database that will be used for storing/retrieving settings
-		 * @type {SQLDatabase}
-		 */
+        /**
+         * Database that will be used for storing/retrieving settings
+         * @type {SQLDatabase}
+         */
         this.db = db;
 
-		/**
-		 * Client that the provider is for (set once the client is ready, after using {@link CommandoClient#setProvider})
-		 * @name SequelizeProvider#client
-		 * @type {CommandoClient}
-		 * @readonly
-		 */
+        /**
+         * Client that the provider is for (set once the client is ready)
+         * @name SequelizeProvider#client
+         * @type {CommandoClient}
+         * @readonly
+         */
         Object.defineProperty(this, 'client', { value: null, writable: true });
 
-		/**
-		 * Settings cached in memory, mapped by guild ID (or 'global')
-		 * @type {Map}
-		 * @private
-		 */
+        /**
+         * Settings cached in memory, mapped by guild ID (or 'global')
+         * @type {Map}
+         * @private
+         */
         this.settings = new Map();
 
-		/**
-		 * Listeners on the Client, mapped by the event name
-		 * @type {Map}
-		 * @private
-		 */
+        /**
+         * Listeners on the Client, mapped by the event name
+         * @type {Map}
+         * @private
+         */
         this.listeners = new Map();
 
-		/**
-		 * Sequelize Model Object
-		 * @type {SequelizeModel}
-		 * @private
-		 */
+        /**
+         * Sequelize Model Object
+         * @type {SequelizeModel}
+         * @private
+         */
         this.model = this.db.define('settings', {
             guild: {
                 type: Sequelize.STRING,
@@ -60,17 +60,17 @@ class SequelizeProvider extends SettingProvider {
             settings: { type: Sequelize.TEXT }
         });
 
-		/**
-		 * @external SequelizeModel
-		 * @see {@link http://docs.sequelizejs.com/en/latest/api/model/}
-		 */
+        /**
+         * @external SequelizeModel
+         * @see {@link http://docs.sequelizejs.com/en/latest/api/model/}
+         */
     }
 
     async init(client) {
         this.client = client;
         await this.db.sync();
 
-		// Load all settings
+        // Load all settings
         const rows = await this.model.findAll();
         for (const row of rows) {
             let settings;
@@ -134,8 +134,8 @@ class SequelizeProvider extends SettingProvider {
 
         settings[key] = val;
         await this.model.upsert(
-			{ guild: guild !== 'global' ? guild : '0', settings: JSON.stringify(settings) },
-			{ where: { guild: guild !== 'global' ? guild : '0' } }
+            { guild: guild !== 'global' ? guild : '0', settings: JSON.stringify(settings) },
+            { where: { guild: guild !== 'global' ? guild : '0' } }
 		);
         if (guild === 'global') this.updateOtherShards(key, val);
         return val;
@@ -149,8 +149,8 @@ class SequelizeProvider extends SettingProvider {
         const val = settings[key];
         settings[key] = undefined;
         await this.model.upsert(
-			{ guild: guild !== 'global' ? guild : '0', settings: JSON.stringify(settings) },
-			{ where: { guild: guild !== 'global' ? guild : '0' } }
+            { guild: guild !== 'global' ? guild : '0', settings: JSON.stringify(settings) },
+            { where: { guild: guild !== 'global' ? guild : '0' } }
 		);
         if (guild === 'global') this.updateOtherShards(key, undefined);
         return val;
@@ -163,12 +163,12 @@ class SequelizeProvider extends SettingProvider {
         await this.model.destroy({ where: { guild: guild !== 'global' ? guild : '0' } });
     }
 
-	/**
-	 * Loads all settings for a guild
-	 * @param {string} guild - Guild ID to load the settings of (or 'global')
-	 * @param {Object} settings - Settings to load
-	 * @private
-	 */
+    /**
+     * Loads all settings for a guild
+     * @param {string} guild - Guild ID to load the settings of (or 'global')
+     * @param {Object} settings - Settings to load
+     * @private
+     */
     setupGuild(guild, settings) {
         if (typeof guild !== 'string') throw new TypeError('The guild must be a guild ID or "global".');
         guild = this.client.guilds.get(guild) || null;
@@ -179,18 +179,18 @@ class SequelizeProvider extends SettingProvider {
             else this.client._commandPrefix = settings.prefix;
         }
 
-		// Load all command/group statuses
+        // Load all command/group statuses
         for (const command of this.client.registry.commands.values()) this.setupGuildCommand(guild, command, settings);
         for (const group of this.client.registry.groups.values()) this.setupGuildGroup(guild, group, settings);
     }
 
-	/**
-	 * Sets up a command's status in a guild from the guild's settings
-	 * @param {?Guild} guild - Guild to set the status in
-	 * @param {Command} command - Command to set the status of
-	 * @param {Object} settings - Settings of the guild
-	 * @private
-	 */
+    /**
+     * Sets up a command's status in a guild from the guild's settings
+     * @param {?Guild} guild - Guild to set the status in
+     * @param {Command} command - Command to set the status of
+     * @param {Object} settings - Settings of the guild
+     * @private
+     */
     setupGuildCommand(guild, command, settings) {
         if (typeof settings[`cmd-${command.name}`] === 'undefined') return;
         if (guild) {
@@ -201,13 +201,13 @@ class SequelizeProvider extends SettingProvider {
         }
     }
 
-	/**
-	 * Sets up a group's status in a guild from the guild's settings
-	 * @param {?Guild} guild - Guild to set the status in
-	 * @param {CommandGroup} group - Group to set the status of
-	 * @param {Object} settings - Settings of the guild
-	 * @private
-	 */
+    /**
+     * Sets up a group's status in a guild from the guild's settings
+     * @param {?Guild} guild - Guild to set the status in
+     * @param {CommandGroup} group - Group to set the status of
+     * @param {Object} settings - Settings of the guild
+     * @private
+     */
     setupGuildGroup(guild, group, settings) {
         if (typeof settings[`grp-${group.id}`] === 'undefined') return;
         if (guild) {
@@ -218,12 +218,12 @@ class SequelizeProvider extends SettingProvider {
         }
     }
 
-	/**
-	 * Updates a global setting on all other shards if using the {@link ShardingManager}.
-	 * @param {string} key - Key of the setting to update
-	 * @param {*} val - Value of the setting
-	 * @private
-	 */
+    /**
+     * Updates a global setting on all other shards if using the {@link ShardingManager}.
+     * @param {string} key - Key of the setting to update
+     * @param {*} val - Value of the setting
+     * @private
+     */
     updateOtherShards(key, val) {
         if (!this.client.shard) return;
         key = JSON.stringify(key);
