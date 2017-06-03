@@ -15,7 +15,7 @@ module.exports = class PokemonFusionCommand extends Command {
                     prompt: 'What Pokemon should be fused?',
                     type: 'string',
                     validate: (source1) => {
-                        if (pokemon.includes(source1.toLowerCase())) return true;
+                        if (pokemon[source1.toLowerCase()]) return true;
                         else return 'Only Pokemon from Generation 1 may be used.';
                     },
                     parse: (source1) => pokemon[source1.toLowerCase()]
@@ -25,7 +25,7 @@ module.exports = class PokemonFusionCommand extends Command {
                     prompt: 'What Pokemon should be fused?',
                     type: 'string',
                     validate: (source2) => {
-                        if (pokemon.includes(source2.toLowerCase())) return true;
+                        if (pokemon[source2.toLowerCase()]) return true;
                         else return 'Only Pokemon from Generation 1 may be used.';
                     },
                     parse: (source2) => pokemon[source2.toLowerCase()]
