@@ -8,25 +8,25 @@ module.exports = class PokemonFusionCommand extends Command {
             aliases: ['poke-fusion', 'poke-fuse'],
             group: 'random',
             memberName: 'pokemon-fusion',
-            description: 'Fuses two Generation 1 Pokemon together.',
+            description: 'Fuses two Generation 1 Pokémon together.',
             args: [
                 {
                     key: 'source1',
-                    prompt: 'What Pokemon should be fused?',
+                    prompt: 'What Pokémon should be fused?',
                     type: 'string',
                     validate: (source1) => {
                         if (pokemon[source1.toLowerCase()]) return true;
-                        else return 'Only Pokemon from Generation 1 may be used.';
+                        else return 'Only Pokémon from Generation 1 may be used.';
                     },
                     parse: (source1) => pokemon[source1.toLowerCase()]
                 },
                 {
                     key: 'source2',
-                    prompt: 'What Pokemon should be fused?',
+                    prompt: 'What Pokémon should be fused?',
                     type: 'string',
                     validate: (source2) => {
                         if (pokemon[source2.toLowerCase()]) return true;
-                        else return 'Only Pokemon from Generation 1 may be used.';
+                        else return 'Only Pokémon from Generation 1 may be used.';
                     },
                     parse: (source2) => pokemon[source2.toLowerCase()]
                 }
