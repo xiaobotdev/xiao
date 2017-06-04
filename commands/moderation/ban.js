@@ -79,6 +79,7 @@ module.exports = class BanCommand extends Command {
                 return modlogs.send({ embed });
             }
         } catch (err) {
+            console.log(err);
             return msg.say('Aborting Ban.');
         }
     }
