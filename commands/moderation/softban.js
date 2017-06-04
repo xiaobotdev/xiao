@@ -58,7 +58,7 @@ module.exports = class SoftbanCommand extends Command {
             });
             await msg.guild.unban(member.user, 'Softban');
             await msg.say(`Successfully softbanned ${member.user.tag}.`);
-            if (!modlogs || !modlogs.permissionsFor(this.client.user.has('SEND_MESSAGES'))) {
+            if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
                 return msg.say('Could not log the softban to the mod logs.');
             } else if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
                 return modlogs.send(stripIndents`

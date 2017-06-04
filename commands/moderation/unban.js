@@ -48,7 +48,7 @@ module.exports = class UnbanCommand extends Command {
             if (!['y', 'yes'].includes(collected.first().content.toLowerCase())) return msg.say('Aborting Unban.');
             await msg.guild.unban(member, `${msg.author.tag}: ${reason}`);
             await msg.say(`Successfully unbanned ${member.user.tag}.`);
-            if (!modlogs || !modlogs.permissionsFor(this.client.user.has('SEND_MESSAGES'))) {
+            if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
                 return msg.say('Could not log the unban to the mod logs.');
             } else if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
                 return modlogs.send(stripIndents`
