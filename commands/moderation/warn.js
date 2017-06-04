@@ -51,7 +51,7 @@ module.exports = class WarnCommand extends Command {
                 await msg.say('Failed to Send DM.');
             }
             await msg.say(`Successfully warned ${member.user.tag}.`);
-            if (!modlogs || !modlogs.permissionsFor(this.client.user.has('SEND_MESSAGES'))) {
+            if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
                 return msg.say('Could not log the warn to the mod logs.');
             } else if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
                 return modlogs.send(stripIndents`
