@@ -45,7 +45,7 @@ module.exports = class XKCDCommand extends Command {
             return msg.embed(embed);
         } else {
             const choice = parseInt(type, 10);
-            if (isNaN(choice) || current.body.num < choice || choice < 0) return msg.say('Invalid Number');
+            if (isNaN(choice) || current.body.num < choice || choice < 1) return msg.say('Invalid Number.');
             const { body } = await snekfetch
                 .get(`https://xkcd.com/${choice}/info.0.json`);
             const embed = new RichEmbed()
