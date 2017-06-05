@@ -7,20 +7,16 @@ module.exports = class XKCDCommand extends Command {
         super(client, {
             name: 'xkcd',
             aliases: ['kcd'],
-            group: 'randomimg',
+            group: 'search',
             memberName: 'xkcd',
-            description: 'Gets an XKCD Comic, optionally opting for today\'s.',
+            description: 'Gets an XKCD Comic, optionally opting for today\'s or random.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {
                     key: 'type',
                     prompt: 'Would you like to get the comic for today or random?',
                     type: 'string',
-                    default: 'random',
-                    validate: (type) => {
-                        if (['today', 'random'].includes(type.toLowerCase())) return true;
-                        else return 'Please enter either `today` or `random`';
-                    }
+                    default: 'random'
                 }
             ]
         });
@@ -37,10 +33,21 @@ module.exports = class XKCDCommand extends Command {
                 .setImage(current.body.img)
                 .setFooter(current.body.alt);
             return msg.embed(embed);
-        } else {
+        } else if (type === 'random') {
             const random = Math.floor(Math.random() * current.body.num) + 1;
             const { body } = await snekfetch
                 .get(`https://xkcd.com/${random}/info.0.json`);
+            const embed = new RichEmbed()
+                .setTitle(`${body.num} - ${body.title}`)
+                .setURL(`https://xkcd.com/${body.num}`)
+                .setImage(body.img)
+                .setFooter(body.alt);
+            return msg.embed(embed);
+        } else {
+            const choice = parseInt(type, 10);
+            if (isNaN(choice) || body.num < choice || body.num < 0) return msg.say('Invalid Number');
+            const { body } = await snekfetch
+                .get(`https://xkcd.com/${choice}/info.0.json`);
             const embed = new RichEmbed()
                 .setTitle(`${body.num} - ${body.title}`)
                 .setURL(`https://xkcd.com/${body.num}`)
