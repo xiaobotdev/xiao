@@ -41,43 +41,43 @@ module.exports = class ForecastCommand extends Command {
                     **High:** ${forecasts[0].high}°F
                     **Low:** ${forecasts[0].low}°F
                     **Condition:** ${forecasts[0].text}
-                `)
+                `, true)
             .addField(`❯ ${forecasts[1].day} - ${forecasts[1].date}`,
                 stripIndents`
                     **High:** ${forecasts[1].high}°F
                     **Low:** ${forecasts[1].low}°F
                     **Condition:** ${forecasts[1].text}
-                `)
+                `, true)
             .addField(`❯ ${forecasts[2].day} - ${forecasts[2].date}`,
                 stripIndents`
                     **High:** ${forecasts[2].high}°F
                     **Low:** ${forecasts[2].low}°F
                     **Condition:** ${forecasts[2].text}
-                `)
+                `, true)
             .addField(`❯ ${forecasts[3].day} - ${forecasts[3].date}`,
                 stripIndents`
                     **High:** ${forecasts[3].high}°F
                     **Low:** ${forecasts[3].low}°F
                     **Condition:** ${forecasts[3].text}
-                `)
+                `, true)
             .addField(`❯ ${forecasts[4].day} - ${forecasts[4].date}`,
                 stripIndents`
                     **High:** ${forecasts[4].high}°F
                     **Low:** ${forecasts[4].low}°F
                     **Condition:** ${forecasts[4].text}
-                `)
+                `, true)
             .addField(`❯ ${forecasts[5].day} - ${forecasts[5].date}`,
                 stripIndents`
                     **High:** ${forecasts[5].high}°F
                     **Low:** ${forecasts[5].low}°F
                     **Condition:** ${forecasts[5].text}
-                `)
+                `, true)
             .addField(`❯ ${forecasts[6].day} - ${forecasts[6].date}`,
                 stripIndents`
                     **High:** ${forecasts[6].high}°F
                     **Low:** ${forecasts[6].low}°F
                     **Condition:** ${forecasts[6].text}
-                `);
+                `, true);
         return msg.embed(embed);
     }
 };
