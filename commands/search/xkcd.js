@@ -16,7 +16,8 @@ module.exports = class XKCDCommand extends Command {
                     key: 'type',
                     prompt: 'Please enter either a specific comic number, today, or random.',
                     type: 'string',
-                    default: 'random'
+                    default: 'random',
+                    parse: (type) => type.toLowerCase()
                 }
             ]
         });
