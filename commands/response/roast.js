@@ -12,7 +12,7 @@ module.exports = class RoastCommand extends Command {
                 {
                     key: 'user',
                     prompt: 'What user do you want to roast?',
-                    type: 'string',
+                    type: 'user',
                     default: ''
                 }
             ]
@@ -22,6 +22,6 @@ module.exports = class RoastCommand extends Command {
     run(msg, args) {
         const user = args.user || msg.author;
         const roast = roasts[Math.floor(Math.random() * roasts.length)];
-        return msg.say(`${user}, ${roast}`);
+        return msg.say(`${user.username}, ${roast}`);
     }
 };
