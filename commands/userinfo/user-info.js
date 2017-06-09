@@ -39,7 +39,7 @@ module.exports = class UserInfoCommand extends Command {
             .addField('❯ Server Join Date',
                 moment(member.joinedTimestamp).format('MMMM Do YYYY h:mm:ss A'))
             .addField('❯ Status',
-                statuses[status].text, true)
+                statuses[status], true)
             .addField('❯ Playing',
                 member.user.presence.game ? member.user.presence.game.name : 'None', true)
             .addField('❯ Highest Role',
