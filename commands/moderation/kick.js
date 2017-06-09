@@ -37,11 +37,11 @@ module.exports = class KickCommand extends Command {
         const { member, reason } = args;
         if (!member.kickable) return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
         await msg.say(`Are you sure you want to kick ${member.user.tag} (${member.id})?`);
-        const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
+        const msgs = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
             max: 1,
             time: 15000
         });
-        if (!collected.size || !['y', 'yes'].includes(collected.first().content.toLowerCase())) return msg.say('Aborting.');
+        if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
         try {
             await member.send(stripIndents`
                 You were kicked from ${msg.guild.name}!

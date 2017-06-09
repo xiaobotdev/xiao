@@ -39,11 +39,11 @@ module.exports = class UnbanCommand extends Command {
         if (!bans.has(id)) return msg.say('This ID is not in the Guild Banlist.');
         const member = bans.get(id).user;
         await msg.say(`Are you sure you want to unban ${member.tag} (${member.id})?`);
-        const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
+        const msgs = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
             max: 1,
             time: 15000
         });
-        if (!collected.size || !['y', 'yes'].includes(collected.first().content.toLowerCase())) return msg.say('Aborting.');
+        if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
         await msg.guild.unban(member, `${msg.author.tag}: ${reason}`);
         await msg.say(`Successfully unbanned ${member.user.tag}.`);
         if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {

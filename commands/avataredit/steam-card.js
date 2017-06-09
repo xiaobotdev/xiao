@@ -31,8 +31,8 @@ module.exports = class SteamCardCommand extends Command {
     async run(msg, args) {
         const user = args.user || msg.author;
         const avatarURL = user.displayAvatarURL({
-            format: 'png', 
-            size: 256
+            format: 'png',
+            size: 512
         });
         const Image = Canvas.Image;
         Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' }); // eslint-disable-line max-len

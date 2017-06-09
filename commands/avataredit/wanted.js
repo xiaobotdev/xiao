@@ -31,8 +31,8 @@ module.exports = class WantedCommand extends Command {
     async run(msg, args) {
         const user = args.user || msg.author;
         const avatarURL = user.displayAvatarURL({
-            format: 'png', 
-            size: 256
+            format: 'png',
+            size: 512
         });
         const Image = Canvas.Image;
         const canvas = new Canvas(741, 1000);
