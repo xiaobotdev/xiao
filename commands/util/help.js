@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 
 module.exports = class HelpCommand extends Command {
     constructor(client) {
@@ -30,7 +31,10 @@ module.exports = class HelpCommand extends Command {
             if (commands.length === 1) {
                 const embed = new RichEmbed()
                     .setTitle(`Command ${commands[0].name}`)
-                    .setDescription(commands[0].description)
+                    .setDescription(stripIndents`
+                        ${commands[0].description}
+                        ${commands[0].details || ''}
+                    `)
                     .addField('❯ Format',
                         msg.anyUsage(`${commands[0].name} ${commands[0].format ? commands[0].format : ''}`))
                     .addField('❯ Aliases',
@@ -41,7 +45,7 @@ module.exports = class HelpCommand extends Command {
             } else if (commands.length > 1) {
                 return msg.say(`Multiple commands found, please be more specific: ${commands.map((c) => c.name).join(', ')}`);
             } else {
-                return msg.say(`Could not identify command. Use \`${msg.usage(null)}\` to view a list of commands.`);
+                return msg.say(`Could not identify command. Use ${msg.usage(null)} to view a list of commands.`);
             }
         } else {
             const embed = new RichEmbed()
