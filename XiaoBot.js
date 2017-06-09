@@ -61,7 +61,7 @@ client.dispatcher.addInhibitor((msg) => {
 });
 
 client.on('message', (msg) => {
-    if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
+    if (msg.guild && !msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     if (/(discord(\.gg\/|app\.com\/invite\/|\.me\/))/gi.test(msg.content)) {
         if (!msg.guild || !msg.guild.settings.get('inviteGuard')) return;
         if (msg.author.bot || msg.member.hasPermission('ADMINISTRATOR')) return;
