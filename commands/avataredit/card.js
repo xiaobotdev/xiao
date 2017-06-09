@@ -34,7 +34,7 @@ module.exports = class CardCommand extends Command {
 
     async run(msg, args) {
         const member = args.member || msg.member;
-        const avatarURL = member.displayAvatarURL({
+        const avatarURL = member.user.displayAvatarURL({
             format: 'png', 
             size: 256
         });
