@@ -32,7 +32,7 @@ module.exports = class BobRossCommand extends Command {
     async run(msg, args) {
         const user = args.user || msg.author;
         const avatarURL = user.displayAvatarURL({
-            format: 'png', 
+            format: 'png',
             size: 256
         });
         const Image = Canvas.Image;

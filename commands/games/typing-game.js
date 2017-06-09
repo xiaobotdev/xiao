@@ -33,12 +33,12 @@ module.exports = class TypingGameCommand extends Command {
             .setTitle(`You have ${time / 1000} seconds to type:`)
             .setDescription(sentence);
         await msg.embed(embed);
-        const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
+        const msgs = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
             max: 1,
             time
         });
-        if (!collected.size) return msg.say('Time! Sorry!');
-        if (collected.first().content !== sentence) return msg.say('Nope, sorry!');
+        if (!msgs.size) return msg.say('Time! Sorry!');
+        if (msgs.first().content !== sentence) return msg.say('Nope, sorry!');
         else return msg.say('Nice job! 10/10! You deserve some cake!');
     }
 };

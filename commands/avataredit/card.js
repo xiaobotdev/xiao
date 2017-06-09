@@ -35,7 +35,7 @@ module.exports = class CardCommand extends Command {
     async run(msg, args) {
         const member = args.member || msg.member;
         const avatarURL = member.user.displayAvatarURL({
-            format: 'png', 
+            format: 'png',
             size: 256
         });
         const cardID = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;

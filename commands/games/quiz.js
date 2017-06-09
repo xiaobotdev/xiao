@@ -31,12 +31,12 @@ module.exports = class QuizCommand extends Command {
                 True or False: ${decodeURIComponent(body.results[0].question)}
             `);
         await msg.embed(embed);
-        const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
+        const msgs = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
             max: 1,
             time: 15000
         });
-        if (!collected.size) return msg.say(`Time! It was ${answer}, sorry!`);
-        if (collected.first().content.toLowerCase() !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
+        if (!msgs.size) return msg.say(`Time! It was ${answer}, sorry!`);
+        if (msgs.first().content.toLowerCase() !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
         else return msg.say('Nice job! 10/10! You deserve some cake!');
     }
 };

@@ -35,11 +35,11 @@ module.exports = class WarnCommand extends Command {
         const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
         const { member, reason } = args;
         await msg.say(`Are you sure you want to warn ${member.user.tag} (${member.id})?`);
-        const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
+        const msgs = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
             max: 1,
             time: 15000
         });
-        if (!collected.size || !['y', 'yes'].includes(collected.first().content.toLowerCase())) return msg.say('Aborting.');
+        if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
         try {
             await member.user.send(stripIndents`
                 You were warned in ${msg.guild.name}!
