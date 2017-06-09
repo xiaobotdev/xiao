@@ -28,7 +28,7 @@ module.exports = class UserInfoCommand extends Command {
         const member = args.member || msg.member;
         const status = member.user.presence.status;
         const embed = new RichEmbed()
-            .setColor(statuses[status].color)
+            .setColor(member.displayHexColor)
             .setThumbnail(member.user.displayAvatarURL())
             .addField('❯ Name',
                 member.user.tag, true)
@@ -41,7 +41,11 @@ module.exports = class UserInfoCommand extends Command {
             .addField('❯ Status',
                 statuses[status].text, true)
             .addField('❯ Playing',
-                member.user.presence.game ? member.user.presence.game.name : 'None', true);
+                member.user.presence.game ? member.user.presence.game.name : 'None', true)
+            .addField('❯ Highest Role',
+                member.highestRole.name === '@everyone' ? 'No Roles' : member.highestRole.name, true)
+            .addField('❯ Hoist Role',
+                member.hoistRole ? member.hoistRole.name : 'None', true);
         return msg.embed(embed);
     }
 };
