@@ -43,9 +43,9 @@ module.exports = class UserInfoCommand extends Command {
             .addField('❯ Playing',
                 member.user.presence.game ? member.user.presence.game.name : 'None', true)
             .addField('❯ Highest Role',
-                member.highestRole.name === '@everyone' ? 'No Roles' : member.highestRole.name, true)
+                member.highestRole.name, true)
             .addField('❯ Hoist Role',
-                member.hoistRole ? member.hoistRole.name : 'None', true);
+                member.hoistRole ? member.hoistRole.name : 'Not Hoisted', true);
         return msg.embed(embed);
     }
 };
