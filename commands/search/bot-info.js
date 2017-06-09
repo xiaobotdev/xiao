@@ -41,7 +41,8 @@ module.exports = class BotSearchCommand extends Command {
                     body.prefix, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            if (err.message === '404 Not Found') return msg.say('Bot Not Found.');
+            else throw err;
         }
     }
 };

@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { cleanXML } = require('../../util/Util');
+const { cleanXML } = require('../../structures/Util');
 const { promisifyAll } = require('tsubaki');
 const xml = promisifyAll(require('xml2js'));
 const { ANIMELIST_LOGIN } = process.env;
@@ -49,7 +49,8 @@ module.exports = class MangaCommand extends Command {
                     manga.entry[0].end_date[0], true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say('No Results.');
+            if (err.message === 'Parse Error') return msg.say('No Results.');
+            else throw err;
         }
     }
 };

@@ -31,8 +31,10 @@ module.exports = class RIPCommand extends Command {
 
     async run(msg, args) {
         const user = args.user || msg.author;
-        const avatarURL = user.avatarURL('png', 256);
-        if (!avatarURL) return msg.say('The User Provided has No Avatar.');
+        const avatarURL = user.displayAvatarURL({
+            format: 'png', 
+            size: 256
+        });
         const Image = Canvas.Image;
         const canvas = new Canvas(507, 338);
         const ctx = canvas.getContext('2d');

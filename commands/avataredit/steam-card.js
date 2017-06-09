@@ -30,10 +30,13 @@ module.exports = class SteamCardCommand extends Command {
 
     async run(msg, args) {
         const user = args.user || msg.author;
-        const avatarURL = user.avatarURL('png', 512);
-        if (!avatarURL) return msg.say('The User Provided has No Avatar.');
+        const avatarURL = user.displayAvatarURL({
+            format: 'png', 
+            size: 256
+        });
         const Image = Canvas.Image;
-        Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OpenSans.ttf'), { family: 'Open Sans' }); // eslint-disable-line max-len
+        Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' }); // eslint-disable-line max-len
+        Canvas.registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'NotoEmoji-Regular.ttf'), { family: 'Roboto' }); // eslint-disable-line max-len
         const canvas = new Canvas(494, 568);
         const ctx = canvas.getContext('2d');
         const base = new Image();
@@ -43,7 +46,7 @@ module.exports = class SteamCardCommand extends Command {
             ctx.fillRect(0, 0, 494, 568);
             ctx.drawImage(avatar, 25, 25, 450, 450);
             ctx.drawImage(base, 0, 0);
-            ctx.font = '30px Open Sans';
+            ctx.font = '30px Roboto';
             ctx.fillText(user.username, 35, 48);
         };
         base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));

@@ -38,16 +38,13 @@ module.exports = class MathGameCommand extends Command {
             .setTitle('You have 10 seconds to answer:')
             .setDescription(expression);
         await msg.embed(embed);
-        try {
-            const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
-                max: 1,
-                time: 10000,
-                errors: ['time']
-            });
-            if (collected.first().content !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
-            else return msg.say('Nice job! 10/10! You deserve some cake!');
-        } catch (err) {
-            return msg.say(`Time! It was ${answer}, sorry!`);
-        }
+        const collected = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
+            max: 1,
+            time: 10000
+        });
+        if (!collected.size) return msg.say(`Time! It was ${answer}, sorry!`);
+        if (collected.first().content !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
+        else return msg.say('Nice job! 10/10! You deserve some cake!');
+            
     }
 };
