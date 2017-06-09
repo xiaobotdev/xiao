@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const fishes = [':fish:', ':tropical_fish:', ':blowfish:'];
+const fishes = [':fish:', ':tropical_fish:', ':blowfish:', ':wrench:'];
 
 module.exports = class FishyCommand extends Command {
     constructor(client) {

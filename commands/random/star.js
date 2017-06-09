@@ -25,12 +25,9 @@ module.exports = class StarCommand extends Command {
     async run(msg, args, reaction) {
         const { id } = args;
         const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
-        if (!channel || this.starred.includes(id)) return null;
-        if (!channel.permissionsFor(this.client.user).has('SEND_MESSAGES')) return null;
+        if (!channel || !channel.permissionsFor(this.client.user).has('SEND_MESSAGES') || this.starred.includes(id)) return null;
         const message = await msg.channel.fetchMessage(id);
-        if (!reaction && msg.author.id === message.author.id) {
-            return msg.reply('You cannot star your own messages, baka.');
-        }
+        if (!reaction && msg.author.id === message.author.id) return msg.reply('You cannot star your own messages, baka.');
         this.starred.push(id);
         if (!channel.permissionsFor(this.client.user).has('EMBED_LINKS')) {
             return msg.say(stripIndents`

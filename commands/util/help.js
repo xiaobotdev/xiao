@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { RichEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
 
 module.exports = class HelpCommand extends Command {
     constructor(client) {
@@ -29,14 +28,18 @@ module.exports = class HelpCommand extends Command {
         const showAll = command && command.toLowerCase() === 'all';
         if (command && !showAll) {
             if (commands.length === 1) {
-                return msg.say(stripIndents`
-                    __Command **${commands[0].name}**:__ *${commands[0].description}*
-                    ${commands[0].guildOnly ? 'Usable Only in Servers' : 'Usable in Servers and DM'}
-                    **Format:** ${msg.anyUsage(`${commands[0].name} ${commands[0].format ? commands[0].format : ''}`)}
-                    **Aliases:** ${commands[0].aliases.join(', ') || 'None'}
-                    **Group:** ${commands[0].group.name}
-                    ${commands[0].details || ''}
-                `);
+                const embed = new RichEmbed()
+                    .setTitle(`Command ${commands[0].name}`)
+                    .setDescription(commands[0].description)
+                    .addField('❯ Format',
+                        msg.anyUsage(`${commands[0].name} ${commands[0].format ? commands[0].format : ''}`))
+                    .addField('❯ Aliases',
+                        commands[0].aliases.join(', ') || 'None')
+                    .addField('❯ Group',
+                        commands[0].group.name);
+                return msg.embed(embed);
+            } else if (commands.length > 1) {
+                return msg.say(`Multiple commands found, please be more specific: ${commands.map((c) => c.name).join(', ')}`);
             } else {
                 return msg.say(`Could not identify command. Use \`${msg.usage(null)}\` to view a list of commands.`);
             }
@@ -48,7 +51,7 @@ module.exports = class HelpCommand extends Command {
             for (const group of this.client.registry.groups.values()) {
                 embed.addField(`❯ ${group.name}`,
                     showAll ?
-                        group.commands.map((c) => c.name).join(', ') :
+                        group.commands.map((c) => c.name).join(', ') || 'None' :
                         group.commands.filter((c) => c.isUsable(msg)).map((c) => c.name).join(', ') || 'None');
             }
             try {

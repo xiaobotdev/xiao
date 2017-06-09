@@ -48,7 +48,8 @@ module.exports = class GithubCommand extends Command {
                     body.language, true);
             return msg.embed(embed);
         } catch (err) {
-            return msg.say(err.message);
+            if (err.message === '404 Not Found') return msg.say('Repo Not Found.');
+            else throw err;
         }
     }
 };

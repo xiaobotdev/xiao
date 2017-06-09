@@ -1,0 +1,18 @@
+{
+    "online": {
+        "text": "<:online:313956277808005120> Online",
+        "color": "#00AE86"
+    },
+    "idle": {
+        "text": "<:away:313956277220802560> Idle",
+        "color": "#FFFF00"
+    },
+    "dnd": {
+        "text": "<:dnd:313956276893646850> Do Not Disturb",
+        "color": "#FF0000"
+    },
+    "offline": {
+        "text": "<:offline:313956277237710868> Offline",
+        "color": "#808080"
+    }
+};

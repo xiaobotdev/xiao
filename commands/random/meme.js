@@ -39,6 +39,6 @@ module.exports = class MemeCommand extends Command {
 
     run(msg, args) {
         const { type, top, bottom } = args;
-        return msg.say({ files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`] });
+        return msg.say(`https://memegen.link/${type}/${top}/${bottom}.jpg`);
     }
 };

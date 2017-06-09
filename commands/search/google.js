@@ -28,7 +28,7 @@ module.exports = class GoogleCommand extends Command {
             .query({ q: query });
         const $ = cheerio.load(text);
         let href = $('.r').first().find('a').first().attr('href');
-        if (!href) return msg.say('No Results.');
+        if (!href) return message.edit('No Results.');
         href = querystring.parse(href.replace('/url?', ''));
         return message.edit(href.q);
     }

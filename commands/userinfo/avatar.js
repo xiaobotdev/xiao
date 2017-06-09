@@ -20,6 +20,6 @@ module.exports = class AvatarCommand extends Command {
 
     run(msg, args) {
         const user = args.user || msg.author;
-        return msg.say(user.avatarURL('webp', 2048) || user.displayAvatarURL);
+        return msg.say(user.displayAvatarURL({ size: 2048 }));
     }
 };

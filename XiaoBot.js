@@ -56,18 +56,19 @@ client.dispatcher.addInhibitor((msg) => {
     if (msg.channel.type === 'dm') return false;
     const role = msg.guild.settings.get('singleRole');
     if (!msg.guild.roles.has(role) || msg.member.hasPermission('ADMINISTRATOR')) return false;
-    if (!msg.member.roles.has(role)) {
-        return ['singleRole', msg.reply(`Only the ${msg.guild.roles.get(role).name} role may use commands.`)];
-    } else {
-        return false;
-    }
+    if (!msg.member.roles.has(role)) return 'single role';
+    else return false;
 });
 
 client.on('message', (msg) => {
-    if (!msg.guild || !msg.guild.settings.get('inviteGuard')) return;
+    if (!msg.channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     if (/(discord(\.gg\/|app\.com\/invite\/|\.me\/))/gi.test(msg.content)) {
+        if (!msg.guild || !msg.guild.settings.get('inviteGuard')) return;
         if (msg.author.bot || msg.member.hasPermission('ADMINISTRATOR')) return;
-        if (!msg.channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'MANAGE_MESSAGES'])) return;
+        if (!msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) {
+            msg.say('Could not delete invite, missing permissions.');
+            return;
+        }
         msg.delete();
         msg.reply('Invites are prohibited from being posted here.');
     }
@@ -75,23 +76,20 @@ client.on('message', (msg) => {
 
 client.on('messageReactionAdd', (reaction, user) => {
     if (reaction.emoji.name !== '⭐') return;
-    const { message } = reaction;
-    const channel = message.guild.channels.get(message.guild.settings.get('starboard'));
-    if (!channel) return;
-    if (!message.channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'MANAGE_MESSAGES'])) return;
-    if (user.id === message.author.id) {
+    const msg = reaction.message;
+    const channel = msg.guild.channels.get(msg.guild.settings.get('starboard'));
+    if (!channel || !msg.channel.permissionsFor(client.user).has(['SEND_MESSAGES', 'MANAGE_MESSAGES'])) return;
+    if (user.id === msg.author.id) {
         reaction.remove(user);
-        message.reply('You cannot star your own messages, baka.');
+        msg.reply('You cannot star your own messages, baka.');
         return;
     }
-    client.registry.resolveCommand('random:star').run(message, { id: message.id }, true);
+    client.registry.resolveCommand('random:star').run(msg, { id: msg.id }, true);
 });
 
 client.on('guildMemberAdd', (member) => {
     const role = member.guild.roles.get(member.guild.settings.get('joinRole'));
-    if (role && member.guild.me.hasPermission('MANAGE_ROLES')) {
-        member.addRole(role).catch(() => null);
-    }
+    if (role && member.guild.me.hasPermission('MANAGE_ROLES')) member.addRole(role).catch(() => null);
     const channel = member.guild.channels.get(member.guild.settings.get('memberLog'));
     if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     const msg = member.guild.settings.get('joinMsg', 'Welcome <user>!')
