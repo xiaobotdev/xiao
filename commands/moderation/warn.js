@@ -37,7 +37,7 @@ module.exports = class WarnCommand extends Command {
         await msg.say(`Are you sure you want to warn ${member.user.tag} (${member.id})?`);
         const msgs = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {
             max: 1,
-            time: 15000
+            time: 30000
         });
         if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
         try {
