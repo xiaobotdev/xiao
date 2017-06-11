@@ -51,8 +51,8 @@ module.exports = class BattleCommand extends Command {
             else userHP -= damage;
         };
         const forfeit = () => {
-            if (userTurn) userHP -= 500 - userHP;
-            else oppoHP -= 500 - oppoHP;
+            if (userTurn) userHP = 0;
+            else oppoHP = 0;
         };
         while (userHP > 0 && oppoHP > 0) { // eslint-disable-line no-unmodified-loop-condition
             const username = userTurn ? msg.author.username : opponent.username;
