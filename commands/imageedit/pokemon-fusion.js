@@ -6,7 +6,7 @@ module.exports = class PokemonFusionCommand extends Command {
         super(client, {
             name: 'pokemon-fusion',
             aliases: ['poke-fusion', 'poke-fuse'],
-            group: 'random',
+            group: 'imageedit',
             memberName: 'pokemon-fusion',
             description: 'Fuses two Generation 1 Pokémon together.',
             args: [
