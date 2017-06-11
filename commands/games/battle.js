@@ -69,6 +69,7 @@ module.exports = class BattleCommand extends Command {
             if (!turn.size) {
                 await msg.say('Time!');
                 forfeit();
+                break;
             }
             const choice = turn.first().content.toLowerCase();
             if (choice === 'fight') {
@@ -94,6 +95,7 @@ module.exports = class BattleCommand extends Command {
             } else if (choice === 'run') {
                 await msg.say(`**${username}** flees!`);
                 forfeit();
+                break;
             } else {
                 await msg.say('I do not understand what you want to do.');
             }
