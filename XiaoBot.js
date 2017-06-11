@@ -21,6 +21,7 @@ client.registry
         ['settings', 'Server Settings'],
         ['response', 'Random Response'],
         ['randomimg', 'Random Image'],
+        ['imageedit', 'Image Manipulation'],
         ['avataredit', 'Avatar Manipulation'],
         ['textedit', 'Text Manipulation'],
         ['numedit', 'Number Manipulation'],
