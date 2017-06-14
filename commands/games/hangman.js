@@ -63,7 +63,7 @@ module.exports = class HangmanCommand extends Command {
                     if (word[i] === choice) {
                         confirmation.push(word[i]);
                         display[i] = word[i];
-                    }    
+                    }
                 }
             } else {
                 await msg.say('Nope!');
