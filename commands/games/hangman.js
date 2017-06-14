@@ -17,12 +17,12 @@ module.exports = class HangmanCommand extends Command {
         let points = 0;
         const confirmation = [];
         const display = '_'.repeat(word.length).split('');
-        while (word.length !== confirmation.length || points > 6) {
+        while (word.length !== confirmation.length && points > 6) {
             await msg.code(null, stripIndents`
                 ___________
                 |     |
                 |     ${points > 0 ? 'O' : ''}
-                |    ${points > 2 ? '—' : ''}${points > 1 ? '|' : ''}${points > 3 ? '—' : ''}
+                |    ${points > 2 ? '—' : ' '}${points > 1 ? '|' : ''}${points > 3 ? '—' : ''}
                 |    ${points > 4 ? '/' : ''} ${points > 5 ? '\\' : ''}
                 ===========
                 The word is: ${display.join(' ')}. Which letter do you choose?
