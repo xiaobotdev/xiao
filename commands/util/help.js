@@ -50,7 +50,7 @@ module.exports = class HelpCommand extends Command {
         } else {
             const embed = new RichEmbed()
                 .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
-                .setDescription(`Use \`${msg.usage('<command>')}\` to view detailed information about a command.`)
+                .setDescription(`Use ${msg.usage('<command>')} to view detailed information about a command.`)
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.values()) {
                 embed.addField(`❯ ${group.name}`,
