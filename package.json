@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "22.2.0",
+  "version": "22.3.0",
   "description": "A Discord Bot",
   "main": "Shard.js",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/dragonfire535/xiaobot#readme",
   "engines": {
-    "node": "8.1.1"
+    "node": "8.1.0"
   },
   "dependencies": {
     "bufferutil": "^3.0.1",
