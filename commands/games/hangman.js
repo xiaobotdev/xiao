@@ -45,11 +45,9 @@ module.exports = class HangmanCommand extends Command {
                 await msg.say('You have already picked that letter!');
             } else if (word.includes(choice)) {
                 await msg.say('Nice job!');
-                confirmation.push(choice);
-                let results = word.split('');
                 for (let i = 0; i < word.length; i++) {
                     if (word[i] === choice) {
-                        results[i] = '';
+                        confirmation.push(word[i]);
                         display[i] = word[i];
                     }    
                 }
