@@ -17,7 +17,7 @@ module.exports = class HangmanCommand extends Command {
         let points = 0;
         const confirmation = [];
         const display = '_'.repeat(word.length).split('');
-        while (word.length !== confirmation.length && points > 6) {
+        while (word.length === confirmation.length && points > 6) {
             await msg.code(null, stripIndents`
                 ___________
                 |     |
