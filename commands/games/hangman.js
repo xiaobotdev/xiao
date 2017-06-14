@@ -16,7 +16,7 @@ module.exports = class HangmanCommand extends Command {
     }
 
     async run(msg) {
-        if (this.playing.includes(msg.guild.id)) return msg.say('Only one game may be occurring per server.');
+        if (this.playing.has(msg.guild.id)) return msg.say('Only one game may be occurring per server.');
         this.playing.add(msg.guild.id);
         const word = words[Math.floor(Math.random() * words.length)];
         let points = 0;
