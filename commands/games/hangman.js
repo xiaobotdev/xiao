@@ -31,7 +31,7 @@ module.exports = class HangmanCommand extends Command {
                 maxLength: -1,
                 api_key: WORDNIK_KEY
             });
-        const { word } = body;
+        const word = body.word.toLowerCase().replace(/[ ]/g, '-');
         let points = 0;
         const confirmation = [];
         const incorrect = [];
