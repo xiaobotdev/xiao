@@ -34,6 +34,7 @@ module.exports = class HangmanCommand extends Command {
         const { word } = body;
         let points = 0;
         const confirmation = [];
+        const incorrect = [];
         const display = '_'.repeat(word.length).split('');
         while (word.length !== confirmation.length && points < 7) {
             await msg.code(null, stripIndents`
@@ -54,7 +55,7 @@ module.exports = class HangmanCommand extends Command {
                 break;
             }
             const choice = guess.first().content.toLowerCase();
-            if (confirmation.includes(choice)) {
+            if (confirmation.includes(choice) || incorrect.includes(choice)) {
                 await msg.say('You have already picked that letter!');
             } else if (word.includes(choice)) {
                 await msg.say('Nice job!');
@@ -66,6 +67,7 @@ module.exports = class HangmanCommand extends Command {
                 }
             } else {
                 await msg.say('Nope!');
+                incorrect.push(choice);
                 points++;
             }
         }
