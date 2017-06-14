@@ -8,11 +8,16 @@ module.exports = class HangmanCommand extends Command {
             name: 'hangman',
             group: 'games',
             memberName: 'hangman',
-            description: 'Play a game of hangman.'
+            description: 'Play a game of hangman.',
+            guildOnly: true
         });
+
+        this.playing = new Set();
     }
 
     async run(msg) {
+        if (this.playing.includes(msg.guild.id)) return msg.say('Only one game may be occurring per server.');
+        this.playing.add(msg.guild.id);
         const word = words[Math.floor(Math.random() * words.length)];
         let points = 0;
         const confirmation = [];
@@ -41,15 +46,19 @@ module.exports = class HangmanCommand extends Command {
             } else if (word.includes(choice)) {
                 await msg.say('Nice job!');
                 confirmation.push(choice);
-                for (const letter of word.split('')) {
-                    if (letter !== choice) continue;
-                    else display[word.indexOf(letter)] = choice;
+                let results = word.split('');
+                for (let i = 0; i > results.length; i++) {
+                    if (word[i] === choice) {
+                        results[i] = '';
+                        display[i] = word[i];
+                    }    
                 }
             } else {
                 await msg.say('Nope!');
                 points++;
             }
         }
+        this.playing.delete(msg.guild.id);
         if (word.length === confirmation.length) return msg.say(`You won, it was ${word}!`);
         else return msg.say(`Too bad... It was ${word}...`);
     }
