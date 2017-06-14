@@ -47,7 +47,7 @@ module.exports = class HangmanCommand extends Command {
                 await msg.say('Nice job!');
                 confirmation.push(choice);
                 let results = word.split('');
-                for (let i = 0; i > results.length; i++) {
+                for (let i = 0; i < word.length; i++) {
                     if (word[i] === choice) {
                         results[i] = '';
                         display[i] = word[i];
