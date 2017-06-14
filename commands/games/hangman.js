@@ -50,7 +50,7 @@ module.exports = class HangmanCommand extends Command {
                 points++;
             }
         }
-        if (word.length === confirmation.length) return msg.say('You won!');
-        else return msg.say('Too bad...');
+        if (word.length === confirmation.length) return msg.say(`You won, it was ${word}!`);
+        else return msg.say(`Too bad... It was ${word}...`);
     }
 };
