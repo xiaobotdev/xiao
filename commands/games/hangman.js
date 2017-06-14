@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
+const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
-const words = require('../../assets/json/hangman');
+const { WORDNIK_KEY } = process.env;
 
 module.exports = class HangmanCommand extends Command {
     constructor(client) {
@@ -18,7 +19,19 @@ module.exports = class HangmanCommand extends Command {
     async run(msg) {
         if (this.playing.has(msg.guild.id)) return msg.say('Only one game may be occurring per server.');
         this.playing.add(msg.guild.id);
-        const word = words[Math.floor(Math.random() * words.length)];
+        const { body } = await snekfetch
+            .get('http://api.wordnik.com:80/v4/words.json/randomWord')
+            .query({
+                hasDictionaryDef: true,
+                minCorpusCount: 0,
+                maxCorpusCount: -1,
+                minDictionaryCount: 1,
+                maxDictionaryCount: -1,
+                minLength: -1,
+                maxLength: -1,
+                api_key: WORDNIK_KEY
+            });
+        const { word } = body;
         let points = 0;
         const confirmation = [];
         const display = '_'.repeat(word.length).split('');
