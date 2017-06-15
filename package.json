@@ -48,7 +48,7 @@
     "node-opus": "^0.2.6",
     "pg": "^6.2.3",
     "sequelize": "^3.30.4",
-    "snekfetch": "3.1.9",
+    "snekfetch": "^3.1.11",
     "tsubaki": "^1.1.1",
     "xml2js": "^0.4.17",
     "zalgolize": "^1.2.4"
