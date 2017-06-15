@@ -35,7 +35,6 @@ module.exports = class YearsCommand extends Command {
             format: 'png',
             size: 256
         });
-        console.log(avatarURL);
         const Image = Canvas.Image;
         const canvas = new Canvas(856, 569);
         const ctx = canvas.getContext('2d');
