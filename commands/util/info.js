@@ -11,7 +11,7 @@ module.exports = class InfoCommand extends Command {
             aliases: ['information', 'stats'],
             group: 'util',
             memberName: 'info',
-            description: 'Gives some bot info.',
+            description: 'Responds with detailed bot information.',
             guarded: true,
             clientPermissions: ['EMBED_LINKS']
         });

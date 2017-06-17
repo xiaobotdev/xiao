@@ -8,7 +8,7 @@ module.exports = class GiphyCommand extends Command {
             name: 'giphy',
             group: 'search',
             memberName: 'giphy',
-            description: 'Searches for GIFs with Giphy.',
+            description: 'Searches Giphy for your query.',
             args: [
                 {
                     key: 'query',

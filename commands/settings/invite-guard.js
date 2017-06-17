@@ -6,7 +6,7 @@ module.exports = class InviteGuardCommand extends Command {
             name: 'invite-guard',
             group: 'settings',
             memberName: 'invite-guard',
-            description: 'Configures auto-delete for invites.',
+            description: 'Turns on auto-deletion of invites.',
             guildOnly: true,
             userPermissions: ['ADMINISTRATOR']
         });

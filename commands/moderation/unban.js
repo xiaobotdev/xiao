@@ -48,24 +48,24 @@ module.exports = class UnbanCommand extends Command {
         await msg.say(`Successfully unbanned ${member.user.tag}.`);
         if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
             return msg.say('Could not log the unban to the mod logs.');
-        } else if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
-            return modlogs.send(stripIndents`
-                **Member:** ${member.tag} (${member.id})
-                **Action:** Unban
-                **Reason:** ${reason}
-                **Moderator:** ${msg.author.tag}
-            `);
-        } else {
+        } else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL())
                 .setColor(0x00AE86)
                 .setTimestamp()
                 .setDescription(stripIndents`
-                    **Member:** ${member.tag} (${member.id})
+                    **Member:** ${member.user.tag} (${member.id})
                     **Action:** Unban
                     **Reason:** ${reason}
                 `);
             return modlogs.send({ embed });
+        } else {
+            return modlogs.send(stripIndents`
+                **Member:** ${member.user.tag} (${member.id})
+                **Action:** Unban
+                **Reason:** ${reason}
+                **Moderator:** ${msg.author.tag}
+            `);
         }
     }
 };

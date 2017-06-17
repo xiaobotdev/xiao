@@ -10,7 +10,7 @@ module.exports = class Rule34Command extends Command {
             name: 'rule34',
             group: 'search',
             memberName: 'rule34',
-            description: 'Sends an image from Rule34, with query.',
+            description: 'Searches Rule34 for your query.',
             nsfw: true,
             args: [
                 {

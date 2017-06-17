@@ -26,15 +26,15 @@ module.exports = class RockPaperScissorsCommand extends Command {
         if (choice === 'rock') {
             if (response === 'rock') return msg.say('Rock! Aw... A tie...');
             else if (response === 'paper') return msg.say('Paper! Yes! I win!');
-            else return msg.say('Scissors! Aw... I lose...');
+            else if (response === 'scissors') return msg.say('Scissors! Aw... I lose...');
         } else if (choice === 'paper') {
             if (response === 'rock') return msg.say('Rock! Aw... I lose...');
             else if (response === 'paper') return msg.say('Paper! Aw... A tie...');
-            else return msg.say('Scissors! Yes! I win!');
+            else if (response === 'scissors') return msg.say('Scissors! Yes! I win!');
         } else if (choice === 'scissors') {
             if (response === 'rock') return msg.say('Rock! Yes! I win!');
             else if (response === 'paper') return msg.say('Paper! Aw... I lose...');
-            else return msg.say('Scissors! Aw... A tie...');
+            else if (response === 'scissors') return msg.say('Scissors! Aw... A tie...');
         } else {
             return msg.say('I win by default, you little cheater.');
         }

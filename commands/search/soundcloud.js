@@ -9,7 +9,7 @@ module.exports = class SoundCloudCommand extends Command {
             name: 'soundcloud',
             group: 'search',
             memberName: 'soundcloud',
-            description: 'Searches SoundCloud for a song.',
+            description: 'Searches SoundCloud for your query.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

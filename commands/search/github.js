@@ -10,7 +10,7 @@ module.exports = class GithubCommand extends Command {
             name: 'github',
             group: 'search',
             memberName: 'github',
-            description: 'Gets repo information from GitHub.',
+            description: 'Responds with repo information from a GitHub repository.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

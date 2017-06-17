@@ -7,7 +7,7 @@ module.exports = class LockdownCommand extends Command {
             name: 'lockdown',
             group: 'moderation',
             memberName: 'lockdown',
-            description: 'Locks down the current channel or removes a lockdown.',
+            description: 'Prevents users from posting in the current channel, or removes a lockdown.',
             guildOnly: true,
             clientPermissions: ['ADMINISTRATOR'],
             userPermissions: ['ADMINISTRATOR'],

@@ -10,7 +10,7 @@ module.exports = class WattpadCommand extends Command {
             name: 'wattpad',
             group: 'search',
             memberName: 'wattpad',
-            description: 'Searches Wattpad for a book.',
+            description: 'Searches Wattpad for your query.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

@@ -6,7 +6,7 @@ module.exports = class ModChannelCommand extends Command {
             name: 'mod-channel',
             group: 'settings',
             memberName: 'mod-channel',
-            description: 'Sets the channel for the mod logs to be sent.',
+            description: 'Sets a channel for mod logs to be sent.',
             guildOnly: true,
             userPermissions: ['ADMINISTRATOR'],
             args: [

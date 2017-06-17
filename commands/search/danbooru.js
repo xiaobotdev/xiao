@@ -8,7 +8,7 @@ module.exports = class DanbooruCommand extends Command {
             name: 'danbooru',
             group: 'search',
             memberName: 'danbooru',
-            description: 'Sends an image from Danbooru, with optional query.',
+            description: 'Searches Danbooru with optional query.',
             nsfw: true,
             args: [
                 {

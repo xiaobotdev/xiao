@@ -9,7 +9,7 @@ module.exports = class YouTubeCommand extends Command {
             name: 'youtube',
             group: 'search',
             memberName: 'youtube',
-            description: 'Searches YouTube for a video.',
+            description: 'Searches YouTube for your query.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

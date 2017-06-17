@@ -7,7 +7,7 @@ module.exports = class HighFivesCommand extends Command {
             name: 'high-five',
             group: 'roleplay',
             memberName: 'high-five',
-            description: 'High Fives something/someone.',
+            description: 'High Fives a user.',
             args: [
                 {
                     key: 'user',
@@ -22,7 +22,7 @@ module.exports = class HighFivesCommand extends Command {
         const { user } = args;
         return msg.say(stripIndents`
             **${msg.author.username}** *high-fives* **${user.username}**
-            https://i.imgur.com/7BJ6gfM.gif
+            https://i.imgur.com/BDW5xnu.gif
         `);
     }
 };

@@ -12,7 +12,7 @@ module.exports = class MangaCommand extends Command {
             name: 'manga',
             group: 'search',
             memberName: 'manga',
-            description: 'Searches My Anime List for a specified manga.',
+            description: 'Searches My Anime List for your query, getting manga results.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

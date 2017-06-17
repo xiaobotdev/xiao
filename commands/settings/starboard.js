@@ -6,7 +6,7 @@ module.exports = class StarboardCommand extends Command {
             name: 'starboard',
             group: 'settings',
             memberName: 'starboard',
-            description: 'Sets the channel for the starboard.',
+            description: 'Sets a channel for the starboard.',
             guildOnly: true,
             userPermissions: ['ADMINISTRATOR'],
             args: [

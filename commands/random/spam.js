@@ -6,12 +6,12 @@ module.exports = class SpamCommand extends Command {
             name: 'spam',
             group: 'random',
             memberName: 'spam',
-            description: 'Puts a picture of Spam.',
+            description: 'Responds with a picture of Spam.',
             clientPermissions: ['ATTACH_FILES']
         });
     }
 
     run(msg) {
-        return msg.say('https://i.imgur.com/arx7GJV.jpg');
+        return msg.say({ files: ['https://i.imgur.com/arx7GJV.jpg'] });
     }
 };

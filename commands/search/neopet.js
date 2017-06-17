@@ -8,7 +8,7 @@ module.exports = class NeopetCommand extends Command {
             name: 'neopet',
             group: 'search',
             memberName: 'neopet',
-            description: 'Gives a Neopet\'s image, searchable by name.',
+            description: 'Searches for Neopets with the username of your query.',
             args: [
                 {
                     key: 'query',
