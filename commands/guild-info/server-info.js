@@ -33,7 +33,7 @@ module.exports = class GuildInfoCommand extends Command {
             .addField('❯ Explicit Filter',
                 filterLevels[msg.guild.explicitContentFilter], true)
             .addField('❯ Owner',
-                msg.guild.owner.username, true)
+                msg.guild.owner ? msg.guild.owner.user.username : 'None', true)
             .addField('❯ Members',
                 msg.guild.memberCount, true);
         return msg.embed(embed);
