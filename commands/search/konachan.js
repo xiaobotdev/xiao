@@ -8,7 +8,7 @@ module.exports = class KonachanCommand extends Command {
             name: 'konachan',
             group: 'search',
             memberName: 'konachan',
-            description: 'Sends an image from Konachan, with optional query.',
+            description: 'Searches Konachan with optional query.',
             nsfw: true,
             args: [
                 {

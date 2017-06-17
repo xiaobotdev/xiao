@@ -6,7 +6,7 @@ module.exports = class PruneCommand extends Command {
             name: 'prune',
             group: 'moderation',
             memberName: 'prune',
-            description: 'Deletes messages from the current channel, up to 99.',
+            description: 'Deletes up to 99 messages from the current channel.',
             guildOnly: true,
             throttling: {
                 usages: 1,

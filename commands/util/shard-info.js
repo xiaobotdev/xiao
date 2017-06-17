@@ -10,7 +10,7 @@ module.exports = class ShardInfoCommand extends Command {
             aliases: ['shard', 'shard-stats'],
             group: 'util',
             memberName: 'shard-info',
-            description: 'Gives some bot info for the Shard you specify.',
+            description: 'Responds with detailed information for a specific Shard.',
             guarded: true,
             clientPermissions: ['EMBED_LINKS'],
             args: [

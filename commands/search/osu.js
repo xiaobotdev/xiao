@@ -9,7 +9,7 @@ module.exports = class OsuCommand extends Command {
             name: 'osu',
             group: 'search',
             memberName: 'osu',
-            description: 'Searches Osu! user data.',
+            description: 'Searches osu! usernames for your query.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

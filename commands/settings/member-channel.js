@@ -6,7 +6,7 @@ module.exports = class MemberLogCommand extends Command {
             name: 'member-channel',
             group: 'settings',
             memberName: 'member-channel',
-            description: 'Sets the channel for the member logs to be sent.',
+            description: 'Sets a channel for member join/leave logs to be sent.',
             guildOnly: true,
             userPermissions: ['ADMINISTRATOR'],
             args: [

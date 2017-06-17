@@ -8,7 +8,7 @@ module.exports = class WikipediaCommand extends Command {
             name: 'wikipedia',
             group: 'search',
             memberName: 'wikipedia',
-            description: 'Searches Wikipedia for something.',
+            description: 'Searches Wikipedia for your query.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

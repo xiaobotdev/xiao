@@ -57,14 +57,7 @@ module.exports = class BanCommand extends Command {
         await msg.say(`Successfully banned ${member.user.tag}.`);
         if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
             return msg.say('Could not log the ban to the mod logs.');
-        } else if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
-            return modlogs.send(stripIndents`
-                **Member:** ${member.user.tag} (${member.id})
-                **Action:** Ban
-                **Reason:** ${reason}
-                **Moderator:** ${msg.author.tag}
-            `);
-        } else {
+        } else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL())
                 .setColor(0xFF0000)
@@ -75,6 +68,13 @@ module.exports = class BanCommand extends Command {
                     **Reason:** ${reason}
                 `);
             return modlogs.send({ embed });
+        } else {
+            return modlogs.send(stripIndents`
+                **Member:** ${member.user.tag} (${member.id})
+                **Action:** Ban
+                **Reason:** ${reason}
+                **Moderator:** ${msg.author.tag}
+            `);
         }
     }
 };

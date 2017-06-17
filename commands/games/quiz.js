@@ -10,7 +10,7 @@ module.exports = class QuizCommand extends Command {
             aliases: ['jeopardy'],
             group: 'games',
             memberName: 'quiz',
-            description: 'Answer a quiz question.',
+            description: 'Answer a true/false quiz question.',
             clientPermissions: ['EMBED_LINKS']
         });
     }

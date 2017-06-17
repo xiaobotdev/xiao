@@ -38,15 +38,19 @@ module.exports = class SoundboardCommand extends Command {
         if (!voiceChannel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
             return msg.say('Missing the `CONNECT` or `SPEAK` Permission for the Voice Channel.');
         }
-        if (!voiceChannel.joinable) return msg.say('This Voice Channel is not joinable.');
-        if (this.client.voiceConnections.get(voiceChannel.guild.id)) return msg.say('I am already playing a sound.');
+        if (!voiceChannel.joinable) return msg.say('Your Voice Channel is not joinable.');
+        if (this.client.voiceConnections.has(voiceChannel.guild.id)) return msg.say('I am already playing a sound.');
         const { sound } = args;
         const connection = await voiceChannel.join();
-        msg.react('🔊');
+        await msg.react('🔊');
         const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', paths[sound]));
-        dispatcher.on('end', () => {
+        dispatcher.once('end', () => {
             voiceChannel.leave();
             msg.react('✅');
+        });
+        dispatcher.once('error', () => {
+            voiceChannel.leave();
+            msg.react('⚠');
         });
         return null;
     }

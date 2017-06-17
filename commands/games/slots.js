@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const slots = [':grapes:', ':tangerine:', ':pear:', ':cherries:'];
+const slots = [':grapes:', ':tangerine:', ':pear:', ':cherries:', ':lemon:'];
 
 module.exports = class SlotsCommand extends Command {
     constructor(client) {
@@ -8,7 +8,7 @@ module.exports = class SlotsCommand extends Command {
             name: 'slots',
             group: 'games',
             memberName: 'slots',
-            description: 'Play slots.'
+            description: 'Play a game of slots.'
         });
     }
 

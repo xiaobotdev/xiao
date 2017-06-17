@@ -10,7 +10,7 @@ module.exports = class GelbooruCommand extends Command {
             name: 'gelbooru',
             group: 'search',
             memberName: 'gelbooru',
-            description: 'Sends an image from Gelbooru, with query.',
+            description: 'Searches Gelbooru for your query.',
             nsfw: true,
             args: [
                 {

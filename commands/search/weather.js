@@ -8,7 +8,7 @@ module.exports = class WeatherCommand extends Command {
             name: 'weather',
             group: 'search',
             memberName: 'weather',
-            description: 'Gets weather information for a specified location.',
+            description: 'Responds with weather information for a specified location.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

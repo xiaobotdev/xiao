@@ -9,7 +9,7 @@ module.exports = class CleverbotCommand extends Command {
             aliases: ['clevs', 'chat'],
             group: 'random',
             memberName: 'cleverbot',
-            description: 'Talk to Cleverbot!',
+            description: 'Talk to Cleverbot.',
             args: [
                 {
                     key: 'text',

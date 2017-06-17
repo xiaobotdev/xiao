@@ -6,7 +6,6 @@ class CommandoClient extends Client {
         super(options);
 
         this.database = Database.db;
-
         Database.start();
     }
 }

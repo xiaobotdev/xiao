@@ -8,7 +8,7 @@ module.exports = class YuGiOhCommand extends Command {
             name: 'yu-gi-oh',
             group: 'search',
             memberName: 'yu-gi-oh',
-            description: 'Gets info on a Yu-Gi-Oh! Card.',
+            description: 'Responds with info on a Yu-Gi-Oh! card.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

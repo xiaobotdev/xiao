@@ -8,7 +8,7 @@ module.exports = class StrawpollCommand extends Command {
             name: 'strawpoll',
             group: 'random',
             memberName: 'strawpoll',
-            description: 'Creates a Strawpoll with your options.',
+            description: 'Creates a Strawpoll from the options you provide.',
             args: [
                 {
                     key: 'title',
@@ -21,11 +21,11 @@ module.exports = class StrawpollCommand extends Command {
                 },
                 {
                     key: 'options',
-                    prompt: 'What options do you want me pick from? Maximum of 31.',
+                    prompt: 'What options do you want to be able to pick from? Maximum of 30.',
                     type: 'string',
                     infinite: true,
                     validate: (choice) => {
-                        if (choice.length < 160) return true;
+                        if (choice.length < 140) return true;
                         else return 'Choices must be under 140 characters each.';
                     }
                 }

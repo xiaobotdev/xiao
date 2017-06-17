@@ -8,7 +8,7 @@ module.exports = class BattleCommand extends Command {
             aliases: ['fight', 'death-battle'],
             group: 'games',
             memberName: 'battle',
-            description: 'Choose another user and fight to the death!',
+            description: 'Engage in a turn-based battle against another user.',
             guildOnly: true,
             args: [
                 {
@@ -24,11 +24,11 @@ module.exports = class BattleCommand extends Command {
 
     async run(msg, args) {
         const { opponent } = args;
-        if (opponent.bot) return msg.say('Bots cannot be fought.');
+        if (opponent.bot) return msg.say('Bots may not be fought.');
         if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
         if (this.fighting.has(msg.guild.id)) return msg.say('Only one fight may be occurring per server.');
         this.fighting.add(msg.guild.id);
-        await msg.say(`**${opponent.username}**, do you accept this challenge? **__Y__es** or **No**?`);
+        await msg.say(`${opponent}, do you accept this challenge? **__Y__es** or **No**?`);
         const verify = await msg.channel.awaitMessages((res) => res.author.id === opponent.id, {
             max: 1,
             time: 30000
@@ -55,10 +55,10 @@ module.exports = class BattleCommand extends Command {
             else oppoHP = 0;
         };
         while (userHP > 0 && oppoHP > 0) { // eslint-disable-line no-unmodified-loop-condition
-            const username = userTurn ? msg.author.username : opponent.username;
+            const user = userTurn ? msg.author : opponent;
             const id = userTurn ? msg.author.id : opponent.id;
             await msg.say(stripIndents`
-                **${username}**, do you **fight**, **guard**, **special**, or **run**?
+                ${user}, do you **fight**, **guard**, **special**, or **run**?
                 **${msg.author.username}**: ${userHP}HP
                 **${opponent.username}**: ${oppoHP}HP
             `);
@@ -74,37 +74,37 @@ module.exports = class BattleCommand extends Command {
             const choice = turn.first().content.toLowerCase();
             if (choice === 'fight') {
                 const damage = Math.floor(Math.random() * (guard ? 10 : 100)) + 1;
-                await msg.say(`**${username}** deals **${damage}** damage!`);
+                await msg.say(`${user} deals **${damage}** damage!`);
                 dealDamage(damage);
                 reset();
             } else if (choice === 'guard') {
-                await msg.say(`**${username}** guards!`);
+                await msg.say(`${user} guards!`);
                 guard = true;
                 reset(false);
             } else if (choice === 'special') {
                 const hit = Math.floor(Math.random() * 4) + 1;
                 if (hit === 1) {
                     const damage = Math.floor(Math.random() * ((guard ? 300 : 150) - 100 + 1) + 100);
-                    await msg.say(`**${username}** deals **${damage}** damage!`);
+                    await msg.say(`${user} deals **${damage}** damage!`);
                     dealDamage(damage);
                     reset();
                 } else {
-                    await msg.say(`**${username}**'s attack missed!`);
+                    await msg.say(`${user}'s attack missed!`);
                     reset();
                 }
             } else if (choice === 'run') {
-                await msg.say(`**${username}** flees!`);
+                await msg.say(`${user} flees!`);
                 forfeit();
                 break;
             } else {
-                await msg.say('I do not understand what you want to do.');
+                await msg.say(`${user}, I do not understand what you want to do.`);
             }
         }
         this.fighting.delete(msg.guild.id);
         return msg.say(stripIndents`
             The match is over!
-            **Winner:** ${userHP > oppoHP ? `${msg.author.username} (${userHP})` : `${opponent.username} (${oppoHP})`}
-            **Loser:** ${userHP > oppoHP ? `${opponent.username} (${oppoHP})` : `${msg.author.username} (${userHP})`}
+            **Winner:** ${userHP > oppoHP ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}
+            **Loser:** ${userHP > oppoHP ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}
         `);
     }
 };

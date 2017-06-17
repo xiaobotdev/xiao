@@ -9,7 +9,7 @@ module.exports = class XKCDCommand extends Command {
             aliases: ['kcd'],
             group: 'search',
             memberName: 'xkcd',
-            description: 'Gets an XKCD Comic, optionally opting for today\'s or random.',
+            description: 'Gets an XKCD Comic, optionally opting for today\'s or a specific number.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

@@ -37,8 +37,7 @@ module.exports = class TypingGameCommand extends Command {
             max: 1,
             time
         });
-        if (!msgs.size) return msg.say('Time! Sorry!');
-        if (msgs.first().content !== sentence) return msg.say('Nope, sorry!');
+        if (!msgs.size || msgs.first().content !== sentence) return msg.say('Sorry! You lose!');
         else return msg.say('Nice job! 10/10! You deserve some cake!');
     }
 };

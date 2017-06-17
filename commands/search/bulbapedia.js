@@ -9,7 +9,7 @@ module.exports = class BulbapediaCommand extends Command {
             aliases: ['bulbagarden'],
             group: 'search',
             memberName: 'bulbapedia',
-            description: 'Searches Bulbapedia for something.',
+            description: 'Searches Bulbapedia for your query.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

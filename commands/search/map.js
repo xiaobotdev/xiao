@@ -8,7 +8,7 @@ module.exports = class MapCommand extends Command {
             name: 'map',
             group: 'search',
             memberName: 'map',
-            description: 'Gets a map image for the location you define with the zoom level you define (1-20).',
+            description: 'Responds with a map based upon your query.',
             clientPermissions: ['ATTACH_FILES'],
             args: [
                 {

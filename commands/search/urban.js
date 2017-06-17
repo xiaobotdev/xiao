@@ -8,7 +8,7 @@ module.exports = class UrbanCommand extends Command {
             name: 'urban',
             group: 'search',
             memberName: 'urban',
-            description: 'Searches Urban Dictionary for a word.',
+            description: 'Searches Urban Dictionary for your query.',
             clientPermissions: ['EMBED_LINKS'],
             args: [
                 {

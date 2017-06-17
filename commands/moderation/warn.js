@@ -51,14 +51,7 @@ module.exports = class WarnCommand extends Command {
         await msg.say(`Successfully warned ${member.user.tag}.`);
         if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
             return msg.say('Could not log the warn to the mod logs.');
-        } else if (!modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
-            return modlogs.send(stripIndents`
-                **Member:** ${member.user.tag} (${member.id})
-                **Action:** Warn
-                **Reason:** ${reason}
-                **Moderator:** ${msg.author.tag}
-            `);
-        } else {
+        } else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
             const embed = new RichEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL())
                 .setColor(0xFFFF00)
@@ -69,6 +62,13 @@ module.exports = class WarnCommand extends Command {
                     **Reason:** ${reason}
                 `);
             return modlogs.send({ embed });
+        } else {
+            return modlogs.send(stripIndents`
+                **Member:** ${member.user.tag} (${member.id})
+                **Action:** Warn
+                **Reason:** ${reason}
+                **Moderator:** ${msg.author.tag}
+            `);
         }
     }
 };

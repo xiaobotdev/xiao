@@ -8,7 +8,7 @@ module.exports = class TodayCommand extends Command {
             name: 'today',
             group: 'random',
             memberName: 'today',
-            description: 'Tells you what happened today in history.',
+            description: 'Responds with a random event that occurred today sometime in history.',
             clientPermissions: ['EMBED_LINKS']
         });
     }
