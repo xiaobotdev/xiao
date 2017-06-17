@@ -37,7 +37,7 @@ module.exports = class TemperatureCommand extends Command {
         });
     }
 
-    run(msg, args) {
+    run(msg, args) { // eslint-disable-line consistent-return
         const { base, to, amount } = args;
         if (base === to) {
             return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);

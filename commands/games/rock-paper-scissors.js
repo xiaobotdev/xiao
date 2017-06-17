@@ -20,7 +20,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
         });
     }
 
-    run(msg, args) {
+    run(msg, args) { // eslint-disable-line consistent-return
         const { choice } = args;
         const response = choices[Math.floor(Math.random() * choices.length)];
         if (choice === 'rock') {
