@@ -14,12 +14,12 @@ module.exports = class LockdownCommand extends Command {
             args: [
                 {
                     key: 'type',
-                    prompt: 'Please enter either `start` or `stop`.',
+                    prompt: 'Please enter either start or stop.',
                     type: 'string',
                     default: 'start',
                     validate: (type) => {
                         if (['start', 'stop'].includes(type.toLowerCase())) return true;
-                        else return 'Please enter either `start` or `stop`.';
+                        else return 'Please enter either start or stop.';
                     },
                     parse: (type) => type.toLowerCase()
                 }

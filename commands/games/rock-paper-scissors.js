@@ -12,7 +12,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
             args: [
                 {
                     key: 'choice',
-                    prompt: '`Rock`, `Paper`, or `Scissors`?',
+                    prompt: 'Rock, Paper, or Scissors?',
                     type: 'string',
                     parse: (choice) => choice.toLowerCase()
                 }
