@@ -14,7 +14,7 @@ module.exports = class TemperatureCommand extends Command {
                     type: 'string',
                     validate: (base) => {
                         if (['celsius', 'fahrenheit', 'kelvin'].includes(base.toLowerCase())) return true;
-                        else return 'Please enter either `celsius`, `fahrenheit`, or `kelvin`.';
+                        else return 'Please enter either celsius, fahrenheit, or kelvin.';
                     },
                     parse: (base) => base.toLowerCase()
                 },
@@ -24,7 +24,7 @@ module.exports = class TemperatureCommand extends Command {
                     type: 'string',
                     validate: (to) => {
                         if (['celsius', 'fahrenheit', 'kelvin'].includes(to.toLowerCase())) return true;
-                        else return 'Please enter either `celsius`, `fahrenheit`, or `kelvin`.';
+                        else return 'Please enter either celsius, fahrenheit, or kelvin.';
                     },
                     parse: (to) => to.toLowerCase()
                 },

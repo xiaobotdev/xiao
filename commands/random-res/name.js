@@ -16,7 +16,7 @@ module.exports = class RandomNameCommand extends Command {
                     default: 'both',
                     validate: (gender) => {
                         if (['male', 'female', 'both'].includes(gender.toLowerCase())) return true;
-                        else return 'Please enter either `male`, `female`, or `both`.';
+                        else return 'Please enter either male, female, or both.';
                     },
                     parse: (gender) => gender.toLowerCase()
                 }
