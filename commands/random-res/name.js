@@ -24,7 +24,7 @@ module.exports = class RandomNameCommand extends Command {
         });
     }
 
-    run(msg, args) {
+    run(msg, args) { // eslint-disable-line consistent-return
         const { gender } = args;
         const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
         if (gender === 'male') {
