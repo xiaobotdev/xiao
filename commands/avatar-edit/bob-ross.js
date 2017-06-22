@@ -15,7 +15,7 @@ module.exports = class BobRossCommand extends Command {
             description: 'Draws a user\'s avatar over Bob Ross\' canvas.',
             throttling: {
                 usages: 1,
-                duration: 15
+                duration: 30
             },
             clientPermissions: ['ATTACH_FILES'],
             args: [

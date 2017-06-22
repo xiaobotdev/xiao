@@ -14,7 +14,7 @@ module.exports = class SimbaCommand extends Command {
             description: 'Draws a user\'s avatar over Simba from The Lion King\'s reflection.',
             throttling: {
                 usages: 1,
-                duration: 15
+                duration: 30
             },
             clientPermissions: ['ATTACH_FILES'],
             args: [

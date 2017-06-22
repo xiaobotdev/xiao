@@ -14,7 +14,7 @@ module.exports = class ChallengerCommand extends Command {
             description: 'Draws a user\'s avatar over Super Smash Bros.\'s "Challenger Approaching" screen.',
             throttling: {
                 usages: 1,
-                duration: 15
+                duration: 30
             },
             clientPermissions: ['ATTACH_FILES'],
             args: [

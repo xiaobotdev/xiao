@@ -15,7 +15,7 @@ module.exports = class YearsCommand extends Command {
             description: 'Draws a user\'s avatar over Pokémon\'s "It\'s been 3000 years" meme.',
             throttling: {
                 usages: 1,
-                duration: 15
+                duration: 30
             },
             clientPermissions: ['ATTACH_FILES'],
             args: [

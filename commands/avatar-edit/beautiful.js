@@ -15,7 +15,7 @@ module.exports = class BeautifulCommand extends Command {
             description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is beautiful." meme.',
             throttling: {
                 usages: 1,
-                duration: 15
+                duration: 30
             },
             clientPermissions: ['ATTACH_FILES'],
             args: [
