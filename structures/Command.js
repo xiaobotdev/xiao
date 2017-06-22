@@ -8,7 +8,7 @@ class XiaoCommand extends Command {
         this.nsfw = info.nsfw;
         this.clientPermissions = info.clientPermissions;
         this.userPermissions = info.userPermissions;
-        this.throttling = {
+        this.throttling = info.throttling || {
             usages: 1,
             duration: 2
         };
