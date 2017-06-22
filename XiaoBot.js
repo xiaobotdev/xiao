@@ -5,7 +5,8 @@ const client = new CommandoClient({
     commandPrefix: PREFIX,
     owner: OWNER,
     invite: INVITE,
-    disableEveryone: true
+    disableEveryone: true,
+    unknownCommandResponse: false
 });
 const { carbon, dBots } = require('./structures/Stats');
 
