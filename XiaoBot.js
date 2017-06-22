@@ -54,13 +54,13 @@ client.on('commandError', (command, err) => console.error(command.name, err));
 client.on('guildMemberAdd', (member) => {
     const channel = member.guild.channels.find('name', 'member-log');
     if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-    channel.send(`Welcome ${member.username}!`);
+    channel.send(`Welcome ${member.user.username}!`);
 });
 
 client.on('guildMemberRemove', (member) => {
     const channel = member.guild.channels.find('name', 'member-log');
     if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-    channel.send(`Bye ${member.username}...`);
+    channel.send(`Bye ${member.user.username}...`);
 });
 
 client.on('guildCreate', async (guild) => {
