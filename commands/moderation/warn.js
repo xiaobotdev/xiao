@@ -32,7 +32,7 @@ module.exports = class WarnCommand extends Command {
     }
 
     async run(msg, args) {
-        const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
+        const modlogs = msg.guild.channels.find('name', 'mod-log');
         const { member, reason } = args;
         await msg.say(`Are you sure you want to warn ${member.user.tag} (${member.id})?`);
         const msgs = await msg.channel.awaitMessages((res) => res.author.id === msg.author.id, {

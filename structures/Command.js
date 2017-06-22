@@ -8,6 +8,10 @@ class XiaoCommand extends Command {
         this.nsfw = info.nsfw;
         this.clientPermissions = info.clientPermissions;
         this.userPermissions = info.userPermissions;
+        this.throttling = {
+            usages: 1,
+            duration: 2
+        };
     }
 
     hasPermission(msg) {

@@ -33,7 +33,7 @@ module.exports = class BanCommand extends Command {
     }
 
     async run(msg, args) {
-        const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
+        const modlogs = msg.guild.channels.find('name', 'mod-log');
         const { member, reason } = args;
         if (!member.bannable) return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
         await msg.say(`Are you sure you want to ban ${member.user.tag} (${member.id})?`);

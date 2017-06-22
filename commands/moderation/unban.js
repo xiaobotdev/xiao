@@ -33,7 +33,7 @@ module.exports = class UnbanCommand extends Command {
     }
 
     async run(msg, args) {
-        const modlogs = msg.guild.channels.get(msg.guild.settings.get('modLog'));
+        const modlogs = msg.guild.channels.find('name', 'mod-log');
         const { id, reason } = args;
         const bans = await msg.guild.fetchBans();
         if (!bans.has(id)) return msg.say('This ID is not in the Guild Banlist.');

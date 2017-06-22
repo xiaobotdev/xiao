@@ -18,7 +18,7 @@ module.exports = class CardCommand extends Command {
             guildOnly: true,
             throttling: {
                 usages: 1,
-                duration: 15
+                duration: 30
             },
             clientPermissions: ['ATTACH_FILES'],
             args: [
