@@ -70,8 +70,9 @@ client.on('guildMemberAdd', (member) => {
     }).first() || member.guild.channels.find('name', 'member-log');
     if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     const parseMsg = (topic) => {
-        if (!topic || !topic.includes('<joinmessage:')) return '';
-        return topic.match(/(<joinmessage:.+>)/gi)[0].split('<joinmessage:').join('').split('>')[0]
+        if (!topic || !/(<joinmessage.+>)/gi.test(topic)) return '';
+        const setting = topic.match(/(<joinmessage:.+>)/gi)[0];
+        return setting.slice(13, setting.length - 1)
             .replace(/(\(member\))/gi, member.user.username)
             .replace(/(\(server\))/gi, member.guild.name)
             .replace(/(\(mention\))/gi, member.toString());
@@ -87,8 +88,9 @@ client.on('guildMemberRemove', (member) => {
     }).first() || member.guild.channels.find('name', 'member-log');
     if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     const parseMsg = (topic) => {
-        if (!topic || !topic.includes('<leavemessage:')) return '';
-        return topic.match(/(<leavemessage:.+>)/gi)[0].split('<leavemessage:').join('').split('>')[0]
+        if (!topic || !/(<leavemessage.+>)/gi.test(topic)) return '';
+        const setting = topic.match(/(<leavemessage:.+>)/gi)[0];
+        return setting.slice(13, setting.length - 1)
             .replace(/(\(member\))/gi, member.user.username)
             .replace(/(\(server\))/gi, member.guild.name)
             .replace(/(\(mention\))/gi, member.toString());
