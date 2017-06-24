@@ -52,11 +52,12 @@ client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
 
-client.on('message', (msg) => {
-    if (!msg.guild) return;
-    if (msg.author.bot || msg.member.hasPermission('ADMINISTRATOR')) return;
+client.on('message', async (msg) => {
+    if (!msg.guild || msg.author.bot) return;
     const topic = msg.guild.defaultChannel.topic || '';
     if (!topic.toLowerCase().includes('<inviteguard>')) return;
+    const member = await msg.guild.fetchMember(msg.author);
+    if (member.hasPermission('ADMINISTRATOR')) return;
     if (/(discord(\.gg\/|app\.com\/invite\/|\.me\/))/gi.test(msg.content)) {
         if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
         msg.reply('Invites are prohibited from being posted here.');
