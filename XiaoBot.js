@@ -57,8 +57,10 @@ client.on('message', (msg) => {
     if (msg.author.bot || msg.member.hasPermission('ADMINISTRATOR')) return;
     const topic = msg.guild.defaultChannel.topic || '';
     if (!topic.includes('<inviteguard>')) return;
-    if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
-    msg.reply('Invites are prohibited from being posted here.');
+    if (/(discord(\.gg\/|app\.com\/invite\/|\.me\/))/gi.test(msg.content)) {
+        if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
+        msg.reply('Invites are prohibited from being posted here.');
+    }
 });
 
 client.on('guildMemberAdd', (member) => {
