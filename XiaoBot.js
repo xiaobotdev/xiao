@@ -71,7 +71,7 @@ client.on('guildMemberAdd', (member) => {
     if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     const parseMsg = (topic) => {
         if (!topic || !topic.includes('<joinmessage:')) return '';
-        return topic.split('<joinmessage:').join('').split('>')[0]
+        return topic.match(/(<joinmessage:.+>)/gi)[0].split('<joinmessage:').join('').split('>')[0]
             .replace(/(\(member\))/gi, member.user.username)
             .replace(/(\(server\))/gi, member.guild.name)
             .replace(/(\(mention\))/gi, member.toString());
@@ -88,7 +88,7 @@ client.on('guildMemberRemove', (member) => {
     if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
     const parseMsg = (topic) => {
         if (!topic || !topic.includes('<leavemessage:')) return '';
-        return topic.split('<leavemessage:').join('').split('>')[0]
+        return topic.match(/(<leavemessage:.+>)/gi)[0].split('<leavemessage:').join('').split('>')[0]
             .replace(/(\(member\))/gi, member.user.username)
             .replace(/(\(server\))/gi, member.guild.name)
             .replace(/(\(mention\))/gi, member.toString());
