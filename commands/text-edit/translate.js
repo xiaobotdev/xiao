@@ -17,7 +17,11 @@ module.exports = class TranslateCommand extends Command {
                 {
                     key: 'text',
                     prompt: 'What text would you like to translate?',
-                    type: 'string'
+                    type: 'string',
+                    validate: (text) => {
+                        if (text.length < 500) return true;
+                        else return 'Text must be under 500 characters.';
+                    }
                 },
                 {
                     key: 'to',
