@@ -14,8 +14,9 @@ module.exports = class PortalSendCommand extends Command {
                     prompt: 'What message do you want to send?',
                     type: 'string',
                     validate: (message) => {
-                        if (message.length < 1500) return true;
-                        else return 'Message must be under 1500 characters.';
+                        if (message.length > 1500) return 'Message must be under 1500 characters.';
+                        else if (!/(discord(\.gg\/|app\.com\/invite\/|\.me\/))/gi.test(message)) return true;
+                        else return 'Please do not send invites.';
                     }
                 }
             ]
@@ -25,7 +26,8 @@ module.exports = class PortalSendCommand extends Command {
     async run(msg, args) {
         const { message } = args;
         const channel = this.client.channels.filter((c) => {
-            if (!c.topic || !c.permissionsFor(this.client.user).has('SEND_MESSAGES')) return false;
+            if (c.type !== 'text') return false;
+            else if (!c.topic || !c.permissionsFor(this.client.user).has('SEND_MESSAGES')) return false;
             else if (msg.guild.id === c.guild.id) return false;
             else if (c.topic.includes('<portal>')) return true;
             else return false;
