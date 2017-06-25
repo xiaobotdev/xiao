@@ -6,7 +6,10 @@ const client = new CommandoClient({
     owner: OWNER,
     invite: INVITE,
     disableEveryone: true,
-    unknownCommandResponse: false
+    unknownCommandResponse: false,
+    disabledEvents: [
+        'TYPING_START'
+    ]
 });
 const { carbon, dBots } = require('./structures/Util');
 
