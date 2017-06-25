@@ -8,7 +8,7 @@ const client = new CommandoClient({
     disableEveryone: true,
     unknownCommandResponse: false
 });
-const { carbon, dBots } = require('./structures/Stats');
+const { carbon, dBots } = require('./structures/Util');
 
 client.registry
     .registerDefaultTypes()
