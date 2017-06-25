@@ -8,6 +8,7 @@ module.exports = class SettingHelpCommand extends Command {
             group: 'util',
             memberName: 'setting-help',
             description: 'View help on how to set up settings.',
+            guildOnly: true,
             guarded: true
         });
     }
