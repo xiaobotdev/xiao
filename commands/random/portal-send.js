@@ -35,7 +35,7 @@ module.exports = class PortalSendCommand extends Command {
         if (!channel) return msg.say('Aww... No channel has an open portal...');
         try {
             await channel.send(`**${msg.author.tag} (${msg.guild.name}):** ${message}`);
-            return msg.say('Message sent!');
+            return msg.say(`Message sent to **${channel.name}**!`);
         } catch (err) {
             return msg.say('Failed to send message...');
         }
