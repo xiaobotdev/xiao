@@ -33,7 +33,7 @@ module.exports = class UrbanCommand extends Command {
             .setTitle(body.list[0].word)
             .setDescription(body.list[0].definition.substr(0, 2000))
             .addField('❯ Example',
-                body.list[0].example.substr(0, 2000) || 'None');
+                body.list[0].example.substr(0, 1024) || 'None');
         return msg.embed(embed);
     }
 };
