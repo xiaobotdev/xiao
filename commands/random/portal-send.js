@@ -26,6 +26,7 @@ module.exports = class PortalSendCommand extends Command {
         const { message } = args;
         const channel = this.client.channels.filter((c) => {
             if (!c.topic || !c.permissionsFor(this.client.user).has('SEND_MESSAGES')) return false;
+            else if (msg.guild.id === c.guild.id) return false;
             else if (c.topic.includes('<portal>')) return true;
             else return false;
         }).random();
