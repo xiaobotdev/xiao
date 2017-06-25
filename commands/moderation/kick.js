@@ -37,7 +37,7 @@ module.exports = class KickCommand extends Command {
             const topic = c.topic || '';
             if (topic.includes('<modlog>')) return true;
             else return false;
-        }).first() || member.guild.channels.find('name', 'mod-log');
+        }).first() || msg.guild.channels.find('name', 'mod-log');
         const { member, reason } = args;
         if (!member.kickable) return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
         await msg.say(`Are you sure you want to kick ${member.user.tag} (${member.id})?`);
