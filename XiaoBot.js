@@ -8,7 +8,11 @@ const client = new CommandoClient({
     disableEveryone: true,
     unknownCommandResponse: false,
     disabledEvents: [
-        'TYPING_START'
+        'PRESENCE_UPDATE',
+        'TYPING_START',
+        'VOICE_STATE_UPDATE',
+        'FRIEND_ADD',
+        'FRIEND_REMOVE'
     ]
 });
 const { carbon, dBots } = require('./structures/Util');
