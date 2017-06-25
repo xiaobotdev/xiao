@@ -13,7 +13,9 @@ const client = new CommandoClient({
         'VOICE_STATE_UPDATE',
         'FRIEND_ADD',
         'FRIEND_REMOVE'
-    ]
+    ],
+    messageCacheLifetime: 30,
+    messageSweepInterval: 60
 });
 const { carbon, dBots } = require('./structures/Util');
 
