@@ -34,19 +34,23 @@ module.exports = class WantedCommand extends Command {
             format: 'png',
             size: 512
         });
-        const Image = Canvas.Image;
-        const canvas = new Canvas(741, 1000);
-        const ctx = canvas.getContext('2d');
-        const base = new Image();
-        const avatar = new Image();
-        const generate = () => {
-            ctx.drawImage(base, 0, 0);
-            ctx.drawImage(avatar, 150, 360, 430, 430);
-        };
-        base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'wanted.png'));
-        const { body } = await snekfetch.get(avatarURL);
-        avatar.src = body;
-        generate();
-        return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] });
+        try {
+            const Image = Canvas.Image;
+            const canvas = new Canvas(741, 1000);
+            const ctx = canvas.getContext('2d');
+            const base = new Image();
+            const avatar = new Image();
+            const generate = () => {
+                ctx.drawImage(base, 0, 0);
+                ctx.drawImage(avatar, 150, 360, 430, 430);
+            };
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'wanted.png'));
+            const { body } = await snekfetch.get(avatarURL);
+            avatar.src = body;
+            generate();
+            return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] });
+        } catch (err) {
+            return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+        }
     }
 };

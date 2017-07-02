@@ -34,21 +34,25 @@ module.exports = class ChallengerCommand extends Command {
             format: 'png',
             size: 256
         });
-        const Image = Canvas.Image;
-        const canvas = new Canvas(500, 500);
-        const ctx = canvas.getContext('2d');
-        const base = new Image();
-        const avatar = new Image();
-        const generate = () => {
-            ctx.fillStyle = '#ff0028';
-            ctx.fillRect(0, 0, 500, 500);
-            ctx.drawImage(avatar, 226, 155, 200, 200);
-            ctx.drawImage(base, 0, 0);
-        };
-        base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
-        const { body } = await snekfetch.get(avatarURL);
-        avatar.src = body;
-        generate();
-        return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
+        try {
+            const Image = Canvas.Image;
+            const canvas = new Canvas(500, 500);
+            const ctx = canvas.getContext('2d');
+            const base = new Image();
+            const avatar = new Image();
+            const generate = () => {
+                ctx.fillStyle = '#ff0028';
+                ctx.fillRect(0, 0, 500, 500);
+                ctx.drawImage(avatar, 226, 155, 200, 200);
+                ctx.drawImage(base, 0, 0);
+            };
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
+            const { body } = await snekfetch.get(avatarURL);
+            avatar.src = body;
+            generate();
+            return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
+        } catch (err) {
+            return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+        }
     }
 };
