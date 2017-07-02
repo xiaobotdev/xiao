@@ -35,28 +35,32 @@ module.exports = class RIPCommand extends Command {
             format: 'png',
             size: 256
         });
-        const Image = Canvas.Image;
-        const canvas = new Canvas(507, 338);
-        const ctx = canvas.getContext('2d');
-        const base = new Image();
-        const avatar = new Image();
-        const generate = () => {
-            ctx.drawImage(base, 0, 0);
-            ctx.drawImage(avatar, 158, 51, 200, 200);
-            const imgData = ctx.getImageData(158, 51, 200, 200);
-            const { data } = imgData;
-            for (let i = 0; i < data.length; i += 4) {
-                const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
-                data[i] = brightness;
-                data[i + 1] = brightness;
-                data[i + 2] = brightness;
-            }
-            ctx.putImageData(imgData, 158, 51);
-        };
-        base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
-        const { body } = await snekfetch.get(avatarURL);
-        avatar.src = body;
-        generate();
-        return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
+        try {
+            const Image = Canvas.Image;
+            const canvas = new Canvas(507, 338);
+            const ctx = canvas.getContext('2d');
+            const base = new Image();
+            const avatar = new Image();
+            const generate = () => {
+                ctx.drawImage(base, 0, 0);
+                ctx.drawImage(avatar, 158, 51, 200, 200);
+                const imgData = ctx.getImageData(158, 51, 200, 200);
+                const { data } = imgData;
+                for (let i = 0; i < data.length; i += 4) {
+                    const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
+                    data[i] = brightness;
+                    data[i + 1] = brightness;
+                    data[i + 2] = brightness;
+                }
+                ctx.putImageData(imgData, 158, 51);
+            };
+            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
+            const { body } = await snekfetch.get(avatarURL);
+            avatar.src = body;
+            generate();
+            return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
+        } catch (err) {
+            return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+        }
     }
 };

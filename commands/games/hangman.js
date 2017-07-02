@@ -77,7 +77,7 @@ module.exports = class HangmanCommand extends Command {
             else return msg.say(`Too bad... It was ${word}...`);
         } catch (err) {
             this.playing.delete(msg.guild.id);
-            return msg.say(`Oh no, an Error occurred! Try again later! \`${err.name}: ${err.message}\``);
+            return msg.say(`Oh no, an Error occurred: \`${err.message}\`. Try again later!`);
         }
     }
 };
