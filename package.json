@@ -19,8 +19,7 @@
     "discord-api",
     "discord-bot",
     "discord-js",
-    "discord-js-commando",
-    "cleverbot"
+    "discord-js-commando"
   ],
   "author": "dragonfire535 <danielbodendahl@gmail.com>",
   "license": "ISC",
