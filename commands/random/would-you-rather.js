@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class WouldYouRatherCommand extends Command {
@@ -17,7 +17,7 @@ module.exports = class WouldYouRatherCommand extends Command {
     async run(msg) {
         const { body } = await snekfetch
             .get('http://www.rrrather.com/botapi');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle(`${body.title}...`)
             .setURL(body.link)
             .setColor(0x9797FF)

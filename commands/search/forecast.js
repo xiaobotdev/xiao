@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class ForecastCommand extends Command {
@@ -31,7 +31,7 @@ module.exports = class ForecastCommand extends Command {
             });
         if (!body.query.count) return msg.say('Location Not Found.');
         const forecasts = body.query.results.channel.item.forecast;
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x0000FF)
             .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
             .setURL(body.query.results.channel.link)

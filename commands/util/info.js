@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { version } = require('../../package');
 const moment = require('moment');
 require('moment-duration-format');
@@ -20,7 +20,7 @@ module.exports = class InfoCommand extends Command {
     async run(msg) {
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
         const memory = await this.client.shard.broadcastEval('process.memoryUsage().heapUsed');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x00AE86)
             .setFooter('©2017 dragonfire535#8081')
             .addField('❯ Servers',

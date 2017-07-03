@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 const statuses = require('../../assets/json/user-info');
 
@@ -27,7 +27,7 @@ module.exports = class UserInfoCommand extends Command {
     run(msg, args) {
         const member = args.member || msg.member;
         const status = member.user.presence.status;
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(member.displayHexColor)
             .setThumbnail(member.user.displayAvatarURL())
             .addField('❯ Name',

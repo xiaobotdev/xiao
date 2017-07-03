@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { OSU_KEY } = process.env;
 
@@ -31,7 +31,7 @@ module.exports = class OsuCommand extends Command {
                 type: 'string'
             });
         if (!body.length) return msg.say('No Results.');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0xFF66AA)
             .setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
             .setURL('https://osu.ppy.sh/')

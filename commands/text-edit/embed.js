@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class EmbedCommand extends Command {
     constructor(client) {
@@ -21,7 +21,7 @@ module.exports = class EmbedCommand extends Command {
 
     run(msg, args) {
         const { text } = args;
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
             .setColor(0x00AE86)
             .setTimestamp()

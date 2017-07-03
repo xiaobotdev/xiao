@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 const filterLevels = ['Off', 'No Role', 'Everyone'];
 
@@ -17,7 +17,7 @@ module.exports = class GuildInfoCommand extends Command {
     }
 
     run(msg) {
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x00AE86)
             .setThumbnail(msg.guild.iconURL())
             .addField('❯ Name',

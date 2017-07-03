@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class DiscrimCommand extends Command {
     constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class DiscrimCommand extends Command {
     run(msg, args) {
         const discrim = args.discrim || msg.author.discriminator;
         const users = this.client.users.filter((user) => user.discriminator === discrim).map((user) => user.username);
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle(`${users.length} Users with the discriminator: ${discrim}`)
             .setDescription(users.join(', '));
         return msg.embed(embed);

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
 const { GITHUB_LOGIN } = process.env;
@@ -27,7 +27,7 @@ module.exports = class GithubCommand extends Command {
         try {
             const { body } = await snekfetch
                 .get(`https://${GITHUB_LOGIN}@api.github.com/repos/${repo}`);
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setColor(0xFFFFFF)
                 .setAuthor('Github', 'https://i.imgur.com/ajcPgJG.png')
                 .setURL(body.html_url)

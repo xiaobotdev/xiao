@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const math = require('mathjs');
 const { operations, difficulties, maxValues } = require('../../assets/json/math-game');
 
@@ -33,7 +33,7 @@ module.exports = class MathGameCommand extends Command {
         const value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
         const expression = `${value1} ${operation} ${value2}`;
         const answer = math.eval(expression).toString();
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle('You have 10 seconds to answer:')
             .setDescription(expression);
         await msg.embed(embed);

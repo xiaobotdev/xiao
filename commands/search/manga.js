@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { cleanXML } = require('../../structures/Util');
 const { promisifyAll } = require('tsubaki');
@@ -32,7 +32,7 @@ module.exports = class MangaCommand extends Command {
                 .query({ q: query });
             const { manga } = await xml.parseStringAsync(text);
             const synopsis = cleanXML(manga.entry[0].synopsis[0].substr(0, 2000));
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setColor(0x2D54A2)
                 .setAuthor('My Anime List', 'https://i.imgur.com/R4bmNFz.png')
                 .setURL(`https://myanimelist.net/manga/${manga.entry[0].id[0]}`)
