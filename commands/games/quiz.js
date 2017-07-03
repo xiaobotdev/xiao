@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
 
@@ -24,7 +24,7 @@ module.exports = class QuizCommand extends Command {
                 encode: 'url3986'
             });
         const answer = body.results[0].correct_answer.toLowerCase();
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle('You have 15 seconds to answer this question:')
             .setDescription(stripIndents`
                 **${decodeURIComponent(body.results[0].category)}**

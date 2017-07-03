@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class WeatherCommand extends Command {
@@ -29,7 +29,7 @@ module.exports = class WeatherCommand extends Command {
                 format: 'json'
             });
         if (!body.query.count) return msg.say('Location Not Found.');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x0000FF)
             .setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
             .setURL(body.query.results.channel.link)

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
 module.exports = class HelpCommand extends Command {
@@ -29,7 +29,7 @@ module.exports = class HelpCommand extends Command {
         const showAll = command && command.toLowerCase() === 'all';
         if (command && !showAll) {
             if (commands.length === 1) {
-                const embed = new RichEmbed()
+                const embed = new MessageEmbed()
                     .setTitle(`Command ${commands[0].name}`)
                     .setDescription(stripIndents`
                         ${commands[0].description}
@@ -48,7 +48,7 @@ module.exports = class HelpCommand extends Command {
                 return msg.say(`Could not identify command. Use ${msg.usage(null)} to view a list of commands.`);
             }
         } else {
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
                 .setDescription(`Use ${msg.usage('<command>')} to view detailed information about a command.`)
                 .setColor(0x00AE86);

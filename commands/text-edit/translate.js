@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const codes = require('../../assets/json/translate');
 const { YANDEX_KEY } = process.env;
@@ -58,7 +58,7 @@ module.exports = class TranslateCommand extends Command {
                 lang: from ? `${from}-${to}` : to
             });
         const lang = body.lang.split('-');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x00AE86)
             .addField(`❯ From: ${codes[lang[0]]}`,
                 text)

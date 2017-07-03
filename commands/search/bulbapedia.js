@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class BulbapediaCommand extends Command {
@@ -36,7 +36,7 @@ module.exports = class BulbapediaCommand extends Command {
                 formatversion: 2
             });
         if (body.query.pages[0].missing) return msg.say('No Results.');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x3E7614)
             .setTitle(body.query.pages[0].title)
             .setAuthor('Bulbapedia', 'https://i.imgur.com/09eYo5T.png')

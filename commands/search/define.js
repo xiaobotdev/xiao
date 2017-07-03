@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { WORDNIK_KEY } = process.env;
 
@@ -33,7 +33,7 @@ module.exports = class DefineCommand extends Command {
                 api_key: WORDNIK_KEY
             });
         if (!body.length) return msg.say('No Results.');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x9797FF)
             .setTitle(body[0].word)
             .setDescription(body[0].text);

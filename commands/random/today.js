@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class TodayCommand extends Command {
@@ -19,7 +19,7 @@ module.exports = class TodayCommand extends Command {
         const body = JSON.parse(text);
         const events = body.data.Events;
         const event = events[Math.floor(Math.random() * events.length)];
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x9797FF)
             .setURL(body.url)
             .setTitle(`On this day (${body.date})...`)

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class YuGiOhCommand extends Command {
@@ -26,7 +26,7 @@ module.exports = class YuGiOhCommand extends Command {
         const { body } = await snekfetch
             .get(`http://yugiohprices.com/api/card_data/${query}`);
         if (body.status === 'fail') return msg.say('No Results.');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0xBE5F1F)
             .setTitle(body.data.name)
             .setDescription(body.data.text)

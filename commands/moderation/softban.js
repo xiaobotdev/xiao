@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
 module.exports = class SoftbanCommand extends Command {
@@ -63,7 +63,7 @@ module.exports = class SoftbanCommand extends Command {
         if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
             return msg.say('Could not log the softban to the mod logs.');
         } else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setAuthor(msg.author.tag, msg.author.displayAvatarURL())
                 .setColor(0xFF4500)
                 .setTimestamp()

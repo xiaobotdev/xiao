@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { SOUNDCLOUD_KEY } = process.env;
 
@@ -30,7 +30,7 @@ module.exports = class SoundCloudCommand extends Command {
                 client_id: SOUNDCLOUD_KEY
             });
         if (!body.length) return msg.say('No Results.');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0xF15A22)
             .setAuthor('SoundCloud', 'https://i.imgur.com/lFIz7RU.png')
             .setTitle(body[0].title)

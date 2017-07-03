@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class RecipeCommand extends Command {
@@ -28,7 +28,7 @@ module.exports = class RecipeCommand extends Command {
         const body = JSON.parse(text);
         if (!body.results.length) return msg.say('No Results.');
         const recipe = body.results[Math.floor(Math.random() * body.results.length)];
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0xC20000)
             .setURL(recipe.href)
             .setTitle(recipe.title)

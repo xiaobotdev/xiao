@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { sentences, difficulties, times } = require('../../assets/json/typing-game');
 
 module.exports = class TypingGameCommand extends Command {
@@ -29,7 +29,7 @@ module.exports = class TypingGameCommand extends Command {
         const { difficulty } = args;
         const sentence = sentences[Math.floor(Math.random() * sentences.length)];
         const time = times[difficulty];
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle(`You have ${time / 1000} seconds to type:`)
             .setDescription(sentence);
         await msg.embed(embed);

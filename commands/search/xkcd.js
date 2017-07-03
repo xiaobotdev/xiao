@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
 module.exports = class XKCDCommand extends Command {
@@ -28,7 +28,7 @@ module.exports = class XKCDCommand extends Command {
         const current = await snekfetch
             .get('https://xkcd.com/info.0.json');
         if (type === 'today') {
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setTitle(`${current.body.num} - ${current.body.title}`)
                 .setURL(`https://xkcd.com/${current.body.num}`)
                 .setImage(current.body.img)
@@ -38,7 +38,7 @@ module.exports = class XKCDCommand extends Command {
             const random = Math.floor(Math.random() * current.body.num) + 1;
             const { body } = await snekfetch
                 .get(`https://xkcd.com/${random}/info.0.json`);
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setTitle(`${body.num} - ${body.title}`)
                 .setURL(`https://xkcd.com/${body.num}`)
                 .setImage(body.img)
@@ -49,7 +49,7 @@ module.exports = class XKCDCommand extends Command {
             if (isNaN(choice) || current.body.num < choice || choice < 1) return msg.say('Invalid Number.');
             const { body } = await snekfetch
                 .get(`https://xkcd.com/${choice}/info.0.json`);
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setTitle(`${body.num} - ${body.title}`)
                 .setURL(`https://xkcd.com/${body.num}`)
                 .setImage(body.img)

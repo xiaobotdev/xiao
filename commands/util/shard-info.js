@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -32,7 +32,7 @@ module.exports = class ShardInfoCommand extends Command {
         const memory = await this.client.shard.broadcastEval('process.memoryUsage().heapUsed');
         const uptime = await this.client.shard.fetchClientValues('uptime');
         const guilds = await this.client.shard.fetchClientValues('guilds.size');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle(`Shard ${shard}`)
             .setColor(0x00AE86)
             .addField('❯ Servers',

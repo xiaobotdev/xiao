@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { GOOGLE_KEY } = process.env;
 
@@ -33,7 +33,7 @@ module.exports = class YouTubeCommand extends Command {
                 key: GOOGLE_KEY
             });
         if (!body.items.length) return msg.say('No Results.');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0xDD2825)
             .setTitle(body.items[0].snippet.title)
             .setDescription(body.items[0].snippet.description)

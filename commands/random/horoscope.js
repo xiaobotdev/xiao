@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const signs = require('../../assets/json/horoscope');
 
@@ -32,7 +32,7 @@ module.exports = class HoroscopeCommand extends Command {
         const { text } = await snekfetch
             .get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today`);
         const body = JSON.parse(text);
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setColor(0x9797FF)
             .setTitle(`Horoscope for ${body.sunsign}...`)
             .setTimestamp()
