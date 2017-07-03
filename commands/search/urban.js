@@ -27,7 +27,7 @@ module.exports = class UrbanCommand extends Command {
             .query({ term: query });
         if (!body.list.length) return msg.say('No Results.');
         const embed = new RichEmbed()
-            .setColor(0x32a8f0)
+            .setColor(0x32A8F0)
             .setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')
             .setURL(body.list[0].permalink)
             .setTitle(body.list[0].word)
