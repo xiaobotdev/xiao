@@ -66,7 +66,7 @@ module.exports = class BattleCommand extends Command {
                     await msg.say(stripIndents`
                         ${user}, do you **fight**, **guard**, **special**, or **run**?
                         **${msg.author.username}**: ${userHP}HP
-                        **${opponent === 'ai' ? 'AI' : opponent.username}**: ${oppoHP}HP
+                        **${opponent === 'AI' ? 'AI' : opponent.username}**: ${oppoHP}HP
                     `);
                     const turn = await msg.channel.awaitMessages((res) => res.author.id === id, {
                         max: 1,
@@ -81,6 +81,7 @@ module.exports = class BattleCommand extends Command {
                 } else {
                     const choices = ['fight', 'guard', 'special'];
                     choice = choices[Math.floor(Math.random() * choices.length)];
+                    await msg.say(`${user} chooses to **${choice}**!`);
                 }
                 if (choice === 'fight') {
                     const damage = Math.floor(Math.random() * (guard ? 10 : 100)) + 1;
