@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { DBOTS_KEY } = process.env;
+const { dbotsKey } = require('../../config');
 
 module.exports = class BotSearchCommand extends Command {
     constructor(client) {
@@ -26,7 +26,7 @@ module.exports = class BotSearchCommand extends Command {
         try {
             const { body } = await snekfetch
                 .get(`https://bots.discord.pw/api/bots/${bot.id}`)
-                .set({ Authorization: DBOTS_KEY });
+                .set({ Authorization: dbotsKey });
             const embed = new MessageEmbed()
                 .setColor(0x9797FF)
                 .setAuthor('Discord Bots', 'https://i.imgur.com/lrKYBQi.jpg')

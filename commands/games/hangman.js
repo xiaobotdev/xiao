@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
-const { WORDNIK_KEY } = process.env;
+const { wordnikKey } = require('../../config');
 
 module.exports = class HangmanCommand extends Command {
     constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class HangmanCommand extends Command {
                     maxDictionaryCount: -1,
                     minLength: -1,
                     maxLength: -1,
-                    api_key: WORDNIK_KEY
+                    api_key: wordnikKey
                 });
             const word = body.word.toLowerCase().replace(/[ ]/g, '-');
             let points = 0;

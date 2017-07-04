@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { SOUNDCLOUD_KEY } = process.env;
+const { soundcloudKey } = require('../../config');
 
 module.exports = class SoundCloudCommand extends Command {
     constructor(client) {
@@ -27,7 +27,7 @@ module.exports = class SoundCloudCommand extends Command {
             .get('https://api.soundcloud.com/tracks')
             .query({
                 q: query,
-                client_id: SOUNDCLOUD_KEY
+                client_id: soundcloudKey
             });
         if (!body.length) return msg.say('No Results.');
         const embed = new MessageEmbed()

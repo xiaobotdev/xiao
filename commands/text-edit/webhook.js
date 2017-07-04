@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
-const { WEBHOOK_URL } = process.env;
+const { webhookURL } = require('../../config');
 
 module.exports = class WebhookCommand extends Command {
     constructor(client) {
@@ -9,7 +9,7 @@ module.exports = class WebhookCommand extends Command {
             aliases: ['rin', 'rin-say'],
             group: 'text-edit',
             memberName: 'webhook',
-            description: 'Posts a message to the webhook defined in your `process.env`.',
+            description: 'Posts a message to the webhook defined in your `config.json`.',
             guildOnly: true,
             ownerOnly: true,
             clientPermissions: ['MANAGE_MESSAGES'],
@@ -27,7 +27,7 @@ module.exports = class WebhookCommand extends Command {
         const { content } = args;
         msg.delete();
         await snekfetch
-            .post(WEBHOOK_URL)
+            .post(webhookURL)
             .send({ content });
         return null;
     }

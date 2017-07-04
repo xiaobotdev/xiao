@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
-const { GITHUB_LOGIN } = process.env;
+const { githubLogin } = require('../../config');
 
 module.exports = class GithubCommand extends Command {
     constructor(client) {
@@ -26,7 +26,7 @@ module.exports = class GithubCommand extends Command {
         const { repo } = args;
         try {
             const { body } = await snekfetch
-                .get(`https://${GITHUB_LOGIN}@api.github.com/repos/${repo}`);
+                .get(`https://${githubLogin}@api.github.com/repos/${repo}`);
             const embed = new MessageEmbed()
                 .setColor(0xFFFFFF)
                 .setAuthor('Github', 'https://i.imgur.com/ajcPgJG.png')
