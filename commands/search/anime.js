@@ -4,7 +4,7 @@ const snekfetch = require('snekfetch');
 const { cleanXML } = require('../../structures/Util');
 const { promisifyAll } = require('tsubaki');
 const xml = promisifyAll(require('xml2js'));
-const { ANIMELIST_LOGIN } = process.env;
+const { animelistLogin } = require('../../config');
 
 module.exports = class AnimeCommand extends Command {
     constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class AnimeCommand extends Command {
         const { query } = args;
         try {
             const { text } = await snekfetch
-                .get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml`)
+                .get(`https://${animelistLogin}@myanimelist.net/api/anime/search.xml`)
                 .query({ q: query });
             const { anime } = await xml.parseStringAsync(text);
             const synopsis = cleanXML(anime.entry[0].synopsis[0].substr(0, 2000));

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
-const { GOOGLE_KEY } = process.env;
+const { googleKey } = require('../../config');
 
 module.exports = class MapCommand extends Command {
     constructor(client) {
@@ -38,7 +38,7 @@ module.exports = class MapCommand extends Command {
                 center: query,
                 zoom,
                 size: '500x500',
-                key: GOOGLE_KEY
+                key: googleKey
             });
         return msg.say({ files: [{ attachment: body, name: 'map.png' }] });
     }
