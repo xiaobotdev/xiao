@@ -47,6 +47,7 @@ module.exports = class WikiaCommand extends Command {
                 .setThumbnail(body.sections[0].images[0]);
             return msg.embed(embed);
         } catch (err) {
+            console.log(err);
             return msg.say('No Results or Invalid Wiki.');
         }
     }
