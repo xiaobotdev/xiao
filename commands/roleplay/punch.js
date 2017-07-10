@@ -22,7 +22,7 @@ module.exports = class PunchCommand extends Command {
         const { user } = args;
         return msg.say(stripIndents`
             **${msg.author.username}** *punches* **${user.username}**
-            https://i.imgur.com/R5KBiYV.gif
+            https://i.imgur.com/WKj10Dc.gif
         `);
     }
 };

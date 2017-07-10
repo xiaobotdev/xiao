@@ -22,7 +22,7 @@ module.exports = class HighFivesCommand extends Command {
         const { user } = args;
         return msg.say(stripIndents`
             **${msg.author.username}** *high-fives* **${user.username}**
-            https://i.imgur.com/BDW5xnu.gif
+            https://media.giphy.com/media/x58AS8I9DBRgA/giphy.gif
         `);
     }
 };
