@@ -15,7 +15,7 @@ module.exports = class BattleCommand extends Command {
                     key: 'opponent',
                     prompt: 'Who would you like to battle?',
                     type: 'user',
-                    default: ''
+                    default: 'AI'
                 }
             ]
         });
@@ -24,7 +24,7 @@ module.exports = class BattleCommand extends Command {
     }
 
     async run(msg, args) { // eslint-disable-line complexity
-        const opponent = args.opponent || 'AI';
+        const opponent = args.opponent;
         if (opponent.bot) return msg.say('Bots may not be fought.');
         if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
         if (this.fighting.has(msg.guild.id)) return msg.say('Only one fight may be occurring per server.');
@@ -81,7 +81,6 @@ module.exports = class BattleCommand extends Command {
                 } else {
                     const choices = ['fight', 'guard', 'special'];
                     choice = choices[Math.floor(Math.random() * choices.length)];
-                    await msg.say(`${user} chooses to **${choice}**!`);
                 }
                 if (choice === 'fight') {
                     const damage = Math.floor(Math.random() * (guard ? 10 : 100)) + 1;
