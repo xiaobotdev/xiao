@@ -43,11 +43,10 @@ module.exports = class WikiaCommand extends Command {
                 .setColor(0x002D54)
                 .setTitle(body.sections[0].title)
                 .setAuthor('Wikia', 'https://i.imgur.com/WzXWJka.png')
-                .setDescription(body.content[0].text)
+                .setDescription(body.sections[0].content[0].text)
                 .setThumbnail(body.sections[0].images[0]);
             return msg.embed(embed);
         } catch (err) {
-            console.log(err);
             return msg.say('No Results or Invalid Wiki.');
         }
     }
