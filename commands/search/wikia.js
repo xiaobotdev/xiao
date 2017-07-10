@@ -42,6 +42,7 @@ module.exports = class WikiaCommand extends Command {
             const embed = new MessageEmbed()
                 .setColor(0x002D54)
                 .setTitle(body.sections[0].title)
+                .setURL(search.body.items[0].url)
                 .setAuthor('Wikia', 'https://i.imgur.com/WzXWJka.png')
                 .setDescription(body.sections[0].content[0].text)
                 .setThumbnail(body.sections[0].images[0]);
