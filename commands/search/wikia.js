@@ -6,6 +6,7 @@ module.exports = class WikiaCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'wikia',
+            aliases: ['fandom'],
             group: 'search',
             memberName: 'wikia',
             description: 'Searches a specified Wikia wiki for your query.',
@@ -45,7 +46,7 @@ module.exports = class WikiaCommand extends Command {
                 .setURL(search.body.items[0].url)
                 .setAuthor('Wikia', 'https://i.imgur.com/WzXWJka.png')
                 .setDescription(body.sections[0].content.map((i) => i.text).join('\n\n').substr(0, 2000))
-                .setThumbnail(body.sections[0].images[0]);
+                .setThumbnail(body.sections[0].images[0] ? body.sections[0].images[0].src : null);
             return msg.embed(embed);
         } catch (err) {
             return msg.say('No Results or Invalid Wiki.');
