@@ -8,7 +8,7 @@ JavaScript with [discord.js](https://github.com/hydrabolt/discord.js) using the
 
 ## Adding it to Your Server
 Visit XiaoBot's page on the Discord Bots list, which is quite fancy, with
-[this link](https://bots.discord.pw/bots/278305350804045834).
+[this link](https://discordbots.org/bot/278305350804045834).
 
 ## Home Server
 You can join the home server with [this link](https://discord.gg/fqQF8mc).
