@@ -1,5 +1,5 @@
 const snekfetch = require('snekfetch');
-const { carbonKey, dbotsKey } = require('../config');
+const { carbonKey, dbotsKey, dbotsOrgKey } = require('../config');
 
 class Util {
     static cleanXML(str) {
@@ -29,6 +29,15 @@ class Util {
             })
             .then(() => console.log('[CARBON] Successfully posted to Carbon.'))
             .catch((err) => console.error(`[CARBON] Failed to post to Carbon. ${err}`));
+    }
+
+    static dBotsOrg(count, id) {
+        snekfetch
+            .post(`https://discordbots.org/api/bots/${id}/stats`)
+            .set({ Authorization: dbotsOrgKey })
+            .send({ server_count: count })
+            .then(() => console.log('[DBOTSORG] Successfully posted to Discord Bots Org.'))
+            .catch((err) => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
     }
 }
 
