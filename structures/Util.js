@@ -39,13 +39,6 @@ class Util {
             .then(() => console.log('[DBOTSORG] Successfully posted to Discord Bots Org.'))
             .catch((err) => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
     }
-
-    static async upvoters(id) {
-        const { body } = await snekfetch
-            .get(`https://discordbots.org/api/bots/${id}/votes`)
-            .set({ Authorization: dbotsOrgKey });
-        return body.map((user) => `${user.username}#${user.discriminator}`);
-    }
 }
 
 module.exports = Util;
