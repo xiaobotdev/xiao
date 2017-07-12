@@ -40,7 +40,7 @@ class Util {
             .catch((err) => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
     }
 
-    async static upvoters(id) {
+    static async upvoters(id) {
         const { body } = await snekfetch
             .get(`https://discordbots.org/api/bots/${id}/votes`)
             .set({ Authorization: dbotsOrgKey });
