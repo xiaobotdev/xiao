@@ -16,7 +16,7 @@ const client = new CommandoClient({
     messageCacheLifetime: 60,
     messageSweepInterval: 60
 });
-const { carbon, dBots } = require('./structures/Util');
+const { carbon, dBots, dBotsOrg } = require('./structures/Util');
 
 client.registry
     .registerDefaultTypes()
@@ -117,6 +117,7 @@ client.on('guildCreate', async (guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     carbon(count);
     dBots(count, client.user.id);
+    dBotsOrg(count, client.user.id);
 });
 
 client.on('guildDelete', async (guild) => {
@@ -125,6 +126,7 @@ client.on('guildDelete', async (guild) => {
     const count = guilds.reduce((prev, val) => prev + val, 0);
     carbon(count);
     dBots(count, client.user.id);
+    dBotsOrg(count, client.user.id);
 });
 
 client.login(token);
