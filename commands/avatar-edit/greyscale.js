@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const Canvas = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 
 module.exports = class GreyscaleCommand extends Command {
@@ -33,25 +33,20 @@ module.exports = class GreyscaleCommand extends Command {
             size: 256
         });
         try {
-            const Image = Canvas.Image;
-            const canvas = new Canvas(256, 256);
+            const canvas = createCanvas(256, 256);
             const ctx = canvas.getContext('2d');
-            const avatar = new Image();
-            const generate = () => {
-                ctx.drawImage(avatar, 0, 0, 256, 256);
-                const imgData = ctx.getImageData(0, 0, 256, 256);
-                const { data } = imgData;
-                for (let i = 0; i < data.length; i += 4) {
-                    const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
-                    data[i] = brightness;
-                    data[i + 1] = brightness;
-                    data[i + 2] = brightness;
-                }
-                ctx.putImageData(imgData, 0, 0);
-            };
             const { body } = await snekfetch.get(avatarURL);
-            avatar.src = body;
-            generate();
+            const avatar = await loadImage(body);
+            ctx.drawImage(avatar, 0, 0, 256, 256);
+            const imgData = ctx.getImageData(0, 0, 256, 256);
+            const { data } = imgData;
+            for (let i = 0; i < data.length; i += 4) {
+                const brightness = (0.34 * data[i]) + (0.5 * data[i + 1]) + (0.16 * data[i + 2]);
+                data[i] = brightness;
+                data[i + 1] = brightness;
+                data[i + 2] = brightness;
+            }
+            ctx.putImageData(imgData, 0, 0);
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'greyscale.png' }] });
         } catch (err) {
             return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);

@@ -1,8 +1,6 @@
 const Command = require('../../structures/Command');
-const Canvas = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const { promisifyAll } = require('tsubaki');
-const fs = promisifyAll(require('fs'));
 const path = require('path');
 
 module.exports = class ChallengerCommand extends Command {
@@ -35,21 +33,15 @@ module.exports = class ChallengerCommand extends Command {
             size: 256
         });
         try {
-            const Image = Canvas.Image;
-            const canvas = new Canvas(500, 500);
+            const canvas = createCanvas(500, 500);
             const ctx = canvas.getContext('2d');
-            const base = new Image();
-            const avatar = new Image();
-            const generate = () => {
-                ctx.fillStyle = '#ff0028';
-                ctx.fillRect(0, 0, 500, 500);
-                ctx.drawImage(avatar, 226, 155, 200, 200);
-                ctx.drawImage(base, 0, 0);
-            };
-            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
+            const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
             const { body } = await snekfetch.get(avatarURL);
-            avatar.src = body;
-            generate();
+            const avatar = await loadImage(body);
+            ctx.fillStyle = '#ff0028';
+            ctx.fillRect(0, 0, 500, 500);
+            ctx.drawImage(avatar, 226, 155, 200, 200);
+            ctx.drawImage(base, 0, 0);
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
         } catch (err) {
             return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);

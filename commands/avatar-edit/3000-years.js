@@ -1,8 +1,6 @@
 const Command = require('../../structures/Command');
-const Canvas = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const { promisifyAll } = require('tsubaki');
-const fs = promisifyAll(require('fs'));
 const path = require('path');
 
 module.exports = class YearsCommand extends Command {
@@ -36,19 +34,13 @@ module.exports = class YearsCommand extends Command {
             size: 256
         });
         try {
-            const Image = Canvas.Image;
-            const canvas = new Canvas(856, 569);
+            const canvas = createCanvas(856, 569);
             const ctx = canvas.getContext('2d');
-            const base = new Image();
-            const avatar = new Image();
-            const generate = () => {
-                ctx.drawImage(base, 0, 0);
-                ctx.drawImage(avatar, 461, 127, 200, 200);
-            };
-            base.src = await fs.readFileAsync(path.join(__dirname, '..', '..', 'assets', 'images', '3000-years.png'));
+            const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', '3000-years.png'));
             const { body } = await snekfetch.get(avatarURL);
-            avatar.src = body;
-            generate();
+            const avatar = await loadImage(body);
+            ctx.drawImage(base, 0, 0);
+            ctx.drawImage(avatar, 461, 127, 200, 200);
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
         } catch (err) {
             return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
