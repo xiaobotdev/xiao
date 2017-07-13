@@ -7,7 +7,7 @@ module.exports = class UpvotersCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'upvoters',
-            aliases: ['upvote'],
+            aliases: ['upvote', 'updoot'],
             group: 'util',
             memberName: 'upvoters',
             description: 'Responds with Xiao\'s upvoters on Discord Bots.',
