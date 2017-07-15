@@ -7,6 +7,7 @@ module.exports = class RejctedCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'rejected',
+            aliases: ['reject'],
             group: 'avatar-edit',
             memberName: 'rejected',
             description: 'Draws a "rejected" stamp over a user\'s avatar.',
