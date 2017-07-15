@@ -31,7 +31,7 @@ module.exports = class TodayCommand extends Command {
                         if (day < 32 && day > 0) return true;
                         else return 'Please enter a valid day.';
                     }
-                },
+                }
             ]
         });
     }
