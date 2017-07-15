@@ -6,7 +6,7 @@ module.exports = class GunfightCommand extends Command {
             name: 'gunfight',
             aliases: ['western-gunfight'],
             group: 'games',
-            memberName: 'battle',
+            memberName: 'gunfight',
             description: 'Engage in a western gunfight against another user.',
             guildOnly: true,
             args: [
