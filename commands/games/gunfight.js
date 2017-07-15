@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const words = ['fire', 'draw', 'shoot', 'bang', 'pull'];
 
 module.exports = class GunfightCommand extends Command {
     constructor(client) {
@@ -40,8 +41,9 @@ module.exports = class GunfightCommand extends Command {
             await msg.say('Get Ready...');
             const length = Math.floor(Math.random() * (30000 - 1000 + 1) + 1000);
             this.client.setTimeout(async () => {
-                await msg.say('TYPE `FIRE` NOW!');
-                const filter = (res) => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === 'fire'; // eslint-disable-line max-len
+                const word = words[Math.floor(Math.random() * words.length)];
+                await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
+                const filter = (res) => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === word; // eslint-disable-line max-len
                 const winner = await msg.channel.awaitMessages(filter, {
                     max: 1,
                     time: 30000
