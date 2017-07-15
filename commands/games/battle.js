@@ -24,7 +24,7 @@ module.exports = class BattleCommand extends Command {
     }
 
     async run(msg, args) { // eslint-disable-line complexity
-        const opponent = args.opponent;
+        const { opponent } = args;
         if (opponent.bot) return msg.say('Bots may not be fought.');
         if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
         if (this.fighting.has(msg.guild.id)) return msg.say('Only one fight may be occurring per server.');
