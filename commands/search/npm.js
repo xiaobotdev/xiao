@@ -31,7 +31,7 @@ module.exports = class NPMCommand extends Command {
                 .setAuthor('NPM', 'https://i.imgur.com/BCODHXd.png')
                 .setTitle(body.name)
                 .setURL(`https://www.npmjs.com/package/${query}`)
-                .setDescription(body.description)
+                .setDescription(body.description || 'No Description.')
                 .addField('❯ Version',
                     body['dist-tags'].latest, true)
                 .addField('❯ License',
