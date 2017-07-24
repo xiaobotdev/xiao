@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const moment = require('moment');
 
 module.exports = class NPMCommand extends Command {
     constructor(client) {
@@ -37,8 +38,12 @@ module.exports = class NPMCommand extends Command {
                     body.license || 'None', true)
                 .addField('❯ Author',
                     body.author ? body.author.name : 'Unknown', true)
+                .addField('❯ Created',
+                    moment(body.time.created).format('MMMM Do YYYY'), true)
+                .addField('❯ Modified',
+                    moment(body.time.modified).format('MMMM Do YYYY'), true)
                 .addField('❯ Keywords',
-                    body.keywords ? body.keywords.join(', ') : 'None')
+                    body.keywords.length ? body.keywords.join(', ') : 'None')
                 .addField('❯ Maintainers',
                     body.maintainers.map((user) => user.name).join(', '));
             return msg.embed(embed);
