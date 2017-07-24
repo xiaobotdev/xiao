@@ -12,11 +12,6 @@ class Util {
             .replace(/(\[i\]|\[\/i\])/g, '*');
     }
 
-    static placeholder({ size, color }) {
-        if (!size) size = '200x200';
-        return `http://via.placeholder.com/${size}/${color}/${color}`;
-    }
-
     static dBots(count, id) {
         snekfetch
             .post(`https://bots.discord.pw/api/bots/${id}/stats`)
