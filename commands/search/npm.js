@@ -45,7 +45,7 @@ module.exports = class NPMCommand extends Command {
                 .addField('❯ Main File',
                     body.versions[body['dist-tags'].latest].main, true)
                 .addField('❯ Keywords',
-                    body.keywords.length ? body.keywords.join(', ').substr(0, 1024) : 'None')
+                    body.keywords && body.keywords.length ? body.keywords.join(', ').substr(0, 1024) : 'None')
                 .addField('❯ Maintainers',
                     body.maintainers.map((user) => user.name).join(', '));
             return msg.embed(embed);
