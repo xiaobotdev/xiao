@@ -26,7 +26,6 @@ module.exports = class NPMCommand extends Command {
             const { query } = args;
             const { body } = await snekfetch
                 .get(`https://registry.npmjs.com/${query}`);
-            const latest = body.versions[body['dist-tags'].latest];
             const embed = new MessageEmbed()
                 .setColor(0xCB0000)
                 .setAuthor('NPM', 'https://i.imgur.com/BCODHXd.png')
@@ -44,11 +43,9 @@ module.exports = class NPMCommand extends Command {
                 .addField('❯ Modified',
                     moment(body.time.modified).format('MMMM Do YYYY'), true)
                 .addField('❯ Main File',
-                    latest.main, true)
-                .addField('❯ Dependencies',
-                    latest.dependencies ? Object.keys(latest.dependencies).join(', ') : 'None')
+                    body.versions[body['dist-tags'].latest].main, true)
                 .addField('❯ Keywords',
-                    body.keywords.length ? body.keywords.join(', ') : 'None')
+                    body.keywords.length ? body.keywords.join(', ').substr(0, 1024) : 'None')
                 .addField('❯ Maintainers',
                     body.maintainers.map((user) => user.name).join(', '));
             return msg.embed(embed);
