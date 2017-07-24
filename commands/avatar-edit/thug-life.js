@@ -40,6 +40,15 @@ module.exports = class ThugLifeCommand extends Command {
             const avatar = await loadImage(body);
             ctx.drawImage(avatar, 0, 0);
             ctx.drawImage(base, 28, 204, 200, 42);
+            const imgData = ctx.getImageData(0, 0, 256, 256);
+            const { data } = imgData;
+            for (let i = 0; i < data.length; i += 4) {
+                const brightness = (0.34 * data[i]) + (0.5 * data[i + 1]) + (0.16 * data[i + 2]);
+                data[i] = brightness;
+                data[i + 1] = brightness;
+                data[i + 2] = brightness;
+            }
+            ctx.putImageData(imgData, 0, 0);
             return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'thug-life.png' }] });
         } catch (err) {
             return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
