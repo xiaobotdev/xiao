@@ -34,11 +34,11 @@ module.exports = class NPMCommand extends Command {
                 .addField('❯ Version',
                     body['dist-tags'].latest, true)
                 .addField('❯ License',
-                    body.license, true)
+                    body.license || 'None', true)
                 .addField('❯ Author',
-                    body.author.name, true)
+                    body.author ? body.author.name : 'Unknown', true)
                 .addField('❯ Keywords',
-                    body.keywords.join(', '))
+                    body.keywords ? body.keywords.join(', ') : 'None')
                 .addField('❯ Maintainers',
                     body.maintainers.map((user) => user.name).join(', '));
             return msg.embed(embed);
