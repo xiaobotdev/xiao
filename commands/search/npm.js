@@ -42,6 +42,8 @@ module.exports = class NPMCommand extends Command {
                     moment(body.time.created).format('MMMM Do YYYY'), true)
                 .addField('❯ Modified',
                     moment(body.time.modified).format('MMMM Do YYYY'), true)
+                .addField('❯ Main File',
+                    body.main, true)
                 .addField('❯ Keywords',
                     body.keywords.length ? body.keywords.join(', ') : 'None')
                 .addField('❯ Maintainers',
