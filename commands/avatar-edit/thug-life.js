@@ -38,7 +38,7 @@ module.exports = class ThugLifeCommand extends Command {
             const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'thug-life.png'));
             const { body } = await snekfetch.get(avatarURL);
             const avatar = await loadImage(body);
-            ctx.drawImage(avatar, 0, 0);
+            ctx.drawImage(avatar, 0, 0, 256, 256);
             ctx.drawImage(base, 28, 204, 200, 42);
             const imgData = ctx.getImageData(0, 0, 256, 256);
             const { data } = imgData;
