@@ -26,8 +26,7 @@ module.exports = class HelpCommand extends Command {
     async run(msg, args) {
         const { command } = args;
         const commands = this.client.registry.findCommands(command, false, msg);
-        const showAll = command && command.toLowerCase() === 'all';
-        if (command && !showAll) {
+        if (command) {
             if (commands.length === 1) {
                 const embed = new MessageEmbed()
                     .setTitle(`Command ${commands[0].name}`)
@@ -49,14 +48,12 @@ module.exports = class HelpCommand extends Command {
             }
         } else {
             const embed = new MessageEmbed()
-                .setTitle(!showAll ? `Commands Available in ${msg.guild ? msg.guild.name : 'this DM'}` : 'All Commands')
+                .setTitle('Command List')
                 .setDescription(`Use ${msg.usage('<command>')} to view detailed information about a command.`)
                 .setColor(0x00AE86);
             for (const group of this.client.registry.groups.values()) {
                 embed.addField(`❯ ${group.name}`,
-                    showAll ?
-                        group.commands.map((c) => c.name).join(', ') || 'None' :
-                        group.commands.filter((c) => c.isUsable(msg)).map((c) => c.name).join(', ') || 'None');
+                    group.commands.map((c) => c.name).join(', ') || 'None');
             }
             try {
                 await msg.direct({ embed });
