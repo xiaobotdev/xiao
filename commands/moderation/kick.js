@@ -54,7 +54,7 @@ module.exports = class KickCommand extends Command {
         } catch (err) {
             await msg.say('Failed to Send DM.');
         }
-        await member.kick({ reason: `${msg.author.tag}: ${reason}` });
+        await member.kick(`${msg.author.tag}: ${reason}`);
         await msg.say(`Successfully kicked ${member.user.tag}.`);
         if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
             return msg.say('Could not log the kick to the mod logs.');
