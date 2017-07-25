@@ -7,7 +7,7 @@ module.exports = class WouldYouRatherCommand extends Command {
         super(client, {
             name: 'would-you-rather',
             aliases: ['wy-rather'],
-            group: 'random',
+            group: 'random-res',
             memberName: 'would-you-rather',
             description: 'Responds with a random would you rather question.',
             clientPermissions: ['EMBED_LINKS']

@@ -6,7 +6,7 @@ module.exports = class KonachanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'konachan',
-            group: 'search',
+            group: 'random-img',
             memberName: 'konachan',
             description: 'Searches Konachan with optional query.',
             nsfw: true,

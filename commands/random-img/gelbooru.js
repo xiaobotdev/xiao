@@ -8,15 +8,16 @@ module.exports = class GelbooruCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'gelbooru',
-            group: 'search',
+            group: 'random-img',
             memberName: 'gelbooru',
-            description: 'Searches Gelbooru for your query.',
+            description: 'Searches Gelbooru with optional query.',
             nsfw: true,
             args: [
                 {
                     key: 'query',
                     prompt: 'What would you like to search for?',
-                    type: 'string'
+                    type: 'string',
+                    default: ''
                 }
             ]
         });
@@ -31,13 +32,13 @@ module.exports = class GelbooruCommand extends Command {
                 s: 'post',
                 q: 'index',
                 tags: query,
-                limit: 1
+                limit: 200
             });
         const { posts } = await xml.parseStringAsync(text);
         if (posts.$.count === '0') return msg.say('No Results.');
         return msg.say(stripIndents`
             Result for ${query}:
-            https:${posts.post[0].$.file_url}
+            https:${posts.post[Math.floor(Math.random * posts.post.length)].$.file_url}
         `);
     }
 };

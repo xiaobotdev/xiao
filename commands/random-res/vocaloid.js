@@ -5,7 +5,7 @@ module.exports = class VocaloidCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'vocaloid',
-            group: 'random-img',
+            group: 'random-res',
             memberName: 'vocaloid',
             description: 'Responds with a random VOCALOID song.'
         });
