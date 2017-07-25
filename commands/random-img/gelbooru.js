@@ -37,8 +37,8 @@ module.exports = class GelbooruCommand extends Command {
         const { posts } = await xml.parseStringAsync(text);
         if (posts.$.count === '0') return msg.say('No Results.');
         return msg.say(stripIndents`
-            Result for ${query}:
-            https:${posts.post[Math.floor(Math.random * posts.post.length)].$.file_url}
+            ${query ? `Result for ${query}:` : 'Random Image:'}
+            https:${posts.post[Math.floor(Math.random() * posts.post.length)].$.file_url}
         `);
     }
 };

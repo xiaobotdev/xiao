@@ -37,7 +37,7 @@ module.exports = class Rule34Command extends Command {
         const { posts } = await xml.parseStringAsync(text);
         if (posts.$.count === '0') return msg.say('No Results.');
         return msg.say(stripIndents`
-            Result for ${query}:
+            ${query ? `Result for ${query}:` : 'Random Image:'}
             https:${posts.post[Math.floor(Math.random() * posts.post.length)].$.file_url}
         `);
     }
