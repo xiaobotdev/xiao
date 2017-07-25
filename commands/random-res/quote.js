@@ -23,4 +23,3 @@ module.exports = class QuoteCommand extends Command {
         return msg.embed(embed);
     }
 };
-
