@@ -7,7 +7,7 @@ module.exports = class XKCDCommand extends Command {
         super(client, {
             name: 'xkcd',
             aliases: ['kcd'],
-            group: 'search',
+            group: 'random',
             memberName: 'xkcd',
             description: 'Gets an XKCD Comic, optionally opting for today\'s or a specific number.',
             clientPermissions: ['EMBED_LINKS'],

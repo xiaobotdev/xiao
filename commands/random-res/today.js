@@ -6,8 +6,8 @@ module.exports = class TodayCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'today',
-            aliases: ['event'],
-            group: 'random',
+            aliases: ['event', 'history'],
+            group: 'random-res',
             memberName: 'today',
             description: 'Responds with an event that occurred today in history, or on a specific day.',
             clientPermissions: ['EMBED_LINKS'],

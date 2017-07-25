@@ -6,7 +6,7 @@ module.exports = class DanbooruCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'danbooru',
-            group: 'search',
+            group: 'random-img',
             memberName: 'danbooru',
             description: 'Searches Danbooru with optional query.',
             nsfw: true,
