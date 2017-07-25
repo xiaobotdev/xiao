@@ -15,17 +15,11 @@ module.exports = class QuoteCommand extends Command {
 
     async run(msg) {
         const { body } = await snekfetch
-            .get('https://api.forismatic.com/api/1.0/')
-            .query({
-                method: 'getQuote',
-                lang: 'en',
-                format: 'json'
-            });
+            .get('https://talaikis.com/api/quotes/random/');
         const embed = new MessageEmbed()
             .setColor(0x9797FF)
-            .setURL(body.quoteLink)
-            .setAuthor(body.quoteAuthor)
-            .setDescription(body.quoteText);
+            .setAuthor(body.author)
+            .setDescription(body.quote);
         return msg.embed(embed);
     }
 };
