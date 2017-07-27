@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "27.9.0",
+  "version": "27.9.1",
   "description": "Your personal server companion.",
   "main": "Shard.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/dragonfire535/xiaobot#readme",
   "engines": {
-    "node": ">=8.1.4"
+    "node": ">=8.0.0"
   },
   "dependencies": {
     "bufferutil": "^3.0.2",
@@ -47,6 +47,16 @@
     "zalgolize": "^1.2.4"
   },
   "devDependencies": {
-    "eslint": "^4.2.0"
+    "eslint": "^4.2.0",
+    "eslint-config-aqua": "^1.4.1"
+  },
+  "eslintConfig": {
+    "extends": "aqua",
+    "rules": {
+      "camelcase": "off",
+      "id-length": "off",
+      "no-await-in-loop": "off",
+      "no-console": "off"
+    }
   }
 }
