@@ -36,6 +36,6 @@ module.exports = class PokemonFusionCommand extends Command {
 
     run(msg, args) {
         const { source1, source2 } = args;
-        return msg.say(`http://images.alexonsager.net/pokemon/fused/${source1}/${source1}.${source2}.png`);
+        return msg.say({ files: [`http://images.alexonsager.net/pokemon/fused/${source1}/${source1}.${source2}.png`] });
     }
 };
