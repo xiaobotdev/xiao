@@ -22,7 +22,7 @@ module.exports = class EvolveCommand extends Command {
 		const { user } = args;
 		return msg.say(stripIndents`
 			**${user.username}** *is evolving!*
-			https://i.imgur.com/7bh8hoX.gif
+			https://i.imgur.com/gkdDk4P.gif
 		`);
 	}
 };
