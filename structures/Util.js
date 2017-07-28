@@ -40,6 +40,24 @@ class Util {
 			.then(() => console.log('[DBOTSORG] Successfully posted to Discord Bots Org.'))
 			.catch(err => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
 	}
+
+	static parseTopic(channels, setting, user) {
+		const channelList = channels.filter(c => {
+			const topic = c.topic || '';
+			if (topic.includes(`<${setting}>`) && c.type === 'text' && c.permissionsFor(user).has('SEND_MESSAGES')) return true;
+			return false;
+		});
+		if (!channelList) return false;
+		return channelList;
+	}
+
+	static parseTopicMsg(topic, setting) {
+		const regex = new RegExp(`<${setting}>.+</${setting}>`, 'gi');
+		if (!regex.test(topic)) return '';
+		const parsed = topic.match(regex)[0];
+		const word = `<${setting}>`;
+		return parsed.slice(word.length, parsed.length - (word.length + 1));
+	}
 }
 
 module.exports = Util;
