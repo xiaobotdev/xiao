@@ -44,7 +44,7 @@ class Util {
 	static parseTopic(channels, setting, user) {
 		const channelList = channels.filter(c => {
 			const topic = c.topic || '';
-			if (topic.includes(`<${setting}>`) && c.type === 'text' && c.permissionsFor(user).has('SEND_MESSAGES')) return true;
+			if (topic.includes(`<${setting}>`) && c.type === 'text' && c.permissionsFor(user).has('SEND_MESSAGES')) return true; // eslint-disable-line max-len
 			return false;
 		});
 		if (!channelList) return false;
