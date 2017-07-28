@@ -15,7 +15,11 @@ module.exports = class DanbooruCommand extends Command {
 					key: 'query',
 					prompt: 'What would you like to search for?',
 					type: 'string',
-					default: ''
+					default: '',
+					validate: query => {
+						if (!query.includes(' ')) return true;
+						return 'Please only search for one tag at a time.';
+					}
 				}
 			]
 		});
