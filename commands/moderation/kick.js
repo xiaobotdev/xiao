@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
+const { parseTopic, parseTopicMsg } = require('../../structures/Util');
 
 module.exports = class KickCommand extends Command {
 	constructor(client) {
@@ -33,13 +34,13 @@ module.exports = class KickCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const modlogs = msg.guild.channels.filter(c => {
-			const topic = c.topic || '';
-			if (topic.includes('<modlog>')) return true;
-			return false;
-		}).first() || msg.guild.channels.find('name', 'mod-log');
+		const modlogs = parseTopic(msg.guild.channels, 'modlog', this.client.user).first();
 		const { member, reason } = args;
 		if (!member.kickable) return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
+		if (member.highestRole.calculatedPosition > msg.member.highestRole.calculatedPosition) {
+			return msg.say('Your roles are too low to kick this member.');
+		}
+		if (member.id === msg.author.id) return msg.say('I don\'t think you want to kick yourself...');
 		await msg.say(`Are you sure you want to kick ${member.user.tag} (${member.id})?`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
@@ -47,9 +48,13 @@ module.exports = class KickCommand extends Command {
 		});
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
 		try {
+			const message = parseTopicMsg(modlogs.topic, 'modmessage')
+				.replace(/{{action}}/gi, 'kicked')
+				.replace(/{{moderator}}/gi, msg.author.tag)
+				.replace(/{{server}}/gi, msg.guild.name);
 			await member.send(stripIndents`
-				You were kicked from ${msg.guild.name}!
-				Reason: ${reason}
+				${message || `You were kicked from ${msg.guild.name} by ${msg.author.tag}!`}
+				**Reason:** ${reason}
 			`);
 		} catch (err) {
 			await msg.say('Failed to Send DM.');

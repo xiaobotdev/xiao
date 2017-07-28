@@ -16,7 +16,7 @@ const client = new CommandoClient({
 	messageCacheLifetime: 60,
 	messageSweepInterval: 60
 });
-const { carbon, dBots, dBotsOrg } = require('./structures/Util');
+const { carbon, dBots, dBotsOrg, parseTopic, parseTopicMsg } = require('./structures/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -73,43 +73,24 @@ client.on('message', async msg => {
 });
 
 client.on('guildMemberAdd', member => {
-	const channel = member.guild.channels.filter(c => {
-		const topic = c.topic || '';
-		if (topic.includes('<memberlog>')) return true;
-		return false;
-	}).first() || member.guild.channels.find('name', 'member-log');
-	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-	const parseMsg = topic => {
-		if (!topic || !/<joinmessage>.+<\/joinmessage>/gi.test(topic)) return '';
-		const setting = topic.match(/<joinmessage>.+<\/joinmessage>/gi)[0];
-		return setting.slice(13, setting.length - 14)
-			.replace(/\(member\)/gi, member.user.username)
-			.replace(/\(server\)/gi, member.guild.name)
-			.replace(/\(mention\)/gi, member.toString());
-	};
-	const msg = channel.topic ? parseMsg(channel.topic) : '';
+	const channel = parseTopic(member.guild.channels, 'memberlog', client.user).first();
+	if (!channel) return;
+	const msg = parseTopicMsg(channel.topic, 'joinmessage')
+		.replace(/{{member}}/gi, member.user.username)
+		.replace(/{{server}}/gi, member.guild.name)
+		.replace(/{{mention}}/gi, member);
 	channel.send(msg || `Welcome ${member.user.username}!`);
 });
 
 client.on('guildMemberRemove', member => {
-	const channel = member.guild.channels.filter(c => {
-		const topic = c.topic || '';
-		if (topic.includes('<memberlog>')) return true;
-		return false;
-	}).first() || member.guild.channels.find('name', 'member-log');
-	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-	const parseMsg = topic => {
-		if (!topic || !/<leavemessage>.+<\/leavemessage>/gi.test(topic)) return '';
-		const setting = topic.match(/<leavemessage>.+<\/leavemessage>/gi)[0];
-		return setting.slice(14, setting.length - 15)
-			.replace(/\(member\)/gi, member.user.username)
-			.replace(/\(server\)/gi, member.guild.name)
-			.replace(/\(mention\)/gi, member.toString());
-	};
-	const msg = channel.topic ? parseMsg(channel.topic) : '';
-	channel.send(msg || `Bye ${member.user.username}...`);
+	const channel = parseTopic(member.guild.channels, 'memberlog', client.user).first();
+	if (!channel) return;
+	const msg = parseTopicMsg(channel.topic, 'leavemessage')
+		.replace(/{{member}}/gi, member.user.username)
+		.replace(/{{server}}/gi, member.guild.name)
+		.replace(/{{mention}}/gi, member);
+	channel.send(msg || `Welcome ${member.user.username}!`);
 });
-
 
 client.on('guildCreate', async guild => {
 	console.log(`[GUILD] I have joined ${guild.name}! (${guild.id})`);
