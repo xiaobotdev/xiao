@@ -36,11 +36,11 @@ module.exports = class SoftbanCommand extends Command {
 	async run(msg, args) {
 		const modlogs = parseTopic(msg.guild.channels, 'modlog', this.client.user).first();
 		const { member, reason } = args;
+		if (member.id === msg.author.id) return msg.say('I don\'t think you want to softban yourself...');
 		if (!member.bannable) return msg.say('This member is not softbannable. Perhaps they have a higher role than me?');
 		if (member.highestRole.calculatedPosition > msg.member.highestRole.calculatedPosition - 1) {
 			return msg.say('Your roles are too low to softban this member.');
 		}
-		if (member.id === msg.author.id) return msg.say('I don\'t think you want to softban yourself...');
 		await msg.say(`Are you sure you want to softban ${member.user.tag} (${member.id})?`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
