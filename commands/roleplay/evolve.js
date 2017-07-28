@@ -21,7 +21,7 @@ module.exports = class EvolveCommand extends Command {
 	run(msg, args) {
 		const { user } = args;
 		return msg.say(stripIndents`
-			**${user}** *is evolving!*
+			**${user.username}** *is evolving!*
 			https://i.imgur.com/7bh8hoX.gif
 		`);
 	}
