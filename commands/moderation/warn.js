@@ -48,7 +48,7 @@ module.exports = class WarnCommand extends Command {
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
 		try {
 			const message = parseTopicMsg(modlogs.topic, 'modmessage')
-				.replace(/{{action}}/gi, 'warn')
+				.replace(/{{action}}/gi, 'warned')
 				.replace(/{{moderator}}/gi, msg.author.tag)
 				.replace(/{{server}}/gi, msg.guild.name);
 			await member.send(stripIndents`

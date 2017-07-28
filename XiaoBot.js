@@ -89,7 +89,7 @@ client.on('guildMemberRemove', member => {
 		.replace(/{{member}}/gi, member.user.username)
 		.replace(/{{server}}/gi, member.guild.name)
 		.replace(/{{mention}}/gi, member);
-	channel.send(msg || `Welcome ${member.user.username}!`);
+	channel.send(msg || `Bye ${member.user.username}...`);
 });
 
 client.on('guildCreate', async guild => {
