@@ -37,11 +37,11 @@ module.exports = class HoroscopeCommand extends Command {
 			.setTitle(`Horoscope for ${body.sunsign}...`)
 			.setTimestamp()
 			.setDescription(body.horoscope)
-			.addField('Mood',
+			.addField('❯ Mood',
 				body.meta.mood, true)
-			.addField('Intensity',
+			.addField('❯ Intensity',
 				body.meta.intensity, true)
-			.addField('Date',
+			.addField('❯ Date',
 				body.date, true);
 		return msg.embed(embed);
 	}
