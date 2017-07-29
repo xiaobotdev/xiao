@@ -49,6 +49,6 @@ module.exports = class PokedexCommand extends Command {
 	}
 
 	filter(arr) {
-		return arr.filter(entry => entry.language.name === 'en')[0];
+		return arr.filter(entry => entry.language.name === 'en')[Math.floor(Math.random() * arr.length)];
 	}
 };
