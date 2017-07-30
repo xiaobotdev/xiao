@@ -30,7 +30,7 @@ module.exports = class PokedexCommand extends Command {
 				.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
 			const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
 			const name = this.filter(body.names).name;
-			const flavor = this.filter(body.flavor_text_entries).flavor_text.replace(/\n/g, ' ');
+			const flavor = this.filter(body.flavor_text_entries).flavor_text.replace(/(\n|\f|\r)/g, ' ');
 			const species = this.filter(body.genera).genus;
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
