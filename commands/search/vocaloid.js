@@ -35,7 +35,8 @@ module.exports = class VocaloidCommand extends Command {
 			});
 		if (!body.totalCount) return msg.say('No Results.');
 		const embed = new MessageEmbed()
-			.setAuthor(`VocaDB - ${body.items[0].name}`, 'https://i.imgur.com/MklQqa2.png')
+			.setAuthor('VocaDB', 'https://i.imgur.com/MklQqa2.png')
+			.setTitle(body.items[0].name)
 			.setURL(`http://vocadb.net/S/${body.items[0].id}`)
 			.addField('❯ Artist',
 				body.items[0].artistString)
