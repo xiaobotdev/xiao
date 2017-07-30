@@ -26,7 +26,7 @@ module.exports = class PortalSendCommand extends Command {
 
 	async run(msg, args) {
 		const { message } = args;
-		const channels = this.client.channels.filter(c => c.guild.id !== msg.guild.id);
+		const channels = this.client.channels.filter(c => c.guild.id !== msg.guild.id && c.type === 'text');
 		const channel = parseTopic(channels, 'portal', this.client.user).random();
 		if (!channel) return msg.say('Aww... No channel has an open portal...');
 		try {
