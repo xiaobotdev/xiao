@@ -35,11 +35,9 @@ module.exports = class SteamCommand extends Command {
 		const price = current === original ? `$${current}` : `~~$${original}~~ $${current}`;
 		const embed = new MessageEmbed()
 			.setColor(0x101D2F)
-			.setAuthor('Steam', 'https://i.imgur.com/vL8b4D5.png')
+			.setAuthor(`Steam - ${body.items[0].name}`, 'https://i.imgur.com/vL8b4D5.png')
 			.setURL(`http://store.steampowered.com/app/${body.items[0].id}`)
 			.setImage(body.items[0].tiny_image)
-			.addField('❯ Title',
-				body.items[0].name)
 			.addField('❯ Price',
 				price, true)
 			.addField('❯ Metascore',
