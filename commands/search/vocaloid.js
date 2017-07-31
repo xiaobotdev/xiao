@@ -31,7 +31,8 @@ module.exports = class VocaloidCommand extends Command {
 				getTotalCount: true,
 				sort: 'FavoritedTimes',
 				preferAccurateMatches: true,
-				nameMatchMode: 'Exact'
+				nameMatchMode: 'Words',
+				fields: 'ThumbUrl,Lyrics'
 			});
 		if (!body.totalCount) return msg.say('No Results.');
 		const embed = new MessageEmbed()
@@ -39,6 +40,8 @@ module.exports = class VocaloidCommand extends Command {
 			.setAuthor('VocaDB', 'https://i.imgur.com/9Tx9UIc.jpg')
 			.setTitle(body.items[0].name)
 			.setURL(`http://vocadb.net/S/${body.items[0].id}`)
+			.setDescription(body.items[0].lyrics[0] ? body.items[0].lyrics[0].value : 'Unable to find lyrics.')
+			.setThumbnail(body.items[0].thumbUrl)
 			.addField('❯ Artist',
 				body.items[0].artistString)
 			.addField('❯ Publish Date',
