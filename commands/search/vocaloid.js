@@ -35,7 +35,8 @@ module.exports = class VocaloidCommand extends Command {
 			});
 		if (!body.totalCount) return msg.say('No Results.');
 		const embed = new MessageEmbed()
-			.setAuthor('VocaDB', 'https://i.imgur.com/MklQqa2.png')
+			.setColor(0x86D2D0)
+			.setAuthor('VocaDB', 'https://i.imgur.com/9Tx9UIc.jpg')
 			.setTitle(body.items[0].name)
 			.setURL(`http://vocadb.net/S/${body.items[0].id}`)
 			.addField('❯ Artist',
@@ -43,7 +44,7 @@ module.exports = class VocaloidCommand extends Command {
 			.addField('❯ Publish Date',
 				moment(body.items[0].publishDate).format('MMMM Do YYYY'), true)
 			.addField('❯ Length',
-				(body.items[0].lengthSeconds / 60).toFixed(2).replace(/\./g, ':'), true);
+				moment.duration(body.items[0].lengthSeconds, 's').format(), true);
 		return msg.embed(embed);
 	}
 };
