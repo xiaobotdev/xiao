@@ -26,9 +26,10 @@ module.exports = class CommandLeaderboardCommand extends Command {
 		let i = 0;
 		const list = this.client.registry.commands
 			.filter(cmd => !isNaN(cmd.uses))
-			.sort((a, b) => a.uses - b.uses)
+			.sort((a, b) => b.uses - a.uses)
 			.map(cmd => `**${++i}.** ${cmd.name} (${cmd.uses} Uses)`)
 			.slice((page - 1) * 10, page * 10);
+		if (!list.length) return msg.say('This page does not exist.');
 		return msg.say(list.join('\n'));
 	}
 };
