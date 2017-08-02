@@ -25,9 +25,10 @@ module.exports = class CommandLeaderboardCommand extends Command {
 		const { page } = args;
 		let i = 0;
 		const list = this.client.registry.commands
+			.filter(cmd => !isNaN(cmd.uses))
 			.sort((a, b) => a.uses - b.uses)
 			.map(cmd => `**${++i}.** ${cmd.name} (${cmd.uses} Uses)`)
 			.slice((page - 1) * 10, page * 10);
-		return msg.say(list.split('\n'));
+		return msg.say(list.join('\n'));
 	}
 };
