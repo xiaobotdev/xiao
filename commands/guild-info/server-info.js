@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
-const filterLevels = ['Off', 'No Role', 'Everyone'];
+const { filterLevels, verificationLevels } = require('../../assets/json/server-info');
 
 module.exports = class GuildInfoCommand extends Command {
 	constructor(client) {
@@ -26,12 +26,12 @@ module.exports = class GuildInfoCommand extends Command {
 				msg.guild.id, true)
 			.addField('❯ Creation Date',
 				moment(msg.guild.createdAt).format('MMMM Do YYYY'), true)
-			.addField('❯ Default Channel',
-				msg.guild.defaultChannel, true)
 			.addField('❯ Region',
 				msg.guild.region, true)
 			.addField('❯ Explicit Filter',
 				filterLevels[msg.guild.explicitContentFilter], true)
+			.addField('❯ Verification Level',
+				verificationLevels[msg.guild.verificationLevel], true)
 			.addField('❯ Owner',
 				msg.guild.owner ? msg.guild.owner.user.username : 'None', true)
 			.addField('❯ Members',

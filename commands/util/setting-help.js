@@ -8,7 +8,6 @@ module.exports = class SettingHelpCommand extends Command {
 			group: 'util',
 			memberName: 'setting-help',
 			description: 'View help on how to set up settings.',
-			guildOnly: true,
 			guarded: true
 		});
 	}
@@ -16,13 +15,13 @@ module.exports = class SettingHelpCommand extends Command {
 	run(msg) {
 		return msg.say(stripIndents`
 			__**Settings**__
-			**Invite Guard:** Place \`<inviteguard>\` in your default channel's topic. (${msg.guild.defaultChannel})
+			**Invite Guard:** Place \`<inviteguard>\` in a channel's topic.
 			**Mod Log Channel:** Place \`<modlog>\` in a channel's topic.
 			**Portal Channel:** Place \`<portal>\` in a channel's topic.
 			**Member Log Channel:** Place \`<memberlog>\` in a channel's topic.
-			**Custom Join Message:** Place \`<joinmessage>message</joinmessage>\` in the Member Log's Channel.
-			**Custom Leave Message:** Place \`<leavemessage>message</leavemessage>\` in the Member Log's Channel.
-			**Custom Mod DM:** Place \`<modmessage>message</modmessage>\` in the Mod Log's Channel.
+			**Custom Join Message:** Place \`<joinmessage>message</joinmessage>\` in the Member Log's topic.
+			**Custom Leave Message:** Place \`<leavemessage>message</leavemessage>\` in the Member Log's topic.
+			**Custom Mod DM:** Place \`<modmessage>message</modmessage>\` in the Mod Log's topic.
 
 			__**Placeholders**__
 			**Join/Leave Message:** \`{{member}}\`, \`{{server}}\`, \`{{mention}}\`
