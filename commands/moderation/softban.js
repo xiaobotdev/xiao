@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { parseTopic, parseTopicMsg } = require('../../structures/Util');
+const { filterTopics, parseTopic } = require('../../structures/Util');
 
 module.exports = class SoftbanCommand extends Command {
 	constructor(client) {
@@ -34,7 +34,7 @@ module.exports = class SoftbanCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const modlogs = parseTopic(msg.guild.channels, 'modlog', this.client.user).first();
+		const modlogs = filterTopics(msg.guild.channels, 'modlog').first();
 		const { member, reason } = args;
 		if (member.id === msg.author.id) return msg.say('I don\'t think you want to softban yourself...');
 		if (!member.bannable) return msg.say('This member is not softbannable. Perhaps they have a higher role than me?');
@@ -48,7 +48,7 @@ module.exports = class SoftbanCommand extends Command {
 		});
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
 		try {
-			const message = parseTopicMsg(modlogs.topic, 'modmessage')
+			const message = parseTopic(modlogs.topic, 'modmessage')
 				.replace(/{{action}}/gi, 'softbanned')
 				.replace(/{{moderator}}/gi, msg.author.tag)
 				.replace(/{{server}}/gi, msg.guild.name);
@@ -65,7 +65,7 @@ module.exports = class SoftbanCommand extends Command {
 		});
 		await msg.guild.unban(member.user, 'Softban');
 		await msg.say(`Successfully softbanned ${member.user.tag}.`);
-		if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
+		if (!modlogs) {
 			return msg.say('Could not log the softban to the mod logs.');
 		} else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
 			const embed = new MessageEmbed()

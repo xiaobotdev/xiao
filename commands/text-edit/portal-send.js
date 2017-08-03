@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
-const { parseTopic } = require('../../structures/Util');
+const { filterTopics } = require('../../structures/Util');
 
 module.exports = class PortalSendCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'portal-send',
-			group: 'random',
+			group: 'text-edit',
 			memberName: 'portal-send',
 			description: 'Send a message to a random channel that has a portal open.',
 			guildOnly: true,
@@ -27,7 +27,7 @@ module.exports = class PortalSendCommand extends Command {
 	async run(msg, args) {
 		const { message } = args;
 		const channels = this.client.channels.filter(c => c.type === 'text' && c.guild.id !== msg.guild.id);
-		const channel = parseTopic(channels, 'portal', this.client.user).random();
+		const channel = filterTopics(channels, 'portal').random();
 		if (!channel) return msg.say('Aww... No channel has an open portal...');
 		try {
 			await channel.send(`**${msg.author.tag} (${msg.guild.name}):** ${message}`);
