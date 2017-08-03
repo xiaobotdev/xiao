@@ -12,11 +12,9 @@ const client = new CommandoClient({
 		'VOICE_STATE_UPDATE',
 		'FRIEND_ADD',
 		'FRIEND_REMOVE'
-	],
-	messageCacheLifetime: 60,
-	messageSweepInterval: 60
+	]
 });
-const { carbon, dBots, dBotsOrg, parseTopic, parseTopicMsg } = require('./structures/Util');
+const { carbon, dBots, dBotsOrg, filterTopics, parseTopic } = require('./structures/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -64,10 +62,10 @@ client.on('commandRun', command => ++command.uses);
 
 client.on('message', async msg => {
 	if (!msg.guild || msg.author.bot) return;
-	const topic = msg.guild.defaultChannel.topic || '';
-	if (!topic.toLowerCase().includes('<inviteguard>')) return;
+	const channel = filterTopics(msg.guild.channels, 'inviteguard');
+	if (!channel.size) return;
 	const member = await msg.guild.fetchMember(msg.author);
-	if (member.hasPermission('ADMINISTRATOR')) return;
+	if (member.hasPermission('ADMINISTRATOR') || msg.author.id === msg.guild.ownerID) return;
 	if (/discord(\.gg\/|app\.com\/invite\/|\.me\/)/gi.test(msg.content)) {
 		if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
 		msg.reply('Invites are prohibited from being posted here.');
@@ -75,9 +73,9 @@ client.on('message', async msg => {
 });
 
 client.on('guildMemberAdd', member => {
-	const channel = parseTopic(member.guild.channels, 'memberlog', client.user).first();
+	const channel = filterTopics(member.guild.channels, 'memberlog').first();
 	if (!channel) return;
-	const msg = parseTopicMsg(channel.topic, 'joinmessage')
+	const msg = parseTopic(channel.topic, 'joinmessage')
 		.replace(/{{member}}/gi, member.user.username)
 		.replace(/{{server}}/gi, member.guild.name)
 		.replace(/{{mention}}/gi, member);
@@ -85,9 +83,9 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('guildMemberRemove', member => {
-	const channel = parseTopic(member.guild.channels, 'memberlog', client.user).first();
+	const channel = filterTopics(member.guild.channels, 'memberlog').first();
 	if (!channel) return;
-	const msg = parseTopicMsg(channel.topic, 'leavemessage')
+	const msg = parseTopic(channel.topic, 'leavemessage')
 		.replace(/{{member}}/gi, member.user.username)
 		.replace(/{{server}}/gi, member.guild.name)
 		.replace(/{{mention}}/gi, member);

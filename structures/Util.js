@@ -41,17 +41,15 @@ class Util {
 			.catch(err => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
 	}
 
-	static parseTopic(channels, setting, user) {
-		const channelList = channels.filter(c => {
-			const topic = c.topic || '';
-			if (topic.includes(`<${setting}>`) && c.type === 'text' && c.permissionsFor(user).has('SEND_MESSAGES')) return true; // eslint-disable-line max-len
+	static filterTopics(channels, setting) {
+		return channels.filter(c => {
+			if (c.type !== 'text' || !c.topic) return false;
+			if (c.topic.includes(`<${setting}>`) && c.permissionsFor(c.client.user).has('SEND_MESSAGES')) return true;
 			return false;
 		});
-		if (!channelList) return false;
-		return channelList;
 	}
 
-	static parseTopicMsg(topic, setting) {
+	static parseTopic(topic, setting) {
 		const regex = new RegExp(`<${setting}>.+</${setting}>`, 'gi');
 		if (!regex.test(topic)) return '';
 		const parsed = topic.match(regex)[0];
