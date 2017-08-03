@@ -35,17 +35,17 @@ module.exports = class UserInfoCommand extends Command {
 			.addField('❯ ID',
 				member.id, true)
 			.addField('❯ Discord Join Date',
-				moment(member.user.createdAt).format('MMMM Do YYYY h:mm:ss A'))
+				moment(member.user.createdAt).format('MMMM Do YYYY'), true)
 			.addField('❯ Server Join Date',
-				moment(member.joinedTimestamp).format('MMMM Do YYYY h:mm:ss A'))
+				moment(member.joinedTimestamp).format('MMMM Do YYYY'), true)
 			.addField('❯ Status',
 				statuses[status], true)
 			.addField('❯ Playing',
-				member.user.presence.game ? member.user.presence.game.name : 'None', true)
+				member.user.presence.game ? member.user.presence.game.name : 'N/A', true)
 			.addField('❯ Highest Role',
-				member.highestRole.name, true)
+				member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', true)
 			.addField('❯ Hoist Role',
-				member.hoistRole ? member.hoistRole.name : 'Not Hoisted', true);
+				member.hoistRole ? member.hoistRole.name : 'None', true);
 		return msg.embed(embed);
 	}
 };
