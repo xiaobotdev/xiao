@@ -12,7 +12,9 @@ const client = new CommandoClient({
 		'VOICE_STATE_UPDATE',
 		'FRIEND_ADD',
 		'FRIEND_REMOVE'
-	]
+	],
+	messageCacheLifetime: 60,
+	messageSweepInterval: 120
 });
 const { carbon, dBots, dBotsOrg, filterTopics, parseTopic } = require('./structures/Util');
 
@@ -57,8 +59,6 @@ client.on('error', console.error);
 client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
-
-client.on('commandRun', command => ++command.uses);
 
 client.on('message', async msg => {
 	if (!msg.guild || msg.author.bot) return;
