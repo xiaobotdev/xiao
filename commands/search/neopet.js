@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
-const cheerio = require('cheerio');
 
 module.exports = class NeopetCommand extends Command {
 	constructor(client) {
@@ -28,9 +27,8 @@ module.exports = class NeopetCommand extends Command {
 				size: 5,
 				mood: 1
 			});
-		const $ = cheerio.load(text);
-		const link = $('textarea').first().text();
-		if (!link.includes('cp')) return msg.say('Invalid Pet Name.');
-		return msg.say(link);
+		const link = text.match(/http:\/\/pets\.neopets\.com\/cp\/.+\.png/);
+		if (!link) return msg.say('Invalid Pet Name.');
+		return msg.say(link[0]);
 	}
 };
