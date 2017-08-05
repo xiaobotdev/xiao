@@ -6,7 +6,7 @@ const { dbotsOrgKey } = require('../../config');
 module.exports = class UpvotersCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'upvoters',
+			name: 'upvoterz',
 			aliases: ['upvote', 'updoot'],
 			group: 'util',
 			memberName: 'upvoters',
