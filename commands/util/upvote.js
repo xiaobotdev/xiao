@@ -3,13 +3,13 @@ const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
 const { dbotsOrgKey } = require('../../config');
 
-module.exports = class UpvotersCommand extends Command {
+module.exports = class UpvoteCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'upvoterz',
-			aliases: ['upvote', 'updoot'],
+			name: 'upvote',
+			aliases: ['upvoters', 'updoot'],
 			group: 'util',
-			memberName: 'upvoters',
+			memberName: 'upvote',
 			description: 'Responds with Xiao\'s upvoters on Discord Bots.',
 			guarded: true
 		});
