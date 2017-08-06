@@ -33,15 +33,13 @@ module.exports = class ChallengerCommand extends Command {
 			size: 256
 		});
 		try {
-			const canvas = createCanvas(500, 500);
+			const canvas = createCanvas(800, 450);
 			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
-			ctx.fillStyle = '#ff0028';
-			ctx.fillRect(0, 0, 500, 500);
-			ctx.drawImage(avatar, 226, 155, 200, 200);
 			ctx.drawImage(base, 0, 0);
+			ctx.drawImage(avatar, 484, 98, 256, 256);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);

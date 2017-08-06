@@ -37,7 +37,7 @@ module.exports = class CardCommand extends Command {
 			size: 256
 		});
 		try {
-			const cardID = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+			const cardID = Math.floor(Math.random() * ((9999 - 1000) + 1)) + 1000;
 			let rarity;
 			if (cardID < 5000) rarity = 'C';
 			else if (cardID < 8000) rarity = 'U';
