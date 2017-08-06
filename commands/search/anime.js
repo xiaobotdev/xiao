@@ -31,7 +31,7 @@ module.exports = class AnimeCommand extends Command {
 				.get(`https://${animelistLogin}@myanimelist.net/api/anime/search.xml`)
 				.query({ q: query });
 			const { anime } = await xml.parseStringAsync(text);
-			const synopsis = cleanXML(anime.entry[0].synopsis[0].substr(0, 2048));
+			const synopsis = cleanXML(anime.entry[0].synopsis[0].substr(0, 2047));
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)
 				.setAuthor('My Anime List', 'https://i.imgur.com/R4bmNFz.png')

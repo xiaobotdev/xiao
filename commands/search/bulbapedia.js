@@ -40,7 +40,7 @@ module.exports = class BulbapediaCommand extends Command {
 			.setColor(0x3E7614)
 			.setTitle(body.query.pages[0].title)
 			.setAuthor('Bulbapedia', 'https://i.imgur.com/09eYo5T.png')
-			.setDescription(body.query.pages[0].extract.substr(0, 2048).replace(/[\n]/g, '\n\n'));
+			.setDescription(body.query.pages[0].extract.substr(0, 2047).replace(/[\n]/g, '\n\n'));
 		return msg.embed(embed);
 	}
 };
