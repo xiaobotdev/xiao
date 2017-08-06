@@ -39,7 +39,7 @@ module.exports = class GunfightCommand extends Command {
 				return msg.say('Looks like they declined...');
 			}
 			await msg.say('Get Ready...');
-			const length = Math.floor((Math.random() * ((30000 - 1000) + 1)) + 1000);
+			const length = Math.floor(Math.random() * ((30000 - 1000) + 1)) + 1000;
 			this.client.setTimeout(async () => {
 				const word = words[Math.floor(Math.random() * words.length)];
 				await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
