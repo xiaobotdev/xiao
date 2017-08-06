@@ -45,7 +45,7 @@ module.exports = class WikiaCommand extends Command {
 				.setTitle(body.sections[0].title)
 				.setURL(search.body.items[0].url)
 				.setAuthor('Wikia', 'https://i.imgur.com/WzXWJka.png')
-				.setDescription(body.sections[0].content.map(i => i.text).join('\n\n').substr(0, 2000))
+				.setDescription(body.sections[0].content.map(i => i.text).join('\n\n').substr(0, 2048))
 				.setThumbnail(body.sections[0].images[0] ? body.sections[0].images[0].src : null);
 			return msg.embed(embed);
 		} catch (err) {
