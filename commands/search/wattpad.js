@@ -37,7 +37,7 @@ module.exports = class WattpadCommand extends Command {
 			.setAuthor('Wattpad', 'https://i.imgur.com/Rw9vRQB.png')
 			.setURL(body.stories[0].url)
 			.setTitle(body.stories[0].title)
-			.setDescription(body.stories[0].description.substr(0, 2047))
+			.setDescription(body.stories[0].description.substr(0, 2048))
 			.setThumbnail(body.stories[0].cover)
 			.addField('❯ Created On',
 				moment(body.stories[0].createDate).format('MMMM Do YYYY'), true)
