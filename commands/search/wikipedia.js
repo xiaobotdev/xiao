@@ -39,7 +39,7 @@ module.exports = class WikipediaCommand extends Command {
 			.setColor(0xE7E7E7)
 			.setTitle(body.query.pages[0].title)
 			.setAuthor('Wikipedia', 'https://i.imgur.com/a4eeEhh.png')
-			.setDescription(body.query.pages[0].extract.substr(0, 2048).replace(/[\n]/g, '\n\n'));
+			.setDescription(body.query.pages[0].extract.substr(0, 2047).replace(/[\n]/g, '\n\n'));
 		return msg.embed(embed);
 	}
 };
