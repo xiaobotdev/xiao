@@ -14,8 +14,7 @@ module.exports = class BattleCommand extends Command {
 				{
 					key: 'opponent',
 					prompt: 'Who would you like to battle?',
-					type: 'user',
-					default: this.client.user
+					type: 'user'
 				}
 			]
 		});
@@ -24,7 +23,7 @@ module.exports = class BattleCommand extends Command {
 	}
 
 	async run(msg, args) { // eslint-disable-line complexity
-		const { opponent } = args;
+		const opponent = args.opponent || this.client.user;
 		if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
 		if (this.fighting.has(msg.guild.id)) return msg.say('Only one fight may be occurring per server.');
 		this.fighting.add(msg.guild.id);
