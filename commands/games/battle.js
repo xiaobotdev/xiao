@@ -15,7 +15,7 @@ module.exports = class BattleCommand extends Command {
 					key: 'opponent',
 					prompt: 'Who would you like to battle?',
 					type: 'user',
-					default: 'AI'
+					default: this.client.user
 				}
 			]
 		});
@@ -25,12 +25,11 @@ module.exports = class BattleCommand extends Command {
 
 	async run(msg, args) { // eslint-disable-line complexity
 		const { opponent } = args;
-		if (opponent.bot) return msg.say('Bots may not be fought.');
 		if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
 		if (this.fighting.has(msg.guild.id)) return msg.say('Only one fight may be occurring per server.');
 		this.fighting.add(msg.guild.id);
 		try {
-			if (opponent !== 'AI') {
+			if (!opponent.bot) {
 				await msg.say(`${opponent}, do you accept this challenge? **__Y__es** or **No**?`);
 				const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
 					max: 1,
@@ -61,7 +60,7 @@ module.exports = class BattleCommand extends Command {
 			while (userHP > 0 && oppoHP > 0) { // eslint-disable-line no-unmodified-loop-condition
 				const user = userTurn ? msg.author : opponent;
 				let choice;
-				if (opponent !== 'AI' || (opponent === 'AI' && userTurn)) {
+				if (!opponent.bot || (opponent.bot && userTurn)) {
 					const id = userTurn ? msg.author.id : opponent.id;
 					await msg.say(stripIndents`
 						${user}, do you **fight**, **guard**, **special**, or **run**?
