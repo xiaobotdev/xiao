@@ -14,7 +14,8 @@ module.exports = class BattleCommand extends Command {
 				{
 					key: 'opponent',
 					prompt: 'Who would you like to battle?',
-					type: 'user'
+					type: 'user',
+					default: ''
 				}
 			]
 		});
