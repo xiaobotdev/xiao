@@ -1,5 +1,5 @@
 const snekfetch = require('snekfetch');
-const { carbonKey, dbotsKey, dbotsOrgKey } = require('../config');
+const { CARBON_KEY, DBOTS_KEY, DBOTSORG_KEY } = process.env;
 
 class Util {
 	static cleanXML(str) {
@@ -15,7 +15,7 @@ class Util {
 	static dBots(count, id) {
 		snekfetch
 			.post(`https://bots.discord.pw/api/bots/${id}/stats`)
-			.set({ Authorization: dbotsKey })
+			.set({ Authorization: DBOTS_KEY })
 			.send({ server_count: count })
 			.then(() => console.log('[DBOTS] Successfully posted to Discord Bots.'))
 			.catch(err => console.error(`[DBOTS] Failed to post to Discord Bots. ${err}`));
@@ -25,7 +25,7 @@ class Util {
 		snekfetch
 			.post('https://www.carbonitex.net/discord/data/botdata.php')
 			.send({
-				key: carbonKey,
+				key: CARBON_KEY,
 				servercount: count
 			})
 			.then(() => console.log('[CARBON] Successfully posted to Carbon.'))
@@ -35,7 +35,7 @@ class Util {
 	static dBotsOrg(count, id) {
 		snekfetch
 			.post(`https://discordbots.org/api/bots/${id}/stats`)
-			.set({ Authorization: dbotsOrgKey })
+			.set({ Authorization: DBOTSORG_KEY })
 			.send({ server_count: count })
 			.then(() => console.log('[DBOTSORG] Successfully posted to Discord Bots Org.'))
 			.catch(err => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
