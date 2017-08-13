@@ -110,6 +110,8 @@ client.on('guildDelete', async guild => {
 	dBotsOrg(count, client.user.id);
 });
 
+client.setTimeout(() => process.exit(0), 7200000);
+
 client.login(token);
 
 process.on('unhandledRejection', console.error);
