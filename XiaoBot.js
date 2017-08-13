@@ -110,7 +110,7 @@ client.on('guildDelete', async guild => {
 	dBotsOrg(count, client.user.id);
 });
 
-client.setTimeout(() => process.exit(0), 7200000);
+client.setTimeout(() => process.exit(0), 7.2e+6);
 
 client.login(TOKEN);
 
