@@ -9,7 +9,6 @@ const client = new CommandoClient({
 	unknownCommandResponse: false,
 	disabledEvents: [
 		'TYPING_START',
-		'VOICE_STATE_UPDATE',
 		'FRIEND_ADD',
 		'FRIEND_REMOVE'
 	],
