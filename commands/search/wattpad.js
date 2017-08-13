@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
-const { wattpadKey } = require('../../config');
+const { WATTPAD_KEY } = process.env;
 
 module.exports = class WattpadCommand extends Command {
 	constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class WattpadCommand extends Command {
 				query,
 				limit: 1
 			})
-			.set({ Authorization: `Basic ${wattpadKey}` });
+			.set({ Authorization: `Basic ${WATTPAD_KEY}` });
 		if (!body.stories.length) return msg.say('No Results.');
 		const embed = new MessageEmbed()
 			.setColor(0xF89C34)

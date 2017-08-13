@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { googleKey } = require('../../config');
+const { GOOGLE_KEY } = process.env;
 
 module.exports = class YouTubeCommand extends Command {
 	constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class YouTubeCommand extends Command {
 				type: 'video',
 				maxResults: 1,
 				q: query,
-				key: googleKey
+				key: GOOGLE_KEY
 			});
 		if (!body.items.length) return msg.say('No Results.');
 		const embed = new MessageEmbed()

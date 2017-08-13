@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
-const { dbotsOrgKey } = require('../../config');
+const { DBOTSORG_KEY } = process.env;
 
 module.exports = class UpvoteCommand extends Command {
 	constructor(client) {
@@ -18,7 +18,7 @@ module.exports = class UpvoteCommand extends Command {
 	async run(msg) {
 		const { body } = await snekfetch
 			.get(`https://discordbots.org/api/bots/${this.client.user.id}/votes`)
-			.set({ Authorization: dbotsOrgKey });
+			.set({ Authorization: DBOTSORG_KEY });
 		const haste = await snekfetch
 			.post('https://hastebin.com/documents')
 			.send(body.map(user => `${user.username}#${user.discriminator}`).join('\n'));

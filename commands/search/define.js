@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { wordnikKey } = require('../../config');
+const { WORDNIK_KEY } = process.env;
 
 module.exports = class DefineCommand extends Command {
 	constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class DefineCommand extends Command {
 				limit: 1,
 				includeRelated: false,
 				useCanonical: false,
-				api_key: wordnikKey
+				api_key: WORDNIK_KEY
 			});
 		if (!body.length) return msg.say('No Results.');
 		const embed = new MessageEmbed()

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
-const { giphyKey } = require('../../config');
+const { GIPHY_KEY } = process.env;
 
 module.exports = class GiphyCommand extends Command {
 	constructor(client) {
@@ -25,7 +25,7 @@ module.exports = class GiphyCommand extends Command {
 			.get('http://api.giphy.com/v1/gifs/search')
 			.query({
 				q: query,
-				api_key: giphyKey,
+				api_key: GIPHY_KEY,
 				rating: msg.channel.nsfw ? 'r' : 'pg'
 			});
 		if (!body.data.length) return msg.say('No Results.');

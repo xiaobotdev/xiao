@@ -1,10 +1,10 @@
-const { token, owner, prefix, invite } = require('./config');
+const { TOKEN, OWNER, PREFIX, INVITE } = process.env;
 const path = require('path');
 const { CommandoClient } = require('discord.js-commando');
 const client = new CommandoClient({
-	commandPrefix: prefix,
-	owner,
-	invite,
+	commandPrefix: PREFIX,
+	owner: OWNER,
+	invite: INVITE,
 	disableEveryone: true,
 	unknownCommandResponse: false,
 	disabledEvents: [
@@ -46,7 +46,7 @@ client.registry
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} Logged in as ${client.user.tag} (${client.user.id})!`);
-	client.user.setGame(`${prefix}help | Shard ${client.shard.id}`);
+	client.user.setGame(`${PREFIX}help | Shard ${client.shard.id}`);
 });
 
 client.on('disconnect', event => {
@@ -112,6 +112,6 @@ client.on('guildDelete', async guild => {
 
 client.setTimeout(() => process.exit(0), 7200000);
 
-client.login(token);
+client.login(TOKEN);
 
 process.on('unhandledRejection', console.error);
