@@ -10,7 +10,7 @@ module.exports = class QuizCommand extends Command {
 			aliases: ['jeopardy'],
 			group: 'games',
 			memberName: 'quiz',
-			description: 'Answer a true/false quiz question.',
+			description: 'Answer a quiz question.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
@@ -43,7 +43,7 @@ module.exports = class QuizCommand extends Command {
 			.setTitle('You have 15 seconds to answer this question:')
 			.setDescription(stripIndents`
 				**${decodeURIComponent(body.results[0].category)}**
-				True or False: ${decodeURIComponent(body.results[0].question)}
+				${type === 'boolean' ? 'True or False: ' : ''}${decodeURIComponent(body.results[0].question)}
 			`);
 		await msg.embed(embed);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {

@@ -110,7 +110,10 @@ client.on('guildDelete', async guild => {
 	dBotsOrg(count, client.user.id);
 });
 
-client.setTimeout(() => process.exit(0), 7.2e+6);
+client.setTimeout(() => {
+	console.log(`[RESTART] Shard ${client.shard.id} Restarted.`);
+	process.exit(0);
+}, 7.2e+6);
 
 client.login(TOKEN);
 
