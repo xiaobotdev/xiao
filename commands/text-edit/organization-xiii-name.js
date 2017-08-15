@@ -23,7 +23,8 @@ module.exports = class OrganizationXIIINameCommand extends Command {
 	run(msg, args) {
 		const { text } = args;
 		text.push('x');
-		const converted = shuffle(text).join('');
-		return msg.say(`\u180E${converted}`);
+		const converted = shuffle(text);
+		converted[0] = converted[0].toUpperCase();
+		return msg.say(`\u180E${converted.join('')}`);
 	}
 };
