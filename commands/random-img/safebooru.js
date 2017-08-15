@@ -1,8 +1,8 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
-const { promisifyAll } = require('tsubaki');
-const xml = promisifyAll(require('xml2js'));
+const { promisify } = require('util');
+const xml = promisify(require('xml2js').parseString);
 
 module.exports = class SafebooruCommand extends Command {
 	constructor(client) {
@@ -34,7 +34,7 @@ module.exports = class SafebooruCommand extends Command {
 				tags: query,
 				limit: 200
 			});
-		const { posts } = await xml.parseStringAsync(text);
+		const { posts } = await xml(text);
 		if (posts.$.count === '0') return msg.say('No Results.');
 		return msg.say(stripIndents`
 			${query ? `Result for ${query}:` : 'Random Image:'}

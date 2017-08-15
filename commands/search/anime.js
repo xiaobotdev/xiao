@@ -2,8 +2,8 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { cleanXML } = require('../../structures/Util');
-const { promisifyAll } = require('tsubaki');
-const xml = promisifyAll(require('xml2js'));
+const { promisify } = require('util');
+const xml = promisify(require('xml2js').parseString);
 const { ANIMELIST_LOGIN } = process.env;
 
 module.exports = class AnimeCommand extends Command {
@@ -30,7 +30,7 @@ module.exports = class AnimeCommand extends Command {
 			const { text } = await snekfetch
 				.get(`https://${ANIMELIST_LOGIN}@myanimelist.net/api/anime/search.xml`)
 				.query({ q: query });
-			const { anime } = await xml.parseStringAsync(text);
+			const { anime } = await xml(text);
 			const synopsis = cleanXML(anime.entry[0].synopsis[0].substr(0, 2048));
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)

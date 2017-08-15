@@ -1,4 +1,5 @@
 const snekfetch = require('snekfetch');
+const { promisify } = require('util');
 const { CARBON_KEY, DBOTS_KEY, DBOTSORG_KEY } = process.env;
 
 class Util {
@@ -55,6 +56,10 @@ class Util {
 		const parsed = topic.match(regex)[0];
 		const word = `<${setting}>`;
 		return parsed.slice(word.length, parsed.length - (word.length + 1));
+	}
+
+	static wait(time) {
+		return promisify(setTimeout)(time);
 	}
 }
 
