@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { wait } = require('../../structures/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull'];
 
 module.exports = class GunfightCommand extends Command {
@@ -40,19 +41,17 @@ module.exports = class GunfightCommand extends Command {
 			}
 			await msg.say('Get Ready...');
 			const length = Math.floor(Math.random() * ((30000 - 1000) + 1)) + 1000;
-			this.client.setTimeout(async () => {
-				const word = words[Math.floor(Math.random() * words.length)];
-				await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
-				const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === word; // eslint-disable-line max-len
-				const winner = await msg.channel.awaitMessages(filter, {
-					max: 1,
-					time: 30000
-				});
-				this.fighting.delete(msg.guild.id);
-				if (!winner.size) return msg.say('Oh... No one won.');
-				return msg.say(`And the winner is ${winner.first().author.username}!`);
-			}, length);
-			return null;
+			await wait(length);
+			const word = words[Math.floor(Math.random() * words.length)];
+			await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
+			const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === word;
+			const winner = await msg.channel.awaitMessages(filter, {
+				max: 1,
+				time: 30000
+			});
+			this.fighting.delete(msg.guild.id);
+			if (!winner.size) return msg.say('Oh... No one won.');
+			return msg.say(`And the winner is ${winner.first().author.username}!`);
 		} catch (err) {
 			this.fighting.delete(msg.guild.id);
 			return msg.say(`Oh no, an Error occurred: \`${err.message}\`. Try again later!`);
