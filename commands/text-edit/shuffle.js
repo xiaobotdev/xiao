@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { shuffle } = require('../../structrues/Util');
+const { shuffle } = require('../../structures/Util');
 
 module.exports = class ShuffleCommand extends Command {
 	constructor(client) {
