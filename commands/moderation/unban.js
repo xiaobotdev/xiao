@@ -46,7 +46,7 @@ module.exports = class UnbanCommand extends Command {
 		});
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
 		await msg.guild.unban(member, `${msg.author.tag}: ${reason}`);
-		await msg.say(`Successfully unbanned ${member.user.tag}.`);
+		await msg.say(`Successfully unbanned ${member.tag}.`);
 		if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
 			return msg.say('Could not log the unban to the mod logs.');
 		} else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
@@ -62,7 +62,7 @@ module.exports = class UnbanCommand extends Command {
 			return modlogs.send({ embed });
 		} else {
 			return modlogs.send(stripIndents`
-				**Member:** ${member.user.tag} (${member.id})
+				**Member:** ${member.tag} (${member.id})
 				**Action:** Unban
 				**Reason:** ${reason}
 				**Moderator:** ${msg.author.tag}
