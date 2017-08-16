@@ -13,7 +13,6 @@ module.exports = class CoinFlipCommand extends Command {
 	}
 
 	run(msg) {
-		const side = sides[Math.floor(Math.random() * sides.length)];
-		return msg.say(`It landed on ${side}!`);
+		return msg.say(`It landed on ${sides[Math.floor(Math.random() * sides.length)]}!`);
 	}
 };

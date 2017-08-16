@@ -22,7 +22,6 @@ module.exports = class UpsideDownCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		const converted = letterTrans(text, dictionary);
-		return msg.say(converted);
+		return msg.say(letterTrans(text, dictionary));
 	}
 };

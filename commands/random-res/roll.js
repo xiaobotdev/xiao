@@ -22,7 +22,6 @@ module.exports = class RollCommand extends Command {
 
 	run(msg, args) {
 		const { value } = args;
-		const roll = Math.floor(Math.random() * value) + 1;
-		return msg.say(`You rolled a ${roll}.`);
+		return msg.say(`You rolled a ${Math.floor(Math.random() * value) + 1}.`);
 	}
 };

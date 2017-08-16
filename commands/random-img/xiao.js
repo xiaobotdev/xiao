@@ -14,7 +14,6 @@ module.exports = class XiaoCommand extends Command {
 	}
 
 	run(msg) {
-		const xiao = xiaos[Math.floor(Math.random() * xiaos.length)];
-		return msg.say({ files: [xiao] });
+		return msg.say({ files: [xiaos[Math.floor(Math.random() * xiaos.length)]] });
 	}
 };

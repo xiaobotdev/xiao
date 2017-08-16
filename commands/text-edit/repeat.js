@@ -11,7 +11,11 @@ module.exports = class RepeatCommand extends Command {
 				{
 					key: 'text',
 					prompt: 'What text would you like to repeat over and over and over and over?',
-					type: 'string'
+					type: 'string',
+					validate: text => {
+						if (!text.includes('@everyone') && !text.includes('@here')) return true;
+						return 'Please do not repeat everyone or here mentions.';
+					}
 				}
 			]
 		});
@@ -19,7 +23,6 @@ module.exports = class RepeatCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		const converted = text.repeat(2000).substr(0, 1999);
-		return msg.say(`\u180E${converted}`);
+		return msg.say(text.repeat(2000).substr(0, 2000));
 	}
 };

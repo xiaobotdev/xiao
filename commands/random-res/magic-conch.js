@@ -21,10 +21,9 @@ module.exports = class MagicConchCommand extends Command {
 
 	run(msg, args) {
 		const { question } = args;
-		const answer = answers[Math.floor(Math.random() * answers.length)];
 		return msg.say(stripIndents`
 			Question: ${question}
-			:shell: ${answer} :shell:
+			:shell: ${answers[Math.floor(Math.random() * answers.length)]} :shell:
 		`);
 	}
 };

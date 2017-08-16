@@ -26,21 +26,22 @@ module.exports = class RedditCommand extends Command {
 			const { body } = await snekfetch
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });
-			const post = body.data.children[Math.floor(Math.random() * body.data.children.length)].data;
-			if (!msg.channel.nsfw && post.over_18) return msg.say('This post is only viewable in NSFW Channels.');
+			const post = body.data.children[Math.floor(Math.random() * body.data.children.length)];
+			if (!post.data) return msg.say('This post has no data, try again!');
+			if (!msg.channel.nsfw && post.data.over_18) return msg.say('This post is only viewable in NSFW Channels.');
 			const embed = new MessageEmbed()
 				.setColor(0xFF4500)
 				.setAuthor('Reddit', 'https://i.imgur.com/V6hXniU.png')
-				.setURL(`https://www.reddit.com${post.permalink}`)
-				.setTitle(post.title)
-				.setDescription(`[View URL Here](${post.url})`)
-				.setThumbnail(post.thumbnail !== 'self' ? post.thumbnail : null)
+				.setURL(`https://www.reddit.com${post.data.permalink}`)
+				.setTitle(post.data.title)
+				.setDescription(`[View URL Here](${post.data.url})`)
+				.setThumbnail(post.data.thumbnail !== 'self' ? post.data.thumbnail : null)
 				.addField('❯ Upvotes',
-					post.ups, true)
+					post.data.ups, true)
 				.addField('❯ Downvotes',
-					post.downs, true)
+					post.data.downs, true)
 				.addField('❯ Score',
-					post.score, true);
+					post.data.score, true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Subreddit Not Found.');

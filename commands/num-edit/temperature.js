@@ -31,7 +31,7 @@ module.exports = class TemperatureCommand extends Command {
 				{
 					key: 'amount',
 					prompt: 'What temperature should be converted?',
-					type: 'integer'
+					type: 'float'
 				}
 			]
 		});

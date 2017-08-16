@@ -27,7 +27,7 @@ module.exports = class MockingCommand extends Command {
 	run(msg, args) {
 		const { text } = args;
 		for (let i = 0; i < text.length; i += Math.floor(Math.random() * 4)) text[i] = text[i].toUpperCase();
-		return msg.say(`\u180E${text.join('')} <:sponge:318612443398144000>`);
+		return msg.say(`${text.join('')} <:sponge:318612443398144000>`);
 	}
 };
 

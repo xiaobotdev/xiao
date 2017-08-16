@@ -24,7 +24,6 @@ module.exports = class ZalgoCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		const converted = zalgo(text);
-		return msg.say(`\u180E${converted}`);
+		return msg.say(zalgo(text));
 	}
 };

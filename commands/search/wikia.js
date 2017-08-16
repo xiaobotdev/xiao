@@ -36,10 +36,9 @@ module.exports = class WikiaCommand extends Command {
 					limit: 1,
 					namespaces: 0
 				});
-			const id = search.body.items[0].id;
 			const { body } = await snekfetch
 				.get(`http://${wiki}.wikia.com/api/v1/Articles/AsSimpleJson/`)
-				.query({ id });
+				.query({ id: search.body.items[0].id });
 			const embed = new MessageEmbed()
 				.setColor(0x002D54)
 				.setTitle(body.sections[0].title)

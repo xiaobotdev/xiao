@@ -23,8 +23,7 @@ module.exports = class BinaryCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		const converted = this.binary(text);
-		return msg.say(converted);
+		return msg.say(this.binary(text));
 	}
 
 	binary(text) {

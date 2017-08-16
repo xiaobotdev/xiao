@@ -12,7 +12,6 @@ module.exports = class FactCoreCommand extends Command {
 	}
 
 	run(msg) {
-		const fact = facts[Math.floor(Math.random() * facts.length)];
-		return msg.say(fact);
+		return msg.say(facts[Math.floor(Math.random() * facts.length)]);
 	}
 };

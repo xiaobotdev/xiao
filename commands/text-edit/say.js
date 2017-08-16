@@ -9,7 +9,6 @@ module.exports = class SayCommand extends Command {
 			memberName: 'say',
 			description: 'Make XiaoBot say what you wish.',
 			guildOnly: true,
-			clientPermissions: ['MANAGE_MESSAGES'],
 			args: [
 				{
 					key: 'text',
@@ -22,7 +21,7 @@ module.exports = class SayCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		msg.delete();
-		return msg.say(`\u180E${text}`);
+		if (msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) msg.delete();
+		return msg.say(text);
 	}
 };

@@ -5,11 +5,11 @@ const { CARBON_KEY, DBOTS_KEY, DBOTSORG_KEY } = process.env;
 class Util {
 	static cleanXML(str) {
 		return str
-			.replace(/(<br \/>)/g, '')
-			.replace(/(&#039;)/g, '\'')
-			.replace(/(&mdash;)/g, '—')
+			.replace(/<br \/>/g, '')
+			.replace(/&#039;/g, '\'')
+			.replace(/&mdash;/g, '—')
 			.replace(/(&#034;|&quot;)/g, '"')
-			.replace(/(&#038;)/g, '&')
+			.replace(/&#038;/g, '&')
 			.replace(/(\[i\]|\[\/i\])/g, '*');
 	}
 
@@ -44,8 +44,8 @@ class Util {
 
 	static filterTopics(channels, setting) {
 		return channels.filter(c => {
-			if (c.type !== 'text' || !c.topic) return false;
-			if (c.topic.includes(`<${setting}>`) && c.permissionsFor(c.client.user).has('SEND_MESSAGES')) return true;
+			if (c.type !== 'text' || !c.topic || !c.permissionsFor(c.client.user).has('SEND_MESSAGES')) return false;
+			if (c.topic.includes(`<${setting}>`)) return true;
 			return false;
 		});
 	}
@@ -63,13 +63,13 @@ class Util {
 	}
 
 	static shuffle(arr) {
-    	for (let i = arr.length - 1; i > 0; i--) {
-        	const j = Math.floor(Math.random() * (i + 1));
-        	const temp = arr[i];
-        	arr[i] = arr[j];
-        	arr[j] = temp;
-    	}
-    	return arr;
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			const temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+		return arr;
 	}
 }
 

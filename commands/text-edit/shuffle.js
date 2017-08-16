@@ -20,7 +20,6 @@ module.exports = class ShuffleCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		const converted = shuffle(text.split('')).join('');
-		return msg.say(`\u180E${converted}`);
+		return msg.say(shuffle(text.split('')).join(''));
 	}
 };
