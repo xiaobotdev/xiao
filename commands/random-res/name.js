@@ -34,7 +34,7 @@ module.exports = class RandomNameCommand extends Command {
 		} else if (gender === 'both') {
 			const genders = ['male', 'female'];
 			const rGender = genders[Math.floor(Math.random() * genders.length)];
-			if (gender === 'male') return msg.say(`${male[Math.floor(Math.random() * male.length)]} ${lastName}`);
+			if (rGender === 'male') return msg.say(`${male[Math.floor(Math.random() * male.length)]} ${lastName}`);
 			else if (rGender === 'female') return msg.say(`${female[Math.floor(Math.random() * female.length)]} ${lastName}`);
 		}
 	}
