@@ -20,7 +20,6 @@ module.exports = class RateWaifuCommand extends Command {
 
 	run(msg, args) {
 		const { waifu } = args;
-		const rating = Math.floor(Math.random() * 10) + 1;
-		return msg.say(`I'd give ${waifu} a ${rating}/10!`);
+		return msg.say(`I'd give ${waifu} a ${Math.floor(Math.random() * 10) + 1}/10!`);
 	}
 };

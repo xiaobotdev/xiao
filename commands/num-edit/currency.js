@@ -34,7 +34,7 @@ module.exports = class CurrencyCommand extends Command {
 				{
 					key: 'amount',
 					prompt: 'How much money should be converted? Do not use symbols.',
-					type: 'integer'
+					type: 'float'
 				}
 			]
 		});

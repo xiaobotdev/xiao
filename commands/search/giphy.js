@@ -29,7 +29,6 @@ module.exports = class GiphyCommand extends Command {
 				rating: msg.channel.nsfw ? 'r' : 'pg'
 			});
 		if (!body.data.length) return msg.say('No Results.');
-		const random = Math.floor(Math.random() * body.data.length);
-		return msg.say(body.data[random].images.original.url);
+		return msg.say(body.data[Math.floor(Math.random() * body.data.length)].images.original.url);
 	}
 };

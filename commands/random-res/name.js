@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { lastNames, maleNames, femaleNames } = require('../../assets/json/name');
+const { last, male, female } = require('../../assets/json/name');
 
 module.exports = class RandomNameCommand extends Command {
 	constructor(client) {
@@ -26,23 +26,16 @@ module.exports = class RandomNameCommand extends Command {
 
 	run(msg, args) { // eslint-disable-line consistent-return
 		const { gender } = args;
-		const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+		const lastName = last[Math.floor(Math.random() * last.length)];
 		if (gender === 'male') {
-			const name = maleNames[Math.floor(Math.random() * maleNames.length)];
-			return msg.say(`${name} ${lastName}`);
+			return msg.say(`${male[Math.floor(Math.random() * male.length)]} ${lastName}`);
 		} else if (gender === 'female') {
-			const name = femaleNames[Math.floor(Math.random() * femaleNames.length)];
-			return msg.say(`${name} ${lastName}`);
+			return msg.say(`${female[Math.floor(Math.random() * female.length)]} ${lastName}`);
 		} else if (gender === 'both') {
 			const genders = ['male', 'female'];
-			const randomGender = genders[Math.floor(Math.random() * genders.length)];
-			if (randomGender === 'male') {
-				const name = maleNames[Math.floor(Math.random() * maleNames.length)];
-				return msg.say(`${name} ${lastName}`);
-			} else if (randomGender === 'female') {
-				const name = femaleNames[Math.floor(Math.random() * femaleNames.length)];
-				return msg.say(`${name} ${lastName}`);
-			}
+			const rGender = genders[Math.floor(Math.random() * genders.length)];
+			if (gender === 'male') return msg.say(`${male[Math.floor(Math.random() * male.length)]} ${lastName}`);
+			else if (rGender === 'female') return msg.say(`${female[Math.floor(Math.random() * female.length)]} ${lastName}`);
 		}
 	}
 };

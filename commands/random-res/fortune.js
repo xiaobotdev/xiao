@@ -13,7 +13,6 @@ module.exports = class FortuneCommand extends Command {
 	}
 
 	run(msg) {
-		const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-		return msg.say(fortune);
+		return msg.say(fortunes[Math.floor(Math.random() * fortunes.length)]);
 	}
 };

@@ -40,7 +40,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Node Version',
 				process.version, true)
 			.addField('❯ Library',
-				'[discord.js](https://discord.js.org)[-commando](https://github.com/Gawdl3y/discord.js-commando)', true); // eslint-disable-line max-len
+				'[discord.js](https://discord.js.org)[-commando](https://github.com/Gawdl3y/discord.js-commando)', true);
 		return msg.embed(embed);
 	}
 };

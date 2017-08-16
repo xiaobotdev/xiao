@@ -109,7 +109,15 @@ client.on('guildDelete', async guild => {
 	dBotsOrg(count, client.user.id);
 });
 
-client.setTimeout(() => {
+const { wait } = require('./structures/Util');
+client.setTimeout(async () => {
+	const battle = client.registry.resolveCommand('games:battle').fighting.size;
+	const hangman = client.registry.resolveCommand('games:hangman').playing.size;
+	const gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
+	while (battle && hangman && gunfight) { // eslint-disable-line no-unmodified-loop-condition
+		console.log('[RESTART] A game is going on, delaying...');
+		await wait(5000);
+	}
 	console.log(`[RESTART] Shard ${client.shard.id} Restarted.`);
 	process.exit(0);
 }, 7.2e+6);

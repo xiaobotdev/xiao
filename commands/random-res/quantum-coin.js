@@ -13,7 +13,6 @@ module.exports = class QuantumCoinCommand extends Command {
 	}
 
 	run(msg) {
-		const side = sides[Math.floor(Math.random() * sides.length)];
-		return msg.say(`It landed ${side}.`);
+		return msg.say(`It landed ${sides[Math.floor(Math.random() * sides.length)]}.`);
 	}
 };

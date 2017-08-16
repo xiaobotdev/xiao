@@ -19,7 +19,6 @@ module.exports = class ReverseCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		const converted = text.split('').reverse().join('');
-		return msg.say(`\u180E${converted}`);
+		return msg.say(text.split('').reverse().join(''));
 	}
 };

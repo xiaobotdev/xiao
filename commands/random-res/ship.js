@@ -20,8 +20,7 @@ module.exports = class ShipCommand extends Command {
 
 	run(msg, args) {
 		const { things } = args;
-		const rating = Math.floor(Math.random() * 100) + 1;
 		const list = `${things.slice(0, -1).join(', ')}${things.length > 1 ? ' and ' : ''}${things.slice(-1)}`;
-		return msg.say(`I'd give ${list} a ${rating}%!`);
+		return msg.say(`I'd give ${list} a ${Math.floor(Math.random() * 100) + 1}%!`);
 	}
 };

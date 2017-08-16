@@ -26,7 +26,6 @@ module.exports = class UserInfoCommand extends Command {
 
 	run(msg, args) {
 		const member = args.member || msg.member;
-		const status = member.user.presence.status;
 		const embed = new MessageEmbed()
 			.setColor(member.displayHexColor)
 			.setThumbnail(member.user.displayAvatarURL())
@@ -39,7 +38,7 @@ module.exports = class UserInfoCommand extends Command {
 			.addField('❯ Server Join Date',
 				moment(member.joinedTimestamp).format('MMMM Do YYYY'), true)
 			.addField('❯ Status',
-				statuses[status], true)
+				statuses[member.user.presence.status], true)
 			.addField('❯ Playing',
 				member.user.presence.game ? member.user.presence.game.name : 'N/A', true)
 			.addField('❯ Highest Role',

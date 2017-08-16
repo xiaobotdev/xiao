@@ -12,7 +12,6 @@ module.exports = class OffspringCommand extends Command {
 	}
 
 	run(msg) {
-		const gender = genders[Math.floor(Math.random() * genders.length)];
-		return msg.say(`It's a ${gender}!`);
+		return msg.say(`It's a ${genders[Math.floor(Math.random() * genders.length)]}!`);
 	}
 };
