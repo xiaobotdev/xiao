@@ -26,6 +26,7 @@ module.exports = class RedditCommand extends Command {
 			const { body } = await snekfetch
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });
+			if (!body.data.children.length) return msg.say('Subreddit Not Found.');
 			const post = body.data.children[Math.floor(Math.random() * body.data.children.length)];
 			if (!post.data) return msg.say('This post has no data, try again!');
 			if (!msg.channel.nsfw && post.data.over_18) return msg.say('This post is only viewable in NSFW Channels.');
