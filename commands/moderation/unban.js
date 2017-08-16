@@ -55,7 +55,7 @@ module.exports = class UnbanCommand extends Command {
 				.setColor(0x00AE86)
 				.setTimestamp()
 				.setDescription(stripIndents`
-					**Member:** ${member.user.tag} (${member.id})
+					**Member:** ${member.tag} (${member.id})
 					**Action:** Unban
 					**Reason:** ${reason}
 				`);
