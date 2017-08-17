@@ -11,7 +11,7 @@
 	"MANAGE_NICKNAMES": "Manage Nicknames",
 	"MANAGE_EMOJIS": "Manage Emojis",
 	"MANAGE_WEBHOOKS": "Manage Webhooks",
-	"READ_MESSAGES": "Read Messages",
+	"VIEW_CHANNEL": "Read Text Channels and See Voice Channels",
 	"SEND_MESSAGES": "Send Messages",
 	"SEND_TTS_MESSAGES": "Send TTS Messages",
 	"MANAGE_MESSAGES": "Manage Messages",
