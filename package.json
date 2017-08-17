@@ -33,7 +33,7 @@
   "dependencies": {
     "canvas": "github:automattic/node-canvas",
     "custom-translate": "github:dragonfire535/custom-translate",
-    "discord.js": "github:hydrabolt/discord.js",
+    "discord.js": "github:devsnek/discord.js#partials-deded",
     "discord.js-commando": "github:gawdl3y/discord.js-commando",
     "erlpack": "github:hammerandchisel/erlpack",
     "mathjs": "^3.16.1",
