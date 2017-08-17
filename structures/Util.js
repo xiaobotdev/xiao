@@ -73,6 +73,10 @@ class Util {
 		}
 		return arr;
 	}
+
+	static list(arr, conj = 'and') {
+		return `${arr.slice(0, -1).join(', ')}${arr.length > 1 ? `${arr.length > 2 ? ',' : ''} ${conj} ` : ''}${arr.slice(-1)}`; // eslint-disable-line max-len
+	}
 }
 
 module.exports = Util;
