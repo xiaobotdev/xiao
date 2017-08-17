@@ -37,7 +37,7 @@ module.exports = class QuizCommand extends Command {
 				type,
 				encode: 'url3986'
 			});
-		if (!body.results.length) return msg.say('Oh no, a question could not be fetched. Try again later!');
+		if (!body.results) return msg.say('Oh no, a question could not be fetched. Try again later!');
 		const answer = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 		const embed = new MessageEmbed()
 			.setTitle('You have 15 seconds to answer this question:')
