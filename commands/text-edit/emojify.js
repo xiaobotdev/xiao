@@ -16,9 +16,10 @@ module.exports = class EmojifyCommand extends Command {
 					prompt: 'What text would you like to convert to emoji?',
 					type: 'string',
 					validate: text => {
-						if (letterTrans(text, dictionary).length < 2000) return true;
+						if (letterTrans(text.toLowerCase(), dictionary).length < 2000) return true;
 						return 'Your text is too long.';
-					}
+					},
+					parse: text => text.toLowerCase()
 				}
 			]
 		});
@@ -26,6 +27,6 @@ module.exports = class EmojifyCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		return msg.say(letterTrans(text.toLowerCase(), dictionary));
+		return msg.say(letterTrans(text, dictionary));
 	}
 };
