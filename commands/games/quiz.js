@@ -44,6 +44,7 @@ module.exports = class QuizCommand extends Command {
 		answers.push(correct);
 		const embed = new MessageEmbed()
 			.setTitle('You have 15 seconds to answer this question:')
+			.setColor(0x9797FF)
 			.setDescription(stripIndents`
 				**${decodeURIComponent(body.results[0].category)}**
 				${type === 'boolean' ? '**True or False:** ' : ''}${decodeURIComponent(body.results[0].question)}

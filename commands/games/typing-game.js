@@ -31,6 +31,7 @@ module.exports = class TypingGameCommand extends Command {
 		const time = times[difficulty];
 		const embed = new MessageEmbed()
 			.setTitle(`You have ${time / 1000} seconds to type:`)
+			.setColor(0x9797FF)
 			.setDescription(sentence);
 		await msg.embed(embed);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {

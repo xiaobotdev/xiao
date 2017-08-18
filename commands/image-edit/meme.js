@@ -25,12 +25,20 @@ module.exports = class MemeCommand extends Command {
 					key: 'top',
 					prompt: 'What should the top row of the meme to be?',
 					type: 'string',
+					validate: top => {
+						if (top.length < 200) return true;
+						return 'Please keep the top text under 200 characters.';
+					},
 					parse: top => encodeURIComponent(top.replace(/[ ]/g, '-'))
 				},
 				{
 					key: 'bottom',
 					prompt: 'What should the bottom row of the meme to be?',
 					type: 'string',
+					validate: bottom => {
+						if (bottom.length < 200) return true;
+						return 'Please keep the bottom text under 200 characters.';
+					},
 					parse: bottom => encodeURIComponent(bottom.replace(/[ ]/g, '-'))
 				}
 			]
