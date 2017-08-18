@@ -50,10 +50,14 @@ module.exports = class HackbanCommand extends Command {
 			time: 30000
 		});
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
-		await msg.guild.ban(id, {
-			days: 7,
-			reason: `${msg.author.tag}: ${reason}`
-		});
+		try {
+			await msg.guild.ban(id, {
+				days: 7,
+				reason: `${msg.author.tag}: ${reason}`
+			});
+		} catch (err) {
+			return msg.say(`Could not ban the user: \`${err.message}\``);
+		}
 		await msg.say(`Successfully banned ${user.tag}.`);
 		if (!modlogs) {
 			return msg.say('Could not log the ban to the mod logs.');
