@@ -19,8 +19,8 @@ module.exports = class FortuneCommand extends Command {
 			.query({ limit: 1 });
 		return msg.say(stripIndents`
 			${body[0].fortune.message}
-			Lotto: ${body[0].lotto.numbers.join(', ')}
-			Lesson: ${body[0].lesson.chinese} (${body[0].lesson.pronunciation}): ${body[0].lesson.english}
+			${body[0].lotto.numbers.join(', ')}
+			${body[0].lesson.chinese} (${body[0].lesson.pronunciation}): ${body[0].lesson.english}
 		`);
 	}
 };

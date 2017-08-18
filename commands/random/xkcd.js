@@ -30,6 +30,7 @@ module.exports = class XKCDCommand extends Command {
 		if (type === 'today') {
 			const embed = new MessageEmbed()
 				.setTitle(`${current.body.num} - ${current.body.title}`)
+				.setColor(0x9797FF)
 				.setURL(`https://xkcd.com/${current.body.num}`)
 				.setImage(current.body.img)
 				.setFooter(current.body.alt);
@@ -40,6 +41,7 @@ module.exports = class XKCDCommand extends Command {
 				.get(`https://xkcd.com/${random}/info.0.json`);
 			const embed = new MessageEmbed()
 				.setTitle(`${body.num} - ${body.title}`)
+				.setColor(0x9797FF)
 				.setURL(`https://xkcd.com/${body.num}`)
 				.setImage(body.img)
 				.setFooter(body.alt);
@@ -51,6 +53,7 @@ module.exports = class XKCDCommand extends Command {
 				.get(`https://xkcd.com/${choice}/info.0.json`);
 			const embed = new MessageEmbed()
 				.setTitle(`${body.num} - ${body.title}`)
+				.setColor(0x9797FF)
 				.setURL(`https://xkcd.com/${body.num}`)
 				.setImage(body.img)
 				.setFooter(body.alt);

@@ -35,6 +35,7 @@ module.exports = class MathGameCommand extends Command {
 		const answer = math.eval(expression).toString();
 		const embed = new MessageEmbed()
 			.setTitle('You have 10 seconds to answer:')
+			.setColor(0x9797FF)
 			.setDescription(expression);
 		await msg.embed(embed);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
