@@ -37,6 +37,7 @@ module.exports = class HackbanCommand extends Command {
 		const modlogs = filterTopics(msg.guild.channels, 'modlog').first();
 		const { id, reason } = args;
 		if (id === msg.author.id) return msg.say('I don\'t think you want to ban yourself...');
+		if (id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
 		let user;
 		try {
 			user = await this.client.fetchUser(id);

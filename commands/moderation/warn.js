@@ -36,6 +36,7 @@ module.exports = class WarnCommand extends Command {
 		const modlogs = filterTopics(msg.guild.channels, 'modlog').first();
 		const { member, reason } = args;
 		if (member.id === msg.author.id) return msg.say('I don\'t think you want to warn yourself...');
+		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
 		if (!member.kickable) return msg.say('This member is not warnable. Perhaps they have a higher role than me?');
 		if (member.highestRole.calculatedPosition > msg.member.highestRole.calculatedPosition - 1) {
 			return msg.say('Your roles are too low to warn this member.');
