@@ -49,7 +49,7 @@ module.exports = class HackbanCommand extends Command {
 			time: 30000
 		});
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
-		await msg.guild.ban({
+		await msg.guild.ban(id, {
 			days: 7,
 			reason: `${msg.author.tag}: ${reason}`
 		});
