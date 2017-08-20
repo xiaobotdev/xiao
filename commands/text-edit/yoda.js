@@ -26,10 +26,14 @@ module.exports = class YodaCommand extends Command {
 
 	async run(msg, args) {
 		const { sentence } = args;
-		const { text } = await snekfetch
-			.get('https://yoda.p.mashape.com/yoda')
-			.query({ sentence })
-			.set({ 'X-Mashape-Key': MASHAPE_KEY });
-		return msg.say(text);
+		try {
+			const { text } = await snekfetch
+				.get('https://yoda.p.mashape.com/yoda')
+				.query({ sentence })
+				.set({ 'X-Mashape-Key': MASHAPE_KEY });
+			return msg.say(text);
+		} catch (err) {
+			return msg.say(`Oh no, Yoda's being a jerk and not working again: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
