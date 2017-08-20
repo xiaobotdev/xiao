@@ -28,7 +28,7 @@ module.exports = class MovieCommand extends Command {
 			.get('http://api.themoviedb.org/3/search/movie')
 			.query({
 				api_key: TMDB_KEY,
-				include_adult: msg.channel.nsfw ? true : false,
+				include_adult: msg.channel.nsfw,
 				query
 			});
 		if (!search.body.results.length) return msg.say('No Results.');
