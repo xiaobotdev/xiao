@@ -47,7 +47,7 @@ module.exports = class MovieCommand extends Command {
 			.addField('❯ Release Date',
 				body.release_date, true)
 			.addField('❯ Genres',
-				body.genres.map(genre => genre.name).join(', '))
+				body.genres.length ? body.genres.map(genre => genre.name).join(', ') : 'N/A')
 			.addField('❯ Production Companies',
 				body.production_companies.length ? body.production_companies.map(company => company.name).join(', ') : 'N/A');
 		return msg.embed(embed);

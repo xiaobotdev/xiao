@@ -51,7 +51,7 @@ module.exports = class TVShowCommand extends Command {
 			.addField('❯ Episodes',
 				body.number_of_episodes, true)
 			.addField('❯ Genres',
-				body.genres.map(genre => genre.name).join(', '))
+				body.genres.length ? body.genres.map(genre => genre.name).join(', ') : 'N/A')
 			.addField('❯ Production Companies',
 				body.production_companies.length ? body.production_companies.map(company => company.name).join(', ') : 'N/A');
 		return msg.embed(embed);
