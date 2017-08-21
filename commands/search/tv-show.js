@@ -28,7 +28,7 @@ module.exports = class TVShowCommand extends Command {
 			.get('http://api.themoviedb.org/3/search/tv')
 			.query({
 				api_key: TMDB_KEY,
-				include_adult: msg.channel.nsfw,
+				include_adult: msg.channel.nsfw || false,
 				query
 			});
 		if (!search.body.results.length) return msg.say('No Results.');
@@ -40,16 +40,16 @@ module.exports = class TVShowCommand extends Command {
 			.setTitle(body.name)
 			.setURL(`https://www.themoviedb.org/tv/${body.id}`)
 			.setAuthor('TMDB', 'https://i.imgur.com/G9q4DF1.png')
-			.setDescription(body.overview.substr(0, 2048))
+			.setDescription(body.overview ? body.overview.substr(0, 2048) : 'No description available.')
 			.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
 			.addField('❯ First Air Date',
-				body.first_air_date, true)
+				body.first_air_date || 'N/A', true)
 			.addField('❯ Last Air Date',
-				body.last_air_date, true)
+				body.last_air_date || 'N/A', true)
 			.addField('❯ Seasons',
-				body.number_of_seasons, true)
+				body.number_of_seasons || 'N/A', true)
 			.addField('❯ Episodes',
-				body.number_of_episodes, true)
+				body.number_of_episodes || 'N/A', true)
 			.addField('❯ Genres',
 				body.genres.length ? body.genres.map(genre => genre.name).join(', ') : 'N/A')
 			.addField('❯ Production Companies',
