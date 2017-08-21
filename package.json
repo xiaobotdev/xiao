@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "30.7.3",
+  "version": "30.8.0",
   "description": "Your personal server companion.",
   "main": "Shard.js",
   "scripts": {
@@ -46,7 +46,7 @@
     "zalgolize": "^1.2.4"
   },
   "devDependencies": {
-    "eslint": "^4.4.1",
+    "eslint": "^4.5.0",
     "eslint-config-aqua": "^1.4.1"
   },
   "eslintConfig": {
