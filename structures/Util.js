@@ -44,9 +44,7 @@ class Util {
 
 	static filterTopics(channels, setting) {
 		return channels.filter(c => {
-			if (c.type !== 'text') return false;
-			if (!c.topic) return false;
-			if (!c.permissionsFor(c.client.user).has('SEND_MESSAGES')) return false;
+			if (c.type !== 'text' || !c.topic) return false;
 			if (c.topic.includes(`<${setting}>`)) return true;
 			return false;
 		});
