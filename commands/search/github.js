@@ -33,8 +33,8 @@ module.exports = class GitHubCommand extends Command {
 			const { body } = await snekfetch
 				.get(`https://${GITHUB_LOGIN}@api.github.com/repos/${author}/${repository}`);
 			const embed = new MessageEmbed()
-				.setColor(0xCB0000)
-				.setAuthor('GitHub', 'https://i.imgur.com/BCODHXd.png')
+				.setColor(0xFFFFFF)
+				.setAuthor('GitHub', 'https://i.imgur.com/bRROLzk.png')
 				.setTitle(body.full_name)
 				.setURL(body.html_url)
 				.setDescription(body.description || 'No Description.')
