@@ -114,7 +114,7 @@ client.setTimeout(async () => {
 	const battle = client.registry.resolveCommand('games:battle').fighting.size;
 	const hangman = client.registry.resolveCommand('games:hangman').playing.size;
 	const gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
-	while (battle && hangman && gunfight) { // eslint-disable-line no-unmodified-loop-condition
+	while (battle > 0 || hangman > 0 || gunfight > 0) { // eslint-disable-line no-unmodified-loop-condition
 		console.log('[RESTART] A game is going on, delaying...');
 		await wait(5000);
 	}
