@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../structures/Util');
 
 module.exports = class UrbanCommand extends Command {
 	constructor(client) {
@@ -31,9 +32,9 @@ module.exports = class UrbanCommand extends Command {
 			.setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')
 			.setURL(body.list[0].permalink)
 			.setTitle(body.list[0].word)
-			.setDescription(body.list[0].definition.substr(0, 2048))
+			.setDescription(shorten(body.list[0].definition))
 			.addField('❯ Example',
-				body.list[0].example.substr(0, 1024) || 'None');
+				shorten(body.list[0].example, 1000) || 'None');
 		return msg.embed(embed);
 	}
 };

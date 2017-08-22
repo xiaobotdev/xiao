@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../structures/Util');
 
 module.exports = class WikiaCommand extends Command {
 	constructor(client) {
@@ -44,7 +45,7 @@ module.exports = class WikiaCommand extends Command {
 				.setTitle(body.sections[0].title)
 				.setURL(search.body.items[0].url)
 				.setAuthor('Wikia', 'https://i.imgur.com/WzXWJka.png')
-				.setDescription(body.sections[0].content.map(i => i.text).join('\n\n').substr(0, 2048))
+				.setDescription(shorten(body.sections[0].content.map(section => section.text).join('\n\n')))
 				.setThumbnail(body.sections[0].images.length ? body.sections[0].images[0].src : null);
 			return msg.embed(embed);
 		} catch (err) {

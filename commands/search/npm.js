@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
+const { shorten } = require('../../structures/Util');
 
 module.exports = class NPMCommand extends Command {
 	constructor(client) {
@@ -45,7 +46,7 @@ module.exports = class NPMCommand extends Command {
 				.addField('❯ Main File',
 					body.versions[body['dist-tags'].latest].main, true)
 				.addField('❯ Keywords',
-					body.keywords && body.keywords.length ? body.keywords.join(', ').substr(0, 1024) : 'None')
+					body.keywords && body.keywords.length ? shorten(body.keywords.join(', '), 1000) : 'None')
 				.addField('❯ Maintainers',
 					body.maintainers.map(user => user.name).join(', '));
 			return msg.embed(embed);

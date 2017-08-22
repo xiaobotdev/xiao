@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
+const { shorten } = require('../../structures/Util');
 
 module.exports = class VocaloidCommand extends Command {
 	constructor(client) {
@@ -40,7 +41,7 @@ module.exports = class VocaloidCommand extends Command {
 			.setAuthor('VocaDB', 'https://i.imgur.com/9Tx9UIc.jpg')
 			.setTitle(body.items[0].name)
 			.setURL(`http://vocadb.net/S/${body.items[0].id}`)
-			.setDescription(body.items[0].lyrics[0] ? body.items[0].lyrics[0].value.substr(0, 2048) : 'No lyrics available.')
+			.setDescription(body.items[0].lyrics.length ? shorten(body.items[0].lyrics[0].value) : 'No lyrics available.')
 			.setThumbnail(body.items[0].thumbUrl)
 			.addField('❯ Artist',
 				body.items[0].artistString)
