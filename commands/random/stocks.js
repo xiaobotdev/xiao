@@ -36,7 +36,7 @@ module.exports = class StocksCommand extends Command {
 		if (body['Error Message']) return msg.say('Invalid Symbol.');
 		const data = body['Time Series (1min)'][Object.keys(body['Time Series (1min)'])[0]];
 		const embed = new MessageEmbed()
-			.setColor(0x000000)
+			.setColor(0x0D0D0D)
 			.setTitle(symbol.toUpperCase())
 			.setTimestamp()
 			.addField('❯ Open',
