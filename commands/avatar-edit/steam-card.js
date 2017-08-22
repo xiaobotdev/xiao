@@ -10,6 +10,7 @@ module.exports = class SteamCardCommand extends Command {
 			group: 'avatar-edit',
 			memberName: 'steam-card',
 			description: 'Draws a user\'s avatar over a Steam card.',
+			guildOnly: true,
 			throttling: {
 				usages: 1,
 				duration: 30
@@ -17,9 +18,9 @@ module.exports = class SteamCardCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'user',
+					key: 'member',
 					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
+					type: 'member',
 					default: ''
 				}
 			]
@@ -27,8 +28,8 @@ module.exports = class SteamCardCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const user = args.user || msg.author;
-		const avatarURL = user.displayAvatarURL({
+		const member = args.member || msg.member;
+		const avatarURL = member.user.displayAvatarURL({
 			format: 'png',
 			size: 512
 		});
@@ -44,7 +45,7 @@ module.exports = class SteamCardCommand extends Command {
 			ctx.drawImage(avatar, 25, 25, 450, 450);
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '30px Roboto';
-			ctx.fillText(user.username, 35, 48);
+			ctx.fillText(member.displayName, 35, 48);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
