@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
-const { ALHPA_VANTAGE_KEY } = process.env;
+const { ALPHA_VANTAGE_KEY } = process.env;
 
 module.exports = class StocksCommand extends Command {
 	constructor(client) {
@@ -31,9 +31,9 @@ module.exports = class StocksCommand extends Command {
 				function: 'TIME_SERIES_INTRADAY',
 				symbol,
 				interval: '1min',
-				apikey: ALHPA_VANTAGE_KEY
+				apikey: ALPHA_VANTAGE_KEY
 			});
-		if (body['Error Message']) return msg.say(body['Error Message']);
+		if (body['Error Message']) return msg.say('Invalid Symbol.');
 		const data = body['Time Series (1min)'][Object.keys(body['Time Series (1min)'])[0]];
 		const embed = new MessageEmbed()
 			.setColor()
