@@ -6,7 +6,6 @@ class XiaoCommand extends Command {
 		super(client, info);
 
 		this.ownerOnly = info.ownerOnly;
-		this.nsfw = info.nsfw;
 		this.clientPermissions = info.clientPermissions;
 		this.userPermissions = info.userPermissions;
 		this.throttling = info.throttling || {
@@ -17,7 +16,6 @@ class XiaoCommand extends Command {
 
 	hasPermission(msg) {
 		if (this.ownerOnly && !this.client.isOwner(msg.author)) return 'This Command can only be used by the bot owner.';
-		if (this.nsfw && !msg.channel.nsfw) return 'This Command can only be used in NSFW Channels.';
 		if (msg.channel.type === 'text') {
 			if (this.clientPermissions) {
 				for (const permission of this.clientPermissions) {
