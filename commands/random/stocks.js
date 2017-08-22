@@ -33,7 +33,7 @@ module.exports = class StocksCommand extends Command {
 				interval: '1min',
 				apikey: ALHPA_VANTAGE_KEY
 			});
-		if (body['Error Message']) return msg.say('Invalid Symbol.');
+		if (body['Error Message']) return msg.say(body['Error Message']);
 		const data = body['Time Series (1min)'][Object.keys(body['Time Series (1min)'])[0]];
 		const embed = new MessageEmbed()
 			.setColor()
