@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../structures/Util');
 
 module.exports = class WikipediaCommand extends Command {
 	constructor(client) {
@@ -39,7 +40,7 @@ module.exports = class WikipediaCommand extends Command {
 			.setColor(0xE7E7E7)
 			.setTitle(body.query.pages[0].title)
 			.setAuthor('Wikipedia', 'https://i.imgur.com/a4eeEhh.png')
-			.setDescription(body.query.pages[0].extract.replace(/\n/g, '\n\n').substr(0, 2048));
+			.setDescription(shorten(body.query.pages[0].extract.replace(/\n/g, '\n\n')));
 		return msg.embed(embed);
 	}
 };

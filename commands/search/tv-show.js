@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../structures/Util');
 const { TMDB_KEY } = process.env;
 
 module.exports = class TVShowCommand extends Command {
@@ -40,7 +41,7 @@ module.exports = class TVShowCommand extends Command {
 			.setTitle(body.name)
 			.setURL(`https://www.themoviedb.org/tv/${body.id}`)
 			.setAuthor('TMDB', 'https://i.imgur.com/G9q4DF1.png')
-			.setDescription(body.overview ? body.overview.substr(0, 2048) : 'No description available.')
+			.setDescription(body.overview ? shorten(body.overview) : 'No description available.')
 			.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
 			.addField('❯ First Air Date',
 				body.first_air_date || 'N/A', true)

@@ -75,6 +75,10 @@ class Util {
 	static list(arr, conj = 'and') {
 		return `${arr.slice(0, -1).join(', ')}${arr.length > 1 ? `${arr.length > 2 ? ',' : ''} ${conj} ` : ''}${arr.slice(-1)}`; // eslint-disable-line max-len
 	}
+
+	static shorten(text, maxLen = 2000) {
+		return text.length > maxLen ? `${text.substr(0, maxLen - 3)}...` : text;
+	}
 }
 
 module.exports = Util;

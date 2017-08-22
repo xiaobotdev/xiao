@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../structures/Util');
 
 module.exports = class BulbapediaCommand extends Command {
 	constructor(client) {
@@ -40,7 +41,7 @@ module.exports = class BulbapediaCommand extends Command {
 			.setColor(0x3E7614)
 			.setTitle(body.query.pages[0].title)
 			.setAuthor('Bulbapedia', 'https://i.imgur.com/09eYo5T.png')
-			.setDescription(body.query.pages[0].extract.replace(/\n/g, '\n\n').substr(0, 2048));
+			.setDescription(shorten(body.query.pages[0].extract.replace(/\n/g, '\n\n')));
 		return msg.embed(embed);
 	}
 };
