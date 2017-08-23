@@ -7,7 +7,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'whos-that-pokemon',
-			aliases: ['who-pokmeon', '', 'whos-that-pokémon', 'who-pokémon'],
+			aliases: ['who-pokemon', '', 'whos-that-pokémon', 'who-pokémon'],
 			group: 'games',
 			memberName: 'whos-that-pokemon',
 			description: 'Guess who that Pokémon is.',
