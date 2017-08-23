@@ -48,7 +48,7 @@ module.exports = class OsuCommand extends Command {
 			.addField('❯ Play Count',
 				body[0].playcount, true)
 			.addField('❯ Country',
-				body[0].country, true)
+				body[0].country || 'N/A', true)
 			.addField('❯ Ranked Score',
 				body[0].ranked_score, true)
 			.addField('❯ Total Score',

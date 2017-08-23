@@ -79,6 +79,11 @@ class Util {
 	static shorten(text, maxLen = 2000) {
 		return text.length > maxLen ? `${text.substr(0, maxLen - 3)}...` : text;
 	}
+
+	static filterPkmn(arr) {
+		const filtered = arr.filter(entry => entry.language.name === 'en');
+		return filtered[Math.floor(Math.random() * filtered.length)];
+	}
 }
 
 module.exports = Util;

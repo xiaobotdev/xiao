@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
+const { filterPkmn } = require('../../structures/Util');
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -31,11 +32,11 @@ module.exports = class PokedexCommand extends Command {
 			const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${id} - ${this.filter(body.names).name}`, `https://www.serebii.net/pokedex-sm/icon/${id}.png`)
+				.setAuthor(`#${id} - ${filterPkmn(body.names).name}`, `https://www.serebii.net/pokedex-sm/icon/${id}.png`)
 				.setURL(`https://www.serebii.net/pokedex-sm/${id}.shtml`)
 				.setDescription(stripIndents`
-					**The ${this.filter(body.genera).genus} Pokémon**
-					${this.filter(body.flavor_text_entries).flavor_text.replace(/(\n|\f|\r)/g, ' ')}
+					**The ${filterPkmn(body.genera).genus} Pokémon**
+					${filterPkmn(body.flavor_text_entries).flavor_text.replace(/(\n|\f|\r)/g, ' ')}
 				`)
 				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
 			return msg.embed(embed);
@@ -43,10 +44,5 @@ module.exports = class PokedexCommand extends Command {
 			if (err.status === 404) return msg.say('Pokémon Not Found.');
 			throw err;
 		}
-	}
-
-	filter(arr) {
-		const filtered = arr.filter(entry => entry.language.name === 'en');
-		return filtered[Math.floor(Math.random() * filtered.length)];
 	}
 };

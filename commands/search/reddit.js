@@ -45,6 +45,7 @@ module.exports = class RedditCommand extends Command {
 					post.data.score, true);
 			return msg.embed(embed);
 		} catch (err) {
+			if (err.status === 403) return msg.say('This Subreddit is Private.');
 			if (err.status === 404) return msg.say('Subreddit Not Found.');
 			throw err;
 		}
