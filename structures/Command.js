@@ -15,19 +15,21 @@ class XiaoCommand extends Command {
 	}
 
 	hasPermission(msg) {
-		if (this.ownerOnly && !this.client.isOwner(msg.author)) return 'This Command can only be used by the bot owner.';
+		if (this.ownerOnly && !this.client.isOwner(msg.author)) {
+			return `The \`${this.name}\` command can only be used by the bot owner.`;
+		}
 		if (msg.channel.type === 'text') {
 			if (this.clientPermissions) {
 				for (const permission of this.clientPermissions) {
 					if (!msg.channel.permissionsFor(this.client.user).has(permission)) {
-						return `This Command requires me to have the \`${perms[permission]}\` Permission.`;
+						return `The \`${this.name}\` command requires me to have the \`${perms[permission]}\` Permission.`;
 					}
 				}
 			}
 			if (this.userPermissions) {
 				for (const permission of this.userPermissions) {
 					if (!msg.channel.permissionsFor(msg.author).has(permission)) {
-						return `This Command requires you to have the \`${perms[permission]}\` Permission.`;
+						return `The \`${this.name}\` command requires you to have the \`${perms[permission]}\` Permission.`;
 					}
 				}
 			}
