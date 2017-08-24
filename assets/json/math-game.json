@@ -29,10 +29,10 @@
 		"impossible"
 	],
 	"maxValues": {
-		"easy": 10,
-		"medium": 50,
-		"hard": 100,
-		"extreme": 100,
+		"easy": 5,
+		"medium": 10,
+		"hard": 50,
+		"extreme": 75,
 		"impossible": 100
 	}
 }
