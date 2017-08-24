@@ -1,8 +1,25 @@
 {
-	"operations": [
-		"+",
-		"-",
-		"*"
+	"operations": {
+		"easy": [
+			"+",
+			"-"
+		],
+		"medium": [
+			"+",
+			"-"
+		],
+		"hard": [
+			"-",
+			"*"
+		],
+		"extreme": [
+			"-",
+			"*"
+		],
+		"impossible": [
+			"*",
+			"/"
+		]
 	],
 	"difficulties": [
 		"easy",
