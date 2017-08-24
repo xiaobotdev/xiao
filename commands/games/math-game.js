@@ -28,7 +28,7 @@ module.exports = class MathGameCommand extends Command {
 
 	async run(msg, args) {
 		const { difficulty } = args;
-		const operation = operations[Math.floor(Math.random() * operations.length)];
+		const operation = operations[difficulty][Math.floor(Math.random() * operations.length)];
 		const value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const expression = `${value1} ${operation} ${value2}`;

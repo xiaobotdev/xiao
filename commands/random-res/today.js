@@ -13,34 +13,20 @@ module.exports = class TodayCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'month',
-					prompt: 'Which month do you want events for?',
-					type: 'integer',
-					default: '',
-					validate: month => {
-						if (month < 13 && month > 0) return true;
-						return 'Please enter a valid month.';
-					}
-				},
-				{
-					key: 'day',
-					prompt: 'Which day do you want events for?',
-					type: 'integer',
-					default: '',
-					validate: day => {
-						if (day < 32 && day > 0) return true;
-						return 'Please enter a valid day.';
-					}
+					key: 'date',
+					prompt: 'What date do you want events for? Month/Day format.',
+					type: 'string',
+					default: ''
 				}
 			]
 		});
 	}
 
 	async run(msg, args) {
-		const { month, day } = args;
+		const { date } = args;
 		try {
 			const { text } = await snekfetch
-				.get(`http://history.muffinlabs.com/date${month && day ? `/${month}/${day}` : ''}`);
+				.get(`http://history.muffinlabs.com/date${date ? `/${date}` : ''}`);
 			const body = JSON.parse(text);
 			const events = body.data.Events;
 			const event = events[Math.floor(Math.random() * events.length)];

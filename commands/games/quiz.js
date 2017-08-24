@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
 const { shuffle, list } = require('../../structures/Util');
+const difficulties = ['easy', 'medium', 'hard'];
 
 module.exports = class QuizCommand extends Command {
 	constructor(client) {
@@ -18,25 +19,36 @@ module.exports = class QuizCommand extends Command {
 					key: 'type',
 					prompt: 'Which type of question would you like to have? `multiple` or `boolean`.',
 					type: 'string',
-					default: 'boolean',
 					validate: type => {
 						if (['multiple', 'boolean'].includes(type.toLowerCase())) return true;
 						return 'Please enter either `multiple` or `boolean`.';
 					},
 					parse: type => type.toLowerCase()
+				},
+				{
+					key: 'difficulty',
+					prompt: `What should the difficulty of the game be? One of: ${difficulties.join(', ')}`,
+					type: 'string',
+					default: '',
+					validate: difficulty => {
+						if (difficulties.includes(difficulty.toLowerCase())) return true;
+						return `The difficulty must be one of: ${difficulties.join(', ')}`;
+					},
+					parse: difficulty => difficulty.toLowerCase()
 				}
 			]
 		});
 	}
 
 	async run(msg, args) {
-		const { type } = args;
+		const { type, difficulty } = args;
 		const { body } = await snekfetch
 			.get('https://opentdb.com/api.php')
 			.query({
 				amount: 1,
 				type,
-				encode: 'url3986'
+				encode: 'url3986',
+				difficulty
 			});
 		if (!body.results) return msg.say('Oh no, a question could not be fetched. Try again later!');
 		const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
