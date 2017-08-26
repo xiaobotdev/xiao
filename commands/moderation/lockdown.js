@@ -37,12 +37,16 @@ module.exports = class LockdownCommand extends Command {
 				}
 			]
 		});
+
+		this.channels = new Set();
 	}
 
 	async run(msg, args) { // eslint-disable-line consistent-return
 		const { action, time } = args;
 		if (action === 'start') {
+			if (this.channels.has(msg.channel.id)) return msg.say('This channel is already locked down.');
 			await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: false });
+			this.channels.add(msg.channel.id);
 			await msg.say(stripIndents`
 				Lockdown started, users without overwrites can no longer post messages.
 				${time ? `Please wait ${time / 60000} minutes.` : 'Please use `lockdown stop` to end the lockdown.'}
@@ -50,10 +54,13 @@ module.exports = class LockdownCommand extends Command {
 			if (!time) return null;
 			await wait(time);
 			await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: null });
+			this.channels.delete(msg.channel.id);
 			return msg.say('Lockdown ended, all users can now post messages.');
 		}
 		if (action === 'stop') {
+			if (!this.channels.has(msg.channel.id)) return msg.say('This channel is not locked down.');
 			await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: null });
+			this.channels.delete(msg.channel.id);
 			return msg.say('Lockdown ended, all users can now post messages.');
 		}
 	}
