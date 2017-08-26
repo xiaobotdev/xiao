@@ -26,7 +26,7 @@ module.exports = class TranslateCommand extends Command {
 				},
 				{
 					key: 'target',
-					prompt: 'Which language would you like to translate to?',
+					prompt: `Which language would you like to translate to? Either ${list(Object.keys(codes), 'or')}.`,
 					type: 'string',
 					validate: target => {
 						if (codes[target.toLowerCase()]) return true;
@@ -36,7 +36,7 @@ module.exports = class TranslateCommand extends Command {
 				},
 				{
 					key: 'original',
-					prompt: 'Which language is your text in?',
+					prompt: `Which language is your text in? Either ${list(Object.keys(codes), 'or')}.`,
 					type: 'string',
 					default: '',
 					validate: original => {
