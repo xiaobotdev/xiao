@@ -12,7 +12,7 @@ module.exports = class TemperatureCommand extends Command {
 			args: [
 				{
 					key: 'base',
-					prompt: 'What temperature unit do you want to use as the base?',
+					prompt: `What temperature unit do you want to use as the base? Either ${list(units, 'or')}.`,
 					type: 'string',
 					validate: base => {
 						if (units.includes(base.toLowerCase())) return true;
@@ -22,7 +22,7 @@ module.exports = class TemperatureCommand extends Command {
 				},
 				{
 					key: 'target',
-					prompt: 'What temperature unit do you want to convert to?',
+					prompt: `What temperature unit do you want to convert to? Either ${list(units, 'or')}.`,
 					type: 'string',
 					validate: target => {
 						if (units.includes(target.toLowerCase())) return true;

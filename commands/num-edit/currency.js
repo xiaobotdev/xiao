@@ -14,7 +14,7 @@ module.exports = class CurrencyCommand extends Command {
 			args: [
 				{
 					key: 'base',
-					prompt: 'What currency code do you want to use as the base?',
+					prompt: `What currency code do you want to use as the base? Either ${list(codes, 'or')}.`,
 					type: 'string',
 					validate: base => {
 						if (codes.includes(base.toUpperCase())) return true;
@@ -24,7 +24,7 @@ module.exports = class CurrencyCommand extends Command {
 				},
 				{
 					key: 'target',
-					prompt: 'What currency code do you want to convert to?',
+					prompt: `What currency code do you want to convert to? Either ${list(codes, 'or')}.`,
 					type: 'string',
 					validate: target => {
 						if (codes.includes(target.toUpperCase())) return true;
