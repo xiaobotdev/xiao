@@ -10,7 +10,7 @@ module.exports = class GitHubCommand extends Command {
 			name: 'github',
 			group: 'search',
 			memberName: 'github',
-			description: 'Searches GitHub for info on a GitHub repository.',
+			description: 'Searches GitHub for information on a repository.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
@@ -20,7 +20,7 @@ module.exports = class GitHubCommand extends Command {
 				},
 				{
 					key: 'repository',
-					prompt: 'What is the name of the repository you would like to get information for?',
+					prompt: 'What is the name of the repository?',
 					type: 'string'
 				}
 			]
@@ -37,7 +37,7 @@ module.exports = class GitHubCommand extends Command {
 				.setAuthor('GitHub', 'https://i.imgur.com/bRROLzk.png')
 				.setTitle(body.full_name)
 				.setURL(body.html_url)
-				.setDescription(body.description || 'No Description.')
+				.setDescription(body.description || 'No description.')
 				.setThumbnail(body.owner.avatar_url || null)
 				.addField('❯ Stars',
 					body.stargazers_count, true)
@@ -53,7 +53,7 @@ module.exports = class GitHubCommand extends Command {
 					moment(body.updated_at).format('MMMM Do YYYY'), true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Not Found.');
+			if (err.status === 404) return msg.say('Could not find the repository.');
 			throw err;
 		}
 	}

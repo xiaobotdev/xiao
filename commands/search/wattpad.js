@@ -32,7 +32,7 @@ module.exports = class WattpadCommand extends Command {
 				limit: 1
 			})
 			.set({ Authorization: `Basic ${WATTPAD_KEY}` });
-		if (!body.stories.length) return msg.say('No Results.');
+		if (!body.stories.length) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0xF89C34)
 			.setAuthor('Wattpad', 'https://i.imgur.com/Rw9vRQB.png')

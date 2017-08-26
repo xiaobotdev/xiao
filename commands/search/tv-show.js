@@ -16,7 +16,7 @@ module.exports = class TVShowCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to search for?',
+					prompt: 'What TV show would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -32,7 +32,7 @@ module.exports = class TVShowCommand extends Command {
 				include_adult: msg.channel.nsfw || false,
 				query
 			});
-		if (!search.body.results.length) return msg.say('No Results.');
+		if (!search.body.results.length) return msg.say('Could not find any results.');
 		const { body } = await snekfetch
 			.get(`https://api.themoviedb.org/3/tv/${search.body.results[0].id}`)
 			.query({ api_key: TMDB_KEY });

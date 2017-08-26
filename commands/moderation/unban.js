@@ -26,7 +26,7 @@ module.exports = class UnbanCommand extends Command {
 					type: 'string',
 					validate: reason => {
 						if (reason.length < 140) return true;
-						return 'Reason must be under 140 characters.';
+						return 'Please keep the reason under 140 characters.';
 					}
 				}
 			]

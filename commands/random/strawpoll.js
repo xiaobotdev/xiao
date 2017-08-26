@@ -6,6 +6,7 @@ module.exports = class StrawpollCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'strawpoll',
+			aliases: ['poll'],
 			group: 'random',
 			memberName: 'strawpoll',
 			description: 'Creates a Strawpoll from the options you provide.',
@@ -16,7 +17,7 @@ module.exports = class StrawpollCommand extends Command {
 					type: 'string',
 					validate: title => {
 						if (title.length < 200) return true;
-						return 'Title must be under 200 characters.';
+						return 'Please keep the title under 200 characters.';
 					}
 				},
 				{
@@ -26,7 +27,7 @@ module.exports = class StrawpollCommand extends Command {
 					infinite: true,
 					validate: choice => {
 						if (choice.length < 140) return true;
-						return 'Choices must be under 140 characters each.';
+						return 'Please keep choices under 140 characters each.';
 					}
 				}
 			]
@@ -35,14 +36,14 @@ module.exports = class StrawpollCommand extends Command {
 
 	async run(msg, args) {
 		const { title, options } = args;
-		if (options.length < 2) return msg.say('You provided less than two choices.');
-		if (options.length > 31) return msg.say('You provided more than thirty choices.');
+		if (options.length < 2) return msg.say('Please provide more than one choice.');
+		if (options.length > 31) return msg.say('Please provide thirty or less choices.');
 		const { body } = await snekfetch
 			.post('https://strawpoll.me/api/v2/polls')
 			.send({ title, options });
 		return msg.say(stripIndents`
 			${body.title}
-			http://strawpoll.me/${body.id}
+			http://www.strawpoll.me/${body.id}
 		`);
 	}
 };

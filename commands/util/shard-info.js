@@ -20,7 +20,7 @@ module.exports = class ShardInfoCommand extends Command {
 					type: 'integer',
 					validate: shard => {
 						if (shard < this.client.options.shardCount && shard > -1) return true;
-						return 'Invalid Shard ID';
+						return 'Invalid Shard ID.';
 					}
 				}
 			]

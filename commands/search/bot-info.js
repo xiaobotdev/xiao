@@ -9,12 +9,12 @@ module.exports = class BotSearchCommand extends Command {
 			name: 'bot-info',
 			group: 'search',
 			memberName: 'bot-info',
-			description: 'Searches Discord Bots for info on a bot.',
+			description: 'Searches Discord Bots for information on a bot.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'bot',
-					prompt: 'Which bot do you want to get information for?',
+					prompt: 'Which bot do you want to get information on?',
 					type: 'user'
 				}
 			]
@@ -41,7 +41,7 @@ module.exports = class BotSearchCommand extends Command {
 					body.prefix, true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Bot Not Found.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			throw err;
 		}
 	}

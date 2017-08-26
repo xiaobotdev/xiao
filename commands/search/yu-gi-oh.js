@@ -13,7 +13,7 @@ module.exports = class YuGiOhCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What card would you like to get data for?',
+					prompt: 'What card would you like to get information on?',
 					type: 'string',
 					parse: text => encodeURIComponent(text)
 				}
@@ -25,7 +25,7 @@ module.exports = class YuGiOhCommand extends Command {
 		const { query } = args;
 		const { body } = await snekfetch
 			.get(`http://yugiohprices.com/api/card_data/${query}`);
-		if (body.status === 'fail') return msg.say('No Results.');
+		if (body.status === 'fail') return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0xBE5F1F)
 			.setTitle(body.data.name)

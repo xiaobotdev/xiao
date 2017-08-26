@@ -14,16 +14,16 @@ module.exports = class MapCommand extends Command {
 				{
 					key: 'zoom',
 					label: 'zoom level',
-					prompt: 'What would you like the zoom level for the map to be? Limit 1-20.',
+					prompt: 'What would you like the zoom level to be? Must be a number from 1-20.',
 					type: 'integer',
 					validate: zoom => {
 						if (zoom < 21 && zoom > 0) return true;
-						return 'Please enter a zoom value from 1-20';
+						return 'Please enter a zoom value from 1-20.';
 					}
 				},
 				{
 					key: 'query',
-					prompt: 'What location you like to get a map image for?',
+					prompt: 'What location would you like to get a map of?',
 					type: 'string'
 				}
 			]

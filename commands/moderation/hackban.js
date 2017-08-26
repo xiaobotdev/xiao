@@ -26,7 +26,7 @@ module.exports = class HackbanCommand extends Command {
 					type: 'string',
 					validate: reason => {
 						if (reason.length < 140) return true;
-						return 'Reason must be under 140 characters.';
+						return 'Please keep the reason under 140 characters.';
 					}
 				}
 			]
@@ -40,7 +40,7 @@ module.exports = class HackbanCommand extends Command {
 		if (id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
 		let user;
 		try {
-			user = await this.client.fetchUser(id);
+			user = await this.client.users.fetch(id);
 		} catch (err) {
 			return msg.say('Could not resolve user.');
 		}

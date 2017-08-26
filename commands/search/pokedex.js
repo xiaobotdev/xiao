@@ -16,9 +16,9 @@ module.exports = class PokedexCommand extends Command {
 			args: [
 				{
 					key: 'pokemon',
-					prompt: 'What Pokémon would you like to search for?',
+					prompt: 'What Pokémon would you like to get information on?',
 					type: 'string',
-					parse: pokemon => pokemon.toLowerCase().replace(/[ ]/g, '-')
+					parse: pokemon => pokemon.toLowerCase().replace(/ /g, '-')
 				}
 			]
 		});
@@ -41,7 +41,7 @@ module.exports = class PokedexCommand extends Command {
 				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Pokémon Not Found.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			throw err;
 		}
 	}

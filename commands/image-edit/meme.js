@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { list } = require('../../structures/Util');
 const codes = require('../../assets/json/meme');
 
 module.exports = class MemeCommand extends Command {
@@ -7,17 +8,17 @@ module.exports = class MemeCommand extends Command {
 			name: 'meme',
 			group: 'image-edit',
 			memberName: 'meme',
-			description: 'Sends a meme with text of your choice, and a background of your choice.',
+			description: 'Sends a meme with the text and background of your choice.',
 			clientPermissions: ['ATTACH_FILES'],
 			details: `**Codes:** ${codes.join(', ')}`,
 			args: [
 				{
 					key: 'type',
-					prompt: 'What meme type do you want to use?',
+					prompt: `What meme type do you want to use? Either ${list(codes, 'or')}.`,
 					type: 'string',
 					validate: type => {
 						if (codes.includes(type.toLowerCase())) return true;
-						return 'Invalid meme type. Use `help meme` to view a list of meme types.';
+						return `Invalid meme type, please enter either ${list(codes, 'or')}.`;
 					},
 					parse: type => type.toLowerCase()
 				},
@@ -29,7 +30,7 @@ module.exports = class MemeCommand extends Command {
 						if (top.length < 200) return true;
 						return 'Please keep the top text under 200 characters.';
 					},
-					parse: top => encodeURIComponent(top.replace(/[ ]/g, '-'))
+					parse: top => encodeURIComponent(top.replace(/ /g, '-'))
 				},
 				{
 					key: 'bottom',
@@ -39,7 +40,7 @@ module.exports = class MemeCommand extends Command {
 						if (bottom.length < 200) return true;
 						return 'Please keep the bottom text under 200 characters.';
 					},
-					parse: bottom => encodeURIComponent(bottom.replace(/[ ]/g, '-'))
+					parse: bottom => encodeURIComponent(bottom.replace(/ /g, '-'))
 				}
 			]
 		});

@@ -15,7 +15,7 @@ module.exports = class NPMCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What package do you want to get information for?',
+					prompt: 'What package would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -51,7 +51,7 @@ module.exports = class NPMCommand extends Command {
 					body.maintainers.map(user => user.name).join(', '));
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Not Found.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			throw err;
 		}
 	}

@@ -16,7 +16,7 @@ module.exports = class RoleInfoCommand extends Command {
 			args: [
 				{
 					key: 'role',
-					prompt: 'Which role would you like to get info on?',
+					prompt: 'Which role would you like to get information on?',
 					type: 'role'
 				}
 			]
