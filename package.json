@@ -42,7 +42,7 @@
     "node-opus": "^0.2.6",
     "snekfetch": "^3.2.9",
     "uws": "^8.14.1",
-    "xml2js": "^0.4.18",
+    "xml2js": "^0.4.19",
     "zalgolize": "^1.2.4"
   },
   "devDependencies": {
