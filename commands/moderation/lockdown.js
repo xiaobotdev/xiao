@@ -45,7 +45,7 @@ module.exports = class LockdownCommand extends Command {
 			await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: false });
 			await msg.say(stripIndents`
 				Lockdown started, users without overwrites can no longer post messages.
-				${time ? 'Please use `lockdown stop` to end the lockdown.' : `Please wait ${time / 60000} minutes.`}
+				${time ? `Please wait ${time / 60000} minutes.` : 'Please use `lockdown stop` to end the lockdown.'}
 			`);
 			if (!time) return null;
 			await wait(time);
