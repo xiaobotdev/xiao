@@ -13,7 +13,7 @@ module.exports = class WeatherCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What location would you like to get the current weather for?',
+					prompt: 'What location would you like to get the weather of?',
 					type: 'string'
 				}
 			]
@@ -28,7 +28,7 @@ module.exports = class WeatherCommand extends Command {
 				q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${query}")`, // eslint-disable-line max-len
 				format: 'json'
 			});
-		if (!body.query.count) return msg.say('Location Not Found.');
+		if (!body.query.count) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0x0000FF)
 			.setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')

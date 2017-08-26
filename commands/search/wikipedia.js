@@ -14,7 +14,7 @@ module.exports = class WikipediaCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to search for?',
+					prompt: 'What article would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -35,7 +35,7 @@ module.exports = class WikipediaCommand extends Command {
 				redirects: '',
 				formatversion: 2
 			});
-		if (body.query.pages[0].missing) return msg.say('No Results.');
+		if (body.query.pages[0].missing) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0xE7E7E7)
 			.setTitle(body.query.pages[0].title)

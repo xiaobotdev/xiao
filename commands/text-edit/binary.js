@@ -27,12 +27,9 @@ module.exports = class BinaryCommand extends Command {
 	}
 
 	binary(text) {
-		return unescape(encodeURIComponent(text))
-			.split('')
-			.map(str => {
-				const converted = str.charCodeAt(0).toString(2);
-				return `${'00000000'.slice(converted.length)}${converted}`;
-			})
-			.join('');
+		return text.split('').map(str => {
+			const converted = str.charCodeAt(0).toString(2);
+			return `${'00000000'.slice(converted.length)}${converted}`;
+		}).join('');
 	}
 };

@@ -17,7 +17,7 @@ module.exports = class YodaCommand extends Command {
 					type: 'string',
 					validate: sentence => {
 						if (sentence.length < 500) return true;
-						return 'Text must be under 500 characters.';
+						return 'Please keep text under 500 characters.';
 					}
 				}
 			]

@@ -29,7 +29,7 @@ module.exports = class DiscrimCommand extends Command {
 		const discrim = args.discrim || msg.author.discriminator;
 		const users = this.client.users.filter(user => user.discriminator === discrim).map(user => user.username);
 		const embed = new MessageEmbed()
-			.setTitle(`${users.length} Users with the discriminator: ${discrim}`)
+			.setTitle(`${users.length} Users with the discriminator #${discrim}`)
 			.setColor(0x9797FF)
 			.setDescription(users.join(', '));
 		return msg.embed(embed);

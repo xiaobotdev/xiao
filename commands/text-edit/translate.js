@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { list } = require('../../structures/Util');
 const codes = require('../../assets/json/translate');
 const { YANDEX_KEY } = process.env;
 
@@ -11,7 +12,7 @@ module.exports = class TranslateCommand extends Command {
 			group: 'text-edit',
 			memberName: 'translate',
 			description: 'Translates text to a specified language.',
-			details: '**Codes:** https://tech.yandex.com/translate/doc/dg/concepts/api-overview-docpage/#languages',
+			details: `**Codes:** ${Object.keys(codes).join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
@@ -20,42 +21,42 @@ module.exports = class TranslateCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.length < 500) return true;
-						return 'Text must be under 500 characters.';
+						return 'Please keep text under 500 characters.';
 					}
 				},
 				{
-					key: 'to',
-					prompt: 'Which language is being translated to?',
+					key: 'target',
+					prompt: 'Which language would you like to translate to?',
 					type: 'string',
-					validate: to => {
-						if (codes[to.toLowerCase()]) return true;
-						return 'Invalid Language Code. Use `help translate` for a list of codes.';
+					validate: target => {
+						if (codes[target.toLowerCase()]) return true;
+						return `Invalid target, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
-					parse: to => to.toLowerCase()
+					parse: target => target.toLowerCase()
 				},
 				{
-					key: 'from',
-					prompt: 'Which language is being translated from?',
+					key: 'original',
+					prompt: 'Which language is your text in?',
 					type: 'string',
 					default: '',
-					validate: from => {
-						if (codes[from.toLowerCase()]) return true;
-						return 'Invalid Language Code. Use `help translate` for a list of codes.';
+					validate: original => {
+						if (codes[original.toLowerCase()]) return true;
+						return `Invalid original, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
-					parse: from => from.toLowerCase()
+					parse: original => original.toLowerCase()
 				}
 			]
 		});
 	}
 
 	async run(msg, args) {
-		const { text, to, from } = args;
+		const { text, target, original } = args;
 		const { body } = await snekfetch
 			.get('https://translate.yandex.net/api/v1.5/tr.json/translate')
 			.query({
 				key: YANDEX_KEY,
 				text,
-				lang: from ? `${from}-${to}` : to
+				lang: original ? `${original}-${target}` : target
 			});
 		const lang = body.lang.split('-');
 		const embed = new MessageEmbed()

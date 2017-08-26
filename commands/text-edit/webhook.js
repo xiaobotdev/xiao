@@ -10,9 +10,7 @@ module.exports = class WebhookCommand extends Command {
 			group: 'text-edit',
 			memberName: 'webhook',
 			description: 'Posts a message to the webhook defined in your `process.env`.',
-			guildOnly: true,
 			ownerOnly: true,
-			clientPermissions: ['MANAGE_MESSAGES'],
 			args: [
 				{
 					key: 'content',
@@ -25,7 +23,7 @@ module.exports = class WebhookCommand extends Command {
 
 	async run(msg, args) {
 		const { content } = args;
-		msg.delete();
+		if (msg.guild && msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) await msg.delete();
 		await snekfetch
 			.post(WEBHOOK_URL)
 			.send({ content });

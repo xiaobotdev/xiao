@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
 const { shuffle, list } = require('../../structures/Util');
+const types = ['multiple', 'boolean'];
 const difficulties = ['easy', 'medium', 'hard'];
 
 module.exports = class QuizCommand extends Command {
@@ -17,22 +18,22 @@ module.exports = class QuizCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: 'Which type of question would you like to have? `multiple` or `boolean`.',
+					prompt: `Which type of question would you like to have? Either ${list(types, 'or')}.`,
 					type: 'string',
 					validate: type => {
-						if (['multiple', 'boolean'].includes(type.toLowerCase())) return true;
-						return 'Please enter either `multiple` or `boolean`.';
+						if (types.includes(type.toLowerCase())) return true;
+						return `Invalid type, please enter either ${list(types, 'or')}.`;
 					},
 					parse: type => type.toLowerCase()
 				},
 				{
 					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? One of: ${difficulties.join(', ')}`,
+					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
 					type: 'string',
 					default: '',
 					validate: difficulty => {
 						if (difficulties.includes(difficulty.toLowerCase())) return true;
-						return `The difficulty must be one of: ${difficulties.join(', ')}`;
+						return `Invalid difficulty, please enter either ${list(difficulties, 'or')}.`;
 					},
 					parse: difficulty => difficulty.toLowerCase()
 				}

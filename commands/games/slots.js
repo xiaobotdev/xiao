@@ -21,11 +21,10 @@ module.exports = class SlotsCommand extends Command {
 				${slotOne}|${slotTwo}|${slotThree}
 				Wow! You won! Great job... er... luck!
 			`);
-		} else {
-			return msg.say(stripIndents`
-				${slotOne}|${slotTwo}|${slotThree}
-				Aww... You lost... Guess it's just bad luck, huh?
-			`);
 		}
+		return msg.say(stripIndents`
+			${slotOne}|${slotTwo}|${slotThree}
+			Aww... You lost... Guess it's just bad luck, huh?
+		`);
 	}
 };

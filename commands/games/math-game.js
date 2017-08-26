@@ -1,7 +1,22 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const math = require('mathjs');
-const { operations, difficulties, maxValues } = require('../../assets/json/math-game');
+const { list } = require('../../structures/Util');
+const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
+const operations = {
+	easy: ['+', '-'],
+	medium: ['+', '-'],
+	hard: ['-', '*'],
+	extreme: ['*', '/'],
+	impossible: ['/', '^']
+};
+const maxValues = {
+	easy: 5,
+	medium: 10,
+	hard: 50,
+	extreme: 75,
+	impossible: 100
+};
 
 module.exports = class MathGameCommand extends Command {
 	constructor(client) {
@@ -14,11 +29,11 @@ module.exports = class MathGameCommand extends Command {
 			args: [
 				{
 					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? One of: ${difficulties.join(', ')}`,
+					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
 					type: 'string',
 					validate: difficulty => {
 						if (difficulties.includes(difficulty.toLowerCase())) return true;
-						return `The difficulty must be one of: ${difficulties.join(', ')}`;
+						return `Invalid difficulty, please enter either ${list(difficulties, 'or')}.`;
 					},
 					parse: difficulty => difficulty.toLowerCase()
 				}

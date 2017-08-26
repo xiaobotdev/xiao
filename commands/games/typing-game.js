@@ -1,6 +1,15 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const { sentences, difficulties, times } = require('../../assets/json/typing-game');
+const { list } = require('../../structures/Util');
+const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
+const times = {
+	easy: 25000,
+	medium: 20000,
+	hard: 15000,
+	extreme: 10000,
+	impossible: 5000
+};
+const sentences = require('../../assets/json/typing-game');
 
 module.exports = class TypingGameCommand extends Command {
 	constructor(client) {
@@ -13,11 +22,11 @@ module.exports = class TypingGameCommand extends Command {
 			args: [
 				{
 					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? One of: ${difficulties.join(', ')}`,
+					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
 					type: 'string',
 					validate: difficulty => {
 						if (difficulties.includes(difficulty.toLowerCase())) return true;
-						return `The difficulty must be one of: ${difficulties.join(', ')}`;
+						return `Invalid difficulty, please enter either ${list(difficulties, 'or')}.`;
 					},
 					parse: difficulty => difficulty.toLowerCase()
 				}

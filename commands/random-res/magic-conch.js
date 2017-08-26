@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const answers = require('../../assets/json/magic-conch');
+const answers = ['Maybe someday', 'Nothing', 'Neither', 'I don\'t think so', 'Yes', 'Try asking again'];
 
 module.exports = class MagicConchCommand extends Command {
 	constructor(client) {

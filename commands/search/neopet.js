@@ -11,7 +11,7 @@ module.exports = class NeopetCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What pet would you like to get the image of?',
+					prompt: 'What pet would you like to get an image of?',
 					type: 'string'
 				}
 			]
@@ -28,7 +28,7 @@ module.exports = class NeopetCommand extends Command {
 				mood: 1
 			});
 		const link = text.match(/http:\/\/pets\.neopets\.com\/cp\/.+\.png/);
-		if (!link) return msg.say('Invalid Pet Name.');
+		if (!link) return msg.say('Could not find any results.');
 		return msg.say(link[0]);
 	}
 };

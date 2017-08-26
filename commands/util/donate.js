@@ -16,8 +16,9 @@ module.exports = class DonateCommand extends Command {
 	run(msg) {
 		return msg.say(stripIndents`
 			Contribute to XiaoBot development!
-			https://www.patreon.com/dragonfire535
+			<https://www.patreon.com/dragonfire535>
 			<https://paypal.me/dragonfire535>
+			<https://ko-fi.com/dragonfire>
 		`);
 	}
 };

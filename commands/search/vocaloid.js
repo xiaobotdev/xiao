@@ -35,7 +35,7 @@ module.exports = class VocaloidCommand extends Command {
 				nameMatchMode: 'Words',
 				fields: 'ThumbUrl,Lyrics'
 			});
-		if (!body.totalCount) return msg.say('No Results.');
+		if (!body.totalCount) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0x86D2D0)
 			.setAuthor('VocaDB', 'https://i.imgur.com/9Tx9UIc.jpg')

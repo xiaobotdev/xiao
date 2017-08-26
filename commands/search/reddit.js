@@ -13,7 +13,7 @@ module.exports = class RedditCommand extends Command {
 			args: [
 				{
 					key: 'subreddit',
-					prompt: 'What subreddit would you like to get data for?',
+					prompt: 'What subreddit would you like to get a post from?',
 					type: 'string'
 				}
 			]
@@ -26,10 +26,10 @@ module.exports = class RedditCommand extends Command {
 			const { body } = await snekfetch
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });
-			if (!body.data.children.length) return msg.say('Subreddit Not Found.');
+			if (!body.data.children.length) return msg.say('Could not find any results.');
 			const post = body.data.children[Math.floor(Math.random() * body.data.children.length)];
 			if (!post.data) return msg.say('This post has no data, try again!');
-			if (!msg.channel.nsfw && post.data.over_18) return msg.say('This post is only viewable in NSFW Channels.');
+			if (!msg.channel.nsfw && post.data.over_18) return msg.say('This post is only viewable in NSFW channels.');
 			const embed = new MessageEmbed()
 				.setColor(0xFF4500)
 				.setAuthor('Reddit', 'https://i.imgur.com/V6hXniU.png')
@@ -45,8 +45,8 @@ module.exports = class RedditCommand extends Command {
 					post.data.score, true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 403) return msg.say('This Subreddit is Private.');
-			if (err.status === 404) return msg.say('Subreddit Not Found.');
+			if (err.status === 403) return msg.say('This subreddit is private.');
+			if (err.status === 404) return msg.say('Could not find the subreddit.');
 			throw err;
 		}
 	}
