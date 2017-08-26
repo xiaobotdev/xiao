@@ -17,8 +17,8 @@ module.exports = class HangmanCommand extends Command {
 	}
 
 	async run(msg) {
-		if (this.playing.has(msg.guild.id)) return msg.say('Only one game may be occurring per server.');
-		this.playing.add(msg.guild.id);
+		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
+		this.playing.add(msg.channel.id);
 		try {
 			const { body } = await snekfetch
 				.get('http://api.wordnik.com:80/v4/words.json/randomWord')
@@ -32,7 +32,7 @@ module.exports = class HangmanCommand extends Command {
 					maxLength: -1,
 					api_key: WORDNIK_KEY
 				});
-			const word = body.word.toLowerCase().replace(/[ ]/g, '-');
+			const word = body.word.toLowerCase().replace(/ /g, '-');
 			let points = 0;
 			const confirmation = [];
 			const incorrect = [];
@@ -61,10 +61,9 @@ module.exports = class HangmanCommand extends Command {
 				} else if (word.includes(choice)) {
 					await msg.say('Nice job!');
 					for (let i = 0; i < word.length; i++) {
-						if (word[i] === choice) { // eslint-disable-line max-depth
-							confirmation.push(word[i]);
-							display[i] = word[i];
-						}
+						if (word[i] !== choice) continue; // eslint-disable-line max-depth
+						confirmation.push(word[i]);
+						display[i] = word[i];
 					}
 				} else {
 					await msg.say('Nope!');
@@ -72,12 +71,12 @@ module.exports = class HangmanCommand extends Command {
 					points++;
 				}
 			}
-			this.playing.delete(msg.guild.id);
+			this.playing.delete(msg.channel.id);
 			if (word.length === confirmation.length) return msg.say(`You won, it was ${word}!`);
 			return msg.say(`Too bad... It was ${word}...`);
 		} catch (err) {
-			this.playing.delete(msg.guild.id);
-			return msg.say(`Oh no, an Error occurred: \`${err.message}\`. Try again later!`);
+			this.playing.delete(msg.channel.id);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

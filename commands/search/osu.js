@@ -14,7 +14,7 @@ module.exports = class OsuCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What osu username would you like to search for?',
+					prompt: 'What user would you like to get information on?',
 					type: 'string'
 				}
 			]
@@ -30,7 +30,7 @@ module.exports = class OsuCommand extends Command {
 				u: query,
 				type: 'string'
 			});
-		if (!body.length) return msg.say('No Results.');
+		if (!body.length) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0xFF66AA)
 			.setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
@@ -40,25 +40,25 @@ module.exports = class OsuCommand extends Command {
 			.addField('❯ ID',
 				body[0].user_id, true)
 			.addField('❯ Level',
-				body[0].level, true)
+				body[0].level || 'N/A', true)
 			.addField('❯ Accuracy',
-				body[0].accuracy, true)
+				body[0].accuracy || 'N/A', true)
 			.addField('❯ Rank',
-				body[0].pp_rank, true)
+				body[0].pp_rank || 'N/A', true)
 			.addField('❯ Play Count',
-				body[0].playcount, true)
+				body[0].playcount || 'N/A', true)
 			.addField('❯ Country',
 				body[0].country || 'N/A', true)
 			.addField('❯ Ranked Score',
-				body[0].ranked_score, true)
+				body[0].ranked_score || 'N/A', true)
 			.addField('❯ Total Score',
-				body[0].total_score, true)
+				body[0].total_score || 'N/A', true)
 			.addField('❯ SS',
-				body[0].count_rank_ss, true)
+				body[0].count_rank_ss || 'N/A', true)
 			.addField('❯ S',
-				body[0].count_rank_s, true)
+				body[0].count_rank_s || 'N/A', true)
 			.addField('❯ A',
-				body[0].count_rank_a, true);
+				body[0].count_rank_a || 'N/A', true);
 		return msg.embed(embed);
 	}
 };

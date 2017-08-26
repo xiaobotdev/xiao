@@ -25,7 +25,7 @@ module.exports = class WarnCommand extends Command {
 					type: 'string',
 					validate: reason => {
 						if (reason.length < 140) return true;
-						return 'Invalid Reason. Reason must be under 140 characters.';
+						return 'Please keep the reason under 140 characters.';
 					}
 				}
 			]

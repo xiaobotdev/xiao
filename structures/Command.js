@@ -22,14 +22,14 @@ class XiaoCommand extends Command {
 			if (this.clientPermissions) {
 				for (const permission of this.clientPermissions) {
 					if (!msg.channel.permissionsFor(this.client.user).has(permission)) {
-						return `The \`${this.name}\` command requires me to have the \`${perms[permission]}\` Permission.`;
+						return `The \`${this.name}\` command requires me to have the \`${perms[permission]}\` permission.`;
 					}
 				}
 			}
 			if (this.userPermissions) {
 				for (const permission of this.userPermissions) {
 					if (!msg.channel.permissionsFor(msg.author).has(permission)) {
-						return `The \`${this.name}\` command requires you to have the \`${perms[permission]}\` Permission.`;
+						return `The \`${this.name}\` command requires you to have the \`${perms[permission]}\` permission.`;
 					}
 				}
 			}

@@ -15,12 +15,12 @@ module.exports = class WikiaCommand extends Command {
 			args: [
 				{
 					key: 'wiki',
-					prompt: 'What is the subdomain of the wikia you want to search?',
+					prompt: 'What is the subdomain of the wiki you want to search?',
 					type: 'string'
 				},
 				{
 					key: 'query',
-					prompt: 'What would you like to search for?',
+					prompt: 'What article would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -49,7 +49,7 @@ module.exports = class WikiaCommand extends Command {
 				.setThumbnail(body.sections[0].images.length ? body.sections[0].images[0].src : null);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say('No Results or Invalid Wiki.');
+			return msg.say('Could not find any results.');
 		}
 	}
 };

@@ -29,7 +29,7 @@ module.exports = class SteamCommand extends Command {
 				l: 'en',
 				term: query
 			});
-		if (!body.total) return msg.say('No Results.');
+		if (!body.total) return msg.say('Could not find any results.');
 		const current = body.items[0].price ? body.items[0].price.final / 100 : 0.00;
 		const original = body.items[0].price ? body.items[0].price.initial / 100 : 0.00;
 		const price = current === original ? `$${current}` : `~~$${original}~~ $${current}`;

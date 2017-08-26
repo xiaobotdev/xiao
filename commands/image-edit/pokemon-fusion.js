@@ -5,37 +5,37 @@ module.exports = class PokemonFusionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'pokemon-fusion',
-			aliases: ['poke-fusion', 'poke-fuse'],
+			aliases: ['poke-fusion', 'poke-fuse', 'pokémon-fusion', 'poké-fusion', 'poké-fuse'],
 			group: 'image-edit',
 			memberName: 'pokemon-fusion',
 			description: 'Fuses two Generation I Pokémon together.',
 			args: [
 				{
-					key: 'source1',
+					key: 'body',
 					prompt: 'What Pokémon should be fused?',
 					type: 'string',
-					validate: source1 => {
-						if (pokemon[source1.toLowerCase()]) return true;
-						return 'Only Pokémon from Generation I may be used.';
+					validate: body => {
+						if (pokemon[body.toLowerCase()]) return true;
+						return 'Invalid body, only Pokémon from Generation I may be used.';
 					},
-					parse: source1 => pokemon[source1.toLowerCase()]
+					parse: body => pokemon[body.toLowerCase()]
 				},
 				{
-					key: 'source2',
+					key: 'palette',
 					prompt: 'What Pokémon should be fused?',
 					type: 'string',
-					validate: source2 => {
-						if (pokemon[source2.toLowerCase()]) return true;
-						return 'Only Pokémon from Generation I may be used.';
+					validate: palette => {
+						if (pokemon[palette.toLowerCase()]) return true;
+						return 'Invalid palette, only Pokémon from Generation I may be used.';
 					},
-					parse: source2 => pokemon[source2.toLowerCase()]
+					parse: palette => pokemon[palette.toLowerCase()]
 				}
 			]
 		});
 	}
 
 	run(msg, args) {
-		const { source1, source2 } = args;
-		return msg.say(`http://images.alexonsager.net/pokemon/fused/${source1}/${source1}.${source2}.png`);
+		const { body, palette } = args;
+		return msg.say(`http://images.alexonsager.net/pokemon/fused/${body}/${palette}.${body}.png`);
 	}
 };

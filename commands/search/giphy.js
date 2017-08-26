@@ -12,7 +12,7 @@ module.exports = class GiphyCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to search for?',
+					prompt: 'What GIF would you like to search for?',
 					type: 'string'
 				}
 			]

@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { list } = require('../../structures/Util');
 const signs = require('../../assets/json/horoscope');
 
 module.exports = class HoroscopeCommand extends Command {
@@ -15,11 +16,11 @@ module.exports = class HoroscopeCommand extends Command {
 			args: [
 				{
 					key: 'sign',
-					prompt: 'Which sign would you like to get the horoscope for?',
+					prompt: `Which sign would you like to get the horoscope for? Either ${list(signs, 'or')}.`,
 					type: 'string',
 					validate: sign => {
 						if (signs.includes(sign.toLowerCase())) return true;
-						return 'Invalid sign. Use `help horoscope` for a list of signs.';
+						return `Invalid sign, please enter either ${list(signs, 'or')}.`;
 					},
 					parse: sign => sign.toLowerCase()
 				}

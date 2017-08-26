@@ -14,7 +14,7 @@ module.exports = class SoundCloudCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What do you want to search SoundCloud for?',
+					prompt: 'What song would you like to search for?',
 					type: 'string'
 				}
 			]

@@ -38,7 +38,7 @@ module.exports = class TodayCommand extends Command {
 				.setDescription(`${event.year}: ${event.text}`);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404 || err.status === 500) return msg.say('Invalid Date.');
+			if (err.status === 404 || err.status === 500) return msg.say('Invalid date.');
 			throw err;
 		}
 	}
