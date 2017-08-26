@@ -59,7 +59,7 @@ client.on('message', async msg => {
 	if (!msg.guild || msg.author.bot) return;
 	const channel = filterTopics(msg.guild.channels, 'inviteguard');
 	if (!channel.size) return;
-	const member = await msg.guild.fetchMember(msg.author);
+	const member = await msg.guild.members.fetch(msg.author);
 	if (member.hasPermission('ADMINISTRATOR') || msg.author.id === msg.guild.ownerID) return;
 	if (/discord(\.gg\/|app\.com\/invite\/|\.me\/)/gi.test(msg.content)) {
 		if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
@@ -67,7 +67,8 @@ client.on('message', async msg => {
 	}
 });
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', async member => {
+	member = await msg.guild.members.fetch(msg.author);
 	const channel = filterTopics(member.guild.channels, 'memberlog').first();
 	if (!channel) return;
 	const msg = parseTopic(channel.topic, 'joinmessage')
