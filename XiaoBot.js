@@ -67,8 +67,7 @@ client.on('message', async msg => {
 	}
 });
 
-client.on('guildMemberAdd', async member => {
-	member = await msg.guild.members.fetch(msg.author);
+client.on('guildMemberAdd', member => {
 	const channel = filterTopics(member.guild.channels, 'memberlog').first();
 	if (!channel) return;
 	const msg = parseTopic(channel.topic, 'joinmessage')
