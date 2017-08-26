@@ -27,16 +27,16 @@ module.exports = class GunfightCommand extends Command {
 		const { opponent } = args;
 		if (opponent.bot) return msg.say('Bots may not be fought.');
 		if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
-		if (this.fighting.has(msg.guild.id)) return msg.say('Only one fight may be occurring per server.');
-		this.fighting.add(msg.guild.id);
+		if (this.fighting.has(msg.channel.id)) return msg.say('Only one fight may be occurring per channel.');
+		this.fighting.add(msg.channel.id);
 		try {
-			await msg.say(`${opponent}, do you accept this challenge? **__Y__es** or **No**?`);
+			await msg.say(`${opponent}, do you accept this challenge?`);
 			const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
 				max: 1,
 				time: 30000
 			});
 			if (!verify.size || !['yes', 'y'].includes(verify.first().content.toLowerCase())) {
-				this.fighting.delete(msg.guild.id);
+				this.fighting.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
 			await msg.say('Get Ready...');
@@ -49,12 +49,12 @@ module.exports = class GunfightCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			this.fighting.delete(msg.guild.id);
+			this.fighting.delete(msg.channel.id);
 			if (!winner.size) return msg.say('Oh... No one won.');
 			return msg.say(`And the winner is ${winner.first().author.username}!`);
 		} catch (err) {
-			this.fighting.delete(msg.guild.id);
-			return msg.say(`Oh no, an Error occurred: \`${err.message}\`. Try again later!`);
+			this.fighting.delete(msg.channel.id);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

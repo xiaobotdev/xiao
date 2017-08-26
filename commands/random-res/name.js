@@ -1,5 +1,7 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
+const { list } = require('../../structures/Util');
+const genders = ['male', 'female', 'both'];
 
 module.exports = class NameCommand extends Command {
 	constructor(client) {
@@ -11,12 +13,12 @@ module.exports = class NameCommand extends Command {
 			args: [
 				{
 					key: 'gender',
-					prompt: 'Which gender do you want to generate a name for?',
+					prompt: `Which gender do you want to generate a name for? Either ${list(genders, 'or')}.`,
 					type: 'string',
 					default: 'both',
 					validate: gender => {
-						if (['male', 'female', 'both'].includes(gender.toLowerCase())) return true;
-						return 'Please enter either male, female, or both.';
+						if (genders.includes(gender.toLowerCase())) return true;
+						return `Invalid gender, please enter either ${list(genders, 'or')}.`;
 					},
 					parse: gender => gender.toLowerCase()
 				}

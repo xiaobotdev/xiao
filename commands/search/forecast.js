@@ -29,7 +29,7 @@ module.exports = class ForecastCommand extends Command {
 				q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${query}")`, // eslint-disable-line max-len
 				format: 'json'
 			});
-		if (!body.query.count) return msg.say('Location Not Found.');
+		if (!body.query.count) return msg.say('Could not find any results.');
 		const forecasts = body.query.results.channel.item.forecast;
 		const embed = new MessageEmbed()
 			.setColor(0x0000FF)

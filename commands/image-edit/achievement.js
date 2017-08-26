@@ -16,7 +16,7 @@ module.exports = class AchievementCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.length < 25) return true;
-						return 'Text must be under 25 characters.';
+						return 'Please keep the text under 25 characters.';
 					}
 				}
 			]

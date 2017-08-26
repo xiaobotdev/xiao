@@ -49,7 +49,7 @@ module.exports = class MangaCommand extends Command {
 					manga.entry[0].end_date[0], true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.message === 'Parse Error') return msg.say('No Results.');
+			if (err.message === 'Parse Error') return msg.say('Could not find any results.');
 			throw err;
 		}
 	}

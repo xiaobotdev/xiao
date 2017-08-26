@@ -9,11 +9,10 @@ module.exports = class BattleCommand extends Command {
 			group: 'games',
 			memberName: 'battle',
 			description: 'Engage in a turn-based battle against another user or the AI.',
-			guildOnly: true,
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'Who would you like to battle?',
+					prompt: 'What user would you like to battle?',
 					type: 'user',
 					default: ''
 				}
@@ -26,17 +25,17 @@ module.exports = class BattleCommand extends Command {
 	async run(msg, args) { // eslint-disable-line complexity
 		const opponent = args.opponent || this.client.user;
 		if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
-		if (this.fighting.has(msg.guild.id)) return msg.say('Only one fight may be occurring per server.');
-		this.fighting.add(msg.guild.id);
+		if (this.fighting.has(msg.channel.id)) return msg.say('Only one fight may be occurring per channel.');
+		this.fighting.add(msg.channel.id);
 		try {
 			if (!opponent.bot) {
-				await msg.say(`${opponent}, do you accept this challenge? **__Y__es** or **No**?`);
+				await msg.say(`${opponent}, do you accept this challenge?`);
 				const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
 					max: 1,
 					time: 30000
 				});
 				if (!verify.size || !['yes', 'y'].includes(verify.first().content.toLowerCase())) {
-					this.fighting.delete(msg.guild.id);
+					this.fighting.delete(msg.channel.id);
 					return msg.say('Looks like they declined...');
 				}
 			}
@@ -65,7 +64,7 @@ module.exports = class BattleCommand extends Command {
 					await msg.say(stripIndents`
 						${user}, do you **fight**, **guard**, **special**, or **run**?
 						**${msg.author.username}**: ${userHP}HP
-						**${opponent === 'AI' ? 'AI' : opponent.username}**: ${oppoHP}HP
+						**${opponent.username}**: ${oppoHP}HP
 					`);
 					const turn = await msg.channel.awaitMessages(res => res.author.id === id, {
 						max: 1,
@@ -109,15 +108,15 @@ module.exports = class BattleCommand extends Command {
 					await msg.say(`${user}, I do not understand what you want to do.`);
 				}
 			}
-			this.fighting.delete(msg.guild.id);
+			this.fighting.delete(msg.channel.id);
 			return msg.say(stripIndents`
 				The match is over!
 				**Winner:** ${userHP > oppoHP ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}
 				**Loser:** ${userHP > oppoHP ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}
 			`);
 		} catch (err) {
-			this.fighting.delete(msg.guild.id);
-			return msg.say(`Oh no, an Error occurred: \`${err.message}\`. Try again later!`);
+			this.fighting.delete(msg.channel.id);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

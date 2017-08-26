@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
+const { list } = require('../../structures/Util');
 const codes = require('../../assets/json/currency');
 
 module.exports = class CurrencyCommand extends Command {
@@ -17,19 +18,19 @@ module.exports = class CurrencyCommand extends Command {
 					type: 'string',
 					validate: base => {
 						if (codes.includes(base.toUpperCase())) return true;
-						return 'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
+						return `Invalid base, please enter either ${list(codes, 'or')}.`;
 					},
 					parse: base => base.toUpperCase()
 				},
 				{
-					key: 'to',
+					key: 'target',
 					prompt: 'What currency code do you want to convert to?',
 					type: 'string',
-					validate: to => {
-						if (codes.includes(to.toUpperCase())) return true;
-						return 'Invalid Currency Code. Use `help currency` to view a list of currency codes.';
+					validate: target => {
+						if (codes.includes(target.toUpperCase())) return true;
+						return `Invalid target, please enter either ${list(codes, 'or')}.`;
 					},
-					parse: to => to.toUpperCase()
+					parse: target => target.toUpperCase()
 				},
 				{
 					key: 'amount',
@@ -41,14 +42,14 @@ module.exports = class CurrencyCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const { base, to, amount } = args;
-		if (base === to) return msg.say(`Converting ${base} to ${to} is the same value, dummy.`);
+		const { base, target, amount } = args;
+		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		const { body } = await snekfetch
 			.get('http://api.fixer.io/latest')
 			.query({
 				base,
-				symbols: to
+				symbols: target
 			});
-		return msg.say(`${amount} ${base} is ${amount * body.rates[to]} ${to}.`);
+		return msg.say(`${amount} ${base} is ${amount * body.rates[target]} ${target}.`);
 	}
 };

@@ -14,7 +14,7 @@ module.exports = class YouTubeCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to search for?',
+					prompt: 'What video would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -32,7 +32,7 @@ module.exports = class YouTubeCommand extends Command {
 				q: query,
 				key: GOOGLE_KEY
 			});
-		if (!body.items.length) return msg.say('No Results.');
+		if (!body.items.length) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0xDD2825)
 			.setTitle(body.items[0].snippet.title)

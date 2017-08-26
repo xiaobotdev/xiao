@@ -1,7 +1,12 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
-const statuses = require('../../assets/json/user-info');
+const statuses = {
+	online: '<:online:313956277808005120> Online',
+	idle: '<:away:313956277220802560> Idle',
+	dnd: '<:dnd:313956276893646850> Do Not Disturb',
+	offline: '<:offline:313956277237710868> Offline'
+};
 
 module.exports = class UserInfoCommand extends Command {
 	constructor(client) {
@@ -16,7 +21,7 @@ module.exports = class UserInfoCommand extends Command {
 			args: [
 				{
 					key: 'member',
-					prompt: 'Which user would you like to get info on?',
+					prompt: 'Which user would you like to get information on?',
 					type: 'member',
 					default: ''
 				}
@@ -38,9 +43,9 @@ module.exports = class UserInfoCommand extends Command {
 			.addField('❯ Server Join Date',
 				moment(member.joinedTimestamp).format('MMMM Do YYYY'), true)
 			.addField('❯ Status',
-				statuses[member.user.presence.status], true)
+				statuses[member.presence.status], true)
 			.addField('❯ Playing',
-				member.user.presence.game ? member.user.presence.game.name : 'N/A', true)
+				member.presence.game ? member.presence.game.name : 'N/A', true)
 			.addField('❯ Highest Role',
 				member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', true)
 			.addField('❯ Hoist Role',

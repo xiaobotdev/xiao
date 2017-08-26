@@ -1,7 +1,8 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
-const { filterLevels, verificationLevels } = require('../../assets/json/server-info');
+const filterLevels = ['Off', 'No Role', 'Everyone'];
+const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻', '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'];
 
 module.exports = class GuildInfoCommand extends Command {
 	constructor(client) {

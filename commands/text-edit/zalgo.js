@@ -7,7 +7,7 @@ module.exports = class ZalgoCommand extends Command {
 			name: 'zalgo',
 			group: 'text-edit',
 			memberName: 'zalgo',
-			description: 'Converts text to Zalgo.',
+			description: 'Converts text to zalgo.',
 			args: [
 				{
 					key: 'text',
@@ -15,7 +15,7 @@ module.exports = class ZalgoCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.length < 500) return true;
-						return 'Text must be under 500 characters.';
+						return 'Please keep text under 500 characters.';
 					}
 				}
 			]

@@ -13,7 +13,7 @@ module.exports = class RecipeCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to search for?',
+					prompt: 'What recipe would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -27,7 +27,7 @@ module.exports = class RecipeCommand extends Command {
 				.get('http://www.recipepuppy.com/api/')
 				.query({ q: query });
 			const body = JSON.parse(text);
-			if (!body.results.length) return msg.say('No Results.');
+			if (!body.results.length) return msg.say('Could not find any results.');
 			const recipe = body.results[Math.floor(Math.random() * body.results.length)];
 			const embed = new MessageEmbed()
 				.setColor(0xC20000)
@@ -37,7 +37,7 @@ module.exports = class RecipeCommand extends Command {
 				.setThumbnail(recipe.thumbnail);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say('No Results.');
+			return msg.say('Could not find any results.');
 		}
 	}
 };
