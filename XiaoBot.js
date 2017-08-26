@@ -7,13 +7,7 @@ const client = new CommandoClient({
 	invite: INVITE,
 	disableEveryone: true,
 	unknownCommandResponse: false,
-	disabledEvents: [
-		'TYPING_START',
-		'FRIEND_ADD',
-		'FRIEND_REMOVE'
-	],
-	messageCacheLifetime: 60,
-	messageSweepInterval: 120
+	disabledEvents: ['TYPING_START']
 });
 const { carbon, dBots, dBotsOrg, filterTopics, parseTopic } = require('./structures/Util');
 
