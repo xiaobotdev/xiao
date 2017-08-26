@@ -19,7 +19,8 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const pokemon = Math.floor(Math.random() * 721) + 1;
 		const { body } = await snekfetch
 			.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
-		const name = filterPkmn(body.names).name.toLowerCase();
+		const names = body.names.map(name => name.name.toLowerCase());
+		const name = filterPkmn(body.names).name;
 		const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
 		const embed = new MessageEmbed()
 			.setTitle('You have 15 seconds, who\'s that Pokémon?')
@@ -31,7 +32,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			time: 15000
 		});
 		if (!msgs.size) return msg.say(`Time! It was ${name}, sorry!`);
-		if (msgs.first().content.toLowerCase() !== name) return msg.say(`Nope, sorry, it's ${name}.`);
+		if (!names.includes(msgs.first().content.toLowerCase())) return msg.say(`Nope, sorry, it's ${name}.`);
 		return msg.say('Nice job! 10/10! You deserve some cake!');
 	}
 };
