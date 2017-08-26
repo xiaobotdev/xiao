@@ -12,7 +12,7 @@ module.exports = class PokemonFusionCommand extends Command {
 			args: [
 				{
 					key: 'body',
-					prompt: 'What Pokémon should be fused?',
+					prompt: 'What Pokémon should be fused as the body?',
 					type: 'string',
 					validate: body => {
 						if (pokemon[body.toLowerCase()]) return true;
@@ -22,7 +22,7 @@ module.exports = class PokemonFusionCommand extends Command {
 				},
 				{
 					key: 'palette',
-					prompt: 'What Pokémon should be fused?',
+					prompt: 'What Pokémon should be fused as the palette?',
 					type: 'string',
 					validate: palette => {
 						if (pokemon[palette.toLowerCase()]) return true;
@@ -36,6 +36,6 @@ module.exports = class PokemonFusionCommand extends Command {
 
 	run(msg, args) {
 		const { body, palette } = args;
-		return msg.say(`http://images.alexonsager.net/pokemon/fused/${body}/${palette}.${body}.png`);
+		return msg.say(`http://images.alexonsager.net/pokemon/fused/${body}/${body}.${palette}.png`);
 	}
 };
