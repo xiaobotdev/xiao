@@ -53,6 +53,7 @@ module.exports = class LockdownCommand extends Command {
 			`);
 			if (!time) return null;
 			await wait(time);
+			if (!this.channels.has(msg.channel.id)) return null;
 			await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: null });
 			this.channels.delete(msg.channel.id);
 			return msg.say('Lockdown ended, all users can now post messages.');
