@@ -1,9 +1,9 @@
-const { TOKEN, OWNER, COMMAND_PREFIX, INVITE } = process.env;
+const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
 const path = require('path');
 const { CommandoClient } = require('discord.js-commando');
 const client = new CommandoClient({
 	commandPrefix: COMMAND_PREFIX,
-	owner: OWNER,
+	owner: OWNERS.split(','),
 	invite: INVITE,
 	disableEveryone: true,
 	unknownCommandResponse: false,
