@@ -30,20 +30,24 @@ module.exports = class HoroscopeCommand extends Command {
 
 	async run(msg, args) {
 		const { sign } = args;
-		const { text } = await snekfetch
-			.get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today`);
-		const body = JSON.parse(text);
-		const embed = new MessageEmbed()
-			.setColor(0x9797FF)
-			.setTitle(`Horoscope for ${body.sunsign}...`)
-			.setTimestamp()
-			.setDescription(body.horoscope)
-			.addField('❯ Mood',
-				body.meta.mood, true)
-			.addField('❯ Intensity',
-				body.meta.intensity, true)
-			.addField('❯ Date',
-				body.date, true);
-		return msg.embed(embed);
+		try {
+			const { text } = await snekfetch
+				.get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today`);
+			const body = JSON.parse(text);
+			const embed = new MessageEmbed()
+				.setColor(0x9797FF)
+				.setTitle(`Horoscope for ${body.sunsign}...`)
+				.setTimestamp()
+				.setDescription(body.horoscope)
+				.addField('❯ Mood',
+					body.meta.mood, true)
+				.addField('❯ Intensity',
+					body.meta.intensity, true)
+				.addField('❯ Date',
+					body.date, true);
+			return msg.embed(embed);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

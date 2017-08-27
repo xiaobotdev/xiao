@@ -38,12 +38,16 @@ module.exports = class StrawpollCommand extends Command {
 		const { title, options } = args;
 		if (options.length < 2) return msg.say('Please provide more than one choice.');
 		if (options.length > 31) return msg.say('Please provide thirty or less choices.');
-		const { body } = await snekfetch
-			.post('https://strawpoll.me/api/v2/polls')
-			.send({ title, options });
-		return msg.say(stripIndents`
-			${body.title}
-			http://www.strawpoll.me/${body.id}
-		`);
+		try {
+			const { body } = await snekfetch
+				.post('https://strawpoll.me/api/v2/polls')
+				.send({ title, options });
+			return msg.say(stripIndents`
+				${body.title}
+				http://www.strawpoll.me/${body.id}
+			`);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

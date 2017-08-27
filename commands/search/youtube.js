@@ -23,23 +23,27 @@ module.exports = class YouTubeCommand extends Command {
 
 	async run(msg, args) {
 		const { query } = args;
-		const { body } = await snekfetch
-			.get('https://www.googleapis.com/youtube/v3/search')
-			.query({
-				part: 'snippet',
-				type: 'video',
-				maxResults: 1,
-				q: query,
-				key: GOOGLE_KEY
-			});
-		if (!body.items.length) return msg.say('Could not find any results.');
-		const embed = new MessageEmbed()
-			.setColor(0xDD2825)
-			.setTitle(body.items[0].snippet.title)
-			.setDescription(body.items[0].snippet.description)
-			.setAuthor(`YouTube - ${body.items[0].snippet.channelTitle}`, 'https://i.imgur.com/hkUafwu.png')
-			.setURL(`https://www.youtube.com/watch?v=${body.items[0].id.videoId}`)
-			.setThumbnail(body.items[0].snippet.thumbnails.default.url);
-		return msg.embed(embed);
+		try {
+			const { body } = await snekfetch
+				.get('https://www.googleapis.com/youtube/v3/search')
+				.query({
+					part: 'snippet',
+					type: 'video',
+					maxResults: 1,
+					q: query,
+					key: GOOGLE_KEY
+				});
+			if (!body.items.length) return msg.say('Could not find any results.');
+			const embed = new MessageEmbed()
+				.setColor(0xDD2825)
+				.setTitle(body.items[0].snippet.title)
+				.setDescription(body.items[0].snippet.description)
+				.setAuthor(`YouTube - ${body.items[0].snippet.channelTitle}`, 'https://i.imgur.com/hkUafwu.png')
+				.setURL(`https://www.youtube.com/watch?v=${body.items[0].id.videoId}`)
+				.setThumbnail(body.items[0].snippet.thumbnails.default.url);
+			return msg.embed(embed);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

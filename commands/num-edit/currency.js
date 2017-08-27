@@ -44,12 +44,16 @@ module.exports = class CurrencyCommand extends Command {
 	async run(msg, args) {
 		const { base, target, amount } = args;
 		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
-		const { body } = await snekfetch
-			.get('http://api.fixer.io/latest')
-			.query({
-				base,
-				symbols: target
-			});
-		return msg.say(`${amount} ${base} is ${amount * body.rates[target]} ${target}.`);
+		try {
+			const { body } = await snekfetch
+				.get('http://api.fixer.io/latest')
+				.query({
+					base,
+					symbols: target
+				});
+			return msg.say(`${amount} ${base} is ${amount * body.rates[target]} ${target}.`);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

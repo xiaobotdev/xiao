@@ -39,7 +39,7 @@ module.exports = class TodayCommand extends Command {
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404 || err.status === 500) return msg.say('Invalid date.');
-			throw err;
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

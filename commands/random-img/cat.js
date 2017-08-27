@@ -13,8 +13,12 @@ module.exports = class CatCommand extends Command {
 	}
 
 	async run(msg) {
-		const { body } = await snekfetch
-			.get('http://random.cat/meow');
-		return msg.say(body.file);
+		try {
+			const { body } = await snekfetch
+				.get('http://random.cat/meow');
+			return msg.say(body.file);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

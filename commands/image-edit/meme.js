@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const snekfetch = require('snekfetch');
 const { list } = require('../../structures/Util');
 const codes = require('../../assets/json/meme');
 
@@ -30,7 +31,7 @@ module.exports = class MemeCommand extends Command {
 						if (top.length < 200) return true;
 						return 'Please keep the top text under 200 characters.';
 					},
-					parse: top => encodeURIComponent(top.replace(/ /g, '-'))
+					parse: top => encodeURIComponent(top)
 				},
 				{
 					key: 'bottom',
@@ -40,14 +41,20 @@ module.exports = class MemeCommand extends Command {
 						if (bottom.length < 200) return true;
 						return 'Please keep the bottom text under 200 characters.';
 					},
-					parse: bottom => encodeURIComponent(bottom.replace(/ /g, '-'))
+					parse: bottom => encodeURIComponent(bottom)
 				}
 			]
 		});
 	}
 
-	run(msg, args) {
+	async run(msg, args) {
 		const { type, top, bottom } = args;
-		return msg.say({ files: [`https://memegen.link/${type}/${top}/${bottom}.jpg`] });
+		try {
+			const { body } = await snekfetch
+				.get(`https://memegen.link/api/templates/${type}/${top}/${bottom}`);
+			return msg.say({ files: [body.direct.visible] });
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

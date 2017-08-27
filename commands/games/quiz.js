@@ -43,33 +43,37 @@ module.exports = class QuizCommand extends Command {
 
 	async run(msg, args) {
 		const { type, difficulty } = args;
-		const { body } = await snekfetch
-			.get('https://opentdb.com/api.php')
-			.query({
-				amount: 1,
-				type,
-				encode: 'url3986',
-				difficulty
+		try {
+			const { body } = await snekfetch
+				.get('https://opentdb.com/api.php')
+				.query({
+					amount: 1,
+					type,
+					encode: 'url3986',
+					difficulty
+				});
+			if (!body.results) return msg.say('Oh no, a question could not be fetched. Try again later!');
+			const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
+			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
+			answers.push(correct);
+			const embed = new MessageEmbed()
+				.setTitle('You have 15 seconds to answer this question:')
+				.setColor(0x9797FF)
+				.setDescription(stripIndents`
+					**${decodeURIComponent(body.results[0].category)}**
+					${type === 'boolean' ? '**True or False:** ' : ''}${decodeURIComponent(body.results[0].question)}
+					${type === 'multiple' ? `**Choices:** ${list(shuffle(answers), 'or')}` : ''}
+				`);
+			await msg.embed(embed);
+			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+				max: 1,
+				time: 15000
 			});
-		if (!body.results) return msg.say('Oh no, a question could not be fetched. Try again later!');
-		const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
-		const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
-		answers.push(correct);
-		const embed = new MessageEmbed()
-			.setTitle('You have 15 seconds to answer this question:')
-			.setColor(0x9797FF)
-			.setDescription(stripIndents`
-				**${decodeURIComponent(body.results[0].category)}**
-				${type === 'boolean' ? '**True or False:** ' : ''}${decodeURIComponent(body.results[0].question)}
-				${type === 'multiple' ? `**Choices:** ${list(shuffle(answers), 'or')}` : ''}
-			`);
-		await msg.embed(embed);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
-			max: 1,
-			time: 15000
-		});
-		if (!msgs.size) return msg.say(`Time! It was ${correct}, sorry!`);
-		if (msgs.first().content.toLowerCase() !== correct) return msg.say(`Nope, sorry, it's ${correct}.`);
-		return msg.say('Nice job! 10/10! You deserve some cake!');
+			if (!msgs.size) return msg.say(`Time! It was ${correct}, sorry!`);
+			if (msgs.first().content.toLowerCase() !== correct) return msg.say(`Nope, sorry, it's ${correct}.`);
+			return msg.say('Nice job! 10/10! You deserve some cake!');
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
