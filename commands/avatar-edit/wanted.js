@@ -42,7 +42,7 @@ module.exports = class WantedCommand extends Command {
 			ctx.drawImage(avatar, 150, 360, 430, 430);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

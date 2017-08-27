@@ -22,9 +22,9 @@ module.exports = class MathCommand extends Command {
 		const { expression } = args;
 		try {
 			const solved = math.eval(expression).toString();
-			return msg.say(solved).catch(() => msg.say('Invalid Statement'));
+			return msg.say(solved).catch(() => msg.say('Invalid statement.'));
 		} catch (err) {
-			return msg.say('Invalid Statement');
+			return msg.say('Invalid statement.');
 		}
 	}
 };

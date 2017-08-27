@@ -51,20 +51,24 @@ module.exports = class TranslateCommand extends Command {
 
 	async run(msg, args) {
 		const { text, target, original } = args;
-		const { body } = await snekfetch
-			.get('https://translate.yandex.net/api/v1.5/tr.json/translate')
-			.query({
-				key: YANDEX_KEY,
-				text,
-				lang: original ? `${original}-${target}` : target
-			});
-		const lang = body.lang.split('-');
-		const embed = new MessageEmbed()
-			.setColor(0x00AE86)
-			.addField(`❯ From: ${codes[lang[0]]}`,
-				text)
-			.addField(`❯ To: ${codes[lang[1]]}`,
-				body.text[0]);
-		return msg.embed(embed);
+		try {
+			const { body } = await snekfetch
+				.get('https://translate.yandex.net/api/v1.5/tr.json/translate')
+				.query({
+					key: YANDEX_KEY,
+					text,
+					lang: original ? `${original}-${target}` : target
+				});
+			const lang = body.lang.split('-');
+			const embed = new MessageEmbed()
+				.setColor(0x00AE86)
+				.addField(`❯ From: ${codes[lang[0]]}`,
+					text)
+				.addField(`❯ To: ${codes[lang[1]]}`,
+					body.text[0]);
+			return msg.embed(embed);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

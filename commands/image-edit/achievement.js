@@ -25,14 +25,18 @@ module.exports = class AchievementCommand extends Command {
 
 	async run(msg, args) {
 		const { text } = args;
-		const { body } = await snekfetch
-			.get('https://www.minecraftskinstealer.com/achievement/a.php')
-			.query({
-				i: 1,
-				h: 'Achievement Get!',
-				t: text
-			});
-		return msg.say({ files: [{ attachment: body, name: 'achievement.png' }] });
+		try {
+			const { body } = await snekfetch
+				.get('https://www.minecraftskinstealer.com/achievement/a.php')
+				.query({
+					i: 1,
+					h: 'Achievement Get!',
+					t: text
+				});
+			return msg.say({ files: [{ attachment: body, name: 'achievement.png' }] });
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
 

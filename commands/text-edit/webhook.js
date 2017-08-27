@@ -24,9 +24,13 @@ module.exports = class WebhookCommand extends Command {
 	async run(msg, args) {
 		const { content } = args;
 		if (msg.guild && msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) await msg.delete();
-		await snekfetch
-			.post(WEBHOOK_URL)
-			.send({ content });
-		return null;
+		try {
+			await snekfetch
+				.post(WEBHOOK_URL)
+				.send({ content });
+			return null;
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

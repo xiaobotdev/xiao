@@ -43,7 +43,7 @@ module.exports = class YearsCommand extends Command {
 			ctx.drawImage(avatar, 461, 127, 200, 200);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

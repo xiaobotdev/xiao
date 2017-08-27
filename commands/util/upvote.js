@@ -16,12 +16,19 @@ module.exports = class UpvoteCommand extends Command {
 	}
 
 	async run(msg) {
-		const { body } = await snekfetch
-			.get(`https://discordbots.org/api/bots/${this.client.user.id}/votes`)
-			.set({ Authorization: DBOTSORG_KEY });
-		return msg.say(stripIndents`
-			Upvote Xiao and get rewards while joining ${body.length} others!
-			<https://discordbots.org/bot/xiaobot>
-		`);
+		try {
+			const { body } = await snekfetch
+				.get(`https://discordbots.org/api/bots/${this.client.user.id}/votes`)
+				.set({ Authorization: DBOTSORG_KEY });
+			return msg.say(stripIndents`
+				Upvote Xiao and get rewards while joining ${body.length} others!
+				<https://discordbots.org/bot/xiaobot>
+			`);
+		} catch (err) {
+			return msg.say(stripIndents`
+				Upvote Xiao and get rewards!
+				<https://discordbots.org/bot/xiaobot>
+			`);
+		}
 	}
 };

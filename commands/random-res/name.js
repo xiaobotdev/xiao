@@ -28,13 +28,17 @@ module.exports = class NameCommand extends Command {
 
 	async run(msg, args) {
 		const { gender } = args;
-		const { body } = await snekfetch
-			.get('http://namey.muffinlabs.com/name.json')
-			.query({
-				with_surname: true,
-				type: gender,
-				frequency: 'all'
-			});
-		return msg.say(body[0]);
+		try {
+			const { body } = await snekfetch
+				.get('http://namey.muffinlabs.com/name.json')
+				.query({
+					with_surname: true,
+					type: gender,
+					frequency: 'all'
+				});
+			return msg.say(body[0]);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

@@ -12,8 +12,12 @@ module.exports = class QuoteCommand extends Command {
 	}
 
 	async run(msg) {
-		const { body } = await snekfetch
-			.get('https://talaikis.com/api/quotes/random/');
-		return msg.say(`${body.quote} - _${body.author}_`);
+		try {
+			const { body } = await snekfetch
+				.get('https://talaikis.com/api/quotes/random/');
+			return msg.say(`${body.quote} - _${body.author}_`);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

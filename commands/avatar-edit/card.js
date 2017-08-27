@@ -67,7 +67,7 @@ module.exports = class CardCommand extends Command {
 			ctx.fillText(`#${member.user.discriminator}`, 313, 355);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

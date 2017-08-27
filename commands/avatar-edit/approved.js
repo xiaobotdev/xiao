@@ -43,7 +43,7 @@ module.exports = class ApprovedCommand extends Command {
 			ctx.drawImage(base, 0, 0, 256, 256);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'approved.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

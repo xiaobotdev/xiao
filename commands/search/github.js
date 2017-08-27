@@ -53,8 +53,8 @@ module.exports = class GitHubCommand extends Command {
 					moment(body.updated_at).format('MMMM Do YYYY'), true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Could not find the repository.');
-			throw err;
+			if (err.status === 404) return msg.say('Could not find any results.');
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

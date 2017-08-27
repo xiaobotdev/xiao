@@ -51,7 +51,7 @@ module.exports = class ThugLifeCommand extends Command {
 			ctx.putImageData(imgData, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'thug-life.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, the image generation failed: \`${err.message}\`. Try again later!`);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

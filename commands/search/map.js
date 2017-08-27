@@ -32,14 +32,18 @@ module.exports = class MapCommand extends Command {
 
 	async run(msg, args) {
 		const { zoom, query } = args;
-		const { body } = await snekfetch
-			.get('https://maps.googleapis.com/maps/api/staticmap')
-			.query({
-				center: query,
-				zoom,
-				size: '500x500',
-				key: GOOGLE_KEY
-			});
-		return msg.say({ files: [{ attachment: body, name: 'map.png' }] });
+		try {
+			const { body } = await snekfetch
+				.get('https://maps.googleapis.com/maps/api/staticmap')
+				.query({
+					center: query,
+					zoom,
+					size: '500x500',
+					key: GOOGLE_KEY
+				});
+			return msg.say({ files: [{ attachment: body, name: 'map.png' }] });
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

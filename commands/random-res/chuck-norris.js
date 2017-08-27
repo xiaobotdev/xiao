@@ -22,12 +22,16 @@ module.exports = class ChuckNorrisCommand extends Command {
 
 	async run(msg, args) {
 		const { name } = args;
-		const { body } = await snekfetch
-			.get('http://api.icndb.com/jokes/random')
-			.query({
-				escape: 'javascript',
-				firstName: name
-			});
-		return msg.say(body.value.joke);
+		try {
+			const { body } = await snekfetch
+				.get('http://api.icndb.com/jokes/random')
+				.query({
+					escape: 'javascript',
+					firstName: name
+				});
+			return msg.say(body.value.joke);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
