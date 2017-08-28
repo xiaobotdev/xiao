@@ -8,7 +8,7 @@ const client = new CommandoClient({
 	disableEveryone: true,
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START'],
-	messageCacheLifetime: 60,
+	messageCacheLifetime: 600,
 	messageSweepInterval: 120
 });
 const { carbon, dBots, dBotsOrg, filterTopics, parseTopic } = require('./structures/Util');
@@ -107,12 +107,17 @@ client.on('guildDelete', async guild => {
 
 const { wait } = require('./structures/Util');
 client.setTimeout(async () => {
-	const battle = client.registry.resolveCommand('games:battle').fighting.size;
-	const hangman = client.registry.resolveCommand('games:hangman').playing.size;
-	const gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
-	while (battle > 0 || hangman > 0 || gunfight > 0) { // eslint-disable-line no-unmodified-loop-condition
+	let battle = client.registry.resolveCommand('games:battle').fighting.size;
+	let hangman = client.registry.resolveCommand('games:hangman').playing.size;
+	let gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
+	let lockdown = client.registry.resolveCommand('moderation:lockdown').channels.size;
+	while (battle > 0 || hangman > 0 || gunfight > 0 || lockdown > 0) {
 		console.log('[RESTART] A game is going on, delaying...');
 		await wait(5000);
+		battle = client.registry.resolveCommand('games:battle').fighting.size;
+		hangman = client.registry.resolveCommand('games:hangman').playing.size;
+		gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
+		lockdown = client.registry.resolveCommand('moderation:lockdown').channels.size;
 	}
 	console.log(`[RESTART] Shard ${client.shard.id} Restarted.`);
 	process.exit(0);
