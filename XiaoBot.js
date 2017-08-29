@@ -40,12 +40,12 @@ client.registry
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
-	console.log(`[READY] Shard ${client.shard.id} Logged in as ${client.user.tag} (${client.user.id})!`);
+	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag} (${client.user.id})!`);
 	client.user.setGame(`${COMMAND_PREFIX}help | Shard ${client.shard.id}`);
 });
 
 client.on('disconnect', event => {
-	console.log(`[DISCONNECT] Shard ${client.shard.id} disconnected with Code ${event.code}.`);
+	console.log(`[DISCONNECT] Shard ${client.shard.id} disconnected with code ${event.code}.`);
 	process.exit(0);
 });
 
@@ -55,19 +55,8 @@ client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
 
-client.on('message', async msg => {
-	if (!msg.guild || msg.author.bot) return;
-	const channel = filterTopics(msg.guild.channels, 'inviteguard');
-	if (!channel.size) return;
-	const member = await msg.guild.members.fetch(msg.author);
-	if (member.hasPermission('ADMINISTRATOR') || msg.author.id === msg.guild.ownerID) return;
-	if (/discord(\.gg\/|app\.com\/invite\/|\.me\/)/gi.test(msg.content)) {
-		if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) msg.delete();
-		msg.reply('Invites are prohibited from being posted here.');
-	}
-});
-
 client.on('guildMemberAdd', member => {
+	if (!member) return;
 	const channel = filterTopics(member.guild.channels, 'memberlog').first();
 	if (!channel) return;
 	const msg = parseTopic(channel.topic, 'joinmessage')
@@ -78,6 +67,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('guildMemberRemove', member => {
+	if (!member) return;
 	const channel = filterTopics(member.guild.channels, 'memberlog').first();
 	if (!channel) return;
 	const msg = parseTopic(channel.topic, 'leavemessage')
@@ -106,14 +96,17 @@ client.on('guildDelete', async guild => {
 });
 
 const { wait } = require('./structures/Util');
-client.setTimeout(async () => {
+client.setInterval(async () => {
 	let battle = client.registry.resolveCommand('games:battle').fighting.size;
 	let hangman = client.registry.resolveCommand('games:hangman').playing.size;
 	let gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
 	let lockdown = client.registry.resolveCommand('moderation:lockdown').channels.size;
 	while (battle > 0 || hangman > 0 || gunfight > 0 || lockdown > 0) {
-		console.log('[RESTART] A game is going on, delaying...');
-		await wait(5000);
+		if (battle > 0) console.log(`[RESTART] A battle is going on in Shard ${client.shard.id}, delaying...`);
+		if (hangman > 0) console.log(`[RESTART] A game of hangman is going on in Shard ${client.shard.id}, delaying...`);
+		if (gunfight > 0) console.log(`[RESTART] A gunfight is going on in Shard ${client.shard.id}, delaying...`);
+		if (lockdown > 0) console.log(`[RESTART] A channel is locked down on Shard ${client.shard.id}, delaying...`);
+		await wait(300000);
 		battle = client.registry.resolveCommand('games:battle').fighting.size;
 		hangman = client.registry.resolveCommand('games:hangman').playing.size;
 		gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;

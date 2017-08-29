@@ -15,7 +15,6 @@ module.exports = class SettingHelpCommand extends Command {
 	run(msg) {
 		return msg.say(stripIndents`
 			__**Settings**__
-			**Invite Guard:** Place \`<inviteguard>\` in a channel's topic.
 			**Mod Log Channel:** Place \`<modlog>\` in a channel's topic.
 			**Portal Channel:** Place \`<portal>\` in a channel's topic.
 			**Member Log Channel:** Place \`<memberlog>\` in a channel's topic.
