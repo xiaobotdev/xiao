@@ -100,17 +100,14 @@ client.setInterval(async () => {
 	let battle = client.registry.resolveCommand('games:battle').fighting.size;
 	let hangman = client.registry.resolveCommand('games:hangman').playing.size;
 	let gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
-	let lockdown = client.registry.resolveCommand('moderation:lockdown').channels.size;
-	while (battle > 0 || hangman > 0 || gunfight > 0 || lockdown > 0) {
+	while (battle > 0 || hangman > 0 || gunfight > 0) {
 		if (battle > 0) console.log(`[RESTART] A battle is going on in Shard ${client.shard.id}, delaying...`);
 		if (hangman > 0) console.log(`[RESTART] A game of hangman is going on in Shard ${client.shard.id}, delaying...`);
 		if (gunfight > 0) console.log(`[RESTART] A gunfight is going on in Shard ${client.shard.id}, delaying...`);
-		if (lockdown > 0) console.log(`[RESTART] A channel is locked down on Shard ${client.shard.id}, delaying...`);
 		await wait(300000);
 		battle = client.registry.resolveCommand('games:battle').fighting.size;
 		hangman = client.registry.resolveCommand('games:hangman').playing.size;
 		gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
-		lockdown = client.registry.resolveCommand('moderation:lockdown').channels.size;
 	}
 	console.log(`[RESTART] Shard ${client.shard.id} Restarted.`);
 	process.exit(0);
