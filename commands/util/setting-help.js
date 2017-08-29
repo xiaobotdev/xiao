@@ -20,11 +20,9 @@ module.exports = class SettingHelpCommand extends Command {
 			**Member Log Channel:** Place \`<memberlog>\` in a channel's topic.
 			**Custom Join Message:** Place \`<joinmessage>message</joinmessage>\` in the Member Log's topic.
 			**Custom Leave Message:** Place \`<leavemessage>message</leavemessage>\` in the Member Log's topic.
-			**Custom Mod DM:** Place \`<modmessage>message</modmessage>\` in the Mod Log's topic.
 
 			__**Placeholders**__
 			**Join/Leave Message:** \`{{member}}\`, \`{{server}}\`, \`{{mention}}\`
-			**Mod DM:** \`{{action}}\`, \`{{server}}\`, \`{{moderator}}\`
 		`);
 	}
 };

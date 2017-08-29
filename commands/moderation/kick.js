@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { filterTopics, parseTopic } = require('../../structures/Util');
+const { filterTopics } = require('../../structures/Util');
 
 module.exports = class KickCommand extends Command {
 	constructor(client) {
@@ -49,16 +49,12 @@ module.exports = class KickCommand extends Command {
 		});
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
 		try {
-			const message = parseTopic(modlogs.topic, 'modmessage')
-				.replace(/{{action}}/gi, 'kicked')
-				.replace(/{{moderator}}/gi, msg.author.tag)
-				.replace(/{{server}}/gi, msg.guild.name);
 			await member.send(stripIndents`
-				${message || `You were kicked from ${msg.guild.name} by ${msg.author.tag}!`}
+				You were kicked from ${msg.guild.name} by ${msg.author.tag}!
 				**Reason:** ${reason}
 			`);
 		} catch (err) {
-			await msg.say('Failed to Send DM.');
+			await msg.say('Failed to send DM.');
 		}
 		await member.kick(`${msg.author.tag}: ${reason}`);
 		await msg.say(`Successfully kicked ${member.user.tag}.`);
