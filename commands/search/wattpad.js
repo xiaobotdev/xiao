@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const moment = require('moment');
 const { shorten } = require('../../structures/Util');
 const { WATTPAD_KEY } = process.env;
 
@@ -42,7 +41,7 @@ module.exports = class WattpadCommand extends Command {
 				.setDescription(shorten(body.stories[0].description))
 				.setThumbnail(body.stories[0].cover)
 				.addField('❯ Created On',
-					moment(body.stories[0].createDate).format('MMMM Do YYYY'), true)
+					new Date(body.stories[0].createDate).toDateString(), true)
 				.addField('❯ Author',
 					body.stories[0].user, true)
 				.addField('❯ Parts',

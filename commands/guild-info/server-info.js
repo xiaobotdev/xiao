@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const moment = require('moment');
 const filterLevels = ['Off', 'No Role', 'Everyone'];
 const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻', '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'];
 
@@ -26,7 +25,7 @@ module.exports = class GuildInfoCommand extends Command {
 			.addField('❯ ID',
 				msg.guild.id, true)
 			.addField('❯ Creation Date',
-				moment(msg.guild.createdAt).format('MMMM Do YYYY'), true)
+				msg.guild.createdAt.toDateString(), true)
 			.addField('❯ Region',
 				msg.guild.region, true)
 			.addField('❯ Explicit Filter',

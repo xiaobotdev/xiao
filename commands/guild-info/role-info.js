@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const moment = require('moment');
 const perms = require('../../assets/json/permissions');
 
 module.exports = class RoleInfoCommand extends Command {
@@ -34,7 +33,7 @@ module.exports = class RoleInfoCommand extends Command {
 			.addField('❯ Color',
 				role.hexColor.toUpperCase(), true)
 			.addField('❯ Creation Date',
-				moment(role.createdAt).format('MMMM Do YYYY'), true)
+				role.createdAt.toDateString(), true)
 			.addField('❯ Hoisted',
 				role.hoist ? 'Yes' : 'No', true)
 			.addField('❯ Mentionable',

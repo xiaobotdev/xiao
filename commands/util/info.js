@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { version } = require('../../package');
-const moment = require('moment');
-require('moment-duration-format');
+const { duration } = require('../../structures/Util');
 
 module.exports = class InfoCommand extends Command {
 	constructor(client) {
@@ -34,7 +33,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Memory Usage',
 				`${Math.round(memory.reduce((prev, val) => prev + val, 0) / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime',
-				moment.duration(this.client.uptime).format('d[d]h[h]m[m]s[s]'), true)
+				duration(this.client.uptime).format, true)
 			.addField('❯ Version',
 				`v${version}`, true)
 			.addField('❯ Node Version',

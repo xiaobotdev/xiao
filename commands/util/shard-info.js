@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const moment = require('moment');
-require('moment-duration-format');
+const { duration } = require('../../structures/Util');
 
 module.exports = class ShardInfoCommand extends Command {
 	constructor(client) {
@@ -40,7 +39,7 @@ module.exports = class ShardInfoCommand extends Command {
 			.addField('❯ Memory Usage',
 				`${Math.round(memory[shard] / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime',
-				moment.duration(uptime[shard]).format('d[d]h[h]m[m]s[s]'), true);
+				duration(uptime[shard]).format, true);
 		return msg.embed(embed);
 	}
 };

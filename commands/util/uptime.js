@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
-const moment = require('moment');
-require('moment-duration-format');
+const { duration } = require('../../structures/Util');
 
 module.exports = class UptimeCommand extends Command {
 	constructor(client) {
@@ -14,6 +13,6 @@ module.exports = class UptimeCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say(moment.duration(this.client.uptime).format('d[ days], h[ hours], m[ minutes, and ]s[ seconds]'));
+		return msg.say(duration(this.client.uptime).format);
 	}
 };

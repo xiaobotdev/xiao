@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const moment = require('moment');
 const { GITHUB_LOGIN } = process.env;
 
 module.exports = class GitHubCommand extends Command {
@@ -48,9 +47,9 @@ module.exports = class GitHubCommand extends Command {
 				.addField('❯ Language',
 					body.language || 'N/A', true)
 				.addField('❯ Created',
-					moment(body.created_at).format('MMMM Do YYYY'), true)
+					new Date(body.created_at).toDateString(), true)
 				.addField('❯ Modified',
-					moment(body.updated_at).format('MMMM Do YYYY'), true);
+					new Date(body.updated_at).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
