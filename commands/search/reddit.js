@@ -27,22 +27,20 @@ module.exports = class RedditCommand extends Command {
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });
 			if (!body.data.children.length) return msg.say('Could not find any results.');
-			const post = body.data.children[Math.floor(Math.random() * body.data.children.length)];
-			if (!post.data) return msg.say('This post has no data, try again!');
-			if (!msg.channel.nsfw && post.data.over_18) return msg.say('This post is only viewable in NSFW channels.');
+			const post = body.data.children[Math.floor(Math.random() * body.data.children.length)].data;
+			if (!msg.channel.nsfw && post.over_18) return msg.say('This post is only viewable in NSFW channels.');
 			const embed = new MessageEmbed()
 				.setColor(0xFF4500)
 				.setAuthor('Reddit', 'https://i.imgur.com/V6hXniU.png')
-				.setURL(`https://www.reddit.com${post.data.permalink}`)
-				.setTitle(post.data.title)
-				.setDescription(`[View URL Here](${post.data.url})`)
-				.setThumbnail(post.data.thumbnail !== 'self' ? post.data.thumbnail : null)
+				.setURL(`https://www.reddit.com${post.permalink}`)
+				.setTitle(post.title)
+				.setDescription(`[View URL Here](${post.url})`)
 				.addField('❯ Upvotes',
-					post.data.ups, true)
+					post.ups, true)
 				.addField('❯ Downvotes',
-					post.data.downs, true)
+					post.downs, true)
 				.addField('❯ Score',
-					post.data.score, true);
+					post.score, true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');
