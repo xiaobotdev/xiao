@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const moment = require('moment');
 
 module.exports = class ChannelInfoCommand extends Command {
 	constructor(client) {
@@ -34,7 +33,7 @@ module.exports = class ChannelInfoCommand extends Command {
 			.addField('❯ NSFW',
 				channel.nsfw ? 'Yes' : 'No', true)
 			.addField('❯ Creation Date',
-				moment(channel.createdAt).format('MMMM Do YYYY'), true)
+				channel.createdAt.toDateString(), true)
 			.addField('❯ Topic',
 				channel.topic || 'None');
 		return msg.embed(embed);

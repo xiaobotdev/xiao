@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const moment = require('moment');
 const { shorten } = require('../../structures/Util');
 
 module.exports = class NPMCommand extends Command {
@@ -16,7 +15,8 @@ module.exports = class NPMCommand extends Command {
 				{
 					key: 'query',
 					prompt: 'What package would you like to search for?',
-					type: 'string'
+					type: 'string',
+					parse: query => encodeURIComponent(query)
 				}
 			]
 		});
@@ -40,9 +40,9 @@ module.exports = class NPMCommand extends Command {
 				.addField('❯ Author',
 					body.author ? body.author.name : 'Unknown', true)
 				.addField('❯ Created',
-					moment(body.time.created).format('MMMM Do YYYY'), true)
+					new Date(body.time.created).toDateString(), true)
 				.addField('❯ Modified',
-					moment(body.time.modified).format('MMMM Do YYYY'), true)
+					new Date(body.time.modified).toDateString(), true)
 				.addField('❯ Main File',
 					body.versions[body['dist-tags'].latest].main, true)
 				.addField('❯ Keywords',

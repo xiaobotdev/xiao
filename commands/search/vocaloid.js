@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const moment = require('moment');
-const { shorten } = require('../../structures/Util');
+const { shorten, duration } = require('../../structures/Util');
 
 module.exports = class VocaloidCommand extends Command {
 	constructor(client) {
@@ -37,6 +36,7 @@ module.exports = class VocaloidCommand extends Command {
 					fields: 'ThumbUrl,Lyrics'
 				});
 			if (!body.totalCount) return msg.say('Could not find any results.');
+			const { minutes, seconds } = duration(body.items[0].lengthSeconds * 1000);
 			const embed = new MessageEmbed()
 				.setColor(0x86D2D0)
 				.setAuthor('VocaDB', 'https://i.imgur.com/9Tx9UIc.jpg')
@@ -47,9 +47,9 @@ module.exports = class VocaloidCommand extends Command {
 				.addField('❯ Artist',
 					body.items[0].artistString)
 				.addField('❯ Publish Date',
-					moment(body.items[0].publishDate).format('MMMM Do YYYY'), true)
+					new Date(body.items[0].publishDate).toDateString(), true)
 				.addField('❯ Length',
-					moment.duration(body.items[0].lengthSeconds, 's').format(), true);
+					`${minutes}:${seconds}`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

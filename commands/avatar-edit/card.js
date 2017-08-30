@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
-const moment = require('moment');
 const path = require('path');
 const { version } = require('../../package');
 
@@ -56,7 +55,7 @@ module.exports = class CardCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.fillText(member.displayName, 30, 62);
 			ctx.fillText('Discord Join Date:', 148, 400);
-			ctx.fillText(moment(member.user.createdTimestamp).format('MMMM Do YYYY'), 148, 420);
+			ctx.fillText(member.user.createdAt.toDateString(), 148, 420);
 			ctx.fillText('Role:', 148, 457);
 			ctx.fillText(member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', 148, 477);
 			ctx.fillText(rarity, 73, 411);

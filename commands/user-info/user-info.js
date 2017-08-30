@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const moment = require('moment');
 const statuses = {
 	online: '<:online:313956277808005120> Online',
 	idle: '<:away:313956277220802560> Idle',
@@ -39,9 +38,9 @@ module.exports = class UserInfoCommand extends Command {
 			.addField('❯ ID',
 				member.id, true)
 			.addField('❯ Discord Join Date',
-				moment(member.user.createdAt).format('MMMM Do YYYY'), true)
+				member.user.createdAt.toDateString(), true)
 			.addField('❯ Server Join Date',
-				moment(member.joinedTimestamp).format('MMMM Do YYYY'), true)
+				member.joinedAt.toDateString(), true)
 			.addField('❯ Status',
 				statuses[member.presence.status], true)
 			.addField('❯ Playing',
