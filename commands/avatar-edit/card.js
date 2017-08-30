@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, parseFont } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const moment = require('moment');
 const path = require('path');
@@ -42,7 +42,7 @@ module.exports = class CardCommand extends Command {
 			if (cardID < 5000) rarity = 'C';
 			else if (cardID < 8000) rarity = 'U';
 			else rarity = 'R';
-			parseFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' });
+			registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' });
 			const canvas = createCanvas(390, 544);
 			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'card.png'));

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, parseFont } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
 
@@ -34,7 +34,7 @@ module.exports = class SteamCardCommand extends Command {
 			size: 512
 		});
 		try {
-			parseFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' });
+			registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' });
 			const canvas = createCanvas(494, 568);
 			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
