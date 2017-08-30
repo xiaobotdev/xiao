@@ -21,7 +21,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const { body } = await snekfetch
 				.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
 			const names = body.names.map(name => name.name.toLowerCase());
-			const name = filterPkmn(body.names).name;
+			const displayName = filterPkmn(body.names).name;
 			const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
 			const embed = new MessageEmbed()
 				.setTitle('You have 15 seconds, who\'s that Pokémon?')
@@ -32,8 +32,8 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.say(`Time! It was ${name}, sorry!`);
-			if (!names.includes(msgs.first().content.toLowerCase())) return msg.say(`Nope, sorry, it's ${name}.`);
+			if (!msgs.size) return msg.say(`Time! It was ${displayName}, sorry!`);
+			if (!names.includes(msgs.first().content.toLowerCase())) return msg.say(`Nope, sorry, it's ${displayName}.`);
 			return msg.say('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
