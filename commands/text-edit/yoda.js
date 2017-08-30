@@ -31,9 +31,10 @@ module.exports = class YodaCommand extends Command {
 				.get('https://yoda.p.mashape.com/yoda')
 				.query({ sentence })
 				.set({ 'X-Mashape-Key': MASHAPE_KEY });
+			if (!text) return msg.say('Empty, this message is. Try again later, you must.');
 			return msg.say(text);
 		} catch (err) {
-			return msg.say(`Oh no, Yoda's being a jerk and not working again: \`${err.message}\`. Try again later!`);
+			return msg.say(`Being a jerk again, Yoda is: \`${err.message}\`. Try again later, you must.`);
 		}
 	}
 };
