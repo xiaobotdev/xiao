@@ -109,7 +109,7 @@ client.setInterval(async () => {
 	}
 	console.log(`[RESTART] Shard ${client.shard.id} Restarted.`);
 	process.exit(0);
-}, 7.2e+6);
+}, 8.64e+7);
 
 client.login(TOKEN);
 
