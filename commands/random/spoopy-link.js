@@ -14,7 +14,7 @@ module.exports = class SpoopyLinkCommand extends Command {
 					key: 'site',
 					prompt: 'What site do you think is spoopy?',
 					type: 'string',
-					parse: query => encodeURIComponent(query)
+					parse: site => encodeURIComponent(site)
 				}
 			]
 		});
