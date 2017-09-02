@@ -16,7 +16,7 @@ module.exports = class PortalSendCommand extends Command {
 					type: 'string',
 					validate: message => {
 						if (message.length > 1500) return 'Message must be under 1500 characters.';
-						if (!/discord(\.gg\/|app\.com\/invite\/|\.me\/)/gi.test(message)) return true;
+						if (!/discord(\.gg|app\.com\/invite|\.me)\//gi.test(message)) return true;
 						return 'Please do not send invites.';
 					}
 				}
