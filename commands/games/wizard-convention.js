@@ -69,11 +69,11 @@ module.exports = class WizardConventionCommand extends Command {
 					if (player.role.includes('pleb')) continue;
 					const playerList = players.filter(p => p.role !== player.role).map(p => p.user.tag);
 					await player.user.send(`${questions[player.role]} ${list(playerList, 'or')}?`);
-					const decision = await player.user.dmChannel.awaitMessages(res => playerList.includes(res.content), {
+					const decision = await player.user.dmChannel.awaitMessages(res => res.author.id === player.user.id, {
 						max: 1,
 						time: 30000
 					});
-					if (!decision.size) {
+					if (!decision.size || !playerList.includes(decision.first().content)) {
 						await player.user.send('Skipping your turn...');
 						++skips;
 						continue;
