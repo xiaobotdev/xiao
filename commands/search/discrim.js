@@ -17,8 +17,8 @@ module.exports = class DiscrimCommand extends Command {
 					type: 'string',
 					default: '',
 					validate: discrim => {
-						if (/[0-9]+$/g.test(discrim) && discrim.length === 4) return true;
-						return 'Invalid Discriminator.';
+						if (/^[0-9]+$/g.test(discrim) && discrim.length === 4) return true;
+						return 'Invalid discriminator.';
 					}
 				}
 			]

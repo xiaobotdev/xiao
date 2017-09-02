@@ -18,7 +18,7 @@ module.exports = class PokedexCommand extends Command {
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
 					type: 'string',
-					parse: pokemon => pokemon.toLowerCase().replace(/ /g, '-')
+					parse: pokemon => encodeURIComponent(pokemon.toLowerCase().replace(/ /g, '-'))
 				}
 			]
 		});
