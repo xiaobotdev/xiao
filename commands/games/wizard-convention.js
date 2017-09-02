@@ -10,7 +10,8 @@ module.exports = class WizardConventionCommand extends Command {
 			name: 'wizard-convention',
 			group: 'games',
 			memberName: 'wizard-convention',
-			description: 'Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?'
+			description: 'Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?',
+			guildOnly: true
 		});
 
 		this.playing = new Set();
