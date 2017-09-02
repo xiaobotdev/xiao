@@ -45,7 +45,6 @@ module.exports = class WizardConventionCommand extends Command {
 			const players = new Collection();
 			players.set(msg.author.id, {
 				user: msg.author,
-				dm: msg.author.dmChannel || await msg.author.createDM(),
 				role: roles[0]
 			});
 			await msg.author.send(`You are ${roles[0].includes('pleb') ? 'a pleb.' : `the ${roles[0]}!`}`);
@@ -53,7 +52,6 @@ module.exports = class WizardConventionCommand extends Command {
 			for (const message of verify.values()) {
 				players.set(message.author.id, {
 					user: message.author,
-					dm: message.author.dmChannel || await message.author.createDM(),
 					role: roles[i]
 				});
 				await message.author.send(`You are ${roles[i].includes('pleb') ? 'a pleb.' : `the ${roles[i]}!`}`);
@@ -63,18 +61,21 @@ module.exports = class WizardConventionCommand extends Command {
 			let eaten = null;
 			let healed = null;
 			let win = false;
+			let skips = 0;
 			while (players.size > 2) {
+				if (skips > 5) return msg.say('Game ended after too many skips.');
 				await msg.say(`Night ${night++}... Sending DMs...`);
 				for (const player of players.values()) {
 					if (player.role.includes('pleb')) continue;
 					const playerList = players.filter(p => p.role !== player.role).map(p => p.user.tag);
 					await player.user.send(`${questions[player.role]} ${list(playerList, 'or')}?`);
-					const decision = await player.dm.awaitMessages(res => playerList.includes(res.content), {
+					const decision = await player.user.dmChannel.awaitMessages(res => playerList.includes(res.content), {
 						max: 1,
 						time: 30000
 					});
 					if (!decision.size) {
 						await player.user.send('Skipping your turn...');
+						++skips;
 						continue;
 					}
 					const choice = decision.first().content;
@@ -154,6 +155,7 @@ module.exports = class WizardConventionCommand extends Command {
 				}
 				if (!voteCounts.size) {
 					await msg.say('No one will be expelled.');
+					++skips;
 					continue;
 				}
 				const expelled = voteCounts.sort((a, b) => b.votes - a.votes).first();
