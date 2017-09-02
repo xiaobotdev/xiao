@@ -41,9 +41,9 @@ module.exports = class BobRossCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, 600, 775);
-			ctx.rotate(3 * Math.PI / 180);
+			ctx.rotate(3 * (Math.PI / 180));
 			ctx.drawImage(avatar, 69, 102, 256, 256);
-			ctx.rotate(-3 * Math.PI / 180);
+			ctx.rotate(-3 * (Math.PI / 180));
 			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bob-ross.png' }] });
 		} catch (err) {

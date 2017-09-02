@@ -62,7 +62,8 @@ class Util {
 	}
 
 	static list(arr, conj = 'and') {
-		return `${arr.slice(0, -1).join(', ')}${arr.length > 1 ? `${arr.length > 2 ? ',' : ''} ${conj} ` : ''}${arr.slice(-1)}`; // eslint-disable-line max-len
+		const { length } = arr;
+		return `${arr.slice(0, -1).join(', ')}${length > 1 ? `${length > 2 ? ',' : ''} ${conj} ` : ''}${arr.slice(-1)}`;
 	}
 
 	static shorten(text, maxLen = 2000) {
