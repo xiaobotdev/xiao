@@ -14,7 +14,8 @@ module.exports = class RedditCommand extends Command {
 				{
 					key: 'subreddit',
 					prompt: 'What subreddit would you like to get a post from?',
-					type: 'string'
+					type: 'string',
+					parse: subreddit => encodeURIComponent(subreddit)
 				}
 			]
 		});

@@ -16,7 +16,8 @@ module.exports = class WikiaCommand extends Command {
 				{
 					key: 'wiki',
 					prompt: 'What is the subdomain of the wiki you want to search?',
-					type: 'string'
+					type: 'string',
+					parse: wiki => encodeURIComponent(wiki)
 				},
 				{
 					key: 'query',
