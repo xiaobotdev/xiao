@@ -41,7 +41,7 @@ client.registry
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag} (${client.user.id})!`);
-	client.user.setGame(`${COMMAND_PREFIX}help | Shard ${client.shard.id}`);
+	client.user.setActivity(`${COMMAND_PREFIX}help | Shard ${client.shard.id}`);
 });
 
 client.on('disconnect', event => {
