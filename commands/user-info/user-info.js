@@ -43,8 +43,8 @@ module.exports = class UserInfoCommand extends Command {
 				member.joinedAt.toDateString(), true)
 			.addField('❯ Status',
 				statuses[member.presence.status], true)
-			.addField('❯ Playing',
-				member.presence.game ? member.presence.game.name : 'N/A', true)
+			.addField('❯ Activity',
+				member.presence.activity ? member.presence.activity.name : 'N/A', true)
 			.addField('❯ Highest Role',
 				member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', true)
 			.addField('❯ Hoist Role',
