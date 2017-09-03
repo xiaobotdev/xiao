@@ -34,6 +34,7 @@ module.exports = class HelpCommand extends Command {
 						${commands[0].description}
 						${commands[0].details || ''}
 					`)
+					.setColor(0x00AE86)
 					.addField('❯ Format',
 						msg.anyUsage(`${commands[0].name} ${commands[0].format ? commands[0].format : ''}`))
 					.addField('❯ Aliases',

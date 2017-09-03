@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "35.1.3",
+  "version": "35.1.4",
   "description": "Your personal server companion.",
   "main": "Shard.js",
   "scripts": {
