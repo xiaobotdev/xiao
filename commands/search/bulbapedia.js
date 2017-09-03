@@ -26,7 +26,7 @@ module.exports = class BulbapediaCommand extends Command {
 		const { query } = args;
 		try {
 			const { body } = await snekfetch
-				.get('http://bulbapedia.bulbagarden.net/w/api.php')
+				.get('https://bulbapedia.bulbagarden.net/w/api.php')
 				.query({
 					action: 'query',
 					prop: 'extracts',

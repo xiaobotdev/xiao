@@ -19,7 +19,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const pokemon = Math.floor(Math.random() * 721) + 1;
 		try {
 			const { body } = await snekfetch
-				.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
+				.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
 			const names = body.names.map(name => name.name.toLowerCase());
 			const displayName = filterPkmn(body.names).name;
 			const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
