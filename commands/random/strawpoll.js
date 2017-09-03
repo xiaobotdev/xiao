@@ -40,7 +40,7 @@ module.exports = class StrawpollCommand extends Command {
 		if (options.length > 31) return msg.say('Please provide thirty or less choices.');
 		try {
 			const { body } = await snekfetch
-				.post('https://strawpoll.me/api/v2/polls', { followRedirects: true })
+				.post('https://www.strawpoll.me/api/v2/polls')
 				.set({ 'Content-Type': 'application/json' })
 				.send({ title, options });
 			return msg.say(stripIndents`
