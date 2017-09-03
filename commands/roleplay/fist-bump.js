@@ -1,5 +1,12 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const gifs = [
+	'https://i.imgur.com/lO2xZHC.gif',
+	'https://i.imgur.com/xKwxZZi.gif',
+	'https://i.imgur.com/dFv5VkI.gif',
+	'https://i.imgur.com/mIzwBt3.gif',
+	'https://i.imgur.com/3Os9psM.gif'
+];
 
 module.exports = class FistBumpCommand extends Command {
 	constructor(client) {
@@ -22,7 +29,7 @@ module.exports = class FistBumpCommand extends Command {
 		const { user } = args;
 		return msg.say(stripIndents`
 			**${msg.author.username}** *fist-bumps* **${user.username}**
-			*badalalala* https://i.imgur.com/lO2xZHC.gif
+			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}
 };

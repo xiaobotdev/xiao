@@ -1,5 +1,12 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const gifs = [
+	'https://i.imgur.com/XMuJ7K8.gif',
+	'https://i.imgur.com/mewvEFw.gif',
+	'https://i.imgur.com/RKGafME.gif',
+	'https://i.imgur.com/pqgsmX1.gif',
+	'https://i.imgur.com/Ez67xSU.gif'
+];
 
 module.exports = class PokeCommand extends Command {
 	constructor(client) {
@@ -22,7 +29,7 @@ module.exports = class PokeCommand extends Command {
 		const { user } = args;
 		return msg.say(stripIndents`
 			**${msg.author.username}** *pokes* **${user.username}**
-			https://i.imgur.com/XMuJ7K8.gif
+			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}
 };
