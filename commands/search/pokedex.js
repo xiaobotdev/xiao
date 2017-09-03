@@ -28,7 +28,7 @@ module.exports = class PokedexCommand extends Command {
 		const { pokemon } = args;
 		try {
 			const { body } = await snekfetch
-				.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
+				.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
 			const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
