@@ -1,20 +1,21 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/mpi3pwu.gif',
-	'https://i.imgur.com/0yAIWbg.gif',
-	'https://i.imgur.com/xQPBSIs.gif',
-	'https://i.imgur.com/O4K8Bj4.gif',
-	'https://i.imgur.com/eBWR5vJ.gif'
+	'https://i.imgur.com/IgvLWaa.gif',
+	'https://i.imgur.com/ExSXiIP.gif',
+	'https://i.imgur.com/z35hyC8.gif',
+	'https://i.imgur.com/i9VAxiV.gif',
+	'https://i.imgur.com/dvDwVom.gif'
 ];
 
-module.exports = class CuddleCommand extends Command {
+module.exports = class BreakUpCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'cuddle',
+			name: 'break-up',
+			aliases: ['divorce'],
 			group: 'roleplay',
-			memberName: 'cuddle',
-			description: 'Cuddles a user.',
+			memberName: 'break-up',
+			description: 'Breaks up with a user.',
 			args: [
 				{
 					key: 'user',
@@ -28,7 +29,7 @@ module.exports = class CuddleCommand extends Command {
 	run(msg, args) {
 		const { user } = args;
 		return msg.say(stripIndents`
-			**${msg.author.username}** *cuddles* **${user.username}**
+			**${msg.author.username}** *breaks up with* **${user.username}**
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}
