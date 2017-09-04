@@ -18,6 +18,7 @@ client.registry
 	.registerDefaultTypes()
 	.registerGroups([
 		['util', 'Utility'],
+		['commands', 'Command Management'],
 		['user-info', 'User Info'],
 		['guild-info', 'Server Info'],
 		['moderation', 'Moderation'],
