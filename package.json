@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "35.1.7",
+  "version": "35.2.0",
   "description": "Your personal server companion.",
   "main": "Shard.js",
   "scripts": {
@@ -38,6 +38,9 @@
     "discord.js-commando": "github:dragonfire535/discord.js-commando#test",
     "erlpack": "github:hammerandchisel/erlpack",
     "node-opus": "^0.2.6",
+    "pg": "^6.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.8.0",
     "snekfetch": "^3.3.0",
     "uws": "^8.14.1",
     "xml2js": "^0.4.19",

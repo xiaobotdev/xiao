@@ -1,7 +1,7 @@
 const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
 const path = require('path');
-const { CommandoClient } = require('discord.js-commando');
-const client = new CommandoClient({
+const Client = require('./structures/Client');
+const client = new Client({
 	commandPrefix: COMMAND_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
@@ -11,6 +11,7 @@ const client = new CommandoClient({
 	messageCacheLifetime: 600,
 	messageSweepInterval: 120
 });
+const SequelizeProvider = require('./providers/Sequelize');
 const { dBots, dBotsOrg, filterTopics, parseTopic } = require('./structures/Util');
 
 client.registry
@@ -33,11 +34,11 @@ client.registry
 	])
 	.registerDefaultCommands({
 		help: false,
-		ping: false,
-		prefix: false,
-		commandState: false
+		ping: false
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
+
+client.setProvider(new SequelizeProvider(client.database));
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag} (${client.user.id})!`);
