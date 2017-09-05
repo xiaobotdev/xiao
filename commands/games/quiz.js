@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
 const { shuffle, list } = require('../../structures/Util');
@@ -56,15 +55,12 @@ module.exports = class QuizCommand extends Command {
 			const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
 			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 			answers.push(correct);
-			const embed = new MessageEmbed()
-				.setTitle('You have 15 seconds to answer this question:')
-				.setColor(0x9797FF)
-				.setDescription(stripIndents`
-					**${decodeURIComponent(body.results[0].category)}**
-					${type === 'boolean' ? '**True or False:** ' : ''}${decodeURIComponent(body.results[0].question)}
-					${type === 'multiple' ? `**Choices:** ${list(shuffle(answers), 'or')}` : ''}
-				`);
-			await msg.embed(embed);
+			await msg.say(stripIndents`
+				**You have 15 seconds to answer this question.**
+				_${decodeURIComponent(body.results[0].category)}:_ ${decodeURIComponent(body.results[0].question)}
+
+				${type === 'boolean' ? 'True or False?' : ''}${type === 'multiple' ? list(shuffle(answers), 'or') : ''}
+			`);
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
 				time: 15000

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const { list } = require('../../structures/Util');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
 const operations = ['addition', 'subtraction', 'multiplication', 'division'];
@@ -59,11 +59,10 @@ module.exports = class MathGameCommand extends Command {
 		else if (operation === 'subtraction') answer = value1 - value2;
 		else if (operation === 'multiplication') answer = value1 * value2;
 		else if (operation === 'division') answer = value1 / value2;
-		const embed = new MessageEmbed()
-			.setTitle('You have 10 seconds to answer:')
-			.setColor(0x9797FF)
-			.setDescription(`${value1} ${operationDisplay[operation]} ${value2}`);
-		await msg.embed(embed);
+		await msg.say(stripIndents`
+			**You have 10 seconds to answer this question.**
+			${value1} ${operationDisplay[operation]} ${value2}
+		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
 			time: 10000

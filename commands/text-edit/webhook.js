@@ -23,7 +23,9 @@ module.exports = class WebhookCommand extends Command {
 
 	async run(msg, args) {
 		const { content } = args;
-		if (msg.guild && msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) await msg.delete();
+		if (msg.channel.type === 'text' && msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) {
+			await msg.delete();
+		}
 		try {
 			await snekfetch
 				.post(WEBHOOK_URL)
