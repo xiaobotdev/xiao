@@ -50,7 +50,7 @@ module.exports = class XKCDCommand extends Command {
 				return msg.embed(embed);
 			}
 			const choice = parseInt(type, 10);
-			if (isNaN(choice) || current.body.num < choice || choice < 1) return msg.say('Invalid number.');
+			if (isNaN(choice) || current.body.num < choice || choice < 1) return msg.say('Could not find any results.');
 			const { body } = await snekfetch
 				.get(`https://xkcd.com/${choice}/info.0.json`);
 			const embed = new MessageEmbed()
