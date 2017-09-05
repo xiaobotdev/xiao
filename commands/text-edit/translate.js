@@ -29,10 +29,13 @@ module.exports = class TranslateCommand extends Command {
 					prompt: `Which language would you like to translate to? Either ${list(Object.keys(codes), 'or')}.`,
 					type: 'string',
 					validate: target => {
-						if (codes[target.toLowerCase()]) return true;
+						if (codes[target.toLowerCase()] || Object.values(codes).includes(target)) return true;
 						return `Invalid target, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
-					parse: target => target.toLowerCase()
+					parse: target => {
+						if (codes[target.toLowerCase()]) return target.toLowerCase();
+						return Object.keys(codes).find(key => codes[key] === target);
+					}
 				},
 				{
 					key: 'original',
@@ -40,10 +43,13 @@ module.exports = class TranslateCommand extends Command {
 					type: 'string',
 					default: '',
 					validate: original => {
-						if (codes[original.toLowerCase()]) return true;
+						if (codes[original.toLowerCase()] || Object.values(codes).includes(original)) return true;
 						return `Invalid original, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
-					parse: original => original.toLowerCase()
+					parse: original => {
+						if (codes[original.toLowerCase()]) return original.toLowerCase();
+						return Object.keys(codes).find(key => codes[key] === original);
+					}
 				}
 			]
 		});

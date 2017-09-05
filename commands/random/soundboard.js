@@ -23,6 +23,7 @@ module.exports = class SoundboardCommand extends Command {
 					key: 'sound',
 					prompt: `What sound would you like to play? Either ${list(sounds, 'or')}.`,
 					type: 'string',
+					default: sounds[Math.floor(Math.random() * sounds.length)],
 					validate: sound => {
 						if (sounds.includes(sound.toLowerCase())) return true;
 						return `Invalid sound, please enter either ${list(sounds, 'or')}.`;
@@ -36,9 +37,9 @@ module.exports = class SoundboardCommand extends Command {
 	async run(msg, args) {
 		const { sound } = args;
 		const channel = msg.member.voiceChannel;
-		if (!channel) return msg.say('Please enter a Voice Channel first.');
+		if (!channel) return msg.say('Please enter a voice channel first.');
 		if (!channel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
-			return msg.say('Missing the `Connect` or `Speak` Permission for the Voice Channel.');
+			return msg.say('Missing the "Connect" or "Speak" permission for the voice channel.');
 		}
 		if (!channel.joinable) return msg.say('Your Voice Channel is not joinable.');
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');

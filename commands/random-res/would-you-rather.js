@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { stripIndents } = require('common-tags');
 
 module.exports = class WouldYouRatherCommand extends Command {
 	constructor(client) {
@@ -18,12 +18,10 @@ module.exports = class WouldYouRatherCommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get('http://www.rrrather.com/botapi');
-			const embed = new MessageEmbed()
-				.setTitle(`${body.title}...`)
-				.setURL(body.link)
-				.setColor(0x9797FF)
-				.setDescription(`${body.choicea} OR ${body.choiceb}?`);
-			return msg.embed(embed);
+			return msg.say(stripIndents`
+				${body.title}...
+				${body.choicea} OR ${body.choiceb}?
+			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

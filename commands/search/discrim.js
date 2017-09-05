@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 
 module.exports = class DiscrimCommand extends Command {
 	constructor(client) {
@@ -28,10 +28,9 @@ module.exports = class DiscrimCommand extends Command {
 	run(msg, args) {
 		const discrim = args.discrim || msg.author.discriminator;
 		const users = this.client.users.filter(user => user.discriminator === discrim).map(user => user.username);
-		const embed = new MessageEmbed()
-			.setTitle(`${users.length} Users with the discriminator #${discrim}`)
-			.setColor(0x9797FF)
-			.setDescription(users.join(', '));
-		return msg.embed(embed);
+		return msg.say(stripIndents`
+			**Found ${users.length} users with the discriminator #${discrim}**
+			${users.join(', ')}
+		`);
 	}
 };

@@ -2,13 +2,13 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
-module.exports = class TodayCommand extends Command {
+module.exports = class HistoryCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'today',
-			aliases: ['event', 'history'],
+			name: 'history',
+			aliases: ['event', 'today'],
 			group: 'random-res',
-			memberName: 'today',
+			memberName: 'history',
 			description: 'Responds with an event that occurred today in history, or on a specific day.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
@@ -35,10 +35,12 @@ module.exports = class TodayCommand extends Command {
 				.setURL(body.url)
 				.setTitle(`On this day (${body.date})...`)
 				.setTimestamp()
-				.setDescription(`${event.year}: ${event.text}`);
+				.setDescription(`${event.year}: ${event.text}`)
+				.addField('❯ See More',
+					event.links.map(link => `${link.title}: ${link.link.replace(/\)/g, '%29')}`).join('\n'));
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404 || err.status === 500) return msg.say('Invalid date.');
+			if (err.status === 404 || err.status === 500) return msg.say('Could not find any results.');
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

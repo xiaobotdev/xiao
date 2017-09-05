@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const { list } = require('../../structures/Util');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
 const times = {
@@ -38,11 +38,10 @@ module.exports = class TypingGameCommand extends Command {
 		const { difficulty } = args;
 		const sentence = sentences[Math.floor(Math.random() * sentences.length)];
 		const time = times[difficulty];
-		const embed = new MessageEmbed()
-			.setTitle(`You have ${time / 1000} seconds to type:`)
-			.setColor(0x9797FF)
-			.setDescription(sentence);
-		await msg.embed(embed);
+		await msg.say(stripIndents`
+			**You have ${time / 1000} seconds to type this sentence.**
+			${sentence}
+		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
 			time

@@ -52,7 +52,7 @@ module.exports = class MemeCommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get(`https://memegen.link/api/templates/${type}/${top}/${bottom}`);
-			return msg.say({ files: [body.direct.visible] });
+			return msg.say(body.direct.masked);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

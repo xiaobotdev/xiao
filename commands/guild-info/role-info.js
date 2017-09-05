@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const perms = require('../../assets/json/permissions');
+const { util } = require('discord.js-commando');
 
 module.exports = class RoleInfoCommand extends Command {
 	constructor(client) {
@@ -39,9 +39,9 @@ module.exports = class RoleInfoCommand extends Command {
 			.addField('❯ Mentionable',
 				role.mentionable ? 'Yes' : 'No', true)
 			.addField('❯ Permissions',
-				Object.keys(perms)
+				Object.keys(util.permissions)
 					.filter(perm => role.serialize()[perm])
-					.map(perm => perms[perm])
+					.map(perm => util.permissions[perm])
 					.join(', '));
 		return msg.embed(embed);
 	}
