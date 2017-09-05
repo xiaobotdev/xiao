@@ -51,8 +51,8 @@ module.exports = class MemeCommand extends Command {
 		const { type, top, bottom } = args;
 		try {
 			const { body } = await snekfetch
-				.get(`https://memegen.link/api/templates/${type}/${top}/${bottom}`);
-			return msg.say(body.masked);
+				.get(`https://memegen.link/api/templates/${type}/${top}/${bottom}`, { followRedirects: true });
+			return msg.say(body.direct.masked);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
