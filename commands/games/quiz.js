@@ -58,8 +58,7 @@ module.exports = class QuizCommand extends Command {
 			await msg.say(stripIndents`
 				**You have 15 seconds to answer this question.**
 				_${decodeURIComponent(body.results[0].category)}:_ ${decodeURIComponent(body.results[0].question)}
-
-				${type === 'boolean' ? 'True or False?' : ''}${type === 'multiple' ? list(shuffle(answers), 'or') : ''}
+				${type === 'boolean' ? 'True or False?' : ''}${type === 'multiple' ? `${list(shuffle(answers), 'or')}?` : ''}
 			`);
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,

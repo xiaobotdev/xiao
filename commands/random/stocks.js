@@ -7,6 +7,7 @@ module.exports = class StocksCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'stocks',
+			aliases: ['stock'],
 			group: 'random',
 			memberName: 'stocks',
 			description: 'Get the current stocks for a symbol.',
