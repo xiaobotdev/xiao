@@ -41,15 +41,7 @@ module.exports = class HelpCommand extends Command {
 					.addField('❯ Aliases',
 						commands[0].aliases.join(', ') || 'None')
 					.addField('❯ Group',
-						commands[0].group.name)
-					.addField('❯ Client Permissions',
-						commands[0].clientPermissions
-							? commands[0].clientPermissions.map(perm => util.permissions[perm]).join(', ')
-							: 'None')
-					.addField('❯ User Permissions',
-						commands[0].userPermissions
-							? commands[0].userPermissions.map(perm => util.permissions[perm]).join(', ')
-							: 'None');
+						commands[0].group.name);
 				return msg.embed(embed);
 			} else if (commands.length > 1) {
 				return msg.say(`Multiple commands found: ${commands.map(c => c.name).join(', ')}`);
