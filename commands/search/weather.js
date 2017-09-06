@@ -58,19 +58,19 @@ module.exports = class WeatherCommand extends Command {
 				.addField('❯ Condition',
 					body.weather.map(cond => `${cond.main} (${cond.description})`).join('\n'), true)
 				.addField('❯ Temperature',
-					`${body.main.temp}°C`, true)
+					body.main.temp ? `${body.main.temp}°C` : 'N/A', true)
 				.addField('❯ Humidity',
-					`${body.main.humidity}%`, true)
+					body.main.humidity ? `${body.main.humidity}%` : 'N/A', true)
 				.addField('❯ Pressure',
-					`${body.main.pressure} hPa`, true)
+					body.main.pressure ? `${body.main.pressure} hPa` : 'N/A', true)
 				.addField('❯ Visibility',
-					`${body.visibility}m`, true)
+					body.visibility ? `${body.visibility}m` : 'N/A', true)
 				.addField('❯ Cloudiness',
-					`${body.clouds.all}%`, true)
+					body.clouds && body.clouds.all ? `${body.clouds.all}%` : 'N/A', true)
 				.addField('❯ Wind Direction',
-					`${body.wind.deg}°`, true)
+					body.wind && body.wind.deg ? `${body.wind.deg}°` : 'N/A', true)
 				.addField('❯ Wind Speed',
-					`${body.wind.speed}m/s`, true);
+					body.wind && body.wind.speed ? `${body.wind.speed}m/s` : 'N/A', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
