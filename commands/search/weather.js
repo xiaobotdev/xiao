@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { list } = require('../../structures/Util');
 const { OWM_KEY } = process.env;
-const types = ['zip', 'name', 'lat/lon'];
+const types = ['zip', 'name'];
 
 module.exports = class WeatherCommand extends Command {
 	constructor(client) {
@@ -41,8 +41,6 @@ module.exports = class WeatherCommand extends Command {
 				.query({
 					q: type === 'name' ? query : '',
 					zip: type === 'zip' ? query : '',
-					lat: type === 'lat/lon' ? query.split('/')[0] : '',
-					lon: type === 'lat/lon' ? query.split('/')[1] : '',
 					units: 'metric',
 					appid: OWM_KEY
 				});
