@@ -1,6 +1,9 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { list } = require('../../structures/Util');
+const { OWM_KEY } = process.env;
+const types = ['zip', 'name', 'lat/lon'];
 
 module.exports = class WeatherCommand extends Command {
 	constructor(client) {
@@ -12,6 +15,16 @@ module.exports = class WeatherCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
+					key: 'type',
+					prompt: `What type should the search be? Either ${list(types, 'or')}.`,
+					type: 'string',
+					validate: type => {
+						if (types.includes(type)) return true;
+						return `Invalid type, please enter either ${list(types, 'or')}.`;
+					},
+					parse: type => type.toLowerCase()
+				},
+				{
 					key: 'query',
 					prompt: 'What location would you like to get the weather of?',
 					type: 'string'
@@ -21,46 +34,46 @@ module.exports = class WeatherCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const { query } = args;
+		const { type, query } = args;
 		try {
 			const { body } = await snekfetch
-				.get('https://query.yahooapis.com/v1/public/yql')
+				.get('http://api.openweathermap.org/data/2.5/weather')
 				.query({
-					q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${query}")`, // eslint-disable-line max-len
-					format: 'json'
+					q: type === 'name' ? query : '',
+					zip: type === 'zip' ? query : '',
+					lat: type === 'lat/lon' ? query.split('/')[0] : '',
+					lon: type === 'lat/lon' ? query.split('/')[1] : '',
+					units: 'metric',
+					appid: OWM_KEY
 				});
-			if (!body.query.count) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
-				.setColor(0x0000FF)
-				.setAuthor(body.query.results.channel.title, 'https://i.imgur.com/2MT0ViC.png')
-				.setURL(body.query.results.channel.link)
+				.setColor(0xFF7A09)
+				.setAuthor('OpenWeatherMap', 'https://i.imgur.com/S5MHmeY.png')
+				.setThumbnail(body.weather[0].icon ? `http://openweathermap.org/img/w/${body.weather[0].icon}.png` : null)
 				.setTimestamp()
 				.addField('❯ City',
-					body.query.results.channel.location.city, true)
+					body.name, true)
 				.addField('❯ Country',
-					body.query.results.channel.location.country, true)
-				.addField('❯ Region',
-					body.query.results.channel.location.region, true)
+					body.sys.country, true)
 				.addField('❯ Condition',
-					body.query.results.channel.item.condition.text, true)
+					body.weather.map(cond => `${cond.main} (${cond.description})`).join('\n'), true)
 				.addField('❯ Temperature',
-					`${body.query.results.channel.item.condition.temp}°F`, true)
+					`${body.main.temp}°C`, true)
 				.addField('❯ Humidity',
-					body.query.results.channel.atmosphere.humidity, true)
+					`${body.main.humidity}%`, true)
 				.addField('❯ Pressure',
-					body.query.results.channel.atmosphere.pressure, true)
-				.addField('❯ Rising',
-					body.query.results.channel.atmosphere.rising, true)
+					`${body.main.pressure} hPa`, true)
 				.addField('❯ Visibility',
-					body.query.results.channel.atmosphere.visibility, true)
-				.addField('❯ Wind Chill',
-					body.query.results.channel.wind.chill, true)
+					`${body.visibility}m`, true)
+				.addField('❯ Cloudiness',
+					`${body.clouds.all}%`, true)
 				.addField('❯ Wind Direction',
-					body.query.results.channel.wind.direction, true)
+					`${body.wind.deg}°`, true)
 				.addField('❯ Wind Speed',
-					body.query.results.channel.wind.speed, true);
+					`${body.wind.speed}m/s`, true);
 			return msg.embed(embed);
 		} catch (err) {
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
