@@ -95,24 +95,6 @@ client.on('guildDelete', async guild => {
 	dBotsOrg(count, client.user.id);
 });
 
-const { wait } = require('./structures/Util');
-client.setInterval(async () => {
-	let battle = client.registry.resolveCommand('games:battle').fighting.size;
-	let hangman = client.registry.resolveCommand('games:hangman').playing.size;
-	let gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
-	while (battle > 0 || hangman > 0 || gunfight > 0) {
-		if (battle > 0) console.log(`[RESTART] A battle is going on in Shard ${client.shard.id}, delaying...`);
-		if (hangman > 0) console.log(`[RESTART] A game of hangman is going on in Shard ${client.shard.id}, delaying...`);
-		if (gunfight > 0) console.log(`[RESTART] A gunfight is going on in Shard ${client.shard.id}, delaying...`);
-		await wait(300000);
-		battle = client.registry.resolveCommand('games:battle').fighting.size;
-		hangman = client.registry.resolveCommand('games:hangman').playing.size;
-		gunfight = client.registry.resolveCommand('games:gunfight').fighting.size;
-	}
-	console.log(`[RESTART] Shard ${client.shard.id} Restarted.`);
-	process.exit(0);
-}, 8.64e+7);
-
 client.login(TOKEN);
 
 process.on('unhandledRejection', console.error);
