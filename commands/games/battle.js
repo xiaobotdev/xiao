@@ -44,8 +44,7 @@ module.exports = class BattleCommand extends Command {
 			let userTurn = false;
 			let guard = false;
 			const reset = (changeGuard = true) => {
-				if (userTurn) userTurn = false;
-				else userTurn = true;
+				userTurn = !userTurn;
 				if (changeGuard && guard) guard = false;
 			};
 			const dealDamage = damage => {
@@ -60,13 +59,12 @@ module.exports = class BattleCommand extends Command {
 				const user = userTurn ? msg.author : opponent;
 				let choice;
 				if (!opponent.bot || (opponent.bot && userTurn)) {
-					const id = userTurn ? msg.author.id : opponent.id;
 					await msg.say(stripIndents`
 						${user}, do you **fight**, **guard**, **special**, or **run**?
 						**${msg.author.username}**: ${userHP}HP
 						**${opponent.username}**: ${oppoHP}HP
 					`);
-					const turn = await msg.channel.awaitMessages(res => res.author.id === id, {
+					const turn = await msg.channel.awaitMessages(res => res.author.id === user.id, {
 						max: 1,
 						time: 30000
 					});
