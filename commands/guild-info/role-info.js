@@ -24,6 +24,7 @@ module.exports = class RoleInfoCommand extends Command {
 
 	run(msg, args) {
 		const { role } = args;
+		const perms = Object.keys(util.permissions).filter(perm => role.serialize()[perm]);
 		const embed = new MessageEmbed()
 			.setColor(role.hexColor)
 			.addField('❯ Name',
@@ -39,10 +40,7 @@ module.exports = class RoleInfoCommand extends Command {
 			.addField('❯ Mentionable',
 				role.mentionable ? 'Yes' : 'No', true)
 			.addField('❯ Permissions',
-				Object.keys(util.permissions)
-					.filter(perm => role.serialize()[perm])
-					.map(perm => util.permissions[perm])
-					.join(', '));
+				perms.map(perm => util.permissions[perm]).join(', ') || 'None');
 		return msg.embed(embed);
 	}
 };
