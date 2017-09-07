@@ -1,6 +1,7 @@
 const snekfetch = require('snekfetch');
 const { promisify } = require('util');
 const { DBOTS_KEY, DBOTSORG_KEY } = process.env;
+const { stripIndents } = require('common-tags');
 
 class Util {
 	static cleanXML(str) {
@@ -33,8 +34,21 @@ class Util {
 
 	static filterTopics(channels, setting) {
 		return channels.filter(c => {
-			if (c.type !== 'text' || !c.topic || !c.permissionsFor(c.client.user).has('SEND_MESSAGES')) return false;
-			return c.topic.includes(`<${setting}>`);
+			try {
+				if (c.type !== 'text' || !c.topic || !c.permissionsFor(c.client.user).has('SEND_MESSAGES')) return false;
+				return c.topic.includes(`<${setting}>`);
+			} catch (err) {
+				console.error(stripIndents`
+					Guild memberCount: ${c.guild.memberCount}
+					GuildMemberStore size: ${c.guild.members.size}
+					permissionsFor ClientUser: ${c.guild.permissionsFor(c.client.user)}
+					GuildMember for ClientUser: ${c.guild.me}
+					Guild available: ${c.guild.available}
+					Guild ID: ${c.guild.id}
+					Channel ID: ${c.id}
+				`);
+				return false;
+			}
 		});
 	}
 
