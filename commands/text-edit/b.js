@@ -4,7 +4,7 @@ module.exports = class BCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'b',
-			aliases: [':b:'],
+			aliases: ['🅱'],
 			group: 'text-edit',
 			memberName: 'b',
 			description: ':b:.',
