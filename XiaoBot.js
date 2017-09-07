@@ -97,4 +97,12 @@ client.on('guildDelete', async guild => {
 
 client.login(TOKEN);
 
-process.on('unhandledRejection', console.error);
+client.setTimeout(() => {
+	console.log(`[RESTART] Shard ${client.shard.id} restarted!`);
+	process.exit(0);
+}, 8.64e+7);
+
+process.on('unhandledRejection', err => {
+	console.error('Unhandled Promise Rejection:', err);
+	process.exit(1);
+});
