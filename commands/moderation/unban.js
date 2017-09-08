@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const { stripIndents } = require('common-tags');
 
 module.exports = class UnbanCommand extends Command {
 	constructor(client) {
