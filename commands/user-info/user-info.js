@@ -41,10 +41,10 @@ module.exports = class UserInfoCommand extends Command {
 				member.user.createdAt.toDateString(), true)
 			.addField('❯ Server Join Date',
 				member.joinedAt.toDateString(), true)
+			.addField('❯ Nickname',
+				member.nickname || 'None', true)
 			.addField('❯ Status',
 				statuses[member.presence.status], true)
-			.addField('❯ Activity',
-				member.presence.activity ? member.presence.activity.name : 'N/A', true)
 			.addField('❯ Highest Role',
 				member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', true)
 			.addField('❯ Hoist Role',
