@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "37.5.3",
+  "version": "37.5.4",
   "description": "Your personal server companion.",
   "main": "Shard.js",
   "scripts": {
@@ -43,7 +43,6 @@
     "sequelize": "^4.8.2",
     "snekfetch": "^3.3.0",
     "uws": "^8.14.1",
-    "xml2js": "^0.4.19",
     "zalgolize": "^1.2.4"
   },
   "devDependencies": {
