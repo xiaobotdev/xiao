@@ -7,14 +7,14 @@ module.exports = class BCommand extends Command {
 			aliases: ['🅱'],
 			group: 'text-edit',
 			memberName: 'b',
-			description: ':b:.',
+			description: '🅱.',
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to :b:?',
+					prompt: 'What text would you like to 🅱?',
 					type: 'string',
 					validate: text => {
-						if (text.replace(/(b|d|g|p|q)/gi, ':b:').length < 2000) return true;
+						if (text.replace(/(b|d|g|p|q)/gi, '🅱').length < 2000) return true;
 						return 'Your text is too long.';
 					}
 				}
@@ -24,6 +24,6 @@ module.exports = class BCommand extends Command {
 
 	run(msg, args) {
 		const { text } = args;
-		return msg.say(text.replace(/(b|d|g|p|q)/gi, ':b:'));
+		return msg.say(text.replace(/(b|d|g|p|q)/gi, '🅱'));
 	}
 };

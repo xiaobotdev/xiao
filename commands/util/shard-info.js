@@ -39,7 +39,7 @@ module.exports = class ShardInfoCommand extends Command {
 			.addField('❯ Memory Usage',
 				`${Math.round(memory[shard] / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime',
-				duration(uptime[shard]).format, true);
+				duration(uptime[shard]).format(), true);
 		return msg.embed(embed);
 	}
 };

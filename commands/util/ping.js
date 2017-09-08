@@ -16,7 +16,7 @@ module.exports = class PingCommand extends Command {
 	async run(msg) {
 		const message = await msg.say('Pinging...');
 		return message.edit(stripIndents`
-			:ping_pong: Pong! \`${Math.round(message.createdTimestamp - msg.createdTimestamp)}ms\`
+			🏓 Pong! \`${Math.round(message.createdTimestamp - msg.createdTimestamp)}ms\`
 			Heartbeat: \`${Math.round(this.client.ping)}ms\`
 		`);
 	}

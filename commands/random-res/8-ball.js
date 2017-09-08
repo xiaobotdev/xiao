@@ -23,7 +23,7 @@ module.exports = class MagicBallCommand extends Command {
 		const { question } = args;
 		return msg.say(stripIndents`
 			Question: ${question}
-			:8ball: ${answers[Math.floor(Math.random() * answers.length)]} :8ball:
+			🎱 ${answers[Math.floor(Math.random() * answers.length)]} 🎱
 		`);
 	}
 };

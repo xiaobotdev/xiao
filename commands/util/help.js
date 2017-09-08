@@ -57,7 +57,7 @@ module.exports = class HelpCommand extends Command {
 			}
 			try {
 				await msg.direct({ embed });
-				return msg.say(':mailbox_with_mail: Sent you a DM with information.');
+				return msg.say('📬 Sent you a DM with information.');
 			} catch (err) {
 				return msg.say('Failed to send DM. You probably have DMs disabled.');
 			}
