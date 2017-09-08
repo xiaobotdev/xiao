@@ -34,7 +34,7 @@ module.exports = class TicTacToeCommand extends Command {
 					time: 30000
 				});
 				if (!verify.size || !['yes', 'y'].includes(verify.first().content.toLowerCase())) {
-					this.fighting.delete(msg.channel.id);
+					this.playing.delete(msg.channel.id);
 					return msg.say('Looks like they declined...');
 				}
 			}
