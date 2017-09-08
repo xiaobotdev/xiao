@@ -1,7 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { filterTopics } = require('../../structures/Util');
 
 module.exports = class UnbanCommand extends Command {
 	constructor(client) {
@@ -10,7 +8,7 @@ module.exports = class UnbanCommand extends Command {
 			aliases: ['unbanne'],
 			group: 'moderation',
 			memberName: 'unban',
-			description: 'Unbans a user and logs the unban to the mod logs.',
+			description: 'Unbans a user.',
 			guildOnly: true,
 			clientPermissions: ['BAN_MEMBERS'],
 			userPermissions: ['BAN_MEMBERS'],
@@ -34,7 +32,6 @@ module.exports = class UnbanCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const modlogs = filterTopics(msg.guild.channels, 'modlog').first();
 		const { id, reason } = args;
 		const bans = await msg.guild.fetchBans();
 		if (!bans.has(id)) return msg.say('This ID is not in the Guild Banlist.');
@@ -46,27 +43,6 @@ module.exports = class UnbanCommand extends Command {
 		});
 		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
 		await msg.guild.unban(member, `${msg.author.tag}: ${reason}`);
-		await msg.say(`Successfully unbanned ${member.tag}.`);
-		if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
-			return msg.say('Could not log the unban to the mod logs.');
-		} else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
-			const embed = new MessageEmbed()
-				.setAuthor(msg.author.tag, msg.author.displayAvatarURL())
-				.setColor(0x00AE86)
-				.setTimestamp()
-				.setDescription(stripIndents`
-					**Member:** ${member.tag} (${member.id})
-					**Action:** Unban
-					**Reason:** ${reason}
-				`);
-			return modlogs.send({ embed });
-		} else {
-			return modlogs.send(stripIndents`
-				**Member:** ${member.tag} (${member.id})
-				**Action:** Unban
-				**Reason:** ${reason}
-				**Moderator:** ${msg.author.tag}
-			`);
-		}
+		return msg.say(`Successfully unbanned ${member.tag}.`);
 	}
 };

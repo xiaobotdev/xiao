@@ -1,7 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { filterTopics } = require('../../structures/Util');
 
 module.exports = class SoftbanCommand extends Command {
 	constructor(client) {
@@ -10,7 +8,7 @@ module.exports = class SoftbanCommand extends Command {
 			aliases: ['softbanne'],
 			group: 'moderation',
 			memberName: 'softban',
-			description: 'Kicks a user and deletes their messages, and logs the softban to the mod logs.',
+			description: 'Kicks a user and deletes their messages.',
 			guildOnly: true,
 			clientPermissions: ['BAN_MEMBERS'],
 			userPermissions: ['KICK_MEMBERS'],
@@ -34,7 +32,6 @@ module.exports = class SoftbanCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const modlogs = filterTopics(msg.guild.channels, 'modlog').first();
 		const { member, reason } = args;
 		if (member.id === msg.author.id) return msg.say('I don\'t think you want to softban yourself...');
 		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
@@ -61,27 +58,6 @@ module.exports = class SoftbanCommand extends Command {
 			reason: `${msg.author.tag}: ${reason} (Softban)`
 		});
 		await msg.guild.unban(member.user, 'Softban');
-		await msg.say(`Successfully softbanned ${member.user.tag}.`);
-		if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
-			return msg.say('Could not log the softban to the mod logs.');
-		} else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
-			const embed = new MessageEmbed()
-				.setAuthor(msg.author.tag, msg.author.displayAvatarURL())
-				.setColor(0xFF4500)
-				.setTimestamp()
-				.setDescription(stripIndents`
-					**Member:** ${member.user.tag} (${member.id})
-					**Action:** Softban
-					**Reason:** ${reason}
-				`);
-			return modlogs.send({ embed });
-		} else {
-			return modlogs.send(stripIndents`
-				**Member:** ${member.user.tag} (${member.id})
-				**Action:** Softban
-				**Reason:** ${reason}
-				**Moderator:** ${msg.author.tag}
-			`);
-		}
+		return msg.say(`Successfully softbanned ${member.user.tag}.`);
 	}
 };
