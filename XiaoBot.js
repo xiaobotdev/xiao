@@ -97,7 +97,7 @@ client.on('guildDelete', async guild => {
 
 client.login(TOKEN);
 
-client.setTimeout(() => {
+client.setInterval(() => {
 	console.log(`[RESTART] Shard ${client.shard.id} restarted!`);
 	process.exit(0);
 }, 8.64e+7);
