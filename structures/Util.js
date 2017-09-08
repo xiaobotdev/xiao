@@ -1,7 +1,6 @@
 const snekfetch = require('snekfetch');
 const { promisify } = require('util');
 const { DBOTS_KEY, DBOTSORG_KEY } = process.env;
-const { stripIndents } = require('common-tags');
 
 class Util {
 	static postStats(count, id) {
