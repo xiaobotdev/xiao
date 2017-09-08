@@ -14,16 +14,13 @@ class Util {
 			.replace(/(\[i\]|\[\/i\])/g, '*');
 	}
 
-	static dBots(count, id) {
+	static postStats(count, id) {
 		snekfetch
 			.post(`https://bots.discord.pw/api/bots/${id}/stats`)
 			.set({ Authorization: DBOTS_KEY })
 			.send({ server_count: count })
 			.then(() => console.log('[DBOTS] Successfully posted to Discord Bots.'))
 			.catch(err => console.error(`[DBOTS] Failed to post to Discord Bots. ${err}`));
-	}
-
-	static dBotsOrg(count, id) {
 		snekfetch
 			.post(`https://discordbots.org/api/bots/${id}/stats`)
 			.set({ Authorization: DBOTSORG_KEY })
@@ -39,6 +36,7 @@ class Util {
 				return c.topic.includes(`<${setting}>`);
 			} catch (err) {
 				console.error(stripIndents`
+					${err.name}: ${err.message}
 					Guild memberCount: ${c.guild.memberCount}
 					GuildMemberStore size: ${c.guild.members.size}
 					permissionsFor ClientUser: ${c.permissionsFor(c.client.user)}
@@ -97,7 +95,7 @@ class Util {
 			hours: hrs,
 			minutes: min,
 			seconds: sec,
-			format: `${hrs < 10 ? `0${hrs}` : hrs}:${min < 10 ? `0${min}` : min}:${sec < 10 ? `0${sec}` : sec}`
+			format: () => `${hrs < 10 ? `0${hrs}` : hrs}:${min < 10 ? `0${min}` : min}:${sec < 10 ? `0${sec}` : sec}`
 		};
 	}
 }

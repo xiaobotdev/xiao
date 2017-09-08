@@ -12,7 +12,7 @@ const client = new Client({
 	messageSweepInterval: 120
 });
 const SequelizeProvider = require('./providers/Sequelize');
-const { dBots, dBotsOrg, filterTopics, parseTopic } = require('./structures/Util');
+const { postStats, filterTopics, parseTopic } = require('./structures/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -83,16 +83,14 @@ client.on('guildCreate', async guild => {
 	console.log(`[GUILD] I have joined ${guild.name}! (${guild.id})`);
 	const guilds = await client.shard.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
-	dBots(count, client.user.id);
-	dBotsOrg(count, client.user.id);
+	postStats(count, client.user.id);
 });
 
 client.on('guildDelete', async guild => {
 	console.log(`[GUILD] I have left ${guild.name}... (${guild.id})`);
 	const guilds = await client.shard.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
-	dBots(count, client.user.id);
-	dBotsOrg(count, client.user.id);
+	postStats(count, client.user.id);
 });
 
 client.login(TOKEN);
