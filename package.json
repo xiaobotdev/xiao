@@ -35,7 +35,7 @@
     "common-tags": "^1.4.0",
     "custom-translate": "github:dragonfire535/custom-translate",
     "discord.js": "github:hydrabolt/discord.js",
-    "discord.js-commando": "github:dragonfire535/discord.js-commando#datastore",
+    "discord.js-commando": "github:gawdl3y/discord.js-commando",
     "erlpack": "github:hammerandchisel/erlpack",
     "node-opus": "^0.2.6",
     "pg": "^6.4.2",
