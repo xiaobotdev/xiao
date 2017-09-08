@@ -41,7 +41,7 @@ class Util {
 				console.error(stripIndents`
 					Guild memberCount: ${c.guild.memberCount}
 					GuildMemberStore size: ${c.guild.members.size}
-					permissionsFor ClientUser: ${c.guild.permissionsFor(c.client.user)}
+					permissionsFor ClientUser: ${c.permissionsFor(c.client.user)}
 					GuildMember for ClientUser: ${c.guild.me}
 					Guild available: ${c.guild.available}
 					Guild ID: ${c.guild.id}
