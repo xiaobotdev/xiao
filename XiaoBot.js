@@ -12,7 +12,7 @@ const client = new Client({
 	messageSweepInterval: 120
 });
 const SequelizeProvider = require('./providers/Sequelize');
-const { postStats, filterTopics, parseTopic } = require('./structures/Util');
+const { postStats } = require('./structures/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -56,28 +56,6 @@ client.on('error', console.error);
 client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
-
-client.on('guildMemberAdd', member => {
-	if (!member) return;
-	const channel = filterTopics(member.guild.channels, 'memberlog').first();
-	if (!channel) return;
-	const msg = parseTopic(channel.topic, 'joinmessage')
-		.replace(/{{member}}/gi, member.user.username)
-		.replace(/{{server}}/gi, member.guild.name)
-		.replace(/{{mention}}/gi, member);
-	channel.send(msg || `Welcome ${member.user.username}!`);
-});
-
-client.on('guildMemberRemove', member => {
-	if (!member) return;
-	const channel = filterTopics(member.guild.channels, 'memberlog').first();
-	if (!channel) return;
-	const msg = parseTopic(channel.topic, 'leavemessage')
-		.replace(/{{member}}/gi, member.user.username)
-		.replace(/{{server}}/gi, member.guild.name)
-		.replace(/{{mention}}/gi, member);
-	channel.send(msg || `Bye ${member.user.username}...`);
-});
 
 client.on('guildCreate', async guild => {
 	console.log(`[GUILD] I have joined ${guild.name}! (${guild.id})`);

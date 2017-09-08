@@ -19,35 +19,6 @@ class Util {
 			.catch(err => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
 	}
 
-	static filterTopics(channels, setting) {
-		return channels.filter(c => {
-			try {
-				if (c.type !== 'text' || !c.topic || !c.permissionsFor(c.client.user).has('SEND_MESSAGES')) return false;
-				return c.topic.includes(`<${setting}>`);
-			} catch (err) {
-				console.error(stripIndents`
-					${err.name}: ${err.message}
-					Guild memberCount: ${c.guild.memberCount}
-					GuildMemberStore size: ${c.guild.members.size}
-					permissionsFor ClientUser: ${c.permissionsFor(c.client.user)}
-					GuildMember for ClientUser: ${c.guild.me}
-					Guild available: ${c.guild.available}
-					Guild ID: ${c.guild.id}
-					Channel ID: ${c.id}
-				`);
-				return false;
-			}
-		});
-	}
-
-	static parseTopic(topic, setting) {
-		const regex = new RegExp(`<${setting}>.+</${setting}>`, 'gi');
-		if (!regex.test(topic)) return '';
-		const parsed = topic.match(regex)[0];
-		const word = `<${setting}>`;
-		return parsed.slice(word.length, parsed.length - (word.length + 1));
-	}
-
 	static wait(time) {
 		return promisify(setTimeout)(time);
 	}

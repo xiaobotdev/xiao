@@ -1,7 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { filterTopics } = require('../../structures/Util');
 
 module.exports = class BanCommand extends Command {
 	constructor(client) {
@@ -10,7 +8,7 @@ module.exports = class BanCommand extends Command {
 			aliases: ['banne'],
 			group: 'moderation',
 			memberName: 'ban',
-			description: 'Bans a user and logs the ban to the mod logs.',
+			description: 'Bans a user.',
 			guildOnly: true,
 			clientPermissions: ['BAN_MEMBERS'],
 			userPermissions: ['BAN_MEMBERS'],
@@ -34,7 +32,6 @@ module.exports = class BanCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const modlogs = filterTopics(msg.guild.channels, 'modlog').first();
 		const { member, reason } = args;
 		if (member.id === msg.author.id) return msg.say('I don\'t think you want to ban yourself...');
 		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
@@ -60,27 +57,6 @@ module.exports = class BanCommand extends Command {
 			days: 7,
 			reason: `${msg.author.tag}: ${reason}`
 		});
-		await msg.say(`Successfully banned ${member.user.tag}.`);
-		if (!modlogs || !modlogs.permissionsFor(this.client.user).has('SEND_MESSAGES')) {
-			return msg.say('Could not log the ban to the mod logs.');
-		} else if (modlogs.permissionsFor(this.client.user).has('EMBED_LINKS')) {
-			const embed = new MessageEmbed()
-				.setAuthor(msg.author.tag, msg.author.displayAvatarURL())
-				.setColor(0xFF0000)
-				.setTimestamp()
-				.setDescription(stripIndents`
-					**Member:** ${member.user.tag} (${member.id})
-					**Action:** Ban
-					**Reason:** ${reason}
-				`);
-			return modlogs.send({ embed });
-		} else {
-			return modlogs.send(stripIndents`
-				**Member:** ${member.user.tag} (${member.id})
-				**Action:** Ban
-				**Reason:** ${reason}
-				**Moderator:** ${msg.author.tag}
-			`);
-		}
+		return msg.say(`Successfully banned ${member.user.tag}.`);
 	}
 };
