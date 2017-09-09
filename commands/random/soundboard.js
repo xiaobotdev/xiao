@@ -49,7 +49,7 @@ module.exports = class SoundboardCommand extends Command {
 			dispatcher.once('error', () => channel.leave());
 			return null;
 		} catch (err) {
-			await channel.leave();
+			channel.leave();
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
