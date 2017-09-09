@@ -17,7 +17,6 @@ module.exports = class SoundboardCommand extends Command {
 				usages: 1,
 				duration: 30
 			},
-			clientPermissions: ['ADD_REACTIONS'],
 			args: [
 				{
 					key: 'sound',
@@ -41,19 +40,17 @@ module.exports = class SoundboardCommand extends Command {
 		if (!channel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
 			return msg.say('Missing the "Connect" or "Speak" permission for the voice channel.');
 		}
-		if (!channel.joinable) return msg.say('Your Voice Channel is not joinable.');
+		if (!channel.joinable) return msg.say('Your voice channel is not joinable.');
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
-		const connection = await channel.join();
-		await msg.react('🔊');
-		const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', `${sound}.mp3`));
-		dispatcher.once('end', () => {
-			channel.leave();
-			msg.react('✅');
-		});
-		dispatcher.once('error', () => {
-			channel.leave();
-			msg.react('⚠');
-		});
-		return null;
+		try {
+			const connection = await channel.join();
+			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', `${sound}.mp3`));
+			dispatcher.once('end', () => channel.leave());
+			dispatcher.once('error', () => channel.leave());
+			return null;
+		} catch (err) {
+			await channel.leave();
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
