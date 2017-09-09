@@ -1,6 +1,6 @@
 {
   "name": "xiaobot",
-  "version": "38.0.1",
+  "version": "38.0.2",
   "description": "Your personal server companion.",
   "main": "Shard.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "canvas": "github:automattic/node-canvas",
     "common-tags": "^1.4.0",
     "custom-translate": "github:dragonfire535/custom-translate",
-    "discord.js": "github:dragonfire535/discord.js#patch",
+    "discord.js": "github:hydrabolt/discord.js",
     "discord.js-commando": "github:gawdl3y/discord.js-commando",
     "erlpack": "github:hammerandchisel/erlpack",
     "node-opus": "^0.2.6",
