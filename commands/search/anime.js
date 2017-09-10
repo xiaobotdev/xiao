@@ -33,6 +33,7 @@ module.exports = class AnimeCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xF75239)
 				.setAuthor('Kitsu.io', 'https://i.imgur.com/VnIpwgF.png')
+				.setURL(`https://kitsu.io/anime/${body.data[0].attributes.slug}`)
 				.setThumbnail(body.data[0].attributes.posterImage ? body.data[0].attributes.posterImage.original : null)
 				.setTitle(body.data[0].attributes.canonicalTitle)
 				.setDescription(shorten(body.data[0].attributes.synopsis))
