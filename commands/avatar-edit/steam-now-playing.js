@@ -3,6 +3,9 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
 const { shorten } = require('../../structures/Util');
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto.ttf'), { family: 'Noto' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-JP.otf'), { family: 'Noto' });
 
 module.exports = class SteamNowPlayingCommand extends Command {
 	constructor(client) {
@@ -42,7 +45,6 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			size: 128
 		});
 		try {
-			registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' });
 			const canvas = createCanvas(239, 73);
 			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-now-playing.png'));
