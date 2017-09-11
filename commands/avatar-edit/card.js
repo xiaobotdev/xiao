@@ -3,6 +3,9 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
 const { version } = require('../../package');
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto.ttf'), { family: 'Noto' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-JP.otf'), { family: 'Noto' });
 
 module.exports = class CardCommand extends Command {
 	constructor(client) {
@@ -41,7 +44,6 @@ module.exports = class CardCommand extends Command {
 			if (cardID < 5000) rarity = 'C';
 			else if (cardID < 8000) rarity = 'U';
 			else rarity = 'R';
-			registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Roboto.ttf'), { family: 'Roboto' });
 			const canvas = createCanvas(390, 544);
 			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'card.png'));
