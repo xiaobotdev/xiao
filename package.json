@@ -40,7 +40,7 @@
     "node-opus": "^0.2.7",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.8.2",
+    "sequelize": "^4.8.3",
     "snekfetch": "^3.3.0",
     "uws": "^8.14.1",
     "zalgolize": "^1.2.4"
