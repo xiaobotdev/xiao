@@ -46,9 +46,9 @@ module.exports = class AvatarFusionCommand extends Command {
 			const canvas = createCanvas(256, 256);
 			const ctx = canvas.getContext('2d');
 			const baseAvatarData = await snekfetch.get(baseAvatarURL);
-			const baseAvatar = await loadImage(baseAvatarData);
+			const baseAvatar = await loadImage(baseAvatarData.body);
 			const overlayAvatarData = await snekfetch.get(overlayAvatarURL);
-			const overlayAvatar = await loadImage(overlayAvatarData);
+			const overlayAvatar = await loadImage(overlayAvatarData.body);
 			ctx.globalAlpha = 0.5;
 			ctx.drawImage(baseAvatar, 0, 0, 256, 256);
 			ctx.drawImage(overlayAvatar, 0, 0, 256, 256);
