@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
+const { shorten } = require('../../structures/Util');
 
 module.exports = class SteamNowPlayingCommand extends Command {
 	constructor(client) {
@@ -21,11 +22,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 				{
 					key: 'game',
 					prompt: 'Which game would you like the user to be playing?',
-					type: 'string',
-					validate: game => {
-						if (game.length < 25) return true;
-						return 'Please keep the game under 25 characters.';
-					}
+					type: 'string'
 				},
 				{
 					key: 'member',
@@ -55,8 +52,8 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			ctx.drawImage(avatar, 21, 21, 32, 32);
 			ctx.fillStyle = '#90ba3c';
 			ctx.font = '10px Roboto';
-			ctx.fillText(member.displayName, 63, 28);
-			ctx.fillText(game, 63, 54);
+			ctx.fillText(member.displayName, 63, 26);
+			ctx.fillText(shorten(game, 20), 63, 54);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
