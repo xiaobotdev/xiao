@@ -46,7 +46,7 @@ module.exports = class SteamCardCommand extends Command {
 			ctx.fillRect(0, 0, 494, 568);
 			ctx.drawImage(avatar, 25, 25, 450, 450);
 			ctx.drawImage(base, 0, 0);
-			ctx.font = '30px Roboto';
+			ctx.font = '30px Noto';
 			ctx.fillText(member.displayName, 35, 48);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
 		} catch (err) {

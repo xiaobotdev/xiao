@@ -53,7 +53,7 @@ module.exports = class CardCommand extends Command {
 			ctx.fillRect(0, 0, 390, 544);
 			ctx.drawImage(avatar, 11, 11, 370, 370);
 			ctx.drawImage(base, 0, 0);
-			ctx.font = '18px Roboto';
+			ctx.font = '18px Noto';
 			ctx.fillStyle = 'black';
 			ctx.fillText(member.displayName, 30, 62);
 			ctx.fillText('Discord Join Date:', 148, 400);
@@ -63,7 +63,7 @@ module.exports = class CardCommand extends Command {
 			ctx.fillText(rarity, 73, 411);
 			ctx.fillText(cardID, 60, 457);
 			ctx.fillText(version.split('.')[0], 68, 502);
-			ctx.font = '14px Roboto';
+			ctx.font = '14px Noto';
 			ctx.fillText(member.id, 30, 355);
 			ctx.fillText(`#${member.user.discriminator}`, 313, 355);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] });
