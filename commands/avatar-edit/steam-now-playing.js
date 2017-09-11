@@ -53,7 +53,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			ctx.fillStyle = '#90ba3c';
 			ctx.font = '10px Roboto';
 			ctx.fillText(member.displayName, 63, 26);
-			ctx.fillText(shorten(game, 25), 63, 54);
+			ctx.fillText(shorten(game, 35), 63, 54);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
