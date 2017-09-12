@@ -2,7 +2,6 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const { shorten } = require('../../structures/Util');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
@@ -38,7 +37,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const { game } = args;
+		let { game } = args;
 		const member = args.member || msg.member;
 		const avatarURL = member.user.displayAvatarURL({
 			format: 'png',
@@ -55,7 +54,8 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			ctx.fillStyle = '#90ba3c';
 			ctx.font = '10px Noto';
 			ctx.fillText(member.displayName, 63, 26);
-			ctx.fillText(shorten(game, 35), 63, 54);
+			while (ctx.measureText(game).width > 160) game = game.substr(0, game.length - 1);
+			ctx.fillText(game, 63, 54);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
