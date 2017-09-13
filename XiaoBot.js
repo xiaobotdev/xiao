@@ -47,7 +47,7 @@ client.on('ready', () => {
 		const activities = [
 			`${COMMAND_PREFIX}help for commands`,
 			`Shard ${client.shard.id}`,
-			'with dragonfire535#8081',
+			'with dragonfire535',
 			client.options.invite,
 			`with ${client.registry.commands.size} commands`,
 			'Rune Factory 4'
