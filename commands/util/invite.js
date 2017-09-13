@@ -18,7 +18,7 @@ module.exports = class InviteCommand extends Command {
 			Add me to your server with this link:
 			<${invite}>
 			Or, come to my server with this link:
-			${this.client.options.invite}
+			https://${this.client.options.invite}
 		`);
 	}
 };
