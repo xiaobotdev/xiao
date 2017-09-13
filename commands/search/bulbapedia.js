@@ -29,11 +29,12 @@ module.exports = class BulbapediaCommand extends Command {
 				.get('https://bulbapedia.bulbagarden.net/w/api.php')
 				.query({
 					action: 'query',
-					prop: 'extracts',
+					prop: 'extracts|pageimages',
 					format: 'json',
 					titles: query,
 					exintro: '',
 					explaintext: '',
+					pithumbsize: 150,
 					redirects: '',
 					formatversion: 2
 				});
@@ -42,6 +43,7 @@ module.exports = class BulbapediaCommand extends Command {
 				.setColor(0x3E7614)
 				.setTitle(body.query.pages[0].title)
 				.setAuthor('Bulbapedia', 'https://i.imgur.com/09eYo5T.png')
+				.setThumbnail(body.query.pages[0].thumbnail ? body.query.pages[0].thumbnail.source : null)
 				.setDescription(shorten(body.query.pages[0].extract.replace(/\n/g, '\n\n')));
 			return msg.embed(embed);
 		} catch (err) {
