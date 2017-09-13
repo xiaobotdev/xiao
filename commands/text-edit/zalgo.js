@@ -15,7 +15,7 @@ module.exports = class ZalgoCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.length < 500) return true;
-						return 'Please keep text under 500 characters.';
+						return 'Invalid text, please keep the text under 500 characters.';
 					}
 				}
 			]

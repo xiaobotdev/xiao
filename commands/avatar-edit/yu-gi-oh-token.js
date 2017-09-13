@@ -9,7 +9,7 @@ module.exports = class YuGiOhTokenCommand extends Command {
 			name: 'yu-gi-oh-token',
 			group: 'avatar-edit',
 			memberName: 'yu-gi-oh-token',
-			description: 'Draws a user\'s avatar over a blank Yu-Gi-Oh! token.',
+			description: 'Draws a user\'s avatar over a blank Yu-Gi-Oh! Token card.',
 			throttling: {
 				usages: 1,
 				duration: 30

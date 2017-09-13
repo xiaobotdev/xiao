@@ -16,7 +16,7 @@ module.exports = class MockingCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.length < 1950) return true;
-						return 'Text must be under 1950 characters.';
+						return 'Invalid text, please keep the text under 1950 characters.';
 					},
 					parse: text => text.toLowerCase().split('')
 				}

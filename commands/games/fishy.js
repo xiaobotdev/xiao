@@ -5,15 +5,16 @@ module.exports = class FishyCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'fishy',
-			aliases: ['fish'],
+			aliases: ['fish', 'fishing'],
 			group: 'games',
 			memberName: 'fishy',
-			description: 'Catches a fish.'
+			description: 'Go fishing.'
 		});
 	}
 
 	run(msg) {
 		const fish = fishes[Math.floor(Math.random() * fishes.length)];
-		return msg.say(`You caught a: ${fish}`);
+		if (fish === '🔧') return msg.say(`You caught a ${fish}... Too bad...`);
+		return msg.say(`You caught a ${fish}!`);
 	}
 };

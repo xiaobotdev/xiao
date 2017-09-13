@@ -16,7 +16,7 @@ module.exports = class MorseCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (letterTrans(text.toLowerCase(), dictionary, ' ').length < 2000) return true;
-						return 'Your text is too long.';
+						return 'Invalid text, your text is too long.';
 					},
 					parse: text => text.toLowerCase()
 				}

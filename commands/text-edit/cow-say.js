@@ -15,7 +15,7 @@ module.exports = class CowsayCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.length < 1500) return true;
-						return 'Text must be under 1500 characters.';
+						return 'Invalid text, please keep the text under 1500 characters.';
 					}
 				}
 			]

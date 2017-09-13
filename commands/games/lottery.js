@@ -12,7 +12,7 @@ module.exports = class LotteryCommand extends Command {
 
 	run(msg) {
 		const lottery = Math.floor(Math.random() * 100) + 1;
-		if (lottery === 1) return msg.reply('Nice job! 10/10! You deserve some cake!');
-		return msg.reply('Nope, sorry, you lost.');
+		if (lottery === 1) return msg.say('Nice job! 10/10! You deserve some cake!');
+		return msg.say('Nope, sorry, you lost.');
 	}
 };

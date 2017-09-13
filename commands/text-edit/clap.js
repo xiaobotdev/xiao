@@ -15,7 +15,7 @@ module.exports = class ClapCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.split(' ').join(' 👏 ').length < 2000) return true;
-						return 'Your text is too long.';
+						return 'Invalid text, your text is too long.';
 					}
 				}
 			]

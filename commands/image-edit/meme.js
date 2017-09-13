@@ -29,7 +29,7 @@ module.exports = class MemeCommand extends Command {
 					type: 'string',
 					validate: top => {
 						if (top.length < 200) return true;
-						return 'Please keep the top text under 200 characters.';
+						return 'Invalid top text, please keep the top text under 200 characters.';
 					},
 					parse: top => encodeURIComponent(top)
 				},
@@ -39,7 +39,7 @@ module.exports = class MemeCommand extends Command {
 					type: 'string',
 					validate: bottom => {
 						if (bottom.length < 200) return true;
-						return 'Please keep the bottom text under 200 characters.';
+						return 'Invalid bottom text, please keep the bottom text under 200 characters.';
 					},
 					parse: bottom => encodeURIComponent(bottom)
 				}
