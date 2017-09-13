@@ -28,11 +28,12 @@ module.exports = class WikipediaCommand extends Command {
 				.get('https://en.wikipedia.org/w/api.php')
 				.query({
 					action: 'query',
-					prop: 'extracts',
+					prop: 'extracts|pageimages',
 					format: 'json',
 					titles: query,
 					exintro: '',
 					explaintext: '',
+					pithumbsize: 150,
 					redirects: '',
 					formatversion: 2
 				});
@@ -41,6 +42,7 @@ module.exports = class WikipediaCommand extends Command {
 				.setColor(0xE7E7E7)
 				.setTitle(body.query.pages[0].title)
 				.setAuthor('Wikipedia', 'https://i.imgur.com/a4eeEhh.png')
+				.setThumbnail(body.query.pages[0].thumbnail ? body.query.pages[0].thumbnail.source : null)
 				.setDescription(shorten(body.query.pages[0].extract.replace(/\n/g, '\n\n')));
 			return msg.embed(embed);
 		} catch (err) {
