@@ -43,7 +43,17 @@ client.setProvider(new SequelizeProvider(client.database));
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag} (${client.user.id})!`);
-	client.user.setActivity(`${COMMAND_PREFIX}help | Shard ${client.shard.id}`, { type: 0 });
+	client.setInterval(() => {
+		const activities = [
+			`${COMMAND_PREFIX}help for commands`,
+			`Shard ${client.shard.id}`,
+			'with dragonfire535#8081',
+			client.options.invite,
+			`with ${client.registry.commands.size} commands`,
+			'Rune Factory 4'
+		];
+		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
+	}, 60000);
 });
 
 client.on('disconnect', event => {
