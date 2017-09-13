@@ -14,7 +14,7 @@ module.exports = class GunfightCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'Who would you like to gunfight?',
+					prompt: 'What user would you like to gunfight?',
 					type: 'user'
 				}
 			]

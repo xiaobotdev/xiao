@@ -21,7 +21,7 @@ module.exports = class TranslateCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (text.length < 500) return true;
-						return 'Please keep text under 500 characters.';
+						return 'Invalid text, please keep the text under 500 characters.';
 					}
 				},
 				{
@@ -38,17 +38,17 @@ module.exports = class TranslateCommand extends Command {
 					}
 				},
 				{
-					key: 'original',
-					prompt: `Which language is your text in? Either ${list(Object.keys(codes), 'or')}.`,
+					key: 'base',
+					prompt: `Which language would you like to use as the base? Either ${list(Object.keys(codes), 'or')}.`,
 					type: 'string',
 					default: '',
-					validate: original => {
-						if (codes[original.toLowerCase()] || Object.values(codes).includes(original)) return true;
-						return `Invalid original, please enter either ${list(Object.keys(codes), 'or')}.`;
+					validate: base => {
+						if (codes[base.toLowerCase()] || Object.values(codes).includes(base)) return true;
+						return `Invalid base, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
-					parse: original => {
-						if (codes[original.toLowerCase()]) return original.toLowerCase();
-						return Object.keys(codes).find(key => codes[key] === original);
+					parse: base => {
+						if (codes[base.toLowerCase()]) return base.toLowerCase();
+						return Object.keys(codes).find(key => codes[key] === base);
 					}
 				}
 			]
@@ -56,14 +56,14 @@ module.exports = class TranslateCommand extends Command {
 	}
 
 	async run(msg, args) {
-		const { text, target, original } = args;
+		const { text, target, base } = args;
 		try {
 			const { body } = await snekfetch
 				.get('https://translate.yandex.net/api/v1.5/tr.json/translate')
 				.query({
 					key: YANDEX_KEY,
 					text,
-					lang: original ? `${original}-${target}` : target
+					lang: base ? `${base}-${target}` : target
 				});
 			const lang = body.lang.split('-');
 			const embed = new MessageEmbed()

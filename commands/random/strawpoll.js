@@ -17,17 +17,17 @@ module.exports = class StrawpollCommand extends Command {
 					type: 'string',
 					validate: title => {
 						if (title.length < 200) return true;
-						return 'Please keep the title under 200 characters.';
+						return 'Invalid title, please keep the title under 200 characters.';
 					}
 				},
 				{
 					key: 'options',
-					prompt: 'What options do you want to be able to pick from? Maximum of 30.',
+					prompt: 'What options do you want to be able to pick from? You may have a maximum of 30.',
 					type: 'string',
 					infinite: true,
 					validate: choice => {
 						if (choice.length < 140) return true;
-						return 'Please keep choices under 140 characters each.';
+						return 'Invalid option, please keep options under 140 characters each.';
 					}
 				}
 			]

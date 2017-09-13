@@ -14,7 +14,7 @@ module.exports = class ShipNameCommand extends Command {
 					type: 'string',
 					validate: start => {
 						if (start.length < 50) return true;
-						return 'The start name must be under 50 characters.';
+						return 'Invalid start name, the start name must be under 50 characters.';
 					},
 					parse: start => start.toLowerCase()
 				},
@@ -24,7 +24,7 @@ module.exports = class ShipNameCommand extends Command {
 					type: 'string',
 					validate: end => {
 						if (end.length < 50) return true;
-						return 'The end name must be under 50 characters.';
+						return 'Invalid end name, the end name must be under 50 characters.';
 					},
 					parse: end => end.toLowerCase()
 				}

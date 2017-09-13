@@ -14,7 +14,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'Who would you like to play against?',
+					prompt: 'What user would you like to play against?',
 					type: 'user'
 				}
 			]

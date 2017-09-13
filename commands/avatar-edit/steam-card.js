@@ -12,7 +12,7 @@ module.exports = class SteamCardCommand extends Command {
 			name: 'steam-card',
 			group: 'avatar-edit',
 			memberName: 'steam-card',
-			description: 'Draws a user\'s avatar over a Steam card.',
+			description: 'Draws a user\'s avatar over a Steam Trading Card.',
 			guildOnly: true,
 			throttling: {
 				usages: 1,

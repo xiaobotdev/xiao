@@ -14,7 +14,7 @@ module.exports = class CardCommand extends Command {
 			aliases: ['discord-card'],
 			group: 'avatar-edit',
 			memberName: 'card',
-			description: 'Creates a trading card of random rarity based on a user\'s profile.',
+			description: 'Draws a trading card of random rarity based on a user\'s profile.',
 			guildOnly: true,
 			throttling: {
 				usages: 1,

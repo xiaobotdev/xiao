@@ -22,7 +22,7 @@ module.exports = class PruneCommand extends Command {
 					type: 'integer',
 					validate: count => {
 						if (count < 100 && count > 0) return true;
-						return 'Count must be from 1-99.';
+						return 'Invalid count, please enter a number from 1-99.';
 					}
 				}
 			]

@@ -14,7 +14,7 @@ module.exports = class RepeatCommand extends Command {
 					type: 'string',
 					validate: text => {
 						if (!text.includes('@everyone') && !text.includes('@here')) return true;
-						return 'Please do not repeat everyone or here mentions.';
+						return 'Invalid text, please do not repeat everyone or here mentions.';
 					}
 				}
 			]
