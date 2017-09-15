@@ -19,7 +19,7 @@ module.exports = class iTunesCommand extends Command {
 					prompt: `What country should results be obtained for? Either ${list(countries, 'or')}.`,
 					type: 'string',
 					validate: country => {
-						if (countries.includes(country)) return true;
+						if (countries.includes(country.toLowerCase())) return true;
 						return `Invalid country, please enter either ${list(countries, 'or')}.`;
 					},
 					parse: country => country.toLowerCase()
