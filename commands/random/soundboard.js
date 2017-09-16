@@ -33,8 +33,8 @@ module.exports = class SoundboardCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const sound = args.sound || sounds[Math.floor(Math.random() * sounds.length)];
+	async run(msg, { sound }) {
+		if (!sound) sound = sounds[Math.floor(Math.random() * sounds.length)];
 		const channel = msg.member.voiceChannel;
 		if (!channel) return msg.say('Please enter a voice channel first.');
 		if (!channel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {

@@ -18,8 +18,7 @@ module.exports = class HitwithShovelCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { user } = args;
+	run(msg, { user }) {
 		return msg.say(stripIndents`
 			**${msg.author.username}** *hits* **${user.username}** *with a shovel*
 			https://i.imgur.com/4yvqw81.gif

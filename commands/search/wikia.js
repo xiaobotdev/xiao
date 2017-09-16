@@ -28,8 +28,7 @@ module.exports = class WikiaCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { wiki, query } = args;
+	async run(msg, { wiki, query }) {
 		try {
 			const search = await snekfetch
 				.get(`http://${wiki}.wikia.com/api/v1/Search/List/`)

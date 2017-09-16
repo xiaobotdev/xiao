@@ -18,8 +18,7 @@ module.exports = class SayCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { text } = args;
+	async run(msg, { text }) {
 		if (msg.channel.type === 'text' && msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) {
 			await msg.delete();
 		}

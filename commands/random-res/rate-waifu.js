@@ -18,8 +18,7 @@ module.exports = class RateWaifuCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { waifu } = args;
+	run(msg, { waifu }) {
 		return msg.say(`I'd give ${waifu} a ${Math.floor(Math.random() * 10) + 1}/10!`);
 	}
 };

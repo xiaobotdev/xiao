@@ -39,8 +39,7 @@ module.exports = class TemperatureCommand extends Command {
 		});
 	}
 
-	run(msg, args) { // eslint-disable-line consistent-return
-		const { base, target, amount } = args;
+	run(msg, { base, target, amount }) { // eslint-disable-line consistent-return
 		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		if (base === 'celsius') {
 			if (target === 'fahrenheit') return msg.say(`${amount}°C is ${(amount * 1.8) + 32}°F.`);

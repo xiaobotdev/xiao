@@ -31,8 +31,7 @@ module.exports = class KickCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { member, reason } = args;
+	async run(msg, { member, reason }) {
 		if (member.id === msg.author.id) return msg.say('I don\'t think you want to kick yourself...');
 		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
 		if (!member.kickable) return msg.say('This member is not kickable. Perhaps they have a higher role than me?');

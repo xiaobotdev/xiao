@@ -21,8 +21,7 @@ module.exports = class BotSearchCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { bot } = args;
+	async run(msg, { bot }) {
 		try {
 			const { body } = await snekfetch
 				.get(`https://bots.discord.pw/api/bots/${bot.id}`)

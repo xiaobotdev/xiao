@@ -31,9 +31,8 @@ module.exports = class AvatarFusionCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { overlay } = args;
-		const base = args.base || msg.author;
+	async run(msg, { overlay, base }) {
+		if (!base) base = msg.author;
 		const baseAvatarURL = base.displayAvatarURL({
 			format: 'png',
 			size: 256

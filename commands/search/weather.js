@@ -33,8 +33,7 @@ module.exports = class WeatherCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { type, query } = args;
+	async run(msg, { type, query }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.openweathermap.org/data/2.5/weather')

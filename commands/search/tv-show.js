@@ -23,8 +23,7 @@ module.exports = class TVShowCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const search = await snekfetch
 				.get('http://api.themoviedb.org/3/search/tv')

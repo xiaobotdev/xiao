@@ -26,8 +26,7 @@ module.exports = class NameCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { gender } = args;
+	async run(msg, { gender }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://namey.muffinlabs.com/name.json')

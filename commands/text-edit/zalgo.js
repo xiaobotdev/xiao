@@ -22,8 +22,7 @@ module.exports = class ZalgoCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		return msg.say(zalgo(text));
 	}
 };

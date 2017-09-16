@@ -20,9 +20,8 @@ module.exports = class RecipeCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
+	async run(msg, { query }) {
 		try {
-			const { query } = args;
 			const { text } = await snekfetch
 				.get('http://www.recipepuppy.com/api/')
 				.query({ q: query });

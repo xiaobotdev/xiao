@@ -27,8 +27,8 @@ module.exports = class RejctedCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const user = args.user || msg.author;
+	async run(msg, { user }) {
+		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
 			size: 256

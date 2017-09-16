@@ -21,8 +21,7 @@ module.exports = class VocaloidCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://vocadb.net/api/songs')

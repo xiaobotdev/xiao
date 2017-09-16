@@ -40,8 +40,7 @@ module.exports = class QuizCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { type, difficulty } = args;
+	async run(msg, { type, difficulty }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://opentdb.com/api.php')

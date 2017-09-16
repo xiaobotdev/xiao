@@ -34,8 +34,7 @@ module.exports = class PokemonFusionCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { body, palette } = args;
+	run(msg, { body, palette }) {
 		return msg.say(`http://images.alexonsager.net/pokemon/fused/${body}/${body}.${palette}.png`);
 	}
 };

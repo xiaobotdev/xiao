@@ -41,8 +41,7 @@ module.exports = class CurrencyCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { base, target, amount } = args;
+	async run(msg, { base, target, amount }) {
 		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		try {
 			const { body } = await snekfetch

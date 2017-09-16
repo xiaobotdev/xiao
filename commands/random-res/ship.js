@@ -19,8 +19,7 @@ module.exports = class ShipCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { things } = args;
+	run(msg, { things }) {
 		return msg.say(`I'd give ${list(things)} a ${Math.floor(Math.random() * 100) + 1}%!`);
 	}
 };

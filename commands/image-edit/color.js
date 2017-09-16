@@ -20,8 +20,7 @@ module.exports = class ColorCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { color } = args;
+	run(msg, { color }) {
 		const canvas = createCanvas(250, 250);
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = color;

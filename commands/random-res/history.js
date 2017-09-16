@@ -22,8 +22,7 @@ module.exports = class HistoryCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { date } = args;
+	async run(msg, { date }) {
 		try {
 			const { text } = await snekfetch
 				.get(`http://history.muffinlabs.com/date${date ? `/${date}` : ''}`);

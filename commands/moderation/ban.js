@@ -31,8 +31,7 @@ module.exports = class BanCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { member, reason } = args;
+	async run(msg, { member, reason }) {
 		if (member.id === msg.author.id) return msg.say('I don\'t think you want to ban yourself...');
 		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
 		if (!member.bannable) return msg.say('This member is not bannable. Perhaps they have a higher role than me?');

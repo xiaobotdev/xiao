@@ -27,8 +27,7 @@ module.exports = class LockdownCommand extends Command {
 		});
 	}
 
-	async run(msg, args) { // eslint-disable-line consistent-return
-		const { action } = args;
+	async run(msg, { action }) { // eslint-disable-line consistent-return
 		if (action === 'start') {
 			await msg.channel.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: false });
 			return msg.say(stripIndents`

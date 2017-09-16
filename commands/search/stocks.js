@@ -21,8 +21,7 @@ module.exports = class StocksCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { symbol } = args;
+	async run(msg, { symbol }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://www.alphavantage.co/query')

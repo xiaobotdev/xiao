@@ -24,8 +24,7 @@ module.exports = class PokedexCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { pokemon } = args;
+	async run(msg, { pokemon }) {
 		try {
 			const { body } = await snekfetch
 				.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);

@@ -21,8 +21,7 @@ module.exports = class MDNCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://developer.mozilla.org/en-US/search.json')

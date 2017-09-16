@@ -19,8 +19,7 @@ module.exports = class MagicBallCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { question } = args;
+	run(msg, { question }) {
 		return msg.say(stripIndents`
 			Question: ${question}
 			🎱 ${answers[Math.floor(Math.random() * answers.length)]} 🎱

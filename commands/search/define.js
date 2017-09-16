@@ -22,8 +22,7 @@ module.exports = class DefineCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
 				.get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions`)

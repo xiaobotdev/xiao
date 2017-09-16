@@ -23,8 +23,7 @@ module.exports = class AchievementCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { text } = args;
+	async run(msg, { text }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://www.minecraftskinstealer.com/achievement/a.php')

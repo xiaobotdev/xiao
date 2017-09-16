@@ -23,8 +23,7 @@ module.exports = class PirateCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		return msg.say(wordTrans(text, dictionary));
 	}
 };

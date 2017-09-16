@@ -47,8 +47,7 @@ module.exports = class MemeCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { type, top, bottom } = args;
+	async run(msg, { type, top, bottom }) {
 		try {
 			const { body } = await snekfetch
 				.get(`https://memegen.link/api/templates/${type}/${top}/${bottom}`, { followRedirects: true });

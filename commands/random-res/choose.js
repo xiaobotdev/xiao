@@ -18,8 +18,7 @@ module.exports = class ChooseCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { choices } = args;
+	run(msg, { choices }) {
 		return msg.say(`I choose ${choices[Math.floor(Math.random() * choices.length)]}!`);
 	}
 };

@@ -21,8 +21,7 @@ module.exports = class WebhookCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { content } = args;
+	async run(msg, { content }) {
 		if (msg.channel.type === 'text' && msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) {
 			await msg.delete();
 		}

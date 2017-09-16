@@ -41,8 +41,7 @@ module.exports = class HoroscopeCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { sign } = args;
+	async run(msg, { sign }) {
 		try {
 			const { text } = await snekfetch
 				.get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today/`);

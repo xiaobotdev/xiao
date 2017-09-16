@@ -19,8 +19,7 @@ module.exports = class GiphyCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.giphy.com/v1/gifs/search')

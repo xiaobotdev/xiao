@@ -30,8 +30,8 @@ module.exports = class SteamCardCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const member = args.member || msg.member;
+	async run(msg, { member }) {
+		if (!member) member = msg.member;
 		const avatarURL = member.user.displayAvatarURL({
 			format: 'png',
 			size: 512

@@ -30,8 +30,7 @@ module.exports = class MapCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { zoom, query } = args;
+	async run(msg, { zoom, query }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://maps.googleapis.com/maps/api/staticmap')

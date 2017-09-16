@@ -22,8 +22,7 @@ module.exports = class BulbapediaCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://bulbapedia.bulbagarden.net/w/api.php')

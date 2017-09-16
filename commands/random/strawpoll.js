@@ -34,8 +34,7 @@ module.exports = class StrawpollCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { title, options } = args;
+	async run(msg, { title, options }) {
 		if (options.length < 2) return msg.say('Please provide more than one choice.');
 		if (options.length > 31) return msg.say('Please provide thirty or less choices.');
 		try {

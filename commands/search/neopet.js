@@ -18,8 +18,7 @@ module.exports = class NeopetCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { text } = await snekfetch
 				.get('http://www.sunnyneo.com/petimagefinder.php')

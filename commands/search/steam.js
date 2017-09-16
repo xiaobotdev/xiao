@@ -20,8 +20,7 @@ module.exports = class SteamCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://store.steampowered.com/api/storesearch')

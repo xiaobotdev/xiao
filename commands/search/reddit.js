@@ -21,9 +21,8 @@ module.exports = class RedditCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
+	async run(msg, { subreddit }) {
 		try {
-			const { subreddit } = args;
 			const { body } = await snekfetch
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });

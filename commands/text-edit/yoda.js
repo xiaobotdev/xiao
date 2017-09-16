@@ -24,8 +24,7 @@ module.exports = class YodaCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { sentence } = args;
+	async run(msg, { sentence }) {
 		try {
 			const { text } = await snekfetch
 				.get('https://yoda.p.mashape.com/yoda')

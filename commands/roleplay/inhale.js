@@ -25,8 +25,7 @@ module.exports = class InhaleCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { user } = args;
+	run(msg, { user }) {
 		return msg.say(stripIndents`
 			**${msg.author.username}** *inhales* **${user.username}** *but gained no ability...*
 			${gifs[Math.floor(Math.random() * gifs.length)]}
