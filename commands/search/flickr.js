@@ -29,6 +29,7 @@ module.exports = class FlickrCommand extends Command {
 					method: 'flickr.photos.search',
 					text: query,
 					sort: 'relevance',
+					safe_search: msg.channel.nsfw ? 3 : 1,
 					nojsoncallback: true
 				});
 			if (!body.photos.photo.length) return msg.say('Could not find any results.');
