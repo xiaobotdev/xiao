@@ -20,8 +20,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { choice } = args;
+	run(msg, { choice }) {
 		const response = choices[Math.floor(Math.random() * choices.length)];
 		if (choice === 'rock') {
 			if (response === 'rock') return msg.say('Rock! Aw... A tie...');

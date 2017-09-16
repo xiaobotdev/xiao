@@ -23,8 +23,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 		this.playing = new Set();
 	}
 
-	async run(msg, args) {
-		const { opponent } = args;
+	async run(msg, { opponent }) {
 		if (opponent.bot) return msg.say('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.say('You may not play against yourself.');
 		if (this.playing.has(msg.channel.id)) return msg.say('Only one fight may be occurring per channel.');

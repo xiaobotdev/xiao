@@ -19,8 +19,8 @@ module.exports = class RoastCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const user = args.user || msg.author;
+	run(msg, { user }) {
+		if (!user) user = msg.author;
 		return msg.say(`${user.username}, ${roasts[Math.floor(Math.random() * roasts.length)]}`);
 	}
 };

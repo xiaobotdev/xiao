@@ -55,8 +55,7 @@ module.exports = class TranslateCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { text, target, base } = args;
+	async run(msg, { text, target, base }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://translate.yandex.net/api/v1.5/tr.json/translate')

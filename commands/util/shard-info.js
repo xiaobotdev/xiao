@@ -26,8 +26,7 @@ module.exports = class ShardInfoCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { shard } = args;
+	async run(msg, { shard }) {
 		const memory = await this.client.shard.broadcastEval('process.memoryUsage().heapUsed');
 		const uptime = await this.client.shard.fetchClientValues('uptime');
 		const guilds = await this.client.shard.fetchClientValues('guilds.size');

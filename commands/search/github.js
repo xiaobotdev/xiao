@@ -28,8 +28,7 @@ module.exports = class GitHubCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { author, repository } = args;
+	async run(msg, { author, repository }) {
 		try {
 			const { body } = await snekfetch
 				.get(`https://${GITHUB_LOGIN}@api.github.com/repos/${author}/${repository}`);

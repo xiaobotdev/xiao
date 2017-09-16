@@ -23,8 +23,7 @@ module.exports = class XKCDCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { type } = args;
+	async run(msg, { type }) {
 		try {
 			const current = await snekfetch
 				.get('https://xkcd.com/info.0.json');

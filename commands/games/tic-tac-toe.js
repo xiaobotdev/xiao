@@ -21,8 +21,8 @@ module.exports = class TicTacToeCommand extends Command {
 		this.playing = new Set();
 	}
 
-	async run(msg, args) { // eslint-disable-line complexity
-		const opponent = args.opponent || this.client.user;
+	async run(msg, { opponent }) { // eslint-disable-line complexity
+		if (!opponent) opponent = this.client.user;
 		if (opponent.id === msg.author.id) return msg.say('You may not play against yourself.');
 		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);

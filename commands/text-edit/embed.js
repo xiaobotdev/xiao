@@ -19,8 +19,7 @@ module.exports = class EmbedCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		const embed = new MessageEmbed()
 			.setAuthor(msg.author.tag, msg.author.displayAvatarURL)
 			.setColor(0x00AE86)

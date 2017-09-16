@@ -30,8 +30,8 @@ module.exports = class ChannelInfoCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const channel = args.channel || msg.channel;
+	run(msg, { channel }) {
+		if (!channel) channel = msg.channel;
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.addField('❯ Name',

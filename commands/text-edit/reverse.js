@@ -17,8 +17,7 @@ module.exports = class ReverseCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		return msg.say(text.split('').reverse().join(''));
 	}
 };

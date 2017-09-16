@@ -34,8 +34,7 @@ module.exports = class TypingGameCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { difficulty } = args;
+	async run(msg, { difficulty }) {
 		const sentence = sentences[Math.floor(Math.random() * sentences.length)];
 		const time = times[difficulty];
 		await msg.say(stripIndents`

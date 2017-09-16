@@ -32,8 +32,7 @@ module.exports = class ShipNameCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { start, end } = args;
+	run(msg, { start, end }) {
 		return msg.say(`${start.slice(0, Math.floor(start.length / 2))}${end.slice(Math.floor(end.length / 2))}`);
 	}
 };

@@ -25,8 +25,7 @@ module.exports = class TagCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { tag } = args;
+	run(msg, { tag }) {
 		return msg.say(tags[tag]);
 	}
 };

@@ -18,8 +18,8 @@ module.exports = class AvatarCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const user = args.user || msg.author;
+	run(msg, { user }) {
+		if (!user) user = msg.author;
 		if (!user.avatar) return msg.say('This user has no avatar.');
 		const avatar = user.avatarURL({
 			format: user.avatar.startsWith('a_') ? 'gif' : 'png',

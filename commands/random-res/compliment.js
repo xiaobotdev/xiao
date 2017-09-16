@@ -19,8 +19,8 @@ module.exports = class ComplimentCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const user = args.user || msg.author;
+	run(msg, { user }) {
+		if (!user) user = msg.author;
 		return msg.say(`${user.username}, ${compliments[Math.floor(Math.random() * compliments.length)]}`);
 	}
 };

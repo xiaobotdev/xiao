@@ -20,8 +20,7 @@ module.exports = class UpsideDownCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		return msg.say(letterTrans(text, dictionary));
 	}
 };

@@ -22,8 +22,7 @@ module.exports = class BCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		return msg.say(text.replace(/(b|d|g|p|q)/gi, '🅱'));
 	}
 };

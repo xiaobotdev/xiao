@@ -20,8 +20,7 @@ module.exports = class ChuckNorrisCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { name } = args;
+	async run(msg, { name }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.icndb.com/jokes/random')

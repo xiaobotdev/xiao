@@ -25,8 +25,8 @@ module.exports = class DiscrimCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const discrim = args.discrim || msg.author.discriminator;
+	run(msg, { discrim }) {
+		if (!discrim) discrim = msg.author.discriminator;
 		const users = this.client.users.filter(user => user.discriminator === discrim).map(user => user.username);
 		return msg.say(stripIndents`
 			**Found ${users.length} users with the discriminator #${discrim}**

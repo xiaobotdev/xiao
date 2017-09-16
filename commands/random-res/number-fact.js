@@ -18,8 +18,7 @@ module.exports = class NumberFactCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { number } = args;
+	async run(msg, { number }) {
 		try {
 			const { text } = await snekfetch
 				.get(`http://numbersapi.com/${number}`);

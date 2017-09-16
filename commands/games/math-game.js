@@ -50,8 +50,7 @@ module.exports = class MathGameCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { operation, difficulty } = args;
+	async run(msg, { operation, difficulty }) {
 		const value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		let answer;

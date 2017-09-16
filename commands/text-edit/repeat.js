@@ -21,8 +21,7 @@ module.exports = class RepeatCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		return msg.say(text.repeat(2000).substr(0, 2000));
 	}
 };

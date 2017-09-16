@@ -28,8 +28,8 @@ module.exports = class UserInfoCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const member = args.member || msg.member;
+	run(msg, { member }) {
+		if (!member) member = msg.member;
 		const embed = new MessageEmbed()
 			.setColor(member.displayHexColor)
 			.setThumbnail(member.user.displayAvatarURL())

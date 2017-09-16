@@ -36,9 +36,8 @@ module.exports = class SteamNowPlayingCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		let { game } = args;
-		const member = args.member || msg.member;
+	async run(msg, { game, member }) {
+		if (!member) member = msg.member;
 		const avatarURL = member.user.displayAvatarURL({
 			format: 'png',
 			size: 128

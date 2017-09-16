@@ -23,8 +23,7 @@ module.exports = class GunfightCommand extends Command {
 		this.fighting = new Set();
 	}
 
-	async run(msg, args) {
-		const { opponent } = args;
+	async run(msg, { opponent }) {
 		if (opponent.bot) return msg.say('Bots may not be fought.');
 		if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
 		if (this.fighting.has(msg.channel.id)) return msg.say('Only one fight may be occurring per channel.');

@@ -23,8 +23,7 @@ module.exports = class HelpCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { command } = args;
+	async run(msg, { command }) {
 		const commands = this.client.registry.findCommands(command, false, msg);
 		if (command) {
 			if (commands.length === 1) {

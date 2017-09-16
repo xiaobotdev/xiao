@@ -33,8 +33,7 @@ module.exports = class iTunesCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { country, query } = args;
+	async run(msg, { country, query }) {
 		try {
 			const { text } = await snekfetch
 				.get('https://itunes.apple.com/search')

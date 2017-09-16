@@ -20,8 +20,7 @@ module.exports = class OrganizationXIIINameCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { text } = args;
+	run(msg, { text }) {
 		text.push('x');
 		const shuffled = shuffle(text);
 		shuffled[0] = shuffled[0].toUpperCase();

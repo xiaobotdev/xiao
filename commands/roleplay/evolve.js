@@ -25,8 +25,7 @@ module.exports = class EvolveCommand extends Command {
 		});
 	}
 
-	run(msg, args) {
-		const { user } = args;
+	run(msg, { user }) {
 		return msg.say(stripIndents`
 			**${user.username}** *is evolving!*
 			${gifs[Math.floor(Math.random() * gifs.length)]}

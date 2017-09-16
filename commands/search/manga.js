@@ -22,8 +22,7 @@ module.exports = class MangaCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { query } = args;
+	async run(msg, { query }) {
 		try {
 			const { text } = await snekfetch
 				.get('https://kitsu.io/api/edge/manga')
