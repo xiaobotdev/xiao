@@ -14,8 +14,8 @@ module.exports = class DogCommand extends Command {
 	async run(msg) {
 		try {
 			const { body } = await snekfetch
-				.get('https://random.dog/woof.json');
-			return msg.say(body.url);
+				.get('https://dog.ceo/api/breeds/image/random');
+			return msg.say({ files: [body.message] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

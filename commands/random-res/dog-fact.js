@@ -1,22 +1,21 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 
-module.exports = class CatCommand extends Command {
+module.exports = class DogFactCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'cat',
-			aliases: ['neko'],
-			group: 'random-img',
-			memberName: 'cat',
-			description: 'Responds with a random cat image.'
+			name: 'dog-fact',
+			group: 'random-res',
+			memberName: 'dog-fact',
+			description: 'Responds with a dog fact.'
 		});
 	}
 
 	async run(msg) {
 		try {
 			const { body } = await snekfetch
-				.get('http://random.cat/meow');
-			return msg.say({ files: [body.file] });
+				.get('https://dog-api.kinduff.com/api/facts');
+			return msg.say(body.facts[0]);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

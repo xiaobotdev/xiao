@@ -35,6 +35,6 @@ module.exports = class PokemonFusionCommand extends Command {
 	}
 
 	run(msg, { body, palette }) {
-		return msg.say(`http://images.alexonsager.net/pokemon/fused/${body}/${body}.${palette}.png`);
+		return msg.say({ files: [`http://images.alexonsager.net/pokemon/fused/${body}/${body}.${palette}.png`] });
 	}
 };
