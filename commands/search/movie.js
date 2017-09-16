@@ -8,7 +8,7 @@ module.exports = class MovieCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'movie',
-			aliases: ['tmdb-movie'],
+			aliases: ['tmdb-movie', 'imdb'],
 			group: 'search',
 			memberName: 'movie',
 			description: 'Searches TMDB for your query, getting movie results.',
