@@ -6,7 +6,7 @@ module.exports = class MemeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'meme',
-			group: 'fun',
+			group: 'image-edit',
 			memberName: 'meme',
 			description: 'Sends a meme with the text and background of your choice.',
 			clientPermissions: ['ATTACH_FILES'],
