@@ -28,6 +28,7 @@ module.exports = class FlickrCommand extends Command {
 					format: 'json',
 					method: 'flickr.photos.search',
 					text: query,
+					sort: 'relevance',
 					nojsoncallback: true
 				});
 			if (!body.photos.photo.length) return msg.say('Could not find any results.');
