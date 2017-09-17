@@ -7,7 +7,8 @@ module.exports = class DogCommand extends Command {
 			name: 'dog',
 			group: 'random-img',
 			memberName: 'dog',
-			description: 'Responds with a random dog image.'
+			description: 'Responds with a random dog image.',
+			clientPermissions: ['ATTACH_FILES']
 		});
 	}
 

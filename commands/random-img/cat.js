@@ -8,7 +8,8 @@ module.exports = class CatCommand extends Command {
 			aliases: ['neko'],
 			group: 'random-img',
 			memberName: 'cat',
-			description: 'Responds with a random cat image.'
+			description: 'Responds with a random cat image.',
+			clientPermissions: ['ATTACH_FILES']
 		});
 	}
 
