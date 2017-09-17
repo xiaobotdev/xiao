@@ -9,6 +9,7 @@ module.exports = class PokemonFusionCommand extends Command {
 			group: 'image-edit',
 			memberName: 'pokemon-fusion',
 			description: 'Fuses two Generation I Pokémon together.',
+			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
 					key: 'body',
