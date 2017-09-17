@@ -19,7 +19,8 @@ module.exports = class ClearChannelCommand extends Command {
 
 	async run(msg) {
 		if (!msg.channel.deletable) return msg.say('This channel cannot be deleted.');
-		await msg.channel.clone();
+		const channel = await msg.channel.clone();
+		if (msg.channel.parent) await channel.setParent(msg.channel.parent);
 		await msg.channel.delete();
 		return null;
 	}
