@@ -8,7 +8,7 @@ module.exports = class DonateCommand extends Command {
 			aliases: ['patreon'],
 			group: 'util',
 			memberName: 'donate',
-			description: 'Responds with Xiao\'s Patreon donation link.',
+			description: 'Responds with Xiao\'s donation links.',
 			guarded: true
 		});
 	}
