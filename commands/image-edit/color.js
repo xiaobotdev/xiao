@@ -5,6 +5,7 @@ module.exports = class ColorCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'color',
+			aliases: ['colour'],
 			group: 'image-edit',
 			memberName: 'color',
 			description: 'Sends an image of the color you choose.',
@@ -12,7 +13,7 @@ module.exports = class ColorCommand extends Command {
 			args: [
 				{
 					key: 'color',
-					prompt: 'What color do you want to view? This can be HTML (#colorcode) or a name.',
+					prompt: 'What color do you want to view? This can be #colorcode or a name.',
 					type: 'string',
 					parse: color => color.toLowerCase()
 				}
@@ -25,6 +26,6 @@ module.exports = class ColorCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = color;
 		ctx.fillRect(0, 0, 250, 250);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'color.png' }] });
+		return msg.say({ files: [canvas.toBuffer()] });
 	}
 };

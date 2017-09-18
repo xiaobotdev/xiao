@@ -40,13 +40,14 @@ module.exports = class WikiaCommand extends Command {
 			const { body } = await snekfetch
 				.get(`http://${wiki}.wikia.com/api/v1/Articles/AsSimpleJson/`)
 				.query({ id: search.body.items[0].id });
+			const data = body.sections[0];
 			const embed = new MessageEmbed()
 				.setColor(0x002D54)
-				.setTitle(body.sections[0].title)
+				.setTitle(data.title)
 				.setURL(search.body.items[0].url)
 				.setAuthor('Wikia', 'https://i.imgur.com/WzXWJka.png')
-				.setDescription(shorten(body.sections[0].content.map(section => section.text).join('\n\n')))
-				.setThumbnail(body.sections[0].images.length ? body.sections[0].images[0].src : null);
+				.setDescription(shorten(data.content.map(section => section.text).join('\n\n')))
+				.setThumbnail(data.images.length ? data.images[0].src : null);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say('Could not find any results.');

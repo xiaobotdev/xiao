@@ -17,7 +17,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -57,7 +57,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			if (ctx.measureText(game).width > 160) shorten = true;
 			while (ctx.measureText(game).width > 160) game = game.substr(0, game.length - 1);
 			ctx.fillText(shorten ? `${game}...` : game, 63, 54);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

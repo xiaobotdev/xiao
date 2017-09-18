@@ -21,7 +21,7 @@ module.exports = class EmbedCommand extends Command {
 
 	run(msg, { text }) {
 		const embed = new MessageEmbed()
-			.setAuthor(msg.author.tag, msg.author.displayAvatarURL)
+			.setAuthor(msg.author.tag, msg.author.displayAvatarURL())
 			.setColor(0x00AE86)
 			.setTimestamp()
 			.setDescription(text);

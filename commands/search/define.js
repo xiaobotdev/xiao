@@ -33,10 +33,11 @@ module.exports = class DefineCommand extends Command {
 					api_key: WORDNIK_KEY
 				});
 			if (!body.length) return msg.say('Could not find any results.');
+			const data = body[0];
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
-				.setTitle(body[0].word)
-				.setDescription(body[0].text);
+				.setTitle(data.word)
+				.setDescription(data.text);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

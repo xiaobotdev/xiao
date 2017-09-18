@@ -12,7 +12,7 @@ module.exports = class TriggeredCommand extends Command {
 			description: 'Draws a user\'s avatar over a Triggered meme.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -46,7 +46,7 @@ module.exports = class TriggeredCommand extends Command {
 			for (let i = 0; i < data.length; i += 4) data[i] = Math.max(255, data[i]);
 			ctx.putImageData(imgData, 0, 0);
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'triggered.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

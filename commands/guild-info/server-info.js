@@ -33,7 +33,7 @@ module.exports = class GuildInfoCommand extends Command {
 			.addField('❯ Verification Level',
 				verificationLevels[msg.guild.verificationLevel], true)
 			.addField('❯ Owner',
-				msg.guild.owner ? msg.guild.owner.user.username : 'None', true)
+				msg.guild.owner ? msg.guild.owner.user.tag : 'None', true)
 			.addField('❯ Members',
 				msg.guild.memberCount, true);
 		return msg.embed(embed);

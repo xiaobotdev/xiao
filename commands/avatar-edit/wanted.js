@@ -12,7 +12,7 @@ module.exports = class WantedCommand extends Command {
 			description: 'Draws a user\'s avatar over a wanted poster.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -40,7 +40,7 @@ module.exports = class WantedCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 150, 360, 430, 430);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

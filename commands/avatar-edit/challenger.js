@@ -12,7 +12,7 @@ module.exports = class ChallengerCommand extends Command {
 			description: 'Draws a user\'s avatar over Super Smash Bros.\'s "Challenger Approaching" screen.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -40,7 +40,7 @@ module.exports = class ChallengerCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 484, 98, 256, 256);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

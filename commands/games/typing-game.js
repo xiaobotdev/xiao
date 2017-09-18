@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../structures/Util');
+const sentences = require('../../assets/json/typing-game');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
 const times = {
 	easy: 25000,
@@ -9,7 +10,6 @@ const times = {
 	extreme: 10000,
 	impossible: 5000
 };
-const sentences = require('../../assets/json/typing-game');
 
 module.exports = class TypingGameCommand extends Command {
 	constructor(client) {

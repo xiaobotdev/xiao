@@ -47,20 +47,21 @@ module.exports = class iTunesCommand extends Command {
 				});
 			const body = JSON.parse(text);
 			if (!body.resultCount) return msg.say('Could not find any results.');
+			const data = body.results[0];
 			const embed = new MessageEmbed()
 				.setColor(0xFEFEFE)
 				.setAuthor('iTunes', 'https://i.imgur.com/TbqzJFs.jpg')
-				.setURL(body.results[0].trackViewUrl)
-				.setThumbnail(body.results[0].artworkUrl100)
-				.setTitle(body.results[0].trackName)
+				.setURL(data.trackViewUrl)
+				.setThumbnail(data.artworkUrl100)
+				.setTitle(data.trackName)
 				.addField('❯ Artist',
-					body.results[0].artistName, true)
+					data.artistName, true)
 				.addField('❯ Album',
-					body.results[0].collectionName, true)
+					data.collectionName, true)
 				.addField('❯ Release Date',
-					new Date(body.results[0].releaseDate).toDateString(), true)
+					new Date(data.releaseDate).toDateString(), true)
 				.addField('❯ Genre',
-					body.results[0].primaryGenreName, true);
+					data.primaryGenreName, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

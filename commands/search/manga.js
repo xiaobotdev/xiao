@@ -29,21 +29,22 @@ module.exports = class MangaCommand extends Command {
 				.query({ 'filter[text]': query });
 			const body = JSON.parse(text);
 			if (!body.meta.count) return msg.say('Could not find any results.');
+			const data = body.data[0].attributes;
 			const embed = new MessageEmbed()
 				.setColor(0xF75239)
 				.setAuthor('Kitsu.io', 'https://i.imgur.com/VnIpwgF.png')
-				.setURL(`https://kitsu.io/manga/${body.data[0].attributes.slug}`)
-				.setThumbnail(body.data[0].attributes.posterImage ? body.data[0].attributes.posterImage.original : null)
-				.setTitle(body.data[0].attributes.canonicalTitle)
-				.setDescription(shorten(body.data[0].attributes.synopsis))
+				.setURL(`https://kitsu.io/manga/${data.slug}`)
+				.setThumbnail(data.posterImage ? data.posterImage.original : null)
+				.setTitle(data.canonicalTitle)
+				.setDescription(shorten(data.synopsis))
 				.addField('❯ Type',
-					`${body.data[0].attributes.subtype} - ${body.data[0].attributes.status}`, true)
+					`${data.subtype} - ${data.status}`, true)
 				.addField('❯ Volumes / Chapters',
-					`${body.data[0].attributes.volumeCount || 'N/A'} / ${body.data[0].attributes.chapterCount || 'N/A'}`, true)
+					`${data.volumeCount || 'N/A'} / ${data.chapterCount || 'N/A'}`, true)
 				.addField('❯ Start Date',
-					body.data[0].attributes.startDate ? new Date(body.data[0].attributes.startDate).toDateString() : 'N/A', true)
+					data.startDate ? new Date(data.startDate).toDateString() : 'N/A', true)
 				.addField('❯ End Date',
-					body.data[0].attributes.endDate ? new Date(body.data[0].attributes.endDate).toDateString() : 'N/A', true);
+					data.endDate ? new Date(data.endDate).toDateString() : 'N/A', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

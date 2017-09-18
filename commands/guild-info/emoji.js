@@ -13,6 +13,6 @@ module.exports = class EmojiCommand extends Command {
 
 	run(msg) {
 		if (!msg.guild.emojis.size) return msg.say('This server has no custom emoji.');
-		return msg.say(msg.guild.emojis.map(e => e).join(''));
+		return msg.say(msg.guild.emojis.map(emoji => emoji.toString()).join(''));
 	}
 };

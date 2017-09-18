@@ -32,34 +32,35 @@ module.exports = class OsuCommand extends Command {
 					type: 'string'
 				});
 			if (!body.length) return msg.say('Could not find any results.');
+			const data = body[0];
 			const embed = new MessageEmbed()
 				.setColor(0xFF66AA)
 				.setAuthor('osu!', 'https://i.imgur.com/EmnUp00.png')
 				.setURL('https://osu.ppy.sh/')
 				.addField('❯ Username',
-					body[0].username, true)
+					data.username, true)
 				.addField('❯ ID',
-					body[0].user_id, true)
+					data.user_id, true)
 				.addField('❯ Level',
-					body[0].level || 'N/A', true)
+					data.level || 'N/A', true)
 				.addField('❯ Accuracy',
-					body[0].accuracy || 'N/A', true)
+					data.accuracy || 'N/A', true)
 				.addField('❯ Rank',
-					body[0].pp_rank || 'N/A', true)
+					data.pp_rank || 'N/A', true)
 				.addField('❯ Play Count',
-					body[0].playcount || 'N/A', true)
+					data.playcount || 'N/A', true)
 				.addField('❯ Country',
-					body[0].country || 'N/A', true)
+					data.country || 'N/A', true)
 				.addField('❯ Ranked Score',
-					body[0].ranked_score || 'N/A', true)
+					data.ranked_score || 'N/A', true)
 				.addField('❯ Total Score',
-					body[0].total_score || 'N/A', true)
+					data.total_score || 'N/A', true)
 				.addField('❯ SS',
-					body[0].count_rank_ss || 'N/A', true)
+					data.count_rank_ss || 'N/A', true)
 				.addField('❯ S',
-					body[0].count_rank_s || 'N/A', true)
+					data.count_rank_s || 'N/A', true)
 				.addField('❯ A',
-					body[0].count_rank_a || 'N/A', true);
+					data.count_rank_a || 'N/A', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

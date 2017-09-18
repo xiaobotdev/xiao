@@ -27,12 +27,13 @@ module.exports = class MDNCommand extends Command {
 				.get('https://developer.mozilla.org/en-US/search.json')
 				.query({ q: query });
 			if (!body.documents.length) return msg.say('Could not find any results.');
+			const data = body.documents[0];
 			const embed = new MessageEmbed()
 				.setColor(0x066FAD)
 				.setAuthor('MDN', 'https://i.imgur.com/ClMfs9l.png')
-				.setURL(body.documents[0].url)
-				.setTitle(body.documents[0].title)
-				.setDescription(body.documents[0].excerpt);
+				.setURL(data.url)
+				.setTitle(data.title)
+				.setDescription(data.excerpt);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

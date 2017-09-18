@@ -2,13 +2,7 @@ const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../structures/Util');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
-const operations = ['addition', 'subtraction', 'multiplication', 'division'];
-const operationDisplay = {
-	addition: '+',
-	subtraction: '-',
-	multiplication: '*',
-	division: '÷'
-};
+const operations = ['+', '-', '*'];
 const maxValues = {
 	easy: 10,
 	medium: 100,
@@ -27,16 +21,6 @@ module.exports = class MathGameCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'operation',
-					prompt: `Which operation should be used for the game? Either ${list(operations, 'or')}.`,
-					type: 'string',
-					validate: operation => {
-						if (operations.includes(operation.toLowerCase())) return true;
-						return `Invalid operation, please enter either ${list(operations, 'or')}.`;
-					},
-					parse: operation => operation.toLowerCase()
-				},
-				{
 					key: 'difficulty',
 					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
 					type: 'string',
@@ -50,17 +34,25 @@ module.exports = class MathGameCommand extends Command {
 		});
 	}
 
-	async run(msg, { operation, difficulty }) {
+	async run(msg, { difficulty }) {
 		const value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
+		const operation = operations[Math.floor(Math.random() * operations.length)];
 		let answer;
-		if (operation === 'addition') answer = value1 + value2;
-		else if (operation === 'subtraction') answer = value1 - value2;
-		else if (operation === 'multiplication') answer = value1 * value2;
-		else if (operation === 'division') answer = value1 / value2;
+		switch (operation) {
+			case '+':
+				answer = value1 + value2;
+				break;
+			case '-':
+				answer = value1 - value2;
+				break;
+			case '*':
+				answer = value1 * value2;
+				break;
+		}
 		await msg.say(stripIndents`
 			**You have 10 seconds to answer this question.**
-			${value1} ${operationDisplay[operation]} ${value2}
+			${value1} ${operation} ${value2}
 		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,

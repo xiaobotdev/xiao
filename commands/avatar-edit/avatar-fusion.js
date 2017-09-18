@@ -12,7 +12,7 @@ module.exports = class AvatarFusionCommand extends Command {
 			description: 'Draws a a user\'s avatar over a user\'s avatar.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -51,7 +51,7 @@ module.exports = class AvatarFusionCommand extends Command {
 			ctx.globalAlpha = 0.5;
 			ctx.drawImage(baseAvatar, 0, 0, 256, 256);
 			ctx.drawImage(overlayAvatar, 0, 0, 256, 256);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'avatar-fusion.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

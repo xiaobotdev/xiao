@@ -12,7 +12,7 @@ module.exports = class ThugLifeCommand extends Command {
 			description: 'Draws "Thug Life" over a user\'s avatar.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -49,7 +49,7 @@ module.exports = class ThugLifeCommand extends Command {
 				data[i + 2] = brightness;
 			}
 			ctx.putImageData(imgData, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'thug-life.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
