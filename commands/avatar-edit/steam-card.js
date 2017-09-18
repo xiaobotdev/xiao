@@ -13,6 +13,7 @@ module.exports = class SteamCardCommand extends Command {
 			group: 'avatar-edit',
 			memberName: 'steam-card',
 			description: 'Draws a user\'s avatar over a Steam Trading Card.',
+			guildOnly: true,
 			throttling: {
 				usages: 1,
 				duration: 15
