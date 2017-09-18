@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const fishes = ['🐟', '🐠', '🐡', '🔧'];
+const fishes = require('../../assets/json/fishy');
 
 module.exports = class FishyCommand extends Command {
 	constructor(client) {
@@ -13,8 +13,13 @@ module.exports = class FishyCommand extends Command {
 	}
 
 	run(msg) {
-		const fish = fishes[Math.floor(Math.random() * fishes.length)];
-		if (fish === '🔧') return msg.say(`You caught a ${fish}... Too bad...`);
-		return msg.say(`You caught a ${fish}!`);
+		const fish = Math.floor(Math.random() * 10) + 1;
+		let rarity;
+		if (fish < 5) rarity = 'junk';
+		else if (fish < 8) rarity = 'common';
+		else if (fish < 10) rarity = 'uncommon';
+		else rarity = 'rare';
+		const worth = Math.floor(Math.random() * (fishes[rarity].max - fishes[rarity].min + 1)) + fishes[rarity].min;
+		return msg.say(`You caught a ${fishes[rarity].symbol}. I bet it'd sell for around $${worth}.`);
 	}
 };
