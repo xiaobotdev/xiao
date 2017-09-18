@@ -51,11 +51,11 @@ module.exports = class MemeCommand extends Command {
 				name: meme.name.toLowerCase()
 			}));
 			if (type === 'list') return msg.say(list(memeList.map(meme => meme.name), 'or'), { split: { char: ' ' } });
-			if (!memes.some(meme => meme.name === type)) return msg.say(`Invalid type, please use ${msg.usage('list')}.`);
+			if (!memeList.some(meme => meme.name === type)) return msg.say(`Invalid type, please use ${msg.usage('list')}.`);
 			const { body } = await snekfetch
 				.post('https://api.imgflip.com/caption_image')
 				.query({
-					template_id: memes.find(meme => meme.name === type).id,
+					template_id: memeList.find(meme => meme.name === type).id,
 					username: IMGFLIP_USER,
 					password: IMGFLIP_PASS,
 					text0: top,
