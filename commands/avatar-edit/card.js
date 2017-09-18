@@ -15,34 +15,33 @@ module.exports = class CardCommand extends Command {
 			group: 'avatar-edit',
 			memberName: 'card',
 			description: 'Draws a trading card of random rarity based on a user\'s profile.',
-			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'member',
+					key: 'user',
 					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'member',
+					type: 'user',
 					default: ''
 				}
 			]
 		});
 	}
 
-	async run(msg, { member }) {
-		if (!member) member = msg.member;
-		const avatarURL = member.user.displayAvatarURL({
+	async run(msg, { user }) {
+		if (!user) user = msg.author;
+		const avatarURL = user.displayAvatarURL({
 			format: 'png',
 			size: 256
 		});
 		try {
-			const cardID = Math.floor(Math.random() * ((9999 - 1000) + 1)) + 1000;
+			const cardID = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
 			let rarity;
 			if (cardID < 5000) rarity = 'C';
-			else if (cardID < 8000) rarity = 'U';
+			else if (cardID < 9000) rarity = 'U';
 			else rarity = 'R';
 			const canvas = createCanvas(390, 544);
 			const ctx = canvas.getContext('2d');
@@ -55,18 +54,16 @@ module.exports = class CardCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '18px Noto';
 			ctx.fillStyle = 'black';
-			ctx.fillText(member.displayName, 30, 62);
+			ctx.fillText(user.username, 30, 62);
 			ctx.fillText('Discord Join Date:', 148, 400);
-			ctx.fillText(member.user.createdAt.toDateString(), 148, 420);
-			ctx.fillText('Role:', 148, 457);
-			ctx.fillText(member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', 148, 477);
+			ctx.fillText(user.createdAt.toDateString(), 148, 420);
 			ctx.fillText(rarity, 73, 411);
 			ctx.fillText(cardID, 60, 457);
 			ctx.fillText(version.split('.')[0], 68, 502);
 			ctx.font = '14px Noto';
-			ctx.fillText(member.id, 30, 355);
-			ctx.fillText(`#${member.user.discriminator}`, 313, 355);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] });
+			ctx.fillText(user.id, 30, 355);
+			ctx.fillText(`#${user.discriminator}`, 313, 355);
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

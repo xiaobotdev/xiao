@@ -68,14 +68,12 @@ client.on('warn', console.warn);
 client.on('commandError', (command, err) => console.error(command.name, err));
 
 client.on('guildCreate', async guild => {
-	console.log(`[GUILD] I have joined ${guild.name}! (${guild.id})`);
 	const guilds = await client.shard.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
 	postStats(count, client.user.id);
 });
 
 client.on('guildDelete', async guild => {
-	console.log(`[GUILD] I have left ${guild.name}... (${guild.id})`);
 	const guilds = await client.shard.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
 	postStats(count, client.user.id);

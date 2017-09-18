@@ -35,18 +35,19 @@ module.exports = class VocaloidCommand extends Command {
 					fields: 'ThumbUrl,Lyrics'
 				});
 			if (!body.totalCount) return msg.say('Could not find any results.');
-			const { minutes, seconds } = duration(body.items[0].lengthSeconds * 1000);
+			const data = body.items[0];
+			const { minutes, seconds } = duration(data.lengthSeconds * 1000);
 			const embed = new MessageEmbed()
 				.setColor(0x86D2D0)
 				.setAuthor('VocaDB', 'https://i.imgur.com/9Tx9UIc.jpg')
-				.setTitle(body.items[0].name)
-				.setURL(`http://vocadb.net/S/${body.items[0].id}`)
-				.setDescription(body.items[0].lyrics.length ? shorten(body.items[0].lyrics[0].value) : 'N/A')
-				.setThumbnail(body.items[0].thumbUrl)
+				.setTitle(data.name)
+				.setURL(`http://vocadb.net/S/${data.id}`)
+				.setDescription(data.lyrics.length ? shorten(data.lyrics[0].value) : 'N/A')
+				.setThumbnail(data.thumbUrl)
 				.addField('❯ Artist',
-					body.items[0].artistString)
+					data.artistString)
 				.addField('❯ Publish Date',
-					new Date(body.items[0].publishDate).toDateString(), true)
+					new Date(data.publishDate).toDateString(), true)
 				.addField('❯ Length',
 					`${minutes}:${seconds}`, true);
 			return msg.embed(embed);

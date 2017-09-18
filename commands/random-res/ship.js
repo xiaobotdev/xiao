@@ -5,6 +5,7 @@ module.exports = class ShipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'ship',
+			aliases: ['rate'],
 			group: 'random-res',
 			memberName: 'ship',
 			description: 'Ships things/people together.',

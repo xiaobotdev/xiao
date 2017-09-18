@@ -32,25 +32,26 @@ module.exports = class WattpadCommand extends Command {
 				})
 				.set({ Authorization: `Basic ${WATTPAD_KEY}` });
 			if (!body.stories.length) return msg.say('Could not find any results.');
+			const data = body.stories[0];
 			const embed = new MessageEmbed()
 				.setColor(0xF89C34)
 				.setAuthor('Wattpad', 'https://i.imgur.com/Rw9vRQB.png')
-				.setURL(body.stories[0].url)
-				.setTitle(body.stories[0].title)
-				.setDescription(shorten(body.stories[0].description))
-				.setThumbnail(body.stories[0].cover)
+				.setURL(data.url)
+				.setTitle(data.title)
+				.setDescription(shorten(data.description))
+				.setThumbnail(data.cover)
 				.addField('❯ Created On',
-					new Date(body.stories[0].createDate).toDateString(), true)
+					new Date(data.createDate).toDateString(), true)
 				.addField('❯ Author',
-					body.stories[0].user, true)
+					data.user, true)
 				.addField('❯ Parts',
-					body.stories[0].numParts, true)
+					data.numParts, true)
 				.addField('❯ Reads',
-					body.stories[0].readCount, true)
+					data.readCount, true)
 				.addField('❯ Votes',
-					body.stories[0].voteCount, true)
+					data.voteCount, true)
 				.addField('❯ Comments',
-					body.stories[0].commentCount, true);
+					data.commentCount, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

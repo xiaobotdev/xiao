@@ -12,7 +12,7 @@ module.exports = class DexterCommand extends Command {
 			description: 'Draws a user\'s avatar over Dexter from Pokémon\'s screen.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -42,7 +42,7 @@ module.exports = class DexterCommand extends Command {
 			ctx.rotate(-11 * (Math.PI / 180));
 			ctx.drawImage(avatar, 234, 274, 225, 225);
 			ctx.rotate(11 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'dexter.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

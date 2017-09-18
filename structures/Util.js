@@ -8,13 +8,11 @@ class Util {
 			.post(`https://bots.discord.pw/api/bots/${id}/stats`)
 			.set({ Authorization: DBOTS_KEY })
 			.send({ server_count: count })
-			.then(() => console.log('[DBOTS] Successfully posted to Discord Bots.'))
 			.catch(err => console.error(`[DBOTS] Failed to post to Discord Bots. ${err}`));
 		snekfetch
 			.post(`https://discordbots.org/api/bots/${id}/stats`)
 			.set({ Authorization: DBOTSORG_KEY })
 			.send({ server_count: count })
-			.then(() => console.log('[DBOTSORG] Successfully posted to Discord Bots Org.'))
 			.catch(err => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
 	}
 
@@ -34,8 +32,8 @@ class Util {
 	}
 
 	static list(arr, conj = 'and') {
-		const { length } = arr;
-		return `${arr.slice(0, -1).join(', ')}${length > 1 ? `${length > 2 ? ',' : ''} ${conj} ` : ''}${arr.slice(-1)}`;
+		const len = arr.length;
+		return `${arr.slice(0, -1).join(', ')}${len > 1 ? `${len > 2 ? ',' : ''} ${conj} ` : ''}${arr.slice(-1)}`;
 	}
 
 	static shorten(text, maxLen = 2000) {

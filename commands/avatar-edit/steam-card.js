@@ -13,10 +13,9 @@ module.exports = class SteamCardCommand extends Command {
 			group: 'avatar-edit',
 			memberName: 'steam-card',
 			description: 'Draws a user\'s avatar over a Steam Trading Card.',
-			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -48,7 +47,7 @@ module.exports = class SteamCardCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '30px Noto';
 			ctx.fillText(member.displayName, 35, 48);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

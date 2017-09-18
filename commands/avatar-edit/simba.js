@@ -12,7 +12,7 @@ module.exports = class SimbaCommand extends Command {
 			description: 'Draws a user\'s avatar over Simba from The Lion King\'s reflection.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -42,7 +42,7 @@ module.exports = class SimbaCommand extends Command {
 			ctx.rotate(-24 * (Math.PI / 180));
 			ctx.drawImage(avatar, 75, 160, 130, 150);
 			ctx.rotate(24 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'simba.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

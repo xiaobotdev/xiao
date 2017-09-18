@@ -13,7 +13,7 @@ module.exports = class RIPCommand extends Command {
 			description: 'Draws a user\'s avatar over a gravestone.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -50,7 +50,7 @@ module.exports = class RIPCommand extends Command {
 				data[i + 2] = brightness;
 			}
 			ctx.putImageData(imgData, 158, 51);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

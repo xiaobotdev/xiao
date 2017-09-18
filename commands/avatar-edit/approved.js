@@ -13,7 +13,7 @@ module.exports = class ApprovedCommand extends Command {
 			description: 'Draws an "approved" stamp over a user\'s avatar.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -41,7 +41,7 @@ module.exports = class ApprovedCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.drawImage(avatar, 0, 0, 256, 256);
 			ctx.drawImage(base, 0, 0, 256, 256);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'approved.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

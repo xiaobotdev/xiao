@@ -28,26 +28,27 @@ module.exports = class YuGiOhCommand extends Command {
 			if (body.status === 'fail') return msg.say('Could not find any results.');
 			const image = await snekfetch
 				.get(`http://yugiohprices.com/api/card_image/${query}`);
+			const { data } = body;
 			const embed = new MessageEmbed()
 				.setColor(0xBE5F1F)
-				.setTitle(body.data.name)
-				.setDescription(body.data.text)
+				.setTitle(data.name)
+				.setDescription(data.text)
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/7gPm9Rr.png')
 				.setThumbnail(image.headers.location)
 				.addField('❯ Card Type',
-					body.data.card_type, true);
-			if (body.data.card_type === 'monster') {
+					data.card_type, true);
+			if (data.card_type === 'monster') {
 				embed
 					.addField('❯ Type',
-						body.data.type, true)
+						data.type, true)
 					.addField('❯ Attribute',
-						body.data.family, true)
+						data.family, true)
 					.addField('❯ Level',
-						body.data.level, true)
+						data.level, true)
 					.addField('❯ ATK',
-						body.data.atk, true)
+						data.atk, true)
 					.addField('❯ DEF',
-						body.data.def, true);
+						data.def, true);
 			}
 			return msg.embed(embed);
 		} catch (err) {

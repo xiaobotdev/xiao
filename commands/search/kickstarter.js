@@ -29,21 +29,22 @@ module.exports = class KickstarterCommand extends Command {
 					term: query
 				});
 			if (!body.projects.length) return msg.say('Could not find any results.');
+			const data = body.projects[0];
 			const embed = new MessageEmbed()
 				.setColor(0x14E06E)
-				.setTitle(body.projects[0].name)
-				.setURL(body.projects[0].urls.web.project)
+				.setTitle(data.name)
+				.setURL(data.urls.web.project)
 				.setAuthor('Kickstarter', 'https://i.imgur.com/7mJF4qJ.png')
-				.setDescription(body.projects[0].blurb)
-				.setThumbnail(body.projects[0].photo ? body.projects[0].photo.full : null)
+				.setDescription(data.blurb)
+				.setThumbnail(data.photo ? data.photo.full : null)
 				.addField('❯ Goal',
-					`${body.projects[0].currency_symbol}${body.projects[0].goal.toLocaleString()}`, true)
+					`${data.currency_symbol}${data.goal.toLocaleString()}`, true)
 				.addField('❯ Pledged',
-					`${body.projects[0].currency_symbol}${body.projects[0].pledged.toLocaleString()}`, true)
+					`${data.currency_symbol}${data.pledged.toLocaleString()}`, true)
 				.addField('❯ Backers',
-					body.projects[0].backers_count, true)
+					data.backers_count, true)
 				.addField('❯ Creator',
-					body.projects[0].creator.name, true);
+					data.creator.name, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

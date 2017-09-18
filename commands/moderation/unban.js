@@ -32,7 +32,7 @@ module.exports = class UnbanCommand extends Command {
 
 	async run(msg, { id, reason }) {
 		const bans = await msg.guild.fetchBans();
-		if (!bans.has(id)) return msg.say('This ID is not in the Guild Banlist.');
+		if (!bans.has(id)) return msg.say('This ID is not in the server banlist.');
 		const member = bans.get(id).user;
 		await msg.say(`Are you sure you want to unban ${member.tag} (${member.id})?`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {

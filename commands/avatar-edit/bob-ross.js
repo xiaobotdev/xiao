@@ -13,7 +13,7 @@ module.exports = class BobRossCommand extends Command {
 			description: 'Draws a user\'s avatar over Bob Ross\' canvas.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -45,7 +45,7 @@ module.exports = class BobRossCommand extends Command {
 			ctx.drawImage(avatar, 69, 102, 256, 256);
 			ctx.rotate(-3 * (Math.PI / 180));
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bob-ross.png' }] });
+			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

@@ -33,13 +33,14 @@ module.exports = class YouTubeCommand extends Command {
 					key: GOOGLE_KEY
 				});
 			if (!body.items.length) return msg.say('Could not find any results.');
+			const data = body.items[0];
 			const embed = new MessageEmbed()
 				.setColor(0xDD2825)
-				.setTitle(body.items[0].snippet.title)
-				.setDescription(body.items[0].snippet.description)
-				.setAuthor(`YouTube - ${body.items[0].snippet.channelTitle}`, 'https://i.imgur.com/hkUafwu.png')
-				.setURL(`https://www.youtube.com/watch?v=${body.items[0].id.videoId}`)
-				.setThumbnail(body.items[0].snippet.thumbnails.default.url);
+				.setTitle(data.snippet.title)
+				.setDescription(data.snippet.description)
+				.setAuthor(`YouTube - ${data.snippet.channelTitle}`, 'https://i.imgur.com/hkUafwu.png')
+				.setURL(`https://www.youtube.com/watch?v=${data.id.videoId}`)
+				.setThumbnail(data.snippet.thumbnails.default.url);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

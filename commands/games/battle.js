@@ -90,7 +90,7 @@ module.exports = class BattleCommand extends Command {
 				} else if (choice === 'special') {
 					const hit = Math.floor(Math.random() * 4) + 1;
 					if (hit === 1) {
-						const damage = Math.floor(Math.random() * (((guard ? 300 : 150) - 100) + 1)) + 100;
+						const damage = Math.floor(Math.random() * ((guard ? 300 : 150) - 100 + 1)) + 100;
 						await msg.say(`${user} deals **${damage}** damage!`);
 						dealDamage(damage);
 						reset();

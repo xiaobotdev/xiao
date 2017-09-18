@@ -18,10 +18,11 @@ module.exports = class FortuneCommand extends Command {
 			const { body } = await snekfetch
 				.get('http://fortunecookieapi.herokuapp.com/v1/cookie')
 				.query({ limit: 1 });
+			const data = body[0];
 			return msg.say(stripIndents`
-				${body[0].fortune.message}
-				${body[0].lotto.numbers.join(', ')}
-				${body[0].lesson.chinese} (${body[0].lesson.pronunciation}): ${body[0].lesson.english}
+				${data.fortune.message}
+				${data.lotto.numbers.join(', ')}
+				${data.lesson.chinese} (${data.lesson.pronunciation}): ${data.lesson.english}
 			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
