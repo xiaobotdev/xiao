@@ -21,7 +21,7 @@ module.exports = class AkinatorCommand extends Command {
 			let ans = null;
 			this.sessions.set(msg.channel.id, {
 				progress: null,
-				step: null
+				step: 0
 			});
 			while (this.sessions.get(msg.channel.id).progress < 99 && ++this.sessions.get(msg.channel.id).step <= 80) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
