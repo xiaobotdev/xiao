@@ -40,6 +40,7 @@ module.exports = class AkinatorCommand extends Command {
 			}
 			const guess = await this.finish(msg.channel);
 			const embed = new MessageEmbed()
+				.setColor(0xF78B26)
 				.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
 				.setDescription(guess.name)
 				.setThumbnail(guess.absolute_picture_path);
