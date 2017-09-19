@@ -20,7 +20,7 @@ module.exports = class AkinatorCommand extends Command {
 		try {
 			let ans = null;
 			this.sessions.set(msg.channel.id, { progress: null });
-			while (this.sessions.get(msg.channel.id).progress < 99) {
+			while (this.sessions.get(msg.channel.id).progress < 99 && ++this.sessions.get(msg.channel.id).step <= 80) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
 				const answers = data.answers.map(answer => answer.answer.toLowerCase());
 				await msg.say(stripIndents`
