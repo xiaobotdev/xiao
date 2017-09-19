@@ -176,6 +176,7 @@ Xiao has nearly 200 helpful commands to power up your Discord server!
 - `yu-gi-oh` Responds with info on a Yu-Gi-Oh! card.
 
 ### Games
+- `akinator` Play a game of Akinator!
 - `battle` Engage in a turn-based battle against another user or the AI.
 - `emoji-emoji-revolution` Play a game of Emoji Emoji Revolution.
 - `fishy` Go fishing.
