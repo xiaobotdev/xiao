@@ -19,7 +19,7 @@ module.exports = class AkinatorCommand extends Command {
 		if (this.sessions.has(msg.channel.id)) return msg.say('Only one game may be occuring per channel.');
 		try {
 			let ans = null;
-			this.sessions.set(msg.channel.id, {	progress: null });
+			this.sessions.set(msg.channel.id, { progress: null });
 			while (this.sessions.get(msg.channel.id).progress < 99) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
 				if (this.sessions.get(msg.channel.id).step >= 80) break;
