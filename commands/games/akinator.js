@@ -43,7 +43,10 @@ module.exports = class AkinatorCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xF78B26)
 				.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
-				.setDescription(guess.name)
+				.setDescription(stripIndents`
+					${guess.name}
+					_${guess.description}_
+				`)
 				.setThumbnail(guess.absolute_picture_path);
 			await msg.embed(embed);
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
