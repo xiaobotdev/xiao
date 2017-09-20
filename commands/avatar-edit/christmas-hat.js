@@ -39,7 +39,7 @@ module.exports = class ChristmasHatCommand extends Command {
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
 			ctx.drawImage(avatar, 0, 0, 256, 256);
-			ctx.drawImage(base, 15, 175, 65, -26);
+			ctx.drawImage(base, 65, -26, 200, 235);
 			return msg.say({ files: [canvas.toBuffer()] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
