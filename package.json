@@ -1,11 +1,11 @@
 {
 	"name": "xiaobot",
-	"version": "41.1.4",
+	"version": "41.1.5",
 	"description": "Your personal server companion.",
 	"main": "Shard.js",
 	"scripts": {
 		"test": "npm run lint",
-		"lint": "eslint .",
+		"lint": "eslint . --ext .json",
 		"start": "node Shard.js"
 	},
 	"repository": {
@@ -47,10 +47,14 @@
 	},
 	"devDependencies": {
 		"eslint": "^4.7.0",
-		"eslint-config-aqua": "^2.0.1"
+		"eslint-config-aqua": "^2.0.1",
+		"eslint-plugin-json": "^1.2.0"
 	},
 	"eslintConfig": {
 		"extends": "aqua",
+		"plugins": [
+			"json"
+		],
 		"rules": {
 			"camelcase": "off",
 			"id-length": "off",
