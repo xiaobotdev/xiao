@@ -1,5 +1,5 @@
 sudo: false
-langauge: node_js
+language: node_js
 node_js:
   - '8'
 before_install:
