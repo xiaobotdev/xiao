@@ -41,7 +41,7 @@ module.exports = class RainbowCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.drawImage(avatar, 0, 0, 256, 256);
 			ctx.drawImage(base, 0, 0, 256, 256);
-			return msg.say({ files: [canvas.toBuffer()] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rainbow.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

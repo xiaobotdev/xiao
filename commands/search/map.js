@@ -40,7 +40,7 @@ module.exports = class MapCommand extends Command {
 					size: '500x500',
 					key: GOOGLE_KEY
 				});
-			return msg.say({ files: [body] });
+			return msg.say({ files: [{ attachment: body, name: 'map.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

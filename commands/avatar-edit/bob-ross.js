@@ -45,7 +45,7 @@ module.exports = class BobRossCommand extends Command {
 			ctx.drawImage(avatar, 69, 102, 256, 256);
 			ctx.rotate(-3 * (Math.PI / 180));
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [canvas.toBuffer()] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bob-ross.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

@@ -50,7 +50,7 @@ module.exports = class RIPCommand extends Command {
 				data[i + 2] = brightness;
 			}
 			ctx.putImageData(imgData, 158, 51);
-			return msg.say({ files: [canvas.toBuffer()] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
