@@ -148,6 +148,7 @@ Xiao has nearly 200 helpful commands to power up your Discord server!
 - `bulbapedia` Searches Bulbapedia for your query.
 - `define` Defines a word.
 - `discrim` Searches for other users with a certain discriminator.
+- `flickr` Searches Flickr for your query.
 - `giphy` Searches Giphy for your query.
 - `github` Searches GitHub for information on a repository.
 - `itunes` Searches iTunes for your query.
