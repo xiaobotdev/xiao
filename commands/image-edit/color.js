@@ -26,6 +26,6 @@ module.exports = class ColorCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = color;
 		ctx.fillRect(0, 0, 250, 250);
-		return msg.say({ files: [canvas.toBuffer()] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'color.png' }] });
 	}
 };

@@ -63,7 +63,7 @@ module.exports = class CardCommand extends Command {
 			ctx.font = '14px Noto';
 			ctx.fillText(user.id, 30, 355);
 			ctx.fillText(`#${user.discriminator}`, 313, 355);
-			return msg.say({ files: [canvas.toBuffer()] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
