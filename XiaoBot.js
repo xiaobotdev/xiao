@@ -57,7 +57,7 @@ client.on('ready', () => {
 });
 
 client.on('disconnect', event => {
-	console.log(`[DISCONNECT] Shard ${client.shard.id} disconnected with code ${event.code}.`);
+	console.error(`[DISCONNECT] Shard ${client.shard.id} disconnected with code ${event.code}.`);
 	process.exit(0);
 });
 
