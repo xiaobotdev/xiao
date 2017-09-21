@@ -22,7 +22,8 @@ module.exports = class DaysUntilCommand extends Command {
 
 	run(msg, { date }) {
 		const month = parseInt(date[0], 10);
-		const day = date[1] ? parseInt(date[1], 10) : NaN;
+		const day = parseInt(date[1], 10);
+		if (!month || !day) return msg.say('There are N/A days until Invalid Date!');
 		const now = new Date();
 		let year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
 		if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
