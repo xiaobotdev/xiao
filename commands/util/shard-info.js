@@ -27,16 +27,16 @@ module.exports = class ShardInfoCommand extends Command {
 	}
 
 	async run(msg, { shard }) {
-		const memory = await this.client.shard.broadcastEval('process.memoryUsage().heapUsed');
 		const uptime = await this.client.shard.fetchClientValues('uptime');
 		const guilds = await this.client.shard.fetchClientValues('guilds.size');
+		const users = await this.client.shard.fetchClientValues('users.size');
 		const embed = new MessageEmbed()
 			.setTitle(`Shard ${shard}`)
 			.setColor(0x00AE86)
 			.addField('❯ Servers',
 				guilds[shard], true)
-			.addField('❯ Memory Usage',
-				`${Math.round(memory[shard] / 1024 / 1024)}MB`, true)
+			.addField('❯ Users',
+				users[shard], true)
 			.addField('❯ Uptime',
 				duration(uptime[shard]).format(), true);
 		return msg.embed(embed);
