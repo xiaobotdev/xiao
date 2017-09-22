@@ -26,7 +26,7 @@ module.exports = class CoolnessCommand extends Command {
 		if (coolness < 0.5) return msg.reply(`${prefix} an extremely cool dude.`);
 		if (coolness < 0.8) return msg.reply(`${prefix} pretty sweet, not gonna lie.`);
 		if (coolness < 1) return msg.reply(`${prefix} okay, nothing special.`);
-		if (coolness < 1.3) return msg.say(`${prefix} just not all that neat.`);
-		return msg.say(`${prefix} awful, honestly.`);
+		if (coolness < 1.3) return msg.reply(`${prefix} just not all that neat.`);
+		return msg.reply(`${prefix} awful, honestly.`);
 	}
 };
