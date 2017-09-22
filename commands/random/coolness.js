@@ -22,7 +22,7 @@ module.exports = class CoolnessCommand extends Command {
 		if (!user) user = msg.author;
 		const coolness = user.id / this.client.user.id;
 		const prefix = user.id === msg.author.id ? 'You\'re' : 'They\'re';
-		if (user.id === '234318196893548545') return msg.reply(`${prefix} the best person ever.`);
+		if (user.id === '234318196893548545') return msg.reply(`${prefix} the best person ever ❤.`);
 		if (coolness < 0.3) return msg.reply(`${prefix} the coolest being to walk this Earth.`);
 		if (coolness < 0.5) return msg.reply(`${prefix} an extremely cool dude.`);
 		if (coolness < 0.8) return msg.reply(`${prefix} pretty sweet, not gonna lie.`);
