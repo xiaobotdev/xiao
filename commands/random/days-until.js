@@ -7,11 +7,11 @@ module.exports = class DaysUntilCommand extends Command {
 			aliases: ['days-until-christmas'],
 			group: 'random',
 			memberName: 'days-until',
-			description: 'Get how many days until a certain date this year.',
+			description: 'Responds with how many days until a certain date this year.',
 			args: [
 				{
 					key: 'date',
-					prompt: 'What date do you want events for? Month/Day format.',
+					prompt: 'What date do you want to get the days until? Month/Day format.',
 					type: 'string',
 					default: ['12', '25'],
 					parse: date => date.split('/')
