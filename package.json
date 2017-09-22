@@ -1,6 +1,6 @@
 {
 	"name": "xiaobot",
-	"version": "41.4.1",
+	"version": "41.4.2",
 	"description": "Your personal server companion.",
 	"main": "Shard.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/dragonfire535/xiaobot.git"
+		"url": "git+https://bitbucket.org/dragonfire535/xiaobot.git"
 	},
 	"keywords": [
 		"bot",
@@ -24,9 +24,9 @@
 	"author": "dragonfire535 <danielbodendahl@gmail.com>",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/dragonfire535/xiaobot/issues"
+		"url": "https://bitbucket.org/dragonfire535/xiaobot/issues"
 	},
-	"homepage": "https://github.com/dragonfire535/xiaobot#readme",
+	"homepage": "https://bitbucket.org/dragonfire535/xiaobot#readme",
 	"engines": {
 		"node": ">=8.0.0"
 	},
