@@ -6,6 +6,7 @@ module.exports = class TemmieCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'temmie',
+			aliases: ['temmie-speak'],
 			group: 'text-edit',
 			memberName: 'temmie',
 			description: 'Converts text to Temmie speak.',
