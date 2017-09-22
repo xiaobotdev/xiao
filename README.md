@@ -194,6 +194,7 @@ Xiao has nearly 200 helpful commands to power up your Discord server!
 
 ### Random/Other
 - `can-you-not` Can YOU not?
+- `days-until` Responds with how many days until a certain date this year.
 - `eat-pant` eat pant
 - `give-flower` Gives Xiao Pai a flower.
 - `horoscope` Responds with today's horoscope for a particular sign.
