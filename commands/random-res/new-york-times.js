@@ -26,7 +26,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const fetch = snekfetch
-				.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json`)
+				.get('https://api.nytimes.com/svc/search/v2/articlesearch.json')
 				.query({
 					'api-key': NYTIMES_KEY,
 					sort: 'newest'
