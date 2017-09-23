@@ -36,7 +36,7 @@ module.exports = class HistoryCommand extends Command {
 				.setTimestamp()
 				.setDescription(`${event.year}: ${event.text}`)
 				.addField('❯ See More',
-					event.links.map(link => `${link.title}: ${link.link.replace(/\)/g, '%29')}`).join('\n'));
+					event.links.map(link => `[${link.title}](${link.link.replace(/\)/g, '%29')})`).join(', '));
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404 || err.status === 500) return msg.say('Could not find any results.');

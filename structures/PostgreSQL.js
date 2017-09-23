@@ -17,7 +17,7 @@ class Database {
 			)
 			.catch(err => {
 				console.error(`[DATABASE] Unable to connect: ${err}`);
-				console.error(`[DATABASE] Reconnecting in 5 seconds...`);
+				console.error('[DATABASE] Reconnecting in 5 seconds...');
 				setTimeout(() => Database.start(), 5000);
 			});
 	}

@@ -23,7 +23,7 @@ module.exports = class ShortenURLCommand extends Command {
 	async run(msg, { url }) {
 		try {
 			const { body } = await snekfetch
-				.post(`https://www.googleapis.com/urlshortener/v1/url`)
+				.post('https://www.googleapis.com/urlshortener/v1/url')
 				.query({ key: GOOGLE_KEY })
 				.send({ longUrl: url });
 			return msg.say(`<${body.id}>`);
