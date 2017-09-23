@@ -30,6 +30,7 @@ module.exports = class RandomPersonCommand extends Command {
 				.get('https://randomuser.me/api/')
 				.query({
 					gender,
+					nat: 'us,gb,au',
 					noinfo: ''
 				});
 			const data = body.results[0];
@@ -41,15 +42,13 @@ module.exports = class RandomPersonCommand extends Command {
 				.addField('❯ Last Name',
 					data.name.last.toUpperCase(), true)
 				.addField('❯ Title',
-					data.name.title.toUpperCase(), true)
+					`${data.name.title.toUpperCase()}.`, true)
 				.addField('❯ Gender',
 					data.gender.toUpperCase(), true)
 				.addField('❯ Username',
 					data.login.username, true)
 				.addField('❯ Password',
 					data.login.password, true)
-				.addField('❯ Email',
-					data.email, true)
 				.addField('❯ Phone',
 					data.phone, true)
 				.addField('❯ Cell',
