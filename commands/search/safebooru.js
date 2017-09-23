@@ -36,7 +36,7 @@ module.exports = class SafebooruCommand extends Command {
 			const posts = msg.channel.nsfw ? parsed.post : parsed.post.filter(post => post.rating === 's');
 			return msg.say(stripIndents`
 				${query ? `Results for ${query}:` : 'Random Image:'}
-				https:${posts[Math.floor(Math.random() * posts.length)].file_url}
+				https:${posts[Math.floor(Math.random() * posts.length)]._attributes.file_url}
 			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
