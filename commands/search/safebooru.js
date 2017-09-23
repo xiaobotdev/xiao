@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
-const { xml2json } = require('xml-js');
+const { xml2js } = require('xml-js');
 const { stripIndents } = require('common-tags');
 
 module.exports = class SafebooruCommand extends Command {
@@ -31,9 +31,9 @@ module.exports = class SafebooruCommand extends Command {
 					q: 'index',
 					tags: query
 				});
-			const parsed = xml2json(text, { compact: true });
-			if (parsed.posts.count === '0' || !parsed.posts.post.length) return msg.say('Could not find any results.');
-			const posts = msg.channel.nsfw ? parsed.posts.post : parsed.posts.post.filter(post => post.rating === 's');
+			const parsed = xml2js(text, { compact: true }).posts;
+			if (parsed._attributes.count === '0' || !parsed.post.length) return msg.say('Could not find any results.');
+			const posts = msg.channel.nsfw ? parsed.post : parsed.post.filter(post => post.rating === 's');
 			return msg.say(stripIndents`
 				${query ? `Results for ${query}:` : 'Random Image:'}
 				https:${posts[Math.floor(Math.random() * posts.length)].file_url}
