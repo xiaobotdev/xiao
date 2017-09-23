@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { list } = require('../../structures/Util');
 const path = require('path');
-const sounds = ['airhorn', 'cat', 'dun-dun-dun', 'pikachu', 'space'];
+const sounds = ['airhorn', 'cat', 'dun-dun-dun', 'laugh track', 'pikachu', 'space'];
 
 module.exports = class SoundboardCommand extends Command {
 	constructor(client) {
