@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const math = require('mathjs');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../structures/Util');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
@@ -38,28 +39,18 @@ module.exports = class MathGameCommand extends Command {
 		const value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const operation = operations[Math.floor(Math.random() * operations.length)];
-		let answer;
-		switch (operation) {
-			case '+':
-				answer = value1 + value2;
-				break;
-			case '-':
-				answer = value1 - value2;
-				break;
-			case '*':
-				answer = value1 * value2;
-				break;
-		}
+		const expression = `${value1} ${operation} ${value2}`;
+		const answer = math.eval(expression).toString();
 		await msg.say(stripIndents`
 			**You have 10 seconds to answer this question.**
-			${value1} ${operation} ${value2}
+			${expression}
 		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
 			time: 10000
 		});
 		if (!msgs.size) return msg.say(`Time! It was ${answer}, sorry!`);
-		if (msgs.first().content !== answer.toString()) return msg.say(`Nope, sorry, it's ${answer}.`);
+		if (msgs.first().content !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
 		return msg.say('Nice job! 10/10! You deserve some cake!');
 	}
 };
