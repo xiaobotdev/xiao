@@ -33,7 +33,7 @@ module.exports = class SafebooruCommand extends Command {
 				});
 			const parsed = xml2js(text, { compact: true }).posts;
 			if (parsed._attributes.count === '0' || !parsed.post.length) return msg.say('Could not find any results.');
-			const posts = msg.channel.nsfw ? parsed.post : parsed.post.filter(post => post.rating === 's');
+			const posts = msg.channel.nsfw ? parsed.post : parsed.post.filter(post => post._attributes.rating === 's');
 			return msg.say(stripIndents`
 				${query ? `Results for ${query}:` : 'Random Image:'}
 				https:${posts[Math.floor(Math.random() * posts.length)]._attributes.file_url}
