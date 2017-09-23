@@ -30,17 +30,19 @@ module.exports = class IPInfoCommand extends Command {
 				.setURL(`https://ipinfo.io/${ip}`)
 				.setTitle(body.ip)
 				.addField('❯ Hostname',
-					body.hostname, true)
+					body.hostname || 'N/A')
 				.addField('❯ Location',
-					body.loc, true)
+					body.loc || 'N/A', true)
 				.addField('❯ Organization',
-					body.org, true)
+					body.org || 'N/A', true)
+				.addField('❯ Zip',
+					body.postal || 'N/A', true)
 				.addField('❯ City',
-					`${body.city} (${body.postal})`, true)
+					body.city || 'N/A', true)
 				.addField('❯ Region',
-					body.region, true)
+					body.region || 'N/A', true)
 				.addField('❯ Country',
-					body.country, true);
+					body.country || 'N/A', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
