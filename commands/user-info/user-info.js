@@ -1,11 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const statuses = {
-	online: '<:online:313956277808005120> Online',
-	idle: '<:away:313956277220802560> Idle',
-	dnd: '<:dnd:313956276893646850> Do Not Disturb',
-	offline: '<:offline:313956277237710868> Offline'
-};
 
 module.exports = class UserInfoCommand extends Command {
 	constructor(client) {
@@ -43,8 +37,8 @@ module.exports = class UserInfoCommand extends Command {
 				member.joinedAt.toDateString(), true)
 			.addField('❯ Nickname',
 				member.nickname || 'None', true)
-			.addField('❯ Status',
-				statuses[member.presence.status], true)
+			.addField('❯ Bot?',
+				member.user.bot ? 'Yes' : 'No', true)
 			.addField('❯ Highest Role',
 				member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', true)
 			.addField('❯ Hoist Role',
