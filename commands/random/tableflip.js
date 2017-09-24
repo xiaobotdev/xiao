@@ -22,7 +22,7 @@ module.exports = class TableflipCommand extends Command {
 	async run(msg) {
 		const message = await msg.say('(\\\\°□°)\\\\  ┬─┬');
 		for (const frame of frames) {
-			await wait(400);
+			await wait(300);
 			await message.edit(frame);
 		}
 		return message;
