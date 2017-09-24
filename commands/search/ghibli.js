@@ -39,17 +39,17 @@ module.exports = class GhibliCommand extends Command {
 				.setAuthor('Studio Ghibli', 'https://i.imgur.com/P3YafQ3.jpg')
 				.setTitle(data.name)
 				.addField('❯ Gender',
-					data.gender, true)
+					data.gender || 'N/A', true)
 				.addField('❯ Age',
-					data.age, true)
+					data.age || 'N/A', true)
 				.addField('❯ Species',
-					species.body.name, true)
+					species.body.name || 'N/A', true)
 				.addField('❯ Eye Color',
-					data.eye_color, true)
+					data.eye_color || 'N/A', true)
 				.addField('❯ Hair Color',
-					data.hair_color, true)
+					data.hair_color || 'N/A', true)
 				.addField('❯ Films',
-					films.map(film => film.title).join('\n'), true);
+					films.map(film => film.title).join('\n') || 'N/A', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
