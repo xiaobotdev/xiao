@@ -9,7 +9,6 @@ class XiaoCommand extends Command {
 			usages: 1,
 			duration: 2
 		};
-		this.uses = 0;
 	}
 
 	hasPermission(msg) {

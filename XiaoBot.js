@@ -67,8 +67,6 @@ client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
 
-client.on('commandRun', command => ++command.uses);
-
 client.on('guildCreate', async () => {
 	const guilds = await client.shard.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
