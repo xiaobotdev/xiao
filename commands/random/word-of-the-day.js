@@ -7,7 +7,7 @@ module.exports = class DefineCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'word-of-the-day',
-			group: 'search',
+			group: 'random',
 			memberName: 'word-of-the-day',
 			description: 'Gets the word of the day.',
 			clientPermissions: ['EMBED_LINKS']
