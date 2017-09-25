@@ -5,7 +5,7 @@ module.exports = class DiscrimCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'discrim',
-			aliases: ['discriminator', 'search-discrim'],
+			aliases: ['discriminator', 'search-discrim', 'search-discriminator'],
 			group: 'search',
 			memberName: 'discrim',
 			description: 'Searches for other users with a certain discriminator.',
