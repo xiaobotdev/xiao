@@ -6,6 +6,7 @@ module.exports = class MagicConchCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'magic-conch',
+			aliases: ['magic-conch-shell'],
 			group: 'random-res',
 			memberName: 'magic-conch',
 			description: 'Asks your question to the Magic Conch.',

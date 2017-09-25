@@ -8,6 +8,7 @@ module.exports = class WattpadCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wattpad',
+			aliases: ['wattpad-book'],
 			group: 'search',
 			memberName: 'wattpad',
 			description: 'Searches Wattpad for your query.',

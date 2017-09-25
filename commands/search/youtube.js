@@ -7,6 +7,7 @@ module.exports = class YouTubeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'youtube',
+			aliases: ['youtube-video'],
 			group: 'search',
 			memberName: 'youtube',
 			description: 'Searches YouTube for your query.',

@@ -4,7 +4,7 @@ module.exports = class ShutdownCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'shutdown',
-			aliases: ['restart', 'power-off'],
+			aliases: ['restart', 'power-off', 'die'],
 			group: 'util',
 			memberName: 'shutdown',
 			description: 'Shuts down the current shard, or all shards.',

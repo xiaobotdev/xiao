@@ -5,6 +5,7 @@ module.exports = class InviteCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'invite',
+			aliases: ['invite-link'],
 			group: 'util',
 			memberName: 'invite',
 			description: 'Responds with an invite for the bot and an invite to the home server.',

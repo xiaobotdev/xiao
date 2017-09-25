@@ -4,6 +4,7 @@ module.exports = class ClearChannelCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'clear-channel',
+			aliases: ['prune-all'],
 			group: 'moderation',
 			memberName: 'clear-channel',
 			description: 'Deletes all messages in a channel by cloning it and then deleting it.',

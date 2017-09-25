@@ -7,7 +7,7 @@ module.exports = class VocaloidCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'vocaloid',
-			aliases: ['vocadb'],
+			aliases: ['vocadb', 'vocaloid-song', 'vocaloid-music'],
 			group: 'search',
 			memberName: 'vocaloid',
 			description: 'Searches VocaDB for your query.',

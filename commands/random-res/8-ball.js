@@ -6,6 +6,7 @@ module.exports = class MagicBallCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: '8-ball',
+			aliases: ['magic-8-ball', 'eight-ball', 'magic-eight-ball'],
 			group: 'random-res',
 			memberName: '8-ball',
 			description: 'Asks your question to the Magic 8 Ball.',

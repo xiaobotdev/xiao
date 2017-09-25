@@ -7,7 +7,7 @@ module.exports = class GhibliCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'ghibli',
-			aliases: ['studio-ghibli'],
+			aliases: ['studio-ghibli', 'ghibli-film', 'studio-ghibli-film'],
 			group: 'search',
 			memberName: 'ghibli',
 			description: 'Searches Studio Ghibli films for your query.',

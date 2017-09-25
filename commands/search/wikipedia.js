@@ -7,6 +7,7 @@ module.exports = class WikipediaCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wikipedia',
+			aliases: ['wikipedia-article'],
 			group: 'search',
 			memberName: 'wikipedia',
 			description: 'Searches Wikipedia for your query.',

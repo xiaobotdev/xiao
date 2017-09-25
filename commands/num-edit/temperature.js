@@ -6,6 +6,7 @@ module.exports = class TemperatureCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'temperature',
+			aliases: ['temperature-convert', 'convert-temperature', 'temp-convert', 'convert-temp'],
 			group: 'num-edit',
 			memberName: 'temperature',
 			description: `Converts temperatures to/from ${list(units, 'or')}.`,

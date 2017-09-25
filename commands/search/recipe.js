@@ -6,6 +6,7 @@ module.exports = class RecipeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'recipe',
+			aliases: ['recipe-puppy'],
 			group: 'search',
 			memberName: 'recipe',
 			description: 'Searches for recipes that include your query.',
