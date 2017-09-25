@@ -27,6 +27,6 @@ module.exports = class CommandLeaderboardCommand extends Command {
 			.sort((a, b) => b.uses - a.uses)
 			.map(cmd => `**${++i}.** ${cmd.name} (${cmd.uses} Uses)`)
 			.slice((page - 1) * 10, page * 10);
-		return msg.say(list.split('\n') || 'None yet.');
+		return msg.say(list.join('\n') || 'None yet.');
 	}
 };
