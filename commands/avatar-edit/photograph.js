@@ -40,7 +40,7 @@ module.exports = class PhotographCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-8.21 * (Math.PI / 180));
-			ctx.drawImage(avatar, 115, 75, 150, 150);
+			ctx.drawImage(avatar, 96, 106, 150, 150);
 			ctx.rotate(8.21 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'photograph.png' }] });
 		} catch (err) {
