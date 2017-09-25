@@ -6,7 +6,7 @@ module.exports = class UpsideDownCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'upside-down',
-			aliases: ['udown'],
+			aliases: ['u-down'],
 			group: 'text-edit',
 			memberName: 'upside-down',
 			description: 'Flips text upside-down.',

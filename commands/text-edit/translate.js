@@ -9,6 +9,7 @@ module.exports = class TranslateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'translate',
+			aliases: ['yandex', 'yandex-translate', 'translate-yandex'],
 			group: 'text-edit',
 			memberName: 'translate',
 			description: 'Translates text to a specified language.',

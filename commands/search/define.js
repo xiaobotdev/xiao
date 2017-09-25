@@ -7,6 +7,7 @@ module.exports = class DefineCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'define',
+			aliases: ['dictionary', 'wordnik'],
 			group: 'search',
 			memberName: 'define',
 			description: 'Defines a word.',
@@ -25,11 +26,10 @@ module.exports = class DefineCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
-				.get(`http://api.wordnik.com:80/v4/word.json/${query}/definitions`)
+				.get(`http://api.wordnik.com/v4/word.json/${query}/definitions`)
 				.query({
 					limit: 1,
 					includeRelated: false,
-					useCanonical: false,
 					api_key: WORDNIK_KEY
 				});
 			if (!body.length) return msg.say('Could not find any results.');
@@ -37,7 +37,7 @@ module.exports = class DefineCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
 				.setTitle(data.word)
-				.setDescription(data.text);
+				.setDescription(`(${data.partOfSpeech}) ${data.text}`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

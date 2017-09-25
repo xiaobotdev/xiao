@@ -6,6 +6,7 @@ module.exports = class MapCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'map',
+			aliases: ['google-maps'],
 			group: 'search',
 			memberName: 'map',
 			description: 'Responds with a map based upon your query.',

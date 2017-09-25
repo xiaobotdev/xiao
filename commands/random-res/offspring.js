@@ -5,6 +5,7 @@ module.exports = class OffspringCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'offspring',
+			aliases: ['sex'],
 			group: 'random-res',
 			memberName: 'offspring',
 			description: 'Decides if your new child will be a boy or a girl.'

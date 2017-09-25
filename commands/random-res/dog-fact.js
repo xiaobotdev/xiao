@@ -5,6 +5,7 @@ module.exports = class DogFactCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dog-fact',
+			aliases: ['puppy-fact'],
 			group: 'random-res',
 			memberName: 'dog-fact',
 			description: 'Responds with a dog fact.'

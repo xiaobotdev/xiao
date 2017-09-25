@@ -5,6 +5,7 @@ module.exports = class SecurityKeyCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'security-key',
+			aliases: ['crypto', 'crypto-key'],
 			group: 'random-res',
 			memberName: 'security-key',
 			description: 'Generates a random security key.'

@@ -7,6 +7,7 @@ module.exports = class ChallengerCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'challenger',
+			aliases: ['challenger-approaching'],
 			group: 'avatar-edit',
 			memberName: 'challenger',
 			description: 'Draws a user\'s avatar over Super Smash Bros.\'s "Challenger Approaching" screen.',

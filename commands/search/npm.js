@@ -7,6 +7,7 @@ module.exports = class NPMCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'npm',
+			aliases: ['npm-package'],
 			group: 'search',
 			memberName: 'npm',
 			description: 'Searches NPM for info on an NPM package.',

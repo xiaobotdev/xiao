@@ -7,6 +7,7 @@ module.exports = class SafebooruCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'safebooru',
+			aliases: ['safebooru-image'],
 			group: 'search',
 			memberName: 'safebooru',
 			description: 'Searches Safebooru for your query.',

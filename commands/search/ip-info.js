@@ -6,6 +6,7 @@ module.exports = class IPInfoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'ip-info',
+			aliases: ['ip'],
 			group: 'search',
 			memberName: 'ip-info',
 			description: 'Gets data for an IP address.',

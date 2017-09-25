@@ -6,6 +6,7 @@ module.exports = class RedditCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'reddit',
+			aliases: ['subreddit'],
 			group: 'search',
 			memberName: 'reddit',
 			description: 'Gets a random recent post from a subreddit.',

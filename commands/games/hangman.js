@@ -20,9 +20,8 @@ module.exports = class HangmanCommand extends Command {
 		this.playing.add(msg.channel.id);
 		try {
 			const { body } = await snekfetch
-				.get('http://api.wordnik.com:80/v4/words.json/randomWord')
+				.get('http://api.wordnik.com/v4/words.json/randomWord')
 				.query({
-					hasDictionaryDef: true,
 					minCorpusCount: 0,
 					maxCorpusCount: -1,
 					minDictionaryCount: 1,
