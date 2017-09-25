@@ -24,9 +24,10 @@ module.exports = class AkinatorCommand extends Command {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
 				if (this.sessions.get(msg.channel.id).step >= 80) break;
 				const answers = data.answers.map(answer => answer.answer.toLowerCase());
+				answers.push('end');
 				await msg.say(stripIndents`
 					**${++data.step}.** ${data.question}
-					${data.answers.map(answer => answer.answer).join(' | ')}
+					${data.answers.map(answer => answer.answer).join(' | ')} | End
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
 				const msgs = await msg.channel.awaitMessages(filter, {
@@ -37,6 +38,7 @@ module.exports = class AkinatorCommand extends Command {
 					await msg.say('Sorry, time is up!');
 					break;
 				}
+				if (msgs.first().content.toLowerCase() === 'end') break;
 				ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
 			const guess = await this.finish(msg.channel);
