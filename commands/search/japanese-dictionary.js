@@ -8,7 +8,7 @@ module.exports = class JapaneseDictionaryCommand extends Command {
 			name: 'japanese-dictionary',
 			aliases: ['japanese-define', 'define-japanese', 'define-jpn', 'jpn-define', 'jisho'],
 			group: 'search',
-			memberName: 'define',
+			memberName: 'japanese-dictionary',
 			description: 'Defines a word, but with Japanese.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
