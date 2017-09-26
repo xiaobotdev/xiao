@@ -39,9 +39,9 @@ module.exports = class ThesaurusCommand extends Command {
 				.setColor(0x9797FF)
 				.setTitle(query)
 				.addField('> Synonyms',
-					synonyms.words ? synonyms.words.join(', ') : 'N/A')
+					synonyms ? synonyms.words.join(', ') : 'N/A')
 				.addField('> Antonyms',
-					antonyms.words ? antonyms.words.join(', ') : 'N/A');
+					antonyms ? antonyms.words.join(', ') : 'N/A');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
