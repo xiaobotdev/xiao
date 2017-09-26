@@ -1,1 +1,15 @@
-* text=auto eol=lf
+# Text Files
+*.js text=auto eol=lf
+*.json text=auto eol=lf
+*.md text=auto eol=lf
+
+# Configs and Stuff
+.gitattributes text=auto eol=lf
+.gitignore text=auto eol=lf
+.npmrc text=auto eol=lf
+
+# Asset Files
+*.png binary
+*.mp3 binary
+*.otf binary
+*.ttf binary
