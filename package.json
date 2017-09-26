@@ -42,7 +42,7 @@
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
 		"sequelize": "^4.11.0",
-		"snekfetch": "^3.4.0",
+		"snekfetch": "^3.4.1",
 		"uws": "^8.14.1",
 		"xml-js": "^1.4.2",
 		"zalgolize": "^1.2.4"
