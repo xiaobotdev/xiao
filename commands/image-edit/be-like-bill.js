@@ -31,11 +31,11 @@ module.exports = class BeLikeBillCommand extends Command {
 		});
 	}
 
-	run(msg, { name }) {
+	async run(msg, { name }) {
 		try {
 			const canvas = createCanvas(800, 420);
 			const ctx = canvas.getContext('2d');
-			const base = loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'be-like-bill.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'be-like-bill.png'));
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '23px Noto';
 			const text = stripIndents`
