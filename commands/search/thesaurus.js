@@ -28,7 +28,7 @@ module.exports = class ThesaurusCommand extends Command {
 			const { body } = await snekfetch
 				.get(`http://api.wordnik.com/v4/word.json/${query}/relatedWords`)
 				.query({
-					relationshipTypes: ['synonym', 'antonym'],
+					relationshipTypes: 'synonym,antonym',
 					limitPerRelationshipType: 5,
 					api_key: WORDNIK_KEY
 				});
@@ -38,9 +38,9 @@ module.exports = class ThesaurusCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
 				.setTitle(query)
-				.addField('> Synonyms',
+				.addField('❯ Synonyms',
 					synonyms ? synonyms.words.join(', ') : 'N/A')
-				.addField('> Antonyms',
+				.addField('❯ Antonyms',
 					antonyms ? antonyms.words.join(', ') : 'N/A');
 			return msg.embed(embed);
 		} catch (err) {
