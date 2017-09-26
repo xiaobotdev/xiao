@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 
-module.exports = class DiscrimCommand extends Command {
+module.exports = class DiscriminatorCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'discrim',
-			aliases: ['discriminator', 'search-discrim', 'search-discriminator'],
+			name: 'discriminator',
+			aliases: ['discrim', 'search-discrim', 'search-discriminator'],
 			group: 'search',
 			memberName: 'discrim',
 			description: 'Searches for other users with a certain discriminator.',

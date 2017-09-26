@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 
-module.exports = class GenderCommand extends Command {
+module.exports = class GenderGuessCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'gender',
-			aliases: ['gender-guess', 'guess-gender'],
+			name: 'gender-guess',
+			aliases: ['gender', 'guess-gender'],
 			group: 'random',
 			memberName: 'gender',
 			description: 'Determines the gender of name.',

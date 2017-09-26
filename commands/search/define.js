@@ -7,7 +7,7 @@ module.exports = class DefineCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'define',
-			aliases: ['dictionary', 'wordnik'],
+			aliases: ['dictionary', 'wordnik', 'define-wordnik'],
 			group: 'search',
 			memberName: 'define',
 			description: 'Defines a word.',

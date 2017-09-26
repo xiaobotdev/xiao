@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const facts = require('../../assets/json/dog-fact');
 
 module.exports = class DogFactCommand extends Command {
 	constructor(client) {
@@ -12,13 +12,7 @@ module.exports = class DogFactCommand extends Command {
 		});
 	}
 
-	async run(msg) {
-		try {
-			const { body } = await snekfetch
-				.get('https://dog-api.kinduff.com/api/facts');
-			return msg.say(body.facts[0]);
-		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg) {
+		return msg.say(facts[Math.floor(Math.random() * facts.length)]);
 	}
 };
