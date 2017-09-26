@@ -1,12 +1,12 @@
 # Text Files
-*.js text=auto eol=lf
-*.json text=auto eol=lf
-*.md text=auto eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
 
 # Configs and Stuff
-.gitattributes text=auto eol=lf
-.gitignore text=auto eol=lf
-.npmrc text=auto eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.npmrc text eol=lf
 
 # Asset Files
 *.png binary
