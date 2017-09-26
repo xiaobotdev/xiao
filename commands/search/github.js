@@ -7,7 +7,7 @@ module.exports = class GitHubCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'github',
-			aliases: ['github-repository', 'github-repo'],
+			aliases: ['github-repository', 'github-repo', 'git-repo'],
 			group: 'search',
 			memberName: 'github',
 			description: 'Searches GitHub for information on a repository.',

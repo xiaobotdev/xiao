@@ -12,7 +12,7 @@ module.exports = class TableflipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'tableflip',
-			aliases: ['a-tableflip', 'animated-tableflip'],
+			aliases: ['a-tableflip', 'animated-tableflip', 'tableflip-animated', 'tableflip-a'],
 			group: 'random',
 			memberName: 'tableflip',
 			description: 'Flips a table... With animation!'

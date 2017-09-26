@@ -5,7 +5,7 @@ module.exports = class DonateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'donate',
-			aliases: ['patreon', 'paypal', 'ko-fi'],
+			aliases: ['patreon', 'paypal', 'ko-fi', 'donators'],
 			group: 'util',
 			memberName: 'donate',
 			description: 'Responds with Xiao\'s donation links.',

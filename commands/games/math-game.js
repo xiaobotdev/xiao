@@ -16,6 +16,7 @@ module.exports = class MathGameCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'math-game',
+			aliases: ['math-quiz', 'math-test'],
 			group: 'games',
 			memberName: 'math-game',
 			description: 'See how fast you can answer a math problem in a given time limit.',

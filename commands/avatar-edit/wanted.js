@@ -7,6 +7,7 @@ module.exports = class WantedCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wanted',
+			aliases: ['wanted-poster'],
 			group: 'avatar-edit',
 			memberName: 'wanted',
 			description: 'Draws a user\'s avatar over a wanted poster.',

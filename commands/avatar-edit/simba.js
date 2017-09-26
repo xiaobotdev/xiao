@@ -7,6 +7,7 @@ module.exports = class SimbaCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'simba',
+			aliases: ['mufasa', 'he-lives-in-you'],
 			group: 'avatar-edit',
 			memberName: 'simba',
 			description: 'Draws a user\'s avatar over Simba from The Lion King\'s reflection.',
