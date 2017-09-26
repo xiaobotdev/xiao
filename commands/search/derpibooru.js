@@ -5,7 +5,7 @@ module.exports = class DerpibooruCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'derpibooru',
-			aliases: ['my-little-pony-image', 'mlp-image'],
+			aliases: ['my-little-pony-image', 'mlp-image', 'derpibooru-image'],
 			group: 'search',
 			memberName: 'derpibooru',
 			description: 'Searches Derpibooru for your query.',

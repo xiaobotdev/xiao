@@ -7,6 +7,7 @@ module.exports = class BotSearchCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'bot-info',
+			aliases: ['discord-bots', 'dbots'],
 			group: 'search',
 			memberName: 'bot-info',
 			description: 'Searches Discord Bots for information on a bot.',

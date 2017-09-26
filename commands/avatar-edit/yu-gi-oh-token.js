@@ -7,6 +7,7 @@ module.exports = class YuGiOhTokenCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'yu-gi-oh-token',
+			aliases: ['ygo-token'],
 			group: 'avatar-edit',
 			memberName: 'yu-gi-oh-token',
 			description: 'Draws a user\'s avatar over a blank Yu-Gi-Oh! Token card.',

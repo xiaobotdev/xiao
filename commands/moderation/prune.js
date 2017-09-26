@@ -4,6 +4,7 @@ module.exports = class PruneCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'prune',
+			aliases: ['clear'],
 			group: 'moderation',
 			memberName: 'prune',
 			description: 'Deletes up to 99 messages from the current channel.',
@@ -30,9 +31,13 @@ module.exports = class PruneCommand extends Command {
 	}
 
 	async run(msg, { count }) {
-		const messages = await msg.channel.messages.fetch({ limit: count + 1 });
-		const msgs = await msg.channel.bulkDelete(messages, true);
-		if (!msgs.size) return msg.say('There are no messages younger than two weeks that can be deleted.');
-		return null;
+		try {
+			const messages = await msg.channel.messages.fetch({ limit: count + 1 });
+			const msgs = await msg.channel.bulkDelete(messages, true);
+			if (!msgs.size) return msg.say('There are no messages younger than two weeks that can be deleted.');
+			return null;
+		} catch (err) {
+			return msg.say('There are no messages younger than two weeks that can be deleted.');
+		}
 	}
 };

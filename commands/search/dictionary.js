@@ -3,19 +3,19 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { WORDNIK_KEY } = process.env;
 
-module.exports = class DefineCommand extends Command {
+module.exports = class DictionaryCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'define',
-			aliases: ['dictionary', 'wordnik', 'define-wordnik'],
+			name: 'dictionary',
+			aliases: ['define', 'wordnik', 'define-wordnik'],
 			group: 'search',
-			memberName: 'define',
+			memberName: 'dictionary',
 			description: 'Defines a word.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to define?',
+					prompt: 'What word would you like to look up?',
 					type: 'string',
 					parse: query => encodeURIComponent(query)
 				}

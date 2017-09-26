@@ -2,19 +2,19 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
-module.exports = class JapaneseDefineCommand extends Command {
+module.exports = class JishoCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'japanese-define',
-			aliases: ['japanese-dictionary', 'define-japanese', 'define-jpn', 'jpn-define', 'jisho'],
+			name: 'jisho',
+			aliases: ['japanese-dictionary', 'define-japanese', 'define-jpn', 'jpn-define', 'japanese-define'],
 			group: 'search',
-			memberName: 'japanese-dictionary',
+			memberName: 'jisho',
 			description: 'Defines a word, but with Japanese.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to define?',
+					prompt: 'What word would you like to look up?',
 					type: 'string'
 				}
 			]

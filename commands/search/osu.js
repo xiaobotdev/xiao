@@ -7,7 +7,7 @@ module.exports = class OsuCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'osu',
-			aliases: ['osu-user'],
+			aliases: ['osu-user', 'osu-stats'],
 			group: 'search',
 			memberName: 'osu',
 			description: 'Searches osu! usernames for your query.',

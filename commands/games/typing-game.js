@@ -15,6 +15,7 @@ module.exports = class TypingGameCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'typing-game',
+			aliases: ['typing-test'],
 			group: 'games',
 			memberName: 'typing-game',
 			description: 'See how fast you can type a sentence in a given time limit.',

@@ -5,7 +5,7 @@ module.exports = class MathCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'math',
-			aliases: ['calculator', 'calculate'],
+			aliases: ['calculator', 'calculate', 'calc'],
 			group: 'num-edit',
 			memberName: 'math',
 			description: 'Calculates math expressions.',
