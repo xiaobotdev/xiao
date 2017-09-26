@@ -3,11 +3,11 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { shorten } = require('../../structures/Util');
 
-module.exports = class GhibliCommand extends Command {
+module.exports = class StudioGhibliCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'ghibli',
-			aliases: ['studio-ghibli', 'ghibli-film', 'studio-ghibli-film'],
+			name: 'studio-ghibli',
+			aliases: ['ghibli', 'ghibli-film', 'studio-ghibli-film'],
 			group: 'search',
 			memberName: 'ghibli',
 			description: 'Searches Studio Ghibli films for your query.',

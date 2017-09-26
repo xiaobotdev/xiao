@@ -41,11 +41,12 @@ module.exports = class TypingGameCommand extends Command {
 			**You have ${time / 1000} seconds to type this sentence.**
 			${sentence}
 		`);
+		const now = Date.now();
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
 			time
 		});
 		if (!msgs.size || msgs.first().content !== sentence) return msg.say('Sorry! You lose!');
-		return msg.say('Nice job! 10/10! You deserve some cake!');
+		return msg.say(`Nice job! 10/10! You deserve some cake! (Took ${(Date.now() - now) / 1000} seconds)`);
 	}
 };

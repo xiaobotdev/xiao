@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const facts = require('../../assets/json/cat-fact');
 
 module.exports = class CatFactCommand extends Command {
 	constructor(client) {
@@ -12,14 +12,7 @@ module.exports = class CatFactCommand extends Command {
 		});
 	}
 
-	async run(msg) {
-		try {
-			const { body } = await snekfetch
-				.get('https://catfact.ninja/fact')
-				.query({ max_length: 2000 });
-			return msg.say(body.fact);
-		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg) {
+		return msg.say(facts[Math.floor(Math.random() * facts.length)]);
 	}
 };
