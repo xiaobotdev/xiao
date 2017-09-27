@@ -67,8 +67,9 @@ module.exports = class TranslateCommand extends Command {
 				});
 			const lang = body.lang.split('-');
 			const embed = new MessageEmbed()
-				.setAuthor('Yandex', 'https://i.imgur.com/HMpH9sq.png')
+				.setAuthor('Yandex.Translate', 'https://i.imgur.com/HMpH9sq.png')
 				.setColor(0xFF0000)
+				.setURL(`https://translate.yandex.com/?lang=${body.lang}&text=${text}`)
 				.addField(`❯ From: ${codes[lang[0]]}`,
 					text)
 				.addField(`❯ To: ${codes[lang[1]]}`,
