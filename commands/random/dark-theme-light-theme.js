@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 
-module.exports = class SpamCommand extends Command {
+module.exports = class DarkThemeLightThemeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dark-theme-light-theme',
