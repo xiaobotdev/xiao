@@ -9,7 +9,7 @@ module.exports = class StudioGhibliCommand extends Command {
 			name: 'studio-ghibli',
 			aliases: ['ghibli', 'ghibli-film', 'studio-ghibli-film'],
 			group: 'search',
-			memberName: 'ghibli',
+			memberName: 'studio-ghibli',
 			description: 'Searches Studio Ghibli films for your query.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
