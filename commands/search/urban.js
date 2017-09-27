@@ -31,7 +31,7 @@ module.exports = class UrbanCommand extends Command {
 			const data = body.list[0];
 			const embed = new MessageEmbed()
 				.setColor(0x32A8F0)
-				.setAuthor('Urban Dictionary', 'https://i.imgur.com/fzFuuL7.png')
+				.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png')
 				.setURL(data.permalink)
 				.setTitle(data.word)
 				.setDescription(shorten(data.definition))

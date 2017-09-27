@@ -45,7 +45,7 @@ module.exports = class WikiaCommand extends Command {
 				.setColor(0x002D54)
 				.setTitle(data.title)
 				.setURL(search.body.items[0].url)
-				.setAuthor('Wikia', 'https://i.imgur.com/WzXWJka.png')
+				.setAuthor('Wikia', 'https://i.imgur.com/15A34JT.png')
 				.setDescription(shorten(data.content.map(section => section.text).join('\n\n')))
 				.setThumbnail(data.images.length ? data.images[0].src : null);
 			return msg.embed(embed);

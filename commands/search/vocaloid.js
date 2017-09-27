@@ -39,7 +39,7 @@ module.exports = class VocaloidCommand extends Command {
 			const { minutes, seconds } = duration(data.lengthSeconds * 1000);
 			const embed = new MessageEmbed()
 				.setColor(0x86D2D0)
-				.setAuthor('VocaDB', 'https://i.imgur.com/9Tx9UIc.jpg')
+				.setAuthor('VocaDB', 'https://i.imgur.com/6QwraDT.jpg')
 				.setTitle(data.name)
 				.setURL(`http://vocadb.net/S/${data.id}`)
 				.setDescription(data.lyrics.length ? shorten(data.lyrics[0].value) : 'N/A')

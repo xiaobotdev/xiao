@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/wXShFlF.gif',
-	'https://i.imgur.com/bpBz27N.gif',
-	'https://i.imgur.com/61vX6F6.gif',
-	'https://i.imgur.com/6zv7HP5.gif',
-	'https://i.imgur.com/ExYfGm8.gif'
+	'https://i.imgur.com/988Y889.gif',
+	'https://i.imgur.com/wxnNRmS.gif',
+	'https://i.imgur.com/FDvkjzn.gif',
+	'https://i.imgur.com/CkHHmd7.gif',
+	'https://i.imgur.com/Wispo2E.gif'
 ];
 
 module.exports = class TackleCommand extends Command {

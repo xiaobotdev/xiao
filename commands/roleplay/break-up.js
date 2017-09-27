@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/IgvLWaa.gif',
-	'https://i.imgur.com/ExSXiIP.gif',
-	'https://i.imgur.com/z35hyC8.gif',
-	'https://i.imgur.com/i9VAxiV.gif',
-	'https://i.imgur.com/dvDwVom.gif'
+	'https://i.imgur.com/1e6QRWk.gif',
+	'https://i.imgur.com/hyteoA9.gif',
+	'https://i.imgur.com/wT6357t.gif',
+	'https://i.imgur.com/gyewxtI.gif',
+	'https://i.imgur.com/rjcbrWc.gif'
 ];
 
 module.exports = class BreakUpCommand extends Command {

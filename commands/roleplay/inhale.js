@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/b4NeOXj.gif',
-	'https://i.imgur.com/PnNkvCL.gif',
-	'https://i.imgur.com/f6fojcB.gif',
-	'https://i.imgur.com/JSoSkMV.gif',
-	'https://i.imgur.com/TIEIBHW.gif'
+	'https://i.imgur.com/uUUk2kS.gif',
+	'https://i.imgur.com/7C2v3yS.gif',
+	'https://i.imgur.com/zsuMeQQ.gif',
+	'https://i.imgur.com/kiqXxB6.gif',
+	'https://i.imgur.com/0cK6zPg.gif'
 ];
 
 module.exports = class InhaleCommand extends Command {

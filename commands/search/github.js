@@ -35,7 +35,7 @@ module.exports = class GitHubCommand extends Command {
 				.get(`https://${GITHUB_LOGIN}@api.github.com/repos/${author}/${repository}`);
 			const embed = new MessageEmbed()
 				.setColor(0xFFFFFF)
-				.setAuthor('GitHub', 'https://i.imgur.com/bRROLzk.png')
+				.setAuthor('GitHub', 'https://i.imgur.com/e4HunUm.png')
 				.setTitle(body.full_name)
 				.setURL(body.html_url)
 				.setDescription(body.description || 'No description.')

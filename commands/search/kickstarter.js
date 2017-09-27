@@ -35,7 +35,7 @@ module.exports = class KickstarterCommand extends Command {
 				.setColor(0x14E06E)
 				.setTitle(data.name)
 				.setURL(data.urls.web.project)
-				.setAuthor('Kickstarter', 'https://i.imgur.com/7mJF4qJ.png')
+				.setAuthor('Kickstarter', 'https://i.imgur.com/EHDlH5t.png')
 				.setDescription(data.blurb)
 				.setThumbnail(data.photo ? data.photo.full : null)
 				.addField('❯ Goal',

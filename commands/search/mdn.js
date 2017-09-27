@@ -30,7 +30,7 @@ module.exports = class MDNCommand extends Command {
 			const data = body.documents[0];
 			const embed = new MessageEmbed()
 				.setColor(0x066FAD)
-				.setAuthor('MDN', 'https://i.imgur.com/ClMfs9l.png')
+				.setAuthor('MDN', 'https://i.imgur.com/DFGXabG.png')
 				.setURL(data.url)
 				.setTitle(data.title)
 				.setDescription(data.excerpt);

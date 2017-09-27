@@ -12,6 +12,6 @@ module.exports = class ItsJokeCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say({ files: ['https://i.imgur.com/Gmsx9Ma.jpg'] });
+		return msg.say({ files: ['https://i.imgur.com/NwKdpKK.jpg'] });
 	}
 };

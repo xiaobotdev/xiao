@@ -42,7 +42,7 @@ module.exports = class BulbapediaCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x3E7614)
 				.setTitle(data.title)
-				.setAuthor('Bulbapedia', 'https://i.imgur.com/09eYo5T.png')
+				.setAuthor('Bulbapedia', 'https://i.imgur.com/ePpoeFA.png')
 				.setThumbnail(data.thumbnail ? data.thumbnail.source : null)
 				.setDescription(shorten(data.extract.replace(/\n/g, '\n\n')));
 			return msg.embed(embed);

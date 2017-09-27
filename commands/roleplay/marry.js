@@ -1,10 +1,10 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/u67QLhB.gif',
-	'https://i.imgur.com/k8r28dR.gif',
-	'https://i.imgur.com/pqXqmSB.gif',
-	'https://i.imgur.com/gOb9sTR.gif'
+	'https://i.imgur.com/uz4k1qI.gif',
+	'https://i.imgur.com/jSlUKbw.gif',
+	'https://i.imgur.com/4LMEw0M.gif',
+	'https://i.imgur.com/BbXQqn1.gif'
 ];
 
 module.exports = class MarryCommand extends Command {

@@ -32,7 +32,7 @@ module.exports = class RedditCommand extends Command {
 			if (!msg.channel.nsfw && post.over_18) return msg.say('This post is only viewable in NSFW channels.');
 			const embed = new MessageEmbed()
 				.setColor(0xFF4500)
-				.setAuthor('Reddit', 'https://i.imgur.com/V6hXniU.png')
+				.setAuthor('Reddit', 'https://i.imgur.com/DSBOK0P.png')
 				.setURL(`https://www.reddit.com${post.permalink}`)
 				.setTitle(post.title)
 				.setDescription(`[View URL Here](${post.url})`)

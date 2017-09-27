@@ -42,7 +42,7 @@ module.exports = class WikipediaCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xE7E7E7)
 				.setTitle(data.title)
-				.setAuthor('Wikipedia', 'https://i.imgur.com/a4eeEhh.png')
+				.setAuthor('Wikipedia', 'https://i.imgur.com/Z7NJBK2.png')
 				.setThumbnail(data.thumbnail ? data.thumbnail.source : null)
 				.setDescription(shorten(data.extract.replace(/\n/g, '\n\n')));
 			return msg.embed(embed);

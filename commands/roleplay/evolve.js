@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/gkdDk4P.gif',
-	'https://i.imgur.com/BjFCGGx.gif',
-	'https://i.imgur.com/XJkJ9UR.gif',
-	'https://i.imgur.com/H2XpKr6.gif',
-	'https://i.imgur.com/McM6VYZ.gif'
+	'https://i.imgur.com/bWJR9Ob.gif',
+	'https://i.imgur.com/xW2p3BU.gif',
+	'https://i.imgur.com/cMbUiPq.gif',
+	'https://i.imgur.com/r1pvaH0.gif',
+	'https://i.imgur.com/kWnkgI8.gif'
 ];
 
 module.exports = class EvolveCommand extends Command {
