@@ -35,9 +35,11 @@ module.exports = class DictionaryCommand extends Command {
 			if (!body.length) return msg.say('Could not find any results.');
 			const data = body[0];
 			const embed = new MessageEmbed()
-				.setColor(0x9797FF)
+				.setAuthor('Wordnik', 'https://i.imgur.com/VcLZLXn.jpg')
+				.setColor(0xFE6F11)
 				.setTitle(data.word)
-				.setDescription(`(${data.partOfSpeech}) ${data.text}`);
+				.setURL(`http://wordnik.com/words/${query}#define`)
+				.setDescription(`(${data.partOfSpeech || 'N/A'}) ${data.text}`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

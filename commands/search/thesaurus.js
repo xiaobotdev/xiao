@@ -36,8 +36,10 @@ module.exports = class ThesaurusCommand extends Command {
 			const synonyms = body.find(i => i.relationshipType === 'synonym');
 			const antonyms = body.find(i => i.relationshipType === 'antonym');
 			const embed = new MessageEmbed()
-				.setColor(0x9797FF)
+				.setAuthor('Wordnik', 'https://i.imgur.com/VcLZLXn.jpg')
+				.setColor(0xFE6F11)
 				.setTitle(query)
+				.setURL(`http://wordnik.com/words/${query}#relate`)
 				.addField('❯ Synonyms',
 					synonyms ? synonyms.words.join(', ') : 'N/A')
 				.addField('❯ Antonyms',
