@@ -23,7 +23,8 @@ module.exports = class RoleInfoCommand extends Command {
 	}
 
 	run(msg, { role }) {
-		const perms = Object.keys(util.permissions).filter(perm => role.serialize()[perm]);
+		const serialized = role.permissions.serialize();
+		const perms = Object.keys(util.permissions).filter(perm => serialized[perm]);
 		const embed = new MessageEmbed()
 			.setColor(role.hexColor)
 			.addField('❯ Name',
