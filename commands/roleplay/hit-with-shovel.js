@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 
-module.exports = class HitwithShovelCommand extends Command {
+module.exports = class HitWithShovelCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'hit-with-shovel',

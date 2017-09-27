@@ -4,7 +4,7 @@ const snekfetch = require('snekfetch');
 const { list } = require('../../structures/Util');
 const countries = ['us', 'jp'];
 
-module.exports = class iTunesCommand extends Command {
+module.exports = class ITunesCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'itunes',

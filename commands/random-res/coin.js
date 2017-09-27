@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const sides = ['heads', 'tails'];
 
-module.exports = class CoinFlipCommand extends Command {
+module.exports = class CoinCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'coin',

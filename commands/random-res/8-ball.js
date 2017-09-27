@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const answers = require('../../assets/json/8-ball');
 
-module.exports = class MagicBallCommand extends Command {
+module.exports = class EightBallCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: '8-ball',
