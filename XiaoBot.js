@@ -7,7 +7,7 @@ const client = new Client({
 	invite: INVITE,
 	disableEveryone: true,
 	unknownCommandResponse: false,
-	disabledEvents: ['TYPING_START', 'PRESENCE_UPDATE'],
+	disabledEvents: ['TYPING_START'],
 	messageCacheLifetime: 600,
 	messageSweepInterval: 120
 });
