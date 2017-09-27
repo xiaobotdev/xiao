@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/mpi3pwu.gif',
-	'https://i.imgur.com/0yAIWbg.gif',
-	'https://i.imgur.com/xQPBSIs.gif',
-	'https://i.imgur.com/O4K8Bj4.gif',
-	'https://i.imgur.com/eBWR5vJ.gif'
+	'https://i.imgur.com/JbkXFWy.gif',
+	'https://i.imgur.com/LEVJfhI.gif',
+	'https://i.imgur.com/WaJDnnS.gif',
+	'https://i.imgur.com/wu4Xkpg.gif',
+	'https://i.imgur.com/yAqf997.gif'
 ];
 
 module.exports = class CuddleCommand extends Command {

@@ -12,6 +12,6 @@ module.exports = class SpamCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say({ files: ['https://i.imgur.com/arx7GJV.jpg'] });
+		return msg.say({ files: ['https://i.imgur.com/Az9IrXY.jpg'] });
 	}
 };

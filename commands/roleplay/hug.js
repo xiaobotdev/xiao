@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/q9Wkhz4.gif',
-	'https://i.imgur.com/dUejMIs.gif',
-	'https://i.imgur.com/NsTtb7j.gif',
-	'https://i.imgur.com/p4CZKph.gif',
-	'https://i.imgur.com/1L9TaPV.gif'
+	'https://i.imgur.com/yb29pZP.gif',
+	'https://i.imgur.com/uLL4nHN.gif',
+	'https://i.imgur.com/4pWi9tx.gif',
+	'https://i.imgur.com/2BiHTef.gif',
+	'https://i.imgur.com/lSyjOHL.gif'
 ];
 
 module.exports = class HugCommand extends Command {

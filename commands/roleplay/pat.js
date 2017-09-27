@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/oynHZmT.gif',
-	'https://i.imgur.com/qcZiv4W.gif',
-	'https://i.imgur.com/aAvI3Cq.gif',
-	'https://i.imgur.com/DJ6iTRW.gif',
-	'https://i.imgur.com/whDGqSu.gif'
+	'https://i.imgur.com/vNEN1CC.gif',
+	'https://i.imgur.com/iWC1ZLa.gif',
+	'https://i.imgur.com/APxZpnT.gif',
+	'https://i.imgur.com/uwbx4lE.gif',
+	'https://i.imgur.com/p0AzUqV.gif'
 ];
 
 module.exports = class PatCommand extends Command {

@@ -29,7 +29,7 @@ module.exports = class NPMCommand extends Command {
 				.get(`https://registry.npmjs.com/${query}`);
 			const embed = new MessageEmbed()
 				.setColor(0xCB0000)
-				.setAuthor('NPM', 'https://i.imgur.com/BCODHXd.png')
+				.setAuthor('NPM', 'https://i.imgur.com/ErKf5Y0.png')
 				.setTitle(body.name)
 				.setURL(`https://www.npmjs.com/package/${query}`)
 				.setDescription(body.description || 'No Description.')

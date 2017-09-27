@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/LOuK637.gif',
-	'https://i.imgur.com/7nG6pDW.gif',
-	'https://i.imgur.com/yxxSoFV.gif',
-	'https://i.imgur.com/gC31YyP.gif',
-	'https://i.imgur.com/RT0Qk0V.gif'
+	'https://i.imgur.com/womEZVC.gif',
+	'https://i.imgur.com/uw3S3hq.gif',
+	'https://i.imgur.com/CVPT9ii.gif',
+	'https://i.imgur.com/wGmUAIA.gif',
+	'https://i.imgur.com/2HEhWdv.gif'
 ];
 
 module.exports = class FalconPunchCommand extends Command {

@@ -31,7 +31,7 @@ module.exports = class StudioGhibliCommand extends Command {
 			const data = body[0];
 			const embed = new MessageEmbed()
 				.setColor(0xE7E7E7)
-				.setAuthor('Studio Ghibli', 'https://i.imgur.com/P3YafQ3.jpg')
+				.setAuthor('Studio Ghibli', 'https://i.imgur.com/fQvw2B8.jpg')
 				.setTitle(data.title)
 				.setDescription(shorten(data.description))
 				.addField('❯ Release Year',

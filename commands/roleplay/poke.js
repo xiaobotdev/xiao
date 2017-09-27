@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/XMuJ7K8.gif',
-	'https://i.imgur.com/mewvEFw.gif',
-	'https://i.imgur.com/RKGafME.gif',
-	'https://i.imgur.com/pqgsmX1.gif',
-	'https://i.imgur.com/Ez67xSU.gif'
+	'https://i.imgur.com/argcQ0p.gif',
+	'https://i.imgur.com/2QnSTJv.gif',
+	'https://i.imgur.com/W5ooaKk.gif',
+	'https://i.imgur.com/kpGGGie.gif',
+	'https://i.imgur.com/d35YfMo.gif'
 ];
 
 module.exports = class PokeCommand extends Command {

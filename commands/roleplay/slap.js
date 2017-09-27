@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://i.imgur.com/rfy8z2K.gif',
-	'https://i.imgur.com/FsygXIT.gif',
-	'https://i.imgur.com/8sbR33w.gif',
-	'https://i.imgur.com/wsIpwcT.gif',
-	'https://i.imgur.com/mAV8aa7.gif'
+	'https://i.imgur.com/bNw8icN.gif',
+	'https://i.imgur.com/wvQZQSs.gif',
+	'https://i.imgur.com/ib0G51r.gif',
+	'https://i.imgur.com/y7zW1gc.gif',
+	'https://i.imgur.com/vHRiZDg.gif'
 ];
 
 module.exports = class SlapCommand extends Command {

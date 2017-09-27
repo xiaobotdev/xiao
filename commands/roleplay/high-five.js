@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const gifs = [
-	'https://media.giphy.com/media/x58AS8I9DBRgA/giphy.gif',
-	'https://i.imgur.com/W4cEKMy.gif',
-	'https://i.imgur.com/r67Klvg.gif',
-	'https://i.imgur.com/zi7D5X2.gif',
-	'https://i.imgur.com/rJJWFj8.gif'
+	'https://i.imgur.com/YvbhAML.gif',
+	'https://i.imgur.com/LOWtASy.gif',
+	'https://i.imgur.com/LgtJwPW.gif',
+	'https://i.imgur.com/GuLDF6b.gif',
+	'https://i.imgur.com/2DdIR5H.gif'
 ];
 
 module.exports = class HighFivesCommand extends Command {

@@ -50,7 +50,7 @@ module.exports = class iTunesCommand extends Command {
 			const data = body.results[0];
 			const embed = new MessageEmbed()
 				.setColor(0xFEFEFE)
-				.setAuthor('iTunes', 'https://i.imgur.com/TbqzJFs.jpg')
+				.setAuthor('iTunes', 'https://i.imgur.com/PR29ow0.jpg')
 				.setURL(data.trackViewUrl)
 				.setThumbnail(data.artworkUrl100)
 				.setTitle(data.trackName)

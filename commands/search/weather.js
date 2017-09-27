@@ -46,7 +46,7 @@ module.exports = class WeatherCommand extends Command {
 				});
 			const embed = new MessageEmbed()
 				.setColor(0xFF7A09)
-				.setAuthor('OpenWeatherMap', 'https://i.imgur.com/S5MHmeY.png')
+				.setAuthor('OpenWeatherMap', 'https://i.imgur.com/tUd1MYB.png')
 				.setThumbnail(body.weather[0].icon ? `http://openweathermap.org/img/w/${body.weather[0].icon}.png` : null)
 				.setTimestamp()
 				.addField('❯ City',
