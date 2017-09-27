@@ -36,6 +36,7 @@ module.exports = class HoroscopeCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
 				.setTitle(`Horoscope for ${body.sunsign}...`)
+				.setURL('https://new.theastrologer.com/horoscopes/')
 				.setTimestamp()
 				.setDescription(body.horoscope)
 				.addField('❯ Mood',

@@ -21,9 +21,11 @@ module.exports = class WordOfTheDayCommand extends Command {
 				.get('http://api.wordnik.com/v4/words.json/wordOfTheDay')
 				.query({ api_key: WORDNIK_KEY });
 			const embed = new MessageEmbed()
-				.setColor(0x9797FF)
+				.setAuthor('Wordnik', 'https://i.imgur.com/VcLZLXn.jpg')
+				.setColor(0xFE6F11)
 				.setTitle(body.word)
-				.setDescription(`(${body.definitions[0].partOfSpeech}) ${body.definitions[0].text}`);
+				.setURL('http://wordnik.com/word-of-the-day')
+				.setDescription(`(${body.definitions[0].partOfSpeech || 'N/A'}) ${body.definitions[0].text}`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

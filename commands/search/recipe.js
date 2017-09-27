@@ -30,6 +30,7 @@ module.exports = class RecipeCommand extends Command {
 			if (!body.results.length) return msg.say('Could not find any results.');
 			const recipe = body.results[Math.floor(Math.random() * body.results.length)];
 			const embed = new MessageEmbed()
+				.setAuthor('Recipe Puppy', 'https://i.imgur.com/mn05Z8y.png')
 				.setColor(0xC20000)
 				.setURL(recipe.href)
 				.setTitle(recipe.title)

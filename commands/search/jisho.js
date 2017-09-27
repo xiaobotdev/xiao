@@ -29,8 +29,10 @@ module.exports = class JishoCommand extends Command {
 			if (!body.data.length) return msg.say('Could not find any results.');
 			const data = body.data[0];
 			const embed = new MessageEmbed()
-				.setColor(0x9797FF)
+				.setAuthor('Jisho', 'https://i.imgur.com/CBJZe2m.png')
+				.setColor(0x0BC510)
 				.setTitle(data.japanese[0].word)
+				.setURL(`http://jisho.org/word/${data.japanese[0].word}`)
 				.setDescription(data.senses[0].english_definitions.join(', '));
 			return msg.embed(embed);
 		} catch (err) {
