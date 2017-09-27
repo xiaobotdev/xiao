@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndent } = require('common-tags');
 
-module.exports = class CowsayCommand extends Command {
+module.exports = class CowSayCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'cow-say',

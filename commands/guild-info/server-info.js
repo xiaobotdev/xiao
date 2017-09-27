@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const filterLevels = ['Off', 'No Role', 'Everyone'];
 const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻', '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'];
 
-module.exports = class GuildInfoCommand extends Command {
+module.exports = class ServerInfoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'server-info',

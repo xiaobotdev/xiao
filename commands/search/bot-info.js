@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { DBOTS_KEY } = process.env;
 
-module.exports = class BotSearchCommand extends Command {
+module.exports = class BotInfoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'bot-info',

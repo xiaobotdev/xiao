@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { WORDNIK_KEY } = process.env;
 
-module.exports = class DefineCommand extends Command {
+module.exports = class WordOfTheDayCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'word-of-the-day',

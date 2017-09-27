@@ -8,7 +8,7 @@ const gifs = [
 	'https://i.imgur.com/2DdIR5H.gif'
 ];
 
-module.exports = class HighFivesCommand extends Command {
+module.exports = class HighFiveCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'high-five',
