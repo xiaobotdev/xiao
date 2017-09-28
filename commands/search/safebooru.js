@@ -35,7 +35,7 @@ module.exports = class SafebooruCommand extends Command {
 			if (parsed._attributes.count === '0' || !parsed.post.length) return msg.say('Could not find any results.');
 			return msg.say(stripIndents`
 				Result for ${query}:
-				http:${parsed.post.posts[Math.floor(Math.random() * parsed.post.posts.length)]._attributes.file_url}
+				http:${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}
 			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
