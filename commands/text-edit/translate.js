@@ -68,6 +68,7 @@ module.exports = class TranslateCommand extends Command {
 			const lang = body.lang.split('-');
 			const embed = new MessageEmbed()
 				.setColor(0xFF0000)
+				.setFooter('Powered by Yandex.Translate', 'https://i.imgur.com/HMpH9sq.png')
 				.addField(`❯ From: ${codes[lang[0]]}`,
 					text)
 				.addField(`❯ To: ${codes[lang[1]]}`,
