@@ -41,7 +41,7 @@ module.exports = class IHaveThePowerCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(18.3 * (Math.PI / 180));
-			ctx.drawImage(avatar, 325, -6, 175, 175);
+			ctx.drawImage(avatar, 330, -15, 175, 175);
 			ctx.rotate(-18.3 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'i-have-the-power.png' }] });
 		} catch (err) {
