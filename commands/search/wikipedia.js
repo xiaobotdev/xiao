@@ -44,7 +44,7 @@ module.exports = class WikipediaCommand extends Command {
 				.setTitle(data.title)
 				.setAuthor('Wikipedia', 'https://i.imgur.com/Z7NJBK2.png')
 				.setThumbnail(data.thumbnail ? data.thumbnail.source : null)
-				.setURL(`https://en.wikipedia.org/wiki/${query.replace(/\)/gi, '%29')}`)
+				.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query.replace(/\)/gi, '%29'))}`)
 				.setDescription(shorten(data.extract.replace(/\n/g, '\n\n')));
 			return msg.embed(embed);
 		} catch (err) {
