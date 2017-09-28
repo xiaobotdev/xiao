@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { stripIndents } = require('common-tags');
 const { WORDNIK_KEY } = process.env;
 
 module.exports = class DictionaryCommand extends Command {
@@ -11,7 +11,6 @@ module.exports = class DictionaryCommand extends Command {
 			group: 'search',
 			memberName: 'dictionary',
 			description: 'Defines a word.',
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
@@ -34,13 +33,10 @@ module.exports = class DictionaryCommand extends Command {
 				});
 			if (!body.length) return msg.say('Could not find any results.');
 			const data = body[0];
-			const embed = new MessageEmbed()
-				.setAuthor('Wordnik', 'https://i.imgur.com/VcLZLXn.jpg')
-				.setColor(0xFE6F11)
-				.setTitle(data.word)
-				.setURL(`http://wordnik.com/words/${query}#define`)
-				.setDescription(`(${data.partOfSpeech || 'N/A'}) ${data.text}`);
-			return msg.embed(embed);
+			return msg.say(stripIndents`
+				**${data.word}**
+				(${data.partOfSpeech || 'N/A'}) ${data.text}
+			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

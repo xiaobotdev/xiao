@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { stripIndents } = require('common-tags');
 const { WORDNIK_KEY } = process.env;
 
 module.exports = class ThesaurusCommand extends Command {
@@ -11,7 +11,6 @@ module.exports = class ThesaurusCommand extends Command {
 			group: 'search',
 			memberName: 'thesaurus',
 			description: 'Gets the synonyms and antonyms of a word.',
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
@@ -35,16 +34,11 @@ module.exports = class ThesaurusCommand extends Command {
 			if (!body.length) return msg.say('Could not find any results.');
 			const synonyms = body.find(i => i.relationshipType === 'synonym');
 			const antonyms = body.find(i => i.relationshipType === 'antonym');
-			const embed = new MessageEmbed()
-				.setAuthor('Wordnik', 'https://i.imgur.com/VcLZLXn.jpg')
-				.setColor(0xFE6F11)
-				.setTitle(query)
-				.setURL(`http://wordnik.com/words/${query}#relate`)
-				.addField('❯ Synonyms',
-					synonyms ? synonyms.words.join(', ') : 'N/A')
-				.addField('❯ Antonyms',
-					antonyms ? antonyms.words.join(', ') : 'N/A');
-			return msg.embed(embed);
+			return msg.say(stripIndents`
+				**${query}**
+				__Synonyms:__ ${synonyms ? synonyms.words.join(', ') : 'N/A'}
+				__Antonyms:__ ${antonyms ? antonyms.words.join(', ') : 'N/A'}
+			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

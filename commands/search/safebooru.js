@@ -1,12 +1,7 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { xml2js } = require('xml-js');
-const { shorten } = require('../../structures/Util');
-const ratings = {
-	s: 'Safe',
-	q: 'Questionable'
-};
+const { stripIndents } = require('common-tags');
 
 module.exports = class SafebooruCommand extends Command {
 	constructor(client) {
@@ -16,13 +11,11 @@ module.exports = class SafebooruCommand extends Command {
 			group: 'search',
 			memberName: 'safebooru',
 			description: 'Searches Safebooru for your query.',
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
 					prompt: 'What image would you like to search for?',
-					type: 'string',
-					default: ''
+					type: 'string'
 				}
 			]
 		});
@@ -40,21 +33,10 @@ module.exports = class SafebooruCommand extends Command {
 				});
 			const parsed = xml2js(text, { compact: true }).posts;
 			if (parsed._attributes.count === '0' || !parsed.post.length) return msg.say('Could not find any results.');
-			const posts = msg.channel.nsfw ? parsed.post : parsed.post.filter(post => post._attributes.rating === 's');
-			if (!posts.length) return msg.say('Could not find any results.');
-			const data = posts[Math.floor(Math.random() * posts.length)]._attributes;
-			const embed = new MessageEmbed()
-				.setAuthor('Safebooru', 'https://i.imgur.com/iGMNwhf.jpg')
-				.setColor(0xC6D2E1)
-				.setURL(`http://safebooru.org/index.php?page=post&s=view&id=${data.id}`)
-				.setImage(`https:${data.file_url}`)
-				.addField('❯ Upload Date',
-					new Date(data.created_at).toDateString(), true)
-				.addField('❯ Rating',
-					ratings[data.rating], true)
-				.addField('❯ Tags',
-					shorten(data.tags, 1000));
-			return msg.embed(embed);
+			return msg.say(stripIndents`
+				Result for ${query}:
+				http:${parsed.post.posts[Math.floor(Math.random() * parsed.post.posts.length)]._attributes.file_url}
+			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
