@@ -27,7 +27,6 @@ module.exports = class ZalgoCommand extends Command {
 		let result = '';
 		for (let i = 0; i < text.length; i++) {
 			result += text[i];
-			if (text[i].length > 1) continue;
 			const counts = {
 				up: Math.floor(Math.random() * 16) + 1,
 				middle: Math.floor(Math.random() * 4) + 1,
