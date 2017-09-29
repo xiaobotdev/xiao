@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const { list } = require('../../structures/Util');
 const path = require('path');
 const sounds = ['airhorn', 'cat', 'dun-dun-dun', 'laugh track', 'pikachu', 'space'];

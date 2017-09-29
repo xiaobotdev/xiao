@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const { shuffle } = require('../../structures/Util');
 
 module.exports = class ShuffleCommand extends Command {

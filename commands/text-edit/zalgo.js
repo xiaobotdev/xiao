@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const zalgo = require('zalgolize');
 
 module.exports = class ZalgoCommand extends Command {

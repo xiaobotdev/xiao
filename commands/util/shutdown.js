@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 
 module.exports = class ShutdownCommand extends Command {
 	constructor(client) {
@@ -9,7 +9,6 @@ module.exports = class ShutdownCommand extends Command {
 			memberName: 'shutdown',
 			description: 'Shuts down the current shard, or all shards.',
 			guarded: true,
-			ownerOnly: true,
 			args: [
 				{
 					key: 'all',
@@ -19,6 +18,10 @@ module.exports = class ShutdownCommand extends Command {
 				}
 			]
 		});
+	}
+
+	hasPermission(msg) {
+		return this.client.isOwner(msg.author) || `The \`${this.name}\` command can only be used by the bot owner.`;
 	}
 
 	async run(msg, { all }) {

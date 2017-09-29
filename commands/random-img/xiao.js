@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const xiaos = require('../../assets/json/xiao');
 
 module.exports = class XiaoCommand extends Command {

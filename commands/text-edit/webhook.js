@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const { WEBHOOK_URL } = process.env;
 
@@ -10,7 +10,6 @@ module.exports = class WebhookCommand extends Command {
 			group: 'text-edit',
 			memberName: 'webhook',
 			description: 'Posts a message to the webhook defined in your `process.env`.',
-			ownerOnly: true,
 			args: [
 				{
 					key: 'content',
@@ -19,6 +18,10 @@ module.exports = class WebhookCommand extends Command {
 				}
 			]
 		});
+	}
+
+	hasPermission(msg) {
+		return this.client.isOwner(msg.author) || `The \`${this.name}\` command can only be used by the bot owner.`;
 	}
 
 	async run(msg, { content }) {
