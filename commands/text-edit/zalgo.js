@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const zalgo = require('zalgolize');
+const zalgo = require('../../assets/json/zalgo');
 
 module.exports = class ZalgoCommand extends Command {
 	constructor(client) {
@@ -24,6 +24,21 @@ module.exports = class ZalgoCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.say(zalgo(text));
+		let result = '';
+		for (let i = 0; i < text.length; i++) {
+			result += text[i];
+			if (text[i].length > 1) continue;
+			const counts = {
+				up: Math.floor(Math.random() * 8) + 1,
+				middle: Math.floor(Math.random() * 3),
+				down: Math.floor(Math.random() * 8) + 1
+			};
+			for (const type of Object.keys(counts)) {
+				const count = counts[type];
+				const chars = zalgo[type];
+				while (count--) result += chars[Math.floor(Math.random() * chars.length)];
+			}
+		}
+		return msg.say(result);
 	}
 };
