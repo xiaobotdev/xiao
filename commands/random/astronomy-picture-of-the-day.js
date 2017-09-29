@@ -3,13 +3,13 @@ const snekfetch = require('snekfetch');
 const { shorten } = require('../../structures/Util');
 const { GOV_KEY } = process.env;
 
-module.exports = class APODCommand extends Command {
+module.exports = class AstronomyPictureOfTheDayCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'apod',
-			aliases: ['nasa-apod', 'astronomy-picture-of-the-day', 'apod-image', 'nasa-apod-image'],
+			name: 'astronomy-picture-of-the-day',
+			aliases: ['nasa-apod', 'apod'],
 			group: 'random',
-			memberName: 'apod',
+			memberName: 'astronomy-picture-of-the-day',
 			description: 'Responds with today\'s Astronomy Picture of the Day.',
 			clientPermissions: ['ATTACH_FILES']
 		});
