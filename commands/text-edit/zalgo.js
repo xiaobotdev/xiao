@@ -34,7 +34,7 @@ module.exports = class ZalgoCommand extends Command {
 				down: Math.floor(Math.random() * 8) + 1
 			};
 			for (const type of Object.keys(counts)) {
-				const count = counts[type];
+				let count = counts[type];
 				const chars = zalgo[type];
 				while (count--) result += chars[Math.floor(Math.random() * chars.length)];
 			}
