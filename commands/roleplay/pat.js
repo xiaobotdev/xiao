@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
 const gifs = [
 	'https://i.imgur.com/vNEN1CC.gif',

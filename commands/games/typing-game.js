@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../structures/Util');
 const sentences = require('../../assets/json/typing-game');

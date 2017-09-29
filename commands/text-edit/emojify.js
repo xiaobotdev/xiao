@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const { letterTrans } = require('custom-translate');
 const dictionary = require('../../assets/json/emojify');
 

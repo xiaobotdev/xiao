@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const { version } = require('../../package');
 const { duration } = require('../../structures/Util');

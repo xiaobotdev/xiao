@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const { wait } = require('../../structures/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull'];
 

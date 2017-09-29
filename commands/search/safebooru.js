@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const { xml2js } = require('xml-js');
 const { stripIndents } = require('common-tags');

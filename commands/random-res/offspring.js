@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 const genders = ['boy', 'girl'];
 
 module.exports = class OffspringCommand extends Command {
