@@ -19,7 +19,7 @@ module.exports = class AstronomyPictureOfTheDayCommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get('https://api.nasa.gov/planetary/apod')
-				.query({ qpi_key: GOV_KEY });
+				.query({ api_key: GOV_KEY });
 			return msg.say(shorten(body.explanation), { files: [body.url] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
