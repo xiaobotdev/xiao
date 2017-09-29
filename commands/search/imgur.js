@@ -26,7 +26,7 @@ module.exports = class ImgurCommand extends Command {
 				.get('https://api.imgur.com/3/gallery/search')
 				.query({ q: query })
 				.set({ Authorization: `Client-ID ${IMGUR_KEY}` });
-			const images = msg.channel.nsfw ? body.data : body.data.filter(image => !image.nsfw);
+			const images = body.data.filter(image => image.images && (msg.channel.nsfw ? true : !image.nsfw));
 			if (!images.length) return msg.say('Could not find any results.');
 			return msg.say(images[Math.floor(Math.random() * images.length)].images[0].link);
 		} catch (err) {
