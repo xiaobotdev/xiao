@@ -28,9 +28,9 @@ module.exports = class ZalgoCommand extends Command {
 		for (let i = 0; i < text.length; i++) {
 			result += text[i];
 			const counts = {
-				up: Math.floor(Math.random() * 16) + 1,
-				middle: Math.floor(Math.random() * 4) + 1,
-				down: Math.floor(Math.random() * 64) + 1
+				up: Math.floor(Math.random() * 8) + 1,
+				middle: Math.floor(Math.random() * 3),
+				down: Math.floor(Math.random() * 8) + 1
 			};
 			for (const type of Object.keys(counts)) {
 				let count = counts[type];
