@@ -1,7 +1,7 @@
 const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
 const path = require('path');
-const Client = require('./structures/Client');
-const client = new Client({
+const { CommandoClient } = require('discord.js-commando');
+const client = new CommandoClient({
 	commandPrefix: COMMAND_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
@@ -11,14 +11,12 @@ const client = new Client({
 	messageCacheLifetime: 600,
 	messageSweepInterval: 120
 });
-const SequelizeProvider = require('./providers/Sequelize');
 const { postStats } = require('./structures/Util');
 
 client.registry
 	.registerDefaultTypes()
 	.registerGroups([
 		['util', 'Utility'],
-		['commands', 'Command Management'],
 		['user-info', 'User Info'],
 		['guild-info', 'Server Info'],
 		['moderation', 'Moderation'],
@@ -35,11 +33,11 @@ client.registry
 	])
 	.registerDefaultCommands({
 		help: false,
-		ping: false
+		ping: false,
+		prefix: false,
+		commandState: false
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
-
-client.setProvider(new SequelizeProvider(client.database));
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag} (${client.user.id})!`);
