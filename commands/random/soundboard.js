@@ -17,6 +17,7 @@ module.exports = class SoundboardCommand extends Command {
 				usages: 1,
 				duration: 15
 			},
+			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'sound',
@@ -45,8 +46,14 @@ module.exports = class SoundboardCommand extends Command {
 		try {
 			const connection = await channel.join();
 			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', `${sound}.mp3`));
-			dispatcher.once('end', () => channel.leave());
-			dispatcher.once('error', () => channel.leave());
+			dispatcher.once('end', async () => {
+				channel.leave();
+				await msg.react('✅');
+			});
+			dispatcher.once('error', async () => {
+				channel.leave();
+				await msg.react('⚠');
+			});
 			return null;
 		} catch (err) {
 			channel.leave();
