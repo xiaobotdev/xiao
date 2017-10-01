@@ -12,7 +12,7 @@ module.exports = class DECTalkCommand extends Command {
 		super(client, {
 			name: 'dec-talk',
 			aliases: ['moon-base-alpha', 'text-to-speech', 'tts'],
-			group: 'fun',
+			group: 'text-edit',
 			memberName: 'dec-talk',
 			description: 'The world\'s best Text-to-Speech.',
 			guildOnly: true,
