@@ -37,9 +37,16 @@
 		"discord.js": "github:hydrabolt/discord.js",
 		"discord.js-commando": "github:gawdl3y/discord.js-commando",
 		"erlpack": "github:discordapp/erlpack",
-		"mathjs": "^3.16.3",
+		"mathjs": "^3.16.4",
 		"node-opus": "^0.2.7",
-		"snekfetch": "^3.4.1",
+<<<<<<< HEAD
+		"snekfetch": "^3.4.2",
+=======
+		"pg": "^6.4.2",
+		"pg-hstore": "^2.3.2",
+		"sequelize": "^4.13.1",
+		"snekfetch": "^3.4.2",
+>>>>>>> 08785fdc8f0c24988f5a6c6ca60dd941f1b229fc
 		"uws": "^8.14.1",
 		"xml-js": "^1.4.2"
 	},
