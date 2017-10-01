@@ -8,6 +8,8 @@ module.exports = class SayCommand extends Command {
 			group: 'text-edit',
 			memberName: 'say',
 			description: 'Make XiaoBot say what you wish.',
+			guildOnly: true,
+			clientPermissions: ['MANAGE_MESSAGES', 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'text',
@@ -19,9 +21,7 @@ module.exports = class SayCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		if (msg.channel.type === 'text' && msg.channel.permissionsFor(this.client.user).has('MANAGE_MESSAGES')) {
-			await msg.delete();
-		}
+		await msg.delete();
 		return msg.say(text);
 	}
 };
