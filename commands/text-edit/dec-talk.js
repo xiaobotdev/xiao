@@ -62,8 +62,6 @@ module.exports = class DECTalkCommand extends Command {
 		try {
 			if (fs.existsSync(file)) await fs.unlinkAsync(file);
 			await msg.react(fail ? '⚠' : '✅');
-		} catch (err) {
-			await msg.react('⚠');
 		} finally {
 			channel.leave();
 		}
