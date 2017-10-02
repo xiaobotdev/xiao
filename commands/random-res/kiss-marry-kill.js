@@ -14,7 +14,8 @@ module.exports = class KissMarryKillCommand extends Command {
 					key: 'thing1',
 					prompt: 'Who is the first person you choose?',
 					type: 'string'
-				},				{
+				},
+				{
 					key: 'thing2',
 					prompt: 'Who is the second person you choose?',
 					type: 'string'
