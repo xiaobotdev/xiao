@@ -1,6 +1,6 @@
 {
 	"name": "xiaobot",
-	"version": "44.0.1",
+	"version": "44.0.2",
 	"description": "Your personal server companion.",
 	"main": "Shard.js",
 	"scripts": {
@@ -40,6 +40,7 @@
 		"mathjs": "^3.16.4",
 		"node-opus": "^0.2.7",
 		"snekfetch": "^3.4.2",
+		"tsubaki": "^1.2.0",
 		"uws": "^8.14.1",
 		"xml-js": "^1.4.2"
 	},

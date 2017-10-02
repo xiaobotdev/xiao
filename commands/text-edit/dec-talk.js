@@ -1,11 +1,8 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const { promisify } = require('util');
-const fs = require('fs');
-const writeFileAsync = promisify(fs.writeFile);
-const unlinkAsync = promisify(fs.unlink);
-const crypto = require('crypto');
+const { promisifyAll } = require('tsubaki');
+const fs = promisifyAll(require('fs'));
 
 module.exports = class DECTalkCommand extends Command {
 	constructor(client) {
@@ -43,30 +40,32 @@ module.exports = class DECTalkCommand extends Command {
 		}
 		if (!channel.joinable) return msg.say('Your voice channel is not joinable.');
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
-		const file = path.join(__dirname, '..', '..', 'assets', `${crypto.randomBytes(5).toString('hex')}.mp3`);
+		const file = path.join(__dirname, '..', '..', 'assets', `${channel.guild.id}.mp3`);
 		try {
 			const connection = await channel.join();
 			const { body } = await snekfetch
 				.get('http://tts.cyzon.us/tts', { followRedirects: true })
 				.query({ text });
-			await writeFileAsync(file, body, { encoding: 'binary' });
+			await fs.writeFileAsync(file, body, { encoding: 'binary' });
 			await msg.react('🔉');
 			const dispatcher = connection.playFile(file);
-			dispatcher.once('end', async () => {
-				await unlinkAsync(file);
-				channel.leave();
-				await msg.react('✅');
-			});
-			dispatcher.once('error', async () => {
-				await unlinkAsync(file);
-				channel.leave();
-				await msg.react('⚠');
-			});
+			dispatcher.once('end', async () => this.finish(file, channel, msg));
+			dispatcher.once('error', async () => this.finish(file, channel, msg, true));
 			return null;
 		} catch (err) {
-			channel.leave();
-			if (fs.existsSync(file)) await unlinkAsync(file);
+			this.finish(file, channel, msg, true);
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
+	}
+
+	async finish(file, channel, msg, fail = false) {
+		try {
+			if (fs.existsSync(file)) await fs.unlinkAsync(file);
+			await msg.react(fail ? '⚠' : '✅');
+		} catch (err) {
+			await msg.react('⚠');
+		} finally {
+			channel.leave();
 		}
 	}
 };
