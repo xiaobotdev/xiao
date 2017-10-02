@@ -40,7 +40,7 @@ module.exports = class DECTalkCommand extends Command {
 		}
 		if (!channel.joinable) return msg.say('Your voice channel is not joinable.');
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
-		const file = path.join(__dirname, '..', '..', 'temp', `dec-talk ${channel.guild.id}.mp3`);
+		const file = path.join(__dirname, '..', '..', 'assets', `dec-talk ${channel.guild.id}.mp3`);
 		try {
 			const connection = await channel.join();
 			const { body } = await snekfetch
