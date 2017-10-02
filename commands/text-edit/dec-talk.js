@@ -49,11 +49,11 @@ module.exports = class DECTalkCommand extends Command {
 			await fs.writeFileAsync(file, body, { encoding: 'binary' });
 			await msg.react('🔉');
 			const dispatcher = connection.playFile(file);
-			dispatcher.once('end', async () => this.finish(file, channel, msg));
-			dispatcher.once('error', async () => this.finish(file, channel, msg, true));
+			dispatcher.once('end', () => this.finish(file, channel, msg));
+			dispatcher.once('error', () => this.finish(file, channel, msg, true));
 			return null;
 		} catch (err) {
-			this.finish(file, channel, msg, true);
+			await this.finish(file, channel, msg, true);
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
