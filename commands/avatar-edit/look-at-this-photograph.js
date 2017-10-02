@@ -7,7 +7,7 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'look-at-this-photograph',
-			aliases: ['photo', 'nickelback'],
+			aliases: ['photo', 'nickelback', 'look-at-this-photo'],
 			group: 'avatar-edit',
 			memberName: 'look-at-this-photograph',
 			description: 'Draws a user\'s avatar over Nickelback\'s photograph.',
