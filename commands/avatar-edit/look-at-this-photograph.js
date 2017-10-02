@@ -41,7 +41,7 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 			const avatar = await loadImage(body);
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-13.5 * (Math.PI / 180));
-			ctx.drawImage(avatar, 271, 197, 175, 125);
+			ctx.drawImage(avatar, 291, 210, 175, 125);
 			ctx.rotate(13.5 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'look-at-this-photograph.png' }] });
 		} catch (err) {
