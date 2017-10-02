@@ -17,6 +17,7 @@ module.exports = class ShardInfoCommand extends Command {
 					key: 'shard',
 					prompt: 'Which Shard would you like to get data for?',
 					type: 'integer',
+					default: '',
 					validate: shard => {
 						if (shard < this.client.options.shardCount && shard > -1) return true;
 						return 'Invalid Shard ID.';
@@ -27,6 +28,7 @@ module.exports = class ShardInfoCommand extends Command {
 	}
 
 	async run(msg, { shard }) {
+		if (!shard && shard !== 0) shard = this.client.shard.id;
 		const uptime = await this.client.shard.fetchClientValues('uptime');
 		const guilds = await this.client.shard.fetchClientValues('guilds.size');
 		const users = await this.client.shard.fetchClientValues('users.size');
