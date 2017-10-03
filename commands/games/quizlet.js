@@ -37,7 +37,7 @@ module.exports = class QuizletGameCommand extends Command {
 			while (terms.length > 0) {
 				const term = terms[0];
 				await msg.say(stripIndents`
-					**You have 30 seconds to answer which word this is. (type "end game" to end the game)**
+					**You have 30 seconds to answer which word this is.** _Type "end game" to end the game._
 					${term.definition}
 					${term.image ? term.image.url : ''}
 				`);
@@ -57,10 +57,13 @@ module.exports = class QuizletGameCommand extends Command {
 					terms.push(term);
 				} else {
 					await msg.say('Nice job! 10/10! You deserve some cake!');
-					if (seen.has(term.term)) seen.delete(term.term);
-					else terms.push(term);
+					if (seen.has(term.term)) {
+						seen.delete(term.term);
+					} else {
+						seen.add(term.term);
+						terms.push(term);
+					}
 				}
-				if (!seen.has(term.term)) seen.add(term.term);
 				terms.shift();
 			}
 			this.playing.delete(msg.channel.id);
