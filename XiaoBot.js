@@ -77,6 +77,12 @@ client.on('guildDelete', async () => {
 	postStats(count, client.user.id);
 });
 
+client.dispatcher.addInhibitor(msg => {
+	if (msg.channel.type !== 'text' || !msg.channel.topic) return false;
+	if (msg.channel.topic.includes('<blocked>')) return 'topic blocked';
+	return false;
+});
+
 client.login(TOKEN);
 
 client.setInterval(() => {
