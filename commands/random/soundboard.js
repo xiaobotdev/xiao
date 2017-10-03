@@ -17,7 +17,6 @@ module.exports = class SoundboardCommand extends Command {
 				usages: 1,
 				duration: 15
 			},
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'sound',
@@ -45,16 +44,9 @@ module.exports = class SoundboardCommand extends Command {
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
-			await msg.react('🔉');
 			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', `${sound}.mp3`));
-			dispatcher.once('end', async () => {
-				channel.leave();
-				await msg.react('✅');
-			});
-			dispatcher.once('error', async () => {
-				channel.leave();
-				await msg.react('⚠');
-			});
+			dispatcher.once('end', channel.leave);
+			dispatcher.once('error', channel.leave);
 			return null;
 		} catch (err) {
 			channel.leave();

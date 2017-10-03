@@ -17,7 +17,6 @@ module.exports = class DECTalkCommand extends Command {
 				usages: 1,
 				duration: 15
 			},
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'text',
@@ -47,21 +46,19 @@ module.exports = class DECTalkCommand extends Command {
 				.get('http://tts.cyzon.us/tts', { followRedirects: true })
 				.query({ text });
 			await fs.writeFileAsync(file, body, { encoding: 'binary' });
-			await msg.react('🔉');
 			const dispatcher = connection.playFile(file);
-			dispatcher.once('end', () => this.finish(file, channel, msg));
-			dispatcher.once('error', () => this.finish(file, channel, msg, true));
+			dispatcher.once('end', () => this.finish(file, channel));
+			dispatcher.once('error', () => this.finish(file, channel));
 			return null;
 		} catch (err) {
-			await this.finish(file, channel, msg, true);
+			await this.finish(file, channel);
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
-	async finish(file, channel, msg, fail = false) {
+	async finish(file, channel) {
 		try {
 			if (fs.existsSync(file)) await fs.unlinkAsync(file);
-			await msg.react(fail ? '⚠' : '✅');
 		} finally {
 			channel.leave();
 		}
