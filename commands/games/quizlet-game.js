@@ -44,8 +44,10 @@ module.exports = class QuizletGameCommand extends Command {
 					max: 1,
 					time: 30000
 				});
-				if (!msgs.size || msgs.first().content.toLowerCase() !== term.term.toLowerCase()) {
-					if (msgs.first().content.toLowerCase() === 'end game') break;
+				if (!msgs.size) break;
+				const choice = msgs.first().content.toLowerCase();
+				if (choice === 'end game') break;
+				if (choice !== term.term.toLowerCase()) {
 					await msg.say(`Nope, sorry, it was ${term.term}.`);
 					if (seen.has(term.term)) seen.delete(term.term);
 					terms.push(term);
