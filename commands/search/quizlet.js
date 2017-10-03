@@ -45,7 +45,7 @@ module.exports = class QuizletCommand extends Command {
 					data.term_count, true);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say('Could not find any results.');
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
