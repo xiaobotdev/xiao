@@ -45,8 +45,8 @@ module.exports = class SoundboardCommand extends Command {
 		try {
 			const connection = await channel.join();
 			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', `${sound}.mp3`));
-			dispatcher.once('end', channel.leave);
-			dispatcher.once('error', channel.leave);
+			dispatcher.once('end', () => channel.leave());
+			dispatcher.once('error', () => channel.leave());
 			return null;
 		} catch (err) {
 			channel.leave();
