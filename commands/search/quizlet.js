@@ -35,7 +35,7 @@ module.exports = class QuizletCommand extends Command {
 			const embed = new MessageEmbed()
 				.setAuthor('Quizlet', 'https://i.imgur.com/mUvSPJn.png')
 				.setColor(0x4257B2)
-				.setURL(data.url)
+				.setURL(`https://quizlet.com${data.url}`)
 				.setTitle(data.title)
 				.addField('❯ Creator',
 					data.created_by, true)
