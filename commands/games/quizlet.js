@@ -7,11 +7,11 @@ const { QUIZLET_KEY } = process.env;
 module.exports = class QuizletGameCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'quizlet-game',
-			aliases: ['quizlet-quiz', 'quizlet-test'],
+			name: 'quizlet',
+			aliases: ['quizlet-game', 'quizlet-quiz', 'quizlet-test'],
 			group: 'games',
-			memberName: 'quizlet-game',
-			description: 'Shuffle a Quizlet study deck and play a game similar to a quiz.',
+			memberName: 'quizlet',
+			description: 'Shuffle a Quizlet study set and play a game similar to a quiz.',
 			args: [
 				{
 					key: 'id',
@@ -26,7 +26,7 @@ module.exports = class QuizletGameCommand extends Command {
 	}
 
 	async run(msg, { id }) {
-		if (this.playing.has(msg.channel.id)) return msg.say('Only one fight may be occurring per channel.');
+		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
 			const { body } = await snekfetch
@@ -38,13 +38,17 @@ module.exports = class QuizletGameCommand extends Command {
 				const term = terms[0];
 				await msg.say(stripIndents`
 					**You have 30 seconds to answer which word this is. (type "end game" to end the game)**
-					${term.definition}${term.image ? `\n${term.image.url}` : ''}
+					${term.definition}
+					${term.image ? term.image.url : ''}
 				`);
 				const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 					max: 1,
 					time: 30000
 				});
-				if (!msgs.size) break;
+				if (!msgs.size) {
+					await msg.say('Time!');
+					break;
+				}
 				const choice = msgs.first().content.toLowerCase();
 				if (choice === 'end game') break;
 				if (choice !== term.term.toLowerCase()) {
