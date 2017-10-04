@@ -12,6 +12,7 @@ const client = new CommandoClient({
 	messageSweepInterval: 120
 });
 const { postStats } = require('./structures/Util');
+const whitelist = ['110373943822540800', '264445053596991498'];
 
 client.registry
 	.registerDefaultTypes()
@@ -52,6 +53,13 @@ client.on('ready', () => {
 		];
 		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
 	}, 60000);
+	for (const guild of client.guilds.values()) {
+		if (whitelist.includes(guild.id)) continue;
+		if (guild.members.filter(member => member.user.bot).size > 20) {
+			console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
+			guild.leave().catch(err => console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`));
+		}
+	}
 });
 
 client.on('disconnect', event => {
@@ -65,7 +73,16 @@ client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
 
-client.on('guildCreate', async () => {
+client.on('guildCreate', async guild => {
+	if (!whitelist.includes(guild.id) && guild.members.filter(member => member.user.bot).size > 20) {
+		try {
+			console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
+			await guild.leave();
+		} catch (err) {
+			console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`);
+		}
+		return;
+	}
 	const guilds = await client.shard.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
 	postStats(count, client.user.id);
