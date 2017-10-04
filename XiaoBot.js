@@ -41,7 +41,7 @@ client.registry
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
-	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag} (${client.user.id})!`);
+	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag}! (${client.user.id})`);
 	client.setInterval(() => {
 		const activities = [
 			`${COMMAND_PREFIX}help for commands`,
@@ -74,24 +74,15 @@ client.on('warn', console.warn);
 client.on('commandError', (command, err) => console.error(command.name, err));
 
 client.on('guildCreate', async guild => {
-	if (!whitelist.includes(guild.id) && guild.members.filter(member => member.user.bot).size > 25) {
+	if (whitelist.includes(guild.id)) return;
+	if (guild.members.filter(member => member.user.bot).size > 25) {
 		try {
 			console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
 			await guild.leave();
 		} catch (err) {
 			console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`);
 		}
-		return;
 	}
-	const guilds = await client.shard.fetchClientValues('guilds.size');
-	const count = guilds.reduce((prev, val) => prev + val, 0);
-	postStats(count, client.user.id);
-});
-
-client.on('guildDelete', async () => {
-	const guilds = await client.shard.fetchClientValues('guilds.size');
-	const count = guilds.reduce((prev, val) => prev + val, 0);
-	postStats(count, client.user.id);
 });
 
 client.dispatcher.addInhibitor(msg => {
@@ -102,12 +93,18 @@ client.dispatcher.addInhibitor(msg => {
 
 client.login(TOKEN);
 
+client.setInterval(async () => {
+	const guilds = await client.shard.fetchClientValues('guilds.size');
+	const count = guilds.reduce((prev, val) => prev + val, 0);
+	postStats(count, client.user.id);
+}, 300000);
+
 client.setInterval(() => {
 	console.log(`[RESTART] Shard ${client.shard.id} restarted!`);
 	process.exit(0);
 }, 8.64e+7);
 
 process.on('unhandledRejection', err => {
-	console.error('Unhandled Promise Rejection:', err);
+	console.error('[FATAL] Unhandled Promise Rejection:', err);
 	process.exit(1);
 });
