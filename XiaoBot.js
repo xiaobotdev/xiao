@@ -55,7 +55,7 @@ client.on('ready', () => {
 	}, 60000);
 	for (const guild of client.guilds.values()) {
 		if (whitelist.includes(guild.id)) continue;
-		if (guild.members.filter(member => member.user.bot).size > 20) {
+		if (guild.members.filter(member => member.user.bot).size > 25) {
 			console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
 			guild.leave().catch(err => console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`));
 		}
@@ -74,7 +74,7 @@ client.on('warn', console.warn);
 client.on('commandError', (command, err) => console.error(command.name, err));
 
 client.on('guildCreate', async guild => {
-	if (!whitelist.includes(guild.id) && guild.members.filter(member => member.user.bot).size > 20) {
+	if (!whitelist.includes(guild.id) && guild.members.filter(member => member.user.bot).size > 25) {
 		try {
 			console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
 			await guild.leave();
