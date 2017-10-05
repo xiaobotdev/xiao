@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { stripIndent } = require('common-tags');
+const snekfetch = require('snekfetch');
 
 module.exports = class CowSayCommand extends Command {
 	constructor(client) {
@@ -22,16 +22,17 @@ module.exports = class CowSayCommand extends Command {
 		});
 	}
 
-	run(msg, { text }) {
-		return msg.code(null,
-			stripIndent`
-				< ${text} >
-				   \\   ^__^
-					\\  (oO)\\_______
-					   (__)\\       )\\/\\
-						 U  ||----w |
-							||     ||
-			`
-		);
+	async run(msg, { text }) {
+		try {
+			const { body } = await snekfetch
+				.get('http://cowsay.morecode.org/say')
+				.query({
+					message: text,
+					format: 'json'
+				});
+			return msg.code(null, body.cow);
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
