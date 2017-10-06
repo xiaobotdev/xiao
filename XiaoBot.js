@@ -16,6 +16,7 @@ const whitelist = ['110373943822540800', '264445053596991498'];
 
 client.registry
 	.registerDefaultTypes()
+	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
 		['util', 'Utility'],
 		['guild-info', 'Server Info'],
@@ -37,8 +38,7 @@ client.registry
 		prefix: false,
 		commandState: false
 	})
-	.registerCommandsIn(path.join(__dirname, 'commands'))
-	.registerTypesIn(path.join(__dirname, 'types'));
+	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag}! (${client.user.id})`);
