@@ -1,10 +1,10 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class EmojiCommand extends Command {
+module.exports = class EmojiListCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'emoji',
-			aliases: ['emojis', 'emoji-list'],
+			name: 'emoji-list',
+			aliases: ['emojis'],
 			group: 'guild-info',
 			memberName: 'emoji',
 			description: 'Responds with a list of the server\'s custom emoji.',
