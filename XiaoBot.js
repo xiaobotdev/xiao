@@ -18,7 +18,6 @@ client.registry
 	.registerDefaultTypes()
 	.registerGroups([
 		['util', 'Utility'],
-		['user-info', 'User Info'],
 		['guild-info', 'Server Info'],
 		['moderation', 'Moderation'],
 		['random-res', 'Random Response'],
@@ -38,7 +37,8 @@ client.registry
 		prefix: false,
 		commandState: false
 	})
-	.registerCommandsIn(path.join(__dirname, 'commands'));
+	.registerCommandsIn(path.join(__dirname, 'commands'))
+	.registerTypesIn(path.join(__dirname, 'types'));
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag}! (${client.user.id})`);
