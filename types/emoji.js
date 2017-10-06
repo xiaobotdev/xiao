@@ -14,7 +14,7 @@ class EmojiArgumentType extends ArgumentType {
 		}
 		if (!msg.guild) return false;
 		const search = value.toLowerCase();
-		const emojis = msg.guild.emojis.filter(emoji => emoji.name.toLowerCase() === search);
+		const emojis = msg.guild.emojis.filterArray(emoji => emoji.name.toLowerCase() === search);
 		if (!emojis.length) return false;
 		if (emojis.length === 1) return true;
 		return emojis.length <= 15
@@ -27,7 +27,7 @@ class EmojiArgumentType extends ArgumentType {
 		if (matches) return msg.client.emojis.get(matches[2]);
 		if (!msg.guild) return null;
 		const search = value.toLowerCase();
-		const emojis = msg.guild.emojis.filter(emoji => emoji.name.toLowerCase() === search);
+		const emojis = msg.guild.emojis.filterArray(emoji => emoji.name.toLowerCase() === search);
 		if (!emojis.length) return null;
 		if (emojis.length === 1) return emojis[0];
 		return null;
