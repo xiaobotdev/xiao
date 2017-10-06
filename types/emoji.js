@@ -8,16 +8,13 @@ class EmojiArgumentType extends ArgumentType {
 
 	validate(value, msg) {
 		const matches = value.match(/^(?:<:([a-zA-Z0-9_]+):)?([0-9]+)>?$/);
-		if (matches) {
-			const emoji = msg.client.emojis.get(matches[2]);
-			if (emoji) return true;
-		}
+		if (msg.client.emojis.has(matches[2])) return true;
 		if (!msg.guild) return false;
 		const search = value.toLowerCase();
-		let emojis = msg.guild.emojis.filterArray(emoji => emoji.name.toLowerCase().includes(search));
+		let emojis = msg.guild.emojis.filterArray(nameFilterInexact(search));
 		if (!emojis.length) return false;
 		if (emojis.length === 1) return true;
-		const exactEmojis = msg.guild.emojis.filterArray(emoji => emoji.name.toLowerCase() === search);
+		const exactEmojis = emojis.filter(nameFilterExact(search));
 		if (exactEmojis.length === 1) return true;
 		if (exactEmojis.length > 0) emojis = exactEmojis;
 		return emojis.length <= 15
@@ -36,6 +33,14 @@ class EmojiArgumentType extends ArgumentType {
 		if (exactEmojis.length === 1) return exactEmojis[0];
 		return null;
 	}
+}
+
+function nameFilterExact(search) {
+	return thing => thing.name.toLowerCase() === search;
+}
+
+function nameFilterInexact(search) {
+	return thing => thing.name.toLowerCase().includes(search);
 }
 
 module.exports = EmojiArgumentType;
