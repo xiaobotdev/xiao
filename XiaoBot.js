@@ -12,24 +12,25 @@ const client = new CommandoClient({
 	messageSweepInterval: 120
 });
 const { postStats } = require('./structures/Util');
-const whitelist = ['110373943822540800', '264445053596991498'];
+const { version } = require('./package');
+const whitelist = require('./assets/json/whitelist');
 
 client.registry
 	.registerDefaultTypes()
 	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
 		['util', 'Utility'],
-		['guild-info', 'Server Info'],
+		['guild-info', 'Server Information'],
 		['moderation', 'Moderation'],
 		['random-res', 'Random Response'],
-		['random-img', 'Random Image'],
+		['single-res', 'Single Response'],
 		['image-edit', 'Image Manipulation'],
 		['avatar-edit', 'Avatar Manipulation'],
 		['text-edit', 'Text Manipulation'],
 		['num-edit', 'Number Manipulation'],
 		['search', 'Search'],
 		['games', 'Games'],
-		['random', 'Random/Other'],
+		['other', 'Other'],
 		['roleplay', 'Roleplay']
 	])
 	.registerDefaultCommands({
@@ -42,24 +43,7 @@ client.registry
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag}! (${client.user.id})`);
-	client.setInterval(() => {
-		const activities = [
-			`${COMMAND_PREFIX}help for commands`,
-			`Shard ${client.shard.id}`,
-			'with dragonfire535',
-			client.options.invite,
-			`with ${client.registry.commands.size} commands`,
-			'Rune Factory 4'
-		];
-		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
-	}, 60000);
-	for (const guild of client.guilds.values()) {
-		if (whitelist.includes(guild.id)) continue;
-		if (guild.members.filter(member => member.user.bot).size > 25) {
-			console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
-			guild.leave().catch(err => console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`));
-		}
-	}
+	client.setActivity(`${COMMAND_PREFIX}help for commands`);
 });
 
 client.on('disconnect', event => {
@@ -91,7 +75,18 @@ client.dispatcher.addInhibitor(msg => {
 	return false;
 });
 
-client.login(TOKEN);
+client.setInterval(() => {
+	const activities = [
+		`${COMMAND_PREFIX}help for commands`,
+		`Shard ${client.shard.id}`,
+		'with dragonfire535',
+		client.options.invite,
+		`with ${client.registry.commands.size} commands`,
+		`v${version}`,
+		'Rune Factory 4'
+	];
+	client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
+}, 60000);
 
 client.setInterval(async () => {
 	const guilds = await client.shard.fetchClientValues('guilds.size');
@@ -99,10 +94,26 @@ client.setInterval(async () => {
 	postStats(count, client.user.id);
 }, 300000);
 
+client.setInterval(async () => {
+	for (const guild of client.guilds.values()) {
+		if (whitelist.includes(guild.id)) continue;
+		if (guild.members.filter(member => member.user.bot).size > 25) {
+			try {
+				console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
+				await guild.leave();
+			} catch (err) {
+				console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`);
+			}
+		}
+	}
+}, 900000);
+
 client.setInterval(() => {
 	console.log(`[RESTART] Shard ${client.shard.id} restarted!`);
 	process.exit(0);
 }, 8.64e+7);
+
+client.login(TOKEN);
 
 process.on('unhandledRejection', err => {
 	console.error('[FATAL] Unhandled Promise Rejection:', err);

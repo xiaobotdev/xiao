@@ -4,7 +4,7 @@ module.exports = class LennyCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'lenny',
-			group: 'random',
+			group: 'single-res',
 			memberName: 'lenny',
 			description: 'Responds with the lenny face.'
 		});

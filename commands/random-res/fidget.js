@@ -6,7 +6,7 @@ module.exports = class FidgetCommand extends Command {
 		super(client, {
 			name: 'fidget',
 			aliases: ['nimbat'],
-			group: 'random-img',
+			group: 'random-res',
 			memberName: 'fidget',
 			description: 'Responds with a random image of Fidget.',
 			clientPermissions: ['ATTACH_FILES']

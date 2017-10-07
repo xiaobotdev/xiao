@@ -4,7 +4,7 @@ module.exports = class SpamCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'spam',
-			group: 'random',
+			group: 'single-res',
 			memberName: 'spam',
 			description: 'Responds with a picture of Spam.',
 			clientPermissions: ['ATTACH_FILES']

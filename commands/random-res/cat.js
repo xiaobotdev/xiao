@@ -1,14 +1,14 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 
-module.exports = class DogCommand extends Command {
+module.exports = class CatCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'dog',
-			aliases: ['puppy'],
-			group: 'random-img',
-			memberName: 'dog',
-			description: 'Responds with a random dog image.',
+			name: 'cat',
+			aliases: ['neko', 'kitty'],
+			group: 'random-res',
+			memberName: 'cat',
+			description: 'Responds with a random cat image.',
 			clientPermissions: ['ATTACH_FILES']
 		});
 	}
@@ -16,8 +16,8 @@ module.exports = class DogCommand extends Command {
 	async run(msg) {
 		try {
 			const { body } = await snekfetch
-				.get('https://dog.ceo/api/breeds/image/random');
-			return msg.say({ files: [body.message] });
+				.get('http://random.cat/meow');
+			return msg.say({ files: [body.file] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

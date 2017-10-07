@@ -5,7 +5,7 @@ module.exports = class DaysUntilCommand extends Command {
 		super(client, {
 			name: 'days-until',
 			aliases: ['days-until-christmas'],
-			group: 'random',
+			group: 'other',
 			memberName: 'days-until',
 			description: 'Responds with how many days until a certain date this year.',
 			args: [

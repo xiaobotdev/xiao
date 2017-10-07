@@ -8,7 +8,7 @@ module.exports = class HoroscopeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'horoscope',
-			group: 'random',
+			group: 'other',
 			memberName: 'horoscope',
 			description: 'Responds with today\'s horoscope for a particular sign.',
 			details: `**Signs:** ${signs.join(', ')}`,

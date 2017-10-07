@@ -4,7 +4,7 @@ module.exports = class EatPantCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'eat-pant',
-			group: 'random',
+			group: 'single-res',
 			memberName: 'eat-pant',
 			description: 'eat pant',
 			clientPermissions: ['ATTACH_FILES']

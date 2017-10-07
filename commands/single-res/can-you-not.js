@@ -4,7 +4,7 @@ module.exports = class CanYouNotCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'can-you-not',
-			group: 'random',
+			group: 'single-res',
 			memberName: 'can-you-not',
 			description: 'Can YOU not?'
 		});

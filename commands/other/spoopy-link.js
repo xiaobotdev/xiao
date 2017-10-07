@@ -6,7 +6,7 @@ module.exports = class SpoopyLinkCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'spoopy-link',
-			group: 'random',
+			group: 'other',
 			memberName: 'spoopy-link',
 			description: 'Checks if a link is spoopy or not.',
 			args: [
