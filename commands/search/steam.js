@@ -59,7 +59,7 @@ module.exports = class SteamCommand extends Command {
 				.addField('❯ Recommendations',
 					data.recommendations ? data.recommendations.total : 'N/A', true)
 				.addField('❯ Platforms',
-					platforms.join(', ') || 'None')
+					platforms.join(', ') || 'None', true)
 				.addField('❯ Developers',
 					data.developers.join(', ') || 'N/A')
 				.addField('❯ Publishers',
