@@ -4,7 +4,7 @@ module.exports = class ItsJokeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'its-joke',
-			group: 'random',
+			group: 'single-res',
 			memberName: 'its-joke',
 			description: 'It\'s joke!',
 			clientPermissions: ['ATTACH_FILES']

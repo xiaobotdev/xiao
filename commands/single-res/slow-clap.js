@@ -4,7 +4,7 @@ module.exports = class SlowClapCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'slow-clap',
-			group: 'random',
+			group: 'single-res',
 			memberName: 'slow-clap',
 			description: '_slow clap_'
 		});

@@ -4,7 +4,7 @@ module.exports = class GiveFlowerCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'give-flower',
-			group: 'random',
+			group: 'single-res',
 			memberName: 'give-flower',
 			description: 'Gives Xiao Pai a flower.'
 		});

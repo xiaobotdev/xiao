@@ -6,7 +6,7 @@ module.exports = class XiaoCommand extends Command {
 		super(client, {
 			name: 'xiao',
 			aliases: ['xiao-pai', 'iao'],
-			group: 'random-img',
+			group: 'random-res',
 			memberName: 'xiao',
 			description: 'Responds with a random image of Xiao Pai.',
 			clientPermissions: ['ATTACH_FILES']

@@ -8,7 +8,7 @@ module.exports = class SoundboardCommand extends Command {
 		super(client, {
 			name: 'soundboard',
 			aliases: ['sound'],
-			group: 'random',
+			group: 'other',
 			memberName: 'soundboard',
 			description: 'Plays a sound in your voice channel.',
 			details: `**Sounds:** ${sounds.join(', ')}`,

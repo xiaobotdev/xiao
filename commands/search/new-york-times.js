@@ -8,7 +8,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 		super(client, {
 			name: 'new-york-times',
 			aliases: ['ny-times', 'new-york-times-article', 'ny-times-article'],
-			group: 'random-res',
+			group: 'search',
 			memberName: 'new-york-times',
 			description: 'Responds with an article from the New York Times.',
 			clientPermissions: ['EMBED_LINKS'],

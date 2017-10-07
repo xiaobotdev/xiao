@@ -5,7 +5,7 @@ module.exports = class DarkThemeLightThemeCommand extends Command {
 		super(client, {
 			name: 'dark-theme-light-theme',
 			aliases: ['light-theme-dark-theme', 'dark-theme', 'light-theme'],
-			group: 'random',
+			group: 'single-res',
 			memberName: 'dark-theme-light-theme',
 			description: 'Determines whether you use dark or light theme.',
 			clientPermissions: ['ATTACH_FILES']

@@ -6,7 +6,7 @@ module.exports = class GenderGuessCommand extends Command {
 		super(client, {
 			name: 'gender-guess',
 			aliases: ['gender', 'guess-gender'],
-			group: 'random',
+			group: 'other',
 			memberName: 'gender',
 			description: 'Determines the gender of name.',
 			args: [

@@ -8,7 +8,7 @@ module.exports = class AstronomyPictureOfTheDayCommand extends Command {
 		super(client, {
 			name: 'astronomy-picture-of-the-day',
 			aliases: ['nasa-apod', 'apod', 'nasa-astronomy-picture-of-the-day'],
-			group: 'random',
+			group: 'other',
 			memberName: 'astronomy-picture-of-the-day',
 			description: 'Responds with today\'s Astronomy Picture of the Day.',
 			clientPermissions: ['ATTACH_FILES']
