@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { cleanHTML } = require('../../structures/Util');
+const { shorten, cleanHTML } = require('../../structures/Util');
 
 module.exports = class SteamCommand extends Command {
 	constructor(client) {
@@ -47,7 +47,7 @@ module.exports = class SteamCommand extends Command {
 				.setColor(0x101D2F)
 				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png')
 				.setTitle(data.name)
-				.setDescription(cleanHTML(data.short_description))
+				.setDescription(shorten(cleanHTML(data.short_description)))
 				.setURL(`http://store.steampowered.com/app/${data.steam_appid}`)
 				.setImage(data.header_image)
 				.addField('❯ Price',
