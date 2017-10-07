@@ -40,11 +40,9 @@ module.exports = class SteamCommand extends Command {
 			const original = data.price_overview ? data.price_overview.initial / 100 : 0;
 			const price = current === original ? `$${current}` : `~~$${original}~~ $${current}`;
 			const platforms = [];
-			if (data.platforms) {
-				if (data.platforms.windows) platforms.push('Windows');
-				if (data.platforms.mac) platforms.push('Mac');
-				if (data.platforms.linux) platforms.push('Linux');
-			}
+			if (data.platforms.windows) platforms.push('Windows');
+			if (data.platforms.mac) platforms.push('Mac');
+			if (data.platforms.linux) platforms.push('Linux');
 			const embed = new MessageEmbed()
 				.setColor(0x101D2F)
 				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png')
