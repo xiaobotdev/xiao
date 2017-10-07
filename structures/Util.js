@@ -69,8 +69,8 @@ class Util {
 			.replace(/&trade;/g, '™')
 			.replace(/&reg;/g, '®')
 			.replace(/(<\/?strong>|<\/?b>)/g, '**')
-			.replace(/<br>/g, '\n\n')
-			.replace(/<\/?i>/g, '*');
+			.replace(/<br>/g, '\n')
+			.replace(/(<\/?i>|<\/?em>)/g, '*');
 	}
 }
 
