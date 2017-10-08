@@ -70,6 +70,7 @@ module.exports = class BattleCommand extends Command {
 					});
 					if (!turn.size) {
 						await msg.say('Time!');
+						reset();
 						continue;
 					}
 					choice = turn.first().content.toLowerCase();
