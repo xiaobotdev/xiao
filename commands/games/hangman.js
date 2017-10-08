@@ -54,6 +54,7 @@ module.exports = class HangmanCommand extends Command {
 					break;
 				}
 				const choice = guess.first().content.toLowerCase();
+				if (choice === 'end') break;
 				if (confirmation.includes(choice) || incorrect.includes(choice)) {
 					await msg.say('You have already picked that letter!');
 				} else if (word.includes(choice)) {

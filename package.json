@@ -1,6 +1,6 @@
 {
 	"name": "xiaobot",
-	"version": "45.0.6",
+	"version": "46.0.0",
 	"description": "Your personal server companion.",
 	"main": "Shard.js",
 	"scripts": {
@@ -37,7 +37,6 @@
 		"discord.js": "github:hydrabolt/discord.js",
 		"discord.js-commando": "github:gawdl3y/discord.js-commando",
 		"erlpack": "github:discordapp/erlpack",
-		"mathjs": "^3.16.4",
 		"node-opus": "^0.2.7",
 		"snekfetch": "^3.4.5",
 		"tsubaki": "^1.2.0",

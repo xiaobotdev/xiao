@@ -13,7 +13,6 @@ module.exports = class QuizCommand extends Command {
 			group: 'games',
 			memberName: 'quiz',
 			description: 'Answer a quiz question.',
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'type',

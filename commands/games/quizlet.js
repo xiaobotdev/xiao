@@ -37,7 +37,7 @@ module.exports = class QuizletGameCommand extends Command {
 			while (terms.length > 0) {
 				const term = terms[0];
 				await msg.say(stripIndents`
-					**You have 30 seconds to answer which word this is.** _Type "end game" to end the game._
+					**You have 30 seconds to answer which word this is.**
 					${term.definition}
 					${term.image ? term.image.url : ''}
 				`);
@@ -47,10 +47,10 @@ module.exports = class QuizletGameCommand extends Command {
 				});
 				if (!msgs.size) {
 					await msg.say('Time!');
-					break;
+					continue;
 				}
 				const choice = msgs.first().content.toLowerCase();
-				if (choice === 'end game') break;
+				if (choice === 'end') break;
 				if (choice !== term.term.toLowerCase()) {
 					await msg.say(`Nope, sorry, it was ${term.term}.`);
 					if (seen.has(term.term)) seen.delete(term.term);

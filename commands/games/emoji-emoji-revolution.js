@@ -68,7 +68,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			return msg.say(`You win ${aPts > oPts ? msg.author : opponent} with ${aPts > oPts ? aPts : oPts} points!`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

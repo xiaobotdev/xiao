@@ -56,9 +56,10 @@ module.exports = class TicTacToeCommand extends Command {
 				});
 				if (!turn.size) {
 					await msg.say('Time!');
-					break;
+					continue;
 				}
-				const choice = turn.first().content;
+				const choice = turn.first().content.toLowerCase();
+				if (choice === 'end') break;
 				if (taken.includes(choice)) {
 					await msg.say('That spot is already taken!');
 				} else if (!sides.includes(choice)) {
@@ -83,7 +84,7 @@ module.exports = class TicTacToeCommand extends Command {
 			return msg.say(winner ? `Congrats, ${winner}!` : 'Oh... The cat won.');
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

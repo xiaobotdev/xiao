@@ -10,8 +10,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			aliases: ['who-pokemon', 'whos-that-pokémon', 'who-pokémon'],
 			group: 'games',
 			memberName: 'whos-that-pokemon',
-			description: 'Guess who that Pokémon is.',
-			clientPermissions: ['EMBED_LINKS']
+			description: 'Guess who that Pokémon is.'
 		});
 	}
 

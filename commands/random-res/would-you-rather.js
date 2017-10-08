@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
-const { stripIndents } = require('common-tags');
+const questions = require('../../assets/json/would-you-rather');
 
 module.exports = class WouldYouRatherCommand extends Command {
 	constructor(client) {
@@ -9,21 +8,11 @@ module.exports = class WouldYouRatherCommand extends Command {
 			aliases: ['wy-rather'],
 			group: 'random-res',
 			memberName: 'would-you-rather',
-			description: 'Responds with a random would you rather question.',
-			clientPermissions: ['EMBED_LINKS']
+			description: 'Responds with a random would you rather question.'
 		});
 	}
 
-	async run(msg) {
-		try {
-			const { body } = await snekfetch
-				.get('http://www.rrrather.com/botapi');
-			return msg.say(stripIndents`
-				${body.title}...
-				${body.choicea} OR ${body.choiceb}?
-			`);
-		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg) {
+		return msg.say(questions[Math.floor(Math.random() * questions.length)]);
 	}
 };
