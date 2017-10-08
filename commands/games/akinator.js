@@ -28,7 +28,7 @@ module.exports = class AkinatorCommand extends Command {
 				answers.push('end');
 				await msg.say(stripIndents`
 					**${++data.step}.** ${data.question}
-					${data.answers.map(answer => answer.answer).join(' | ')} | End
+					${data.answers.map(answer => answer.answer).join(' | ')}
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
 				const msgs = await msg.channel.awaitMessages(filter, {
@@ -63,7 +63,7 @@ module.exports = class AkinatorCommand extends Command {
 			return msg.say(response === 'yes' ? 'Another win for me!' : 'Bravo, you have defeated me.');
 		} catch (err) {
 			this.sessions.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 

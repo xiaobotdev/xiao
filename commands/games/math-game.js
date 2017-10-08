@@ -1,5 +1,4 @@
 const { Command } = require('discord.js-commando');
-const math = require('mathjs');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../structures/Util');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
@@ -20,7 +19,6 @@ module.exports = class MathGameCommand extends Command {
 			group: 'games',
 			memberName: 'math-game',
 			description: 'See how fast you can answer a math problem in a given time limit.',
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'difficulty',
@@ -40,11 +38,15 @@ module.exports = class MathGameCommand extends Command {
 		const value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const operation = operations[Math.floor(Math.random() * operations.length)];
-		const expression = `${value1} ${operation} ${value2}`;
-		const answer = math.eval(expression).toString();
+		let answer;
+		switch (operation) {
+			case '+': answer = value1 + value2; break;
+			case '-': answer = value1 - value2; break;
+			case '*': answer = value1 * value2; break;
+		}
 		await msg.say(stripIndents`
 			**You have 10 seconds to answer this question.**
-			${expression}
+			${value1} ${operation} ${value2}
 		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,

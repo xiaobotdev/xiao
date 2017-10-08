@@ -70,8 +70,7 @@ module.exports = class BattleCommand extends Command {
 					});
 					if (!turn.size) {
 						await msg.say('Time!');
-						forfeit();
-						break;
+						continue;
 					}
 					choice = turn.first().content.toLowerCase();
 				} else {
@@ -114,7 +113,7 @@ module.exports = class BattleCommand extends Command {
 			`);
 		} catch (err) {
 			this.fighting.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

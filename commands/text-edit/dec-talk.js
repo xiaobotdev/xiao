@@ -43,7 +43,7 @@ module.exports = class DECTalkCommand extends Command {
 		try {
 			const connection = await channel.join();
 			const { body } = await snekfetch
-				.get('http://tts.cyzon.us/tts', { followRedirects: true })
+				.get('http://tts.cyzon.us/tts')
 				.query({ text });
 			await fs.writeFileAsync(file, body, { encoding: 'binary' });
 			const dispatcher = connection.playFile(file);

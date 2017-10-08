@@ -19,7 +19,6 @@ module.exports = class TypingGameCommand extends Command {
 			group: 'games',
 			memberName: 'typing-game',
 			description: 'See how fast you can type a sentence in a given time limit.',
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'difficulty',

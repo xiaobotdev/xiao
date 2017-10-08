@@ -53,7 +53,7 @@ module.exports = class GunfightCommand extends Command {
 			return msg.say(`And the winner is ${winner.first().author.username}!`);
 		} catch (err) {
 			this.fighting.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };
