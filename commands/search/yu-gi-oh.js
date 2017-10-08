@@ -28,7 +28,7 @@ module.exports = class YuGiOhCommand extends Command {
 				.get(`https://yugiohprices.com/api/card_data/${query}`);
 			if (body.status === 'fail') return msg.say('Could not find any results.');
 			const image = await snekfetch
-				.get(`https://yugiohprices.com/api/card_image/${query}`);
+				.get(`https://yugiohprices.com/api/card_image/${query}`, { followRedirects: false });
 			const { data } = body;
 			const embed = new MessageEmbed()
 				.setColor(0xBE5F1F)
