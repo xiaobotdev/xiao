@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
+const { MASHAPE_KEY } = process.env;
 
 module.exports = class GenderGuessCommand extends Command {
 	constructor(client) {
@@ -13,7 +14,8 @@ module.exports = class GenderGuessCommand extends Command {
 				{
 					key: 'name',
 					prompt: 'What name do you want to determine the gender of?',
-					type: 'string'
+					type: 'string',
+					parse: name => name.toLowerCase()
 				}
 			]
 		});
@@ -22,10 +24,12 @@ module.exports = class GenderGuessCommand extends Command {
 	async run(msg, { name }) {
 		try {
 			const { body } = await snekfetch
-				.get('https://api.genderize.io/')
-				.query({ name });
-			if (!body.gender) return msg.say(`I have no idea what gender ${body.name} is.`);
-			return msg.say(`I'm ${Math.round(body.probability * 100)}% sure ${body.name} is a ${body.gender} name.`);
+				.get('https://udayogra-find-gender-by-name-v1.p.mashape.com/analysis')
+				.query({ firstname: name })
+				.set({ 'X-Mashape-Key': MASHAPE_KEY });
+			if (!body.male || !body.female) return msg.say(`I have no idea what gender ${body.name} is.`);
+			const gender = body.male > body.female ? 'male' : 'female';
+			return msg.say(`I'm ${body[gender]}% sure ${body.name} is a ${gender} name.`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
