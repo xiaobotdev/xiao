@@ -56,6 +56,7 @@ module.exports = class TicTacToeCommand extends Command {
 				});
 				if (!turn.size) {
 					await msg.say('Time!');
+					userTurn = !userTurn;
 					continue;
 				}
 				const choice = turn.first().content.toLowerCase();

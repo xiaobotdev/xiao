@@ -63,7 +63,7 @@ module.exports = class AkinatorCommand extends Command {
 			return msg.say(response === 'yes' ? 'Another win for me!' : 'Bravo, you have defeated me.');
 		} catch (err) {
 			this.sessions.delete(msg.channel.id);
-			throw err;
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
