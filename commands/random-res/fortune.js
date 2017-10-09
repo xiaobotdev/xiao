@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
+const fortunes = require('../../assets/json/fortune');
 
 module.exports = class FortuneCommand extends Command {
 	constructor(client) {
@@ -13,19 +13,10 @@ module.exports = class FortuneCommand extends Command {
 		});
 	}
 
-	async run(msg) {
-		try {
-			const { body } = await snekfetch
-				.get('http://fortunecookieapi.herokuapp.com/v1/cookie')
-				.query({ limit: 1 });
-			const data = body[0];
-			return msg.say(stripIndents`
-				${data.fortune.message}
-				${data.lotto.numbers.join(', ')}
-				${data.lesson.chinese} (${data.lesson.pronunciation}): ${data.lesson.english}
-			`);
-		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg) {
+		return msg.say(stripIndents`
+			${fortunes[Math.floor(Math.random() * fortunes.length)]}
+			${Array.from({ length: 6 }, () => Math.floor(Math.random() * 100)).join(', ')}
+		`);
 	}
 };
