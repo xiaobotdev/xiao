@@ -25,8 +25,7 @@ module.exports = class NPMCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
-				.get(`https://registry.npmjs.com/${query}`);
+			const { body } = await snekfetch.get(`https://registry.npmjs.com/${query}`);
 			const embed = new MessageEmbed()
 				.setColor(0xCB0000)
 				.setAuthor('NPM', 'https://i.imgur.com/ErKf5Y0.png')

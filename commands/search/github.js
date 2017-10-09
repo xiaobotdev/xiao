@@ -31,8 +31,7 @@ module.exports = class GitHubCommand extends Command {
 
 	async run(msg, { author, repository }) {
 		try {
-			const { body } = await snekfetch
-				.get(`https://${GITHUB_LOGIN}@api.github.com/repos/${author}/${repository}`);
+			const { body } = await snekfetch.get(`https://${GITHUB_LOGIN}@api.github.com/repos/${author}/${repository}`);
 			const embed = new MessageEmbed()
 				.setColor(0xFFFFFF)
 				.setAuthor('GitHub', 'https://i.imgur.com/e4HunUm.png')

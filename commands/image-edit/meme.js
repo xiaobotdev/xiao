@@ -44,8 +44,7 @@ module.exports = class MemeCommand extends Command {
 
 	async run(msg, { type, top, bottom }) {
 		try {
-			const memes = await snekfetch
-				.get('https://api.imgflip.com/get_memes');
+			const memes = await snekfetch.get('https://api.imgflip.com/get_memes');
 			const memeList = memes.body.data.memes;
 			if (type === 'list') return msg.say(list(memeList.map(meme => meme.name), 'or'), { split: { char: ' ' } });
 			if (!memeList.some(meme => meme.name.toLowerCase() === type)) {

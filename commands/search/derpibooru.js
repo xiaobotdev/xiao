@@ -29,8 +29,7 @@ module.exports = class DerpibooruCommand extends Command {
 					random_image: 1
 				});
 			if (!search.body) return msg.say('Could not find any results.');
-			const { body } = await snekfetch
-				.get(`https://derpibooru.org/images/${search.body.id}.json`);
+			const { body } = await snekfetch.get(`https://derpibooru.org/images/${search.body.id}.json`);
 			return msg.say(stripIndents`
 				Result for ${query}:
 				https:${body.representations.medium}

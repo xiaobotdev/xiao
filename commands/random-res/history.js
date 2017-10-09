@@ -24,8 +24,7 @@ module.exports = class HistoryCommand extends Command {
 
 	async run(msg, { date }) {
 		try {
-			const { text } = await snekfetch
-				.get(`http://history.muffinlabs.com/date${date ? `/${date}` : ''}`);
+			const { text } = await snekfetch.get(`http://history.muffinlabs.com/date${date ? `/${date}` : ''}`);
 			const body = JSON.parse(text);
 			const events = body.data.Events;
 			const event = events[Math.floor(Math.random() * events.length)];

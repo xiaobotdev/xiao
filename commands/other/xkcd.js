@@ -25,8 +25,7 @@ module.exports = class XKCDCommand extends Command {
 
 	async run(msg, { type }) {
 		try {
-			const current = await snekfetch
-				.get('https://xkcd.com/info.0.json');
+			const current = await snekfetch.get('https://xkcd.com/info.0.json');
 			if (type === 'today') {
 				const embed = new MessageEmbed()
 					.setTitle(`${current.body.num} - ${current.body.title}`)
@@ -38,8 +37,7 @@ module.exports = class XKCDCommand extends Command {
 			}
 			if (type === 'random') {
 				const random = Math.floor(Math.random() * current.body.num) + 1;
-				const { body } = await snekfetch
-					.get(`https://xkcd.com/${random}/info.0.json`);
+				const { body } = await snekfetch.get(`https://xkcd.com/${random}/info.0.json`);
 				const embed = new MessageEmbed()
 					.setTitle(`${body.num} - ${body.title}`)
 					.setColor(0x9797FF)
@@ -50,8 +48,7 @@ module.exports = class XKCDCommand extends Command {
 			}
 			const choice = parseInt(type, 10);
 			if (isNaN(choice) || current.body.num < choice || choice < 1) return msg.say('Could not find any results.');
-			const { body } = await snekfetch
-				.get(`https://xkcd.com/${choice}/info.0.json`);
+			const { body } = await snekfetch.get(`https://xkcd.com/${choice}/info.0.json`);
 			const embed = new MessageEmbed()
 				.setTitle(`${body.num} - ${body.title}`)
 				.setColor(0x9797FF)

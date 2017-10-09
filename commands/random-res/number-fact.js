@@ -20,8 +20,7 @@ module.exports = class NumberFactCommand extends Command {
 
 	async run(msg, { number }) {
 		try {
-			const { text } = await snekfetch
-				.get(`http://numbersapi.com/${number}`);
+			const { text } = await snekfetch.get(`http://numbersapi.com/${number}`);
 			return msg.say(text);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
