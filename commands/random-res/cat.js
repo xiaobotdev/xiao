@@ -15,8 +15,7 @@ module.exports = class CatCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await snekfetch
-				.get('http://random.cat/meow');
+			const { body } = await snekfetch.get('http://random.cat/meow');
 			return msg.say({ files: [body.file] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

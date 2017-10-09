@@ -24,8 +24,7 @@ module.exports = class IPInfoCommand extends Command {
 
 	async run(msg, { ip }) {
 		try {
-			const { body } = await snekfetch
-				.get(`https://ipinfo.io/${ip}/json`);
+			const { body } = await snekfetch.get(`https://ipinfo.io/${ip}/json`);
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
 				.setURL(`https://ipinfo.io/${ip}`)
