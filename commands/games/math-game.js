@@ -53,7 +53,7 @@ module.exports = class MathGameCommand extends Command {
 			time: 10000
 		});
 		if (!msgs.size) return msg.say(`Time! It was ${answer}, sorry!`);
-		if (msgs.first().content !== answer) return msg.say(`Nope, sorry, it's ${answer}.`);
+		if (msgs.first().content !== answer.toString()) return msg.say(`Nope, sorry, it's ${answer}.`);
 		return msg.say('Nice job! 10/10! You deserve some cake!');
 	}
 };
