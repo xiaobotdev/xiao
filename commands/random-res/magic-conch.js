@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { stripIndents } = require('common-tags');
 const answers = ['Maybe someday', 'Nothing', 'Neither', 'I don\'t think so', 'Yes', 'Try asking again'];
 
 module.exports = class MagicConchCommand extends Command {
@@ -20,6 +21,9 @@ module.exports = class MagicConchCommand extends Command {
 	}
 
 	run(msg, { question }) {
-		return msg.say(`🐚 ${answers[Math.floor(Math.random() * answers.length)]} 🐚`);
+		return msg.say(stripIndents`
+			Question: ${question}
+			🐚 ${answers[Math.floor(Math.random() * answers.length)]} 🐚
+		`);
 	}
 };
