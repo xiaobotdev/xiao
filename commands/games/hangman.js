@@ -37,7 +37,7 @@ module.exports = class HangmanCommand extends Command {
 			const display = '_'.repeat(word.length).split('');
 			while (word.length !== confirmation.length && points < 7) {
 				await msg.say(stripIndents`
-					The word is: ${display.join(' ')}. Which letter do you choose?
+					The word is: \`${display.join(' ')}\`. Which letter do you choose?
 					\`\`\`
 					___________
 					|     |
