@@ -30,16 +30,16 @@ module.exports = class ChristmasHatCommand extends Command {
 		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
-			size: 256
+			size: 512
 		});
 		try {
-			const canvas = createCanvas(256, 256);
+			const canvas = createCanvas(512, 512);
 			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'christmas-hat.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
-			ctx.drawImage(avatar, 0, 0, 256, 256);
-			ctx.drawImage(base, 65, -26, 200, 235);
+			ctx.drawImage(avatar, 0, 0, 512, 512);
+			ctx.drawImage(base, 122, -34, 375, 441);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'christmas-hat.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

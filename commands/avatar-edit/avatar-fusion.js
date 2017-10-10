@@ -35,22 +35,22 @@ module.exports = class AvatarFusionCommand extends Command {
 		if (!base) base = msg.author;
 		const baseAvatarURL = base.displayAvatarURL({
 			format: 'png',
-			size: 256
+			size: 512
 		});
 		const overlayAvatarURL = overlay.displayAvatarURL({
 			format: 'png',
-			size: 256
+			size: 512
 		});
 		try {
-			const canvas = createCanvas(256, 256);
+			const canvas = createCanvas(512, 512);
 			const ctx = canvas.getContext('2d');
 			const baseAvatarData = await snekfetch.get(baseAvatarURL);
 			const baseAvatar = await loadImage(baseAvatarData.body);
 			const overlayAvatarData = await snekfetch.get(overlayAvatarURL);
 			const overlayAvatar = await loadImage(overlayAvatarData.body);
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(baseAvatar, 0, 0, 256, 256);
-			ctx.drawImage(overlayAvatar, 0, 0, 256, 256);
+			ctx.drawImage(baseAvatar, 0, 0, 512, 512);
+			ctx.drawImage(overlayAvatar, 0, 0, 512, 512);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'avatar-fusion.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
