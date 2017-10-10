@@ -29,8 +29,7 @@ module.exports = class HelpCommand extends Command {
 				const data = commands[0];
 				return msg.say(stripIndents`
 					__**Command ${data.name}**__
-					${data.description}
-					_${data.details}_
+					${data.description} ${data.details ? `\n_${data.details}_` : ''}
 
 					**Format**: ${msg.anyUsage(`${data.name} ${data.format || ''}`)}
 					**Aliases**: ${data.aliases.join(', ') || 'None'}
