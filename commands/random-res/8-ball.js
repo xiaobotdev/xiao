@@ -22,7 +22,7 @@ module.exports = class EightBallCommand extends Command {
 
 	run(msg, { question }) {
 		return msg.say(stripIndents`
-			Question: ${question}
+			${question}
 			🎱 ${answers[Math.floor(Math.random() * answers.length)]} 🎱
 		`);
 	}

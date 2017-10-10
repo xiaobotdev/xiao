@@ -23,12 +23,12 @@ module.exports = class CharlieCharlieChallengeCommand extends Command {
 	run(msg, { question }) {
 		const answer = answers[Math.floor(Math.random() * answers.length)];
 		return msg.say(stripIndent`
-			Question: ${question}
+			${question}
 			\`\`\`
 			    ${answer === 'no1' ? '\\' : ' '}  |  ${answer === 'yes1' ? '/' : ' '}
 			  NO ${answer === 'no1' ? '\\' : ' '} | ${answer === 'yes1' ? '/' : ' '}YES
 			      ${answer === 'no1' ? '\\' : ' '}|${answer === 'yes1' ? '/' : ' '}
-			----------------
+			———————+————————
 			      ${answer === 'yes2' ? '/' : ' '}|${answer === 'no2' ? '\\' : ' '}
 			  YES${answer === 'yes2' ? '/' : ' '} | ${answer === 'no2' ? '\\' : ' '}NO
 			    ${answer === 'yes2' ? '/' : ' '}  |  ${answer === 'no2' ? '\\' : ' '}
