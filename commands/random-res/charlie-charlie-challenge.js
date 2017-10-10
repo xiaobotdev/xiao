@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndent } = require('common-tags');
-const answers = ['no1', 'yes1', 'no2', 'yes2'];
+const answers = ['yes', 'no'];
 
 module.exports = class CharlieCharlieChallengeCommand extends Command {
 	constructor(client) {
@@ -25,13 +25,13 @@ module.exports = class CharlieCharlieChallengeCommand extends Command {
 		return msg.say(stripIndent`
 			${question}
 			\`\`\`
-			    ${answer === 'no1' ? '\\' : ' '}  |  ${answer === 'yes1' ? '/' : ' '}
-			  NO ${answer === 'no1' ? '\\' : ' '} | ${answer === 'yes1' ? '/' : ' '}YES
-			      ${answer === 'no1' ? '\\' : ' '}|${answer === 'yes1' ? '/' : ' '}
+			    ${answer === 'no' ? '\\' : ' '}  |  ${answer === 'yes' ? '/' : ' '}
+			  NO ${answer === 'no' ? '\\' : ' '} | ${answer === 'yes' ? '/' : ' '}YES
+			      ${answer === 'no' ? '\\' : ' '}|${answer === 'yes' ? '/' : ' '}
 			————————————————
-			      ${answer === 'yes2' ? '/' : ' '}|${answer === 'no2' ? '\\' : ' '}
-			  YES${answer === 'yes2' ? '/' : ' '} | ${answer === 'no2' ? '\\' : ' '}NO
-			    ${answer === 'yes2' ? '/' : ' '}  |  ${answer === 'no2' ? '\\' : ' '}
+			      ${answer === 'yes' ? '/' : ' '}|${answer === 'no' ? '\\' : ' '}
+			  YES${answer === 'yes' ? '/' : ' '} | ${answer === 'no' ? '\\' : ' '}NO
+			    ${answer === 'yes' ? '/' : ' '}  |  ${answer === 'no' ? '\\' : ' '}
 			\`\`\`
 		`);
 	}
