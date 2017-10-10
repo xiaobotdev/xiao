@@ -36,14 +36,16 @@ module.exports = class HangmanCommand extends Command {
 			const incorrect = [];
 			const display = '_'.repeat(word.length).split('');
 			while (word.length !== confirmation.length && points < 7) {
-				await msg.code(null, stripIndents`
+				await msg.say(stripIndents`
+					The word is: ${display.join(' ')}. Which letter do you choose?
+					\`\`\`
 					___________
 					|     |
 					|     ${points > 0 ? 'O' : ''}
 					|    ${points > 2 ? '—' : ' '}${points > 1 ? '|' : ''}${points > 3 ? '—' : ''}
 					|    ${points > 4 ? '/' : ''} ${points > 5 ? '\\' : ''}
 					===========
-					The word is: ${display.join(' ')}. Which letter do you choose?
+					\`\`\`
 				`);
 				const guess = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 					max: 1,
