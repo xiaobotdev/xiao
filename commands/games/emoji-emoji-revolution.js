@@ -59,8 +59,8 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 				else ++oPts;
 				await msg.say(stripIndents`
 					${winner} won this round!
-					**${msg.author.username}:** ${aPts}
-					**${opponent.username}:** ${oPts}
+					**${msg.author.username}**: ${aPts}
+					**${opponent.username}**: ${oPts}
 				`);
 			}
 			this.playing.delete(msg.channel.id);

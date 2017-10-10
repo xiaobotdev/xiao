@@ -27,20 +27,16 @@ module.exports = class HelpCommand extends Command {
 		const commands = this.client.registry.findCommands(command, false, msg);
 		if (command) {
 			if (commands.length === 1) {
-				const embed = new MessageEmbed()
-					.setTitle(`Command ${commands[0].name}`)
-					.setDescription(stripIndents`
-						${commands[0].description}
-						${commands[0].details || ''}
-					`)
-					.setColor(0x00AE86)
-					.addField('❯ Format',
-						msg.anyUsage(`${commands[0].name} ${commands[0].format ? commands[0].format : ''}`))
-					.addField('❯ Aliases',
-						commands[0].aliases.join(', ') || 'None')
-					.addField('❯ Group',
-						commands[0].group.name);
-				return msg.embed(embed);
+				const data = commands[0];
+				return msg.say(stripIndents`
+					__**Command ${data.name}**__
+					${data.description}
+					_${data.details}_
+
+					**Format**: ${msg.anyUsage(data.name, data.format || '')}
+					**Aliases**: ${data.aliases.join(', ') || 'None'}
+					**Group**: ${data.group.name}
+				`);
 			} else if (commands.length > 1) {
 				return msg.say(`Multiple commands found: ${commands.map(c => c.name).join(', ')}`);
 			}

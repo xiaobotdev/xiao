@@ -34,7 +34,7 @@ module.exports = class RecipeCommand extends Command {
 				.setColor(0xC20000)
 				.setURL(recipe.href)
 				.setTitle(recipe.title)
-				.setDescription(`**Ingredients:** ${recipe.ingredients}`)
+				.setDescription(`**Ingredients**: ${recipe.ingredients}`)
 				.setThumbnail(recipe.thumbnail);
 			return msg.embed(embed);
 		} catch (err) {

@@ -109,8 +109,8 @@ module.exports = class BattleCommand extends Command {
 			this.fighting.delete(msg.channel.id);
 			return msg.say(stripIndents`
 				The match is over!
-				**Winner:** ${userHP > oppoHP ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}
-				**Loser:** ${userHP > oppoHP ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}
+				**Winner**: ${userHP > oppoHP ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}
+				**Loser**: ${userHP > oppoHP ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}
 			`);
 		} catch (err) {
 			this.fighting.delete(msg.channel.id);
