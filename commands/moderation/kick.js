@@ -47,7 +47,7 @@ module.exports = class KickCommand extends Command {
 		try {
 			await member.send(stripIndents`
 				You were kicked from ${msg.guild.name} by ${msg.author.tag}!
-				**Reason:** ${reason}
+				**Reason**: ${reason}
 			`);
 		} catch (err) {
 			await msg.say('Failed to send DM.');

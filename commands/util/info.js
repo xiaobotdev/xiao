@@ -18,21 +18,20 @@ module.exports = class InfoCommand extends Command {
 
 	async run(msg) {
 		const guilds = await this.client.shard.fetchClientValues('guilds.size');
-		const users = await this.client.shard.fetchClientValues('users.size');
-		const memory = await this.client.shard.broadcastEval('process.memoryUsage().heapUsed');
+		const invite = await this.client.generateInvite('1345846343');
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter('©2017 dragonfire535#8081')
 			.addField('❯ Servers',
 				guilds.reduce((prev, val) => prev + val, 0), true)
-			.addField('❯ Users',
-				users.reduce((prev, val) => prev + val, 0), true)
+			.addField('❯ Home Server',
+				`[Here](https://${this.client.options.invite})`, true)
+			.addField('❯ Invite',
+				`[Here](${invite})`, true)
 			.addField('❯ Shards',
 				this.client.options.shardCount, true)
 			.addField('❯ Commands',
 				this.client.registry.commands.size, true)
-			.addField('❯ Memory Usage',
-				`${Math.round(memory.reduce((prev, val) => prev + val, 0) / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime',
 				duration(this.client.uptime).format(), true)
 			.addField('❯ Version',

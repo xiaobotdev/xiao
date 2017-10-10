@@ -11,7 +11,7 @@ module.exports = class CurrencyCommand extends Command {
 			group: 'num-edit',
 			memberName: 'currency',
 			description: 'Converts a number from one currency to another.',
-			details: `**Codes:** ${codes.join(', ')}`,
+			details: `**Codes**: ${codes.join(', ')}`,
 			args: [
 				{
 					key: 'base',
