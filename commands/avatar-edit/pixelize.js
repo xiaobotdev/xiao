@@ -32,12 +32,12 @@ module.exports = class PixelizeCommand extends Command {
 			size: 64
 		});
 		try {
-			const canvas = createCanvas(256, 256);
+			const canvas = createCanvas(512, 512);
 			const ctx = canvas.getContext('2d');
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
 			ctx.imageSmoothingEnabled = false;
-			ctx.drawImage(avatar, 0, 0, 256, 256);
+			ctx.drawImage(avatar, 0, 0, 512, 512);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'pixelize.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

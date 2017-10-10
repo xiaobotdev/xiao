@@ -29,15 +29,15 @@ module.exports = class InvertCommand extends Command {
 		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
-			size: 256
+			size: 512
 		});
 		try {
-			const canvas = createCanvas(256, 256);
+			const canvas = createCanvas(512, 512);
 			const ctx = canvas.getContext('2d');
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
-			ctx.drawImage(avatar, 0, 0, 256, 256);
-			const imgData = ctx.getImageData(0, 0, 256, 256);
+			ctx.drawImage(avatar, 0, 0, 512, 512);
+			const imgData = ctx.getImageData(0, 0, 512, 512);
 			const { data } = imgData;
 			for (let i = 0; i < data.length; i += 4) {
 				data[i] = 255 - data[i];
