@@ -28,7 +28,7 @@ module.exports = class CharlieCharlieChallengeCommand extends Command {
 			    ${answer === 'no1' ? '\\' : ' '}  |  ${answer === 'yes1' ? '/' : ' '}
 			  NO ${answer === 'no1' ? '\\' : ' '} | ${answer === 'yes1' ? '/' : ' '}YES
 			      ${answer === 'no1' ? '\\' : ' '}|${answer === 'yes1' ? '/' : ' '}
-			———————+————————
+			————————————————
 			      ${answer === 'yes2' ? '/' : ' '}|${answer === 'no2' ? '\\' : ' '}
 			  YES${answer === 'yes2' ? '/' : ' '} | ${answer === 'no2' ? '\\' : ' '}NO
 			    ${answer === 'yes2' ? '/' : ' '}  |  ${answer === 'no2' ? '\\' : ' '}
