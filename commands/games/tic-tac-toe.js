@@ -42,14 +42,16 @@ module.exports = class TicTacToeCommand extends Command {
 			while (!winner && taken.length < 9) {
 				const user = userTurn ? msg.author : opponent;
 				const sign = userTurn ? 'X' : 'O';
-				await msg.code(null, stripIndents`
+				await msg.code(stripIndents`
+					${user}, which side do you pick?
+					\`\`\`
 					${sides[0]} | ${sides[1]} | ${sides[2]}
 					—————————
 					${sides[3]} | ${sides[4]} | ${sides[5]}
 					—————————
 					${sides[6]} | ${sides[7]} | ${sides[8]}
+					\`\`\`
 				`);
-				await msg.say(`${user}, which side do you pick?`);
 				const turn = await msg.channel.awaitMessages(res => res.author.id === user.id, {
 					max: 1,
 					time: 30000
