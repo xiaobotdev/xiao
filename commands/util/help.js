@@ -11,7 +11,6 @@ module.exports = class HelpCommand extends Command {
 			memberName: 'help',
 			description: 'Displays a list of available commands, or detailed information for a specified command.',
 			guarded: true,
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'command',
@@ -33,7 +32,7 @@ module.exports = class HelpCommand extends Command {
 					${data.description}
 					_${data.details}_
 
-					**Format**: ${msg.anyUsage(data.name, data.format || '')}
+					**Format**: ${msg.anyUsage(`${data.name} ${data.format || ''}`)}
 					**Aliases**: ${data.aliases.join(', ') || 'None'}
 					**Group**: ${data.group.name}
 				`);
