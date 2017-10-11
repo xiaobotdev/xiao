@@ -56,22 +56,6 @@ class Util {
 			format: () => `${hrs < 10 ? `0${hrs}` : hrs}:${min < 10 ? `0${min}` : min}:${sec < 10 ? `0${sec}` : sec}`
 		};
 	}
-
-	static cleanHTML(text) {
-		return text
-			.replace(/&amp;/g, '&')
-			.replace(/&lt;/g, '<')
-			.replace(/&gt;/g, '>')
-			.replace(/&quot;/g, '"')
-			.replace(/&ndash;/g, '–')
-			.replace(/&mdash;/g, '—')
-			.replace(/&copy;/g, '©')
-			.replace(/&trade;/g, '™')
-			.replace(/&reg;/g, '®')
-			.replace(/(<\/?strong>|<\/?b>)/g, '**')
-			.replace(/<br>/g, '\n')
-			.replace(/(<\/?i>|<\/?em>)/g, '*');
-	}
 }
 
 module.exports = Util;
