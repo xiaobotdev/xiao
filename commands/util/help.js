@@ -45,8 +45,7 @@ module.exports = class HelpCommand extends Command {
 				.setDescription(`Use ${msg.usage('<command>')} to view detailed information about a command.`)
 				.setColor(0x00AE86);
 			for (const group of this.client.registry.groups.values()) {
-				embed.addField(`❯ ${group.name}`,
-					group.commands.map(c => c.name).join(', ') || 'None');
+				embed.addField(`❯ ${group.name}`, group.commands.map(c => c.name).join(', ') || 'None');
 			}
 			try {
 				await msg.direct({ embed });
