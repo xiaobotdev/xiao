@@ -32,7 +32,7 @@ module.exports = class SafebooruCommand extends Command {
 					tags: query
 				});
 			const parsed = xml2js(text, { compact: true }).posts;
-			if (!parsed.post.length) return msg.say('Could not find any results.');
+			if (!parsed.post || !parsed.post.length) return msg.say('Could not find any results.');
 			return msg.say(stripIndents`
 				Result for ${query}:
 				http:${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}
