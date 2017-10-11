@@ -28,13 +28,12 @@ module.exports = class VocaloidCommand extends Command {
 				.query({
 					query,
 					maxResults: 1,
-					getTotalCount: true,
 					sort: 'FavoritedTimes',
 					preferAccurateMatches: true,
 					nameMatchMode: 'Words',
 					fields: 'ThumbUrl,Lyrics'
 				});
-			if (!body.totalCount) return msg.say('Could not find any results.');
+			if (!body.items.length) return msg.say('Could not find any results.');
 			const data = body.items[0];
 			const { minutes, seconds } = duration(data.lengthSeconds * 1000);
 			const embed = new MessageEmbed()

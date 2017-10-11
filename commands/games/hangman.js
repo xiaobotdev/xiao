@@ -21,15 +21,7 @@ module.exports = class HangmanCommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.wordnik.com/v4/words.json/randomWord')
-				.query({
-					minCorpusCount: 0,
-					maxCorpusCount: -1,
-					minDictionaryCount: 1,
-					maxDictionaryCount: -1,
-					minLength: -1,
-					maxLength: -1,
-					api_key: WORDNIK_KEY
-				});
+				.query({ api_key: WORDNIK_KEY });
 			const word = body.word.toLowerCase().replace(/ /g, '-');
 			let points = 0;
 			const confirmation = [];

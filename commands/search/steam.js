@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten, cleanHTML } = require('../../structures/Util');
 
 module.exports = class SteamCommand extends Command {
 	constructor(client) {
@@ -31,11 +30,12 @@ module.exports = class SteamCommand extends Command {
 					l: 'en',
 					term: query
 				});
-			if (!search.body.total) return msg.say('Could not find any results.');
+			if (!search.body.items.length) return msg.say('Could not find any results.');
+			const id = search.body.items[0].id;
 			const { body } = await snekfetch
-				.get('http://store.steampowered.com/api/appdetails')
-				.query({ appids: search.body.items[0].id });
-			const { data } = body[search.body.items[0].id.toString()];
+				.get('https://store.steampowered.com/api/appdetails')
+				.query({ appids: id });
+			const { data } = body[id.toString()];
 			const current = data.price_overview ? data.price_overview.final / 100 : 0;
 			const original = data.price_overview ? data.price_overview.initial / 100 : 0;
 			const price = current === original ? `$${current}` : `~~$${original}~~ $${current}`;
@@ -47,7 +47,6 @@ module.exports = class SteamCommand extends Command {
 				.setColor(0x101D2F)
 				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png')
 				.setTitle(data.name)
-				.setDescription(shorten(cleanHTML(data.short_description)))
 				.setURL(`http://store.steampowered.com/app/${data.steam_appid}`)
 				.setImage(data.header_image)
 				.addField('❯ Price',
