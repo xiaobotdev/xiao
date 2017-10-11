@@ -46,7 +46,7 @@ module.exports = class ITunesCommand extends Command {
 					country
 				});
 			const body = JSON.parse(text);
-			if (!body.resultCount) return msg.say('Could not find any results.');
+			if (!body.results.length) return msg.say('Could not find any results.');
 			const data = body.results[0];
 			const embed = new MessageEmbed()
 				.setColor(0xFEFEFE)

@@ -1,9 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { list } = require('../../structures/Util');
 const { OWM_KEY } = process.env;
-const types = ['zip', 'name'];
 
 module.exports = class WeatherCommand extends Command {
 	constructor(client) {
@@ -16,16 +14,6 @@ module.exports = class WeatherCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'type',
-					prompt: `What type should the search be? Either ${list(types, 'or')}.`,
-					type: 'string',
-					validate: type => {
-						if (types.includes(type)) return true;
-						return `Invalid type, please enter either ${list(types, 'or')}.`;
-					},
-					parse: type => type.toLowerCase()
-				},
-				{
 					key: 'query',
 					prompt: 'What location would you like to get the weather of?',
 					type: 'string'
@@ -34,13 +22,12 @@ module.exports = class WeatherCommand extends Command {
 		});
 	}
 
-	async run(msg, { type, query }) {
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.openweathermap.org/data/2.5/weather')
 				.query({
-					q: type === 'name' ? query : '',
-					zip: type === 'zip' ? query : '',
+					q: query,
 					units: 'metric',
 					appid: OWM_KEY
 				});

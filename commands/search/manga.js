@@ -28,7 +28,7 @@ module.exports = class MangaCommand extends Command {
 				.get('https://kitsu.io/api/edge/manga')
 				.query({ 'filter[text]': query });
 			const body = JSON.parse(text);
-			if (!body.meta.count) return msg.say('Could not find any results.');
+			if (!body.data.length) return msg.say('Could not find any results.');
 			const data = body.data[0].attributes;
 			const embed = new MessageEmbed()
 				.setColor(0xF75239)

@@ -26,7 +26,7 @@ module.exports = class WattpadCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
-				.get('https://api.wattpad.com:443/v4/stories')
+				.get('https://api.wattpad.com/v4/stories')
 				.query({
 					query,
 					limit: 1

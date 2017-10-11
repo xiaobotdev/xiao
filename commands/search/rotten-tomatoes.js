@@ -34,18 +34,18 @@ module.exports = class RottenTomatoesCommand extends Command {
 			const find = search.body.movies.find(m => m.name.toLowerCase() === query.toLowerCase()) || search.body.movies[0];
 			const urlID = find.url.replace('/m/', '');
 			const { text } = await snekfetch.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
-			const data = JSON.parse(text);
+			const body = JSON.parse(text);
 			const embed = new MessageEmbed()
 				.setColor(0xFFEC02)
-				.setTitle(`${data.title} (${data.year})`)
-				.setURL(`https://www.rottentomatoes.com${data.url}`)
+				.setTitle(`${body.title} (${body.year})`)
+				.setURL(`https://www.rottentomatoes.com${body.url}`)
 				.setAuthor('Rotten Tomatoes', 'https://i.imgur.com/Sru8mZ3.jpg')
-				.setDescription(shorten(data.ratingSummary.consensus))
-				.setThumbnail(data.posters.original)
+				.setDescription(shorten(body.ratingSummary.consensus))
+				.setThumbnail(body.posters.original)
 				.addField('❯ Critic Score',
-					data.ratings.critics_score !== -1 ? `${data.ratings.critics_score}%` : 'N/A', true)
+					body.ratings.critics_score !== -1 ? `${body.ratings.critics_score}%` : 'N/A', true)
 				.addField('❯ Audience Score',
-					data.ratings.audience_score !== -1 ? `${data.ratings.audience_score}%` : 'N/A', true);
+					body.ratings.audience_score !== -1 ? `${body.ratings.audience_score}%` : 'N/A', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
