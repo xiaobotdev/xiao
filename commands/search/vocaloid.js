@@ -11,6 +11,7 @@ module.exports = class VocaloidCommand extends Command {
 			group: 'search',
 			memberName: 'vocaloid',
 			description: 'Searches VocaDB for your query.',
+			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',

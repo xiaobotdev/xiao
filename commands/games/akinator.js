@@ -10,7 +10,8 @@ module.exports = class AkinatorCommand extends Command {
 			aliases: ['the-web-genie', 'web-genie'],
 			group: 'games',
 			memberName: 'akinator',
-			description: 'Play a game of Akinator!'
+			description: 'Play a game of Akinator!',
+			clientPermissions: ['EMBED_LINKS']
 		});
 
 		this.sessions = new Map();
