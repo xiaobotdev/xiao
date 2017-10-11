@@ -31,7 +31,7 @@ module.exports = class SteamCommand extends Command {
 					term: query
 				});
 			if (!search.body.items.length) return msg.say('Could not find any results.');
-			const id = search.body.items[0].id;
+			const { id } = search.body.items[0];
 			const { body } = await snekfetch
 				.get('https://store.steampowered.com/api/appdetails')
 				.query({ appids: id });
