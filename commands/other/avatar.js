@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const snekfetch = require('snekfetch');
 
 module.exports = class AvatarCommand extends Command {
 	constructor(client) {
@@ -7,7 +8,8 @@ module.exports = class AvatarCommand extends Command {
 			aliases: ['profile-picture', 'profile-pic'],
 			group: 'other',
 			memberName: 'avatar',
-			description: 'Responds with a link to a user\'s avatar.',
+			description: 'Responds with a user\'s avatar.',
+			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
 					key: 'user',
@@ -19,13 +21,15 @@ module.exports = class AvatarCommand extends Command {
 		});
 	}
 
-	run(msg, { user }) {
+	async run(msg, { user }) {
 		if (!user) user = msg.author;
 		if (!user.avatar) return msg.say('This user has no avatar.');
-		const avatar = user.avatarURL({
-			format: user.avatar.startsWith('a_') ? 'gif' : 'png',
+		const format = user.avatar.startsWith('a_') ? 'gif' : 'png';
+		const avatarURL = user.avatarURL({
+			format,
 			size: 2048
 		});
-		return msg.say(avatar);
+		const { body } = await snekfetch.get(avatarURL);
+		return msg.say({ files: [{ attachment: body, name: `avatar.${format}` }] });
 	}
 };

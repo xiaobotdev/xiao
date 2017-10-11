@@ -11,6 +11,7 @@ module.exports = class StocksCommand extends Command {
 			group: 'search',
 			memberName: 'stocks',
 			description: 'Get the current stocks for a symbol.',
+			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'symbol',
