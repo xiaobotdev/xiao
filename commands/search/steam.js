@@ -31,7 +31,7 @@ module.exports = class SteamCommand extends Command {
 					term: query
 				});
 			if (!search.body.items.length) return msg.say('Could not find any results.');
-			const { id } = search.body.items[0];
+			const { id, tiny_image } = search.body.items[0];
 			const { body } = await snekfetch
 				.get('https://store.steampowered.com/api/appdetails')
 				.query({ appids: id });
@@ -50,7 +50,7 @@ module.exports = class SteamCommand extends Command {
 				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png')
 				.setTitle(data.name)
 				.setURL(`http://store.steampowered.com/app/${data.steam_appid}`)
-				.setThumbnail(search.body.tiny_image)
+				.setThumbnail(tiny_image)
 				.addField('❯ Price',
 					price, true)
 				.addField('❯ Metascore',
