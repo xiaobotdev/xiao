@@ -61,7 +61,7 @@ module.exports = class AkinatorCommand extends Command {
 			if (!msgs.size) return msg.say('I guess your silence means I have won.');
 			const response = msgs.first().content.toLowerCase();
 			if (!['yes', 'no'].includes(response)) return msg.say('I guess I\'m right then!');
-			return msg.say(response === 'yes' ? 'Another win for me!' : 'Bravo, you have defeated me.');
+			return msg.say(response === 'yes' ? 'Guessed right one more time!' : 'Bravo, you have defeated me.');
 		} catch (err) {
 			this.sessions.delete(msg.channel.id);
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
