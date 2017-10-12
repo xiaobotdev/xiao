@@ -42,7 +42,7 @@ module.exports = class VocaloidCommand extends Command {
 				.setAuthor('VocaDB', 'https://i.imgur.com/6QwraDT.jpg')
 				.setTitle(data.name)
 				.setURL(`http://vocadb.net/S/${data.id}`)
-				.setDescription(data.lyrics.length ? shorten(data.lyrics[0].value) : 'N/A')
+				.setDescription(data.lyrics.length ? shorten(data.lyrics[0].value) : 'No lyrics available.')
 				.setThumbnail(data.thumbUrl)
 				.addField('❯ Artist',
 					data.artistString)

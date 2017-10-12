@@ -50,7 +50,7 @@ module.exports = class SoundboardCommand extends Command {
 			return null;
 		} catch (err) {
 			channel.leave();
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };
