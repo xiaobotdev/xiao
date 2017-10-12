@@ -25,8 +25,8 @@ module.exports = class SpoopyLinkCommand extends Command {
 		try {
 			const { body } = await snekfetch.get(`https://spoopy.link/api/${site}`);
 			return msg.say(stripIndents`
-				${body.safe ? 'This site is safe!' : 'This site may not be safe...'}
-				${body.chain.map(url => `<${url.url}> [${url.safe ? 'SAFE' : `UNSAFE: ${url.reasons.join(', ')}`}]`).join('\n')}
+				${body.safe ? '✅ Safe!' : '❌ Not safe...'}
+				${body.chain.map(url => `<${url.url}> ${url.safe ? '✅' : `❌ (${url.reasons.join(', ')})`}`).join('\n')}
 			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
