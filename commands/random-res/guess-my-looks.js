@@ -3,8 +3,7 @@ const { oneLine } = require('common-tags');
 const genders = ['male', 'female'];
 const eyeColors = ['blue', 'brown', 'hazel', 'green'];
 const hairColors = ['blonde', 'brown', 'red', 'black'];
-const hairStyles = ['curly', 'straight', 'wavy'];
-const hairLengths = ['long', 'shoulder-length', 'short', 'balding'];
+const hairStyles = ['curly', 'straight', 'wavy', 'long', 'shoulder-length', 'short', 'balding'];
 const extras = ['freckles', 'glasses', 'dimples', 'contacts', 'loads of acne', 'pretty smile'];
 
 module.exports = class GuessMyLooksCommand extends Command {
@@ -32,7 +31,6 @@ module.exports = class GuessMyLooksCommand extends Command {
 		const eyeColor = eyeColors[Math.floor(Math.random() * eyeColors.length)];
 		const hairColor = hairColors[Math.floor(Math.random() * hairColors.length)];
 		const hairStyle = hairStyles[Math.floor(Math.random() * hairStyles.length)];
-		const hairLength = hairLengths[Math.floor(Math.random() * hairLengths.length)];
 		const age = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
 		const feet = Math.floor(Math.random() * (7 - 3 + 1)) + 3;
 		const inches = Math.floor(Math.random() * 12);
@@ -40,7 +38,7 @@ module.exports = class GuessMyLooksCommand extends Command {
 		const extra = extras[Math.floor(Math.random() * extras.length)];
 		const prefix = user.id === msg.author.id ? 'You' : 'They';
 		return msg.reply(oneLine`
-			${prefix} are, I think, a ${age} year old ${gender} with ${eyeColor} eyes and ${hairLength} ${hairStyle}
+			${prefix} are, I think, a ${age} year old ${gender} with ${eyeColor} eyes and ${hairStyle}
 			${hairColor} hair. ${prefix} are ${feet}'${inches}" and weigh ${weight} pounds. Don't forget the ${extra}!
 		`);
 	}
