@@ -1,10 +1,10 @@
 const { Command } = require('discord.js-commando');
 const { oneLine } = require('common-tags');
 const genders = ['male', 'female'];
-const eyeColors = ['blue', 'brown', 'hazel', 'green'];
-const hairColors = ['blonde', 'brown', 'red', 'black'];
+const eyeColors = ['blue', 'brown', 'hazel', 'green', 'yellow'];
+const hairColors = ['blonde', 'brown', 'red', 'black', 'grey', 'white'];
 const hairStyles = ['curly', 'straight', 'wavy', 'long', 'shoulder-length', 'short', 'balding'];
-const extras = ['freckles', 'glasses', 'dimples', 'contacts', 'loads of acne', 'pretty smile'];
+const extras = ['freckles', 'glasses', 'dimples', 'contacts', 'loads of acne', 'pretty smile', 'braces'];
 
 module.exports = class GuessMyLooksCommand extends Command {
 	constructor(client) {
