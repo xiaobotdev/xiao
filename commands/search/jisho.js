@@ -28,7 +28,7 @@ module.exports = class JishoCommand extends Command {
 			if (!body.data.length) return msg.say('Could not find any results.');
 			const data = body.data[0];
 			return msg.say(stripIndents`
-				**${data.japanese[0].word}**
+				**${data.japanese[0].word || data.japanese[0].reading}**
 				${data.senses[0].english_definitions.join(', ')}
 			`);
 		} catch (err) {
