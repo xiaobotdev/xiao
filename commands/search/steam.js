@@ -40,15 +40,17 @@ module.exports = class SteamCommand extends Command {
 			const original = data.price_overview ? data.price_overview.initial / 100 : 0;
 			const price = current === original ? `$${current}` : `~~$${original}~~ $${current}`;
 			const platforms = [];
-			if (data.platforms.windows) platforms.push('Windows');
-			if (data.platforms.mac) platforms.push('Mac');
-			if (data.platforms.linux) platforms.push('Linux');
+			if (data.platforms) {
+				if (data.platforms.windows) platforms.push('Windows');
+				if (data.platforms.mac) platforms.push('Mac');
+				if (data.platforms.linux) platforms.push('Linux');
+			}
 			const embed = new MessageEmbed()
 				.setColor(0x101D2F)
 				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png')
 				.setTitle(data.name)
 				.setURL(`http://store.steampowered.com/app/${data.steam_appid}`)
-				.setImage(data.header_image)
+				.setThumbnail(search.body.tiny_image)
 				.addField('❯ Price',
 					price, true)
 				.addField('❯ Metascore',
@@ -57,6 +59,10 @@ module.exports = class SteamCommand extends Command {
 					data.recommendations ? data.recommendations.total : 'N/A', true)
 				.addField('❯ Platforms',
 					platforms.join(', ') || 'None', true)
+				.addField('❯ Release Data',
+					data.release_date ? data.release_date.date : 'N/A', true)
+				.addField('❯ DLC Count',
+					data.dlc ? data.dlc.length : 0, true)
 				.addField('❯ Developers',
 					data.developers.join(', ') || 'N/A')
 				.addField('❯ Publishers',

@@ -38,7 +38,8 @@ module.exports = class RecipeCommand extends Command {
 				.setThumbnail(recipe.thumbnail);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say('Could not find any results.');
+			if (err.status === 500) return msg.say('Could not find any results.');
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

@@ -24,7 +24,7 @@ module.exports = class AkinatorCommand extends Command {
 			this.sessions.set(msg.channel.id, { progress: null });
 			while (this.sessions.get(msg.channel.id).progress < 99) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
-				if (this.sessions.get(msg.channel.id).step >= 80) break;
+				if (!data || this.sessions.get(msg.channel.id).step >= 80) break;
 				const answers = data.answers.map(answer => answer.answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
@@ -76,6 +76,7 @@ module.exports = class AkinatorCommand extends Command {
 				player: 'xiaobot'
 			});
 		const data = body.parameters;
+		if (!data) return null;
 		this.sessions.set(channel.id, {
 			id: data.identification.session,
 			signature: data.identification.signature,
@@ -95,13 +96,15 @@ module.exports = class AkinatorCommand extends Command {
 				step: session.step,
 				answer
 			});
+		const data = body.parameters;
+		if (!data) return null;
 		this.sessions.set(channel.id, {
 			id: session.id,
 			signature: session.signature,
-			step: parseInt(body.parameters.step, 10),
-			progress: parseInt(body.parameters.progression, 10)
+			step: parseInt(data.step, 10),
+			progress: parseInt(data.progression, 10)
 		});
-		return body.parameters;
+		return data;
 	}
 
 	async finish(channel) {
