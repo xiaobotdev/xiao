@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
-const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { filterPkmn } = require('../../structures/Util');
+const { filterPkmn, pad } = require('../../structures/Util');
 
 module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {
@@ -11,7 +10,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			group: 'games',
 			memberName: 'whos-that-pokemon',
 			description: 'Guess who that Pokémon is.',
-			clientPermissions: ['EMBED_LINKS']
+			clientPermissions: ['ATTACH_FILES']
 		});
 	}
 
@@ -21,12 +20,8 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
 			const names = body.names.map(name => name.name.toLowerCase());
 			const displayName = filterPkmn(body.names).name;
-			const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setTitle('You have 15 seconds, who\'s that Pokémon?')
-				.setImage(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
-			await msg.embed(embed);
+			const image = `https://www.serebii.net/sunmoon/pokemon/${pad(body.id.toString(), '000')}.png`;
+			await msg.say('**You have 15 seconds, who\'s that Pokémon?**', { files: [image] });
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
 				time: 15000

@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { pad } = require('../../structures/Util');
 
 module.exports = class BinaryCommand extends Command {
 	constructor(client) {
@@ -28,7 +29,7 @@ module.exports = class BinaryCommand extends Command {
 	binary(text) {
 		return text.split('').map(str => {
 			const converted = str.charCodeAt(0).toString(2);
-			return `${'00000000'.slice(converted.length)}${converted}`;
+			return pad(converted, '00000000');
 		}).join('');
 	}
 };
