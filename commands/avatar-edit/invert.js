@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
+const { invert } = require('../../structures/Util');
 
 module.exports = class InvertCommand extends Command {
 	constructor(client) {
@@ -37,14 +38,7 @@ module.exports = class InvertCommand extends Command {
 			const canvas = createCanvas(avatar.width, avatar.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(avatar, 0, 0);
-			const imgData = ctx.getImageData(0, 0, avatar.width, avatar.height);
-			const { data } = imgData;
-			for (let i = 0; i < data.length; i += 4) {
-				data[i] = 255 - data[i];
-				data[i + 1] = 255 - data[i + 1];
-				data[i + 2] = 255 - data[i + 2];
-			}
-			ctx.putImageData(imgData, 0, 0);
+			invert(ctx, 0, 0, avatar.width, avatar.height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'invert.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
