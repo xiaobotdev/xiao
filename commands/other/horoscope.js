@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { list } = require('../../structures/Util');
+const { list } = require('../../util/Util');
 const signs = require('../../assets/json/horoscope');
 
 module.exports = class HoroscopeCommand extends Command {

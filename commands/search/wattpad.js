@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../structures/Util');
+const { shorten } = require('../../util/Util');
 const { WATTPAD_KEY } = process.env;
 
 module.exports = class WattpadCommand extends Command {

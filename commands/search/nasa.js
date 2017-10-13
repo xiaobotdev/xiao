@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../structures/Util');
+const { shorten } = require('../../util/Util');
 
 module.exports = class NASACommand extends Command {
 	constructor(client) {

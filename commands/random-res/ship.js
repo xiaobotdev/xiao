@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { list } = require('../../structures/Util');
+const { list } = require('../../util/Util');
 
 module.exports = class ShipCommand extends Command {
 	constructor(client) {

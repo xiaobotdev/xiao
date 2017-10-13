@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { list } = require('../../structures/Util');
+const { list } = require('../../util/Util');
 const units = ['celsius', 'fahrenheit', 'kelvin'];
 
 module.exports = class TemperatureCommand extends Command {

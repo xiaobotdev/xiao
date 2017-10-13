@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { shuffle } = require('../../structures/Util');
+const { shuffle } = require('../../util/Util');
 
 module.exports = class KissMarryKillCommand extends Command {
 	constructor(client) {

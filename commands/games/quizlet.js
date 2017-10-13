@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
-const { shuffle } = require('../../structures/Util');
+const { shuffle } = require('../../util/Util');
 const { QUIZLET_KEY } = process.env;
 
 module.exports = class QuizletGameCommand extends Command {

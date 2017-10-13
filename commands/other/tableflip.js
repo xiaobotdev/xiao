@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { wait } = require('../../structures/Util');
+const { wait } = require('../../util/Util');
 const frames = [
 	'(-°□°)-  ┬─┬',
 	'(╯°□°)╯    ]',

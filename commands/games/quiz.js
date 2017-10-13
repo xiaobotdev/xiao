@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
 const snekfetch = require('snekfetch');
-const { shuffle, list } = require('../../structures/Util');
+const { shuffle, list } = require('../../util/Util');
 const types = ['multiple', 'boolean'];
 const difficulties = ['easy', 'medium', 'hard'];
 
