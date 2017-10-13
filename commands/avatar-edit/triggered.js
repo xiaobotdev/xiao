@@ -46,10 +46,7 @@ module.exports = class TriggeredCommand extends Command {
 			for (let i = 0; i < data.length; i += 4) data[i] = Math.max(255, data[i]);
 			ctx.putImageData(imgData, 0, 0);
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'triggered.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'triggered.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

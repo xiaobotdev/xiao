@@ -49,10 +49,7 @@ module.exports = class ThugLifeCommand extends Command {
 				data[i + 2] = brightness;
 			}
 			ctx.putImageData(imgData, 0, 0);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'thug-life.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'thug-life.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

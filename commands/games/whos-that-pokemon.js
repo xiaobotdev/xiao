@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { filterPkmn } = require('../../structures/Util');
 

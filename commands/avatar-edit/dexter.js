@@ -42,10 +42,7 @@ module.exports = class DexterCommand extends Command {
 			ctx.rotate(-11 * (Math.PI / 180));
 			ctx.drawImage(avatar, 234, 274, 225, 225);
 			ctx.rotate(11 * (Math.PI / 180));
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'dexter.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'dexter.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

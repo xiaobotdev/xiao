@@ -51,10 +51,7 @@ module.exports = class AvatarFusionCommand extends Command {
 			ctx.globalAlpha = 0.5;
 			ctx.drawImage(baseAvatar, 0, 0);
 			ctx.drawImage(overlayAvatar, 0, 0, baseAvatar.width, baseAvatar.height);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'avatar-fusion.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'avatar-fusion.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

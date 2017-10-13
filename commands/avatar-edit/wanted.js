@@ -41,10 +41,7 @@ module.exports = class WantedCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 150, 360, 430, 430);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'wanted.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

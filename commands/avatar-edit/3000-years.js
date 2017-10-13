@@ -41,10 +41,7 @@ module.exports = class YearsCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 461, 127, 200, 200);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: '3000-years.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
