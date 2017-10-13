@@ -45,10 +45,7 @@ module.exports = class MemeCommand extends Command {
 			const search = await snekfetch.get(`https://memegen.link/api/search/${type}`);
 			if (!search.body.length) return msg.say('Could not find any results.');
 			const { body } = await snekfetch.get(search.body[0].template.blank.replace(/\/_/, `/${top}/${bottom}`));
-			return msg.say({ files: [{
-				attachment: body,
-				name: 'meme.jpg'
-			}] });
+			return msg.say({ files: [{ attachment: body, name: 'meme.jpg' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

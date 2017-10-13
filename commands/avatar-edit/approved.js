@@ -41,10 +41,7 @@ module.exports = class ApprovedCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(avatar, 0, 0);
 			ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'approved.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'approved.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

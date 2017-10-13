@@ -42,10 +42,7 @@ module.exports = class BeautifulCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 341, 35, 117, 135);
 			ctx.drawImage(avatar, 343, 301, 117, 135);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'beautiful.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'beautiful.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

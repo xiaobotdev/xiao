@@ -46,10 +46,7 @@ module.exports = class BeLikeBillCommand extends Command {
 			Be like ${name}.
 		`;
 		ctx.fillText(text, 31, 80);
-		return msg.say({ files: [{
-			attachment: canvas.toBuffer(),
-			name: 'be-like-bill.png'
-		}] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'be-like-bill.png' }] });
 	}
 };
 

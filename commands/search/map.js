@@ -41,10 +41,8 @@ module.exports = class MapCommand extends Command {
 					size: '500x500',
 					key: GOOGLE_KEY
 				});
-			return msg.say(`<https://www.google.com/maps/search/${encodeURIComponent(query)}>`, { files: [{
-				attachment: body,
-				name: 'map.png'
-			}] });
+			const url = `https://www.google.com/maps/search/${encodeURIComponent(query)}`;
+			return msg.say(`<${url}>`, { files: [{ attachment: body, name: 'map.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

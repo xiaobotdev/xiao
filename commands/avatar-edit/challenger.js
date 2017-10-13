@@ -41,10 +41,7 @@ module.exports = class ChallengerCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 484, 98, 256, 256);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'challenger.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

@@ -47,10 +47,7 @@ module.exports = class GreyscaleCommand extends Command {
 				data[i + 2] = brightness;
 			}
 			ctx.putImageData(imgData, 0, 0);
-			return msg.say({ files: [{
-				attachment: canvas.toBuffer(),
-				name: 'greyscale.png'
-			}] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'greyscale.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
