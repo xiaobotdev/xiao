@@ -8,5 +8,5 @@ manager.spawn(undefined, 1000);
 setInterval(async () => {
 	const guilds = await manager.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
-	postStats(count, await manager.shards[0].fetchClientValue('user.id'));
+	postStats(count, await manager.shards.get(0).fetchClientValue('user.id'));
 }, 300000);
