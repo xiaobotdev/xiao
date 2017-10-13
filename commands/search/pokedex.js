@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
-const { filterPkmn } = require('../../structures/Util');
+const { filterPkmn, pad } = require('../../structures/Util');
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -27,7 +27,7 @@ module.exports = class PokedexCommand extends Command {
 	async run(msg, { pokemon }) {
 		try {
 			const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
-			const id = `${'000'.slice(body.id.toString().length)}${body.id}`;
+			const id = pad(body.id.toString(), '000');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${id} - ${filterPkmn(body.names).name}`, `https://www.serebii.net/pokedex-sm/icon/${id}.png`)

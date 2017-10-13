@@ -56,6 +56,10 @@ class Util {
 			format: () => `${hrs < 10 ? `0${hrs}` : hrs}:${min < 10 ? `0${min}` : min}:${sec < 10 ? `0${sec}` : sec}`
 		};
 	}
+
+	static pad(text, prefix) {
+		return `${prefix.slice(text.length)}${text}`;
+	}
 }
 
 module.exports = Util;
