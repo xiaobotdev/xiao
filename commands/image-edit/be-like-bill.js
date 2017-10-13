@@ -32,9 +32,9 @@ module.exports = class BeLikeBillCommand extends Command {
 	}
 
 	async run(msg, { name }) {
-		const canvas = createCanvas(800, 420);
-		const ctx = canvas.getContext('2d');
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'be-like-bill.png'));
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.font = '23px Noto';
 		const text = stripIndents`
@@ -46,7 +46,10 @@ module.exports = class BeLikeBillCommand extends Command {
 			Be like ${name}.
 		`;
 		ctx.fillText(text, 31, 80);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'be-like-bill.png' }] });
+		return msg.say({ files: [{
+			attachment: canvas.toBuffer(),
+			name: 'be-like-bill.png'
+		}] });
 	}
 };
 

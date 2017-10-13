@@ -35,7 +35,7 @@ module.exports = class CardCommand extends Command {
 		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
-			size: 256
+			size: 512
 		});
 		try {
 			const cardID = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
@@ -43,11 +43,11 @@ module.exports = class CardCommand extends Command {
 			if (cardID < 5000) rarity = 'C';
 			else if (cardID < 9000) rarity = 'U';
 			else rarity = 'R';
-			const canvas = createCanvas(390, 544);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'card.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, 390, 544);
 			ctx.drawImage(avatar, 11, 11, 370, 370);
@@ -63,7 +63,10 @@ module.exports = class CardCommand extends Command {
 			ctx.font = '14px Noto';
 			ctx.fillText(user.id, 30, 355);
 			ctx.fillText(`#${user.discriminator}`, 313, 355);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'card.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'card.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

@@ -27,9 +27,16 @@ module.exports = class AvatarCommand extends Command {
 		const format = user.avatar.startsWith('a_') ? 'gif' : 'png';
 		const avatarURL = user.avatarURL({
 			format,
-			size: 2048
+			size: 512
 		});
-		const { body } = await snekfetch.get(avatarURL);
-		return msg.say({ files: [{ attachment: body, name: `avatar.${format}` }] });
+		try {
+			const { body } = await snekfetch.get(avatarURL);
+			return msg.say({ files: [{
+				attachment: body,
+				name: `avatar.${format}`
+			}] });
+		} catch (err) {
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

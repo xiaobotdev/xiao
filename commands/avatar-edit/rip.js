@@ -34,11 +34,11 @@ module.exports = class RIPCommand extends Command {
 			size: 256
 		});
 		try {
-			const canvas = createCanvas(507, 338);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 158, 51, 200, 200);
 			const imgData = ctx.getImageData(158, 51, 200, 200);
@@ -50,7 +50,10 @@ module.exports = class RIPCommand extends Command {
 				data[i + 2] = brightness;
 			}
 			ctx.putImageData(imgData, 158, 51);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'rip.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

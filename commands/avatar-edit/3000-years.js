@@ -34,14 +34,17 @@ module.exports = class YearsCommand extends Command {
 			size: 256
 		});
 		try {
-			const canvas = createCanvas(856, 569);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', '3000-years.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 461, 127, 200, 200);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: '3000-years.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

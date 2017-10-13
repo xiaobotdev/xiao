@@ -34,18 +34,21 @@ module.exports = class BobRossCommand extends Command {
 			size: 256
 		});
 		try {
-			const canvas = createCanvas(600, 775);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'bob-ross.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, 600, 775);
+			ctx.fillRect(0, 0, base.width, base.height);
 			ctx.rotate(3 * (Math.PI / 180));
 			ctx.drawImage(avatar, 69, 102, 256, 256);
 			ctx.rotate(-3 * (Math.PI / 180));
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bob-ross.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'bob-ross.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

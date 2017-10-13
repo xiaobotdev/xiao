@@ -33,7 +33,10 @@ module.exports = class AchievementCommand extends Command {
 					h: 'Achievement Get!',
 					t: text
 				});
-			return msg.say({ files: [{ attachment: body, name: 'achievement.png' }] });
+			return msg.say({ files: [{
+				attachment: body,
+				name: 'achievement.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

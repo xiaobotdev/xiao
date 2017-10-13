@@ -33,14 +33,14 @@ module.exports = class ThugLifeCommand extends Command {
 			size: 512
 		});
 		try {
-			const canvas = createCanvas(512, 512);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'thug-life.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
-			ctx.drawImage(avatar, 0, 0, 512, 512);
-			ctx.drawImage(base, 90, 379, 332, 111);
-			const imgData = ctx.getImageData(0, 0, 512, 512);
+			const canvas = createCanvas(avatar.width, avatar.height);
+			const ctx = canvas.getContext('2d');
+			ctx.drawImage(avatar, 0, 0);
+			ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
+			const imgData = ctx.getImageData(0, 0, avatar.width, avatar.height);
 			const { data } = imgData;
 			for (let i = 0; i < data.length; i += 4) {
 				const brightness = (0.34 * data[i]) + (0.5 * data[i + 1]) + (0.16 * data[i + 2]);
@@ -49,7 +49,10 @@ module.exports = class ThugLifeCommand extends Command {
 				data[i + 2] = brightness;
 			}
 			ctx.putImageData(imgData, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'thug-life.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'thug-life.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

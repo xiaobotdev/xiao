@@ -40,14 +40,14 @@ module.exports = class SteamNowPlayingCommand extends Command {
 		if (!member) member = msg.member;
 		const avatarURL = member.user.displayAvatarURL({
 			format: 'png',
-			size: 128
+			size: 64
 		});
 		try {
-			const canvas = createCanvas(239, 73);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-now-playing.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 21, 21, 32, 32);
 			ctx.fillStyle = '#90ba3c';
@@ -57,7 +57,10 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			if (ctx.measureText(game).width > 160) shorten = true;
 			while (ctx.measureText(game).width > 160) game = game.substr(0, game.length - 1);
 			ctx.fillText(shorten ? `${game}...` : game, 63, 54);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'steam-now-playing.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

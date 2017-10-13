@@ -34,14 +34,17 @@ module.exports = class ApprovedCommand extends Command {
 			size: 512
 		});
 		try {
-			const canvas = createCanvas(512, 512);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'approved.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
-			ctx.drawImage(avatar, 0, 0, 512, 512);
-			ctx.drawImage(base, 0, 0, 512, 512);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'approved.png' }] });
+			const canvas = createCanvas(avatar.width, avatar.height);
+			const ctx = canvas.getContext('2d');
+			ctx.drawImage(avatar, 0, 0);
+			ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'approved.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
