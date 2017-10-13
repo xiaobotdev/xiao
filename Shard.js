@@ -6,6 +6,7 @@ const manager = new ShardingManager(path.join(__dirname, 'XiaoBot.js'), { token:
 manager.spawn(undefined, 1000);
 
 setInterval(async () => {
+	if (!manager.shards.get(0)) return;
 	const guilds = await manager.fetchClientValues('guilds.size');
 	const count = guilds.reduce((prev, val) => prev + val, 0);
 	postStats(count, await manager.shards.get(0).fetchClientValue('user.id'));
