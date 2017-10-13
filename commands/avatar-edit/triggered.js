@@ -41,10 +41,9 @@ module.exports = class TriggeredCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
 			ctx.drawImage(avatar, 0, 0, 320, 320);
-			const imgData = ctx.getImageData(0, 0, 320, 320);
-			const { data } = imgData;
-			for (let i = 0; i < data.length; i += 4) data[i] = Math.max(255, data[i]);
-			ctx.putImageData(imgData, 0, 0);
+			const data = ctx.getImageData(0, 0, 320, 320);
+			for (let i = 0; i < data.data.length; i += 4) data.data[i] = Math.max(255, data.data[i]);
+			ctx.putImageData(data, 0, 0);
 			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'triggered.png' }] });
 		} catch (err) {
