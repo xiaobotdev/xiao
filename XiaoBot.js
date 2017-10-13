@@ -43,7 +43,31 @@ client.registry
 
 client.on('ready', () => {
 	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag}! (${client.user.id})`);
-	client.user.setActivity(`${COMMAND_PREFIX}help for commands`);
+	client.setInterval(() => {
+		const activities = [
+			`${COMMAND_PREFIX}help for commands`,
+			`Shard ${client.shard.id}`,
+			'with dragonfire535',
+			client.options.invite,
+			`with ${client.registry.commands.size} commands`,
+			`v${version}`,
+			'Rune Factory 4'
+		];
+		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
+	}, 60000);
+	client.setInterval(async () => {
+		for (const guild of client.guilds.values()) {
+			if (whitelist.includes(guild.id)) continue;
+			if (guild.members.filter(member => member.user.bot).size > 25) {
+				try {
+					console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
+					await guild.leave();
+				} catch (err) {
+					console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`);
+				}
+			}
+		}
+	}, 900000);
 });
 
 client.on('disconnect', event => {
@@ -74,39 +98,6 @@ client.dispatcher.addInhibitor(msg => {
 	if (msg.channel.topic.includes('<blocked>')) return 'topic blocked';
 	return false;
 });
-
-client.setInterval(() => {
-	const activities = [
-		`${COMMAND_PREFIX}help for commands`,
-		`Shard ${client.shard.id}`,
-		'with dragonfire535',
-		client.options.invite,
-		`with ${client.registry.commands.size} commands`,
-		`v${version}`,
-		'Rune Factory 4'
-	];
-	client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
-}, 60000);
-
-client.setInterval(async () => {
-	const guilds = await client.shard.fetchClientValues('guilds.size');
-	const count = guilds.reduce((prev, val) => prev + val, 0);
-	postStats(count, client.user.id);
-}, 300000);
-
-client.setInterval(async () => {
-	for (const guild of client.guilds.values()) {
-		if (whitelist.includes(guild.id)) continue;
-		if (guild.members.filter(member => member.user.bot).size > 25) {
-			try {
-				console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
-				await guild.leave();
-			} catch (err) {
-				console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`);
-			}
-		}
-	}
-}, 900000);
 
 client.setInterval(() => {
 	console.log(`[RESTART] Shard ${client.shard.id} restarted!`);
