@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { duration } = require('../../structures/Util');
+const { duration } = require('../../util/Util');
 
 module.exports = class UptimeCommand extends Command {
 	constructor(client) {

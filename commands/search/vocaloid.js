@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten, duration } = require('../../structures/Util');
+const { shorten, duration } = require('../../util/Util');
 
 module.exports = class VocaloidCommand extends Command {
 	constructor(client) {

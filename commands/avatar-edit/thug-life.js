@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const { greyscale } = require('../../structures/Util');
+const { greyscale } = require('../../util/Util');
 
 module.exports = class ThugLifeCommand extends Command {
 	constructor(client) {

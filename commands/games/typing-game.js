@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
-const { list } = require('../../structures/Util');
+const { list } = require('../../util/Util');
 const sentences = require('../../assets/json/typing-game');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
 const times = {

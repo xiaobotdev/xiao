@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { filterPkmn, pad } = require('../../structures/Util');
+const { filterPkmn, pad } = require('../../util/Util');
 
 module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {

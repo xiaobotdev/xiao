@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { list } = require('../../structures/Util');
+const { list } = require('../../util/Util');
 const countries = ['us', 'jp'];
 
 module.exports = class ITunesCommand extends Command {

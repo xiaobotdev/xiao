@@ -11,7 +11,7 @@ const client = new CommandoClient({
 	messageCacheLifetime: 600,
 	messageSweepInterval: 120
 });
-const { postStats } = require('./structures/Util');
+const { postStats } = require('./util/Util');
 const { version } = require('./package');
 const whitelist = require('./assets/json/whitelist');
 

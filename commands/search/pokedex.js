@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
-const { filterPkmn, pad } = require('../../structures/Util');
+const { filterPkmn, pad } = require('../../util/Util');
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {

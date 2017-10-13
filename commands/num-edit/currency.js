@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { list } = require('../../structures/Util');
+const { list } = require('../../util/Util');
 const codes = require('../../assets/json/currency');
 
 module.exports = class CurrencyCommand extends Command {

@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { pad } = require('../../structures/Util');
+const { pad } = require('../../util/Util');
 
 module.exports = class BinaryCommand extends Command {
 	constructor(client) {

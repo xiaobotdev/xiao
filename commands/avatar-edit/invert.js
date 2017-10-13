@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const { invert } = require('../../structures/Util');
+const { invert } = require('../../util/Util');
 
 module.exports = class InvertCommand extends Command {
 	constructor(client) {
