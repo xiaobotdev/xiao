@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
+const { greyscale } = require('../../structures/Util');
 
 module.exports = class RIPCommand extends Command {
 	constructor(client) {
@@ -41,15 +42,7 @@ module.exports = class RIPCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 158, 51, 200, 200);
-			const imgData = ctx.getImageData(158, 51, 200, 200);
-			const { data } = imgData;
-			for (let i = 0; i < data.length; i += 4) {
-				const brightness = (0.34 * data[i]) + (0.5 * data[i + 1]) + (0.16 * data[i + 2]);
-				data[i] = brightness;
-				data[i + 1] = brightness;
-				data[i + 2] = brightness;
-			}
-			ctx.putImageData(imgData, 158, 51);
+			greyscale(ctx, 158, 51, 200, 200);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
