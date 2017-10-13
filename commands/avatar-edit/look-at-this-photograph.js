@@ -34,16 +34,19 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 			size: 256
 		});
 		try {
-			const canvas = createCanvas(620, 349);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'look-at-this-photograph.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-13.5 * (Math.PI / 180));
 			ctx.drawImage(avatar, 280, 218, 175, 125);
 			ctx.rotate(13.5 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'look-at-this-photograph.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'look-at-this-photograph.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

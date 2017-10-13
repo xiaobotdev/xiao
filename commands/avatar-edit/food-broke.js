@@ -34,15 +34,18 @@ module.exports = class FoodBrokeCommand extends Command {
 			size: 128
 		});
 		try {
-			const canvas = createCanvas(680, 680);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'food-broke.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 23, 9, 125, 125);
 			ctx.drawImage(avatar, 117, 382, 75, 75);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'food-broke.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'food-broke.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

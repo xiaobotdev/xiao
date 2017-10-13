@@ -33,16 +33,19 @@ module.exports = class DexterCommand extends Command {
 			size: 256
 		});
 		try {
-			const canvas = createCanvas(744, 554);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'dexter.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-11 * (Math.PI / 180));
 			ctx.drawImage(avatar, 234, 274, 225, 225);
 			ctx.rotate(11 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'dexter.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'dexter.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

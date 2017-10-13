@@ -31,19 +31,22 @@ module.exports = class IHaveThePowerCommand extends Command {
 		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
-			size: 512
+			size: 256
 		});
 		try {
-			const canvas = createCanvas(720, 536);
-			const ctx = canvas.getContext('2d');
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'i-have-the-power.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(18.3 * (Math.PI / 180));
 			ctx.drawImage(avatar, 332, -125, 175, 175);
 			ctx.rotate(-18.3 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'i-have-the-power.png' }] });
+			return msg.say({ files: [{
+				attachment: canvas.toBuffer(),
+				name: 'i-have-the-power.png'
+			}] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

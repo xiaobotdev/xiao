@@ -1,5 +1,4 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
 const pokemon = require('../../assets/json/pokemon-fusion');
 
 module.exports = class PokemonFusionCommand extends Command {
@@ -36,12 +35,7 @@ module.exports = class PokemonFusionCommand extends Command {
 		});
 	}
 
-	async run(msg, { body, palette }) {
-		try {
-			const image = await snekfetch.get(`http://images.alexonsager.net/pokemon/fused/${body}/${body}.${palette}.png`);
-			return msg.say({ files: [{ attachment: image.body, name: 'pokemon-fusion.png' }] });
-		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg, { body, palette }) {
+		return msg.say(`http://images.alexonsager.net/pokemon/fused/${body}/${body}.${palette}.png`);
 	}
 };
