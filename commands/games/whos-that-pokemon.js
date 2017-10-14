@@ -11,6 +11,10 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			group: 'games',
 			memberName: 'whos-that-pokemon',
 			description: 'Guess who that Pokémon is.',
+			throttling: {
+				usages: 1,
+				duration: 15
+			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
