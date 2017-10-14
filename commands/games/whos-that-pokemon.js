@@ -36,6 +36,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				const base = await loadImage(image.body);
 				const canvas = createCanvas(base.width, base.height);
 				const ctx = canvas.getContext('2d');
+				ctx.drawImage(base, 0, 0);
 				silhouette(ctx, 0, 0, base.width, base.height);
 				attachment = canvas.toBuffer();
 			}
