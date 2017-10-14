@@ -40,7 +40,7 @@ module.exports = class ThugLifeCommand extends Command {
 			const canvas = createCanvas(avatar.width, avatar.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(avatar, 0, 0);
-			greyscale(0, 0, avatar.width, avatar.height);
+			greyscale(ctx, 0, 0, avatar.width, avatar.height);
 			ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'thug-life.png' }] });
 		} catch (err) {
