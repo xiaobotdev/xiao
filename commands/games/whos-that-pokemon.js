@@ -25,15 +25,24 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				}
 			]
 		});
+
+		this.cache = new Map();
 	}
 
 	async run(msg, { hide }) {
 		const pokemon = Math.floor(Math.random() * 721) + 1;
 		try {
-			const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
-			const names = body.names.map(name => name.name.toLowerCase());
-			const displayName = filterPkmn(body.names).name;
-			const id = pad(body.id.toString(), '000');
+			let data;
+			if (!this.cache.has(pokemon)) {
+				const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
+				this.cache.set(body.id, body);
+				data = body;
+			} else {
+				data = this.cache.get(pokemon);
+			}
+			const names = data.names.map(name => name.name.toLowerCase());
+			const displayName = filterPkmn(data.names).name;
+			const id = pad(data.id.toString(), '000');
 			const image = await snekfetch.get(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
 			let attachment = image.body;
 			if (hide) {
