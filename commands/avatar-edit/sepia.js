@@ -1,15 +1,15 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const path = require('path');
+const { sepia } = require('../../util/Util');
 
-module.exports = class PhotographCommand extends Command {
+module.exports = class SepiaCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'photograph',
+			name: 'sepia',
 			group: 'avatar-edit',
-			memberName: 'photograph',
-			description: 'Draws a user\'s avatar over a photograph.',
+			memberName: 'sepia',
+			description: 'Draws a user\'s avatar in sepia.',
 			throttling: {
 				usages: 1,
 				duration: 15
@@ -30,19 +30,16 @@ module.exports = class PhotographCommand extends Command {
 		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
-			size: 256
+			size: 512
 		});
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'photograph.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
+			const canvas = createCanvas(avatar.width, avatar.height);
 			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.rotate(-8.21 * (Math.PI / 180));
-			ctx.drawImage(avatar, 85, 116, 150, 150);
-			ctx.rotate(8.21 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'photograph.png' }] });
+			ctx.drawImage(avatar, 0, 0);
+			sepia(ctx, 0, 0, avatar.width, avatar.height);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sepia.png' }] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
