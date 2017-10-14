@@ -7,7 +7,11 @@ manager.spawn(undefined, 1000);
 
 setInterval(async () => {
 	if (!manager.shards.has(0)) return;
-	const guilds = await manager.fetchClientValues('guilds.size');
-	const count = guilds.reduce((prev, val) => prev + val, 0);
-	postStats(count, await manager.shards.get(0).fetchClientValue('user.id'));
+	try {
+		const guilds = await manager.fetchClientValues('guilds.size');
+		const count = guilds.reduce((prev, val) => prev + val, 0);
+		await postStats(count, await manager.shards.get(0).fetchClientValue('user.id'));
+	} catch (err) {
+		console.error(`[STATS] Failed to post stats. ${err}`);
+	}
 }, 300000);

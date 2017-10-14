@@ -106,6 +106,6 @@ client.setInterval(() => {
 client.login(TOKEN);
 
 process.on('unhandledRejection', err => {
-	console.error('[FATAL] Unhandled Promise Rejection:', err);
+	console.error('[FATAL] Unhandled Promise Rejection.', err);
 	process.exit(1);
 });
