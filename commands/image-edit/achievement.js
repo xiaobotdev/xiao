@@ -33,12 +33,12 @@ module.exports = class AchievementCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.font = '17px Minecraftia';
 		ctx.fillStyle = '#ffff00';
-		ctx.fillText('Achievement Get!', 60, 27);
+		ctx.fillText('Achievement Get!', 60, 35);
 		let shorten;
 		if (ctx.measureText(text).width > 230) shorten = true;
 		while (ctx.measureText(text).width > 230) text = text.substr(0, text.length - 1);
 		ctx.fillStyle = '#ffffff';
-		ctx.fillText(shorten ? `${text}...` : text, 60, 49);
+		ctx.fillText(shorten ? `${text}...` : text, 60, 58);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'achievement.png' }] });
 	}
 };
