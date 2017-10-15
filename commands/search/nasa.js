@@ -26,8 +26,9 @@ module.exports = class NASACommand extends Command {
 			const { body } = await snekfetch
 				.get('https://images-api.nasa.gov/search')
 				.query({ q: query });
-			if (!body.collection.items.length) return msg.say('Could not find any results.');
-			const data = body.collection.items[Math.floor(Math.random() * body.collection.items.length)];
+			const filtered = body.collection.items.filter(item => item.data[0].media_type === 'image');
+			if (!filtered.length) return msg.say('Could not find any results.');
+			const data = filtered[Math.floor(Math.random() * filtered.length)];
 			return msg.say(shorten(data.data[0].description), { files: [data.links[0].href] });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
