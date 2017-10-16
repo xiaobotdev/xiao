@@ -6,8 +6,8 @@ class CommandoClient extends Client {
 	constructor(options) {
 		super(options);
 
-		this.guildPruneLevel = options.guildPruneLevel;
-		this.guildWhitelist = options.guildWhitelist;
+		if (typeof this.options.guildPruneLevel === 'undefined') this.options.guildPruneLevel = Infinity;
+		if (typeof this.options.guildWhitelist === 'undefined') this.options.guildWhitelist = [];
 		Object.defineProperty(this, 'dBotsToken', { value: options.dBotsToken });
 		Object.defineProperty(this, 'dBotsOrgToken', { value: options.dBotsOrgToken });
 
@@ -63,8 +63,8 @@ class CommandoClient extends Client {
 		let guilds = new Collection();
 		if (typeof guild === 'undefined') {
 			for (const g of this.guilds.values()) {
-				if (this.guildWhitelist.includes(g.id)) continue;
-				if (g.members.filter(member => member.user.bot).size > this.guildPruneLevel) {
+				if (this.options.guildWhitelist.includes(g.id)) continue;
+				if (g.members.filter(member => member.user.bot).size > this.options.guildPruneLevel) {
 					try {
 						guilds.set(g.id, g);
 						await g.leave();
@@ -74,8 +74,8 @@ class CommandoClient extends Client {
 				}
 			}
 		} else {
-			if (this.guildWhitelist.includes(guild.id)) return guilds;
-			if (guild.members.filter(member => member.user.bot).size > this.guildPruneLevel) {
+			if (this.options.guildWhitelist.includes(guild.id)) return guilds;
+			if (guild.members.filter(member => member.user.bot).size > this.options.guildPruneLevel) {
 				try {
 					guilds.set(guild.id, guild);
 					await guild.leave();
