@@ -1,4 +1,4 @@
-const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
+const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE, DBOTS_KEY, DBOTSORG_KEY } = process.env;
 const path = require('path');
 const CommandoClient = require('./structures/CommandoClient');
 const client = new CommandoClient({
@@ -9,10 +9,12 @@ const client = new CommandoClient({
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START'],
 	messageCacheLifetime: 600,
-	messageSweepInterval: 120
+	messageSweepInterval: 120,
+	dBotsToken: DBOTS_KEY,
+	dBotsOrgToken: DBOTSORG_KEY,
+	guildWhitelist: ['110373943822540800', '264445053596991498'],
+	guildPruneLevel: 25
 });
-const { version } = require('./package');
-const whitelist = require('./assets/json/whitelist');
 
 client.registry
 	.registerDefaultTypes()
@@ -45,27 +47,13 @@ client.on('ready', () => {
 	client.setInterval(() => {
 		const activities = [
 			`${COMMAND_PREFIX}help for commands`,
-			`Shard ${client.shard.id}`,
 			'with dragonfire535',
 			client.options.invite,
 			`with ${client.registry.commands.size} commands`,
-			`v${version}`,
 			'Rune Factory 4'
 		];
 		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
 	}, 60000);
-	client.setInterval(async () => {
-		for (const guild of client.guilds.values()) {
-			if (whitelist.includes(guild.id)) continue;
-			if (guild.members.filter(member => member.user.bot).size > 25) {
-				try {
-					await guild.leave();
-				} catch (err) {
-					console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id})`, err);
-				}
-			}
-		}
-	}, 900000);
 });
 
 client.on('disconnect', event => {
@@ -78,17 +66,6 @@ client.on('error', console.error);
 client.on('warn', console.warn);
 
 client.on('commandError', (command, err) => console.error(command.name, err));
-
-client.on('guildCreate', async guild => {
-	if (whitelist.includes(guild.id)) return;
-	if (guild.members.filter(member => member.user.bot).size > 25) {
-		try {
-			await guild.leave();
-		} catch (err) {
-			console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id})`, err);
-		}
-	}
-});
 
 client.dispatcher.addInhibitor(msg => {
 	if (msg.channel.type !== 'text' || !msg.channel.topic) return false;
