@@ -1,5 +1,9 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
+const { Readable } = require('stream');
+// const path = require('path');
+// const { promisifyAll } = require('tsubaki');
+// const fs = promisifyAll(require('fs'));
 
 module.exports = class DECTalkCommand extends Command {
 	constructor(client) {
@@ -38,10 +42,13 @@ module.exports = class DECTalkCommand extends Command {
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
-			const body = snekfetch
+			const { body } = await snekfetch
 				.get('http://tts.cyzon.us/tts')
 				.query({ text });
-			const dispatcher = connection.playStream(body);
+			const stream = new Readable();
+			stream.read = function () {};
+			stream.push(body);
+			const dispatcher = connection.playStream(stream);
 			dispatcher.once('end', () => channel.leave());
 			dispatcher.once('error', () => channel.leave());
 			return null;
