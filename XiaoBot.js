@@ -11,9 +11,7 @@ const client = new CommandoClient({
 	messageCacheLifetime: 600,
 	messageSweepInterval: 120,
 	dBotsToken: DBOTS_KEY,
-	dBotsOrgToken: DBOTSORG_KEY,
-	guildWhitelist: ['110373943822540800', '264445053596991498'],
-	guildPruneLevel: 25
+	dBotsOrgToken: DBOTSORG_KEY
 });
 
 client.registry
