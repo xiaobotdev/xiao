@@ -27,7 +27,7 @@ class CommandoClient extends Client {
 				.set({ Authorization: this.dBotsKey })
 				.send({
 					shard_id: this.shard ? this.shard.id : 0,
-					shard_count: this.client.options.shardCount || 1,
+					shard_count: this.options.shardCount || 1,
 					server_count: this.guilds.size
 				});
 			return body;
@@ -45,7 +45,7 @@ class CommandoClient extends Client {
 				.set({ Authorization: this.dBotsOrgKey })
 				.send({
 					shard_id: this.shard ? this.shard.id : 0,
-					shard_count: this.client.options.shardCount || 1,
+					shard_count: this.options.shardCount || 1,
 					server_count: this.guilds.size
 				});
 			return body;
