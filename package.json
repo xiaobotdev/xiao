@@ -34,7 +34,7 @@
 		"canvas": "github:automattic/node-canvas",
 		"common-tags": "^1.4.0",
 		"custom-translate": "^2.1.1",
-		"discord.js": "github:hydrabolt/discord.js",
+		"discord.js": "github:SpaceEEC/discord.js#GuildDelete",
 		"discord.js-commando": "github:gawdl3y/discord.js-commando",
 		"erlpack": "github:discordapp/erlpack",
 		"node-opus": "^0.2.7",
