@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
+const jokes = require('../../assets/json/joke');
 
 module.exports = class JokeCommand extends Command {
 	constructor(client) {
@@ -11,14 +11,7 @@ module.exports = class JokeCommand extends Command {
 		});
 	}
 
-	async run(msg) {
-		try {
-			const { body } = await snekfetch
-				.get('https://icanhazdadjoke.com/')
-				.set({ Accept: 'application/json' });
-			return msg.say(body.joke);
-		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg) {
+		return msg.say(jokes[Math.floor(Math.random() * jokes.length)]);
 	}
 };
