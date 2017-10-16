@@ -1,21 +1,6 @@
-const snekfetch = require('snekfetch');
 const { promisify } = require('util');
-const { DBOTS_KEY, DBOTSORG_KEY } = process.env;
 
 class Util {
-	static postStats(count, id) {
-		snekfetch
-			.post(`https://bots.discord.pw/api/bots/${id}/stats`)
-			.set({ Authorization: DBOTS_KEY })
-			.send({ server_count: count })
-			.catch(err => console.error(`[DBOTS] Failed to post to Discord Bots. ${err}`));
-		snekfetch
-			.post(`https://discordbots.org/api/bots/${id}/stats`)
-			.set({ Authorization: DBOTSORG_KEY })
-			.send({ server_count: count })
-			.catch(err => console.error(`[DBOTSORG] Failed to post to Discord Bots Org. ${err}`));
-	}
-
 	static wait(time) {
 		return promisify(setTimeout)(time);
 	}

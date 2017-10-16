@@ -1,6 +1,6 @@
 const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
 const path = require('path');
-const { CommandoClient } = require('discord.js-commando');
+const CommandoClient = require('./structures/CommandoClient');
 const client = new CommandoClient({
 	commandPrefix: COMMAND_PREFIX,
 	owner: OWNERS.split(','),
@@ -59,10 +59,9 @@ client.on('ready', () => {
 			if (whitelist.includes(guild.id)) continue;
 			if (guild.members.filter(member => member.user.bot).size > 25) {
 				try {
-					console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
 					await guild.leave();
 				} catch (err) {
-					console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`);
+					console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id})`, err);
 				}
 			}
 		}
@@ -84,10 +83,9 @@ client.on('guildCreate', async guild => {
 	if (whitelist.includes(guild.id)) return;
 	if (guild.members.filter(member => member.user.bot).size > 25) {
 		try {
-			console.log(`[LEAVE] Leaving guild ${guild.name}. (${guild.id})`);
 			await guild.leave();
 		} catch (err) {
-			console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id}) ${err}`);
+			console.error(`[LEAVE] Failed to leave guild ${guild.name}. (${guild.id})`, err);
 		}
 	}
 });
@@ -98,12 +96,9 @@ client.dispatcher.addInhibitor(msg => {
 	return false;
 });
 
-client.setInterval(() => {
-	console.log(`[RESTART] Shard ${client.shard.id} restarted!`);
-	process.exit(0);
-}, 8.64e+7);
-
 client.login(TOKEN);
+
+setInterval(() => process.exit(0), 8.64e+7);
 
 process.on('unhandledRejection', err => {
 	console.error('[FATAL] Unhandled Promise Rejection.', err);
