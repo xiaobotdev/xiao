@@ -1,18 +1,14 @@
 const { Client } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { Collection } = require('discord.js');
 
 class CommandoClient extends Client {
 	constructor(options) {
 		super(options);
 
-		if (typeof this.options.guildPruneLevel === 'undefined') this.options.guildPruneLevel = Infinity;
-		if (typeof this.options.guildWhitelist === 'undefined') this.options.guildWhitelist = [];
 		Object.defineProperty(this, 'dBotsToken', { value: options.dBotsToken });
 		Object.defineProperty(this, 'dBotsOrgToken', { value: options.dBotsOrgToken });
 
-		this.on('guildCreate', guild => {
-			this.pruneGuilds(guild);
+		this.on('guildCreate', () => {
 			this.dBots();
 			this.dBotsOrg();
 		});
@@ -20,7 +16,6 @@ class CommandoClient extends Client {
 			this.dBots();
 			this.dBotsOrg();
 		});
-		this.setInterval(() => this.pruneGuilds(), 600000);
 	}
 
 	async dBots() {
@@ -57,34 +52,6 @@ class CommandoClient extends Client {
 			this.emit('error', 'Failed to post to Discord Bots Org', err);
 			return null;
 		}
-	}
-
-	async pruneGuilds(guild) {
-		let guilds = new Collection();
-		if (typeof guild === 'undefined') {
-			for (const g of this.guilds.values()) {
-				if (this.options.guildWhitelist.includes(g.id)) continue;
-				if (g.members.filter(member => member.user.bot).size > this.options.guildPruneLevel) {
-					try {
-						guilds.set(g.id, g);
-						await g.leave();
-					} catch (err) {
-						this.emit('error', `Failed to leave guild ${g.name}. (${g.id})`, err);
-					}
-				}
-			}
-		} else {
-			if (this.options.guildWhitelist.includes(guild.id)) return guilds;
-			if (guild.members.filter(member => member.user.bot).size > this.options.guildPruneLevel) {
-				try {
-					guilds.set(guild.id, guild);
-					await guild.leave();
-				} catch (err) {
-					this.emit('error', `Failed to leave guild ${g.name}. (${g.id})`, err);
-				}
-			}
-		}
-		return guilds;
 	}
 }
 
