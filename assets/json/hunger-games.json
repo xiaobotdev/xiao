@@ -248,7 +248,7 @@
 		{
 			"text": "(Player1) throws a knife into (Player2)'s head.",
 			"tributes": 2,
-			"deaths": [1]
+			"deaths": [2]
 		},
 		{
 			"text": "(Player1) begs for (Player2) to kill them. They reluctantly oblige, killing (Player1).",
@@ -865,7 +865,7 @@
 		{
 			"text": "(Player1) throws a knife into (Player2)'s head.",
 			"tributes": 2,
-			"deaths": [1]
+			"deaths": [2]
 		},
 		{
 			"text": "(Player1) begs for (Player2) to kill them. They reluctantly oblige, killing (Player1).",
