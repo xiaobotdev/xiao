@@ -243,7 +243,7 @@
 		{
 			"text": "(Player1) catches (Player2) off guard and kills them.",
 			"tributes": 2,
-			"deaths": [1]
+			"deaths": [2]
 		},
 		{
 			"text": "(Player1) throws a knife into (Player2)'s head.",
@@ -258,7 +258,7 @@
 		{
 			"text": "(Player1) and (Player2) work together to drown (Player3).",
 			"tributes": 3,
-			"deaths": [2]
+			"deaths": [3]
 		},
 		{
 			"text": "(Player1) strangles (Player2) after engaging in a fist fight.",
@@ -376,7 +376,7 @@
 			"deaths": [1]
 		},
 		{
-			"text": "(Player1) convinces (Player2) to not kill them, only to kill them instead.",
+			"text": "(Player1) convinces (Player2) to not kill them, only to kill (Player2) instead.",
 			"tributes": 2,
 			"deaths": [2]
 		},
@@ -860,7 +860,7 @@
 		{
 			"text": "(Player1) catches (Player2) off guard and kills them.",
 			"tributes": 2,
-			"deaths": [1]
+			"deaths": [2]
 		},
 		{
 			"text": "(Player1) throws a knife into (Player2)'s head.",
@@ -875,7 +875,7 @@
 		{
 			"text": "(Player1) and (Player2) work together to drown (Player3).",
 			"tributes": 3,
-			"deaths": [2]
+			"deaths": [3]
 		},
 		{
 			"text": "(Player1) strangles (Player2) after engaging in a fist fight.",
@@ -993,7 +993,7 @@
 			"deaths": [1]
 		},
 		{
-			"text": "(Player1) convinces (Player2) to not kill them, only to kill them instead.",
+			"text": "(Player1) convinces (Player2) to not kill them, only to kill (Player2) instead.",
 			"tributes": 2,
 			"deaths": [2]
 		},
