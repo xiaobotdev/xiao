@@ -94,7 +94,7 @@ class Util {
 		return ctx;
 	}
 
-	static verify(channel, user, time = 30000) {
+	static async verify(channel, user, time = 30000) {
 		const filter = res => {
 			const value = res.content.toLowerCase();
 			return res.author.id === user.id && (yes.includes(value) || no.includes(value));
@@ -107,6 +107,7 @@ class Util {
 		const choice = verify.first().content.toLowerCase();
 		if (yes.includes(choice)) return true;
 		if (no.includes(choice)) return false;
+		return false;
 	}
 }
 
