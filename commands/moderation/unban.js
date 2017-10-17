@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { verify } = require('../../util/Util');
 
 module.exports = class UnbanCommand extends Command {
 	constructor(client) {
@@ -35,11 +36,8 @@ module.exports = class UnbanCommand extends Command {
 		if (!bans.has(id)) return msg.say('This ID is not in the server banlist.');
 		const member = bans.get(id).user;
 		await msg.say(`Are you sure you want to unban ${member.tag} (${member.id})?`);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
-			max: 1,
-			time: 30000
-		});
-		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
+		const verification = await verify(msg.channel, msg.author);
+		if (!verification) return msg.say('Aborting.');
 		await msg.guild.unban(member, `${msg.author.tag}: ${reason}`);
 		return msg.say(`Successfully unbanned ${member.tag}.`);
 	}

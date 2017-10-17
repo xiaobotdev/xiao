@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
+const { verify } = require('../../util/Util');
 
 module.exports = class TicTacToeCommand extends Command {
 	constructor(client) {
@@ -27,11 +28,8 @@ module.exports = class TicTacToeCommand extends Command {
 		this.playing.add(msg.channel.id);
 		try {
 			await msg.say(`${opponent}, do you accept this challenge?`);
-			const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
-				max: 1,
-				time: 30000
-			});
-			if (!verify.size || !['yes', 'y'].includes(verify.first().content.toLowerCase())) {
+			const verification = await verify(msg.channel, opponent);
+			if (!verification) {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}

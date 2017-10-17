@@ -91,6 +91,14 @@ class Util {
 		ctx.putImageData(data, x, y);
 		return ctx;
 	}
+
+	static async verify(channel, user, time = 30000) {
+		const verify = await channel.awaitMessages(res => res.author.id === user.id, {
+			max: 1,
+			time
+		});
+		return verify.size && ['yes', 'y', 'ye', 'yeah', 'yup'].includes(verify.first().content.toLowerCase());
+	}
 }
 
 module.exports = Util;

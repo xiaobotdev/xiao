@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
+const { verify } = require('../../util/Util');
 
 module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
@@ -53,15 +54,10 @@ module.exports = class AkinatorCommand extends Command {
 				`)
 				.setThumbnail(guess.absolute_picture_path);
 			await msg.embed(embed);
-			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
-				max: 1,
-				time: 30000
-			});
+			const verification = await verify(msg.channel, msg.author);
 			this.sessions.delete(msg.channel.id);
-			if (!msgs.size) return msg.say('I guess your silence means I have won.');
-			const response = msgs.first().content.toLowerCase();
-			if (!['yes', 'no'].includes(response)) return msg.say('I guess I\'m right then!');
-			return msg.say(response === 'yes' ? 'Guessed right one more time!' : 'Bravo, you have defeated me.');
+			if (!verification) return msg.say('Bravo, you have defeated me.');
+			return msg.say('Guessed right one more time! I love playing with you!');
 		} catch (err) {
 			this.sessions.delete(msg.channel.id);
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

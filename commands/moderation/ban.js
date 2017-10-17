@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
+const { verify } = require('../../util/Util');
 
 module.exports = class BanCommand extends Command {
 	constructor(client) {
@@ -39,11 +40,8 @@ module.exports = class BanCommand extends Command {
 			return msg.say('Your roles are too low to ban this member.');
 		}
 		await msg.say(`Are you sure you want to ban ${member.user.tag} (${member.id})?`);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
-			max: 1,
-			time: 30000
-		});
-		if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return msg.say('Aborting.');
+		const verification = await verify(msg.channel, msg.author);
+		if (!verification) return msg.say('Aborting.');
 		try {
 			await member.send(stripIndents`
 				You were banned from ${msg.guild.name} by ${msg.author.tag}!
