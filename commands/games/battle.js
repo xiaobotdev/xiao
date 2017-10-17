@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
+const { verify } = require('../../util/Util');
 
 module.exports = class BattleCommand extends Command {
 	constructor(client) {
@@ -30,11 +31,8 @@ module.exports = class BattleCommand extends Command {
 		try {
 			if (!opponent.bot) {
 				await msg.say(`${opponent}, do you accept this challenge?`);
-				const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
-					max: 1,
-					time: 30000
-				});
-				if (!verify.size || !['yes', 'y'].includes(verify.first().content.toLowerCase())) {
+				const verification = await verify(msg.channel, opponent);
+				if (!verification) {
 					this.fighting.delete(msg.channel.id);
 					return msg.say('Looks like they declined...');
 				}

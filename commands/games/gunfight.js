@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { wait } = require('../../util/Util');
+const { wait, verify } = require('../../util/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull'];
 
 module.exports = class GunfightCommand extends Command {
@@ -30,11 +30,8 @@ module.exports = class GunfightCommand extends Command {
 		this.fighting.add(msg.channel.id);
 		try {
 			await msg.say(`${opponent}, do you accept this challenge?`);
-			const verify = await msg.channel.awaitMessages(res => res.author.id === opponent.id, {
-				max: 1,
-				time: 30000
-			});
-			if (!verify.size || !['yes', 'y'].includes(verify.first().content.toLowerCase())) {
+			const verification = await verify(msg.channel, opponent);
+			if (!verification) {
 				this.fighting.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
