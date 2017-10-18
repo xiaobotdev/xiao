@@ -49,7 +49,7 @@ module.exports = class HackbanCommand extends Command {
 				reason: `${msg.author.tag}: ${reason}`
 			});
 		} catch (err) {
-			return msg.say(`Could not hackban the user: \`${err.message}\``);
+			return msg.say(`Failed to hackban ${user.tag}: \`${err.message}\`.`);
 		}
 		return msg.say(`Successfully hackbanned ${user.tag}.`);
 	}

@@ -1,4 +1,4 @@
-const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE, DBOTS_KEY, DBOTSORG_KEY } = process.env;
+const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
 const path = require('path');
 const CommandoClient = require('./structures/CommandoClient');
 const client = new CommandoClient({
@@ -9,9 +9,7 @@ const client = new CommandoClient({
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START'],
 	messageCacheLifetime: 600,
-	messageSweepInterval: 120,
-	dBotsToken: DBOTS_KEY,
-	dBotsOrgToken: DBOTSORG_KEY
+	messageSweepInterval: 120
 });
 
 client.registry

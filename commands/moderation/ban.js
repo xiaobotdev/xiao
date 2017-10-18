@@ -50,10 +50,14 @@ module.exports = class BanCommand extends Command {
 		} catch (err) {
 			await msg.say('Failed to send DM.');
 		}
-		await member.ban({
-			days: 7,
-			reason: `${msg.author.tag}: ${reason}`
-		});
+		try {
+			await member.ban({
+				days: 7,
+				reason: `${msg.author.tag}: ${reason}`
+			});
+		} catch (err) {
+			return msg.say(`Failed to ban ${member.user.tag}: \`${err.message}\`.`);
+		}
 		return msg.say(`Successfully banned ${member.user.tag}.`);
 	}
 };
