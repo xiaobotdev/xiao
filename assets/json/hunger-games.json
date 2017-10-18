@@ -1,4 +1,416 @@
 {
+	"bloodbath": [
+		{
+			"text": "(Player1) grabs a shovel.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) grabs a backpack and retreats.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) and (Player2) fight for a bag. (Player1) gives up and retreats.",
+			"tributes": 2,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) and (Player2) fight for a bag. (Player2) gives up and retreats.",
+			"tributes": 2,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) finds a bow, some arrows, and a quiver.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) runs into the cornucopia and hides.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) takes a handful of throwing knives.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) rips a mace out of (Player2)'s hands.",
+			"tributes": 2,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) finds a canteen full of water.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) stays at the cornucopia for resources.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) gathers as much food as they can.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) grabs a sword.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) takes a spear from inside the cornucopia.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) finds a bag full of explosives.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) clutches a first aid kit and runs away.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) takes a sickle from inside the cornucopia.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1), (Player2), and (Player3) work together to get as many supplies as possible.",
+			"tributes": 3,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) runs away with a lighter and some rope.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) snatches a bottle of alcohol and a rag.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) finds a backpack full of camping equipment.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) grabs a backpack, not realizing it is empty.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) breaks (Player2)'s nose for a basket of bread.",
+			"tributes": 2,
+			"deaths": []
+		},
+		{
+			"text": "(Player1), (Player2), (Player3), and (Player4) share everything they gathered before running.",
+			"tributes": 4,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) retrieves a trident from inside the cornucopia.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) grabs a jar of fishing bait while (Player2) gets fishing gear.",
+			"tributes": 2,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) scares (Player2) away from the cornucopia.",
+			"tributes": 2,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) grabs a shield leaning on the cornucopia.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) snatches a pair of sais.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) grabs a lone pair of pants.",
+			"tributes": 1,
+			"deaths": []
+		},
+		{
+			"text": "(Player1) steps off their podium too soon and blows up.",
+			"tributes": 1,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) throws a knife into (Player2)'s head.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) accidently steps on a landmine.",
+			"tributes": 1,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) catches (Player2) off guard and kills them.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) and (Player2) work together to drown (Player3).",
+			"tributes": 3,
+			"deaths": [3]
+		},
+		{
+			"text": "(Player1) strangles (Player2) after engaging in a fist fight.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) shoots an arrow into (Player2)'s head.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) cannot handle the circumstances and commits suicide.",
+			"tributes": 1,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) bashes (Player2)'s head against a rock several times.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) snaps (Player2)'s neck.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) decapitates (Player2) with a sword.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) spears (Player2) in the abdomen.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) sets (Player2) on fire with a molotov.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) falls into a pit and dies.",
+			"tributes": 1,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) stabs (Player2) while their back is turned.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) severely injures (Player2), but puts them out of their misery.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) severely injures (Player2) and leaves them to die.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) bashes (Player2)'s head in with a mace.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) pushes (Player2) off a cliff during a knife fight.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) throws a knife into (Player2)'s chest.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) is unable to convince (Player2) to not kill them.",
+			"tributes": 2,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) convinces (Player2) to not kill them, only to kill (Player2) instead.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) falls into a frozen lake and drowns.",
+			"tributes": 1,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1), (Player2), and (Player3) start fighting, but (Player2) runs away as (Player1) kills (Player3).",
+			"tributes": 3,
+			"deaths": [3]
+		},
+		{
+			"text": "(Player1) kills (Player2) with their own weapon.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) overpowers (Player2), killing them.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) sets an explosive off, killing (Player2).",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) sets an explosive off, killing (Player2), and (Player3).",
+			"tributes": 3,
+			"deaths": [2, 3]
+		},
+		{
+			"text": "(Player1) sets an explosive off, killing (Player2), (Player3), and (Player4).",
+			"tributes": 4,
+			"deaths": [2, 3, 4]
+		},
+		{
+			"text": "(Player1) sets an explosive off, killing (Player2), (Player3), (Player4) and (Player5).",
+			"tributes": 5,
+			"deaths": [2, 3, 4, 5]
+		},
+		{
+			"text": "(Player1) kills (Player2) as they try to run.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) and (Player2) threaten a double suicide. It fails and they die.",
+			"tributes": 2,
+			"deaths": [1, 2]
+		},
+		{
+			"text": "(Player1), (Player2), (Player3), and (Player4) form a suicide pact, killing themselves.",
+			"tributes": 4,
+			"deaths": [1, 2, 3, 4]
+		},
+		{
+			"text": "(Player1) kills (Player2) with a hatchet.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) and (Player2) fight (Player3) and (Player4). (Player1) and (Player2) survive.",
+			"tributes": 4,
+			"deaths": [3, 4]
+		},
+		{
+			"text": "(Player1) and (Player2) fight (Player3) and (Player4). (Player3) and (Player4) survive.",
+			"tributes": 4,
+			"deaths": [1, 2]
+		},
+		{
+			"text": "(Player1) attacks (Player2), but (Player3) protects them, killing (Player1).",
+			"tributes": 3,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) severely slices (Player2) with a sword.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) strangles (Player2) with a rope.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) kills (Player2) for their supplies.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) shoots an arrow at (Player2), but misses and kills (Player3) instead.",
+			"tributes": 3,
+			"deaths": [3]
+		},
+		{
+			"text": "(Player1) shoots a poisonous blow dart into (Player2)'s neck, slowly killing them.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) stabs (Player2) with a tree branch.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) stabs (Player2) in the back with a trident.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1), (Player2), and (Player3) get into a fight. (Player1) triumphantly kills them both.",
+			"tributes": 3,
+			"deaths": [2, 3]
+		},
+		{
+			"text": "(Player1), (Player2), and (Player3) get into a fight. (Player2) triumphantly kills them both.",
+			"tributes": 3,
+			"deaths": [1, 3]
+		},
+		{
+			"text": "(Player1), (Player2), and (Player3) get into a fight. (Player3) triumphantly kills them both.",
+			"tributes": 3,
+			"deaths": [1, 2]
+		},
+		{
+			"text": "(Player1) finds (Player2) hiding in the cornucopia and kills them.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) finds (Player2) hiding in the cornucopia, but (Player2) kills them.",
+			"tributes": 2,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) kills (Player2) with a sickle.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) and (Player2) fight for a bag. (Player1) strangles (Player2) with the straps and runs.",
+			"tributes": 2,
+			"deaths": [2]
+		},
+		{
+			"text": "(Player1) and (Player2) fight for a bag. (Player2) strangles (Player1) with the straps and runs.",
+			"tributes": 2,
+			"deaths": [1]
+		},
+		{
+			"text": "(Player1) repeatedly stabs (Player2) to death with sais.",
+			"tributes": 2,
+			"deaths": [2]
+		}
+	],
 	"day": [
 		{
 			"text": "(Player1) goes hunting.",
