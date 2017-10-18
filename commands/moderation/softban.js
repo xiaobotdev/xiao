@@ -50,11 +50,15 @@ module.exports = class SoftbanCommand extends Command {
 		} catch (err) {
 			await msg.say('Failed to send DM.');
 		}
-		await member.ban({
-			days: 7,
-			reason: `${msg.author.tag}: ${reason} (Softban)`
-		});
-		await msg.guild.unban(member.user, 'Softban');
+		try {
+			await member.ban({
+				days: 7,
+				reason: `${msg.author.tag}: ${reason} (Softban)`
+			});
+			await msg.guild.unban(member.user, 'Softban');
+		} catch (err) {
+			return msg.say(`Failed to softban ${member.user.tag}: \`${err.message}\`.`);
+		}
 		return msg.say(`Successfully softbanned ${member.user.tag}.`);
 	}
 };

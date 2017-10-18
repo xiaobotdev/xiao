@@ -38,7 +38,11 @@ module.exports = class UnbanCommand extends Command {
 		await msg.say(`Are you sure you want to unban ${member.tag} (${member.id})?`);
 		const verification = await verify(msg.channel, msg.author);
 		if (!verification) return msg.say('Aborting.');
-		await msg.guild.unban(member, `${msg.author.tag}: ${reason}`);
+		try {
+			await msg.guild.unban(member, `${msg.author.tag}: ${reason}`);
+		} catch (err) {
+			return msg.say(`Failed to unban ${member.tag}: \`${err.message}\`.`);
+		}
 		return msg.say(`Successfully unbanned ${member.tag}.`);
 	}
 };

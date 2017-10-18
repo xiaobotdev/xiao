@@ -50,7 +50,11 @@ module.exports = class KickCommand extends Command {
 		} catch (err) {
 			await msg.say('Failed to send DM.');
 		}
-		await member.kick(`${msg.author.tag}: ${reason}`);
+		try {
+			await member.kick(`${msg.author.tag}: ${reason}`);
+		} catch (err) {
+			return msg.say(`Failed to kick ${member.user.tag}: \`${err.message}\`.`);
+		}
 		return msg.say(`Successfully kicked ${member.user.tag}.`);
 	}
 };

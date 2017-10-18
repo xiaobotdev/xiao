@@ -1,12 +1,13 @@
 const { Client } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
+const { DBOTS_KEY, DBOTSORG_KEY } = process.env;
 
 class CommandoClient extends Client {
 	constructor(options) {
 		super(options);
 
-		Object.defineProperty(this, 'dBotsToken', { value: options.dBotsToken });
-		Object.defineProperty(this, 'dBotsOrgToken', { value: options.dBotsOrgToken });
+		Object.defineProperty(this, 'dBotsToken', { value: DBOTS_KEY });
+		Object.defineProperty(this, 'dBotsOrgToken', { value: DBOTSORG_KEY });
 
 		this.on('guildCreate', () => {
 			this.dBots();
