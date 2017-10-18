@@ -36,7 +36,7 @@ module.exports = class GelbooruCommand extends Command {
 			if (!parsed.post || !parsed.post.length) return msg.say('Could not find any results.');
 			return msg.say(stripIndents`
 				Result for ${query}:
-				https:${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}
+				${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}
 			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
