@@ -71,7 +71,7 @@ client.dispatcher.addInhibitor(msg => {
 
 client.login(TOKEN);
 
-setInterval(() => process.exit(0), 8.64e+7);
+// setInterval(() => process.exit(0), 8.64e+7);
 
 process.on('unhandledRejection', err => {
 	console.error('[FATAL] Unhandled Promise Rejection.', err);
