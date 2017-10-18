@@ -18,8 +18,8 @@ module.exports = class HungerGamesCommand extends Command {
 					type: 'string',
 					infinite: true,
 					validate: tribute => {
-						if (tribute.length < 20) return true;
-						return 'Invalid tribute, please keep each tribute under 20 characters.';
+						if (tribute.length < 25) return true;
+						return 'Invalid tribute, please keep each tribute under 25 characters.';
 					}
 				}
 			]
@@ -37,15 +37,16 @@ module.exports = class HungerGamesCommand extends Command {
 		try {
 			let sun = true;
 			let turn = 0;
+			let bloodbath = true;
 			const remaining = new Set(shuffle(tributes));
 			while (remaining.size > 1) {
-				if (sun) ++turn;
-				const sunEvents = sun ? events.day : events.night;
+				if (!bloodbath && sun) ++turn;
+				const sunEvents = bloodbath ? events.bloodbath : sun ? events.day : events.night;
 				const results = [];
 				const deaths = [];
 				this.makeEvents(remaining, sunEvents, deaths, results);
 				await msg.say(stripIndents`
-					__**${sun ? 'Day' : 'Night'} ${turn}**__:
+					__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}**__:
 					${results.join('\n')}
 				`);
 				await msg.say(stripIndents`
@@ -59,10 +60,12 @@ module.exports = class HungerGamesCommand extends Command {
 					this.playing.delete(msg.channel.id);
 					return msg.say('See you next time!');
 				}
-				sun = !sun;
+				if (!bloodbath) sun = !sun;
+				if (bloodbath) bloodbath = false;
 			}
 			this.playing.delete(msg.channel.id);
-			return msg.say(`And the winner is... ${[...remaining][0]}!`);
+			const remainingArr = Array.from(remaining);
+			return msg.say(`And the winner is... ${remainingArr[0]}!`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
 			throw err;
@@ -93,17 +96,15 @@ module.exports = class HungerGamesCommand extends Command {
 				}
 				results.push(this.parseEvent(event.text, [tribute]));
 			} else {
-				let deathsLeft = event.deaths.length;
 				const current = [tribute];
 				if (event.deaths.includes(1)) {
-					--deathsLeft;
 					deaths.push(tribute);
 					tributes.delete(tribute);
 				}
 				for (let i = 2; i <= event.tributes; i++) {
-					const tribu = [...turn][Math.floor(Math.random() * turn.size)];
-					if (deathsLeft && event.deaths.includes(i)) {
-						--deathsLeft;
+					const turnArr = Array.from(turn);
+					const tribu = turnArr[Math.floor(Math.random() * turnArr.length)];
+					if (event.deaths.includes(i)) {
 						deaths.push(tribu);
 						tributes.delete(tribu);
 					}
