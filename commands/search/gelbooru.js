@@ -3,14 +3,14 @@ const snekfetch = require('snekfetch');
 const { xml2js } = require('xml-js');
 const { stripIndents } = require('common-tags');
 
-module.exports = class SafebooruCommand extends Command {
+module.exports = class GelbooruCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'safebooru',
-			aliases: ['safebooru-image'],
+			name: 'gelbooru',
+			aliases: ['gelbooru-image'],
 			group: 'search',
-			memberName: 'safebooru',
-			description: 'Searches Safebooru for your query.',
+			memberName: 'gelbooru',
+			description: 'Searches Gelbooru for your query.',
 			args: [
 				{
 					key: 'query',
@@ -22,9 +22,10 @@ module.exports = class SafebooruCommand extends Command {
 	}
 
 	async run(msg, { query }) {
+		if (!msg.channel.nsfw) return msg.say('This command can only be used in NSFW channels.');
 		try {
 			const { text } = await snekfetch
-				.get('https://safebooru.org/index.php')
+				.get('https://gelbooru.com/index.php')
 				.query({
 					page: 'dapi',
 					s: 'post',
