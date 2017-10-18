@@ -416,12 +416,12 @@
 			"deaths": [1, 2, 3, 4, 5, 6]
 		},
 		{
-			"text": "(Player1) drops a boulder on (Player2)",
+			"text": "(Player1) drops a boulder on (Player2).",
 			"tributes": 2,
 			"deaths": [2]
 		},
 		{
-			"text": "(Player1) holds (Player2)'s hand",
+			"text": "(Player1) holds (Player2)'s hand.",
 			"tributes": 2,
 			"deaths": []
 		},
@@ -1068,12 +1068,12 @@
 			"deaths": [1, 2, 3, 4, 5, 6]
 		},
 		{
-			"text": "(Player1) drops a boulder on (Player2)",
+			"text": "(Player1) drops a boulder on (Player2).",
 			"tributes": 2,
 			"deaths": [2]
 		},
 		{
-			"text": "(Player1) holds (Player2)'s hand",
+			"text": "(Player1) holds (Player2)'s hand.",
 			"tributes": 2,
 			"deaths": []
 		},
@@ -1760,12 +1760,12 @@
 			"deaths": [1, 2, 3, 4, 5, 6]
 		},
 		{
-			"text": "(Player1) drops a boulder on (Player2)",
+			"text": "(Player1) drops a boulder on (Player2).",
 			"tributes": 2,
 			"deaths": [2]
 		},
 		{
-			"text": "(Player1) holds (Player2)'s hand",
+			"text": "(Player1) holds (Player2)'s hand.",
 			"tributes": 2,
 			"deaths": []
 		},
@@ -1830,7 +1830,7 @@
 			"deaths": []
 		},
 		{
-			"text": "(Player1) sneaks a kiss on (Player2)'s cheek, but (Player2) wakes up and kills them.",
+			"text": "(Player1) sneaks a kiss on (Player2)'s cheek while (Player2) sleeps, but (Player2) wakes up and kills them.",
 			"tributes": 2,
 			"deaths": [1]
 		}
