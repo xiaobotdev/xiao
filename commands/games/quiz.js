@@ -63,7 +63,7 @@ module.exports = class QuizCommand extends Command {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.say(`Time! It was ${correct}, sorry!`);
+			if (!msgs.size) return msg.say(`Sorry, time is up! It was ${correct}.`);
 			if (msgs.first().content.toLowerCase() !== correct) return msg.say(`Nope, sorry, it's ${correct}.`);
 			return msg.say('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {

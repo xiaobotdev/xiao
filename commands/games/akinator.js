@@ -42,15 +42,14 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				}
 				if (msgs.first().content.toLowerCase() === 'end') break;
-				ans = answers.indexOf(msgs.first().content.toLowerCase());
+				ans = answers.indexOf(msgs.first().content.toLowerCase().replace(/(‘|’)/g, '\''));
 			}
 			const guess = await this.finish(msg.channel);
 			const embed = new MessageEmbed()
 				.setColor(0xF78B26)
 				.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
 				.setDescription(stripIndents`
-					${guess.name}
-					_${guess.description}_
+					${guess.name}${guess.description ? `\n_${guess.description}_` : ''}
 				`)
 				.setThumbnail(guess.absolute_picture_path);
 			await msg.embed(embed);

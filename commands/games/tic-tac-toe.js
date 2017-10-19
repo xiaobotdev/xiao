@@ -55,7 +55,7 @@ module.exports = class TicTacToeCommand extends Command {
 					time: 30000
 				});
 				if (!turn.size) {
-					await msg.say('Time!');
+					await msg.say('Sorry, time is up!');
 					userTurn = !userTurn;
 					continue;
 				}

@@ -58,7 +58,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.say(`Time! It was ${displayName}, sorry!`);
+			if (!msgs.size) return msg.say(`Sorry, time is up! It was ${displayName}.`);
 			if (!names.includes(msgs.first().content.toLowerCase())) return msg.say(`Nope, sorry, it's ${displayName}.`);
 			return msg.say('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
