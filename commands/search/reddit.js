@@ -28,14 +28,14 @@ module.exports = class RedditCommand extends Command {
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });
 			if (!body.data.children.length) return msg.say('Could not find any results.');
-			const post = body.data.children[Math.floor(Math.random() * body.data.children.length)].data;
-			if (!msg.channel.nsfw && post.over_18) return msg.say('This post is only viewable in NSFW channels.');
+			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+			if (!allowed.length) return msg.say('Could not find any results.');
+			const post = allowed[Math.floor(Math.random() * allowed.length)].data;
 			const embed = new MessageEmbed()
 				.setColor(0xFF4500)
 				.setAuthor('Reddit', 'https://i.imgur.com/DSBOK0P.png')
 				.setURL(`https://www.reddit.com${post.permalink}`)
 				.setTitle(post.title)
-				.setDescription(`[View URL Here](${post.url})`)
 				.addField('❯ Upvotes',
 					post.ups, true)
 				.addField('❯ Downvotes',
