@@ -29,7 +29,7 @@ module.exports = class HangmanCommand extends Command {
 			const display = '_'.repeat(word.length).split('');
 			while (word.length !== confirmation.length && points < 7) {
 				await msg.say(stripIndents`
-					The word is: \`${display.join(' ')}\`. Which letter do you choose?
+					\`${display.join(' ')}\`. Which letter do you choose?
 					\`\`\`
 					___________
 					|     |
@@ -44,7 +44,7 @@ module.exports = class HangmanCommand extends Command {
 					time: 30000
 				});
 				if (!guess.size) {
-					await msg.say('Time!');
+					await msg.say('Sorry, time is up!');
 					break;
 				}
 				const choice = guess.first().content.toLowerCase();
