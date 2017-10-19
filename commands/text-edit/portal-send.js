@@ -8,6 +8,7 @@ module.exports = class PortalSendCommand extends Command {
 			group: 'text-edit',
 			memberName: 'portal-send',
 			description: 'Send a message to a random channel with `<portal>` in the topic.',
+			guildOnly: true,
 			args: [
 				{
 					key: 'text',

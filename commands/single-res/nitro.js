@@ -23,8 +23,6 @@ module.exports = class NitroCommand extends Command {
 			.setTimestamp()
 			.setDescription(stripIndents`
 				This message can only be viewed by users with Discord Nitro.
-
-
 				[More Information](https://discordapp.com/nitro)
 			`);
 		return msg.embed(embed);
