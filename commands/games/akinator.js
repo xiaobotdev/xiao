@@ -42,7 +42,7 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				}
 				if (msgs.first().content.toLowerCase() === 'end') break;
-				ans = answers.indexOf(msgs.first().content.toLowerCase().replace(/(‘|’)/g, '\''));
+				ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
 			const guess = await this.finish(msg.channel);
 			const embed = new MessageEmbed()
