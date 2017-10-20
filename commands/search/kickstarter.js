@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../util/Util');
 
 module.exports = class KickstarterCommand extends Command {
 	constructor(client) {
@@ -36,12 +37,12 @@ module.exports = class KickstarterCommand extends Command {
 				.setTitle(data.name)
 				.setURL(data.urls.web.project)
 				.setAuthor('Kickstarter', 'https://i.imgur.com/EHDlH5t.png')
-				.setDescription(data.blurb)
+				.setDescription(shorten(data.blurb))
 				.setThumbnail(data.photo ? data.photo.full : null)
 				.addField('❯ Goal',
-					`${data.currency_symbol}${data.goal.toLocaleString()}`, true)
+					`${data.currency_symbol}${data.goal}`, true)
 				.addField('❯ Pledged',
-					`${data.currency_symbol}${data.pledged.toLocaleString()}`, true)
+					`${data.currency_symbol}${data.pledged}`, true)
 				.addField('❯ Backers',
 					data.backers_count, true)
 				.addField('❯ Creator',

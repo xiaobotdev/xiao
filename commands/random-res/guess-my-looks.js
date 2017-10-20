@@ -38,8 +38,8 @@ module.exports = class GuessMyLooksCommand extends Command {
 		const extra = extras[Math.floor(Math.random() * extras.length)];
 		const prefix = user.id === msg.author.id ? 'You' : 'They';
 		return msg.reply(oneLine`
-			${prefix} are, I think, a ${age} year old ${gender} with ${eyeColor} eyes and ${hairStyle}
-			${hairColor} hair. ${prefix} are ${feet}'${inches}" and weigh ${weight} pounds. Don't forget the ${extra}!
+			${prefix} are, I think, a ${age} year old ${gender} with ${eyeColor} eyes and ${hairStyle} ${hairColor} hair.
+			${prefix} are ${feet}'${inches}" and weigh ${weight} pounds. Don't forget the ${extra}!
 		`);
 	}
 };

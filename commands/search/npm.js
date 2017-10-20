@@ -31,7 +31,7 @@ module.exports = class NPMCommand extends Command {
 				.setAuthor('NPM', 'https://i.imgur.com/ErKf5Y0.png')
 				.setTitle(body.name)
 				.setURL(`https://www.npmjs.com/package/${query}`)
-				.setDescription(body.description || 'No Description.')
+				.setDescription(body.description ? shorten(body.description) : 'No description.')
 				.addField('❯ Version',
 					body['dist-tags'].latest, true)
 				.addField('❯ License',
@@ -47,7 +47,7 @@ module.exports = class NPMCommand extends Command {
 				.addField('❯ Keywords',
 					body.keywords && body.keywords.length ? shorten(body.keywords.join(', '), 1000) : 'None')
 				.addField('❯ Maintainers',
-					body.maintainers.map(user => user.name).join(', '));
+					shorten(body.maintainers.map(user => user.name).join(', '), 1000));
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');

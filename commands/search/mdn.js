@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../util/Util');
 
 module.exports = class MDNCommand extends Command {
 	constructor(client) {
@@ -33,7 +34,7 @@ module.exports = class MDNCommand extends Command {
 				.setAuthor('MDN', 'https://i.imgur.com/DFGXabG.png')
 				.setURL(data.url)
 				.setTitle(data.title)
-				.setDescription(data.excerpt);
+				.setDescription(shorten(data.excerpt));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

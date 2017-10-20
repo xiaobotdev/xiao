@@ -10,7 +10,7 @@ module.exports = class UpvoteCommand extends Command {
 			aliases: ['upvoters', 'updoot'],
 			group: 'util',
 			memberName: 'upvote',
-			description: 'Responds with Xiao\'s upvoter link on Discord Bots.',
+			description: 'Responds with Xiao\'s upvoter link on discordbots.org.',
 			guarded: true
 		});
 	}

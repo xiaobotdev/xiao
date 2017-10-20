@@ -36,7 +36,7 @@ module.exports = class GunfightCommand extends Command {
 				return msg.say('Looks like they declined...');
 			}
 			await msg.say('Get Ready...');
-			const length = Math.floor(Math.random() * ((30000 - 1000) + 1)) + 1000;
+			const length = Math.floor(Math.random() * (30000 - 1000 + 1)) + 1000;
 			await wait(length);
 			const word = words[Math.floor(Math.random() * words.length)];
 			await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
@@ -47,7 +47,7 @@ module.exports = class GunfightCommand extends Command {
 			});
 			this.fighting.delete(msg.channel.id);
 			if (!winner.size) return msg.say('Oh... No one won.');
-			return msg.say(`And the winner is ${winner.first().author.username}!`);
+			return msg.say(`The winner is ${winner.first().author}!`);
 		} catch (err) {
 			this.fighting.delete(msg.channel.id);
 			throw err;

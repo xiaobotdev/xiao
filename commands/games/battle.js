@@ -88,14 +88,13 @@ module.exports = class BattleCommand extends Command {
 				} else if (choice === 'special') {
 					const hit = Math.floor(Math.random() * 4) + 1;
 					if (hit === 1) {
-						const damage = Math.floor(Math.random() * ((guard ? 300 : 150) - 100 + 1)) + 100;
+						const damage = Math.floor(Math.random() * ((guard ? 150 : 300) - 100 + 1)) + 100;
 						await msg.say(`${user} deals **${damage}** damage!`);
 						dealDamage(damage);
-						reset();
 					} else {
 						await msg.say(`${user}'s attack missed!`);
-						reset();
 					}
+					reset();
 				} else if (choice === 'run') {
 					await msg.say(`${user} flees!`);
 					forfeit();
@@ -105,10 +104,11 @@ module.exports = class BattleCommand extends Command {
 				}
 			}
 			this.fighting.delete(msg.channel.id);
+			const userWin = userHP > oppoHP;
 			return msg.say(stripIndents`
 				The match is over!
-				**Winner**: ${userHP > oppoHP ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}
-				**Loser**: ${userHP > oppoHP ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}
+				**Winner**: ${userWin ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}
+				**Loser**: ${userWin ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}
 			`);
 		} catch (err) {
 			this.fighting.delete(msg.channel.id);

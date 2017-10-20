@@ -28,7 +28,7 @@ module.exports = class UrbanCommand extends Command {
 				.get('http://api.urbandictionary.com/v0/define')
 				.query({ term: query });
 			if (!body.list.length) return msg.say('Could not find any results.');
-			const data = body.list[0];
+			const data = body.list[Math.floor(Math.random() * body.list.length)];
 			const embed = new MessageEmbed()
 				.setColor(0x32A8F0)
 				.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png')
@@ -36,7 +36,7 @@ module.exports = class UrbanCommand extends Command {
 				.setTitle(data.word)
 				.setDescription(shorten(data.definition))
 				.addField('❯ Example',
-					shorten(data.example, 1000) || 'None');
+					data.example ? shorten(data.example, 1000) : 'None');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

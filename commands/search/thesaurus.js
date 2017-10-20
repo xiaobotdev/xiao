@@ -32,12 +32,12 @@ module.exports = class ThesaurusCommand extends Command {
 					api_key: WORDNIK_KEY
 				});
 			if (!body.length) return msg.say('Could not find any results.');
-			const synonyms = body.find(i => i.relationshipType === 'synonym');
-			const antonyms = body.find(i => i.relationshipType === 'antonym');
+			const synonyms = body.filter(word => word.relationshipType === 'synonym');
+			const antonyms = body.filter(word => word.relationshipType === 'antonym');
 			return msg.say(stripIndents`
 				**${query}**
-				__Synonyms:__ ${synonyms ? synonyms.words.join(', ') : 'N/A'}
-				__Antonyms:__ ${antonyms ? antonyms.words.join(', ') : 'N/A'}
+				__Synonyms:__ ${synonyms.length ? synonyms.words.join(', ') : 'N/A'}
+				__Antonyms:__ ${antonyms.length ? antonyms.words.join(', ') : 'N/A'}
 			`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
