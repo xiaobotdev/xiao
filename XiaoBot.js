@@ -1,6 +1,6 @@
 const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
 const path = require('path');
-const CommandoClient = require('./structures/CommandoClient');
+const { CommandoClient } = require('discord.js-commando');
 const client = new CommandoClient({
 	commandPrefix: COMMAND_PREFIX,
 	owner: OWNERS.split(','),
@@ -11,6 +11,7 @@ const client = new CommandoClient({
 	messageCacheLifetime: 600,
 	messageSweepInterval: 120
 });
+const { postStats } = require('./util/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -52,16 +53,20 @@ client.on('ready', () => {
 	}, 60000);
 });
 
+client.on('guildCreate', () => postStats(client));
+
+client.on('guildDelete', () => postStats(client));
+
 client.on('disconnect', event => {
 	console.error(`[DISCONNECT] Shard ${client.shard.id} disconnected with code ${event.code}.`);
 	process.exit(0);
 });
 
-client.on('error', console.error);
+client.on('error', err => console.error('[ERROR]', err));
 
-client.on('warn', console.warn);
+client.on('warn', err => console.warn('[WARNING]', err));
 
-client.on('commandError', (command, err) => console.error(command.name, err));
+client.on('commandError', (command, err) => console.error('[COMMAND ERROR]', command.name, err));
 
 client.dispatcher.addInhibitor(msg => {
 	if (msg.channel.type !== 'text' || !msg.channel.topic) return false;
@@ -70,8 +75,6 @@ client.dispatcher.addInhibitor(msg => {
 });
 
 client.login(TOKEN);
-
-// Uncomment if memory is low: setInterval(() => process.exit(0), 8.64e+7);
 
 process.on('unhandledRejection', err => {
 	console.error('[FATAL] Unhandled Promise Rejection.', err);
