@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../util/Util');
 const { NYTIMES_KEY } = process.env;
 
 module.exports = class NewYorkTimesCommand extends Command {
@@ -38,7 +39,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 				.setAuthor('New York Times', 'https://i.imgur.com/ZbuTWwO.png')
 				.setURL(data.web_url)
 				.setTitle(data.headline.main)
-				.setDescription(data.snippet)
+				.setDescription(shorten(data.snippet))
 				.addField('❯ Publish Date',
 					new Date(data.pub_date).toDateString(), true);
 			return msg.embed(embed);

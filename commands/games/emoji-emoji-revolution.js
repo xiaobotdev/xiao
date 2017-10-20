@@ -63,7 +63,8 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			}
 			this.playing.delete(msg.channel.id);
 			if (aPts === oPts) return msg.say('It\'s a tie!');
-			return msg.say(`You win ${aPts > oPts ? msg.author : opponent} with ${aPts > oPts ? aPts : oPts} points!`);
+			const userWin = aPts > oPts;
+			return msg.say(`You win ${userWin ? msg.author : opponent} with ${userWin ? aPts : oPts} points!`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
 			throw err;

@@ -14,7 +14,7 @@ module.exports = class BCommand extends Command {
 					prompt: 'What text would you like to 🅱?',
 					type: 'string',
 					validate: text => {
-						if (text.replace(/(b|d|g|p|q)/gi, '🅱').length < 2000) return true;
+						if (text.replace(/b/gi, '🅱').length < 2000) return true;
 						return 'Invalid text, your text is too long.';
 					}
 				}
@@ -23,6 +23,6 @@ module.exports = class BCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.say(text.replace(/(b|d|g|p|q)/gi, '🅱'));
+		return msg.say(text.replace(/b/gi, '🅱'));
 	}
 };

@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../util/Util');
 
 module.exports = class YuGiOhCommand extends Command {
 	constructor(client) {
@@ -31,7 +32,7 @@ module.exports = class YuGiOhCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
-				.setDescription(data.text)
+				.setDescription(shorten(data.text))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png')
 				.setThumbnail(image.headers.location)
 				.addField('❯ Card Type',

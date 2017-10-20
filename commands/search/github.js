@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { shorten } = require('../../util/Util');
 const { GITHUB_LOGIN } = process.env;
 
 module.exports = class GitHubCommand extends Command {
@@ -37,8 +38,8 @@ module.exports = class GitHubCommand extends Command {
 				.setAuthor('GitHub', 'https://i.imgur.com/e4HunUm.png')
 				.setTitle(body.full_name)
 				.setURL(body.html_url)
-				.setDescription(body.description || 'No description.')
-				.setThumbnail(body.owner.avatar_url || null)
+				.setDescription(body.description ? shorten(body.description) : 'No description.')
+				.setThumbnail(body.owner.avatar_url)
 				.addField('❯ Stars',
 					body.stargazers_count, true)
 				.addField('❯ Forks',
