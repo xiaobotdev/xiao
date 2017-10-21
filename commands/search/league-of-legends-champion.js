@@ -30,9 +30,9 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 			const search = await snekfetch
 				.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
 				.query({ api_key: RIOT_KEY });
-			const key = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
-			if (!key) return msg.say('Could not find any results.');
-			const { id } = search.body.data[key];
+			const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
+			if (!name) return msg.say('Could not find any results.');
+			const { id } = search.body.data[name];
 			const { body } = await snekfetch
 				.get(`https://na1.api.riotgames.com/lol/static-data/v3/champions/${id}`)
 				.query({
