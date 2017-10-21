@@ -31,13 +31,13 @@ module.exports = class TranslateCommand extends Command {
 					type: 'string',
 					validate: target => {
 						const value = target.toLowerCase();
-						if (codes[value] || Object.keys(codes).find(key => codes[key.toLowerCase()] === value)) return true;
+						if (codes[value] || Object.keys(codes).find(key => codes[key].toLowerCase() === value)) return true;
 						return `Invalid target, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
 					parse: target => {
 						const value = target.toLowerCase();
 						if (codes[value]) return value;
-						return Object.keys(codes).find(key => codes[key.toLowerCase()] === value);
+						return Object.keys(codes).find(key => codes[key].toLowerCase() === value);
 					}
 				},
 				{
@@ -47,13 +47,13 @@ module.exports = class TranslateCommand extends Command {
 					default: '',
 					validate: base => {
 						const value = base.toLowerCase();
-						if (codes[value] || Object.keys(codes).find(key => codes[key.toLowerCase()] === value)) return true;
+						if (codes[value] || Object.keys(codes).find(key => codes[key].toLowerCase() === value)) return true;
 						return `Invalid base, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
 					parse: base => {
 						const value = base.toLowerCase();
 						if (codes[value]) return value;
-						return Object.keys(codes).find(key => codes[key.toLowerCase()] === value);
+						return Object.keys(codes).find(key => codes[key].toLowerCase() === value);
 					}
 				}
 			]
