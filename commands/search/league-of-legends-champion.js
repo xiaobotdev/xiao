@@ -26,6 +26,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 	}
 
 	async run(msg, { champion }) {
+		if (champion === 'satan') champion = 'teemo';
 		try {
 			const search = await snekfetch
 				.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
