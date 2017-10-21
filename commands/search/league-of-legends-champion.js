@@ -25,15 +25,15 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
-		this.champions = new Map();
-		this.client.setInterval(() => this.champions.clear(), 3600000);
+		this.cache = new Map();
+		this.client.setInterval(() => this.cache.clear(), 3600000);
 	}
 
 	async run(msg, { champion }) {
 		if (champion === 'satan') champion = 'teemo';
 		try {
 			let data;
-			if (!this.champions.has(champion)) {
+			if (!this.cache.has(champion)) {
 				const search = await snekfetch
 					.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
 					.query({ api_key: RIOT_KEY });
