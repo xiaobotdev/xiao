@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-const { version, dependencies } = require('../../package');
+const { version } = require('../../package');
 const { duration } = require('../../util/Util');
 
 module.exports = class InfoCommand extends Command {
@@ -39,9 +39,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Node Version',
 				process.version, true)
 			.addField('❯ Library',
-				'[discord.js](https://discord.js.org)[-commando](https://github.com/Gawdl3y/discord.js-commando)', true)
-			.addField('❯ Dependencies',
-				Object.keys(dependencies).join(', '));
+				'[discord.js](https://discord.js.org)[-commando](https://github.com/Gawdl3y/discord.js-commando)', true);
 		return msg.embed(embed);
 	}
 };
