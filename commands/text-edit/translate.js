@@ -30,12 +30,14 @@ module.exports = class TranslateCommand extends Command {
 					prompt: `Which language would you like to translate to? Either ${list(Object.keys(codes), 'or')}.`,
 					type: 'string',
 					validate: target => {
-						if (codes[target.toLowerCase()] || Object.values(codes).includes(target)) return true;
+						const value = target.toLowerCase();
+						if (codes[value] || Object.values(codes).find(entry => entry.toLowerCase() === value)) return true;
 						return `Invalid target, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
 					parse: target => {
-						if (codes[target.toLowerCase()]) return target.toLowerCase();
-						return Object.keys(codes).find(key => codes[key] === target);
+						const value = target.toLowerCase();
+						if (codes[value]) return value;
+						return codes[Object.values(codes).find(entry => entry.toLowerCase() === value)];
 					}
 				},
 				{
@@ -44,12 +46,14 @@ module.exports = class TranslateCommand extends Command {
 					type: 'string',
 					default: '',
 					validate: base => {
-						if (codes[base.toLowerCase()] || Object.values(codes).includes(base)) return true;
+						const value = base.toLowerCase();
+						if (codes[value] || Object.values(codes).find(entry => entry.toLowerCase() === value)) return true;
 						return `Invalid base, please enter either ${list(Object.keys(codes), 'or')}.`;
 					},
 					parse: base => {
-						if (codes[base.toLowerCase()]) return base.toLowerCase();
-						return Object.keys(codes).find(key => codes[key] === base);
+						const value = base.toLowerCase();
+						if (codes[value]) return value;
+						return codes[Object.values(codes).find(entry => entry.toLowerCase() === value)];
 					}
 				}
 			]

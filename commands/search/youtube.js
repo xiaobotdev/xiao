@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../util/Util');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class YouTubeCommand extends Command {
@@ -39,7 +38,7 @@ module.exports = class YouTubeCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xDD2825)
 				.setTitle(data.snippet.title)
-				.setDescription(shorten(data.snippet.description))
+				.setDescription(data.snippet.description)
 				.setAuthor(`YouTube - ${data.snippet.channelTitle}`, 'https://i.imgur.com/kKHJg9Q.png')
 				.setURL(`https://www.youtube.com/watch?v=${data.id.videoId}`)
 				.setThumbnail(data.snippet.thumbnails.default.url);
