@@ -25,6 +25,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
+		this.champions = null;
 		this.cache = new Map();
 		this.client.setInterval(() => this.cache.clear(), 3600000);
 	}
@@ -34,12 +35,10 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		try {
 			let data;
 			if (!this.cache.has(champion)) {
-				const search = await snekfetch
-					.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
-					.query({ api_key: RIOT_KEY });
-				const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
+				if (!this.champions) await this.fetchChampions();
+				const name = Object.keys(this.champions).find(key => key.toLowerCase() === champion);
 				if (!name) return msg.say('Could not find any results.');
-				const { id } = search.body.data[name];
+				const { id } = this.champions[name];
 				const { body } = await snekfetch
 					.get(`https://na1.api.riotgames.com/lol/static-data/v3/champions/${id}`)
 					.query({
@@ -47,8 +46,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 						tags: 'all'
 					});
 				data = body;
-				this.cache.set(name, body);
-				this.version = search.body.version;
+				this.cache.set(champion, body);
 			} else {
 				data = this.cache.get(champion);
 			}
@@ -99,5 +97,14 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async fetchChampions() {
+		const { body } = await snekfetch
+			.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
+			.query({ api_key: RIOT_KEY });
+		this.version = body.version;
+		this.champions = body.data;
+		return body.data;
 	}
 };
