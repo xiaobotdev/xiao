@@ -23,66 +23,78 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 				}
 			]
 		});
+
+		this.version = null;
+		this.champions = new Map();
+		this.client.setInterval(() => this.champions.clear(), 3600000);
 	}
 
 	async run(msg, { champion }) {
 		if (champion === 'satan') champion = 'teemo';
 		try {
-			const search = await snekfetch
-				.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
-				.query({ api_key: RIOT_KEY });
-			const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
-			if (!name) return msg.say('Could not find any results.');
-			const { id } = search.body.data[name];
-			const { body } = await snekfetch
-				.get(`https://na1.api.riotgames.com/lol/static-data/v3/champions/${id}`)
-				.query({
-					api_key: RIOT_KEY,
-					tags: 'all'
-				});
-			const tips = [].concat(body.allytips, body.enemytips);
+			let data;
+			if (!this.champions.has(champion)) {
+				const search = await snekfetch
+					.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
+					.query({ api_key: RIOT_KEY });
+				const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
+				if (!name) return msg.say('Could not find any results.');
+				const { id } = search.body.data[name];
+				const { body } = await snekfetch
+					.get(`https://na1.api.riotgames.com/lol/static-data/v3/champions/${id}`)
+					.query({
+						api_key: RIOT_KEY,
+						tags: 'all'
+					});
+				data = body;
+				this.cache.set(name, body);
+				this.version = search.body.version;
+			} else {
+				data = this.cache.get(champion);
+			}
+			const tips = [].concat(data.allytips, data.enemytips);
 			const embed = new MessageEmbed()
 				.setColor(0x002366)
 				.setAuthor('League of Legends', 'https://i.imgur.com/2JL4Rko.png')
-				.setTitle(`${body.name} ${body.title}`)
-				.setDescription(body.blurb)
-				.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${search.body.version}/img/champion/${body.image.full}`)
+				.setTitle(`${data.name} ${data.title}`)
+				.setDescription(data.blurb)
+				.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${this.version}/img/champion/${data.image.full}`)
 				.addField('❯ Attack',
-					body.info.attack, true)
+					data.info.attack, true)
 				.addField('❯ Defense',
-					body.info.defense, true)
+					data.info.defense, true)
 				.addField('❯ Magic',
-					body.info.magic, true)
+					data.info.magic, true)
 				.addField('❯ Difficulty',
-					body.info.difficulty, true)
+					data.info.difficulty, true)
 				.addField('❯ HP',
-					`${body.stats.hp} (${body.stats.hpperlevel}/level)`, true)
+					`${data.stats.hp} (${data.stats.hpperlevel}/level)`, true)
 				.addField('❯ HP Regen',
-					`${body.stats.hpregen} (${body.stats.hpregenperlevel}/level)`, true)
+					`${data.stats.hpregen} (${data.stats.hpregenperlevel}/level)`, true)
 				.addField('❯ MP',
-					`${body.stats.mp} (${body.stats.mpperlevel}/level)`, true)
+					`${data.stats.mp} (${data.stats.mpperlevel}/level)`, true)
 				.addField('❯ MP Regen',
-					`${body.stats.mpregen} (${body.stats.mpregenperlevel}/level)`, true)
+					`${data.stats.mpregen} (${data.stats.mpregenperlevel}/level)`, true)
 				.addField('❯ Resource',
-					body.partype, true)
+					data.partype, true)
 				.addField('❯ Armor',
-					`${body.stats.armor} (${body.stats.armorperlevel}/level)`, true)
+					`${data.stats.armor} (${data.stats.armorperlevel}/level)`, true)
 				.addField('❯ Attack Damage',
-					`${body.stats.attackdamage} (${body.stats.attackdamageperlevel}/level)`, true)
+					`${data.stats.attackdamage} (${data.stats.attackdamageperlevel}/level)`, true)
 				.addField('❯ Attack Range',
-					body.stats.attackrange, true)
+					data.stats.attackrange, true)
 				.addField('❯ Attack Speed Offset',
-					`${body.stats.attackspeedoffset} (${body.stats.attackspeedperlevel}/level)`, true)
+					`${data.stats.attackspeedoffset} (${data.stats.attackspeedperlevel}/level)`, true)
 				.addField('❯ Crit',
-					`${body.stats.crit} (${body.stats.critperlevel}/level)`, true)
+					`${data.stats.crit} (${data.stats.critperlevel}/level)`, true)
 				.addField('❯ Move Speed',
-					body.stats.movespeed, true)
+					data.stats.movespeed, true)
 				.addField('❯ Spell Block',
-					`${body.stats.spellblock} (${body.stats.spellblockperlevel}/level)`, true)
+					`${data.stats.spellblock} (${data.stats.spellblockperlevel}/level)`, true)
 				.addField('❯ Passive',
-					shorten(`**${body.passive.name}**: ${body.passive.sanitizedDescription}`, 1000))
+					shorten(`**${data.passive.name}**: ${data.passive.sanitizedDescription}`, 1000))
 				.addField('❯ Spells',
-					body.spells.map((spell, i) => `${spell.name} (${buttons[i]})`).join('\n'));
+					data.spells.map((spell, i) => `${spell.name} (${buttons[i]})`).join('\n'));
 			return msg.say(`Tip: ${tips[Math.floor(Math.random() * tips.length)]}`, { embed });
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
