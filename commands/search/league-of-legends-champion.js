@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../util/Util');
 const { RIOT_KEY } = process.env;
 const buttons = ['Q', 'W', 'E', 'R'];
 
@@ -25,7 +24,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
-		this.client.setInterval(() => this.version = null, 3600000);
+		this.client.setInterval(() => (this.version = null), 3600000); // eslint-disable-line no-extra-parens
 	}
 
 	async run(msg, { champion }) {
@@ -93,7 +92,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		const { body } = await snekfetch
 			.get('https://na1.api.riotgames.com/lol/static-data/v3/versions')
 			.query({ api_key: RIOT_KEY });
-		this.version = body[0];
+		[this.version] = body;
 		return this.version;
 	}
 };
