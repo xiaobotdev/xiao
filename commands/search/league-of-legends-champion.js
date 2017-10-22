@@ -32,11 +32,14 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		if (champion === 'satan') champion = 'teemo';
 		try {
 			if (!this.version) await this.fetchVersion();
-			const { body } = await snekfetch
+			const search = await snekfetch
 				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
-			const name = Object.keys(body.data).find(key => key.toLowerCase() === champion);
+			const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
 			if (!name) return msg.say('Could not find any results.');
-			const data = body.data[name];
+			const { id } = body.data[name];
+			const { body } = await snekfetch
+				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion/${id}.json`);
+			const { data } = body;
 			const tips = [].concat(data.allytips, data.enemytips);
 			const embed = new MessageEmbed()
 				.setColor(0x002366)
