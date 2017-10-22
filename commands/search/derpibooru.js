@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { stripIndents } = require('common-tags');
 
 module.exports = class DerpibooruCommand extends Command {
 	constructor(client) {
@@ -30,10 +29,7 @@ module.exports = class DerpibooruCommand extends Command {
 				});
 			if (!search.body) return msg.say('Could not find any results.');
 			const { body } = await snekfetch.get(`https://derpibooru.org/images/${search.body.id}.json`);
-			return msg.say(stripIndents`
-				Result for ${query}:
-				https:${body.representations.medium}
-			`);
+			return msg.say(`https:${body.representations.medium}`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

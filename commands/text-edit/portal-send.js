@@ -27,7 +27,7 @@ module.exports = class PortalSendCommand extends Command {
 	async run(msg, { text }) {
 		const valid = this.client.channels.filter(channel => channel.type === 'text' && channel.guild.id !== msg.guild.id);
 		const channels = valid.filter(channel => channel.topic && channel.topic.toLowerCase().includes('<portal>'));
-		if (!channels.size) return msg.say('No channels on this shard have an open portal.');
+		if (!channels.size) return msg.say('No channels have an open portal.');
 		const channel = channels.random();
 		try {
 			await channel.send(`**${msg.author.tag} (${msg.guild.name})**: ${text}`);

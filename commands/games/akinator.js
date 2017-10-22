@@ -55,6 +55,7 @@ module.exports = class AkinatorCommand extends Command {
 			await msg.embed(embed);
 			const verification = await verify(msg.channel, msg.author);
 			this.sessions.delete(msg.channel.id);
+			if (verification === 0) return msg.reply('I guess your silence means I have won.');
 			if (!verification) return msg.say('Bravo, you have defeated me.');
 			return msg.say('Guessed right one more time! I love playing with you!');
 		} catch (err) {

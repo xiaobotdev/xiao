@@ -24,22 +24,22 @@ module.exports = class ServerInfoCommand extends Command {
 				msg.guild.name, true)
 			.addField('❯ ID',
 				msg.guild.id, true)
-			.addField('❯ Shard',
-				this.client.shard.id, true)
+			.addField('❯ Region',
+				msg.guild.region.toUpperCase(), true)
 			.addField('❯ Creation Date',
 				msg.guild.createdAt.toDateString(), true)
 			.addField('❯ Explicit Filter',
 				filterLevels[msg.guild.explicitContentFilter], true)
 			.addField('❯ Verification Level',
 				verificationLevels[msg.guild.verificationLevel], true)
-			.addField('❯ Region',
-				msg.guild.region.toUpperCase(), true)
 			.addField('❯ Owner',
 				msg.guild.owner ? msg.guild.owner.user.tag : 'None', true)
-			.addField('❯ Channels',
-				msg.guild.channels.size, true)
 			.addField('❯ Members',
-				msg.guild.memberCount, true);
+				msg.guild.memberCount, true)
+			.addField('❯ Roles',
+				msg.guild.roles.size, true)
+			.addField('❯ Channels',
+				msg.guild.channels.size, true);
 		return msg.embed(embed);
 	}
 };

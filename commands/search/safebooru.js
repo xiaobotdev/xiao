@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const { xml2js } = require('xml-js');
-const { stripIndents } = require('common-tags');
 
 module.exports = class SafebooruCommand extends Command {
 	constructor(client) {
@@ -33,10 +32,7 @@ module.exports = class SafebooruCommand extends Command {
 				});
 			const parsed = xml2js(text, { compact: true }).posts;
 			if (!parsed.post || !parsed.post.length) return msg.say('Could not find any results.');
-			return msg.say(stripIndents`
-				Result for ${query}:
-				https:${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}
-			`);
+			return msg.say(`https:${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

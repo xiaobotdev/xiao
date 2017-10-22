@@ -52,6 +52,7 @@ module.exports = class HangmanCommand extends Command {
 				if (choice.length > 1) {
 					if (word === choice) break;
 					else await msg.say('Nope, that\'s not the word, try again!');
+					points++;
 				} else if (confirmation.includes(choice) || incorrect.includes(choice)) {
 					await msg.say('You have already picked that letter!');
 				} else if (word.includes(choice)) {

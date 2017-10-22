@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { stripIndents } = require('common-tags');
 
 module.exports = class KonachanCommand extends Command {
 	constructor(client) {
@@ -30,10 +29,7 @@ module.exports = class KonachanCommand extends Command {
 					limit: 1
 				});
 			if (!body.length || !body[0].file_url) return msg.say('Could not find any results.');
-			return msg.say(stripIndents`
-				Result for ${query}:
-				https:${body[0].file_url}
-			`);
+			return msg.say(`https:${body[0].file_url}`);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
