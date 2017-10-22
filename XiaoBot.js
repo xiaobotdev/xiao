@@ -50,7 +50,7 @@ client.on('ready', () => {
 		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
 	}, 60000);
 	for (const guild of client.guilds.values()) {
-		if (whitelist.includes(guild.id)) continue;
+		if (whitelist.guilds.includes(guild.id) || whitelist.owners.includes(guild.ownerID)) continue;
 		console.log(`[LEAVE] Leaving guild ${guild.name}.`);
 		guild.leave().catch(err => console.error(`[LEAVE] Failed to leave ${guild.name}.`, err));
 	}
