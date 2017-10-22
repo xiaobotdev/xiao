@@ -18,7 +18,6 @@ module.exports = class InfoCommand extends Command {
 
 	async run(msg) {
 		const guilds = await this.client.shard.fetchClientValues('guilds.size');
-		const invite = await this.client.generateInvite('1345846343');
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter('©2017 dragonfire535#8081')
@@ -27,7 +26,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Home Server',
 				`[Here](https://${this.client.options.invite})`, true)
 			.addField('❯ Invite',
-				`[Here](${invite})`, true)
+				'N/A', true)
 			.addField('❯ Shards',
 				this.client.options.shardCount, true)
 			.addField('❯ Commands',
