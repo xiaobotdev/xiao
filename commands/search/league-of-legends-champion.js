@@ -80,7 +80,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 				.addField('❯ Spell Block',
 					`${data.stats.spellblock} (${data.stats.spellblockperlevel}/level)`, true)
 				.addField('❯ Passive',
-					shorten(`**${data.passive.name}**: ${data.passive.sanitizedDescription}`, 1000))
+					data.passive.name)
 				.addField('❯ Spells',
 					data.spells.map((spell, i) => `${spell.name} (${buttons[i]})`).join('\n'));
 			return msg.say(`Tip: ${tips[Math.floor(Math.random() * tips.length)]}`, { embed });
