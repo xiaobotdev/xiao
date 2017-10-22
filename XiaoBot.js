@@ -7,11 +7,8 @@ const client = new CommandoClient({
 	invite: INVITE,
 	disableEveryone: true,
 	unknownCommandResponse: false,
-	disabledEvents: ['TYPING_START'],
-	messageCacheLifetime: 600,
-	messageSweepInterval: 120
+	disabledEvents: ['TYPING_START']
 });
-const { postStats } = require('./util/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -52,10 +49,6 @@ client.on('ready', () => {
 		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
 	}, 60000);
 });
-
-client.on('guildCreate', () => postStats(client));
-
-client.on('guildDelete', () => postStats(client));
 
 client.on('disconnect', event => {
 	console.error(`[DISCONNECT] Shard ${client.shard.id} disconnected with code ${event.code}.`);
