@@ -25,31 +25,18 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
-		this.champions = null;
-		this.cache = new Map();
-		this.client.setInterval(() => this.cache.clear(), 3600000);
+		this.client.setInterval(() => this.version = null, 3600000);
 	}
 
 	async run(msg, { champion }) {
 		if (champion === 'satan') champion = 'teemo';
 		try {
-			let data;
-			if (!this.cache.has(champion)) {
-				if (!this.champions) await this.fetchChampions();
-				const name = Object.keys(this.champions).find(key => key.toLowerCase() === champion);
-				if (!name) return msg.say('Could not find any results.');
-				const { id } = this.champions[name];
-				const { body } = await snekfetch
-					.get(`https://na1.api.riotgames.com/lol/static-data/v3/champions/${id}`)
-					.query({
-						api_key: RIOT_KEY,
-						tags: 'all'
-					});
-				data = body;
-				this.cache.set(champion, body);
-			} else {
-				data = this.cache.get(champion);
-			}
+			if (!this.version) await this.fetchVersion();
+			const { body } = await snekfetch
+				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
+			const name = Object.keys(body.data).find(key => key.toLowerCase() === champion);
+			if (!name) return msg.say('Could not find any results.');
+			const data = body.data[name];
 			const tips = [].concat(data.allytips, data.enemytips);
 			const embed = new MessageEmbed()
 				.setColor(0x002366)
@@ -99,12 +86,11 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		}
 	}
 
-	async fetchChampions() {
+	async fetchVersion() {
 		const { body } = await snekfetch
-			.get('https://na1.api.riotgames.com/lol/static-data/v3/champions')
+			.get('https://na1.api.riotgames.com/lol/static-data/v3/versions')
 			.query({ api_key: RIOT_KEY });
-		this.version = body.version;
-		this.champions = body.data;
-		return body.data;
+		this.version = body[0];
+		return this.version;
 	}
 };
