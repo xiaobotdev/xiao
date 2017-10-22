@@ -1,32 +1,8 @@
-const snekfetch = require('snekfetch');
 const { promisify } = require('util');
-const { DBOTS_KEY, DBOTSORG_KEY } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
 
 class Util {
-	static postStats(client) {
-		if (!DBOTS_KEY || !DBOTSORG_KEY) return;
-		snekfetch
-			.post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
-			.set({ Authorization: DBOTS_KEY })
-			.send({
-				shard_id: client.shard ? client.shard.id : 0,
-				shard_count: client.options.shardCount || 1,
-				server_count: client.guilds.size
-			})
-			.catch(err => console.error('[STATS] Failed to post to bots.discord.pw.', err));
-		snekfetch
-			.post(`https://discordbots.org/api/bots/${client.user.id}/stats`)
-			.set({ Authorization: DBOTSORG_KEY })
-			.send({
-				shard_id: client.shard ? client.shard.id : 0,
-				shard_count: client.options.shardCount || 1,
-				server_count: client.guilds.size
-			})
-			.catch(err => console.error('[STATS] Failed to post to discordbots.org.', err));
-	}
-
 	static wait(time) {
 		return promisify(setTimeout)(time);
 	}
