@@ -9,7 +9,6 @@ const client = new CommandoClient({
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START']
 });
-const whitelist = require('./assets/json/whitelist');
 
 client.registry
 	.registerDefaultTypes()
@@ -38,7 +37,7 @@ client.registry
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
-	console.log(`[READY] Shard ${client.shard.id} logged in as ${client.user.tag}! (${client.user.id})`);
+	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.setInterval(() => {
 		const activities = [
 			`${COMMAND_PREFIX}help for commands`,
@@ -49,15 +48,10 @@ client.on('ready', () => {
 		];
 		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
 	}, 60000);
-	for (const guild of client.guilds.values()) {
-		if (whitelist.guilds.includes(guild.id) || whitelist.owners.includes(guild.ownerID)) continue;
-		console.log(`[LEAVE] Leaving guild ${guild.name}.`);
-		guild.leave().catch(err => console.error(`[LEAVE] Failed to leave ${guild.name}.`, err));
-	}
 });
 
 client.on('disconnect', event => {
-	console.error(`[DISCONNECT] Shard ${client.shard.id} disconnected with code ${event.code}.`);
+	console.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	process.exit(0);
 });
 

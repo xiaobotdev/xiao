@@ -103,7 +103,7 @@ class Util {
 			max: 1,
 			time
 		});
-		if (!verify.size) return false;
+		if (!verify.size) return 0;
 		const choice = verify.first().content.toLowerCase();
 		if (yes.includes(choice)) return true;
 		if (no.includes(choice)) return false;

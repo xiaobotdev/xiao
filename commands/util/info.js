@@ -16,13 +16,12 @@ module.exports = class InfoCommand extends Command {
 		});
 	}
 
-	async run(msg) {
-		const guilds = await this.client.shard.fetchClientValues('guilds.size');
+	run(msg) {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter('©2017 dragonfire535#8081')
 			.addField('❯ Servers',
-				guilds.reduce((prev, val) => prev + val, 0), true)
+				this.client.guilds.size, true)
 			.addField('❯ Home Server',
 				`[Here](https://${this.client.options.invite})`, true)
 			.addField('❯ Invite',
