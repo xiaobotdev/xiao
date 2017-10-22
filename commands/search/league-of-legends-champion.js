@@ -36,7 +36,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
 			const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
 			if (!name) return msg.say('Could not find any results.');
-			const { id } = body.data[name];
+			const { id } = search.body.data[name];
 			const { body } = await snekfetch
 				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion/${id}.json`);
 			const { data } = body;
