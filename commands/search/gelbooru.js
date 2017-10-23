@@ -33,7 +33,7 @@ module.exports = class GelbooruCommand extends Command {
 				});
 			const parsed = xml2js(text, { compact: true }).posts;
 			if (!parsed.post || !parsed.post.length) return msg.say('Could not find any results.');
-			return msg.say(`${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}`);
+			return msg.say(parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
