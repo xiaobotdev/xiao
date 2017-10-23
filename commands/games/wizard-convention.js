@@ -125,11 +125,15 @@ module.exports = class WizardConventionCommand extends Command {
 				const counts = new Collection();
 				for (const vote of votes.values()) {
 					const player = players.get(parseInt(vote.content, 10));
-					counts.set(player.id, {
-						id: player.id,
-						votes: counts.has(player.id) ? ++counts.get(player.id).votes : 1,
-						user: player.user
-					});
+					if (counts.has(player.id)) {
+						++counts.get(player.id).votes;
+					} else {
+						counts.set(player.id, {
+							id: player.id,
+							votes: 1,
+							user: player.user
+						});
+					}
 				}
 				if (!counts.size) {
 					await msg.say('No one will be expelled.');
