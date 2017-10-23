@@ -31,7 +31,7 @@ module.exports = class WizardConventionCommand extends Command {
 				return true;
 			};
 			const verify = await msg.channel.awaitMessages(filter, { time: 30000 });
-			if (verify.size > 2) {
+			if (verify.size < 2) {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Failed to start the game...');
 			}
@@ -41,13 +41,13 @@ module.exports = class WizardConventionCommand extends Command {
 			verify.set(msg.id, msg);
 			const players = new Collection();
 			let i = 1;
-			for (const player of verify.values()) {
+			for (const message of verify.values()) {
 				players.set(i, {
 					id: i,
-					user: player.author,
+					user: message.author,
 					role: roles[i - 1]
 				});
-				await player.user.send(`Your role will be: ${roles[i]}!`);
+				await message.author.send(`Your role will be: ${roles[i]}!`);
 				i++;
 			}
 			let turn = 1;
@@ -56,7 +56,7 @@ module.exports = class WizardConventionCommand extends Command {
 				let healed = null;
 				await msg.say(`Night ${turn}, sending DMs...`);
 				for (const player of players.values()) {
-					if (player.roles.includes('pleb')) continue;
+					if (player.role.includes('pleb')) continue;
 					const valid = players.filter(p => p.role !== player.role);
 					await player.user.send(stripIndents`
 						${questions[player.role]} Please type the number.
@@ -74,12 +74,12 @@ module.exports = class WizardConventionCommand extends Command {
 					const choice = parseInt(decision.first().content, 10);
 					if (player.role === 'dragon') {
 						eaten = players.get(choice).id;
-						await msg.say(`${choice} will be eaten...`);
+						await player.user.send(`${choice} will be eaten...`);
 					} else if (player.role === 'healer') {
 						healed = players.get(choice).id;
-						await msg.say(`${choice} will be healed...`);
+						await player.user.send(`${choice} will be healed...`);
 					} else if (player.role === 'mind reader') {
-						await msg.say(players.find('role', 'dragon').id === choice ? 'Yes.' : 'No.');
+						await player.user.send(players.find('role', 'dragon').id === choice ? 'Yes.' : 'No.');
 					}
 				}
 				const display = eaten ? players.get(eaten).user : null;
@@ -137,8 +137,9 @@ module.exports = class WizardConventionCommand extends Command {
 				}
 				const expelled = counts.sort((a, b) => b.votes - a.votes).first();
 				await msg.say(`${expelled.user} will be expelled.`);
-				if (players.find('role', 'dragon').id === expelled.id) break;
 				players.delete(expelled.id);
+				if (!players.exists('role', 'dragon')) break;
+				++turn;
 			}
 			this.playing.delete(msg.channel.id);
 			const dragon = players.find('role', 'dragon');
