@@ -86,6 +86,7 @@ module.exports = class WizardConventionCommand extends Command {
 				}
 				const display = eaten ? players.get(eaten).user : null;
 				const story = stories[Math.floor(Math.random() * stories.length)];
+				if (eaten && eaten !== healed) players.delete(eaten);
 				if (eaten && eaten === healed) {
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged and tried to eat ${display}${story}
@@ -99,7 +100,6 @@ module.exports = class WizardConventionCommand extends Command {
 					`);
 					break;
 				} else if (eaten && eaten !== healed) {
-					players.delete(eaten);
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged and devoured poor ${display}${story}
 						Who is this mysterious dragon? You have one minute to decide.
@@ -127,15 +127,11 @@ module.exports = class WizardConventionCommand extends Command {
 				const counts = new Collection();
 				for (const vote of votes.values()) {
 					const player = players.get(parseInt(vote.content, 10));
-					if (counts.has(player.id)) {
-						++counts.get(player.id).votes;
-					} else {
-						counts.set(player.id, {
-							id: player.id,
-							votes: 1,
-							user: player.user
-						});
-					}
+					counts.set(player.id, {
+						id: player.id,
+						votes: counts.has(player.id) ? ++counts.get(player.id).votes : 1,
+						user: player.user
+					});
 				}
 				if (!counts.size) {
 					await msg.say('No one will be expelled.');
