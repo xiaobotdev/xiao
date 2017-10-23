@@ -22,14 +22,14 @@ module.exports = class InfoCommand extends Command {
 			.setFooter('©2017 dragonfire535#8081')
 			.addField('❯ Servers',
 				this.client.guilds.size, true)
-			.addField('❯ Home Server',
-				`[Here](https://${this.client.options.invite})`, true)
-			.addField('❯ Invite',
-				'N/A', true)
 			.addField('❯ Shards',
 				this.client.options.shardCount, true)
 			.addField('❯ Commands',
 				this.client.registry.commands.size, true)
+			.addField('❯ Home Server',
+				`[Here](https://${this.client.options.invite})`, true)
+			.addField('❯ Memory Usage',
+				`${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime',
 				duration(this.client.uptime).format(), true)
 			.addField('❯ Version',
