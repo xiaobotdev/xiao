@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { Collection } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { shuffle, list, wait } = require('../../util/Util');
+const { shuffle, wait } = require('../../util/Util');
 const { questions, stories } = require('../../assets/json/wizard-convention');
 
 module.exports = class WizardConventionCommand extends Command {
@@ -17,90 +17,78 @@ module.exports = class WizardConventionCommand extends Command {
 		this.playing = new Set();
 	}
 
-	async run(msg) { // eslint-disable-line complexity
+	async run(msg) {
 		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
+		this.playing.add(msg.channel.id);
 		try {
-			await msg.say('You will need at least 2 more players, type `join game` to join the game.');
+			await msg.say('You will need at least 2 more players. To join, type `join game`.');
 			const joined = [];
+			joined.push(msg.author.id);
 			const filter = res => {
-				if (res.author.id === msg.author.id) return false;
 				if (joined.includes(res.author.id)) return false;
-				if (['join game', 'join convention'].includes(res.content.toLowerCase())) {
-					joined.push(res.author.id);
-					return true;
-				}
-				return false;
+				if (res.content.toLowerCase() !== 'join game') return false;
+				joined.push(res.author.id);
+				return true;
 			};
 			const verify = await msg.channel.awaitMessages(filter, { time: 30000 });
-			if (verify.size < 2) {
+			if (verify.size > 2) {
 				this.playing.delete(msg.channel.id);
-				return msg.say('Game could not be started...');
+				return msg.say('Failed to start the game...');
 			}
 			let roles = ['dragon', 'healer', 'mind reader'];
 			for (let i = 0; i < (verify.size - 2); i++) roles.push(`pleb ${i + 1}`);
 			roles = shuffle(roles);
+			verify.set(msg.id, msg);
 			const players = new Collection();
-			players.set(msg.author.id, {
-				user: msg.author,
-				role: roles[0]
-			});
-			await msg.author.send(`You are ${roles[0].includes('pleb') ? 'a pleb.' : `the ${roles[0]}!`}`);
 			let i = 1;
-			for (const message of verify.values()) {
-				players.set(message.author.id, {
-					user: message.author,
-					role: roles[i]
+			for (const player of verify.values()) {
+				players.set(i, {
+					id: i,
+					user: player.author,
+					role: roles[i - 1]
 				});
-				await message.author.send(`You are ${roles[i].includes('pleb') ? 'a pleb.' : `the ${roles[i]}!`}`);
+				await player.user.send(`Your role will be: ${roles[i]}!`);
 				i++;
 			}
-			let night = 1;
-			let win = false;
-			let skips = 0;
+			let turn = 1;
 			while (players.size > 2) {
-				if (skips > 3) return msg.say('Game ended after too many skips.');
 				let eaten = null;
 				let healed = null;
-				await msg.say(`Night ${night++}... Sending DMs...`);
+				await msg.say(`Night ${turn}, sending DMs...`);
 				for (const player of players.values()) {
-					if (player.role.includes('pleb')) continue;
-					const playerList = players.filter(p => p.role !== player.role).map(p => p.user.tag);
-					await player.user.send(`${questions[player.role]} ${list(playerList, 'or')}?`);
-					const decision = await player.user.dmChannel.awaitMessages(res => playerList.includes(res.content), {
+					if (player.roles.includes('pleb')) continue;
+					const valid = players.filter(p => p.role !== player.role);
+					await player.user.send(stripIndents`
+						${questions[player.role]} Please type the number.
+						${valid.map(p => `**${p.id}.** ${p.user.tag}`).join('\n')}
+					`);
+					const filter = res => valid.map(p => p.id.toString()).includes(res.content);
+					const decision = await player.user.dmChannel.awaitMessages(filter, {
 						max: 1,
 						time: 30000
 					});
 					if (!decision.size) {
-						await player.user.send('Skipping your turn...');
-						++skips;
+						await player.user.send('Sorry, time is up!');
 						continue;
 					}
-					const choice = decision.first().content;
+					const choice = parseInt(decision.first().content, 10);
 					if (player.role === 'dragon') {
-						const found = players.find(p => p.user.tag === choice);
-						eaten = found.user.id;
-						await player.user.send(`${choice} will be eaten...`);
+						eaten = players.get(choice).id;
+						await msg.say(`${choice} will be eaten...`);
 					} else if (player.role === 'healer') {
-						const found = players.find(p => p.user.tag === choice);
-						healed = found.user.id;
-						await player.user.send(`${choice} will be healed...`);
+						healed = players.get(choice).id;
+						await msg.say(`${choice} will be healed...`);
 					} else if (player.role === 'mind reader') {
-						const dragon = players.find('role', 'dragon');
-						const found = players.find(p => p.user.tag === choice);
-						await player.user.send(dragon.user.id === found.user.id ? 'Yes.' : 'No.');
+						await msg.say(players.find('role', 'dragon').id === choice ? 'Yes.' : 'No.');
 					}
 				}
 				const display = eaten ? players.get(eaten).user : null;
-				if (eaten && eaten !== healed) {
-					const found = players.find(p => p.user.id === eaten);
-					players.delete(found.user.id);
-				}
-				const story = stories[Math.floor(Math.random() * stories.length)];
+				const story = stories[Math.floor(Math.random() * story.length)];
 				if (eaten && eaten === healed) {
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged and tried to eat ${display}${story}
 						Thankfully, a healer stepped in just in time to save the day.
-						Who is this mysterious dragon? You have one minute to argue your case.
+						Who is this mysterious dragon? You have one minute to decide.
 					`);
 				} else if (eaten && players.size < 3) {
 					await msg.say(stripIndents`
@@ -109,67 +97,56 @@ module.exports = class WizardConventionCommand extends Command {
 					`);
 					break;
 				} else if (eaten && eaten !== healed) {
+					players.delete(eaten);
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged and devoured poor ${display}${story}
-						Who is this mysterious dragon? You have one minute to argue your case.
+						Who is this mysterious dragon? You have one minute to decide.
 					`);
 				} else {
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged. Thankfully, however, it didn't try to eat anyone.
-						Who is this mysterious dragon? You have one minute to argue your case.
+						Who is this mysterious dragon? You have one minute to decide.
 					`);
 				}
 				await wait(60000);
-				await msg.say('Time is up!');
-				const voteCounts = new Collection();
+				await msg.say(stripIndents`
+					Who do you think is the dragon? Please type the number.
+					${players.map(p => `**${p.id}.** ${p.user.tag}`).join('\n')}
+				`);
 				const voted = [];
-				const playerList = players.map(p => p.user.tag);
 				const filter2 = res => {
-					if (!players.has(res.author.id)) return false;
+					if (!players.exists(p => p.user.id === res.author.id)) return false;
 					if (voted.includes(res.author.id)) return false;
-					if (playerList.includes(res.content)) {
-						voted.push(res.author.id);
-						return true;
-					}
-					return false;
+					if (!players.has(parseInt(res.content, 10))) return false;
+					voted.push(res.author.id);
+					return true;
 				};
-				await msg.say(`Who is the dragon? ${list(playerList, 'or')}?`);
 				const votes = await msg.channel.awaitMessages(filter2, { time: 30000 });
+				const counts = new Collection();
 				for (const vote of votes.values()) {
-					for (const player of players.values()) {
-						if (!player.user.tag.includes(vote.content)) continue;
-						const existing = voteCounts.get(player.user.id);
-						if (existing) {
-							++existing.votes;
-						} else {
-							voteCounts.set(player.user.id, {
-								votes: 1,
-								user: player.user
-							});
-						}
-					}
+					const player = players.get(parseInt(vote.content, 10));
+					counts.set(player.id, {
+						id: player.id,
+						votes: counts.has(player.id) ? ++counts.get(player.id).votes : 1,
+						user: player.user
+					});
 				}
-				if (!voteCounts.size) {
+				if (!counts.size) {
 					await msg.say('No one will be expelled.');
-					++skips;
 					continue;
 				}
-				const expelled = voteCounts.sort((a, b) => b.votes - a.votes).first();
+				const expelled = counts.sort((a, b) => b.votes - a.votes).first();
 				await msg.say(`${expelled.user} will be expelled.`);
-				if (players.find('role', 'dragon').user.id === expelled.user.id) {
-					win = true;
-					break;
-				} else {
-					players.delete(expelled.user.id);
-				}
+				if (players.find('role', 'dragon').id === expelled.id) break;
+				players.delete(expelled.id);
 			}
 			this.playing.delete(msg.channel.id);
-			if (win) return msg.say('The dragon is dead! Thanks for playing!');
 			const dragon = players.find('role', 'dragon');
-			return msg.say(`Oh no... The dragon wasn't caught in time... Nice job, ${dragon.user}!`);
+			if (!dragon) return msg.say('The dragon has been vanquished! Thanks for playing!');
+			return msg.say(`Oh no, the dragon wasn't caught in time... Nice job, ${dragon.user}!`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };
