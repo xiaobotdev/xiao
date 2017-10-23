@@ -160,8 +160,7 @@ module.exports = class WizardConventionCommand extends Command {
 					win = true;
 					break;
 				} else {
-					const found = players.find(player => player.user.id === expelled.id);
-					players.delete(found.user.id);
+					players.delete(expelled.user.id);
 				}
 			}
 			this.playing.delete(msg.channel.id);
