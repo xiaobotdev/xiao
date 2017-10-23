@@ -47,7 +47,7 @@ module.exports = class WizardConventionCommand extends Command {
 					user: message.author,
 					role: roles[i - 1]
 				});
-				await message.author.send(`Your role will be: ${roles[i]}!`);
+				await message.author.send(`Your role will be: ${roles[i - 1]}!`);
 				i++;
 			}
 			let turn = 1;
@@ -83,7 +83,7 @@ module.exports = class WizardConventionCommand extends Command {
 					}
 				}
 				const display = eaten ? players.get(eaten).user : null;
-				const story = stories[Math.floor(Math.random() * story.length)];
+				const story = stories[Math.floor(Math.random() * stories.length)];
 				if (eaten && eaten === healed) {
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged and tried to eat ${display}${story}
