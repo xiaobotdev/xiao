@@ -73,11 +73,13 @@ module.exports = class WizardConventionCommand extends Command {
 					}
 					const choice = parseInt(decision.first().content, 10);
 					if (player.role === 'dragon') {
-						eaten = players.get(choice).id;
-						await player.user.send(`${choice} will be eaten...`);
+						const chosen = players.get(choice);
+						eaten = chosen.id;
+						await player.user.send(`${chosen.user.tag} will be eaten...`);
 					} else if (player.role === 'healer') {
-						healed = players.get(choice).id;
-						await player.user.send(`${choice} will be healed...`);
+						const chosen = players.get(choice);
+						healed = chosen.id;
+						await player.user.send(`${chosen.user.tag} will be healed...`);
 					} else if (player.role === 'mind reader') {
 						await player.user.send(players.find('role', 'dragon').id === choice ? 'Yes.' : 'No.');
 					}
