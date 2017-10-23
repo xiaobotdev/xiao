@@ -48,6 +48,14 @@ class Util {
 		return `${prefix.slice(text.length)}${text}`;
 	}
 
+	static promisifyAll(obj, suffix = 'Async') {
+		for (const key of Object.keys(obj)) {
+			if (typeof obj[key] !== 'function') continue;
+			obj[`${key}${suffix}`] = promisify(obj[key]);
+		}
+		return obj;
+	}
+
 	static greyscale(ctx, x, y, width, height) {
 		const data = ctx.getImageData(x, y, width, height);
 		for (let i = 0; i < data.data.length; i += 4) {

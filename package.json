@@ -1,6 +1,6 @@
 {
 	"name": "xiaobot",
-	"version": "49.3.1",
+	"version": "49.3.2",
 	"description": "Your personal server companion.",
 	"main": "XiaoBot.js",
 	"scripts": {
@@ -39,7 +39,6 @@
 		"erlpack": "github:discordapp/erlpack",
 		"node-opus": "^0.2.7",
 		"snekfetch": "^3.5.5",
-		"tsubaki": "^1.2.0",
 		"uws": "^8.14.1",
 		"xml-js": "^1.5.1"
 	},

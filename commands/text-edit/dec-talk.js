@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const { promisifyAll } = require('tsubaki');
+const { promisifyAll } = require('../../util/Util');
 const fs = promisifyAll(require('fs'));
 
 module.exports = class DECTalkCommand extends Command {
