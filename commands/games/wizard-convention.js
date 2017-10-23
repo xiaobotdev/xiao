@@ -17,7 +17,7 @@ module.exports = class WizardConventionCommand extends Command {
 		this.playing = new Set();
 	}
 
-	async run(msg) {
+	async run(msg) { // eslint-disable-line complexity
 		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
@@ -62,8 +62,8 @@ module.exports = class WizardConventionCommand extends Command {
 						${questions[player.role]} Please type the number.
 						${valid.map(p => `**${p.id}.** ${p.user.tag}`).join('\n')}
 					`);
-					const filter = res => valid.map(p => p.id.toString()).includes(res.content);
-					const decision = await player.user.dmChannel.awaitMessages(filter, {
+					const filter2 = res => valid.map(p => p.id.toString()).includes(res.content);
+					const decision = await player.user.dmChannel.awaitMessages(filter2, {
 						max: 1,
 						time: 30000
 					});
