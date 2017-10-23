@@ -149,7 +149,7 @@ module.exports = class WizardConventionCommand extends Command {
 			return msg.say(`Oh no, the dragon wasn't caught in time... Nice job, ${dragon.user}!`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
-			throw err;
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
