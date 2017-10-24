@@ -53,7 +53,7 @@ module.exports = class CurrencyCommand extends Command {
 				});
 			return msg.say(`${amount} ${base} is ${amount * body.rates[target]} ${target}.`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

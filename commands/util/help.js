@@ -51,7 +51,7 @@ module.exports = class HelpCommand extends Command {
 				await msg.direct({ embed });
 				return msg.say('📬 Sent you a DM with information.');
 			} catch (err) {
-				return msg.say('Failed to send DM. You probably have DMs disabled.');
+				return msg.reply('Failed to send DM. You probably have DMs disabled.');
 			}
 		}
 	}

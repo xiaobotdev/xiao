@@ -49,7 +49,7 @@ module.exports = class QuizCommand extends Command {
 					encode: 'url3986',
 					difficulty
 				});
-			if (!body.results) return msg.say('Oh no, a question could not be fetched. Try again later!');
+			if (!body.results) return msg.reply('Oh no, a question could not be fetched. Try again later!');
 			const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
 			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 			answers.push(correct);
@@ -67,7 +67,7 @@ module.exports = class QuizCommand extends Command {
 			if (msgs.first().content.toLowerCase() !== correct) return msg.say(`Nope, sorry, it's ${correct}.`);
 			return msg.say('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

@@ -27,7 +27,7 @@ module.exports = class CuddleCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *cuddles* **${user.username}**
+			_**${msg.author.username}** cuddles with **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

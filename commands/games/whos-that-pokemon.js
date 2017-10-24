@@ -61,7 +61,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			if (!names.includes(msgs.first().content.toLowerCase())) return msg.say(`Nope, sorry, it's ${displayName}.`);
 			return msg.say('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

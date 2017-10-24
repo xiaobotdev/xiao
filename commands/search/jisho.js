@@ -32,7 +32,7 @@ module.exports = class JishoCommand extends Command {
 				${data.senses[0].english_definitions.join(', ')}
 			`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

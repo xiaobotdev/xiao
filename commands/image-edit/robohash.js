@@ -25,7 +25,7 @@ module.exports = class RobohashCommand extends Command {
 			const { body } = await snekfetch.get(`https://robohash.org/${text}`);
 			return msg.say({ files: [{ attachment: body, name: 'robohash.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

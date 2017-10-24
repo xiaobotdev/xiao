@@ -36,11 +36,11 @@ module.exports = class ThesaurusCommand extends Command {
 			const antonyms = body.find(words => words.relationshipType === 'antonym');
 			return msg.say(stripIndents`
 				**${query}**
-				__Synonyms:__ ${synonyms ? synonyms.words.join(', ') : 'N/A'}
-				__Antonyms:__ ${antonyms ? antonyms.words.join(', ') : 'N/A'}
+				__Synonyms:__ ${synonyms ? synonyms.words.join(', ') : '???'}
+				__Antonyms:__ ${antonyms ? antonyms.words.join(', ') : '???'}
 			`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

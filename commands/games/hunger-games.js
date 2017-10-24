@@ -30,9 +30,9 @@ module.exports = class HungerGamesCommand extends Command {
 
 	async run(msg, { tributes }) {
 		if (tributes.length < 2) return msg.say(`...${tributes[0]} wins, as they were the only tribute.`);
-		if (tributes.length > 24) return msg.say('Please do not enter more than 24 tributes.');
-		if (new Set(tributes).size !== tributes.length) return msg.say('Please do not enter the same tribute twice.');
-		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
+		if (tributes.length > 24) return msg.reply('Please do not enter more than 24 tributes.');
+		if (new Set(tributes).size !== tributes.length) return msg.reply('Please do not enter the same tribute twice.');
+		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
 			let sun = true;

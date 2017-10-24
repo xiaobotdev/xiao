@@ -31,7 +31,7 @@ module.exports = class NASACommand extends Command {
 			const data = filtered[Math.floor(Math.random() * filtered.length)];
 			return msg.say(shorten(data.data[0].description), { files: [data.links[0].href] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

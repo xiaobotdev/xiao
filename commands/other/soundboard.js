@@ -36,12 +36,12 @@ module.exports = class SoundboardCommand extends Command {
 	async run(msg, { sound }) {
 		if (!sound) sound = sounds[Math.floor(Math.random() * sounds.length)];
 		const channel = msg.member.voiceChannel;
-		if (!channel) return msg.say('Please enter a voice channel first.');
+		if (!channel) return msg.reply('Please enter a voice channel first.');
 		if (!channel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
-			return msg.say('Missing the "Connect" or "Speak" permission for the voice channel.');
+			return msg.reply('Missing the "Connect" or "Speak" permission for the voice channel.');
 		}
-		if (!channel.joinable) return msg.say('Your voice channel is not joinable.');
-		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
+		if (!channel.joinable) return msg.reply('Your voice channel is not joinable.');
+		if (this.client.voiceConnections.has(channel.guild.id)) return msg.reply('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
 			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', `${sound}.mp3`));

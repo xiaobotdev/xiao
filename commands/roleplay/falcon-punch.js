@@ -27,7 +27,7 @@ module.exports = class FalconPunchCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *falcon punches* **${user.username}**
+			_**${msg.author.username}** falcon punches **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

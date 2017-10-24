@@ -24,13 +24,13 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
-		this.client.setInterval(() => (this.version = null), 3600000); // eslint-disable-line no-extra-parens
+		this.client.setInterval(() => { this.version = null	}, 3600000);
 	}
 
 	async run(msg, { champion }) {
 		if (champion === 'satan') champion = 'teemo';
 		try {
-			if (!this.version) await this.fetchVersion();
+			if (!this.version) this.version = await this.fetchVersion();
 			const search = await snekfetch
 				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
 			const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
@@ -84,7 +84,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 					data.spells.map((spell, i) => `${spell.name} (${buttons[i]})`).join('\n'));
 			return msg.say(`Tip: ${tips[Math.floor(Math.random() * tips.length)]}`, { embed });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
@@ -92,7 +92,6 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		const { body } = await snekfetch
 			.get('https://na1.api.riotgames.com/lol/static-data/v3/versions')
 			.query({ api_key: RIOT_KEY });
-		[this.version] = body;
-		return this.version;
+		return body[0];
 	}
 };

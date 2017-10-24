@@ -32,13 +32,13 @@ module.exports = class HackbanCommand extends Command {
 	}
 
 	async run(msg, { id, reason }) {
-		if (id === msg.author.id) return msg.say('I don\'t think you want to ban yourself...');
-		if (id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
+		if (id === msg.author.id) return msg.reply('I don\'t think you want to ban yourself...');
+		if (id === msg.guild.ownerID) return msg.reply('Don\'t you think that might be betraying your leader?');
 		let user;
 		try {
 			user = await this.client.users.fetch(id);
 		} catch (err) {
-			return msg.say('Could not resolve user.');
+			return msg.reply('Could not resolve user.');
 		}
 		await msg.say(`Are you sure you want to hackban ${user.tag} (${user.id})?`);
 		const verification = await verify(msg.channel, msg.author);
@@ -49,7 +49,7 @@ module.exports = class HackbanCommand extends Command {
 				reason: `${msg.author.tag}: ${reason}`
 			});
 		} catch (err) {
-			return msg.say(`Failed to hackban ${user.tag}: \`${err.message}\`.`);
+			return msg.reply(`Failed to hackban ${user.tag}: \`${err.message}\`.`);
 		}
 		return msg.say(`Successfully hackbanned ${user.tag}.`);
 	}

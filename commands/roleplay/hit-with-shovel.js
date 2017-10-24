@@ -20,7 +20,7 @@ module.exports = class HitWithShovelCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *hits* **${user.username}** *with a shovel*
+			_**${msg.author.username}** hits **${user.username}** with a shovel._
 			https://i.imgur.com/XDIUq02.gif
 		`);
 	}

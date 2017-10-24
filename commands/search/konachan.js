@@ -20,7 +20,7 @@ module.exports = class KonachanCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		if (!msg.channel.nsfw) return msg.say('This command can only be used in NSFW channels.');
+		if (!msg.channel.nsfw) return msg.reply('This command can only be used in NSFW channels.');
 		try {
 			const { body } = await snekfetch
 				.get('https://konachan.net/post.json')
@@ -31,7 +31,7 @@ module.exports = class KonachanCommand extends Command {
 			if (!body.length || !body[0].file_url) return msg.say('Could not find any results.');
 			return msg.say(`https:${body[0].file_url}`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

@@ -44,7 +44,7 @@ module.exports = class FoodBrokeCommand extends Command {
 			ctx.drawImage(avatar, 117, 382, 75, 75);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'food-broke.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

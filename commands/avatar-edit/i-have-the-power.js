@@ -45,7 +45,7 @@ module.exports = class IHaveThePowerCommand extends Command {
 			ctx.rotate(-18.3 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'i-have-the-power.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

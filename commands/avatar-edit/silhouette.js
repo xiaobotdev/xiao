@@ -41,7 +41,7 @@ module.exports = class SilhouetteCommand extends Command {
 			silhouette(ctx, 0, 0, avatar.width, avatar.height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'silhouette.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

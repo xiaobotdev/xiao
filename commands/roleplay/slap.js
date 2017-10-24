@@ -27,7 +27,7 @@ module.exports = class SlapCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *slaps* **${user.username}**
+			_**${msg.author.username}** slaps **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

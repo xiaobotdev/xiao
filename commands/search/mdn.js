@@ -37,7 +37,7 @@ module.exports = class MDNCommand extends Command {
 				.setDescription(shorten(data.excerpt));
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

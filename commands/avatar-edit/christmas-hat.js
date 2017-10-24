@@ -42,7 +42,7 @@ module.exports = class ChristmasHatCommand extends Command {
 			ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'christmas-hat.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

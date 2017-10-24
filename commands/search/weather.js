@@ -44,23 +44,23 @@ module.exports = class WeatherCommand extends Command {
 				.addField('❯ Condition',
 					body.weather.map(cond => `${cond.main} (${cond.description})`).join('\n'), true)
 				.addField('❯ Temperature',
-					body.main.temp ? `${body.main.temp}°C` : 'N/A', true)
+					body.main.temp ? `${body.main.temp}°C` : '???', true)
 				.addField('❯ Humidity',
-					body.main.humidity ? `${body.main.humidity}%` : 'N/A', true)
+					body.main.humidity ? `${body.main.humidity}%` : '???', true)
 				.addField('❯ Pressure',
-					body.main.pressure ? `${body.main.pressure} hPa` : 'N/A', true)
+					body.main.pressure ? `${body.main.pressure} hPa` : '???', true)
 				.addField('❯ Visibility',
-					body.visibility ? `${body.visibility}m` : 'N/A', true)
+					body.visibility ? `${body.visibility}m` : '???', true)
 				.addField('❯ Cloudiness',
-					body.clouds && body.clouds.all ? `${body.clouds.all}%` : 'N/A', true)
+					body.clouds && body.clouds.all ? `${body.clouds.all}%` : '???', true)
 				.addField('❯ Wind Direction',
-					body.wind && body.wind.deg ? `${body.wind.deg}°` : 'N/A', true)
+					body.wind && body.wind.deg ? `${body.wind.deg}°` : '???', true)
 				.addField('❯ Wind Speed',
-					body.wind && body.wind.speed ? `${body.wind.speed}m/s` : 'N/A', true);
+					body.wind && body.wind.speed ? `${body.wind.speed}m/s` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

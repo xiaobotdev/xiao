@@ -32,7 +32,7 @@ module.exports = class NeopetCommand extends Command {
 			if (!link) return msg.say('Could not find any results.');
 			return msg.say(link[0]);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

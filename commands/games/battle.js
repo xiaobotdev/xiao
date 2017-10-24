@@ -25,8 +25,8 @@ module.exports = class BattleCommand extends Command {
 
 	async run(msg, { opponent }) { // eslint-disable-line complexity
 		if (!opponent) opponent = this.client.user;
-		if (opponent.id === msg.author.id) return msg.say('You may not fight yourself.');
-		if (this.fighting.has(msg.channel.id)) return msg.say('Only one fight may be occurring per channel.');
+		if (opponent.id === msg.author.id) return msg.reply('You may not fight yourself.');
+		if (this.fighting.has(msg.channel.id)) return msg.reply('Only one fight may be occurring per channel.');
 		this.fighting.add(msg.channel.id);
 		try {
 			if (!opponent.bot) {
@@ -100,7 +100,7 @@ module.exports = class BattleCommand extends Command {
 					forfeit();
 					break;
 				} else {
-					await msg.say(`${user}, I do not understand what you want to do.`);
+					await msg.say('I do not understand what you want to do.');
 				}
 			}
 			this.fighting.delete(msg.channel.id);

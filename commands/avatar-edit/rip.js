@@ -45,7 +45,7 @@ module.exports = class RIPCommand extends Command {
 			greyscale(ctx, 158, 51, 200, 200);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

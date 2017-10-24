@@ -27,7 +27,7 @@ module.exports = class PatCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *pats* **${user.username}**
+			_**${msg.author.username}** pats **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

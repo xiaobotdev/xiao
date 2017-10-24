@@ -39,7 +39,7 @@ module.exports = class UrbanCommand extends Command {
 					data.example ? shorten(data.example, 1000) : 'None');
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

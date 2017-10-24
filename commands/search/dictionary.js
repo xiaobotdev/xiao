@@ -35,10 +35,10 @@ module.exports = class DictionaryCommand extends Command {
 			const data = body[0];
 			return msg.say(stripIndents`
 				**${data.word}**
-				(${data.partOfSpeech || 'N/A'}) ${data.text}
+				(${data.partOfSpeech || '???'}) ${data.text}
 			`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

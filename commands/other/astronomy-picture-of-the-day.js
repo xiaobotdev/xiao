@@ -22,7 +22,7 @@ module.exports = class AstronomyPictureOfTheDayCommand extends Command {
 				.query({ api_key: GOV_KEY });
 			return msg.say(shorten(body.explanation), { files: [body.url] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

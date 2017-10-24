@@ -40,14 +40,14 @@ module.exports = class MangaCommand extends Command {
 				.addField('❯ Type',
 					`${data.subtype} - ${data.status}`, true)
 				.addField('❯ Volumes / Chapters',
-					`${data.volumeCount || 'N/A'} / ${data.chapterCount || 'N/A'}`, true)
+					`${data.volumeCount || '???'} / ${data.chapterCount || '???'}`, true)
 				.addField('❯ Start Date',
-					data.startDate ? new Date(data.startDate).toDateString() : 'N/A', true)
+					data.startDate ? new Date(data.startDate).toDateString() : '???', true)
 				.addField('❯ End Date',
-					data.endDate ? new Date(data.endDate).toDateString() : 'N/A', true);
+					data.endDate ? new Date(data.endDate).toDateString() : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

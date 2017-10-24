@@ -16,7 +16,7 @@ module.exports = class QuoteCommand extends Command {
 			const { body } = await snekfetch.get('https://talaikis.com/api/quotes/random/');
 			return msg.say(`${body.quote} - _${body.author}_`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

@@ -43,7 +43,7 @@ module.exports = class YuGiOhTokenCommand extends Command {
 			ctx.drawImage(avatar, 45, 102, 293, 294);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'yu-gi-oh-token.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
