@@ -33,7 +33,7 @@ module.exports = class PortalSendCommand extends Command {
 			await channel.send(`**${msg.author.tag} (${msg.guild.name})**: ${text}`);
 			return msg.say(`Message sent to **${channel.name}** in **${channel.guild.name}**!`);
 		} catch (err) {
-			return msg.say('Failed to send the message. Try again later!');
+			return msg.reply('Failed to send the message. Try again later!');
 		}
 	}
 };

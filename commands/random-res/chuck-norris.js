@@ -30,7 +30,7 @@ module.exports = class ChuckNorrisCommand extends Command {
 				});
 			return msg.say(body.value.joke);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

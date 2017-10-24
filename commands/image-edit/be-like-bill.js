@@ -37,15 +37,14 @@ module.exports = class BeLikeBillCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.font = '23px Noto';
-		const text = stripIndents`
+		ctx.fillText(stripIndents`
 			This is ${name}.
 
 			${texts[Math.floor(Math.random() * texts.length)].replace(/{{name}}/gi, name)}
 
 			${name} is smart.
 			Be like ${name}.
-		`;
-		ctx.fillText(text, 31, 80);
+		`, 31, 80);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'be-like-bill.png' }] });
 	}
 };

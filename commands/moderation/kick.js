@@ -33,11 +33,11 @@ module.exports = class KickCommand extends Command {
 	}
 
 	async run(msg, { member, reason }) {
-		if (member.id === msg.author.id) return msg.say('I don\'t think you want to kick yourself...');
-		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
-		if (!member.kickable) return msg.say('This member is not kickable. Perhaps they have a higher role than me?');
+		if (member.id === msg.author.id) return msg.reply('I don\'t think you want to kick yourself...');
+		if (member.id === msg.guild.ownerID) return msg.reply('Don\'t you think that might be betraying your leader?');
+		if (!member.kickable) return msg.reply('This member is not kickable. Perhaps they have a higher role than me?');
 		if (member.highestRole.position > msg.member.highestRole.position - 1) {
-			return msg.say('Your roles are too low to kick this member.');
+			return msg.reply('Your roles are too low to kick this member.');
 		}
 		await msg.say(`Are you sure you want to kick ${member.user.tag} (${member.id})?`);
 		const verification = await verify(msg.channel, msg.author);
@@ -53,7 +53,7 @@ module.exports = class KickCommand extends Command {
 		try {
 			await member.kick(`${msg.author.tag}: ${reason}`);
 		} catch (err) {
-			return msg.say(`Failed to kick ${member.user.tag}: \`${err.message}\`.`);
+			return msg.reply(`Failed to kick ${member.user.tag}: \`${err.message}\`.`);
 		}
 		return msg.say(`Successfully kicked ${member.user.tag}.`);
 	}

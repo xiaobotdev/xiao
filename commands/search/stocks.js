@@ -51,7 +51,7 @@ module.exports = class StocksCommand extends Command {
 					new Date(body['Meta Data']['3. Last Refreshed']).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

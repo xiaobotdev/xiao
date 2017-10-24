@@ -16,7 +16,7 @@ module.exports = class HangmanCommand extends Command {
 	}
 
 	async run(msg) {
-		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
+		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
 			const { body } = await snekfetch
@@ -73,7 +73,7 @@ module.exports = class HangmanCommand extends Command {
 			return msg.say(`Too bad... It was ${word}...`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

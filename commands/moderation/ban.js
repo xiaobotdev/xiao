@@ -33,11 +33,11 @@ module.exports = class BanCommand extends Command {
 	}
 
 	async run(msg, { member, reason }) {
-		if (member.id === msg.author.id) return msg.say('I don\'t think you want to ban yourself...');
-		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
-		if (!member.bannable) return msg.say('This member is not bannable. Perhaps they have a higher role than me?');
+		if (member.id === msg.author.id) return msg.reply('I don\'t think you want to ban yourself...');
+		if (member.id === msg.guild.ownerID) return msg.reply('Don\'t you think that might be betraying your leader?');
+		if (!member.bannable) return msg.reply('This member is not bannable. Perhaps they have a higher role than me?');
 		if (member.highestRole.position > msg.member.highestRole.position - 1) {
-			return msg.say('Your roles are too low to ban this member.');
+			return msg.reply('Your roles are too low to ban this member.');
 		}
 		await msg.say(`Are you sure you want to ban ${member.user.tag} (${member.id})?`);
 		const verification = await verify(msg.channel, msg.author);
@@ -56,7 +56,7 @@ module.exports = class BanCommand extends Command {
 				reason: `${msg.author.tag}: ${reason}`
 			});
 		} catch (err) {
-			return msg.say(`Failed to ban ${member.user.tag}: \`${err.message}\`.`);
+			return msg.reply(`Failed to ban ${member.user.tag}: \`${err.message}\`.`);
 		}
 		return msg.say(`Successfully banned ${member.user.tag}.`);
 	}

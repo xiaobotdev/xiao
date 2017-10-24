@@ -27,7 +27,7 @@ module.exports = class HighFiveCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *high-fives* **${user.username}**
+			_**${msg.author.username}** high-fives **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

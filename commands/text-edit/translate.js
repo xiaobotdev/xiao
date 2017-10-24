@@ -79,7 +79,7 @@ module.exports = class TranslateCommand extends Command {
 					body.text[0]);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

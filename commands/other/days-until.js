@@ -23,12 +23,13 @@ module.exports = class DaysUntilCommand extends Command {
 	run(msg, { date }) {
 		const month = parseInt(date[0], 10);
 		const day = parseInt(date[1], 10);
-		if (!month || !day) return msg.say('There are N/A days until Invalid Date!');
+		if (!month || !day) return msg.reply('Invalid date.');
 		const now = new Date();
 		let year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
 		if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
 		const future = new Date(`${month}/${day}/${year}`);
 		const time = Math.round((future - now) / (1000 * 60 * 60 * 24)) + 1;
-		return msg.say(`There are ${time || 'N/A'} days until ${future.toDateString()}!`);
+		if (!time) return msg.reply('Invalid date.');
+		return msg.say(`There are ${time} days until ${future.toDateString()}!`);
 	}
 };

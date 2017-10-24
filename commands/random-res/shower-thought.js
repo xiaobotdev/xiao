@@ -21,7 +21,7 @@ module.exports = class ShowerThoughtCommand extends Command {
 			if (!allowed.length) return msg.say('Hmm... It seems the thoughts are all gone right now. Try again later!');
 			return msg.say(allowed[Math.floor(Math.random() * allowed.length)].data.title);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

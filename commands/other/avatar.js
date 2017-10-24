@@ -23,9 +23,8 @@ module.exports = class AvatarCommand extends Command {
 
 	async run(msg, { user }) {
 		if (!user) user = msg.author;
-		if (!user.avatar) return msg.say('This user has no avatar.');
-		const format = user.avatar.startsWith('a_') ? 'gif' : 'png';
-		const avatarURL = user.avatarURL({
+		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
+		const avatarURL = user.displayAvatarURL({
 			format,
 			size: 512
 		});
@@ -33,7 +32,7 @@ module.exports = class AvatarCommand extends Command {
 			const { body } = await snekfetch.get(avatarURL);
 			return msg.say({ files: [{ attachment: body, name: `avatar.${format}` }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

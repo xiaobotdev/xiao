@@ -21,10 +21,10 @@ module.exports = class WordOfTheDayCommand extends Command {
 				.query({ api_key: WORDNIK_KEY });
 			return msg.say(stripIndents`
 				**${body.word}**
-				(${body.definitions[0].partOfSpeech || 'N/A'}) ${body.definitions[0].text}
+				(${body.definitions[0].partOfSpeech || '???'}) ${body.definitions[0].text}
 			`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

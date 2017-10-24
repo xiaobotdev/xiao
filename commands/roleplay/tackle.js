@@ -28,7 +28,7 @@ module.exports = class TackleCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *tackles* **${user.username}**
+			_**${msg.author.username}** tackles **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

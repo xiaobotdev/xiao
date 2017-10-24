@@ -47,7 +47,7 @@ module.exports = class MemeCommand extends Command {
 			const { body } = await snekfetch.get(search.body[0].template.blank.replace(/\/_/, `/${top}/${bottom}`));
 			return msg.say({ files: [{ attachment: body, name: 'meme.jpg' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

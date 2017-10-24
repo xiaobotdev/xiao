@@ -10,6 +10,7 @@ module.exports = class ShipNameCommand extends Command {
 			args: [
 				{
 					key: 'start',
+					label: 'start name',
 					prompt: 'What name should be at the start of the ship name?',
 					type: 'string',
 					validate: start => {
@@ -20,6 +21,7 @@ module.exports = class ShipNameCommand extends Command {
 				},
 				{
 					key: 'end',
+					label: 'end name',
 					prompt: 'What name should be at the end of the ship name?',
 					type: 'string',
 					validate: end => {

@@ -32,7 +32,7 @@ module.exports = class CowSayCommand extends Command {
 				});
 			return msg.code(null, body.cow);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

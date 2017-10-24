@@ -27,7 +27,6 @@ module.exports = class RedditCommand extends Command {
 			const { body } = await snekfetch
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });
-			if (!body.data.children.length) return msg.say('Could not find any results.');
 			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			if (!allowed.length) return msg.say('Could not find any results.');
 			const post = allowed[Math.floor(Math.random() * allowed.length)].data;
@@ -46,7 +45,7 @@ module.exports = class RedditCommand extends Command {
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');
 			if (err.status === 404) return msg.say('Could not find any results.');
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

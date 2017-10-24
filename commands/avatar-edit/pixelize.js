@@ -40,7 +40,7 @@ module.exports = class PixelizeCommand extends Command {
 			ctx.drawImage(avatar, 0, 0, 512, 512);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'pixelize.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

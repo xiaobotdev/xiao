@@ -39,7 +39,7 @@ module.exports = class RecipeCommand extends Command {
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 500) return msg.say('Could not find any results.');
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

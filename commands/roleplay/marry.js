@@ -26,7 +26,7 @@ module.exports = class MarryCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *marries* **${user.username}**
+			_**${msg.author.username}** marries **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

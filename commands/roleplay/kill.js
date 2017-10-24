@@ -20,7 +20,7 @@ module.exports = class KillCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *kills* **${user.username}**
+			_**${msg.author.username}** kills **${user.username}**._
 			https://i.imgur.com/KqWkaTf.gif
 		`);
 	}

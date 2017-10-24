@@ -43,12 +43,12 @@ module.exports = class RottenTomatoesCommand extends Command {
 				.setDescription(shorten(body.ratingSummary.consensus))
 				.setThumbnail(body.posters.original)
 				.addField('❯ Critic Score',
-					body.ratings.critics_score !== -1 ? `${body.ratings.critics_score}%` : 'N/A', true)
+					body.ratings.critics_score !== -1 ? `${body.ratings.critics_score}%` : '???', true)
 				.addField('❯ Audience Score',
-					body.ratings.audience_score !== -1 ? `${body.ratings.audience_score}%` : 'N/A', true);
+					body.ratings.audience_score !== -1 ? `${body.ratings.audience_score}%` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

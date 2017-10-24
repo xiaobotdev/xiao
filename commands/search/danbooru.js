@@ -24,7 +24,7 @@ module.exports = class DanbooruCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		if (!msg.channel.nsfw) return msg.say('This command can only be used in NSFW channels.');
+		if (!msg.channel.nsfw) return msg.reply('This command can only be used in NSFW channels.');
 		try {
 			const { body } = await snekfetch
 				.get('https://danbooru.donmai.us/posts.json')
@@ -35,7 +35,7 @@ module.exports = class DanbooruCommand extends Command {
 			if (!body.length || !body[0].file_url) return msg.say('Could not find any results.');
 			return msg.say(`https://danbooru.donmai.us${body[0].file_url}`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

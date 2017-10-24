@@ -21,13 +21,12 @@ module.exports = class CoolnessCommand extends Command {
 	run(msg, { user }) {
 		if (!user) user = msg.author;
 		const coolness = user.id / this.client.user.id;
-		const prefix = user.id === msg.author.id ? 'You\'re' : 'They\'re';
-		if (user.id === '234318196893548545') return msg.reply(`${prefix} the best person ever ❤.`);
-		if (coolness < 0.3) return msg.reply(`${prefix} the coolest being to walk this Earth.`);
-		if (coolness < 0.5) return msg.reply(`${prefix} an extremely cool dude.`);
-		if (coolness < 0.8) return msg.reply(`${prefix} pretty sweet, not gonna lie.`);
-		if (coolness < 1) return msg.reply(`${prefix} okay, nothing special.`);
-		if (coolness < 1.3) return msg.reply(`${prefix} just not all that neat.`);
-		return msg.reply(`${prefix} awful, honestly.`);
+		if (user.id === '234318196893548545') return msg.say(`${user.username} is the best person ever ❤.`);
+		if (coolness < 0.3) return msg.say(`${user.username} is the coolest being to walk this Earth.`);
+		if (coolness < 0.5) return msg.say(`${user.username} is an extremely cool dude.`);
+		if (coolness < 0.8) return msg.say(`${user.username} is pretty sweet, not gonna lie.`);
+		if (coolness < 1) return msg.say(`${user.username} is okay, nothing special.`);
+		if (coolness < 1.3) return msg.say(`${user.username} is just not all that neat.`);
+		return msg.say(`${user.username} is awful, honestly.`);
 	}
 };

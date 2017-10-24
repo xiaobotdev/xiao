@@ -28,15 +28,13 @@ module.exports = class AnagramCommand extends Command {
 	async run(msg, { word, strict }) {
 		try {
 			const { body } = await snekfetch.get(`http://www.anagramica.com/best/${word}`);
-			if (!body.best.length) return msg.say('Could not find any results.');
 			const all = body.best.filter(anagram => anagram.toLowerCase() !== word);
-			if (!all.length) return msg.say('Could not find any results.');
 			const words = strict ? all.filter(anagram => anagram.length === word.length) : all;
 			if (!words.length) return msg.say('Could not find any results.');
 			return msg.say(words[Math.floor(Math.random() * words.length)]);
 		} catch (err) {
 			if (err.status === 500) return msg.say('Could not find any results.');
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

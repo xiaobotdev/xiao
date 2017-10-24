@@ -25,9 +25,9 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 	}
 
 	async run(msg, { opponent }) {
-		if (opponent.bot) return msg.say('Bots may not be played against.');
-		if (opponent.id === msg.author.id) return msg.say('You may not play against yourself.');
-		if (this.playing.has(msg.channel.id)) return msg.say('Only one fight may be occurring per channel.');
+		if (opponent.bot) return msg.reply('Bots may not be played against.');
+		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
+		if (this.playing.has(msg.channel.id)) return msg.reply('Only one fight may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
 			await msg.say(`${opponent}, do you accept this challenge?`);

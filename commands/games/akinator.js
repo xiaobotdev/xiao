@@ -19,7 +19,7 @@ module.exports = class AkinatorCommand extends Command {
 	}
 
 	async run(msg) {
-		if (this.sessions.has(msg.channel.id)) return msg.say('Only one game may be occuring per channel.');
+		if (this.sessions.has(msg.channel.id)) return msg.reply('Only one game may be occuring per channel.');
 		try {
 			let ans = null;
 			this.sessions.set(msg.channel.id, { progress: null });
@@ -55,12 +55,12 @@ module.exports = class AkinatorCommand extends Command {
 			await msg.embed(embed);
 			const verification = await verify(msg.channel, msg.author);
 			this.sessions.delete(msg.channel.id);
-			if (verification === 0) return msg.reply('I guess your silence means I have won.');
+			if (verification === 0) return msg.say('I guess your silence means I have won.');
 			if (!verification) return msg.say('Bravo, you have defeated me.');
 			return msg.say('Guessed right one more time! I love playing with you!');
 		} catch (err) {
 			this.sessions.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 

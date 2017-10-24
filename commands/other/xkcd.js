@@ -57,7 +57,7 @@ module.exports = class XKCDCommand extends Command {
 				.setFooter(body.alt);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

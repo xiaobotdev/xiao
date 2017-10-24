@@ -33,11 +33,11 @@ module.exports = class SoftbanCommand extends Command {
 	}
 
 	async run(msg, { member, reason }) {
-		if (member.id === msg.author.id) return msg.say('I don\'t think you want to softban yourself...');
-		if (member.id === msg.guild.ownerID) return msg.say('Don\'t you think that might be betraying your leader?');
-		if (!member.bannable) return msg.say('This member is not softbannable. Perhaps they have a higher role than me?');
+		if (member.id === msg.author.id) return msg.reply('I don\'t think you want to softban yourself...');
+		if (member.id === msg.guild.ownerID) return msg.reply('Don\'t you think that might be betraying your leader?');
+		if (!member.bannable) return msg.reply('This member is not softbannable. Perhaps they have a higher role than me?');
 		if (member.highestRole.position > msg.member.highestRole.position - 1) {
-			return msg.say('Your roles are too low to softban this member.');
+			return msg.reply('Your roles are too low to softban this member.');
 		}
 		await msg.say(`Are you sure you want to softban ${member.user.tag} (${member.id})?`);
 		const verification = await verify(msg.channel, msg.author);
@@ -57,7 +57,7 @@ module.exports = class SoftbanCommand extends Command {
 			});
 			await msg.guild.unban(member.user, 'Softban');
 		} catch (err) {
-			return msg.say(`Failed to softban ${member.user.tag}: \`${err.message}\`.`);
+			return msg.reply(`Failed to softban ${member.user.tag}: \`${err.message}\`.`);
 		}
 		return msg.say(`Successfully softbanned ${member.user.tag}.`);
 	}

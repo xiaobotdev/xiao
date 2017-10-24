@@ -27,7 +27,7 @@ module.exports = class HugCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *hugs* **${user.username}**
+			_**${msg.author.username}** hugs **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

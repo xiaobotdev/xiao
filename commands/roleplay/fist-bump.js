@@ -27,7 +27,7 @@ module.exports = class FistBumpCommand extends Command {
 
 	run(msg, { user }) {
 		return msg.say(stripIndents`
-			**${msg.author.username}** *fist-bumps* **${user.username}**
+			_**${msg.author.username}** fist-bumps **${user.username}**._
 			${gifs[Math.floor(Math.random() * gifs.length)]}
 		`);
 	}

@@ -43,7 +43,7 @@ module.exports = class ChallengerCommand extends Command {
 			ctx.drawImage(avatar, 484, 98, 256, 256);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

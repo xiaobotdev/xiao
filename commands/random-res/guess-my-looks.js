@@ -36,10 +36,9 @@ module.exports = class GuessMyLooksCommand extends Command {
 		const inches = Math.floor(Math.random() * 12);
 		const weight = Math.floor(Math.random() * (300 - 50 + 1)) + 50;
 		const extra = extras[Math.floor(Math.random() * extras.length)];
-		const prefix = user.id === msg.author.id ? 'You' : 'They';
-		return msg.reply(oneLine`
-			${prefix} are, I think, a ${age} year old ${gender} with ${eyeColor} eyes and ${hairStyle} ${hairColor} hair.
-			${prefix} are ${feet}'${inches}" and weigh ${weight} pounds. Don't forget the ${extra}!
+		return msg.say(oneLine`
+			I think ${user.username} is a ${age} year old ${gender} with ${eyeColor} eyes and ${hairStyle} ${hairColor}
+			hair. They are ${feet}'${inches}" and weigh ${weight} pounds. Don't forget the ${extra}!
 		`);
 	}
 };

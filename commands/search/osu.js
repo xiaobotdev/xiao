@@ -42,28 +42,28 @@ module.exports = class OsuCommand extends Command {
 				.addField('❯ ID',
 					data.user_id, true)
 				.addField('❯ Level',
-					data.level || 'N/A', true)
+					data.level || '???', true)
 				.addField('❯ Accuracy',
-					data.accuracy || 'N/A', true)
+					data.accuracy || '???', true)
 				.addField('❯ Rank',
-					data.pp_rank || 'N/A', true)
+					data.pp_rank || '???', true)
 				.addField('❯ Play Count',
-					data.playcount || 'N/A', true)
+					data.playcount || '???', true)
 				.addField('❯ Country',
-					data.country || 'N/A', true)
+					data.country || '???', true)
 				.addField('❯ Ranked Score',
-					data.ranked_score || 'N/A', true)
+					data.ranked_score || '???', true)
 				.addField('❯ Total Score',
-					data.total_score || 'N/A', true)
+					data.total_score || '???', true)
 				.addField('❯ SS',
-					data.count_rank_ss || 'N/A', true)
+					data.count_rank_ss || '???', true)
 				.addField('❯ S',
-					data.count_rank_s || 'N/A', true)
+					data.count_rank_s || '???', true)
 				.addField('❯ A',
-					data.count_rank_a || 'N/A', true);
+					data.count_rank_a || '???', true);
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

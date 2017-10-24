@@ -44,16 +44,16 @@ module.exports = class MovieCommand extends Command {
 				.setDescription(body.overview ? shorten(body.overview) : 'No description available.')
 				.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
 				.addField('❯ Runtime',
-					body.runtime ? `${body.runtime} mins.` : 'N/A', true)
+					body.runtime ? `${body.runtime} mins.` : '???', true)
 				.addField('❯ Release Date',
-					body.release_date || 'N/A', true)
+					body.release_date || '???', true)
 				.addField('❯ Genres',
-					body.genres.length ? body.genres.map(genre => genre.name).join(', ') : 'N/A')
+					body.genres.length ? body.genres.map(genre => genre.name).join(', ') : '???')
 				.addField('❯ Production Companies',
-					body.production_companies.length ? body.production_companies.map(c => c.name).join(', ') : 'N/A');
+					body.production_companies.length ? body.production_companies.map(c => c.name).join(', ') : '???');
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

@@ -44,20 +44,20 @@ module.exports = class TVShowCommand extends Command {
 				.setDescription(body.overview ? shorten(body.overview) : 'No description available.')
 				.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
 				.addField('❯ First Air Date',
-					body.first_air_date || 'N/A', true)
+					body.first_air_date || '???', true)
 				.addField('❯ Last Air Date',
-					body.last_air_date || 'N/A', true)
+					body.last_air_date || '???', true)
 				.addField('❯ Seasons',
-					body.number_of_seasons || 'N/A', true)
+					body.number_of_seasons || '???', true)
 				.addField('❯ Episodes',
-					body.number_of_episodes || 'N/A', true)
+					body.number_of_episodes || '???', true)
 				.addField('❯ Genres',
-					body.genres.length ? body.genres.map(genre => genre.name).join(', ') : 'N/A')
+					body.genres.length ? body.genres.map(genre => genre.name).join(', ') : '???')
 				.addField('❯ Production Companies',
-					body.production_companies.length ? body.production_companies.map(c => c.name).join(', ') : 'N/A');
+					body.production_companies.length ? body.production_companies.map(c => c.name).join(', ') : '???');
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

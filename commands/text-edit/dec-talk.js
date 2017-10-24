@@ -52,7 +52,7 @@ module.exports = class DECTalkCommand extends Command {
 			return null;
 		} catch (err) {
 			await this.finish(file, channel);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 

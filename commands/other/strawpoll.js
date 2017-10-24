@@ -35,8 +35,8 @@ module.exports = class StrawpollCommand extends Command {
 	}
 
 	async run(msg, { title, options }) {
-		if (options.length < 2) return msg.say('Please provide more than one choice.');
-		if (options.length > 31) return msg.say('Please provide thirty or less choices.');
+		if (options.length < 2) return msg.reply('Please provide more than one choice.');
+		if (options.length > 31) return msg.reply('Please provide thirty or less choices.');
 		try {
 			const { body } = await snekfetch
 				.post('https://www.strawpoll.me/api/v2/polls')
@@ -47,7 +47,7 @@ module.exports = class StrawpollCommand extends Command {
 				http://www.strawpoll.me/${body.id}
 			`);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

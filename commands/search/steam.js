@@ -54,22 +54,22 @@ module.exports = class SteamCommand extends Command {
 				.addField('❯ Price',
 					price, true)
 				.addField('❯ Metascore',
-					data.metacritic ? data.metacritic.score : 'N/A', true)
+					data.metacritic ? data.metacritic.score : '???', true)
 				.addField('❯ Recommendations',
-					data.recommendations ? data.recommendations.total : 'N/A', true)
+					data.recommendations ? data.recommendations.total : '???', true)
 				.addField('❯ Platforms',
 					platforms.join(', ') || 'None', true)
 				.addField('❯ Release Data',
-					data.release_date ? data.release_date.date : 'N/A', true)
+					data.release_date ? data.release_date.date : '???', true)
 				.addField('❯ DLC Count',
 					data.dlc ? data.dlc.length : 0, true)
 				.addField('❯ Developers',
-					data.developers.join(', ') || 'N/A')
+					data.developers.join(', ') || '???')
 				.addField('❯ Publishers',
-					data.publishers.join(', ') || 'N/A');
+					data.publishers.join(', ') || '???');
 			return msg.embed(embed);
 		} catch (err) {
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };

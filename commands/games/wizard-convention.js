@@ -18,10 +18,10 @@ module.exports = class WizardConventionCommand extends Command {
 	}
 
 	async run(msg) { // eslint-disable-line complexity
-		if (this.playing.has(msg.channel.id)) return msg.say('Only one game may be occurring per channel.');
+		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
-			await msg.say('You will need at least 2 more players. To join, type `join game`.');
+			await msg.say('You will need at least 2 more players, at maximum 15. To join, type `join game`.');
 			const joined = [];
 			joined.push(msg.author.id);
 			const filter = res => {
@@ -30,7 +30,10 @@ module.exports = class WizardConventionCommand extends Command {
 				joined.push(res.author.id);
 				return true;
 			};
-			const verify = await msg.channel.awaitMessages(filter, { time: 30000 });
+			const verify = await msg.channel.awaitMessages(filter, {
+				max: 15,
+				time: 30000
+			});
 			if (verify.size < 2) {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Failed to start the game...');
@@ -51,7 +54,7 @@ module.exports = class WizardConventionCommand extends Command {
 				i++;
 			}
 			let turn = 1;
-			while (players.size > 2) {
+			while (players.size > 2 && players.exists('role', 'dragon')) {
 				let eaten = null;
 				let healed = null;
 				await msg.say(`Night ${turn}, sending DMs...`);
@@ -140,7 +143,6 @@ module.exports = class WizardConventionCommand extends Command {
 				const expelled = counts.sort((a, b) => b.votes - a.votes).first();
 				await msg.say(`${expelled.user} will be expelled.`);
 				players.delete(expelled.id);
-				if (!players.exists('role', 'dragon')) break;
 				++turn;
 			}
 			this.playing.delete(msg.channel.id);
@@ -149,7 +151,7 @@ module.exports = class WizardConventionCommand extends Command {
 			return msg.say(`Oh no, the dragon wasn't caught in time... Nice job, ${dragon.user}!`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
-			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
