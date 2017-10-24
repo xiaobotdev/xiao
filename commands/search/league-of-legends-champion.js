@@ -24,7 +24,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
-		this.client.setInterval(() => { this.version = null	}, 3600000);
+		this.client.setInterval(() => { this.version = null; }, 3600000);
 	}
 
 	async run(msg, { champion }) {
