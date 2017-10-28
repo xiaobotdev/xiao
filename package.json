@@ -1,6 +1,6 @@
 {
 	"name": "xiaobot",
-	"version": "51.0.2",
+	"version": "51.1.0",
 	"description": "Your personal server companion.",
 	"main": "XiaoBot.js",
 	"scripts": {
@@ -37,6 +37,7 @@
 		"discord.js": "github:hydrabolt/discord.js",
 		"discord.js-commando": "github:gawdl3y/discord.js-commando",
 		"erlpack": "github:discordapp/erlpack",
+		"mathjs": "^3.16.5",
 		"node-opus": "^0.2.7",
 		"snekfetch": "^3.5.8",
 		"uws": "^8.14.1",
