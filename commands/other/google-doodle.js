@@ -38,7 +38,8 @@ module.exports = class GoogleDoodleCommand extends Command {
 			const { body } = await snekfetch.get(`https://www.google.com/doodles/json/${year}/${month}`);
 			if (!body.length) return msg.say('Could not find any results.');
 			const data = body[latest ? 0 : Math.floor(Math.random() * body.length)];
-			return msg.say(data.share_text, { files: [`https:${data.url}`] });
+			const runDate = new Date(data.run_date_array.join('-')).toDateString();
+			return msg.say(`${runDate}: ${data.share_text}`, { files: [`https:${data.url}`] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
