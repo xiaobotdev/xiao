@@ -66,7 +66,7 @@ class Util {
 			.replace(/&lt;|&#0?60;/g, '<')
 			.replace(/&gt;|&#0?62;/g, '>')
 			.replace(/&amp;|&#0?38;/g, '&')
-			.replace(/\[i\]|\[\/i\]/g, '*')
+			.replace(/\[i\]|\[\/i\]/g, '*');
 	}
 
 	static greyscale(ctx, x, y, width, height) {
