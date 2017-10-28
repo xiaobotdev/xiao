@@ -30,7 +30,7 @@ module.exports = class MyAnimeListMangaCommand extends Command {
 				.get(`https://${MAL_LOGIN}@myanimelist.net/api/manga/search.xml`)
 				.query({ q: query });
 			const body = xml2js(text, { compact: true }).manga;
-			const data = body.length ? body.entry[0] : body.entry;
+			const data = body.entry.length ? body.entry[0] : body.entry;
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)
 				.setAuthor('My Anime List', 'https://i.imgur.com/5rivpMM.png')
