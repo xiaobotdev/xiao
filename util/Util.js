@@ -56,6 +56,19 @@ class Util {
 		return obj;
 	}
 
+	static cleanXML(text) {
+		return text
+			.replace(/<br \/>/g, '')
+			.replace(/&apos;|&#0?39;/g, '\'')
+			.replace(/&mdash;/g, '—')
+			.replace(/&ndash;/g, '–')
+			.replace(/&quot;|&#0?34;/g, '"')
+			.replace(/&lt;|&#0?60;/g, '<')
+			.replace(/&gt;|&#0?62;/g, '>')
+			.replace(/&amp;|&#0?38;/g, '&')
+			.replace(/\[i\]|\[\/i\]/g, '*')
+	}
+
 	static greyscale(ctx, x, y, width, height) {
 		const data = ctx.getImageData(x, y, width, height);
 		for (let i = 0; i < data.data.length; i += 4) {
