@@ -41,7 +41,11 @@ module.exports = class YouTubeCommand extends Command {
 				.setDescription(data.snippet.description)
 				.setAuthor(`YouTube - ${data.snippet.channelTitle}`, 'https://i.imgur.com/kKHJg9Q.png')
 				.setURL(`https://www.youtube.com/watch?v=${data.id.videoId}`)
-				.setThumbnail(data.snippet.thumbnails.default.url);
+				.setThumbnail(data.snippet.thumbnails.default ? data.snippet.thumbnails.default.url : null)
+				.addField('❯ ID',
+					data.id.videoId, true)
+				.addField('❯ Publish Date',
+					new Date(data.snippet.publishedAt).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

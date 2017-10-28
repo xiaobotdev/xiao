@@ -3,13 +3,13 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { shorten } = require('../../util/Util');
 
-module.exports = class MangaCommand extends Command {
+module.exports = class KitsuMangaCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'manga',
-			aliases: ['my-anime-list-manga', 'mal-manga', 'kitsu-manga'],
+			name: 'kitsu-manga',
+			aliases: ['my-anime-list-manga', 'mal-manga', 'manga'],
 			group: 'search',
-			memberName: 'manga',
+			memberName: 'kitsu-manga',
 			description: 'Searches Kitsu.io for your query, getting manga results.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

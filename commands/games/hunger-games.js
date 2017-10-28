@@ -7,7 +7,7 @@ module.exports = class HungerGamesCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'hunger-games',
-			aliases: ['hunger-games-simulator', 'brantsteele'],
+			aliases: ['hunger-games-simulator', 'brant-steele'],
 			group: 'games',
 			memberName: 'hunger-games',
 			description: 'Simulate a Hunger Games match.',

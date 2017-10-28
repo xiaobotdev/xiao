@@ -4,19 +4,19 @@ const snekfetch = require('snekfetch');
 const { shorten } = require('../../util/Util');
 const { TMDB_KEY } = process.env;
 
-module.exports = class TVShowCommand extends Command {
+module.exports = class TMDBMovieCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'tv-show',
-			aliases: ['tmdb-tv-show', 'tv', 'tmdb-tv'],
+			name: 'tmdb-movie',
+			aliases: ['movie', 'imdb'],
 			group: 'search',
-			memberName: 'tv-show',
-			description: 'Searches TMDB for your query, getting TV show results.',
+			memberName: 'tmdb-movie',
+			description: 'Searches TMDB for your query, getting movie results.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
-					prompt: 'What TV show would you like to search for?',
+					prompt: 'What movie would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -26,7 +26,7 @@ module.exports = class TVShowCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const search = await snekfetch
-				.get('http://api.themoviedb.org/3/search/tv')
+				.get('http://api.themoviedb.org/3/search/movie')
 				.query({
 					api_key: TMDB_KEY,
 					include_adult: msg.channel.nsfw || false,
@@ -34,23 +34,19 @@ module.exports = class TVShowCommand extends Command {
 				});
 			if (!search.body.results.length) return msg.say('Could not find any results.');
 			const { body } = await snekfetch
-				.get(`https://api.themoviedb.org/3/tv/${search.body.results[0].id}`)
+				.get(`https://api.themoviedb.org/3/movie/${search.body.results[0].id}`)
 				.query({ api_key: TMDB_KEY });
 			const embed = new MessageEmbed()
 				.setColor(0x00D474)
-				.setTitle(body.name)
-				.setURL(`https://www.themoviedb.org/tv/${body.id}`)
+				.setTitle(body.title)
+				.setURL(`https://www.themoviedb.org/movie/${body.id}`)
 				.setAuthor('TMDB', 'https://i.imgur.com/3K3QMv9.png')
 				.setDescription(body.overview ? shorten(body.overview) : 'No description available.')
 				.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
-				.addField('❯ First Air Date',
-					body.first_air_date || '???', true)
-				.addField('❯ Last Air Date',
-					body.last_air_date || '???', true)
-				.addField('❯ Seasons',
-					body.number_of_seasons || '???', true)
-				.addField('❯ Episodes',
-					body.number_of_episodes || '???', true)
+				.addField('❯ Runtime',
+					body.runtime ? `${body.runtime} mins.` : '???', true)
+				.addField('❯ Release Date',
+					body.release_date || '???', true)
 				.addField('❯ Genres',
 					body.genres.length ? body.genres.map(genre => genre.name).join(', ') : '???')
 				.addField('❯ Production Companies',

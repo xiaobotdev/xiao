@@ -5,7 +5,7 @@ module.exports = class OrganizationXIIINameCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'organization-xiii-name',
-			aliases: ['org-xiii-name', 'xiii-name', 'nobody-name'],
+			aliases: ['org-xiii-name', 'xiii-name', 'nobody-name', 'organization-xiii', 'org-xiii', 'xiii'],
 			group: 'text-edit',
 			memberName: 'organization-xiii-name',
 			description: 'Converts a name into the Organization XIII style.',

@@ -6,7 +6,7 @@ module.exports = class ImgurCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'imgur',
-			aliases: ['imgur-image'],
+			aliases: ['imgur-image', 'image'],
 			group: 'search',
 			memberName: 'imgur',
 			description: 'Searches Imgur for your query.',
