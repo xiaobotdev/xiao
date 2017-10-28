@@ -110,7 +110,7 @@ class Util {
 			for (let j = 0; j < height; j++) {
 				const xs = Math.round(amplitude * Math.sin(2 * Math.PI * 3 * (y / height)));
 				const ys = Math.round(amplitude * Math.cos(2 * Math.PI * 3 * (x / width)));
-				const dest = j * (stride + i) * strideLevel;
+				const dest = (j * stride) + (i * strideLevel);
 				const src = (j + ys) * (stride + (i + xs)) * strideLevel;
 				data.data[dest] = temp.data[src];
 				data.data[dest + 1] = temp.data[src + 1];
