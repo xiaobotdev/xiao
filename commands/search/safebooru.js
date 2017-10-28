@@ -1,6 +1,8 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { xml2js } = require('xml-js');
+const { parseString } = require('xml2js');
+const { promisify } = require('util');
+const xml = promisify(parseString);
 
 module.exports = class SafebooruCommand extends Command {
 	constructor(client) {
@@ -30,9 +32,10 @@ module.exports = class SafebooruCommand extends Command {
 					q: 'index',
 					tags: query
 				});
-			const parsed = xml2js(text, { compact: true }).posts;
-			if (!parsed.post || !parsed.post.length) return msg.say('Could not find any results.');
-			return msg.say(`https:${parsed.post[Math.floor(Math.random() * parsed.post.length)]._attributes.file_url}`);
+			const body = await xml(text);
+			const data = body.posts.post;
+			if (!data || !data.length) return msg.say('Could not find any results.');
+			return msg.say(`https:${data[Math.floor(Math.random() * data.length)].$.file_url}`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

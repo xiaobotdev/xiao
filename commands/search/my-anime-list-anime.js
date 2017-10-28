@@ -1,7 +1,9 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { xml2js } = require('xml-js');
+const { parseString } = require('xml2js');
+const { promisify } = require('util');
+const xml = promisify(parseString);
 const { shorten, cleanXML } = require('../../util/Util');
 const { MAL_LOGIN } = process.env;
 
@@ -29,23 +31,23 @@ module.exports = class MyAnimeListAnimeCommand extends Command {
 			const { text } = await snekfetch
 				.get(`https://${MAL_LOGIN}@myanimelist.net/api/anime/search.xml`)
 				.query({ q: query });
-			const body = xml2js(text, { compact: true }).anime;
-			const data = body.entry.length ? body.entry[0] : body.entry;
+			const body = await xml(text);
+			const data = body.anime.entry[0];
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)
 				.setAuthor('My Anime List', 'https://i.imgur.com/5rivpMM.png')
-				.setURL(`https://myanimelist.net/anime/${data.id._text}`)
-				.setThumbnail(data.image._text)
-				.setTitle(data.title._text)
-				.setDescription(shorten(cleanXML(data.synopsis._text)))
+				.setURL(`https://myanimelist.net/anime/${data.id[0]}`)
+				.setThumbnail(data.image[0])
+				.setTitle(data.title[0])
+				.setDescription(shorten(cleanXML(data.synopsis[0])))
 				.addField('❯ Type',
-					`${data.type._text} - ${data.status._text}`, true)
+					`${data.type[0]} - ${data.status[0]}`, true)
 				.addField('❯ Episodes',
-					data.episodes._text, true)
+					data.episodes[0], true)
 				.addField('❯ Start Date',
-					data.start_date._text !== '0000-00-00' ? data.start_date._text : '???', true)
+					data.start_date[0] !== '0000-00-00' ? data.start_date[0] : '???', true)
 				.addField('❯ End Date',
-					data.end_date._text !== '0000-00-00' ? data.end_date._text : '???', true);
+					data.end_date[0] !== '0000-00-00' ? data.end_date[0] : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.message === 'Parse Error') return msg.say('Could not find any results.');
