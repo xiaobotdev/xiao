@@ -3,13 +3,13 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { shorten } = require('../../util/Util');
 
-module.exports = class UrbanCommand extends Command {
+module.exports = class UrbanDictionaryCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'urban',
-			aliases: ['urban-dictionary', 'urban-define', 'define-urban'],
+			name: 'urban-dictionary',
+			aliases: ['urban', 'urban-define', 'define-urban'],
 			group: 'search',
-			memberName: 'urban',
+			memberName: 'urban-dictionary',
 			description: 'Searches Urban Dictionary for your query.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
