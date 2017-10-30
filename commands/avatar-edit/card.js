@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
+const { randomRange } = require('../../util/Util');
 const { version } = require('../../package');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
@@ -38,7 +39,7 @@ module.exports = class CardCommand extends Command {
 			size: 512
 		});
 		try {
-			const cardID = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+			const cardID = randomRange(1000, 9999);
 			let rarity;
 			if (cardID < 5000) rarity = 'C';
 			else if (cardID < 9000) rarity = 'U';

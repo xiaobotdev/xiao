@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { randomRange, verify } = require('../../util/Util');
 
 module.exports = class BattleCommand extends Command {
 	constructor(client) {
@@ -88,7 +88,7 @@ module.exports = class BattleCommand extends Command {
 				} else if (choice === 'special') {
 					const hit = Math.floor(Math.random() * 4) + 1;
 					if (hit === 1) {
-						const damage = Math.floor(Math.random() * ((guard ? 150 : 300) - 100 + 1)) + 100;
+						const damage = randomRange(100, guard ? 150 : 300);
 						await msg.say(`${user} deals **${damage}** damage!`);
 						dealDamage(damage);
 					} else {

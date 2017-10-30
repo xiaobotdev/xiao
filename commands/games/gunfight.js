@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { wait, verify } = require('../../util/Util');
+const { wait, randomRange, verify } = require('../../util/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull'];
 
 module.exports = class GunfightCommand extends Command {
@@ -36,8 +36,7 @@ module.exports = class GunfightCommand extends Command {
 				return msg.say('Looks like they declined...');
 			}
 			await msg.say('Get Ready...');
-			const length = Math.floor(Math.random() * (30000 - 1000 + 1)) + 1000;
-			await wait(length);
+			await wait(randomRange(1000, 30000));
 			const word = words[Math.floor(Math.random() * words.length)];
 			await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
 			const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === word;
