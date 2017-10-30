@@ -1,8 +1,8 @@
-const { TOKEN, OWNERS, COMMAND_PREFIX, INVITE } = process.env;
+const { XIAO_TOKEN, OWNERS, XIAO_COMMAND_PREFIX, INVITE } = process.env;
 const path = require('path');
 const { CommandoClient } = require('discord.js-commando');
 const client = new CommandoClient({
-	commandPrefix: COMMAND_PREFIX,
+	commandPrefix: XIAO_COMMAND_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	disableEveryone: true,
@@ -40,7 +40,7 @@ client.on('ready', () => {
 	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.setInterval(() => {
 		const activities = [
-			`${COMMAND_PREFIX}help for commands`,
+			`${XIAO_COMMAND_PREFIX}help for commands`,
 			'with dragonfire535',
 			client.options.invite,
 			`with ${client.registry.commands.size} commands`,
@@ -67,7 +67,7 @@ client.dispatcher.addInhibitor(msg => {
 	return false;
 });
 
-client.login(TOKEN);
+client.login(XIAO_TOKEN);
 
 process.on('unhandledRejection', err => {
 	console.error('[FATAL] Unhandled Promise Rejection.', err);
