@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { oneLine } = require('common-tags');
+const { randomRange } = require('../../util/Util');
 const genders = ['male', 'female'];
 const eyeColors = ['blue', 'brown', 'hazel', 'green', 'yellow'];
 const hairColors = ['blonde', 'brown', 'red', 'black', 'grey', 'white'];
@@ -31,10 +32,10 @@ module.exports = class GuessMyLooksCommand extends Command {
 		const eyeColor = eyeColors[Math.floor(Math.random() * eyeColors.length)];
 		const hairColor = hairColors[Math.floor(Math.random() * hairColors.length)];
 		const hairStyle = hairStyles[Math.floor(Math.random() * hairStyles.length)];
-		const age = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
-		const feet = Math.floor(Math.random() * (7 - 3 + 1)) + 3;
+		const age = randomRange(10, 100);
+		const feet = randomRange(3, 7);
 		const inches = Math.floor(Math.random() * 12);
-		const weight = Math.floor(Math.random() * (300 - 50 + 1)) + 50;
+		const weight = randomRange(50, 300);
 		const extra = extras[Math.floor(Math.random() * extras.length)];
 		return msg.say(oneLine`
 			I think ${user.username} is a ${age} year old ${gender} with ${eyeColor} eyes and ${hairStyle} ${hairColor}

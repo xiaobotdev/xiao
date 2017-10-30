@@ -48,6 +48,10 @@ class Util {
 		return `${prefix.slice(text.length)}${text}`;
 	}
 
+	static randomRange(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
 	static promisifyAll(obj, suffix = 'Async') {
 		for (const key of Object.keys(obj)) {
 			if (typeof obj[key] !== 'function') continue;
