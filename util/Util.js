@@ -138,6 +138,15 @@ class Util {
 		return ctx;
 	}
 
+	static drawImageWithTint(ctx, image, color, x, y, width, height) {
+		ctx.globalAlpha = 0.5;
+		ctx.fillStyle = color;
+		ctx.fillRect(x, y, width, height);
+		ctx.drawImage(image, x, y, width, height);
+		ctx.globalAlpha = 1;
+		ctx.fillStyle = '#000000';
+	}
+
 	static async verify(channel, user, time = 30000) {
 		const filter = res => {
 			const value = res.content.toLowerCase();
