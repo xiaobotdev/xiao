@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
+const { drawImageWithTint } = require('../../util/Util');
 
 module.exports = class TriggeredCommand extends Command {
 	constructor(client) {
@@ -40,10 +41,7 @@ module.exports = class TriggeredCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(avatar, 0, 0, 320, 320);
-			const data = ctx.getImageData(0, 0, 320, 320);
-			for (let i = 0; i < data.data.length; i += 4) data.data[i] = Math.max(255, data.data[i]);
-			ctx.putImageData(data, 0, 0);
+			drawImageWithTint(ctx, avatar, 'red', 0, 0, 320, 320);
 			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'triggered.png' }] });
 		} catch (err) {
