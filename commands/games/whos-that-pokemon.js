@@ -20,7 +20,8 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				{
 					key: 'hide',
 					prompt: 'Do you want to silhouette the Pokémon\'s image?',
-					type: 'boolean'
+					type: 'boolean',
+					default: false
 				}
 			]
 		});
@@ -29,7 +30,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 	}
 
 	async run(msg, { hide }) {
-		const pokemon = Math.floor(Math.random() * 721) + 1;
+		const pokemon = Math.floor(Math.random() * 802) + 1;
 		try {
 			let data;
 			if (!this.cache.has(pokemon)) {

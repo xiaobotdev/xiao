@@ -33,7 +33,7 @@ module.exports = class PokedexCommand extends Command {
 				.setAuthor(`#${id} - ${filterPkmn(body.names).name}`, `https://www.serebii.net/pokedex-sm/icon/${id}.png`)
 				.setURL(`https://www.serebii.net/pokedex-sm/${id}.shtml`)
 				.setDescription(stripIndents`
-					**The ${filterPkmn(body.genera).genus} Pokémon**
+					**The ${filterPkmn(body.genera).genus}**
 					${filterPkmn(body.flavor_text_entries).flavor_text.replace(/\n|\f|\r/g, ' ')}
 				`)
 				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
