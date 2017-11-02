@@ -17,10 +17,7 @@ module.exports = class HungerGamesCommand extends Command {
 					prompt: 'Who should compete in the games? Up to 24 tributes can participate.',
 					type: 'string',
 					infinite: true,
-					validate: tribute => {
-						if (tribute.length < 25) return true;
-						return 'Invalid tribute, please keep each tribute under 25 characters.';
-					}
+					max: 25
 				}
 			]
 		});

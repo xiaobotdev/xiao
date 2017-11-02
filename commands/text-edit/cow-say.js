@@ -13,10 +13,7 @@ module.exports = class CowSayCommand extends Command {
 					key: 'text',
 					prompt: 'What text would you like the cow to say?',
 					type: 'string',
-					validate: text => {
-						if (text.length < 1500) return true;
-						return 'Invalid text, please keep the text under 1500 characters.';
-					}
+					max: 1500
 				}
 			]
 		});

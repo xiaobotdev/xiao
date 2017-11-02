@@ -17,10 +17,8 @@ module.exports = class MapCommand extends Command {
 					label: 'zoom level',
 					prompt: 'What would you like the zoom level to be? Must be a number from 1-20.',
 					type: 'integer',
-					validate: zoom => {
-						if (zoom < 21 && zoom > 0) return true;
-						return 'Invalid zoom level, please enter a zoom level from 1-20.';
-					}
+					min: 1,
+					max: 20
 				},
 				{
 					key: 'query',

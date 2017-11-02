@@ -13,17 +13,20 @@ module.exports = class KissMarryKillCommand extends Command {
 				{
 					key: 'thing1',
 					prompt: 'Who is the first person you choose?',
-					type: 'string'
+					type: 'string',
+					max: 500
 				},
 				{
 					key: 'thing2',
 					prompt: 'Who is the second person you choose?',
-					type: 'string'
+					type: 'string',
+					max: 500
 				},
 				{
 					key: 'thing3',
 					prompt: 'Who is the third person you choose?',
-					type: 'string'
+					type: 'string',
+					max: 500
 				}
 			]
 		});

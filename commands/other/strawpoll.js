@@ -15,20 +15,14 @@ module.exports = class StrawpollCommand extends Command {
 					key: 'title',
 					prompt: 'What would you like the title of the Strawpoll to be?',
 					type: 'string',
-					validate: title => {
-						if (title.length < 200) return true;
-						return 'Invalid title, please keep the title under 200 characters.';
-					}
+					max: 200
 				},
 				{
 					key: 'options',
 					prompt: 'What options do you want to be able to pick from? You may have a maximum of 30.',
 					type: 'string',
 					infinite: true,
-					validate: choice => {
-						if (choice.length < 140) return true;
-						return 'Invalid option, please keep options under 140 characters each.';
-					}
+					max: 140
 				}
 			]
 		});

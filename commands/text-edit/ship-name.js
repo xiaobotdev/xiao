@@ -13,10 +13,7 @@ module.exports = class ShipNameCommand extends Command {
 					label: 'start name',
 					prompt: 'What name should be at the start of the ship name?',
 					type: 'string',
-					validate: start => {
-						if (start.length < 50) return true;
-						return 'Invalid start name, the start name must be under 50 characters.';
-					},
+					max: 500,
 					parse: start => start.toLowerCase()
 				},
 				{
@@ -24,10 +21,7 @@ module.exports = class ShipNameCommand extends Command {
 					label: 'end name',
 					prompt: 'What name should be at the end of the ship name?',
 					type: 'string',
-					validate: end => {
-						if (end.length < 50) return true;
-						return 'Invalid end name, the end name must be under 50 characters.';
-					},
+					max: 500,
 					parse: end => end.toLowerCase()
 				}
 			]

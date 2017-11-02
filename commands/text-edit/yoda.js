@@ -15,10 +15,7 @@ module.exports = class YodaCommand extends Command {
 					key: 'sentence',
 					prompt: 'What sentence would you like to convert to Yoda speak?',
 					type: 'string',
-					validate: sentence => {
-						if (sentence.length < 500) return true;
-						return 'Invalid sentence, please keep the sentence under 500 characters.';
-					}
+					max: 500
 				}
 			]
 		});

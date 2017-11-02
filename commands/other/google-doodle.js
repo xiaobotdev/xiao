@@ -15,10 +15,8 @@ module.exports = class GoogleDoodleCommand extends Command {
 					prompt: 'What month would you like to get doodles for?',
 					type: 'integer',
 					default: 'latest',
-					validate: month => {
-						if (month < 13 && month > 0) return true;
-						return 'Invalid month, please enter a number from 1-12.';
-					}
+					min: 1,
+					max: 12
 				},
 				{
 					key: 'year',
