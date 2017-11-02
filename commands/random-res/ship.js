@@ -10,12 +10,14 @@ module.exports = class ShipCommand extends Command {
 			args: [
 				{
 					key: 'thing1',
+					label: 'first name',
 					prompt: 'Who is the first person in the ship?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'thing2',
+					label: 'second name',
 					prompt: 'Who is the second person in the ship?',
 					type: 'string',
 					max: 500

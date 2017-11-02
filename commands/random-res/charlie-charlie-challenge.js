@@ -15,7 +15,7 @@ module.exports = class CharlieCharlieChallengeCommand extends Command {
 					key: 'question',
 					prompt: 'What do you want to ask Charlie?',
 					type: 'string',
-					max: 1950
+					max: 1900
 				}
 			]
 		});
