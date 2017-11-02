@@ -13,10 +13,10 @@ module.exports = class DiscriminatorCommand extends Command {
 				{
 					key: 'discrim',
 					prompt: 'Which discriminator would you like to search for?',
-					type: 'string',
+					type: 'integer',
 					default: '',
 					validate: discrim => {
-						if (/^[0-9]+$/g.test(discrim) && discrim.length === 4) return true;
+						if (/^[0-9]+$/.test(discrim) && discrim.length === 4) return true;
 						return 'Invalid discriminator.';
 					}
 				}

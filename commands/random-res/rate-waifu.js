@@ -4,7 +4,7 @@ module.exports = class RateWaifuCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'rate-waifu',
-			aliases: ['waifu'],
+			aliases: ['waifu', 'rate'],
 			group: 'random-res',
 			memberName: 'rate-waifu',
 			description: 'Rates your waifu.',
@@ -12,7 +12,8 @@ module.exports = class RateWaifuCommand extends Command {
 				{
 					key: 'waifu',
 					prompt: 'Who do you want to rate?',
-					type: 'string'
+					type: 'string',
+					max: 1950
 				}
 			]
 		});

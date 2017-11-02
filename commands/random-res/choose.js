@@ -13,7 +13,8 @@ module.exports = class ChooseCommand extends Command {
 					key: 'choices',
 					prompt: 'What choices do you want me pick from?',
 					type: 'string',
-					infinite: true
+					infinite: true,
+					max: 1950
 				}
 			]
 		});

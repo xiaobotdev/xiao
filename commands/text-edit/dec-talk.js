@@ -22,10 +22,7 @@ module.exports = class DECTalkCommand extends Command {
 					key: 'text',
 					prompt: 'What text do you want to convert to TTS?',
 					type: 'string',
-					validate: text => {
-						if (text.length < 1000) return true;
-						return 'Invalid text, please keep the text under 1000 characters.';
-					}
+					max: 1000
 				}
 			]
 		});

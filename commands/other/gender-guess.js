@@ -15,6 +15,7 @@ module.exports = class GenderGuessCommand extends Command {
 					key: 'name',
 					prompt: 'What name do you want to determine the gender of?',
 					type: 'string',
+					max: 1950,
 					parse: name => name.toLowerCase()
 				}
 			]

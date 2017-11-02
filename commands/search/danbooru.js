@@ -9,6 +9,7 @@ module.exports = class DanbooruCommand extends Command {
 			group: 'search',
 			memberName: 'danbooru',
 			description: 'Searches Danbooru for your query.',
+			nsfw: true,
 			args: [
 				{
 					key: 'query',
@@ -24,7 +25,6 @@ module.exports = class DanbooruCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		if (!msg.channel.nsfw) return msg.reply('This command can only be used in NSFW channels.');
 		try {
 			const { body } = await snekfetch
 				.get('https://danbooru.donmai.us/posts.json')

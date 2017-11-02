@@ -16,16 +16,17 @@ module.exports = class UnbanCommand extends Command {
 				{
 					key: 'id',
 					prompt: 'What is the id of the member you want to unban?',
-					type: 'string'
+					type: 'string',
+					validate: id => {
+						if (/^[0-9]+$/.test(id)) return true;
+						return 'Invalid ID.';
+					}
 				},
 				{
 					key: 'reason',
 					prompt: 'What do you want to set the reason as?',
 					type: 'string',
-					validate: reason => {
-						if (reason.length < 140) return true;
-						return 'Invalid reason, please keep the reason under 140 characters.';
-					}
+					max: 140
 				}
 			]
 		});

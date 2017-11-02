@@ -14,17 +14,14 @@ module.exports = class PortalSendCommand extends Command {
 					key: 'text',
 					prompt: 'What text would you like to send?',
 					type: 'string',
-					validate: text => {
-						if (/discord(\.gg|app\.com\/invite|\.me)\//gi.test(text)) return 'Please do not send invites.';
-						if (text.length < 1000) return true;
-						return 'Invalid text, please keep the text under 1000 characters.';
-					}
+					max: 1000
 				}
 			]
 		});
 	}
 
 	async run(msg, { text }) {
+		if (/discord(\.gg|app\.com\/invite|\.me)\//gi.test(text)) return msg.reply('Please do not send invites.');
 		const valid = this.client.channels.filter(channel => channel.type === 'text' && channel.guild.id !== msg.guild.id);
 		const channels = valid.filter(channel => channel.topic && channel.topic.toLowerCase().includes('<portal>'));
 		if (!channels.size) return msg.say('No channels have an open portal.');

@@ -13,6 +13,7 @@ module.exports = class LMGTFYCommand extends Command {
 					key: 'query',
 					prompt: 'What would you like the link to search for?',
 					type: 'string',
+					max: 1950,
 					parse: query => encodeURIComponent(query)
 				}
 			]

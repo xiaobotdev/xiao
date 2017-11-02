@@ -14,10 +14,7 @@ module.exports = class MockingCommand extends Command {
 					key: 'text',
 					prompt: 'WHaT tEXt WoUlD yOu LiKE to COnvErt?',
 					type: 'string',
-					validate: text => {
-						if (text.length < 1950) return true;
-						return 'Invalid text, please keep the text under 1950 characters.';
-					},
+					max: 1950,
 					parse: text => text.toLowerCase().split('')
 				}
 			]

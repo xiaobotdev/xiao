@@ -14,6 +14,7 @@ module.exports = class OrganizationXIIINameCommand extends Command {
 					key: 'text',
 					prompt: 'What name would you like to convert?',
 					type: 'string',
+					max: 1950,
 					parse: text => text.toLowerCase().split('')
 				}
 			]

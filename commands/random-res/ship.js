@@ -1,26 +1,30 @@
 const { Command } = require('discord.js-commando');
-const { list } = require('../../util/Util');
 
 module.exports = class ShipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'ship',
-			aliases: ['rate'],
 			group: 'random-res',
 			memberName: 'ship',
 			description: 'Ships things/people together.',
 			args: [
 				{
-					key: 'things',
-					prompt: 'What do you want to ship together?',
+					key: 'thing1',
+					prompt: 'Who is the first person in the ship?',
 					type: 'string',
-					infinite: true
+					max: 500
+				},
+				{
+					key: 'thing2',
+					prompt: 'Who is the second person in the ship?',
+					type: 'string',
+					max: 500
 				}
 			]
 		});
 	}
 
-	run(msg, { things }) {
-		return msg.say(`I'd give ${list(things)} a ${Math.floor(Math.random() * 100) + 1}%!`);
+	run(msg, { thing1, thing2 }) {
+		return msg.say(`I'd give ${thing1} and ${thing2} a ${Math.floor(Math.random() * 100) + 1}%!`);
 	}
 };
