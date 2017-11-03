@@ -5,7 +5,7 @@ module.exports = class GoogleDoodleCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'google-doodle',
-			group: 'other',
+			group: 'events',
 			memberName: 'google-doodle',
 			description: 'Responds with a Google doodle, either the latest or a random one from a specific month/year.',
 			clientPermissions: ['ATTACH_FILES'],

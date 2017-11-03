@@ -6,7 +6,7 @@ module.exports = class EmojiInfoCommand extends Command {
 		super(client, {
 			name: 'emoji-info',
 			aliases: ['emoji'],
-			group: 'guild-info',
+			group: 'info',
 			memberName: 'emoji-info',
 			description: 'Responds with detailed information on an emoji.',
 			guildOnly: true,

@@ -8,7 +8,7 @@ module.exports = class WordOfTheDayCommand extends Command {
 		super(client, {
 			name: 'word-of-the-day',
 			aliases: ['wordnik-word-of-the-day'],
-			group: 'other',
+			group: 'events',
 			memberName: 'word-of-the-day',
 			description: 'Gets the word of the day.'
 		});

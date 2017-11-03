@@ -14,7 +14,7 @@ module.exports = class ChannelInfoCommand extends Command {
 		super(client, {
 			name: 'channel-info',
 			aliases: ['channel'],
-			group: 'guild-info',
+			group: 'info',
 			memberName: 'channel-info',
 			description: 'Responds with detailed information on a channel.',
 			guildOnly: true,

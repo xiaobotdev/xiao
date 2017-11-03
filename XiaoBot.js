@@ -15,10 +15,11 @@ client.registry
 	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
 		['util', 'Utility'],
-		['guild-info', 'Server Information'],
+		['info', 'Discord Information'],
 		['moderation', 'Moderation'],
 		['random-res', 'Random Response'],
 		['single-res', 'Single Response'],
+		['events', 'Daily Events'],
 		['image-edit', 'Image Manipulation'],
 		['avatar-edit', 'Avatar Manipulation'],
 		['text-edit', 'Text Manipulation'],

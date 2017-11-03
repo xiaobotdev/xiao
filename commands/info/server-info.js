@@ -8,7 +8,7 @@ module.exports = class ServerInfoCommand extends Command {
 		super(client, {
 			name: 'server-info',
 			aliases: ['guild', 'server', 'guild-info'],
-			group: 'guild-info',
+			group: 'info',
 			memberName: 'server-info',
 			description: 'Responds with detailed information on the server.',
 			guildOnly: true,
