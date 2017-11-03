@@ -6,7 +6,7 @@ module.exports = class AvatarCommand extends Command {
 		super(client, {
 			name: 'avatar',
 			aliases: ['profile-picture', 'profile-pic'],
-			group: 'other',
+			group: 'info',
 			memberName: 'avatar',
 			description: 'Responds with a user\'s avatar.',
 			clientPermissions: ['ATTACH_FILES'],

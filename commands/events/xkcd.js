@@ -7,7 +7,7 @@ module.exports = class XKCDCommand extends Command {
 		super(client, {
 			name: 'xkcd',
 			aliases: ['kcd'],
-			group: 'other',
+			group: 'events',
 			memberName: 'xkcd',
 			description: 'Gets an XKCD Comic, optionally opting for today\'s or a specific number.',
 			clientPermissions: ['EMBED_LINKS'],
@@ -16,7 +16,7 @@ module.exports = class XKCDCommand extends Command {
 					key: 'type',
 					prompt: 'Please enter either a specific comic number, today, or random.',
 					type: 'string',
-					default: 'random',
+					default: 'today',
 					parse: type => type.toLowerCase()
 				}
 			]
