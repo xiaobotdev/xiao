@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../util/Util');
 
 module.exports = class NPMCommand extends Command {
 	constructor(client) {
@@ -10,14 +9,14 @@ module.exports = class NPMCommand extends Command {
 			aliases: ['npm-package'],
 			group: 'search',
 			memberName: 'npm',
-			description: 'Searches NPM for info on an NPM package.',
+			description: 'Gets information on an NPM package.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
-					prompt: 'What package would you like to search for?',
+					prompt: 'What package would you like to get information on?',
 					type: 'string',
-					parse: query => encodeURIComponent(query)
+					parse: query => encodeURIComponent(query.replace(/ /g, '-'))
 				}
 			]
 		});
@@ -44,7 +43,7 @@ module.exports = class NPMCommand extends Command {
 				.setAuthor('NPM', 'https://i.imgur.com/ErKf5Y0.png')
 				.setTitle(body.name)
 				.setURL(`https://www.npmjs.com/package/${query}`)
-				.setDescription(body.description ? shorten(body.description) : 'No description.')
+				.setDescription(body.description || 'No description.')
 				.addField('❯ Version',
 					body['dist-tags'].latest, true)
 				.addField('❯ License',
@@ -56,9 +55,9 @@ module.exports = class NPMCommand extends Command {
 				.addField('❯ Modified',
 					new Date(body.time.modified).toDateString(), true)
 				.addField('❯ Main File',
-					version.main, true)
+					version.main || '???', true)
 				.addField('❯ Dependencies',
-					dependencies ? dependencies.join(', ') : 'None')
+					dependencies && dependencies.length ? dependencies.join(', ') : 'None')
 				.addField('❯ Maintainers',
 					maintainers.join(', '));
 			return msg.embed(embed);
