@@ -26,6 +26,18 @@ module.exports = class NPMCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch.get(`https://registry.npmjs.com/${query}`);
+			let maintainers = body.maintainers.map(user => user.name);
+			if (maintainers.length > 10) {
+				const len = maintainers.length - 10;
+				maintainers = maintainers.slice(0, 10);
+				maintainers.push(`...${len} more.`);
+			}
+			let dependencies = Object.keys(body.dependencies);
+			if (dependencies.length && dependencies.length > 10) {
+				const len = dependencies.length - 10;
+				dependencies = dependencies.slice(0, 10);
+				dependencies.push(`...${len} more.`);
+			}
 			const embed = new MessageEmbed()
 				.setColor(0xCB0000)
 				.setAuthor('NPM', 'https://i.imgur.com/ErKf5Y0.png')
@@ -44,10 +56,10 @@ module.exports = class NPMCommand extends Command {
 					new Date(body.time.modified).toDateString(), true)
 				.addField('❯ Main File',
 					body.versions[body['dist-tags'].latest].main, true)
-				.addField('❯ Keywords',
-					body.keywords && body.keywords.length ? shorten(body.keywords.join(', '), 1000) : 'None')
+				.addField('❯ Dependencies',
+					dependencies.length ? dependencies.join(', ') : 'None')
 				.addField('❯ Maintainers',
-					shorten(body.maintainers.map(user => user.name).join(', '), 1000));
+					maintainers.join(', '));
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
