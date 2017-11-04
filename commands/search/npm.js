@@ -26,13 +26,14 @@ module.exports = class NPMCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch.get(`https://registry.npmjs.com/${query}`);
+			const version = body.versions[body['dist-tags'].latest];
 			let maintainers = body.maintainers.map(user => user.name);
 			if (maintainers.length > 10) {
 				const len = maintainers.length - 10;
 				maintainers = maintainers.slice(0, 10);
 				maintainers.push(`...${len} more.`);
 			}
-			let dependencies = body.dependencies ? Object.keys(body.dependencies) : null;
+			let dependencies = version.dependencies ? Object.keys(version.dependencies) : null;
 			if (dependencies && dependencies.length > 10) {
 				const len = dependencies.length - 10;
 				dependencies = dependencies.slice(0, 10);
@@ -55,7 +56,7 @@ module.exports = class NPMCommand extends Command {
 				.addField('❯ Modified',
 					new Date(body.time.modified).toDateString(), true)
 				.addField('❯ Main File',
-					body.versions[body['dist-tags'].latest].main, true)
+					version.main, true)
 				.addField('❯ Dependencies',
 					dependencies ? dependencies.join(', ') : 'None')
 				.addField('❯ Maintainers',
