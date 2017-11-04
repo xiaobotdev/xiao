@@ -32,8 +32,8 @@ module.exports = class NPMCommand extends Command {
 				maintainers = maintainers.slice(0, 10);
 				maintainers.push(`...${len} more.`);
 			}
-			let dependencies = Object.keys(body.dependencies);
-			if (dependencies.length && dependencies.length > 10) {
+			let dependencies = body.dependencies ? Object.keys(body.dependencies) : null;
+			if (dependencies && dependencies.length > 10) {
 				const len = dependencies.length - 10;
 				dependencies = dependencies.slice(0, 10);
 				dependencies.push(`...${len} more.`);
@@ -57,7 +57,7 @@ module.exports = class NPMCommand extends Command {
 				.addField('❯ Main File',
 					body.versions[body['dist-tags'].latest].main, true)
 				.addField('❯ Dependencies',
-					dependencies.length ? dependencies.join(', ') : 'None')
+					dependencies ? dependencies.join(', ') : 'None')
 				.addField('❯ Maintainers',
 					maintainers.join(', '));
 			return msg.embed(embed);
