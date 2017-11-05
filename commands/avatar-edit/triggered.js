@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const { drawImageWithTint } = require('../../util/Util');
+const { drawImageWithTint } = require('../../util/Canvas');
 
 module.exports = class TriggeredCommand extends Command {
 	constructor(client) {

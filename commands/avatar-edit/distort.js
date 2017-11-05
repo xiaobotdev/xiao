@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const { distort } = require('../../util/Util');
+const { distort } = require('../../util/Canvas');
 
 module.exports = class DistortCommand extends Command {
 	constructor(client) {

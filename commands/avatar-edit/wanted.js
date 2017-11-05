@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const { sepia } = require('../../util/Util');
+const { sepia } = require('../../util/Canvas');
 
 module.exports = class WantedCommand extends Command {
 	constructor(client) {

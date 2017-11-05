@@ -1,7 +1,8 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const { filterPkmn, pad, silhouette } = require('../../util/Util');
+const { filterPkmn, pad } = require('../../util/Util');
+const { silhouette } = require('../../util/Canvas');
 
 module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {
