@@ -1,17 +1,15 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const path = require('path');
 const { contrast } = require('../../util/Canvas');
 
-module.exports = class FoodBrokeCommand extends Command {
+module.exports = class ContrastCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'food-broke',
-			aliases: ['food-machine-broke'],
+			name: 'contrast',
 			group: 'avatar-edit',
-			memberName: 'food-broke',
-			description: 'Draws a user\'s avatar over the "Food Broke" meme.',
+			memberName: 'contrast',
+			description: 'Draws a user\'s avatar, but with contrast.',
 			throttling: {
 				usages: 1,
 				duration: 15
@@ -32,20 +30,16 @@ module.exports = class FoodBrokeCommand extends Command {
 		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
-			size: 128
+			size: 512
 		});
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'food-broke.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
+			const canvas = createCanvas(avatar.width, avatar.height);
 			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 23, 9, 125, 125);
-			contrast(ctx, 23, 9, 125, 125);
-			ctx.drawImage(avatar, 117, 382, 75, 75);
-			contrast(ctx, 117, 382, 75, 75);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'food-broke.png' }] });
+			ctx.drawImage(avatar, 0, 0);
+			contrast(ctx, 0, 0, avatar.width, avatar.height);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'contrast.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

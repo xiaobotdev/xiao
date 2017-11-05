@@ -7,6 +7,7 @@ module.exports = class DistortCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'distort',
+			aliases: ['under-water'],
 			group: 'avatar-edit',
 			memberName: 'distort',
 			description: 'Draws a user\'s avatar but distorted.',
@@ -43,7 +44,7 @@ module.exports = class DistortCommand extends Command {
 			const canvas = createCanvas(avatar.width, avatar.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(avatar, 0, 0);
-			distort(ctx, 0, 0, avatar.width, avatar.height, level);
+			distort(ctx, level, 0, 0, avatar.width, avatar.height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distort.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
