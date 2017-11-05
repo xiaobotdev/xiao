@@ -78,12 +78,12 @@ class CanvasUtil {
 	}
 
 	static drawImageWithTint(ctx, image, color, x, y, width, height) {
-		ctx.globalAlpha = 0.5;
 		ctx.fillStyle = color;
-		ctx.fillRect(x, y, width, height);
 		ctx.drawImage(image, x, y, width, height);
-		ctx.globalAlpha = 1;
+		ctx.globalAlpha = 0.5;
+		ctx.fillRect(x, y, width, height);
 		ctx.fillStyle = '#000000';
+		ctx.globalAlpha = 1;
 	}
 }
 
