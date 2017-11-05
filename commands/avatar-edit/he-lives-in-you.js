@@ -38,12 +38,14 @@ module.exports = class HeLivesInYouCommand extends Command {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'he-lives-in-you.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
+			const avatarCanvas = createCanvas(avatar.width, avatar.height);
+			const avatarCtx = avatarCanvas.getContext('2d');
+			distort(avatarCtx, 0, 0, avatar.width, avatar.height);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-24 * (Math.PI / 180));
-			drawImageWithTint(ctx, avatar, '#00115d', 75, 160, 130, 150);
-			distort(ctx, 5, 75, 160, 130, 150);
+			drawImageWithTint(ctx, avatarCanvas, '#00115d', 75, 160, 130, 150);
 			ctx.rotate(24 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'he-lives-in-you.png' }] });
 		} catch (err) {
