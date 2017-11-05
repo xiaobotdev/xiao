@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
-const { greyscale } = require('../../util/Util');
+const { greyscale } = require('../../util/Canvas');
 
 module.exports = class RIPCommand extends Command {
 	constructor(client) {
