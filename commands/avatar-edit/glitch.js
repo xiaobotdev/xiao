@@ -33,7 +33,7 @@ module.exports = class GlitchCommand extends Command {
 			size: 512
 		});
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'approved.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'glitch.png'));
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(avatar.width, avatar.height);
