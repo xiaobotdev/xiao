@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../util/Util');
 
 module.exports = class MDNCommand extends Command {
 	constructor(client) {
@@ -16,7 +15,8 @@ module.exports = class MDNCommand extends Command {
 				{
 					key: 'query',
 					prompt: 'What article would you like to search for?',
-					type: 'string'
+					type: 'string',
+					parse: query => query.replace(/#/g, '.prototype.')
 				}
 			]
 		});
@@ -26,7 +26,11 @@ module.exports = class MDNCommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get('https://developer.mozilla.org/en-US/search.json')
-				.query({ q: query });
+				.query({
+					q: query,
+					locale: 'en-US',
+					highlight: false
+				});
 			if (!body.documents.length) return msg.say('Could not find any results.');
 			const data = body.documents[0];
 			const embed = new MessageEmbed()
@@ -34,7 +38,7 @@ module.exports = class MDNCommand extends Command {
 				.setAuthor('MDN', 'https://i.imgur.com/DFGXabG.png')
 				.setURL(data.url)
 				.setTitle(data.title)
-				.setDescription(shorten(data.excerpt));
+				.setDescription(data.excerpt);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

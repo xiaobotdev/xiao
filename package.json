@@ -1,6 +1,6 @@
 {
 	"name": "xiaobot",
-	"version": "51.4.2",
+	"version": "51.4.3",
 	"description": "Your personal server companion.",
 	"main": "XiaoBot.js",
 	"scripts": {
