@@ -52,6 +52,15 @@ class Util {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
+	static trimArray(arr, maxLen = 10) {
+		if (arr.length > maxLen) {
+			const len = arr.length - maxLen;
+			arr = arr.slice(0, maxLen);
+			arr.push(`${len} more...`);
+		}
+		return arr;
+	}
+
 	static promisifyAll(obj, suffix = 'Async') {
 		for (const key of Object.keys(obj)) {
 			if (typeof obj[key] !== 'function') continue;
