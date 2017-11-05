@@ -40,6 +40,7 @@ module.exports = class HeLivesInYouCommand extends Command {
 			const avatar = await loadImage(body);
 			const avatarCanvas = createCanvas(avatar.width, avatar.height);
 			const avatarCtx = avatarCanvas.getContext('2d');
+			avatarCtx.drawImage(avatar, 0, 0);
 			distort(avatarCtx, 5, 0, 0, avatar.width, avatar.height);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
