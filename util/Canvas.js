@@ -45,16 +45,29 @@ class CanvasUtil {
 		return ctx;
 	}
 
-	static distort(ctx, x, y, width, height, amplitude, strideLevel = 4) {
+	static contrast(ctx, x, y, width, height) {
+		const data = ctx.getImageData(x, y, width, height);
+		const factor = (259 / 100) + 1;
+		const intercept = 128 * (1 - factor);
+		for (let i = 0; i < data.data.length; i += 4) {
+			data.data[i] = (data.data[i] * factor) + intercept;
+			data.data[i + 1] = (data.data[i + 1] * factor) + intercept;
+			data.data[i + 2] = (data.data[i + 2] * factor) + intercept;
+		}
+		ctx.putImageData(data, x, y);
+		return ctx;
+	}
+
+	static distort(ctx, amplitude, x, y, width, height) {
 		const data = ctx.getImageData(x, y, width, height);
 		const temp = ctx.getImageData(x, y, width, height);
-		const stride = width * strideLevel;
+		const stride = width * 4;
 		for (let i = 0; i < width; i++) {
 			for (let j = 0; j < height; j++) {
 				const xs = Math.round(amplitude * Math.sin(2 * Math.PI * 3 * (j / height)));
 				const ys = Math.round(amplitude * Math.cos(2 * Math.PI * 3 * (i / width)));
-				const dest = (j * stride) + (i * strideLevel);
-				const src = ((j + ys) * stride) + ((i + xs) * strideLevel);
+				const dest = (j * stride) + (i * 4);
+				const src = ((j + ys) * stride) + ((i + xs) * 4);
 				data.data[dest] = temp.data[src];
 				data.data[dest + 1] = temp.data[src + 1];
 				data.data[dest + 2] = temp.data[src + 2];

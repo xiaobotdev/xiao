@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
+const { distort, drawImageWithTint } = require('../../util/Canvas');
 
 module.exports = class HeLivesInYouCommand extends Command {
 	constructor(client) {
@@ -41,7 +42,8 @@ module.exports = class HeLivesInYouCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-24 * (Math.PI / 180));
-			ctx.drawImage(avatar, 75, 160, 130, 150);
+			drawImageWithTint(ctx, avatar, '#00115d', 75, 160, 130, 150);
+			distort(ctx, 5, 75, 160, 130, 150);
 			ctx.rotate(24 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'he-lives-in-you.png' }] });
 		} catch (err) {
