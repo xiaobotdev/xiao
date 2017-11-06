@@ -64,10 +64,10 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-18.06 * (Math.PI / 180));
-			ctx.drawImage(boyfriendAvatar, 357, 186, 125, 125);
+			ctx.drawImage(boyfriendAvatar, 327, 186, 125, 125);
 			ctx.rotate(18.06 * (Math.PI / 180));
 			ctx.rotate(3.11 * (Math.PI / 180));
-			ctx.drawImage(girlfriendAvatar, 534, 70, 100, 125);
+			ctx.drawImage(girlfriendAvatar, 539, 67, 100, 125);
 			ctx.rotate(-3.11 * (Math.PI / 180));
 			ctx.drawImage(otherGirlAvatar, 120, 96, 175, 175);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distracted-boyfriend.png' }] });
