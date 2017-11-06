@@ -60,8 +60,8 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				czars.shift();
 				const black = blackCards[Math.floor(Math.random() * blackCards.length)];
 				await msg.say(stripIndents`
-					The card czar will be ${czar.user.username}!
-					The Black Card is: ${escapeMarkdown(black.text)}
+					The card czar will be **${czar.user.username}**!
+					The Black Card is: **${escapeMarkdown(black.text)}**
 					Sending DMs...
 				`);
 				const chosenCards = new Collection();
@@ -76,7 +76,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						__**Your hand is**__:
 						${Array.from(player.hand).join('\n')}
 
-						**Black Card***: ${escapeMarkdown(black.text)}
+						**Black Card**: ${escapeMarkdown(black.text)}
 						**Card Czar**: ${czar.user.username}
 						Pick **${black.pick}** cards!
 					`);
@@ -119,7 +119,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				};
 				const chosen = await msg.channel.awaitMessages(filter, {
 					max: 1,
-					time: 30000
+					time: 120000
 				});
 				if (!chosen.size) {
 					await msg.say('Hmm... No one wins.');
