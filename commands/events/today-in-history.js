@@ -2,13 +2,13 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
-module.exports = class HistoryCommand extends Command {
+module.exports = class TodayInHistoryCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'history',
-			aliases: ['event', 'today', 'today-in-history'],
-			group: 'random-res',
-			memberName: 'history',
+			name: 'today-in-history',
+			aliases: ['event', 'today', 'history'],
+			group: 'events',
+			memberName: 'today-in-history',
 			description: 'Responds with an event that occurred today in history, or on a specific day.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

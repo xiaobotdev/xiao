@@ -7,7 +7,7 @@ module.exports = class ThesaurusCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'thesaurus',
-			aliases: ['synonym', 'antonym', 'thesaurus-wordnik', 'wordnik-thesaurus'],
+			aliases: ['synonym', 'antonym', 'wordnik-thesaurus'],
 			group: 'search',
 			memberName: 'thesaurus',
 			description: 'Gets the synonyms and antonyms of a word.',

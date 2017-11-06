@@ -6,7 +6,7 @@ module.exports = class JishoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'jisho',
-			aliases: ['japanese-dictionary', 'define-japanese', 'define-jpn', 'jpn-define', 'japanese-define'],
+			aliases: ['japanese-dictionary', 'define-japanese', 'define-jpn'],
 			group: 'search',
 			memberName: 'jisho',
 			description: 'Defines a word, but with Japanese.',
