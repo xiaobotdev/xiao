@@ -72,7 +72,7 @@ module.exports = class TranslateCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x3174F1)
 				.addField(`❯ From: ${codes[body[2]]}`,
-					text)
+					content)
 				.addField(`❯ To: ${codes[target]}`,
 					body[0][0][0]);
 			return msg.embed(embed);
