@@ -128,7 +128,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				const player = players.get(parseInt(chosen.first().content, 10));
 				++player.points;
 				if (player.points >= maxPts) winner = player.user;
-				else await msg.say(`Nice one, ${player.user}! You now have ${player.user} points!`);
+				else await msg.say(`Nice one, ${player.user}! You now have ${player.points} points!`);
 			}
 			this.playing.delete(msg.channel.id);
 			if (!winner) return msg.say('See you next time!');
