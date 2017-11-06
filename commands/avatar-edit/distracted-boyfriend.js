@@ -31,15 +31,13 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 				{
 					key: 'boyfriend',
 					prompt: 'Which user should be the boyfriend?',
-					type: 'user',
-					default: ''
+					type: 'user'
 				}
 			]
 		});
 	}
 
 	async run(msg, { otherGirl, girlfriend, boyfriend }) {
-		if (!boyfriend) boyfriend = msg.author;
 		const boyfriendAvatarURL = boyfriend.displayAvatarURL({
 			format: 'png',
 			size: 256
