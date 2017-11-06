@@ -64,7 +64,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-18.06 * (Math.PI / 180));
-			ctx.drawImage(boyfriendAvatar, 295, 171, 125, 125);
+			ctx.drawImage(boyfriendAvatar, 290, 165, 125, 125);
 			ctx.rotate(18.06 * (Math.PI / 180));
 			ctx.rotate(3.11 * (Math.PI / 180));
 			ctx.drawImage(girlfriendAvatar, 539, 67, 100, 125);
