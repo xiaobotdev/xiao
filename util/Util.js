@@ -82,7 +82,7 @@ class Util {
 			.replace(/\[i\]|\[\/i\]/g, '*');
 	}
 
-	static async awaitPlayers(msg, max, min, { text = 'join game', time = 30000 }) {
+	static async awaitPlayers(msg, max, min, { text = 'join game', time = 30000 } = {}) {
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
