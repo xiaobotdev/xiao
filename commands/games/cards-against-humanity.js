@@ -49,7 +49,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					points: 0,
 					hand: cards
 				});
-				await player.send('Testing...');
+				await player.send('Hi! Waiting for your turn to start...');
 				i++;
 			}
 			let czars = Array.from(players.values());
@@ -66,6 +66,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				`);
 				const chosenCards = new Collection();
 				for (const player of players.values()) {
+					if (player.user.id === czar.user.id) continue;
 					player.hand.add(whiteCards[Math.floor(Math.random() * whiteCards.length)]);
 					if (player.hand.size < black.pick) {
 						await player.user.send('You don\'t have enough cards!');
