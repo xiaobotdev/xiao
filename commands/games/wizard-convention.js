@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { Collection } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { shuffle, wait } = require('../../util/Util');
+const { shuffle, wait, awaitPlayers } = require('../../util/Util');
 const { questions, stories } = require('../../assets/json/wizard-convention');
 
 module.exports = class WizardConventionCommand extends Command {
@@ -22,35 +22,20 @@ module.exports = class WizardConventionCommand extends Command {
 		this.playing.add(msg.channel.id);
 		try {
 			await msg.say('You will need at least 2 more players, at maximum 15. To join, type `join game`.');
-			const joined = [];
-			joined.push(msg.author.id);
-			const filter = res => {
-				if (joined.includes(res.author.id)) return false;
-				if (res.content.toLowerCase() !== 'join game') return false;
-				joined.push(res.author.id);
-				return true;
-			};
-			const verify = await msg.channel.awaitMessages(filter, {
-				max: 15,
-				time: 30000
-			});
-			if (verify.size < 2) {
-				this.playing.delete(msg.channel.id);
-				return msg.say('Failed to start the game...');
-			}
+			const awaitedPlayers = await awaitPlayers(msg, 15, 3);
+			if (!awaitedPlayers) return msg.say('Game could not be started...');
 			let roles = ['dragon', 'healer', 'mind reader'];
-			for (let i = 0; i < (verify.size - 2); i++) roles.push(`pleb ${i + 1}`);
+			for (let i = 0; i < (awaitedPlayers.length - 2); i++) roles.push(`pleb ${i + 1}`);
 			roles = shuffle(roles);
-			verify.set(msg.id, msg);
 			const players = new Collection();
 			let i = 1;
-			for (const message of verify.values()) {
+			for (const player of awaitedPlayers) {
 				players.set(i, {
 					id: i,
-					user: message.author,
+					user: player,
 					role: roles[i - 1]
 				});
-				await message.author.send(`Your role will be: ${roles[i - 1]}!`);
+				await player.send(`Your role will be: ${roles[i - 1]}!`);
 				i++;
 			}
 			let turn = 1;
@@ -65,8 +50,8 @@ module.exports = class WizardConventionCommand extends Command {
 						${questions[player.role]} Please type the number.
 						${valid.map(p => `**${p.id}.** ${p.user.tag}`).join('\n')}
 					`);
-					const filter2 = res => valid.map(p => p.id.toString()).includes(res.content);
-					const decision = await player.user.dmChannel.awaitMessages(filter2, {
+					const filter = res => valid.map(p => p.id.toString()).includes(res.content);
+					const decision = await player.user.dmChannel.awaitMessages(filter, {
 						max: 1,
 						time: 30000
 					});
