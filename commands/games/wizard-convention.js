@@ -23,7 +23,10 @@ module.exports = class WizardConventionCommand extends Command {
 		try {
 			await msg.say('You will need at least 2 more players, at maximum 15. To join, type `join game`.');
 			const awaitedPlayers = await awaitPlayers(msg, 15, 3);
-			if (!awaitedPlayers) return msg.say('Game could not be started...');
+			if (!awaitedPlayers) {
+				this.playing.delete(msg.channel.id);
+				return msg.say('Game could not be started...');
+			}
 			let roles = ['dragon', 'healer', 'mind reader'];
 			for (let i = 0; i < (awaitedPlayers.length - 2); i++) roles.push(`pleb ${i + 1}`);
 			roles = shuffle(roles);
