@@ -82,6 +82,21 @@ class Util {
 			.replace(/\[i\]|\[\/i\]/g, '*');
 	}
 
+	static async awaitPlayers(msg, max, min, { text = 'join game', time = 30000 }) {
+		const joined = [];
+		joined.push(msg.author.id);
+		const filter = res => {
+			if (joined.includes(res.author.id)) return false;
+			if (res.content.toLowerCase() !== text) return false;
+			joined.push(res.author.id);
+			return true;
+		};
+		const verify = await msg.channel.awaitMessages(filter, { max, time });
+		verify.set(msg.id, msg);
+		if (verify.size < min) return false;
+		return verify.map(message => message.author);
+	}
+
 	static async verify(channel, user, time = 30000) {
 		const filter = res => {
 			const value = res.content.toLowerCase();
