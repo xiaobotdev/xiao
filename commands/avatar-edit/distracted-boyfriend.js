@@ -7,7 +7,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'distracted-boyfriend',
-			aliases: ['man-looking-at-other-woman'],
+			aliases: ['man-looking-at-other-woman', 'jealous-girlfriend'],
 			group: 'avatar-edit',
 			memberName: 'distracted-boyfriend',
 			description: 'Draws three user\'s avatars over the "Distracted Boyfriend" meme.',
