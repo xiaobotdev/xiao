@@ -7,7 +7,7 @@ module.exports = class DictionaryCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dictionary',
-			aliases: ['define', 'wordnik', 'define-wordnik', 'wordnik-define'],
+			aliases: ['define', 'wordnik', 'define-wordnik', 'wordnik-define', 'wordnik-dictionary'],
 			group: 'search',
 			memberName: 'dictionary',
 			description: 'Defines a word.',

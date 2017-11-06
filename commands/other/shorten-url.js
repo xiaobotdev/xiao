@@ -6,7 +6,7 @@ module.exports = class ShortenURLCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'shorten-url',
-			aliases: ['short-url', 'url-shorten', 'url-short'],
+			aliases: ['short-url', 'url-shorten'],
 			group: 'other',
 			memberName: 'shorten-url',
 			description: 'Creates a goo.gl short URL from another URL.',
