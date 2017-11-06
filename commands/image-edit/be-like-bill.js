@@ -1,11 +1,8 @@
 const { Command } = require('discord.js-commando');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const texts = require('../../assets/json/be-like-bill');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class BeLikeBillCommand extends Command {
 	constructor(client) {
