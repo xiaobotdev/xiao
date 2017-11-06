@@ -33,7 +33,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 					prompt: 'Which user should be the boyfriend?',
 					type: 'user',
 					default: ''
-				},
+				}
 			]
 		});
 	}
