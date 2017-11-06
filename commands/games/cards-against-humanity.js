@@ -73,12 +73,12 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						continue;
 					}
 					await player.user.send(stripIndents`
-						Your hand is:
+						__**Your hand is**__:
 						${Array.from(player.hand).join('\n')}
 
-						The Black Card is; ${escapeMarkdown(black.text)}
-						The card czar is: ${czar.user.username}
-						Pick ${black.pick} cards!
+						**Black Card***: ${escapeMarkdown(black.text)}
+						**Card Czar**: ${czar.user.username}
+						Pick **${black.pick}** cards!
 					`);
 					const chosen = [];
 					const filter = res => {
@@ -90,7 +90,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					};
 					const choices = await player.user.dmChannel.awaitMessages(filter, {
 						max: black.pick,
-						time: 30000
+						time: 120000
 					});
 					if (!choices.size || choices.size < black.pick) {
 						await player.user.send('Skipping your turn...');
@@ -108,7 +108,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				}
 				await msg.say(stripIndents`
 					${czar.user}, which cards do you pick?
-					Black Card: ${escapeMarkdown(black.text)}
+					**Black Card**: ${escapeMarkdown(black.text)}
 
 					${chosenCards.map(card => `**${card.id}.** ${card.cards.join(', ')}`)}
 				`);
