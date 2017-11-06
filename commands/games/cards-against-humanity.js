@@ -119,7 +119,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				}
 				const player = parseInt(chosen.first().content, 10);
 				++players.get(player).points;
-				if (players.get(player).points > maxPts) winner = players.get(player).user;
+				if (players.get(player).points >= maxPts) winner = players.get(player).user;
 			}
 			this.playing.delete(msg.channel.id);
 			if (!winner) return msg.say('See you next time!');
