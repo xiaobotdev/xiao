@@ -100,7 +100,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						cards: chosen
 					});
 				}
-				if (!chosenCards.length) {
+				if (!chosenCards.size) {
 					await msg.say('Hmm... No one even tried.');
 					break;
 				}
