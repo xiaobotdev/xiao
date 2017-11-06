@@ -61,7 +61,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				const black = blackCards[Math.floor(Math.random() * blackCards.length)];
 				await msg.say(stripIndents`
 					The card czar will be ${czar.user.username}!
-					The black card is: ${escapeMarkdown(black.text)}
+					The Black Card is: ${escapeMarkdown(black.text)}
 					Sending DMs...
 				`);
 				const chosenCards = new Collection();
@@ -76,7 +76,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						Your hand is:
 						${Array.from(player.hand).join('\n')}
 
-						The black card is; ${escapeMarkdown(black.text)}
+						The Black Card is; ${escapeMarkdown(black.text)}
 						The card czar is: ${czar.user.username}
 						Pick ${black.pick} cards!
 					`);
@@ -100,13 +100,16 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						id: player.id,
 						cards: chosen
 					});
+					await msg.say(`Nice! Return to ${msg.channel} to await the results!`);
 				}
 				if (!chosenCards.size) {
 					await msg.say('Hmm... No one even tried.');
 					break;
 				}
 				await msg.say(stripIndents`
-					${czar}, which cards do you pick?
+					${czar.user}, which cards do you pick?
+					Black Card: ${escapeMarkdown(black.text)}
+
 					${chosenCards.map(card => `**${card.id}.** ${card.cards.join(', ')}`)}
 				`);
 				const filter = res => {
@@ -122,9 +125,10 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					await msg.say('Hmm... No one wins.');
 					continue;
 				}
-				const player = parseInt(chosen.first().content, 10);
-				++players.get(player).points;
-				if (players.get(player).points >= maxPts) winner = players.get(player).user;
+				const player = players.get(parseInt(chosen.first().content, 10));
+				++player.points;
+				if (player.points >= maxPts) winner = player.user;
+				else await msg.say(`Nice one, ${player.user}! You now have ${player.user} points!`);
 			}
 			this.playing.delete(msg.channel.id);
 			if (!winner) return msg.say('See you next time!');
