@@ -34,6 +34,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 		try {
 			await msg.say('You will need at least 2 more players, at maximum 20. To join, type `join game`.');
 			const awaitedPlayers = await awaitPlayers(msg, 20, 3);
+			if (!awaitedPlayers) return msg.say('Game could not be started...');
 			const players = new Map();
 			let i = 1;
 			for (const player of awaitedPlayers) {
