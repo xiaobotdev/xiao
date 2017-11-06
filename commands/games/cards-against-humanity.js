@@ -100,7 +100,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						id: player.id,
 						cards: chosen
 					});
-					await msg.say(`Nice! Return to ${msg.channel} to await the results!`);
+					await player.user.send(`Nice! Return to ${msg.channel} to await the results!`);
 				}
 				if (!chosenCards.size) {
 					await msg.say('Hmm... No one even tried.');
