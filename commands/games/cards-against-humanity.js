@@ -65,7 +65,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					Sending DMs...
 				`);
 				const chosenCards = new Collection();
-				for (const player of players) {
+				for (const player of players.values()) {
 					player.hand.add(whiteCards[Math.floor(Math.random() * whiteCards.length)]);
 					if (player.hand.size < black.pick) {
 						await player.user.send('You don\'t have enough cards!');
