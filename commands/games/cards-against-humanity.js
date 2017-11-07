@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { Collection, escapeMarkdown } = require('discord.js');
+const { escapeMarkdown } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { awaitPlayers } = require('../../util/Util');
 const { blackCards, whiteCards } = require('../../assets/json/cards-against-humanity');
@@ -38,20 +38,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
 			}
-			const players = new Map();
-			let i = 1;
-			for (const player of awaitedPlayers) {
-				const cards = new Set();
-				for (let j = 0; j < 5; j++) cards.add(whiteCards[Math.floor(Math.random() * whiteCards.length)]);
-				players.set(i, {
-					id: i,
-					user: player,
-					points: 0,
-					hand: cards
-				});
-				await player.send('Hi! Waiting for your turn to start...');
-				i++;
-			}
+			const players = this.generatePlayers(awaitedPlayers);
 			let czars = Array.from(players.values());
 			let winner = null;
 			while (!winner) {
@@ -64,10 +51,10 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					The Black Card is: **${escapeMarkdown(black.text)}**
 					Sending DMs...
 				`);
-				const chosenCards = new Collection();
+				const chosenCards = [];
 				for (const player of players.values()) {
-					if (player.user.id === czar.user.id) continue;
 					player.hand.add(whiteCards[Math.floor(Math.random() * whiteCards.length)]);
+					if (player.user.id === czar.user.id) continue;
 					if (player.hand.size < black.pick) {
 						await player.user.send('You don\'t have enough cards!');
 						continue;
@@ -96,13 +83,13 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						await player.user.send('Skipping your turn...');
 						continue;
 					}
-					chosenCards.set(player.id, {
+					chosenCards.push({
 						id: player.id,
 						cards: chosen
 					});
 					await player.user.send(`Nice! Return to ${msg.channel} to await the results!`);
 				}
-				if (!chosenCards.size) {
+				if (!chosenCards.length) {
 					await msg.say('Hmm... No one even tried.');
 					break;
 				}
@@ -110,11 +97,11 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					${czar.user}, which cards do you pick?
 					**Black Card**: ${escapeMarkdown(black.text)}
 
-					${chosenCards.map(card => `**${card.id}.** ${card.cards.join(', ')}`).join('\n')}
+					${chosenCards.map((card, i) => `**${i + 1}.** ${card.cards.join(', ')}`).join('\n')}
 				`);
 				const filter = res => {
 					if (res.author.id !== czar.user.id) return false;
-					if (!chosenCards.map(card => card.id).includes(parseInt(res.content, 10))) return false;
+					if (!chosenCards[parseInt(res.content, 10) - 1]) return false;
 					return true;
 				};
 				const chosen = await msg.channel.awaitMessages(filter, {
@@ -125,10 +112,10 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					await msg.say('Hmm... No one wins.');
 					continue;
 				}
-				const player = players.get(parseInt(chosen.first().content, 10));
+				const player = players.get(chosenCards[parseInt(chosen.first().content, 10) - 1].id);
 				++player.points;
 				if (player.points >= maxPts) winner = player.user;
-				else await msg.say(`Nice one, ${player.user}! You now have ${player.points} points!`);
+				else await msg.say(`Nice one, ${player.user}! You now have **${player.points}** points!`);
 			}
 			this.playing.delete(msg.channel.id);
 			if (!winner) return msg.say('See you next time!');
@@ -137,5 +124,23 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 			this.playing.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	generatePlayers(list) {
+		const players = new Map();
+		let i = 0;
+		for (const player of list) {
+			const cards = new Set();
+			for (let j = 0; j < 5; j++) cards.add(whiteCards[Math.floor(Math.random() * whiteCards.length)]);
+			players.set(i, {
+				id: i,
+				user: player,
+				points: 0,
+				hand: cards
+			});
+			await player.send('Hi! Waiting for your turn to start...');
+			i++;
+		}
+		return players;
 	}
 };
