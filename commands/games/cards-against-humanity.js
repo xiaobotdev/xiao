@@ -96,15 +96,16 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					await msg.say('Hmm... No one even tried.');
 					break;
 				}
+				const cards = shuffle(chosenCards);
 				await msg.say(stripIndents`
 					${czar.user}, which cards do you pick?
 					**Black Card**: ${escapeMarkdown(black.text)}
 
-					${shuffle(chosenCards.map((card, i) => `**${i + 1}.** ${card.cards.join(', ')}`)).join('\n')}
+					${cards.map((card, i) => `**${i + 1}.** ${card.cards.join(', ')}`).join('\n')}
 				`);
 				const filter = res => {
 					if (res.author.id !== czar.user.id) return false;
-					if (!chosenCards[parseInt(res.content, 10) - 1]) return false;
+					if (!cards[parseInt(res.content, 10) - 1]) return false;
 					return true;
 				};
 				const chosen = await msg.channel.awaitMessages(filter, {
@@ -115,7 +116,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					await msg.say('Hmm... No one wins.');
 					continue;
 				}
-				const player = players.get(chosenCards[parseInt(chosen.first().content, 10) - 1].id);
+				const player = players.get(cards[parseInt(chosen.first().content, 10) - 1].id);
 				++player.points;
 				if (player.points >= maxPts) winner = player.user;
 				else await msg.say(`Nice one, ${player.user}! You now have **${player.points}** points!`);
