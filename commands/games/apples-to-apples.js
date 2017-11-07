@@ -47,7 +47,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 				const green = greenCards[Math.floor(Math.random() * greenCards.length)];
 				await msg.say(stripIndents`
 					The card czar will be ${czar.user}!
-					The Green Card is: **${escapeMarkdown(green.text)}**
+					The Green Card is: **${escapeMarkdown(green)}**
 
 					Sending DMs...
 				`);
@@ -58,7 +58,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 						player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
 					}
 					if (player.user.id === czar.user.id) continue;
-					if (player.hand.size < green.pick) {
+					if (!player.hand.size) {
 						await player.user.send('You don\'t have enough cards!');
 						continue;
 					}
@@ -67,30 +67,29 @@ module.exports = class ApplesToApplesCommand extends Command {
 						__**Your hand is**__:
 						${hand.map((card, i) => `**${i + 1}.** ${card}`).join('\n')}
 
-						**Green Card**: ${escapeMarkdown(green.text)}
+						**Green Card**: ${escapeMarkdown(green)}
 						**Card Czar**: ${czar.user.username}
-						Pick **${green.pick}** card${green.pick > 1 ? 's' : ''}!
+						Pick **1** card!
 					`);
-					const chosen = [];
+					let chosen = null;
 					const filter = res => {
 						const existing = hand[parseInt(res.content, 10) - 1];
 						if (!existing) return false;
-						if (chosen.includes(existing)) return false;
-						chosen.push(existing);
+						chosen = existing;
 						return true;
 					};
-					const choices = await player.user.dmChannel.awaitMessages(filter, {
-						max: green.pick,
+					const choice = await player.user.dmChannel.awaitMessages(filter, {
+						max: 1,
 						time: 120000
 					});
-					if (!choices.size || choices.size < green.pick) {
+					if (!choice.size) {
 						await player.user.send('Skipping your turn...');
 						continue;
 					}
-					for (const card of chosen) player.hand.delete(card);
+					player.hand.delete(chosen);
 					chosenCards.push({
 						id: player.id,
-						cards: chosen
+						card: chosen
 					});
 					await player.user.send(`Nice! Return to ${msg.channel} to await the results!`);
 				}
@@ -100,10 +99,10 @@ module.exports = class ApplesToApplesCommand extends Command {
 				}
 				const cards = shuffle(chosenCards);
 				await msg.say(stripIndents`
-					${czar.user}, which card${green.pick > 1 ? 's' : ''} do you pick?
-					**Green Card**: ${escapeMarkdown(green.text)}
+					${czar.user}, which card do you pick?
+					**Green Card**: ${escapeMarkdown(green)}
 
-					${cards.map((card, i) => `**${i + 1}.** ${card.cards.join(', ')}`).join('\n')}
+					${cards.map((card, i) => `**${i + 1}.** ${card.card}`).join('\n')}
 				`);
 				const filter = res => {
 					if (res.author.id !== czar.user.id) return false;
