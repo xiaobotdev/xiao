@@ -63,9 +63,10 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						await player.user.send('You don\'t have enough cards!');
 						continue;
 					}
+					const hand = Array.from(player.hand);
 					await player.user.send(stripIndents`
 						__**Your hand is**__:
-						${Array.from(player.hand).join('\n')}
+						${hand.map((card, i) => `**${i + 1}.** ${card}`).join('\n')}
 
 						**Black Card**: ${escapeMarkdown(black.text)}
 						**Card Czar**: ${czar.user.username}
@@ -74,8 +75,8 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					const chosen = [];
 					const filter = res => {
 						if (chosen.includes(res.content)) return false;
-						if (!player.hand.has(res.content)) return false;
-						chosen.push(res.content);
+						if (!hand[parseInt(res.content, 10) - 1]) return false;
+						chosen.push(hand[parseInt(res.content, 10) - 1]);
 						return true;
 					};
 					const choices = await player.user.dmChannel.awaitMessages(filter, {
@@ -133,21 +134,19 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 
 	async generatePlayers(list) {
 		const players = new Map();
-		let i = 0;
-		for (const player of list) {
+		for (const user of list) {
 			const cards = new Set();
-			for (let j = 0; j < 5; j++) {
+			for (let i = 0; i < 5; i++) {
 				const valid = whiteCards.filter(card => !cards.has(card));
 				cards.add(valid[Math.floor(Math.random() * valid.length)]);
 			}
-			players.set(i, {
-				id: i,
-				user: player,
+			players.set(user.id, {
+				id: user.id,
+				user,
 				points: 0,
 				hand: cards
 			});
-			await player.send('Hi! Waiting for your turn to start...');
-			i++;
+			await user.send('Hi! Waiting for your turn to start...');
 		}
 		return players;
 	}
