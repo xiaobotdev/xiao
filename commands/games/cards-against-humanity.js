@@ -49,6 +49,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				await msg.say(stripIndents`
 					The card czar will be ${czar.user}!
 					The Black Card is: **${escapeMarkdown(black.text)}**
+
 					Sending DMs...
 				`);
 				const chosenCards = [];
