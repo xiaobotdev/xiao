@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { escapeMarkdown } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { awaitPlayers } = require('../../util/Util');
+const { shuffle, awaitPlayers } = require('../../util/Util');
 const { blackCards, whiteCards } = require('../../assets/json/cards-against-humanity');
 
 module.exports = class CardsAgainstHumanityCommand extends Command {
@@ -53,8 +53,10 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				`);
 				const chosenCards = [];
 				for (const player of players.values()) {
-					const valid = whiteCards.filter(card => !player.hand.has(card));
-					if (player.hand.size < 11) player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
+					if (player.hand.size < 11) {
+						const valid = whiteCards.filter(card => !player.hand.has(card));
+						player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
+					}
 					if (player.user.id === czar.user.id) continue;
 					if (player.hand.size < black.pick) {
 						await player.user.send('You don\'t have enough cards!');
@@ -72,7 +74,6 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					const filter = res => {
 						if (chosen.includes(res.content)) return false;
 						if (!player.hand.has(res.content)) return false;
-						player.hand.delete(res.content);
 						chosen.push(res.content);
 						return true;
 					};
@@ -84,6 +85,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						await player.user.send('Skipping your turn...');
 						continue;
 					}
+					for (const card of chosen) player.hand.delete(card);
 					chosenCards.push({
 						id: player.id,
 						cards: chosen
@@ -98,7 +100,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					${czar.user}, which cards do you pick?
 					**Black Card**: ${escapeMarkdown(black.text)}
 
-					${chosenCards.map((card, i) => `**${i + 1}.** ${card.cards.join(', ')}`).join('\n')}
+					${shuffle(chosenCards.map((card, i) => `**${i + 1}.** ${card.cards.join(', ')}`)).join('\n')}
 				`);
 				const filter = res => {
 					if (res.author.id !== czar.user.id) return false;
