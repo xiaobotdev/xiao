@@ -53,7 +53,8 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				`);
 				const chosenCards = [];
 				for (const player of players.values()) {
-					player.hand.add(whiteCards[Math.floor(Math.random() * whiteCards.length)]);
+					const valid = whiteCards.filter(card => !player.hand.has(card));
+					if (player.hand.size < 11) player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
 					if (player.user.id === czar.user.id) continue;
 					if (player.hand.size < black.pick) {
 						await player.user.send('You don\'t have enough cards!');
@@ -131,7 +132,10 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 		let i = 0;
 		for (const player of list) {
 			const cards = new Set();
-			for (let j = 0; j < 5; j++) cards.add(whiteCards[Math.floor(Math.random() * whiteCards.length)]);
+			for (let j = 0; j < 5; j++) {
+				const valid = whiteCards.filter(card => !cards.has(card));
+				cards.add(valid[Math.floor(Math.random() * valid.length)]);
+			}
 			players.set(i, {
 				id: i,
 				user: player,
