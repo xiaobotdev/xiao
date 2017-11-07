@@ -721,7 +721,7 @@
 			"pick": 1
 		},
 		{
-			"text": "Adventure. Romance. _.  From Paramount Pictures, \"_.\"",
+			"text": "Adventure. Romance. _. From Paramount Pictures, \"_.\"",
 			"pick": 2
 		},
 		{
@@ -1322,15 +1322,15 @@
 		},
 		{
 			"pick": 1,
-			"text": "When you go to the polls on Tuesday, remember:  a vote for me is a vote for _."
+			"text": "When you go to the polls on Tuesday, remember: a vote for me is a vote for _."
 		},
 		{
 			"pick": 1,
-			"text": "Senator, I trust you enjoyed _ last night.  Now, can I count on your vote?"
+			"text": "Senator, I trust you enjoyed _ last night. Now, can I count on your vote?"
 		},
 		{
 			"pick": 1,
-			"text": "Trump's great!  Trump's got _.  I love that."
+			"text": "Trump's great! Trump's got _. I love that."
 		},
 		{
 			"pick": 1,
@@ -1338,7 +1338,7 @@
 		},
 		{
 			"pick": 1,
-			"text": "It's 3AM.  The red phone rings.  It's _.  Who do you want answering?"
+			"text": "It's 3AM. The red phone rings. It's _. Who do you want answering?"
 		},
 		{
 			"pick": 1,
@@ -1389,7 +1389,7 @@
 			"pick": 1
 		},
 		{
-			"text": "GREETINGS HUMANS  I AM _ BOT  EXECUTING PROGRAM",
+			"text": "GREETINGS HUMANS I AM _ BOT EXECUTING PROGRAM",
 			"pick": 1
 		},
 		{
