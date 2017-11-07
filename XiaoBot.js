@@ -16,7 +16,6 @@ client.registry
 	.registerGroups([
 		['util', 'Utility'],
 		['info', 'Discord Information'],
-		['moderation', 'Moderation'],
 		['random-res', 'Random Response'],
 		['single-res', 'Single Response'],
 		['events', 'Daily Events'],

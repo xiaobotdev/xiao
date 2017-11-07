@@ -5,7 +5,7 @@ module.exports = class PruneCommand extends Command {
 		super(client, {
 			name: 'prune',
 			aliases: ['clear'],
-			group: 'moderation',
+			group: 'other',
 			memberName: 'prune',
 			description: 'Deletes up to 99 messages from the current channel.',
 			guildOnly: true,
