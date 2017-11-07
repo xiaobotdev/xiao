@@ -70,13 +70,14 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 
 						**Black Card**: ${escapeMarkdown(black.text)}
 						**Card Czar**: ${czar.user.username}
-						Pick **${black.pick}** cards!
+						Pick **${black.pick}** card${black.pick > 1 ? 's' : ''}!
 					`);
 					const chosen = [];
 					const filter = res => {
-						if (chosen.includes(res.content)) return false;
-						if (!hand[parseInt(res.content, 10) - 1]) return false;
-						chosen.push(hand[parseInt(res.content, 10) - 1]);
+						const existing = hand[parseInt(res.content, 10) - 1];
+						if (!existing) return false;
+						if (chosen.includes(existing)) return false;
+						chosen.push(existing);
 						return true;
 					};
 					const choices = await player.user.dmChannel.awaitMessages(filter, {
@@ -100,7 +101,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				}
 				const cards = shuffle(chosenCards);
 				await msg.say(stripIndents`
-					${czar.user}, which cards do you pick?
+					${czar.user}, which card${black.pick > 1 ? 's' : ''} do you pick?
 					**Black Card**: ${escapeMarkdown(black.text)}
 
 					${cards.map((card, i) => `**${i + 1}.** ${card.cards.join(', ')}`).join('\n')}

@@ -27,20 +27,7 @@ module.exports = class WizardConventionCommand extends Command {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
 			}
-			let roles = ['dragon', 'healer', 'mind reader'];
-			for (let i = 0; i < (awaitedPlayers.length - 2); i++) roles.push(`pleb ${i + 1}`);
-			roles = shuffle(roles);
-			const players = new Collection();
-			let i = 1;
-			for (const player of awaitedPlayers) {
-				players.set(i, {
-					id: i,
-					user: player,
-					role: roles[i - 1]
-				});
-				await player.send(`Your role will be: ${roles[i - 1]}!`);
-				i++;
-			}
+			const players = await this.generatePlayers(awaitedPlayers);
 			let turn = 1;
 			while (players.size > 2 && players.exists('role', 'dragon')) {
 				let eaten = null;
@@ -48,15 +35,14 @@ module.exports = class WizardConventionCommand extends Command {
 				await msg.say(`Night ${turn}, sending DMs...`);
 				for (const player of players.values()) {
 					if (player.role.includes('pleb')) continue;
-					const valid = players.filter(p => p.role !== player.role);
+					const valid = players.filterArray(p => p.role !== player.role);
 					await player.user.send(stripIndents`
 						${questions[player.role]} Please type the number.
-						${valid.map(p => `**${p.id}.** ${p.user.tag}`).join('\n')}
+						${valid.map((p, i) => `**${i + 1}.** ${p.user.tag}`).join('\n')}
 					`);
-					const filter = res => valid.map(p => p.id.toString()).includes(res.content);
-					const decision = await player.user.dmChannel.awaitMessages(filter, {
+					const decision = await player.user.dmChannel.awaitMessages(res => valid[parseInt(res.content, 10) - 1], {
 						max: 1,
-						time: 30000
+						time: 120000
 					});
 					if (!decision.size) {
 						await player.user.send('Sorry, time is up!');
@@ -101,28 +87,36 @@ module.exports = class WizardConventionCommand extends Command {
 						Who is this mysterious dragon? You have one minute to decide.
 					`);
 				}
-				await wait(60000);
+				await wait(120000);
+				const playersArr = Array.from(players.values());
 				await msg.say(stripIndents`
 					Who do you think is the dragon? Please type the number.
-					${players.map(p => `**${p.id}.** ${p.user.tag}`).join('\n')}
+					${playersArr.map((p, i) => `**${i + 1}.** ${p.user.tag}`).join('\n')}
 				`);
 				const voted = [];
-				const filter2 = res => {
+				const filter = res => {
 					if (!players.exists(p => p.user.id === res.author.id)) return false;
 					if (voted.includes(res.author.id)) return false;
-					if (!players.has(parseInt(res.content, 10))) return false;
+					if (!playersArr[parseInt(res.content, 10) - 1]) return false;
 					voted.push(res.author.id);
 					return true;
 				};
-				const votes = await msg.channel.awaitMessages(filter2, { time: 30000 });
+				const votes = await msg.channel.awaitMessages(filter, {
+					max: players.size,
+					time: 120000
+				});
 				const counts = new Collection();
 				for (const vote of votes.values()) {
-					const player = players.get(parseInt(vote.content, 10));
-					counts.set(player.id, {
-						id: player.id,
-						votes: counts.has(player.id) ? ++counts.get(player.id).votes : 1,
-						user: player.user
-					});
+					const player = players.get(playersArr[parseInt(vote.content, 10) - 1].id);
+					if (counts.has(player.id)) {
+						++counts.get(player.id).votes;
+					} else {
+						counts.set(player.id, {
+							id: player.id,
+							votes: 1,
+							user: player.user
+						});
+					}
 				}
 				if (!counts.size) {
 					await msg.say('No one will be expelled.');
@@ -140,6 +134,23 @@ module.exports = class WizardConventionCommand extends Command {
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
+	}
+
+	async generatePlayers(list) {
+		let roles = ['dragon', 'healer', 'mind reader'];
+		for (let i = 0; i < (list.length - 2); i++) roles.push(`pleb ${i + 1}`);
+		roles = shuffle(roles);
+		const players = new Collection();
+		let i = 0;
+		for (const user of list) {
+			players.set(user.id, {
+				id: user.id,
+				user,
+				role: roles[i]
+			});
+			await user.send(`Your role will be: ${roles[i]}!`);
+			i++;
 		}
 	}
 };
