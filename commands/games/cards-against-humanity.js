@@ -8,7 +8,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'cards-against-humanity',
-			aliases: ['crude-cards', 'pretend-youre-xyzzy'],
+			aliases: ['crude-cards', 'pretend-youre-xyzzy', 'cah'],
 			group: 'games',
 			memberName: 'cards-against-humanity',
 			description: 'Play a game of Cards Against Humanity.',
