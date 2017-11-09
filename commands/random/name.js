@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
 const { list } = require('../../util/Util');
+const names = require('../../assets/json/name');
+const all = [].concat(names.male, names.female);
 const genders = ['male', 'female', 'both'];
 
 module.exports = class NameCommand extends Command {
@@ -26,18 +27,9 @@ module.exports = class NameCommand extends Command {
 		});
 	}
 
-	async run(msg, { gender }) {
-		try {
-			const { body } = await snekfetch
-				.get('http://namey.muffinlabs.com/name.json')
-				.query({
-					with_surname: true,
-					type: gender,
-					frequency: 'all'
-				});
-			return msg.say(body[0]);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg, { gender }) {
+		const lastName = names.last[Math.floor(Math.random() * names.last.length)];
+		if (gender === 'both') return msg.say(`${all[Math.floor(Math.random() * all.length)]} ${lastName}`);
+		return msg.say(`${names[gender][Math.floor(Math.random() * names[gender].length)]} ${lastName}`);
 	}
 };
