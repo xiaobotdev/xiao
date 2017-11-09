@@ -9,7 +9,7 @@ module.exports = class NASACommand extends Command {
 			aliases: ['nasa-image'],
 			group: 'search',
 			memberName: 'nasa',
-			description: 'Search NASA\'s image archive for your query.',
+			description: 'Searches NASA\'s image archive for your query.',
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
