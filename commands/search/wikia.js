@@ -10,7 +10,7 @@ module.exports = class WikiaCommand extends Command {
 			aliases: ['fandom', 'wikia-article', 'fandom-article'],
 			group: 'search',
 			memberName: 'wikia',
-			description: 'Searches a specified Wikia wiki for your query.',
+			description: 'Searches a specific Wikia wiki for your query.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
