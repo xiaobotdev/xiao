@@ -9,11 +9,11 @@ module.exports = class SuperscriptCommand extends Command {
 			aliases: ['tiny-text', 'small-text'],
 			group: 'text-edit',
 			memberName: 'superscript',
-			description: 'Makes text become tiny text.',
+			description: 'Converts text to tiny text.',
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to make tiny?',
+					prompt: 'What text would you like to convert to tiny text?',
 					type: 'string'
 				}
 			]

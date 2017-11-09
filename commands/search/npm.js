@@ -10,22 +10,23 @@ module.exports = class NPMCommand extends Command {
 			aliases: ['npm-package'],
 			group: 'search',
 			memberName: 'npm',
-			description: 'Gets information on an NPM package.',
+			description: 'Responds with information on an NPM package.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'query',
+					key: 'pkg',
+					label: 'package',
 					prompt: 'What package would you like to get information on?',
 					type: 'string',
-					parse: query => encodeURIComponent(query.replace(/ /g, '-'))
+					parse: pkg => encodeURIComponent(pkg.replace(/ /g, '-'))
 				}
 			]
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { pkg }) {
 		try {
-			const { body } = await snekfetch.get(`https://registry.npmjs.com/${query}`);
+			const { body } = await snekfetch.get(`https://registry.npmjs.com/${pkg}`);
 			const version = body.versions[body['dist-tags'].latest];
 			const maintainers = trimArray(body.maintainers.map(user => user.name));
 			const dependencies = version.dependencies ? trimArray(Object.keys(version.dependencies)) : null;
@@ -33,7 +34,7 @@ module.exports = class NPMCommand extends Command {
 				.setColor(0xCB0000)
 				.setAuthor('NPM', 'https://i.imgur.com/ErKf5Y0.png')
 				.setTitle(body.name)
-				.setURL(`https://www.npmjs.com/package/${query}`)
+				.setURL(`https://www.npmjs.com/package/${pkg}`)
 				.setDescription(body.description || 'No description.')
 				.addField('❯ Version',
 					body['dist-tags'].latest, true)

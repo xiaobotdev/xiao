@@ -14,7 +14,7 @@ module.exports = class WebhookCommand extends Command {
 			clientPermissions: ['MANAGE_MESSAGES'],
 			args: [
 				{
-					key: 'content',
+					key: 'message',
 					prompt: 'What text would you like the webhook to say?',
 					type: 'string'
 				}
@@ -22,10 +22,10 @@ module.exports = class WebhookCommand extends Command {
 		});
 	}
 
-	async run(msg, { content }) {
+	async run(msg, { message }) {
 		if (msg.channel.type === 'text') await msg.delete();
 		try {
-			await snekfetch.post(WEBHOOK_URL).send({ content });
+			await snekfetch.post(WEBHOOK_URL).send({ content: message });
 			return null;
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

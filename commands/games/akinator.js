@@ -11,7 +11,7 @@ module.exports = class AkinatorCommand extends Command {
 			aliases: ['the-web-genie', 'web-genie'],
 			group: 'games',
 			memberName: 'akinator',
-			description: 'Play a game of Akinator.',
+			description: 'Think about a real or fictional character, I will try to guess who it is.',
 			clientPermissions: ['EMBED_LINKS']
 		});
 
@@ -22,7 +22,7 @@ module.exports = class AkinatorCommand extends Command {
 		if (this.sessions.has(msg.channel.id)) return msg.reply('Only one game may be occuring per channel.');
 		try {
 			let ans = null;
-			this.sessions.set(msg.channel.id, { progress: null });
+			this.sessions.set(msg.channel.id, { progress: 0 });
 			while (this.sessions.get(msg.channel.id).progress < 99) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
 				if (!data || this.sessions.get(msg.channel.id).step >= 80) break;
@@ -30,7 +30,7 @@ module.exports = class AkinatorCommand extends Command {
 				answers.push('end');
 				await msg.say(stripIndents`
 					**${++data.step}.** ${data.question}
-					${data.answers.map(answer => answer.answer).join(' | ')}
+					${data.answers.map(answer => answer.answer).join(' | ')} | End
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
 				const msgs = await msg.channel.awaitMessages(filter, {
@@ -48,9 +48,7 @@ module.exports = class AkinatorCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xF78B26)
 				.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
-				.setDescription(stripIndents`
-					${guess.name}${guess.description ? `\n_${guess.description}_` : ''}
-				`)
+				.setDescription(`${guess.name}${guess.description ? `\n_${guess.description}_` : ''}`)
 				.setThumbnail(guess.absolute_picture_path);
 			await msg.embed(embed);
 			const verification = await verify(msg.channel, msg.author);

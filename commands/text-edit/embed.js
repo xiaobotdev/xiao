@@ -7,7 +7,7 @@ module.exports = class EmbedCommand extends Command {
 			name: 'embed',
 			group: 'text-edit',
 			memberName: 'embed',
-			description: 'Sends a message in an embed.',
+			description: 'Sends text in an embed.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{

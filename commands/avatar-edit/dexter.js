@@ -9,7 +9,7 @@ module.exports = class DexterCommand extends Command {
 			name: 'dexter',
 			group: 'avatar-edit',
 			memberName: 'dexter',
-			description: 'Draws a user\'s avatar over Dexter from Pokémon\'s screen.',
+			description: 'Draws a user\'s avatar over the screen of Dexter from Pokémon.',
 			throttling: {
 				usages: 1,
 				duration: 15

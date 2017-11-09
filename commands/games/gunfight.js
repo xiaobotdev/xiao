@@ -9,7 +9,7 @@ module.exports = class GunfightCommand extends Command {
 			aliases: ['western-gunfight'],
 			group: 'games',
 			memberName: 'gunfight',
-			description: 'Engage in a western gunfight against another user.',
+			description: 'Engage in a western gunfight against another user. High noon.',
 			guildOnly: true,
 			args: [
 				{

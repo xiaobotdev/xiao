@@ -9,7 +9,7 @@ module.exports = class RecipeCommand extends Command {
 			aliases: ['recipe-puppy'],
 			group: 'search',
 			memberName: 'recipe',
-			description: 'Searches for recipes that include your query.',
+			description: 'Searches for recipes based on your query.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{

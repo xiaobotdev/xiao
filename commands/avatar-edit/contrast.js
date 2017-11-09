@@ -9,7 +9,7 @@ module.exports = class ContrastCommand extends Command {
 			name: 'contrast',
 			group: 'avatar-edit',
 			memberName: 'contrast',
-			description: 'Draws a user\'s avatar, but with contrast.',
+			description: 'Draws a user\'s avatar but with contrast.',
 			throttling: {
 				usages: 1,
 				duration: 15

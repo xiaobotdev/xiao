@@ -13,19 +13,19 @@ module.exports = class DictionaryCommand extends Command {
 			description: 'Defines a word.',
 			args: [
 				{
-					key: 'query',
+					key: 'word',
 					prompt: 'What word would you like to look up?',
 					type: 'string',
-					parse: query => encodeURIComponent(query)
+					parse: word => encodeURIComponent(word)
 				}
 			]
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { word }) {
 		try {
 			const { body } = await snekfetch
-				.get(`http://api.wordnik.com/v4/word.json/${query}/definitions`)
+				.get(`http://api.wordnik.com/v4/word.json/${word}/definitions`)
 				.query({
 					limit: 1,
 					includeRelated: false,

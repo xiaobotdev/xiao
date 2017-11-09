@@ -8,7 +8,7 @@ module.exports = class RoleInfoCommand extends Command {
 			name: 'role-info',
 			aliases: ['role'],
 			group: 'info',
-			memberName: 'role-info',
+			memberName: 'role',
 			description: 'Responds with detailed information on a role.',
 			guildOnly: true,
 			clientPermissions: ['EMBED_LINKS'],

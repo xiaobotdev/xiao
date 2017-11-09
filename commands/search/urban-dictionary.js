@@ -10,23 +10,23 @@ module.exports = class UrbanDictionaryCommand extends Command {
 			aliases: ['urban', 'define-urban'],
 			group: 'search',
 			memberName: 'urban-dictionary',
-			description: 'Searches Urban Dictionary for your query.',
+			description: 'Defines a word, but with Urban Dictionary.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'query',
-					prompt: 'What would you like to define?',
+					key: 'word',
+					prompt: 'What word would you like to look up?',
 					type: 'string'
 				}
 			]
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { word }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.urbandictionary.com/v0/define')
-				.query({ term: query });
+				.query({ term: word });
 			if (!body.list.length) return msg.say('Could not find any results.');
 			const data = body.list[Math.floor(Math.random() * body.list.length)];
 			const embed = new MessageEmbed()

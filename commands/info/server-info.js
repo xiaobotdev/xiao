@@ -9,7 +9,7 @@ module.exports = class ServerInfoCommand extends Command {
 			name: 'server-info',
 			aliases: ['guild', 'server', 'guild-info'],
 			group: 'info',
-			memberName: 'server-info',
+			memberName: 'server',
 			description: 'Responds with detailed information on the server.',
 			guildOnly: true,
 			clientPermissions: ['EMBED_LINKS']

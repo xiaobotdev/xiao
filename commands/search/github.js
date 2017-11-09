@@ -11,7 +11,7 @@ module.exports = class GitHubCommand extends Command {
 			aliases: ['github-repository', 'github-repo', 'git-repo'],
 			group: 'search',
 			memberName: 'github',
-			description: 'Searches GitHub for information on a repository.',
+			description: 'Responds with information on a GitHub repository.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{

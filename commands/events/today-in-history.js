@@ -9,22 +9,14 @@ module.exports = class TodayInHistoryCommand extends Command {
 			aliases: ['event', 'today', 'history'],
 			group: 'events',
 			memberName: 'today-in-history',
-			description: 'Responds with an event that occurred today in history, or on a specific day.',
-			clientPermissions: ['EMBED_LINKS'],
-			args: [
-				{
-					key: 'date',
-					prompt: 'What date do you want events for? Month/Day format.',
-					type: 'string',
-					default: ''
-				}
-			]
+			description: 'Responds with an event that occurred today in history.',
+			clientPermissions: ['EMBED_LINKS']
 		});
 	}
 
-	async run(msg, { date }) {
+	async run(msg) {
 		try {
-			const { text } = await snekfetch.get(`http://history.muffinlabs.com/date${date ? `/${date}` : ''}`);
+			const { text } = await snekfetch.get('http://history.muffinlabs.com/date');
 			const body = JSON.parse(text);
 			const events = body.data.Events;
 			const event = events[Math.floor(Math.random() * events.length)];
@@ -38,7 +30,6 @@ module.exports = class TodayInHistoryCommand extends Command {
 					event.links.map(link => `[${link.title}](${link.link.replace(/\)/g, '%29')})`).join(', '));
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404 || err.status === 500) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

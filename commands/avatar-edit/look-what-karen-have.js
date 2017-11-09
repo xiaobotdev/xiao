@@ -10,7 +10,7 @@ module.exports = class LookWhatKarenHaveCommand extends Command {
 			aliases: ['look-at-what-karen-has', 'look-what-karen-has'],
 			group: 'avatar-edit',
 			memberName: 'look-what-karen-have',
-			description: 'Draws a user\'s avatar over Karen\'s photo.',
+			description: 'Draws a user\'s avatar over Karen\'s piece of paper.',
 			throttling: {
 				usages: 1,
 				duration: 15

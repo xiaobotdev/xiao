@@ -9,24 +9,24 @@ module.exports = class XKCDCommand extends Command {
 			aliases: ['kcd'],
 			group: 'events',
 			memberName: 'xkcd',
-			description: 'Gets an XKCD Comic, optionally opting for today\'s or a specific number.',
+			description: 'Responds with an XKCD comic, either today\'s, a random one, or a specific one.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'type',
+					key: 'query',
 					prompt: 'Please enter either a specific comic number, today, or random.',
 					type: 'string',
 					default: 'today',
-					parse: type => type.toLowerCase()
+					parse: query => query.toLowerCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { type }) {
+	async run(msg, { query }) {
 		try {
 			const current = await snekfetch.get('https://xkcd.com/info.0.json');
-			if (type === 'today') {
+			if (query === 'today') {
 				const embed = new MessageEmbed()
 					.setTitle(`${current.body.num} - ${current.body.title}`)
 					.setColor(0x9797FF)
@@ -35,7 +35,7 @@ module.exports = class XKCDCommand extends Command {
 					.setFooter(current.body.alt);
 				return msg.embed(embed);
 			}
-			if (type === 'random') {
+			if (query === 'random') {
 				const random = Math.floor(Math.random() * current.body.num) + 1;
 				const { body } = await snekfetch.get(`https://xkcd.com/${random}/info.0.json`);
 				const embed = new MessageEmbed()
@@ -46,7 +46,7 @@ module.exports = class XKCDCommand extends Command {
 					.setFooter(body.alt);
 				return msg.embed(embed);
 			}
-			const choice = parseInt(type, 10);
+			const choice = parseInt(query, 10);
 			if (isNaN(choice) || current.body.num < choice || choice < 1) return msg.say('Could not find any results.');
 			const { body } = await snekfetch.get(`https://xkcd.com/${choice}/info.0.json`);
 			const embed = new MessageEmbed()

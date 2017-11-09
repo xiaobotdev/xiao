@@ -10,12 +10,12 @@ module.exports = class StocksCommand extends Command {
 			aliases: ['stock', 'alpha-vantage'],
 			group: 'search',
 			memberName: 'stocks',
-			description: 'Get the current stocks for a symbol.',
+			description: 'Responds with the current stocks for a specific symbol.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'symbol',
-					prompt: 'What symbol would you like to get the stocks for?',
+					prompt: 'What symbol would you like to get the stocks of?',
 					type: 'string'
 				}
 			]

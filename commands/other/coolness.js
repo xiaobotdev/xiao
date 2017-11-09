@@ -6,7 +6,7 @@ module.exports = class CoolnessCommand extends Command {
 			name: 'coolness',
 			group: 'other',
 			memberName: 'coolness',
-			description: 'Determines your coolness.',
+			description: 'Determines a user\'s coolness.',
 			args: [
 				{
 					key: 'user',

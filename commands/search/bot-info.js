@@ -10,7 +10,7 @@ module.exports = class BotInfoCommand extends Command {
 			aliases: ['discord-bots', 'dbots'],
 			group: 'search',
 			memberName: 'bot-info',
-			description: 'Searches Discord Bots for information on a bot.',
+			description: 'Responds with information on a specific Discord bot.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{

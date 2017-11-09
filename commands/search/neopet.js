@@ -8,10 +8,10 @@ module.exports = class NeopetCommand extends Command {
 			aliases: ['neopet-image', 'neopet-image-finder'],
 			group: 'search',
 			memberName: 'neopet',
-			description: 'Searches for Neopets with the username of your query.',
+			description: 'Responds with the image of a specific Neopet.',
 			args: [
 				{
-					key: 'query',
+					key: 'pet',
 					prompt: 'What pet would you like to get an image of?',
 					type: 'string'
 				}
@@ -19,12 +19,12 @@ module.exports = class NeopetCommand extends Command {
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { pet }) {
 		try {
 			const { text } = await snekfetch
 				.get('http://www.sunnyneo.com/petimagefinder.php')
 				.query({
-					name: query,
+					name: pet,
 					size: 5,
 					mood: 1
 				});

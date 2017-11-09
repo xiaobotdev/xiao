@@ -10,7 +10,7 @@ module.exports = class WordOfTheDayCommand extends Command {
 			aliases: ['wordnik-word-of-the-day'],
 			group: 'events',
 			memberName: 'word-of-the-day',
-			description: 'Gets the word of the day.'
+			description: 'Responds with today\'s word of the day.'
 		});
 	}
 

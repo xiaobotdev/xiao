@@ -88,7 +88,7 @@ class Util {
 		const filter = res => {
 			if (msg.author.bot) return false;
 			if (joined.includes(res.author.id)) return false;
-			if (res.content.toLowerCase() !== text) return false;
+			if (res.content.toLowerCase() !== text.toLowerCase()) return false;
 			joined.push(res.author.id);
 			return true;
 		};

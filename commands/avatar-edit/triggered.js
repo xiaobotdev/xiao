@@ -10,7 +10,7 @@ module.exports = class TriggeredCommand extends Command {
 			name: 'triggered',
 			group: 'avatar-edit',
 			memberName: 'triggered',
-			description: 'Draws a user\'s avatar over a Triggered meme.',
+			description: 'Draws a user\'s avatar over the "Triggered" meme.',
 			throttling: {
 				usages: 1,
 				duration: 15

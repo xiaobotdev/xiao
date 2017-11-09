@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { list } = require('../../util/Util');
 const path = require('path');
-const sounds = ['airhorn', 'cat', 'dun-dun-dun', 'laugh track', 'pikachu', 'space'];
+const sounds = require('../../assets/json/soundboard');
 
 module.exports = class SoundboardCommand extends Command {
 	constructor(client) {
