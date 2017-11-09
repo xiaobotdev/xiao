@@ -9,7 +9,7 @@ module.exports = class HelpCommand extends Command {
 			aliases: ['commands', 'command-list'],
 			group: 'util',
 			memberName: 'help',
-			description: 'Displays a list of available commands, or detailed information for a specified command.',
+			description: 'Displays a list of available commands, or detailed information for a specific command.',
 			guarded: true,
 			args: [
 				{
