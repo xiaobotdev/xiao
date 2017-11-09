@@ -7,7 +7,7 @@ module.exports = class UserInfoCommand extends Command {
 			name: 'user-info',
 			aliases: ['user', 'member', 'member-info'],
 			group: 'info',
-			memberName: 'user-info',
+			memberName: 'user',
 			description: 'Responds with detailed information on a user.',
 			guildOnly: true,
 			clientPermissions: ['EMBED_LINKS'],

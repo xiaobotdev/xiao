@@ -10,7 +10,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 			name: 'apples-to-apples',
 			group: 'games',
 			memberName: 'apples-to-apples',
-			description: 'Play a game of Apples to Apples.',
+			description: 'Compete to see who can come up with the best card to match an adjective.',
 			guildOnly: true,
 			args: [
 				{
@@ -31,8 +31,8 @@ module.exports = class ApplesToApplesCommand extends Command {
 		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
-			await msg.say('You will need at least 2 more players, at maximum 20. To join, type `join game`.');
-			const awaitedPlayers = await awaitPlayers(msg, 20, 3);
+			await msg.say('You will need at least 2 more players, at maximum 10. To join, type `join game`.');
+			const awaitedPlayers = await awaitPlayers(msg, 10, 3);
 			if (!awaitedPlayers) {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
@@ -86,7 +86,24 @@ module.exports = class ApplesToApplesCommand extends Command {
 						await player.user.send('Skipping your turn...');
 						continue;
 					}
-					player.hand.delete(chosen);
+					if (chosen === '<Blank>') {
+						await player.user.send(stripIndents`
+							What do you want the blank card to say?
+							Only answers under 100 characters will be counted.
+						`);
+						const blank = await player.user.dmChannel.awaitMessages(res => res.content.length < 100, {
+							max: 1,
+							time: 120000
+						});
+						if (!blank.size) { // eslint-disable-line max-depth
+							await player.user.send('Skipping your turn...');
+							continue;
+						}
+						player.hand.delete('<Blank>');
+						chosen = blank.first().content;
+					} else {
+						player.hand.delete(chosen);
+					}
 					chosenCards.push({
 						id: player.id,
 						card: chosen

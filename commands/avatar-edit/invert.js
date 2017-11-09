@@ -9,7 +9,7 @@ module.exports = class InvertCommand extends Command {
 			name: 'invert',
 			group: 'avatar-edit',
 			memberName: 'invert',
-			description: 'Draws a user\'s avatar inverted.',
+			description: 'Draws a user\'s avatar but inverted.',
 			throttling: {
 				usages: 1,
 				duration: 15

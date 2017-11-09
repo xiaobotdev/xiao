@@ -7,7 +7,7 @@ module.exports = class DaysUntilCommand extends Command {
 			aliases: ['days-until-christmas'],
 			group: 'events',
 			memberName: 'days-until',
-			description: 'Responds with how many days until a certain date this year.',
+			description: 'Responds with how many days there are until a certain date.',
 			args: [
 				{
 					key: 'date',

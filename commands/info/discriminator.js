@@ -12,6 +12,7 @@ module.exports = class DiscriminatorCommand extends Command {
 			args: [
 				{
 					key: 'discrim',
+					label: 'discriminator',
 					prompt: 'Which discriminator would you like to search for?',
 					type: 'string',
 					default: '',

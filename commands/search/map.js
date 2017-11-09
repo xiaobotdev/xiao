@@ -9,7 +9,7 @@ module.exports = class MapCommand extends Command {
 			aliases: ['google-maps', 'google-map'],
 			group: 'search',
 			memberName: 'map',
-			description: 'Responds with a map based upon your query.',
+			description: 'Responds with a map of a specific location.',
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
@@ -21,7 +21,7 @@ module.exports = class MapCommand extends Command {
 					max: 20
 				},
 				{
-					key: 'query',
+					key: 'location',
 					prompt: 'What location would you like to get a map of?',
 					type: 'string'
 				}
@@ -29,17 +29,17 @@ module.exports = class MapCommand extends Command {
 		});
 	}
 
-	async run(msg, { zoom, query }) {
+	async run(msg, { zoom, location }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://maps.googleapis.com/maps/api/staticmap')
 				.query({
-					center: query,
+					center: location,
 					zoom,
 					size: '500x500',
 					key: GOOGLE_KEY
 				});
-			const url = `https://www.google.com/maps/search/${encodeURIComponent(query)}`;
+			const url = `https://www.google.com/maps/search/${encodeURIComponent(location)}`;
 			return msg.say(`<${url}>`, { files: [{ attachment: body, name: 'map.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

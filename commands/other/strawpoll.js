@@ -9,7 +9,7 @@ module.exports = class StrawpollCommand extends Command {
 			aliases: ['poll'],
 			group: 'other',
 			memberName: 'strawpoll',
-			description: 'Creates a Strawpoll from the options you provide.',
+			description: 'Generates a Strawpoll with the options you provide.',
 			args: [
 				{
 					key: 'title',

@@ -12,7 +12,7 @@ module.exports = class JishoCommand extends Command {
 			description: 'Defines a word, but with Japanese.',
 			args: [
 				{
-					key: 'query',
+					key: 'word',
 					prompt: 'What word would you like to look up?',
 					type: 'string'
 				}
@@ -20,11 +20,11 @@ module.exports = class JishoCommand extends Command {
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { word }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://jisho.org/api/v1/search/words')
-				.query({ keyword: query });
+				.query({ keyword: word });
 			if (!body.data.length) return msg.say('Could not find any results.');
 			const data = body.data[0];
 			return msg.say(stripIndents`

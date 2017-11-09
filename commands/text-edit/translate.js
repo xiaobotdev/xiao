@@ -12,7 +12,7 @@ module.exports = class TranslateCommand extends Command {
 			aliases: ['yandex', 'yandex-translate'],
 			group: 'text-edit',
 			memberName: 'translate',
-			description: 'Translates text to a specified language.',
+			description: 'Translates text to a specific language.',
 			details: `**Codes**: ${Object.keys(codes).join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

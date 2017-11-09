@@ -7,7 +7,7 @@ module.exports = class BCommand extends Command {
 			aliases: ['🅱'],
 			group: 'text-edit',
 			memberName: 'b',
-			description: '🅱.',
+			description: 'Replaces b with 🅱.',
 			args: [
 				{
 					key: 'text',

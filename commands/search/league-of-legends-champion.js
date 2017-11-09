@@ -8,10 +8,10 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'league-of-legends-champion',
-			aliases: ['lol-champion', 'champion', 'league-of-legends-champ', 'lol-champ', 'champ'],
+			aliases: ['lol-champion', 'league-of-legends-champ', 'lol-champ'],
 			group: 'search',
 			memberName: 'league-of-legends-champion',
-			description: 'Gets information on a League of Legends champion.',
+			description: 'Responds with information on a League of Legends champion.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
@@ -79,9 +79,9 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 				.addField('❯ Spell Block',
 					`${data.stats.spellblock} (${data.stats.spellblockperlevel}/level)`, true)
 				.addField('❯ Passive',
-					data.passive.name)
+					data.passive.name, true)
 				.addField('❯ Spells',
-					data.spells.map((spell, i) => `${spell.name} (${buttons[i]})`).join('\n'));
+					data.spells.map((spell, i) => `${spell.name} (${buttons[i]})`).join('\n'), true);
 			return msg.say(`Tip: ${tips[Math.floor(Math.random() * tips.length)]}`, { embed });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

@@ -10,22 +10,22 @@ module.exports = class ThesaurusCommand extends Command {
 			aliases: ['synonym', 'antonym', 'wordnik-thesaurus'],
 			group: 'search',
 			memberName: 'thesaurus',
-			description: 'Gets the synonyms and antonyms of a word.',
+			description: 'Responds with the synonyms and antonyms of a word.',
 			args: [
 				{
-					key: 'query',
+					key: 'word',
 					prompt: 'What word would you like to look up?',
 					type: 'string',
-					parse: query => encodeURIComponent(query)
+					parse: word => encodeURIComponent(word)
 				}
 			]
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { word }) {
 		try {
 			const { body } = await snekfetch
-				.get(`http://api.wordnik.com/v4/word.json/${query}/relatedWords`)
+				.get(`http://api.wordnik.com/v4/word.json/${word}/relatedWords`)
 				.query({
 					relationshipTypes: 'synonym,antonym',
 					limitPerRelationshipType: 5,
@@ -35,7 +35,7 @@ module.exports = class ThesaurusCommand extends Command {
 			const synonyms = body.find(words => words.relationshipType === 'synonym');
 			const antonyms = body.find(words => words.relationshipType === 'antonym');
 			return msg.say(stripIndents`
-				**${query}**
+				**${word}**
 				__Synonyms:__ ${synonyms ? synonyms.words.join(', ') : '???'}
 				__Antonyms:__ ${antonyms ? antonyms.words.join(', ') : '???'}
 			`);

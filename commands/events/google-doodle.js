@@ -7,7 +7,7 @@ module.exports = class GoogleDoodleCommand extends Command {
 			name: 'google-doodle',
 			group: 'events',
 			memberName: 'google-doodle',
-			description: 'Responds with a Google doodle, either the latest or a random one from a specific month/year.',
+			description: 'Responds with a Google Doodle, either the latest one or a random one from the past.',
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{

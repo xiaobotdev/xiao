@@ -8,7 +8,7 @@ module.exports = class PixelizeCommand extends Command {
 			name: 'pixelize',
 			group: 'avatar-edit',
 			memberName: 'pixelize',
-			description: 'Draws a user\'s avatar pixelized.',
+			description: 'Draws a user\'s avatar but pixelized.',
 			throttling: {
 				usages: 1,
 				duration: 15

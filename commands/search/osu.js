@@ -10,11 +10,11 @@ module.exports = class OsuCommand extends Command {
 			aliases: ['osu-user', 'osu-stats'],
 			group: 'search',
 			memberName: 'osu',
-			description: 'Searches osu! usernames for your query.',
+			description: 'Responds with information on an Osu! user.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'query',
+					key: 'user',
 					prompt: 'What user would you like to get information on?',
 					type: 'string'
 				}
@@ -22,13 +22,13 @@ module.exports = class OsuCommand extends Command {
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { user }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://osu.ppy.sh/api/get_user')
 				.query({
 					k: OSU_KEY,
-					u: query,
+					u: user,
 					type: 'string'
 				});
 			if (!body.length) return msg.say('Could not find any results.');

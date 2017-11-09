@@ -10,12 +10,12 @@ module.exports = class TumblrCommand extends Command {
 			aliases: ['tumblr-blog'],
 			group: 'search',
 			memberName: 'tumblr',
-			description: 'Searches Tumblr for information on a blog.',
+			description: 'Responds with information on a Tumblr blog.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'blog',
-					prompt: 'What is the url of the blog you would like to get information on?',
+					prompt: 'What blog would you like to get information on?',
 					type: 'string',
 					parse: blog => encodeURIComponent(blog)
 				}

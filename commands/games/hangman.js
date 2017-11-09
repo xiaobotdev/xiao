@@ -9,7 +9,7 @@ module.exports = class HangmanCommand extends Command {
 			name: 'hangman',
 			group: 'games',
 			memberName: 'hangman',
-			description: 'Play a game of hangman.'
+			description: 'Prevent a man from being hanged by guessing a word as fast as you can.'
 		});
 
 		this.playing = new Set();

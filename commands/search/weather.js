@@ -10,11 +10,11 @@ module.exports = class WeatherCommand extends Command {
 			aliases: ['open-weather-map'],
 			group: 'search',
 			memberName: 'weather',
-			description: 'Responds with weather information for a specified location.',
+			description: 'Responds with weather information for a specific location.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'query',
+					key: 'location',
 					prompt: 'What location would you like to get the weather of?',
 					type: 'string'
 				}
@@ -22,12 +22,12 @@ module.exports = class WeatherCommand extends Command {
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { location }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.openweathermap.org/data/2.5/weather')
 				.query({
-					q: query,
+					q: location,
 					units: 'metric',
 					appid: OWM_KEY
 				});

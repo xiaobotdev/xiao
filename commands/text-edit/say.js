@@ -12,11 +12,7 @@ module.exports = class SayCommand extends Command {
 				{
 					key: 'text',
 					prompt: 'What text would you like XiaoBot to say?',
-					type: 'string',
-					validate: text => {
-						if (!text.includes('@everyone') && !text.includes('@here')) return true;
-						return 'Invalid text, please do not say everyone or here mentions.';
-					}
+					type: 'string'
 				}
 			]
 		});

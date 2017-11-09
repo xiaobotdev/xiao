@@ -5,7 +5,7 @@ const types = {
 	group: 'Group DM',
 	text: 'Text Channel',
 	voice: 'Voice Channel',
-	category: 'Channel Category',
+	category: 'Category',
 	unknown: 'Unknown'
 };
 
@@ -15,7 +15,7 @@ module.exports = class ChannelInfoCommand extends Command {
 			name: 'channel-info',
 			aliases: ['channel'],
 			group: 'info',
-			memberName: 'channel-info',
+			memberName: 'channel',
 			description: 'Responds with detailed information on a channel.',
 			guildOnly: true,
 			clientPermissions: ['EMBED_LINKS'],

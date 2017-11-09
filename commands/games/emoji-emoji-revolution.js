@@ -10,7 +10,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			aliases: ['eer'],
 			group: 'games',
 			memberName: 'emoji-emoji-revolution',
-			description: 'Play a game of Emoji Emoji Revolution.',
+			description: 'Can you type arrow emoji faster than anyone else has ever typed them before?',
 			guildOnly: true,
 			args: [
 				{

@@ -21,30 +21,24 @@ module.exports = class What3WordsCommand extends Command {
 					max: 20
 				},
 				{
-					key: 'word1',
-					prompt: 'What is the first word you would like to use?',
-					type: 'string'
-				},
-				{
-					key: 'word2',
-					prompt: 'What is the second word you would like to use?',
-					type: 'string'
-				},
-				{
-					key: 'word3',
-					prompt: 'What is the third word you would like to use?',
-					type: 'string'
+					key: 'location',
+					prompt: 'What location would you like to get a map of? Use three nouns, like "cat.dog.parrot".',
+					type: 'string',
+					validate: location => {
+						if (location.split('.').length === 3) return true;
+						return 'Invalid location, please enter a valid location, like "cat.dog.parrot".';
+					}
 				}
 			]
 		});
 	}
 
-	async run(msg, { zoom, word1, word2, word3 }) {
+	async run(msg, { zoom, location }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://api.what3words.com/v2/forward')
 				.query({
-					addr: `${word1}.${word2}.${word3}`,
+					addr: location,
 					key: W3W_KEY
 				});
 			if (body.status.code === 300) return msg.say('Could not find any results.');

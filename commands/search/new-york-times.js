@@ -11,7 +11,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 			aliases: ['ny-times', 'new-york-times-article', 'ny-times-article'],
 			group: 'search',
 			memberName: 'new-york-times',
-			description: 'Responds with an article from the New York Times.',
+			description: 'Searches the New York Times for your query.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
