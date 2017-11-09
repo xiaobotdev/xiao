@@ -10,6 +10,7 @@ module.exports = class WebhookCommand extends Command {
 			group: 'text-edit',
 			memberName: 'webhook',
 			description: 'Posts a message to the webhook defined in your `process.env`.',
+			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
 			clientPermissions: ['MANAGE_MESSAGES'],
 			args: [

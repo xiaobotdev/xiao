@@ -10,6 +10,7 @@ module.exports = class CleverbotCommand extends Command {
 			group: 'other',
 			memberName: 'cleverbot',
 			description: 'Chat with Cleverbot.',
+			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
 			args: [
 				{
