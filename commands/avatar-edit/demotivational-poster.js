@@ -53,6 +53,8 @@ module.exports = class DemotivationalPosterCommand extends Command {
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
+			ctx.fillStyle = 'white';
+			ctx.fillRect(0, 0, base.width, base.height);
 			ctx.drawImage(avatar, 68, -57, 612, 612);
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
