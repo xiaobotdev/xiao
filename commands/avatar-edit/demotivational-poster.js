@@ -57,10 +57,10 @@ module.exports = class DemotivationalPosterCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.font = '60px Noto';
 			ctx.fillStyle = 'aquamarine';
-			ctx.fillText(title, 375, 503);
+			ctx.fillText(title, 375, 518);
 			ctx.font = '27px Noto';
 			ctx.fillStyle = 'white';
-			ctx.fillText(text, 375, 575);
+			ctx.fillText(text, 375, 570);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'demotivational-poster.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
