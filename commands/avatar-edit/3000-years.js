@@ -39,8 +39,6 @@ module.exports = class YearsCommand extends Command {
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, base.width, base.height);
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 461, 127, 200, 200);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
