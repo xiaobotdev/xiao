@@ -8,13 +8,14 @@ module.exports = class KonachanCommand extends Command {
 			aliases: ['konachan-image'],
 			group: 'search',
 			memberName: 'konachan',
-			description: 'Searches Konachan for your query.',
+			description: 'Responds with an image from Konachan, with optional query.',
 			nsfw: true,
 			args: [
 				{
 					key: 'query',
 					prompt: 'What image would you like to search for?',
-					type: 'string'
+					type: 'string',
+					default: ''
 				}
 			]
 		});

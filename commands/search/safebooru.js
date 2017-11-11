@@ -11,12 +11,13 @@ module.exports = class SafebooruCommand extends Command {
 			aliases: ['safebooru-image'],
 			group: 'search',
 			memberName: 'safebooru',
-			description: 'Searches Safebooru for your query.',
+			description: 'Responds with an image from Safebooru, with optional query.',
 			args: [
 				{
 					key: 'query',
 					prompt: 'What image would you like to search for?',
-					type: 'string'
+					type: 'string',
+					default: ''
 				}
 			]
 		});
@@ -30,7 +31,8 @@ module.exports = class SafebooruCommand extends Command {
 					page: 'dapi',
 					s: 'post',
 					q: 'index',
-					tags: query
+					tags: query,
+					limit: 200
 				});
 			const body = await xml(text);
 			const data = body.posts.post;

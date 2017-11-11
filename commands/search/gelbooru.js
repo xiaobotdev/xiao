@@ -11,13 +11,14 @@ module.exports = class GelbooruCommand extends Command {
 			aliases: ['gelbooru-image'],
 			group: 'search',
 			memberName: 'gelbooru',
-			description: 'Searches Gelbooru for your query.',
+			description: 'Responds with an image from Gelbooru, with optional query.',
 			nsfw: true,
 			args: [
 				{
 					key: 'query',
 					prompt: 'What image would you like to search for?',
-					type: 'string'
+					type: 'string',
+					default: ''
 				}
 			]
 		});
@@ -31,7 +32,8 @@ module.exports = class GelbooruCommand extends Command {
 					page: 'dapi',
 					s: 'post',
 					q: 'index',
-					tags: query
+					tags: query,
+					limit: 200
 				});
 			const body = await xml(text);
 			const data = body.posts.post;
