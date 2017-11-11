@@ -8,13 +8,14 @@ module.exports = class DanbooruCommand extends Command {
 			aliases: ['danbooru-image'],
 			group: 'search',
 			memberName: 'danbooru',
-			description: 'Searches Danbooru for your query.',
+			description: 'Responds with an image from Danbooru, with optional query.',
 			nsfw: true,
 			args: [
 				{
 					key: 'query',
 					prompt: 'What image would you like to search for?',
 					type: 'string',
+					default: '',
 					validate: query => {
 						if (!query.includes(' ')) return true;
 						return 'Invalid query, please only search for one tag at a time.';
