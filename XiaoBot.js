@@ -9,6 +9,7 @@ const client = new CommandoClient({
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START']
 });
+const activities = require('./assets/json/activity');
 
 client.registry
 	.registerDefaultTypes()
@@ -39,14 +40,8 @@ client.registry
 client.on('ready', () => {
 	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.setInterval(() => {
-		const activities = [
-			`${XIAO_COMMAND_PREFIX}help for commands`,
-			'with dragonfire535',
-			client.options.invite,
-			`with ${client.registry.commands.size} commands`,
-			'Rune Factory 4'
-		];
-		client.user.setActivity(activities[Math.floor(Math.random() * activities.length)]);
+		const activity = activities[Math.floor(Math.random() * activities.length)];
+		client.user.setActivity(activity.text, { type: activity.type });
 	}, 60000);
 });
 
