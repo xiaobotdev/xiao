@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { MASHAPE_KEY } = process.env;
 
 module.exports = class GenderGuessCommand extends Command {
 	constructor(client) {
@@ -16,7 +15,7 @@ module.exports = class GenderGuessCommand extends Command {
 					prompt: 'What name do you want to determine the gender of?',
 					type: 'string',
 					max: 1950,
-					parse: name => name.toLowerCase()
+					parse: name => encodeURIComponent(name)
 				}
 			]
 		});
@@ -24,13 +23,9 @@ module.exports = class GenderGuessCommand extends Command {
 
 	async run(msg, { name }) {
 		try {
-			const { body } = await snekfetch
-				.get('https://udayogra-find-gender-by-name-v1.p.mashape.com/analysis')
-				.query({ firstname: name })
-				.set({ 'X-Mashape-Key': MASHAPE_KEY });
-			if (!body.male || !body.female) return msg.say(`I have no idea what gender ${body.name} is.`);
-			const gender = body.male > body.female ? 'male' : 'female';
-			return msg.say(`I'm ${body[gender]}% sure ${body.name} is a ${gender} name.`);
+			const { body } = await snekfetch.get(`https://api.namsor.com/onomastics/api/json/gender/${name}/null`);
+			if (body.gender === 'unknown') return msg.say(`I have no idea what gender ${body.firstName} is.`);
+			return msg.say(`I'm ${Math.abs(body.scale * 100)}% sure ${body.firstName} is a ${body.gender} name.`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
