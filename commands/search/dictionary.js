@@ -29,6 +29,7 @@ module.exports = class DictionaryCommand extends Command {
 				.query({
 					limit: 1,
 					includeRelated: false,
+					useCanonical: true,
 					api_key: WORDNIK_KEY
 				});
 			if (!body.length) return msg.say('Could not find any results.');
