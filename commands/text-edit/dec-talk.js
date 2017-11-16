@@ -1,8 +1,5 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const path = require('path');
-const { promisifyAll } = require('../../util/Util');
-const fs = promisifyAll(require('fs'));
 
 module.exports = class DECTalkCommand extends Command {
 	constructor(client) {
@@ -36,28 +33,18 @@ module.exports = class DECTalkCommand extends Command {
 		}
 		if (!channel.joinable) return msg.say('Your voice channel is not joinable.');
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
-		const file = path.join(__dirname, '..', '..', 'assets', `dec-talk ${channel.guild.id}.wav`);
 		try {
 			const connection = await channel.join();
-			const { body } = await snekfetch
-				.get('http://tts.cyzon.us/tts')
+			const data = await snekfetch
+				.get('http://tts.cyzon.us/tts', { followRedirects: false })
 				.query({ text });
-			await fs.writeFileAsync(file, body, { encoding: 'binary' });
-			const dispatcher = connection.playFile(file);
-			dispatcher.once('end', () => this.finish(file, channel));
-			dispatcher.once('error', () => this.finish(file, channel));
+			const dispatcher = connection.playArbitraryInput(`http://tts.cyzon.us${data.headers.location}`);
+			dispatcher.once('end', () => channel.leave());
+			dispatcher.once('error', () => channel.leave());
 			return null;
 		} catch (err) {
-			await this.finish(file, channel);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
-	}
-
-	async finish(file, channel) {
-		try {
-			if (fs.existsSync(file)) await fs.unlinkAsync(file);
-		} finally {
 			channel.leave();
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
