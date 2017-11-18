@@ -44,8 +44,6 @@ module.exports = class GoogleBookCommand extends Command {
 				.setThumbnail(data.imageLinks ? data.imageLinks.thumbnail : null)
 				.addField('❯ Authors',
 					data.authors.length ? data.authors.join(', ') : '???')
-				.addField('❯ Publisher',
-					data.publisher || '???', true)
 				.addField('❯ Publish Date',
 					data.publishedDate || '???', true)
 				.addField('❯ Page Count',
