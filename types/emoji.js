@@ -7,6 +7,7 @@ class EmojiArgumentType extends ArgumentType {
 	}
 
 	validate(value, msg) {
+		if (!value) return false;
 		const matches = value.match(/^(?:<:([a-zA-Z0-9_]+):)?([0-9]+)>?$/);
 		if (matches && msg.client.emojis.has(matches[2])) return true;
 		if (!msg.guild) return false;
