@@ -27,9 +27,8 @@ class ImageArgumentType extends ArgumentType {
 	}
 
 	isEmpty(value, msg) {
-		console.log('isEmpty ran');
 		if (!msg.attachments.size) return !value;
-		return Boolean(msg.attachments.size);
+		return !msg.attachments.size;
 	}
 }
 
