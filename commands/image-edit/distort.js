@@ -3,14 +3,14 @@ const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const { distort } = require('../../util/Canvas');
 
-module.exports = class DistortTestCommand extends Command {
+module.exports = class DistortCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'distort-test',
-			aliases: ['under-water-test'],
-			group: 'avatar-edit',
-			memberName: 'distort-test',
-			description: 'Draws an image or user\'s avatar but distorted.',
+			name: 'distort',
+			aliases: ['under-water'],
+			group: 'image-edit',
+			memberName: 'distort',
+			description: 'Draws an image or a user\'s avatar but distorted.',
 			throttling: {
 				usages: 1,
 				duration: 15
@@ -41,12 +41,12 @@ module.exports = class DistortTestCommand extends Command {
 		}
 		try {
 			const { body } = await snekfetch.get(image);
-			const imageData = await loadImage(body);
-			const canvas = createCanvas(imageData.width, imageData.height);
+			const data = await loadImage(body);
+			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
-			ctx.drawImage(imageData, 0, 0);
-			distort(ctx, level, 0, 0, imageData.width, imageData.height);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distort-test.png' }] });
+			ctx.drawImage(data, 0, 0);
+			distort(ctx, level, 0, 0, data.width, data.height);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distort.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
