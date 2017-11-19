@@ -19,7 +19,7 @@ module.exports = class ContrastCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What image would you like to edit?',
-					type: 'user',
+					type: 'image',
 					default: ''
 				}
 			]
