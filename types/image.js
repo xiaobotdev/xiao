@@ -25,6 +25,11 @@ class ImageArgumentType extends ArgumentType {
 		}
 		return msg.attachments.first().url;
 	}
+
+	isEmpty(value, msg) {
+		if (!msg.attachments.size) return !value;
+		return Boolean(msg.attachments.size);
+	}
 }
 
 module.exports = ImageArgumentType;
