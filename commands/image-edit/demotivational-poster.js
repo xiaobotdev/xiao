@@ -11,9 +11,9 @@ module.exports = class DemotivationalPosterCommand extends Command {
 		super(client, {
 			name: 'demotivational-poster',
 			aliases: ['demotivational'],
-			group: 'avatar-edit',
+			group: 'image-edit',
 			memberName: 'demotivational-poster',
-			description: 'Draws a user\'s avatar and the text you specify as a demotivational poster.',
+			description: 'Draws an image or a user\'s avatar and the text you specify as a demotivational poster.',
 			throttling: {
 				usages: 1,
 				duration: 15
@@ -32,30 +32,32 @@ module.exports = class DemotivationalPosterCommand extends Command {
 					type: 'string'
 				},
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: ''
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: '',
+					avatarSize: 1024
 				}
 			]
 		});
 	}
 
-	async run(msg, { title, text, user }) {
-		if (!user) user = msg.author;
-		const avatarURL = user.displayAvatarURL({
-			format: 'png',
-			size: 1024
-		});
+	async run(msg, { title, text, image }) {
+		if (!image) {
+			image = msg.author.displayAvatarURL({
+				format: 'png',
+				size: 1024
+			});
+		}
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'demotivational-poster.png'));
-			const { body } = await snekfetch.get(avatarURL);
-			const avatar = await loadImage(body);
+			const { body } = await snekfetch.get(image);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(avatar, 68, -57, 612, 612);
+			ctx.drawImage(data, 69, 44, 612, data.height > 412 ? data.height : 412);
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
 			ctx.font = '60px Noto';
