@@ -36,6 +36,8 @@ module.exports = class HelpCommand extends Command {
 					**Aliases**: ${data.aliases.join(', ') || 'None'}
 					**Group**: ${data.group.name} (\`${data.groupID}:${data.memberName}\`)
 				`);
+			} else if (commands.length <= 15) {
+				return msg.say('Multiple commands found. Please be more specific.');
 			} else if (commands.length > 1) {
 				return msg.say(disambiguation(commands, 'commands'));
 			}
