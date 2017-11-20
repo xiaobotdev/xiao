@@ -57,7 +57,7 @@ module.exports = class DemotivationalPosterCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(data, 69, 44, 612, data.height > 412 ? data.height : 412);
+			ctx.drawImage(data, 69, 44, 612, data.height);
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
 			ctx.font = '60px Noto';
