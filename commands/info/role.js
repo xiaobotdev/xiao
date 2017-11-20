@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-const { util } = require('discord.js-commando');
+const { util: { permissions } } = require('discord.js-commando');
 
 module.exports = class RoleInfoCommand extends Command {
 	constructor(client) {
@@ -24,7 +24,7 @@ module.exports = class RoleInfoCommand extends Command {
 
 	run(msg, { role }) {
 		const serialized = role.permissions.serialize();
-		const perms = Object.keys(util.permissions).filter(perm => serialized[perm]);
+		const perms = Object.keys(permissions).filter(perm => serialized[perm]);
 		const embed = new MessageEmbed()
 			.setColor(role.hexColor)
 			.addField('❯ Name',
@@ -40,7 +40,7 @@ module.exports = class RoleInfoCommand extends Command {
 			.addField('❯ Mentionable',
 				role.mentionable ? 'Yes' : 'No', true)
 			.addField('❯ Permissions',
-				perms.map(perm => util.permissions[perm]).join(', ') || 'None');
+				perms.map(perm => permissions[perm]).join(', ') || 'None');
 		return msg.embed(embed);
 	}
 };
