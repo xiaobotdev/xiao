@@ -43,6 +43,8 @@ module.exports = class StackOverflowCommand extends Command {
 				.setAuthor('Stack Overflow', 'https://i.imgur.com/P2jAgE3.png')
 				.setURL(data.link)
 				.setTitle(data.title)
+				.addField('ID',
+					data.question_id, true)
 				.addField('❯ Asker',
 					`[${data.owner.display_name}](${data.owner.link})`, true)
 				.addField('❯ Views',
@@ -51,8 +53,6 @@ module.exports = class StackOverflowCommand extends Command {
 					data.score, true)
 				.addField('❯ Created',
 					new Date(data.creation_date * 1000).toDateString(), true)
-				.addField('❯ Modified',
-					new Date(data.last_edit_date * 1000).toDateString(), true)
 				.addField('❯ Last Activity',
 					new Date(data.last_activity_date * 1000).toDateString(), true);
 			return msg.embed(embed);
