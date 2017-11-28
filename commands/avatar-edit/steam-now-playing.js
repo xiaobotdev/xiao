@@ -14,7 +14,6 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			group: 'avatar-edit',
 			memberName: 'steam-now-playing',
 			description: 'Draws a user\'s avatar and the game of your choice over a Steam "now playing" notification.',
-			guildOnly: true,
 			throttling: {
 				usages: 1,
 				duration: 10
