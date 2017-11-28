@@ -21,13 +21,14 @@ module.exports = class YearsCommand extends Command {
 					key: 'user',
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
-					default: msg => msg.author
+					default: ''
 				}
 			]
 		});
 	}
 
 	async run(msg, { user }) {
+		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({
 			format: 'png',
 			size: 256
