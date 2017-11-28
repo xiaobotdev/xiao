@@ -13,7 +13,7 @@ module.exports = class AchievementCommand extends Command {
 			description: 'Sends a Minecraft achievement with the text of your choice.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [

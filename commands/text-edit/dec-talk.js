@@ -12,7 +12,7 @@ module.exports = class DECTalkCommand extends Command {
 			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			args: [
 				{

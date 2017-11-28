@@ -15,7 +15,7 @@ module.exports = class DiscriminatorCommand extends Command {
 					label: 'discriminator',
 					prompt: 'Which discriminator would you like to search for?',
 					type: 'string',
-					default: '',
+					default: msg => msg.author.discriminator,
 					validate: discrim => {
 						if (/^[0-9]+$/.test(discrim) && discrim.length === 4) return true;
 						return 'Invalid discriminator.';
@@ -26,7 +26,6 @@ module.exports = class DiscriminatorCommand extends Command {
 	}
 
 	run(msg, { discrim }) {
-		if (!discrim) discrim = msg.author.discriminator;
 		const users = this.client.users.filter(user => user.discriminator === discrim).map(user => user.username);
 		return msg.say(stripIndents`
 			**Found ${users.length} users with the discriminator #${discrim}**

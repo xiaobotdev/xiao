@@ -11,7 +11,7 @@ module.exports = class PixelizeCommand extends Command {
 			description: 'Draws a user\'s avatar pixelized.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -19,18 +19,14 @@ module.exports = class PixelizeCommand extends Command {
 					key: 'user',
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	async run(msg, { user }) {
-		if (!user) user = msg.author;
-		const avatarURL = user.displayAvatarURL({
-			format: 'png',
-			size: 64
-		});
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 64 });
 		try {
 			const { body } = await snekfetch.get(avatarURL);
 			const avatar = await loadImage(body);

@@ -14,7 +14,7 @@ module.exports = class WantedCommand extends Command {
 			description: 'Draws a user\'s avatar over a wanted poster.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -22,18 +22,14 @@ module.exports = class WantedCommand extends Command {
 					key: 'user',
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	async run(msg, { user }) {
-		if (!user) user = msg.author;
-		const avatarURL = user.displayAvatarURL({
-			format: 'png',
-			size: 512
-		});
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'wanted.png'));
 			const { body } = await snekfetch.get(avatarURL);

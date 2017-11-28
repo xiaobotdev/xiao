@@ -24,14 +24,13 @@ module.exports = class ChannelInfoCommand extends Command {
 					key: 'channel',
 					prompt: 'Which channel would you like to get information on?',
 					type: 'channel',
-					default: ''
+					default: msg => msg.channel
 				}
 			]
 		});
 	}
 
 	run(msg, { channel }) {
-		if (!channel) channel = msg.channel;
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.addField('❯ Name',

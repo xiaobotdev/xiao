@@ -18,7 +18,7 @@ module.exports = class CardCommand extends Command {
 			description: 'Draws a trading card of random rarity based on a user\'s profile.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -26,18 +26,14 @@ module.exports = class CardCommand extends Command {
 					key: 'user',
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	async run(msg, { user }) {
-		if (!user) user = msg.author;
-		const avatarURL = user.displayAvatarURL({
-			format: 'png',
-			size: 512
-		});
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const cardID = randomRange(1000, 9999);
 			let rarity;

@@ -13,7 +13,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 			description: 'Draws three user\'s avatars over the "Distracted Boyfriend" meme.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -38,18 +38,9 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 	}
 
 	async run(msg, { otherGirl, girlfriend, boyfriend }) {
-		const boyfriendAvatarURL = boyfriend.displayAvatarURL({
-			format: 'png',
-			size: 256
-		});
-		const girlfriendAvatarURL = girlfriend.displayAvatarURL({
-			format: 'png',
-			size: 256
-		});
-		const otherGirlAvatarURL = otherGirl.displayAvatarURL({
-			format: 'png',
-			size: 256
-		});
+		const boyfriendAvatarURL = boyfriend.displayAvatarURL({ format: 'png', size: 256 });
+		const girlfriendAvatarURL = girlfriend.displayAvatarURL({ format: 'png', size: 256 });
+		const otherGirlAvatarURL = otherGirl.displayAvatarURL({ format: 'png', size: 256 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'distracted-boyfriend.png'));
 			const boyfriendAvatarData = await snekfetch.get(boyfriendAvatarURL);

@@ -12,14 +12,13 @@ module.exports = class CoolnessCommand extends Command {
 					key: 'user',
 					prompt: 'Which user do you want to determine the coolness of?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	run(msg, { user }) {
-		if (!user) user = msg.author;
 		const coolness = user.id / this.client.user.id;
 		if (user.id === '234318196893548545') return msg.say(`${user.username} is the best person ever ❤.`);
 		if (coolness < 0.3) return msg.say(`${user.username} is the coolest being to walk this Earth.`);

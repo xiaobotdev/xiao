@@ -17,26 +17,22 @@ module.exports = class SteamCardCommand extends Command {
 			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'member',
+					key: 'user',
 					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'member',
-					default: ''
+					type: 'user',
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
-	async run(msg, { member }) {
-		if (!member) member = msg.member;
-		const avatarURL = member.user.displayAvatarURL({
-			format: 'png',
-			size: 512
-		});
+	async run(msg, { user }) {
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
 			const { body } = await snekfetch.get(avatarURL);
@@ -48,7 +44,7 @@ module.exports = class SteamCardCommand extends Command {
 			ctx.drawImage(avatar, 25, 25, 450, 450);
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '30px Noto';
-			ctx.fillText(member.displayName, 35, 48);
+			ctx.fillText(user.username, 35, 48);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
