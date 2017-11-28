@@ -16,7 +16,7 @@ module.exports = class DemotivationalPosterCommand extends Command {
 			description: 'Draws an image or a user\'s avatar and the text you specify as a demotivational poster.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -35,7 +35,7 @@ module.exports = class DemotivationalPosterCommand extends Command {
 					key: 'image',
 					prompt: 'What image would you like to edit?',
 					type: 'image',
-					default: '',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 }),
 					avatarSize: 1024
 				}
 			]
@@ -43,12 +43,6 @@ module.exports = class DemotivationalPosterCommand extends Command {
 	}
 
 	async run(msg, { title, text, image }) {
-		if (!image) {
-			image = msg.author.displayAvatarURL({
-				format: 'png',
-				size: 1024
-			});
-		}
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'demotivational-poster.png'));
 			const { body } = await snekfetch.get(image);

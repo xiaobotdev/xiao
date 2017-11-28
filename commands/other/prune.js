@@ -11,7 +11,7 @@ module.exports = class PruneCommand extends Command {
 			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['READ_MESSAGE_HISTORY', 'MANAGE_MESSAGES'],
 			userPermissions: ['MANAGE_MESSAGES'],

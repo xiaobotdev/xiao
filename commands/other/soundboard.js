@@ -15,14 +15,14 @@ module.exports = class SoundboardCommand extends Command {
 			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			args: [
 				{
 					key: 'sound',
 					prompt: `What sound would you like to play? Either ${list(sounds, 'or')}.`,
 					type: 'string',
-					default: '',
+					default: () => sounds[Math.floor(Math.random() * sounds.length)],
 					validate: sound => {
 						if (sounds.includes(sound.toLowerCase())) return true;
 						return `Invalid sound, please enter either ${list(sounds, 'or')}.`;
@@ -34,7 +34,6 @@ module.exports = class SoundboardCommand extends Command {
 	}
 
 	async run(msg, { sound }) {
-		if (!sound) sound = sounds[Math.floor(Math.random() * sounds.length)];
 		const channel = msg.member.voiceChannel;
 		if (!channel) return msg.reply('Please enter a voice channel first.');
 		if (!channel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {

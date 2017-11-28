@@ -12,7 +12,7 @@ module.exports = class SepiaCommand extends Command {
 			description: 'Draws an image or a user\'s avatar in sepia.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -20,19 +20,13 @@ module.exports = class SepiaCommand extends Command {
 					key: 'image',
 					prompt: 'What image would you like to edit?',
 					type: 'image',
-					default: ''
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
 	}
 
 	async run(msg, { image }) {
-		if (!image) {
-			image = msg.author.displayAvatarURL({
-				format: 'png',
-				size: 512
-			});
-		}
 		try {
 			const { body } = await snekfetch.get(image);
 			const data = await loadImage(body);

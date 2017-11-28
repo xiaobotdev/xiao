@@ -14,7 +14,7 @@ module.exports = class RIPCommand extends Command {
 			description: 'Draws a user\'s avatar over a gravestone.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -22,18 +22,14 @@ module.exports = class RIPCommand extends Command {
 					key: 'user',
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	async run(msg, { user }) {
-		if (!user) user = msg.author;
-		const avatarURL = user.displayAvatarURL({
-			format: 'png',
-			size: 256
-		});
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
 			const { body } = await snekfetch.get(avatarURL);

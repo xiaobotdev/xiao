@@ -17,7 +17,7 @@ module.exports = class GuessLooksCommand extends Command {
 					key: 'user',
 					prompt: 'Which user do you want me to guess the looks of?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});

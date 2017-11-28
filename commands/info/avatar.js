@@ -15,19 +15,15 @@ module.exports = class AvatarCommand extends Command {
 					key: 'user',
 					prompt: 'Which user would you like to get the avatar of?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	async run(msg, { user }) {
-		if (!user) user = msg.author;
 		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
-		const avatarURL = user.displayAvatarURL({
-			format,
-			size: 512
-		});
+		const avatarURL = user.displayAvatarURL({ format, size: 512 });
 		try {
 			const { body } = await snekfetch.get(avatarURL);
 			return msg.say({ files: [{ attachment: body, name: `avatar.${format}` }] });

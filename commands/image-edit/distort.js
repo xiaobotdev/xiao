@@ -13,7 +13,7 @@ module.exports = class DistortCommand extends Command {
 			description: 'Draws an image or a user\'s avatar but distorted.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -26,19 +26,13 @@ module.exports = class DistortCommand extends Command {
 					key: 'image',
 					prompt: 'What image would you like to edit?',
 					type: 'image',
-					default: ''
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
 	}
 
 	async run(msg, { level, image }) {
-		if (!image) {
-			image = msg.author.displayAvatarURL({
-				format: 'png',
-				size: 512
-			});
-		}
 		try {
 			const { body } = await snekfetch.get(image);
 			const data = await loadImage(body);

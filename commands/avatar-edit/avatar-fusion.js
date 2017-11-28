@@ -12,7 +12,7 @@ module.exports = class AvatarFusionCommand extends Command {
 			description: 'Draws a a user\'s avatar over a user\'s avatar.',
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -25,22 +25,15 @@ module.exports = class AvatarFusionCommand extends Command {
 					key: 'base',
 					prompt: 'Which user would you like to be the base?',
 					type: 'user',
-					default: ''
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	async run(msg, { overlay, base }) {
-		if (!base) base = msg.author;
-		const baseAvatarURL = base.displayAvatarURL({
-			format: 'png',
-			size: 512
-		});
-		const overlayAvatarURL = overlay.displayAvatarURL({
-			format: 'png',
-			size: 512
-		});
+		const baseAvatarURL = base.displayAvatarURL({ format: 'png', size: 512 });
+		const overlayAvatarURL = overlay.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const baseAvatarData = await snekfetch.get(baseAvatarURL);
 			const baseAvatar = await loadImage(baseAvatarData.body);

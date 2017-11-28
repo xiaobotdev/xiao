@@ -17,7 +17,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 15
+				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
@@ -27,21 +27,17 @@ module.exports = class SteamNowPlayingCommand extends Command {
 					type: 'string'
 				},
 				{
-					key: 'member',
+					key: 'user',
 					prompt: 'Which user would you like to be playing the game?',
-					type: 'member',
-					default: ''
+					type: 'user',
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
-	async run(msg, { game, member }) {
-		if (!member) member = msg.member;
-		const avatarURL = member.user.displayAvatarURL({
-			format: 'png',
-			size: 64
-		});
+	async run(msg, { game, user }) {
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 64 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-now-playing.png'));
 			const { body } = await snekfetch.get(avatarURL);
@@ -52,7 +48,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			ctx.drawImage(avatar, 21, 21, 32, 32);
 			ctx.fillStyle = '#90ba3c';
 			ctx.font = '10px Noto';
-			ctx.fillText(member.displayName, 63, 26);
+			ctx.fillText(user.username, 63, 26);
 			let shorten;
 			if (ctx.measureText(game).width > 160) shorten = true;
 			while (ctx.measureText(game).width > 160) game = game.substr(0, game.length - 1);
