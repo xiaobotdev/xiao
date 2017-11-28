@@ -28,7 +28,6 @@ module.exports = class RainbowCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'rainbow.png'));
