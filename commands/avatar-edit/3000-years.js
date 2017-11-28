@@ -28,7 +28,6 @@ module.exports = class YearsCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		if (!user) user = msg.author;
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', '3000-years.png'));

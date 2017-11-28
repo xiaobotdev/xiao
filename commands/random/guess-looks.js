@@ -24,7 +24,6 @@ module.exports = class GuessLooksCommand extends Command {
 	}
 
 	run(msg, { user }) {
-		if (!user) user = msg.author;
 		const gender = genders[Math.floor(Math.random() * genders.length)];
 		const eyeColor = eyeColors[Math.floor(Math.random() * eyeColors.length)];
 		const hairColor = hairColors[Math.floor(Math.random() * hairColors.length)];
