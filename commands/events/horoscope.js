@@ -30,8 +30,7 @@ module.exports = class HoroscopeCommand extends Command {
 
 	async run(msg, { sign }) {
 		try {
-			const { text } = await snekfetch.get(`http://sandipbgt.com/theastrologer/api/horoscope/${sign}/today/`);
-			const body = JSON.parse(text);
+			const { body } = await snekfetch.get(`http://theastrologer-api.herokuapp.com/api/horoscope/${sign}/today`);
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
 				.setTitle(`Horoscope for ${body.sunsign}...`)
