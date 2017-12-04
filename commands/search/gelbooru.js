@@ -1,8 +1,5 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { parseString } = require('xml2js');
-const { promisify } = require('util');
-const xml = promisify(parseString);
 
 module.exports = class GelbooruCommand extends Command {
 	constructor(client) {
@@ -26,19 +23,18 @@ module.exports = class GelbooruCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { text } = await snekfetch
+			const { body } = await snekfetch
 				.get('https://gelbooru.com/index.php')
 				.query({
 					page: 'dapi',
 					s: 'post',
 					q: 'index',
+					json: 1,
 					tags: query,
 					limit: 200
 				});
-			const body = await xml(text);
-			const data = body.posts.post;
-			if (!data || !data.length) return msg.say('Could not find any results.');
-			return msg.say(data[Math.floor(Math.random() * data.length)].$.file_url);
+			if (!body) return msg.say('Could not find any results.');
+			return msg.say(body[Math.floor(Math.random() * body.length)].file_url);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
