@@ -20,12 +20,12 @@ module.exports = class SoundboardCommand extends Command {
 			args: [
 				{
 					key: 'sound',
-					prompt: `What sound would you like to play? Either ${list(sounds, 'or')}.`,
+					prompt: `What sound would you like to play? Either ${list(Object.keys(sounds), 'or')}.`,
 					type: 'string',
-					default: () => sounds[Math.floor(Math.random() * sounds.length)],
+					default: () => Object.keys(sounds)[Math.floor(Math.random() * sounds.length)],
 					validate: sound => {
-						if (sounds.includes(sound.toLowerCase())) return true;
-						return `Invalid sound, please enter either ${list(sounds, 'or')}.`;
+						if (sounds[sound.toLowerCase()]) return true;
+						return `Invalid sound, please enter either ${list(Object.keys(sounds), 'or')}.`;
 					},
 					parse: sound => sound.toLowerCase()
 				}
@@ -43,7 +43,7 @@ module.exports = class SoundboardCommand extends Command {
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.reply('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
-			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', `${sound}.mp3`));
+			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', sounds[sound]));
 			dispatcher.once('end', () => channel.leave());
 			dispatcher.once('error', () => channel.leave());
 			return null;
