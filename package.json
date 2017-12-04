@@ -38,7 +38,7 @@
 		"discord.js-commando": "github:dragonfire535/discord.js-commando#default-functions",
 		"erlpack": "github:discordapp/erlpack",
 		"node-opus": "^0.2.7",
-		"snekfetch": "^3.5.8",
+		"snekfetch": "^3.6.0",
 		"uws": "^8.14.1",
 		"xml2js": "^0.4.19",
 		"zlib-sync": "^0.1.3"
