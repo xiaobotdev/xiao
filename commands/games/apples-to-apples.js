@@ -87,20 +87,8 @@ module.exports = class ApplesToApplesCommand extends Command {
 						continue;
 					}
 					if (chosen === '<Blank>') {
-						await player.user.send(stripIndents`
-							What do you want the blank card to say?
-							Only answers under 100 characters will be counted.
-						`);
-						const blank = await player.user.dmChannel.awaitMessages(res => res.content.length < 100, {
-							max: 1,
-							time: 120000
-						});
-						if (!blank.size) { // eslint-disable-line max-depth
-							await player.user.send('Skipping your turn...');
-							continue;
-						}
-						player.hand.delete('<Blank>');
-						chosen = blank.first().content;
+						const handled = await this.handleBlank(player);
+						chosen = handled;
 					} else {
 						player.hand.delete(chosen);
 					}
@@ -165,5 +153,16 @@ module.exports = class ApplesToApplesCommand extends Command {
 			await user.send('Hi! Waiting for your turn to start...');
 		}
 		return players;
+	}
+
+	async handleBlank(player) {
+		await player.user.send('What do you want the blank card to say? Must be 100 or less characters.');
+		const blank = await player.user.dmChannel.awaitMessages(res => res.content.length <= 100, {
+			max: 1,
+			time: 120000
+		});
+		player.hand.delete('<Blank>');
+		if (!blank.size) return `A blank card ${player.user.tag} forgot to fill out.`;
+		return blank.first().content;
 	}
 };

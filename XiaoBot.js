@@ -56,12 +56,6 @@ client.on('warn', err => console.warn('[WARNING]', err));
 
 client.on('commandError', (command, err) => console.error('[COMMAND ERROR]', command.name, err));
 
-client.dispatcher.addInhibitor(msg => {
-	if (msg.channel.type !== 'text' || !msg.channel.topic) return false;
-	if (msg.channel.topic.includes('<blocked>')) return 'topic blocked';
-	return false;
-});
-
 client.login(XIAO_TOKEN);
 
 process.on('unhandledRejection', err => {

@@ -38,5 +38,33 @@
 	{
 		"text": "Travelers of the Wind",
 		"type": "LISTENING"
+	},
+	{
+		"text": "you eat pant",
+		"type": "WATCHING"
+	},
+	{
+		"text": "anime",
+		"type": "WATCHING"
+	},
+	{
+		"text": "with a big red button",
+		"type": "PLAYING"
+	},
+	{
+		"text": "with you",
+		"type": "PLAYING"
+	},
+	{
+		"text": "with a ban hammer",
+		"type": "PLAYING"
+	},
+	{
+		"text": "you",
+		"type": "PLAYING"
+	},
+	{
+		"text": "Nothing",
+		"type": "PLAYING"
 	}
 ]
