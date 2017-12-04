@@ -22,7 +22,6 @@ module.exports = class SoundboardCommand extends Command {
 					key: 'sound',
 					prompt: `What sound would you like to play? Either ${list(Object.keys(sounds), 'or')}.`,
 					type: 'string',
-					default: () => Object.keys(sounds)[Math.floor(Math.random() * sounds.length)],
 					validate: sound => {
 						if (sounds[sound.toLowerCase()]) return true;
 						return `Invalid sound, please enter either ${list(Object.keys(sounds), 'or')}.`;
