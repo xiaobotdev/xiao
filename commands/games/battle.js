@@ -85,8 +85,8 @@ module.exports = class BattleCommand extends Command {
 					guard = true;
 					reset(false);
 				} else if (choice === 'special') {
-					const hit = Math.floor(Math.random() * 4) + 1;
-					if (hit === 1) {
+					const miss = Math.floor(Math.random() * 4);
+					if (!miss) {
 						const damage = randomRange(100, guard ? 150 : 300);
 						await msg.say(`${user} deals **${damage}** damage!`);
 						dealDamage(damage);

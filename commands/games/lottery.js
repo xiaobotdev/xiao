@@ -11,8 +11,8 @@ module.exports = class LotteryCommand extends Command {
 	}
 
 	run(msg) {
-		const lottery = Math.floor(Math.random() * 1000) + 1;
-		if (lottery === 1) return msg.reply('Nice job! 10/10! You deserve some cake!');
+		const loss = Math.floor(Math.random() * 1000);
+		if (!loss) return msg.reply('Nice job! 10/10! You deserve some cake!');
 		return msg.reply('Nope, sorry, you lost.');
 	}
 };
