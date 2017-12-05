@@ -22,7 +22,7 @@ module.exports = class GravatarCommand extends Command {
 	}
 
 	async run(msg, { email }) {
-		const hash = crypto.createHash('md5').update(email).disgest('hex');
+		const hash = crypto.createHash('md5').update(email).digest('hex');
 		try {
 			const { body } = await snekfetch
 				.get(`https://www.gravatar.com/avatar/${hash}`)
