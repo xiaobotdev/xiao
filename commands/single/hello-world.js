@@ -3,7 +3,7 @@ const { Command } = require('discord.js-commando');
 module.exports = class HelloWorldCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'hello-word',
+			name: 'hello-world',
 			aliases: ['hola-mundo'],
 			group: 'single',
 			memberName: 'hello-world',
