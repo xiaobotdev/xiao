@@ -27,7 +27,7 @@ module.exports = class TwitterCommand extends Command {
 	async run(msg, { user }) {
 		try {
 			if (!this.token) await this.fetchToken();
-			const { body } = snekfetch
+			const { body } = await snekfetch
 				.get('https://api.twitter.com/1.1/users/show.json')
 				.set({ Authorization: `Bearer ${this.token}` })
 				.query({ screen_name: user });
