@@ -38,8 +38,6 @@ module.exports = class TwitterCommand extends Command {
 				.setURL(`https://twitter.com/${body.screen_name}`)
 				.setTitle(`${body.name} (@${body.screen_name})`)
 				.setDescription(body.description)
-				.addField('❯ ID',
-					body.id, true)
 				.addField('❯ Tweets',
 					body.statuses_count, true)
 				.addField('❯ Followers',
@@ -51,7 +49,7 @@ module.exports = class TwitterCommand extends Command {
 				.addField('❯ Verified?',
 					body.verified ? 'Yes' : 'No', true)
 				.addField('❯ Created',
-					new Date(body.creation_date).toDateString(), true)
+					new Date(body.created_at).toDateString(), true)
 				.addField('❯ Latest Tweet',
 					body.status ? body.status.text : 'None');
 			return msg.embed(embed);
