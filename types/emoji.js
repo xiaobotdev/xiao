@@ -1,4 +1,4 @@
-const { ArgumentType, util } = require('discord.js-commando');
+const { ArgumentType, util: { disambiguation } } = require('discord.js-commando');
 const { escapeMarkdown } = require('discord.js');
 
 class EmojiArgumentType extends ArgumentType {
@@ -18,7 +18,7 @@ class EmojiArgumentType extends ArgumentType {
 		if (exactEmojis.length === 1) return true;
 		if (exactEmojis.length > 0) emojis = exactEmojis;
 		return emojis.length <= 15
-			? `${util.disambiguation(emojis.map(emoji => escapeMarkdown(emoji.name)), 'emojis', null)}\n`
+			? `${disambiguation(emojis.map(emoji => escapeMarkdown(emoji.name)), 'emojis', null)}\n`
 			: 'Multiple emojis found. Please be more specific.';
 	}
 
@@ -26,10 +26,10 @@ class EmojiArgumentType extends ArgumentType {
 		const matches = value.match(/^(?:<:([a-zA-Z0-9_]+):)?([0-9]+)>?$/);
 		if (matches) return msg.client.emojis.get(matches[2]) || null;
 		const search = value.toLowerCase();
-		const emojis = msg.guild.emojis.filterArray(emoji => emoji.name.toLowerCase().includes(search));
+		const emojis = msg.guild.emojis.filterArray(nameFilterInexact(search));
 		if (!emojis.length) return null;
 		if (emojis.length === 1) return emojis[0];
-		const exactEmojis = msg.guild.emojis.filterArray(emoji => emoji.name.toLowerCase() === search);
+		const exactEmojis = emojis.filterArray(nameFilterExact(search));
 		if (exactEmojis.length === 1) return exactEmojis[0];
 		return null;
 	}
