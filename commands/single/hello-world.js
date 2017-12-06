@@ -4,7 +4,7 @@ module.exports = class HelloWorldCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'hello-word',
-      aliases: ['hola-mundo'],
+			aliases: ['hola-mundo'],
 			group: 'single',
 			memberName: 'hello-world',
 			description: 'Hello world.'
