@@ -66,5 +66,9 @@
 	{
 		"text": "Nothing",
 		"type": "PLAYING"
+	},
+	{
+		"text": "Dust: An Elysian Tail",
+		"type": "PLAYING"
 	}
 ]
