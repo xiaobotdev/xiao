@@ -10,6 +10,8 @@ const client = new CommandoClient({
 	disabledEvents: ['TYPING_START']
 });
 const activities = require('./assets/json/activity');
+const { MessageEmbed } = require('discord.js');
+const starred = new Map();
 
 client.registry
 	.registerDefaultTypes()
@@ -26,6 +28,7 @@ client.registry
 		['number-edit', 'Number Manipulation'],
 		['search', 'Search'],
 		['games', 'Games'],
+		['role-manage', 'Role Management'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay']
 	])
@@ -55,6 +58,53 @@ client.on('error', err => console.error('[ERROR]', err));
 client.on('warn', err => console.warn('[WARNING]', err));
 
 client.on('commandError', (command, err) => console.error('[COMMAND ERROR]', command.name, err));
+
+client.on('messageReactionAdd', async (reaction, user) => {
+	if (reaction.emoji.name !== '⭐') return;
+	const msg = reaction.message;
+	if (msg.author.id === user.id) {
+		if (msg.channel.permissionsFor(client.user).has('MANAGE_MESSAGES')) await reaction.remove(user);
+		await msg.reply('You cannot star your own messages, idiot.');
+		return;
+	}
+	const starboard = msg.guild.channels.find('name', 'starboard');
+	if (!starboard) return;
+	if (!starboard.permissionsFor(client.user).has(['SEND_MESSAGES', 'EMBED_LINKS'])) return;
+	const embed = new MessageEmbed()
+		.setAuthor(msg.author.tag, msg.author.displayAvatarURL())
+		.setDescription(msg.content)
+		.setImage(msg.attachments.size ? msg.attachments.first().url : null)
+		.setColor(0xFFFF00)
+		.setTimestamp()
+		.setFooter(`⭐ ${reaction.count}`);
+	let starMsg;
+	if (starred.has(msg.id)) starMsg = await starred.get(msg.id).edit(`${reaction.count} ⭐ ${msg.channel}`, { embed });
+	else starMsg = await starboard.send(`${reaction.count} ⭐ ${msg.channel}`, { embed });
+	starred.set(msg.id, starMsg);
+});
+
+client.on('messageReactionRemove', async reaction => {
+	if (reaction.emoji.name !== '⭐') return;
+	const msg = reaction.message;
+	if (!starred.has(msg.id)) return;
+	const starboard = msg.guild.channels.find('name', 'starboard');
+	if (!starboard) return;
+	if (!starboard.permissionsFor(client.user).has(['SEND_MESSAGES', 'EMBED_LINKS', 'MANAGE_MESSAGES'])) return;
+	const embed = new MessageEmbed()
+		.setAuthor(msg.author.tag, msg.author.displayAvatarURL())
+		.setDescription(msg.content)
+		.setImage(msg.attachments.size ? msg.attachments.first().url : null)
+		.setColor(0xFFFF00)
+		.setTimestamp()
+		.setFooter(`⭐ ${reaction.count}`);
+	if (reaction.count > 0) {
+		const starMsg = await starred.get(msg.id).edit(`${reaction.count} ⭐ ${msg.channel}`, { embed });
+		starred.set(msg.id, starMsg);
+	} else {
+		await starred.get(msg.id).delete();
+		starred.delete(msg.id);
+	}
+});
 
 client.login(XIAO_TOKEN);
 
