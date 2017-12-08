@@ -5,7 +5,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = class NeopetItemCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'neopet-item',
+			name: 'neopets-item',
 			aliases: ['jellyneo', 'jellyneo-item', 'jellyneo-item-database'],
 			group: 'search',
 			memberName: 'neopet-item',
@@ -34,7 +34,7 @@ module.exports = class NeopetItemCommand extends Command {
 			const { text } = await snekfetch.get(`https://items.jellyneo.net/item/${id[1]}/`);
 			const embed = new MessageEmbed()
 				.setColor(0xFFCE31)
-				.setAuthor('Neopets', 'https://i.imgur.com/umW0YwZ.png')
+				.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png')
 				.setTitle(text.match(/<h1>(.+)<\/h1>/)[1])
 				.setDescription(text.match(/<em>(.+)<\/em>/)[1])
 				.setURL(`https://items.jellyneo.net/item/${id[1]}/`)
