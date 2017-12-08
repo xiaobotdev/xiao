@@ -13,7 +13,7 @@ module.exports = class NeopetCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'neopet',
-			aliases: ['neopet-image', 'neopet-image-finder'],
+			aliases: ['neopet-pet', 'neopet-image', 'neopet-image-finder'],
 			group: 'search',
 			memberName: 'neopet',
 			description: 'Responds with the image of a specific Neopet.',
