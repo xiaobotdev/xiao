@@ -32,6 +32,7 @@ module.exports = class NeopetItemCommand extends Command {
 			const id = search.text.match(/\/item\/([0-9]+)/);
 			if (!id) return msg.say('Could not find any results.');
 			const { text } = await snekfetch.get(`https://items.jellyneo.net/item/${id[1]}/`);
+			const price = search.text.match(/[0-9]+ (NP|NC)/);
 			const embed = new MessageEmbed()
 				.setColor(0xFFCE31)
 				.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png')
@@ -40,7 +41,7 @@ module.exports = class NeopetItemCommand extends Command {
 				.setURL(`https://items.jellyneo.net/item/${id[1]}/`)
 				.setThumbnail(`https://items.jellyneo.net/assets/imgs/items/${id[1]}.gif`)
 				.addField('❯ Price',
-					search.text.match(/[0-9]+ NP/)[0]);
+					price ? price[0] : 'Unavailable');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
