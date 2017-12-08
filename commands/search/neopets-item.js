@@ -8,7 +8,7 @@ module.exports = class NeopetItemCommand extends Command {
 			name: 'neopets-item',
 			aliases: ['jellyneo', 'jellyneo-item', 'jellyneo-item-database'],
 			group: 'search',
-			memberName: 'neopet-item',
+			memberName: 'neopets-item',
 			description: 'Responds with information on a specific Neopets item.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
