@@ -8,6 +8,7 @@ module.exports = class WizardConventionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wizard-convention',
+			aliases: ['wiz-convention'],
 			group: 'games',
 			memberName: 'wizard-convention',
 			description: 'Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?',

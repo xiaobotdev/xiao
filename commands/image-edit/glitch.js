@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const path = require('path');
+const { distort } = require('../../util/Canvas');
 
 module.exports = class GlitchCommand extends Command {
 	constructor(client) {
@@ -28,14 +28,13 @@ module.exports = class GlitchCommand extends Command {
 
 	async run(msg, { image }) {
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'glitch.png'));
 			const { body } = await snekfetch.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(data, 0, 0);
-			ctx.drawImage(base, 0, 0, data.width, data.height);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'glitch.png' }] });
+			distort(ctx, 20, 0, 0, data.width, data.height, 5);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distort.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

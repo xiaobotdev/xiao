@@ -35,7 +35,7 @@ module.exports = class StocksCommand extends Command {
 			if (body['Error Message']) return msg.say('Could not find any results.');
 			const data = Object.values(body['Time Series (1min)'])[0];
 			const embed = new MessageEmbed()
-				.setTitle(`Stocks for Symbol ${symbol.toUpperCase()}`)
+				.setTitle(`Stocks for ${symbol.toUpperCase()}`)
 				.setColor(0x9797FF)
 				.addField('❯ Open',
 					`$${data['1. open']}`, true)
