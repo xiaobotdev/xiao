@@ -34,7 +34,7 @@ module.exports = class GlitchCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(data, 0, 0);
 			distort(ctx, 20, 0, 0, data.width, data.height, 5);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distort.png' }] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'glitch.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
