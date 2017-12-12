@@ -109,6 +109,7 @@ client.on('messageReactionRemove', async reaction => {
 client.on('raw', async event => {
 	const data = event.d;
 	if (event.t === 'MESSAGE_REACTION_ADD') {
+		console.log(data);
 		const channel = client.channels.get(data.channel_id);
 		if (!data.emoji.id || channel.messages.has(data.message_id)) return;
 		const user = client.users.get(data.user_id);
@@ -116,6 +117,7 @@ client.on('raw', async event => {
 		const reaction = message.reactions.get(data.emoji.id);
 		client.emit('messageReactionAdd', reaction, user);
 	} else if (event.t === 'MESSAGE_REACTION_REMOVE') {
+		console.log(data);
 		const channel = client.channels.get(data.channel_id);
 		if (!data.emoji.id || channel.messages.has(data.message_id)) return;
 		const message = await channel.messages.fetch(data.message_id);
