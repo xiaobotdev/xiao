@@ -61,14 +61,6 @@ class Util {
 		return arr;
 	}
 
-	static promisifyAll(obj, suffix = 'Async') {
-		for (const key of Object.keys(obj)) {
-			if (typeof obj[key] !== 'function') continue;
-			obj[`${key}${suffix}`] = promisify(obj[key]);
-		}
-		return obj;
-	}
-
 	static cleanXML(text) {
 		return text
 			.replace(/<br \/>/g, '')
