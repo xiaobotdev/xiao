@@ -47,12 +47,9 @@ module.exports = class RouletteCommand extends Command {
 	}
 
 	verifyWin(choice, result) {
-		const number = parseInt(choice, 10);
-		if (numbers.includes(number)) return result === number;
-		if (!result) return false;
 		if (dozens.includes(choice) || halves.includes(choice)) {
 			const range = choice.split('-');
-			return result >= range[0] && range[1] <= result;
+			return result >= range[0] && range[1] >= result;
 		}
 		if (colors.includes(choice)) {
 			if (choice === 'black') return black.includes(result);
@@ -60,6 +57,9 @@ module.exports = class RouletteCommand extends Command {
 		}
 		if (parity.includes(choice)) return parity[result % 2] === choice;
 		if (columns.includes(choice)) return columns[(result - 1) % 3] === choice;
+		const number = parseInt(choice, 10);
+		if (numbers.includes(number)) return result === number;
+		if (!result) return false;
 		return false;
 	}
 };
