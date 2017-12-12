@@ -61,8 +61,8 @@ module.exports = class RouletteCommand extends Command {
 			if (choice === 'black') return black.includes(result);
 			if (choice === 'red') return red.includes(result);
 		}
-		if (parity.includes(choice)) return parity[(result % 2) - 1] === choice;
-		if (columns.includes(choice)) return columns[(result % 3) - 1] === choice;
+		if (parity.includes(choice)) return parity[result % 1] === choice;
+		if (columns.includes(choice)) return columns[result % 2] === choice;
 		return false;
 	}
 };
