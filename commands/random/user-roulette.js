@@ -1,11 +1,12 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class RouletteCommand extends Command {
+module.exports = class UserRouletteCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'roulette',
+			name: 'user-roulette',
+			aliases: ['member-roulette', 'random-user', 'random-member'],
 			group: 'random',
-			memberName: 'roulette',
+			memberName: 'user-roulette',
 			description: 'Randomly chooses a member of the server.',
 			guildOnly: true
 		});
