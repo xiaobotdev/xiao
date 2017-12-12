@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
+const { shortenText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
@@ -48,10 +49,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			ctx.fillStyle = '#90ba3c';
 			ctx.font = '10px Noto';
 			ctx.fillText(user.username, 63, 26);
-			let shorten;
-			if (ctx.measureText(game).width > 160) shorten = true;
-			while (ctx.measureText(game).width > 160) game = game.substr(0, game.length - 1);
-			ctx.fillText(shorten ? `${game}...` : game, 63, 54);
+			ctx.fillText(shortenText(ctx, game, 160), 63, 54);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

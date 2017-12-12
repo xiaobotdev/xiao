@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
+const { shortenText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Minecraftia.ttf'), { family: 'Minecraftia' });
 
 module.exports = class AchievementCommand extends Command {
@@ -34,11 +35,8 @@ module.exports = class AchievementCommand extends Command {
 		ctx.font = '17px Minecraftia';
 		ctx.fillStyle = '#ffff00';
 		ctx.fillText('Achievement Get!', 60, 40);
-		let shorten;
-		if (ctx.measureText(text).width > 230) shorten = true;
-		while (ctx.measureText(text).width > 230) text = text.substr(0, text.length - 1);
 		ctx.fillStyle = '#ffffff';
-		ctx.fillText(shorten ? `${text}...` : text, 60, 60);
+		ctx.fillText(shortenText(ctx, text, 230), 60, 60);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'achievement.png' }] });
 	}
 };
