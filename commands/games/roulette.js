@@ -40,11 +40,11 @@ module.exports = class RouletteCommand extends Command {
 		});
 	}
 
-	async run(msg, { choice }) {
+	async run(msg, { space }) {
 		await msg.say('The roulette starts spinning...');
 		const number = Math.floor(Math.random() * 37);
 		const color = !number ? null : red.includes(number) ? 'RED' : 'BLACK';
-		const win = this.verifyWin(choice, number);
+		const win = this.verifyWin(space, number);
 		await wait(5000);
 		return msg.reply(`The result is **${number}${color ? ` ${color}` : ''}**. ${win ? 'You win!' : 'You lose...'}`);
 	}
@@ -61,8 +61,8 @@ module.exports = class RouletteCommand extends Command {
 			if (choice === 'black') return black.includes(result);
 			if (choice === 'red') return red.includes(result);
 		}
-		if (parity.includes(choice)) return parity[result % 1] === choice;
-		if (columns.includes(choice)) return columns[result % 2] === choice;
+		if (parity.includes(choice)) return parity[result % 2] === choice;
+		if (columns.includes(choice)) return columns[(result - 1) % 3] === choice;
 		return false;
 	}
 };
