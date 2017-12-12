@@ -24,21 +24,14 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
-		this.client.setInterval(() => { this.version = null; }, 3600000);
 	}
 
 	async run(msg, { champion }) {
 		if (champion === 'satan') champion = 'teemo';
 		try {
-			if (!this.version) this.version = await this.fetchVersion();
-			const search = await snekfetch
-				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
-			const name = Object.keys(search.body.data).find(key => key.toLowerCase() === champion);
-			if (!name) return msg.say('Could not find any results.');
-			const { id } = search.body.data[name];
-			const { body } = await snekfetch
-				.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion/${id}.json`);
-			const data = body.data[id];
+			if (!this.version) await this.fetchVersion();
+			const data = await this.fetchChampion(champion);
+			if (!data) return msg.say('Could not find any results.');
 			const tips = [].concat(data.allytips, data.enemytips);
 			const embed = new MessageEmbed()
 				.setColor(0x002366)
@@ -92,6 +85,24 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		const { body } = await snekfetch
 			.get('https://na1.api.riotgames.com/lol/static-data/v3/versions')
 			.query({ api_key: RIOT_KEY });
-		return body[0];
+		[this.version] = body;
+		this.client.setInterval(() => { this.version = null; }, 3600000);
+		return body;
+	}
+
+	async fetchChampions() {
+		const { body } = await snekfetch
+			.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
+		return body;
+	}
+
+	async fetchChampion(champion) {
+		const champions = await this.fetchChampions();
+		const name = Object.keys(champions.data).find(key => key.toLowerCase() === champion);
+		if (!name) return null;
+		const { id } = champions.data[name];
+		const { body } = await snekfetch
+			.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion/${id}.json`);
+		return body.data[id];
 	}
 };

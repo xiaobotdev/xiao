@@ -48,7 +48,7 @@ module.exports = class TwitterCommand extends Command {
 					body.protected ? 'Yes' : 'No', true)
 				.addField('❯ Verified?',
 					body.verified ? 'Yes' : 'No', true)
-				.addField('❯ Created',
+				.addField('❯ Creation Date',
 					new Date(body.created_at).toDateString(), true)
 				.addField('❯ Latest Tweet',
 					body.status ? body.status.text : 'None');

@@ -42,9 +42,9 @@ module.exports = class NPMCommand extends Command {
 					body.license || 'None', true)
 				.addField('❯ Author',
 					body.author ? body.author.name : 'Unknown', true)
-				.addField('❯ Created',
+				.addField('❯ Creation Date',
 					new Date(body.time.created).toDateString(), true)
-				.addField('❯ Modified',
+				.addField('❯ Modification Date',
 					new Date(body.time.modified).toDateString(), true)
 				.addField('❯ Main File',
 					version.main || '???', true)
