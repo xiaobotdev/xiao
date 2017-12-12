@@ -47,7 +47,7 @@ module.exports = class IGDBCommand extends Command {
 				.addField('❯ ESRB Rating',
 					data.esrb ? esrb[data.esrb.rating] : '???', true)
 				.addField('❯ Release Date',
-					data.first_release_date ? new Date(data.first_release_date * 1000).toDateString() : '???', true)
+					data.first_release_date ? new Date(data.first_release_date).toDateString() : '???', true)
 				.addField('❯ Status',
 					data.status ? statuses[data.status] : '???', true)
 				.addField('❯ Score',
