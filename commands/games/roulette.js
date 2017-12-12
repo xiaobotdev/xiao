@@ -52,6 +52,7 @@ module.exports = class RouletteCommand extends Command {
 	verifyWin(choice, result) {
 		const number = parseInt(choice, 10);
 		if (numbers.includes(number)) return result === number;
+		if (!number) return false;
 		if (dozens.includes(choice) || halves.includes(choice)) {
 			const range = choice.split('-');
 			return result >= range[0] && range[1] <= result;
