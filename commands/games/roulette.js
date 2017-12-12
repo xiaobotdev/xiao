@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const { oneLine } = require('common-tags');
-const { wait } = require('../../util/Util');
 const red = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
 const black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
 const numbers = [0].concat(red, black);
@@ -40,25 +39,22 @@ module.exports = class RouletteCommand extends Command {
 		});
 	}
 
-	async run(msg, { space }) {
-		await msg.say('The roulette starts spinning...');
+	run(msg, { space }) {
 		const number = Math.floor(Math.random() * 37);
 		const color = !number ? null : red.includes(number) ? 'RED' : 'BLACK';
 		const win = this.verifyWin(space, number);
-		await wait(5000);
 		return msg.reply(`The result is **${number}${color ? ` ${color}` : ''}**. ${win ? 'You win!' : 'You lose...'}`);
 	}
 
 	verifyWin(choice, result) {
 		const number = parseInt(choice, 10);
 		if (numbers.includes(number)) return result === number;
-		if (!number) return false;
+		if (!result) return false;
 		if (dozens.includes(choice) || halves.includes(choice)) {
 			const range = choice.split('-');
 			return result >= range[0] && range[1] <= result;
 		}
 		if (colors.includes(choice)) {
-			if (!result) return false;
 			if (choice === 'black') return black.includes(result);
 			if (choice === 'red') return red.includes(result);
 		}
