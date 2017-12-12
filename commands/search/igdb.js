@@ -45,7 +45,7 @@ module.exports = class IGDBCommand extends Command {
 				.setDescription(data.summary ? shorten(data.summary) : 'No description available.')
 				.setThumbnail(data.cover ? data.cover.url : null)
 				.addField('❯ ESRB Rating',
-					data.esrb ? esrb[data.esrb.rating] : '???', true)
+					data.esrb ? esrb[data.esrb.rating - 1] : '???', true)
 				.addField('❯ Release Date',
 					data.first_release_date ? new Date(data.first_release_date).toDateString() : '???', true)
 				.addField('❯ Status',
