@@ -48,9 +48,9 @@ module.exports = class GitHubCommand extends Command {
 					body.open_issues, true)
 				.addField('❯ Language',
 					body.language || '???', true)
-				.addField('❯ Created',
+				.addField('❯ Creation Date',
 					new Date(body.created_at).toDateString(), true)
-				.addField('❯ Modified',
+				.addField('❯ Modification Date',
 					new Date(body.updated_at).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {

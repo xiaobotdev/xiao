@@ -59,7 +59,7 @@ module.exports = class SteamCommand extends Command {
 					data.recommendations ? data.recommendations.total : '???', true)
 				.addField('❯ Platforms',
 					platforms.join(', ') || 'None', true)
-				.addField('❯ Release Data',
+				.addField('❯ Release Date',
 					data.release_date ? data.release_date.date : '???', true)
 				.addField('❯ DLC Count',
 					data.dlc ? data.dlc.length : 0, true)

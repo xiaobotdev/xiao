@@ -41,11 +41,11 @@ module.exports = class WattpadCommand extends Command {
 				.setTitle(data.title)
 				.setDescription(shorten(data.description))
 				.setThumbnail(data.cover)
-				.addField('❯ Created On',
+				.addField('❯ Creation Date',
 					new Date(data.createDate).toDateString(), true)
 				.addField('❯ Author',
 					data.user, true)
-				.addField('❯ Parts',
+				.addField('❯ Chapters',
 					data.numParts, true)
 				.addField('❯ Reads',
 					data.readCount, true)

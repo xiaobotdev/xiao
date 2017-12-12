@@ -51,7 +51,7 @@ module.exports = class StackOverflowCommand extends Command {
 					data.view_count, true)
 				.addField('❯ Score',
 					data.score, true)
-				.addField('❯ Created',
+				.addField('❯ Creation Date',
 					new Date(data.creation_date * 1000).toDateString(), true)
 				.addField('❯ Last Activity',
 					new Date(data.last_activity_date * 1000).toDateString(), true);
