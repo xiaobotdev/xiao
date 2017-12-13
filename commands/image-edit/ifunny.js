@@ -35,8 +35,8 @@ module.exports = class IfunnyCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(data, 0, 0);
 			ctx.fillStyle = '#181619';
-			ctx.fillRect(0, canvas.height - data.height, canvas.width, data.height);
-			ctx.drawImage(base, canvas.width - data.width, canvas.height - data.height);
+			ctx.fillRect(0, canvas.height - base.height, canvas.width, base.height);
+			ctx.drawImage(base, canvas.width - base.width, canvas.height - base.height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ifunny.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
