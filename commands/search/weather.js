@@ -46,7 +46,7 @@ module.exports = class WeatherCommand extends Command {
 				.addField('❯ Condition',
 					data.item.condition.text, true)
 				.addField('❯ Temperature',
-					`${data.item.condition.temp}Â°F`, true)
+					`${data.item.condition.temp}°F`, true)
 				.addField('❯ Humidity',
 					data.atmosphere.humidity, true)
 				.addField('❯ Pressure',
