@@ -28,7 +28,7 @@ module.exports = class IfunnyCommand extends Command {
 
 	async run(msg, { image }) {
 		try {
-			const base = loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'ifunny.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'ifunny.png'));
 			const { body } = await snekfetch.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
