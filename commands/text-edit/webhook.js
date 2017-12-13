@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { WEBHOOK_URL } = process.env;
+const { WEBHOOK_ID, WEBHOOK_TOKEN } = process.env;
 
 module.exports = class WebhookCommand extends Command {
 	constructor(client) {
@@ -15,7 +15,7 @@ module.exports = class WebhookCommand extends Command {
 			clientPermissions: ['MANAGE_MESSAGES'],
 			args: [
 				{
-					key: 'message',
+					key: 'content',
 					prompt: 'What text would you like the webhook to say?',
 					type: 'string'
 				}
@@ -23,10 +23,10 @@ module.exports = class WebhookCommand extends Command {
 		});
 	}
 
-	async run(msg, { message }) {
+	async run(msg, { content }) {
 		if (msg.channel.type === 'text') await msg.delete();
 		try {
-			await snekfetch.post(WEBHOOK_URL).send({ content: message });
+			await snekfetch.post(`https://discordapp.com/api/webhooks/${WEBHOOK_ID}/${WEBHOOK_TOKEN}`).send({ content });
 			return null;
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
