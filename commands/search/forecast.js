@@ -10,11 +10,11 @@ module.exports = class ForecastCommand extends Command {
 			aliases: ['yahoo-forecast', 'weather-forecast', 'yahoo-weather-forecast'],
 			group: 'search',
 			memberName: 'forecast',
-			description: 'Responds with the seven-day forecast for a specified location.',
+			description: 'Responds with the seven-day forecast for a specific location.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'query',
+					key: 'location',
 					prompt: 'What location would you like to get the forecast for?',
 					type: 'string'
 				}
@@ -22,13 +22,13 @@ module.exports = class ForecastCommand extends Command {
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { location }) {
 		try {
 			const { body } = await snekfetch
 				.get('https://query.yahooapis.com/v1/public/yql')
 				.query({
 					// eslint-disable-next-line max-len
-					q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${query}")`,
+					q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${location}")`,
 					format: 'json'
 				});
 			if (!body.query.count) return msg.say('Could not find any results.');
