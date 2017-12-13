@@ -5,7 +5,7 @@ const { parseString } = require('xml2js');
 const { promisify } = require('util');
 const xml = promisify(parseString);
 const { shorten, cleanXML } = require('../../util/Util');
-const { MAL_LOGIN } = process.env;
+const { MAL_USERNAME, MAL_PASSWORD } = process.env;
 
 module.exports = class MyAnimeListAnimeCommand extends Command {
 	constructor(client) {
@@ -29,7 +29,7 @@ module.exports = class MyAnimeListAnimeCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { text } = await snekfetch
-				.get(`https://${MAL_LOGIN}@myanimelist.net/api/anime/search.xml`)
+				.get(`https://${MAL_USERNAME}:${MAL_PASSWORD}@myanimelist.net/api/anime/search.xml`)
 				.query({ q: query });
 			const body = await xml(text);
 			const data = body.anime.entry[0];
