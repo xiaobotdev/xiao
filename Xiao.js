@@ -1,8 +1,8 @@
-const { XIAO_TOKEN, OWNERS, XIAO_COMMAND_PREFIX, INVITE } = process.env;
+const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const path = require('path');
 const { CommandoClient } = require('discord.js-commando');
 const client = new CommandoClient({
-	commandPrefix: XIAO_COMMAND_PREFIX,
+	commandPrefix: XIAO_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	disableEveryone: true,

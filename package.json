@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://bitbucket.org/dragonfire535/xiaobot.git"
+		"url": "git+https://bitbucket.org/dragonfire535/xiao.git"
 	},
 	"keywords": [
 		"bot",
@@ -24,9 +24,9 @@
 	"author": "dragonfire535 <danielbodendahl@gmail.com>",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://bitbucket.org/dragonfire535/xiaobot/issues"
+		"url": "https://bitbucket.org/dragonfire535/xiao/issues"
 	},
-	"homepage": "https://bitbucket.org/dragonfire535/xiaobot#readme",
+	"homepage": "https://bitbucket.org/dragonfire535/xiao#readme",
 	"engines": {
 		"node": ">=8.0.0"
 	},
