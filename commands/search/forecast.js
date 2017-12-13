@@ -38,7 +38,7 @@ module.exports = class ForecastCommand extends Command {
 				.setAuthor(data.title, 'https://i.imgur.com/B9MMbtB.png')
 				.setURL(data.link)
 				.setTimestamp();
-			for (let i = 0; i < 6; i++) {
+			for (let i = 0; i < 7; i++) {
 				const forecast = data.item.forecast[i];
 				embed.addField(`❯ ${forecast.day} - ${forecast.date}`,
 					stripIndents`
