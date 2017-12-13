@@ -1,20 +1,19 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { OWM_KEY } = process.env;
 
 module.exports = class WeatherCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'weather',
-			aliases: ['open-weather-map'],
+			aliases: ['yahoo-weather'],
 			group: 'search',
 			memberName: 'weather',
-			description: 'Responds with weather information for a specific location.',
+			description: 'Responds with weather information for a specified location.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'location',
+					key: 'query',
 					prompt: 'What location would you like to get the weather of?',
 					type: 'string'
 				}
@@ -22,45 +21,49 @@ module.exports = class WeatherCommand extends Command {
 		});
 	}
 
-	async run(msg, { location }) {
+	async run(msg, { query }) {
 		try {
 			const { body } = await snekfetch
-				.get('http://api.openweathermap.org/data/2.5/weather')
+				.get('https://query.yahooapis.com/v1/public/yql')
 				.query({
-					q: location,
-					units: 'metric',
-					appid: OWM_KEY
+					// eslint-disable-next-line max-len
+					q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${query}")`,
+					format: 'json'
 				});
+			if (!body.query.count) return msg.say('Could not find any results.');
+			const data = body.query.results.channel;
 			const embed = new MessageEmbed()
-				.setColor(0xFF7A09)
-				.setAuthor('OpenWeatherMap', 'https://i.imgur.com/tUd1MYB.png')
-				.setURL(`https://openweathermap.org/city/${body.id}`)
-				.setThumbnail(body.weather[0].icon ? `http://openweathermap.org/img/w/${body.weather[0].icon}.png` : null)
+				.setColor(0x0000FF)
+				.setAuthor(data.title, 'https://i.imgur.com/B9MMbtB.png')
+				.setURL(data.link)
 				.setTimestamp()
 				.addField('❯ City',
-					body.name, true)
+					data.location.city, true)
 				.addField('❯ Country',
-					body.sys.country, true)
+					data.location.country, true)
+				.addField('❯ Region',
+					data.location.region, true)
 				.addField('❯ Condition',
-					body.weather.map(cond => `${cond.main} (${cond.description})`).join('\n'), true)
+					data.item.condition.text, true)
 				.addField('❯ Temperature',
-					body.main.temp ? `${body.main.temp}°C` : '???', true)
+					`${data.item.condition.temp}Â°F`, true)
 				.addField('❯ Humidity',
-					body.main.humidity ? `${body.main.humidity}%` : '???', true)
+					data.atmosphere.humidity, true)
 				.addField('❯ Pressure',
-					body.main.pressure ? `${body.main.pressure} hPa` : '???', true)
+					data.atmosphere.pressure, true)
+				.addField('❯ Rising',
+					data.atmosphere.rising, true)
 				.addField('❯ Visibility',
-					body.visibility ? `${body.visibility}m` : '???', true)
-				.addField('❯ Cloudiness',
-					body.clouds && body.clouds.all ? `${body.clouds.all}%` : '???', true)
+					data.atmosphere.visibility, true)
+				.addField('❯ Wind Chill',
+					data.wind.chill, true)
 				.addField('❯ Wind Direction',
-					body.wind && body.wind.deg ? `${body.wind.deg}°` : '???', true)
+					data.wind.direction, true)
 				.addField('❯ Wind Speed',
-					body.wind && body.wind.speed ? `${body.wind.speed}m/s` : '???', true);
+					data.wind.speed, true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Could not find any results.');
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
