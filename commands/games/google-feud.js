@@ -22,13 +22,13 @@ module.exports = class GoogleFeudCommand extends Command {
 		try {
 			const suggestions = await this.fetchSuggestions(question);
 			const display = new Array(suggestions.length).fill('???');
-			let fails = 0;
-			while (display.includes('???') && fails !== 3) {
+			let tries = 3;
+			while (display.includes('???') && tries) {
 				const embed = new MessageEmbed()
 					.setColor(0x005AF0)
 					.setTitle(`${question}...?`)
 					.setDescription('Type the choice you think is a suggestion _without_ the question.')
-					.setFooter(`${3 - fails} tries remaining!`);
+					.setFooter(`${tries} tries remaining!`);
 				for (let i = 0; i < suggestions.length; i++) embed.addField(`❯ ${10000 - (i * 1000)}`, display[i], true);
 				await msg.embed(embed);
 				const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
@@ -44,12 +44,12 @@ module.exports = class GoogleFeudCommand extends Command {
 					await msg.say('Nice job!');
 					display[suggestions.indexOf(choice)] = choice;
 				} else {
-					++fails;
-					await msg.say(`Nope! ${3 - fails} tries remaining!`);
+					--tries;
+					await msg.say(`Nope! ${tries} tries remaining!`);
 				}
 			}
 			this.playing.delete(msg.channel.id);
-			if (fails === 3) return msg.say('Better luck next time!');
+			if (!tries) return msg.say('Better luck next time!');
 			return msg.say('You win! Nice job, master of Google!');
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
