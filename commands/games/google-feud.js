@@ -30,7 +30,6 @@ module.exports = class GoogleFeudCommand extends Command {
 					.setDescription('Type the choice you think is a suggestion _without_ the question.')
 					.setFooter(`${3 - fails} tries remaining!`);
 				for (let i = 0; i < suggestions.length; i++) embed.addField(`❯ ${10000 - (i * 1000) || 500}`, display[i], true);
-				embed.addBlankField(true);
 				await msg.embed(embed);
 				const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 					max: 1,
