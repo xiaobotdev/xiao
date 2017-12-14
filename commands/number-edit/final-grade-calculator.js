@@ -36,9 +36,7 @@ module.exports = class FinalGradeCalculatorCommand extends Command {
 	}
 
 	run(msg, { current, desired, weight }) {
-		const weightDecimal = weight / 100;
-		const remainingWeight = 1 - weightDecimal;
-		const required = Math.round(((desired - (current * remainingWeight)) / weightDecimal) * 100);
+		const required = Math.round((((desired / 100) - ((current / 100) * (1 - (weight / 100)))) / (weight / 100)) * 100);
 		const diff = current - desired;
 		let text;
 		if (required > 100) text = above100[Math.floor(Math.random() * above100.length)];
