@@ -23,7 +23,7 @@ module.exports = class GoogleFeudCommand extends Command {
 			const suggestions = await this.fetchSuggestions(question);
 			const display = new Array(suggestions.length).fill('???');
 			let fails = 0;
-			while (suggestions.length !== display.length && fails < 3) {
+			while (display.includes('???') && fails < 3) {
 				const embed = new MessageEmbed()
 					.setColor(0x005AF0)
 					.setTitle(`${question}...?`)
@@ -49,6 +49,7 @@ module.exports = class GoogleFeudCommand extends Command {
 					await msg.say(`Nope! ${3 - fails} tries remaining!`);
 				}
 			}
+			this.playing.delete(msg.channel.id);
 			if (fails > 3) return msg.say('Better luck next time!');
 			return msg.say('You win! Nice job, master of Google!');
 		} catch (err) {
