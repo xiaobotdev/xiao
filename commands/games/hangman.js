@@ -26,7 +26,7 @@ module.exports = class HangmanCommand extends Command {
 			let points = 0;
 			const confirmation = [];
 			const incorrect = [];
-			const display = '_'.repeat(word.length).split('');
+			const display = new Array(word.length).fill('_');
 			while (word.length !== confirmation.length && points < 7) {
 				await msg.say(stripIndents`
 					\`${display.join(' ')}\`. Which letter do you choose?
