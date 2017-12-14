@@ -1,10 +1,9 @@
-const { promisify } = require('util');
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
 
 class Util {
-	static wait(time) {
-		return promisify(setTimeout)(time);
+	static wait(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
 	static shuffle(array) {
