@@ -29,7 +29,7 @@ module.exports = class GoogleFeudCommand extends Command {
 					.setTitle(`${question}...?`)
 					.setDescription('Type the choice you think is a suggestion _without_ the question.')
 					.setFooter(`${3 - fails} tries remaining!`);
-				for (let i = 0; i < suggestions.length; i++) embed.addField(`❯ ${10000 - (i * 1000) || 500}`, display[i], true);
+				for (let i = 0; i < suggestions.length; i++) embed.addField(`❯ ${10000 - (i * 1000)}`, display[i], true);
 				await msg.embed(embed);
 				const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 					max: 1,
@@ -49,11 +49,12 @@ module.exports = class GoogleFeudCommand extends Command {
 				}
 			}
 			this.playing.delete(msg.channel.id);
+			console.log(fails);
 			if (fails === 3) return msg.say('Better luck next time!');
 			return msg.say('You win! Nice job, master of Google!');
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
-			throw err;
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
