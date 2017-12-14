@@ -66,6 +66,8 @@ module.exports = class GoogleFeudCommand extends Command {
 			});
 		const suggestions = JSON.parse(text)[1];
 		if (!suggestions.length) return null;
-		return suggestions.map(suggestion => suggestion.toLowerCase().replace(question.toLowerCase(), '').trim());
+		return suggestions
+			.filter(suggestion => suggestion !== question.toLowerCase())
+			.map(suggestion => suggestion.toLowerCase().replace(question.toLowerCase(), '').trim());
 	}
 };
