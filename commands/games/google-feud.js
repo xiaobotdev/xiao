@@ -49,7 +49,6 @@ module.exports = class GoogleFeudCommand extends Command {
 				}
 			}
 			this.playing.delete(msg.channel.id);
-			console.log(fails);
 			if (fails === 3) return msg.say('Better luck next time!');
 			return msg.say('You win! Nice job, master of Google!');
 		} catch (err) {
