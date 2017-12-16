@@ -62,7 +62,7 @@ module.exports = class DeviantartCommand extends Command {
 				client_secret: DEVIANTART_SECRET
 			});
 		this.token = body.access_token;
-		this.client.setTimeout(() => { this.token = null; }, body.expires_in * 1000);
+		setTimeout(() => { this.token = null; }, body.expires_in * 1000);
 		return body;
 	}
 };
