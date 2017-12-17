@@ -5,7 +5,7 @@
 		"rotten": "<:splat_tomato:391778462194728961>"
 	},
 	"audience": {
-		"fresh": "<:standing_popcorn:391778463045910538>",
-		"rotten": "<:tipped_popcorn:391778462312169472>"
+		"Upright": "<:standing_popcorn:391778463045910538>",
+		"Spilled": "<:tipped_popcorn:391778462312169472>"
 	}
 }

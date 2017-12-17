@@ -36,8 +36,8 @@ module.exports = class RottenTomatoesCommand extends Command {
 			const urlID = find.url.replace('/m/', '');
 			const { text } = await snekfetch.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
 			const body = JSON.parse(text);
-			const criticScre = body.ratingSummary.allCritics;
-			const audienceScre = body.ratingSummary.audience;
+			const criticS = body.ratingSummary.allCritics;
+			const audienceS = body.ratingSummary.audience;
 			const embed = new MessageEmbed()
 				.setColor(0xFFEC02)
 				.setTitle(`${body.title} (${body.year})`)
@@ -46,9 +46,9 @@ module.exports = class RottenTomatoesCommand extends Command {
 				.setDescription(shorten(body.ratingSummary.consensus))
 				.setThumbnail(body.posters.original)
 				.addField('❯ Critic Score',
-					criticScre.meterValue ? `${critic[criticScre.meterClass]} ${criticScre.meterValue}%` : '???', true)
+					criticS.meterValue ? `${critic[criticS.meterClass]} ${criticS.meterValue}%` : '???', true)
 				.addField('❯ Audience Score',
-					audienceScre.meterValue ? `${audience[audienceScre.meterClass]} ${audienceScre.meterValue}%` : '???', true);
+					audienceS.meterScore ? `${audience[body.ratings.audience_rating]} ${audienceS.meterScore}%` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
