@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { shorten } = require('../../util/Util');
+const { critic, audience } = require('../../assets/json/rotten-tomatoes');
 
 module.exports = class RottenTomatoesCommand extends Command {
 	constructor(client) {
@@ -35,6 +36,8 @@ module.exports = class RottenTomatoesCommand extends Command {
 			const urlID = find.url.replace('/m/', '');
 			const { text } = await snekfetch.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
 			const body = JSON.parse(text);
+			const criticScre = body.ratingSummary.allCritics;
+			const audienceScre = body.ratingSummary.audience;
 			const embed = new MessageEmbed()
 				.setColor(0xFFEC02)
 				.setTitle(`${body.title} (${body.year})`)
@@ -43,9 +46,9 @@ module.exports = class RottenTomatoesCommand extends Command {
 				.setDescription(shorten(body.ratingSummary.consensus))
 				.setThumbnail(body.posters.original)
 				.addField('❯ Critic Score',
-					body.ratings.critics_score !== -1 ? `${body.ratings.critics_score}%` : '???', true)
+					criticScre.meterValue ? `${critic[criticScre.meterClass]} ${criticScre.meterValue}%` : '???', true)
 				.addField('❯ Audience Score',
-					body.ratings.audience_score !== -1 ? `${body.ratings.audience_score}%` : '???', true);
+					audienceScre.meterValue ? `${audience[audienceScre.meterClass]} ${audienceScre.meterValue}%` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
