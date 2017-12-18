@@ -39,17 +39,9 @@ module.exports = class BalloonPopCommand extends Command {
 			let remains = 1000;
 			while (!winner) {
 				const user = userTurn ? msg.author : opponent;
-				await msg.say(`${user} pumps the balloon!`);
-				remains -= 50;
-				const popped = !Math.floor(Math.random() * (remains < 0 ? 2 : remains));
-				if (popped) {
-					await msg.say('The balloon pops!');
-					winner = userTurn ? opponent : msg.author;
-					break;
-				}
 				let pump;
 				if (!opponent.bot || (opponent.bot && userTurn)) {
-					await msg.say(`${user}, do you pump the balloon again?`);
+					await msg.say(`${user}, do you pump the balloon?`);
 					const verification = await verify(msg.channel, user);
 					pump = verification;
 				} else {
@@ -58,8 +50,8 @@ module.exports = class BalloonPopCommand extends Command {
 				if (pump) {
 					await msg.say(`${user} pumps the balloon!`);
 					remains -= 50;
-					const popped2 = !Math.floor(Math.random() * (remains < 0 ? 2 : remains));
-					if (popped2) {
+					const popped = !Math.floor(Math.random() * (remains < 0 ? 2 : remains));
+					if (popped) {
 						await msg.say('The balloon pops!');
 						winner = userTurn ? opponent : msg.author;
 					}
