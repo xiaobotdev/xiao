@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const roles = require('../../assets/json/roles');
+const { HOME_GUILD_ID, HOME_GUILD_ROLES } = process.env;
 
 module.exports = class UnsubscribeCommand extends Command {
 	constructor(client) {
@@ -9,6 +9,7 @@ module.exports = class UnsubscribeCommand extends Command {
 			group: 'role-manage',
 			memberName: 'unsubscribe',
 			description: 'Unsubscribes you from the specified role.',
+			details: 'This command only works in the home server.',
 			guildOnly: true,
 			clientPermissions: ['MANAGE_ROLES'],
 			args: [
@@ -22,8 +23,8 @@ module.exports = class UnsubscribeCommand extends Command {
 	}
 
 	async run(msg, { role }) {
-		if (!roles[msg.guild.id]) return msg.say('This server has no roles open...');
-		if (!roles[msg.guild.id].includes(role.id)) return msg.reply('This role is not open!');
+		if (msg.guild.id !== HOME_GUILD_ID) return msg.reply('This command only works in the home server.');
+		if (!HOME_GUILD_ROLES.split(',').includes(role.id)) return msg.reply('This role is not open!');
 		if (!role.editable) return msg.reply('I do not have permission to manage this role!');
 		if (!msg.member.roles.has(role.id)) return msg.reply('You are not a member of this role!');
 		await msg.member.removeRole(role);

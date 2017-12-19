@@ -22,15 +22,15 @@ client.registry
 		['random', 'Random Response'],
 		['single', 'Single Response'],
 		['events', 'Daily Events'],
+		['search', 'Search'],
+		['games', 'Games'],
 		['image-edit', 'Image Manipulation'],
 		['avatar-edit', 'Avatar Manipulation'],
 		['text-edit', 'Text Manipulation'],
 		['number-edit', 'Number Manipulation'],
-		['search', 'Search'],
-		['games', 'Games'],
-		['role-manage', 'Role Management'],
 		['other', 'Other'],
-		['roleplay', 'Roleplay']
+		['roleplay', 'Roleplay'],
+		['role-manage', 'Home Server Role Management']
 	])
 	.registerDefaultCommands({
 		help: false,
