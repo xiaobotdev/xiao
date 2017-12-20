@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const path = require('path');
-const { wait } = require('../../util/Util');
+const fs = require('fs');
+const { Writable } = require('stream');
 
 module.exports = class AnimalCrossingSpeakCommand extends Command {
 	constructor(client) {
@@ -36,12 +37,10 @@ module.exports = class AnimalCrossingSpeakCommand extends Command {
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
-			for (const letter of text.split('')) {
-				if (letter === ' ') await wait(500);
-				else if (!/[a-z0-9]/.test(letter)) await this.playLetter(connection, 'unknown');
-				else await this.playLetter(connection, letter);
-			}
-			channel.leave();
+			const stream = await this.joinLetters(text.split(''));
+			const dispatcher = connection.playStream(stream);
+			dispatcher.once('end', () => channel.leave());
+			dispatcher.once('error', () => channel.leave());
 			return null;
 		} catch (err) {
 			channel.leave();
@@ -49,12 +48,23 @@ module.exports = class AnimalCrossingSpeakCommand extends Command {
 		}
 	}
 
-	playLetter(connection, letter) {
-		const letterPath = path.join(__dirname, '..', '..', 'assets', 'sounds', 'animal-crossing-speak', `${letter}.wav`);
+	async joinLetters(letters) {
+		let stream = new Writable();
+		for (const letter of letters) {
+			if (letter === ' ') continue;
+			else if (!/[a-z0-9]/.test(letter)) stream = await this.addLetter(stream, 'unknown');
+			else stream = await this.addLetter(stream, letter);
+		}
+		return stream;
+	}
+
+	addLetter(resultStream, letter) {
+		const filePath = path.join(__dirname, '..', '..', 'assets', 'sounds', 'animal-crossing-speak', `${letter}.wav`);
 		return new Promise((res, rej) => {
-			const dispatcher = connection.playFile(letterPath);
-			dispatcher.once('end', reason => res(reason));
-			dispatcher.once('error', err => rej(err));
+			const stream = fs.createReadStream(filePath);
+			stream.pipe(resultStream, { end: false });
+			stream.once('end', () => res(resultStream));
+			stream.once('error', err => rej(err));
 		});
 	}
 };
