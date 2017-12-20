@@ -14,7 +14,6 @@ module.exports = class BinaryCommand extends Command {
 					key: 'mode',
 					prompt: `Would you like to ${list(modes, 'or')}?`,
 					type: 'string',
-					format: `<${modes.join('|')}>`,
 					validate: mode => {
 						if (modes.includes(mode.toLowerCase())) return true;
 						return `Invalid mode, please enter either ${list(modes, 'or')}.`;
