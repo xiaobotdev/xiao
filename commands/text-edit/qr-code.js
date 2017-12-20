@@ -22,10 +22,7 @@ module.exports = class QRCodeCommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get('https://api.qrserver.com/v1/create-qr-code/')
-				.query({
-					data: text,
-					size: '500x500'
-				});
+				.query({ data: text });
 			return msg.say({ files: [{ attachment: body, name: 'qr-code.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
