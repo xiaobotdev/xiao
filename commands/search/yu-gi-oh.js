@@ -27,14 +27,15 @@ module.exports = class YuGiOhCommand extends Command {
 		try {
 			const { body } = await snekfetch.get(`https://yugiohprices.com/api/card_data/${query}`);
 			if (body.status === 'fail') return msg.say('Could not find any results.');
-			const image = await snekfetch.get(`https://yugiohprices.com/api/card_image/${query}`, { followRedirects: false });
+			const image = await snekfetch.get(`https://yugiohprices.com/api/card_image/${query}`);
 			const { data } = body;
 			const embed = new MessageEmbed()
+				.attachFiles([{ attachment: image, name: 'thumbnail.jpg' }])
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
 				.setDescription(shorten(data.text))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png')
-				.setThumbnail(image.headers.location)
+				.setThumbnail('attachment://thumbnail.jpg')
 				.addField('❯ Card Type',
 					data.card_type, true);
 			if (data.card_type === 'monster') {
