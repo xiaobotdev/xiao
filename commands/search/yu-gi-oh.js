@@ -30,7 +30,7 @@ module.exports = class YuGiOhCommand extends Command {
 			const image = await snekfetch.get(`https://yugiohprices.com/api/card_image/${query}`);
 			const { data } = body;
 			const embed = new MessageEmbed()
-				.attachFiles([{ attachment: image, name: 'thumbnail.jpg' }])
+				.attachFiles([{ attachment: image.body, name: 'thumbnail.jpg' }])
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
 				.setDescription(shorten(data.text))
