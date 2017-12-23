@@ -32,7 +32,7 @@
 	},
 	"dependencies": {
 		"canvas": "github:automattic/node-canvas",
-		"common-tags": "^1.5.1",
+		"common-tags": "^1.6.0",
 		"custom-translate": "^2.2.2",
 		"discord.js": "github:hydrabolt/discord.js",
 		"discord.js-commando": "github:dragonfire535/discord.js-commando#default-functions",
