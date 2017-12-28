@@ -21,7 +21,6 @@ module.exports = class SpoopyLinkCommand extends Command {
 	}
 
 	async run(msg, { site }) {
-		if (/discord(\.gg|app\.com%2Finvite|\.me)%2F/gi.test(site)) return msg.say('Discord invites are safe!');
 		try {
 			const { body } = await snekfetch.get(`https://spoopy.link/api/${site}`);
 			return msg.say(stripIndents`
