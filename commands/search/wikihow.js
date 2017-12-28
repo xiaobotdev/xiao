@@ -33,7 +33,7 @@ module.exports = class WikihowCommand extends Command {
 					inprop: 'url'
 				});
 			const data = body.query.pages[Object.keys(body.query.pages)[0]];
-			if (data.missing) return msg.say('Could not find any results.');
+			if (!data.missing) return msg.say('Could not find any results.');
 			return msg.say(stripIndents`
 				How to ${data.title}
 				${data.fullurl}
