@@ -30,7 +30,8 @@ module.exports = class WikihowCommand extends Command {
 					prop: 'info',
 					format: 'json',
 					titles: query,
-					inprop: 'url'
+					inprop: 'url',
+					redirects: ''
 				});
 			const data = body.query.pages[Object.keys(body.query.pages)[0]];
 			if (data.missing === '') return msg.say('Could not find any results.');
