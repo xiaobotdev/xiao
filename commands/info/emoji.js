@@ -31,8 +31,8 @@ module.exports = class EmojiInfoCommand extends Command {
 				emoji.id, true)
 			.addField('❯ Creation Date',
 				emoji.createdAt.toDateString(), true)
-			.addField('❯ External?',
-				emoji.managed ? 'Yes' : 'No', true);
+			.addField('❯ Animated?',
+				emoji.animated ? 'Yes' : 'No', true);
 		return msg.embed(embed);
 	}
 };

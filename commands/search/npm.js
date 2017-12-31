@@ -27,6 +27,7 @@ module.exports = class NPMCommand extends Command {
 	async run(msg, { pkg }) {
 		try {
 			const { body } = await snekfetch.get(`https://registry.npmjs.com/${pkg}`);
+			if (!body.time.unpublished) return msg.say('This package no longer exists.');
 			const version = body.versions[body['dist-tags'].latest];
 			const maintainers = trimArray(body.maintainers.map(user => user.name));
 			const dependencies = version.dependencies ? trimArray(Object.keys(version.dependencies)) : null;
