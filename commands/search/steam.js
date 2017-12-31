@@ -6,7 +6,7 @@ module.exports = class SteamCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'steam',
-			aliases: ['steam-game'],
+			aliases: ['steam-game', 'game', 'video-game'],
 			group: 'search',
 			memberName: 'steam',
 			description: 'Searches Steam for your query.',
@@ -36,9 +36,9 @@ module.exports = class SteamCommand extends Command {
 				.get('https://store.steampowered.com/api/appdetails')
 				.query({ appids: id });
 			const { data } = body[id.toString()];
-			const current = data.price_overview ? data.price_overview.final / 100 : 0;
-			const original = data.price_overview ? data.price_overview.initial / 100 : 0;
-			const price = current === original ? `$${current}` : `~~$${original}~~ $${current}`;
+			const current = data.price_overview ? `$${data.price_overview.final / 100}` : 'Free';
+			const original = data.price_overview ? `$${data.price_overview.initial / 100}` : 'Free';
+			const price = current === original ? current : `~~${original}~~ ${current}`;
 			const platforms = [];
 			if (data.platforms) {
 				if (data.platforms.windows) platforms.push('Windows');
