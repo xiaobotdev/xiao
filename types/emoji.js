@@ -23,7 +23,7 @@ class EmojiArgumentType extends ArgumentType {
 	}
 
 	parse(value, msg) {
-		const matches = value.match(/^(?:<:([a-zA-Z0-9_]+):)?([0-9]+)>?$/);
+		const matches = value.match(/^(?:<a?:([a-zA-Z0-9_]+):)?([0-9]+)>?$/);
 		if (matches) return msg.client.emojis.get(matches[2]) || null;
 		const search = value.toLowerCase();
 		const emojis = msg.guild.emojis.filterArray(nameFilterInexact(search));
