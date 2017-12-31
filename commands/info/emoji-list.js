@@ -1,4 +1,6 @@
 const { Command } = require('discord.js-commando');
+const { list } = require('../../util/Util');
+const types = ['animated', 'regular'];
 
 module.exports = class EmojiListCommand extends Command {
 	constructor(client) {
@@ -12,12 +14,12 @@ module.exports = class EmojiListCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: 'Would you like to view animated emoji or regular emoji?',
+					prompt: `What type of emoji would you like to view? Either ${list(types, 'or')}.`,
 					type: 'string',
 					default: 'regular',
 					validate: type => {
-						if (['animated', 'regular'].includes(type.toLowerCase())) return true;
-						return 'Invalid type, please enter either animated or regular.';
+						if (types.includes(type.toLowerCase())) return true;
+						return `Invalid type, please enter either ${list(types, 'or')}.`;
 					},
 					parse: type => type.toLowerCase()
 				}
