@@ -1,0 +1,1288 @@
+{
+	"questions": {
+		"first": [
+			{
+				"text": "Dawn or dusk?",
+				"answers": [
+					{
+						"text": "Dawn",
+						"points": {
+							"g": 27.31307938,
+							"r": 25.92258493,
+							"h": -28.87112887,
+							"s": -22.21557617
+						}
+					},
+					{
+						"text": "Dusk",
+						"points": {
+							"g": -27.07398054,
+							"r": -25.53254608,
+							"h": 30.81085673,
+							"s": 23.30406316
+						}
+					}
+				]
+			},
+			{
+				"text": "Forest or river?",
+				"answers": [
+					{
+						"text": "Forest",
+						"points": {
+							"g": 28.81628797,
+							"r": 26.53804988,
+							"h": -29.61546288,
+							"s": -24.03943097
+						}
+					},
+					{
+						"text": "River",
+						"points": {
+							"g": -27.41760127,
+							"r": -25.25110895,
+							"h": 29.47879885,
+							"s": 25.29708668
+						}
+					}
+				]
+			},
+			{
+				"text": "Moon or stars?",
+				"answers": [
+					{
+						"text": "Moon",
+						"points": {
+							"g": -26.99015136,
+							"r": 29.21779485,
+							"h": -24.15712033,
+							"s": 24.38099947
+						}
+					},
+					{
+						"text": "Stars",
+						"points": {
+							"g": 28.653864,
+							"r": -28.67894522,
+							"h": 26.97274135,
+							"s": -24.67312267
+						}
+					}
+				]
+			}
+		],
+		"2": [
+			{
+				"text": "Which of the following would you most hate people to call you?",
+				"answers": [
+					{
+						"text": "Ordinary",
+						"points": {
+							"g": -11.75519742,
+							"r": -10.92370078,
+							"h": -10.86606985,
+							"s": 35.83478687
+						}
+					},
+					{
+						"text": "Ignorant",
+						"points": {
+							"g": -12.60998441,
+							"r": 40.265642,
+							"h": -10.2989145,
+							"s": -14.55694498
+						}
+					},
+					{
+						"text": "Cowardly",
+						"points": {
+							"g": 42.87682039,
+							"r": -15.5525649,
+							"h": -16.60672085,
+							"s": -9.827956095
+						}
+					},
+					{
+						"text": "Selfish",
+						"points": {
+							"g": -15.48432768,
+							"r": -18.0245794,
+							"h": 45.89311983,
+							"s": -10.87602756
+						}
+					}
+				]
+			},
+			{
+				"text": "After you have died, what would you most like people to do when they hear your name?",
+				"answers": [
+					{
+						"text": "Miss you, but smile",
+						"points": {
+							"g": -13.7807683,
+							"r": -13.91040329,
+							"h": 46.49760029,
+							"s": -16.18133969
+						}
+					},
+					{
+						"text": "Ask for more stories about your adventures",
+						"points": {
+							"g": 41.37660787,
+							"r": -11.1817536,
+							"h": -21.22463154,
+							"s": -7.60796961
+						}
+					},
+					{
+						"text": "Think with admiration of your achievements",
+						"points": {
+							"g": -10.57625107,
+							"r": 40.25907324,
+							"h": -11.94444904,
+							"s": -15.29969347
+						}
+					},
+					{
+						"text": "I don't care what people think of me after I'm dead; it's what they think of me while I'm alive that counts",
+						"points": {
+							"g": -12.2082282,
+							"r": -9.366492361,
+							"h": -12.77709973,
+							"s": 36.48253984
+						}
+					}
+				]
+			},
+			{
+				"text": "How would you like to be known to history?",
+				"answers": [
+					{
+						"text": "The Wise",
+						"points": {
+							"g": -12.39357202,
+							"r": 40.07671351,
+							"h": -12.50534524,
+							"s": -13.46060562
+						}
+					},
+					{
+						"text": "The Good",
+						"points": {
+							"g": -14.87071125,
+							"r": -16.00228703,
+							"h": 43.98568091,
+							"s": -11.52986338
+						}
+					},
+					{
+						"text": "The Great",
+						"points": {
+							"g": -11.48453278,
+							"r": -10.16648232,
+							"h": -15.37467794,
+							"s": 38.23373882
+						}
+					},
+					{
+						"text": "The Bold",
+						"points": {
+							"g": 41.31616697,
+							"r": -14.48335335,
+							"h": -19.24767597,
+							"s": -5.019035161
+						}
+					}
+				]
+			},
+			{
+				"text": "Given the choice, would you rather invent a potion that would guarantee you:",
+				"answers": [
+					{
+						"text": "Love?",
+						"points": {
+							"g": -15.09086809,
+							"r": -13.3779201,
+							"h": 43.10458952,
+							"s": -13.19529925
+						}
+					},
+					{
+						"text": "Glory?",
+						"points": {
+							"g": 43.15790393,
+							"r": -12.41975537,
+							"h": -18.22940109,
+							"s": -10.43593648
+						}
+					},
+					{
+						"text": "Wisdom?",
+						"points": {
+							"g": -15.52102159,
+							"r": 42.01691959,
+							"h": -8.467320109,
+							"s": -15.59260888
+						}
+					},
+					{
+						"text": "Power?",
+						"points": {
+							"g": -12.48667468,
+							"r": -10.53541555,
+							"h": -11.03327086,
+							"s": 36.26321903
+						}
+					}
+				]
+			}
+		],
+		"3": [
+			{
+				"text": "Four boxes are placed before you. Which would you try and open?",
+				"answers": [
+					{
+						"text": "The small tortoiseshell box, embellished with gold, inside which some small creature seems to be squeaking.",
+						"points": {
+							"g": -22.52161163,
+							"r": -11.39500098,
+							"h": 46.9276079,
+							"s": -10.3717712
+						}
+					},
+					{
+						"text": "The gleaming jet black box with a silver lock and key, marked with a mysterious rune that you know to be the mark of Merlin.",
+						"points": {
+							"g": -10.90548604,
+							"r": -9.593133701,
+							"h": -16.14193004,
+							"s": 38.09339906
+						}
+					},
+					{
+						"text": "The ornate golden casket, standing on clawed feet, whose inscription warns that both secret knowledge and unbearable temptation lie within.",
+						"points": {
+							"g": -12.21860138,
+							"r": 37.71117418,
+							"h": -10.66015592,
+							"s": -13.04771215
+						}
+					},
+					{
+						"text": "The small pewter box, unassuming and plain, with a scratched message upon it that reads 'I open only for the worthy.'",
+						"points": {
+							"g": 42.85559784,
+							"r": -13.92739453,
+							"h": -18.49815241,
+							"s": -7.988791579
+						}
+					}
+				]
+			},
+			{
+				"text": "Once every century, the Flutterby bush produces flowers that adapt their scent to attract the unwary. If it lured you, it would smell of:",
+				"answers": [
+					{
+						"text": "A crackling log fire",
+						"points": {
+							"g": 42.20240168,
+							"r": -8.357753463,
+							"h": -22.78056435,
+							"s": -8.243194893
+						}
+					},
+					{
+						"text": "The sea",
+						"points": {
+							"g": -8.586342901,
+							"r": -7.507111586,
+							"h": -16.19218269,
+							"s": 35.04330848
+						}
+					},
+					{
+						"text": "Fresh parchment",
+						"points": {
+							"g": -12.55006436,
+							"r": 38.93217968,
+							"h": -11.48254915,
+							"s": -14.14056557
+						}
+					},
+					{
+						"text": "Home",
+						"points": {
+							"g": -14.20337805,
+							"r": -16.50952349,
+							"h": 45.40854108,
+							"s": -13.23654274
+						}
+					}
+				]
+			},
+			{
+				"text": "You enter an enchanted garden. What would you be most curious to examine first?",
+				"answers": [
+					{
+						"text": "The silver leafed tree bearing golden apples",
+						"points": {
+							"g": -11.70832774,
+							"r": 38.10156627,
+							"h": -10.47728774,
+							"s": -14.4066053
+						}
+					},
+					{
+						"text": "The fat red toadstools that appear to be talking to each other",
+						"points": {
+							"g": -11.38975609,
+							"r": -19.363342,
+							"h": 45.66505899,
+							"s": -12.41636611
+						}
+					},
+					{
+						"text": "The bubbling pool, in the depths of which something luminous is swirling",
+						"points": {
+							"g": -18.79689945,
+							"r": -8.167283167,
+							"h": -10.95346404,
+							"s": 39.02161532
+						}
+					},
+					{
+						"text": "The statue of an old wizard with a strangely twinkling eye",
+						"points": {
+							"g": 41.23017056,
+							"r": -14.2140387,
+							"h": -17.91308959,
+							"s": -6.702406531
+						}
+					}
+				]
+			},
+			{
+				"text": "Four goblets are placed before you. Which would you choose to drink?",
+				"answers": [
+					{
+						"text": "The foaming, frothing, silvery liquid that sparkles as though containing ground diamonds.",
+						"points": {
+							"g": -13.99879538,
+							"r": 40.11098139,
+							"h": -9.406077434,
+							"s": -15.58163736
+						}
+					},
+					{
+						"text": "The smooth, thick, richly purple drink that gives off a delicious smell of chocolate and plums.",
+						"points": {
+							"g": -16.25660413,
+							"r": -14.34614176,
+							"h": 46.3278991,
+							"s": -14.08038371
+						}
+					},
+					{
+						"text": "The golden liquid so bright that it hurts the eye, and which makes sunspots dance all around the room.",
+						"points": {
+							"g": 40.92686336,
+							"r": -11.34270662,
+							"h": -17.29827761,
+							"s": -10.81718067
+						}
+					},
+					{
+						"text": "The mysterious black liquid that gleams like ink, and gives off fumes that make you see strange visions.",
+						"points": {
+							"g": -10.00982635,
+							"r": -11.93103289,
+							"h": -11.01834159,
+							"s": 34.71808527
+						}
+					}
+				]
+			},
+			{
+				"text": "What kind of instrument most pleases your ear?",
+				"answers": [
+					{
+						"text": "The violin",
+						"points": {
+							"g": -10.33126266,
+							"r": -10.98565505,
+							"h": -12.52911445,
+							"s": 35.07799069
+						}
+					},
+					{
+						"text": "The trumpet",
+						"points": {
+							"g": -14.00827913,
+							"r": -14.41607143,
+							"h": 43.22386173,
+							"s": -12.52828715
+						}
+					},
+					{
+						"text": "The piano",
+						"points": {
+							"g": -12.98508415,
+							"r": 40.30457373,
+							"h": -12.26180667,
+							"s": -12.91961924
+						}
+					},
+					{
+						"text": "The drum",
+						"points": {
+							"g": 44.15185475,
+							"r": -14.48981764,
+							"h": -19.39087512,
+							"s": -7.911670833
+						}
+					}
+				]
+			}
+		],
+		"4": [
+			{
+				"text": "Which of the following do you find most difficult to deal with?",
+				"answers": [
+					{
+						"text": "Hunger",
+						"points": {
+							"g": -28.21972672,
+							"r": 26.96307844,
+							"h": 31.95072949,
+							"s": -29.10382335
+						}
+					},
+					{
+						"text": "Cold",
+						"points": {
+							"g": -24.05310951,
+							"r": -23.48514187,
+							"h": 27.93543613,
+							"s": 21.04293859
+						}
+					},
+					{
+						"text": "Loneliness",
+						"points": {
+							"g": 29.03349777,
+							"r": -28.05313842,
+							"h": 24.90792029,
+							"s": -23.82686029
+						}
+					},
+					{
+						"text": "Boredom",
+						"points": {
+							"g": 29.94248441,
+							"r": -19.42137955,
+							"h": -35.99363729,
+							"s": 26.75190709
+						}
+					},
+					{
+						"text": "Being ignored",
+						"points": {
+							"g": -26.09709417,
+							"r": 31.63714224,
+							"h": -24.79204017,
+							"s": 21.68704531
+						}
+					}
+				]
+			},
+			{
+				"text": "A troll has gone berserk in the Headmaster’s study at Hogwarts. It is about to smash, crush and tear several irreplaceable items and treasures. In which order would you rescue these objects from the troll’s club, if you could?",
+				"answers": [
+					{
+						"text": "First, a nearly perfected cure for dragon pox. Then student records going back 1000 years. Finally, a mysterious handwritten book full of strange runes.",
+						"points": {
+							"g": 29.36249156,
+							"r": -26.05442147,
+							"h": 22.00609388,
+							"s": -23.63817211
+						}
+					},
+					{
+						"text": "First, student records going back 1000 years. Then a mysterious handwritten book full of strange runes. Finally, a nearly perfected cure for dragon pox.",
+						"points": {
+							"g": -9.379429293,
+							"r": -7.076799721,
+							"h": -13.36717194,
+							"s": 31.65289076
+						}
+					},
+					{
+						"text": "First, a mysterious handwritten book full of strange runes. Then a nearly perfected cure for dragon pox. Finally, student records going back 1000 years.",
+						"points": {
+							"g": -9.700034249,
+							"r": 42.34681029,
+							"h": -10.37103553,
+							"s": -20.32349944
+						}
+					},
+					{
+						"text": "First, a nearly perfected cure for dragon pox. Then a mysterious handwritten book full of strange runes. Finally, student records going back 1000 years.",
+						"points": {
+							"g": 43.98182657,
+							"r": -7.569136306,
+							"h": -22.75962425,
+							"s": -11.54315695
+						}
+					},
+					{
+						"text": "First student records going back 1000 years. Then, a nearly perfected cure for dragon pox. Finally, a mysterious handwritten book full of strange runes.",
+						"points": {
+							"g": -6.966899719,
+							"r": -17.49563511,
+							"h": 41.93544305,
+							"s": -15.12882189
+						}
+					},
+					{
+						"text": "First, a mysterious handwritten book full of strange runes. Then student records going back 1000 years. Finally, a nearly perfected cure for dragon pox.",
+						"points": {
+							"g": -24.05779612,
+							"r": 29.0768229,
+							"h": -23.46927222,
+							"s": 20.08155918
+						}
+					}
+				]
+			},
+			{
+				"text": "Which would you rather be:",
+				"answers": [
+					{
+						"text": "Envied?",
+						"points": {
+							"g": -23.38608287,
+							"r": 29.56240784,
+							"h": -24.43494458,
+							"s": 20.27897556
+						}
+					},
+					{
+						"text": "Imitated?",
+						"points": {
+							"g": -10.02110229,
+							"r": 41.34717373,
+							"h": -13.15711695,
+							"s": -15.54384446
+						}
+					},
+					{
+						"text": "Trusted?",
+						"points": {
+							"g": 27.74841466,
+							"r": -26.66929985,
+							"h": 25.37043067,
+							"s": -24.89501457
+						}
+					},
+					{
+						"text": "Praised?",
+						"points": {
+							"g": 34.35667446,
+							"r": -14.96501695,
+							"h": -28.68955105,
+							"s": 10.71436737
+						}
+					},
+					{
+						"text": "Liked?",
+						"points": {
+							"g": -10.98726978,
+							"r": -16.01999991,
+							"h": 43.07559247,
+							"s": -13.92482477
+						}
+					},
+					{
+						"text": "Feared?",
+						"points": {
+							"g": -11.84099775,
+							"r": -9.375944575,
+							"h": -10.65163345,
+							"s": 33.45753935
+						}
+					}
+				]
+			}
+		],
+		"5": [
+			{
+				"text": "If you could have any power, which would you choose?",
+				"answers": [
+					{
+						"text": "The power to read minds",
+						"points": {
+							"g": -24.17506604,
+							"r": 28.02462586,
+							"h": -25.1266397,
+							"s": 22.78835747
+						}
+					},
+					{
+						"text": "The power of invisibility",
+						"points": {
+							"g": 30.94950708,
+							"r": -16.89419896,
+							"h": 2.016868281,
+							"s": -14.33237054
+						}
+					},
+					{
+						"text": "The power of superhuman strength",
+						"points": {
+							"g": -21.74919519,
+							"r": -23.24640341,
+							"h": 35.67345622,
+							"s": 11.88982939
+						}
+					},
+					{
+						"text": "The power to speak to animals",
+						"points": {
+							"g": -26.37624459,
+							"r": 19.87071358,
+							"h": 34.83739639,
+							"s": -26.54712946
+						}
+					},
+					{
+						"text": "The power to change the past",
+						"points": {
+							"g": 0.332990318,
+							"r": -17.10768552,
+							"h": -14.56762339,
+							"s": 33.38204993
+						}
+					},
+					{
+						"text": "The power to change your appearance at will",
+						"points": {
+							"g": -2.458592609,
+							"r": 35.53189074,
+							"h": -13.20459011,
+							"s": -17.12880799
+						}
+					}
+				]
+			},
+			{
+				"text": "What are you most looking forward to learning at Hogwarts?",
+				"answers": [
+					{
+						"text": "Apparition and Disapparition (being able to materialize and dematerialize at will)",
+						"points": {
+							"g": 31.23750325,
+							"r": -25.11011193,
+							"h": -28.8908555,
+							"s": 25.28530318
+						}
+					},
+					{
+						"text": "Transfiguration (turning one object into another object)",
+						"points": {
+							"g": -14.19988561,
+							"r": 38.71431659,
+							"h": -9.304880652,
+							"s": -13.19296379
+						}
+					},
+					{
+						"text": "Flying on a broomstick",
+						"points": {
+							"g": 29.72186159,
+							"r": -27.4287872,
+							"h": 21.78213483,
+							"s": -20.92465167
+						}
+					},
+					{
+						"text": "Hexes and jinxes",
+						"points": {
+							"g": -7.778462793,
+							"r": -13.81585107,
+							"h": -13.30728434,
+							"s": 35.89289216
+						}
+					},
+					{
+						"text": "All about magical creatures, and how to befriend/care for them",
+						"points": {
+							"g": -12.54890353,
+							"r": -18.47726582,
+							"h": 48.09882314,
+							"s": -15.26330099
+						}
+					},
+					{
+						"text": "Secrets about the castle",
+						"points": {
+							"g": 42.92989547,
+							"r": -9.446864814,
+							"h": -19.33008843,
+							"s": -13.34053828
+						}
+					},
+					{
+						"text": "Every area of magic I can",
+						"points": {
+							"g": -11.12421806,
+							"r": 39.19823338,
+							"h": -9.845999385,
+							"s": -16.51249774
+						}
+					}
+				]
+			},
+			{
+				"text": "Which of the following would you most like to study?",
+				"answers": [
+					{
+						"text": "Centaurs",
+						"points": {
+							"g": 27.3714009,
+							"r": 24.0994136,
+							"h": -27.38973573,
+							"s": -22.53814016
+						}
+					},
+					{
+						"text": "Goblins",
+						"points": {
+							"g": -19.64625528,
+							"r": 31.81426945,
+							"h": -18.49200208,
+							"s": 8.733770043
+						}
+					},
+					{
+						"text": "Merpeople",
+						"points": {
+							"g": -22.93634644,
+							"r": -24.86864463,
+							"h": 28.12543954,
+							"s": 21.80812282
+						}
+					},
+					{
+						"text": "Ghosts",
+						"points": {
+							"g": 27.95707126,
+							"r": 27.5289272,
+							"h": -30.00833793,
+							"s": -23.97913683
+						}
+					},
+					{
+						"text": "Vampires",
+						"points": {
+							"g": -11.72034886,
+							"r": -10.41163098,
+							"h": -11.93375648,
+							"s": 36.37906121
+						}
+					},
+					{
+						"text": "Werewolves",
+						"points": {
+							"g": 24.35997997,
+							"r": -25.33791883,
+							"h": 27.00762335,
+							"s": -24.61394017
+						}
+					},
+					{
+						"text": "Trolls",
+						"points": {
+							"g": -28.33101425,
+							"r": -24.04994569,
+							"h": 34.15713638,
+							"s": 19.82128656
+						}
+					}
+				]
+			}
+		],
+		"6": [
+			{
+				"text": "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:",
+				"answers": [
+					{
+						"text": "Attempt to confuse the troll into letting all three of you pass without fighting?",
+						"points": {
+							"g": -12.21949559,
+							"r": 39.18673579,
+							"h": -14.32592834,
+							"s": -10.15802264
+						}
+					},
+					{
+						"text": "Suggest drawing lots to decide which of you will fight?",
+						"points": {
+							"g": -16.77231763,
+							"r": -9.948193394,
+							"h": 45.02575153,
+							"s": -15.61728574
+						}
+					},
+					{
+						"text": "Suggest that all three of you should fight (without telling the troll)?",
+						"points": {
+							"g": -7.926035393,
+							"r": -10.24499201,
+							"h": -15.64058444,
+							"s": 37.26154927
+						}
+					},
+					{
+						"text": "Volunteer to fight?",
+						"points": {
+							"g": 40.38906615,
+							"r": -7.371976409,
+							"h": -20.39648571,
+							"s": -11.08309843
+						}
+					}
+				]
+			},
+			{
+				"text": "One of your house mates has cheated in a Hogwarts exam by using a Self-Spelling Quill. Now he has come top of the class in Charms, beating you into second place. Professor Flitwick is suspicious of what happened. He draws you to one side after his lesson and asks you whether or not your classmate used a forbidden quill. What do you do?",
+				"answers": [
+					{
+						"text": "Lie and say you don’t know (but hope that somebody else tells Professor Flitwick the truth).",
+						"points": {
+							"g": -13.48432155,
+							"r": -17.29439279,
+							"h": 41.3626604,
+							"s": -8.254486504
+						}
+					},
+					{
+						"text": "Tell Professor Flitwick that he ought to ask your classmate (and resolve to tell your classmate that if he doesn’t tell the truth, you will).",
+						"points": {
+							"g": 42.1033363,
+							"r": -13.65683918,
+							"h": -13.49218299,
+							"s": -12.21474272
+						}
+					},
+					{
+						"text": "Tell Professor Flitwick the truth. If your classmate is prepared to win by cheating, he deserves to be found out. Also, as you are both in the same house, any points he loses will be regained by you, for coming first in his place.",
+						"points": {
+							"g": -10.92391358,
+							"r": 38.69530242,
+							"h": -13.4125977,
+							"s": -12.69153243
+						}
+					},
+					{
+						"text": "You would not wait to be asked to tell Professor Flitwick the truth. If you knew that somebody was using a forbidden quill, you would tell the teacher before the exam started.",
+						"points": {
+							"g": -13.12925161,
+							"r": -8.009293327,
+							"h": -13.65120757,
+							"s": 36.94995767
+						}
+					}
+				]
+			},
+			{
+				"text": "A Muggle confronts you and says that they are sure you are a witch or wizard. Do you:",
+				"answers": [
+					{
+						"text": "Ask what makes them think so?",
+						"points": {
+							"g": -18.51698777,
+							"r": 43.19651328,
+							"h": -5.627175508,
+							"s": -16.24151016
+						}
+					},
+					{
+						"text": "Agree, and ask whether they’d like a free sample of a jinx?",
+						"points": {
+							"g": -5.297205391,
+							"r": -17.31138241,
+							"h": -10.74329071,
+							"s": 35.97599782
+						}
+					},
+					{
+						"text": "Agree, and walk away, leaving them to wonder whether you are bluffing?",
+						"points": {
+							"g": 40.41114795,
+							"r": -8.735245784,
+							"h": -18.1847105,
+							"s": -11.05628226
+						}
+					},
+					{
+						"text": "Tell them that you are worried about their mental health, and offer to call a doctor.",
+						"points": {
+							"g": -19.40603566,
+							"r": -12.71912669,
+							"h": 45.08269049,
+							"s": -11.02696975
+						}
+					}
+				]
+			},
+			{
+				"text": "Which nightmare would frighten you most?",
+				"answers": [
+					{
+						"text": "Standing on top of something very high and realizing suddenly that there are no hand- or footholds, nor any barrier to stop you falling.",
+						"points": {
+							"g": -16.19003593,
+							"r": 38.81152886,
+							"h": -12.6984308,
+							"s": -8.023692844
+						}
+					},
+					{
+						"text": "An eye at the keyhole of the dark, windowless room in which you are locked.",
+						"points": {
+							"g": 41.33854576,
+							"r": -10.03525098,
+							"h": -15.91229289,
+							"s": -13.32183833
+						}
+					},
+					{
+						"text": "Waking up to find that neither your friends nor your family have any idea who you are.",
+						"points": {
+							"g": -12.96227842,
+							"r": -16.55271609,
+							"h": 45.43418375,
+							"s": -13.83281749
+						}
+					},
+					{
+						"text": "Being forced to speak in such a silly voice that hardly anyone can understand you, and everyone laughs at you.",
+						"points": {
+							"g": -15.94847125,
+							"r": -5.745641099,
+							"h": -14.83832559,
+							"s": 38.61738702
+						}
+					}
+				]
+			},
+			{
+				"text": "Which road tempts you most?",
+				"answers": [
+					{
+						"text": "The wide, sunny, grassy lane",
+						"points": {
+							"g": -11.22676033,
+							"r": -19.11937453,
+							"h": 44.82488386,
+							"s": -11.93639792
+						}
+					},
+					{
+						"text": "The narrow, dark, lantern-lit alley",
+						"points": {
+							"g": -8.811621902,
+							"r": -12.02741304,
+							"h": -14.9112595,
+							"s": 37.69703494
+						}
+					},
+					{
+						"text": "The twisting, leaf-strewn path through woods",
+						"points": {
+							"g": 42.24315194,
+							"r": -12.70821137,
+							"h": -18.82743135,
+							"s": -9.136595044
+						}
+					},
+					{
+						"text": "The cobbled street lined with ancient buildings",
+						"points": {
+							"g": -12.43166553,
+							"r": 35.99676211,
+							"h": -8.879904942,
+							"s": -12.94114978
+						}
+					}
+				]
+			},
+			{
+				"text": "Late at night, walking alone down the street, you hear a peculiar cry that you believe to have a magical source. Do you:",
+				"answers": [
+					{
+						"text": "Proceed with caution, keeping one hand on your concealed wand and an eye out for any disturbance?",
+						"points": {
+							"g": -14.65804948,
+							"r": -15.8493254,
+							"h": 44.16189924,
+							"s": -11.70782536
+						}
+					},
+					{
+						"text": "Draw your wand and try to discover the source of the noise?",
+						"points": {
+							"g": 39.6505303,
+							"r": -10.56490073,
+							"h": -17.17403609,
+							"s": -10.73515537
+						}
+					},
+					{
+						"text": "Draw your wand and stand your ground?",
+						"points": {
+							"g": -10.77612981,
+							"r": -13.71260225,
+							"h": -11.14976792,
+							"s": 37.69080105
+						}
+					},
+					{
+						"text": "Withdraw into the shadows to await developments, while mentally reviewing the most appropriate defensive and offensive spells, should trouble occur?",
+						"points": {
+							"g": -11.6321132,
+							"r": 37.79842292,
+							"h": -12.45575343,
+							"s": -12.64871392
+						}
+					}
+				]
+			}
+		],
+		"7": [
+			{
+				"text": "If you were attending Hogwarts, which pet would you choose to take with you?",
+				"answers": [
+					{
+						"text": "Tabby cat",
+						"points": {
+							"g": 21.85474842,
+							"r": -15.70618627,
+							"h": -18.29258668,
+							"s": 13.43032963
+						}
+					},
+					{
+						"text": "Siamese cat",
+						"points": {
+							"g": 1.195226867,
+							"r": -16.3304582,
+							"h": -16.65956807,
+							"s": 34.18266524
+						}
+					},
+					{
+						"text": "Ginger cat",
+						"points": {
+							"g": 0.839050219,
+							"r": -14.37048947,
+							"h": -16.95729454,
+							"s": 33.06015636
+						}
+					},
+					{
+						"text": "Black cat",
+						"points": {
+							"g": -3.31335692,
+							"r": -15.09699497,
+							"h": -14.64059784,
+							"s": 34.29663831
+						}
+					},
+					{
+						"text": "White cat",
+						"points": {
+							"g": -2.010973881,
+							"r": -12.31639926,
+							"h": -14.30409975,
+							"s": 30.4632386
+						}
+					},
+					{
+						"text": "Tawny owl",
+						"points": {
+							"g": -0.6218274,
+							"r": 33.24307636,
+							"h": -15.52800838,
+							"s": -16.11836321
+						}
+					},
+					{
+						"text": "Screech owl",
+						"points": {
+							"g": 4.48854486,
+							"r": 32.14465664,
+							"h": -17.05815483,
+							"s": -18.02695104
+						}
+					},
+					{
+						"text": "Brown owl",
+						"points": {
+							"g": 0.915519162,
+							"r": 35.14392634,
+							"h": -16.87498976,
+							"s": -18.23297959
+						}
+					},
+					{
+						"text": "Snowy owl",
+						"points": {
+							"g": -12.04575153,
+							"r": 8.511453759,
+							"h": 13.7489804,
+							"s": -8.123961651
+						}
+					},
+					{
+						"text": "Barn owl",
+						"points": {
+							"g": -1.251899991,
+							"r": 34.06472026,
+							"h": -16.7952532,
+							"s": -15.0925878
+						}
+					},
+					{
+						"text": "Common toad",
+						"points": {
+							"g": -1.094048974,
+							"r": -21.72975856,
+							"h": 41.40180117,
+							"s": -16.72326959
+						}
+					},
+					{
+						"text": "Natterjack toad",
+						"points": {
+							"g": -3.687242276,
+							"r": -21.61573659,
+							"h": 42.45530748,
+							"s": -15.4372711
+						}
+					},
+					{
+						"text": "Dragon toad",
+						"points": {
+							"g": 19.14913015,
+							"r": -8.1912111,
+							"h": 0.748385153,
+							"s": -10.04837708
+						}
+					},
+					{
+						"text": "Harlequin toad",
+						"points": {
+							"g": -5.394126249,
+							"r": -20.42261255,
+							"h": 42.91383116,
+							"s": -15.27359533
+						}
+					},
+					{
+						"text": "Three toed tree toad",
+						"points": {
+							"g": -10.19693536,
+							"r": 7.340865871,
+							"h": 12.782762,
+							"s": -6.99714692
+						}
+					}
+				]
+			}
+		],
+		"last": [
+			{
+				"text": "Black or White?",
+				"answers": [
+					{
+						"text": "Black",
+						"points": {
+							"g": 28.91718573,
+							"r": -21.62314612,
+							"h": -30.0065675,
+							"s": 25.44278097
+						}
+					},
+					{
+						"text": "White",
+						"points": {
+							"g": -29.32055396,
+							"r": 24.3783615,
+							"h": 32.97249578,
+							"s": -25.34810279
+						}
+					}
+				]
+			},
+			{
+				"text": "Heads or Tails?",
+				"answers": [
+					{
+						"text": "Heads",
+						"points": {
+							"g": -25.36928858,
+							"r": 22.41930741,
+							"h": 32.6497265,
+							"s": -27.11046939
+						}
+					},
+					{
+						"text": "Tails",
+						"points": {
+							"g": 30.63227296,
+							"r": -23.60407631,
+							"h": -31.08418312,
+							"s": 25.892524
+						}
+					}
+				]
+			},
+			{
+				"text": "Left or Right?",
+				"answers": [
+					{
+						"text": "Left",
+						"points": {
+							"g": -27.37364476,
+							"r": 28.45701138,
+							"h": -23.55695615,
+							"s": 25.02450925
+						}
+					},
+					{
+						"text": "Right",
+						"points": {
+							"g": 27.02941592,
+							"r": -27.55102988,
+							"h": 25.78541162,
+							"s": -23.44987827
+						}
+					}
+				]
+			}
+		]
+	},
+	"houses": {
+		"g": "Gryffindor",
+		"r": "Ravenclaw",
+		"h": "Hufflepuff",
+		"s": "Slytherin"
+	},
+	"descriptions": {
+		"g": "With a lion as its crest and Professor McGonagall at its head, Gryffindor is the house which most values the virtues of courage, bravery and determination.",
+		"r": "Ravenclaws prize wit, learning, and wisdom. It's an ethos etched into founder Rowena Ravenclaw diadem: 'wit beyond measure is man's greatest treasure'.",
+		"h": "Hufflepuffs value hard work, patience, loyalty, and fair play. The house has produced its share of great wizards – not least Newt Scamander, author of Fantastic Beasts and Where to Find Them.",
+		"s": "Slytherin produces more than its share of Dark wizards, but also turns out leaders who are proud, ambitious and cunning. Merlin is one particularly famous Slytherin."
+	}
+}
