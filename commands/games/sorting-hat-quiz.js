@@ -11,7 +11,8 @@ module.exports = class SortingHatQuizCommand extends Command {
 			aliases: ['sorting-hat', 'pottermore', 'hogwarts'],
 			group: 'games',
 			memberName: 'sorting-hat-quiz',
-			description: 'Take a quiz to determine your Hogwarts house.'
+			description: 'Take a quiz to determine your Hogwarts house.',
+			details: '**Source**: <https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/>'
 		});
 
 		this.playing = new Set();
@@ -59,7 +60,7 @@ module.exports = class SortingHatQuizCommand extends Command {
 				for (const [house, amount] of Object.entries(answer.points)) points[house] += amount;
 				++turn;
 			}
-			const house = Object.keys(points).sort((a, b) => points[a] - points[b])[0];
+			const house = Object.keys(points).sort((a, b) => points[b] - points[a])[0];
 			this.playing.delete(msg.channel.id);
 			return msg.say(stripIndents`
 				You are a member of... **${houses[house]}**!
