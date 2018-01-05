@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { verify } = require('../../util/Util');
+const { randomRange, verify } = require('../../util/Util');
 
 module.exports = class BalloonPopCommand extends Command {
 	constructor(client) {
@@ -49,9 +49,9 @@ module.exports = class BalloonPopCommand extends Command {
 				}
 				if (pump) {
 					await msg.say(`${user} pumps the balloon!`);
-					remains -= 50;
-					const popped = !Math.floor(Math.random() * (remains < 0 ? 2 : remains));
-					if (popped) {
+					remains -= randomRange(25, 75);
+					const popped = Math.floor(Math.random() * remains);
+					if (popped < 0) {
 						await msg.say('The balloon pops!');
 						winner = userTurn ? opponent : msg.author;
 					}

@@ -3,10 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class BCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'b',
-			aliases: ['🅱'],
+			name: '🅱',
 			group: 'text-edit',
-			memberName: 'b',
+			memberName: '🅱',
 			description: 'Replaces b with 🅱.',
 			args: [
 				{
