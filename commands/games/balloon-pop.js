@@ -36,10 +36,12 @@ module.exports = class BalloonPopCommand extends Command {
 			}
 			let userTurn = false;
 			let winner = null;
-			let remains = 1000;
+			let remains = 500;
+			let turns = 0;
 			while (!winner) {
 				const user = userTurn ? msg.author : opponent;
 				let pump;
+				++turns;
 				if (!opponent.bot || (opponent.bot && userTurn)) {
 					await msg.say(`${user}, do you pump the balloon?`);
 					const verification = await verify(msg.channel, user);
@@ -49,14 +51,20 @@ module.exports = class BalloonPopCommand extends Command {
 				}
 				if (pump) {
 					await msg.say(`${user} pumps the balloon!`);
-					remains -= randomRange(25, 75);
+					remains -= randomRange(50, 100);
 					const popped = Math.floor(Math.random() * remains);
-					if (popped < 0) {
+					if (popped <= 0) {
 						await msg.say('The balloon pops!');
 						winner = userTurn ? opponent : msg.author;
+						break;
+					}
+					if (turns >= 3) {
+						turns = 0;
+						userTurn = !userTurn;
 					}
 				} else {
 					await msg.say(`${user} steps back!`);
+					turns = 0;
 					userTurn = !userTurn;
 				}
 			}
