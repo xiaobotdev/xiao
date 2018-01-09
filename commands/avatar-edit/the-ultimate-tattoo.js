@@ -37,7 +37,7 @@ module.exports = class TheUltimateTattooCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-10 * (Math.PI / 180));
-			ctx.drawImage(avatar, 184, 687, 300, 300);
+			ctx.drawImage(avatar, 84, 690, 300, 300);
 			ctx.rotate(10 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'the-ultimate-tattoo.png' }] });
 		} catch (err) {
