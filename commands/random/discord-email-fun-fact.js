@@ -1,13 +1,13 @@
 const { Command } = require('discord.js-commando');
-const facts = require('../../assets/json/discord-email-fun-facts');
+const facts = require('../../assets/json/discord-email-fun-fact');
 
-module.exports = class DiscordEmailFunFactsCommand extends Command {
+module.exports = class DiscordEmailFunFactCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'discord-email-fun-facts',
-			aliases: ['email-fun-facts'],
+			name: 'discord-email-fun-fact',
+			aliases: ['email-fun-fact'],
 			group: 'random',
-			memberName: 'discord-email-fun-facts',
+			memberName: 'discord-email-fun-fact',
 			description: 'Responds with a random fun fact from the Discord emails.'
 		});
 	}
