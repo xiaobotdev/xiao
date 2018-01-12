@@ -7,6 +7,7 @@ module.exports = class ReloadCommand extends Command {
 			group: 'util',
 			memberName: 'reload',
 			description: 'Reloads a command.',
+			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
 			guarded: true,
 			args: [
