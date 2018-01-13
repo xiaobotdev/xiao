@@ -32,20 +32,20 @@
 	},
 	"dependencies": {
 		"canvas": "github:automattic/node-canvas",
-		"common-tags": "^1.7.1",
+		"common-tags": "^1.7.2",
 		"custom-translate": "^2.2.2",
 		"discord.js": "github:hydrabolt/discord.js",
 		"discord.js-commando": "github:dragonfire535/discord.js-commando#default-functions",
 		"erlpack": "github:discordapp/erlpack",
-		"mathjs": "^3.18.1",
+		"mathjs": "^3.19.0",
 		"node-opus": "^0.2.7",
 		"snekfetch": "^3.6.1",
-		"uws": "^8.14.1",
+		"uws": "^9.14.0",
 		"xml2js": "^0.4.19",
 		"zlib-sync": "^0.1.4"
 	},
 	"devDependencies": {
-		"eslint": "^4.13.0",
+		"eslint": "^4.15.0",
 		"eslint-config-aqua": "^2.0.1",
 		"eslint-plugin-json": "^1.2.0"
 	},
