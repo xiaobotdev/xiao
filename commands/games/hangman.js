@@ -15,7 +15,7 @@ module.exports = class HangmanCommand extends Command {
 		this.playing = new Set();
 	}
 
-	async run(msg) {
+	async run(msg) { // eslint-disable-line complexity
 		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
