@@ -42,8 +42,8 @@ module.exports = class SoundboardCommand extends Command {
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.reply('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
-			const dispatcher = connection.playFile(path.join(__dirname, '..', '..', 'assets', 'sounds', sounds[sound]));
-			dispatcher.once('end', () => channel.leave());
+			const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', sounds[sound]));
+			dispatcher.once('finish', () => channel.leave());
 			dispatcher.once('error', () => channel.leave());
 			return null;
 		} catch (err) {
