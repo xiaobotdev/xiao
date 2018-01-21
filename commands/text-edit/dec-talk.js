@@ -38,8 +38,8 @@ module.exports = class DECTalkCommand extends Command {
 			const data = await snekfetch
 				.get('http://tts.cyzon.us/tts', { followRedirects: false })
 				.query({ text });
-			const dispatcher = connection.playArbitraryInput(`http://tts.cyzon.us${data.headers.location}`);
-			dispatcher.once('end', () => channel.leave());
+			const dispatcher = connection.play(`http://tts.cyzon.us${data.headers.location}`);
+			dispatcher.once('finish', () => channel.leave());
 			dispatcher.once('error', () => channel.leave());
 			return null;
 		} catch (err) {
