@@ -40,9 +40,9 @@ module.exports = class UserInfoCommand extends Command {
 			.addField('❯ Bot?',
 				member.user.bot ? 'Yes' : 'No', true)
 			.addField('❯ Highest Role',
-				member.highestRole.name !== '@everyone' ? member.highestRole.name : 'None', true)
+				member.roles.highest.id !== msg.guild.defaultRole.id ? member.roles.highest.name : 'None', true)
 			.addField('❯ Hoist Role',
-				member.hoistRole ? member.hoistRole.name : 'None', true);
+				member.roles.hoist ? member.roles.hoist.name : 'None', true);
 		return msg.embed(embed);
 	}
 };

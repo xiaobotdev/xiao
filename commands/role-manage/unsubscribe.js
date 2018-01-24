@@ -27,7 +27,7 @@ module.exports = class UnsubscribeCommand extends Command {
 		if (!HOME_GUILD_ROLES.split(',').includes(role.id)) return msg.reply('This role is not open!');
 		if (!role.editable) return msg.reply('I do not have permission to manage this role!');
 		if (!msg.member.roles.has(role.id)) return msg.reply('You are not a member of this role!');
-		await msg.member.removeRole(role);
+		await msg.member.roles.remove(role);
 		return msg.say(`You were removed from **${role.name}**...`);
 	}
 };

@@ -27,7 +27,7 @@ module.exports = class SubscribeCommand extends Command {
 		if (!HOME_GUILD_ROLES.split(',').includes(role.id)) return msg.reply('This role is not open!');
 		if (!role.editable) return msg.reply('I do not have permission to manage this role!');
 		if (msg.member.roles.has(role.id)) return msg.reply('You are already a member of this role!');
-		await msg.member.addRole(role);
+		await msg.member.roles.add(role);
 		return msg.say(`You were added to **${role.name}**!`);
 	}
 };
