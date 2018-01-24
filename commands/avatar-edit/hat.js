@@ -3,7 +3,7 @@ const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
 const { list } = require('../../util/Util');
-const hats = ['christmas', 'anime', 'tophat', 'pilgrim'];
+const hats = ['christmas', 'anime', 'tophat', 'pilgrim', 'birthday'];
 
 module.exports = class HatCommand extends Command {
 	constructor(client) {
