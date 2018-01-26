@@ -19,7 +19,7 @@ module.exports = class InfoCommand extends Command {
 	run(msg) {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
-			.setFooter('©2017 dragonfire535#0817')
+			.setFooter('©2017 dragonfire535#8081')
 			.addField('❯ Servers',
 				this.client.guilds.size, true)
 			.addField('❯ Shards',
