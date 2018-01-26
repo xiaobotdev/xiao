@@ -11,13 +11,13 @@ const maxValues = {
 	impossible: 1000000
 };
 
-module.exports = class MathGameCommand extends Command {
+module.exports = class MathQuizCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'math-game',
-			aliases: ['math-quiz', 'math-test'],
+			name: 'math-quiz',
+			aliases: ['math-game'],
 			group: 'games',
-			memberName: 'math',
+			memberName: 'math-quiz',
 			description: 'See how fast you can answer a math problem in a given time limit.',
 			args: [
 				{

@@ -106,24 +106,11 @@ module.exports = class WizardConventionCommand extends Command {
 					max: players.size,
 					time: 120000
 				});
-				const counts = new Collection();
-				for (const vote of votes.values()) {
-					const player = players.get(playersArr[parseInt(vote.content, 10) - 1].id);
-					if (counts.has(player.id)) {
-						++counts.get(player.id).votes;
-					} else {
-						counts.set(player.id, {
-							id: player.id,
-							votes: 1,
-							user: player.user
-						});
-					}
-				}
-				if (!counts.size) {
+				if (!votes.size) {
 					await msg.say('No one will be expelled.');
 					continue;
 				}
-				const expelled = counts.sort((a, b) => b.votes - a.votes).first();
+				const expelled = this.getExpelled(votes, players, playersArr);
 				await msg.say(`${expelled.user} will be expelled.`);
 				players.delete(expelled.id);
 				++turn;
@@ -153,5 +140,22 @@ module.exports = class WizardConventionCommand extends Command {
 			await user.send(`Your role will be: ${roles[i]}!`);
 			i++;
 		}
+	}
+
+	getExpelled(votes, players, playersArr) {
+		const counts = new Collection();
+		for (const vote of votes.values()) {
+			const player = players.get(playersArr[parseInt(vote.content, 10) - 1].id);
+			if (counts.has(player.id)) {
+				++counts.get(player.id).votes;
+			} else {
+				counts.set(player.id, {
+					id: player.id,
+					votes: 1,
+					user: player.user
+				});
+			}
+		}
+		return counts.sort((a, b) => b.votes - a.votes).first();
 	}
 };

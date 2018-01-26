@@ -11,13 +11,13 @@ const times = {
 	impossible: 5000
 };
 
-module.exports = class TypingGameCommand extends Command {
+module.exports = class TypingTestCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'typing-game',
-			aliases: ['typing-quiz', 'typing-test'],
+			name: 'typing-test',
+			aliases: ['typing-game'],
 			group: 'games',
-			memberName: 'typing',
+			memberName: 'typing-test',
 			description: 'See how fast you can type a sentence in a given time limit.',
 			args: [
 				{
