@@ -43,7 +43,7 @@ module.exports = class CaptchaQuizCommand extends Command {
 	randomText(len) {
 		const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
 		const result = [];
-		for (let i = 0; i > len; i++) result.push(pool[Math.floor(Math.random() * pool.length)]);
+		for (let i = 0; i < len; i++) result.push(pool[Math.floor(Math.random() * pool.length)]);
 		return result.join('');
 	}
 };
