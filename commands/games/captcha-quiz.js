@@ -20,7 +20,7 @@ module.exports = class CaptchaQuizCommand extends Command {
 	}
 
 	async run(msg) {
-		const canvas = createCanvas(100, 40);
+		const canvas = createCanvas(125, 32);
 		const ctx = canvas.getContext('2d');
 		const text = this.randomText(5);
 		ctx.fillStyle = 'white';
