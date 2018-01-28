@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { list, pad } = require('../../util/Util');
+const { list } = require('../../util/Util');
 const modes = ['encode', 'decode'];
 
 module.exports = class BinaryCommand extends Command {
@@ -41,7 +41,7 @@ module.exports = class BinaryCommand extends Command {
 	binary(text) {
 		return text.split('').map(str => {
 			const converted = str.charCodeAt(0).toString(2);
-			return pad(converted, '00000000');
+			return converted.padStart(8, '0');
 		}).join(' ');
 	}
 
