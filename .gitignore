@@ -5,6 +5,3 @@ package-lock.json
 # Logs
 logs/
 *.log
-
-# Unfinished Commands
-commands/games/tricks.js
