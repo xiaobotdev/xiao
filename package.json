@@ -39,7 +39,7 @@
 		"erlpack": "github:discordapp/erlpack",
 		"mathjs": "^3.20.1",
 		"node-opus": "^0.2.7",
-		"snekfetch": "^3.6.1",
+		"snekfetch": "^3.6.2",
 		"uws": "^9.14.0",
 		"xml2js": "^0.4.19",
 		"zlib-sync": "^0.1.4"
