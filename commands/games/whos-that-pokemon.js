@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const { filterPkmn, pad } = require('../../util/Util');
+const { filterPkmn } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 
 module.exports = class WhosThatPokemonCommand extends Command {
@@ -43,7 +43,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			}
 			const names = data.names.map(name => name.name.toLowerCase());
 			const displayName = filterPkmn(data.names).name;
-			const id = pad(data.id.toString(), '000');
+			const id = data.id.toString().padStart(3, '0');
 			const image = await snekfetch.get(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
 			let attachment = image.body;
 			if (hide) {
