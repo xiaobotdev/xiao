@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten, duration } = require('../../util/Util');
+const { shorten } = require('../../util/Util');
 
 module.exports = class VocaloidCommand extends Command {
 	constructor(client) {
@@ -36,7 +36,6 @@ module.exports = class VocaloidCommand extends Command {
 				});
 			if (!body.items.length) return msg.say('Could not find any results.');
 			const data = body.items[0];
-			const { minutes, seconds } = duration(data.lengthSeconds * 1000);
 			const embed = new MessageEmbed()
 				.setColor(0x86D2D0)
 				.setAuthor('VocaDB', 'https://i.imgur.com/6QwraDT.jpg')
@@ -47,9 +46,7 @@ module.exports = class VocaloidCommand extends Command {
 				.addField('❯ Artist',
 					data.artistString)
 				.addField('❯ Publish Date',
-					new Date(data.publishDate).toDateString(), true)
-				.addField('❯ Length',
-					`${minutes}:${seconds}`, true);
+					new Date(data.publishDate).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
