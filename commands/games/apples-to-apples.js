@@ -38,7 +38,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 				return msg.say('Game could not be started...');
 			}
 			const players = await this.generatePlayers(awaitedPlayers);
-			let czars = Array.from(players.values());
+			const czars = Array.from(players.values());
 			let winner = null;
 			while (!winner) {
 				const czar = czars[0];
