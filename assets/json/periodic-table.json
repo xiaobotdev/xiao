@@ -11,14 +11,14 @@
 		"atomic_mass": 1.008,
 		"number": 1,
 		"phase": "gas",
-		"symbol": "H",
+		"symbol": "H"
 	},
 	{
 		"name": "Helium",
 		"atomic_mass": 4.0026022,
 		"number": 2,
 		"phase": "gas",
-		"symbol": "He",
+		"symbol": "He"
 	},
 	{
 		"name": "Lithium",
@@ -42,7 +42,7 @@
 		"symbol": "B"
 	},
 	{
-		"name": "Carbon"
+		"name": "Carbon",
 		"atomic_mass": 12.011,
 		"number": 6,
 		"phase": "solid",
@@ -56,14 +56,14 @@
 		"symbol": "N"
 	},
 	{
-		"name": "Oxygen"
+		"name": "Oxygen",
 		"atomic_mass": 15.999,
 		"number": 8,
 		"phase": "gas",
 		"symbol": "O"
 	},
 	{
-		"name": "Fluorine"
+		"name": "Fluorine",
 		"atomic_mass": 18.9984031636,
 		"number": 9,
 		"phase": "gas",
@@ -140,7 +140,7 @@
 		"symbol": "K"
 	},
 	{
-		"name": "Calcium"
+		"name": "Calcium",
 		"atomic_mass": 40.0784,
 		"number": 20,
 		"phase": "solid",
@@ -245,7 +245,7 @@
 		"symbol": "Se"
 	},
 	{
-		"name": "Bromine"
+		"name": "Bromine",
 		"atomic_mass": 79.904,
 		"number": 35,
 		"phase": "liquid",
@@ -266,7 +266,7 @@
 		"symbol": "Rb"
 	},
 	{
-		"name": "Strontium"
+		"name": "Strontium",
 		"atomic_mass": 87.621,
 		"number": 38,
 		"phase": "solid",
@@ -364,7 +364,7 @@
 		"symbol": "Sb"
 	},
 	{
-		"name": "Tellurium"
+		"name": "Tellurium",
 		"atomic_mass": 127.603,
 		"number": 52,
 		"phase": "solid",
@@ -392,7 +392,7 @@
 		"symbol": "Cs"
 	},
 	{
-		"name": "Barium"
+		"name": "Barium",
 		"atomic_mass": 137.3277,
 		"number": 56,
 		"phase": "solid",
@@ -441,7 +441,7 @@
 		"symbol": "Sm"
 	},
 	{
-		"name": "Europium"
+		"name": "Europium",
 		"atomic_mass": 151.9641,
 		"number": 63,
 		"phase": "solid",
@@ -490,7 +490,7 @@
 		"symbol": "Tm"
 	},
 	{
-		"name": "Ytterbium"
+		"name": "Ytterbium",
 		"atomic_mass": 173.0451,
 		"number": 70,
 		"phase": "solid",
@@ -609,7 +609,7 @@
 		"symbol": "Rn"
 	},
 	{
-		"name": "Francium"
+		"name": "Francium",
 		"atomic_mass": 223,
 		"number": 87,
 		"phase": "solid",
@@ -623,7 +623,7 @@
 		"symbol": "Ra"
 	},
 	{
-		"name": "Actinium"
+		"name": "Actinium",
 		"atomic_mass": 227,
 		"number": 89,
 		"phase": "solid",
@@ -644,7 +644,7 @@
 		"symbol": "Pa"
 	},
 	{
-		"name": "Uranium"
+		"name": "Uranium",
 		"atomic_mass": 238.028913,
 		"number": 92,
 		"phase": "solid",
@@ -700,133 +700,133 @@
 		"symbol": "Es"
 	},
 	{
-		"name": "Fermium"
+		"name": "Fermium",
 		"atomic_mass": 257,
 		"number": 100,
 		"phase": "solid",
 		"symbol": "Fm"
 	},
 	{
-		"name": "Mendelevium"
+		"name": "Mendelevium",
 		"atomic_mass": 258,
 		"number": 101,
 		"phase": "solid",
 		"symbol": "Md"
 	},
 	{
-		"name": "Nobelium"
+		"name": "Nobelium",
 		"atomic_mass": 259,
 		"number": 102,
 		"phase": "solid",
 		"symbol": "No"
 	},
 	{
-		"name": "Lawrencium"
+		"name": "Lawrencium",
 		"atomic_mass": 266,
 		"number": 103,
 		"phase": "solid",
 		"symbol": "Lr"
 	},
 	{
-		"name": "Rutherfordium"
+		"name": "Rutherfordium",
 		"atomic_mass": 267,
 		"number": 104,
 		"phase": "solid",
 		"symbol": "Rf"
 	},
 	{
-		"name": "Dubnium"
+		"name": "Dubnium",
 		"atomic_mass": 268,
 		"number": 105,
 		"phase": "solid",
 		"symbol": "Db"
 	},
 	{
-		"name": "Seaborgium"
+		"name": "Seaborgium",
 		"atomic_mass": 269,
 		"number": 106,
 		"phase": "solid",
 		"symbol": "Sg"
 	},
 	{
-		"name": "Bohrium"
+		"name": "Bohrium",
 		"atomic_mass": 270,
 		"number": 107,
 		"phase": "solid",
 		"symbol": "Bh"
 	},
 	{
-		"name": "Hassium"
+		"name": "Hassium",
 		"atomic_mass": 269,
 		"number": 108,
 		"phase": "solid",
 		"symbol": "Hs"
 	},
 	{
-		"name": "Meitnerium"
+		"name": "Meitnerium",
 		"atomic_mass": 278,
 		"number": 109,
 		"phase": "solid",
 		"symbol": "Mt"
 	},
 	{
-		"name": "Darmstadtium"
+		"name": "Darmstadtium",
 		"atomic_mass": 281,
 		"number": 110,
 		"phase": "solid",
 		"symbol": "Ds"
 	},
 	{
-		"name": "Roentgenium"
+		"name": "Roentgenium",
 		"atomic_mass": 282,
 		"number": 111,
 		"phase": "solid",
 		"symbol": "Rg"
 	},
 	{
-		"name": "Copernicium"
+		"name": "Copernicium",
 		"atomic_mass": 285,
 		"number": 112,
 		"phase": "gas",
 		"symbol": "Cn"
 	},
 	{
-		"name": "Nihonium"
+		"name": "Nihonium",
 		"atomic_mass": 286,
 		"number": 113,
 		"phase": "solid",
 		"symbol": "Nh"
 	},
 	{
-		"name": "Flerovium"
+		"name": "Flerovium",
 		"atomic_mass": 289,
 		"number": 114,
 		"phase": "solid",
 		"symbol": "Fl"
 	},
 	{
-		"name": "Moscovium"
+		"name": "Moscovium",
 		"atomic_mass": 289,
 		"number": 115,
 		"phase": "solid",
 		"symbol": "Mc"
 	},
 	{
-		"name": "Livermorium"
+		"name": "Livermorium",
 		"atomic_mass": 293,
 		"number": 116,
 		"phase": "solid",
 		"symbol": "Lv"
 	},
 	{
-		"name": "Tennessine"
+		"name": "Tennessine",
 		"atomic_mass": 294,
 		"number": 117,
 		"phase": "solid",
 		"symbol": "Ts"
 	},
 	{
-		"name": "Oganesson"
+		"name": "Oganesson",
 		"atomic_mass": 294,
 		"number": 118,
 		"phase": "solid",
