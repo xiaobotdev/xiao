@@ -26,8 +26,8 @@ module.exports = class PeriodicTableCommand extends Command {
 					type: 'string',
 					validate: element => {
 						const num = parseInt(element, 10);
-						if (!isNaN(num) && num >= 0 && num <= elements.length) return true;
-						const search = element.toLowerCase();
+						if (!isNaN(num) && num >= 0 && num <= elements.length - 1) return true;
+						const search = element.toString().toLowerCase();
 						if (elements.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search)) return true;
 						return 'Invalid element, please enter a valid element symbol, name, or atomic number.';
 					},
