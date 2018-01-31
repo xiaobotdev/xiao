@@ -49,12 +49,12 @@ module.exports = class PeriodicTableCommand extends Command {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'white';
 		ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
+		ctx.textAlign = 'center';
 		if (element.number === 0) {
 			const batman = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'batman.png'));
 			ctx.drawImage(batman, 100, 166);
 		} else {
 			ctx.font = '210px Noto';
-			ctx.textAlign = 'center';
 			ctx.fillStyle = colors[element.phase];
 			ctx.fillText(element.symbol, 250, 320);
 		}
