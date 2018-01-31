@@ -7,7 +7,7 @@
 			"period": 0,
 			"phase": "Solid",
 			"symbol": "🦇"
-	    },
+		},
 		{
 			"name": "Hydrogen",
 			"mass": 1.008,
@@ -16,7 +16,7 @@
 			"phase": "Gas",
 			"symbol": "H",
 			"valence": 1
-	    },
+		},
 		{
 			"name": "Helium",
 			"mass": 4.0026022,
@@ -24,7 +24,7 @@
 			"period": 1,
 			"phase": "Gas",
 			"symbol": "He"
-	    },
+		},
 		{
 			"name": "Lithium",
 			"mass": 6.94,
@@ -32,7 +32,7 @@
 			"period": 2,
 			"phase": "Solid",
 			"symbol": "Li"
-	    },
+		},
 		{
 			"name": "Beryllium",
 			"mass": 9.01218315,
@@ -40,7 +40,7 @@
 			"period": 2,
 			"phase": "Solid",
 			"symbol": "Be"
-	    },
+		},
 		{
 			"name": "Boron",
 			"mass": 10.81,
@@ -48,7 +48,7 @@
 			"period": 2,
 			"phase": "Solid",
 			"symbol": "B"
-	    },
+		},
 		{
 			"name": "Carbon",
 			"mass": 12.011,
@@ -56,7 +56,7 @@
 			"period": 2,
 			"phase": "Solid",
 			"symbol": "C"
-	    },
+		},
 		{
 			"name": "Nitrogen",
 			"mass": 14.007,
@@ -64,7 +64,7 @@
 			"period": 2,
 			"phase": "Gas",
 			"symbol": "N"
-	    },
+		},
 		{
 			"name": "Oxygen",
 			"mass": 15.999,
@@ -72,7 +72,7 @@
 			"period": 2,
 			"phase": "Gas",
 			"symbol": "O"
-	    },
+		},
 		{
 			"name": "Fluorine",
 			"mass": 18.9984031636,
@@ -80,7 +80,7 @@
 			"period": 2,
 			"phase": "Gas",
 			"symbol": "F"
-	    },
+		},
 		{
 			"name": "Neon",
 			"mass": 20.17976,
@@ -88,7 +88,7 @@
 			"period": 2,
 			"phase": "Gas",
 			"symbol": "Ne"
-	    },
+		},
 		{
 			"name": "Sodium",
 			"mass": 22.989769282,
@@ -96,7 +96,7 @@
 			"period": 3,
 			"phase": "Solid",
 			"symbol": "Na"
-	    },
+		},
 		{
 			"name": "Magnesium",
 			"mass": 24.305,
@@ -104,7 +104,7 @@
 			"period": 3,
 			"phase": "Solid",
 			"symbol": "Mg"
-	    },
+		},
 		{
 			"name": "Aluminium",
 			"mass": 26.98153857,
@@ -112,7 +112,7 @@
 			"period": 3,
 			"phase": "Solid",
 			"symbol": "Al"
-	    },
+		},
 		{
 			"name": "Silicon",
 			"mass": 28.085,
@@ -120,7 +120,7 @@
 			"period": 3,
 			"phase": "Solid",
 			"symbol": "Si"
-	    },
+		},
 		{
 			"name": "Phosphorus",
 			"mass": 30.9737619985,
@@ -128,7 +128,7 @@
 			"period": 3,
 			"phase": "Solid",
 			"symbol": "P"
-	    },
+		},
 		{
 			"name": "Sulfur",
 			"mass": 32.06,
@@ -136,7 +136,7 @@
 			"period": 3,
 			"phase": "Solid",
 			"symbol": "S"
-	    },
+		},
 		{
 			"name": "Chlorine",
 			"mass": 35.45,
@@ -144,7 +144,7 @@
 			"period": 3,
 			"phase": "Gas",
 			"symbol": "Cl"
-	    },
+		},
 		{
 			"name": "Argon",
 			"mass": 39.9481,
@@ -152,7 +152,7 @@
 			"period": 3,
 			"phase": "Gas",
 			"symbol": "Ar"
-	    },
+		},
 		{
 			"name": "Potassium",
 			"mass": 39.09831,
@@ -160,7 +160,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "K"
-	    },
+		},
 		{
 			"name": "Calcium",
 			"mass": 40.0784,
@@ -168,7 +168,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Ca"
-	    },
+		},
 		{
 			"name": "Scandium",
 			"mass": 44.9559085,
@@ -176,7 +176,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Sc"
-	    },
+		},
 		{
 			"name": "Titanium",
 			"mass": 47.8671,
@@ -184,7 +184,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Ti"
-	    },
+		},
 		{
 			"name": "Vanadium",
 			"mass": 50.94151,
@@ -192,7 +192,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "V"
-	    },
+		},
 		{
 			"name": "Chromium",
 			"mass": 51.99616,
@@ -200,7 +200,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Cr"
-	    },
+		},
 		{
 			"name": "Manganese",
 			"mass": 54.9380443,
@@ -208,7 +208,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Mn"
-	    },
+		},
 		{
 			"name": "Iron",
 			"mass": 55.8452,
@@ -216,7 +216,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Fe"
-	    },
+		},
 		{
 			"name": "Cobalt",
 			"mass": 58.9331944,
@@ -224,7 +224,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Co"
-	    },
+		},
 		{
 			"name": "Nickel",
 			"mass": 58.69344,
@@ -232,7 +232,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Ni"
-	    },
+		},
 		{
 			"name": "Copper",
 			"mass": 63.5463,
@@ -240,7 +240,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Cu"
-	    },
+		},
 		{
 			"name": "Zinc",
 			"mass": 65.382,
@@ -248,7 +248,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Zn"
-	    },
+		},
 		{
 			"name": "Gallium",
 			"mass": 69.7231,
@@ -256,7 +256,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Ga"
-	    },
+		},
 		{
 			"name": "Germanium",
 			"mass": 72.6308,
@@ -264,7 +264,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Ge"
-	    },
+		},
 		{
 			"name": "Arsenic",
 			"mass": 74.9215956,
@@ -272,7 +272,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "As"
-	    },
+		},
 		{
 			"name": "Selenium",
 			"mass": 78.9718,
@@ -280,7 +280,7 @@
 			"period": 4,
 			"phase": "Solid",
 			"symbol": "Se"
-	    },
+		},
 		{
 			"name": "Bromine",
 			"mass": 79.904,
@@ -288,7 +288,7 @@
 			"period": 4,
 			"phase": "Liquid",
 			"symbol": "Br"
-	    },
+		},
 		{
 			"name": "Krypton",
 			"mass": 83.7982,
@@ -296,7 +296,7 @@
 			"period": 4,
 			"phase": "Gas",
 			"symbol": "Kr"
-	    },
+		},
 		{
 			"name": "Rubidium",
 			"mass": 85.46783,
@@ -304,7 +304,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Rb"
-	    },
+		},
 		{
 			"name": "Strontium",
 			"mass": 87.621,
@@ -312,7 +312,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Sr"
-	    },
+		},
 		{
 			"name": "Yttrium",
 			"mass": 88.905842,
@@ -320,7 +320,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Y"
-	    },
+		},
 		{
 			"name": "Zirconium",
 			"mass": 91.2242,
@@ -328,7 +328,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Zr"
-	    },
+		},
 		{
 			"name": "Niobium",
 			"mass": 92.906372,
@@ -336,7 +336,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Nb"
-	    },
+		},
 		{
 			"name": "Molybdenum",
 			"mass": 95.951,
@@ -344,7 +344,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Mo"
-	    },
+		},
 		{
 			"name": "Technetium",
 			"mass": 98,
@@ -352,7 +352,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Tc"
-	    },
+		},
 		{
 			"name": "Ruthenium",
 			"mass": 101.072,
@@ -360,7 +360,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Ru"
-	    },
+		},
 		{
 			"name": "Rhodium",
 			"mass": 102.905502,
@@ -368,7 +368,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Rh"
-	    },
+		},
 		{
 			"name": "Palladium",
 			"mass": 106.421,
@@ -376,7 +376,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Pd"
-	    },
+		},
 		{
 			"name": "Silver",
 			"mass": 107.86822,
@@ -384,7 +384,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Ag"
-	    },
+		},
 		{
 			"name": "Cadmium",
 			"mass": 112.4144,
@@ -392,7 +392,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Cd"
-	    },
+		},
 		{
 			"name": "Indium",
 			"mass": 114.8181,
@@ -400,7 +400,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "In"
-	    },
+		},
 		{
 			"name": "Tin",
 			"mass": 118.7107,
@@ -408,7 +408,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Sn"
-	    },
+		},
 		{
 			"name": "Antimony",
 			"mass": 121.7601,
@@ -416,7 +416,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Sb"
-	    },
+		},
 		{
 			"name": "Tellurium",
 			"mass": 127.603,
@@ -424,7 +424,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "Te"
-	    },
+		},
 		{
 			"name": "Iodine",
 			"mass": 126.904473,
@@ -432,7 +432,7 @@
 			"period": 5,
 			"phase": "Solid",
 			"symbol": "I"
-	    },
+		},
 		{
 			"name": "Xenon",
 			"mass": 131.2936,
@@ -440,7 +440,7 @@
 			"period": 5,
 			"phase": "Gas",
 			"symbol": "Xe"
-	    },
+		},
 		{
 			"name": "Cesium",
 			"mass": 132.905451966,
@@ -448,7 +448,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Cs"
-	    },
+		},
 		{
 			"name": "Barium",
 			"mass": 137.3277,
@@ -456,7 +456,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Ba"
-	    },
+		},
 		{
 			"name": "Lanthanum",
 			"mass": 138.905477,
@@ -464,7 +464,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "La"
-	    },
+		},
 		{
 			"name": "Cerium",
 			"mass": 140.1161,
@@ -472,7 +472,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Ce"
-	    },
+		},
 		{
 			"name": "Praseodymium",
 			"mass": 140.907662,
@@ -480,7 +480,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Pr"
-	    },
+		},
 		{
 			"name": "Neodymium",
 			"mass": 144.2423,
@@ -488,7 +488,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Nd"
-	    },
+		},
 		{
 			"name": "Promethium",
 			"mass": 145,
@@ -496,7 +496,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Pm"
-	    },
+		},
 		{
 			"name": "Samarium",
 			"mass": 150.362,
@@ -504,7 +504,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Sm"
-	    },
+		},
 		{
 			"name": "Europium",
 			"mass": 151.9641,
@@ -512,7 +512,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Eu"
-	    },
+		},
 		{
 			"name": "Gadolinium",
 			"mass": 157.253,
@@ -520,7 +520,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Gd"
-	    },
+		},
 		{
 			"name": "Terbium",
 			"mass": 158.925352,
@@ -528,7 +528,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Tb"
-	    },
+		},
 		{
 			"name": "Dysprosium",
 			"mass": 162.5001,
@@ -536,7 +536,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Dy"
-	    },
+		},
 		{
 			"name": "Holmium",
 			"mass": 164.930332,
@@ -544,7 +544,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Ho"
-	    },
+		},
 		{
 			"name": "Erbium",
 			"mass": 167.2593,
@@ -552,7 +552,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Er"
-	    },
+		},
 		{
 			"name": "Thulium",
 			"mass": 168.934222,
@@ -560,7 +560,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Tm"
-	    },
+		},
 		{
 			"name": "Ytterbium",
 			"mass": 173.0451,
@@ -568,7 +568,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Yb"
-	    },
+		},
 		{
 			"name": "Lutetium",
 			"mass": 174.96681,
@@ -576,7 +576,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Lu"
-	    },
+		},
 		{
 			"name": "Hafnium",
 			"mass": 178.492,
@@ -584,7 +584,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Hf"
-	    },
+		},
 		{
 			"name": "Tantalum",
 			"mass": 180.947882,
@@ -592,7 +592,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Ta"
-	    },
+		},
 		{
 			"name": "Tungsten",
 			"mass": 183.841,
@@ -600,7 +600,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "W"
-	    },
+		},
 		{
 			"name": "Rhenium",
 			"mass": 186.2071,
@@ -608,7 +608,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Re"
-	    },
+		},
 		{
 			"name": "Osmium",
 			"mass": 190.233,
@@ -616,7 +616,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Os"
-	    },
+		},
 		{
 			"name": "Iridium",
 			"mass": 192.2173,
@@ -624,7 +624,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Ir"
-	    },
+		},
 		{
 			"name": "Platinum",
 			"mass": 195.0849,
@@ -632,7 +632,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Pt"
-	    },
+		},
 		{
 			"name": "Gold",
 			"mass": 196.9665695,
@@ -640,7 +640,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Au"
-	    },
+		},
 		{
 			"name": "Mercury",
 			"mass": 200.5923,
@@ -648,7 +648,7 @@
 			"period": 6,
 			"phase": "Liquid",
 			"symbol": "Hg"
-	    },
+		},
 		{
 			"name": "Thallium",
 			"mass": 204.38,
@@ -656,7 +656,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Tl"
-	    },
+		},
 		{
 			"name": "Lead",
 			"mass": 207.21,
@@ -664,7 +664,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Pb"
-	    },
+		},
 		{
 			"name": "Bismuth",
 			"mass": 208.980401,
@@ -672,7 +672,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Bi"
-	    },
+		},
 		{
 			"name": "Polonium",
 			"mass": 209,
@@ -680,7 +680,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "Po"
-	    },
+		},
 		{
 			"name": "Astatine",
 			"mass": 210,
@@ -688,7 +688,7 @@
 			"period": 6,
 			"phase": "Solid",
 			"symbol": "At"
-	    },
+		},
 		{
 			"name": "Radon",
 			"mass": 222,
@@ -696,7 +696,7 @@
 			"period": 6,
 			"phase": "Gas",
 			"symbol": "Rn"
-	    },
+		},
 		{
 			"name": "Francium",
 			"mass": 223,
@@ -704,7 +704,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Fr"
-	    },
+		},
 		{
 			"name": "Radium",
 			"mass": 226,
@@ -712,7 +712,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Ra"
-	    },
+		},
 		{
 			"name": "Actinium",
 			"mass": 227,
@@ -720,7 +720,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Ac"
-	    },
+		},
 		{
 			"name": "Thorium",
 			"mass": 232.03774,
@@ -728,7 +728,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Th"
-	    },
+		},
 		{
 			"name": "Protactinium",
 			"mass": 231.035882,
@@ -736,7 +736,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Pa"
-	    },
+		},
 		{
 			"name": "Uranium",
 			"mass": 238.028913,
@@ -744,7 +744,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "U"
-	    },
+		},
 		{
 			"name": "Neptunium",
 			"mass": 237,
@@ -752,7 +752,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Np"
-	    },
+		},
 		{
 			"name": "Plutonium",
 			"mass": 244,
@@ -760,7 +760,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Pu"
-	    },
+		},
 		{
 			"name": "Americium",
 			"mass": 243,
@@ -768,7 +768,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Am"
-	    },
+		},
 		{
 			"name": "Curium",
 			"mass": 247,
@@ -776,7 +776,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Cm"
-	    },
+		},
 		{
 			"name": "Berkelium",
 			"mass": 247,
@@ -784,7 +784,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Bk"
-	    },
+		},
 		{
 			"name": "Californium",
 			"mass": 251,
@@ -792,7 +792,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Cf"
-	    },
+		},
 		{
 			"name": "Einsteinium",
 			"mass": 252,
@@ -800,7 +800,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Es"
-	    },
+		},
 		{
 			"name": "Fermium",
 			"mass": 257,
@@ -808,7 +808,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Fm"
-	    },
+		},
 		{
 			"name": "Mendelevium",
 			"mass": 258,
@@ -816,7 +816,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Md"
-	    },
+		},
 		{
 			"name": "Nobelium",
 			"mass": 259,
@@ -824,7 +824,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "No"
-	    },
+		},
 		{
 			"name": "Lawrencium",
 			"mass": 266,
@@ -832,7 +832,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Lr"
-	    },
+		},
 		{
 			"name": "Rutherfordium",
 			"mass": 267,
@@ -840,7 +840,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Rf"
-	    },
+		},
 		{
 			"name": "Dubnium",
 			"mass": 268,
@@ -848,7 +848,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Db"
-	    },
+		},
 		{
 			"name": "Seaborgium",
 			"mass": 269,
@@ -856,7 +856,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Sg"
-	    },
+		},
 		{
 			"name": "Bohrium",
 			"mass": 270,
@@ -864,7 +864,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Bh"
-	    },
+		},
 		{
 			"name": "Hassium",
 			"mass": 269,
@@ -872,7 +872,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Hs"
-	    },
+		},
 		{
 			"name": "Meitnerium",
 			"mass": 278,
@@ -880,7 +880,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Mt"
-	    },
+		},
 		{
 			"name": "Darmstadtium",
 			"mass": 281,
@@ -888,7 +888,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Ds"
-	    },
+		},
 		{
 			"name": "Roentgenium",
 			"mass": 282,
@@ -896,7 +896,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Rg"
-	    },
+		},
 		{
 			"name": "Copernicium",
 			"mass": 285,
@@ -904,7 +904,7 @@
 			"period": 7,
 			"phase": "Gas",
 			"symbol": "Cn"
-	    },
+		},
 		{
 			"name": "Nihonium",
 			"mass": 286,
@@ -912,7 +912,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Nh"
-	    },
+		},
 		{
 			"name": "Flerovium",
 			"mass": 289,
@@ -920,7 +920,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Fl"
-	    },
+		},
 		{
 			"name": "Moscovium",
 			"mass": 289,
@@ -928,7 +928,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Mc"
-	    },
+		},
 		{
 			"name": "Livermorium",
 			"mass": 293,
@@ -936,7 +936,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Lv"
-	    },
+		},
 		{
 			"name": "Tennessine",
 			"mass": 294,
@@ -944,7 +944,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Ts"
-	    },
+		},
 		{
 			"name": "Oganesson",
 			"mass": 294,
@@ -952,7 +952,7 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Og"
-	    }
+		}
 	],
 	"colors": {
 		"Solid": "black",
