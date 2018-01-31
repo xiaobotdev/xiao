@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { createCanvas, registerFont } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
 const { elements, colors } = require('../../assets/json/periodic-table');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
@@ -42,17 +42,22 @@ module.exports = class PeriodicTableCommand extends Command {
 		});
 	}
 
-	run(msg, { element }) {
+	async run(msg, { element }) {
 		const canvas = createCanvas(500, 500);
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = 'black';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'white';
 		ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
-		ctx.font = '210px Noto';
-		ctx.textAlign = 'center';
-		ctx.fillStyle = colors[element.phase];
-		ctx.fillText(element.symbol, 250, 320);
+		if (element.number === 0) {
+			const batman = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'batman.png'));
+			ctx.drawImage(batman, 100, 166);
+		} else {
+			ctx.font = '210px Noto';
+			ctx.textAlign = 'center';
+			ctx.fillStyle = colors[element.phase];
+			ctx.fillText(element.symbol, 250, 320);
+		}
 		ctx.fillStyle = 'black';
 		ctx.font = '45px Noto';
 		ctx.fillText(element.number, 250, 100);
