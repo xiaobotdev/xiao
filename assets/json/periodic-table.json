@@ -2,9 +2,9 @@
 	"elements": [
 		{
 			"name": "Batman",
-			"mass": 210,
+			"mass": 5.736e+28,
 			"number": 0,
-			"period": 0,
+			"period": "Gotham City",
 			"phase": "Solid",
 			"symbol": "🦇"
 		},
