@@ -36,6 +36,7 @@ module.exports = class WizardConventionCommand extends Command {
 				await msg.say(`Night ${turn}, sending DMs...`);
 				for (const player of players.values()) {
 					if (player.role.includes('pleb')) continue;
+					await msg.say(`The ${player.role} is making their decision...`);
 					const valid = players.filterArray(p => p.role !== player.role);
 					await player.user.send(stripIndents`
 						${questions[player.role]} Please type the number.
