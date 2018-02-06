@@ -21,7 +21,7 @@ client.registry
 		['info', 'Discord Information'],
 		['random', 'Random Response'],
 		['single', 'Single Response'],
-		['events', 'Daily Events'],
+		['events', 'Events'],
 		['search', 'Search'],
 		['games', 'Games'],
 		['image-edit', 'Image Manipulation'],
