@@ -36,10 +36,6 @@
 		"type": "PLAYING"
 	},
 	{
-		"text": "Travelers of the Wind",
-		"type": "LISTENING"
-	},
-	{
 		"text": "you eat pant",
 		"type": "WATCHING"
 	},
@@ -48,15 +44,7 @@
 		"type": "WATCHING"
 	},
 	{
-		"text": "with a big red button",
-		"type": "PLAYING"
-	},
-	{
 		"text": "with you",
-		"type": "PLAYING"
-	},
-	{
-		"text": "with a ban hammer",
 		"type": "PLAYING"
 	},
 	{
@@ -64,63 +52,19 @@
 		"type": "PLAYING"
 	},
 	{
-		"text": "Nothing",
-		"type": "PLAYING"
-	},
-	{
 		"text": "Dust: An Elysian Tail",
 		"type": "PLAYING"
 	},
 	{
-		"text": "Rune Factory: Tides of Destiny",
-		"type": "PLAYING"
-	},
-	{
-		"text": "Harvest Moon: A Wonderful Life",
-		"type": "PLAYING"
-	},
-	{
-		"text": "for good code",
+		"text": "over the inn",
 		"type": "WATCHING"
 	},
 	{
-		"text": "I AM A XIAO SUPERFAN",
-		"type": "LISTENING"
-	},
-	{
-		"text": "youtu.be/iPV_a8MY3XA",
-		"type": "LISTENING"
-	},
-	{
-		"text": "Kiniro Mosaic",
-		"type": "WATCHING"
-	},
-	{
-		"text": "with Karen",
+		"text": "at the inn",
 		"type": "PLAYING"
 	},
 	{
-		"text": "with Fidget",
-		"type": "PLAYING"
-	},
-	{
-		"text": "with Auto",
-		"type": "PLAYING"
-	},
-	{
-		"text": "with Kagamine Len",
-		"type": "PLAYING"
-	},
-	{
-		"text": "with Rin-chan",
-		"type": "PLAYING"
-	},
-	{
-		"text": "VOCALOID",
-		"type": "LISTENING"
-	},
-	{
-		"text": "with Amber",
+		"text": "in Selphia",
 		"type": "PLAYING"
 	}
 ]
