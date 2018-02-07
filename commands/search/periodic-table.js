@@ -64,7 +64,7 @@ module.exports = class PeriodicTableCommand extends Command {
 		ctx.fillText(element.name, 250, 450);
 		ctx.font = '30px Noto';
 		ctx.fillText(element.mass, 250, 400);
-		const period = element.number === 0 ? `period ${element.period}` : element.period;
+		const period = element.number === 0 ? element.period : `period ${element.period}`;
 		return msg.say(
 			`**${element.name} (${element.symbol})** is a ${element.phase} in ${period}.`,
 			{ files: [{ attachment: canvas.toBuffer(), name: `${element.name}.png` }] }
