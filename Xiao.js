@@ -29,8 +29,7 @@ client.registry
 		['text-edit', 'Text Manipulation'],
 		['number-edit', 'Number Manipulation'],
 		['other', 'Other'],
-		['roleplay', 'Roleplay'],
-		['role-manage', 'Home Server Role Management']
+		['roleplay', 'Roleplay']
 	])
 	.registerDefaultCommands({
 		help: false,
