@@ -17,6 +17,7 @@ client.registry
 	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
 		['util', 'Utility'],
+		['commands', 'Command Management'],
 		['info', 'Discord Information'],
 		['random', 'Random Response'],
 		['single', 'Single Response'],
