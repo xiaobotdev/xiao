@@ -13,7 +13,8 @@ module.exports = class AddPortalChannelCommand extends Command {
 				{
 					key: 'channel',
 					prompt: 'What channel do you want to set as a portal channel?',
-					type: 'channel'
+					type: 'channel',
+					default: msg => msg.channel
 				}
 			]
 		});
