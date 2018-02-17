@@ -1,7 +1,8 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, list } = require('../../util/Util');
+const types = ['random', 'top'];
 
 module.exports = class UrbanDictionaryCommand extends Command {
 	constructor(client) {
@@ -11,24 +12,36 @@ module.exports = class UrbanDictionaryCommand extends Command {
 			group: 'search',
 			memberName: 'urban-dictionary',
 			description: 'Defines a word, but with Urban Dictionary.',
+			details: `**Types**: ${types.join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'word',
 					prompt: 'What word would you like to look up?',
 					type: 'string'
+				},
+				{
+					key: 'type',
+					prompt: 'Do you want to get the top answer or a random one?',
+					type: 'string',
+					default: 'top',
+					validate: type => {
+						if (types.includes(type.toLowerCase())) return true;
+						return `Invalid type, please enter either ${list(types, 'or')}.`;
+					},
+					parse: type => type.toLowerCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { word }) {
+	async run(msg, { word, type }) {
 		try {
 			const { body } = await snekfetch
 				.get('http://api.urbandictionary.com/v0/define')
 				.query({ term: word });
 			if (!body.list.length) return msg.say('Could not find any results.');
-			const data = body.list[Math.floor(Math.random() * body.list.length)];
+			const data = body.list[type === 'top' ? 0 : Math.floor(Math.random() * body.list.length)];
 			const embed = new MessageEmbed()
 				.setColor(0x32A8F0)
 				.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png')

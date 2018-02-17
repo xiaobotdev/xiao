@@ -51,7 +51,7 @@ module.exports = class BalloonPopCommand extends Command {
 				}
 				if (pump) {
 					await msg.say(`${user} pumps the balloon!`);
-					remains -= randomRange(50, 100);
+					remains -= randomRange(25, 75);
 					const popped = Math.floor(Math.random() * remains);
 					if (popped <= 0) {
 						await msg.say('The balloon pops!');

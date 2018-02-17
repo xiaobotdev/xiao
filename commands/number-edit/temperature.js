@@ -10,6 +10,7 @@ module.exports = class TemperatureCommand extends Command {
 			group: 'number-edit',
 			memberName: 'temperature',
 			description: `Converts temperatures to/from ${list(units, 'or')}.`,
+			details: `**Units**: ${units.join(', ')}`,
 			args: [
 				{
 					key: 'base',

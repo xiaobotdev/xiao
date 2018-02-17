@@ -19,6 +19,7 @@ module.exports = class MathQuizCommand extends Command {
 			group: 'games',
 			memberName: 'math-quiz',
 			description: 'See how fast you can answer a math problem in a given time limit.',
+			details: `**Difficulties**: ${difficulties.join(', ')}`,
 			args: [
 				{
 					key: 'difficulty',

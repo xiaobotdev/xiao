@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
-const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { stripIndents } = require('common-tags');
 
 module.exports = class RedditCommand extends Command {
 	constructor(client) {
@@ -10,7 +10,6 @@ module.exports = class RedditCommand extends Command {
 			group: 'random',
 			memberName: 'reddit',
 			description: 'Responds with a random post from a subreddit.',
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'subreddit',
@@ -30,18 +29,13 @@ module.exports = class RedditCommand extends Command {
 			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			if (!allowed.length) return msg.say('Could not find any results.');
 			const post = allowed[Math.floor(Math.random() * allowed.length)].data;
-			const embed = new MessageEmbed()
-				.setColor(0xFF4500)
-				.setAuthor('Reddit', 'https://i.imgur.com/DSBOK0P.png')
-				.setURL(`https://www.reddit.com${post.permalink}`)
-				.setTitle(post.title)
-				.addField('❯ Upvotes',
-					post.ups, true)
-				.addField('❯ Downvotes',
-					post.downs, true)
-				.addField('❯ Score',
-					post.score, true);
-			return msg.embed(embed);
+			return msg.say(stripIndents`
+				**${post.title}**
+				<https://www.reddit.com${post.permalink}>
+
+				⬆ ${post.ups}
+				⬇ ${post.downs}
+			`);
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');
 			if (err.status === 404) return msg.say('Could not find any results.');

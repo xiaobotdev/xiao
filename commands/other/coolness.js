@@ -28,6 +28,7 @@ module.exports = class CoolnessCommand extends Command {
 		if (coolness < 1.2) return msg.say(`${user.username} is okay, nothing special.`);
 		if (coolness < 1.4) return msg.say(`${user.username} is just not all that neat.`);
 		if (coolness < 1.6) return msg.say(`${user.username} is awful, honestly.`);
-		return msg.say(`${user.username} smells like a sack of diapers.`);
+		if (coolness < 1.8) return msg.say(`${user.username} smells like a sack of diapers.`);
+		return msg.say(`${user.username} is terrible in every way.`);
 	}
 };

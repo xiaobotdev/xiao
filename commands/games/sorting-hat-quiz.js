@@ -11,8 +11,7 @@ module.exports = class SortingHatQuizCommand extends Command {
 			aliases: ['sorting-hat', 'pottermore', 'hogwarts'],
 			group: 'games',
 			memberName: 'sorting-hat-quiz',
-			description: 'Take a quiz to determine your Hogwarts house.',
-			details: '**Source**: <https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/>'
+			description: 'Take a quiz to determine your Hogwarts house.'
 		});
 
 		this.playing = new Set();
