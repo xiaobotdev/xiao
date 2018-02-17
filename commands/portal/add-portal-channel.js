@@ -1,0 +1,30 @@
+const { Command } = require('discord.js-commando');
+
+module.exports = class AddPortalChannelCommand extends Command {
+	constructor(client) {
+		super(client, {
+			name: 'add-portal-channel',
+			aliases: ['set-portal-channel', 'portal-channel', 'open-portal'],
+			group: 'portal',
+			memberName: 'add-portal-channel',
+			description: 'Sets a channel to be a portal channel.',
+			guildOnly: true,
+			args: [
+				{
+					key: 'channel',
+					prompt: 'What channel do you want to set as a portal channel?',
+					type: 'channel'
+				}
+			]
+		});
+	}
+
+	run(msg, { channel }) {
+		if (channel.type !== 'text') return msg.reply('Only text channels can have a portal!');
+		const channels = this.client.provider.get('global', 'portals', []);
+		if (channels.includes(channel.id)) return msg.reply(`${channel} is already has an open portal!`);
+		channels.push(channel.id);
+		this.client.provider.set('global', 'portals', channels);
+		return msg.say(`A portal opened in ${channel}!`);
+	}
+};
