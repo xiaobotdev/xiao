@@ -13,7 +13,8 @@ module.exports = class RemovePortalChannelCommand extends Command {
 				{
 					key: 'channel',
 					prompt: 'What channel do you want to remove from the portal channels?',
-					type: 'channel'
+					type: 'channel',
+					default: msg => msg.channel
 				}
 			]
 		});
