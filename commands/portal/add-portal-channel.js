@@ -9,6 +9,7 @@ module.exports = class AddPortalChannelCommand extends Command {
 			memberName: 'add-portal-channel',
 			description: 'Sets a channel to be a portal channel.',
 			guildOnly: true,
+			userPermissions: ['MANAGE_CHANNELS'],
 			args: [
 				{
 					key: 'channel',
