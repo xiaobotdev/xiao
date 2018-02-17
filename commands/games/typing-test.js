@@ -19,6 +19,7 @@ module.exports = class TypingTestCommand extends Command {
 			group: 'games',
 			memberName: 'typing-test',
 			description: 'See how fast you can type a sentence in a given time limit.',
+			details: `**Difficulties**: ${difficulties.join(', ')}`,
 			args: [
 				{
 					key: 'difficulty',

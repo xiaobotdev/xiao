@@ -3,7 +3,7 @@ const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
 const { list } = require('../../util/Util');
-const hats = ['christmas', 'anime', 'tophat', 'pilgrim', 'birthday'];
+const hats = require('../../assets/json/hat');
 
 module.exports = class HatCommand extends Command {
 	constructor(client) {
@@ -12,6 +12,7 @@ module.exports = class HatCommand extends Command {
 			group: 'avatar-edit',
 			memberName: 'hat',
 			description: 'Draws a hat over a user\'s avatar.',
+			details: `**Hats**: ${hats.join(', ')}`,
 			throttling: {
 				usages: 1,
 				duration: 10

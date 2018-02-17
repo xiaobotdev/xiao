@@ -1,7 +1,7 @@
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const path = require('path');
-const { CommandoClient } = require('discord.js-commando');
-const client = new CommandoClient({
+const XiaoClient = require('./structures/Client');
+const client = new XiaoClient({
 	commandPrefix: XIAO_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
@@ -9,6 +9,7 @@ const client = new CommandoClient({
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START']
 });
+const SequelizeProvider = require('./providers/Sequelize');
 const activities = require('./assets/json/activity');
 
 client.registry
@@ -31,11 +32,11 @@ client.registry
 	])
 	.registerDefaultCommands({
 		help: false,
-		ping: false,
-		prefix: false,
-		commandState: false
+		ping: false
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
+
+client.setProvider(new SequelizeProvider(client.database));
 
 client.on('ready', () => {
 	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);

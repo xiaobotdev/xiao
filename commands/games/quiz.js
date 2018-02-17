@@ -13,6 +13,10 @@ module.exports = class QuizCommand extends Command {
 			group: 'games',
 			memberName: 'quiz',
 			description: 'Answer a quiz question.',
+			details: stripIndents`
+				**Types**: ${types.join(', ')}
+				**Difficulties**: ${difficulties.join(', ')}
+			`,
 			args: [
 				{
 					key: 'type',

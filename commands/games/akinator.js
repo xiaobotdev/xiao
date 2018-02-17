@@ -30,7 +30,7 @@ module.exports = class AkinatorCommand extends Command {
 				answers.push('end');
 				await msg.say(stripIndents`
 					**${++data.step}.** ${data.question}
-					${data.answers.map(answer => answer.answer).join(' | ')} | End
+					${data.answers.map(answer => answer.answer).join(' | ')}
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
 				const msgs = await msg.channel.awaitMessages(filter, {
