@@ -16,7 +16,7 @@ module.exports = class TemmieCommand extends Command {
 					prompt: 'What text would you like to convert to Temmie speak?',
 					type: 'string',
 					validate: text => {
-						if (wordTrans(text, dictionary).length < 2000) return true;
+						if (this.temmize(text).length < 2000) return true;
 						return 'Invalid text, your text is too long.';
 					}
 				}
@@ -25,6 +25,13 @@ module.exports = class TemmieCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.say(wordTrans(text, dictionary));
+		return msg.say(this.temmize(text));
+	}
+
+	temmize(text) {
+		return wordTrans(text, dictionary)
+			.replace(/ing/gi, 'in')
+			.replace(/!/g, '!!!!111!1!')
+			.replace(/'/g, '');
 	}
 };
