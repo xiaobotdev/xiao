@@ -21,7 +21,7 @@ module.exports = class PortalSendCommand extends Command {
 
 	async run(msg, { message }) {
 		if (/discord(\.gg|app\.com\/invite|\.me)\//gi.test(message)) return msg.reply('Please do not send invites.');
-		let channels = this.client.provider.get('global', 'portals', []);
+		let channels = this.client.provider.get('global', 'portals', []).filter(c => this.client.channels.has(c));
 		if (msg.channel.type === 'text') channels = channels.filter(channel => !msg.guild.channels.has(channel));
 		if (!channels.length) return msg.reply('No channels have an open portal...');
 		const channel = this.client.channels.get(channels[Math.floor(Math.random() * channels.length)]);
