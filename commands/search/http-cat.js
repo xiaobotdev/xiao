@@ -21,10 +21,10 @@ module.exports = class HTTPCatCommand extends Command {
 
 	async run(msg, { code }) {
 		try {
-			const { body } = await snekfetch.get(`https://http.cat/${code}.jpg`);
+			const { body, text } = await snekfetch.get(`https://http.cat/${code}.jpg`);
+			if (text.startsWith('<!DOCTYPE html>')) return msg.say('Could not find any results.');
 			return msg.say({ files: [{ attachment: body, name: `${code}.jpg` }] });
 		} catch (err) {
-			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
