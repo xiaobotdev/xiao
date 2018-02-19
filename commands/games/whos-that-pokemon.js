@@ -51,10 +51,10 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		}
 	}
 
-	async fetchPokemon(pokemon, peek = false) {
+	async fetchPokemon(pokemon) {
 		if (this.cache.has(pokemon)) return this.cache.get(pokemon);
 		const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
-		if (!peek) this.cache.set(body.id, body);
+		this.cache.set(body.id, body);
 		return body;
 	}
 
