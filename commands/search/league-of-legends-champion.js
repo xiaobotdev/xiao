@@ -24,6 +24,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		});
 
 		this.version = null;
+		this.champions = null;
 	}
 
 	async run(msg, { champion }) {
@@ -91,8 +92,10 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 	}
 
 	async fetchChampions() {
+		if (this.champions && this.champions.version === this.version) return this.champions;
 		const { body } = await snekfetch
 			.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
+		this.champions = body;
 		return body;
 	}
 
