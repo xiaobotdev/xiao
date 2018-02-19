@@ -48,6 +48,7 @@ module.exports = class OsuSignatureCommand extends Command {
 					onlineindicator: '',
 					xpbar: ''
 				});
+			console.log(text);
 			if (text.includes('<b>Warning</b>')) return msg.say('Could not find any results.');
 			return msg.say({ files: [{ attachment: body, name: 'osu-signature.png' }] });
 		} catch (err) {
