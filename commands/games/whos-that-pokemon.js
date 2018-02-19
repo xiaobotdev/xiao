@@ -33,27 +33,11 @@ module.exports = class WhosThatPokemonCommand extends Command {
 	async run(msg, { hide }) {
 		const pokemon = Math.floor(Math.random() * 802) + 1;
 		try {
-			let data;
-			if (!this.cache.has(pokemon)) {
-				const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
-				this.cache.set(body.id, body);
-				data = body;
-			} else {
-				data = this.cache.get(pokemon);
-			}
+			const data = await this.fetchPokemon(pokemon);
 			const names = data.names.map(name => name.name.toLowerCase());
 			const displayName = filterPkmn(data.names).name;
 			const id = data.id.toString().padStart(3, '0');
-			const image = await snekfetch.get(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
-			let attachment = image.body;
-			if (hide) {
-				const base = await loadImage(image.body);
-				const canvas = createCanvas(base.width, base.height);
-				const ctx = canvas.getContext('2d');
-				ctx.drawImage(base, 0, 0);
-				silhouette(ctx, 0, 0, base.width, base.height);
-				attachment = canvas.toBuffer();
-			}
+			const attachment = await this.fetchImage(id, hide);
 			await msg.say('**You have 15 seconds, who\'s that Pokémon?**', { files: [{ attachment, name: `${id}.png` }] });
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
@@ -65,5 +49,23 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async fetchPokemon(pokemon, peek = false) {
+		if (this.cache.has(pokemon)) return this.cache.get(pokemon);
+		const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
+		if (!peek) this.cache.set(body.id, body);
+		return body;
+	}
+
+	async fetchImage(id, hide = false) {
+		const image = await snekfetch.get(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
+		if (!hide) return image.body;
+		const base = await loadImage(image.body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		silhouette(ctx, 0, 0, base.width, base.height);
+		return canvas.toBuffer();
 	}
 };
