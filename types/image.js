@@ -12,7 +12,7 @@ class ImageArgumentType extends ArgumentType {
 			return valid;
 		}
 		if (!attachment.height || !attachment.width) return false;
-		if (attachment.size > 2e+6) return false;
+		if (attachment.size > 1000000) return false;
 		return true;
 	}
 
