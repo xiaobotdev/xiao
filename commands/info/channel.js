@@ -17,7 +17,6 @@ module.exports = class ChannelInfoCommand extends Command {
 			group: 'info',
 			memberName: 'channel',
 			description: 'Responds with detailed information on a channel.',
-			guildOnly: true,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
