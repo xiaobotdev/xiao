@@ -35,9 +35,9 @@ module.exports = class GoogleCommand extends Command {
 			const data = body.items[0];
 			return msg.say(stripIndents`
 				**${data.title}**
-				${data.snippet}
+				${data.snippet.replace(/\n/g, '')}
 
-				<${data.formattedUrl}>
+				${data.formattedUrl}
 			`);
 		} catch (err) {
 			return msg.say(`http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`);
