@@ -74,7 +74,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					`);
 					const chosen = [];
 					const filter = res => {
-						const existing = hand[parseInt(res.content, 10) - 1];
+						const existing = hand[Number.parseInt(res.content, 10) - 1];
 						if (!existing) return false;
 						if (chosen.includes(existing)) return false;
 						chosen.push(existing);
@@ -112,7 +112,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				`);
 				const filter = res => {
 					if (res.author.id !== czar.user.id) return false;
-					if (!cards[parseInt(res.content, 10) - 1]) return false;
+					if (!cards[Number.parseInt(res.content, 10) - 1]) return false;
 					return true;
 				};
 				const chosen = await msg.channel.awaitMessages(filter, {
@@ -123,7 +123,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					await msg.say('Hmm... No one wins.');
 					continue;
 				}
-				const player = players.get(cards[parseInt(chosen.first().content, 10) - 1].id);
+				const player = players.get(cards[Number.parseInt(chosen.first().content, 10) - 1].id);
 				++player.points;
 				if (player.points >= maxPts) winner = player.user;
 				else await msg.say(`Nice one, ${player.user}! You now have **${player.points}** points!`);

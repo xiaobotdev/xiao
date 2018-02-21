@@ -23,15 +23,15 @@ module.exports = class PeriodicTableCommand extends Command {
 					prompt: 'What element do you want to find? You can enter the name, symbol, or atomic number.',
 					type: 'string',
 					validate: element => {
-						const num = parseInt(element, 10);
-						if (!isNaN(num) && num >= 0 && num <= elements.length - 1) return true;
+						const num = Number.parseInt(element, 10);
+						if (!Number.isNaN(num) && num >= 0 && num <= elements.length - 1) return true;
 						const search = element.toString().toLowerCase();
 						if (elements.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search)) return true;
 						return 'Invalid element, please enter a valid element symbol, name, or atomic number.';
 					},
 					parse: element => {
-						const num = parseInt(element, 10);
-						if (!isNaN(num)) return elements[num];
+						const num = Number.parseInt(element, 10);
+						if (!Number.isNaN(num)) return elements[num];
 						const search = element.toLowerCase();
 						return elements.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search);
 					}

@@ -67,7 +67,7 @@ module.exports = class TicTacToeCommand extends Command {
 				} else if (!sides.includes(choice)) {
 					await msg.say('I don\'t think that is a valid spot...');
 				} else {
-					sides[parseInt(choice, 10)] = sign;
+					sides[Number.parseInt(choice, 10)] = sign;
 					taken.push(choice);
 					if ((sides[0] === sides[1] && sides[0] === sides[2])
 						|| (sides[0] === sides[3] && sides[0] === sides[6])

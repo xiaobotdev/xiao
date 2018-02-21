@@ -75,7 +75,7 @@ module.exports = class AkinatorCommand extends Command {
 			id: data.identification.session,
 			signature: data.identification.signature,
 			step: 0,
-			progress: parseInt(data.step_information.progression, 10)
+			progress: Number.parseInt(data.step_information.progression, 10)
 		});
 		return data.step_information;
 	}
@@ -95,8 +95,8 @@ module.exports = class AkinatorCommand extends Command {
 		this.sessions.set(channel.id, {
 			id: session.id,
 			signature: session.signature,
-			step: parseInt(data.step, 10),
-			progress: parseInt(data.progression, 10)
+			step: Number.parseInt(data.step, 10),
+			progress: Number.parseInt(data.progression, 10)
 		});
 		return data;
 	}

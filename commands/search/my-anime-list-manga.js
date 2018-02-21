@@ -43,7 +43,7 @@ module.exports = class MyAnimeListMangaCommand extends Command {
 				.addField('❯ Type',
 					`${data.type[0]} - ${data.status[0]}`, true)
 				.addField('❯ Volumes / Chapters',
-					`${parseInt(data.volumes[0], 10) || '???'} / ${parseInt(data.chapters[0], 10) || '???'}`, true)
+					`${Number.parseInt(data.volumes[0], 10) || '???'} / ${Number.parseInt(data.chapters[0], 10) || '???'}`, true)
 				.addField('❯ Start Date',
 					data.start_date[0] !== '0000-00-00' ? data.start_date[0] : '???', true)
 				.addField('❯ End Date',

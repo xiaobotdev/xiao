@@ -22,7 +22,7 @@ module.exports = class RouletteCommand extends Command {
 					prompt: 'What space do you want to bet on?',
 					type: 'string',
 					validate: space => {
-						if (numbers.includes(parseInt(space, 10))) return true;
+						if (numbers.includes(Number.parseInt(space, 10))) return true;
 						if (dozens.includes(space)) return true;
 						if (halves.includes(space)) return true;
 						if (columns.includes(space.toLowerCase())) return true;
@@ -57,7 +57,7 @@ module.exports = class RouletteCommand extends Command {
 		}
 		if (parity.includes(choice)) return parity[result % 2] === choice;
 		if (columns.includes(choice)) return columns[(result - 1) % 3] === choice;
-		const number = parseInt(choice, 10);
+		const number = Number.parseInt(choice, 10);
 		if (numbers.includes(number)) return result === number;
 		if (!result) return false;
 		return false;

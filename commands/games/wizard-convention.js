@@ -42,7 +42,8 @@ module.exports = class WizardConventionCommand extends Command {
 						${questions[player.role]} Please type the number.
 						${valid.map((p, i) => `**${i + 1}.** ${p.user.tag}`).join('\n')}
 					`);
-					const decision = await player.user.dmChannel.awaitMessages(res => valid[parseInt(res.content, 10) - 1], {
+					const filter = res => valid[Number.parseInt(res.content, 10) - 1];
+					const decision = await player.user.dmChannel.awaitMessages(filter, {
 						max: 1,
 						time: 120000
 					});
@@ -50,7 +51,7 @@ module.exports = class WizardConventionCommand extends Command {
 						await player.user.send('Sorry, time is up!');
 						continue;
 					}
-					const choice = parseInt(decision.first().content, 10);
+					const choice = Number.parseInt(decision.first().content, 10);
 					if (player.role === 'dragon') {
 						const chosen = players.get(choice);
 						eaten = chosen.id;
@@ -99,7 +100,7 @@ module.exports = class WizardConventionCommand extends Command {
 				const filter = res => {
 					if (!players.exists(p => p.user.id === res.author.id)) return false;
 					if (voted.includes(res.author.id)) return false;
-					if (!playersArr[parseInt(res.content, 10) - 1]) return false;
+					if (!playersArr[Number.parseInt(res.content, 10) - 1]) return false;
 					voted.push(res.author.id);
 					return true;
 				};
@@ -146,7 +147,7 @@ module.exports = class WizardConventionCommand extends Command {
 	getExpelled(votes, players, playersArr) {
 		const counts = new Collection();
 		for (const vote of votes.values()) {
-			const player = players.get(playersArr[parseInt(vote.content, 10) - 1].id);
+			const player = players.get(playersArr[Number.parseInt(vote.content, 10) - 1].id);
 			if (counts.has(player.id)) {
 				++counts.get(player.id).votes;
 			} else {

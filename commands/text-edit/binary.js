@@ -47,6 +47,6 @@ module.exports = class BinaryCommand extends Command {
 	}
 
 	unbinary(text) {
-		return text.split(' ').map(str => String.fromCharCode(parseInt(str, 2))).join('');
+		return text.split(' ').map(str => String.fromCharCode(Number.parseInt(str, 2))).join('');
 	}
 };
