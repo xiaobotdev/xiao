@@ -4,7 +4,7 @@ module.exports = class LMGTFYCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'lmgtfy',
-			aliases: ['let-me-google-that-for-you', 'google'],
+			aliases: ['let-me-google-that-for-you'],
 			group: 'text-edit',
 			memberName: 'lmgtfy',
 			description: 'Creates a LMGTFY link with the query you provide.',
