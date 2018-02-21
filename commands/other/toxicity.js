@@ -27,7 +27,7 @@ module.exports = class ToxicityCommand extends Command {
 				.query({ key: GOOGLE_KEY })
 				.send({
 					comment: { text },
-					langauges: ['en'],
+					languages: ['en'],
 					requestedAttributes: { TOXICITY: {} }
 				});
 			const toxicity = Math.round(body.attributeScores.TOXICITY.summaryScore.value * 100);
