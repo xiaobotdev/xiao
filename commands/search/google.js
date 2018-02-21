@@ -31,8 +31,7 @@ module.exports = class GoogleCommand extends Command {
 					q: query
 				});
 			if (!body.items) return msg.say('Could not find any results.');
-			const data = body.items[0];
-			return msg.say(data.formattedUrl);
+			return msg.say(body.items[0].formattedUrl);
 		} catch (err) {
 			return msg.say(`http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`);
 		}
