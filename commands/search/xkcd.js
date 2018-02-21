@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const types = ['random', 'today'];
 
 module.exports = class XKCDCommand extends Command {
 	constructor(client) {
@@ -17,6 +18,12 @@ module.exports = class XKCDCommand extends Command {
 					prompt: 'Please enter either a specific comic number, today, or random.',
 					type: 'string',
 					default: 'today',
+					validate: query => {
+						if (types.includes(query.toLowerCase())) return true;
+						const num = Number.parseInt(query, 10);
+						if (!Number.isNaN(num) && num > 1) return true;
+						return `Invalid query, please enter either today, random, or a specific comic number.`;
+					},
 					parse: query => query.toLowerCase()
 				}
 			]
@@ -46,8 +53,8 @@ module.exports = class XKCDCommand extends Command {
 					.setFooter(body.alt);
 				return msg.embed(embed);
 			}
-			const choice = parseInt(query, 10);
-			if (isNaN(choice) || current.body.num < choice || choice < 1) return msg.say('Could not find any results.');
+			const choice = Number.parseInt(query, 10);
+			if (current.body.num < choice) return msg.say('Could not find any results.');
 			const { body } = await snekfetch.get(`https://xkcd.com/${choice}/info.0.json`);
 			const embed = new MessageEmbed()
 				.setTitle(`${body.num} - ${body.title}`)

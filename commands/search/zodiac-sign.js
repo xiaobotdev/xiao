@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const months = require('../../assets/json/months');
 
 module.exports = class ZodiacSignCommand extends Command {
 	constructor(client) {
@@ -11,9 +12,18 @@ module.exports = class ZodiacSignCommand extends Command {
 				{
 					key: 'month',
 					prompt: 'What month would you like to get the Zodiac Sign for?',
-					type: 'integer',
-					min: 1,
-					max: 12
+					type: 'string',
+					validate: month => {
+						const num = Number.parseInt(month, 10);
+						if (num > 0 && num < 13) return true;
+						if (months.includes(month.toLowerCase())) return true;
+						return 'Please enter a valid month name or number.';
+					},
+					parse: month => {
+						const num = Number.parseInt(month, 10);
+						if (!Number.isNaN(num)) return num;
+						return months.indexOf(month.toLowerCase()) + 1;
+					}
 				},
 				{
 					key: 'day',
