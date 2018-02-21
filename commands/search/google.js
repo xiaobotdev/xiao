@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const { stripIndents } = require('common-tags');
 const { GOOGLE_KEY, CUSTOM_SEARCH_ID } = process.env;
 
 module.exports = class GoogleCommand extends Command {
@@ -33,12 +32,7 @@ module.exports = class GoogleCommand extends Command {
 				});
 			if (!body.items) return msg.say('Could not find any results.');
 			const data = body.items[0];
-			return msg.say(stripIndents`
-				**${data.title}**
-				${data.snippet.replace(/\n/g, '')}
-
-				${data.formattedUrl}
-			`);
+			return msg.say(data.formattedUrl);
 		} catch (err) {
 			return msg.say(`http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`);
 		}
