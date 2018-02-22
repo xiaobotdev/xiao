@@ -51,6 +51,10 @@ class Util {
 		return arr;
 	}
 
+	static formatNumber(number, dollar = false) {
+		return `${dollar ? '$' : ''}${number.toLocaleString('en-US', { maximumFractionDigits: 2 })}`;
+	}
+
 	static cleanXML(text) {
 		return text
 			.replace(/<br \/>/g, '')
