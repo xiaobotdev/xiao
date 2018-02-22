@@ -18,7 +18,7 @@ module.exports = class DaysUntilCommand extends Command {
 					prompt: 'What day would you like to get the days until?',
 					type: 'integer',
 					min: 1,
-					max: 12
+					max: 31
 				}
 			]
 		});
