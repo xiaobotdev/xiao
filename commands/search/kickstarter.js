@@ -40,9 +40,9 @@ module.exports = class KickstarterCommand extends Command {
 				.setDescription(shorten(data.blurb))
 				.setThumbnail(data.photo ? data.photo.full : null)
 				.addField('❯ Goal',
-					`${data.currency_symbol}${data.goal}`, true)
+					`$${data.goal}`, true)
 				.addField('❯ Pledged',
-					`${data.currency_symbol}${data.pledged}`, true)
+					`$${data.pledged}`, true)
 				.addField('❯ Backers',
 					data.backers_count, true)
 				.addField('❯ Creator',
