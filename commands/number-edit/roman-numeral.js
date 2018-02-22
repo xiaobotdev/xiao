@@ -14,6 +14,7 @@ module.exports = class RomanNumeralCommand extends Command {
 					key: 'number',
 					prompt: 'What number would you like to convert to roman numerals?',
 					type: 'integer',
+					min: 0,
 					max: 4999
 				}
 			]
