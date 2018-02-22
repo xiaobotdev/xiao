@@ -59,7 +59,7 @@ module.exports = class ITunesCommand extends Command {
 					data.primaryGenreName, true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 500) {
+			if (err.status === 400) {
 				return msg.reply('Invalid country code. Refer to <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>.');
 			}
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
