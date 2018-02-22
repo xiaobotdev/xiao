@@ -1,8 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { list } = require('../../util/Util');
-const countries = ['us', 'jp'];
 
 module.exports = class ITunesCommand extends Command {
 	constructor(client) {
@@ -12,16 +10,13 @@ module.exports = class ITunesCommand extends Command {
 			group: 'search',
 			memberName: 'itunes',
 			description: 'Searches iTunes for your query.',
+			details: '**Codes**: <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'country',
-					prompt: `What country should results be obtained for? Either ${list(countries, 'or')}.`,
+					prompt: 'What country code should results be obtained for?',
 					type: 'string',
-					validate: country => {
-						if (countries.includes(country.toLowerCase())) return true;
-						return `Invalid country, please enter either ${list(countries, 'or')}.`;
-					},
 					parse: country => country.toLowerCase()
 				},
 				{
@@ -64,6 +59,9 @@ module.exports = class ITunesCommand extends Command {
 					data.primaryGenreName, true);
 			return msg.embed(embed);
 		} catch (err) {
+			if (err.status === 500) {
+				return msg.reply('Invalid country code. Refer to <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>.');
+			}
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
