@@ -4,6 +4,7 @@ const snekfetch = require('snekfetch');
 const { shuffle, list } = require('../../util/Util');
 const types = ['multiple', 'boolean'];
 const difficulties = ['easy', 'medium', 'hard'];
+const choices = ['A', 'B', 'C', 'D'];
 
 module.exports = class QuizCommand extends Command {
 	constructor(client) {
@@ -57,18 +58,20 @@ module.exports = class QuizCommand extends Command {
 			const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
 			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 			answers.push(correct);
+			const answerList = type === 'boolean' ? answers : shuffle(answers);
 			await msg.say(stripIndents`
 				**You have 15 seconds to answer this question.**
-				_${decodeURIComponent(body.results[0].category)}_
 				${decodeURIComponent(body.results[0].question)}
-				${type === 'boolean' ? 'True or False?' : ''}${type === 'multiple' ? `${list(shuffle(answers), 'or')}?` : ''}
+				${answerList.map((answer, i) => `**${choices[i]}**. ${answer}`).join('\n')}
 			`);
-			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+			const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toUpperCase());
+			const msgs = await msg.channel.awaitMessages(filter, {
 				max: 1,
 				time: 15000
 			});
 			if (!msgs.size) return msg.say(`Sorry, time is up! It was ${correct}.`);
-			if (msgs.first().content.toLowerCase() !== correct) return msg.say(`Nope, sorry, it's ${correct}.`);
+			const win = answerList[choices.indexOf(msgs.first().content.toUpperCase())] === correct;
+			if (!win) return msg.say(`Nope, sorry, it's ${correct}.`);
 			return msg.say('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
