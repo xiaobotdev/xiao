@@ -4,26 +4,27 @@ module.exports = class DaysUntilCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'days-until',
-			aliases: ['days-until-christmas'],
 			group: 'events',
 			memberName: 'days-until',
 			description: 'Responds with how many days there are until a certain date.',
 			args: [
 				{
-					key: 'date',
-					prompt: 'What date do you want to get the days until? Month/Day format.',
-					type: 'string',
-					default: ['12', '25'],
-					parse: date => date.split('/')
+					key: 'month',
+					prompt: 'What month would you like to get the days until?',
+					type: 'month'
+				},
+				{
+					key: 'day',
+					prompt: 'What day would you like to get the days until?',
+					type: 'integer',
+					min: 1,
+					max: 12
 				}
 			]
 		});
 	}
 
-	run(msg, { date }) {
-		const month = Number.parseInt(date[0], 10);
-		const day = Number.parseInt(date[1], 10);
-		if (!month || !day) return msg.reply('Invalid date.');
+	run(msg, { month, day }) {
 		const now = new Date();
 		let year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
 		if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
