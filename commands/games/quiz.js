@@ -58,11 +58,11 @@ module.exports = class QuizCommand extends Command {
 			const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
 			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 			answers.push(correct);
-			const answerList = type === 'boolean' ? answers : shuffle(answers);
+			const shuffled = shuffle(answers);
 			await msg.say(stripIndents`
 				**You have 15 seconds to answer this question.**
 				${decodeURIComponent(body.results[0].question)}
-				${answerList.map((answer, i) => `**${choices[i]}**. ${answer}`).join('\n')}
+				${shuffled.map((answer, i) => `**${choices[i]}**. ${answer}`).join('\n')}
 			`);
 			const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toUpperCase());
 			const msgs = await msg.channel.awaitMessages(filter, {
@@ -70,7 +70,7 @@ module.exports = class QuizCommand extends Command {
 				time: 15000
 			});
 			if (!msgs.size) return msg.say(`Sorry, time is up! It was ${correct}.`);
-			const win = answerList[choices.indexOf(msgs.first().content.toUpperCase())] === correct;
+			const win = shuffled[choices.indexOf(msgs.first().content.toUpperCase())] === correct;
 			if (!win) return msg.say(`Nope, sorry, it's ${correct}.`);
 			return msg.say('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
