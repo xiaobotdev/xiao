@@ -15,7 +15,10 @@ module.exports = class GoogleCommand extends Command {
 					key: 'query',
 					prompt: 'What would you like to search for?',
 					type: 'string',
-					max: 1000
+					validate: query => {
+						if (encodeURIComponent(query).length < 1973) return true;
+						return 'Invalid query, your query is too long.';
+					}
 				}
 			]
 		});

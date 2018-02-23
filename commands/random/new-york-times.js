@@ -9,7 +9,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 		super(client, {
 			name: 'new-york-times',
 			aliases: ['ny-times', 'new-york-times-article', 'ny-times-article'],
-			group: 'search',
+			group: 'random',
 			memberName: 'new-york-times',
 			description: 'Searches the New York Times for your query.',
 			clientPermissions: ['EMBED_LINKS'],
@@ -17,7 +17,8 @@ module.exports = class NewYorkTimesCommand extends Command {
 				{
 					key: 'query',
 					prompt: 'What do you want to search for articles about?',
-					type: 'string'
+					type: 'string',
+					default: ''
 				}
 			]
 		});
@@ -25,13 +26,14 @@ module.exports = class NewYorkTimesCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const fetch = snekfetch
 				.get('https://api.nytimes.com/svc/search/v2/articlesearch.json')
 				.query({
-					q: query,
 					'api-key': NYTIMES_KEY,
 					sort: 'newest'
 				});
+			if (query) fetch.query({ q: query });
+			const { body } = await fetch;
 			if (!body.response.docs.length) return msg.say('Could not find any results');
 			const data = body.response.docs[Math.floor(Math.random() * body.response.docs.length)];
 			const embed = new MessageEmbed()

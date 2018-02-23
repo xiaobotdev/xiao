@@ -7,7 +7,7 @@ module.exports = class SoundboardCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'soundboard',
-			aliases: ['sound'],
+			aliases: ['sound', 'foley'],
 			group: 'other',
 			memberName: 'soundboard',
 			description: 'Plays a sound in your voice channel.',

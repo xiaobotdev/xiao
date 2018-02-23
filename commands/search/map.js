@@ -23,7 +23,11 @@ module.exports = class MapCommand extends Command {
 				{
 					key: 'location',
 					prompt: 'What location would you like to get a map of?',
-					type: 'string'
+					type: 'string',
+					validate: location => {
+						if (encodeURIComponent(location).length < 1965) return true;
+						return 'Invalid location, your location is too long.';
+					}
 				}
 			]
 		});

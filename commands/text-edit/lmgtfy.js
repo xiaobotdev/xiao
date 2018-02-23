@@ -13,7 +13,10 @@ module.exports = class LMGTFYCommand extends Command {
 					key: 'query',
 					prompt: 'What would you like the link to search for?',
 					type: 'string',
-					max: 1950,
+					validate: query => {
+						if (encodeURIComponent(query).length < 1973) return true;
+						return 'Invalid query, your query is too long.';
+					},
 					parse: query => encodeURIComponent(query)
 				}
 			]
