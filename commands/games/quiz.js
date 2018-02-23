@@ -23,6 +23,7 @@ module.exports = class QuizCommand extends Command {
 					key: 'type',
 					prompt: `Which type of question would you like to have? Either ${list(types, 'or')}.`,
 					type: 'string',
+					default: 'multiple',
 					validate: type => {
 						if (types.includes(type.toLowerCase())) return true;
 						return `Invalid type, please enter either ${list(types, 'or')}.`;
