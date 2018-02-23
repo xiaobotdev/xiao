@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
+const { shortenText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
@@ -56,10 +57,10 @@ module.exports = class DemotivationalPosterCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.font = '60px Noto';
 			ctx.fillStyle = 'aquamarine';
-			ctx.fillText(title, 375, 518);
+			ctx.fillText(shortenText(ctx, title, 610), 375, 518);
 			ctx.font = '27px Noto';
 			ctx.fillStyle = 'white';
-			ctx.fillText(text, 375, 565);
+			ctx.fillText(shortenText(ctx, text, 610), 375, 565);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'demotivational-poster.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

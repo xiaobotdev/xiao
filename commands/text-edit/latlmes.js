@@ -19,7 +19,7 @@ module.exports = class LatlmesCommand extends Command {
 					key: 'query',
 					prompt: 'What would you like the link to display as?',
 					type: 'string',
-					max: 1000,
+					max: 500,
 					parse: query => encodeURIComponent(query.replace(/ /g, '-').toLowerCase())
 				}
 			]
