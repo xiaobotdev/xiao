@@ -34,8 +34,8 @@ module.exports = class RottenTomatoesCommand extends Command {
 			if (!search.body.movies.length) return msg.say('Could not find any results.');
 			const find = search.body.movies.find(m => m.name.toLowerCase() === query.toLowerCase()) || search.body.movies[0];
 			const urlID = find.url.replace('/m/', '');
-			const { text } = await snekfetch.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
-			const body = JSON.parse(text);
+			const { raw } = await snekfetch.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
+			const body = JSON.parse(raw.toString());
 			const criticS = body.ratingSummary.allCritics;
 			const audienceS = body.ratingSummary.audience;
 			const embed = new MessageEmbed()
