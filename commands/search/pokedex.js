@@ -42,7 +42,7 @@ module.exports = class PokedexCommand extends Command {
 				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

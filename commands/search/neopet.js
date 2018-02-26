@@ -40,14 +40,14 @@ module.exports = class NeopetCommand extends Command {
 
 	async run(msg, { pet, mood }) {
 		try {
-			const { raw } = await snekfetch
+			const { text } = await snekfetch
 				.get('http://www.sunnyneo.com/petimagefinder.php')
 				.query({
 					name: pet,
 					size: 5,
 					mood: moods[mood]
 				});
-			const link = raw.toString().match(/http:\/\/pets\.neopets\.com\/cp\/.+\.png/);
+			const link = text.match(/http:\/\/pets\.neopets\.com\/cp\/.+\.png/);
 			if (!link) return msg.say('Could not find any results.');
 			return msg.say(link[0]);
 		} catch (err) {

@@ -54,8 +54,8 @@ module.exports = class TwitterCommand extends Command {
 					body.status ? body.status.text : 'None');
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 401) await this.fetchToken();
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 401) await this.fetchToken();
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
