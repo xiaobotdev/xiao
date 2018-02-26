@@ -14,8 +14,7 @@
 			"number": 1,
 			"period": 1,
 			"phase": "Gas",
-			"symbol": "H",
-			"valence": 1
+			"symbol": "H"
 		},
 		{
 			"name": "Helium",
