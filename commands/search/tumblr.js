@@ -31,7 +31,7 @@ module.exports = class TumblrCommand extends Command {
 			const data = body.response.blog;
 			const embed = new MessageEmbed()
 				.setColor(0x395976)
-				.setAuthor('Tumblr', 'https://i.imgur.com/ouD9TUY.png')
+				.setAuthor('Tumblr', 'https://i.imgur.com/ouD9TUY.png', 'https://www.tumblr.com/')
 				.setThumbnail(`https://api.tumblr.com/v2/blog/${blog}/avatar/512`)
 				.setURL(data.url)
 				.setTitle(data.title)

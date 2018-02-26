@@ -33,7 +33,7 @@ module.exports = class TwitterCommand extends Command {
 				.query({ screen_name: user });
 			const embed = new MessageEmbed()
 				.setColor(0x55ADEE)
-				.setAuthor('Twitter', 'https://i.imgur.com/QnfcO7y.png')
+				.setAuthor('Twitter', 'https://i.imgur.com/QnfcO7y.png', 'https://twitter.com/')
 				.setThumbnail(body.profile_image_url_https)
 				.setURL(`https://twitter.com/${body.screen_name}`)
 				.setTitle(`${body.name} (@${body.screen_name})`)

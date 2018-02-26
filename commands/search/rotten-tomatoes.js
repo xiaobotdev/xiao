@@ -42,7 +42,7 @@ module.exports = class RottenTomatoesCommand extends Command {
 				.setColor(0xFFEC02)
 				.setTitle(`${body.title} (${body.year})`)
 				.setURL(`https://www.rottentomatoes.com${body.url}`)
-				.setAuthor('Rotten Tomatoes', 'https://i.imgur.com/Sru8mZ3.jpg')
+				.setAuthor('Rotten Tomatoes', 'https://i.imgur.com/Sru8mZ3.jpg', 'https://www.rottentomatoes.com/')
 				.setDescription(shorten(body.ratingSummary.consensus))
 				.setThumbnail(body.posters.original)
 				.addField('❯ Critic Score',

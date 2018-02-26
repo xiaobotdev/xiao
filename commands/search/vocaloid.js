@@ -38,7 +38,7 @@ module.exports = class VocaloidCommand extends Command {
 			const data = body.items[0];
 			const embed = new MessageEmbed()
 				.setColor(0x86D2D0)
-				.setAuthor('VocaDB', 'https://i.imgur.com/6QwraDT.jpg')
+				.setAuthor('VocaDB', 'https://i.imgur.com/6QwraDT.jpg', 'http://vocadb.net/')
 				.setTitle(data.name)
 				.setURL(`http://vocadb.net/S/${data.id}`)
 				.setDescription(data.lyrics.length ? shorten(data.lyrics[0].value) : 'No lyrics available.')

@@ -47,7 +47,7 @@ module.exports = class SteamCommand extends Command {
 			}
 			const embed = new MessageEmbed()
 				.setColor(0x101D2F)
-				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png')
+				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png', 'http://store.steampowered.com/')
 				.setTitle(data.name)
 				.setURL(`http://store.steampowered.com/app/${data.steam_appid}`)
 				.setThumbnail(tiny_image)

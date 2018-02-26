@@ -40,7 +40,7 @@ module.exports = class TMDBTVShowCommand extends Command {
 				.setColor(0x00D474)
 				.setTitle(body.name)
 				.setURL(`https://www.themoviedb.org/tv/${body.id}`)
-				.setAuthor('TMDB', 'https://i.imgur.com/3K3QMv9.png')
+				.setAuthor('TMDB', 'https://i.imgur.com/3K3QMv9.png', 'https://www.themoviedb.org/')
 				.setDescription(body.overview ? shorten(body.overview) : 'No description available.')
 				.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
 				.addField('❯ First Air Date',

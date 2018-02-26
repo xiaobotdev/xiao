@@ -44,7 +44,7 @@ module.exports = class UrbanDictionaryCommand extends Command {
 			const data = body.list[type === 'top' ? 0 : Math.floor(Math.random() * body.list.length)];
 			const embed = new MessageEmbed()
 				.setColor(0x32A8F0)
-				.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png')
+				.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png', 'https://www.urbandictionary.com/')
 				.setURL(data.permalink)
 				.setTitle(data.word)
 				.setDescription(shorten(data.definition))

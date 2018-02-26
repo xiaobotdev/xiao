@@ -36,7 +36,7 @@ module.exports = class WattpadCommand extends Command {
 			const data = body.stories[0];
 			const embed = new MessageEmbed()
 				.setColor(0xF89C34)
-				.setAuthor('Wattpad', 'https://i.imgur.com/lFTXnlz.png')
+				.setAuthor('Wattpad', 'https://i.imgur.com/lFTXnlz.png', 'https://www.wattpad.com/')
 				.setURL(data.url)
 				.setTitle(data.title)
 				.setDescription(shorten(data.description))

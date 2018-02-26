@@ -35,8 +35,7 @@ module.exports = class OsuCommand extends Command {
 			const data = body[0];
 			const embed = new MessageEmbed()
 				.setColor(0xFF66AA)
-				.setAuthor('osu!', 'https://i.imgur.com/hWrw2Sv.png')
-				.setURL('https://osu.ppy.sh/')
+				.setAuthor('osu!', 'https://i.imgur.com/hWrw2Sv.png', 'https://osu.ppy.sh/')
 				.addField('❯ Username',
 					data.username, true)
 				.addField('❯ ID',

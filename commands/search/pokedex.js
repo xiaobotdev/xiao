@@ -30,8 +30,11 @@ module.exports = class PokedexCommand extends Command {
 			const id = body.id.toString().padStart(3, '0');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${id} - ${filterPkmn(body.names).name}`, `https://www.serebii.net/pokedex-sm/icon/${id}.png`)
-				.setURL(`https://www.serebii.net/pokedex-sm/${id}.shtml`)
+				.setAuthor(
+					`#${id} - ${filterPkmn(body.names).name}`,
+					`https://www.serebii.net/pokedex-sm/icon/${id}.png`,
+					`https://www.serebii.net/pokedex-sm/${id}.shtml`
+				)
 				.setDescription(stripIndents`
 					**The ${filterPkmn(body.genera).genus}**
 					${filterPkmn(body.flavor_text_entries).flavor_text.replace(/\n|\f|\r/g, ' ')}

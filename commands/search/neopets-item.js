@@ -35,7 +35,7 @@ module.exports = class NeopetItemCommand extends Command {
 			const price = search.text.match(/[0-9,]+ (NP|NC)/);
 			const embed = new MessageEmbed()
 				.setColor(0xFFCE31)
-				.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png')
+				.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png', 'http://www.neopets.com/')
 				.setTitle(text.match(/<h1>(.+)<\/h1>/)[1])
 				.setDescription(text.match(/<em>(.+)<\/em>/)[1])
 				.setURL(`https://items.jellyneo.net/item/${id[1]}/`)
