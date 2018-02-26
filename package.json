@@ -37,7 +37,7 @@
 		"discord.js": "github:discordjs/discord.js",
 		"discord.js-commando": "github:discordjs/Commando",
 		"erlpack": "github:discordapp/erlpack",
-		"mathjs": "^3.20.2",
+		"mathjs": "^4.0.0",
 		"node-opus": "^0.2.7",
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
@@ -48,7 +48,7 @@
 		"zlib-sync": "^0.1.4"
 	},
 	"devDependencies": {
-		"eslint": "^4.18.0",
+		"eslint": "^4.18.1",
 		"eslint-config-aqua": "^2.0.1",
 		"eslint-plugin-json": "^1.2.0"
 	},
