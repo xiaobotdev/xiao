@@ -41,24 +41,22 @@ module.exports = class NeopetItemCommand extends Command {
 	}
 
 	async fetchItem(query) {
-		const { raw } = await snekfetch
+		const { text } = await snekfetch
 			.get('https://items.jellyneo.net/search/')
 			.query({
 				name: query,
 				name_type: 3
 			});
-		const text = raw.toString();
 		const id = text.match(/\/item\/([0-9]+)/);
 		if (!id) return null;
 		const price = text.match(/([0-9,]+) (NP|NC)/);
 		const url = `https://items.jellyneo.net/item/${id[1]}/`;
 		const details = await snekfetch.get(url);
-		const rawDetails = details.raw.toString();
 		return {
 			id: id[1],
 			url,
-			name: rawDetails.match(/<h1>(.+)<\/h1>/)[1],
-			details: rawDetails.match(/<em>(.+)<\/em>/)[1],
+			name: details.text.match(/<h1>(.+)<\/h1>/)[1],
+			details: details.text.match(/<em>(.+)<\/em>/)[1],
 			image: `https://items.jellyneo.net/assets/imgs/items/${id[1]}.gif`,
 			price: price ? Number.parseInt(price[1].replace(/,/g, ''), 10) : null,
 			currency: price ? price[2] : null

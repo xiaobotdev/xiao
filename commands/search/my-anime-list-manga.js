@@ -28,10 +28,10 @@ module.exports = class MyAnimeListMangaCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { raw } = await snekfetch
+			const { text } = await snekfetch
 				.get(`https://${MAL_USERNAME}:${MAL_PASSWORD}@myanimelist.net/api/manga/search.xml`)
 				.query({ q: query });
-			const body = await xml(raw.toString());
+			const body = await xml(text);
 			const data = body.manga.entry[0];
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)
