@@ -37,8 +37,8 @@ module.exports = class RedditCommand extends Command {
 				⬇ ${post.downs}
 			`);
 		} catch (err) {
-			if (err.status === 403) return msg.say('This subreddit is private.');
-			if (err.status === 404) return msg.say('Could not find any results.');
+			if (err.statusCode === 403) return msg.say('This subreddit is private.');
+			if (err.statusCode === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

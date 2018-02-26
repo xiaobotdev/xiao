@@ -21,13 +21,13 @@ module.exports = class GoogleAutofillCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { text } = await snekfetch
+			const { raw } = await snekfetch
 				.get('https://suggestqueries.google.com/complete/search')
 				.query({
 					client: 'firefox',
 					q: query
 				});
-			const data = JSON.parse(text)[1];
+			const data = JSON.parse(raw.toString())[1];
 			if (!data.length) return msg.say('Could not find any results.');
 			return msg.say(data.join('\n'));
 		} catch (err) {

@@ -66,13 +66,14 @@ module.exports = class GoogleFeudCommand extends Command {
 	}
 
 	async fetchSuggestions(question) {
-		const { text } = await snekfetch
+		const { raw } = await snekfetch
 			.get('https://suggestqueries.google.com/complete/search')
 			.query({
 				client: 'firefox',
 				q: question
 			});
-		const suggestions = JSON.parse(text)[1].filter(suggestion => suggestion.toLowerCase() !== question.toLowerCase());
+		const suggestions = JSON.parse(raw.toString())[1]
+			.filter(suggestion => suggestion.toLowerCase() !== question.toLowerCase());
 		if (!suggestions.length) return null;
 		return suggestions.map(suggestion => suggestion.toLowerCase().replace(question.toLowerCase(), '').trim());
 	}

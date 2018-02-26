@@ -35,7 +35,7 @@ module.exports = class OsuSignatureCommand extends Command {
 
 	async run(msg, { user, color }) {
 		try {
-			const { body, text } = await snekfetch
+			const { body, raw } = await snekfetch
 				.get('https://lemmmy.pw/osusig/sig.php')
 				.query({
 					colour: color,
@@ -48,7 +48,7 @@ module.exports = class OsuSignatureCommand extends Command {
 					onlineindicator: '',
 					xpbar: ''
 				});
-			if (text.includes('<b>Warning</b>')) return msg.say('Could not find any results.');
+			if (raw.toString().includes('<b>Warning</b>')) return msg.say('Could not find any results.');
 			return msg.say({ files: [{ attachment: body, name: 'osu-signature.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
