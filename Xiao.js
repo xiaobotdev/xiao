@@ -24,6 +24,7 @@ client.registry
 		['events', 'Events'],
 		['search', 'Search'],
 		['games', 'Games'],
+		['voice', 'Voice Channel'],
 		['image-edit', 'Image Manipulation'],
 		['avatar-edit', 'Avatar Manipulation'],
 		['text-edit', 'Text Manipulation'],
