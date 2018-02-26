@@ -29,8 +29,9 @@ module.exports = class MyAnimeListAnimeCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { text } = await snekfetch
-				.get(`https://${MAL_USERNAME}:${MAL_PASSWORD}@myanimelist.net/api/anime/search.xml`)
-				.query({ q: query });
+				.get('https://myanimelist.net/api/anime/search.xml')
+				.query({ q: query })
+				.set({ Authorization: `Basic ${Buffer.from(`${MAL_USERNAME}:${MAL_PASSWORD}`).toString('base64')}` });
 			const body = await xml(text);
 			const data = body.anime.entry[0];
 			const embed = new MessageEmbed()
