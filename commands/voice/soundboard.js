@@ -7,8 +7,8 @@ module.exports = class SoundboardCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'soundboard',
-			aliases: ['sound', 'foley'],
-			group: 'other',
+			aliases: ['sound'],
+			group: 'voice',
 			memberName: 'soundboard',
 			description: 'Plays a sound in your voice channel.',
 			details: `**Sounds**: ${Object.keys(sounds).join(', ')}`,
