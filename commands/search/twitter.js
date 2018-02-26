@@ -61,11 +61,10 @@ module.exports = class TwitterCommand extends Command {
 	}
 
 	async fetchToken() {
-		const auth = Buffer.from(`${TWITTER_KEY}:${TWITTER_SECRET}`).toString('base64');
 		const { body } = await snekfetch
 			.post('https://api.twitter.com/oauth2/token')
 			.set({
-				Authorization: `Basic ${auth}`,
+				Authorization: `Basic ${Buffer.from(`${TWITTER_KEY}:${TWITTER_SECRET}`).toString('base64')}`,
 				'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			})
 			.send('grant_type=client_credentials');
