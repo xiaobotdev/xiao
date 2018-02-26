@@ -35,7 +35,7 @@ module.exports = class MyAnimeListAnimeCommand extends Command {
 			const data = body.anime.entry[0];
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)
-				.setAuthor('My Anime List', 'https://i.imgur.com/5rivpMM.png')
+				.setAuthor('My Anime List', 'https://i.imgur.com/5rivpMM.png', 'https://myanimelist.net/')
 				.setURL(`https://myanimelist.net/anime/${data.id[0]}`)
 				.setThumbnail(data.image[0])
 				.setTitle(data.title[0])

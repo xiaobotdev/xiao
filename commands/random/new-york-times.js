@@ -38,7 +38,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 			const data = body.response.docs[Math.floor(Math.random() * body.response.docs.length)];
 			const embed = new MessageEmbed()
 				.setColor(0xF6F6F6)
-				.setAuthor('New York Times', 'https://i.imgur.com/ZbuTWwO.png')
+				.setAuthor('New York Times', 'https://i.imgur.com/ZbuTWwO.png', 'https://www.nytimes.com/')
 				.setURL(data.web_url)
 				.setTitle(data.headline.main)
 				.setDescription(shorten(data.snippet))

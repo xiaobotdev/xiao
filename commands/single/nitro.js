@@ -16,8 +16,7 @@ module.exports = class NitroCommand extends Command {
 
 	run(msg) {
 		const embed = new MessageEmbed()
-			.setAuthor('Discord Nitro', 'https://i.imgur.com/DKaY8fV.jpg')
-			.setURL('https://discordapp.com/nitro')
+			.setAuthor('Discord Nitro', 'https://i.imgur.com/DKaY8fV.jpg', 'https://discordapp.com/nitro')
 			.setThumbnail('https://i.imgur.com/DKaY8fV.jpg')
 			.setColor(0x8395D3)
 			.setTimestamp()

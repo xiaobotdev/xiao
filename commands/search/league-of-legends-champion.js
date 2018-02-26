@@ -36,7 +36,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 			const tips = [].concat(data.allytips, data.enemytips);
 			const embed = new MessageEmbed()
 				.setColor(0x002366)
-				.setAuthor('League of Legends', 'https://i.imgur.com/2JL4Rko.png')
+				.setAuthor('League of Legends', 'https://i.imgur.com/2JL4Rko.png', 'https://leagueoflegends.com/')
 				.setTitle(`${data.name} ${data.title}`)
 				.setDescription(data.blurb)
 				.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${this.version}/img/champion/${data.image.full}`)

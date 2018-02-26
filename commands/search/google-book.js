@@ -39,7 +39,7 @@ module.exports = class GoogleBookCommand extends Command {
 				.setColor(0x4285F4)
 				.setTitle(data.title)
 				.setURL(data.previewLink)
-				.setAuthor('Google Books', 'https://i.imgur.com/N3oHABo.png')
+				.setAuthor('Google Books', 'https://i.imgur.com/N3oHABo.png', 'https://books.google.com/')
 				.setDescription(data.description ? shorten(data.description) : 'No description available.')
 				.setThumbnail(data.imageLinks ? data.imageLinks.thumbnail : null)
 				.addField('❯ Authors',
