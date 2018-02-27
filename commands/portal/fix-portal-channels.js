@@ -4,6 +4,7 @@ module.exports = class FixPortalChannelsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'fix-portal-channels',
+			aliases: ['fix-portals'],
 			group: 'portal',
 			memberName: 'fix-portal-channels',
 			description: 'Removes no longer existent channels from the portal list.',
@@ -19,6 +20,8 @@ module.exports = class FixPortalChannelsCommand extends Command {
 			channels.splice(channels.indexOf(channel), 1);
 			count++;
 		}
+		if (!channels.length) this.client.provider.remove('global', 'portals');
+		else this.client.provider.set('global', 'portals', channels);
 		return msg.say(`Cleared **${count}** channels from the portal list.`);
 	}
 };
