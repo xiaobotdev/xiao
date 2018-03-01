@@ -69,16 +69,16 @@ module.exports = class TicTacToeCommand extends Command {
 				} else {
 					sides[Number.parseInt(choice, 10)] = sign;
 					taken.push(choice);
-					if ((sides[0] === sides[1] && sides[0] === sides[2])
+					if (
+						(sides[0] === sides[1] && sides[0] === sides[2])
 						|| (sides[0] === sides[3] && sides[0] === sides[6])
 						|| (sides[3] === sides[4] && sides[3] === sides[5])
 						|| (sides[1] === sides[4] && sides[1] === sides[7])
 						|| (sides[6] === sides[7] && sides[6] === sides[8])
 						|| (sides[2] === sides[5] && sides[2] === sides[8])
 						|| (sides[0] === sides[4] && sides[0] === sides[8])
-						|| (sides[2] === sides[4] && sides[2] === sides[6])) {
-						winner = userTurn ? msg.author : opponent;
-					}
+						|| (sides[2] === sides[4] && sides[2] === sides[6])
+					) winner = userTurn ? msg.author : opponent;
 					userTurn = !userTurn;
 				}
 			}
