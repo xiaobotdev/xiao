@@ -26,7 +26,7 @@ module.exports = class TimerCommand extends Command {
 		if (this.timers.has(msg.author.id)) return msg.reply('You can only have one timer at a time.');
 		this.timers.add(msg.author.id);
 		await msg.say(`Setting a timer for ${seconds} seconds...`);
-		await wait(seconds / 1000);
+		await wait(seconds * 1000);
 		this.timers.delete(msg.author.id);
 		return msg.reply('Time\'s up!');
 	}
