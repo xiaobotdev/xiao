@@ -6,7 +6,6 @@ module.exports = class OpinionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'opinion',
-			aliases: ['sex'],
 			group: 'random',
 			memberName: 'opinion',
 			description: 'Determines the opinion on something.',
