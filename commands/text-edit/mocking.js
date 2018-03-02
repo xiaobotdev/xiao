@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { MOCKING_EMOJI_ID } = process.env;
 
 module.exports = class MockingCommand extends Command {
 	constructor(client) {
@@ -23,7 +24,7 @@ module.exports = class MockingCommand extends Command {
 
 	run(msg, { text }) {
 		for (let i = 0; i < text.length; i += Math.floor(Math.random() * 4)) text[i] = text[i].toUpperCase();
-		return msg.say(`${text.join('')} <:sponge:390141884070363138>`);
+		return msg.say(`${text.join('')} <:mocking:${MOCKING_EMOJI_ID}>`);
 	}
 };
 
