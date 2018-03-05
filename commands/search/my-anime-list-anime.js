@@ -4,7 +4,7 @@ const snekfetch = require('snekfetch');
 const { parseString } = require('xml2js');
 const { promisify } = require('util');
 const xml = promisify(parseString);
-const { shorten, cleanXML } = require('../../util/Util');
+const { shorten, base64, cleanXML } = require('../../util/Util');
 const { MAL_USERNAME, MAL_PASSWORD } = process.env;
 
 module.exports = class MyAnimeListAnimeCommand extends Command {
@@ -31,7 +31,7 @@ module.exports = class MyAnimeListAnimeCommand extends Command {
 			const { text } = await snekfetch
 				.get('https://myanimelist.net/api/anime/search.xml')
 				.query({ q: query })
-				.set({ Authorization: `Basic ${Buffer.from(`${MAL_USERNAME}:${MAL_PASSWORD}`).toString('base64')}` });
+				.set({ Authorization: `Basic ${base64(`${MAL_USERNAME}:${MAL_PASSWORD}`)}` });
 			const body = await xml(text);
 			const data = body.anime.entry[0];
 			const embed = new MessageEmbed()

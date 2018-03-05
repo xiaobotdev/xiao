@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { base64 } = require('../../util/Util');
 
 module.exports = class Base64Command extends Command {
 	constructor(client) {
@@ -14,7 +15,7 @@ module.exports = class Base64Command extends Command {
 					prompt: 'What text would you like to convert to Base64?',
 					type: 'string',
 					validate: text => {
-						if (Buffer.from(text).toString('base64').length < 2000) return true;
+						if (base64(text).length < 2000) return true;
 						return 'Invalid text, your text is too long.';
 					}
 				}
@@ -23,6 +24,6 @@ module.exports = class Base64Command extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.say(Buffer.from(text).toString('base64'));
+		return msg.say(base64(text));
 	}
 };
