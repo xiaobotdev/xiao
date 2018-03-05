@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (273)
+## Commands (283)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -51,6 +51,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **chuck-norris**: Responds with a random Chuck Norris joke.
 * **coin**: Flips a coin.
 * **compliment**: Compliments a user.
+* **dick**: Determines your dick size.
 * **discord-email-fun-fact**: Responds with a random fun fact from the Discord emails.
 * **dog-fact**: Responds with a random dog fact.
 * **dog**: Responds with a random dog image.
@@ -113,9 +114,11 @@ served over 10,000 servers with a uniquely devoted fanbase.
 ### Search:
 
 * **bulbapedia**: Searches Bulbapedia for your query.
+* **danbooru**: Responds with an image from Danbooru, with optional query.
 * **deviantart**: Responds with an image from a DeviantArt section, with optional query.
 * **dictionary**: Defines a word.
 * **forecast**: Responds with the seven-day forecast for a specific location.
+* **gelbooru**: Responds with an image from Gelbooru, with optional query.
 * **giphy**: Searches Giphy for your query.
 * **github**: Responds with information on a GitHub repository.
 * **google-autofill**: Responds with a list of the Google Autofill results for a particular query.
@@ -127,6 +130,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **itunes**: Searches iTunes for your query.
 * **jisho**: Defines a word, but with Japanese.
 * **kickstarter**: Searches Kickstarter for your query.
+* **konachan**: Responds with an image from Konachan, with optional query.
 * **league-of-legends-champion**: Responds with information on a League of Legends champion.
 * **map**: Responds with a map of a specific location.
 * **mdn**: Searches MDN for your query.
@@ -289,6 +293,15 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **math**: Evaluates a math expression.
 * **roman-numeral**: Converts a number to roman numerals.
 * **temperature**: Converts temperatures to/from celsius, fahrenheit, or kelvin.
+
+### Role Management:
+
+* **add-open-role**: Sets a role as open.
+* **fix-open-roles**: Removes no longer existent roles from the open roles lists.
+* **remove-open-role**: Remove a role from the open roles.
+* **role-list**: Responds with all available roles to join.
+* **subscribe**: Subscribes you to the specified role.
+* **unsubscribe**: Unsubscribes you from the specified role.
 
 ### Portal Messages:
 
