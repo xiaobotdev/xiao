@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
-const crypto = require('crypto');
+const { hash } = require('../../util/Util');
 
 module.exports = class GravatarCommand extends Command {
 	constructor(client) {
@@ -22,16 +22,16 @@ module.exports = class GravatarCommand extends Command {
 	}
 
 	async run(msg, { email }) {
-		const hash = crypto.createHash('md5').update(email).digest('hex');
+		const emailHash = hash(email, 'md5');
 		try {
 			const { body } = await snekfetch
-				.get(`https://www.gravatar.com/avatar/${hash}`)
+				.get(`https://www.gravatar.com/avatar/${emailHash}`)
 				.query({
 					size: 500,
 					default: 404,
 					rating: msg.channel.nsfw ? 'r' : 'pg'
 				});
-			return msg.say({ files: [{ attachment: body, name: `${hash}.jpg` }] });
+			return msg.say({ files: [{ attachment: body, name: `${emailHash}.jpg` }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
 
@@ -53,6 +54,10 @@ class Util {
 
 	static base64(text) {
 		return Buffer.from(text).toString('base64');
+	}
+
+	static hash(text, algorithm) {
+		return crypto.createHash(algorithm).update(text).digest('hex');
 	}
 
 	static cleanXML(text) {
