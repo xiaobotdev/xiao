@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { stripIndents } = require('common-tags');
-const prizes = ['$2', '$4', '$10', '$500', '$1,000,000', 'the Jackpot'];
+const prizes = ['$0', '$2', '$4', '$10', '$500', '$1,000,000', 'the Jackpot'];
 
 module.exports = class LotteryCommand extends Command {
 	constructor(client) {
