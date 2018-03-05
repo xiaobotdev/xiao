@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (272)
+## Commands (273)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -291,6 +291,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **temperature**: Converts temperatures to/from celsius, fahrenheit, or kelvin.
 
 ### Portal Messages:
+
 * **add-portal-channel**: Sets a channel to be a portal channel.
 * **fix-portal-channels**: Removes no longer existent channels from the portal list.
 * **portal-send**: Send a message to a portal channel.
@@ -303,6 +304,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **coolness**: Determines a user's coolness.
 * **gender-guess**: Determines the gender of a name.
 * **prune**: Deletes up to 99 messages from the current channel.
+* **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
 * **strawpoll**: Generates a Strawpoll with the options you provide.
 * **timer**: Sets a timer for a certain amount of time.
 * **toxicity**: Determines the toxicity of text.
