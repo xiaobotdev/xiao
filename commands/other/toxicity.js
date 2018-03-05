@@ -9,7 +9,7 @@ module.exports = class ToxicityCommand extends Command {
 			aliases: ['perspective', 'comment-toxicity'],
 			group: 'other',
 			memberName: 'toxicity',
-			description: 'Determines the toxicity of some text.',
+			description: 'Determines the toxicity of text.',
 			args: [
 				{
 					key: 'text',

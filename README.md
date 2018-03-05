@@ -301,11 +301,11 @@ served over 10,000 servers with a uniquely devoted fanbase.
 
 * **cleverbot**: Chat with Cleverbot.
 * **coolness**: Determines a user's coolness.
-* **gender-guess**: Determines the gender of name.
+* **gender-guess**: Determines the gender of a name.
 * **prune**: Deletes up to 99 messages from the current channel.
 * **strawpoll**: Generates a Strawpoll with the options you provide.
 * **timer**: Sets a timer for a certain amount of time.
-* **toxicity**: Determines the toxicity of some text.
+* **toxicity**: Determines the toxicity of text.
 
 ### Roleplay:
 
