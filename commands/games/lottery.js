@@ -1,18 +1,34 @@
 const { Command } = require('discord.js-commando');
+const { stripIndents } = require('common-tags');
+const prizes = ['$2', '$4', '$10', '$500', '$1,000,000', 'the Jackpot'];
 
 module.exports = class LotteryCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'lottery',
+			aliases: ['lotto'],
 			group: 'games',
 			memberName: 'lottery',
-			description: 'Attempt to win the lottery, with a 1 in 1000 chance of winning.'
+			description: 'Attempt to win the lottery with 6 numbers.',
+			args: [
+				{
+					key: 'choices',
+					prompt: 'What numbers do you choose? Only the first six will be counted.',
+					type: 'integer',
+					infinite: true,
+					max: 70,
+					min: 1
+				}
+			]
 		});
 	}
 
-	run(msg) {
-		const loss = Math.floor(Math.random() * 1000);
-		if (!loss) return msg.reply('Nice job! 10/10! You deserve some cake!');
-		return msg.reply('Nope, sorry, you lost.');
+	run(msg, { choices }) {
+		const lotto = Array.from({ length: 6 }, () => Math.floor(Math.random() * 70) + 1);
+		const similarities = lotto.filter((num, i) => choices[i] === num).length;
+		return msg.say(stripIndents`
+			${lotto.join(', ')}
+			You matched **${similarities}** numbers, which gives you **${prizes[similarities]}**! Congrats!
+		`);
 	}
 };
