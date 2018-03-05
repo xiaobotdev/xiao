@@ -29,6 +29,7 @@ client.registry
 		['avatar-edit', 'Avatar Manipulation'],
 		['text-edit', 'Text Manipulation'],
 		['number-edit', 'Number Manipulation'],
+		['role-manage', 'Role Management'],
 		['portal', 'Portal Messages'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay']
