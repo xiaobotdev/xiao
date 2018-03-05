@@ -8,7 +8,7 @@ module.exports = class GenderGuessCommand extends Command {
 			aliases: ['gender', 'guess-gender'],
 			group: 'other',
 			memberName: 'gender',
-			description: 'Determines the gender of name.',
+			description: 'Determines the gender of a name.',
 			args: [
 				{
 					key: 'first',
