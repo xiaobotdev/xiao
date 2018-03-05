@@ -51,6 +51,10 @@ class Util {
 		return arr;
 	}
 
+	static base64(text) {
+		return Buffer.from(text).toString('base64');
+	}
+
 	static cleanXML(text) {
 		return text
 			.replace(/<br \/>/g, '')

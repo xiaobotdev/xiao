@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, base64 } = require('../../util/Util');
 const { GITHUB_USERNAME, GITHUB_PASSWORD } = process.env;
 
 module.exports = class GitHubCommand extends Command {
@@ -34,7 +34,7 @@ module.exports = class GitHubCommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get(`https://api.github.com/repos/${author}/${repository}`)
-				.set({ Authorization: `Basic ${Buffer.from(`${GITHUB_USERNAME}:${GITHUB_PASSWORD}`).toString('base64')}` });
+				.set({ Authorization: `Basic ${base64(`${GITHUB_USERNAME}:${GITHUB_PASSWORD}`)}` });
 			const embed = new MessageEmbed()
 				.setColor(0xFFFFFF)
 				.setAuthor('GitHub', 'https://i.imgur.com/e4HunUm.png', 'https://github.com/')

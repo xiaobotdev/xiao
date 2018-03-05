@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { base64 } = require('../../util/Util');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 
 module.exports = class TwitterCommand extends Command {
@@ -64,7 +65,7 @@ module.exports = class TwitterCommand extends Command {
 		const { body } = await snekfetch
 			.post('https://api.twitter.com/oauth2/token')
 			.set({
-				Authorization: `Basic ${Buffer.from(`${TWITTER_KEY}:${TWITTER_SECRET}`).toString('base64')}`,
+				Authorization: `Basic ${base64(`${TWITTER_KEY}:${TWITTER_SECRET}`)}`,
 				'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			})
 			.send('grant_type=client_credentials');
