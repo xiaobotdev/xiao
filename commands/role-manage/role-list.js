@@ -14,7 +14,7 @@ module.exports = class RoleListCommand extends Command {
 	}
 
 	run(msg) {
-		const roles = msg.guild.settings.get('roles', []);
+		const roles = msg.guild.settings.get('openRoles', []);
 		if (!roles.length) return msg.say('This server has no open roles...');
 		return msg.say(stripIndents`
 			**Roles available in ${msg.guild.name}**:
