@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const pikachus = require('../../assets/json/pikachu');
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class PikachuCommand extends Command {
 	constructor(client) {
@@ -13,7 +13,12 @@ module.exports = class PikachuCommand extends Command {
 		});
 	}
 
-	run(msg) {
-		return msg.say({ files: [pikachus[Math.floor(Math.random() * pikachus.length)]] });
+	async run(msg) {
+		try {
+			const pikachu = await randomFromImgurAlbum('qtk2J');
+			return msg.say({ files: [pikachu] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

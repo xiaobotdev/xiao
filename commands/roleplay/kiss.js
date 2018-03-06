@@ -1,12 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { stripIndents } = require('common-tags');
-const gifs = [
-	'https://i.imgur.com/Omge3Sb.gif',
-	'https://i.imgur.com/KbfdOol.gif',
-	'https://i.imgur.com/mWJAkhD.gif',
-	'https://i.imgur.com/14j8ZkP.gif',
-	'https://i.imgur.com/IXx6GyJ.gif'
-];
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class KissCommand extends Command {
 	constructor(client) {
@@ -25,10 +18,12 @@ module.exports = class KissCommand extends Command {
 		});
 	}
 
-	run(msg, { user }) {
-		return msg.say(stripIndents`
-			_**${msg.author.username}** kisses **${user.username}**._
-			${gifs[Math.floor(Math.random() * gifs.length)]}
-		`);
+	async run(msg, { user }) {
+		try {
+			const gif = await randomFromImgurAlbum('twIbD');
+			return msg.say(`_**${msg.author.username}** kisses **${user.username}**._`, { files: [gif] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

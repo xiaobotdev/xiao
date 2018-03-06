@@ -1,12 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { stripIndents } = require('common-tags');
-const gifs = [
-	'https://i.imgur.com/bWJR9Ob.gif',
-	'https://i.imgur.com/xW2p3BU.gif',
-	'https://i.imgur.com/cMbUiPq.gif',
-	'https://i.imgur.com/r1pvaH0.gif',
-	'https://i.imgur.com/kWnkgI8.gif'
-];
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class EvolveCommand extends Command {
 	constructor(client) {
@@ -25,10 +18,12 @@ module.exports = class EvolveCommand extends Command {
 		});
 	}
 
-	run(msg, { user }) {
-		return msg.say(stripIndents`
-			_**${user.username}** is evolving!_
-			${gifs[Math.floor(Math.random() * gifs.length)]}
-		`);
+	async run(msg, { user }) {
+		try {
+			const gif = await randomFromImgurAlbum('QaDeO');
+			return msg.say(`_**${user.username}** is evolving!_`, { files: [gif] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

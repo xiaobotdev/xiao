@@ -1,12 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { stripIndents } = require('common-tags');
-const gifs = [
-	'https://i.imgur.com/YvbhAML.gif',
-	'https://i.imgur.com/LOWtASy.gif',
-	'https://i.imgur.com/LgtJwPW.gif',
-	'https://i.imgur.com/GuLDF6b.gif',
-	'https://i.imgur.com/2DdIR5H.gif'
-];
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class HighFiveCommand extends Command {
 	constructor(client) {
@@ -25,10 +18,12 @@ module.exports = class HighFiveCommand extends Command {
 		});
 	}
 
-	run(msg, { user }) {
-		return msg.say(stripIndents`
-			_**${msg.author.username}** high-fives **${user.username}**._
-			${gifs[Math.floor(Math.random() * gifs.length)]}
-		`);
+	async run(msg, { user }) {
+		try {
+			const gif = await randomFromImgurAlbum('1Dotc');
+			return msg.say(`_**${msg.author.username}** high-fives **${user.username}**._`, { files: [gif] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
