@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const xiaos = require('../../assets/json/xiao');
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class XiaoCommand extends Command {
 	constructor(client) {
@@ -13,7 +13,12 @@ module.exports = class XiaoCommand extends Command {
 		});
 	}
 
-	run(msg) {
-		return msg.say({ files: [xiaos[Math.floor(Math.random() * xiaos.length)]] });
+	async run(msg) {
+		try {
+			const xiao = await randomFromImgurAlbum('S4e3r');
+			return msg.say({ files: [xiao] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

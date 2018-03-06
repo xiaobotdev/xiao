@@ -1,11 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { stripIndents } = require('common-tags');
-const gifs = [
-	'https://i.imgur.com/uz4k1qI.gif',
-	'https://i.imgur.com/jSlUKbw.gif',
-	'https://i.imgur.com/4LMEw0M.gif',
-	'https://i.imgur.com/BbXQqn1.gif'
-];
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class MarryCommand extends Command {
 	constructor(client) {
@@ -24,10 +18,12 @@ module.exports = class MarryCommand extends Command {
 		});
 	}
 
-	run(msg, { user }) {
-		return msg.say(stripIndents`
-			_**${msg.author.username}** marries **${user.username}**._
-			${gifs[Math.floor(Math.random() * gifs.length)]}
-		`);
+	async run(msg, { user }) {
+		try {
+			const gif = await randomFromImgurAlbum('4H0EP');
+			return msg.say(`_**${msg.author.username}** marries **${user.username}**._`, { files: [gif] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

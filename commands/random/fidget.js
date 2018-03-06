@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const nimbats = require('../../assets/json/fidget');
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class FidgetCommand extends Command {
 	constructor(client) {
@@ -13,7 +13,12 @@ module.exports = class FidgetCommand extends Command {
 		});
 	}
 
-	run(msg) {
-		return msg.say({ files: [nimbats[Math.floor(Math.random() * nimbats.length)]] });
+	async run(msg) {
+		try {
+			const nimbat = await randomFromImgurAlbum('DuO1T');
+			return msg.say({ files: [nimbat] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };

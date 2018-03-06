@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { stripIndents } = require('common-tags');
+const { randomFromImgurAlbum } = require('../../util/Util');
 
 module.exports = class HitWithShovelCommand extends Command {
 	constructor(client) {
@@ -18,10 +18,12 @@ module.exports = class HitWithShovelCommand extends Command {
 		});
 	}
 
-	run(msg, { user }) {
-		return msg.say(stripIndents`
-			_**${msg.author.username}** hits **${user.username}** with a shovel._
-			https://i.imgur.com/XDIUq02.gif
-		`);
+	async run(msg, { user }) {
+		try {
+			const gif = await randomFromImgurAlbum('IA35f');
+			return msg.say(`_**${msg.author.username}** hits **${user.username}** with a shovel._`, { files: [gif] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
