@@ -64,7 +64,7 @@ module.exports = class AkinatorCommand extends Command {
 
 	async createSession(channel) {
 		const { body } = await snekfetch
-			.get('http://api-us1.akinator.com/ws/new_session')
+			.get('http://api-en1.akinator.com/ws/new_session')
 			.query({
 				partner: 1,
 				player: 'xiaobot'
@@ -83,7 +83,7 @@ module.exports = class AkinatorCommand extends Command {
 	async progress(channel, answer) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await snekfetch
-			.get('http://api-us1.akinator.com/ws/answer')
+			.get('http://api-en1.akinator.com/ws/answer')
 			.query({
 				session: session.id,
 				signature: session.signature,
@@ -104,7 +104,7 @@ module.exports = class AkinatorCommand extends Command {
 	async finish(channel) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await snekfetch
-			.get('http://api-us1.akinator.com/ws/list')
+			.get('http://api-en1.akinator.com/ws/list')
 			.query({
 				session: session.id,
 				signature: session.signature,
