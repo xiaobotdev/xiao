@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (283)
+## Commands (285)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -179,7 +179,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **gunfight**: Engage in a western gunfight against another user. High noon.
 * **hangman**: Prevent a man from being hanged by guessing a word as fast as you can.
 * **hunger-games**: Simulate a Hunger Games match with up to 24 tributes.
-* **lottery**: Attempt to win the lottery, with a 1 in 1000 chance of winning.
+* **lottery**: Attempt to win the lottery with 6 numbers.
 * **math-quiz**: See how fast you can answer a math problem in a given time limit.
 * **quiz**: Answer a quiz question.
 * **rock-paper-scissors**: Play Rock-Paper-Scissors.
@@ -228,6 +228,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **challenger**: Draws a user's avatar over Super Smash Bros.'s "Challenger Approaching" screen.
 * **dexter**: Draws a user's avatar over the screen of Dexter from Pokémon.
 * **distracted-boyfriend**: Draws three user's avatars over the "Distracted Boyfriend" meme.
+* **fire**: Draws a fiery border over a user's avatar.
 * **food-broke**: Draws a user's avatar over the "Food Broke" meme.
 * **hat**: Draws a hat over a user's avatar.
 * **he-lives-in-you**: Draws a user's avatar over Simba from The Lion King's reflection.
@@ -291,8 +292,9 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **currency**: Converts money from one currency to another.
 * **final-grade-calculator**: Determines the grade you need to make on your final to get your desired course grade.
 * **math**: Evaluates a math expression.
+* **percentage**: Determines the percentage one number is of another.
 * **roman-numeral**: Converts a number to roman numerals.
-* **temperature**: Converts temperatures to/from celsius, fahrenheit, or kelvin.
+* **units**: Converts units to/from other units.
 
 ### Role Management:
 
