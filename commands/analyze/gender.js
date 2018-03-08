@@ -5,8 +5,8 @@ module.exports = class GenderGuessCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'gender-guess',
-			aliases: ['gender', 'guess-gender'],
-			group: 'other',
+			aliases: ['gender', 'guess-gender', 'analyze-gender', 'gender-analyze'],
+			group: 'analyze',
 			memberName: 'gender',
 			description: 'Determines the gender of a name.',
 			args: [

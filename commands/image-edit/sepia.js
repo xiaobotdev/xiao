@@ -34,7 +34,9 @@ module.exports = class SepiaCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(data, 0, 0);
 			sepia(ctx, 0, 0, data.width, data.height);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sepia.png' }] });
+			const attachment = canvas.toBuffer();
+			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+			return msg.say({ files: [{ attachment, name: 'sepia.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

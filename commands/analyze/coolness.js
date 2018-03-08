@@ -4,7 +4,7 @@ module.exports = class CoolnessCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'coolness',
-			group: 'other',
+			group: 'analyze',
 			memberName: 'coolness',
 			description: 'Determines a user\'s coolness.',
 			args: [

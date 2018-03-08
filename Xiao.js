@@ -23,6 +23,7 @@ client.registry
 		['single', 'Single Response'],
 		['events', 'Events'],
 		['search', 'Search'],
+		['analyze', 'Analyzers'],
 		['games', 'Games'],
 		['voice', 'Voice Channel'],
 		['image-edit', 'Image Manipulation'],
