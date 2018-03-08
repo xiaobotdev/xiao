@@ -31,8 +31,8 @@ module.exports = class FaceAnalyzeCommand extends Command {
 					app_key: KAIROS_KEY
 				})
 				.send({ image: face });
-			if (!body.images) return msg.say('There are no faces in this image.');
-			if (body.images[0].faces.length > 1) return msg.say('Please provide only one face in the image.');
+			if (!body.images) return msg.reply('There are no faces in this image.');
+			if (body.images[0].faces.length > 1) return msg.reply('Please provide only one face in the image.');
 			const data = body.images[0].faces[0].attributes;
 			const race = races.sort((a, b) => data[b] - data[a])[0];
 			const gender = data.gender.maleConfidence > data.gender.femaleConfidence ? 'man' : 'woman';
