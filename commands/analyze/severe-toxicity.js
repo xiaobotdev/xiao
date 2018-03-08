@@ -2,14 +2,14 @@ const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const { GOOGLE_KEY } = process.env;
 
-module.exports = class ToxicityCommand extends Command {
+module.exports = class SevereToxicityCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'toxicity',
-			aliases: ['perspective', 'comment-toxicity'],
-			group: 'other',
-			memberName: 'toxicity',
-			description: 'Determines the toxicity of text.',
+			name: 'severe-toxicity',
+			aliases: ['severe-perspective', 'severe-comment-toxicity'],
+			group: 'analyze',
+			memberName: 'severe-toxicity',
+			description: 'Determines the toxicity of text, but less sensitive to milder language.',
 			args: [
 				{
 					key: 'text',
@@ -28,9 +28,9 @@ module.exports = class ToxicityCommand extends Command {
 				.send({
 					comment: { text },
 					languages: ['en'],
-					requestedAttributes: { TOXICITY: {} }
+					requestedAttributes: { SEVERE_TOXICITY: {} }
 				});
-			const toxicity = Math.round(body.attributeScores.TOXICITY.summaryScore.value * 100);
+			const toxicity = Math.round(body.attributeScores.SEVERE_TOXICITY.summaryScore.value * 100);
 			if (toxicity >= 70) return msg.say(`Likely to be perceived as toxic. (${toxicity}%)`);
 			if (toxicity >= 40) return msg.say(`Unsure if this will be perceived as toxic. (${toxicity}%)`);
 			return msg.say(`Unlikely to be perceived as toxic. (${toxicity}%)`);

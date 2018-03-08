@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (285)
+## Commands (286)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -165,6 +165,14 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **yu-gi-oh**: Responds with info on a Yu-Gi-Oh! card.
 * **zodiac-sign**: Responds with the Zodiac Sign for the given month/day.
 
+### Analyzers:
+
+* **coolness**: Determines a user's coolness.
+* **face-analyze**: Determines the age, gender, and race of a face.
+* **gender-guess**: Determines the gender of a name.
+* **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
+* **toxicity**: Determines the toxicity of text.
+
 ### Games:
 
 * **akinator**: Think about a real or fictional character, I will try to guess who it is.
@@ -316,13 +324,9 @@ served over 10,000 servers with a uniquely devoted fanbase.
 ### Other:
 
 * **cleverbot**: Chat with Cleverbot.
-* **coolness**: Determines a user's coolness.
-* **gender-guess**: Determines the gender of a name.
 * **prune**: Deletes up to 99 messages from the current channel.
-* **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
 * **strawpoll**: Generates a Strawpoll with the options you provide.
 * **timer**: Sets a timer for a certain amount of time.
-* **toxicity**: Determines the toxicity of text.
 
 ### Roleplay:
 
