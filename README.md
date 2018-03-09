@@ -181,6 +181,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **battle**: Engage in a turn-based battle against another user or the AI.
 * **captcha-quiz**: Try to guess what the captcha says.
 * **cards-against-humanity**: Compete to see who can come up with the best card to fill in the blank.
+* **chance**: Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **emoji-emoji-revolution**: Can you type arrow emoji faster than anyone else has ever typed them before?
 * **fishy**: Go fishing.
 * **google-feud**: Attempt to determine the top suggestions for a Google search.
@@ -326,7 +327,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **cleverbot**: Chat with Cleverbot.
 * **prune**: Deletes up to 99 messages from the current channel.
 * **strawpoll**: Generates a Strawpoll with the options you provide.
-* **timer**: Sets a timer for a certain amount of time.
 
 ### Roleplay:
 

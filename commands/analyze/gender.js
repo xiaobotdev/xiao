@@ -1,11 +1,11 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 
-module.exports = class GenderGuessCommand extends Command {
+module.exports = class GenderAnalyzeCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'gender-guess',
-			aliases: ['gender', 'guess-gender', 'analyze-gender', 'gender-analyze'],
+			name: 'gender-analyze',
+			aliases: ['gender', 'guess-gender', 'analyze-gender', 'gender-guess'],
 			group: 'analyze',
 			memberName: 'gender',
 			description: 'Determines the gender of a name.',
