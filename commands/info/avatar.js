@@ -1,5 +1,4 @@
 const { Command } = require('discord.js-commando');
-const snekfetch = require('snekfetch');
 
 module.exports = class AvatarCommand extends Command {
 	constructor(client) {
@@ -9,7 +8,6 @@ module.exports = class AvatarCommand extends Command {
 			group: 'info',
 			memberName: 'avatar',
 			description: 'Responds with a user\'s avatar.',
-			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
 					key: 'user',
@@ -21,14 +19,8 @@ module.exports = class AvatarCommand extends Command {
 		});
 	}
 
-	async run(msg, { user }) {
+	run(msg, { user }) {
 		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
-		const avatarURL = user.displayAvatarURL({ format, size: 512 });
-		try {
-			const { body } = await snekfetch.get(avatarURL);
-			return msg.say({ files: [{ attachment: body, name: `avatar.${format}` }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		return msg.say(user.displayAvatarURL({ format, size: 2048 }));
 	}
 };
