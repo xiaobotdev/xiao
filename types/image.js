@@ -16,7 +16,7 @@ class ImageArgumentType extends ArgumentType {
 		return true;
 	}
 
-	parse(value, msg, arg) {
+	parse(value, msg) {
 		if (!msg.attachments.size) {
 			return this.client.registry.types.get('user').parse(value, msg).displayAvatarURL({
 				format: 'png',
