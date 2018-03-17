@@ -7,6 +7,7 @@ class ChoiceArgumentType extends ArgumentType {
 	}
 
 	validate(value, msg, arg) {
+		console.log(arg, arg.choices);
 		if (arg.choices.includes(value.toLowerCase())) return true;
 		return `Invalid ${arg.label}, please enter either ${list(arg.choices, 'or')}.`;
 	}
