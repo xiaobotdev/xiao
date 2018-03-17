@@ -24,12 +24,8 @@ module.exports = class MathQuizCommand extends Command {
 				{
 					key: 'difficulty',
 					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
-					type: 'string',
-					validate: difficulty => {
-						if (difficulties.includes(difficulty.toLowerCase())) return true;
-						return `Invalid difficulty, please enter either ${list(difficulties, 'or')}.`;
-					},
-					parse: difficulty => difficulty.toLowerCase()
+					type: 'choice',
+					choices: difficulties
 				}
 			]
 		});

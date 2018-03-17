@@ -15,13 +15,9 @@ module.exports = class EmojiListCommand extends Command {
 				{
 					key: 'type',
 					prompt: `What type of emoji would you like to view? Either ${list(types, 'or')}.`,
-					type: 'string',
+					type: 'choice',
 					default: 'regular',
-					validate: type => {
-						if (types.includes(type.toLowerCase())) return true;
-						return `Invalid type, please enter either ${list(types, 'or')}.`;
-					},
-					parse: type => type.toLowerCase()
+					choices: types
 				}
 			]
 		});

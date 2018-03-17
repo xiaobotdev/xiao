@@ -16,12 +16,8 @@ module.exports = class DeviantartCommand extends Command {
 				{
 					key: 'section',
 					prompt: `What section would you like to search? Either ${list(sections, 'or')}.`,
-					type: 'string',
-					validate: section => {
-						if (sections.includes(section.toLowerCase())) return true;
-						return `Invalid section, please enter either ${list(sections, 'or')}.`;
-					},
-					parse: section => section.toLowerCase()
+					type: 'choice',
+					choices: sections
 				},
 				{
 					key: 'query',

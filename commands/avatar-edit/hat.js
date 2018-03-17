@@ -22,12 +22,8 @@ module.exports = class HatCommand extends Command {
 				{
 					key: 'type',
 					prompt: `What type of hat would you like to use? Either ${list(hats, 'or')}.`,
-					type: 'string',
-					validate: type => {
-						if (hats.includes(type.toLowerCase())) return true;
-						return `Invalid type, please enter either ${list(hats, 'or')}.`;
-					},
-					parse: type => type.toLowerCase()
+					type: 'choice',
+					choices: hats
 				},
 				{
 					key: 'user',
