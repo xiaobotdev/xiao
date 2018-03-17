@@ -33,7 +33,7 @@ module.exports = class ChannelInfoCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.addField('❯ Name',
-				channel.type !== 'dm' ? channel.name : `@${channel.recipient.username}`, true)
+				channel.name || 'None', true)
 			.addField('❯ ID',
 				channel.id, true)
 			.addField('❯ NSFW',

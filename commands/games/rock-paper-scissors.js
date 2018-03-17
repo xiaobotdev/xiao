@@ -13,8 +13,8 @@ module.exports = class RockPaperScissorsCommand extends Command {
 				{
 					key: 'choice',
 					prompt: 'Rock, Paper, or Scissors?',
-					type: 'choice',
-					choices
+					type: 'string',
+					parse: choice => choice.toLowerCase()
 				}
 			]
 		});
