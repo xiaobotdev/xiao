@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, list } = require('../../util/Util');
 const types = ['random', 'top'];
 
 module.exports = class UrbanDictionaryCommand extends Command {
@@ -23,9 +23,13 @@ module.exports = class UrbanDictionaryCommand extends Command {
 				{
 					key: 'type',
 					prompt: 'Do you want to get the top answer or a random one?',
-					type: 'choice',
+					type: 'string',
 					default: 'top',
-					choices: types
+					validate: type => {
+						if (types.includes(type.toLowerCase())) return true;
+						return `Invalid type, please enter either ${list(types, 'or')}.`;
+					},
+					parse: type => type.toLowerCase()
 				}
 			]
 		});

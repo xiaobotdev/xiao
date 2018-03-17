@@ -22,16 +22,24 @@ module.exports = class QuizCommand extends Command {
 				{
 					key: 'type',
 					prompt: `Which type of question would you like to have? Either ${list(types, 'or')}.`,
-					type: 'choice',
+					type: 'string',
 					default: 'multiple',
-					choices: types
+					validate: type => {
+						if (types.includes(type.toLowerCase())) return true;
+						return `Invalid type, please enter either ${list(types, 'or')}.`;
+					},
+					parse: type => type.toLowerCase()
 				},
 				{
 					key: 'difficulty',
 					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
-					type: 'choice',
+					type: 'string',
 					default: '',
-					choices: difficulties
+					validate: difficulty => {
+						if (difficulties.includes(difficulty.toLowerCase())) return true;
+						return `Invalid difficulty, please enter either ${list(difficulties, 'or')}.`;
+					},
+					parse: difficulty => difficulty.toLowerCase()
 				}
 			]
 		});
