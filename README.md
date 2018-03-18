@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (288)
+## Commands (289)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -269,6 +269,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **dvorak**: Converts text to Dvorak encoding.
 * **embed**: Sends text in an embed.
 * **emojify**: Converts text to emoji form.
+* **fancy**: Converts text to fancy letters.
 * **hex**: Converts text to hex.
 * **latlmes**: Creates a Latlmes fake link that redirects to a rickroll.
 * **lmgtfy**: Creates a LMGTFY link with the query you provide.
