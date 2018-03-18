@@ -72,7 +72,7 @@ class Util {
 		return body.data.images[Math.floor(Math.random() * body.data.images.length)].link;
 	}
 
-	today(timeZone) {
+	static today(timeZone) {
 		const now = new Date();
 		if (timeZone) now.setUTCHours(now.getUTCHours() + timeZone);
 		now.setHours(0);
@@ -82,7 +82,7 @@ class Util {
 		return now;
 	}
 
-	tomorrow(timeZone) {
+	static tomorrow(timeZone) {
 		const today = Util.today(timeZone);
 		today.setDate(today.getDate() + 1);
 		return today;
