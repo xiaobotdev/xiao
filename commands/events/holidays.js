@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
+const { today, tomorrow } = require('../../util/Util');
 const { GOOGLE_KEY, GOOGLE_CALENDAR_ID } = process.env;
 
 module.exports = class HolidaysCommand extends Command {
@@ -21,8 +22,8 @@ module.exports = class HolidaysCommand extends Command {
 					maxResults: 10,
 					orderBy: 'startTime',
 					singleEvents: true,
-					timeMax: this.tomorrow().toISOString(),
-					timeMin: this.today().toISOString(),
+					timeMax: tomorrow().toISOString(),
+					timeMin: today().toISOString(),
 					key: GOOGLE_KEY
 				});
 			if (!body.items.length) return msg.say('There are no holidays today...');
@@ -30,20 +31,5 @@ module.exports = class HolidaysCommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
-	}
-
-	today() {
-		const now = new Date();
-		now.setHours(0);
-		now.setMinutes(0);
-		now.setSeconds(0);
-		now.setMilliseconds(0);
-		return now;
-	}
-
-	tomorrow() {
-		const today = this.today();
-		today.setDate(today.getDate() + 1);
-		return today;
 	}
 };

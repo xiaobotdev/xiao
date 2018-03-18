@@ -72,6 +72,22 @@ class Util {
 		return body.data.images[Math.floor(Math.random() * body.data.images.length)].link;
 	}
 
+	today(timeZone) {
+		const now = new Date();
+		if (timeZone) now.setUTCHours(now.getUTCHours() + timeZone);
+		now.setHours(0);
+		now.setMinutes(0);
+		now.setSeconds(0);
+		now.setMilliseconds(0);
+		return now;
+	}
+
+	tomorrow(timeZone) {
+		const today = Util.today(timeZone);
+		today.setDate(today.getDate() + 1);
+		return today;
+	}
+
 	static cleanXML(text) {
 		return text
 			.replace(/<br \/>/g, '')
