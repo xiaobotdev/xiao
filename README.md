@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (286)
+## Commands (288)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -94,7 +94,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **its-joke**: It's joke!
 * **lenny**: Responds with the lenny face.
 * **nitro**: Sends the "This message can only be viewed by users with Discord Nitro." message.
-* **slow-clap**: slow clap
+* **slow-clap**: _slow clap_
 * **spam**: Responds with a picture of Spam.
 * **tableflip**: Flips a table... With animation!
 * **wynaut**: Why not? Wynaut?
@@ -107,6 +107,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **google-doodle**: Responds with a Google Doodle, either the latest one or a random one from the past.
 * **holidays**: Responds with today's holidays.
 * **horoscope**: Responds with today's horoscope for a specific Zodiac sign.
+* **neko-atsume-password**: Responds with today's Neko Atsume password.
 * **time**: Responds with the current time in a particular location.
 * **today-in-history**: Responds with an event that occurred today in history.
 * **word-of-the-day**: Responds with today's word of the day.
@@ -169,7 +170,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 
 * **coolness**: Determines a user's coolness.
 * **face-analyze**: Determines the age, gender, and race of a face.
-* **gender-guess**: Determines the gender of a name.
+* **gender-analyze**: Determines the gender of a name.
 * **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
 * **toxicity**: Determines the toxicity of text.
 
@@ -262,7 +263,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **base64**: Converts text to Base64.
 * **binary**: Converts text to binary.
 * **braille**: Converts text to braille.
-* **clap**: Sends :clap: text :clap: like :clap: this.
+* **clap**: Sends 👏 text 👏 like 👏 this.
 * **cow-say**: Makes a cow say your text.
 * **cursive**: Converts text to cursive.
 * **dvorak**: Converts text to Dvorak encoding.
@@ -292,10 +293,10 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **translate**: Translates text to a specific language.
 * **upside-down**: Flips text upside-down.
 * **url-encode**: Encodes text to URL-friendly characters.
-* **webhook**: Posts a message to the webhook defined in your process.env.
+* **webhook**: Posts a message to the webhook defined in your `process.env`.
 * **yoda**: Converts text to Yoda speak.
 * **zalgo**: Converts text to zalgo.
-* **:b:**: Replaces b with :b:.
+* **🅱**: Replaces b with 🅱.
 
 ### Number Manipulation:
 
