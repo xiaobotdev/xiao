@@ -59,10 +59,10 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 	}
 
 	get goldFish() {
-		return GOLD_FISH_EMOJI_ID ? `<gold_fish:${GOLD_FISH_EMOJI_ID}>` : 'Gold Fish';
+		return GOLD_FISH_EMOJI_ID ? `<:gold_fish:${GOLD_FISH_EMOJI_ID}>` : 'Gold Fish';
 	}
 
 	get silverFish() {
-		return SILVER_FISH_EMOJI_ID ? `<silver_fish:${SILVER_FISH_EMOJI_ID}>` : 'Silver Fish';
+		return SILVER_FISH_EMOJI_ID ? `<:silver_fish:${SILVER_FISH_EMOJI_ID}>` : 'Silver Fish';
 	}
 };
