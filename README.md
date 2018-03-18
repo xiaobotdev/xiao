@@ -276,6 +276,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **morse**: Converts text to morse code.
 * **organization-xiii-name**: Converts a name into the Organization XIII style.
 * **owo**: OwO.
+* **pig-latin**: Converts text to pig latin.
 * **pirate**: Converts text to pirate.
 * **qr-code**: Converts text to a QR Code.
 * **repeat**: Repeat text over and over and over and over (etc).
