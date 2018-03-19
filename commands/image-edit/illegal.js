@@ -50,12 +50,11 @@ module.exports = class IllegalCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(7 * (Math.PI / 180));
 		ctx.font = '45px Noto';
-		ctx.textAlign = 'center';
 		ctx.fillText(stripIndents`
 			${shortenText(ctx, text, 215)}
 			${isOrAre} NOW
 			ILLEGAL.
-		`, 750, 300);
+		`, 760, 300);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
 	}
 };
