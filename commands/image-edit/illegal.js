@@ -32,7 +32,7 @@ module.exports = class IllegalCommand extends Command {
 					label: 'is or are',
 					prompt: 'Should the text use is or are?',
 					type: 'string',
-					default: 'is',
+					default: 'IS',
 					validate: isOrAre => {
 						if (['is', 'are'].includes(isOrAre.toLowerCase())) return true;
 						return 'Invalid is or are, please enter either is or are.';
@@ -49,12 +49,12 @@ module.exports = class IllegalCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(7 * (Math.PI / 180));
-		ctx.font = '37px Noto';
+		ctx.font = '45px Noto';
 		ctx.fillText(stripIndents`
 			${shortenText(ctx, text, 215)}
 			${isOrAre} NOW
 			ILLEGAL.
-		`, 800, 300);
+		`, 770, 300);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
 	}
 };
