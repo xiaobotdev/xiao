@@ -61,6 +61,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **fruit**: Responds with a random fruit.
 * **guess-looks**: Guesses what a user looks like.
 * **joke**: Responds with a random joke.
+* **karen**: Responds with a random image of Karen.
 * **kiss-marry-kill**: Determines who to kiss, who to marry, and who to kill.
 * **magic-conch**: Asks your question to the Magic Conch.
 * **name**: Responds with a random name, with the gender of your choice.
@@ -218,6 +219,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **glitch**: Draws an image or a user's avatar but glitched.
 * **greyscale**: Draws an image or a user's avatar in greyscale.
 * **ifunny**: Draws an image with the iFunny logo.
+* **illegal**: Makes President Trump make your text illegal.
 * **invert**: Draws an image or a user's avatar but inverted.
 * **meme**: Sends a meme with the text and background of your choice.
 * **osu-signature**: Creates a card based on an osu! user's stats.
