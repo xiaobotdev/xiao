@@ -54,7 +54,7 @@ module.exports = class IllegalCommand extends Command {
 			${shortenText(ctx, text, 215)}
 			${isOrAre} NOW
 			ILLEGAL.
-		`, 690, 350);
+		`, 800, 300);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
 	}
 };
