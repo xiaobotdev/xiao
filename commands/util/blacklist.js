@@ -24,7 +24,7 @@ module.exports = class BlacklistCommand extends Command {
 		if (user.bot) return msg.reply('Bots cannot be blacklisted.');
 		const blacklist = this.client.provider.get('global', 'blacklist', []);
 		if (blacklist.includes(user.id)) return msg.reply(`${user.tag} is already blacklisted!`);
-		blacklist.push(blacklist.id);
+		blacklist.push(user.id);
 		this.client.provider.set('global', 'blacklist', blacklist);
 		return msg.say(`${user.tag} has been blacklisted.`);
 	}
