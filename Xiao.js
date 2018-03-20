@@ -43,6 +43,12 @@ client.registry
 
 client.setProvider(new SequelizeProvider(client.database));
 
+client.dispatcher.addInhibitor(msg => {
+	const blacklist = client.provider.get('global', 'blacklist', []);
+	if (!blacklist.includes(msg.author.id)) return false;
+	return 'Blacklisted.';
+});
+
 client.on('ready', () => {
 	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.setInterval(() => {
