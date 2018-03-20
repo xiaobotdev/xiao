@@ -28,22 +28,21 @@ module.exports = class IllegalCommand extends Command {
 					parse: text => text.toUpperCase()
 				},
 				{
-					key: 'isOrAre',
-					label: 'is or are',
-					prompt: 'Should the text use is or are?',
+					key: 'verb',
+					prompt: 'Should the text use is, are, or am?',
 					type: 'string',
 					default: 'IS',
-					validate: isOrAre => {
-						if (['is', 'are'].includes(isOrAre.toLowerCase())) return true;
-						return 'Invalid is or are, please enter either is or are.';
+					validate: verb => {
+						if (['is', 'are', 'am'].includes(verb.toLowerCase())) return true;
+						return 'Invalid verb, please enter either is, are, or am.';
 					},
-					parse: isOrAre => isOrAre.toUpperCase()
+					parse: verb => verb.toUpperCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { text, isOrAre }) {
+	async run(msg, { text, verb }) {
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'illegal.png'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
@@ -52,7 +51,7 @@ module.exports = class IllegalCommand extends Command {
 		ctx.font = '45px Noto';
 		ctx.fillText(stripIndents`
 			${shortenText(ctx, text, 200)}
-			${isOrAre} NOW
+			${verb} NOW
 			ILLEGAL.
 		`, 750, 290);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
