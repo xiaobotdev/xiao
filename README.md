@@ -8,16 +8,18 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (291)
+## Commands (293)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
 * **eval**: Executes JavaScript code.
+* **blacklist**: Blacklists a user from using commands.
 * **donate**: Responds with Xiao's donation links.
 * **help**: Displays a list of available commands, or detailed information for a specific command.
 * **info**: Responds with detailed bot information.
 * **ping**: Checks the bot's ping to the Discord server.
 * **uptime**: Responds with how long the bot has been active.
+* **whitelist**: Removes a user from the blacklist.
 
 ### Command Management:
 
