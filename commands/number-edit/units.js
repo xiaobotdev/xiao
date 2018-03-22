@@ -11,6 +11,11 @@ module.exports = class UnitsCommand extends Command {
 			description: 'Converts units to/from other units.',
 			args: [
 				{
+					key: 'amount',
+					prompt: 'How many units should be converted?',
+					type: 'float'
+				},
+				{
 					key: 'base',
 					prompt: 'What unit type do you want to convert from?',
 					type: 'string',
@@ -21,11 +26,6 @@ module.exports = class UnitsCommand extends Command {
 					prompt: 'What unit type do you want to convert to?',
 					type: 'string',
 					parse: target => target.toLowerCase()
-				},
-				{
-					key: 'amount',
-					prompt: 'How many units should be converted?',
-					type: 'float'
 				}
 			]
 		});

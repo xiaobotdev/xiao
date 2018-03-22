@@ -14,6 +14,11 @@ module.exports = class CurrencyCommand extends Command {
 			details: `**Codes**: ${codes.join(', ')}`,
 			args: [
 				{
+					key: 'amount',
+					prompt: 'How much money should be converted? Do not use symbols.',
+					type: 'float'
+				},
+				{
 					key: 'base',
 					prompt: `What currency code do you want to use as the base? Either ${list(codes, 'or')}.`,
 					type: 'string',
@@ -32,11 +37,6 @@ module.exports = class CurrencyCommand extends Command {
 						return `Invalid target, please enter either ${list(codes, 'or')}.`;
 					},
 					parse: target => target.toUpperCase()
-				},
-				{
-					key: 'amount',
-					prompt: 'How much money should be converted? Do not use symbols.',
-					type: 'float'
 				}
 			]
 		});
