@@ -32,10 +32,7 @@ module.exports = class IllegalCommand extends Command {
 					prompt: 'Should the text use is, are, or am?',
 					type: 'string',
 					default: 'IS',
-					validate: verb => {
-						if (['is', 'are', 'am'].includes(verb.toLowerCase())) return true;
-						return 'Invalid verb, please enter either is, are, or am.';
-					},
+					oneOf: ['is', 'are', 'am'],
 					parse: verb => verb.toUpperCase()
 				}
 			]

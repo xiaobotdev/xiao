@@ -18,10 +18,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 					prompt: `What locale do you want to use? Either ${list(locales, 'or')}.`,
 					type: 'string',
 					default: 'en',
-					validate: locale => {
-						if (locales.includes(locale.toLowerCase())) return true;
-						return `Invalid locale, please enter either ${list(locales, 'or')}.`;
-					},
+					oneOf: locales,
 					parse: locale => locale.toLowerCase()
 				}
 			]

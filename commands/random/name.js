@@ -17,10 +17,7 @@ module.exports = class NameCommand extends Command {
 					prompt: `Which gender do you want to generate a name for? Either ${list(genders, 'or')}.`,
 					type: 'string',
 					default: 'both',
-					validate: gender => {
-						if (genders.includes(gender.toLowerCase())) return true;
-						return `Invalid gender, please enter either ${list(genders, 'or')}.`;
-					},
+					oneOf: genders,
 					parse: gender => gender.toLowerCase()
 				}
 			]

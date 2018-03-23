@@ -18,10 +18,7 @@ module.exports = class HoroscopeCommand extends Command {
 					key: 'sign',
 					prompt: `Which sign would you like to get the horoscope for? Either ${list(signs, 'or')}.`,
 					type: 'string',
-					validate: sign => {
-						if (signs.includes(sign.toLowerCase())) return true;
-						return `Invalid sign, please enter either ${list(signs, 'or')}.`;
-					},
+					oneOf: signs,
 					parse: sign => sign.toLowerCase()
 				}
 			]
