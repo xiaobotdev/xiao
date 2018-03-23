@@ -25,10 +25,7 @@ module.exports = class UrbanDictionaryCommand extends Command {
 					prompt: 'Do you want to get the top answer or a random one?',
 					type: 'string',
 					default: 'top',
-					validate: type => {
-						if (types.includes(type.toLowerCase())) return true;
-						return `Invalid type, please enter either ${list(types, 'or')}.`;
-					},
+					oneOf: types,
 					parse: type => type.toLowerCase()
 				}
 			]
