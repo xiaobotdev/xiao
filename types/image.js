@@ -5,7 +5,7 @@ class ImageArgumentType extends ArgumentType {
 		super(client, 'image');
 	}
 
-	async validate(value, msg) {
+	validate(value, msg) {
 		const attachment = msg.attachments.first();
 		if (!attachment || !attachment.height || !attachment.width) return false;
 		if (attachment.size > 8e+6) return 'Please provide an image under 8 MB.';
