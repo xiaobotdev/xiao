@@ -17,7 +17,7 @@ class ImageArgumentType extends ArgumentType {
 	}
 
 	isEmpty(value, msg) {
-		return !msg.attachments.size;
+		return msg.attachments.size === 0;
 	}
 }
 
