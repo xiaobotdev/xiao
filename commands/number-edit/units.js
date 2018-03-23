@@ -33,8 +33,8 @@ module.exports = class UnitsCommand extends Command {
 
 	run(msg, { base, target, amount }) {
 		try {
-			const value = math.unit(amount, base).to(target).toString();
-			return msg.say(value);
+			const value = math.unit(amount, base).toNumber(target);
+			return msg.say(`${amount} ${base} is ${value} ${target}.`);
 		} catch (err) {
 			return msg.say('Either an invalid unit type was provided or the unit types do not match.');
 		}
