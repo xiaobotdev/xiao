@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (296)
+## Commands (297)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -151,6 +151,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **recipe**: Searches for recipes based on your query.
 * **rotten-tomatoes**: Searches Rotten Tomatoes for your query.
 * **rule-of-the-internet**: Responds with a rule of the internet.
+* **rule34**: Responds with an image from Rule34, with optional query.
 * **safebooru**: Responds with an image from Safebooru, with optional query.
 * **spoopy-link**: Determines if a link is spoopy or not.
 * **stack-overflow**: Searches Stack Overflow for your query.
