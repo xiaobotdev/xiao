@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
-const { shorten, list } = require('../../util/Util');
+const { shorten } = require('../../util/Util');
 const types = ['random', 'top'];
 
 module.exports = class UrbanDictionaryCommand extends Command {
