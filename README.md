@@ -4,11 +4,11 @@
 
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
-[Commando](https://github.com/discordjs/Commando) command framework. With nearly
+[Commando](https://github.com/discordjs/Commando) command framework. With over
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (299)
+## Commands (301)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -178,6 +178,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **coolness**: Determines a user's coolness.
 * **face-analyze**: Determines the age, gender, and race of a face.
 * **gender-analyze**: Determines the gender of a name.
+* **read-qr-code**: Reads a QR Code.
 * **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
 * **toxicity**: Determines the toxicity of text.
 
@@ -221,6 +222,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **be-like-bill**: Sends a "Be Like Bill" meme with the name of your choice.
 * **color**: Sends an image of the color you choose.
 * **contrast**: Draws an image or a user's avatar but with contrast.
+* **create-qr-code**: Converts text to a QR Code.
 * **demotivational-poster**: Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distort**: Draws an image or a user's avatar but distorted.
 * **frame**: Draws a frame around an image or a user's avatar.
@@ -290,7 +292,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **owo**: OwO.
 * **pig-latin**: Converts text to pig latin.
 * **pirate**: Converts text to pirate.
-* **qr-code**: Converts text to a QR Code.
 * **repeat**: Repeat text over and over and over and over (etc).
 * **reverse**: Reverses text.
 * **say**: Make XiaoBot say what you wish.
@@ -351,6 +352,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **fist-bump**: Fistbumps a user.
 * **high-five**: High Fives a user.
 * **hit-with-shovel**: Hits a user with a shovel.
+* **hold-hands**: Holds hands with a user.
 * **hug**: Hugs a user.
 * **inhale**: Inhales a user.
 * **kill**: Kills a user.
