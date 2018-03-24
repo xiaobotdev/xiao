@@ -1,12 +1,13 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 
-module.exports = class QRCodeCommand extends Command {
+module.exports = class CreateQRCodeCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'qr-code',
-			group: 'text-edit',
-			memberName: 'qr-code',
+			name: 'create-qr-code',
+			aliases: ['create-qr'],
+			group: 'image-edit',
+			memberName: 'create-qr-code',
 			description: 'Converts text to a QR Code.',
 			args: [
 				{
