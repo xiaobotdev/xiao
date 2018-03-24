@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^4.19.0",
-		"eslint-config-aqua": "^2.0.1",
+		"eslint-config-aqua": "^3.0.0",
 		"eslint-plugin-json": "^1.2.0"
 	},
 	"eslintConfig": {
@@ -62,7 +62,6 @@
 			"id-length": "off",
 			"no-await-in-loop": "off",
 			"no-console": "off",
-			"no-process-env": "off",
 			"prefer-const": "error"
 		}
 	}
