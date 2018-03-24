@@ -222,6 +222,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **contrast**: Draws an image or a user's avatar but with contrast.
 * **demotivational-poster**: Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distort**: Draws an image or a user's avatar but distorted.
+* **frame**: Draws a frame around an image or a user's avatar.
 * **glitch**: Draws an image or a user's avatar but glitched.
 * **greyscale**: Draws an image or a user's avatar in greyscale.
 * **ifunny**: Draws an image with the iFunny logo.
