@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (298)
+## Commands (299)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -212,6 +212,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 
 * **airhorn**: Plays an airhorn sound in your voice channel.
 * **dec-talk**: The world's best Text-to-Speech.
+* **leave-voice-channel**: Leaves a voice channel, in case the bot gets stuck.
 * **soundboard**: Plays a sound in your voice channel.
 
 ### Image Manipulation:
