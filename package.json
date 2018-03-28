@@ -49,20 +49,11 @@
 	},
 	"devDependencies": {
 		"eslint": "^4.19.0",
-		"eslint-config-aqua": "^3.0.0",
+		"eslint-config-amber": "^1.0.0",
 		"eslint-plugin-json": "^1.2.0"
 	},
 	"eslintConfig": {
-		"extends": "aqua",
-		"plugins": [
-			"json"
-		],
-		"rules": {
-			"camelcase": "off",
-			"id-length": "off",
-			"no-await-in-loop": "off",
-			"no-console": "off",
-			"prefer-const": "error"
-		}
+		"extends": "amber",
+		"plugins": ["json"]
 	}
 }
