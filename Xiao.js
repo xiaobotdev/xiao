@@ -58,7 +58,7 @@ client.on('ready', async () => {
 	}, 60000);
 	if (allowedGuilds) {
 		for (const guild of client.guilds.values()) {
-			if (allowedGuilds.includes(guild.id)) return;
+			if (allowedGuilds.includes(guild.id)) continue;
 			try {
 				await guild.leave();
 				console.log(`[GUILD] Left non-allowed guild ${guild.name}. (${guild.id})`);
