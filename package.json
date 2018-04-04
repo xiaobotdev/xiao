@@ -33,7 +33,7 @@
 	"dependencies": {
 		"canvas": "github:automattic/node-canvas",
 		"common-tags": "^1.7.2",
-		"custom-translate": "^2.2.3",
+		"custom-translate": "^2.2.4",
 		"discord.js": "github:discordjs/discord.js",
 		"discord.js-commando": "github:discordjs/Commando",
 		"erlpack": "github:discordapp/erlpack",
