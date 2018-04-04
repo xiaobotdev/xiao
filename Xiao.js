@@ -1,4 +1,4 @@
-const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
+const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE, XIAO_ALLOWED_GUILDS } = process.env;
 const path = require('path');
 const XiaoClient = require('./structures/Client');
 const client = new XiaoClient({
@@ -11,6 +11,7 @@ const client = new XiaoClient({
 });
 const SequelizeProvider = require('./providers/Sequelize');
 const activities = require('./assets/json/activity');
+const allowedGuilds = XIAO_ALLOWED_GUILDS ? XIAO_ALLOWED_GUILDS.split(',') : null;
 
 client.registry
 	.registerDefaultTypes()
@@ -49,17 +50,39 @@ client.dispatcher.addInhibitor(msg => {
 	return 'Blacklisted.';
 });
 
-client.on('ready', () => {
+client.on('ready', async () => {
 	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.setInterval(() => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
 		client.user.setActivity(activity.text, { type: activity.type });
 	}, 60000);
+	if (allowedGuilds) {
+		for (const guild of client.guilds.values()) {
+			if (allowedGuilds.includes(guild.id)) return;
+			try {
+				await guild.leave();
+				console.log(`[GUILD] Left non-allowed guild ${guild.name}. (${guild.id})`);
+			} catch (err) {
+				console.error(`[GUILD] Failed to leave non-allowed guild ${guild.name}. (${guild.id})`, err);
+			}
+		}
+	}
 });
 
 client.on('disconnect', event => {
 	console.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	process.exit(0);
+});
+
+client.on('guildCreate', async guild => {
+	if (!allowedGuilds) return;
+	if (allowedGuilds.includes(guild.id)) return;
+	try {
+		await guild.leave();
+		console.log(`[GUILD] Left non-allowed guild ${guild.name}. (${guild.id})`);
+	} catch (err) {
+		console.error(`[GUILD] Failed to leave non-allowed guild ${guild.name}. (${guild.id})`, err);
+	}
 });
 
 client.on('commandRun', command => console.log(`[COMMAND] Ran command ${command.groupID}:${command.memberName}.`));
