@@ -16,7 +16,8 @@ module.exports = class ServerInfoCommand extends Command {
 		});
 	}
 
-	run(msg) {
+	async run(msg) {
+		if (!msg.guild.members.has(msg.guild.ownerID)) await msg.guild.members.fetch(msg.guild.ownerID);
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(msg.guild.iconURL())
@@ -33,7 +34,7 @@ module.exports = class ServerInfoCommand extends Command {
 			.addField('❯ Verification Level',
 				verificationLevels[msg.guild.verificationLevel], true)
 			.addField('❯ Owner',
-				msg.guild.owner ? msg.guild.owner.user.tag : 'None', true)
+				msg.guild.owner.user.tag, true)
 			.addField('❯ Members',
 				msg.guild.memberCount, true)
 			.addField('❯ Roles',
