@@ -9,6 +9,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'neko-atsume-password',
+			aliases: ['neko-atsume', 'neko-password', 'neko-atsume-pswd', 'neko-pswd'],
 			group: 'events',
 			memberName: 'neko-atsume-password',
 			description: 'Responds with today\'s Neko Atsume password.',
