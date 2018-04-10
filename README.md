@@ -8,7 +8,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (301)
+## Commands (302)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -110,6 +110,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **google-doodle**: Responds with a Google Doodle, either the latest one or a random one from the past.
 * **holidays**: Responds with today's holidays.
 * **horoscope**: Responds with today's horoscope for a specific Zodiac sign.
+* **is-it-christmas**: Responds with whether or not it's Christmas.
 * **neko-atsume-password**: Responds with today's Neko Atsume password.
 * **time**: Responds with the current time in a particular location.
 * **today-in-history**: Responds with an event that occurred today in history.
