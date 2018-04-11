@@ -1,11 +1,6 @@
 const { Command } = require('discord.js-commando');
-const { createCanvas, loadImage, registerFont } = require('canvas');
-const { stripIndents } = require('common-tags');
-const path = require('path');
-const { shortenText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
+const snekfetch = require('snekfetch');
+const { wait } = require('../../util/Util');
 
 module.exports = class IllegalCommand extends Command {
 	constructor(client) {
@@ -25,32 +20,32 @@ module.exports = class IllegalCommand extends Command {
 					key: 'text',
 					prompt: 'What should the text of the bill be?',
 					type: 'string',
+					validate: text => {
+						if (/^[a-zA-Z0-9 ]+$/g.test(text) && text.length > 11) return true;
+						return 'Invalid text, please enter 10 or fewer basic unicode characters (A-Z, 0-9).';
+					},
 					parse: text => text.toUpperCase()
-				},
-				{
-					key: 'verb',
-					prompt: 'Should the text use is, are, or am?',
-					type: 'string',
-					default: 'IS',
-					oneOf: ['is', 'are', 'am'],
-					parse: verb => verb.toUpperCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { text, verb }) {
-		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'illegal.png'));
-		const canvas = createCanvas(base.width, base.height);
-		const ctx = canvas.getContext('2d');
-		ctx.drawImage(base, 0, 0);
-		ctx.rotate(7 * (Math.PI / 180));
-		ctx.font = '45px Noto';
-		ctx.fillText(stripIndents`
-			${shortenText(ctx, text, 200)}
-			${verb} NOW
-			ILLEGAL.
-		`, 750, 290);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
+	async run(msg, { text }) {
+		try {
+			await snekfetch
+				.post('https://is-now-illegal.firebaseio.com/queue/tasks.json')
+				.send({
+					task: 'gif',
+					word: text
+				});
+			await msg.say('Trump is busy signing the bill, please wait 5 seconds...');
+			await wait(5000);
+			const { body } = await snekfetch
+				.get(`https://is-now-illegal.firebaseio.com/gifs/${text}.json`);
+			if (!body) return msg.reply('Trump failed to sign the bill.');
+			return msg.say({ files: [body.url] });
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
