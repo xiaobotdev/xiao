@@ -32,20 +32,33 @@ module.exports = class IllegalCommand extends Command {
 
 	async run(msg, { text }) {
 		try {
-			await snekfetch
-				.post('https://is-now-illegal.firebaseio.com/queue/tasks.json')
-				.send({
-					task: 'gif',
-					word: text
-				});
-			await msg.say('Trump is busy signing the bill, please wait 5 seconds...');
-			await wait(5000);
-			const { body } = await snekfetch
-				.get(`https://is-now-illegal.firebaseio.com/gifs/${text}.json`);
-			if (!body) return msg.reply('Trump failed to sign the bill.');
-			return msg.say({ files: [body.url] });
+			let gif = await this.fetchGIF(text);
+			if (!gif) {
+				await msg.say('Trump is busy signing the bill, please wait a moment...');
+				await this.createGIF(text);
+				gif = await this.fetchGIF(text);
+				if (!gif) return msg.reply('Hmm... It seems Trump couldn\'t sign that bill...');
+			}
+			return msg.say({ files: [gif] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async createGIF(text) {
+		const { body } = await snekfetch
+			.post('https://is-now-illegal.firebaseio.com/queue/tasks.json')
+			.send({
+				task: 'gif',
+				word: text
+			});
+		await wait(5000);
+		return body;
+	}
+
+	async fetchGIF(text) {
+		const { body } = await snekfetch.get(`https://is-now-illegal.firebaseio.com/gifs/${text}.json`);
+		if (!body) return null;
+		return body.url;
 	}
 };
