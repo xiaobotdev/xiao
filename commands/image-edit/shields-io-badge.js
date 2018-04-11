@@ -35,10 +35,10 @@ module.exports = class ShieldsIoBadgeCommand extends Command {
 
 	async run(msg, { subject, status, color }) {
 		try {
-			const { body, headers } = await snekfetch.get(`https://img.shields.io/badge/${subject}-${status}-${color}.png`);
-			if (headers['content-type'] !== 'image/png') return msg.reply('Could not create the badge...');
+			const { body } = await snekfetch.get(`https://img.shields.io/badge/${subject}-${status}-${color}.png`);
 			return msg.say({ files: [{ attachment: body, name: 'badge.png' }] });
 		} catch (err) {
+			if (err.status === 404) return msg.reply('Could not create the badge...');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
