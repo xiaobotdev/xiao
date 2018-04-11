@@ -7,8 +7,7 @@ module.exports = class HelloWorldCommand extends Command {
 			aliases: ['hello', 'hey', 'hoi', 'hola'],
 			group: 'single',
 			memberName: 'hi',
-			description: 'Hello.',
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY']
+			description: 'Hello.'
 		});
 	}
 
