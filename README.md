@@ -12,7 +12,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (302)
+## Commands (304)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -97,6 +97,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **eat-pant**: Eat pant.
 * **give-flower**: Gives Xiao Pai a flower.
 * **hello-world**: Hello world.
+* **hi**: Hello.
 * **isnt-joke**: Isn't joke...
 * **its-joke**: It's joke!
 * **lenny**: Responds with the lenny face.
@@ -241,6 +242,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **pokemon-fusion**: Fuses two Generation I Pokémon together.
 * **robohash**: Creates a robot based on the text you provide.
 * **sepia**: Draws an image or a user's avatar in sepia.
+* **shields-io-badge**: Creates a badge from shields.io.
 * **silhouette**: Draws a silhouette of an image or a user's avatar.
 * **tint**: Draws an image or a user's avatar but tinted a specific color.
 
