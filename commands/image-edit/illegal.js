@@ -21,7 +21,7 @@ module.exports = class IllegalCommand extends Command {
 					prompt: 'What should the text of the bill be?',
 					type: 'string',
 					validate: text => {
-						if (/^[a-zA-Z0-9 ]+$/g.test(text) && text.length > 11) return true;
+						if (/^[a-zA-Z0-9 ]+$/g.test(text) && text.length < 11) return true;
 						return 'Invalid text, please enter 10 or fewer basic unicode characters (A-Z, 0-9).';
 					},
 					parse: text => text.toUpperCase()
