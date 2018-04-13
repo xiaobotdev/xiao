@@ -25,10 +25,13 @@ module.exports = class NASACommand extends Command {
 		try {
 			const { body } = await snekfetch
 				.get('https://images-api.nasa.gov/search')
-				.query({ q: query });
-			const filtered = body.collection.items.filter(item => item.data[0].media_type === 'image');
-			if (!filtered.length) return msg.say('Could not find any results.');
-			const data = filtered[Math.floor(Math.random() * filtered.length)];
+				.query({
+					q: query,
+					media_type: 'image'
+				});
+			const images = body.collection.items;
+			if (!images.length) return msg.say('Could not find any results.');
+			const data = images[Math.floor(Math.random() * images.length)];
 			return msg.say(shorten(data.data[0].description), { files: [data.links[0].href] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
