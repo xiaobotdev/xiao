@@ -5,6 +5,7 @@ module.exports = class RoastCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'roast',
+			aliases: ['insult'],
 			group: 'random',
 			memberName: 'roast',
 			description: 'Roasts a user.',
