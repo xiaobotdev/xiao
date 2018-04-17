@@ -29,11 +29,6 @@ class Util {
 		return text.length > maxLen ? `${text.substr(0, maxLen - 3)}...` : text;
 	}
 
-	static filterPkmn(arr) {
-		const filtered = arr.filter(entry => entry.language.name === 'en');
-		return filtered[Math.floor(Math.random() * filtered.length)];
-	}
-
 	static duration(ms) {
 		const sec = Math.floor((ms / 1000) % 60).toString();
 		const min = Math.floor((ms / (1000 * 60)) % 60).toString();
