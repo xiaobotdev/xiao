@@ -78,12 +78,14 @@ class CanvasUtil {
 	}
 
 	static drawImageWithTint(ctx, image, color, x, y, width, height) {
+		const fillStyle = ctx.fillStyle;
+		const globalAlpha = ctx.globalAlpha;
 		ctx.fillStyle = color;
 		ctx.drawImage(image, x, y, width, height);
 		ctx.globalAlpha = 0.5;
 		ctx.fillRect(x, y, width, height);
-		ctx.fillStyle = '#000000';
-		ctx.globalAlpha = 1;
+		ctx.fillStyle = fillStyle;
+		ctx.globalAlpha = globalAlpha;
 	}
 
 	static shortenText(ctx, text, maxWidth) {
