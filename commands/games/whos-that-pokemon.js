@@ -1,7 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
-const { filterPkmn } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 
 module.exports = class WhosThatPokemonCommand extends Command {
@@ -35,7 +34,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		try {
 			const data = await this.fetchPokemon(pokemon);
 			const names = data.names.map(name => name.name.toLowerCase());
-			const displayName = filterPkmn(data.names).name;
+			const displayName = data.names.filter(name => name.language.name === 'en')[0].name;
 			const id = data.id.toString().padStart(3, '0');
 			const attachment = await this.fetchImage(id, hide);
 			await msg.say('**You have 15 seconds, who\'s that Pokémon?**', { files: [{ attachment, name: `${id}.png` }] });
