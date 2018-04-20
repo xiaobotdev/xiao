@@ -25,14 +25,10 @@ module.exports = class EmojiInfoCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(emoji.url)
-			.addField('❯ Name',
-				emoji.name, true)
-			.addField('❯ ID',
-				emoji.id, true)
-			.addField('❯ Creation Date',
-				emoji.createdAt.toDateString(), true)
-			.addField('❯ Animated?',
-				emoji.animated ? 'Yes' : 'No', true);
+			.addField('❯ Name', emoji.name, true)
+			.addField('❯ ID', emoji.id, true)
+			.addField('❯ Creation Date', emoji.createdAt.toDateString(), true)
+			.addField('❯ Animated?', emoji.animated ? 'Yes' : 'No', true);
 		return msg.embed(embed);
 	}
 };

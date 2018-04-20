@@ -70,10 +70,8 @@ module.exports = class TranslateCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xFF0000)
 				.setFooter('Powered by Yandex.Translate', 'https://i.imgur.com/HMpH9sq.png')
-				.addField(`❯ From: ${codes[lang[0]]}`,
-					text)
-				.addField(`❯ To: ${codes[lang[1]]}`,
-					body.text[0]);
+				.addField(`❯ From: ${codes[lang[0]]}`, text)
+				.addField(`❯ To: ${codes[lang[1]]}`, body.text[0]);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

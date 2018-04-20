@@ -49,14 +49,10 @@ module.exports = class ITunesCommand extends Command {
 				.setURL(data.trackViewUrl)
 				.setThumbnail(data.artworkUrl100)
 				.setTitle(data.trackName)
-				.addField('❯ Artist',
-					data.artistName, true)
-				.addField('❯ Album',
-					data.collectionName, true)
-				.addField('❯ Release Date',
-					new Date(data.releaseDate).toDateString(), true)
-				.addField('❯ Genre',
-					data.primaryGenreName, true);
+				.addField('❯ Artist', data.artistName, true)
+				.addField('❯ Album', data.collectionName, true)
+				.addField('❯ Release Date', new Date(data.releaseDate).toDateString(), true)
+				.addField('❯ Genre', data.primaryGenreName, true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 400) {

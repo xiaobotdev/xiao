@@ -40,12 +40,11 @@ module.exports = class ForecastCommand extends Command {
 				.setTimestamp();
 			for (let i = 0; i < 7; i++) {
 				const forecast = data.item.forecast[i];
-				embed.addField(`❯ ${forecast.day} - ${forecast.date}`,
-					stripIndents`
-						**High**: ${forecast.high}°F
-						**Low**: ${forecast.low}°F
-						**Condition**: ${forecast.text}
-					`);
+				embed.addField(`❯ ${forecast.day} - ${forecast.date}`, stripIndents`
+					**High**: ${forecast.high}°F
+					**Low**: ${forecast.low}°F
+					**Condition**: ${forecast.text}
+				`);
 			}
 			return msg.embed(embed);
 		} catch (err) {

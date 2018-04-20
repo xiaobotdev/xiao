@@ -39,20 +39,13 @@ module.exports = class TwitterCommand extends Command {
 				.setURL(`https://twitter.com/${body.screen_name}`)
 				.setTitle(`${body.name} (@${body.screen_name})`)
 				.setDescription(body.description)
-				.addField('❯ Tweets',
-					body.statuses_count, true)
-				.addField('❯ Followers',
-					body.followers_count, true)
-				.addField('❯ Following',
-					body.friends_count, true)
-				.addField('❯ Protected?',
-					body.protected ? 'Yes' : 'No', true)
-				.addField('❯ Verified?',
-					body.verified ? 'Yes' : 'No', true)
-				.addField('❯ Creation Date',
-					new Date(body.created_at).toDateString(), true)
-				.addField('❯ Latest Tweet',
-					body.status ? body.status.text : 'None');
+				.addField('❯ Tweets', body.statuses_count, true)
+				.addField('❯ Followers', body.followers_count, true)
+				.addField('❯ Following', body.friends_count, true)
+				.addField('❯ Protected?', body.protected ? 'Yes' : 'No', true)
+				.addField('❯ Verified?', body.verified ? 'Yes' : 'No', true)
+				.addField('❯ Creation Date', new Date(body.created_at).toDateString(), true)
+				.addField('❯ Latest Tweet', body.status ? body.status.text : '???');
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 401) await this.fetchToken();

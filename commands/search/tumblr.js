@@ -35,10 +35,8 @@ module.exports = class TumblrCommand extends Command {
 				.setThumbnail(`https://api.tumblr.com/v2/blog/${blog}/avatar/512`)
 				.setURL(data.url)
 				.setTitle(data.title)
-				.addField('❯ Posts',
-					data.total_posts, true)
-				.addField('❯ A.M.A.?',
-					data.ask ? 'Yes' : 'No', true);
+				.addField('❯ Posts', data.total_posts, true)
+				.addField('❯ A.M.A.?', data.ask ? 'Yes' : 'No', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');

@@ -42,14 +42,10 @@ module.exports = class GoogleBookCommand extends Command {
 				.setAuthor('Google Books', 'https://i.imgur.com/N3oHABo.png', 'https://books.google.com/')
 				.setDescription(data.description ? shorten(data.description) : 'No description available.')
 				.setThumbnail(data.imageLinks ? data.imageLinks.thumbnail : null)
-				.addField('❯ Authors',
-					data.authors.length ? data.authors.join(', ') : '???')
-				.addField('❯ Publish Date',
-					data.publishedDate || '???', true)
-				.addField('❯ Page Count',
-					data.pageCount || '???', true)
-				.addField('❯ Genres',
-					data.categories.length ? data.categories.join(', ') : '???');
+				.addField('❯ Authors', data.authors.length ? data.authors.join(', ') : '???')
+				.addField('❯ Publish Date', data.publishedDate || '???', true)
+				.addField('❯ Page Count', data.pageCount || '???', true)
+				.addField('❯ Genres', data.categories.length ? data.categories.join(', ') : '???');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

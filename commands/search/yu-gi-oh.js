@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
+const { stripIndents } = require('common-tags');
 const { shorten } = require('../../util/Util');
 
 module.exports = class YuGiOhCommand extends Command {
@@ -14,43 +15,43 @@ module.exports = class YuGiOhCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'query',
+					key: 'card',
 					prompt: 'What card would you like to get information on?',
-					type: 'string',
-					parse: text => encodeURIComponent(text)
+					type: 'string'
 				}
 			]
 		});
 	}
 
-	async run(msg, { query }) {
+	async run(msg, { card }) {
 		try {
-			const { body } = await snekfetch.get(`https://yugiohprices.com/api/card_data/${query}`);
-			if (body.status === 'fail') return msg.say('Could not find any results.');
-			const image = await snekfetch.get(`https://yugiohprices.com/api/card_image/${query}`);
-			const { data } = body;
+			const { text } = await snekfetch
+				.get('https://www.ygohub.com/api/card_info')
+				.query({ name: card });
+			const body = JSON.parse(text);
+			if (body.status === 'error') return msg.say('Could not find any results.');
+			const data = body.card;
 			const embed = new MessageEmbed()
-				.attachFiles([{ attachment: image.body, name: 'thumbnail.jpg' }])
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
 				.setDescription(shorten(data.text))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
-				.setThumbnail('attachment://thumbnail.jpg')
-				.addField('❯ Card Type',
-					data.card_type, true);
-			if (data.card_type === 'monster') {
+				.setURL(data.tcgplayer_link)
+				.setThumbnail(data.image_path)
+				.addField('❯ Card Type', data.type, true);
+			if (data.is_monster) {
 				embed
-					.addField('❯ Type',
-						data.type, true)
-					.addField('❯ Attribute',
-						data.family, true)
-					.addField('❯ Level',
-						data.level, true)
-					.addField('❯ ATK',
-						data.atk, true)
-					.addField('❯ DEF',
-						data.def, true);
+					.addField('❯ Species', data.species, true)
+					.addField('❯ Attribute', data.attribute, true)
+					.addField('❯ Level', data.stars, true)
+					.addField('❯ ATK', data.attack, true)
+					.addField('❯ DEF', data.defense, true);
 			}
+			embed.addField('❯ Legality', stripIndents`
+				TCG Advanced: ${data.legality.TCG.Advanced}
+				TCG Traditional: ${data.legality.TCG.Traditional}
+				OCG Advanced: ${data.legality.OCG.Advanced}
+			`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

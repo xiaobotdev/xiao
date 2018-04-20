@@ -51,22 +51,14 @@ module.exports = class SteamCommand extends Command {
 				.setTitle(data.name)
 				.setURL(`http://store.steampowered.com/app/${data.steam_appid}`)
 				.setThumbnail(tiny_image)
-				.addField('❯ Price',
-					price, true)
-				.addField('❯ Metascore',
-					data.metacritic ? data.metacritic.score : '???', true)
-				.addField('❯ Recommendations',
-					data.recommendations ? data.recommendations.total : '???', true)
-				.addField('❯ Platforms',
-					platforms.join(', ') || 'None', true)
-				.addField('❯ Release Date',
-					data.release_date ? data.release_date.date : '???', true)
-				.addField('❯ DLC Count',
-					data.dlc ? data.dlc.length : 0, true)
-				.addField('❯ Developers',
-					data.developers.join(', ') || '???')
-				.addField('❯ Publishers',
-					data.publishers.join(', ') || '???');
+				.addField('❯ Price', price, true)
+				.addField('❯ Metascore', data.metacritic ? data.metacritic.score : '???', true)
+				.addField('❯ Recommendations', data.recommendations ? data.recommendations.total : '???', true)
+				.addField('❯ Platforms', platforms.join(', ') || 'None', true)
+				.addField('❯ Release Date', data.release_date ? data.release_date.date : '???', true)
+				.addField('❯ DLC Count', data.dlc ? data.dlc.length : 0, true)
+				.addField('❯ Developers', data.developers.join(', ') || '???')
+				.addField('❯ Publishers', data.publishers.join(', ') || '???');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

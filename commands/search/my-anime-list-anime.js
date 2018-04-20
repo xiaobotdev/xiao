@@ -41,14 +41,10 @@ module.exports = class MyAnimeListAnimeCommand extends Command {
 				.setThumbnail(data.image[0])
 				.setTitle(data.title[0])
 				.setDescription(shorten(cleanXML(data.synopsis[0])))
-				.addField('❯ Type',
-					`${data.type[0]} - ${data.status[0]}`, true)
-				.addField('❯ Episodes',
-					data.episodes[0], true)
-				.addField('❯ Start Date',
-					data.start_date[0] !== '0000-00-00' ? data.start_date[0] : '???', true)
-				.addField('❯ End Date',
-					data.end_date[0] !== '0000-00-00' ? data.end_date[0] : '???', true);
+				.addField('❯ Type', `${data.type[0]} - ${data.status[0]}`, true)
+				.addField('❯ Episodes', data.episodes[0], true)
+				.addField('❯ Start Date', data.start_date[0] !== '0000-00-00' ? data.start_date[0] : '???', true)
+				.addField('❯ End Date', data.end_date[0] !== '0000-00-00' ? data.end_date[0] : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.message === 'Parse Error') return msg.say('Could not find any results.');

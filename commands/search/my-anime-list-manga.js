@@ -41,14 +41,11 @@ module.exports = class MyAnimeListMangaCommand extends Command {
 				.setThumbnail(data.image[0])
 				.setTitle(data.title[0])
 				.setDescription(shorten(cleanXML(data.synopsis[0])))
-				.addField('❯ Type',
-					`${data.type[0]} - ${data.status[0]}`, true)
+				.addField('❯ Type', `${data.type[0]} - ${data.status[0]}`, true)
 				.addField('❯ Volumes / Chapters',
 					`${Number.parseInt(data.volumes[0], 10) || '???'} / ${Number.parseInt(data.chapters[0], 10) || '???'}`, true)
-				.addField('❯ Start Date',
-					data.start_date[0] !== '0000-00-00' ? data.start_date[0] : '???', true)
-				.addField('❯ End Date',
-					data.end_date[0] !== '0000-00-00' ? data.end_date[0] : '???', true);
+				.addField('❯ Start Date', data.start_date[0] !== '0000-00-00' ? data.start_date[0] : '???', true)
+				.addField('❯ End Date', data.end_date[0] !== '0000-00-00' ? data.end_date[0] : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.message === 'Parse Error') return msg.say('Could not find any results.');

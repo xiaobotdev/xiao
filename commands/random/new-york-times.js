@@ -42,8 +42,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 				.setURL(data.web_url)
 				.setTitle(data.headline.main)
 				.setDescription(shorten(data.snippet))
-				.addField('❯ Publish Date',
-					new Date(data.pub_date).toDateString(), true);
+				.addField('❯ Publish Date', new Date(data.pub_date).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

@@ -44,10 +44,8 @@ module.exports = class RottenTomatoesCommand extends Command {
 				.setAuthor('Rotten Tomatoes', 'https://i.imgur.com/Sru8mZ3.jpg', 'https://www.rottentomatoes.com/')
 				.setDescription(shorten(body.ratingSummary.consensus))
 				.setThumbnail(body.posters.original)
-				.addField('❯ Critic Score',
-					criticScore.meterValue ? `${criticScore.meterValue}%` : '???', true)
-				.addField('❯ Audience Score',
-					audienceScore.meterScore ? `${audienceScore.meterScore}%` : '???', true);
+				.addField('❯ Critic Score', criticScore.meterValue ? `${criticScore.meterValue}%` : '???', true)
+				.addField('❯ Audience Score', audienceScore.meterScore ? `${audienceScore.meterScore}%` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

@@ -34,12 +34,9 @@ module.exports = class HoroscopeCommand extends Command {
 				.setURL(`https://new.theastrologer.com/${body.sunsign}/`)
 				.setTimestamp()
 				.setDescription(body.horoscope)
-				.addField('❯ Mood',
-					body.meta.mood, true)
-				.addField('❯ Intensity',
-					body.meta.intensity, true)
-				.addField('❯ Date',
-					body.date, true);
+				.addField('❯ Mood', body.meta.mood, true)
+				.addField('❯ Intensity', body.meta.intensity, true)
+				.addField('❯ Date', body.date, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

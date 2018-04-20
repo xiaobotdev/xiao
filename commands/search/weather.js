@@ -37,30 +37,18 @@ module.exports = class WeatherCommand extends Command {
 				.setAuthor(data.title, 'https://i.imgur.com/B9MMbtB.png', 'https://www.yahoo.com/news/weather')
 				.setURL(data.link)
 				.setTimestamp()
-				.addField('❯ City',
-					data.location.city, true)
-				.addField('❯ Country',
-					data.location.country, true)
-				.addField('❯ Region',
-					data.location.region, true)
-				.addField('❯ Condition',
-					data.item.condition.text, true)
-				.addField('❯ Temperature',
-					`${data.item.condition.temp}°F`, true)
-				.addField('❯ Humidity',
-					data.atmosphere.humidity, true)
-				.addField('❯ Pressure',
-					data.atmosphere.pressure, true)
-				.addField('❯ Rising',
-					data.atmosphere.rising, true)
-				.addField('❯ Visibility',
-					data.atmosphere.visibility, true)
-				.addField('❯ Wind Chill',
-					data.wind.chill, true)
-				.addField('❯ Wind Direction',
-					data.wind.direction, true)
-				.addField('❯ Wind Speed',
-					data.wind.speed, true);
+				.addField('❯ City', data.location.city, true)
+				.addField('❯ Country', data.location.country, true)
+				.addField('❯ Region', data.location.region, true)
+				.addField('❯ Condition', data.item.condition.text, true)
+				.addField('❯ Temperature', `${data.item.condition.temp}°F`, true)
+				.addField('❯ Humidity', data.atmosphere.humidity, true)
+				.addField('❯ Pressure', data.atmosphere.pressure, true)
+				.addField('❯ Rising', data.atmosphere.rising, true)
+				.addField('❯ Visibility', data.atmosphere.visibility, true)
+				.addField('❯ Wind Chill', data.wind.chill, true)
+				.addField('❯ Wind Direction', data.wind.direction, true)
+				.addField('❯ Wind Speed', data.wind.speed, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
