@@ -27,20 +27,13 @@ module.exports = class RoleInfoCommand extends Command {
 		const perms = Object.keys(permissions).filter(perm => serialized[perm]);
 		const embed = new MessageEmbed()
 			.setColor(role.hexColor)
-			.addField('❯ Name',
-				role.name, true)
-			.addField('❯ ID',
-				role.id, true)
-			.addField('❯ Color',
-				role.hexColor.toUpperCase(), true)
-			.addField('❯ Creation Date',
-				role.createdAt.toDateString(), true)
-			.addField('❯ Hoisted?',
-				role.hoist ? 'Yes' : 'No', true)
-			.addField('❯ Mentionable?',
-				role.mentionable ? 'Yes' : 'No', true)
-			.addField('❯ Permissions',
-				perms.map(perm => permissions[perm]).join(', ') || 'None');
+			.addField('❯ Name', role.name, true)
+			.addField('❯ ID', role.id, true)
+			.addField('❯ Color', role.hexColor.toUpperCase(), true)
+			.addField('❯ Creation Date', role.createdAt.toDateString(), true)
+			.addField('❯ Hoisted?', role.hoist ? 'Yes' : 'No', true)
+			.addField('❯ Mentionable?', role.mentionable ? 'Yes' : 'No', true)
+			.addField('❯ Permissions', perms.map(perm => permissions[perm]).join(', ') || 'None');
 		return msg.embed(embed);
 	}
 };

@@ -43,16 +43,11 @@ module.exports = class TMDBTVShowCommand extends Command {
 				.setAuthor('TMDB', 'https://i.imgur.com/3K3QMv9.png', 'https://www.themoviedb.org/')
 				.setDescription(body.overview ? shorten(body.overview) : 'No description available.')
 				.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
-				.addField('❯ First Air Date',
-					body.first_air_date || '???', true)
-				.addField('❯ Last Air Date',
-					body.last_air_date || '???', true)
-				.addField('❯ Seasons',
-					body.number_of_seasons || '???', true)
-				.addField('❯ Episodes',
-					body.number_of_episodes || '???', true)
-				.addField('❯ Genres',
-					body.genres.length ? body.genres.map(genre => genre.name).join(', ') : '???')
+				.addField('❯ First Air Date', body.first_air_date || '???', true)
+				.addField('❯ Last Air Date', body.last_air_date || '???', true)
+				.addField('❯ Seasons', body.number_of_seasons || '???', true)
+				.addField('❯ Episodes', body.number_of_episodes || '???', true)
+				.addField('❯ Genres', body.genres.length ? body.genres.map(genre => genre.name).join(', ') : '???')
 				.addField('❯ Production Companies',
 					body.production_companies.length ? body.production_companies.map(c => c.name).join(', ') : '???');
 			return msg.embed(embed);

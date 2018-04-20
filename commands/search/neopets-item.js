@@ -32,8 +32,7 @@ module.exports = class NeopetItemCommand extends Command {
 				.setDescription(data.details)
 				.setURL(data.url)
 				.setThumbnail(data.image)
-				.addField('❯ Price',
-					data.price ? `${data.price} ${data.currency}` : 'Not for Sale');
+				.addField('❯ Price', data.price ? `${data.price} ${data.currency}` : 'Not for Sale');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

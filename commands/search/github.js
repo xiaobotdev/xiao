@@ -42,18 +42,12 @@ module.exports = class GitHubCommand extends Command {
 				.setURL(body.html_url)
 				.setDescription(body.description ? shorten(body.description) : 'No description.')
 				.setThumbnail(body.owner.avatar_url)
-				.addField('❯ Stars',
-					body.stargazers_count, true)
-				.addField('❯ Forks',
-					body.forks, true)
-				.addField('❯ Issues',
-					body.open_issues, true)
-				.addField('❯ Language',
-					body.language || '???', true)
-				.addField('❯ Creation Date',
-					new Date(body.created_at).toDateString(), true)
-				.addField('❯ Modification Date',
-					new Date(body.updated_at).toDateString(), true);
+				.addField('❯ Stars', body.stargazers_count, true)
+				.addField('❯ Forks', body.forks, true)
+				.addField('❯ Issues', body.open_issues, true)
+				.addField('❯ Language', body.language || '???', true)
+				.addField('❯ Creation Date', new Date(body.created_at).toDateString(), true)
+				.addField('❯ Modification Date', new Date(body.updated_at).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');

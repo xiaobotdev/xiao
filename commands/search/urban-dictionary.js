@@ -45,8 +45,7 @@ module.exports = class UrbanDictionaryCommand extends Command {
 				.setURL(data.permalink)
 				.setTitle(data.word)
 				.setDescription(shorten(data.definition))
-				.addField('❯ Example',
-					data.example ? shorten(data.example, 1000) : 'None');
+				.addField('❯ Example', data.example ? shorten(data.example, 1000) : 'None');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

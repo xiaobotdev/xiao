@@ -36,30 +36,18 @@ module.exports = class OsuCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xFF66AA)
 				.setAuthor('osu!', 'https://i.imgur.com/hWrw2Sv.png', 'https://osu.ppy.sh/')
-				.addField('❯ Username',
-					data.username, true)
-				.addField('❯ ID',
-					data.user_id, true)
-				.addField('❯ Level',
-					data.level || '???', true)
-				.addField('❯ Accuracy',
-					data.accuracy || '???', true)
-				.addField('❯ Rank',
-					data.pp_rank || '???', true)
-				.addField('❯ Play Count',
-					data.playcount || '???', true)
-				.addField('❯ Country',
-					data.country || '???', true)
-				.addField('❯ Ranked Score',
-					data.ranked_score || '???', true)
-				.addField('❯ Total Score',
-					data.total_score || '???', true)
-				.addField('❯ SS',
-					data.count_rank_ss || '???', true)
-				.addField('❯ S',
-					data.count_rank_s || '???', true)
-				.addField('❯ A',
-					data.count_rank_a || '???', true);
+				.addField('❯ Username', data.username, true)
+				.addField('❯ ID', data.user_id, true)
+				.addField('❯ Level', data.level || '???', true)
+				.addField('❯ Accuracy', data.accuracy || '???', true)
+				.addField('❯ Rank', data.pp_rank || '???', true)
+				.addField('❯ Play Count', data.playcount || '???', true)
+				.addField('❯ Country', data.country || '???', true)
+				.addField('❯ Ranked Score', data.ranked_score || '???', true)
+				.addField('❯ Total Score', data.total_score || '???', true)
+				.addField('❯ SS', data.count_rank_ss || '???', true)
+				.addField('❯ S', data.count_rank_s || '???', true)
+				.addField('❯ A', data.count_rank_a || '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

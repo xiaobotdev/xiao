@@ -39,18 +39,12 @@ module.exports = class KickstarterCommand extends Command {
 				.setAuthor('Kickstarter', 'https://i.imgur.com/EHDlH5t.png', 'https://www.kickstarter.com/')
 				.setDescription(shorten(data.blurb))
 				.setThumbnail(data.photo ? data.photo.full : null)
-				.addField('❯ Goal',
-					`$${data.goal}`, true)
-				.addField('❯ Pledged',
-					`$${data.pledged}`, true)
-				.addField('❯ Backers',
-					data.backers_count, true)
-				.addField('❯ Creator',
-					data.creator.name, true)
-				.addField('❯ Creation Date',
-					new Date(data.created_at * 1000).toDateString(), true)
-				.addField('❯ Deadline',
-					new Date(data.deadline * 1000).toDateString(), true);
+				.addField('❯ Goal', `$${data.goal}`, true)
+				.addField('❯ Pledged', `$${data.pledged}`, true)
+				.addField('❯ Backers', data.backers_count, true)
+				.addField('❯ Creator', data.creator.name, true)
+				.addField('❯ Creation Date', new Date(data.created_at * 1000).toDateString(), true)
+				.addField('❯ Deadline', new Date(data.deadline * 1000).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

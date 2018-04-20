@@ -32,20 +32,13 @@ module.exports = class ChannelInfoCommand extends Command {
 	run(msg, { channel }) {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
-			.addField('❯ Name',
-				channel.type === 'dm' ? `@${channel.recipient.username}` : channel.name, true)
-			.addField('❯ ID',
-				channel.id, true)
-			.addField('❯ NSFW',
-				channel.nsfw ? 'Yes' : 'No', true)
-			.addField('❯ Category',
-				channel.parent ? channel.parent.name : 'None', true)
-			.addField('❯ Type',
-				types[channel.type], true)
-			.addField('❯ Creation Date',
-				channel.createdAt.toDateString(), true)
-			.addField('❯ Topic',
-				channel.topic || 'None');
+			.addField('❯ Name', channel.type === 'dm' ? `@${channel.recipient.username}` : channel.name, true)
+			.addField('❯ ID', channel.id, true)
+			.addField('❯ NSFW', channel.nsfw ? 'Yes' : 'No', true)
+			.addField('❯ Category', channel.parent ? channel.parent.name : 'None', true)
+			.addField('❯ Type', types[channel.type], true)
+			.addField('❯ Creation Date', channel.createdAt.toDateString(), true)
+			.addField('❯ Topic', channel.topic || 'None');
 		return msg.embed(embed);
 	}
 };
