@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "72.0.5",
+	"version": "73.0.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -41,6 +41,7 @@
 		"node-opus": "^0.2.7",
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
+		"random-js": "^1.0.8",
 		"sequelize": "^4.37.6",
 		"snekfetch": "^3.6.4",
 		"uws": "^9.147.0",
