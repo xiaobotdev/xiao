@@ -12,7 +12,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (304)
+## Commands (305)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -60,6 +60,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **discord-email-fun-fact**: Responds with a random fun fact from the Discord emails.
 * **dog-fact**: Responds with a random dog fact.
 * **dog**: Responds with a random dog image.
+* **fact**: Responds with a random fact.
 * **fact-core**: Responds with a random Fact Core quote.
 * **fidget**: Responds with a random image of Fidget.
 * **fortune**: Responds with a random fortune.
