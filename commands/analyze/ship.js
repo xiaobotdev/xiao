@@ -26,7 +26,7 @@ module.exports = class ShipCommand extends Command {
 	}
 
 	run(msg, { first, second }) {
-		const random = new Random(Random.engines.mt19937().seed(first.id - second.id));
+		const random = new Random(Random.engines.mt19937().seed(Math.abs(first.id - second.id)));
 		return msg.say(`I'd give ${first.username} and ${second.username} a ${random.integer(0, 100)}%!`);
 	}
 };
