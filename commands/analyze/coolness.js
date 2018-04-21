@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const Random = require('random-js');
 const texts = require('../../assets/json/coolness');
 
 module.exports = class CoolnessCommand extends Command {
@@ -21,13 +22,13 @@ module.exports = class CoolnessCommand extends Command {
 
 	run(msg, { user }) {
 		const authorUser = user.id === msg.author.id;
-		const coolness = Math.round(((user.id / this.client.user.id) * 10) / 2);
 		if (user.id === this.client.user.id) return msg.reply('Me? I think I\'m the very best, like no one ever was.');
 		if (this.client.isOwner(user)) {
 			if (authorUser) return msg.reply('You\'re the best owner a bot could ask for! ❤');
 			return msg.reply(`Don't tell them I said this but I think ${user.username} smells like a sack of diapers.`);
 		}
-		const text = texts[Math.min(coolness, texts.length - 1)];
-		return msg.reply(`${authorUser ? 'You are' : `${user.username} is`} ${text}`);
+		const random = new Random(Random.engines.mt19937().seed(user.id));
+		const coolness = random.integer(0, texts.length - 1);
+		return msg.reply(`${authorUser ? 'You are' : `${user.username} is`} ${texts[coolness]}`);
 	}
 };

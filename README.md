@@ -57,7 +57,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **chuck-norris**: Responds with a random Chuck Norris joke.
 * **coin**: Flips a coin.
 * **compliment**: Compliments a user.
-* **dick**: Determines your dick size.
 * **discord-email-fun-fact**: Responds with a random fun fact from the Discord emails.
 * **dog-fact**: Responds with a random dog fact.
 * **dog**: Responds with a random dog image.
@@ -84,7 +83,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **roast**: Roasts a user.
 * **roll**: Rolls a dice with a maximum value of your choice.
 * **security-key**: Responds with a random security key.
-* **ship**: Ships two people together.
 * **shower-thought**: Responds with a random shower thought, directly from r/Showerthoughts.
 * **user-roulette**: Randomly chooses a member of the server.
 * **would-you-rather**: Responds with a random "Would you rather ...?" question.
@@ -182,10 +180,12 @@ served over 10,000 servers with a uniquely devoted fanbase.
 ### Analyzers:
 
 * **coolness**: Determines a user's coolness.
+* **dick**: Determines your dick size.
 * **face-analyze**: Determines the age, gender, and race of a face.
 * **gender-analyze**: Determines the gender of a name.
 * **read-qr-code**: Reads a QR Code.
 * **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
+* **ship**: Ships two users together.
 * **toxicity**: Determines the toxicity of text.
 
 ### Games:
