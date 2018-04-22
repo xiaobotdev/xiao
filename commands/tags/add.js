@@ -12,11 +12,11 @@ module.exports = class TagAddCommand extends Command {
 			guildOnly: true,
 			args: [
 				{
-					key: 'id',
-					prompt: 'What should the ID of the tag be?',
+					key: 'name',
+					prompt: 'What should the name of the tag be?',
 					type: 'string',
 					max: 50,
-					parse: id => id.toLowerCase()
+					parse: name => name.toLowerCase()
 				},
 				{
 					key: 'text',
@@ -28,15 +28,15 @@ module.exports = class TagAddCommand extends Command {
 		});
 	}
 
-	async run(msg, { id, text }) {
-		const tag = await Tag.findOne({ where: { id, guildID: msg.guild.id } });
-		if (tag) return msg.reply(`A tag with the ID **${id}** already exists.`);
+	async run(msg, { name, text }) {
+		const tag = await Tag.findOne({ where: { name, guildID: msg.guild.id } });
+		if (tag) return msg.reply(`A tag with the name **${name}** already exists.`);
 		await Tag.create({
 			userID: msg.author.id,
 			guildID: msg.guild.id,
-			id,
+			name,
 			text
 		});
-		return msg.reply(`Added the tag **${id}**.`);
+		return msg.reply(`Added **${name}**.`);
 	}
 };

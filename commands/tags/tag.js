@@ -11,19 +11,19 @@ module.exports = class TagCommand extends Command {
 			guildOnly: true,
 			args: [
 				{
-					key: 'id',
-					prompt: 'What is the ID of the tag you want view?',
+					key: 'name',
+					prompt: 'What is the name of the tag you want view?',
 					type: 'string',
 					max: 50,
-					parse: id => id.toLowerCase()
+					parse: name => name.toLowerCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { id }) {
-		const tag = await Tag.findOne({ where: { id, guildID: msg.guild.id } });
-		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn't exist.`);
+	async run(msg, { name }) {
+		const tag = await Tag.findOne({ where: { name, guildID: msg.guild.id } });
+		if (!tag) return msg.reply(`A tag with the name **${name}** doesn't exist.`);
 		return msg.say(tag.text);
 	}
 };
