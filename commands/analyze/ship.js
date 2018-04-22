@@ -26,6 +26,7 @@ module.exports = class ShipCommand extends Command {
 	}
 
 	run(msg, { first, second }) {
+		if (first.id === second.id) return msg.reply('Shipping someone with themselves would be pretty weird.');
 		const random = new Random(Random.engines.mt19937().seed(Math.abs(first.id - second.id)));
 		return msg.say(`I'd give ${first.username} and ${second.username} a ${random.integer(0, 100)}%!`);
 	}
