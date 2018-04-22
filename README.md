@@ -332,7 +332,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **tag-add**: Adds a tag for this server.
 * **tag-edit**: Edits a tag in this server.
 * **tag-info**: Responds with detailed information on a tag in this server.
-* **tag-remove**: Removes a tag for this server.
+* **tag-remove**: Removes a tag from this server.
 * **tag-source**: Responds with the base markdown of a tag in this server.
 
 ### Role Management:

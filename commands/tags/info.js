@@ -25,7 +25,7 @@ module.exports = class TagInfoCommand extends Command {
 
 	async run(msg, { id }) {
 		const tag = await Tag.findOne({ where: { id, guildID: msg.guild.id } });
-		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn\'t exist.`);
+		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn't exist.`);
 		let author;
 		try {
 			const authorUser = await this.client.users.fetch(tag.userID);

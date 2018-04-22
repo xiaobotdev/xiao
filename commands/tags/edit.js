@@ -30,7 +30,7 @@ module.exports = class TagEditCommand extends Command {
 
 	async run(msg, { id, text }) {
 		const tag = await Tag.findOne({ where: { id, guildID: msg.guild.id } });
-		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn\'t exist.`);
+		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn't exist.`);
 		if (!msg.channel.permissionsFor(msg.author).has('MANAGE_MESSAGES') && tag.userID !== msg.author.id) {
 			return msg.reply('You can only edit your own tags.');
 		}

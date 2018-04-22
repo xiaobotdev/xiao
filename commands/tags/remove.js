@@ -8,7 +8,7 @@ module.exports = class TagRemoveCommand extends Command {
 			aliases: ['tag-delete', 'remove-tag', 'delete-tag'],
 			group: 'tags',
 			memberName: 'remove',
-			description: 'Removes a tag for this server.',
+			description: 'Removes a tag from this server.',
 			guildOnly: true,
 			args: [
 				{
@@ -24,7 +24,7 @@ module.exports = class TagRemoveCommand extends Command {
 
 	async run(msg, { id }) {
 		const tag = await Tag.findOne({ where: { id, guildID: msg.guild.id } });
-		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn\'t exist.`);
+		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn't exist.`);
 		if (!msg.channel.permissionsFor(msg.author).has('MANAGE_MESSAGES') && tag.userID !== msg.author.id) {
 			return msg.reply('You can only delete your own tags.');
 		}
