@@ -12,11 +12,11 @@ module.exports = class TagEditCommand extends Command {
 			guildOnly: true,
 			args: [
 				{
-					key: 'id',
-					prompt: 'What is the ID of the tag you want to edit?',
+					key: 'name',
+					prompt: 'What is the name of the tag you want to edit?',
 					type: 'string',
 					max: 50,
-					parse: id => id.toLowerCase()
+					parse: name => name.toLowerCase()
 				},
 				{
 					key: 'text',
@@ -28,13 +28,13 @@ module.exports = class TagEditCommand extends Command {
 		});
 	}
 
-	async run(msg, { id, text }) {
-		const tag = await Tag.findOne({ where: { id, guildID: msg.guild.id } });
-		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn't exist.`);
+	async run(msg, { name, text }) {
+		const tag = await Tag.findOne({ where: { name, guildID: msg.guild.id } });
+		if (!tag) return msg.reply(`A tag with the name **${name}** doesn't exist.`);
 		if (!msg.channel.permissionsFor(msg.author).has('MANAGE_MESSAGES') && tag.userID !== msg.author.id) {
 			return msg.reply('You can only edit your own tags.');
 		}
-		await Tag.update({ text }, { where: { id, guild: msg.guild.id } });
-		return msg.reply(`Edited the tag **${id}**.`);
+		await Tag.update({ text }, { where: { name, guild: msg.guild.id } });
+		return msg.reply(`Edited **${name}**.`);
 	}
 };

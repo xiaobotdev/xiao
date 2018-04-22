@@ -14,7 +14,7 @@ const Tag = Database.db.define('tag', {
 		type: Sequelize.STRING,
 		allowNull: false
 	},
-	id: {
+	name: {
 		type: Sequelize.STRING,
 		allowNull: false
 	}

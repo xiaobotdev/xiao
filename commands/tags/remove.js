@@ -12,23 +12,23 @@ module.exports = class TagRemoveCommand extends Command {
 			guildOnly: true,
 			args: [
 				{
-					key: 'id',
-					prompt: 'What is the ID of the tag you want to remove?',
+					key: 'name',
+					prompt: 'What is the name of the tag you want to remove?',
 					type: 'string',
 					max: 50,
-					parse: id => id.toLowerCase()
+					parse: name => name.toLowerCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { id }) {
-		const tag = await Tag.findOne({ where: { id, guildID: msg.guild.id } });
-		if (!tag) return msg.reply(`A tag with the ID **${id}** doesn't exist.`);
+	async run(msg, { name }) {
+		const tag = await Tag.findOne({ where: { name, guildID: msg.guild.id } });
+		if (!tag) return msg.reply(`A tag with the name **${name}** doesn't exist.`);
 		if (!msg.channel.permissionsFor(msg.author).has('MANAGE_MESSAGES') && tag.userID !== msg.author.id) {
 			return msg.reply('You can only delete your own tags.');
 		}
 		await tag.destroy();
-		return msg.reply(`Removed the tag **${id}**.`);
+		return msg.reply(`Removed **${name}**.`);
 	}
 };
