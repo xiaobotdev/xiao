@@ -12,7 +12,7 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-filled bots out there, and formerly
 served over 10,000 servers with a uniquely devoted fanbase.
 
-## Commands (305)
+## Commands (311)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -326,6 +326,14 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **percentage**: Determines the percentage one number is of another.
 * **roman-numeral**: Converts a number to roman numerals.
 * **units**: Converts units to/from other units.
+
+### Server Tags:
+* **tag**: Responds with a tag in this server.
+* **tag-add**: Adds a tag for this server.
+* **tag-edit**: Edits a tag in this server.
+* **tag-info**: Responds with detailed information on a tag in this server.
+* **tag-remove**: Removes a tag for this server.
+* **tag-source**: Responds with the base markdown of a tag in this server.
 
 ### Role Management:
 
