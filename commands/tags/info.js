@@ -36,7 +36,7 @@ module.exports = class TagInfoCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(msg.guild.iconURL())
-			.addField('❯ name', tag.name, true)
+			.addField('❯ Name', tag.name, true)
 			.addField('❯ Author', author, true)
 			.addField('❯ Created On', new Date(tag.createdAt).toDateString(), true)
 			.addField('❯ Modified On', new Date(tag.updatedAt).toDateString(), true);
