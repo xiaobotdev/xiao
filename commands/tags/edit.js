@@ -34,7 +34,7 @@ module.exports = class TagEditCommand extends Command {
 		if (!msg.channel.permissionsFor(msg.author).has('MANAGE_MESSAGES') && tag.userID !== msg.author.id) {
 			return msg.reply('You can only edit your own tags.');
 		}
-		await Tag.update({ text }, { where: { name, guild: msg.guild.id } });
+		await Tag.update({ text }, { where: { name, guildID: msg.guild.id } });
 		return msg.reply(`Edited **${name}**.`);
 	}
 };
