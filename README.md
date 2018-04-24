@@ -60,8 +60,8 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **discord-email-fun-fact**: Responds with a random fun fact from the Discord emails.
 * **dog-fact**: Responds with a random dog fact.
 * **dog**: Responds with a random dog image.
-* **fact**: Responds with a random fact.
 * **fact-core**: Responds with a random Fact Core quote.
+* **fact**: Responds with a random fact.
 * **fidget**: Responds with a random image of Fidget.
 * **fortune**: Responds with a random fortune.
 * **fruit**: Responds with a random fruit.
@@ -328,12 +328,13 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **units**: Converts units to/from other units.
 
 ### Server Tags:
-* **tag**: Responds with a tag in this server.
+
 * **tag-add**: Adds a tag for this server.
 * **tag-edit**: Edits a tag in this server.
 * **tag-info**: Responds with detailed information on a tag in this server.
 * **tag-remove**: Removes a tag from this server.
 * **tag-source**: Responds with the base markdown of a tag in this server.
+* **tag**: Responds with a tag in this server.
 
 ### Role Management:
 
