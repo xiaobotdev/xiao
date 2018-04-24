@@ -1,12 +1,13 @@
 const { Command } = require('discord.js-commando');
 const Tag = require('../../models/Tag');
 
-module.exports = class TagCommand extends Command {
+module.exports = class TagViewCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'tag',
+			name: 'tag-view',
+			aliases: ['tag', 'view-tag'],
 			group: 'tags',
-			memberName: 'tag',
+			memberName: 'view',
 			description: 'Responds with a tag in this server.',
 			guildOnly: true,
 			args: [
