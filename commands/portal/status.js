@@ -5,7 +5,7 @@ module.exports = class PortalStatusCommand extends Command {
 		super(client, {
 			name: 'portal-status',
 			group: 'portal',
-			memberName: 'portal-status',
+			memberName: 'status',
 			description: 'Shows the number of currently opened portals.'
 		});
 	}

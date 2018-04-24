@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { GOOGLE_KEY } = process.env;
 
-module.exports = class YouTubeCommand extends Command {
+module.exports = class YoutubeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'youtube',

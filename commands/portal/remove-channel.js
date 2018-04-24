@@ -6,7 +6,7 @@ module.exports = class RemovePortalChannelCommand extends Command {
 			name: 'remove-portal-channel',
 			aliases: ['delete-portal-channel', 'close-portal'],
 			group: 'portal',
-			memberName: 'remove-portal-channel',
+			memberName: 'remove-channel',
 			description: 'Remove a channel from the portal channels.',
 			guildOnly: true,
 			userPermissions: ['MANAGE_CHANNELS'],
