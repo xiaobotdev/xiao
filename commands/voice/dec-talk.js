@@ -36,7 +36,7 @@ module.exports = class DECTalkCommand extends Command {
 		try {
 			const connection = await channel.join();
 			const data = await snekfetch
-				.get('http://tts.cyzon.us/tts', { followRedirects: false })
+				.get('http://tts.cyzon.us/tts', { redirects: false })
 				.query({ text });
 			const dispatcher = connection.play(`http://tts.cyzon.us${data.headers.location}`);
 			dispatcher.once('finish', () => channel.leave());
