@@ -4,7 +4,7 @@ const snekfetch = require('snekfetch');
 const { shorten, base64 } = require('../../util/Util');
 const { GITHUB_USERNAME, GITHUB_PASSWORD } = process.env;
 
-module.exports = class GitHubCommand extends Command {
+module.exports = class GithubCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'github',

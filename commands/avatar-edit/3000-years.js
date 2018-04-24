@@ -3,7 +3,7 @@ const { createCanvas, loadImage } = require('canvas');
 const snekfetch = require('snekfetch');
 const path = require('path');
 
-module.exports = class YearsCommand extends Command {
+module.exports = class ThreeThousandYearsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: '3000-years',

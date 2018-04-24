@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
 const { MessageEmbed } = require('discord.js');
 
-module.exports = class NeopetItemCommand extends Command {
+module.exports = class NeopetsItemCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'neopets-item',

@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 
-module.exports = class ITunesCommand extends Command {
+module.exports = class ItunesCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'itunes',

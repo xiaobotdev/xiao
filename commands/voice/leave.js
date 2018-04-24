@@ -8,7 +8,8 @@ module.exports = class LeaveVoiceChannelCommand extends Command {
 			group: 'voice',
 			memberName: 'leave',
 			description: 'Leaves a voice channel, in case the bot gets stuck.',
-			guildOnly: true
+			guildOnly: true,
+			userPermissions: ['MOVE_MEMBERS']
 		});
 	}
 

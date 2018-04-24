@@ -6,7 +6,7 @@ module.exports = class FixPortalChannelsCommand extends Command {
 			name: 'fix-portal-channels',
 			aliases: ['fix-portals'],
 			group: 'portal',
-			memberName: 'fix-portal-channels',
+			memberName: 'fix-channels',
 			description: 'Removes no longer existent channels from the portal list.',
 			ownerOnly: true
 		});

@@ -4,7 +4,7 @@ const snekfetch = require('snekfetch');
 const path = require('path');
 const { greyscale } = require('../../util/Canvas');
 
-module.exports = class RIPCommand extends Command {
+module.exports = class RipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'rip',
