@@ -334,7 +334,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **tag-info**: Responds with detailed information on a tag in this server.
 * **tag-remove**: Removes a tag from this server.
 * **tag-source**: Responds with the base markdown of a tag in this server.
-* **tag**: Responds with a tag in this server.
+* **tag-view**: Responds with a tag in this server.
 
 ### Role Management:
 
