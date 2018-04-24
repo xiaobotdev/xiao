@@ -39,7 +39,7 @@ module.exports = class TumblrCommand extends Command {
 				.addField('❯ A.M.A.?', data.ask ? 'Yes' : 'No', true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Could not find any results.');
+			if (err.statusCode === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

@@ -23,7 +23,7 @@ module.exports = class Rule34Command extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { text } = await snekfetch
+			const { raw } = await snekfetch
 				.get('https://rule34.xxx/index.php')
 				.query({
 					page: 'dapi',
@@ -33,6 +33,7 @@ module.exports = class Rule34Command extends Command {
 					tags: query,
 					limit: 200
 				});
+			const text = raw.toString();
 			if (!text) return msg.say('Could not find any results.');
 			const body = JSON.parse(text);
 			const data = body[Math.floor(Math.random() * body.length)];

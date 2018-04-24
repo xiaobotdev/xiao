@@ -28,11 +28,11 @@ module.exports = class MyAnimeListAnimeCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { text } = await snekfetch
+			const { raw } = await snekfetch
 				.get('https://myanimelist.net/api/anime/search.xml')
 				.query({ q: query })
 				.set({ Authorization: `Basic ${base64(`${MAL_USERNAME}:${MAL_PASSWORD}`)}` });
-			const body = await xml(text);
+			const body = await xml(raw.toString());
 			const data = body.anime.entry[0];
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)

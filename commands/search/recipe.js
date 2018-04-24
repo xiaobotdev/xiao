@@ -23,10 +23,10 @@ module.exports = class RecipeCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { text } = await snekfetch
+			const { raw } = await snekfetch
 				.get('http://www.recipepuppy.com/api/')
 				.query({ q: query });
-			const body = JSON.parse(text);
+			const body = JSON.parse(raw.toString());
 			if (!body.results.length) return msg.say('Could not find any results.');
 			const recipe = body.results[Math.floor(Math.random() * body.results.length)];
 			const embed = new MessageEmbed()
@@ -38,7 +38,7 @@ module.exports = class RecipeCommand extends Command {
 				.setThumbnail(recipe.thumbnail);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 500) return msg.say('Could not find any results.');
+			if (err.statusCode === 500) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

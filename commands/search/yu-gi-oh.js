@@ -25,10 +25,10 @@ module.exports = class YuGiOhCommand extends Command {
 
 	async run(msg, { card }) {
 		try {
-			const { text } = await snekfetch
+			const { raw } = await snekfetch
 				.get('https://www.ygohub.com/api/card_info')
 				.query({ name: card });
-			const body = JSON.parse(text);
+			const body = JSON.parse(raw.toString());
 			if (body.status === 'error') return msg.say('Could not find any results.');
 			const data = body.card;
 			const embed = new MessageEmbed()
