@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const faces = ['(・`ω´・)', ';;w;;', 'owo', 'UwU', '>w<', '^w^'];
 
 module.exports = class OwOCommand extends Command {
 	constructor(client) {
@@ -32,6 +33,8 @@ module.exports = class OwOCommand extends Command {
 			.replace(/n([aeiou])/g, 'ny$1')
 			.replace(/N([aeiou])/g, 'Ny$1')
 			.replace(/N([AEIOU])/g, 'NY$1')
-			.replace(/ove/g, 'uv');
+			.replace(/ove/g, 'uv')
+			.replace(/\!+/g, ` ${faces[Math.floor(Math.random() * faces.length)]} `)
+			.trim();
 	}
 };
