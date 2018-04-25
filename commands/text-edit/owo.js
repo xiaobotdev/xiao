@@ -34,7 +34,7 @@ module.exports = class OwOCommand extends Command {
 			.replace(/N([aeiou])/g, 'Ny$1')
 			.replace(/N([AEIOU])/g, 'NY$1')
 			.replace(/ove/g, 'uv')
-			.replace(/\!+/g, ` ${faces[Math.floor(Math.random() * faces.length)]} `)
+			.replace(/!+/g, ` ${faces[Math.floor(Math.random() * faces.length)]} `)
 			.trim();
 	}
 };
