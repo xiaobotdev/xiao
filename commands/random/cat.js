@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const snekfetch = require('snekfetch');
+const { THE_CAT_API_KEY } = process.env;
 
 module.exports = class CatCommand extends Command {
 	constructor(client) {
@@ -15,8 +16,11 @@ module.exports = class CatCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await snekfetch.get('http://aws.random.cat/meow');
-			return msg.say({ files: [body.file] });
+			const { body, headers } = await snekfetch
+				.get('http://thecatapi.com/api/images/get')
+				.query({ api_key: THE_CAT_API_KEY });
+			const format = headers['content-type'].replace(/image\//i, '');
+			return msg.say({ files: [{ attachment: body, name: `cat.${format}` }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
