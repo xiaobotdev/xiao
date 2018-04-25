@@ -158,7 +158,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **rule-of-the-internet**: Responds with a rule of the internet.
 * **rule34**: Responds with an image from Rule34, with optional query.
 * **safebooru**: Responds with an image from Safebooru, with optional query.
-* **spoopy-link**: Determines if a link is spoopy or not.
 * **stack-overflow**: Searches Stack Overflow for your query.
 * **steam**: Searches Steam for your query.
 * **stocks**: Responds with the current stocks for a specific symbol.
@@ -176,7 +175,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **xkcd**: Responds with an XKCD comic, either today's, a random one, or a specific one.
 * **youtube**: Searches YouTube for your query.
 * **yu-gi-oh**: Responds with info on a Yu-Gi-Oh! card.
-* **zodiac-sign**: Responds with the Zodiac Sign for the given month/day.
 
 ### Analyzers:
 
@@ -187,7 +185,9 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **read-qr-code**: Reads a QR Code.
 * **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
 * **ship**: Ships two users together.
+* **spoopy-link**: Determines if a link is spoopy or not.
 * **toxicity**: Determines the toxicity of text.
+* **zodiac-sign**: Responds with the Zodiac Sign for the given month/day.
 
 ### Games:
 
