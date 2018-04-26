@@ -28,8 +28,9 @@ module.exports = class GoogleDoodleCommand extends Command {
 
 	async run(msg, { month, year }) {
 		const latest = month === 'latest';
-		if (latest) month = new Date().getMonth() + 1;
-		if (!year) year = new Date().getFullYear();
+		const now = new Date();
+		if (latest) month = now.getMonth() + 1;
+		if (!year) year = now.getFullYear();
 		try {
 			const { body } = await snekfetch.get(`https://www.google.com/doodles/json/${year}/${month}`);
 			if (!body.length) return msg.say('Could not find any results.');
