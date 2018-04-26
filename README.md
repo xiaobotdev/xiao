@@ -65,7 +65,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **fidget**: Responds with a random image of Fidget.
 * **fortune**: Responds with a random fortune.
 * **fruit**: Responds with a random fruit.
-* **guess-looks**: Guesses what a user looks like.
 * **joke**: Responds with a random joke.
 * **karen**: Responds with a random image of Karen.
 * **kiss-marry-kill**: Determines who to kiss, who to marry, and who to kill.
@@ -182,6 +181,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **dick**: Determines your dick size.
 * **face-analyze**: Determines the age, gender, and race of a face.
 * **gender-analyze**: Determines the gender of a name.
+* **guess-looks**: Guesses what a user looks like.
 * **read-qr-code**: Reads a QR Code.
 * **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
 * **ship**: Ships two users together.
