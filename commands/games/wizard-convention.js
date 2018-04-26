@@ -30,7 +30,7 @@ module.exports = class WizardConventionCommand extends Command {
 			}
 			const players = await this.generatePlayers(awaitedPlayers);
 			let turn = 1;
-			while (players.size > 2 && players.exists('role', 'dragon')) {
+			while (players.size > 2 && players.some(p => p.role === 'dragon')) {
 				let eaten = null;
 				let healed = null;
 				await msg.say(`Night ${turn}, sending DMs...`);
@@ -61,7 +61,7 @@ module.exports = class WizardConventionCommand extends Command {
 						healed = chosen.id;
 						await player.user.send(`${chosen.user.tag} will be healed...`);
 					} else if (player.role === 'mind reader') {
-						await player.user.send(players.find('role', 'dragon').id === choice ? 'Yes.' : 'No.');
+						await player.user.send(players.find(p => p.role === 'dragon').id === choice ? 'Yes.' : 'No.');
 					}
 				}
 				const display = eaten ? players.get(eaten).user : null;
@@ -118,7 +118,7 @@ module.exports = class WizardConventionCommand extends Command {
 				++turn;
 			}
 			this.playing.delete(msg.channel.id);
-			const dragon = players.find('role', 'dragon');
+			const dragon = players.find(p => p.role === 'dragon');
 			if (!dragon) return msg.say('The dragon has been vanquished! Thanks for playing!');
 			return msg.say(`Oh no, the dragon wasn't caught in time... Nice job, ${dragon.user}!`);
 		} catch (err) {
