@@ -32,7 +32,7 @@ module.exports = class GuessLooksCommand extends Command {
 		const hairStyle = hairStyles[random.integer(0, hairStyles.length - 1)];
 		const age = random.integer(10, 100);
 		const feet = random.integer(3, 7);
-		const inches = random.integer(0, 12);
+		const inches = random.integer(0, 11);
 		const weight = random.integer(50, 300);
 		const extra = extras[random.integer(0, extras.length - 1)];
 		return msg.reply(oneLine`
