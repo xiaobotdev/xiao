@@ -15,7 +15,7 @@ module.exports = class DonateCommand extends Command {
 
 	run(msg) {
 		return msg.say(stripIndents`
-			Contribute to XiaoBot development!
+			Contribute to Xiao development!
 			<https://www.patreon.com/dragonfire535>
 			<https://paypal.me/dragonfire535>
 		`);

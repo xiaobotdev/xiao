@@ -7,18 +7,23 @@ module.exports = class SayCommand extends Command {
 			aliases: ['copy', 'echo'],
 			group: 'text-edit',
 			memberName: 'say',
-			description: 'Make XiaoBot say what you wish.',
+			description: 'Make me say what you want, master.',
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like XiaoBot to say?',
+					prompt: 'What text would you like me to say?',
 					type: 'string'
 				}
 			]
 		});
 	}
 
-	run(msg, { text }) {
-		return msg.say(text);
+	async run(msg, { text }) {
+		try {
+			if (msg.channel.type === 'text' && msg.deletable) await msg.delete();
+			return msg.say(text);
+		} catch (err) {
+			return msg.say(text);
+		}
 	}
 };

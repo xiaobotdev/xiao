@@ -24,9 +24,11 @@ module.exports = class WebhookCommand extends Command {
 	}
 
 	async run(msg, { content }) {
-		if (msg.channel.type === 'text') await msg.delete();
 		try {
-			await snekfetch.post(`https://discordapp.com/api/webhooks/${WEBHOOK_ID}/${WEBHOOK_TOKEN}`).send({ content });
+			if (msg.channel.type === 'text' && msg.deletable) await msg.delete();
+			await snekfetch
+				.post(`https://discordapp.com/api/webhooks/${WEBHOOK_ID}/${WEBHOOK_TOKEN}`)
+				.send({ content });
 			return null;
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
