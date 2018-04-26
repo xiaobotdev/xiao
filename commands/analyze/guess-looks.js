@@ -24,6 +24,7 @@ module.exports = class GuessLooksCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		const authorUser = user.id === msg.author.id;
 		const random = new Random(Random.engines.mt19937().seed(user.id));
 		const gender = genders[random.integer(0, genders.length - 1)];
 		const eyeColor = eyeColors[random.integer(0, eyeColors.length - 1)];
@@ -34,9 +35,10 @@ module.exports = class GuessLooksCommand extends Command {
 		const inches = random.integer(0, 12);
 		const weight = random.integer(50, 300);
 		const extra = extras[random.integer(0, extras.length - 1)];
-		return msg.say(oneLine`
-			I think ${user.username} is a ${age} year old ${gender} with ${eyeColor} eyes and ${hairStyle} ${hairColor}
-			hair. They are ${feet}'${inches}" and weigh ${weight} pounds. Don't forget the ${extra}!
+		return msg.reply(oneLine`
+			I think ${authorUser ? 'you are' : `${user.username} is`} a ${age} year old ${gender} with ${eyeColor} eyes
+			and ${hairStyle} ${hairColor} hair. ${authorUser ? 'You are' : `${gender === 'male' ? 'He' : 'She'} is`}
+			${feet}'${inches}" and weigh${authorUser ? '' : 's'} ${weight} pounds. Don't forget the ${extra}!
 		`);
 	}
 };
