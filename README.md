@@ -280,8 +280,8 @@ served over 10,000 servers with a uniquely devoted fanbase.
 ### Text Manipulation:
 
 * **alphabet-reverse**: Reverses the alphabet of text.
-* **base64**: Converts text to Base64.
-* **binary**: Converts text to binary.
+* **base64**: Converts text to/from Base64.
+* **binary**: Converts text to/from binary.
 * **braille**: Converts text to braille.
 * **clap**: Sends 👏 text 👏 like 👏 this.
 * **cow-say**: Makes a cow say your text.
@@ -302,7 +302,7 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **pirate**: Converts text to pirate.
 * **repeat**: Repeat text over and over and over and over (etc).
 * **reverse**: Reverses text.
-* **say**: Make XiaoBot say what you wish.
+* **say**: Make me say what you want, master.
 * **sha-256**: Creates a hash of text with the SHA-256 algorithm.
 * **ship-name**: Creates a ship name from two names.
 * **shorten-url**: Creates a goo.gl short URL from another URL.
