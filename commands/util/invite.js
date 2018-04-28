@@ -14,7 +14,7 @@ module.exports = class InviteCommand extends Command {
 	}
 
 	async run(msg) {
-		const invite = await this.client.generateInvite('372632641');
+		const invite = await this.client.generateInvite(372632641);
 		return msg.say(stripIndents`
 			To invite me to your server, use this link:
 			<${invite}>
