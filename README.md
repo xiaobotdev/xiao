@@ -9,7 +9,13 @@ Xiao is a Discord bot coded in JavaScript with
 [Commando](https://github.com/discordjs/Commando) command framework. With over
 300 commands, she is one of the most feature-filled bots out there.
 
-## Commands (307)
+## Invite
+You can invite the bot to your server using
+[this link](https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=372632641).
+Be sure to also join the [home server](https://discord.gg/sbMe32W) for
+information and support. 
+
+## Commands (308)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -18,6 +24,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **donate**: Responds with Xiao's donation links.
 * **help**: Displays a list of available commands, or detailed information for a specific command.
 * **info**: Responds with detailed bot information.
+* **invite**: Responds with Xiao's invite links.
 * **ping**: Checks the bot's ping to the Discord server.
 * **uptime**: Responds with how long the bot has been active.
 * **whitelist**: Removes a user from the blacklist.

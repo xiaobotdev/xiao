@@ -4,7 +4,6 @@ module.exports = class UnsubscribeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'unsubscribe',
-			aliases: ['leave'],
 			group: 'role-manage',
 			memberName: 'unsubscribe',
 			description: 'Unsubscribes you from the specified role.',
