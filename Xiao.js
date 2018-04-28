@@ -9,6 +9,7 @@ const client = new XiaoClient({
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START']
 });
+const { discordBots } = require('./util/BotList');
 const SequelizeProvider = require('./providers/Sequelize');
 const activities = require('./assets/json/activity');
 
@@ -56,12 +57,17 @@ client.on('ready', () => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
 		client.user.setActivity(activity.text, { type: activity.type });
 	}, 60000);
+	discordBots(client);
 });
 
 client.on('disconnect', event => {
 	console.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	process.exit(0);
 });
+
+client.on('guildCreate', () => discordBots(client));
+
+client.on('guildDelete', () => discordBots(client));
 
 client.on('commandRun', command => console.log(`[COMMAND] Ran command ${command.groupID}:${command.memberName}.`));
 
