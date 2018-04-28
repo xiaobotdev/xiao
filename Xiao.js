@@ -50,7 +50,7 @@ client.dispatcher.addInhibitor(msg => {
 	return 'Blacklisted.';
 });
 
-client.on('ready', async () => {
+client.on('ready', () => {
 	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.setInterval(() => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
