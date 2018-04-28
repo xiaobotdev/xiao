@@ -4,15 +4,12 @@
 [![Donate on Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/dragonfire535)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
 
-> Note: The bot is no longer available for invite.
-
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
 [Commando](https://github.com/discordjs/Commando) command framework. With over
-300 commands, she is one of the most feature-filled bots out there, and formerly
-served over 10,000 servers with a uniquely devoted fanbase.
+300 commands, she is one of the most feature-filled bots out there.
 
-## Commands (311)
+## Commands (307)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -192,11 +189,9 @@ served over 10,000 servers with a uniquely devoted fanbase.
 ### Games:
 
 * **akinator**: Think about a real or fictional character, I will try to guess who it is.
-* **apples-to-apples**: Compete to see who can come up with the best card to match an adjective.
 * **balloon-pop**: Don't let yourself be the last one to pump the balloon before it pops!
 * **battle**: Engage in a turn-based battle against another user or the AI.
 * **captcha-quiz**: Try to guess what the captcha says.
-* **cards-against-humanity**: Compete to see who can come up with the best card to fill in the blank.
 * **chance**: Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **emoji-emoji-revolution**: Can you type arrow emoji faster than anyone else has ever typed them before?
 * **fishy**: Go fishing.
@@ -214,7 +209,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 * **tic-tac-toe**: Play a game of tic-tac-toe with another user.
 * **typing-test**: See how fast you can type a sentence in a given time limit.
 * **whos-that-pokemon**: Guess who that Pokémon is.
-* **wizard-convention**: Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?
 
 ### Voice Channel:
 
@@ -355,7 +349,6 @@ served over 10,000 servers with a uniquely devoted fanbase.
 
 ### Other:
 
-* **cleverbot**: Chat with Cleverbot.
 * **prune**: Deletes up to 99 messages from the current channel.
 * **strawpoll**: Generates a Strawpoll with the options you provide.
 
