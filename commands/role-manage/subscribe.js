@@ -4,7 +4,6 @@ module.exports = class SubscribeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'subscribe',
-			aliases: ['join'],
 			group: 'role-manage',
 			memberName: 'subscribe',
 			description: 'Subscribes you to the specified role.',
