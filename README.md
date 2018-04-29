@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (308)
+## Commands (307)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -314,7 +314,6 @@ information and support.
 * **translate**: Translates text to a specific language.
 * **upside-down**: Flips text upside-down.
 * **url-encode**: Encodes text to URL-friendly characters.
-* **webhook**: Posts a message to the webhook defined in your `process.env`.
 * **yoda**: Converts text to Yoda speak.
 * **zalgo**: Converts text to zalgo.
 * **🅱**: Replaces b with 🅱.
