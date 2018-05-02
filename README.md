@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (307)
+## Commands (308)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -54,6 +54,7 @@ information and support.
 ### Random Response:
 
 * **8-ball**: Asks your question to the Magic 8 Ball.
+* **advice-slip**: Responds with a random bit of advice.
 * **cat-fact**: Responds with a random cat fact.
 * **cat**: Responds with a random cat image.
 * **charlie-charlie-challenge**: Asks your question to Charlie.
