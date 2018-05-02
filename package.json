@@ -37,7 +37,7 @@
 		"discord.js": "github:discordjs/discord.js",
 		"discord.js-commando": "github:discordjs/Commando",
 		"erlpack": "github:discordapp/erlpack",
-		"mathjs": "^4.1.2",
+		"mathjs": "^4.2.1",
 		"node-opus": "^0.2.7",
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
