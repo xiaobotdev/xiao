@@ -42,7 +42,7 @@ module.exports = class TicTacToeCommand extends Command {
 				const user = userTurn ? msg.author : opponent;
 				const sign = userTurn ? 'X' : 'O';
 				await msg.say(stripIndents`
-					${user}, which side do you pick?
+					${user.toString()}, which side do you pick?
 					\`\`\`
 					${sides[0]} | ${sides[1]} | ${sides[2]}
 					—————————

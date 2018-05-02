@@ -57,7 +57,7 @@ module.exports = class BattleCommand extends Command {
 				let choice;
 				if (!opponent.bot || (opponent.bot && userTurn)) {
 					await msg.say(stripIndents`
-						${user}, do you **fight**, **guard**, **special**, or **run**?
+						${user.toString()}, do you **fight**, **guard**, **special**, or **run**?
 						**${msg.author.username}**: ${userHP}HP
 						**${opponent.username}**: ${oppoHP}HP
 					`);
@@ -104,10 +104,12 @@ module.exports = class BattleCommand extends Command {
 			}
 			this.fighting.delete(msg.channel.id);
 			const userWin = userHP > oppoHP;
+			const winner = userWin ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`;
+			const loser = userWin ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`;
 			return msg.say(stripIndents`
 				The match is over!
-				**Winner**: ${userWin ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`}
-				**Loser**: ${userWin ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`}
+				**Winner**: ${winner}
+				**Loser**: ${loser}
 			`);
 		} catch (err) {
 			this.fighting.delete(msg.channel.id);
