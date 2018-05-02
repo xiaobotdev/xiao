@@ -32,6 +32,7 @@ module.exports = class HoroscopeCommand extends Command {
 				.setColor(0x9797FF)
 				.setTitle(`Horoscope for ${body.sunsign}...`)
 				.setURL(`https://new.theastrologer.com/${body.sunsign}/`)
+				.setFooter('© Kelli Fox, The Astrologer')
 				.setTimestamp()
 				.setDescription(body.horoscope)
 				.addField('❯ Mood', body.meta.mood, true)
