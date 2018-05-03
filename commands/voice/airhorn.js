@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
+const fs = require('fs');
 const path = require('path');
-const sounds = require('../../assets/json/airhorn');
+const sounds = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'sounds', 'airhorn'));
 
 module.exports = class AirhornCommand extends Command {
 	constructor(client) {

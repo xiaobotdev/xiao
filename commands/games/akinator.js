@@ -45,6 +45,7 @@ module.exports = class AkinatorCommand extends Command {
 				ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
 			const guess = await this.finish(msg.channel);
+			if (!guess) return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
 			const embed = new MessageEmbed()
 				.setColor(0xF78B26)
 				.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
@@ -64,10 +65,11 @@ module.exports = class AkinatorCommand extends Command {
 
 	async createSession(channel) {
 		const { body } = await snekfetch
-			.get('http://api-en1.akinator.com/ws/new_session')
+			.get('http://api-usa3.akinator.com/ws/new_session')
 			.query({
 				partner: 1,
-				player: 'xiaobot'
+				player: 'desktopPlayer',
+				constraint: 'ETAT<>\'AV\''
 			});
 		const data = body.parameters;
 		if (!data) return null;
@@ -83,7 +85,7 @@ module.exports = class AkinatorCommand extends Command {
 	async progress(channel, answer) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await snekfetch
-			.get('http://api-en1.akinator.com/ws/answer')
+			.get('http://api-usa3.akinator.com/ws/answer')
 			.query({
 				session: session.id,
 				signature: session.signature,
@@ -104,7 +106,7 @@ module.exports = class AkinatorCommand extends Command {
 	async finish(channel) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await snekfetch
-			.get('http://api-en1.akinator.com/ws/list')
+			.get('http://api-usa3.akinator.com/ws/list')
 			.query({
 				session: session.id,
 				signature: session.signature,
@@ -112,6 +114,7 @@ module.exports = class AkinatorCommand extends Command {
 				size: 1,
 				mode_question: 0
 			});
+		if (!body.parameters) return null;
 		return body.parameters.elements[0].element;
 	}
 };
