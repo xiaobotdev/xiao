@@ -22,6 +22,6 @@ module.exports = class FishyCommand extends Command {
 		else rarity = 'rare';
 		const fish = fishes[rarity];
 		const worth = randomRange(fish.min, fish.max);
-		return msg.say(`You caught a ${fish.symbol}. I bet it'd sell for around $${worth}.`);
+		return msg.reply(`You caught a ${fish.symbol}. I bet it'd sell for around $${worth}.`);
 	}
 };

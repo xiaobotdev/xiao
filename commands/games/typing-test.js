@@ -35,7 +35,7 @@ module.exports = class TypingTestCommand extends Command {
 	async run(msg, { difficulty }) {
 		const sentence = sentences[Math.floor(Math.random() * sentences.length)];
 		const time = times[difficulty];
-		await msg.say(stripIndents`
+		await msg.reply(stripIndents`
 			**You have ${time / 1000} seconds to type this sentence.**
 			${sentence}
 		`);
@@ -44,7 +44,7 @@ module.exports = class TypingTestCommand extends Command {
 			max: 1,
 			time
 		});
-		if (!msgs.size || msgs.first().content !== sentence) return msg.say('Sorry! You lose!');
-		return msg.say(`Nice job! 10/10! You deserve some cake! (Took ${(Date.now() - now) / 1000} seconds)`);
+		if (!msgs.size || msgs.first().content !== sentence) return msg.reply('Sorry! You lose!');
+		return msg.reply(`Nice job! 10/10! You deserve some cake! (Took ${(Date.now() - now) / 1000} seconds)`);
 	}
 };

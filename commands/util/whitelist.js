@@ -4,7 +4,7 @@ module.exports = class WhitelistCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'whitelist',
-			aliases: ['blacklist-remove', 'blacklist-delete'],
+			aliases: ['blacklist-remove', 'blacklist-delete', 'unblacklist'],
 			group: 'util',
 			memberName: 'whitelist',
 			description: 'Removes a user from the blacklist.',

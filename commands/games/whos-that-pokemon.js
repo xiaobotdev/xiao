@@ -37,14 +37,14 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const displayName = data.names.filter(name => name.language.name === 'en')[0].name;
 			const id = data.id.toString().padStart(3, '0');
 			const attachment = await this.fetchImage(id, hide);
-			await msg.say('**You have 15 seconds, who\'s that Pokémon?**', { files: [{ attachment, name: `${id}.png` }] });
+			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [{ attachment, name: `${id}.png` }] });
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.say(`Sorry, time is up! It was ${displayName}.`);
-			if (!names.includes(msgs.first().content.toLowerCase())) return msg.say(`Nope, sorry, it's ${displayName}.`);
-			return msg.say('Nice job! 10/10! You deserve some cake!');
+			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${displayName}.`);
+			if (!names.includes(msgs.first().content.toLowerCase())) return msg.reply(`Nope, sorry, it's ${displayName}.`);
+			return msg.reply('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
