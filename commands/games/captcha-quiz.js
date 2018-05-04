@@ -1,6 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, registerFont } = require('canvas');
 const path = require('path');
+const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Captcha.ttf'), { family: 'Captcha' });
 
 module.exports = class CaptchaQuizCommand extends Command {
@@ -30,7 +31,7 @@ module.exports = class CaptchaQuizCommand extends Command {
 		ctx.font = '26px Captcha';
 		ctx.rotate(-0.05);
 		ctx.strokeText(text, 15, 26);
-		await msg.say(
+		await msg.reply(
 			'**You have 15 seconds, what does the captcha say?**',
 			{ files: [{ attachment: canvas.toBuffer(), name: 'captcha-quiz.png' }] }
 		);
@@ -38,13 +39,12 @@ module.exports = class CaptchaQuizCommand extends Command {
 			max: 1,
 			time: 15000
 		});
-		if (!msgs.size) return msg.say(`Sorry, time is up! It was ${text}.`);
-		if (msgs.first().content !== text) return msg.say(`Nope, sorry, it's ${text}.`);
-		return msg.say('Nice job! 10/10! You deserve some cake!');
+		if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${text}.`);
+		if (msgs.first().content !== text) return msg.reply(`Nope, sorry, it's ${text}.`);
+		return msg.reply('Nice job! 10/10! You deserve some cake!');
 	}
 
 	randomText(len) {
-		const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
 		const result = [];
 		for (let i = 0; i < len; i++) result.push(pool[Math.floor(Math.random() * pool.length)]);
 		return result.join('');

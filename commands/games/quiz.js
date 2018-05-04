@@ -54,7 +54,7 @@ module.exports = class QuizCommand extends Command {
 			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 			answers.push(correct);
 			const shuffled = shuffle(answers);
-			await msg.say(stripIndents`
+			await msg.reply(stripIndents`
 				**You have 15 seconds to answer this question.**
 				${decodeURIComponent(body.results[0].question)}
 				${shuffled.map((answer, i) => `**${choices[i]}**. ${answer}`).join('\n')}
@@ -64,10 +64,10 @@ module.exports = class QuizCommand extends Command {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.say(`Sorry, time is up! It was ${correct}.`);
+			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${correct}.`);
 			const win = shuffled[choices.indexOf(msgs.first().content.toUpperCase())] === correct;
-			if (!win) return msg.say(`Nope, sorry, it's ${correct}.`);
-			return msg.say('Nice job! 10/10! You deserve some cake!');
+			if (!win) return msg.reply(`Nope, sorry, it's ${correct}.`);
+			return msg.reply('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

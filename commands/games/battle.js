@@ -103,14 +103,8 @@ module.exports = class BattleCommand extends Command {
 				}
 			}
 			this.fighting.delete(msg.channel.id);
-			const userWin = userHP > oppoHP;
-			const winner = userWin ? `${msg.author} (${userHP}HP)` : `${opponent} (${oppoHP}HP)`;
-			const loser = userWin ? `${opponent} (${oppoHP}HP)` : `${msg.author} (${userHP}HP)`;
-			return msg.say(stripIndents`
-				The match is over!
-				**Winner**: ${winner}
-				**Loser**: ${loser}
-			`);
+			const winner = userHP > oppoHP ? msg.author : opponent;
+			return msg.say(`The match is over! Congrats, ${winner}!`);
 		} catch (err) {
 			this.fighting.delete(msg.channel.id);
 			throw err;
