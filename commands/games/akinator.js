@@ -25,7 +25,11 @@ module.exports = class AkinatorCommand extends Command {
 			this.sessions.set(msg.channel.id, { progress: 0 });
 			while (this.sessions.get(msg.channel.id).progress < 99) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
-				if (!data || this.sessions.get(msg.channel.id).step >= 80) break;
+				if (!data) {
+					this.sessions.delete(msg.channel.id);
+					return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
+				}
+				if (this.sessions.get(msg.channel.id).step >= 80) break;
 				const answers = data.answers.map(answer => answer.answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
@@ -65,7 +69,7 @@ module.exports = class AkinatorCommand extends Command {
 
 	async createSession(channel) {
 		const { body } = await snekfetch
-			.get('http://api-usa3.akinator.com/ws/new_session')
+			.get('http://192.99.38.142:8126/ws/new_session')
 			.query({
 				partner: 1,
 				player: 'desktopPlayer',
@@ -85,7 +89,7 @@ module.exports = class AkinatorCommand extends Command {
 	async progress(channel, answer) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await snekfetch
-			.get('http://api-usa3.akinator.com/ws/answer')
+			.get('http://192.99.38.142:8126/ws/answer')
 			.query({
 				session: session.id,
 				signature: session.signature,
@@ -106,7 +110,7 @@ module.exports = class AkinatorCommand extends Command {
 	async finish(channel) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await snekfetch
-			.get('http://api-usa3.akinator.com/ws/list')
+			.get('http://192.99.38.142:8126/ws/list')
 			.query({
 				session: session.id,
 				signature: session.signature,
