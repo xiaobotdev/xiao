@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (308)
+## Commands (304)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -69,7 +69,6 @@ information and support.
 * **fact**: Responds with a random fact.
 * **fidget**: Responds with a random image of Fidget.
 * **fortune**: Responds with a random fortune.
-* **fruit**: Responds with a random fruit.
 * **joke**: Responds with a random joke.
 * **karen**: Responds with a random image of Karen.
 * **kiss-marry-kill**: Determines who to kiss, who to marry, and who to kill.
@@ -99,7 +98,6 @@ information and support.
 * **dark-theme-light-theme**: Determines whether you use dark or light theme.
 * **eat-pant**: Eat pant.
 * **give-flower**: Gives Xiao Pai a flower.
-* **hello-world**: Hello world.
 * **hi**: Hello.
 * **isnt-joke**: Isn't joke...
 * **its-joke**: It's joke!
@@ -118,7 +116,6 @@ information and support.
 * **google-doodle**: Responds with a Google Doodle, either the latest one or a random one from the past.
 * **holidays**: Responds with today's holidays.
 * **horoscope**: Responds with today's horoscope for a specific Zodiac sign.
-* **is-it-christmas**: Responds with whether or not it's Christmas.
 * **neko-atsume-password**: Responds with today's Neko Atsume password.
 * **time**: Responds with the current time in a particular location.
 * **today-in-history**: Responds with an event that occurred today in history.
@@ -324,7 +321,6 @@ information and support.
 * **currency**: Converts money from one currency to another.
 * **final-grade-calculator**: Determines the grade you need to make on your final to get your desired course grade.
 * **math**: Evaluates a math expression.
-* **percentage**: Determines the percentage one number is of another.
 * **roman-numeral**: Converts a number to roman numerals.
 * **units**: Converts units to/from other units.
 
