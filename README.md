@@ -70,7 +70,6 @@ information and support.
 * **fidget**: Responds with a random image of Fidget.
 * **fortune**: Responds with a random fortune.
 * **joke**: Responds with a random joke.
-* **karen**: Responds with a random image of Karen.
 * **kiss-marry-kill**: Determines who to kiss, who to marry, and who to kill.
 * **magic-conch**: Asks your question to the Magic Conch.
 * **name**: Responds with a random name, with the gender of your choice.
@@ -82,13 +81,14 @@ information and support.
 * **pikachu**: Responds with a random image of Pikachu.
 * **quantum-coin**: Flips a coin that lands on some form of nothing.
 * **quote**: Responds with a random quote.
-* **rate-waifu**: Rates a waifu.
+* **rate**: Rates something.
 * **reddit**: Responds with a random post from a subreddit.
 * **roast**: Roasts a user.
 * **roll**: Rolls a dice with a maximum value of your choice.
 * **security-key**: Responds with a random security key.
 * **shower-thought**: Responds with a random shower thought, directly from r/Showerthoughts.
 * **user-roulette**: Randomly chooses a member of the server.
+* **waifu**: Responds with a random image of one of dragonfire535's waifu.
 * **would-you-rather**: Responds with a random "Would you rather ...?" question.
 * **xiao**: Responds with a random image of Xiao Pai.
 
