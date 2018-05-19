@@ -42,7 +42,7 @@
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
 		"random-js": "^1.0.8",
-		"sequelize": "^4.37.7",
+		"sequelize": "^4.37.8",
 		"snekfetch": "^4.0.0",
 		"uws": "^10.148.0",
 		"xml2js": "^0.4.19",
