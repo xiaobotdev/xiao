@@ -17,7 +17,7 @@ module.exports = class WaifuCommand extends Command {
 		const waifuKeys = Object.keys(waifus);
 		const waifu = waifuKeys[Math.floor(Math.random() * waifuKeys.length)];
 		try {
-			const waifuImage = await randomFromImgurAlbum(waifu);
+			const waifuImage = await randomFromImgurAlbum(waifus[waifu]);
 			return msg.say(waifu, { files: [waifuImage] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
