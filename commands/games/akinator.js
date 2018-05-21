@@ -23,13 +23,9 @@ module.exports = class AkinatorCommand extends Command {
 		try {
 			let ans = null;
 			this.sessions.set(msg.channel.id, { progress: 0 });
-			while (this.sessions.get(msg.channel.id).progress < 99) {
+			while (this.sessions.get(msg.channel.id).progress < 95) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
-				if (!data) {
-					this.sessions.delete(msg.channel.id);
-					return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
-				}
-				if (this.sessions.get(msg.channel.id).step >= 80) break;
+				if (!data || !data.answers || this.sessions.get(msg.channel.id).step >= 80) break;
 				const answers = data.answers.map(answer => answer.answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
@@ -68,12 +64,16 @@ module.exports = class AkinatorCommand extends Command {
 	}
 
 	async createSession(channel) {
+		const nsfw = Boolean(channel.nsfw);
 		const { body } = await snekfetch
 			.get('http://192.99.38.142:8126/ws/new_session')
 			.query({
 				partner: 1,
-				player: 'desktopPlayer',
-				constraint: 'ETAT<>\'AV\''
+				player: 'website-desktop',
+				constraint: 'ETAT<>\'AV\'',
+				soft_constraint: nsfw ? '' : 'ETAT=\'EN\'',
+				question_filter: nsfw ? '' : 'cat=1',
+				_: Date.now()
 			});
 		const data = body.parameters;
 		if (!data) return null;
@@ -94,7 +94,9 @@ module.exports = class AkinatorCommand extends Command {
 				session: session.id,
 				signature: session.signature,
 				step: session.step,
-				answer
+				answer,
+				question_filter: Boolean(channel.nsfw) ? '' : 'cat=1',
+				_: Date.now()
 			});
 		const data = body.parameters;
 		if (!data) return null;
@@ -115,8 +117,13 @@ module.exports = class AkinatorCommand extends Command {
 				session: session.id,
 				signature: session.signature,
 				step: session.step,
-				size: 1,
-				mode_question: 0
+				size: 2,
+				max_pic_width: 246,
+				max_pic_height: 294,
+				pref_photos: 'VO-OK',
+				duel_allowed: 1,
+				mode_question: 0,
+				_: Date.now()
 			});
 		if (!body.parameters) return null;
 		return body.parameters.elements[0].element;
