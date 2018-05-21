@@ -22,14 +22,14 @@ module.exports = class AkinatorCommand extends Command {
 		if (this.sessions.has(msg.channel.id)) return msg.reply('Only one game may be occuring per channel.');
 		try {
 			let ans = null;
-			this.sessions.set(msg.channel.id, { progress: 0 });
-			while (this.sessions.get(msg.channel.id).progress < 95) {
+			this.sessions.set(msg.channel.id, { progression: 0 });
+			while (this.sessions.get(msg.channel.id).progression < 95) {
 				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
 				if (!data || !data.answers || this.sessions.get(msg.channel.id).step >= 80) break;
 				const answers = data.answers.map(answer => answer.answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
-					**${++data.step}.** ${data.question}
+					**${++data.step}.** ${data.question} (${Math.round(Number.parseInt(data.progression, 10))}%)
 					${data.answers.map(answer => answer.answer).join(' | ')}
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
@@ -80,7 +80,7 @@ module.exports = class AkinatorCommand extends Command {
 			id: data.identification.session,
 			signature: data.identification.signature,
 			step: 0,
-			progress: Number.parseInt(data.step_information.progression, 10)
+			progression: Number.parseInt(data.step_information.progression, 10)
 		});
 		return data.step_information;
 	}
@@ -103,7 +103,7 @@ module.exports = class AkinatorCommand extends Command {
 			id: session.id,
 			signature: session.signature,
 			step: Number.parseInt(data.step, 10),
-			progress: Number.parseInt(data.progression, 10)
+			progression: Number.parseInt(data.progression, 10)
 		});
 		return data;
 	}
