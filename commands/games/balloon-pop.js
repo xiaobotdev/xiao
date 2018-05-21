@@ -44,8 +44,7 @@ module.exports = class BalloonPopCommand extends Command {
 				++turns;
 				if (!opponent.bot || (opponent.bot && userTurn)) {
 					await msg.say(`${user}, do you pump the balloon?`);
-					const verification = await verify(msg.channel, user);
-					pump = verification;
+					pump = await verify(msg.channel, user);
 				} else {
 					pump = Boolean(Math.floor(Math.random() * 2));
 				}

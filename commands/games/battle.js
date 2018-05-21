@@ -61,7 +61,9 @@ module.exports = class BattleCommand extends Command {
 						**${msg.author.username}**: ${userHP}HP
 						**${opponent.username}**: ${oppoHP}HP
 					`);
-					const turn = await msg.channel.awaitMessages(res => res.author.id === user.id, {
+					const filter = res =>
+						res.author.id === user.id && ['fight', 'guard', 'special', 'run'].includes(res.content.toLowerCase());
+					const turn = await msg.channel.awaitMessages(filter, {
 						max: 1,
 						time: 30000
 					});

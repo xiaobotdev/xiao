@@ -51,7 +51,11 @@ module.exports = class TicTacToeCommand extends Command {
 					${sides[6]} | ${sides[7]} | ${sides[8]}
 					\`\`\`
 				`);
-				const turn = await msg.channel.awaitMessages(res => res.author.id === user.id, {
+				const filter = res => {
+					const choice = res.content;
+					return res.author.id === user.id && sides.includes(choice) && !taken.includes(choice);
+				};
+				const turn = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: 30000
 				});
@@ -60,27 +64,20 @@ module.exports = class TicTacToeCommand extends Command {
 					userTurn = !userTurn;
 					continue;
 				}
-				const choice = turn.first().content.toLowerCase();
-				if (choice === 'end') break;
-				if (taken.includes(choice)) {
-					await msg.say('That spot is already taken!');
-				} else if (!sides.includes(choice)) {
-					await msg.say('I don\'t think that is a valid spot...');
-				} else {
-					sides[Number.parseInt(choice, 10)] = sign;
-					taken.push(choice);
-					if (
-						(sides[0] === sides[1] && sides[0] === sides[2])
-						|| (sides[0] === sides[3] && sides[0] === sides[6])
-						|| (sides[3] === sides[4] && sides[3] === sides[5])
-						|| (sides[1] === sides[4] && sides[1] === sides[7])
-						|| (sides[6] === sides[7] && sides[6] === sides[8])
-						|| (sides[2] === sides[5] && sides[2] === sides[8])
-						|| (sides[0] === sides[4] && sides[0] === sides[8])
-						|| (sides[2] === sides[4] && sides[2] === sides[6])
-					) winner = userTurn ? msg.author : opponent;
-					userTurn = !userTurn;
-				}
+				const choice = turn.first().content;
+				sides[Number.parseInt(choice, 10)] = sign;
+				taken.push(choice);
+				if (
+					(sides[0] === sides[1] && sides[0] === sides[2])
+					|| (sides[0] === sides[3] && sides[0] === sides[6])
+					|| (sides[3] === sides[4] && sides[3] === sides[5])
+					|| (sides[1] === sides[4] && sides[1] === sides[7])
+					|| (sides[6] === sides[7] && sides[6] === sides[8])
+					|| (sides[2] === sides[5] && sides[2] === sides[8])
+					|| (sides[0] === sides[4] && sides[0] === sides[8])
+					|| (sides[2] === sides[4] && sides[2] === sides[6])
+				) winner = userTurn ? msg.author : opponent;
+				userTurn = !userTurn;
 			}
 			this.playing.delete(msg.channel.id);
 			return msg.say(winner ? `Congrats, ${winner}!` : 'Oh... The cat won.');
