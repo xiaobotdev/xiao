@@ -64,15 +64,14 @@ module.exports = class AkinatorCommand extends Command {
 	}
 
 	async createSession(channel) {
-		const nsfw = Boolean(channel.nsfw);
 		const { body } = await snekfetch
 			.get('http://192.99.38.142:8126/ws/new_session')
 			.query({
 				partner: 1,
 				player: 'website-desktop',
 				constraint: 'ETAT<>\'AV\'',
-				soft_constraint: nsfw ? '' : 'ETAT=\'EN\'',
-				question_filter: nsfw ? '' : 'cat=1',
+				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
+				question_filter: channel.nsfw ? '' : 'cat=1',
 				_: Date.now()
 			});
 		const data = body.parameters;
@@ -95,7 +94,7 @@ module.exports = class AkinatorCommand extends Command {
 				signature: session.signature,
 				step: session.step,
 				answer,
-				question_filter: Boolean(channel.nsfw) ? '' : 'cat=1',
+				question_filter: channel.nsfw ? '' : 'cat=1',
 				_: Date.now()
 			});
 		const data = body.parameters;
