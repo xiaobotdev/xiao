@@ -56,7 +56,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 				if (winner.id === msg.author.id) ++aPts;
 				else ++oPts;
 				await msg.say(stripIndents`
-					${winner.toString()} won this round!
+					${winner} won this round!
 					**${msg.author.username}**: ${aPts}
 					**${opponent.username}**: ${oPts}
 				`);
