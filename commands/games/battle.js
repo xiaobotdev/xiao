@@ -57,7 +57,7 @@ module.exports = class BattleCommand extends Command {
 				let choice;
 				if (!opponent.bot || (opponent.bot && userTurn)) {
 					await msg.say(stripIndents`
-						${user.toString()}, do you **fight**, **guard**, **special**, or **run**?
+						${user}, do you **fight**, **guard**, **special**, or **run**?
 						**${msg.author.username}**: ${userHP}HP
 						**${opponent.username}**: ${oppoHP}HP
 					`);
