@@ -36,7 +36,7 @@ module.exports = class GoogleFeudCommand extends Command {
 					.setColor(0x005AF0)
 					.setTitle(`${question}...?`)
 					.setDescription('Type the choice you think is a suggestion _without_ the question.')
-					.setFooter(`${tries} tries remaining!`);
+					.setFooter(`${tries} ${tries === 1 ? 'try' : 'tries'} remaining!`);
 				for (let i = 0; i < suggestions.length; i++) embed.addField(`❯ ${10000 - (i * 1000)}`, display[i], true);
 				await msg.embed(embed);
 				const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
@@ -53,7 +53,7 @@ module.exports = class GoogleFeudCommand extends Command {
 					display[suggestions.indexOf(choice)] = choice;
 				} else {
 					--tries;
-					await msg.say(`Nope! ${tries} tries remaining!`);
+					if (tries) await msg.say(`Nope! ${tries} tries remaining!`);
 				}
 			}
 			this.playing.delete(msg.channel.id);
