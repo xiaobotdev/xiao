@@ -409,31 +409,6 @@
 			"text": "(Player1) repeatedly stabs (Player2) to death with sais.",
 			"tributes": 2,
 			"deaths": [2]
-		},
-		{
-			"text": "(Player1) goes berserk, killing (Player2), (Player3), (Player4), (Player5), and (Player6) before killing themself.",
-			"tributes": 6,
-			"deaths": [1, 2, 3, 4, 5, 6]
-		},
-		{
-			"text": "(Player1) drops a boulder on (Player2).",
-			"tributes": 2,
-			"deaths": [2]
-		},
-		{
-			"text": "(Player1) holds (Player2)'s hand.",
-			"tributes": 2,
-			"deaths": []
-		},
-		{
-			"text": "(Player1) tries to hold (Player2)'s hand, but (Player2) pulls away and stabs them.",
-			"tributes": 2,
-			"deaths": [1]
-		},
-		{
-			"text": "(Player1) accidently kills (Player2) with their knife, who commits suicide at their loss.",
-			"tributes": 2,
-			"deaths": [1, 2]
 		}
 	],
 	"day": [
@@ -1063,46 +1038,6 @@
 			"deaths": [2]
 		},
 		{
-			"text": "(Player1) goes berserk, killing (Player2), (Player3), (Player4), (Player5), and (Player6) before killing themself.",
-			"tributes": 6,
-			"deaths": [1, 2, 3, 4, 5, 6]
-		},
-		{
-			"text": "(Player1) drops a boulder on (Player2).",
-			"tributes": 2,
-			"deaths": [2]
-		},
-		{
-			"text": "(Player1) holds (Player2)'s hand.",
-			"tributes": 2,
-			"deaths": []
-		},
-		{
-			"text": "(Player1) tries to hold (Player2)'s hand, but (Player2) pulls away and stabs them.",
-			"tributes": 2,
-			"deaths": [1]
-		},
-		{
-			"text": "(Player1) accidently kills (Player2) with their knife, who commits suicide at their loss.",
-			"tributes": 2,
-			"deaths": [1, 2]
-		},
-		{
-			"text": "A swarm of Tracker Jackers kills (Player1), (Player2), and (Player3).",
-			"tributes": 3,
-			"deaths": [1, 2, 3]
-		},
-		{
-			"text": "(Player1) is killed in a landslide.",
-			"tributes": 1,
-			"deaths": [1]
-		},
-		{
-			"text": "(Player1) tames a swarm of Tracker Jackers, who kill (Player2), (Player3), and (Player4) before being killed by (Player5).",
-			"tributes": 5,
-			"deaths": [2, 3, 4]
-		},
-		{
 			"text": "(Player1) doodles in the dirt.",
 			"tributes": 1,
 			"deaths": []
@@ -1111,26 +1046,6 @@
 			"text": "(Player1) chases a butterfly.",
 			"tributes": 1,
 			"deaths": []
-		},
-		{
-			"text": "(Player1) writes in their journal.",
-			"tributes": 1,
-			"deaths": []
-		},
-		{
-			"text": "(Player1) and (Player2) fight for (Player3)'s love. (Player1) wins.",
-			"tributes": 3,
-			"deaths": [2]
-		},
-		{
-			"text": "(Player1) and (Player2) fight for (Player3)'s love. (Player2) wins.",
-			"tributes": 3,
-			"deaths": [1]
-		},
-		{
-			"text": "(Player1) and (Player2) fight for (Player3)'s love. (Player3) takes advantage and kills them both.",
-			"tributes": 3,
-			"deaths": [1, 2]
 		}
 	],
 	"night": [
@@ -1755,84 +1670,9 @@
 			"deaths": [2]
 		},
 		{
-			"text": "(Player1) goes berserk, killing (Player2), (Player3), (Player4), (Player5), and (Player6) before killing themself.",
-			"tributes": 6,
-			"deaths": [1, 2, 3, 4, 5, 6]
-		},
-		{
-			"text": "(Player1) drops a boulder on (Player2).",
-			"tributes": 2,
-			"deaths": [2]
-		},
-		{
-			"text": "(Player1) holds (Player2)'s hand.",
-			"tributes": 2,
-			"deaths": []
-		},
-		{
-			"text": "(Player1) tries to hold (Player2)'s hand, but (Player2) pulls away and stabs them.",
-			"tributes": 2,
-			"deaths": [1]
-		},
-		{
-			"text": "(Player1) accidently kills (Player2) with their knife, who commits suicide at their loss.",
-			"tributes": 2,
-			"deaths": [1, 2]
-		},
-		{
-			"text": "A swarm of Tracker Jackers kills (Player1), (Player2), and (Player3).",
-			"tributes": 3,
-			"deaths": [1, 2, 3]
-		},
-		{
-			"text": "(Player1) is killed in a landslide.",
-			"tributes": 1,
-			"deaths": [1]
-		},
-		{
-			"text": "(Player1) tames a swarm of Tracker Jackers, who kill (Player2), (Player3), and (Player4) before being killed by (Player5).",
-			"tributes": 5,
-			"deaths": [2, 3, 4]
-		},
-		{
-			"text": "(Player1) doodles in the dirt.",
-			"tributes": 1,
-			"deaths": []
-		},
-		{
-			"text": "(Player1) chases a moth.",
-			"tributes": 1,
-			"deaths": []
-		},
-		{
 			"text": "(Player1) writes in their journal.",
 			"tributes": 1,
 			"deaths": []
-		},
-		{
-			"text": "(Player1) and (Player2) fight for (Player3)'s love. (Player1) wins.",
-			"tributes": 3,
-			"deaths": [2]
-		},
-		{
-			"text": "(Player1) and (Player2) fight for (Player3)'s love. (Player2) wins.",
-			"tributes": 3,
-			"deaths": [1]
-		},
-		{
-			"text": "(Player1) and (Player2) fight for (Player3)'s love. (Player3) takes advantage and kills them both.",
-			"tributes": 3,
-			"deaths": [1, 2]
-		},
-		{
-			"text": "(Player1) sneaks a kiss on (Player2)'s cheek while (Player2) sleeps.",
-			"tributes": 2,
-			"deaths": []
-		},
-		{
-			"text": "(Player1) sneaks a kiss on (Player2)'s cheek while (Player2) sleeps, but (Player2) wakes up and kills them.",
-			"tributes": 2,
-			"deaths": [1]
 		}
 	]
 }
