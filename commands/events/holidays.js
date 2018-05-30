@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { today, tomorrow } = require('../../util/Util');
 const { GOOGLE_KEY, GOOGLE_CALENDAR_ID } = process.env;

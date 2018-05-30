@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const prizes = ['$0', '$2', '$4', '$10', '$500', '$1,000,000', 'the Jackpot'];
 

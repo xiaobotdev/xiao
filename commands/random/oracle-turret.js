@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const quotes = require('../../assets/json/oracle-turret');
 
 module.exports = class OracleTurretCommand extends Command {

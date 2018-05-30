@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const math = require('mathjs');
 
 module.exports = class UnitsCommand extends Command {

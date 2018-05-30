@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { MOCKING_EMOJI_ID } = process.env;
 
 module.exports = class MockingCommand extends Command {

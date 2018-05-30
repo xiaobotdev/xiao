@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');

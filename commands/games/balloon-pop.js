@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { randomRange, verify } = require('../../util/Util');
 
 module.exports = class BalloonPopCommand extends Command {

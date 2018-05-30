@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { above100, above92, above88, above80, below80 } = require('../../assets/json/final-grade-calculator');
 
 module.exports = class FinalGradeCalculatorCommand extends Command {

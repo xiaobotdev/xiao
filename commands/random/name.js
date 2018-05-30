@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { list } = require('../../util/Util');
 const names = require('../../assets/json/name');
 const all = [].concat(names.male, names.female);
