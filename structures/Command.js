@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const { Command } = require('discord.js-commando');
 
 class XiaoCommand extends Command {
 	constructor(client) {
