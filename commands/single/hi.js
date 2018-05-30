@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 
 module.exports = class HiCommand extends Command {
 	constructor(client) {

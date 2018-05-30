@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];

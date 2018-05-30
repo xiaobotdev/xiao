@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { oneLine } = require('common-tags');
 const Random = require('random-js');
 const genders = ['male', 'female'];

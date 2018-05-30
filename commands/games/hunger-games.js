@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { shuffle, verify } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');

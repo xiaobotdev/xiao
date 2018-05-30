@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { MessageEmbed } = require('discord.js');
 const questions = require('../../assets/json/google-feud');

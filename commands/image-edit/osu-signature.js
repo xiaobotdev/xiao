@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { list } = require('../../util/Util');
 const colors = require('../../assets/json/osu-signature');

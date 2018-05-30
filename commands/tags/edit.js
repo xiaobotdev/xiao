@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const Tag = require('../../models/Tag');
 
 module.exports = class TagEditCommand extends Command {

@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const snekfetch = require('snekfetch');
 const { KAIROS_KEY, KAIROS_ID } = process.env;
 const races = ['asian', 'black', 'hispanic', 'other', 'white'];

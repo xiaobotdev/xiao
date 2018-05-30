@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+const Command = require('../../structures/Command');
 const numerals = require('../../assets/json/roman-numeral');
 
 module.exports = class RomanNumeralCommand extends Command {
