@@ -43,7 +43,7 @@
 		"pg-hstore": "^2.3.2",
 		"random-js": "^1.0.8",
 		"sequelize": "^4.37.10",
-		"snekfetch": "^4.0.0",
+		"snekfetch": "^4.0.1",
 		"uws": "^10.148.0",
 		"xml2js": "^0.4.19",
 		"zlib-sync": "^0.1.4"
