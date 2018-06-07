@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class FactCommand extends Command {
 	constructor(client) {
@@ -15,7 +15,7 @@ module.exports = class FactCommand extends Command {
 	async run(msg) {
 		try {
 			const article = await this.randomWikipediaArticle();
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://en.wikipedia.org/w/api.php')
 				.query({
 					action: 'query',
@@ -40,7 +40,7 @@ module.exports = class FactCommand extends Command {
 	}
 
 	async randomWikipediaArticle() {
-		const { body } = await snekfetch
+		const { body } = await request
 			.get('https://en.wikipedia.org/w/api.php')
 			.query({
 				action: 'query',

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const path = require('path');
 
 module.exports = class DistractedBoyfriendCommand extends Command {
@@ -43,11 +43,11 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 		const otherGirlAvatarURL = otherGirl.displayAvatarURL({ format: 'png', size: 256 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'distracted-boyfriend.png'));
-			const boyfriendAvatarData = await snekfetch.get(boyfriendAvatarURL);
+			const boyfriendAvatarData = await request.get(boyfriendAvatarURL);
 			const boyfriendAvatar = await loadImage(boyfriendAvatarData.body);
-			const girlfriendAvatarData = await snekfetch.get(girlfriendAvatarURL);
+			const girlfriendAvatarData = await request.get(girlfriendAvatarURL);
 			const girlfriendAvatar = await loadImage(girlfriendAvatarData.body);
-			const otherGirlAvatarData = await snekfetch.get(otherGirlAvatarURL);
+			const otherGirlAvatarData = await request.get(otherGirlAvatarURL);
 			const otherGirlAvatar = await loadImage(otherGirlAvatarData.body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');

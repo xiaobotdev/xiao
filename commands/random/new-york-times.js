@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 const { NYTIMES_KEY } = process.env;
 
@@ -26,7 +26,7 @@ module.exports = class NewYorkTimesCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const fetch = snekfetch
+			const fetch = request
 				.get('https://api.nytimes.com/svc/search/v2/articlesearch.json')
 				.query({
 					'api-key': NYTIMES_KEY,

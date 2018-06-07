@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class RecipeCommand extends Command {
 	constructor(client) {
@@ -23,10 +23,10 @@ module.exports = class RecipeCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { raw } = await snekfetch
+			const { text } = await request
 				.get('http://www.recipepuppy.com/api/')
 				.query({ q: query });
-			const body = JSON.parse(raw.toString());
+			const body = JSON.parse(text);
 			if (!body.results.length) return msg.say('Could not find any results.');
 			const recipe = body.results[Math.floor(Math.random() * body.results.length)];
 			const embed = new MessageEmbed()
@@ -38,7 +38,7 @@ module.exports = class RecipeCommand extends Command {
 				.setThumbnail(recipe.thumbnail);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 500) return msg.say('Could not find any results.');
+			if (err.status === 500) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

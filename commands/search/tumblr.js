@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { TUMBLR_KEY } = process.env;
 
 module.exports = class TumblrCommand extends Command {
@@ -25,7 +25,7 @@ module.exports = class TumblrCommand extends Command {
 
 	async run(msg, { blog }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`https://api.tumblr.com/v2/blog/${blog}/info`)
 				.query({ api_key: TUMBLR_KEY });
 			const data = body.response.blog;
@@ -39,7 +39,7 @@ module.exports = class TumblrCommand extends Command {
 				.addField('❯ A.M.A.?', data.ask ? 'Yes' : 'No', true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

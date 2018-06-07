@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { YODA_KEY } = process.env;
 
 module.exports = class YodaCommand extends Command {
@@ -23,7 +23,7 @@ module.exports = class YodaCommand extends Command {
 
 	async run(msg, { sentence }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://yoda-speak-api.herokuapp.com/')
 				.query({
 					text: sentence,

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { IMGUR_KEY } = process.env;
 
 module.exports = class ImgurCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class ImgurCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://api.imgur.com/3/gallery/search')
 				.query({ q: query })
 				.set({ Authorization: `Client-ID ${IMGUR_KEY}` });

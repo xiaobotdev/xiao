@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { GOOGLE_KEY, CUSTOM_SEARCH_ID } = process.env;
 
 module.exports = class GoogleCommand extends Command {
@@ -26,7 +26,7 @@ module.exports = class GoogleCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://www.googleapis.com/customsearch/v1')
 				.query({
 					key: GOOGLE_KEY,

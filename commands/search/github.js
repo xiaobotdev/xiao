@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten, base64 } = require('../../util/Util');
 const { GITHUB_USERNAME, GITHUB_PASSWORD } = process.env;
 
@@ -32,7 +32,7 @@ module.exports = class GithubCommand extends Command {
 
 	async run(msg, { author, repository }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`https://api.github.com/repos/${author}/${repository}`)
 				.set({ Authorization: `Basic ${base64(`${GITHUB_USERNAME}:${GITHUB_PASSWORD}`)}` });
 			const embed = new MessageEmbed()
@@ -50,7 +50,7 @@ module.exports = class GithubCommand extends Command {
 				.addField('❯ Modification Date', new Date(body.updated_at).toDateString(), true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

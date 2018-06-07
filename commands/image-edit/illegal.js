@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { wait } = require('../../util/Util');
 
 module.exports = class IllegalCommand extends Command {
@@ -46,7 +46,7 @@ module.exports = class IllegalCommand extends Command {
 	}
 
 	async createGIF(text) {
-		const { body } = await snekfetch
+		const { body } = await request
 			.post('https://is-now-illegal.firebaseio.com/queue/tasks.json')
 			.send({
 				task: 'gif',
@@ -57,7 +57,7 @@ module.exports = class IllegalCommand extends Command {
 	}
 
 	async fetchGIF(text) {
-		const { body } = await snekfetch.get(`https://is-now-illegal.firebaseio.com/gifs/${text}.json`);
+		const { body } = await request.get(`https://is-now-illegal.firebaseio.com/gifs/${text}.json`);
 		if (!body) return null;
 		return body.url;
 	}

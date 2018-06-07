@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class KonachanCommand extends Command {
 	constructor(client) {
@@ -23,7 +23,7 @@ module.exports = class KonachanCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://konachan.net/post.json')
 				.query({
 					tags: `${query} order:random`,

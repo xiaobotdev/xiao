@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { MessageEmbed } = require('discord.js');
 const questions = require('../../assets/json/google-feud');
 
@@ -66,13 +66,13 @@ module.exports = class GoogleFeudCommand extends Command {
 	}
 
 	async fetchSuggestions(question) {
-		const { raw } = await snekfetch
+		const { text } = await request
 			.get('https://suggestqueries.google.com/complete/search')
 			.query({
 				client: 'firefox',
 				q: question
 			});
-		const suggestions = JSON.parse(raw.toString())[1]
+		const suggestions = JSON.parse(text)[1]
 			.filter(suggestion => suggestion.toLowerCase() !== question.toLowerCase());
 		if (!suggestions.length) return null;
 		return suggestions.map(suggestion => suggestion.toLowerCase().replace(question.toLowerCase(), '').trim());

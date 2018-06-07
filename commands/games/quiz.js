@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shuffle, list } = require('../../util/Util');
 const types = ['multiple', 'boolean'];
 const difficulties = ['easy', 'medium', 'hard'];
@@ -41,7 +41,7 @@ module.exports = class QuizCommand extends Command {
 
 	async run(msg, { type, difficulty }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://opentdb.com/api.php')
 				.query({
 					amount: 1,

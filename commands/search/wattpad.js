@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 const { WATTPAD_KEY } = process.env;
 
@@ -25,7 +25,7 @@ module.exports = class WattpadCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://api.wattpad.com/v4/stories')
 				.query({
 					query,

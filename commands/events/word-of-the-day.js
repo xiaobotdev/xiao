@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 const { WORDNIK_KEY } = process.env;
 
@@ -16,7 +16,7 @@ module.exports = class WordOfTheDayCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://api.wordnik.com/v4/words.json/wordOfTheDay')
 				.query({ api_key: WORDNIK_KEY });
 			return msg.say(stripIndents`

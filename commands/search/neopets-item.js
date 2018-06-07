@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class NeopetsItemCommand extends Command {
@@ -40,18 +40,17 @@ module.exports = class NeopetsItemCommand extends Command {
 	}
 
 	async fetchItem(query) {
-		const { raw } = await snekfetch
+		const { text } = await request
 			.get('https://items.jellyneo.net/search/')
 			.query({
 				name: query,
 				name_type: 3
 			});
-		const text = raw.toString();
 		const id = text.match(/\/item\/([0-9]+)/);
 		if (!id) return null;
 		const price = text.match(/([0-9,]+) (NP|NC)/);
 		const url = `https://items.jellyneo.net/item/${id[1]}/`;
-		const details = await snekfetch.get(url);
+		const details = await request.get(url);
 		const detailsText = details.raw.toString();
 		return {
 			id: id[1],

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 const { TMDB_KEY } = process.env;
 
@@ -25,7 +25,7 @@ module.exports = class TMDBTVShowCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const search = await snekfetch
+			const search = await request
 				.get('http://api.themoviedb.org/3/search/tv')
 				.query({
 					api_key: TMDB_KEY,
@@ -33,7 +33,7 @@ module.exports = class TMDBTVShowCommand extends Command {
 					query
 				});
 			if (!search.body.results.length) return msg.say('Could not find any results.');
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`https://api.themoviedb.org/3/tv/${search.body.results[0].id}`)
 				.query({ api_key: TMDB_KEY });
 			const embed = new MessageEmbed()

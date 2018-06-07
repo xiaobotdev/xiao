@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { list } = require('../../util/Util');
 const colors = require('../../assets/json/osu-signature');
 
@@ -35,7 +35,7 @@ module.exports = class OsuSignatureCommand extends Command {
 
 	async run(msg, { user, color }) {
 		try {
-			const { body, raw } = await snekfetch
+			const { body, raw } = await request
 				.get('https://lemmmy.pw/osusig/sig.php')
 				.query({
 					colour: color,

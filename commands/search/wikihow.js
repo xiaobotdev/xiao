@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 
 module.exports = class WikihowCommand extends Command {
@@ -23,7 +23,7 @@ module.exports = class WikihowCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://www.wikihow.com/api.php')
 				.query({
 					action: 'query',

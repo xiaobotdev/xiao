@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const path = require('path');
 
 module.exports = class FrameCommand extends Command {
@@ -30,7 +30,7 @@ module.exports = class FrameCommand extends Command {
 	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'frame.png'));
-			const { body } = await snekfetch.get(image);
+			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');

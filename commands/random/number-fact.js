@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class NumberFactCommand extends Command {
 	constructor(client) {
@@ -20,10 +20,10 @@ module.exports = class NumberFactCommand extends Command {
 
 	async run(msg, { number }) {
 		try {
-			const { raw } = await snekfetch.get(`http://numbersapi.com/${number}`);
-			return msg.say(raw.toString());
+			const { text } = await request.get(`http://numbersapi.com/${number}`);
+			return msg.say(text);
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

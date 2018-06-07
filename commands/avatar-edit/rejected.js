@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const path = require('path');
 
 module.exports = class RejctedCommand extends Command {
@@ -31,7 +31,7 @@ module.exports = class RejctedCommand extends Command {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'rejected.png'));
-			const { body } = await snekfetch.get(avatarURL);
+			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(avatar.width, avatar.height);
 			const ctx = canvas.getContext('2d');

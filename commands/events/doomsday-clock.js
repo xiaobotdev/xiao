@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 
 module.exports = class DoomsdayClockCommand extends Command {
@@ -14,8 +14,7 @@ module.exports = class DoomsdayClockCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { raw } = await snekfetch.get('https://thebulletin.org/timeline');
-			const text = raw.toString();
+			const { text } = await request.get('https://thebulletin.org/timeline');
 			const time = text.match(/IT IS (.+) MINUTES TO MIDNIGHT/)[0];
 			const desc = text.match(/<div class="body-text"><span class="timeline-year">(.+)<\/span>: (.+)<\/div>/);
 			return msg.say(stripIndents`

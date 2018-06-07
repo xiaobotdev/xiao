@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const path = require('path');
 const { shortenText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
@@ -40,7 +40,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 64 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-now-playing.png'));
-			const { body } = await snekfetch.get(avatarURL);
+			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 
 module.exports = class VocaloidCommand extends Command {
@@ -24,7 +24,7 @@ module.exports = class VocaloidCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://vocadb.net/api/songs')
 				.query({
 					query,

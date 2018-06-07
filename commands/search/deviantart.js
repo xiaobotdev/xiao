@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { list } = require('../../util/Util');
 const { DEVIANTART_ID, DEVIANTART_SECRET } = process.env;
 const sections = ['dailydeviations', 'hot', 'newest', 'popular', 'undiscovered'];
@@ -35,7 +35,7 @@ module.exports = class DeviantartCommand extends Command {
 	async run(msg, { section, query }) {
 		try {
 			if (!this.token) await this.fetchToken();
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`https://www.deviantart.com/api/v1/oauth2/browse/${section}`)
 				.query({
 					q: query,
@@ -52,7 +52,7 @@ module.exports = class DeviantartCommand extends Command {
 	}
 
 	async fetchToken() {
-		const { body } = await snekfetch
+		const { body } = await request
 			.get('https://www.deviantart.com/oauth2/token')
 			.query({
 				grant_type: 'client_credentials',

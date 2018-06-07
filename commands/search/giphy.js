@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { GIPHY_KEY } = process.env;
 
 module.exports = class GiphyCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class GiphyCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://api.giphy.com/v1/gifs/search')
 				.query({
 					q: query,

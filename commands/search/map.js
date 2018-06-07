@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class MapCommand extends Command {
@@ -35,7 +35,7 @@ module.exports = class MapCommand extends Command {
 
 	async run(msg, { zoom, location }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://maps.googleapis.com/maps/api/staticmap')
 				.query({
 					center: location,

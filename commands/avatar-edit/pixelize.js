@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class PixelizeCommand extends Command {
 	constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class PixelizeCommand extends Command {
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 64 });
 		try {
-			const { body } = await snekfetch.get(avatarURL);
+			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(512, 512);
 			const ctx = canvas.getContext('2d');

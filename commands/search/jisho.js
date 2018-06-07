@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 
 module.exports = class JishoCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class JishoCommand extends Command {
 
 	async run(msg, { word }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://jisho.org/api/v1/search/words')
 				.query({ keyword: word });
 			if (!body.data.length) return msg.say('Could not find any results.');

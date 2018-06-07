@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class CowSayCommand extends Command {
 	constructor(client) {
@@ -21,7 +21,7 @@ module.exports = class CowSayCommand extends Command {
 
 	async run(msg, { text }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://cowsay.morecode.org/say')
 				.query({
 					message: text,

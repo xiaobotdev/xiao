@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class ChuckNorrisCommand extends Command {
 	constructor(client) {
@@ -22,7 +22,7 @@ module.exports = class ChuckNorrisCommand extends Command {
 
 	async run(msg, { name }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://api.icndb.com/jokes/random')
 				.query({
 					escape: 'javascript',

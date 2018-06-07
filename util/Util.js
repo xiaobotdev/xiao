@@ -1,4 +1,4 @@
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const crypto = require('crypto');
 const { IMGUR_KEY } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
@@ -60,7 +60,7 @@ class Util {
 	}
 
 	static async randomFromImgurAlbum(album) {
-		const { body } = await snekfetch
+		const { body } = await request
 			.get(`https://api.imgur.com/3/album/${album}`)
 			.set({ Authorization: `Client-ID ${IMGUR_KEY}` });
 		if (!body.data.images.length) return null;

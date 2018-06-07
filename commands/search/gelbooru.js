@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class GelbooruCommand extends Command {
 	constructor(client) {
@@ -23,7 +23,7 @@ module.exports = class GelbooruCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://gelbooru.com/index.php')
 				.query({
 					page: 'dapi',

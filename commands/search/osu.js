@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { OSU_KEY } = process.env;
 
 module.exports = class OsuCommand extends Command {
@@ -24,7 +24,7 @@ module.exports = class OsuCommand extends Command {
 
 	async run(msg, { user }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://osu.ppy.sh/api/get_user')
 				.query({
 					k: OSU_KEY,

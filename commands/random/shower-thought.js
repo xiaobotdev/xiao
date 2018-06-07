@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class ShowerThoughtCommand extends Command {
 	constructor(client) {
@@ -14,7 +14,7 @@ module.exports = class ShowerThoughtCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://www.reddit.com/r/Showerthoughts.json')
 				.query({ limit: 1000 });
 			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);

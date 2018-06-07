@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class MDNCommand extends Command {
 	constructor(client) {
@@ -24,7 +24,7 @@ module.exports = class MDNCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://developer.mozilla.org/en-US/search.json')
 				.query({
 					q: query,

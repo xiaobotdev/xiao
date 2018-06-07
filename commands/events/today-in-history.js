@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class TodayInHistoryCommand extends Command {
 	constructor(client) {
@@ -33,8 +33,8 @@ module.exports = class TodayInHistoryCommand extends Command {
 	async run(msg, { month, day }) {
 		const date = month && day ? `/${month}/${day}` : '';
 		try {
-			const { raw } = await snekfetch.get(`http://history.muffinlabs.com/date${date}`);
-			const body = JSON.parse(raw.toString());
+			const { text } = await request.get(`http://history.muffinlabs.com/date${date}`);
+			const body = JSON.parse(text);
 			const events = body.data.Events;
 			const event = events[Math.floor(Math.random() * events.length)];
 			const embed = new MessageEmbed()
@@ -47,7 +47,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 					event.links.map(link => `[${link.title}](${link.link.replace(/\)/g, '%29')})`).join(', '));
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 404 || err.statusCode === 500) return msg.say('Invalid date.');
+			if (err.status === 404 || err.status === 500) return msg.say('Invalid date.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

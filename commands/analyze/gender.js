@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class GenderAnalyzeCommand extends Command {
 	constructor(client) {
@@ -33,7 +33,7 @@ module.exports = class GenderAnalyzeCommand extends Command {
 
 	async run(msg, { first, last }) {
 		try {
-			const { body } = await snekfetch.get(`https://api.namsor.com/onomastics/api/json/gender/${first}/${last}`);
+			const { body } = await request.get(`https://api.namsor.com/onomastics/api/json/gender/${first}/${last}`);
 			if (body.gender === 'unknown') return msg.say(`I have no idea what gender ${body.firstName} is.`);
 			return msg.say(`I'm ${Math.abs(body.scale * 100)}% sure ${body.firstName} is a ${body.gender} name.`);
 		} catch (err) {

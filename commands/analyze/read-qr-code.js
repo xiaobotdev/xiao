@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 
 module.exports = class ReadQRCodeCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class ReadQRCodeCommand extends Command {
 
 	async run(msg, { image }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://api.qrserver.com/v1/read-qr-code/')
 				.query({ fileurl: image });
 			const data = body[0].symbol[0];

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 const { shorten } = require('../../util/Util');
 
@@ -25,10 +25,10 @@ module.exports = class YuGiOhCommand extends Command {
 
 	async run(msg, { card }) {
 		try {
-			const { raw } = await snekfetch
+			const { text } = await request
 				.get('https://www.ygohub.com/api/card_info')
 				.query({ name: card });
-			const body = JSON.parse(raw.toString());
+			const body = JSON.parse(text);
 			if (body.status === 'error') return msg.say('Could not find any results.');
 			const data = body.card;
 			const embed = new MessageEmbed()

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 
 module.exports = class PokedexCommand extends Command {
@@ -25,7 +25,7 @@ module.exports = class PokedexCommand extends Command {
 
 	async run(msg, { pokemon }) {
 		try {
-			const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
+			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
 			const id = body.id.toString().padStart(3, '0');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
@@ -41,7 +41,7 @@ module.exports = class PokedexCommand extends Command {
 				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

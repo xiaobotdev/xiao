@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class YoutubeCommand extends Command {
@@ -24,7 +24,7 @@ module.exports = class YoutubeCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://www.googleapis.com/youtube/v3/search')
 				.query({
 					part: 'snippet',

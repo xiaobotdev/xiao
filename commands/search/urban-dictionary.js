@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 const types = ['random', 'top'];
 
@@ -34,7 +34,7 @@ module.exports = class UrbanDictionaryCommand extends Command {
 
 	async run(msg, { word, type }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://api.urbandictionary.com/v0/define')
 				.query({ term: word });
 			if (!body.list.length) return msg.say('Could not find any results.');

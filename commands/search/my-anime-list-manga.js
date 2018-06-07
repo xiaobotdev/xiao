@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { parseString } = require('xml2js');
 const { promisify } = require('util');
 const xml = promisify(parseString);
@@ -28,11 +28,11 @@ module.exports = class MyAnimeListMangaCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { raw } = await snekfetch
+			const { text } = await request
 				.get('https://myanimelist.net/api/manga/search.xml')
 				.query({ q: query })
 				.set({ Authorization: `Basic ${base64(`${MAL_USERNAME}:${MAL_PASSWORD}`)}` });
-			const body = await xml(raw.toString());
+			const body = await xml(text);
 			const data = body.manga.entry[0];
 			const embed = new MessageEmbed()
 				.setColor(0x2D54A2)
