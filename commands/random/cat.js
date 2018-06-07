@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { THE_CAT_API_KEY } = process.env;
 
 module.exports = class CatCommand extends Command {
@@ -16,7 +16,7 @@ module.exports = class CatCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body, headers } = await snekfetch
+			const { body, headers } = await request
 				.get('http://thecatapi.com/api/images/get')
 				.query({ api_key: THE_CAT_API_KEY });
 			const format = headers['content-type'].replace(/image\//i, '');

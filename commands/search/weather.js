@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class WeatherCommand extends Command {
 	constructor(client) {
@@ -23,7 +23,7 @@ module.exports = class WeatherCommand extends Command {
 
 	async run(msg, { location }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://query.yahooapis.com/v1/public/yql')
 				.query({
 					// eslint-disable-next-line max-len

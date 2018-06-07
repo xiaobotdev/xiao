@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const path = require('path');
 const { randomRange } = require('../../util/Util');
 const { version } = require('../../package');
@@ -41,7 +41,7 @@ module.exports = class CardCommand extends Command {
 			else if (cardID < 9000) rarity = 'U';
 			else rarity = 'R';
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'card.png'));
-			const { body } = await snekfetch.get(avatarURL);
+			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');

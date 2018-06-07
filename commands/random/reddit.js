@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 
 module.exports = class RedditCommand extends Command {
@@ -23,7 +23,7 @@ module.exports = class RedditCommand extends Command {
 
 	async run(msg, { subreddit }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
 				.query({ sort: 'new' });
 			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
@@ -37,8 +37,8 @@ module.exports = class RedditCommand extends Command {
 				⬇ ${post.downs}
 			`);
 		} catch (err) {
-			if (err.statusCode === 403) return msg.say('This subreddit is private.');
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 403) return msg.say('This subreddit is private.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

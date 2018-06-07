@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { RIOT_KEY } = process.env;
 const buttons = ['Q', 'W', 'E', 'R'];
 
@@ -66,7 +66,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 	}
 
 	async fetchVersion() {
-		const { body } = await snekfetch
+		const { body } = await request
 			.get('https://na1.api.riotgames.com/lol/static-data/v3/versions')
 			.query({ api_key: RIOT_KEY });
 		[this.version] = body;
@@ -76,7 +76,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 
 	async fetchChampions() {
 		if (this.champions && this.champions.version === this.version) return this.champions;
-		const { body } = await snekfetch
+		const { body } = await request
 			.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion.json`);
 		this.champions = body;
 		return body;
@@ -87,7 +87,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 		const name = Object.keys(champions.data).find(key => key.toLowerCase() === champion);
 		if (!name) return null;
 		const { id } = champions.data[name];
-		const { body } = await snekfetch
+		const { body } = await request
 			.get(`https://ddragon.leagueoflegends.com/cdn/${this.version}/data/en_US/champion/${id}.json`);
 		return body.data[id];
 	}

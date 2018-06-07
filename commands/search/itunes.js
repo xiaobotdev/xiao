@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class ItunesCommand extends Command {
 	constructor(client) {
@@ -30,7 +30,7 @@ module.exports = class ItunesCommand extends Command {
 
 	async run(msg, { country, query }) {
 		try {
-			const { raw } = await snekfetch
+			const { text } = await request
 				.get('https://itunes.apple.com/search')
 				.query({
 					term: query,
@@ -40,7 +40,7 @@ module.exports = class ItunesCommand extends Command {
 					explicit: msg.channel.nsfw ? 'yes' : 'no',
 					country
 				});
-			const body = JSON.parse(raw.toString());
+			const body = JSON.parse(text);
 			if (!body.results.length) return msg.say('Could not find any results.');
 			const data = body.results[0];
 			const embed = new MessageEmbed()
@@ -55,7 +55,7 @@ module.exports = class ItunesCommand extends Command {
 				.addField('❯ Genre', data.primaryGenreName, true);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 400) {
+			if (err.status === 400) {
 				return msg.reply('Invalid country code. Refer to <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>.');
 			}
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

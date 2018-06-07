@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
 
@@ -64,7 +64,7 @@ module.exports = class AkinatorCommand extends Command {
 	}
 
 	async createSession(channel) {
-		const { body } = await snekfetch
+		const { body } = await request
 			.get('http://192.99.38.142:8126/ws/new_session')
 			.query({
 				partner: 1,
@@ -87,7 +87,7 @@ module.exports = class AkinatorCommand extends Command {
 
 	async progress(channel, answer) {
 		const session = this.sessions.get(channel.id);
-		const { body } = await snekfetch
+		const { body } = await request
 			.get('http://192.99.38.142:8126/ws/answer')
 			.query({
 				session: session.id,
@@ -110,7 +110,7 @@ module.exports = class AkinatorCommand extends Command {
 
 	async finish(channel) {
 		const session = this.sessions.get(channel.id);
-		const { body } = await snekfetch
+		const { body } = await request
 			.get('http://192.99.38.142:8126/ws/list')
 			.query({
 				session: session.id,

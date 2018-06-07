@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class StrawpollCommand extends Command {
 	constructor(client) {
@@ -32,7 +32,7 @@ module.exports = class StrawpollCommand extends Command {
 		if (options.length < 2) return msg.reply('Please provide more than one choice.');
 		if (options.length > 31) return msg.reply('Please provide thirty or less choices.');
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.post('https://www.strawpoll.me/api/v2/polls')
 				.set({ 'Content-Type': 'application/json' })
 				.send({ title, options });

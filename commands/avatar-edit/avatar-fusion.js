@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class AvatarFusionCommand extends Command {
 	constructor(client) {
@@ -35,9 +35,9 @@ module.exports = class AvatarFusionCommand extends Command {
 		const baseAvatarURL = base.displayAvatarURL({ format: 'png', size: 512 });
 		const overlayAvatarURL = overlay.displayAvatarURL({ format: 'png', size: 512 });
 		try {
-			const baseAvatarData = await snekfetch.get(baseAvatarURL);
+			const baseAvatarData = await request.get(baseAvatarURL);
 			const baseAvatar = await loadImage(baseAvatarData.body);
-			const overlayAvatarData = await snekfetch.get(overlayAvatarURL);
+			const overlayAvatarData = await request.get(overlayAvatarURL);
 			const overlayAvatar = await loadImage(overlayAvatarData.body);
 			const canvas = createCanvas(baseAvatar.width, baseAvatar.height);
 			const ctx = canvas.getContext('2d');

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 
 module.exports = class RottenTomatoesCommand extends Command {
@@ -24,7 +24,7 @@ module.exports = class RottenTomatoesCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const search = await snekfetch
+			const search = await request
 				.get('https://www.rottentomatoes.com/api/private/v2.0/search/')
 				.query({
 					limit: 10,
@@ -33,8 +33,8 @@ module.exports = class RottenTomatoesCommand extends Command {
 			if (!search.body.movies.length) return msg.say('Could not find any results.');
 			const find = search.body.movies.find(m => m.name.toLowerCase() === query.toLowerCase()) || search.body.movies[0];
 			const urlID = find.url.replace('/m/', '');
-			const { raw } = await snekfetch.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
-			const body = JSON.parse(raw.toString());
+			const { text } = await request.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
+			const body = JSON.parse(text);
 			const criticScore = body.ratingSummary.allCritics;
 			const audienceScore = body.ratingSummary.audience;
 			const embed = new MessageEmbed()

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class ShieldsIoBadgeCommand extends Command {
 	constructor(client) {
@@ -35,10 +35,10 @@ module.exports = class ShieldsIoBadgeCommand extends Command {
 
 	async run(msg, { subject, status, color }) {
 		try {
-			const { body } = await snekfetch.get(`https://img.shields.io/badge/${subject}-${status}-${color}.png`);
+			const { body } = await request.get(`https://img.shields.io/badge/${subject}-${status}-${color}.png`);
 			return msg.say({ files: [{ attachment: body, name: 'badge.png' }] });
 		} catch (err) {
-			if (err.statusCode === 404) return msg.reply('Could not create the badge...');
+			if (err.status === 404) return msg.reply('Could not create the badge...');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

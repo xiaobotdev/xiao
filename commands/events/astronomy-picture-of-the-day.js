@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 const { GOV_KEY } = process.env;
 
@@ -17,7 +17,7 @@ module.exports = class AstronomyPictureOfTheDayCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://api.nasa.gov/planetary/apod')
 				.query({ api_key: GOV_KEY });
 			return msg.say(shorten(body.explanation), { files: [body.url] });

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class ShortenURLCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class ShortenURLCommand extends Command {
 
 	async run(msg, { url }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.post('https://www.googleapis.com/urlshortener/v1/url')
 				.query({ key: GOOGLE_KEY })
 				.send({ longUrl: url });

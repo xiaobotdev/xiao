@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { list } = require('../../util/Util');
 const codes = require('../../assets/json/translate');
 const { YANDEX_KEY } = process.env;
@@ -59,7 +59,7 @@ module.exports = class TranslateCommand extends Command {
 
 	async run(msg, { text, target, base }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://translate.yandex.net/api/v1.5/tr.json/translate')
 				.query({
 					key: YANDEX_KEY,

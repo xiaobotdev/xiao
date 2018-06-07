@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { hash } = require('../../util/Util');
 
 module.exports = class GravatarCommand extends Command {
@@ -24,7 +24,7 @@ module.exports = class GravatarCommand extends Command {
 	async run(msg, { email }) {
 		const emailHash = hash(email, 'md5');
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`https://www.gravatar.com/avatar/${emailHash}`)
 				.query({
 					size: 500,
@@ -33,7 +33,7 @@ module.exports = class GravatarCommand extends Command {
 				});
 			return msg.say({ files: [{ attachment: body, name: `${emailHash}.jpg` }] });
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

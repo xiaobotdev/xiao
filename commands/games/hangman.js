@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 const { WORDNIK_KEY } = process.env;
 
@@ -19,7 +19,7 @@ module.exports = class HangmanCommand extends Command {
 		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://api.wordnik.com/v4/words.json/randomWord')
 				.query({ api_key: WORDNIK_KEY });
 			const word = body.word.toLowerCase().replace(/ /g, '-');

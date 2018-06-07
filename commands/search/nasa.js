@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 
 module.exports = class NASACommand extends Command {
@@ -23,7 +23,7 @@ module.exports = class NASACommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://images-api.nasa.gov/search')
 				.query({
 					q: query,

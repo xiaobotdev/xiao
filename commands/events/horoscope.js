@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { list } = require('../../util/Util');
 const signs = require('../../assets/json/horoscope');
 
@@ -27,7 +27,7 @@ module.exports = class HoroscopeCommand extends Command {
 
 	async run(msg, { sign }) {
 		try {
-			const { body } = await snekfetch.get(`http://theastrologer-api.herokuapp.com/api/horoscope/${sign}/today`);
+			const { body } = await request.get(`http://theastrologer-api.herokuapp.com/api/horoscope/${sign}/today`);
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
 				.setTitle(`Horoscope for ${body.sunsign}...`)

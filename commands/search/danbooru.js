@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class DanbooruCommand extends Command {
 	constructor(client) {
@@ -27,7 +27,7 @@ module.exports = class DanbooruCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://danbooru.donmai.us/posts.json')
 				.query({
 					tags: `${query} order:random`,

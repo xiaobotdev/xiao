@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { list } = require('../../util/Util');
 const codes = require('../../assets/json/currency');
 
@@ -39,7 +39,7 @@ module.exports = class CurrencyCommand extends Command {
 	async run(msg, { base, target, amount }) {
 		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('http://api.fixer.io/latest')
 				.query({
 					base,

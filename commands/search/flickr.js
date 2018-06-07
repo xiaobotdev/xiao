@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { FLICKR_KEY } = process.env;
 
 module.exports = class FlickrCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class FlickrCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://api.flickr.com/services/rest/')
 				.query({
 					api_key: FLICKR_KEY,

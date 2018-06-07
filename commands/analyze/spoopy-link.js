@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 
 module.exports = class SpoopyLinkCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class SpoopyLinkCommand extends Command {
 
 	async run(msg, { site }) {
 		try {
-			const { body } = await snekfetch.get(`https://spoopy.link/api/${site}`);
+			const { body } = await request.get(`https://spoopy.link/api/${site}`);
 			return msg.say(stripIndents`
 				${body.safe ? 'Safe!' : 'Not safe...'}
 				${body.chain.map(url => `<${url.url}> ${url.safe ? '✅' : `❌ (${url.reasons.join(', ')})`}`).join('\n')}

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class GoogleDoodleCommand extends Command {
 	constructor(client) {
@@ -32,7 +32,7 @@ module.exports = class GoogleDoodleCommand extends Command {
 		if (latest) month = now.getMonth() + 1;
 		if (!year) year = now.getFullYear();
 		try {
-			const { body } = await snekfetch.get(`https://www.google.com/doodles/json/${year}/${month}`);
+			const { body } = await request.get(`https://www.google.com/doodles/json/${year}/${month}`);
 			if (!body.length) return msg.say('Could not find any results.');
 			const data = body[latest ? 0 : Math.floor(Math.random() * body.length)];
 			const runDate = new Date(data.run_date_array.join('-')).toDateString();

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { ALPHA_VANTAGE_KEY } = process.env;
 
 module.exports = class StocksCommand extends Command {
@@ -24,7 +24,7 @@ module.exports = class StocksCommand extends Command {
 
 	async run(msg, { symbol }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://www.alphavantage.co/query')
 				.query({
 					function: 'TIME_SERIES_INTRADAY',

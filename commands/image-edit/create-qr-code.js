@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class CreateQRCodeCommand extends Command {
 	constructor(client) {
@@ -21,7 +21,7 @@ module.exports = class CreateQRCodeCommand extends Command {
 
 	async run(msg, { text }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://api.qrserver.com/v1/create-qr-code/')
 				.query({ data: text });
 			return msg.say({ files: [{ attachment: body, name: 'qr-code.png' }] });

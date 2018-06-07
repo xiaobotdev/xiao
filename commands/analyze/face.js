@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { KAIROS_KEY, KAIROS_ID } = process.env;
 const races = ['asian', 'black', 'hispanic', 'other', 'white'];
 
@@ -23,7 +23,7 @@ module.exports = class FaceAnalyzeCommand extends Command {
 
 	async run(msg, { face }) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.post('https://api.kairos.com/detect')
 				.set({
 					app_id: KAIROS_ID,

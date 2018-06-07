@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class MemeCommand extends Command {
 	constructor(client) {
@@ -36,9 +36,9 @@ module.exports = class MemeCommand extends Command {
 
 	async run(msg, { type, top, bottom }) {
 		try {
-			const search = await snekfetch.get(`https://memegen.link/api/search/${type}`);
+			const search = await request.get(`https://memegen.link/api/search/${type}`);
 			if (!search.body.length) return msg.say('Could not find any results.');
-			const { body } = await snekfetch.get(search.body[0].template.blank.replace(/\/_/, `/${top}/${bottom}`));
+			const { body } = await request.get(search.body[0].template.blank.replace(/\/_/, `/${top}/${bottom}`));
 			return msg.say({ files: [{ attachment: body, name: 'meme.jpg' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

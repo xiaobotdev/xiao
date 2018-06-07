@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { silhouette } = require('../../util/Canvas');
 
 module.exports = class WhosThatPokemonCommand extends Command {
@@ -52,13 +52,13 @@ module.exports = class WhosThatPokemonCommand extends Command {
 
 	async fetchPokemon(pokemon) {
 		if (this.cache.has(pokemon)) return this.cache.get(pokemon);
-		const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
+		const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
 		this.cache.set(body.id, body);
 		return body;
 	}
 
 	async fetchImage(id, hide = false) {
-		const image = await snekfetch.get(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
+		const image = await request.get(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
 		if (!hide) return image.body;
 		const base = await loadImage(image.body);
 		const canvas = createCanvas(base.width, base.height);

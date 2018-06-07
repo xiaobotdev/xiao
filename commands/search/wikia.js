@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { shorten } = require('../../util/Util');
 
 module.exports = class WikiaCommand extends Command {
@@ -30,14 +30,14 @@ module.exports = class WikiaCommand extends Command {
 
 	async run(msg, { wiki, query }) {
 		try {
-			const search = await snekfetch
+			const search = await request
 				.get(`http://${wiki}.wikia.com/api/v1/Search/List/`)
 				.query({
 					query,
 					limit: 1,
 					namespaces: 0
 				});
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`http://${wiki}.wikia.com/api/v1/Articles/AsSimpleJson/`)
 				.query({ id: search.body.items[0].id });
 			const data = body.sections[0];

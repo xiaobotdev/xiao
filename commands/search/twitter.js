@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { base64 } = require('../../util/Util');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 
@@ -28,7 +28,7 @@ module.exports = class TwitterCommand extends Command {
 	async run(msg, { user }) {
 		try {
 			if (!this.token) await this.fetchToken();
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://api.twitter.com/1.1/users/show.json')
 				.set({ Authorization: `Bearer ${this.token}` })
 				.query({ screen_name: user });
@@ -48,14 +48,14 @@ module.exports = class TwitterCommand extends Command {
 				.addField('❯ Latest Tweet', body.status ? body.status.text : '???');
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.statusCode === 401) await this.fetchToken();
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.status === 401) await this.fetchToken();
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
 	async fetchToken() {
-		const { body } = await snekfetch
+		const { body } = await request
 			.post('https://api.twitter.com/oauth2/token')
 			.set({
 				Authorization: `Basic ${base64(`${TWITTER_KEY}:${TWITTER_SECRET}`)}`,

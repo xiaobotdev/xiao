@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { stripIndents } = require('common-tags');
 const { list, duration, tomorrow } = require('../../util/Util');
 const { GOLD_FISH_EMOJI_ID, SILVER_FISH_EMOJI_ID } = process.env;
@@ -42,9 +42,9 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 	}
 
 	async fetchPassword(locale) {
-		const { raw } = await snekfetch
+		const { text } = await request
 			.get(`http://hpmobile.jp/app/nekoatsume/neko_daily${locale !== 'jp' ? `_${locale}` : ''}.php`);
-		const data = raw.toString().split(',');
+		const data = text.split(',');
 		const date = new Date();
 		date.setUTCHours(date.getUTCHours() + 9);
 		return {

@@ -1,10 +1,10 @@
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { DISCORD_BOTS_TOKEN } = process.env;
 
 class BotListUtil {
 	static async discordBots(client) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
 				.set({ Authorization: DISCORD_BOTS_TOKEN })
 				.send({ server_count: client.guilds.size });

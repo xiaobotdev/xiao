@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { drawImageWithTint } = require('../../util/Canvas');
 
 module.exports = class TintCommand extends Command {
@@ -34,7 +34,7 @@ module.exports = class TintCommand extends Command {
 
 	async run(msg, { color, image }) {
 		try {
-			const { body } = await snekfetch.get(image);
+			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');

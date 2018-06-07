@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 const { today, tomorrow } = require('../../util/Util');
 const { GOOGLE_KEY, GOOGLE_CALENDAR_ID } = process.env;
 
@@ -16,7 +16,7 @@ module.exports = class HolidaysCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await snekfetch
+			const { body } = await request
 				.get(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(GOOGLE_CALENDAR_ID)}/events`)
 				.query({
 					maxResults: 10,

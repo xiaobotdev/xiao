@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const snekfetch = require('snekfetch');
+const request = require('superagent');
 
 module.exports = class SteamCommand extends Command {
 	constructor(client) {
@@ -23,7 +23,7 @@ module.exports = class SteamCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const search = await snekfetch
+			const search = await request
 				.get('https://store.steampowered.com/api/storesearch')
 				.query({
 					cc: 'us',
@@ -32,7 +32,7 @@ module.exports = class SteamCommand extends Command {
 				});
 			if (!search.body.items.length) return msg.say('Could not find any results.');
 			const { id, tiny_image } = search.body.items[0];
-			const { body } = await snekfetch
+			const { body } = await request
 				.get('https://store.steampowered.com/api/appdetails')
 				.query({ appids: id });
 			const { data } = body[id.toString()];
