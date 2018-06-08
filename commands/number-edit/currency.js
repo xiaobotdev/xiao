@@ -65,6 +65,7 @@ module.exports = class CurrencyCommand extends Command {
 				compact: 'ultra'
 			});
 		this.rates.set(query, body[query]);
+		setTimeout(() => this.rates.delete(query), 1.8e+6);
 		return body[query];
 	}
 };
