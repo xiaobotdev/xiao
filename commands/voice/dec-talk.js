@@ -42,7 +42,7 @@ module.exports = class DECTalkCommand extends Command {
 					.query({ text })
 					.redirects(0);
 			} catch (err) {
-				if (err.reponse.headers.location) url += err.response.headers.location;
+				if (err.response.headers.location) url += err.response.headers.location;
 				else throw err;
 			}
 			const dispatcher = connection.play(url);
