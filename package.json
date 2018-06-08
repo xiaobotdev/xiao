@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "79.0.0",
+	"version": "79.0.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -45,7 +45,6 @@
 		"sequelize": "^4.37.10",
 		"superagent": "^3.8.3",
 		"uws": "^10.148.0",
-		"xml2js": "^0.4.19",
 		"zlib-sync": "^0.1.4"
 	},
 	"devDependencies": {
