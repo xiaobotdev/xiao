@@ -4,6 +4,7 @@ module.exports = class ZodiacSignCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'zodiac-sign',
+			aliases: ['zodiac'],
 			group: 'analyze',
 			memberName: 'zodiac-sign',
 			description: 'Responds with the Zodiac Sign for the given month/day.',

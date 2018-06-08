@@ -35,11 +35,17 @@ module.exports = class DECTalkCommand extends Command {
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
-			const data = await request
-				.get('http://tts.cyzon.us/tts')
-				.query({ text })
-				.redirects(0);
-			const dispatcher = connection.play(`http://tts.cyzon.us${data.headers.location}`);
+			let url = 'http://tts.cyzon.us';
+			try {
+				await request
+					.get('http://tts.cyzon.us/tts')
+					.query({ text })
+					.redirects(0);
+			} catch (err) {
+				if (err.reponse.headers.location) url += err.response.headers.location;
+				else throw err;
+			}
+			const dispatcher = connection.play(url);
 			dispatcher.once('finish', () => channel.leave());
 			dispatcher.once('error', () => channel.leave());
 			return null;

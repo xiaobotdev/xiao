@@ -6,7 +6,7 @@ module.exports = class ReadQRCodeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'read-qr-code',
-			aliases: ['scan-qr-code', 'scan-qr'],
+			aliases: ['scan-qr-code', 'scan-qr', 'read-qr'],
 			group: 'analyze',
 			memberName: 'read-qr-code',
 			description: 'Reads a QR Code.',

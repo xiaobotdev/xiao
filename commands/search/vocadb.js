@@ -3,13 +3,13 @@ const { MessageEmbed } = require('discord.js');
 const request = require('superagent');
 const { shorten } = require('../../util/Util');
 
-module.exports = class VocaloidCommand extends Command {
+module.exports = class VocaDBCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'vocaloid',
-			aliases: ['vocadb', 'vocaloid-song', 'vocaloid-music'],
+			name: 'vocadb',
+			aliases: ['vocaloid', 'vocaloid-song', 'vocaloid-music'],
 			group: 'search',
-			memberName: 'vocaloid',
+			memberName: 'vocadb',
 			description: 'Searches VocaDB for your query.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

@@ -39,7 +39,11 @@ module.exports = class HangmanCommand extends Command {
 					===========
 					\`\`\`
 				`);
-				const guess = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+				const filter = res => {
+					const choice = res.content.toLowerCase();
+					return res.author.id === msg.author.id && !confirmation.includes(choice) && !incorrect.includes(choice);
+				};
+				const guess = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: 30000
 				});
@@ -49,21 +53,14 @@ module.exports = class HangmanCommand extends Command {
 				}
 				const choice = guess.first().content.toLowerCase();
 				if (choice === 'end') break;
-				if (choice.length > 1) {
-					if (word === choice) break;
-					else await msg.say('Nope, that\'s not the word, try again!');
-					points++;
-				} else if (confirmation.includes(choice) || incorrect.includes(choice)) {
-					await msg.say('You have already picked that letter!');
-				} else if (word.includes(choice)) {
-					await msg.say('Nice job!');
+				if (choice.length > 1) break;
+				if (word.includes(choice)) {
 					for (let i = 0; i < word.length; i++) {
 						if (word[i] !== choice) continue; // eslint-disable-line max-depth
 						confirmation.push(word[i]);
 						display[i] = word[i];
 					}
 				} else {
-					await msg.say('Nope!');
 					incorrect.push(choice);
 					points++;
 				}

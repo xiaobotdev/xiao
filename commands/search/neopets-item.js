@@ -51,7 +51,7 @@ module.exports = class NeopetsItemCommand extends Command {
 		const price = text.match(/([0-9,]+) (NP|NC)/);
 		const url = `https://items.jellyneo.net/item/${id[1]}/`;
 		const details = await request.get(url);
-		const detailsText = details.raw.toString();
+		const detailsText = details.text;
 		return {
 			id: id[1],
 			url,

@@ -1,7 +1,5 @@
 const Command = require('../../structures/Command');
 const request = require('superagent');
-const { list } = require('../../util/Util');
-const codes = require('../../assets/json/currency');
 
 module.exports = class CurrencyCommand extends Command {
 	constructor(client) {
@@ -11,7 +9,6 @@ module.exports = class CurrencyCommand extends Command {
 			group: 'number-edit',
 			memberName: 'currency',
 			description: 'Converts money from one currency to another.',
-			details: `**Codes**: ${codes.join(', ')}`,
 			args: [
 				{
 					key: 'amount',
@@ -20,34 +17,54 @@ module.exports = class CurrencyCommand extends Command {
 				},
 				{
 					key: 'base',
-					prompt: `What currency code do you want to use as the base? Either ${list(codes, 'or')}.`,
+					prompt: 'What currency code do you want to use as the base?',
 					type: 'string',
-					oneOf: codes,
 					parse: base => base.toUpperCase()
 				},
 				{
 					key: 'target',
-					prompt: `What currency code do you want to convert to? Either ${list(codes, 'or')}.`,
+					prompt: 'What currency code do you want to convert to?',
 					type: 'string',
-					oneOf: codes,
 					parse: target => target.toUpperCase()
 				}
 			]
 		});
+
+		this.currencies = null;
+		this.rates = new Map();
 	}
 
 	async run(msg, { base, target, amount }) {
-		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		try {
-			const { body } = await request
-				.get('http://api.fixer.io/latest')
-				.query({
-					base,
-					symbols: target
-				});
-			return msg.say(`${amount} ${base} is ${amount * body.rates[target]} ${target}.`);
+			if (!this.currencies) await this.fetchCurrencies();
+			base = this.currencies[base] || this.currencies.find($ => $.currencyName.toLowerCase() === base);
+			if (!base) return msg.say('Invalid base.');
+			target = this.currencies[target] || this.currencies.find($ => $.currencyName.toLowerCase() === target);
+			if (!target) return msg.say('Invalid target.');
+			if (base.id === target.id) return msg.say(`Converting ${base.id} to ${target.id} is the same value, dummy.`);
+			const rate = await this.fetchRate(base, target);
+			return msg.say(`${amount} ${base.id} is ${amount * rate} ${target.id}.`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async fetchCurrencies() {
+		const { body } = await request.get('https://free.currencyconverterapi.com/api/v5/currencies');
+		this.currencies = body.results;
+		return body.results;
+	}
+
+	async fetchRate(base, target) {
+		const query = `${base.id}_${target.id}`;
+		if (this.rates.has(query)) return this.rates.get(query);
+		const { body } = await request
+			.get('https://free.currencyconverterapi.com/api/v5/convert')
+			.query({
+				q: query,
+				compact: 'ultra'
+			});
+		this.rates.set(query, body[query]);
+		return body[query];
 	}
 };

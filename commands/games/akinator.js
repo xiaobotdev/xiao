@@ -44,7 +44,7 @@ module.exports = class AkinatorCommand extends Command {
 				if (msgs.first().content.toLowerCase() === 'end') break;
 				ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
-			const guess = await this.finish(msg.channel);
+			const guess = await this.guess(msg.channel);
 			if (!guess) return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
 			const embed = new MessageEmbed()
 				.setColor(0xF78B26)
@@ -108,7 +108,7 @@ module.exports = class AkinatorCommand extends Command {
 		return data;
 	}
 
-	async finish(channel) {
+	async guess(channel) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await request
 			.get('http://192.99.38.142:8126/ws/list')
