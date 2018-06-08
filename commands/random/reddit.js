@@ -33,8 +33,7 @@ module.exports = class RedditCommand extends Command {
 				**${post.title}**
 				<https://www.reddit.com${post.permalink}>
 
-				⬆ ${post.ups}
-				⬇ ${post.downs}
+				⬆ ${post.ups} ⬇ ${post.downs}
 			`);
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');

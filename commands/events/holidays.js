@@ -7,7 +7,7 @@ module.exports = class HolidaysCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'holidays',
-			aliases: ['google-calendar'],
+			aliases: ['google-calendar', 'holiday'],
 			group: 'events',
 			memberName: 'holidays',
 			description: 'Responds with today\'s holidays.'

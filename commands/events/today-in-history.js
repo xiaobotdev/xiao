@@ -33,7 +33,9 @@ module.exports = class TodayInHistoryCommand extends Command {
 	async run(msg, { month, day }) {
 		const date = month && day ? `/${month}/${day}` : '';
 		try {
-			const { text } = await request.get(`http://history.muffinlabs.com/date${date}`);
+			const { text } = await request
+				.get(`http://history.muffinlabs.com/date${date}`)
+				.buffer();
 			const body = JSON.parse(text);
 			const events = body.data.Events;
 			const event = events[Math.floor(Math.random() * events.length)];
