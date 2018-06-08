@@ -83,20 +83,6 @@ class Util {
 		return today;
 	}
 
-	static cleanXML(text) {
-		return text
-			.replace(/<br \/>/g, '')
-			.replace(/&apos;|&#0?39;/g, '\'')
-			.replace(/&mdash;/g, '—')
-			.replace(/&ndash;/g, '–')
-			.replace(/&quot;|&#0?34;/g, '"')
-			.replace(/&lt;|&#0?60;/g, '<')
-			.replace(/&gt;|&#0?62;/g, '>')
-			.replace(/&amp;|&#0?38;/g, '&')
-			.replace(/&eacute;/g, 'é')
-			.replace(/\[i\]|\[\/i\]/g, '*');
-	}
-
 	static async awaitPlayers(msg, max, min, { text = 'join game', time = 30000 } = {}) {
 		const joined = [];
 		joined.push(msg.author.id);
