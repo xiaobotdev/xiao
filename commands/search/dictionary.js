@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { WORDNIK_KEY } = process.env;
 

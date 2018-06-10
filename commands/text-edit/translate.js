@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { list } = require('../../util/Util');
 const codes = require('../../assets/json/translate');
 const { YANDEX_KEY } = process.env;

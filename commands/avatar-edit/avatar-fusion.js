@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const request = require('superagent');
+const request = require('node-superfetch');
 
 module.exports = class AvatarFusionCommand extends Command {
 	constructor(client) {

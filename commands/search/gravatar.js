@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { hash } = require('../../util/Util');
 
 module.exports = class GravatarCommand extends Command {

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 
 module.exports = class DECTalkCommand extends Command {
 	constructor(client) {
@@ -35,17 +35,11 @@ module.exports = class DECTalkCommand extends Command {
 		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
 			const connection = await channel.join();
-			let url = 'http://tts.cyzon.us';
-			try {
-				await request
-					.get('http://tts.cyzon.us/tts')
-					.query({ text })
-					.redirects(0);
-			} catch (err) {
-				if (err.response.headers.location) url += err.response.headers.location;
-				else throw err;
-			}
-			const dispatcher = connection.play(url);
+			const { headers } = await request
+				.get('http://tts.cyzon.us/tts')
+				.query({ text })
+				.redirects(0);
+			const dispatcher = connection.play(`http://tts.cyzon.us${headers.location}`);
 			dispatcher.once('finish', () => channel.leave());
 			dispatcher.once('error', () => channel.leave());
 			return null;

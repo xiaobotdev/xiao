@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { today, tomorrow } = require('../../util/Util');
 const { GOOGLE_KEY, GOOGLE_CALENDAR_ID } = process.env;
 

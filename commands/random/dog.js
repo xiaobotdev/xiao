@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 
 module.exports = class DogCommand extends Command {
 	constructor(client) {

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { THE_CAT_API_KEY } = process.env;
 
 module.exports = class CatCommand extends Command {

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { KAIROS_KEY, KAIROS_ID } = process.env;
 const races = ['asian', 'black', 'hispanic', 'other', 'white'];
 

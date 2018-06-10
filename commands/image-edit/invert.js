@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { invert } = require('../../util/Canvas');
 
 module.exports = class InvertCommand extends Command {

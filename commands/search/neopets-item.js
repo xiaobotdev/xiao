@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class NeopetsItemCommand extends Command {

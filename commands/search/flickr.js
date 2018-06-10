@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { FLICKR_KEY } = process.env;
 
 module.exports = class FlickrCommand extends Command {

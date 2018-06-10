@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class YoutubeCommand extends Command {

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const request = require('superagent');
+const request = require('node-superfetch');
 const path = require('path');
 const { list } = require('../../util/Util');
 const hats = require('../../assets/json/hat');
