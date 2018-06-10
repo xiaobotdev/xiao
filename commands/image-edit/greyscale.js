@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { greyscale } = require('../../util/Canvas');
 
 module.exports = class GreyscaleCommand extends Command {

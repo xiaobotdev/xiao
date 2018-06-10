@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
 const questions = require('../../assets/json/google-feud');
 

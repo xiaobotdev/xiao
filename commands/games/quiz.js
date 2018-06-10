@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { shuffle, list } = require('../../util/Util');
 const types = ['multiple', 'boolean'];
 const difficulties = ['easy', 'medium', 'hard'];

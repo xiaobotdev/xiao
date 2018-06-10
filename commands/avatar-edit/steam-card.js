@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
-const request = require('superagent');
+const request = require('node-superfetch');
 const path = require('path');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });

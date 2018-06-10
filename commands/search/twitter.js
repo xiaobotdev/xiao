@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { base64 } = require('../../util/Util');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 

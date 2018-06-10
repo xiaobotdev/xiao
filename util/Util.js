@@ -1,4 +1,4 @@
-const request = require('superagent');
+const request = require('node-superfetch');
 const crypto = require('crypto');
 const { IMGUR_KEY } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];

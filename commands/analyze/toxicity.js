@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class ToxicityCommand extends Command {

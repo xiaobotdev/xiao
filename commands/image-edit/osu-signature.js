@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { list } = require('../../util/Util');
 const colors = require('../../assets/json/osu-signature');
 

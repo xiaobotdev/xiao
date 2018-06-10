@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
-const request = require('superagent');
+const request = require('node-superfetch');
 const path = require('path');
 const { randomRange } = require('../../util/Util');
 const { version } = require('../../package');

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { list, duration, tomorrow } = require('../../util/Util');
 const { GOLD_FISH_EMOJI_ID, SILVER_FISH_EMOJI_ID } = process.env;

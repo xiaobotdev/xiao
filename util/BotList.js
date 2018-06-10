@@ -1,4 +1,4 @@
-const request = require('superagent');
+const request = require('node-superfetch');
 const { DISCORD_BOTS_TOKEN } = process.env;
 
 class BotListUtil {

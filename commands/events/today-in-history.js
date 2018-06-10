@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const request = require('superagent');
+const request = require('node-superfetch');
 
 module.exports = class TodayInHistoryCommand extends Command {
 	constructor(client) {
@@ -33,9 +33,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 	async run(msg, { month, day }) {
 		const date = month && day ? `/${month}/${day}` : '';
 		try {
-			const { text } = await request
-				.get(`http://history.muffinlabs.com/date${date}`)
-				.buffer();
+			const { text } = await request.get(`http://history.muffinlabs.com/date${date}`);
 			const body = JSON.parse(text);
 			const events = body.data.Events;
 			const event = events[Math.floor(Math.random() * events.length)];

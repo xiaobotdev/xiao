@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { RIOT_KEY } = process.env;
 const buttons = ['Q', 'W', 'E', 'R'];
 

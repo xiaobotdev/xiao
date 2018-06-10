@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('superagent');
+const request = require('node-superfetch');
 const { list } = require('../../util/Util');
 const { DEVIANTART_ID, DEVIANTART_SECRET } = process.env;
 const sections = ['dailydeviations', 'hot', 'newest', 'popular', 'undiscovered'];

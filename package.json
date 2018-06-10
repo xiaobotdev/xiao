@@ -39,11 +39,11 @@
 		"erlpack": "github:discordapp/erlpack",
 		"mathjs": "^4.4.2",
 		"node-opus": "^0.3.0",
+		"node-superfetch": "github:dragonfire535/node-superfetch",
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
 		"random-js": "^1.0.8",
 		"sequelize": "^4.37.10",
-		"superagent": "^3.8.3",
 		"uws": "^10.148.0",
 		"zlib-sync": "^0.1.4"
 	},
