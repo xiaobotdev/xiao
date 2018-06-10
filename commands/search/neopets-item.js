@@ -24,7 +24,7 @@ module.exports = class NeopetsItemCommand extends Command {
 	async run(msg, { item }) {
 		try {
 			const data = await this.fetchItem(item);
-			if (!data) return msg.say('Could not find any results');
+			if (!data) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
 				.setColor(0xFFCE31)
 				.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png', 'http://www.neopets.com/')

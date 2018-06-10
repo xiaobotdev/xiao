@@ -48,13 +48,8 @@ module.exports = class GoogleFeudCommand extends Command {
 					break;
 				}
 				const choice = msgs.first().content.toLowerCase();
-				if (suggestions.includes(choice)) {
-					await msg.say('Nice job!');
-					display[suggestions.indexOf(choice)] = choice;
-				} else {
-					--tries;
-					if (tries) await msg.say(`Nope! ${tries} tries remaining!`);
-				}
+				if (suggestions.includes(choice)) display[suggestions.indexOf(choice)] = choice;
+				else --tries;
 			}
 			this.playing.delete(msg.channel.id);
 			if (!display.includes('???')) return msg.say('You win! Nice job, master of Google!');

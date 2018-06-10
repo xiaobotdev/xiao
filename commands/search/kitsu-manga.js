@@ -24,9 +24,10 @@ module.exports = class KitsuMangaCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await request
+			const { text } = await request
 				.get('https://kitsu.io/api/edge/manga')
 				.query({ 'filter[text]': query });
+			const body = JSON.parse(text);
 			if (!body.data.length) return msg.say('Could not find any results.');
 			const data = body.data[0].attributes;
 			const embed = new MessageEmbed()

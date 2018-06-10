@@ -7,7 +7,7 @@ module.exports = class RottenTomatoesCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'rotten-tomatoes',
-			aliases: ['tomato-meter'],
+			aliases: ['tomato-meter', 'r-tomatoes'],
 			group: 'search',
 			memberName: 'rotten-tomatoes',
 			description: 'Searches Rotten Tomatoes for your query.',
