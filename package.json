@@ -39,7 +39,7 @@
 		"erlpack": "github:discordapp/erlpack",
 		"mathjs": "^4.4.2",
 		"node-opus": "^0.3.0",
-		"node-superfetch": "^0.0.4",
+		"node-superfetch": "^0.1.0",
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
 		"random-js": "^1.0.8",
