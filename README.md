@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (302)
+## Commands (303)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -136,6 +136,7 @@ information and support.
 * **google**: Searches Google for your query.
 * **gravatar**: Responds with the Gravatar for an email.
 * **http-cat**: Responds with a cat for an HTTP status code.
+* **http-dog**: Responds with a dog for an HTTP status code.
 * **imgur**: Searches Imgur for your query.
 * **itunes**: Searches iTunes for your query.
 * **jisho**: Defines a word, but with Japanese.
