@@ -65,7 +65,7 @@ module.exports = class AkinatorCommand extends Command {
 
 	async createSession(channel) {
 		const { body } = await request
-			.get('http://192.99.38.142:8126/ws/new_session')
+			.get('http://srv2.akinator.com:9157/ws/new_session')
 			.query({
 				partner: 1,
 				player: 'website-desktop',
@@ -88,7 +88,7 @@ module.exports = class AkinatorCommand extends Command {
 	async progress(channel, answer) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await request
-			.get('http://158.69.225.49:8152/ws/answer')
+			.get('http://srv2.akinator.com:9157/ws/answer')
 			.query({
 				session: session.id,
 				signature: session.signature,
@@ -111,7 +111,7 @@ module.exports = class AkinatorCommand extends Command {
 	async guess(channel) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await request
-			.get('http://158.69.225.49:8152/ws/list')
+			.get('http://srv2.akinator.com:9157/ws/list')
 			.query({
 				session: session.id,
 				signature: session.signature,
