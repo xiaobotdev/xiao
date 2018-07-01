@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { wait } = require('../../util/Util');
+const { delay } = require('../../util/Util');
 
 module.exports = class IllegalCommand extends Command {
 	constructor(client) {
@@ -52,7 +52,7 @@ module.exports = class IllegalCommand extends Command {
 				task: 'gif',
 				word: text
 			});
-		await wait(5000);
+		await delay(5000);
 		return body;
 	}
 

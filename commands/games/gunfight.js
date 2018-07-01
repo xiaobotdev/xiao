@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { wait, randomRange, verify } = require('../../util/Util');
+const { delay, randomRange, verify } = require('../../util/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull'];
 
 module.exports = class GunfightCommand extends Command {
@@ -36,7 +36,7 @@ module.exports = class GunfightCommand extends Command {
 				return msg.say('Looks like they declined...');
 			}
 			await msg.say('Get Ready...');
-			await wait(randomRange(1000, 30000));
+			await delay(randomRange(1000, 30000));
 			const word = words[Math.floor(Math.random() * words.length)];
 			await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
 			const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === word;
