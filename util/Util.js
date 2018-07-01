@@ -5,7 +5,7 @@ const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
 
 class Util {
-	static wait(ms) {
+	static delay(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 

@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { wait } = require('../../util/Util');
+const { delay } = require('../../util/Util');
 const frames = [
 	'(-°□°)-  ┬─┬',
 	'(╯°□°)╯    ]',
@@ -22,7 +22,7 @@ module.exports = class TableflipCommand extends Command {
 	async run(msg) {
 		const message = await msg.say('(\\\\°□°)\\\\  ┬─┬');
 		for (const frame of frames) {
-			await wait(300);
+			await delay(200);
 			await message.edit(frame);
 		}
 		return message;
