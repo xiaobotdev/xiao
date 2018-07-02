@@ -34,7 +34,7 @@ module.exports = class WeatherCommand extends Command {
 			const data = body.query.results.channel;
 			const embed = new MessageEmbed()
 				.setColor(0x0000FF)
-				.setAuthor(data.title, 'https://i.imgur.com/B9MMbtB.png', 'https://www.yahoo.com/news/weather')
+				.setAuthor(data.title, 'https://i.imgur.com/IYF2Pfa.jpg', 'https://www.yahoo.com/news/weather')
 				.setURL(data.link)
 				.setTimestamp()
 				.addField('❯ City', data.location.city, true)
