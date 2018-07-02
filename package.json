@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "81.0.1",
+	"version": "81.0.2",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -28,7 +28,7 @@
 	},
 	"homepage": "https://github.com/dragonfire535/xiao#readme",
 	"engines": {
-		"node": ">=8.0.0"
+		"node": ">=10.1.0"
 	},
 	"dependencies": {
 		"canvas": "github:automattic/node-canvas",
@@ -43,7 +43,7 @@
 		"pg": "^6.4.2",
 		"pg-hstore": "^2.3.2",
 		"random-js": "^1.0.8",
-		"sequelize": "^4.37.10",
+		"sequelize": "^4.38.0",
 		"uws": "^10.148.1",
 		"zlib-sync": "^0.1.4"
 	},
