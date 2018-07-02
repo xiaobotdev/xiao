@@ -5,7 +5,7 @@ module.exports = class Rule34Command extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'rule34',
-			aliases: ['rule34-image'],
+			aliases: ['rule34-image', 'r34'],
 			group: 'search',
 			memberName: 'rule34',
 			description: 'Responds with an image from Rule34, with optional query.',

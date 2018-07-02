@@ -33,8 +33,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 				The current Neko Atsume password is **${data.password}**.
 				It will expire in **${duration(data.expires - data.date)}**.
 
-				${data.gold} ${this.goldFish}
-				${data.silver} ${this.silverFish}
+				${data.gold} ${this.goldFish} ${data.silver} ${this.silverFish}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
