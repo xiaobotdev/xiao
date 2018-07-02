@@ -48,7 +48,7 @@ module.exports = class NeopetsItemCommand extends Command {
 			});
 		const id = text.match(/\/item\/([0-9]+)/);
 		if (!id) return null;
-		const price = text.match(/([0-9,]+) (NP|NC)/);
+		const price = text.match(/>([0-9,]+) (NP|NC)</);
 		const url = `https://items.jellyneo.net/item/${id[1]}/`;
 		const details = await request.get(url);
 		const detailsText = details.text;

@@ -35,7 +35,11 @@ module.exports = class StrawpollCommand extends Command {
 			const { body } = await request
 				.post('https://www.strawpoll.me/api/v2/polls')
 				.set({ 'Content-Type': 'application/json' })
-				.send({ title, options });
+				.send({
+					title,
+					options,
+					captcha: true
+				});
 			return msg.say(stripIndents`
 				${body.title}
 				http://www.strawpoll.me/${body.id}

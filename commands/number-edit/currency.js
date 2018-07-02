@@ -43,7 +43,7 @@ module.exports = class CurrencyCommand extends Command {
 			if (!target) return msg.say('Invalid target.');
 			if (base.id === target.id) return msg.say(`Converting ${base.id} to ${target.id} is the same value, dummy.`);
 			const rate = await this.fetchRate(base, target);
-			return msg.say(`${amount} ${base.id} is ${amount * rate} ${target.id}.`);
+			return msg.say(`${amount} ${base.id} is ${(amount * rate).toFixed(2)} ${target.id}.`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
