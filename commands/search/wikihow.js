@@ -6,7 +6,7 @@ module.exports = class WikihowCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wikihow',
-			aliases: ['wikihow-article', 'how-to'],
+			aliases: ['wikihow-article', 'how-to', 'how'],
 			group: 'search',
 			memberName: 'wikihow',
 			description: 'Searches Wikihow for your query.',
@@ -15,7 +15,7 @@ module.exports = class WikihowCommand extends Command {
 					key: 'query',
 					prompt: 'What article would you like to search for?',
 					type: 'string',
-					parse: query => query.replace(/^(how to)/i, '')
+					parse: query => query.replace(/^((how )?to)/i, '')
 				}
 			]
 		});

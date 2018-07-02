@@ -10,6 +10,7 @@ module.exports = class FlickrCommand extends Command {
 			group: 'search',
 			memberName: 'flickr',
 			description: 'Searches Flickr for your query.',
+			nsfw: true,
 			args: [
 				{
 					key: 'query',
