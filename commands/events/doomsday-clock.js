@@ -23,7 +23,7 @@ module.exports = class DoomsdayClockCommand extends Command {
 				.setTitle(`${year}: ${time}`)
 				.setColor(0x000000)
 				.setThumbnail(image)
-				.setURL('https://thebulletin.org/doomsday-clock/past-announcements/')
+				.setURL('https://thebulletin.org/doomsday-clock/current-time/')
 				.setAuthor('Bulletin of the Atomic Scientists', undefined, 'https://thebulletin.org/')
 				.setDescription(description.replace(/<a href="(.+)">(.+)<\/a>/, '[$2]($1)'));
 			return msg.embed(embed);
