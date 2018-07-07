@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const { trimArray } = require('../../util/Util');
 
 module.exports = class DiscriminatorCommand extends Command {
 	constructor(client) {
@@ -29,7 +30,7 @@ module.exports = class DiscriminatorCommand extends Command {
 		const users = this.client.users.filter(user => user.discriminator === discrim).map(user => user.username);
 		return msg.say(stripIndents`
 			**Found ${users.length} users with the discriminator #${discrim}**
-			${users.join(', ')}
+			${trimArray(users, 50).join(', ')}
 		`);
 	}
 };

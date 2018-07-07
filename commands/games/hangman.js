@@ -24,11 +24,14 @@ module.exports = class HangmanCommand extends Command {
 				.query({ api_key: WORDNIK_KEY });
 			const word = body.word.toLowerCase().replace(/ /g, '-');
 			let points = 0;
+			let displayText = null;
+			let guessed = false;
 			const confirmation = [];
 			const incorrect = [];
 			const display = new Array(word.length).fill('_');
-			while (word.length !== confirmation.length && points < 7) {
+			while (word.length !== confirmation.length && points < 6) {
 				await msg.say(stripIndents`
+					${displayText === null ? 'Here we go!' : displayText ? 'Good job!' : 'Nope!'}
 					\`${display.join(' ')}\`. Which letter do you choose?
 					\`\`\`
 					___________
@@ -53,20 +56,24 @@ module.exports = class HangmanCommand extends Command {
 				}
 				const choice = guess.first().content.toLowerCase();
 				if (choice === 'end') break;
-				if (choice.length > 1) break;
-				if (word.includes(choice)) {
+				if (choice.length > 1 && (choice === word || choice === body.word.toLowerCase())) {
+					guessed = true;
+					break;
+				} else if (word.includes(choice)) {
+					displayText = true;
 					for (let i = 0; i < word.length; i++) {
 						if (word[i] !== choice) continue; // eslint-disable-line max-depth
 						confirmation.push(word[i]);
 						display[i] = word[i];
 					}
 				} else {
-					incorrect.push(choice);
+					displayText = false;
+					if (choice.length === 1) incorrect.push(choice);
 					points++;
 				}
 			}
 			this.playing.delete(msg.channel.id);
-			if (word.length === confirmation.length) return msg.say(`You won, it was ${word}!`);
+			if (word.length === confirmation.length || guessed) return msg.say(`You won, it was ${word}!`);
 			return msg.say(`Too bad... It was ${word}...`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
