@@ -38,6 +38,7 @@ module.exports = class HolidaysCommand extends Command {
 					singleEvents: true,
 					timeMax: tomorrow().toISOString(),
 					timeMin: today().toISOString(),
+					timeZone: 'UTC',
 					key: GOOGLE_KEY
 				});
 			if (!body.items.length) return null;
