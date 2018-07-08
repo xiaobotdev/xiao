@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (288)
+## Commands (289)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -234,6 +234,7 @@ information and support.
 * **illegal**: Makes President Trump make your text illegal.
 * **invert**: Draws an image or a user's avatar but inverted.
 * **meme**: Sends a meme with the text and background of your choice.
+* **minecraft-skin**: Sends the Minecraft skin for a user.
 * **osu-signature**: Creates a card based on an osu! user's stats.
 * **pokemon-fusion**: Fuses two Generation I Pokémon together.
 * **robohash**: Creates a robot based on the text you provide.
