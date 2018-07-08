@@ -6,7 +6,7 @@
 
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
-[Commando](https://github.com/discordjs/Commando) command framework. With over
+[Commando](https://github.com/discordjs/Commando) command framework. With nearly
 300 commands, she is one of the most feature-filled bots out there.
 
 ## Invite
@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (302)
+## Commands (290)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -321,24 +321,6 @@ information and support.
 * **math**: Evaluates a math expression.
 * **roman-numeral**: Converts a number to roman numerals.
 * **units**: Converts units to/from other units.
-
-### Server Tags:
-
-* **tag-add**: Adds a tag for this server.
-* **tag-edit**: Edits a tag in this server.
-* **tag-info**: Responds with detailed information on a tag in this server.
-* **tag-remove**: Removes a tag from this server.
-* **tag-source**: Responds with the base markdown of a tag in this server.
-* **tag-view**: Responds with a tag in this server.
-
-### Role Management:
-
-* **add-open-role**: Sets a role as open.
-* **fix-open-roles**: Removes no longer existent roles from the open roles lists.
-* **remove-open-role**: Remove a role from the open roles.
-* **role-list**: Responds with all available roles to join.
-* **subscribe**: Subscribes you to the specified role.
-* **unsubscribe**: Unsubscribes you from the specified role.
 
 ### Portal Messages:
 
