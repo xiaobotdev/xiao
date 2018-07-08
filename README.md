@@ -15,19 +15,17 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (290)
+## Commands (288)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
 * **eval**: Executes JavaScript code.
-* **blacklist**: Blacklists a user from using commands.
 * **donate**: Responds with Xiao's donation links.
 * **help**: Displays a list of available commands, or detailed information for a specific command.
 * **info**: Responds with detailed bot information.
 * **invite**: Responds with Xiao's invite links.
 * **ping**: Checks the bot's ping to the Discord server.
 * **uptime**: Responds with how long the bot has been active.
-* **whitelist**: Removes a user from the blacklist.
 
 ### Command Management:
 
