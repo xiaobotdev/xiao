@@ -31,15 +31,15 @@ module.exports = class PokedexCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(
-					`#${data.id} - ${data.name}`,
-					`https://www.serebii.net/pokedex-sm/icon/${data.id}.png`,
-					`https://www.serebii.net/pokedex-sm/${data.id}.shtml`
+					`#${data.displayID} - ${data.name}`,
+					`https://www.serebii.net/pokedex-sm/icon/${data.displayID}.png`,
+					`https://www.serebii.net/pokedex-sm/${data.displayID}.shtml`
 				)
 				.setDescription(stripIndents`
 					**The ${data.genus}**
 					${data.entries[Math.floor(Math.random() * data.entries.length)]}
 				`)
-				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${data.id}.png`);
+				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${data.displayID}.png`);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
