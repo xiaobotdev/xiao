@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (289)
+## Commands (290)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -281,6 +281,7 @@ information and support.
 * **braille**: Converts text to braille.
 * **clap**: Sends 👏 text 👏 like 👏 this.
 * **cow-say**: Makes a cow say your text.
+* **cow-think**: Makes a cow think your text.
 * **cursive**: Converts text to cursive.
 * **dvorak**: Converts text to Dvorak encoding.
 * **embed**: Sends text in an embed.

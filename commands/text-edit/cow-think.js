@@ -5,18 +5,18 @@ const { list } = require('../../util/Util');
 const cows = cowList.listSync();
 cows.push('random');
 
-module.exports = class CowSayCommand extends Command {
+module.exports = class CowThinkCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'cow-say',
+			name: 'cow-think',
 			group: 'text-edit',
-			memberName: 'cow-say',
-			description: 'Makes a cow say your text.',
+			memberName: 'cow-think',
+			description: 'Makes a cow think your text.',
 			details: `**Types**: ${cows.join(', ')}`,
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like the cow to say?',
+					prompt: 'What text would you like the cow to think?',
 					type: 'string',
 					max: 1500
 				},
@@ -39,7 +39,7 @@ module.exports = class CowSayCommand extends Command {
 	}
 
 	run(msg, { text, type }) {
-		return msg.code(null, cowsay.say({
+		return msg.code(null, cowsay.think({
 			text,
 			f: type,
 			r: type === 'random'
