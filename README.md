@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (290)
+## Commands (291)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -85,6 +85,7 @@ information and support.
 * **roll**: Rolls a dice with a maximum value of your choice.
 * **security-key**: Responds with a random security key.
 * **shower-thought**: Responds with a random shower thought, directly from r/Showerthoughts.
+* **superpower**: Responds with a random superpower.
 * **user-roulette**: Randomly chooses a member of the server.
 * **would-you-rather**: Responds with a random "Would you rather ...?" question.
 * **xiao**: Responds with a random image of Xiao Pai.
