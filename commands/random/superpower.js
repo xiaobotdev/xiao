@@ -19,9 +19,10 @@ module.exports = class SuperpowerCommand extends Command {
 			const { body } = await request
 				.get('http://powerlisting.wikia.com/api/v1/Articles/AsSimpleJson/')
 				.query({ id: article });
+			const data = body.sections[0];
 			return msg.reply(stripIndents`
-				Your superpower is... **${body.title}**!
-				_${shorten(body.sections[0].content.map(section => section.text).join('\n\n'), 1950)}_
+				Your superpower is... **${data.title}**!
+				_${shorten(data.content.map(section => section.text).join('\n\n'), 1950)}_
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
