@@ -18,7 +18,7 @@ module.exports = class CowSayCommand extends Command {
 					key: 'text',
 					prompt: 'What text would you like the cow to say?',
 					type: 'string',
-					max: 1500
+					max: 500
 				},
 				{
 					key: 'type',
