@@ -17,7 +17,7 @@ module.exports = class PokedexCommand extends Command {
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
 					type: 'string',
-					parse: pokemon => encodeURIComponent(pokemon.toLowerCase().replace(/ /g, '-'))
+					parse: pokemon => this.makeSlug(pokemon)
 				}
 			]
 		});
@@ -37,7 +37,7 @@ module.exports = class PokedexCommand extends Command {
 				)
 				.setDescription(stripIndents`
 					**The ${data.genus}**
-					${this.filterPokemonData(data.entries).flavor_text.replace(/\n|\f|\r/g, ' ')}
+					${data.entries[Math.floor(Math.random() * data.entries.length)]}
 				`)
 				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${data.id}.png`);
 			return msg.embed(embed);
@@ -48,23 +48,32 @@ module.exports = class PokedexCommand extends Command {
 	}
 
 	async fetchPokemon(query) {
-		if (this.cache.has(query)) return this.cache.get(query);
-		const found = this.cache.find(
-			pokemon => pokemon.name.toLowerCase() === query.toLowerCase() || pokemon.id === query
-		);
+		const num = Number.parseInt(query, 10);
+		if (this.cache.has(num)) return this.cache.get(num);
+		const found = this.cache.find(pokemon => pokemon.slug === query);
 		if (found) return found;
 		const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon-species/${query}/`);
+		const entries = body.flavor_text_entries
+			.filter(entry => entry.language.name === 'en')
+			.map(entry => entry.flavor_text.replace(/\n|\f|\r/g, ' '));
+		const { name } = this.filterPokemonData(body.names);
 		this.cache.set(body.id, {
-			id: body.id.toString().padStart(3, '0'),
-			name: this.filterPokemonData(body.names, false).name,
-			genus: this.filterPokemonData(body.genera, false).genus,
-			entries: body.flavor_text_entries
+			id: body.id,
+			displayID: body.id.toString().padStart(3, '0'),
+			name,
+			slug: this.makeSlug(name),
+			genus: this.filterPokemonData(body.genera).genus,
+			entries
 		});
 		return this.cache.get(body.id);
 	}
 
-	filterPokemonData(arr, random = true) {
+	filterPokemonData(arr) {
 		const filtered = arr.filter(entry => entry.language.name === 'en');
-		return filtered[random ? Math.floor(Math.random() * filtered.length) : 0];
+		return filtered[0];
+	}
+
+	makeSlug(name) {
+		return encodeURIComponent(name.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9-]/g, ''));
 	}
 };
