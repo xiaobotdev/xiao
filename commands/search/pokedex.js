@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
+const { Collection, MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 
@@ -21,29 +21,46 @@ module.exports = class PokedexCommand extends Command {
 				}
 			]
 		});
+
+		this.cache = new Collection();
 	}
 
 	async run(msg, { pokemon }) {
 		try {
-			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
-			const id = body.id.toString().padStart(3, '0');
+			const data = await this.fetchPokemon(pokemon);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(
-					`#${id} - ${this.filterPokemonData(body.names, false).name}`,
-					`https://www.serebii.net/pokedex-sm/icon/${id}.png`,
-					`https://www.serebii.net/pokedex-sm/${id}.shtml`
+					`#${data.id} - ${data.name}`,
+					`https://www.serebii.net/pokedex-sm/icon/${data.id}.png`,
+					`https://www.serebii.net/pokedex-sm/${data.id}.shtml`
 				)
 				.setDescription(stripIndents`
-					**The ${this.filterPokemonData(body.genera, false).genus}**
-					${this.filterPokemonData(body.flavor_text_entries).flavor_text.replace(/\n|\f|\r/g, ' ')}
+					**The ${data.genus}**
+					${this.filterPokemonData(data.entries).flavor_text.replace(/\n|\f|\r/g, ' ')}
 				`)
-				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
+				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${data.id}.png`);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async fetchPokemon(query) {
+		if (this.cache.has(query)) return this.cache.get(query);
+		const found = this.cache.find(
+			pokemon => pokemon.name.toLowerCase() === query.toLowerCase() || pokemon.id === query
+		);
+		if (found) return found;
+		const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon-species/${query}/`);
+		this.cache.set(body.id, {
+			id: body.id.toString().padStart(3, '0'),
+			name: this.filterPokemonData(body.names, false).name,
+			genus: this.filterPokemonData(body.genera, false).genus,
+			entries: body.flavor_text_entries
+		});
+		return this.cache.get(body.id);
 	}
 
 	filterPokemonData(arr, random = true) {
