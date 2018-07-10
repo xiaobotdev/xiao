@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (291)
+## Commands (292)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -195,6 +195,7 @@ information and support.
 * **akinator**: Think about a real or fictional character, I will try to guess who it is.
 * **balloon-pop**: Don't let yourself be the last one to pump the balloon before it pops!
 * **battle**: Engage in a turn-based battle against another user or the AI.
+* **box-choosing**: Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **captcha-quiz**: Try to guess what the captcha says.
 * **chance**: Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **emoji-emoji-revolution**: Can you type arrow emoji faster than anyone else has ever typed them before?
