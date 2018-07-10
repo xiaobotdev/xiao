@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support. 
 
-## Commands (292)
+## Commands (293)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -67,6 +67,7 @@ information and support.
 * **fact**: Responds with a random fact.
 * **fidget**: Responds with a random image of Fidget.
 * **fortune**: Responds with a random fortune.
+* **fox**: Responds with a random fox image.
 * **joke**: Responds with a random joke.
 * **kiss-marry-kill**: Determines who to kiss, who to marry, and who to kill.
 * **magic-conch**: Asks your question to the Magic Conch.
