@@ -13,7 +13,7 @@ Xiao is a Discord bot coded in JavaScript with
 You can invite the bot to your server using
 [this link](https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=372632641).
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
-information and support. 
+information and support.
 
 ## Commands (293)
 ### Utility:
