@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { base64 } = require('../../util/Util');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
+const retweetRegex = /^RT @([a-zA-Z0-9_]{1,15}):/;
 
 module.exports = class TwitterCommand extends Command {
 	constructor(client) {
@@ -34,7 +35,7 @@ module.exports = class TwitterCommand extends Command {
 				.query({ screen_name: user });
 			let latest = body.status;
 			if (latest) {
-				const statusUser = body.status.retweeted_status ? body.status.text.match(/RT @(.+):/)[1] : body.screen_name;
+				const statusUser = body.status.retweeted_status ? body.status.text.match(retweetRegex)[1] : body.screen_name;
 				const statusID = body.status.retweeted_status ? body.status.retweeted_status.id : body.status.id;
 				latest = `[${body.status.text}](https://twitter.com/${statusUser}/status/${statusID})`;
 			} else {
