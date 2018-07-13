@@ -32,9 +32,14 @@ module.exports = class TwitterCommand extends Command {
 				.get('https://api.twitter.com/1.1/users/show.json')
 				.set({ Authorization: `Bearer ${this.token}` })
 				.query({ screen_name: user });
-			const status = body.status
-				? `[${body.status.text}](https://twitter.com/${body.screen_name}/status/${body.status.id})`
-				: body.protected ? '🔒 Protected' : '???';
+			let latest = body.status;
+			if (latest) {
+				const statusUser = body.status.retweeted_status ? body.status.text.match(/RT @(.+):/)[1] : body.screen_name;
+				const statusID = body.status.retweeted_status ? body.status.retweeted_status.id : body.status.id;
+				latest = `[${body.status.text}](https://twitter.com/${statusUser}/status/${statusID})`;
+			} else {
+				latest = body.protected ? '🔒 Protected' : 'No tweets found.';
+			}
 			const embed = new MessageEmbed()
 				.setColor(0x55ADEE)
 				.setAuthor('Twitter', 'https://i.imgur.com/QnfcO7y.png', 'https://twitter.com/')
@@ -48,7 +53,7 @@ module.exports = class TwitterCommand extends Command {
 				.addField('❯ Protected?', body.protected ? 'Yes' : 'No', true)
 				.addField('❯ Verified?', body.verified ? 'Yes' : 'No', true)
 				.addField('❯ Creation Date', new Date(body.created_at).toDateString(), true)
-				.addField('❯ Latest Tweet', status);
+				.addField('❯ Latest Tweet', latest);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 401) await this.fetchToken();
