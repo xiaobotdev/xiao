@@ -32,6 +32,9 @@ module.exports = class TwitterCommand extends Command {
 				.get('https://api.twitter.com/1.1/users/show.json')
 				.set({ Authorization: `Bearer ${this.token}` })
 				.query({ screen_name: user });
+			const status = body.status
+				? `[${body.status.text}](https://twitter.com/${body.screen_name}/status/${body.status.id})`
+				: body.protected ? '🔒 Protected' : '???';
 			const embed = new MessageEmbed()
 				.setColor(0x55ADEE)
 				.setAuthor('Twitter', 'https://i.imgur.com/QnfcO7y.png', 'https://twitter.com/')
@@ -45,7 +48,7 @@ module.exports = class TwitterCommand extends Command {
 				.addField('❯ Protected?', body.protected ? 'Yes' : 'No', true)
 				.addField('❯ Verified?', body.verified ? 'Yes' : 'No', true)
 				.addField('❯ Creation Date', new Date(body.created_at).toDateString(), true)
-				.addField('❯ Latest Tweet', body.status ? body.status.text : '???');
+				.addField('❯ Latest Tweet', status);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 401) await this.fetchToken();
