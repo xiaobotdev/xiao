@@ -36,7 +36,7 @@ module.exports = class TwitterCommand extends Command {
 			let latest = body.status;
 			if (latest) {
 				const statusUser = body.status.retweeted_status ? body.status.text.match(retweetRegex)[1] : body.screen_name;
-				const statusID = body.status.retweeted_status ? body.status.retweeted_status.id : body.status.id;
+				const statusID = body.status.retweeted_status ? body.status.retweeted_status.id_str : body.status.id_str;
 				latest = `[${body.status.text}](https://twitter.com/${statusUser}/status/${statusID})`;
 			} else {
 				latest = body.protected ? '🔒 Protected' : 'No tweets found.';
