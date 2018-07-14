@@ -35,7 +35,7 @@ module.exports = class SteamCommand extends Command {
 			const { body } = await request
 				.get('https://store.steampowered.com/api/appdetails')
 				.query({ appids: id });
-			const { data } = body[id.toString()] || body[id];
+			const { data } = body[id.toString()];
 			const current = data.price_overview ? `$${data.price_overview.final / 100}` : 'Free';
 			const original = data.price_overview ? `$${data.price_overview.initial / 100}` : 'Free';
 			const price = current === original ? current : `~~${original}~~ ${current}`;
@@ -57,8 +57,8 @@ module.exports = class SteamCommand extends Command {
 				.addField('❯ Platforms', platforms.join(', ') || 'None', true)
 				.addField('❯ Release Date', data.release_date ? data.release_date.date : '???', true)
 				.addField('❯ DLC Count', data.dlc ? data.dlc.length : 0, true)
-				.addField('❯ Developers', data.developers.join(', ') || '???')
-				.addField('❯ Publishers', data.publishers.join(', ') || '???');
+				.addField('❯ Developers', data.developers ? data.developers.join(', ') || '???' : '???')
+				.addField('❯ Publishers', data.publishers ? data.publishers.join(', ') || '???' : '???');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
