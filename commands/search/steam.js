@@ -35,7 +35,7 @@ module.exports = class SteamCommand extends Command {
 			const { body } = await request
 				.get('https://store.steampowered.com/api/appdetails')
 				.query({ appids: id });
-			const { data } = body[id.toString()];
+			const { data } = body[id.toString()] || body[id];
 			const current = data.price_overview ? `$${data.price_overview.final / 100}` : 'Free';
 			const original = data.price_overview ? `$${data.price_overview.initial / 100}` : 'Free';
 			const price = current === original ? current : `~~${original}~~ ${current}`;
