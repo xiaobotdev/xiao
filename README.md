@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support.
 
-## Commands (295)
+## Commands (296)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -220,6 +220,7 @@ information and support.
 
 ### Voice Channel:
 
+* **dec-talk**: The world's best Text-to-Speech.
 * **leave-voice-channel**: Leaves a voice channel, in case the bot gets stuck.
 * **soundboard**: Plays a sound in your voice channel.
 
