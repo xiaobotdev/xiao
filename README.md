@@ -15,7 +15,7 @@ You can invite the bot to your server using
 Be sure to also join the [home server](https://discord.gg/sbMe32W) for
 information and support.
 
-## Commands (294)
+## Commands (295)
 ### Utility:
 
 * **prefix**: Shows or sets the command prefix.
@@ -160,6 +160,7 @@ information and support.
 * **rule-of-the-internet**: Responds with a rule of the internet.
 * **rule34**: Responds with an image from Rule34, with optional query.
 * **safebooru**: Responds with an image from Safebooru, with optional query.
+* **scrabble-score**: Responds with the scrabble score of a word.
 * **stack-overflow**: Searches Stack Overflow for your query.
 * **steam**: Searches Steam for your query.
 * **stocks**: Responds with the current stocks for a specific symbol.
