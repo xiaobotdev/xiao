@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, base64 } = require('../../util/Util');
-const { GITHUB_USERNAME, GITHUB_PASSWORD, GITHUB_REPO_USERNAME, GITHUB_REPO_NAME } = process.env;
+const { GITHUB_USERNAME, GITHUB_PASSWORD, XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
 
 module.exports = class ChangelogCommand extends Command {
 	constructor(client) {
@@ -18,13 +18,13 @@ module.exports = class ChangelogCommand extends Command {
 
 	async run(msg) {
 		const { body } = await request
-			.get(`https://api.github.com/repos/${GITHUB_REPO_USERNAME}/${GITHUB_REPO_NAME}/commits`)
+			.get(`https://api.github.com/repos/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}/commits`)
 			.set({ Authorization: `Basic ${base64(`${GITHUB_USERNAME}:${GITHUB_PASSWORD}`)}` });
 		const commits = body.slice(0, 10);
 		const embed = new MessageEmbed()
 			.setTitle('[xiao:master] Latest 10 commits')
 			.setColor(0x7289DA)
-			.setURL(`https://github.com/${GITHUB_REPO_USERNAME}/${GITHUB_REPO_NAME}/commits/master`)
+			.setURL(`https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}/commits/master`)
 			.setDescription(commits.map(commit => {
 				const hash = `[\`${commit.sha.slice(0, 7)}\`](${commit.html_url})`;
 				return `${hash} ${shorten(commit.commit.message, 50)} - ${commit.author.login}`;
