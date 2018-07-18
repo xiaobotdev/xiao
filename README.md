@@ -4,21 +4,20 @@
 [![Donate on Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/dragonfire535)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
 
+> This bot is not available for invite.
+
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
 [Commando](https://github.com/discordjs/Commando) command framework. With nearly
 300 commands, she is one of the most feature-filled bots out there.
 
 ## Invite
-You can invite the bot to your server using
-[this link](https://discordapp.com/oauth2/authorize?client_id=278305350804045834&scope=bot&permissions=372632641).
-Be sure to also join the [home server](https://discord.gg/sbMe32W) for
-information and support.
+The bot is no longer available for invite. You can self-host the bot, or use her
+on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (296)
+## Commands (288)
 ### Utility:
 
-* **prefix**: Shows or sets the command prefix.
 * **eval**: Executes JavaScript code.
 * **changelog**: Responds with Xiao's latest 10 commits.
 * **donate**: Responds with Xiao's donation links.
@@ -26,16 +25,6 @@ information and support.
 * **info**: Responds with detailed bot information.
 * **invite**: Responds with Xiao's invite links.
 * **ping**: Checks the bot's ping to the Discord server.
-* **uptime**: Responds with how long the bot has been active.
-
-### Command Management:
-
-* **groups**: Lists all command groups.
-* **enable**: Enables a command or command group.
-* **disable**: Disables a command or command group.
-* **reload**: Reloads a command or command group.
-* **load**: Loads a new command.
-* **unload**: Unloads a command.
 
 ### Discord Information:
 

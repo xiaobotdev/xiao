@@ -13,13 +13,9 @@ module.exports = class InviteCommand extends Command {
 		});
 	}
 
-	async run(msg) {
-		const invite = await this.client.generateInvite(372632641);
+	run(msg) {
 		return msg.say(stripIndents`
-			To invite me to your server, use this link:
-			<${invite}>
-
-			Or, join my home server:
+			You cannot invite me to your server, but you can join my home server to use me:
 			${this.client.options.invite || 'Coming soon...'}
 		`);
 	}

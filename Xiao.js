@@ -1,7 +1,7 @@
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const path = require('path');
-const XiaoClient = require('./structures/Client');
-const client = new XiaoClient({
+const { CommandoClient } = require('discord.js-commando');
+const client = new CommandoClient({
 	commandPrefix: XIAO_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
@@ -9,8 +9,6 @@ const client = new XiaoClient({
 	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START']
 });
-const { discordBots } = require('./util/BotList');
-const SequelizeProvider = require('./providers/Sequelize');
 const activities = require('./assets/json/activity');
 
 client.registry
@@ -18,7 +16,6 @@ client.registry
 	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
 		['util', 'Utility'],
-		['commands', 'Command Management'],
 		['info', 'Discord Information'],
 		['random', 'Random Response'],
 		['single', 'Single Response'],
@@ -37,11 +34,11 @@ client.registry
 	])
 	.registerDefaultCommands({
 		help: false,
-		ping: false
+		ping: false,
+		prefix: false,
+		commandState: false
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
-
-client.setProvider(new SequelizeProvider(client.database));
 
 client.on('ready', () => {
 	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
@@ -49,17 +46,12 @@ client.on('ready', () => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
 		client.user.setActivity(activity.text, { type: activity.type });
 	}, 60000);
-	discordBots(client);
 });
 
 client.on('disconnect', event => {
 	console.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	process.exit(0);
 });
-
-client.on('guildCreate', () => discordBots(client));
-
-client.on('guildDelete', () => discordBots(client));
 
 client.on('commandRun', command => console.log(`[COMMAND] Ran command ${command.groupID}:${command.memberName}.`));
 
