@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (288)
+## Commands (294)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -185,10 +185,12 @@ on the [home server](https://discord.gg/sbMe32W).
 ### Games:
 
 * **akinator**: Think about a real or fictional character, I will try to guess who it is.
+* **apples-to-apples**: Compete to see who can come up with the best card to match an adjective.
 * **balloon-pop**: Don't let yourself be the last one to pump the balloon before it pops!
 * **battle**: Engage in a turn-based battle against another user or the AI.
 * **box-choosing**: Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **captcha-quiz**: Try to guess what the captcha says.
+* **cards-against-humanity**: Compete to see who can come up with the best card to fill in the blank.
 * **chance**: Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **emoji-emoji-revolution**: Can you type arrow emoji faster than anyone else has ever typed them before?
 * **fishy**: Go fishing.
@@ -197,6 +199,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **hangman**: Prevent a man from being hanged by guessing a word as fast as you can.
 * **hunger-games**: Simulate a Hunger Games match with up to 24 tributes.
 * **lottery**: Attempt to win the lottery with 6 numbers.
+* **mafia**: Who is the Mafia? Who is the doctor? Who is the detective? Will the Mafia kill them all?
 * **math-quiz**: See how fast you can answer a math problem in a given time limit.
 * **quiz**: Answer a quiz question.
 * **rock-paper-scissors**: Play Rock-Paper-Scissors.
@@ -205,6 +208,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **sorting-hat-quiz**: Take a quiz to determine your Hogwarts house.
 * **tic-tac-toe**: Play a game of tic-tac-toe with another user.
 * **typing-test**: See how fast you can type a sentence in a given time limit.
+* **wizard-convention**: Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?
 * **whos-that-pokemon**: Guess who that Pokémon is.
 
 ### Voice Channel:
@@ -305,6 +309,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **translate**: Translates text to a specific language.
 * **upside-down**: Flips text upside-down.
 * **url-encode**: Encodes text to URL-friendly characters.
+* **webhook**: Posts a message to the webhook defined in your `process.env`.
 * **yoda**: Converts text to Yoda speak.
 * **zalgo**: Converts text to zalgo.
 * **🅱**: Replaces b with 🅱.
@@ -327,6 +332,7 @@ on the [home server](https://discord.gg/sbMe32W).
 
 ### Other:
 
+* **cleverbot**: Chat with Cleverbot.
 * **prune**: Deletes up to 99 messages from the current channel.
 * **strawpoll**: Generates a Strawpoll with the options you provide.
 
