@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (294)
+## Commands (290)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -296,6 +296,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **owo**: OwO.
 * **pig-latin**: Converts text to pig latin.
 * **pirate**: Converts text to pirate.
+* **portal-send**: Send a message to a portal channel.
 * **repeat**: Repeat text over and over and over and over (etc).
 * **reverse**: Reverses text.
 * **say**: Make me say what you want, master.
@@ -321,14 +322,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **math**: Evaluates a math expression.
 * **roman-numeral**: Converts a number to roman numerals.
 * **units**: Converts units to/from other units.
-
-### Portal Messages:
-
-* **add-portal-channel**: Sets a channel to be a portal channel.
-* **fix-portal-channels**: Removes no longer existent channels from the portal list.
-* **portal-send**: Send a message to a portal channel.
-* **portal-status**: Shows the number of currently opened portals.
-* **remove-portal-channel**: Remove a channel from the portal channels.
 
 ### Other:
 
