@@ -6,7 +6,7 @@ module.exports = class ScrabbleScoreCommand extends Command {
 		super(client, {
 			name: 'scrabble-score',
 			aliases: ['scrabble'],
-			group: 'number-edit',
+			group: 'search',
 			memberName: 'scrabble-score',
 			description: 'Responds with the scrabble score of a word.',
 			args: [
