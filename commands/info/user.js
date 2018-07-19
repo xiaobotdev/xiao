@@ -29,14 +29,18 @@ module.exports = class UserInfoCommand extends Command {
 			.addField('❯ Discord Join Date', user.createdAt.toDateString(), true)
 			.addField('❯ Bot?', user.bot ? 'Yes' : 'No', true);
 		if (msg.channel.type === 'text') {
-			const member = await msg.guild.members.fetch(user.id);
-			embed
-				.setColor(member.displayHexColor)
-				.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
-				.addField('❯ Nickname', member.nickname || 'None', true)
-				.addField('❯ Highest Role',
-					member.roles.highest.id !== msg.guild.defaultRole.id ? member.roles.highest.name : 'None', true)
-				.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true);
+			try {
+				const member = await msg.guild.members.fetch(user.id);
+				embed
+					.setColor(member.displayHexColor)
+					.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
+					.addField('❯ Nickname', member.nickname || 'None', true)
+					.addField('❯ Highest Role',
+						member.roles.highest.id !== msg.guild.defaultRole.id ? member.roles.highest.name : 'None', true)
+					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true);
+			} catch (err) {
+				embed.setFooter('Failed to resolve member, showing basic user information instead.');
+			}
 		}
 		return msg.embed(embed);
 	}
