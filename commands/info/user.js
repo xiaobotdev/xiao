@@ -9,33 +9,35 @@ module.exports = class UserInfoCommand extends Command {
 			group: 'info',
 			memberName: 'user',
 			description: 'Responds with detailed information on a user.',
-			guildOnly: true,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'member',
+					key: 'user',
 					prompt: 'Which user would you like to get information on?',
-					type: 'member',
-					default: ''
+					type: 'user',
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
-	run(msg, { member }) {
-		if (!member) member = msg.member;
+	async run(msg, { user }) {
 		const embed = new MessageEmbed()
-			.setColor(member.displayHexColor)
-			.setThumbnail(member.user.displayAvatarURL())
-			.addField('❯ Name', member.user.tag, true)
-			.addField('❯ ID', member.id, true)
-			.addField('❯ Discord Join Date', member.user.createdAt.toDateString(), true)
-			.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
-			.addField('❯ Nickname', member.nickname || 'None', true)
-			.addField('❯ Bot?', member.user.bot ? 'Yes' : 'No', true)
-			.addField('❯ Highest Role',
-				member.roles.highest.id !== msg.guild.defaultRole.id ? member.roles.highest.name : 'None', true)
-			.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true);
+			.setThumbnail(user.displayAvatarURL())
+			.addField('❯ Name', user.tag, true)
+			.addField('❯ ID', user.id, true)
+			.addField('❯ Discord Join Date', user.createdAt.toDateString(), true)
+			.addField('❯ Bot?', user.bot ? 'Yes' : 'No', true);
+		if (msg.channel.type === 'text') {
+			const member = await msg.guild.members.fetch(user.id);
+			embed
+				.setColor(member.displayHexColor)
+				.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
+				.addField('❯ Nickname', member.nickname || 'None', true)
+				.addField('❯ Highest Role',
+					member.roles.highest.id !== msg.guild.defaultRole.id ? member.roles.highest.name : 'None', true)
+				.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true);
+		}
 		return msg.embed(embed);
 	}
 };
