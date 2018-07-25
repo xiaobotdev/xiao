@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (290)
+## Commands (291)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -180,6 +180,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **ship**: Ships two users together.
 * **spoopy-link**: Determines if a link is spoopy or not.
 * **toxicity**: Determines the toxicity of text.
+* **what-anime**: Determines what anime a screenshot is from.
 * **zodiac-sign**: Responds with the Zodiac Sign for the given month/day.
 
 ### Games:
