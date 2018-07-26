@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (292)
+## Commands (293)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -158,6 +158,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **tumblr**: Responds with information on a Tumblr blog.
 * **twitter**: Responds with information on a Twitter user.
 * **urban-dictionary**: Defines a word, but with Urban Dictionary.
+* **vndb**: Responds with information on a Visual Novel.
 * **vocaloid**: Searches VocaDB for your query.
 * **wattpad**: Searches Wattpad for your query.
 * **weather**: Responds with weather information for a specific location.
