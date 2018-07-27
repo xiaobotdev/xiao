@@ -31,10 +31,12 @@ module.exports = class WhatAnimeCommand extends Command {
 			const { body } = await request.get(screenshot);
 			const result = await this.search(body, msg.channel.nsfw);
 			if (result === 'size') return msg.reply('Please do not send an image larger than 1MB.');
-			if (result === 'nsfw') return msg.reply('This is from a hentai, and this isn\'t an NSFW channel, pervert.');
+			if (result.nsfw) return msg.reply('This is from a hentai, and this isn\'t an NSFW channel, pervert.');
 			return msg.reply(
-				`I'm ${result.probability}% sure this is from ${result.title} (${result.english}) episode #${result.episode}.`,
-				result.preview ? { files: [{ attachment: result.preview, name: 'anime.mp4' }] } : {}
+				`I'm ${result.prob}% sure this is from ${result.title}${result.episode
+					? ` episode ${result.episode}`
+					: ''}.`,
+				result.preview ? { files: [{ attachment: result.preview, name: 'preview.mp4' }] } : {}
 			);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -52,20 +54,17 @@ module.exports = class WhatAnimeCommand extends Command {
 		}
 	}
 
-	async search(file, nsfw) {
+	async search(file) {
 		if (Buffer.byteLength(file) > 1e+6) return 'size';
 		const { body } = await request
 			.post('https://whatanime.ga/api/search')
 			.query({ token: WHATANIME_KEY })
 			.attach('image', base64(file));
 		const data = body.docs[0];
-		if (data.is_adult && !nsfw) return 'nsfw';
 		return {
-			time: data.at * 1000,
-			probability: Math.round(data.similarity * 100),
+			prob: Math.round(data.similarity * 100),
 			episode: data.episode,
-			title: data.title_native,
-			english: data.title_english,
+			title: data.title_english,
 			preview: await this.fetchPreview(data),
 			nsfw: data.is_adult
 		};
