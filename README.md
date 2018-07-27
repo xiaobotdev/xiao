@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (295)
+## Commands (297)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -92,6 +92,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **hi**: Hello.
 * **isnt-joke**: Isn't joke...
 * **its-joke**: It's joke!
+* **just-do-it**: Sends a link to the "Just Do It!" motivational speech.
 * **lenny**: Responds with the lenny face.
 * **nitro**: Sends the "This message can only be viewed by users with Discord Nitro." message.
 * **slow-clap**: _slow clap_
@@ -118,6 +119,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **danbooru**: Responds with an image from Danbooru, with optional query.
 * **deviantart**: Responds with an image from a DeviantArt section, with optional query.
 * **dictionary**: Defines a word.
+* **eshop**: Searches the Nintendo eShop for your query.
 * **flickr**: Searches Flickr for your query.
 * **forecast**: Responds with the seven-day forecast for a specific location.
 * **gelbooru**: Responds with an image from Gelbooru, with optional query.
