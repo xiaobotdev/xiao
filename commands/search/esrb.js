@@ -37,7 +37,7 @@ module.exports = class ESRBCommand extends Command {
 				.setTitle(data.title)
 				.setURL(data.url)
 				.setThumbnail(data.ratingImage)
-				.addField('❯ Rating', ratings(data.rating));
+				.addField('❯ Rating', ratings[data.rating]);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
