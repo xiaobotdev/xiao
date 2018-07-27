@@ -44,7 +44,7 @@ module.exports = class EshopCommand extends Command {
 				)
 				.setURL(data.microsite_ref ? data.microsite_ref.microsite.url : null)
 				.setThumbnail(data.front_box_art.image.image.url)
-				.setFooter(data.disclaimer || null)
+				.setFooter(data.disclaimers || '')
 				.setTitle(data.title)
 				.addField('❯ Price', data.eshop_price === '0.00' ? 'Free!' : `$${data.eshop_price}`, true)
 				.addField('❯ Category', data.game_category_ref
