@@ -37,9 +37,9 @@ module.exports = class CurrencyCommand extends Command {
 	async run(msg, { base, target, amount }) {
 		try {
 			if (!this.currencies) await this.fetchCurrencies();
-			base = this.currencies[base] || this.currencies.find($ => $.currencyName.toLowerCase() === base);
+			base = this.currencies[base];
 			if (!base) return msg.say('Invalid base.');
-			target = this.currencies[target] || this.currencies.find($ => $.currencyName.toLowerCase() === target);
+			target = this.currencies[target];
 			if (!target) return msg.say('Invalid target.');
 			if (base.id === target.id) return msg.say(`Converting ${base.id} to ${target.id} is the same value, dummy.`);
 			const rate = await this.fetchRate(base, target);
