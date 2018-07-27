@@ -44,13 +44,13 @@ module.exports = class EshopCommand extends Command {
 				)
 				.setURL(data.microsite_ref ? data.microsite_ref.microsite.url : null)
 				.setThumbnail(data.front_box_art.image.image.url)
-				.setFooter(data.disclaimers || '')
 				.setTitle(data.title)
-				.addField('❯ Price', data.eshop_price === '0.00' ? 'Free!' : `$${data.eshop_price}`, true)
+				.addField('❯ Price', data.eshop_price
+					? data.eshop_price === '0.00' ? 'Free!' : `$${data.eshop_price}`
+					: '???', true)
 				.addField('❯ Category', data.game_category_ref
 					? data.game_category_ref.length ? data.game_category_ref[0].title : data.game_category_ref.title
-					: '???',
-				true)
+					: '???', true)
 				.addField('❯ Release Date', data.release_date ? new Date(data.release_date).toDateString() : '???', true)
 				.addField('❯ Player Count', data.number_of_players || '???', true)
 				.addField('❯ DLC?', data.dlc === 'true' ? 'Yes' : 'No', true)
@@ -68,7 +68,7 @@ module.exports = class EshopCommand extends Command {
 			.get('https://www.nintendo.com/json/content/get/filter/game')
 			.query({
 				system,
-				sort: 'relevance',
+				sort: 'title',
 				direction: 'asc',
 				search: query,
 				limit: 1,
