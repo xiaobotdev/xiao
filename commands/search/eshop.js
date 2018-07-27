@@ -44,9 +44,13 @@ module.exports = class EshopCommand extends Command {
 				)
 				.setURL(data.microsite_ref ? data.microsite_ref.microsite.url : null)
 				.setThumbnail(data.front_box_art.image.image.url)
+				.setFooter(data.disclaimer || null)
 				.setTitle(data.title)
-				.addField('❯ Price', data.eshop_price === '0.00' ? `$${data.eshop_price}` : 'Free!', true)
-				.addField('❯ Category', data.game_category_ref ? data.game_category_ref.title : '???', true)
+				.addField('❯ Price', data.eshop_price === '0.00' ? 'Free!' : `$${data.eshop_price}`, true)
+				.addField('❯ Category', data.game_category_ref
+					? data.game_category_ref.length ? data.game_category_ref[0].title : data.game_category_ref.title
+					: '???',
+				true)
 				.addField('❯ Release Date', data.release_date ? new Date(data.release_date).toDateString() : '???', true)
 				.addField('❯ Player Count', data.number_of_players || '???', true)
 				.addField('❯ DLC?', data.dlc === 'true' ? 'Yes' : 'No', true)
