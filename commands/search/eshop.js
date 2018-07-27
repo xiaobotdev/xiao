@@ -39,7 +39,7 @@ module.exports = class EshopCommand extends Command {
 				.setColor(0xFF7D01)
 				.setAuthor(
 					`Nintendo eShop (${system})`,
-					'https://i.imgur.com/9Ik6IlB.jpg',
+					'https://i.imgur.com/lMh73lz.png',
 					'https://www.nintendo.com/games/buy-digital'
 				)
 				.setURL(data.microsite_ref ? data.microsite_ref.microsite.url : null)
