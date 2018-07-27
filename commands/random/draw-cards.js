@@ -17,7 +17,7 @@ module.exports = class DrawCardsCommand extends Command {
 					label: 'hand size',
 					prompt: 'How many cards do you want to draw?',
 					type: 'integer',
-					max: 20,
+					max: 10,
 					min: 1
 				},
 				{
@@ -36,7 +36,7 @@ module.exports = class DrawCardsCommand extends Command {
 		if (!this.deck) this.deck = this.generateDeck();
 		let cards = this.deck;
 		if (!jokers) cards = cards.filter(card => !card.includes('Joker'));
-		return msg.reply(shuffle(cards).slice(0, amount).join(', '));
+		return msg.reply(shuffle(cards).slice(0, amount).join('\n'));
 	}
 
 	generateDeck() {
