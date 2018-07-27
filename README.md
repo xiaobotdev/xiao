@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (293)
+## Commands (294)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -53,6 +53,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **discord-email-fun-fact**: Responds with a random fun fact from the Discord emails.
 * **dog-fact**: Responds with a random dog fact.
 * **dog**: Responds with a random dog image.
+* **draw-cards**: Draws a random hand of playing cards.
 * **fact-core**: Responds with a random Fact Core quote.
 * **fact**: Responds with a random fact.
 * **fidget**: Responds with a random image of Fidget.
