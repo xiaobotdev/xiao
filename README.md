@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (294)
+## Commands (295)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -77,6 +77,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **roll**: Rolls a dice with a maximum value of your choice.
 * **security-key**: Responds with a random security key.
 * **shower-thought**: Responds with a random shower thought, directly from r/Showerthoughts.
+* **suggest-command**: Suggests a random command for you to try.
 * **superpower**: Responds with a random superpower.
 * **user-roulette**: Randomly chooses a member of the server.
 * **would-you-rather**: Responds with a random "Would you rather ...?" question.
