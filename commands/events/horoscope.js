@@ -45,7 +45,6 @@ module.exports = class HoroscopeCommand extends Command {
 	async fetchHoroscope(sign) {
 		const { text } = await request.get(`https://new.theastrologer.com/${sign}/`);
 		const $ = cheerio.load(text);
-		return $('#today').find('p').text()
-			.split('Intensity: ')[0];
+		return $('#today').find('p').first().text();
 	}
 };
