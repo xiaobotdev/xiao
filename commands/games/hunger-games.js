@@ -17,7 +17,7 @@ module.exports = class HungerGamesCommand extends Command {
 					prompt: 'Who should compete in the games? Up to 24 tributes can participate.',
 					type: 'string',
 					infinite: true,
-					max: 25
+					max: 20
 				}
 			]
 		});
@@ -42,16 +42,19 @@ module.exports = class HungerGamesCommand extends Command {
 				const results = [];
 				const deaths = [];
 				this.makeEvents(remaining, sunEvents, deaths, results);
-				await msg.say(stripIndents`
+				let text = stripIndents`
 					__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}**__:
 					${results.join('\n')}
-				`);
-				await msg.say(stripIndents`
-					**${deaths.length} cannon shot${deaths.length === 1 ? '' : 's'} can be heard in the distance.**
-					${deaths.join('\n')}
-
-					_Proceed?_
-				`);
+				`;
+				if (deaths.length) {
+					text += '\n';
+					text += stripIndents`
+						**${deaths.length} cannon shot${deaths.length === 1 ? '' : 's'} can be heard in the distance.**
+						${deaths.join('\n')}
+					`;
+				}
+				text += `\n\n_Proceed?_`;
+				await msg.say(text);
 				const verification = await verify(msg.channel, msg.author, 120000);
 				if (!verification) {
 					this.playing.delete(msg.channel.id);
