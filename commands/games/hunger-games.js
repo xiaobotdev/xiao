@@ -47,7 +47,7 @@ module.exports = class HungerGamesCommand extends Command {
 					${results.join('\n')}
 				`;
 				if (deaths.length) {
-					text += '\n';
+					text += '\n\n';
 					text += stripIndents`
 						**${deaths.length} cannon shot${deaths.length === 1 ? '' : 's'} can be heard in the distance.**
 						${deaths.join('\n')}
