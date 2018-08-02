@@ -31,6 +31,7 @@ module.exports = class DerpibooruCommand extends Command {
 			const { body } = await request.get(`https://derpibooru.org/images/${search.body.id}.json`);
 			return msg.say(`https:${body.representations.full}`);
 		} catch (err) {
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
