@@ -8,14 +8,14 @@
 
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
-[Commando](https://github.com/discordjs/Commando) command framework. With nearly
+[Commando](https://github.com/discordjs/Commando) command framework. With
 300 commands, she is one of the most feature-filled bots out there.
 
 ## Invite
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (299)
+## Commands (300)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -117,6 +117,7 @@ on the [home server](https://discord.gg/sbMe32W).
 
 * **bulbapedia**: Searches Bulbapedia for your query.
 * **danbooru**: Responds with an image from Danbooru, with optional query.
+* **derpibooru**: Responds with an image from Derpibooru.
 * **deviantart**: Responds with an image from a DeviantArt section, with optional query.
 * **dictionary**: Defines a word.
 * **discord-js-docs**: Searches the Discord.js docs for your query.
