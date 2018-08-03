@@ -38,5 +38,33 @@
 			"text": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>",
 			"end": true
 		}
+	],
+	"bothred": [
+		"Have you thought about it?\nIn the end, you chose this color, didn't you?\n\n...As soon as you chose, the other box disappeared.\nSo you can give up on the contents of that one, okay?\nThat's the rule.\n\nNow, open up the box you chose.",
+		"Inside the box there was... a stick of chewing gum.",
+		"...Right now you're thinking: \"That's it?\"",
+		"That's right, the contents of the red box and the blue box were a piece of caramel and a stick of chewing gum.\nYou might have thought you made the wrong choice before, but now seeing them together like this, you can't really say that either choice was the wrong one.\n\nWell, I guess everybody has their personal preferences.\nIf you prefer caramel to gum, for example.\n...You're definitely thinking of choosing to open the box again based on that preference.",
+		"...The clear choices you wanted were basically this.\nThe selfish desire to open up both boxes and compare the contents, then pick the one most suited to you.",
+		"But you see, reality is the same as this game.\nIf you pick one, the one you didn't choose disappears. So there's no way you could check the result.",
+		"If at that time, if you had done this, or perhaps if you had done that... then it wouldn't be hard to imagine that you could be happier (or perhaps less happy) than you are right now.\nIn the end, you only have the pleasure of approving of or being disappointed by the choice that you did make.",
+		"But that's fine.\nAfter all, didn't you enjoy the thrill of making the choice?\nIf, like now, you knew the contents of both boxes, then the choice between the red box or the blue box would just be a waste of time.\nBecause instead of this boring game about boxes, you could be looking at the quickly-changing evening summer sky, listening for the distant sound of thunder, and pondering if it's going to rain or not... that would be much more fun.",
+		{
+			"text": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>",
+			"end": true
+		}
+	],
+	"bothblue": [
+		"Have you thought about it?\nIn the end, you chose this color, didn't you?\n\n...As soon as you chose, the other box disappeared.\nSo you can give up on the contents of that one, okay?\nThat's the rule.\n\nNow, open up the box you chose.",
+		"Inside the box there was... a piece of caramel.",
+		"...Right now you're thinking: \"That's it?\"",
+		"That's right, the contents of the red box and the blue box were a piece of caramel and a stick of chewing gum.\nYou might have thought you made the wrong choice before, but now seeing them together like this, you can't really say that either choice was the wrong one.\n\nWell, I guess everybody has their personal preferences.\nIf you prefer caramel to gum, for example.\n...You're definitely thinking of choosing to open the box again based on that preference.",
+		"...The clear choices you wanted were basically this.\nThe selfish desire to open up both boxes and compare the contents, then pick the one most suited to you.",
+		"But you see, reality is the same as this game.\nIf you pick one, the one you didn't choose disappears. So there's no way you could check the result.",
+		"If at that time, if you had done this, or perhaps if you had done that... then it wouldn't be hard to imagine that you could be happier (or perhaps less happy) than you are right now.\nIn the end, you only have the pleasure of approving of or being disappointed by the choice that you did make.",
+		"But that's fine.\nAfter all, didn't you enjoy the thrill of making the choice?\nIf, like now, you knew the contents of both boxes, then the choice between the red box or the blue box would just be a waste of time.\nBecause instead of this boring game about boxes, you could be looking at the quickly-changing evening summer sky, listening for the distant sound of thunder, and pondering if it's going to rain or not... that would be much more fun.",
+		{
+			"text": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>",
+			"end": true
+		}
 	]
 }
