@@ -14,7 +14,8 @@ module.exports = class BoxChoosingCommand extends Command {
 		});
 
 		this.playing = new Set();
-		this.played = new Set();
+		this.blue = new Set();
+		this.red = new Set();
 	}
 
 	async run(msg) {
@@ -43,8 +44,15 @@ module.exports = class BoxChoosingCommand extends Command {
 					});
 					if (!choose.size) break;
 					path = '';
-					if (this.played.has(msg.author.id)) path += 'both';
-					path += line.paths[line.options.indexOf(choose.first().content.toLowerCase())];
+					if (this.red.has(msg.author.id) && this.blue.has(msg.author.id)) {
+						path += 'both';
+						this.red.delete(msg.author.id);
+						this.blue.delete(msg.author.id);
+					} else {
+						const choice = line.paths[line.options.indexOf(choose.first().content.toLowerCase())];
+						path += choice;
+						this[choice].add(msg.author.id);
+					}
 					i = 0;
 				} else {
 					const verification = await verify(msg.channel, msg.author, 120000);
@@ -53,8 +61,6 @@ module.exports = class BoxChoosingCommand extends Command {
 				}
 			}
 			this.playing.delete(msg.channel.id);
-			if (this.played.has(msg.author.id)) this.played.delete(msg.author.id);
-			else this.played.add(msg.author.id);
 			return msg.say('See you soon!');
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
