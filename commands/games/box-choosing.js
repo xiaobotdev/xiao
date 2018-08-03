@@ -44,14 +44,14 @@ module.exports = class BoxChoosingCommand extends Command {
 					});
 					if (!choose.size) break;
 					path = '';
-					if (this.red.has(msg.author.id) && this.blue.has(msg.author.id)) {
+					const pick = line.paths[line.options.indexOf(choose.first().content.toLowerCase())];
+					if ((this.red.has(msg.author.id) && pick !== 'red') || (this.blue.has(msg.author.id) && pick !== 'blue')) {
 						path += 'both';
-						this.red.delete(msg.author.id);
-						this.blue.delete(msg.author.id);
+						if (this.red.has(msg.author.id)) this.red.delete(msg.author.id);
+						if (this.blue.has(msg.author.id)) this.blue.delete(msg.author.id);
 					} else {
-						const choice = line.paths[line.options.indexOf(choose.first().content.toLowerCase())];
-						path += choice;
-						this[choice].add(msg.author.id);
+						path += pick;
+						this[pick].add(msg.author.id);
 					}
 					i = 0;
 				} else {
