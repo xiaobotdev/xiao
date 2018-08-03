@@ -50,9 +50,9 @@ module.exports = class BoxChoosingCommand extends Command {
 						if (this.red.has(msg.author.id)) this.red.delete(msg.author.id);
 						if (this.blue.has(msg.author.id)) this.blue.delete(msg.author.id);
 					} else {
-						path += pick;
 						this[pick].add(msg.author.id);
 					}
+					path += pick;
 					i = 0;
 				} else {
 					const verification = await verify(msg.channel, msg.author, 120000);
