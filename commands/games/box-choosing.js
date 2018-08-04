@@ -51,6 +51,7 @@ module.exports = class BoxChoosingCommand extends Command {
 						if (this.blue.has(msg.author.id)) this.blue.delete(msg.author.id);
 					} else {
 						this[pick].add(msg.author.id);
+						setTimeout(() => { if (this[pick].has(msg.author.id)) this[pick].delete(msg.author.id); }, 600000);
 					}
 					path += pick;
 					i = 0;
