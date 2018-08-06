@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { escapeMarkdown } = require('discord.js');
+const { Collection, escapeMarkdown } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { shuffle, awaitPlayers } = require('../../util/Util');
 const { blackCards, whiteCards } = require('../../assets/json/cards-against-humanity');
@@ -53,15 +53,15 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					Sending DMs...
 				`);
 				const chosenCards = [];
-				for (const player of players.values()) {
+				const turns = players.map(async player => {
 					if (player.hand.size < 11) {
 						const valid = whiteCards.filter(card => !player.hand.has(card));
 						player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
 					}
-					if (player.user.id === czar.user.id) continue;
+					if (player.user.id === czar.user.id) return;
 					if (player.hand.size < black.pick) {
 						await player.user.send('You don\'t have enough cards!');
-						continue;
+						return;
 					}
 					const hand = Array.from(player.hand);
 					await player.user.send(stripIndents`
@@ -86,7 +86,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					});
 					if (!choices.size || choices.size < black.pick) {
 						await player.user.send('Skipping your turn...');
-						continue;
+						return;
 					}
 					if (chosen.includes('<Blank>')) {
 						const handled = await this.handleBlank(player);
@@ -98,7 +98,8 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 						cards: chosen
 					});
 					await player.user.send(`Nice! Return to ${msg.channel} to await the results!`);
-				}
+				});
+				await Promise.all(turns);
 				if (!chosenCards.length) {
 					await msg.say('Hmm... No one even tried.');
 					break;
@@ -138,7 +139,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 	}
 
 	async generatePlayers(list) {
-		const players = new Map();
+		const players = new Collection();
 		for (const user of list) {
 			const cards = new Set();
 			for (let i = 0; i < 5; i++) {
