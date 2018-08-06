@@ -38,7 +38,8 @@ module.exports = class ToBeContinuedCommand extends Command {
 			sepia(ctx, 0, 0, data.width, data.height);
 			const ratio = base.width / base.height;
 			const width = canvas.width / 2;
-			ctx.drawImage(base, canvas.width - base.width, canvas.height - base.height, width, Math.round(width / ratio));
+			const height = Math.round(width / ratio);
+			ctx.drawImage(base, canvas.width - width, canvas.height - height, width, height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'to-be-continued.png' }] });
