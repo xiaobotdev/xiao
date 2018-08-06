@@ -39,7 +39,7 @@ module.exports = class ToBeContinuedCommand extends Command {
 			const ratio = base.width / base.height;
 			const width = canvas.width / 2;
 			const height = Math.round(width / ratio);
-			ctx.drawImage(base, canvas.width - width, canvas.height - height, width, height);
+			ctx.drawImage(base, 0, canvas.height - height, width, height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'to-be-continued.png' }] });
