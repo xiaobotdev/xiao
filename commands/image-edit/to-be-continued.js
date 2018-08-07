@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { sepia } = require('../../util/Canvas');
+const { drawImageWithTint } = require('../../util/Canvas');
 
 module.exports = class ToBeContinuedCommand extends Command {
 	constructor(client) {
@@ -34,12 +34,7 @@ module.exports = class ToBeContinuedCommand extends Command {
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
-			ctx.drawImage(data, 0, 0);
-			sepia(ctx, 0, 0, data.width, data.height);
-			ctx.globalAlpha = 0.5;
-			ctx.fillStyle = '#704214';
-			ctx.fillRect(0, 0, data.width, data.height);
-			ctx.globalAlpha = 1;
+			drawImageWithTint(ctx, data, '#704214', 0, 0, data.width, data.height);
 			const ratio = base.width / base.height;
 			const width = canvas.width / 2;
 			const height = Math.round(width / ratio);
