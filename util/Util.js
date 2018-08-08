@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const { IMGUR_KEY } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
+const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 class Util {
 	static delay(ms) {
@@ -87,14 +88,27 @@ class Util {
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
-			if (msg.author.bot) return false;
+			if (res.author.bot) return false;
 			if (joined.includes(res.author.id)) return false;
 			if (res.content.toLowerCase() !== text.toLowerCase()) return false;
 			joined.push(res.author.id);
+			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
 			return true;
 		};
 		const verify = await msg.channel.awaitMessages(filter, { max, time });
 		verify.set(msg.id, msg);
+		for (const message of verify.values()) {
+			try {
+				await message.author.send('Hi! Just testing that DMs work, pay this no mind.');
+			} catch (err) {
+				try {
+					await message.react(FAILURE_EMOJI_ID || '❌');
+				} catch (error) {
+					continue;
+				}
+				verify.delete(message.id);
+			}
+		}
 		if (verify.size < min) return false;
 		return verify.map(message => message.author);
 	}
