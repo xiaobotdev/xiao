@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const { IMGUR_KEY } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
-const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
+const { SUCCESS_EMOJI_ID } = process.env;
 
 class Util {
 	static delay(ms) {
@@ -101,11 +101,6 @@ class Util {
 			try {
 				await message.author.send('Hi! Just testing that DMs work, pay this no mind.');
 			} catch (err) {
-				try {
-					await message.react(FAILURE_EMOJI_ID || '❌');
-				} catch (error) {
-					continue;
-				}
 				verify.delete(message.id);
 			}
 		}
