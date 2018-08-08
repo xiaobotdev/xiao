@@ -32,7 +32,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 		this.playing.add(msg.channel.id);
 		try {
 			await msg.say('You will need at least 2 more players, at maximum 10. To join, type `join game`.');
-			const awaitedPlayers = await awaitPlayers(msg, 10, 3);
+			const awaitedPlayers = await awaitPlayers(msg, 10, 3, { dmCheck: true });
 			if (!awaitedPlayers) {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Game could not be started...');

@@ -84,7 +84,7 @@ class Util {
 		return today;
 	}
 
-	static async awaitPlayers(msg, max, min, { text = 'join game', time = 30000 } = {}) {
+	static async awaitPlayers(msg, max, min, { text = 'join game', time = 30000, dmCheck = false } = {}) {
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
@@ -97,11 +97,13 @@ class Util {
 		};
 		const verify = await msg.channel.awaitMessages(filter, { max, time });
 		verify.set(msg.id, msg);
-		for (const message of verify.values()) {
-			try {
-				await message.author.send('Hi! Just testing that DMs work, pay this no mind.');
-			} catch (err) {
-				verify.delete(message.id);
+		if (dmCheck) {
+			for (const message of verify.values()) {
+				try {
+					await message.author.send('Hi! Just testing that DMs work, pay this no mind.');
+				} catch (err) {
+					verify.delete(message.id);
+				}
 			}
 		}
 		if (verify.size < min) return false;
