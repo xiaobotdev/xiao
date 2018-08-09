@@ -33,6 +33,7 @@ module.exports = class HangmanCommand extends Command {
 				await msg.say(stripIndents`
 					${displayText === null ? 'Here we go!' : displayText ? 'Good job!' : 'Nope!'}
 					\`${display.join(' ')}\`. Which letter do you choose?
+					Incorrect Tries: ${incorrect.join(', ') || 'None'}
 					\`\`\`
 					___________
 					|     |
