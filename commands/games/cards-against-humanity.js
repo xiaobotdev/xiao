@@ -3,6 +3,7 @@ const { Collection, escapeMarkdown } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { shuffle, awaitPlayers } = require('../../util/Util');
 const { blackCards, whiteCards } = require('../../assets/json/cards-against-humanity');
+const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 module.exports = class CardsAgainstHumanityCommand extends Command {
 	constructor(client) {
@@ -21,6 +22,13 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					type: 'integer',
 					min: 1,
 					max: 20
+				},
+				{
+					key: 'noMidJoin',
+					label: 'disable mid-game join',
+					prompt: 'Do you want to disable mid-game joining?',
+					type: 'boolean',
+					default: false
 				}
 			]
 		});
@@ -28,22 +36,34 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 		this.playing = new Set();
 	}
 
-	async run(msg, { maxPts }) {
+	async run(msg, { maxPts, noMidJoin }) { // eslint-disable-line complexity
 		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
+		let joinLeaveCollector = null;
+		let pointViewCollector = null;
 		try {
 			await msg.say('You will need at least 2 more players, at maximum 10. To join, type `join game`.');
-			const awaitedPlayers = await awaitPlayers(msg, 10, 3, { dmCheck: true });
+			const awaitedPlayers = await awaitPlayers(msg, 10, 3);
 			if (!awaitedPlayers) {
 				this.playing.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
 			}
-			const players = this.generatePlayers(awaitedPlayers);
-			const czars = Array.from(players.values());
+			const players = new Collection();
+			for (const user of awaitedPlayers) this.generatePlayer(user, players);
+			const czars = players.map(player => player.id);
 			let winner = null;
+			if (!noMidJoin) joinLeaveCollector = this.createJoinLeaveCollector(msg.channel, players, czars);
+			pointViewCollector = this.createPointViewCollector(msg.channel, players);
 			while (!winner) {
-				const czar = czars[0];
-				czars.push(czar);
+				for (const player of players) {
+					if (player.strikes >= 3) this.kickPlayer(player, players, czars);
+				}
+				if (players.size < 3) {
+					await msg.say('Oh... It looks like everyone left...');
+					break;
+				}
+				const czar = players.get(czars[0]);
+				czars.push(czar.id);
 				czars.shift();
 				const black = blackCards[Math.floor(Math.random() * blackCards.length)];
 				await msg.say(stripIndents`
@@ -53,56 +73,10 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					Sending DMs...
 				`);
 				const chosenCards = [];
-				const turns = players.map(async player => {
-					if (player.hand.size < 11) {
-						const valid = whiteCards.filter(card => !player.hand.has(card));
-						player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
-					}
-					if (player.user.id === czar.user.id) return;
-					if (player.hand.size < black.pick) {
-						await player.user.send('You don\'t have enough cards!');
-						return;
-					}
-					const hand = Array.from(player.hand);
-					await player.user.send(stripIndents`
-						__**Your hand is**__:
-						${hand.map((card, i) => `**${i + 1}.** ${card}`).join('\n')}
-
-						**Black Card**: ${escapeMarkdown(black.text)}
-						**Card Czar**: ${czar.user.username}
-						Pick **${black.pick}** card${black.pick > 1 ? 's' : ''}!
-					`);
-					const chosen = [];
-					const filter = res => {
-						const existing = hand[Number.parseInt(res.content, 10) - 1];
-						if (!existing) return false;
-						if (chosen.includes(existing)) return false;
-						chosen.push(existing);
-						return true;
-					};
-					const choices = await player.user.dmChannel.awaitMessages(filter, {
-						max: black.pick,
-						time: 120000
-					});
-					if (!choices.size || choices.size < black.pick) {
-						await player.user.send('Skipping your turn...');
-						return;
-					}
-					if (chosen.includes('<Blank>')) {
-						const handled = await this.handleBlank(player);
-						chosen[chosen.indexOf('<Blank>')] = handled;
-					}
-					for (const card of chosen) player.hand.delete(card);
-					chosenCards.push({
-						id: player.id,
-						cards: chosen
-					});
-					await player.user.send(`Nice! Return to ${msg.channel} to await the results!`);
-				});
-				await Promise.all(turns);
+				await Promise.all(players.map(player => this.playerTurn(player, czar, black, msg.channel, chosenCards)));
 				if (!chosenCards.length) {
 					await msg.say('Hmm... No one even tried.');
-					break;
+					continue;
 				}
 				const cards = shuffle(chosenCards);
 				await msg.say(stripIndents`
@@ -113,6 +87,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				`);
 				const filter = res => {
 					if (res.author.id !== czar.user.id) return false;
+					if (!/^[0-9]+$/g.test(res.content)) return false;
 					if (!cards[Number.parseInt(res.content, 10) - 1]) return false;
 					return true;
 				};
@@ -121,49 +96,172 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					time: 120000
 				});
 				if (!chosen.size) {
-					await msg.say('Hmm... No one wins.');
+					await msg.say('Hmm... No one wins. Dealing back cards...');
+					for (const pick of cards) {
+						for (const card of pick.cards) players.get(pick.id).hand.add(card);
+					}
+					players.get(czar.id).strikes++;
 					continue;
 				}
 				const player = players.get(cards[Number.parseInt(chosen.first().content, 10) - 1].id);
+				if (!player) {
+					await msg.say('Oh no, I think that player left! No points will be awarded...');
+					continue;
+				}
 				++player.points;
-				if (player.points >= maxPts) winner = player.user;
-				else await msg.say(`Nice one, ${player.user}! You now have **${player.points}** points!`);
+				if (player.points >= maxPts) {
+					winner = player.user;
+				} else {
+					const addS = player.points > 1 ? 's' : '';
+					await msg.say(`Nice, ${player.user}! You now have **${player.points}** point${addS}!`);
+				}
 			}
+			if (joinLeaveCollector) joinLeaveCollector.stop();
+			pointViewCollector.stop();
 			this.playing.delete(msg.channel.id);
 			if (!winner) return msg.say('See you next time!');
 			return msg.say(`And the winner is... ${winner}! Great job!`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
+			if (joinLeaveCollector) joinLeaveCollector.stop();
+			if (pointViewCollector) pointViewCollector.stop();
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
-	generatePlayers(list) {
-		const players = new Collection();
-		for (const user of list) {
-			const cards = new Set();
-			for (let i = 0; i < 5; i++) {
-				const valid = whiteCards.filter(card => !cards.has(card));
-				cards.add(valid[Math.floor(Math.random() * valid.length)]);
-			}
-			players.set(user.id, {
-				id: user.id,
-				user,
-				points: 0,
-				hand: cards
-			});
+	generatePlayer(user, players) {
+		const cards = new Set();
+		for (let i = 0; i < 10; i++) {
+			const valid = whiteCards.filter(card => !cards.has(card));
+			cards.add(valid[Math.floor(Math.random() * valid.length)]);
 		}
+		players.set(user.id, {
+			id: user.id,
+			user,
+			points: 0,
+			hand: cards,
+			strikes: 0
+		});
 		return players;
+	}
+
+	async playerTurn(player, czar, black, channel, chosenCards) {
+		if (player.user.id === czar.user.id) return;
+		if (player.hand.size < 10) {
+			const valid = whiteCards.filter(card => !player.hand.has(card));
+			player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
+		}
+		try {
+			if (player.hand.size < black.pick) {
+				await player.user.send('You don\'t have enough cards!');
+				return;
+			}
+			const hand = Array.from(player.hand);
+			await player.user.send(stripIndents`
+				__**Your hand is**__: _(Type \`swap\` to exchange a point for a new hand.)_
+				${hand.map((card, i) => `**${i + 1}.** ${card}`).join('\n')}
+
+				**Black Card**: ${escapeMarkdown(black.text)}
+				**Card Czar**: ${czar.user.username}
+				Pick **${black.pick}** card${black.pick > 1 ? 's' : ''}!
+			`);
+			const chosen = [];
+			const filter = res => {
+				if (res.content.toLowerCase() === 'swap' && player.points > 0) return true;
+				const existing = hand[Number.parseInt(res.content, 10) - 1];
+				if (!existing) return false;
+				if (chosen.includes(existing)) return false;
+				chosen.push(existing);
+				return true;
+			};
+			const choices = await player.user.dmChannel.awaitMessages(filter, {
+				max: black.pick,
+				time: 60000
+			});
+			if (choices.first().content.toLowerCase() === 'swap') {
+				player.points--;
+				await player.user.send('Swapping cards...');
+				for (const card of player.hand) player.hand.delete(card);
+				for (let i = 0; i < 10; i++) {
+					const valid = whiteCards.filter(card => !player.hand.has(card));
+					player.hand.add(valid[Math.floor(Math.random() * valid.length)]);
+				}
+				return this.playerTurn(player, czar, black, channel, chosenCards); // eslint-disable-line consistent-return
+			}
+			if (choices.size < black.pick) {
+				for (let i = 0; i < black.pick; i++) chosen.push(hand[Math.floor(Math.random() * hand.length)]);
+				player.strikes++;
+			}
+			if (chosen.includes('<Blank>')) {
+				if (choices.size < black.pick) {
+					const handled = await this.handleBlank(player);
+					chosen[chosen.indexOf('<Blank>')] = handled;
+				} else {
+					chosen[chosen.indexOf('<Blank>')] = 'A randomly chosen blank card.';
+				}
+			}
+			for (const card of chosen) player.hand.delete(card);
+			chosenCards.push({
+				id: player.id,
+				cards: chosen
+			});
+			await player.user.send(`Nice! Return to ${channel} to await the results!`);
+		} catch (err) {
+			return; // eslint-disable-line no-useless-return
+		}
 	}
 
 	async handleBlank(player) {
 		await player.user.send('What do you want the blank card to say? Must be 100 or less characters.');
 		const blank = await player.user.dmChannel.awaitMessages(res => res.content.length <= 100, {
 			max: 1,
-			time: 120000
+			time: 60000
 		});
 		player.hand.delete('<Blank>');
 		if (!blank.size) return `A blank card ${player.user.tag} forgot to fill out.`;
 		return blank.first().content;
+	}
+
+	createJoinLeaveCollector(channel, players, czars) {
+		const filter = res => {
+			if (res.author.bot) return false;
+			if (players.has(res.author.id) && res.content.toLowerCase() !== 'leave game') return false;
+			if (czars[0] === res.author.id || players.size >= 10) {
+				res.react(FAILURE_EMOJI_ID || '❌').catch(() => null);
+				return false;
+			}
+			if (!['join game', 'leave game'].includes(res.content.toLowerCase())) return false;
+			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+			return true;
+		};
+		const collector = channel.createMessageCollector(filter);
+		collector.on('collect', msg => {
+			if (msg.content.toLowerCase() === 'join game') {
+				this.generatePlayer(msg.author, players);
+				czars.push(msg.author.id);
+			} else if (msg.content.toLowerCase() === 'leave game') {
+				this.kickPlayer(msg.author, players, czars);
+			}
+		});
+		return collector;
+	}
+
+	createPointViewCollector(channel, players) {
+		const collector = channel.createMessageCollector(res => {
+			if (res.author.bot) return false;
+			if (!players.has(res.author.id)) return false;
+			if (res.content.toLowerCase() !== 'view points') return false;
+			return true;
+		});
+		collector.on('collect', msg => {
+			const player = players.get(msg.author.id);
+			msg.reply(`You have **${player.points}** point${player.points > 1 ? 's' : ''}.`).catch(() => null);
+		});
+		return collector;
+	}
+
+	kickPlayer(player, players, czars) {
+		players.delete(player.id);
+		czars.splice(czars.indexOf(player.id), 1);
 	}
 };
