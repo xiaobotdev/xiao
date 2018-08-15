@@ -44,6 +44,6 @@ module.exports = class DerpibooruCommand extends Command {
 
 	async fetchImage(id) {
 		const { body } = await request.get(`https://derpibooru.org/images/${id}.json`);
-		return `${body.representations.full}`;
+		return `http:${body.representations.full}`;
 	}
 };
