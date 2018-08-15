@@ -39,6 +39,7 @@ module.exports = class DiscordJSDocsCommand extends Command {
 			const { body } = await request
 				.get(`https://djsdocs.sorta.moe/${project}/${branch}/embed`)
 				.query({ q: query });
+			if (!body) return msg.say('Could not find any results.');
 			return msg.embed(body);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

@@ -24,31 +24,40 @@ module.exports = class RottenTomatoesCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const search = await request
-				.get('https://www.rottentomatoes.com/api/private/v2.0/search/')
-				.query({
-					limit: 10,
-					q: query
-				});
-			if (!search.body.movies.length) return msg.say('Could not find any results.');
-			const find = search.body.movies.find(m => m.name.toLowerCase() === query.toLowerCase()) || search.body.movies[0];
-			const urlID = find.url.replace('/m/', '');
-			const { text } = await request.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${urlID}`);
-			const body = JSON.parse(text);
-			const criticScore = body.ratingSummary.allCritics;
-			const audienceScore = body.ratingSummary.audience;
+			const id = await this.search(query);
+			if (!id) return msg.say('Could not find any results.');
+			const data = await this.fetchMovie(id);
+			const criticScore = data.ratingSummary.allCritics;
+			const audienceScore = data.ratingSummary.audience;
 			const embed = new MessageEmbed()
 				.setColor(0xFFEC02)
-				.setTitle(`${body.title} (${body.year})`)
-				.setURL(`https://www.rottentomatoes.com${body.url}`)
+				.setTitle(`${data.title} (${data.year})`)
+				.setURL(`https://www.rottentomatoes.com${data.url}`)
 				.setAuthor('Rotten Tomatoes', 'https://i.imgur.com/Sru8mZ3.jpg', 'https://www.rottentomatoes.com/')
-				.setDescription(shorten(body.ratingSummary.consensus))
-				.setThumbnail(body.posters.original)
+				.setDescription(shorten(data.ratingSummary.consensus))
+				.setThumbnail(data.posters.original)
 				.addField('❯ Critic Score', criticScore.meterValue ? `${criticScore.meterValue}%` : '???', true)
 				.addField('❯ Audience Score', audienceScore.meterScore ? `${audienceScore.meterScore}%` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async search(query) {
+		const { body } = await request
+			.get('https://www.rottentomatoes.com/api/private/v2.0/search/')
+			.query({
+				limit: 10,
+				q: query
+			});
+		if (!body.movies.length) return null;
+		const find = body.movies.find(m => m.name.toLowerCase() === query.toLowerCase()) || body.movies[0];
+		return find.url.replace('/m/', '');
+	}
+
+	async fetchMovie(id) {
+		const { text } = await request.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${id}`);
+		return JSON.parse(text);
 	}
 };

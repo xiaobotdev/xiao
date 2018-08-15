@@ -1,4 +1,4 @@
-class CanvasUtil {
+module.exports = class CanvasUtil {
 	static greyscale(ctx, x, y, width, height) {
 		const data = ctx.getImageData(x, y, width, height);
 		for (let i = 0; i < data.data.length; i += 4) {
@@ -93,6 +93,4 @@ class CanvasUtil {
 		while (ctx.measureText(text).width > maxWidth) text = text.substr(0, text.length - 1);
 		return shorten ? `${text}...` : text;
 	}
-}
-
-module.exports = CanvasUtil;
+};

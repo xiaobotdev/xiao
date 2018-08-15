@@ -5,7 +5,7 @@ const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
 const { SUCCESS_EMOJI_ID } = process.env;
 
-class Util {
+module.exports = class Util {
 	static delay(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
@@ -125,6 +125,4 @@ class Util {
 		if (no.includes(choice)) return false;
 		return false;
 	}
-}
-
-module.exports = Util;
+};
