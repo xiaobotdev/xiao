@@ -33,7 +33,7 @@ module.exports = class EmojiArgumentType extends ArgumentType {
 		if (exactEmojis.size === 1) return exactEmojis.first();
 		return null;
 	}
-}
+};
 
 function nameFilterExact(search) {
 	return thing => thing.name.toLowerCase() === search;
@@ -41,4 +41,4 @@ function nameFilterExact(search) {
 
 function nameFilterInexact(search) {
 	return thing => thing.name.toLowerCase().includes(search);
-};
+}
