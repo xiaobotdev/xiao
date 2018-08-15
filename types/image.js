@@ -1,6 +1,6 @@
 const { ArgumentType } = require('discord.js-commando');
 
-class ImageArgumentType extends ArgumentType {
+module.exports = class ImageArgumentType extends ArgumentType {
 	constructor(client) {
 		super(client, 'image');
 	}
@@ -19,6 +19,4 @@ class ImageArgumentType extends ArgumentType {
 	isEmpty(value, msg) {
 		return msg.attachments.size === 0;
 	}
-}
-
-module.exports = ImageArgumentType;
+};

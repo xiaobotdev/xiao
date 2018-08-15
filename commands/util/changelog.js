@@ -11,7 +11,7 @@ module.exports = class ChangelogCommand extends Command {
 			aliases: ['updates', 'commits'],
 			group: 'util',
 			memberName: 'changelog',
-			description: 'Responds with Xiao\'s latest 10 commits.',
+			description: 'Responds with the bot\'s latest 10 commits.',
 			guarded: true
 		});
 	}

@@ -36,7 +36,7 @@ module.exports = class DictionaryCommand extends Command {
 			const data = body[0];
 			return msg.say(stripIndents`
 				**${data.word}**
-				(${data.partOfSpeech || '???'}) ${data.text}
+				(${data.partOfSpeech || 'unknown'}) ${data.text}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

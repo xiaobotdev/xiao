@@ -1,7 +1,7 @@
 const { ArgumentType } = require('discord.js-commando');
 const months = require('../assets/json/month');
 
-class MonthArgumentType extends ArgumentType {
+module.exports = class MonthArgumentType extends ArgumentType {
 	constructor(client) {
 		super(client, 'month');
 	}
@@ -18,6 +18,4 @@ class MonthArgumentType extends ArgumentType {
 		if (!Number.isNaN(num)) return num;
 		return months.indexOf(value.toLowerCase()) + 1;
 	}
-}
-
-module.exports = MonthArgumentType;
+};

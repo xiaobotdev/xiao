@@ -50,13 +50,12 @@ module.exports = class NeopetsItemCommand extends Command {
 		if (!id) return null;
 		const price = text.match(/>([0-9,]+) (NP|NC)</);
 		const url = `https://items.jellyneo.net/item/${id[1]}/`;
-		const details = await request.get(url);
-		const detailsText = details.text;
+		const details = (await request.get(url)).text;
 		return {
 			id: id[1],
 			url,
-			name: detailsText.match(/<h1>(.+)<\/h1>/)[1],
-			details: detailsText.match(/<em>(.+)<\/em>/)[1],
+			name: details.match(/<h1>(.+)<\/h1>/)[1],
+			details: details.match(/<em>(.+)<\/em>/)[1],
 			image: `https://items.jellyneo.net/assets/imgs/items/${id[1]}.gif`,
 			price: price ? Number.parseInt(price[1].replace(/,/g, ''), 10) : null,
 			currency: price ? price[2] : null

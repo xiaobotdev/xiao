@@ -9,6 +9,7 @@ module.exports = class DickCommand extends Command {
 			group: 'analyze',
 			memberName: 'dick',
 			description: 'Determines your dick size.',
+			nsfw: true,
 			args: [
 				{
 					key: 'user',

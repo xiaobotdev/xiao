@@ -23,19 +23,9 @@ module.exports = class SteamCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const search = await request
-				.get('https://store.steampowered.com/api/storesearch')
-				.query({
-					cc: 'us',
-					l: 'en',
-					term: query
-				});
-			if (!search.body.items.length) return msg.say('Could not find any results.');
-			const { id, tiny_image } = search.body.items[0];
-			const { body } = await request
-				.get('https://store.steampowered.com/api/appdetails')
-				.query({ appids: id });
-			const { data } = body[id.toString()];
+			const id = await this.search(query);
+			if (!id) return msg.say('Could not find any results.');
+			const data = await this.fetchGame(id);
 			const current = data.price_overview ? `$${data.price_overview.final / 100}` : 'Free';
 			const original = data.price_overview ? `$${data.price_overview.initial / 100}` : 'Free';
 			const price = current === original ? current : `~~${original}~~ ${current}`;
@@ -50,7 +40,7 @@ module.exports = class SteamCommand extends Command {
 				.setAuthor('Steam', 'https://i.imgur.com/xxr2UBZ.png', 'http://store.steampowered.com/')
 				.setTitle(data.name)
 				.setURL(`http://store.steampowered.com/app/${data.steam_appid}`)
-				.setThumbnail(tiny_image)
+				.setThumbnail(data.header_image)
 				.addField('❯ Price', price, true)
 				.addField('❯ Metascore', data.metacritic ? data.metacritic.score : '???', true)
 				.addField('❯ Recommendations', data.recommendations ? data.recommendations.total : '???', true)
@@ -63,5 +53,24 @@ module.exports = class SteamCommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async search(query) {
+		const { body } = await request
+			.get('https://store.steampowered.com/api/storesearch')
+			.query({
+				cc: 'us',
+				l: 'en',
+				term: query
+			});
+		if (!body.items.length) return null;
+		return body.items[0].id;
+	}
+
+	async fetchGame(id) {
+		const { body } = await request
+			.get('https://store.steampowered.com/api/appdetails')
+			.query({ appids: id });
+		return body[id.toString()].data;
 	}
 };

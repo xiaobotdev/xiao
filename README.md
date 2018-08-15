@@ -8,22 +8,22 @@
 
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
-[Commando](https://github.com/discordjs/Commando) command framework. With
+[Commando](https://github.com/discordjs/Commando) command framework. With nearly
 300 commands, she is one of the most feature-filled bots out there.
 
 ## Invite
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (300)
+## Commands (291)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
-* **changelog**: Responds with Xiao's latest 10 commits.
-* **donate**: Responds with Xiao's donation links.
+* **changelog**: Responds with the bot's latest 10 commits.
+* **donate**: Responds with the bot's donation links.
 * **help**: Displays a list of available commands, or detailed information for a specific command.
 * **info**: Responds with detailed bot information.
-* **invite**: Responds with Xiao's invite links.
+* **invite**: Responds with the bot's invite links.
 * **ping**: Checks the bot's ping to the Discord server.
 
 ### Discord Information:
@@ -63,7 +63,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **kiss-marry-kill**: Determines who to kiss, who to marry, and who to kill.
 * **magic-conch**: Asks your question to the Magic Conch.
 * **name**: Responds with a random name, with the gender of your choice.
-* **new-york-times**: Searches the New York Times for your query.
 * **number-fact**: Responds with a random fact about a specific number.
 * **offspring**: Determines if your new child will be a boy or a girl.
 * **opinion**: Determines the opinion on something.
@@ -94,7 +93,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **its-joke**: It's joke!
 * **just-do-it**: Sends a link to the "Just Do It!" motivational speech.
 * **lenny**: Responds with the lenny face.
-* **nitro**: Sends the "This message can only be viewed by users with Discord Nitro." message.
 * **slow-clap**: _slow clap_
 * **spam**: Responds with a picture of Spam.
 * **tableflip**: Flips a table... With animation!
@@ -116,16 +114,13 @@ on the [home server](https://discord.gg/sbMe32W).
 ### Search:
 
 * **bulbapedia**: Searches Bulbapedia for your query.
-* **danbooru**: Responds with an image from Danbooru, with optional query.
 * **derpibooru**: Responds with an image from Derpibooru.
 * **deviantart**: Responds with an image from a DeviantArt section, with optional query.
 * **dictionary**: Defines a word.
 * **discord-js-docs**: Searches the Discord.js docs for your query.
 * **eshop**: Searches the Nintendo eShop for your query.
-* **esrb**: Searches ESRB for your query.
 * **flickr**: Searches Flickr for your query.
 * **forecast**: Responds with the seven-day forecast for a specific location.
-* **gelbooru**: Responds with an image from Gelbooru, with optional query.
 * **giphy**: Searches Giphy for your query.
 * **github**: Responds with information on a GitHub repository.
 * **google-autofill**: Responds with a list of the Google Autofill results for a particular query.
@@ -138,7 +133,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **itunes**: Searches iTunes for your query.
 * **jisho**: Defines a word, but with Japanese.
 * **kickstarter**: Searches Kickstarter for your query.
-* **konachan**: Responds with an image from Konachan, with optional query.
 * **league-of-legends-champion**: Responds with information on a League of Legends champion.
 * **map**: Responds with a map of a specific location.
 * **mdn**: Searches MDN for your query.
@@ -154,9 +148,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **recipe**: Searches for recipes based on your query.
 * **rotten-tomatoes**: Searches Rotten Tomatoes for your query.
 * **rule-of-the-internet**: Responds with a rule of the internet.
-* **rule34**: Responds with an image from Rule34, with optional query.
 * **safebooru**: Responds with an image from Safebooru, with optional query.
-* **scrabble-score**: Responds with the scrabble score of a word.
 * **stack-overflow**: Searches Stack Overflow for your query.
 * **steam**: Searches Steam for your query.
 * **stocks**: Responds with the current stocks for a specific symbol.
@@ -323,7 +315,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **webhook**: Posts a message to the webhook defined in your `process.env`.
 * **yoda**: Converts text to Yoda speak.
 * **zalgo**: Converts text to zalgo.
-* **🅱**: Replaces b with 🅱.
 
 ### Number Manipulation:
 
@@ -331,11 +322,11 @@ on the [home server](https://discord.gg/sbMe32W).
 * **final-grade-calculator**: Determines the grade you need to make on your final to get your desired course grade.
 * **math**: Evaluates a math expression.
 * **roman-numeral**: Converts a number to roman numerals.
+* **scrabble-score**: Responds with the scrabble score of a word.
 * **units**: Converts units to/from other units.
 
 ### Other:
 
-* **cleverbot**: Chat with Cleverbot.
 * **prune**: Deletes up to 99 messages from the current channel.
 * **strawpoll**: Generates a Strawpoll with the options you provide.
 

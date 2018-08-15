@@ -14,7 +14,6 @@ module.exports = class RuleOfTheInternetCommand extends Command {
 					key: 'rule',
 					prompt: 'Which rule would you like to view?',
 					type: 'integer',
-					default: '',
 					min: 1,
 					max: rules.length
 				}
@@ -23,7 +22,6 @@ module.exports = class RuleOfTheInternetCommand extends Command {
 	}
 
 	run(msg, { rule }) {
-		if (!rule) return msg.say({ files: ['https://i.imgur.com/vGw29EQ.jpg'] });
 		return msg.say(`**Rule #${rule}**: ${rules[rule - 1]}`);
 	}
 };

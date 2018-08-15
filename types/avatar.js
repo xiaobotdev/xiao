@@ -1,6 +1,6 @@
 const { ArgumentType } = require('discord.js-commando');
 
-class AvatarArgumentType extends ArgumentType {
+module.exports = class AvatarArgumentType extends ArgumentType {
 	constructor(client) {
 		super(client, 'avatar');
 	}
@@ -13,6 +13,4 @@ class AvatarArgumentType extends ArgumentType {
 		const user = await this.client.registry.types.get('user').parse(value, msg, arg);
 		return user.displayAvatarURL({ format: 'png', size: 512 });
 	}
-}
-
-module.exports = AvatarArgumentType;
+};
