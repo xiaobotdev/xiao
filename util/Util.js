@@ -1,9 +1,8 @@
 const request = require('node-superfetch');
 const crypto = require('crypto');
-const { IMGUR_KEY } = process.env;
+const { IMGUR_KEY, SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
-const { SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class Util {
 	static delay(ms) {
