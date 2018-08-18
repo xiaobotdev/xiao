@@ -10,7 +10,7 @@ module.exports = class SteamCardCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'steam-card',
-			aliases: ['valve-card'],
+			aliases: ['valve-card', 'card', 'discord-card'],
 			group: 'avatar-edit',
 			memberName: 'steam-card',
 			description: 'Draws a user\'s avatar on a Steam Trading Card.',
@@ -31,19 +31,22 @@ module.exports = class SteamCardCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'white';
+			ctx.fillStyle = '#feb2c1';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(avatar, 25, 25, 450, 450);
+			ctx.fillStyle = 'white';
+			ctx.drawImage(avatar, 12, 19, 205, 205);
 			ctx.drawImage(base, 0, 0);
-			ctx.font = '30px Noto';
-			ctx.fillText(user.username, 35, 48);
+			ctx.font = '14px Noto';
+			ctx.fillText(user.username, 14, 11);
+			ctx.fillStyle = 'black';
+			ctx.fillText(user.username, 16, 12);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
