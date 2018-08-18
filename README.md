@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (292)
+## Commands (291)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -251,7 +251,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **avatar-fusion**: Draws a a user's avatar over a user's avatar.
 * **beautiful**: Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **bob-ross**: Draws a user's avatar over Bob Ross' canvas.
-* **card**: Draws a trading card of random rarity based on a user's profile.
 * **challenger**: Draws a user's avatar over Super Smash Bros.'s "Challenger Approaching" screen.
 * **dexter**: Draws a user's avatar over the screen of Dexter from Pokémon.
 * **distracted-boyfriend**: Draws three user's avatars over the "Distracted Boyfriend" meme.
