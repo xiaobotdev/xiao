@@ -40,13 +40,13 @@ module.exports = class SteamCardCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = '#feb2c1';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.fillStyle = 'white';
 			ctx.drawImage(avatar, 12, 19, 205, 205);
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '14px Noto';
-			ctx.fillText(user.username, 14, 11);
 			ctx.fillStyle = 'black';
-			ctx.fillText(user.username, 16, 12);
+			ctx.fillText(user.username, 16, 27);
+			ctx.fillStyle = 'white';
+			ctx.fillText(user.username, 15, 26);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
