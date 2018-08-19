@@ -42,7 +42,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 
 	async fetchPassword(locale) {
 		const { text } = await request
-			.get(`http://hpmobile.jp/app/nekoatsume/neko_daily${locale !== 'jp' ? `_${locale}` : ''}.php`);
+			.get(`http://hpmobile.jp/app/nekoatsume/neko_daily${locale === 'jp' ? '' : `_${locale}`}.php`);
 		const data = text.split(',');
 		const date = new Date();
 		date.setUTCHours(date.getUTCHours() + 9);

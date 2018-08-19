@@ -28,7 +28,7 @@ module.exports = class PortalSendCommand extends Command {
 		if (!channels.size) return msg.reply('No channels have an open portal...');
 		const channel = channels.random();
 		try {
-			await channel.send(`**${msg.author.tag} (${msg.channel.type !== 'text' ? 'DM' : msg.guild.name})**: ${message}`);
+			await channel.send(`**${msg.author.tag} (${msg.channel.type === 'text' ? msg.guild.name : 'DM'})**: ${message}`);
 			return msg.say(`Message sent to **${channel.name}** in **${channel.guild.name}**!`);
 		} catch (err) {
 			return msg.reply('Failed to send the message. Try again later!');

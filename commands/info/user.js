@@ -36,7 +36,7 @@ module.exports = class UserInfoCommand extends Command {
 					.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
 					.addField('❯ Nickname', member.nickname || 'None', true)
 					.addField('❯ Highest Role',
-						member.roles.highest.id !== msg.guild.defaultRole.id ? member.roles.highest.name : 'None', true)
+						member.roles.highest.id === msg.guild.defaultRole.id ? 'None' : member.roles.highest.name, true)
 					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true);
 			} catch (err) {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
