@@ -88,12 +88,12 @@ module.exports = class BattleCommand extends Command {
 					reset(false);
 				} else if (choice === 'special') {
 					const miss = Math.floor(Math.random() * 4);
-					if (!miss) {
+					if (miss) {
+						await msg.say(`${user}'s attack missed!`);
+					} else {
 						const damage = randomRange(100, guard ? 150 : 300);
 						await msg.say(`${user} deals **${damage}** damage!`);
 						dealDamage(damage);
-					} else {
-						await msg.say(`${user}'s attack missed!`);
 					}
 					reset();
 				} else if (choice === 'run') {
