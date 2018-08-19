@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (291)
+## Commands (292)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -235,6 +235,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **invert**: Draws an image or a user's avatar but inverted.
 * **meme**: Sends a meme with the text and background of your choice.
 * **minecraft-skin**: Sends the Minecraft skin for a user.
+* **needs-more-jpeg**: Draws an image or a user's avatar as a low quality JPEG.
 * **osu-signature**: Creates a card based on an osu! user's stats.
 * **pokemon-fusion**: Fuses two Generation I Pokémon together.
 * **robohash**: Creates a robot based on the text you provide.
