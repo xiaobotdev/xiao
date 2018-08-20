@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (292)
+## Commands (293)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -107,6 +107,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **google-doodle**: Responds with a Google Doodle, either the latest one or a random one from the past.
 * **holidays**: Responds with today's holidays.
 * **horoscope**: Responds with today's horoscope for a specific Zodiac sign.
+* **humble-bundle**: Responds with the current Humble Bundle.
 * **neko-atsume-password**: Responds with today's Neko Atsume password.
 * **time**: Responds with the current time in a particular location.
 * **today-in-history**: Responds with an event that occurred today in history.
