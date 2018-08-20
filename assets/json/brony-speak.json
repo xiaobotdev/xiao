@@ -109,5 +109,9 @@
 	"females": "mares",
 	"teleport": "wink",
 	"teleporting": "winking",
-	"everybody": "everypony"
+	"everybody": "everypony",
+	"son": "colt",
+	"sons": "colts",
+	"daughter": "filly",
+	"daughters": "fillies"
 }
