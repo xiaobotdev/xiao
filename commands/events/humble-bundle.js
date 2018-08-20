@@ -21,13 +21,13 @@ module.exports = class HumbleBundleCommand extends Command {
 			if (body.length > 1) {
 				return msg.say(stripIndents`
 					There are **${body.length}** bundles on right now!
-					${body.map(bundle => `**${bundle.bundle_name}**: <${bundle.bundle_url}>`).join('\n')}
+					${body.map(bundle => `**${bundle.bundle_name}**: <${bundle.url}>`).join('\n')}
 				`);
 			}
 			const data = body[0];
 			return msg.say(stripIndents`
 				The current bundle is **${data.bundle_name}**!
-				${data.bundle_url}
+				${data.url}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
