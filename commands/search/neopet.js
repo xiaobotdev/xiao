@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
+const petImage = require('neopet-image-finder');
 const { list } = require('../../util/Util');
 const moods = {
 	happy: 1,
@@ -40,16 +40,9 @@ module.exports = class NeopetCommand extends Command {
 
 	async run(msg, { pet, mood }) {
 		try {
-			const { text } = await request
-				.get('http://www.sunnyneo.com/petimagefinder.php')
-				.query({
-					name: pet,
-					size: 5,
-					mood: moods[mood]
-				});
-			const link = text.match(/http:\/\/pets\.neopets\.com\/cp\/.+\.png/);
+			const link = await petImage(pet, { mood });
 			if (!link) return msg.say('Could not find any results.');
-			return msg.say(link[0]);
+			return msg.say(link);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
