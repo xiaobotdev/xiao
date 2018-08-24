@@ -40,7 +40,7 @@ module.exports = class NeopetCommand extends Command {
 
 	async run(msg, { pet, mood }) {
 		try {
-			const link = await petImage(pet, { mood });
+			const link = await petImage(pet, { mood: moods[mood] });
 			if (!link) return msg.say('Could not find any results.');
 			return msg.say(link);
 		} catch (err) {
