@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (294)
+## Commands (295)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -271,6 +271,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **steam-card**: Draws a user's avatar on a Steam Trading Card.
 * **steam-now-playing**: Draws a user's avatar and the game of your choice over a Steam "now playing" notification.
 * **the-ultimate-tattoo**: Draws a user's avatar as "The Ultimate Tattoo".
+* **this-is-worthless**: Draws a user's useless avatar.
 * **thug-life**: Draws "Thug Life" over a user's avatar.
 * **triggered**: Draws a user's avatar over the "Triggered" meme.
 * **wanted**: Draws a user's avatar over a wanted poster.
