@@ -37,7 +37,7 @@ module.exports = class ThisIsWorthlessCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(6 * (Math.PI / 180));
-			ctx.drawImage(avatar, 521, 241, 400, 400);
+			ctx.drawImage(avatar, 496, 183, 400, 400);
 			ctx.rotate(163 * (Math.PI / 180));
 			ctx.drawImage(avatar, 957, 1434, 70, 70);
 			ctx.rotate(-168 * (Math.PI / 180));
