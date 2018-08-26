@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { WORDNIK_KEY } = process.env;
+const words = require('../../assets/json/hangman');
 
 module.exports = class HangmanCommand extends Command {
 	constructor(client) {
@@ -19,10 +18,7 @@ module.exports = class HangmanCommand extends Command {
 		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
-			const { body } = await request
-				.get('http://api.wordnik.com/v4/words.json/randomWord')
-				.query({ api_key: WORDNIK_KEY });
-			const word = body.word.toLowerCase().replace(/ /g, '-');
+			const word = words[Math.floor(Math.random() * words.length)].toLowerCase();
 			let points = 0;
 			let displayText = null;
 			let guessed = false;
@@ -57,15 +53,15 @@ module.exports = class HangmanCommand extends Command {
 				}
 				const choice = guess.first().content.toLowerCase();
 				if (choice === 'end') break;
-				if (choice.length > 1 && (choice === word || choice === body.word.toLowerCase())) {
+				if (choice.length > 1 && choice === word) {
 					guessed = true;
 					break;
 				} else if (word.includes(choice)) {
 					displayText = true;
 					for (let i = 0; i < word.length; i++) {
-						if (word[i] !== choice) continue; // eslint-disable-line max-depth
-						confirmation.push(word[i]);
-						display[i] = word[i];
+						if (word.charAt(i) !== choice) continue; // eslint-disable-line max-depth
+						confirmation.push(word.charAt(i));
+						display[i] = word.charAt(i);
 					}
 				} else {
 					displayText = false;
