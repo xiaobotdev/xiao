@@ -31,6 +31,7 @@
 		"node": ">=10.1.0"
 	},
 	"dependencies": {
+		"@discordjs/uws": "^10.149.0",
 		"canvas": "github:automattic/node-canvas",
 		"cheerio": "1.0.0-rc.2",
 		"common-tags": "^1.8.0",
