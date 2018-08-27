@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (295)
+## Commands (296)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -203,6 +203,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **lottery**: Attempt to win the lottery with 6 numbers.
 * **mafia**: Who is the Mafia? Who is the doctor? Who is the detective? Will the Mafia kill them all?
 * **math-quiz**: See how fast you can answer a math problem in a given time limit.
+* **quiz-duel**: Answer a series of quiz questions against an opponent.
 * **quiz**: Answer a quiz question.
 * **rock-paper-scissors**: Play Rock-Paper-Scissors.
 * **roulette**: Play a game of roulette.
