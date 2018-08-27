@@ -47,7 +47,7 @@ module.exports = class QuizDuelCommand extends Command {
 			let oppoPoints = 0;
 			while (!winner) {
 				const question = await this.fetchQuestion();
-				await msg.reply(stripIndents`
+				await msg.say(stripIndents`
 					**You have 15 seconds to answer this question.**
 					${question.question}
 					${question.answers.map((answer, i) => `**${choices[i]}**. ${answer}`).join('\n')}
@@ -60,6 +60,7 @@ module.exports = class QuizDuelCommand extends Command {
 					answered.push(res.author.id);
 					if (question.answers[choices.indexOf(res.content.toUpperCase())] !== question.correct) {
 						msg.say(`${res.author}, that's incorrect!`).catch(() => null);
+						return false;
 					}
 					return true;
 				};
@@ -68,7 +69,7 @@ module.exports = class QuizDuelCommand extends Command {
 					time: 15000
 				});
 				if (!msgs.size) {
-					await msg.reply(`Sorry, time is up! It was ${question.correct}.`);
+					await msg.say(`Sorry, time is up! It was ${question.correct}.`);
 					continue;
 				}
 				const result = msgs.first();
@@ -81,8 +82,9 @@ module.exports = class QuizDuelCommand extends Command {
 					${userWin ? '**' : ''}${userPoints}${userWin ? '**' : ''}-
 					${userWin ? '' : '**'}${oppoPoints}${userWin ? '' : '**'}
 				`;
-				await msg.reply(`Nice one, ${result.author}! The score is now ${score}!`);
+				await msg.say(`Nice one, ${result.author}! The score is now ${score}!`);
 			}
+			this.playing.delete(msg.channel.id);
 			if (!winner) return msg.say('Aww, no one won...');
 			return msg.say(`Congrats, ${winner}, you won!`);
 		} catch (err) {
