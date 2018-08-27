@@ -12,8 +12,7 @@ module.exports = class BalloonPopCommand extends Command {
 				{
 					key: 'opponent',
 					prompt: 'What user would you like to play against?',
-					type: 'user',
-					default: () => this.client.user
+					type: 'user'
 				}
 			]
 		});
@@ -22,17 +21,16 @@ module.exports = class BalloonPopCommand extends Command {
 	}
 
 	async run(msg, { opponent }) {
+		if (opponent.bot) return msg.reply('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		this.playing.add(msg.channel.id);
 		try {
-			if (!opponent.bot) {
-				await msg.say(`${opponent}, do you accept this challenge?`);
-				const verification = await verify(msg.channel, opponent);
-				if (!verification) {
-					this.playing.delete(msg.channel.id);
-					return msg.say('Looks like they declined...');
-				}
+			await msg.say(`${opponent}, do you accept this challenge?`);
+			const verification = await verify(msg.channel, opponent);
+			if (!verification) {
+				this.playing.delete(msg.channel.id);
+				return msg.say('Looks like they declined...');
 			}
 			let userTurn = false;
 			let winner = null;
@@ -42,14 +40,14 @@ module.exports = class BalloonPopCommand extends Command {
 				const user = userTurn ? msg.author : opponent;
 				let pump;
 				++turns;
-				if (!opponent.bot || (opponent.bot && userTurn)) {
-					await msg.say(`${user}, do you pump the balloon?`);
-					pump = await verify(msg.channel, user);
+				if (turns === 1) {
+					await msg.say(`${user} pumps the balloon!`);
+					pump = true;
 				} else {
-					pump = Boolean(Math.floor(Math.random() * 2));
+					await msg.say(`${user}, do you pump the balloon again?`);
+					pump = await verify(msg.channel, user);
 				}
 				if (pump) {
-					await msg.say(`${user} pumps the balloon!`);
 					remains -= randomRange(25, 75);
 					const popped = Math.floor(Math.random() * remains);
 					if (popped <= 0) {
@@ -58,11 +56,11 @@ module.exports = class BalloonPopCommand extends Command {
 						break;
 					}
 					if (turns >= 3) {
+						await msg.say(`${user} steps back!`);
 						turns = 0;
 						userTurn = !userTurn;
 					}
 				} else {
-					await msg.say(`${user} steps back!`);
 					turns = 0;
 					userTurn = !userTurn;
 				}
