@@ -73,11 +73,11 @@ module.exports = class QuizDuelCommand extends Command {
 					continue;
 				}
 				const result = msgs.first();
-				if (userPoints >= maxPts) winner = msg.author;
-				else if (oppoPoints >= maxPts) winner = opponent;
 				const userWin = result.author.id === msg.author.id;
 				if (userWin) ++userPoints;
 				else ++oppoPoints;
+				if (userPoints >= maxPts) winner = msg.author;
+				else if (oppoPoints >= maxPts) winner = opponent;
 				const score = oneLine`
 					${userWin ? '**' : ''}${userPoints}${userWin ? '**' : ''}-
 					${userWin ? '' : '**'}${oppoPoints}${userWin ? '' : '**'}
