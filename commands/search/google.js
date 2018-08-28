@@ -28,11 +28,12 @@ module.exports = class GoogleCommand extends Command {
 
 	async run(msg, { query }) {
 		let href;
+		const nsfw = msg.channel.nsfw || false;
 		try {
-			href = await this.searchGoogle(query, msg.channel.nsfw);
+			href = await this.searchGoogle(query, nsfw);
 		} catch (err) {
 			try {
-				href = await this.customSearch(query, msg.channel.nsfw);
+				href = await this.customSearch(query, nsfw);
 			} catch (err) {
 				href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 			}
