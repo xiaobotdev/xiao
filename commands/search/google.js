@@ -1,5 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const cheerio = require('cheerio');
+const querystring = require('querystring');
 const { GOOGLE_KEY, CUSTOM_SEARCH_ID } = process.env;
 
 module.exports = class GoogleCommand extends Command {
@@ -25,18 +27,44 @@ module.exports = class GoogleCommand extends Command {
 	}
 
 	async run(msg, { query }) {
+		let href;
 		try {
-			const { body } = await request
-				.get('https://www.googleapis.com/customsearch/v1')
-				.query({
-					key: GOOGLE_KEY,
-					cx: CUSTOM_SEARCH_ID,
-					q: query
-				});
-			if (!body.items) return msg.say('Could not find any results.');
-			return msg.say(body.items[0].formattedUrl);
+			href = await this.searchGoogle(query, msg.channel.nsfw);
 		} catch (err) {
-			return msg.say(`http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`);
+			try {
+				href = await this.customSearch(query, msg.channel.nsfw);
+			} catch (err) {
+				href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
+			}
 		}
+		if (!href) return msg.say('Could not find any results.');
+		return msg.say(href);
+	}
+
+	async searchGoogle(query, nsfw) {
+		const { text } = await request
+			.get('https://www.google.com/search')
+			.query({
+				safe: nsfw ? 'off' : 'on',
+				q: query
+			});
+		const $ = cheerio.load(text);
+		let href = $('.r').first().find('a').first().attr('href');
+		if (!href) return null;
+		href = querystring.parse(href.replace('/url?', ''));
+		return href.q;
+	}
+
+	async customSearch(query, nsfw) {
+		const { body } = await request
+			.get('https://www.googleapis.com/customsearch/v1')
+			.query({
+				key: GOOGLE_KEY,
+				cx: CUSTOM_SEARCH_ID,
+				safe: nsfw ? 'off' : 'active',
+				q: query
+			});
+		if (!body.items) return null;
+		return body.items[0].formattedUrl;
 	}
 };
