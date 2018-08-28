@@ -50,7 +50,7 @@ module.exports = class WhatAnimeCommand extends Command {
 				.query({ token: WHATANIME_KEY });
 			return { status: body.quota > 0, refresh: body.quota_ttl };
 		} catch (err) {
-			return { status: false, refresh: null };
+			return { status: false, refresh: Infinity };
 		}
 	}
 

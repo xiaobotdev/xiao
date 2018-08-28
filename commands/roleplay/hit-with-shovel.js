@@ -1,13 +1,15 @@
-const Command = require('../../structures/Command');
-const { randomFromImgurAlbum } = require('../../util/Util');
+const RoleplayCommand = require('../../structures/commands/Roleplay');
+const { HIT_WITH_SHOVEL_ALBUM_ID } = process.env;
 
-module.exports = class HitWithShovelCommand extends Command {
+module.exports = class HitWithShovelCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'hit-with-shovel',
 			group: 'roleplay',
 			memberName: 'hit-with-shovel',
 			description: 'Hits a user with a shovel.',
+			clientPermissions: ['ATTACH_FILES'],
+			albumID: HIT_WITH_SHOVEL_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -18,12 +20,7 @@ module.exports = class HitWithShovelCommand extends Command {
 		});
 	}
 
-	async run(msg, { user }) {
-		try {
-			const gif = await randomFromImgurAlbum('IA35f');
-			return msg.say(`_**${msg.author.username}** hits **${user.username}** with a shovel._`, { files: [gif] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	generateText(msg, user) {
+		return `_**${msg.author.username}** hits **${user.username}** with a shovel._`;
 	}
 };

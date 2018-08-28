@@ -1,13 +1,15 @@
-const Command = require('../../structures/Command');
-const { randomFromImgurAlbum } = require('../../util/Util');
+const RoleplayCommand = require('../../structures/commands/Roleplay');
+const { MARRY_ALBUM_ID } = process.env;
 
-module.exports = class MarryCommand extends Command {
+module.exports = class MarryCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'marry',
 			group: 'roleplay',
 			memberName: 'marry',
 			description: 'Marries a user.',
+			clientPermissions: ['ATTACH_FILES'],
+			albumID: MARRY_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -18,12 +20,7 @@ module.exports = class MarryCommand extends Command {
 		});
 	}
 
-	async run(msg, { user }) {
-		try {
-			const gif = await randomFromImgurAlbum('4H0EP');
-			return msg.say(`_**${msg.author.username}** marries **${user.username}**._`, { files: [gif] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	generateText(msg, user) {
+		return `_**${msg.author.username}** marries **${user.username}**._`;
 	}
 };

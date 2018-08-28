@@ -12,6 +12,6 @@ module.exports = class EatPantCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say({ files: ['https://i.imgur.com/sSmhvxt.jpg'] });
+		return msg.say({ files: ['https://i.imgur.com/uEk0kI4.jpg'] });
 	}
 };

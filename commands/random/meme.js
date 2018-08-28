@@ -1,15 +1,14 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { IMGUR_KEY, XIAO_ALBUM_ID } = process.env;
+const { IMGUR_KEY, POSTER_ALBUM_ID } = process.env;
 
-module.exports = class XiaoCommand extends Command {
+module.exports = class MemeCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'xiao',
-			aliases: ['xiao-pai', 'iao'],
+			name: 'meme',
 			group: 'random',
-			memberName: 'xiao',
-			description: 'Responds with a random image of Xiao Pai.',
+			memberName: 'meme',
+			description: 'Responds with a random meme.',
 			clientPermissions: ['ATTACH_FILES']
 		});
 
@@ -18,9 +17,9 @@ module.exports = class XiaoCommand extends Command {
 
 	async run(msg) {
 		try {
-			const xiao = await this.random();
-			if (!xiao) return msg.reply('This album has no images...');
-			return msg.say({ files: [xiao] });
+			const meme = await this.random();
+			if (!meme) return msg.reply('This album has no images...');
+			return msg.say({ files: [meme] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
@@ -29,7 +28,7 @@ module.exports = class XiaoCommand extends Command {
 	async random() {
 		if (this.cache) return this.cache[Math.floor(Math.random() * this.cache.length)].link;
 		const { body } = await request
-			.get(`https://api.imgur.com/3/album/${XIAO_ALBUM_ID}`)
+			.get(`https://api.imgur.com/3/album/${POSTER_ALBUM_ID}`)
 			.set({ Authorization: `Client-ID ${IMGUR_KEY}` });
 		if (!body.data.images.length) return null;
 		this.cache = body.data.images;
