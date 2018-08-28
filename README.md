@@ -63,12 +63,12 @@ on the [home server](https://discord.gg/sbMe32W).
 * **joke**: Responds with a random joke.
 * **kiss-marry-kill**: Determines who to kiss, who to marry, and who to kill.
 * **magic-conch**: Asks your question to the Magic Conch.
+* **meme**: Responds with a random meme.
 * **name**: Responds with a random name, with the gender of your choice.
 * **number-fact**: Responds with a random fact about a specific number.
 * **offspring**: Determines if your new child will be a boy or a girl.
 * **opinion**: Determines the opinion on something.
 * **oracle-turret**: Responds with a random Oracle Turret quote.
-* **pikachu**: Responds with a random image of Pikachu.
 * **quantum-coin**: Flips a coin that lands on some form of nothing.
 * **quote**: Responds with a random quote.
 * **rate**: Rates something.
@@ -174,7 +174,6 @@ on the [home server](https://discord.gg/sbMe32W).
 
 * **coolness**: Determines a user's coolness.
 * **dick**: Determines your dick size.
-* **face-analyze**: Determines the age, gender, and race of a face.
 * **gender-analyze**: Determines the gender of a name.
 * **guess-looks**: Guesses what a user looks like.
 * **psycho-pass**: Determines your Crime Coefficient.
@@ -226,6 +225,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **be-like-bill**: Sends a "Be Like Bill" meme with the name of your choice.
 * **color**: Sends an image of the color you choose.
 * **contrast**: Draws an image or a user's avatar but with contrast.
+* **create-meme**: Sends a meme with the text and background of your choice.
 * **create-qr-code**: Converts text to a QR Code.
 * **demotivational-poster**: Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distort**: Draws an image or a user's avatar but distorted.
@@ -235,7 +235,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **ifunny**: Draws an image with the iFunny logo.
 * **illegal**: Makes President Trump make your text illegal.
 * **invert**: Draws an image or a user's avatar but inverted.
-* **meme**: Sends a meme with the text and background of your choice.
 * **minecraft-skin**: Sends the Minecraft skin for a user.
 * **needs-more-jpeg**: Draws an image or a user's avatar as a low quality JPEG.
 * **osu-signature**: Creates a card based on an osu! user's stats.
@@ -338,6 +337,7 @@ on the [home server](https://discord.gg/sbMe32W).
 ### Roleplay:
 
 * **break-up**: Breaks up with a user.
+* **bro-hoof**: Gives a user a bro-hoof.
 * **cuddle**: Cuddles a user.
 * **eat**: Eats a user.
 * **evolve**: Evolves a user.

@@ -1,15 +1,15 @@
 const RoleplayCommand = require('../../structures/commands/Roleplay');
-const { KILL_ALBUM_ID } = process.env;
+const { BRO_HOOF_ALBUM_ID } = process.env;
 
-module.exports = class KillCommand extends RoleplayCommand {
+module.exports = class BroHoofCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
-			name: 'kill',
+			name: 'bro-hoof',
 			group: 'roleplay',
-			memberName: 'kill',
-			description: 'Kills a user.',
+			memberName: 'bro-hoof',
+			description: 'Gives a user a bro-hoof.',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: KILL_ALBUM_ID,
+			albumID: BRO_HOOF_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -21,6 +21,6 @@ module.exports = class KillCommand extends RoleplayCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${msg.author.username}** kills **${user.username}**._`;
+		return `_**${msg.author.username}** gives **${user.username}** a bro-hoof._`;
 	}
 };

@@ -1,13 +1,15 @@
-const Command = require('../../structures/Command');
-const { randomFromImgurAlbum } = require('../../util/Util');
+const RoleplayCommand = require('../../structures/commands/Roleplay');
+const { FALCON_PUNCH_ALBUM_ID } = process.env;
 
-module.exports = class FalconPunchCommand extends Command {
+module.exports = class FalconPunchCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'falcon-punch',
 			group: 'roleplay',
 			memberName: 'falcon-punch',
 			description: 'Falcon Punches a user.',
+			clientPermissions: ['ATTACH_FILES'],
+			albumID: FALCON_PUNCH_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -18,12 +20,7 @@ module.exports = class FalconPunchCommand extends Command {
 		});
 	}
 
-	async run(msg, { user }) {
-		try {
-			const gif = await randomFromImgurAlbum('mJauN');
-			return msg.say(`_**${msg.author.username}** falcon punches **${user.username}**._`, { files: [gif] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	generateText(msg, user) {
+		return `_**${msg.author.username}** falcon punches **${user.username}**._`;
 	}
 };

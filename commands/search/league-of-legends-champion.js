@@ -70,7 +70,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 			.get('https://na1.api.riotgames.com/lol/static-data/v3/versions')
 			.query({ api_key: RIOT_KEY });
 		[this.version] = body;
-		setTimeout(() => { this.version = null; }, 3600000);
+		setTimeout(() => { this.version = null; }, 3.6e+6);
 		return body;
 	}
 

@@ -1,8 +1,7 @@
-const request = require('node-superfetch');
 const crypto = require('crypto');
-const { IMGUR_KEY, SUCCESS_EMOJI_ID } = process.env;
-const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
-const no = ['no', 'n', 'nah', 'nope'];
+const { SUCCESS_EMOJI_ID } = process.env;
+const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya'];
+const no = ['no', 'n', 'nah', 'nope', 'nop'];
 
 module.exports = class Util {
 	static delay(ms) {
@@ -57,14 +56,6 @@ module.exports = class Util {
 
 	static hash(text, algorithm) {
 		return crypto.createHash(algorithm).update(text).digest('hex');
-	}
-
-	static async randomFromImgurAlbum(album) {
-		const { body } = await request
-			.get(`https://api.imgur.com/3/album/${album}`)
-			.set({ Authorization: `Client-ID ${IMGUR_KEY}` });
-		if (!body.data.images.length) return null;
-		return body.data.images[Math.floor(Math.random() * body.data.images.length)].link;
 	}
 
 	static today(timeZone) {

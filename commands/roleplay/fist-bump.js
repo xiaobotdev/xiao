@@ -1,13 +1,15 @@
-const Command = require('../../structures/Command');
-const { randomFromImgurAlbum } = require('../../util/Util');
+const RoleplayCommand = require('../../structures/commands/Roleplay');
+const { FIST_BUMP_ALBUM_ID } = process.env;
 
-module.exports = class FistBumpCommand extends Command {
+module.exports = class FistBumpCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'fist-bump',
 			group: 'roleplay',
 			memberName: 'fist-bump',
-			description: 'Fistbumps a user.',
+			description: 'Fist-bumps a user.',
+			clientPermissions: ['ATTACH_FILES'],
+			albumID: FIST_BUMP_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -18,12 +20,7 @@ module.exports = class FistBumpCommand extends Command {
 		});
 	}
 
-	async run(msg, { user }) {
-		try {
-			const gif = await randomFromImgurAlbum('9D3WE');
-			return msg.say(`_**${msg.author.username}** fist-bumps **${user.username}**._`, { files: [gif] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	generateText(msg, user) {
+		return `_**${msg.author.username}** fist-bumps **${user.username}**._`;
 	}
 };

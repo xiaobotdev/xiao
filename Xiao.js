@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const path = require('path');
 const { CommandoClient } = require('discord.js-commando');

@@ -1,7 +1,7 @@
-const Command = require('../../structures/Command');
-const { randomFromImgurAlbum } = require('../../util/Util');
+const RoleplayCommand = require('../../structures/commands/Roleplay');
+const { BREAK_UP_ALBUM_ID } = process.env;
 
-module.exports = class BreakUpCommand extends Command {
+module.exports = class BreakUpCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'break-up',
@@ -9,6 +9,8 @@ module.exports = class BreakUpCommand extends Command {
 			group: 'roleplay',
 			memberName: 'break-up',
 			description: 'Breaks up with a user.',
+			clientPermissions: ['ATTACH_FILES'],
+			albumID: BREAK_UP_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -19,12 +21,7 @@ module.exports = class BreakUpCommand extends Command {
 		});
 	}
 
-	async run(msg, { user }) {
-		try {
-			const gif = await randomFromImgurAlbum('QFWUb');
-			return msg.say(`_**${msg.author.username}** breaks up with **${user.username}**._`, { files: [gif] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	generateText(msg, user) {
+		return `_**${msg.author.username}** breaks up with **${user.username}**._`;
 	}
 };
