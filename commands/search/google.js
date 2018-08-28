@@ -34,7 +34,7 @@ module.exports = class GoogleCommand extends Command {
 		} catch (err) {
 			try {
 				href = await this.customSearch(query, nsfw);
-			} catch (err) {
+			} catch (err2) {
 				href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 			}
 		}
