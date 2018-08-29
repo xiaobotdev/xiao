@@ -319,7 +319,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **uppercase**: Converts text to uppercase.
 * **upside-down**: Flips text upside-down.
 * **url-encode**: Encodes text to URL-friendly characters.
-* **webhook**: Posts a message to the webhook defined in your `process.env`.
+* **webhook**: Posts a message to the webhook defined in the bot owner's `process.env`.
 * **yoda**: Converts text to Yoda speak.
 * **zalgo**: Converts text to zalgo.
 
