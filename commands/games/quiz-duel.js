@@ -79,7 +79,7 @@ module.exports = class QuizDuelCommand extends Command {
 				if (userPoints >= maxPts) winner = msg.author;
 				else if (oppoPoints >= maxPts) winner = opponent;
 				const score = oneLine`
-					${userWin ? '**' : ''}${userPoints}${userWin ? '**' : ''}-
+					${userWin ? '**' : ''}${userPoints}${userWin ? '**' : ''} -
 					${userWin ? '' : '**'}${oppoPoints}${userWin ? '' : '**'}
 				`;
 				await msg.say(`Nice one, ${result.author}! The score is now ${score}!`);
