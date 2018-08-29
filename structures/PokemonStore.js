@@ -3,10 +3,6 @@ const request = require('node-superfetch');
 const Pokemon = require('./Pokemon');
 
 module.exports = class PokemonStore extends Collection {
-	constructor(iterable) {
-		super(iterable);
-	}
-
 	async fetch(query) {
 		query = encodeURIComponent(query.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9-]/g, ''));
 		const num = Number.parseInt(query, 10);
