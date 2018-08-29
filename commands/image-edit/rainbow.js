@@ -8,9 +8,9 @@ module.exports = class RainbowCommand extends Command {
 		super(client, {
 			name: 'rainbow',
 			aliases: ['gay'],
-			group: 'avatar-edit',
+			group: 'image-edit',
 			memberName: 'rainbow',
-			description: 'Draws a rainbow over a user\'s avatar.',
+			description: 'Draws a rainbow over an image or a user\'s avatar.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -18,20 +18,19 @@ module.exports = class RainbowCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image|avatar',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'rainbow.png'));
-			const { body } = await request.get(avatarURL);
+			const { body } = await request.get(image);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(avatar.width, avatar.height);
 			const ctx = canvas.getContext('2d');
