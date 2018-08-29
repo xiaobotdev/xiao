@@ -6,6 +6,7 @@ module.exports = class PixelizeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'pixelize',
+			aliases: ['pixel'],
 			group: 'image-edit',
 			memberName: 'pixelize',
 			description: 'Draws an image or a user\'s avatar pixelized.',
@@ -28,15 +29,17 @@ module.exports = class PixelizeCommand extends Command {
 	async run(msg, { image }) {
 		try {
 			const { body } = await request.get(image);
-			const avatar = await loadImage(body);
-			const canvas = createCanvas(512, 512);
+			const data = await loadImage(body);
+			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
 			ctx.imageSmoothingEnabled = false;
-			const width = canvas.width * 0.25;
-			const height = canvas.height * 0.25;
-			ctx.drawImage(avatar, 0, 0, width, height);
+			const width = canvas.width * 0.15;
+			const height = canvas.height * 0.15;
+			ctx.drawImage(data, 0, 0, width, height);
 			ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'pixelize.png' }] });
+			const attachment = canvas.toBuffer();
+			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+			return msg.say({ files: [{ attachment, name: 'pixelize.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
