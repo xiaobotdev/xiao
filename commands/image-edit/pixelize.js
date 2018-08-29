@@ -6,9 +6,9 @@ module.exports = class PixelizeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'pixelize',
-			group: 'avatar-edit',
+			group: 'image-edit',
 			memberName: 'pixelize',
-			description: 'Draws a user\'s avatar pixelized.',
+			description: 'Draws an image or a user\'s avatar pixelized.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -16,24 +16,26 @@ module.exports = class PixelizeCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image|avatar',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 64 });
+	async run(msg, { image }) {
 		try {
-			const { body } = await request.get(avatarURL);
+			const { body } = await request.get(image);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(512, 512);
 			const ctx = canvas.getContext('2d');
 			ctx.imageSmoothingEnabled = false;
-			ctx.drawImage(avatar, 0, 0, 512, 512);
+			const width = canvas.width * 0.25;
+			const height = canvas.height * 0.25;
+			ctx.drawImage(avatar, 0, 0, width, height);
+			ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'pixelize.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

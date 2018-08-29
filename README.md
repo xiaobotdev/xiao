@@ -239,7 +239,9 @@ on the [home server](https://discord.gg/sbMe32W).
 * **minecraft-skin**: Sends the Minecraft skin for a user.
 * **needs-more-jpeg**: Draws an image or a user's avatar as a low quality JPEG.
 * **osu-signature**: Creates a card based on an osu! user's stats.
+* **pixelize**: Draws an image or a user's avatar pixelized.
 * **pokemon-fusion**: Fuses two Generation I Pokémon together.
+* **rainbow**: Draws a rainbow over an image or user's avatar.
 * **robohash**: Creates a robot based on the text you provide.
 * **sepia**: Draws an image or a user's avatar in sepia.
 * **shields-io-badge**: Creates a badge from shields.io.
@@ -265,8 +267,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **i-have-the-power**: Draws a user's avatar over He-Man's face.
 * **look-at-this-photograph**: Draws a user's avatar over Nickelback's photograph.
 * **look-what-karen-have**: Draws a user's avatar over Karen's piece of paper.
-* **pixelize**: Draws a user's avatar pixelized.
-* **rainbow**: Draws a rainbow over a user's avatar.
 * **rejected**: Draws a "rejected" stamp over a user's avatar.
 * **rip**: Draws a user's avatar over a gravestone.
 * **steam-card**: Draws a user's avatar on a Steam Trading Card.
