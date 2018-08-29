@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (296)
+## Commands (299)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -79,6 +79,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **shower-thought**: Responds with a random shower thought, directly from r/Showerthoughts.
 * **suggest-command**: Suggests a random command for you to try.
 * **superpower**: Responds with a random superpower.
+* **this-for-that**: So, basically, it's like a bot command for this dumb meme.
 * **user-roulette**: Randomly chooses a member of the server.
 * **would-you-rather**: Responds with a random "Would you rather ...?" question.
 * **xiao**: Responds with a random image of Xiao Pai.
@@ -295,6 +296,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **hex**: Converts text to hex.
 * **latlmes**: Creates a Latlmes fake link that redirects to a rickroll.
 * **lmgtfy**: Creates a LMGTFY link with the query you provide.
+* **lowercase**: Converts text to lowercase.
 * **md5**: Creates a hash of text with the MD5 algorithm.
 * **mocking**: SenDs TexT lIkE ThiS.
 * **morse**: Converts text to morse code.
@@ -314,6 +316,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **superscript**: Converts text to tiny text.
 * **temmie**: Converts text to Temmie speak.
 * **translate**: Translates text to a specific language.
+* **uppercase**: Converts text to uppercase.
 * **upside-down**: Flips text upside-down.
 * **url-encode**: Encodes text to URL-friendly characters.
 * **webhook**: Posts a message to the webhook defined in your `process.env`.
