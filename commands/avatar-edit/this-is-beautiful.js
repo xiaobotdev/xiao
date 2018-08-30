@@ -3,13 +3,13 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
-module.exports = class BeautifulCommand extends Command {
+module.exports = class ThisIsBeautifulCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'beautiful',
-			aliases: ['grunkle-stan'],
+			name: 'this-is-beautiful',
+			aliases: ['beautiful', 'grunkle-stan'],
 			group: 'avatar-edit',
-			memberName: 'beautiful',
+			memberName: 'this-is-beautiful',
 			description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is beautiful." meme.',
 			throttling: {
 				usages: 1,
@@ -30,7 +30,7 @@ module.exports = class BeautifulCommand extends Command {
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'beautiful.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'this-is-beautiful.png'));
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
@@ -40,7 +40,7 @@ module.exports = class BeautifulCommand extends Command {
 			ctx.drawImage(avatar, 249, 24, 105, 105);
 			ctx.drawImage(avatar, 249, 223, 105, 105);
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'beautiful.png' }] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'this-is-beautiful.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

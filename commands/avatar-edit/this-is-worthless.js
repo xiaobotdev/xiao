@@ -10,7 +10,7 @@ module.exports = class ThisIsWorthlessCommand extends Command {
 			aliases: ['worthless'],
 			group: 'avatar-edit',
 			memberName: 'this-is-worthless',
-			description: 'Draws a user\'s useless avatar.',
+			description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is worthless." meme.',
 			throttling: {
 				usages: 1,
 				duration: 10
