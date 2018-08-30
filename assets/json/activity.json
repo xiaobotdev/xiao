@@ -30,5 +30,21 @@
 	{
 		"text": "with Amber",
 		"type": "PLAYING"
+	},
+	{
+		"text": "with a cardboard box",
+		"type": "PLAYING"
+	},
+	{
+		"text": "in the fridge",
+		"type": "PLAYING"
+	},
+	{
+		"text": "with a knife",
+		"type": "PLAYING"
+	},
+	{
+		"text": "with a murderous cow",
+		"type": "PLAYING"
 	}
 ]
