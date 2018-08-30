@@ -42,7 +42,7 @@
 		"dotenv": "^6.0.0",
 		"erlpack": "github:discordapp/erlpack",
 		"mathjs": "^5.1.1",
-		"neopet-image-finder": "^4.0.0",
+		"neopet-image-finder": "^4.0.1",
 		"node-opus": "^0.3.0",
 		"node-superfetch": "^0.1.4",
 		"random-js": "^1.0.8",
