@@ -37,8 +37,8 @@ module.exports = class RipCommand extends Command {
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 158, 51, 200, 200);
-			greyscale(ctx, 158, 51, 200, 200);
+			ctx.drawImage(avatar, 59, 68, 200, 200);
+			greyscale(ctx, 59, 68, 200, 200);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
