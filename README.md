@@ -255,7 +255,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **3000-years**: Draws a user's avatar over Pokémon's "It's been 3000 years" meme.
 * **approved**: Draws an "approved" stamp over a user's avatar.
 * **avatar-fusion**: Draws a a user's avatar over a user's avatar.
-* **beautiful**: Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **bob-ross**: Draws a user's avatar over Bob Ross' canvas.
 * **challenger**: Draws a user's avatar over Super Smash Bros.'s "Challenger Approaching" screen.
 * **dexter**: Draws a user's avatar over the screen of Dexter from Pokémon.
@@ -273,7 +272,8 @@ on the [home server](https://discord.gg/sbMe32W).
 * **steam-card**: Draws a user's avatar on a Steam Trading Card.
 * **steam-now-playing**: Draws a user's avatar and the game of your choice over a Steam "now playing" notification.
 * **the-ultimate-tattoo**: Draws a user's avatar as "The Ultimate Tattoo".
-* **this-is-worthless**: Draws a user's useless avatar.
+* **this-is-beautiful**: Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
+* **this-is-worthless**: Draws a user's avatar over Gravity Falls' "Oh, this? This is worthless." meme.
 * **thug-life**: Draws "Thug Life" over a user's avatar.
 * **triggered**: Draws a user's avatar over the "Triggered" meme.
 * **wanted**: Draws a user's avatar over a wanted poster.
