@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (300)
+## Commands (301)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -70,6 +70,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **offspring**: Determines if your new child will be a boy or a girl.
 * **opinion**: Determines the opinion on something.
 * **oracle-turret**: Responds with a random Oracle Turret quote.
+* **pun**: Responds with a random pun.
 * **quantum-coin**: Flips a coin that lands on some form of nothing.
 * **quote**: Responds with a random quote.
 * **rate**: Rates something.
