@@ -24,7 +24,7 @@ module.exports = class YodaCommand extends Command {
 	async run(msg, { sentence }) {
 		try {
 			const { body } = await request
-				.get('https://yoda-speak-api.herokuapp.com/')
+				.get('https://yoda-speak-api.herokuapp.com/speak')
 				.query({
 					text: sentence,
 					token: YODA_KEY
