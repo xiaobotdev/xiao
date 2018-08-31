@@ -1,5 +1,10 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
+const activities = {
+	PLAYING: 'Playing',
+	WATCHING: 'Watching',
+	LISTENING: 'Listening to'
+};
 
 module.exports = class UserInfoCommand extends Command {
 	constructor(client) {
@@ -33,6 +38,9 @@ module.exports = class UserInfoCommand extends Command {
 				const member = await msg.guild.members.fetch(user.id);
 				embed
 					.setColor(member.displayHexColor)
+					.setDescription(member.presence.activity
+						? `${activities[member.presence.activity.type]} **${member.presence.activity.name}**`
+						: '')
 					.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
 					.addField('❯ Nickname', member.nickname || 'None', true)
 					.addField('❯ Highest Role',
