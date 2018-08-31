@@ -496,7 +496,7 @@
 				]
 			},
 			{
-				"text": "A troll has gone berserk in the Headmaster’s study at Hogwarts. It is about to smash, crush and tear several irreplaceable items and treasures. In which order would you rescue these objects from the troll’s club, if you could?",
+				"text": "A troll has gone berserk in the Headmaster's study at Hogwarts. It is about to smash, crush and tear several irreplaceable items and treasures. In which order would you rescue these objects from the troll's club, if you could?",
 				"answers": [
 					{
 						"text": "First, a nearly perfected cure for dragon pox. Then student records going back 1000 years. Finally, a mysterious handwritten book full of strange runes.",
@@ -857,7 +857,7 @@
 				"text": "One of your house mates has cheated in a Hogwarts exam by using a Self-Spelling Quill. Now he has come top of the class in Charms, beating you into second place. Professor Flitwick is suspicious of what happened. He draws you to one side after his lesson and asks you whether or not your classmate used a forbidden quill. What do you do?",
 				"answers": [
 					{
-						"text": "Lie and say you don’t know (but hope that somebody else tells Professor Flitwick the truth).",
+						"text": "Lie and say you don't know (but hope that somebody else tells Professor Flitwick the truth).",
 						"points": {
 							"g": -13.48432155,
 							"r": -17.29439279,
@@ -866,7 +866,7 @@
 						}
 					},
 					{
-						"text": "Tell Professor Flitwick that he ought to ask your classmate (and resolve to tell your classmate that if he doesn’t tell the truth, you will).",
+						"text": "Tell Professor Flitwick that he ought to ask your classmate (and resolve to tell your classmate that if he doesn't tell the truth, you will).",
 						"points": {
 							"g": 42.1033363,
 							"r": -13.65683918,
@@ -907,7 +907,7 @@
 						}
 					},
 					{
-						"text": "Agree, and ask whether they’d like a free sample of a jinx?",
+						"text": "Agree, and ask whether they'd like a free sample of a jinx?",
 						"points": {
 							"g": -5.297205391,
 							"r": -17.31138241,
