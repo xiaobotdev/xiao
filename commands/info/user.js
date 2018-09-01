@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
+const { trimArray } = require('../../util/Util');
 const activities = {
 	PLAYING: 'Playing',
 	WATCHING: 'Watching',
@@ -36,6 +37,7 @@ module.exports = class UserInfoCommand extends Command {
 		if (msg.channel.type === 'text') {
 			try {
 				const member = await msg.guild.members.fetch(user.id);
+				const roles = member.roles.filter(role => role.id !== msg.guild.defaultRole.id);
 				embed
 					.setColor(member.displayHexColor)
 					.setDescription(member.presence.activity
@@ -45,7 +47,8 @@ module.exports = class UserInfoCommand extends Command {
 					.addField('❯ Nickname', member.nickname || 'None', true)
 					.addField('❯ Highest Role',
 						member.roles.highest.id === msg.guild.defaultRole.id ? 'None' : member.roles.highest.name, true)
-					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true);
+					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true)
+					.addField(`❯ Roles (${roles.size})`, roles.size ? trimArray(roles.map(role => role.name), 10) : 'None');
 			} catch (err) {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
 			}
