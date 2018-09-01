@@ -48,7 +48,8 @@ module.exports = class UserInfoCommand extends Command {
 					.addField('❯ Highest Role',
 						member.roles.highest.id === msg.guild.defaultRole.id ? 'None' : member.roles.highest.name, true)
 					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true)
-					.addField(`❯ Roles (${roles.size})`, roles.size ? trimArray(roles.map(role => role.name), 10) : 'None');
+					.addField(`❯ Roles (${roles.size})`,
+						roles.size ? trimArray(roles.map(role => role.name), 10).join(', ') : 'None');
 			} catch (err) {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
 			}
