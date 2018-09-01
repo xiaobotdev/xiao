@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const { trimArray } = require('../../util/Util');
 const activities = {
 	PLAYING: 'Playing',
+	STREAMING: 'Streaming',
 	WATCHING: 'Watching',
 	LISTENING: 'Listening to'
 };
