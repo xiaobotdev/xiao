@@ -1,15 +1,16 @@
 const RoleplayCommand = require('../../structures/commands/Roleplay');
-const { EVOLVE_ALBUM_ID } = process.env;
+const { WAKE_UP_ALBUM_ID } = process.env;
 
-module.exports = class EvolveCommand extends RoleplayCommand {
+module.exports = class WakeUpCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
-			name: 'evolve',
+			name: 'wake-up',
+			aliases: ['awaken', 'awake'],
 			group: 'roleplay',
-			memberName: 'evolve',
-			description: 'Evolves a user.',
+			memberName: 'wake-up',
+			description: 'Wakes up a user.',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: EVOLVE_ALBUM_ID,
+			albumID: WAKE_UP_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -22,6 +23,6 @@ module.exports = class EvolveCommand extends RoleplayCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${user.username}** is evolving!_`;
+		return `_**${user.username}** wakes up._`;
 	}
 };

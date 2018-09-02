@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (302)
+## Commands (304)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -360,7 +360,9 @@ on the [home server](https://discord.gg/sbMe32W).
 * **poke**: Pokes a user.
 * **punch**: Punches a user.
 * **slap**: Slaps a user.
+* **sleep**: Puts a user to sleep.
 * **tackle**: Tackles a user.
+* **wake-up**: Wakes up a user.
 * **wave**: Waves at a user.
 
 ## Licensing
