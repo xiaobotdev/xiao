@@ -1,5 +1,5 @@
 const RoleplayCommand = require('../../structures/commands/Roleplay');
-const { PUNCH_ALBUM_ID } = process.env;
+const { SLAP_ALBUM_ID } = process.env;
 
 module.exports = class SlapCommand extends RoleplayCommand {
 	constructor(client) {
@@ -9,7 +9,7 @@ module.exports = class SlapCommand extends RoleplayCommand {
 			memberName: 'slap',
 			description: 'Slaps a user.',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: PUNCH_ALBUM_ID,
+			albumID: SLAP_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
