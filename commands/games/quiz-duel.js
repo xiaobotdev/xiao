@@ -22,7 +22,9 @@ module.exports = class QuizDuelCommand extends Command {
 					key: 'maxPts',
 					label: 'maximum amount of points',
 					prompt: 'What amount of points should determine the winner?',
-					type: 'integer'
+					type: 'integer',
+					min: 1,
+					max: 10
 				}
 			]
 		});
