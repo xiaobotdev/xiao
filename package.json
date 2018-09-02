@@ -42,14 +42,14 @@
 		"dotenv": "^6.0.0",
 		"erlpack": "github:discordapp/erlpack",
 		"mathjs": "^5.1.1",
-		"neopet-image-finder": "^4.0.1",
+		"neopet-image-finder": "^5.0.0",
 		"node-opus": "^0.3.0",
 		"node-superfetch": "^0.1.4",
 		"random-js": "^1.0.8",
 		"zlib-sync": "^0.1.4"
 	},
 	"devDependencies": {
-		"eslint": "^5.4.0",
+		"eslint": "^5.5.0",
 		"eslint-config-amber": "^1.1.0",
 		"eslint-plugin-json": "^1.2.1"
 	},
