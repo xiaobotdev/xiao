@@ -7,20 +7,21 @@ module.exports = class EatCommand extends RoleplayCommand {
 			name: 'eat',
 			group: 'roleplay',
 			memberName: 'eat',
-			description: 'Eats a user.',
+			description: 'Feeds a user.',
 			clientPermissions: ['ATTACH_FILES'],
 			albumID: EAT_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
 					prompt: 'What user do you want to roleplay with?',
-					type: 'user'
+					type: 'user',
+					default: msg => msg.author
 				}
 			]
 		});
 	}
 
 	generateText(msg, user) {
-		return `_**${msg.author.username}** eats **${user.username}**._`;
+		return `_**${user.username}** eats._`;
 	}
 };
