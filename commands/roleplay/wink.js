@@ -1,7 +1,7 @@
-const RoleplayCommand = require('../../structures/commands/Roleplay');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { WINK_ALBUM_ID } = process.env;
 
-module.exports = class WinkCommand extends RoleplayCommand {
+module.exports = class WinkCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'wink',

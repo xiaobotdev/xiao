@@ -1,7 +1,7 @@
-const RoleplayCommand = require('../../structures/commands/Roleplay');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { EAT_ALBUM_ID } = process.env;
 
-module.exports = class EatCommand extends RoleplayCommand {
+module.exports = class EatCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'eat',

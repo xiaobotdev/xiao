@@ -1,7 +1,7 @@
-const RoleplayCommand = require('../../structures/commands/Roleplay');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { WAVE_ALBUM_ID } = process.env;
 
-module.exports = class WaveCommand extends RoleplayCommand {
+module.exports = class WaveCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'wave',

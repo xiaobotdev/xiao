@@ -1,7 +1,7 @@
-const RoleplayCommand = require('../../structures/commands/Roleplay');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { PUNCH_ALBUM_ID } = process.env;
 
-module.exports = class PunchCommand extends RoleplayCommand {
+module.exports = class PunchCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'punch',

@@ -1,7 +1,7 @@
-const RoleplayCommand = require('../../structures/commands/Roleplay');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { FIST_BUMP_ALBUM_ID } = process.env;
 
-module.exports = class FistBumpCommand extends RoleplayCommand {
+module.exports = class FistBumpCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'fist-bump',

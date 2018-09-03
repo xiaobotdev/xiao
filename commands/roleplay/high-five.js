@@ -1,7 +1,7 @@
-const RoleplayCommand = require('../../structures/commands/Roleplay');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { HIGH_FIVE_ALBUM_ID } = process.env;
 
-module.exports = class HighFiveCommand extends RoleplayCommand {
+module.exports = class HighFiveCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'high-five',
