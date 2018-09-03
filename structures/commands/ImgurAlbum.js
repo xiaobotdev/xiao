@@ -2,7 +2,7 @@ const request = require('node-superfetch');
 const Command = require('../Command');
 const { IMGUR_KEY } = process.env;
 
-module.exports = class RoleplayCommand extends Command {
+module.exports = class ImgurAlbumCommand extends Command {
 	constructor(client, info) {
 		super(client, info);
 
@@ -21,12 +21,12 @@ module.exports = class RoleplayCommand extends Command {
 	}
 
 	async random() {
-		if (this.cache) return this.cache[Math.floor(Math.random() * this.cache.length)].link;
+		if (this.cache) return this.cache[Math.floor(Math.random() * this.cache.length)];
 		const { body } = await request
 			.get(`https://api.imgur.com/3/album/${this.albumID}`)
 			.set({ Authorization: `Client-ID ${IMGUR_KEY}` });
 		if (!body.data.images.length) return null;
-		this.cache = body.data.images;
+		this.cache = body.data.images.map(image => image.link);
 		setTimeout(() => { this.cache = null; }, 3.6e+6);
 		return body.data.images[Math.floor(Math.random() * body.data.images.length)].link;
 	}

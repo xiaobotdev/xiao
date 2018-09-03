@@ -1,7 +1,7 @@
-const RoleplayCommand = require('../../structures/commands/Roleplay');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { WAKE_UP_ALBUM_ID } = process.env;
 
-module.exports = class WakeUpCommand extends RoleplayCommand {
+module.exports = class WakeUpCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'wake-up',
