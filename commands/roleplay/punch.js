@@ -5,6 +5,7 @@ module.exports = class PunchCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'punch',
+			aliases: ['falcon-punch'],
 			group: 'roleplay',
 			memberName: 'punch',
 			description: 'Punches a user.',
