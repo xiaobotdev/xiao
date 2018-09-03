@@ -5,6 +5,7 @@ module.exports = class KissCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'kiss',
+			aliases: ['marry'],
 			group: 'roleplay',
 			memberName: 'kiss',
 			description: 'Kisses a user.',

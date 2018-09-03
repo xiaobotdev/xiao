@@ -1,16 +1,15 @@
 const RoleplayCommand = require('../../structures/commands/Roleplay');
-const { BREAK_UP_ALBUM_ID } = process.env;
+const { BLUSH_ALBUM_ID } = process.env;
 
-module.exports = class BreakUpCommand extends RoleplayCommand {
+module.exports = class BlushCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
-			name: 'break-up',
-			aliases: ['divorce'],
+			name: 'blush',
 			group: 'roleplay',
 			memberName: 'break-up',
-			description: 'Breaks up with a user.',
+			description: 'Blushes at a user.',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: BREAK_UP_ALBUM_ID,
+			albumID: BLUSH_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -22,6 +21,6 @@ module.exports = class BreakUpCommand extends RoleplayCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${msg.author.username}** breaks up with **${user.username}**._`;
+		return `_**${msg.author.username}** blushes at **${user.username}**._`;
 	}
 };

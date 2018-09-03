@@ -8,14 +8,14 @@
 
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
-[Commando](https://github.com/discordjs/Commando) command framework. With over
+[Commando](https://github.com/discordjs/Commando) command framework. With nearly
 300 commands, she is one of the most feature-filled bots out there.
 
 ## Invite
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (300)
+## Commands (297)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -341,17 +341,14 @@ on the [home server](https://discord.gg/sbMe32W).
 
 ### Roleplay:
 
-* **break-up**: Breaks up with a user.
+* **blush**: Blushes at a user.
 * **eat**: Eats a user.
-* **evolve**: Evolves a user.
 * **fist-bump**: Fistbumps a user.
 * **high-five**: High Fives a user.
-* **hit-with-shovel**: Hits a user with a shovel.
 * **hold-hands**: Holds hands with a user.
 * **hug**: Hugs a user.
 * **kill**: Kills a user.
 * **kiss**: Kisses a user.
-* **marry**: Marries a user.
 * **pat**: Pats a user.
 * **poke**: Pokes a user.
 * **punch**: Punches a user.
