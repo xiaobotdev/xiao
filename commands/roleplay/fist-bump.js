@@ -5,6 +5,7 @@ module.exports = class FistBumpCommand extends RoleplayCommand {
 	constructor(client) {
 		super(client, {
 			name: 'fist-bump',
+			aliases: ['bro-hoof'],
 			group: 'roleplay',
 			memberName: 'fist-bump',
 			description: 'Fist-bumps a user.',
