@@ -6,7 +6,7 @@ module.exports = class BlushCommand extends ImgurAlbumCommand {
 		super(client, {
 			name: 'blush',
 			group: 'roleplay',
-			memberName: 'break-up',
+			memberName: 'blush',
 			description: 'Blushes at a user.',
 			clientPermissions: ['ATTACH_FILES'],
 			albumID: BLUSH_ALBUM_ID,
