@@ -14,6 +14,6 @@ module.exports = class MemeCommand extends ImgurAlbumCommand {
 	}
 
 	generateText() {
-		return null;
+		return '';
 	}
 };
