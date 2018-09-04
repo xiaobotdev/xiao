@@ -1,19 +1,32 @@
-const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
-const { POSTER_ALBUM_ID } = process.env;
+const Command = require('../../structures/Command');
+const request = require('node-superfetch');
+const { stripIndents } = require('common-tags');
+const subreddits = ['memes', 'surrealmemes', 'MemeEconomy', 'wholesomememes', 'tumblr', 'me_irl', 'blessedimages'];
 
-module.exports = class MemeCommand extends ImgurAlbumCommand {
+module.exports = class MemeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'meme',
 			group: 'random',
 			memberName: 'meme',
 			description: 'Responds with a random meme.',
-			clientPermissions: ['ATTACH_FILES'],
-			albumID: POSTER_ALBUM_ID
+			clientPermissions: ['ATTACH_FILES']
 		});
 	}
 
-	generateText() {
-		return '';
+	async run(msg) {
+		const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
+		try {
+			const { body } = await request.get(`https://www.reddit.com/r/${subreddit}/hot.json`);
+			const posts = body.data.children.filter(post => post.data && post.data.post_hint === 'image' && post.data.url);
+			if (!posts.length) return msg.reply(`I couldn't fetch any images from r/${subreddit}...`);
+			const post = posts[Math.floor(Math.random() * posts.length)];
+			return msg.say(stripIndents`
+				**r/${subreddit}** ${post.title}
+				${post.url}
+			`);
+		} catch (err) {
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
 	}
 };
