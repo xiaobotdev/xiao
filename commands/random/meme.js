@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const subreddits = ['memes', 'surrealmemes', 'MemeEconomy', 'wholesomememes', 'tumblr', 'me_irl', 'blessedimages'];
+const subreddits = require('../../assets/json/meme');
 
 module.exports = class MemeCommand extends Command {
 	constructor(client) {
