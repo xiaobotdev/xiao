@@ -22,8 +22,8 @@ module.exports = class MemeCommand extends Command {
 			if (!posts.length) return msg.reply(`I couldn't fetch any images from r/${subreddit}...`);
 			const post = posts[Math.floor(Math.random() * posts.length)];
 			return msg.say(stripIndents`
-				**r/${subreddit}** ${post.title}
-				${post.url}
+				**r/${subreddit}** ${post.data.title}
+				${post.data.url}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
