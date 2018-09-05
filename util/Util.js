@@ -60,7 +60,7 @@ module.exports = class Util {
 
 	static today(timeZone) {
 		const now = new Date();
-		if (timeZone) now.setUTCHours(now.getUTCHours() + timeZone);
+		if (timeZone) now.setUTCHours(timeZone);
 		now.setHours(0);
 		now.setMinutes(0);
 		now.setSeconds(0);
@@ -74,13 +74,13 @@ module.exports = class Util {
 		return today;
 	}
 
-	static async awaitPlayers(msg, max, min, { text = 'join game', time = 30000, dmCheck = false } = {}) {
+	static async awaitPlayers(msg, max, min, { time = 30000, dmCheck = false } = {}) {
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
 			if (res.author.bot) return false;
 			if (joined.includes(res.author.id)) return false;
-			if (res.content.toLowerCase() !== text.toLowerCase()) return false;
+			if (res.content.toLowerCase() !== 'join game') return false;
 			joined.push(res.author.id);
 			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
 			return true;

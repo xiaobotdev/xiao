@@ -88,9 +88,11 @@ module.exports = class CanvasUtil {
 	}
 
 	static shortenText(ctx, text, maxWidth) {
-		let shorten;
-		if (ctx.measureText(text).width > maxWidth) shorten = true;
-		while (ctx.measureText(text).width > maxWidth) text = text.substr(0, text.length - 1);
+		let shorten = false;
+		while (ctx.measureText(text).width > maxWidth) {
+			if (!shorten) shorten = true;
+			text = text.substr(0, text.length - 1);
+		}
 		return shorten ? `${text}...` : text;
 	}
 };
