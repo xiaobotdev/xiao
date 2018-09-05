@@ -1,15 +1,15 @@
 const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
-const { FIST_BUMP_ALBUM_ID } = process.env;
+const { BRO_HOOF_ALBUM_ID } = process.env;
 
-module.exports = class FistBumpCommand extends ImgurAlbumCommand {
+module.exports = class BroHoofCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
-			name: 'fist-bump',
+			name: 'bro-hoof',
 			group: 'roleplay',
-			memberName: 'fist-bump',
-			description: 'Fist-bumps a user.',
+			memberName: 'bro-hoof',
+			description: 'Gives a user a bro hoof.',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: FIST_BUMP_ALBUM_ID,
+			albumID: BRO_HOOF_ALBUM_ID,
 			args: [
 				{
 					key: 'user',
@@ -21,6 +21,6 @@ module.exports = class FistBumpCommand extends ImgurAlbumCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${msg.author.username}** fist-bumps **${user.username}**._`;
+		return `_**${msg.author.username}** gives **${user.username}** a bro hoof._`;
 	}
 };
