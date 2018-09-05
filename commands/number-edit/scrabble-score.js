@@ -14,10 +14,6 @@ module.exports = class ScrabbleScoreCommand extends Command {
 					key: 'word',
 					prompt: 'What word would you like to get the scrabble score of?',
 					type: 'string',
-					validate: word => {
-						if (/^[A-Za-z ]+$/i.test(word.toLowerCase())) return true;
-						return 'Invalid word, please only use A-Z and space.';
-					},
 					parse: word => word.toLowerCase()
 				}
 			]
@@ -26,7 +22,10 @@ module.exports = class ScrabbleScoreCommand extends Command {
 
 	run(msg, { word }) {
 		let score = 0;
-		for (const letter of word.split('')) score += letters[letter];
+		for (const letter of word.split('')) {
+			if (!letters[letter]) continue;
+			score += letters[letter];
+		}
 		return msg.reply(score);
 	}
 };
