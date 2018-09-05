@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (299)
+## Commands (300)
 ### Utility:
 
 * **eval**: Executes JavaScript code.
@@ -180,6 +180,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **dick**: Determines your dick size.
 * **gender-analyze**: Determines the gender of a name.
 * **guess-looks**: Guesses what a user looks like.
+* **iq**: Determines a user's IQ.
 * **psycho-pass**: Determines your Crime Coefficient.
 * **read-qr-code**: Reads a QR Code.
 * **severe-toxicity**: Determines the toxicity of text, but less sensitive to milder language.
