@@ -25,7 +25,10 @@ module.exports = class RedditCommand extends Command {
 		try {
 			const { body } = await request
 				.get(`https://www.reddit.com/r/${subreddit}/new.json`)
-				.query({ sort: 'new' });
+				.query({
+					sort: 'new',
+					limit: 100
+				});
 			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			if (!allowed.length) return msg.say('Could not find any results.');
 			const post = allowed[Math.floor(Math.random() * allowed.length)].data;

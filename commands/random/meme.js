@@ -17,7 +17,13 @@ module.exports = class MemeCommand extends Command {
 	async run(msg) {
 		const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
 		try {
-			const { body } = await request.get(`https://www.reddit.com/r/${subreddit}/hot.json`);
+			const { body } = await request
+				.get(`https://www.reddit.com/r/${subreddit}/top.json`)
+				.query({
+					sort: 'top',
+					t: 'day',
+					limit: 100
+				});
 			const posts = body.data.children.filter(post => post.data && post.data.post_hint === 'image' && post.data.url);
 			if (!posts.length) return msg.reply(`I couldn't fetch any images from r/${subreddit}...`);
 			const post = posts[Math.floor(Math.random() * posts.length)];

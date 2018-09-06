@@ -15,11 +15,15 @@ module.exports = class ShowerThoughtCommand extends Command {
 	async run(msg) {
 		try {
 			const { body } = await request
-				.get('https://www.reddit.com/r/Showerthoughts.json')
-				.query({ limit: 1000 });
-			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-			if (!allowed.length) return msg.say('Hmm... It seems the thoughts are all gone right now. Try again later!');
-			return msg.say(allowed[Math.floor(Math.random() * allowed.length)].data.title);
+				.get('https://www.reddit.com/r/Showerthoughts/top.json')
+				.query({
+					sort: 'top',
+					t: 'day',
+					limit: 100
+				});
+			const posts = body.data.children.filter(post => post.data && (msg.channel.nsfw ? true : !post.data.over_18));
+			if (!posts.length) return msg.say('Hmm... It seems the thoughts are all gone right now. Try again later!');
+			return msg.say(posts[Math.floor(Math.random() * posts.length)].data.title);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
