@@ -21,7 +21,7 @@ module.exports = class GravityCommand extends Command {
 					prompt: `What planet do you want to use as the base? Either ${list(Object.keys(planets), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(planets),
-					parse: planet => planet.toUpperCase()
+					parse: planet => planet.toLowerCase()
 				}
 			]
 		});
