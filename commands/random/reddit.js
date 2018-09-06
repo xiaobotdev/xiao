@@ -29,9 +29,9 @@ module.exports = class RedditCommand extends Command {
 					sort: 'new',
 					limit: 100
 				});
-			const allowed = msg.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-			if (!allowed.length) return msg.say('Could not find any results.');
-			const post = allowed[Math.floor(Math.random() * allowed.length)].data;
+			const posts = body.data.children.filter(post => post.data && (msg.channel.nsfw ? true : !post.data.over_18));
+			if (!posts.length) return msg.say('Could not find any results.');
+			const post = posts[Math.floor(Math.random() * posts.length)].data;
 			return msg.say(stripIndents`
 				**${post.title}**
 				<https://www.reddit.com${post.permalink}>
