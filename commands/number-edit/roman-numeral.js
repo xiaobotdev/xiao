@@ -22,7 +22,7 @@ module.exports = class RomanNumeralCommand extends Command {
 	}
 
 	run(msg, { number }) {
-		if (number === 0) return msg.say('_nulla_');
+		if (number === 0) return msg.reply('_nulla_');
 		let result = '';
 		for (const [numeral, value] of Object.entries(numerals)) {
 			while (number >= value) {
@@ -30,6 +30,6 @@ module.exports = class RomanNumeralCommand extends Command {
 				number -= value;
 			}
 		}
-		return msg.say(result);
+		return msg.reply(result);
 	}
 };
