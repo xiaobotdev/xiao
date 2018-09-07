@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
+const { list } = require('../../util/Util');
 const subreddits = require('../../assets/json/meme');
 
 module.exports = class MemeCommand extends Command {
@@ -10,12 +11,22 @@ module.exports = class MemeCommand extends Command {
 			group: 'random',
 			memberName: 'meme',
 			description: 'Responds with a random meme.',
-			clientPermissions: ['ATTACH_FILES']
+			details: `**Subreddits**: ${subreddits.join(', ')}`,
+			clientPermissions: ['ATTACH_FILES'],
+			args: [
+				{
+					key: 'subreddit',
+					prompt: `What subreddit do you want to get memes from? Either ${list(subreddits, 'or')}.`,
+					type: 'string',
+					oneOf: subreddits,
+					default: () => subreddits[Math.floor(Math.random() * subreddits.length)],
+					parse: subreddit => subreddit.toLowerCase()
+				}
+			]
 		});
 	}
 
-	async run(msg) {
-		const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
+	async run(msg, { subreddit }) {
 		try {
 			const { body } = await request
 				.get(`https://www.reddit.com/r/${subreddit}/top.json`)
