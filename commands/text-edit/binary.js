@@ -9,7 +9,7 @@ module.exports = class BinaryCommand extends Command {
 			group: 'text-edit',
 			memberName: 'binary',
 			description: 'Converts text to/from binary.',
-			details: `**Modes**: ${modes.join(', ')}`,
+			details: `**Modes:** ${modes.join(', ')}`,
 			args: [
 				{
 					key: 'mode',

@@ -21,7 +21,7 @@ module.exports = class HumbleBundleCommand extends Command {
 			if (body.length > 1) {
 				return msg.say(stripIndents`
 					There are **${body.length}** bundles on right now!
-					${body.map(bundle => `**${bundle.bundle_name}**: <${bundle.url}>`).join('\n')}
+					${body.map(bundle => `**${bundle.bundle_name}:** <${bundle.url}>`).join('\n')}
 				`);
 			}
 			const data = body[0];

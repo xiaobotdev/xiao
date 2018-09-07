@@ -22,6 +22,6 @@ module.exports = class RuleOfTheInternetCommand extends Command {
 	}
 
 	run(msg, { rule }) {
-		return msg.say(`**Rule #${rule}**: ${rules[rule - 1]}`);
+		return msg.say(`**Rule #${rule}:** ${rules[rule - 1]}`);
 	}
 };

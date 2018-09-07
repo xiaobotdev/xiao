@@ -11,7 +11,7 @@ module.exports = class DeviantartCommand extends Command {
 			group: 'search',
 			memberName: 'deviantart',
 			description: 'Responds with an image from a DeviantArt section, with optional query.',
-			details: `**Sections**: ${sections.join(', ')}`,
+			details: `**Sections:** ${sections.join(', ')}`,
 			args: [
 				{
 					key: 'section',

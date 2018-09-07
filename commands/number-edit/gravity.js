@@ -9,7 +9,7 @@ module.exports = class GravityCommand extends Command {
 			group: 'number-edit',
 			memberName: 'gravity',
 			description: 'Determines weight on another planet.',
-			details: `**Planets**: ${Object.keys(planets).join(', ')}`,
+			details: `**Planets:** ${Object.keys(planets).join(', ')}`,
 			args: [
 				{
 					key: 'weight',

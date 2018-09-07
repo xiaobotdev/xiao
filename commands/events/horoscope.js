@@ -12,7 +12,7 @@ module.exports = class HoroscopeCommand extends Command {
 			group: 'events',
 			memberName: 'horoscope',
 			description: 'Responds with today\'s horoscope for a specific Zodiac sign.',
-			details: `**Signs**: ${signs.join(', ')}`,
+			details: `**Signs:** ${signs.join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{

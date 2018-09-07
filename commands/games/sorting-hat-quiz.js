@@ -45,8 +45,8 @@ module.exports = class SortingHatQuizCommand extends Command {
 				}
 				const answers = shuffle(question.answers);
 				await msg.say(stripIndents`
-					**${turn}**. ${question.text}
-					${answers.map((answer, i) => `- **${choices[i]}**. ${answer.text}`).join('\n')}
+					**${turn}.** ${question.text}
+					${answers.map((answer, i) => `- **${choices[i]}.** ${answer.text}`).join('\n')}
 				`);
 				const filter = res =>
 					res.author.id === msg.author.id && choices.slice(0, answers.length).includes(res.content.toUpperCase());

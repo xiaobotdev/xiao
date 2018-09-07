@@ -12,7 +12,7 @@ module.exports = class UrbanDictionaryCommand extends Command {
 			group: 'search',
 			memberName: 'urban-dictionary',
 			description: 'Defines a word, but with Urban Dictionary.',
-			details: `**Types**: ${types.join(', ')}`,
+			details: `**Types:** ${types.join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{

@@ -10,7 +10,7 @@ module.exports = class Base64Command extends Command {
 			group: 'text-edit',
 			memberName: 'base64',
 			description: 'Converts text to/from Base64.',
-			details: `**Modes**: ${modes.join(', ')}`,
+			details: `**Modes:** ${modes.join(', ')}`,
 			args: [
 				{
 					key: 'mode',

@@ -41,9 +41,9 @@ module.exports = class ForecastCommand extends Command {
 			for (let i = 0; i < 7; i++) {
 				const forecast = data.item.forecast[i];
 				embed.addField(`❯ ${forecast.day} - ${forecast.date}`, stripIndents`
-					**High**: ${forecast.high}°F
-					**Low**: ${forecast.low}°F
-					**Condition**: ${forecast.text}
+					**High:** ${forecast.high}°F
+					**Low:** ${forecast.low}°F
+					**Condition:** ${forecast.text}
 				`);
 			}
 			return msg.embed(embed);

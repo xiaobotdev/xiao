@@ -12,7 +12,7 @@ module.exports = class CowSayCommand extends Command {
 			group: 'text-edit',
 			memberName: 'cow-say',
 			description: 'Makes a cow say your text.',
-			details: `**Types**: ${cows.join(', ')}`,
+			details: `**Types:** ${cows.join(', ')}`,
 			args: [
 				{
 					key: 'text',

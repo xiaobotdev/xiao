@@ -14,6 +14,6 @@ module.exports = class DiscordEmailFunFactCommand extends Command {
 
 	run(msg) {
 		const factNumber = Math.floor(Math.random() * facts.length);
-		return msg.say(`**Fun Fact #${factNumber + 1}**: ${facts[factNumber]}`);
+		return msg.say(`**Fun Fact #${factNumber + 1}:** ${facts[factNumber]}`);
 	}
 };
