@@ -11,7 +11,7 @@ module.exports = class OsuSignatureCommand extends Command {
 			group: 'image-edit',
 			memberName: 'osu-signature',
 			description: 'Creates a card based on an osu! user\'s stats.',
-			details: `**Colors**: ${Object.keys(colors).join(', ')}`,
+			details: `**Colors:** ${Object.keys(colors).join(', ')}`,
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{

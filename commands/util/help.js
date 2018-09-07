@@ -45,11 +45,11 @@ module.exports = class HelpCommand extends Command {
 		}
 		return msg.say(stripIndents`
 			__Command **${command.name}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
-			${command.description}${command.details ? `\n_${command.details}_` : ''}
+			${command.description}${command.details ? `\n${command.details}` : ''}
 
-			**Format**: ${msg.anyUsage(`${command.name} ${command.format || ''}`)}
-			**Aliases**: ${command.aliases.join(', ') || 'None'}
-			**Group**: ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
+			**Format:** ${msg.anyUsage(`${command.name} ${command.format || ''}`)}
+			**Aliases:** ${command.aliases.join(', ') || 'None'}
+			**Group:** ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
 		`);
 	}
 };

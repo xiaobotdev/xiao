@@ -12,7 +12,7 @@ module.exports = class HatCommand extends Command {
 			group: 'avatar-edit',
 			memberName: 'hat',
 			description: 'Draws a hat over a user\'s avatar.',
-			details: `**Hats**: ${hats.join(', ')}`,
+			details: `**Hats:** ${hats.join(', ')}`,
 			throttling: {
 				usages: 1,
 				duration: 10

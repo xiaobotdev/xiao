@@ -58,8 +58,8 @@ module.exports = class BattleCommand extends Command {
 				if (!opponent.bot || (opponent.bot && userTurn)) {
 					await msg.say(stripIndents`
 						${user}, do you **fight**, **guard**, **special**, or **run**?
-						**${msg.author.username}**: ${userHP}HP
-						**${opponent.username}**: ${oppoHP}HP
+						**${msg.author.username}:** ${userHP}HP
+						**${opponent.username}:** ${oppoHP}HP
 					`);
 					const filter = res =>
 						res.author.id === user.id && ['fight', 'guard', 'special', 'run'].includes(res.content.toLowerCase());

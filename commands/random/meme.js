@@ -11,7 +11,7 @@ module.exports = class MemeCommand extends Command {
 			group: 'random',
 			memberName: 'meme',
 			description: 'Responds with a random meme.',
-			details: `**Subreddits**: ${subreddits.join(', ')}`,
+			details: `**Subreddits:** ${subreddits.join(', ')}`,
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{

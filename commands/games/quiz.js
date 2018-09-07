@@ -15,8 +15,8 @@ module.exports = class QuizCommand extends Command {
 			memberName: 'quiz',
 			description: 'Answer a quiz question.',
 			details: stripIndents`
-				**Types**: ${types.join(', ')}
-				**Difficulties**: ${difficulties.join(', ')}
+				**Types:** ${types.join(', ')}
+				**Difficulties:** ${difficulties.join(', ')}
 			`,
 			args: [
 				{
@@ -57,7 +57,7 @@ module.exports = class QuizCommand extends Command {
 			await msg.reply(stripIndents`
 				**You have 15 seconds to answer this question.**
 				${decodeURIComponent(body.results[0].question)}
-				${shuffled.map((answer, i) => `**${choices[i]}**. ${answer}`).join('\n')}
+				${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join('\n')}
 			`);
 			const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toUpperCase());
 			const msgs = await msg.channel.awaitMessages(filter, {

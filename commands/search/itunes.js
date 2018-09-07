@@ -10,7 +10,7 @@ module.exports = class ItunesCommand extends Command {
 			group: 'search',
 			memberName: 'itunes',
 			description: 'Searches iTunes for your query.',
-			details: '**Codes**: <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>',
+			details: '**Codes:** <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{

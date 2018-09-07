@@ -10,7 +10,7 @@ module.exports = class MinecraftSkinCommand extends Command {
 			group: 'image-edit',
 			memberName: 'minecraft-skin',
 			description: 'Sends the Minecraft skin for a user.',
-			details: `**Types**: ${types.join(', ')}`,
+			details: `**Types:** ${types.join(', ')}`,
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{

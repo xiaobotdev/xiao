@@ -52,7 +52,7 @@ module.exports = class QuizDuelCommand extends Command {
 				await msg.say(stripIndents`
 					**You have 15 seconds to answer this question.**
 					${question.question}
-					${question.answers.map((answer, i) => `**${choices[i]}**. ${answer}`).join('\n')}
+					${question.answers.map((answer, i) => `**${choices[i]}.** ${answer}`).join('\n')}
 				`);
 				const answered = [];
 				const filter = res => {
