@@ -21,6 +21,6 @@ module.exports = class EmojiImageCommand extends Command {
 	}
 
 	run(msg, { emoji }) {
-		return msg.say(emoji.url);
+		return msg.say({ files: [emoji.url] });
 	}
 };
