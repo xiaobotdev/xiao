@@ -38,7 +38,10 @@ module.exports = class UserInfoCommand extends Command {
 		if (msg.channel.type === 'text') {
 			try {
 				const member = await msg.guild.members.fetch(user.id);
-				const roles = member.roles.filter(role => role.id !== msg.guild.defaultRole.id);
+				const roles = member.roles
+					.filter(role => role.id !== msg.guild.defaultRole.id)
+					.sort((a, b) => b.position - a.position)
+					.map(role => role.name);
 				embed
 					.setColor(member.displayHexColor)
 					.setDescription(member.presence.activity
@@ -49,8 +52,7 @@ module.exports = class UserInfoCommand extends Command {
 					.addField('❯ Highest Role',
 						member.roles.highest.id === msg.guild.defaultRole.id ? 'None' : member.roles.highest.name, true)
 					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true)
-					.addField(`❯ Roles (${roles.size})`,
-						roles.size ? trimArray(roles.map(role => role.name), 10).join(', ') : 'None');
+					.addField(`❯ Roles (${roles.length})`, roles.length ? trimArray(roles, 10).join(', ') : 'None');
 			} catch (err) {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
 			}
