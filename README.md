@@ -55,7 +55,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **dog-fact:** Responds with a random dog fact.
 * **dog:** Responds with a random dog image.
 * **draw-cards:** Draws a random hand of playing cards.
-* **duck**: Responds with a random duck image.
+* **duck:** Responds with a random duck image.
 * **fact-core:** Responds with a random Fact Core quote.
 * **fact:** Responds with a random fact.
 * **fidget:** Responds with a random image of Fidget.
@@ -138,7 +138,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **imgur:** Searches Imgur for your query.
 * **itunes:** Searches iTunes for your query.
 * **jisho:** Defines a word, but with Japanese.
-* **kh-wiki**: Searches the Kingdom Hearts Wiki for your query.
+* **kh-wiki:** Searches the Kingdom Hearts Wiki for your query.
 * **kickstarter:** Searches Kickstarter for your query.
 * **league-of-legends-champion:** Responds with information on a League of Legends champion.
 * **map:** Responds with a map of a specific location.
