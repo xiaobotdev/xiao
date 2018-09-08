@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (303)
+## Commands (304)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -200,6 +200,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **captcha-quiz:** Try to guess what the captcha says.
 * **chance:** Attempt to win with a 1 in 1000 (or your choice) chance of winning.
+* **doors:** Open the right door, and you win the money! Make the wrong one, and you get the fire!
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **fishy:** Go fishing.
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
