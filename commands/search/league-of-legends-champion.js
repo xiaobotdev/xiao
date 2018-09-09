@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { RIOT_KEY } = process.env;
 const buttons = ['Q', 'W', 'E', 'R'];
 
 module.exports = class LeagueOfLegendsChampionCommand extends Command {
@@ -66,9 +65,7 @@ module.exports = class LeagueOfLegendsChampionCommand extends Command {
 	}
 
 	async fetchVersion() {
-		const { body } = await request
-			.get('https://na1.api.riotgames.com/lol/static-data/v3/versions')
-			.query({ api_key: RIOT_KEY });
+		const { body } = await request.get('https://ddragon.leagueoflegends.com/api/versions.json');
 		[this.version] = body;
 		setTimeout(() => { this.version = null; }, 3.6e+6);
 		return body;
