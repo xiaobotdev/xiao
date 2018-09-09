@@ -21,6 +21,6 @@ module.exports = class UpsideDownCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.say(letterTrans(text, dictionary));
+		return msg.say(letterTrans(text, dictionary).split('').reverse().join(''));
 	}
 };
