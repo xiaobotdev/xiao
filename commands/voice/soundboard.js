@@ -33,21 +33,21 @@ module.exports = class SoundboardCommand extends Command {
 	}
 
 	async run(msg, { sound }) {
-		const channel = msg.member.voiceChannel;
-		if (!channel) return msg.reply('Please enter a voice channel first.');
-		if (!channel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
+		const voiceChannel = msg.member.voice.channel;
+		if (!voiceChannel) return msg.reply('Please enter a voice channel first.');
+		if (!voiceChannel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
 			return msg.reply('Missing the "Connect" or "Speak" permission for the voice channel.');
 		}
-		if (!channel.joinable) return msg.reply('Your voice channel is not joinable.');
-		if (this.client.voiceConnections.has(channel.guild.id)) return msg.reply('I am already playing a sound.');
+		if (!voiceChannel.joinable) return msg.reply('Your voice channel is not joinable.');
+		if (this.client.voiceConnections.has(voiceChannel.guild.id)) return msg.reply('I am already playing a sound.');
 		try {
-			const connection = await channel.join();
+			const connection = await voiceChannel.join();
 			const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', sounds[sound]));
-			dispatcher.once('finish', () => channel.leave());
-			dispatcher.once('error', () => channel.leave());
+			dispatcher.once('finish', () => voiceChannel.leave());
+			dispatcher.once('error', () => voiceChannel.leave());
 			return null;
 		} catch (err) {
-			channel.leave();
+			voiceChannel.leave();
 			throw err;
 		}
 	}

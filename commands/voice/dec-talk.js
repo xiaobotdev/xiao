@@ -26,24 +26,24 @@ module.exports = class DECTalkCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		const channel = msg.member.voiceChannel;
-		if (!channel) return msg.say('Please enter a voice channel first.');
-		if (!channel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
+		const voiceChannel = msg.member.voice.channel;
+		if (!voiceChannel) return msg.say('Please enter a voice channel first.');
+		if (!voiceChannel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
 			return msg.say('Missing the "Connect" or "Speak" permission for the voice channel.');
 		}
-		if (!channel.joinable) return msg.say('Your voice channel is not joinable.');
-		if (this.client.voiceConnections.has(channel.guild.id)) return msg.say('I am already playing a sound.');
+		if (!voiceChannel.joinable) return msg.say('Your voice channel is not joinable.');
+		if (this.client.voiceConnections.has(voiceChannel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
-			const connection = await channel.join();
+			const connection = await voiceChannel.join();
 			const { url } = await request
 				.get('http://tts.cyzon.us/tts')
 				.query({ text });
 			const dispatcher = connection.play(url);
-			dispatcher.once('finish', () => channel.leave());
-			dispatcher.once('error', () => channel.leave());
+			dispatcher.once('finish', () => voiceChannel.leave());
+			dispatcher.once('error', () => voiceChannel.leave());
 			return null;
 		} catch (err) {
-			channel.leave();
+			voiceChannel.leave();
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
