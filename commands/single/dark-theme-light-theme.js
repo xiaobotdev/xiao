@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const path = require('path');
 
 module.exports = class DarkThemeLightThemeCommand extends Command {
 	constructor(client) {
@@ -13,6 +14,6 @@ module.exports = class DarkThemeLightThemeCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say({ files: ['https://i.imgur.com/k0G7sZL.png'] });
+		return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'dark-theme-light-theme.png')] });
 	}
 };
