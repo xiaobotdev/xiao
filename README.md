@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (305)
+## Commands (304)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -98,7 +98,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
 * **lenny:** Responds with the lenny face.
-* **slow-clap:** _slow clap_
 * **spam:** Responds with a picture of Spam.
 * **tableflip:** Flips a table... With animation!
 * **wynaut:** Why not? Wynaut?
@@ -131,6 +130,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **github:** Responds with information on a GitHub repository.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
 * **google-book:** Searches Google Books for a book.
+* **google-map:** Responds with a map of a specific location.
 * **google:** Searches Google for your query.
 * **gravatar:** Responds with the Gravatar for an email.
 * **http-cat:** Responds with a cat for an HTTP status code.
@@ -141,7 +141,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **kh-wiki:** Searches the Kingdom Hearts Wiki for your query.
 * **kickstarter:** Searches Kickstarter for your query.
 * **league-of-legends-champion:** Responds with information on a League of Legends champion.
-* **map:** Responds with a map of a specific location.
 * **mdn:** Searches MDN for your query.
 * **my-anime-list-anime:** Searches My Anime List for your query, getting anime results.
 * **my-anime-list-manga:** Searches My Anime List for your query, getting manga results.
