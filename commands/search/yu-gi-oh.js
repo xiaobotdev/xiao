@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { stripIndents } = require('common-tags');
 const { shorten, firstUpperCase } = require('../../util/Util');
 
 module.exports = class YuGiOhCommand extends Command {
