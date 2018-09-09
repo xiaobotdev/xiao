@@ -2,13 +2,13 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { GOOGLE_KEY } = process.env;
 
-module.exports = class MapCommand extends Command {
+module.exports = class GoogleMapCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'map',
-			aliases: ['google-maps', 'google-map'],
+			name: 'google-map',
+			aliases: ['google-maps', 'map'],
 			group: 'search',
-			memberName: 'map',
+			memberName: 'google-map',
 			description: 'Responds with a map of a specific location.',
 			clientPermissions: ['ATTACH_FILES'],
 			args: [

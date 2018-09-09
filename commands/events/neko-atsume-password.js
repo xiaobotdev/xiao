@@ -45,7 +45,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 			.get(`http://hpmobile.jp/app/nekoatsume/neko_daily${locale === 'jp' ? '' : `_${locale}`}.php`);
 		const data = text.split(',');
 		const date = new Date();
-		date.setUTCHours(date.getUTCHours() + 9);
+		date.setUTCHours(9);
 		return {
 			password: data[1],
 			silver: data[2],
@@ -56,10 +56,10 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 	}
 
 	get goldFish() {
-		return GOLD_FISH_EMOJI_ID ? `<:gold_fish:${GOLD_FISH_EMOJI_ID}>` : 'Gold Fish';
+		return GOLD_FISH_EMOJI_ID ? `<:goldFish:${GOLD_FISH_EMOJI_ID}>` : 'Gold Fish';
 	}
 
 	get silverFish() {
-		return SILVER_FISH_EMOJI_ID ? `<:silver_fish:${SILVER_FISH_EMOJI_ID}>` : 'Silver Fish';
+		return SILVER_FISH_EMOJI_ID ? `<:silverFish:${SILVER_FISH_EMOJI_ID}>` : 'Silver Fish';
 	}
 };
