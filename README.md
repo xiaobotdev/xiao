@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (304)
+## Commands (305)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -178,6 +178,7 @@ on the [home server](https://discord.gg/sbMe32W).
 ### Analyzers:
 
 * **butt:** Determines a user's butt quality.
+* **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **coolness:** Determines a user's coolness.
 * **dick:** Determines your dick size.
 * **gender-analyze:** Determines the gender of a name.
