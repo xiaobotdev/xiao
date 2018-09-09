@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const path = require('path');
 
 module.exports = class IsntJokeCommand extends Command {
 	constructor(client) {
@@ -13,6 +14,6 @@ module.exports = class IsntJokeCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say({ files: ['https://i.imgur.com/QdDAeZF.jpg'] });
+		return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'isnt-joke.png')] });
 	}
 };
