@@ -140,10 +140,10 @@ on the [home server](https://discord.gg/sbMe32W).
 * **jisho:** Defines a word, but with Japanese.
 * **kh-wiki:** Searches the Kingdom Hearts Wiki for your query.
 * **kickstarter:** Searches Kickstarter for your query.
+* **kitsu-anime:** Searches Kitsu.io for your query, getting anime results.
+* **kitsu-manga:** Searches Kitsu.io for your query, getting manga results.
 * **league-of-legends-champion:** Responds with information on a League of Legends champion.
 * **mdn:** Searches MDN for your query.
-* **my-anime-list-anime:** Searches My Anime List for your query, getting anime results.
-* **my-anime-list-manga:** Searches My Anime List for your query, getting manga results.
 * **nasa:** Searches NASA's image archive for your query.
 * **neopet:** Responds with the image of a specific Neopet.
 * **neopets-item:** Responds with information on a specific Neopets item.
@@ -164,7 +164,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **twitter:** Responds with information on a Twitter user.
 * **urban-dictionary:** Defines a word, but with Urban Dictionary.
 * **vndb:** Responds with information on a Visual Novel.
-* **vocaloid:** Searches VocaDB for your query.
+* **vocadb:** Searches VocaDB for your query.
 * **wattpad:** Searches Wattpad for your query.
 * **weather:** Responds with weather information for a specific location.
 * **wikia:** Searches a specific Wikia wiki for your query.
@@ -218,8 +218,8 @@ on the [home server](https://discord.gg/sbMe32W).
 * **sorting-hat-quiz:** Take a quiz to determine your Hogwarts house.
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
-* **wizard-convention:** Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?
 * **whos-that-pokemon:** Guess who that Pokémon is.
+* **wizard-convention:** Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?
 
 ### Voice Channel:
 
@@ -248,7 +248,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **osu-signature:** Creates a card based on an osu! user's stats.
 * **pixelize:** Draws an image or a user's avatar pixelized.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
-* **rainbow:** Draws a rainbow over an image or user's avatar.
+* **rainbow:** Draws a rainbow over an image or a user's avatar.
 * **robohash:** Creates a robot based on the text you provide.
 * **sepia:** Draws an image or a user's avatar in sepia.
 * **shields-io-badge:** Creates a badge from shields.io.
@@ -349,8 +349,8 @@ on the [home server](https://discord.gg/sbMe32W).
 
 * **blush:** Blushes at a user.
 * **bro-hoof:** Gives a user a bro hoof.
-* **eat:** Eats a user.
-* **fist-bump:** Fistbumps a user.
+* **eat:** Feeds a user.
+* **fist-bump:** Fist-bumps a user.
 * **high-five:** High Fives a user.
 * **hold-hands:** Holds hands with a user.
 * **hug:** Hugs a user.
