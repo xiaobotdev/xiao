@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
+const { wrapText } = require('../../util/Canvas');
 const texts = require('../../assets/json/be-like-bill');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
@@ -25,7 +26,8 @@ module.exports = class BeLikeBillCommand extends Command {
 					key: 'name',
 					prompt: 'What should the name on the meme be?',
 					type: 'string',
-					default: 'Bill'
+					default: 'Bill',
+					max: 20
 				}
 			]
 		});
@@ -37,10 +39,11 @@ module.exports = class BeLikeBillCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.font = '23px Noto';
+		const text = wrapText(ctx, texts[Math.floor(Math.random() * texts.length)].replace(/{{name}}/gi, name), 600 - 31);
 		ctx.fillText(stripIndents`
 			This is ${name}.
 
-			${texts[Math.floor(Math.random() * texts.length)].replace(/{{name}}/gi, name)}
+			${text.join('\n')}
 
 			${name} is smart.
 			Be like ${name}.
