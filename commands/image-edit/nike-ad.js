@@ -58,12 +58,16 @@ module.exports = class NikeAdCommand extends Command {
 			const width = data.width / 3;
 			const height = Math.round(width / ratio);
 			ctx.drawImage(base, (data.width / 2) - (width / 2), data.height - height, width, height);
-			ctx.font = `${Math.round(data.height / 25)}px Noto`;
+			const fontSize = Math.round(data.height / 25);
+			ctx.font = `${fontSize}px Noto`;
 			ctx.fillStyle = 'white';
 			ctx.textAlign = 'center';
-			ctx.textBaseline = 'middle';
-			const text = wrapText(ctx, `Believe in ${something}. Even if it means ${sacrifice}.`, data.width);
-			ctx.fillText(text.join('\n'), data.width / 2, data.height / 2);
+			const lines = wrapText(ctx, `Believe in ${something}. Even if it means ${sacrifice}.`, data.width);
+			const initial = data.height / 2;
+			for (let i = 0; i < lines.length; i++) {
+				const height = initial + (i * fontSize) + (i * 10);
+				ctx.fillText(lines[i], data.width / 2, height);
+			}
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'nike-ad.png' }] });
