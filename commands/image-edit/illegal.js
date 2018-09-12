@@ -1,8 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { createCanvas, loadImage, registerFont } = require('canvas');
-const { stripIndents } = require('common-tags');
 const path = require('path');
-const { shortenText } = require('../../util/Canvas');
+const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
@@ -25,6 +24,7 @@ module.exports = class IllegalCommand extends Command {
 					key: 'text',
 					prompt: 'What should the text of the bill be?',
 					type: 'string',
+					max: 20,
 					parse: text => text.toUpperCase()
 				},
 				{
@@ -45,12 +45,15 @@ module.exports = class IllegalCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(7 * (Math.PI / 180));
-		ctx.font = '45px Noto';
-		ctx.fillText(stripIndents`
-			${shortenText(ctx, text, 200)}
-			${verb} NOW
-			ILLEGAL.
-		`, 750, 290);
+		const illegalText = `${text} ${verb} NOW ILLEGAL.`;
+		let fontSize = 45;
+		ctx.font = `${fontSize}px Noto`;
+		while (ctx.measureText(illegalText).width > 550) {
+			fontSize -= 1;
+			ctx.font = `${fontSize}px Noto`;
+		}
+		ctx.fillText(wrapText(ctx, illegalText, 200).join('\n'), 750, 290);
+		ctx.rotate(-7 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
 	}
 };
