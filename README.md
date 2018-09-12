@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (304)
+## Commands (306)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -244,6 +244,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **illegal:** Makes President Trump make your text illegal.
 * **invert:** Draws an image or a user's avatar but inverted.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
+* **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
 * **osu-signature:** Creates a card based on an osu! user's stats.
 * **pixelize:** Draws an image or a user's avatar pixelized.
@@ -332,6 +333,7 @@ on the [home server](https://discord.gg/sbMe32W).
 
 ### Number Manipulation:
 
+* **character-count:** Responds with the character count of text.
 * **currency:** Converts money from one currency to another.
 * **final-grade-calculator:** Determines the grade you need to make on your final to get your desired course grade.
 * **gravity:** Determines weight on another planet.
