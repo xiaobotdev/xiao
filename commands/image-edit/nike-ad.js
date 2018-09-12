@@ -54,7 +54,7 @@ module.exports = class NikeAdCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			drawImageWithTint(ctx, data, 'black', 0, 0, data.width, data.height);
 			greyscale(ctx, 0, 0, data.width, data.height);
-			ctx.drawImage(base, data.width / 2 - base.width / 2, data.height - base.height);
+			ctx.drawImage(base, (data.width / 2) - (base.width / 2), data.height - base.height);
 			ctx.font = `${Math.round(data.height / 25)}px Noto`;
 			ctx.fillStyle = 'white';
 			ctx.textAlign = 'center';
