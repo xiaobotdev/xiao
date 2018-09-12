@@ -25,7 +25,7 @@ module.exports = class NikeAdCommand extends Command {
 					key: 'something',
 					prompt: 'What should the something to believe in be?',
 					type: 'string',
-					max: 20,
+					max: 50,
 					parse: something => something.toLowerCase()
 				},
 				{
