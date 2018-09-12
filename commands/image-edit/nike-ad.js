@@ -65,8 +65,8 @@ module.exports = class NikeAdCommand extends Command {
 			const lines = wrapText(ctx, `Believe in ${something}. Even if it means ${sacrifice}.`, data.width);
 			const initial = data.height / 2;
 			for (let i = 0; i < lines.length; i++) {
-				const height = initial + (i * fontSize) + (i * 10);
-				ctx.fillText(lines[i], data.width / 2, height);
+				const textHeight = initial + (i * fontSize) + (i * 10);
+				ctx.fillText(lines[i], data.width / 2, textHeight);
 			}
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
