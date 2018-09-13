@@ -10,7 +10,7 @@ module.exports = class OsuCommand extends Command {
 			aliases: ['osu-user', 'osu-stats'],
 			group: 'search',
 			memberName: 'osu',
-			description: 'Responds with information on an Osu! user.',
+			description: 'Responds with information on an osu! user.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
@@ -39,7 +39,7 @@ module.exports = class OsuCommand extends Command {
 				.addField('❯ Username', data.username, true)
 				.addField('❯ ID', data.user_id, true)
 				.addField('❯ Level', data.level || '???', true)
-				.addField('❯ Accuracy', data.accuracy || '???', true)
+				.addField('❯ Accuracy', data.accuracy ? `${Math.round(data.accuracy)}%` : '???', true)
 				.addField('❯ Rank', data.pp_rank || '???', true)
 				.addField('❯ Play Count', data.playcount || '???', true)
 				.addField('❯ Country', data.country || '???', true)

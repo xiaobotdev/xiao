@@ -16,15 +16,18 @@ module.exports = class MockingCommand extends Command {
 					prompt: 'WHaT tEXt WoUlD yOu LiKE to COnvErt?',
 					type: 'string',
 					max: 1950,
-					parse: text => text.toLowerCase().split('')
+					parse: text => text.toLowerCase()
 				}
 			]
 		});
 	}
 
 	run(msg, { text }) {
-		for (let i = 0; i < text.length; i += Math.floor(Math.random() * 4)) text[i] = text[i].toUpperCase();
-		return msg.say(`${text.join('')} <:mocking:${MOCKING_EMOJI_ID}>`);
+		const letters = text.split('');
+		for (let i = 0; i < letters.length; i += Math.floor(Math.random() * 4)) {
+			letters[i] = letters[i].toUpperCase();
+		}
+		return msg.say(`${letters.join('')} <:mocking:${MOCKING_EMOJI_ID}>`);
 	}
 };
 

@@ -5,7 +5,7 @@ module.exports = class WouldYouRatherCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'would-you-rather',
-			aliases: ['wy-rather'],
+			aliases: ['wy-rather', 'wyr'],
 			group: 'random',
 			memberName: 'would-you-rather',
 			description: 'Responds with a random "Would you rather ...?" question.'
