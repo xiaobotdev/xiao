@@ -1,11 +1,26 @@
 const Command = require('../../structures/Command');
-const { shuffle } = require('../../util/Util');
+const { shuffle, firstUpperCase } = require('../../util/Util');
 
 module.exports = class OrganizationXIIINameCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'organization-xiii-name',
-			aliases: ['xiii-name', 'nobody-name', 'organization-xiii', 'org-xiii', 'xiii', 'organization-13-name', 'org-13'],
+			aliases: [
+				'organization-xiii',
+				'xiii-name',
+				'xiii',
+				'13-name',
+				'org-xiii-name',
+				'org-xiii',
+				'organization-13-name',
+				'organization-13',
+				'org-13-name',
+				'org-13',
+				'organization-name',
+				'org-name',
+				'org',
+				'nobody-name'
+			],
 			group: 'text-edit',
 			memberName: 'organization-xiii-name',
 			description: 'Converts a name into the Organization XIII style.',
@@ -15,16 +30,16 @@ module.exports = class OrganizationXIIINameCommand extends Command {
 					prompt: 'What name would you like to convert?',
 					type: 'string',
 					max: 1950,
-					parse: text => text.toLowerCase().split('')
+					parse: text => text.toLowerCase()
 				}
 			]
 		});
 	}
 
 	run(msg, { text }) {
-		text.push('x');
-		const shuffled = shuffle(text);
-		shuffled[0] = shuffled[0].toUpperCase();
-		return msg.say(shuffled.join(''));
+		const letters = text.split('');
+		letters.push('x');
+		const shuffled = shuffle(letters);
+		return msg.say(firstUpperCase(shuffled.join('')));
 	}
 };

@@ -148,7 +148,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **neopet:** Responds with the image of a specific Neopet.
 * **neopets-item:** Responds with information on a specific Neopets item.
 * **npm:** Responds with information on an NPM package.
-* **osu:** Responds with information on an Osu! user.
+* **osu:** Responds with information on an osu! user.
 * **periodic-table:** Finds an element on the periodic table.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **recipe:** Searches for recipes based on your query.

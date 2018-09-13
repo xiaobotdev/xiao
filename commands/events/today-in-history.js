@@ -44,7 +44,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 				.setTimestamp()
 				.setDescription(`${event.year}: ${event.text}`)
 				.addField('❯ See More',
-					event.links.map(link => `[${link.title}](${link.link.replace(/\)/g, '%29')})`).join(', '));
+					event.links.map(link => `[${link.title}](${link.link.replace(/\)/g, '%29')})`).join('\n'));
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404 || err.status === 500) return msg.say('Invalid date.');
