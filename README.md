@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (306)
+## Commands (307)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -63,6 +63,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **fox:** Responds with a random fox image.
 * **github-zen:** Responds with a random GitHub design philosophy.
 * **joke:** Responds with a random joke.
+* **karen:** Responds with a random image of Karen.
 * **kiss-marry-kill:** Determines who to kiss, who to marry, and who to kill.
 * **magic-conch:** Asks your question to the Magic Conch.
 * **meme:** Responds with a random meme.
