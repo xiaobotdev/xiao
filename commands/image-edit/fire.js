@@ -9,9 +9,9 @@ module.exports = class FireCommand extends Command {
 		super(client, {
 			name: 'fire',
 			aliases: ['flame', 'hell'],
-			group: 'avatar-edit',
+			group: 'image-edit',
 			memberName: 'fire',
-			description: 'Draws a fiery border over a user\'s avatar.',
+			description: 'Draws a fiery border over an image or a user\'s avatar.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -19,26 +19,27 @@ module.exports = class FireCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire.png'));
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
-			const canvas = createCanvas(avatar.width, avatar.height);
+			const { body } = await request.get(image);
+			const data = await loadImage(body);
+			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
-			drawImageWithTint(ctx, avatar, '#fc671e', 0, 0, avatar.width, avatar.height);
-			ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'fire.png' }] });
+			drawImageWithTint(ctx, data, '#fc671e', 0, 0, data.width, data.height);
+			ctx.drawImage(base, 0, 0, data.width, data.height);
+			const attachment = canvas.toBuffer();
+			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+			return msg.say({ files: [{ attachment, name: 'fire.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
