@@ -51,7 +51,7 @@ module.exports = class DemotivationalPosterCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			const ratio = data.width / data.height;
-			const widthHigher = width >= height;
+			const widthHigher = data.width >= data.height;
 			const width = widthHigher ? 602 : Math.min(Math.round(402 / ratio), 602);
 			const height = widthHigher ? Math.min(Math.round(602 * ratio), 402) : 402;
 			const x = (canvas.width / 2) - (width / 2);
