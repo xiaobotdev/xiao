@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 
-module.exports = class CreateMemeCommand extends Command {
+module.exports = class MemeGenCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'create-meme',
-			aliases: ['meme-generator', 'meme-gen'],
+			name: 'meme-gen',
+			aliases: ['meme-generator', 'create-meme'],
 			group: 'image-edit',
-			memberName: 'create-meme',
+			memberName: 'meme-gen',
 			description: 'Sends a meme with the text and background of your choice.',
 			clientPermissions: ['ATTACH_FILES'],
 			args: [

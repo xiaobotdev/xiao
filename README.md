@@ -234,7 +234,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
-* **create-meme:** Sends a meme with the text and background of your choice.
 * **create-qr-code:** Converts text to a QR Code.
 * **demotivational-poster:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distort:** Draws an image or a user's avatar but distorted.
@@ -244,6 +243,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **ifunny:** Draws an image with the iFunny logo.
 * **illegal:** Makes President Trump make your text illegal.
 * **invert:** Draws an image or a user's avatar but inverted.
+* **meme-gen:** Sends a meme with the text and background of your choice.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
