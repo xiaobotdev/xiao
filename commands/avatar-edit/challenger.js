@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { silhouette } = require('../../util/Canvas');
 
 module.exports = class ChallengerCommand extends Command {
 	constructor(client) {
@@ -22,12 +23,18 @@ module.exports = class ChallengerCommand extends Command {
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
 					default: msg => msg.author
+				},
+				{
+					key: 'silhouetted',
+					prompt: 'Should the image be silhouetted?',
+					type: 'boolean',
+					default: false
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
+	async run(msg, { user, silhouetted }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
@@ -36,10 +43,18 @@ module.exports = class ChallengerCommand extends Command {
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 484, 98, 256, 256);
+			ctx.drawImage(silhouetted ? this.silhouetteImage(avatar) : avatar, 484, 98, 256, 256);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	silhouetteImage(image) {
+		const canvas = createCanvas(image.width, image.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(image, 0, 0);
+		silhouette(ctx, 0, 0, image.width, image.height);
+		return canvas;
 	}
 };

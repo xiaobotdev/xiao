@@ -44,15 +44,22 @@ module.exports = class DemotivationalPosterCommand extends Command {
 
 	async run(msg, { title, text, image }) {
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'demotivational-poster.png'));
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
+			const canvas = createCanvas(750, 600);
 			const ctx = canvas.getContext('2d');
+			ctx.fillStyle = 'black';
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			const ratio = data.width / data.height;
+			const width = Math.min(Math.round(402 / ratio), 602);
+			const x = (data.width / 2) - (width / 2);
 			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(data, 69, 44, 612, 412);
-			ctx.drawImage(base, 0, 0);
+			ctx.fillRect(x - 4, 40, width + 4, 406);
+			ctx.fillStyle = 'black';
+			ctx.fillRect(x - 2, 42, width + 2, 404);
+			ctx.fillStyle = 'white';
+			ctx.fillRect(x, 44, width, 402);
+			ctx.drawImage(data, x, 44, width, 402);
 			ctx.textAlign = 'center';
 			ctx.font = '60px Noto';
 			ctx.fillStyle = 'aquamarine';
