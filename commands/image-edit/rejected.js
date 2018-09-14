@@ -37,8 +37,7 @@ module.exports = class RejctedCommand extends Command {
 			ctx.drawImage(data, 0, 0);
 			const dataRatio = data.width / data.height;
 			const baseRatio = base.width / base.height;
-			let width = data.width;
-			let height = data.height;
+			let { width, height } = data;
 			let x = 0;
 			let y = 0;
 			if (baseRatio < dataRatio) {
