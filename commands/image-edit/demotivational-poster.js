@@ -52,11 +52,11 @@ module.exports = class DemotivationalPosterCommand extends Command {
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			const ratio = data.width / data.height;
 			const width = Math.min(Math.round(402 / ratio), 602);
-			const x = (data.width / 2) - (width / 2);
+			const x = (canvas.width / 2) - (width / 2);
 			ctx.fillStyle = 'white';
-			ctx.fillRect(x - 4, 40, width + 4, 406);
+			ctx.fillRect(x - 4, 40, width + 8, 406);
 			ctx.fillStyle = 'black';
-			ctx.fillRect(x - 2, 42, width + 2, 404);
+			ctx.fillRect(x - 2, 42, width + 4, 404);
 			ctx.fillStyle = 'white';
 			ctx.fillRect(x, 44, width, 402);
 			ctx.drawImage(data, x, 44, width, 402);
