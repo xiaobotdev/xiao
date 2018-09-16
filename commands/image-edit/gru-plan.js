@@ -53,6 +53,7 @@ module.exports = class GruPlanCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'black';
+		ctx.font = '50px Noto';
 		ctx.textBaseline = 'top';
 		let i = 0;
 		for (const [x, y] of coord) {
