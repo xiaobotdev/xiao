@@ -24,10 +24,10 @@ module.exports = class PrimeCommand extends Command {
 	}
 
 	isPrime(number) {
-		if (number < 1) return false;
+		if (number < 2) return false;
 		for (let i = 2; i < number; i++) {
 			if (number % i === 0) return false;
 		}
-		return number !== 1 && number !== 0;
+		return true;
 	}
 };
