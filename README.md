@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (308)
+## Commands (309)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -242,6 +242,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **frame:** Draws a frame around an image or a user's avatar.
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
+* **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
 * **illegal:** Makes President Trump make your text illegal.
 * **invert:** Draws an image or a user's avatar but inverted.
