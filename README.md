@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (307)
+## Commands (308)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -339,6 +339,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **final-grade-calculator:** Determines the grade you need to make on your final to get your desired course grade.
 * **gravity:** Determines weight on another planet.
 * **math:** Evaluates a math expression.
+* **prime:** Determines if a number is a prime number.
 * **roman-numeral:** Converts a number to roman numerals.
 * **scrabble-score:** Responds with the scrabble score of a word.
 * **units:** Converts units to/from other units.
