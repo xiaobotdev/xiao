@@ -56,10 +56,10 @@ module.exports = class GruPlanCommand extends Command {
 		ctx.textBaseline = 'top';
 		let i = 0;
 		for (const [x, y] of coord) {
-			ctx.font = '50px Noto';
+			ctx.font = '40px Noto';
 			const step = steps[i];
-			let fontSize = 50;
-			while (ctx.measureText(step).width > 1237) {
+			let fontSize = 40;
+			while (ctx.measureText(step).width > 1100) {
 				fontSize -= 1;
 				ctx.font = `${fontSize}px Noto`;
 			}
