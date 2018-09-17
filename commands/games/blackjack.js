@@ -11,16 +11,26 @@ module.exports = class BlackjackCommand extends Command {
 			aliases: ['twenty-one', '21'],
 			group: 'games',
 			memberName: 'blackjack',
-			description: 'Play a game of blackjack.'
+			description: 'Play a game of blackjack.',
+			args: [
+				{
+					key: 'deckCount',
+					label: 'amount of decks',
+					prompt: 'How many decks do you want to use?',
+					default: 1,
+					max: 8,
+					min: 1
+				}
+			]
 		});
 
 		this.decks = new Map();
 	}
 
-	async run(msg) {
+	async run(msg, { deckCount }) {
 		if (this.decks.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
 		try {
-			this.decks.set(msg.channel.id, this.generateDeck());
+			this.decks.set(msg.channel.id, this.generateDeck(deckCount));
 			const dealerHand = [];
 			this.draw(msg.channel, dealerHand);
 			this.draw(msg.channel, dealerHand);
@@ -102,9 +112,9 @@ module.exports = class BlackjackCommand extends Command {
 		}
 	}
 
-	generateDeck() {
+	generateDeck(deckCount) {
 		const deck = [];
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < deckCount; i++) {
 			for (const suit of suits) {
 				deck.push({
 					value: 11,
