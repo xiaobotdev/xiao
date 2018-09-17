@@ -60,7 +60,7 @@ module.exports = class BlackjackCommand extends Command {
 							reason = `You drew ${card.display}, total of ${total}! Bust`;
 							break;
 						} else if (total === 21) {
-							reason = 'You hit 21';
+							reason = `You drew ${card.display} and hit 21`;
 							win = true;
 						}
 					} else {
