@@ -5,7 +5,7 @@ const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
-const coord = [[443, 139], [1200, 143], [443, 637], [1200, 637]];
+const coord = [[450, 139], [1200, 143], [450, 637], [1200, 637]];
 
 module.exports = class GruPlanCommand extends Command {
 	constructor(client) {
@@ -53,10 +53,10 @@ module.exports = class GruPlanCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'black';
-		ctx.font = '50px Noto';
 		ctx.textBaseline = 'top';
 		let i = 0;
 		for (const [x, y] of coord) {
+			ctx.font = '50px Noto';
 			const step = steps[i];
 			let fontSize = 50;
 			while (ctx.measureText(step).width > 1237) {
