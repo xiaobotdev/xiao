@@ -17,6 +17,7 @@ module.exports = class BlackjackCommand extends Command {
 					key: 'deckCount',
 					label: 'amount of decks',
 					prompt: 'How many decks do you want to use?',
+					type: 'integer',
 					default: 1,
 					max: 8,
 					min: 1
