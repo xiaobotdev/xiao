@@ -60,7 +60,7 @@ module.exports = class BlackjackCommand extends Command {
 						const card = this.draw(msg.channel, playerHand);
 						const total = this.calculate(playerHand);
 						if (total > 21) {
-							reason = `Drew ${card.display}, total of ${total}! Bust`;
+							reason = `You drew ${card.display}, total of ${total}! Bust`;
 							break;
 						}
 					} else {
@@ -71,7 +71,7 @@ module.exports = class BlackjackCommand extends Command {
 					const card = this.draw(msg.channel, dealerHand);
 					const total = this.calculate(dealerHand);
 					if (total > 21) {
-						reason = `Drew ${card.display}, total of ${total}! Dealer bust`;
+						reason = `Dealer drew ${card.display}, total of ${total}! Dealer bust`;
 						win = true;
 					} else if (total >= 17) {
 						const playerTotal = this.calculate(playerHand);
