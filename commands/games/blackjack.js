@@ -66,9 +66,10 @@ module.exports = class BlackjackCommand extends Command {
 						playerTurn = false;
 					}
 				} else {
-					const total = this.calculate(dealerHand);
+					const inital = this.calculate(dealerHand);
 					let card;
-					if (total < 17) card = this.draw(msg.channel, dealerHand);
+					if (inital < 17) card = this.draw(msg.channel, dealerHand);
+					const total = this.calculate(dealerHand);
 					if (total > 21) {
 						reason = `Dealer drew ${card.display}, total of ${total}! Dealer bust`;
 						win = true;
