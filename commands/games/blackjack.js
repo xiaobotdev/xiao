@@ -30,13 +30,13 @@ module.exports = class BlackjackCommand extends Command {
 			const dealerInitialTotal = this.calculate(dealerHand);
 			const playerInitialTotal = this.calculate(playerHand);
 			if (dealerInitialTotal === 21 && playerInitialTotal === 21) {
-				this.decks.remove(msg.channel.id);
+				this.decks.delete(msg.channel.id);
 				return msg.say('Well, both of you just hit blackjack. Right away. Rigged.');
 			} else if (dealerInitialTotal === 21) {
-				this.decks.remove(msg.channel.id);
+				this.decks.delete(msg.channel.id);
 				return msg.say('Ouch, the dealer hit blackjack right away! Try again!');
 			} else if (playerInitialTotal === 21) {
-				this.decks.remove(msg.channel.id);
+				this.decks.delete(msg.channel.id);
 				return msg.say('Wow, you hit blackjack right away! Lucky you!');
 			}
 			let noDealerShow = true;
@@ -50,7 +50,7 @@ module.exports = class BlackjackCommand extends Command {
 						**Dealer:**
 						${dealerHandDisplay.join('\n')}
 
-						**You:**
+						**You (${this.calculate(playerHand)}):**
 						${playerHand.map(card => card.display).join('\n')}
 
 						_Hit?_
@@ -88,11 +88,11 @@ module.exports = class BlackjackCommand extends Command {
 					}
 				}
 			}
-			this.decks.remove(msg.channel.id);
+			this.decks.delete(msg.channel.id);
 			if (win) return msg.say(`${reason}! You won!`);
 			return msg.say(`${reason}! Too bad.`);
 		} catch (err) {
-			this.decks.remove(msg.channel.id);
+			this.decks.delete(msg.channel.id);
 			throw err;
 		}
 	}
