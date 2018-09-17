@@ -1,0 +1,141 @@
+const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
+const { shuffle, verify } = require('../../util/Util');
+const suits = ['♣', '♥', '♦', '♠'];
+const faces = ['Jack', 'Queen', 'King'];
+
+module.exports = class BlackjackCommand extends Command {
+	constructor(client) {
+		super(client, {
+			name: 'blackjack',
+			aliases: ['twenty-one', '21'],
+			group: 'games',
+			memberName: 'blackjack',
+			description: 'Play a game of blackjack.'
+		});
+
+		this.decks = new Map();
+	}
+
+	async run(msg) {
+		if (this.decks.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
+		try {
+			this.decks.set(msg.channel.id, this.generateDeck());
+			const dealerHand = [];
+			this.draw(msg.channel, dealerHand);
+			this.draw(msg.channel, dealerHand);
+			const playerHand = [];
+			this.draw(msg.channel, playerHand);
+			this.draw(msg.channel, playerHand);
+			const dealerInitialTotal = this.calculate(dealerHand);
+			const playerInitialTotal = this.calculate(playerHand);
+			if (dealerInitialTotal === 21 && playerInitialTotal === 21) {
+				this.decks.remove(msg.channel.id);
+				return msg.say('Well, both of you just hit blackjack. Right away. Rigged.');
+			} else if (dealerInitialTotal === 21) {
+				this.decks.remove(msg.channel.id);
+				return msg.say('Ouch, the dealer hit blackjack right away! Try again!');
+			} else if (playerInitialTotal === 21) {
+				this.decks.remove(msg.channel.id);
+				return msg.say('Wow, you hit blackjack right away! Lucky you!');
+			}
+			let noDealerShow = true;
+			let playerTurn = true;
+			let win = false;
+			let reason;
+			while (!win) {
+				if (playerTurn) {
+					const dealerHandDisplay = dealerHand.map((card, i) => noDealerShow && i > 0 ? '???' : card.display);
+					await msg.say(stripIndents`
+						**Dealer:**
+						${dealerHandDisplay.join('\n')}
+
+						**You:**
+						${playerHand.map(card => card.display).join('\n')}
+
+						_Hit?_
+					`);
+					const hit = await verify(msg.channel, msg.author);
+					if (hit) {
+						const card = this.draw(msg.channel, playerHand);
+						const total = this.calculate(playerHand);
+						if (total > 21) {
+							reason = `Drew ${card.display}, total of ${total}! Bust`;
+							break;
+						}
+					} else {
+						noDealerShow = false;
+						playerTurn = false;
+					}
+				} else {
+					const card = this.draw(msg.channel, dealerHand);
+					const total = this.calculate(dealerHand);
+					if (total > 21) {
+						reason = `Drew ${card.display}, total of ${total}! Dealer bust`;
+						win = true;
+					}
+					if (total >= 17) {
+						const playerTotal = this.calculate(playerHand);
+						if (total === playerTotal) {
+							reason = `${playerTotal}-${total}`;
+							break;
+						} else if (total > playerTotal) {
+							reason = `${playerTotal}-**${total}**`;
+							break;
+						} else {
+							reason = `**${playerTotal}**-${total}`;
+							win = true;
+						}
+					}
+				}
+			}
+			this.decks.remove(msg.channel.id);
+			if (win) return msg.say(`${reason}! You won!`);
+			return msg.say(`${reason}! Too bad.`);
+		} catch (err) {
+			this.decks.remove(msg.channel.id);
+			throw err;
+		}
+	}
+
+	generateDeck() {
+		const deck = [];
+		for (let i = 0; i < 6; i++) {
+			for (const suit of suits) {
+				deck.push({
+					value: 11,
+					display: `${suit} Ace`
+				});
+				for (let j = 2; j <= 10; j++) {
+					deck.push({
+						value: j,
+						display: `${suit} ${j}`
+					});
+				}
+				for (const face of faces) {
+					deck.push({
+						value: 10,
+						display: `${suit} ${face}`
+					});
+				}
+			}
+		}
+		return shuffle(deck);
+	}
+
+	draw(channel, hand) {
+		const deck = this.decks.get(channel.id);
+		const card = deck[0];
+		deck.shift();
+		hand.push(card);
+		return card;
+	}
+
+	calculate(hand) {
+		return hand.reduce((a, b) => {
+			let { value } = b;
+			if (value === 11 && a + value > 21) value = 1;
+			return a + value;
+		}, 0);
+	}
+};
