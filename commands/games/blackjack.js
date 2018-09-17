@@ -39,16 +39,13 @@ module.exports = class BlackjackCommand extends Command {
 				this.decks.delete(msg.channel.id);
 				return msg.say('Wow, you hit blackjack right away! Lucky you!');
 			}
-			let noDealerShow = true;
 			let playerTurn = true;
 			let win = false;
 			let reason;
 			while (!win) {
 				if (playerTurn) {
-					const dealerHandDisplay = dealerHand.map((card, i) => noDealerShow && i > 0 ? '???' : card.display);
 					await msg.say(stripIndents`
-						**Dealer:**
-						${dealerHandDisplay.join('\n')}
+						**First Dealer Card:** ${dealerHand[0].display}
 
 						**You (${this.calculate(playerHand)}):**
 						${playerHand.map(card => card.display).join('\n')}
@@ -64,12 +61,14 @@ module.exports = class BlackjackCommand extends Command {
 							break;
 						}
 					} else {
-						noDealerShow = false;
+						const dealerTotal = this.calculate(dealerHand);
+						await msg.say(`Second dealer card is ${dealerHand[1].display}, total of ${dealerTotal}.`);
 						playerTurn = false;
 					}
 				} else {
-					const card = this.draw(msg.channel, dealerHand);
 					const total = this.calculate(dealerHand);
+					let card;
+					if (total < 17) card = this.draw(msg.channel, dealerHand);
 					if (total > 21) {
 						reason = `Dealer drew ${card.display}, total of ${total}! Dealer bust`;
 						win = true;
