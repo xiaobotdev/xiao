@@ -76,13 +76,13 @@ module.exports = class BlackjackCommand extends Command {
 					} else if (total >= 17) {
 						const playerTotal = this.calculate(playerHand);
 						if (total === playerTotal) {
-							reason = `${playerTotal}-${total}`;
+							reason = `Dealer drew ${card.display}, making it ${playerTotal}-${total}`;
 							break;
 						} else if (total > playerTotal) {
-							reason = `${playerTotal}-**${total}**`;
+							reason = `Dealer drew ${card.display}, making it ${playerTotal}-**${total}**`;
 							break;
 						} else {
-							reason = `**${playerTotal}**-${total}`;
+							reason = `Dealer drew ${card.display}, making it **${playerTotal}**-${total}`;
 							win = true;
 						}
 					} else {
