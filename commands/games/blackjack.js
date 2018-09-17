@@ -73,8 +73,7 @@ module.exports = class BlackjackCommand extends Command {
 					if (total > 21) {
 						reason = `Drew ${card.display}, total of ${total}! Dealer bust`;
 						win = true;
-					}
-					if (total >= 17) {
+					} else if (total >= 17) {
 						const playerTotal = this.calculate(playerHand);
 						if (total === playerTotal) {
 							reason = `${playerTotal}-${total}`;
