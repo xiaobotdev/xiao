@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (309)
+## Commands (310)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -198,6 +198,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **akinator:** Think about a real or fictional character, I will try to guess who it is.
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
+* **blackjack:** Play a game of blackjack.
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **captcha-quiz:** Try to guess what the captcha says.
 * **chance:** Attempt to win with a 1 in 1000 (or your choice) chance of winning.
