@@ -5,7 +5,7 @@ const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
-const coord = [[450, 134], [1200, 134], [450, 632], [1200, 632]];
+const coord = [[450, 129], [1200, 134], [450, 627], [1200, 627]];
 
 module.exports = class GruPlanCommand extends Command {
 	constructor(client) {
