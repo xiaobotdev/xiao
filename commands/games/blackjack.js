@@ -85,6 +85,8 @@ module.exports = class BlackjackCommand extends Command {
 							reason = `**${playerTotal}**-${total}`;
 							win = true;
 						}
+					} else {
+						await msg.say(`Dealer drew ${card.display}, total of ${total}.`);
 					}
 				}
 			}
