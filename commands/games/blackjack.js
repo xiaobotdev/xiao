@@ -147,7 +147,7 @@ module.exports = class BlackjackCommand extends Command {
 	}
 
 	calculate(hand) {
-		return hand.reduce((a, b) => {
+		return hand.sort((a, b) => a.value - b.value).reduce((a, b) => {
 			let { value } = b;
 			if (value === 11 && a + value > 21) value = 1;
 			return a + value;
