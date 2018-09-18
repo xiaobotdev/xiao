@@ -69,6 +69,8 @@ module.exports = class AkinatorCommand extends Command {
 			.query({
 				partner: 1,
 				player: 'website-desktop',
+				uid_ext_session: '5ba118d44e469',
+				frontaddr: 'MTc4LjMzLjIzMS45OA==',
 				constraint: 'ETAT<>\'AV\'',
 				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
 				question_filter: channel.nsfw ? '' : 'cat=1',
