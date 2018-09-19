@@ -263,6 +263,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
+* **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
 * **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
@@ -288,7 +289,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **the-ultimate-tattoo:** Draws a user's avatar as "The Ultimate Tattoo".
 * **this-is-beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **this-is-worthless:** Draws a user's avatar over Gravity Falls' "Oh, this? This is worthless." meme.
-* **thug-life:** Draws "Thug Life" over a user's avatar.
 * **triggered:** Draws a user's avatar over the "Triggered" meme.
 * **wanted:** Draws a user's avatar over a wanted poster.
 * **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
