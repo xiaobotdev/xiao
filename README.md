@@ -341,7 +341,7 @@ on the [home server](https://discord.gg/sbMe32W).
 ### Number Manipulation:
 
 * **character-count:** Responds with the character count of text.
-* **currency:** Converts money from one currency to another.
+* **currency:** Converts currency from one currency to another.
 * **final-grade-calculator:** Determines the grade you need to make on your final to get your desired course grade.
 * **gravity:** Determines weight on another planet.
 * **math:** Evaluates a math expression.
