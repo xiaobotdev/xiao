@@ -235,6 +235,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
+* **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **create-qr-code:** Converts text to a QR Code.
@@ -270,7 +271,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
 * **bob-ross:** Draws a user's avatar over Bob Ross' canvas.
 * **challenger:** Draws a user's avatar over Super Smash Bros.'s "Challenger Approaching" screen.
-* **circle:** Draws a user's avatar as a circle.
 * **dexter:** Draws a user's avatar over the screen of Dexter from Pokémon.
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
