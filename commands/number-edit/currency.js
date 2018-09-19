@@ -8,64 +8,57 @@ module.exports = class CurrencyCommand extends Command {
 			aliases: ['currency-convert', 'convert-currency'],
 			group: 'number-edit',
 			memberName: 'currency',
-			description: 'Converts money from one currency to another.',
+			description: 'Converts currency from one currency to another.',
 			args: [
 				{
 					key: 'amount',
-					prompt: 'How much money should be converted? Do not use symbols.',
+					prompt: 'How much currency should be converted? Do not use symbols.',
 					type: 'float'
 				},
 				{
 					key: 'base',
-					prompt: 'What currency code do you want to use as the base?',
+					prompt: 'What currency code (e.g. USD) do you want to use as the base?',
 					type: 'string',
+					min: 3,
+					max: 3,
 					parse: base => base.toUpperCase()
 				},
 				{
 					key: 'target',
-					prompt: 'What currency code do you want to convert to?',
+					prompt: 'What currency code (e.g. USD) do you want to convert to?',
 					type: 'string',
+					min: 3,
+					max: 3,
 					parse: target => target.toUpperCase()
 				}
 			]
 		});
 
-		this.currencies = null;
 		this.rates = new Map();
 	}
 
 	async run(msg, { base, target, amount }) {
+		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		try {
-			if (!this.currencies) await this.fetchCurrencies();
-			base = this.currencies[base];
-			if (!base) return msg.say('Invalid base.');
-			target = this.currencies[target];
-			if (!target) return msg.say('Invalid target.');
-			if (base.id === target.id) return msg.say(`Converting ${base.id} to ${target.id} is the same value, dummy.`);
 			const rate = await this.fetchRate(base, target);
-			return msg.say(`${amount} ${base.id} is ${(amount * rate).toFixed(2)} ${target.id}.`);
+			return msg.say(`${amount} ${base} is ${(amount * rate).toFixed(2)} ${target}.`);
 		} catch (err) {
+			if (err.status === 400) return msg.say('Invalid base/target.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
-	async fetchCurrencies() {
-		const { body } = await request.get('https://free.currencyconverterapi.com/api/v5/currencies');
-		this.currencies = body.results;
-		return body.results;
-	}
-
 	async fetchRate(base, target) {
-		const query = `${base.id}_${target.id}`;
+		const query = `${base}-${target}`;
 		if (this.rates.has(query)) return this.rates.get(query);
 		const { body } = await request
-			.get('https://free.currencyconverterapi.com/api/v5/convert')
+			.get('https://api.exchangeratesapi.io/latest')
 			.query({
-				q: query,
-				compact: 'ultra'
+				base,
+				symbols: target
 			});
-		this.rates.set(query, body[query]);
+		this.rates.set(query, body.rates[target]);
 		setTimeout(() => this.rates.delete(query), 1.8e+6);
-		return body[query];
+		return body.rates[target];
 	}
 };
