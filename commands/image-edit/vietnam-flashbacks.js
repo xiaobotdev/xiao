@@ -37,7 +37,7 @@ module.exports = class VietnamFlashbacksCommand extends Command {
 			const ratio = base.width / base.height;
 			const width = Math.round(data.height * ratio);
 			ctx.drawImage(base, (data.width / 2) - (width / 2), 0, width, data.height);
-			ctx.globalAlpha = 0.75;
+			ctx.globalAlpha = 0.675;
 			ctx.drawImage(data, 0, 0);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
