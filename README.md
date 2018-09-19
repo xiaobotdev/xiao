@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (313)
+## Commands (314)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -265,6 +265,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
+* **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
 
 ### Avatar Manipulation:
 
