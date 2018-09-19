@@ -52,7 +52,8 @@ module.exports = class IllegalCommand extends Command {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		ctx.fillText(wrapText(ctx, illegalText, 200).join('\n'), 750, 290);
+		const lines = await wrapText(ctx, illegalText, 200);
+		ctx.fillText(lines.join('\n'), 750, 290);
 		ctx.rotate(-7 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
 	}

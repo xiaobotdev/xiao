@@ -26,21 +26,21 @@ module.exports = class GruPlanCommand extends Command {
 					label: 'step 1',
 					prompt: 'What should the first step of Gru\'s plan be?',
 					type: 'string',
-					max: 500
+					max: 150
 				},
 				{
 					key: 'step2',
 					label: 'step 2',
 					prompt: 'What should the second step of Gru\'s plan be?',
 					type: 'string',
-					max: 500
+					max: 150
 				},
 				{
 					key: 'step3',
 					label: 'step 3',
 					prompt: 'What should the third step of Gru\'s plan be?',
 					type: 'string',
-					max: 500
+					max: 150
 				}
 			]
 		});
@@ -63,7 +63,8 @@ module.exports = class GruPlanCommand extends Command {
 				fontSize -= 1;
 				ctx.font = `${fontSize}px Noto`;
 			}
-			ctx.fillText(wrapText(ctx, step, 252).join('\n'), x, y);
+			const lines = await wrapText(ctx, step, 252);
+			ctx.fillText(lines.join('\n'), x, y);
 			i++;
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'gru-plan.png' }] });

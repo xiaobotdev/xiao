@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (311)
+## Commands (312)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -93,6 +93,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **can-you-not:** Can YOU not?
 * **dark-theme-light-theme:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
+* **eggs-get-laid:**: Sends the ultimate roast.
 * **give-flower:** Gives Xiao Pai a flower.
 * **hi:** Hello.
 * **isnt-joke:** Isn't joke...
