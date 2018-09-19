@@ -37,7 +37,7 @@ module.exports = class SoraSelfieCommand extends Command {
 			ctx.fillRect(0, 0, base.width, base.height);
 			const ratio = data.width / data.height;
 			const width = Math.round(base.height * ratio);
-			ctx.drawImage(data, (base.width / 2) - (data.width / 2), 0, width, base.height);
+			ctx.drawImage(data, (base.width / 2) - (width / 2), 0, width, base.height);
 			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sora-selfie.png' }] });
 		} catch (err) {
