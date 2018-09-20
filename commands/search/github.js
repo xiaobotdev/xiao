@@ -47,8 +47,8 @@ module.exports = class GithubCommand extends Command {
 				.addField('❯ Forks', body.forks, true)
 				.addField('❯ Issues', body.open_issues, true)
 				.addField('❯ Language', body.language || '???', true)
-				.addField('❯ Creation Date', moment.utc(body.created_at).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
-				.addField('❯ Modification Date', moment.utc(body.updated_at).format('MMM Do, YYYY [at] hh:mm:ss A'), true);
+				.addField('❯ Creation Date', moment.utc(body.created_at).format('MM/DD/YYYY @ hh:mm:ss A'), true)
+				.addField('❯ Modification Date', moment.utc(body.updated_at).format('MM/DD/YYYY @ hh:mm:ss A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');

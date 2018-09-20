@@ -28,7 +28,7 @@ module.exports = class EmojiInfoCommand extends Command {
 			.setThumbnail(emoji.url)
 			.addField('❯ Name', emoji.name, true)
 			.addField('❯ ID', emoji.id, true)
-			.addField('❯ Creation Date', moment.utc(emoji.createdAt).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
+			.addField('❯ Creation Date', moment.utc(emoji.createdAt).format('MM/DD/YYYY @ hh:mm:ss A'), true)
 			.addField('❯ Animated?', emoji.animated ? 'Yes' : 'No', true);
 		return msg.embed(embed);
 	}
