@@ -27,7 +27,7 @@ module.exports = class MockingCommand extends Command {
 		for (let i = 0; i < letters.length; i += Math.floor(Math.random() * 4)) {
 			letters[i] = letters[i].toUpperCase();
 		}
-		return msg.say(`${letters.join('')} <:mocking:${MOCKING_EMOJI_ID}>`);
+		return msg.say(`${letters.join('')}${MOCKING_EMOJI_ID ? ` <:mocking:${MOCKING_EMOJI_ID}>` : ''}`);
 	}
 };
 

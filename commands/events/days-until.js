@@ -1,4 +1,6 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
+require('moment-duration-format');
 
 module.exports = class DaysUntilCommand extends Command {
 	constructor(client) {
@@ -29,8 +31,8 @@ module.exports = class DaysUntilCommand extends Command {
 		let year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
 		if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
 		const future = new Date(`${month}/${day}/${year}`);
-		const time = Math.round((future - now) / (1000 * 60 * 60 * 24)) + 1;
-		if (!time) return msg.reply('Invalid date.');
-		return msg.say(`There are ${time} days until ${future.toDateString()}!`);
+		const time = moment.duration(future - now).format('M [months and] d [days]');
+		if (time === 'Invalid date') return msg.reply('Invalid date.');
+		return msg.say(`There are ${time} until ${moment.utc(future).format('dddd, MMMM Do, YYYY')}!`);
 	}
 };

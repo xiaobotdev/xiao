@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment-timezone');
 const { firstUpperCase } = require('../../util/Util');
 
 module.exports = class TimeCommand extends Command {
@@ -29,7 +30,7 @@ module.exports = class TimeCommand extends Command {
 			neopia = true;
 		}
 		try {
-			const time = new Date().toLocaleTimeString('en-US', { timeZone });
+			const time = moment().tz(timeZone).format('hh:mm:ss A');
 			const location = neopia ? ['neopia'] : timeZone.split('/');
 			const main = firstUpperCase(location[0], /[_ ]/);
 			const sub = location[1] ? firstUpperCase(location[1], /[_ ]/) : null;

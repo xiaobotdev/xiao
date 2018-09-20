@@ -28,13 +28,6 @@ module.exports = class Util {
 		return text.length > maxLen ? `${text.substr(0, maxLen - 3)}...` : text;
 	}
 
-	static duration(ms) {
-		const sec = Math.floor((ms / 1000) % 60).toString();
-		const min = Math.floor((ms / (1000 * 60)) % 60).toString();
-		const hrs = Math.floor(ms / (1000 * 60 * 60)).toString();
-		return `${hrs.padStart(2, '0')}:${min.padStart(2, '0')}:${sec.padStart(2, '0')}`;
-	}
-
 	static randomRange(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}

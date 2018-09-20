@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
@@ -43,8 +44,8 @@ module.exports = class KickstarterCommand extends Command {
 				.addField('❯ Pledged', `$${data.pledged}`, true)
 				.addField('❯ Backers', data.backers_count, true)
 				.addField('❯ Creator', data.creator.name, true)
-				.addField('❯ Creation Date', new Date(data.created_at * 1000).toDateString(), true)
-				.addField('❯ Deadline', new Date(data.deadline * 1000).toDateString(), true);
+				.addField('❯ Creation Date', moment.utc(data.created_at * 1000).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
+				.addField('❯ Deadline', moment.utc(data.deadline * 1000).format('MMM Do, YYYY [at] hh:mm:ss A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

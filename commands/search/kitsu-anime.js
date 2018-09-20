@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
@@ -39,8 +40,10 @@ module.exports = class KitsuAnimeCommand extends Command {
 				.setDescription(shorten(data.synopsis))
 				.addField('❯ Type', `${data.showType} - ${data.status}`, true)
 				.addField('❯ Episodes', data.episodeCount || '???', true)
-				.addField('❯ Start Date', data.startDate ? new Date(data.startDate).toDateString() : '???', true)
-				.addField('❯ End Date', data.endDate ? new Date(data.endDate).toDateString() : '???', true);
+				.addField('❯ Start Date',
+					data.startDate ? moment.utc(data.startDate).format('MMM Do, YYYY [at] hh:mm:ss A') : '???', true)
+				.addField('❯ End Date',
+					data.endDate ? moment.utc(data.endDate).format('MMM Do, YYYY [at] hh:mm:ss A') : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

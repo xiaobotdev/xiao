@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { GOOGLE_KEY } = process.env;
@@ -43,7 +44,7 @@ module.exports = class YoutubeCommand extends Command {
 				.setURL(`https://www.youtube.com/watch?v=${data.id.videoId}`)
 				.setThumbnail(data.snippet.thumbnails.default ? data.snippet.thumbnails.default.url : null)
 				.addField('❯ ID', data.id.videoId, true)
-				.addField('❯ Publish Date', new Date(data.snippet.publishedAt).toDateString(), true)
+				.addField('❯ Publish Date', moment.utc(data.snippet.publishedAt).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
 				.addField('❯ Channel', data.snippet.channelTitle, true);
 			return msg.embed(embed);
 		} catch (err) {

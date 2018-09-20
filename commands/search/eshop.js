@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { list } = require('../../util/Util');
@@ -51,7 +52,8 @@ module.exports = class EshopCommand extends Command {
 				.addField('❯ Category', data.game_category_ref
 					? data.game_category_ref.length ? data.game_category_ref[0].title : data.game_category_ref.title
 					: '???', true)
-				.addField('❯ Release Date', data.release_date ? new Date(data.release_date).toDateString() : '???', true)
+				.addField('❯ Release Date',
+					data.release_date ? moment.utc(data.release_date).format('MMM Do, YYYY [at] hh:mm:ss A') : '???', true)
 				.addField('❯ Player Count', data.number_of_players || '???', true)
 				.addField('❯ DLC?', data.dlc === 'true' ? 'Yes' : 'No', true)
 				.addField('❯ Demo?', data.demo === 'true' ? 'Yes' : 'No', true)

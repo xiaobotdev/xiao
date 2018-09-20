@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { base64 } = require('../../util/Util');
@@ -53,7 +54,7 @@ module.exports = class TwitterCommand extends Command {
 				.addField('❯ Following', body.friends_count, true)
 				.addField('❯ Protected?', body.protected ? 'Yes' : 'No', true)
 				.addField('❯ Verified?', body.verified ? 'Yes' : 'No', true)
-				.addField('❯ Creation Date', new Date(body.created_at).toDateString(), true)
+				.addField('❯ Creation Date', moment.utc(body.created_at).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
 				.addField('❯ Latest Tweet', latest);
 			return msg.embed(embed);
 		} catch (err) {
