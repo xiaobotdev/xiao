@@ -52,7 +52,7 @@ module.exports = class ItunesCommand extends Command {
 				.setTitle(data.trackName)
 				.addField('❯ Artist', data.artistName, true)
 				.addField('❯ Album', data.collectionName, true)
-				.addField('❯ Release Date', moment.utc(data.releaseDate).format('MMM Do, YYYY'), true)
+				.addField('❯ Release Date', moment.utc(data.releaseDate).format('MM/DD/YYYY'), true)
 				.addField('❯ Genre', data.primaryGenreName, true);
 			return msg.embed(embed);
 		} catch (err) {

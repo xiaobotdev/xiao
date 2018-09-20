@@ -45,7 +45,7 @@ module.exports = class VocaDBCommand extends Command {
 				.setDescription(data.lyrics.length ? shorten(data.lyrics[0].value) : 'No lyrics available.')
 				.setThumbnail(data.thumbUrl)
 				.addField('❯ Artist', data.artistString)
-				.addField('❯ Publish Date', moment.utc(data.publishDate).format('MMM Do, YYYY'), true);
+				.addField('❯ Publish Date', moment.utc(data.publishDate).format('MM/DD/YYYY'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
