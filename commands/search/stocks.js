@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { ALPHA_VANTAGE_KEY } = process.env;
@@ -42,7 +43,8 @@ module.exports = class StocksCommand extends Command {
 				.addField('❯ Volume', data['5. volume'], true)
 				.addField('❯ High', `$${data['2. high']}`, true)
 				.addField('❯ Low', `$${data['3. low']}`, true)
-				.addField('❯ Last Updated', new Date(body['Meta Data']['3. Last Refreshed']).toDateString(), true);
+				.addField('❯ Last Updated',
+					moment.utc(body['Meta Data']['3. Last Refreshed']).format('MMM Do, YYYY [at] hh:mm:ss A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class EmojiInfoCommand extends Command {
@@ -27,7 +28,7 @@ module.exports = class EmojiInfoCommand extends Command {
 			.setThumbnail(emoji.url)
 			.addField('❯ Name', emoji.name, true)
 			.addField('❯ ID', emoji.id, true)
-			.addField('❯ Creation Date', emoji.createdAt.toDateString(), true)
+			.addField('❯ Creation Date', moment.utc(emoji.createdAt).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
 			.addField('❯ Animated?', emoji.animated ? 'Yes' : 'No', true);
 		return msg.embed(embed);
 	}

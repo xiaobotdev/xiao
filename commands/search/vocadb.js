@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
@@ -44,7 +45,7 @@ module.exports = class VocaDBCommand extends Command {
 				.setDescription(data.lyrics.length ? shorten(data.lyrics[0].value) : 'No lyrics available.')
 				.setThumbnail(data.thumbUrl)
 				.addField('❯ Artist', data.artistString)
-				.addField('❯ Publish Date', new Date(data.publishDate).toDateString(), true);
+				.addField('❯ Publish Date', moment.utc(data.publishDate).format('MMM Do, YYYY [at] hh:mm:ss A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

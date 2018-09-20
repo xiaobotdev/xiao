@@ -1,7 +1,9 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { list, duration, tomorrow } = require('../../util/Util');
+const moment = require('moment');
+require('moment-duration-format');
+const { list, tomorrow } = require('../../util/Util');
 const { GOLD_FISH_EMOJI_ID, SILVER_FISH_EMOJI_ID } = process.env;
 const locales = ['en', 'jp'];
 
@@ -31,7 +33,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 			const data = await this.fetchPassword(locale);
 			return msg.say(stripIndents`
 				The current Neko Atsume password is **${data.password}**.
-				It will expire in **${duration(data.expires - data.date)}**.
+				It will expire in **${moment.duration(data.expires - data.date).format('hh:mm:ss')}**.
 
 				${data.gold} ${this.goldFish} ${data.silver} ${this.silverFish}
 			`);

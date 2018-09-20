@@ -1,7 +1,8 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
+const moment = require('moment');
+require('moment-duration-format');
 const { version, dependencies } = require('../../package');
-const { duration } = require('../../util/Util');
 const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
 const source = XIAO_GITHUB_REPO_NAME && XIAO_GITHUB_REPO_USERNAME;
 
@@ -29,18 +30,20 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Source Code',
 				source ? `[Here](https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME})` : 'N/A', true)
 			.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
-			.addField('❯ Uptime', duration(this.client.uptime), true)
+			.addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss'), true)
 			.addField('❯ Version', `v${version}`, true)
 			.addField('❯ Node Version', process.version, true)
-			.addField('❯ Dependencies', Object.entries(dependencies).map(dep => this.parseDependency(dep)).join(', '));
+			.addField('❯ Dependencies', this.parseDependencies());
 		return msg.embed(embed);
 	}
 
-	parseDependency(dep) {
-		if (dep[1].startsWith('github:')) {
-			const repo = dep[1].replace('github:', '').split('/');
-			return `[${dep[0]}](https://github.com/${repo[0]}/${repo[1].replace(/#.+/, '')})`;
-		}
-		return `[${dep[0]}](https://www.npmjs.com/package/${dep[0]})`;
+	parseDependencies() {
+		return Object.entries(dependencies).map(dep => {
+			if (dep[1].startsWith('github:')) {
+				const repo = dep[1].replace('github:', '').split('/');
+				return `[${dep[0]}](https://github.com/${repo[0]}/${repo[1].replace(/#.+/, '')})`;
+			}
+			return `[${dep[0]}](https://www.npmjs.com/package/${dep[0]})`;
+		}).join(', ');
 	}
 };

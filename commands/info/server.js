@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const filterLevels = ['Off', 'No Role', 'Everyone'];
 const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻', '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'];
@@ -24,7 +25,7 @@ module.exports = class ServerInfoCommand extends Command {
 			.addField('❯ Name', msg.guild.name, true)
 			.addField('❯ ID', msg.guild.id, true)
 			.addField('❯ Region', msg.guild.region.toUpperCase(), true)
-			.addField('❯ Creation Date', msg.guild.createdAt.toDateString(), true)
+			.addField('❯ Creation Date', moment.utc(msg.guild.createdAt).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
 			.addField('❯ Explicit Filter', filterLevels[msg.guild.explicitContentFilter], true)
 			.addField('❯ Verification Level', verificationLevels[msg.guild.verificationLevel], true)
 			.addField('❯ Owner', msg.guild.owner.user.tag, true)

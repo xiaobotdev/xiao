@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
@@ -41,7 +42,7 @@ module.exports = class WattpadCommand extends Command {
 				.setTitle(data.title)
 				.setDescription(shorten(data.description))
 				.setThumbnail(data.cover)
-				.addField('❯ Creation Date', new Date(data.createDate).toDateString(), true)
+				.addField('❯ Creation Date', moment.utc(data.createDate).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
 				.addField('❯ Author', data.user.name, true)
 				.addField('❯ Chapters', data.numParts, true)
 				.addField('❯ Reads', data.readCount, true)

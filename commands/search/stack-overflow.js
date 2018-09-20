@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { STACKOVERFLOW_KEY } = process.env;
@@ -47,8 +48,9 @@ module.exports = class StackOverflowCommand extends Command {
 				.addField('❯ Asker', `[${data.owner.display_name}](${data.owner.link})`, true)
 				.addField('❯ Views', data.view_count, true)
 				.addField('❯ Score', data.score, true)
-				.addField('❯ Creation Date', new Date(data.creation_date * 1000).toDateString(), true)
-				.addField('❯ Last Activity', new Date(data.last_activity_date * 1000).toDateString(), true);
+				.addField('❯ Creation Date', moment.utc(data.creation_date * 1000).format('MMM Do, YYYY [at] hh:mm:ss A'), true)
+				.addField('❯ Last Activity',
+					moment.utc(data.last_activity_date * 1000).format('MMM Do, YYYY [at] hh:mm:ss A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
