@@ -40,10 +40,8 @@ module.exports = class KitsuAnimeCommand extends Command {
 				.setDescription(shorten(data.synopsis))
 				.addField('❯ Type', `${data.showType} - ${data.status}`, true)
 				.addField('❯ Episodes', data.episodeCount || '???', true)
-				.addField('❯ Start Date',
-					data.startDate ? moment.utc(data.startDate).format('MMM Do, YYYY [at] hh:mm:ss A') : '???', true)
-				.addField('❯ End Date',
-					data.endDate ? moment.utc(data.endDate).format('MMM Do, YYYY [at] hh:mm:ss A') : '???', true);
+				.addField('❯ Start Date', data.startDate ? moment.utc(data.startDate).format('MMM Do, YYYY') : '???', true)
+				.addField('❯ End Date', data.endDate ? moment.utc(data.endDate).format('MMM Do, YYYY') : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
