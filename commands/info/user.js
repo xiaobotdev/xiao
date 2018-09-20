@@ -34,7 +34,7 @@ module.exports = class UserInfoCommand extends Command {
 			.setThumbnail(user.displayAvatarURL())
 			.addField('❯ Name', user.tag, true)
 			.addField('❯ ID', user.id, true)
-			.addField('❯ Discord Join Date', moment.utc(user.createdAt).format('MM/DD/YYYY @ hh:mm:ss A'), true)
+			.addField('❯ Discord Join Date', moment.utc(user.createdAt).format('MM/DD/YYYY h:mm:ss A'), true)
 			.addField('❯ Bot?', user.bot ? 'Yes' : 'No', true);
 		if (msg.channel.type === 'text') {
 			try {
@@ -48,7 +48,7 @@ module.exports = class UserInfoCommand extends Command {
 					.setDescription(member.presence.activity
 						? `${activities[member.presence.activity.type]} **${member.presence.activity.name}**`
 						: '')
-					.addField('❯ Server Join Date', moment.utc(member.joinedAt).format('MM/DD/YYYY @ hh:mm:ss A'), true)
+					.addField('❯ Server Join Date', moment.utc(member.joinedAt).format('MM/DD/YYYY h:mm:ss A'), true)
 					.addField('❯ Nickname', member.nickname || 'None', true)
 					.addField('❯ Highest Role',
 						member.roles.highest.id === msg.guild.defaultRole.id ? 'None' : member.roles.highest.name, true)
