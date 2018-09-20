@@ -48,9 +48,9 @@ module.exports = class StackOverflowCommand extends Command {
 				.addField('❯ Asker', `[${data.owner.display_name}](${data.owner.link})`, true)
 				.addField('❯ Views', data.view_count, true)
 				.addField('❯ Score', data.score, true)
-				.addField('❯ Creation Date', moment.utc(data.creation_date * 1000).format('MM/DD/YYYY @ hh:mm:ss A'), true)
+				.addField('❯ Creation Date', moment.utc(data.creation_date * 1000).format('MM/DD/YYYY h:mm:ss A'), true)
 				.addField('❯ Last Activity',
-					moment.utc(data.last_activity_date * 1000).format('MM/DD/YYYY @ hh:mm:ss A'), true);
+					moment.utc(data.last_activity_date * 1000).format('MM/DD/YYYY h:mm:ss A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

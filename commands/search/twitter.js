@@ -54,7 +54,7 @@ module.exports = class TwitterCommand extends Command {
 				.addField('❯ Following', body.friends_count, true)
 				.addField('❯ Protected?', body.protected ? 'Yes' : 'No', true)
 				.addField('❯ Verified?', body.verified ? 'Yes' : 'No', true)
-				.addField('❯ Creation Date', moment.utc(body.created_at).format('MM/DD/YYYY @ hh:mm:ss A'), true)
+				.addField('❯ Creation Date', moment.utc(body.created_at).format('MM/DD/YYYY h:mm:ss A'), true)
 				.addField('❯ Latest Tweet', latest);
 			return msg.embed(embed);
 		} catch (err) {

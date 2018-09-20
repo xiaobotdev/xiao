@@ -38,7 +38,7 @@ module.exports = class ChannelInfoCommand extends Command {
 			.addField('❯ NSFW', channel.nsfw ? 'Yes' : 'No', true)
 			.addField('❯ Category', channel.parent ? channel.parent.name : 'None', true)
 			.addField('❯ Type', types[channel.type], true)
-			.addField('❯ Creation Date', moment.utc(channel.createdAt).format('MM/DD/YYYY @ hh:mm:ss A'), true)
+			.addField('❯ Creation Date', moment.utc(channel.createdAt).format('MM/DD/YYYY h:mm:ss A'), true)
 			.addField('❯ Topic', channel.topic || 'None');
 		return msg.embed(embed);
 	}
