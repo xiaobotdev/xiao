@@ -33,7 +33,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 			const data = await this.fetchPassword(locale);
 			return msg.say(stripIndents`
 				The current Neko Atsume password is **${data.password}**.
-				It will expire in **${moment.duration(data.expires - data.date).format('hh:mm:ss')}**.
+				It will expire in **${moment.duration(data.expires - data.date).format('hh:mm:ss', { trim: false })}**.
 
 				${data.gold} ${this.goldFish} ${data.silver} ${this.silverFish}
 			`);

@@ -31,8 +31,9 @@ module.exports = class DaysUntilCommand extends Command {
 		let year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
 		if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
 		const future = new Date(`${month}/${day}/${year}`);
-		const time = moment.duration(future - now).format('M [months and] d [days]');
-		if (time === 'Invalid date') return msg.reply('Invalid date.');
-		return msg.say(`There are ${time} until ${moment.utc(future).format('dddd, MMMM Do, YYYY')}!`);
+		const futureFormat = moment.utc(future).format('dddd, MMMM Do, YYYY');
+		const time = moment.duration(future - now);
+		const link = time.months() === 1 ? 'is' : 'are';
+		return msg.say(`There ${link} ${time.format('M [months and] d [days]')} until ${futureFormat}!`);
 	}
 };
