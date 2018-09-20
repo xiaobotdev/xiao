@@ -25,20 +25,19 @@ module.exports = class TimeCommand extends Command {
 
 	run(msg, { timeZone }) {
 		let neopia = false;
-		if (timeZone === 'neopia/standard' || timeZone === 'neopia') {
+		if (timeZone === 'neopia') {
 			timeZone = 'america/vancouver';
 			neopia = true;
 		}
-		try {
-			const time = moment().tz(timeZone).format('hh:mm:ss A');
-			const location = neopia ? ['neopia'] : timeZone.split('/');
-			const main = firstUpperCase(location[0], /[_ ]/);
-			const sub = location[1] ? firstUpperCase(location[1], /[_ ]/) : null;
-			const subMain = location[2] ? firstUpperCase(location[2], /[_ ]/) : null;
-			const parens = sub ? ` (${subMain ? `${sub}, ` : ''}${main})` : '';
-			return msg.say(`The current time in ${subMain || sub || main}${parens} is ${time}.`);
-		} catch (err) {
+		if (!moment.tz.zone(timeZone)) {
 			return msg.reply('Invalid time zone. Refer to <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>.');
 		}
+		const time = moment().tz(timeZone).format('hh:mm:ss A');
+		const location = neopia ? ['neopia'] : timeZone.split('/');
+		const main = firstUpperCase(location[0], /[_ ]/);
+		const sub = location[1] ? firstUpperCase(location[1], /[_ ]/) : null;
+		const subMain = location[2] ? firstUpperCase(location[2], /[_ ]/) : null;
+		const parens = sub ? ` (${subMain ? `${sub}, ` : ''}${main})` : '';
+		return msg.say(`The current time in ${subMain || sub || main}${parens} is ${time}.`);
 	}
 };
