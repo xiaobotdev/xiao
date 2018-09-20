@@ -40,8 +40,8 @@ module.exports = class KitsuMangaCommand extends Command {
 				.setDescription(shorten(data.synopsis))
 				.addField('❯ Type', `${data.subtype} - ${data.status}`, true)
 				.addField('❯ Volumes / Chapters', `${data.volumeCount || '???'} / ${data.chapterCount || '???'}`, true)
-				.addField('❯ Start Date', data.startDate ? moment.utc(data.startDate).format('MMM Do, YYYY') : '???', true)
-				.addField('❯ End Date', data.endDate ? moment.utc(data.endDate).format('MMM Do, YYYY') : '???', true);
+				.addField('❯ Start Date', data.startDate ? moment.utc(data.startDate).format('MM/DD/YYYY') : '???', true)
+				.addField('❯ End Date', data.endDate ? moment.utc(data.endDate).format('MM/DD/YYYY') : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

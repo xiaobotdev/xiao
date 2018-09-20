@@ -53,7 +53,7 @@ module.exports = class EshopCommand extends Command {
 					? data.game_category_ref.length ? data.game_category_ref[0].title : data.game_category_ref.title
 					: '???', true)
 				.addField('❯ Release Date',
-					data.release_date ? moment.utc(data.release_date).format('MMM Do, YYYY') : '???', true)
+					data.release_date ? moment.utc(data.release_date).format('MM/DD/YYYY') : '???', true)
 				.addField('❯ Player Count', data.number_of_players || '???', true)
 				.addField('❯ DLC?', data.dlc === 'true' ? 'Yes' : 'No', true)
 				.addField('❯ Demo?', data.demo === 'true' ? 'Yes' : 'No', true)
