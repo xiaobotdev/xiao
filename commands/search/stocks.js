@@ -44,7 +44,7 @@ module.exports = class StocksCommand extends Command {
 				.addField('❯ High', `$${data['2. high']}`, true)
 				.addField('❯ Low', `$${data['3. low']}`, true)
 				.addField('❯ Last Updated',
-					moment.utc(body['Meta Data']['3. Last Refreshed']).format('MM/DD/YYYY h:mm:ss A'), true);
+					moment.utc(body['Meta Data']['3. Last Refreshed']).format('MM/DD/YYYY h:mm A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
