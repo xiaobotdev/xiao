@@ -44,8 +44,8 @@ module.exports = class KickstarterCommand extends Command {
 				.addField('❯ Pledged', `$${data.pledged}`, true)
 				.addField('❯ Backers', data.backers_count, true)
 				.addField('❯ Creator', data.creator.name, true)
-				.addField('❯ Creation Date', moment.utc(data.created_at * 1000).format('MM/DD/YYYY h:mm:ss A'), true)
-				.addField('❯ Deadline', moment.utc(data.deadline * 1000).format('MM/DD/YYYY h:mm:ss A'), true);
+				.addField('❯ Creation Date', moment.utc(data.created_at * 1000).format('MM/DD/YYYY h:mm A'), true)
+				.addField('❯ Deadline', moment.utc(data.deadline * 1000).format('MM/DD/YYYY h:mm A'), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

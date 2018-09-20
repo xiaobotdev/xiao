@@ -31,7 +31,7 @@ module.exports = class RoleInfoCommand extends Command {
 			.addField('❯ Name', role.name, true)
 			.addField('❯ ID', role.id, true)
 			.addField('❯ Color', role.hexColor.toUpperCase(), true)
-			.addField('❯ Creation Date', moment.utc(role.createdAt).format('MM/DD/YYYY h:mm:ss A'), true)
+			.addField('❯ Creation Date', moment.utc(role.createdAt).format('MM/DD/YYYY h:mm A'), true)
 			.addField('❯ Hoisted?', role.hoist ? 'Yes' : 'No', true)
 			.addField('❯ Mentionable?', role.mentionable ? 'Yes' : 'No', true)
 			.addField('❯ Permissions', perms.map(perm => permissions[perm]).join(', ') || 'None');

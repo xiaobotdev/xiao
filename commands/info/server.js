@@ -25,7 +25,7 @@ module.exports = class ServerInfoCommand extends Command {
 			.addField('❯ Name', msg.guild.name, true)
 			.addField('❯ ID', msg.guild.id, true)
 			.addField('❯ Region', msg.guild.region.toUpperCase(), true)
-			.addField('❯ Creation Date', moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm:ss A'), true)
+			.addField('❯ Creation Date', moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm A'), true)
 			.addField('❯ Explicit Filter', filterLevels[msg.guild.explicitContentFilter], true)
 			.addField('❯ Verification Level', verificationLevels[msg.guild.verificationLevel], true)
 			.addField('❯ Owner', msg.guild.owner.user.tag, true)
