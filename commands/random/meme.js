@@ -1,10 +1,9 @@
-const Command = require('../../structures/Command');
-const request = require('node-superfetch');
+const SubredditCommand = require('../../structures/commands/Subreddit');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
 const subreddits = require('../../assets/json/meme');
 
-module.exports = class MemeCommand extends Command {
+module.exports = class MemeCommand extends SubredditCommand {
 	constructor(client) {
 		super(client, {
 			name: 'meme',
@@ -13,6 +12,7 @@ module.exports = class MemeCommand extends Command {
 			description: 'Responds with a random meme.',
 			details: `**Subreddits:** ${subreddits.join(', ')}`,
 			clientPermissions: ['ATTACH_FILES'],
+			postType: 'image',
 			args: [
 				{
 					key: 'subreddit',
@@ -26,24 +26,10 @@ module.exports = class MemeCommand extends Command {
 		});
 	}
 
-	async run(msg, { subreddit }) {
-		try {
-			const { body } = await request
-				.get(`https://www.reddit.com/r/${subreddit}/top.json`)
-				.query({
-					sort: 'top',
-					t: 'day',
-					limit: 100
-				});
-			const posts = body.data.children.filter(post => post.data && post.data.post_hint === 'image' && post.data.url);
-			if (!posts.length) return msg.reply(`I couldn't fetch any images from r/${subreddit}...`);
-			const post = posts[Math.floor(Math.random() * posts.length)];
-			return msg.say(stripIndents`
-				**r/${subreddit}** ${post.data.title}
-				${post.data.url}
-			`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	generateText(post, subreddit) {
+		return stripIndents`
+			**r/${subreddit}** ${post.title}
+			${post.url}
+		`;
 	}
 };

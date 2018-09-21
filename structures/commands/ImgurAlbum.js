@@ -20,6 +20,10 @@ module.exports = class ImgurAlbumCommand extends Command {
 		}
 	}
 
+	generateText() {
+		throw new Error('The generateText method is required.');
+	}
+
 	async random() {
 		if (this.cache) return this.cache[Math.floor(Math.random() * this.cache.length)];
 		const { body } = await request
