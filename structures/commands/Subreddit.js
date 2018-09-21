@@ -12,9 +12,9 @@ module.exports = class SubredditCommand extends Command {
 	async run(msg, { subreddit }) {
 		if (!subreddit) subreddit = typeof this.subreddit === 'function' ? this.subreddit() : this.subreddit;
 		try {
-			const { post, subreddit } = await this.random(subreddit, msg.channel.nsfw);
-			if (!post) return msg.reply(`I couldn't fetch anything from r/${subreddit}...`);
-			return msg.say(this.generateText(post, subreddit));
+			const { post, origin } = await this.random(subreddit, msg.channel.nsfw);
+			if (!post) return msg.reply(`I couldn't fetch anything from r/${origin}...`);
+			return msg.say(this.generateText(post, origin));
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');
 			if (err.status === 404) return msg.say('Could not find any results.');
@@ -41,7 +41,7 @@ module.exports = class SubredditCommand extends Command {
 		});
 		if (!posts.length) return null;
 		return {
-			subreddit,
+			origin: subreddit,
 			post: posts[Math.floor(Math.random() * posts.length)].data
 		};
 	}
