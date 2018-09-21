@@ -12,7 +12,7 @@ module.exports = class SubredditCommand extends Command {
 	async run(msg, { subreddit }) {
 		if (!subreddit) subreddit = typeof this.subreddit === 'function' ? this.subreddit() : this.subreddit;
 		try {
-			const { post, subreddit } = await this.random(msg.channel.nsfw);
+			const { post, subreddit } = await this.random(subreddit, msg.channel.nsfw);
 			if (!post) return msg.reply(`I couldn't fetch anything from r/${subreddit}...`);
 			return msg.say(this.generateText(post, subreddit));
 		} catch (err) {
