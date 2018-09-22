@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const { list } = require('../../util/Util');
+const { list, firstUpperCase } = require('../../util/Util');
 const signs = require('../../assets/json/horoscope');
 
 module.exports = class HoroscopeCommand extends Command {
@@ -31,7 +31,7 @@ module.exports = class HoroscopeCommand extends Command {
 			const horoscope = await this.fetchHoroscope(sign);
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
-				.setTitle(`Horoscope for ${sign}...`)
+				.setTitle(`Horoscope for ${firstUpperCase(sign)}...`)
 				.setURL(`https://new.theastrologer.com/${sign}/`)
 				.setFooter('© Kelli Fox, The Astrologer')
 				.setTimestamp()
