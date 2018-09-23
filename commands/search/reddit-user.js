@@ -27,18 +27,18 @@ module.exports = class RedditUserCommand extends Command {
 		try {
 			const { body } = await request.get(`https://www.reddit.com/user/${user}/about.json`);
 			const { data } = body;
+			if (data.hide_from_robots) return msg.say('This user is hidden from bots.');
 			const embed = new MessageEmbed()
 				.setColor(0xFF4500)
 				.setAuthor('Reddit', 'https://i.imgur.com/DSBOK0P.png', 'https://www.reddit.com/')
 				.setThumbnail(data.icon_img)
+				.setURL(`https://www.reddit.com/user/${user}`)
 				.addField('❯ Username', data.name, true)
 				.addField('❯ ID', data.id, true)
 				.addField('❯ Karma', data.link_karma + data.comment_karma, true)
-				.addField('❯ Creation Date', moment.utc(data.created * 1000).format('MM/DD/YYYY h:mm A'), true)
+				.addField('❯ Creation Date', moment.utc(data.created_utc * 1000).format('MM/DD/YYYY h:mm A'), true)
 				.addField('❯ Gold?', data.is_gold ? 'Yes' : 'No', true)
-				.addField('❯ Verified?', data.verified ? 'Yes' : 'No', true)
-				.addField('❯ Suspended?', data.is_suspended ? 'Yes' : 'No', true)
-				.addField('❯ Over 18?', data.over_18 ? 'Yes' : 'No', true);
+				.addField('❯ Verified?', data.verified ? 'Yes' : 'No', true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
