@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (315)
+## Commands (316)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -154,6 +154,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **periodic-table:** Finds an element on the periodic table.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **recipe:** Searches for recipes based on your query.
+* **reddit-user:** Responds with information on a Reddit user.
 * **rotten-tomatoes:** Searches Rotten Tomatoes for your query.
 * **rule-of-the-internet:** Responds with a rule of the internet.
 * **safebooru:** Responds with an image from Safebooru, with optional query.
