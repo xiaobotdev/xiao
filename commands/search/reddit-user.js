@@ -33,7 +33,7 @@ module.exports = class RedditUserCommand extends Command {
 				.setAuthor('Reddit', 'https://i.imgur.com/DSBOK0P.png', 'https://www.reddit.com/')
 				.setThumbnail(data.icon_img)
 				.setURL(`https://www.reddit.com/user/${user}`)
-				.setTitle(`u/${data.name}`)
+				.setTitle(`/u/${data.name}`)
 				.addField('❯ Username', data.name, true)
 				.addField('❯ ID', data.id, true)
 				.addField('❯ Karma', data.link_karma + data.comment_karma, true)
