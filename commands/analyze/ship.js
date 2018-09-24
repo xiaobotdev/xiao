@@ -19,7 +19,8 @@ module.exports = class ShipCommand extends Command {
 					key: 'second',
 					label: 'second user',
 					prompt: 'Who is the second user in the ship?',
-					type: 'user'
+					type: 'user',
+					default: msg => msg.author
 				}
 			]
 		});
