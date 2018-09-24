@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class AvatarCommand extends Command {
 	constructor(client) {
@@ -20,7 +21,16 @@ module.exports = class AvatarCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		const formats = ['webp', 'png', 'jpg'];
 		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
-		return msg.say(user.displayAvatarURL({ format, size: 2048 }));
+		if (format === 'gif') formats.push('gif');
+		const embed = new MessageEmbed()
+			.setTitle(user.tag)
+			.setDescription(
+				formats.map(fmt => `[${fmt.toUpperCase()}](${user.displayAvatarURL({ format: fmt, size: 2048 })})`).join(' | ')
+			)
+			.setImage(user.displayAvatarURL({ format, size: 2048 }))
+			.setColor(0x00AE86);
+		return msg.embed(embed);
 	}
 };
