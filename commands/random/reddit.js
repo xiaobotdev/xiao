@@ -9,6 +9,7 @@ module.exports = class RedditCommand extends SubredditCommand {
 			group: 'random',
 			memberName: 'reddit',
 			description: 'Responds with a random post from a subreddit.',
+			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'subreddit',
@@ -24,8 +25,6 @@ module.exports = class RedditCommand extends SubredditCommand {
 		return stripIndents`
 			**r/${subreddit}** ${post.title}
 			${post.url}
-
-			⬆ ${post.ups} ⬇ ${post.downs}
 		`;
 	}
 };
