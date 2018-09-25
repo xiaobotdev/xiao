@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (317)
+## Commands (318)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -120,6 +120,7 @@ on the [home server](https://discord.gg/sbMe32W).
 
 ### Search:
 
+* **azur-lane-ship:** Responds with information on an Azur Lane ship.
 * **bulbapedia:** Searches Bulbapedia for your query.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
