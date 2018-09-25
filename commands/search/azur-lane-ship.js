@@ -53,7 +53,8 @@ module.exports = class AzurLaneShipCommand extends Command {
 					${body.equipment[1].equippable} (${body.equipment[1].efficiency})
 					${body.equipment[2].equippable} (${body.equipment[2].efficiency})
 				`)
-				.addField('❯ Images', `[Chibi](${body.chibi}), ${body.images.map(img => `[${img.name}](${img.url})`).join(', ')}`);
+				.addField('❯ Images',
+					`[Chibi](${body.chibi}), ${body.images.map(img => `[${img.name}](${img.url})`).join(', ')}`);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
