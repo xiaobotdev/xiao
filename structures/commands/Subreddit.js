@@ -13,7 +13,7 @@ module.exports = class SubredditCommand extends Command {
 		if (!subreddit) subreddit = typeof this.subreddit === 'function' ? this.subreddit() : this.subreddit;
 		try {
 			const post = await this.random(subreddit, msg.channel.nsfw);
-			if (!post) return msg.reply(`I couldn't fetch anything from r/${post.origin}...`);
+			if (!post) return msg.reply('Could not find any results.');
 			return msg.say(this.generateText(post.post, post.origin));
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');
