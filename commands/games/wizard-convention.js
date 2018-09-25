@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { Collection } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { shuffle, wait, awaitPlayers } = require('../../util/Util');
+const { shuffle, delay, awaitPlayers } = require('../../util/Util');
 const { questions, stories } = require('../../assets/json/wizard-convention');
 
 module.exports = class WizardConventionCommand extends Command {
@@ -90,7 +90,7 @@ module.exports = class WizardConventionCommand extends Command {
 						Who is this mysterious dragon? You have one minute to decide.
 					`);
 				}
-				await wait(60000);
+				await delay(60000);
 				const playersArr = Array.from(players.values());
 				await msg.say(stripIndents`
 					Who do you think is the dragon? Please type the number.
