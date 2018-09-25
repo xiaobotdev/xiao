@@ -39,7 +39,7 @@ module.exports = class AzurLaneShipCommand extends Command {
 				.addField('❯ Nationality', body.nationality, true)
 				.addField('❯ Type', body.type, true)
 				.addField('❯ Health', `${body.base.health} (${body.max.health} Max)`, true)
-				.addField('❯ Armor', `${body.base.armor} (${body.max.armor} Max)`, true)
+				.addField('❯ Armor', body.base.armor, true)
 				.addField('❯ Reload', `${body.base.reload} (${body.max.reload} Max)`, true)
 				.addField('❯ Firepower', `${body.base.firepower} (${body.max.firepower} Max)`, true)
 				.addField('❯ Torpedo', `${body.base.torpedo} (${body.max.torpedo} Max)`, true)
@@ -54,7 +54,7 @@ module.exports = class AzurLaneShipCommand extends Command {
 					${body.equipment[2].equippable} (${body.equipment[2].efficiency})
 				`)
 				.addField('❯ Images',
-					`[Chibi](${body.chibi}), ${body.images.map(img => `[${img.name}](${img.url})`).join(', ')}`);
+					`${body.images.map(img => `[${img.name}](${img.url})`).join(', ')}, [Chibi](${body.chibi})`);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
