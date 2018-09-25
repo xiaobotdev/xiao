@@ -34,6 +34,7 @@ module.exports = class SubredditCommand extends Command {
 				t: 'day',
 				limit: 100
 			});
+		if (!body.data.children.length) return null;
 		const posts = body.data.children.filter(post => {
 			if (!post.data) return false;
 			if (!nsfw && post.data.over_18) return false;
