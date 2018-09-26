@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (318)
+## Commands (320)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -44,6 +44,7 @@ on the [home server](https://discord.gg/sbMe32W).
 
 * **8-ball:** Asks your question to the Magic 8 Ball.
 * **advice-slip:** Responds with a random bit of advice.
+* **bird:** Responds with a random bird image.
 * **cat-fact:** Responds with a random cat fact.
 * **cat:** Responds with a random cat image.
 * **charlie-charlie-challenge:** Asks your question to Charlie.
@@ -80,6 +81,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **roast:** Roasts a user.
 * **roll:** Rolls a dice with a maximum value of your choice.
 * **security-key:** Responds with a random security key.
+* **shiba:** Responds with a random image of a Shiba Inu.
 * **shower-thought:** Responds with a random shower thought, directly from r/Showerthoughts.
 * **suggest-command:** Suggests a random command for you to try.
 * **superpower:** Responds with a random superpower.
