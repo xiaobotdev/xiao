@@ -15,8 +15,8 @@ module.exports = class BirdCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await request.get('http://random.birb.pw/tweet.json/');
-			return msg.say({ files: [{ attachment: `http://random.birb.pw/img/${body.file}`, name: body.file }] });
+			const { text } = await request.get('http://random.birb.pw/tweet.json/');
+			return msg.say({ files: [`https://random.birb.pw/img/${JSON.parse(text).file}`] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
