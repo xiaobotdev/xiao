@@ -48,14 +48,13 @@ module.exports = class AzurLaneShipCommand extends Command {
 				.addField('❯ Anti-Sub', `${body.base.anti_sub} (${body.max.anti_sub} Max)`, true)
 				.addField('❯ Aviation', `${body.base.air_power} (${body.max.air_power} Max)`, true)
 				.addField('❯ Oil Cost', `${body.base.oil_usage} (${body.max.oil_usage} Max)`, true)
-				.addField('❯ Speed', body.speed, true)
-				.addField('❯ Chibi', `[Here](${body.chibi})`, true)
 				.addField('❯ Equipment', stripIndents`
 					${body.equipment[0].equippable} (${body.equipment[0].efficiency})
 					${body.equipment[1].equippable} (${body.equipment[1].efficiency})
 					${body.equipment[2].equippable} (${body.equipment[2].efficiency})
 				`)
-				.addField('❯ Images', body.images.map(img => `[${img.name}](${img.url})`).join(', '));
+				.addField('❯ Images',
+					`${body.images.map(img => `[${img.name}](${img.url})`).join(', ')}, [Chibi](${body.chibi})`);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
