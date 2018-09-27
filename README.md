@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (320)
+## Commands (321)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -164,6 +164,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **stack-overflow:** Searches Stack Overflow for your query.
 * **steam:** Searches Steam for your query.
 * **stocks:** Responds with the current stocks for a specific symbol.
+* **tenor:** Searches Tenor for your query.
 * **tmdb-movie:** Searches TMDB for your query, getting movie results.
 * **tmdb-tv-show:** Searches TMDB for your query, getting TV show results.
 * **tumblr:** Responds with information on a Tumblr blog.
