@@ -2,7 +2,6 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { AZUR_LANE_SHIP_ROOT } = process.env;
 
 module.exports = class AzurLaneShipCommand extends Command {
 	constructor(client) {
@@ -15,46 +14,48 @@ module.exports = class AzurLaneShipCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'ship',
+					key: 'query',
 					prompt: 'What ship would you like to get information on?',
-					type: 'string',
-					parse: ship => encodeURIComponent(ship)
+					type: 'string'
 				}
 			]
 		});
 	}
 
-	async run(msg, { ship }) {
+	async run(msg, { query }) {
 		try {
-			const { body } = await request.get(`${AZUR_LANE_SHIP_ROOT}/${ship}`);
+			const { body } = await request
+				.get(`https://al-shipgirls.pw/shipyard/ship_info_detailed/`)
+				.query({ search: query });
+			const data = body[0];
 			const embed = new MessageEmbed()
 				.setColor(0x1A1917)
 				.setAuthor('Azur Lane', 'https://i.imgur.com/KeGXiZA.jpg', 'https://azurlane.yo-star.com')
-				.setTitle(`${body.names.en} (${body.class} Class)`)
-				.setURL(body.page_url)
-				.setThumbnail(body.icon)
-				.setFooter(`Ship #${body.id}`)
-				.addField('❯ Construction Time', body.construction_time, true)
-				.addField('❯ Rarity', body.rarity, true)
-				.addField('❯ Nationality', body.nationality, true)
-				.addField('❯ Type', body.type, true)
-				.addField('❯ Health', `${body.base.health} (${body.max.health} Max)`, true)
-				.addField('❯ Armor', body.base.armor, true)
-				.addField('❯ Reload', `${body.base.reload} (${body.max.reload} Max)`, true)
-				.addField('❯ Firepower', `${body.base.firepower} (${body.max.firepower} Max)`, true)
-				.addField('❯ Torpedo', `${body.base.torpedo} (${body.max.torpedo} Max)`, true)
-				.addField('❯ Evasion', `${body.base.speed} (${body.max.speed} Max)`, true)
-				.addField('❯ Anti-Air', `${body.base.anti_air} (${body.max.anti_air} Max)`, true)
-				.addField('❯ Anti-Sub', `${body.base.anti_sub} (${body.max.anti_sub} Max)`, true)
-				.addField('❯ Aviation', `${body.base.air_power} (${body.max.air_power} Max)`, true)
-				.addField('❯ Oil Cost', `${body.base.oil_usage} (${body.max.oil_usage} Max)`, true)
+				.setTitle(`${data.names.en} (${data.class} Class)`)
+				.setURL(data.page_url)
+				.setThumbnail(data.icon)
+				.setFooter(`Ship #${data.id}`)
+				.addField('❯ Construction Time', data.construction_time, true)
+				.addField('❯ Rarity', data.rarity, true)
+				.addField('❯ Nationality', data.nationality, true)
+				.addField('❯ Type', data.type, true)
+				.addField('❯ Health', `${data.base.health} (${data.max.health} Max)`, true)
+				.addField('❯ Armor', data.base.armor, true)
+				.addField('❯ Reload', `${data.base.reload} (${data.max.reload} Max)`, true)
+				.addField('❯ Firepower', `${data.base.firepower} (${data.max.firepower} Max)`, true)
+				.addField('❯ Torpedo', `${data.base.torpedo} (${data.max.torpedo} Max)`, true)
+				.addField('❯ Evasion', `${data.base.speed} (${data.max.speed} Max)`, true)
+				.addField('❯ Anti-Air', `${data.base.anti_air} (${data.max.anti_air} Max)`, true)
+				.addField('❯ Anti-Sub', `${data.base.anti_sub} (${data.max.anti_sub} Max)`, true)
+				.addField('❯ Aviation', `${data.base.air_power} (${data.max.air_power} Max)`, true)
+				.addField('❯ Oil Cost', `${data.base.oil_usage} (${data.max.oil_usage} Max)`, true)
 				.addField('❯ Equipment', stripIndents`
-					${body.equipment[0].equippable} (${body.equipment[0].efficiency})
-					${body.equipment[1].equippable} (${body.equipment[1].efficiency})
-					${body.equipment[2].equippable} (${body.equipment[2].efficiency})
+					${data.equipment[0].equippable} (${data.equipment[0].efficiency})
+					${data.equipment[1].equippable} (${data.equipment[1].efficiency})
+					${data.equipment[2].equippable} (${data.equipment[2].efficiency})
 				`)
 				.addField('❯ Images',
-					`${body.images.map(img => `[${img.name}](${img.url})`).join(', ')}, [Chibi](${body.chibi})`);
+					`${data.images.map(img => `[${img.name}](${img.url})`).join(', ')}, [Chibi](${data.chibi})`);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
