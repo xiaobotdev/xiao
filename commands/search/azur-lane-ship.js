@@ -27,7 +27,7 @@ module.exports = class AzurLaneShipCommand extends Command {
 			const { body } = await request
 				.get(`https://al-shipgirls.pw/shipyard/ship_info_detailed/`)
 				.query({ search: query });
-			const data = body[0];
+			const data = body[0].item;
 			const embed = new MessageEmbed()
 				.setColor(0x1A1917)
 				.setAuthor('Azur Lane', 'https://i.imgur.com/KeGXiZA.jpg', 'https://azurlane.yo-star.com')
