@@ -27,6 +27,7 @@ module.exports = class AzurLaneShipCommand extends Command {
 			const { body } = await request
 				.get(`https://al-shipgirls.pw/shipyard/ship_info_detailed/`)
 				.query({ search: query });
+			if (!body.length) return msg.say('Could not find any results.');
 			const data = body[0].item;
 			const embed = new MessageEmbed()
 				.setColor(0x1A1917)
@@ -58,7 +59,6 @@ module.exports = class AzurLaneShipCommand extends Command {
 					`${data.images.map(img => `[${img.name}](${img.url})`).join(', ')}, [Chibi](${data.chibi})`);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
