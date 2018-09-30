@@ -3,13 +3,13 @@ const request = require('node-superfetch');
 const { list, today, tomorrow } = require('../../util/Util');
 const { GOOGLE_KEY, GOOGLE_CALENDAR_ID, PERSONAL_GOOGLE_CALENDAR_ID } = process.env;
 
-module.exports = class HolidaysCommand extends Command {
+module.exports = class CalendarCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'holidays',
-			aliases: ['google-calendar', 'holiday', 'calendar', 'events'],
+			name: 'calendar',
+			aliases: ['google-calendar', 'holiday', 'holidays', 'events'],
 			group: 'events',
-			memberName: 'holidays',
+			memberName: 'calendar',
 			description: 'Responds with today\'s holidays.'
 		});
 	}
@@ -23,8 +23,9 @@ module.exports = class HolidaysCommand extends Command {
 				const personalEvents = await this.fetchHolidays(PERSONAL_GOOGLE_CALENDAR_ID);
 				if (personalEvents) events.push(...personalEvents);
 			}
-			if (!events.length) return msg.say('There are no events today...');
-			return msg.say(`Today's ${events.length === 1 ? 'event is' : `${events.length} events are`}: ${list(events)}.`);
+			if (!events.length) return msg.say('There are no holidays today...');
+			const holidays = list(events.map(event => `**${event}**`));
+			return msg.say(`Today${events.length === 1 ? ' is' : `'s holidays are`} ${holidays}!`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

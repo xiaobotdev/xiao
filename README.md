@@ -109,10 +109,10 @@ on the [home server](https://discord.gg/sbMe32W).
 ### Events:
 
 * **astronomy-picture-of-the-day:** Responds with today's Astronomy Picture of the Day.
+* **calendar:** Responds with today's holidays.
 * **days-until:** Responds with how many days there are until a certain date.
 * **doomsday-clock:** Responds with the current time of the Doomsday Clock.
 * **google-doodle:** Responds with a Google Doodle, either the latest one or a random one from the past.
-* **holidays:** Responds with today's holidays.
 * **horoscope:** Responds with today's horoscope for a specific Zodiac sign.
 * **humble-bundle:** Responds with the current Humble Bundle.
 * **neko-atsume-password:** Responds with today's Neko Atsume password.
