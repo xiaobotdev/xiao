@@ -13,6 +13,6 @@ module.exports = class IsTuesdayCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say(`Today is${isTuesday() ? '' : ' **not**'} Tuesday.`);
+		return msg.say(`Today **is${isTuesday() ? '' : ' not'}** Tuesday.`);
 	}
 };
