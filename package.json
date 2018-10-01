@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "91.14.3",
+	"version": "91.15.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -41,6 +41,7 @@
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^6.0.0",
 		"erlpack": "github:discordapp/erlpack",
+		"is-tuesday": "^1.0.0",
 		"mathjs": "^5.1.2",
 		"moment": "^2.22.2",
 		"moment-duration-format": "^2.2.2",
