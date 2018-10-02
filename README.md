@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (321)
+## Commands (322)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -328,6 +328,7 @@ on the [home server](https://discord.gg/sbMe32W).
 * **repeat:** Repeat text over and over and over and over (etc).
 * **reverse:** Reverses text.
 * **say:** Make me say what you want, master.
+* **sha-1:** Creates a hash of text with the SHA-1 algorithm.
 * **sha-256:** Creates a hash of text with the SHA-256 algorithm.
 * **ship-name:** Creates a ship name from two names.
 * **shorten-url:** Creates a goo.gl short URL from another URL.
