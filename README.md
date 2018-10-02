@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 The bot is no longer available for invite. You can self-host the bot, or use her
 on the [home server](https://discord.gg/sbMe32W).
 
-## Commands (322)
+## Commands (321)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -308,7 +308,6 @@ on the [home server](https://discord.gg/sbMe32W).
 * **brony-speak:** Converts text to brony speak.
 * **clap:** Sends 👏 text 👏 like 👏 this.
 * **cow-say:** Makes a cow say your text.
-* **cow-think:** Makes a cow think your text.
 * **cursive:** Converts text to cursive.
 * **dvorak:** Converts text to Dvorak encoding.
 * **embed:** Sends text in an embed.
