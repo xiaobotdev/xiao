@@ -21,7 +21,7 @@ module.exports = class CowSayCommand extends Command {
 
 	async run(msg, { text }) {
 		try {
-			const { body } = request
+			const { body } = await request
 				.get('http://cowsay.morecode.org/say')
 				.query({
 					message: text,
