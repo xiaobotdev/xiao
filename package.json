@@ -40,7 +40,7 @@
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^6.0.0",
 		"erlpack": "github:discordapp/erlpack",
-		"is-tuesday": "^1.0.1",
+		"is-tuesday": "^1.0.2",
 		"mathjs": "^5.1.2",
 		"moment": "^2.22.2",
 		"moment-duration-format": "^2.2.2",
