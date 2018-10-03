@@ -23,8 +23,8 @@ module.exports = class MessageInfoCommand extends Command {
 	run(msg, { message }) {
 		const embed = new MessageEmbed()
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
-			.setThumbnail(message.author.displayAvatarURL())
-			.setAuthor(msg.author.tag, msg.author.displayAvatarURL())
+			.setThumbnail(message.author.displayAvatarURL({ format: 'png' }))
+			.setAuthor(msg.author.tag, msg.author.displayAvatarURL({ format: 'png' }))
 			.setDescription(message.content)
 			.setTimestamp(message.createdAt)
 			.setFooter(`ID: ${message.id}`)

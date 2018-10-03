@@ -21,7 +21,7 @@ module.exports = class ServerInfoCommand extends Command {
 		if (!msg.guild.members.has(msg.guild.ownerID)) await msg.guild.members.fetch(msg.guild.ownerID);
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
-			.setThumbnail(msg.guild.iconURL())
+			.setThumbnail(msg.guild.iconURL({ format: 'png' }))
 			.addField('❯ Name', msg.guild.name, true)
 			.addField('❯ ID', msg.guild.id, true)
 			.addField('❯ Region', msg.guild.region.toUpperCase(), true)

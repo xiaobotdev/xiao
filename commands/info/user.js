@@ -31,7 +31,7 @@ module.exports = class UserInfoCommand extends Command {
 
 	async run(msg, { user }) {
 		const embed = new MessageEmbed()
-			.setThumbnail(user.displayAvatarURL())
+			.setThumbnail(user.displayAvatarURL({ format: 'png' }))
 			.addField('❯ Name', user.tag, true)
 			.addField('❯ ID', user.id, true)
 			.addField('❯ Discord Join Date', moment.utc(user.createdAt).format('MM/DD/YYYY h:mm A'), true)
