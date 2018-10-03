@@ -27,8 +27,8 @@ module.exports = class DarkThemeLightThemeCommand extends Command {
 	}
 
 	run(msg, { type }) {
-		return msg.say({ files: [
-			path.join(__dirname, '..', '..', 'assets', 'images', 'dark-theme-light-theme', `${type}.png`)
-		] });
+		return msg.say({
+			files: [path.join(__dirname, '..', '..', 'assets', 'images', 'dark-theme-light-theme', `${type}.png`)]
+		});
 	}
 };
