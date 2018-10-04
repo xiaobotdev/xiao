@@ -4,7 +4,7 @@ const { stripIndents } = require('common-tags');
 const moment = require('moment');
 require('moment-duration-format');
 const { list, tomorrow } = require('../../util/Util');
-const { GOLD_FISH_EMOJI_ID, SILVER_FISH_EMOJI_ID } = process.env;
+const { GOLD_FISH_EMOJI_ID, GOLD_FISH_EMOJI_NAME, SILVER_FISH_EMOJI_ID, SILVER_FISH_EMOJI_NAME } = process.env;
 const locales = ['en', 'jp'];
 
 module.exports = class NekoAtsumePasswordCommand extends Command {
@@ -58,10 +58,14 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 	}
 
 	get goldFishEmoji() {
-		return GOLD_FISH_EMOJI_ID ? `<:goldFish:${GOLD_FISH_EMOJI_ID}>` : 'Gold Fish';
+		return GOLD_FISH_EMOJI_ID && GOLD_FISH_EMOJI_NAME
+			? `<:${GOLD_FISH_EMOJI_NAME}:${GOLD_FISH_EMOJI_ID}>`
+			: 'Gold Fish';
 	}
 
 	get silverFishEmoji() {
-		return SILVER_FISH_EMOJI_ID ? `<:silverFish:${SILVER_FISH_EMOJI_ID}>` : 'Silver Fish';
+		return SILVER_FISH_EMOJI_ID && SILVER_FISH_EMOJI_ID
+			? `<:${SILVER_FISH_EMOJI_NAME}:${SILVER_FISH_EMOJI_ID}>`
+			: 'Silver Fish';
 	}
 };

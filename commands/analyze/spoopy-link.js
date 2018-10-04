@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { FAILURE_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
+const { FAILURE_EMOJI_ID, FAILURE_EMOJI_NAME, SUCCESS_EMOJI_ID, SUCCESS_EMOJI_NAME } = process.env;
 
 module.exports = class SpoopyLinkCommand extends Command {
 	constructor(client) {
@@ -24,11 +24,12 @@ module.exports = class SpoopyLinkCommand extends Command {
 	async run(msg, { site }) {
 		try {
 			const { body } = await request.get(`https://spoopy.link/api/${site}`);
+			const chain = body.chain.map(
+				url => `<${url.url}> ${url.safe ? this.successEmoji : `${this.failureEmoji} (${url.reasons.join(', ')})`}`
+			);
 			return msg.say(stripIndents`
 				${body.safe ? 'Safe!' : 'Not safe...'}
-				${body.chain.map(
-					url => `<${url.url}> ${url.safe ? this.successEmoji : `${this.failureEmoji} (${url.reasons.join(', ')})`}`
-				).join('\n')}
+				${chain.join('\n')}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -36,10 +37,10 @@ module.exports = class SpoopyLinkCommand extends Command {
 	}
 
 	get successEmoji() {
-		return SUCCESS_EMOJI_ID ? `<:success:${SUCCESS_EMOJI_ID}>` : '✅';
+		return SUCCESS_EMOJI_ID && SUCCESS_EMOJI_NAME ? `<:${SUCCESS_EMOJI_NAME}:${SUCCESS_EMOJI_ID}>` : '✅';
 	}
 
 	get failureEmoji() {
-		return FAILURE_EMOJI_ID ? `<:failure:${FAILURE_EMOJI_ID}>` : '❌';
+		return FAILURE_EMOJI_ID && FAILURE_EMOJI_NAME ? `<:${FAILURE_EMOJI_NAME}:${FAILURE_EMOJI_ID}>` : '❌';
 	}
 };
