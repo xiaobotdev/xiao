@@ -54,11 +54,23 @@ module.exports = class KnowYourMemeCommand extends Command {
 	async fetchMeme(location) {
 		const { text } = await request.get(`https://knowyourmeme.com${location}`);
 		const $ = cheerio.load(text);
+		const thumbnail = $('a[class="photo left wide"]').first().attr('href')
+			|| $('a[class="photo left "]').first().attr('href')
+			|| null;
 		return {
 			name: $('h1').first().text().trim(),
 			url: `https://knowyourmeme.com${location}`,
-			description: $('.bodycopy').children().eq(1).text(),
-			thumbnail: $('a[class="photo left wide"]').first().attr('href') || null
+			description: this.getMemeDescription($),
+			thumbnail
 		};
+	}
+
+	getMemeDescription($) {
+		const children = $('.bodycopy').first().children();
+		for (let i = 0; i < children.length; i++) {
+			const child = children.eq(i);
+			if (child.text() === 'About') return children.eq(i + 1).text();
+		}
+		return null;
 	}
 };
