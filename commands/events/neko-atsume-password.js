@@ -35,7 +35,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 				The current Neko Atsume password is **${data.password}**.
 				It will expire in **${moment.duration(data.expires - data.date).format('hh:mm:ss', { trim: false })}**.
 
-				${data.gold} ${this.goldFish} ${data.silver} ${this.silverFish}
+				${data.gold} ${this.goldFishEmoji} ${data.silver} ${this.silverFishEmoji}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -57,11 +57,11 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 		};
 	}
 
-	get goldFish() {
+	get goldFishEmoji() {
 		return GOLD_FISH_EMOJI_ID ? `<:goldFish:${GOLD_FISH_EMOJI_ID}>` : 'Gold Fish';
 	}
 
-	get silverFish() {
+	get silverFishEmoji() {
 		return SILVER_FISH_EMOJI_ID ? `<:silverFish:${SILVER_FISH_EMOJI_ID}>` : 'Silver Fish';
 	}
 };
