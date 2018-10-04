@@ -28,12 +28,8 @@ module.exports = class SubredditCommand extends Command {
 
 	async random(subreddit, nsfw) {
 		const { body } = await request
-			.get(`https://www.reddit.com/r/${subreddit}/top.json`)
-			.query({
-				sort: 'top',
-				t: 'day',
-				limit: 100
-			});
+			.get(`https://www.reddit.com/r/${subreddit}/hot.json`)
+			.query({ limit: 100 });
 		if (!body.data.children.length) return null;
 		const posts = body.data.children.filter(post => {
 			if (!post.data) return false;
