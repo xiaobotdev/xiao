@@ -6,7 +6,7 @@ module.exports = class SubredditCommand extends Command {
 		super(client, info);
 
 		this.subreddit = info.subreddit;
-		this.postType = info.postType;
+		this.postType = Array.isArray(info.postType) ? info.postType : [info.postType];
 	}
 
 	async run(msg, { subreddit }) {
@@ -38,7 +38,7 @@ module.exports = class SubredditCommand extends Command {
 		const posts = body.data.children.filter(post => {
 			if (!post.data) return false;
 			if (!nsfw && post.data.over_18) return false;
-			return (this.postType ? post.data.post_hint === this.postType : true) && post.data.url && post.data.title;
+			return (this.postType ? this.postType.includes(post.data.post_hint) : true) && post.data.url && post.data.title;
 		});
 		if (!posts.length) return null;
 		return {
