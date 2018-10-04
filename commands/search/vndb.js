@@ -52,7 +52,7 @@ module.exports = class VNDBCommand extends Command {
 
 	async fetchVN(id) {
 		const { text } = await request.get(`https://vndb.org/v${id}`);
-		const devID = text.match(/<a href="\/p([0-9]+)"/);
+		const devID = text.match(/<a href="\/p([0-9]+)"/)[1];
 		const developer = await this.fetchDeveloper(devID);
 		const description = text.match(/<h2>Description<\/h2><p>(.+)<\/p><\/td>/)[1]
 			.replace(/<br>/g, '\n')
