@@ -6,7 +6,7 @@ module.exports = class SubredditCommand extends Command {
 		super(client, info);
 
 		this.subreddit = info.subreddit;
-		this.postType = Array.isArray(info.postType) ? info.postType : [info.postType];
+		this.postType = info.postType ? Array.isArray(info.postType) ? info.postType : [info.postType] : null;
 	}
 
 	async run(msg, { subreddit }) {
