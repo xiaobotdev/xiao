@@ -24,8 +24,9 @@ module.exports = class VNDBCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const data = await this.fetchVN(query);
-			if (!data) return msg.say('Could not find any results.');
+			const id = await this.search(query);
+			if (!id) return msg.say('Could not find any results.');
+			const data = await this.fetchVN(id);
 			const embed = new MessageEmbed()
 				.setColor(0x000407)
 				.setAuthor('VNDB', 'https://i.imgur.com/BIxjIby.png', 'https://vndb.org/')
@@ -40,32 +41,37 @@ module.exports = class VNDBCommand extends Command {
 		}
 	}
 
-	async fetchVN(query) {
+	async search(query) {
 		const { text } = await request
 			.get('https://vndb.org/v/all')
 			.query({ q: query });
 		const id = text.match(/<a href="\/v([0-9]+)" title=/);
 		if (!id) return null;
-		const url = `https://vndb.org/v${id[1]}`;
-		const details = await request.get(url);
-		const detailsText = details.text;
-		const dev = detailsText.match(/<a href="\/p([0-9]+)"/);
-		const devURL = `https://vndb.org/p${dev[1]}`;
-		const devReq = await request.get(devURL);
-		const devText = devReq.text;
-		const description = detailsText.match(/<h2>Description<\/h2><p>(.+)<\/p><\/td>/)[1]
+		return id[1];
+	}
+
+	async fetchVN(id) {
+		const { text } = await request.get(`https://vndb.org/v${id}`);
+		const devID = text.match(/<a href="\/p([0-9]+)"/);
+		const developer = await this.fetchDeveloper(devID);
+		const description = text.match(/<h2>Description<\/h2><p>(.+)<\/p><\/td>/)[1]
 			.replace(/<br>/g, '\n')
 			.replace(/<a href="(.+)" rel="nofollow">(.+)<\/a>/g, '[$2]($1)');
 		return {
 			id: id[1],
-			url,
-			title: detailsText.match(/<title>(.+)<\/title>/)[1],
-			developer: {
-				name: devText.match(/<title>(.+)<\/title>/)[1],
-				url: devURL
-			},
+			url: `https://vndb.org/v${id}`,
+			title: text.match(/<title>(.+)<\/title>/)[1],
+			developer,
 			description: description === '-' ? null : description,
-			image: detailsText.match(/https:\/\/s.vndb.org\/cv\/[0-9]+\/[0-9]+\.jpg/)[0]
+			image: text.match(/https:\/\/s.vndb.org\/cv\/[0-9]+\/[0-9]+\.jpg/)[0]
+		};
+	}
+
+	async fetchDeveloper(id) {
+		const { text } = await request.get(`https://vndb.org/p${id}`);
+		return {
+			name: text.match(/<title>(.+)<\/title>/)[1],
+			url: `https://vndb.org/p${id}`
 		};
 	}
 };
