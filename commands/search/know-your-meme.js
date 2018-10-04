@@ -69,7 +69,7 @@ module.exports = class KnowYourMemeCommand extends Command {
 		const children = $('.bodycopy').first().children();
 		for (let i = 0; i < children.length; i++) {
 			const child = children.eq(i);
-			if (child.text() === 'About') return children.eq(i + 1).text();
+			if (child.text() === 'About') return children.eq(i + 1).text() || children.eq(i + 2).text();
 		}
 		return null;
 	}
