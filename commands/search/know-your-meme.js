@@ -72,7 +72,7 @@ module.exports = class KnowYourMemeCommand extends Command {
 			const text = children.eq(i).text();
 			if (foundAbout) {
 				if (text) return text;
-			} else if (foundAbout) {
+			} else if (text === 'About') {
 				foundAbout = true;
 			}
 		}
