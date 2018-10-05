@@ -67,13 +67,13 @@ module.exports = class KnowYourMemeCommand extends Command {
 
 	getMemeDescription($) {
 		const children = $('.bodycopy').first().children();
+		let foundAbout = false;
 		for (let i = 0; i < children.length; i++) {
-			const child = children.eq(i);
-			if (child.text() === 'About') {
-				for (let j = i + 1; j < children.length; j++) {
-					const text = children.eq(j).text();
-					if (text) return text;
-				}
+			const text = children.eq(i).text();
+			if (foundAbout) {
+				if (text) return text;
+			} else if (foundAbout) {
+				foundAbout = true;
 			}
 		}
 		return null;
