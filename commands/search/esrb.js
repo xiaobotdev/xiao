@@ -59,10 +59,11 @@ module.exports = class ESRBCommand extends Command {
 		const result = $('table').first().children().eq(1).children();
 		if (!result.length) return null;
 		const image = result.find('td[data-title="Ratings"]').first().find('img').attr('src');
+		const descriptors = result.find('td[data-title="Content Descriptors"]').first().children().first().text().trim();
 		return {
 			title: result.find('td[data-title="Title"]').first().text().trim(),
 			rating: image.match(/(EC|E|E10plus|T|M|AO)\.png/i)[1],
-			descriptors: result.find('td[data-title="Content Descriptors"]').first().text().trim().split(', '),
+			descriptors: descriptors.split(', '),
 			summary: result.find('td[style="border-width: 0 3px 0 0; padding: 10px;"]').first().text().trim() || null,
 			image
 		};
