@@ -2,13 +2,14 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { shorten } = require('../../util/Util');
 const { SOUNDCLOUD_KEY } = process.env;
 
 module.exports = class SoundcloudCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'soundcloud',
-			aliases: ['soundcloud-song', 'soundcloud-music'],
+			aliases: ['soundcloud-song', 'soundcloud-music', 'scloud', 'scloud-song', 'scloud-music'],
 			group: 'search',
 			memberName: 'soundcloud',
 			description: 'Searches SoundCloud for your query.',
@@ -39,7 +40,7 @@ module.exports = class SoundcloudCommand extends Command {
 				.setURL(data.permalink_url)
 				.setThumbnail(data.artwork_url)
 				.setTitle(data.title)
-				.setDescription(data.description || 'No description available.')
+				.setDescription(data.description ? shorten(data.description) : 'No description available.')
 				.addField('❯ Artist', `[${data.user.username}](${data.user.permalink_url})`, true)
 				.addField('❯ Release Date', moment.utc(data.created_at).format('MM/DD/YYYY'), true)
 				.addField('❯ Genre', data.genre, true)
