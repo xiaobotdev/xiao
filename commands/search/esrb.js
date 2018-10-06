@@ -37,7 +37,7 @@ module.exports = class ESRBCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x231F20)
 				.setAuthor('ESRB', 'https://i.imgur.com/dV2BamF.jpg', 'https://www.esrb.org/')
-				.setTitle(data.title)
+				.setTitle(`${data.title} (${data.platforms.join(', ')})`)
 				.setDescription(data.summary || 'No summary available.')
 				.setThumbnail(data.image)
 				.addField('❯ Rating', ratings[data.rating], true)
@@ -62,6 +62,7 @@ module.exports = class ESRBCommand extends Command {
 		const descriptors = result.find('td[data-title="Content Descriptors"]').first().children().first().text().trim();
 		return {
 			title: result.find('td[data-title="Title"]').first().text().trim(),
+			platforms: result.find('td[data-title="Platforms"]').first().text().trim().split(', '),
 			rating: image.match(/(EC|E|E10plus|T|M|AO)\.png/i)[1],
 			descriptors: descriptors.split(', '),
 			summary: result.find('td[style="border-width: 0 3px 0 0; padding: 10px;"]').first().text().trim() || null,
