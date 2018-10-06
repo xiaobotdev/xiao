@@ -1,10 +1,10 @@
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Xiao" src="https://i.imgur.com/R0D0f39.png">  
+
 # Xiao
 [![Build Status](https://travis-ci.org/dragonfire535/xiao.svg?branch=master)](https://travis-ci.org/dragonfire535/xiao)
 [![Discord Server](https://discordapp.com/api/guilds/252317073814978561/embed.png)](https://discord.gg/sbMe32W)
 [![Donate on Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/dragonfire535)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
-
-> This bot is not available for invite.
 
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
@@ -12,8 +12,8 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-rich bots out there.
 
 ## Invite
-The bot is no longer available for invite. You can self-host the bot, or use her
-on the [home server](https://discord.gg/sbMe32W).
+Xiao is no longer available for invite. You can self-host the bot, or use her on
+the [home server](https://discord.gg/sbMe32W).
 
 ## Commands (325)
 ### Utility:
