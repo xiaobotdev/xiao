@@ -95,7 +95,7 @@ the [home server](https://discord.gg/sbMe32W).
 * **can-you-not:** Can YOU not?
 * **dark-theme-light-theme:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
-* **eggs-get-laid:**: Sends the ultimate roast.
+* **eggs-get-laid:** Sends the ultimate roast.
 * **fly:** Sends a fake fly that looks surprisngly real.
 * **give-flower:** Gives Xiao Pai a flower.
 * **hi:** Hello.
@@ -261,8 +261,8 @@ the [home server](https://discord.gg/sbMe32W).
 * **invert:** Draws an image or a user's avatar but inverted.
 * **meme-gen:** Sends a meme with the text and background of your choice.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
-* **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
+* **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **osu-signature:** Creates a card based on an osu! user's stats.
 * **pixelize:** Draws an image or a user's avatar pixelized.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
@@ -352,8 +352,8 @@ the [home server](https://discord.gg/sbMe32W).
 
 * **character-count:** Responds with the character count of text.
 * **currency:** Converts currency from one currency to another.
-* **grade:** Determines your grade on an assignment on an 100-point scale.
 * **final-grade:** Determines the grade you need to make on your final to get your desired course grade.
+* **grade:** Determines your grade on an assignment on an 100-point scale.
 * **gravity:** Determines weight on another planet.
 * **math:** Evaluates a math expression.
 * **prime:** Determines if a number is a prime number.
