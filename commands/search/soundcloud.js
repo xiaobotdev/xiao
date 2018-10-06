@@ -9,7 +9,7 @@ module.exports = class SoundcloudCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'soundcloud',
-			aliases: ['soundcloud-song', 'soundcloud-music', 'scloud', 'scloud-song', 'scloud-music'],
+			aliases: ['soundcloud-song', 'soundcloud-music', 'scloud', 'scloud-song', 'scloud-music', 'sc'],
 			group: 'search',
 			memberName: 'soundcloud',
 			description: 'Searches SoundCloud for your query.',
