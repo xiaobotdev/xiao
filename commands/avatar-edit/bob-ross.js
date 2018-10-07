@@ -28,7 +28,7 @@ module.exports = class BobRossCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'bob-ross.png'));
 			const { body } = await request.get(avatarURL);
@@ -38,7 +38,7 @@ module.exports = class BobRossCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
 			ctx.rotate(3 * (Math.PI / 180));
-			ctx.drawImage(avatar, 69, 102, 256, 256);
+			ctx.drawImage(avatar, 30, 19, 430, 430);
 			ctx.rotate(-3 * (Math.PI / 180));
 			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bob-ross.png' }] });
