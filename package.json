@@ -41,7 +41,7 @@
 		"dotenv": "^6.0.0",
 		"erlpack": "github:discordapp/erlpack",
 		"is-tuesday": "^1.0.2",
-		"mathjs": "^5.1.2",
+		"mathjs": "^5.2.0",
 		"moment": "^2.22.2",
 		"moment-duration-format": "^2.2.2",
 		"moment-timezone": "^0.5.21",
