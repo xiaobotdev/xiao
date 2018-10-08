@@ -60,8 +60,3 @@ client.on('warn', warn => client.logger.warn(warn));
 client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));
 
 client.login(XIAO_TOKEN);
-
-process.on('unhandledRejection', err => {
-	client.logger.error(`[FATAL] UNHANDLED PROMISE REJECTION:\n${err.stack}`);
-	process.exit(1);
-});
