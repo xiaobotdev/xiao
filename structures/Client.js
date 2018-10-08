@@ -11,7 +11,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.logger = winston.createLogger({
 			transports: [new winston.transports.Console()],
 			format: winston.format.combine(
-				winston.format.colorize({ all: true }),
 				winston.format.timestamp({ format: 'MM/DD/YYYY HH:mm:ss' }),
 				winston.format.printf(log => `[${log.timestamp}] [${log.level.toUpperCase()}]: ${log.message}`)
 			)
