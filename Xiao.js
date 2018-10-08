@@ -41,7 +41,7 @@ client.registry
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', () => {
-	console.log(`[READY] Logged in as ${client.user.tag}! (${client.user.id})`);
+	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
 	client.setInterval(() => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
 		client.user.setActivity(activity.text, { type: activity.type });
@@ -49,19 +49,19 @@ client.on('ready', () => {
 });
 
 client.on('disconnect', event => {
-	console.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
+	client.logger.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	process.exit(0);
 });
 
-client.on('error', err => console.error('[ERROR]', err));
+client.on('error', err => client.logger.error(err));
 
-client.on('warn', err => console.warn('[WARNING]', err));
+client.on('warn', warn => client.logger.warn(warn));
 
-client.on('commandError', (command, err) => console.error('[COMMAND ERROR]', command.name, err));
+client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));
 
 client.login(XIAO_TOKEN);
 
 process.on('unhandledRejection', err => {
-	console.error('[FATAL] Unhandled Promise Rejection.', err);
+	client.logger.error(`[FATAL] UNHANDLED PROMISE REJECTION:\n${err.stack}`);
 	process.exit(1);
 });
