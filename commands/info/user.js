@@ -30,7 +30,7 @@ module.exports = class UserInfoCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const format = msg.author.avatar && msg.author.avatar.startsWith('a_') ? 'gif' : 'png';
+		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
 		const embed = new MessageEmbed()
 			.setThumbnail(user.displayAvatarURL({ format }))
 			.addField('❯ Name', user.tag, true)
