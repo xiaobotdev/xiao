@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 Xiao is no longer available for invite. You can self-host the bot, or use her on
 the [home server](https://discord.gg/sbMe32W).
 
-## Commands (326)
+## Commands (327)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -262,6 +262,7 @@ the [home server](https://discord.gg/sbMe32W).
 * **meme-gen:** Sends a meme with the text and background of your choice.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
+* **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **osu-signature:** Creates a card based on an osu! user's stats.
 * **pixelize:** Draws an image or a user's avatar pixelized.
