@@ -21,7 +21,7 @@ module.exports = class MessageInfoCommand extends Command {
 	}
 
 	run(msg, { message }) {
-		const format = msg.author.avatar && msg.author.avatar.startsWith('a_') ? 'gif' : 'png';
+		const format = message.author.avatar && message.author.avatar.startsWith('a_') ? 'gif' : 'png';
 		const embed = new MessageEmbed()
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
 			.setThumbnail(message.author.displayAvatarURL({ format }))
