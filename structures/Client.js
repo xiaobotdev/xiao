@@ -1,7 +1,7 @@
 const { CommandoClient } = require('discord.js-commando');
 const { WebhookClient } = require('discord.js');
 const winston = require('winston');
-const PokemonStore = require('./PokemonStore');
+const PokemonStore = require('./pokemon/PokemonStore');
 const { XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
