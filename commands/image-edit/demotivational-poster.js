@@ -25,12 +25,14 @@ module.exports = class DemotivationalPosterCommand extends Command {
 					key: 'title',
 					prompt: 'What should the title of the poster be?',
 					type: 'string',
+					max: 50,
 					parse: title => title.toUpperCase()
 				},
 				{
 					key: 'text',
 					prompt: 'What should the text of the poster be?',
-					type: 'string'
+					type: 'string',
+					max: 100
 				},
 				{
 					key: 'image',

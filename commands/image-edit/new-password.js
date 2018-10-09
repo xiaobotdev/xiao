@@ -23,12 +23,14 @@ module.exports = class NewPasswordCommand extends Command {
 				{
 					key: 'weak',
 					prompt: 'What should the text of the weak password be?',
-					type: 'string'
+					type: 'string',
+					max: 50
 				},
 				{
 					key: 'strong',
 					prompt: 'What should the text of the strong password be?',
-					type: 'string'
+					type: 'string',
+					max: 50
 				}
 			]
 		});
