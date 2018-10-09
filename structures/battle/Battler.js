@@ -1,7 +1,7 @@
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
-const choices = ['fight', 'guard', 'special', 'run'];
-const botChoices = ['fight', 'guard', 'special'];
+const choices = ['attack', 'defend', 'special', 'run'];
+const botChoices = ['attack', 'defend', 'special'];
 
 module.exports = class Battler {
 	constructor(battle, user) {
@@ -9,7 +9,7 @@ module.exports = class Battler {
 		this.user = user;
 		this.bot = user.bot;
 		this.hp = 500;
-		this.guarding = false;
+		this.guard = false;
 	}
 
 	async chooseAction(msg) {
@@ -34,8 +34,8 @@ module.exports = class Battler {
 	}
 
 	changeGuard() {
-		this.guarding = !this.guarding;
-		return this.guarding;
+		this.guard = !this.guard;
+		return this.guard;
 	}
 
 	forfeit() {
