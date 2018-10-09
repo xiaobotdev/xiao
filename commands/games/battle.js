@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { stripIndents } = require('common-tags');
+const Battle = require('../../structures/battle/Battle');
 const { randomRange, verify } = require('../../util/Util');
 
 module.exports = class BattleCommand extends Command {
@@ -20,13 +20,14 @@ module.exports = class BattleCommand extends Command {
 			]
 		});
 
-		this.fighting = new Set();
+		this.battles = new Map();
 	}
 
-	async run(msg, { opponent }) { // eslint-disable-line complexity
+	async run(msg, { opponent }) {
 		if (opponent.id === msg.author.id) return msg.reply('You may not fight yourself.');
-		if (this.fighting.has(msg.channel.id)) return msg.reply('Only one fight may be occurring per channel.');
-		this.fighting.add(msg.channel.id);
+		if (this.battles.has(msg.channel.id)) return msg.reply('Only one fight may be occurring per channel.');
+		this.battles.set(msg.channel.id, new Battle(msg.author, opponent));
+		const battle = this.battles.get(msg.channel.id);
 		try {
 			if (!opponent.bot) {
 				await msg.say(`${opponent}, do you accept this challenge?`);
@@ -36,79 +37,42 @@ module.exports = class BattleCommand extends Command {
 					return msg.say('Looks like they declined...');
 				}
 			}
-			let userHP = 500;
-			let oppoHP = 500;
-			let userTurn = false;
-			let guard = false;
-			const reset = (changeGuard = true) => {
-				userTurn = !userTurn;
-				if (changeGuard && guard) guard = false;
-			};
-			const dealDamage = damage => {
-				if (userTurn) oppoHP -= damage;
-				else userHP -= damage;
-			};
-			const forfeit = () => {
-				if (userTurn) userHP = 0;
-				else oppoHP = 0;
-			};
-			while (userHP > 0 && oppoHP > 0) { // eslint-disable-line no-unmodified-loop-condition
-				const user = userTurn ? msg.author : opponent;
-				let choice;
-				if (!opponent.bot || (opponent.bot && userTurn)) {
-					await msg.say(stripIndents`
-						${user}, do you **fight**, **guard**, **special**, or **run**?
-						**${msg.author.username}:** ${userHP}HP
-						**${opponent.username}:** ${oppoHP}HP
-					`);
-					const filter = res =>
-						res.author.id === user.id && ['fight', 'guard', 'special', 'run'].includes(res.content.toLowerCase());
-					const turn = await msg.channel.awaitMessages(filter, {
-						max: 1,
-						time: 30000
-					});
-					if (!turn.size) {
-						await msg.say('Sorry, time is up!');
-						reset();
-						continue;
-					}
-					choice = turn.first().content.toLowerCase();
-				} else {
-					const choices = ['fight', 'guard', 'special'];
-					choice = choices[Math.floor(Math.random() * choices.length)];
-				}
+			while (!battle.winner) {
+				const choice = await battle.attacker.chooseAction();
 				if (choice === 'fight') {
-					const damage = Math.floor(Math.random() * (guard ? 10 : 100)) + 1;
-					await msg.say(`${user} deals **${damage}** damage!`);
-					dealDamage(damage);
-					reset();
+					const damage = Math.floor(Math.random() * (battle.defender.guarding ? 5 : 50)) + 1;
+					await msg.say(`${battle.attacker} deals **${damage}** damage!`);
+					battle.defender.dealDamage(damage);
+					battle.reset();
 				} else if (choice === 'guard') {
-					await msg.say(`${user} guards!`);
-					guard = true;
-					reset(false);
+					await msg.say(`${battle.attacker} guards!`);
+					battle.attacker.changeGuard();
+					battle.reset(false);
 				} else if (choice === 'special') {
-					const miss = Math.floor(Math.random() * 4);
+					const miss = Math.floor(Math.random() * 3);
 					if (miss) {
-						await msg.say(`${user}'s attack missed!`);
+						await msg.say(`${battle.attacker}'s attack missed!`);
 					} else {
-						const damage = randomRange(100, guard ? 150 : 300);
-						await msg.say(`${user} deals **${damage}** damage!`);
-						dealDamage(damage);
+						const damage = randomRange(battle.defender.guarding ? 50 : 100, battle.defender.guarding ? 100 : 200);
+						await msg.say(`${battle.attacker} deals **${damage}** damage!`);
+						battle.defender.dealDamage(damage);
 					}
-					reset();
+					battle.reset();
 				} else if (choice === 'run') {
-					await msg.say(`${user} flees!`);
-					forfeit();
-					break;
+					await msg.say(`${battle.attacker} flees!`);
+					battle.attacker.forfeit();
+				} else if (choice === 'failed:time') {
+					await msg.say(`Time's up, ${battle.attacker}!`);
+					battle.reset();
 				} else {
 					await msg.say('I do not understand what you want to do.');
 				}
 			}
-			this.fighting.delete(msg.channel.id);
-			const winner = userHP > oppoHP ? msg.author : opponent;
+			const { winner } = battle;
+			this.battles.delete(msg.channel.id);
 			return msg.say(`The match is over! Congrats, ${winner}!`);
 		} catch (err) {
-			this.fighting.delete(msg.channel.id);
+			this.battles.delete(msg.channel.id);
 			throw err;
 		}
 	}
