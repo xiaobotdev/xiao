@@ -21,10 +21,11 @@ module.exports = class MessageInfoCommand extends Command {
 	}
 
 	run(msg, { message }) {
+		const format = msg.author.avatar && msg.author.avatar.startsWith('a_') ? 'gif' : 'png';
 		const embed = new MessageEmbed()
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
-			.setThumbnail(message.author.displayAvatarURL({ format: 'png' }))
-			.setAuthor(msg.author.tag, msg.author.displayAvatarURL({ format: 'png' }))
+			.setThumbnail(message.author.displayAvatarURL({ format }))
+			.setAuthor(msg.author.tag, msg.author.displayAvatarURL({ format }))
 			.setDescription(message.content)
 			.setTimestamp(message.createdAt)
 			.setFooter(`ID: ${message.id}`)
