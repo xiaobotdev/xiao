@@ -16,8 +16,8 @@ module.exports = class Battle {
 	}
 
 	reset(changeGuard = true) {
-		if (changeGuard && this.user.guarding) this.user.changeGuard();
-		if (changeGuard && this.opponent.guarding) this.opponent.changeGuard();
+		if (changeGuard && this.user.guard) this.user.changeGuard();
+		if (changeGuard && this.opponent.guard) this.opponent.changeGuard();
 		this.userTurn = !this.userTurn;
 		return null;
 	}
