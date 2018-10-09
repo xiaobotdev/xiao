@@ -40,7 +40,7 @@ module.exports = class BattleCommand extends Command {
 			while (!battle.winner) {
 				const choice = await battle.attacker.chooseAction(msg);
 				if (choice === 'fight') {
-					const damage = Math.floor(Math.random() * (battle.defender.guarding ? 5 : 50)) + 1;
+					const damage = randomRange(battle.defender.guarding ? 5 : 20, battle.defender.guarding ? 20 : 50);
 					await msg.say(`${battle.attacker} deals **${damage}** damage!`);
 					battle.defender.dealDamage(damage);
 					battle.reset();
