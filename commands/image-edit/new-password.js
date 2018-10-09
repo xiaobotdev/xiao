@@ -40,8 +40,8 @@ module.exports = class NewPasswordCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.font = '25px Noto';
-		ctx.fillText(shortenText(ctx, weak, 400), 48, 113);
-		ctx.fillText(shortenText(ctx, strong, 400), 48, 351);
+		ctx.fillText(shortenText(ctx, weak, 390), 40, 113);
+		ctx.fillText(shortenText(ctx, strong, 390), 40, 351);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'new-password.png' }] });
 	}
 };
