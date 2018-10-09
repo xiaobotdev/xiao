@@ -21,7 +21,8 @@ module.exports = class AchievementCommand extends Command {
 				{
 					key: 'text',
 					prompt: 'What should the text of the achievement be?',
-					type: 'string'
+					type: 'string',
+					max: 50
 				}
 			]
 		});
