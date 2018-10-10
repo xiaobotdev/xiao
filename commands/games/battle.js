@@ -53,7 +53,7 @@ module.exports = class BattleCommand extends Command {
 					if (miss) {
 						await msg.say(`${battle.attacker}'s special attack missed!`);
 					} else {
-						const damage = randomRange(battle.defender.guard ? 50 : 100, battle.defender.guard ? 100 : 200);
+						const damage = randomRange(battle.defender.guard ? 50 : 100, battle.defender.guard ? 100 : 150);
 						await msg.say(`${battle.attacker} deals **${damage}** damage!`);
 						battle.defender.dealDamage(damage);
 					}
@@ -61,12 +61,12 @@ module.exports = class BattleCommand extends Command {
 					battle.reset();
 				} else if (choice === 'cure') {
 					await msg.say(`${battle.attacker} heals **${battle.attacker.mp}** HP!`);
-					battle.attacker.heal(battle.attacker.mp);
+					battle.attacker.heal(Math.round(battle.attacker.mp / 2));
 					battle.attacker.useMP(battle.attacker.mp);
 					battle.reset();
 				} else if (choice === 'final') {
-					await msg.say(`${battle.attacker} uses their final move, dealing **100** damage!`);
-					battle.defender.dealDamage(100);
+					await msg.say(`${battle.attacker} uses their final move, dealing **150** damage!`);
+					battle.defender.dealDamage(150);
 					battle.attacker.useMP(100);
 					battle.attacker.usedFinal = true;
 					battle.reset();
