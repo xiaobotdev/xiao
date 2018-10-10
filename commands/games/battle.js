@@ -60,8 +60,9 @@ module.exports = class BattleCommand extends Command {
 					battle.attacker.useMP(50);
 					battle.reset();
 				} else if (choice === 'cure') {
-					await msg.say(`${battle.attacker} heals **${battle.attacker.mp}** HP!`);
-					battle.attacker.heal(Math.round(battle.attacker.mp / 2));
+					const amount = Math.round(battle.attacker.mp / 2);
+					await msg.say(`${battle.attacker} heals **${amount}** HP!`);
+					battle.attacker.heal(amount);
 					battle.attacker.useMP(battle.attacker.mp);
 					battle.reset();
 				} else if (choice === 'final') {
