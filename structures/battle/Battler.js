@@ -16,7 +16,7 @@ module.exports = class Battler {
 		if (this.bot) {
 			const botChoices = ['attack', 'attack', 'defend'];
 			if (this.canSpecial) botChoices.push('special');
-			if (this.canHeal) botChoices.push('cure');
+			if (this.canHeal && this.hp < 200) botChoices.push('cure');
 			return botChoices[Math.floor(Math.random() * botChoices.length)];
 		}
 		let content = stripIndents`
