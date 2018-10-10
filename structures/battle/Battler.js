@@ -1,7 +1,6 @@
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
 const choices = ['attack', 'defend', 'special', 'cure', 'run'];
-const botChoices = ['attack', 'defend', 'special', 'cure'];
 
 module.exports = class Battler {
 	constructor(battle, user) {
@@ -14,7 +13,12 @@ module.exports = class Battler {
 	}
 
 	async chooseAction(msg) {
-		if (this.bot) return botChoices[Math.floor(Math.random() * botChoices.length)];
+		if (this.bot) {
+			const botChoices = ['attack', 'defend'];
+			if (this.canSpecial) botChoices.push('special');
+			if (this.canHeal) botChoices.push('cure');
+			return botChoices[Math.floor(Math.random() * botChoices.length)];
+		}
 		let content = stripIndents`
 			${this}, do you ${list(choices.map(choice => `**${choice}**`), 'or')}? You have **${this.mp}** MP.
 			**${this.battle.user.user.tag}:** ${this.battle.user.hp} HP
@@ -27,7 +31,7 @@ module.exports = class Battler {
 		const filter = res => {
 			const choice = res.content.toLowerCase();
 			if (res.author.id === this.user.id && choices.includes(choice)) {
-				if ((choice === 'special' && this.mp < 50) || (choice === 'cure' && this.mp <= 0)) {
+				if ((choice === 'special' && !this.canSpecial) || (choice === 'cure' && !this.canHeal)) {
 					msg.say('You don\'t have enough MP for that!').catch(() => null);
 					return false;
 				}
@@ -51,6 +55,14 @@ module.exports = class Battler {
 	heal(amount) {
 		this.hp += amount;
 		return this.hp;
+	}
+
+	get canHeal() {
+		return this.mp > 0;
+	}
+
+	get canSpecial() {
+		return this.mp >= 50;
 	}
 
 	useMP(amount) {
