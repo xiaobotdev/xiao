@@ -14,7 +14,7 @@ module.exports = class Battler {
 
 	async chooseAction(msg) {
 		if (this.bot) {
-			const botChoices = ['attack', 'defend'];
+			const botChoices = ['attack', 'attack', 'defend'];
 			if (this.canSpecial) botChoices.push('special');
 			if (this.canHeal) botChoices.push('cure');
 			return botChoices[Math.floor(Math.random() * botChoices.length)];
