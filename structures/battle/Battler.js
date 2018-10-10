@@ -1,6 +1,6 @@
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
-const choices = ['attack', 'defend', 'special', 'cure', 'run'];
+const choices = ['attack', 'defend', 'special', 'cure', 'final', 'run'];
 
 module.exports = class Battler {
 	constructor(battle, user) {
@@ -14,6 +14,7 @@ module.exports = class Battler {
 
 	async chooseAction(msg) {
 		if (this.bot) {
+			if (this.canFinal) return 'final';
 			const botChoices = ['attack', 'attack', 'defend'];
 			if (this.canSpecial) botChoices.push('special');
 			if (this.canHeal && this.hp < 200) botChoices.push('cure');
@@ -33,6 +34,10 @@ module.exports = class Battler {
 			if (res.author.id === this.user.id && choices.includes(choice)) {
 				if ((choice === 'special' && !this.canSpecial) || (choice === 'cure' && !this.canHeal)) {
 					msg.say('You don\'t have enough MP for that!').catch(() => null);
+					return false;
+				}
+				if (choice === 'final' && !this.canFinal) {
+					msg.say('To use your final attack, you must have under 100 HP and over 100 MP.').catch(() => null);
 					return false;
 				}
 				return true;
@@ -57,14 +62,6 @@ module.exports = class Battler {
 		return this.hp;
 	}
 
-	get canHeal() {
-		return this.mp > 0;
-	}
-
-	get canSpecial() {
-		return this.mp >= 50;
-	}
-
 	useMP(amount) {
 		this.mp -= amount;
 		return this.mp;
@@ -78,6 +75,18 @@ module.exports = class Battler {
 	forfeit() {
 		this.hp = 0;
 		return null;
+	}
+
+	get canHeal() {
+		return this.mp > 0;
+	}
+
+	get canSpecial() {
+		return this.mp >= 50;
+	}
+
+	get canFinal() {
+		return this.hp < 100 && this.mp >= 100;
 	}
 
 	toString() {
