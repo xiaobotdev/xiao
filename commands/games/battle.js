@@ -64,6 +64,12 @@ module.exports = class BattleCommand extends Command {
 					battle.attacker.heal(battle.attacker.mp);
 					battle.attacker.useMP(battle.attacker.mp);
 					battle.reset();
+				} else if (choice === 'final') {
+					await msg.say(`${battle.attacker} uses their final move, dealing **100** damage!`);
+					battle.defender.dealDamage(100);
+					battle.attacker.useMP(100);
+					battle.attacker.usedFinal = true;
+					battle.reset();
 				} else if (choice === 'run') {
 					await msg.say(`${battle.attacker} flees!`);
 					battle.attacker.forfeit();
