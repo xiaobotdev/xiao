@@ -49,7 +49,7 @@ module.exports = class BattleCommand extends Command {
 					battle.attacker.changeGuard();
 					battle.reset(false);
 				} else if (choice === 'special') {
-					const miss = Math.floor(Math.random() * 4);
+					const miss = Math.floor(Math.random() * 3);
 					if (miss) {
 						await msg.say(`${battle.attacker}'s special attack missed!`);
 					} else {
