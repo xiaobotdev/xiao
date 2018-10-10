@@ -5,6 +5,7 @@ module.exports = class Battle {
 		this.user = new Battler(this, user);
 		this.opponent = new Battler(this, opponent);
 		this.userTurn = false;
+		this.turn = 1;
 	}
 
 	get attacker() {
@@ -19,7 +20,8 @@ module.exports = class Battle {
 		if (changeGuard && this.user.guard) this.user.changeGuard();
 		if (changeGuard && this.opponent.guard) this.opponent.changeGuard();
 		this.userTurn = !this.userTurn;
-		return null;
+		this.turn++;
+		return this.turn;
 	}
 
 	get winner() {
