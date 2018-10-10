@@ -10,6 +10,7 @@ module.exports = class Battler {
 		this.hp = 500;
 		this.mp = 500;
 		this.guard = false;
+		this.usedFinal = false;
 	}
 
 	async chooseAction(msg) {
@@ -37,7 +38,7 @@ module.exports = class Battler {
 					return false;
 				}
 				if (choice === 'final' && !this.canFinal) {
-					msg.say('To use your final attack, you must have under 100 HP and over 100 MP.').catch(() => null);
+					msg.say('You must have under 100 HP and over 100 MP. Final can only be used once!').catch(() => null);
 					return false;
 				}
 				return true;
@@ -86,7 +87,7 @@ module.exports = class Battler {
 	}
 
 	get canFinal() {
-		return this.hp < 100 && this.mp >= 100;
+		return this.hp < 100 && this.mp >= 100 && !this.usedFinal;
 	}
 
 	toString() {
