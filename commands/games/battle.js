@@ -33,7 +33,7 @@ module.exports = class BattleCommand extends Command {
 				await msg.say(`${opponent}, do you accept this challenge?`);
 				const verification = await verify(msg.channel, opponent);
 				if (!verification) {
-					this.fighting.delete(msg.channel.id);
+					this.battles.delete(msg.channel.id);
 					return msg.say('Looks like they declined...');
 				}
 			}
