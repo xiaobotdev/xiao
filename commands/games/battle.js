@@ -49,7 +49,7 @@ module.exports = class BattleCommand extends Command {
 					battle.attacker.changeGuard();
 					battle.reset(false);
 				} else if (choice === 'special') {
-					const miss = Math.floor(Math.random() * 3);
+					const miss = Math.floor(Math.random() * 4);
 					if (miss) {
 						await msg.say(`${battle.attacker}'s special attack missed!`);
 					} else {
@@ -57,6 +57,12 @@ module.exports = class BattleCommand extends Command {
 						await msg.say(`${battle.attacker} deals **${damage}** damage!`);
 						battle.defender.dealDamage(damage);
 					}
+					battle.attacker.useMP(50);
+					battle.reset();
+				} else if (choice === 'cure') {
+					await msg.say(`${battle.attacker} heals **${battle.attacker.mp}** HP!`);
+					battle.attacker.heal(battle.attacker.mp);
+					battle.attacker.useMP(battle.attacker.mp);
 					battle.reset();
 				} else if (choice === 'run') {
 					await msg.say(`${battle.attacker} flees!`);
