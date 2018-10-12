@@ -33,6 +33,7 @@ module.exports = class MemeCommand extends SubredditCommand {
 			.setTitle(post.title)
 			.setImage(post.post_hint === 'image' ? post.url : null)
 			.setURL(`https://www.reddit.com${post.permalink}`)
+			.setTimestamp(post.created_utc * 1000)
 			.setFooter(`⬆ ${post.ups}`);
 	}
 };
