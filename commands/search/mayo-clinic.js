@@ -54,12 +54,12 @@ module.exports = class MayoClinicCommand extends Command {
 	async fetchDisease(location) {
 		const { text } = await request.get(location);
 		const $ = cheerio.load(text);
-		const overview = $('h2').first().text() === 'Overview';
-		if (overview) {
+		const header = $('h2').first();
+		if (header.text() === 'Overview') {
 			return {
 				name: $('h1').first().text().trim(),
 				url: location,
-				description: overview.next().text()
+				description: header.next().text()
 			};
 		}
 		return location;
