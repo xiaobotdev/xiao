@@ -1,5 +1,5 @@
 const SubredditCommand = require('../../structures/commands/Subreddit');
-const { stripIndents } = require('common-tags');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class RedditCommand extends SubredditCommand {
 	constructor(client) {
@@ -22,9 +22,12 @@ module.exports = class RedditCommand extends SubredditCommand {
 	}
 
 	generateText(post, subreddit) {
-		return stripIndents`
-			**r/${subreddit}** ${post.title}
-			${post.url}
-		`;
+		return new MessageEmbed()
+			.setColor(0xFF4500)
+			.setAuthor(`r/${subreddit}`, 'https://i.imgur.com/DSBOK0P.png', `https://www.reddit.com/r/${subreddit}/`)
+			.setTitle(post.title)
+			.setImage(post.post_hint === 'image' ? post.url : null)
+			.setURL(`https://www.reddit.com${post.permalink}`)
+			.setFooter(`⬆ ${post.ups}`);
 	}
 };
