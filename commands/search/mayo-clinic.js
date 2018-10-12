@@ -28,6 +28,7 @@ module.exports = class MayoClinicCommand extends Command {
 			const location = await this.search(query);
 			if (!location) return msg.say('Could not find any results.');
 			const data = await this.fetchDisease(location);
+			if (typeof data === 'string') return msg.say(`I found a match, but it\'s not a disease: ${data}`);
 			const embed = new MessageEmbed()
 				.setColor(0x0044B3)
 				.setAuthor('Mayo Clinic', 'https://i.imgur.com/9zdulOS.jpg', 'https://www.mayoclinic.org/')
@@ -53,10 +54,14 @@ module.exports = class MayoClinicCommand extends Command {
 	async fetchDisease(location) {
 		const { text } = await request.get(location);
 		const $ = cheerio.load(text);
-		return {
-			name: $('h1').first().text().trim(),
-			url: location,
-			description: $('h2').first().next().text()
-		};
+		const overview = $('h2').first().text() === 'Overview';
+		if (overview) {
+			return {
+				name: $('h1').first().text().trim(),
+				url: location,
+				description: overview.next().text()
+			};
+		}
+		return location;
 	}
 };
