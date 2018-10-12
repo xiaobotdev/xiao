@@ -15,7 +15,7 @@ Xiao is a Discord bot coded in JavaScript with
 Xiao is no longer available for invite. You can self-host the bot, or use her on
 the [home server](https://discord.gg/sbMe32W).
 
-## Commands (327)
+## Commands (328)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -152,6 +152,7 @@ the [home server](https://discord.gg/sbMe32W).
 * **kitsu-manga:** Searches Kitsu.io for your query, getting manga results.
 * **know-your-meme:** Searches Know Your Meme for your query.
 * **league-of-legends-champion:** Responds with information on a League of Legends champion.
+* **mayo-clinic:** Searches Mayo Clinic for your query.
 * **mdn:** Searches MDN for your query.
 * **nasa:** Searches NASA's image archive for your query.
 * **neopet:** Responds with the image of a specific Neopet.
