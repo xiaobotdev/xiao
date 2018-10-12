@@ -12,7 +12,7 @@ module.exports = class MemeCommand extends SubredditCommand {
 			description: 'Responds with a random meme.',
 			details: `**Subreddits:** ${subreddits.join(', ')}`,
 			clientPermissions: ['ATTACH_FILES'],
-			postType: ['image', 'rich:video'],
+			postType: 'image',
 			args: [
 				{
 					key: 'subreddit',
