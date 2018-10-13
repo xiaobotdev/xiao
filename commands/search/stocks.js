@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { formatNumber } = require('../../util/Util');
 const { ALPHA_VANTAGE_KEY } = process.env;
 
 module.exports = class StocksCommand extends Command {
@@ -39,11 +40,12 @@ module.exports = class StocksCommand extends Command {
 				.setColor(0x9797FF)
 				.setFooter('Last Updated')
 				.setTimestamp(new Date(body['Meta Data']['3. Last Refreshed']))
-				.addField('❯ Open', `$${data['1. open']}`, true)
-				.addField('❯ Close', `$${data['4. close']}`, true)
-				.addField('❯ Volume', data['5. volume'], true)
-				.addField('❯ High', `$${data['2. high']}`, true)
-				.addField('❯ Low', `$${data['3. low']}`, true);
+				.addField('❯ Open', `$${formatNumber(data['1. open'])}`, true)
+				.addField('❯ Close', `$${formatNumber(data['4. close'])}`, true)
+				.addField('❯ Volume', formatNumber(data['5. volume']), true)
+				.addField('❯ High', `$${formatNumber(data['2. high'])}`, true)
+				.addField('❯ Low', `$${formatNumber(data['3. low'])}`, true)
+				.addBlankField(true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
