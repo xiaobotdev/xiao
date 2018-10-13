@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class SteamCommand extends Command {
 	constructor(client) {
@@ -43,10 +44,10 @@ module.exports = class SteamCommand extends Command {
 				.setThumbnail(data.header_image)
 				.addField('❯ Price', price, true)
 				.addField('❯ Metascore', data.metacritic ? data.metacritic.score : '???', true)
-				.addField('❯ Recommendations', data.recommendations ? data.recommendations.total : '???', true)
+				.addField('❯ Recommendations', data.recommendations ? formatNumber(data.recommendations.total) : '???', true)
 				.addField('❯ Platforms', platforms.join(', ') || 'None', true)
 				.addField('❯ Release Date', data.release_date ? data.release_date.date : '???', true)
-				.addField('❯ DLC Count', data.dlc ? data.dlc.length : 0, true)
+				.addField('❯ DLC Count', data.dlc ? formatNumber(data.dlc.length) : 0, true)
 				.addField('❯ Developers', data.developers ? data.developers.join(', ') || '???' : '???')
 				.addField('❯ Publishers', data.publishers ? data.publishers.join(', ') || '???' : '???');
 			return msg.embed(embed);

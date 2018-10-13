@@ -309,7 +309,7 @@ the [home server](https://discord.gg/sbMe32W).
 
 * **alphabet-reverse:** Reverses the alphabet of text.
 * **base64:** Converts text to/from Base64.
-* **binary:** Converts text to/from binary.
+* **binary:** Converts text to binary.
 * **braille:** Converts text to braille.
 * **brony-speak:** Converts text to brony speak.
 * **clap:** Sends 👏 text 👏 like 👏 this.

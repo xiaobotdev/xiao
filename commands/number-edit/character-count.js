@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class CharacterCountCommand extends Command {
 	constructor(client) {
@@ -19,6 +20,6 @@ module.exports = class CharacterCountCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.reply(text.length);
+		return msg.reply(formatNumber(text.length));
 	}
 };

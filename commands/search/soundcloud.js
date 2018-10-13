@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 const { SOUNDCLOUD_KEY } = process.env;
 
 module.exports = class SoundcloudCommand extends Command {
@@ -44,7 +44,7 @@ module.exports = class SoundcloudCommand extends Command {
 				.addField('❯ Artist', `[${data.user.username}](${data.user.permalink_url})`, true)
 				.addField('❯ Release Date', moment.utc(data.created_at).format('MM/DD/YYYY'), true)
 				.addField('❯ Genre', data.genre, true)
-				.addField('❯ Likes', data.likes_count, true);
+				.addField('❯ Likes', formatNumber(data.likes_count), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

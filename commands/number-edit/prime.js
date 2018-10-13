@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class PrimeCommand extends Command {
 	constructor(client) {
@@ -20,7 +21,7 @@ module.exports = class PrimeCommand extends Command {
 	}
 
 	run(msg, { number }) {
-		return msg.reply(`${number} is${this.isPrime(number) ? '' : ' not'} a prime number.`);
+		return msg.reply(`${formatNumber(number)} is${this.isPrime(number) ? '' : ' not'} a prime number.`);
 	}
 
 	isPrime(number) {

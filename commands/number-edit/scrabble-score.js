@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { formatNumber } = require('../../util/Util');
 const letters = require('../../assets/json/scrabble-score');
 
 module.exports = class ScrabbleScoreCommand extends Command {
@@ -26,6 +27,6 @@ module.exports = class ScrabbleScoreCommand extends Command {
 			if (!letters[letter]) continue;
 			score += letters[letter];
 		}
-		return msg.reply(score);
+		return msg.reply(formatNumber(score));
 	}
 };

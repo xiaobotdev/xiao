@@ -22,7 +22,7 @@ module.exports = class TicTacToeCommand extends Command {
 		this.playing = new Set();
 	}
 
-	async run(msg, { opponent }) { // eslint-disable-line complexity
+	async run(msg, { opponent }) {
 		if (opponent.bot) return msg.reply('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
@@ -67,16 +67,7 @@ module.exports = class TicTacToeCommand extends Command {
 				const choice = turn.first().content;
 				sides[Number.parseInt(choice, 10)] = sign;
 				taken.push(choice);
-				if (
-					(sides[0] === sides[1] && sides[0] === sides[2])
-					|| (sides[0] === sides[3] && sides[0] === sides[6])
-					|| (sides[3] === sides[4] && sides[3] === sides[5])
-					|| (sides[1] === sides[4] && sides[1] === sides[7])
-					|| (sides[6] === sides[7] && sides[6] === sides[8])
-					|| (sides[2] === sides[5] && sides[2] === sides[8])
-					|| (sides[0] === sides[4] && sides[0] === sides[8])
-					|| (sides[2] === sides[4] && sides[2] === sides[6])
-				) winner = userTurn ? msg.author : opponent;
+				if (this.verifyWin(sides)) winner = userTurn ? msg.author : opponent;
 				userTurn = !userTurn;
 			}
 			this.playing.delete(msg.channel.id);
@@ -85,5 +76,16 @@ module.exports = class TicTacToeCommand extends Command {
 			this.playing.delete(msg.channel.id);
 			throw err;
 		}
+	}
+
+	verifyWin(sides) {
+		return (sides[0] === sides[1] && sides[0] === sides[2])
+			|| (sides[0] === sides[3] && sides[0] === sides[6])
+			|| (sides[3] === sides[4] && sides[3] === sides[5])
+			|| (sides[1] === sides[4] && sides[1] === sides[7])
+			|| (sides[6] === sides[7] && sides[6] === sides[8])
+			|| (sides[2] === sides[5] && sides[2] === sides[8])
+			|| (sides[0] === sides[4] && sides[0] === sides[8])
+			|| (sides[2] === sides[4] && sides[2] === sides[6]);
 	}
 };

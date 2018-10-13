@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten, firstUpperCase } = require('../../util/Util');
+const { shorten, formatNumber, firstUpperCase } = require('../../util/Util');
 
 module.exports = class YuGiOhCommand extends Command {
 	constructor(client) {
@@ -42,8 +42,8 @@ module.exports = class YuGiOhCommand extends Command {
 					.addField('❯ Species', data.type, true)
 					.addField('❯ Attribute', firstUpperCase(data.family), true)
 					.addField('❯ Level', data.level, true)
-					.addField('❯ ATK', data.atk, true)
-					.addField('❯ DEF', data.def, true);
+					.addField('❯ ATK', formatNumber(data.atk), true)
+					.addField('❯ DEF', formatNumber(data.def), true);
 			}
 			return msg.embed(embed);
 		} catch (err) {

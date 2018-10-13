@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
-const types = ['random', 'top'];
+const { shorten, formatNumber } = require('../../util/Util');
 
 module.exports = class UrbanDictionaryCommand extends Command {
 	constructor(client) {
@@ -12,39 +11,32 @@ module.exports = class UrbanDictionaryCommand extends Command {
 			group: 'search',
 			memberName: 'urban-dictionary',
 			description: 'Defines a word, but with Urban Dictionary.',
-			details: `**Types:** ${types.join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'word',
 					prompt: 'What word would you like to look up?',
 					type: 'string'
-				},
-				{
-					key: 'type',
-					prompt: 'Do you want to get the top answer or a random one?',
-					type: 'string',
-					default: 'top',
-					oneOf: types,
-					parse: type => type.toLowerCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { word, type }) {
+	async run(msg, { word }) {
 		try {
 			const { body } = await request
 				.get('http://api.urbandictionary.com/v0/define')
 				.query({ term: word });
 			if (!body.list.length) return msg.say('Could not find any results.');
-			const data = body.list[type === 'top' ? 0 : Math.floor(Math.random() * body.list.length)];
+			const data = body.list[0];
 			const embed = new MessageEmbed()
 				.setColor(0x32A8F0)
 				.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png', 'https://www.urbandictionary.com/')
 				.setURL(data.permalink)
 				.setTitle(data.word)
 				.setDescription(shorten(data.definition))
+				.setFooter(`👍 ${formatNumber(data.thumbs_up)} 👎 ${formatNumber(data.thumbs_down)}`)
+				.setTimestamp(new Date(data.written_on))
 				.addField('❯ Example', data.example ? shorten(data.example, 1000) : 'None');
 			return msg.embed(embed);
 		} catch (err) {

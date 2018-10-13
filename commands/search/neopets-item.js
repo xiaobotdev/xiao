@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class NeopetsItemCommand extends Command {
 	constructor(client) {
@@ -32,7 +33,7 @@ module.exports = class NeopetsItemCommand extends Command {
 				.setDescription(data.details)
 				.setURL(data.url)
 				.setThumbnail(data.image)
-				.addField('❯ Price', data.price ? `${data.price} ${data.currency}` : 'Not for Sale');
+				.addField('❯ Price', data.price ? `${formatNumber(data.price)} ${data.currency}` : 'Not for Sale');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

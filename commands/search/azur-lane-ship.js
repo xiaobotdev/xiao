@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class AzurLaneShipCommand extends Command {
 	constructor(client) {
@@ -40,16 +41,16 @@ module.exports = class AzurLaneShipCommand extends Command {
 				.addField('❯ Rarity', data.rarity, true)
 				.addField('❯ Nationality', data.nationality, true)
 				.addField('❯ Type', data.type, true)
-				.addField('❯ Health', `${data.base.health} (${data.max.health} Max)`, true)
+				.addField('❯ Health', `${formatNumber(data.base.health)} (${formatNumber(data.max.health)} Max)`, true)
 				.addField('❯ Armor', data.base.armor, true)
-				.addField('❯ Reload', `${data.base.reload} (${data.max.reload} Max)`, true)
-				.addField('❯ Firepower', `${data.base.firepower} (${data.max.firepower} Max)`, true)
-				.addField('❯ Torpedo', `${data.base.torpedo} (${data.max.torpedo} Max)`, true)
-				.addField('❯ Evasion', `${data.base.speed} (${data.max.speed} Max)`, true)
-				.addField('❯ Anti-Air', `${data.base.anti_air} (${data.max.anti_air} Max)`, true)
-				.addField('❯ Anti-Sub', `${data.base.anti_sub} (${data.max.anti_sub} Max)`, true)
-				.addField('❯ Aviation', `${data.base.air_power} (${data.max.air_power} Max)`, true)
-				.addField('❯ Oil Cost', `${data.base.oil_usage} (${data.max.oil_usage} Max)`, true)
+				.addField('❯ Reload', `${formatNumber(data.base.reload)} (${formatNumber(data.max.reload)} Max)`, true)
+				.addField('❯ Firepower', `${formatNumber(data.base.firepower)} (${formatNumber(data.max.firepower)} Max)`, true)
+				.addField('❯ Torpedo', `${formatNumber(data.base.torpedo)} (${formatNumber(data.max.torpedo)} Max)`, true)
+				.addField('❯ Evasion', `${formatNumber(data.base.speed)} (${formatNumber(data.max.speed)} Max)`, true)
+				.addField('❯ Anti-Air', `${formatNumber(data.base.anti_air)} (${formatNumber(data.max.anti_air)} Max)`, true)
+				.addField('❯ Anti-Sub', `${formatNumber(data.base.anti_sub)} (${formatNumber(data.max.anti_sub)} Max)`, true)
+				.addField('❯ Aviation', `${formatNumber(data.base.air_power)} (${formatNumber(data.max.air_power)} Max)`, true)
+				.addField('❯ Oil Cost', `${formatNumber(data.base.oil_usage)} (${formatNumber(data.max.oil_usage)} Max)`, true)
 				.addField('❯ Equipment', stripIndents`
 					${data.equipment[0].equippable} (${data.equipment[0].efficiency})
 					${data.equipment[1].equippable} (${data.equipment[1].efficiency})

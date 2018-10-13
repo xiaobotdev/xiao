@@ -45,6 +45,10 @@ module.exports = class Util {
 		return text.split(split).map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(' ');
 	}
 
+	static formatNumber(number) {
+		return Number.parseFloat(number).toLocaleString(undefined, { maximumFractionDigits: 2 });
+	}
+
 	static base64(text, mode = 'encode') {
 		if (mode === 'encode') return Buffer.from(text).toString('base64');
 		if (mode === 'decode') return Buffer.from(text, 'base64').toString('utf8') || null;

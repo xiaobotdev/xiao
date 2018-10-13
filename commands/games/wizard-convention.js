@@ -66,7 +66,6 @@ module.exports = class WizardConventionCommand extends Command {
 				}
 				const display = eaten ? players.get(eaten).user : null;
 				const story = stories[Math.floor(Math.random() * stories.length)];
-				if (eaten && eaten !== healed) players.delete(eaten);
 				if (eaten && eaten === healed) {
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged and tried to eat ${display}${story}
@@ -80,6 +79,7 @@ module.exports = class WizardConventionCommand extends Command {
 					`);
 					break;
 				} else if (eaten && eaten !== healed) {
+					players.delete(eaten);
 					await msg.say(stripIndents`
 						Late last night, a dragon emerged and devoured poor ${display}${story}
 						Who is this mysterious dragon? You have one minute to decide.

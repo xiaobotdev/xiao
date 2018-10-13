@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { list, firstUpperCase } = require('../../util/Util');
+const { list, firstUpperCase, formatNumber } = require('../../util/Util');
 const planets = require('../../assets/json/gravity');
 
 module.exports = class GravityCommand extends Command {
@@ -28,6 +28,7 @@ module.exports = class GravityCommand extends Command {
 	}
 
 	run(msg, { weight, planet }) {
-		return msg.say(`${weight} kg on ${firstUpperCase(planet)} is ${weight * planets[planet]} kg.`);
+		const result = weight * planets[planet];
+		return msg.say(`${formatNumber(weight)} kg on ${firstUpperCase(planet)} is ${formatNumber(result)} kg.`);
 	}
 };

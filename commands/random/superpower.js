@@ -15,21 +15,18 @@ module.exports = class SuperpowerCommand extends Command {
 
 	async run(msg) {
 		try {
-			const article = await this.randomSuperpower();
-			const { body } = await request
-				.get('http://powerlisting.wikia.com/api/v1/Articles/AsSimpleJson/')
-				.query({ id: article });
-			const data = body.sections[0];
+			const id = await this.random();
+			const article = this.fetchSuperpower(id);
 			return msg.reply(stripIndents`
-				Your superpower is... **${data.title}**!
-				_${shorten(data.content.map(section => section.text).join('\n\n'), 1950)}_
+				Your superpower is... **${article.title}**!
+				_${shorten(article.content.map(section => section.text).join('\n\n'), 1950)}_
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
-	async randomSuperpower() {
+	async random() {
 		const { body } = await request
 			.get('http://powerlisting.wikia.com/api.php')
 			.query({
@@ -41,5 +38,12 @@ module.exports = class SuperpowerCommand extends Command {
 				formatversion: 2
 			});
 		return body.query.random[0].id;
+	}
+
+	async fetchSuperpower(id) {
+		const { body } = await request
+			.get('http://powerlisting.wikia.com/api/v1/Articles/AsSimpleJson/')
+			.query({ id });
+		return body.sections[0];
 	}
 };
