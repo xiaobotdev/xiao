@@ -16,7 +16,7 @@ module.exports = class SuperpowerCommand extends Command {
 	async run(msg) {
 		try {
 			const id = await this.random();
-			const article = this.fetchSuperpower(id);
+			const article = await this.fetchSuperpower(id);
 			return msg.reply(stripIndents`
 				Your superpower is... **${article.title}**!
 				_${shorten(article.content.map(section => section.text).join('\n\n'), 1950)}_
