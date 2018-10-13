@@ -1,6 +1,4 @@
 const Command = require('../../structures/Command');
-const { list } = require('../../util/Util');
-const modes = ['encode', 'decode'];
 
 module.exports = class BinaryCommand extends Command {
 	constructor(client) {
@@ -8,16 +6,8 @@ module.exports = class BinaryCommand extends Command {
 			name: 'binary',
 			group: 'text-edit',
 			memberName: 'binary',
-			description: 'Converts text to/from binary.',
-			details: `**Modes:** ${modes.join(', ')}`,
+			description: 'Converts text to binary.',
 			args: [
-				{
-					key: 'mode',
-					prompt: `Would you like to ${list(modes, 'or')}?`,
-					type: 'string',
-					oneOf: modes,
-					parse: mode => mode.toLowerCase()
-				},
 				{
 					key: 'text',
 					prompt: 'What text would you like to convert to binary?',
@@ -31,9 +21,8 @@ module.exports = class BinaryCommand extends Command {
 		});
 	}
 
-	run(msg, { mode, text }) { // eslint-disable-line consistent-return
-		if (mode === 'encode') return msg.say(this.binary(text));
-		else if (mode === 'decode') return msg.say(this.unbinary(text));
+	run(msg, { text }) {
+		return msg.say(this.binary(text));
 	}
 
 	binary(text) {
@@ -41,9 +30,5 @@ module.exports = class BinaryCommand extends Command {
 			const converted = str.charCodeAt(0).toString(2);
 			return converted.padStart(8, '0');
 		}).join(' ');
-	}
-
-	unbinary(text) {
-		return text.split(' ').map(str => String.fromCharCode(Number.parseInt(str, 2))).join('');
 	}
 };

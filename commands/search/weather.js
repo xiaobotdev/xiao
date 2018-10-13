@@ -42,13 +42,7 @@ module.exports = class WeatherCommand extends Command {
 				.addField('❯ Region', data.location.region, true)
 				.addField('❯ Condition', data.item.condition.text, true)
 				.addField('❯ Temperature', `${data.item.condition.temp}°F`, true)
-				.addField('❯ Humidity', data.atmosphere.humidity, true)
-				.addField('❯ Pressure', data.atmosphere.pressure, true)
-				.addField('❯ Rising', data.atmosphere.rising, true)
-				.addField('❯ Visibility', data.atmosphere.visibility, true)
-				.addField('❯ Wind Chill', data.wind.chill, true)
-				.addField('❯ Wind Direction', data.wind.direction, true)
-				.addField('❯ Wind Speed', data.wind.speed, true);
+				.addField('❯ Humidity', `${data.atmosphere.humidity}%`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

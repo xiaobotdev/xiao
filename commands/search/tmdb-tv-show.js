@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 const { TMDB_KEY } = process.env;
 
 module.exports = class TMDBTVShowCommand extends Command {
@@ -45,8 +45,8 @@ module.exports = class TMDBTVShowCommand extends Command {
 				.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
 				.addField('❯ First Air Date', body.first_air_date || '???', true)
 				.addField('❯ Last Air Date', body.last_air_date || '???', true)
-				.addField('❯ Seasons', body.number_of_seasons || '???', true)
-				.addField('❯ Episodes', body.number_of_episodes || '???', true)
+				.addField('❯ Seasons', body.number_of_seasons ? formatNumber(body.number_of_seasons) : '???', true)
+				.addField('❯ Episodes', body.number_of_episodes ? formatNumber(body.number_of_episodes) : '???', true)
 				.addField('❯ Genres', body.genres.length ? body.genres.map(genre => genre.name).join(', ') : '???')
 				.addField('❯ Production Companies',
 					body.production_companies.length ? body.production_companies.map(c => c.name).join(', ') : '???');

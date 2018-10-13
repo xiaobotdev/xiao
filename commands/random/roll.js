@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class RollCommand extends Command {
 	constructor(client) {
@@ -21,6 +22,6 @@ module.exports = class RollCommand extends Command {
 	}
 
 	run(msg, { value }) {
-		return msg.say(`You rolled a ${Math.floor(Math.random() * value) + 1}.`);
+		return msg.say(`You rolled a ${formatNumber(Math.floor(Math.random() * value) + 1)}.`);
 	}
 };

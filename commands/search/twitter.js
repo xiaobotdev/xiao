@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { base64 } = require('../../util/Util');
+const { formatNumber, base64 } = require('../../util/Util');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 const retweetRegex = /^RT @([a-zA-Z0-9_]{1,15}):/;
 
@@ -49,9 +49,9 @@ module.exports = class TwitterCommand extends Command {
 				.setURL(`https://twitter.com/${body.screen_name}`)
 				.setTitle(`${body.name} (@${body.screen_name})`)
 				.setDescription(body.description)
-				.addField('❯ Tweets', body.statuses_count, true)
-				.addField('❯ Followers', body.followers_count, true)
-				.addField('❯ Following', body.friends_count, true)
+				.addField('❯ Tweets', formatNumber(body.statuses_count), true)
+				.addField('❯ Followers', formatNumber(body.followers_count), true)
+				.addField('❯ Following', formatNumber(body.friends_count), true)
 				.addField('❯ Protected?', body.protected ? 'Yes' : 'No', true)
 				.addField('❯ Verified?', body.verified ? 'Yes' : 'No', true)
 				.addField('❯ Creation Date', moment.utc(body.created_at).format('MM/DD/YYYY h:mm A'), true)

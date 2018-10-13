@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { formatNumber } = require('../../util/Util');
 const { OSU_KEY } = process.env;
 
 module.exports = class OsuCommand extends Command {
@@ -40,14 +41,14 @@ module.exports = class OsuCommand extends Command {
 				.addField('❯ ID', data.user_id, true)
 				.addField('❯ Level', data.level || '???', true)
 				.addField('❯ Accuracy', data.accuracy ? `${Math.round(data.accuracy)}%` : '???', true)
-				.addField('❯ Rank', data.pp_rank || '???', true)
-				.addField('❯ Play Count', data.playcount || '???', true)
+				.addField('❯ Rank', data.pp_rank ? formatNumber(data.pp_rank) : '???', true)
+				.addField('❯ Play Count', data.playcount ? formatNumber(data.playcount) : '???', true)
 				.addField('❯ Country', data.country || '???', true)
-				.addField('❯ Ranked Score', data.ranked_score || '???', true)
-				.addField('❯ Total Score', data.total_score || '???', true)
-				.addField('❯ SS', data.count_rank_ss || '???', true)
-				.addField('❯ S', data.count_rank_s || '???', true)
-				.addField('❯ A', data.count_rank_a || '???', true);
+				.addField('❯ Ranked Score', data.ranked_score ? formatNumber(data.ranked_score) : '???', true)
+				.addField('❯ Total Score', data.total_score ? formatNumber(data.total_score) : '???', true)
+				.addField('❯ SS', data.count_rank_ss ? formatNumber(data.count_rank_ss) : '???', true)
+				.addField('❯ S', data.count_rank_s ? formatNumber(data.count_rank_s) : '???', true)
+				.addField('❯ A', data.count_rank_a ? formatNumber(data.count_rank_a) : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

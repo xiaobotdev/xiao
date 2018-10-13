@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class GoogleBookCommand extends Command {
@@ -44,7 +44,7 @@ module.exports = class GoogleBookCommand extends Command {
 				.setThumbnail(data.imageLinks ? data.imageLinks.thumbnail : null)
 				.addField('❯ Authors', data.authors.length ? data.authors.join(', ') : '???')
 				.addField('❯ Publish Date', data.publishedDate || '???', true)
-				.addField('❯ Page Count', data.pageCount || '???', true)
+				.addField('❯ Page Count', data.pageCount ? formatNumber(data.pageCount) : '???', true)
 				.addField('❯ Genres', data.categories.length ? data.categories.join(', ') : '???');
 			return msg.embed(embed);
 		} catch (err) {

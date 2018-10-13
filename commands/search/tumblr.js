@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { formatNumber } = require('../../util/Util');
 const { TUMBLR_KEY } = process.env;
 
 module.exports = class TumblrCommand extends Command {
@@ -35,7 +36,7 @@ module.exports = class TumblrCommand extends Command {
 				.setThumbnail(`https://api.tumblr.com/v2/blog/${blog}/avatar/512`)
 				.setURL(data.url)
 				.setTitle(data.title)
-				.addField('❯ Posts', data.total_posts, true)
+				.addField('❯ Posts', formatNumber(data.total_posts), true)
 				.addField('❯ A.M.A.?', data.ask ? 'Yes' : 'No', true);
 			return msg.embed(embed);
 		} catch (err) {

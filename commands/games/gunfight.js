@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { delay, randomRange, verify } = require('../../util/Util');
-const words = ['fire', 'draw', 'shoot', 'bang', 'pull'];
+const words = ['fire', 'draw', 'shoot', 'bang', 'pull', 'boom'];
 
 module.exports = class GunfightCommand extends Command {
 	constructor(client) {

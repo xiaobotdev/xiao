@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const moment = require('moment');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class RedditUserCommand extends Command {
 	constructor(client) {
@@ -36,7 +37,7 @@ module.exports = class RedditUserCommand extends Command {
 				.setTitle(`/u/${data.name}`)
 				.addField('❯ Username', data.name, true)
 				.addField('❯ ID', data.id, true)
-				.addField('❯ Karma', data.link_karma + data.comment_karma, true)
+				.addField('❯ Karma', formatNumber(data.link_karma + data.comment_karma), true)
 				.addField('❯ Creation Date', moment.utc(data.created_utc * 1000).format('MM/DD/YYYY h:mm A'), true)
 				.addField('❯ Gold?', data.is_gold ? 'Yes' : 'No', true)
 				.addField('❯ Verified?', data.verified ? 'Yes' : 'No', true);

@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
+const { formatNumber } = require('../../util/Util');
 const { version, dependencies } = require('../../package');
 const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
 const source = XIAO_GITHUB_REPO_NAME && XIAO_GITHUB_REPO_USERNAME;
@@ -23,9 +24,9 @@ module.exports = class InfoCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter('©2017-2018 dragonfire535#8081')
-			.addField('❯ Servers', this.client.guilds.size, true)
-			.addField('❯ Shards', this.client.options.shardCount, true)
-			.addField('❯ Commands', this.client.registry.commands.size, true)
+			.addField('❯ Servers', formatNumber(this.client.guilds.size), true)
+			.addField('❯ Shards', formatNumber(this.client.options.shardCount), true)
+			.addField('❯ Commands', formatNumber(this.client.registry.commands.size), true)
 			.addField('❯ Home Server', this.client.options.invite ? `[Here](${this.client.options.invite})` : 'None', true)
 			.addField('❯ Source Code',
 				source ? `[Here](https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME})` : 'N/A', true)

@@ -1,5 +1,6 @@
 const SubredditCommand = require('../../structures/commands/Subreddit');
 const { MessageEmbed } = require('discord.js');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class RedditCommand extends SubredditCommand {
 	constructor(client) {
@@ -29,6 +30,6 @@ module.exports = class RedditCommand extends SubredditCommand {
 			.setImage(post.post_hint === 'image' ? post.url : null)
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
-			.setFooter(`⬆ ${post.ups}`);
+			.setFooter(`⬆ ${formatNumber(post.ups)}`);
 	}
 };

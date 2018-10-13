@@ -1,12 +1,12 @@
 const Command = require('../../structures/Command');
 
-module.exports = class UserRouletteCommand extends Command {
+module.exports = class RandomUserCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'user-roulette',
-			aliases: ['member-roulette', 'random-user', 'random-member'],
+			name: 'random-user',
+			aliases: ['member-roulette', 'user-roulette', 'random-member'],
 			group: 'random',
-			memberName: 'user-roulette',
+			memberName: 'random-user',
 			description: 'Randomly chooses a member of the server.',
 			guildOnly: true
 		});

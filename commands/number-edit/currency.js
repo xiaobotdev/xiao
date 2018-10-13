@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class CurrencyCommand extends Command {
 	constructor(client) {
@@ -41,7 +42,7 @@ module.exports = class CurrencyCommand extends Command {
 		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		try {
 			const rate = await this.fetchRate(base, target);
-			return msg.say(`${amount} ${base} is ${(amount * rate).toFixed(2)} ${target}.`);
+			return msg.say(`${formatNumber(amount)} ${base} is ${formatNumber(amount * rate)} ${target}.`);
 		} catch (err) {
 			if (err.status === 400) return msg.say('Invalid base/target.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

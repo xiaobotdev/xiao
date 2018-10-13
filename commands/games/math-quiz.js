@@ -8,7 +8,7 @@ const maxValues = {
 	medium: 100,
 	hard: 500,
 	extreme: 1000,
-	impossible: 1000000
+	impossible: Number.MAX_SAFE_INTEGER
 };
 
 module.exports = class MathQuizCommand extends Command {

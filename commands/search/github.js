@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten, base64 } = require('../../util/Util');
+const { shorten, formatNumber, base64 } = require('../../util/Util');
 const { GITHUB_USERNAME, GITHUB_PASSWORD } = process.env;
 
 module.exports = class GithubCommand extends Command {
@@ -43,9 +43,9 @@ module.exports = class GithubCommand extends Command {
 				.setURL(body.html_url)
 				.setDescription(body.description ? shorten(body.description) : 'No description.')
 				.setThumbnail(body.owner.avatar_url)
-				.addField('❯ Stars', body.stargazers_count, true)
-				.addField('❯ Forks', body.forks, true)
-				.addField('❯ Issues', body.open_issues, true)
+				.addField('❯ Stars', formatNumber(body.stargazers_count), true)
+				.addField('❯ Forks', formatNumber(body.forks), true)
+				.addField('❯ Issues', formatNumber(body.open_issues), true)
 				.addField('❯ Language', body.language || '???', true)
 				.addField('❯ Creation Date', moment.utc(body.created_at).format('MM/DD/YYYY h:mm A'), true)
 				.addField('❯ Modification Date', moment.utc(body.updated_at).format('MM/DD/YYYY h:mm A'), true);

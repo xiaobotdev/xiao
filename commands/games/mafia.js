@@ -66,7 +66,6 @@ module.exports = class MafiaCommand extends Command {
 				}
 				const display = killed ? players.get(killed).user : null;
 				const story = stories[Math.floor(Math.random() * stories.length)];
-				if (killed && killed !== saved) players.delete(killed);
 				if (killed && killed === saved) {
 					await msg.say(stripIndents`
 						Late last night, a Mafia member emerged from the dark and tried to kill ${display}${story}
@@ -80,6 +79,7 @@ module.exports = class MafiaCommand extends Command {
 					`);
 					break;
 				} else if (killed && killed !== saved) {
+					players.delete(killed);
 					await msg.say(stripIndents`
 						Late last night, a Mafia member emerged from the dark and killed poor ${display}${story}
 						Who is this mysterious Mafia member? You have one minute to decide.

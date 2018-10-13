@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 const { WATTPAD_KEY } = process.env;
 
 module.exports = class WattpadCommand extends Command {
@@ -44,10 +44,10 @@ module.exports = class WattpadCommand extends Command {
 				.setThumbnail(data.cover)
 				.addField('❯ Creation Date', moment.utc(data.createDate).format('MM/DD/YYYY h:mm A'), true)
 				.addField('❯ Author', data.user.name, true)
-				.addField('❯ Chapters', data.numParts, true)
-				.addField('❯ Reads', data.readCount, true)
-				.addField('❯ Votes', data.voteCount, true)
-				.addField('❯ Comments', data.commentCount, true);
+				.addField('❯ Chapters', formatNumber(data.numParts), true)
+				.addField('❯ Reads', formatNumber(data.readCount), true)
+				.addField('❯ Votes', formatNumber(data.voteCount), true)
+				.addField('❯ Comments', formatNumber(data.commentCount), true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

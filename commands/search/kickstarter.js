@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 
 module.exports = class KickstarterCommand extends Command {
 	constructor(client) {
@@ -40,9 +40,9 @@ module.exports = class KickstarterCommand extends Command {
 				.setAuthor('Kickstarter', 'https://i.imgur.com/EHDlH5t.png', 'https://www.kickstarter.com/')
 				.setDescription(shorten(data.blurb))
 				.setThumbnail(data.photo ? data.photo.full : null)
-				.addField('❯ Goal', `$${data.goal}`, true)
-				.addField('❯ Pledged', `$${data.pledged}`, true)
-				.addField('❯ Backers', data.backers_count, true)
+				.addField('❯ Goal', `$${formatNumber(data.goal)}`, true)
+				.addField('❯ Pledged', `$${formatNumber(data.pledged)}`, true)
+				.addField('❯ Backers', formatNumber(data.backers_count), true)
 				.addField('❯ Creator', data.creator.name, true)
 				.addField('❯ Creation Date', moment.utc(data.created_at * 1000).format('MM/DD/YYYY h:mm A'), true)
 				.addField('❯ Deadline', moment.utc(data.deadline * 1000).format('MM/DD/YYYY h:mm A'), true);

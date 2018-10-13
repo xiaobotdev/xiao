@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten, firstUpperCase } = require('../../util/Util');
+const { shorten, formatNumber, firstUpperCase } = require('../../util/Util');
 
 module.exports = class KitsuAnimeCommand extends Command {
 	constructor(client) {
@@ -39,7 +39,7 @@ module.exports = class KitsuAnimeCommand extends Command {
 				.setTitle(data.canonicalTitle)
 				.setDescription(shorten(data.synopsis))
 				.addField('❯ Type', `${firstUpperCase(data.showType)} - ${firstUpperCase(data.status)}`, true)
-				.addField('❯ Episodes', data.episodeCount || '???', true)
+				.addField('❯ Episodes', data.episodeCount ? formatNumber(data.episodeCount) : '???', true)
 				.addField('❯ Start Date', data.startDate ? moment.utc(data.startDate).format('MM/DD/YYYY') : '???', true)
 				.addField('❯ End Date', data.endDate ? moment.utc(data.endDate).format('MM/DD/YYYY') : '???', true);
 			return msg.embed(embed);
