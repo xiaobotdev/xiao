@@ -12,10 +12,45 @@ Xiao is a Discord bot coded in JavaScript with
 300 commands, she is one of the most feature-rich bots out there.
 
 ## Invite
+
 Xiao is no longer available for invite. You can self-host the bot, or use her on
 the [home server](https://discord.gg/sbMe32W).
 
+## Installing
+
+### Before You Begin
+
+1. Make sure you have installed [Node.js](https://nodejs.org/en/) >=10 and [Git](https://git-scm.com/).
+2. Clone this repository with `git clone https://github.com/dragonfire535/xiao.git`.
+3. Run `cd xiao` to move into the folder that you just created.
+
+### Windows
+
+1. Open an **ADMIN POWERSHELL** window and run `npm i -g --production windows-build-tools`.
+2. Download [ffmpeg](https://www.ffmpeg.org/download.html) and [add it to path](https://www.wikihow.com/Install-FFmpeg-on-Windows).
+3. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation:-Windows).
+4. Run `npm i --production` in the folder you cloned the bot.
+5. Run `npm i -g pm2` to install PM2.
+6. Run `pm2 start Xiao.js --name xiao` to run the bot.
+
+### Mac
+
+1. Use a real (cheaper!) OS to host your bot.
+2. ???
+3. Profit.
+
+### Ubuntu and other Debian-based systems
+
+1. Run `apt-get update`.
+2. Run `apt-get upgrade` to install the latest dependencies of your distro.
+3. Run `apt-get install ffmpeg` to install ffmpeg.
+4. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Ubuntu-and-other-Debian-based-systems).
+5. Run `npm i --production` in the folder you cloned the bot.
+6. Run `npm i -g pm2` to install PM2.
+7. Run `pm2 start Xiao.js --name xiao` to run the bot.
+
 ## Commands (329)
+
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -391,6 +426,7 @@ the [home server](https://discord.gg/sbMe32W).
 * **wink:** Winks at a user.
 
 ## Licensing
+
 The bot is licensed under the GPL 3.0 license. See the file `LICENSE` for more
 information. If you plan to use any part of this source code in your own bot, I
 would be grateful if you would include some form of credit somewhere.
