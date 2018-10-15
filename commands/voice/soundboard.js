@@ -17,15 +17,14 @@ module.exports = class SoundboardCommand extends Command {
 				usages: 1,
 				duration: 10
 			},
+			userPermissions: ['CONNECT', 'SPEAK'],
+			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'sound',
 					prompt: `What sound would you like to play? Either ${list(Object.keys(sounds), 'or')}.`,
 					type: 'string',
-					validate: sound => {
-						if (sounds[sound.toLowerCase()]) return true;
-						return `Invalid sound, please enter either ${list(Object.keys(sounds), 'or')}.`;
-					},
+					oneOf: Object.keys(sounds),
 					parse: sound => sound.toLowerCase()
 				}
 			]
@@ -43,6 +42,7 @@ module.exports = class SoundboardCommand extends Command {
 		try {
 			const connection = await voiceChannel.join();
 			const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', sounds[sound]));
+			await msg.react('🔉');
 			dispatcher.once('finish', () => voiceChannel.leave());
 			dispatcher.once('error', () => voiceChannel.leave());
 			return null;
