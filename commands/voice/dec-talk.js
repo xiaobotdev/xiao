@@ -14,6 +14,8 @@ module.exports = class DECTalkCommand extends Command {
 				usages: 1,
 				duration: 10
 			},
+			userPermissions: ['CONNECT', 'SPEAK'],
+			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'text',
@@ -39,6 +41,7 @@ module.exports = class DECTalkCommand extends Command {
 				.get('http://tts.cyzon.us/tts')
 				.query({ text });
 			const dispatcher = connection.play(url);
+			await msg.react('🔉');
 			dispatcher.once('finish', () => voiceChannel.leave());
 			dispatcher.once('error', () => voiceChannel.leave());
 			return null;
