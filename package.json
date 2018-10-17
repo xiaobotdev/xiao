@@ -32,7 +32,7 @@
 	},
 	"dependencies": {
 		"@discordjs/uws": "^10.149.0",
-		"canvas": "^2.0.0",
+		"canvas": "^2.0.1",
 		"cheerio": "^1.0.0-rc.2",
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
