@@ -43,7 +43,7 @@ module.exports = class HungerGamesCommand extends Command {
 				const deaths = [];
 				this.makeEvents(remaining, sunEvents, deaths, results);
 				let text = stripIndents`
-					__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}**__:
+					__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}:**__
 					${results.join('\n')}
 				`;
 				if (deaths.length) {
