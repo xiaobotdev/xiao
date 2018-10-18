@@ -34,10 +34,10 @@ module.exports = class UrbanDictionaryCommand extends Command {
 				.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png', 'https://www.urbandictionary.com/')
 				.setURL(data.permalink)
 				.setTitle(data.word)
-				.setDescription(shorten(data.definition.replace(/\[\]/g, '')))
+				.setDescription(shorten(data.definition.replace(/\[|\]/g, '')))
 				.setFooter(`👍 ${formatNumber(data.thumbs_up)} 👎 ${formatNumber(data.thumbs_down)}`)
 				.setTimestamp(new Date(data.written_on))
-				.addField('❯ Example', data.example ? shorten(data.example, 1000) : 'None');
+				.addField('❯ Example', data.example ? shorten(data.example.replace(/\[|\]/g, ''), 1000) : 'None');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
