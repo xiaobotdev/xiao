@@ -3,12 +3,13 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
+const { AKINATOR_UID } = process.env;
 
 module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'akinator',
-			aliases: ['the-web-genie', 'web-genie'],
+			aliases: ['the-web-genie', 'web-genie', 'aki'],
 			group: 'games',
 			memberName: 'akinator',
 			description: 'Think about a real or fictional character, I will try to guess who it is.',
@@ -69,15 +70,15 @@ module.exports = class AkinatorCommand extends Command {
 			.query({
 				partner: 1,
 				player: 'website-desktop',
-				uid_ext_session: '5ba118d44e469',
+				uid_ext_session: AKINATOR_UID,
 				frontaddr: 'MTc4LjMzLjIzMS45OA==',
 				constraint: 'ETAT<>\'AV\'',
 				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
 				question_filter: channel.nsfw ? '' : 'cat=1',
 				_: Date.now()
 			});
+		if (body.completion !== 'OK') return null;
 		const data = body.parameters;
-		if (!data) return null;
 		this.sessions.set(channel.id, {
 			id: data.identification.session,
 			signature: data.identification.signature,
@@ -99,8 +100,8 @@ module.exports = class AkinatorCommand extends Command {
 				question_filter: channel.nsfw ? '' : 'cat=1',
 				_: Date.now()
 			});
+		if (body.completion !== 'OK') return null;
 		const data = body.parameters;
-		if (!data) return null;
 		this.sessions.set(channel.id, {
 			id: session.id,
 			signature: session.signature,
@@ -126,7 +127,7 @@ module.exports = class AkinatorCommand extends Command {
 				mode_question: 0,
 				_: Date.now()
 			});
-		if (!body.parameters) return null;
+		if (body.completion !== 'OK') return null;
 		return body.parameters.elements[0].element;
 	}
 };
