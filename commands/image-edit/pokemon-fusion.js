@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const pokemon = require('../../assets/json/pokemon-fusion');
+const { firstUpperCase } = require('../../util/Util');
 
 module.exports = class PokemonFusionCommand extends Command {
 	constructor(client) {
@@ -19,7 +20,7 @@ module.exports = class PokemonFusionCommand extends Command {
 						if (pokemon[body.toLowerCase()]) return true;
 						return 'Invalid body, only Pokémon from Generation I may be used.';
 					},
-					parse: body => pokemon[body.toLowerCase()]
+					parse: body => body.toLowerCase()
 				},
 				{
 					key: 'palette',
@@ -29,13 +30,17 @@ module.exports = class PokemonFusionCommand extends Command {
 						if (pokemon[palette.toLowerCase()]) return true;
 						return 'Invalid palette, only Pokémon from Generation I may be used.';
 					},
-					parse: palette => pokemon[palette.toLowerCase()]
+					parse: palette => palette.toLowerCase()
 				}
 			]
 		});
 	}
 
 	run(msg, { body, palette }) {
-		return msg.say({ files: [`http://images.alexonsager.net/pokemon/fused/${body}/${body}.${palette}.png`] });
+		const prefix = body.slice(0, Math.round(body.length / 2));
+		const suffix = palette.slice(Math.round(palette.length / 2), palette.length);
+		return msg.say(firstUpperCase(`${prefix}${suffix}`), {
+			files: [`http://images.alexonsager.net/pokemon/fused/${pokemon[body]}/${pokemon[body]}.${pokemon[palette]}.png`]
+		});
 	}
 };
