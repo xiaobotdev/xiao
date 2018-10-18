@@ -3,7 +3,6 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
-const { AKINATOR_UID } = process.env;
 
 module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
@@ -66,16 +65,15 @@ module.exports = class AkinatorCommand extends Command {
 
 	async createSession(channel) {
 		const { body } = await request
-			.get('https://srv2.akinator.com:9157/ws/new_session')
+			.get('https://srv6.akinator.com:9126/ws/new_session')
 			.query({
-				partner: 1,
+				partner: '',
 				player: 'website-desktop',
-				uid_ext_session: AKINATOR_UID,
+				uid_ext_session: '',
 				frontaddr: 'MTc4LjMzLjIzMS45OA==',
 				constraint: 'ETAT<>\'AV\'',
 				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
-				question_filter: channel.nsfw ? '' : 'cat=1',
-				_: Date.now()
+				question_filter: channel.nsfw ? '' : 'cat=1'
 			});
 		if (body.completion !== 'OK') return null;
 		const data = body.parameters;
@@ -91,14 +89,13 @@ module.exports = class AkinatorCommand extends Command {
 	async progress(channel, answer) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await request
-			.get('https://srv2.akinator.com:9157/ws/answer')
+			.get('https://srv6.akinator.com:9126/ws/answer')
 			.query({
 				session: session.id,
 				signature: session.signature,
 				step: session.step,
 				answer,
-				question_filter: channel.nsfw ? '' : 'cat=1',
-				_: Date.now()
+				question_filter: channel.nsfw ? '' : 'cat=1'
 			});
 		if (body.completion !== 'OK') return null;
 		const data = body.parameters;
@@ -114,7 +111,7 @@ module.exports = class AkinatorCommand extends Command {
 	async guess(channel) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await request
-			.get('https://srv2.akinator.com:9157/ws/list')
+			.get('https://srv6.akinator.com:9126/ws/list')
 			.query({
 				session: session.id,
 				signature: session.signature,
@@ -124,8 +121,7 @@ module.exports = class AkinatorCommand extends Command {
 				max_pic_height: 294,
 				pref_photos: 'VO-OK',
 				duel_allowed: 1,
-				mode_question: 0,
-				_: Date.now()
+				mode_question: 0
 			});
 		if (body.completion !== 'OK') return null;
 		return body.parameters.elements[0].element;
