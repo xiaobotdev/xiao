@@ -45,12 +45,13 @@ module.exports = class AkinatorCommand extends Command {
 				ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
 			const guess = await this.guess(msg.channel);
+			if (guess === 0) return msg.say('I don\'t have any guesses. Bravo.');
 			if (!guess) return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
 			const embed = new MessageEmbed()
 				.setColor(0xF78B26)
 				.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
 				.setDescription(`${guess.name}${guess.description ? `\n_${guess.description}_` : ''}`)
-				.setThumbnail(guess.absolute_picture_path);
+				.setThumbnail(guess.absolute_picture_path || null);
 			await msg.embed(embed);
 			const verification = await verify(msg.channel, msg.author);
 			this.sessions.delete(msg.channel.id);
@@ -123,6 +124,7 @@ module.exports = class AkinatorCommand extends Command {
 				duel_allowed: 1,
 				mode_question: 0
 			});
+		if (body.completion === 'KO - ELEM LIST IS EMPTY') return 0;
 		if (body.completion !== 'OK') return null;
 		return body.parameters.elements[0].element;
 	}
