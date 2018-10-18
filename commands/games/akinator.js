@@ -45,8 +45,11 @@ module.exports = class AkinatorCommand extends Command {
 				ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
 			const guess = await this.guess(msg.channel);
-			if (guess === 0) return msg.say('I don\'t have any guesses. Bravo.');
-			if (!guess) return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
+			if (!guess) {
+				this.sessions.delete(msg.channel.id);
+				if (guess === 0) return msg.say('I don\'t have any guesses. Bravo.');
+				return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
+			}
 			const embed = new MessageEmbed()
 				.setColor(0xF78B26)
 				.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
