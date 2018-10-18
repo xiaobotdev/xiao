@@ -38,7 +38,7 @@ module.exports = class PokemonFusionCommand extends Command {
 
 	run(msg, { body, palette }) {
 		const prefix = body.slice(0, Math.round(body.length / 2));
-		const suffix = palette.slice(Math.round(palette.length / 2), palette.length);
+		const suffix = palette.slice(Math.round(palette.length / 2));
 		return msg.say(firstUpperCase(`${prefix}${suffix}`), {
 			files: [`http://images.alexonsager.net/pokemon/fused/${pokemon[body]}/${pokemon[body]}.${pokemon[palette]}.png`]
 		});
