@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const pokemon = require('../../assets/json/pokemon-fusion');
 const { firstUpperCase } = require('../../util/Util');
+const pokeKeys = Object.keys(pokemon);
 
 module.exports = class PokemonFusionCommand extends Command {
 	constructor(client) {
@@ -16,6 +17,7 @@ module.exports = class PokemonFusionCommand extends Command {
 					key: 'body',
 					prompt: 'What Pokémon should be fused as the body?',
 					type: 'string',
+					default: () => pokeKeys[Math.floor(Math.random() * pokeKeys.length)],
 					validate: body => {
 						if (pokemon[body.toLowerCase()]) return true;
 						return 'Invalid body, only Pokémon from Generation I may be used.';
@@ -26,6 +28,7 @@ module.exports = class PokemonFusionCommand extends Command {
 					key: 'palette',
 					prompt: 'What Pokémon should be fused as the palette?',
 					type: 'string',
+					default: () => pokeKeys[Math.floor(Math.random() * pokeKeys.length)],
 					validate: palette => {
 						if (pokemon[palette.toLowerCase()]) return true;
 						return 'Invalid palette, only Pokémon from Generation I may be used.';
