@@ -7,7 +7,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'what-anime',
-			aliases: ['whatanime.ga', 'anime-source', 'anime-sauce', 'weeb-sauce'],
+			aliases: ['whatanime-ga', 'anime-source', 'anime-sauce', 'weeb-sauce', 'trace-moe'],
 			group: 'analyze',
 			memberName: 'what-anime',
 			description: 'Determines what anime a screenshot is from.',
@@ -46,7 +46,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	async fetchRateLimit() {
 		try {
 			const { body } = await request
-				.get('https://whatanime.ga/api/me')
+				.get('https://trace.moe/api/me')
 				.query({ token: WHATANIME_KEY });
 			return { status: body.quota > 0, refresh: body.quota_ttl };
 		} catch (err) {
@@ -57,7 +57,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	async search(file) {
 		if (Buffer.byteLength(file) > 1e+6) return 'size';
 		const { body } = await request
-			.post('https://whatanime.ga/api/search')
+			.post('https://trace.moe/api/search')
 			.query({ token: WHATANIME_KEY })
 			.attach('image', base64(file));
 		const data = body.docs[0];
@@ -73,7 +73,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	async fetchPreview(data) {
 		try {
 			const { body } = await request
-				.get('https://whatanime.ga/preview.php')
+				.get('https://trace.moe/preview.php')
 				.query({
 					anilist_id: data.anilist_id,
 					file: data.filename,
