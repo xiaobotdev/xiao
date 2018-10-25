@@ -49,8 +49,7 @@ the [home server](https://discord.gg/sbMe32W).
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (329)
-
+## Commands (328)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -127,7 +126,6 @@ the [home server](https://discord.gg/sbMe32W).
 
 ### Single Response:
 
-* **can-you-not:** Can YOU not?
 * **dark-theme-light-theme:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
 * **eggs-get-laid:** Sends the ultimate roast.
