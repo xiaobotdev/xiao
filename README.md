@@ -49,7 +49,7 @@ the [home server](https://discord.gg/sbMe32W).
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (328)
+## Commands (329)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -224,6 +224,7 @@ the [home server](https://discord.gg/sbMe32W).
 
 * **age:** Responds with how old someone born in a certain year is.
 * **butt:** Determines a user's butt quality.
+* **character-count:** Responds with the character count of text.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **coolness:** Determines a user's coolness.
 * **dick:** Determines your dick size.
@@ -388,7 +389,6 @@ the [home server](https://discord.gg/sbMe32W).
 
 ### Number Manipulation:
 
-* **character-count:** Responds with the character count of text.
 * **currency:** Converts currency from one currency to another.
 * **final-grade:** Determines the grade you need to make on your final to get your desired course grade.
 * **grade:** Determines your grade on an assignment on an 100-point scale.
