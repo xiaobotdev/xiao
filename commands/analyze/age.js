@@ -19,7 +19,7 @@ module.exports = class AgeCommand extends Command {
 	}
 
 	run(msg, { year }) {
-		const currentYear = new Date().getYear();
+		const currentYear = new Date().getFullYear();
 		return msg.say(`Someone born in ${year} would be ${currentYear - year} years old.`);
 	}
 };
