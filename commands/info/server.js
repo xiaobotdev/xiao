@@ -31,7 +31,7 @@ module.exports = class ServerInfoCommand extends Command {
 			.addField('❯ Owner', msg.guild.owner.user.tag, true)
 			.addField('❯ Members', msg.guild.memberCount, true)
 			.addField('❯ Roles', msg.guild.roles.size, true)
-			.addField('❯ Channels', msg.guild.channels.size, true);
+			.addField('❯ Channels', msg.guild.channels.filter(channel => channel.type !== 'category').size, true);
 		return msg.embed(embed);
 	}
 };
