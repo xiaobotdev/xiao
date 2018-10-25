@@ -222,6 +222,7 @@ the [home server](https://discord.gg/sbMe32W).
 
 ### Analyzers:
 
+* **age:** Responds with how old someone born in a certain year is.
 * **butt:** Determines a user's butt quality.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **coolness:** Determines a user's coolness.
@@ -231,6 +232,7 @@ the [home server](https://discord.gg/sbMe32W).
 * **iq:** Determines a user's IQ.
 * **psycho-pass:** Determines your Crime Coefficient.
 * **read-qr-code:** Reads a QR Code.
+* **scrabble-score:** Responds with the scrabble score of a word.
 * **severe-toxicity:** Determines the toxicity of text, but less sensitive to milder language.
 * **ship:** Ships two users together.
 * **spoopy-link:** Determines if a link is spoopy or not.
@@ -395,7 +397,6 @@ the [home server](https://discord.gg/sbMe32W).
 * **prime:** Determines if a number is a prime number.
 * **roman-numeral:** Converts a number to roman numerals.
 * **scientific-notation:** Converts a number to scientific notation.
-* **scrabble-score:** Responds with the scrabble score of a word.
 * **units:** Converts units to/from other units.
 
 ### Other:
