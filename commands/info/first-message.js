@@ -28,7 +28,7 @@ module.exports = class FirstMessageCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
 			.setThumbnail(message.author.displayAvatarURL({ format }))
-			.setAuthor(msg.author.tag, msg.author.displayAvatarURL({ format }))
+			.setAuthor(message.author.tag, message.author.displayAvatarURL({ format }))
 			.setDescription(message.content)
 			.setTimestamp(message.createdAt)
 			.setFooter(`ID: ${message.id}`)
