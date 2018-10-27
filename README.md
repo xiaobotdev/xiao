@@ -49,7 +49,7 @@ the [home server](https://discord.gg/sbMe32W).
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (329)
+## Commands (333)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -68,6 +68,7 @@ the [home server](https://discord.gg/sbMe32W).
 * **emoji-image:** Responds with an emoji's full-scale image.
 * **emoji-list:** Responds with a list of the server's custom emoji.
 * **emoji-info:** Responds with detailed information on an emoji.
+* **first-message:** Responds with the first message ever sent to a channel.
 * **id:** Responds with a user's ID.
 * **message-info:** Responds with detailed information on a message.
 * **role-info:** Responds with detailed information on a role.
@@ -136,9 +137,12 @@ the [home server](https://discord.gg/sbMe32W).
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
 * **lenny:** Responds with the lenny face.
+* **nom:** Posts a GIF of Kanna eating a crab.
+* **source:** Hello! Can you give me the source?
 * **spam:** Responds with a picture of Spam.
 * **tableflip:** Flips a table... With animation!
 * **wynaut:** Why not? Wynaut?
+* **yoff:** Posts a picture that truly defines modern art.
 
 ### Events:
 
