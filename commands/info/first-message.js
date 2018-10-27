@@ -1,31 +1,34 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 
-module.exports = class MessageInfoCommand extends Command {
+module.exports = class FirstMessageCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'message-info',
-			aliases: ['message', 'msg', 'msg-info', 'reply'],
+			name: 'first-message',
+			aliases: ['first-msg'],
 			group: 'info',
-			memberName: 'message',
-			description: 'Responds with detailed information on a message.',
+			memberName: 'first-message',
+			description: 'Responds with the first message ever sent to a channel.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					key: 'message',
-					prompt: 'Which message would you like to get information on?',
-					type: 'message'
+					key: 'channel',
+					prompt: 'Which channel would you like to get the first message of?',
+					type: 'channel',
+					default: msg => msg.channel
 				}
 			]
 		});
 	}
 
-	run(msg, { message }) {
+	async run(msg, { channel }) {
+		const messages = await channel.messages.fetch({ after: 1, limit: 1 });
+		const message = messages.first();
 		const format = message.author.avatar && message.author.avatar.startsWith('a_') ? 'gif' : 'png';
 		const embed = new MessageEmbed()
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
 			.setThumbnail(message.author.displayAvatarURL({ format }))
-			.setAuthor(message.author.tag, message.author.displayAvatarURL({ format }))
+			.setAuthor(msg.author.tag, msg.author.displayAvatarURL({ format }))
 			.setDescription(message.content)
 			.setTimestamp(message.createdAt)
 			.setFooter(`ID: ${message.id}`)
