@@ -9,7 +9,7 @@ module.exports = class FirstMessageCommand extends Command {
 			group: 'info',
 			memberName: 'first-message',
 			description: 'Responds with the first message ever sent to a channel.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: ['EMBED_LINKS', 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'channel',
@@ -22,6 +22,9 @@ module.exports = class FirstMessageCommand extends Command {
 	}
 
 	async run(msg, { channel }) {
+		if (msg.channel.type === 'text' && !msg.channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY')) {
+			return msg.reply(`Sorry, I don't have permission to read ${channel}...`);
+		}
 		const messages = await channel.messages.fetch({ after: 1, limit: 1 });
 		const message = messages.first();
 		const format = message.author.avatar && message.author.avatar.startsWith('a_') ? 'gif' : 'png';
