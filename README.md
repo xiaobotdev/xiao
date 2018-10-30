@@ -161,6 +161,7 @@ the [home server](https://discord.gg/sbMe32W).
 
 ### Search:
 
+* **anime:** Searches AniList for your query, getting anime results.
 * **azur-lane-ship:** Responds with information on an Azur Lane ship.
 * **bulbapedia:** Searches Bulbapedia for your query.
 * **derpibooru:** Responds with an image from Derpibooru.
@@ -185,10 +186,9 @@ the [home server](https://discord.gg/sbMe32W).
 * **jisho:** Defines a word, but with Japanese.
 * **kh-wiki:** Searches the Kingdom Hearts Wiki for your query.
 * **kickstarter:** Searches Kickstarter for your query.
-* **kitsu-anime:** Searches Kitsu.io for your query, getting anime results.
-* **kitsu-manga:** Searches Kitsu.io for your query, getting manga results.
 * **know-your-meme:** Searches Know Your Meme for your query.
 * **league-of-legends-champion:** Responds with information on a League of Legends champion.
+* **manga:** Searches AniList for your query, getting manga results.
 * **mayo-clinic:** Searches Mayo Clinic for your query.
 * **mdn:** Searches MDN for your query.
 * **nasa:** Searches NASA's image archive for your query.
