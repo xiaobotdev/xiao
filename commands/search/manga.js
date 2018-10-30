@@ -23,7 +23,7 @@ const resultGraphQL = stripIndents`
 			volumes
 			chapters
 			isAdult
-			averageScore
+			meanScore
 		}
 	}
 `;
@@ -58,11 +58,11 @@ module.exports = class MangaCommand extends Command {
 				.setURL(`https://anilist.co/manga/${manga.id}`)
 				.setThumbnail(manga.coverImage.large || null)
 				.setTitle(manga.title.userPreferred)
-				.setDescription(shorten(manga.description))
+				.setDescription(shorten(manga.description.replace(/<br>/g, '\n')))
 				.addField('❯ Status', manga.status, true)
-				.addField('❯ Chapters / Volumes', `${manga.chapters}/${manga.volumes}`, true)
+				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
 				.addField('❯ Year', manga.startDate.year, true)
-				.addField('❯ Average Score', `${manga.averageScore}/100`, true);
+				.addField('❯ Average Score', `${manga.meanScore}/100`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

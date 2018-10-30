@@ -23,7 +23,7 @@ const resultGraphQL = stripIndents`
 			status
 			episodes
 			isAdult
-			averageScore
+			meanScore
 		}
 	}
 `;
@@ -58,11 +58,11 @@ module.exports = class AnimeCommand extends Command {
 				.setURL(`https://anilist.co/anime/${anime.id}`)
 				.setThumbnail(anime.coverImage.large || null)
 				.setTitle(anime.title.userPreferred)
-				.setDescription(shorten(anime.description))
+				.setDescription(shorten(anime.description.replace(/<br>/g, '\n')))
 				.addField('❯ Status', anime.status, true)
 				.addField('❯ Episodes', anime.episodes, true)
 				.addField('❯ Season', `${anime.season} ${anime.startDate.year}`, true)
-				.addField('❯ Average Score', `${anime.averageScore}/100`, true);
+				.addField('❯ Average Score', `${anime.meanScore}/100`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
