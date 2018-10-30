@@ -6,15 +6,12 @@
 [![Donate on Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/dragonfire535)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
 
+> This bot is not available for invite.
+
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
 [Commando](https://github.com/discordjs/Commando) command framework. With over
 300 commands, she is one of the most feature-rich bots out there.
-
-## Invite
-
-Xiao is no longer available for invite. You can self-host the bot, or use her on
-the [home server](https://discord.gg/sbMe32W).
 
 ## Installing
 
@@ -41,9 +38,9 @@ the [home server](https://discord.gg/sbMe32W).
 
 ### Ubuntu and other Debian-based systems
 
-1. Run `apt-get update`.
-2. Run `apt-get upgrade` to install the latest dependencies of your distro.
-3. Run `apt-get install ffmpeg` to install ffmpeg.
+1. Run `apt update`.
+2. Run `apt upgrade` to install the latest dependencies of your distro.
+3. Run `apt install ffmpeg` to install ffmpeg.
 4. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Ubuntu-and-other-Debian-based-systems).
 5. Run `npm i --production` in the folder you cloned the bot.
 6. Run `npm i -g pm2` to install PM2.
