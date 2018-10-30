@@ -59,12 +59,10 @@ module.exports = class AnimeCommand extends Command {
 				.setThumbnail(anime.coverImage.large || null)
 				.setTitle(anime.title.userPreferred)
 				.setDescription(shorten(anime.description))
-				.addField('❯ Type', `${anime.type} - ${anime.status}`, true)
+				.addField('❯ Status', anime.status, true)
 				.addField('❯ Episodes', anime.episodes, true)
 				.addField('❯ Season', `${anime.season} ${anime.startDate.year}`, true)
-				.addField('❯ Average Score', `${anime.averageScore}/10`, true)
-				.addField('❯ Adult?', anime.isAdult ? 'Yes' : 'No', true)
-				.addField('❯ Average Score', `${anime.averageScore}/10`, true);
+				.addField('❯ Average Score', `${anime.averageScore}/100`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

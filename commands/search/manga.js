@@ -59,12 +59,10 @@ module.exports = class MangaCommand extends Command {
 				.setThumbnail(manga.coverImage.large || null)
 				.setTitle(manga.title.userPreferred)
 				.setDescription(shorten(manga.description))
-				.addField('❯ Type', `${manga.type} - ${manga.status}`, true)
+				.addField('❯ Status', manga.status, true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters}/${manga.volumes}`, true)
 				.addField('❯ Year', manga.startDate.year, true)
-				.addField('❯ Average Score', `${manga.averageScore}/10`, true)
-				.addField('❯ Adult?', manga.isAdult ? 'Yes' : 'No', true)
-				.addField('❯ Average Score', `${manga.averageScore}/10`, true);
+				.addField('❯ Average Score', `${manga.averageScore}/100`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
