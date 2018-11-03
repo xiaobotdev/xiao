@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
-const rules = require('../../assets/json/rule-of-the-internet');
+const rules = require('../../assets/json/rule');
 
-module.exports = class RuleOfTheInternetCommand extends Command {
+module.exports = class RuleCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'rule-of-the-internet',
-			aliases: ['rules-of-the-internet', 'internet-rule', 'rule', 'rules'],
+			name: 'rule',
+			aliases: ['rule-of-the-internet'],
 			group: 'search',
-			memberName: 'rule-of-the-internet',
+			memberName: 'rule',
 			description: 'Responds with a rule of the internet.',
 			args: [
 				{

@@ -6,7 +6,6 @@ module.exports = class SquareCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'square',
-			aliases: ['square-avatar', 'square-ava', 'square-image', 'square-img'],
 			group: 'image-edit',
 			memberName: 'square',
 			description: 'Draws an image or a user\'s avatar as a square.',

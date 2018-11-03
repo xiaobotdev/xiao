@@ -3,13 +3,13 @@ const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
 const { shorten } = require('../../util/Util');
 
-module.exports = class VNDBCommand extends Command {
+module.exports = class VisualNovelCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'vndb',
-			aliases: ['visual-novel', 'vn'],
+			name: 'visual-novel',
+			aliases: ['vndb', 'vn'],
 			group: 'search',
-			memberName: 'vndb',
+			memberName: 'visual-novel',
 			description: 'Responds with information on a Visual Novel.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

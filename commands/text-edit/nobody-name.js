@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
 const { shuffle, firstUpperCase } = require('../../util/Util');
 
-module.exports = class OrganizationXIIINameCommand extends Command {
+module.exports = class NobodyNameCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'organization-xiii-name',
-			aliases: ['organization-xiii', 'org-xiii-name', 'org-xiii', 'organization-name', 'org-name', 'nobody-name'],
+			name: 'nobody-name',
+			aliases: ['organization-name', 'org-name', 'organization-xiii-name'],
 			group: 'text-edit',
-			memberName: 'organization-xiii-name',
+			memberName: 'nobody-name',
 			description: 'Converts a name into the Organization XIII style.',
 			args: [
 				{

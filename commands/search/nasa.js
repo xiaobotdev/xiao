@@ -6,7 +6,6 @@ module.exports = class NASACommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'nasa',
-			aliases: ['nasa-image'],
 			group: 'search',
 			memberName: 'nasa',
 			description: 'Searches NASA\'s image archive for your query.',

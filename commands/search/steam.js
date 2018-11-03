@@ -7,7 +7,6 @@ module.exports = class SteamCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'steam',
-			aliases: ['steam-game', 'game', 'video-game'],
 			group: 'search',
 			memberName: 'steam',
 			description: 'Searches Steam for your query.',

@@ -8,7 +8,7 @@ module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'akinator',
-			aliases: ['the-web-genie', 'web-genie', 'aki'],
+			aliases: ['aki'],
 			group: 'games',
 			memberName: 'akinator',
 			description: 'Think about a real or fictional character, I will try to guess who it is.',

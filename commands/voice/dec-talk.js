@@ -5,7 +5,7 @@ module.exports = class DECTalkCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dec-talk',
-			aliases: ['moon-base-alpha', 'text-to-speech', 'tts'],
+			aliases: ['text-to-speech', 'tts'],
 			group: 'voice',
 			memberName: 'dec-talk',
 			description: 'The world\'s best Text-to-Speech.',

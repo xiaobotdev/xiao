@@ -4,13 +4,13 @@ const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { formatNumber } = require('../../util/Util');
 
-module.exports = class AzurLaneShipCommand extends Command {
+module.exports = class AzurLaneCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'azur-lane-ship',
-			aliases: ['azure-lane-ship', 'azur-lane', 'azure-lane', 'azur', 'azure'],
+			name: 'azur-lane',
+			aliases: ['azur-lane-ship', 'azur'],
 			group: 'search',
-			memberName: 'azur-lane-ship',
+			memberName: 'azur-lane',
 			description: 'Responds with information on an Azur Lane ship.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

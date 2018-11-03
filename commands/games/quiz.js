@@ -10,7 +10,7 @@ module.exports = class QuizCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'quiz',
-			aliases: ['jeopardy', 'trivia'],
+			aliases: ['trivia'],
 			group: 'games',
 			memberName: 'quiz',
 			description: 'Answer a quiz question.',

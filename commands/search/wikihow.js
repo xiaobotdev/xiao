@@ -6,7 +6,7 @@ module.exports = class WikihowCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wikihow',
-			aliases: ['wikihow-article', 'how-to', 'how'],
+			aliases: ['how-to', 'how'],
 			group: 'search',
 			memberName: 'wikihow',
 			description: 'Searches Wikihow for your query.',

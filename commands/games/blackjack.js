@@ -8,7 +8,7 @@ module.exports = class BlackjackCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'blackjack',
-			aliases: ['twenty-one', '21'],
+			aliases: ['twenty-one', '21', 'bj'],
 			group: 'games',
 			memberName: 'blackjack',
 			description: 'Play a game of blackjack.',

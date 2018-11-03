@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const isTuesday = require('is-tuesday');
 
 module.exports = class IsTuesdayCommand extends Command {
 	constructor(client) {
@@ -13,6 +12,6 @@ module.exports = class IsTuesdayCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say(`Today **is${isTuesday() ? '' : ' not'}** Tuesday.`);
+		return msg.say(`Today **is${new Date().getDay() === 2 ? '' : ' not'}** Tuesday.`);
 	}
 };

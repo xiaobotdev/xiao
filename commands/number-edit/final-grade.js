@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
-const { above100, above92, above88, above80, below80 } = require('../../assets/json/final-grade-calculator');
+const { above100, above92, above88, above80, below80 } = require('../../assets/json/final-grade');
 
 module.exports = class FinalGradeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'final-grade',
-			aliases: ['final-grade-calculator', 'final-grade-calc', 'roger-hub'],
+			aliases: ['final-grade-calculator', 'final-grade-calc'],
 			group: 'number-edit',
 			memberName: 'final-grade',
 			description: 'Determines the grade you need to make on your final to get your desired course grade.',

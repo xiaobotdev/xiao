@@ -6,7 +6,7 @@ module.exports = class UnitsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'units',
-			aliases: ['convert-units', 'unit-converter', 'unit', 'convert'],
+			aliases: ['convert'],
 			group: 'number-edit',
 			memberName: 'units',
 			description: 'Converts units to/from other units.',

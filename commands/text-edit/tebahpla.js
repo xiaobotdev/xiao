@@ -1,14 +1,14 @@
 const Command = require('../../structures/Command');
 const { letterTrans } = require('custom-translate');
-const dictionary = require('../../assets/json/alphabet-reverse');
+const dictionary = require('../../assets/json/tebahpla');
 
-module.exports = class AlphabetReverseCommand extends Command {
+module.exports = class TebahplaCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'alphabet-reverse',
-			aliases: ['reverse-alphabet', 'tebahpla'],
+			name: 'tebahpla',
+			aliases: ['reverse-alphabet', 'alphabet-reverse'],
 			group: 'text-edit',
-			memberName: 'alphabet-reverse',
+			memberName: 'tebahpla',
 			description: 'Reverses the alphabet of text.',
 			args: [
 				{

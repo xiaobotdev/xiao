@@ -7,7 +7,6 @@ module.exports = class DistortCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'distort',
-			aliases: ['under-water'],
 			group: 'image-edit',
 			memberName: 'distort',
 			description: 'Draws an image or a user\'s avatar but distorted.',

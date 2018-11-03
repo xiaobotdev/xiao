@@ -6,7 +6,6 @@ module.exports = class FancyCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'fancy',
-			aliases: ['fancy-letters'],
 			group: 'text-edit',
 			memberName: 'fancy',
 			description: 'Converts text to fancy letters.',

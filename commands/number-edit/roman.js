@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
-const numerals = require('../../assets/json/roman-numeral');
+const numerals = require('../../assets/json/roman');
 
-module.exports = class RomanNumeralCommand extends Command {
+module.exports = class RomanCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'roman-numeral',
-			aliases: ['roman'],
+			name: 'roman',
+			aliases: ['roman-numeral'],
 			group: 'number-edit',
-			memberName: 'roman-numeral',
+			memberName: 'roman',
 			description: 'Converts a number to roman numerals.',
 			args: [
 				{

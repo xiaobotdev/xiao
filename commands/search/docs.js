@@ -2,13 +2,13 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const branches = ['stable', 'master', 'rpc', 'commando'];
 
-module.exports = class DiscordJSDocsCommand extends Command {
+module.exports = class DocsCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'discord-js-docs',
-			aliases: ['djs-docs', 'docs', 'djs', 'discord-js'],
+			name: 'docs',
+			aliases: ['discord-js-docs', 'djs-docs', 'djs', 'discord-js'],
 			group: 'search',
-			memberName: 'discord-js-docs',
+			memberName: 'docs',
 			description: 'Searches the Discord.js docs for your query.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

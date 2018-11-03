@@ -4,13 +4,13 @@ const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
 const { GOOGLE_KEY } = process.env;
 
-module.exports = class GoogleBookCommand extends Command {
+module.exports = class BookCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'google-book',
-			aliases: ['google-books', 'book'],
+			name: 'book',
+			aliases: ['google-book', 'google-books'],
 			group: 'search',
-			memberName: 'google-book',
+			memberName: 'book',
 			description: 'Searches Google Books for a book.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

@@ -10,11 +10,11 @@ const types = {
 	unknown: 'Unknown'
 };
 
-module.exports = class ChannelInfoCommand extends Command {
+module.exports = class ChannelCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'channel-info',
-			aliases: ['channel'],
+			name: 'channel',
+			aliases: ['channel-info'],
 			group: 'info',
 			memberName: 'channel',
 			description: 'Responds with detailed information on a channel.',

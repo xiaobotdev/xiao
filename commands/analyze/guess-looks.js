@@ -24,6 +24,7 @@ module.exports = class GuessLooksCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		if (user.id === this.client.user.id) return msg.reply('Me? Just look at my avatar, dummy.');
 		const authorUser = user.id === msg.author.id;
 		const random = new Random(Random.engines.mt19937().seed(user.id));
 		const gender = genders[random.integer(0, genders.length - 1)];

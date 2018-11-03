@@ -7,7 +7,7 @@ module.exports = class KhWikiCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'kh-wiki',
-			aliases: ['kingdom-hearts-wiki', 'kh-wiki-article', 'kingdom-hearts-wiki-article'],
+			aliases: ['kingdom-hearts-wiki'],
 			group: 'search',
 			memberName: 'kh-wiki',
 			description: 'Searches the Kingdom Hearts Wiki for your query.',

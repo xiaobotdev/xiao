@@ -1,11 +1,11 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 
-module.exports = class MessageInfoCommand extends Command {
+module.exports = class MessageCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'message-info',
-			aliases: ['message', 'msg', 'msg-info', 'reply'],
+			name: 'message',
+			aliases: ['message-info', 'msg', 'msg-info', 'reply'],
 			group: 'info',
 			memberName: 'message',
 			description: 'Responds with detailed information on a message.',

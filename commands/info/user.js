@@ -9,11 +9,11 @@ const activities = {
 	LISTENING: 'Listening to'
 };
 
-module.exports = class UserInfoCommand extends Command {
+module.exports = class UserCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'user-info',
-			aliases: ['user', 'member', 'member-info'],
+			name: 'user',
+			aliases: ['user-info', 'member', 'member-info'],
 			group: 'info',
 			memberName: 'user',
 			description: 'Responds with detailed information on a user.',

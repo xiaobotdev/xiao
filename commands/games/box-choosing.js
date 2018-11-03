@@ -7,7 +7,7 @@ module.exports = class BoxChoosingCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'box-choosing',
-			aliases: ['box-choose', 'boxes'],
+			aliases: ['box-choose'],
 			group: 'games',
 			memberName: 'box-choosing',
 			description: 'Do you believe that there are choices in life? Taken from Higurashi Chapter 4.'

@@ -7,7 +7,7 @@ module.exports = class DrawCardsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'draw-cards',
-			aliases: ['card-hand', 'draw-hand'],
+			aliases: ['draw-hand'],
 			group: 'random',
 			memberName: 'draw-cards',
 			description: 'Draws a random hand of playing cards.',

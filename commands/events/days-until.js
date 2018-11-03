@@ -6,6 +6,7 @@ module.exports = class DaysUntilCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'days-until',
+			aliases: ['countdown'],
 			group: 'events',
 			memberName: 'days-until',
 			description: 'Responds with how many days there are until a certain date.',

@@ -7,7 +7,7 @@ module.exports = class VietnamFlashbacksCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'vietnam-flashbacks',
-			aliases: ['nam-flashbacks', 'vietnam', 'nam'],
+			aliases: ['nam-flashbacks', 'vietnam'],
 			group: 'image-edit',
 			memberName: 'vietnam-flashbacks',
 			description: 'Edits Vietnam flashbacks behind an image or a user\'s avatar.',

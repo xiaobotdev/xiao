@@ -5,7 +5,6 @@ module.exports = class MD5Command extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'md5',
-			aliases: ['md5-hash'],
 			group: 'text-edit',
 			memberName: 'md5',
 			description: 'Creates a hash of text with the MD5 algorithm.',

@@ -8,7 +8,7 @@ module.exports = class YoutubeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'youtube',
-			aliases: ['youtube-video', 'y-tube', 'u-tube', 'yt'],
+			aliases: ['y-tube', 'u-tube', 'yt'],
 			group: 'search',
 			memberName: 'youtube',
 			description: 'Searches YouTube for your query.',

@@ -142,6 +142,7 @@ module.exports = class MafiaCommand extends Command {
 			await user.send(`Your role will be: ${roles[i]}!`);
 			i++;
 		}
+		return players;
 	}
 
 	getHanged(votes, players, playersArr) {

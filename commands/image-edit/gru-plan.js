@@ -11,7 +11,7 @@ module.exports = class GruPlanCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'gru-plan',
-			aliases: ['grus-plan', 'gru', 'plan'],
+			aliases: ['grus-plan', 'gru'],
 			group: 'image-edit',
 			memberName: 'gru-plan',
 			description: 'Sends a Gru\'s Plan meme with steps of your choice.',

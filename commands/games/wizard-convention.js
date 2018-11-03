@@ -142,6 +142,7 @@ module.exports = class WizardConventionCommand extends Command {
 			await user.send(`Your role will be: ${roles[i]}!`);
 			i++;
 		}
+		return players;
 	}
 
 	getExpelled(votes, players, playersArr) {

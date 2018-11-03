@@ -4,13 +4,13 @@ const path = require('path');
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Captcha.ttf'), { family: 'Captcha' });
 
-module.exports = class CaptchaQuizCommand extends Command {
+module.exports = class CaptchaCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'captcha-quiz',
-			aliases: ['captcha'],
+			name: 'captcha',
+			aliases: ['captcha-quiz'],
 			group: 'games',
-			memberName: 'captcha-quiz',
+			memberName: 'captcha',
 			description: 'Try to guess what the captcha says.',
 			throttling: {
 				usages: 1,

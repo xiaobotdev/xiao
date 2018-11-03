@@ -7,13 +7,13 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.t
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
-module.exports = class DemotivationalPosterCommand extends Command {
+module.exports = class DemotivationalCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'demotivational-poster',
-			aliases: ['demotivational'],
+			name: 'demotivational',
+			aliases: ['demotivational-poster'],
 			group: 'image-edit',
-			memberName: 'demotivational-poster',
+			memberName: 'demotivational',
 			description: 'Draws an image or a user\'s avatar and the text you specify as a demotivational poster.',
 			throttling: {
 				usages: 1,

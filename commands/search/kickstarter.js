@@ -8,7 +8,6 @@ module.exports = class KickstarterCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'kickstarter',
-			aliases: ['kickstarter-project'],
 			group: 'search',
 			memberName: 'kickstarter',
 			description: 'Searches Kickstarter for your query.',

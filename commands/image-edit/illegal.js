@@ -10,7 +10,7 @@ module.exports = class IllegalCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'illegal',
-			aliases: ['is-now-illegal', 'trump', 'first-order-of-business'],
+			aliases: ['is-now-illegal', 'trump'],
 			group: 'image-edit',
 			memberName: 'illegal',
 			description: 'Makes President Trump make your text illegal.',
