@@ -46,7 +46,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (333)
+## Commands (330)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -60,31 +60,30 @@ Xiao is a Discord bot coded in JavaScript with
 ### Discord Information:
 
 * **avatar:** Responds with a user's avatar.
-* **channel-info:** Responds with detailed information on a channel.
+* **channel:** Responds with detailed information on a channel.
 * **discriminator:** Searches for other users with a certain discriminator.
 * **emoji-image:** Responds with an emoji's full-scale image.
 * **emoji-list:** Responds with a list of the server's custom emoji.
-* **emoji-info:** Responds with detailed information on an emoji.
+* **emoji:** Responds with detailed information on an emoji.
 * **first-message:** Responds with the first message ever sent to a channel.
 * **id:** Responds with a user's ID.
-* **message-info:** Responds with detailed information on a message.
-* **role-info:** Responds with detailed information on a role.
-* **server-info:** Responds with detailed information on the server.
-* **user-info:** Responds with detailed information on a user.
+* **message:** Responds with detailed information on a message.
+* **role:** Responds with detailed information on a role.
+* **server:** Responds with detailed information on the server.
+* **user:** Responds with detailed information on a user.
 
 ### Random Response:
 
 * **8-ball:** Asks your question to the Magic 8 Ball.
-* **advice-slip:** Responds with a random bit of advice.
+* **advice:** Responds with a random bit of advice.
 * **bird:** Responds with a random bird image.
 * **cat-fact:** Responds with a random cat fact.
 * **cat:** Responds with a random cat image.
-* **charlie-charlie-challenge:** Asks your question to Charlie.
+* **charlie-charlie:** Asks your question to Charlie.
 * **choose:** Chooses between options you provide.
 * **chuck-norris:** Responds with a random Chuck Norris joke.
 * **coin:** Flips a coin.
 * **compliment:** Compliments a user.
-* **discord-email-fun-fact:** Responds with a random fun fact from the Discord emails.
 * **dog-fact:** Responds with a random dog fact.
 * **dog:** Responds with a random dog image.
 * **draw-cards:** Draws a random hand of playing cards.
@@ -108,23 +107,23 @@ Xiao is a Discord bot coded in JavaScript with
 * **pun:** Responds with a random pun.
 * **quantum-coin:** Flips a coin that lands on some form of nothing.
 * **quote:** Responds with a random quote.
+* **random-user:** Randomly chooses a member of the server.
 * **rate:** Rates something.
-* **reddit:** Responds with a random post from a subreddit.
 * **roast:** Roasts a user.
 * **roll:** Rolls a dice with a maximum value of your choice.
 * **security-key:** Responds with a random security key.
 * **shiba:** Responds with a random image of a Shiba Inu.
 * **shower-thought:** Responds with a random shower thought, directly from r/Showerthoughts.
+* **subreddit:** Responds with a random post from a subreddit.
 * **suggest-command:** Suggests a random command for you to try.
 * **superpower:** Responds with a random superpower.
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
-* **user-roulette:** Randomly chooses a member of the server.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Single Response:
 
-* **dark-theme-light-theme:** Determines whether you use dark or light theme.
+* **dark-light:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
 * **eggs-get-laid:** Sends the ultimate roast.
 * **fly:** Sends a fake fly that looks surprisngly real.
@@ -134,8 +133,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
 * **lenny:** Responds with the lenny face.
-* **nom:** Posts a GIF of Kanna eating a crab.
-* **source:** Hello! Can you give me the source?
 * **spam:** Responds with a picture of Spam.
 * **tableflip:** Flips a table... With animation!
 * **wynaut:** Why not? Wynaut?
@@ -143,7 +140,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ### Events:
 
-* **astronomy-picture-of-the-day:** Responds with today's Astronomy Picture of the Day.
+* **apod:** Responds with today's Astronomy Picture of the Day.
 * **calendar:** Responds with today's holidays.
 * **days-until:** Responds with how many days there are until a certain date.
 * **doomsday-clock:** Responds with the current time of the Doomsday Clock.
@@ -159,12 +156,13 @@ Xiao is a Discord bot coded in JavaScript with
 ### Search:
 
 * **anime:** Searches AniList for your query, getting anime results.
-* **azur-lane-ship:** Responds with information on an Azur Lane ship.
+* **azur-lane:** Responds with information on an Azur Lane ship.
+* **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
+* **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
-* **dictionary:** Defines a word.
-* **discord-js-docs:** Searches the Discord.js docs for your query.
+* **docs:** Searches the Discord.js docs for your query.
 * **eshop:** Searches the Nintendo eShop for your query.
 * **esrb:** Searches ESRB for your query.
 * **flickr:** Searches Flickr for your query.
@@ -172,8 +170,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **giphy:** Searches Giphy for your query.
 * **github:** Responds with information on a GitHub repository.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
-* **google-book:** Searches Google Books for a book.
-* **google-map:** Responds with a map of a specific location.
 * **google:** Searches Google for your query.
 * **gravatar:** Responds with the Gravatar for an email.
 * **http-cat:** Responds with a cat for an HTTP status code.
@@ -184,10 +180,12 @@ Xiao is a Discord bot coded in JavaScript with
 * **kh-wiki:** Searches the Kingdom Hearts Wiki for your query.
 * **kickstarter:** Searches Kickstarter for your query.
 * **know-your-meme:** Searches Know Your Meme for your query.
-* **league-of-legends-champion:** Responds with information on a League of Legends champion.
+* **league-of-legends:** Responds with information on a League of Legends champion.
 * **manga:** Searches AniList for your query, getting manga results.
+* **map:** Responds with a map of a specific location.
 * **mayo-clinic:** Searches Mayo Clinic for your query.
 * **mdn:** Searches MDN for your query.
+* **movie:** Searches TMDB for your query, getting movie results.
 * **nasa:** Searches NASA's image archive for your query.
 * **neopet:** Responds with the image of a specific Neopet.
 * **neopets-item:** Responds with information on a specific Neopets item.
@@ -196,21 +194,20 @@ Xiao is a Discord bot coded in JavaScript with
 * **periodic-table:** Finds an element on the periodic table.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **recipe:** Searches for recipes based on your query.
-* **reddit-user:** Responds with information on a Reddit user.
+* **reddit:** Responds with information on a Reddit user.
 * **rotten-tomatoes:** Searches Rotten Tomatoes for your query.
-* **rule-of-the-internet:** Responds with a rule of the internet.
+* **rule:** Responds with a rule of the internet.
 * **safebooru:** Responds with an image from Safebooru, with optional query.
 * **soundcloud:** Searches SoundCloud for your query.
 * **stack-overflow:** Searches Stack Overflow for your query.
 * **steam:** Searches Steam for your query.
 * **stocks:** Responds with the current stocks for a specific symbol.
 * **tenor:** Searches Tenor for your query.
-* **tmdb-movie:** Searches TMDB for your query, getting movie results.
-* **tmdb-tv-show:** Searches TMDB for your query, getting TV show results.
 * **tumblr:** Responds with information on a Tumblr blog.
+* **tv-show:** Searches TMDB for your query, getting TV show results.
 * **twitter:** Responds with information on a Twitter user.
-* **urban-dictionary:** Defines a word, but with Urban Dictionary.
-* **vndb:** Responds with information on a Visual Novel.
+* **urban:** Defines a word, but with Urban Dictionary.
+* **visual-novel:** Responds with information on a Visual Novel.
 * **vocadb:** Searches VocaDB for your query.
 * **wattpad:** Searches Wattpad for your query.
 * **weather:** Responds with weather information for a specific location.
@@ -229,7 +226,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **coolness:** Determines a user's coolness.
 * **dick:** Determines your dick size.
-* **gender-analyze:** Determines the gender of a name.
+* **gender:** Determines the gender of a name.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
 * **psycho-pass:** Determines your Crime Coefficient.
@@ -249,7 +246,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **blackjack:** Play a game of blackjack.
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
-* **captcha-quiz:** Try to guess what the captcha says.
+* **captcha:** Try to guess what the captcha says.
 * **chance:** Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **doors:** Open the right door, and you win the money! Make the wrong one, and you get the fire!
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
@@ -266,7 +263,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **rock-paper-scissors:** Play Rock-Paper-Scissors.
 * **roulette:** Play a game of roulette.
 * **slots:** Play a game of slots.
-* **sorting-hat-quiz:** Take a quiz to determine your Hogwarts house.
+* **sorting-hat:** Take a quiz to determine your Hogwarts house.
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **whos-that-pokemon:** Guess who that Pokémon is.
@@ -287,7 +284,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **create-qr-code:** Converts text to a QR Code.
-* **demotivational-poster:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
+* **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **fire:** Draws a fiery border over an image or a user's avatar.
 * **frame:** Draws a frame around an image or a user's avatar.
@@ -322,6 +319,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 * **3000-years:** Draws a user's avatar over Pokémon's "It's been 3000 years" meme.
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
+* **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **bob-ross:** Draws a user's avatar over Bob Ross' canvas.
 * **challenger:** Draws a user's avatar over Super Smash Bros.'s "Challenger Approaching" screen.
 * **dexter:** Draws a user's avatar over the screen of Dexter from Pokémon.
@@ -336,16 +334,14 @@ Xiao is a Discord bot coded in JavaScript with
 * **rip:** Draws a user's avatar over a gravestone.
 * **steam-card:** Draws a user's avatar on a Steam Trading Card.
 * **steam-now-playing:** Draws a user's avatar and the game of your choice over a Steam "now playing" notification.
-* **the-ultimate-tattoo:** Draws a user's avatar as "The Ultimate Tattoo".
-* **this-is-beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
-* **this-is-worthless:** Draws a user's avatar over Gravity Falls' "Oh, this? This is worthless." meme.
 * **triggered:** Draws a user's avatar over the "Triggered" meme.
+* **ultimate-tattoo:** Draws a user's avatar as "The Ultimate Tattoo".
 * **wanted:** Draws a user's avatar over a wanted poster.
+* **worthless:** Draws a user's avatar over Gravity Falls' "Oh, this? This is worthless." meme.
 * **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
 
 ### Text Manipulation:
 
-* **alphabet-reverse:** Reverses the alphabet of text.
 * **base64:** Converts text to/from Base64.
 * **binary:** Converts text to binary.
 * **braille:** Converts text to braille.
@@ -364,7 +360,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **md5:** Creates a hash of text with the MD5 algorithm.
 * **mocking:** SenDs TexT lIkE ThiS.
 * **morse:** Converts text to morse code.
-* **organization-xiii-name:** Converts a name into the Organization XIII style.
+* **nobody-name:** Converts a name into the Organization XIII style.
 * **owo:** OwO.
 * **pig-latin:** Converts text to pig latin.
 * **pirate:** Converts text to pirate.
@@ -379,6 +375,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **shuffle:** Shuffles text.
 * **snake-speak:** Convertsssss text to sssssnake ssssspeak.
 * **superscript:** Converts text to tiny text.
+* **tebahpla:** Reverses the alphabet of text.
 * **temmie:** Converts text to Temmie speak.
 * **translate:** Translates text to a specific language.
 * **uppercase:** Converts text to uppercase.
@@ -396,7 +393,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **gravity:** Determines weight on another planet.
 * **math:** Evaluates a math expression.
 * **prime:** Determines if a number is a prime number.
-* **roman-numeral:** Converts a number to roman numerals.
+* **roman:** Converts a number to roman numerals.
 * **scientific-notation:** Converts a number to scientific notation.
 * **units:** Converts units to/from other units.
 
