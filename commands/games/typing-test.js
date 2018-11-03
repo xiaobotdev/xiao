@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
-const sentences = require('../../assets/json/typing-game');
+const sentences = require('../../assets/json/typing-test');
 const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
 const times = {
 	easy: 25000,
@@ -15,7 +15,6 @@ module.exports = class TypingTestCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'typing-test',
-			aliases: ['typing-game'],
 			group: 'games',
 			memberName: 'typing-test',
 			description: 'See how fast you can type a sentence in a given time limit.',

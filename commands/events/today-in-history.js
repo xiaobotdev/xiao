@@ -6,7 +6,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'today-in-history',
-			aliases: ['event', 'today', 'history'],
+			aliases: ['today', 'history'],
 			group: 'events',
 			memberName: 'today-in-history',
 			description: 'Responds with an event that occurred today in history.',

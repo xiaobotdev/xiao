@@ -7,7 +7,6 @@ module.exports = class BulbapediaCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'bulbapedia',
-			aliases: ['bulbagarden', 'bulbapedia-article', 'bulbagarden-article'],
 			group: 'search',
 			memberName: 'bulbapedia',
 			description: 'Searches Bulbapedia for your query.',

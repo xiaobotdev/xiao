@@ -7,7 +7,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'what-anime',
-			aliases: ['whatanime-ga', 'anime-source', 'anime-sauce', 'weeb-sauce', 'trace-moe'],
+			aliases: ['anime-source', 'anime-src', 'trace-moe', 'source', 'src'],
 			group: 'analyze',
 			memberName: 'what-anime',
 			description: 'Determines what anime a screenshot is from.',

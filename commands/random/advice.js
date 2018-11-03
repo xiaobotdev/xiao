@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 
-module.exports = class AdviceSlipCommand extends Command {
+module.exports = class AdviceCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'advice-slip',
-			aliases: ['advice'],
+			name: 'advice',
+			aliases: ['advice-slip'],
 			group: 'random',
-			memberName: 'advice-slip',
+			memberName: 'advice',
 			description: 'Responds with a random bit of advice.'
 		});
 	}

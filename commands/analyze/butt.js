@@ -22,6 +22,7 @@ module.exports = class ButtCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		if (user.id === this.client.user.id) return msg.reply('Me? I think I have the best butt around!');
 		const random = new Random(Random.engines.mt19937().seed(user.id));
 		const quality = random.integer(0, texts.length - 1);
 		return msg.reply(`${user.id === msg.author.id ? 'ur' : `${user.username}'s`} butt is ${texts[quality]}`);

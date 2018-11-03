@@ -4,7 +4,7 @@ module.exports = class PortalSendCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'portal-send',
-			aliases: ['send-portal-message', 'portal-message', 'send-portal-msg', 'portal-msg', 'portal'],
+			aliases: ['portal'],
 			group: 'text-edit',
 			memberName: 'portal-send',
 			description: 'Send a message to a portal channel.',

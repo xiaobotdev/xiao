@@ -22,6 +22,7 @@ module.exports = class PsychoPassCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		if (user.id === this.client.user.id) return msg.reply('Me? I-I\'m not dangerous, I promise!');
 		const random = new Random(Random.engines.mt19937().seed(user.id));
 		const coefficient = random.integer(0, 500);
 		let res;

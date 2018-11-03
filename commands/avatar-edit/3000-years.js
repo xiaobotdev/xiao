@@ -7,7 +7,7 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: '3000-years',
-			aliases: ['az', '3ky', '3k-years'],
+			aliases: ['3ky', '3k-years'],
 			group: 'avatar-edit',
 			memberName: '3000-years',
 			description: 'Draws a user\'s avatar over Pokémon\'s "It\'s been 3000 years" meme.',

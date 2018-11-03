@@ -1,16 +1,16 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { shuffle } = require('../../util/Util');
-const { questions, houses, descriptions } = require('../../assets/json/sorting-hat-quiz');
+const { questions, houses, descriptions } = require('../../assets/json/sorting-hat');
 const choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
 
-module.exports = class SortingHatQuizCommand extends Command {
+module.exports = class SortingHatCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'sorting-hat-quiz',
-			aliases: ['sorting-hat', 'pottermore', 'hogwarts'],
+			name: 'sorting-hat',
+			aliases: ['sorting-hat-quiz', 'hogwarts', 'hogwarts-house'],
 			group: 'games',
-			memberName: 'sorting-hat-quiz',
+			memberName: 'sorting-hat',
 			description: 'Take a quiz to determine your Hogwarts house.'
 		});
 

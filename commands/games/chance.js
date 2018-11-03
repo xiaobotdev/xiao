@@ -4,7 +4,7 @@ module.exports = class ChanceCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'chance',
-			aliases: ['1-in', 'one-in', 'lottery-classic'],
+			aliases: ['1-in', 'one-in'],
 			group: 'games',
 			memberName: 'chance',
 			description: 'Attempt to win with a 1 in 1000 (or your choice) chance of winning.',

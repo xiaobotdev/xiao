@@ -4,11 +4,11 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
 
-module.exports = class VocaDBCommand extends Command {
+module.exports = class VocadbCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'vocadb',
-			aliases: ['vocaloid', 'vocaloid-song', 'vocaloid-music'],
+			aliases: ['vocaloid'],
 			group: 'search',
 			memberName: 'vocadb',
 			description: 'Searches VocaDB for your query.',

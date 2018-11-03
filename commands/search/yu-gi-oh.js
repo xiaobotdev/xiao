@@ -7,7 +7,7 @@ module.exports = class YuGiOhCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'yu-gi-oh',
-			aliases: ['yu-gi-oh-card', 'ygo-card', 'ygo'],
+			aliases: ['ygo'],
 			group: 'search',
 			memberName: 'yu-gi-oh',
 			description: 'Responds with info on a Yu-Gi-Oh! card.',

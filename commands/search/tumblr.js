@@ -8,7 +8,6 @@ module.exports = class TumblrCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'tumblr',
-			aliases: ['tumblr-blog'],
 			group: 'search',
 			memberName: 'tumblr',
 			description: 'Responds with information on a Tumblr blog.',

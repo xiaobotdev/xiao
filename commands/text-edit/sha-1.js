@@ -5,7 +5,6 @@ module.exports = class SHA1Command extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'sha-1',
-			aliases: ['sha-1-hash'],
 			group: 'text-edit',
 			memberName: 'sha-1',
 			description: 'Creates a hash of text with the SHA-1 algorithm.',

@@ -9,7 +9,6 @@ module.exports = class StackOverflowCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'stack-overflow',
-			aliases: ['stack-exchange'],
 			group: 'search',
 			memberName: 'stack-overflow',
 			description: 'Searches Stack Overflow for your query.',

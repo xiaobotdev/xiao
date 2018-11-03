@@ -7,7 +7,7 @@ module.exports = class DrakepostingCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'drakeposting',
-			aliases: ['drake', 'nah-yeah', 'naw-yeah'],
+			aliases: ['drake'],
 			group: 'avatar-edit',
 			memberName: 'drakeposting',
 			description: 'Draws two user\'s avatars over the "Drakeposting" meme.',

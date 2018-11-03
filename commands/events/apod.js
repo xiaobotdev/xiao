@@ -3,13 +3,13 @@ const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
 const { GOV_KEY } = process.env;
 
-module.exports = class AstronomyPictureOfTheDayCommand extends Command {
+module.exports = class ApodCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'astronomy-picture-of-the-day',
-			aliases: ['nasa-apod', 'apod', 'nasa-astronomy-picture-of-the-day'],
+			name: 'apod',
+			aliases: ['astronomy-picture-of-the-day'],
 			group: 'events',
-			memberName: 'astronomy-picture-of-the-day',
+			memberName: 'apod',
 			description: 'Responds with today\'s Astronomy Picture of the Day.',
 			clientPermissions: ['ATTACH_FILES']
 		});

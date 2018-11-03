@@ -7,7 +7,6 @@ module.exports = class ItunesCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'itunes',
-			aliases: ['song', 'music', 'apple-music', 'itunes-music'],
 			group: 'search',
 			memberName: 'itunes',
 			description: 'Searches iTunes for your query.',

@@ -8,7 +8,7 @@ module.exports = class FireCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'fire',
-			aliases: ['flame', 'hell'],
+			aliases: ['hell'],
 			group: 'image-edit',
 			memberName: 'fire',
 			description: 'Draws a fiery border over an image or a user\'s avatar.',

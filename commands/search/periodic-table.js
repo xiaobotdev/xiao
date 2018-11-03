@@ -8,7 +8,7 @@ module.exports = class PeriodicTableCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'periodic-table',
-			aliases: ['periodic-table-of-elements', 'element', 'p-table'],
+			aliases: ['element', 'p-table'],
 			group: 'search',
 			memberName: 'periodic-table',
 			description: 'Finds an element on the periodic table.',

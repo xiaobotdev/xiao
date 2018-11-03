@@ -5,6 +5,7 @@ module.exports = class OwOCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'owo',
+			aliases: ['furry-speak', 'fur-speak'],
 			group: 'text-edit',
 			memberName: 'owo',
 			description: 'OwO.',

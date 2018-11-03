@@ -15,7 +15,6 @@ module.exports = class ESRBCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'esrb',
-			aliases: ['esrb-rating'],
 			group: 'search',
 			memberName: 'esrb',
 			description: 'Searches ESRB for your query.',

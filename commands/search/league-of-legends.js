@@ -3,13 +3,13 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const buttons = ['Q', 'W', 'E', 'R'];
 
-module.exports = class LeagueOfLegendsChampionCommand extends Command {
+module.exports = class LeagueOfLegendsCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'league-of-legends-champion',
-			aliases: ['lol-champion', 'league-of-legends-champ', 'lol-champ', 'league-champ'],
+			name: 'league-of-legends',
+			aliases: ['league-of-legends-champion', 'league-of-legends-champ', 'league-champ'],
 			group: 'search',
-			memberName: 'league-of-legends-champion',
+			memberName: 'league-of-legends',
 			description: 'Responds with information on a League of Legends champion.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

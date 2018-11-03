@@ -7,7 +7,7 @@ module.exports = class WikiaCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wikia',
-			aliases: ['fandom', 'wikia-article', 'fandom-article'],
+			aliases: ['fandom'],
 			group: 'search',
 			memberName: 'wikia',
 			description: 'Searches a specific Wikia wiki for your query.',

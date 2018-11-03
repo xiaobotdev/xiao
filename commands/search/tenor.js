@@ -6,7 +6,6 @@ module.exports = class TenorCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'tenor',
-			aliases: ['tenor-gif'],
 			group: 'search',
 			memberName: 'tenor',
 			description: 'Searches Tenor for your query.',

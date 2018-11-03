@@ -4,13 +4,13 @@ const request = require('node-superfetch');
 const moment = require('moment');
 const { formatNumber } = require('../../util/Util');
 
-module.exports = class RedditUserCommand extends Command {
+module.exports = class RedditCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'reddit-user',
-			aliases: ['reddit-u', 'u/', 'karma', 'reddit-karma'],
+			name: 'reddit',
+			aliases: ['u/'],
 			group: 'search',
-			memberName: 'reddit-user',
+			memberName: 'reddit',
 			description: 'Responds with information on a Reddit user.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

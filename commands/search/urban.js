@@ -3,13 +3,13 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
 
-module.exports = class UrbanDictionaryCommand extends Command {
+module.exports = class UrbanCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'urban-dictionary',
-			aliases: ['urban', 'define-urban'],
+			name: 'urban',
+			aliases: ['urban-dictionary'],
 			group: 'search',
-			memberName: 'urban-dictionary',
+			memberName: 'urban',
 			description: 'Defines a word, but with Urban Dictionary.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [

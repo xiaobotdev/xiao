@@ -8,6 +8,7 @@ module.exports = class TriggeredCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'triggered',
+			aliases: ['trigger'],
 			group: 'avatar-edit',
 			memberName: 'triggered',
 			description: 'Draws a user\'s avatar over the "Triggered" meme.',

@@ -5,7 +5,7 @@ module.exports = class ShieldsIoBadgeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'shields-io-badge',
-			aliases: ['shields-io', 'img-shields-io'],
+			aliases: ['shields-io'],
 			group: 'image-edit',
 			memberName: 'shields-io-badge',
 			description: 'Creates a badge from shields.io.',

@@ -7,7 +7,7 @@ module.exports = class NeopetsItemCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'neopets-item',
-			aliases: ['jellyneo', 'jellyneo-item', 'jellyneo-item-database', 'neo-item'],
+			aliases: ['neo-item'],
 			group: 'search',
 			memberName: 'neopets-item',
 			description: 'Responds with information on a specific Neopets item.',

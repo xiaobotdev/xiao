@@ -6,7 +6,7 @@ module.exports = class FishyCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'fishy',
-			aliases: ['fish', 'fishing'],
+			aliases: ['fishing'],
 			group: 'games',
 			memberName: 'fishy',
 			description: 'Go fishing.'

@@ -4,7 +4,7 @@ module.exports = class ScientificNotationCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'scientific-notation',
-			aliases: ['science-notation', 'e+', 'exponential-notation', 'exponential', 'scientific'],
+			aliases: ['science-notation', 'exponential-notation'],
 			group: 'number-edit',
 			memberName: 'scientific-notation',
 			description: 'Converts a number to scientific notation.',

@@ -3,13 +3,13 @@ const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { WORDNIK_KEY } = process.env;
 
-module.exports = class DictionaryCommand extends Command {
+module.exports = class DefineCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'dictionary',
-			aliases: ['define', 'wordnik', 'define-wordnik', 'wordnik-define', 'wordnik-dictionary'],
+			name: 'define',
+			aliases: ['dictionary', 'wordnik'],
 			group: 'search',
-			memberName: 'dictionary',
+			memberName: 'define',
 			description: 'Defines a word.',
 			args: [
 				{

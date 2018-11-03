@@ -10,7 +10,7 @@ module.exports = class SteamCardCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'steam-card',
-			aliases: ['valve-card', 'card', 'discord-card'],
+			aliases: ['valve-card'],
 			group: 'avatar-edit',
 			memberName: 'steam-card',
 			description: 'Draws a user\'s avatar on a Steam Trading Card.',

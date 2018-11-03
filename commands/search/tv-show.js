@@ -1,22 +1,22 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 const { TMDB_KEY } = process.env;
 
-module.exports = class TMDBMovieCommand extends Command {
+module.exports = class TvShowCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'tmdb-movie',
-			aliases: ['movie', 'imdb'],
+			name: 'tv-show',
+			aliases: ['tmdb-tv-show', 'tv', 'tmdb-tv'],
 			group: 'search',
-			memberName: 'tmdb-movie',
-			description: 'Searches TMDB for your query, getting movie results.',
+			memberName: 'tv-show',
+			description: 'Searches TMDB for your query, getting TV show results.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
-					prompt: 'What movie would you like to search for?',
+					prompt: 'What TV show would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -26,7 +26,7 @@ module.exports = class TMDBMovieCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const search = await request
-				.get('http://api.themoviedb.org/3/search/movie')
+				.get('http://api.themoviedb.org/3/search/tv')
 				.query({
 					api_key: TMDB_KEY,
 					include_adult: msg.channel.nsfw || false,
@@ -34,17 +34,19 @@ module.exports = class TMDBMovieCommand extends Command {
 				});
 			if (!search.body.results.length) return msg.say('Could not find any results.');
 			const { body } = await request
-				.get(`https://api.themoviedb.org/3/movie/${search.body.results[0].id}`)
+				.get(`https://api.themoviedb.org/3/tv/${search.body.results[0].id}`)
 				.query({ api_key: TMDB_KEY });
 			const embed = new MessageEmbed()
 				.setColor(0x00D474)
-				.setTitle(body.title)
-				.setURL(`https://www.themoviedb.org/movie/${body.id}`)
+				.setTitle(body.name)
+				.setURL(`https://www.themoviedb.org/tv/${body.id}`)
 				.setAuthor('TMDB', 'https://i.imgur.com/3K3QMv9.png', 'https://www.themoviedb.org/')
 				.setDescription(body.overview ? shorten(body.overview) : 'No description available.')
 				.setThumbnail(body.poster_path ? `https://image.tmdb.org/t/p/w500${body.poster_path}` : null)
-				.addField('❯ Runtime', body.runtime ? `${body.runtime} mins.` : '???', true)
-				.addField('❯ Release Date', body.release_date || '???', true)
+				.addField('❯ First Air Date', body.first_air_date || '???', true)
+				.addField('❯ Last Air Date', body.last_air_date || '???', true)
+				.addField('❯ Seasons', body.number_of_seasons ? formatNumber(body.number_of_seasons) : '???', true)
+				.addField('❯ Episodes', body.number_of_episodes ? formatNumber(body.number_of_episodes) : '???', true)
 				.addField('❯ Genres', body.genres.length ? body.genres.map(genre => genre.name).join(', ') : '???')
 				.addField('❯ Production Companies',
 					body.production_companies.length ? body.production_companies.map(c => c.name).join(', ') : '???');

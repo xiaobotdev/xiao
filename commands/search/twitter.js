@@ -10,7 +10,6 @@ module.exports = class TwitterCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'twitter',
-			aliases: ['twitter-user'],
 			group: 'search',
 			memberName: 'twitter',
 			description: 'Responds with information on a Twitter user.',

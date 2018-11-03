@@ -8,7 +8,7 @@ module.exports = class MayoClinicCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'mayo-clinic',
-			aliases: ['disease', 'diagnose', 'diagnosis'],
+			aliases: ['disease'],
 			group: 'search',
 			memberName: 'mayo-clinic',
 			description: 'Searches Mayo Clinic for your query.',

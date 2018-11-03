@@ -3,13 +3,13 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
-module.exports = class ThisIsWorthlessCommand extends Command {
+module.exports = class WorthlessCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'this-is-worthless',
-			aliases: ['worthless'],
+			name: 'worthless',
+			aliases: ['this-is-worthless'],
 			group: 'avatar-edit',
-			memberName: 'this-is-worthless',
+			memberName: 'worthless',
 			description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is worthless." meme.',
 			throttling: {
 				usages: 1,
@@ -30,7 +30,7 @@ module.exports = class ThisIsWorthlessCommand extends Command {
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'this-is-worthless.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'worthless.png'));
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
@@ -39,7 +39,7 @@ module.exports = class ThisIsWorthlessCommand extends Command {
 			ctx.rotate(6 * (Math.PI / 180));
 			ctx.drawImage(avatar, 496, 183, 400, 400);
 			ctx.rotate(-6 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'this-is-worthless.png' }] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'worthless.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

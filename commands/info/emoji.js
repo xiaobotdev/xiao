@@ -2,11 +2,11 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 
-module.exports = class EmojiInfoCommand extends Command {
+module.exports = class EmojiCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'emoji-info',
-			aliases: ['emoji', 'emote'],
+			name: 'emoji',
+			aliases: ['emoji-info', 'emote'],
 			group: 'info',
 			memberName: 'emoji',
 			description: 'Responds with detailed information on an emoji.',

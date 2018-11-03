@@ -2,13 +2,13 @@ const Command = require('../../structures/Command');
 const { stripIndent } = require('common-tags');
 const answers = ['yes', 'no'];
 
-module.exports = class CharlieCharlieChallengeCommand extends Command {
+module.exports = class CharlieCharlieCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'charlie-charlie-challenge',
-			aliases: ['charlie-charlie'],
+			name: 'charlie-charlie',
+			aliases: ['charlie-charlie-challenge'],
 			group: 'random',
-			memberName: 'charlie-charlie-challenge',
+			memberName: 'charlie-charlie',
 			description: 'Asks your question to Charlie.',
 			args: [
 				{

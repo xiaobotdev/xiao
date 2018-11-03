@@ -2,13 +2,13 @@ const SubredditCommand = require('../../structures/commands/Subreddit');
 const { MessageEmbed } = require('discord.js');
 const { formatNumber } = require('../../util/Util');
 
-module.exports = class RedditCommand extends SubredditCommand {
+module.exports = class SubredditCommand extends SubredditCommand {
 	constructor(client) {
 		super(client, {
-			name: 'reddit',
-			aliases: ['subreddit', 'r', 'r/', 'sub'],
+			name: 'subreddit',
+			aliases: ['r/', 'sub'],
 			group: 'random',
-			memberName: 'reddit',
+			memberName: 'subreddit',
 			description: 'Responds with a random post from a subreddit.',
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
