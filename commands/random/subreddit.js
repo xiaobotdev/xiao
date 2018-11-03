@@ -1,8 +1,8 @@
-const SubredditCommand = require('../../structures/commands/Subreddit');
+const SubredditCommandBase = require('../../structures/commands/Subreddit');
 const { MessageEmbed } = require('discord.js');
 const { formatNumber } = require('../../util/Util');
 
-module.exports = class SubredditCommand extends SubredditCommand {
+module.exports = class SubredditCommand extends SubredditCommandBase {
 	constructor(client) {
 		super(client, {
 			name: 'subreddit',
