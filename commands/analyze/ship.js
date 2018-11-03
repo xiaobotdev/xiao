@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const Random = require('random-js');
+const { oneLine } = require('common-tags');
 
 module.exports = class ShipCommand extends Command {
 	constructor(client) {
@@ -29,10 +30,13 @@ module.exports = class ShipCommand extends Command {
 	run(msg, { first, second }) {
 		if (first.id === second.id) return msg.reply('Shipping someone with themselves would be pretty weird.');
 		const botText = first.id === this.client.user.id || second.id === this.client.user.id
-			? `\nBut ${first.id === msg.author.id || second.id === msg.author.id ? 'you\'re' : 'they\'re'} still rejected.`
+			? `But ${first.id === msg.author.id || second.id === msg.author.id ? 'you\'re' : 'they\'re'} still rejected.`
 			: '';
 		const random = new Random(Random.engines.mt19937().seed(Math.abs(first.id - second.id)));
 		const level = random.integer(0, 100);
-		return msg.say(`${first.username} and ${second.username} have a compatability of... **${level}%**!${botText}`);
+		return msg.say(oneLine`
+			${first.id === this.client.user.id ? 'Me' : first.username} and
+			${second.id === this.client.user.id ? 'me' : second.username} have a compatability of... **${level}%**!${botText}
+		`);
 	}
 };
