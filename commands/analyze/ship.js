@@ -36,7 +36,7 @@ module.exports = class ShipCommand extends Command {
 		const level = random.integer(0, 100);
 		return msg.say(oneLine`
 			${first.id === this.client.user.id ? 'Me' : first.username} and
-			${second.id === this.client.user.id ? 'me' : second.username} have a compatability of... **${level}%**!${botText}
+			${second.id === this.client.user.id ? 'me' : second.username} have a compatability of... **${level}%**! ${botText}
 		`);
 	}
 };
