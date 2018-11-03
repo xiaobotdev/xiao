@@ -4,7 +4,7 @@ module.exports = class EmojiImageCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'emoji-image',
-			aliases: ['bigify-emoji', 'emoji-url', 'big-emoji'],
+			aliases: ['bigify-emoji', 'emoji-url', 'big-emoji', 'emote-image', 'bigify-emote', 'emote-url', 'big-emote'],
 			group: 'info',
 			memberName: 'emoji-image',
 			description: 'Responds with an emoji\'s full-scale image.',

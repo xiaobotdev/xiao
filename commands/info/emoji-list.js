@@ -6,7 +6,7 @@ module.exports = class EmojiListCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'emoji-list',
-			aliases: ['emojis'],
+			aliases: ['emojis', 'emotes', 'emote-list'],
 			group: 'info',
 			memberName: 'emoji-list',
 			description: 'Responds with a list of the server\'s custom emoji.',
