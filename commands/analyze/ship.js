@@ -29,7 +29,7 @@ module.exports = class ShipCommand extends Command {
 	run(msg, { first, second }) {
 		if (first.id === second.id) return msg.reply('Shipping someone with themselves would be pretty weird.');
 		const botText = first.id === this.client.user.id || second.id === this.client.user.id
-			? '\nBut you\'re still rejected. Sorry.'
+			? `\nBut ${first.id === msg.author.id || second.id === msg.author.id ? 'you\'re' : 'they\'re'} still rejected.`
 			: '';
 		const random = new Random(Random.engines.mt19937().seed(Math.abs(first.id - second.id)));
 		const level = random.integer(0, 100);
