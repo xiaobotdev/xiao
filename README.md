@@ -248,7 +248,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **captcha:** Try to guess what the captcha says.
 * **chance:** Attempt to win with a 1 in 1000 (or your choice) chance of winning.
-* **doors:** Open the right door, and you win the money! Make the wrong one, and you get the fire!
+* **doors:** Open the right door, and you win the money! Make the wrong choice, and you get the fire!
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **fishy:** Go fishing.
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
