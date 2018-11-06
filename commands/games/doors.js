@@ -33,14 +33,14 @@ module.exports = class DoorsCommand extends Command {
 			const noWin = doors.filter(thisDoor => thisDoor !== win && door !== thisDoor)[0];
 			await msg.reply(stripIndents`
 				Well, there's nothing behind door number **${noWin}**. Do you want to stick with door ${door}?
-				${this.doorEmoji(1, noWin)} ${this.doorEmoji(2, noWin)} ${this.doorEmoji(3, noWin)}
+				${this.emoji(1, noWin)} ${this.emoji(2, noWin)} ${this.emoji(3, noWin)}
 			`);
 			const stick = await verify(msg.channel, msg.author);
 			if (!stick) door = doors.filter(thisDoor => door !== thisDoor && thisDoor !== noWin)[0];
 			this.playing.delete(msg.channel.id);
 			return msg.reply(stripIndents`
 				${door === win ? 'You chose wisely.' : 'Hmm... Try again.'}
-				${this.doorEmoji(1, noWin, win)} ${this.doorEmoji(2, noWin, win)} ${this.doorEmoji(3, noWin, win)}
+				${this.emoji(1, noWin, win, door)} ${this.emoji(2, noWin, win, door)} ${this.emoji(3, noWin, win, door)}
 			`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
@@ -48,7 +48,7 @@ module.exports = class DoorsCommand extends Command {
 		}
 	}
 
-	doorEmoji(door, noWin, win) {
-		return door === win ? '💰' : door === noWin ? '🔥' : '🚪';
+	emoji(door, noWin, win, chosen) {
+		return door === win && chosen ? '💰' : door === noWin ? '🔥' : door === chosen ? '🔥' : '🚪';
 	}
 };
