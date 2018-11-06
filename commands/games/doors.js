@@ -49,6 +49,6 @@ module.exports = class DoorsCommand extends Command {
 	}
 
 	emoji(door, noWin, win, chosen) {
-		return door === win && chosen ? '💰' : door === noWin ? '🔥' : door === chosen ? '🔥' : '🚪';
+		return door === win && chosen === win ? '💰' : door === noWin ? '🔥' : door === chosen ? '🔥' : '🚪';
 	}
 };
