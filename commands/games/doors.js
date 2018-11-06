@@ -30,8 +30,7 @@ module.exports = class DoorsCommand extends Command {
 		this.playing.add(msg.channel.id);
 		try {
 			const win = doors[Math.floor(Math.random() * doors.length)];
-			const doorNoWin = doors.filter(thisDoor => thisDoor !== win);
-			const noWin = doorNoWin[Math.floor(Math.random() * doorNoWin.length)];
+			const noWin = doors.filter(thisDoor => thisDoor !== win && door !== thisDoor)[0];
 			await msg.reply(stripIndents`
 				Well, there's nothing behind door number **${noWin}**. Do you want to stick with door ${door}?
 				${this.doorEmoji(1, noWin)} ${this.doorEmoji(2, noWin)} ${this.doorEmoji(3, noWin)}
