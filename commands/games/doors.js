@@ -1,14 +1,16 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const { verify } = require('../../util/Util');
+const doors = [1, 2, 3];
 
 module.exports = class DoorsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'doors',
-			aliases: ['door', 'door-opening', 'open-door'],
+			aliases: ['door', 'door-opening', 'open-door', 'monty-hall'],
 			group: 'games',
 			memberName: 'doors',
-			description: 'Open the right door, and you win the money! Make the wrong one, and you get the fire!',
+			description: 'Open the right door, and you win the money! Make the wrong choice, and you get the fire!',
 			args: [
 				{
 					key: 'door',
@@ -19,14 +21,35 @@ module.exports = class DoorsCommand extends Command {
 				}
 			]
 		});
+
+		this.playing = new Set();
 	}
 
-	run(msg, { door }) {
-		const win = Math.floor(Math.random() * 3) + 1;
-		const emoji = door === win ? '💰' : '🔥';
-		return msg.reply(stripIndents`
-			${door === win ? 'You chose wisely.' : 'Hmm... Try again.'}
-			${door === 1 ? emoji : '🚪'} ${door === 2 ? emoji : '🚪'} ${door === 3 ? emoji : '🚪'}
-		`);
+	async run(msg, { door }) {
+		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
+		this.playing.add(msg.channel.id);
+		try {
+			const win = doors[Math.floor(Math.random() * doors.length)];
+			const doorNoWin = doors.filter(thisDoor => thisDoor !== win);
+			const noWin = doorNoWin[Math.floor(Math.random() * doorNoWin.length)];
+			await msg.reply(stripIndents`
+				Well, there's nothing behind door number **${noWin}**. Do you want to stick with door ${door}?
+				${this.doorEmoji(1, noWin)} ${this.doorEmoji(2, noWin)} ${this.doorEmoji(3, noWin)}
+			`);
+			const stick = await verify(msg.channel, msg.author);
+			if (!stick) door = doors.filter(thisDoor => door !== thisDoor && thisDoor !== noWin)[0];
+			this.playing.delete(msg.channel.id);
+			return msg.reply(stripIndents`
+				${door === win ? 'You chose wisely.' : 'Hmm... Try again.'}
+				${this.doorEmoji(1, noWin, win)} ${this.doorEmoji(2, noWin, win)} ${this.doorEmoji(3, noWin, win)}
+			`);
+		} catch (err) {
+			this.playing.delete(msg.channel.id);
+			throw err;
+		}
+	}
+
+	doorEmoji(door, noWin, win) {
+		return door === win ? '💰' : door === noWin ? '🔥' : '🚪';
 	}
 };
