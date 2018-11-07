@@ -74,7 +74,7 @@ module.exports = class AkinatorCommand extends Command {
 				partner: '',
 				player: 'website-desktop',
 				uid_ext_session: '',
-				frontaddr: 'MTc4LjMzLjIzMS45OA==',
+				frontaddr: 'NDYuMTA1LjExMC40NQ==',
 				constraint: 'ETAT<>\'AV\'',
 				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
 				question_filter: channel.nsfw ? '' : 'cat=1'
