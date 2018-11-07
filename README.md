@@ -46,7 +46,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (330)
+## Commands (331)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -326,6 +326,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
+* **girl-worth-fighting-for:** Draws a user's avatar as the object of Ling's affection.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **i-have-the-power:** Draws a user's avatar over He-Man's face.
