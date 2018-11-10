@@ -1,5 +1,5 @@
 const { ArgumentType } = require('discord.js-commando');
-const fileTypeRe = /\.(jpe?g|png)$/i;
+const fileTypeRe = /\.(jpe?g|png|gif)$/i;
 
 module.exports = class ImageArgumentType extends ArgumentType {
 	constructor(client) {
