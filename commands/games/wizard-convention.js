@@ -98,7 +98,7 @@ module.exports = class WizardConventionCommand extends Command {
 				`);
 				const voted = [];
 				const filter = res => {
-					if (!players.exists(p => p.user.id === res.author.id)) return false;
+					if (!players.some(p => p.user.id === res.author.id)) return false;
 					if (voted.includes(res.author.id)) return false;
 					if (!playersArr[Number.parseInt(res.content, 10) - 1]) return false;
 					voted.push(res.author.id);
