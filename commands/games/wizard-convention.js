@@ -37,7 +37,7 @@ module.exports = class WizardConventionCommand extends Command {
 				for (const player of players.values()) {
 					if (player.role.includes('pleb')) continue;
 					await msg.say(`The ${player.role} is making their decision...`);
-					const valid = players.filterArray(p => p.role !== player.role);
+					const valid = Array.from(players.filter(p => p.role !== player.role).values());
 					await player.user.send(stripIndents`
 						${questions[player.role]} Please type the number.
 						${valid.map((p, i) => `**${i + 1}.** ${p.user.tag}`).join('\n')}
