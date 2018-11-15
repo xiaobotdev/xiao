@@ -51,7 +51,7 @@ module.exports = class WizardConventionCommand extends Command {
 						await player.user.send('Sorry, time is up!');
 						continue;
 					}
-					const choice = Number.parseInt(decision.first().content, 10);
+					const choice = valid[Number.parseInt(decision.first().content, 10)].id;
 					if (player.role === 'dragon') {
 						const chosen = players.get(choice);
 						eaten = chosen.id;

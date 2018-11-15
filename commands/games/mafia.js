@@ -51,7 +51,7 @@ module.exports = class MafiaCommand extends Command {
 						await player.user.send('Sorry, time is up!');
 						continue;
 					}
-					const choice = Number.parseInt(decision.first().content, 10);
+					const choice = valid[Number.parseInt(decision.first().content, 10)].id;
 					if (player.role === 'mafia') {
 						const chosen = players.get(choice);
 						killed = chosen.id;
