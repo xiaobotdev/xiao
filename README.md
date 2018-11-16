@@ -41,10 +41,11 @@ Xiao is a Discord bot coded in JavaScript with
 1. Run `apt update`.
 2. Run `apt upgrade` to install the latest dependencies of your distro.
 3. Run `apt install ffmpeg` to install ffmpeg.
-4. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Ubuntu-and-other-Debian-based-systems).
-5. Run `npm i --production` in the folder you cloned the bot.
-6. Run `npm i -g pm2` to install PM2.
-7. Run `pm2 start Xiao.js --name xiao` to run the bot.
+4. Run `apt install python` to install python.
+5. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Ubuntu-and-other-Debian-based-systems).
+6. Run `npm i --production` in the folder you cloned the bot.
+7. Run `npm i -g pm2` to install PM2.
+8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Commands (331)
 ### Utility:
