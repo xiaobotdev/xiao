@@ -61,7 +61,8 @@ module.exports = class WordChainCommand extends Command {
 				const player = userTurn ? msg.author : opponent;
 				const letter = lastWord.charAt(lastWord.length - 1);
 				await msg.say(`It's ${player}'s turn! The letter is **${letter}**.`);
-				const filter = res => res.author.id === player.id && /^[a-zA-Z']+$/i.test(res.content) && res.content.length < 50;
+				const filter = res =>
+					res.author.id === player.id && /^[a-zA-Z']+$/i.test(res.content) && res.content.length < 50;
 				const wordChoice = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: time * 1000
