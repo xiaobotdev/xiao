@@ -82,7 +82,7 @@ module.exports = class WordChainCommand extends Command {
 					await msg.say(`Sorry, **${lastWord}** is indeed valid!`);
 					continue;
 				}
-				if (!choice.endsWith(letter) || words.includes(choice)) {
+				if (!choice.startsWith(letter) || words.includes(choice)) {
 					await msg.say('Sorry! You lose!');
 					winner = userTurn ? opponent : msg.author;
 					break;
