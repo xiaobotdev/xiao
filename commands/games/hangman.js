@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const words = require('../../assets/json/hangman');
+const words = require('../../assets/json/word-list');
 
 module.exports = class HangmanCommand extends Command {
 	constructor(client) {
