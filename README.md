@@ -47,7 +47,7 @@ Xiao is a Discord bot coded in JavaScript with
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (333)
+## Commands (336)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -160,6 +160,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **azur-lane:** Responds with information on an Azur Lane ship.
 * **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
+* **danbooru:** Responds with an image from Danbooru, with optional query.
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
@@ -168,6 +169,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **esrb:** Searches ESRB for your query.
 * **flickr:** Searches Flickr for your query.
 * **forecast:** Responds with the seven-day forecast for a specific location.
+* **gelbooru:** Responds with an image from Gelbooru, with optional query.
 * **giphy:** Searches Giphy for your query.
 * **github:** Responds with information on a GitHub repository.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
@@ -181,6 +183,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **kh-wiki:** Searches the Kingdom Hearts Wiki for your query.
 * **kickstarter:** Searches Kickstarter for your query.
 * **know-your-meme:** Searches Know Your Meme for your query.
+* **konachan:** Responds with an image from Konachan, with optional query.
 * **league-of-legends:** Responds with information on a League of Legends champion.
 * **manga:** Searches AniList for your query, getting manga results.
 * **map:** Responds with a map of a specific location.
