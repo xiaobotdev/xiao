@@ -14,7 +14,7 @@ module.exports = class EmojiImageCommand extends Command {
 				{
 					key: 'emoji',
 					prompt: 'Which emoji would you like to get the image of?',
-					type: 'emoji'
+					type: 'custom-emoji'
 				}
 			]
 		});
