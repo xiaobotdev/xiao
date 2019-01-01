@@ -15,7 +15,7 @@ module.exports = class DuckCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await request.get('https://api.random-d.uk/random');
+			const { body } = await request.get('https://random-d.uk/api/v1/random');
 			return msg.say({ files: [body.url] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
