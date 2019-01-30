@@ -40,7 +40,7 @@
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^6.2.0",
 		"erlpack": "github:discordapp/erlpack",
-		"mathjs": "^5.4.1",
+		"mathjs": "^5.4.2",
 		"moment": "^2.24.0",
 		"moment-duration-format": "^2.2.2",
 		"moment-timezone": "^0.5.23",
@@ -48,7 +48,7 @@
 		"node-opus": "^0.3.1",
 		"node-superfetch": "^0.1.9",
 		"random-js": "^1.0.8",
-		"winston": "^3.1.0",
+		"winston": "^3.2.1",
 		"zlib-sync": "^0.1.4"
 	},
 	"devDependencies": {
