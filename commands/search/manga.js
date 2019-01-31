@@ -57,7 +57,7 @@ module.exports = class MangaCommand extends Command {
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
 				.setURL(`https://anilist.co/manga/${manga.id}`)
 				.setThumbnail(manga.coverImage.large || null)
-				.setTitle(manga.title.userPreferred)
+				.setTitle(manga.title.english || manga.title.userPreferred)
 				.setDescription(manga.description ? shorten(manga.description.replace(/(<br>)+/g, '\n')) : 'No description.')
 				.addField('❯ Status', manga.status, true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
