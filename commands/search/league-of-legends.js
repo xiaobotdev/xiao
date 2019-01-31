@@ -7,7 +7,7 @@ module.exports = class LeagueOfLegendsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'league-of-legends',
-			aliases: ['league-of-legends-champion', 'league-of-legends-champ', 'league-champ'],
+			aliases: ['league-of-legends-champion', 'league-of-legends-champ', 'league-champ', 'lol-champ'],
 			group: 'search',
 			memberName: 'league-of-legends',
 			description: 'Responds with information on a League of Legends champion.',

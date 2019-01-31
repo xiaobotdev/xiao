@@ -47,7 +47,7 @@ Xiao is a Discord bot coded in JavaScript with
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (335)
+## Commands (332)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -77,7 +77,6 @@ Xiao is a Discord bot coded in JavaScript with
 
 * **8-ball:** Asks your question to the Magic 8 Ball.
 * **advice:** Responds with a random bit of advice.
-* **bird:** Responds with a random bird image.
 * **cat-fact:** Responds with a random cat fact.
 * **cat:** Responds with a random cat image.
 * **charlie-charlie:** Asks your question to Charlie.
@@ -179,7 +178,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **imgur:** Searches Imgur for your query.
 * **itunes:** Searches iTunes for your query.
 * **jisho:** Defines a word, but with Japanese.
-* **kh-wiki:** Searches the Kingdom Hearts Wiki for your query.
 * **kickstarter:** Searches Kickstarter for your query.
 * **know-your-meme:** Searches Know Your Meme for your query.
 * **konachan:** Responds with an image from Konachan, with optional query.
@@ -237,7 +235,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **scrabble-score:** Responds with the scrabble score of a word.
 * **severe-toxicity:** Determines the toxicity of text, but less sensitive to milder language.
 * **ship:** Ships two users together.
-* **spoopy-link:** Determines if a link is spoopy or not.
 * **toxicity:** Determines the toxicity of text.
 * **what-anime:** Determines what anime a screenshot is from.
 * **zodiac-sign:** Responds with the Zodiac Sign for the given month/day.

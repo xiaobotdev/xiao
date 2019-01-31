@@ -57,7 +57,7 @@ module.exports = class AnimeCommand extends Command {
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
 				.setURL(`https://anilist.co/anime/${anime.id}`)
 				.setThumbnail(anime.coverImage.large || null)
-				.setTitle(anime.title.userPreferred)
+				.setTitle(anime.title.english || anime.title.userPreferred)
 				.setDescription(anime.description ? shorten(anime.description.replace(/(<br>)+/g, '\n')) : 'No description.')
 				.addField('❯ Status', anime.status, true)
 				.addField('❯ Episodes', anime.episodes, true)

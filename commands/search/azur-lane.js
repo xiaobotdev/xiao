@@ -52,9 +52,9 @@ module.exports = class AzurLaneCommand extends Command {
 				.addField('❯ Aviation', `${formatNumber(data.base.air_power)} (${formatNumber(data.max.air_power)} Max)`, true)
 				.addField('❯ Oil Cost', `${formatNumber(data.base.oil_usage)} (${formatNumber(data.max.oil_usage)} Max)`, true)
 				.addField('❯ Equipment', stripIndents`
-					${data.equipment[0].equippable} (${data.equipment[0].efficiency})
-					${data.equipment[1].equippable} (${data.equipment[1].efficiency})
-					${data.equipment[2].equippable} (${data.equipment[2].efficiency})
+					${data.equipment[0].equipable} (${data.equipment[0].efficiency})
+					${data.equipment[1].equipable} (${data.equipment[1].efficiency})
+					${data.equipment[2].equipable} (${data.equipment[2].efficiency})
 				`)
 				.addField('❯ Images',
 					`${data.images.map(img => `[${img.name}](${img.url})`).join(', ')}, [Chibi](${data.chibi})`);

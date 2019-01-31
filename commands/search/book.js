@@ -44,8 +44,7 @@ module.exports = class BookCommand extends Command {
 				.setThumbnail(data.imageLinks ? data.imageLinks.thumbnail : null)
 				.addField('❯ Authors', data.authors.length ? data.authors.join(', ') : '???')
 				.addField('❯ Publish Date', data.publishedDate || '???', true)
-				.addField('❯ Page Count', data.pageCount ? formatNumber(data.pageCount) : '???', true)
-				.addField('❯ Genres', data.categories.length ? data.categories.join(', ') : '???');
+				.addField('❯ Page Count', data.pageCount ? formatNumber(data.pageCount) : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

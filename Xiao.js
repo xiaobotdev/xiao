@@ -7,7 +7,6 @@ const client = new Client({
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	disableEveryone: true,
-	unknownCommandResponse: false,
 	disabledEvents: ['TYPING_START']
 });
 const activities = require('./assets/json/activity');
@@ -36,7 +35,8 @@ client.registry
 		help: false,
 		ping: false,
 		prefix: false,
-		commandState: false
+		commandState: false,
+		unknownCommand: false
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 

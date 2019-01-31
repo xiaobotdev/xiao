@@ -49,6 +49,7 @@ module.exports = class FactCommand extends Command {
 				format: 'json',
 				formatversion: 2
 			});
+		if (!body.query.random[0].title) return 'Facts are hard to find sometimes.';
 		return body.query.random[0].title;
 	}
 };
