@@ -1,12 +1,13 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { OPENWEATHERMAP_KEY } = process.env;
 
 module.exports = class WeatherCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'weather',
-			aliases: ['yahoo-weather'],
+			aliases: ['open-weather-map'],
 			group: 'search',
 			memberName: 'weather',
 			description: 'Responds with weather information for a specific location.',
@@ -15,7 +16,11 @@ module.exports = class WeatherCommand extends Command {
 				{
 					key: 'location',
 					prompt: 'What location would you like to get the weather of?',
-					type: 'string'
+					type: 'string',
+					parse: location => {
+						if (/^[0-9]+$/.test(location)) return { type: 'zip', data: location };
+						return { type: 'q', data: location };
+					}
 				}
 			]
 		});
@@ -24,27 +29,29 @@ module.exports = class WeatherCommand extends Command {
 	async run(msg, { location }) {
 		try {
 			const { body } = await request
-				.get('https://query.yahooapis.com/v1/public/yql')
+				.get('https://api.openweathermap.org/data/2.5/weather')
 				.query({
-					// eslint-disable-next-line max-len
-					q: `select * from weather.forecast where u='f' AND woeid in (select woeid from geo.places(1) where text="${location}")`,
-					format: 'json'
+					q: location.type === 'q' ? location.data : '',
+					zip: location.type === 'zip' ? location.data : '',
+					units: 'imperial',
+					appid: OPENWEATHERMAP_KEY
 				});
-			if (!body.query.count) return msg.say('Could not find any results.');
-			const data = body.query.results.channel;
 			const embed = new MessageEmbed()
-				.setColor(0x0000FF)
-				.setAuthor(data.title, 'https://i.imgur.com/IYF2Pfa.jpg', 'https://www.yahoo.com/news/weather')
-				.setURL(data.link)
+				.setColor(0xFF7A09)
+				.setAuthor(
+					`${body.name}, ${body.sys.country}`,
+					'https://i.imgur.com/NjMbE9o.png',
+					'https://openweathermap.org/city'
+				)
+				.setURL(`https://openweathermap.org/city/${body.id}`)
 				.setTimestamp()
-				.addField('❯ City', data.location.city, true)
-				.addField('❯ Country', data.location.country, true)
-				.addField('❯ Region', data.location.region, true)
-				.addField('❯ Condition', data.item.condition.text, true)
-				.addField('❯ Temperature', `${data.item.condition.temp}°F`, true)
-				.addField('❯ Humidity', `${data.atmosphere.humidity}%`, true);
+				.addField('❯ Condition', body.weather.join('\n').map(data => `${data.main} (${data.description})`))
+				.addField('❯ Temperature', `${body.main.temp}°F`, true)
+				.addField('❯ Humidity', `${body.main.humidity}%`, true)
+				.addField('❯ Wind Speed', `${body.wind.speed} mph`);
 			return msg.embed(embed);
 		} catch (err) {
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
