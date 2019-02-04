@@ -48,7 +48,7 @@ module.exports = class WeatherCommand extends Command {
 				.addField('❯ Condition', body.weather.map(data => `${data.main} (${data.description})`).join(', '))
 				.addField('❯ Temperature', `${body.main.temp}°F`, true)
 				.addField('❯ Humidity', `${body.main.humidity}%`, true)
-				.addField('❯ Wind Speed', `${body.wind.speed} mph`);
+				.addField('❯ Wind Speed', `${body.wind.speed} mph`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
