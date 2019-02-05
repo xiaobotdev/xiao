@@ -7,7 +7,7 @@ module.exports = class WeatherCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'weather',
-			aliases: ['open-weather-map'],
+			aliases: ['open-weather-map', 'owm'],
 			group: 'search',
 			memberName: 'weather',
 			description: 'Responds with weather information for a specific location.',
