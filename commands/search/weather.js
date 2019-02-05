@@ -45,7 +45,7 @@ module.exports = class WeatherCommand extends Command {
 				)
 				.setURL(`https://openweathermap.org/city/${body.id}`)
 				.setTimestamp()
-				.addField('❯ Condition', body.weather.map(data => `${data.main} (${data.description})`).join(', '))
+				.addField('❯ Condition', body.weather.map(data => `${data.main} (${data.description})`).join('\n'))
 				.addField('❯ Temperature', `${body.main.temp}°F`, true)
 				.addField('❯ Humidity', `${body.main.humidity}%`, true)
 				.addField('❯ Wind Speed', `${body.wind.speed} mph`, true);
