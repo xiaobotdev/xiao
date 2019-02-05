@@ -47,7 +47,7 @@ Xiao is a Discord bot coded in JavaScript with
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (332)
+## Commands (331)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -167,7 +167,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **eshop:** Searches the Nintendo eShop for your query.
 * **esrb:** Searches ESRB for your query.
 * **flickr:** Searches Flickr for your query.
-* **forecast:** Responds with the seven-day forecast for a specific location.
 * **giphy:** Searches Giphy for your query.
 * **github:** Responds with information on a GitHub repository.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
