@@ -73,10 +73,8 @@ module.exports = class WhatAnimeCommand extends Command {
 	async fetchPreview(data) {
 		try {
 			const { body } = await request
-				.get('https://trace.moe/preview.php')
+				.get(`https://media.trace.moe/video/${data.anilist_id}/${encodeURIComponent(data.filename)}`)
 				.query({
-					anilist_id: data.anilist_id,
-					file: data.filename,
 					t: data.at,
 					token: data.tokenthumb
 				});

@@ -21,14 +21,14 @@ module.exports = class MemeGenCommand extends Command {
 			args: [
 				{
 					key: 'top',
-					prompt: 'What should the something to believe in be?',
+					prompt: 'What should the top row of the meme to be?',
 					type: 'string',
 					max: 50,
 					parse: top => top.toUpperCase()
 				},
 				{
 					key: 'bottom',
-					prompt: 'What should believing result in (e.g. sacrificing everything)?',
+					prompt: 'What should the bottom row of the meme to be?',
 					type: 'string',
 					max: 50,
 					parse: bottom => bottom.toUpperCase()
