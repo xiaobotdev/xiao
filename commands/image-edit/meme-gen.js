@@ -23,13 +23,15 @@ module.exports = class MemeGenCommand extends Command {
 					key: 'top',
 					prompt: 'What should the something to believe in be?',
 					type: 'string',
-					max: 50
+					max: 50,
+					parse: top => top.toUpperCase()
 				},
 				{
 					key: 'bottom',
 					prompt: 'What should believing result in (e.g. sacrificing everything)?',
 					type: 'string',
-					max: 50
+					max: 50,
+					parse: bottom => bottom.toUpperCase()
 				},
 				{
 					key: 'image',
