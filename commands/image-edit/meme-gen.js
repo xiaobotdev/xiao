@@ -59,6 +59,7 @@ module.exports = class MemeGenCommand extends Command {
 				ctx.fillText(topLines[i], base.width / 2, textHeight);
 			}
 			const bottomLines = await wrapText(ctx, bottom, base.width - 10);
+			ctx.textBaseline = 'bottom';
 			for (let i = 0; i < bottomLines.length; i++) {
 				const textHeight = base.height - (i * fontSize) - (i * 10);
 				ctx.fillText(bottomLines[i], base.width / 2, textHeight);
