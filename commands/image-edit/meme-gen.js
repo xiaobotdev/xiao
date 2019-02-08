@@ -60,8 +60,9 @@ module.exports = class MemeGenCommand extends Command {
 			}
 			const bottomLines = await wrapText(ctx, bottom, base.width - 10);
 			ctx.textBaseline = 'bottom';
+			const initial = base.height - ((bottomLines.length - 1) * fontSize) + ((bottomLines.length - 1) * 10);
 			for (let i = 0; i < bottomLines.length; i++) {
-				const textHeight = base.height - (i * fontSize) - (i * 10);
+				const textHeight = initial + (i * fontSize) + (i * 10);
 				ctx.fillText(bottomLines[i], base.width / 2, textHeight);
 			}
 			const attachment = canvas.toBuffer();
