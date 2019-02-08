@@ -57,7 +57,7 @@ module.exports = class MemeGenCommand extends Command {
 			for (let i = 0; i < topLines.length; i++) {
 				const textHeight = (i * fontSize) + (i * 10);
 				ctx.strokeStyle = 'black';
-				ctx.lineWidth = 8;
+				ctx.lineWidth = 5;
 				ctx.strokeText(topLines[i], base.width / 2, textHeight);
 				ctx.fillStyle = 'white';
 				ctx.fillText(topLines[i], base.width / 2, textHeight);
@@ -68,7 +68,7 @@ module.exports = class MemeGenCommand extends Command {
 			for (let i = 0; i < bottomLines.length; i++) {
 				const textHeight = initial + (i * fontSize) + (i * 10);
 				ctx.strokeStyle = 'black';
-				ctx.lineWidth = 8;
+				ctx.lineWidth = 5;
 				ctx.strokeText(bottomLines[i], base.width / 2, textHeight);
 				ctx.fillStyle = 'white';
 				ctx.fillText(bottomLines[i], base.width / 2, textHeight);
