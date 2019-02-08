@@ -52,6 +52,7 @@ module.exports = class MemeGenCommand extends Command {
 			ctx.font = `${fontSize}px Impact`;
 			ctx.fillStyle = 'white';
 			ctx.textAlign = 'center';
+			ctx.textBaseline = 'top';
 			const topLines = await wrapText(ctx, top, base.width - 10);
 			for (let i = 0; i < topLines.length; i++) {
 				const textHeight = (i * fontSize) + (i * 10);
