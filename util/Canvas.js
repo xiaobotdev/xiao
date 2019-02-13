@@ -99,6 +99,7 @@ module.exports = class CanvasUtil {
 	static wrapText(ctx, text, maxWidth) {
 		return new Promise(resolve => {
 			if (ctx.measureText(text).width < maxWidth) return resolve([text]);
+			if (ctx.measureText('W').width > maxWidth) return resolve(null);
 			const words = text.split(' ');
 			const lines = [];
 			let line = '';

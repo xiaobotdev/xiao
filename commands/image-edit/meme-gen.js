@@ -56,6 +56,7 @@ module.exports = class MemeGenCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			const topLines = await wrapText(ctx, top, base.width - 10);
+			if (!topLines) return msg.reply('There\'s not enough width to make a meme with this image.');
 			for (let i = 0; i < topLines.length; i++) {
 				const textHeight = (i * fontSize) + (i * 10);
 				ctx.strokeStyle = 'black';
@@ -65,6 +66,7 @@ module.exports = class MemeGenCommand extends Command {
 				ctx.fillText(topLines[i], base.width / 2, textHeight);
 			}
 			const bottomLines = await wrapText(ctx, bottom, base.width - 10);
+			if (!bottomLines) return msg.reply('There\'s not enough width to make a meme with this image.');
 			ctx.textBaseline = 'bottom';
 			const initial = base.height - ((bottomLines.length - 1) * fontSize) - ((bottomLines.length - 1) * 10);
 			for (let i = 0; i < bottomLines.length; i++) {
