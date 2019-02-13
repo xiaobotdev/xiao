@@ -61,6 +61,7 @@ module.exports = class NikeAdCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.textAlign = 'center';
 			const lines = await wrapText(ctx, `Believe in ${something}. Even if it means ${sacrifice}.`, data.width - 20);
+			if (!lines) return msg.reply('There\'s not enough width to make a Nike ad with this image.');
 			const initial = data.height / 2;
 			for (let i = 0; i < lines.length; i++) {
 				const textHeight = initial + (i * fontSize) + (i * 10);
