@@ -24,6 +24,12 @@ module.exports = class ApodCommand extends Command {
 			const embed = new MessageEmbed()
 				.setTitle(body.title)
 				.setDescription(shorten(body.explanation))
+				.setColor(0x2E528E)
+				.setAuthor(
+					'Astronomy Picture of the Day',
+					'https://i.imgur.com/AAYoZrq.jpg',
+					'https://apod.nasa.gov/apod/astropix.html'
+				)
 				.setImage(body.media_type === 'image' ? body.url : null)
 				.setURL(body.url)
 				.setFooter(`Image Credits: ${body.copyright || 'Public Domain'}`)
