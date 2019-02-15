@@ -35,9 +35,9 @@ module.exports = class BrazzersCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(data, 0, 0);
 			const ratio = base.width / base.height;
-			const width = data.width / 4;
+			const width = data.width / 3;
 			const height = Math.round(width / ratio);
-			ctx.drawImage(base, data.width - width, data.height - height, width, height);
+			ctx.drawImage(base, 0, data.height - height, width, height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'brazzers.png' }] });
