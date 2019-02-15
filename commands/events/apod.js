@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { MessageEmbed } = require('discord.js');
 const { shorten } = require('../../util/Util');
 const { GOV_KEY } = process.env;
 
@@ -11,7 +12,7 @@ module.exports = class ApodCommand extends Command {
 			group: 'events',
 			memberName: 'apod',
 			description: 'Responds with today\'s Astronomy Picture of the Day.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['EMBED_LINKS']
 		});
 	}
 
@@ -20,7 +21,14 @@ module.exports = class ApodCommand extends Command {
 			const { body } = await request
 				.get('https://api.nasa.gov/planetary/apod')
 				.query({ api_key: GOV_KEY });
-			return msg.say(shorten(body.explanation), { files: [body.url] });
+			const embed = new MessageEmbed()
+				.setTitle(body.title)
+				.setDescription(shorten(body.explanation))
+				.setImage(body.media_type === 'image' ? body.url : null)
+				.setURL(body.url)
+				.setFooter(`Image Credits: ${body.copyright || 'Public Domain'}`)
+				.setTimestamp();
+			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
