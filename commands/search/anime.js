@@ -14,7 +14,10 @@ const resultGraphQL = stripIndents`
 	query media($id: Int, $type: MediaType) {
 		Media(id: $id, type: $type) {
 			id
-			title { userPreferred }
+			title {
+				english
+				userPreferred
+			}
 			coverImage { large }
 			startDate { year }
 			description
