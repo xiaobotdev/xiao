@@ -27,7 +27,7 @@ module.exports = class ApodCommand extends Command {
 				.setColor(0x2E528E)
 				.setAuthor(
 					'Astronomy Picture of the Day',
-					'https://i.imgur.com/AAYoZrq.jpg',
+					'https://i.imgur.com/Wh8jY9c.png',
 					'https://apod.nasa.gov/apod/astropix.html'
 				)
 				.setImage(body.media_type === 'image' ? body.url : null)
