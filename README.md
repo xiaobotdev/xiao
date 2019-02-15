@@ -47,7 +47,7 @@ Xiao is a Discord bot coded in JavaScript with
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (332)
+## Commands (333)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -280,6 +280,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
+* **brazzers:** Draws an image with the Brazzers logo in the corner.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
