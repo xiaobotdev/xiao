@@ -116,4 +116,16 @@ module.exports = class Util {
 		if (no.includes(choice)) return false;
 		return false;
 	}
+
+	static cleanAnilistHTML(html) {
+		let clean = html
+			.replace(/(<br>)+/g, '\n')
+			.replace(/&#039;/g, '\'')
+			.replace(/&quot;/g, '"')
+			.replace(/<\/?i>/g, '*')
+			.replace(/~!|!~/g, '||');
+		const spoilers = (clean.substr(0, 1997).match(/\|\|/g) || []).length;
+		if (spoilers !== 0 && (spoilers && (spoilers % 2))) clean += '||';
+		return clean;
+	}
 };
