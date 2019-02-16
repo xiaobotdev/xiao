@@ -14,7 +14,10 @@ const resultGraphQL = stripIndents`
 	query ($id: Int!) {
 		Character (id: $id) {
 			id
-			name { native }
+			name {
+				first
+				last
+			}
 			image {
 				large
 				medium
@@ -70,7 +73,7 @@ module.exports = class CharacterCommand extends Command {
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
 				.setURL(character.siteUrl)
 				.setThumbnail(character.image.large || character.image.medium || null)
-				.setTitle(character.name.native)
+				.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)
 				.setDescription(character.description
 					? shorten(character.description.replace(/(<br>)+/g, '\n'))
 					: 'No description.')
