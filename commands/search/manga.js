@@ -68,7 +68,7 @@ module.exports = class MangaCommand extends Command {
 				.setURL(manga.siteUrl)
 				.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
 				.setTitle(manga.title.english || manga.title.userPreferred)
-				.setDescription(manga.description ? shorten(manga.description) : 'No description.')
+				.setDescription(manga.description ? shorten(manga.description.replace(/(<br>)+/g, '\n')) : 'No description.')
 				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
 				.addField('❯ Year', manga.startDate.year || '???', true)

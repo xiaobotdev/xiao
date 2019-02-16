@@ -71,8 +71,10 @@ module.exports = class CharacterCommand extends Command {
 				.setURL(character.siteUrl)
 				.setThumbnail(character.image.large || character.image.medium || null)
 				.setTitle(character.name.native)
-				.setDescription(character.description ? shorten(character.description) : 'No description.')
-				.addField('❯ Appearances', character.edges.map(edge => {
+				.setDescription(character.description
+					? shorten(character.description.replace(/(<br>)+/g, '\n'))
+					: 'No description.')
+				.addField('❯ Appearances', character.media.edges.map(edge => {
 					const title = edge.node.title.english || edge.node.title.userPreferred;
 					return `[${title} (${types[edge.node.type]})](${edge.node.siteUrl})`;
 				}).join(', '));
