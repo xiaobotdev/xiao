@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { shorten } = require('../../util/Util');
+const { shorten, cleanAnilistHTML } = require('../../util/Util');
 const searchGraphQL = stripIndents`
 	query ($search: String) {
 		characters: Page (perPage: 1) {
@@ -74,9 +74,7 @@ module.exports = class CharacterCommand extends Command {
 				.setURL(character.siteUrl)
 				.setThumbnail(character.image.large || character.image.medium || null)
 				.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)
-				.setDescription(character.description
-					? shorten(character.description.replace(/(<br>)+/g, '\n'))
-					: 'No description.')
+				.setDescription(character.description ? shorten(cleanAnilistHTML(character.description)) : 'No description.')
 				.addField('❯ Appearances', character.media.edges.map(edge => {
 					const title = edge.node.title.english || edge.node.title.userPreferred;
 					return `[${title} (${types[edge.node.type]})](${edge.node.siteUrl})`;
