@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { shorten, cleanAnilistHTML } = require('../../util/Util');
+const { cleanAnilistHTML } = require('../../util/Util');
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
 		anime: Page (perPage: 1) {
@@ -68,7 +68,7 @@ module.exports = class MangaCommand extends Command {
 				.setURL(manga.siteUrl)
 				.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
 				.setTitle(manga.title.english || manga.title.userPreferred)
-				.setDescription(manga.description ? shorten(cleanAnilistHTML(manga.description)) : 'No description.')
+				.setDescription(manga.description ? cleanAnilistHTML(manga.description) : 'No description.')
 				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
 				.addField('❯ Year', manga.startDate.year || '???', true)

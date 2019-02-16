@@ -124,7 +124,8 @@ module.exports = class Util {
 			.replace(/&quot;/g, '"')
 			.replace(/<\/?i>/g, '*')
 			.replace(/~!|!~/g, '||');
-		const spoilers = (clean.substr(0, 1997).match(/\|\|/g) || []).length;
+		if (clean.length > 2000) clean = `${clean.substr(0, 1995)}...`;
+		const spoilers = (clean.match(/\|\|/g) || []).length;
 		if (spoilers !== 0 && (spoilers && (spoilers % 2))) clean += '||';
 		return clean;
 	}
