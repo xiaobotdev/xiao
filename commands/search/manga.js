@@ -20,7 +20,8 @@ const resultGraphQL = stripIndents`
 			}
 			coverImage { large }
 			startDate { year }
-			description
+			description(asHtml: false)
+			siteUrl
 			type
 			status
 			volumes
@@ -30,6 +31,12 @@ const resultGraphQL = stripIndents`
 		}
 	}
 `;
+const statuses = {
+	FINISHED: 'Finished',
+	RELEASING: 'Releasing',
+	NOT_YET_RELEASED: 'Unreleased',
+	CANCELLED: 'Cancelled'
+};
 
 module.exports = class MangaCommand extends Command {
 	constructor(client) {
@@ -58,14 +65,14 @@ module.exports = class MangaCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setURL(`https://anilist.co/manga/${manga.id}`)
-				.setThumbnail(manga.coverImage.large || null)
+				.setURL(manga.siteUrl)
+				.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
 				.setTitle(manga.title.english || manga.title.userPreferred)
-				.setDescription(manga.description ? shorten(manga.description.replace(/(<br>)+/g, '\n')) : 'No description.')
-				.addField('❯ Status', manga.status, true)
+				.setDescription(manga.description ? shorten(manga.description) : 'No description.')
+				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
-				.addField('❯ Year', manga.startDate.year, true)
-				.addField('❯ Average Score', `${manga.meanScore}/100`, true);
+				.addField('❯ Year', manga.startDate.year || '???', true)
+				.addField('❯ Average Score', manga.meanScore ? `${manga.meanScore}/100` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

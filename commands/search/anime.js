@@ -18,11 +18,15 @@ const resultGraphQL = stripIndents`
 				english
 				userPreferred
 			}
-			coverImage { large }
+			coverImage {
+				large
+				medium
+			}
 			startDate { year }
-			description
+			description(asHtml: false)
 			season
 			type
+			siteUrl
 			status
 			episodes
 			isAdult
@@ -30,6 +34,18 @@ const resultGraphQL = stripIndents`
 		}
 	}
 `;
+const seasons = {
+	WINTER: 'Winter',
+	SPRING: 'Spring',
+	SUMMER: 'Summer',
+	FALL: 'Fall'
+};
+const statuses = {
+	FINISHED: 'Finished',
+	RELEASING: 'Releasing',
+	NOT_YET_RELEASED: 'Unreleased',
+	CANCELLED: 'Cancelled'
+};
 
 module.exports = class AnimeCommand extends Command {
 	constructor(client) {
@@ -58,14 +74,14 @@ module.exports = class AnimeCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setURL(`https://anilist.co/anime/${anime.id}`)
-				.setThumbnail(anime.coverImage.large || null)
+				.setURL(anime.siteUrl)
+				.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
 				.setTitle(anime.title.english || anime.title.userPreferred)
-				.setDescription(anime.description ? shorten(anime.description.replace(/(<br>)+/g, '\n')) : 'No description.')
-				.addField('❯ Status', anime.status, true)
-				.addField('❯ Episodes', anime.episodes, true)
-				.addField('❯ Season', `${anime.season} ${anime.startDate.year}`, true)
-				.addField('❯ Average Score', `${anime.meanScore}/100`, true);
+				.setDescription(anime.description ? shorten(anime.description) : 'No description.')
+				.addField('❯ Status', statuses[anime.status], true)
+				.addField('❯ Episodes', anime.episodes || '???', true)
+				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
+				.addField('❯ Average Score', anime.meanScore ? `${anime.meanScore}/100` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

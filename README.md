@@ -47,7 +47,7 @@ Xiao is a Discord bot coded in JavaScript with
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (333)
+## Commands (334)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -159,6 +159,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **azur-lane:** Responds with information on an Azur Lane ship.
 * **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
+* **character:** Searches AniList for your query, getting character results.
 * **danbooru:** Responds with an image from Danbooru, with optional query.
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
