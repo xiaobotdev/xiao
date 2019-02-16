@@ -77,7 +77,7 @@ module.exports = class AnimeCommand extends Command {
 				.setURL(anime.siteUrl)
 				.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
 				.setTitle(anime.title.english || anime.title.userPreferred)
-				.setDescription(anime.description ? shorten(anime.description) : 'No description.')
+				.setDescription(anime.description ? shorten(anime.description.replace(/(<br>)+/g, '\n')) : 'No description.')
 				.addField('❯ Status', statuses[anime.status], true)
 				.addField('❯ Episodes', anime.episodes || '???', true)
 				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
