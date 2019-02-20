@@ -6,18 +6,18 @@ module.exports = class UnspoilerCommand extends Command {
 			name: 'unspoiler',
 			group: 'text-edit',
 			memberName: 'unspoiler',
-			description: 'Removes all spoilers from text.',
+			description: 'Removes all spoilers from a message.',
 			args: [
 				{
-					key: 'text',
-					prompt: 'What text would you like to unspoiler?',
-					type: 'string'
+					key: 'message',
+					prompt: 'What message would you like to unspoiler?',
+					type: 'message'
 				}
 			]
 		});
 	}
 
-	run(msg, { text }) {
-		return msg.say(text.replace(/\|\|.+\|\|/g, ''));
+	run(msg, { message }) {
+		return msg.say(message.content.replace(/\|\|(.+)\|\|/g, '$1'));
 	}
 };
