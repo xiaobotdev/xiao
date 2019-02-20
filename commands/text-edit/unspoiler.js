@@ -18,6 +18,6 @@ module.exports = class UnspoilerCommand extends Command {
 	}
 
 	run(msg, { message }) {
-		return msg.say(message.content.replace(/\|\|(.+)\|\|/g, '$1'));
+		return msg.say(message.content.replace(/\|\|([^|]+)\|\|/g, '$1'));
 	}
 };
