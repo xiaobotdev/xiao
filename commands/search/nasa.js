@@ -33,7 +33,7 @@ module.exports = class NASACommand extends Command {
 			if (!images.length) return msg.say('Could not find any results.');
 			const data = images[Math.floor(Math.random() * images.length)];
 			const embed = new MessageEmbed()
-				.setTitle(data.data[0].title)
+				.setTitle(shorten(data.data[0].title, 256))
 				.setDescription(shorten(this.cleanHTML(data.data[0].description)))
 				.setColor(0x2E528E)
 				.setAuthor('NASA', 'https://i.imgur.com/Wh8jY9c.png', 'https://www.nasa.gov/multimedia/imagegallery/index.html')
