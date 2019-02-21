@@ -10,7 +10,7 @@ const searchGraphQL = stripIndents`
 				id
 				title {
 					english
-					userPreferred
+					romaji
 				}
 			}
 		}
@@ -22,7 +22,7 @@ const resultGraphQL = stripIndents`
 			id
 			title {
 				english
-				userPreferred
+				romaji
 			}
 			coverImage {
 				large
@@ -82,7 +82,7 @@ module.exports = class AnimeCommand extends Command {
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
 				.setURL(anime.siteUrl)
 				.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
-				.setTitle(anime.title.english || anime.title.userPreferred)
+				.setTitle(anime.title.english || anime.title.romaji)
 				.setDescription(anime.description ? cleanAnilistHTML(anime.description) : 'No description.')
 				.addField('❯ Status', statuses[anime.status], true)
 				.addField('❯ Episodes', anime.episodes || '???', true)
@@ -106,9 +106,11 @@ module.exports = class AnimeCommand extends Command {
 				query: searchGraphQL
 			});
 		if (!body.data.anime.results.length) return null;
-		const found = body.data.anime.results.find(
-			anime => anime.title.english.toLowerCase() === query || anime.title.userPreferred.toLowerCase() === query
-		);
+		const found = body.data.anime.results.find(anime => {
+			if (anime.title.english && anime.title.english.toLowerCase() === query) return true;
+			if (anime.title.romaji && anime.title.romaji.toLowerCase() === query) return true;
+			return false;
+		});
 		if (found) return found.id;
 		return body.data.anime.results[0].id;
 	}
