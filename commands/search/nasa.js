@@ -50,6 +50,6 @@ module.exports = class NASACommand extends Command {
 		return text
 			.replace(/<\/?b>/g, '**')
 			.replace(/<\/?i>/g, '*')
-			.replace(/<a href="https?:\/\/([^ ]+)" rel="nofollow">([^<>]+)<\/a>/g, '[$2]($1)');
+			.replace(/<a href="(https?:\/\/[^ ]+)" rel="nofollow">([^<>]+)<\/a>/g, '[$2]($1)');
 	}
 };
