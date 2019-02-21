@@ -37,8 +37,7 @@ module.exports = class NASACommand extends Command {
 				.setDescription(shorten(this.cleanHTML(data.data[0].description)))
 				.setColor(0x2E528E)
 				.setAuthor('NASA', 'https://i.imgur.com/Wh8jY9c.png', 'https://www.nasa.gov/multimedia/imagegallery/index.html')
-				.setImage(data.links[0].href)
-				.setURL(data.links[0].href)
+				.setImage(`https://images-assets.nasa.gov/image/${data.data[0].nasa_id}/${data.data[0].nasa_id}~thumb.jpg`)
 				.setFooter(`Image Credits: ${data.data[0].center || 'Public Domain'}`)
 				.setTimestamp(new Date(data.data[0].date_created));
 			return msg.embed(embed);
