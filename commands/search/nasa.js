@@ -34,7 +34,7 @@ module.exports = class NASACommand extends Command {
 			const data = images[Math.floor(Math.random() * images.length)];
 			const embed = new MessageEmbed()
 				.setTitle(data.data[0].title)
-				.setDescription(shorten(data.data[0].description))
+				.setDescription(shorten(this.cleanHTML(data.data[0].description)))
 				.setColor(0x2E528E)
 				.setAuthor('NASA', 'https://i.imgur.com/Wh8jY9c.png', 'https://www.nasa.gov/multimedia/imagegallery/index.html')
 				.setImage(data.links[0].href)
@@ -45,5 +45,12 @@ module.exports = class NASACommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	cleanHTML(text) {
+		return text
+			.replace(/<\/?b>/g, '**')
+			.replace(/<\/?i>/g, '*')
+			.replace(/<a href="(.+)"(?: rel="nofollow">)?(.+)<\/a>/g, '[$2]($1)');
 	}
 };
