@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { MessageEmbed } = require('discord.js');
 const { shorten } = require('../../util/Util');
 
 module.exports = class NASACommand extends Command {
@@ -9,7 +10,7 @@ module.exports = class NASACommand extends Command {
 			group: 'search',
 			memberName: 'nasa',
 			description: 'Searches NASA\'s image archive for your query.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'query',
@@ -31,7 +32,16 @@ module.exports = class NASACommand extends Command {
 			const images = body.collection.items;
 			if (!images.length) return msg.say('Could not find any results.');
 			const data = images[Math.floor(Math.random() * images.length)];
-			return msg.say(shorten(data.data[0].description), { files: [data.links[0].href] });
+			const embed = new MessageEmbed()
+				.setTitle(data.data[0].title)
+				.setDescription(shorten(data.data[0].description))
+				.setColor(0x2E528E)
+				.setAuthor('NASA', 'https://i.imgur.com/Wh8jY9c.png', 'https://www.nasa.gov/multimedia/imagegallery/index.html')
+				.setImage(data.links[0].href)
+				.setURL(data.links[0].href)
+				.setFooter(`Image Credits: ${data.data[0].center || 'Public Domain'}`)
+				.setTimestamp(new Date(data.data[0].date_created));
+			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
