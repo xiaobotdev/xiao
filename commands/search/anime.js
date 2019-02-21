@@ -5,8 +5,14 @@ const { stripIndents } = require('common-tags');
 const { cleanAnilistHTML } = require('../../util/Util');
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
-		anime: Page (perPage: 1) {
-			results: media (type: $type, isAdult: $isAdult, search: $search) { id }
+		anime: Page (perPage: 10) {
+			results: media (type: $type, isAdult: $isAdult, search: $search) {
+				id
+				title {
+					english
+					userPreferred
+				}
+			}
 		}
 	}
 `;
@@ -100,6 +106,10 @@ module.exports = class AnimeCommand extends Command {
 				query: searchGraphQL
 			});
 		if (!body.data.anime.results.length) return null;
+		const found = body.data.anime.results.find(
+			anime => anime.title.english.toLowerCase() === query || anime.title.userPreferred.toLowerCase() === query
+		);
+		if (found) return found.id;
 		return body.data.anime.results[0].id;
 	}
 
