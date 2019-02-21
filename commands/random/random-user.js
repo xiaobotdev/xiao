@@ -7,12 +7,15 @@ module.exports = class RandomUserCommand extends Command {
 			aliases: ['member-roulette', 'user-roulette', 'random-member'],
 			group: 'random',
 			memberName: 'random-user',
-			description: 'Randomly chooses a member of the server.',
-			guildOnly: true
+			description: 'Randomly chooses a member of the server.'
 		});
 	}
 
 	run(msg) {
+		if (msg.channel.type === 'dm') {
+			const members = [this.client.user, msg.channel.recipient];
+			return msg.say(`I choose ${members[Math.floor(Math.random() * members.length)].username}!`);
+		}
 		return msg.say(`I choose ${msg.guild.members.random().displayName}!`);
 	}
 };
