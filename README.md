@@ -47,7 +47,7 @@ Xiao is a Discord bot coded in JavaScript with
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (340)
+## Commands (341)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -410,6 +410,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ### Other:
 
+* **cleverbot:** Talk to Cleverbot.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **strawpoll:** Generates a Strawpoll with the options you provide.
 
