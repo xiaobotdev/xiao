@@ -42,7 +42,7 @@ module.exports = class SoundcloudCommand extends Command {
 				.setTitle(data.title)
 				.setDescription(data.description ? shorten(data.description) : 'No description available.')
 				.addField('❯ Artist', `[${data.user.username}](${data.user.permalink_url})`, true)
-				.addField('❯ Release Date', moment.utc(data.created_at).format('MM/DD/YYYY'), true)
+				.addField('❯ Release Date', moment.utc(new Date(data.created_at)).format('MM/DD/YYYY'), true)
 				.addField('❯ Genre', data.genre, true)
 				.addField('❯ Likes', formatNumber(data.likes_count), true);
 			return msg.embed(embed);
