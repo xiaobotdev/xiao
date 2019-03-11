@@ -59,11 +59,14 @@ module.exports = class SortingHatCommand extends Command {
 				for (const [house, amount] of Object.entries(answer.points)) points[house] += amount;
 				++turn;
 			}
-			const house = Object.keys(points).sort((a, b) => points[b] - points[a])[0];
+			const houseResult = Object.keys(points).sort((a, b) => points[b] - points[a]);
 			this.playing.delete(msg.channel.id);
+			const totalPoints = points.g + points.s + points.h + points.r;
 			return msg.say(stripIndents`
-				You are a member of... **${houses[house]}**!
-				_${descriptions[house]}_
+				You are a member of... **${houses[houseResult[0]]}**!
+				_${descriptions[houseResult[0]]}_
+
+				${houseResult.map(house => `${houses[house]}: ${Math.round(points[house] / totalPoints)}%`).join('\n')}
 			`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
