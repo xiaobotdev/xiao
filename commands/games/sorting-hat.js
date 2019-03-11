@@ -66,7 +66,7 @@ module.exports = class SortingHatCommand extends Command {
 				You are a member of... **${houses[houseResult[0]]}**!
 				_${descriptions[houseResult[0]]}_
 
-				${houseResult.map(house => `${houses[house]}: ${Math.round(points[house] / totalPoints)}%`).join('\n')}
+				${houseResult.map(house => `${houses[house]}: ${Math.round((points[house] / totalPoints) * 100)}%`).join('\n')}
 			`);
 		} catch (err) {
 			this.playing.delete(msg.channel.id);
