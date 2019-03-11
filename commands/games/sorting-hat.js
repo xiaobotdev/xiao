@@ -59,9 +59,9 @@ module.exports = class SortingHatCommand extends Command {
 				for (const [house, amount] of Object.entries(answer.points)) points[house] += amount;
 				++turn;
 			}
-			const houseResult = Object.keys(points).sort((a, b) => points[b] - points[a]);
+			const houseResult = Object.keys(points).filter(h => points[h] > 0).sort((a, b) => points[b] - points[a]);
 			this.playing.delete(msg.channel.id);
-			const totalPoints = points.g + points.s + points.h + points.r;
+			const totalPoints = houseResult.reduce((a, b) => a + b, 0);
 			return msg.say(stripIndents`
 				You are a member of... **${houses[houseResult[0]]}**!
 				_${descriptions[houseResult[0]]}_
