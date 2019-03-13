@@ -47,7 +47,7 @@ Xiao is a Discord bot coded in JavaScript with
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (341)
+## Commands (338)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -272,12 +272,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **whos-that-pokemon:** Guess who that Pokémon is.
 * **wizard-convention:** Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?
 * **word-chain:** Try to come up with words that start with the last letter of your opponent's word.
-
-### Voice Channel:
-
-* **dec-talk:** The world's best Text-to-Speech.
-* **leave-voice-channel:** Leaves a voice channel, in case the bot gets stuck.
-* **soundboard:** Plays a sound in your voice channel.
 
 ### Image Manipulation:
 
