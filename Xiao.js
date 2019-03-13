@@ -23,7 +23,6 @@ client.registry
 		['search', 'Search'],
 		['analyze', 'Analyzers'],
 		['games', 'Games'],
-		['voice', 'Voice Channel'],
 		['image-edit', 'Image Manipulation'],
 		['avatar-edit', 'Avatar Manipulation'],
 		['text-edit', 'Text Manipulation'],

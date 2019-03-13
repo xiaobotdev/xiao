@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "101.10.2",
+	"version": "102.0.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -45,7 +45,6 @@
 		"moment-duration-format": "^2.2.2",
 		"moment-timezone": "^0.5.23",
 		"neopet-image-finder": "^5.0.2",
-		"node-opus": "^0.3.1",
 		"node-superfetch": "^0.1.9",
 		"random-js": "^1.0.8",
 		"winston": "^3.2.1",
