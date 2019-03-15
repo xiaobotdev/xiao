@@ -38,8 +38,9 @@ module.exports = class ShipCommand extends Command {
 				: `Haha even a bot thinks ${authorInvolved ? 'you\'re' : 'they\'re'} lame.`
 			: '';
 		return msg.say(oneLine`
-			${first.id === this.client.user.id ? 'Me' : first.username} and
-			${second.id === this.client.user.id ? 'I' : second.username} have a compatability of... **${level}%**! ${botText}
+			${first.id === this.client.user.id ? first.id === msg.author.id ? 'You' : 'Me' : first.username} and
+			${second.id === this.client.user.id ? second.id === msg.author.id ? 'you' : 'I' : second.username} have a
+			compatability of... **${level}%**! ${botText}
 		`);
 	}
 };
