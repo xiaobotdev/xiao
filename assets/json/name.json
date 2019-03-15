@@ -103,7 +103,13 @@
 		"Caiden",
 		"Bart",
 		"Homer",
-		"Zachary"
+		"Zachary",
+		"Corey",
+		"Hiccup",
+		"Chris",
+		"Rick",
+		"Keiichi",
+		"Satoshi"
 	],
 	"female": [
 		"Emma",
@@ -210,7 +216,17 @@
 		"Annette",
 		"Lisa",
 		"Sheila",
-		"Gracie"
+		"Gracie",
+		"Jenna",
+		"Megan",
+		"Crimson",
+		"Astrid",
+		"Rika",
+		"Rena",
+		"Mion",
+		"Shion",
+		"Satoko",
+		"Hanyuu"
 	],
 	"last": [
 		"Smith",
@@ -318,6 +334,15 @@
 		"Tworni",
 		"Ree",
 		"Thacker",
-		"Chance"
+		"Chance",
+		"Horrendous Haddock III",
+		"Carroll",
+		"Harrison",
+		"Maebara",
+		"Sonozaki",
+		"Houjou",
+		"Furude",
+		"Ryuuguu",
+		"Kujou"
 	]
 }
