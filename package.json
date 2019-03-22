@@ -32,7 +32,7 @@
 	},
 	"dependencies": {
 		"@discordjs/uws": "^11.149.1",
-		"canvas": "^2.3.1",
+		"canvas": "^2.4.1",
 		"cheerio": "^1.0.0-rc.2",
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
@@ -40,7 +40,7 @@
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^7.0.0",
 		"erlpack": "github:discordapp/erlpack",
-		"mathjs": "^5.7.0",
+		"mathjs": "^5.8.0",
 		"moment": "^2.24.0",
 		"moment-duration-format": "^2.2.2",
 		"moment-timezone": "^0.5.23",
