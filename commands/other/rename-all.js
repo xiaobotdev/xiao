@@ -35,6 +35,7 @@ module.exports = class RenameAllCommand extends Command {
 					await member.setNickname(nickname);
 				} catch (err) {
 					i++;
+					if (i === 1 || i === 2) await msg.reply(`Reason for failure: \`${err.message}\``);
 					continue;
 				}
 			}
