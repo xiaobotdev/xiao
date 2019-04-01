@@ -18,7 +18,11 @@ module.exports = class RenameAllCommand extends Command {
 					prompt: 'What nickname do you want everyone to have?',
 					type: 'string',
 					min: 2,
-					max: 32
+					max: 32,
+					parse: nickname => {
+						if (nickname.toLowerCase() === 'none') return null;
+						return nickname;
+					}
 				}
 			]
 		});
@@ -38,7 +42,7 @@ module.exports = class RenameAllCommand extends Command {
 					continue;
 				}
 			}
-			return msg.reply(`Successfully renamed all but ${i} members to **${nickname}**!`);
+			return msg.reply(`Successfully renamed all but ${i} member${i === 1 ? '' : 's'} to **${nickname}**!`);
 		} catch (err) {
 			return msg.reply(`Failed to rename everyone: \`${err.message}\``);
 		}
