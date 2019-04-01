@@ -30,12 +30,11 @@ module.exports = class RenameAllCommand extends Command {
 			await msg.guild.members.fetch();
 			await msg.reply('Fetched members! Renaming...');
 			let i = 0;
-			for (const member of msg.guild.members) {
+			for (const member of msg.guild.members.values()) {
 				try {
 					await member.setNickname(nickname);
 				} catch (err) {
 					i++;
-					if (i === 1 || i === 2) await msg.reply(`Reason for failure: \`${err.message}\``);
 					continue;
 				}
 			}
