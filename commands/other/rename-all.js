@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { verify } = require('../../util/Util');
 
 module.exports = class RenameAllCommand extends Command {
 	constructor(client) {
@@ -30,6 +31,11 @@ module.exports = class RenameAllCommand extends Command {
 
 	async run(msg, { nickname }) {
 		try {
+			await msg.reply(
+				`Are you sure you want to ${nickname ? `rename everyone to **${nickname}**` : 'remove all nicknames'}?`
+			);
+			const verification = await verify(msg.channel, msg.author);
+			if (!verification) return msg.say('Aborted.');
 			await msg.reply('Fetching members...');
 			await msg.guild.members.fetch();
 			await msg.reply('Fetched members! Renaming...');
