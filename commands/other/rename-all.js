@@ -21,7 +21,7 @@ module.exports = class RenameAllCommand extends Command {
 					min: 2,
 					max: 32,
 					parse: nickname => {
-						if (nickname.toLowerCase() === 'none') return null;
+						if (nickname.toLowerCase() === 'none') return '';
 						return nickname;
 					}
 				}
@@ -48,6 +48,7 @@ module.exports = class RenameAllCommand extends Command {
 					continue;
 				}
 			}
+			if (!nickname) return msg.reply('Successfully removed all nicknames!');
 			return msg.reply(`Successfully renamed all but ${i} member${i === 1 ? '' : 's'} to **${nickname}**!`);
 		} catch (err) {
 			return msg.reply(`Failed to rename everyone: \`${err.message}\``);
