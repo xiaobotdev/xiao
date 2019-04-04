@@ -1,5 +1,69 @@
 {
 	"name": "xiao",
+	"version": "102.2.0",
+	"description": "Your personal server companion.",
+	"main": "Xiao.js",
+	"scripts": {
+		"test": "npm run lint",
+		"lint": "eslint . --ext .js --ext .json",
+		"start": "node Xiao.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dragonfire535/xiao.git"
+	},
+	"keywords": [
+		"bot",
+		"commando",
+		"discord",
+		"discord-api",
+		"discord-bot",
+		"discord-js",
+		"discord-js-commando"
+	],
+	"author": "dragonfire535 <danielbodendahl@gmail.com>",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/dragonfire535/xiao/issues"
+	},
+	"homepage": "https://github.com/dragonfire535/xiao#readme",
+	"engines": {
+		"node": ">=10"
+	},
+	"dependencies": {
+		"@discordjs/uws": "^11.149.1",
+		"canvas": "^2.4.1",
+		"cheerio": "^1.0.0-rc.2",
+		"common-tags": "^1.8.0",
+		"custom-translate": "^2.2.8",
+		"discord.js": "github:discordjs/discord.js",
+		"discord.js-commando": "github:discordjs/Commando",
+		"dotenv": "^7.0.0",
+		"erlpack": "github:discordapp/erlpack",
+		"mathjs": "^5.8.0",
+		"moment": "^2.24.0",
+		"moment-duration-format": "^2.2.2",
+		"moment-timezone": "^0.5.23",
+		"neopet-image-finder": "^5.0.2",
+		"node-superfetch": "^0.1.9",
+		"random-js": "^1.0.8",
+		"winston": "^3.2.1",
+		"zlib-sync": "^0.1.4"
+	},
+	"devDependencies": {
+		"eslint": "^5.8.0",
+		"eslint-config-amber": "^2.0.0",
+		"eslint-plugin-json": "^1.2.1"
+	},
+	"eslintConfig": {
+		"extends": "amber",
+		"plugins": [
+			"json"
+		]
+	}
+}
+{
+	"name": "xiao",
 	"version": "102.1.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
