@@ -13,6 +13,6 @@ module.exports = class NoUCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.reply('no u');
+		return msg.say('no u');
 	}
 };
