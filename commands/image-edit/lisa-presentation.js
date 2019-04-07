@@ -24,7 +24,7 @@ module.exports = class LisaPresentationCommand extends Command {
 					key: 'text',
 					prompt: 'What should the text of the presentation be?',
 					type: 'string',
-					max: 280
+					max: 500
 				}
 			]
 		});
@@ -35,8 +35,13 @@ module.exports = class LisaPresentationCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '24px Noto';
 		ctx.textAlign = 'center';
+		ctx.font = '40px Noto';
+		let fontSize = 40;
+		while (ctx.measureText(text).width > 990) {
+			fontSize -= 1;
+			ctx.font = `${fontSize}px Noto`;
+		}
 		const lines = await wrapText(ctx, text, 330);
 		for (let i = 0; i < lines.length; i++) {
 			const textHeight = 95 + (i * 24) + (i * 10);
