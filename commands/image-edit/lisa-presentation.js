@@ -44,7 +44,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		}
 		const lines = await wrapText(ctx, text, 330);
 		for (let i = 0; i < lines.length; i++) {
-			const textHeight = 95 + (i * 24) + (i * 10);
+			const textHeight = 95 + (i * fontSize) + (i * 10);
 			ctx.fillText(lines[i], base.width / 2, textHeight);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'lisa-presentation.png' }] });
