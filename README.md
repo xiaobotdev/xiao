@@ -45,7 +45,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (340)
+## Commands (341)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -293,6 +293,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **illegal:** Makes President Trump make your text illegal.
 * **invert:** Draws an image or a user's avatar but inverted.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
+* **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
 * **meme-gen:** Sends a meme with the text and background of your choice.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
