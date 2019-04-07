@@ -38,7 +38,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.font = '40px Noto';
 		let fontSize = 40;
-		while (ctx.measureText(text).width > 990) {
+		while (ctx.measureText(text).width > 1320) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
