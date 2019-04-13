@@ -31,7 +31,9 @@ module.exports = class FaceCommand extends Command {
 			const face = await this.detect(image);
 			if (!face) return msg.reply('There are no faces in this image.');
 			const pronoun = face.gender.value === 'Male' ? 'He' : 'She';
-			const emotion = emotionResponse[emotions.indexOf(emotions.sort((a, b) => face.emotion[b] - face.emotion[a])[0])];
+			const emotion = emotionResponse[emotions.indexOf(
+				emotions.slice(0).sort((a, b) => face.emotion[b] - face.emotion[a])[0]
+			)];
 			const smile = face.smile.value > face.smile.threshold;
 			const beautyScore = face.gender.value === 'Male' ? face.beauty.female_score : face.beauty.male_score;
 			return msg.reply(oneLine`
