@@ -45,7 +45,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (341)
+## Commands (342)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -229,6 +229,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **coolness:** Determines a user's coolness.
 * **dick:** Determines your dick size.
+* **face:** Determines the race, gender, and age of a face.
 * **gender:** Determines the gender of a name.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
