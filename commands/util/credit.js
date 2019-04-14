@@ -20,6 +20,7 @@ module.exports = class CreditCommand extends Command {
 	}
 
 	run(msg, { command }) {
+		if (!command.credit) return msg.say('This command is credited to no one. It just appeared.');
 		const embed = new MessageEmbed()
 			.setTitle(command.name)
 			.setColor(0x7289DA)
