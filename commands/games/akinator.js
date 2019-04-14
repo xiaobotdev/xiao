@@ -12,7 +12,13 @@ module.exports = class AkinatorCommand extends Command {
 			group: 'games',
 			memberName: 'akinator',
 			description: 'Think about a real or fictional character, I will try to guess who it is.',
-			clientPermissions: ['EMBED_LINKS']
+			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Akinator',
+					url: 'https://en.akinator.com/'
+				}
+			]
 		});
 
 		this.sessions = new Map();

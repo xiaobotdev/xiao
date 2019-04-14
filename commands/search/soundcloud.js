@@ -14,6 +14,12 @@ module.exports = class SoundcloudCommand extends Command {
 			memberName: 'soundcloud',
 			description: 'Searches SoundCloud for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'SoundCloud API',
+					url: 'https://developers.soundcloud.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

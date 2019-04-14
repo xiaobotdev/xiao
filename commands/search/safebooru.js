@@ -8,6 +8,12 @@ module.exports = class SafebooruCommand extends Command {
 			group: 'search',
 			memberName: 'safebooru',
 			description: 'Responds with an image from Safebooru, with optional query.',
+			credit: [
+				{
+					name: 'Safebooru',
+					url: 'https://safebooru.org/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

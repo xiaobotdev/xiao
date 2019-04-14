@@ -16,6 +16,12 @@ module.exports = class KyonGunCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'The Melancholy of Haruhi Suzumiya',
+					url: 'http://www.haruhi.tv/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

@@ -13,6 +13,12 @@ module.exports = class VocadbCommand extends Command {
 			memberName: 'vocadb',
 			description: 'Searches VocaDB for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'VocaDB Web API',
+					url: 'https://vocadb.net/swagger/ui/index'
+				}
+			],
 			args: [
 				{
 					key: 'query',

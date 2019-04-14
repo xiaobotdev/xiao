@@ -9,6 +9,12 @@ module.exports = class NobodyNameCommand extends Command {
 			group: 'text-edit',
 			memberName: 'nobody-name',
 			description: 'Converts a name into the Organization XIII style.',
+			credit: [
+				{
+					name: 'Kingdom Hearts',
+					url: 'https://www.kingdomhearts.com/home/us/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

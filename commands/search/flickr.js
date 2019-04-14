@@ -10,6 +10,12 @@ module.exports = class FlickrCommand extends Command {
 			memberName: 'flickr',
 			description: 'Searches Flickr for your query.',
 			nsfw: true,
+			credit: [
+				{
+					name: 'Flickr API',
+					url: 'https://www.flickr.com/services/api/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

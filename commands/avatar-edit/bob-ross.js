@@ -16,6 +16,12 @@ module.exports = class BobRossCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Bob Ross',
+					url: 'https://www.bobross.com/'
+				}
+			],
 			args: [
 				{
 					key: 'user',

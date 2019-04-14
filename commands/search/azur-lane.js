@@ -13,6 +13,16 @@ module.exports = class AzurLaneCommand extends Command {
 			memberName: 'azur-lane',
 			description: 'Responds with information on an Azur Lane ship.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Azur Lane',
+					url: 'https://azurlane.yo-star.com/#/'
+				},
+				{
+					name: 'Unofficial Azur Lane API',
+					url: 'https://al-shipgirls.pw/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

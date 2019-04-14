@@ -16,6 +16,12 @@ module.exports = class IHaveThePowerCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Mattel',
+					url: 'https://www.mattel.com/en-us'
+				}
+			],
 			args: [
 				{
 					key: 'user',

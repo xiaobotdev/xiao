@@ -7,6 +7,12 @@ module.exports = class LatlmesCommand extends Command {
 			group: 'text-edit',
 			memberName: 'latlmes',
 			description: 'Creates a Latlmes fake link that redirects to a rickroll.',
+			credit: [
+				{
+					name: 'Latlmes',
+					url: 'https://www.latlmes.com/'
+				}
+			],
 			args: [
 				{
 					key: 'section',

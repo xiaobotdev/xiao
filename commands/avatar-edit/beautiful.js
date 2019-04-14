@@ -16,6 +16,12 @@ module.exports = class BeautifulCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Gravity Falls',
+					url: 'https://disneynow.go.com/shows/gravity-falls'
+				}
+			],
 			args: [
 				{
 					key: 'user',

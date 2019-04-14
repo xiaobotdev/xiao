@@ -14,6 +14,12 @@ module.exports = class GithubCommand extends Command {
 			memberName: 'github',
 			description: 'Responds with information on a GitHub repository.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'GitHub API',
+					url: 'https://developer.github.com/v3/'
+				}
+			],
 			args: [
 				{
 					key: 'author',

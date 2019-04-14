@@ -9,6 +9,12 @@ module.exports = class TenorCommand extends Command {
 			group: 'search',
 			memberName: 'tenor',
 			description: 'Searches Tenor for your query.',
+			credit: [
+				{
+					name: 'Tenor API',
+					url: 'https://tenor.com/gifapi/documentation'
+				}
+			],
 			args: [
 				{
 					key: 'query',

@@ -11,6 +11,16 @@ module.exports = class DocsCommand extends Command {
 			memberName: 'docs',
 			description: 'Searches the Discord.js docs for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'discord.js',
+					url: 'https://discord.js.org/#/'
+				},
+				{
+					name: 'TeeSeal/discord.js-docs-api',
+					url: 'https://github.com/TeeSeal/discord.js-docs-api'
+				}
+			],
 			args: [
 				{
 					key: 'query',

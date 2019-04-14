@@ -17,6 +17,12 @@ module.exports = class ChallengerCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Super Smash Bros.',
+					url: 'https://www.smashbros.com/en_US/index.html'
+				}
+			],
 			args: [
 				{
 					key: 'user',

@@ -9,6 +9,12 @@ module.exports = class CurrencyCommand extends Command {
 			group: 'number-edit',
 			memberName: 'currency',
 			description: 'Converts currency from one currency to another.',
+			credit: [
+				{
+					name: 'Foreign exchange rates API',
+					url: 'https://exchangeratesapi.io/'
+				}
+			],
 			args: [
 				{
 					key: 'amount',

@@ -10,6 +10,12 @@ module.exports = class ButtCommand extends Command {
 			group: 'analyze',
 			memberName: 'butt',
 			description: 'Determines a user\'s butt quality.',
+			credit: [
+				{
+					name: 'iCrawl/Tohru',
+					url: 'https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js'
+				}
+			],
 			args: [
 				{
 					key: 'user',

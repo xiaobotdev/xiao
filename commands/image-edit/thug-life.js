@@ -16,6 +16,12 @@ module.exports = class ThugLifeCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'pngimg.com',
+					url: 'https://pngimg.com/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

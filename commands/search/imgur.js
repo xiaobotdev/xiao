@@ -9,6 +9,12 @@ module.exports = class ImgurCommand extends Command {
 			group: 'search',
 			memberName: 'imgur',
 			description: 'Searches Imgur for your query.',
+			credit: [
+				{
+					name: 'Imgur API',
+					url: 'https://apidocs.imgur.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

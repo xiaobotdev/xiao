@@ -18,6 +18,12 @@ module.exports = class QuizCommand extends Command {
 				**Types:** ${types.join(', ')}
 				**Difficulties:** ${difficulties.join(', ')}
 			`,
+			credit: [
+				{
+					name: 'Open Trivia DB',
+					url: 'https://opentdb.com/'
+				}
+			],
 			args: [
 				{
 					key: 'type',

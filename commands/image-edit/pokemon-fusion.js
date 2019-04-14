@@ -12,6 +12,16 @@ module.exports = class PokemonFusionCommand extends Command {
 			memberName: 'pokemon-fusion',
 			description: 'Fuses two Generation I Pokémon together.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Pokémon',
+					url: 'https://www.pokemon.com/us/'
+				},
+				{
+					name: 'Pokemon Fusion',
+					url: 'https://pokemon.alexonsager.net/'
+				}
+			],
 			args: [
 				{
 					key: 'body',

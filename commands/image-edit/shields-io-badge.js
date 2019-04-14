@@ -10,6 +10,12 @@ module.exports = class ShieldsIoBadgeCommand extends Command {
 			memberName: 'shields-io-badge',
 			description: 'Creates a badge from shields.io.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Shields.io',
+					url: 'https://shields.io/'
+				}
+			],
 			args: [
 				{
 					key: 'subject',

@@ -10,6 +10,12 @@ module.exports = class GoogleFeudCommand extends Command {
 			group: 'games',
 			memberName: 'google-feud',
 			description: 'Attempt to determine the top suggestions for a Google search.',
+			credit: [
+				{
+					name: 'Google Feud',
+					url: 'http://www.googlefeud.com/'
+				}
+			],
 			args: [
 				{
 					key: 'question',

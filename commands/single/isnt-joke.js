@@ -9,7 +9,13 @@ module.exports = class IsntJokeCommand extends Command {
 			group: 'single',
 			memberName: 'isnt-joke',
 			description: 'Isn\'t joke...',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			url: [
+				{
+					name: 'Love Live! School Idol Project',
+					url: 'http://www.lovelive-anime.jp/'
+				}
+			]
 		});
 	}
 

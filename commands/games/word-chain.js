@@ -13,6 +13,12 @@ module.exports = class WordChainCommand extends Command {
 			memberName: 'word-chain',
 			description: 'Try to come up with words that start with the last letter of your opponent\'s word.',
 			guildOnly: true,
+			credit: [
+				{
+					name: 'Moby Word Lists by Grady Ward',
+					url: 'http://www.gutenberg.org/ebooks/3201'
+				}
+			],
 			args: [
 				{
 					key: 'opponent',

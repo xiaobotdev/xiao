@@ -12,6 +12,12 @@ module.exports = class LeagueOfLegendsCommand extends Command {
 			memberName: 'league-of-legends',
 			description: 'Responds with information on a League of Legends champion.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Riot Games API',
+					url: 'https://developer.riotgames.com/'
+				}
+			],
 			args: [
 				{
 					key: 'champion',

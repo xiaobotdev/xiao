@@ -8,7 +8,13 @@ module.exports = class FoxCommand extends Command {
 			group: 'random',
 			memberName: 'fox',
 			description: 'Responds with a random fox image.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'RandomFox',
+					url: 'https://randomfox.ca/'
+				}
+			]
 		});
 	}
 

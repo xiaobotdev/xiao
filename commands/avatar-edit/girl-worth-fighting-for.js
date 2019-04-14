@@ -16,6 +16,12 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Mulan',
+					url: 'https://movies.disney.com/mulan'
+				}
+			],
 			args: [
 				{
 					key: 'user',

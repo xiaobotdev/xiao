@@ -8,7 +8,13 @@ module.exports = class DoomsdayClockCommand extends Command {
 			name: 'doomsday-clock',
 			group: 'events',
 			memberName: 'doomsday-clock',
-			description: 'Responds with the current time of the Doomsday Clock.'
+			description: 'Responds with the current time of the Doomsday Clock.',
+			credit: [
+				{
+					name: 'Bulletin of the Atomic Scientists',
+					url: 'https://thebulletin.org/'
+				}
+			]
 		});
 	}
 

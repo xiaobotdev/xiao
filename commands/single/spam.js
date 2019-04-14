@@ -8,7 +8,13 @@ module.exports = class SpamCommand extends Command {
 			group: 'single',
 			memberName: 'spam',
 			description: 'Responds with a picture of Spam.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'SPAM Brand',
+					url: 'https://www.spam.com/'
+				}
+			]
 		});
 	}
 

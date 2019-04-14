@@ -16,6 +16,12 @@ module.exports = class ToBeContinuedCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'JoJo\'s Bizzare Adventure',
+					url: 'http://www.araki-jojo.com/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

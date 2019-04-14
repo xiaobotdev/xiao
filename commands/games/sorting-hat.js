@@ -11,7 +11,17 @@ module.exports = class SortingHatCommand extends Command {
 			aliases: ['sorting-hat-quiz', 'hogwarts', 'hogwarts-house'],
 			group: 'games',
 			memberName: 'sorting-hat',
-			description: 'Take a quiz to determine your Hogwarts house.'
+			description: 'Take a quiz to determine your Hogwarts house.',
+			credit: [
+				{
+					name: 'Pottermore',
+					url: 'https://my.pottermore.com/sorting'
+				},
+				{
+					name: 'Pottermore Sorting Hat Quiz analysis by u/N1ffler',
+					url: 'https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/'
+				}
+			]
 		});
 
 		this.playing = new Set();

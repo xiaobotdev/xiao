@@ -9,7 +9,13 @@ module.exports = class ShibaCommand extends Command {
 			group: 'random',
 			memberName: 'shiba',
 			description: 'Responds with a random image of a Shiba Inu.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'shibe.online',
+					url: 'https://shibe.online/'
+				}
+			]
 		});
 	}
 

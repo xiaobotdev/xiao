@@ -10,6 +10,12 @@ module.exports = class SevereToxicityCommand extends Command {
 			group: 'analyze',
 			memberName: 'severe-toxicity',
 			description: 'Determines the toxicity of text, but less sensitive to milder language.',
+			credit: [
+				{
+					name: 'Perspective API',
+					url: 'https://www.perspectiveapi.com/#/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

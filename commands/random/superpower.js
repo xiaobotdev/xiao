@@ -9,7 +9,13 @@ module.exports = class SuperpowerCommand extends Command {
 			name: 'superpower',
 			group: 'random',
 			memberName: 'superpower',
-			description: 'Responds with a random superpower.'
+			description: 'Responds with a random superpower.',
+			credit: [
+				{
+					name: 'Superpower Wiki',
+					url: 'https://powerlisting.fandom.com/wiki/Superpower_Wiki'
+				}
+			]
 		});
 	}
 

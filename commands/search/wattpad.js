@@ -13,6 +13,12 @@ module.exports = class WattpadCommand extends Command {
 			memberName: 'wattpad',
 			description: 'Searches Wattpad for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Wattpad API',
+					url: 'https://www.wattpad.com/developer/docs/api'
+				}
+			],
 			args: [
 				{
 					key: 'query',

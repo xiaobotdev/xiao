@@ -16,7 +16,13 @@ module.exports = class CaptchaCommand extends Command {
 				usages: 1,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Moms Typewriter Font',
+					url: 'https://www.fontsquirrel.com/fonts/MomsTypewriter'
+				}
+			]
 		});
 	}
 

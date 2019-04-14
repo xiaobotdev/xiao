@@ -11,6 +11,20 @@ module.exports = class PokedexCommand extends Command {
 			memberName: 'pokedex',
 			description: 'Searches the Pokédex for a Pokémon.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Pokémon',
+					url: 'https://www.pokemon.com/us/'
+				},
+				{
+					name: 'PokéAPI',
+					url: 'https://pokeapi.co/'
+				},
+				{
+					name: 'Serebii.net',
+					url: 'https://www.serebii.net/index2.shtml'
+				}
+			],
 			args: [
 				{
 					key: 'pokemon',

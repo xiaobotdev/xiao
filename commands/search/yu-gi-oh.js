@@ -12,6 +12,16 @@ module.exports = class YuGiOhCommand extends Command {
 			memberName: 'yu-gi-oh',
 			description: 'Responds with info on a Yu-Gi-Oh! card.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Yu-Gi-Oh! Trading Card Game',
+					url: 'https://www.yugioh-card.com/en/'
+				},
+				{
+					name: 'Yugioh Prices API',
+					url: 'https://yugiohprices.docs.apiary.io/'
+				}
+			],
 			args: [
 				{
 					key: 'card',

@@ -12,6 +12,12 @@ module.exports = class OsuCommand extends Command {
 			memberName: 'osu',
 			description: 'Responds with information on an osu! user.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'osu!api',
+					url: 'https://github.com/ppy/osu-api/wiki'
+				}
+			],
 			args: [
 				{
 					key: 'user',

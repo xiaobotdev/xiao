@@ -17,6 +17,20 @@ module.exports = class AchievementCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Minecraft',
+					url: 'https://www.minecraft.net/en-us/'
+				},
+				{
+					name: 'Minecraft Achievement Generator',
+					url: 'https://www.minecraftskinstealer.com/achievement/'
+				},
+				{
+					name: 'Minecraftia Font',
+					url: 'https://www.dafont.com/minecraftia.font'
+				}
+			],
 			args: [
 				{
 					key: 'text',

@@ -10,7 +10,13 @@ module.exports = class CalendarCommand extends Command {
 			aliases: ['holidays', 'events'],
 			group: 'events',
 			memberName: 'calendar',
-			description: 'Responds with today\'s holidays.'
+			description: 'Responds with today\'s holidays.',
+			credit: [
+				{
+					name: 'Google Calendar API',
+					url: 'https://developers.google.com/calendar/'
+				}
+			]
 		});
 	}
 

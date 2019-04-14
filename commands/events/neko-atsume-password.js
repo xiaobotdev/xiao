@@ -15,6 +15,12 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 			group: 'events',
 			memberName: 'neko-atsume-password',
 			description: 'Responds with today\'s Neko Atsume password.',
+			credit: [
+				{
+					name: 'Neko Atsume: Kitty Collector',
+					url: 'http://nekoatsume.com/en/'
+				}
+			],
 			args: [
 				{
 					key: 'locale',

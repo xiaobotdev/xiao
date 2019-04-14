@@ -13,6 +13,12 @@ module.exports = class KnowYourMemeCommand extends Command {
 			memberName: 'know-your-meme',
 			description: 'Searches Know Your Meme for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Know Your Meme',
+					url: 'https://knowyourmeme.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

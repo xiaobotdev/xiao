@@ -17,6 +17,12 @@ module.exports = class FireCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'susi1959 - PicMix',
+					url: 'https://en.picmix.com/profile/susi1959'
+				}
+			],
 			args: [
 				{
 					key: 'image',

@@ -9,7 +9,13 @@ module.exports = class EggsGetLaidCommand extends Command {
 			group: 'single',
 			memberName: 'eggs-get-laid',
 			description: 'Sends the ultimate roast.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'KINMOZA!',
+					url: 'http://www.kinmosa.com/'
+				}
+			]
 		});
 	}
 

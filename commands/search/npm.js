@@ -12,6 +12,12 @@ module.exports = class NPMCommand extends Command {
 			memberName: 'npm',
 			description: 'Responds with information on an NPM package.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'npm',
+					url: 'https://www.npmjs.com/'
+				}
+			],
 			args: [
 				{
 					key: 'pkg',

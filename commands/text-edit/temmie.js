@@ -10,6 +10,12 @@ module.exports = class TemmieCommand extends Command {
 			group: 'text-edit',
 			memberName: 'temmie',
 			description: 'Converts text to Temmie speak.',
+			credit: [
+				{
+					name: 'UNDERTALE',
+					url: 'https://undertale.com/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

@@ -14,6 +14,12 @@ module.exports = class HoroscopeCommand extends Command {
 			description: 'Responds with today\'s horoscope for a specific Zodiac sign.',
 			details: `**Signs:** ${signs.join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'The Astrologer by Kelli Fox',
+					url: 'https://new.theastrologer.com/'
+				}
+			],
 			args: [
 				{
 					key: 'sign',

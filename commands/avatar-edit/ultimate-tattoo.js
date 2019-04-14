@@ -16,6 +16,12 @@ module.exports = class UltimateTattooCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Deathbulge',
+					url: 'http://deathbulge.com/comics'
+				}
+			],
 			args: [
 				{
 					key: 'user',

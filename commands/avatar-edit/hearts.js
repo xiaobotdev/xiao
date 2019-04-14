@@ -17,6 +17,12 @@ module.exports = class HeartsCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Jessica Knable',
+					url: 'https://picsart.com/jessicaknable'
+				}
+			],
 			args: [
 				{
 					key: 'user',

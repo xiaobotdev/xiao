@@ -13,6 +13,12 @@ module.exports = class StackOverflowCommand extends Command {
 			memberName: 'stack-overflow',
 			description: 'Searches Stack Overflow for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Stack Exchange API',
+					url: 'https://api.stackexchange.com/docs'
+				}
+			],
 			args: [
 				{
 					key: 'query',

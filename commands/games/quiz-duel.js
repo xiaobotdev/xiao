@@ -12,6 +12,12 @@ module.exports = class QuizDuelCommand extends Command {
 			group: 'games',
 			memberName: 'quiz-duel',
 			description: 'Answer a series of quiz questions against an opponent.',
+			credit: [
+				{
+					name: 'Open Trivia DB',
+					url: 'https://opentdb.com/'
+				}
+			],
 			args: [
 				{
 					key: 'opponent',

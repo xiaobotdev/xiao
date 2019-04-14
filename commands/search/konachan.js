@@ -9,6 +9,12 @@ module.exports = class KonachanCommand extends Command {
 			memberName: 'konachan',
 			description: 'Responds with an image from Konachan, with optional query.',
 			nsfw: true,
+			credit: [
+				{
+					name: 'konachan.com',
+					url: 'https://konachan.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

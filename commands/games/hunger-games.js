@@ -11,6 +11,12 @@ module.exports = class HungerGamesCommand extends Command {
 			group: 'games',
 			memberName: 'hunger-games',
 			description: 'Simulate a Hunger Games match with up to 24 tributes.',
+			credit: [
+				{
+					name: 'BrantSteele Hunger Games Simulator',
+					url: 'http://brantsteele.net/hungergames/reaping.php'
+				}
+			],
 			args: [
 				{
 					key: 'tributes',

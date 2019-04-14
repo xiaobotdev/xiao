@@ -9,7 +9,13 @@ module.exports = class DuckCommand extends Command {
 			group: 'random',
 			memberName: 'duck',
 			description: 'Responds with a random duck image.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Random-d.uk',
+					url: 'https://random-d.uk/'
+				}
+			]
 		});
 	}
 

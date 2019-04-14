@@ -9,7 +9,13 @@ module.exports = class WynautCommand extends Command {
 			group: 'single',
 			memberName: 'wynaut',
 			description: 'Why not? Wynaut?',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Pokémon TV',
+					url: 'https://www.pokemon.com/us/pokemon-episodes/'
+				}
+			]
 		});
 	}
 

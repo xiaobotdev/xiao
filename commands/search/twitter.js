@@ -14,6 +14,12 @@ module.exports = class TwitterCommand extends Command {
 			memberName: 'twitter',
 			description: 'Responds with information on a Twitter user.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Twitter API',
+					url: 'https://developer.twitter.com/en/docs.html'
+				}
+			],
 			args: [
 				{
 					key: 'user',

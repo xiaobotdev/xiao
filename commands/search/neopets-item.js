@@ -12,6 +12,16 @@ module.exports = class NeopetsItemCommand extends Command {
 			memberName: 'neopets-item',
 			description: 'Responds with information on a specific Neopets item.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Neopets',
+					url: 'http://www.neopets.com/'
+				},
+				{
+					name: 'JellyNeo Item Database',
+					url: 'https://items.jellyneo.net/'
+				}
+			],
 			args: [
 				{
 					key: 'item',

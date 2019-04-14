@@ -53,6 +53,12 @@ module.exports = class CharacterCommand extends Command {
 			memberName: 'character',
 			description: 'Searches AniList for your query, getting character results.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'AniList API',
+					url: 'https://anilist.gitbook.io/anilist-apiv2-docs/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

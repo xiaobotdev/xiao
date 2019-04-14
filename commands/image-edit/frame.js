@@ -16,6 +16,12 @@ module.exports = class FrameCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'PNG Arts',
+					url: 'https://www.pngarts.com/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

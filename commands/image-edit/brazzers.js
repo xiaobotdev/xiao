@@ -15,6 +15,12 @@ module.exports = class BrazzersCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Brazzers',
+					url: 'https://www.brazzers.com/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

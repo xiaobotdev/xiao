@@ -16,6 +16,12 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Nickelback - Photograph',
+					url: 'https://www.youtube.com/watch?v=BB0DU4DoPP4'
+				}
+			],
 			args: [
 				{
 					key: 'user',

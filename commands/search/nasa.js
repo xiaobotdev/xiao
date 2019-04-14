@@ -11,6 +11,12 @@ module.exports = class NASACommand extends Command {
 			memberName: 'nasa',
 			description: 'Searches NASA\'s image archive for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'NASA Open APIs',
+					url: 'https://api.nasa.gov/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

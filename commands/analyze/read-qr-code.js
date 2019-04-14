@@ -10,6 +10,12 @@ module.exports = class ReadQRCodeCommand extends Command {
 			group: 'analyze',
 			memberName: 'read-qr-code',
 			description: 'Reads a QR Code.',
+			credit: [
+				{
+					name: 'QR Code Generator\'s QR code API',
+					url: 'http://goqr.me/api/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

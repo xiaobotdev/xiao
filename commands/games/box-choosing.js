@@ -10,7 +10,21 @@ module.exports = class BoxChoosingCommand extends Command {
 			aliases: ['box-choose'],
 			group: 'games',
 			memberName: 'box-choosing',
-			description: 'Do you believe that there are choices in life? Taken from Higurashi Chapter 4.'
+			description: 'Do you believe that there are choices in life? Taken from Higurashi Chapter 4.',
+			credit: [
+				{
+					name: '07th Expansion',
+					url: 'http://07th-expansion.net/'
+				},
+				{
+					name: 'MangaGamer.com',
+					url: 'https://www.mangagamer.com/'
+				},
+				{
+					name: 'Higurashi When They Cry Hou - Ch.4 Himatsubushi',
+					url: 'https://store.steampowered.com/app/526490/'
+				}
+			]
 		});
 
 		this.playing = new Set();

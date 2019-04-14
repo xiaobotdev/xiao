@@ -11,6 +11,12 @@ module.exports = class TodayInHistoryCommand extends Command {
 			memberName: 'today-in-history',
 			description: 'Responds with an event that occurred today in history.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'muffinlabs - Today in History',
+					url: 'http://history.muffinlabs.com/'
+				}
+			],
 			args: [
 				{
 					key: 'month',

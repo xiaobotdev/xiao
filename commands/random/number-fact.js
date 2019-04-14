@@ -8,6 +8,12 @@ module.exports = class NumberFactCommand extends Command {
 			group: 'random',
 			memberName: 'number-fact',
 			description: 'Responds with a random fact about a specific number.',
+			credit: [
+				{
+					name: 'Numbers API',
+					url: 'http://numbersapi.com/'
+				}
+			],
 			args: [
 				{
 					key: 'number',
