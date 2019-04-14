@@ -45,7 +45,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (343)
+## Commands (344)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -119,6 +119,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **suggest-command:** Suggests a random command for you to try.
 * **superpower:** Responds with a random superpower.
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
+* **waifu:** Responds with a randomly generated waifu and backstory.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
 * **xiao:** Responds with a random image of Xiao Pai.
 
