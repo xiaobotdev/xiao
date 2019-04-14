@@ -8,7 +8,13 @@ module.exports = class HangmanCommand extends Command {
 			name: 'hangman',
 			group: 'games',
 			memberName: 'hangman',
-			description: 'Prevent a man from being hanged by guessing a word as fast as you can.'
+			description: 'Prevent a man from being hanged by guessing a word as fast as you can.',
+			credit: [
+				{
+					name: 'Moby Word Lists by Grady Ward',
+					url: 'http://www.gutenberg.org/ebooks/3201'
+				}
+			]
 		});
 
 		this.playing = new Set();

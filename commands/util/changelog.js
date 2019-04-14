@@ -12,7 +12,13 @@ module.exports = class ChangelogCommand extends Command {
 			group: 'util',
 			memberName: 'changelog',
 			description: 'Responds with the bot\'s latest 10 commits.',
-			guarded: true
+			guarded: true,
+			credit: [
+				{
+					name: 'GitHub API',
+					url: 'https://developer.github.com/v3/'
+				}
+			]
 		});
 	}
 

@@ -9,6 +9,12 @@ module.exports = class DanbooruCommand extends Command {
 			memberName: 'danbooru',
 			description: 'Responds with an image from Danbooru, with optional query.',
 			nsfw: true,
+			credit: [
+				{
+					name: 'Danbooru',
+					url: 'https://danbooru.donmai.us/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

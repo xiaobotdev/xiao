@@ -10,6 +10,12 @@ module.exports = class MagicConchCommand extends Command {
 			group: 'random',
 			memberName: 'magic-conch',
 			description: 'Asks your question to the Magic Conch.',
+			credit: [
+				{
+					name: 'SpongeBob SquarePants',
+					url: 'https://www.nick.com/shows/spongebob-squarepants'
+				}
+			],
 			args: [
 				{
 					key: 'question',

@@ -9,7 +9,13 @@ module.exports = class BirdCommand extends Command {
 			group: 'random',
 			memberName: 'bird',
 			description: 'Responds with a random image of a bird.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'shibe.online',
+					url: 'https://shibe.online/'
+				}
+			]
 		});
 	}
 

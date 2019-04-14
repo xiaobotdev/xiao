@@ -11,6 +11,12 @@ module.exports = class RecipeCommand extends Command {
 			memberName: 'recipe',
 			description: 'Searches for recipes based on your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Recipe Puppy API',
+					url: 'http://www.recipepuppy.com/about/api/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

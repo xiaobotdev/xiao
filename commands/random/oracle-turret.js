@@ -7,7 +7,13 @@ module.exports = class OracleTurretCommand extends Command {
 			name: 'oracle-turret',
 			group: 'random',
 			memberName: 'oracle-turret',
-			description: 'Responds with a random Oracle Turret quote.'
+			description: 'Responds with a random Oracle Turret quote.',
+			credit: [
+				{
+					name: 'Portal 2',
+					url: 'http://www.thinkwithportals.com/'
+				}
+			]
 		});
 	}
 

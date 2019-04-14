@@ -16,6 +16,12 @@ module.exports = class RejctedCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'People PNG',
+					url: 'https://peoplepng.com/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

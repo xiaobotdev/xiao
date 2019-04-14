@@ -16,6 +16,12 @@ module.exports = class SipCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'CoolClips.com',
+					url: 'http://search.coolclips.com/'
+				}
+			],
 			args: [
 				{
 					key: 'user',

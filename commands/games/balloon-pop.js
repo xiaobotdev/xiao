@@ -8,6 +8,12 @@ module.exports = class BalloonPopCommand extends Command {
 			group: 'games',
 			memberName: 'balloon-pop',
 			description: 'Don\'t let yourself be the last one to pump the balloon before it pops!',
+			credit: [
+				{
+					name: 'PAC-MAN Party',
+					url: 'http://pacman.com/en/pac-man-games/pac-man-party'
+				}
+			],
 			args: [
 				{
 					key: 'opponent',

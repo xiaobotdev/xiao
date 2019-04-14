@@ -62,6 +62,12 @@ module.exports = class AnimeCommand extends Command {
 			memberName: 'anime',
 			description: 'Searches AniList for your query, getting anime results.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'AniList API',
+					url: 'https://anilist.gitbook.io/anilist-apiv2-docs/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

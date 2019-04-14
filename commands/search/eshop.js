@@ -14,6 +14,12 @@ module.exports = class EshopCommand extends Command {
 			memberName: 'eshop',
 			description: 'Searches the Nintendo eShop for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Nintendo',
+					url: 'https://www.nintendo.com/'
+				}
+			],
 			args: [
 				{
 					key: 'system',

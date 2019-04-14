@@ -11,6 +11,12 @@ module.exports = class WhatAnimeCommand extends Command {
 			group: 'analyze',
 			memberName: 'what-anime',
 			description: 'Determines what anime a screenshot is from.',
+			credit: [
+				{
+					name: 'WAIT: What Anime Is This?',
+					url: 'https://trace.moe/'
+				}
+			],
 			args: [
 				{
 					key: 'screenshot',

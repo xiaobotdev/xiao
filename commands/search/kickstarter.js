@@ -12,6 +12,12 @@ module.exports = class KickstarterCommand extends Command {
 			memberName: 'kickstarter',
 			description: 'Searches Kickstarter for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Kickstarter',
+					url: 'https://www.kickstarter.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

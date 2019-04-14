@@ -9,7 +9,13 @@ module.exports = class HumbleBundleCommand extends Command {
 			aliases: ['humble'],
 			group: 'events',
 			memberName: 'humble-bundle',
-			description: 'Responds with the current Humble Bundle.'
+			description: 'Responds with the current Humble Bundle.',
+			credit: [
+				{
+					name: 'Humble Bundle',
+					url: 'https://www.humblebundle.com/'
+				}
+			]
 		});
 	}
 

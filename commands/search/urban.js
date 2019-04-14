@@ -12,6 +12,12 @@ module.exports = class UrbanCommand extends Command {
 			memberName: 'urban',
 			description: 'Defines a word, but with Urban Dictionary.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Urban Dictionary API',
+					url: 'https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation'
+				}
+			],
 			args: [
 				{
 					key: 'word',

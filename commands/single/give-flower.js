@@ -6,7 +6,13 @@ module.exports = class GiveFlowerCommand extends Command {
 			name: 'give-flower',
 			group: 'single',
 			memberName: 'give-flower',
-			description: 'Gives Xiao Pai a flower.'
+			description: 'Gives Xiao Pai a flower.',
+			credit: [
+				{
+					name: 'Rune Factory 4',
+					url: 'http://www.runefactory4.com/index1.html'
+				}
+			]
 		});
 	}
 

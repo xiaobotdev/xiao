@@ -10,6 +10,12 @@ module.exports = class ScrabbleScoreCommand extends Command {
 			group: 'analyze',
 			memberName: 'scrabble-score',
 			description: 'Responds with the scrabble score of a word.',
+			credit: [
+				{
+					name: 'Scrabble',
+					url: 'https://scrabble.hasbro.com/en-us'
+				}
+			],
 			args: [
 				{
 					key: 'word',

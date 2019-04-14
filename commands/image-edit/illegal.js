@@ -19,6 +19,16 @@ module.exports = class IllegalCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Donald J. Trump',
+					url: 'https://www.donaldjtrump.com/'
+				},
+				{
+					name: 'Google Noto Fonts',
+					url: 'https://www.google.com/get/noto/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

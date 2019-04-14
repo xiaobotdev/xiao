@@ -10,6 +10,12 @@ module.exports = class YodaCommand extends Command {
 			group: 'text-edit',
 			memberName: 'yoda',
 			description: 'Converts text to Yoda speak.',
+			credit: [
+				{
+					name: 'The Yoda-Speak Generator',
+					url: 'https://www.yodaspeak.co.uk/'
+				}
+			],
 			args: [
 				{
 					key: 'sentence',

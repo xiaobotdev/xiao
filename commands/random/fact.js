@@ -7,7 +7,13 @@ module.exports = class FactCommand extends Command {
 			name: 'fact',
 			group: 'random',
 			memberName: 'fact',
-			description: 'Responds with a random fact.'
+			description: 'Responds with a random fact.',
+			credit: [
+				{
+					name: 'Wikipedia',
+					url: 'https://www.wikipedia.org/'
+				}
+			]
 		});
 	}
 

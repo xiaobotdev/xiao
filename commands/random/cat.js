@@ -9,7 +9,13 @@ module.exports = class CatCommand extends Command {
 			group: 'random',
 			memberName: 'cat',
 			description: 'Responds with a random cat image.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'random.cat',
+					url: 'https://random.cat/'
+				}
+			]
 		});
 	}
 

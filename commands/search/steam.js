@@ -11,6 +11,12 @@ module.exports = class SteamCommand extends Command {
 			memberName: 'steam',
 			description: 'Searches Steam for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Steam',
+					url: 'https://store.steampowered.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

@@ -12,6 +12,12 @@ module.exports = class RottenTomatoesCommand extends Command {
 			memberName: 'rotten-tomatoes',
 			description: 'Searches Rotten Tomatoes for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Rotten Tomatoes',
+					url: 'https://www.rottentomatoes.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

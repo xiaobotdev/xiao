@@ -11,6 +11,12 @@ module.exports = class MapCommand extends Command {
 			memberName: 'map',
 			description: 'Responds with a map of a specific location.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Maps Static API',
+					url: 'https://developers.google.com/maps/documentation/maps-static/intro'
+				}
+			],
 			args: [
 				{
 					key: 'zoom',

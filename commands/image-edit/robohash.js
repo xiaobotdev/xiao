@@ -9,6 +9,12 @@ module.exports = class RobohashCommand extends Command {
 			memberName: 'robohash',
 			description: 'Creates a robot based on the text you provide.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'RoboHash',
+					url: 'https://robohash.org/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

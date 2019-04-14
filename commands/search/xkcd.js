@@ -12,6 +12,12 @@ module.exports = class XKCDCommand extends Command {
 			memberName: 'xkcd',
 			description: 'Responds with an XKCD comic, either today\'s, a random one, or a specific one.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'xkcd',
+					url: 'https://xkcd.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

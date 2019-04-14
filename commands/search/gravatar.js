@@ -10,6 +10,12 @@ module.exports = class GravatarCommand extends Command {
 			memberName: 'gravatar',
 			description: 'Responds with the Gravatar for an email.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Gravatar',
+					url: 'https://en.gravatar.com/'
+				}
+			],
 			args: [
 				{
 					key: 'email',

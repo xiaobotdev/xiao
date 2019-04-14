@@ -8,7 +8,13 @@ module.exports = class AdviceCommand extends Command {
 			aliases: ['advice-slip'],
 			group: 'random',
 			memberName: 'advice',
-			description: 'Responds with a random bit of advice.'
+			description: 'Responds with a random bit of advice.',
+			credit: [
+				{
+					name: 'Advice Slip',
+					url: 'https://adviceslip.com/'
+				}
+			]
 		});
 	}
 

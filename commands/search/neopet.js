@@ -16,6 +16,12 @@ module.exports = class NeopetCommand extends Command {
 			group: 'search',
 			memberName: 'neopet',
 			description: 'Responds with the image of a specific Neopet.',
+			credit: [
+				{
+					name: 'Neopets',
+					url: 'http://www.neopets.com/'
+				}
+			],
 			args: [
 				{
 					key: 'pet',

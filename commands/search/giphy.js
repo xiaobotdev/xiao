@@ -10,6 +10,12 @@ module.exports = class GiphyCommand extends Command {
 			group: 'search',
 			memberName: 'giphy',
 			description: 'Searches Giphy for your query.',
+			credit: [
+				{
+					name: 'GIPHY API',
+					url: 'https://developers.giphy.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

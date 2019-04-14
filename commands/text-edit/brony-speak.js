@@ -10,6 +10,12 @@ module.exports = class BronySpeakCommand extends Command {
 			group: 'text-edit',
 			memberName: 'brony-speak',
 			description: 'Converts text to brony speak.',
+			credit: [
+				{
+					name: 'My Little Pony: Friendship is Magic',
+					url: 'https://mylittlepony.hasbro.com/en-us'
+				}
+			],
 			args: [
 				{
 					key: 'text',

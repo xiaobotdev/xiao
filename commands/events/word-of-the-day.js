@@ -10,7 +10,13 @@ module.exports = class WordOfTheDayCommand extends Command {
 			aliases: ['wordnik-word-of-the-day'],
 			group: 'events',
 			memberName: 'word-of-the-day',
-			description: 'Responds with today\'s word of the day.'
+			description: 'Responds with today\'s word of the day.',
+			credit: [
+				{
+					name: 'Wordnik API',
+					url: 'https://developer.wordnik.com/'
+				}
+			]
 		});
 	}
 

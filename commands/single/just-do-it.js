@@ -7,7 +7,13 @@ module.exports = class JustDoItCommand extends Command {
 			aliases: ['motivate'],
 			group: 'single',
 			memberName: 'just-do-it',
-			description: 'Sends a link to the "Just Do It!" motivational speech.'
+			description: 'Sends a link to the "Just Do It!" motivational speech.',
+			credit: [
+				{
+					name: 'Shia LaBeouf "Just Do It" Motivational Speech',
+					url: 'https://www.youtube.com/watch?v=ZXsQAXx_ao0'
+				}
+			]
 		});
 	}
 

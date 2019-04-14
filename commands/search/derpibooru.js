@@ -8,6 +8,12 @@ module.exports = class DerpibooruCommand extends Command {
 			group: 'search',
 			memberName: 'derpibooru',
 			description: 'Responds with an image from Derpibooru.',
+			credit: [
+				{
+					name: 'Derpibooru',
+					url: 'https://derpibooru.org/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

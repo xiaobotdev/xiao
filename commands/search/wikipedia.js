@@ -11,6 +11,12 @@ module.exports = class WikipediaCommand extends Command {
 			memberName: 'wikipedia',
 			description: 'Searches Wikipedia for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Wikipedia',
+					url: 'https://www.wikipedia.org/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

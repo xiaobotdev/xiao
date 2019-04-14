@@ -12,6 +12,20 @@ module.exports = class GoogleCommand extends Command {
 			group: 'search',
 			memberName: 'google',
 			description: 'Searches Google for your query.',
+			credit: [
+				{
+					name: 'Google',
+					url: 'https://www.google.com/'
+				},
+				{
+					name: 'Google Custom Search API',
+					url: 'https://cse.google.com/cse/all'
+				},
+				{
+					name: 'LMGTFY',
+					url: 'https://lmgtfy.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

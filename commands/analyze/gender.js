@@ -9,6 +9,12 @@ module.exports = class GenderCommand extends Command {
 			group: 'analyze',
 			memberName: 'gender',
 			description: 'Determines the gender of a name.',
+			credit: [
+				{
+					name: 'Genderize.io',
+					url: 'https://genderize.io/'
+				}
+			],
 			args: [
 				{
 					key: 'name',

@@ -10,6 +10,12 @@ module.exports = class WikihowCommand extends Command {
 			group: 'search',
 			memberName: 'wikihow',
 			description: 'Searches Wikihow for your query.',
+			credit: [
+				{
+					name: 'wikiHow',
+					url: 'https://www.wikihow.com/Main-Page'
+				}
+			],
 			args: [
 				{
 					key: 'query',

@@ -9,6 +9,12 @@ module.exports = class FinalGradeCommand extends Command {
 			group: 'number-edit',
 			memberName: 'final-grade',
 			description: 'Determines the grade you need to make on your final to get your desired course grade.',
+			credit: [
+				{
+					name: 'RogerHub Final Grade Calculator',
+					url: 'https://rogerhub.com/final-grade-calculator/'
+				}
+			],
 			args: [
 				{
 					key: 'current',

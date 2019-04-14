@@ -20,6 +20,16 @@ module.exports = class GruPlanCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Despicable Me',
+					url: 'http://www.despicable.me/'
+				},
+				{
+					name: 'Google Noto Fonts',
+					url: 'https://www.google.com/get/noto/'
+				}
+			],
 			args: [
 				{
 					key: 'step1',

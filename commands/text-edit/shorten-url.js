@@ -10,6 +10,12 @@ module.exports = class ShortenURLCommand extends Command {
 			group: 'text-edit',
 			memberName: 'shorten-url',
 			description: 'Creates a goo.gl short URL from another URL.',
+			credit: [
+				{
+					name: 'Google URL Shortener API',
+					url: 'https://developers.google.com/url-shortener/'
+				}
+			],
 			args: [
 				{
 					key: 'url',

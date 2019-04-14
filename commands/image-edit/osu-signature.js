@@ -13,6 +13,16 @@ module.exports = class OsuSignatureCommand extends Command {
 			description: 'Creates a card based on an osu! user\'s stats.',
 			details: `**Colors:** ${Object.keys(colors).join(', ')}`,
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'osu!',
+					url: 'https://osu.ppy.sh/home'
+				},
+				{
+					name: 'osu!next Signature Generator',
+					url: 'https://lemmmy.pw/osusig/'
+				}
+			],
 			args: [
 				{
 					key: 'user',

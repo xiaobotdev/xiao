@@ -11,6 +11,12 @@ module.exports = class BulbapediaCommand extends Command {
 			memberName: 'bulbapedia',
 			description: 'Searches Bulbapedia for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Bulbapedia',
+					url: 'https://bulbapedia.bulbagarden.net/wiki/Main_Page'
+				}
+			],
 			args: [
 				{
 					key: 'query',

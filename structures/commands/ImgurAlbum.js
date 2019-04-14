@@ -8,6 +8,10 @@ module.exports = class ImgurAlbumCommand extends Command {
 
 		this.albumID = info.albumID;
 		this.cache = null;
+		this.credit.push({
+			name: 'Imgur API',
+			url: 'https://apidocs.imgur.com/'
+		});
 	}
 
 	async run(msg, { user }) {

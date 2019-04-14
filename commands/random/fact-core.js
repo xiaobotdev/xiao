@@ -7,7 +7,13 @@ module.exports = class FactCoreCommand extends Command {
 			name: 'fact-core',
 			group: 'random',
 			memberName: 'fact-core',
-			description: 'Responds with a random Fact Core quote.'
+			description: 'Responds with a random Fact Core quote.',
+			credit: [
+				{
+					name: 'Portal 2',
+					url: 'http://www.thinkwithportals.com/'
+				}
+			]
 		});
 	}
 

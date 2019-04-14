@@ -10,6 +10,12 @@ module.exports = class GoogleDoodleCommand extends Command {
 			memberName: 'google-doodle',
 			description: 'Responds with a Google Doodle, either the latest one or a random one from the past.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Google Doodles',
+					url: 'https://www.google.com/doodles'
+				}
+			],
 			args: [
 				{
 					key: 'month',

@@ -12,7 +12,13 @@ module.exports = class ApodCommand extends Command {
 			group: 'events',
 			memberName: 'apod',
 			description: 'Responds with today\'s Astronomy Picture of the Day.',
-			clientPermissions: ['EMBED_LINKS']
+			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Astronomy Picture of the Day',
+					url: 'https://apod.nasa.gov/apod/astropix.html'
+				}
+			]
 		});
 	}
 

@@ -13,6 +13,12 @@ module.exports = class TvShowCommand extends Command {
 			memberName: 'tv-show',
 			description: 'Searches TMDB for your query, getting TV show results.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'The Movie Database API',
+					url: 'https://www.themoviedb.org/documentation/api'
+				}
+			],
 			args: [
 				{
 					key: 'query',

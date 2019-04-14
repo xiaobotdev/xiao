@@ -15,6 +15,12 @@ module.exports = class IfunnyCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'iFunny',
+					url: 'https://ifunny.co/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

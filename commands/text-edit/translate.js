@@ -15,6 +15,12 @@ module.exports = class TranslateCommand extends Command {
 			description: 'Translates text to a specific language.',
 			details: `**Codes:** ${Object.keys(codes).join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Yandex.Translate API',
+					url: 'https://tech.yandex.com/translate/doc/dg/reference/translate-docpage/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

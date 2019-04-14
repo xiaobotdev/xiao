@@ -13,6 +13,12 @@ module.exports = class StocksCommand extends Command {
 			memberName: 'stocks',
 			description: 'Responds with the current stocks for a specific symbol.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Alpha Vantage',
+					url: 'https://www.alphavantage.co/'
+				}
+			],
 			args: [
 				{
 					key: 'symbol',

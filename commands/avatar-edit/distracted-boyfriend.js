@@ -16,6 +16,12 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Antonio Guillem',
+					url: 'http://antonioguillem.com/'
+				}
+			],
 			args: [
 				{
 					key: 'otherGirl',

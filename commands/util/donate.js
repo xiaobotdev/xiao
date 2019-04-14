@@ -9,7 +9,17 @@ module.exports = class DonateCommand extends Command {
 			group: 'util',
 			memberName: 'donate',
 			description: 'Responds with the bot\'s donation links.',
-			guarded: true
+			guarded: true,
+			credit: [
+				{
+					name: 'Patreon',
+					url: 'https://www.patreon.com/'
+				},
+				{
+					name: 'PayPal',
+					url: 'https://www.paypal.com/us/home'
+				}
+			]
 		});
 	}
 

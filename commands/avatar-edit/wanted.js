@@ -17,6 +17,12 @@ module.exports = class WantedCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Tim\'s Printables',
+					url: 'https://www.timvandevall.com/'
+				}
+			],
 			args: [
 				{
 					key: 'user',

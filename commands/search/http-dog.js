@@ -9,6 +9,12 @@ module.exports = class HttpDogCommand extends Command {
 			memberName: 'http-dog',
 			description: 'Responds with a dog for an HTTP status code.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'HTTP Status Dogs',
+					url: 'https://httpstatusdogs.com/'
+				}
+			],
 			args: [
 				{
 					key: 'code',

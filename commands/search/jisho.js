@@ -10,6 +10,12 @@ module.exports = class JishoCommand extends Command {
 			group: 'search',
 			memberName: 'jisho',
 			description: 'Defines a word, but with Japanese.',
+			credit: [
+				{
+					name: 'Jisho',
+					url: 'https://jisho.org/'
+				}
+			],
 			args: [
 				{
 					key: 'word',

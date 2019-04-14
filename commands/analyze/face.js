@@ -16,6 +16,12 @@ module.exports = class FaceCommand extends Command {
 				usages: 1,
 				duration: 30
 			},
+			credit: [
+				{
+					name: 'Face++ Cognitive Services',
+					url: 'https://www.faceplusplus.com/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

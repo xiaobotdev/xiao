@@ -21,6 +21,12 @@ module.exports = class BeLikeBillCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Google Noto Fonts',
+					url: 'https://www.google.com/get/noto/'
+				}
+			],
 			args: [
 				{
 					key: 'name',

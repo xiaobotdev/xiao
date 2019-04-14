@@ -13,6 +13,12 @@ module.exports = class BookCommand extends Command {
 			memberName: 'book',
 			description: 'Searches Google Books for a book.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Google Books API',
+					url: 'https://developers.google.com/books/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

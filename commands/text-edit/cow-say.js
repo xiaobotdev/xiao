@@ -8,6 +8,12 @@ module.exports = class CowSayCommand extends Command {
 			group: 'text-edit',
 			memberName: 'cow-say',
 			description: 'Makes a cow say your text.',
+			credit: [
+				{
+					name: 'cowsay Online',
+					url: 'http://cowsay.morecode.org/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

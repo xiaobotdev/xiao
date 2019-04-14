@@ -10,6 +10,12 @@ module.exports = class MDNCommand extends Command {
 			memberName: 'mdn',
 			description: 'Searches MDN for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'MDN Web Docs',
+					url: 'https://developer.mozilla.org/en-US/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

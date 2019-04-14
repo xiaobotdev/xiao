@@ -13,6 +13,12 @@ module.exports = class RedditCommand extends Command {
 			memberName: 'reddit',
 			description: 'Responds with information on a Reddit user.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Reddit',
+					url: 'https://www.reddit.com/'
+				}
+			],
 			args: [
 				{
 					key: 'user',

@@ -9,6 +9,12 @@ module.exports = class HttpCatCommand extends Command {
 			memberName: 'http-cat',
 			description: 'Responds with a cat for an HTTP status code.',
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'HTTP Cats',
+					url: 'https://http.cat/'
+				}
+			],
 			args: [
 				{
 					key: 'code',

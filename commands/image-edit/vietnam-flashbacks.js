@@ -16,6 +16,12 @@ module.exports = class VietnamFlashbacksCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Horst Faas',
+					url: 'https://en.wikipedia.org/wiki/Horst_Faas'
+				}
+			],
 			args: [
 				{
 					key: 'image',

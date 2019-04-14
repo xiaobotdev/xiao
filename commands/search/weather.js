@@ -12,6 +12,12 @@ module.exports = class WeatherCommand extends Command {
 			memberName: 'weather',
 			description: 'Responds with weather information for a specific location.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'OpenWeatherMap API',
+					url: 'https://openweathermap.org/api'
+				}
+			],
 			args: [
 				{
 					key: 'location',

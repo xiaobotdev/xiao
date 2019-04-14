@@ -8,6 +8,12 @@ module.exports = class LMGTFYCommand extends Command {
 			group: 'text-edit',
 			memberName: 'lmgtfy',
 			description: 'Creates a LMGTFY link with the query you provide.',
+			credit: [
+				{
+					name: 'LMGTFY',
+					url: 'https://lmgtfy.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

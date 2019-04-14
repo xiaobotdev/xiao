@@ -11,6 +11,12 @@ module.exports = class DefineCommand extends Command {
 			group: 'search',
 			memberName: 'define',
 			description: 'Defines a word.',
+			credit: [
+				{
+					name: 'Wordnik API',
+					url: 'https://developer.wordnik.com/'
+				}
+			],
 			args: [
 				{
 					key: 'word',

@@ -9,6 +9,12 @@ module.exports = class CreateQRCodeCommand extends Command {
 			group: 'image-edit',
 			memberName: 'create-qr-code',
 			description: 'Converts text to a QR Code.',
+			credit: [
+				{
+					name: 'QR Code Generator\'s QR code API',
+					url: 'http://goqr.me/api/'
+				}
+			],
 			args: [
 				{
 					key: 'text',

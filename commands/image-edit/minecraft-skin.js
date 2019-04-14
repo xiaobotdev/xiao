@@ -12,6 +12,16 @@ module.exports = class MinecraftSkinCommand extends Command {
 			description: 'Sends the Minecraft skin for a user.',
 			details: `**Types:** ${types.join(', ')}`,
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Minecraft',
+					url: 'https://www.minecraft.net/en-us/'
+				},
+				{
+					name: 'Mojang API',
+					url: 'https://wiki.vg/Mojang_API'
+				}
+			],
 			args: [
 				{
 					key: 'user',

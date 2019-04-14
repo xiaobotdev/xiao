@@ -10,7 +10,13 @@ module.exports = class XiaoCommand extends ImgurAlbumCommand {
 			memberName: 'xiao',
 			description: 'Responds with a random image of Xiao Pai.',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: XIAO_ALBUM_ID
+			albumID: XIAO_ALBUM_ID,
+			credit: [
+				{
+					name: 'Rune Factory 4',
+					url: 'http://www.runefactory4.com/index1.html'
+				}
+			]
 		});
 	}
 

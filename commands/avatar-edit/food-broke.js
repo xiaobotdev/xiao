@@ -17,6 +17,12 @@ module.exports = class FoodBrokeCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: '@liltusk',
+					url: 'https://twitter.com/liltusk'
+				}
+			],
 			args: [
 				{
 					key: 'user',

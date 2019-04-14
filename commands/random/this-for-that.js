@@ -8,7 +8,13 @@ module.exports = class ThisForThatCommand extends Command {
 			aliases: ['its-this-for-that'],
 			group: 'random',
 			memberName: 'this-for-that',
-			description: 'So, basically, it\'s like a bot command for this dumb meme.'
+			description: 'So, basically, it\'s like a bot command for this dumb meme.',
+			credit: [
+				{
+					name: 'Wait, what does your startup do?',
+					url: 'http://itsthisforthat.com/'
+				}
+			]
 		});
 	}
 

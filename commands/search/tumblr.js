@@ -12,6 +12,12 @@ module.exports = class TumblrCommand extends Command {
 			memberName: 'tumblr',
 			description: 'Responds with information on a Tumblr blog.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Tumblr API',
+					url: 'https://www.tumblr.com/docs/en/api/v2'
+				}
+			],
 			args: [
 				{
 					key: 'blog',

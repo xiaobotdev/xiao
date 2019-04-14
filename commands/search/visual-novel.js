@@ -12,6 +12,12 @@ module.exports = class VisualNovelCommand extends Command {
 			memberName: 'visual-novel',
 			description: 'Responds with information on a Visual Novel.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'The Visual Novel Database',
+					url: 'https://vndb.org/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

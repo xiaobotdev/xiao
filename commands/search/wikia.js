@@ -12,6 +12,12 @@ module.exports = class WikiaCommand extends Command {
 			memberName: 'wikia',
 			description: 'Searches a specific Wikia wiki for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'FANDOM',
+					url: 'https://www.fandom.com/'
+				}
+			],
 			args: [
 				{
 					key: 'wiki',

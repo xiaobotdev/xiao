@@ -9,7 +9,13 @@ module.exports = class DogCommand extends Command {
 			group: 'random',
 			memberName: 'dog',
 			description: 'Responds with a random dog image.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Dog API',
+					url: 'https://dog.ceo/dog-api/'
+				}
+			]
 		});
 	}
 

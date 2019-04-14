@@ -10,6 +10,12 @@ module.exports = class PsychoPassCommand extends Command {
 			group: 'analyze',
 			memberName: 'psycho-pass',
 			description: 'Determines your Crime Coefficient.',
+			credit: [
+				{
+					name: 'PSYCHO-PASS',
+					url: 'http://psycho-pass.com/'
+				}
+			],
 			args: [
 				{
 					key: 'user',

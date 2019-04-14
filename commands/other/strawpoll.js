@@ -10,6 +10,12 @@ module.exports = class StrawpollCommand extends Command {
 			group: 'other',
 			memberName: 'strawpoll',
 			description: 'Generates a Strawpoll with the options you provide.',
+			credit: [
+				{
+					name: 'Straw Poll API',
+					url: 'https://github.com/strawpoll/strawpoll/wiki/API'
+				}
+			],
 			args: [
 				{
 					key: 'title',

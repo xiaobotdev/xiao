@@ -13,6 +13,12 @@ module.exports = class MayoClinicCommand extends Command {
 			memberName: 'mayo-clinic',
 			description: 'Searches Mayo Clinic for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'Mayo Clinic',
+					url: 'https://www.mayoclinic.org/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

@@ -16,6 +16,12 @@ module.exports = class LookWhatKarenHaveCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'KINMOZA!',
+					url: 'http://www.kinmosa.com/'
+				}
+			],
 			args: [
 				{
 					key: 'user',

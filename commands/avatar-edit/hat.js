@@ -18,6 +18,28 @@ module.exports = class HatCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'ClipArtHut',
+					url: 'http://www.cliparthut.com/'
+				},
+				{
+					name: 'PNG Arts',
+					url: 'https://www.pngarts.com/'
+				},
+				{
+					name: 'misskatecuttables.com',
+					url: 'https://www.misskatecuttables.com/'
+				},
+				{
+					name: 'WorldArtsMe',
+					url: 'http://worldartsme.com/'
+				},
+				{
+					name: 'PinClipart',
+					url: 'https://www.pinclipart.com/'
+				}
+			],
 			args: [
 				{
 					key: 'type',

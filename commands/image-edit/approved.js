@@ -16,6 +16,12 @@ module.exports = class ApprovedCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Redeeming God',
+					url: 'https://redeeminggod.com/'
+				}
+			],
 			args: [
 				{
 					key: 'image',

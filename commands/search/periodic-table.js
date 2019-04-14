@@ -17,6 +17,16 @@ module.exports = class PeriodicTableCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Bowserinator/Periodic-Table-JSON',
+					url: 'https://github.com/Bowserinator/Periodic-Table-JSON'
+				},
+				{
+					name: 'Google Noto Fonts',
+					url: 'https://www.google.com/get/noto/'
+				}
+			],
 			args: [
 				{
 					key: 'element',

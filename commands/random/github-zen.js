@@ -8,7 +8,13 @@ module.exports = class GithubZenCommand extends Command {
 			aliases: ['gh-zen'],
 			group: 'random',
 			memberName: 'github-zen',
-			description: 'Responds with a random GitHub design philosophy.'
+			description: 'Responds with a random GitHub design philosophy.',
+			credit: [
+				{
+					name: 'GitHub Zen API',
+					url: 'https://api.github.com/zen'
+				}
+			]
 		});
 	}
 

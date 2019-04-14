@@ -19,6 +19,12 @@ module.exports = class ESRBCommand extends Command {
 			memberName: 'esrb',
 			description: 'Searches ESRB for your query.',
 			clientPermissions: ['EMBED_LINKS'],
+			credit: [
+				{
+					name: 'ESRB Ratings',
+					url: 'http://www.esrb.org/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

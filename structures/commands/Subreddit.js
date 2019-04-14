@@ -7,6 +7,10 @@ module.exports = class SubredditCommand extends Command {
 
 		this.subreddit = info.subreddit;
 		this.postType = info.postType ? Array.isArray(info.postType) ? info.postType : [info.postType] : null;
+		this.credit.push({
+			name: 'Reddit',
+			url: 'https://www.reddit.com/'
+		});
 	}
 
 	async run(msg, { subreddit }) {
