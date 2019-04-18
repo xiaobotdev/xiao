@@ -30,7 +30,7 @@ module.exports = class AkinatorCommand extends Command {
 			let ans = null;
 			this.sessions.set(msg.channel.id, { progression: 0 });
 			while (this.sessions.get(msg.channel.id).progression < 95) {
-				const data = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
+				const { data } = ans === null ? await this.createSession(msg.channel) : await this.progress(msg.channel, ans);
 				if (!data || !data.answers || this.sessions.get(msg.channel.id).step >= 80) break;
 				const answers = data.answers.map(answer => answer.answer.toLowerCase());
 				answers.push('end');
@@ -50,7 +50,7 @@ module.exports = class AkinatorCommand extends Command {
 				if (msgs.first().content.toLowerCase() === 'end') break;
 				ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
-			const guess = await this.guess(msg.channel);
+			const { data: guess } = await this.guess(msg.channel);
 			if (!guess) {
 				this.sessions.delete(msg.channel.id);
 				if (guess === 0) return msg.say('I don\'t have any guesses. Bravo.');
@@ -94,7 +94,7 @@ module.exports = class AkinatorCommand extends Command {
 			step: 0,
 			progression: Number.parseInt(data.step_information.progression, 10)
 		});
-		return data.step_information;
+		return { data: data.step_information, raw: body };
 	}
 
 	async progress(channel, answer) {
@@ -117,7 +117,7 @@ module.exports = class AkinatorCommand extends Command {
 			step: Number.parseInt(data.step, 10),
 			progression: Number.parseInt(data.progression, 10)
 		});
-		return data;
+		return { data, raw: body };
 	}
 
 	async guess(channel) {
@@ -137,6 +137,6 @@ module.exports = class AkinatorCommand extends Command {
 			});
 		if (body.completion === 'KO - ELEM LIST IS EMPTY') return 0;
 		if (body.completion !== 'OK') return null;
-		return body.parameters.elements[0].element;
+		return { data: body.parameters.elements[0].element, raw: body };
 	}
 };
