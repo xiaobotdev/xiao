@@ -77,7 +77,7 @@ module.exports = class AkinatorCommand extends Command {
 		const { body } = await request
 			.get('https://srv13.akinator.com:9196/ws/new_session')
 			.query({
-				partner: 1,
+				partner: '',
 				player: 'website-desktop',
 				uid_ext_session: '',
 				frontaddr: 'NDYuMTA1LjExMC40NQ==',
