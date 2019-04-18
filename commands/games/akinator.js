@@ -74,6 +74,7 @@ module.exports = class AkinatorCommand extends Command {
 	}
 
 	async createSession(channel) {
+		const time = Date.now();
 		const { body } = await request
 			.get('https://srv13.akinator.com:9196/ws/new_session')
 			.query({
@@ -84,7 +85,7 @@ module.exports = class AkinatorCommand extends Command {
 				constraint: 'ETAT<>\'AV\'',
 				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
 				question_filter: channel.nsfw ? '' : 'cat=1',
-				_: Date.now()
+				_: time
 			});
 		if (body.completion !== 'OK') return { data: null, raw: body };
 		const data = body.parameters;
@@ -92,7 +93,8 @@ module.exports = class AkinatorCommand extends Command {
 			id: data.identification.session,
 			signature: data.identification.signature,
 			step: 0,
-			progression: Number.parseInt(data.step_information.progression, 10)
+			progression: Number.parseInt(data.step_information.progression, 10),
+			time
 		});
 		return { data: data.step_information, raw: body };
 	}
@@ -107,7 +109,7 @@ module.exports = class AkinatorCommand extends Command {
 				step: session.step,
 				answer,
 				question_filter: channel.nsfw ? '' : 'cat=1',
-				_: Date.now()
+				_: session.time + 1
 			});
 		if (body.completion !== 'OK') return { data: null, raw: body };
 		const data = body.parameters;
@@ -115,7 +117,8 @@ module.exports = class AkinatorCommand extends Command {
 			id: session.id,
 			signature: session.signature,
 			step: Number.parseInt(data.step, 10),
-			progression: Number.parseInt(data.progression, 10)
+			progression: Number.parseInt(data.progression, 10),
+			time: session.time + 1
 		});
 		return { data, raw: body };
 	}
