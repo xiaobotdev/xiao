@@ -86,7 +86,7 @@ module.exports = class AkinatorCommand extends Command {
 				question_filter: channel.nsfw ? '' : 'cat=1',
 				_: Date.now()
 			});
-		if (body.completion !== 'OK') return null;
+		if (body.completion !== 'OK') return { data: null, raw: body };
 		const data = body.parameters;
 		this.sessions.set(channel.id, {
 			id: data.identification.session,
@@ -109,7 +109,7 @@ module.exports = class AkinatorCommand extends Command {
 				question_filter: channel.nsfw ? '' : 'cat=1',
 				_: Date.now()
 			});
-		if (body.completion !== 'OK') return null;
+		if (body.completion !== 'OK') return { data: null, raw: body };
 		const data = body.parameters;
 		this.sessions.set(channel.id, {
 			id: session.id,
@@ -135,8 +135,8 @@ module.exports = class AkinatorCommand extends Command {
 				duel_allowed: 1,
 				mode_question: 0
 			});
-		if (body.completion === 'KO - ELEM LIST IS EMPTY') return 0;
-		if (body.completion !== 'OK') return null;
+		if (body.completion === 'KO - ELEM LIST IS EMPTY') return { data: 0, raw: body };
+		if (body.completion !== 'OK') return { data: null, raw: body };
 		return { data: body.parameters.elements[0].element, raw: body };
 	}
 };
