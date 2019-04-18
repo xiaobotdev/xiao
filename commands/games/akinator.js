@@ -75,15 +75,16 @@ module.exports = class AkinatorCommand extends Command {
 
 	async createSession(channel) {
 		const { body } = await request
-			.get('https://srv6.akinator.com:9126/ws/new_session')
+			.get('https://srv13.akinator.com:9196/ws/new_session')
 			.query({
-				partner: '',
+				partner: 1,
 				player: 'website-desktop',
 				uid_ext_session: '',
 				frontaddr: 'NDYuMTA1LjExMC40NQ==',
 				constraint: 'ETAT<>\'AV\'',
 				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
-				question_filter: channel.nsfw ? '' : 'cat=1'
+				question_filter: channel.nsfw ? '' : 'cat=1',
+				_: Date.now()
 			});
 		if (body.completion !== 'OK') return null;
 		const data = body.parameters;
@@ -99,13 +100,14 @@ module.exports = class AkinatorCommand extends Command {
 	async progress(channel, answer) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await request
-			.get('https://srv6.akinator.com:9126/ws/answer')
+			.get('https://srv13.akinator.com:9196/ws/answer')
 			.query({
 				session: session.id,
 				signature: session.signature,
 				step: session.step,
 				answer,
-				question_filter: channel.nsfw ? '' : 'cat=1'
+				question_filter: channel.nsfw ? '' : 'cat=1',
+				_: Date.now()
 			});
 		if (body.completion !== 'OK') return null;
 		const data = body.parameters;
@@ -121,7 +123,7 @@ module.exports = class AkinatorCommand extends Command {
 	async guess(channel) {
 		const session = this.sessions.get(channel.id);
 		const { body } = await request
-			.get('https://srv6.akinator.com:9126/ws/list')
+			.get('https://srv13.akinator.com:9196/ws/list')
 			.query({
 				session: session.id,
 				signature: session.signature,
