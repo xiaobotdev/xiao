@@ -74,7 +74,7 @@ module.exports = class AkinatorCommand extends Command {
 	}
 
 	async createSession(channel) {
-		const time = Date.now();
+		let time;
 		const { body } = await request
 			.get('https://srv13.akinator.com:9196/ws/new_session')
 			.query({
@@ -85,7 +85,7 @@ module.exports = class AkinatorCommand extends Command {
 				constraint: 'ETAT<>\'AV\'',
 				soft_constraint: channel.nsfw ? '' : 'ETAT=\'EN\'',
 				question_filter: channel.nsfw ? '' : 'cat=1',
-				_: time
+				_: time = Date.now()
 			});
 		if (body.completion !== 'OK') return { data: null, raw: body };
 		const data = body.parameters;
