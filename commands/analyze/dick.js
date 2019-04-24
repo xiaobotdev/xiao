@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const Random = require('random-js');
+const { MersenneTwister19937, integer } = require('random-js');
 
 module.exports = class DickCommand extends Command {
 	constructor(client) {
@@ -23,8 +23,8 @@ module.exports = class DickCommand extends Command {
 
 	run(msg, { user }) {
 		const clientAuthor = user.id === this.client.user.id;
-		const random = new Random(Random.engines.mt19937().seed(clientAuthor ? msg.author.id : user.id));
-		const length = random.integer(0, 200);
+		const random = MersenneTwister19937.seed(clientAuthor ? msg.author.id : user.id);
+		const length = integer(0, 200)(random);
 		return msg.reply(`8${'='.repeat(clientAuthor ? length + 1 : length)}D`);
 	}
 };

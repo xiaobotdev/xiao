@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const Random = require('random-js');
+const { MersenneTwister19937, integer } = require('random-js');
 const texts = require('../../assets/json/butt');
 
 module.exports = class ButtCommand extends Command {
@@ -29,8 +29,8 @@ module.exports = class ButtCommand extends Command {
 
 	run(msg, { user }) {
 		if (user.id === this.client.user.id) return msg.reply('Me? I think I have the best butt around!');
-		const random = new Random(Random.engines.mt19937().seed(user.id));
-		const quality = random.integer(0, texts.length - 1);
+		const random = MersenneTwister19937.seed(user.id);
+		const quality = integer(0, texts.length - 1)(random);
 		return msg.reply(`${user.id === msg.author.id ? 'ur' : `${user.username}'s`} butt is ${texts[quality]}`);
 	}
 };

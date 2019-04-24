@@ -28,7 +28,7 @@
 	},
 	"homepage": "https://github.com/dragonfire535/xiao#readme",
 	"engines": {
-		"node": ">=10"
+		"node": ">=11"
 	},
 	"dependencies": {
 		"@discordjs/uws": "^11.149.1",
@@ -46,14 +46,14 @@
 		"moment-timezone": "^0.5.25",
 		"neopet-image-finder": "^5.0.2",
 		"node-superfetch": "^0.1.9",
-		"random-js": "^1.0.8",
+		"random-js": "^2.0.0",
 		"winston": "^3.2.1",
 		"zlib-sync": "^0.1.4"
 	},
 	"devDependencies": {
-		"eslint": "^5.8.0",
+		"eslint": "^5.16.0",
 		"eslint-config-amber": "^2.0.0",
-		"eslint-plugin-json": "^1.2.1"
+		"eslint-plugin-json": "^1.4.0"
 	},
 	"eslintConfig": {
 		"extends": "amber",

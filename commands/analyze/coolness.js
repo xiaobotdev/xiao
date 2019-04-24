@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const Random = require('random-js');
+const { MersenneTwister19937, integer } = require('random-js');
 const texts = require('../../assets/json/coolness');
 
 module.exports = class CoolnessCommand extends Command {
@@ -27,8 +27,8 @@ module.exports = class CoolnessCommand extends Command {
 			if (authorUser) return msg.reply('You\'re the best owner a bot could ask for! ❤');
 			return msg.reply(`Don't tell them I said this but I think ${user.username} smells like a sack of diapers.`);
 		}
-		const random = new Random(Random.engines.mt19937().seed(user.id));
-		const coolness = random.integer(0, texts.length - 1);
+		const random = MersenneTwister19937.seed(user.id);
+		const coolness = integer(0, texts.length - 1)(random);
 		return msg.reply(`${authorUser ? 'You are' : `${user.username} is`} ${texts[coolness]}`);
 	}
 };
