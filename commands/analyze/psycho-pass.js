@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const Random = require('random-js');
+const { MersenneTwister19937, integer } = require('random-js');
 const { under100, between, over300 } = require('../../assets/json/psycho-pass');
 
 module.exports = class PsychoPassCommand extends Command {
@@ -29,8 +29,8 @@ module.exports = class PsychoPassCommand extends Command {
 
 	run(msg, { user }) {
 		if (user.id === this.client.user.id) return msg.reply('Me? I-I\'m not dangerous, I promise!');
-		const random = new Random(Random.engines.mt19937().seed(user.id));
-		const coefficient = random.integer(0, 500);
+		const random = MersenneTwister19937.seed(user.id);
+		const coefficient = integer(0, 500)(random);
 		let res;
 		if (coefficient < 100) res = under100;
 		else if (coefficient > 300) res = over300;
