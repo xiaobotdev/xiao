@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten, formatNumber, firstUpperCase } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 
 module.exports = class YuGiOhCommand extends Command {
 	constructor(client) {
@@ -18,8 +18,8 @@ module.exports = class YuGiOhCommand extends Command {
 					url: 'https://www.yugioh-card.com/en/'
 				},
 				{
-					name: 'Yugioh Prices API',
-					url: 'https://yugiohprices.docs.apiary.io/'
+					name: 'YGOPRODeck API',
+					url: 'https://db.ygoprodeck.com/api-guide/'
 				}
 			],
 			args: [
@@ -35,25 +35,32 @@ module.exports = class YuGiOhCommand extends Command {
 
 	async run(msg, { card }) {
 		try {
-			const { body } = await request.get(`https://yugiohprices.com/api/card_data/${card}`);
-			if (body.status === 'fail') return msg.say('Could not find any results.');
-			const image = await request.get(`https://yugiohprices.com/api/card_image/${card}`);
-			const { data } = body;
+			const { body } = await request
+				.get('https://db.ygoprodeck.com/api/v4/cardinfo.php')
+				.query({
+					name: card,
+					la: 'english'
+				});
+			const data = body[0][0];
 			const embed = new MessageEmbed()
-				.attachFiles([{ attachment: image.body, name: 'thumbnail.jpg' }])
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
-				.setDescription(shorten(data.text))
+				.setDescription(shorten(data.desc))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
-				.setThumbnail('attachment://thumbnail.jpg')
-				.addField('❯ Card Type', firstUpperCase(data.card_type), true);
-			if (data.card_type === 'monster') {
+				.setThumbnail(data.image_url)
+				.setFooter(data.id)
+				.addField('❯ Type', data.type, true);
+			if (data.type.includes('Monster')) {
 				embed
-					.addField('❯ Species', data.type, true)
-					.addField('❯ Attribute', firstUpperCase(data.family), true)
+					.addField('❯ Race', data.race, true)
+					.addField('❯ Attribute', data.attribute, true)
 					.addField('❯ Level', data.level, true)
 					.addField('❯ ATK', formatNumber(data.atk), true)
-					.addField('❯ DEF', formatNumber(data.def), true);
+					.addField(
+						data.type === 'Link Monster' ? '❯ Link Value' : '❯ DEF',
+						formatNumber(data.type === 'Link Monster' ? data.linkval : data.def),
+						true
+					);
 			}
 			return msg.embed(embed);
 		} catch (err) {
