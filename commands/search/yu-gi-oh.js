@@ -44,6 +44,7 @@ module.exports = class YuGiOhCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
+				.setURL(`https://db.ygoprodeck.com/card/?search=${data.id}`)
 				.setDescription(shorten(data.desc))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
 				.setThumbnail(data.image_url)
