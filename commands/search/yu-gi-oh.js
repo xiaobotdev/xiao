@@ -53,7 +53,7 @@ module.exports = class YuGiOhCommand extends Command {
 				embed
 					.addField('❯ Race', data.race, true)
 					.addField('❯ Attribute', data.attribute, true)
-					.addField('❯ Level', data.level, true)
+					.addField('❯ Level', data.level || 'N/A', true)
 					.addField('❯ ATK', formatNumber(data.atk), true)
 					.addField(
 						data.type === 'Link Monster' ? '❯ Link Value' : '❯ DEF',
