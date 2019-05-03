@@ -38,7 +38,7 @@
 		"custom-translate": "^2.2.8",
 		"discord.js": "github:discordjs/discord.js",
 		"discord.js-commando": "github:discordjs/Commando",
-		"dotenv": "^7.0.0",
+		"dotenv": "^8.0.0",
 		"erlpack": "github:discordapp/erlpack",
 		"mathjs": "^5.9.0",
 		"moment": "^2.24.0",
