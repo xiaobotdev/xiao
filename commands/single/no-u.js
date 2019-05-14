@@ -8,7 +8,7 @@ module.exports = class NoUCommand extends Command {
 			group: 'single',
 			memberName: 'no-u',
 			description: 'no u',
-			patterns: [/no u/i]
+			patterns: [/^n+o+ u+$/i]
 		});
 	}
 
