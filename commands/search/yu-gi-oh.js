@@ -49,10 +49,10 @@ module.exports = class YuGiOhCommand extends Command {
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
 				.setThumbnail(data.image_url)
 				.setFooter(data.id)
-				.addField('❯ Type', data.type, true);
+				.addField('❯ Type', data.type, true)
+				.addField(data.type.includes('Monster') ? '❯ Race' : '❯ Spell Type', data.race, true);
 			if (data.type.includes('Monster')) {
 				embed
-					.addField('❯ Race', data.race, true)
 					.addField('❯ Attribute', data.attribute, true)
 					.addField('❯ Level', data.level || 'N/A', true)
 					.addField('❯ ATK', formatNumber(data.atk), true)
