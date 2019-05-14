@@ -45,7 +45,7 @@ module.exports = class YuGiOhCommand extends Command {
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
 				.setURL(`https://db.ygoprodeck.com/card/?search=${data.id}`)
-				.setDescription(data.type.includes('Normal Monster') ? `_${shorten(data.desc)}_` : shorten(data.desc))
+				.setDescription(data.type === 'Normal Monster' ? `_${shorten(data.desc)}_` : shorten(data.desc))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
 				.setThumbnail(data.image_url)
 				.setFooter(data.id)
