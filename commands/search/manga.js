@@ -65,7 +65,7 @@ module.exports = class MangaCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const id = await this.search(query, msg.channel.nsfw);
+			const id = await this.search(query);
 			if (!id) return msg.say('Could not find any results.');
 			const manga = await this.fetchAnime(id);
 			const embed = new MessageEmbed()
@@ -85,7 +85,7 @@ module.exports = class MangaCommand extends Command {
 		}
 	}
 
-	async search(query, nsfw) {
+	async search(query) {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
 			.send({
