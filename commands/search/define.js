@@ -36,7 +36,7 @@ module.exports = class DefineCommand extends Command {
 			if (!body.length) return msg.say('Could not find any results.');
 			const data = body[0];
 			return msg.say(stripIndents`
-				**${data.stems[0]}** (${data.fl})
+				**${data.meta.stems[0]}** (${data.fl})
 				${data.shortdef.map((definition, i) => `(${i + 1}) ${definition}`).join('\n')}
 			`);
 		} catch (err) {
