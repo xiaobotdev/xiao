@@ -45,7 +45,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (344)
+## Commands (343)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -156,7 +156,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **neko-atsume-password:** Responds with today's Neko Atsume password.
 * **time:** Responds with the current time in a particular location.
 * **today-in-history:** Responds with an event that occurred today in history.
-* **word-of-the-day:** Responds with today's word of the day.
 
 ### Search:
 

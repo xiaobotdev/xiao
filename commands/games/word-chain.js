@@ -3,7 +3,7 @@ const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { delay, verify } = require('../../util/Util');
 const startWords = require('../../assets/json/word-list');
-const { WORDNIK_KEY } = process.env;
+const { WEBSTER_KEY } = process.env;
 
 module.exports = class WordChainCommand extends Command {
 	constructor(client) {
@@ -110,14 +110,9 @@ module.exports = class WordChainCommand extends Command {
 	async verifyWord(word) {
 		try {
 			const { body } = await request
-				.get(`http://api.wordnik.com/v4/word.json/${word}/definitions`)
-				.query({
-					limit: 1,
-					includeRelated: false,
-					useCanonical: false,
-					api_key: WORDNIK_KEY
-				});
-			if (!body.length || body[0].word.toLowerCase() !== word) return false;
+				.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}`)
+				.query({ key: WEBSTER_KEY });
+			if (!body.length) return false;
 			return true;
 		} catch (err) {
 			if (err.status === 404) return false;
