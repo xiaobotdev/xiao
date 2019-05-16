@@ -45,7 +45,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (343)
+## Commands (341)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -169,7 +169,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
 * **docs:** Searches the Discord.js docs for your query.
-* **eshop:** Searches the Nintendo eShop for your query.
 * **esrb:** Searches ESRB for your query.
 * **flickr:** Searches Flickr for your query.
 * **giphy:** Searches Giphy for your query.
@@ -376,7 +375,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **sha-1:** Creates a hash of text with the SHA-1 algorithm.
 * **sha-256:** Creates a hash of text with the SHA-256 algorithm.
 * **ship-name:** Creates a ship name from two names.
-* **shorten-url:** Creates a goo.gl short URL from another URL.
 * **shuffle:** Shuffles text.
 * **snake-speak:** Convertsssss text to sssssnake ssssspeak.
 * **spoiler-letter:** Sends text with each and every character as an individual spoiler.
