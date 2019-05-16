@@ -106,18 +106,11 @@ module.exports = class AnimeCommand extends Command {
 			.send({
 				variables: {
 					search: query,
-					type: 'ANIME',
-					isAdult: Boolean(nsfw)
+					type: 'ANIME'
 				},
 				query: searchGraphQL
 			});
 		if (!body.data.anime.results.length) return null;
-		const found = body.data.anime.results.find(anime => {
-			if (anime.title.english && anime.title.english.toLowerCase() === query) return true;
-			if (anime.title.romaji && anime.title.romaji.toLowerCase() === query) return true;
-			return false;
-		});
-		if (found) return found.id;
 		return body.data.anime.results[0].id;
 	}
 

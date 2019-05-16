@@ -91,8 +91,7 @@ module.exports = class MangaCommand extends Command {
 			.send({
 				variables: {
 					search: query,
-					type: 'MANGA',
-					isAdult: Boolean(nsfw)
+					type: 'MANGA'
 				},
 				query: searchGraphQL
 			});
