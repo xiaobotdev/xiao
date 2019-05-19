@@ -43,7 +43,7 @@ module.exports = class BobRossCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(avatar, 25, 19, 430, 430);
+			ctx.drawImage(avatar, 20, 19, 430, 430);
 			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bob-ross.png' }] });
 		} catch (err) {
