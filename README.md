@@ -45,7 +45,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (341)
+## Commands (342)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -136,6 +136,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **isnt-joke:** Isn't joke...
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
+* **kazuma-kazuma:** Hai, Kazuma desu.
 * **lenny:** Responds with the lenny face.
 * **no-u:** no u
 * **spam:** Responds with a picture of Spam.
