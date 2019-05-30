@@ -47,6 +47,17 @@ client.on('ready', () => {
 	}, 60000);
 });
 
+client.on('guildMemberRemove', async member => {
+	const channel = member.guild.systemChannel;
+	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
+	try {
+		await channel.send(`**${member.user.tag}** bailed on us...`);
+		return null;
+	} catch (err) {
+		return null;
+	}
+});
+
 client.on('disconnect', event => {
 	client.logger.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	process.exit(0);
