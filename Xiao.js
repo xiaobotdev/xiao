@@ -50,6 +50,7 @@ client.on('ready', () => {
 client.on('guildMemberRemove', async member => {
 	const channel = member.guild.systemChannel;
 	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
+	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
 	try {
 		await channel.send(`**${member.user.tag}** bailed on us...`);
 		return null;
