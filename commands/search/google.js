@@ -44,10 +44,10 @@ module.exports = class GoogleCommand extends Command {
 		let href;
 		const nsfw = msg.channel.nsfw || false;
 		try {
-			href = await this.searchGoogle(query, nsfw);
+			href = await this.customSearch(query, nsfw);
 		} catch (err) {
 			try {
-				href = await this.customSearch(query, nsfw);
+				href = await this.searchGoogle(query, nsfw);
 			} catch (err2) {
 				href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 			}
