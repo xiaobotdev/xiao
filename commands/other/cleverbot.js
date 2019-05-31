@@ -11,6 +11,7 @@ module.exports = class CleverbotCommand extends Command {
 			group: 'other',
 			memberName: 'cleverbot',
 			description: 'Talk to Cleverbot.',
+			ownerOnly: true,
 			credit: [
 				{
 					name: 'Cleverbot API',
