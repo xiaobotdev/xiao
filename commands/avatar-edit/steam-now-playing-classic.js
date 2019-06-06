@@ -7,14 +7,14 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.t
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
-module.exports = class SteamNowPlayingCommand extends Command {
+module.exports = class SteamNowPlayingClassicCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'steam-now-playing',
-			aliases: ['now-playing'],
+			name: 'steam-now-playing-classic',
+			aliases: ['now-playing-classic'],
 			group: 'avatar-edit',
-			memberName: 'steam-now-playing',
-			description: 'Draws a user\'s avatar over a Steam "now playing" notification.',
+			memberName: 'steam-now-playing-classic',
+			description: 'Draws a user\'s avatar over a Steam "now playing" notification (old skin).',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -49,19 +49,20 @@ module.exports = class SteamNowPlayingCommand extends Command {
 	async run(msg, { game, user }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 64 });
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-now-playing.png'));
+			const base = await loadImage(
+				path.join(__dirname, '..', '..', 'assets', 'images', 'steam-now-playing-classic.png')
+			);
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 26, 26, 41, 42);
-			ctx.fillStyle = '#90b93c';
-			ctx.font = '15px Noto';
-			ctx.textBaseline = 'bottom';
-			ctx.fillText(user.username, 80, 38);
-			ctx.fillText(shortenText(ctx, game, 200), 80, 72);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
+			ctx.drawImage(avatar, 21, 21, 32, 32);
+			ctx.fillStyle = '#90ba3c';
+			ctx.font = '10px Noto';
+			ctx.fillText(user.username, 63, 26);
+			ctx.fillText(shortenText(ctx, game, 160), 63, 54);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing-classic.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
