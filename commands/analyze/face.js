@@ -42,8 +42,9 @@ module.exports = class FaceCommand extends Command {
 			)];
 			const smile = face.smile.value > face.smile.threshold;
 			const beautyScore = face.gender.value === 'Male' ? face.beauty.female_score : face.beauty.male_score;
+			const ethnicity = face.ethnicity.value.toLowerCase();
 			return msg.reply(oneLine`
-				I think this is a photo of a ${face.age.value} year old ${face.ethnicity.value.toLowerCase()}
+				I think this is a photo of a ${face.age.value} year old ${ethnicity === 'india' ? 'indian' : ethnicity}
 				${face.gender.value.toLowerCase()}. ${pronoun} appears to be ${emotion}, and is
 				${smile ? 'smiling' : 'not smiling'}. I give this face a ${Math.round(beautyScore)} on the 1-100 beauty scale.
 				${beautyScore > 50 ? beautyScore > 70 ? beautyScore > 90 ? 'Hot!' : 'Not bad.' : 'Not _too_ ugly.' : 'Uggggly!'}
