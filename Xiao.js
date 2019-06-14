@@ -10,6 +10,7 @@ const client = new Client({
 	disabledEvents: ['TYPING_START']
 });
 const activities = require('./assets/json/activity');
+const leaveMsgs = require('./assets/json/leave-messages');
 
 client.registry
 	.registerDefaultTypes()
@@ -52,7 +53,8 @@ client.on('guildMemberRemove', async member => {
 	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
 	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
 	try {
-		await channel.send(`**${member.user.tag}** bailed on us...`);
+		const leaveMsg = leaveMsgs[Math.floor(Math.random() * leaveMsgs.length)];
+		await channel.send(leaveMsg.replace(/{{user}}/gi, `**${member.user.tag}**`));
 		return null;
 	} catch (err) {
 		return null;
