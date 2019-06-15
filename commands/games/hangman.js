@@ -16,13 +16,12 @@ module.exports = class HangmanCommand extends Command {
 				}
 			]
 		});
-
-		this.playing = new Set();
 	}
 
 	async run(msg) { // eslint-disable-line complexity
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const word = words[Math.floor(Math.random() * words.length)].toLowerCase();
 			let points = 0;
@@ -75,11 +74,11 @@ module.exports = class HangmanCommand extends Command {
 					points++;
 				}
 			}
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			if (word.length === confirmation.length || guessed) return msg.say(`You won, it was ${word}!`);
 			return msg.say(`Too bad... It was ${word}...`);
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

@@ -14,18 +14,17 @@ module.exports = class MafiaCommand extends Command {
 			description: 'Who is the Mafia? Who is the doctor? Who is the detective? Will the Mafia kill them all?',
 			guildOnly: true
 		});
-
-		this.playing = new Set();
 	}
 
 	async run(msg) { // eslint-disable-line complexity
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			await msg.say('You will need at least 2 more players, at maximum 10. To join, type `join game`.');
 			const awaitedPlayers = await awaitPlayers(msg, 10, 3, { dmCheck: true });
 			if (!awaitedPlayers) {
-				this.playing.delete(msg.channel.id);
+				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
 			}
 			const players = await this.generatePlayers(awaitedPlayers);
@@ -117,12 +116,12 @@ module.exports = class MafiaCommand extends Command {
 				players.delete(hanged.id);
 				++turn;
 			}
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			const mafia = players.find(p => p.role === 'mafia');
 			if (!mafia) return msg.say('The Mafia has been hanged! Thanks for playing!');
 			return msg.say(`Oh no, the Mafia wasn't caught in time... Nice job, ${mafia.user}!`);
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

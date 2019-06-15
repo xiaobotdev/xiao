@@ -25,13 +25,12 @@ module.exports = class GoogleFeudCommand extends Command {
 				}
 			]
 		});
-
-		this.playing = new Set();
 	}
 
 	async run(msg, { question }) {
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one fight may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const suggestions = await this.fetchSuggestions(question);
 			if (!suggestions) return msg.say('Could not find any results.');
@@ -57,11 +56,11 @@ module.exports = class GoogleFeudCommand extends Command {
 				if (suggestions.includes(choice)) display[suggestions.indexOf(choice)] = choice;
 				else --tries;
 			}
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			if (!display.includes('???')) return msg.say('You win! Nice job, master of Google!');
 			return msg.say('Better luck next time!');
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

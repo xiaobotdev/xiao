@@ -21,13 +21,12 @@ module.exports = class DoorsCommand extends Command {
 				}
 			]
 		});
-
-		this.playing = new Set();
 	}
 
 	async run(msg, { door }) {
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const win = doors[Math.floor(Math.random() * doors.length)];
 			const noWin = doors.filter(thisDoor => thisDoor !== win && door !== thisDoor)[0];
@@ -37,13 +36,13 @@ module.exports = class DoorsCommand extends Command {
 			`);
 			const stick = await verify(msg.channel, msg.author);
 			if (!stick) door = doors.filter(thisDoor => door !== thisDoor && thisDoor !== noWin)[0];
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(stripIndents`
 				${door === win ? 'You chose wisely.' : 'Hmm... Try again.'}
 				${this.emoji(1, noWin, win, door)} ${this.emoji(2, noWin, win, door)} ${this.emoji(3, noWin, win, door)}
 			`);
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
 	}

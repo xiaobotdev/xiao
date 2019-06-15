@@ -19,21 +19,20 @@ module.exports = class BattleCommand extends Command {
 				}
 			]
 		});
-
-		this.battles = new Map();
 	}
 
 	async run(msg, { opponent }) {
 		if (opponent.id === msg.author.id) return msg.reply('You may not battle yourself.');
-		if (this.battles.has(msg.channel.id)) return msg.reply('Only one battle may be occurring per channel.');
-		this.battles.set(msg.channel.id, new Battle(msg.author, opponent));
-		const battle = this.battles.get(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name, data: new Battle(msg.author, opponent) });
+		const battle = this.client.games.get(msg.channel.id).data;
 		try {
 			if (!opponent.bot) {
 				await msg.say(`${opponent}, do you accept this challenge?`);
 				const verification = await verify(msg.channel, opponent);
 				if (!verification) {
-					this.battles.delete(msg.channel.id);
+					this.client.games.delete(msg.channel.id);
 					return msg.say('Looks like they declined...');
 				}
 			}
@@ -82,10 +81,10 @@ module.exports = class BattleCommand extends Command {
 				}
 			}
 			const { winner } = battle;
-			this.battles.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			return msg.say(`The match is over! Congrats, ${winner}!`);
 		} catch (err) {
-			this.battles.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
 	}

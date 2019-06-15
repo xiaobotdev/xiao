@@ -17,5 +17,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		});
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableEveryone: true });
 		this.pokemon = new PokemonStore();
+		this.games = new Map();
 	}
 };

@@ -24,14 +24,13 @@ module.exports = class BlackjackCommand extends Command {
 				}
 			]
 		});
-
-		this.decks = new Map();
 	}
 
-	async run(msg, { deckCount }) {
-		if (this.decks.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
+	async run(msg, { deckCount }) { // eslint-disable-line complexity
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {
-			this.decks.set(msg.channel.id, this.generateDeck(deckCount));
+			this.client.games.set(msg.channel.id, { name: this.name, data: this.generateDeck(deckCount) });
 			const dealerHand = [];
 			this.draw(msg.channel, dealerHand);
 			this.draw(msg.channel, dealerHand);
@@ -41,13 +40,13 @@ module.exports = class BlackjackCommand extends Command {
 			const dealerInitialTotal = this.calculate(dealerHand);
 			const playerInitialTotal = this.calculate(playerHand);
 			if (dealerInitialTotal === 21 && playerInitialTotal === 21) {
-				this.decks.delete(msg.channel.id);
+				this.client.games.delete(msg.channel.id);
 				return msg.say('Well, both of you just hit blackjack. Right away. Rigged.');
 			} else if (dealerInitialTotal === 21) {
-				this.decks.delete(msg.channel.id);
+				this.client.games.delete(msg.channel.id);
 				return msg.say('Ouch, the dealer hit blackjack right away! Try again!');
 			} else if (playerInitialTotal === 21) {
-				this.decks.delete(msg.channel.id);
+				this.client.games.delete(msg.channel.id);
 				return msg.say('Wow, you hit blackjack right away! Lucky you!');
 			}
 			let playerTurn = true;
@@ -104,11 +103,11 @@ module.exports = class BlackjackCommand extends Command {
 					}
 				}
 			}
-			this.decks.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			if (win) return msg.say(`${reason}! You won!`);
 			return msg.say(`${reason}! Too bad.`);
 		} catch (err) {
-			this.decks.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
 	}
@@ -139,7 +138,7 @@ module.exports = class BlackjackCommand extends Command {
 	}
 
 	draw(channel, hand) {
-		const deck = this.decks.get(channel.id);
+		const deck = this.client.games.get(channel.id).data;
 		const card = deck[0];
 		deck.shift();
 		hand.push(card);

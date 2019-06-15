@@ -14,18 +14,17 @@ module.exports = class WizardConventionCommand extends Command {
 			description: 'Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?',
 			guildOnly: true
 		});
-
-		this.playing = new Set();
 	}
 
 	async run(msg) { // eslint-disable-line complexity
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			await msg.say('You will need at least 2 more players, at maximum 10. To join, type `join game`.');
 			const awaitedPlayers = await awaitPlayers(msg, 10, 3, { dmCheck: true });
 			if (!awaitedPlayers) {
-				this.playing.delete(msg.channel.id);
+				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
 			}
 			const players = await this.generatePlayers(awaitedPlayers);
@@ -117,12 +116,12 @@ module.exports = class WizardConventionCommand extends Command {
 				players.delete(expelled.id);
 				++turn;
 			}
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			const dragon = players.find(p => p.role === 'dragon');
 			if (!dragon) return msg.say('The dragon has been vanquished! Thanks for playing!');
 			return msg.say(`Oh no, the dragon wasn't caught in time... Nice job, ${dragon.user}!`);
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

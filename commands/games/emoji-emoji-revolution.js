@@ -20,20 +20,19 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 				}
 			]
 		});
-
-		this.playing = new Set();
 	}
 
 	async run(msg, { opponent }) {
 		if (opponent.bot) return msg.reply('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one fight may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			await msg.say(`${opponent}, do you accept this challenge?`);
 			const verification = await verify(msg.channel, opponent);
 			if (!verification) {
-				this.playing.delete(msg.channel.id);
+				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
 			let turn = 0;
@@ -61,12 +60,12 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 					**${opponent.username}:** ${oPts}
 				`);
 			}
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			if (aPts === oPts) return msg.say('It\'s a tie!');
 			const userWin = aPts > oPts;
 			return msg.say(`You win ${userWin ? msg.author : opponent} with ${userWin ? aPts : oPts} points!`);
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
 	}
