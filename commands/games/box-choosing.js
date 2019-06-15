@@ -27,21 +27,21 @@ module.exports = class BoxChoosingCommand extends Command {
 			]
 		});
 
-		this.playing = new Set();
 		this.blue = new Set();
 		this.red = new Set();
 	}
 
 	async run(msg) {
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one game may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			let i = 0;
 			let path = 'before';
 			while (true) { // eslint-disable-line no-constant-condition
 				const line = script[path][i];
 				if (line.end) {
-					this.playing.delete(msg.channel.id);
+					this.client.games.delete(msg.channel.id);
 					return msg.say(line.text);
 				} else {
 					await msg.say(typeof line === 'object' ? line.text : stripIndents`
@@ -75,10 +75,10 @@ module.exports = class BoxChoosingCommand extends Command {
 					i++;
 				}
 			}
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			return msg.say('See you soon!');
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
 	}

@@ -19,20 +19,19 @@ module.exports = class GunfightCommand extends Command {
 				}
 			]
 		});
-
-		this.fighting = new Set();
 	}
 
 	async run(msg, { opponent }) {
 		if (opponent.bot) return msg.reply('Bots may not be fought.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not fight yourself.');
-		if (this.fighting.has(msg.channel.id)) return msg.reply('Only one fight may be occurring per channel.');
-		this.fighting.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			await msg.say(`${opponent}, do you accept this challenge?`);
 			const verification = await verify(msg.channel, opponent);
 			if (!verification) {
-				this.fighting.delete(msg.channel.id);
+				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
 			await msg.say('Get Ready...');
@@ -44,11 +43,11 @@ module.exports = class GunfightCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			this.fighting.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			if (!winner.size) return msg.say('Oh... No one won.');
 			return msg.say(`The winner is ${winner.first().author}!`);
 		} catch (err) {
-			this.fighting.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
 	}

@@ -23,13 +23,12 @@ module.exports = class SortingHatCommand extends Command {
 				}
 			]
 		});
-
-		this.playing = new Set();
 	}
 
 	async run(msg) {
-		if (this.playing.has(msg.channel.id)) return msg.reply('Only one quiz may be occurring per channel.');
-		this.playing.add(msg.channel.id);
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const points = {
 				g: 0,
@@ -70,7 +69,7 @@ module.exports = class SortingHatCommand extends Command {
 				++turn;
 			}
 			const houseResult = Object.keys(points).filter(h => points[h] > 0).sort((a, b) => points[b] - points[a]);
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			const totalPoints = houseResult.reduce((a, b) => a + points[b], 0);
 			return msg.say(stripIndents`
 				You are a member of... **${houses[houseResult[0]]}**!
@@ -79,7 +78,7 @@ module.exports = class SortingHatCommand extends Command {
 				${houseResult.map(house => `${houses[house]}: ${Math.round((points[house] / totalPoints) * 100)}%`).join('\n')}
 			`);
 		} catch (err) {
-			this.playing.delete(msg.channel.id);
+			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
 	}
