@@ -63,7 +63,10 @@ module.exports = class SortingHatCommand extends Command {
 					max: 1,
 					time: 120000
 				});
-				if (!choice.size) return msg.say('Oh no, you ran out of time! Too bad.');
+				if (!choice.size) {
+					this.client.games.delete(msg.channel.id);
+					return msg.say('Oh no, you ran out of time! Too bad.');
+				}
 				const answer = answers[choices.indexOf(choice.first().content.toUpperCase())];
 				for (const [house, amount] of Object.entries(answer.points)) points[house] += amount;
 				++turn;
