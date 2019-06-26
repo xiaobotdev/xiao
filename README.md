@@ -52,7 +52,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (343)
+## Commands (341)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -267,7 +267,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
 * **lottery:** Attempt to win the lottery with 6 numbers.
-* **mafia:** Who is the Mafia? Who is the doctor? Who is the detective? Will the Mafia kill them all?
 * **math-quiz:** See how fast you can answer a math problem in a given time limit.
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **quiz:** Answer a quiz question.
@@ -278,7 +277,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **whos-that-pokemon:** Guess who that Pokémon is.
-* **wizard-convention:** Who is the Dragon? Who is the healer? Who is the mind reader? Will the Dragon eat them all?
 * **word-chain:** Try to come up with words that start with the last letter of your opponent's word.
 
 ### Image Manipulation:
