@@ -45,7 +45,7 @@ module.exports = class NeopetCommand extends Command {
 
 	async run(msg, { pet, mood }) {
 		try {
-			const { body } = await request.get(`http://pets.neopets.com/cpn/${encodeURIComponent(name)}/${mood}/5.png`);
+			const { body } = await request.get(`http://pets.neopets.com/cpn/${encodeURIComponent(pet)}/${mood}/5.png`);
 			return msg.say({ files: [{ attachment: body, name: `${pet}-${mood}.png` }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
