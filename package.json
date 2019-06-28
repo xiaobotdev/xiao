@@ -43,7 +43,6 @@
 		"moment": "^2.24.0",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.25",
-		"neopet-image-finder": "^5.0.2",
 		"node-superfetch": "^0.1.9",
 		"random-js": "^2.1.0",
 		"winston": "^3.2.1"
