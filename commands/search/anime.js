@@ -100,7 +100,7 @@ module.exports = class AnimeCommand extends Command {
 			if (!id) return msg.say('Could not find any results.');
 			const anime = await this.fetchAnime(id);
 			await this.fetchPersonalList();
-			const entry = this.personalList.find(ani => ani.media.id === id);
+			const entry = this.personalList.find(ani => ani.mediaId === id);
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
