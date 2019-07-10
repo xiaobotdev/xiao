@@ -50,6 +50,7 @@ const personalGraphQL = stripIndents`
 					score(format: POINT_10)
 					progress
 				}
+				name
 			}
 		}
 	}
