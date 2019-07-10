@@ -161,8 +161,8 @@ module.exports = class AnimeCommand extends Command {
 			});
 		const { lists } = body.data.MediaListCollection;
 		this.personalList = [
-			...lists.find(list => list.name === 'Watching'),
-			...lists.find(list => list.name === 'Completed')
+			...lists.find(list => list.name === 'Watching').entries,
+			...lists.find(list => list.name === 'Completed').entries
 		];
 		setTimeout(() => { this.personalList = null; }, 3.6e+6);
 		return this.personalList;
