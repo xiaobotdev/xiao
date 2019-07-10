@@ -159,7 +159,11 @@ module.exports = class AnimeCommand extends Command {
 				},
 				query: personalGraphQL
 			});
-		this.personalList = body.data.MediaListCollection.lists[0].entries;
+		const { lists } = body.data.MediaListCollection;
+		this.personalList = [
+			...lists.find(list => list.name === 'Watching'),
+			...lists.find(list => list.name === 'Completed')
+		];
 		setTimeout(() => { this.personalList = null; }, 3.6e+6);
 		return this.personalList;
 	}
