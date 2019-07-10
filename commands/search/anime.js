@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { cleanAnilistHTML } = require('../../util/Util');
+const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
 		anime: Page (perPage: 10) {
@@ -37,6 +38,17 @@ const resultGraphQL = stripIndents`
 			episodes
 			isAdult
 			meanScore
+		}
+	}
+`;
+const personalGraphQL = stripIndents`
+	query ($name: String, $type: MediaType) {
+		MediaListCollection(userName: $name, type: $type) {
+			entries {
+				mediaId
+				score(format: POINT_10)
+				progress
+			}
 		}
 	}
 `;
@@ -76,6 +88,8 @@ module.exports = class AnimeCommand extends Command {
 				}
 			]
 		});
+
+		this.personalList = null;
 	}
 
 	async run(msg, { query }) {
@@ -83,6 +97,8 @@ module.exports = class AnimeCommand extends Command {
 			const id = await this.search(query);
 			if (!id) return msg.say('Could not find any results.');
 			const anime = await this.fetchAnime(id);
+			await this.fetchPersonalList();
+			const entry = this.personalList.find(ani => ani.media.id === id);
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
@@ -93,7 +109,10 @@ module.exports = class AnimeCommand extends Command {
 				.addField('❯ Status', statuses[anime.status], true)
 				.addField('❯ Episodes', anime.episodes || '???', true)
 				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
-				.addField('❯ Average Score', anime.meanScore ? `${anime.meanScore}/100` : '???', true);
+				.addField('❯ Average Score', anime.meanScore ? `${anime.meanScore}/100` : '???', true)
+				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
+				.addField(`❯ ${ANILIST_USERNAME}'s Progress`,
+					entry && entry.progress ? `${entry.progress}/${anime.episodes || ''}` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -125,5 +144,21 @@ module.exports = class AnimeCommand extends Command {
 				query: resultGraphQL
 			});
 		return body.data.Media;
+	}
+
+	async fetchPersonalList() {
+		if (this.personalList) return this.personalList;
+		const { body } = await request
+			.post('https://graphql.anilist.co/')
+			.send({
+				variables: {
+					name: ANILIST_USERNAME,
+					type: 'ANIME'
+				},
+				query: personalGraphQL
+			});
+		this.personalList = body.data.MediaListCollection.entries;
+		setTimeout(() => { this.personalList = null; }, 3.6e+6);
+		return this.personalList;
 	}
 };
