@@ -44,10 +44,12 @@ const resultGraphQL = stripIndents`
 const personalGraphQL = stripIndents`
 	query ($name: String, $type: MediaType) {
 		MediaListCollection(userName: $name, type: $type) {
-			entries {
-				mediaId
-				score(format: POINT_10)
-				progress
+			lists {
+				entries {
+					mediaId
+					score(format: POINT_10)
+					progress
+				}
 			}
 		}
 	}
@@ -157,7 +159,7 @@ module.exports = class AnimeCommand extends Command {
 				},
 				query: personalGraphQL
 			});
-		this.personalList = body.data.MediaListCollection.entries;
+		this.personalList = body.data.MediaListCollection.lists[0].entries;
 		setTimeout(() => { this.personalList = null; }, 3.6e+6);
 		return this.personalList;
 	}
