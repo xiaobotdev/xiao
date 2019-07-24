@@ -34,7 +34,7 @@ module.exports = class CursedSpongeCommand extends Command {
 		let width = 0;
 		for (let i = 0; i < amount; i++) {
 			const row = Math.ceil((i + 1) / 10);
-			ctx.drawImage(sponge, width, sponge.height * row);
+			ctx.drawImage(sponge, width, sponge.height * (row - 1));
 			if ((width + sponge.width) === (sponge.width * (rows > 1 ? 10 : amount))) width = 0;
 			else width += sponge.width;
 		}
