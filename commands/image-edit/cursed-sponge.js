@@ -28,7 +28,7 @@ module.exports = class CursedSpongeCommand extends Command {
 
 	async run(msg, { amount }) {
 		const sponge = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'cursed-sponge.png'));
-		const rows = Math.ceil(10 / amount);
+		const rows = Math.ceil(amount / 10);
 		const canvas = createCanvas(sponge.width * (rows > 1 ? 10 : amount), sponge.height * rows);
 		const ctx = canvas.getContext('2d');
 		let width = 0;
