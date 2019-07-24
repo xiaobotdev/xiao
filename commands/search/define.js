@@ -35,6 +35,7 @@ module.exports = class DefineCommand extends Command {
 				.query({ key: WEBSTER_KEY });
 			if (!body.length) return msg.say('Could not find any results.');
 			const data = body[0];
+			if (typeof data === 'string') return msg.say(`Could not find any results. Did you mean **${data}**?`);
 			return msg.say(stripIndents`
 				**${data.meta.stems[0]}** (${data.fl})
 				${data.shortdef.map((definition, i) => `(${i + 1}) ${definition}`).join('\n')}
