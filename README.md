@@ -53,7 +53,7 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (343)
+## Commands (344)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -291,6 +291,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **create-qr-code:** Converts text to a QR Code.
+* **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **fire:** Draws a fiery border over an image or a user's avatar.
