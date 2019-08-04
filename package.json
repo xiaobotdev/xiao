@@ -31,7 +31,7 @@
 		"node": ">=12"
 	},
 	"dependencies": {
-		"canvas": "^2.5.0",
+		"canvas": "^2.6.0",
 		"cheerio": "^1.0.0-rc.3",
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
