@@ -53,7 +53,13 @@ Xiao is a Discord bot coded in JavaScript with
 6. Run `npm i -g pm2` to install PM2.
 7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
-## Commands (345)
+## Related Bots
+
+* [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, who's features were originally built into Xiao.
+* [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, who's features were originally built into Xiao.
+* [Meme Poster](https://github.com/dragonfire535/meme-poster) is a meme-posting webhook, inspired by an idea that started as part of Xiao.
+
+## Commands (346)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -312,6 +318,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **osu-signature:** Creates a card based on an osu! user's stats.
 * **pixelize:** Draws an image or a user's avatar pixelized.
+* **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
 * **rainbow:** Draws a rainbow over an image or a user's avatar.
 * **rejected:** Draws a "rejected" stamp over an image or a user's avatar.
