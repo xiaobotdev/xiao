@@ -69,7 +69,7 @@ module.exports = class PlanktonPlanCommand extends Command {
 			ctx.font = '35px Noto';
 			const step = steps[i];
 			let fontSize = 35;
-			while (ctx.measureText(step).width > 620) {
+			while (ctx.measureText(step).width > 520) {
 				fontSize -= 1;
 				ctx.font = `${fontSize}px Noto`;
 			}
