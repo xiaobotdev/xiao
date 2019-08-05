@@ -55,8 +55,8 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Related Bots
 
-* [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, who's features were originally built into Xiao.
-* [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, who's features were originally built into Xiao.
+* [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
+* [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, whose features were originally built into Xiao.
 * [Meme Poster](https://github.com/dragonfire535/meme-poster) is a meme-posting webhook, inspired by an idea that started as part of Xiao.
 
 ## Commands (346)
