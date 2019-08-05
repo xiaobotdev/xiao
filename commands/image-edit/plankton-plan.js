@@ -5,7 +5,7 @@ const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
-const coord = [[240, 63], [689, 63], [705, 380], [220, 380]];
+const coord = [[240, 63], [689, 63], [705, 383], [220, 380]];
 
 module.exports = class PlanktonPlanCommand extends Command {
 	constructor(client) {
