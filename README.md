@@ -59,7 +59,7 @@ Xiao is a Discord bot coded in JavaScript with
 * [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, whose features were originally built into Xiao.
 * [Meme Poster](https://github.com/dragonfire535/meme-poster) is a meme-posting webhook, inspired by an idea that started as part of Xiao.
 
-## Commands (346)
+## Commands (347)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -327,6 +327,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
+* **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
