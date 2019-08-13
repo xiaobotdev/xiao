@@ -56,17 +56,17 @@ module.exports = class SpongebobBurnCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = '35px Noto';
 		let fontSize = 35;
-		while (ctx.measureText(burn).width > 360) {
+		while (ctx.measureText(burn).width > 300) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, burn, 180);
-		ctx.fillText(lines.join('\n'), 50, 83);
+		ctx.fillText(lines.join('\n'), 50, 93);
 		ctx.font = '25px Noto';
 		ctx.fillText(person, 382, 26);
 		ctx.font = '20px Noto';
-		ctx.fillText(person, 114, 405);
-		ctx.fillText(person, 434, 434);
+		ctx.fillText(person, 119, 405);
+		ctx.fillText(person, 439, 434);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spongebob-burn.png' }] });
 	}
 };
