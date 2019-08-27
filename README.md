@@ -59,7 +59,7 @@ Xiao is a Discord bot coded in JavaScript with
 * [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, whose features were originally built into Xiao.
 * [Meme Poster](https://github.com/dragonfire535/meme-poster) is a meme-posting webhook, inspired by an idea that started as part of Xiao.
 
-## Commands (347)
+## Commands (348)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -228,6 +228,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **tv-show:** Searches TMDB for your query, getting TV show results.
 * **twitter:** Responds with information on a Twitter user.
 * **urban:** Defines a word, but with Urban Dictionary.
+* **usps-tracking:** Gets tracking information for a package shipped via USPS.
 * **visual-novel:** Responds with information on a Visual Novel.
 * **vocadb:** Searches VocaDB for your query.
 * **wattpad:** Searches Wattpad for your query.
