@@ -36,6 +36,7 @@ module.exports = class USPSTrackingCommand extends Command {
 			return msg.say(stripIndents`
 				**Tracking info for ${id}:**
 				${summary}
+				More Info: https://tools.usps.com/go/TrackConfirmAction?tLabels=${id}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
