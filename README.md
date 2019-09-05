@@ -402,7 +402,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **tebahpla:** Reverses the alphabet of text.
 * **temmie:** Converts text to Temmie speak.
 * **translate:** Translates text to a specific language.
-* **unspoiler:** Removes all spoilers from text.
+* **unspoiler:** Removes all spoilers from a message.
 * **uppercase:** Converts text to uppercase.
 * **upside-down:** Flips text upside-down.
 * **url-decode:** Decodes URL characters to regular characters.
