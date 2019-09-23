@@ -23,7 +23,7 @@ module.exports = class USPSTrackingCommand extends Command {
 					label: 'tracking id',
 					prompt: 'What is the tracking ID of the package you would like to track?',
 					type: 'string',
-					validate: id => /^[0-9]+$/.test(id)
+					validate: id => /^[0-9A-Z]+$/i.test(id)
 				}
 			]
 		});
