@@ -36,7 +36,7 @@ module.exports = class WhatAnimeCommand extends Command {
 			}
 			const { body } = await request.get(screenshot);
 			const result = await this.search(body, msg.channel.nsfw);
-			if (result === 'size') return msg.reply('Please do not send an image larger than 1MB.');
+			if (result === 'size') return msg.reply('Please do not send an image larger than 10MB.');
 			if (result.nsfw) return msg.reply('This is from a hentai, and this isn\'t an NSFW channel, pervert.');
 			return msg.reply(
 				`I'm ${result.prob}% sure this is from ${result.title}${result.episode
@@ -61,7 +61,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	}
 
 	async search(file) {
-		if (Buffer.byteLength(file) > 1e+6) return 'size';
+		if (Buffer.byteLength(file) > 1e+7) return 'size';
 		const { body } = await request
 			.post('https://trace.moe/api/search')
 			.query({ token: WHATANIME_KEY })
