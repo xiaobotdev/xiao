@@ -5,16 +5,12 @@ module.exports = class DonateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'donate',
-			aliases: ['patreon', 'paypal'],
+			aliases: ['paypal'],
 			group: 'util',
 			memberName: 'donate',
 			description: 'Responds with the bot\'s donation links.',
 			guarded: true,
 			credit: [
-				{
-					name: 'Patreon',
-					url: 'https://www.patreon.com/'
-				},
 				{
 					name: 'PayPal',
 					url: 'https://www.paypal.com/us/home'
@@ -26,7 +22,6 @@ module.exports = class DonateCommand extends Command {
 	run(msg) {
 		return msg.say(stripIndents`
 			Contribute to development!
-			<https://www.patreon.com/dragonfire535>
 			<https://paypal.me/dragonfire535>
 		`);
 	}
