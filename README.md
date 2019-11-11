@@ -56,7 +56,7 @@ Xiao is a Discord bot coded in JavaScript with
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
 * [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, whose features were originally built into Xiao.
 
-## Commands (349)
+## Commands (343)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -175,7 +175,6 @@ Xiao is a Discord bot coded in JavaScript with
 ### Search:
 
 * **anime:** Searches AniList for your query, getting anime results.
-* **azur-lane:** Responds with information on an Azur Lane ship.
 * **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
 * **character:** Searches AniList for your query, getting character results.
@@ -183,8 +182,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
-* **docs:** Searches the Discord.js docs for your query.
-* **esrb:** Searches ESRB for your query.
 * **flickr:** Searches Flickr for your query.
 * **giphy:** Searches Giphy for your query.
 * **github:** Responds with information on a GitHub repository.
@@ -198,7 +195,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **jisho:** Defines a word, but with Japanese.
 * **kickstarter:** Searches Kickstarter for your query.
 * **know-your-meme:** Searches Know Your Meme for your query.
-* **konachan:** Responds with an image from Konachan, with optional query.
 * **league-of-legends:** Responds with information on a League of Legends champion.
 * **manga:** Searches AniList for your query, getting manga results.
 * **map:** Responds with a map of a specific location.
@@ -227,7 +223,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **twitter:** Responds with information on a Twitter user.
 * **urban:** Defines a word, but with Urban Dictionary.
 * **usps-tracking:** Gets tracking information for a package shipped via USPS.
-* **visual-novel:** Responds with information on a Visual Novel.
 * **vocadb:** Searches VocaDB for your query.
 * **wattpad:** Searches Wattpad for your query.
 * **weather:** Responds with weather information for a specific location.
@@ -315,7 +310,6 @@ Xiao is a Discord bot coded in JavaScript with
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
-* **osu-signature:** Creates a card based on an osu! user's stats.
 * **pixelize:** Draws an image or a user's avatar pixelized.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.

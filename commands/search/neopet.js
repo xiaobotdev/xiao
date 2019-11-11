@@ -32,12 +32,12 @@ module.exports = class NeopetCommand extends Command {
 					key: 'mood',
 					prompt: `What mood should the pet be in? Either ${list(Object.keys(moods), 'or')}.`,
 					type: 'string',
-					default: 'happy',
+					default: 1,
 					validate: mood => {
 						if (moods[mood.toLowerCase()]) return true;
 						return `Invalid mood, please enter either ${list(Object.keys(moods), 'or')}.`;
 					},
-					parse: mood => mood.toLowerCase()
+					parse: mood => moods[mood.toLowerCase()]
 				}
 			]
 		});
