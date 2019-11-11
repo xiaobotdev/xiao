@@ -46,7 +46,9 @@ client.on('ready', () => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
 		client.user.setActivity(activity.text, { type: activity.type });
 	}, 60000);
-	client.setInterval(() => client.memePoster.post(), client.memePoster.time);
+	if (client.memePoster.id && client.memePoster.token) {
+		client.setInterval(() => client.memePoster.post(), client.memePoster.time);
+	}
 });
 
 client.on('guildMemberRemove', async member => {
