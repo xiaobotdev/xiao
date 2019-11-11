@@ -39,8 +39,11 @@ module.exports = class TvShowCommand extends Command {
 					query
 				});
 			if (!search.body.results.length) return msg.say('Could not find any results.');
+			const find = search.body.results.find(
+				m => m.title.toLowerCase() === query.toLowerCase()
+			) || search.body.results[0];
 			const { body } = await request
-				.get(`https://api.themoviedb.org/3/tv/${search.body.results[0].id}`)
+				.get(`https://api.themoviedb.org/3/tv/${find.id}`)
 				.query({ api_key: TMDB_KEY });
 			const embed = new MessageEmbed()
 				.setColor(0x00D474)

@@ -20,6 +20,7 @@ module.exports = class MessageSourceCommand extends Command {
 	}
 
 	run(msg, { message }) {
+		if (!message.content) return msg.reply('That message has no content. Maybe it\'s an embed or image?');
 		return msg.code(null, shorten(message.content, 1990));
 	}
 };

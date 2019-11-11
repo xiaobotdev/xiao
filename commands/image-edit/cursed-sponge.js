@@ -20,7 +20,8 @@ module.exports = class CursedSpongeCommand extends Command {
 					key: 'amount',
 					prompt: 'How many times do you want to duplicate the cursed sponge?',
 					type: 'integer',
-					max: 100
+					max: 100,
+					min: 1
 				}
 			]
 		});

@@ -29,7 +29,7 @@ module.exports = class DoomsdayClockCommand extends Command {
 				.setColor(0x000000)
 				.setURL('https://thebulletin.org/doomsday-clock/current-time/')
 				.setAuthor('Bulletin of the Atomic Scientists', undefined, 'https://thebulletin.org/')
-				.setDescription(description.replace(/<a href="(.+)">(.+)<\/a>/, '[$2]($1)'));
+				.setDescription(description.replace(/<a href="(.+)" target="_blank" rel="noopener">(.+)<\/a>/, '[$2]($1)'));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
