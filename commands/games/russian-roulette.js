@@ -26,11 +26,13 @@ module.exports = class RussianRouletteCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			await msg.say(`${opponent}, do you accept this challenge?`);
-			const verification = await verify(msg.channel, opponent);
-			if (!verification) {
-				this.client.games.delete(msg.channel.id);
-				return msg.say('Looks like they declined...');
+			if (!opponent.bot) {
+				await msg.say(`${opponent}, do you accept this challenge?`);
+				const verification = await verify(msg.channel, opponent);
+				if (!verification) {
+					this.client.games.delete(msg.channel.id);
+					return msg.say('Looks like they declined...');
+				}
 			}
 			let userTurn = true;
 			const gun = shuffle([true, false, false, false, false, false, false, false]);
