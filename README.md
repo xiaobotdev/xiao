@@ -56,7 +56,7 @@ Xiao is a Discord bot coded in JavaScript with
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
 * [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, whose features were originally built into Xiao.
 
-## Commands (343)
+## Commands (344)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -275,6 +275,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **quiz:** Answer a quiz question.
 * **rock-paper-scissors:** Play Rock-Paper-Scissors.
 * **roulette:** Play a game of roulette.
+* **russian-roulette:** Who will pull the trigger and die first?
 * **slots:** Play a game of slots.
 * **sorting-hat:** Take a quiz to determine your Hogwarts house.
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
