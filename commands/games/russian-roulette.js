@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 const { shuffle, verify } = require('../../util/Util');
 
 module.exports = class RussianRouletteCommand extends Command {
@@ -40,12 +41,16 @@ module.exports = class RussianRouletteCommand extends Command {
 			let winner = null;
 			while (!winner) {
 				const player = userTurn ? msg.author : opponent;
-				await msg.say(`${player.tag} pulls the trigger... And **${gun[round] ? 'dies!**' : 'lives...** Continue?'}`);
+				const notPlayer = userTurn ? msg.author : opponent;
+				await msg.say(stripIndents`
+					**${player.tag}** pulls the trigger... **And ${gun[round] ? 'dies!**' : 'lives...**'}
+					${opponent.bot ? 'Continue?' : `Will you take the gun, ${notPlayer}?`}
+				`);
 				if (gun[round]) {
-					winner = userTurn ? opponent : msg.author;
+					winner = notPlayer;
 				} else {
-					const keepGoing = await verify(msg.channel, opponent.bot ? msg.author : player);
-					if (!keepGoing) winner = userTurn ? opponent : msg.author;
+					const keepGoing = await verify(msg.channel, opponent.bot ? msg.author : notPlayer);
+					if (!keepGoing) winner = notPlayer;
 					round++;
 					userTurn = !userTurn;
 				}
