@@ -42,13 +42,14 @@ module.exports = class RussianRouletteCommand extends Command {
 			while (!winner) {
 				const player = userTurn ? msg.author : opponent;
 				const notPlayer = userTurn ? msg.author : opponent;
-				await msg.say(stripIndents`
-					**${player.tag}** pulls the trigger... **And ${gun[round] ? 'dies!**' : 'lives...**'}
-					${opponent.bot ? 'Continue?' : `Will you take the gun, ${notPlayer}?`} (${8 - round - 1} shots left)
-				`);
 				if (gun[round]) {
+					await msg.say(`**${player.tag}** pulls the trigger... **And dies!**`);
 					winner = notPlayer;
 				} else {
+					await msg.say(stripIndents`
+						**${player.tag}** pulls the trigger... **And lives...**
+						${opponent.bot ? 'Continue?' : `Will you take the gun, ${notPlayer}?`} (${8 - round - 1} shots left)
+					`);
 					const keepGoing = await verify(msg.channel, opponent.bot ? msg.author : notPlayer);
 					if (!keepGoing) winner = notPlayer;
 					round++;
