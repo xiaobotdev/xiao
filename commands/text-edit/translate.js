@@ -1,15 +1,14 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const request = require('node-superfetch');
+const translate = require('@vitalets/google-translate-api');
 const { list } = require('../../util/Util');
-const codes = require('../../assets/json/translate');
-const { YANDEX_KEY } = process.env;
+const codes = translate.languages;
 
 module.exports = class TranslateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'translate',
-			aliases: ['yandex', 'yandex-translate'],
+			aliases: ['google-translate'],
 			group: 'text-edit',
 			memberName: 'translate',
 			description: 'Translates text to a specific language.',
@@ -17,8 +16,8 @@ module.exports = class TranslateCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Yandex.Translate API',
-					url: 'https://tech.yandex.com/translate/doc/dg/reference/translate-docpage/'
+					name: 'Google Translate',
+					url: 'https://translate.google.com/'
 				}
 			],
 			args: [
@@ -47,7 +46,7 @@ module.exports = class TranslateCommand extends Command {
 					key: 'base',
 					prompt: `Which language would you like to use as the base? Either ${list(Object.keys(codes), 'or')}.`,
 					type: 'string',
-					default: '',
+					default: 'auto',
 					validate: base => {
 						const value = base.toLowerCase();
 						if (codes[value] || Object.keys(codes).find(key => codes[key].toLowerCase() === value)) return true;
@@ -65,19 +64,12 @@ module.exports = class TranslateCommand extends Command {
 
 	async run(msg, { text, target, base }) {
 		try {
-			const { body } = await request
-				.get('https://translate.yandex.net/api/v1.5/tr.json/translate')
-				.query({
-					key: YANDEX_KEY,
-					text,
-					lang: base ? `${base}-${target}` : target
-				});
-			const lang = body.lang.split('-');
+			const { text: result, from } = await translate(text, { to: target, from: base });
 			const embed = new MessageEmbed()
-				.setColor(0xFF0000)
-				.setFooter('Powered by Yandex.Translate', 'https://i.imgur.com/HMpH9sq.png')
-				.addField(`❯ From: ${codes[lang[0]]}`, text)
-				.addField(`❯ To: ${codes[lang[1]]}`, body.text[0]);
+				.setColor(0x4285F4)
+				.setFooter('Powered by Google Translate', 'https://i.imgur.com/h3RoHyp.png')
+				.addField(`❯ From: ${codes[from.language.iso]}`, from.text.value || text)
+				.addField(`❯ To: ${codes[target]}`, result);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
