@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "109.0.1",
+	"version": "109.0.2",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -46,6 +46,7 @@
 		"moment-timezone": "^0.5.27",
 		"node-superfetch": "^0.1.9",
 		"random-js": "^2.1.0",
+		"soap": "^0.30.0",
 		"winston": "^3.2.1"
 	},
 	"devDependencies": {

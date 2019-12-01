@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
-const { YODA_KEY } = process.env;
+const soap = require('soap');
 
 module.exports = class YodaCommand extends Command {
 	constructor(client) {
@@ -25,20 +24,24 @@ module.exports = class YodaCommand extends Command {
 				}
 			]
 		});
+
+		this.soapClient = null;
 	}
 
 	async run(msg, { sentence }) {
 		try {
-			const { body } = await request
-				.get('https://yoda-speak-api.herokuapp.com/speak')
-				.query({
-					text: sentence,
-					token: YODA_KEY
-				});
-			if (!body.response) return msg.reply('Empty, this message is. Try again later, you must.');
-			return msg.say(body.response);
+			if (!this.soapClient) await this.setUpClient();
+			const response = await this.soapClient.yodaTalkAsync({ inputText: sentence });
+			const text = response[0].return;
+			if (!text) return msg.reply('Empty, this message is. Try again later, you must.');
+			return msg.say(text);
 		} catch (err) {
 			return msg.reply(`Being a jerk again, Yoda is: \`${err.message}\`. Try again later, you must.`);
 		}
+	}
+
+	async setUpClient() {
+		this.soapClient = await soap.createClientAsync('https://www.yodaspeak.co.uk/webservice/yodatalk.php?wsdl');
+		return this.soapClient;
 	}
 };
