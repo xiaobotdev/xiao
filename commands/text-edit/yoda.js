@@ -41,7 +41,7 @@ module.exports = class YodaCommand extends Command {
 	}
 
 	async setUpClient() {
-		this.soapClient = await soap.createClientAsync('https://www.yodaspeak.co.uk/webservice/yodatalk.php?wsdl');
+		this.soapClient = await soap.createClientAsync('http://www.yodaspeak.co.uk/webservice/yodatalk.php?wsdl');
 		return this.soapClient;
 	}
 };
