@@ -8,7 +8,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 		super(client, {
 			name: 'emoji-emoji-revolution',
 			aliases: ['eer'],
-			group: 'games',
+			group: 'mp-games',
 			memberName: 'emoji-emoji-revolution',
 			description: 'Can you type arrow emoji faster than anyone else has ever typed them before?',
 			guildOnly: true,

@@ -15,7 +15,7 @@ module.exports = class TypingTestCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'typing-test',
-			group: 'games',
+			group: 'sp-games',
 			memberName: 'typing-test',
 			description: 'See how fast you can type a sentence in a given time limit.',
 			details: `**Difficulties:** ${difficulties.join(', ')}`,

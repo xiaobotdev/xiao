@@ -9,7 +9,7 @@ module.exports = class WordChainCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'word-chain',
-			group: 'games',
+			group: 'mp-games',
 			memberName: 'word-chain',
 			description: 'Try to come up with words that start with the last letter of your opponent\'s word.',
 			guildOnly: true,
