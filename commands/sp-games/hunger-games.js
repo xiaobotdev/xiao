@@ -8,7 +8,7 @@ module.exports = class HungerGamesCommand extends Command {
 		super(client, {
 			name: 'hunger-games',
 			aliases: ['hunger-games-simulator', 'hunger-games-sim'],
-			group: 'games',
+			group: 'sp-games',
 			memberName: 'hunger-games',
 			description: 'Simulate a Hunger Games match with up to 24 tributes.',
 			credit: [

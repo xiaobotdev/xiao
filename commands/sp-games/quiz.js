@@ -11,7 +11,7 @@ module.exports = class QuizCommand extends Command {
 		super(client, {
 			name: 'quiz',
 			aliases: ['trivia'],
-			group: 'games',
+			group: 'sp-games',
 			memberName: 'quiz',
 			description: 'Answer a quiz question.',
 			details: stripIndents`

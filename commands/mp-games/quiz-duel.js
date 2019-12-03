@@ -9,7 +9,7 @@ module.exports = class QuizDuelCommand extends Command {
 		super(client, {
 			name: 'quiz-duel',
 			aliases: ['trivia-duel'],
-			group: 'games',
+			group: 'mp-games',
 			memberName: 'quiz-duel',
 			description: 'Answer a series of quiz questions against an opponent.',
 			credit: [

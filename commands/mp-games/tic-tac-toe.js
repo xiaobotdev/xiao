@@ -6,7 +6,7 @@ module.exports = class TicTacToeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'tic-tac-toe',
-			group: 'games',
+			group: 'mp-games',
 			memberName: 'tic-tac-toe',
 			description: 'Play a game of tic-tac-toe with another user.',
 			guildOnly: true,

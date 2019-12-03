@@ -254,33 +254,36 @@ Xiao is a Discord bot coded in JavaScript with
 * **what-anime:** Determines what anime a screenshot is from.
 * **zodiac-sign:** Responds with the Zodiac Sign for the given month/day.
 
-### Games:
+### Single-Player Games:
 
-* **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
-* **battle:** Engage in a turn-based battle against another user or the AI.
 * **blackjack:** Play a game of blackjack.
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **captcha:** Try to guess what the captcha says.
 * **chance:** Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **doors:** Open the right door, and you win the money! Make the wrong choice, and you get the fire!
-* **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **fishy:** Go fishing.
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
-* **gunfight:** Engage in a western gunfight against another user. High noon.
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
 * **lottery:** Attempt to win the lottery with 6 numbers.
 * **math-quiz:** See how fast you can answer a math problem in a given time limit.
-* **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **quiz:** Answer a quiz question.
 * **rock-paper-scissors:** Play Rock-Paper-Scissors.
 * **roulette:** Play a game of roulette.
-* **russian-roulette:** Who will pull the trigger and die first?
 * **slots:** Play a game of slots.
 * **sorting-hat:** Take a quiz to determine your Hogwarts house.
-* **tic-tac-toe:** Play a game of tic-tac-toe with another user.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
-* **whos-that-pokemon:** Guess who that Pokémon is.
+* **whos-that-pokemon:** Guess who that Pokémon is
+
+### Multi-Player Games
+
+* **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
+* **battle:** Engage in a turn-based battle against another user or the AI.
+* **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
+* **gunfight:** Engage in a western gunfight against another user. High noon.
+* **quiz-duel:** Answer a series of quiz questions against an opponent.
+* **russian-roulette:** Who will pull the trigger and die first?
+* **tic-tac-toe:** Play a game of tic-tac-toe with another user.
 * **word-chain:** Try to come up with words that start with the last letter of your opponent's word.
 
 ### Image Manipulation:

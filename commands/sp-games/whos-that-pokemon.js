@@ -8,7 +8,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		super(client, {
 			name: 'whos-that-pokemon',
 			aliases: ['who-pokemon', 'whos-that-pokémon', 'who-pokémon'],
-			group: 'games',
+			group: 'sp-games',
 			memberName: 'whos-that-pokemon',
 			description: 'Guess who that Pokémon is.',
 			throttling: {

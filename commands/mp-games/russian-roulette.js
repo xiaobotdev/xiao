@@ -7,7 +7,7 @@ module.exports = class RussianRouletteCommand extends Command {
 		super(client, {
 			name: 'russian-roulette',
 			aliases: ['r-roulette', 'russia-gun'],
-			group: 'games',
+			group: 'mp-games',
 			memberName: 'russian-roulette',
 			description: 'Who will pull the trigger and die first?',
 			args: [

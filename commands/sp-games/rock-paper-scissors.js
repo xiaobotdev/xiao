@@ -6,7 +6,7 @@ module.exports = class RockPaperScissorsCommand extends Command {
 		super(client, {
 			name: 'rock-paper-scissors',
 			aliases: ['rps'],
-			group: 'games',
+			group: 'sp-games',
 			memberName: 'rock-paper-scissors',
 			description: 'Play Rock-Paper-Scissors.',
 			args: [
