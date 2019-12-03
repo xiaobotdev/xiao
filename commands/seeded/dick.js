@@ -6,7 +6,7 @@ module.exports = class DickCommand extends Command {
 		super(client, {
 			name: 'dick',
 			aliases: ['dick-size', 'penis', 'penis-size', 'pee-pee', 'pee-pee-size'],
-			group: 'analyze',
+			group: 'seeded',
 			memberName: 'dick',
 			description: 'Determines your dick size.',
 			nsfw: true,

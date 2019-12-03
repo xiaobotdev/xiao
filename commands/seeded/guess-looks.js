@@ -9,7 +9,7 @@ module.exports = class GuessLooksCommand extends Command {
 		super(client, {
 			name: 'guess-looks',
 			aliases: ['guess-my-looks'],
-			group: 'analyze',
+			group: 'seeded',
 			memberName: 'guess-looks',
 			description: 'Guesses what a user looks like.',
 			args: [

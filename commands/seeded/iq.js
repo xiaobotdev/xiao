@@ -6,7 +6,7 @@ module.exports = class IQCommand extends Command {
 		super(client, {
 			name: 'iq',
 			aliases: ['intelligence-quotient'],
-			group: 'analyze',
+			group: 'seeded',
 			memberName: 'iq',
 			description: 'Determines a user\'s IQ.',
 			args: [
