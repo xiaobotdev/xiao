@@ -8,7 +8,7 @@ module.exports = class DrakepostingCommand extends Command {
 		super(client, {
 			name: 'drakeposting',
 			aliases: ['drake'],
-			group: 'avatar-edit',
+			group: 'meme-gen',
 			memberName: 'drakeposting',
 			description: 'Draws two user\'s avatars over the "Drakeposting" meme.',
 			throttling: {

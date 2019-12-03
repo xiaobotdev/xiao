@@ -11,7 +11,7 @@ module.exports = class IllegalCommand extends Command {
 		super(client, {
 			name: 'illegal',
 			aliases: ['is-now-illegal', 'trump'],
-			group: 'image-edit',
+			group: 'meme-gen',
 			memberName: 'illegal',
 			description: 'Makes President Trump make your text illegal.',
 			throttling: {

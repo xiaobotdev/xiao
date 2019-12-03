@@ -3,14 +3,13 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
-module.exports = class KyonGunCommand extends Command {
+module.exports = class SoraSelfieCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'kyon-gun',
-			aliases: ['kyon-snapped'],
-			group: 'image-edit',
-			memberName: 'kyon-gun',
-			description: 'Draws an image or a user\'s avatar behind Kyon shooting a gun.',
+			name: 'sora-selfie',
+			group: 'meme-gen',
+			memberName: 'sora-selfie',
+			description: 'Draws an image or a user\'s avatar behind Sora taking a selfie.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -18,8 +17,8 @@ module.exports = class KyonGunCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'The Melancholy of Haruhi Suzumiya',
-					url: 'http://www.haruhi.tv/'
+					name: 'Kingdom Hearts',
+					url: 'https://www.kingdomhearts.com/home/us/'
 				}
 			],
 			args: [
@@ -35,7 +34,7 @@ module.exports = class KyonGunCommand extends Command {
 
 	async run(msg, { image }) {
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'kyon-gun.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'sora-selfie.png'));
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
@@ -46,7 +45,7 @@ module.exports = class KyonGunCommand extends Command {
 			const width = Math.round(base.height * ratio);
 			ctx.drawImage(data, (base.width / 2) - (width / 2), 0, width, base.height);
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'kyon-gun.png' }] });
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sora-selfie.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

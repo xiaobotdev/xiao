@@ -8,7 +8,7 @@ module.exports = class ToBeContinuedCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'to-be-continued',
-			group: 'image-edit',
+			group: 'meme-gen',
 			memberName: 'to-be-continued',
 			description: 'Draws an image with the "To Be Continued..." arrow.',
 			throttling: {

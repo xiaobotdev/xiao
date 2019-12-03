@@ -10,7 +10,7 @@ module.exports = class MemeGenCommand extends Command {
 		super(client, {
 			name: 'meme-gen',
 			aliases: ['meme-generator', 'create-meme'],
-			group: 'image-edit',
+			group: 'meme-gen',
 			memberName: 'meme-gen',
 			description: 'Sends a meme with the text and background of your choice.',
 			throttling: {

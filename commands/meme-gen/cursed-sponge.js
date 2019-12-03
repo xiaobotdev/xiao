@@ -7,7 +7,7 @@ module.exports = class CursedSpongeCommand extends Command {
 		super(client, {
 			name: 'cursed-sponge',
 			aliases: ['sponge-snail'],
-			group: 'image-edit',
+			group: 'meme-gen',
 			memberName: 'cursed-sponge',
 			description: 'Sends a cursed sponge duplicated however many times you want.',
 			throttling: {

@@ -12,7 +12,7 @@ module.exports = class GruPlanCommand extends Command {
 		super(client, {
 			name: 'gru-plan',
 			aliases: ['grus-plan', 'gru'],
-			group: 'image-edit',
+			group: 'meme-gen',
 			memberName: 'gru-plan',
 			description: 'Sends a Gru\'s Plan meme with steps of your choice.',
 			throttling: {

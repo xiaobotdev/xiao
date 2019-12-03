@@ -28,6 +28,7 @@ client.registry
 		['mp-games', 'Multi-Player Games'],
 		['image-edit', 'Image Manipulation'],
 		['avatar-edit', 'Avatar Manipulation'],
+		['meme-gen', 'Meme Generators'],
 		['text-edit', 'Text Manipulation'],
 		['number-edit', 'Number Manipulation'],
 		['other', 'Other'],

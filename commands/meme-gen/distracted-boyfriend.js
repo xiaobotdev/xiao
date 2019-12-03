@@ -8,7 +8,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 		super(client, {
 			name: 'distracted-boyfriend',
 			aliases: ['man-looking-at-other-woman', 'jealous-girlfriend'],
-			group: 'avatar-edit',
+			group: 'meme-gen',
 			memberName: 'distracted-boyfriend',
 			description: 'Draws three user\'s avatars over the "Distracted Boyfriend" meme.',
 			throttling: {

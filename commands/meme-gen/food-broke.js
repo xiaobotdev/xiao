@@ -2,15 +2,16 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { contrast } = require('../../util/Canvas');
 
-module.exports = class GirlWorthFightingForCommand extends Command {
+module.exports = class FoodBrokeCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'girl-worth-fighting-for',
-			aliases: ['a-girl-worth-fighting-for', 'ling'],
-			group: 'avatar-edit',
-			memberName: 'girl-worth-fighting-for',
-			description: 'Draws a user\'s avatar as the object of Ling\'s affection.',
+			name: 'food-broke',
+			aliases: ['food-machine-broke'],
+			group: 'meme-gen',
+			memberName: 'food-broke',
+			description: 'Draws a user\'s avatar over the "Food Broke" meme.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -18,8 +19,8 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Mulan',
-					url: 'https://movies.disney.com/mulan'
+					name: '@liltusk',
+					url: 'https://twitter.com/liltusk'
 				}
 			],
 			args: [
@@ -34,16 +35,19 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'girl-worth-fighting-for.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'food-broke.png'));
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 380, 511, 150, 150);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'girl-worth-fighting-for.png' }] });
+			ctx.drawImage(avatar, 23, 9, 125, 125);
+			contrast(ctx, 23, 9, 125, 125);
+			ctx.drawImage(avatar, 117, 382, 75, 75);
+			contrast(ctx, 117, 382, 75, 75);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'food-broke.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
