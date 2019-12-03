@@ -158,6 +158,16 @@ Xiao is a Discord bot coded in JavaScript with
 * **wynaut:** Why not? Wynaut?
 * **yoff:** Posts a picture that truly defines modern art.
 
+### Seeded Randomizers:
+
+* **butt:** Determines a user's butt quality.
+* **coolness:** Determines a user's coolness.
+* **dick:** Determines your dick size.
+* **guess-looks:** Guesses what a user looks like.
+* **iq:** Determines a user's IQ.
+* **psycho-pass:** Determines your Crime Coefficient.
+* **ship:** Ships two users together.
+
 ### Events:
 
 * **apod:** Responds with today's Astronomy Picture of the Day.
@@ -236,20 +246,13 @@ Xiao is a Discord bot coded in JavaScript with
 ### Analyzers:
 
 * **age:** Responds with how old someone born in a certain year is.
-* **butt:** Determines a user's butt quality.
 * **character-count:** Responds with the character count of text.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
-* **coolness:** Determines a user's coolness.
-* **dick:** Determines your dick size.
 * **face:** Determines the race, gender, and age of a face.
 * **gender:** Determines the gender of a name.
-* **guess-looks:** Guesses what a user looks like.
-* **iq:** Determines a user's IQ.
-* **psycho-pass:** Determines your Crime Coefficient.
 * **read-qr-code:** Reads a QR Code.
 * **scrabble-score:** Responds with the scrabble score of a word.
 * **severe-toxicity:** Determines the toxicity of text, but less sensitive to milder language.
-* **ship:** Ships two users together.
 * **toxicity:** Determines the toxicity of text.
 * **what-anime:** Determines what anime a screenshot is from.
 * **zodiac-sign:** Responds with the Zodiac Sign for the given month/day.

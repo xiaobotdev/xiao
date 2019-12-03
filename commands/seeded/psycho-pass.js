@@ -7,7 +7,7 @@ module.exports = class PsychoPassCommand extends Command {
 		super(client, {
 			name: 'psycho-pass',
 			aliases: ['crime-coefficient'],
-			group: 'analyze',
+			group: 'seeded',
 			memberName: 'psycho-pass',
 			description: 'Determines your Crime Coefficient.',
 			credit: [
