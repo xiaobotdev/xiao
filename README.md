@@ -293,32 +293,21 @@ Xiao is a Discord bot coded in JavaScript with
 
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
-* **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **brazzers:** Draws an image with the Brazzers logo in the corner.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **create-qr-code:** Converts text to a QR Code.
-* **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
-* **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **fire:** Draws a fiery border over an image or a user's avatar.
 * **frame:** Draws a frame around an image or a user's avatar.
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
-* **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
-* **illegal:** Makes President Trump make your text illegal.
 * **invert:** Draws an image or a user's avatar but inverted.
-* **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
-* **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
-* **meme-gen:** Sends a meme with the text and background of your choice.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
-* **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
-* **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **pixelize:** Draws an image or a user's avatar pixelized.
-* **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
 * **rainbow:** Draws a rainbow over an image or a user's avatar.
 * **rejected:** Draws a "rejected" stamp over an image or a user's avatar.
@@ -326,26 +315,15 @@ Xiao is a Discord bot coded in JavaScript with
 * **sepia:** Draws an image or a user's avatar in sepia.
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
-* **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
-* **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
 * **square:** Draws an image or a user's avatar as a square.
-* **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
-* **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
-* **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
 
 ### Avatar Manipulation:
 
-* **3000-years:** Draws a user's avatar over Pokémon's "It's been 3000 years" meme.
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
-* **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **bob-ross:** Draws a user's avatar over Bob Ross' canvas.
 * **challenger:** Draws a user's avatar over Super Smash Bros.'s "Challenger Approaching" screen.
 * **dexter:** Draws a user's avatar over the screen of Dexter from Pokémon.
-* **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
-* **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
-* **food-broke:** Draws a user's avatar over the "Food Broke" meme.
-* **girl-worth-fighting-for:** Draws a user's avatar as the object of Ling's affection.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **hearts:** Draws hearts around a user's avatar.
@@ -358,10 +336,35 @@ Xiao is a Discord bot coded in JavaScript with
 * **steam-now-playing-classic:** Draws a user's avatar over a Steam "now playing" notification (old skin).
 * **steam-now-playing:** Draws a user's avatar over a Steam "now playing" notification.
 * **triggered:** Draws a user's avatar over the "Triggered" meme.
-* **ultimate-tattoo:** Draws a user's avatar as "The Ultimate Tattoo".
 * **wanted:** Draws a user's avatar over a wanted poster.
-* **worthless:** Draws a user's avatar over Gravity Falls' "Oh, this? This is worthless." meme.
 * **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
+
+### Meme Generators
+
+* **3000-years:** Draws a user's avatar over Pokémon's "It's been 3000 years" meme.
+* **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
+* **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
+* **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
+* **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
+* **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
+* **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
+* **food-broke:** Draws a user's avatar over the "Food Broke" meme.
+* **girl-worth-fighting-for:** Draws a user's avatar as the object of Ling's affection.
+* **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
+* **illegal:** Makes President Trump make your text illegal.
+* **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
+* **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
+* **meme-gen:** Sends a meme with the text and background of your choice.
+* **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
+* **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
+* **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
+* **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
+* **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
+* **thug-life:** Draws "Thug Life" over an image or a user's avatar.
+* **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
+* **ultimate-tattoo:** Draws a user's avatar as "The Ultimate Tattoo".
+* **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
+* **worthless:** Draws a user's avatar over Gravity Falls' "Oh, this? This is worthless." meme.
 
 ### Text Manipulation:
 

@@ -3,14 +3,14 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
-module.exports = class BeautifulCommand extends Command {
+module.exports = class WorthlessCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'beautiful',
-			aliases: ['this-is-beautiful', 'grunkle-stan'],
-			group: 'avatar-edit',
-			memberName: 'beautiful',
-			description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is beautiful." meme.',
+			name: 'worthless',
+			aliases: ['this-is-worthless'],
+			group: 'meme-gen',
+			memberName: 'worthless',
+			description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is worthless." meme.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -34,19 +34,18 @@ module.exports = class BeautifulCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'beautiful.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'worthless.png'));
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(avatar, 249, 24, 105, 105);
-			ctx.drawImage(avatar, 249, 223, 105, 105);
 			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'beautiful.png' }] });
+			ctx.rotate(6 * (Math.PI / 180));
+			ctx.drawImage(avatar, 496, 183, 400, 400);
+			ctx.rotate(-6 * (Math.PI / 180));
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'worthless.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

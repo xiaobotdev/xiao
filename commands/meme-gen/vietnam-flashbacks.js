@@ -2,15 +2,15 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { greyscale } = require('../../util/Canvas');
 
-module.exports = class ThugLifeCommand extends Command {
+module.exports = class VietnamFlashbacksCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'thug-life',
-			group: 'image-edit',
-			memberName: 'thug-life',
-			description: 'Draws "Thug Life" over an image or a user\'s avatar.',
+			name: 'vietnam-flashbacks',
+			aliases: ['nam-flashbacks', 'vietnam'],
+			group: 'meme-gen',
+			memberName: 'vietnam-flashbacks',
+			description: 'Edits Vietnam flashbacks behind an image or a user\'s avatar.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -18,8 +18,8 @@ module.exports = class ThugLifeCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'pngimg.com',
-					url: 'https://pngimg.com/'
+					name: 'Horst Faas',
+					url: 'https://en.wikipedia.org/wiki/Horst_Faas'
 				}
 			],
 			args: [
@@ -35,20 +35,19 @@ module.exports = class ThugLifeCommand extends Command {
 
 	async run(msg, { image }) {
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'thug-life.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'vietnam-flashbacks.png'));
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
-			ctx.drawImage(data, 0, 0);
-			greyscale(ctx, 0, 0, data.width, data.height);
 			const ratio = base.width / base.height;
-			const width = data.width / 2;
-			const height = Math.round(width / ratio);
-			ctx.drawImage(base, (data.width / 2) - (width / 2), data.height - height, width, height);
+			const width = Math.round(data.height * ratio);
+			ctx.drawImage(base, (data.width / 2) - (width / 2), 0, width, data.height);
+			ctx.globalAlpha = 0.675;
+			ctx.drawImage(data, 0, 0);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'thug-life.png' }] });
+			return msg.say({ files: [{ attachment, name: 'vietnam-flashbacks.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

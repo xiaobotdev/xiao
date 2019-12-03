@@ -11,7 +11,7 @@ module.exports = class NewPasswordCommand extends Command {
 		super(client, {
 			name: 'new-password',
 			aliases: ['strong-password', 'new-pswd', 'strong-pswd'],
-			group: 'image-edit',
+			group: 'meme-gen',
 			memberName: 'new-password',
 			description: 'Sends a "Weak Password/Strong Password" meme with the passwords of your choice.',
 			throttling: {

@@ -3,14 +3,14 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
-module.exports = class WorthlessCommand extends Command {
+module.exports = class ThreeThousandYearsCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'worthless',
-			aliases: ['this-is-worthless'],
-			group: 'avatar-edit',
-			memberName: 'worthless',
-			description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is worthless." meme.',
+			name: '3000-years',
+			aliases: ['3ky', '3k-years'],
+			group: 'meme-gen',
+			memberName: '3000-years',
+			description: 'Draws a user\'s avatar over Pokémon\'s "It\'s been 3000 years" meme.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -18,8 +18,8 @@ module.exports = class WorthlessCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Gravity Falls',
-					url: 'https://disneynow.go.com/shows/gravity-falls'
+					name: 'Pokémon X and Pokémon Y',
+					url: 'https://www.pokemon.com/us/pokemon-video-games/pokemon-x-and-pokemon-y/'
 				}
 			],
 			args: [
@@ -34,18 +34,16 @@ module.exports = class WorthlessCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'worthless.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', '3000-years.png'));
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.rotate(6 * (Math.PI / 180));
-			ctx.drawImage(avatar, 496, 183, 400, 400);
-			ctx.rotate(-6 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'worthless.png' }] });
+			ctx.drawImage(avatar, 461, 127, 200, 200);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

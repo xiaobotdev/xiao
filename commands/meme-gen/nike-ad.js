@@ -12,7 +12,7 @@ module.exports = class NikeAdCommand extends Command {
 		super(client, {
 			name: 'nike-ad',
 			aliases: ['believe-in-something', 'believe-in'],
-			group: 'image-edit',
+			group: 'meme-gen',
 			memberName: 'nike-ad',
 			description: 'Sends a "Believe in Something" Nike Ad meme with the text of your choice.',
 			throttling: {
