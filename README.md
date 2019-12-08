@@ -54,9 +54,8 @@ Xiao is a Discord bot coded in JavaScript with
 ## Related Bots
 
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
-* [Storyteller](https://github.com/dragonfire535/storyteller) is a Mafia bot made for Discord's 2019 Hack Week, whose features were originally built into Xiao.
 
-## Commands (344)
+## Commands (346)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -284,6 +283,8 @@ Xiao is a Discord bot coded in JavaScript with
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **gunfight:** Engage in a western gunfight against another user. High noon.
+* **mafia-role:** Displays your current role during Mafia games.
+* **mafia:** Who is the Mafia? Who is the detective? Will the Mafia kill them all?
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **russian-roulette:** Who will pull the trigger and die first?
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
