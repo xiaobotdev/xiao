@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const { WebhookClient } = require('discord.js');
+const { WebhookClient, Collection } = require('discord.js');
 const winston = require('winston');
 const PokemonStore = require('./pokemon/PokemonStore');
 const MemePoster = require('./MemePoster');
@@ -19,6 +19,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableEveryone: true });
 		this.pokemon = new PokemonStore();
 		this.memePoster = new MemePoster(this);
-		this.games = new Map();
+		this.games = new Collection();
 	}
 };
