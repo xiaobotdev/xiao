@@ -25,7 +25,7 @@ module.exports = class CleverbotCommand extends Command {
 					type: 'string'
 				}
 			],
-			patterns: [/^(clevs|cleverbot|xiao) (.+)/i]
+			patterns: [/^(clevs|cleverbot) (.+)/i]
 		});
 
 		this.convos = new Map();
