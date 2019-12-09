@@ -29,7 +29,7 @@ module.exports = class CleverbotCommand extends Command {
 		});
 
 		this.convos = new Map();
-		this.patterns.push(new RegExp(`^(<!?@${this.client.user.id}>) (.+)`, 'i'));
+		this.client.once('ready', () => this.patterns.push(new RegExp(`^(<!?@${this.client.user.id}>) (.+)`, 'i')));
 	}
 
 	async run(msg, { text }, fromPattern) {
