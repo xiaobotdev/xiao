@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { CLEVERBOT_KEY } = process.env;
+const { CLEVERBOT_KEY, CLEVERBOT_PATTERN_USERS } = process.env;
+const allowedPatternUsers = CLEVERBOT_PATTERN_USERS ? CLEVERBOT_PATTERN_USERS.split(',') : [];
 const blankResponses = ['What?', 'Huh?', 'I don\'t understand.', 'Speak up, please.'];
 
 module.exports = class CleverbotCommand extends Command {
@@ -23,13 +24,18 @@ module.exports = class CleverbotCommand extends Command {
 					prompt: 'What do you want to say to Cleverbot?',
 					type: 'string'
 				}
-			]
+			],
+			patterns: [new RegExp(`^(<!?@${client.id}>) (.+)`, 'i')]
 		});
 
 		this.convos = new Map();
 	}
 
-	async run(msg, { text }) {
+	async run(msg, { text }, fromPattern) {
+		if (fromPattern) {
+			if (!allowedPatternUsers.includes(msg.author.id)) return null;
+			text = msg.patternMatches[2];
+		}
 		try {
 			const convo = this.convos.get(msg.channel.id);
 			const { body } = await request
@@ -44,6 +50,7 @@ module.exports = class CleverbotCommand extends Command {
 			this.convos.set(msg.channel.id, { cs: body.cs, timeout });
 			return msg.reply(body.output || blankResponses[Math.floor(Math.random() * blankResponses.length)]);
 		} catch (err) {
+			if (fromPattern) return null;
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
