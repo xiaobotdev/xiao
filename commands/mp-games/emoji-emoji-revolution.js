@@ -43,7 +43,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 				++turn;
 				const num = Math.floor(Math.random() * emojis.length);
 				const emoji = [emojis[num], emojisNew[num]];
-				await msg.say(emoji);
+				await msg.say(emojisNew[num]);
 				const filter = res => [msg.author.id, opponent.id].includes(res.author.id) && emoji.includes(res.content);
 				const win = await msg.channel.awaitMessages(filter, {
 					max: 1,
