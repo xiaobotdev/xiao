@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
 const emojis = ['⬆', '↗', '➡', '↘', '⬇', '↙', '⬅', '↖'];
+const emojisNew = ['⬆️', '↗️', '➡️', '↘️', '⬇️', '↙️', '⬅️', '↖️'];
 
 module.exports = class EmojiEmojiRevolutionCommand extends Command {
 	constructor(client) {
@@ -40,9 +41,10 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			let oPts = 0;
 			while (turn < 10) {
 				++turn;
-				const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+				const num = Math.floor(Math.random() * emojis.length);
+				const emoji = [emojis[num], emojisNew[num]];
 				await msg.say(emoji);
-				const filter = res => [msg.author.id, opponent.id].includes(res.author.id) && res.content === emoji;
+				const filter = res => [msg.author.id, opponent.id].includes(res.author.id) && emoji.includes(res.content);
 				const win = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: 30000
