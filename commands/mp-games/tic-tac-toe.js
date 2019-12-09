@@ -33,7 +33,7 @@ module.exports = class TicTacToeCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
-			const sides = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+			const sides = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 			const taken = [];
 			let userTurn = true;
 			let winner = null;
@@ -64,7 +64,7 @@ module.exports = class TicTacToeCommand extends Command {
 					continue;
 				}
 				const choice = turn.first().content;
-				sides[Number.parseInt(choice, 10)] = sign;
+				sides[Number.parseInt(choice, 10) - 1] = sign;
 				taken.push(choice);
 				if (this.verifyWin(sides)) winner = userTurn ? msg.author : opponent;
 				userTurn = !userTurn;
