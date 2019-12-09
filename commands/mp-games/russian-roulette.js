@@ -39,6 +39,7 @@ module.exports = class RussianRouletteCommand extends Command {
 			const gun = shuffle([true, false, false, false, false, false, false, false]);
 			let round = 0;
 			let winner = null;
+			let quit = false;
 			while (!winner) {
 				const player = userTurn ? msg.author : opponent;
 				const notPlayer = userTurn ? opponent : msg.author;
@@ -51,12 +52,16 @@ module.exports = class RussianRouletteCommand extends Command {
 						${opponent.bot ? 'Continue?' : `Will you take the gun, ${notPlayer}?`} (${8 - round - 1} shots left)
 					`);
 					const keepGoing = await verify(msg.channel, opponent.bot ? msg.author : notPlayer);
-					if (!keepGoing) winner = notPlayer;
+					if (!keepGoing) {
+						winner = notPlayer;
+						quit = true;
+					}
 					round++;
 					userTurn = !userTurn;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
+			if (quit) return msg.say(`${winner} wins, because their opponent was a coward.`);
 			return msg.say(`The winner is ${winner}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
