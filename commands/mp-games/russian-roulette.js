@@ -53,7 +53,8 @@ module.exports = class RussianRouletteCommand extends Command {
 					`);
 					const keepGoing = await verify(msg.channel, opponent.bot ? msg.author : notPlayer);
 					if (!keepGoing) {
-						winner = player;
+						if (opponent.bot) winner = opponent;
+						else winner = player;
 						quit = true;
 					}
 					round++;
