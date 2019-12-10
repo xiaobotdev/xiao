@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { CLEVERBOT_KEY, CLEVERBOT_PATTERN_USERS } = process.env;
-const allowedPatternUsers = CLEVERBOT_PATTERN_USERS ? CLEVERBOT_PATTERN_USERS.split(',') : [];
+const { CLEVERBOT_KEY } = process.env;
 const blankResponses = ['What?', 'Huh?', 'I don\'t understand.', 'Speak up, please.'];
 
 module.exports = class CleverbotCommand extends Command {
@@ -32,10 +31,7 @@ module.exports = class CleverbotCommand extends Command {
 	}
 
 	async run(msg, { text }, fromPattern) {
-		if (fromPattern) {
-			if (!allowedPatternUsers.includes(msg.author.id)) return null;
-			text = msg.patternMatches[2];
-		}
+		if (fromPattern) text = msg.patternMatches[2];
 		try {
 			const convo = this.convos.get(msg.channel.id);
 			const { body } = await request
