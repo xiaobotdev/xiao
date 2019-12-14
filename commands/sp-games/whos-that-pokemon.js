@@ -42,7 +42,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 	}
 
 	async run(msg, { hide }) {
-		const pokemon = Math.floor(Math.random() * 802) + 1;
+		const pokemon = Math.floor(Math.random() * 807) + 1;
 		try {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
