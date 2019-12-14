@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const filterLevels = ['Off', 'No Role', 'Everyone'];
 const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻', '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'];
 
@@ -22,16 +23,21 @@ module.exports = class ServerCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(msg.guild.iconURL({ format: 'png' }))
-			.addField('❯ Name', msg.guild.name, true)
-			.addField('❯ ID', msg.guild.id, true)
-			.addField('❯ Region', msg.guild.region.toUpperCase(), true)
-			.addField('❯ Creation Date', moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm A'), true)
-			.addField('❯ Explicit Filter', filterLevels[msg.guild.explicitContentFilter], true)
-			.addField('❯ Owner', msg.guild.owner.user.tag, true)
-			.addField('❯ Members', msg.guild.memberCount, true)
-			.addField('❯ Roles', msg.guild.roles.size, true)
-			.addField('❯ Channels', msg.guild.channels.filter(channel => channel.type !== 'category').size, true)
-			.addField('❯ Verification Level', verificationLevels[msg.guild.verificationLevel], true);
+			.setAuthor(msg.guild.name)
+			.setDescription(stripIndents`
+				**General Info:**
+				• ID: ${msg.guild.id}
+				• Owner: ${msg.guild.owner.user.tag}
+				• Region: ${msg.guild.region.toUpperCase()}
+				• Creation Date: ${moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm A')}
+				• Explicit Filter: ${filterLevels[msg.guild.explicitContentFilter]}
+				• Verification Level: ${verificationLevels[msg.guild.verificationLevel]}
+
+				**Server Stats:**
+				• Members: ${msg.guild.memberCount}
+				• Roles: ${msg.guild.roles.size}
+				• Channels: ${msg.guild.channels.filter(channel => channel.type !== 'category').size}
+			`);
 		return msg.embed(embed);
 	}
 };
