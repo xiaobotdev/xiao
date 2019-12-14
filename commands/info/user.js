@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 const { trimArray } = require('../../util/Util');
 const activities = {
 	PLAYING: 'Playing',
@@ -32,11 +33,14 @@ module.exports = class UserCommand extends Command {
 	async run(msg, { user }) {
 		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
 		const embed = new MessageEmbed()
-			.setThumbnail(user.displayAvatarURL({ format }))
-			.addField('❯ Name', user.tag, true)
-			.addField('❯ ID', user.id, true)
-			.addField('❯ Discord Join Date', moment.utc(user.createdAt).format('MM/DD/YYYY h:mm A'), true)
-			.addField('❯ Bot?', user.bot ? 'Yes' : 'No', true);
+			.setAuthor(user.tag)
+			.setThumbnail(user.displayAvatarURL({ format }));
+		let description = stripIndents`
+			**General User Info:**
+			• ID: ${user.id}
+			• Discord Join Date: ${moment.utc(user.createdAt).format('MM/DD/YYYY h:mm A')}
+			• ${user.bot ? 'Bot' : 'Not a Bot'}
+		`;
 		if (msg.channel.type === 'text') {
 			try {
 				const member = await msg.guild.members.fetch(user.id);
@@ -45,21 +49,23 @@ module.exports = class UserCommand extends Command {
 					.filter(role => role.id !== defaultRole.id)
 					.sort((a, b) => b.position - a.position)
 					.map(role => role.name);
-				embed
-					.setColor(member.displayHexColor)
-					.setDescription(member.presence.activity
-						? `${activities[member.presence.activity.type]} **${member.presence.activity.name}**`
-						: '')
-					.addField('❯ Server Join Date', moment.utc(member.joinedAt).format('MM/DD/YYYY h:mm A'), true)
-					.addField('❯ Nickname', member.nickname || 'None', true)
-					.addField('❯ Highest Role',
-						member.roles.highest.id === defaultRole.id ? 'None' : member.roles.highest.name, true)
-					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true)
-					.addField(`❯ Roles (${roles.length})`, roles.length ? trimArray(roles, 10).join(', ') : 'None');
+				description += stripIndents`
+
+					**Server Member Info:**
+					• Nickname: ${member.nickname || 'None'}
+					• Server Join Date: ${moment.utc(member.joinedAt).format('MM/DD/YYYY h:mm A')}
+					• Highest Role: ${member.roles.highest.id === defaultRole.id ? 'None' : member.roles.highest.name}
+					• Hoist Role: ${member.roles.hoist ? member.roles.hoist.name : 'None'}
+
+					**Roles (${roles.length})**
+					• ${roles.length ? trimArray(roles, 6).join(', ') : 'None'}
+				`;
+				embed.setColor(member.displayHexColor);
 			} catch (err) {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
 			}
 		}
+		embed.setDescription(description);
 		return msg.embed(embed);
 	}
 };
