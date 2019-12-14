@@ -22,7 +22,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ### Before You Begin
 
-1. Make sure you have installed [Node.js](https://nodejs.org/en/) >=10 and [Git](https://git-scm.com/).
+1. Make sure you have installed [Node.js](https://nodejs.org/en/) >=12 and [Git](https://git-scm.com/).
 2. Clone this repository with `git clone https://github.com/dragonfire535/xiao.git`.
 3. Run `cd xiao` to move into the folder that you just created.
 4. Create a file named `.env` and fill it out as shown in `.env.example`.
