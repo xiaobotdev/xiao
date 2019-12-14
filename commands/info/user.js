@@ -49,8 +49,8 @@ module.exports = class UserCommand extends Command {
 					.filter(role => role.id !== defaultRole.id)
 					.sort((a, b) => b.position - a.position)
 					.map(role => role.name);
+				description += '\n\n';
 				description += stripIndents`
-
 					**Server Member Info:**
 					• Nickname: ${member.nickname || 'None'}
 					• Server Join Date: ${moment.utc(member.joinedAt).format('MM/DD/YYYY h:mm A')}
