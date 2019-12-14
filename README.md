@@ -55,7 +55,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
 
-## Commands (347)
+## Commands (348)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -174,6 +174,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **calendar:** Responds with today's holidays.
 * **days-until:** Responds with how many days there are until a certain date.
 * **doomsday-clock:** Responds with the current time of the Doomsday Clock.
+* **friday-the-13th:** Determines if today is Friday the 13th.
 * **google-doodle:** Responds with a Google Doodle, either the latest one or a random one from the past.
 * **horoscope:** Responds with today's horoscope for a specific Zodiac sign.
 * **humble-bundle:** Responds with the current Humble Bundle.
