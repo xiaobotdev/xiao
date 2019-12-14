@@ -42,7 +42,7 @@ module.exports = class UserCommand extends Command {
 				const member = await msg.guild.members.fetch(user.id);
 				const defaultRole = msg.guild.roles.get(msg.guild.id);
 				const roles = member.roles
-					.filter(role => role.id !== defaultRole)
+					.filter(role => role.id !== defaultRole.id)
 					.sort((a, b) => b.position - a.position)
 					.map(role => role.name);
 				embed
@@ -53,7 +53,7 @@ module.exports = class UserCommand extends Command {
 					.addField('❯ Server Join Date', moment.utc(member.joinedAt).format('MM/DD/YYYY h:mm A'), true)
 					.addField('❯ Nickname', member.nickname || 'None', true)
 					.addField('❯ Highest Role',
-						member.roles.highest.id === defaultRole ? 'None' : member.roles.highest.name, true)
+						member.roles.highest.id === defaultRole.id ? 'None' : member.roles.highest.name, true)
 					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true)
 					.addField(`❯ Roles (${roles.length})`, roles.length ? trimArray(roles, 10).join(', ') : 'None');
 			} catch (err) {
