@@ -3,12 +3,6 @@ const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { trimArray } = require('../../util/Util');
-const activities = {
-	PLAYING: 'Playing',
-	STREAMING: 'Streaming',
-	WATCHING: 'Watching',
-	LISTENING: 'Listening to'
-};
 
 module.exports = class UserCommand extends Command {
 	constructor(client) {
