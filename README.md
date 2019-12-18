@@ -55,7 +55,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
 
-## Commands (348)
+## Commands (349)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -348,6 +348,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
+* **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
