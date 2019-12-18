@@ -64,7 +64,7 @@ module.exports = class DearLiberalsCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = '20px Oswald SemiBold';
 		ctx.rotate(12.30 * (Math.PI / 180));
-		ctx.fillText(`#${hashtag}`, 196, 215);
+		ctx.fillText(`#${hashtag}`, 200, 220);
 		ctx.rotate(-12.30 * (Math.PI / 180));
 		ctx.fillStyle = '#002046';
 		ctx.font = '27px Oswald SemiBold';
