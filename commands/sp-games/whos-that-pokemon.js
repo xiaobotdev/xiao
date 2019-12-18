@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
+const { list } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 const difficulties = ['easy', 'hard'];
 
