@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { silhouette } = require('../../util/Canvas');
+const difficulties = ['easy', 'hard'];
 
 module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {
@@ -32,21 +33,23 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			],
 			args: [
 				{
-					key: 'hide',
-					prompt: 'Do you want to silhouette the Pokémon\'s image?',
-					type: 'boolean',
-					default: true
+					key: 'difficulty',
+					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
+					type: 'string',
+					oneOf: difficulties,
+					parse: difficulty => difficulty.toLowerCase(),
+					default: 'hard'
 				}
 			]
 		});
 	}
 
-	async run(msg, { hide }) {
+	async run(msg, { difficulty }) {
 		const pokemon = Math.floor(Math.random() * 807) + 1;
 		try {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
-			const attachment = await this.fetchImage(data, hide);
+			const attachment = await this.fetchImage(data, difficulty);
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
@@ -60,10 +63,10 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		}
 	}
 
-	async fetchImage(pokemon, hide = false) {
+	async fetchImage(pokemon, difficulty) {
 		const name = `${pokemon.id}.png`;
 		const image = await request.get(pokemon.spriteImageURL);
-		if (!hide) return { attachment: image.body, name };
+		if (difficulty === 'easy') return { attachment: image.body, name };
 		const base = await loadImage(image.body);
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
