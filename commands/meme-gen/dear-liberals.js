@@ -62,12 +62,12 @@ module.exports = class DearLiberalsCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
-		ctx.font = '20px Oswald-SemiBold';
+		ctx.font = '20px Oswald SemiBold';
 		ctx.rotate(12.30 * (Math.PI / 180));
-		ctx.fillText(`#${hashtag}`, 186, 225);
+		ctx.fillText(`#${hashtag}`, 196, 215);
 		ctx.rotate(-12.30 * (Math.PI / 180));
 		ctx.fillStyle = '#002046';
-		ctx.font = '27px Oswald-SemiBold';
+		ctx.font = '27px Oswald SemiBold';
 		const blueLines = await wrapText(ctx, blueText, 270);
 		ctx.fillText(blueLines.join('\n'), 207, 90);
 		ctx.fillStyle = '#c31a41';
