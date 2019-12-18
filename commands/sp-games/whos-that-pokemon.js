@@ -35,7 +35,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					key: 'hide',
 					prompt: 'Do you want to silhouette the Pokémon\'s image?',
 					type: 'boolean',
-					default: false
+					default: true
 				}
 			]
 		});
