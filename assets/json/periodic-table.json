@@ -951,6 +951,60 @@
 			"period": 7,
 			"phase": "Solid",
 			"symbol": "Og"
+		},
+		{
+			"name": "Ununennium",
+			"mass": 315,
+			"number": 119,
+			"period": 8,
+			"phase": "Solid",
+			"symbol": "Uue",
+			"undiscovered": true
+		},
+		{
+			"name": "Unbinilium",
+			"mass": 299,
+			"number": 120,
+			"period": 8,
+			"phase": "Solid",
+			"symbol": "Ubn",
+			"undiscovered": true
+		},
+		{
+			"name": "Unbiunium",
+			"mass": 320,
+			"number": 121,
+			"period": 8,
+			"phase": null,
+			"symbol": "Ubu",
+			"undiscovered": true
+		},
+		{
+			"name": "Unbibium",
+			"mass": null,
+			"number": 122,
+			"period": 8,
+			"phase": null,
+			"symbol": "Ubb",
+			"undiscovered": true
+		},
+		{
+			"name": "Unbitrium",
+			"mass": null,
+			"number": 123,
+			"period": 8,
+			"phase": null,
+			"symbol": "Ubt",
+			"undiscovered": true
+		},
+		{
+			"name": "Unbiquadium",
+			"mass": null,
+			"number": 124,
+			"period": 8,
+			"phase": null,
+			"symbol": "Ubq",
+			"undiscovered": true
 		}
 	],
 	"colors": {
