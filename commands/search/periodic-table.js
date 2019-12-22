@@ -63,7 +63,7 @@ module.exports = class PeriodicTableCommand extends Command {
 			ctx.drawImage(batman, 100, 166);
 		} else {
 			ctx.font = '210px Noto';
-			ctx.fillStyle = colors[element.phase];
+			ctx.fillStyle = colors[element.phase] || 'gray';
 			ctx.fillText(element.symbol, 250, 320);
 		}
 		ctx.fillStyle = 'black';
@@ -71,10 +71,11 @@ module.exports = class PeriodicTableCommand extends Command {
 		ctx.fillText(element.number, 250, 100);
 		ctx.fillText(element.name, 250, 450);
 		ctx.font = '30px Noto';
-		ctx.fillText(element.mass, 250, 400);
+		ctx.fillText(element.mass || '?', 250, 400);
 		const period = element.number === 0 ? element.period : `period ${element.period}`;
+		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;
 		return msg.say(
-			`**${element.name} (${element.symbol})** is a ${element.phase} in ${period}.`,
+			`**${element.name} (${element.symbol})** is a ${phase} in ${period}.`,
 			{ files: [{ attachment: canvas.toBuffer(), name: `${element.name}.png` }] }
 		);
 	}
