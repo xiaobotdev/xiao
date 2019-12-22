@@ -15,7 +15,7 @@ module.exports = class AxisCultCommand extends Command {
 					url: 'https://www.reddit.com/r/axisorderbot/wiki/index'
 				},
 				{
-					name: 'Konosuba: God\'s Blessing on this Wonderful World!',
+					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
 					url: 'http://konosuba.com/'
 				}
 			]

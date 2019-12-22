@@ -12,6 +12,10 @@ module.exports = class GoogleFeudCommand extends Command {
 			description: 'Attempt to determine the top suggestions for a Google search.',
 			credit: [
 				{
+					name: 'Google',
+					url: 'https://www.google.com/'
+				},
+				{
 					name: 'Google Feud',
 					url: 'http://www.googlefeud.com/'
 				}

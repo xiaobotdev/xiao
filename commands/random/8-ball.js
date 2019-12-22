@@ -10,6 +10,12 @@ module.exports = class EightBallCommand extends Command {
 			group: 'random',
 			memberName: '8-ball',
 			description: 'Asks your question to the Magic 8 Ball.',
+			credit: [
+				{
+					name: 'Mattel',
+					url: 'https://www.mattelgames.com/games/en-us/kids/magic-8-ball'
+				}
+			],
 			args: [
 				{
 					key: 'question',

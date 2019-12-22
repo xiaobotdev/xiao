@@ -7,7 +7,13 @@ module.exports = class KazumaKazumaCommand extends Command {
 			group: 'single',
 			memberName: 'kazuma-kazuma',
 			description: 'Hai, Kazuma desu.',
-			patterns: [/kazuma,? kazuma!?/i]
+			patterns: [/kazuma,? kazuma!?/i],
+			credit: [
+				{
+					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
+					url: 'http://konosuba.com/'
+				}
+			]
 		});
 	}
 
