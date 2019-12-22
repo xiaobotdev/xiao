@@ -38,6 +38,14 @@ module.exports = class HatCommand extends Command {
 				{
 					name: 'PinClipart',
 					url: 'https://www.pinclipart.com/'
+				},
+				{
+					name: 'RedBubble - Akbar Mna',
+					url: 'https://www.redbubble.com/en/people/akbarmna/shop'
+				},
+				{
+					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
+					url: 'http://konosuba.com/'
 				}
 			],
 			args: [

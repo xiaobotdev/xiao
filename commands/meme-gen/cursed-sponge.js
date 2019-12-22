@@ -15,6 +15,12 @@ module.exports = class CursedSpongeCommand extends Command {
 				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'Spongebob Squarepants',
+					url: 'https://www.nick.com/shows/spongebob-squarepants'
+				}
+			],
 			args: [
 				{
 					key: 'amount',

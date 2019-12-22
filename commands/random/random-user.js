@@ -4,7 +4,7 @@ module.exports = class RandomUserCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'random-user',
-			aliases: ['member-roulette', 'user-roulette', 'random-member'],
+			aliases: ['member-roulette', 'user-roulette', 'random-member', 'someone', '@someone'],
 			group: 'random',
 			memberName: 'random-user',
 			description: 'Randomly chooses a member of the server.'

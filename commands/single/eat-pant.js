@@ -9,7 +9,17 @@ module.exports = class EatPantCommand extends Command {
 			group: 'single',
 			memberName: 'eat-pant',
 			description: 'Eat pant.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'u/_Ebb',
+					url: 'https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/'
+				},
+				{
+					name: 'The Simpsons',
+					url: 'http://www.simpsonsworld.com/'
+				}
+			]
 		});
 	}
 

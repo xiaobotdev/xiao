@@ -9,6 +9,12 @@ module.exports = class GoogleAutofillCommand extends Command {
 			group: 'search',
 			memberName: 'google-autofill',
 			description: 'Responds with a list of the Google Autofill results for a particular query.',
+			credit: [
+				{
+					name: 'Google',
+					url: 'https://www.google.com/'
+				}
+			],
 			args: [
 				{
 					key: 'query',

@@ -11,6 +11,10 @@ module.exports = class ChuckNorrisCommand extends Command {
 			description: 'Responds with a random Chuck Norris joke.',
 			credit: [
 				{
+					name: 'Chuck Norris',
+					url: 'https://chucknorris.com/'
+				},
+				{
 					name: 'The Internet Chuck Norris Database API',
 					url: 'http://www.icndb.com/api/'
 				}

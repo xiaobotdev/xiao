@@ -8,7 +8,13 @@ module.exports = class SuicideHotlineCommand extends Command {
 			group: 'single',
 			memberName: 'suicide-hotline',
 			description: 'Responds with the phone number for the Suicide Hotline.',
-			patterns: [/kms|(kill myself)/i]
+			patterns: [/kms|(kill myself)/i],
+			credit: [
+				{
+					name: 'National Suicide Prevention Lifeline',
+					url: 'https://suicidepreventionlifeline.org/'
+				}
+			]
 		});
 	}
 
