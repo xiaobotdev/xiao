@@ -48,7 +48,7 @@ const personalGraphQL = stripIndents`
 				entries {
 					mediaId
 					score(format: POINT_10)
-					progress
+					status
 				}
 				name
 			}
