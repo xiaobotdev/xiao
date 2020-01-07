@@ -5,8 +5,8 @@ module.exports = class DickCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dick',
-			aliases: ['dick-size', 'penis', 'penis-size', 'pee-pee', 'pee-pee-size'],
-			group: 'seeded',
+			aliases: ['dick-size', 'penis', 'penis-size', 'pee-pee', 'pee-pee-size', 'cock', 'cock-size'],
+			group: 'nsfw',
 			memberName: 'dick',
 			description: 'Determines your dick size.',
 			nsfw: true,

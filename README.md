@@ -164,7 +164,6 @@ Xiao is a Discord bot coded in JavaScript with
 
 * **butt:** Determines a user's butt quality.
 * **coolness:** Determines a user's coolness.
-* **dick:** Determines your dick size.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
 * **psycho-pass:** Determines your Crime Coefficient.
@@ -191,11 +190,9 @@ Xiao is a Discord bot coded in JavaScript with
 * **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
 * **character:** Searches AniList for your query, getting character results.
-* **danbooru:** Responds with an image from Danbooru, with optional query.
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
-* **flickr:** Searches Flickr for your query.
 * **giphy:** Searches Giphy for your query.
 * **github:** Responds with information on a GitHub repository.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
@@ -298,7 +295,6 @@ Xiao is a Discord bot coded in JavaScript with
 
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
-* **brazzers:** Draws an image with the Brazzers logo in the corner.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
@@ -430,6 +426,13 @@ Xiao is a Discord bot coded in JavaScript with
 * **roman:** Converts a number to roman numerals.
 * **scientific-notation:** Converts a number to scientific notation.
 * **units:** Converts units to/from other units.
+
+### NSFW:
+
+* **brazzers:** Draws an image with the Brazzers logo in the corner.
+* **danbooru:** Responds with an image from Danbooru, with optional query.
+* **dick:** Determines your dick size.
+* **flickr:** Searches Flickr for your query... Maybe.
 
 ### Other:
 
