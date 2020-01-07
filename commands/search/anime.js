@@ -165,6 +165,8 @@ module.exports = class AnimeCommand extends Command {
 			...lists.find(list => list.name === 'Watching').entries,
 			...lists.find(list => list.name === 'Completed').entries
 		];
+		const rewatching = lists.find(list => list.name === 'Rewatching');
+		if (rewatching) this.personalList.push(...rewatching.entries);
 		setTimeout(() => { this.personalList = null; }, 3.6e+6);
 		return this.personalList;
 	}
