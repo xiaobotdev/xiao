@@ -67,6 +67,14 @@ const statuses = {
 	NOT_YET_RELEASED: 'Unreleased',
 	CANCELLED: 'Cancelled'
 };
+const userStatuses = {
+	CURRENT: 'Watching',
+	PLANNING: 'Planning',
+	COMPLETED: 'Completed',
+	DROPPED: 'Dropped',
+	PAUSED: 'Paused',
+	REPEATING: 'Rewatching'
+};
 
 module.exports = class AnimeCommand extends Command {
 	constructor(client) {
@@ -113,9 +121,9 @@ module.exports = class AnimeCommand extends Command {
 				.addField('❯ Episodes', anime.episodes || '???', true)
 				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
 				.addField('❯ Average Score', anime.meanScore ? `${anime.meanScore}/100` : '???', true)
-				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
+				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '?/10', true)
 				.addField(`❯ ${ANILIST_USERNAME}'s Progress`,
-					entry && entry.progress ? `${entry.progress}/${anime.episodes || ''}` : '???', true);
+					entry && entry.status ? userStatuses[entry.status] : 'Not Planned', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -161,12 +169,8 @@ module.exports = class AnimeCommand extends Command {
 				query: personalGraphQL
 			});
 		const { lists } = body.data.MediaListCollection;
-		this.personalList = [
-			...lists.find(list => list.name === 'Watching').entries,
-			...lists.find(list => list.name === 'Completed').entries
-		];
-		const rewatching = lists.find(list => list.name === 'Rewatching');
-		if (rewatching) this.personalList.push(...rewatching.entries);
+		this.personalList = [];
+		for (const list of Object.values(lists)) this.personalList.push(...list.entries);
 		setTimeout(() => { this.personalList = null; }, 3.6e+6);
 		return this.personalList;
 	}
