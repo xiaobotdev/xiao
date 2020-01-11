@@ -19,6 +19,7 @@ module.exports = class OptionsCommand extends Command {
 			Place the option in the appropriate channel's topic to use.
 
 			\`<xiao:disable-leave>\` Disables leave messages (System Channel).
+			\`<portal>\` Marks the channel as a portal channel for \`portal-send\`.
 		`);
 	}
 };
