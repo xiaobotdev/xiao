@@ -57,7 +57,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
 
-## Commands (349)
+## Commands (350)
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -67,6 +67,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
+* **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 
 ### Discord Information:
