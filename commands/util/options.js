@@ -1,0 +1,24 @@
+const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
+
+module.exports = class OptionsCommand extends Command {
+	constructor(client) {
+		super(client, {
+			name: 'options',
+			aliases: ['options-list'],
+			group: 'util',
+			memberName: 'options',
+			description: 'Responds with a list of server options.',
+			guarded: true
+		});
+	}
+
+	run(msg) {
+		return msg.say(stripIndents`
+			__**Server Options**__
+			Place the option in the appropriate channel's topic to use.
+
+			\`<xiao:disable-leave>\` Disables leave messages (System Channel).
+		`);
+	}
+};
