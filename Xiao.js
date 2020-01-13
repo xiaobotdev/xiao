@@ -33,7 +33,8 @@ client.registry
 		['number-edit', 'Number Manipulation'],
 		['nsfw', 'NSFW'],
 		['other', 'Other'],
-		['roleplay', 'Roleplay']
+		['roleplay', 'Roleplay'],
+		['owner', 'Owner-Only']
 	])
 	.registerDefaultCommands({
 		help: false,
