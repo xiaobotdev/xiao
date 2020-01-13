@@ -11,6 +11,37 @@ Xiao is a Discord bot coded in JavaScript with
 [Commando](https://github.com/discordjs/Commando) command framework. With over
 300 commands, she is one of the most feature-rich bots out there.
 
+## Table of Contents
+
+- [Fun Information](#fun-information)
+- [Installing](#installing)
+	* [Before You Begin](#before-you-begin)
+	* [Windows](#windows)
+	* [Mac](#mac)
+	* [Ubuntu and other Debian-based systems](#ubuntu-and-other-debian-based-systems)
+- [Related Bots](#related-bots)
+- [Commands](#commands)
+	* [Utility](#utility)
+	* [Discord Information](#discord-information)
+	* [Random Response](#random-response)
+	* [Single Response](#single-response)
+	* [Seeded Randomizers](#seeded-randomizers)
+	* [Events](#events)
+	* [Search](#search)
+	* [Analyzers](#analyzers)
+	* [Single-Player Games](#single-player-games)
+	* [Multi-Player Games](#multi-player-games)
+	* [Image Manipulation](#image-manipulation)
+	* [Avatar Manipulation](#avatar-manipulation)
+	* [Meme Generators](#meme-generators)
+	* [Text Manipulation](#text-manipulation)
+	* [Number Manipulation](#number-manipulation)
+	* [NSFW](#nsfw)
+	* [Other](#other)
+	* [Roleplay](#roleplay)
+- [Licensing](#licensing)
+- [Credit](#credit)
+
 ## Fun Information
 - 340+ Commands
 - 15,000+ lines of JavaScript
@@ -57,7 +88,10 @@ Xiao is a Discord bot coded in JavaScript with
 
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
 
-## Commands (351)
+## Commands
+
+Total: 351
+
 ### Utility:
 
 * **eval:** Executes JavaScript code.
@@ -279,7 +313,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **whos-that-pokemon:** Guess who that Pokémon is
 
-### Multi-Player Games
+### Multi-Player Games:
 
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
@@ -342,7 +376,7 @@ Xiao is a Discord bot coded in JavaScript with
 * **wanted:** Draws a user's avatar over a wanted poster.
 * **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
 
-### Meme Generators
+### Meme Generators:
 
 * **3000-years:** Draws a user's avatar over Pokémon's "It's been 3000 years" meme.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
@@ -474,6 +508,8 @@ would be grateful if you would include some form of credit somewhere.
 Xiao has a _lot_ of commands, and many of those commands use data or APIs from
 outside sources. This list is a list of every single site, user, and API used
 to make Xiao possible. Thank you to everyone here.
+
+> Note: This _does not_ indicate support for the source. I might like them, I might detest them.
 
 * [Face++ Cognitive Services](https://www.faceplusplus.com/)
 * [Genderize.io](https://genderize.io/)
