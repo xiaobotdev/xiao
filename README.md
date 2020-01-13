@@ -43,8 +43,8 @@ Xiao is a Discord bot coded in JavaScript with
 - [Credit](#credit)
 
 ## Fun Information
-- 340+ Commands
-- 15,000+ lines of JavaScript
+- 350+ Commands
+- 16,000+ lines of JavaScript
 - 58,000+ lines of JSON data
 - 3 years of development
 - 3,000+ commits
