@@ -29,6 +29,7 @@ module.exports = class HelpCommand extends Command {
 				.setColor(0x00AE86)
 				.setFooter(`${this.client.registry.commands.size} Commands`);
 			for (const group of this.client.registry.groups.values()) {
+				if (group.id === 'owner') continue;
 				embed.addField(
 					`❯ ${group.name}`,
 					group.commands.map(cmd => `\`${cmd.name}\``).join(', ') || 'None'
