@@ -90,7 +90,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 351
+Total: 353
 
 ### Utility:
 
@@ -311,7 +311,7 @@ Total: 351
 * **slots:** Play a game of slots.
 * **sorting-hat:** Take a quiz to determine your Hogwarts house.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
-* **whos-that-pokemon:** Guess who that Pokémon is
+* **whos-that-pokemon:** Guess who that Pokémon is.
 
 ### Multi-Player Games:
 
@@ -507,191 +507,445 @@ would be grateful if you would include some form of credit somewhere.
 
 Xiao has a _lot_ of commands, and many of those commands use data or APIs from
 outside sources. This list is a list of every single site, user, and API used
-to make Xiao possible. Thank you to everyone here.
+to make Xiao possible, and the commands they're used in. Thank you to everyone
+here.
 
 > Note: This _does not_ indicate support for the source. I might like them, I might detest them.
 
-* [Face++ Cognitive Services](https://www.faceplusplus.com/)
-* [Genderize.io](https://genderize.io/)
-* [QR Code Generator's QR code API](http://goqr.me/api/)
-* [Scrabble](https://scrabble.hasbro.com/en-us)
-* [Perspective API](https://www.perspectiveapi.com/#/)
-* [WAIT: What Anime Is This?](https://trace.moe/)
-* [Bob Ross](https://www.bobross.com/)
-* [Super Smash Bros.](https://www.smashbros.com/en_US/index.html)
-* [Pokémon TV](https://www.pokemon.com/us/pokemon-episodes/)
-* [ClipArtHut](http://www.cliparthut.com/)
-* [PNG Arts](https://www.pngarts.com/)
-* [misskatecuttables.com](https://www.misskatecuttables.com/)
-* [WorldArtsMe](http://worldartsme.com/)
-* [PinClipart](https://www.pinclipart.com/)
-* [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop)
-* [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
-* [The Lion King](https://movies.disney.com/the-lion-king)
-* [Jessica Knable](https://picsart.com/jessicaknable)
-* [Mattel](https://www.mattel.com/en-us)
-* [Nickelback - Photograph](https://www.youtube.com/watch?v=BB0DU4DoPP4)
-* [KINMOZA!](http://www.kinmosa.com/)
-* [vician](https://www.123rf.com/profile_vician)
-* [CoolClips.com](http://search.coolclips.com/)
-* [Steam](https://store.steampowered.com/)
-* [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
-* [Google Noto Fonts](https://www.google.com/get/noto/)
-* [NotAWeebDev/Misaki](https://github.com/NotAWeebDev/Misaki)
-* [Tim's Printables](https://www.timvandevall.com/)
-* [Yu-Gi-Oh! Trading Card Game](https://www.yugioh-card.com/en/)
-* [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html)
-* [Google Calendar API](https://developers.google.com/calendar/)
-* [Bulletin of the Atomic Scientists](https://thebulletin.org/)
-* [Google Doodles](https://www.google.com/doodles)
-* [The Astrologer by Kelli Fox](https://new.theastrologer.com/)
-* [Humble Bundle](https://www.humblebundle.com/)
-* [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
-* [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-* [Neopets](http://www.neopets.com/)
-* [muffinlabs - Today in History](http://history.muffinlabs.com/)
-* [Minecraft](https://www.minecraft.net/en-us/)
-* [Minecraft Achievement Generator](https://www.minecraftskinstealer.com/achievement/)
-* [Minecraftia Font](https://www.dafont.com/minecraftia.font)
-* [Redeeming God](https://redeeminggod.com/)
-* [susi1959 - PicMix](https://en.picmix.com/profile/susi1959)
-* [iFunny](https://ifunny.co/)
-* [Mojang API](https://wiki.vg/Mojang_API)
-* [The Newspaper Clipping Generator](https://www.fodey.com/generators/newspaper/snippet.asp)
-* [Pokémon](https://www.pokemon.com/us/)
-* [Pokemon Fusion](https://pokemon.alexonsager.net/)
-* [People PNG](https://peoplepng.com/)
-* [RoboHash](https://robohash.org/)
-* [Shields.io](https://shields.io/)
-* [Pokémon X and Pokémon Y](https://www.pokemon.com/us/pokemon-video-games/pokemon-x-and-pokemon-y/)
-* [Gravity Falls](https://disneynow.go.com/shows/gravity-falls)
-* [Spongebob Squarepants](https://www.nick.com/shows/spongebob-squarepants)
-* [Turning Point USA](https://www.tpusa.com/)
-* [Oswald Font](https://fonts.google.com/specimen/Oswald)
-* [Antonio Guillem](http://antonioguillem.com/)
-* [Drake - Hotline Bling](https://youtu.be/uxpDa-c-4Mc)
-* [@liltusk](https://twitter.com/liltusk)
-* [Mulan](https://movies.disney.com/mulan)
-* [Despicable Me](http://www.despicable.me/)
-* [The Melancholy of Haruhi Suzumiya](http://www.haruhi.tv/)
-* [The Simpsons](http://www.simpsonsworld.com/)
-* [Impact Font](https://www.wfonts.com/font/impact)
-* [Nike](https://www.nike.com/)
-* [Spongebob](https://www.nick.com/shows/spongebob-squarepants)
-* [Kingdom Hearts](https://www.kingdomhearts.com/home/us/)
-* [pngimg.com](https://pngimg.com/)
-* [JoJo's Bizzare Adventure](http://www.araki-jojo.com/)
-* [Deathbulge](http://deathbulge.com/comics)
-* [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas)
-* [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
-* [Open Trivia DB](https://opentdb.com/)
-* [Moby Word Lists by Grady Ward](http://www.gutenberg.org/ebooks/3201)
-* [Brazzers](https://www.brazzers.com/)
-* [Danbooru](https://danbooru.donmai.us/)
-* [Flickr API](https://www.flickr.com/services/api/)
-* [Foreign exchange rates API](https://exchangeratesapi.io/)
-* [RogerHub Final Grade Calculator](https://rogerhub.com/final-grade-calculator/)
-* [Planetary Fact Sheet - Ratio to Earth Values](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html)
-* [Cleverbot API](https://www.cleverbot.com/api/)
-* [Straw Poll API](https://github.com/strawpoll/strawpoll/wiki/API)
-* [Mattel](https://www.mattelgames.com/games/en-us/kids/magic-8-ball)
-* [Advice Slip](https://adviceslip.com/)
-* [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
-* [shibe.online](https://shibe.online/)
-* [random.cat](https://random.cat/)
-* [Chuck Norris](https://chucknorris.com/)
-* [The Internet Chuck Norris Database API](http://www.icndb.com/api/)
-* [Dog API](https://dog.ceo/dog-api/)
-* [Random-d.uk](https://random-d.uk/)
-* [Portal 2](http://www.thinkwithportals.com/)
-* [Wikipedia](https://www.wikipedia.org/)
-* [Dust: An Elysian Tail](https://www.noogy.com/main.html)
-* [Imgur API](https://apidocs.imgur.com/)
-* [RandomFox](https://randomfox.ca/)
-* [GitHub Zen API](https://api.github.com/zen)
-* [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
-* [SpongeBob SquarePants](https://www.nick.com/shows/spongebob-squarepants)
-* [Reddit](https://www.reddit.com/)
-* [Numbers API](http://numbersapi.com/)
-* [r/Showerthoughts](https://www.reddit.com/r/showerthoughts)
-* [Super Mario World](https://www.nintendo.co.jp/n02/shvc/mw/index.html)
-* [List of Super Mario World levels](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels)
-* [Superpower Wiki](https://powerlisting.fandom.com/wiki/Superpower_Wiki)
-* [Wait, what does your startup do?](http://itsthisforthat.com/)
-* [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
-* [Rune Factory 4](http://www.runefactory4.com/index1.html)
-* [AniList API](https://anilist.gitbook.io/anilist-apiv2-docs/)
-* [Google Books API](https://developers.google.com/books/)
-* [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page)
-* [Merriam-Webster's Collegiate® Dictionary](https://dictionaryapi.com/products/api-collegiate-dictionary)
-* [Derpibooru](https://derpibooru.org/)
-* [DeviantArt API](https://www.deviantart.com/developers/)
-* [GIPHY API](https://developers.giphy.com/)
-* [GitHub API](https://developer.github.com/v3/)
-* [Google](https://www.google.com/)
-* [Google Custom Search API](https://cse.google.com/cse/all)
-* [LMGTFY](https://lmgtfy.com/)
-* [Gravatar](https://en.gravatar.com/)
-* [HTTP Cats](https://http.cat/)
-* [HTTP Status Dogs](https://httpstatusdogs.com/)
-* [iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)
-* [List of ISO 639-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes)
-* [Jisho](https://jisho.org/)
-* [Kickstarter](https://www.kickstarter.com/)
-* [Know Your Meme](https://knowyourmeme.com/)
-* [Riot Games API](https://developer.riotgames.com/)
-* [Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro)
-* [Mayo Clinic](https://www.mayoclinic.org/)
-* [MDN Web Docs](https://developer.mozilla.org/en-US/)
-* [The Movie Database API](https://www.themoviedb.org/documentation/api)
-* [NASA Open APIs](https://api.nasa.gov/)
-* [JellyNeo Item Database](https://items.jellyneo.net/)
-* [npm](https://www.npmjs.com/)
-* [osu!api](https://github.com/ppy/osu-api/wiki)
-* [Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
-* [PokéAPI](https://pokeapi.co/)
-* [Serebii.net](https://www.serebii.net/index2.shtml)
-* [Recipe Puppy API](http://www.recipepuppy.com/about/api/)
-* [Rotten Tomatoes](https://www.rottentomatoes.com/)
-* [Safebooru](https://safebooru.org/)
-* [SoundCloud API](https://developers.soundcloud.com/)
-* [Stack Exchange API](https://api.stackexchange.com/docs)
-* [Alpha Vantage](https://www.alphavantage.co/)
-* [Tenor API](https://tenor.com/gifapi/documentation)
-* [Tumblr API](https://www.tumblr.com/docs/en/api/v2)
-* [Twitter API](https://developer.twitter.com/en/docs.html)
-* [Urban Dictionary API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation)
-* [USPS](https://www.usps.com/)
-* [VocaDB Web API](https://vocadb.net/swagger/ui/index)
-* [Wattpad API](https://www.wattpad.com/developer/docs/api)
-* [OpenWeatherMap API](https://openweathermap.org/api)
-* [FANDOM](https://www.fandom.com/)
-* [wikiHow](https://www.wikihow.com/Main-Page)
-* [xkcd](https://xkcd.com/)
-* [YouTube Data API](https://developers.google.com/youtube/v3/)
-* [YGOPRODeck API](https://db.ygoprodeck.com/api-guide/)
-* [iCrawl/Tohru](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js)
-* [PSYCHO-PASS](http://psycho-pass.com/)
-* [u/LennyMcLennington](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/)
-* [u/AelinSA](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magic/)
-* [u/_Ebb](https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/)
-* [Shia LaBeouf "Just Do It" Motivational Speech](https://www.youtube.com/watch?v=ZXsQAXx_ao0)
-* [SPAM Brand](https://www.spam.com/)
-* [National Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/)
-* [07th Expansion](http://07th-expansion.net/)
-* [MangaGamer.com](https://www.mangagamer.com/)
-* [Higurashi When They Cry Hou - Ch.4 Himatsubushi](https://store.steampowered.com/app/526490/)
-* [Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter)
-* [Mythbusters](https://go.discovery.com/tv-shows/mythbusters)
-* [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem)
-* [Google Feud](http://www.googlefeud.com/)
-* [BrantSteele Hunger Games Simulator](http://brantsteele.net/hungergames/reaping.php)
-* [Pottermore](https://my.pottermore.com/sorting)
-* [Pottermore Sorting Hat Quiz analysis by u/N1ffler](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/)
-* [My Little Pony: Friendship is Magic](https://mylittlepony.hasbro.com/en-us)
-* [cowsay Online](http://cowsay.morecode.org/)
-* [Latlmes](https://www.latlmes.com/)
-* [UNDERTALE](https://undertale.com/)
-* [Google Translate](https://translate.google.com/)
-* [The Yoda-Speak Generator](https://www.yodaspeak.co.uk/)
-* [PayPal](https://www.paypal.com/us/home)
+- [Face++ Cognitive Services](https://www.faceplusplus.com/)
+	* face
+- [Genderize.io](https://genderize.io/)
+	* gender
+- [QR Code Generator's QR code API](http://goqr.me/api/)
+	* read-qr-code
+	* create-qr-code
+- [Scrabble](https://scrabble.hasbro.com/en-us)
+	* scrabble-score
+- [Perspective API](https://www.perspectiveapi.com/#/)
+	* severe-toxicity
+	* toxicity
+- [WAIT: What Anime Is This?](https://trace.moe/)
+	* what-anime
+- [Bob Ross](https://www.bobross.com/)
+	* bob-ross
+- [Super Smash Bros.](https://www.smashbros.com/en_US/index.html)
+	* challenger
+- [Pokémon TV](https://www.pokemon.com/us/pokemon-episodes/)
+	* dexter
+	* wynaut
+- [ClipArtHut](http://www.cliparthut.com/)
+	* hat
+- [PNG Arts](https://www.pngarts.com/)
+	* hat
+	* frame
+- [misskatecuttables.com](https://www.misskatecuttables.com/)
+	* hat
+- [WorldArtsMe](http://worldartsme.com/)
+	* hat
+- [PinClipart](https://www.pinclipart.com/)
+	* hat
+- [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop)
+	* hat
+- [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
+	* hat
+	* axis-cult
+	* kazuma-kazuma
+- [The Lion King](https://movies.disney.com/the-lion-king)
+	* he-lives-in-you
+- [Jessica Knable](https://picsart.com/jessicaknable)
+	* hearts
+- [Mattel](https://www.mattel.com/en-us)
+	* i-have-the-power
+	* 8-ball
+- [Nickelback - Photograph](https://www.youtube.com/watch?v=BB0DU4DoPP4)
+	* look-at-this-photograph
+- [KINMOZA!](http://www.kinmosa.com/)
+	* look-what-karen-have
+	* karen
+	* eggs-get-laid
+- [vician](https://www.123rf.com/profile_vician)
+	* rip
+- [CoolClips.com](http://search.coolclips.com/)
+	* sip
+- [Steam](https://store.steampowered.com/)
+	* steam-card
+	* steam-now-playing-classic
+	* steam-now-playing
+	* steam
+- [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
+	* steam-card
+- [Google Noto Fonts](https://www.google.com/get/noto/)
+	* steam-card
+	* steam-now-playing-classic
+	* steam-now-playing
+	* be-like-bill
+	* demotivational
+	* gru-plan
+	* lisa-presentation
+	* new-password
+	* nike-ad
+	* plankton-plan
+	* spongebob-burn
+	* periodic-table
+- [NotAWeebDev/Misaki](https://github.com/NotAWeebDev/Misaki)
+	* triggered
+- [Tim's Printables](https://www.timvandevall.com/)
+	* wanted
+- [Yu-Gi-Oh! Trading Card Game](https://www.yugioh-card.com/en/)
+	* yu-gi-oh-token
+	* yu-gi-oh
+- [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html)
+	* apod
+- [Google Calendar API](https://developers.google.com/calendar/)
+	* calendar
+- [Bulletin of the Atomic Scientists](https://thebulletin.org/)
+	* doomsday-clock
+- [Google Doodles](https://www.google.com/doodles)
+	* google-doodle
+- [The Astrologer by Kelli Fox](https://new.theastrologer.com/)
+	* horoscope
+- [Humble Bundle](https://www.humblebundle.com/)
+	* humble-bundle
+- [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
+	* neko-atsume-password
+- [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+	* time
+- [Neopets](http://www.neopets.com/)
+	* time
+	* neopet
+	* neopets-item
+- [muffinlabs - Today in History](http://history.muffinlabs.com/)
+	* today-in-history
+- [Minecraft](https://www.minecraft.net/en-us/)
+	* achievement
+	* minecraft-skin
+- [Minecraft Achievement Generator](https://www.minecraftskinstealer.com/achievement/)
+	* achievement
+- [Minecraftia Font](https://www.dafont.com/minecraftia.font)
+	* achievement
+- [Redeeming God](https://redeeminggod.com/)
+	* approved
+- [susi1959 - PicMix](https://en.picmix.com/profile/susi1959)
+	* fire
+- [iFunny](https://ifunny.co/)
+	* ifunny
+- [Mojang API](https://wiki.vg/Mojang_API)
+	* minecraft-skin
+- [The Newspaper Clipping Generator](https://www.fodey.com/generators/newspaper/snippet.asp)
+	* newspaper
+- [Pokémon](https://www.pokemon.com/us/)
+	* pokemon-fusion
+	* pokedex
+	* whos-that-pokemon
+- [Pokemon Fusion](https://pokemon.alexonsager.net/)
+	* pokemon-fusion
+- [People PNG](https://peoplepng.com/)
+	* rejected
+- [RoboHash](https://robohash.org/)
+	* robohash
+- [Shields.io](https://shields.io/)
+	* shields-io-badge
+- [Pokémon X and Pokémon Y](https://www.pokemon.com/us/pokemon-video-games/pokemon-x-and-pokemon-y/)
+	* 3000-years
+- [Gravity Falls](https://disneynow.go.com/shows/gravity-falls)
+	* beautiful
+	* worthless
+- [Spongebob Squarepants](https://www.nick.com/shows/spongebob-squarepants)
+	* cursed-sponge
+- [Turning Point USA](https://www.tpusa.com/)
+	* dear-liberals
+- [Oswald Font](https://fonts.google.com/specimen/Oswald)
+	* dear-liberals
+- [Antonio Guillem](http://antonioguillem.com/)
+	* distracted-boyfriend
+- [Drake - Hotline Bling](https://youtu.be/uxpDa-c-4Mc)
+	* drakeposting
+- [@liltusk](https://twitter.com/liltusk)
+	* food-broke
+- [Mulan](https://movies.disney.com/mulan)
+	* girl-worth-fighting-for
+- [Despicable Me](http://www.despicable.me/)
+	* gru-plan
+- [The Melancholy of Haruhi Suzumiya](http://www.haruhi.tv/)
+	* kyon-gun
+- [The Simpsons](http://www.simpsonsworld.com/)
+	* lisa-presentation
+	* eat-pant
+- [Impact Font](https://www.wfonts.com/font/impact)
+	* meme-gen
+- [Nike](https://www.nike.com/)
+	* nike-ad
+- [Spongebob](https://www.nick.com/shows/spongebob-squarepants)
+	* plankton-plan
+	* spongebob-burn
+- [Kingdom Hearts](https://www.kingdomhearts.com/home/us/)
+	* sora-selfie
+	* nobody-name
+- [pngimg.com](https://pngimg.com/)
+	* thug-life
+- [JoJo's Bizzare Adventure](http://www.araki-jojo.com/)
+	* to-be-continued
+- [Deathbulge](http://deathbulge.com/comics)
+	* ultimate-tattoo
+- [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas)
+	* vietnam-flashbacks
+- [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
+	* balloon-pop
+- [Open Trivia DB](https://opentdb.com/)
+	* quiz-duel
+	* quiz
+- [Moby Word Lists by Grady Ward](http://www.gutenberg.org/ebooks/3201)
+	* word-chain
+	* hangman
+- [Brazzers](https://www.brazzers.com/)
+	* brazzers
+- [Danbooru](https://danbooru.donmai.us/)
+	* danbooru
+- [Flickr API](https://www.flickr.com/services/api/)
+	* flickr
+- [Foreign exchange rates API](https://exchangeratesapi.io/)
+	* currency
+- [RogerHub Final Grade Calculator](https://rogerhub.com/final-grade-calculator/)
+	* final-grade
+- [Planetary Fact Sheet - Ratio to Earth Values](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html)
+	* gravity
+- [Cleverbot API](https://www.cleverbot.com/api/)
+	* cleverbot
+- [Straw Poll API](https://github.com/strawpoll/strawpoll/wiki/API)
+	* strawpoll
+- [Advice Slip](https://adviceslip.com/)
+	* advice
+- [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
+	* axis-cult
+- [shibe.online](https://shibe.online/)
+	* bird
+	* shiba
+- [random.cat](https://random.cat/)
+	* cat
+- [Chuck Norris](https://chucknorris.com/)
+	* chuck-norris
+- [The Internet Chuck Norris Database API](http://www.icndb.com/api/)
+	* chuck-norris
+- [Dog API](https://dog.ceo/dog-api/)
+	* dog
+- [Random-d.uk](https://random-d.uk/)
+	* duck
+- [Portal 2](http://www.thinkwithportals.com/)
+	* fact-core
+	* oracle-turret
+- [Wikipedia](https://www.wikipedia.org/)
+	* fact
+	* wikipedia
+- [Dust: An Elysian Tail](https://www.noogy.com/main.html)
+	* fidget
+- [Imgur API](https://apidocs.imgur.com/)
+	* fidget
+	* karen
+	* xiao
+	* blush
+	* bro-hoof
+	* eat
+	* fist-bump
+	* high-five
+	* hold-hands
+	* hug
+	* kill
+	* kiss
+	* pat
+	* poke
+	* punch
+	* slap
+	* sleep
+	* wake-up
+	* wave
+	* wink
+	* imgur
+- [RandomFox](https://randomfox.ca/)
+	* fox
+- [GitHub Zen API](https://api.github.com/zen)
+	* github-zen
+- [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
+	* light-novel-title
+- [SpongeBob SquarePants](https://www.nick.com/shows/spongebob-squarepants)
+	* magic-conch
+- [Reddit](https://www.reddit.com/)
+	* meme
+	* shower-thought
+	* subreddit
+	* reddit
+- [Numbers API](http://numbersapi.com/)
+	* number-fact
+- [r/Showerthoughts](https://www.reddit.com/r/showerthoughts)
+	* shower-thought
+- [Super Mario World](https://www.nintendo.co.jp/n02/shvc/mw/index.html)
+	* smw-level
+- [List of Super Mario World levels](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels)
+	* smw-level
+- [Superpower Wiki](https://powerlisting.fandom.com/wiki/Superpower_Wiki)
+	* superpower
+- [Wait, what does your startup do?](http://itsthisforthat.com/)
+	* this-for-that
+- [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
+	* waifu
+- [Rune Factory 4](http://www.runefactory4.com/index1.html)
+	* xiao
+	* give-flower
+- [AniList API](https://anilist.gitbook.io/anilist-apiv2-docs/)
+	* anime
+	* character
+	* manga
+- [Google Books API](https://developers.google.com/books/)
+	* book
+- [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page)
+	* bulbapedia
+- [Merriam-Webster's Collegiate® Dictionary](https://dictionaryapi.com/products/api-collegiate-dictionary)
+	* define
+- [Derpibooru](https://derpibooru.org/)
+	* derpibooru
+- [DeviantArt API](https://www.deviantart.com/developers/)
+	* deviantart
+- [GIPHY API](https://developers.giphy.com/)
+	* giphy
+- [GitHub API](https://developer.github.com/v3/)
+	* github
+	* changelog
+- [Google](https://www.google.com/)
+	* google-autofill
+	* google
+	* google-feud
+- [Google Custom Search API](https://cse.google.com/cse/all)
+	* google
+- [LMGTFY](https://lmgtfy.com/)
+	* google
+	* lmgtfy
+- [Gravatar](https://en.gravatar.com/)
+	* gravatar
+- [HTTP Cats](https://http.cat/)
+	* http-cat
+- [HTTP Status Dogs](https://httpstatusdogs.com/)
+	* http-dog
+- [iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)
+	* itunes
+- [List of ISO 639-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes)
+	* itunes
+- [Jisho](https://jisho.org/)
+	* jisho
+- [Kickstarter](https://www.kickstarter.com/)
+	* kickstarter
+- [Know Your Meme](https://knowyourmeme.com/)
+	* know-your-meme
+- [Riot Games API](https://developer.riotgames.com/)
+	* league-of-legends
+- [Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro)
+	* map
+- [Mayo Clinic](https://www.mayoclinic.org/)
+	* mayo-clinic
+- [MDN Web Docs](https://developer.mozilla.org/en-US/)
+	* mdn
+- [The Movie Database API](https://www.themoviedb.org/documentation/api)
+	* movie
+	* tv-show
+- [NASA Open APIs](https://api.nasa.gov/)
+	* nasa
+- [JellyNeo Item Database](https://items.jellyneo.net/)
+	* neopets-item
+- [npm](https://www.npmjs.com/)
+	* npm
+- [osu!api](https://github.com/ppy/osu-api/wiki)
+	* osu
+- [Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
+	* periodic-table
+- [PokéAPI](https://pokeapi.co/)
+	* pokedex
+	* whos-that-pokemon
+- [Serebii.net](https://www.serebii.net/index2.shtml)
+	* pokedex
+	* whos-that-pokemon
+- [Recipe Puppy API](http://www.recipepuppy.com/about/api/)
+	* recipe
+- [Rotten Tomatoes](https://www.rottentomatoes.com/)
+	* rotten-tomatoes
+- [Safebooru](https://safebooru.org/)
+	* safebooru
+- [SoundCloud API](https://developers.soundcloud.com/)
+	* soundcloud
+- [Stack Exchange API](https://api.stackexchange.com/docs)
+	* stack-overflow
+- [Alpha Vantage](https://www.alphavantage.co/)
+	* stocks
+- [Tenor API](https://tenor.com/gifapi/documentation)
+	* tenor
+- [Tumblr API](https://www.tumblr.com/docs/en/api/v2)
+	* tumblr
+- [Twitter API](https://developer.twitter.com/en/docs.html)
+	* twitter
+- [Urban Dictionary API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation)
+	* urban
+- [USPS](https://www.usps.com/)
+	* usps-tracking
+- [VocaDB Web API](https://vocadb.net/swagger/ui/index)
+	* vocadb
+- [Wattpad API](https://www.wattpad.com/developer/docs/api)
+	* wattpad
+- [OpenWeatherMap API](https://openweathermap.org/api)
+	* weather
+- [FANDOM](https://www.fandom.com/)
+	* wikia
+- [wikiHow](https://www.wikihow.com/Main-Page)
+	* wikihow
+- [xkcd](https://xkcd.com/)
+	* xkcd
+- [YouTube Data API](https://developers.google.com/youtube/v3/)
+	* youtube
+- [YGOPRODeck API](https://db.ygoprodeck.com/api-guide/)
+	* yu-gi-oh
+- [iCrawl/Tohru](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js)
+	* butt
+- [PSYCHO-PASS](http://psycho-pass.com/)
+	* psycho-pass
+- [u/LennyMcLennington](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/)
+	* dark-light
+- [u/AelinSA](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magic/)
+	* dark-light
+- [u/_Ebb](https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/)
+	* eat-pant
+- [Shia LaBeouf "Just Do It" Motivational Speech](https://www.youtube.com/watch?v=ZXsQAXx_ao0)
+	* just-do-it
+- [SPAM Brand](https://www.spam.com/)
+	* spam
+- [National Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/)
+	* suicide-hotline
+- [07th Expansion](http://07th-expansion.net/)
+	* box-choosing
+- [MangaGamer.com](https://www.mangagamer.com/)
+	* box-choosing
+- [Higurashi When They Cry Hou - Ch.4 Himatsubushi](https://store.steampowered.com/app/526490/)
+	* box-choosing
+- [Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter)
+	* captcha
+- [Mythbusters](https://go.discovery.com/tv-shows/mythbusters)
+	* doors
+- [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem)
+	* doors
+- [Google Feud](http://www.googlefeud.com/)
+	* google-feud
+- [BrantSteele Hunger Games Simulator](http://brantsteele.net/hungergames/reaping.php)
+	* hunger-games
+- [Pottermore](https://my.pottermore.com/sorting)
+	* sorting-hat
+- [Pottermore Sorting Hat Quiz analysis by u/N1ffler](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/)
+	* sorting-hat
+- [My Little Pony: Friendship is Magic](https://mylittlepony.hasbro.com/en-us)
+	* brony-speak
+- [cowsay Online](http://cowsay.morecode.org/)
+	* cow-say
+- [Latlmes](https://www.latlmes.com/)
+	* latlmes
+- [UNDERTALE](https://undertale.com/)
+	* temmie
+- [Google Translate](https://translate.google.com/)
+	* translate
+- [The Yoda-Speak Generator](https://www.yodaspeak.co.uk/)
+	* yoda
+- [PayPal](https://www.paypal.com/us/home)
+	* donate
