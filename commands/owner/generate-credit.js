@@ -18,14 +18,14 @@ module.exports = class GenerateCreditCommand extends Command {
 		const credit = [];
 		const commands = this.client.registry.commands.filter(cmd => cmd.credit && cmd.credit.length > 1);
 		for (const command of commands.values()) {
-			for (const credit of command.credit) {
-				const found = credit.find(c => c.name === credit.name);
+			for (const cred of command.credit) {
+				const found = credit.find(c => c.name === cred.name);
 				if (found) {
 					found.commands.push(command.name);
 					continue;
 				};
-				if (credit.name === 'Dragon Fire') continue;
-				credit.push({ ...credit, commands: [command.name] });
+				if (cred.name === 'Dragon Fire') continue;
+				credit.push({ ...cred, commands: [command.name] });
 			}
 		}
 		const mapped = credit.map(c => `- [${c.name}](${c.url})\n${c.commands.map(cmd => `	* ${cmd}`).join('\n')}`);
