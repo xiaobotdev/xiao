@@ -15,7 +15,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 	}
 
 	async run(msg) {
-		const list = client.registry.groups
+		const list = this.client.registry.groups
 			.filter(g => g.id !== 'owner')
 			.map(g => `\n### ${g.name}:\n\n${g.commands.map(c => `* **${c.name}:** ${c.description}`).join('\n')}`);
 		const { body } = await request
