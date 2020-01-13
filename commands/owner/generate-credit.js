@@ -17,7 +17,7 @@ module.exports = class GenerateCreditCommand extends Command {
 	async run(msg) {
 		const credit = [];
 		const commands = this.client.registry.commands.filter(cmd => cmd.credit && cmd.credit.length > 1);
-		for (const command of commands) {
+		for (const command of commands.values()) {
 			for (const credit of command.credit) {
 				const found = credit.find(c => c.name === credit.name);
 				if (found) {
