@@ -23,7 +23,7 @@ module.exports = class GenerateCreditCommand extends Command {
 				if (found) {
 					found.commands.push(command.name);
 					continue;
-				};
+				}
 				if (cred.name === 'Dragon Fire') continue;
 				credit.push({ ...cred, commands: [command.name] });
 			}
