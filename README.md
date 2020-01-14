@@ -497,6 +497,11 @@ Total: 353
 * **wave:** Waves at a user.
 * **wink:** Winks at a user.
 
+### README Generators:
+
+* **generate-commands:** Generates the commands list for Xiao's README.
+* **generate-credit:** Generates the credit list for Xiao's README.
+
 ## Licensing
 
 The bot is licensed under the GPL 3.0 license. See the file `LICENSE` for more
@@ -513,439 +518,466 @@ here.
 > Note: This _does not_ indicate support for the source. I might like them, I might detest them.
 
 - [Face++ Cognitive Services](https://www.faceplusplus.com/)
-	* face
+	* face ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 - [Genderize.io](https://genderize.io/)
-	* gender
-- [QR Code Generator's QR code API](http://goqr.me/api/)
-	* read-qr-code
-	* create-qr-code
-- [Scrabble](https://scrabble.hasbro.com/en-us)
-	* scrabble-score
+	* gender (API)
+- [goQR.me](http://goqr.me/)
+	* read-qr-code ([QR code API](http://goqr.me/api/))
+	* create-qr-code ([QR code API](http://goqr.me/api/))
+- [Hasbro](https://shop.hasbro.com/en-us)
+	* scrabble-score ([Original Scrabble Game](https://scrabble.hasbro.com/en-us))
+	* bro-hoof ([Original "My Little Pony: Friendship is Magic" Show](https://mylittlepony.hasbro.com/en-us))
+	* brony-speak ([Original "My Little Pony: Friendship is Magic" Show](https://mylittlepony.hasbro.com/en-us))
 - [Perspective API](https://www.perspectiveapi.com/#/)
-	* severe-toxicity
-	* toxicity
+	* severe-toxicity (API)
+	* toxicity (API)
 - [WAIT: What Anime Is This?](https://trace.moe/)
-	* what-anime
-- [Bob Ross](https://www.bobross.com/)
-	* bob-ross
-- [Super Smash Bros.](https://www.smashbros.com/en_US/index.html)
-	* challenger
-- [Pokémon TV](https://www.pokemon.com/us/pokemon-episodes/)
-	* dexter
-	* wynaut
-- [ClipArtHut](http://www.cliparthut.com/)
-	* hat
-- [PNG Arts](https://www.pngarts.com/)
-	* hat
-	* frame
-- [misskatecuttables.com](https://www.misskatecuttables.com/)
-	* hat
-- [WorldArtsMe](http://worldartsme.com/)
-	* hat
-- [PinClipart](https://www.pinclipart.com/)
-	* hat
-- [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop)
-	* hat
-- [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
-	* hat
-	* axis-cult
-	* kazuma-kazuma
-- [The Lion King](https://movies.disney.com/the-lion-king)
-	* he-lives-in-you
-- [Jessica Knable](https://picsart.com/jessicaknable)
-	* hearts
-- [Mattel](https://www.mattel.com/en-us)
-	* i-have-the-power
-	* 8-ball
-- [Nickelback - Photograph](https://www.youtube.com/watch?v=BB0DU4DoPP4)
-	* look-at-this-photograph
-- [KINMOZA!](http://www.kinmosa.com/)
-	* look-what-karen-have
-	* karen
-	* eggs-get-laid
-- [vician](https://www.123rf.com/profile_vician)
-	* rip
-- [CoolClips.com](http://search.coolclips.com/)
-	* sip
-- [Steam](https://store.steampowered.com/)
-	* steam-card
-	* steam-now-playing-classic
-	* steam-now-playing
-	* steam
-- [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
-	* steam-card
-- [Google Noto Fonts](https://www.google.com/get/noto/)
-	* steam-card
-	* steam-now-playing-classic
-	* steam-now-playing
-	* be-like-bill
-	* demotivational
-	* gru-plan
-	* lisa-presentation
-	* new-password
-	* nike-ad
-	* plankton-plan
-	* spongebob-burn
-	* periodic-table
-- [NotAWeebDev/Misaki](https://github.com/NotAWeebDev/Misaki)
-	* triggered
-- [Tim's Printables](https://www.timvandevall.com/)
-	* wanted
-- [Yu-Gi-Oh! Trading Card Game](https://www.yugioh-card.com/en/)
-	* yu-gi-oh-token
-	* yu-gi-oh
-- [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html)
-	* apod
-- [Google Calendar API](https://developers.google.com/calendar/)
-	* calendar
-- [Bulletin of the Atomic Scientists](https://thebulletin.org/)
-	* doomsday-clock
-- [Google Doodles](https://www.google.com/doodles)
-	* google-doodle
-- [The Astrologer by Kelli Fox](https://new.theastrologer.com/)
-	* horoscope
-- [Humble Bundle](https://www.humblebundle.com/)
-	* humble-bundle
-- [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
-	* neko-atsume-password
-- [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-	* time
-- [Neopets](http://www.neopets.com/)
-	* time
-	* neopet
-	* neopets-item
-- [muffinlabs - Today in History](http://history.muffinlabs.com/)
-	* today-in-history
-- [Minecraft](https://www.minecraft.net/en-us/)
-	* achievement
-	* minecraft-skin
-- [Minecraft Achievement Generator](https://www.minecraftskinstealer.com/achievement/)
-	* achievement
-- [Minecraftia Font](https://www.dafont.com/minecraftia.font)
-	* achievement
-- [Redeeming God](https://redeeminggod.com/)
-	* approved
-- [susi1959 - PicMix](https://en.picmix.com/profile/susi1959)
-	* fire
-- [iFunny](https://ifunny.co/)
-	* ifunny
-- [Mojang API](https://wiki.vg/Mojang_API)
-	* minecraft-skin
-- [The Newspaper Clipping Generator](https://www.fodey.com/generators/newspaper/snippet.asp)
-	* newspaper
-- [Pokémon](https://www.pokemon.com/us/)
-	* pokemon-fusion
-	* pokedex
-	* whos-that-pokemon
-- [Pokemon Fusion](https://pokemon.alexonsager.net/)
-	* pokemon-fusion
-- [People PNG](https://peoplepng.com/)
-	* rejected
-- [RoboHash](https://robohash.org/)
-	* robohash
-- [Shields.io](https://shields.io/)
-	* shields-io-badge
-- [Pokémon X and Pokémon Y](https://www.pokemon.com/us/pokemon-video-games/pokemon-x-and-pokemon-y/)
-	* 3000-years
-- [Gravity Falls](https://disneynow.go.com/shows/gravity-falls)
-	* beautiful
-	* worthless
-- [Spongebob Squarepants](https://www.nick.com/shows/spongebob-squarepants)
-	* cursed-sponge
-- [Turning Point USA](https://www.tpusa.com/)
-	* dear-liberals
-- [Oswald Font](https://fonts.google.com/specimen/Oswald)
-	* dear-liberals
-- [Antonio Guillem](http://antonioguillem.com/)
-	* distracted-boyfriend
-- [Drake - Hotline Bling](https://youtu.be/uxpDa-c-4Mc)
-	* drakeposting
-- [@liltusk](https://twitter.com/liltusk)
-	* food-broke
-- [Mulan](https://movies.disney.com/mulan)
-	* girl-worth-fighting-for
-- [Despicable Me](http://www.despicable.me/)
-	* gru-plan
-- [The Melancholy of Haruhi Suzumiya](http://www.haruhi.tv/)
-	* kyon-gun
-- [The Simpsons](http://www.simpsonsworld.com/)
-	* lisa-presentation
-	* eat-pant
-- [Impact Font](https://www.wfonts.com/font/impact)
-	* meme-gen
-- [Nike](https://www.nike.com/)
-	* nike-ad
-- [Spongebob](https://www.nick.com/shows/spongebob-squarepants)
-	* plankton-plan
-	* spongebob-burn
-- [Kingdom Hearts](https://www.kingdomhearts.com/home/us/)
-	* sora-selfie
-	* nobody-name
-- [pngimg.com](https://pngimg.com/)
-	* thug-life
-- [JoJo's Bizzare Adventure](http://www.araki-jojo.com/)
-	* to-be-continued
-- [Deathbulge](http://deathbulge.com/comics)
-	* ultimate-tattoo
-- [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas)
-	* vietnam-flashbacks
-- [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
-	* balloon-pop
-- [Open Trivia DB](https://opentdb.com/)
-	* quiz-duel
-	* quiz
-- [Moby Word Lists by Grady Ward](http://www.gutenberg.org/ebooks/3201)
-	* word-chain
-	* hangman
-- [Brazzers](https://www.brazzers.com/)
-	* brazzers
-- [Danbooru](https://danbooru.donmai.us/)
-	* danbooru
-- [Flickr API](https://www.flickr.com/services/api/)
-	* flickr
-- [Foreign exchange rates API](https://exchangeratesapi.io/)
-	* currency
-- [RogerHub Final Grade Calculator](https://rogerhub.com/final-grade-calculator/)
-	* final-grade
-- [Planetary Fact Sheet - Ratio to Earth Values](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html)
-	* gravity
-- [Cleverbot API](https://www.cleverbot.com/api/)
-	* cleverbot
-- [Straw Poll API](https://github.com/strawpoll/strawpoll/wiki/API)
-	* strawpoll
-- [Advice Slip](https://adviceslip.com/)
-	* advice
-- [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
-	* axis-cult
-- [shibe.online](https://shibe.online/)
-	* bird
-	* shiba
-- [random.cat](https://random.cat/)
-	* cat
-- [Chuck Norris](https://chucknorris.com/)
-	* chuck-norris
-- [The Internet Chuck Norris Database API](http://www.icndb.com/api/)
-	* chuck-norris
-- [Dog API](https://dog.ceo/dog-api/)
-	* dog
-- [Random-d.uk](https://random-d.uk/)
-	* duck
-- [Portal 2](http://www.thinkwithportals.com/)
-	* fact-core
-	* oracle-turret
-- [Wikipedia](https://www.wikipedia.org/)
-	* fact
-	* wikipedia
-- [Dust: An Elysian Tail](https://www.noogy.com/main.html)
-	* fidget
-- [Imgur API](https://apidocs.imgur.com/)
-	* fidget
-	* karen
-	* xiao
-	* blush
-	* bro-hoof
-	* eat
-	* fist-bump
-	* high-five
-	* hold-hands
-	* hug
-	* kill
-	* kiss
-	* pat
-	* poke
-	* punch
-	* slap
-	* sleep
-	* wake-up
-	* wave
-	* wink
-	* imgur
-- [RandomFox](https://randomfox.ca/)
-	* fox
-- [GitHub Zen API](https://api.github.com/zen)
-	* github-zen
-- [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
-	* light-novel-title
-- [SpongeBob SquarePants](https://www.nick.com/shows/spongebob-squarepants)
-	* magic-conch
-- [Reddit](https://www.reddit.com/)
-	* meme
-	* shower-thought
-	* subreddit
-	* reddit
-- [Numbers API](http://numbersapi.com/)
-	* number-fact
-- [r/Showerthoughts](https://www.reddit.com/r/showerthoughts)
-	* shower-thought
-- [Super Mario World](https://www.nintendo.co.jp/n02/shvc/mw/index.html)
-	* smw-level
-- [List of Super Mario World levels](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels)
-	* smw-level
-- [Superpower Wiki](https://powerlisting.fandom.com/wiki/Superpower_Wiki)
-	* superpower
-- [Wait, what does your startup do?](http://itsthisforthat.com/)
-	* this-for-that
-- [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
-	* waifu
-- [Rune Factory 4](http://www.runefactory4.com/index1.html)
-	* xiao
-	* give-flower
-- [AniList API](https://anilist.gitbook.io/anilist-apiv2-docs/)
-	* anime
-	* character
-	* manga
-- [Google Books API](https://developers.google.com/books/)
-	* book
-- [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page)
-	* bulbapedia
-- [Merriam-Webster's Collegiate® Dictionary](https://dictionaryapi.com/products/api-collegiate-dictionary)
-	* define
-- [Derpibooru](https://derpibooru.org/)
-	* derpibooru
-- [DeviantArt API](https://www.deviantart.com/developers/)
-	* deviantart
-- [GIPHY API](https://developers.giphy.com/)
-	* giphy
-- [GitHub API](https://developer.github.com/v3/)
-	* github
-	* changelog
-- [Google](https://www.google.com/)
-	* google-autofill
-	* google
-	* google-feud
-- [Google Custom Search API](https://cse.google.com/cse/all)
-	* google
-- [LMGTFY](https://lmgtfy.com/)
-	* google
-	* lmgtfy
-- [Gravatar](https://en.gravatar.com/)
-	* gravatar
-- [HTTP Cats](https://http.cat/)
-	* http-cat
-- [HTTP Status Dogs](https://httpstatusdogs.com/)
-	* http-dog
-- [iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)
-	* itunes
-- [List of ISO 639-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes)
-	* itunes
-- [Jisho](https://jisho.org/)
-	* jisho
-- [Kickstarter](https://www.kickstarter.com/)
-	* kickstarter
+	* what-anime ([API](https://soruly.github.io/trace.moe/#/))
 - [Know Your Meme](https://knowyourmeme.com/)
-	* know-your-meme
-- [Riot Games API](https://developer.riotgames.com/)
-	* league-of-legends
-- [Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro)
-	* map
-- [Mayo Clinic](https://www.mayoclinic.org/)
-	* mayo-clinic
-- [MDN Web Docs](https://developer.mozilla.org/en-US/)
-	* mdn
-- [The Movie Database API](https://www.themoviedb.org/documentation/api)
-	* movie
-	* tv-show
-- [NASA Open APIs](https://api.nasa.gov/)
-	* nasa
-- [JellyNeo Item Database](https://items.jellyneo.net/)
-	* neopets-item
-- [npm](https://www.npmjs.com/)
-	* npm
-- [osu!api](https://github.com/ppy/osu-api/wiki)
-	* osu
-- [Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
-	* periodic-table
-- [PokéAPI](https://pokeapi.co/)
-	* pokedex
-	* whos-that-pokemon
-- [Serebii.net](https://www.serebii.net/index2.shtml)
-	* pokedex
-	* whos-that-pokemon
-- [Recipe Puppy API](http://www.recipepuppy.com/about/api/)
-	* recipe
-- [Rotten Tomatoes](https://www.rottentomatoes.com/)
-	* rotten-tomatoes
-- [Safebooru](https://safebooru.org/)
-	* safebooru
-- [SoundCloud API](https://developers.soundcloud.com/)
-	* soundcloud
-- [Stack Exchange API](https://api.stackexchange.com/docs)
-	* stack-overflow
-- [Alpha Vantage](https://www.alphavantage.co/)
-	* stocks
-- [Tenor API](https://tenor.com/gifapi/documentation)
-	* tenor
-- [Tumblr API](https://www.tumblr.com/docs/en/api/v2)
-	* tumblr
-- [Twitter API](https://developer.twitter.com/en/docs.html)
-	* twitter
-- [Urban Dictionary API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation)
-	* urban
-- [USPS](https://www.usps.com/)
-	* usps-tracking
-- [VocaDB Web API](https://vocadb.net/swagger/ui/index)
-	* vocadb
-- [Wattpad API](https://www.wattpad.com/developer/docs/api)
-	* wattpad
-- [OpenWeatherMap API](https://openweathermap.org/api)
-	* weather
+	* bob-ross ([Image](https://knowyourmeme.com/photos/1160348))
+	* hat ([Christmas Hat Image](https://knowyourmeme.com/forums/just-for-fun/topics/24821-christmas-hat-thread))
+	* look-what-karen-have ([Image](https://knowyourmeme.com/photos/1047091-kin-iro-mosaic-kinmoza))
+	* kyon-gun ([Image](https://knowyourmeme.com/photos/217992-endless-eight-kyon-kun-denwa))
+	* know-your-meme (Meme Data)
+- [Bob Ross](https://www.bobross.com/)
+	* bob-ross (Himself)
+- [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ)
+	* challenger ([Image](https://www.youtube.com/watch?v=3FebRrXg0bk))
+- [Nintendo](https://www.nintendo.com/)
+	* challenger ([Original "Super Smash Bros." Game](https://www.smashbros.com/en_US/index.html))
+	* smw-level ([Original "Super Mario World" Game](https://www.nintendo.co.jp/n02/shvc/mw/index.html))
+- [Pokémon](https://www.pokemon.com/us/)
+	* dexter (Image, Original Anime)
+	* hat (Ash Hat Original Anime)
+	* pokemon-fusion (Original Game)
+	* 3000-years (Image, Original Game)
+	* pokedex (Images, Original Game)
+	* wynaut (Image, Original Anime)
+	* whos-that-pokemon (Images, Original Game)
+- [Go Nintendo](https://gonintendo.com/)
+	* hat ([Ash Hat Image](https://gonintendo.com/stories/306292-nintendo-creatures-game-freak-grab-another-trademark-for-ash-s-ha))
+- [freeiconspng.com](https://www.freeiconspng.com/)
+	* hat ([Birthday Hat Image](https://www.freeiconspng.com/img/43917))
+- [DeviantArt - xertris](https://www.deviantart.com/xertris)
+	* hat ([Dunce Hat Image](https://www.deviantart.com/xertris/art/Dunce-Cap-634349483))
+- [Clipart Library](http://clipart-library.com/)
+	* hat ([Leprechaun Hat Image](http://clipart-library.com/clipart/1107361.htm))
+	* rejected ([Image](http://clipart-library.com/clipart/Rejected-Stamp-Transparent.htm))
+- [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop)
+	* hat ([Megumin Hat Image](https://www.redbubble.com/people/akbarmna/works/25443591-megumins-hat-minimalistic?p=poster))
+- [Gallery Yopriceville](https://gallery.yopriceville.com/)
+	* hat ([Pilgrim Hat Image](https://gallery.yopriceville.com/Free-Clipart-Pictures/Thanksgiving-PNG/Transparent_Brown_Pilgrim_Hat_PNG_Clipart))
+- [DynamicPickaxe](http://dynamicpickaxe.com/)
+	* hat ([Pirate Hat Image](http://dynamicpickaxe.com/pirate-hat-clipart.html))
+- [ClipartsFree](https://www.clipartsfree.net/)
+	* hat ([Top Hat Image](https://www.clipartsfree.net/clipart/51355-gray-top-hat-clipart.html))
+- [KissClipart.com](https://www.kissclipart.com/)
+	* hat ([Witch Hat Image](https://www.kissclipart.com/halloween-witch-hat-clipart-witch-hat-clip-art-qfycyt/))
+- [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
+	* hat (Megumin Hat Original Anime)
+	* axis-cult (Original Anime)
+	* kazuma-kazuma (Original Anime)
+- [Disney](https://www.disney.com/)
+	* he-lives-in-you ([Image, Original "The Lion King" Movie](https://movies.disney.com/the-lion-king))
+	* beautiful (Original "Gravity Falls" Show)
+	* girl-worth-fighting-for ([Original "Mulan" Movie](https://movies.disney.com/mulan))
+	* worthless (Original "Gravity Falls" Show)
+- [Jessica Knable](https://picsart.com/u/jessicaknable)
+	* hearts ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
+- [Mattel](https://www.mattel.com/en-us)
+	* i-have-the-power (Image, Original "He-Man" Show)
+	* 8-ball ([Original Concept](https://www.mattelgames.com/games/en-us/kids/magic-8-ball))
+- [Nickelback](https://www.nickelback.com/)
+	* look-at-this-photograph ([Image, Original "Photograph" Music Video](https://www.youtube.com/watch?v=BB0DU4DoPP4))
+- [KINMOZA!](http://www.kinmosa.com/)
+	* look-what-karen-have (Original Anime)
+	* karen (Original Anime)
+	* eggs-get-laid (Original Anime)
+- [vician](https://www.123rf.com/profile_vician)
+	* rip ([Image](https://www.123rf.com/profile_vician?mediapopup=13181623))
+- [CoolClips.com](http://search.coolclips.com/)
+	* sip ([Image](http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/))
+- [Steam](https://store.steampowered.com/)
+	* steam-card ([Original Design](https://steamcommunity.com/tradingcards/))
+	* steam-now-playing-classic (Original Design)
+	* steam-now-playing (Original Design)
+	* steam (API)
+- [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
+	* steam-card ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
+- [Google](https://www.google.com/)
+	* steam-card ([Noto Font](https://www.google.com/get/noto/))
+	* steam-now-playing-classic ([Noto Font](https://www.google.com/get/noto/))
+	* steam-now-playing ([Noto Font](https://www.google.com/get/noto/))
+	* calendar ([Calendar API](https://developers.google.com/calendar/))
+	* google-doodle ([Google Doodles API](https://www.google.com/doodles))
+	* be-like-bill ([Noto Font](https://www.google.com/get/noto/))
+	* dear-liberals ([Oswald Font](https://fonts.google.com/specimen/Oswald))
+	* demotivational ([Noto Font](https://www.google.com/get/noto/))
+	* gru-plan ([Noto Font](https://www.google.com/get/noto/))
+	* lisa-presentation ([Noto Font](https://www.google.com/get/noto/))
+	* new-password ([Noto Font](https://www.google.com/get/noto/))
+	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
+	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
+	* spongebob-burn ([Noto Font](https://www.google.com/get/noto/))
+	* book ([Books API](https://developers.google.com/books/))
+	* google-autofill (Autofill API)
+	* google ([Custom Search API](https://cse.google.com/cse/all))
+	* map ([Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro))
+	* periodic-table ([Noto Font](https://www.google.com/get/noto/))
+	* youtube ([YouTube Data API](https://developers.google.com/youtube/v3/))
+	* google-feud (Autofill API)
+	* translate ([Google Translate](https://translate.google.com/))
+- [NotAWeebDev](https://github.com/NotAWeebDev/)
+	* triggered ([Image](https://github.com/NotAWeebDev/Misaki/blob/2e44f9efb467028dcbae5a2c9f836d2e99860b85/assets/images/plate_triggered.png))
+- [Tim's Printables](https://www.timvandevall.com/)
+	* wanted ([Image](https://www.pinterest.com/pin/365002744774849370/))
+- [Konami](https://www.konami.com/en/)
+	* yu-gi-oh-token ([Image, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
+	* yu-gi-oh ([Image, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
+- [NASA](https://www.nasa.gov/)
+	* apod ([APOD API](https://api.nasa.gov/))
+	* gravity ([Planet Gravity Data](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html))
+	* nasa ([NASA Image and Video Library API](https://api.nasa.gov/))
+- [Bulletin of the Atomic Scientists](https://thebulletin.org/)
+	* doomsday-clock ([Doomsday Clock Data](https://thebulletin.org/doomsday-clock/current-time/))
+- [r/IsTodayFridayThe13th](https://www.reddit.com/r/IsTodayFridayThe13th/)
+	* friday-the-13th (Concept)
+- [astrology.TV](https://astrology.tv/)
+	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
+- [Humble Bundle](https://www.humblebundle.com/)
+	* humble-bundle ([API](https://www.humblebundle.com/developer))
+- [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
+	* neko-atsume-password (API, Original Game)
+- [jasmaa](https://github.com/jasmaa/)
+	* neko-atsume-password ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
+- [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+	* time (Time Zone Data)
+- [Neopets](http://www.neopets.com/)
+	* time (Neopia Time Zone)
+	* neopet (Pet Image Data)
+	* neopets-item (Original Game)
+- [muffinlabs - Today in History](http://history.muffinlabs.com/)
+	* today-in-history ([API](http://history.muffinlabs.com/#api))
+- [Mojang](https://www.mojang.com/)
+	* achievement ([Original "Minecraft" Game](https://www.minecraft.net/en-us/))
+	* minecraft-skin ([API, Original "Minecraft" Game](https://wiki.vg/Mojang_API))
+- [Minecraft Achievement Generator](https://www.minecraftskinstealer.com/achievement/)
+	* achievement (Image)
+- [Andrew Tyler](https://www.dafont.com/andrew-tyler.d2526)
+	* achievement ([Minecraftia Font](https://www.dafont.com/minecraftia.font))
+- [Redeeming God](https://redeeminggod.com/)
+	* approved ([Image](https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/))
+- [susi1959](https://en.picmix.com/profile/susi1959)
+	* fire ([Image](https://en.picmix.com/stamp/FIRE-FRAME-ORANGE-cadre-feu-orange-360274))
+- [www.aljanh.net](http://www.aljanh.net/)
+	* frame ([Image](http://www.aljanh.net/frame-wallpapers/1508614706.html))
+- [iFunny](https://ifunny.co/)
+	* ifunny (Logo)
+- [The Newspaper Clipping Generator](https://www.fodey.com/generators/newspaper/snippet.asp)
+	* newspaper (API)
+- [Pokemon Fusion](https://pokemon.alexonsager.net/)
+	* pokemon-fusion (Images)
+- [RoboHash](https://robohash.org/)
+	* robohash (API)
+- [Shields.io](https://shields.io/)
+	* shields-io-badge (API)
+- [gautamkrishnar](https://github.com/gautamkrishnar/)
+	* be-like-bill ([Image](https://github.com/gautamkrishnar/Be-Like-Bill))
+- [Tatsumaki](https://tatsumaki.xyz/)
+	* beautiful (Image, Concept)
+	* fishy (Concept)
+- [Nickelodeon](https://www.nick.com/)
+	* cursed-sponge ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
+	* plankton-plan ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
+	* spongebob-burn ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
+	* magic-conch ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
+- [Turning Point USA](https://www.tpusa.com/)
+	* dear-liberals (Image)
+- [Antonio Guillem](http://antonioguillem.com/)
+	* distracted-boyfriend ([Image](https://www.istockphoto.com/gb/photo/disloyal-man-with-his-girlfriend-looking-at-another-girl-gm493656728-77018851))
+- [Drake](https://drakeofficial.com/)
+	* drakeposting ([Original "Hotline Bling" Music Video](https://youtu.be/uxpDa-c-4Mc))
+- [@liltusk](https://twitter.com/liltusk)
+	* food-broke ([Image](https://twitter.com/liltusk/status/835719948597137408))
+- [u/SupremeMemesXD](https://www.reddit.com/user/SupremeMemesXD/)
+	* girl-worth-fighting-for ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/8h39vi/girl_worth_fighting_for_template/))
+- [Illumination](http://www.illumination.com/)
+	* gru-plan ([Original "Despicable Me" Movie](http://www.despicable.me/))
+- [The Melancholy of Haruhi Suzumiya](http://www.haruhi.tv/)
+	* kyon-gun (Original Anime)
+- [20th Century Fox](https://www.foxmovies.com/)
+	* lisa-presentation ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
+	* eat-pant ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
+- [ShareFonts.net](https://www.wfonts.com/)
+	* meme-gen ([Impact Font](https://www.wfonts.com/font/impact))
+- [Nike](https://www.nike.com/)
+	* nike-ad (Logo, Concept)
+- [Square Enix](https://square-enix-games.com/)
+	* sora-selfie ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
+	* nobody-name ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
+- [@Candasaurus](https://twitter.com/Candasaurus)
+	* sora-selfie ([Image](https://twitter.com/Candasaurus/status/1041946636656599045))
+- [pngimg.com](https://pngimg.com/)
+	* thug-life ([Image](http://pngimg.com/download/58231))
+- [JoJo's Bizzare Adventure](http://www.araki-jojo.com/)
+	* to-be-continued (Original Anime)
+- [Deathbulge](http://deathbulge.com/comics)
+	* ultimate-tattoo ([Image](http://deathbulge.com/comics/114))
+- [YorkAARGH](https://github.com/YorkAARGH)
+	* ultimate-tattoo (Concept)
+- [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas)
+	* vietnam-flashbacks (Image)
+- [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
+	* balloon-pop (Concept)
+- [Dance Dance Revolution](https://www.ddrgame.com/)
+	* emoji-emoji-revolution (Concept)
+- [TheMicroKill#9052](undefined)
+	* mafia (Voice Acting)
+- [Open Trivia DB](https://opentdb.com/)
+	* quiz-duel ([API](https://opentdb.com/api_config.php))
+	* quiz ([API](https://opentdb.com/api_config.php))
+- [Grady Ward](https://en.wikipedia.org/wiki/Grady_Ward)
+	* word-chain ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
+	* hangman ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
+- [Brazzers](https://www.brazzers.com/)
+	* brazzers (Logo)
+- [Danbooru](https://danbooru.donmai.us/)
+	* danbooru (API)
+- [Flickr](https://www.flickr.com/)
+	* flickr ([API](https://www.flickr.com/services/api/))
+- [Foreign exchange rates API](https://exchangeratesapi.io/)
+	* currency (API)
+- [RogerHub Final Grade Calculator](https://rogerhub.com/final-grade-calculator/)
+	* final-grade (Concept, Code)
+- [mathjs](https://mathjs.org/)
+	* math (Expression Parser)
+	* units (Expression Parser)
+- [Cleverbot](https://www.cleverbot.com/)
+	* cleverbot ([API](https://www.cleverbot.com/api/))
+- [Gawdl3y](https://github.com/Gawdl3y)
+	* rename-all (Concept)
+- [Straw Poll](https://www.strawpoll.me/)
+	* strawpoll ([API](https://github.com/strawpoll/strawpoll/wiki/API))
+- [Advice Slip](https://adviceslip.com/)
+	* advice ([API](https://api.adviceslip.com/))
+- [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
+	* axis-cult (Prayer Data)
+- [shibe.online](https://shibe.online/)
+	* bird (API)
+	* shiba (API)
+- [random.cat](https://random.cat/)
+	* cat (API)
+- [Chuck Norris](https://chucknorris.com/)
+	* chuck-norris (Himself)
+- [The Internet Chuck Norris Database](http://www.icndb.com/)
+	* chuck-norris ([API](http://www.icndb.com/api/))
+- [Dog CEO](https://dog.ceo/)
+	* dog ([Dog API](https://dog.ceo/dog-api/))
+- [Random-d.uk](https://random-d.uk/)
+	* duck ([API](https://random-d.uk/api))
+- [Valve](https://www.valvesoftware.com/en/)
+	* fact-core ([Original "Portal 2" Game](http://www.thinkwithportals.com/))
+	* oracle-turret ([Original "Portal 2" Game](http://www.thinkwithportals.com/))
+- [Wikipedia](https://www.wikipedia.org/)
+	* fact ([API](https://en.wikipedia.org/w/api.php))
+	* wikipedia ([API](https://en.wikipedia.org/w/api.php))
+- [Dust: An Elysian Tail](https://www.noogy.com/main.html)
+	* fidget (Original Game)
+- [Imgur](https://imgur.com/)
+	* fidget ([API](https://apidocs.imgur.com/))
+	* karen ([API](https://apidocs.imgur.com/))
+	* xiao ([API](https://apidocs.imgur.com/))
+	* blush ([API](https://apidocs.imgur.com/))
+	* bro-hoof ([API](https://apidocs.imgur.com/))
+	* eat ([API](https://apidocs.imgur.com/))
+	* fist-bump ([API](https://apidocs.imgur.com/))
+	* high-five ([API](https://apidocs.imgur.com/))
+	* hold-hands ([API](https://apidocs.imgur.com/))
+	* hug ([API](https://apidocs.imgur.com/))
+	* kill ([API](https://apidocs.imgur.com/))
+	* kiss ([API](https://apidocs.imgur.com/))
+	* pat ([API](https://apidocs.imgur.com/))
+	* poke ([API](https://apidocs.imgur.com/))
+	* punch ([API](https://apidocs.imgur.com/))
+	* slap ([API](https://apidocs.imgur.com/))
+	* sleep ([API](https://apidocs.imgur.com/))
+	* wake-up ([API](https://apidocs.imgur.com/))
+	* wave ([API](https://apidocs.imgur.com/))
+	* wink ([API](https://apidocs.imgur.com/))
+	* imgur ([API](https://apidocs.imgur.com/))
+- [RandomFox](https://randomfox.ca/)
+	* fox (API)
+- [GitHub](https://github.com/)
+	* github-zen ([Zen API](https://developer.github.com/v3/))
+	* github ([API](https://developer.github.com/v3/))
+	* changelog ([API](https://developer.github.com/v3/))
+- [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
+	* light-novel-title (API)
+- [Reddit](https://www.reddit.com/)
+	* meme ([API](https://www.reddit.com/dev/api/))
+	* shower-thought ([API](https://www.reddit.com/dev/api/))
+	* subreddit ([API](https://www.reddit.com/dev/api/))
+	* reddit ([API](https://www.reddit.com/dev/api/))
+- [Numbers API](http://numbersapi.com/)
+	* number-fact (Trivia API)
+- [r/Showerthoughts](https://www.reddit.com/r/showerthoughts)
+	* shower-thought (Shower Thought Data)
+- [List of Super Mario World levels](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels)
+	* smw-level (Level Name Data)
+- [Superpower Wiki](https://powerlisting.fandom.com/wiki/Superpower_Wiki)
+	* superpower (Superpower Data)
 - [FANDOM](https://www.fandom.com/)
-	* wikia
+	* superpower ([API](https://powerlisting.fandom.com/api.php))
+	* wikia ([API](https://www.wikia.com/api/v1/))
+- [Wait, what does your startup do?](http://itsthisforthat.com/)
+	* this-for-that ([API](http://itsthisforthat.com/api.php))
+- [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
+	* waifu (API)
+- [Marvelous](http://www.marv.jp/)
+	* xiao ([Images, Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
+	* give-flower ([Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
+- [Hastebin](https://hastebin.com/about.md)
+	* generate-commands (API)
+	* generate-credit (API)
+- [AniList](https://anilist.co/)
+	* anime ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
+	* character ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
+	* manga ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
+- [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page)
+	* bulbapedia ([API](https://bulbapedia.bulbagarden.net/w/api.php))
+- [Merriam-Webster's Collegiate® Dictionary](https://www.merriam-webster.com/)
+	* define ([API](https://dictionaryapi.com/products/api-collegiate-dictionary))
+- [Derpibooru](https://derpibooru.org/)
+	* derpibooru (API)
+- [DeviantArt](https://www.deviantart.com/)
+	* deviantart ([API](https://www.deviantart.com/developers/))
+- [GIPHY](https://giphy.com/)
+	* giphy ([API](https://developers.giphy.com/))
+- [LMGTFY](https://lmgtfy.com/)
+	* google (API)
+	* lmgtfy (API)
+- [Gravatar](https://en.gravatar.com/)
+	* gravatar ([API](https://en.gravatar.com/site/implement/))
+- [HTTP Cats](https://http.cat/)
+	* http-cat (API)
+- [HTTP Status Dogs](https://httpstatusdogs.com/)
+	* http-dog (API)
+- [Apple](https://www.apple.com/)
+	* itunes ([iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/))
+- [List of ISO 639-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes)
+	* itunes (Language Code Data)
+- [Jisho](https://jisho.org/)
+	* jisho (API)
+- [Kickstarter](https://www.kickstarter.com/)
+	* kickstarter (API)
+- [Riot Games](https://www.riotgames.com/en)
+	* league-of-legends ([API](https://developer.riotgames.com/))
+- [Mayo Clinic](https://www.mayoclinic.org/)
+	* mayo-clinic (Disease Data)
+- [MDN Web Docs](https://developer.mozilla.org/en-US/)
+	* mdn (API)
+- [The Movie Database](https://www.themoviedb.org/)
+	* movie ([API](https://www.themoviedb.org/documentation/api))
+	* tv-show ([API](https://www.themoviedb.org/documentation/api))
+- [JellyNeo Item Database](https://items.jellyneo.net/)
+	* neopets-item (Item Data)
+- [npm](https://www.npmjs.com/)
+	* npm (API)
+- [osu!](https://osu.ppy.sh/home)
+	* osu ([API](https://github.com/ppy/osu-api/wiki))
+- [Bowserinator](https://github.com/Bowserinator/)
+	* periodic-table ([Periodic Table Data](https://github.com/Bowserinator/Periodic-Table-JSON))
+- [PokéAPI](https://pokeapi.co/)
+	* pokedex (API)
+	* whos-that-pokemon (API)
+- [Serebii.net](https://www.serebii.net/index2.shtml)
+	* pokedex (Images)
+	* whos-that-pokemon (Images)
+- [Recipe Puppy](http://www.recipepuppy.com/)
+	* recipe ([API](http://www.recipepuppy.com/about/api/))
+- [Rotten Tomatoes](https://www.rottentomatoes.com/)
+	* rotten-tomatoes (API)
+- [Safebooru](https://safebooru.org/)
+	* safebooru (API)
+- [SoundCloud](https://soundcloud.com/)
+	* soundcloud ([API](https://developers.soundcloud.com/))
+- [Stack Exchange](https://stackexchange.com/)
+	* stack-overflow ([API](https://api.stackexchange.com/docs))
+- [Alpha Vantage](https://www.alphavantage.co/)
+	* stocks (API)
+- [Tenor](https://tenor.com/)
+	* tenor ([API](https://tenor.com/gifapi/documentation))
+- [Tumblr](https://www.tumblr.com/)
+	* tumblr ([API](https://www.tumblr.com/docs/en/api/v2))
+- [Twitter](https://twitter.com/)
+	* twitter ([API](https://developer.twitter.com/en/docs.html))
+- [Urban Dictionary](https://www.urbandictionary.com/)
+	* urban ([API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation))
+- [USPS](https://www.usps.com/)
+	* usps-tracking ([API](https://www.usps.com/business/web-tools-apis/))
+- [VocaDB](https://vocadb.net/)
+	* vocadb ([API](https://vocadb.net/swagger/ui/index))
+- [Wattpad](https://www.wattpad.com/)
+	* wattpad ([API](https://www.wattpad.com/developer/docs/api))
+- [OpenWeatherMap](https://openweathermap.org/)
+	* weather ([API](https://openweathermap.org/api))
 - [wikiHow](https://www.wikihow.com/Main-Page)
-	* wikihow
+	* wikihow ([API](https://www.wikihow.com/api.php))
 - [xkcd](https://xkcd.com/)
-	* xkcd
-- [YouTube Data API](https://developers.google.com/youtube/v3/)
-	* youtube
-- [YGOPRODeck API](https://db.ygoprodeck.com/api-guide/)
-	* yu-gi-oh
-- [iCrawl/Tohru](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js)
-	* butt
+	* xkcd ([API](https://xkcd.com/json.html))
+- [YGOPRODECK](https://ygoprodeck.com/)
+	* yu-gi-oh ([API](https://db.ygoprodeck.com/api-guide/))
+- [iCrawl](https://github.com/iCrawl)
+	* butt ([Code, Concept](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js))
 - [PSYCHO-PASS](http://psycho-pass.com/)
-	* psycho-pass
-- [u/LennyMcLennington](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/)
-	* dark-light
-- [u/AelinSA](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magic/)
-	* dark-light
+	* psycho-pass (Original Anime)
+- [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington)
+	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/))
+- [u/AelinSA](https://www.reddit.com/user/AelinSA)
+	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magic/))
 - [u/_Ebb](https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/)
-	* eat-pant
-- [Shia LaBeouf "Just Do It" Motivational Speech](https://www.youtube.com/watch?v=ZXsQAXx_ao0)
-	* just-do-it
+	* eat-pant (Image)
+- [MotivaShian](https://www.youtube.com/channel/UC0yDCpC_UaXEdL6Zc4715rg)
+	* just-do-it ([Original Motivational Speech](https://www.youtube.com/watch?v=ZXsQAXx_ao0))
 - [SPAM Brand](https://www.spam.com/)
-	* spam
+	* spam (Image)
 - [National Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/)
-	* suicide-hotline
+	* suicide-hotline (Phone Number)
 - [07th Expansion](http://07th-expansion.net/)
-	* box-choosing
+	* box-choosing (Original Game)
 - [MangaGamer.com](https://www.mangagamer.com/)
-	* box-choosing
-- [Higurashi When They Cry Hou - Ch.4 Himatsubushi](https://store.steampowered.com/app/526490/)
-	* box-choosing
-- [Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter)
-	* captcha
+	* box-choosing ([Original Translation](https://store.steampowered.com/app/526490/Higurashi_When_They_Cry_Hou__Ch4_Himatsubushi/))
+- [Christoph Mueller](https://www.fontsquirrel.com/fonts/list/foundry/christoph-mueller)
+	* captcha ([Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter))
 - [Mythbusters](https://go.discovery.com/tv-shows/mythbusters)
-	* doors
+	* doors (Concept)
 - [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem)
-	* doors
+	* doors (Concept)
 - [Google Feud](http://www.googlefeud.com/)
-	* google-feud
-- [BrantSteele Hunger Games Simulator](http://brantsteele.net/hungergames/reaping.php)
-	* hunger-games
+	* google-feud (Original Game)
+- [BrantSteele](https://brantsteele.com/)
+	* hunger-games ([Original "Hunger Games Simulator" Game](http://brantsteele.net/hungergames/reaping.php))
 - [Pottermore](https://my.pottermore.com/sorting)
-	* sorting-hat
-- [Pottermore Sorting Hat Quiz analysis by u/N1ffler](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/)
-	* sorting-hat
-- [My Little Pony: Friendship is Magic](https://mylittlepony.hasbro.com/en-us)
-	* brony-speak
+	* sorting-hat (Original Quiz)
+- [u/N1ffler](https://www.reddit.com/user/N1ffler/)
+	* sorting-hat ([Sorting Hat Quiz Analysis Data](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/))
+- [Shrick](https://www.deviantart.com/shrick)
+	* brony-speak ([English-to-Brony Dictionary Data](https://www.deviantart.com/shrick/art/Brony-dictionary-version-2-207157029?q=gallery%3Ashrick&qo=0))
 - [cowsay Online](http://cowsay.morecode.org/)
-	* cow-say
+	* cow-say (API)
 - [Latlmes](https://www.latlmes.com/)
-	* latlmes
+	* latlmes (API)
+- [devsnek](https://github.com/devsnek)
+	* owo (Code)
+- [mikewesthad](https://github.com/mikewesthad)
+	* pirate ([English-to-Pirate Dictionary Data](https://github.com/mikewesthad/pirate-speak/blob/master/lib/pirate-speak.js#L1-L155))
 - [UNDERTALE](https://undertale.com/)
-	* temmie
-- [Google Translate](https://translate.google.com/)
-	* translate
+	* temmie (Original Game)
+- [ebearskittychan](https://twitter.com/ebearskittychan)
+	* temmie (English-to-Temmie Dictionary Data)
 - [The Yoda-Speak Generator](https://www.yodaspeak.co.uk/)
-	* yoda
+	* yoda (API)
+- [clux](https://github.com/clux)
+	* zalgo ([Zalgo Character Data](https://github.com/clux/zalgolize/blob/master/zalgo.js#L3-L21))
 - [PayPal](https://www.paypal.com/us/home)
-	* donate
+	* donate (Donation Gathering)
