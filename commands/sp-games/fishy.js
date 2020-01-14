@@ -12,11 +12,9 @@ module.exports = class FishyCommand extends Command {
 			description: 'Go fishing.',
 			credit: [
 				{
-					{
-						name: 'Tatsumaki',
-						url: 'https://tatsumaki.xyz/',
-						reason: 'Concept'
-					}
+					name: 'Tatsumaki',
+					url: 'https://tatsumaki.xyz/',
+					reason: 'Concept'
 				}
 			]
 		});
