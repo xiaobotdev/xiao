@@ -11,7 +11,8 @@ module.exports = class KazumaKazumaCommand extends Command {
 			credit: [
 				{
 					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
-					url: 'http://konosuba.com/'
+					url: 'http://konosuba.com/',
+					reason: 'Original Anime'
 				}
 			]
 		});

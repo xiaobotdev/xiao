@@ -12,7 +12,8 @@ module.exports = class FinalGradeCommand extends Command {
 			credit: [
 				{
 					name: 'RogerHub Final Grade Calculator',
-					url: 'https://rogerhub.com/final-grade-calculator/'
+					url: 'https://rogerhub.com/final-grade-calculator/',
+					reason: 'Concept, Code'
 				}
 			],
 			args: [

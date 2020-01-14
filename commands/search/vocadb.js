@@ -15,8 +15,10 @@ module.exports = class VocadbCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'VocaDB Web API',
-					url: 'https://vocadb.net/swagger/ui/index'
+					name: 'VocaDB',
+					url: 'https://vocadb.net/',
+					reason: 'API',
+					reasonURL: 'https://vocadb.net/swagger/ui/index'
 				}
 			],
 			args: [

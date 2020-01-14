@@ -11,7 +11,8 @@ module.exports = class SafebooruCommand extends Command {
 			credit: [
 				{
 					name: 'Safebooru',
-					url: 'https://safebooru.org/'
+					url: 'https://safebooru.org/',
+					reason: 'API'
 				}
 			],
 			args: [

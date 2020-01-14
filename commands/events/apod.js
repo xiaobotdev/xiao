@@ -15,8 +15,10 @@ module.exports = class ApodCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Astronomy Picture of the Day',
-					url: 'https://apod.nasa.gov/apod/astropix.html'
+					name: 'NASA',
+					url: 'https://www.nasa.gov/',
+					reason: 'APOD API',
+					reasonURL: 'https://api.nasa.gov/'
 				}
 			]
 		});

@@ -15,15 +15,14 @@ module.exports = class GoogleCommand extends Command {
 			credit: [
 				{
 					name: 'Google',
-					url: 'https://www.google.com/'
-				},
-				{
-					name: 'Google Custom Search API',
-					url: 'https://cse.google.com/cse/all'
+					url: 'https://www.google.com/',
+					reason: 'Custom Search API',
+					reasonURL: 'https://cse.google.com/cse/all'
 				},
 				{
 					name: 'LMGTFY',
-					url: 'https://lmgtfy.com/'
+					url: 'https://lmgtfy.com/',
+					reason: 'API'
 				}
 			],
 			args: [

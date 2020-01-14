@@ -19,7 +19,8 @@ module.exports = class NeopetCommand extends Command {
 			credit: [
 				{
 					name: 'Neopets',
-					url: 'http://www.neopets.com/'
+					url: 'http://www.neopets.com/',
+					reason: 'Pet Image Data'
 				}
 			],
 			args: [

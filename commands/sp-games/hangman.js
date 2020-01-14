@@ -11,8 +11,10 @@ module.exports = class HangmanCommand extends Command {
 			description: 'Prevent a man from being hanged by guessing a word as fast as you can.',
 			credit: [
 				{
-					name: 'Moby Word Lists by Grady Ward',
-					url: 'http://www.gutenberg.org/ebooks/3201'
+					name: 'Grady Ward',
+					url: 'https://en.wikipedia.org/wiki/Grady_Ward',
+					reason: 'Moby Word Lists',
+					reasonURL: 'http://www.gutenberg.org/ebooks/3201'
 				}
 			]
 		});

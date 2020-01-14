@@ -15,7 +15,9 @@ module.exports = class WikiaCommand extends Command {
 			credit: [
 				{
 					name: 'FANDOM',
-					url: 'https://www.fandom.com/'
+					url: 'https://www.fandom.com/',
+					reason: 'API',
+					reasonURL: 'https://www.wikia.com/api/v1/'
 				}
 			],
 			args: [

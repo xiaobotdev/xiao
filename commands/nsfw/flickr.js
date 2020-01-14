@@ -12,8 +12,10 @@ module.exports = class FlickrCommand extends Command {
 			nsfw: true,
 			credit: [
 				{
-					name: 'Flickr API',
-					url: 'https://www.flickr.com/services/api/'
+					name: 'Flickr',
+					url: 'https://www.flickr.com/',
+					reason: 'API',
+					reasonURL: 'https://www.flickr.com/services/api/'
 				}
 			],
 			args: [

@@ -13,7 +13,14 @@ module.exports = class SuperpowerCommand extends Command {
 			credit: [
 				{
 					name: 'Superpower Wiki',
-					url: 'https://powerlisting.fandom.com/wiki/Superpower_Wiki'
+					url: 'https://powerlisting.fandom.com/wiki/Superpower_Wiki',
+					reason: 'Superpower Data'
+				},
+				{
+					name: 'FANDOM',
+					url: 'https://www.fandom.com/',
+					reason: 'API',
+					reasonURL: 'https://powerlisting.fandom.com/api.php'
 				}
 			]
 		});

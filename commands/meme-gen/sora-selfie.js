@@ -17,8 +17,16 @@ module.exports = class SoraSelfieCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Kingdom Hearts',
-					url: 'https://www.kingdomhearts.com/home/us/'
+					name: 'Square Enix',
+					url: 'https://square-enix-games.com/',
+					reason: 'Original "Kingdom Hearts" Game',
+					reasonURL: 'https://www.kingdomhearts.com/home/us/'
+				},
+				{
+					name: '@Candasaurus',
+					url: 'https://twitter.com/Candasaurus',
+					reason: 'Image',
+					reasonURL: 'https://twitter.com/Candasaurus/status/1041946636656599045'
 				}
 			],
 			args: [

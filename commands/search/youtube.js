@@ -15,8 +15,10 @@ module.exports = class YoutubeCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'YouTube Data API',
-					url: 'https://developers.google.com/youtube/v3/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'YouTube Data API',
+					reasonURL: 'https://developers.google.com/youtube/v3/'
 				}
 			],
 			args: [

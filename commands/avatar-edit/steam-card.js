@@ -22,15 +22,21 @@ module.exports = class SteamCardCommand extends Command {
 			credit: [
 				{
 					name: 'Steam',
-					url: 'https://store.steampowered.com/'
+					url: 'https://store.steampowered.com/',
+					reason: 'Original Design',
+					reasonURL: 'https://steamcommunity.com/tradingcards/'
 				},
 				{
 					name: 'SinKillerJ Tachikawa',
-					url: 'https://www.deviantart.com/sinkillerj'
+					url: 'https://www.deviantart.com/sinkillerj',
+					reason: 'Template',
+					reasonURL: 'https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984'
 				},
 				{
-					name: 'Google Noto Fonts',
-					url: 'https://www.google.com/get/noto/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [

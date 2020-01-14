@@ -13,8 +13,10 @@ module.exports = class NASACommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'NASA Open APIs',
-					url: 'https://api.nasa.gov/'
+					name: 'NASA',
+					url: 'https://www.nasa.gov/',
+					reason: 'NASA Image and Video Library API',
+					reasonURL: 'https://api.nasa.gov/'
 				}
 			],
 			args: [

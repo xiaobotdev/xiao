@@ -11,8 +11,10 @@ module.exports = class GithubZenCommand extends Command {
 			description: 'Responds with a random GitHub design philosophy.',
 			credit: [
 				{
-					name: 'GitHub Zen API',
-					url: 'https://api.github.com/zen'
+					name: 'GitHub',
+					url: 'https://github.com/',
+					reason: 'Zen API',
+					reasonURL: 'https://developer.github.com/v3/'
 				}
 			]
 		});

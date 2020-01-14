@@ -16,8 +16,10 @@ module.exports = class TwitterCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Twitter API',
-					url: 'https://developer.twitter.com/en/docs.html'
+					name: 'Twitter',
+					url: 'https://twitter.com/',
+					reason: 'API',
+					reasonURL: 'https://developer.twitter.com/en/docs.html'
 				}
 			],
 			args: [

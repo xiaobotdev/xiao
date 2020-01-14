@@ -10,7 +10,8 @@ module.exports = class LatlmesCommand extends Command {
 			credit: [
 				{
 					name: 'Latlmes',
-					url: 'https://www.latlmes.com/'
+					url: 'https://www.latlmes.com/',
+					reason: 'API'
 				}
 			],
 			args: [

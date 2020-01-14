@@ -18,8 +18,9 @@ module.exports = class WorthlessCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Gravity Falls',
-					url: 'https://disneynow.go.com/shows/gravity-falls'
+					name: 'Disney',
+					url: 'https://www.disney.com/',
+					reason: 'Original "Gravity Falls" Show'
 				}
 			],
 			args: [

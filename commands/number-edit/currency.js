@@ -12,7 +12,8 @@ module.exports = class CurrencyCommand extends Command {
 			credit: [
 				{
 					name: 'Foreign exchange rates API',
-					url: 'https://exchangeratesapi.io/'
+					url: 'https://exchangeratesapi.io/',
+					reason: 'API'
 				}
 			],
 			args: [

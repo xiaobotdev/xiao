@@ -34,7 +34,7 @@ client.registry
 		['nsfw', 'NSFW'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay'],
-		['owner', 'Owner-Only']
+		['readme', 'README Generators']
 	])
 	.registerDefaultCommands({
 		help: false,

@@ -22,8 +22,10 @@ module.exports = class TriggeredCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'NotAWeebDev/Misaki',
-					url: 'https://github.com/NotAWeebDev/Misaki'
+					name: 'NotAWeebDev',
+					url: 'https://github.com/NotAWeebDev/',
+					reason: 'Image',
+					reasonURL: 'https://github.com/NotAWeebDev/Misaki/blob/2e44f9efb467028dcbae5a2c9f836d2e99860b85/assets/images/plate_triggered.png'
 				}
 			],
 			args: [

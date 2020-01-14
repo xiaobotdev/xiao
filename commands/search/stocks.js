@@ -16,7 +16,8 @@ module.exports = class StocksCommand extends Command {
 			credit: [
 				{
 					name: 'Alpha Vantage',
-					url: 'https://www.alphavantage.co/'
+					url: 'https://www.alphavantage.co/',
+					reason: 'API'
 				}
 			],
 			args: [

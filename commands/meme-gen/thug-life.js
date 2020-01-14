@@ -19,7 +19,9 @@ module.exports = class ThugLifeCommand extends Command {
 			credit: [
 				{
 					name: 'pngimg.com',
-					url: 'https://pngimg.com/'
+					url: 'https://pngimg.com/',
+					reason: 'Image',
+					reasonURL: 'http://pngimg.com/download/58231'
 				}
 			],
 			args: [

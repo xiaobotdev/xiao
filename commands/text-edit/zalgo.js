@@ -8,6 +8,14 @@ module.exports = class ZalgoCommand extends Command {
 			group: 'text-edit',
 			memberName: 'zalgo',
 			description: 'Converts text to zalgo.',
+			credit: [
+				{
+					name: 'clux',
+					url: 'https://github.com/clux',
+					reason: 'Zalgo Character Data',
+					reasonURL: 'https://github.com/clux/zalgolize/blob/master/zalgo.js#L3-L21'
+				}
+			],
 			args: [
 				{
 					key: 'text',

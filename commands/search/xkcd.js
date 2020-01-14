@@ -15,7 +15,9 @@ module.exports = class XKCDCommand extends Command {
 			credit: [
 				{
 					name: 'xkcd',
-					url: 'https://xkcd.com/'
+					url: 'https://xkcd.com/',
+					reason: 'API',
+					reasonURL: 'https://xkcd.com/json.html'
 				}
 			],
 			args: [

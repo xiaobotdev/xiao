@@ -12,8 +12,10 @@ module.exports = class StrawpollCommand extends Command {
 			description: 'Generates a Strawpoll with the options you provide.',
 			credit: [
 				{
-					name: 'Straw Poll API',
-					url: 'https://github.com/strawpoll/strawpoll/wiki/API'
+					name: 'Straw Poll',
+					url: 'https://www.strawpoll.me/',
+					reason: 'API',
+					reasonURL: 'https://github.com/strawpoll/strawpoll/wiki/API'
 				}
 			],
 			args: [

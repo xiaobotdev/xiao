@@ -9,6 +9,13 @@ module.exports = class OwOCommand extends Command {
 			group: 'text-edit',
 			memberName: 'owo',
 			description: 'OwO.',
+			credit: [
+				{
+					name: 'devsnek',
+					url: 'https://github.com/devsnek',
+					reason: 'Code'
+				}
+			],
 			args: [
 				{
 					key: 'text',

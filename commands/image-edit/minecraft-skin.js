@@ -14,12 +14,10 @@ module.exports = class MinecraftSkinCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Minecraft',
-					url: 'https://www.minecraft.net/en-us/'
-				},
-				{
-					name: 'Mojang API',
-					url: 'https://wiki.vg/Mojang_API'
+					name: 'Mojang',
+					url: 'https://www.mojang.com/',
+					reason: 'API, Original "Minecraft" Game',
+					reasonURL: 'https://wiki.vg/Mojang_API'
 				}
 			],
 			args: [

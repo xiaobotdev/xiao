@@ -14,7 +14,8 @@ module.exports = class SteamCommand extends Command {
 			credit: [
 				{
 					name: 'Steam',
-					url: 'https://store.steampowered.com/'
+					url: 'https://store.steampowered.com/',
+					reason: 'API'
 				}
 			],
 			args: [

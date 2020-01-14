@@ -17,11 +17,13 @@ module.exports = class TimeCommand extends Command {
 			credit: [
 				{
 					name: 'List of tz database time zones',
-					url: 'https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
+					url: 'https://en.wikipedia.org/wiki/List_of_tz_database_time_zones',
+					reason: 'Time Zone Data'
 				},
 				{
 					name: 'Neopets',
-					url: 'http://www.neopets.com/'
+					url: 'http://www.neopets.com/',
+					reason: 'Neopia Time Zone'
 				}
 			],
 			args: [

@@ -13,8 +13,10 @@ module.exports = class RecipeCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Recipe Puppy API',
-					url: 'http://www.recipepuppy.com/about/api/'
+					name: 'Recipe Puppy',
+					url: 'http://www.recipepuppy.com/',
+					reason: 'API',
+					reasonURL: 'http://www.recipepuppy.com/about/api/'
 				}
 			],
 			args: [

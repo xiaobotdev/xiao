@@ -15,8 +15,10 @@ module.exports = class WattpadCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Wattpad API',
-					url: 'https://www.wattpad.com/developer/docs/api'
+					name: 'Wattpad',
+					url: 'https://www.wattpad.com/',
+					reason: 'API',
+					reasonURL: 'https://www.wattpad.com/developer/docs/api'
 				}
 			],
 			args: [

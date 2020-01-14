@@ -15,7 +15,8 @@ module.exports = class NPMCommand extends Command {
 			credit: [
 				{
 					name: 'npm',
-					url: 'https://www.npmjs.com/'
+					url: 'https://www.npmjs.com/',
+					reason: 'API'
 				}
 			],
 			args: [

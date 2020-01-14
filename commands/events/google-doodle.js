@@ -12,8 +12,10 @@ module.exports = class GoogleDoodleCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Google Doodles',
-					url: 'https://www.google.com/doodles'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Google Doodles API',
+					reasonURL: 'https://www.google.com/doodles'
 				}
 			],
 			args: [

@@ -13,7 +13,8 @@ module.exports = class DanbooruCommand extends Command {
 			credit: [
 				{
 					name: 'Danbooru',
-					url: 'https://danbooru.donmai.us/'
+					url: 'https://danbooru.donmai.us/',
+					reason: 'API'
 				}
 			],
 			args: [

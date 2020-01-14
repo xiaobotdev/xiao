@@ -14,7 +14,9 @@ module.exports = class TodayInHistoryCommand extends Command {
 			credit: [
 				{
 					name: 'muffinlabs - Today in History',
-					url: 'http://history.muffinlabs.com/'
+					url: 'http://history.muffinlabs.com/',
+					reason: 'API',
+					reasonURL: 'http://history.muffinlabs.com/#api'
 				}
 			],
 			args: [

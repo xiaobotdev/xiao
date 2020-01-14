@@ -17,8 +17,9 @@ module.exports = class DexterCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Pokémon TV',
-					url: 'https://www.pokemon.com/us/pokemon-episodes/'
+					name: 'Pokémon',
+					url: 'https://www.pokemon.com/us/',
+					reason: 'Image, Original Anime'
 				}
 			],
 			args: [

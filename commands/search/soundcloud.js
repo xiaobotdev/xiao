@@ -16,8 +16,10 @@ module.exports = class SoundcloudCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'SoundCloud API',
-					url: 'https://developers.soundcloud.com/'
+					name: 'SoundCloud',
+					url: 'https://soundcloud.com/',
+					reason: 'API',
+					reasonURL: 'https://developers.soundcloud.com/'
 				}
 			],
 			args: [

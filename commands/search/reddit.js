@@ -16,7 +16,9 @@ module.exports = class RedditCommand extends Command {
 			credit: [
 				{
 					name: 'Reddit',
-					url: 'https://www.reddit.com/'
+					url: 'https://www.reddit.com/',
+					reason: 'API',
+					reasonURL: 'https://www.reddit.com/dev/api/'
 				}
 			],
 			args: [

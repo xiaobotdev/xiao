@@ -18,7 +18,8 @@ module.exports = class IfunnyCommand extends Command {
 			credit: [
 				{
 					name: 'iFunny',
-					url: 'https://ifunny.co/'
+					url: 'https://ifunny.co/',
+					reason: 'Logo'
 				}
 			],
 			args: [

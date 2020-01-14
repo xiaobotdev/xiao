@@ -12,7 +12,8 @@ module.exports = class FoxCommand extends Command {
 			credit: [
 				{
 					name: 'RandomFox',
-					url: 'https://randomfox.ca/'
+					url: 'https://randomfox.ca/',
+					reason: 'API'
 				}
 			]
 		});

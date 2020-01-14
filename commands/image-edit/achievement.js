@@ -19,16 +19,21 @@ module.exports = class AchievementCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Minecraft',
-					url: 'https://www.minecraft.net/en-us/'
+					name: 'Mojang',
+					url: 'https://www.mojang.com/',
+					reason: 'Original "Minecraft" Game',
+					reasonURL: 'https://www.minecraft.net/en-us/',
 				},
 				{
 					name: 'Minecraft Achievement Generator',
-					url: 'https://www.minecraftskinstealer.com/achievement/'
+					url: 'https://www.minecraftskinstealer.com/achievement/',
+					reason: 'Image'
 				},
 				{
-					name: 'Minecraftia Font',
-					url: 'https://www.dafont.com/minecraftia.font'
+					name: 'Andrew Tyler',
+					url: 'https://www.dafont.com/andrew-tyler.d2526',
+					reason: 'Minecraftia Font',
+					reasonURL: 'https://www.dafont.com/minecraftia.font'
 				}
 			],
 			args: [

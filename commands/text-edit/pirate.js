@@ -10,6 +10,14 @@ module.exports = class PirateCommand extends Command {
 			group: 'text-edit',
 			memberName: 'pirate',
 			description: 'Converts text to pirate.',
+			credit: [
+				{
+					name: 'mikewesthad',
+					url: 'https://github.com/mikewesthad',
+					reason: 'English-to-Pirate Dictionary Data',
+					reasonURL: 'https://github.com/mikewesthad/pirate-speak/blob/master/lib/pirate-speak.js#L1-L155'
+				}
+			],
 			args: [
 				{
 					key: 'text',

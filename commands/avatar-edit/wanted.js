@@ -20,7 +20,9 @@ module.exports = class WantedCommand extends Command {
 			credit: [
 				{
 					name: 'Tim\'s Printables',
-					url: 'https://www.timvandevall.com/'
+					url: 'https://www.timvandevall.com/',
+					reason: 'Image',
+					reasonURL: 'https://www.pinterest.com/pin/365002744774849370/'
 				}
 			],
 			args: [

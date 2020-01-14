@@ -14,7 +14,8 @@ module.exports = class FidgetCommand extends ImgurAlbumCommand {
 			credit: [
 				{
 					name: 'Dust: An Elysian Tail',
-					url: 'https://www.noogy.com/main.html'
+					url: 'https://www.noogy.com/main.html',
+					reason: 'Original Game'
 				}
 			]
 		});

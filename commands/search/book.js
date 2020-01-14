@@ -15,8 +15,10 @@ module.exports = class BookCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Google Books API',
-					url: 'https://developers.google.com/books/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Books API',
+					reasonURL: 'https://developers.google.com/books/'
 				}
 			],
 			args: [

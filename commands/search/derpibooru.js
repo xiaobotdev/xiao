@@ -11,7 +11,8 @@ module.exports = class DerpibooruCommand extends Command {
 			credit: [
 				{
 					name: 'Derpibooru',
-					url: 'https://derpibooru.org/'
+					url: 'https://derpibooru.org/',
+					reason: 'API'
 				}
 			],
 			args: [

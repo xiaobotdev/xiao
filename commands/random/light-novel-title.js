@@ -12,7 +12,8 @@ module.exports = class LightNovelTitleCommand extends Command {
 			credit: [
 				{
 					name: 'LN title generator',
-					url: 'https://salty-salty-studios.com/shiz/ln.php'
+					url: 'https://salty-salty-studios.com/shiz/ln.php',
+					reason: 'API'
 				}
 			]
 		});

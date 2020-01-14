@@ -13,7 +13,8 @@ module.exports = class CatCommand extends Command {
 			credit: [
 				{
 					name: 'random.cat',
-					url: 'https://random.cat/'
+					url: 'https://random.cat/',
+					reason: 'API'
 				}
 			]
 		});

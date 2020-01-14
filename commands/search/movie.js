@@ -15,8 +15,10 @@ module.exports = class MovieCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'The Movie Database API',
-					url: 'https://www.themoviedb.org/documentation/api'
+					name: 'The Movie Database',
+					url: 'https://www.themoviedb.org/',
+					reason: 'API',
+					reasonURL: 'https://www.themoviedb.org/documentation/api'
 				}
 			],
 			args: [

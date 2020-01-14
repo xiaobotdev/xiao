@@ -16,11 +16,15 @@ module.exports = class DarkLightCommand extends Command {
 			credit: [
 				{
 					name: 'u/LennyMcLennington',
-					url: 'https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/'
+					url: 'https://www.reddit.com/user/LennyMcLennington',
+					reason: 'Image',
+					reasonURL: 'https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/'
 				},
 				{
 					name: 'u/AelinSA',
-					url: 'https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magic/'
+					url: 'https://www.reddit.com/user/AelinSA',
+					reason: 'Image',
+					reasonURL: 'https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magic/'
 				}
 			],
 			args: [

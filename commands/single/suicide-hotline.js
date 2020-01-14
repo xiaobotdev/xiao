@@ -12,7 +12,8 @@ module.exports = class SuicideHotlineCommand extends Command {
 			credit: [
 				{
 					name: 'National Suicide Prevention Lifeline',
-					url: 'https://suicidepreventionlifeline.org/'
+					url: 'https://suicidepreventionlifeline.org/',
+					reason: 'Phone Number'
 				}
 			]
 		});

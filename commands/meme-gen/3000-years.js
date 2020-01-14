@@ -18,8 +18,9 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Pokémon X and Pokémon Y',
-					url: 'https://www.pokemon.com/us/pokemon-video-games/pokemon-x-and-pokemon-y/'
+					name: 'Pokémon',
+					url: 'https://www.pokemon.com/us/',
+					reason: 'Image, Original Game'
 				}
 			],
 			args: [

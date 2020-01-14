@@ -12,7 +12,8 @@ module.exports = class HttpDogCommand extends Command {
 			credit: [
 				{
 					name: 'HTTP Status Dogs',
-					url: 'https://httpstatusdogs.com/'
+					url: 'https://httpstatusdogs.com/',
+					reason: 'API'
 				}
 			],
 			args: [

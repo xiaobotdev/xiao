@@ -12,7 +12,8 @@ module.exports = class GoogleAutofillCommand extends Command {
 			credit: [
 				{
 					name: 'Google',
-					url: 'https://www.google.com/'
+					url: 'https://www.google.com/',
+					reason: 'Autofill API'
 				}
 			],
 			args: [

@@ -18,8 +18,10 @@ module.exports = class FrameCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'PNG Arts',
-					url: 'https://www.pngarts.com/'
+					name: 'www.aljanh.net',
+					url: 'http://www.aljanh.net/',
+					reason: 'Image',
+					reasonURL: 'http://www.aljanh.net/frame-wallpapers/1508614706.html'
 				}
 			],
 			args: [

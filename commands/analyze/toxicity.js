@@ -13,7 +13,8 @@ module.exports = class ToxicityCommand extends Command {
 			credit: [
 				{
 					name: 'Perspective API',
-					url: 'https://www.perspectiveapi.com/#/'
+					url: 'https://www.perspectiveapi.com/#/',
+					reason: 'API'
 				}
 			],
 			args: [

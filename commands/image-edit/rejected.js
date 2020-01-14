@@ -18,8 +18,10 @@ module.exports = class RejctedCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'People PNG',
-					url: 'https://peoplepng.com/'
+					name: 'Clipart Library',
+					url: 'http://clipart-library.com/',
+					reason: 'Image',
+					reasonURL: 'http://clipart-library.com/clipart/Rejected-Stamp-Transparent.htm'
 				}
 			],
 			args: [

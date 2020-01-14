@@ -11,7 +11,8 @@ module.exports = class CowSayCommand extends Command {
 			credit: [
 				{
 					name: 'cowsay Online',
-					url: 'http://cowsay.morecode.org/'
+					url: 'http://cowsay.morecode.org/',
+					reason: 'API'
 				}
 			],
 			args: [

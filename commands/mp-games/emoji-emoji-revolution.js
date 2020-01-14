@@ -13,6 +13,13 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			memberName: 'emoji-emoji-revolution',
 			description: 'Can you type arrow emoji faster than anyone else has ever typed them before?',
 			guildOnly: true,
+			credit: [
+				{
+					name: 'Dance Dance Revolution',
+					url: 'https://www.ddrgame.com/',
+					reason: 'Concept'
+				}
+			],
 			args: [
 				{
 					key: 'opponent',

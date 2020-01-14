@@ -11,7 +11,8 @@ module.exports = class LMGTFYCommand extends Command {
 			credit: [
 				{
 					name: 'LMGTFY',
-					url: 'https://lmgtfy.com/'
+					url: 'https://lmgtfy.com/',
+					reason: 'API'
 				}
 			],
 			args: [

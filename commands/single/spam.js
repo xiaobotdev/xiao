@@ -12,7 +12,8 @@ module.exports = class SpamCommand extends Command {
 			credit: [
 				{
 					name: 'SPAM Brand',
-					url: 'https://www.spam.com/'
+					url: 'https://www.spam.com/',
+					reason: 'Image'
 				}
 			]
 		});

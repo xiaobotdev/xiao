@@ -19,8 +19,16 @@ module.exports = class ChallengerCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Super Smash Bros.',
-					url: 'https://www.smashbros.com/en_US/index.html'
+					name: 'Jack The Awesomeness Gamer',
+					url: 'https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ',
+					reason: 'Image',
+					reasonURL: 'https://www.youtube.com/watch?v=3FebRrXg0bk'
+				},
+				{
+					name: 'Nintendo',
+					url: 'https://www.nintendo.com/',
+					reason: 'Original "Super Smash Bros." Game',
+					reasonURL: 'https://www.smashbros.com/en_US/index.html'
 				}
 			],
 			args: [

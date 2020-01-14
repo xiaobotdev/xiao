@@ -10,6 +10,13 @@ module.exports = class UnitsCommand extends Command {
 			group: 'number-edit',
 			memberName: 'units',
 			description: 'Converts units to/from other units.',
+			credit: [
+				{
+					name: 'mathjs',
+					url: 'https://mathjs.org/',
+					reason: 'Expression Parser'
+				}
+			],
 			args: [
 				{
 					key: 'amount',

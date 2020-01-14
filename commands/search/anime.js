@@ -87,8 +87,10 @@ module.exports = class AnimeCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'AniList API',
-					url: 'https://anilist.gitbook.io/anilist-apiv2-docs/'
+					name: 'AniList',
+					url: 'https://anilist.co/',
+					reason: 'API',
+					reasonURL: 'https://anilist.gitbook.io/anilist-apiv2-docs/'
 				}
 			],
 			args: [

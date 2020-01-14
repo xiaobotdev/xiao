@@ -22,12 +22,16 @@ module.exports = class GruPlanCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Despicable Me',
-					url: 'http://www.despicable.me/'
+					name: 'Illumination',
+					url: 'http://www.illumination.com/',
+					reason: 'Original "Despicable Me" Movie',
+					reasonURL: 'http://www.despicable.me/'
 				},
 				{
-					name: 'Google Noto Fonts',
-					url: 'https://www.google.com/get/noto/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [

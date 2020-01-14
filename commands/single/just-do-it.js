@@ -10,8 +10,10 @@ module.exports = class JustDoItCommand extends Command {
 			description: 'Sends a link to the "Just Do It!" motivational speech.',
 			credit: [
 				{
-					name: 'Shia LaBeouf "Just Do It" Motivational Speech',
-					url: 'https://www.youtube.com/watch?v=ZXsQAXx_ao0'
+					name: 'MotivaShian',
+					url: 'https://www.youtube.com/channel/UC0yDCpC_UaXEdL6Zc4715rg',
+					reason: 'Original Motivational Speech',
+					reasonURL: 'https://www.youtube.com/watch?v=ZXsQAXx_ao0'
 				}
 			]
 		});

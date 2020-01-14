@@ -15,11 +15,13 @@ module.exports = class PokemonFusionCommand extends Command {
 			credit: [
 				{
 					name: 'Pokémon',
-					url: 'https://www.pokemon.com/us/'
+					url: 'https://www.pokemon.com/us/',
+					reason: 'Original Game'
 				},
 				{
 					name: 'Pokemon Fusion',
-					url: 'https://pokemon.alexonsager.net/'
+					url: 'https://pokemon.alexonsager.net/',
+					reason: 'Images'
 				}
 			],
 			args: [

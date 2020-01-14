@@ -14,12 +14,16 @@ module.exports = class YuGiOhCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Yu-Gi-Oh! Trading Card Game',
-					url: 'https://www.yugioh-card.com/en/'
+					name: 'Konami',
+					url: 'https://www.konami.com/en/',
+					reason: 'Image, Original "Yu-Gi-Oh!" Game',
+					reasonURL: 'https://www.yugioh-card.com/en/',
 				},
 				{
-					name: 'YGOPRODeck API',
-					url: 'https://db.ygoprodeck.com/api-guide/'
+					name: 'YGOPRODECK',
+					url: 'https://ygoprodeck.com/',
+					reason: 'API',
+					reasonURL: 'https://db.ygoprodeck.com/api-guide/'
 				}
 			],
 			args: [

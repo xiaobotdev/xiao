@@ -13,7 +13,9 @@ module.exports = class WikihowCommand extends Command {
 			credit: [
 				{
 					name: 'wikiHow',
-					url: 'https://www.wikihow.com/Main-Page'
+					url: 'https://www.wikihow.com/Main-Page',
+					reason: 'API',
+					reasonURL: 'https://www.wikihow.com/api.php'
 				}
 			],
 			args: [

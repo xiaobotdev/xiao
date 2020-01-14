@@ -11,12 +11,15 @@ module.exports = class SmwLevelCommand extends Command {
 			description: 'Responds with a random Super Mario World level name.',
 			credit: [
 				{
-					name: 'Super Mario World',
-					url: 'https://www.nintendo.co.jp/n02/shvc/mw/index.html'
+					name: 'Nintendo',
+					url: 'https://www.nintendo.com/',
+					reason: 'Original "Super Mario World" Game',
+					reasonURL: 'https://www.nintendo.co.jp/n02/shvc/mw/index.html'
 				},
 				{
 					name: 'List of Super Mario World levels',
-					url: 'http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels'
+					url: 'http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels',
+					reason: 'Level Name Data'
 				}
 			]
 		});

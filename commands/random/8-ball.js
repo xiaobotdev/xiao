@@ -13,7 +13,9 @@ module.exports = class EightBallCommand extends Command {
 			credit: [
 				{
 					name: 'Mattel',
-					url: 'https://www.mattelgames.com/games/en-us/kids/magic-8-ball'
+					url: 'https://www.mattel.com/en-us',
+					reason: 'Original Concept',
+					reasonURL: 'https://www.mattelgames.com/games/en-us/kids/magic-8-ball'
 				}
 			],
 			args: [

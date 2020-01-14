@@ -22,11 +22,14 @@ module.exports = class IllegalCommand extends Command {
 			credit: [
 				{
 					name: 'Donald J. Trump',
-					url: 'https://www.donaldjtrump.com/'
+					url: 'https://www.donaldjtrump.com/',
+					reason: 'Himself, Image'
 				},
 				{
-					name: 'Google Noto Fonts',
-					url: 'https://www.google.com/get/noto/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [

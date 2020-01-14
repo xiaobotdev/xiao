@@ -12,8 +12,10 @@ module.exports = class MagicConchCommand extends Command {
 			description: 'Asks your question to the Magic Conch.',
 			credit: [
 				{
-					name: 'SpongeBob SquarePants',
-					url: 'https://www.nick.com/shows/spongebob-squarepants'
+					name: 'Nickelodeon',
+					url: 'https://www.nick.com/',
+					reason: 'Image, Original "Spongebob Squarepants" Show',
+					reasonURL: 'https://www.nick.com/shows/spongebob-squarepants'
 				}
 			],
 			args: [

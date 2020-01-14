@@ -15,11 +15,14 @@ module.exports = class SortingHatCommand extends Command {
 			credit: [
 				{
 					name: 'Pottermore',
-					url: 'https://my.pottermore.com/sorting'
+					url: 'https://my.pottermore.com/sorting',
+					reason: 'Original Quiz'
 				},
 				{
-					name: 'Pottermore Sorting Hat Quiz analysis by u/N1ffler',
-					url: 'https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/'
+					name: 'u/N1ffler',
+					url: 'https://www.reddit.com/user/N1ffler/',
+					reason: 'Sorting Hat Quiz Analysis Data',
+					reasonURL: 'https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/'
 				}
 			]
 		});

@@ -19,7 +19,8 @@ module.exports = class BrazzersCommand extends Command {
 			credit: [
 				{
 					name: 'Brazzers',
-					url: 'https://www.brazzers.com/'
+					url: 'https://www.brazzers.com/',
+					reason: 'Logo'
 				}
 			],
 			args: [

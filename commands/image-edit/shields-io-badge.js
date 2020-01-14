@@ -13,7 +13,8 @@ module.exports = class ShieldsIoBadgeCommand extends Command {
 			credit: [
 				{
 					name: 'Shields.io',
-					url: 'https://shields.io/'
+					url: 'https://shields.io/',
+					reason: 'API'
 				}
 			],
 			args: [

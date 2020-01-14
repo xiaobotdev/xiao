@@ -13,7 +13,8 @@ module.exports = class MDNCommand extends Command {
 			credit: [
 				{
 					name: 'MDN Web Docs',
-					url: 'https://developer.mozilla.org/en-US/'
+					url: 'https://developer.mozilla.org/en-US/',
+					reason: 'API'
 				}
 			],
 			args: [

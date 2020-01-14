@@ -10,7 +10,14 @@ module.exports = class GenerateCommandsCommand extends Command {
 			memberName: 'generate-commands',
 			description: 'Generates the commands list for Xiao\'s README.',
 			ownerOnly: true,
-			guarded: true
+			guarded: true,
+			credit: [
+				{
+					name: 'Hastebin',
+					url: 'https://hastebin.com/about.md',
+					reason: 'API'
+				}
+			]
 		});
 	}
 

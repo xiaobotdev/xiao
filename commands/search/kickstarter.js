@@ -15,7 +15,8 @@ module.exports = class KickstarterCommand extends Command {
 			credit: [
 				{
 					name: 'Kickstarter',
-					url: 'https://www.kickstarter.com/'
+					url: 'https://www.kickstarter.com/',
+					reason: 'API'
 				}
 			],
 			args: [

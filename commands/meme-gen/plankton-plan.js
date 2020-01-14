@@ -22,12 +22,16 @@ module.exports = class PlanktonPlanCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Spongebob',
-					url: 'https://www.nick.com/shows/spongebob-squarepants'
+					name: 'Nickelodeon',
+					url: 'https://www.nick.com/',
+					reason: 'Image, Original "Spongebob Squarepants" Show',
+					reasonURL: 'https://www.nick.com/shows/spongebob-squarepants'
 				},
 				{
-					name: 'Google Noto Fonts',
-					url: 'https://www.google.com/get/noto/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [

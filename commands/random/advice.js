@@ -12,7 +12,9 @@ module.exports = class AdviceCommand extends Command {
 			credit: [
 				{
 					name: 'Advice Slip',
-					url: 'https://adviceslip.com/'
+					url: 'https://adviceslip.com/',
+					reason: 'API',
+					reasonURL: 'https://api.adviceslip.com/'
 				}
 			]
 		});

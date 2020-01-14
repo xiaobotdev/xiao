@@ -13,7 +13,13 @@ module.exports = class TemmieCommand extends Command {
 			credit: [
 				{
 					name: 'UNDERTALE',
-					url: 'https://undertale.com/'
+					url: 'https://undertale.com/',
+					reason: 'Original Game'
+				},
+				{
+					name: 'ebearskittychan',
+					url: 'https://twitter.com/ebearskittychan',
+					reason: 'English-to-Temmie Dictionary Data'
 				}
 			],
 			args: [
