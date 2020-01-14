@@ -20,8 +20,9 @@ module.exports = class ItunesCommand extends Command {
 					reasonURL: 'https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/'
 				},
 				{
-					name: 'List of ISO 639-2 codes',
-					url: 'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes',
+					name: 'Wikipedia',
+					url: 'https://www.wikipedia.org/',
+					reasonURL: 'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes',
 					reason: 'Language Code Data'
 				}
 			],
