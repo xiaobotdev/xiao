@@ -22,7 +22,7 @@ module.exports = class GenerateCreditCommand extends Command {
 	}
 
 	async run(msg) {
-		const credit = [];
+		let credit = [];
 		const commands = this.client.registry.commands.filter(cmd => cmd.credit && cmd.credit.length > 1);
 		for (const command of commands.values()) {
 			for (const cred of command.credit) {
@@ -47,6 +47,7 @@ module.exports = class GenerateCreditCommand extends Command {
 				});
 			}
 		}
+		credit = credit.sort((a, b) => (a.name > b.name) ? 1 : -1);
 		const mapped = credit
 			.map(c => `- [${c.name}](${c.url})\n${c.commands.map(cmd => {
 				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;

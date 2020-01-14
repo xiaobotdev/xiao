@@ -20,7 +20,8 @@ module.exports = class BeautifulCommand extends Command {
 				{
 					name: 'Disney',
 					url: 'https://www.disney.com/',
-					reason: 'Original "Gravity Falls" Show'
+					reason: 'Original "Gravity Falls" Show',
+					reasonURL: 'https://disneynow.com/shows/gravity-falls'
 				},
 				{
 					name: 'Tatsumaki',
