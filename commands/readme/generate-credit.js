@@ -28,17 +28,29 @@ module.exports = class GenerateCreditCommand extends Command {
 			for (const cred of command.credit) {
 				const found = credit.find(c => c.name === cred.name);
 				if (found) {
-					found.commands.push(command.name);
+					found.commands.push({
+						name: command.name,
+						reason: cred.reason,
+						reasonURL: cred.reasonURL
+					});
 					continue;
 				}
 				if (cred.name === 'Dragon Fire') continue;
-				credit.push({ ...cred, commands: [command.name] });
+				credit.push({
+					name: cred.name,
+					url: cred.url,
+					commands: [{
+						name: command.name,
+						reason: cred.reason,
+						reasonURL: cred.reasonURL
+					}]
+				});
 			}
 		}
 		const mapped = credit
 			.map(c => `- [${c.name}](${c.url})\n${c.commands.map(cmd => {
-				if (!c.reasonURL) return `	* ${cmd} (${c.reason})`;
-				return `	* ${cmd} ([${c.reason}](${c.reasonURL}))`;
+				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;
+				return `	* ${cmd.name} ([${cmd.reason}](${cmd.reasonURL}))`;
 			}).join('\n')}`);
 		const { body } = await request
 			.post('https://hastebin.com/documents')
