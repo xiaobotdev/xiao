@@ -13,7 +13,8 @@ module.exports = class DonateCommand extends Command {
 			credit: [
 				{
 					name: 'PayPal',
-					url: 'https://www.paypal.com/us/home'
+					url: 'https://www.paypal.com/us/home',
+					reason: 'Donation Gathering'
 				}
 			]
 		});

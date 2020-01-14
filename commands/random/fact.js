@@ -11,7 +11,9 @@ module.exports = class FactCommand extends Command {
 			credit: [
 				{
 					name: 'Wikipedia',
-					url: 'https://www.wikipedia.org/'
+					url: 'https://www.wikipedia.org/',
+					reason: 'API',
+					reasonURL: 'https://en.wikipedia.org/w/api.php'
 				}
 			]
 		});

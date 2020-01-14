@@ -12,8 +12,10 @@ module.exports = class DogCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Dog API',
-					url: 'https://dog.ceo/dog-api/'
+					name: 'Dog CEO',
+					url: 'https://dog.ceo/',
+					reason: 'Dog API',
+					reasonURL: 'https://dog.ceo/dog-api/'
 				}
 			]
 		});

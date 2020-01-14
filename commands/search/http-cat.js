@@ -12,7 +12,8 @@ module.exports = class HttpCatCommand extends Command {
 			credit: [
 				{
 					name: 'HTTP Cats',
-					url: 'https://http.cat/'
+					url: 'https://http.cat/',
+					reason: 'API'
 				}
 			],
 			args: [

@@ -14,7 +14,8 @@ module.exports = class KarenCommand extends ImgurAlbumCommand {
 			credit: [
 				{
 					name: 'KINMOZA!',
-					url: 'http://www.kinmosa.com/'
+					url: 'http://www.kinmosa.com/',
+					reason: 'Original Anime'
 				}
 			]
 		});

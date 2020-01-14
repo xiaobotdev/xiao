@@ -12,7 +12,8 @@ module.exports = class NewspaperCommand extends Command {
 			credit: [
 				{
 					name: 'The Newspaper Clipping Generator',
-					url: 'https://www.fodey.com/generators/newspaper/snippet.asp'
+					url: 'https://www.fodey.com/generators/newspaper/snippet.asp',
+					reason: 'API'
 				}
 			],
 			args: [

@@ -11,8 +11,10 @@ module.exports = class CreateQRCodeCommand extends Command {
 			description: 'Converts text to a QR Code.',
 			credit: [
 				{
-					name: 'QR Code Generator\'s QR code API',
-					url: 'http://goqr.me/api/'
+					name: 'goQR.me',
+					url: 'http://goqr.me/',
+					reason: 'QR code API',
+					reasonURL: 'http://goqr.me/api/'
 				}
 			],
 			args: [

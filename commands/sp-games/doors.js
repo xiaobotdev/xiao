@@ -14,11 +14,13 @@ module.exports = class DoorsCommand extends Command {
 			credit: [
 				{
 					name: 'Mythbusters',
-					url: 'https://go.discovery.com/tv-shows/mythbusters'
+					url: 'https://go.discovery.com/tv-shows/mythbusters',
+					reason: 'Concept'
 				},
 				{
 					name: 'Monty Hall problem',
-					url: 'https://en.wikipedia.org/wiki/Monty_Hall_problem'
+					url: 'https://en.wikipedia.org/wiki/Monty_Hall_problem',
+					reason: 'Concept'
 				}
 			],
 			args: [

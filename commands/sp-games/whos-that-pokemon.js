@@ -21,15 +21,18 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			credit: [
 				{
 					name: 'Pokémon',
-					url: 'https://www.pokemon.com/us/'
+					url: 'https://www.pokemon.com/us/',
+					reason: 'Images, Original Game'
 				},
 				{
 					name: 'PokéAPI',
-					url: 'https://pokeapi.co/'
+					url: 'https://pokeapi.co/',
+					reason: 'API'
 				},
 				{
 					name: 'Serebii.net',
-					url: 'https://www.serebii.net/index2.shtml'
+					url: 'https://www.serebii.net/index2.shtml',
+					reason: 'Images'
 				}
 			],
 			args: [

@@ -13,7 +13,9 @@ module.exports = class HumbleBundleCommand extends Command {
 			credit: [
 				{
 					name: 'Humble Bundle',
-					url: 'https://www.humblebundle.com/'
+					url: 'https://www.humblebundle.com/',
+					reason: 'API',
+					reasonURL: 'https://www.humblebundle.com/developer'
 				}
 			]
 		});

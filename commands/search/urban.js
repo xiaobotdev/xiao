@@ -14,8 +14,10 @@ module.exports = class UrbanCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Urban Dictionary API',
-					url: 'https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation'
+					name: 'Urban Dictionary',
+					url: 'https://www.urbandictionary.com/',
+					reason: 'API',
+					reasonURL: 'https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation'
 				}
 			],
 			args: [

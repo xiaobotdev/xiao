@@ -12,7 +12,9 @@ module.exports = class DoomsdayClockCommand extends Command {
 			credit: [
 				{
 					name: 'Bulletin of the Atomic Scientists',
-					url: 'https://thebulletin.org/'
+					url: 'https://thebulletin.org/',
+					reason: 'Doomsday Clock Data',
+					reasonURL: 'https://thebulletin.org/doomsday-clock/current-time/'
 				}
 			]
 		});

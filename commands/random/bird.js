@@ -13,7 +13,8 @@ module.exports = class BirdCommand extends Command {
 			credit: [
 				{
 					name: 'shibe.online',
-					url: 'https://shibe.online/'
+					url: 'https://shibe.online/',
+					reason: 'API'
 				}
 			]
 		});

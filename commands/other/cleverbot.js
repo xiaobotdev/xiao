@@ -13,8 +13,10 @@ module.exports = class CleverbotCommand extends Command {
 			description: 'Talk to Cleverbot.',
 			credit: [
 				{
-					name: 'Cleverbot API',
-					url: 'https://www.cleverbot.com/api/'
+					name: 'Cleverbot',
+					url: 'https://www.cleverbot.com/',
+					reason: 'API',
+					reasonURL: 'https://www.cleverbot.com/api/'
 				}
 			],
 			args: [

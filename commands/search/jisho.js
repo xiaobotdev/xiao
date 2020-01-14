@@ -13,7 +13,8 @@ module.exports = class JishoCommand extends Command {
 			credit: [
 				{
 					name: 'Jisho',
-					url: 'https://jisho.org/'
+					url: 'https://jisho.org/',
+					reason: 'API'
 				}
 			],
 			args: [

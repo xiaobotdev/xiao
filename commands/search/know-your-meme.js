@@ -16,7 +16,8 @@ module.exports = class KnowYourMemeCommand extends Command {
 			credit: [
 				{
 					name: 'Know Your Meme',
-					url: 'https://knowyourmeme.com/'
+					url: 'https://knowyourmeme.com/',
+					reason: 'Meme Data'
 				}
 			],
 			args: [

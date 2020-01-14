@@ -14,8 +14,10 @@ module.exports = class LeagueOfLegendsCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Riot Games API',
-					url: 'https://developer.riotgames.com/'
+					name: 'Riot Games',
+					url: 'https://www.riotgames.com/en',
+					reason: 'API',
+					reasonURL: 'https://developer.riotgames.com/'
 				}
 			],
 			args: [

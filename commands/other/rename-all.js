@@ -13,6 +13,13 @@ module.exports = class RenameAllCommand extends Command {
 			guildOnly: true,
 			clientPermissions: ['MANAGE_NICKNAMES', 'CHANGE_NICKNAME'],
 			userPermissions: ['ADMINISTRATOR'],
+			credit: [
+				{
+					name: 'Gawdl3y',
+					url: 'https://github.com/Gawdl3y',
+					reason: 'Concept'
+				}
+			],
 			args: [
 				{
 					key: 'nickname',

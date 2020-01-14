@@ -19,8 +19,10 @@ module.exports = class HeLivesInYouCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'The Lion King',
-					url: 'https://movies.disney.com/the-lion-king'
+					name: 'Disney',
+					url: 'https://www.disney.com/',
+					reason: 'Image, Original "The Lion King" Movie',
+					reasonURL: 'https://movies.disney.com/the-lion-king'
 				}
 			],
 			args: [

@@ -12,7 +12,9 @@ module.exports = class ThisForThatCommand extends Command {
 			credit: [
 				{
 					name: 'Wait, what does your startup do?',
-					url: 'http://itsthisforthat.com/'
+					url: 'http://itsthisforthat.com/',
+					reason: 'API',
+					reasonURL: 'http://itsthisforthat.com/api.php'
 				}
 			]
 		});

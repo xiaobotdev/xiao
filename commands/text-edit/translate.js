@@ -16,8 +16,10 @@ module.exports = class TranslateCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Google Translate',
-					url: 'https://translate.google.com/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Google Translate',
+					reasonURL: 'https://translate.google.com/'
 				}
 			],
 			args: [

@@ -12,8 +12,10 @@ module.exports = class ButtCommand extends Command {
 			description: 'Determines a user\'s butt quality.',
 			credit: [
 				{
-					name: 'iCrawl/Tohru',
-					url: 'https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js'
+					name: 'iCrawl',
+					url: 'https://github.com/iCrawl',
+					reason: 'Code, Concept',
+					reasonURL: 'https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js'
 				}
 			],
 			args: [

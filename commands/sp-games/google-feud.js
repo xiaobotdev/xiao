@@ -13,11 +13,13 @@ module.exports = class GoogleFeudCommand extends Command {
 			credit: [
 				{
 					name: 'Google',
-					url: 'https://www.google.com/'
+					url: 'https://www.google.com/',
+					reason: 'Autofill API'
 				},
 				{
 					name: 'Google Feud',
-					url: 'http://www.googlefeud.com/'
+					url: 'http://www.googlefeud.com/',
+					reason: 'Original Game'
 				}
 			],
 			args: [

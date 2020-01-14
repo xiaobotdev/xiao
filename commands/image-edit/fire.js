@@ -19,8 +19,10 @@ module.exports = class FireCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'susi1959 - PicMix',
-					url: 'https://en.picmix.com/profile/susi1959'
+					name: 'susi1959',
+					url: 'https://en.picmix.com/profile/susi1959',
+					reason: 'Image',
+					reasonURL: 'https://en.picmix.com/stamp/FIRE-FRAME-ORANGE-cadre-feu-orange-360274'
 				}
 			],
 			args: [

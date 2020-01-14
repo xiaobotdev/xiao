@@ -19,7 +19,8 @@ module.exports = class IHaveThePowerCommand extends Command {
 			credit: [
 				{
 					name: 'Mattel',
-					url: 'https://www.mattel.com/en-us'
+					url: 'https://www.mattel.com/en-us',
+					reason: 'Image, Original "He-Man" Show'
 				}
 			],
 			args: [

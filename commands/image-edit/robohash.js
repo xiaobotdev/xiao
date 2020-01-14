@@ -12,7 +12,8 @@ module.exports = class RobohashCommand extends Command {
 			credit: [
 				{
 					name: 'RoboHash',
-					url: 'https://robohash.org/'
+					url: 'https://robohash.org/',
+					reason: 'API'
 				}
 			],
 			args: [

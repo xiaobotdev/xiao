@@ -15,11 +15,13 @@ module.exports = class NeopetsItemCommand extends Command {
 			credit: [
 				{
 					name: 'Neopets',
-					url: 'http://www.neopets.com/'
+					url: 'http://www.neopets.com/',
+					reason: 'Original Game'
 				},
 				{
 					name: 'JellyNeo Item Database',
-					url: 'https://items.jellyneo.net/'
+					url: 'https://items.jellyneo.net/',
+					reason: 'Item Data'
 				}
 			],
 			args: [

@@ -13,7 +13,8 @@ module.exports = class PsychoPassCommand extends Command {
 			credit: [
 				{
 					name: 'PSYCHO-PASS',
-					url: 'http://psycho-pass.com/'
+					url: 'http://psycho-pass.com/',
+					reason: 'Original Anime'
 				}
 			],
 			args: [

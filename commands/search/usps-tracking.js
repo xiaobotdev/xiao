@@ -14,7 +14,9 @@ module.exports = class USPSTrackingCommand extends Command {
 			credit: [
 				{
 					name: 'USPS',
-					url: 'https://www.usps.com/'
+					url: 'https://www.usps.com/',
+					reason: 'API',
+					reasonURL: 'https://www.usps.com/business/web-tools-apis/'
 				}
 			],
 			args: [

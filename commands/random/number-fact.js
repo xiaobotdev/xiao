@@ -11,7 +11,8 @@ module.exports = class NumberFactCommand extends Command {
 			credit: [
 				{
 					name: 'Numbers API',
-					url: 'http://numbersapi.com/'
+					url: 'http://numbersapi.com/',
+					reason: 'Trivia API'
 				}
 			],
 			args: [

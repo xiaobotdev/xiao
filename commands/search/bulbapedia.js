@@ -14,7 +14,9 @@ module.exports = class BulbapediaCommand extends Command {
 			credit: [
 				{
 					name: 'Bulbapedia',
-					url: 'https://bulbapedia.bulbagarden.net/wiki/Main_Page'
+					url: 'https://bulbapedia.bulbagarden.net/wiki/Main_Page',
+					reason: 'API',
+					reasonURL: 'https://bulbapedia.bulbagarden.net/w/api.php'
 				}
 			],
 			args: [

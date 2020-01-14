@@ -14,8 +14,10 @@ module.exports = class DeviantartCommand extends Command {
 			details: `**Sections:** ${sections.join(', ')}`,
 			credit: [
 				{
-					name: 'DeviantArt API',
-					url: 'https://www.deviantart.com/developers/'
+					name: 'DeviantArt',
+					url: 'https://www.deviantart.com/',
+					reason: 'API',
+					reasonURL: 'https://www.deviantart.com/developers/'
 				}
 			],
 			args: [

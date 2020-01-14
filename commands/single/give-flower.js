@@ -9,8 +9,10 @@ module.exports = class GiveFlowerCommand extends Command {
 			description: 'Gives Xiao Pai a flower.',
 			credit: [
 				{
-					name: 'Rune Factory 4',
-					url: 'http://www.runefactory4.com/index1.html'
+					name: 'Marvelous',
+					url: 'http://www.marv.jp/',
+					reasonURL: 'http://www.runefactory4.com/index1.html',
+					reason: 'Original "Rune Factory 4" Game'
 				}
 			]
 		});

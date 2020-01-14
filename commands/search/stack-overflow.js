@@ -15,8 +15,10 @@ module.exports = class StackOverflowCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'Stack Exchange API',
-					url: 'https://api.stackexchange.com/docs'
+					name: 'Stack Exchange',
+					url: 'https://stackexchange.com/',
+					reason: 'API',
+					reasonURL: 'https://api.stackexchange.com/docs'
 				}
 			],
 			args: [

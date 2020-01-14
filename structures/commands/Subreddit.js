@@ -9,7 +9,9 @@ module.exports = class SubredditCommand extends Command {
 		this.postType = info.postType ? Array.isArray(info.postType) ? info.postType : [info.postType] : null;
 		this.credit.push({
 			name: 'Reddit',
-			url: 'https://www.reddit.com/'
+			url: 'https://www.reddit.com/',
+			reason: 'API',
+			reasonURL: 'https://www.reddit.com/dev/api/'
 		});
 	}
 

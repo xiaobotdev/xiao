@@ -7,7 +7,14 @@ module.exports = class FridayThe13thCommand extends Command {
 			aliases: ['friday-13th', 'friday-13', 'friday-the-13', 'friday-the-thirteenth', 'friday-thirteenth'],
 			group: 'events',
 			memberName: 'friday-the-13th',
-			description: 'Determines if today is Friday the 13th.'
+			description: 'Determines if today is Friday the 13th.',
+			credit: [
+				{
+					name: 'r/IsTodayFridayThe13th',
+					url: 'https://www.reddit.com/r/IsTodayFridayThe13th/',
+					reason: 'Concept'
+				}
+			]
 		});
 	}
 

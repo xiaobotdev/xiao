@@ -23,11 +23,14 @@ module.exports = class NikeAdCommand extends Command {
 			credit: [
 				{
 					name: 'Nike',
-					url: 'https://www.nike.com/'
+					url: 'https://www.nike.com/',
+					reason: 'Logo, Concept'
 				},
 				{
-					name: 'Google Noto Fonts',
-					url: 'https://www.google.com/get/noto/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [

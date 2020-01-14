@@ -19,7 +19,9 @@ module.exports = class FaceCommand extends Command {
 			credit: [
 				{
 					name: 'Face++ Cognitive Services',
-					url: 'https://www.faceplusplus.com/'
+					url: 'https://www.faceplusplus.com/',
+					reason: 'Face Detection API',
+					reasonURL: 'https://www.faceplusplus.com/face-detection/'
 				}
 			],
 			args: [

@@ -14,15 +14,14 @@ module.exports = class BoxChoosingCommand extends Command {
 			credit: [
 				{
 					name: '07th Expansion',
-					url: 'http://07th-expansion.net/'
+					url: 'http://07th-expansion.net/',
+					reason: 'Original Game'
 				},
 				{
 					name: 'MangaGamer.com',
-					url: 'https://www.mangagamer.com/'
-				},
-				{
-					name: 'Higurashi When They Cry Hou - Ch.4 Himatsubushi',
-					url: 'https://store.steampowered.com/app/526490/'
+					url: 'https://www.mangagamer.com/',
+					reason: 'Original Translation',
+					reasonURL: 'https://store.steampowered.com/app/526490/Higurashi_When_They_Cry_Hou__Ch4_Himatsubushi/'
 				}
 			]
 		});

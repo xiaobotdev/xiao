@@ -13,7 +13,8 @@ module.exports = class IsntJokeCommand extends Command {
 			url: [
 				{
 					name: 'Love Live! School Idol Project',
-					url: 'http://www.lovelive-anime.jp/'
+					url: 'http://www.lovelive-anime.jp/',
+					reason: 'Original Anime'
 				}
 			]
 		});

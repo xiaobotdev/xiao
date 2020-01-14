@@ -14,8 +14,10 @@ module.exports = class OsuCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'osu!api',
-					url: 'https://github.com/ppy/osu-api/wiki'
+					name: 'osu!',
+					url: 'https://osu.ppy.sh/home',
+					reason: 'API',
+					reasonURL: 'https://github.com/ppy/osu-api/wiki'
 				}
 			],
 			args: [

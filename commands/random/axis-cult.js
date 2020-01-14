@@ -12,11 +12,13 @@ module.exports = class AxisCultCommand extends Command {
 			credit: [
 				{
 					name: 'Axis Order Bot',
-					url: 'https://www.reddit.com/r/axisorderbot/wiki/index'
+					url: 'https://www.reddit.com/r/axisorderbot/wiki/index',
+					reason: 'Prayer Data'
 				},
 				{
 					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
-					url: 'http://konosuba.com/'
+					url: 'http://konosuba.com/',
+					reason: 'Original Anime'
 				}
 			]
 		});

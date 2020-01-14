@@ -19,7 +19,9 @@ module.exports = class SipCommand extends Command {
 			credit: [
 				{
 					name: 'CoolClips.com',
-					url: 'http://search.coolclips.com/'
+					url: 'http://search.coolclips.com/',
+					reason: 'Image',
+					reasonURL: 'http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/'
 				}
 			],
 			args: [

@@ -19,7 +19,9 @@ module.exports = class ApprovedCommand extends Command {
 			credit: [
 				{
 					name: 'Redeeming God',
-					url: 'https://redeeminggod.com/'
+					url: 'https://redeeminggod.com/',
+					reason: 'Image',
+					reasonURL: 'https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/'
 				}
 			],
 			args: [

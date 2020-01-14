@@ -18,8 +18,16 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Mulan',
-					url: 'https://movies.disney.com/mulan'
+					name: 'Disney',
+					url: 'https://www.disney.com/',
+					reason: 'Original "Mulan" Movie',
+					reasonURL: 'https://movies.disney.com/mulan'
+				},
+				{
+					name: 'u/SupremeMemesXD',
+					url: 'https://www.reddit.com/user/SupremeMemesXD/',
+					reason: 'Image',
+					reasonURL: 'https://www.reddit.com/r/MemeTemplatesOfficial/comments/8h39vi/girl_worth_fighting_for_template/'
 				}
 			],
 			args: [

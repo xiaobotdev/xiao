@@ -11,8 +11,10 @@ module.exports = class NobodyNameCommand extends Command {
 			description: 'Converts a name into the Organization XIII style.',
 			credit: [
 				{
-					name: 'Kingdom Hearts',
-					url: 'https://www.kingdomhearts.com/home/us/'
+					name: 'Square Enix',
+					url: 'https://square-enix-games.com/',
+					reason: 'Original "Kingdom Hearts" Game',
+					reasonURL: 'https://www.kingdomhearts.com/home/us/'
 				}
 			],
 			args: [

@@ -12,11 +12,14 @@ module.exports = class ChuckNorrisCommand extends Command {
 			credit: [
 				{
 					name: 'Chuck Norris',
-					url: 'https://chucknorris.com/'
+					url: 'https://chucknorris.com/',
+					reason: 'Himself'
 				},
 				{
-					name: 'The Internet Chuck Norris Database API',
-					url: 'http://www.icndb.com/api/'
+					name: 'The Internet Chuck Norris Database',
+					url: 'http://www.icndb.com/',
+					reason: 'API',
+					reasonURL: 'http://www.icndb.com/api/'
 				}
 			],
 			args: [

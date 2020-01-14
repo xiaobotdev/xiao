@@ -9,6 +9,13 @@ module.exports = class MathCommand extends Command {
 			group: 'number-edit',
 			memberName: 'math',
 			description: 'Evaluates a math expression.',
+			credit: [
+				{
+					name: 'mathjs',
+					url: 'https://mathjs.org/',
+					reason: 'Expression Parser'
+				}
+			],
 			args: [
 				{
 					key: 'expression',

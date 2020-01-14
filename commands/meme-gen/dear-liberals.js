@@ -20,11 +20,14 @@ module.exports = class DearLiberalsCommand extends Command {
 			credit: [
 				{
 					name: 'Turning Point USA',
-					url: 'https://www.tpusa.com/'
+					url: 'https://www.tpusa.com/',
+					reason: 'Image'
 				},
 				{
-					name: 'Oswald Font',
-					url: 'https://fonts.google.com/specimen/Oswald'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Oswald Font',
+					reasonURL: 'https://fonts.google.com/specimen/Oswald'
 				}
 			],
 			args: [

@@ -21,12 +21,16 @@ module.exports = class LisaPresentationCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'The Simpsons',
-					url: 'http://www.simpsonsworld.com/'
+					name: '20th Century Fox',
+					url: 'https://www.foxmovies.com/',
+					reason: 'Image, Original "The Simpsons" Show',
+					reasonURL: 'http://www.simpsonsworld.com/'
 				},
 				{
-					name: 'Google Noto Fonts',
-					url: 'https://www.google.com/get/noto/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [

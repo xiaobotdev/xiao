@@ -11,7 +11,8 @@ module.exports = class BalloonPopCommand extends Command {
 			credit: [
 				{
 					name: 'PAC-MAN Party',
-					url: 'http://pacman.com/en/pac-man-games/pac-man-party'
+					url: 'http://pacman.com/en/pac-man-games/pac-man-party',
+					reason: 'Concept'
 				}
 			],
 			args: [

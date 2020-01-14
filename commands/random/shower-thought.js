@@ -12,7 +12,8 @@ module.exports = class ShowerThoughtCommand extends SubredditCommand {
 			credit: [
 				{
 					name: 'r/Showerthoughts',
-					url: 'https://www.reddit.com/r/showerthoughts'
+					url: 'https://www.reddit.com/r/showerthoughts',
+					reason: 'Shower Thought Data'
 				}
 			]
 		});

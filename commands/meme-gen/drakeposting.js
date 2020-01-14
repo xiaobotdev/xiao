@@ -18,8 +18,10 @@ module.exports = class DrakepostingCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Drake - Hotline Bling',
-					url: 'https://youtu.be/uxpDa-c-4Mc'
+					name: 'Drake',
+					url: 'https://drakeofficial.com/',
+					reason: 'Original "Hotline Bling" Music Video',
+					reasonURL: 'https://youtu.be/uxpDa-c-4Mc'
 				}
 			],
 			args: [

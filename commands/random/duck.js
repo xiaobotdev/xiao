@@ -13,7 +13,9 @@ module.exports = class DuckCommand extends Command {
 			credit: [
 				{
 					name: 'Random-d.uk',
-					url: 'https://random-d.uk/'
+					url: 'https://random-d.uk/',
+					reason: 'API',
+					reasonURL: 'https://random-d.uk/api'
 				}
 			]
 		});

@@ -10,8 +10,10 @@ module.exports = class FactCoreCommand extends Command {
 			description: 'Responds with a random Fact Core quote.',
 			credit: [
 				{
-					name: 'Portal 2',
-					url: 'http://www.thinkwithportals.com/'
+					name: 'Valve',
+					url: 'https://www.valvesoftware.com/en/',
+					reasonURL: 'http://www.thinkwithportals.com/',
+					reason: 'Original "Portal 2" Game'
 				}
 			]
 		});

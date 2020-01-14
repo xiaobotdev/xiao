@@ -9,7 +9,16 @@ module.exports = class FishyCommand extends Command {
 			aliases: ['fishing'],
 			group: 'sp-games',
 			memberName: 'fishy',
-			description: 'Go fishing.'
+			description: 'Go fishing.',
+			credit: [
+				{
+					{
+						name: 'Tatsumaki',
+						url: 'https://tatsumaki.xyz/',
+						reason: 'Concept'
+					}
+				}
+			]
 		});
 	}
 

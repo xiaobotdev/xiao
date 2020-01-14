@@ -20,8 +20,10 @@ module.exports = class MemeGenCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Impact Font',
-					url: 'https://www.wfonts.com/font/impact'
+					name: 'ShareFonts.net',
+					url: 'https://www.wfonts.com/',
+					reason: 'Impact Font',
+					reasonURL: 'https://www.wfonts.com/font/impact'
 				}
 			],
 			args: [

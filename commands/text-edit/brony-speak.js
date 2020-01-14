@@ -12,8 +12,16 @@ module.exports = class BronySpeakCommand extends Command {
 			description: 'Converts text to brony speak.',
 			credit: [
 				{
-					name: 'My Little Pony: Friendship is Magic',
-					url: 'https://mylittlepony.hasbro.com/en-us'
+					name: 'Hasbro',
+					url: 'https://shop.hasbro.com/en-us',
+					reason: 'Original "My Little Pony: Friendship is Magic" Show',
+					reasonURL: 'https://mylittlepony.hasbro.com/en-us'
+				},
+				{
+					name: 'Shrick',
+					url: 'https://www.deviantart.com/shrick',
+					reason: 'English-to-Brony Dictionary Data',
+					reasonURL: 'https://www.deviantart.com/shrick/art/Brony-dictionary-version-2-207157029?q=gallery%3Ashrick&qo=0'
 				}
 			],
 			args: [

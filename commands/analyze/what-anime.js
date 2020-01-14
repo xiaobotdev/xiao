@@ -14,7 +14,9 @@ module.exports = class WhatAnimeCommand extends Command {
 			credit: [
 				{
 					name: 'WAIT: What Anime Is This?',
-					url: 'https://trace.moe/'
+					url: 'https://trace.moe/',
+					reason: 'API',
+					reasonURL: 'https://soruly.github.io/trace.moe/#/'
 				}
 			],
 			args: [

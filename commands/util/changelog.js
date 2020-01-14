@@ -15,8 +15,10 @@ module.exports = class ChangelogCommand extends Command {
 			guarded: true,
 			credit: [
 				{
-					name: 'GitHub API',
-					url: 'https://developer.github.com/v3/'
+					name: 'GitHub',
+					url: 'https://github.com/',
+					reason: 'API',
+					reasonURL: 'https://developer.github.com/v3/'
 				}
 			]
 		});

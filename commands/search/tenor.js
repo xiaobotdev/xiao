@@ -11,8 +11,10 @@ module.exports = class TenorCommand extends Command {
 			description: 'Searches Tenor for your query.',
 			credit: [
 				{
-					name: 'Tenor API',
-					url: 'https://tenor.com/gifapi/documentation'
+					name: 'Tenor',
+					url: 'https://tenor.com/',
+					reason: 'API',
+					reasonURL: 'https://tenor.com/gifapi/documentation'
 				}
 			],
 			args: [

@@ -12,7 +12,8 @@ module.exports = class YodaCommand extends Command {
 			credit: [
 				{
 					name: 'The Yoda-Speak Generator',
-					url: 'https://www.yodaspeak.co.uk/'
+					url: 'https://www.yodaspeak.co.uk/',
+					reason: 'API'
 				}
 			],
 			args: [

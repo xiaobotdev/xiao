@@ -18,8 +18,10 @@ module.exports = class YuGiOhTokenCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Yu-Gi-Oh! Trading Card Game',
-					url: 'https://www.yugioh-card.com/en/'
+					name: 'Konami',
+					url: 'https://www.konami.com/en/',
+					reason: 'Image, Original "Yu-Gi-Oh!" Game',
+					reasonURL: 'https://www.yugioh-card.com/en/',
 				}
 			],
 			args: [

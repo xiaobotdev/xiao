@@ -14,8 +14,10 @@ module.exports = class WeatherCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'OpenWeatherMap API',
-					url: 'https://openweathermap.org/api'
+					name: 'OpenWeatherMap',
+					url: 'https://openweathermap.org/',
+					reason: 'API',
+					reasonURL: 'https://openweathermap.org/api'
 				}
 			],
 			args: [

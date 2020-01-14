@@ -16,8 +16,10 @@ module.exports = class HoroscopeCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
-					name: 'The Astrologer by Kelli Fox',
-					url: 'https://new.theastrologer.com/'
+					name: 'astrology.TV',
+					url: 'https://astrology.tv/',
+					reason: 'Horoscope Data',
+					reasonURL: 'https://astrology.tv/horoscope/daily/'
 				}
 			],
 			args: [

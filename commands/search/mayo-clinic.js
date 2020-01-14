@@ -16,7 +16,8 @@ module.exports = class MayoClinicCommand extends Command {
 			credit: [
 				{
 					name: 'Mayo Clinic',
-					url: 'https://www.mayoclinic.org/'
+					url: 'https://www.mayoclinic.org/',
+					reason: 'Disease Data'
 				}
 			],
 			args: [

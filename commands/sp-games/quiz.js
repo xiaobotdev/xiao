@@ -21,7 +21,9 @@ module.exports = class QuizCommand extends Command {
 			credit: [
 				{
 					name: 'Open Trivia DB',
-					url: 'https://opentdb.com/'
+					url: 'https://opentdb.com/',
+					reason: 'API',
+					reasonURL: 'https://opentdb.com/api_config.php'
 				}
 			],
 			args: [

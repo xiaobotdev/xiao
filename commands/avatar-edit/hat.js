@@ -20,32 +20,74 @@ module.exports = class HatCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'ClipArtHut',
-					url: 'http://www.cliparthut.com/'
+					name: 'Go Nintendo',
+					url: 'https://gonintendo.com/',
+					reason: 'Ash Hat Image',
+					reasonURL: 'https://gonintendo.com/stories/306292-nintendo-creatures-game-freak-grab-another-trademark-for-ash-s-ha'
 				},
 				{
-					name: 'PNG Arts',
-					url: 'https://www.pngarts.com/'
+					name: 'freeiconspng.com',
+					url: 'https://www.freeiconspng.com/',
+					reason: 'Birthday Hat Image',
+					reasonURL: 'https://www.freeiconspng.com/img/43917'
 				},
 				{
-					name: 'misskatecuttables.com',
-					url: 'https://www.misskatecuttables.com/'
+					name: 'Know Your Meme',
+					url: 'https://knowyourmeme.com/',
+					reason: 'Christmas Hat Image',
+					reasonURL: 'https://knowyourmeme.com/forums/just-for-fun/topics/24821-christmas-hat-thread'
 				},
 				{
-					name: 'WorldArtsMe',
-					url: 'http://worldartsme.com/'
+					name: 'DeviantArt - xertris',
+					url: 'https://www.deviantart.com/xertris',
+					reason: 'Dunce Hat Image',
+					reasonURL: 'https://www.deviantart.com/xertris/art/Dunce-Cap-634349483'
 				},
 				{
-					name: 'PinClipart',
-					url: 'https://www.pinclipart.com/'
+					name: 'Clipart Library',
+					url: 'http://clipart-library.com/',
+					reason: 'Leprechaun Hat Image',
+					reasonURL: 'http://clipart-library.com/clipart/1107361.htm'
 				},
 				{
 					name: 'RedBubble - Akbar Mna',
-					url: 'https://www.redbubble.com/en/people/akbarmna/shop'
+					url: 'https://www.redbubble.com/en/people/akbarmna/shop',
+					reason: 'Megumin Hat Image',
+					reasonURL: 'https://www.redbubble.com/people/akbarmna/works/25443591-megumins-hat-minimalistic?p=poster'
+				},
+				{
+					name: 'Gallery Yopriceville',
+					url: 'https://gallery.yopriceville.com/',
+					reason: 'Pilgrim Hat Image',
+					reasonURL: 'https://gallery.yopriceville.com/Free-Clipart-Pictures/Thanksgiving-PNG/Transparent_Brown_Pilgrim_Hat_PNG_Clipart'
+				},
+				{
+					name: 'DynamicPickaxe',
+					url: 'http://dynamicpickaxe.com/',
+					reason: 'Pirate Hat Image',
+					reasonURL: 'http://dynamicpickaxe.com/pirate-hat-clipart.html'
+				},
+				{
+					name: 'ClipartsFree',
+					url: 'https://www.clipartsfree.net/',
+					reason: 'Top Hat Image',
+					reasonURL: 'https://www.clipartsfree.net/clipart/51355-gray-top-hat-clipart.html'
+				},
+				{
+					name: 'KissClipart.com',
+					url: 'https://www.kissclipart.com/',
+					reason: 'Witch Hat Image',
+					reasonURL: 'https://www.kissclipart.com/halloween-witch-hat-clipart-witch-hat-clip-art-qfycyt/'
+				},
+				{
+					name: 'Pokémon',
+					url: 'https://www.pokemon.com/us/',
+					reason: 'Ash Hat Original Anime'
 				},
 				{
 					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
-					url: 'http://konosuba.com/'
+					url: 'http://konosuba.com/',
+					reason: 'Megumin Hat Original Anime'
 				}
 			],
 			args: [

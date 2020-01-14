@@ -13,7 +13,8 @@ module.exports = class EggsGetLaidCommand extends Command {
 			credit: [
 				{
 					name: 'KINMOZA!',
-					url: 'http://www.kinmosa.com/'
+					url: 'http://www.kinmosa.com/',
+					reason: 'Original Anime'
 				}
 			]
 		});

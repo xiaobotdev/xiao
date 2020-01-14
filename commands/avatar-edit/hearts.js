@@ -20,7 +20,9 @@ module.exports = class HeartsCommand extends Command {
 			credit: [
 				{
 					name: 'Jessica Knable',
-					url: 'https://picsart.com/jessicaknable'
+					url: 'https://picsart.com/u/jessicaknable',
+					reason: 'Image',
+					reasonURL: 'https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212'
 				}
 			],
 			args: [

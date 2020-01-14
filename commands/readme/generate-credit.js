@@ -10,7 +10,14 @@ module.exports = class GenerateCreditCommand extends Command {
 			memberName: 'generate-credit',
 			description: 'Generates the credit list for Xiao\'s README.',
 			ownerOnly: true,
-			guarded: true
+			guarded: true,
+			credit: [
+				{
+					name: 'Hastebin',
+					url: 'https://hastebin.com/about.md',
+					reason: 'API'
+				}
+			]
 		});
 	}
 
@@ -28,7 +35,11 @@ module.exports = class GenerateCreditCommand extends Command {
 				credit.push({ ...cred, commands: [command.name] });
 			}
 		}
-		const mapped = credit.map(c => `- [${c.name}](${c.url})\n${c.commands.map(cmd => `	* ${cmd}`).join('\n')}`);
+		const mapped = credit
+			.map(c => `- [${c.name}](${c.url})\n${c.commands.map(cmd => {
+				if (!c.reasonURL) return `	* ${cmd} (${c.reason})`;
+				return `	* ${cmd} ([${c.reason}](${c.reasonURL}))`;
+			}).join('\n')}`);
 		const { body } = await request
 			.post('https://hastebin.com/documents')
 			.send(mapped.join('\n'));

@@ -19,7 +19,8 @@ module.exports = class ToBeContinuedCommand extends Command {
 			credit: [
 				{
 					name: 'JoJo\'s Bizzare Adventure',
-					url: 'http://www.araki-jojo.com/'
+					url: 'http://www.araki-jojo.com/',
+					reason: 'Original Anime'
 				}
 			],
 			args: [

@@ -13,7 +13,9 @@ module.exports = class GravatarCommand extends Command {
 			credit: [
 				{
 					name: 'Gravatar',
-					url: 'https://en.gravatar.com/'
+					url: 'https://en.gravatar.com/',
+					reason: 'API',
+					reasonURL: 'https://en.gravatar.com/site/implement/'
 				}
 			],
 			args: [

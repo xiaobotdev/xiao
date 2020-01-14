@@ -15,7 +15,8 @@ module.exports = class WaifuCommand extends Command {
 			credit: [
 				{
 					name: 'This Waifu Does Not Exist',
-					url: 'https://www.thiswaifudoesnotexist.net/'
+					url: 'https://www.thiswaifudoesnotexist.net/',
+					reason: 'API'
 				}
 			]
 		});

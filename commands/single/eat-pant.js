@@ -13,11 +13,15 @@ module.exports = class EatPantCommand extends Command {
 			credit: [
 				{
 					name: 'u/_Ebb',
+					url: 'https://www.reddit.com/user/_Ebb',
+					reason: 'Image',
 					url: 'https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/'
 				},
 				{
-					name: 'The Simpsons',
-					url: 'http://www.simpsonsworld.com/'
+					name: '20th Century Fox',
+					url: 'https://www.foxmovies.com/',
+					reason: 'Image, Original "The Simpsons" Show',
+					reasonURL: 'http://www.simpsonsworld.com/'
 				}
 			]
 		});

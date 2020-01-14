@@ -24,7 +24,10 @@ module.exports = class CreditCommand extends Command {
 		const embed = new MessageEmbed()
 			.setTitle(command.name)
 			.setColor(0x7289DA)
-			.setDescription(command.credit.map(credit => `[${credit.name}](${credit.url})`).join('\n'));
+			.setDescription(command.credit.map(credit => {
+				if (!credit.reasonURL) return `[${credit.name}](${credit.url}) (${credit.reason})`;
+				return `[${credit.name}](${credit.url}) ([${credit.reason}](${credit.reasonURL}))`;
+			}).join('\n'));
 		return msg.embed(embed);
 	}
 };

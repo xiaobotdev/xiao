@@ -23,11 +23,14 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			credit: [
 				{
 					name: 'Steam',
-					url: 'https://store.steampowered.com/'
+					url: 'https://store.steampowered.com/',
+					reason: 'Original Design'
 				},
 				{
-					name: 'Google Noto Fonts',
-					url: 'https://www.google.com/get/noto/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [

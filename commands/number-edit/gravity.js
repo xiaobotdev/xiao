@@ -12,8 +12,10 @@ module.exports = class GravityCommand extends Command {
 			details: `**Planets:** ${Object.keys(planets).join(', ')}`,
 			credit: [
 				{
-					name: 'Planetary Fact Sheet - Ratio to Earth Values',
-					url: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html'
+					name: 'NASA',
+					url: 'https://www.nasa.gov/',
+					reason: 'Planet Gravity Data',
+					reasonURL: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html'
 				}
 			],
 			args: [

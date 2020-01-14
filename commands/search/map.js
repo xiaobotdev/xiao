@@ -13,8 +13,10 @@ module.exports = class MapCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Maps Static API',
-					url: 'https://developers.google.com/maps/documentation/maps-static/intro'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Maps Static API',
+					reasonURL: 'https://developers.google.com/maps/documentation/maps-static/intro'
 				}
 			],
 			args: [

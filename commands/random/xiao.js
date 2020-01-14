@@ -13,8 +13,10 @@ module.exports = class XiaoCommand extends ImgurAlbumCommand {
 			albumID: XIAO_ALBUM_ID,
 			credit: [
 				{
-					name: 'Rune Factory 4',
-					url: 'http://www.runefactory4.com/index1.html'
+					name: 'Marvelous',
+					url: 'http://www.marv.jp/',
+					reasonURL: 'http://www.runefactory4.com/index1.html',
+					reason: 'Images, Original "Rune Factory 4" Game'
 				}
 			]
 		});

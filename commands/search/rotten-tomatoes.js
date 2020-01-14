@@ -15,7 +15,8 @@ module.exports = class RottenTomatoesCommand extends Command {
 			credit: [
 				{
 					name: 'Rotten Tomatoes',
-					url: 'https://www.rottentomatoes.com/'
+					url: 'https://www.rottentomatoes.com/',
+					reason: 'API'
 				}
 			],
 			args: [

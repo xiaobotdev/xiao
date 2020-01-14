@@ -12,7 +12,8 @@ module.exports = class GenderCommand extends Command {
 			credit: [
 				{
 					name: 'Genderize.io',
-					url: 'https://genderize.io/'
+					url: 'https://genderize.io/',
+					reason: 'API'
 				}
 			],
 			args: [

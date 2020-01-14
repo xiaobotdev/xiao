@@ -14,7 +14,9 @@ module.exports = class DefineCommand extends Command {
 			credit: [
 				{
 					name: 'Merriam-Webster\'s Collegiate® Dictionary',
-					url: 'https://dictionaryapi.com/products/api-collegiate-dictionary'
+					url: 'https://www.merriam-webster.com/',
+					reason: 'API',
+					reasonURL: 'https://dictionaryapi.com/products/api-collegiate-dictionary'
 				}
 			],
 			args: [
