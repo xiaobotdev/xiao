@@ -22,7 +22,7 @@ module.exports = class AchievementCommand extends Command {
 					name: 'Mojang',
 					url: 'https://www.mojang.com/',
 					reason: 'Original "Minecraft" Game',
-					reasonURL: 'https://www.minecraft.net/en-us/',
+					reasonURL: 'https://www.minecraft.net/en-us/'
 				},
 				{
 					name: 'Minecraft Achievement Generator',

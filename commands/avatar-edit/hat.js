@@ -23,7 +23,7 @@ module.exports = class HatCommand extends Command {
 					name: 'Go Nintendo',
 					url: 'https://gonintendo.com/',
 					reason: 'Ash Hat Image',
-					reasonURL: 'https://gonintendo.com/stories/306292-nintendo-creatures-game-freak-grab-another-trademark-for-ash-s-ha'
+					reasonURL: 'https://gonintendo.com/stories/306292'
 				},
 				{
 					name: 'freeiconspng.com',
@@ -59,6 +59,7 @@ module.exports = class HatCommand extends Command {
 					name: 'Gallery Yopriceville',
 					url: 'https://gallery.yopriceville.com/',
 					reason: 'Pilgrim Hat Image',
+					// eslint-disable-next-line max-len
 					reasonURL: 'https://gallery.yopriceville.com/Free-Clipart-Pictures/Thanksgiving-PNG/Transparent_Brown_Pilgrim_Hat_PNG_Clipart'
 				},
 				{
