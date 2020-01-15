@@ -39,6 +39,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [NSFW](#nsfw)
 	* [Other](#other)
 	* [Roleplay](#roleplay)
+	* [README Generators](#readme-generators)
 - [Licensing](#licensing)
 - [Credit](#credit)
 
