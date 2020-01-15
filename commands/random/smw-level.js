@@ -17,9 +17,10 @@ module.exports = class SmwLevelCommand extends Command {
 					reasonURL: 'https://www.nintendo.co.jp/n02/shvc/mw/index.html'
 				},
 				{
-					name: 'List of Super Mario World levels',
-					url: 'http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels',
-					reason: 'Level Name Data'
+					name: 'SMWiki',
+					url: 'http://www.smwiki.net/',
+					reason: 'Level Name Data',
+					reasonURL: 'http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels'
 				}
 			]
 		});
