@@ -15,7 +15,7 @@ module.exports = class EatPantCommand extends Command {
 					name: 'u/_Ebb',
 					url: 'https://www.reddit.com/user/_Ebb',
 					reason: 'Image',
-					url: 'https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/'
+					reasonURL: 'https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/'
 				},
 				{
 					name: '20th Century Fox',

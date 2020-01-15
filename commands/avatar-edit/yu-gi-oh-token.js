@@ -21,7 +21,7 @@ module.exports = class YuGiOhTokenCommand extends Command {
 					name: 'Konami',
 					url: 'https://www.konami.com/en/',
 					reason: 'Image, Original "Yu-Gi-Oh!" Game',
-					reasonURL: 'https://www.yugioh-card.com/en/',
+					reasonURL: 'https://www.yugioh-card.com/en/'
 				}
 			],
 			args: [

@@ -21,7 +21,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 					name: 'Antonio Guillem',
 					url: 'http://antonioguillem.com/',
 					reason: 'Image',
-					reasonURL: 'https://www.istockphoto.com/gb/photo/disloyal-man-with-his-girlfriend-looking-at-another-girl-gm493656728-77018851'
+					reasonURL: 'https://www.istockphoto.com/photo/gm493656728-77018851'
 				}
 			],
 			args: [

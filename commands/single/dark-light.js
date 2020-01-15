@@ -24,7 +24,7 @@ module.exports = class DarkLightCommand extends Command {
 					name: 'u/AelinSA',
 					url: 'https://www.reddit.com/user/AelinSA',
 					reason: 'Image',
-					reasonURL: 'https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magic/'
+					reasonURL: 'https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magi'
 				}
 			],
 			args: [
