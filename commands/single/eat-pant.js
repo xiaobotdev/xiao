@@ -20,7 +20,7 @@ module.exports = class EatPantCommand extends Command {
 				{
 					name: '20th Century Fox',
 					url: 'https://www.foxmovies.com/',
-					reason: 'Image, Original "The Simpsons" Show',
+					reason: 'Original "The Simpsons" Show',
 					reasonURL: 'http://www.simpsonsworld.com/'
 				}
 			]

@@ -14,7 +14,7 @@ module.exports = class MagicConchCommand extends Command {
 				{
 					name: 'Nickelodeon',
 					url: 'https://www.nick.com/',
-					reason: 'Image, Original "Spongebob Squarepants" Show',
+					reason: 'Original "Spongebob Squarepants" Show',
 					reasonURL: 'https://www.nick.com/shows/spongebob-squarepants'
 				}
 			],
