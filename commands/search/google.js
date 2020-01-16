@@ -1,8 +1,5 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const cheerio = require('cheerio');
-const querystring = require('querystring');
-const { agent } = require('../../assets/json/user-agent');
 const { GOOGLE_KEY, CUSTOM_SEARCH_ID } = process.env;
 
 module.exports = class GoogleCommand extends Command {
@@ -44,31 +41,12 @@ module.exports = class GoogleCommand extends Command {
 		let href;
 		const nsfw = msg.channel.nsfw || false;
 		try {
-			href = await this.searchGoogle(query, nsfw);
+			href = await this.customSearch(query, nsfw);
 		} catch (err) {
-			try {
-				href = await this.customSearch(query, nsfw);
-			} catch (err2) {
-				href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
-			}
+			href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 		}
 		if (!href) return msg.say('Could not find any results.');
 		return msg.say(href);
-	}
-
-	async searchGoogle(query, nsfw) {
-		const { text } = await request
-			.get('https://www.google.com/search')
-			.query({
-				safe: nsfw ? 'off' : 'on',
-				q: query
-			})
-			.set('User-Agent', agent);
-		const $ = cheerio.load(text);
-		let href = $('.r').first().find('a').first().attr('href');
-		if (!href) return null;
-		href = querystring.parse(href.replace('/url?', ''));
-		return href.q;
 	}
 
 	async customSearch(query, nsfw) {
