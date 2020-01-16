@@ -19,9 +19,9 @@ module.exports = class SubredditCommand extends Command {
 	async run(msg, { subreddit }) {
 		if (!subreddit) subreddit = typeof this.subreddit === 'function' ? this.subreddit() : this.subreddit;
 		try {
-			const post = await this.random(subreddit, msg.channel.nsfw, this.getIcon);
+			const post = await this.random(subreddit, msg.channel.nsfw);
 			if (!post) return msg.reply('Could not find any results.');
-			return msg.say(this.generateText(post.post, post.origin));
+			return msg.say(this.generateText(post.post, post.origin, post.icon));
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');
 			if (err.status === 404) return msg.say('Could not find any results.');
@@ -33,7 +33,7 @@ module.exports = class SubredditCommand extends Command {
 		throw new Error('The generateText method is required.');
 	}
 
-	async random(subreddit, nsfw, getIcon = false) {
+	async random(subreddit, nsfw) {
 		let icon = null;
 		const { body } = await request
 			.get(`https://www.reddit.com/r/${subreddit}/hot.json`)
@@ -45,11 +45,11 @@ module.exports = class SubredditCommand extends Command {
 			return (this.postType ? this.postType.includes(post.data.post_hint) : true) && post.data.url && post.data.title;
 		});
 		if (!posts.length) return null;
-		if (getIcon) icon = await this.fetchIcon(subreddit);
+		if (this.getIcon) icon = await this.fetchIcon(subreddit);
 		return {
 			origin: subreddit,
 			post: posts[Math.floor(Math.random() * posts.length)].data,
-			icon: icon
+			icon
 		};
 	}
 
