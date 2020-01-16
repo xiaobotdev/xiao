@@ -20,7 +20,7 @@ module.exports = class NeopetCommand extends Command {
 				{
 					name: 'Neopets',
 					url: 'http://www.neopets.com/',
-					reason: 'Pet Image Data'
+					reason: 'Pet Image Data, Original Game'
 				}
 			],
 			args: [
