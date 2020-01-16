@@ -45,7 +45,7 @@ module.exports = class SubredditCommand extends Command {
 			return (this.postType ? this.postType.includes(post.data.post_hint) : true) && post.data.url && post.data.title;
 		});
 		if (!posts.length) return null;
-		if (getIcon) icon = await this.getIcon(subreddit);
+		if (getIcon) icon = await this.fetchIcon(subreddit);
 		return {
 			origin: subreddit,
 			post: posts[Math.floor(Math.random() * posts.length)].data,
@@ -53,7 +53,7 @@ module.exports = class SubredditCommand extends Command {
 		};
 	}
 
-	async getIcon(subreddit) {
+	async fetchIcon(subreddit) {
 		const { body } = await request.get(`https://www.reddit.com/r/${subreddit}/about.json`);
 		if (!body.data.icon_img) return 'https://i.imgur.com/DSBOK0P.png';
 		return body.data.icon_img;
