@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 353
+Total: 354
 
 ### Utility:
 
@@ -236,6 +236,7 @@ Total: 353
 * **gravatar:** Responds with the Gravatar for an email.
 * **http-cat:** Responds with a cat for an HTTP status code.
 * **http-dog:** Responds with a dog for an HTTP status code.
+* **http-duck:** Responds with a duck for an HTTP status code.
 * **imgur:** Searches Imgur for your query.
 * **itunes:** Searches iTunes for your query.
 * **jisho:** Defines a word, but with Japanese.
@@ -847,6 +848,7 @@ here.
 	* shower-thought (Shower Thought Data)
 - [Random-d.uk](https://random-d.uk/)
 	* duck ([API](https://random-d.uk/api))
+	* http-duck ([API](https://random-d.uk/http))
 - [random.cat](https://random.cat/)
 	* cat (API)
 - [RandomFox](https://randomfox.ca/)
