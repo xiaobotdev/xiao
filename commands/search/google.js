@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const querystring = require('querystring');
+const { agent } = require('../../assets/json/user-agent');
 const { GOOGLE_KEY, CUSTOM_SEARCH_ID } = process.env;
 
 module.exports = class GoogleCommand extends Command {
@@ -43,10 +44,10 @@ module.exports = class GoogleCommand extends Command {
 		let href;
 		const nsfw = msg.channel.nsfw || false;
 		try {
-			href = await this.customSearch(query, nsfw);
+			href = await this.searchGoogle(query, nsfw);
 		} catch (err) {
 			try {
-				href = await this.searchGoogle(query, nsfw);
+				href = await this.customSearch(query, nsfw);
 			} catch (err2) {
 				href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 			}
@@ -61,7 +62,8 @@ module.exports = class GoogleCommand extends Command {
 			.query({
 				safe: nsfw ? 'off' : 'on',
 				q: query
-			});
+			})
+			.set('User-Agent', agent);
 		const $ = cheerio.load(text);
 		let href = $('.r').first().find('a').first().attr('href');
 		if (!href) return null;
