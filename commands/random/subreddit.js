@@ -11,6 +11,7 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 			memberName: 'subreddit',
 			description: 'Responds with a random post from a subreddit.',
 			clientPermissions: ['EMBED_LINKS'],
+			getIcon: true,
 			args: [
 				{
 					key: 'subreddit',
@@ -25,7 +26,7 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 	generateText(post, subreddit) {
 		return new MessageEmbed()
 			.setColor(0xFF4500)
-			.setAuthor(`r/${subreddit}`, 'https://i.imgur.com/DSBOK0P.png', `https://www.reddit.com/r/${subreddit}/`)
+			.setAuthor(`r/${subreddit}`, post.icon, `https://www.reddit.com/r/${subreddit}/`)
 			.setTitle(post.title)
 			.setImage(post.post_hint === 'image' ? post.url : null)
 			.setURL(`https://www.reddit.com${post.permalink}`)
