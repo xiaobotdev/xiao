@@ -4,9 +4,7 @@ const { stripIndents } = require('common-tags');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 const texts = require('../../assets/json/be-like-bill');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'arialbd.ttf'), { family: 'Arial' });
 
 module.exports = class BeLikeBillCommand extends Command {
 	constructor(client) {
@@ -29,10 +27,10 @@ module.exports = class BeLikeBillCommand extends Command {
 					reasonURL: 'https://github.com/gautamkrishnar/Be-Like-Bill'
 				},
 				{
-					name: 'Google',
-					url: 'https://www.google.com/',
-					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					name: 'Monotype',
+					url: 'https://www.monotype.com/',
+					reason: 'Arial Font',
+					reasonURL: 'https://catalog.monotype.com/family/monotype/arial'
 				}
 			],
 			args: [
@@ -52,7 +50,7 @@ module.exports = class BeLikeBillCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '23px Noto';
+		ctx.font = '23px Arial Bold';
 		const text = await wrapText(ctx, texts[Math.floor(Math.random() * texts.length)].replace(/{{name}}/gi, name), 569);
 		ctx.fillText(stripIndents`
 			This is ${name}.
@@ -65,4 +63,3 @@ module.exports = class BeLikeBillCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'be-like-bill.png' }] });
 	}
 };
-
