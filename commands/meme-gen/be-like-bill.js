@@ -4,7 +4,7 @@ const { stripIndents } = require('common-tags');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 const texts = require('../../assets/json/be-like-bill');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'arialbd.ttf'), { family: 'Arial' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'arialbd.ttf'), { family: 'Arial', style: 'Bold' });
 
 module.exports = class BeLikeBillCommand extends Command {
 	constructor(client) {
