@@ -45,7 +45,7 @@
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.27",
 		"node-opus": "^0.3.3",
-		"node-superfetch": "^0.1.9",
+		"node-superfetch": "^0.1.10",
 		"random-js": "^2.1.0",
 		"soap": "^0.30.0",
 		"winston": "^3.2.1"
