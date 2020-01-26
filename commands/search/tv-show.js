@@ -42,7 +42,7 @@ module.exports = class TvShowCommand extends Command {
 				});
 			if (!search.body.results.length) return msg.say('Could not find any results.');
 			const find = search.body.results.find(
-				m => m.title.toLowerCase() === query.toLowerCase()
+				m => m.name.toLowerCase() === query.toLowerCase()
 			) || search.body.results[0];
 			const { body } = await request
 				.get(`https://api.themoviedb.org/3/tv/${find.id}`)
