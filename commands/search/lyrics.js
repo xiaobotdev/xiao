@@ -26,13 +26,13 @@ module.exports = class LyricsCommand extends Command {
 					key: 'artist',
 					prompt: 'What artist would you like to get the lyrics of?',
 					type: 'string',
-					parse: artist => artist.replace(/[^A-Za-z0-9]+/, '')
+					parse: artist => artist.replace(/[^A-Za-z0-9]+/g, '')
 				},
 				{
 					key: 'song',
 					prompt: 'What song would you like to get the lyrics of?',
 					type: 'string',
-					parse: song => song.replace(/[^A-Za-z0-9]+/, '')
+					parse: song => song.replace(/[^A-Za-z0-9]+/g, '')
 				}
 			]
 		});
@@ -44,7 +44,7 @@ module.exports = class LyricsCommand extends Command {
 			const url = `https://www.azlyrics.com/lyrics/${artist}/${song}.html`;
 			return msg.say(`${shorten(lyrics, 1750)}\n\n**Read the Rest:** ${url}`);
 		} catch (err) {
-			if (err.code === 404) return msg.say('Could not find any results.');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
