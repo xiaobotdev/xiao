@@ -846,6 +846,8 @@ here.
 	* sorting-hat (Original Quiz)
 - [PSYCHO-PASS](http://psycho-pass.com/)
 	* psycho-pass (Original Anime)
+- [Psycho-Pass Wiki](https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki)
+	* psycho-pass ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index)))
 - [r/IsTodayFridayThe13th](https://www.reddit.com/r/IsTodayFridayThe13th/)
 	* friday-the-13th (Concept)
 - [r/Showerthoughts](https://www.reddit.com/r/showerthoughts)
