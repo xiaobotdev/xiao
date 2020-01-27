@@ -53,7 +53,7 @@ module.exports = class LyricsCommand extends Command {
 		const { text } = await request.get(`https://www.azlyrics.com/lyrics/${artist}/${song}.html`);
 		const lyrics = text.match(lyricRegex)[1];
 		return lyrics
-			.replace(/<br>/g, '\n')
+			.replace(/<br>/g, '')
 			.replace(/<\/?div>/g, '')
 			.trim();
 	}
