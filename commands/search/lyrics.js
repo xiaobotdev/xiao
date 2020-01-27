@@ -4,7 +4,7 @@ const { shorten } = require('../../util/Util');
 // eslint-disable-next-line max-len
 const top = '<!-- Usage of azlyrics.com content by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->';
 const bottom = '<!-- MxM banner -->';
-const lyricRegex = new RegExp(`${top}(.+)${bottom}`);
+const lyricRegex = new RegExp(`${top}(.+)${bottom}`, 'si');
 
 module.exports = class LyricsCommand extends Command {
 	constructor(client) {
