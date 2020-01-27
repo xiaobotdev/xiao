@@ -26,13 +26,13 @@ module.exports = class LyricsCommand extends Command {
 					key: 'artist',
 					prompt: 'What artist would you like to get the lyrics of?',
 					type: 'string',
-					parse: artist => artist.replace(/[^A-Za-z0-9]+/g, '')
+					parse: artist => artist.replace(/[^A-Za-z0-9]+|^(the )/gi, '').toLowerCase()
 				},
 				{
 					key: 'song',
 					prompt: 'What song would you like to get the lyrics of?',
 					type: 'string',
-					parse: song => song.replace(/[^A-Za-z0-9]+/g, '')
+					parse: song => song.replace(/[^A-Za-z0-9]+/g, '').toLowerCase()
 				}
 			]
 		});
