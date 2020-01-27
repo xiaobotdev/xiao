@@ -915,6 +915,7 @@ here.
 - [susi1959](https://en.picmix.com/profile/susi1959)
 	* fire ([Image](https://en.picmix.com/stamp/FIRE-FRAME-ORANGE-cadre-feu-orange-360274))
 - [Tatsumaki](https://tatsumaki.xyz/)
+	* psycho-pass (Concept)
 	* beautiful (Image, Concept)
 	* fishy (Concept)
 - [Tenor](https://tenor.com/)

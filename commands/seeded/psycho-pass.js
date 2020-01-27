@@ -15,6 +15,11 @@ module.exports = class PsychoPassCommand extends Command {
 					name: 'PSYCHO-PASS',
 					url: 'http://psycho-pass.com/',
 					reason: 'Original Anime'
+				},
+				{
+					name: 'Tatsumaki',
+					url: 'https://tatsumaki.xyz/',
+					reason: 'Concept'
 				}
 			],
 			args: [
