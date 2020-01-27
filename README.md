@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 355
+Total: 356
 
 ### Utility:
 
@@ -472,6 +472,7 @@ Total: 355
 * **danbooru:** Responds with an image from Danbooru, with optional query.
 * **dick:** Determines your dick size.
 * **flickr:** Searches Flickr for your query... Maybe.
+* **light-novel-cover:** Responds with a randomly generated Light Novel cover.
 
 ### Other:
 
@@ -747,6 +748,8 @@ here.
 - [LMGTFY](https://lmgtfy.com/)
 	* google (API)
 	* lmgtfy (API)
+- [LN cover generator](https://salty-salty-studios.com/shiz/lncovers.php)
+	* light-novel-cover (API)
 - [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
 	* light-novel-title (API)
 - [MangaGamer.com](https://www.mangagamer.com/)
