@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 354
+Total: 355
 
 ### Utility:
 
@@ -243,6 +243,7 @@ Total: 354
 * **kickstarter:** Searches Kickstarter for your query.
 * **know-your-meme:** Searches Know Your Meme for your query.
 * **league-of-legends:** Responds with information on a League of Legends champion.
+* **lyrics:** Responds with lyrics to a song.
 * **manga:** Searches AniList for your query, getting manga results.
 * **map:** Responds with a map of a specific location.
 * **mayo-clinic:** Searches Mayo Clinic for your query.
@@ -546,6 +547,8 @@ here.
 	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
 - [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
 	* axis-cult (Prayer Data)
+- [AZLyrics](https://www.azlyrics.com/)
+	* lyrics (Lyrics Data)
 - [Bob Ross](https://www.bobross.com/)
 	* bob-ross (Himself)
 - [Bowserinator](https://github.com/Bowserinator/)
