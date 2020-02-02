@@ -41,7 +41,7 @@ module.exports = class FrinkiacCommand extends Command {
 			for (const word of caption) {
 				if (wrapped[currentLine].length + word.length < 26) {
 					wrapped[currentLine] += ` ${word}`;
-				} else { 
+				} else {
 					wrapped.push(` ${word}`);
 					currentLine++;
 				}
