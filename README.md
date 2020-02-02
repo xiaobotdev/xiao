@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 356
+Total: 357
 
 ### Utility:
 
@@ -229,6 +229,7 @@ Total: 356
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
+* **frinkiac:** Input a line from the Simpsons to get the episode/season.
 * **giphy:** Searches Giphy for your query.
 * **github:** Responds with information on a GitHub repository.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
@@ -619,6 +620,8 @@ here.
 	* currency (API)
 - [freeiconspng.com](https://www.freeiconspng.com/)
 	* hat ([Birthday Hat Image](https://www.freeiconspng.com/img/43917))
+- [Frinkiac](https://frinkiac.com/)
+	* frinkiac (API)
 - [Gallery Yopriceville](https://gallery.yopriceville.com/)
 	* hat ([Pilgrim Hat Image](https://gallery.yopriceville.com/Free-Clipart-Pictures/Thanksgiving-PNG/Transparent_Brown_Pilgrim_Hat_PNG_Clipart))
 - [gautamkrishnar](https://github.com/gautamkrishnar/)
