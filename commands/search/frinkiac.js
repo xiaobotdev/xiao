@@ -39,7 +39,7 @@ module.exports = class FrinkiacCommand extends Command {
 			const wrapped = [''];
 			let currentLine = 0;
 			for (const word of caption) {
-				if (currentLine.length + word.length < 26) {
+				if (wrapped[currentLine].length + word.length < 26) {
 					wrapped[currentLine] += ` ${word}`;
 				} else { 
 					wrapped.push(` ${word}`);
