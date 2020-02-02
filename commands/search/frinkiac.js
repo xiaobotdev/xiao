@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const moment = require('moment');
+const { base64 } = require('../../util/Util');
 
 module.exports = class FrinkiacCommand extends Command {
 	constructor(client) {
@@ -29,20 +30,47 @@ module.exports = class FrinkiacCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await request
-				.get('https://frinkiac.com/api/search')
-				.query({ q: query });
-			if (!body.length) return msg.say('Could not find any results.');
-			const data = body[0];
-			const url = `https://frinkiac.com/caption/${data.Episode}/${data.Timestamp}`;
-			const [, season, episode] = data.Episode.match(/S([0-9]+)E([0-9]+)/i);
-			const time = moment.duration(data.Timestamp).format();
+			const search = await this.search(query);
+			if (!search) return msg.say('Could not find any results.');
+			const data = await this.fetchCaption(search.Episode, search.Timestamp);
+			const time = moment.duration(data.Frame.Timestamp).format();
+			let caption = data.Subtitles.map(sub => sub.Content).join(' ').split(' ');
+			let url = `https://frinkiac.com/img/${data.Frame.Episode}/${data.Frame.Timestamp}.jpg`;
+			const wrapped = [''];
+			let currentLine = 0;
+			for (const word of caption) {
+				if (currentLine.length + word.length < 26) {
+					wrapped[currentLine] += ` ${word}`;
+				} else { 
+					wrapped.push(` ${word}`);
+					currentLine++;
+				}
+			}
+			url += `?b64lines=${base64(wrapped.join('\n'))}`;
 			return msg.say(
-				`I think this is from **Season ${season} Episode ${episode} @ ${time}**.`,
-				{ files: [`https://frinkiac.com/img/${data.Episode}/${data.Timestamp}.jpg`] }
+				`This is from **Season ${data.Episode.Season} Episode ${data.Episode.EpisodeNumber} @ ${time}**.`,
+				{ files: [url] }
 			);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async search(query) {
+		const { body } = await request
+			.get('https://frinkiac.com/api/search')
+			.query({ q: query });
+		if (!body.length) return null;
+		return body[0];
+	}
+
+	async fetchCaption(ep, ts) {
+		const { body } = await request
+			.get('https://frinkiac.com/api/caption')
+			.query({
+				e: ep,
+				t: ts
+			});
+		return body;
 	}
 };
