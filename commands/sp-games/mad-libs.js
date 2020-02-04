@@ -39,7 +39,7 @@ module.exports = class MadLibsCommand extends Command {
 						return false;
 					}
 					return true;
-				}
+				};
 				const choice = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: 120000
