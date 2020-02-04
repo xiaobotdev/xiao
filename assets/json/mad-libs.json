@@ -8,7 +8,7 @@
 			"ADJECTIVE",
 			"NOUN"
 		],
-		"text": "Be kind to your {0}-footed {1}\nFor a duck may be somebody`s {2},\nBe kind to your {1} in {3}\nWhere the weather is always {4}.\n\nYou may think that this is the {5},\nWell it is."
+		"text": "Be kind to your {0}-footed {1}\nFor a duck may be somebody's {2},\nBe kind to your {1} in {3}\nWhere the weather is always {4}.\n\nYou may think that this is the {5},\nWell it is."
 	},
 	{
 		"needed": [
@@ -30,7 +30,7 @@
 			"RELATIVE",
 			"PERSON"
 		],
-		"text": "Dear {0},\nI am having a(n) {1} time at camp. The counselour is {2} and the food is {3}. I met {4} and we became {5} friends. Unfortunately, {4} is {6} and I {7} my {8} so we couldn`t go {9} like everybody else. I need more {10} and a {11} sharpener, so please {12} {13} more when you {14} back.\nYour {15},\n{16}"
+		"text": "Dear {0},\nI am having a(n) {1} time at camp. The counselour is {2} and the food is {3}. I met {4} and we became {5} friends. Unfortunately, {4} is {6} and I {7} my {8} so we couldn't go {9} like everybody else. I need more {10} and a {11} sharpener, so please {12} {13} more when you {14} back.\nYour {15},\n{16}"
 	},
 	{
 		"needed": [
@@ -46,7 +46,7 @@
 			"BODY PART",
 			"VERB"
 		],
-		"text": "Two {0}, both alike in dignity,\nIn fair {1}, where we lay our scene,\nFrom ancient {2} break to new mutiny,\nWhere civil blood makes civil hands unclean.\nFrom forth the fatal loins of these two foes\nA pair of star-cross`d {3} take their life;\nWhole misadventured piteous overthrows\nDo with their {4} bury their parents` strife.\nThe fearful passage of their {5} love,\nAnd the continuance of their parents` rage,\nWhich, but their children`s end, nought could {6},\nIs now the {7} hours` traffic of our stage;\nThe which if you with {8} {9} attend,\nWhat here shall {10}, our toil shall strive to mend."
+		"text": "Two {0}, both alike in dignity,\nIn fair {1}, where we lay our scene,\nFrom ancient {2} break to new mutiny,\nWhere civil blood makes civil hands unclean.\nFrom forth the fatal loins of these two foes\nA pair of star-cross'd {3} take their life;\nWhole misadventured piteous overthrows\nDo with their {4} bury their parents' strife.\nThe fearful passage of their {5} love,\nAnd the continuance of their parents' rage,\nWhich, but their children's end, nought could {6},\nIs now the {7} hours' traffic of our stage;\nThe which if you with {8} {9} attend,\nWhat here shall {10}, our toil shall strive to mend."
 	},
 	{
 		"needed": [
