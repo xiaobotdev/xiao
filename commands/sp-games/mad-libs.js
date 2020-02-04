@@ -33,11 +33,12 @@ module.exports = class MadLibsCommand extends Command {
 			for (const word of lib.needed) {
 				await msg.reply(`Give me a **${word}**.`);
 				const filter = res => {
+					if (res.author.id !== msg.author.id) return false;
 					if (!res.content || res.content.length > 12) {
 						msg.reply('Please only use a maximum of 12 characters per word.').catch(() => null);
 						return false;
 					}
-					return res.author.id === msg.author.id;
+					return true;
 				}
 				const choice = await msg.channel.awaitMessages(filter, {
 					max: 1,
