@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 357
+Total: 358
 
 ### Utility:
 
@@ -308,6 +308,7 @@ Total: 357
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
 * **lottery:** Attempt to win the lottery with 6 numbers.
+* **mad-libs:** Choose words that fill in the blanks to create a crazy story!
 * **math-quiz:** See how fast you can answer a math problem in a given time limit.
 * **quiz:** Answer a quiz question.
 * **rock-paper-scissors:** Play Rock-Paper-Scissors.
@@ -755,6 +756,10 @@ here.
 	* light-novel-cover (API)
 - [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
 	* light-novel-title (API)
+- [Mad Libs](http://www.madlibs.com/)
+	* mad-libs (Original Game)
+- [Mad:)Takes](https://www.madtakes.com/index.php)
+	* mad-libs (Mad Libs Data)
 - [MangaGamer.com](https://www.mangagamer.com/)
 	* box-choosing ([Original Translation](https://store.steampowered.com/app/526490/Higurashi_When_They_Cry_Hou__Ch4_Himatsubushi/))
 - [Marvelous](http://www.marv.jp/)
