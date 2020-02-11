@@ -27,7 +27,9 @@ module.exports = class DiscriminatorCommand extends Command {
 	}
 
 	run(msg, { discrim }) {
-		const users = this.client.users.filter(user => user.discriminator === discrim).map(user => user.username);
+		const users = this.client.users.cache
+			.filter(user => user.discriminator === discrim)
+			.map(user => user.username);
 		return msg.say(stripIndents`
 			**Found ${users.length} users with the discriminator #${discrim}:**
 			${trimArray(users, 50).join(', ')}

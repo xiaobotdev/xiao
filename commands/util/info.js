@@ -24,7 +24,7 @@ module.exports = class InfoCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter('©2017-2020 dragonfire535#8081')
-			.addField('❯ Servers', formatNumber(this.client.guilds.size), true)
+			.addField('❯ Servers', formatNumber(this.client.guilds.cache.size), true)
 			.addField('❯ Shards', formatNumber(this.client.options.shardCount), true)
 			.addField('❯ Commands', formatNumber(this.client.registry.commands.size), true)
 			.addField('❯ Home Server', this.client.options.invite ? `[Here](${this.client.options.invite})` : 'None', true)

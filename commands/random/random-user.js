@@ -16,6 +16,6 @@ module.exports = class RandomUserCommand extends Command {
 			const members = [this.client.user, msg.channel.recipient];
 			return msg.say(`I choose ${members[Math.floor(Math.random() * members.length)].username}!`);
 		}
-		return msg.say(`I choose ${msg.guild.members.random().displayName}!`);
+		return msg.say(`I choose ${msg.guild.members.cache.random().displayName}!`);
 	}
 };
