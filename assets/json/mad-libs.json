@@ -127,7 +127,7 @@
 			"ADJECTIVE",
 			"ADJECTIVE"
 		],
-		"text": "The {0} Dragon is the {1} Dragon of all. It has {2} {3}, and a {4} shaped like a {5}. It loves to eat {6}, although it will feast on nearly anything. It is {7} and {8}. You must be {9} around it, or you may end up as it`s meal!"
+		"text": "The {0} Dragon is the {1} Dragon of all. It has {2} {3}, and a {4} shaped like a {5}. It loves to eat {6}, although it will feast on nearly anything. It is {7} and {8}. You must be {9} around it, or you may end up as it's meal!"
 	},
 	{
 		"needed": [
@@ -188,6 +188,6 @@
 			"ADJECTIVE",
 			"PLURAL NOUN"
 		],
-		"text": "Come {0} at WALMART, where you`ll receive {1} discounts on all of your favorite brand name {2}. Our {3} and {4} associates are there to {5} you {6} hours a day. Here you will find {7} prices on the {8} you need. {9} for the moms, {10} for the kids and all the latest electronics for the {11}. So come on down to your {12} {13} WALMART where the {14} come first."
+		"text": "Come {0} at WALMART, where you'll receive {1} discounts on all of your favorite brand name {2}. Our {3} and {4} associates are there to {5} you {6} hours a day. Here you will find {7} prices on the {8} you need. {9} for the moms, {10} for the kids and all the latest electronics for the {11}. So come on down to your {12} {13} WALMART where the {14} come first."
 	}
 ]
