@@ -92,5 +92,102 @@
 			"VERB"
 		],
 		"text": "You are my {0} love. You have me completely in your {1}. I know and feel that if I am to {2} anything fine and noble in the future I shall do so only by {3} at the {4} of your heart. I would like to go through life {5} by {5} with you, {6} you more and more until we {7} to be {8} being(s) together until the hour should come for us to {9}."
+	},
+	{
+		"needed": [
+			"SILLY NAME",
+			"SILLY WORD",
+			"VERB",
+			"NOUN",
+			"BODY PART (PLURAL)",
+			"FEMALE NAME",
+			"VERB ENDING IN -ED",
+			"NOUN",
+			"PLURAL NOUN",
+			"VERB",
+			"NOUN",
+			"OCCUPATION",
+			"NUMBER",
+			"VERB",
+			"SILLY WORD",
+			"SILLY NAME"
+		],
+		"text": "Dear Mr. and Mrs. {0} {1},\n\nWill you let me {2} your {3}? Ever since I have laid {4} on {5}, I have {6} madly in love with her. I wish that she will be the {7} of my {8} and that someday we will {9} happily ever after. I have a {10} as a/an {11} that pays ${12} each month. I promise to {13} {5} with kindness and respect.\n\nSincerely,\n\n{14} {15}"
+	},
+	{
+		"needed": [
+			"COLOR",
+			"SUPERLATIVE (WORD ENDING IN -EST)",
+			"ADJECTIVE",
+			"BODY PART (PLURAL)",
+			"BODY PART",
+			"NOUN",
+			"ANIMAL (PLURAL)",
+			"ADJECTIVE",
+			"ADJECTIVE",
+			"ADJECTIVE"
+		],
+		"text": "The {0} Dragon is the {1} Dragon of all. It has {2} {3}, and a {4} shaped like a {5}. It loves to eat {6}, although it will feast on nearly anything. It is {7} and {8}. You must be {9} around it, or you may end up as it`s meal!"
+	},
+	{
+		"needed": [
+			"NOUN",
+			"NOUN",
+			"NOUN",
+			"OCCUPATION",
+			"VERB",
+			"PLACE",
+			"VERB ENDING IN -ED",
+			"NOUN",
+			"VERB ENDING IN -ING",
+			"PLURAL NOUN",
+			"NOUN",
+			"EMOTION"
+		],
+		"text": "It was during the battle of {0} when I was running through a {1} when a {2} went off right next to my platoon. Our {3} yelled for us to {4} to the nearest {5} we could find. When we got to the {5} we {6} to start a fire. As we were starting the fire the enemy saw the {7} from the fire and started {8} {9} at us. we all quickly ducked behind the {10} at the {5} and returned fire. we quickly eliminated the enemy and were {11} that we had won the battle."
+	},
+	{
+		"needed": [
+			"ADJECTIVE",
+			"ADJECTIVE",
+			"CELEBRITY",
+			"CELEBRITY",
+			"ANIMAL",
+			"VERB",
+			"NOUN",
+			"NOUN",
+			"BODY PART",
+			"ADVERB",
+			"ADJECTIVE",
+			"ADVERB",
+			"ADJECTIVE",
+			"ADJECTIVE",
+			"BODY PART",
+			"ADJECTIVE",
+			"NOUN",
+			"NOUN",
+			"PERSON (MALE)"
+		],
+		"text": "My \"Dream Man\" should, first of all be very {0} and {1}. He should have a physique like {2}, a profile like {3}, and the intelligence of a/an {4}. He must be polite and must always remember to {5} my {6}, to tip his {7} and to take my {8} when crossing the street. He should move {9}, have a/an {10} voice, and should always dress {11}. I would also like him to be a/an {12} dancer, and when we are alone he should whisper {13} nothings into my {14} and hold my {15} {16}. I know a/an {17} is hard to find. In fact the only one I can think of is {18}."
+	},
+	{
+		"needed": [
+			"VERB",
+			"ADJECTIVE",
+			"PLURAL NOUN",
+			"ADJECTIVE",
+			"VERB ENDING IN -ING",
+			"VERB",
+			"NUMBER",
+			"ADJECTIVE",
+			"PLURAL NOUN",
+			"PLURAL NOUN",
+			"PLURAL NOUN",
+			"RELATIVE (PLURAL)",
+			"ADJECTIVE",
+			"ADJECTIVE",
+			"PLURAL NOUN"
+		],
+		"text": "Come {0} at WALMART, where you`ll receive {1} discounts on all of your favorite brand name {2}. Our {3} and {4} associates are there to {5} you {6} hours a day. Here you will find {7} prices on the {8} you need. {9} for the moms, {10} for the kids and all the latest electronics for the {11}. So come on down to your {12} {13} WALMART where the {14} come first."
 	}
 ]
