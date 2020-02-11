@@ -36,7 +36,7 @@
 		"cheerio": "^1.0.0-rc.3",
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
-		"discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
+		"discord.js": "github:discordjs/discord.js",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
 		"gifencoder": "^2.0.1",

@@ -38,7 +38,7 @@ module.exports = class UserCommand extends Command {
 		if (msg.channel.type === 'text') {
 			try {
 				const member = await msg.guild.members.fetch(user.id);
-				const defaultRole = msg.guild.roles.get(msg.guild.id);
+				const defaultRole = msg.guild.roles.cache.get(msg.guild.id);
 				const roles = member.roles
 					.filter(role => role.id !== defaultRole.id)
 					.sort((a, b) => b.position - a.position)

@@ -19,7 +19,7 @@ module.exports = class ServerCommand extends Command {
 	}
 
 	async run(msg) {
-		if (!msg.guild.members.has(msg.guild.ownerID)) await msg.guild.members.fetch(msg.guild.ownerID);
+		if (!msg.guild.members.cache.has(msg.guild.ownerID)) await msg.guild.members.fetch(msg.guild.ownerID);
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(msg.guild.iconURL({ format: 'png' }))
@@ -35,8 +35,8 @@ module.exports = class ServerCommand extends Command {
 
 				**Server Stats:**
 				• Members: ${msg.guild.memberCount}
-				• Roles: ${msg.guild.roles.size}
-				• Channels: ${msg.guild.channels.filter(channel => channel.type !== 'category').size}
+				• Roles: ${msg.guild.roles.cache.size}
+				• Channels: ${msg.guild.channels.cache.filter(channel => channel.type !== 'category').size}
 			`);
 		return msg.embed(embed);
 	}
