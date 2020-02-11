@@ -39,7 +39,7 @@ module.exports = class UserCommand extends Command {
 			try {
 				const member = await msg.guild.members.fetch(user.id);
 				const defaultRole = msg.guild.roles.cache.get(msg.guild.id);
-				const roles = member.roles
+				const roles = member.roles.cache
 					.filter(role => role.id !== defaultRole.id)
 					.sort((a, b) => b.position - a.position)
 					.map(role => role.name);
