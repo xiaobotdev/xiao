@@ -55,7 +55,7 @@ module.exports = class SubredditCommand extends Command {
 
 	async fetchIcon(subreddit) {
 		const { body } = await request.get(`https://www.reddit.com/r/${subreddit}/about.json`);
-		if (!body.data.icon_img) return 'https://i.imgur.com/DSBOK0P.png';
-		return body.data.icon_img;
+		if (!body.data.icon_img && !body.data.community_icon) return 'https://i.imgur.com/DSBOK0P.png';
+		return body.data.icon_img || body.data.community_icon;
 	}
 };
