@@ -8,6 +8,7 @@ module.exports = class IpCommand extends Command {
 			group: 'util',
 			memberName: 'ip',
 			description: 'Responds with the IP address Xiao\'s server is running on.',
+			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,
 			ownerOnly: true,
 			credit: [
