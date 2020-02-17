@@ -9,6 +9,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 			group: 'readme',
 			memberName: 'generate-commands',
 			description: 'Generates the commands list for Xiao\'s README.',
+			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
 			guarded: true,
 			credit: [
