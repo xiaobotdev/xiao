@@ -9,7 +9,7 @@
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
 [Commando](https://github.com/discordjs/Commando) command framework. With over
-300 commands, she is one of the most feature-rich bots out there.
+350 commands, she is one of the most feature-rich bots out there.
 
 ## Table of Contents
 
@@ -45,8 +45,8 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Fun Information
 - 350+ Commands
-- 16,000+ lines of JavaScript
-- 58,000+ lines of JSON data
+- 17,000+ lines of JavaScript
+- 59,000+ lines of JSON data
 - 3 years of development
 - 3,000+ commits
 
@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 358
+Total: 359
 
 ### Utility:
 
@@ -102,6 +102,7 @@ Total: 358
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
+* **ip:** Responds with the IP address Xiao's server is running on.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 
@@ -714,6 +715,8 @@ here.
 	* wave ([API](https://apidocs.imgur.com/))
 	* wink ([API](https://apidocs.imgur.com/))
 	* imgur ([API](https://apidocs.imgur.com/))
+- [ipify API](https://www.ipify.org/)
+	* ip (API)
 - [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ)
 	* challenger ([Image](https://www.youtube.com/watch?v=3FebRrXg0bk))
 - [jasmaa](https://github.com/jasmaa/)
