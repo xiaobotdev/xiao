@@ -9,7 +9,14 @@ module.exports = class IpCommand extends Command {
 			memberName: 'ip',
 			description: 'Responds with the IP address Xiao\'s server is running on.',
 			guarded: true,
-			ownerOnly: true
+			ownerOnly: true,
+			credit: [
+				{
+					name: 'ipify API',
+					url: 'https://www.ipify.org/',
+					reason: 'API'
+				}
+			]
 		});
 	}
 
