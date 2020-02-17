@@ -9,6 +9,7 @@ module.exports = class GenerateCreditCommand extends Command {
 			group: 'readme',
 			memberName: 'generate-credit',
 			description: 'Generates the credit list for Xiao\'s README.',
+			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
 			guarded: true,
 			credit: [
