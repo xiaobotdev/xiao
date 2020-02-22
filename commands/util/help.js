@@ -29,9 +29,12 @@ module.exports = class HelpCommand extends Command {
 				.setColor(0x00AE86)
 				.setFooter(`${this.client.registry.commands.size} Commands`);
 			for (const group of this.client.registry.groups.values()) {
+				const owner = this.client.isOwner(msg.author);
+				const commands = group.commands.filter(cmd => !cmd.hidden && owner ? true : !cmd.ownerOnly);
+				if (!commands.size) continue;
 				embed.addField(
 					`❯ ${group.name}`,
-					group.commands.map(cmd => `\`${cmd.name}\``).join(', ') || 'None'
+					commands.map(cmd => `\`${cmd.name}\``).join(', ')
 				);
 			}
 			try {
