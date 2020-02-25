@@ -17,14 +17,14 @@ module.exports = class ReportCommand extends Command {
 			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
-					name: 'reason',
+					key: 'reason',
 					prompt: `What is the reason for your report? Either ${list(reasons, 'or')}.`,
 					type: 'string',
 					oneOf: reasons,
 					parse: reason => reasons.indexOf(reason.toLowerCase())
 				},
 				{
-					name: 'message',
+					key: 'message',
 					prompt: 'What is the message of your report?',
 					type: 'string'
 				}
