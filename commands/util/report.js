@@ -39,10 +39,11 @@ module.exports = class ReportCommand extends Command {
 			.setAuthor(msg.author.tag)
 			.setTimestamp()
 			.setColor(reasonColors[reason]);
-		for (const owner of this.client.owners){
+		for (const owner of this.client.owners) {
 			try {
 				await owner.send(embed);
 			} catch (err) {
+				console.log(err);
 				continue;
 			}
 		}
