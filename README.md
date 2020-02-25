@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 359
+Total: 360
 
 ### Utility:
 
@@ -105,6 +105,7 @@ Total: 359
 * **ip:** Responds with the IP address Xiao's server is running on.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
+* **report:** Reports something to the bot owner(s).
 
 ### Discord Information:
 
