@@ -41,7 +41,7 @@ module.exports = class ReportCommand extends Command {
 			.setColor(reasonColors[reason]);
 		for (const owner of this.client.owners) {
 			try {
-				await owner.send(embed);
+				await owner.send({ embed });
 			} catch (err) {
 				console.log(err);
 				continue;
