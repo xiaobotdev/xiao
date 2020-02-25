@@ -1,6 +1,5 @@
-'use strict';
-
-// Credit: https://github.com/discordjs/discord.js/blob/ecd8cccddf9b83f4f7cd858fdcad9e436ac51794/src/structures/MessageEmbed.js
+// Credit: 
+// https://github.com/discordjs/discord.js/blob/ecd8cccddf9b83f4f7cd858fdcad9e436ac51794/src/structures/MessageEmbed.js
 
 const { Util } = require('discord.js');
 
@@ -79,7 +78,7 @@ class MessageEmbed {
 			url: data.thumbnail.url,
 			proxyURL: data.thumbnail.proxy_url,
 			height: data.thumbnail.height,
-			width: data.thumbnail.width,
+			width: data.thumbnail.width
 		} : null;
 
 		/**
@@ -94,7 +93,7 @@ class MessageEmbed {
 			url: data.image.url,
 			proxyURL: data.image.proxy_url,
 			height: data.image.height,
-			width: data.image.width,
+			width: data.image.width
 		} : null;
 
 		/**
@@ -110,7 +109,7 @@ class MessageEmbed {
 			url: data.video.url,
 			proxyURL: data.video.proxy_url,
 			height: data.video.height,
-			width: data.video.width,
+			width: data.video.width
 		} : null;
 
 		/**
@@ -125,7 +124,7 @@ class MessageEmbed {
 			name: data.author.name,
 			url: data.author.url,
 			iconURL: data.author.iconURL || data.author.icon_url,
-			proxyIconURL: data.author.proxyIconUrl || data.author.proxy_icon_url,
+			proxyIconURL: data.author.proxyIconUrl || data.author.proxy_icon_url
 		} : null;
 
 		/**
@@ -146,7 +145,7 @@ class MessageEmbed {
 		this.footer = data.footer ? {
 			text: data.footer.text,
 			iconURL: data.footer.iconURL || data.footer.icon_url,
-			proxyIconURL: data.footer.proxyIconURL || data.footer.proxy_icon_url,
+			proxyIconURL: data.footer.proxyIconURL || data.footer.proxy_icon_url
 		} : null;
 
 		/**
@@ -181,11 +180,11 @@ class MessageEmbed {
 	 */
 	get length() {
 		return (
-			(this.title ? this.title.length : 0) +
-			(this.description ? this.description.length : 0) +
-			(this.fields.length >= 1 ? this.fields.reduce((prev, curr) =>
-				prev + curr.name.length + curr.value.length, 0) : 0) +
-			(this.footer ? this.footer.text.length : 0));
+			(this.title ? this.title.length : 0)
+			+ (this.description ? this.description.length : 0)
+			+ (this.fields.length >= 1 ? this.fields.reduce((prev, curr) =>
+				prev + curr.name.length + curr.value.length, 0) : 0)
+			+ (this.footer ? this.footer.text.length : 0));
 	}
 
 	/**
@@ -358,12 +357,12 @@ class MessageEmbed {
 			author: this.author ? {
 				name: this.author.name,
 				url: this.author.url,
-				icon_url: this.author.iconURL,
+				icon_url: this.author.iconURL
 			} : null,
 			footer: this.footer ? {
 				text: this.footer.text,
 				icon_url: this.footer.iconURL,
-			} : null,
+			} : null
 		};
 	}
 
