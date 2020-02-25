@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
+const MessageEmbed = require('../../structures/MessageEmbed');
 const request = require('node-superfetch');
 const { formatNumber } = require('../../util/Util');
 const { TUMBLR_KEY } = process.env;

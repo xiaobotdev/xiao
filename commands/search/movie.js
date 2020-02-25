@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
+const MessageEmbed = require('../../structures/MessageEmbed');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
 const { TMDB_KEY } = process.env;
