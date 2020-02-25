@@ -91,7 +91,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 360
+Total: 361
 
 ### Utility:
 
@@ -157,6 +157,7 @@ Total: 360
 * **offspring:** Determines if your new child will be a boy or a girl.
 * **opinion:** Determines the opinion on something.
 * **oracle-turret:** Responds with a random Oracle Turret quote.
+* **potato:** Responds with a random potato image.
 * **pun:** Responds with a random pun.
 * **quantum-coin:** Flips a coin that lands on some form of nothing.
 * **quote:** Responds with a random quote.
