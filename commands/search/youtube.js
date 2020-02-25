@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
-const { MessageEmbed } = require('discord.js');
+const MessageEmbed = require('../../structures/MessageEmbed');
 const request = require('node-superfetch');
 const { GOOGLE_KEY } = process.env;
 

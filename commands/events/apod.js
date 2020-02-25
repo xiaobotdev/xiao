@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { MessageEmbed } = require('discord.js');
+const MessageEmbed = require('../../structures/MessageEmbed');
 const { shorten } = require('../../util/Util');
 const { GOV_KEY } = process.env;
 

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { MessageEmbed } = require('discord.js');
+const MessageEmbed = require('../../structures/MessageEmbed');
 
 module.exports = class DoomsdayClockCommand extends Command {
 	constructor(client) {
