@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const MessageEmbed = require('../../structures/MessageEmbed');
 const { list } = require('../../util/Util');
 const reasons = ['bug', 'feedback', 'suggestion'];
-const reasonColors = ['red', 'green', 'yellow'];
+const reasonColors = ['RED', 'GREEN', 'YELLOW'];
 const displayReasons = ['Bug Report', 'Feedback', 'Suggestion'];
 
 module.exports = class ReportCommand extends Command {
@@ -43,7 +43,6 @@ module.exports = class ReportCommand extends Command {
 			try {
 				await owner.send({ embed });
 			} catch (err) {
-				console.log(err);
 				continue;
 			}
 		}
