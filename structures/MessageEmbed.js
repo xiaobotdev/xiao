@@ -1,4 +1,4 @@
-// Credit: 
+// Credit:
 // https://github.com/discordjs/discord.js/blob/ecd8cccddf9b83f4f7cd858fdcad9e436ac51794/src/structures/MessageEmbed.js
 
 const { Util } = require('discord.js');
@@ -361,7 +361,7 @@ class MessageEmbed {
 			} : null,
 			footer: this.footer ? {
 				text: this.footer.text,
-				icon_url: this.footer.iconURL,
+				icon_url: this.footer.iconURL
 			} : null
 		};
 	}
