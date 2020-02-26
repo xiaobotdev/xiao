@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const MessageEmbed = require('../../structures/MessageEmbed');
 const { formatNumber } = require('../../util/Util');
 const { promisify } = require('util');
-const exec = promisify(require('child_process').exec);
+const exec = promisify(require('child_process').execFile);
 const path = require('path');
 
 module.exports = class ClocCommand extends Command {
