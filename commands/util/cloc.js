@@ -24,10 +24,10 @@ module.exports = class ClocCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter(`${cloc.header.cloc_url} ${cloc.header.cloc_version}`)
-			.addField(`❯ Javascript (${formatNumber(cloc.JavaScript.nFiles)})`,
+			.addField(`❯ JS (${formatNumber(cloc.JavaScript.nFiles)})`,
 				formatNumber(cloc.JavaScript.code), true)
 			.addField(`❯ JSON (${formatNumber(cloc.JSON.nFiles)})`, formatNumber(cloc.JSON.code), true)
-			.addField(`❯ Markdown (${formatNumber(cloc.Markdown.nFiles)})`, formatNumber(cloc.Markdown.code), true)
+			.addField(`❯ MD (${formatNumber(cloc.Markdown.nFiles)})`, formatNumber(cloc.Markdown.code), true)
 			.addBlankField(true)
 			.addField(`❯ Total (${formatNumber(cloc.SUM.nFiles)})`, formatNumber(cloc.SUM.code), true)
 			.addBlankField(true);
