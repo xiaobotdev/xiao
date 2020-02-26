@@ -29,7 +29,7 @@ module.exports = class ClocCommand extends Command {
 			.addField(`❯ JSON (${formatNumber(cloc.JSON.nFiles)})`, formatNumber(cloc.JSON.code), true)
 			.addField(`❯ Markdown (${formatNumber(cloc.Markdown.nFiles)})`, formatNumber(cloc.Markdown.code), true)
 			.addBlankField(true)
-			.addField(`❯ Total (${formatNumber(cloc.SUM.nFiles)})`, formatNumber(cloc.SUM.code))
+			.addField(`❯ Total (${formatNumber(cloc.SUM.nFiles)})`, formatNumber(cloc.SUM.code), true)
 			.addBlankField(true);
 		return msg.embed(embed);
 	}
