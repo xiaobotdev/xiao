@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "110.8.2",
+	"version": "110.9.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -34,6 +34,7 @@
 		"@vitalets/google-translate-api": "^3.0.0",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
+		"cloc": "^2.5.1",
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
 		"discord.js": "github:discordjs/discord.js",

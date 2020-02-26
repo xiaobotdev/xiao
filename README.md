@@ -91,12 +91,13 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 361
+Total: 362
 
 ### Utility:
 
 * **eval:** Executes JavaScript code.
 * **changelog:** Responds with the bot's latest 10 commits.
+* **cloc:** Responds with the bot's code line count.
 * **credit:** Responds with a command's credits list.
 * **donate:** Responds with the bot's donation links.
 * **help:** Displays a list of available commands, or detailed information for a specific command.
