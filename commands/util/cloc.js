@@ -24,8 +24,7 @@ module.exports = class ClocCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter(`${cloc.header.cloc_url} ${cloc.header.cloc_version}`)
-			.addField(`❯ JS (${formatNumber(cloc.JavaScript.nFiles)})`,
-				formatNumber(cloc.JavaScript.code), true)
+			.addField(`❯ JS (${formatNumber(cloc.JavaScript.nFiles)})`, formatNumber(cloc.JavaScript.code), true)
 			.addField(`❯ JSON (${formatNumber(cloc.JSON.nFiles)})`, formatNumber(cloc.JSON.code), true)
 			.addField(`❯ MD (${formatNumber(cloc.Markdown.nFiles)})`, formatNumber(cloc.Markdown.code), true)
 			.addBlankField(true)
