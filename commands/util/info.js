@@ -27,9 +27,9 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Servers', formatNumber(this.client.guilds.cache.size), true)
 			.addField('❯ Shards', formatNumber(this.client.options.shardCount), true)
 			.addField('❯ Commands', formatNumber(this.client.registry.commands.size), true)
-			.addField('❯ Home Server', this.client.options.invite ? `[Here](${this.client.options.invite})` : 'None', true)
+			.addField('❯ Home Server', this.client.options.invite ? `[Invite](${this.client.options.invite})` : 'None', true)
 			.addField('❯ Source Code',
-				source ? `[Here](https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME})` : 'N/A', true)
+				source ? `[Github](https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME})` : 'N/A', true)
 			.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime', moment.duration(this.client.uptime).format('d:hh:mm:ss'), true)
 			.addField('❯ Version', `v${version}`, true)
