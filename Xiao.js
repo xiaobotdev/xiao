@@ -19,6 +19,7 @@ client.registry
 		['info', 'Discord Information'],
 		['random', 'Random Response'],
 		['single', 'Single Response'],
+		['auto', 'Automatic Response'],
 		['seeded', 'Seeded Randomizers'],
 		['events', 'Events'],
 		['search', 'Search'],

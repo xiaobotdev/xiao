@@ -180,7 +180,6 @@ Total: 362
 
 ### Single Response:
 
-* **can-you-not:** Can YOU not?
 * **dark-light:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
 * **eggs-get-laid:** Sends the ultimate roast.
@@ -190,15 +189,19 @@ Total: 362
 * **isnt-joke:** Isn't joke...
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
-* **kazuma-kazuma:** Hai, Kazuma desu.
 * **lenny:** Responds with the lenny face.
-* **no-u:** no u
 * **spam:** Responds with a picture of Spam.
-* **suicide-hotline:** Responds with the phone number for the Suicide Hotline.
 * **tableflip:** Flips a table... With animation!
-* **unflip:** Unflips a flipped table.
 * **wynaut:** Why not? Wynaut?
 * **yoff:** Posts a picture that truly defines modern art.
+
+### Automatic Response:
+
+* **can-you-not:** Can YOU not?
+* **kazuma-kazuma:** Hai, Kazuma desu.
+* **no-u:** no u
+* **suicide-hotline:** Responds with the phone number for the Suicide Hotline.
+* **unflip:** Unflips a flipped table.
 
 ### Seeded Randomizers:
 

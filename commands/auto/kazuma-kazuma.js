@@ -4,7 +4,7 @@ module.exports = class KazumaKazumaCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'kazuma-kazuma',
-			group: 'single',
+			group: 'auto',
 			memberName: 'kazuma-kazuma',
 			description: 'Hai, Kazuma desu.',
 			patterns: [/kazuma,? kazuma!?/i],
