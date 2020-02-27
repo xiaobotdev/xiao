@@ -25,6 +25,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Discord Information](#discord-information)
 	* [Random Response](#random-response)
 	* [Single Response](#single-response)
+	* [Automatic Response](#automatic-response)
 	* [Seeded Randomizers](#seeded-randomizers)
 	* [Events](#events)
 	* [Search](#search)
