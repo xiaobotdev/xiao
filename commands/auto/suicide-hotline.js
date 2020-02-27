@@ -5,7 +5,7 @@ module.exports = class SuicideHotlineCommand extends Command {
 		super(client, {
 			name: 'suicide-hotline',
 			aliases: ['kms', 'kill-myself'],
-			group: 'single',
+			group: 'auto',
 			memberName: 'suicide-hotline',
 			description: 'Responds with the phone number for the Suicide Hotline.',
 			patterns: [/\bkms\b/i, /\b(kill myself)\b/i, /<:kms:(.+)>/i],

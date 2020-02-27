@@ -5,7 +5,7 @@ module.exports = class NoUCommand extends Command {
 		super(client, {
 			name: 'no-u',
 			aliases: ['no-you'],
-			group: 'single',
+			group: 'auto',
 			memberName: 'no-u',
 			description: 'no u',
 			patterns: [/^n+o+ u+$/i]
