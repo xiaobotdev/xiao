@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "110.9.0",
+	"version": "110.9.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -31,6 +31,7 @@
 		"node": ">=12"
 	},
 	"dependencies": {
+		"@discordjs/opus": "^0.1.0",
 		"@vitalets/google-translate-api": "^3.0.0",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
@@ -45,7 +46,6 @@
 		"moment": "^2.24.0",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.28",
-		"node-opus": "^0.3.3",
 		"node-superfetch": "^0.1.10",
 		"random-js": "^2.1.0",
 		"soap": "^0.31.0",
