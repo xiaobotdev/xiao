@@ -38,16 +38,16 @@ module.exports = class PhoneCall {
 		return this;
 	}
 
-	async hangup(quitter) {
+	async hangup(nonQuitter) {
 		this.active = false;
 		clearTimeout(this.timeout);
 		this.client.phone.delete(this.id);
-		if (quitter === 'time') {
+		if (nonQuitter === 'time') {
 			await this.origin.send('☎️ Call ended due to inactivity.');
 			await this.recipient.send('☎️ Call ended due to inactivity.');
 		} else {
-			const channel = quitter.id === this.origin.id ? this.origin : this.recipient;
-			await channel.send(`☎️ **${channel.guild.name}** hung up.`);
+			const quitter = nonQuitter.id === this.origin.id ? this.recipient : this.origin;
+			await nonQuitter.send(`☎️ **${channel.guild.name}** hung up.`);
 			await quitter.send('☎️ Hung up.');
 		}
 		return this;
