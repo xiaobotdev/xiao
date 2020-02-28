@@ -34,12 +34,12 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Uptime', moment.duration(this.client.uptime).format('d:hh:mm:ss'), true)
 			.addField('❯ Version', `v${version}`, true)
 			.addField('❯ Node Version', process.version, true)
-			.addField('❯ Dependencies', this.parseDependencies());
+			.addField('❯ Dependencies', this.parseDependencies(dependencies));
 		return msg.embed(embed);
 	}
 
-	parseDependencies() {
-		return Object.entries(dependencies).map(dep => {
+	parseDependencies(deps) {
+		return Object.entries(deps).map(dep => {
 			if (dep[1].startsWith('github:')) {
 				const repo = dep[1].replace('github:', '').split('/');
 				return `[${dep[0]}](https://github.com/${repo[0]}/${repo[1].replace(/#(.+)/, '/tree/$1')})`;
