@@ -20,6 +20,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.pokemon = new PokemonStore();
 		this.memePoster = new MemePoster(this);
 		this.games = new Collection();
-		this.phone = new Map();
+		this.phone = new Collection();
 	}
 };
