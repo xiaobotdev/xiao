@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const { list } = require('../../util/Util');
 const reasons = ['bug', 'feedback', 'suggestion'];
 const reasonColors = ['RED', 'GREEN', 'YELLOW'];
-const displayReasons = ['Bug Report', 'Feedback', 'Suggestion'];
+const displayReasons = ['🐛 Bug Report', '📬 Feedback', '❓ Suggestion'];
 
 module.exports = class ReportCommand extends Command {
 	constructor(client) {
@@ -14,7 +14,6 @@ module.exports = class ReportCommand extends Command {
 			memberName: 'report',
 			description: 'Reports something to the bot owner(s).',
 			guarded: true,
-			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'reason',
@@ -46,6 +45,6 @@ module.exports = class ReportCommand extends Command {
 				continue;
 			}
 		}
-		return msg.say(`**${displayReasons[reason]}** sent! Thank you!`);
+		return msg.say(`${displayReasons[reason]} sent! Thank you!`);
 	}
 };
