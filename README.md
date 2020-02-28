@@ -96,7 +96,7 @@ Total: 362
 
 ### Utility:
 
-* **eval:** Executes JavaScript code.
+* **eval:** Executes JavaScript code. (Owner-Only)
 * **changelog:** Responds with the bot's latest 10 commits.
 * **cloc:** Responds with the bot's code line count.
 * **credit:** Responds with a command's credits list.
@@ -104,7 +104,7 @@ Total: 362
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
-* **ip:** Responds with the IP address Xiao's server is running on.
+* **ip:** Responds with the IP address the bot's server is running on. (Owner-Only)
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
@@ -460,7 +460,7 @@ Total: 362
 * **upside-down:** Flips text upside-down.
 * **url-decode:** Decodes URL characters to regular characters.
 * **url-encode:** Encodes text to URL-friendly characters.
-* **webhook:** Posts a message to the webhook defined in the bot owner's `process.env`.
+* **webhook:** Posts a message to the webhook defined in the bot owner's `process.env`. (Owner-Only)
 * **yoda:** Converts text to Yoda speak.
 * **zalgo:** Converts text to zalgo.
 
@@ -488,7 +488,7 @@ Total: 362
 
 * **cleverbot:** Talk to Cleverbot.
 * **prune:** Deletes up to 99 messages from the current channel.
-* **rename-all:** Renames every member of the server.
+* **rename-all:** Renames every member of the server. (Owner-Only)
 * **strawpoll:** Generates a Strawpoll with the options you provide.
 
 ### Roleplay:
@@ -513,8 +513,8 @@ Total: 362
 
 ### README Generators:
 
-* **generate-commands:** Generates the commands list for Xiao's README.
-* **generate-credit:** Generates the credit list for Xiao's README.
+* **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
+* **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
 
 ## Licensing
 
