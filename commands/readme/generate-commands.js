@@ -24,7 +24,9 @@ module.exports = class GenerateCommandsCommand extends Command {
 
 	async run(msg) {
 		const list = this.client.registry.groups
-			.map(g => `\n### ${g.name}:\n\n${g.commands.map(c => `* **${c.name}:** ${c.description}`).join('\n')}`);
+			.map(g => `\n### ${g.name}:\n\n${g.commands.map(
+				c => `* **${c.name}:** ${c.description}${c.ownerOnly ? ' (Owner-Only)' : ''}`
+			).join('\n')}`);
 		const { body } = await request
 			.post('https://hastebin.com/documents')
 			.send(list.join('\n'));
