@@ -36,6 +36,7 @@ module.exports = class ReportCommand extends Command {
 			.setDescription(message)
 			.setTitle(displayReasons[reason])
 			.setAuthor(msg.author.tag)
+			.setFooter(`ID: ${msg.author.id}`)
 			.setTimestamp()
 			.setColor(reasonColors[reason]);
 		for (const owner of this.client.owners) {
