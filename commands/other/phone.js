@@ -17,6 +17,9 @@ module.exports = class PhoneCommand extends Command {
 		if (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')) {
 			return msg.say('You can only start a call in a channel with `<xiao:phone>` in the topic.');
 		}
+		if (this.client.phone.some(call => [call.origin.id, call.recipient.id].includes(msg.channel.id))) {
+			return msg.say('This channel is already in a phone call.');
+		}
 		const channels = this.client.channels.cache.filter(channel => channel.type === 'text'
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
