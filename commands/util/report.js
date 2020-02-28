@@ -45,15 +45,22 @@ module.exports = class ReportCommand extends Command {
 				const channel = await this.client.channels.fetch(REPORT_CHANNEL_ID);
 				await channel.send({ embed });
 			} catch (err) {
-				for (const owner of this.client.owners) {
-					try {
-						await owner.send({ embed });
-					} catch (err) {
-						continue;
-					}
-				}		
+				await this.sendOwnerDM(embed);
 			}
+		} else {
+			await this.sendOwnerDM(embed);
 		}
 		return msg.say(`${displayReasons[reason]} sent! Thank you!`);
+	}
+
+	async sendOwnerDM(embed) {
+		for (const owner of this.client.owners) {
+			try {
+				await owner.send({ embed });
+			} catch (err) {
+				continue;
+			}
+		}
+		return null;
 	}
 };
