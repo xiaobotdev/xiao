@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { trimArray } = require('../../util/Util');
 

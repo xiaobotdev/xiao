@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const { list } = require('../../util/Util');
 const reasons = ['bug', 'feedback', 'suggestion'];
 const reasonColors = ['RED', 'GREEN', 'YELLOW'];

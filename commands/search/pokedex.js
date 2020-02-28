@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
 module.exports = class PokedexCommand extends Command {

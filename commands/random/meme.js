@@ -1,5 +1,5 @@
 const SubredditCommand = require('../../structures/commands/Subreddit');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const { list, formatNumber } = require('../../util/Util');
 const subreddits = require('../../assets/json/meme');
 

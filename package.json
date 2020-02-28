@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "110.9.3",
+	"version": "110.9.4",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -38,7 +38,7 @@
 		"cloc": "^2.5.1",
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
-		"discord.js": "github:discordjs/discord.js",
+		"discord.js": "github:almostSouji/discord.js#embed-addfield",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
 		"gifencoder": "^2.0.1",

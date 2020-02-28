@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class CreditCommand extends Command {
 	constructor(client) {

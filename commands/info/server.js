@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const filterLevels = ['Off', 'No Role', 'Everyone'];
 const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻', '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'];

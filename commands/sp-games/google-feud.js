@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const questions = require('../../assets/json/google-feud');
 
 module.exports = class GoogleFeudCommand extends Command {

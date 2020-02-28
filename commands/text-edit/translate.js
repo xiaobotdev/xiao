@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const translate = require('@vitalets/google-translate-api');
 const { list } = require('../../util/Util');
 const codes = translate.languages;
