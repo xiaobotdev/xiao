@@ -7,8 +7,9 @@ const { SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class Game {
 	constructor(client, channel, voiceChannel) {
+		Object.defineProperty(this, 'client', { value: client });
+
 		this.name = 'mafia';
-		this.client = client;
 		this.players = new Collection();
 		this.channel = channel;
 		this.voiceChannelRaw = voiceChannel;

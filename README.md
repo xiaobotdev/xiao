@@ -92,7 +92,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 362
+Total: 363
 
 ### Utility:
 
@@ -487,6 +487,7 @@ Total: 362
 ### Other:
 
 * **cleverbot:** Talk to Cleverbot.
+* **phone:** Starts a phone call with a random server.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
 * **strawpoll:** Generates a Strawpoll with the options you provide.

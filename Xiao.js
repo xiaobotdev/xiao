@@ -56,6 +56,20 @@ client.on('ready', () => {
 	}
 });
 
+client.on('message', async msg => {
+	if (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')) return;
+	if (msg.author.bot || !msg.content) return;
+	const origin = client.phone.find(call => call.origin.id === msg.channel.id);
+	const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
+	if (!origin && !recipient) return;
+	try {
+		if (origin) await origin.send(origin.recipient, msg);
+		if (recipient) await recipient.send(recipient.origin, msg);
+	} catch (err) {
+		return; // eslint-disable-line no-useless-return
+	}
+});
+
 client.on('guildMemberRemove', async member => {
 	const channel = member.guild.systemChannel;
 	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
