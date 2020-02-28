@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const { formatNumber } = require('../../util/Util');
 const { promisify } = require('util');
 const exec = promisify(require('child_process').execFile);
@@ -27,9 +27,9 @@ module.exports = class ClocCommand extends Command {
 			.addField(`❯ JS (${formatNumber(cloc.JavaScript.nFiles)})`, formatNumber(cloc.JavaScript.code), true)
 			.addField(`❯ JSON (${formatNumber(cloc.JSON.nFiles)})`, formatNumber(cloc.JSON.code), true)
 			.addField(`❯ MD (${formatNumber(cloc.Markdown.nFiles)})`, formatNumber(cloc.Markdown.code), true)
-			.addBlankField(true)
+			.addField('\u200B', '\u200B', true);
 			.addField(`❯ Total (${formatNumber(cloc.SUM.nFiles)})`, formatNumber(cloc.SUM.code), true)
-			.addBlankField(true);
+			.addField('\u200B', '\u200B', true);;
 		return msg.embed(embed);
 	}
 

@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber, base64 } = require('../../util/Util');
 const { GITHUB_USERNAME, GITHUB_PASSWORD } = process.env;

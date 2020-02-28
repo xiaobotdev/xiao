@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const MessageEmbed = require('../../structures/MessageEmbed');
+const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { formatNumber } = require('../../util/Util');
 const { ALPHA_VANTAGE_KEY } = process.env;
@@ -52,7 +52,7 @@ module.exports = class StocksCommand extends Command {
 				.addField('❯ Volume', formatNumber(data['5. volume']), true)
 				.addField('❯ High', `$${formatNumber(data['2. high'])}`, true)
 				.addField('❯ Low', `$${formatNumber(data['3. low'])}`, true)
-				.addBlankField(true);
+				.addField('\u200B', '\u200B', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
