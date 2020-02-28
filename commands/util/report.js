@@ -4,7 +4,7 @@ const { list } = require('../../util/Util');
 const reasons = ['bug', 'feedback', 'suggestion'];
 const reasonColors = ['RED', 'GREEN', 'YELLOW'];
 const displayReasons = ['🐛 Bug Report', '📬 Feedback', '❓ Suggestion'];
-const { HOME_GUILD_ID, REPORT_CHANNEL_ID } = process.env;
+const { REPORT_CHANNEL_ID } = process.env;
 
 module.exports = class ReportCommand extends Command {
 	constructor(client) {
@@ -40,14 +40,18 @@ module.exports = class ReportCommand extends Command {
 			.setFooter(`ID: ${msg.author.id}`)
 			.setTimestamp()
 			.setColor(reasonColors[reason]);
-		if (HOME_GUILD_ID && REPORT_CHANNEL_ID) {
-			await this.client.guilds.cache.get(HOME_GUILD_ID).channels.cache.get(REPORT_CHANNEL_ID).send({ embed });
-		}
-		for (const owner of this.client.owners) {
+		if (REPORT_CHANNEL_ID) {
 			try {
-				await owner.send({ embed });
+				const channel = await this.client.channels.fetch(REPORT_CHANNEL_ID);
+				await channel.send({ embed });
 			} catch (err) {
-				continue;
+				for (const owner of this.client.owners) {
+					try {
+						await owner.send({ embed });
+					} catch (err) {
+						continue;
+					}
+				}		
 			}
 		}
 		return msg.say(`${displayReasons[reason]} sent! Thank you!`);
