@@ -77,7 +77,7 @@ module.exports = class Util {
 	static async verify(channel, user, time = 30000) {
 		const filter = res => {
 			const value = res.content.toLowerCase();
-			return res.author.id === user.id && (yes.includes(value) || no.includes(value));
+			return (user ? res.author.id === user.id : true) && (yes.includes(value) || no.includes(value));
 		};
 		const verify = await channel.awaitMessages(filter, {
 			max: 1,
