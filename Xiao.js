@@ -66,6 +66,7 @@ client.on('message', async msg => {
 		if (origin) await origin.send(origin.recipient, msg);
 		if (recipient) await recipient.send(recipient.origin, msg);
 	} catch (err) {
+		console.log(err);
 		return; // eslint-disable-line no-useless-return
 	}
 });
