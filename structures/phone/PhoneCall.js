@@ -12,6 +12,7 @@ module.exports = class PhoneCall {
 	}
 
 	async start() {
+		await this.origin.send(`☎️ Calling **${this.recipient.guild.name}**...`);
 		await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name}**. Pick up?`);
 		const validation = await verify(this.recipient, null);
 		if (!validation) {
@@ -60,7 +61,7 @@ module.exports = class PhoneCall {
 
 	setTimeout() {
 		if (this.timeout) clearTimeout(this.timeout);
-		this.timeout = this.setTimeout(() => this.hangup('time'), 60000);
+		this.timeout = setTimeout(() => this.hangup('time'), 60000);
 		return this.timeout;
 	}
 };
