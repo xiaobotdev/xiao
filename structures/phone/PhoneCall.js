@@ -47,7 +47,7 @@ module.exports = class PhoneCall {
 			await this.recipient.send('☎️ Call ended due to inactivity.');
 		} else {
 			const quitter = nonQuitter.id === this.origin.id ? this.recipient : this.origin;
-			await nonQuitter.send(`☎️ **${channel.guild.name}** hung up.`);
+			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up.`);
 			await quitter.send('☎️ Hung up.');
 		}
 		return this;
