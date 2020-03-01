@@ -32,19 +32,22 @@ module.exports = class PhoneCall {
 	}
 
 	async decline(validation) {
-		const directMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
 		this.client.phone.delete(this.id);
-		await this.origin.send(`☎️ **${this.recipient.guild.name}** ${directMsg}`);
+		await this.hangup('declined', validation);
 		return this;
 	}
 
-	async hangup(nonQuitter) {
+	async hangup(nonQuitter, validation) {
 		this.active = false;
 		clearTimeout(this.timeout);
 		this.client.phone.delete(this.id);
 		if (nonQuitter === 'time') {
 			await this.origin.send('☎️ Call ended due to inactivity.');
 			await this.recipient.send('☎️ Call ended due to inactivity.');
+		} else if (nonQuitter === 'declined') {
+			const directMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
+			await this.origin.send(`☎️ **${this.recipient.guild.name}** ${directMsg}`);
+			await this.recipient.send('☎️ Declined the call.');
 		} else {
 			const quitter = nonQuitter.id === this.origin.id ? this.recipient : this.origin;
 			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up.`);
