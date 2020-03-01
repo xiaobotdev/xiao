@@ -942,6 +942,7 @@ here.
 	* beautiful (Image, Concept)
 	* psycho-pass (Concept)
 	* fishy (Concept)
+	* phone (Concept)
 - [Tenor](https://tenor.com/)
 	* tenor ([API](https://tenor.com/gifapi/documentation))
 - [The Internet Chuck Norris Database](http://www.icndb.com/)

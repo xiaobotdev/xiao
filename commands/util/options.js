@@ -20,7 +20,7 @@ module.exports = class OptionsCommand extends Command {
 
 			\`<xiao:disable-leave>\` Disables leave messages (System Channel).
 			\`<xiao:phone>\` Allows this channel to recieve phone calls.
-			\`<portal>\` Marks the channel as a portal channel for \`portal-send\`.
+			\`<xiao:portal>\` Marks the channel as a portal channel for \`portal-send\`.
 		`);
 	}
 };

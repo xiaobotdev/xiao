@@ -22,7 +22,7 @@ module.exports = class PortalSendCommand extends Command {
 	async run(msg, { message }) {
 		if (/discord(\.gg|app\.com\/invite|\.me)\//gi.test(message)) return msg.reply('Please do not send invites.');
 		let channels = this.client.channels.cache.filter(
-			channel => channel.type === 'text' && channel.topic && channel.topic.includes('<portal>')
+			channel => channel.type === 'text' && channel.topic && channel.topic.includes('<xiao:portal>')
 		);
 		if (msg.channel.type === 'text') {
 			channels = channels.filter(channel => !msg.guild.channels.cache.has(channel.id));
