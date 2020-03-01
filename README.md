@@ -441,7 +441,6 @@ Total: 363
 * **owo:** OwO.
 * **pig-latin:** Converts text to pig latin.
 * **pirate:** Converts text to pirate.
-* **portal-send:** Send a message to a portal channel.
 * **repeat:** Repeat text over and over and over and over (etc).
 * **reverse:** Reverses text.
 * **say:** Make me say what you want, master.
@@ -488,6 +487,7 @@ Total: 363
 
 * **cleverbot:** Talk to Cleverbot.
 * **phone:** Starts a phone call with a random server.
+* **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
 * **strawpoll:** Generates a Strawpoll with the options you provide.
