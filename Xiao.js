@@ -6,6 +6,7 @@ const client = new Client({
 	commandPrefix: XIAO_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
+	disableMentions: 'everyone',
 	disabledEvents: ['TYPING_START']
 });
 const activities = require('./assets/json/activity');
