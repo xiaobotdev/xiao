@@ -16,7 +16,7 @@ module.exports = class UnknownCommandCommand extends Command {
 	}
 
 	run(msg) {
-		const commands = this.client.registry.commands.map(c => c.name);
+		const commands = this.makeCommandArray(this.client.isOwner(msg.author));
 		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix]);
 		const didYouMean = meant(command ? command[2] : msg.content.split(' ')[0], commands);
 		const inGuild = msg.guild ? undefined : null;
@@ -25,5 +25,16 @@ module.exports = class UnknownCommandCommand extends Command {
 
 			${didYouMean && didYouMean.length ? `Did You Mean: ${didYouMean.map(c => `\`${c}\``).join(',')}` : ''}
 		`);
+	}
+
+	makeCommandArray(owner) {
+		const arr = [];
+		for (const command of this.client.registry.commands.values()) {
+			if (!owner && command.ownerOnly) continue;
+			if (command.hidden) continue;
+			arr.push(command.name);
+			arr.push(...command.aliases);
+		}
+		return arr;
 	}
 };
