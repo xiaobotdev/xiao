@@ -17,13 +17,13 @@ module.exports = class UnknownCommandCommand extends Command {
 
 	run(msg) {
 		const commands = this.client.registry.commands.map(c => c.name);
-		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix])[2];
-		const didYouMean = meant(command, commands);
+		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix]);
+		const didYouMean = meant(command || msg.content.split(' ')[0], commands);
 		const inGuild = msg.guild ? undefined : null;
 		return msg.reply(stripIndents`
 			Unknown command. Use ${msg.anyUsage('help', inGuild, inGuild)} to view the command list.
 
-			${didYouMean && didYouMean.length ? `Did You Mean:\n${didYouMean.join('\n')}` : ''}
+			${didYouMean && didYouMean.length ? `Did You Mean:\n${didYouMean.map(c => `\`${c}\``).join(',')}` : ''}
 		`);
 	}
 };
