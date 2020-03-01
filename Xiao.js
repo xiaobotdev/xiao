@@ -62,9 +62,10 @@ client.on('message', async msg => {
 	const origin = client.phone.find(call => call.origin.id === msg.channel.id);
 	const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
 	if (!origin && !recipient) return;
+	const call = origin || recipient;
+	if (!call.active) return;
 	try {
-		if (origin) await origin.send(origin.recipient, msg);
-		if (recipient) await recipient.send(recipient.origin, msg);
+		await call.send(origin ? call.recipient : call.origin, msg);
 	} catch (err) {
 		return; // eslint-disable-line no-useless-return
 	}
