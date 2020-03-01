@@ -16,7 +16,7 @@ module.exports = class PhoneCall {
 		await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name}**. Pick up?`);
 		const validation = await verify(this.recipient, null);
 		if (!validation) {
-			await this.decline(validation);
+			await this.hangup('declined', validation);
 			return this;
 		}
 		await this.accept();
@@ -28,12 +28,6 @@ module.exports = class PhoneCall {
 		this.setTimeout();
 		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Type \`hang up\` to hang up.`);
 		await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Type \`hang up\` to hang up.`);
-		return this;
-	}
-
-	async decline(validation) {
-		this.client.phone.delete(this.id);
-		await this.hangup('declined', validation);
 		return this;
 	}
 
