@@ -15,15 +15,8 @@ module.exports = class MemePoster {
 	async post() {
 		try {
 			const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
-			const { body } = await request
-				.get(`https://www.reddit.com/r/${subreddit}/hot.json`)
-				.query({ limit: 100 });
-			const posts = body.data.children.filter(post => {
-				if (!post.data) return false;
-				return types.includes(post.data.post_hint) && post.data.url && post.data.title && !post.data.over_18;
-			});
-			if (!posts.length) return;
-			const post = posts[Math.floor(Math.random() * posts.length)].data;
+			const post = await this.fetchMeme(subreddit);
+			if (!post) return;
 			await request
 				.post(`https://discordapp.com/api/webhooks/${this.id}/${this.token}`)
 				.send({
@@ -32,5 +25,17 @@ module.exports = class MemePoster {
 		} catch (err) {
 			this.client.logger.error(err);
 		}
+	}
+
+	async fetchMeme(subreddit) {
+		const { body } = await request
+			.get(`https://www.reddit.com/r/${subreddit}/hot.json`)
+			.query({ limit: 100 });
+		const posts = body.data.children.filter(post => {
+			if (!post.data) return false;
+			return types.includes(post.data.post_hint) && post.data.url && post.data.title && !post.data.over_18;
+		});
+		if (!posts.length) return null;
+		return posts[Math.floor(Math.random() * posts.length)].data;
 	}
 };
