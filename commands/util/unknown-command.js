@@ -18,7 +18,7 @@ module.exports = class UnknownCommandCommand extends Command {
 	run(msg) {
 		const commands = this.client.registry.commands.map(c => c.name);
 		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix]);
-		const didYouMean = meant(command || msg.content.split(' ')[0], commands);
+		const didYouMean = meant(command ? command[2] : msg.content.split(' ')[0], commands);
 		const inGuild = msg.guild ? undefined : null;
 		return msg.reply(stripIndents`
 			Unknown command. Use ${msg.anyUsage('help', inGuild, inGuild)} to view the command list.
