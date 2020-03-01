@@ -23,7 +23,7 @@ module.exports = class UnknownCommandCommand extends Command {
 		return msg.reply(stripIndents`
 			Unknown command. Use ${msg.anyUsage('help', inGuild, inGuild)} to view the command list.
 
-			${didYouMean && didYouMean.length ? `Did You Mean:\n${didYouMean.map(c => `\`${c}\``).join(',')}` : ''}
+			${didYouMean && didYouMean.length ? `Did You Mean: ${didYouMean.map(c => `\`${c}\``).join(',')}` : ''}
 		`);
 	}
 };
