@@ -25,10 +25,9 @@ module.exports = class UserCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
 		const embed = new MessageEmbed()
 			.setAuthor(user.tag)
-			.setThumbnail(user.displayAvatarURL({ format }));
+			.setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true }));
 		let description = stripIndents`
 			**General User Info:**
 			• ID: ${user.id}

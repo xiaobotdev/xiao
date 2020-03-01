@@ -27,11 +27,10 @@ module.exports = class FirstMessageCommand extends Command {
 		}
 		const messages = await channel.messages.fetch({ after: 1, limit: 1 });
 		const message = messages.first();
-		const format = message.author.avatar && message.author.avatar.startsWith('a_') ? 'gif' : 'png';
 		const embed = new MessageEmbed()
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
-			.setThumbnail(message.author.displayAvatarURL({ format }))
-			.setAuthor(message.author.tag, message.author.displayAvatarURL({ format }))
+			.setThumbnail(message.author.displayAvatarURL({ format: 'png', dynamic: true }))
+			.setAuthor(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true }))
 			.setDescription(message.content)
 			.setTimestamp(message.createdAt)
 			.setFooter(`ID: ${message.id}`)
