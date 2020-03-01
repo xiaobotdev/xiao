@@ -1,4 +1,4 @@
-const { Collection } = require('discord.js');
+const Collection = require('@discordjs/collection');
 const request = require('node-superfetch');
 const Pokemon = require('./Pokemon');
 

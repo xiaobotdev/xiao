@@ -1,4 +1,4 @@
-const { Collection } = require('discord.js');
+const Collection = require('@discordjs/collection');
 const path = require('path');
 const { stripIndents } = require('common-tags');
 const Player = require('./Player');
