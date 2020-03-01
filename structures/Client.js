@@ -1,5 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
-const { WebhookClient, Collection } = require('discord.js');
+const { WebhookClient } = require('discord.js');
+const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const PokemonStore = require('./pokemon/PokemonStore');
 const MemePoster = require('./MemePoster');

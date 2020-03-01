@@ -31,6 +31,7 @@
 		"node": ">=12"
 	},
 	"dependencies": {
+		"@discordjs/collection": "^0.1.5",
 		"@discordjs/opus": "^0.1.0",
 		"@vitalets/google-translate-api": "^3.0.0",
 		"bufferutil": "^4.0.1",
