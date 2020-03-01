@@ -9,7 +9,14 @@ module.exports = class PhoneCommand extends Command {
 			group: 'other',
 			memberName: 'phone',
 			description: 'Starts a phone call with a random server.',
-			guildOnly: true
+			guildOnly: true,
+			credit: [
+				{
+					name: 'Tatsumaki',
+					url: 'https://tatsumaki.xyz/',
+					reason: 'Concept'
+				}
+			]
 		});
 	}
 
