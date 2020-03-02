@@ -33,7 +33,7 @@ module.exports = class UnknownCommandCommand extends Command {
 		for (const command of this.client.registry.commands.values()) {
 			if (!owner && command.ownerOnly) continue;
 			if (command.hidden) continue;
-			arr.push(command.name);
+			if (!command.name.includes('-')) arr.push(command.name);
 			arr.push(...command.aliases.filter(alias => !alias.includes('-')));
 		}
 		return arr;
