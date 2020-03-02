@@ -42,13 +42,15 @@ module.exports = class HungerGamesCommand extends Command {
 			let sun = true;
 			let turn = 0;
 			let bloodbath = true;
+			const kills = {};
+			for (const tribute of tributes) kills[tribute] = 0;
 			const remaining = new Set(shuffle(tributes));
 			while (remaining.size > 1) {
 				if (!bloodbath && sun) ++turn;
 				const sunEvents = bloodbath ? events.bloodbath : sun ? events.day : events.night;
 				const results = [];
 				const deaths = [];
-				this.makeEvents(remaining, sunEvents, deaths, results);
+				this.makeEvents(remaining, kills, sunEvents, deaths, results);
 				let text = stripIndents`
 					__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}:**__
 					${results.join('\n')}
@@ -72,7 +74,12 @@ module.exports = class HungerGamesCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			const remainingArr = Array.from(remaining);
-			return msg.say(`And the winner is... ${remainingArr[0]}!`);
+			return msg.say(stripIndents`
+				And the winner is... **${remainingArr[0]}**!
+
+				__**Kills Leaderboard:**__
+				${this.makeLeaderboard(kills).join('\n')}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
@@ -89,7 +96,7 @@ module.exports = class HungerGamesCommand extends Command {
 			.replace(/\(Player6\)/gi, `**${tributes[5]}**`);
 	}
 
-	makeEvents(tributes, eventsArr, deaths, results) {
+	makeEvents(tributes, kills, eventsArr, deaths, results) {
 		const turn = new Set(tributes);
 		for (const tribute of tributes) {
 			if (!turn.has(tribute)) continue;
@@ -104,6 +111,7 @@ module.exports = class HungerGamesCommand extends Command {
 				results.push(this.parseEvent(event.text, [tribute]));
 			} else {
 				const current = [tribute];
+				if (event.killers.includes(1)) kills[tribute] += event.deaths.length;
 				if (event.deaths.includes(1)) {
 					deaths.push(tribute);
 					tributes.delete(tribute);
@@ -111,6 +119,7 @@ module.exports = class HungerGamesCommand extends Command {
 				for (let i = 2; i <= event.tributes; i++) {
 					const turnArr = Array.from(turn);
 					const tribu = turnArr[Math.floor(Math.random() * turnArr.length)];
+					if (event.killers.includes(i)) kills[tribu] += event.deaths.length;
 					if (event.deaths.includes(i)) {
 						deaths.push(tribu);
 						tributes.delete(tribu);
@@ -121,5 +130,21 @@ module.exports = class HungerGamesCommand extends Command {
 				results.push(this.parseEvent(event.text, current));
 			}
 		}
+	}
+
+	makeLeaderboard(kills) {
+		let i = 0;
+		let previousPts = null;
+		let positionsMoved = 1;
+		return tributes.sort((a, b) => kills[b] - kills[a]).map(tribute => {
+			if (previousPts === kills[tribute]) {
+				positionsMoved++;
+			} else {
+				i += positionsMoved;
+				positionsMoved = 1;
+			}
+			previousPts = kills[tribute];
+			return `**${i}.** ${tribute} (${kills[tribute]} Kills)`;
+		});
 	}
 };
