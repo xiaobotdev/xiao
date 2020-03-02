@@ -34,7 +34,7 @@ module.exports = class UnknownCommandCommand extends Command {
 			if (!owner && command.ownerOnly) continue;
 			if (command.hidden) continue;
 			arr.push(command.name);
-			arr.push(...command.aliases);
+			arr.push(...command.aliases.filter(alias => !alias.includes('-')));
 		}
 		return arr;
 	}
