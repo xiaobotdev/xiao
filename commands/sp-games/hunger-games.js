@@ -136,15 +136,18 @@ module.exports = class HungerGamesCommand extends Command {
 		let i = 0;
 		let previousPts = null;
 		let positionsMoved = 1;
-		return tributes.sort((a, b) => kills[b] - kills[a]).map(tribute => {
-			if (previousPts === kills[tribute]) {
-				positionsMoved++;
-			} else {
-				i += positionsMoved;
-				positionsMoved = 1;
-			}
-			previousPts = kills[tribute];
-			return `**${i}.** ${tribute} (${kills[tribute]} Kills)`;
-		});
+		return tributes
+			.filter(tribute => kills[tribute] > 0)
+			.sort((a, b) => kills[b] - kills[a])
+			.map(tribute => {
+				if (previousPts === kills[tribute]) {
+					positionsMoved++;
+				} else {
+					i += positionsMoved;
+					positionsMoved = 1;
+				}
+				previousPts = kills[tribute];
+				return `**${i}.** ${tribute} (${kills[tribute]} Kill${kills[tribute] === 1 ? '' : 's'})`;
+			});
 	}
 };
