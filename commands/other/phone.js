@@ -10,6 +10,14 @@ module.exports = class PhoneCommand extends Command {
 			memberName: 'phone',
 			description: 'Starts a phone call with a random server.',
 			guildOnly: true,
+			args: [
+				{
+					key: 'count',
+					prompt: 'Would you like to get the count of channels?',
+					type: 'boolean',
+					default: false
+				}
+			],
 			credit: [
 				{
 					name: 'Tatsumaki',
@@ -20,7 +28,7 @@ module.exports = class PhoneCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	async run(msg, { count }) {
 		if (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')) {
 			return msg.say('You can only start a call in a channel with `<xiao:phone>` in the topic.');
 		}
@@ -31,9 +39,7 @@ module.exports = class PhoneCommand extends Command {
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
 			&& !msg.guild.channels.cache.has(channel.id));
-		if (message.toLowerCase() === 'count') {
-			return msg.say(`☎️ **${channels.size}** currently open lines.`);
-		}
+		if (count) return msg.say(`☎️ **${channels.size}** currently open lines.`);
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
 		const channel = channels.random();
 		try {
