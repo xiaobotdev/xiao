@@ -78,7 +78,7 @@ module.exports = class HungerGamesCommand extends Command {
 				And the winner is... **${remainingArr[0]}**!
 
 				__**Kills Leaderboard:**__
-				${this.makeLeaderboard(kills).join('\n')}
+				${this.makeLeaderboard(tributes, kills).join('\n')}
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
@@ -132,7 +132,7 @@ module.exports = class HungerGamesCommand extends Command {
 		}
 	}
 
-	makeLeaderboard(kills) {
+	makeLeaderboard(tributes, kills) {
 		let i = 0;
 		let previousPts = null;
 		let positionsMoved = 1;
