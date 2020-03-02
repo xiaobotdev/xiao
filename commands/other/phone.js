@@ -31,6 +31,9 @@ module.exports = class PhoneCommand extends Command {
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
 			&& !msg.guild.channels.cache.has(channel.id));
+		if (message.toLowerCase() === 'count') {
+			return msg.say(`☎️ **${channels.size}** currently open lines.`);
+		}
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
 		const channel = channels.random();
 		try {
