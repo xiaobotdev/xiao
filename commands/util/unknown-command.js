@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const meant = require('meant');
+const { default: didYouMean, ReturnTypeEnums } = require('didyoumean2');
 const { stripIndents } = require('common-tags');
 
 module.exports = class UnknownCommandCommand extends Command {
@@ -18,12 +18,13 @@ module.exports = class UnknownCommandCommand extends Command {
 	run(msg) {
 		const commands = this.makeCommandArray(this.client.isOwner(msg.author));
 		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix]);
-		const didYouMean = meant(command ? command[2] : msg.content.split(' ')[0], commands);
+		const str = command ? command[2] : msg.content.split(' ')[0];
+		const results = didYouMean(str, commands, { returnType: ReturnTypeEnums.ALL_SORTED_MATCHES });
 		const inGuild = msg.guild ? undefined : null;
 		return msg.reply(stripIndents`
 			Unknown command. Use ${msg.anyUsage('help', inGuild, inGuild)} to view the command list.
 
-			${didYouMean && didYouMean.length ? `Did You Mean: ${didYouMean.map(c => `\`${c}\``).join(',')}` : ''}
+			${results ? `Did You Mean: ${results.slice(0, 5).map(c => `\`${c}\``).join(',')}` : ''}
 		`);
 	}
 
