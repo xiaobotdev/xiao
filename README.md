@@ -3,8 +3,7 @@
 # Xiao
 [![Build Status](https://travis-ci.org/dragonfire535/xiao.svg?branch=master)](https://travis-ci.org/dragonfire535/xiao)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
-
-> This bot is not available for invite.
+[![Discord](https://discordapp.com/api/guilds/252317073814978561/embed.png)](https://discord.gg/mTr83zt)
 
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
@@ -13,6 +12,8 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Table of Contents
 
+- [Invite](#invite)
+- [Permissions](#permissions)
 - [Fun Information](#fun-information)
 - [Installing](#installing)
 	* [Before You Begin](#before-you-begin)
@@ -43,6 +44,35 @@ Xiao is a Discord bot coded in JavaScript with
 	* [README Generators](#readme-generators)
 - [Licensing](#licensing)
 - [Credit](#credit)
+
+## Invite
+- [Home Server](https://discord.gg/mTr83zt)
+- [Invite](https://discordapp.com/api/oauth2/authorize?client_id=278305350804045834&permissions=104721601&scope=bot)
+
+## Permissions
+
+Xiao needs several permissions to be able to do what she does. Below
+is every permission Xiao asks for, and what commands you lose if you
+don't grant that permission.
+
+- **Create Instant Invite** is needed to allow owners to join your server to test if needed.
+	* You lose no commands by turning this off, but you might hinder support.
+- **View Audit Log** is not needed yet, but is something Xiao might utilize in the future.
+- **Change Nickname** is not _needed_, but is included as a basic permission.
+- **View Channels** is required for every single command to work.
+- **Send Messages** is required for every single command to work.
+- **Manage Messages** allows Xiao to use the `prune` command.
+- **Embed Links** is required to allow commands that send embeds to work. Too many commands to list use it.
+- **Attach Files** is required to allow commands that send files to work. Too many commands to list use it.
+- **Read Message History** allows Xiao to use the `first-message` and `prune` commands.
+- **Use External Emojis** allows Xiao to use custom emoji in certain commands.
+	* While the commands benefit from it, it is not required for the commands to work.
+- **Add Reactions** allows Xiao to use commands that add reactions to messages in certain commands.
+	* While the commands benefit from it, it is not requried for the commands to work.
+- **Connect** allows Xiao to join voice channels. It is required for `mafia` to work.
+- **Speak** allows Xiao to speak in voice channels. It is required for `mafia` to work.
+- **Use Voice Activity** is not needed, but is activiated just in case so `mafia` won't break.
+
 
 ## Fun Information
 - 350+ Commands
@@ -92,7 +122,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Commands
 
-Total: 363
+Total: 361
 
 ### Utility:
 
@@ -332,8 +362,6 @@ Total: 363
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **gunfight:** Engage in a western gunfight against another user. High noon.
-* **mafia-role:** Displays your current role during Mafia games.
-* **mafia:** Who is the Mafia? Who is the detective? Will the Mafia kill them all?
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **russian-roulette:** Who will pull the trigger and die first?
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.

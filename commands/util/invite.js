@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { XIAO_GITHUB_REPO_NAME, XIAO_GITHUB_REPO_USERNAME } = process.env;
+const permissions = require('../../assets/json/permissions');
 
 module.exports = class InviteCommand extends Command {
 	constructor(client) {
@@ -14,13 +14,14 @@ module.exports = class InviteCommand extends Command {
 		});
 	}
 
-	run(msg) {
+	async run(msg) {
+		const invite = await this.client.generateInvite(permissions);
 		return msg.say(stripIndents`
-			You cannot invite me to your server, but you can join my home server to use me:
-			${this.client.options.invite || 'Coming soon...'}
+			Invite me using this link:
+			<${invite}>
 
-			You can also self-host me if you prefer:
-			<https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}>
+			Join my home server for support and announcements:
+			${this.client.options.invite || 'Coming soon...'}
 		`);
 	}
 };

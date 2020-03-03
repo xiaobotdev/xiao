@@ -1,10 +1,11 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed, version: djsVersion, Permissions } = require('discord.js');
+const { MessageEmbed, version: djsVersion } = require('discord.js');
 const { version: commandoVersion } = require('discord.js-commando');
 const moment = require('moment');
 require('moment-duration-format');
 const { formatNumber } = require('../../util/Util');
 const { version, dependencies } = require('../../package');
+const permissions = require('../../assets/json/permissions');
 const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
 const source = XIAO_GITHUB_REPO_NAME && XIAO_GITHUB_REPO_USERNAME;
 
@@ -22,7 +23,7 @@ module.exports = class InfoCommand extends Command {
 	}
 
 	async run(msg) {
-		const invite = await this.client.generateInvite(Permissions.ALL);
+		const invite = await this.client.generateInvite(permissions);
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter('©2017-2020 dragonfire535#8081')
