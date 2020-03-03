@@ -69,9 +69,6 @@ don't grant that permission.
 	* While the commands benefit from it, it is not required for the commands to work.
 - **Add Reactions** allows Xiao to use commands that add reactions to messages in certain commands.
 	* While the commands benefit from it, it is not requried for the commands to work.
-- **Connect** allows Xiao to join voice channels. It is required for `mafia` to work.
-- **Speak** allows Xiao to speak in voice channels. It is required for `mafia` to work.
-- **Use Voice Activity** is not needed, but is activiated just in case so `mafia` won't break.
 
 
 ## Fun Information
@@ -984,8 +981,6 @@ here.
 	* newspaper (API)
 - [The Yoda-Speak Generator](https://www.yodaspeak.co.uk/)
 	* yoda (API)
-- [TheMicroKill#9052](undefined)
-	* mafia (Voice Acting)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
 	* waifu (API)
 - [Tim's Printables](https://www.timvandevall.com/)
