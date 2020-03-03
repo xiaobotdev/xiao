@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "111.1.7",
+	"version": "112.0.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -32,7 +32,6 @@
 	},
 	"dependencies": {
 		"@discordjs/collection": "^0.1.5",
-		"@discordjs/opus": "^0.1.0",
 		"@vitalets/google-translate-api": "^3.0.0",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
