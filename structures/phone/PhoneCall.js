@@ -39,9 +39,10 @@ module.exports = class PhoneCall {
 			await this.origin.send('☎️ Call ended due to inactivity.');
 			await this.recipient.send('☎️ Call ended due to inactivity.');
 		} else if (nonQuitter === 'declined') {
-			const directMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
-			await this.origin.send(`☎️ **${this.recipient.guild.name}** ${directMsg}`);
-			await this.recipient.send('☎️ Declined the call.');
+			const originMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
+			const recipientMsg = validation === 0 ? 'Sent to voicemail (not really).' : 'Declined the call.';
+			await this.origin.send(`☎️ **${this.recipient.guild.name}** ${originMsg}`);
+			await this.recipient.send(`☎️ ${recipientMsg}`);
 		} else {
 			const quitter = nonQuitter.id === this.origin.id ? this.recipient : this.origin;
 			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up.`);
