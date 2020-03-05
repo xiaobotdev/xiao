@@ -21,7 +21,8 @@ module.exports = class AvatarCommand extends Command {
 	}
 
 	run(msg, { user }) {
-		const formats = ['webp', 'png', 'jpg'];
+		const formats = ['png'];
+		if (user.avatar) formats.push('jpg', 'webp');
 		const format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
 		if (format === 'gif') formats.push('gif');
 		const embed = new MessageEmbed()
