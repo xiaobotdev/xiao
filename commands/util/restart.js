@@ -23,7 +23,7 @@ module.exports = class RestartCommand extends Command {
 	}
 
 	run(msg, { code }) {
-		client.logger.info('[RESTART] Manually restarted.');
+		this.client.logger.info('[RESTART] Manually restarted.');
 		process.exit(code);
 		return null;
 	}
