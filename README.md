@@ -119,7 +119,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 362
+Total: 363
 
 ### Utility:
 
@@ -407,6 +407,7 @@ Total: 362
 * **look-what-karen-have:** Draws a user's avatar over Karen's piece of paper.
 * **rip:** Draws a user's avatar over a gravestone.
 * **sip:** Draws a user's avatar sipping tea.
+* **status-button:** Creates a Discord status button from c99.nl.
 * **steam-card:** Draws a user's avatar on a Steam Trading Card.
 * **steam-now-playing-classic:** Draws a user's avatar over a Steam "now playing" notification (old skin).
 * **steam-now-playing:** Draws a user's avatar over a Steam "now playing" notification.
@@ -629,6 +630,8 @@ here.
 	* hat ([Dunce Hat Image](https://www.deviantart.com/xertris/art/Dunce-Cap-634349483))
 - [devsnek](https://github.com/devsnek)
 	* owo (Code)
+- [Discord Status Button](https://discord.c99.nl/)
+	* status-button (API)
 - [Disney](https://www.disney.com/)
 	* he-lives-in-you ([Image, Original "The Lion King" Movie](https://movies.disney.com/the-lion-king))
 	* beautiful ([Original "Gravity Falls" Show](https://disneynow.com/shows/gravity-falls))
