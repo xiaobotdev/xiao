@@ -29,6 +29,7 @@ module.exports = class StatusButtonCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		if (user.bot) return msg.reply('You cannot get the status button of a bot.');
 		return msg.say(stripIndents`
 			_Getting "User not found"? Visit <https://discord.c99.nl/> for more information._
 			https://discord.c99.nl/widget/theme-1/${user.id}.png
