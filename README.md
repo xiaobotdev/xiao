@@ -512,7 +512,7 @@ Total: 364
 
 ### Other:
 
-* **cleverbot:** Talk to Cleverbot.
+* **cleverbot:** Talk to Cleverbot. (Owner-Only)
 * **phone:** Starts a phone call with a random server.
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
