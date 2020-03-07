@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { stripIndents } = require('common-tags');
 const { base64 } = require('../../util/Util');
 const { WHATANIME_KEY } = process.env;
 
@@ -42,12 +43,11 @@ module.exports = class WhatAnimeCommand extends Command {
 			if (result.nsfw && !msg.channel.nsfw) {
 				return msg.reply('This is from a hentai, and this isn\'t an NSFW channel, pervert.');
 			}
-			return msg.reply(
-				`I'm ${result.prob}% sure this is from ${result.title}${result.episode
-					? ` episode ${result.episode}`
-					: ''}.`,
-				result.preview ? { files: [{ attachment: result.preview, name: 'preview.mp4' }] } : {}
-			);
+			const title = `${result.title}${result.episode ? ` episode ${result.episode}` : ''}`;
+			return msg.reply(stripIndents`
+				I'm ${result.prob}% sure this is from ${title}.
+				${result.prob < 90 ? '_This probablity is rather low, try using a higher quality image._' : ''}
+			`, result.preview ? { files: [{ attachment: result.preview, name: 'preview.mp4' }] } : {});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
