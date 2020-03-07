@@ -47,6 +47,9 @@ module.exports = class WorthlessCommand extends Command {
 			ctx.rotate(6 * (Math.PI / 180));
 			ctx.drawImage(avatar, 496, 183, 400, 400);
 			ctx.rotate(-6 * (Math.PI / 180));
+			ctx.rotate(160 * (Math.PI / 180));
+			ctx.drawImage(avatar, 942, 1148, 75, 75);
+			ctx.rotate(-160 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'worthless.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
