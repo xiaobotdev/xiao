@@ -1,8 +1,9 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { greyscale } = require('../../util/Canvas');
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'CoffinStone-vmmZL.otf'), { family: 'Coffin Stone' });
 
 module.exports = class RipCommand extends Command {
 	constructor(client) {
@@ -23,6 +24,12 @@ module.exports = class RipCommand extends Command {
 					url: 'https://www.123rf.com/profile_vician',
 					reason: 'Image',
 					reasonURL: 'https://www.123rf.com/profile_vician?mediapopup=13181623'
+				},
+				{
+					name: 'Iconian Fonts',
+					url: 'https://www.fontspace.com/iconian-fonts',
+					reason: 'Coffin Stone Font',
+					reasonURL: 'https://www.fontspace.com/coffin-stone-font-f40998'
 				}
 			],
 			args: [
@@ -31,12 +38,19 @@ module.exports = class RipCommand extends Command {
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
 					default: msg => msg.author
+				},
+				{
+					key: 'cause',
+					label: 'cause of death',
+					prompt: 'What was the cause of death?',
+					type: 'string',
+					default: ''
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
+	async run(msg, { user, cause }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
@@ -47,6 +61,17 @@ module.exports = class RipCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 194, 399, 500, 500);
 			greyscale(ctx, 194, 399, 500, 500);
+			ctx.textAlign = 'center';
+			ctx.font = '62px Coffin Stone';
+			ctx.fillStyle = 'white';
+			ctx.fillText(user.username, 432, 346, 500);
+			if (cause) {
+				ctx.fillStyle = 'black';
+				ctx.fillText(cause, 432, 920, 500);
+				ctx.fillStyle = 'white';
+			}
+			ctx.font = '37px Coffin Stone';
+			ctx.fillText('In Loving Memory of', 432, 292);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

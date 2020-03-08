@@ -724,6 +724,8 @@ here.
 	* http-dog (API)
 - [Humble Bundle](https://www.humblebundle.com/)
 	* humble-bundle ([API](https://www.humblebundle.com/developer))
+- [Iconian Fonts](https://www.fontspace.com/iconian-fonts)
+	* rip ([Coffin Stone Font](https://www.fontspace.com/coffin-stone-font-f40998))
 - [iCrawl](https://github.com/iCrawl)
 	* butt ([Code, Concept](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js))
 - [iFunny](https://ifunny.co/)
