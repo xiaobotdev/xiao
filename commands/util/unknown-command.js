@@ -16,7 +16,8 @@ module.exports = class UnknownCommandCommand extends Command {
 	}
 
 	run(msg) {
-		const commands = this.makeCommandArray(this.client.isOwner(msg.author));
+		if (msg.channel.type !== 'text') return null;
+		const commands = this.makeCommandArray(this.client.isOwner(msg.author), msg.channel.nsfw);
 		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix]);
 		const str = command ? command[2] : msg.content.split(' ')[0];
 		const results = didYouMean(str, commands, { returnType: ReturnTypeEnums.ALL_SORTED_MATCHES });
@@ -28,11 +29,12 @@ module.exports = class UnknownCommandCommand extends Command {
 		`);
 	}
 
-	makeCommandArray(owner) {
+	makeCommandArray(owner, nsfw) {
 		const arr = [];
 		for (const command of this.client.registry.commands.values()) {
 			if (!owner && command.ownerOnly) continue;
 			if (command.hidden) continue;
+			if (!nsfw && command.nsfw) continue;
 			if (!command.name.includes('-')) arr.push(command.name);
 			arr.push(...command.aliases.filter(alias => !alias.includes('-')));
 		}
