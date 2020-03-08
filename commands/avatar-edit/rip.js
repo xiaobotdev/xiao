@@ -65,11 +65,11 @@ module.exports = class RipCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.font = '62px Coffin Stone';
 			ctx.fillStyle = 'black';
-			ctx.fillText(user.username, 432, 330, 500);
+			ctx.fillText(user.username, 438, 330, 500);
 			ctx.fillStyle = 'white';
-			if (cause) ctx.fillText(cause, 432, 910, 500);
+			if (cause) ctx.fillText(cause, 438, 910, 500);
 			ctx.font = '37px Coffin Stone';
-			ctx.fillText('In Loving Memory of', 432, 292);
+			ctx.fillText('In Loving Memory of', 438, 292);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
