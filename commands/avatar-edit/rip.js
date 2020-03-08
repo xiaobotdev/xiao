@@ -65,7 +65,7 @@ module.exports = class RipCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.font = '62px Coffin Stone';
 			ctx.fillStyle = 'black';
-			ctx.fillText(user.username, 432, 346, 500);
+			ctx.fillText(user.username, 432, 340, 500);
 			ctx.fillStyle = 'white';
 			if (cause) ctx.fillText(cause, 432, 920, 500);
 			ctx.font = '37px Coffin Stone';
