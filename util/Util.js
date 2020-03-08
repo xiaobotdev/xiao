@@ -40,6 +40,16 @@ module.exports = class Util {
 		return arr;
 	}
 
+	static removeDuplicates(arr) {
+		if (arr.length === 0 || arr.length === 1) return arr;
+		const newArr = [];
+		for (let i = 0; i < arr.length; i++) {
+			if (newArr.includes(arr[i])) continue;
+			newArr.push(arr[i]);
+		}
+		return newArr;
+	}
+
 	static firstUpperCase(text, split = ' ') {
 		return text.split(split).map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(' ');
 	}
