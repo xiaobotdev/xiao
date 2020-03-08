@@ -61,15 +61,13 @@ module.exports = class RipCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 194, 399, 500, 500);
 			greyscale(ctx, 194, 399, 500, 500);
+			ctx.textBaseline = 'top';
 			ctx.textAlign = 'center';
 			ctx.font = '62px Coffin Stone';
-			ctx.fillStyle = 'white';
+			ctx.fillStyle = 'black';
 			ctx.fillText(user.username, 432, 346, 500);
-			if (cause) {
-				ctx.fillStyle = 'black';
-				ctx.fillText(cause, 432, 920, 500);
-				ctx.fillStyle = 'white';
-			}
+			ctx.fillStyle = 'white';
+			if (cause) ctx.fillText(cause, 432, 920, 500);
 			ctx.font = '37px Coffin Stone';
 			ctx.fillText('In Loving Memory of', 432, 292);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
