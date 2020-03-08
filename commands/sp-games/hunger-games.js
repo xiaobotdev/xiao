@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { shuffle, verify } = require('../../util/Util');
+const { shuffle, removeDuplicates, verify } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');
 
 module.exports = class HungerGamesCommand extends Command {
@@ -34,7 +34,9 @@ module.exports = class HungerGamesCommand extends Command {
 	async run(msg, { tributes }) {
 		if (tributes.length < 2) return msg.say(`...${tributes[0]} wins, as they were the only tribute.`);
 		if (tributes.length > 24) return msg.reply('Please do not enter more than 24 tributes.');
-		if (new Set(tributes).size !== tributes.length) return msg.reply('Please do not enter the same tribute twice.');
+		if (removeDuplicates(tributes).length !== tributes.length) {
+			return msg.reply('Please do not enter the same tribute twice.');
+		}
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
