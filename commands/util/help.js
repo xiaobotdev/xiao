@@ -30,7 +30,7 @@ module.exports = class HelpCommand extends Command {
 			let cmdCount = 0;
 			for (const group of this.client.registry.groups.values()) {
 				const owner = this.client.isOwner(msg.author);
-				const commands = group.commands.filter(cmd => owner ? true : !cmd.ownerOnly && !cmd.hidden);
+				const commands = group.commands.filter(cmd => (owner ? true : !cmd.ownerOnly) && !cmd.hidden);
 				if (!commands.size) continue;
 				cmdCount += commands.size;
 				embed.addField(
