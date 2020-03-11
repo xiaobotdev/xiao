@@ -54,10 +54,10 @@ module.exports = class SosCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.rotate(-15 * (Math.PI / 180));
+			ctx.rotate(15 * (Math.PI / 180));
 			const lines = await wrapText(ctx, message, 130);
 			ctx.fillText(lines.join('\n'), 362, 522);
-			ctx.rotate(15 * (Math.PI / 180));
+			ctx.rotate(-15 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sos.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
