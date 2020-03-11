@@ -119,7 +119,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 364
+Total: 365
 
 ### Utility:
 
@@ -437,6 +437,7 @@ Total: 364
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
+* **sos:** Sends a "Esther Verkest\'s Help Sign" comic with the text of your choice.
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
@@ -648,6 +649,8 @@ here.
 	* hat ([Pirate Hat Image](http://dynamicpickaxe.com/pirate-hat-clipart.html))
 - [ebearskittychan](https://twitter.com/ebearskittychan)
 	* temmie (English-to-Temmie Dictionary Data)
+- [Esther Verkest](https://www.facebook.com/Esther-Verkest-49667161749/)
+	* sos (Image)
 - [Face++ Cognitive Services](https://www.faceplusplus.com/)
 	* face ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 - [FANDOM](https://www.fandom.com/)
@@ -690,6 +693,7 @@ here.
 	* new-password ([Noto Font](https://www.google.com/get/noto/))
 	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
 	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
+	* sos ([Noto Font](https://www.google.com/get/noto/))
 	* spongebob-burn ([Noto Font](https://www.google.com/get/noto/))
 	* book ([Books API](https://developers.google.com/books/))
 	* google-autofill (Autofill API)
