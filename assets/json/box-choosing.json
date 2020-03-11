@@ -20,11 +20,7 @@
 		"The correct box might have had a bar of chocolate in it, for all you know.\nNo, in fact, something incredible like a pair of tickets to Hawaii might have been in there.",
 		"But even if you wanted to verify that, the other box has already disappeared.\nThere's no way you can check now.\n\nBut if you think about it from an optimistic point of view...\nJust maybe... the other box was empty, and this box was the winner.\n\nAnd being satisfied (or perhaps not) with such a cheap prize, you pop it into your mouth and start chewing it happily.",
 		"So, what do you think in the end?\nIf you were given a second chance, would you try to open the other box?\n...But unfortunately, the chance to choose between the red box or the blue box has come and gone, never to be seen again.\nThe chance to change your selection will never come.",
-		"Don't your parents often say: Every choice you make in life only happens once, so choose carefully?\nHee hee hee...\n\nSee? Choices aren't that great after all. ...Aren't you a little disillusioned now? Ahhahahahahaha...",
-		{
-			"text": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>",
-			"end": true
-		}
+		"Don't your parents often say: Every choice you make in life only happens once, so choose carefully?\nHee hee hee...\n\nSee? Choices aren't that great after all. ...Aren't you a little disillusioned now? Ahhahahahahaha..."
 	],
 	"blue": [
 		"Have you thought about it?\nIn the end, you chose this color, didn't you?\n\n...As soon as you chose, the other box disappeared.\nSo you can give up on the contents of that one, okay?\nThat's the rule.\n\nNow, open up the box you chose.",
@@ -33,11 +29,7 @@
 		"The correct box might have had a bar of chocolate in it, for all you know.\nNo, in fact, something incredible like a pair of tickets to Hawaii might have been in there.",
 		"But even if you wanted to verify that, the other box has already disappeared.\nThere's no way you can check now.\n\nBut if you think about it from an optimistic point of view...\nJust maybe... the other box was empty, and this box was the winner.\n\nAnd being satisfied (or perhaps not) with such a cheap prize, you pop it into your mouth and start chewing it happily.",
 		"So, what do you think in the end?\nIf you were given a second chance, would you try to open the other box?\n...But unfortunately, the chance to choose between the red box or the blue box has come and gone, never to be seen again.\nThe chance to change your selection will never come.",
-		"Don't your parents often say: Every choice you make in life only happens once, so choose carefully?\nHee hee hee...\n\nSee? Choices aren't that great after all. ...Aren't you a little disillusioned now? Ahhahahahahaha...",
-		{
-			"text": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>",
-			"end": true
-		}
+		"Don't your parents often say: Every choice you make in life only happens once, so choose carefully?\nHee hee hee...\n\nSee? Choices aren't that great after all. ...Aren't you a little disillusioned now? Ahhahahahahaha..."
 	],
 	"bothred": [
 		"Have you thought about it?\nIn the end, you chose this color, didn't you?\n\n...As soon as you chose, the other box disappeared.\nSo you can give up on the contents of that one, okay?\nThat's the rule.\n\nNow, open up the box you chose.",
@@ -47,11 +39,7 @@
 		"...The clear choices you wanted were basically this.\nThe selfish desire to open up both boxes and compare the contents, then pick the one most suited to you.",
 		"But you see, reality is the same as this game.\nIf you pick one, the one you didn't choose disappears. So there's no way you could check the result.",
 		"If at that time, if you had done this, or perhaps if you had done that... then it wouldn't be hard to imagine that you could be happier (or perhaps less happy) than you are right now.\nIn the end, you only have the pleasure of approving of or being disappointed by the choice that you did make.",
-		"But that's fine.\nAfter all, didn't you enjoy the thrill of making the choice?\nIf, like now, you knew the contents of both boxes, then the choice between the red box or the blue box would just be a waste of time.\nBecause instead of this boring game about boxes, you could be looking at the quickly-changing evening summer sky, listening for the distant sound of thunder, and pondering if it's going to rain or not... that would be much more fun.",
-		{
-			"text": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>",
-			"end": true
-		}
+		"But that's fine.\nAfter all, didn't you enjoy the thrill of making the choice?\nIf, like now, you knew the contents of both boxes, then the choice between the red box or the blue box would just be a waste of time.\nBecause instead of this boring game about boxes, you could be looking at the quickly-changing evening summer sky, listening for the distant sound of thunder, and pondering if it's going to rain or not... that would be much more fun."
 	],
 	"bothblue": [
 		"Have you thought about it?\nIn the end, you chose this color, didn't you?\n\n...As soon as you chose, the other box disappeared.\nSo you can give up on the contents of that one, okay?\nThat's the rule.\n\nNow, open up the box you chose.",
@@ -61,10 +49,7 @@
 		"...The clear choices you wanted were basically this.\nThe selfish desire to open up both boxes and compare the contents, then pick the one most suited to you.",
 		"But you see, reality is the same as this game.\nIf you pick one, the one you didn't choose disappears. So there's no way you could check the result.",
 		"If at that time, if you had done this, or perhaps if you had done that... then it wouldn't be hard to imagine that you could be happier (or perhaps less happy) than you are right now.\nIn the end, you only have the pleasure of approving of or being disappointed by the choice that you did make.",
-		"But that's fine.\nAfter all, didn't you enjoy the thrill of making the choice?\nIf, like now, you knew the contents of both boxes, then the choice between the red box or the blue box would just be a waste of time.\nBecause instead of this boring game about boxes, you could be looking at the quickly-changing evening summer sky, listening for the distant sound of thunder, and pondering if it's going to rain or not... that would be much more fun.",
-		{
-			"text": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>",
-			"end": true
-		}
-	]
+		"But that's fine.\nAfter all, didn't you enjoy the thrill of making the choice?\nIf, like now, you knew the contents of both boxes, then the choice between the red box or the blue box would just be a waste of time.\nBecause instead of this boring game about boxes, you could be looking at the quickly-changing evening summer sky, listening for the distant sound of thunder, and pondering if it's going to rain or not... that would be much more fun."
+	],
+	"end": "Thanks for playing! If you liked this game, please consider supporting the developers of Higurashi!\n<https://store.steampowered.com/bundle/709/>"
 }
