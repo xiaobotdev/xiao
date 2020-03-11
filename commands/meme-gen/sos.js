@@ -55,7 +55,7 @@ module.exports = class SosCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
 			ctx.rotate(15 * (Math.PI / 180));
-			ctx.fillText(message, 362, 522);
+			ctx.fillText(message.toUpperCase(), 362, 522);
 			ctx.rotate(-15 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sos.png' }] });
 		} catch (err) {
