@@ -47,7 +47,7 @@ module.exports = class SosCommand extends Command {
 	async run(msg, { message }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'sos.png'));
-			const canvas = createCanvas(data.width, data.height);
+			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '35px Noto';
