@@ -38,7 +38,7 @@ module.exports = class SosCommand extends Command {
 					key: 'message',
 					prompt: 'What should Esther spell out to signal for help?',
 					type: 'string',
-					max: 20
+					max: 10
 				}
 			]
 		});
@@ -56,7 +56,7 @@ module.exports = class SosCommand extends Command {
 			ctx.textBaseline = 'middle';
 			ctx.rotate(15 * (Math.PI / 180));
 			let fontSize = 90;
-			while (ctx.measureText(message).width > 130) {
+			while (ctx.measureText(message).width > 140) {
 				fontSize -= 1;
 				ctx.font = `${fontSize}px Noto`;
 			}
