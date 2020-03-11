@@ -37,25 +37,28 @@ module.exports = class BoxChoosingCommand extends Command {
 		try {
 			let i = 0;
 			let path = 'before';
-			while (true) { // eslint-disable-line no-constant-condition
+			let end = false;
+			while (!end) {
 				const line = script[path][i];
-				if (line.end) {
-					this.client.games.delete(msg.channel.id);
-					return msg.say(line.text);
-				} else {
-					await msg.say(typeof line === 'object' ? line.text : stripIndents`
-						${line}
-
-						_Proceed?_
-					`);
+				if (!line) {
+					end = true;
+					break;
 				}
+				await msg.say(typeof line === 'object' ? line.text : stripIndents`
+					${line}
+
+					_Proceed?_
+				`);
 				if (line.options) {
 					const filter = res => res.author.id === msg.author.id && line.options.includes(res.content.toLowerCase());
 					const choose = await msg.channel.awaitMessages(filter, {
 						max: 1,
 						time: 120000
 					});
-					if (!choose.size) break;
+					if (!choose.size) {
+						end = true;
+						break;
+					}
 					path = '';
 					const pick = line.paths[line.options.indexOf(choose.first().content.toLowerCase())];
 					if ((this.red.has(msg.author.id) && pick !== 'red') || (this.blue.has(msg.author.id) && pick !== 'blue')) {
@@ -70,12 +73,15 @@ module.exports = class BoxChoosingCommand extends Command {
 					i = 0;
 				} else {
 					const verification = await verify(msg.channel, msg.author, 120000);
-					if (!verification) break;
+					if (!verification) {
+						end = true;
+						break;
+					}
 					i++;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			return msg.say('See you soon!');
+			return msg.say(script.end);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
