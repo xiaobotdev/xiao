@@ -438,7 +438,7 @@ Total: 365
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
-* **sos:** Sends a "Esther Verkest\'s Help Sign" comic with the text of your choice.
+* **sos:** Sends a "Esther Verkest's Help Sign" comic with the text of your choice.
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
@@ -742,6 +742,7 @@ here.
 - [Imgur](https://imgur.com/)
 	* fidget ([API](https://apidocs.imgur.com/))
 	* karen ([API](https://apidocs.imgur.com/))
+	* potato ([API](https://apidocs.imgur.com/))
 	* xiao ([API](https://apidocs.imgur.com/))
 	* blush ([API](https://apidocs.imgur.com/))
 	* bro-hoof ([API](https://apidocs.imgur.com/))
@@ -793,9 +794,9 @@ here.
 	* yu-gi-oh-token ([Image, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
 	* yu-gi-oh ([Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
 - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
+	* kazuma-kazuma (Original Anime)
 	* hat (Megumin Hat Original Anime)
 	* axis-cult (Original Anime)
-	* kazuma-kazuma (Original Anime)
 - [Latlmes](https://www.latlmes.com/)
 	* latlmes (API)
 - [LMGTFY](https://lmgtfy.com/)
@@ -978,9 +979,9 @@ here.
 	* fire ([Image](https://en.picmix.com/stamp/FIRE-FRAME-ORANGE-cadre-feu-orange-360274))
 - [Tatsumaki](https://tatsumaki.xyz/)
 	* beautiful (Image, Concept)
+	* phone (Concept)
 	* psycho-pass (Concept)
 	* fishy (Concept)
-	* phone (Concept)
 - [Tenor](https://tenor.com/)
 	* tenor ([API](https://tenor.com/gifapi/documentation))
 - [The Internet Chuck Norris Database](http://www.icndb.com/)
