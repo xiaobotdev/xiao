@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { sortByName } = require('../../util/Util');
 
 module.exports = class GenerateCreditCommand extends Command {
 	constructor(client) {
@@ -24,8 +25,8 @@ module.exports = class GenerateCreditCommand extends Command {
 
 	async run(msg) {
 		let credit = [];
-		const commands = this.client.registry.commands.filter(cmd => cmd.credit && cmd.credit.length > 1);
-		for (const command of commands.values()) {
+		for (const command of this.client.registry.commands.values()) {
+			if (!command.credit || command.credit.length <= 1) continue;
 			for (const cred of command.credit) {
 				const found = credit.find(c => c.name === cred.name);
 				if (found) {
@@ -48,9 +49,9 @@ module.exports = class GenerateCreditCommand extends Command {
 				});
 			}
 		}
-		credit = credit.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+		credit = sortByName(credit, 'name');
 		const mapped = credit
-			.map(c => `- [${c.name}](${c.url})\n${c.commands.map(cmd => {
+			.map(c => `- [${c.name}](${c.url})\n${sortByName(c.commands, 'name').map(cmd => {
 				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;
 				return `	* ${cmd.name} ([${cmd.reason}](${cmd.reasonURL}))`;
 			}).join('\n')}`);
