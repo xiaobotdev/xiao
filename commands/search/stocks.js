@@ -72,7 +72,7 @@ module.exports = class StocksCommand extends Command {
 			.query({
 				query,
 				region: 1,
-				lang: 'en' 
+				lang: 'en'
 			});
 		if (!body.ResultSet.Result.length) return null;
 		return body.ResultSet.Result[0];
