@@ -36,9 +36,10 @@ module.exports = class ZodiacSignCommand extends Command {
 	determineSign(month, day) {
 		if (month === 2 && day > 29) return null;
 		if (monthsWith30.includes(month) && day > 30) return null;
+		if (day < 1 || day > 31) return null;
 		return signs.find(sign => {
 			if (month === sign.high.month && day <= sign.high.day) return true;
-			if (month === sign.low.month && day >= sign.low.month) return true;
+			if (month === sign.low.month && day >= sign.low.day) return true;
 			return false;
 		});
 	}
