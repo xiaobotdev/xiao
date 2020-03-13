@@ -301,7 +301,7 @@ Total: 365
 * **soundcloud:** Searches SoundCloud for your query.
 * **stack-overflow:** Searches Stack Overflow for your query.
 * **steam:** Searches Steam for your query.
-* **stocks:** Responds with the current stocks for a specific symbol.
+* **stocks:** Responds with the current stocks for a company.
 * **tenor:** Searches Tenor for your query.
 * **tumblr:** Responds with information on a Tumblr blog.
 * **tv-show:** Searches TMDB for your query, getting TV show results.
@@ -1041,6 +1041,8 @@ here.
 	* frame ([Image](http://www.aljanh.net/frame-wallpapers/1508614706.html))
 - [xkcd](https://xkcd.com/)
 	* xkcd ([API](https://xkcd.com/json.html))
+- [Yahoo](https://www.yahoo.com/)
+	* stocks (Finance API)
 - [YGOPRODECK](https://ygoprodeck.com/)
 	* yu-gi-oh ([API](https://db.ygoprodeck.com/api-guide/))
 - [YorkAARGH](https://github.com/YorkAARGH)
