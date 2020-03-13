@@ -39,26 +39,18 @@ module.exports = class StocksCommand extends Command {
 		try {
 			const company = await this.search(query);
 			if (!company) return msg.say('Could not find any results.');
-			const { body } = await request
-				.get('https://www.alphavantage.co/query')
-				.query({
-					function: 'TIME_SERIES_INTRADAY',
-					symbol: company.symbol,
-					interval: '1min',
-					apikey: ALPHA_VANTAGE_KEY
-				});
-			if (body['Error Message']) return msg.say('Could not find any results.');
-			const data = Object.values(body['Time Series (1min)'])[0];
+			const stocks = await this.fetchStocks(company.symbol);
+			if (!stocks) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
-				.setTitle(`Stocks for ${company.name} (${company.symbol.toUpperCase()})`)
+				.setTitle(`Stocks for ${company.name} (${stocks.symbol.toUpperCase()})`)
 				.setColor(0x9797FF)
 				.setFooter('Last Updated')
-				.setTimestamp(new Date(body['Meta Data']['3. Last Refreshed']))
-				.addField('❯ Open', `$${formatNumber(data['1. open'])}`, true)
-				.addField('❯ Close', `$${formatNumber(data['4. close'])}`, true)
-				.addField('❯ Volume', formatNumber(data['5. volume']), true)
-				.addField('❯ High', `$${formatNumber(data['2. high'])}`, true)
-				.addField('❯ Low', `$${formatNumber(data['3. low'])}`, true)
+				.setTimestamp(stocks.lastRefresh)
+				.addField('❯ Open', `$${formatNumber(stocks.open)}`, true)
+				.addField('❯ Close', `$${formatNumber(stocks.close)}`, true)
+				.addField('❯ Volume', formatNumber(stocks.volume), true)
+				.addField('❯ High', `$${formatNumber(stocks.high)}`, true)
+				.addField('❯ Low', `$${formatNumber(stocks.low)}`, true)
 				.addField('\u200B', '\u200B', true);
 			return msg.embed(embed);
 		} catch (err) {
@@ -76,5 +68,27 @@ module.exports = class StocksCommand extends Command {
 			});
 		if (!body.ResultSet.Result.length) return null;
 		return body.ResultSet.Result[0];
+	}
+
+	async fetchStocks(symbol) {
+		const { body } = await request
+			.get('https://www.alphavantage.co/query')
+			.query({
+				function: 'TIME_SERIES_INTRADAY',
+				symbol,
+				interval: '1min',
+				apikey: ALPHA_VANTAGE_KEY
+			});
+		if (body['Error Message']) return null;
+		const data = Object.values(body['Time Series (1min)'])[0];
+		return {
+			symbol,
+			open: data['1. open'],
+			high: data['2. high'],
+			low: data['3. low'],
+			close: data['4. close'],
+			volume: data['5. volume'],
+			lastRefresh: new Date(body['Meta Data']['3. Last Refreshed'])
+		};
 	}
 };
