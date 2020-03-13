@@ -119,7 +119,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 365
+Total: 366
 
 ### Utility:
 
