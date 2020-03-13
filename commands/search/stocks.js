@@ -50,7 +50,7 @@ module.exports = class StocksCommand extends Command {
 			if (body['Error Message']) return msg.say('Could not find any results.');
 			const data = Object.values(body['Time Series (1min)'])[0];
 			const embed = new MessageEmbed()
-				.setTitle(`Stocks for ${company.name} (${symbol.toUpperCase()})`)
+				.setTitle(`Stocks for ${company.name} (${company.symbol.toUpperCase()})`)
 				.setColor(0x9797FF)
 				.setFooter('Last Updated')
 				.setTimestamp(new Date(body['Meta Data']['3. Last Refreshed']))
