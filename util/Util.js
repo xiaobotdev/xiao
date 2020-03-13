@@ -50,6 +50,13 @@ module.exports = class Util {
 		return newArr;
 	}
 
+	static sortByName(arr, prop) {
+		return arr.sort((a, b) => {
+			if (prop) return a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : -1;
+			return a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+		});
+	}
+
 	static firstUpperCase(text, split = ' ') {
 		return text.split(split).map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(' ');
 	}
