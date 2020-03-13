@@ -29,7 +29,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 			).join('\n')}`);
 		const { body } = await request
 			.post('https://hastebin.com/documents')
-			.send(list.join('\n'));
+			.send(`Total: ${this.client.registry.commands.size}\n${list.join('\n')}`);
 		return msg.say(`https://hastebin.com/raw/${body.key}`);
 	}
 };
