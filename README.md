@@ -262,6 +262,7 @@ Total: 365
 * **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
 * **character:** Searches AniList for your query, getting character results.
+* **company:** Responds with the name and logo of a company.
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
@@ -605,6 +606,8 @@ here.
 	* captcha ([Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter))
 - [Chuck Norris](https://chucknorris.com/)
 	* chuck-norris (Himself)
+- [Clearbit](https://clearbit.com/)
+	* company ([Autocomplete API](https://dashboard.clearbit.com/docs#autocomplete-api))
 - [Cleverbot](https://www.cleverbot.com/)
 	* cleverbot ([API](https://www.cleverbot.com/api/))
 - [Clipart Library](http://clipart-library.com/)
