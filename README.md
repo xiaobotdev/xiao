@@ -119,7 +119,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 366
+Total: 367
 
 ### Utility:
 
@@ -296,6 +296,7 @@ Total: 366
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **recipe:** Searches for recipes based on your query.
 * **reddit:** Responds with information on a Reddit user.
+* **right-stuf:** Searches Right Stuf Anime for your query.
 * **rotten-tomatoes:** Searches Rotten Tomatoes for your query.
 * **rule:** Responds with a rule of the internet.
 * **safebooru:** Responds with an image from Safebooru, with optional query.
@@ -931,6 +932,8 @@ here.
 	* subreddit ([API](https://www.reddit.com/dev/api/))
 - [Redeeming God](https://redeeminggod.com/)
 	* approved ([Image](https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/))
+- [Right Stuf Anime](https://www.rightstufanime.com/)
+	* right-stuf (API)
 - [Riot Games](https://www.riotgames.com/en)
 	* league-of-legends ([API](https://developer.riotgames.com/))
 - [RoboHash](https://robohash.org/)
