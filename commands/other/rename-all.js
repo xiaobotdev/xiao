@@ -50,7 +50,7 @@ module.exports = class RenameAllCommand extends Command {
 			for (const member of msg.guild.members.cache.values()) {
 				try {
 					await member.setNickname(nickname);
-				} catch (err) {
+				} catch {
 					i++;
 					continue;
 				}

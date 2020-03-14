@@ -22,7 +22,7 @@ module.exports = class SayCommand extends Command {
 		try {
 			if (msg.channel.type === 'text' && msg.deletable) await msg.delete();
 			return msg.say(text);
-		} catch (err) {
+		} catch {
 			return msg.say(text);
 		}
 	}

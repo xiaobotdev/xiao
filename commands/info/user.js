@@ -54,7 +54,7 @@ module.exports = class UserCommand extends Command {
 					• ${roles.length ? trimArray(roles, 6).join(', ') : 'None'}
 				`;
 				embed.setColor(member.displayHexColor);
-			} catch (err) {
+			} catch {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
 			}
 		}

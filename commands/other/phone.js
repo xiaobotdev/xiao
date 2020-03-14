@@ -47,7 +47,7 @@ module.exports = class PhoneCommand extends Command {
 			this.client.phone.set(id, new PhoneCall(this.client, msg.channel, channel));
 			await this.client.phone.get(id).start();
 			return null;
-		} catch (err) {
+		} catch {
 			return msg.reply('Failed to start the call. Try again later!');
 		}
 	}

@@ -59,7 +59,7 @@ module.exports = class WhatAnimeCommand extends Command {
 				.get('https://trace.moe/api/me')
 				.query({ token: WHATANIME_KEY });
 			return { status: body.quota > 0, refresh: body.quota_ttl };
-		} catch (err) {
+		} catch {
 			return { status: false, refresh: Infinity };
 		}
 	}
@@ -89,7 +89,7 @@ module.exports = class WhatAnimeCommand extends Command {
 					token: data.tokenthumb
 				});
 			return body;
-		} catch (err) {
+		} catch {
 			return null;
 		}
 	}

@@ -37,7 +37,7 @@ module.exports = class PortalSendCommand extends Command {
 			const displayName = msg.channel.type === 'text' ? msg.guild.name : 'DM';
 			await channel.send(`**${this.portalEmoji} ${msg.author.tag} (${displayName}):** ${message}`);
 			return msg.say(`Message sent to **${channel.name}** in **${channel.guild.name}**!`);
-		} catch (err) {
+		} catch {
 			return msg.reply('Failed to send the message. Try again later!');
 		}
 	}

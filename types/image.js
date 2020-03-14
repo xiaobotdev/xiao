@@ -19,7 +19,7 @@ module.exports = class ImageArgumentType extends ArgumentType {
 			try {
 				await request.get(value);
 				return true;
-			} catch (err) {
+			} catch {
 				return false;
 			}
 		}

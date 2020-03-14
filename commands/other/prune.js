@@ -33,7 +33,7 @@ module.exports = class PruneCommand extends Command {
 			const messages = await msg.channel.messages.fetch({ limit: count + 1 });
 			await msg.channel.bulkDelete(messages, true);
 			return null;
-		} catch (err) {
+		} catch {
 			return msg.reply('There are no messages younger than two weeks that can be deleted.');
 		}
 	}

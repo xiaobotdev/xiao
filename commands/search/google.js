@@ -42,7 +42,7 @@ module.exports = class GoogleCommand extends Command {
 		const nsfw = msg.channel.nsfw || false;
 		try {
 			href = await this.customSearch(query, nsfw);
-		} catch (err) {
+		} catch {
 			href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 		}
 		if (!href) return msg.say('Could not find any results.');
