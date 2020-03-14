@@ -47,8 +47,9 @@ module.exports = class FrinkiacCommand extends Command {
 				}
 			}
 			url += `?b64lines=${base64(wrapped.join('\n'))}`;
+			const seasonEpisode = `S${data.Episode.Season}E${data.Episode.EpisodeNumber}`;
 			return msg.say(
-				`This is from **Season ${data.Episode.Season} Episode ${data.Episode.EpisodeNumber} @ ${time}**.`,
+				`This is from **${seasonEpisode} ("${data.Episode.Title}") @ ${time}**.`,
 				{ files: [url] }
 			);
 		} catch (err) {

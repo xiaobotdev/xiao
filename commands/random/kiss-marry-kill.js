@@ -5,7 +5,19 @@ module.exports = class KissMarryKillCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'kiss-marry-kill',
-			aliases: ['kiss-kill-marry', 'kill-kiss-marry', 'kill-marry-kiss', 'marry-kiss-kill', 'marry-kill-kiss'],
+			aliases: [
+				'kiss-kill-marry',
+				'kill-kiss-marry',
+				'kill-marry-kiss',
+				'marry-kiss-kill',
+				'marry-kill-kiss',
+				'fuck-marry-kill',
+				'fuck-kiss-marry',
+				'kill-fuck-marry',
+				'kill-marry-fuck',
+				'marry-fuck-kill',
+				'marry-kill-fuck'
+			],
 			group: 'random',
 			memberName: 'kiss-marry-kill',
 			description: 'Determines who to kiss, who to marry, and who to kill.',
@@ -36,7 +48,8 @@ module.exports = class KissMarryKillCommand extends Command {
 	}
 
 	run(msg, { first, second, third }) {
+		const kissFuck = msg.channel.nsfw ? 'fuck' : 'kiss';
 		const things = shuffle([first, second, third]);
-		return msg.say(`I'd kiss ${things[0]}, marry ${things[1]}, and kill ${things[2]}.`);
+		return msg.say(`I'd ${kissFuck} ${things[0]}, marry ${things[1]}, and kill ${things[2]}.`);
 	}
 };

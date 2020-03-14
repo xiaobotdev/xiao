@@ -2,8 +2,9 @@ const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
 const sentences = require('../../assets/json/typing-test');
-const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
+const difficulties = ['baby', 'easy', 'medium', 'hard', 'extreme', 'impossible'];
 const times = {
+	baby: 60000,
 	easy: 25000,
 	medium: 20000,
 	hard: 15000,
@@ -43,7 +44,8 @@ module.exports = class TypingTestCommand extends Command {
 			max: 1,
 			time
 		});
-		if (!msgs.size || msgs.first().content !== sentence) return msg.reply('Sorry! You lose!');
+		if (!msgs.size) return msg.reply('Sorry! You lose!');
+		if (msgs.first().content !== sentence) return msg.reply('Sorry! You made a typo, so you lose!');
 		return msg.reply(`Nice job! 10/10! You deserve some cake! (Took ${(Date.now() - now) / 1000} seconds)`);
 	}
 };

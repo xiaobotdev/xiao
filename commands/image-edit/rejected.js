@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { centerImage } = require('../../util/Canvas');
 
 module.exports = class RejctedCommand extends Command {
 	constructor(client) {
@@ -43,22 +44,7 @@ module.exports = class RejctedCommand extends Command {
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(data, 0, 0);
-			const dataRatio = data.width / data.height;
-			const baseRatio = base.width / base.height;
-			let { width, height } = data;
-			let x = 0;
-			let y = 0;
-			if (baseRatio < dataRatio) {
-				height = data.height;
-				width = base.width * (height / base.height);
-				x = (data.width - width) / 2;
-				y = 0;
-			} else if (baseRatio > dataRatio) {
-				width = data.width;
-				height = base.height * (width / base.width);
-				x = 0;
-				y = (data.height - height) / 2;
-			}
+			const { x, y, width, height } = centerImage(base, data);
 			ctx.drawImage(base, x, y, width, height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');

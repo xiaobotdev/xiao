@@ -9,7 +9,7 @@ module.exports = class FirstMessageCommand extends Command {
 			group: 'info',
 			memberName: 'first-message',
 			description: 'Responds with the first message ever sent to a channel.',
-			clientPermissions: ['EMBED_LINKS', 'READ_MESSAGE_HISTORY'],
+			clientPermissions: ['EMBED_LINKS'],
 			args: [
 				{
 					key: 'channel',

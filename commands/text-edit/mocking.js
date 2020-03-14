@@ -9,7 +9,6 @@ module.exports = class MockingCommand extends Command {
 			group: 'text-edit',
 			memberName: 'mocking',
 			description: 'SenDs TexT lIkE ThiS.',
-			clientPermissions: ['USE_EXTERNAL_EMOJIS'],
 			args: [
 				{
 					key: 'text',
@@ -23,11 +22,12 @@ module.exports = class MockingCommand extends Command {
 	}
 
 	run(msg, { text }) {
+		const canEmoji = msg.channel.permissionsFor(this.client.user).has('USE_EXTERNAL_EMOJIS');
 		const letters = text.split('');
 		for (let i = 0; i < letters.length; i += Math.floor(Math.random() * 4)) {
 			letters[i] = letters[i].toUpperCase();
 		}
-		return msg.say(`${letters.join('')}${this.mockingEmoji}`);
+		return msg.say(`${letters.join('')}${canEmoji ? this.mockingEmoji : ''}`);
 	}
 
 	get mockingEmoji() {
