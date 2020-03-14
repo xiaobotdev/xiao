@@ -22,7 +22,8 @@ module.exports = class MockingCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		const canEmoji = msg.channel.permissionsFor(this.client.user).has('USE_EXTERNAL_EMOJIS');
+		const canEmoji = msg.channel.type === 'text'
+			&& msg.channel.permissionsFor(this.client.user).has('USE_EXTERNAL_EMOJIS');
 		const letters = text.split('');
 		for (let i = 0; i < letters.length; i += Math.floor(Math.random() * 4)) {
 			letters[i] = letters[i].toUpperCase();
