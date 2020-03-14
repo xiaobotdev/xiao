@@ -44,7 +44,7 @@ module.exports = class RightStufCommand extends Command {
 					pricelevel: 2,
 					q: query,
 					sort: 'relevance:asc',
-					custitem_rs_adult: msg.channel.nsfw ? true : false
+					custitem_rs_adult: Boolean(msg.channel.nsfw)
 				});
 			if (!body.items.length) return msg.say('Could not find any results.');
 			const data = body.items[0];
@@ -68,7 +68,7 @@ module.exports = class RightStufCommand extends Command {
 
 	getImageURL(item) {
 		let found = null;
-		let current = item.itemimages_detail
+		let current = item.itemimages_detail;
 		while (!found) {
 			if (current.primary) found = current.primary.url;
 			if (current.urls) found = current.urls[0].url;
