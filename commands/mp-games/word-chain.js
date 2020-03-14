@@ -110,6 +110,7 @@ module.exports = class WordChainCommand extends Command {
 	}
 
 	async verifyWord(word) {
+		if (startWords.includes(word.toLowerCase())) return true;
 		try {
 			const { body } = await request
 				.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}`)

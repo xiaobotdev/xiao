@@ -43,26 +43,22 @@ module.exports = class SosCommand extends Command {
 	}
 
 	async run(msg, { message }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'sos.png'));
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.font = '90px Noto';
-			ctx.fillStyle = 'black';
-			ctx.textAlign = 'center';
-			ctx.textBaseline = 'middle';
-			ctx.rotate(15 * (Math.PI / 180));
-			let fontSize = 90;
-			while (ctx.measureText(message).width > 140) {
-				fontSize -= 1;
-				ctx.font = `${fontSize}px Noto`;
-			}
-			ctx.fillText(message.toUpperCase(), 362, 522);
-			ctx.rotate(-15 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sos.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'sos.png'));
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		ctx.font = '90px Noto';
+		ctx.fillStyle = 'black';
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+		ctx.rotate(15 * (Math.PI / 180));
+		let fontSize = 90;
+		while (ctx.measureText(message).width > 140) {
+			fontSize -= 1;
+			ctx.font = `${fontSize}px Noto`;
 		}
+		ctx.fillText(message.toUpperCase(), 362, 522);
+		ctx.rotate(-15 * (Math.PI / 180));
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sos.png' }] });
 	}
 };

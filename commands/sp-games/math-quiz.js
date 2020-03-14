@@ -1,9 +1,10 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
-const difficulties = ['easy', 'medium', 'hard', 'extreme', 'impossible'];
+const difficulties = ['baby', 'easy', 'medium', 'hard', 'extreme', 'impossible'];
 const operations = ['+', '-', '*'];
 const maxValues = {
+	baby: 5,
 	easy: 10,
 	medium: 100,
 	hard: 500,
