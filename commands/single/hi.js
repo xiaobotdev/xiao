@@ -15,7 +15,7 @@ module.exports = class HiCommand extends Command {
 		try {
 			await msg.react('👋');
 			return null;
-		} catch (err) {
+		} catch {
 			return msg.reply('Hi there!');
 		}
 	}

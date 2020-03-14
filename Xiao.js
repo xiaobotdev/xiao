@@ -67,7 +67,7 @@ client.on('message', async msg => {
 	if (!call.active) return;
 	try {
 		await call.send(origin ? call.recipient : call.origin, msg);
-	} catch (err) {
+	} catch {
 		return; // eslint-disable-line no-useless-return
 	}
 });
@@ -80,7 +80,7 @@ client.on('guildMemberRemove', async member => {
 		const leaveMsg = leaveMsgs[Math.floor(Math.random() * leaveMsgs.length)];
 		await channel.send(leaveMsg.replace(/{{user}}/gi, `**${member.user.tag}**`));
 		return null;
-	} catch (err) {
+	} catch {
 		return null;
 	}
 });
