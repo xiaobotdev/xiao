@@ -49,7 +49,7 @@ module.exports = class RightStufCommand extends Command {
 			if (!body.items.length) return msg.say('Could not find any results.');
 			const data = body.items[0];
 			const embed = new MessageEmbed()
-				.setColor(0x00D474)
+				.setColor(0xEE3F3C)
 				.setTitle(data.storedisplayname)
 				.setURL(`https://www.rightstufanime.com/${data.urlcomponent}`)
 				.setAuthor('Right Stuf', 'https://i.imgur.com/CTB8Imp.jpg', 'https://www.rightstufanime.com/')
