@@ -32,7 +32,6 @@ client.registry
 		['meme-gen', 'Meme Generators'],
 		['text-edit', 'Text Manipulation'],
 		['number-edit', 'Number Manipulation'],
-		['nsfw', 'NSFW'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay'],
 		['readme', 'README Generators']

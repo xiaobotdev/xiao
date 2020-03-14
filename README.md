@@ -38,7 +38,6 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Meme Generators](#meme-generators)
 	* [Text Manipulation](#text-manipulation)
 	* [Number Manipulation](#number-manipulation)
-	* [NSFW](#nsfw)
 	* [Other](#other)
 	* [Roleplay](#roleplay)
 	* [README Generators](#readme-generators)
@@ -179,6 +178,7 @@ Total: 367
 * **joke:** Responds with a random joke.
 * **karen:** Responds with a random image of Karen.
 * **kiss-marry-kill:** Determines who to kiss, who to marry, and who to kill.
+* **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **light-novel-title:** Responds with a randomly generated Light Novel title.
 * **magic-conch:** Asks your question to the Magic Conch.
 * **meme:** Responds with a random meme.
@@ -263,9 +263,11 @@ Total: 367
 * **bulbapedia:** Searches Bulbapedia for your query.
 * **character:** Searches AniList for your query, getting character results.
 * **company:** Responds with the name and logo of a company.
+* **danbooru:** Responds with an image from Danbooru, with optional query. (NSFW)
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
 * **deviantart:** Responds with an image from a DeviantArt section, with optional query.
+* **flickr:** Searches Flickr for your query... Maybe. (NSFW)
 * **frinkiac:** Input a line from the Simpsons to get the episode/season.
 * **giphy:** Searches Giphy for your query.
 * **github:** Responds with information on a GitHub repository.
@@ -325,6 +327,7 @@ Total: 367
 * **age:** Responds with how old someone born in a certain year is.
 * **character-count:** Responds with the character count of text.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
+* **dick:** Determines your dick size. (NSFW)
 * **face:** Determines the race, gender, and age of a face.
 * **gender:** Determines the gender of a name.
 * **read-qr-code:** Reads a QR Code.
@@ -371,6 +374,7 @@ Total: 367
 
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
+* **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
@@ -504,14 +508,6 @@ Total: 367
 * **roman:** Converts a number to roman numerals.
 * **scientific-notation:** Converts a number to scientific notation.
 * **units:** Converts units to/from other units.
-
-### NSFW:
-
-* **brazzers:** Draws an image with the Brazzers logo in the corner.
-* **danbooru:** Responds with an image from Danbooru, with optional query.
-* **dick:** Determines your dick size.
-* **flickr:** Searches Flickr for your query... Maybe.
-* **light-novel-cover:** Responds with a randomly generated Light Novel cover.
 
 ### Other:
 

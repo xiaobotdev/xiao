@@ -7,7 +7,7 @@ module.exports = class LightNovelCoverCommand extends Command {
 		super(client, {
 			name: 'light-novel-cover',
 			aliases: ['ln-cover'],
-			group: 'nsfw',
+			group: 'random',
 			memberName: 'light-novel-cover',
 			description: 'Responds with a randomly generated Light Novel cover.',
 			nsfw: true,

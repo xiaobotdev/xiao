@@ -6,7 +6,7 @@ module.exports = class FlickrCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'flickr',
-			group: 'nsfw',
+			group: 'search',
 			memberName: 'flickr',
 			description: 'Searches Flickr for your query... Maybe.',
 			nsfw: true,
