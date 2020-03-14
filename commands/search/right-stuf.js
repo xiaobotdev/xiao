@@ -57,8 +57,8 @@ module.exports = class RightStufCommand extends Command {
 				.setThumbnail(this.getImageURL(data))
 				.addField('❯ Price', stripIndents`
 					Retail Price: ${data.pricelevel1_formatted}
-					Non-Member Price: ${data.pricelevel5_formatted}
-					Member Price: ${data.onlinecustomerprice_formatted}
+					Non-Member Price: ${data.pricelevel2_formatted}
+					Member Price: ${data.pricelevel3_formatted}
 				`);
 			return msg.embed(embed);
 		} catch (err) {
