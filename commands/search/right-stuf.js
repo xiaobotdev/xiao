@@ -71,6 +71,7 @@ module.exports = class RightStufCommand extends Command {
 		let current = item.itemimages_detail
 		while (!found) {
 			if (current.primary) found = current.primary.url;
+			if (current.urls) found = current.urls.url;
 			const key = Object.keys(current)[0];
 			if (!key) break;
 			current = current[key];
