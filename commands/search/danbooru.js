@@ -6,7 +6,7 @@ module.exports = class DanbooruCommand extends Command {
 		super(client, {
 			name: 'danbooru',
 			aliases: ['hentai'],
-			group: 'nsfw',
+			group: 'search',
 			memberName: 'danbooru',
 			description: 'Responds with an image from Danbooru, with optional query.',
 			nsfw: true,
