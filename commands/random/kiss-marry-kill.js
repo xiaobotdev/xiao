@@ -12,7 +12,7 @@ module.exports = class KissMarryKillCommand extends Command {
 				'marry-kiss-kill',
 				'marry-kill-kiss',
 				'fuck-marry-kill',
-				'fuck-kiss-marry',
+				'fuck-kill-marry',
 				'kill-fuck-marry',
 				'kill-marry-fuck',
 				'marry-fuck-kill',
