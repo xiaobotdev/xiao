@@ -118,7 +118,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 367
+Total: 368
 
 ### Utility:
 
@@ -373,6 +373,7 @@ Total: 367
 ### Image Manipulation:
 
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
+* **apple-engraving:** Engraves the text of your choice onto an Apple product.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **circle:** Draws an image or a user's avatar as a circle.
@@ -580,6 +581,7 @@ here.
 - [Antonio Guillem](http://antonioguillem.com/)
 	* distracted-boyfriend ([Image](https://www.istockphoto.com/photo/gm493656728-77018851))
 - [Apple](https://www.apple.com/)
+	* apple-engraving (API)
 	* itunes ([iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/))
 - [astrology.TV](https://astrology.tv/)
 	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
