@@ -59,6 +59,7 @@ module.exports = class HelpCommand extends Command {
 			**Format:** ${msg.anyUsage(`${command.name} ${command.format || ''}`)}
 			**Aliases:** ${command.aliases.join(', ') || 'None'}
 			**Group:** ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
+			**NSFW:** ${command.nsfw ? 'Yes' : 'No'}
 		`);
 	}
 };
