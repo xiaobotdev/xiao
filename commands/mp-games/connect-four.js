@@ -59,7 +59,7 @@ module.exports = class ConnectFourCommand extends Command {
 					${nums.join('')}
 				`);
 				const filter = res => {
-					if (res.author.id !== user.id) return false
+					if (res.author.id !== user.id) return false;
 					const choice = res.content;
 					if (choice.toLowerCase() === 'end') return true;
 					const i = Number.parseInt(choice, 10) - 1;
