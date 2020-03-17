@@ -60,6 +60,7 @@ module.exports = class ConnectFourCommand extends Command {
 				const filter = res => {
 					const choice = res.content;
 					if (choice.toLowerCase() === 'end') return true;
+					if (!board[Number.parseInt(choice, 10) - 1]) return false;
 					if (!board[Number.parseInt(choice, 10) - 1].includes(null)) return false;
 					return res.author.id === user.id;
 				};
@@ -78,7 +79,7 @@ module.exports = class ConnectFourCommand extends Command {
 					break;
 				}
 				const i = Number.parseInt(choice, 10) - 1;
-				board[i][board[i][6]] = sign;
+				board[i][5 - board[i][6]] = sign;
 				board[i][6] += 1;
 				if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
 				userTurn = !userTurn;
@@ -132,6 +133,6 @@ module.exports = class ConnectFourCommand extends Command {
 			if (piece === 'user') return playerOneEmoji;
 			if (piece === 'oppo') return playerTwoEmoji;
 			return blankEmoji;
-		}).join(' ')).join('\n');
+		}).join('')).join('\n');
 	}
 };
