@@ -41,7 +41,7 @@ module.exports = class TicTacToeCommand extends Command {
 				const user = userTurn ? msg.author : opponent;
 				const sign = userTurn ? 'X' : 'O';
 				await msg.say(stripIndents`
-					${user}, which side do you pick?
+					${user}, which side do you pick? Type \`end\` to forefeit.
 					\`\`\`
 					${sides[0]} | ${sides[1]} | ${sides[2]}
 					—————————
@@ -51,8 +51,10 @@ module.exports = class TicTacToeCommand extends Command {
 					\`\`\`
 				`);
 				const filter = res => {
+					if (res.author.id !== user.id) return false;
 					const choice = res.content;
-					return res.author.id === user.id && sides.includes(choice) && !taken.includes(choice);
+					if (choice.toLowerCase() === 'end') return true;
+					return sides.includes(choice) && !taken.includes(choice);
 				};
 				const turn = await msg.channel.awaitMessages(filter, {
 					max: 1,
@@ -64,6 +66,10 @@ module.exports = class TicTacToeCommand extends Command {
 					continue;
 				}
 				const choice = turn.first().content;
+				if (choice.toLowerCase() === 'end') {
+					winner = userTurn ? opponent : msg.author;
+					break;
+				}
 				sides[Number.parseInt(choice, 10) - 1] = sign;
 				taken.push(choice);
 				if (this.verifyWin(sides)) winner = userTurn ? msg.author : opponent;
