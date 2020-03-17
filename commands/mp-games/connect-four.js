@@ -68,7 +68,7 @@ module.exports = class ConnectFourCommand extends Command {
 				};
 				const turn = await msg.channel.awaitMessages(filter, {
 					max: 1,
-					time: 30000
+					time: 60000
 				});
 				if (!turn.size) {
 					await msg.say('Sorry, time is up!');
