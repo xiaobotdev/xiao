@@ -10,7 +10,7 @@ module.exports = class ConnectFourCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'connect-four',
-			aliases: ['connect-4'],
+			aliases: ['connect-4', 'c4'],
 			group: 'mp-games',
 			memberName: 'connect-four',
 			description: 'Play a game of Connect Four with another user.',
