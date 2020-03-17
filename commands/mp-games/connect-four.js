@@ -59,12 +59,11 @@ module.exports = class ConnectFourCommand extends Command {
 					${nums.join('')}
 				`);
 				const filter = res => {
+					if (res.author.id !== user.id) return false
 					const choice = res.content;
 					if (choice.toLowerCase() === 'end') return true;
 					const i = Number.parseInt(choice, 10) - 1;
-					if (!board[colLevels[i]]) return false;
-					if (board[colLevels[i]][i] === undefined) return false;
-					return res.author.id === user.id;
+					return board[colLevels[i]] && board[colLevels[i]][i] !== undefined;
 				};
 				const turn = await msg.channel.awaitMessages(filter, {
 					max: 1,
