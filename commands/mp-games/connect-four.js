@@ -48,12 +48,12 @@ module.exports = class ConnectFourCommand extends Command {
 			const board = this.generateBoard();
 			let userTurn = true;
 			let winner = null;
-			const rowLevels = [6, 6, 6, 6, 6];
+			const colLevels = [6, 6, 6, 6, 6, 6, 6];
 			while (!winner && board.some(row => row.includes(null))) {
 				const user = userTurn ? msg.author : opponent;
 				const sign = userTurn ? 'user' : 'oppo';
 				await msg.say(stripIndents`
-					${user}, which row do you pick? Type \`end\` to forefeit.
+					${user}, which column do you pick? Type \`end\` to forefeit.
 
 					${this.displayBoard(board)}
 					${nums.join('')}
@@ -61,8 +61,9 @@ module.exports = class ConnectFourCommand extends Command {
 				const filter = res => {
 					const choice = res.content;
 					if (choice.toLowerCase() === 'end') return true;
-					if (!board[Number.parseInt(choice, 10) - 1]) return false;
-					if (!board[Number.parseInt(choice, 10) - 1].includes(null)) return false;
+					const i = Number.parseInt(choice, 10) - 1;
+					if (!board[colLevels[i]]) return false;
+					if (!board[colLevels[i]][i]) return false;
 					return res.author.id === user.id;
 				};
 				const turn = await msg.channel.awaitMessages(filter, {
@@ -80,8 +81,8 @@ module.exports = class ConnectFourCommand extends Command {
 					break;
 				}
 				const i = Number.parseInt(choice, 10) - 1;
-				board[i][rowLevels[i]] = sign;
-				rowLevels[i] -= 1;
+				board[colLevels[i]][i] = sign;
+				colLevels[i] -= 1;
 				if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
 				userTurn = !userTurn;
 			}
