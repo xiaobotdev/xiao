@@ -118,7 +118,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 368
+Total: 369
 
 ### Utility:
 
@@ -363,6 +363,7 @@ Total: 368
 
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
+* **connect-four:** Play a game of Connect Four with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **gunfight:** Engage in a western gunfight against another user. High noon.
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
@@ -718,6 +719,7 @@ here.
 - [Hasbro](https://shop.hasbro.com/en-us)
 	* bro-hoof ([Original "My Little Pony: Friendship is Magic" Show](https://mylittlepony.hasbro.com/en-us))
 	* brony-speak ([Original "My Little Pony: Friendship is Magic" Show](https://mylittlepony.hasbro.com/en-us))
+	* connect-four (Original "Connect Four" Game)
 	* scrabble-score ([Original Scrabble Game](https://scrabble.hasbro.com/en-us))
 - [Hastebin](https://hastebin.com/about.md)
 	* generate-commands (API)
