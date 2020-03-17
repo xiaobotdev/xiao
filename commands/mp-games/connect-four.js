@@ -123,7 +123,7 @@ module.exports = class ConnectFourCommand extends Command {
 
 	generateBoard() {
 		const arr = [];
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < 7; i++) {
 			arr.push([null, null, null, null, null, null]);
 		}
 		return arr;
