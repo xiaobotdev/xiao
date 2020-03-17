@@ -79,8 +79,8 @@ module.exports = class ConnectFourCommand extends Command {
 					break;
 				}
 				const i = Number.parseInt(choice, 10) - 1;
-				board[i][5 - board[i][6]] = sign;
-				board[i][6] += 1;
+				board[i][board[i][6]] = sign;
+				board[i][6] -= 1;
 				if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
 				userTurn = !userTurn;
 			}
@@ -122,8 +122,8 @@ module.exports = class ConnectFourCommand extends Command {
 
 	generateBoard() {
 		const arr = [];
-		for (let i = 0; i < 7; i++) {
-			arr.push([null, null, null, null, null, null, 0]);
+		for (let i = 0; i < 6; i++) {
+			arr.push([null, null, null, null, null, null, 5]);
 		}
 		return arr;
 	}
