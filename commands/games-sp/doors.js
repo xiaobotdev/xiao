@@ -8,7 +8,7 @@ module.exports = class DoorsCommand extends Command {
 		super(client, {
 			name: 'doors',
 			aliases: ['door', 'door-opening', 'open-door', 'monty-hall'],
-			group: 'sp-games',
+			group: 'games-sp',
 			memberName: 'doors',
 			description: 'Open the right door, and you win the money! Make the wrong choice, and you get the fire!',
 			credit: [

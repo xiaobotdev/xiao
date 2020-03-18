@@ -6,7 +6,7 @@ module.exports = class MadLibsCommand extends Command {
 		super(client, {
 			name: 'mad-libs',
 			aliases: ['mad-takes'],
-			group: 'sp-games',
+			group: 'games-sp',
 			memberName: 'mad-libs',
 			description: 'Choose words that fill in the blanks to create a crazy story!',
 			credit: [
