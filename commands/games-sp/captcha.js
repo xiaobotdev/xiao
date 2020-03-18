@@ -9,7 +9,7 @@ module.exports = class CaptchaCommand extends Command {
 		super(client, {
 			name: 'captcha',
 			aliases: ['captcha-quiz'],
-			group: 'sp-games',
+			group: 'games-sp',
 			memberName: 'captcha',
 			description: 'Try to guess what the captcha says.',
 			throttling: {

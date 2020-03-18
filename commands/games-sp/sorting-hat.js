@@ -9,7 +9,7 @@ module.exports = class SortingHatCommand extends Command {
 		super(client, {
 			name: 'sorting-hat',
 			aliases: ['sorting-hat-quiz', 'hogwarts', 'hogwarts-house'],
-			group: 'sp-games',
+			group: 'games-sp',
 			memberName: 'sorting-hat',
 			description: 'Take a quiz to determine your Hogwarts house.',
 			credit: [

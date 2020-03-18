@@ -6,7 +6,7 @@ module.exports = class HangmanCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'hangman',
-			group: 'sp-games',
+			group: 'games-sp',
 			memberName: 'hangman',
 			description: 'Prevent a man from being hanged by guessing a word as fast as you can.',
 			credit: [

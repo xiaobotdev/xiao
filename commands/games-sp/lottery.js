@@ -7,7 +7,7 @@ module.exports = class LotteryCommand extends Command {
 		super(client, {
 			name: 'lottery',
 			aliases: ['lotto'],
-			group: 'sp-games',
+			group: 'games-sp',
 			memberName: 'lottery',
 			description: 'Attempt to win the lottery with 6 numbers.',
 			args: [

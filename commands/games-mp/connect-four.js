@@ -11,7 +11,7 @@ module.exports = class ConnectFourCommand extends Command {
 		super(client, {
 			name: 'connect-four',
 			aliases: ['connect-4', 'c4'],
-			group: 'mp-games',
+			group: 'games-mp',
 			memberName: 'connect-four',
 			description: 'Play a game of Connect Four with another user.',
 			guildOnly: true,

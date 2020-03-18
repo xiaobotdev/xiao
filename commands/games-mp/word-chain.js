@@ -10,7 +10,7 @@ module.exports = class WordChainCommand extends Command {
 		super(client, {
 			name: 'word-chain',
 			aliases: ['shiritori', 'しりとり'],
-			group: 'mp-games',
+			group: 'games-mp',
 			memberName: 'word-chain',
 			description: 'Try to come up with words that start with the last letter of your opponent\'s word.',
 			guildOnly: true,

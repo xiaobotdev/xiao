@@ -7,7 +7,7 @@ module.exports = class GunfightCommand extends Command {
 		super(client, {
 			name: 'gunfight',
 			aliases: ['western-gunfight'],
-			group: 'mp-games',
+			group: 'games-mp',
 			memberName: 'gunfight',
 			description: 'Engage in a western gunfight against another user. High noon.',
 			guildOnly: true,

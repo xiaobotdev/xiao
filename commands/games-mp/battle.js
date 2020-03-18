@@ -7,7 +7,7 @@ module.exports = class BattleCommand extends Command {
 		super(client, {
 			name: 'battle',
 			aliases: ['fight', 'death-battle'],
-			group: 'mp-games',
+			group: 'games-mp',
 			memberName: 'battle',
 			description: 'Engage in a turn-based battle against another user or the AI.',
 			args: [
