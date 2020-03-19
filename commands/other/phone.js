@@ -18,7 +18,7 @@ module.exports = class PhoneCommand extends Command {
 					default: '',
 					validate: channelID => {
 						if (channelID.toLowerCase() === 'count') return true;
-						return !/^[0-9]+$/.test(val);
+						return !/^[0-9]+$/.test(channelID);
 					}
 				}
 			],
