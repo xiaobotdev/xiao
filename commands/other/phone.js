@@ -12,10 +12,14 @@ module.exports = class PhoneCommand extends Command {
 			guildOnly: true,
 			args: [
 				{
-					key: 'count',
-					prompt: 'Would you like to get the count of channels?',
-					type: 'boolean',
-					default: false
+					key: 'channelID',
+					prompt: 'What channel would you like to start a call with?',
+					type: 'string',
+					default: '',
+					validate: channelID => {
+						if (channelID.toLowerCase() === 'count') return true;
+						return !/^[0-9]+$/.test(val);
+					}
 				}
 			],
 			credit: [
@@ -28,7 +32,7 @@ module.exports = class PhoneCommand extends Command {
 		});
 	}
 
-	async run(msg, { count }) {
+	async run(msg, { channelID }) {
 		if (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')) {
 			return msg.say('You can only start a call in a channel with `<xiao:phone>` in the topic.');
 		}
@@ -39,9 +43,18 @@ module.exports = class PhoneCommand extends Command {
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
 			&& !msg.guild.channels.cache.has(channel.id));
-		if (count) return msg.say(`☎️ **${channels.size}** currently open lines.`);
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
-		const channel = channels.random();
+		let channel;
+		if (channelID) {
+			if (channelID.toLowerCase() === 'count') return msg.say(`☎️ **${channels.size}** currently open lines.`);
+			channel = this.client.channels.cache.get(channelID);
+			if (!channel || channel.type !== 'text') return msg.reply('This channel does not exist.');
+			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
+				return msg.reply('This channel does not allow phone calls.');
+			}
+		} else {
+			channel = channels.random();
+		}
 		try {
 			const id = `${msg.channel.id}:${channel.id}`;
 			this.client.phone.set(id, new PhoneCall(this.client, msg.channel, channel));
