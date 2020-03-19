@@ -32,6 +32,6 @@ module.exports = class PhoneBookCommand extends Command {
 		return msg.say(stripIndents`
 			__**Results:**__ _(${channels.size} Results)_
 			${channels.map(c => `**${c.id}** (#${c.name}: ${c.guild.name})`).slice(0, 10).join('\n')}
-		`)
+		`);
 	}
 };
