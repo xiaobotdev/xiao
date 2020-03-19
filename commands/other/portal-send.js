@@ -9,6 +9,10 @@ module.exports = class PortalSendCommand extends Command {
 			group: 'other',
 			memberName: 'portal-send',
 			description: 'Send a message to a portal channel.',
+			throttling: {
+				usages: 1,
+				duration: 5
+			},
 			args: [
 				{
 					key: 'message',
