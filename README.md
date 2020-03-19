@@ -118,7 +118,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 370
+Total: 371
 
 ### Utility:
 
@@ -516,6 +516,7 @@ Total: 370
 
 * **cleverbot:** Talk to Cleverbot. (Owner-Only)
 * **phone:** Starts a phone call with a random server.
+* **phone-book:** Looks up phone-enabled servers.
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
