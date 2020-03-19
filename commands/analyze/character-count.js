@@ -5,7 +5,7 @@ module.exports = class CharacterCountCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'character-count',
-			aliases: ['characters', 'chars', 'length'],
+			aliases: ['characters', 'chars', 'length', 'char-count'],
 			group: 'analyze',
 			memberName: 'character-count',
 			description: 'Responds with the character count of text.',
