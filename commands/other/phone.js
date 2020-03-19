@@ -10,6 +10,10 @@ module.exports = class PhoneCommand extends Command {
 			memberName: 'phone',
 			description: 'Starts a phone call with a random server.',
 			guildOnly: true,
+			throttling: {
+				usages: 1,
+				duration: 90
+			},
 			args: [
 				{
 					key: 'channelID',
