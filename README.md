@@ -118,7 +118,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 369
+Total: 370
 
 ### Utility:
 
@@ -341,6 +341,7 @@ Total: 369
 
 * **blackjack:** Play a game of blackjack.
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
+* **bubble-wrap:** Pop some bubble wrap.
 * **captcha:** Try to guess what the captcha says.
 * **chance:** Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **doors:** Open the right door, and you win the money! Make the wrong choice, and you get the fire!
