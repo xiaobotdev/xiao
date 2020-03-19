@@ -34,7 +34,7 @@ module.exports = class PhoneCommand extends Command {
 	}
 
 	async run(msg, { channelID }) {
-		if (channelID !== 'count' && !msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')) {
+		if (channelID !== 'count' && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>'))) {
 			return msg.say('You can only start a call in a channel with `<xiao:phone>` in the topic.');
 		}
 		const inCall = this.client.phone.some(call => [call.origin.id, call.recipient.id].includes(msg.channel.id));
