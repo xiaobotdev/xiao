@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
 const { sortByName } = require('../../util/Util');
 
 module.exports = class GenerateCreditCommand extends Command {
