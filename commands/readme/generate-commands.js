@@ -19,6 +19,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 			.map(g => `\n### ${g.name}:\n\n${g.commands.filter(c => !c.hidden).map(
 				c => `* **${c.name}:** ${c.description}${c.ownerOnly ? ' (Owner-Only)' : ''}${c.nsfw ? ' (NSFW)' : ''}`
 			).join('\n')}`);
-		return msg.channel.send({ files: [{ attachment: Buffer.from(list), name: 'commands.txt' }] });
+		const text = `Total: ${this.client.registry.commands.size}\n${list.join('\n')}`;
+		return msg.channel.send({ files: [{ attachment: Buffer.from(text), name: 'commands.txt' }] });
 	}
 };
