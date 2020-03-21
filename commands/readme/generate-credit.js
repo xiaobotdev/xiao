@@ -12,18 +12,11 @@ module.exports = class GenerateCreditCommand extends Command {
 			description: 'Generates the credit list for Xiao\'s README.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
-			guarded: true,
-			credit: [
-				{
-					name: 'Hastebin',
-					url: 'https://hastebin.com/about.md',
-					reason: 'API'
-				}
-			]
+			guarded: true
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		let credit = [];
 		for (const command of this.client.registry.commands.values()) {
 			if (!command.credit || command.credit.length <= 1) continue;
@@ -55,9 +48,6 @@ module.exports = class GenerateCreditCommand extends Command {
 				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;
 				return `	* ${cmd.name} ([${cmd.reason}](${cmd.reasonURL}))`;
 			}).join('\n')}`);
-		const { body } = await request
-			.post('https://hastebin.com/documents')
-			.send(mapped.join('\n'));
-		return msg.say(`https://hastebin.com/raw/${body.key}`);
+		return msg.channel.send({ files: [{ attachment: Buffer.from(mapped), name: 'credit.txt' }] });
 	}
 };
