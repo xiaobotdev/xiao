@@ -48,6 +48,6 @@ module.exports = class GenerateCreditCommand extends Command {
 				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;
 				return `	* ${cmd.name} ([${cmd.reason}](${cmd.reasonURL}))`;
 			}).join('\n')}`);
-		return msg.channel.send({ files: [{ attachment: Buffer.from(mapped), name: 'credit.txt' }] });
+		return msg.channel.send({ files: [{ attachment: Buffer.from(mapped.join('\n')), name: 'credit.txt' }] });
 	}
 };
