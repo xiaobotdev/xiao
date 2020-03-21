@@ -516,8 +516,8 @@ Total: 372
 ### Other:
 
 * **cleverbot:** Talk to Cleverbot. (Owner-Only)
-* **phone:** Starts a phone call with a random server.
 * **phone-book:** Looks up phone-enabled servers.
+* **phone:** Starts a phone call with a random server.
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
