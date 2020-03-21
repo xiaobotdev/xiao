@@ -236,10 +236,12 @@ Total: 371
 
 * **butt:** Determines a user's butt quality.
 * **coolness:** Determines a user's coolness.
+* **dick:** Determines your dick size. (NSFW)
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
 * **psycho-pass:** Determines your Crime Coefficient.
 * **ship:** Ships two users together.
+* **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
 
 ### Events:
 
@@ -327,7 +329,6 @@ Total: 371
 * **age:** Responds with how old someone born in a certain year is.
 * **character-count:** Responds with the character count of text.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
-* **dick:** Determines your dick size. (NSFW)
 * **face:** Determines the race, gender, and age of a face.
 * **gender:** Determines the gender of a name.
 * **read-qr-code:** Reads a QR Code.
