@@ -118,7 +118,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 371
+Total: 372
 
 ### Utility:
 
