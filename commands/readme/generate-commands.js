@@ -4,7 +4,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'generate-commands',
-			aliases: ['gen-commands'],
+			aliases: ['gen-commands', 'generate-cmds', 'gen-cmds'],
 			group: 'readme',
 			memberName: 'generate-commands',
 			description: 'Generates the commands list for Xiao\'s README.',
