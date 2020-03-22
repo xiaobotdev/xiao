@@ -19,7 +19,9 @@ module.exports = class SuicideHotlineCommand extends Command {
 		});
 	}
 
-	run(msg) {
-		return msg.say('Don\'t say that. Get help. Call 1-800-273-8255 for the National Suicide Prevention Lifeline.');
+	run(msg, args, fromPattern) {
+		const text = 'Call 1-800-273-8255 for the National Suicide Prevention Lifeline.';
+		if (!fromPattern) return msg.say(text);
+		return msg.reply(`Don't say that. Get help. ${text}`);
 	}
 };
