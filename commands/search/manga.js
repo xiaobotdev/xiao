@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
 const { cleanAnilistHTML } = require('../../util/Util');
 const searchGraphQL = stripIndents`
@@ -14,6 +15,7 @@ const resultGraphQL = stripIndents`
 	query media($id: Int, $type: MediaType) {
 		Media(id: $id, type: $type) {
 			id
+			idMal
 			title {
 				english
 				userPreferred
@@ -53,6 +55,11 @@ module.exports = class MangaCommand extends Command {
 					url: 'https://anilist.co/',
 					reason: 'API',
 					reasonURL: 'https://anilist.gitbook.io/anilist-apiv2-docs/'
+				},
+				{
+					name: 'MyAnimeList',
+					url: 'https://myanimelist.net/',
+					reason: 'Score Data'
 				}
 			],
 			args: [
@@ -69,7 +76,8 @@ module.exports = class MangaCommand extends Command {
 		try {
 			const id = await this.search(query);
 			if (!id) return msg.say('Could not find any results.');
-			const manga = await this.fetchAnime(id);
+			const manga = await this.fetchManga(id);
+			const malScore = await this.fetchMALScore(manga.idMal);
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
@@ -80,7 +88,8 @@ module.exports = class MangaCommand extends Command {
 				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
 				.addField('❯ Year', manga.startDate.year || '???', true)
-				.addField('❯ Average Score', manga.meanScore ? `${manga.meanScore}/100` : '???', true);
+				.addField('❯ Average Score', manga.meanScore ? `${manga.meanScore}/100` : '???', true)
+				.addField(`❯ MAL Score`, malScore ? `${malScore}/10` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -101,7 +110,7 @@ module.exports = class MangaCommand extends Command {
 		return body.data.anime.results[0].id;
 	}
 
-	async fetchAnime(id) {
+	async fetchManga(id) {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
 			.send({
@@ -112,5 +121,15 @@ module.exports = class MangaCommand extends Command {
 				query: resultGraphQL
 			});
 		return body.data.Media;
+	}
+
+	async fetchMALScore(id) {
+		try {
+			const { text } = await request.get(`https://myanimelist.net/manga/${id}`);
+			const $ = cheerio.load(text);
+			return $('span[itemprop="ratingValue"]').first().text();
+		} catch {
+			return null;
+		}
 	}
 };
