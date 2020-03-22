@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
 const { cleanAnilistHTML } = require('../../util/Util');
 const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
@@ -21,6 +22,7 @@ const resultGraphQL = stripIndents`
 	query media($id: Int, $type: MediaType) {
 		Media(id: $id, type: $type) {
 			id
+			idMal
 			title {
 				english
 				romaji
@@ -91,6 +93,11 @@ module.exports = class AnimeCommand extends Command {
 					url: 'https://anilist.co/',
 					reason: 'API',
 					reasonURL: 'https://anilist.gitbook.io/anilist-apiv2-docs/'
+				},
+				{
+					name: 'MyAnimeList',
+					url: 'https://myanimelist.net/',
+					reason: 'Score Data'
 				}
 			],
 			args: [
@@ -112,6 +119,7 @@ module.exports = class AnimeCommand extends Command {
 			const anime = await this.fetchAnime(id);
 			await this.fetchPersonalList();
 			const entry = this.personalList.find(ani => ani.mediaId === id);
+			const malScore = await this.fetchMALScore(anime.idMal);
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
@@ -124,8 +132,7 @@ module.exports = class AnimeCommand extends Command {
 				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
 				.addField('❯ Average Score', anime.meanScore ? `${anime.meanScore}/100` : '???', true)
 				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '?/10', true)
-				.addField(`❯ ${ANILIST_USERNAME}'s Progress`,
-					entry && entry.status ? userStatuses[entry.status] : 'Not Planned', true);
+				.addField(`❯ MAL Score`, malScore ? `${malScore}/10` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -157,6 +164,16 @@ module.exports = class AnimeCommand extends Command {
 				query: resultGraphQL
 			});
 		return body.data.Media;
+	}
+
+	async fetchMALScore(id) {
+		try {
+			const { text } = await request.get(`https://myanimelist.net/anime/${id}`);
+			const $ = cheerio.load(text);
+			return $('span[itemprop="ratingValue"]').first().text();
+		} catch {
+			return null;
+		}
 	}
 
 	async fetchPersonalList() {
