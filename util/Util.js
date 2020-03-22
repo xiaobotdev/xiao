@@ -142,6 +142,7 @@ module.exports = class Util {
 			.replace(/&#039;/g, '\'')
 			.replace(/&quot;/g, '"')
 			.replace(/<\/?i>/g, '*')
+			.replace(/<\/?b>/g, '**')
 			.replace(/~!|!~/g, '||')
 			.replace(/&mdash;/g, '—');
 		if (clean.length > 2000) clean = `${clean.substr(0, 1995)}...`;
