@@ -4,10 +4,17 @@ const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
 const { cleanAnilistHTML } = require('../../util/Util');
+const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
-		anime: Page (perPage: 1) {
-			results: media (type: $type, isAdult: $isAdult, search: $search) { id }
+		anime: Page (perPage: 10) {
+			results: media (type: $type, isAdult: $isAdult, search: $search) {
+				id
+				title {
+					english
+					romaji
+				}
+			}
 		}
 	}
 `;
@@ -18,9 +25,12 @@ const resultGraphQL = stripIndents`
 			idMal
 			title {
 				english
-				userPreferred
+				romaji
 			}
-			coverImage { large }
+			coverImage {
+				large
+				medium
+			}
 			startDate { year }
 			description(asHtml: false)
 			siteUrl
@@ -30,6 +40,20 @@ const resultGraphQL = stripIndents`
 			chapters
 			isAdult
 			meanScore
+		}
+	}
+`;
+const personalGraphQL = stripIndents`
+	query ($name: String, $type: MediaType) {
+		MediaListCollection(userName: $name, type: $type) {
+			lists {
+				entries {
+					mediaId
+					score(format: POINT_10)
+					status
+				}
+				name
+			}
 		}
 	}
 `;
@@ -70,6 +94,8 @@ module.exports = class MangaCommand extends Command {
 				}
 			]
 		});
+
+		this.personalList = null;
 	}
 
 	async run(msg, { query }) {
@@ -77,18 +103,21 @@ module.exports = class MangaCommand extends Command {
 			const id = await this.search(query);
 			if (!id) return msg.say('Could not find any results.');
 			const manga = await this.fetchManga(id);
+			if (!this.personalList) await this.fetchPersonalList();
+			const entry = this.personalList.find(manga => manga.mediaId === id);
 			const malScore = await this.fetchMALScore(manga.idMal);
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
 				.setURL(manga.siteUrl)
 				.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
-				.setTitle(manga.title.english || manga.title.userPreferred)
+				.setTitle(manga.title.english || manga.title.romaji)
 				.setDescription(manga.description ? cleanAnilistHTML(manga.description) : 'No description.')
 				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
 				.addField('❯ Year', manga.startDate.year || '???', true)
 				.addField('❯ Average Score', manga.meanScore ? `${manga.meanScore}/100` : '???', true)
+				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '?/10', true)
 				.addField(`❯ MAL Score`, malScore ? `${malScore}/10` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
@@ -131,5 +160,23 @@ module.exports = class MangaCommand extends Command {
 		} catch {
 			return null;
 		}
+	}
+
+	async fetchPersonalList() {
+		if (this.personalList) return this.personalList;
+		const { body } = await request
+			.post('https://graphql.anilist.co/')
+			.send({
+				variables: {
+					name: ANILIST_USERNAME,
+					type: 'MANGA'
+				},
+				query: personalGraphQL
+			});
+		const { lists } = body.data.MediaListCollection;
+		this.personalList = [];
+		for (const list of Object.values(lists)) this.personalList.push(...list.entries);
+		setTimeout(() => { this.personalList = null; }, 3.6e+6);
+		return this.personalList;
 	}
 };

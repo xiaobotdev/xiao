@@ -69,20 +69,12 @@ const statuses = {
 	NOT_YET_RELEASED: 'Unreleased',
 	CANCELLED: 'Cancelled'
 };
-const userStatuses = {
-	CURRENT: 'Watching',
-	PLANNING: 'Planning',
-	COMPLETED: 'Completed',
-	DROPPED: 'Dropped',
-	PAUSED: 'Paused',
-	REPEATING: 'Rewatching'
-};
 
 module.exports = class AnimeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'anime',
-			aliases: ['anilist-anime', 'anilist'],
+			aliases: ['anilist-anime', 'anilist', 'ani', 'myanimelist', 'mal', 'mal-score'],
 			group: 'search',
 			memberName: 'anime',
 			description: 'Searches AniList for your query, getting anime results.',
@@ -117,7 +109,7 @@ module.exports = class AnimeCommand extends Command {
 			const id = await this.search(query);
 			if (!id) return msg.say('Could not find any results.');
 			const anime = await this.fetchAnime(id);
-			await this.fetchPersonalList();
+			if (!this.personalList) await this.fetchPersonalList();
 			const entry = this.personalList.find(ani => ani.mediaId === id);
 			const malScore = await this.fetchMALScore(anime.idMal);
 			const embed = new MessageEmbed()
