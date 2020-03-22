@@ -106,7 +106,7 @@ module.exports = class MangaCommand extends Command {
 			if (!this.personalList) await this.fetchPersonalList();
 			const entry = this.personalList.find(ma => ma.mediaId === id);
 			const malScore = await this.fetchMALScore(manga.idMal);
-			const malURL = `https://myanimelist.net/manga/${anime.idMal}`;
+			const malURL = `https://myanimelist.net/manga/${manga.idMal}`;
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
