@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { shortenText } = require('../../util/Canvas');
+const { shortenText, centerImagePart } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
@@ -60,21 +60,8 @@ module.exports = class DemotivationalCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'black';
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
-			let { width, height } = data;
-			const maxWidth = 602;
-			if (width > maxWidth) {
-				const ratio = maxWidth / width;
-				width = maxWidth;
-				height *= ratio;
-			}
-			const maxHeight = 402;
-			if (height > maxHeight) {
-				const ratio = maxHeight / height;
-				height = maxHeight;
-				width *= ratio;
-			}
+			const { y, width, height } = centerImagePart(data, 602, 402, 0, 44);
 			const x = (canvas.width / 2) - (width / 2);
-			const y = 44 + ((402 / 2) - (height / 2));
 			ctx.fillStyle = 'white';
 			ctx.fillRect(x - 4, y - 4, width + 8, height + 8);
 			ctx.fillStyle = 'black';

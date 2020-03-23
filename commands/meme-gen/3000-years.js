@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { centerImagePart } = require('../../util/Canvas');
 
 module.exports = class ThreeThousandYearsCommand extends Command {
 	constructor(client) {
@@ -25,10 +26,10 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 			],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
@@ -43,7 +44,8 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 461, 127, 200, 200);
+			const { x, y, width, height } = centerImagePart(avatar, 200, 200, 461, 127);
+			ctx.drawImage(avatar, x, y, width, height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
