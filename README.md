@@ -758,6 +758,7 @@ here.
 	* karen ([API](https://apidocs.imgur.com/))
 	* kill ([API](https://apidocs.imgur.com/))
 	* kiss ([API](https://apidocs.imgur.com/))
+	* lando ([API](https://apidocs.imgur.com/))
 	* pat ([API](https://apidocs.imgur.com/))
 	* poke ([API](https://apidocs.imgur.com/))
 	* potato ([API](https://apidocs.imgur.com/))
