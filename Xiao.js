@@ -18,7 +18,8 @@ client.registry
 	.registerGroups([
 		['util', 'Utility'],
 		['info', 'Discord Information'],
-		['random', 'Random Response'],
+		['random-res', 'Random Response'],
+		['random-img', 'Random Image'],
 		['single', 'Single Response'],
 		['auto', 'Automatic Response'],
 		['seeded', 'Seeded Randomizers'],
