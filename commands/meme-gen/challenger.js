@@ -33,16 +33,16 @@ module.exports = class ChallengerCommand extends Command {
 			],
 			args: [
 				{
-					key: 'image',
-					prompt: 'What image would you like to edit?',
-					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
-				},
-				{
 					key: 'silhouetted',
 					prompt: 'Should the image be silhouetted?',
 					type: 'boolean',
 					default: false
+				},
+				{
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}
 			]
 		});
