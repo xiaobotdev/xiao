@@ -1,24 +1,32 @@
 {
 	"names": [
 		{
-			"language": "en",
+			"language": {
+				"name": "en"
+			},
 			"name": "MissingNo."
 		},
 		{
-			"language": "ja",
+			"language": {
+				"name": "ja"
+			},
 			"name": "けつばん"
 		}
 	],
 	"flavor_text_entries": [
 		{
-			"language": "en",
+			"language": {
+				"name": "en"
+			},
 			"flavor_text": "Comment to be written."
 		}
 	],
 	"id": 0,
 	"genera": [
 		{
-			"language": "en",
+			"language": {
+				"name": "en"
+			},
 			"genus": "???"
 		}
 	],
