@@ -21,7 +21,8 @@ module.exports = class GenerateProcessEnvCommand extends Command {
 		const list = data.split('\n').map(line => {
 			if (!line) return '';
 			if (line.startsWith('#')) return line;
-			return `${line}"${process.env[line.replace('=', '')]}"`;
+			line = line.replace('=', '');
+			return `${line}="${process.env[line] || ''}"`;
 		}).join('\n');
 		return msg.channel.send({ files: [{ attachment: Buffer.from(list), name: 'provess.env.txt' }] });
 	}
