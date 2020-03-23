@@ -11,7 +11,7 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 			aliases: ['3ky', '3k-years'],
 			group: 'meme-gen',
 			memberName: '3000-years',
-			description: 'Draws a user\'s avatar over Pokémon\'s "It\'s been 3000 years" meme.',
+			description: 'Draws an image or a user\'s avatar over Pokémon\'s "It\'s been 3000 years" meme.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -29,23 +29,22 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 					key: 'image',
 					prompt: 'What image would you like to edit?',
 					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', '3000-years.png'));
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
+			const { body } = await request.get(image);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			const { x, y, width, height } = centerImagePart(avatar, 200, 200, 461, 127);
-			ctx.drawImage(avatar, x, y, width, height);
+			const { x, y, width, height } = centerImagePart(data, 200, 200, 461, 127);
+			ctx.drawImage(data, x, y, width, height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: '3000-years.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
