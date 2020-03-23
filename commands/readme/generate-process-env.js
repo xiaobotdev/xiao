@@ -1,0 +1,28 @@
+const Command = require('../../structures/Command');
+const fs = require('fs');
+const path = require('path');
+
+module.exports = class GenerateProcessEnvCommand extends Command {
+	constructor(client) {
+		super(client, {
+			name: 'generate-process-env',
+			aliases: ['gen-process-env', 'generate-env', 'gen-env'],
+			group: 'readme',
+			memberName: 'generate-commands',
+			description: 'Generates a backup list of Xiao\'s `process.env`.',
+			details: 'Only the bot owner(s) may use this command.',
+			ownerOnly: true,
+			guarded: true
+		});
+	}
+
+	run(msg) {
+		const data = fs.readFileSync(path.join(__dirname, '..', '..', '.env.example')).split('\n');
+		const list = data.map(line => {
+			if (!line) return '';
+			if (line.startsWith('#')) return line;
+			return `${line}"${process.env[line.replace('=', '')]}"`;
+		}).join('\n');
+		return msg.channel.send({ files: [{ attachment: Buffer.from(list), name: 'provess.env.txt' }] });
+	}
+};
