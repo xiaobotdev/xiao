@@ -1,6 +1,7 @@
 const Collection = require('@discordjs/collection');
 const request = require('node-superfetch');
 const Pokemon = require('./Pokemon');
+const missingno = require('../../assets/json/missingno');
 
 module.exports = class PokemonStore extends Collection {
 	async fetch(query) {
@@ -9,6 +10,11 @@ module.exports = class PokemonStore extends Collection {
 		if (this.has(num)) return this.get(num);
 		const found = this.find(pokemon => pokemon.slug === query);
 		if (found) return found;
+		if (query === 'missingno' || num === 0) {
+			const pokemon = new Pokemon(missingno);
+			this.set(pokemon.id, pokemon);
+			return pokemon;
+		}
 		const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon-species/${query}/`);
 		const pokemon = new Pokemon(body);
 		this.set(pokemon.id, pokemon);
