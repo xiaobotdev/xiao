@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { centerImagePart } = require('../../util/Canvas');
 
 module.exports = class GirlWorthFightingForCommand extends Command {
 	constructor(client) {
@@ -10,7 +11,7 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 			aliases: ['a-girl-worth-fighting-for', 'ling'],
 			group: 'meme-gen',
 			memberName: 'girl-worth-fighting-for',
-			description: 'Draws a user\'s avatar as the object of Ling\'s affection.',
+			description: 'Draws an image or a user\'s avatar as the object of Ling\'s affection.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -32,25 +33,25 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 			],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'girl-worth-fighting-for.png'));
-			const { body } = await request.get(avatarURL);
+			const { body } = await request.get(image);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 380, 511, 150, 150);
+			const { x, y, width, height } = centerImagePart(avatar, 150, 150, 380, 511);
+			ctx.drawImage(avatar, x, y, width, height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'girl-worth-fighting-for.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

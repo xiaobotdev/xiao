@@ -8,9 +8,9 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 		super(client, {
 			name: 'look-at-this-photograph',
 			aliases: ['nickelback', 'look-at-this-photo', 'photograph'],
-			group: 'avatar-edit',
+			group: 'meme-gen',
 			memberName: 'look-at-this-photograph',
-			description: 'Draws a user\'s avatar over Nickelback\'s photograph.',
+			description: 'Draws an image or a user\'s avatar over Nickelback\'s photograph.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -26,20 +26,19 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 			],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'look-at-this-photograph.png'));
-			const { body } = await request.get(avatarURL);
+			const { body } = await request.get(image);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');

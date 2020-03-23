@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { centerImagePart } = require('../../util/Canvas');
 
 module.exports = class UltimateTattooCommand extends Command {
 	constructor(client) {
@@ -10,7 +11,7 @@ module.exports = class UltimateTattooCommand extends Command {
 			aliases: ['the-ultimate-tattoo', 'tattoo'],
 			group: 'meme-gen',
 			memberName: 'ultimate-tattoo',
-			description: 'Draws a user\'s avatar as "The Ultimate Tattoo".',
+			description: 'Draws an image or a user\'s avatar as "The Ultimate Tattoo".',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -31,26 +32,26 @@ module.exports = class UltimateTattooCommand extends Command {
 			],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'ultimate-tattoo.png'));
-			const { body } = await request.get(avatarURL);
+			const { body } = await request.get(image);
 			const avatar = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-10 * (Math.PI / 180));
-			ctx.drawImage(avatar, 84, 690, 300, 300);
+			const { x, y, width, height } = centerImagePart(avatar, 300, 300, 84, 690);
+			ctx.drawImage(avatar, x, y, width, height);
 			ctx.rotate(10 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ultimate-tattoo.png' }] });
 		} catch (err) {
