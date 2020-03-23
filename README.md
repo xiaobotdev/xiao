@@ -118,7 +118,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 372
+Total: 373
 
 ### Utility:
 
@@ -157,37 +157,27 @@ Total: 372
 * **8-ball:** Asks your question to the Magic 8 Ball.
 * **advice:** Responds with a random bit of advice.
 * **axis-cult:** Responds with a teaching of the Axis Cult.
-* **bird:** Responds with a random image of a bird.
 * **cat-fact:** Responds with a random cat fact.
-* **cat:** Responds with a random cat image.
 * **charlie-charlie:** Asks your question to Charlie.
 * **choose:** Chooses between options you provide.
 * **chuck-norris:** Responds with a random Chuck Norris joke.
 * **coin:** Flips a coin.
 * **compliment:** Compliments a user.
 * **dog-fact:** Responds with a random dog fact.
-* **dog:** Responds with a random dog image.
 * **draw-cards:** Draws a random hand of playing cards.
-* **duck:** Responds with a random duck image.
 * **fact-core:** Responds with a random Fact Core quote.
 * **fact:** Responds with a random fact.
-* **fidget:** Responds with a random image of Fidget.
 * **fortune:** Responds with a random fortune.
-* **fox:** Responds with a random fox image.
 * **github-zen:** Responds with a random GitHub design philosophy.
 * **joke:** Responds with a random joke.
-* **karen:** Responds with a random image of Karen.
 * **kiss-marry-kill:** Determines who to kiss, who to marry, and who to kill.
-* **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **light-novel-title:** Responds with a randomly generated Light Novel title.
 * **magic-conch:** Asks your question to the Magic Conch.
-* **meme:** Responds with a random meme.
 * **name:** Responds with a random name, with the gender of your choice.
 * **number-fact:** Responds with a random fact about a specific number.
 * **offspring:** Determines if your new child will be a boy or a girl.
 * **opinion:** Determines the opinion on something.
 * **oracle-turret:** Responds with a random Oracle Turret quote.
-* **potato:** Responds with a random potato image.
 * **pun:** Responds with a random pun.
 * **quantum-coin:** Flips a coin that lands on some form of nothing.
 * **quote:** Responds with a random quote.
@@ -196,7 +186,6 @@ Total: 372
 * **roast:** Roasts a user.
 * **roll:** Rolls a dice with a maximum value of your choice.
 * **security-key:** Responds with a random security key.
-* **shiba:** Responds with a random image of a Shiba Inu.
 * **shower-thought:** Responds with a random shower thought, directly from r/Showerthoughts.
 * **smw-level:** Responds with a random Super Mario World level name.
 * **subreddit:** Responds with a random post from a subreddit.
@@ -205,6 +194,21 @@ Total: 372
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
 * **waifu:** Responds with a randomly generated waifu and backstory.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
+
+### Random Image:
+
+* **bird:** Responds with a random image of a bird.
+* **cat:** Responds with a random cat image.
+* **dog:** Responds with a random dog image.
+* **duck:** Responds with a random duck image.
+* **fidget:** Responds with a random image of Fidget.
+* **fox:** Responds with a random fox image.
+* **karen:** Responds with a random image of Karen.
+* **lando:** Responds with a random image of Lando Calrissian.
+* **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
+* **meme:** Responds with a random meme.
+* **potato:** Responds with a random potato image.
+* **shiba:** Responds with a random image of a Shiba Inu.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Single Response:
@@ -972,6 +976,8 @@ here.
 	* sora-selfie ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
 - [Stack Exchange](https://stackexchange.com/)
 	* stack-overflow ([API](https://api.stackexchange.com/docs))
+- [Star Wars](https://www.starwars.com/)
+	* lando (Original Movie)
 - [Steam](https://store.steampowered.com/)
 	* steam (API)
 	* steam-card ([Original Design](https://steamcommunity.com/tradingcards/))
