@@ -138,7 +138,8 @@ module.exports = class Util {
 
 	static cleanAnilistHTML(html) {
 		let clean = html
-			.replace(/(<br>)+/g, '\n')
+			.replace(/\n/g, '')
+			.replace(/<br>/g, '\n')
 			.replace(/&#039;/g, '\'')
 			.replace(/&quot;/g, '"')
 			.replace(/<\/?i>/g, '*')
