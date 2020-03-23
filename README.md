@@ -383,6 +383,7 @@ Total: 372
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **create-qr-code:** Converts text to a QR Code.
+* **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **fire:** Draws a fiery border over an image or a user's avatar.
 * **frame:** Draws a frame around an image or a user's avatar.
@@ -408,13 +409,10 @@ Total: 372
 
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
 * **bob-ross:** Draws a user's avatar over Bob Ross' canvas.
-* **challenger:** Draws a user's avatar over Super Smash Bros.'s "Challenger Approaching" screen.
-* **dexter:** Draws a user's avatar over the screen of Dexter from Pokémon.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **hearts:** Draws hearts around a user's avatar.
 * **i-have-the-power:** Draws a user's avatar over He-Man's face.
-* **look-at-this-photograph:** Draws a user's avatar over Nickelback's photograph.
 * **look-what-karen-have:** Draws a user's avatar over Karen's piece of paper.
 * **rip:** Draws a user's avatar over a gravestone.
 * **sip:** Draws a user's avatar sipping tea.
@@ -428,20 +426,22 @@ Total: 372
 
 ### Meme Generators:
 
-* **3000-years:** Draws a user's avatar over Pokémon's "It's been 3000 years" meme.
+* **3000-years:** Draws an image or a user's avatar over Pokémon's "It's been 3000 years" meme.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
+* **challenger:** Draws an image or a user's avatar over Smash Bros.'s "Challenger Approaching" screen.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
-* **girl-worth-fighting-for:** Draws a user's avatar as the object of Ling's affection.
+* **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
 * **illegal:** Makes President Trump make your text illegal.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
+* **look-at-this-photograph:** Draws an image or a user's avatar over Nickelback's photograph.
 * **meme-gen:** Sends a meme with the text and background of your choice.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
@@ -451,9 +451,9 @@ Total: 372
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
-* **ultimate-tattoo:** Draws a user's avatar as "The Ultimate Tattoo".
+* **ultimate-tattoo:** Draws an image or a user's avatar as "The Ultimate Tattoo".
 * **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
-* **worthless:** Draws a user's avatar over Gravity Falls' "Oh, this? This is worthless." meme.
+* **worthless:** Draws an image or a user's avatar over Gravity Falls' "This is worthless." meme.
 
 ### Text Manipulation:
 
