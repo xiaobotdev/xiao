@@ -1,3 +1,5 @@
+const { createCanvas } = require('canvas');
+
 module.exports = class CanvasUtil {
 	static greyscale(ctx, x, y, width, height) {
 		const data = ctx.getImageData(x, y, width, height);
@@ -75,6 +77,20 @@ module.exports = class CanvasUtil {
 		}
 		ctx.putImageData(data, x, y);
 		return ctx;
+	}
+
+	static hasAlpha(image) {
+		const canvas = createCanvas(image.width, image.height);
+		const ctx = canvas.getContext('2d');
+		const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+		let hasAlphaPixels = false;
+		for (let i = 3, n = data.length; i < n; i += 4) {
+			if (data[i] < 255) {
+				hasAlphaPixels = true;
+				break;
+			}
+		}
+		return hasAlphaPixels;
 	}
 
 	static drawImageWithTint(ctx, image, color, x, y, width, height) {
