@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { silhouette, centerImagePart } = require('../../util/Canvas');
+const { silhouette, hasAlpha, centerImagePart } = require('../../util/Canvas');
 
 module.exports = class ChallengerCommand extends Command {
 	constructor(client) {
@@ -36,7 +36,7 @@ module.exports = class ChallengerCommand extends Command {
 					key: 'silhouetted',
 					prompt: 'Should the image be silhouetted?',
 					type: 'boolean',
-					default: false
+					default: true
 				},
 				{
 					key: 'image',
@@ -65,6 +65,7 @@ module.exports = class ChallengerCommand extends Command {
 	}
 
 	silhouetteImage(image) {
+		if (!hasAlpha(image)) return image;
 		const canvas = createCanvas(image.width, image.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(image, 0, 0);
