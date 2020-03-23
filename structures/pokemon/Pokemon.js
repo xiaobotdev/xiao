@@ -1,4 +1,5 @@
 const { removeDuplicates } = require('../../util/Util');
+const missingno = require('../../assets/json/missingno');
 
 module.exports = class Pokemon {
 	constructor(data) {
@@ -21,17 +22,17 @@ module.exports = class Pokemon {
 	}
 
 	get spriteImageURL() {
-		if (this.missingno) return 'https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png';
+		if (this.missingno) return missingno.sprite;
 		return `https://www.serebii.net/sunmoon/pokemon/${this.displayID}.png`;
 	}
 
 	get boxImageURL() {
-		if (this.missingno) return 'https://cdn.bulbagarden.net/upload/1/1f/AniMS_Missingno_I.png';
+		if (this.missingno) return missingno.box;
 		return `https://www.serebii.net/pokedex-sm/icon/${this.displayID}.png`;
 	}
 
 	get serebiiURL() {
-		if (this.missingno) return 'https://bulbapedia.bulbagarden.net/wiki/MissingNo.';
+		if (this.missingno) return missingno.url;
 		return `https://www.serebii.net/pokedex-sm/${this.displayID}.shtml`;
 	}
 };
