@@ -82,9 +82,10 @@ module.exports = class CanvasUtil {
 	static hasAlpha(image) {
 		const canvas = createCanvas(image.width, image.height);
 		const ctx = canvas.getContext('2d');
+		ctx.drawImage(image, 0, 0);
 		const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
 		let hasAlphaPixels = false;
-		for (let i = 3, n = data.length; i < n; i += 4) {
+		for (let i = 3; i < data.length; i += 4) {
 			if (data[i] < 255) {
 				hasAlphaPixels = true;
 				break;
