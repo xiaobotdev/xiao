@@ -119,7 +119,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 374
+Total: 375
 
 ### Utility:
 
@@ -336,6 +336,7 @@ Total: 374
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **face:** Determines the race, gender, and age of a face.
 * **gender:** Determines the gender of a name.
+* **has-transparency:** Determines if an image has transparency in it.
 * **read-qr-code:** Reads a QR Code.
 * **scrabble-score:** Responds with the scrabble score of a word.
 * **severe-toxicity:** Determines the toxicity of text, but less sensitive to milder language.
