@@ -41,6 +41,7 @@ module.exports = class PokedexCommand extends Command {
 	async run(msg, { pokemon }) {
 		try {
 			const data = await this.client.pokemon.fetch(pokemon);
+			if (!data) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
