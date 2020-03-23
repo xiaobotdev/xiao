@@ -118,7 +118,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 373
+Total: 374
 
 ### Utility:
 
@@ -551,6 +551,7 @@ Total: 373
 
 * **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
 * **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
+* **generate-process-env:** Generates a backup list of Xiao's `process.env`. (Owner-Only)
 
 ## Licensing
 
