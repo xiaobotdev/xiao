@@ -21,8 +21,9 @@ module.exports = class PokemonStore extends Collection {
 			const pokemon = new Pokemon(body);
 			this.set(pokemon.id, pokemon);
 			return pokemon;
-		} catch {
-			return null;
+		} catch (err) {
+			if (err.status === 404) return null;
+			throw err;
 		}
 	}
 };
