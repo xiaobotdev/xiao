@@ -12,7 +12,9 @@ module.exports = class Pokemon {
 		this.names = data.names.map(entry => ({ name: entry.name, language: entry.language.name }));
 		this.genus = `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`;
 		this.varieties = data.varieties.map(variety => {
-			const name = firstUpperCase(variety.pokemon.name.replace(new RegExp(`${this.slug}-?`, 'i'), ''));
+			const name = firstUpperCase(variety.pokemon.name
+				.replace(new RegExp(`${this.slug}-?`, 'i'), '')
+				.replace(/-/g, ' '));
 			return {
 				id: variety.pokemon.name,
 				name: name || null,

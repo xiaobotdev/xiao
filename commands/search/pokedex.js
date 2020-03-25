@@ -51,9 +51,10 @@ module.exports = class PokedexCommand extends Command {
 					${data.entries[Math.floor(Math.random() * data.entries.length)]}
 				`)
 				.setThumbnail(data.spriteImageURL)
-				.addField('❯ Types', data.varieties.filter(variety => variety.display).map(
-					variety => `${variety.types.join('/')}${variety.name ? ` (${variety.name})` : ''}`
-				).join('\n'));
+				.addField('❯ Types', data.varieties.filter(variety => variety.display).map(variety => {
+					const showParens = variety.name && data.varieties.length > 1;
+					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
+				}).join('\n'));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
