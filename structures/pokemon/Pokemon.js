@@ -13,7 +13,13 @@ module.exports = class Pokemon {
 		this.genus = `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`;
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name.replace(new RegExp(`${this.slug}-?`, 'i'), ''));
-			return { id: variety.pokemon.name, name: name || null, default: variety.is_default, types: [] };
+			return {
+				id: variety.pokemon.name,
+				name: name || null,
+				default: variety.is_default,
+				display: null,
+				types: []
+			};
 		});
 		this.typesCached = false;
 		this.missingno = data.missingno || false;
@@ -47,9 +53,17 @@ module.exports = class Pokemon {
 		if (this.missingno) {
 			this.varieties[0].types.push(...missingno.types);
 		} else {
+			const defaultVariety = this.varieties.find(variety => variety.default);
+			const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
+			defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
+			defaultVariety.display = true;
 			for (const variety of this.varieties) {
+				if (variety.id === defaultVariety.id) continue;
 				const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
 				variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
+				if (variety.types[0] === defaultVariety.types[0] && variety.types[1] === defaultVariety.types[1]) {
+					variety.display = false;
+				}
 			}
 		}
 		this.typesCached = true;

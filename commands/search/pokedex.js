@@ -51,7 +51,7 @@ module.exports = class PokedexCommand extends Command {
 					${data.entries[Math.floor(Math.random() * data.entries.length)]}
 				`)
 				.setThumbnail(data.spriteImageURL)
-				.addField('❯ Types', data.varieties.map(
+				.addField('❯ Types', data.varieties.filter(variety => variety.display).map(
 					variety => `${variety.types.join('/')}${variety.name ? ` (${variety.name})` : ''}`
 				).join('\n'));
 			return msg.embed(embed);
