@@ -19,7 +19,7 @@ module.exports = class Pokemon {
 				id: variety.pokemon.name,
 				name: name || null,
 				default: variety.is_default,
-				display: null,
+				display: data.missingno ? true : null,
 				types: []
 			};
 		});
