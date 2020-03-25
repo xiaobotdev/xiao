@@ -42,6 +42,7 @@ module.exports = class PokedexCommand extends Command {
 		try {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
+			if (!data.typesCached) await data.fetchTypes();
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
@@ -49,7 +50,10 @@ module.exports = class PokedexCommand extends Command {
 					**${data.genus}**
 					${data.entries[Math.floor(Math.random() * data.entries.length)]}
 				`)
-				.setThumbnail(data.spriteImageURL);
+				.setThumbnail(data.spriteImageURL)
+				.addField('❯ Types', data.varieties.map(
+					variety => `${variety.types.join('/')}${variety.name ? ` (${variety.name})` : ''}`
+				).join('\n'));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

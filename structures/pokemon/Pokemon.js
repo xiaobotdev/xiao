@@ -1,4 +1,5 @@
-const { removeDuplicates } = require('../../util/Util');
+const request = require('node-superfetch');
+const { removeDuplicates, firstUpperCase } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
 
 module.exports = class Pokemon {
@@ -10,6 +11,11 @@ module.exports = class Pokemon {
 			.map(entry => entry.flavor_text.replace(/\n|\f|\r/g, ' ')));
 		this.names = data.names.map(entry => ({ name: entry.name, language: entry.language.name }));
 		this.genus = `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`;
+		this.varieties = data.varieties.map(variety => {
+			const name = firstUpperCase(variety.pokemon.name.replace(new RegExp(`${this.slug}-?`, 'i'), ''));
+			return { id: variety.pokemon.name, name: name || null, default: variety.is_default, types: [] };
+		});
+		this.typesCached = false;
 		this.missingno = data.missingno || false;
 	}
 
@@ -34,5 +40,19 @@ module.exports = class Pokemon {
 	get serebiiURL() {
 		if (this.missingno) return missingno.url;
 		return `https://www.serebii.net/pokedex-sm/${this.displayID}.shtml`;
+	}
+
+	async fetchTypes() {
+		if (this.typesCached) return this;
+		if (this.missingno) {
+			this.varieties[0].types.push(...missingno.types);
+		} else {
+			for (const variety of this.varieties) {
+				const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
+				variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
+			}
+		}
+		this.typesCached = true;
+		return this;
 	}
 };
