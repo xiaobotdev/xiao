@@ -119,7 +119,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 375
+Total: 376
 
 ### Utility:
 
@@ -384,6 +384,7 @@ Total: 375
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **apple-engraving:** Engraves the text of your choice onto an Apple product.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
+* **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
@@ -612,6 +613,8 @@ here.
 	* bulbapedia ([API](https://bulbapedia.bulbagarden.net/w/api.php))
 - [Bulletin of the Atomic Scientists](https://thebulletin.org/)
 	* doomsday-clock ([Doomsday Clock Data](https://thebulletin.org/doomsday-clock/current-time/))
+- [cheesecakejedi](https://imgur.com/user/cheesecakejedi)
+	* axis-cult-sign-up ([Image](https://imgur.com/gallery/quQTD))
 - [Christoph Mueller](https://www.fontsquirrel.com/fonts/list/foundry/christoph-mueller)
 	* captcha ([Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter))
 - [Chuck Norris](https://chucknorris.com/)
@@ -731,6 +734,8 @@ here.
 	* brony-speak ([Original "My Little Pony: Friendship is Magic" Show](https://mylittlepony.hasbro.com/en-us))
 	* connect-four (Original "Connect Four" Game)
 	* scrabble-score ([Original Scrabble Game](https://scrabble.hasbro.com/en-us))
+- [hbl917070](https://github.com/hbl917070)
+	* axis-cult-sign-up ([Font](https://github.com/hbl917070/Konosuba-text))
 - [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas)
 	* vietnam-flashbacks (Image)
 - [HTTP Cats](https://http.cat/)
@@ -804,6 +809,7 @@ here.
 	* yu-gi-oh-token ([Image, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
 - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
 	* axis-cult (Original Anime)
+	* axis-cult-sign-up (Original Anime)
 	* hat (Megumin Hat Original Anime)
 	* kazuma-kazuma (Original Anime)
 - [Latlmes](https://www.latlmes.com/)
