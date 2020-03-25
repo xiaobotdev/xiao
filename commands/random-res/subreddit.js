@@ -11,6 +11,7 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 			memberName: 'subreddit',
 			description: 'Responds with a random post from a subreddit.',
 			clientPermissions: ['EMBED_LINKS'],
+			patterns: [/^r\/(.+)/i],
 			getIcon: true,
 			args: [
 				{
@@ -24,14 +25,15 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 	}
 
 	generateText(post, subreddit, icon) {
-		return new MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor(0xFF4500)
 			.setAuthor(`r/${subreddit}`, icon, `https://www.reddit.com/r/${subreddit}/`)
 			.setTitle(post.title)
 			.setImage(post.post_hint === 'image' ? post.url : null)
-			.setThumbnail(post.post_hint === 'image' ? null : post.thumbnail)
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
 			.setFooter(`⬆ ${formatNumber(post.score)}`);
+		if (post.thumbnail && post.post_hint !== 'image') embed.setThumbnail(post.thumbnail);
+		return embed;
 	}
 };
