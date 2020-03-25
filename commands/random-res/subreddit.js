@@ -33,7 +33,9 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
 			.setFooter(`⬆ ${formatNumber(post.score)}`);
-		if (post.thumbnail && post.post_hint !== 'image') embed.setThumbnail(post.thumbnail);
+		if (post.thumbnail && post.thumbnail !== 'self' && post.post_hint !== 'image') {
+			embed.setThumbnail(post.thumbnail);
+		}
 		return embed;
 	}
 };
