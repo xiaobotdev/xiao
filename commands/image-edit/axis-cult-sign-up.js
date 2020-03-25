@@ -71,7 +71,7 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		ctx.fillText(profession, 960, 2169);
 		ctx.fillText('Xiao', 960, 2370);
 		ctx.font = '123px Konosuba';
-		ctx.fillText('Eris pads\nher chest!', 1037, 3048);
+		ctx.fillText('ERIS PADS\nHER CHEST!', 1037, 2874);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/jpeg'), name: 'axis-cult-sign-up.jpg' }] });
 	}
 };
