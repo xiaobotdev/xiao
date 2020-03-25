@@ -63,6 +63,8 @@ module.exports = class Pokemon {
 				variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
 				if (variety.types[0] === defaultVariety.types[0] && variety.types[1] === defaultVariety.types[1]) {
 					variety.display = false;
+				} else {
+					variety.display = true;
 				}
 			}
 		}
