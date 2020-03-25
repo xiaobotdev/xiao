@@ -47,12 +47,13 @@ module.exports = class AxisCultSignUpCommand extends Command {
 					prompt: 'How old are you?',
 					type: 'integer',
 					min: 1,
-					max: Number.MAX_SAFE_INTEGER
+					max: 10000
 				},
 				{
 					key: 'profession',
 					prompt: 'What is your profession?',
-					type: 'string'
+					type: 'string',
+					max: 15
 				}
 			]
 		});
