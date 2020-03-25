@@ -1,6 +1,6 @@
 const SubredditCommandBase = require('../../structures/commands/Subreddit');
 const { MessageEmbed } = require('discord.js');
-const { formatNumber } = require('../../util/Util');
+const { shorten, formatNumber } = require('../../util/Util');
 
 module.exports = class SubredditCommand extends SubredditCommandBase {
 	constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 		const embed = new MessageEmbed()
 			.setColor(0xFF4500)
 			.setAuthor(`r/${subreddit}`, icon, `https://www.reddit.com/r/${subreddit}/`)
-			.setTitle(post.title)
+			.setTitle(shorten(post.title, 256))
 			.setImage(post.post_hint === 'image' ? post.url : null)
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
