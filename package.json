@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "112.14.3",
+	"version": "112.14.4",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {

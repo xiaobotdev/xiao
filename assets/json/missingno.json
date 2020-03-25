@@ -30,6 +30,18 @@
 			"genus": "??? Pokémon"
 		}
 	],
+	"varieties": [
+		{
+			"is_default": true,
+			"pokemon": {
+				"name": "missingno"
+			}
+		}
+	],
+	"types": [
+		"Bird",
+		"Normal"
+	],
 	"missingno": true,
 	"sprite": "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png",
 	"box": "https://cdn.bulbagarden.net/upload/1/1f/AniMS_Missingno_I.png",
