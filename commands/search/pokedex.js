@@ -43,6 +43,7 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.typesCached) await data.fetchTypes();
+			if (!data.chain.data) await data.fetchChain();
 			const typesShown = data.varieties.filter(variety => variety.display);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
