@@ -21,7 +21,7 @@ module.exports = class Pokemon {
 				name: name || null,
 				default: variety.is_default,
 				display: data.missingno ? true : null,
-				types: data.missingno ? missingno.types : []
+				types: data.missingno ? variety.types : []
 			};
 		});
 		this.chain = { url: data.evolution_chain.url, data: data.missingno ? missingno.chain : [] };

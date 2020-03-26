@@ -35,16 +35,26 @@
 			"is_default": true,
 			"pokemon": {
 				"name": "missingno"
-			}
+			},
+			"types": [
+				"Bird",
+				"Normal"
+			]
+		},
+		{
+			"is_default": false,
+			"pokemon": {
+				"name": "missingno-yellow"
+			},
+			"types": [
+				"Normal",
+				"999"
+			]
 		}
 	],
 	"evolution_chain": {
 		"url": null
 	},
-	"types": [
-		"Bird",
-		"Normal"
-	],
 	"chain": [0],
 	"missingno": true,
 	"sprite": "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png",
