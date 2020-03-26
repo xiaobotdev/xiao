@@ -21,11 +21,11 @@ module.exports = class Pokemon {
 				name: name || null,
 				default: variety.is_default,
 				display: data.missingno ? true : null,
-				types: []
+				types: data.missingno ? missingno.types : []
 			};
 		});
-		this.chain = { url: data.evolution_chain.url, data: [] };
-		this.typesCached = false;
+		this.chain = { url: data.evolution_chain.url, data: data.missingno ? [0] : [] };
+		this.typesCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 	}
 
@@ -54,22 +54,18 @@ module.exports = class Pokemon {
 
 	async fetchTypes() {
 		if (this.typesCached) return this;
-		if (this.missingno) {
-			this.varieties[0].types.push(...missingno.types);
-		} else {
-			const defaultVariety = this.varieties.find(variety => variety.default);
-			const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
-			defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
-			defaultVariety.display = true;
-			for (const variety of this.varieties) {
-				if (variety.id === defaultVariety.id) continue;
-				const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
-				variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
-				if (variety.types[0] === defaultVariety.types[0] && variety.types[1] === defaultVariety.types[1]) {
-					variety.display = false;
-				} else {
-					variety.display = true;
-				}
+		const defaultVariety = this.varieties.find(variety => variety.default);
+		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
+		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
+		defaultVariety.display = true;
+		for (const variety of this.varieties) {
+			if (variety.id === defaultVariety.id) continue;
+			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
+			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
+			if (variety.types[0] === defaultVariety.types[0] && variety.types[1] === defaultVariety.types[1]) {
+				variety.display = false;
+			} else {
+				variety.display = true;
 			}
 		}
 		this.typesCached = true;
