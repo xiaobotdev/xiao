@@ -4,6 +4,7 @@ const request = require('node-superfetch');
 const { list } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 const difficulties = ['easy', 'hard'];
+const pokemonCount = 807;
 
 module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {
@@ -43,13 +44,20 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					oneOf: difficulties,
 					parse: difficulty => difficulty.toLowerCase(),
 					default: 'hard'
+				},
+				{
+					key: 'pokemon',
+					prompt: 'What Pokémon do you want to use?',
+					type: 'integer',
+					max: pokemonCount,
+					min: 0,
+					default: () => Math.floor(Math.random() * (pokemonCount + 1))
 				}
 			]
 		});
 	}
 
-	async run(msg, { difficulty }) {
-		const pokemon = Math.floor(Math.random() * 808);
+	async run(msg, { difficulty, pokemon }) {
 		try {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
