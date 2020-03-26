@@ -62,7 +62,7 @@ module.exports = class PokedexCommand extends Command {
 						return pkmn.map(pkmn2 => {
 							const found = this.client.pokemon.get(pkmn2);
 							if (found.id === data.id) return `**${found.name}**`;
-							return found.name
+							return found.name;
 						}).join('/');
 					}
 					const found = this.client.pokemon.get(pkmn);
