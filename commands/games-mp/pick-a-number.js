@@ -37,7 +37,7 @@ module.exports = class PickANumberCommand extends Command {
 				}
 			}
 			await msg.say(`${msg.author}, pick a number from 1 to 10.`);
-			const userTurn = true;
+			let userTurn = true;
 			let player1Pick;
 			const filter = res => {
 				if (res.author.id !== (userTurn ? msg.author.id : opponent.id)) return false;
