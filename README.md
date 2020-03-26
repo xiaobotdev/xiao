@@ -120,7 +120,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 376
+Total: 377
 
 ### Utility:
 
@@ -375,6 +375,7 @@ Total: 376
 * **connect-four:** Play a game of Connect Four with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **gunfight:** Engage in a western gunfight against another user. High noon.
+* **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **russian-roulette:** Who will pull the trigger and die first?
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
