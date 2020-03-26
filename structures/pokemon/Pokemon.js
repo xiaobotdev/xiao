@@ -3,7 +3,8 @@ const { removeDuplicates, firstUpperCase } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
 
 module.exports = class Pokemon {
-	constructor(data) {
+	constructor(store, data) {
+		this.store = store;
 		this.id = data.id;
 		this.name = data.names.find(entry => entry.language.name === 'en').name;
 		this.entries = removeDuplicates(data.flavor_text_entries
@@ -23,6 +24,7 @@ module.exports = class Pokemon {
 				types: []
 			};
 		});
+		this.chain = { url: data.evolution_chain.url, data: [] };
 		this.typesCached = false;
 		this.missingno = data.missingno || false;
 	}
@@ -72,5 +74,31 @@ module.exports = class Pokemon {
 		}
 		this.typesCached = true;
 		return this;
+	}
+
+	async fetchChain() {
+		if (this.chain.data.length) return this.chain.data;
+		const { body } = await request.get(this.chain.url);
+		const basePkmn = await this.store.fetch(body.chain.species.name);
+		this.chain.data.push(basePkmn.id);
+		if (body.chain.evolves_to.length) {
+			const evolution1 = body.chain.evolves_to;
+			if (!evolution1) return this.chain.data;
+			const evos1 = [];
+			const evos2 = [];
+			for (const evolution of evolution1) {
+				const pkmn = await this.store.fetch(evolution.species.name);
+				evos1.push(pkmn.id);
+				if (evolution.evolves_to) {
+					for (const evolution2 of evolution.evolves_to) {
+						const pkmn2 = await this.store.fetch(evolution2.species.name);
+						evos2.push(pkmn2.id);
+					}
+				}
+			}
+			this.chain.data.push(evos1.length === 1 ? evos1[0] : evos1);
+			if (evos2.length) this.chain.data.push(evos2.length === 1 ? evos2[0] : evos2);
+		}
+		return this.chain.data;
 	}
 };

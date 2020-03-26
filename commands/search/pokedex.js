@@ -55,7 +55,19 @@ module.exports = class PokedexCommand extends Command {
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
-				}).join('\n'));
+				}).join('\n'))
+				.addField('❯ Evolution Chain', data.chain.map(pkmn => {
+					if (Array.isArray(pkmn)) {
+						return pkmn.map(pkmn2 => {
+							const found = this.client.pokemon.get(pkmn2);
+							if (found.id === data.id) return `**${found.name}**`;
+							return found.name
+						}).join('/');
+					}
+					const found = this.client.pokemon.get(pkmn);
+					if (found.id === data.id) return `**${found.name}**`;
+					return found.name;
+				}).join(' -> '));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

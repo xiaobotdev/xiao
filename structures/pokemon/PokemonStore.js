@@ -12,13 +12,13 @@ module.exports = class PokemonStore extends Collection {
 		const found = this.find(pokemon => pokemon.slug === query);
 		if (found) return found;
 		if (query === 'missingno' || num === 0) {
-			const pokemon = new Pokemon(missingno);
+			const pokemon = new Pokemon(this, missingno);
 			this.set(pokemon.id, pokemon);
 			return pokemon;
 		}
 		try {
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon-species/${query}/`);
-			const pokemon = new Pokemon(body);
+			const pokemon = new Pokemon(this, body);
 			this.set(pokemon.id, pokemon);
 			return pokemon;
 		} catch (err) {
