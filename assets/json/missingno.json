@@ -38,6 +38,9 @@
 			}
 		}
 	],
+	"evolution_chain": {
+		"url": null
+	},
 	"types": [
 		"Bird",
 		"Normal"
