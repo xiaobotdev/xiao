@@ -38,13 +38,13 @@ module.exports = class PickANumberCommand extends Command {
 			}
 			await msg.say(`${msg.author}, pick a number from 1 to 10.`);
 			let userTurn = true;
-			let player1Pick;
+			let player1Pick = null;
 			const filter = res => {
 				if (res.author.id !== (userTurn ? msg.author.id : opponent.id)) return false;
-				const num = Number.parseInt(res.content);
+				const num = Number.parseInt(res.content, 10);
 				if (!userTurn && num === player1Pick) return false;
 				return num && nums.includes(num);
-			}
+			};
 			const player1 = await msg.channel.awaitMessages(filter, {
 				max: 1,
 				time: 30000
@@ -53,7 +53,7 @@ module.exports = class PickANumberCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('I guess you didn\'t want to play after all...');
 			}
-			player1Pick = Number.parseInt(player1.first().content);
+			player1Pick = Number.parseInt(player1.first().content, 10);
 			let player2Pick;
 			if (opponent.bot) {
 				const valid = nums.filter(num => num !== player1Pick);
@@ -70,7 +70,7 @@ module.exports = class PickANumberCommand extends Command {
 					this.client.games.delete(msg.channel.id);
 					return msg.say('I guess you didn\'t want to play after all...');
 				}
-				player2Pick = Number.parseInt(player2.first().content);
+				player2Pick = Number.parseInt(player2.first().content, 10);
 			}
 			const num = Math.floor(Math.random() * 10) + 1;
 			const winNum = [player1Pick, player2Pick].sort((a, b) => Math.abs(num - a) - Math.abs(num - b))[0];
