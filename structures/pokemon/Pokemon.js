@@ -30,6 +30,7 @@ module.exports = class Pokemon {
 	}
 
 	get displayID() {
+		if (this.missingno) return '???';
 		return this.id.toString().padStart(3, '0');
 	}
 
