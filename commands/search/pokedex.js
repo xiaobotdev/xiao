@@ -56,7 +56,7 @@ module.exports = class PokedexCommand extends Command {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
 				}).join('\n'))
-				.addField('❯ Evolution Chain', data.chain.map(pkmn => {
+				.addField('❯ Evolution Chain', data.chain.data.map(pkmn => {
 					if (Array.isArray(pkmn)) {
 						return pkmn.map(pkmn2 => {
 							const found = this.client.pokemon.get(pkmn2);
