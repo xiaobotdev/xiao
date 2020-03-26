@@ -34,7 +34,7 @@ module.exports = class Pokemon {
 	}
 
 	get slug() {
-		return encodeURIComponent(this.name.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9-]/g, ''));
+		return this.store.makeSlug(this.name);
 	}
 
 	get spriteImageURL() {

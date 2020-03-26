@@ -5,7 +5,7 @@ const missingno = require('../../assets/json/missingno');
 
 module.exports = class PokemonStore extends Collection {
 	async fetch(query) {
-		query = encodeURIComponent(query.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9-]/g, ''));
+		query = this.makeSlug(query);
 		if (!query) return null;
 		const num = Number.parseInt(query, 10);
 		if (this.has(num)) return this.get(num);
@@ -25,5 +25,9 @@ module.exports = class PokemonStore extends Collection {
 			if (err.status === 404) return null;
 			throw err;
 		}
+	}
+
+	makeSlug(query) {
+		return encodeURIComponent(query.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9-]/g, ''));
 	}
 };

@@ -60,7 +60,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				time: 15000
 			});
 			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${data.name}.`);
-			if (!names.includes(msgs.first().content.toLowerCase())) return msg.reply(`Nope, sorry, it's ${data.name}.`);
+			const guess = msgs.first().content.toLowerCase();
+			const slug = this.client.pokemon.makeSlug(guess);
+			if (!names.includes(guess) && data.slug !== slug) return msg.reply(`Nope, sorry, it's ${data.name}.`);
 			return msg.reply('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
