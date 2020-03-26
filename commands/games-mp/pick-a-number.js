@@ -58,7 +58,7 @@ module.exports = class PickANumberCommand extends Command {
 			if (opponent.bot) {
 				const valid = nums.filter(num => num !== player1Pick);
 				player2Pick = valid[Math.floor(Math.random() * valid.length)];
-				await msg.say(`Okay, ${clientOpp ? 'I' : `${opponent}`} pick${clientOpp ? 's' : ''} ${player2Pick}!`);
+				await msg.say(`Okay, ${clientOpp ? 'I' : `${opponent}`} pick${clientOpp ? '' : 's'} ${player2Pick}!`);
 			} else {
 				userTurn = false;
 				await msg.say(`${opponent}, pick a number from 1 to 10, except ${player1Pick}.`);
