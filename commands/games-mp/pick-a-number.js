@@ -10,7 +10,6 @@ module.exports = class PickANumberCommand extends Command {
 			group: 'games-mp',
 			memberName: 'pick-a-number',
 			description: 'Two players pick a number between 1 and 10. Whoever\'s closer wins.',
-			guildOnly: true,
 			args: [
 				{
 					key: 'opponent',
