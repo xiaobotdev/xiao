@@ -37,7 +37,7 @@ module.exports = class CountryCommand extends Command {
 				.setColor(0x00AE86)
 				.setTitle(data.name)
 				.setThumbnail(`https://www.countryflags.io/${data.alpha2Code}/flat/64.png`)
-				.addField('❯ Population', formatNumber(data.population))
+				.addField('❯ Population', formatNumber(data.population), true)
 				.addField('❯ Capital', data.capital, true)
 				.addField('❯ Currency', data.currencies[0].symbol, true)
 				.addField('❯ Location', data.subregion || data.region, true)
