@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { CLEARBIT_KEY } = process.env;
-const dragonFireAliases = ['dragonfire535', 'dragon fire'];
+const dragonFireAliases = ['dragonfire535', 'dragon fire', 'dragonfire'];
 
 module.exports = class CompanyCommand extends Command {
 	constructor(client) {
@@ -50,7 +50,7 @@ module.exports = class CompanyCommand extends Command {
 		if (dragonFireAliases.includes(query.toLowerCase())) {
 			return {
 				name: 'Dragon Fire',
-				logo: 'https://i.imgur.com/G5BP0kB.png'
+				logo: 'https://i.imgur.com/tHxWaoA.png'
 			};
 		}
 		const { body } = await request
