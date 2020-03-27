@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { CLEARBIT_KEY } = process.env;
+const dragonFireAliases = ['dragonfire535', 'dragon fire'];
 
 module.exports = class CompanyCommand extends Command {
 	constructor(client) {
@@ -31,12 +32,8 @@ module.exports = class CompanyCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await request
-				.get(`https://autocomplete.clearbit.com/v1/companies/suggest`)
-				.query({ query })
-				.set({ Authorization: `Bearer ${CLEARBIT_KEY}` });
-			if (!body.length) return msg.say('Could not find any results.');
-			const data = body[0];
+			const data = await this.fetchCompany(query);
+			if (!data) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
 				.setTitle(data.name)
 				.setImage(data.logo)
@@ -47,5 +44,20 @@ module.exports = class CompanyCommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async fetchCompany(query) {
+		if (dragonFireAliases.includes(query.toLowerCase())) {
+			return {
+				name: 'Dragon Fire',
+				logo: 'https://i.imgur.com/G5BP0kB.png'
+			};
+		}
+		const { body } = await request
+			.get(`https://autocomplete.clearbit.com/v1/companies/suggest`)
+			.query({ query })
+			.set({ Authorization: `Bearer ${CLEARBIT_KEY}` });
+		if (!body.length) return null;
+		return body[0];
 	}
 };
