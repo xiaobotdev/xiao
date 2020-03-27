@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
-const { removeDuplicates } = require('../../util/Util');
 
 module.exports = class PeopleInSpaceCommand extends Command {
 	constructor(client) {
