@@ -120,7 +120,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 380
+Total: 381
 
 ### Utility:
 
@@ -273,6 +273,7 @@ Total: 380
 * **bulbapedia:** Searches Bulbapedia for your query.
 * **character:** Searches AniList for your query, getting character results.
 * **company:** Responds with the name and logo of a company.
+* **country:** Responds with information on a country.
 * **danbooru:** Responds with an image from Danbooru, with optional query. (NSFW)
 * **define:** Defines a word.
 * **derpibooru:** Responds with an image from Derpibooru.
@@ -959,6 +960,8 @@ here.
 	* subreddit ([API](https://www.reddit.com/dev/api/))
 - [Redeeming God](https://redeeminggod.com/)
 	* approved ([Image](https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/))
+- [Rest Countries](https://restcountries.eu/)
+	* country (API)
 - [Right Stuf Anime](https://www.rightstufanime.com/)
 	* right-stuf (API)
 - [Riot Games](https://www.riotgames.com/en)
