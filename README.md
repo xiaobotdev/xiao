@@ -120,7 +120,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 377
+Total: 380
 
 ### Utility:
 
@@ -260,7 +260,9 @@ Total: 377
 * **horoscope:** Responds with today's horoscope for a specific Zodiac sign.
 * **humble-bundle:** Responds with the current Humble Bundle.
 * **is-tuesday:** Determines if today is Tuesday.
+* **iss:** Responds with where the Internation Space Station currently is.
 * **neko-atsume-password:** Responds with today's Neko Atsume password.
+* **people-in-space:** Responds with the people currently in space.
 * **time:** Responds with the current time in a particular location.
 * **today-in-history:** Responds with an event that occurred today in history.
 
@@ -384,6 +386,7 @@ Total: 377
 ### Image Manipulation:
 
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
+* **adorable:** Creates an adorable avatar based on the text you provide.
 * **apple-engraving:** Engraves the text of your choice onto an Apple product.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
@@ -582,6 +585,8 @@ here.
 	* sora-selfie ([Image](https://twitter.com/Candasaurus/status/1041946636656599045))
 - [@liltusk](https://twitter.com/liltusk)
 	* food-broke ([Image](https://twitter.com/liltusk/status/835719948597137408))
+- [Adorable Avatars](http://avatars.adorable.io/)
+	* adorable (API)
 - [Advice Slip](https://adviceslip.com/)
 	* advice ([API](https://api.adviceslip.com/))
 - [Alpha Vantage](https://www.alphavantage.co/)
@@ -894,6 +899,9 @@ here.
 	* npm (API)
 - [Numbers API](http://numbersapi.com/)
 	* number-fact (Trivia API)
+- [Open Notify](http://open-notify.org/)
+	* iss ([ISS Current Location API](http://open-notify.org/Open-Notify-API/ISS-Location-Now/))
+	* people-in-space ([People in Space API](http://open-notify.org/Open-Notify-API/People-In-Space/))
 - [Open Trivia DB](https://opentdb.com/)
 	* quiz ([API](https://opentdb.com/api_config.php))
 	* quiz-duel ([API](https://opentdb.com/api_config.php))
