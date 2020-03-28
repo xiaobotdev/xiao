@@ -47,10 +47,10 @@ module.exports = class LisaPresentationCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.textAlign = 'top';
+		ctx.textBaseline = 'top';
 		ctx.font = '19px Akbar';
 		ctx.fillStyle = 'white';
-		ctx.fillText(shortenText(ctx, `${text.toUpperCase()}\n`.repeat(12).trim(), 500), 30, 35);
+		ctx.fillText(shortenText(ctx, `${text.toUpperCase()}\n`.repeat(12).trim(), 500), 30, 27);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bart-chalkboard.png' }] });
 	}
 };
