@@ -50,7 +50,10 @@ module.exports = class LisaPresentationCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = '19px Akbar';
 		ctx.fillStyle = 'white';
-		ctx.fillText(shortenText(ctx, `${text.toUpperCase()}\n`.repeat(12).trim(), 500), 30, 27);
+		const shortened = shortenText(ctx, text.toUpperCase(), 500);
+		const arr = [];
+		for (let i = 0; i < 12; i++) arr.push(shortened);
+		ctx.fillText(arr.join('\n'), 30, 27);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bart-chalkboard.png' }] });
 	}
 };
