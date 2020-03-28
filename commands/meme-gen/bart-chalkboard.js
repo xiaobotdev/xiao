@@ -8,7 +8,7 @@ module.exports = class LisaPresentationCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'bart-chalkboard',
-			aliases: ['bart'],
+			aliases: ['bart', 'bart-chalk', 'bart-board'],
 			group: 'meme-gen',
 			memberName: 'bart-chalkboard',
 			description: 'Sends a "Bart Chalkboard" meme with the text of your choice.',
