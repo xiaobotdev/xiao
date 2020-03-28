@@ -49,7 +49,8 @@ module.exports = class LisaPresentationCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'top';
 		ctx.font = '19px Akbar';
-		ctx.fillText(shortenText(ctx, `${text}\n`.repeat(12).trim(), 500), 30, 27);
+		ctx.fillStyle = 'white';
+		ctx.fillText(shortenText(ctx, `${text.toUpperCase()}\n`.repeat(12).trim(), 500), 35, 27);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bart-chalkboard.png' }] });
 	}
 };
