@@ -120,7 +120,7 @@ don't grant that permission.
 
 ## Commands
 
-Total: 381
+Total: 382
 
 ### Utility:
 
@@ -391,6 +391,7 @@ Total: 381
 * **apple-engraving:** Engraves the text of your choice onto an Apple product.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
+* **bart-chalkboard:** Sends a "Bart Chalkboard" meme with the text of your choice.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
@@ -798,6 +799,8 @@ here.
 	* jisho (API)
 - [JoJo's Bizzare Adventure](http://www.araki-jojo.com/)
 	* to-be-continued (Original Anime)
+- [Jon Bernhardt](http://web.mit.edu/jonb/www/)
+	* bart-chalkboard ([Akbar Font](https://www.wobblymusic.com/groening/akbar.html))
 - [Kickstarter](https://www.kickstarter.com/)
 	* kickstarter (API)
 - [KINMOZA!](http://www.kinmosa.com/)
