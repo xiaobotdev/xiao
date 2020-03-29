@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
 
-module.exports = class RestartCommand extends Command {
+module.exports = class ShutdownCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'restart',
-			aliases: ['die', 'explode', 'shutdown', 'process.exit'],
+			name: 'shutdown',
+			aliases: ['die', 'explode', 'restart', 'process.exit'],
 			group: 'util',
-			memberName: 'restart',
-			description: 'Restarts the bot.',
+			memberName: 'shutdown',
+			description: 'Shuts down the bot.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,
 			ownerOnly: true,
@@ -23,7 +23,7 @@ module.exports = class RestartCommand extends Command {
 	}
 
 	run(msg, { code }) {
-		this.client.logger.info('[RESTART] Manually restarted.');
+		this.client.logger.info('[SHUTDOWN] Manual shutdown engaged.');
 		process.exit(code);
 		return null;
 	}
