@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { formatNumber, base64 } = require('../../util/Util');
+const { formatNumber, base64, embedURL } = require('../../util/Util');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 const retweetRegex = /^RT @([a-zA-Z0-9_]{1,15}):/;
 
@@ -45,7 +45,7 @@ module.exports = class TwitterCommand extends Command {
 			if (latest) {
 				const statusUser = body.status.retweeted_status ? body.status.text.match(retweetRegex)[1] : body.screen_name;
 				const statusID = body.status.retweeted_status ? body.status.retweeted_status.id_str : body.status.id_str;
-				latest = `[${body.status.text}](https://twitter.com/${statusUser}/status/${statusID})`;
+				latest = embedURL(body.status.text, `https://twitter.com/${statusUser}/status/${statusID}`);
 			} else {
 				latest = body.protected ? '🔒 Protected' : 'No tweets found.';
 			}

@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
-const { cleanAnilistHTML } = require('../../util/Util');
+const { embedURL, cleanAnilistHTML } = require('../../util/Util');
 const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
@@ -125,7 +125,7 @@ module.exports = class AnimeCommand extends Command {
 				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
 				.addField('❯ Average Score', anime.meanScore ? `${anime.meanScore}%` : '???', true)
 				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '?/10', true)
-				.addField(`❯ MAL Score`, malScore ? `[${malScore}](${malURL})` : '???', true);
+				.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

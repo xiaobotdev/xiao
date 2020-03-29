@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
+const { embedURL } = require('../../util/Util');
 
 module.exports = class AvatarCommand extends Command {
 	constructor(client) {
@@ -28,7 +29,7 @@ module.exports = class AvatarCommand extends Command {
 		const embed = new MessageEmbed()
 			.setTitle(user.tag)
 			.setDescription(
-				formats.map(fmt => `[${fmt.toUpperCase()}](${user.displayAvatarURL({ format: fmt, size: 2048 })})`).join(' | ')
+				formats.map(fmt => embedURL(fmt.toUpperCase(), user.displayAvatarURL({ format: fmt, size: 2028 }))).join(' | ')
 			)
 			.setImage(user.displayAvatarURL({ format, size: 2048 }))
 			.setColor(0x00AE86);

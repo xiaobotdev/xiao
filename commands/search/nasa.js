@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
-const { shorten } = require('../../util/Util');
+const { shorten, embedURL } = require('../../util/Util');
 
 module.exports = class NASACommand extends Command {
 	constructor(client) {
@@ -58,6 +58,6 @@ module.exports = class NASACommand extends Command {
 		return text
 			.replace(/<\/?b>/g, '**')
 			.replace(/<\/?i>/g, '*')
-			.replace(/<a href="(https?:\/\/[^ ]+)" rel="nofollow">([^<>]+)<\/a>/g, '[$2]($1)');
+			.replace(/<a href="(https?:\/\/[^ ]+)" rel="nofollow">([^<>]+)<\/a>/g, embedURL('$2', '$1'));
 	}
 };

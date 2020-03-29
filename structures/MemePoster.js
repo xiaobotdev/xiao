@@ -1,5 +1,6 @@
 const { POSTER_ID, POSTER_TOKEN, POSTER_TIME } = process.env;
 const request = require('node-superfetch');
+const { embedURL } = require('../util/Util');
 const subreddits = require('../assets/json/meme');
 const types = ['image', 'rich:video'];
 
@@ -17,11 +18,10 @@ module.exports = class MemePoster {
 			const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
 			const post = await this.fetchMeme(subreddit);
 			if (!post) return;
+			const url = embedURL(post.title, `<https://www.reddit.com${post.permalink}>`);
 			await request
 				.post(`https://discordapp.com/api/webhooks/${this.id}/${this.token}`)
-				.send({
-					content: `**r/${subreddit}** [${post.title}](<https://www.reddit.com${post.permalink}>)\n${post.url}`
-				});
+				.send({ content: `**r/${subreddit}** ${url}\n${post.url}` });
 		} catch (err) {
 			this.client.logger.error(err);
 		}

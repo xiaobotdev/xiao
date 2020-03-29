@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { embedURL } = require('../../util/Util');
 
 module.exports = class TodayInHistoryCommand extends Command {
 	constructor(client) {
@@ -51,8 +52,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 				.setTitle(`On this day (${body.date})...`)
 				.setTimestamp()
 				.setDescription(`${event.year}: ${event.text}`)
-				.addField('❯ See More',
-					event.links.map(link => `[${link.title}](${link.link.replace(/\)/g, '%29')})`).join('\n'));
+				.addField('❯ See More', event.links.map(link => embedURL(link.title, link.link)).join('\n'));
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404 || err.status === 500) return msg.say('Invalid date.');

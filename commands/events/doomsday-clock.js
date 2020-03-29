@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
+const { embedURL } = require('../../util/Util');
 
 module.exports = class DoomsdayClockCommand extends Command {
 	constructor(client) {
@@ -26,7 +27,7 @@ module.exports = class DoomsdayClockCommand extends Command {
 			const time = text.match(/<h3 class="uabb-infobox-title">(.+)<\/h3>/)[1];
 			const year = text.match(/<h5 class="uabb-infobox-title-prefix">(.+)<\/h5>/)[1];
 			const description = text.match(/<div class="uabb-infobox-text uabb-text-editor">.+<p>(.+)<\/p>/)[1]
-				.replace(/<a href="(.+)" target="_blank" rel="noopener">(.+)<\/a>/, '[$2]($1)')
+				.replace(/<a href="(.+)" target="_blank" rel="noopener">(.+)<\/a>/, embedURL('$2', '$1'))
 				.replace(/<em>(.+)<\/em>/i, '_$1_');
 			const embed = new MessageEmbed()
 				.setTitle(`${year}: ${time}`)
