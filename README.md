@@ -136,7 +136,7 @@ Total: 382
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
-* **restart:** Restarts the bot. (Owner-Only)
+* **shutdown:** Shuts down the bot. (Owner-Only)
 
 ### Discord Information:
 
