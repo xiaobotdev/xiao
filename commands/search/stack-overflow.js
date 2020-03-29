@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { formatNumber } = require('../../util/Util');
+const { formatNumber, embedURL } = require('../../util/Util');
 const { STACKOVERFLOW_KEY } = process.env;
 
 module.exports = class StackOverflowCommand extends Command {
@@ -53,7 +53,7 @@ module.exports = class StackOverflowCommand extends Command {
 				.setURL(data.link)
 				.setTitle(data.title)
 				.addField('❯ ID', data.question_id, true)
-				.addField('❯ Asker', `[${data.owner.display_name}](${data.owner.link})`, true)
+				.addField('❯ Asker', embedURL(data.owner.display_name, data.owner.link), true)
 				.addField('❯ Views', formatNumber(data.view_count), true)
 				.addField('❯ Score', formatNumber(data.score), true)
 				.addField('❯ Creation Date', moment.utc(data.creation_date * 1000).format('MM/DD/YYYY h:mm A'), true)

@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { cleanAnilistHTML } = require('../../util/Util');
+const { embedURL, cleanAnilistHTML } = require('../../util/Util');
 const searchGraphQL = stripIndents`
 	query ($search: String) {
 		characters: Page (perPage: 1) {
@@ -85,7 +85,7 @@ module.exports = class CharacterCommand extends Command {
 				.setDescription(character.description ? cleanAnilistHTML(character.description) : 'No description.')
 				.addField('❯ Appearances', character.media.edges.map(edge => {
 					const title = edge.node.title.english || edge.node.title.userPreferred;
-					return `[${title} (${types[edge.node.type]})](${edge.node.siteUrl})`;
+					return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
 				}).join(', '));
 			return msg.embed(embed);
 		} catch (err) {

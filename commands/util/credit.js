@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
+const { embedURL } = require('../../util/Util');
 
 module.exports = class CreditCommand extends Command {
 	constructor(client) {
@@ -25,8 +26,8 @@ module.exports = class CreditCommand extends Command {
 			.setTitle(command.name)
 			.setColor(0x7289DA)
 			.setDescription(command.credit.map(credit => {
-				if (!credit.reasonURL) return `[${credit.name}](${credit.url}) (${credit.reason})`;
-				return `[${credit.name}](${credit.url}) ([${credit.reason}](${credit.reasonURL}))`;
+				if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
+				return `${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
 			}).join('\n'));
 		return msg.embed(embed);
 	}

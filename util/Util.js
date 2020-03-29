@@ -120,6 +120,10 @@ module.exports = class Util {
 		return today;
 	}
 
+	static embedURL(title, url, display = url) {
+		return `[${title}](${url.replace(/\)/g, '%27')}, "${display}")`;
+	}
+
 	static async verify(channel, user, time = 30000) {
 		const filter = res => {
 			const value = res.content.toLowerCase();
