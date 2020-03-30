@@ -34,13 +34,13 @@ module.exports = class USPSTrackingCommand extends Command {
 
 	async run(msg, { id }) {
 		try {
-			const { expected, summary } = await this.fetchStatus(id);
-			if (!summary) return msg.say('A status update is not yet available on your package. Check back soon.');
+			const data = await this.fetchStatus(id);
+			if (!data) return msg.say('A status update is not yet available on your package. Check back soon.');
 			return msg.say(stripIndents`
 				**Tracking info for ${id}:**
-				${summary}
+				${data.summary}
 
-				Expected Delivery by: ${expected || 'N/A'}
+				Expected Delivery by: ${data.expected || 'N/A'}
 				More Info: <https://tools.usps.com/go/TrackConfirmAction?tLabels=${id}>
 			`);
 		} catch (err) {
