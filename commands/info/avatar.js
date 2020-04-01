@@ -29,7 +29,7 @@ module.exports = class AvatarCommand extends Command {
 		const embed = new MessageEmbed()
 			.setTitle(user.tag)
 			.setDescription(
-				formats.map(fmt => embedURL(fmt.toUpperCase(), user.displayAvatarURL({ format: fmt, size: 2028 }))).join(' | ')
+				formats.map(fmt => embedURL(fmt.toUpperCase(), user.displayAvatarURL({ format: fmt, size: 2048 }))).join(' | ')
 			)
 			.setImage(user.displayAvatarURL({ format, size: 2048 }))
 			.setColor(0x00AE86);

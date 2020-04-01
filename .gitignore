@@ -3,3 +3,5 @@ package-lock.json
 logs/
 *.log
 .env
+
+commands/games-mp/dots-and-boxes.js
