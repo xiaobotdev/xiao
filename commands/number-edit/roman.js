@@ -15,7 +15,7 @@ module.exports = class RomanCommand extends Command {
 					prompt: 'What number would you like to convert to roman numerals?',
 					type: 'integer',
 					min: 0,
-					max: Number.MAX_SAFE_INTEGER
+					max: 3999999
 				}
 			]
 		});
