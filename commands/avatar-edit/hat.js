@@ -131,6 +131,7 @@ module.exports = class HatCommand extends Command {
 
 	async run(msg, { type, user, addX, addY, scale }) {
 		scale /= 100;
+		if (scale === 0) scale = 1;
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'hat', `${type}.png`));
