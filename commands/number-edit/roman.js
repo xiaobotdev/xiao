@@ -14,7 +14,7 @@ module.exports = class RomanCommand extends Command {
 					key: 'number',
 					prompt: 'What number would you like to convert to roman numerals?',
 					type: 'integer',
-					min: 0,
+					min: -3999999,
 					max: 3999999
 				}
 			]
@@ -23,6 +23,11 @@ module.exports = class RomanCommand extends Command {
 
 	run(msg, { number }) {
 		if (number === 0) return msg.reply('_nulla_');
+		let negative = false;
+		if (number < 0) {
+			negative = true;
+			number = Math.abs(number);
+		}
 		let result = '';
 		for (const [numeral, value] of Object.entries(numerals)) {
 			while (number >= value) {
@@ -30,6 +35,6 @@ module.exports = class RomanCommand extends Command {
 				number -= value;
 			}
 		}
-		return msg.reply(result);
+		return msg.reply(`${negative ? '-' : ''}${result}`);
 	}
 };
