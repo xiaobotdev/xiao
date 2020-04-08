@@ -853,6 +853,7 @@ here.
 	* mdn (API)
 - [Merriam-Webster's Collegiate® Dictionary](https://www.merriam-webster.com/)
 	* define ([API](https://dictionaryapi.com/products/api-collegiate-dictionary))
+	* hangman ([API](https://dictionaryapi.com/products/api-collegiate-dictionary))
 - [mikewesthad](https://github.com/mikewesthad)
 	* pirate ([English-to-Pirate Dictionary Data](https://github.com/mikewesthad/pirate-speak/blob/master/lib/pirate-speak.js#L1-L155))
 - [Minecraft Achievement Generator](https://www.minecraftskinstealer.com/achievement/)

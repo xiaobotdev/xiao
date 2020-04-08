@@ -1,6 +1,8 @@
 const Command = require('../../structures/Command');
+const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const words = require('../../assets/json/word-list');
+const { WEBSTER_KEY } = process.env;
 
 module.exports = class HangmanCommand extends Command {
 	constructor(client) {
@@ -15,6 +17,12 @@ module.exports = class HangmanCommand extends Command {
 					url: 'https://en.wikipedia.org/wiki/Grady_Ward',
 					reason: 'Moby Word Lists',
 					reasonURL: 'http://www.gutenberg.org/ebooks/3201'
+				},
+				{
+					name: 'Merriam-Webster\'s Collegiate® Dictionary',
+					url: 'https://www.merriam-webster.com/',
+					reason: 'API',
+					reasonURL: 'https://dictionaryapi.com/products/api-collegiate-dictionary'
 				}
 			]
 		});
@@ -77,11 +85,42 @@ module.exports = class HangmanCommand extends Command {
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			if (word.length === confirmation.length || guessed) return msg.say(`You won, it was ${word}!`);
-			return msg.say(`Too bad... It was ${word}...`);
+			const defined = await this.defineWord(word);
+			if (word.length === confirmation.length || guessed) {
+				return msg.say(stripIndents`
+					You won, it was ${word}!
+
+					**${defined.name}** (${defined.partOfSpeech})
+					${defined.definiton}
+				`);
+			}
+			return msg.say(stripIndents`
+				Too bad... It was ${word}...
+
+				**${defined.name}** (${defined.partOfSpeech})
+				${defined.definiton}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		}
+	}
+
+	async defineWord(word) {
+		try {
+			const { body } = await request
+				.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}`)
+				.query({ key: WEBSTER_KEY });
+			if (!body.length) return null;
+			const data = body[0];
+			if (typeof data === 'string') return null;
+			return {
+				name: data.meta.stems[0],
+				partOfSpeech: data.fl,
+				definiton: data.shortdef.map((definition, i) => `(${i + 1}) ${definition}`).join('\n')
+			};
+		} catch (err) {
+			return null;
 		}
 	}
 };
