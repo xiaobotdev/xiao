@@ -40,7 +40,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			const owned = {};
 			let userTurn = true;
 			let winner = null;
-			while (taken.length < 24) {
+			while (taken.length < 40) {
 				const user = userTurn ? msg.author : opponent;
 				await msg.say(stripIndents`
 					${user}, which connection do you pick? Type \`end\` to forefeit.
