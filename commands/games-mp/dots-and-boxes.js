@@ -56,7 +56,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					if (res.author.id !== user.id) return false;
 					const choice = res.content;
 					if (choice.toLowerCase() === 'end') return true;
-					const matched = choice.match(/([0-9]+)\-([0-9]+)/);
+					const matched = choice.match(/([0-9]+)-([0-9]+)/);
 					if (!matched) return false;
 					let first = Number.parseInt(matched[1], 10);
 					let second = Number.parseInt(matched[2], 10);
@@ -91,7 +91,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					winner = userTurn ? opponent : msg.author;
 					break;
 				}
-				const matched = choice.match(/([0-9]+)\-([0-9]+)/);
+				const matched = choice.match(/([0-9]+)-([0-9]+)/);
 				let first = Number.parseInt(matched[1], 10);
 				let second = Number.parseInt(matched[2], 10);
 				if (second < first) {
@@ -107,7 +107,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 						else oppoOwned.push(newSquare);
 					}
 					if (taken.length < 40) {
-						await msg.say(`${user}, great job! Keep going until you can\'t make any more!`);
+						await msg.say(`${user}, great job! Keep going until you can't make any more!`);
 					}
 				} else {
 					userTurn = !userTurn;
@@ -154,7 +154,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 		const displayed = [];
 		displayed.push(new Array(24).fill('█').join(''));
 		displayed.push('█                      █');
-		board.map((values, row) => {
+		board.forEach((values, row) => {
 			if (row !== 0) {
 				let takenMids = '█  ';
 				for (let i = 0 + (row * 5); i < 5 + (row * 5); i++) {
