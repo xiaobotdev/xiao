@@ -41,7 +41,7 @@ module.exports = class GoogleFeudCommand extends Command {
 			const suggestions = await this.fetchSuggestions(question);
 			if (!suggestions) return msg.say('Could not find any results.');
 			const display = new Array(suggestions.length).fill('???');
-			let tries = 3;
+			let tries = 4;
 			while (display.includes('???') && tries) {
 				const embed = this.makeEmbed(question, tries, suggestions, display);
 				await msg.embed(embed);
