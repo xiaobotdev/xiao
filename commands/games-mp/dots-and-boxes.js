@@ -162,7 +162,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 				return val;
 			}).join('')}█`);
 		});
-		displayed.push('\n');
+		displayed.push('█                      █');
 		displayed.push(new Array(24).fill('█').join(''));
 		return displayed.join('\n');
 	}
