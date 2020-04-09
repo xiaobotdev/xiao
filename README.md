@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 382
+Total: 383
 
 ### Utility:
 
@@ -388,6 +388,7 @@ Total: 382
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **connect-four:** Play a game of Connect Four with another user.
+* **dots-and-boxes:** Play a game of Dots and Boxes with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **gunfight:** Engage in a western gunfight against another user. High noon.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
