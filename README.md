@@ -22,6 +22,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Mac](#mac)
 	* [Ubuntu and other Debian-based systems](#ubuntu-and-other-debian-based-systems)
 - [Related Bots](#related-bots)
+- [Options](#Options)
 - [Commands](#commands)
 	* [Utility](#utility)
 	* [Discord Information](#discord-information)
@@ -43,6 +44,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Other](#other)
 	* [Roleplay](#roleplay)
 	* [README Generators](#readme-generators)
+- [Other Features](#other-features)
 - [Licensing](#licensing)
 - [Credit](#credit)
 
@@ -117,6 +119,16 @@ don't grant that permission.
 ## Related Bots
 
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
+
+## Options
+
+Options in Xiao are configured using channel topics. Place the option
+in the appropriate channel's topic to use it.
+
+* `<xiao:disable-leave>` Disables leave messages (Place in the channel you recieve welcome messages in).
+* `<xiao:phone>` Allows a channel to recieve phone calls from the `phone` command.
+* `<xiao:phone-book:hide>` Hides a channel from the `phone-book` command.
+* `<xiao:portal>` Allows a channel to recieve portal messages from the `portal-send` command.
 
 ## Commands
 
@@ -562,6 +574,22 @@ Total: 382
 * **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
 * **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
 * **generate-process-env:** Generates a backup list of Xiao's `process.env`. (Owner-Only)
+
+## Other Features
+
+Some Xiao features aren't technically commands, but are part of Xiao
+nonetheless.
+
+- Leave messages are automatically sent to any channel that recieves welcome messages. These can be turned off with [an option](#options).
+- In Xiao's home server, Xiao posts a random meme from Reddit every hour using a webhook.
+- Some commands will automatically run when a certain phrase is said in any message, regardless of if the command itself was called or not. These are:
+	* Saying "can you not" or "can u not" runs `can-you-not`.
+	* Saying "Kazuma, Kazuma!" runs `kazuma-kazuma`.
+	* Saying "no u" runs `no-u`.
+	* Saying "kms", "kill myself", or using a custom emote named "kms" runs `suicide-hotline`.
+	* Saying "(╯°□°）╯︵ ┻━┻" runs `unflip`.
+	* Saying "r/subredditnamehere" runs `subreddit`. Obviously, replace "subbreditnamehere" with the name of the subreddit.
+	* Starting a message with "clevs" or "cleverbot" runs `cleverbot` using the text after either word as the text.
 
 ## Licensing
 
