@@ -117,7 +117,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 
 	calcSquare(num, taken) {
 		return taken.includes(`${num}-${num + 1}`)
-			&& taken.includes(`${num}-${num - 5}`)
+			&& taken.includes(`${num - 5}-${num}`)
 			&& taken.includes(`${(num + 1) - 5}-${num + 1}`)
 			&& taken.includes(`${num - 5}-${(num - 5) + 1}`);
 	}
