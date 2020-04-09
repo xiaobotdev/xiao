@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "112.19.10",
+	"version": "112.19.11",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -39,11 +39,11 @@
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
 		"didyoumean2": "^4.0.0",
-		"discord.js": "^12.0.2",
+		"discord.js": "^12.1.1",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
 		"gifencoder": "^2.0.1",
-		"mathjs": "^6.6.1",
+		"mathjs": "^6.6.2",
 		"moment": "^2.24.0",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.28",
