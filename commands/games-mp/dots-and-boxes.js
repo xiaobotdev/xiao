@@ -143,7 +143,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 	displayBoard(board, taken, owned) {
 		const displayed = [];
 		displayed.push(new Array(24).fill('█').join(''));
-		displayed.push('\n');
+		displayed.push('█                      █');
 		board.map((values, row) => {
 			if (row !== 0) {
 				let takenMids = '█  ';
@@ -162,8 +162,8 @@ module.exports = class DotsAndBoxesCommand extends Command {
 				return val;
 			}).join('')}█`);
 		});
-		displayed.push(new Array(24).fill('█').join(''));
 		displayed.push('\n');
+		displayed.push(new Array(24).fill('█').join(''));
 		return displayed.join('\n');
 	}
 };
