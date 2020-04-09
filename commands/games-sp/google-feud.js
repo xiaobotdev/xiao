@@ -59,8 +59,9 @@ module.exports = class GoogleFeudCommand extends Command {
 				if (suggestions.includes(choice)) {
 					score += 10000 - (suggestions.indexOf(choice) * 1000);
 					display[suggestions.indexOf(choice)] = choice;
+				} else {
+					--tries;
 				}
-				else --tries;
 			}
 			this.client.games.delete(msg.channel.id);
 			if (!display.includes('???')) {
