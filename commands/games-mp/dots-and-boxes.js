@@ -113,7 +113,9 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					userTurn = !userTurn;
 				}
 			}
-			winner = userOwned === oppoOwned ? null : userOwned > oppoOwned ? msg.author : opponent;
+			winner = userOwned.length === oppoOwned.length
+				? null
+				: userOwned.length > oppoOwned.length ? msg.author : opponent;
 			this.client.games.delete(msg.channel.id);
 			return msg.say(winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...');
 		} catch (err) {
