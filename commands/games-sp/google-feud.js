@@ -43,12 +43,7 @@ module.exports = class GoogleFeudCommand extends Command {
 			const display = new Array(suggestions.length).fill('???');
 			let tries = 3;
 			while (display.includes('???') && tries) {
-				const embed = new MessageEmbed()
-					.setColor(0x005AF0)
-					.setTitle(`${question}...?`)
-					.setDescription('Type the choice you think is a suggestion _without_ the question.')
-					.setFooter(`${tries} ${tries === 1 ? 'try' : 'tries'} remaining!`);
-				for (let i = 0; i < suggestions.length; i++) embed.addField(`❯ ${10000 - (i * 1000)}`, display[i], true);
+				const embed = this.makeEmbed(question, tries, suggestions, display);
 				await msg.embed(embed);
 				const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 					max: 1,
@@ -64,7 +59,8 @@ module.exports = class GoogleFeudCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			if (!display.includes('???')) return msg.say('You win! Nice job, master of Google!');
-			return msg.say('Better luck next time!');
+			const final = this.makeEmbed(question, tries, suggestions, suggestions);
+			return msg.say('Better luck next time!', { embed: final });
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -82,5 +78,15 @@ module.exports = class GoogleFeudCommand extends Command {
 			.filter(suggestion => suggestion.toLowerCase() !== question.toLowerCase());
 		if (!suggestions.length) return null;
 		return suggestions.map(suggestion => suggestion.toLowerCase().replace(question.toLowerCase(), '').trim());
+	}
+
+	makeEmbed(question, tries, suggestions, display) {
+		const embed = new MessageEmbed()
+			.setColor(0x005AF0)
+			.setTitle(`${question}...?`)
+			.setDescription('Type the choice you think is a suggestion _without_ the question.')
+			.setFooter(`${tries} ${tries === 1 ? 'try' : 'tries'} remaining!`);
+		for (let i = 0; i < suggestions.length; i++) embed.addField(`❯ ${10000 - (i * 1000)}`, display[i], true);
+		return embed;
 	}
 };
