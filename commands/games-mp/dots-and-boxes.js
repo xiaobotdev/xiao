@@ -47,7 +47,9 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					_Format like \`1-2\` or \`0-5\`. Any two spaces bordering **vertical or horizontal**._
 
 					P1: ${msg.author.tag} | P2: ${opponent.tag}
+					\`\`\`
 					${this.displayBoard(board, taken, owned)}
+					\`\`\`
 				`);
 				const filter = res => {
 					if (res.author.id !== user.id) return false;
