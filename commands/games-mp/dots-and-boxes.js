@@ -37,7 +37,8 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			}
 			const board = this.generateBoard();
 			const taken = [];
-			const owned = {};
+			const userOwned = [];
+			const oppoOwned = [];
 			let userTurn = true;
 			let winner = null;
 			while (taken.length < 40) {
@@ -48,7 +49,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 
 					P1: ${msg.author.tag} | P2: ${opponent.tag}
 					\`\`\`
-					${this.displayBoard(board, taken, owned)}
+					${this.displayBoard(board, taken, userOwned, oppoOwned)}
 					\`\`\`
 				`);
 				const filter = res => {
@@ -99,14 +100,18 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					second = temp;
 				}
 				taken.push(`${first}-${second}`);
-				const newSquares = this.calcNewSquare(taken, owned);
+				const newSquares = this.calcNewSquare(taken, userOwned, oppoOwned);
 				if (newSquares.length) {
-					for (const newSquare of newSquares) owned[newSquare] = userTurn ? 'P1' : 'P2';
+					for (const newSquare of newSquares) {
+						if (userTurn) userOwned.push(newSquare);
+						else oppoOwned.push(newSquare);
+					}
 					await msg.say(`${user}, great job! Keep going until you can\'t make any more!`);
 				} else {
 					userTurn = !userTurn;
 				}
 			}
+			winner = userOwned === oppoOwned ? null : userOwned > oppoOwned ? msg.author : opponent;
 			this.client.games.delete(msg.channel.id);
 			return msg.say(winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...');
 		} catch (err) {
@@ -122,10 +127,10 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			&& taken.includes(`${num - 5}-${(num - 5) + 1}`);
 	}
 
-	calcNewSquare(taken, owned) {
+	calcNewSquare(taken, userOwned, oppoOwned) {
 		const newSquares = [];
 		for (const square of squareIDs) {
-			if (owned[square]) continue;
+			if (userOwned.includes(square) || oppoOwned.includes(square)) continue;
 			if (this.calcSquare(square, taken)) newSquares.push(square);
 		}
 		return newSquares;
@@ -141,7 +146,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 		return arr;
 	}
 
-	displayBoard(board, taken, owned) {
+	displayBoard(board, taken, userOwned, oppoOwned) {
 		const displayed = [];
 		displayed.push(new Array(24).fill('█').join(''));
 		displayed.push('█                      █');
@@ -151,7 +156,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 				for (let i = 0 + (row * 5); i < 5 + (row * 5); i++) {
 					if (taken.includes(`${i - 5}-${i}`)) takenMids += '||';
 					else takenMids += '  ';
-					takenMids += owned[i] || '  ';
+					takenMids += userOwned.includes(i) ? 'P1' : oppoOwned.includes(i) ? 'P2' : '  ';
 				}
 				takenMids += '█';
 				displayed.push(takenMids);
