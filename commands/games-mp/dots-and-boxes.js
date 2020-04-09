@@ -106,7 +106,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 						if (userTurn) userOwned.push(newSquare);
 						else oppoOwned.push(newSquare);
 					}
-					if (taken.length < 24) {
+					if (taken.length < 40) {
 						await msg.say(`${user}, great job! Keep going until you can\'t make any more!`);
 					}
 				} else {
