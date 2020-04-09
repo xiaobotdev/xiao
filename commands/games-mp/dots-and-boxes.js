@@ -99,9 +99,9 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					second = temp;
 				}
 				taken.push(`${first}-${second}`);
-				const newSquare = this.calcNewSquare(taken, owned);
-				if (newSquare) {
-					owned[newSquare] = userTurn ? 'P1' : 'P2';
+				const newSquares = this.calcNewSquare(taken, owned);
+				if (newSquares.length) {
+					for (const newSquare of newSquares) owned[newSquare] = userTurn ? 'P1' : 'P2';
 					await msg.say(`${user}, great job! Keep going until you can\'t make any more!`);
 				} else {
 					userTurn = !userTurn;
@@ -123,11 +123,12 @@ module.exports = class DotsAndBoxesCommand extends Command {
 	}
 
 	calcNewSquare(taken, owned) {
+		const newSquares = [];
 		for (const square of squareIDs) {
 			if (owned[square]) continue;
-			if (this.calcSquare(square, taken)) return square;
+			if (this.calcSquare(square, taken)) newSquares.push(square);
 		}
-		return null;
+		return newSquares;
 	}
 
 	generateBoard() {
