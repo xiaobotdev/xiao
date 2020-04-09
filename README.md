@@ -213,6 +213,17 @@ Total: 382
 * **shiba:** Responds with a random image of a Shiba Inu.
 * **xiao:** Responds with a random image of Xiao Pai.
 
+### Seeded Randomizers:
+
+* **butt:** Determines a user's butt quality.
+* **coolness:** Determines a user's coolness.
+* **dick:** Determines your dick size. (NSFW)
+* **guess-looks:** Guesses what a user looks like.
+* **iq:** Determines a user's IQ.
+* **psycho-pass:** Determines your Crime Coefficient.
+* **ship:** Ships two users together.
+* **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
+
 ### Single Response:
 
 * **dark-light:** Determines whether you use dark or light theme.
@@ -237,17 +248,6 @@ Total: 382
 * **no-u:** no u
 * **suicide-hotline:** Responds with the phone number for the Suicide Hotline.
 * **unflip:** Unflips a flipped table.
-
-### Seeded Randomizers:
-
-* **butt:** Determines a user's butt quality.
-* **coolness:** Determines a user's coolness.
-* **dick:** Determines your dick size. (NSFW)
-* **guess-looks:** Guesses what a user looks like.
-* **iq:** Determines a user's IQ.
-* **psycho-pass:** Determines your Crime Coefficient.
-* **ship:** Ships two users together.
-* **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
 
 ### Events:
 
