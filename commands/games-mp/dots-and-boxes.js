@@ -142,10 +142,11 @@ module.exports = class DotsAndBoxesCommand extends Command {
 
 	displayBoard(board, taken, owned) {
 		const displayed = [];
-		displayed.push(new Array(20).fill('█'));
+		displayed.push(new Array(24).fill('█').join(''));
+		displayed.push('\n');
 		board.map((values, row) => {
 			if (row !== 0) {
-				let takenMids = '█';
+				let takenMids = '█  ';
 				for (let i = 0 + (row * 5); i < 5 + (row * 5); i++) {
 					if (taken.includes(`${i - 5}-${i}`)) takenMids += '||';
 					else takenMids += '  ';
@@ -154,14 +155,15 @@ module.exports = class DotsAndBoxesCommand extends Command {
 				takenMids += '█';
 				displayed.push(takenMids);
 			}
-			displayed.push(`█${values.map(slot => {
+			displayed.push(`█  ${values.map(slot => {
 				let val = slot.toString().padStart(2, '0');
 				if (taken.includes(`${slot}-${slot + 1}`)) val += '==';
 				else val += '  ';
 				return val;
 			}).join('')}█`);
 		});
-		displayed.push(new Array(20).fill('█'));
+		displayed.push(new Array(24).fill('█').join(''));
+		displayed.push('\n');
 		return displayed.join('\n');
 	}
 };
