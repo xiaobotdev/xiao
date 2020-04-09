@@ -56,7 +56,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					const choice = res.content;
 					if (choice.toLowerCase() === 'end') return true;
 					const matched = choice.match(/([0-9]+)\-([0-9]+)/);
-					if (!match) return false;
+					if (!matched) return false;
 					let first = Number.parseInt(matched[1], 10);
 					let second = Number.parseInt(matched[2], 10);
 					if (first === second) return false;
