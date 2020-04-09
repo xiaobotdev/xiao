@@ -60,7 +60,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					let first = Number.parseInt(matched[1], 10);
 					let second = Number.parseInt(matched[2], 10);
 					if (first === second) return false;
-					if (second > first) {
+					if (second < first) {
 						const temp = first;
 						first = second;
 						second = temp;
@@ -93,7 +93,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 				const matched = choice.match(/([0-9]+)\-([0-9]+)/);
 				let first = Number.parseInt(matched[1], 10);
 				let second = Number.parseInt(matched[2], 10);
-				if (second > first) {
+				if (second < first) {
 					const temp = first;
 					first = second;
 					second = temp;
