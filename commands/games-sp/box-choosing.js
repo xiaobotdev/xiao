@@ -72,7 +72,7 @@ module.exports = class BoxChoosingCommand extends Command {
 					path += pick;
 					i = 0;
 				} else {
-					const verification = await verify(msg.channel, msg.author, 120000);
+					const verification = await verify(msg.channel, msg.author, { time: 120000 });
 					if (!verification) {
 						end = true;
 						break;

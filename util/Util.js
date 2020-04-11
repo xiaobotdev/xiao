@@ -124,10 +124,11 @@ module.exports = class Util {
 		return `[${title}](${url.replace(/\)/g, '%27')}, "${display}")`;
 	}
 
-	static async verify(channel, user, time = 30000) {
+	static async verify(channel, user, { time = 30000, extraYes = [], extraNo = [] }) {
 		const filter = res => {
 			const value = res.content.toLowerCase();
-			return (user ? res.author.id === user.id : true) && (yes.includes(value) || no.includes(value));
+			return (user ? res.author.id === user.id : true)
+				&& (yes.includes(value) || no.includes(value) || extraYes.includes(value) || extraNo.includes(value));
 		};
 		const verify = await channel.awaitMessages(filter, {
 			max: 1,
@@ -135,8 +136,8 @@ module.exports = class Util {
 		});
 		if (!verify.size) return 0;
 		const choice = verify.first().content.toLowerCase();
-		if (yes.includes(choice)) return true;
-		if (no.includes(choice)) return false;
+		if (yes.includes(choice) || extraYes.includes(choice)) return true;
+		if (no.includes(choice) || extraNo.includes(choice)) return false;
 		return false;
 	}
 

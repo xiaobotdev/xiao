@@ -66,7 +66,7 @@ module.exports = class HungerGamesCommand extends Command {
 				}
 				text += `\n\n_Proceed?_`;
 				await msg.say(text);
-				const verification = await verify(msg.channel, msg.author, 120000);
+				const verification = await verify(msg.channel, msg.author, { time: 120000 });
 				if (!verification) {
 					this.client.games.delete(msg.channel.id);
 					return msg.say('See you next time!');
