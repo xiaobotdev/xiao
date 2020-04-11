@@ -18,7 +18,7 @@ module.exports = class SubredditCommand extends Command {
 
 	async run(msg, { subreddit }, fromPattern) {
 		if (fromPattern) {
-			if (this.client.botListGuilds.includes(msg.guild.id)) return null;
+			if (msg.guild && this.client.botListGuilds.includes(msg.guild.id)) return null;
 			subreddit = msg.patternMatches[1];
 		}
 		if (!subreddit) subreddit = typeof this.subreddit === 'function' ? this.subreddit() : this.subreddit;

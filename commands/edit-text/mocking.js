@@ -22,7 +22,7 @@ module.exports = class MockingCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		const canEmoji = msg.channel.type === 'text'
+		const canEmoji = msg.guild
 			? msg.channel.permissionsFor(this.client.user).has('USE_EXTERNAL_EMOJIS')
 			: true;
 		const letters = text.split('');

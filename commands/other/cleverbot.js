@@ -36,7 +36,7 @@ module.exports = class CleverbotCommand extends Command {
 
 	async run(msg, { text }, fromPattern) {
 		if (fromPattern) {
-			if (this.client.botListGuilds.includes(msg.guild.id)) return null;
+			if (msg.guild && this.client.botListGuilds.includes(msg.guild.id)) return null;
 			text = msg.patternMatches[2];
 		}
 		try {
