@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../structures/commands/AutoReply');
 
 module.exports = class CanYouNotCommand extends Command {
 	constructor(client) {
@@ -8,11 +8,12 @@ module.exports = class CanYouNotCommand extends Command {
 			group: 'auto',
 			memberName: 'can-you-not',
 			description: 'Can YOU not?',
-			patterns: [/can (you|u) not/i]
+			patterns: [/can (you|u) not/i],
+			reply: true
 		});
 	}
 
-	run(msg) {
-		return msg.reply('Can YOU not?');
+	generateText() {
+		return 'Can YOU not?';
 	}
 };

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../structures/commands/AutoReply');
 
 module.exports = class NoUCommand extends Command {
 	constructor(client) {
@@ -12,7 +12,7 @@ module.exports = class NoUCommand extends Command {
 		});
 	}
 
-	run(msg) {
-		return msg.say('no u');
+	generateText() {
+		return 'no u';
 	}
 };
