@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 383
+Total: 384
 
 ### Utility:
 
@@ -208,6 +208,7 @@ Total: 383
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
 * **waifu:** Responds with a randomly generated waifu and backstory.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
+* **xiao-fact:** Responds with a random fact about Xiao.
 
 ### Random Image:
 
