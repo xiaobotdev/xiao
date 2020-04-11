@@ -22,7 +22,7 @@ module.exports = class SuicideHotlineCommand extends Command {
 
 	generateText(fromPattern) {
 		const text = 'Call 1-800-273-8255 for the National Suicide Prevention Lifeline.';
-		if (!fromPattern) text;
+		if (!fromPattern) return text;
 		return `Don't say that. Get help. ${text}`;
 	}
 };
