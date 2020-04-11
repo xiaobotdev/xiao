@@ -4,12 +4,13 @@ const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const PokemonStore = require('./pokemon/PokemonStore');
 const MemePoster = require('./MemePoster');
-const { XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN } = process.env;
+const { XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, BOT_LIST_GUILDS } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
 	constructor(options) {
 		super(options);
 
+		this.botListGuilds = BOT_LIST_GUILDS ? BOT_LIST_GUILDS.split(',') : [];
 		this.logger = winston.createLogger({
 			transports: [new winston.transports.Console()],
 			format: winston.format.combine(

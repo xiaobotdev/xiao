@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../structures/commands/AutoReply');
 
 module.exports = class UnflipCommand extends Command {
 	constructor(client) {
@@ -11,7 +11,7 @@ module.exports = class UnflipCommand extends Command {
 		});
 	}
 
-	run(msg) {
-		return msg.say('┬─┬ ノ( ゜-゜ノ)');
+	generateText() {
+		return '┬─┬ ノ( ゜-゜ノ)';
 	}
 };

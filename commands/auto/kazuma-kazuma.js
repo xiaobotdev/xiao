@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../structures/commands/AutoReply');
 
 module.exports = class KazumaKazumaCommand extends Command {
 	constructor(client) {
@@ -18,7 +18,7 @@ module.exports = class KazumaKazumaCommand extends Command {
 		});
 	}
 
-	run(msg) {
-		return msg.say('Hai, Kazuma desu.');
+	generateText() {
+		return 'Hai, Kazuma desu.';
 	}
 };

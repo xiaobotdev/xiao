@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../structures/commands/AutoReply');
 
 module.exports = class SuicideHotlineCommand extends Command {
 	constructor(client) {
@@ -9,6 +9,7 @@ module.exports = class SuicideHotlineCommand extends Command {
 			memberName: 'suicide-hotline',
 			description: 'Responds with the phone number for the Suicide Hotline.',
 			patterns: [/\bkms\b/i, /\b(kill myself)\b/i, /<:kms:(.+)>/i],
+			reply: true,
 			credit: [
 				{
 					name: 'National Suicide Prevention Lifeline',
@@ -19,9 +20,9 @@ module.exports = class SuicideHotlineCommand extends Command {
 		});
 	}
 
-	run(msg, args, fromPattern) {
+	generateText(fromPattern) {
 		const text = 'Call 1-800-273-8255 for the National Suicide Prevention Lifeline.';
-		if (!fromPattern) return msg.say(text);
-		return msg.reply(`Don't say that. Get help. ${text}`);
+		if (!fromPattern) text;
+		return `Don't say that. Get help. ${text}`;
 	}
 };
