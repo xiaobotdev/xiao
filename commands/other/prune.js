@@ -19,18 +19,19 @@ module.exports = class PruneCommand extends Command {
 				{
 					key: 'count',
 					label: 'amount of messages',
-					prompt: 'How many messages do you want to delete? Limit of up to 99.',
+					prompt: 'How many messages do you want to delete? Limit of up to 100.',
 					type: 'integer',
 					min: 1,
-					max: 99
+					max: 100
 				}
 			]
 		});
 	}
 
 	async run(msg, { count }) {
+		count += 1;
 		try {
-			const messages = await msg.channel.messages.fetch({ limit: count + 1 });
+			const messages = await msg.channel.messages.fetch({ limit: count > 100 ? 100 : count });
 			await msg.channel.bulkDelete(messages, true);
 			return null;
 		} catch {
