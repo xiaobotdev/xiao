@@ -45,7 +45,7 @@ module.exports = class PhoneCommand extends Command {
 		if (channelID !== 'count' && inCall) {
 			return msg.say('This channel is already in a phone call.');
 		}
-		const channels = this.client.channels.cache.filter(channel => channel.type === 'text'
+		const channels = this.client.channels.cache.filter(channel => channel.guild
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
 			&& !msg.guild.channels.cache.has(channel.id));
@@ -54,7 +54,7 @@ module.exports = class PhoneCommand extends Command {
 		if (channelID) {
 			if (channelID === 'count') return msg.say(`☎️ **${channels.size}** currently open lines.`);
 			channel = this.client.channels.cache.get(channelID);
-			if (!channel || channel.type !== 'text') return msg.reply('This channel does not exist.');
+			if (!channel || !channel.guild) return msg.reply('This channel does not exist.');
 			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
 				return msg.reply('This channel does not allow phone calls.');
 			}

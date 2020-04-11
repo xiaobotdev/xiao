@@ -23,7 +23,7 @@ module.exports = class WebhookCommand extends Command {
 
 	async run(msg, { content }) {
 		try {
-			if (msg.channel.type === 'text' && msg.deletable) await msg.delete();
+			if (msg.guild && msg.deletable) await msg.delete();
 			await this.client.webhook.send(content);
 			return null;
 		} catch (err) {

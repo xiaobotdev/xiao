@@ -34,7 +34,8 @@ module.exports = class HelpCommand extends Command {
 				const commands = group.commands.filter(cmd => {
 					if (owner) return true;
 					if (cmd.ownerOnly || cmd.hidden) return false;
-					if (this.client.botListGuilds.includes(msg.guild.id) && cmd instanceof AutoReplyCommand) {
+					const inBotList = msg.guild && this.client.botListGuilds.includes(msg.guild.id);
+					if (inBotList && cmd instanceof AutoReplyCommand) {
 						return false;
 					}
 					return true;

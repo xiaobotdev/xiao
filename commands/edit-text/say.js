@@ -20,7 +20,7 @@ module.exports = class SayCommand extends Command {
 
 	async run(msg, { text }) {
 		try {
-			if (msg.channel.type === 'text' && msg.deletable) await msg.delete();
+			if (msg.guild && msg.deletable) await msg.delete();
 			return msg.say(text);
 		} catch {
 			return msg.say(text);

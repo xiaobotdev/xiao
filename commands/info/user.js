@@ -34,7 +34,7 @@ module.exports = class UserCommand extends Command {
 			• Discord Join Date: ${moment.utc(user.createdAt).format('MM/DD/YYYY h:mm A')}
 			• ${user.bot ? 'Bot' : 'Not a Bot'}
 		`;
-		if (msg.channel.type === 'text') {
+		if (msg.guild) {
 			try {
 				const member = await msg.guild.members.fetch(user.id);
 				const defaultRole = msg.guild.roles.cache.get(msg.guild.id);

@@ -22,7 +22,7 @@ module.exports = class PhoneBookCommand extends Command {
 	run(msg, { query }) {
 		const channels = this.client.channels.cache.filter(channel => {
 			const search = query.toLowerCase();
-			return channel.type === 'text'
+			return channel.guild
 				&& channel.topic
 				&& channel.topic.includes('<xiao:phone>')
 				&& !channel.topic.includes('<xiao:phone-book:hide>')

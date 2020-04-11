@@ -27,9 +27,9 @@ module.exports = class PortalSendCommand extends Command {
 	async run(msg, { message }) {
 		if (/discord(\.gg|app\.com\/invite|\.me)\//gi.test(message)) return msg.reply('Please do not send invites.');
 		let channels = this.client.channels.cache.filter(
-			channel => channel.type === 'text' && channel.topic && channel.topic.includes('<xiao:portal>')
+			channel => channel.guild && channel.topic && channel.topic.includes('<xiao:portal>')
 		);
-		if (msg.channel.type === 'text') {
+		if (channel.guild) {
 			channels = channels.filter(channel => !msg.guild.channels.cache.has(channel.id));
 		}
 		if (message.toLowerCase() === 'count') {
@@ -38,7 +38,7 @@ module.exports = class PortalSendCommand extends Command {
 		if (!channels.size) return msg.reply('No channels have an open portal...');
 		const channel = channels.random();
 		try {
-			const displayName = msg.channel.type === 'text' ? msg.guild.name : 'DM';
+			const displayName = msg.guild ? msg.guild.name : 'DM';
 			await channel.send(`**${this.portalEmoji} ${msg.author.tag} (${displayName}):** ${message}`);
 			return msg.say(`Message sent to **${channel.name}** in **${channel.guild.name}**!`);
 		} catch {

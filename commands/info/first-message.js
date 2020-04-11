@@ -22,7 +22,7 @@ module.exports = class FirstMessageCommand extends Command {
 	}
 
 	async run(msg, { channel }) {
-		if (channel.type === 'text' && !channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY')) {
+		if (msg.guild && !channel.permissionsFor(this.client.user).has('READ_MESSAGE_HISTORY')) {
 			return msg.reply(`Sorry, I don't have permission to read ${channel}...`);
 		}
 		const messages = await channel.messages.fetch({ after: 1, limit: 1 });
