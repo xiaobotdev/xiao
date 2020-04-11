@@ -31,6 +31,9 @@ module.exports = class UrbanCommand extends Command {
 	}
 
 	async run(msg, { word }) {
+		if (msg.guild && this.client.botListGuilds.includes(msg.guild.id) && !msg.channel.nsfw) {
+			return msg.reply(`The \`${this.name}\` command can only be used in NSFW channels.`);
+		}
 		try {
 			const { body } = await request
 				.get('http://api.urbandictionary.com/v0/define')
