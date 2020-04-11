@@ -64,7 +64,7 @@ module.exports = class BlackjackCommand extends Command {
 
 						_Hit?_
 					`);
-					const hit = await verify(msg.channel, msg.author, { otherYes: hitWords, otherNo: standWords });
+					const hit = await verify(msg.channel, msg.author, { extraYes: hitWords, extraNo: standWords });
 					if (hit) {
 						const card = this.draw(msg.channel, playerHand);
 						const total = this.calculate(playerHand);
