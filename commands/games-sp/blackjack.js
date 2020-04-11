@@ -3,6 +3,8 @@ const { stripIndents } = require('common-tags');
 const { shuffle, verify } = require('../../util/Util');
 const suits = ['♣', '♥', '♦', '♠'];
 const faces = ['Jack', 'Queen', 'King'];
+const hitWords = ['hit', 'hit me'];
+const standWords = ['stand'];
 
 module.exports = class BlackjackCommand extends Command {
 	constructor(client) {
@@ -62,7 +64,7 @@ module.exports = class BlackjackCommand extends Command {
 
 						_Hit?_
 					`);
-					const hit = await verify(msg.channel, msg.author);
+					const hit = await verify(msg.channel, msg.author, { otherYes: hitWords, otherNo: standWords });
 					if (hit) {
 						const card = this.draw(msg.channel, playerHand);
 						const total = this.calculate(playerHand);
