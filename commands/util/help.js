@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
+const AutoReplyCommand = require('../../structures/commands/AutoReply');
 
 module.exports = class HelpCommand extends Command {
 	constructor(client) {
@@ -30,7 +31,14 @@ module.exports = class HelpCommand extends Command {
 			let cmdCount = 0;
 			for (const group of this.client.registry.groups.values()) {
 				const owner = this.client.isOwner(msg.author);
-				const commands = group.commands.filter(cmd => (owner ? true : !cmd.ownerOnly) && !cmd.hidden);
+				const commands = group.commands.filter(cmd => {
+					if (owner) return true;
+					if (cmd.ownerOnly || cmd.hidden) return false;
+					if (this.client.botListGuilds.includes(msg.guild.id) && cmd instanceof AutoReplyCommand) {
+						return false;
+					}
+					return true;
+				});
 				if (!commands.size) continue;
 				cmdCount += commands.size;
 				embed.addField(
