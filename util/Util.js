@@ -124,7 +124,7 @@ module.exports = class Util {
 		return `[${title}](${url.replace(/\)/g, '%27')}, "${display}")`;
 	}
 
-	static async verify(channel, user, { time = 30000, extraYes = [], extraNo = [] }) {
+	static async verify(channel, user, { time = 30000, extraYes = [], extraNo = [] } = {}) {
 		const filter = res => {
 			const value = res.content.toLowerCase();
 			return (user ? res.author.id === user.id : true)
