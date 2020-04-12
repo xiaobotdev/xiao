@@ -1,0 +1,44 @@
+[
+	{
+		"primary": "Garnet"
+	},
+	{
+		"primary": "Amethyst"
+	},
+	{
+		"primary": "Aquamarine",
+		"alternative": ["Bloodstone"]
+	},
+	{
+		"primary": "Diamond"
+	},
+	{
+		"primary": "Emerald"
+	},
+	{
+		"primary": "Pearl",
+		"alternative": ["Moonstone", "Alexandrite"]
+	},
+	{
+		"primary": "Ruby"
+	},
+	{
+		"primary": "Peridot",
+		"alternative": ["Spinel"]
+	},
+	{
+		"primary": "Sapphire"
+	},
+	{
+		"primary": "Opal",
+		"alternative": ["Tourmaline"]
+	},
+	{
+		"primary": "Topaz",
+		"alternative": ["Citrine"]
+	},
+	{
+		"primary": "Turquoise",
+		"alternative": ["Zircon", "Tanzanite"]
+	}
+]

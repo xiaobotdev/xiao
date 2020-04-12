@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 384
+Total: 385
 
 ### Utility:
 
@@ -349,6 +349,7 @@ Total: 384
 ### Analyzers:
 
 * **age:** Responds with how old someone born in a certain year is.
+* **birthstone:** Responds with the Birthstone for a month.
 * **character-count:** Responds with the character count of text.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **face:** Determines the race, gender, and age of a face.
