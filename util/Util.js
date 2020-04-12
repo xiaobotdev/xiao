@@ -123,7 +123,7 @@ module.exports = class Util {
 	}
 
 	static embedURL(title, url, display = url) {
-		return `[${title}](${url.replace(/\)/g, '%27')}, "${display}")`;
+		return `[${title}](${url.replace(/\)/g, '%27')}${display ? `, "${display}"` : ''})`;
 	}
 
 	static async verify(channel, user, { time = 30000, extraYes = [], extraNo = [] } = {}) {
