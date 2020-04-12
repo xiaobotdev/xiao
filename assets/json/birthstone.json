@@ -7,7 +7,7 @@
 	},
 	{
 		"primary": "Aquamarine",
-		"alternative": ["Bloodstone"]
+		"alternate": ["Bloodstone"]
 	},
 	{
 		"primary": "Diamond"
@@ -17,28 +17,28 @@
 	},
 	{
 		"primary": "Pearl",
-		"alternative": ["Moonstone", "Alexandrite"]
+		"alternate": ["Moonstone", "Alexandrite"]
 	},
 	{
 		"primary": "Ruby"
 	},
 	{
 		"primary": "Peridot",
-		"alternative": ["Spinel"]
+		"alternate": ["Spinel"]
 	},
 	{
 		"primary": "Sapphire"
 	},
 	{
 		"primary": "Opal",
-		"alternative": ["Tourmaline"]
+		"alternate": ["Tourmaline"]
 	},
 	{
 		"primary": "Topaz",
-		"alternative": ["Citrine"]
+		"alternate": ["Citrine"]
 	},
 	{
 		"primary": "Turquoise",
-		"alternative": ["Zircon", "Tanzanite"]
+		"alternate": ["Zircon", "Tanzanite"]
 	}
 ]
