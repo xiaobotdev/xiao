@@ -44,8 +44,8 @@ module.exports = class GenerateCreditCommand extends Command {
 		credit = sortByName(credit, 'name');
 		const mapped = credit
 			.map(c => `- ${embedURL(c.name, c.url || '')}\n${sortByName(c.commands, 'name').map(cmd => {
-				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;
-				return `	* ${cmd.name} (${embedURL(c.reason, c.reasonURL || '')})`;
+				if (!cmd.credit.reasonURL) return `	* ${cmd.credit.name} (${cmd.credit.reason})`;
+				return `	* ${cmd.credit.name} (${embedURL(c.credit.reason, c.credit.reasonURL || '')})`;
 			}).join('\n')}`);
 		return msg.channel.send({ files: [{ attachment: Buffer.from(mapped.join('\n')), name: 'credit.txt' }] });
 	}
