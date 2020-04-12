@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { list } = require('../../util/Util');
+const { list, firstUpperCase } = require('../../util/Util');
 const months = require('../../assets/json/month');
 const stones = require('../../assets/json/birthstone');
 
@@ -23,6 +23,6 @@ module.exports = class BirthstoneCommand extends Command {
 	run(msg, { month }) {
 		const stone = stones[month - 1];
 		const alternate = stone.alternate ? ` Alternatively, you can also use ${list(stone.alternate, 'or')}.` : '';
-		return msg.say(`The Birthstone for ${months[month - 1]} is ${stone.primary}.${alternate}`);
+		return msg.say(`The Birthstone for ${firstUpperCase(months[month - 1])} is ${stone.primary}.${alternate}`);
 	}
 };
