@@ -43,7 +43,7 @@ module.exports = class GenerateCreditCommand extends Command {
 		}
 		credit = sortByName(credit, 'name');
 		const mapped = credit
-			.map(c => `- ${embedURL(c.name, c.url)}\n${sortByName(c.commands, 'name').map(cmd => {
+			.map(c => `- ${embedURL(c.name, c.url || '')}\n${sortByName(c.commands, 'name').map(cmd => {
 				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;
 				return `	* ${cmd.name} (${embedURL(c.reason, c.reasonURL)})`;
 			}).join('\n')}`);
