@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 385
+Total: 384
 
 ### Utility:
 
@@ -154,7 +154,6 @@ Total: 385
 
 * **avatar:** Responds with a user's avatar.
 * **channel:** Responds with detailed information on a channel.
-* **discriminator:** Searches for other users with a certain discriminator.
 * **emoji-image:** Responds with an emoji's full-scale image.
 * **emoji-list:** Responds with a list of the server's custom emoji.
 * **emoji:** Responds with detailed information on an emoji.
