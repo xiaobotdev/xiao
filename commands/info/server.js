@@ -2,8 +2,18 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const filterLevels = ['Off', 'No Role', 'Everyone'];
-const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻', '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'];
+const filterLevels = {
+	DISABLED: 'Off',
+	MEMBERS_WITHOUT_ROLES: 'No Role',
+	ALL_MEMBERS: 'Everyone'
+};
+const verificationLevels = {
+	NONE: 'None',
+	LOW: 'Low',
+	MEDIUM: 'Medium',
+	HIGH: '(╯°□°）╯︵ ┻━┻',
+	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
+};
 
 module.exports = class ServerCommand extends Command {
 	constructor(client) {
