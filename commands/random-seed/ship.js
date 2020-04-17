@@ -3,7 +3,7 @@ const { MersenneTwister19937, integer } = require('random-js');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pinky Cupid.ttf'), { family: 'Pinky Cupid' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pinky Cupid.otf'), { family: 'Pinky Cupid' });
 
 module.exports = class ShipCommand extends Command {
 	constructor(client) {
