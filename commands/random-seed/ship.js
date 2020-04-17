@@ -50,7 +50,8 @@ module.exports = class ShipCommand extends Command {
 
 	async run(msg, { first, second }) {
 		if (first.id === second.id) return msg.reply('Shipping someone with themselves would be pretty weird.');
-		const random = MersenneTwister19937.seed(Math.abs(first.id - second.id));
+		const calculated = Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
+		const random = MersenneTwister19937.seed(calculated);
 		const level = integer(0, 100)(random);
 		const firstAvatarURL = first.displayAvatarURL({ format: 'png', size: 512 });
 		const secondAvatarURL = second.displayAvatarURL({ format: 'png', size: 512 });
