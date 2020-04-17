@@ -63,7 +63,7 @@ module.exports = class ShipCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = '#ff6c6c';
-			ctx.font = '40px Pinky Cupid'
+			ctx.font = '40px Pinky Cupid';
 			ctx.fillText('~Xiao\'s Compatability Meter~', 600, 15);
 			ctx.fillStyle = 'white';
 			ctx.fillText(first.username, 270, 448);
