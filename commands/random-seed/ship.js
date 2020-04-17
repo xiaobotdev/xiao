@@ -104,7 +104,7 @@ module.exports = class ShipCommand extends Command {
 		if (level === 100) return 'Soulmates';
 		return '???';
 	}
-	
+
 	percentColor(pct) {
 		let i = 1;
 		for (i; i < percentColors.length - 1; i++) {
@@ -124,5 +124,5 @@ module.exports = class ShipCommand extends Command {
 			b: Math.floor((lower.color.b * pctLower) + (upper.color.b * pctUpper)).toString(16).padStart(2, '0')
 		};
 		return `#${color.r}${color.g}${color.b}`;
-	};
+	}
 };
