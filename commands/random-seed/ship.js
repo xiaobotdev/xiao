@@ -4,6 +4,11 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pinky Cupid.otf'), { family: 'Pinky Cupid' });
+const percentColors = [
+	{ pct: 0.0, color: { r: 0, g: 0, b: 255 } },
+	{ pct: 0.5, color: { r: 255 / 2, g: 0, b: 255 / 2 } },
+	{ pct: 1.0, color: { r: 255, g: 0, b: 0 } }
+];
 
 module.exports = class ShipCommand extends Command {
 	constructor(client) {
@@ -69,7 +74,7 @@ module.exports = class ShipCommand extends Command {
 			ctx.fillText(first.username, 270, 448);
 			ctx.fillText(second.username, 930, 448);
 			ctx.font = '60px Pinky Cupid';
-			ctx.fillStyle = 'red';
+			ctx.fillStyle = this.percentColor(level / 100);
 			ctx.fillText(`~${level}%~`, 600, 230);
 			ctx.fillText(this.calculateLevelText(level), 600, 296);
 			ctx.font = '90px Pinky Cupid';
@@ -98,4 +103,24 @@ module.exports = class ShipCommand extends Command {
 		if (level === 100) return 'Soulmates';
 		return '???';
 	}
+	
+	percentColor(pct) {
+		for (let i = 1; i < percentColors.length - 1; i++) {
+			if (pct < percentColors[i].pct) {
+				break;
+			}
+		}
+		const lower = percentColors[i - 1];
+		const upper = percentColors[i];
+		const range = upper.pct - lower.pct;
+		const rangePct = (pct - lower.pct) / range;
+		const pctLower = 1 - rangePct;
+		const pctUpper = rangePct;
+		const color = {
+			r: Math.floor((lower.color.r * pctLower) + (upper.color.r * pctUpper)).toString(16).padStart(2, '0'),
+			g: Math.floor((lower.color.g * pctLower) + (upper.color.g * pctUpper)).toString(16).padStart(2, '0'),
+			b: Math.floor((lower.color.b * pctLower) + (upper.color.b * pctUpper)).toString(16).padStart(2, '0')
+		};
+		return `#${color.r}${color.g}${color.b}`;
+	};
 };
