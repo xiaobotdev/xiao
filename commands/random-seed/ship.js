@@ -105,7 +105,8 @@ module.exports = class ShipCommand extends Command {
 	}
 	
 	percentColor(pct) {
-		for (let i = 1; i < percentColors.length - 1; i++) {
+		let i = 1;
+		for (i; i < percentColors.length - 1; i++) {
 			if (pct < percentColors[i].pct) {
 				break;
 			}
