@@ -88,7 +88,10 @@ module.exports = class ShipCommand extends Command {
 		if (level > 29 && level < 40) return 'Bad';
 		if (level > 39 && level < 50) return 'Poor';
 		if (level > 49 && level < 60) return 'Average';
-		if (level > 59 && level < 70) return 'Fine';
+		if (level > 59 && level < 70) {
+			if (level === 69) return 'Nice';
+			return 'Fine';
+		}
 		if (level > 69 && level < 80) return 'Good';
 		if (level > 79 && level < 90) return 'Great';
 		if (level > 89 && level < 100) return 'Amazing';
