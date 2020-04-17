@@ -87,7 +87,7 @@ module.exports = class ShipCommand extends Command {
 	}
 
 	calculateLevelText(level) {
-		if (level === 0) return 'Abyssmal';
+		if (level === 0) return 'Abysmal';
 		if (level > 0 && level < 10) return 'Horrid';
 		if (level > 9 && level < 20) return 'Awful';
 		if (level > 19 && level < 30) return 'Very Bad';
