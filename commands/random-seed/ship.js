@@ -73,7 +73,7 @@ module.exports = class ShipCommand extends Command {
 			ctx.fillText(`~${level}%~`, 600, 230);
 			ctx.fillText(this.calculateLevelText(level), 600, 296);
 			ctx.font = '90px Pinky Cupid';
-			ctx.fillText(level > 49 ? '❤️' : '💔');
+			ctx.fillText(level > 49 ? '❤️' : '💔', 600, 100);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ship.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
