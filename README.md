@@ -637,6 +637,8 @@ here.
 	* itunes ([iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/))
 - [astrology.TV](https://astrology.tv/)
 	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
+- [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339)
+	* ship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 - [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
 	* axis-cult (Prayer Data)
 - [AZLyrics](https://www.azlyrics.com/)
