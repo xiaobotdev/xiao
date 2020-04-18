@@ -7,12 +7,13 @@ const airingGraphQL = stripIndents`
 	query AiringSchedule($greater: Int, $lower: Int) {
 		anime: Page {
 			results: airingSchedules(airingAt_greater: $greater, airingAt_lesser: $lower) {
-			airingAt
-			media {
-				id
-				title {
-					english
-					romaji
+				airingAt
+				media {
+					id
+					title {
+						english
+						romaji
+					}
 				}
 			}
 		}
