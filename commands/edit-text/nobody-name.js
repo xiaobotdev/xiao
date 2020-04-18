@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { shuffle, firstUpperCase } = require('../../util/Util');
+const forced = require('../../assets/json/nobody-name');
 
 module.exports = class NobodyNameCommand extends Command {
 	constructor(client) {
@@ -30,6 +31,7 @@ module.exports = class NobodyNameCommand extends Command {
 	}
 
 	run(msg, { text }) {
+		if (forced[text.toLowerCase()]) return msg.say(forced[text.toLowerCase()]);
 		const letters = text.split('');
 		letters.push('x');
 		const shuffled = shuffle(letters);
