@@ -15,7 +15,7 @@ module.exports = class FriendshipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'friendship',
-			aliases: ['friendship-meter', 'friends', 'friendship-tester', 'friendship-test', 'friend-test'],
+			aliases: ['friendship-meter', 'friends', 'friend', 'friendship-tester', 'friendship-test', 'friend-test'],
 			group: 'random-seed',
 			memberName: 'friendship',
 			description: 'Determines how good friends two users are.',
