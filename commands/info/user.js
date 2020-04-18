@@ -3,6 +3,21 @@ const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { trimArray } = require('../../util/Util');
+const flags = {
+	DISCORD_EMPLOYEE: 'Discord Employee',
+	DISCORD_PARTNER: 'Discord Partner',
+	BUGHUNTER_LEVEL_1: 'Bug Hunter (Level 1)',
+	BUGHUNTER_LEVEL_2: 'Bug Hunter (Level 2)',
+	HYPESQUAD_EVENTS: 'HypeSquad Events',
+	HOUSE_BRAVERY: 'House of Bravery',
+	HOUSE_BRILLIANCE: 'House of Brilliance',
+	HOUSE_BALANCE: 'House of Balance',
+	EARLY_SUPPORTER: 'Early Supporter',
+	TEAM_USER: 'Team User',
+	SYSTEM: 'System',
+	VERIFIED_BOT: 'Verified Bot',
+	VERIFIED_DEVELOPER: 'Verified Bot Developer'
+};
 
 module.exports = class UserCommand extends Command {
 	constructor(client) {
@@ -28,11 +43,13 @@ module.exports = class UserCommand extends Command {
 		const embed = new MessageEmbed()
 			.setAuthor(user.tag)
 			.setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true }));
+		const userFlags = user.flags.toArray();
 		let description = stripIndents`
 			**General User Info:**
 			• ID: ${user.id}
 			• Discord Join Date: ${moment.utc(user.createdAt).format('MM/DD/YYYY h:mm A')}
 			• ${user.bot ? 'Bot' : 'Not a Bot'}
+			• Flags: ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}
 		`;
 		if (msg.guild) {
 			try {
