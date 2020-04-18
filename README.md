@@ -630,6 +630,7 @@ here.
 	* achievement ([Minecraftia Font](https://www.dafont.com/minecraftia.font))
 - [AniList](https://anilist.co/)
 	* anime ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
+	* anime-airing ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* character ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* manga ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 - [Antonio Guillem](http://antonioguillem.com/)
