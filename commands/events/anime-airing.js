@@ -62,8 +62,8 @@ module.exports = class AnimeAiringCommand extends Command {
 			.post('https://graphql.anilist.co/')
 			.send({
 				variables: {
-					greater: Number.parseInt(today().getTime() / 1000, 10),
-					lower: Number.parseInt(tomorrow().getTime() / 1000, 10)
+					greater: Number.parseInt(today(9).getTime() / 1000, 10),
+					lower: Number.parseInt(tomorrow(9).getTime() / 1000, 10)
 				},
 				query: airingGraphQL
 			});
