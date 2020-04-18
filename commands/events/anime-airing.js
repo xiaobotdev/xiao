@@ -44,13 +44,14 @@ module.exports = class AnimeAiringCommand extends Command {
 		try {
 			const anime = await this.getList();
 			if (!anime) return msg.say('No anime air today...');
+			const mapped = anime.map(ani => {
+				const title = ani.media.title.english || ani.media.title.romaji;
+				const airingAt = moment(ani.airingAt * 1000).tz('Asia/Tokyo').format('h:mm A');
+				return `• ${title} (@${airingAt} JST)`;
+			});
 			return msg.say(stripIndents`
 				**Anime Airing on ${moment().tz('Asia/Tokyo').format('dddd, MMMM Do, YYYY')}**
-				${anime.map(ani => {
-					const title = ani.media.title.english || ani.media.title.romaji;
-					const airingAt = moment(ani.airingAt * 1000).tz('Asia/Tokyo').format('h:mm A');
-					return `• ${title} (@${airingAt} JST)`
-				}).join('\n')}
+				${mapped.join('\n')}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
