@@ -25,7 +25,7 @@ module.exports = class AnimeAiringCommand extends Command {
 		super(client, {
 			name: 'anime-airing',
 			aliases: ['anichart', 'airing-anime', 'seasonal-anime', 'anime-seasonal'],
-			group: 'search',
+			group: 'events',
 			memberName: 'anime-airing',
 			description: 'Responds with a list of the anime that air today.',
 			clientPermissions: ['EMBED_LINKS'],
