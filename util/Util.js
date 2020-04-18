@@ -129,11 +129,11 @@ module.exports = class Util {
 
 	static today(timeZone) {
 		const now = new Date();
-		if (timeZone) now.setUTCHours(now.getUTCHours() + timeZone);
 		now.setHours(0);
 		now.setMinutes(0);
 		now.setSeconds(0);
 		now.setMilliseconds(0);
+		if (timeZone) now.setUTCHours(now.getUTCHours() + timeZone);
 		return now;
 	}
 
