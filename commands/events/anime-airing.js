@@ -50,7 +50,7 @@ module.exports = class AnimeAiringCommand extends Command {
 					const title = ani.media.title.english || ani.media.title.romaji;
 					const airingAt = moment(ani.airingAt * 1000).tz('Asia/Tokyo').format('h:mm A');
 					return `• ${title} (@${airingAt} JST)`
-				})}
+				}).join('\n')}
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
