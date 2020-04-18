@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 385
+Total: 386
 
 ### Utility:
 
@@ -264,6 +264,7 @@ Total: 385
 
 ### Events:
 
+* **anime-airing:** Responds with a list of the anime that air today.
 * **apod:** Responds with today's Astronomy Picture of the Day.
 * **calendar:** Responds with today's holidays.
 * **days-until:** Responds with how many days there are until a certain date.
