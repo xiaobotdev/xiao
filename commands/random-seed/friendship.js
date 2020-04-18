@@ -103,7 +103,7 @@ module.exports = class FriendshipCommand extends Command {
 		if (level > 69 && level < 80) return 'Good';
 		if (level > 79 && level < 90) return 'Great';
 		if (level > 89 && level < 100) return 'Amazing';
-		if (level === 100) return 'Best Friends';
+		if (level === 100) return 'Besties';
 		return '???';
 	}
 };

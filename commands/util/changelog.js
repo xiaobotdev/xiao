@@ -35,7 +35,7 @@ module.exports = class ChangelogCommand extends Command {
 			.setURL(`https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}/commits/master`)
 			.setDescription(commits.map(commit => {
 				const hash = embedURL(`\`${commit.sha.slice(0, 7)}\``, commit.html_url);
-				return `${hash} ${shorten(commit.commit.message.split('\n')[0], 50)} - ${commit.author.login}`;
+				return `${hash} ${shorten(commit.commit.message.split('\n')[0], 25)} - ${commit.author.login}`;
 			}).join('\n'));
 		return msg.embed(embed);
 	}
