@@ -106,6 +106,27 @@ module.exports = class Util {
 		});
 	}
 
+	static percentColor(pct, percentColors) {
+		let i = 1;
+		for (i; i < percentColors.length - 1; i++) {
+			if (pct < percentColors[i].pct) {
+				break;
+			}
+		}
+		const lower = percentColors[i - 1];
+		const upper = percentColors[i];
+		const range = upper.pct - lower.pct;
+		const rangePct = (pct - lower.pct) / range;
+		const pctLower = 1 - rangePct;
+		const pctUpper = rangePct;
+		const color = {
+			r: Math.floor((lower.color.r * pctLower) + (upper.color.r * pctUpper)).toString(16).padStart(2, '0'),
+			g: Math.floor((lower.color.g * pctLower) + (upper.color.g * pctUpper)).toString(16).padStart(2, '0'),
+			b: Math.floor((lower.color.b * pctLower) + (upper.color.b * pctUpper)).toString(16).padStart(2, '0')
+		};
+		return `#${color.r}${color.g}${color.b}`;
+	}
+
 	static today(timeZone) {
 		const now = new Date();
 		if (timeZone) now.setUTCHours(timeZone);

@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 384
+Total: 385
 
 ### Utility:
 
@@ -230,6 +230,7 @@ Total: 384
 * **butt:** Determines a user's butt quality.
 * **coolness:** Determines a user's coolness.
 * **dick:** Determines your dick size. (NSFW)
+* **friendship:** Determines how good friends two users are.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
 * **psycho-pass:** Determines your Crime Coefficient.
@@ -638,6 +639,7 @@ here.
 - [astrology.TV](https://astrology.tv/)
 	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
 - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339)
+	* friendship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 	* ship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 - [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
 	* axis-cult (Prayer Data)

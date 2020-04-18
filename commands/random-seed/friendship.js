@@ -7,18 +7,18 @@ const { percentColor } = require('../../util/Util');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pinky Cupid.otf'), { family: 'Pinky Cupid' });
 const percentColors = [
 	{ pct: 0.0, color: { r: 0, g: 0, b: 255 } },
-	{ pct: 0.5, color: { r: 255 / 2, g: 0, b: 255 / 2 } },
-	{ pct: 1.0, color: { r: 255, g: 0, b: 0 } }
+	{ pct: 0.5, color: { r: 0, g: 255 / 2, b: 255 / 2 } },
+	{ pct: 1.0, color: { r: 0, g: 255, b: 0 } }
 ];
 
-module.exports = class ShipCommand extends Command {
+module.exports = class FriendshipCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'ship',
-			aliases: ['compatability-meter', 'compatability', 'love-tester', 'love-test'],
+			name: 'friendship',
+			aliases: ['friendship-meter', 'friends', 'friendship-tester', 'friendship-test', 'friend-test'],
 			group: 'random-seed',
-			memberName: 'ship',
-			description: 'Ships two users together.',
+			memberName: 'friendship',
+			description: 'Determines how good friends two users are.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -36,13 +36,13 @@ module.exports = class ShipCommand extends Command {
 				{
 					key: 'first',
 					label: 'first user',
-					prompt: 'Who is the first user in the ship?',
+					prompt: 'Who is the first friend?',
 					type: 'user'
 				},
 				{
 					key: 'second',
 					label: 'second user',
-					prompt: 'Who is the second user in the ship?',
+					prompt: 'Who is the second friend?',
 					type: 'user',
 					default: msg => msg.author
 				}
@@ -51,8 +51,8 @@ module.exports = class ShipCommand extends Command {
 	}
 
 	async run(msg, { first, second }) {
-		if (first.id === second.id) return msg.reply('Shipping someone with themselves would be pretty weird.');
-		const calculated = Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
+		if (first.id === second.id) return msg.reply('You should be good friends with yourself.');
+		const calculated = -Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
 		const random = MersenneTwister19937.seed(calculated);
 		const level = integer(0, 100)(random);
 		const firstAvatarURL = first.displayAvatarURL({ format: 'png', size: 512 });
@@ -62,7 +62,7 @@ module.exports = class ShipCommand extends Command {
 			const firstAvatar = await loadImage(firstAvatarData.body);
 			const secondAvatarData = await request.get(secondAvatarURL);
 			const secondAvatar = await loadImage(secondAvatarData.body);
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'ship.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'friendship.png'));
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(firstAvatar, 70, 56, 400, 400);
@@ -70,9 +70,9 @@ module.exports = class ShipCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
-			ctx.fillStyle = '#ff6c6c';
+			ctx.fillStyle = 'green';
 			ctx.font = '40px Pinky Cupid';
-			ctx.fillText('~Xiao\'s Compatability Meter~', 600, 15);
+			ctx.fillText('~Xiao\'s Friendship Meter~', 600, 15);
 			ctx.fillStyle = 'white';
 			ctx.fillText(first.username, 270, 448);
 			ctx.fillText(second.username, 930, 448);
@@ -81,8 +81,8 @@ module.exports = class ShipCommand extends Command {
 			ctx.fillText(`~${level}%~`, 600, 230);
 			ctx.fillText(this.calculateLevelText(level), 600, 296);
 			ctx.font = '90px Pinky Cupid';
-			ctx.fillText(level > 49 ? '❤️' : '💔', 600, 100);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ship.png' }] });
+			ctx.fillText(level > 49 ? '👍' : '👎', 600, 100);
+			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'friendship.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
@@ -103,7 +103,7 @@ module.exports = class ShipCommand extends Command {
 		if (level > 69 && level < 80) return 'Good';
 		if (level > 79 && level < 90) return 'Great';
 		if (level > 89 && level < 100) return 'Amazing';
-		if (level === 100) return 'Soulmates';
+		if (level === 100) return 'Best Friends';
 		return '???';
 	}
 };
