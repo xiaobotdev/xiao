@@ -44,7 +44,7 @@ module.exports = class PoliceTapeCommand extends Command {
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(data, 0, 0);
-			const { x, y, width, height } = centerImage(base, data);
+			const { x, y, width, height } = centerImage(data, base);
 			ctx.drawImage(base, x, y, width, height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
