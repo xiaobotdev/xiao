@@ -5,7 +5,7 @@ module.exports = class XiaoFactCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'xiao-fact',
-			aliases: ['iao-fact', 'bot-fact'],
+			aliases: ['iao-fact', 'bot-fact', 'easter-egg'],
 			group: 'random-res',
 			memberName: 'xiao-fact',
 			description: 'Responds with a random fact about Xiao.'

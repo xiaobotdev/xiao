@@ -44,7 +44,7 @@ module.exports = class AnimeAiringCommand extends Command {
 		try {
 			const anime = await this.getList();
 			if (!anime) return msg.say('No anime air today...');
-			const mapped = anime.map(ani => {
+			const mapped = anime.sort((a, b) => a.airingAt - b.airingAt).map(ani => {
 				const title = ani.media.title.english || ani.media.title.romaji;
 				const airingAt = moment(ani.airingAt * 1000).tz('Asia/Tokyo').format('h:mm A');
 				return `• ${title} (@${airingAt} JST)`;
