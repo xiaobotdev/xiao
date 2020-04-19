@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 390
+Total: 391
 
 ### Utility:
 
@@ -429,6 +429,7 @@ Total: 390
 * **newspaper:** Creates a fake newspaper with the headline and body of your choice.
 * **pixelize:** Draws an image or a user's avatar pixelized.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
+* **police-tape:** Draws police tape over an image or a user's avatar.
 * **rainbow:** Draws a rainbow over an image or a user's avatar.
 * **rejected:** Draws a "rejected" stamp over an image or a user's avatar.
 * **robohash:** Creates a robot based on the text you provide.
@@ -962,6 +963,8 @@ here.
 - [Perspective API](https://www.perspectiveapi.com/#/)
 	* severe-toxicity (API)
 	* toxicity (API)
+- [PNG Arts](https://www.pngarts.com/)
+	* police-tape ([Image](https://www.pngarts.com/explore/94078))
 - [pngimg.com](https://pngimg.com/)
 	* thug-life ([Image](http://pngimg.com/download/58231))
 - [Platinum Designz](http://store.platinumdesignz.com/)
