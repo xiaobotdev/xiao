@@ -20,7 +20,7 @@ module.exports = class TaxCommand extends Command {
 					key: 'amount',
 					prompt: 'How much money should be converted?',
 					type: 'float'
-				},
+				}
 			]
 		});
 	}
