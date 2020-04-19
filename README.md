@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 386
+Total: 387
 
 ### Utility:
 
@@ -422,6 +422,7 @@ Total: 386
 * **ifunny:** Draws an image with the iFunny logo.
 * **invert:** Draws an image or a user's avatar but inverted.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
+* **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
 * **newspaper:** Creates a fake newspaper with the headline and body of your choice.
 * **pixelize:** Draws an image or a user's avatar pixelized.
