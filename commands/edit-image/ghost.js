@@ -33,7 +33,7 @@ module.exports = class GhostCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, data.width, data.height);
-			ctx.globalAlpha = 0.5;
+			ctx.globalAlpha = 0.25;
 			ctx.drawImage(data, 0, 0);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
