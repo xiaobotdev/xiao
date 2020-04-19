@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 387
+Total: 390
 
 ### Utility:
 
@@ -417,6 +417,8 @@ Total: 387
 * **distort:** Draws an image or a user's avatar but distorted.
 * **fire:** Draws a fiery border over an image or a user's avatar.
 * **frame:** Draws a frame around an image or a user's avatar.
+* **ghost:** Draws an image or a user's avatar but with a ghost-like transparency.
+* **glass-shatter:** Draws an image or a user's avatar with a glass shatter in front of it.
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
 * **ifunny:** Draws an image with the iFunny logo.
@@ -542,6 +544,7 @@ Total: 387
 * **prime:** Determines if a number is a prime number.
 * **roman:** Converts a number to roman numerals.
 * **scientific-notation:** Converts a number to scientific notation.
+* **tax:** Determines the total cost of something plus tax.
 * **units:** Converts units to/from other units.
 
 ### Other:
@@ -961,6 +964,8 @@ here.
 	* toxicity (API)
 - [pngimg.com](https://pngimg.com/)
 	* thug-life ([Image](http://pngimg.com/download/58231))
+- [Platinum Designz](http://store.platinumdesignz.com/)
+	* glass-shatter ([Image]('https://www.jing.fm/iclipt/u2q8u2a9o0t4i1q8/))
 - [Pokemon Fusion](https://pokemon.alexonsager.net/)
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)

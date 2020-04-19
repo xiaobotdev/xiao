@@ -63,8 +63,11 @@ module.exports = class Util {
 		return text.split(split).map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(' ');
 	}
 
-	static formatNumber(number) {
-		return Number.parseFloat(number).toLocaleString(undefined, { maximumFractionDigits: 2 });
+	static formatNumber(number, minimumFractionDigits = 0) {
+		return Number.parseFloat(number).toLocaleString(undefined, {
+			minimumFractionDigits,
+			maximumFractionDigits: 2
+		});
 	}
 
 	static base64(text, mode = 'encode') {
