@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 391
+Total: 392
 
 ### Utility:
 
@@ -421,6 +421,7 @@ Total: 391
 * **glass-shatter:** Draws an image or a user's avatar with a glass shatter in front of it.
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
+* **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
 * **invert:** Draws an image or a user's avatar but inverted.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
@@ -629,6 +630,8 @@ here.
 	* adorable (API)
 - [Advice Slip](https://adviceslip.com/)
 	* advice ([API](https://api.adviceslip.com/))
+- [Alexey Star](https://alexeystar.com/)
+	* hollywood-star ([Hollywood Star Font](https://alexeystar.com/hollywood-star-font/))
 - [Alpha Vantage](https://www.alphavantage.co/)
 	* stocks (API)
 - [Andrew Tyler](https://www.dafont.com/andrew-tyler.d2526)
@@ -787,6 +790,8 @@ here.
 	* scrabble-score ([Original Scrabble Game](https://scrabble.hasbro.com/en-us))
 - [hbl917070](https://github.com/hbl917070)
 	* axis-cult-sign-up ([Font](https://github.com/hbl917070/Konosuba-text))
+- [Hollywood Walk of Fame](https://walkoffame.com/)
+	* hollywood-star (Concept)
 - [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas)
 	* vietnam-flashbacks (Image)
 - [HTTP Cats](https://http.cat/)
@@ -1010,6 +1015,8 @@ here.
 	* subreddit ([API](https://www.reddit.com/dev/api/))
 - [Redeeming God](https://redeeminggod.com/)
 	* approved ([Image](https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/))
+- [RedKid.Net](http://www.redkid.net/)
+	* hollywood-star ([Image](http://www.redkid.net/generator/star/))
 - [Rest Countries](https://restcountries.eu/)
 	* country (API)
 - [Right Stuf Anime](https://www.rightstufanime.com/)
