@@ -122,7 +122,7 @@ module.exports = class HatCommand extends Command {
 					prompt: 'By what percentage do you want to scale your hat?',
 					type: 'integer',
 					min: 0,
-					max: 100,
+					max: 1000,
 					default: 0
 				}
 			]
