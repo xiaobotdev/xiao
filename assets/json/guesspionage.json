@@ -1,0 +1,846 @@
+[
+	{
+		"text": "What percentage of pepole exit partys without telling people they're leaving?",
+		"answer": 25
+	},
+	{
+		"text": "What percentage of people have purchased condoms from gas station bathroom dispensers?",
+		"answer": 17,
+		"nsfw": true
+	},
+	{
+		"text": "When seeing their neighbors in passing, what percentage of people normally do NOT greet them using their first names?",
+		"answer": 63
+	},
+	{
+		"text": "What percentage of people only go to the Dentist when something is wrong?",
+		"answer": 53
+	},
+	{
+		"text": "What percentage of people have attended an Ugly Sweater Party?",
+		"answer": 35
+	},
+	{
+		"text": "When a Mariachi band suddely appears, what percentage of people are more annoyed than anything else?",
+		"answer": 40
+	},
+	{
+		"text": "What percentage of people have ever had usernames (email, Twitter, etc) with the number 69 in them?",
+		"answer": 9
+	},
+	{
+		"text": "What percentage of people keep diaries or journals that they update pretty much daily?",
+		"answer": 4
+	},
+	{
+		"text": "What percentage of people have purchased car washes at gas astations in the past year?",
+		"answer": 43
+	},
+	{
+		"text": "What percentage of people have parachuted out of an aircraft?",
+		"answer": 5
+	},
+	{
+		"text": "What percentage of people own more mittens than they do gloves?",
+		"answer": 5
+	},
+	{
+		"text": "What percentage of people have visitied cemeteries where nobody they knew was buried?",
+		"answer": 73
+	},
+	{
+		"text": "What percentage of people have vaped?",
+		"answer": 32
+	},
+	{
+		"text": "What percentage of people said they would keep working at their jobs if they won $900 million in the lottery?",
+		"answer": 37
+	},
+	{
+		"text": "What percentage of people have left scathing notes on strangers' cars because of poor parking jobs or other vehicular offenses?",
+		"answer": 24
+	},
+	{
+		"text": "What percentage of people regularly talk out loud to themselves when alone?",
+		"answer": 76
+	},
+	{
+		"text": "What percentage of people reguarly cut off, or avoid eating, the crusts on their sandwiches?",
+		"answer": 13
+	},
+	{
+		"text": "What percentage of people prefer brownies with nuts over nutless brownies?",
+		"answer": 30
+	},
+	{
+		"text": "What percentage of people have donated to crowdfunding projects?",
+		"answer": 70
+	},
+	{
+		"text": "What percentage of people have photobombed total strangers?",
+		"answer": 53
+	},
+	{
+		"text": "What percentage of people would rather come up with different usernames than different passwords?",
+		"answer": 30
+	},
+	{
+		"text": "What percentage of people like their orange juice with pulp rather than pulp-free?",
+		"answer": 44
+	},
+	{
+		"text": "What percentage of people own movies starring Gerard Depardieu?",
+		"answer": 8
+	},
+	{
+		"text": "What percentage of people prefer The Rolling Stones to The Beatles?",
+		"answer": 23
+	},
+	{
+		"text": "What percentage of people have used a search engine to get information about someone before a first date?",
+		"answer": 39
+	},
+	{
+		"text": "What percentage of people have functioning VCRs in their homes?",
+		"answer": 42
+	},
+	{
+		"text": "What percentage of people regularly pay for things costing less than a dollar with credit cards?",
+		"answer": 3
+	},
+	{
+		"text": "What percentage of people would generally rather clean the toilet than wash the dishes?",
+		"answer": 32
+	},
+	{
+		"text": "What percentage of people wash their bed sheets at least once a week?",
+		"answer": 12
+	},
+	{
+		"text": "What percentage of people, at this very moment, have more than five magnets on their refridgerator?",
+		"answer": 77
+	},
+	{
+		"text": "What percentage of people have bought \"As Seen on TV\" or informercial products?",
+		"answer": 66
+	},
+	{
+		"text": "What percentage of people take their Oreos apart before eating them?",
+		"answer": 46
+	},
+	{
+		"text": "What percentage of people have ever put potato chips IN a sandwich?",
+		"answer": 70
+	},
+	{
+		"text": "What percentage of people generally ignore restaurant straws and drink straight from the glass?",
+		"answer": 14
+	},
+	{
+		"text": "What percentage of people would, if offered by a sexy vampire, seize the chance to become vampires themselves?",
+		"answer": 45,
+		"nsfw": true
+	},
+	{
+		"text": "What percentage of people have accidentally walked in on their parents having sex?",
+		"answer": 22,
+		"nsfw": true
+	},
+	{
+		"text": "What percentage of people wear socks when they sleep at night?",
+		"answer": 16
+	},
+	{
+		"text": "What percentage of audience members will NOT give standing ovations if the rest of the audience remains seated?",
+		"answer": 40
+	},
+	{
+		"text": "What percentage of people prefer smooth peanut butter to crunchy peanut butter?",
+		"answer": 62
+	},
+	{
+		"text": "What percentage of people have over 1000 Twitter followers?",
+		"answer": 5
+	},
+	{
+		"text": "When given the choice of Superman's x-ray vision or his ability to fly, what percentage of people would choose flight?",
+		"answer": 83
+	},
+	{
+		"text": "What percentage of people keep written lists of their passwords?",
+		"answer": 33
+	},
+	{
+		"text": "What percentage of people watch Wheel of Fortune at least once a week?",
+		"answer": 11
+	},
+	{
+		"text": "What percentage of people currently have a crush on people they work with?",
+		"answer": 29
+	},
+	{
+		"text": "What percentage of YouTube visitors will let a full 30-second commercial play before their video starts but NOT watch the commercial?",
+		"answer": 75
+	},
+	{
+		"text": "What percentage of people still listen to music using iPods?",
+		"answer": 26
+	},
+	{
+		"text": "What percentage of people have tried to order at drive-thru windows when NOT inside motor vehicles?",
+		"answer": 27
+	},
+	{
+		"text": "What percentage of people have bought marshmallow Peeps for their own non-Easter related snacking?",
+		"answer": 23
+	},
+	{
+		"text": "What percentage of people have eaten a Hot Pocket in the past month?",
+		"answer": 18
+	},
+	{
+		"text": "What percentage of people have taken home magazines from hospitals or doctor's office waiting rooms?",
+		"answer": 23
+	},
+	{
+		"text": "What percentage of people file their annual taxes at the last minute, within a day or two of the deadline?",
+		"answer": 17
+	},
+	{
+		"text": "What percentage of people own hammocks?",
+		"answer": 17
+	},
+	{
+		"text": "What percentage of people routinely mix fountain drinks together?",
+		"answer": 24
+	},
+	{
+		"text": "What percentage of people deal with bugs in their homes by taking them outside (rather than leaving them alone or killing them)?",
+		"answer": 23
+	},
+	{
+		"text": "What percentage of people have sent someone a nude selfie?",
+		"answer": 47,
+		"nsfw": true
+	},
+	{
+		"text": "What percentage of people keep end-of-year holiday cards on display for weeks or months after New Years?",
+		"answer": 20
+	},
+	{
+		"text": "What percentage of people go by their middle names?",
+		"answer": 3
+	},
+	{
+		"text": "What percentage of people prefer to stay cool in their cars by means of open windows, not A/C?",
+		"answer": 19
+	},
+	{
+		"text": "What percentage of people believe there are aliens out there somewhere in the universe?",
+		"answer": 85
+	},
+	{
+		"text": "What percentage of people have thrown darts in the past year?",
+		"answer": 35
+	},
+	{
+		"text": "What percentage of people normally air dry all their wet laundry?",
+		"answer": 6
+	},
+	{
+		"text": "After eating bowls of cereal, what percentage of people lift up the bowls to drink the remaining milk?",
+		"answer": 73
+	},
+	{
+		"text": "What percentage of people try to get ketchup out of glass bottles using the vigorous shaking method (instead of rolling the bottle or tapping it)?",
+		"answer": 38
+	},
+	{
+		"text": "What percentage of people have used bidets?",
+		"answer": 21
+	},
+	{
+		"text": "What percentage of people over age 40 still have one of their old high school textbooks?",
+		"answer": 22
+	},
+	{
+		"text": "What percentage of people have peed in public pools?",
+		"answer": 66
+	},
+	{
+		"text": "What percentage of women regularly wear new clothes with price tags attached before they decide whether or not to return them?",
+		"answer": 4
+	},
+	{
+		"text": "What percentage of people have worn socks with sandals?",
+		"answer": 18
+	},
+	{
+		"text": "What percentage of people have worn fanny packs?",
+		"answer": 65
+	},
+	{
+		"text": "What percentage of people have woken up before 5 a.m. to attend Black Friday sales?",
+		"answer": 39
+	},
+	{
+		"text": "What percentage of people have flown in helicopters?",
+		"answer": 15
+	},
+	{
+		"text": "When at a concert, what percentage of people sing along to the song parts they know and fake-sing along with the rest?",
+		"answer": 41
+	},
+	{
+		"text": "What percentage of people learned about sex from their parents?",
+		"answer": 18,
+		"nsfw": true
+	},
+	{
+		"text": "What percentage of people hate coconut?",
+		"answer": 31
+	},
+	{
+		"text": "What percentage of people have mail from ex-lovers that they would never throw away or delete?",
+		"answer": 34
+	},
+	{
+		"text": "What percentage of people love amusement park rides that spin them in circles very fast?",
+		"answer": 26
+	},
+	{
+		"text": "What percentage of people have never in their lives eaten brunch?",
+		"answer": 15
+	},
+	{
+		"text": "What percentage of people have tried talking police officers out of ticketing or arresting them?",
+		"answer": 38
+	},
+	{
+		"text": "What percentage of people prefer Friends over Seinfeld?",
+		"answer": 50
+	},
+	{
+		"text": "What percentage of men are able to properly knot bow ties by themselves?",
+		"answer": 32
+	},
+	{
+		"text": "What percentage of people never RSVP to weddings they plan to attend?",
+		"answer": 3
+	},
+	{
+		"text": "What percentage of people had their mouths washed out as children?",
+		"answer": 33
+	},
+	{
+		"text": "What percentage of people dispose of hard copy financial statements in a shredder?",
+		"answer": 55
+	},
+	{
+		"text": "What percentage of people have attended a roller derby match?",
+		"answer": 12
+	},
+	{
+		"text": "What percentage of people when brushing your teeth keep the faucet running continuously?",
+		"answer": 33
+	},
+	{
+		"text": "What percentage of people still have DVD Towers in their places of residence?",
+		"answer": 30
+	},
+	{
+		"text": "What percentage of people have flown kites in the past year?",
+		"answer": 8
+	},
+	{
+		"text": "What percentage of people allow their credit cards to be charged for services they no longer used because they are too lazy to cancel them?",
+		"answer": 27
+	},
+	{
+		"text": "What percentage of people have heard noises in the middle of the night and stalked their homes with baseball bats?",
+		"answer": 35
+	},
+	{
+		"text": "What percentage of people have urinated in bottles to avoid stopping during road trips?",
+		"answer": 29
+	},
+	{
+		"text": "What percentage of people have written on bathroom stalls sometime in their life?",
+		"answer": 46
+	},
+	{
+		"text": "What percentage of people prefer dark chocolate over milk chocolate?",
+		"answer": 38
+	},
+	{
+		"text": "What percentage of beer drinkers prefer macrobrews to microbrewery beer?",
+		"answer": 18
+	},
+	{
+		"text": "What percentage of people have cried while listening to Adele?",
+		"answer": 16
+	},
+	{
+		"text": "What percentage of people have gone bowling alone?",
+		"answer": 17
+	},
+	{
+		"text": "What percentage of people's DVD or Blu-Ray collections are in alphabetical order?",
+		"answer": 27
+	},
+	{
+		"text": "What percentage of people immediately hang the \"Do Not Disturb\" sign after accessing their hotel rooms even if it's not bedtime?",
+		"answer": 44
+	},
+	{
+		"text": "What percentage of people have... y'know... pooped in the woods?",
+		"answer": 48
+	},
+	{
+		"text": "What percentage of people have mistaken mannequins for real people?",
+		"answer": 56
+	},
+	{
+		"text": "What percentage of people in the last year, have been inside Bass Pro Shops at least six times?",
+		"answer": 1
+	},
+	{
+		"text": "What percentage of people are Facebook friends with one or more of their High School teachers?",
+		"answer": 56
+	},
+	{
+		"text": "What percentage of people have rollerbladed within the past year?",
+		"answer": 4
+	},
+	{
+		"text": "What percentage of people knock on cantaloupes to test their ripeness?",
+		"answer": 37
+	},
+	{
+		"text": "What percentage of women own pairs of shoes they love but don't wear because they are uncomfortable?",
+		"answer": 82
+	},
+	{
+		"text": "What percentage of people have successfully pulled April Fool's pranks?",
+		"answer": 68
+	},
+	{
+		"text": "What percentage of people have at least one expired item in the fridge right now?",
+		"answer": 82
+	},
+	{
+		"text": "What percentage of people make their beds every day?",
+		"answer": 20
+	},
+	{
+		"text": "What percentage of people have tried to taunt, trick, or harass email scammers?",
+		"answer": 37
+	},
+	{
+		"text": "What percentage of people have a lucky number?",
+		"answer": 59
+	},
+	{
+		"text": "What percentage of people use electric toothbrushes?",
+		"answer": 38
+	},
+	{
+		"text": "What percentage of people currently have fancy soap in their bathrooms?",
+		"answer": 23
+	},
+	{
+		"text": "What percentage of people own t-shirts that are at least 10 years old?",
+		"answer": 84
+	},
+	{
+		"text": "What percentage of people walk around art museums with their hands clasped behind their backs?",
+		"answer": 22
+	},
+	{
+		"text": "What percentage of people admit feeling obligated to \"Like\" friends' Facebook posts?",
+		"answer": 62
+	},
+	{
+		"text": "What percentage of people have laughed out loud from a Garfield comic?",
+		"answer": 66
+	},
+	{
+		"text": "What percentage of people have used sporks more than 10 times in their lives?",
+		"answer": 67
+	},
+	{
+		"text": "At a pedestrian crosswalk, what percentage of people always, without exception, wait for a \"Walk\" signal before crossing?",
+		"answer": 38
+	},
+	{
+		"text": "What percentage of people have seen the movie Titanic more than twice?",
+		"answer": 54
+	},
+	{
+		"text": "What percentage of people have watched a video of a cat riding a Roomba?",
+		"answer": 73
+	},
+	{
+		"text": "What percentage of people, at any time in their lives, have cried after bad haircuts?",
+		"answer": 24
+	},
+	{
+		"text": "What percentage of diners are UNABLE to remember restaurant specials immediately after servers recite them?",
+		"answer": 51
+	},
+	{
+		"text": "What percentage of people NEVER invite dates home if their places are messy?",
+		"answer": 14
+	},
+	{
+		"text": "What percentage of people have been on Segways?",
+		"answer": 14
+	},
+	{
+		"text": "What percentage of people, when setting up first dates, rely on familiar, \"go-to\" places?",
+		"answer": 69
+	},
+	{
+		"text": "What percentage of people will eat french fries after they have fallen off their plates and landed on restaurant tables?",
+		"answer": 56
+	},
+	{
+		"text": "What percentage of people have dated someone who had already dated one of their good friends?",
+		"answer": 36
+	},
+	{
+		"text": "What percentage of women wear hats to hide bad hair days?",
+		"answer": 27
+	},
+	{
+		"text": "What percentage of people were allowed to have sugary cereals as a children?",
+		"answer": 88
+	},
+	{
+		"text": "What percentage of people find chimpanzees on roller skates funnier than chimpanzees smoking cigars?",
+		"answer": 79
+	},
+	{
+		"text": "What percentage of people prefer Predator over Alien?",
+		"answer": 52
+	},
+	{
+		"text": "What percentage of people put their right hands over their hearts during the national anthem?",
+		"answer": 77
+	},
+	{
+		"text": "What percentage of people have cleared their internet history in the past month?",
+		"answer": 49
+	},
+	{
+		"text": "What percentage of people have had their shoes shined at the airport?",
+		"answer": 5
+	},
+	{
+		"text": "What percentage of people prefer to use the big spoon instead of the small spoon when eating breakfast cereal?",
+		"answer": 47
+	},
+	{
+		"text": "What percentage of people regularly check their horoscopes?",
+		"answer": 7
+	},
+	{
+		"text": "While traveling, what percentage of people have fallen asleep on strangers?",
+		"answer": 12
+	},
+	{
+		"text": "What percentage of people have abused vending machines in order to dislodge purchases they made?",
+		"answer": 78
+	},
+	{
+		"text": "What percentage of people have been seriously turned on by cartoon characters?",
+		"answer": 55,
+		"nsfw": true
+	},
+	{
+		"text": "What percentage of people have performed the whip and/or nae nae dance routine?",
+		"answer": 20
+	},
+	{
+		"text": "What percentage of people have bought pictures of themselves at amusement parks?",
+		"answer": 49
+	},
+	{
+		"text": "What percentage of people like their burgers cooked well done?",
+		"answer": 13
+	},
+	{
+		"text": "What percentage of people have engaged in sexual activity with another person somewhere in a restaurant?",
+		"answer": 20,
+		"nsfw": true
+	},
+	{
+		"text": "What percentage of people have heard \"Let It Go\" from Frozen in its entirety more than 20 times?",
+		"answer": 42
+	},
+	{
+		"text": "What percentage of people butter and jelly packaged together in one jar?",
+		"answer": 3
+	},
+	{
+		"text": "What percentage of people have knowingly eaten dishes that contain testicles?",
+		"answer": 6,
+		"nsfw": true
+	},
+	{
+		"text": "What percentage of people have worn bathing suits under their clothes because they were out of underwear?",
+		"answer": 23
+	},
+	{
+		"text": "What percentage of people have eaten frog legs?",
+		"answer": 28
+	},
+	{
+		"text": "What percentage of people are comfortable being naked in rooms outside of their bedrooms or bathrooms when they're home alone?",
+		"answer": 77
+	},
+	{
+		"text": "What percentage of people most often use toilet paper to blow their noses?",
+		"answer": 35
+	},
+	{
+		"text": "What percentage of people have NEVER struck golf balls with golf clubs other than putters?",
+		"answer": 32
+	},
+	{
+		"text": "What percentage of people get more than half of their consumed chili from cans?",
+		"answer": 25
+	},
+	{
+		"text": "What percentage of people consider 60 degrees Fahrenheit to be t-shirt weather?",
+		"answer": 44
+	},
+	{
+		"text": "What percentage of people prefer canned soda [rather than bottled soda or fountain soda]?",
+		"answer": 28
+	},
+	{
+		"text": "What percentage of people would prefer to go through their entire lives barefoot?",
+		"answer": 36
+	},
+	{
+		"text": "What percentage of people are currently not speaking to friends or relatives they usually speak to but are mad at it?",
+		"answer": 31
+	},
+	{
+		"text": "What percentage of people have had professional palm readings, visited psychics or had tarot card readings?",
+		"answer": 30
+	},
+	{
+		"text": "What percentage of people usually walk up or down moving escalators even if they're NOT in a rush?",
+		"answer": 36
+	},
+	{
+		"text": "What percentage of people believe they have seen ghosts?",
+		"answer": 25
+	},
+	{
+		"text": "What percentage of people find that their pee smells funny after eating asparagus?",
+		"answer": 51
+	},
+	{
+		"text": "What percentage of people usually remove their shoes while flying?",
+		"answer": 19
+	},
+	{
+		"text": "What percentage of people did NOT finish the last game of Monopoly they started?",
+		"answer": 46
+	},
+	{
+		"text": "What percentage of people ALWAYS add salt to meals served to them?",
+		"answer": 13
+	},
+	{
+		"text": "What percentage of people have attended conventions or expos dressed as fictional characters?",
+		"answer": 22
+	},
+	{
+		"text": "What percentage of men have paid more than $50 on haircuts?",
+		"answer": 12
+	},
+	{
+		"text": "What percentage of people could not tell you their current checking account balance within $10?",
+		"answer": 61
+	},
+	{
+		"text": "What percentage of people have successfully retrieved prizes from one of those claw machines?",
+		"answer": 69
+	},
+	{
+		"text": "What percentage of people have older relatives who routinely forward them jokes via email?",
+		"answer": 29
+	},
+	{
+		"text": "What percentage of people wink primarily with their left eyes?",
+		"answer": 38
+	},
+	{
+		"text": "What percentage of people have ever dressed as a Batman character?",
+		"answer": 32
+	},
+	{
+		"text": "What percentage of people ignore pennies they see on the ground rather than picking them up?",
+		"answer": 44
+	},
+	{
+		"text": "What percentage of people have gone on juice cleanses?",
+		"answer": 7
+	},
+	{
+		"text": "When consuming a canned beverage, what percentage of people usually fiddle with the little pop-top they form the top of the can but don't remove it?",
+		"answer": 43
+	},
+	{
+		"text": "What percentage of people have been interviewed on radio or TV?",
+		"answer": 50
+	},
+	{
+		"text": "What percentage of people have started campfires without assistance?",
+		"answer": 56
+	},
+	{
+		"text": "What percentage of people have sustained injuries from firework accidents?",
+		"answer": 14
+	},
+	{
+		"text": "What percentage of people have built complicated structures out of LEGOs?",
+		"answer": 55
+	},
+	{
+		"text": "What percentage of people have played Cards Against Humanity with a parent or grandparent?",
+		"answer": 30
+	},
+	{
+		"text": "What percentage of people have been kicked out of bars?",
+		"answer": 22
+	},
+	{
+		"text": "What percentage of people prefer waffles over pancakes?",
+		"answer": 51
+	},
+	{
+		"text": "What percentage of people have caught foul balls or home runs at professional baseball games?",
+		"answer": 9
+	},
+	{
+		"text": "What percentage of people own corn holders?",
+		"answer": 50
+	},
+	{
+		"text": "What percentage of people have been to a farmer's market within the past year?",
+		"answer": 47
+	},
+	{
+		"text": "What percentage of men have used cologne in the last month?",
+		"answer": 57
+	},
+	{
+		"text": "What percentage of people can confidently explain the difference between a macchiato and a latte?",
+		"answer": 14
+	},
+	{
+		"text": "What percentage of people are neat freaks?",
+		"answer": 42
+	},
+	{
+		"text": "What percentage of people have worked on farms for at least one day?",
+		"answer": 16
+	},
+	{
+		"text": "What percentage of people have gotten into online altercations with strangers?",
+		"answer": 72
+	},
+	{
+		"text": "What percentage of people have televisions in their bedrooms?",
+		"answer": 63
+	},
+	{
+		"text": "What percentage of people currently have on their cars at least one bumper sticker?",
+		"answer": 24
+	},
+	{
+		"text": "What percentage of people keep printed words of wisdom in a visible spot at home or work?",
+		"answer": 20
+	},
+	{
+		"text": "What percentage of people can play a musical instrument?",
+		"answer": 66
+	},
+	{
+		"text": "What percentage of people have shopped online while intoxicated?",
+		"answer": 49
+	},
+	{
+		"text": "What percentage of people will NOT say anything to strangers in elevators unless the strangers speak first?",
+		"answer": 78
+	},
+	{
+		"text": "What percentage of people have more plastic hangers in their closets than wooden or wire ones?",
+		"answer": 80
+	},
+	{
+		"text": "When cooking hotdogs, what percentage of people typically microwave them (instead of boiling them)?",
+		"answer": 25
+	},
+	{
+		"text": "What percentage of people are really just terrible at using chopsticks?",
+		"answer": 35
+	},
+	{
+		"text": "What percentage of people have NEVER ever used swear words in front of their parents?",
+		"answer": 15
+	},
+	{
+		"text": "What percentage of people have Rickrolled someone?",
+		"answer": 63
+	},
+	{
+		"text": "What percentage of people drink water straight from the tap when at home?",
+		"answer": 56
+	},
+	{
+		"text": "What percentage of people have to have itineraries when going on vacation?",
+		"answer": 14
+	},
+	{
+		"text": "What percentage of people prefer to play board games instead of electronic games?",
+		"answer": 37
+	},
+	{
+		"text": "What percentage of people generally use washcloths to apply soup, not just the bat of soup itself?",
+		"answer": 36
+	},
+	{
+		"text": "What percentage of people have read more than three books about vampires?",
+		"answer": 36
+	},
+	{
+		"text": "What percentage of people have sold their bodily fluids on at least one occasion?",
+		"answer": 12
+	},
+	{
+		"text": "What percentage of people put ketchup on Hot Dogs?",
+		"answer": 67
+	},
+	{
+		"text": "What percentage of people typically eat the pickle that comes with restaurant sandwiches?",
+		"answer": 63
+	},
+	{
+		"text": "What percentage of people have shaken the hands of celebrities?",
+		"answer": 73
+	},
+	{
+		"text": "What percentage of people have gestured to truck drivers to pull their horns?",
+		"answer": 80
+	},
+	{
+		"text": "What percentage of people have heard of the Discord bot Xiao?",
+		"answer": 1
+	}
+]

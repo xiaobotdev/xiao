@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 392
+Total: 393
 
 ### Utility:
 
@@ -393,6 +393,7 @@ Total: 392
 * **connect-four:** Play a game of Connect Four with another user.
 * **dots-and-boxes:** Play a game of Dots and Boxes with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
+* **guesspionage:** Tests your knowledge of humans as you guess how people responded to poll questions.
 * **gunfight:** Engage in a western gunfight against another user. High noon.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
@@ -836,6 +837,8 @@ here.
 	* ip (API)
 - [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ)
 	* challenger ([Image](https://www.youtube.com/watch?v=3FebRrXg0bk))
+- [Jackbox Games](https://www.jackboxgames.com/)
+	* guesspionage ([Original "Guesspionage" Game](https://www.jackboxgames.com/guesspionage/))
 - [jasmaa](https://github.com/jasmaa/)
 	* neko-atsume-password ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
 - [JellyNeo Item Database](https://items.jellyneo.net/)
@@ -968,6 +971,8 @@ here.
 - [Perspective API](https://www.perspectiveapi.com/#/)
 	* severe-toxicity (API)
 	* toxicity (API)
+- [Playstation Trophies](https://www.playstationtrophies.org/)
+	* guesspionage ([Question Data](https://www.playstationtrophies.org/game/the-jackbox-party-pack-3/trophy/157520-Guesspionage--Perfect-Surveillance.html))
 - [PNG Arts](https://www.pngarts.com/)
 	* police-tape ([Image](https://www.pngarts.com/explore/94078))
 - [pngimg.com](https://pngimg.com/)
@@ -1091,6 +1096,8 @@ here.
 	* waifu (API)
 - [Tim's Printables](https://www.timvandevall.com/)
 	* wanted ([Image](https://www.pinterest.com/pin/365002744774849370/))
+- [TrueAchievements](https://www.trueachievements.com/)
+	* guesspionage ([Question Data](https://www.trueachievements.com/forum/viewthread.aspx?tid=850920))
 - [Tumblr](https://www.tumblr.com/)
 	* tumblr ([API](https://www.tumblr.com/docs/en/api/v2))
 - [Turning Point USA](https://www.tpusa.com/)
