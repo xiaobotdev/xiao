@@ -133,13 +133,13 @@ module.exports = class GuesspionageCommand extends Command {
 					__**Leaderboard:**__
 					${this.makeLeaderboard(pts).join('\n')}
 
-					_Next round starting in 10 seconds..._
+					${userTurn.length ? '_Next round starting in 10 seconds..._' : ''}
 				`);
-				await delay(10000);
+				if (userTurn.length) await delay(10000);
 			}
 			this.client.games.delete(msg.channel.id);
 			const winner = pts.sort((a, b) => b.points - a.points).first().user;
-			return msg.say(`Congrats, ${winner.user}!`);
+			return msg.say(`Congrats, ${winner}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
