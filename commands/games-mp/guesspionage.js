@@ -61,7 +61,7 @@ module.exports = class GuesspionageCommand extends Command {
 			const userTurn = awaitedPlayers.slice(0);
 			while (turn <= pts.size) {
 				++turn;
-				const mainUser = userTurn[0];
+				const mainUser = pts.get(userTurn[0]).user;
 				userTurn.shift();
 				const valid = questions.filter(
 					question => !used.includes(question.text) && (msg.channel.nsfw ? true : !question.nsfw)
