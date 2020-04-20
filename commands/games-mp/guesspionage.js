@@ -54,7 +54,7 @@ module.exports = class GuesspionageCommand extends Command {
 				pts.set(player, {
 					points: 0,
 					id: player,
-					user: this.client.users.get(player)
+					user: this.client.users.cache.get(player)
 				});
 			}
 			const used = [];
@@ -132,7 +132,7 @@ module.exports = class GuesspionageCommand extends Command {
 				`);
 			}
 			this.client.games.delete(msg.channel.id);
-			const winner = this.client.users.get(pts.sort((a, b) => b.points - a.points));
+			const winner = pts.sort((a, b) => b.points - a.points)[0].user;
 			return msg.say(`Congrats, ${winner.user}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
