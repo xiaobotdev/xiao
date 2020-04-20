@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
+const { delay } = require('../../util/Util');
 const questions = require('../../assets/json/guesspionage');
 const { SUCCESS_EMOJI_ID } = process.env;
 const guesses = ['much higher', 'higher', 'lower', 'much lower'];
@@ -131,10 +132,13 @@ module.exports = class GuesspionageCommand extends Command {
 
 					__**Leaderboard:**__
 					${this.makeLeaderboard(pts).join('\n')}
+
+					_Next round starting in 10 seconds..._
 				`);
+				await delay(10000);
 			}
 			this.client.games.delete(msg.channel.id);
-			const winner = pts.sort((a, b) => b.points - a.points)[0].user;
+			const winner = pts.sort((a, b) => b.points - a.points).first().user;
 			return msg.say(`Congrats, ${winner.user}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
