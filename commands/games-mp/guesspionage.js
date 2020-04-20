@@ -115,13 +115,14 @@ module.exports = class GuesspionageCommand extends Command {
 				}
 				const higherLower = everyoneElse.map(res => ({ guess: res.content.toLowerCase(), id: res.author.id }));
 				for (const answer of higherLower) {
-					if (answer === 'higher' && guess < question.answer) {
+					const uGuess = answer.guess;
+					if (uGuess === 'higher' && guess < question.answer) {
 						pts.get(answer.id).points += 1000;
-					} else if (answer === 'lower' && guess > question.answer) {
+					} else if (uGuess === 'lower' && guess > question.answer) {
 						pts.get(answer.id).points += 1000;
-					} else if (answer === 'much higher' && guess < question.answer && question.answer - guess >= 15) {
+					} else if (uGuess === 'much higher' && guess < question.answer && question.answer - guess >= 15) {
 						pts.get(answer.id).points += 2000;
-					} else if (answer === 'much lower' && guess > question.answer && guess - question.answer >= 15) {
+					} else if (uGuess === 'much lower' && guess > question.answer && guess - question.answer >= 15) {
 						pts.get(answer.id).points += 2000;
 					}
 				}
