@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const Collection = require('@discordjs/collection');
 const questions = require('../../assets/json/guesspionage');
 const { SUCCESS_EMOJI_ID } = process.env;
 const guesses = ['much higher', 'higher', 'lower', 'much lower'];
@@ -49,7 +50,7 @@ module.exports = class GuesspionageCommand extends Command {
 				return msg.say('Game could not be started...');
 			}
 			let turn = 0;
-			const pts = new Map();
+			const pts = new Collection();
 			for (const player of awaitedPlayers) {
 				pts.set(player, {
 					points: 0,
@@ -59,7 +60,7 @@ module.exports = class GuesspionageCommand extends Command {
 			}
 			const used = [];
 			const userTurn = awaitedPlayers.slice(0);
-			while (turn <= pts.size) {
+			while (userTurn.length) {
 				++turn;
 				const mainUser = pts.get(userTurn[0]).user;
 				userTurn.shift();
@@ -100,6 +101,7 @@ module.exports = class GuesspionageCommand extends Command {
 					if (!awaitedPlayers.includes(res.author.id)) return false;
 					if (!guesses.includes(res.content.toLowerCase())) return false;
 					guessed.push(res.author.id);
+					res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
 					return true;
 				};
 				const everyoneElse = await msg.channel.awaitMessages(everyoneElseFilter, {
