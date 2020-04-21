@@ -34,7 +34,7 @@ module.exports = class LolcatCommand extends Command {
 				.get('https://speaklolcat.com/')
 				.query({ from });
 			const $ = cheerio.load(text);
-			const translated = $('textarea[id="to"]').first().text;
+			const translated = $('textarea[id="to"]').first().text();
 			return msg.say(translated);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
