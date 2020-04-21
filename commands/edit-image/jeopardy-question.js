@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, registerFont } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OPTIKorinna-Agency.otf'), { family: 'Korinna' });
@@ -51,11 +51,14 @@ module.exports = class JeopardyQuestionCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.font = '62px Korinna';
 		const lines = await wrapText(ctx, text.toUpperCase(), 813);
-		const topMost = (canvas.height / 2) - (((48 * lines.length) / 2) + ((27 * (lines.length - 1)) / 2));
-		ctx.fillStyle = 'black';
-		ctx.fillText(lines.join('\n'), (canvas.width / 2) + 6, topMost + 6);
-		ctx.fillStyle = 'white';
-		ctx.fillText(lines.join('\n'), canvas.width / 2, topMost);
+		const topMost = (canvas.height / 2) - (((52 * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
+		for (let i = 0; i < lines.length; i++) {
+			const height = topMost + ((52 + 20) * i);
+			ctx.fillStyle = 'black';
+			ctx.fillText(lines[i], (canvas.width / 2) + 6, height + 6);
+			ctx.fillStyle = 'white';
+			ctx.fillText(lines[i], canvas.width / 2, height);
+		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'jeopardy-question.png' }] });
 	}
 };
