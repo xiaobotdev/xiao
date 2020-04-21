@@ -96,7 +96,7 @@ module.exports = class HorseRaceCommand extends Command {
 			const result = results.find(result => horse.name === result.name).time;
 			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37, 114 + (horseImg.height * i), 49, 49);
 			ctx.fillText(this.formatTime(result), 755, 138 + (49 * i));
-			ctx.fillText(horse.name, 755, 251 + (49 * i));
+			ctx.fillText(horse.name, 251, 138 + (49 * i));
 		}
 		return { attachment: canvas.toBuffer(), name: 'leaderboard.png' };
 	}
