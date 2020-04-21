@@ -107,6 +107,6 @@ module.exports = class HorseRaceCommand extends Command {
         const min = Math.floor(time / 60);
         const sec = Math.floor(time - (min * 60));
         const ms = time - sec - (min * 60);
-		return `${min}:${sec.padStart(2, '0')}.${ms.toFixed(4).slice(2)}`;
+		return `${min}:${sec.toString().padStart(2, '0')}.${ms.toFixed(4).slice(2)}`;
 	}
 };
