@@ -26,7 +26,7 @@ module.exports = class LightNovelCoverCommand extends Command {
 			const { text } = await request.get('https://salty-salty-studios.com/shiz/lncovers.php');
 			const $ = cheerio.load(text);
 			const cover = $('img').first();
-			return msg.channel.send(cover.attr('alt'), {
+			return msg.say(cover.attr('alt'), {
 				files: [`https://salty-salty-studios.com/shiz/${cover.attr('src')}`]
 			});
 		} catch (err) {

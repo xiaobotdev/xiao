@@ -41,7 +41,7 @@ module.exports = class NewspaperCommand extends Command {
 				.attach('headline', headline)
 				.attach('text', body);
 			const newspaperURL = text.match(/<img src="(https:\/\/r[0-9]+\.fodey\.com\/[0-9]+\/.+\.jpg)"/i)[1];
-			return msg.channel.send({ files: [newspaperURL] });
+			return msg.say({ files: [newspaperURL] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
