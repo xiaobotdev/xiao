@@ -51,10 +51,11 @@ module.exports = class JeopardyQuestionCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.font = '62px Korinna';
 		const lines = await wrapText(ctx, text, 813);
-		const topMost = (canvas.height / 2) - (((62 * lines.length) / 2) + ((36 * (lines.length - 1)) / 2));
-		ctx.fillText(lines.join('\n'), canvas.width / 2, topMost);
+		const topMost = (canvas.height / 2) - (((62 * lines.length) / 2) + ((27 * (lines.length - 1)) / 2));
 		ctx.fillStyle = 'black';
-		ctx.fillText(lines.join('\n'), (canvas.width / 2) + 8, topMost + 8);
+		ctx.fillText(lines.join('\n'), (canvas.width / 2) + 6, topMost + 6);
+		ctx.fillStyle = 'white';
+		ctx.fillText(lines.join('\n'), canvas.width / 2, topMost);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'jeopardy-question.png' }] });
 	}
 };
