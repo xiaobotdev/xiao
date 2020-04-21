@@ -82,7 +82,7 @@ module.exports = class HorseRaceCommand extends Command {
 		return msg.reply(win ? `Nice job! Your horse won!` : 'Better luck next time!', { files: [leaderboard] });
 	}
 
-	async generateLeaderboard(horses, results) {
+	async generateLeaderboard(chosenHorses, results) {
 		const lb = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'horse-race', 'leaderboard.png'));
 		const horseImg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'horse-race', 'horse.png'));
 		const canvas = createCanvas(lb.width, lb.height);
@@ -93,7 +93,7 @@ module.exports = class HorseRaceCommand extends Command {
 		ctx.textBaseline = 'middle';
 		for (let i = 0; i < results.length; i++) {
 			const result = results[i];
-			const horse = horses.find(hor => hor.name === result.name);
+			const horse = chosenHorses.find(hor => hor.name === result.name);
 			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37, 114 + (49 * i), 49, 49);
 			ctx.font = '34px Paladins';
 			ctx.fillText(this.formatTime(result.time), 755, 138 + (49 * i));
@@ -104,9 +104,9 @@ module.exports = class HorseRaceCommand extends Command {
 	}
 
 	formatTime(time) {
-        const min = Math.floor(time / 60);
-        const sec = Math.floor(time - (min * 60));
-        const ms = time - sec - (min * 60);
+		const min = Math.floor(time / 60);
+		const sec = Math.floor(time - (min * 60));
+		const ms = time - sec - (min * 60);
 		return `${min}:${sec.toString().padStart(2, '0')}.${ms.toFixed(4).slice(2)}`;
 	}
 };
