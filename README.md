@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 394
+Total: 395
 
 ### Utility:
 
@@ -410,6 +410,7 @@ Total: 394
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
 * **bart-chalkboard:** Sends a "Bart Chalkboard" meme with the text of your choice.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
+* **certificate:** Sends a certificate of excellence with the name and reason of your choice.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
