@@ -50,6 +50,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
+		ctx.textBaseline = 'top';
 		ctx.font = '40px Noto';
 		let fontSize = 40;
 		while (ctx.measureText(text).width > 1320) {
@@ -57,9 +58,10 @@ module.exports = class LisaPresentationCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, text, 330);
+		const topMost = 325 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
-			const textHeight = 95 + (i * fontSize) + (i * 10);
-			ctx.fillText(lines[i], base.width / 2, textHeight);
+			const height = topMost + ((fontSize + 20) * i);
+			ctx.fillText(lines[i], base.width / 2, height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'lisa-presentation.png' }] });
 	}
