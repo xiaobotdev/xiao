@@ -335,7 +335,7 @@ Total: 395
 * **tumblr:** Responds with information on a Tumblr blog.
 * **tv-show:** Searches TMDB for your query, getting TV show results.
 * **twitter:** Responds with information on a Twitter user.
-* **urban:** Defines a word, but with Urban Dictionary.
+* **urban:** Defines a word, but with Urban Dictionary. (NSFW)
 * **usps-tracking:** Gets tracking information for a package shipped via USPS.
 * **vocadb:** Searches VocaDB for your query.
 * **wattpad:** Searches Wattpad for your query.
