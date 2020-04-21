@@ -89,6 +89,7 @@ module.exports = class HorseRaceCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(lb, 0, 0);
 		ctx.font = '34px Paladins';
+		ctx.fillStyle = 'white';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
 		for (let i = 0; i < horses.length; i++) {
