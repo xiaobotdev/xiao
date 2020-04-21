@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 396
+Total: 397
 
 ### Utility:
 
@@ -567,6 +567,7 @@ Total: 396
 
 * **blush:** Blushes at a user.
 * **bro-hoof:** Gives a user a bro hoof.
+* **celebrate:** Celebrates.
 * **eat:** Feeds a user.
 * **fist-bump:** Fist-bumps a user.
 * **high-five:** High Fives a user.
