@@ -88,15 +88,16 @@ module.exports = class HorseRaceCommand extends Command {
 		const canvas = createCanvas(lb.width, lb.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(lb, 0, 0);
-		ctx.font = '34px Paladins';
 		ctx.fillStyle = 'white';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
 		for (let i = 0; i < horses.length; i++) {
 			const horse = horses[i];
 			const result = results.find(result => horse.name === result.name).time;
-			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37, 114 + (horseImg.height * i), 49, 49);
+			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37, 114 + (49 * i), 49, 49);
+			ctx.font = '34px Paladins';
 			ctx.fillText(this.formatTime(result), 755, 138 + (49 * i));
+			ctx.font = '20px Paladins';
 			ctx.fillText(horse.name, 251, 138 + (49 * i));
 		}
 		return { attachment: canvas.toBuffer(), name: 'leaderboard.png' };
@@ -106,6 +107,6 @@ module.exports = class HorseRaceCommand extends Command {
         const min = Math.floor(time / 60);
         const sec = Math.floor(time - (min * 60));
         const ms = time - sec - (min * 60);
-		return `${min}:${sec}.${ms.toFixed(4).slice(2)}`;
+		return `${min}:${sec.padStart(2, '0')}.${ms.toFixed(4).slice(2)}`;
 	}
 };
