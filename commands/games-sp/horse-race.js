@@ -87,7 +87,7 @@ module.exports = class HorseRaceCommand extends Command {
 		const horseImg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'horse-race', 'horse.png'));
 		const canvas = createCanvas(lb.width, lb.height);
 		const ctx = canvas.getContext('2d');
-		ctx.drawImage(base, 0, 0);
+		ctx.drawImage(lb, 0, 0);
 		ctx.font = '34px Paladins';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
