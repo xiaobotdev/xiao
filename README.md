@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 398
+Total: 399
 
 ### Utility:
 
@@ -375,6 +375,7 @@ Total: 398
 * **fishy:** Go fishing.
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
+* **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
 * **lottery:** Attempt to win the lottery with 6 numbers.
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
@@ -640,6 +641,8 @@ here.
 	* hollywood-star ([Hollywood Star Font](https://alexeystar.com/hollywood-star-font/))
 - [Alpha Vantage](https://www.alphavantage.co/)
 	* stocks (API)
+- [Ambition](https://ambition.com/)
+	* horse-race ([Image](https://help.ambition.com/hc/en-us/articles/360005048011-How-do-I-set-up-a-Leaderboard-Slide-))
 - [Andrew Tyler](https://www.dafont.com/andrew-tyler.d2526)
 	* achievement ([Minecraftia Font](https://www.dafont.com/minecraftia.font))
 - [AniList](https://anilist.co/)
@@ -740,6 +743,8 @@ here.
 	* flickr ([API](https://www.flickr.com/services/api/))
 - [Foreign exchange rates API](https://exchangeratesapi.io/)
 	* currency (API)
+- [Free SVG](https://freesvg.org/)
+	* horse-race ([Image](https://freesvg.org/race-horse))
 - [freeiconspng.com](https://www.freeiconspng.com/)
 	* hat ([Birthday Hat Image](https://www.freeiconspng.com/img/43917))
 - [Frinkiac](https://frinkiac.com/)
@@ -811,6 +816,7 @@ here.
 - [Humble Bundle](https://www.humblebundle.com/)
 	* humble-bundle ([API](https://www.humblebundle.com/developer))
 - [Iconian Fonts](https://www.fontspace.com/iconian-fonts)
+	* horse-race ([Paladins Font](https://www.fontspace.com/paladins-font-f32777))
 	* rip ([Coffin Stone Font](https://www.fontspace.com/coffin-stone-font-f40998))
 - [iCrawl](https://github.com/iCrawl)
 	* butt ([Code, Concept](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js))
@@ -1077,6 +1083,8 @@ here.
 	* sora-selfie ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
 - [Stack Exchange](https://stackexchange.com/)
 	* stack-overflow ([API](https://api.stackexchange.com/docs))
+- [Stadium Talk](https://www.stadiumtalk.com/)
+	* horse-race ([Horse Name Data](https://www.stadiumtalk.com/s/best-racehorse-names-be7b8ad6b49a42df))
 - [Star Wars](https://www.starwars.com/)
 	* lando (Original Movie)
 - [Steam](https://store.steampowered.com/)

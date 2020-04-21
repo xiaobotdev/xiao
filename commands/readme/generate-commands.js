@@ -32,6 +32,6 @@ module.exports = class GenerateCommandsCommand extends Command {
 				}).join('\n')}`;
 			});
 		const text = `Total: ${this.client.registry.commands.size}\n${list.join('\n')}`;
-		return msg.channel.send({ files: [{ attachment: Buffer.from(text), name: 'commands.txt' }] });
+		return msg.say({ files: [{ attachment: Buffer.from(text), name: 'commands.txt' }] });
 	}
 };

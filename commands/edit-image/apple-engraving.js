@@ -44,7 +44,7 @@ module.exports = class AppleEngravingCommand extends Command {
 					s: 2,
 					f: 'font1'
 				});
-			return msg.channel.send({ files: [{ attachment: body, name: 'apple-engraving.jpg' }] });
+			return msg.say({ files: [{ attachment: body, name: 'apple-engraving.jpg' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

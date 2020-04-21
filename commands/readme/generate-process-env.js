@@ -24,6 +24,6 @@ module.exports = class GenerateProcessEnvCommand extends Command {
 			line = line.replace('=', '');
 			return `${line}="${process.env[line] || ''}"`;
 		}).join('\n');
-		return msg.channel.send({ files: [{ attachment: Buffer.from(list), name: 'process.env.txt' }] });
+		return msg.say({ files: [{ attachment: Buffer.from(list), name: 'process.env.txt' }] });
 	}
 };
