@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 397
+Total: 398
 
 ### Utility:
 
@@ -427,6 +427,7 @@ Total: 397
 * **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
 * **invert:** Draws an image or a user's avatar but inverted.
+* **jeopardy-question:** Sends a Jeopardy Question with the text of your choice.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
@@ -851,6 +852,8 @@ here.
 	* neko-atsume-password ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
 - [JellyNeo Item Database](https://items.jellyneo.net/)
 	* neopets-item (Item Data)
+- [Jeopardy](https://www.jeopardy.com/)
+	* jeopardy-question (Original Show)
 - [Jessica Knable](https://picsart.com/u/jessicaknable)
 	* hearts ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
 - [Jisho](https://jisho.org/)
@@ -971,6 +974,8 @@ here.
 	* quiz-duel ([API](https://opentdb.com/api_config.php))
 - [OpenWeatherMap](https://openweathermap.org/)
 	* weather ([API](https://openweathermap.org/api))
+- [OPTIFONT](http://opti.netii.net/)
+	* jeopardy-question ([Korinna Agency Font](https://fontmeme.com/fonts/korinna-agency-font/))
 - [osu!](https://osu.ppy.sh/home)
 	* osu ([API](https://github.com/ppy/osu-api/wiki))
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
