@@ -69,7 +69,7 @@ module.exports = class HorseRaceCommand extends Command {
 		});
 		if (!msgs.size) return msg.reply('Sorry, can\'t have a race with no bets!');
 		const pick = chosenHorses[Number.parseInt(msgs.first().content, 10) - 1];
-		const results = [];
+		let results = [];
 		for (const horse of chosenHorses) {
 			results.push({
 				name: horse.name,
