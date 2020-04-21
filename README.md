@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 395
+Total: 396
 
 ### Utility:
 
@@ -245,6 +245,7 @@ Total: 395
 * **fly:** Sends a fake fly that looks surprisngly real.
 * **give-flower:** Gives Xiao Pai a flower.
 * **hi:** Hello.
+* **idiot:** Responds with the Wikipedia page of an idiot.
 * **isnt-joke:** Isn't joke...
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
@@ -1146,6 +1147,7 @@ here.
 	* wikihow ([API](https://www.wikihow.com/api.php))
 - [Wikipedia](https://www.wikipedia.org/)
 	* fact ([API](https://en.wikipedia.org/w/api.php))
+	* idiot (URL)
 	* itunes ([Language Code Data](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes))
 	* time ([Time Zone Data](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
 	* wikipedia ([API](https://en.wikipedia.org/w/api.php))
