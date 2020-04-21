@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 393
+Total: 394
 
 ### Utility:
 
@@ -507,6 +507,7 @@ Total: 393
 * **hex:** Converts text to hex.
 * **latlmes:** Creates a Latlmes fake link that redirects to a rickroll.
 * **lmgtfy:** Creates a LMGTFY link with the query you provide.
+* **lolcat:** Converts text to lolcat.
 * **lowercase:** Converts text to lowercase.
 * **md5:** Creates a hash of text with the MD5 algorithm.
 * **mocking:** SenDs TexT lIkE ThiS.
@@ -1056,6 +1057,8 @@ here.
 	* soundcloud ([API](https://developers.soundcloud.com/))
 - [SPAM Brand](https://www.spam.com/)
 	* spam (Image)
+- [speak lolcat](https://speaklolcat.com/)
+	* lolcat (Translation Data)
 - [Square Enix](https://square-enix-games.com/)
 	* nobody-name ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
 	* sora-selfie ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
