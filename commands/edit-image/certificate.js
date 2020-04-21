@@ -8,7 +8,7 @@ module.exports = class CertificateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'certificate',
-			aliases: ['award', 'certificate-of-excellence'],
+			aliases: ['award', 'certificate-of-excellence', 'cert', 'cert-of-excellence'],
 			group: 'edit-image',
 			memberName: 'certificate',
 			description: 'Sends a certificate of excellence with the name and reason of your choice.',
