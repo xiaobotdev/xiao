@@ -197,7 +197,7 @@ Total: 398
 * **random-user:** Randomly chooses a member of the server.
 * **rate:** Rates something.
 * **roast:** Roasts a user.
-* **roll:** Rolls a dice with a maximum value of your choice.
+* **roll:** Rolls a dice with a minimum/maximum value of your choice.
 * **security-key:** Responds with a random security key.
 * **shower-thought:** Responds with a random shower thought, directly from r/Showerthoughts.
 * **smw-level:** Responds with a random Super Mario World level name.
