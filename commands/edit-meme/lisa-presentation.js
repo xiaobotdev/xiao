@@ -58,7 +58,7 @@ module.exports = class LisaPresentationCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, text, 330);
-		const topMost = 325 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
+		const topMost = 185 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);
 			ctx.fillText(lines[i], base.width / 2, height);
