@@ -76,7 +76,7 @@ module.exports = class HorseRaceCommand extends Command {
 				time: randomRange(horse.minTime, horse.minTime + 15) + Math.random()
 			});
 		}
-		results = results.sort((a, b) => b.time - a.time);
+		results = results.sort((a, b) => a.time - b.time);
 		const leaderboard = await this.generateLeaderboard(chosenHorses, results);
 		const win = results[0].name === pick.name;
 		return msg.reply(win ? `Nice job! Your horse won!` : 'Better luck next time!', { files: [leaderboard] });
