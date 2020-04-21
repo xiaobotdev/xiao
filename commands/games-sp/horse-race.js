@@ -91,13 +91,13 @@ module.exports = class HorseRaceCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
-		for (let i = 0; i < horses.length; i++) {
-			const horse = horses[i];
-			const result = results.find(result => horse.name === result.name).time;
+		for (let i = 0; i < results.length; i++) {
+			const result = results[i];
+			const horse = horses.find(hor => hor.name === result.name);
 			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37, 114 + (49 * i), 49, 49);
 			ctx.font = '34px Paladins';
-			ctx.fillText(this.formatTime(result), 755, 138 + (49 * i));
-			ctx.font = '20px Paladins';
+			ctx.fillText(this.formatTime(result.time), 755, 138 + (49 * i));
+			ctx.font = '16px Paladins';
 			ctx.fillText(horse.name, 251, 138 + (49 * i));
 		}
 		return { attachment: canvas.toBuffer(), name: 'leaderboard.png' };
