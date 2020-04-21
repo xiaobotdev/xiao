@@ -6,6 +6,7 @@ const { shuffle } = require('../../util/Util');
 const { drawImageWithTint, randomRange } = require('../../util/Canvas');
 const horses = require('../../assets/json/horse-race');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Paladins-nl8P.otf'), { family: 'Paladins' });
+const colors = ['gold', 'silver', '#cd7f32'];
 
 module.exports = class HorseRaceCommand extends Command {
 	constructor(client) {
@@ -93,7 +94,7 @@ module.exports = class HorseRaceCommand extends Command {
 		for (let i = 0; i < horses.length; i++) {
 			const horse = horses[i];
 			const result = results.find(result => horse.name === result.name).time;
-			drawImageWithTint(ctx, horseImg, horse.color, 37 * i, 114, 49, 49);
+			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37 * i, 114, 49, 49);
 			ctx.fillText(this.formatTime(result), 138 * i, 755);
 			ctx.fillText(horse.name, 138 * 1, 251);
 		}
