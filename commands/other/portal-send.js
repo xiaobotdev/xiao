@@ -29,9 +29,7 @@ module.exports = class PortalSendCommand extends Command {
 		let channels = this.client.channels.cache.filter(
 			channel => channel.guild && channel.topic && channel.topic.includes('<xiao:portal>')
 		);
-		if (channel.guild) {
-			channels = channels.filter(channel => !msg.guild.channels.cache.has(channel.id));
-		}
+		if (msg.guild) channels = channels.filter(channel => !msg.guild.channels.cache.has(channel.id));
 		if (message.toLowerCase() === 'count') {
 			return msg.say(`**${this.portalEmoji} ${channels.size}** currently open portals.`);
 		}
