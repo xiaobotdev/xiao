@@ -73,7 +73,7 @@ module.exports = class HorseRaceCommand extends Command {
 		for (const horse of chosenHorses) {
 			results.push({
 				name: horse.name,
-				time: randomRange(horse.minTime, horse.minTime + 15) + Math.random()
+				time: randomRange(horse.minTime, horse.minTime + 5) + Math.random()
 			});
 		}
 		results = results.sort((a, b) => a.time - b.time);
