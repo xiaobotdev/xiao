@@ -75,7 +75,7 @@ don't grant that permission.
 
 
 ## Fun Information
-- 390+ Commands
+- 400+ Commands
 - 19,000+ lines of JavaScript
 - 61,000+ lines of JSON data
 - 3 years of development
@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 399
+Total: 400
 
 ### Utility:
 
@@ -397,6 +397,7 @@ Total: 399
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **guesspionage:** Tests your knowledge of humans as you guess how people responded to poll questions.
 * **gunfight:** Engage in a western gunfight against another user. High noon.
+* **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **russian-roulette:** Who will pull the trigger and die first?
@@ -854,6 +855,7 @@ here.
 	* challenger ([Image](https://www.youtube.com/watch?v=3FebRrXg0bk))
 - [Jackbox Games](https://www.jackboxgames.com/)
 	* guesspionage ([Original "Guesspionage" Game](https://www.jackboxgames.com/guesspionage/))
+	* lie-swatter ([Original "Lie Swatter" Game](https://www.jackboxgames.com/lie-swatter/))
 - [jasmaa](https://github.com/jasmaa/)
 	* neko-atsume-password ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
 - [JellyNeo Item Database](https://items.jellyneo.net/)
@@ -978,6 +980,7 @@ here.
 	* iss ([ISS Current Location API](http://open-notify.org/Open-Notify-API/ISS-Location-Now/))
 	* people-in-space ([People in Space API](http://open-notify.org/Open-Notify-API/People-In-Space/))
 - [Open Trivia DB](https://opentdb.com/)
+	* lie-swatter ([API](https://opentdb.com/api_config.php))
 	* quiz ([API](https://opentdb.com/api_config.php))
 	* quiz-duel ([API](https://opentdb.com/api_config.php))
 - [OpenWeatherMap](https://openweathermap.org/)
