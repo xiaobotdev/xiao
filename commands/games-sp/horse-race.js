@@ -97,7 +97,7 @@ module.exports = class HorseRaceCommand extends Command {
 			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37, 114 + (49 * i), 49, 49);
 			ctx.font = '34px Paladins';
 			ctx.fillText(this.formatTime(result.time), 755, 138 + (49 * i));
-			ctx.font = '16px Paladins';
+			ctx.font = '15px Paladins';
 			ctx.fillText(horse.name, 251, 138 + (49 * i));
 		}
 		return { attachment: canvas.toBuffer(), name: 'leaderboard.png' };
