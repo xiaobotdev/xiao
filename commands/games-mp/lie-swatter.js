@@ -94,7 +94,7 @@ module.exports = class LieSwatterCommand extends Command {
 				await msg.say(stripIndents`
 					It was... **${question.answer ? 'true' : 'a lie'}**!
 
-					_Fastest Guess: ${correct.first().author.tag} (+75 pts)_
+					_Fastest Guess: ${pts.get(correct[0].id).user.tag} (+75 pts)_
 
 					${questions.length ? '_Next round starting in 5 seconds..._' : ''}
 				`);
