@@ -85,7 +85,7 @@ module.exports = class LieSwatterCommand extends Command {
 					else if (falseOptions.includes(res.content.toLowerCase())) answer = false;
 					return { answer, id: res.author.id };
 				});
-				const correct = answers.filter(answer => answer === question.answer);
+				const correct = answers.filter(answer => answer.answer === question.answer);
 				for (const answer of correct) {
 					const player = pts.get(answer.id);
 					if (correct[0].id === answer.id) player.pts += 75;
