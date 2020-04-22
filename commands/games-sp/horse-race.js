@@ -46,6 +46,12 @@ module.exports = class HorseRaceCommand extends Command {
 					url: 'https://www.stadiumtalk.com/',
 					reason: 'Horse Name Data',
 					reasonURL: 'https://www.stadiumtalk.com/s/best-racehorse-names-be7b8ad6b49a42df'
+				},
+				{
+					name: 'LoveToKnow',
+					url: 'https://www.lovetoknow.com/',
+					reason: 'Horse Name Data',
+					reasonURL: 'https://horses.lovetoknow.com/horse-names/funny-horse-names'
 				}
 			]
 		});

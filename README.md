@@ -899,6 +899,8 @@ here.
 	* light-novel-cover (API)
 - [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
 	* light-novel-title (API)
+- [LoveToKnow](https://www.lovetoknow.com/)
+	* horse-race ([Horse Name Data](https://horses.lovetoknow.com/horse-names/funny-horse-names))
 - [Mad Libs](http://www.madlibs.com/)
 	* mad-libs (Original Game)
 - [Mad:)Takes](https://www.madtakes.com/index.php)
