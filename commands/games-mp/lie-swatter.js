@@ -129,7 +129,7 @@ module.exports = class LieSwatterCommand extends Command {
 		if (!body.results) return this.fetchQuestions();
 		const questions = body.results;
 		return questions.map(question => {
-			const answer = question.correct_answer === 'True' ? true : false;
+			const answer = question.correct_answer === 'True';
 			return {
 				question: decodeURIComponent(question.question),
 				category: decodeURIComponent(question.category),
