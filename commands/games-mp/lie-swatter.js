@@ -136,7 +136,7 @@ module.exports = class LieSwatterCommand extends Command {
 
 	async awaitPlayers(msg, players) {
 		const min = 1;
-		if (players === 1) return new Collection([[msg.id, msg]]);
+		if (players === 1) return [msg.author.id];
 		await msg.say(`You can have at most ${players - 1} more players. To join, type \`join game\`.`);
 		const joined = [];
 		joined.push(msg.author.id);
