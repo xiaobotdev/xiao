@@ -178,5 +178,65 @@
 	{
 		"name": "Willy",
 		"minTime": 144
+	},
+	{
+		"name": "Don't Pick Me",
+		"minTime": 115
+	},
+	{
+		"name": "Spirit",
+		"minTime": 98
+	},
+	{
+		"name": "Jackbox",
+		"minTime": 123
+	},
+	{
+		"name": "Emporer Horseitine",
+		"minTime": 113
+	},
+	{
+		"name": "Darth Horse",
+		"minTime": 136
+	},
+	{
+		"name": "Jar-Jar Hooves",
+		"minTime": 110
+	},
+	{
+		"name": "Hoarse",
+		"minTime": 123
+	},
+	{
+		"name": "Dragon Fire",
+		"minTime": 960
+	},
+	{
+		"name": "Long Face",
+		"minTime": 143
+	},
+	{
+		"name": "Pony Up",
+		"minTime": 142
+	},
+	{
+		"name": "Magic of Friendship",
+		"minTime": 106
+	},
+	{
+		"name": "Help My Jockey Fell",
+		"minTime": 120
+	},
+	{
+		"name": "Lemon",
+		"minTime": 115
+	},
+	{
+		"name": "Calvin Johnson",
+		"minTime": 138
+	},
+	{
+		"name": "Rando Cardrissian",
+		"minTime": 118
 	}
 ]
