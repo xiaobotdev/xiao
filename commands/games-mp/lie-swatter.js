@@ -69,7 +69,11 @@ module.exports = class LieSwatterCommand extends Command {
 				const filter = res => {
 					if (!awaitedPlayers.includes(res.author.id)) return false;
 					const answer = res.content.toLowerCase();
-					return trueOptions.includes(answer) || falseOptions.includes(answer);
+					if (trueOptions.includes(answer) || falseOptions.includes(answer)) {
+						res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+						return true;
+					};
+					return false;
 				};
 				const msgs = await msg.channel.awaitMessages(filter, {
 					max: pts.size,
