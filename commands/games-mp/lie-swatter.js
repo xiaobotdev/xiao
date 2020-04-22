@@ -6,8 +6,6 @@ const { delay } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
 const trueOptions = ['true', 'yes', 'the truth'];
 const falseOptions = ['false', 'lie', 'no', 'a lie'];
-const max = 100;
-const min = 1;
 
 module.exports = class LieSwatterCommand extends Command {
 	constructor(client) {
@@ -29,16 +27,25 @@ module.exports = class LieSwatterCommand extends Command {
 					reason: 'API',
 					reasonURL: 'https://opentdb.com/api_config.php'
 				}
+			],
+			args: [
+				{
+					key: 'players',
+					prompt: 'How many players are you expecting to have?',
+					type: 'integer',
+					min: 1,
+					max: 100
+				}
 			]
 		});
 	}
 
-	async run(msg) {
+	async run(msg, { players }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			const awaitedPlayers = await this.awaitPlayers(msg);
+			const awaitedPlayers = await this.awaitPlayers(msg, players);
 			let turn = 0;
 			const pts = new Collection();
 			for (const player of awaitedPlayers) {
@@ -81,7 +88,7 @@ module.exports = class LieSwatterCommand extends Command {
 				const correct = answers.filter(answer => answer === question.answer);
 				for (const answer of correct) {
 					const player = pts.get(answer.id);
-					if (correct.first().id === answer.id) player.pts += 75;
+					if (correct[0].id === answer.id) player.pts += 75;
 					else player.pts += 50;
 				}
 				await msg.say(stripIndents`
@@ -127,8 +134,10 @@ module.exports = class LieSwatterCommand extends Command {
 		});
 	}
 
-	async awaitPlayers(msg) {
-		await msg.say(`You can have at most 99 more players. To join, type \`join game\`.`);
+	async awaitPlayers(msg, players) {
+		const min = 1;
+		if (players === 1) return new Collection([[msg.id, msg]]);
+		await msg.say(`You can have at most ${players - 1} more players. To join, type \`join game\`.`);
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
@@ -139,7 +148,7 @@ module.exports = class LieSwatterCommand extends Command {
 			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
 			return true;
 		};
-		const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 60000 });
+		const verify = await msg.channel.awaitMessages(filter, { max: players - 1, time: 60000 });
 		verify.set(msg.id, msg);
 		if (verify.size < min) return false;
 		return verify.map(player => player.author.id);
