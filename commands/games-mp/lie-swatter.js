@@ -88,8 +88,8 @@ module.exports = class LieSwatterCommand extends Command {
 				const correct = answers.filter(answer => answer.answer === question.answer);
 				for (const answer of correct) {
 					const player = pts.get(answer.id);
-					if (correct[0].id === answer.id) player.pts += 75;
-					else player.pts += 50;
+					if (correct[0].id === answer.id) player.points += 75;
+					else player.points += 50;
 				}
 				await msg.say(stripIndents`
 					It was... **${question.answer ? 'true' : 'a lie'}**!
