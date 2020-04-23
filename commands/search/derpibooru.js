@@ -27,9 +27,9 @@ module.exports = class DerpibooruCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const id = await this.search(query);
-			if (!id) return msg.say('Could not find any results.');
-			const url = await this.fetchImage(id);
+			const url = await this.search(query, msg.channel.nsfw || false);
+			if (!url) return msg.say('Could not find any results.');
+			if (url === 'nsfw') return msg.say('The image I found was NSFW, and this isn\'t the channel for that.');
 			return msg.say(url);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
@@ -37,19 +37,17 @@ module.exports = class DerpibooruCommand extends Command {
 		}
 	}
 
-	async search(query) {
+	async search(query, nsfw) {
 		const { body } = await request
-			.get('https://derpibooru.org/search.json')
+			.get('https://derpibooru.org/api/v1/json/search')
 			.query({
 				q: query,
-				random_image: 1
+				per_page: 1,
+				sf: 'random'
 			});
-		if (!body) return null;
-		return body.id;
-	}
-
-	async fetchImage(id) {
-		const { body } = await request.get(`https://derpibooru.org/images/${id}.json`);
-		return `http:${body.representations.full}`;
+		if (!body || !body.images || !body.images.length) return null;
+		const image = body.images[0];
+		if (!image.tags.includes('safe') && !nsfw) return 'nsfw';
+		return image.representations.full;
 	}
 };

@@ -59,8 +59,7 @@ module.exports = class LeagueOfLegendsCommand extends Command {
 				.addField('❯ Armor', `${data.stats.armor} (${data.stats.armorperlevel}/level)`, true)
 				.addField('❯ Attack Damage', `${data.stats.attackdamage} (${data.stats.attackdamageperlevel}/level)`, true)
 				.addField('❯ Attack Range', data.stats.attackrange, true)
-				.addField('❯ Attack Speed Offset',
-					`${data.stats.attackspeedoffset} (${data.stats.attackspeedperlevel}/level)`, true)
+				.addField('❯ Attack Speed', `${data.stats.attackspeed} (${data.stats.attackspeedperlevel}/level)`, true)
 				.addField('❯ Crit', `${data.stats.crit} (${data.stats.critperlevel}/level)`, true)
 				.addField('❯ Move Speed', data.stats.movespeed, true)
 				.addField('❯ Spell Block', `${data.stats.spellblock} (${data.stats.spellblockperlevel}/level)`, true)

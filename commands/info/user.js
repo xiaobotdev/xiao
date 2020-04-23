@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
 const { trimArray } = require('../../util/Util');
 const flags = {
 	DISCORD_EMPLOYEE: 'Discord Employee',
@@ -40,17 +39,14 @@ module.exports = class UserCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const embed = new MessageEmbed()
-			.setAuthor(user.tag)
-			.setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true }));
 		const userFlags = user.flags.toArray();
-		let description = stripIndents`
-			**General User Info:**
-			• ID: ${user.id}
-			• Discord Join Date: ${moment.utc(user.createdAt).format('MM/DD/YYYY h:mm A')}
-			• ${user.bot ? 'Bot' : 'Not a Bot'}
-			• Flags: ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}
-		`;
+		const embed = new MessageEmbed()
+			.setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true }))
+			.setAuthor(user.tag)
+			.addField('❯ Discord Join Date', moment.utc(user.createdAt).format('MM/DD/YYYY h:mm A'), true)
+			.addField('❯ ID', user.id, true)
+			.addField('❯ Bot?', user.bot ? 'Yes' : 'No', true)
+			.addField('❯ Flags', userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None');
 		if (msg.guild) {
 			try {
 				const member = await msg.guild.members.fetch(user.id);
@@ -59,18 +55,13 @@ module.exports = class UserCommand extends Command {
 					.filter(role => role.id !== defaultRole.id)
 					.sort((a, b) => b.position - a.position)
 					.map(role => role.name);
-				description += '\n\n';
-				description += stripIndents`
-					**Server Member Info:**
-					• Nickname: ${member.nickname || 'None'}
-					• Server Join Date: ${moment.utc(member.joinedAt).format('MM/DD/YYYY h:mm A')}
-					• Highest Role: ${member.roles.highest.id === defaultRole.id ? 'None' : member.roles.highest.name}
-					• Hoist Role: ${member.roles.hoist ? member.roles.hoist.name : 'None'}
-
-					**Roles (${roles.length})**
-					• ${roles.length ? trimArray(roles, 6).join(', ') : 'None'}
-				`;
-				embed.setColor(member.displayHexColor);
+				embed
+					.addField('❯ Server Join Date', moment.utc(member.joinedAt).format('MM/DD/YYYY h:mm A'), true)
+					.addField('❯ Highest Role',
+						member.roles.highest.id === defaultRole.id ? 'None' : member.roles.highest.name, true)
+					.addField('❯ Hoist Role', member.roles.hoist ? member.roles.hoist.name : 'None', true)
+					.addField(`❯ Roles (${roles.length})`, roles.length ? trimArray(roles, 6).join(', ') : 'None')
+					.setColor(member.displayHexColor);
 			} catch {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
 			}

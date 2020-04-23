@@ -4,7 +4,7 @@ module.exports = class ShowerThoughtCommand extends SubredditCommand {
 	constructor(client) {
 		super(client, {
 			name: 'shower-thought',
-			aliases: ['shower-thoughts'],
+			aliases: ['shower-thoughts', 'shower', 's-thought', 'shower-t'],
 			group: 'random-res',
 			memberName: 'shower-thought',
 			description: 'Responds with a random shower thought, directly from r/Showerthoughts.',

@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
 const filterLevels = {
 	DISABLED: 'Off',
 	MEMBERS_WITHOUT_ROLES: 'No Role',
@@ -33,21 +32,18 @@ module.exports = class ServerCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(msg.guild.iconURL({ format: 'png' }))
-			.setAuthor(msg.guild.name)
-			.setDescription(stripIndents`
-				**General Info:**
-				• ID: ${msg.guild.id}
-				• Owner: ${msg.guild.owner.user.tag}
-				• Region: ${msg.guild.region.toUpperCase()}
-				• Creation Date: ${moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm A')}
-				• Explicit Filter: ${filterLevels[msg.guild.explicitContentFilter]}
-				• Verification Level: ${verificationLevels[msg.guild.verificationLevel]}
-
-				**Server Stats:**
-				• Members: ${msg.guild.memberCount}
-				• Roles: ${msg.guild.roles.cache.size}
-				• Channels: ${msg.guild.channels.cache.filter(channel => channel.type !== 'category').size}
-			`);
+			.addField('❯ Name', msg.guild.name, true)
+			.addField('❯ ID', msg.guild.id, true)
+			.addField('❯ Creation Date', moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm A'), true)
+			.addField('❯ Owner', msg.guild.owner.user.tag, true)
+			.addField('❯ Boost Count', msg.guild.premiumSubscriptionCount || 0, true)
+			.addField('❯ Boost Tier', msg.guild.premiumTier ? `Tier ${msg.guild.premiumTier}` : 'None', true)
+			.addField('❯ Region', msg.guild.region.toUpperCase(), true)
+			.addField('❯ Explicit Filter', filterLevels[msg.guild.explicitContentFilter], true)
+			.addField('❯ Verification Level', verificationLevels[msg.guild.verificationLevel], true)
+			.addField('❯ Members', msg.guild.memberCount, true)
+			.addField('❯ Roles', msg.guild.roles.cache.size, true)
+			.addField('❯ Channels', msg.guild.channels.cache.filter(channel => channel.type !== 'category').size, true);
 		return msg.embed(embed);
 	}
 };

@@ -36,7 +36,7 @@ module.exports = class DrawCardsCommand extends Command {
 		if (!this.deck) this.deck = this.generateDeck();
 		let cards = this.deck;
 		if (!jokers) cards = cards.filter(card => !card.includes('Joker'));
-		return msg.reply(shuffle(cards).slice(0, amount).join('\n'));
+		return msg.reply(`${amount === 1 ? '' : '\n'}${shuffle(cards).slice(0, amount).join('\n')}`);
 	}
 
 	generateDeck() {

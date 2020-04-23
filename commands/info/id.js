@@ -20,6 +20,6 @@ module.exports = class IDCommand extends Command {
 	}
 
 	run(msg, { user }) {
-		return msg.say(`${user.username}'s ID is ${user.id}.`);
+		return msg.reply(`${user.id === msg.author.id ? 'Your' : `${user.username}'s`} ID is ${user.id}.`);
 	}
 };
