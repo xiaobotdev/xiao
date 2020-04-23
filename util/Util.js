@@ -146,7 +146,7 @@ module.exports = class Util {
 		return today;
 	}
 
-	static embedURL(title, url, display = url) {
+	static embedURL(title, url, display) {
 		return `[${title}](${url.replace(/\)/g, '%27')}${display ? ` "${display}"` : ''})`;
 	}
 
