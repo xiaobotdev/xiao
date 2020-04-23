@@ -8,7 +8,7 @@
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
 [Commando](https://github.com/discordjs/Commando) command framework. With over
-350 commands, she is one of the most feature-rich bots out there. Formerly
+400 commands, she is one of the most feature-rich bots out there. Formerly
 "XiaoBot".
 
 ## Table of Contents
