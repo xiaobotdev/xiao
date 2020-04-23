@@ -40,7 +40,7 @@ module.exports = class HoroscopeCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x9797FF)
 				.setTitle(`Horoscope for ${firstUpperCase(sign)}...`)
-				.setURL(`https://new.theastrologer.com/${sign}/`)
+				.setURL(`https://astrology.tv/horoscope/signs/${sign}/`)
 				.setFooter('© Kelli Fox, The Astrologer')
 				.setTimestamp()
 				.setDescription(horoscope);
@@ -51,8 +51,8 @@ module.exports = class HoroscopeCommand extends Command {
 	}
 
 	async fetchHoroscope(sign) {
-		const { text } = await request.get(`https://new.theastrologer.com/${sign}/`);
+		const { text } = await request.get(`https://astrology.tv/horoscope/signs/${sign}/`);
 		const $ = cheerio.load(text);
-		return $('#today').find('p').first().text();
+		return $('div[class="ct-text-block day-tabs-content_horoscope"]').eq(1).text();
 	}
 };

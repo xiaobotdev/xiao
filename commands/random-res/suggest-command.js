@@ -5,7 +5,7 @@ module.exports = class SuggestCommandCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'suggest-command',
-			aliases: ['command-suggestion', 'command-suggest'],
+			aliases: ['command-suggestion', 'command-suggest', 'suggest-cmd', 'cmd-suggest'],
 			group: 'random-res',
 			memberName: 'suggest-command',
 			description: 'Suggests a random command for you to try.'
