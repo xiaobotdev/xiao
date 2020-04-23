@@ -23,7 +23,7 @@ module.exports = class DonateCommand extends Command {
 	run(msg) {
 		return msg.say(stripIndents`
 			Contribute to development!
-			<https://paypal.me/dragonfire535>
+			https://paypal.me/dragonfire535
 		`);
 	}
 };
