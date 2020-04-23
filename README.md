@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 400
+Total: 401
 
 ### Utility:
 
@@ -180,6 +180,7 @@ Total: 400
 * **draw-cards:** Draws a random hand of playing cards.
 * **fact-core:** Responds with a random Fact Core quote.
 * **fact:** Responds with a random fact.
+* **fml:** Responds with a FML quote. (NSFW)
 * **fortune:** Responds with a random fortune.
 * **github-zen:** Responds with a random GitHub design philosophy.
 * **joke:** Responds with a random joke.
@@ -742,6 +743,8 @@ here.
 	* wikia ([API](https://www.wikia.com/api/v1/))
 - [Flickr](https://www.flickr.com/)
 	* flickr ([API](https://www.flickr.com/services/api/))
+- [FML](https://www.fmylife.com/)
+	* fml (FML Data)
 - [Foreign exchange rates API](https://exchangeratesapi.io/)
 	* currency (API)
 - [Free SVG](https://freesvg.org/)
