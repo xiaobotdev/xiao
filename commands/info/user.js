@@ -66,7 +66,6 @@ module.exports = class UserCommand extends Command {
 				embed.setFooter('Failed to resolve member, showing basic user information instead.');
 			}
 		}
-		embed.setDescription(description);
 		return msg.embed(embed);
 	}
 };
