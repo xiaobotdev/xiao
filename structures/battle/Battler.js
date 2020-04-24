@@ -27,7 +27,7 @@ module.exports = class Battler {
 			**${this.battle.opponent.user.tag}:** ${this.battle.opponent.hp} HP
 		`;
 		if (this.battle.turn === 1 || this.battle.turn === 2) {
-			content += '\n\n_Special uses 50 MP whether or not it hits. Cure takes remaining MP and heals half that amount._';
+			content += '\n\n_Special uses 25 MP whether or not it hits. Cure takes remaining MP and heals half that amount._';
 		}
 		await msg.say(content);
 		const filter = res => {
@@ -38,7 +38,7 @@ module.exports = class Battler {
 					return false;
 				}
 				if (choice === 'final' && !this.canFinal) {
-					msg.say('You must have under 100 HP and over 100 MP. Final can only be used once!').catch(() => null);
+					msg.say('You must have under 100 HP and over 50 MP. Final can only be used once!').catch(() => null);
 					return false;
 				}
 				return true;
@@ -83,11 +83,11 @@ module.exports = class Battler {
 	}
 
 	get canSpecial() {
-		return this.mp >= 50;
+		return this.mp >= 25;
 	}
 
 	get canFinal() {
-		return this.hp < 100 && this.mp >= 100 && !this.usedFinal;
+		return this.hp < 100 && this.mp >= 50 && !this.usedFinal;
 	}
 
 	toString() {

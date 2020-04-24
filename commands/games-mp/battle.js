@@ -48,15 +48,19 @@ module.exports = class BattleCommand extends Command {
 					battle.attacker.changeGuard();
 					battle.reset(false);
 				} else if (choice === 'special') {
-					const miss = Math.floor(Math.random() * 3);
-					if (miss) {
+					const miss = Math.floor(Math.random() * 5);
+					if (miss === 0 || miss === 3) {
 						await msg.say(`${battle.attacker}'s special attack missed!`);
-					} else {
-						const damage = randomRange(battle.defender.guard ? 50 : 100, battle.defender.guard ? 100 : 150);
-						await msg.say(`${battle.attacker} deals **${damage}** damage!`);
+					} else if (miss === 1 || miss === 5) {
+						const damage = randomRange(battle.defender.guard ? 10 : 40, battle.defender.guard ? 40 : 100);
+						await msg.say(`${battle.attacker}'s special attack grazed the opponent, dealing **${damage}** damage!`);
+						battle.defender.dealDamage(damage);
+					} else if (miss === 2) {
+						const damage = randomRange(battle.defender.guard ? 20 : 80, battle.defender.guard ? 80 : 200);
+						await msg.say(`${battle.attacker}'s special attack hit directly, dealing **${damage}** damage!`);
 						battle.defender.dealDamage(damage);
 					}
-					battle.attacker.useMP(50);
+					battle.attacker.useMP(25);
 					battle.reset();
 				} else if (choice === 'cure') {
 					const amount = Math.round(battle.attacker.mp / 2);
@@ -65,9 +69,9 @@ module.exports = class BattleCommand extends Command {
 					battle.attacker.useMP(battle.attacker.mp);
 					battle.reset();
 				} else if (choice === 'final') {
-					await msg.say(`${battle.attacker} uses their final move, dealing **150** damage!`);
-					battle.defender.dealDamage(150);
-					battle.attacker.useMP(100);
+					await msg.say(`${battle.attacker} uses their final move, dealing **100** damage!`);
+					battle.defender.dealDamage(100);
+					battle.attacker.useMP(50);
 					battle.attacker.usedFinal = true;
 					battle.reset();
 				} else if (choice === 'run') {
@@ -80,9 +84,8 @@ module.exports = class BattleCommand extends Command {
 					await msg.say('I do not understand what you want to do.');
 				}
 			}
-			const { winner } = battle;
 			this.client.games.delete(msg.channel.id);
-			return msg.say(`The match is over! Congrats, ${winner}!`);
+			return msg.say(`The match is over! Congrats, ${battle.winner}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
