@@ -61,6 +61,7 @@ module.exports = class ZeroDialogueCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.font = '42px MM Zero';
 		ctx.fillStyle = 'white';
+		ctx.textBaseline = 'top';
 		let text = await wrapText(ctx, quote, 425);
 		text = text.length > 2 ? `${text.slice(2).join('\n')}...` : text.join('\n');
 		ctx.fillText(text, 8, 8);
