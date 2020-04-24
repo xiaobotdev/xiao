@@ -63,7 +63,7 @@ module.exports = class ZeroDialogueCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
 		let text = await wrapText(ctx, quote, 425);
-		text = text.length > 2 ? `${text.slice(2).join('\n')}...` : text.join('\n');
+		text = text.length > 2 ? `${text.slice(0, 2).join('\n')}...` : text.join('\n');
 		ctx.fillText(text, 8, 8);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'zero-dialogue.png' }] });
 	}
