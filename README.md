@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 401
+Total: 402
 
 ### Utility:
 
@@ -446,6 +446,7 @@ Total: 401
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **square:** Draws an image or a user's avatar as a square.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
+* **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Avatar Manipulation:
 
@@ -678,6 +679,8 @@ here.
 	* bulbapedia ([API](https://bulbapedia.bulbagarden.net/w/api.php))
 - [Bulletin of the Atomic Scientists](https://thebulletin.org/)
 	* doomsday-clock ([Doomsday Clock Data](https://thebulletin.org/doomsday-clock/current-time/))
+- [Capcom](http://www.capcom.com/us/)
+	* zero-dialogue ([Image, Original "Megaman Zero" Game](http://megaman.capcom.com/))
 - [cheesecakejedi](https://imgur.com/user/cheesecakejedi)
 	* axis-cult-sign-up ([Image](https://imgur.com/gallery/quQTD))
 - [Cheng Xiao](https://www.instagram.com/chengxiao_0715/)
@@ -925,6 +928,8 @@ here.
 	* mayo-clinic (Disease Data)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/)
 	* mdn (API)
+- [Megadreamer](https://www.deviantart.com/megadreamer)
+	* zero-dialogue ([Megaman Zero Dialogue Font](https://www.deviantart.com/megadreamer/art/Megaman-Zero-dialog-font-513708688))
 - [Merriam-Webster's Collegiate® Dictionary](https://www.merriam-webster.com/)
 	* define ([API](https://dictionaryapi.com/products/api-collegiate-dictionary))
 	* hangman ([API](https://dictionaryapi.com/products/api-collegiate-dictionary))
