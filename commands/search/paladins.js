@@ -49,17 +49,17 @@ module.exports = class PaladinsCommand extends Command {
 				const champData = this.champions[champ.id];
 				const classStat = classStats[champData.class];
 				const emoji = this.classEmoji(champData.class);
-				return `${emoji} ${champData.name} (${champData[classStat.id]} ${classStat.display})`;
+				return `${emoji} ${champData.name} (${champ[classStat.id]} ${classStat.display})`;
 			});
 			const embed = new MessageEmbed()
 				.setColor(0x1E9BAD)
 				.setAuthor('Paladins Guru', 'https://i.imgur.com/iIAdriK.png', 'https://paladins.guru/')
-				.addField('❯ Name', data.name, true)
-				.addField('❯ ID', data.id, true)
-				.addField('❯ Level', data.level, true)
-				.addField('❯ Last Seen', moment.utc(data.seen).format('MM/DD/YYYY h:mm A'), true)
-				.addField('❯ Region', data.region, true)
-				.addField('❯ Team', data.team || 'Free Agent', true)
+				.addField('❯ Name', data.player.name, true)
+				.addField('❯ ID', data.player.id, true)
+				.addField('❯ Level', data.player.level, true)
+				.addField('❯ Last Seen', moment.utc(data.player.seen).format('MM/DD/YYYY h:mm A'), true)
+				.addField('❯ Region', data.player.region, true)
+				.addField('❯ Team', data.player.team || 'Free Agent', true)
 				.addField('❯ Top 5 Champions', champions.slice(0, 5).join('\n'));
 			return msg.embed(embed);
 		} catch (err) {
