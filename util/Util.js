@@ -1,6 +1,6 @@
 const crypto = require('crypto');
-const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya'];
-const no = ['no', 'n', 'nah', 'nope', 'nop'];
+const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
+const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
 
 module.exports = class Util {
 	static delay(ms) {
