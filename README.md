@@ -479,6 +479,7 @@ Total: 402
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
+* **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
 * **illegal:** Makes President Trump make your text illegal.
@@ -777,6 +778,7 @@ here.
 	* calendar ([Calendar API](https://developers.google.com/calendar/))
 	* dear-liberals ([Oswald Font](https://fonts.google.com/specimen/Oswald))
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
+	* genie-rules ([Noto Font](https://www.google.com/get/noto/))
 	* google ([Custom Search API](https://cse.google.com/cse/all))
 	* google-autofill (Autofill API)
 	* google-doodle ([Google Doodles API](https://www.google.com/doodles))
