@@ -43,7 +43,7 @@ module.exports = class PaladinsCommand extends Command {
 		try {
 			const search = await this.search(player);
 			if (!search) return msg.say('Could not find any results.');
-			const data = await this.fetchPlayer(id);
+			const data = await this.fetchPlayer(search.id);
 			if (!this.champions) await this.fetchChampions();
 			const champions = data.champions.map(champ => {
 				const champData = this.champions[champ.id];
