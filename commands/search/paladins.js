@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const moment = require('moment');
+const { formatNumber } = require('../../util/Util');
 const classStats = require('../../assets/json/paladins');
 const { FLANKER_EMOJI_ID, DAMAGE_EMOJI_ID, FRONT_LINE_EMOJI_ID, SUPPORT_EMOJI_ID } = process.env;
 
@@ -49,7 +50,7 @@ module.exports = class PaladinsCommand extends Command {
 				const champData = this.champions[champ.id];
 				const classStat = classStats[champData.class];
 				const emoji = this.classEmoji(champData.class);
-				return `${emoji} ${champData.name} (${champ[classStat.id]} ${classStat.display})`;
+				return `${emoji} ${champData.name} (${formatNumber(champ[classStat.id])} ${classStat.display})`;
 			});
 			const embed = new MessageEmbed()
 				.setColor(0x1E9BAD)
