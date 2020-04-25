@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 402
+Total: 404
 
 ### Utility:
 
@@ -205,6 +205,7 @@ Total: 402
 * **subreddit:** Responds with a random post from a subreddit.
 * **suggest-command:** Suggests a random command for you to try.
 * **superpower:** Responds with a random superpower.
+* **the-onion:** Responds with a random "The Onion" article.
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
 * **waifu:** Responds with a randomly generated waifu and backstory.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
@@ -1129,6 +1130,8 @@ here.
 	* tv-show ([API](https://www.themoviedb.org/documentation/api))
 - [The Newspaper Clipping Generator](https://www.fodey.com/generators/newspaper/snippet.asp)
 	* newspaper (API)
+- [The Onion](https://www.theonion.com/)
+	* the-onion ([RSS Feed](https://www.theonion.com/rss))
 - [The Yoda-Speak Generator](https://www.yodaspeak.co.uk/)
 	* yoda (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
