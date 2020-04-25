@@ -99,7 +99,7 @@ module.exports = class PaladinsCommand extends Command {
 			case 'Support': emojiID = SUPPORT_EMOJI_ID; break;
 			case 'Damage': emojiID = DAMAGE_EMOJI_ID; break;
 			case 'Front Line': emojiID = FRONT_LINE_EMOJI_ID; break;
-		};
-		return `<:${className.replace(/ /g, '')}:${emojiID}>`
+		}
+		return `<:${className.replace(/ /g, '')}:${emojiID}>`;
 	}
 };
