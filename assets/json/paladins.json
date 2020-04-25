@@ -1,0 +1,18 @@
+{
+	"Damage": {
+		"id": "damage",
+		"display": "Damage"
+	},
+	"Flanker": {
+		"id": "kills",
+		"display": "Kills"
+	},
+	"Front Line": {
+		"id": "objective_time",
+		"display": "Objective Time"
+	},
+	"Support": {
+		"id": "healing",
+		"display": "Healing"
+	}
+}
