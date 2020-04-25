@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 404
+Total: 405
 
 ### Utility:
 
@@ -322,6 +322,7 @@ Total: 404
 * **neopets-item:** Responds with information on a specific Neopets item.
 * **npm:** Responds with information on an NPM package.
 * **osu:** Responds with information on an osu! user.
+* **paladins:** Responds with information on a Paladins player.
 * **periodic-table:** Finds an element on the periodic table.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **recipe:** Searches for recipes based on your query.
@@ -741,6 +742,8 @@ here.
 	* temmie (English-to-Temmie Dictionary Data)
 - [Esther Verkest](https://www.facebook.com/Esther-Verkest-49667161749/)
 	* sos (Image)
+- [Evil Mojo Games](https://www.evilmojogames.com/)
+	* paladins ([Original "Paladins" Game](https://www.paladins.com/))
 - [Face++ Cognitive Services](https://www.faceplusplus.com/)
 	* face ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 - [FANDOM](https://www.fandom.com/)
@@ -1002,6 +1005,8 @@ here.
 	* osu ([API](https://github.com/ppy/osu-api/wiki))
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
 	* balloon-pop (Concept)
+- [PaladinsGuru](https://paladins.guru/)
+	* paladins (API)
 - [PayPal](https://www.paypal.com/us/home)
 	* donate (Donation Gathering)
 - [Perspective API](https://www.perspectiveapi.com/#/)
