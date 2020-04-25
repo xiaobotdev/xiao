@@ -50,7 +50,7 @@ module.exports = class PaladinsCommand extends Command {
 				const champData = this.champions[champ.id];
 				const classStat = classStats[champData.class];
 				const emoji = this.classEmoji(champData.class);
-				return `${emoji} ${champData.name} (${formatNumber(champ[classStat.id])} ${classStat.display})`;
+				return `${emoji} ${champData.name} (${formatNumber(champ[classStat.id] || 0)} ${classStat.display})`;
 			});
 			const embed = new MessageEmbed()
 				.setColor(0x1E9BAD)
