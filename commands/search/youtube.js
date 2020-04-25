@@ -40,6 +40,7 @@ module.exports = class YoutubeCommand extends Command {
 					type: 'video',
 					maxResults: 1,
 					q: query,
+					safeSearch: msg.channel.nsfw ? 'none' : 'strict',
 					key: GOOGLE_KEY
 				});
 			if (!body.items.length) return msg.say('Could not find any results.');
