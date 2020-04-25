@@ -38,7 +38,7 @@ module.exports = class HatCommand extends Command {
 					reasonURL: 'https://knowyourmeme.com/forums/just-for-fun/topics/24821-christmas-hat-thread'
 				},
 				{
-					name: 'DeviantArt - xertris',
+					name: 'xertris',
 					url: 'https://www.deviantart.com/xertris',
 					reason: 'Dunce Hat Image',
 					reasonURL: 'https://www.deviantart.com/xertris/art/Dunce-Cap-634349483'

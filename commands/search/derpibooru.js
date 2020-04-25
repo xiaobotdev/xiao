@@ -10,9 +10,16 @@ module.exports = class DerpibooruCommand extends Command {
 			description: 'Responds with an image from Derpibooru.',
 			credit: [
 				{
+					name: 'Hasbro',
+					url: 'https://shop.hasbro.com/en-us',
+					reason: 'Original "My Little Pony: Friendship is Magic" Show',
+					reasonURL: 'https://mylittlepony.hasbro.com/en-us'
+				},
+				{
 					name: 'Derpibooru',
 					url: 'https://derpibooru.org/',
-					reason: 'API'
+					reason: 'API',
+					reasonURL: 'https://www.derpibooru.org/pages/api'
 				}
 			],
 			args: [

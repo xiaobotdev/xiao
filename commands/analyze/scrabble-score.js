@@ -14,7 +14,7 @@ module.exports = class ScrabbleScoreCommand extends Command {
 				{
 					name: 'Hasbro',
 					url: 'https://shop.hasbro.com/en-us',
-					reason: 'Original Scrabble Game',
+					reason: 'Original "Scrabble" Game',
 					reasonURL: 'https://scrabble.hasbro.com/en-us'
 				}
 			],
