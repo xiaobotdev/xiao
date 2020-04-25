@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 405
+Total: 406
 
 ### Utility:
 
@@ -474,6 +474,7 @@ Total: 405
 * **3000-years:** Draws an image or a user's avatar over Pokémon's "It's been 3000 years" meme.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
+* **catch:** Catch users, revealing who is something.
 * **challenger:** Draws an image or a user's avatar over Smash Bros.'s "Challenger Approaching" screen.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
@@ -778,6 +779,7 @@ here.
 - [Google](https://www.google.com/)
 	* book ([Books API](https://developers.google.com/books/))
 	* calendar ([Calendar API](https://developers.google.com/calendar/))
+	* catch ([Noto Font](https://www.google.com/get/noto/))
 	* dear-liberals ([Oswald Font](https://fonts.google.com/specimen/Oswald))
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
 	* genie-rules ([Noto Font](https://www.google.com/get/noto/))
