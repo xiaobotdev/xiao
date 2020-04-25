@@ -21,6 +21,13 @@ module.exports = class GenieRulesCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
+					name: 'u/Two-Tone-',
+					url: 'https://www.reddit.com/user/Two-Tone-/',
+					reason: 'Image',
+					// eslint-disable-next-line max-len
+					reasonURL: 'https://www.reddit.com/r/MemeTemplatesOfficial/comments/bht9o6/i_made_an_hd_high_quality_version_of_the_4_rules/'
+				},
+				{
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
