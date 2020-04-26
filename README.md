@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 406
+Total: 407
 
 ### Utility:
 
@@ -582,6 +582,7 @@ Total: 406
 * **high-five:** High Fives a user.
 * **hold-hands:** Holds hands with a user.
 * **hug:** Hugs a user.
+* **inhale:** Inhales a user.
 * **kill:** Kills a user.
 * **kiss:** Kisses a user.
 * **pat:** Pats a user.
