@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 407
+Total: 408
 
 ### Utility:
 
@@ -409,6 +409,7 @@ Total: 407
 
 ### Image Manipulation:
 
+* **ace-attorney:** Sends a text box from Ace Attorney with the quote and character of your choice.
 * **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **adorable:** Creates an adorable avatar based on the text you provide.
 * **apple-engraving:** Engraves the text of your choice onto an Apple product.
@@ -685,6 +686,7 @@ here.
 - [Bulletin of the Atomic Scientists](https://thebulletin.org/)
 	* doomsday-clock ([Doomsday Clock Data](https://thebulletin.org/doomsday-clock/current-time/))
 - [Capcom](http://www.capcom.com/us/)
+	* ace-attorney ([Images, Original "Ace Attorney" Game](http://www.ace-attorney.com/))
 	* zero-dialogue ([Image, Original "Megaman Zero" Game](http://megaman.capcom.com/))
 - [cheesecakejedi](https://imgur.com/user/cheesecakejedi)
 	* axis-cult-sign-up ([Image](https://imgur.com/gallery/quQTD))
@@ -740,6 +742,8 @@ here.
 	* hat ([Pirate Hat Image](http://dynamicpickaxe.com/pirate-hat-clipart.html))
 - [ebearskittychan](https://twitter.com/ebearskittychan)
 	* temmie (English-to-Temmie Dictionary Data)
+- [Enkidulga](https://www.dafont.com/profile.php?user=736583)
+	* ace-attorney ([Ace Attorney Font](https://www.dafont.com/ace-attorney.font))
 - [Esther Verkest](https://www.facebook.com/Esther-Verkest-49667161749/)
 	* sos (Image)
 - [Evil Mojo Games](https://www.evilmojogames.com/)
