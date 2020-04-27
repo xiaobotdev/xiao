@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
-const { list } = require('../../util/Util');
+const { firstUpperCase, list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Ace-Attorney.ttf'), { family: 'Ace Attorney' });
 const characters = {
@@ -78,7 +78,7 @@ module.exports = class AceAttorneyCommand extends Command {
 		ctx.font = '14px Ace Attorney';
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
-		ctx.fillText(character, 6, 178);
+		ctx.fillText(firstUpperCase(character), 6, 176);
 		let text = await wrapText(ctx, quote, 242);
 		text = text.length > 5 ? `${text.slice(0, 5).join('\n')}...` : text.join('\n');
 		ctx.fillText(text, 7, 199);
