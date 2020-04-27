@@ -6,7 +6,8 @@ const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Ace-Attorney.ttf'), { family: 'Ace Attorney' });
 const characters = {
 	phoenix: ['phoenix', 'wright', 'naruhodo', 'ryuuichi', 'ryu', 'nick'],
-	edgeworth: ['miles', 'edgeworth', 'mitsurugi', 'reiji', 'edgey']
+	edgeworth: ['miles', 'edgeworth', 'mitsurugi', 'reiji', 'edgey'],
+	godot: ['godot', 'diego', 'armando', 'souryuu', 'soryu', 'kaminogi']
 };
 
 module.exports = class AceAttorneyCommand extends Command {
