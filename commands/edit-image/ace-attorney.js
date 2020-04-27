@@ -7,7 +7,8 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Ace-Attorney.t
 const characters = {
 	phoenix: ['phoenix', 'wright', 'naruhodo', 'ryuuichi', 'ryu', 'nick'],
 	edgeworth: ['miles', 'edgeworth', 'mitsurugi', 'reiji', 'edgey'],
-	godot: ['godot', 'diego', 'armando', 'souryuu', 'soryu', 'kaminogi']
+	godot: ['godot', 'diego', 'armando', 'souryuu', 'soryu', 'kaminogi'],
+	apollo: ['apollo', 'justice', 'odoroki', 'housuke', 'hosuke']
 };
 
 module.exports = class AceAttorneyCommand extends Command {
