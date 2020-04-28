@@ -35,10 +35,7 @@ module.exports = class CleverbotCommand extends Command {
 	}
 
 	async run(msg, { text }, fromPattern) {
-		if (fromPattern) {
-			if (msg.guild && this.client.botListGuilds.includes(msg.guild.id)) return null;
-			text = msg.patternMatches[2];
-		}
+		if (fromPattern) text = msg.patternMatches[2];
 		try {
 			const convo = this.convos.get(msg.channel.id);
 			const { body } = await request

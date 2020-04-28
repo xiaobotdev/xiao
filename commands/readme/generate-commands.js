@@ -10,22 +10,14 @@ module.exports = class GenerateCommandsCommand extends Command {
 			description: 'Generates the commands list for Xiao\'s README.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
-			guarded: true,
-			args: [
-				{
-					key: 'botList',
-					prompt: 'Do you want to generate the bot list version of the command list?',
-					type: 'boolean',
-					default: false
-				}
-			]
+			guarded: true
 		});
 	}
 
-	run(msg, { botList }) {
+	run(msg) {
 		const list = this.client.registry.groups
 			.map(g => {
-				const commands = g.commands.filter(c => !c.hidden && (botList ? !c.ownerOnly && !c.nsfw : true));
+				const commands = g.commands.filter(c => !c.hidden);
 				return `\n### ${g.name}:\n\n${commands.map(c => {
 					const extra = `${c.ownerOnly ? ' (Owner-Only)' : ''}${c.nsfw ? ' (NSFW)' : ''}`;
 					return `* **${c.name}:** ${c.description}${extra}`;

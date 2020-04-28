@@ -74,7 +74,6 @@ client.on('message', async msg => {
 
 client.on('guildMemberRemove', async member => {
 	if (member.id === client.user.id) return null;
-	if (client.botListGuilds.includes(member.guild.id)) return null;
 	const channel = member.guild.systemChannel;
 	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
 	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
