@@ -8,7 +8,6 @@ module.exports = class AutoReplyCommand extends Command {
 	}
 
 	run(msg, args, fromPattern) {
-		if (msg.guild && this.client.botListGuilds.includes(msg.guild.id) && fromPattern) return null;
 		return this.reply ? msg.reply(this.generateText(fromPattern)) : msg.say(this.generateText(fromPattern));
 	}
 

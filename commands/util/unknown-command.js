@@ -17,7 +17,6 @@ module.exports = class UnknownCommandCommand extends Command {
 
 	run(msg) {
 		if (!msg.guild) return null;
-		if (msg.guild && this.client.botListGuilds.includes(msg.guild.id)) return null;
 		const commands = this.makeCommandArray(this.client.isOwner(msg.author), msg.channel.nsfw);
 		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix]);
 		const str = command ? command[2] : msg.content.split(' ')[0];
