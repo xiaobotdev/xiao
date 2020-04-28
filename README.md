@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 408
+Total: 407
 
 ### Utility:
 
@@ -331,7 +331,6 @@ Total: 408
 * **rotten-tomatoes:** Searches Rotten Tomatoes for your query.
 * **rule:** Responds with a rule of the internet.
 * **safebooru:** Responds with an image from Safebooru, with optional query.
-* **soundcloud:** Searches SoundCloud for your query.
 * **stack-overflow:** Searches Stack Overflow for your query.
 * **steam:** Searches Steam for your query.
 * **stocks:** Responds with the current stocks for a company.
@@ -1099,8 +1098,6 @@ here.
 	* steam-card ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
 - [SMWiki](http://www.smwiki.net/)
 	* smw-level ([Level Name Data](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels))
-- [SoundCloud](https://soundcloud.com/)
-	* soundcloud ([API](https://developers.soundcloud.com/))
 - [SPAM Brand](https://www.spam.com/)
 	* spam (Image)
 - [speak lolcat](https://speaklolcat.com/)
