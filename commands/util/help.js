@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const AutoReplyCommand = require('../../structures/commands/AutoReply');
 
 module.exports = class HelpCommand extends Command {
 	constructor(client) {
