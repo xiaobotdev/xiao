@@ -90,15 +90,15 @@ module.exports = class HangmanCommand extends Command {
 				return msg.say(stripIndents`
 					You won, it was ${word}!
 
-					**${defined.name}** (${defined.partOfSpeech})
-					${defined.definiton}
+					${defined ? `**${defined.name}** (${defined.partOfSpeech})` : ''}
+					${defined ? defined.definiton : ''}
 				`);
 			}
 			return msg.say(stripIndents`
 				Too bad... It was ${word}...
 
-				**${defined.name}** (${defined.partOfSpeech})
-				${defined.definiton}
+				${defined ? `**${defined.name}** (${defined.partOfSpeech})` : ''}
+				${defined ? defined.definiton : ''}
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
