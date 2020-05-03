@@ -5,6 +5,7 @@ module.exports = class AutoReplyCommand extends Command {
 		super(client, info);
 
 		this.reply = info.reply || false;
+		this.throttling = null;
 	}
 
 	run(msg, args, fromPattern) {
