@@ -55,7 +55,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 			const base = await loadImage(body);
 			const plate = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'skyrim-skill.png'));
 			const ratio = plate.width / plate.height;
-			const height = Math.round(base.width / ratio);
+			const height = Math.round(base.width * ratio);
 			const canvas = createCanvas(plate.width, plate.height + height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0, plate.width, height);
@@ -64,9 +64,9 @@ module.exports = class SkyrimSkillCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'black';
-			ctx.fillText(skill, 189 + 5, height + 84 + 3);
+			ctx.fillText(skill, 189 + 5, height + 75 + 3);
 			ctx.fillStyle = 'white';
-			ctx.fillText(skill, 189, height + 84);
+			ctx.fillText(skill, 189, height + 75);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'skyrim-skill.png' }] });
