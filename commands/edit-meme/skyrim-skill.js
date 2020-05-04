@@ -54,8 +54,8 @@ module.exports = class SkyrimSkillCommand extends Command {
 			const { body } = await request.get(image);
 			const base = await loadImage(body);
 			const plate = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'skyrim-skill.png'));
-			const ratio = plate.width / plate.height;
-			const height = Math.round(base.width * ratio);
+			const scaleH = plate.height / base.height;
+			const height = Math.round(base.height * scaleH);
 			const canvas = createCanvas(plate.width, plate.height + height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0, plate.width, height);
