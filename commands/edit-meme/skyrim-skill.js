@@ -36,7 +36,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 					key: 'skill',
 					prompt: 'What skill should be used?',
 					type: 'string',
-					max: 15,
+					max: 20,
 					parse: skill => skill.toUpperCase()
 				},
 				{
@@ -64,7 +64,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'black';
-			ctx.fillText(skill, 189 + 5, height + 75 + 3, 310);
+			ctx.fillText(skill, 189 + 5, height + 75 + 3, 300);
 			ctx.fillStyle = 'white';
 			ctx.fillText(skill, 189, height + 75, 310);
 			const attachment = canvas.toBuffer();
