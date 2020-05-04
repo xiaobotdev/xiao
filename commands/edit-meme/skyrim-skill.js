@@ -58,7 +58,8 @@ module.exports = class SkyrimSkillCommand extends Command {
 			const height = Math.round(base.width / ratio);
 			const canvas = createCanvas(plate.width, plate.height + height);
 			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
+			ctx.drawImage(base, 0, 0, plate.width, height);
+			ctx.drawImage(plate, 0, height + 1);
 			ctx.font = 'normal bold 77px Futura';
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
