@@ -448,7 +448,6 @@ Total: 409
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
-* **stretch:** Draws an image or a user's avatar but stretched across the X or Y axis.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
