@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 407
+Total: 409
 
 ### Utility:
 
@@ -447,6 +447,8 @@ Total: 407
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **square:** Draws an image or a user's avatar as a square.
+* **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
+* **stretch:** Draws an image or a user's avatar but stretched across the X or Y axis.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
