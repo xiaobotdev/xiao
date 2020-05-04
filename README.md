@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 409
+Total: 408
 
 ### Utility:
 
