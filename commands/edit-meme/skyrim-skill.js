@@ -62,7 +62,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 			ctx.drawImage(plate, 0, height + 1);
 			ctx.font = '77px Futura';
 			let fontSize = 77;
-			while (ctx.measureText(text).width > 310) {
+			while (ctx.measureText(skill).width > 310) {
 				fontSize -= 1;
 				ctx.font = `${fontSize}px Futura`;
 			}
