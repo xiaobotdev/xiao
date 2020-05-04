@@ -36,7 +36,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 					key: 'skill',
 					prompt: 'What skill should be used?',
 					type: 'string',
-					max: 10,
+					max: 15,
 					parse: skill => skill.toUpperCase()
 				},
 				{
@@ -60,7 +60,12 @@ module.exports = class SkyrimSkillCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0, plate.width, height);
 			ctx.drawImage(plate, 0, height + 1);
-			ctx.font = 'normal bold 77px Futura';
+			ctx.font = '77px Futura';
+			let fontSize = 77;
+			while (ctx.measureText(text).width > 310) {
+				fontSize -= 1;
+				ctx.font = `${fontSize}px Futura`;
+			}
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'black';
