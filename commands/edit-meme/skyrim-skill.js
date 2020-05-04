@@ -61,17 +61,12 @@ module.exports = class SkyrimSkillCommand extends Command {
 			ctx.drawImage(base, 0, 0, plate.width, height);
 			ctx.drawImage(plate, 0, height + 1);
 			ctx.font = '77px Futura';
-			let fontSize = 77;
-			while (ctx.measureText(skill).width > 310) {
-				fontSize -= 1;
-				ctx.font = `${fontSize}px Futura`;
-			}
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'black';
-			ctx.fillText(skill, 189 + 5, height + 75 + 3);
+			ctx.fillText(skill, 189 + 5, height + 75 + 3, 310);
 			ctx.fillStyle = 'white';
-			ctx.fillText(skill, 189, height + 75);
+			ctx.fillText(skill, 189, height + 75, 310);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'skyrim-skill.png' }] });
