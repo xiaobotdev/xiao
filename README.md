@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 408
+Total: 409
 
 ### Utility:
 
@@ -494,6 +494,7 @@ Total: 408
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
+* **skyrim-skill:** Sends a "Skyrim Skill" meme with the skill and image of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
 * **sos:** Sends a "Esther Verkest's Help Sign" comic with the text of your choice.
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
@@ -673,6 +674,8 @@ here.
 	* axis-cult (Prayer Data)
 - [AZLyrics](https://www.azlyrics.com/)
 	* lyrics (Lyrics Data)
+- [Bethesda](https://bethesda.net/en/dashboard)
+	* skyrim-skill ([Image, Original "The Elder Scrolls V: Skyrim" Game](https://elderscrolls.bethesda.net/en/skyrim))
 - [Bob Ross](https://www.bobross.com/)
 	* bob-ross (Himself)
 - [Bowserinator](https://github.com/Bowserinator/)
@@ -757,6 +760,8 @@ here.
 	* flickr ([API](https://www.flickr.com/services/api/))
 - [FML](https://www.fmylife.com/)
 	* fml (FML Data)
+- [Fontsgeek](http://fontsgeek.com/)
+	* skyrim-skill ([Futura Condensed Font](http://fontsgeek.com/fonts/Futura-Condensed-Regular))
 - [Foreign exchange rates API](https://exchangeratesapi.io/)
 	* currency (API)
 - [Free SVG](https://freesvg.org/)
