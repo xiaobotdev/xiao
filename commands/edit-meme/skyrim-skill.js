@@ -64,9 +64,9 @@ module.exports = class SkyrimSkillCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'black';
-			ctx.fillText(skill, 189 + 5, height + 75 + 3, 290);
+			ctx.fillText(skill, 189 + 5, height + 75 + 3, 300);
 			ctx.fillStyle = 'white';
-			ctx.fillText(skill, 189, height + 75, 310);
+			ctx.fillText(skill, 189, height + 75, 300);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'skyrim-skill.png' }] });
