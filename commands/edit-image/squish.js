@@ -6,6 +6,7 @@ module.exports = class SquishCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'squish',
+			aliases: ['stretch'],
 			group: 'edit-image',
 			memberName: 'squish',
 			description: 'Draws an image or a user\'s avatar but squished across the X or Y axis.',
