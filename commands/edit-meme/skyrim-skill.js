@@ -64,7 +64,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'black';
-			ctx.fillText(skill, 189 + 5, height + 75 + 3, 300);
+			ctx.fillText(skill, 189 + 5, height + 75 + 3, 290);
 			ctx.fillStyle = 'white';
 			ctx.fillText(skill, 189, height + 75, 310);
 			const attachment = canvas.toBuffer();
