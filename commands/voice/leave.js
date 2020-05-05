@@ -8,6 +8,7 @@ module.exports = class LeaveCommand extends Command {
 			group: 'voice',
 			memberName: 'leave',
 			description: 'Leaves the current voice channel.',
+			guildOnly: true,
 			guarded: true,
 			userPermissions: ['MOVE_MEMBERS']
 		});
