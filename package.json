@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "114.5.3",
+	"version": "114.5.4",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -50,7 +50,7 @@
 		"moment-timezone": "^0.5.28",
 		"node-superfetch": "^0.1.10",
 		"random-js": "^2.1.0",
-		"rss-parser": "^3.7.6",
+		"rss-parser": "^3.8.0",
 		"soap": "^0.31.0",
 		"winston": "^3.2.1"
 	},

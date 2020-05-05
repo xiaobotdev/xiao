@@ -41,11 +41,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Node.js', process.version, true)
 			.addField('❯ Discord.js', `v${djsVersion}`, true)
 			.addField('❯ Commando', `v${commandoVersion}`, true)
-			.addField('❯ Dependencies', this.parseDependencies(dependencies));
+			.addField('❯ Dependencies', Object.keys(dependencies).join(', '));
 		return msg.embed(embed);
-	}
-
-	parseDependencies(deps) {
-		return Object.keys(deps).map(dep => `[${dep}](https://npmjs.com/${dep})`).join(', ');
 	}
 };
