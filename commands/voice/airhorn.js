@@ -15,7 +15,6 @@ module.exports = class AirhornCommand extends Command {
 				duration: 10
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			credit: [
 				{
 					name: 'Discord',
@@ -35,7 +34,9 @@ module.exports = class AirhornCommand extends Command {
 		}
 		const airhorn = sounds[Math.floor(Math.random() * sounds.length)];
 		connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'airhorn', airhorn));
-		await msg.react('🔉');
+		if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+			await msg.react('🔉');
+		}
 		return null;
 	}
 };

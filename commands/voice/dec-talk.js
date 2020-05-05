@@ -15,7 +15,6 @@ module.exports = class DECTalkCommand extends Command {
 				duration: 10
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			credit: [
 				{
 					name: 'calzoneman',
@@ -57,7 +56,9 @@ module.exports = class DECTalkCommand extends Command {
 				.get('http://tts.cyzon.us/tts')
 				.query({ text });
 			connection.play(url);
-			await msg.react('🔉');
+			if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+				await msg.react('🔉');
+			}
 			return null;
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
