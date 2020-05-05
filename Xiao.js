@@ -9,6 +9,7 @@ const client = new Client({
 	disableMentions: 'everyone',
 	disabledEvents: ['TYPING_START']
 });
+const { formatNumber } = require('./util/Util');
 const activities = require('./assets/json/activity');
 const leaveMsgs = require('./assets/json/leave-messages');
 
@@ -50,12 +51,15 @@ client.registry
 client.on('ready', () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
 	activities.push(
-		{ text: `in ${client.guilds.cache.size} servers`, type: 'PLAYING' },
-		{ text: `with ${client.registry.commands.size} commands`, type: 'PLAYING' }
+		{ text: () => `${formatNumber(client.guilds.cache.size)} servers`, type: 'WATCHING' },
+		{ text: () => `with ${formatNumber(client.registry.commands.size)} commands`, type: 'PLAYING' },
+		{ text: () => `${formatNumber(client.users.cache.size)} users`, type: 'WATCHING' },
+		{ text: () => `${formatNumber(client.channels.cache.size)} channels`, type: 'WATCHING' }
 	);
 	client.setInterval(() => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
-		client.user.setActivity(activity.text, { type: activity.type });
+		const text = typeof activity.text === 'function' ? activity.text() : activity.text;
+		client.user.setActivity(text, { type: activity.type });
 	}, 60000);
 	if (client.memePoster.id && client.memePoster.token) {
 		client.setInterval(() => client.memePoster.post(), client.memePoster.time);
