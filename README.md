@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 409
+Total: 410
 
 ### Utility:
 
@@ -513,6 +513,7 @@ Total: 409
 * **clap:** Sends 👏 text 👏 like 👏 this.
 * **cow-say:** Makes a cow say your text.
 * **cursive:** Converts text to cursive.
+* **dec-talk:** The world's best Text-to-Speech.
 * **dvorak:** Converts text to Dvorak encoding.
 * **embed:** Sends text in an embed.
 * **emojify:** Converts text to emoji form.
@@ -688,6 +689,8 @@ here.
 	* bulbapedia ([API](https://bulbapedia.bulbagarden.net/w/api.php))
 - [Bulletin of the Atomic Scientists](https://thebulletin.org/)
 	* doomsday-clock ([Doomsday Clock Data](https://thebulletin.org/doomsday-clock/current-time/))
+- [calzoneman](https://github.com/calzoneman)
+	* dec-talk ([API](https://github.com/calzoneman/aeiou))
 - [Capcom](http://www.capcom.com/us/)
 	* ace-attorney ([Images, Original "Ace Attorney" Game](http://www.ace-attorney.com/))
 	* zero-dialogue ([Image, Original "Megaman Zero" Game](http://megaman.capcom.com/))
@@ -728,6 +731,8 @@ here.
 	* deviantart ([API](https://www.deviantart.com/developers/))
 - [devsnek](https://github.com/devsnek)
 	* owo (Code)
+- [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm)
+	* dec-talk (Original DECTalk Software)
 - [Discord Status Button](https://discord.c99.nl/)
 	* status-button (API)
 - [Disney](https://www.disney.com/)
@@ -973,6 +978,7 @@ here.
 	* doors (Concept)
 - [NASA](https://www.nasa.gov/)
 	* apod ([APOD API](https://api.nasa.gov/))
+	* dec-talk ([Original "Moonbase Alpha" Game](https://store.steampowered.com/app/39000/Moonbase_Alpha/))
 	* gravity ([Planet Gravity Data](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html))
 	* nasa ([NASA Image and Video Library API](https://api.nasa.gov/))
 - [National Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/)
