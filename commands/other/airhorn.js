@@ -37,6 +37,7 @@ module.exports = class AirhornCommand extends Command {
 			const connection = await voiceChannel.join();
 			const airhorn = sounds[Math.floor(Math.random() * sounds.length)];
 			const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'airhorn', airhorn));
+			await msg.react('🔉');
 			dispatcher.once('finish', () => voiceChannel.leave());
 			dispatcher.once('error', () => voiceChannel.leave());
 			return null;
