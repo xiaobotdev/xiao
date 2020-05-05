@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 410
+Total: 411
 
 ### Utility:
 
@@ -567,6 +567,7 @@ Total: 410
 
 ### Other:
 
+* **airhorn:** Plays an airhorn sound in a voice channel.
 * **cleverbot:** Talk to Cleverbot. (Owner-Only)
 * **phone-book:** Looks up phone-enabled servers.
 * **phone:** Starts a phone call with a random server.
@@ -733,6 +734,8 @@ here.
 	* owo (Code)
 - [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm)
 	* dec-talk (Original DECTalk Software)
+- [Discord](https://discord.com/)
+	* airhorn ([Airhorn Sounds](https://github.com/discord/airhornbot/tree/master/audio))
 - [Discord Status Button](https://discord.c99.nl/)
 	* status-button (API)
 - [Disney](https://www.disney.com/)
