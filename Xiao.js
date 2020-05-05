@@ -48,6 +48,10 @@ client.registry
 
 client.on('ready', () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
+	activities.push(
+		{ text: `in ${client.guilds.cache.size} servers`, type: 'PLAYING' },
+		{ text: `with ${client.registry.commands.size} commands`, type: 'PLAYING' }
+	);
 	client.setInterval(() => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
 		client.user.setActivity(activity.text, { type: activity.type });
