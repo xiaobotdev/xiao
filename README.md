@@ -72,6 +72,9 @@ don't grant that permission.
 	* While the commands benefit from it, it is not required for the commands to work.
 - **Add Reactions** allows Xiao to use commands that add reactions to messages in certain commands.
 	* While the commands benefit from it, it is not requried for the commands to work.
+- **Connect** allows Xiao to connect to voice channels. This is needed for commands in the "Voice-Based" group.
+- **Speak** allows Xiao to speak in voice channels. This is needed for commands in the "Voice-Based" group.
+- **Use Voice Activity** is not _needed_, but is included as an extra precaution for voice commands.
 
 
 ## Fun Information
