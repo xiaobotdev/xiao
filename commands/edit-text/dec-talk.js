@@ -53,7 +53,7 @@ module.exports = class DECTalkCommand extends Command {
 			return msg.say('Missing the "Connect" or "Speak" permission for the voice channel.');
 		}
 		if (!voiceChannel.joinable) return msg.say('Your voice channel is not joinable.');
-		if (this.client.voiceConnections.has(voiceChannel.guild.id)) return msg.say('I am already playing a sound.');
+		if (this.client.voice.connections.has(voiceChannel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
 			const connection = await voiceChannel.join();
 			const { url } = await request
