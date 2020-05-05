@@ -8,6 +8,7 @@ module.exports = class JoinCommand extends Command {
 			group: 'voice',
 			memberName: 'join',
 			description: 'Joins your voice channel.',
+			guildOnly: true,
 			guarded: true,
 			userPermissions: ['CONNECT']
 		});
