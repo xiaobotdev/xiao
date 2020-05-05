@@ -41,6 +41,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Meme Generators](#meme-generators)
 	* [Text Manipulation](#text-manipulation)
 	* [Number Manipulation](#number-manipulation)
+	* [Voice-Based](#voice-based)
 	* [Other](#other)
 	* [Roleplay](#roleplay)
 	* [README Generators](#readme-generators)
