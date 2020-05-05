@@ -31,7 +31,7 @@ module.exports = class AirhornCommand extends Command {
 		const inGuild = msg.guild ? undefined : null;
 		const connection = this.client.voice.connections.get(msg.guild.id);
 		if (!connection) {
-			return msg.say(`I am not in a voice channel. Use ${msg.anyUsage('join', inGuild, inGuild)} to fix that!.`);
+			return msg.reply(`I am not in a voice channel. Use ${msg.anyUsage('join', inGuild, inGuild)} to fix that!.`);
 		}
 		const airhorn = sounds[Math.floor(Math.random() * sounds.length)];
 		connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'airhorn', airhorn));
