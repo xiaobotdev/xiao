@@ -132,7 +132,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 411
+Total: 413
 
 ### Utility:
 
@@ -513,7 +513,6 @@ Total: 411
 * **clap:** Sends 👏 text 👏 like 👏 this.
 * **cow-say:** Makes a cow say your text.
 * **cursive:** Converts text to cursive.
-* **dec-talk:** The world's best Text-to-Speech.
 * **dvorak:** Converts text to Dvorak encoding.
 * **embed:** Sends text in an embed.
 * **emojify:** Converts text to emoji form.
@@ -565,9 +564,15 @@ Total: 411
 * **tax:** Determines the total cost of something plus tax.
 * **units:** Converts units to/from other units.
 
-### Other:
+### Voice-Based:
 
 * **airhorn:** Plays an airhorn sound in a voice channel.
+* **dec-talk:** The world's best Text-to-Speech.
+* **join:** Joins your voice channel.
+* **leave:** Leaves the current voice channel.
+
+### Other:
+
 * **cleverbot:** Talk to Cleverbot. (Owner-Only)
 * **phone-book:** Looks up phone-enabled servers.
 * **phone:** Starts a phone call with a random server.

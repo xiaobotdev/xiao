@@ -33,6 +33,7 @@ client.registry
 		['edit-meme', 'Meme Generators'],
 		['edit-text', 'Text Manipulation'],
 		['edit-number', 'Number Manipulation'],
+		['voice', 'Voice-Based'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay'],
 		['readme', 'README Generators']
