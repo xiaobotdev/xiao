@@ -6,7 +6,7 @@ module.exports = class DECTalkCommand extends Command {
 		super(client, {
 			name: 'dec-talk',
 			aliases: ['text-to-speech', 'tts'],
-			group: 'edit-text',
+			group: 'voice',
 			memberName: 'dec-talk',
 			description: 'The world\'s best Text-to-Speech.',
 			guildOnly: true,
@@ -47,25 +47,19 @@ module.exports = class DECTalkCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		const voiceChannel = msg.member.voice.channel;
-		if (!voiceChannel) return msg.say('Please enter a voice channel first.');
-		if (!voiceChannel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK'])) {
-			return msg.say('Missing the "Connect" or "Speak" permission for the voice channel.');
+		const inGuild = msg.guild ? undefined : null;
+		const connection = this.client.voice.connections.get(msg.guild.id);
+		if (!connection) {
+			return msg.say(`I am not in a voice channel. Use ${msg.anyUsage('join', inGuild, inGuild)} to fix that!.`);
 		}
-		if (!voiceChannel.joinable) return msg.say('Your voice channel is not joinable.');
-		if (this.client.voice.connections.has(voiceChannel.guild.id)) return msg.say('I am already playing a sound.');
 		try {
-			const connection = await voiceChannel.join();
 			const { url } = await request
 				.get('http://tts.cyzon.us/tts')
 				.query({ text });
-			const dispatcher = connection.play(url);
+			connection.play(url);
 			await msg.react('🔉');
-			dispatcher.once('finish', () => voiceChannel.leave());
-			dispatcher.once('error', () => voiceChannel.leave());
 			return null;
 		} catch (err) {
-			voiceChannel.leave();
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
