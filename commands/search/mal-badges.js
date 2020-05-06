@@ -32,7 +32,7 @@ module.exports = class MalBadgesCommand extends Command {
 		try {
 			const { body } = await request.get(`http://www.mal-badges.net/users/${user}/badge`);
 			const embed = new MessageEmbed()
-				.attachFiles([{ attachment: body, name: 'badge.png'} ])
+				.attachFiles([{ attachment: body, name: 'badge.png' }])
 				.setTitle(user)
 				.setImage('attachment://badge.png')
 				.setURL(`http://www.mal-badges.net/users/${user}`)
