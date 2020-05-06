@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 414
+Total: 415
 
 ### Utility:
 
@@ -316,6 +316,7 @@ Total: 414
 * **know-your-meme:** Searches Know Your Meme for your query.
 * **league-of-legends:** Responds with information on a League of Legends champion.
 * **lyrics:** Responds with lyrics to a song.
+* **mal-badges:** Responds with a MyAnimeList user's mal-badges badge.
 * **manga:** Searches AniList for your query, getting manga results.
 * **map:** Responds with a map of a specific location.
 * **mayo-clinic:** Searches Mayo Clinic for your query.
@@ -951,6 +952,8 @@ here.
 	* mad-libs (Original Game)
 - [Mad:)Takes](https://www.madtakes.com/index.php)
 	* mad-libs (Mad Libs Data)
+- [mal-badges](http://www.mal-badges.net/)
+	* mal-badges (API)
 - [MangaGamer.com](https://www.mangagamer.com/)
 	* box-choosing ([Original Translation](https://store.steampowered.com/app/526490/Higurashi_When_They_Cry_Hou__Ch4_Himatsubushi/))
 - [Marvelous](http://www.marv.jp/)
