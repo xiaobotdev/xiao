@@ -10,8 +10,6 @@ const client = new Client({
 	disabledEvents: ['TYPING_START']
 });
 const { formatNumber } = require('./util/Util');
-const activities = require('./assets/json/activity');
-const leaveMsgs = require('./assets/json/leave-messages');
 
 client.registry
 	.registerDefaultTypes()
@@ -50,14 +48,14 @@ client.registry
 
 client.on('ready', () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
-	activities.push(
+	client.activities.push(
 		{ text: () => `${formatNumber(client.guilds.cache.size)} servers`, type: 'WATCHING' },
 		{ text: () => `with ${formatNumber(client.registry.commands.size)} commands`, type: 'PLAYING' },
 		{ text: () => `${formatNumber(client.users.cache.size)} users`, type: 'WATCHING' },
 		{ text: () => `${formatNumber(client.channels.cache.size)} channels`, type: 'WATCHING' }
 	);
 	client.setInterval(() => {
-		const activity = activities[Math.floor(Math.random() * activities.length)];
+		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
 		const text = typeof activity.text === 'function' ? activity.text() : activity.text;
 		client.user.setActivity(text, { type: activity.type });
 	}, 60000);
@@ -87,8 +85,8 @@ client.on('guildMemberRemove', async member => {
 	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
 	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
 	try {
-		const leaveMsg = leaveMsgs[Math.floor(Math.random() * leaveMsgs.length)];
-		await channel.send(leaveMsg.replace(/{{user}}/gi, `**${member.user.tag}**`));
+		const leaveMessage = client.leaveMessages[Math.floor(Math.random() * client.leaveMessages.length)];
+		await channel.send(leaveMessage.replace(/{{user}}/gi, `**${member.user.tag}**`));
 		return null;
 	} catch {
 		return null;
