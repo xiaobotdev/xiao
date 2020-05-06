@@ -8,7 +8,7 @@ module.exports = class JeopardyQuestionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'jeopardy-question',
-			aliases: ['jeopardy', 'clue-card', 'jeopardy-clue-card', 'jeopardy-clue'],
+			aliases: ['clue-card', 'jeopardy-clue-card', 'jeopardy-clue'],
 			group: 'edit-image',
 			memberName: 'jeopardy-question',
 			description: 'Sends a Jeopardy Question with the text of your choice.',

@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 413
+Total: 414
 
 ### Utility:
 
@@ -383,6 +383,7 @@ Total: 413
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
+* **jeopardy:** Answer a Jeopardy question.
 * **lottery:** Attempt to win the lottery with 6 numbers.
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
 * **math-quiz:** See how fast you can answer a math problem in a given time limit.
@@ -901,6 +902,7 @@ here.
 - [JellyNeo Item Database](https://items.jellyneo.net/)
 	* neopets-item (Item Data)
 - [Jeopardy](https://www.jeopardy.com/)
+	* jeopardy (Original Show)
 	* jeopardy-question (Original Show)
 - [Jessica Knable](https://picsart.com/u/jessicaknable)
 	* hearts ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
@@ -910,6 +912,8 @@ here.
 	* to-be-continued (Original Anime)
 - [Jon Bernhardt](http://web.mit.edu/jonb/www/)
 	* bart-chalkboard ([Akbar Font](https://www.wobblymusic.com/groening/akbar.html))
+- [jService](http://jservice.io/)
+	* jeopardy (API)
 - [Kickstarter](https://www.kickstarter.com/)
 	* kickstarter (API)
 - [KINMOZA!](http://www.kinmosa.com/)
@@ -1029,6 +1033,7 @@ here.
 - [OpenWeatherMap](https://openweathermap.org/)
 	* weather ([API](https://openweathermap.org/api))
 - [OPTIFONT](http://opti.netii.net/)
+	* jeopardy ([Korinna Agency Font](https://fontmeme.com/fonts/korinna-agency-font/))
 	* jeopardy-question ([Korinna Agency Font](https://fontmeme.com/fonts/korinna-agency-font/))
 - [osu!](https://osu.ppy.sh/home)
 	* osu ([API](https://github.com/ppy/osu-api/wiki))
