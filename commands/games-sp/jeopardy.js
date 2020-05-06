@@ -12,6 +12,10 @@ module.exports = class JeopardyCommand extends Command {
 			group: 'games-sp',
 			memberName: 'jeopardy',
 			description: 'Answer a Jeopardy question.',
+			throttling: {
+				usages: 1,
+				duration: 10
+			},
 			credit: [
 				{
 					name: 'jService',
