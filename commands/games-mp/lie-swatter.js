@@ -4,8 +4,8 @@ const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
 const { delay } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
-const trueOptions = ['true', 'yes', 'the truth'];
-const falseOptions = ['false', 'lie', 'no', 'a lie'];
+const trueOptions = ['true', 'yes', 'the truth', 't', 'tru', 'tr', 'y', 'ye'];
+const falseOptions = ['false', 'lie', 'no', 'a lie', 'f', 'fals', 'fal', 'fa', 'n', 'l'];
 
 module.exports = class LieSwatterCommand extends Command {
 	constructor(client) {
