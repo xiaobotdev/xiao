@@ -36,7 +36,7 @@ module.exports = class JeopardyCommand extends Command {
 	async run(msg) {
 		try {
 			const question = await this.fetchQuestion();
-			const clueCard = await this.generateClueCard(question.question);
+			const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
 			await msg.reply(`The category is: **${question.category.title.toUpperCase()}**. 30 seconds, good luck.`, {
 				files: [{ attachment: clueCard, name: 'clue-card.png' }]
 			});
@@ -44,10 +44,11 @@ module.exports = class JeopardyCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			if (!msgs.size) return msg.reply(`Time's up, the answer was **${question.answer}**.`);
-			const win = msgs.first().content.toLowerCase() === question.answer.toLowerCase();
-			if (!win) return msg.reply(`The answer was **${question.answer}**.`);
-			return msg.reply(`The answer was **${question.answer}**. Good job!`);
+			const answer = question.answer.replace(/<\/?i>/gi, '*');
+			if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);
+			const win = msgs.first().content.toLowerCase() === answer.toLowerCase();
+			if (!win) return msg.reply(`The answer was **${answer}**.`);
+			return msg.reply(`The answer was **${answer}**. Good job!`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
