@@ -4,6 +4,8 @@ const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const PokemonStore = require('./pokemon/PokemonStore');
 const MemePoster = require('./MemePoster');
+const activities = require('../assets/json/activity');
+const leaveMsgs = require('../assets/json/leave-messages');
 const { XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
@@ -17,10 +19,12 @@ module.exports = class XiaoClient extends CommandoClient {
 				winston.format.printf(log => `[${log.timestamp}] [${log.level.toUpperCase()}]: ${log.message}`)
 			)
 		});
-		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableEveryone: true });
+		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.pokemon = new PokemonStore();
 		this.memePoster = new MemePoster(this);
 		this.games = new Collection();
 		this.phone = new Collection();
+		this.activities = activities;
+		this.leaveMessages = leaveMsgs;
 	}
 };
