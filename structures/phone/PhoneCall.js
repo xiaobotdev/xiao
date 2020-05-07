@@ -1,5 +1,5 @@
 const { shorten, verify } = require('../../util/Util');
-const inviteRegex = /discord(\.gg|app\.com\/invite|\.me)\//gi;
+const inviteRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|app\.com\/invite|\.me)\/([^ ]+)\/?/gi;
 
 module.exports = class PhoneCall {
 	constructor(client, origin, recipient) {
