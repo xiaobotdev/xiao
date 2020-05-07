@@ -55,7 +55,7 @@ module.exports = class BalloonPopCommand extends Command {
 					pump = await verify(msg.channel, user);
 				}
 				if (pump) {
-					if (lastTurnTimeout) lastTurnTimeout = false;
+					if (turns !== 1 && lastTurnTimeout) lastTurnTimeout = false;
 					remains -= randomRange(25, 75);
 					const popped = Math.floor(Math.random() * remains);
 					if (popped <= 0) {
