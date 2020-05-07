@@ -1,4 +1,5 @@
 const { shorten, verify } = require('../../util/Util');
+const inviteRegex = /discord(\.gg|app\.com\/invite|\.me)\//gi;
 
 module.exports = class PhoneCall {
 	constructor(client, origin, recipient) {
@@ -54,7 +55,9 @@ module.exports = class PhoneCall {
 	send(channel, msg) {
 		if (msg.content.toLowerCase() === 'hang up') return this.hangup(channel);
 		this.setTimeout();
-		return channel.send(`☎️ **${msg.author.tag}:** ${shorten(msg.content, 1500)}`);
+		let content = msg.content.replace(inviteRegex, '[redacted invite]');
+		content = content.length > 1000 ? `${shorten(content, 1000)} (Message too long)` : content;
+		return channel.send(`☎️ **${msg.author.tag}:** ${content}`);
 	}
 
 	setTimeout() {
