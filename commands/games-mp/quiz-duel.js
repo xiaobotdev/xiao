@@ -54,6 +54,7 @@ module.exports = class QuizDuelCommand extends Command {
 			let winner = null;
 			let userPoints = 0;
 			let oppoPoints = 0;
+			let lastTurnTimeout = false;
 			while (!winner) {
 				const question = await this.fetchQuestion();
 				await msg.say(stripIndents`
@@ -79,7 +80,13 @@ module.exports = class QuizDuelCommand extends Command {
 				});
 				if (!msgs.size) {
 					await msg.say(`Sorry, time is up! It was ${question.correct}.`);
-					continue;
+					if (lastTurnTimeout) {
+						winner = 'time';
+						break;
+					} else {
+						lastTurnTimeout = true;
+						continue;
+					}
 				}
 				const result = msgs.first();
 				const userWin = result.author.id === msg.author.id;
@@ -92,8 +99,10 @@ module.exports = class QuizDuelCommand extends Command {
 					${userWin ? '' : '**'}${oppoPoints}${userWin ? '' : '**'}
 				`;
 				await msg.say(`Nice one, ${result.author}! The score is now ${score}!`);
+				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
 			this.client.games.delete(msg.channel.id);
+			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			if (!winner) return msg.say('Aww, no one won...');
 			return msg.say(`Congrats, ${winner}, you won!`);
 		} catch (err) {

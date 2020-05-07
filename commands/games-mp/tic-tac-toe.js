@@ -37,6 +37,7 @@ module.exports = class TicTacToeCommand extends Command {
 			const taken = [];
 			let userTurn = true;
 			let winner = null;
+			let lastTurnTimeout = false;
 			while (!winner && taken.length < 9) {
 				const user = userTurn ? msg.author : opponent;
 				const sign = userTurn ? 'X' : 'O';
@@ -62,8 +63,14 @@ module.exports = class TicTacToeCommand extends Command {
 				});
 				if (!turn.size) {
 					await msg.say('Sorry, time is up!');
-					userTurn = !userTurn;
-					continue;
+					if (lastTurnTimeout) {
+						winner = 'time';
+						break;
+					} else {
+						userTurn = !userTurn;
+						lastTurnTimeout = true;
+						continue;
+					}
 				}
 				const choice = turn.first().content;
 				if (choice.toLowerCase() === 'end') {
@@ -73,9 +80,11 @@ module.exports = class TicTacToeCommand extends Command {
 				sides[Number.parseInt(choice, 10) - 1] = sign;
 				taken.push(choice);
 				if (this.verifyWin(sides)) winner = userTurn ? msg.author : opponent;
+				if (lastTurnTimeout) lastTurnTimeout = false;
 				userTurn = !userTurn;
 			}
 			this.client.games.delete(msg.channel.id);
+			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			return msg.say(winner ? `Congrats, ${winner}!` : 'Oh... The cat won.');
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);

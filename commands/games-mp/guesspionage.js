@@ -61,6 +61,7 @@ module.exports = class GuesspionageCommand extends Command {
 			}
 			const used = [];
 			const userTurn = awaitedPlayers.slice(0);
+			let lastTurnTimeout = false;
 			while (userTurn.length) {
 				++turn;
 				const mainUser = pts.get(userTurn[0]).user;
@@ -110,8 +111,14 @@ module.exports = class GuesspionageCommand extends Command {
 					time: 30000
 				});
 				if (!everyoneElse.size) {
-					await msg.say('Come on guys, get in the game!');
-					continue;
+					if (lastTurnTimeout) {
+						await msg.say('Game ended due to inactivity.');
+						break;
+					} else {
+						await msg.say('Come on guys, get in the game!');
+						lastTurnTimeout = true;
+						continue;
+					}
 				}
 				const higherLower = everyoneElse.map(res => ({ guess: res.content.toLowerCase(), id: res.author.id }));
 				for (const answer of higherLower) {
@@ -136,6 +143,7 @@ module.exports = class GuesspionageCommand extends Command {
 
 					${userTurn.length ? '_Next round starting in 10 seconds..._' : ''}
 				`);
+				if (lastTurnTimeout) lastTurnTimeout = false;
 				if (userTurn.length) await delay(10000);
 			}
 			this.client.games.delete(msg.channel.id);

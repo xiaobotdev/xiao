@@ -13,7 +13,7 @@ module.exports = class RussianRouletteCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to gunfight?',
+					prompt: 'What user would you like to play against?',
 					type: 'user',
 					default: () => this.client.user
 				}

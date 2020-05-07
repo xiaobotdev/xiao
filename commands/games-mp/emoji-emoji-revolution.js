@@ -46,6 +46,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			let turn = 0;
 			let aPts = 0;
 			let oPts = 0;
+			let lastTurnTimeout = false;
 			while (turn < 10) {
 				++turn;
 				const num = Math.floor(Math.random() * emojis.length);
@@ -58,7 +59,12 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 				});
 				if (!win.size) {
 					await msg.say('Hmm... No one even tried that round.');
-					continue;
+					if (lastTurnTimeout) {
+						break;
+					} else {
+						lastTurnTimeout = true;
+						continue;
+					}
 				}
 				const winner = win.first().author;
 				if (winner.id === msg.author.id) ++aPts;
@@ -68,6 +74,7 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 					**${msg.author.username}:** ${aPts}
 					**${opponent.username}:** ${oPts}
 				`);
+				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
 			this.client.games.delete(msg.channel.id);
 			if (aPts === oPts) return msg.say('It\'s a tie!');

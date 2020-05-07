@@ -36,6 +36,7 @@ module.exports = class BattleCommand extends Command {
 					return msg.say('Looks like they declined...');
 				}
 			}
+			let lastTurnTimeout = false;
 			while (!battle.winner) {
 				const choice = await battle.attacker.chooseAction(msg);
 				if (choice === 'attack') {
@@ -80,11 +81,19 @@ module.exports = class BattleCommand extends Command {
 				} else if (choice === 'failed:time') {
 					await msg.say(`Time's up, ${battle.attacker}!`);
 					battle.reset();
+					if (lastTurnTimeout) {
+						battle.winner = 'time';
+						break;
+					} else {
+						lastTurnTimeout = true;
+					}
 				} else {
 					await msg.say('I do not understand what you want to do.');
 				}
+				if (choice !== 'failed:time' && lastTurnTimeout) lastTurnTimeout = false;
 			}
 			this.client.games.delete(msg.channel.id);
+			if (battle.winner === 'time') return msg.say('Game ended due to inactivity.');
 			return msg.say(`The match is over! Congrats, ${battle.winner}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
