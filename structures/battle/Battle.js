@@ -7,6 +7,7 @@ module.exports = class Battle {
 		this.userTurn = false;
 		this.turn = 1;
 		this.lastTurnTimeout = false;
+		this.endedDueToInactivity = false;
 	}
 
 	get attacker() {
@@ -26,7 +27,7 @@ module.exports = class Battle {
 	}
 
 	get winner() {
-		if (this.lastTurnTimeout) return 'time';
+		if (this.endedDueToInactivity) return 'time';
 		if (this.user.hp <= 0) return this.opponent;
 		if (this.opponent.hp <= 0) return this.user;
 		return null;
