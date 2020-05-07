@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 415
+Total: 416
 
 ### Utility:
 
@@ -483,6 +483,7 @@ Total: 415
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **catch:** Catch users, revealing who is something.
 * **challenger:** Draws an image or a user's avatar over Smash Bros.'s "Challenger Approaching" screen.
+* **chi-idea:** Sends a "Daddy, I've got an idea!" Takagi-san meme with the text of your choice.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
@@ -891,6 +892,8 @@ here.
 	* wave ([API](https://apidocs.imgur.com/))
 	* wink ([API](https://apidocs.imgur.com/))
 	* xiao ([API](https://apidocs.imgur.com/))
+- [Inside Scanlation](https://www.insidescanlation.com/)
+	* chi-idea ([Wild Words Font](https://www.insidescanlation.com/etc/the-idiots-guide-to-editing-manga/guide/type/fonts.html))
 - [ipify API](https://www.ipify.org/)
 	* ip (API)
 - [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ)
@@ -1159,6 +1162,8 @@ here.
 	* fishy (Concept)
 	* phone (Concept)
 	* psycho-pass (Concept)
+- [Teasing Master Takagi-san](https://takagi3.me/)
+	* chi-idea (Original "Teasing Master Takagi-san" Manga)
 - [Tenor](https://tenor.com/)
 	* tenor ([API](https://tenor.com/gifapi/documentation))
 - [The Internet Chuck Norris Database](http://www.icndb.com/)
@@ -1196,6 +1201,8 @@ here.
 	* sorting-hat ([Sorting Hat Quiz Analysis Data](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/))
 - [u/SupremeMemesXD](https://www.reddit.com/user/SupremeMemesXD/)
 	* girl-worth-fighting-for ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/8h39vi/girl_worth_fighting_for_template/))
+- [u/THANOS_COPTER](https://www.reddit.com/user/THANOS_COPTER/)
+	* chi-idea ([Image](https://www.reddit.com/r/Takagi_san/comments/gb4wdt/how_far_is_too_far/))
 - [u/Two-Tone-](https://www.reddit.com/user/Two-Tone-/)
 	* genie-rules ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/bht9o6/i_made_an_hd_high_quality_version_of_the_4_rules/))
 - [UNDERTALE](https://undertale.com/)
