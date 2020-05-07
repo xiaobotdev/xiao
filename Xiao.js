@@ -66,14 +66,17 @@ client.on('ready', () => {
 
 client.on('message', async msg => {
 	if (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')) return;
-	if (msg.author.bot || !msg.content) return;
+	const hasText = Boolean(msg.content);
+	const hasImage = msg.attachments.size !== 0;
+	const hasEmbed = msg.embeds.length !== 0;
+	if (!hasText && !hasImage && !hasEmbed) return;
 	const origin = client.phone.find(call => call.origin.id === msg.channel.id);
 	const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
 	if (!origin && !recipient) return;
 	const call = origin || recipient;
 	if (!call.active) return;
 	try {
-		await call.send(origin ? call.recipient : call.origin, msg);
+		await call.send(origin ? call.recipient : call.origin, msg, hasText, hasImage, hasEmbed);
 	} catch {
 		return; // eslint-disable-line no-useless-return
 	}
