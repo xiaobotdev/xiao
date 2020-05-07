@@ -36,7 +36,7 @@ module.exports = class BattleCommand extends Command {
 					return msg.say('Looks like they declined...');
 				}
 			}
-			while (battle.winner !== 'time' && battle.winner !== null) {
+			while (battle.winner === null || battle.winner !== 'time') {
 				const choice = await battle.attacker.chooseAction(msg);
 				if (choice === 'attack') {
 					const damage = randomRange(battle.defender.guard ? 5 : 20, battle.defender.guard ? 20 : 50);
