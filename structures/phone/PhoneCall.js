@@ -52,12 +52,15 @@ module.exports = class PhoneCall {
 		return this;
 	}
 
-	send(channel, msg) {
-		if (msg.content.toLowerCase() === 'hang up') return this.hangup(channel);
+	send(channel, msg, hasText, hasImage, hasEmbed) {
+		if (msg.content && msg.content.toLowerCase() === 'hang up') return this.hangup(channel);
 		this.setTimeout();
+		const attachments = hasImage ? msg.attachments.map(a => a.url).join('\n') : null;
+		if (!hasText && hasImage) return channel.send(`☎️ **${msg.author.tag}:**\n${attachments}`);
+		if (!hasText && hasEmbed) return channel.send(`☎️ **${msg.author.tag}** sent an embed.`);
 		let content = msg.content.replace(inviteRegex, '[redacted invite]');
 		content = content.length > 1000 ? `${shorten(content, 1000)} (Message too long)` : content;
-		return channel.send(`☎️ **${msg.author.tag}:** ${content}`);
+		return channel.send(`☎️ **${msg.author.tag}:** ${content}\n${attachments || ''}`.trim());
 	}
 
 	setTimeout() {
