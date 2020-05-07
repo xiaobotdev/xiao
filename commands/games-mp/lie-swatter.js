@@ -56,6 +56,7 @@ module.exports = class LieSwatterCommand extends Command {
 				});
 			}
 			const questions = await this.fetchQuestions();
+			let lastTurnTimeout = false;
 			while (questions.length) {
 				++turn;
 				const question = questions[0];
@@ -81,7 +82,12 @@ module.exports = class LieSwatterCommand extends Command {
 				});
 				if (!msgs.size) {
 					await msg.say(`No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`);
-					continue;
+					if (lastTurnTimeout) {
+						break;
+					} else {
+						lastTurnTimeout = true;
+						continue;
+					}
 				}
 				const answers = msgs.map(res => {
 					let answer;
@@ -102,6 +108,7 @@ module.exports = class LieSwatterCommand extends Command {
 
 					${questions.length ? '_Next round starting in 5 seconds..._' : ''}
 				`);
+				if (lastTurnTimeout) lastTurnTimeout = false;
 				if (questions.length) await delay(5000);
 			}
 			this.client.games.delete(msg.channel.id);

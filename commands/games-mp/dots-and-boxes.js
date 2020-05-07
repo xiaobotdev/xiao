@@ -41,6 +41,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			const oppoOwned = [];
 			let userTurn = true;
 			let winner = null;
+			let lastTurnTimeout = false;
 			while (taken.length < 40) {
 				const user = userTurn ? msg.author : opponent;
 				await msg.say(stripIndents`
@@ -83,8 +84,14 @@ module.exports = class DotsAndBoxesCommand extends Command {
 				});
 				if (!turn.size) {
 					await msg.say('Sorry, time is up!');
-					userTurn = !userTurn;
-					continue;
+					if (lastTurnTimeout) {
+						winner = 'time';
+						break;
+					} else {
+						lastTurnTimeout = true;
+						userTurn = !userTurn;
+						continue;
+					}
 				}
 				const choice = turn.first().content;
 				if (choice.toLowerCase() === 'end') {
@@ -112,7 +119,9 @@ module.exports = class DotsAndBoxesCommand extends Command {
 				} else {
 					userTurn = !userTurn;
 				}
+				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
+			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			winner = userOwned.length === oppoOwned.length
 				? null
 				: userOwned.length > oppoOwned.length ? msg.author : opponent;

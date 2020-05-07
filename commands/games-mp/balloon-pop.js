@@ -42,6 +42,7 @@ module.exports = class BalloonPopCommand extends Command {
 			let winner = null;
 			let remains = 500;
 			let turns = 0;
+			let lastTurnTimeout = false;
 			while (!winner) {
 				const user = userTurn ? msg.author : opponent;
 				let pump;
@@ -54,6 +55,7 @@ module.exports = class BalloonPopCommand extends Command {
 					pump = await verify(msg.channel, user);
 				}
 				if (pump) {
+					if (lastTurnTimeout) lastTurnTimeout = false;
 					remains -= randomRange(25, 75);
 					const popped = Math.floor(Math.random() * remains);
 					if (popped <= 0) {
@@ -67,11 +69,21 @@ module.exports = class BalloonPopCommand extends Command {
 						userTurn = !userTurn;
 					}
 				} else {
+					if (pump !== 0 && lastTurnTimeout) lastTurnTimeout = false;
+					if (pump === 0) {
+						if (lastTurnTimeout) {
+							winner = 'time';
+							break;
+						} else {
+							lastTurnTimeout = true;
+						}
+					}
 					turns = 0;
 					userTurn = !userTurn;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
+			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			return msg.say(`And the winner is... ${winner}! Great job!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);

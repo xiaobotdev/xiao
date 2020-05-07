@@ -49,6 +49,7 @@ module.exports = class ConnectFourCommand extends Command {
 			let userTurn = true;
 			let winner = null;
 			const colLevels = [5, 5, 5, 5, 5, 5, 5];
+			let lastTurnTimeout = false;
 			while (!winner && board.some(row => row.includes(null))) {
 				const user = userTurn ? msg.author : opponent;
 				const sign = userTurn ? 'user' : 'oppo';
@@ -71,8 +72,14 @@ module.exports = class ConnectFourCommand extends Command {
 				});
 				if (!turn.size) {
 					await msg.say('Sorry, time is up!');
-					userTurn = !userTurn;
-					continue;
+					if (lastTurnTimeout) {
+						winner = 'time';
+						break;
+					} else {
+						lastTurnTimeout = true;
+						userTurn = !userTurn;
+						continue;
+					}
 				}
 				const choice = turn.first().content;
 				if (choice.toLowerCase() === 'end') {
@@ -83,9 +90,11 @@ module.exports = class ConnectFourCommand extends Command {
 				board[colLevels[i]][i] = sign;
 				colLevels[i] -= 1;
 				if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
+				if (lastTurnTimeout) lastTurnTimeout = false;
 				userTurn = !userTurn;
 			}
 			this.client.games.delete(msg.channel.id);
+			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			return msg.say(winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...');
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
