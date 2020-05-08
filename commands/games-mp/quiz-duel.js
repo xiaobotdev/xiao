@@ -89,6 +89,7 @@ module.exports = class QuizDuelCommand extends Command {
 							continue;
 						}
 					}
+					continue;
 				}
 				const result = msgs.first();
 				const userWin = result.author.id === msg.author.id;
