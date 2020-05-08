@@ -30,9 +30,14 @@ module.exports = class ButtCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		const authorUser = user.id === msg.author.id;
 		if (user.id === this.client.user.id) return msg.reply('Me? I think I have the best butt around!');
+		if (this.client.isOwner(user)) {
+			if (authorUser) return msg.reply('ur butt is godly, master');
+			return msg.reply(`${user.username}'s butt is... Something, I'll say that much.`);
+		}
 		const random = MersenneTwister19937.seed(user.id);
 		const quality = integer(0, texts.length - 1)(random);
-		return msg.reply(`${user.id === msg.author.id ? 'ur' : `${user.username}'s`} butt is ${texts[quality]}`);
+		return msg.reply(`${authorUser ? 'ur' : `${user.username}'s`} butt is ${texts[quality]}`);
 	}
 };
