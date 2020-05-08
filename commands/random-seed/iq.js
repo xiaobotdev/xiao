@@ -24,8 +24,8 @@ module.exports = class IQCommand extends Command {
 		const authorUser = user.id === msg.author.id;
 		if (user.id === this.client.user.id) return msg.reply('Me? My IQ score is off the charts!');
 		if (this.client.isOwner(user)) {
-			if (authorUser) return msg.reply('Only someone of the highest IQ could make a bot as amazing as me!');
-			return msg.reply('My owner? Yeah... Not the sharpest tool in the shed.');
+			if (authorUser) return msg.reply('Only someone of the highest IQ could make a bot as amazing as me! ❤');
+			return msg.reply(`${user.username}, as in my owner? Yeah... Not the sharpest tool in the shed.`);
 		}
 		const random = MersenneTwister19937.seed(user.id);
 		const score = integer(20, 170)(random);
