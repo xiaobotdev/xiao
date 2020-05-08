@@ -13,7 +13,7 @@ module.exports = class MemePosterClient extends WebhookClient {
 
 	post(post) {
 		const url = embedURL(post.title, `<https://www.reddit.com${post.permalink}>`);
-		return this.send(`**r/${subreddit}** ${url}\n${post.url}`);
+		return this.send(`**r/${post.subreddit}** ${url}\n${post.url}`);
 	}
 
 	async fetchRandomPost(nsfw) {
@@ -22,7 +22,8 @@ module.exports = class MemePosterClient extends WebhookClient {
 		return {
 			subreddit,
 			title: post.title,
-			url: post.permalink,
+			url: post.url,
+			permalink: post.permalink,
 			type: post.post_hint,
 			nsfw: post.over_18 || false
 		};
