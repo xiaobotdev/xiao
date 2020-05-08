@@ -3,10 +3,11 @@ const { WebhookClient } = require('discord.js');
 const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const PokemonStore = require('./pokemon/PokemonStore');
-const MemePoster = require('./MemePoster');
+const MemePosterClient = require('./MemePoster');
 const activities = require('../assets/json/activity');
 const leaveMsgs = require('../assets/json/leave-messages');
-const { XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN } = process.env;
+const subreddits = require('../assets/json/meme');
+const { XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, POSTER_ID, POSTER_TOKEN, POSTER_TIME } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
 	constructor(options) {
@@ -21,7 +22,12 @@ module.exports = class XiaoClient extends CommandoClient {
 		});
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.pokemon = new PokemonStore();
-		this.memePoster = new MemePoster(this);
+		this.memePoster = POSTER_ID && POSTER_TOKEN ? new MemePosterClient(POSTER_ID, POSTER_TOKEN, {
+			subreddits,
+			postTypes: ['image', 'rich:video'],
+			postInterval: POSTER_TIME,
+			disableMentions: 'everyone'
+		}) : null;
 		this.games = new Collection();
 		this.phone = new Collection();
 		this.activities = activities;
