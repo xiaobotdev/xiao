@@ -8,7 +8,7 @@ module.exports = class MemePosterClient extends WebhookClient {
 
 		this.subreddits = options.subreddits;
 		this.postTypes = options.postTypes;
-		this.postInterval = options.postInterval ? Number.parseFloat(options.postInterval) : 3.6e+6; 
+		this.postInterval = options.postInterval ? Number.parseFloat(options.postInterval) : 3.6e+6;
 	}
 
 	post(post) {
