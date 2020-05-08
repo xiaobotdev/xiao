@@ -80,12 +80,14 @@ module.exports = class QuizDuelCommand extends Command {
 				});
 				if (!msgs.size) {
 					await msg.say(`Sorry, time is up! It was ${question.correct}.`);
-					if (lastTurnTimeout) {
-						winner = 'time';
-						break;
-					} else {
-						lastTurnTimeout = true;
-						continue;
+					if (!answered.length) {
+						if (lastTurnTimeout) {
+							winner = 'time';
+							break;
+						} else {
+							lastTurnTimeout = true;
+							continue;
+						}
 					}
 				}
 				const result = msgs.first();
