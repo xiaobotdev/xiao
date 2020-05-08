@@ -26,6 +26,10 @@ module.exports = class GuessLooksCommand extends Command {
 	run(msg, { user }) {
 		if (user.id === this.client.user.id) return msg.reply('Me? Just look at my avatar, dummy.');
 		const authorUser = user.id === msg.author.id;
+		if (this.client.isOwner(user)) {
+			if (authorUser) return msg.reply('You look amazing as always! ❤');
+			return msg.reply(`${user.username} looks like a monkey, and smells like one too.`);
+		}
 		const random = MersenneTwister19937.seed(user.id);
 		const gender = genders[integer(0, genders.length - 1)(random)];
 		const eyeColor = eyeColors[integer(0, eyeColors.length - 1)(random)];

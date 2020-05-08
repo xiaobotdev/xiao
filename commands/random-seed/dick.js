@@ -22,6 +22,10 @@ module.exports = class DickCommand extends Command {
 	}
 
 	run(msg, { user }) {
+		if (this.client.isOwner(user)) {
+			if (user.id === msg.author.id) return msg.reply(`8${'='.repeat(20)}D`);
+			return msg.reply(`8=D`);
+		}
 		const clientAuthor = user.id === this.client.user.id;
 		const random = MersenneTwister19937.seed(clientAuthor ? msg.author.id : user.id);
 		const length = integer(0, 20)(random);
