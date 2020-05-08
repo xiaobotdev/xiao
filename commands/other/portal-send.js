@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripInvites } = require('../../util/Util');
 const { PORTAL_EMOJI_ID, PORTAL_EMOJI_NAME } = process.env;
 
 module.exports = class PortalSendCommand extends Command {
@@ -18,14 +19,14 @@ module.exports = class PortalSendCommand extends Command {
 					key: 'message',
 					prompt: 'What message would you like to send?',
 					type: 'string',
-					max: 1000
+					max: 1000,
+					parse: message => stripInvites(message)
 				}
 			]
 		});
 	}
 
 	async run(msg, { message }) {
-		if (/discord(\.gg|app\.com\/invite|\.me)\//gi.test(message)) return msg.reply('Please do not send invites.');
 		let channels = this.client.channels.cache.filter(
 			channel => channel.guild && channel.topic && channel.topic.includes('<xiao:portal>')
 		);

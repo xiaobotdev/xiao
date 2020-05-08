@@ -1,5 +1,4 @@
-const { shorten, verify } = require('../../util/Util');
-const inviteRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|app\.com\/invite|\.me)\/([^ ]+)\/?/gi;
+const { shorten, stripInvites, verify } = require('../../util/Util');
 
 module.exports = class PhoneCall {
 	constructor(client, origin, recipient) {
@@ -58,7 +57,7 @@ module.exports = class PhoneCall {
 		const attachments = hasImage ? msg.attachments.map(a => a.url).join('\n') : null;
 		if (!hasText && hasImage) return channel.send(`☎️ **${msg.author.tag}:**\n${attachments}`);
 		if (!hasText && hasEmbed) return channel.send(`☎️ **${msg.author.tag}** sent an embed.`);
-		let content = msg.content.replace(inviteRegex, '[redacted invite]');
+		let content = stripInvites(msg.content);
 		content = content.length > 1000 ? `${shorten(content, 1000)} (Message too long)` : content;
 		return channel.send(`☎️ **${msg.author.tag}:** ${content}\n${attachments || ''}`.trim());
 	}

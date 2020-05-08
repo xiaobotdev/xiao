@@ -1,6 +1,8 @@
 const crypto = require('crypto');
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
+const inviteRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|(app)?\.com\/invite|\.me)\/([^ ]+)\/?/gi;
+const botInvRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(app)\.com\/oauth2\/authorize\?([^ ]+)\/?/gi;
 
 module.exports = class Util {
 	static delay(ms) {
@@ -148,6 +150,12 @@ module.exports = class Util {
 
 	static embedURL(title, url, display) {
 		return `[${title}](${url.replace(/\)/g, '%27')}${display ? ` "${display}"` : ''})`;
+	}
+
+	static stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' }) {
+		if (guild) str = str.replace(inviteRegex, text);
+		if (bot) str = str.replace(botInvRegex, text);
+		return str;
 	}
 
 	static async verify(channel, user, { time = 30000, extraYes = [], extraNo = [] } = {}) {
