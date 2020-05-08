@@ -152,7 +152,7 @@ module.exports = class Util {
 		return `[${title}](${url.replace(/\)/g, '%27')}${display ? ` "${display}"` : ''})`;
 	}
 
-	static stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' }) {
+	static stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' } = {}) {
 		if (guild) str = str.replace(inviteRegex, text);
 		if (bot) str = str.replace(botInvRegex, text);
 		return str;
