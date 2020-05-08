@@ -101,7 +101,7 @@ client.on('disconnect', event => {
 	process.exit(0);
 });
 
-client.on('error', err => client.logger.error(err));
+client.on('error', err => client.logger.error(err.stack));
 
 client.on('warn', warn => client.logger.warn(warn));
 
