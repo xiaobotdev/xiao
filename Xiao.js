@@ -1,13 +1,14 @@
 require('dotenv').config();
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const path = require('path');
+const { Intents } = require('discord.js');
 const Client = require('./structures/Client');
 const client = new Client({
 	commandPrefix: XIAO_PREFIX,
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	disableMentions: 'everyone',
-	disabledEvents: ['TYPING_START']
+	ws: { intents: Intents.ALL }
 });
 const { formatNumber } = require('./util/Util');
 
