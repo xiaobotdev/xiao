@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "114.8.5",
+	"version": "114.8.6",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -59,7 +59,7 @@
 		"utf-8-validate": "^5.0.2"
 	},
 	"devDependencies": {
-		"eslint": "^6.8.0",
+		"eslint": "^7.0.0",
 		"eslint-config-amber": "^2.0.3",
 		"eslint-plugin-json": "^2.1.1"
 	},
