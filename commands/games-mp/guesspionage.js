@@ -36,16 +36,25 @@ module.exports = class GuesspionageCommand extends Command {
 					reason: 'Question Data',
 					reasonURL: 'https://www.trueachievements.com/forum/viewthread.aspx?tid=850920'
 				}
+			],
+			args: [
+				{
+					key: 'players',
+					prompt: 'How many players are you expecting to have?',
+					type: 'integer',
+					min,
+					max
+				}
 			]
 		});
 	}
 
-	async run(msg) {
+	async run(msg, { players }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			const awaitedPlayers = await this.awaitPlayers(msg);
+			const awaitedPlayers = await this.awaitPlayers(msg, players);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
@@ -155,8 +164,8 @@ module.exports = class GuesspionageCommand extends Command {
 		}
 	}
 
-	async awaitPlayers(msg) {
-		await msg.say(`You will need at least 1 more player (at max ${max - 1}). To join, type \`join game\`.`);
+	async awaitPlayers(msg, players) {
+		await msg.say(`You will need at least 1 more player (at max ${players - 1}). To join, type \`join game\`.`);
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
@@ -167,7 +176,7 @@ module.exports = class GuesspionageCommand extends Command {
 			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
 			return true;
 		};
-		const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 30000 });
+		const verify = await msg.channel.awaitMessages(filter, { max: players - 1, time: 30000 });
 		verify.set(msg.id, msg);
 		if (verify.size < min) return false;
 		return verify.map(player => player.author.id);
