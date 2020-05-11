@@ -4,7 +4,7 @@ const faces = ['Jack', 'Queen', 'King'];
 const { shuffle } = require('../../util/Util');
 
 module.exports = class Deck {
-	constructor(options) {
+	constructor(options = {}) {
 		this.deckCount = options.deckCount || 1;
 		this.includeJokers = options.includeJokers || false;
 		this.deck = [];
