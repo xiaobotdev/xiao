@@ -96,7 +96,7 @@ module.exports = class PokerCommand extends Command {
 				turnData.currentBet = bigBlindAmount;
 				turnData.highestBetter = bigBlind;
 				let turnOver = false;
-				let turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
+				let turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
@@ -114,7 +114,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
+				turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
@@ -150,7 +150,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
+				turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
