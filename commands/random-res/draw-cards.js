@@ -31,6 +31,7 @@ module.exports = class DrawCardsCommand extends Command {
 	run(msg, { amount, jokers }) {
 		const deck = new Deck({ includeJokers: jokers });
 		const cards = deck.draw(amount);
-		return msg.reply(`${amount === 1 ? '' : '\n'}${Array.isArray(cards) ? cards.join('\n') : cards}`);
+		const display = Array.isArray(cards) ? cards.map(c => c.display).join('\n') : cards.display;
+		return msg.reply(`${amount === 1 ? '' : '\n'}${display}`);
 	}
 };
