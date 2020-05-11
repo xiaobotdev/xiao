@@ -172,6 +172,9 @@ module.exports = class PokerCommand extends Command {
 					if (player.money <= 0) {
 						await msg.say(`${player.user} has been kicked.`);
 						players.delete(player.id);
+					} else {
+						player.currentBet = 0;
+						player.hand = [];
 					}
 				}
 				if (players.size === 1) winner = players.first();
@@ -234,14 +237,15 @@ module.exports = class PokerCommand extends Command {
 			}
 			return false;
 		};
-		const msgs = await msg.channel.awaitMessages(filter, { max: 1, time: 30000 });
+		const msgs = await msg.channel.awaitMessages(filter, { max: 1, time: 60000 });
 		let choiceAction;
 		if (!msgs.size) {
 			if (turnPlayer.currentBet !== data.currentBet) choiceAction = 'fold';
 			else if (data.currentBet === turnPlayer.currentBet) choiceAction = 'check';
 			else choiceAction = 'fold';
+		} else {
+			choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');
 		}
-		choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');
 		const raiseValue = raiseRegex.test(choiceAction) ? choiceAction.match(raiseRegex)[1] : null;
 		if (raiseValue) {
 			data.currentBet += raiseValue;
