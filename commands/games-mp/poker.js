@@ -223,9 +223,9 @@ module.exports = class PokerCommand extends Command {
 
 	makeTurnRotation(players, bigBlind, smallBlind) {
 		return [
-			smallBlind,
-			...players.filter(player => bigBlind.id !== player.id && smallBlind.id !== player.id),
-			bigBlind
+			smallBlind.id,
+			...players.filter(p => bigBlind.id !== p.id && smallBlind.id !== p.id).map(p => p.id),
+			bigBlind.id
 		];
 	}
 
