@@ -1,3 +1,4 @@
+const { firstUpperCase } = require('../../util/Util');
 const displaySuits = {
 	spades: '♠',
 	diamonds: '♦',
@@ -21,6 +22,10 @@ module.exports = class Card {
 
 	get display() {
 		return `${displaySuits[this.suit]} ${this.value}`;
+	}
+
+	get textDisplay() {
+		return `${this.value} of ${firstUpperCase(this.suit)}`;
 	}
 
 	get pokersolverKey() {

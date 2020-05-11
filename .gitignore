@@ -4,3 +4,4 @@ logs/
 *.log
 .env
 report*.json
+commands/games-mp/poker.js
