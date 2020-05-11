@@ -1,7 +1,5 @@
 const Command = require('../../structures/Command');
-const { shuffle } = require('../../util/Util');
-const suits = ['♣', '♥', '♦', '♠'];
-const faces = ['Jack', 'Queen', 'King'];
+const Deck = require('../../structures/cards/Deck');
 
 module.exports = class DrawCardsCommand extends Command {
 	constructor(client) {
@@ -28,26 +26,11 @@ module.exports = class DrawCardsCommand extends Command {
 				}
 			]
 		});
-
-		this.deck = null;
 	}
 
 	run(msg, { amount, jokers }) {
-		if (!this.deck) this.deck = this.generateDeck();
-		let cards = this.deck;
-		if (!jokers) cards = cards.filter(card => !card.includes('Joker'));
-		return msg.reply(`${amount === 1 ? '' : '\n'}${shuffle(cards).slice(0, amount).join('\n')}`);
-	}
-
-	generateDeck() {
-		const deck = [];
-		for (const suit of suits) {
-			deck.push(`${suit} Ace`);
-			for (let i = 2; i <= 10; i++) deck.push(`${suit} ${i}`);
-			for (const face of faces) deck.push(`${suit} ${face}`);
-		}
-		deck.push('⭐ Joker');
-		deck.push('⭐ Joker');
-		return deck;
+		const deck = new Deck({ includeJokers: jokers });
+		const cards = deck.draw(amount);
+		return msg.reply(`${amount === 1 ? '' : '\n'}${Array.isArray(cards) ? cards.join('\n') : cards}`);
 	}
 };
