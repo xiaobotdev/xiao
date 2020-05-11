@@ -1,7 +1,15 @@
+# Dependency Files
 node_modules/
 package-lock.json
+
+# Log Files
 logs/
 *.log
-.env
 report*.json
+
+# Config Files
+.env
+config.json
+
+# In-Development Commands
 commands/games-mp/poker.js

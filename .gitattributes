@@ -8,6 +8,7 @@
 .gitattributes text eol=lf
 .gitignore text eol=lf
 .npmrc text eol=lf
+.env.example text eol=lf
 
 # Asset Files
 *.jpg binary
