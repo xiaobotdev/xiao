@@ -161,6 +161,7 @@ module.exports = class PokerCommand extends Command {
 				}
 				const solved = [];
 				for (const playerID of turnRotation) {
+					if (folded.includes(playerID)) continue;
 					const player = players.get(playerID);
 					const solvedHand = Hand.solve([
 						...player.hand.map(card => card.pokersolverKey),
@@ -178,7 +179,12 @@ module.exports = class PokerCommand extends Command {
 					const splitPot = turnData.pot / winners.length;
 					for (const win of winners) win.user.money += splitPot;
 				} else {
-					await msg.say(`${winners[0].user.user} takes the pot, with **${winners[0].descr}**.`);
+					await msg.say(stripIndents`
+						${winners[0].user.user} takes the pot, with **${winners[0].descr}**.
+
+						__**Results**__
+						${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
+					`);
 					winners[0].user.money += turnData.pot;
 				}
 				await this.resetGame(msg, players);
@@ -250,7 +256,8 @@ module.exports = class PokerCommand extends Command {
 				choice = choice.replace(/[$,]/g, '');
 				const amount = Number.parseInt(choice.match(raiseRegex)[1], 10);
 				if (amount + data.currentBet > turnPlayer.money || amount < 1) {
-					res.reply(`You only have $${formatNumber(turnPlayer.money)}!`).catch(() => null);
+					const maxBet = turnPlayer.money - data.currentBet;
+					res.reply(`You can only bet up to $${formatNumber(maxBet)}!`).catch(() => null);
 					return false;
 				}
 				return true;
