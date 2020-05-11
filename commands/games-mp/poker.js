@@ -149,10 +149,10 @@ module.exports = class PokerCommand extends Command {
 				const solved = [];
 				for (const playerID of turnRotation) {
 					const player = players.get(playerID);
-					const solvedHand = Hand.solve(
+					const solvedHand = Hand.solve([
 						...player.hand.map(card => card.pokersolverKey),
 						...dealerHand.map(card => card.pokersolverKey)
-					);
+					]);
 					solvedHand.user = player;
 					solved.push(solvedHand);
 				}
@@ -251,9 +251,9 @@ module.exports = class PokerCommand extends Command {
 			turnPlayer.currentBet += raiseValue + (data.currentBet - turnPlayer.currentBet);
 			await msg.say(`${turnPlayer.user} **raises $${formatNumber(raiseValue)}**.`);
 		} else if (choiceAction === 'call') {
-			turnPlayer.money -= data.currentBet;
-			turnPlayer.currentBet += data.currentBet;
-			data.pot += data.currentBet;
+			turnPlayer.money -= (data.currentBet - turnPlayer.currentBet);
+			turnPlayer.currentBet += (data.currentBet - turnPlayer.currentBet);
+			data.pot += (data.currentBet - turnPlayer.currentBet);
 			await msg.say(`${turnPlayer.user} **calls $${formatNumber(data.currentBet)}**.`);
 		} else if (choiceAction === 'fold') {
 			await msg.say(`${turnPlayer.user} **folds**.`);
@@ -263,6 +263,7 @@ module.exports = class PokerCommand extends Command {
 		if (choiceAction !== 'fold') turnRotation.push(turnRotation[0]);
 		turnRotation.shift();
 		return (data.highestBetter.id === turnPlayer.id && choiceAction === 'check')
-			|| (data.highestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === data.highestBetter.id);
+			|| (data.highestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === data.highestBetter.id)
+			|| turnRotation.length === 1;
 	}
 };
