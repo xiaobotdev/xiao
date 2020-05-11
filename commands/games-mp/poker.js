@@ -174,12 +174,12 @@ module.exports = class PokerCommand extends Command {
 				if (winners.length > 1) {
 					await msg.say(stripIndents`
 						The pot will be split between ${list(winners.map(w => `**${w.user.user}**`))}.
-						${winners.map(winner.desc).join(', ')}
+						${winners.map(winner.descr).join(', ')}
 					`);
 					const splitPot = turnData.pot / winners.length;
 					for (const win of winners) win.user.money += splitPot;
 				} else {
-					await msg.say(`${winners[0].user.user} takes the pot, with **${winners[0].desc}**.`);
+					await msg.say(`${winners[0].user.user} takes the pot, with **${winners[0].descr}**.`);
 					winners[0].user.money += turnData.pot;
 				}
 				await this.resetGame(msg, players);
