@@ -407,7 +407,7 @@ Total: 417
 * **gunfight:** Engage in a western gunfight against another user. High noon.
 * **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
-* **poker:** Play poker with up to 3 other users.
+* **poker:** Play poker with up to 5 other users.
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **russian-roulette:** Who will pull the trigger and die first?
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.

@@ -5,8 +5,8 @@ const { stripIndents } = require('common-tags');
 const Deck = require('../../structures/cards/Deck');
 const { formatNumber, list, delay } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
-const max = 4;
-const min = 2;
+const max = 6;
+const min = 3;
 const bigBlindAmount = 100;
 const smallBlindAmount = 50;
 const raiseRegex = /raise (\$?([0-9]+)?,?[0-9]+)/i;
@@ -18,7 +18,7 @@ module.exports = class PokerCommand extends Command {
 			aliases: ['texas-hold-em'],
 			group: 'games-mp',
 			memberName: 'poker',
-			description: 'Play poker with up to 3 other users.',
+			description: `Play poker with up to ${max - 1} other users.`,
 			guildOnly: true,
 			args: [
 				{
