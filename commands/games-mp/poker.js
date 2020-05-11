@@ -100,11 +100,7 @@ module.exports = class PokerCommand extends Command {
 				else turnRotation.push(turnRotation[0], turnRotation[1]);
 				turnRotation.shift();
 				turnRotation.shift();
-				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, turnData);
-					turnData = results.data;
-					turnOver = results.turnOver;
-				}
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
@@ -121,11 +117,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, turnData);
-					turnData = results.data;
-					turnOver = results.turnOver;
-				}
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
@@ -142,11 +134,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, turnData);
-					turnData = results.data;
-					turnOver = results.turnOver;
-				}
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
@@ -163,11 +151,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, turnData);
-					turnData = results.data;
-					turnOver = results.turnOver;
-				}
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
@@ -287,12 +271,9 @@ module.exports = class PokerCommand extends Command {
 		}
 		if (choiceAction !== 'fold') turnRotation.push(turnRotation[0]);
 		turnRotation.shift();
-		return {
-			turnOver: (data.highestBetter.id === turnPlayer.id && choiceAction === 'check')
-				|| (data.highestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === data.highestBetter.id)
-				|| turnRotation.length === 1,
-			data
-		}
+		return (data.highestBetter.id === turnPlayer.id && choiceAction === 'check')
+			|| (data.highestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === data.highestBetter.id)
+			|| turnRotation.length === 1;
 	}
 
 	async resetGame(msg, players) {
