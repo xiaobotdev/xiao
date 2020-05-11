@@ -75,6 +75,7 @@ module.exports = class PokerCommand extends Command {
 				smallBlind.currentBet += smallBlindAmount;
 				rotation.push(rotation[0]);
 				rotation.shift();
+				const folded = [];
 				await msg.say('Dealing player hands...');
 				for (const player of players.values()) {
 					player.hand.push(...deck.draw(2));
@@ -96,7 +97,7 @@ module.exports = class PokerCommand extends Command {
 				turnData.highestBetter = bigBlind;
 				let turnOver = false;
 				let turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
@@ -114,7 +115,25 @@ module.exports = class PokerCommand extends Command {
 				await delay(5000);
 				turnOver = false;
 				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
+				if (turnRotation.length === 1) {
+					const remainer = players.get(turnRotation[0]);
+					await msg.say(`${remainer.user} takes the pot.`);
+					remainer.money += turnData.pot;
+					await this.resetGame(msg, players);
+					continue;
+				}
+				dealerHand.push(deck.draw());
+				await msg.say(stripIndents`
+					**Dealer Hand:**
+					${dealerHand.map(card => card.textDisplay).join('\n')}
+
+					_Next betting round begins in 5 seconds._
+				`);
+				await delay(5000);
+				turnOver = false;
+				turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
@@ -132,25 +151,7 @@ module.exports = class PokerCommand extends Command {
 				await delay(5000);
 				turnOver = false;
 				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
-				if (turnRotation.length === 1) {
-					const remainer = players.get(turnRotation[0]);
-					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += turnData.pot;
-					await this.resetGame(msg, players);
-					continue;
-				}
-				dealerHand.push(deck.draw());
-				await msg.say(stripIndents`
-					**Dealer Hand:**
-					${dealerHand.map(card => card.textDisplay).join('\n')}
-
-					_Next betting round begins in 5 seconds._
-				`);
-				await delay(5000);
-				turnOver = false;
-				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
+				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
@@ -221,15 +222,15 @@ module.exports = class PokerCommand extends Command {
 		return actions;
 	}
 
-	makeTurnRotation(players, bigBlind, smallBlind) {
+	makeTurnRotation(players, folded, bigBlind, smallBlind) {
 		return [
 			smallBlind.id,
 			...players.filter(p => bigBlind.id !== p.id && smallBlind.id !== p.id).map(p => p.id),
 			bigBlind.id
-		];
+		].filter(player => !folded.includes(player));
 	}
 
-	async bettingRound(msg, players, turnRotation, data) {
+	async bettingRound(msg, players, turnRotation, folded, data) {
 		const oldHighestBetter = data.highestBetter;
 		const turnPlayer = players.get(turnRotation[0]);
 		const actions = this.determineActions(turnPlayer, data.currentBet);
@@ -281,6 +282,7 @@ module.exports = class PokerCommand extends Command {
 			data.pot += amountChange;
 			await msg.say(`${turnPlayer.user} **calls $${formatNumber(data.currentBet)}**.`);
 		} else if (choiceAction === 'fold') {
+			folded.push(turnPlayer.id);
 			await msg.say(`${turnPlayer.user} **folds**.`);
 		} else if (choiceAction === 'check') {
 			await msg.say(`${turnPlayer.user} **checks**.`);
