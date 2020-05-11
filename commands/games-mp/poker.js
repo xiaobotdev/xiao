@@ -96,7 +96,7 @@ module.exports = class PokerCommand extends Command {
 				turnData.pot = bigBlindAmount + smallBlindAmount;
 				turnData.currentBet = bigBlindAmount;
 				turnData.highestBetter = bigBlind;
-				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				let keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				const dealerHand = deck.draw(3);
 				await msg.say(stripIndents`
@@ -106,7 +106,7 @@ module.exports = class PokerCommand extends Command {
 					_Next betting round begins in 5 seconds._
 				`);
 				await delay(5000);
-				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
@@ -116,7 +116,7 @@ module.exports = class PokerCommand extends Command {
 					_Next betting round begins in 5 seconds._
 				`);
 				await delay(5000);
-				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
@@ -126,7 +126,7 @@ module.exports = class PokerCommand extends Command {
 					_Next betting round begins in 5 seconds._
 				`);
 				await delay(5000);
-				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				const solved = [];
 				for (const playerID of turnRotation) {
