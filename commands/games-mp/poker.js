@@ -35,14 +35,20 @@ module.exports = class PokerCommand extends Command {
 	async run(msg, { playersCount }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name, data: new Deck() });
+		this.client.games.set(msg.channel.id, {
+			name: this.name,
+			data: {
+				deck: new Deck(),
+				players: new Collection()
+			}
+		});
 		try {
 			const awaitedPlayers = await this.awaitPlayers(msg, playersCount);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
 			}
-			const players = new Collection();
+			const players = this.client.games.get(msg.channel.id).data.players;
 			for (const player of awaitedPlayers) {
 				players.set(player, {
 					money: 5000,
@@ -52,7 +58,7 @@ module.exports = class PokerCommand extends Command {
 					currentBet: 0
 				});
 			}
-			const deck = this.client.games.get(msg.channel.id).data;
+			const deck = this.client.games.get(msg.channel.id).data.deck;
 			let winner = null;
 			const rotation = players.map(p => p.id);
 			while (!winner) {
