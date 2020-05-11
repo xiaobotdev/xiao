@@ -86,8 +86,9 @@ module.exports = class PokerCommand extends Command {
 					highestBetter: bigBlind
 				};
 				let turnOver = false;
-				const turnRotation = rotation;
-				turnRotation.push(turnRotation[0], turnRotation[1]);
+				const turnRotation = rotation.slice(0);
+				if (players.size === 2) turnRotation.push(turnRotation[1], turnRotation[0]);
+				else turnRotation.push(turnRotation[0], turnRotation[1]);
 				turnRotation.shift();
 				turnRotation.shift();
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, data);
@@ -215,7 +216,7 @@ module.exports = class PokerCommand extends Command {
 		const actions = this.determineActions(turnPlayer, data.currentBet);
 		const displayActions = list(actions.map(action => `\`${action}\``), 'or');
 		await msg.say(stripIndents`
-			**Pot: $${formatNumber(data.currentBet)}**
+			**Pot: $${formatNumber(data.pot)}**
 			_Highest Bet: $${formatNumber(data.currentBet)} (${data.highestBetter.user.tag})_
 
 			${turnPlayer.user}, what do you want to do? You can ${displayActions}.
