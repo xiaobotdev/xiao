@@ -254,16 +254,18 @@ module.exports = class PokerCommand extends Command {
 		}
 		const raiseValue = raiseRegex.test(choiceAction) ? Number.parseInt(choiceAction.match(raiseRegex)[1], 10) : null;
 		if (raiseValue) {
-			data.currentBet += raiseValue;
-			data.pot += raiseValue + (data.currentBet - turnPlayer.currentBet);
+			const amountChange = raiseValue + (data.currentBet - turnPlayer.currentBet);
+			data.pot += amountChange;
 			data.highestBetter = turnPlayer;
-			turnPlayer.money -= raiseValue + (data.currentBet - turnPlayer.currentBet);
-			turnPlayer.currentBet += raiseValue + (data.currentBet - turnPlayer.currentBet);
+			turnPlayer.money -= amountChange;
+			turnPlayer.currentBet += amountChange;
+			data.currentBet += raiseValue;
 			await msg.say(`${turnPlayer.user} **raises $${formatNumber(raiseValue)}**.`);
 		} else if (choiceAction === 'call') {
-			turnPlayer.money -= data.currentBet - turnPlayer.currentBet;
-			turnPlayer.currentBet += data.currentBet - turnPlayer.currentBet;
-			data.pot += data.currentBet - turnPlayer.currentBet;
+			const amountChange = data.currentBet - turnPlayer.currentBet;
+			turnPlayer.money -= amountChange;
+			turnPlayer.currentBet += amountChange;
+			data.pot += amountChange;
 			await msg.say(`${turnPlayer.user} **calls $${formatNumber(data.currentBet)}**.`);
 		} else if (choiceAction === 'fold') {
 			await msg.say(`${turnPlayer.user} **folds**.`);
