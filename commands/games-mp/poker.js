@@ -39,7 +39,12 @@ module.exports = class PokerCommand extends Command {
 			name: this.name,
 			data: {
 				deck: new Deck(),
-				players: new Collection()
+				players: new Collection(),
+				turnData: {
+					pot: 0,
+					currentBet: 0,
+					highestBetter: null
+				}
 			}
 		});
 		try {
@@ -58,7 +63,7 @@ module.exports = class PokerCommand extends Command {
 					currentBet: 0
 				});
 			}
-			const deck = this.client.games.get(msg.channel.id).data.deck;
+			const { deck, turnData } = this.client.games.get(msg.channel.id).data;
 			let winner = null;
 			const rotation = players.map(p => p.id);
 			while (!winner) {
@@ -86,11 +91,9 @@ module.exports = class PokerCommand extends Command {
 						await msg.say(`${player.user}, I couldn't send your hand! Turn on DMs!`);
 					}
 				}
-				let data = {
-					pot: bigBlindAmount + smallBlindAmount,
-					currentBet: bigBlindAmount,
-					highestBetter: bigBlind
-				};
+				turnData.pot = bigBlindAmount + smallBlindAmount;
+				turnData.currentBet = bigBlindAmount;
+				turnData.highestBetter = bigBlind;
 				let turnOver = false;
 				const turnRotation = rotation.slice(0);
 				if (players.size === 2) turnRotation.push(turnRotation[1], turnRotation[0]);
@@ -98,14 +101,14 @@ module.exports = class PokerCommand extends Command {
 				turnRotation.shift();
 				turnRotation.shift();
 				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, data);
-					data = results.data;
+					const results = await this.bettingRound(msg, players, turnRotation, turnData);
+					turnData = results.data;
 					turnOver = results.turnOver;
 				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += data.pot;
+					remainer.money += turnData.pot;
 					await this.resetGame(msg, players);
 					continue;
 				}
@@ -119,14 +122,14 @@ module.exports = class PokerCommand extends Command {
 				await delay(5000);
 				turnOver = false;
 				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, data);
-					data = results.data;
+					const results = await this.bettingRound(msg, players, turnRotation, turnData);
+					turnData = results.data;
 					turnOver = results.turnOver;
 				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += data.pot;
+					remainer.money += turnData.pot;
 					await this.resetGame(msg, players);
 					continue;
 				}
@@ -140,14 +143,14 @@ module.exports = class PokerCommand extends Command {
 				await delay(5000);
 				turnOver = false;
 				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, data);
-					data = results.data;
+					const results = await this.bettingRound(msg, players, turnRotation, turnData);
+					turnData = results.data;
 					turnOver = results.turnOver;
 				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += data.pot;
+					remainer.money += turnData.pot;
 					await this.resetGame(msg, players);
 					continue;
 				}
@@ -161,14 +164,14 @@ module.exports = class PokerCommand extends Command {
 				await delay(5000);
 				turnOver = false;
 				while (!turnOver) {
-					const results = await this.bettingRound(msg, players, turnRotation, data);
-					data = results.data;
+					const results = await this.bettingRound(msg, players, turnRotation, turnData);
+					turnData = results.data;
 					turnOver = results.turnOver;
 				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += data.pot;
+					remainer.money += turnData.pot;
 					await this.resetGame(msg, players);
 					continue;
 				}
@@ -188,11 +191,11 @@ module.exports = class PokerCommand extends Command {
 						The pot will be split between ${list(winners.map(w => `**${w.user.user}**`))}.
 						${winners.map(winner.desc).join(', ')}
 					`);
-					const splitPot = data.pot / winners.length;
+					const splitPot = turnData.pot / winners.length;
 					for (const win of winners) win.user.money += splitPot;
 				} else {
 					await msg.say(`${winners[0].user.user} takes the pot, with **${winners[0].desc}**.`);
-					winners[0].user.money += data.pot;
+					winners[0].user.money += turnData.pot;
 				}
 				await this.resetGame(msg, players);
 				if (players.size === 1) winner = players.first();
@@ -264,7 +267,7 @@ module.exports = class PokerCommand extends Command {
 		} else {
 			choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');
 		}
-		const raiseValue = raiseRegex.test(choiceAction) ? choiceAction.match(raiseRegex)[1] : null;
+		const raiseValue = raiseRegex.test(choiceAction) ? Number.parseInt(choiceAction.match(raiseRegex)[1], 10) : null;
 		if (raiseValue) {
 			data.currentBet += raiseValue;
 			data.pot += raiseValue + (data.currentBet - turnPlayer.currentBet);
