@@ -86,7 +86,7 @@ module.exports = class PokerCommand extends Command {
 						await msg.say(`${player.user}, I couldn't send your hand! Turn on DMs!`);
 					}
 				}
-				const data = {
+				let data = {
 					pot: bigBlindAmount + smallBlindAmount,
 					currentBet: bigBlindAmount,
 					highestBetter: bigBlind
@@ -97,11 +97,16 @@ module.exports = class PokerCommand extends Command {
 				else turnRotation.push(turnRotation[0], turnRotation[1]);
 				turnRotation.shift();
 				turnRotation.shift();
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, data);
+				while (!turnOver) {
+					const results = await this.bettingRound(msg, players, turnRotation, data);
+					data = results.data;
+					turnOver = results.turnOver;
+				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
 					remainer.money += data.pot;
+					await this.resetGame(msg, players);
 					continue;
 				}
 				const dealerHand = deck.draw(3);
@@ -113,11 +118,16 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, data);
+				while (!turnOver) {
+					const results = await this.bettingRound(msg, players, turnRotation, data);
+					data = results.data;
+					turnOver = results.turnOver;
+				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
 					remainer.money += data.pot;
+					await this.resetGame(msg, players);
 					continue;
 				}
 				dealerHand.push(deck.draw());
@@ -129,11 +139,16 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, data);
+				while (!turnOver) {
+					const results = await this.bettingRound(msg, players, turnRotation, data);
+					data = results.data;
+					turnOver = results.turnOver;
+				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
 					remainer.money += data.pot;
+					await this.resetGame(msg, players);
 					continue;
 				}
 				dealerHand.push(deck.draw());
@@ -145,11 +160,16 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, data);
+				while (!turnOver) {
+					const results = await this.bettingRound(msg, players, turnRotation, data);
+					data = results.data;
+					turnOver = results.turnOver;
+				}
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
 					await msg.say(`${remainer.user} takes the pot.`);
 					remainer.money += data.pot;
+					await this.resetGame(msg, players);
 					continue;
 				}
 				const solved = [];
@@ -174,15 +194,7 @@ module.exports = class PokerCommand extends Command {
 					await msg.say(`${winners[0].user.user} takes the pot, with **${winners[0].desc}**.`);
 					winners[0].user.money += data.pot;
 				}
-				for (const player of players.values()) {
-					if (player.money <= 0) {
-						await msg.say(`${player.user} has been kicked.`);
-						players.delete(player.id);
-					} else {
-						player.currentBet = 0;
-						player.hand = [];
-					}
-				}
+				await this.resetGame(msg, players);
 				if (players.size === 1) winner = players.first();
 			}
 			this.client.games.delete(msg.channel.id);
@@ -272,8 +284,24 @@ module.exports = class PokerCommand extends Command {
 		}
 		if (choiceAction !== 'fold') turnRotation.push(turnRotation[0]);
 		turnRotation.shift();
-		return (data.highestBetter.id === turnPlayer.id && choiceAction === 'check')
-			|| (data.highestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === data.highestBetter.id)
-			|| turnRotation.length === 1;
+		return {
+			turnOver: (data.highestBetter.id === turnPlayer.id && choiceAction === 'check')
+				|| (data.highestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === data.highestBetter.id)
+				|| turnRotation.length === 1,
+			data
+		}
+	}
+
+	async resetGame(msg, players) {
+		for (const player of players.values()) {
+			if (player.money <= 0) {
+				await msg.say(`${player.user} has been kicked.`);
+				players.delete(player.id);
+			} else {
+				player.currentBet = 0;
+				player.hand = [];
+			}
+		}
+		return players;
 	}
 };
