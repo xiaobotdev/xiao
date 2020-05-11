@@ -114,7 +114,7 @@ module.exports = class BlackjackCommand extends Command {
 	}
 
 	draw(channel, hand) {
-		const { deck } = this.client.games.get(channel.id).data;
+		const deck = this.client.games.get(channel.id).data;
 		const card = deck.draw();
 		hand.push(card);
 		return card;
