@@ -95,11 +95,7 @@ module.exports = class PokerCommand extends Command {
 				turnData.currentBet = bigBlindAmount;
 				turnData.highestBetter = bigBlind;
 				let turnOver = false;
-				const turnRotation = rotation.slice(0);
-				if (players.size === 2) turnRotation.push(turnRotation[1], turnRotation[0]);
-				else turnRotation.push(turnRotation[0], turnRotation[1]);
-				turnRotation.shift();
-				turnRotation.shift();
+				let turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
@@ -117,6 +113,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
+				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
@@ -134,6 +131,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
+				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
@@ -151,6 +149,7 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(5000);
 				turnOver = false;
+				turnRotation = this.makeTurnRotation(players, bigBlind, smallBlind);
 				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, turnData);
 				if (turnRotation.length === 1) {
 					const remainer = players.get(turnRotation[0]);
@@ -222,7 +221,16 @@ module.exports = class PokerCommand extends Command {
 		return actions;
 	}
 
+	makeTurnRotation(players, bigBlind, smallBlind) {
+		return [
+			smallBlind,
+			...players.filter(player => bigBlind.id !== player.id && smallBlind.id !== player.id),
+			bigBlind
+		];
+	}
+
 	async bettingRound(msg, players, turnRotation, data) {
+		const oldHighestBetter = data.highestBetter;
 		const turnPlayer = players.get(turnRotation[0]);
 		const actions = this.determineActions(turnPlayer, data.currentBet);
 		const displayActions = list(actions.map(action => `\`${action}\``), 'or');
@@ -279,8 +287,8 @@ module.exports = class PokerCommand extends Command {
 		}
 		if (choiceAction !== 'fold') turnRotation.push(turnRotation[0]);
 		turnRotation.shift();
-		return (data.highestBetter.id === turnPlayer.id && choiceAction === 'check')
-			|| (data.highestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === data.highestBetter.id)
+		return (oldHighestBetter.id === turnPlayer.id && choiceAction === 'check')
+			|| (oldHighestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === oldHighestBetter.id)
 			|| turnRotation.length === 1;
 	}
 
