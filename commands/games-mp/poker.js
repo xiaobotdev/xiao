@@ -54,7 +54,7 @@ module.exports = class PokerCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
 			}
-			const players = this.client.games.get(msg.channel.id).data.players;
+			const { players, deck, turnData } = this.client.games.get(msg.channel.id).data;
 			for (const player of awaitedPlayers) {
 				players.set(player, {
 					money: 5000,
@@ -64,7 +64,6 @@ module.exports = class PokerCommand extends Command {
 					currentBet: 0
 				});
 			}
-			const { deck, turnData } = this.client.games.get(msg.channel.id).data;
 			let winner = null;
 			const rotation = players.map(p => p.id);
 			while (!winner) {
@@ -183,7 +182,10 @@ module.exports = class PokerCommand extends Command {
 					winners[0].user.money += turnData.pot;
 				}
 				await this.resetGame(msg, players);
-				if (players.size === 1) winner = players.first();
+				if (players.size <= 1) {
+					winner = players.first();
+					break;
+				}
 			}
 			this.client.games.delete(msg.channel.id);
 			return msg.say(`Congrats, ${winner.user}!`);
@@ -238,7 +240,10 @@ module.exports = class PokerCommand extends Command {
 				if (!raiseRegex.test(choice)) return false;
 				choice = choice.replace(/[$,]/g, '');
 				const amount = Number.parseInt(choice.match(raiseRegex)[1], 10);
-				if (amount + data.currentBet > turnPlayer.money || amount < 1) return false;
+				if (amount + data.currentBet > turnPlayer.money || amount < 1) {
+					res.reply(`You only have $${formatNumber(turnPlayer.money)}!`).catch(() => null);
+					return false;
+				}
 				return true;
 			}
 			return false;
