@@ -59,7 +59,7 @@ module.exports = class PokerCommand extends Command {
 				const bigBlind = players.get(rotation[1]);
 				bigBlind.money -= bigBlindAmount;
 				bigBlind.currentBet += bigBlindAmount;
-				const smallBlind = players.get(rotation[2]);
+				const smallBlind = players.get(rotation[2] || rotation[0]);
 				smallBlind.money -= smallBlindAmount;
 				smallBlind.currentBet += smallBlindAmount;
 				rotation.push(rotation[0]);
