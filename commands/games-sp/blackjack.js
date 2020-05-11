@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { shuffle, verify } = require('../../util/Util');
-const suits = ['♣', '♥', '♦', '♠'];
-const faces = ['Jack', 'Queen', 'King'];
+const { verify } = require('../../util/Util');
+const Deck = require('../../structures/cards/Deck');
 const hitWords = ['hit', 'hit me'];
 const standWords = ['stand'];
 
@@ -32,7 +31,7 @@ module.exports = class BlackjackCommand extends Command {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {
-			this.client.games.set(msg.channel.id, { name: this.name, data: this.generateDeck(deckCount) });
+			this.client.games.set(msg.channel.id, { name: this.name, data: new Deck({ deckCount }) });
 			const dealerHand = [];
 			this.draw(msg.channel, dealerHand);
 			this.draw(msg.channel, dealerHand);
@@ -114,44 +113,18 @@ module.exports = class BlackjackCommand extends Command {
 		}
 	}
 
-	generateDeck(deckCount) {
-		const deck = [];
-		for (let i = 0; i < deckCount; i++) {
-			for (const suit of suits) {
-				deck.push({
-					value: 11,
-					display: `${suit} Ace`
-				});
-				for (let j = 2; j <= 10; j++) {
-					deck.push({
-						value: j,
-						display: `${suit} ${j}`
-					});
-				}
-				for (const face of faces) {
-					deck.push({
-						value: 10,
-						display: `${suit} ${face}`
-					});
-				}
-			}
-		}
-		return shuffle(deck);
-	}
-
 	draw(channel, hand) {
-		const deck = this.client.games.get(channel.id).data;
-		const card = deck[0];
-		deck.shift();
+		const { deck } = this.client.games.get(channel.id).data;
+		const card = deck.draw();
 		hand.push(card);
 		return card;
 	}
 
 	calculate(hand) {
-		return hand.sort((a, b) => a.value - b.value).reduce((a, b) => {
-			let { value } = b;
-			if (value === 11 && a + value > 21) value = 1;
-			return a + value;
+		return hand.sort((a, b) => a.blackjackValue - b.blackjackValue).reduce((a, b) => {
+			let { blackjackValue } = b;
+			if (blackjackValue === 11 && a + blackjackValue > 21) blackjackValue = 1;
+			return a + blackjackValue;
 		}, 0);
 	}
 };
