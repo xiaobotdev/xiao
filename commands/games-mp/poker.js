@@ -61,7 +61,8 @@ module.exports = class PokerCommand extends Command {
 					id: player,
 					hand: [],
 					user: this.client.users.cache.get(player),
-					currentBet: 0
+					currentBet: 0,
+					hasGoneOnce: false
 				});
 			}
 			let winner = null;
@@ -95,16 +96,8 @@ module.exports = class PokerCommand extends Command {
 				turnData.pot = bigBlindAmount + smallBlindAmount;
 				turnData.currentBet = bigBlindAmount;
 				turnData.highestBetter = bigBlind;
-				let turnOver = false;
-				let turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
-				if (turnRotation.length === 1) {
-					const remainer = players.get(turnRotation[0]);
-					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += turnData.pot;
-					await this.resetGame(msg, players);
-					continue;
-				}
+				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				if (!keepGoing) continue;
 				const dealerHand = deck.draw(3);
 				await msg.say(stripIndents`
 					**Dealer Hand:**
@@ -113,16 +106,8 @@ module.exports = class PokerCommand extends Command {
 					_Next betting round begins in 5 seconds._
 				`);
 				await delay(5000);
-				turnOver = false;
-				turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
-				if (turnRotation.length === 1) {
-					const remainer = players.get(turnRotation[0]);
-					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += turnData.pot;
-					await this.resetGame(msg, players);
-					continue;
-				}
+				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				if (!keepGoing) continue;
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
 					**Dealer Hand:**
@@ -131,16 +116,8 @@ module.exports = class PokerCommand extends Command {
 					_Next betting round begins in 5 seconds._
 				`);
 				await delay(5000);
-				turnOver = false;
-				turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
-				if (turnRotation.length === 1) {
-					const remainer = players.get(turnRotation[0]);
-					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += turnData.pot;
-					await this.resetGame(msg, players);
-					continue;
-				}
+				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				if (!keepGoing) continue;
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
 					**Dealer Hand:**
@@ -149,16 +126,8 @@ module.exports = class PokerCommand extends Command {
 					_Next betting round begins in 5 seconds._
 				`);
 				await delay(5000);
-				turnOver = false;
-				turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
-				while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
-				if (turnRotation.length === 1) {
-					const remainer = players.get(turnRotation[0]);
-					await msg.say(`${remainer.user} takes the pot.`);
-					remainer.money += turnData.pot;
-					await this.resetGame(msg, players);
-					continue;
-				}
+				const keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				if (!keepGoing) continue;
 				const solved = [];
 				for (const playerID of turnRotation) {
 					if (folded.includes(playerID)) continue;
@@ -175,6 +144,11 @@ module.exports = class PokerCommand extends Command {
 					await msg.say(stripIndents`
 						The pot will be split between ${list(winners.map(w => `**${w.user.user}**`))}.
 						${winners.map(winner.descr).join(', ')}
+
+						__**Results**__
+						${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
+
+						_Next game starting in 10 seconds._
 					`);
 					const splitPot = turnData.pot / winners.length;
 					for (const win of winners) win.user.money += splitPot;
@@ -184,6 +158,8 @@ module.exports = class PokerCommand extends Command {
 
 						__**Results**__
 						${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
+
+						_Next game starting in 10 seconds._
 					`);
 					winners[0].user.money += turnData.pot;
 				}
@@ -192,6 +168,7 @@ module.exports = class PokerCommand extends Command {
 					winner = players.first();
 					break;
 				}
+				await delay(10000);
 			}
 			this.client.games.delete(msg.channel.id);
 			return msg.say(`Congrats, ${winner.user}!`);
@@ -234,6 +211,21 @@ module.exports = class PokerCommand extends Command {
 			...players.filter(p => bigBlind.id !== p.id && smallBlind.id !== p.id).map(p => p.id),
 			bigBlind.id
 		].filter(player => !folded.includes(player));
+	}
+
+	async gameRound(msg, players, folded, turnData, bigBlind, smallBlind) {
+		let turnOver = false;
+		let turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
+		while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
+		this.resetHasGoneOnce();
+		if (turnRotation.length === 1) {
+			const remainer = players.get(turnRotation[0]);
+			await msg.say(`${remainer.user} takes the pot.`);
+			remainer.money += turnData.pot;
+			await this.resetGame(msg, players);
+			return false;
+		}
+		return true;
 	}
 
 	async bettingRound(msg, players, turnRotation, folded, data) {
@@ -296,8 +288,12 @@ module.exports = class PokerCommand extends Command {
 		}
 		if (choiceAction !== 'fold') turnRotation.push(turnRotation[0]);
 		turnRotation.shift();
-		return (oldHighestBetter.id === turnPlayer.id && choiceAction === 'check')
-			|| (oldHighestBetter.currentBet === turnPlayer.currentBet && turnRotation[0] === oldHighestBetter.id)
+		turnPlayer.hasGoneOnce = true;
+		const nextPlayer = players.get(turnRotation[0]);
+		return (oldHighestBetter.id === turnPlayer.id && choiceAction === 'check' && nextPlayer.hasGoneOnce)
+			|| (oldHighestBetter.currentBet === turnPlayer.currentBet
+				&& turnRotation[0] === oldHighestBetter.id
+				&& nextPlayer.hasGoneOnce)
 			|| turnRotation.length === 1;
 	}
 
@@ -309,8 +305,14 @@ module.exports = class PokerCommand extends Command {
 			} else {
 				player.currentBet = 0;
 				player.hand = [];
+				player.hasGoneOnce = false;
 			}
 		}
+		return players;
+	}
+
+	resetHasGoneOnce(players) {
+		for (const player of players.values()) player.hasGoneOnce = false;
 		return players;
 	}
 };
