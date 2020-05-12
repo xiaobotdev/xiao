@@ -129,7 +129,7 @@ module.exports = class PokerCommand extends Command {
 				keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				const solved = [];
-				for (const playerID of turnRotation) {
+				for (const playerID of rotation) {
 					if (folded.includes(playerID)) continue;
 					const player = players.get(playerID);
 					const solvedHand = Hand.solve([
@@ -215,7 +215,7 @@ module.exports = class PokerCommand extends Command {
 
 	async gameRound(msg, players, folded, turnData, bigBlind, smallBlind) {
 		let turnOver = false;
-		let turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
+		const turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
 		while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
 		this.resetHasGoneOnce();
 		if (turnRotation.length === 1) {
@@ -258,12 +258,12 @@ module.exports = class PokerCommand extends Command {
 		};
 		const msgs = await msg.channel.awaitMessages(filter, { max: 1, time: 60000 });
 		let choiceAction;
-		if (!msgs.size) {
+		if (msgs.size) {
+			choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');
+		} else {
 			if (turnPlayer.currentBet !== data.currentBet) choiceAction = 'fold';
 			else if (data.currentBet === turnPlayer.currentBet) choiceAction = 'check';
 			else choiceAction = 'fold';
-		} else {
-			choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');
 		}
 		const raiseValue = raiseRegex.test(choiceAction) ? Number.parseInt(choiceAction.match(raiseRegex)[1], 10) : null;
 		if (raiseValue) {
