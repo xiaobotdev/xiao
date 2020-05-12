@@ -260,10 +260,12 @@ module.exports = class PokerCommand extends Command {
 		let choiceAction;
 		if (msgs.size) {
 			choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');
+		} else if (turnPlayer.currentBet !== data.currentBet) {
+			choiceAction = 'fold';
+		} else if (data.currentBet === turnPlayer.currentBet) {
+			choiceAction = 'check';
 		} else {
-			if (turnPlayer.currentBet !== data.currentBet) choiceAction = 'fold';
-			else if (data.currentBet === turnPlayer.currentBet) choiceAction = 'check';
-			else choiceAction = 'fold';
+			choiceAction = 'fold';
 		}
 		const raiseValue = raiseRegex.test(choiceAction) ? Number.parseInt(choiceAction.match(raiseRegex)[1], 10) : null;
 		if (raiseValue) {
