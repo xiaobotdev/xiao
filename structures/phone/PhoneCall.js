@@ -13,10 +13,11 @@ module.exports = class PhoneCall {
 	}
 
 	async start() {
-		await this.origin.send(`☎️ Calling **${this.recipient.guild.name}**...`);
 		if (this.ownerOrigin) {
-			await this.recipient.send(`☎️ Incoming **ADMIN** call from **${this.origin.guild.name}**...`);
+			await this.origin.send(`☎️ Admin call started with **${this.recipient.guild.name}**.`);
+			await this.recipient.send(`☎️ An **ADMIN** call from **${this.origin.guild.name}** has begun.`);
 		} else {
+			await this.origin.send(`☎️ Calling **${this.recipient.guild.name}**...`);
 			await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name}**. Pick up?`);
 			const validation = await verify(this.recipient, null);
 			if (!validation) {
