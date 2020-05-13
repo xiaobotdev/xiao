@@ -67,7 +67,8 @@ module.exports = class PhoneCall {
 			return this.hangup(channel);
 		}
 		if (this.cooldown.has(msg.author.id) && !this.client.isOwner(msg.author)) {
-			return this.recipient.send(`☎️ ${msg.author}, please wait **5** seconds between messages!`);
+			const badChannel = channel.id === this.origin.id ? this.recipient : this.origin;
+			return badChannel.send(`☎️ ${msg.author}, please wait **5** seconds between messages!`);
 		}
 		this.setTimeout();
 		if (!this.client.isOwner(msg.author)) {
