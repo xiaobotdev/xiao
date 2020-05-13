@@ -34,6 +34,7 @@ client.registry
 		['edit-text', 'Text Manipulation'],
 		['edit-number', 'Number Manipulation'],
 		['voice', 'Voice-Based'],
+		['phone', 'Phone'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay'],
 		['readme', 'README Generators']
@@ -83,6 +84,7 @@ client.on('message', async msg => {
 	if (!origin && !recipient) return;
 	const call = origin || recipient;
 	if (!call.active) return;
+	if (call.ownerOrigin && msg.guild.id === origin.guild.id && !client.isOwner(msg.author)) return;
 	try {
 		await call.send(origin ? call.recipient : call.origin, msg, hasText, hasImage, hasEmbed);
 	} catch {

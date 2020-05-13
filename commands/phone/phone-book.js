@@ -5,7 +5,7 @@ module.exports = class PhoneBookCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'phone-book',
-			group: 'other',
+			group: 'phone',
 			memberName: 'phone-book',
 			description: 'Looks up phone-enabled servers.',
 			guildOnly: true,

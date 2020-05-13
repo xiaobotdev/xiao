@@ -579,11 +579,15 @@ Total: 417
 * **join:** Joins your voice channel.
 * **leave:** Leaves the current voice channel.
 
+### Phone:
+
+* **admin-phone:** Starts an admin phone call with a server. (Owner-Only)
+* **phone-book:** Looks up phone-enabled servers.
+* **phone:** Starts a phone call with a random server.
+
 ### Other:
 
 * **cleverbot:** Talk to Cleverbot. (Owner-Only)
-* **phone-book:** Looks up phone-enabled servers.
-* **phone:** Starts a phone call with a random server.
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
