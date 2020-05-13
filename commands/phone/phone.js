@@ -6,7 +6,7 @@ module.exports = class PhoneCommand extends Command {
 		super(client, {
 			name: 'phone',
 			aliases: ['phone-call', 'call'],
-			group: 'other',
+			group: 'phone',
 			memberName: 'phone',
 			description: 'Starts a phone call with a random server.',
 			guildOnly: true,
