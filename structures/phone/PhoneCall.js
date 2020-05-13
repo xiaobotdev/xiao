@@ -10,6 +10,7 @@ module.exports = class PhoneCall {
 		this.active = false;
 		this.timeout = null;
 		this.ownerOrigin = ownerOrigin || false;
+		this.cooldown = new Set();
 	}
 
 	async start() {
@@ -65,12 +66,17 @@ module.exports = class PhoneCall {
 			}
 			return this.hangup(channel);
 		}
+		if (this.cooldown.has(msg.author.id)) {
+			return this.recipient.send(`☎️ ${msg.author}, please wait **5** seconds between messages!`);
+		}
 		this.setTimeout();
+		this.cooldown.add(msg.author.id);
+		setTimeout(() => this.cooldown.delete(msg.author.id), 5000);
 		const attachments = hasImage ? msg.attachments.map(a => a.url).join('\n') : null;
 		if (!hasText && hasImage) return channel.send(`☎️ **${msg.author.tag}:**\n${attachments}`);
 		if (!hasText && hasEmbed) return channel.send(`☎️ **${msg.author.tag}** sent an embed.`);
 		let content = stripInvites(msg.content);
-		content = content.length > 1000 ? `${shorten(content, 1000)} (Message too long)` : content;
+		content = content.length > 1000 ? `${shorten(content, 500)} (Message too long)` : content;
 		return channel.send(`☎️ **${msg.author.tag}:** ${content}\n${attachments || ''}`.trim());
 	}
 
