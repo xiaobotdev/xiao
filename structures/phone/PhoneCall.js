@@ -66,12 +66,14 @@ module.exports = class PhoneCall {
 			}
 			return this.hangup(channel);
 		}
-		if (this.cooldown.has(msg.author.id)) {
+		if (this.cooldown.has(msg.author.id) && !this.client.isOwner(msg.author)) {
 			return this.recipient.send(`☎️ ${msg.author}, please wait **5** seconds between messages!`);
 		}
 		this.setTimeout();
-		this.cooldown.add(msg.author.id);
-		setTimeout(() => this.cooldown.delete(msg.author.id), 5000);
+		if (!this.client.isOwner(msg.author)) {
+			this.cooldown.add(msg.author.id);
+			setTimeout(() => this.cooldown.delete(msg.author.id), 5000);
+		}
 		const attachments = hasImage ? msg.attachments.map(a => a.url).join('\n') : null;
 		if (!hasText && hasImage) return channel.send(`☎️ **${msg.author.tag}:**\n${attachments}`);
 		if (!hasText && hasEmbed) return channel.send(`☎️ **${msg.author.tag}** sent an embed.`);
