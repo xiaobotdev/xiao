@@ -74,7 +74,6 @@ client.on('ready', () => {
 });
 
 client.on('message', async msg => {
-	if (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')) return;
 	const hasText = Boolean(msg.content);
 	const hasImage = msg.attachments.size !== 0;
 	const hasEmbed = msg.embeds.length !== 0;
@@ -83,6 +82,7 @@ client.on('message', async msg => {
 	const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
 	if (!origin && !recipient) return;
 	const call = origin || recipient;
+	if (!call.ownerOrigin && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>'))) return;
 	if (!call.active) return;
 	if (call.ownerOrigin && msg.guild.id === origin.guild.id && !client.isOwner(msg.author)) return;
 	try {
