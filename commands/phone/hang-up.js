@@ -12,8 +12,8 @@ module.exports = class HangUpCommand extends Command {
 	}
 
 	async run(msg) {
-		const origin = client.phone.find(call => call.origin.id === msg.channel.id);
-		const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
+		const origin = this.client.phone.find(call => call.origin.id === msg.channel.id);
+		const recipient = this.client.phone.find(call => call.recipient.id === msg.channel.id);
 		if (!origin && !recipient) return msg.reply('☎️ This channel is not in a phone call.');
 		const call = origin || recipient;
 		if (!call.active) return msg.reply('☎️ This call is not currently active.');
