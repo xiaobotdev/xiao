@@ -4,11 +4,19 @@ const { list } = require('../../util/Util');
 const difficulties = ['baby', 'easy', 'medium', 'hard', 'extreme', 'impossible'];
 const operations = ['+', '-', '*'];
 const maxValues = {
-	baby: 5,
-	easy: 10,
+	baby: 10,
+	easy: 50,
 	medium: 100,
 	hard: 500,
 	extreme: 1000,
+	impossible: Number.MAX_SAFE_INTEGER
+};
+const maxMultiplyValues = {
+	baby: 5,
+	easy: 12,
+	medium: 30,
+	hard: 50,
+	extreme: 100,
 	impossible: Number.MAX_SAFE_INTEGER
 };
 
@@ -33,14 +41,24 @@ module.exports = class MathQuizCommand extends Command {
 	}
 
 	async run(msg, { difficulty }) {
-		const value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
-		const value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
 		const operation = operations[Math.floor(Math.random() * operations.length)];
-		let answer;
+		let answer, value1, value2;
 		switch (operation) {
-			case '+': answer = value1 + value2; break;
-			case '-': answer = value1 - value2; break;
-			case '*': answer = value1 * value2; break;
+			case '+':
+				value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
+				value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
+				answer = value1 + value2;
+				break;
+			case '-':
+				value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
+				value2 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
+				answer = value1 - value2;
+				break;
+			case '*':
+				value1 = Math.floor(Math.random() * maxMultiplyValues[difficulty]) + 1;
+				value2 = Math.floor(Math.random() * maxMultiplyValues[difficulty]) + 1;
+				answer = value1 * value2;
+				break;
 		}
 		await msg.reply(stripIndents`
 			**You have 10 seconds to answer this question.**
