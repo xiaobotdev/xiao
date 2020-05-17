@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 419
+Total: 420
 
 ### Utility:
 
@@ -394,6 +394,7 @@ Total: 419
 * **slots:** Play a game of slots.
 * **sorting-hat:** Take a quiz to determine your Hogwarts house.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
+* **waldo:** Try to find Waldo with spoiler tags!
 * **whos-that-pokemon:** Guess who that Pokémon is.
 
 ### Multi-Player Games:
@@ -965,6 +966,8 @@ here.
 	* mal-badges (API)
 - [MangaGamer.com](https://www.mangagamer.com/)
 	* box-choosing ([Original Translation](https://store.steampowered.com/app/526490/Higurashi_When_They_Cry_Hou__Ch4_Himatsubushi/))
+- [Martin Handford](https://www.candlewick.com/authill.asp?b=Author&m=bio&id=1497&pix=y)
+	* waldo (Original "Where's Wally?" Book Series)
 - [Marvelous](http://www.marv.jp/)
 	* give-flower ([Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
 	* xiao ([Images, Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
@@ -1201,6 +1204,8 @@ here.
 	* eat-pant ([Image](https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/))
 - [u/AelinSA](https://www.reddit.com/user/AelinSA)
 	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magi))
+- [u/guschuma](https://www.reddit.com/user/guschuma/)
+	* waldo ([Concept](https://www.reddit.com/r/copypasta/comments/gkk7z1/wheres_waldo_game_created_by_me/))
 - [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington)
 	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/))
 - [u/N1ffler](https://www.reddit.com/user/N1ffler/)
