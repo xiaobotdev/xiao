@@ -6,7 +6,7 @@ module.exports = class WaldoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'waldo',
-			aliases: ['wheres-waldo', 'where\'s-waldo'],
+			aliases: ['wheres-waldo', 'where\'s-waldo', 'wally', 'wheres-wally', 'where\'s-wally'],
 			group: 'games-sp',
 			memberName: 'waldo',
 			description: 'Try to find Waldo with spoiler tags!',
