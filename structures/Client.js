@@ -33,4 +33,8 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
 	}
+
+	inPhoneCall(channel) {
+		return this.phone.some(call => call.origin.id === channel.id || call.recipient.id === channel.id);
+	}
 };
