@@ -425,7 +425,6 @@ Total: 423
 * **apple-engraving:** Engraves the text of your choice onto an Apple product.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
-* **bart-chalkboard:** Sends a "Bart Chalkboard" meme with the text of your choice.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **certificate:** Sends a certificate of excellence with the name and reason of your choice.
 * **circle:** Draws an image or a user's avatar as a circle.
@@ -484,6 +483,7 @@ Total: 423
 ### Meme Generators:
 
 * **3000-years:** Draws an image or a user's avatar over Pokémon's "It's been 3000 years" meme.
+* **bart-chalkboard:** Sends a "Bart Chalkboard" meme with the text of your choice.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **catch:** Catch users, revealing who is something.
@@ -882,6 +882,7 @@ here.
 - [Imgur](https://imgur.com/)
 	* blush ([API](https://apidocs.imgur.com/))
 	* bro-hoof ([API](https://apidocs.imgur.com/))
+	* celebrate ([API](https://apidocs.imgur.com/))
 	* eat ([API](https://apidocs.imgur.com/))
 	* fidget ([API](https://apidocs.imgur.com/))
 	* fist-bump ([API](https://apidocs.imgur.com/))
@@ -889,6 +890,7 @@ here.
 	* hold-hands ([API](https://apidocs.imgur.com/))
 	* hug ([API](https://apidocs.imgur.com/))
 	* imgur ([API](https://apidocs.imgur.com/))
+	* inhale ([API](https://apidocs.imgur.com/))
 	* karen ([API](https://apidocs.imgur.com/))
 	* kill ([API](https://apidocs.imgur.com/))
 	* kiss ([API](https://apidocs.imgur.com/))
@@ -1066,14 +1068,14 @@ here.
 - [Perspective API](https://www.perspectiveapi.com/#/)
 	* severe-toxicity (API)
 	* toxicity (API)
+- [Platinum Designz](http://store.platinumdesignz.com/)
+	* glass-shatter ([Image](https://www.jing.fm/iclipt/u2q8u2a9o0t4i1q8/))
 - [Playstation Trophies](https://www.playstationtrophies.org/)
 	* guesspionage ([Question Data](https://www.playstationtrophies.org/game/the-jackbox-party-pack-3/trophy/157520-Guesspionage--Perfect-Surveillance.html))
 - [PNG Arts](https://www.pngarts.com/)
 	* police-tape ([Image](https://www.pngarts.com/explore/94078))
 - [pngimg.com](https://pngimg.com/)
 	* thug-life ([Image](http://pngimg.com/download/58231))
-- [Platinum Designz](http://store.platinumdesignz.com/)
-	* glass-shatter ([Image]('https://www.jing.fm/iclipt/u2q8u2a9o0t4i1q8/))
 - [Pokemon Fusion](https://pokemon.alexonsager.net/)
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
