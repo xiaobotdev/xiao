@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 420
+Total: 422
 
 ### Utility:
 
@@ -212,6 +212,8 @@ Total: 420
 * **the-onion:** Responds with a random "The Onion" article.
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
 * **waifu:** Responds with a randomly generated waifu and backstory.
+* **will-you-press-the-button:** Responds with a random "Will You Press The Button?" dilemma.
+* **word:** Responds with a random word.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
 * **xiao-fact:** Responds with a random fact about Xiao.
 
@@ -845,6 +847,7 @@ here.
 	* read-qr-code ([QR code API](http://goqr.me/api/))
 - [Grady Ward](https://en.wikipedia.org/wiki/Grady_Ward)
 	* hangman ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
+	* word ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 	* word-chain ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 - [Gravatar](https://en.gravatar.com/)
 	* gravatar ([API](https://en.gravatar.com/site/implement/))
@@ -1243,6 +1246,8 @@ here.
 	* itunes ([Language Code Data](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes))
 	* time ([Time Zone Data](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
 	* wikipedia ([API](https://en.wikipedia.org/w/api.php))
+- [Will You Press The Button?](https://willyoupressthebutton.com/)
+	* will-you-press-the-button (Dilemma Data)
 - [www.aljanh.net](http://www.aljanh.net/)
 	* frame ([Image](http://www.aljanh.net/frame-wallpapers/1508614706.html))
 - [xertris](https://www.deviantart.com/xertris)
