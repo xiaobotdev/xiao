@@ -28,7 +28,7 @@ module.exports = class HangmanCommand extends Command {
 		});
 	}
 
-	async run(msg) { // eslint-disable-line complexity
+	async run(msg) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });

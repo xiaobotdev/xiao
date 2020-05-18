@@ -27,7 +27,7 @@ module.exports = class BlackjackCommand extends Command {
 		});
 	}
 
-	async run(msg, { deckCount }) { // eslint-disable-line complexity
+	async run(msg, { deckCount }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {

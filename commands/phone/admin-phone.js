@@ -24,8 +24,7 @@ module.exports = class AdminPhoneCommand extends Command {
 	}
 
 	async run(msg, { channelID }) {
-		const inCall = this.client.phone.some(call => [call.origin.id, call.recipient.id].includes(msg.channel.id));
-		if (inCall) return msg.say('This channel is already in a phone call.');
+		if (this.client.inPhoneCall(msg.channel)) return msg.say('This channel is already in a phone call.');
 		const channel = this.client.channels.cache.get(channelID);
 		if (!channel || !channel.guild) return msg.reply('This channel does not exist.');
 		try {

@@ -41,14 +41,14 @@ module.exports = class PhoneCommand extends Command {
 		if (channelID !== 'count' && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>'))) {
 			return msg.say('You can only start a call in a channel with `<xiao:phone>` in the topic.');
 		}
-		const inCall = this.client.phone.some(call => [call.origin.id, call.recipient.id].includes(msg.channel.id));
-		if (channelID !== 'count' && inCall) {
+		if (channelID !== 'count' && this.client.inPhoneCall(msg.channel)) {
 			return msg.say('This channel is already in a phone call.');
 		}
 		const channels = this.client.channels.cache.filter(channel => channel.guild
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
-			&& !msg.guild.channels.cache.has(channel.id));
+			&& !msg.guild.channels.cache.has(channel.id)
+			&& (channelID ? true : !this.client.inPhoneCall(channel)));
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
 		let channel;
 		if (channelID) {
@@ -58,6 +58,7 @@ module.exports = class PhoneCommand extends Command {
 			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
 				return msg.reply('This channel does not allow phone calls.');
 			}
+			if (this.client.inPhoneCall(channel)) return msg.reply('This channel is already in a call.');
 		} else {
 			channel = channels.random();
 		}
