@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 422
+Total: 423
 
 ### Utility:
 
@@ -415,6 +415,7 @@ Total: 422
 * **russian-roulette:** Who will pull the trigger and die first?
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
 * **word-chain:** Try to come up with words that start with the last letter of your opponent's word.
+* **word-spud:** Hot potato, but with words.
 
 ### Image Manipulation:
 
@@ -911,6 +912,7 @@ here.
 - [Jackbox Games](https://www.jackboxgames.com/)
 	* guesspionage ([Original "Guesspionage" Game](https://www.jackboxgames.com/guesspionage/))
 	* lie-swatter ([Original "Lie Swatter" Game](https://www.jackboxgames.com/lie-swatter/))
+	* word-spud ([Original "Word Spud" Game](https://www.jackboxgames.com/word-spud/))
 - [jasmaa](https://github.com/jasmaa/)
 	* neko-atsume-password ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
 - [JellyNeo Item Database](https://items.jellyneo.net/)
