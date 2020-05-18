@@ -42,7 +42,9 @@ module.exports = class MathQuizCommand extends Command {
 
 	async run(msg, { difficulty }) {
 		const operation = operations[Math.floor(Math.random() * operations.length)];
-		let answer, value1, value2;
+		let answer;
+		let value1;
+		let value2;
 		switch (operation) {
 			case '+':
 				value1 = Math.floor(Math.random() * maxValues[difficulty]) + 1;
