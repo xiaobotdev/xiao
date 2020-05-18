@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 423
+Total: 424
 
 ### Utility:
 
@@ -465,6 +465,7 @@ Total: 423
 
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
 * **bob-ross:** Draws a user's avatar over Bob Ross' canvas.
+* **chocolate-milk:** Draws a user's avatar holding chocolate milk.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **hearts:** Draws hearts around a user's avatar.
