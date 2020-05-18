@@ -73,6 +73,7 @@ module.exports = class WordSpudCommand extends Command {
 					break;
 				}
 				await msg.say(`${currentWord} **${word}**? Cool!`);
+				currentWord = word;
 				userTurn = !userTurn;
 				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
