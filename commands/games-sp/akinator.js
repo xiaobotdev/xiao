@@ -32,7 +32,7 @@ module.exports = class AkinatorCommand extends Command {
 			let win = false;
 			let forceGuess = false;
 			this.client.games.set(msg.channel.id, { name: this.name });
-			while (aki.guessCount >= 3) {
+			while (aki.guessCount < 3) {
 				if (aki.progress >= 70 || forceGuess) {
 					await aki.win();
 					const guess = aki.answers[0];
@@ -58,13 +58,17 @@ module.exports = class AkinatorCommand extends Command {
 						}
 					}
 				}
-				const data = ans === null ? await aki.start() : await aki.step(ans);
-				if (!data || !data.answers || aki.currentStep >= 80) break;
-				const answers = data.answers.map(answer => answer.toLowerCase());
+				if (ans === null) await aki.start();
+				else await aki.step(ans);
+				if (!aki.answers || aki.currentStep >= 80) {
+					forceGuess = true;
+					continue;
+				};
+				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
-					**${++aki.currentStep}.** ${data.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
-					${data.answers.join(' | ')}
+					**${++aki.currentStep}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
+					${aki.answers.join(' | ')}
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
 				const msgs = await msg.channel.awaitMessages(filter, {
