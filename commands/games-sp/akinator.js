@@ -57,7 +57,7 @@ module.exports = class AkinatorCommand extends Command {
 				}
 				if (msgs.first().content.toLowerCase() === 'end') forceGuess = true;
 				else ans = answers.indexOf(msgs.first().content.toLowerCase());
-				if (aki.progress >= 70 || forceGuess) {
+				if (aki.progress >= 90 || forceGuess) {
 					await aki.win();
 					const guess = aki.answers[0];
 					const embed = new MessageEmbed()
@@ -74,9 +74,9 @@ module.exports = class AkinatorCommand extends Command {
 						win = false;
 						break;
 					} else {
-						const exMsg = aki.guessCount <= 3 || forceGuess ? 'I give up.' : 'I can keep going!';
+						const exMsg = aki.guessCount >= 3 || forceGuess ? 'I give up.' : 'I can keep going!';
 						await msg.say(`Hmm... Is that so? ${exMsg}`);
-						if (aki.guessCount <= 3 || forceGuess) {
+						if (aki.guessCount >= 3 || forceGuess) {
 							win = true;
 							break;
 						}
