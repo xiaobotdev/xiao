@@ -1,3 +1,4 @@
+const { stripIndents } = require('common-tags');
 const { shorten, stripInvites, verify } = require('../../util/Util');
 
 module.exports = class PhoneCall {
@@ -106,8 +107,7 @@ module.exports = class PhoneCall {
 	}
 
 	sendVoicemail(channel, msg) {
-		if (!channel.topic || channel.topic.includes('<xiao:phone:no-voicemail>')) return null;
-		return channel.send(stripInvites`
+		return channel.send(stripIndents`
 			☎️ New Voicemail from **${msg.guild.name}**:
 			**${msg.author.tag}:** ${msg.content}
 		`);
