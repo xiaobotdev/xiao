@@ -32,7 +32,7 @@ module.exports = class AkinatorCommand extends Command {
 			let win = false;
 			let forceGuess = false;
 			this.client.games.set(msg.channel.id, { name: this.name });
-			while (!aki.guessCount || aki.guessCount < 3) {
+			while (aki.guessCount >= 3) {
 				if (aki.progress >= 70 || forceGuess) {
 					await aki.win();
 					const guess = aki.answers[0];
