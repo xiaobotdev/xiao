@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "114.15.0",
+	"version": "114.16.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -34,6 +34,7 @@
 		"@discordjs/collection": "^0.1.5",
 		"@discordjs/opus": "^0.3.2",
 		"@vitalets/google-translate-api": "^3.0.0",
+		"aki-api": "github:jgoralcz/aki-api",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
 		"cloc": "^2.5.1",

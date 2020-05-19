@@ -136,7 +136,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 424
+Total: 425
 
 ### Utility:
 
@@ -375,6 +375,7 @@ Total: 424
 
 ### Single-Player Games:
 
+* **akinator:** Think about a real or fictional character, I will try to guess who it is.
 * **blackjack:** Play a game of blackjack.
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **bubble-wrap:** Pop some bubble wrap.
@@ -672,6 +673,8 @@ here.
 	* adorable (API)
 - [Advice Slip](https://adviceslip.com/)
 	* advice ([API](https://api.adviceslip.com/))
+- [Akinator](https://en.akinator.com/)
+	* akinator (API)
 - [Alexey Star](https://alexeystar.com/)
 	* hollywood-star ([Hollywood Star Font](https://alexeystar.com/hollywood-star-font/))
 - [Alpha Vantage](https://www.alphavantage.co/)
