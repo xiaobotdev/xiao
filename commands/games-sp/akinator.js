@@ -36,15 +36,12 @@ module.exports = class AkinatorCommand extends Command {
 			while (timesGuessed < 3) {
 				if (ans === null) await aki.start();
 				else await aki.step(ans);
-				if (!aki.answers || aki.currentStep >= 80) {
-					forceGuess = true;
-					continue;
-				}
+				if (!aki.answers || aki.currentStep >= 79) forceGuess = true;
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
 					**${++aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
-					${aki.answers.join(' | ')}
+					${aki.answers.join(' | ')} | End
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
 				const msgs = await msg.channel.awaitMessages(filter, {
