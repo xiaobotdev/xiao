@@ -39,7 +39,7 @@ module.exports = class AkinatorCommand extends Command {
 				if (!aki.answers || aki.currentStep >= 80) {
 					forceGuess = true;
 					continue;
-				};
+				}
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
