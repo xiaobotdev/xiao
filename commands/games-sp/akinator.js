@@ -2,7 +2,8 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const Aki = require('aki-api');
 const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { list, verify } = require('../../util/Util');
+const regions = require('../../assets/json/akinator');
 
 module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
@@ -12,6 +13,7 @@ module.exports = class AkinatorCommand extends Command {
 			group: 'games-sp',
 			memberName: 'akinator',
 			description: 'Think about a real or fictional character, I will try to guess who it is.',
+			details: `**Regions:** ${regions.join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
@@ -19,15 +21,25 @@ module.exports = class AkinatorCommand extends Command {
 					url: 'https://en.akinator.com/',
 					reason: 'API'
 				}
+			],
+			args: [
+				{
+					key: 'region',
+					prompt: `What region do you want to use? Either ${list(regions, 'or')}.`,
+					type: 'string',
+					default: 'en',
+					oneOf: regions,
+					parse: region => region.toLowerCase()
+				}
 			]
 		});
 	}
 
-	async run(msg) {
+	async run(msg, { region }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {
-			const aki = new Aki('en');
+			const aki = new Aki(region);
 			let ans = null;
 			let win = false;
 			let timesGuessed = 0;
