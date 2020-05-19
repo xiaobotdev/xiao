@@ -53,24 +53,24 @@ module.exports = class PhoneCall {
 			if (validation === 0 && canVoicemail) {
 				await this.origin.send(`☎️ **${this.recipient.guild.name}** didn't answer... Leave a voicemail?`);
 				const voicemailValidation = await verify(this.origin, null);
-				if (!voicemailValidation) {
-					await this.origin.send('☎️ No voicemail will be left.');
-				} else {
+				if (voicemailValidation) {
 					await this.origin.send('☎️ Please leave your message (max 280 characters) after the beep. _Beep_.');
 					const voicemail = await this.origin.awaitMessages(res => res.content && res.content.length <= 280, {
 						time: 30000,
 						max: 1
 					});
-					if (!voicemail.size) {
-						await this.origin.send('☎️ No voicemail will be left.');
-					} else {
+					if (voicemail.size) {
 						const voicemailMsg = voicemail.first();
 						await this.sendVoicemail(this.recipient, voicemailMsg);
 						await this.origin.send('☎️ Your voicemail has been left.');
+					} else {
+						await this.origin.send('☎️ No voicemail will be left.');
 					}
+				} else {
+					await this.origin.send('☎️ No voicemail will be left.');
 				}
 			} else {
-				let originMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
+				const originMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
 				await this.origin.send(`☎️ **${this.recipient.guild.name}** ${originMsg}`);
 			}
 		} else {
