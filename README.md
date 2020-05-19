@@ -120,6 +120,88 @@ don't grant that permission.
 7. Run `npm i -g pm2` to install PM2.
 8. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
+## Filling Out Your .env File
+
+Getting _all_ the API keys for your `.env` file can be a pain on a
+bot this big, I know. That's why I've compiled a list here of where
+to go to get _every single API key_. Note, not all of these are free.
+The difficulty in getting all of these keys is why I recommend
+[inviting Xiao](#invite) rather than self-hosting her.
+
+### Discord-related Info
+
+* `XIAO_TOKEN` can be obtained at the [Discord Developer Portal](https://discord.com/developers/applications/).
+* `OWNERS` is a comma-seperated list of Discord User IDs.
+* `XIAO_PREFIX` is the prefix you want the bot to have. Like `x;`.
+* `INVITE` is an invite link to a Discord server. The whole thing, not just the code.
+* `XIAO_WEBHOOK_ID` is the ID of the webhook you want the `webhook` command to use.
+* `XIAO_WEBHOOK_TOKEN` is the token of the webhook you want the `webhook` command to use.
+* `POSTER_ID` is the ID of the webhook used for Xiao's meme poster. Not required.
+* `POSTER_TOKEN` is the token of the webhook used for Xiao's meme poster. Not required.
+* `POSTER_TIME` is the interval to wait between when posting memes using Xiao's meme poster. Not required and defaults to one hour.
+* `REPORT_CHANNEL_ID` is the ID of the Discord channel you want to send messages from `report` to. Not required, and if not provided the report command simply DMs the owner.
+
+### Emoji IDs
+
+All the emoji IDs are the IDs of Discord custom emoji. You need to
+make these yourself, but none are required, and any left out will
+simply switch to basic text.
+
+* `GOLD_FISH` and `SILVER_FISH` are used in `neko-atsume-password`.
+* `MOCKING` is used in `mocking`.
+* `PORTAL` is used in `portal-send`.
+* `FLANKER`, `FRONT_LINE`, `SUPPORT`, and `DAMAGE` are used in `paladins`.
+
+### API Keys, IDs, and Secrets
+
+Here's where things get LONG. If you're greeted with a log-in page
+when clicking any of these links, you'll need an account for that
+API. All are free unless otherwise stated.
+
+* `ALPHA_VANTAGE_KEY` can be obtained at the [Alpha Vantage website](https://www.alphavantage.co/support/#api-key).
+* `ANILIST_USERNAME` is the username of an [Anilist](https://anilist.co/) user. Not required, and defaults to `dragonfire535`.
+* `CLEARBIT_KEY` can be obtained at the [Clearbit dashboard](https://dashboard.clearbit.com/).
+* `CLEVERBOT_KEY` can be obtained at the [Cleverbot API page](https://www.cleverbot.com/api/). It's not free.
+* `CUSTOM_SEARCH_ID` can be obtained by following [this tutorial](https://developers.google.com/custom-search/docs/tutorial/creatingcse).
+* `DEVIANTART_ID` and `DEVIANTART_SECRET` can be obtained by registering an application at the [Deviantart developer portal](https://www.deviantart.com/developers/).
+* `FACEPLUSPLUS_KEY` and `FACEPLUSPLUS_SECRET` can be obtained at the [FacePlusPlus console](https://console.faceplusplus.com/).
+* `FLICKR_KEY` can be obtained by going to [Flickr's App Garden](https://www.flickr.com/services/) and clicking "Get an API Key".
+* `GIPHY_KEY` can be obtained at the [Giphy developer portal](https://developers.giphy.com/).
+* `GITHUB_PASSWORD` and `GITHUB_USERNAME` are exactly what they say they are, all you have to do to get them is [sign up for GitHub](https://github.com/). Note, if you have two-factor auth on your GitHub account, you can use [an access token](https://github.com/settings/tokens). For the password. Even if you don't, this is recommended for privacy reasons.
+* `GOOGLE_CALENDAR_ID` is an email for a Google calendar to be used in the `calendar` command. For example, US Holidays are `en.usa#holiday@​group.v.calendar.google.com`.
+* `PERSONAL_GOOGLE_CALENDAR_ID` is basically the above, but for extra events. It's named personal as I use my personal email for the events. It's not required, and if not provided will just be skipped.
+* `GOOGLE_KEY` can be obtained at the [Google Developer Console](https://console.developers.google.com/). Be sure to click "Enable APIs and Services" and enable the following APIs:
+	- [YouTube Data API](https://console.developers.google.com/apis/library/youtube.googleapis.com)
+	- [Custom Search API](https://console.developers.google.com/apis/library/customsearch.googleapis.com)
+	- [Maps Static API](https://console.developers.google.com/apis/library/static-maps-backend.googleapis.com)
+	- [Google Calendar API](https://console.developers.google.com/apis/library/calendar-json.googleapis.com)
+	- [Books API](https://console.developers.google.com/apis/library/books.googleapis.com)
+	- Go to the [Perspective API website](https://www.perspectiveapi.com/#/home) to set up the Perspective API.
+* `GOV_KEY` can be obtained at the [NASA Open APIs portal](https://api.nasa.gov/).
+* `IDIOT_PAGE_ID` is the ID of a Wikipedia article for use in the `idiot` command. Not required, and defaults to `Donald_Trump`. If this offends you, I don't care.
+* `IMGUR_KEY` can be obtained by [Registering an Application at the Imgur website](https://api.imgur.com/oauth2/addclient).
+* `OPENWEATHERMAP_KEY` can be obtained at the [OpenWeatherMap website](https://openweathermap.org/price). Click "Get API Key" on the plan you want (probably Free).
+* `OSU_KEY` can be obtained by [signing up at the osu! API page](https://osu.ppy.sh/p/api/). Whether this link takes you to the right page or not is hit-or-miss.
+* `STACKOVERFLOW_KEY` can be obtained by [registering your app at stackapps](https://stackapps.com/apps/oauth/register).
+* `TENOR_KEY` can be obtained by [Registering an Application at the Tenor website](https://tenor.com/developer/keyregistration).
+* `TMDB_KEY` can be obtained by [following these instructions at the TMDB website](https://www.themoviedb.org/documentation/api). Read the "How do I apply for an API key?" section.
+* `TUMBLR_KEY` can be obtained at the [Tumblr developer portal](https://www.tumblr.com/oauth/apps).
+* `TWITTER_KEY` and `TWITTER_SECRET` can be obtained at the [Twitter developer portal](https://developer.twitter.com/en/apps).
+* `USPS_USERID` can be obtained at the [Web Tools API Portal](https://www.usps.com/business/web-tools-apis/).
+* `WATTPAD_KEY` can be obtained at the [Wattpad developer portal](https://www.wattpad.com/developer/docs/api).
+* `WEBSTER_KEY` can be obtained by [going to the Dictionary API website](https://dictionaryapi.com/). Find the "GET STARTED USING OUR API" section.
+* `WHATANIME_KEY` can be obtained by [following these instructions](https://soruly.github.io/trace.moe/#/#rate-limit-and-search-quota). You'll need to email the developer to get an API key.
+* `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are just the username and name of Xiao's repo on GitHub. For example, `dragonfire535` for the username and `xiao` for the name.
+
+### Imgur Album IDs
+
+This section is a bit different, as all of these keys are the same
+process. First, [sign up for Imgur](https://imgur.com/). Then, just
+go to your profile and make albums that contain the images for the
+command you want to use. Use the ID of that album (look at the URL)
+as the variable. Yes, you need to fill these albums yourself. This is
+why you shouldn't self-host Xiao.
+
 ## Related Bots
 
 * [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
