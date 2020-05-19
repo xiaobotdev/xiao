@@ -218,6 +218,7 @@ in the appropriate channel's topic to use it.
 
 * `<xiao:disable-leave>` Disables leave messages (Place in the channel you recieve welcome messages in).
 * `<xiao:phone>` Allows a channel to recieve phone calls from the `phone` command.
+* `<xiao:phone:no-voicemail>` Prevents this channel from recieving voicemails for missed calls.
 * `<xiao:phone-book:hide>` Hides a channel from the `phone-book` command.
 * `<xiao:portal>` Allows a channel to recieve portal messages from the `portal-send` command.
 
