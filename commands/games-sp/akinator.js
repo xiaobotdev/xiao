@@ -48,7 +48,7 @@ module.exports = class AkinatorCommand extends Command {
 			while (timesGuessed < 3) {
 				if (ans === null) await aki.start();
 				else await aki.step(ans);
-				if (!aki.answers || aki.currentStep >= 79) forceGuess = true;
+				if (!aki.answers || aki.currentStep >= 78) forceGuess = true;
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
