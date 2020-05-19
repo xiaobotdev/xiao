@@ -50,9 +50,9 @@ module.exports = class AkinatorCommand extends Command {
 						win = false;
 						break;
 					} else {
-						const exMsg = aki.guessCount > 3 || forceGuess ? 'I give up.' : 'I can keep going!';
+						const exMsg = aki.guessCount <= 3 || forceGuess ? 'I give up.' : 'I can keep going!';
 						await msg.say(`Hmm... Is that so? ${exMsg}`);
-						if (aki.guessCount > 3 || forceGuess) {
+						if (aki.guessCount <= 3 || forceGuess) {
 							win = true;
 							break;
 						}
@@ -67,7 +67,7 @@ module.exports = class AkinatorCommand extends Command {
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
-					**${++aki.currentStep}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
+					**${++aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
 					${aki.answers.join(' | ')}
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
