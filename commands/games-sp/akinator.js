@@ -59,7 +59,7 @@ module.exports = class AkinatorCommand extends Command {
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
-					**${++aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
+					**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
 					${aki.answers.join(' | ')} | End
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
@@ -77,7 +77,7 @@ module.exports = class AkinatorCommand extends Command {
 				if (aki.progress >= 90 || forceGuess) {
 					timesGuessed += 1;
 					await aki.win();
-					const guess = aki.answers[0];
+					const guess = aki.answers.sort((a, b) => b.proba - a.proba)[0];
 					const embed = new MessageEmbed()
 						.setColor(0xF78B26)
 						.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
