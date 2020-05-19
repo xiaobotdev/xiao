@@ -47,10 +47,31 @@ module.exports = class PhoneCall {
 			await this.origin.send('☎️ Call ended due to inactivity.');
 			await this.recipient.send('☎️ Call ended due to inactivity.');
 		} else if (nonQuitter === 'declined') {
-			const originMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
-			const recipientMsg = validation === 0 ? 'Sent to voicemail (not really).' : 'Declined the call.';
-			await this.origin.send(`☎️ **${this.recipient.guild.name}** ${originMsg}`);
+			const recipientMsg = validation === 0 ? 'Sent to voicemail.' : 'Declined the call.';
 			await this.recipient.send(`☎️ ${recipientMsg}`);
+			if (validation === 0 && channel.topic && !channel.topic.includes('<xiao:phone:no-voicemail>')) {
+				await this.origin.send(`☎️ **${this.recipient.guild.name}** didn't answer... Leave a voicemail?`);
+				const voicemailValidation = await verify(this.origin, null);
+				if (!voicemailValidation) {
+					await this.origin.send('☎️ No voicemail will be left.');
+				} else {
+					await this.origin.send('☎️ Please leave your message (max 280 characters) after the beep. _Beep_.');
+					const voicemail = await this.origin.awaitMessages(res => res.content && res.content.length >= 280, {
+						time: 30000,
+						max: 1
+					});
+					if (!voicemail.size) {
+						await this.origin.send('☎️ No voicemail will be left.');
+					} else {
+						const voicemailMsg = voicemail.first();
+						await this.sendVoicemail(this.recipient, voicemailMsg.author, voicemailMsg.content);
+						await this.origin.send('☎️ Your voicemail has been left.');
+					}
+				}
+			} else {
+				let originMsg = validation === 0 ? 'didn\'t answer...' : 'declined the call...';
+				await this.origin.send(`☎️ **${this.recipient.guild.name}** ${originMsg}`);
+			}
 		} else {
 			const quitter = nonQuitter.id === this.origin.id ? this.recipient : this.origin;
 			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up.`);
@@ -81,6 +102,14 @@ module.exports = class PhoneCall {
 		let content = stripInvites(msg.content);
 		content = content.length > 1000 ? `${shorten(content, 500)} (Message too long)` : content;
 		return channel.send(`☎️ **${msg.author.tag}:** ${content}\n${attachments || ''}`.trim());
+	}
+
+	sendVoicemail(channel, author, message) {
+		if (!channel.topic || channel.topic.includes('<xiao:phone:no-voicemail>')) return null;
+		return channel.send(stripInvites`
+			☎️ New Voicemail from **${channel.guild.name}**:
+			**${author.tag}:** ${message}
+		`);
 	}
 
 	setTimeout() {
