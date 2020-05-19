@@ -33,6 +33,30 @@ module.exports = class AkinatorCommand extends Command {
 			let forceGuess = false;
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (!aki.guessCount || aki.guessCount < 3) {
+				if (ans === null) await aki.start();
+				else await aki.step(ans);
+				if (!aki.answers || aki.currentStep >= 80) {
+					forceGuess = true;
+					continue;
+				};
+				const answers = aki.answers.map(answer => answer.toLowerCase());
+				answers.push('end');
+				await msg.say(stripIndents`
+					**${++aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
+					${aki.answers.join(' | ')}
+				`);
+				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
+				const msgs = await msg.channel.awaitMessages(filter, {
+					max: 1,
+					time: 30000
+				});
+				if (!msgs.size) {
+					await msg.say('Sorry, time is up!');
+					win = 'time';
+					break;
+				}
+				if (msgs.first().content.toLowerCase() === 'end') forceGuess = true;
+				else ans = answers.indexOf(msgs.first().content.toLowerCase());
 				if (aki.progress >= 70 || forceGuess) {
 					await aki.win();
 					const guess = aki.answers[0];
@@ -58,30 +82,6 @@ module.exports = class AkinatorCommand extends Command {
 						}
 					}
 				}
-				if (ans === null) await aki.start();
-				else await aki.step(ans);
-				if (!aki.answers || aki.currentStep >= 80) {
-					forceGuess = true;
-					continue;
-				};
-				const answers = aki.answers.map(answer => answer.toLowerCase());
-				answers.push('end');
-				await msg.say(stripIndents`
-					**${++aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
-					${aki.answers.join(' | ')}
-				`);
-				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
-				const msgs = await msg.channel.awaitMessages(filter, {
-					max: 1,
-					time: 30000
-				});
-				if (!msgs.size) {
-					await msg.say('Sorry, time is up!');
-					win = 'time';
-					break;
-				}
-				if (msgs.first().content.toLowerCase() === 'end') forceGuess = true;
-				else ans = answers.indexOf(msgs.first().content.toLowerCase());
 			}
 			this.client.games.delete(msg.channel.id);
 			if (win === 'time') return msg.say('I guess your silence means I have won.');
