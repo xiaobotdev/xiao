@@ -42,7 +42,6 @@ module.exports = class PhoneCall {
 	async hangup(nonQuitter, validation) {
 		this.active = false;
 		clearTimeout(this.timeout);
-		this.client.phone.delete(this.id);
 		if (nonQuitter === 'time') {
 			await this.origin.send('☎️ Call ended due to inactivity.');
 			await this.recipient.send('☎️ Call ended due to inactivity.');
@@ -65,7 +64,7 @@ module.exports = class PhoneCall {
 						await this.origin.send('☎️ No voicemail will be left.');
 					} else {
 						const voicemailMsg = voicemail.first();
-						await this.sendVoicemail(this.recipient, voicemailMsg.author, voicemailMsg.content);
+						await this.sendVoicemail(this.recipient, voicemailMsg);
 						await this.origin.send('☎️ Your voicemail has been left.');
 					}
 				}
@@ -78,6 +77,7 @@ module.exports = class PhoneCall {
 			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up.`);
 			await quitter.send('☎️ Hung up.');
 		}
+		this.client.phone.delete(this.id);
 		return this;
 	}
 
@@ -105,11 +105,11 @@ module.exports = class PhoneCall {
 		return channel.send(`☎️ **${msg.author.tag}:** ${content}\n${attachments || ''}`.trim());
 	}
 
-	sendVoicemail(channel, author, message) {
+	sendVoicemail(channel, msg) {
 		if (!channel.topic || channel.topic.includes('<xiao:phone:no-voicemail>')) return null;
 		return channel.send(stripInvites`
-			☎️ New Voicemail from **${channel.guild.name}**:
-			**${author.tag}:** ${message}
+			☎️ New Voicemail from **${msg.guild.name}**:
+			**${msg.author.tag}:** ${msg.content}
 		`);
 	}
 
