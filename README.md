@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 425
+Total: 427
 
 ### Utility:
 
@@ -480,6 +480,7 @@ Total: 425
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
 * **math-quiz:** See how fast you can answer a math problem in a given time limit.
 * **quiz:** Answer a quiz question.
+* **reaction-time:** Test your reaction time.
 * **rock-paper-scissors:** Play Rock-Paper-Scissors.
 * **roulette:** Play a game of roulette.
 * **slots:** Play a game of slots.
@@ -545,6 +546,7 @@ Total: 425
 * **sepia:** Draws an image or a user's avatar in sepia.
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
+* **snapcode:** Responds with the Snapcode of a Snapchat user.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
@@ -1241,6 +1243,8 @@ here.
 	* steam-card ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
 - [SMWiki](http://www.smwiki.net/)
 	* smw-level ([Level Name Data](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels))
+- [Snapchat](https://www.snapchat.com/)
+	* snapcode (API)
 - [SPAM Brand](https://www.spam.com/)
 	* spam (Image)
 - [speak lolcat](https://speaklolcat.com/)
