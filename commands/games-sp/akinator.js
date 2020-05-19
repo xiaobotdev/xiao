@@ -46,8 +46,15 @@ module.exports = class AkinatorCommand extends Command {
 			let forceGuess = false;
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (timesGuessed < 3) {
-				if (ans === null) await aki.start();
-				else await aki.step(ans);
+				if (ans === null) {
+					await aki.start();
+				} else {
+					try {
+						await aki.step(ans);
+					} catch {
+						await aki.step(ans);
+					}
+				}
 				if (!aki.answers || aki.currentStep >= 78) forceGuess = true;
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
