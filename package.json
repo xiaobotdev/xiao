@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "114.16.8",
+	"version": "114.17.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -46,7 +46,7 @@
 		"dotenv": "^8.2.0",
 		"gifencoder": "^2.0.1",
 		"mathjs": "^7.0.0",
-		"moment": "^2.25.3",
+		"moment": "^2.26.0",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.31",
 		"node-superfetch": "^0.1.10",
