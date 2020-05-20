@@ -14,7 +14,8 @@ module.exports = class BlushCommand extends ImgurAlbumCommand {
 				{
 					key: 'user',
 					prompt: 'What user do you want to roleplay with?',
-					type: 'user'
+					type: 'user',
+					default: msg => msg.author
 				}
 			]
 		});
