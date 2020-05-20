@@ -45,6 +45,7 @@ module.exports = class AkinatorCommand extends Command {
 			let timesGuessed = 0;
 			let guessResetNum = 0;
 			let forceGuess = false;
+			const guessBlacklist = [];
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (timesGuessed < 3) {
 				if (guessResetNum > 0) guessResetNum--;
@@ -57,7 +58,7 @@ module.exports = class AkinatorCommand extends Command {
 						await aki.step(ans);
 					}
 				}
-				if (!aki.answers || aki.currentStep >= 77) forceGuess = true;
+				if (!aki.answers || aki.currentStep >= 78) forceGuess = true;
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
@@ -78,9 +79,15 @@ module.exports = class AkinatorCommand extends Command {
 				else ans = answers.indexOf(msgs.first().content.toLowerCase());
 				if ((aki.progress >= 90 && !guessResetNum) || forceGuess) {
 					timesGuessed++;
-					guessResetNum += 5;
+					guessResetNum += 10;
 					await aki.win();
-					const guess = aki.answers.sort((a, b) => b.proba - a.proba)[0];
+					const guess = aki.answers.filter(guess => !guessBlacklist.includes(guess.id))[0];
+					if (!guess) {
+						await msg.say('I can\'t think of anyone.');
+						win = true;
+						break;
+					}
+					guessBlacklist.push(guess.id);
 					const embed = new MessageEmbed()
 						.setColor(0xF78B26)
 						.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
