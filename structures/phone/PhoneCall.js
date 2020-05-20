@@ -47,9 +47,11 @@ module.exports = class PhoneCall {
 			await this.origin.send('☎️ Call ended due to inactivity.');
 			await this.recipient.send('☎️ Call ended due to inactivity.');
 		} else if (nonQuitter === 'declined') {
-			const recipientMsg = validation === 0 ? 'Sent to voicemail.' : 'Declined the call.';
-			await this.recipient.send(`☎️ ${recipientMsg}`);
 			const canVoicemail = this.recipient.topic && !this.recipient.topic.includes('<xiao:phone:no-voicemail>');
+			const recipientMsg = validation === 0
+				? canVoicemail ? 'Sent to voicemail.' : 'Missed the call.'
+				: 'Declined the call.';
+			await this.recipient.send(`☎️ ${recipientMsg}`);
 			if (validation === 0 && canVoicemail) {
 				await this.origin.send(`☎️ **${this.recipient.guild.name}** didn't answer... Leave a voicemail?`);
 				const voicemailValidation = await verify(this.origin, null);
