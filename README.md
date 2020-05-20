@@ -1,7 +1,7 @@
 <img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Xiao" src="https://i.imgur.com/R0D0f39.png">  
 
 # Xiao
-[![Build Status](https://travis-ci.org/dragonfire535/xiao.svg?branch=master)](https://travis-ci.org/dragonfire535/xiao)
+[![Build Status](https://github.com/dragonfire535/xiao/workflows/Lint/badge.svg)](https://github.com/dragonfire535/xiao/actions)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
 [![Discord](https://discordapp.com/api/guilds/252317073814978561/embed.png)](https://discord.gg/mTr83zt)
 
