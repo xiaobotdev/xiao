@@ -13,8 +13,11 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install dependencies
-        run: npm install -g eslint@7 && eslint-config-amber eslint-plugin-json
+      - name: Install ESLint v7
+        run: npm install -g eslint@7
+        
+      - name: Install ESLint Configs and Plugins
+        run: npm install eslint-config-amber eslint-plugin-json
 
       - name: Run ESLint
         run: npm test
