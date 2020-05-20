@@ -21,6 +21,7 @@ module.exports = class BlushCommand extends ImgurAlbumCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${msg.author.username}** blushes at **${user.username}**._`;
+		const noUserAuthor = msg.author.id !== user.id;
+		return `_**${msg.author.username}** blushes${noUserAuthor ? ` at **${user.username}**` : ''}._`;
 	}
 };

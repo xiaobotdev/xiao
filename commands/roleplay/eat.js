@@ -22,6 +22,7 @@ module.exports = class EatCommand extends ImgurAlbumCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${user.username}** eats._`;
+		const noUserAuthor = msg.author.id !== user.id;
+		return `_**${msg.author.username}** eats${noUserAuthor ? ` with **${user.username}**` : ''}._`;
 	}
 };
