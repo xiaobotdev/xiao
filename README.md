@@ -1,7 +1,7 @@
 <img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Xiao" src="https://i.imgur.com/R0D0f39.png">  
 
 # Xiao
-[![Build Status](https://github.com/dragonfire535/xiao/workflows/Lint/badge.svg)](https://github.com/dragonfire535/xiao/actions)
+[![Build Status](https://github.com/dragonfire535/xiao/workflows/Lint/badge.svg?branch=master&event=push)](https://github.com/dragonfire535/xiao/actions)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
 [![Discord](https://discordapp.com/api/guilds/252317073814978561/embed.png)](https://discord.gg/mTr83zt)
 
@@ -172,7 +172,7 @@ API. All are free unless otherwise stated.
 * `FACEPLUSPLUS_KEY` and `FACEPLUSPLUS_SECRET` can be obtained at the [FacePlusPlus console](https://console.faceplusplus.com/).
 * `FLICKR_KEY` can be obtained by going to [Flickr's App Garden](https://www.flickr.com/services/) and clicking "Get an API Key".
 * `GIPHY_KEY` can be obtained at the [Giphy developer portal](https://developers.giphy.com/).
-* `GITHUB_PASSWORD` and `GITHUB_USERNAME` are exactly what they say they are, all you have to do to get them is [sign up for GitHub](https://github.com/). Note, if you have two-factor auth on your GitHub account, you can use [an access token](https://github.com/settings/tokens). For the password. Even if you don't, this is recommended for privacy reasons.
+* `GITHUB_PASSWORD` and `GITHUB_USERNAME` are exactly what they say they are, all you have to do to get them is [sign up for GitHub](https://github.com/). If you have two-factor auth on your GitHub account, you can use [an access token](https://github.com/settings/tokens) for the password. Even if you don't, this is recommended for privacy reasons.
 * `GOOGLE_CALENDAR_ID` is an email for a Google calendar to be used in the `calendar` command. For example, US Holidays are `en.usa#holiday@​group.v.calendar.google.com`.
 * `PERSONAL_GOOGLE_CALENDAR_ID` is basically the above, but for extra events. It's named personal as I use my personal email for the events. It's not required, and if not provided will just be skipped.
 * `GOOGLE_KEY` can be obtained at the [Google Developer Console](https://console.developers.google.com/). Be sure to click "Enable APIs and Services" and enable the following APIs:
