@@ -81,7 +81,7 @@ module.exports = class AkinatorCommand extends Command {
 					timesGuessed++;
 					guessResetNum += 10;
 					await aki.win();
-					const guess = aki.answers.filter(guess => !guessBlacklist.includes(guess.id))[0];
+					const guess = aki.answers.filter(g => !guessBlacklist.includes(g.id))[0];
 					if (!guess) {
 						await msg.say('I can\'t think of anyone.');
 						win = true;
