@@ -44,6 +44,7 @@ module.exports = class AkinatorCommand extends Command {
 			let win = false;
 			let timesGuessed = 0;
 			let guessResetNum = 0;
+			let wentBack = false;
 			let forceGuess = false;
 			const guessBlacklist = [];
 			this.client.games.set(msg.channel.id, { name: this.name });
@@ -51,6 +52,8 @@ module.exports = class AkinatorCommand extends Command {
 				if (guessResetNum > 0) guessResetNum--;
 				if (ans === null) {
 					await aki.start();
+				} else if (wentBack) {
+					wentBack = false;
 				} else {
 					try {
 						await aki.step(ans);
@@ -77,13 +80,16 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				}
 				const choice = msgs.first().content.toLowerCase();
-				if (choice === 'end') forceGuess = true;
-				if (choice === 'back') {
+				if (choice === 'end') {
+					forceGuess = true;
+				} else if (choice === 'back') {
 					if (guessResetNum > 0) guessResetNum++;
+					wentBack = true;
 					await aki.back();
 					continue;
+				} else {
+					ans = answers.indexOf(choice);
 				}
-				else ans = answers.indexOf(choice);
 				if ((aki.progress >= 90 && !guessResetNum) || forceGuess) {
 					timesGuessed++;
 					guessResetNum += 10;
