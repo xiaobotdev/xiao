@@ -63,7 +63,7 @@ module.exports = class AkinatorCommand extends Command {
 				answers.push('end');
 				await msg.say(stripIndents`
 					**${aki.currentStep + 2}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
-					${aki.answers.join(' | ')} | End
+					${aki.answers.join(' | ')} | Back | End
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
 				const msgs = await msg.channel.awaitMessages(filter, {
@@ -75,8 +75,14 @@ module.exports = class AkinatorCommand extends Command {
 					win = 'time';
 					break;
 				}
-				if (msgs.first().content.toLowerCase() === 'end') forceGuess = true;
-				else ans = answers.indexOf(msgs.first().content.toLowerCase());
+				const choice = msgs.first().content.toLowerCase();
+				if (choice === 'end') forceGuess = true;
+				if (choice === 'back') {
+					if (guessResetNum > 0) guessResetNum++;
+					await aki.back();
+					continue;
+				}
+				else ans = answers.indexOf(choice);
 				if ((aki.progress >= 90 && !guessResetNum) || forceGuess) {
 					timesGuessed++;
 					guessResetNum += 10;
@@ -93,7 +99,7 @@ module.exports = class AkinatorCommand extends Command {
 						.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
 						.setDescription(`${guess.name}${guess.description ? `\n_${guess.description}_` : ''}`)
 						.setThumbnail(guess.absolute_picture_path || null)
-						.setFooter(`Guess ${timesGuessed}`);
+						.setFooter(forceGuess ? 'Final Guess' : `Guess ${timesGuessed}`);
 					await msg.embed(embed);
 					const verification = await verify(msg.channel, msg.author);
 					if (verification === 0) {
