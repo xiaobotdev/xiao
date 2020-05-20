@@ -2,6 +2,8 @@ const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { delay } = require('../../util/Util');
 const directions = ['up', 'down', 'left', 'right'];
+const colors = ['red', 'blue', 'green', 'yellow'];
+const fruits = ['apple', 'orange', 'pear', 'banana'];
 
 module.exports = class MemoryCommand extends Command {
 	constructor(client) {
@@ -28,7 +30,7 @@ module.exports = class MemoryCommand extends Command {
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const memorize = this.genArray(level);
-			const memorizeDisplay = memorize.map(direction => `\`${direction.toUpperCase()}\``).join(' ');
+			const memorizeDisplay = memorize.map(word => `\`${word.toUpperCase()}\``).join(' ');
 			const memorizeMsg = await msg.say(stripIndents`
 				**You have 10 seconds to memorize:**
 				${memorizeDisplay}
@@ -53,8 +55,9 @@ module.exports = class MemoryCommand extends Command {
 	}
 
 	genArray(level) {
+		const sourceArr = [colors, directions, fruits][Math.floor(Math.random() * 3)];
 		const arr = [];
-		for (let i = 0; i < level; i++) arr.push(directions[Math.floor(Math.random() * directions.length)]);
+		for (let i = 0; i < level; i++) arr.push(sourceArr[Math.floor(Math.random() * sourceArr.length)]);
 		return arr;
 	}
 };
