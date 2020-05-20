@@ -29,7 +29,7 @@ module.exports = class ReactionTimeCommand extends Command {
 				time: 30000
 			});
 			this.client.games.delete(msg.channel.id);
-			if (!msgs.size) return msg.say(`Failed to answer within 30 seconds.`);
+			if (!msgs.size) return msg.say('Failed to answer within 30 seconds.');
 			return msg.say(`Nice one! (Took ${(Date.now() - now) / 1000} seconds)`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
