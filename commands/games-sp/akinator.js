@@ -43,9 +43,11 @@ module.exports = class AkinatorCommand extends Command {
 			let ans = null;
 			let win = false;
 			let timesGuessed = 0;
+			let guessResetNum = 0;
 			let forceGuess = false;
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (timesGuessed < 3) {
+				if (guessResetNum > 0) guessResetNum--;
 				if (ans === null) {
 					await aki.start();
 				} else {
@@ -55,11 +57,11 @@ module.exports = class AkinatorCommand extends Command {
 						await aki.step(ans);
 					}
 				}
-				if (!aki.answers || aki.currentStep >= 78) forceGuess = true;
+				if (!aki.answers || aki.currentStep >= 77) forceGuess = true;
 				const answers = aki.answers.map(answer => answer.toLowerCase());
 				answers.push('end');
 				await msg.say(stripIndents`
-					**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
+					**${aki.currentStep + 2}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
 					${aki.answers.join(' | ')} | End
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
@@ -74,15 +76,17 @@ module.exports = class AkinatorCommand extends Command {
 				}
 				if (msgs.first().content.toLowerCase() === 'end') forceGuess = true;
 				else ans = answers.indexOf(msgs.first().content.toLowerCase());
-				if (aki.progress >= 90 || forceGuess) {
-					timesGuessed += 1;
+				if ((aki.progress >= 90 && !guessResetNum) || forceGuess) {
+					timesGuessed++;
+					guessResetNum += 5;
 					await aki.win();
 					const guess = aki.answers.sort((a, b) => b.proba - a.proba)[0];
 					const embed = new MessageEmbed()
 						.setColor(0xF78B26)
 						.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
 						.setDescription(`${guess.name}${guess.description ? `\n_${guess.description}_` : ''}`)
-						.setThumbnail(guess.absolute_picture_path || null);
+						.setThumbnail(guess.absolute_picture_path || null)
+						.setFooter(`Guess ${timesGuessed}`);
 					await msg.embed(embed);
 					const verification = await verify(msg.channel, msg.author);
 					if (verification === 0) {
