@@ -23,6 +23,7 @@ module.exports = class WakeUpCommand extends ImgurAlbumCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${user.username}** wakes up._`;
+		const noUserAuthor = msg.author.id !== user.id;
+		return `_**${msg.author.username}** wakes up${noUserAuthor ? ` **${user.username}**` : ''}._`;
 	}
 };

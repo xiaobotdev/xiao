@@ -21,6 +21,7 @@ module.exports = class WaveCommand extends ImgurAlbumCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${msg.author.username}** waves at **${user.username}**._`;
+		const noUserAuthor = msg.author.id !== user.id;
+		return `_**${msg.author.username}** waves${noUserAuthor ? ` at **${user.username}**` : ''}._`;
 	}
 };

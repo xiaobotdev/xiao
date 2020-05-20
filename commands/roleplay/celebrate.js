@@ -23,6 +23,7 @@ module.exports = class CelebrateCommand extends ImgurAlbumCommand {
 	}
 
 	generateText(msg, user) {
-		return `_**${user.username}** celebrates._`;
+		const noUserAuthor = msg.author.id !== user.id;
+		return `_**${msg.author.username}** celebrates${noUserAuthor ? ` with **${user.username}**` : ''}._`;
 	}
 };
