@@ -1,9 +1,8 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const Aki = require('aki-api');
+const { Aki, regions } = require('aki-api');
 const { stripIndents } = require('common-tags');
 const { list, verify } = require('../../util/Util');
-const regions = require('../../assets/json/akinator');
 
 module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
