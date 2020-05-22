@@ -49,25 +49,25 @@ module.exports = class ChineseRestaurantCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.fillStyle = 'black';
+		ctx.fillStyle = '#1f1f1f';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.font = 'normal bold 28px Futura';
 		const lines = await wrapText(ctx, text.toUpperCase(), 340);
 		if (lines.length === 1) {
-			ctx.fillText(lines[0], base.width / 2, 294);
+			ctx.fillText(lines[0], base.width / 2, 288);
 		} else if (lines.length === 2) {
-			ctx.fillText(lines[0], base.width / 2, 294);
-			ctx.fillText(lines[1], base.width / 2, 323);
+			ctx.fillText(lines[0], base.width / 2, 288);
+			ctx.fillText(lines[1], base.width / 2, 317);
 		} else if (lines.length === 3) {
-			ctx.fillText(lines[0], base.width / 2, 269);
-			ctx.fillText(lines[1], base.width / 2, 294);
-			ctx.fillText(lines[2], base.width / 2, 323);
+			ctx.fillText(lines[0], base.width / 2, 263);
+			ctx.fillText(lines[1], base.width / 2, 288);
+			ctx.fillText(lines[2], base.width / 2, 317);
 		} else {
-			ctx.fillText(lines[0], base.width / 2, 269);
-			ctx.fillText(lines[1], base.width / 2, 294);
-			ctx.fillText(lines[2], base.width / 2, 323);
-			ctx.fillText(lines[4], base.width / 2, 350);
+			ctx.fillText(lines[0], base.width / 2, 263);
+			ctx.fillText(lines[1], base.width / 2, 288);
+			ctx.fillText(lines[2], base.width / 2, 317);
+			ctx.fillText(lines[4], base.width / 2, 344);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'chinese-restaurant.png' }] });
 	}
