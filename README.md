@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 432
+Total: 433
 
 ### Utility:
 
@@ -519,6 +519,7 @@ Total: 432
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **certificate:** Sends a certificate of excellence with the name and reason of your choice.
+* **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
@@ -791,6 +792,8 @@ here.
 	* itunes ([iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/))
 - [astrology.TV](https://astrology.tv/)
 	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
+- [ATOM.SMASHER.ORG](http://atom.smasher.org/)
+	* chinese-restaurant ([Image](http://atom.smasher.org/chinese/))
 - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339)
 	* friendship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 	* ship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
@@ -891,6 +894,7 @@ here.
 - [FML](https://www.fmylife.com/)
 	* fml (FML Data)
 - [Fontsgeek](http://fontsgeek.com/)
+	* chinese-restaurant ([Futura Condensed Font](http://fontsgeek.com/fonts/Futura-Condensed-Bold))
 	* skyrim-skill ([Futura Condensed Font](http://fontsgeek.com/fonts/Futura-Condensed-Regular))
 - [Foreign exchange rates API](https://exchangeratesapi.io/)
 	* currency (API)
