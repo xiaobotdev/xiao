@@ -12,5 +12,3 @@ report*.json
 config.json
 
 # In-Development Commands
-assets/json/lorem-ipsum.json
-commands/random-res/lorem-ipsum.js
