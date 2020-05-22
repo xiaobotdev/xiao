@@ -889,6 +889,8 @@ here.
 - [FANDOM](https://www.fandom.com/)
 	* superpower ([API](https://powerlisting.fandom.com/api.php))
 	* wikia ([API](https://www.wikia.com/api/v1/))
+- [festivalclaca.cat](https://www.festivalclaca.cat/)
+	* hat ([Soviet Hat Image](https://www.festivalclaca.cat/maxvi/mmbwJ/))
 - [Flickr](https://www.flickr.com/)
 	* flickr ([API](https://www.flickr.com/services/api/))
 - [FML](https://www.fmylife.com/)
