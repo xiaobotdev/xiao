@@ -317,6 +317,7 @@ Total: 433
 * **karen:** Responds with a random image of Karen.
 * **lando:** Responds with a random image of Lando Calrissian.
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
+* **lorem-picsum:** Responds with a random image of a certain size.
 * **meme:** Responds with a random meme.
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
@@ -1071,6 +1072,8 @@ here.
 	* light-novel-cover (API)
 - [LN title generator](https://salty-salty-studios.com/shiz/ln.php)
 	* light-novel-title (API)
+- [Lorem Picsum](https://picsum.photos/)
+	* lorem-picsum (API)
 - [LoveToKnow](https://www.lovetoknow.com/)
 	* horse-race ([Horse Name Data](https://horses.lovetoknow.com/horse-names/funny-horse-names))
 - [Mad Libs](http://www.madlibs.com/)
