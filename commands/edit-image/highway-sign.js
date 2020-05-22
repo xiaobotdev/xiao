@@ -52,19 +52,19 @@ module.exports = class HighwaySignCommand extends Command {
 		ctx.font = '18px Electronic Highway Sign';
 		const lines = await wrapText(ctx, text.toUpperCase(), 178);
 		if (lines.length === 1) {
-			ctx.fillText(lines[0], 89, 109);
+			ctx.fillText(lines[0], 191, 109);
 		} else if (lines.length === 2) {
-			ctx.fillText(lines[0], 89, 109);
-			ctx.fillText(lines[1], 89, 128);
+			ctx.fillText(lines[0], 191, 109);
+			ctx.fillText(lines[1], 191, 128);
 		} else if (lines.length === 3) {
-			ctx.fillText(lines[0], 89, 90);
-			ctx.fillText(lines[1], 89, 109);
-			ctx.fillText(lines[2], 89, 128);
+			ctx.fillText(lines[0], 191, 90);
+			ctx.fillText(lines[1], 191, 109);
+			ctx.fillText(lines[2], 191, 128);
 		} else {
-			ctx.fillText(lines[0], 89, 90);
-			ctx.fillText(lines[1], 89, 109);
-			ctx.fillText(lines[2], 89, 128);
-			ctx.fillText(lines[4], 89, 147);
+			ctx.fillText(lines[0], 191, 90);
+			ctx.fillText(lines[1], 191, 109);
+			ctx.fillText(lines[2], 191, 128);
+			ctx.fillText(lines[4], 191, 147);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'highway-sign.png' }] });
 	}
