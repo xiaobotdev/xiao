@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Futura Condensed.ttf'), {
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Futura Condensed Bold.otf'), {
 	family: 'Futura',
 	weight: 'bold'
 });
