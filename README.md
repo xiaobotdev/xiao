@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 429
+Total: 430
 
 ### Utility:
 
@@ -278,6 +278,7 @@ Total: 429
 * **joke:** Responds with a random joke.
 * **kiss-marry-kill:** Determines who to kiss, who to marry, and who to kill.
 * **light-novel-title:** Responds with a randomly generated Light Novel title.
+* **lorem-ipsum:** Generates a randomized Lorem Ipsum placeholder text.
 * **magic-conch:** Asks your question to the Magic Conch.
 * **name:** Responds with a random name, with the gender of your choice.
 * **number-fact:** Responds with a random fact about a specific number.
