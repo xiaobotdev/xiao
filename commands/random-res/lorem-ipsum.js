@@ -36,13 +36,13 @@ module.exports = class LoremIpsumCommand extends Command {
 					result[result.length - 1] = '.';
 					for (let i = 0; i < characters - resultLength; i++) {
 						const allowedI = [];
-						result.forEach((item, i) => {
-							if (result[i + 1] === '. ') return;
-							if (result[i] === ' ') return;
-							if (result[i] === '. ') return;
-							if (i === result.length - 1) return;
-							if (result[i].endsWith(',')) return;
-							allowedI.push(i);
+						result.forEach((item, j) => {
+							if (result[j + 1] === '. ') return;
+							if (result[j] === ' ') return;
+							if (result[j] === '. ') return;
+							if (j === result.length - 1) return;
+							if (result[j].endsWith(',')) return;
+							allowedI.push(j);
 						});
 						const chosenI = allowedI[Math.floor(Math.random() * allowedI.length)];
 						const insertPoint = result[chosenI];
