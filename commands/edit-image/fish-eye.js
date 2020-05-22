@@ -28,7 +28,7 @@ module.exports = class FishEyeCommand extends Command {
 					key: 'level',
 					prompt: 'What level of distortion would you like to use?',
 					type: 'integer',
-					min: -100,
+					min: 1,
 					max: 100
 				},
 				{
