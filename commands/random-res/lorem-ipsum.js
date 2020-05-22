@@ -16,7 +16,7 @@ module.exports = class LoremIpsumCommand extends Command {
 					key: 'characters',
 					prompt: 'How many characters do you want the text to be?',
 					type: 'integer',
-					min: 6,
+					min: 56,
 					max: 2000
 				}
 			]
