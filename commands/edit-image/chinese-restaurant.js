@@ -58,16 +58,16 @@ module.exports = class ChineseRestaurantCommand extends Command {
 			ctx.fillText(lines[0], base.width / 2, 288);
 		} else if (lines.length === 2) {
 			ctx.fillText(lines[0], base.width / 2, 288);
-			ctx.fillText(lines[1], base.width / 2, 317);
+			ctx.fillText(lines[1], base.width / 2, 315);
 		} else if (lines.length === 3) {
-			ctx.fillText(lines[0], base.width / 2, 263);
+			ctx.fillText(lines[0], base.width / 2, 261);
 			ctx.fillText(lines[1], base.width / 2, 288);
-			ctx.fillText(lines[2], base.width / 2, 317);
+			ctx.fillText(lines[2], base.width / 2, 315);
 		} else {
-			ctx.fillText(lines[0], base.width / 2, 263);
+			ctx.fillText(lines[0], base.width / 2, 261);
 			ctx.fillText(lines[1], base.width / 2, 288);
-			ctx.fillText(lines[2], base.width / 2, 317);
-			ctx.fillText(lines[4], base.width / 2, 344);
+			ctx.fillText(lines[2], base.width / 2, 315);
+			ctx.fillText(lines[4], base.width / 2, 342);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'chinese-restaurant.png' }] });
 	}
