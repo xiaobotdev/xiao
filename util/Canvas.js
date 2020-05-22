@@ -79,6 +79,27 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
+	static fishEye(ctx, level, x, y, width, height) {
+		const frame = ctx.getImageData(x, y, width, height);
+		const source = new Uint8Array(frame.data);
+		for (let i = 0; i < frame.data.length; i += 4) {
+			const sx = (i / 4) % frame.width;
+			const sy = Math.floor(i / 4 / frame.width);
+			const dx = Math.floor(frame.width / 2) - sx;
+			const dy = Math.floor(frame.height / 2) - sy;
+			const dist = Math.sqrt((dx * dx) + (dy * dy));
+			const x2 = Math.round((frame.width / 2) - (dx * Math.sin(dist / (level * Math.PI) / 2)));
+			const y2 = Math.round((frame.height / 2) - (dy * Math.sin(dist / (level * Math.PI) / 2)));
+			const i2 = (y2 * frame.width) + (x2 * 4);
+			frame.data[i] = source[i2];
+			frame.data[i + 1] = source[i2 + 1];
+			frame.data[i + 2] = source[i2 + 2];
+			frame.data[i + 3] = source[i2 + 3];
+		}
+		ctx.putImageData(frame, x, y);
+		return ctx;
+	}
+
 	static hasAlpha(image) {
 		const canvas = createCanvas(image.width, image.height);
 		const ctx = canvas.getContext('2d');

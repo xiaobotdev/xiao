@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 428
+Total: 429
 
 ### Utility:
 
@@ -525,6 +525,7 @@ Total: 428
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **fire:** Draws a fiery border over an image or a user's avatar.
+* **fish-eye:** Draws an image or a user's avatar but with a fish-eye lens.
 * **frame:** Draws a frame around an image or a user's avatar.
 * **ghost:** Draws an image or a user's avatar but with a ghost-like transparency.
 * **glass-shatter:** Draws an image or a user's avatar with a glass shatter in front of it.
@@ -947,6 +948,8 @@ here.
 	* word-chain ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 - [Gravatar](https://en.gravatar.com/)
 	* gravatar ([API](https://en.gravatar.com/site/implement/))
+- [Hackyon](http://www.hackyon.com/playground/fisheye/)
+	* fish-eye (Fish-Eye Code)
 - [Hasbro](https://shop.hasbro.com/en-us)
 	* bro-hoof ([Original "My Little Pony: Friendship is Magic" Show](https://mylittlepony.hasbro.com/en-us))
 	* brony-speak ([Original "My Little Pony: Friendship is Magic" Show](https://mylittlepony.hasbro.com/en-us))
