@@ -81,6 +81,12 @@ module.exports = class HatCommand extends Command {
 					reasonURL: 'https://www.kissclipart.com/halloween-witch-hat-clipart-witch-hat-clip-art-qfycyt/'
 				},
 				{
+					name: 'festivalclaca.cat',
+					url: 'https://www.festivalclaca.cat/',
+					reason: 'Soviet Hat Image',
+					reasonURL: 'https://www.festivalclaca.cat/maxvi/mmbwJ/'
+				},
+				{
 					name: 'Pokémon',
 					url: 'https://www.pokemon.com/us/',
 					reason: 'Ash Hat Original Anime'
