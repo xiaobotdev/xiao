@@ -53,7 +53,7 @@ module.exports = class AlertCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '28px SF Pro';
+		ctx.font = '30px SF Pro';
 		ctx.fillStyle = '#1f1f1f';
 		ctx.textBaseline = 'top';
 		let text = await wrapText(ctx, message, 540);
