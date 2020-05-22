@@ -64,7 +64,7 @@ module.exports = class HighwaySignCommand extends Command {
 			ctx.fillText(lines[0], 318, 90);
 			ctx.fillText(lines[1], 318, 109);
 			ctx.fillText(lines[2], 318, 128);
-			ctx.fillText(lines[4], 318, 147);
+			ctx.fillText(lines[3], 318, 147);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'highway-sign.png' }] });
 	}
