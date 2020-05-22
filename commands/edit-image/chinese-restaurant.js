@@ -67,7 +67,7 @@ module.exports = class ChineseRestaurantCommand extends Command {
 			ctx.fillText(lines[0], base.width / 2, 261);
 			ctx.fillText(lines[1], base.width / 2, 288);
 			ctx.fillText(lines[2], base.width / 2, 315);
-			ctx.fillText(lines[4], base.width / 2, 342);
+			ctx.fillText(lines[3], base.width / 2, 342);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'chinese-restaurant.png' }] });
 	}
