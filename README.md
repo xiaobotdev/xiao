@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 433
+Total: 434
 
 ### Utility:
 
@@ -534,6 +534,7 @@ Total: 433
 * **glass-shatter:** Draws an image or a user's avatar with a glass shatter in front of it.
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
+* **highway-sign:** Sends a highway sign sign with the text of your choice.
 * **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
 * **invert:** Draws an image or a user's avatar but inverted.
@@ -791,10 +792,13 @@ here.
 	* alert ([San Francisco Font](https://developer.apple.com/fonts/))
 	* apple-engraving (API)
 	* itunes ([iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/))
+- [Ash Pikachu Font](https://www.dafont.com/ashpikachu099.d2541)
+	* highway-sign ([Electronic Highway Sign Font](https://www.dafont.com/electronic-highway-sign.font))
 - [astrology.TV](https://astrology.tv/)
 	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
 - [ATOM.SMASHER.ORG](http://atom.smasher.org/)
 	* chinese-restaurant ([Image](http://atom.smasher.org/chinese/))
+	* highway-sign ([Image](http://atom.smasher.org/construction/))
 - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339)
 	* friendship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 	* ship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
