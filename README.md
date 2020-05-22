@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 430
+Total: 432
 
 ### Utility:
 
@@ -549,6 +549,7 @@ Total: 430
 * **sepia:** Draws an image or a user's avatar in sepia.
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
+* **simp:** Draws a "simp" stamp over an image or a user's avatar.
 * **snapcode:** Responds with the Snapcode of a Snapchat user.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
@@ -578,6 +579,7 @@ Total: 430
 ### Meme Generators:
 
 * **3000-years:** Draws an image or a user's avatar over Pokémon's "It's been 3000 years" meme.
+* **alert:** Sends a Presidential Alert message with the text of your choice.
 * **bart-chalkboard:** Sends a "Bart Chalkboard" meme with the text of your choice.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
@@ -784,6 +786,7 @@ here.
 - [Antonio Guillem](http://antonioguillem.com/)
 	* distracted-boyfriend ([Image](https://www.istockphoto.com/photo/gm493656728-77018851))
 - [Apple](https://www.apple.com/)
+	* alert ([San Francisco Font](https://developer.apple.com/fonts/))
 	* apple-engraving (API)
 	* itunes ([iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/))
 - [astrology.TV](https://astrology.tv/)
@@ -1158,6 +1161,9 @@ here.
 	* jeopardy-question ([Korinna Agency Font](https://fontmeme.com/fonts/korinna-agency-font/))
 - [osu!](https://osu.ppy.sh/home)
 	* osu ([API](https://github.com/ppy/osu-api/wiki))
+- [Overtime2005](https://github.com/Overtime2005)
+	* alert (Concept)
+	* simp (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
 	* balloon-pop (Concept)
 - [PaladinsGuru](https://paladins.guru/)
@@ -1283,6 +1289,8 @@ here.
 	* chi-idea (Original "Teasing Master Takagi-san" Manga)
 - [Tenor](https://tenor.com/)
 	* tenor ([API](https://tenor.com/gifapi/documentation))
+- [The Hill](https://thehill.com/)
+	* alert ([Image](https://thehill.com/policy/technology/409737-this-is-a-test-us-officials-test-presidential-alert))
 - [The Internet Chuck Norris Database](http://www.icndb.com/)
 	* chuck-norris ([API](http://www.icndb.com/api/))
 - [The Melancholy of Haruhi Suzumiya](http://www.haruhi.tv/)
@@ -1353,6 +1361,8 @@ here.
 	* wikipedia ([API](https://en.wikipedia.org/w/api.php))
 - [Will You Press The Button?](https://willyoupressthebutton.com/)
 	* will-you-press-the-button (Dilemma Data)
+- [World of Tanks](https://worldoftanks.com/)
+	* simp ([Image](https://worldoftanks.com/es-ar/content/silver-league/open-standings/))
 - [www.aljanh.net](http://www.aljanh.net/)
 	* frame ([Image](http://www.aljanh.net/frame-wallpapers/1508614706.html))
 - [xertris](https://www.deviantart.com/xertris)
