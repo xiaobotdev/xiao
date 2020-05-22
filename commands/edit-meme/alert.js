@@ -56,7 +56,7 @@ module.exports = class AlertCommand extends Command {
 		ctx.font = '28px SF Pro';
 		ctx.fillStyle = 'black';
 		ctx.textBaseline = 'top';
-		let text = await wrapText(ctx, quote, 540);
+		let text = await wrapText(ctx, message, 540);
 		text = text.length > 3 ? `${text.slice(0, 3).join('\n')}...` : text.join('\n');
 		ctx.fillText(text, 47, 186);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'alert.png' }] });
