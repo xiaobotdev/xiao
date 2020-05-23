@@ -16,11 +16,13 @@ module.exports = class PornCommand extends SubredditCommand {
 			nsfw: true,
 			postType: 'image',
 			getIcon: true,
-			credit: {
-				name: 'Overtime2005',
-				url: 'https://github.com/Overtime2005',
-				reason: 'Subreddit List'
-			},
+			credit: [
+				{
+					name: 'Overtime2005',
+					url: 'https://github.com/Overtime2005',
+					reason: 'Subreddit List'
+				}
+			],
 			args: [
 				{
 					key: 'subreddit',
