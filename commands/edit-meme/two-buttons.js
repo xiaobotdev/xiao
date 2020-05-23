@@ -64,7 +64,7 @@ module.exports = class TwoButtonsCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const firstLines = await wrapText(ctx, first, 183);
-		ctx.fillText(firstLines.join('\n'), 20, 111);
+		ctx.fillText(firstLines.join('\n'), 25, 116);
 		ctx.font = '34px Noto';
 		fontSize = 34;
 		while (ctx.measureText(second).width > 163) {
@@ -72,7 +72,7 @@ module.exports = class TwoButtonsCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const secondLines = await wrapText(ctx, second, 122);
-		ctx.fillText(secondLines.join('\n'), 249, 120);
+		ctx.fillText(secondLines.join('\n'), 254, 125);
 		ctx.rotate(12 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'two-buttons.png' }] });
 	}
