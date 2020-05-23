@@ -57,6 +57,7 @@ module.exports = class TwoButtonsCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(12 * (Math.PI / 180));
 		ctx.font = '50px Noto';
+		let fontSize = 50;
 		while (ctx.measureText(first).width > 183) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
@@ -64,6 +65,7 @@ module.exports = class TwoButtonsCommand extends Command {
 		const firstLines = await wrapText(ctx, first, 183);
 		ctx.fillText(firstLines.join('\n'), 126, 70);
 		ctx.font = '50px Noto';
+		fontSize = 50;
 		while (ctx.measureText(second).width > 122) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
