@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 437
+Total: 438
 
 ### Utility:
 
@@ -614,6 +614,7 @@ Total: 437
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
+* **two-buttons:** Sends a "Two Buttons" meme with the buttons of your choice.
 * **ultimate-tattoo:** Draws an image or a user's avatar as "The Ultimate Tattoo".
 * **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
 * **worthless:** Draws an image or a user's avatar over Gravity Falls' "This is worthless." meme.
@@ -955,6 +956,7 @@ here.
 	* steam-now-playing ([Noto Font](https://www.google.com/get/noto/))
 	* steam-now-playing-classic ([Noto Font](https://www.google.com/get/noto/))
 	* translate ([Google Translate](https://translate.google.com/))
+	* two-buttons ([Noto Font](https://www.google.com/get/noto/))
 	* youtube ([YouTube Data API](https://developers.google.com/youtube/v3/))
 - [Google Feud](http://www.googlefeud.com/)
 	* google-feud (Original Game)
@@ -1032,6 +1034,8 @@ here.
 	* guesspionage ([Original "Guesspionage" Game](https://www.jackboxgames.com/guesspionage/))
 	* lie-swatter ([Original "Lie Swatter" Game](https://www.jackboxgames.com/lie-swatter/))
 	* word-spud ([Original "Word Spud" Game](https://www.jackboxgames.com/word-spud/))
+- [Jake Clark](https://jake-clark.tumblr.com/)
+	* two-buttons ([Image](https://twitter.com/jakeclarkdude/status/689141113584619524))
 - [jasmaa](https://github.com/jasmaa/)
 	* neko-atsume-password ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
 - [JellyNeo Item Database](https://items.jellyneo.net/)
