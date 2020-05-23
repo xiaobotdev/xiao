@@ -38,13 +38,13 @@ module.exports = class TwoButtonsCommand extends Command {
 					key: 'first',
 					prompt: 'What should the text of the first button be?',
 					type: 'string',
-					max: 50
+					max: 280
 				},
 				{
 					key: 'second',
 					prompt: 'What should the text of the second button be?',
 					type: 'string',
-					max: 50
+					max: 280
 				}
 			]
 		});
@@ -59,7 +59,7 @@ module.exports = class TwoButtonsCommand extends Command {
 		ctx.rotate(-12 * (Math.PI / 180));
 		ctx.font = '34px Noto';
 		let fontSize = 34;
-		while (ctx.measureText(first).width > 244) {
+		while (ctx.measureText(first).width > 366) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
@@ -67,12 +67,12 @@ module.exports = class TwoButtonsCommand extends Command {
 		ctx.fillText(firstLines.join('\n'), 25, 116);
 		ctx.font = '34px Noto';
 		fontSize = 34;
-		while (ctx.measureText(second).width > 163) {
+		while (ctx.measureText(second).width > 244) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const secondLines = await wrapText(ctx, second, 122);
-		ctx.fillText(secondLines.join('\n'), 254, 125);
+		const secondLines = await wrapText(ctx, second, 118);
+		ctx.fillText(secondLines.join('\n'), 254, 130);
 		ctx.rotate(12 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'two-buttons.png' }] });
 	}
