@@ -16,7 +16,7 @@ module.exports = class CommandLeaderboardCommand extends Command {
 					prompt: 'What page do you want to view?',
 					type: 'integer',
 					min: 1,
-					max: () => Math.ceil(this.client.registry.commands.size / 10)
+					max: Math.ceil(this.client.registry.commands.size / 10)
 				}
 			]
 		});
