@@ -224,13 +224,14 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 438
+Total: 441
 
 ### Utility:
 
 * **eval:** Executes JavaScript code. (Owner-Only)
 * **changelog:** Responds with the bot's latest 10 commits.
 * **cloc:** Responds with the bot's code line count.
+* **command-leaderboard:** Responds with the bot's most used commands.
 * **credit:** Responds with a command's credits list.
 * **donate:** Responds with the bot's donation links.
 * **help:** Displays a list of available commands, or detailed information for a specific command.

@@ -115,6 +115,11 @@ client.on('error', err => client.logger.error(err.stack));
 
 client.on('warn', warn => client.logger.warn(warn));
 
+client.on('commandRun', command => {
+	if (command.uses === undefined) return;
+	command.uses++;
+});
+
 client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));
 
 client.login(XIAO_TOKEN);

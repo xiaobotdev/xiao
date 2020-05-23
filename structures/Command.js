@@ -6,6 +6,7 @@ module.exports = class XiaoCommand extends Command {
 
 		this.argsSingleQuotes = info.argsSingleQuotes || false;
 		this.throttling = info.throttling || { usages: 1, duration: 2 };
+		this.uses = 0;
 		this.credit = info.credit || [];
 		this.credit.push({
 			name: 'Dragon Fire',
