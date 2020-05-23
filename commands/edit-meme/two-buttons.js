@@ -10,7 +10,7 @@ module.exports = class TwoButtonsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'two-buttons',
-			aliases: ['buttons', 'button'],
+			aliases: ['buttons'],
 			group: 'edit-meme',
 			memberName: 'two-buttons',
 			description: 'Sends a "Two Buttons" meme with the buttons of your choice.',
