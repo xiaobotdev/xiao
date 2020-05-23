@@ -54,18 +54,19 @@ module.exports = class TwoButtonsCommand extends Command {
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'two-buttons.png'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
+		ctx.textBaseline = 'top';
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(-12 * (Math.PI / 180));
-		ctx.font = '50px Noto';
-		let fontSize = 50;
+		ctx.font = '34px Noto';
+		let fontSize = 34;
 		while (ctx.measureText(first).width > 244) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const firstLines = await wrapText(ctx, first, 183);
 		ctx.fillText(firstLines.join('\n'), 45, 178);
-		ctx.font = '50px Noto';
-		fontSize = 50;
+		ctx.font = '34px Noto';
+		fontSize = 34;
 		while (ctx.measureText(second).width > 163) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
