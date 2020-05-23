@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 434
+Total: 436
 
 ### Utility:
 
@@ -592,6 +592,7 @@ Total: 434
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
+* **dislike:** Sends an "Everyone Disliked That" meme with the image of your choice.
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
@@ -600,6 +601,7 @@ Total: 434
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
 * **illegal:** Makes President Trump make your text illegal.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
+* **like:** Sends an "Everyone Liked That" meme with the image of your choice.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
 * **look-at-this-photograph:** Draws an image or a user's avatar over Nickelback's photograph.
 * **meme-gen:** Sends a meme with the text and background of your choice.
@@ -807,6 +809,8 @@ here.
 - [AZLyrics](https://www.azlyrics.com/)
 	* lyrics (Lyrics Data)
 - [Bethesda](https://bethesda.net/en/dashboard)
+	* dislike ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
+	* like ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 	* skyrim-skill ([Image, Original "The Elder Scrolls V: Skyrim" Game](https://elderscrolls.bethesda.net/en/skyrim))
 - [Bob Ross](https://www.bobross.com/)
 	* bob-ross (Himself)
@@ -1176,6 +1180,8 @@ here.
 	* osu ([API](https://github.com/ppy/osu-api/wiki))
 - [Overtime2005](https://github.com/Overtime2005)
 	* alert (Concept)
+	* dislike (Concept)
+	* like (Concept)
 	* simp (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
 	* balloon-pop (Concept)
