@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 436
+Total: 437
 
 ### Utility:
 
