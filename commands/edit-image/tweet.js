@@ -41,9 +41,9 @@ module.exports = class TweetCommand extends Command {
 				},
 				{
 					key: 'text',
-					prompt: 'What should the text of the achievement be?',
+					prompt: 'What should the text of the tweet be?',
 					type: 'string',
-					max: 280
+					max: 140
 				}
 			]
 		});
