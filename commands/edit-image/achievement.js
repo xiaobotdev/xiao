@@ -60,4 +60,3 @@ module.exports = class AchievementCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'achievement.png' }] });
 	}
 };
-

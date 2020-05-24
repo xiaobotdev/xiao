@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 443
+Total: 444
 
 ### Utility:
 
@@ -560,6 +560,7 @@ Total: 443
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
+* **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Avatar Manipulation:
@@ -1350,6 +1351,7 @@ here.
 - [Turning Point USA](https://www.tpusa.com/)
 	* dear-liberals (Image)
 - [Twitter](https://twitter.com/)
+	* tweet ([Image, API](https://developer.twitter.com/en/docs.html))
 	* twitter ([API](https://developer.twitter.com/en/docs.html))
 - [u/_Ebb](https://www.reddit.com/user/_Ebb)
 	* eat-pant ([Image](https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/))
