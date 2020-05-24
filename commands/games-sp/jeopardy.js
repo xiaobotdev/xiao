@@ -25,7 +25,7 @@ module.exports = class JeopardyCommand extends Command {
 				{
 					name: 'Jeopardy',
 					url: 'https://www.jeopardy.com/',
-					reason: 'Original Show'
+					reason: 'Music, Original Show'
 				},
 				{
 					name: 'OPTIFONT',
@@ -41,6 +41,13 @@ module.exports = class JeopardyCommand extends Command {
 		try {
 			const question = await this.fetchQuestion();
 			const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
+			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+			if (connection) {
+				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
+				if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+					await msg.react('🔉');
+				}
+			}
 			await msg.reply(`The category is: **${question.category.title.toUpperCase()}**. 30 seconds, good luck.`, {
 				files: [{ attachment: clueCard, name: 'clue-card.png' }]
 			});
