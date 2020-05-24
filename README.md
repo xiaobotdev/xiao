@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 442
+Total: 443
 
 ### Utility:
 
@@ -290,6 +290,7 @@ Total: 442
 * **quantum-coin:** Flips a coin that lands on some form of nothing.
 * **quote:** Responds with a random quote.
 * **random-user:** Randomly chooses a member of the server.
+* **rank:** Ranks the options you provide.
 * **rate:** Rates something.
 * **roast:** Roasts a user.
 * **roll:** Rolls a dice with a minimum/maximum value of your choice.
