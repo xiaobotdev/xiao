@@ -58,12 +58,12 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.font = '115px Spongeboytt1';
-		const lines = await wrapText(ctx, text.toUpperCase(), 813);
+		const lines = await wrapText(ctx, text.toUpperCase(), 1800);
 		const topMost = (canvas.height / 2) - (((115 * lines.length) / 2) + ((60 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((115 + 60) * i);
 			ctx.fillStyle = '#ecbd3b';
-			ctx.fillText(lines[i], (canvas.width / 2) - 10, height - 10);
+			ctx.fillText(lines[i], (canvas.width / 2) + 6, height + 6);
 			ctx.fillStyle = 'black';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
