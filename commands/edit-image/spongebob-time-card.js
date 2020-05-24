@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Spongeboytt1.otf'), { family: 'Spongeboytt1' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Spongeboytt1.ttf'), { family: 'Spongeboytt1' });
 
 module.exports = class SpongebobTimeCardCommand extends Command {
 	constructor(client) {
