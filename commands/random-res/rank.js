@@ -14,13 +14,13 @@ module.exports = class RankCommand extends Command {
 					prompt: 'What choices do you want me rank?',
 					type: 'string',
 					infinite: true,
-					max: 1950
+					max: 150
 				}
 			]
 		});
 	}
 
 	run(msg, { choices }) {
-		return msg.say(shuffle(choices).map((choice, i) => `**${i + 1}.** ${choice}`).join('\n'));
+		return msg.say(shuffle(choices).map((choice, i) => `**${i + 1}.** ${choice}`).slice(0, 10).join('\n'));
 	}
 };
