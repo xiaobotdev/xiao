@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 441
+Total: 442
 
 ### Utility:
 
@@ -555,6 +555,7 @@ Total: 441
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **simp:** Draws a "simp" stamp over an image or a user's avatar.
 * **snapcode:** Responds with the Snapcode of a Snapchat user.
+* **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
@@ -1143,6 +1144,8 @@ here.
 	* dec-talk ([Original "Moonbase Alpha" Game](https://store.steampowered.com/app/39000/Moonbase_Alpha/))
 	* gravity ([Planet Gravity Data](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html))
 	* nasa ([NASA Image and Video Library API](https://api.nasa.gov/))
+- [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc)
+	* spongebob-time-card ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
 - [National Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/)
 	* suicide-hotline (Phone Number)
 - [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
@@ -1158,6 +1161,7 @@ here.
 	* magic-conch ([Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
 	* plankton-plan ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
 	* spongebob-burn ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
+	* spongebob-time-card ([Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
 - [Nike](https://www.nike.com/)
 	* nike-ad (Logo, Concept)
 - [Nintendo](https://www.nintendo.com/)
@@ -1288,6 +1292,8 @@ here.
 	* spam (Image)
 - [speak lolcat](https://speaklolcat.com/)
 	* lolcat (Translation Data)
+- [Spongebob Fanon](https://spongebob-new-fanon.fandom.com/wiki/SpongeBob_Fanon_Wiki)
+	* spongebob-time-card ([Images](https://spongebob-new-fanon.fandom.com/wiki/Gallery_of_Textless_Title_Cards))
 - [Square Enix](https://square-enix-games.com/)
 	* nobody-name ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
 	* sora-selfie ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
