@@ -63,11 +63,6 @@ module.exports = class TweetCommand extends Command {
 			const retweets = Math.floor(Math.random() * 999999) + 1;
 			const replies = Math.floor(Math.random() * 999999) + 1;
 			ctx.drawImage(base, 0, 0);
-			ctx.beginPath();
-			ctx.arc(30, 84, 32, 0, Math.PI * 2);
-			ctx.closePath();
-			ctx.clip();
-			ctx.drawImage(avatar, 30, 84, 64, 64);
 			ctx.textBaseline = 'top';
 			ctx.font = 'normal bold 18px Noto';
 			ctx.fillStyle = 'white';
@@ -101,6 +96,11 @@ module.exports = class TweetCommand extends Command {
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
 			ctx.fillText('Likes', 31 + retweetsLen + 5 + retweetsWordLen + 10 + likesLen + 5, 407);
+			ctx.beginPath();
+			ctx.arc(30 + 32, 84 + 32, 32, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.clip();
+			ctx.drawImage(avatar, 30, 84, 64, 64);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
