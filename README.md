@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 444
+Total: 445
 
 ### Utility:
 
@@ -691,6 +691,7 @@ Total: 444
 * **dec-talk:** The world's best Text-to-Speech.
 * **join:** Joins your voice channel.
 * **leave:** Leaves the current voice channel.
+* **soundboard:** Plays a sound in a voice channel.
 
 ### Phone:
 
@@ -768,6 +769,7 @@ here.
 
 - [07th Expansion](http://07th-expansion.net/)
 	* box-choosing (Original Game)
+	* soundboard (Nipah Sound)
 - [20th Century Fox](https://www.foxmovies.com/)
 	* bart-chalkboard ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
 	* eat-pant ([Original "The Simpsons" Show](http://www.simpsonsworld.com/))
@@ -1230,6 +1232,7 @@ here.
 	* hat (Ash Hat Original Anime)
 	* pokedex (Images, Original Game)
 	* pokemon-fusion (Original Game)
+	* soundboard (Pikachu Sound)
 	* whos-that-pokemon (Images, Original Game)
 	* wynaut (Image, Original Anime)
 - [Pottermore](https://my.pottermore.com/sorting)
@@ -1249,6 +1252,8 @@ here.
 	* cat (API)
 - [RandomFox](https://randomfox.ca/)
 	* fox (API)
+- [Re:ZERO -Starting Life in Another World-](http://re-zero-anime.jp/)
+	* soundboard (Subaru Ringtone Sound)
 - [Recipe Puppy](http://www.recipepuppy.com/)
 	* recipe ([API](http://www.recipepuppy.com/about/api/))
 - [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop)
