@@ -80,7 +80,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.fillText(time, 31, 275);
 			const timeLen = ctx.measureText(time).width;
 			ctx.fillStyle = '#1b95e0';
-			ctx.fillText('Twitter for Xiao', 31 + timeLen + 10, 275);
+			ctx.fillText('Twitter for Xiao', 31 + timeLen + 8, 275);
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '16px Noto';
 			ctx.fillText(this.formatNumber(replies), 87, 463);
