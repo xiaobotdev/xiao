@@ -66,7 +66,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.textBaseline = 'top';
 			ctx.font = 'normal bold 18px Noto';
 			ctx.fillStyle = 'white';
-			ctx.fillText(userData.name, 105, 92);
+			ctx.fillText(userData.name, 105, 84);
 			if (userData.verified) {
 				const verified = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'verified.png')
