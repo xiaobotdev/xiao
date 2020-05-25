@@ -220,9 +220,14 @@ module.exports = class PokerCommand extends Command {
 		this.resetHasGoneOnce(players);
 		if (turnRotation.length === 1) {
 			const remainer = players.get(turnRotation[0]);
-			await msg.say(`${remainer.user} takes the pot.`);
+			await msg.say(stripIndents`
+				${remainer.user} takes the pot.
+
+				_Next game starting in 10 seconds._
+			`);
 			remainer.money += turnData.pot;
 			await this.resetGame(msg, players);
+			await delay(10000);
 			return false;
 		}
 		return true;
