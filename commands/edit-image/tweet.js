@@ -76,7 +76,12 @@ module.exports = class TweetCommand extends Command {
 			ctx.fillText(lines.join('\n'), 32, 164);
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
-			ctx.fillText(moment().format('h:mm A ∙ MMMM D, YYYY'), 31, 275);
+			const time = moment().format('h:mm A ∙ MMMM D, YYYY ∙');
+			ctx.fillText(time, 31, 275);
+			const timeLen = ctx.measureText(time).width;
+			ctx.fillStyle = '#1b95e0';
+			ctx.fillText('Twitter for Xiao', 31 + timeLen + 10, 275);
+			ctx.fillStyle = '#8899a6';
 			ctx.font = '16px Noto';
 			ctx.fillText(this.formatNumber(replies), 87, 463);
 			ctx.fillText(this.formatNumber(likes), 509, 463);
