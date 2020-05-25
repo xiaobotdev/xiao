@@ -30,6 +30,12 @@ module.exports = class TweetCommand extends Command {
 					url: 'https://twitter.com/',
 					reason: 'Image, API',
 					reasonURL: 'https://developer.twitter.com/en/docs.html'
+				},
+				{
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Noto Font',
+					reasonURL: 'https://www.google.com/get/noto/'
 				}
 			],
 			args: [
