@@ -217,7 +217,7 @@ module.exports = class PokerCommand extends Command {
 		let turnOver = false;
 		const turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
 		while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
-		this.resetHasGoneOnce();
+		this.resetHasGoneOnce(players);
 		if (turnRotation.length === 1) {
 			const remainer = players.get(turnRotation[0]);
 			await msg.say(`${remainer.user} takes the pot.`);
