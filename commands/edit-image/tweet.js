@@ -56,7 +56,7 @@ module.exports = class TweetCommand extends Command {
 			if (!this.token) await this.fetchToken();
 			const userData = await this.fetchUser(msg, user);
 			const avatar = await loadImage(userData.avatar);
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg.png'));
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			const likes = Math.floor(Math.random() * 999999) + 1;
@@ -67,6 +67,13 @@ module.exports = class TweetCommand extends Command {
 			ctx.font = 'normal bold 18px Noto';
 			ctx.fillStyle = 'white';
 			ctx.fillText(userData.name, 105, 88);
+			if (userData.verified) {
+				const verified = await loadImage(
+					path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'verified.png')
+				);
+				const nameLen = ctx.measureText(userData.name).width;
+				ctx.drawImage(verified, 105 + nameLen + 4, 88, 21, 21);
+			}
 			ctx.font = '17px Noto';
 			ctx.fillStyle = '#8899a6';
 			ctx.fillText(`@${userData.screenName}`, 106, 111);
@@ -80,7 +87,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.fillText(time, 31, 275);
 			const timeLen = ctx.measureText(time).width;
 			ctx.fillStyle = '#1b95e0';
-			ctx.fillText('Twitter for Xiao', 31 + timeLen + 8, 275);
+			ctx.fillText('Twitter for Xiao', 31 + timeLen + 6, 275);
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '16px Noto';
 			ctx.fillText(this.formatNumber(replies), 87, 463);
