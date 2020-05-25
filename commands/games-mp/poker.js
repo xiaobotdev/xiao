@@ -62,7 +62,8 @@ module.exports = class PokerCommand extends Command {
 					hand: [],
 					user: this.client.users.cache.get(player),
 					currentBet: 0,
-					hasGoneOnce: false
+					hasGoneOnce: false,
+					strikes: 0
 				});
 			}
 			let winner = null;
@@ -267,10 +268,13 @@ module.exports = class PokerCommand extends Command {
 			choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');
 		} else if (turnPlayer.currentBet !== data.currentBet) {
 			choiceAction = 'fold';
+			turnPlayer.strikes++;
 		} else if (data.currentBet === turnPlayer.currentBet) {
 			choiceAction = 'check';
+			turnPlayer.strikes++;
 		} else {
 			choiceAction = 'fold';
+			turnPlayer.strikes++;
 		}
 		const raiseValue = raiseRegex.test(choiceAction) ? Number.parseInt(choiceAction.match(raiseRegex)[1], 10) : null;
 		if (raiseValue) {
@@ -306,7 +310,7 @@ module.exports = class PokerCommand extends Command {
 
 	async resetGame(msg, players) {
 		for (const player of players.values()) {
-			if (player.money <= 0) {
+			if (player.money <= 0 || player.strikes >= 3) {
 				await msg.say(`${player.user} has been kicked.`);
 				players.delete(player.id);
 			} else {
