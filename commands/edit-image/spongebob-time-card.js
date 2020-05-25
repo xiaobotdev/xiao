@@ -21,7 +21,8 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 				{
 					name: 'Nickelodeon',
 					url: 'https://www.nick.com/',
-					reason: 'Original "Spongebob Squarepants" Show'
+					reason: 'Original "Spongebob Squarepants" Show',
+					reasonURL: 'https://www.nick.com/shows/spongebob-squarepants'
 				},
 				{
 					name: 'Spongebob Fanon',

@@ -316,11 +316,13 @@ Total: 444
 * **duck:** Responds with a random duck image.
 * **fidget:** Responds with a random image of Fidget.
 * **fox:** Responds with a random fox image.
+* **hentai:** Responds with a random hentai image. (NSFW)
 * **karen:** Responds with a random image of Karen.
 * **lando:** Responds with a random image of Lando Calrissian.
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **lorem-picsum:** Responds with a random image of a certain size.
 * **meme:** Responds with a random meme.
+* **porn:** Responds with a random porn image. (NSFW)
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
 * **xiao:** Responds with a random image of Xiao Pai.
@@ -884,6 +886,8 @@ here.
 	* worthless ([Original "Gravity Falls" Show](https://disneynow.com/shows/gravity-falls))
 - [Dog CEO](https://dog.ceo/)
 	* dog ([Dog API](https://dog.ceo/dog-api/))
+- [Donald J. Trump](https://www.donaldjtrump.com/)
+	* illegal (Himself, Image)
 - [Drake](https://drakeofficial.com/)
 	* drakeposting ([Original "Hotline Bling" Music Video](https://youtu.be/uxpDa-c-4Mc))
 - [Dust: An Elysian Tail](https://www.noogy.com/main.html)
@@ -1047,7 +1051,7 @@ here.
 - [JellyNeo Item Database](https://items.jellyneo.net/)
 	* neopets-item (Item Data)
 - [Jeopardy](https://www.jeopardy.com/)
-	* jeopardy (Original Show)
+	* jeopardy (Music, Original Show)
 	* jeopardy-question (Original Show)
 - [Jessica Knable](https://picsart.com/u/jessicaknable)
 	* hearts ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
@@ -1148,10 +1152,10 @@ here.
 	* dec-talk ([Original "Moonbase Alpha" Game](https://store.steampowered.com/app/39000/Moonbase_Alpha/))
 	* gravity ([Planet Gravity Data](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html))
 	* nasa ([NASA Image and Video Library API](https://api.nasa.gov/))
-- [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc)
-	* spongebob-time-card ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
 - [National Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/)
 	* suicide-hotline (Phone Number)
+- [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc)
+	* spongebob-time-card ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
 - [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
 	* neko-atsume-password (API, Original Game)
 - [Neopets](http://www.neopets.com/)
