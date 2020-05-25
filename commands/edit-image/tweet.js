@@ -66,13 +66,13 @@ module.exports = class TweetCommand extends Command {
 			ctx.textBaseline = 'top';
 			ctx.font = 'normal bold 18px Noto';
 			ctx.fillStyle = 'white';
-			ctx.fillText(userData.name, 105, 88);
+			ctx.fillText(userData.name, 105, 92);
 			if (userData.verified) {
 				const verified = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'verified.png')
 				);
 				const nameLen = ctx.measureText(userData.name).width;
-				ctx.drawImage(verified, 105 + nameLen + 4, 88, 21, 21);
+				ctx.drawImage(verified, 105 + nameLen + 4, 88, 18, 18);
 			}
 			ctx.font = '17px Noto';
 			ctx.fillStyle = '#8899a6';
