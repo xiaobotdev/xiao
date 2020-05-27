@@ -68,11 +68,11 @@ module.exports = class TweetCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.font = '23px Noto';
 			const lines = await wrapText(ctx, text, 710);
-			const linesLen = (23 * lines.length) + (8 * (lines.length - 1));
+			const linesLen = (23 * lines.length) + (9 * (lines.length - 1));
 			canvas.height += linesLen;
-			const likes = Math.floor(Math.random() * 999999) + 1;
-			const retweets = Math.floor(Math.random() * 999999) + 1;
-			const replies = Math.floor(Math.random() * 999999) + 1;
+			const likes = Math.floor(Math.random() * 100000) + 1;
+			const retweets = Math.floor(Math.random() * 100000) + 1;
+			const replies = Math.floor(Math.random() * 100000) + 1;
 			ctx.fillStyle = '#15202b';
 			ctx.fillRect(0, base1.height, canvas.width, linesLen);
 			ctx.drawImage(base1, 0, 0);
