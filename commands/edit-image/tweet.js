@@ -151,7 +151,7 @@ module.exports = class TweetCommand extends Command {
 				.get('https://api.twitter.com/1.1/users/show.json')
 				.set({ Authorization: `Bearer ${this.token}` })
 				.query({ screen_name: user });
-			const avatarRes = await request.get(body.profile_image_url_https);
+			const avatarRes = await request.get(body.profile_image_url_https.replace('_normal', '_bigger'));
 			return {
 				screenName: body.screen_name,
 				name: body.name,
