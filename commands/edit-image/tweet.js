@@ -49,7 +49,7 @@ module.exports = class TweetCommand extends Command {
 					key: 'text',
 					prompt: 'What should the text of the tweet be?',
 					type: 'string',
-					max: 140
+					max: 280
 				}
 			]
 		});
@@ -62,13 +62,22 @@ module.exports = class TweetCommand extends Command {
 			if (!this.token) await this.fetchToken();
 			const userData = await this.fetchUser(msg, user);
 			const avatar = await loadImage(userData.avatar);
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg.png'));
-			const canvas = createCanvas(base.width, base.height);
+			const base1 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-1.png'));
+			const base2 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-2.png'));
+			const canvas = createCanvas(base1.width + base2.width, base1.height + base2.height);
 			const ctx = canvas.getContext('2d');
+			ctx.font = '23px Noto';
+			const lines = await wrapText(ctx, text, 710);
+			const linesLen = (23 * lines.length) + (15 * lines.length);
+			canvas.height += linesLen;
 			const likes = Math.floor(Math.random() * 999999) + 1;
 			const retweets = Math.floor(Math.random() * 999999) + 1;
 			const replies = Math.floor(Math.random() * 999999) + 1;
-			ctx.drawImage(base, 0, 0);
+			ctx.fillStyle = '#15202b';
+			ctx.fillRect(0, base1.height + 1, canvas.width, linesLen);
+			ctx.drawImage(base1, 0, 0);
+			const base2StartY = base1.height + linesLen + 1;
+			ctx.drawImage(base2, 0, base2StartY);
 			ctx.textBaseline = 'top';
 			ctx.font = 'normal bold 18px Noto';
 			ctx.fillStyle = 'white';
@@ -85,35 +94,34 @@ module.exports = class TweetCommand extends Command {
 			ctx.fillText(`@${userData.screenName}`, 106, 111);
 			ctx.fillStyle = 'white';
 			ctx.font = '23px Noto';
-			const lines = await wrapText(ctx, text, 710);
 			ctx.fillText(lines.join('\n'), 32, 164);
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
 			const time = moment().format('h:mm A ∙ MMMM D, YYYY ∙');
-			ctx.fillText(time, 31, 275);
+			ctx.fillText(time, 31, base2StartY + 16);
 			const timeLen = ctx.measureText(time).width;
 			ctx.fillStyle = '#1b95e0';
-			ctx.fillText('Twitter for Xiao', 31 + timeLen + 6, 275);
+			ctx.fillText('Twitter for Xiao', 31 + timeLen + 6, base2StartY + 16);
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '16px Noto';
-			ctx.fillText(this.formatNumber(replies), 87, 463);
-			ctx.fillText(this.formatNumber(likes), 509, 463);
-			ctx.fillText(this.formatNumber(retweets), 300, 463);
+			ctx.fillText(this.formatNumber(replies), 87, base2StartY + 203);
+			ctx.fillText(this.formatNumber(likes), 509, base2StartY + 203);
+			ctx.fillText(this.formatNumber(retweets), 300, base2StartY + 203);
 			ctx.fillStyle = 'white';
 			ctx.font = 'normal bold 18px Noto';
-			ctx.fillText(this.formatNumber(retweets), 31, 400);
+			ctx.fillText(this.formatNumber(retweets), 31, base2StartY + 141);
 			const retweetsLen = ctx.measureText(this.formatNumber(retweets)).width;
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
-			ctx.fillText('Retweets', 31 + retweetsLen + 5, 400);
+			ctx.fillText('Retweets', 31 + retweetsLen + 5, base2StartY + 141);
 			const retweetsWordLen = ctx.measureText('Retweets').width;
 			ctx.fillStyle = 'white';
 			ctx.font = 'normal bold 18px Noto';
-			ctx.fillText(this.formatNumber(likes), 31 + retweetsLen + 5 + retweetsWordLen + 10, 400);
+			ctx.fillText(this.formatNumber(likes), 31 + retweetsLen + 5 + retweetsWordLen + 10, base2StartY + 141);
 			const likesLen = ctx.measureText(this.formatNumber(likes)).width;
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
-			ctx.fillText('Likes', 31 + retweetsLen + 5 + retweetsWordLen + 10 + likesLen + 5, 400);
+			ctx.fillText('Likes', 31 + retweetsLen + 5 + retweetsWordLen + 10 + likesLen + 5, base2StartY + 141);
 			ctx.beginPath();
 			ctx.arc(30 + 32, 84 + 32, 32, 0, Math.PI * 2);
 			ctx.closePath();
