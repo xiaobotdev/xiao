@@ -12,3 +12,4 @@ report*.json
 config.json
 
 # In-Development Commands
+commands/games-sp/puyo-puyo.js
