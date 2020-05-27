@@ -64,7 +64,7 @@ module.exports = class TweetCommand extends Command {
 			const avatar = await loadImage(userData.avatar);
 			const base1 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-1.png'));
 			const base2 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-2.png'));
-			const canvas = createCanvas(base1.width + base2.width, base1.height + base2.height);
+			const canvas = createCanvas(base1.width, base1.height + base2.height);
 			const ctx = canvas.getContext('2d');
 			ctx.font = '23px Noto';
 			const lines = await wrapText(ctx, text, 710);
@@ -74,9 +74,9 @@ module.exports = class TweetCommand extends Command {
 			const retweets = Math.floor(Math.random() * 999999) + 1;
 			const replies = Math.floor(Math.random() * 999999) + 1;
 			ctx.fillStyle = '#15202b';
-			ctx.fillRect(0, base1.height + 1, canvas.width, linesLen);
+			ctx.fillRect(0, base1.height, canvas.width, linesLen);
 			ctx.drawImage(base1, 0, 0);
-			const base2StartY = base1.height + linesLen + 1;
+			const base2StartY = base1.height + linesLen;
 			ctx.drawImage(base2, 0, base2StartY);
 			ctx.textBaseline = 'top';
 			ctx.font = 'normal bold 18px Noto';
