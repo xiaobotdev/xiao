@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 445
+Total: 446
 
 ### Utility:
 
@@ -470,6 +470,7 @@ Total: 445
 ### Single-Player Games:
 
 * **akinator:** Think about a real or fictional character, I will try to guess who it is.
+* **anagramica:** Try to find all the anagrams for a given set of letters.
 * **blackjack:** Play a game of blackjack.
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **bubble-wrap:** Pop some bubble wrap.
@@ -1119,6 +1120,8 @@ here.
 - [Mattel](https://www.mattel.com/en-us)
 	* 8-ball ([Original Concept](https://www.mattelgames.com/games/en-us/kids/magic-8-ball))
 	* i-have-the-power (Image, Original "He-Man" Show)
+- [Max Irwin](http://binarymax.com/)
+	* anagramica ([Original "Anagramica" Game, API](http://anagramica.com/))
 - [Mayo Clinic](https://www.mayoclinic.org/)
 	* mayo-clinic (Disease Data)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/)
