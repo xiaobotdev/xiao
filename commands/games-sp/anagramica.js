@@ -9,7 +9,7 @@ module.exports = class AnagramicaCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'anagramica',
-			aliases: ['anagram-game', 'anagram-quiz'],
+			aliases: ['anagram-game', 'anagram-quiz', 'anagram', 'anagrams'],
 			group: 'games-sp',
 			memberName: 'anagramica',
 			description: 'Try to find all the anagrams for a given set of letters.',
@@ -35,7 +35,10 @@ module.exports = class AnagramicaCommand extends Command {
 	}
 
 	async run(msg, { time }) {
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {
+			this.client.games.set(msg.channel.id, { name: this.name });
 			const { valid, letters } = await this.fetchList();
 			let points = 0;
 			await msg.reply(stripIndents`
@@ -66,6 +69,7 @@ module.exports = class AnagramicaCommand extends Command {
 			if (points < 1) return msg.reply(`Ouch, your final score was **${points}**. Try harder next time!`);
 			return msg.reply(`Nice job! Your final score was **${points}**!`);
 		} catch (err) {
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
