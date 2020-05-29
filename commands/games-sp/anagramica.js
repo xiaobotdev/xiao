@@ -42,16 +42,20 @@ module.exports = class AnagramicaCommand extends Command {
 				**You have ${time} seconds to provide anagrams for the following letters:**
 				${letters.map(letter => `\`${letter.toUpperCase()}\``).join(' ')}
 			`);
+			const picked = [];
 			const filter = res => {
 				if (res.author.id !== msg.author.id) return false;
+				if (picked.includes(res.content.toLowerCase())) return false;
 				const score = this.getScore(letters, res.content.toLowerCase());
 				if (!score) return false;
 				if (!valid.includes(res.content.toLowerCase())) {
 					points -= score;
+					picked.push(res.content.toLowerCase());
 					res.react(FAILURE_EMOJI_ID || '❌').catch(() => null);
 					return false;
 				}
 				points += score;
+				picked.push(res.content.toLowerCase());
 				res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
 				return true;
 			};
