@@ -26,6 +26,7 @@ module.exports = class AnagramicaCommand extends Command {
 					key: 'time',
 					prompt: 'How long should the game last in seconds? Max 90, min 15.',
 					type: 'integer',
+					default: 45,
 					max: 90,
 					min: 15
 				}
@@ -75,7 +76,7 @@ module.exports = class AnagramicaCommand extends Command {
 	getScore(letters, word) {
 		let score = 0;
 		for (const letter of word.split('')) {
-			if (!letters[letter]) return null;
+			if (!letters.includes(letter)) return null;
 			score += scores[letter];
 		}
 		return score;
