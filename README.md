@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 446
+Total: 447
 
 ### Utility:
 
@@ -715,6 +715,7 @@ Total: 446
 * **bro-hoof:** Gives a user a bro hoof.
 * **celebrate:** Celebrates.
 * **eat:** Feeds a user.
+* **explode:** Explodes a user.
 * **fist-bump:** Fist-bumps a user.
 * **high-five:** High Fives a user.
 * **hold-hands:** Holds hands with a user.
