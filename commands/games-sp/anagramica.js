@@ -65,6 +65,7 @@ module.exports = class AnagramicaCommand extends Command {
 			const msgs = await msg.channel.awaitMessages(filter, {
 				time: time * 1000
 			});
+			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply('Couldn\'t even think of one? Ouch.');
 			if (points < 1) return msg.reply(`Ouch, your final score was **${points}**. Try harder next time!`);
 			return msg.reply(`Nice job! Your final score was **${points}**!`);
