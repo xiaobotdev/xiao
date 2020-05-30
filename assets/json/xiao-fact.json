@@ -39,7 +39,7 @@
 	"The `dick` command, when used on Xiao, will give your own size, plus one.",
 	"There are several special timezones in `time`, such as \"Discord\", \"Dragon\", and \"Neopia\".",
 	"The `bro-hoof` and `high-five` commands used to be the same, but users complained about the MLP GIFs, causing them to be split.",
-	"Xiao used to have several more roleplay commands, such as `cuddle`, `marry`, `divorce`, `falcon-punch`, and `inhale`. These were merged with other commands due to lack of good GIFs.",
+	"Xiao used to have several more roleplay commands, such as `cuddle`, `marry`, `divorce`, and `falcon-punch`. These were merged with other commands due to lack of good GIFs.",
 	"The `anime` and `manga` commands have used MyAnimeList, Kitsu, and Anilist over their development. The current use of Anilist is due to Dragon Fire's status as a data mod there.",
 	"The `company` command has Dragon Fire's logo inserted into it manually, Clearbit does not actually acknowledge us.",
 	"Xiao used to have `gelbooru` and `konachan` commands, but due to their similarity to `danbooru`, they were removed.",
@@ -52,5 +52,6 @@
 	"Xiao began development in February 2017, and was most likely active sometime in 2016 under a different name.",
 	"The command with the most lines of code is, oddly enough, `anime`, at 189.",
 	"The `ship` command gives a special response if the compatability is 69.",
-	"The `jeopardy` command will play the Jeopardy think music if both you and the bot are in a voice channel when the command is used."
+	"The `jeopardy` command will play the Jeopardy think music if both you and the bot are in a voice channel when the command is used.",
+	"Dragon Fire, the developer of Xiao, is forever alone."
 ]

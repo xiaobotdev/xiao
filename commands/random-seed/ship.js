@@ -52,7 +52,14 @@ module.exports = class ShipCommand extends Command {
 
 	async run(msg, { first, second }) {
 		if (first.id === second.id) return msg.reply('Shipping someone with themselves would be pretty weird.');
-		const calculated = Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
+		let calculated;
+		const owner = this.client.isOwner(first) || this.client.isOwner(second);
+		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
+		if (owner) {
+			calculated = 0;
+		} else {
+			calculated = Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
+		}
 		const random = MersenneTwister19937.seed(calculated);
 		const level = integer(0, 100)(random);
 		const firstAvatarURL = first.displayAvatarURL({ format: 'png', size: 512 });
@@ -79,7 +86,7 @@ module.exports = class ShipCommand extends Command {
 			ctx.font = '60px Pinky Cupid';
 			ctx.fillStyle = percentColor(level / 100, percentColors);
 			ctx.fillText(`~${level}%~`, 600, 230);
-			ctx.fillText(this.calculateLevelText(level), 600, 296);
+			ctx.fillText(this.calculateLevelText(level, owner, authorUser), 600, 296);
 			ctx.font = '90px Pinky Cupid';
 			ctx.fillText(level > 49 ? '❤️' : '💔', 600, 100);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ship.png' }] });
@@ -88,7 +95,11 @@ module.exports = class ShipCommand extends Command {
 		}
 	}
 
-	calculateLevelText(level) {
+	calculateLevelText(level, owner, authorUser) {
+		if (owner) {
+			if (authorUser) return 'Pervert';
+			else return 'Yuck';
+		}
 		if (level === 0) return 'Abysmal';
 		if (level > 0 && level < 10) return 'Horrid';
 		if (level > 9 && level < 20) return 'Awful';
