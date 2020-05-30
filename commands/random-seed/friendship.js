@@ -55,7 +55,7 @@ module.exports = class FriendshipCommand extends Command {
 		let level;
 		const owner = this.client.isOwner(first) || this.client.isOwner(second);
 		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
-		if (owner) {
+		if (owner && (first.id === this.client.user.id || second.id === this.client.user.id)) {
 			if (authorUser) level = 100;
 			else level = 0;
 		} else {
