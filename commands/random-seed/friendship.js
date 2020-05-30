@@ -52,17 +52,17 @@ module.exports = class FriendshipCommand extends Command {
 
 	async run(msg, { first, second }) {
 		if (first.id === second.id) return msg.reply('You should be good friends with yourself.');
-		let calculated;
+		let level;
 		const owner = this.client.isOwner(first) || this.client.isOwner(second);
 		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
 		if (owner) {
-			if (authorUser) calculated = 100;
-			else calculated = 0;
+			if (authorUser) level = 100;
+			else level = 0;
 		} else {
-			calculated = -Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
+			const calculated = -Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
+			const random = MersenneTwister19937.seed(calculated);
+			level = integer(0, 100)(random);
 		}
-		const random = MersenneTwister19937.seed(calculated);
-		const level = integer(0, 100)(random);
 		const firstAvatarURL = first.displayAvatarURL({ format: 'png', size: 512 });
 		const secondAvatarURL = second.displayAvatarURL({ format: 'png', size: 512 });
 		try {
