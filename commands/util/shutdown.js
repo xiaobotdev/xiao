@@ -4,7 +4,7 @@ module.exports = class ShutdownCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'shutdown',
-			aliases: ['die', 'explode', 'restart', 'process.exit'],
+			aliases: ['die', 'restart', 'process.exit'],
 			group: 'util',
 			memberName: 'shutdown',
 			description: 'Shuts down the bot.',

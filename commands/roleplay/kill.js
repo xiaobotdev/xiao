@@ -5,6 +5,7 @@ module.exports = class KillCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'kill',
+			aliases: ['murder'],
 			group: 'roleplay',
 			memberName: 'kill',
 			description: 'Kills a user.',
