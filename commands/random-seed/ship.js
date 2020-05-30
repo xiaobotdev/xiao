@@ -55,7 +55,7 @@ module.exports = class ShipCommand extends Command {
 		let level;
 		const owner = this.client.isOwner(first) || this.client.isOwner(second);
 		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
-		if (owner) {
+		if (owner && (first.id === this.client.user.id || second.id === this.client.user.id)) {
 			level = 0;
 		} else {
 			const calculated = Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
