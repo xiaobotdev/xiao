@@ -55,7 +55,8 @@ module.exports = class FriendshipCommand extends Command {
 		let level;
 		const owner = this.client.isOwner(first) || this.client.isOwner(second);
 		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
-		if (owner && (first.id === this.client.user.id || second.id === this.client.user.id)) {
+		const botUser = first.id === this.client.user.id || second.id === this.client.user.id;
+		if (owner && botUser) {
 			if (authorUser) level = 100;
 			else level = 0;
 		} else {
@@ -87,7 +88,7 @@ module.exports = class FriendshipCommand extends Command {
 			ctx.font = '60px Pinky Cupid';
 			ctx.fillStyle = percentColor(level / 100, percentColors);
 			ctx.fillText(`~${level}%~`, 600, 230);
-			ctx.fillText(this.calculateLevelText(level, owner, authorUser), 600, 296);
+			ctx.fillText(this.calculateLevelText(level, owner, authorUser, botUser), 600, 296);
 			ctx.font = '90px Pinky Cupid';
 			ctx.fillText(level > 49 ? '👍' : '👎', 600, 100);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'friendship.png' }] });
@@ -96,8 +97,8 @@ module.exports = class FriendshipCommand extends Command {
 		}
 	}
 
-	calculateLevelText(level, owner, authorUser) {
-		if (owner) {
+	calculateLevelText(level, owner, authorUser, botUser) {
+		if (owner && botUser) {
 			if (authorUser) return 'Perfect';
 			else return 'Yuck';
 		}
