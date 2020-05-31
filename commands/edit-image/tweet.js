@@ -69,7 +69,10 @@ module.exports = class TweetCommand extends Command {
 			ctx.font = '23px Noto';
 			const lines = await wrapText(ctx, text, 710);
 			const lineBreakLen = text.split('\n').length;
-			const linesLen = (23 * lines.length) + (23 * (lineBreakLen - 1)) + (9 * lines.length) + (9 * (lineBreakLen - 1));
+			const linesLen = (23 * lines.length)
+				+ (23 * (lineBreakLen - 1))
+				+ (9 * (lines.length - 1))
+				+ (9 * (lineBreakLen - 1));
 			canvas.height += linesLen;
 			const likes = Math.floor(Math.random() * 100000) + 1;
 			const retweets = Math.floor(Math.random() * 100000) + 1;
