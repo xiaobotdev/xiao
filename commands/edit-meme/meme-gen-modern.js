@@ -12,6 +12,9 @@ module.exports = class MemeGenModernCommand extends Command {
 		super(client, {
 			name: 'meme-gen-modern',
 			aliases: [
+				'meme-gen',
+				'meme-generator',
+				'create-meme',
 				'meme-generator-modern',
 				'create-meme-modern',
 				'meme-gen-m',
@@ -20,7 +23,9 @@ module.exports = class MemeGenModernCommand extends Command {
 				'create-modern-meme',
 				'm-meme-gen',
 				'm-meme-generator',
-				'create-m-meme'
+				'create-m-meme',
+				'mgm',
+				'mg'
 			],
 			group: 'edit-meme',
 			memberName: 'meme-gen-modern',

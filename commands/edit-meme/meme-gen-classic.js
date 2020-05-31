@@ -5,13 +5,24 @@ const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Impact.ttf'), { family: 'Impact' });
 
-module.exports = class MemeGenCommand extends Command {
+module.exports = class MemeGenClassicCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'meme-gen',
-			aliases: ['meme-generator', 'create-meme'],
+			name: 'meme-gen-classic',
+			aliases: [
+				'meme-generator-classic',
+				'create-meme-classic',
+				'meme-gen-c',
+				'classic-meme-gen',
+				'classic-meme-generator',
+				'create-classic-meme',
+				'c-meme-gen',
+				'c-meme-generator',
+				'create-c-meme',
+				'mgc'
+			],
 			group: 'edit-meme',
-			memberName: 'meme-gen',
+			memberName: 'meme-gen-classic',
 			description: 'Sends a meme with the text and background of your choice.',
 			throttling: {
 				usages: 1,

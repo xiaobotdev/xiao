@@ -611,8 +611,8 @@ Total: 449
 * **like:** Sends an "Everyone Liked That" meme with the image of your choice.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
 * **look-at-this-photograph:** Draws an image or a user's avatar over Nickelback's photograph.
+* **meme-gen-classic:** Sends a meme with the text and background of your choice.
 * **meme-gen-modern:** Sends a meme with the text and image of your choice.
-* **meme-gen:** Sends a meme with the text and background of your choice.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
