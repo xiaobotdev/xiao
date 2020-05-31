@@ -28,8 +28,14 @@ module.exports = class HelpCommand extends Command {
 			const embed = new MessageEmbed()
 				.setTitle('Command List')
 				.setColor(0x00AE86);
+			const embed2 = new MessageEmbed()
+				.setTitle('Command List (2)')
+				.setColor(0x00AE86);
 			let cmdCount = 0;
+			let i = 0;
+			const halfGroup = Math.ceil(this.client.registry.groups.size / 2);
 			for (const group of this.client.registry.groups.values()) {
+				i++;
 				const owner = this.client.isOwner(msg.author);
 				const commands = group.commands.filter(cmd => {
 					if (owner) return true;
@@ -38,19 +44,27 @@ module.exports = class HelpCommand extends Command {
 				});
 				if (!commands.size) continue;
 				cmdCount += commands.size;
-				embed.addField(
-					`❯ ${group.name}`,
-					commands.map(cmd => `\`${cmd.name}\``).join(', ')
-				);
+				if (i < halfGroup) {
+					embed.addField(
+						`❯ ${group.name}`,
+						commands.map(cmd => `\`${cmd.name}\``).join(', ')
+					);
+				} else {
+					embed2.addField(
+						`❯ ${group.name}`,
+						commands.map(cmd => `\`${cmd.name}\``).join(', ')
+					);
+				}
 			}
 			if (cmdCount === this.client.registry.commands.size) {
-				embed.setFooter(`${this.client.registry.commands.size} Commands`);
+				embed2.setFooter(`${this.client.registry.commands.size} Commands`);
 			} else {
-				embed.setFooter(`${this.client.registry.commands.size} Commands (${cmdCount} Shown)`);
+				embed2.setFooter(`${this.client.registry.commands.size} Commands (${cmdCount} Shown)`);
 			}
 			try {
 				const msgs = [];
 				msgs.push(await msg.direct({ embed }));
+				msgs.push(await msg.direct({ embed: embed2 }));
 				if (msg.channel.type !== 'dm') msgs.push(await msg.say('📬 Sent you a DM with information.'));
 				return msgs;
 			} catch {
