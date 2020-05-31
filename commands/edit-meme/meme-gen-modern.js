@@ -63,8 +63,11 @@ module.exports = class MemeGenModernCommand extends Command {
 			ctx.font = '40px Noto';
 			const lines = await wrapText(ctx, text, base.width - 10);
 			const lineBreakLen = text.split('\n').length;
-			const linesLen = (40 * lines.length) + (40 * (lineBreakLen - 1)) + (14 * lines.length) + (14 * (lineBreakLen - 1));
-			canvas.height += linesLen + 5;
+			const linesLen = (40 * lines.length)
+				+ (40 * (lineBreakLen - 1))
+				+ (14 * lines.length)
+				+ (14 * (lineBreakLen - 1));
+			canvas.height += linesLen + 14;
 			ctx.font = '40px Noto';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'white';
