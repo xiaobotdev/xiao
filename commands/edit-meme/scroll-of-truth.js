@@ -58,10 +58,10 @@ module.exports = class ScrollOfTruthCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, text, 226);
-		const topMost = 724 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
+		const topMost = 850 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);
-			ctx.fillText(lines[i], 240, height);
+			ctx.fillText(lines[i], 340, height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'scroll-of-truth.png' }] });
 	}
