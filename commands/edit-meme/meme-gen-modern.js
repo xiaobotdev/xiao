@@ -65,6 +65,7 @@ module.exports = class MemeGenModernCommand extends Command {
 			const lineBreakLen = text.split('\n').length;
 			const linesLen = (40 * lines.length) + (40 * (lineBreakLen - 1)) + (9 * lines.length) + (9 * (lineBreakLen - 1));
 			canvas.height += linesLen;
+			ctx.font = '40px Noto';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, linesLen);
