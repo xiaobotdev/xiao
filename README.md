@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 448
+Total: 449
 
 ### Utility:
 
@@ -611,6 +611,7 @@ Total: 448
 * **like:** Sends an "Everyone Liked That" meme with the image of your choice.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
 * **look-at-this-photograph:** Draws an image or a user's avatar over Nickelback's photograph.
+* **meme-gen-modern:** Sends a meme with the text and image of your choice.
 * **meme-gen:** Sends a meme with the text and background of your choice.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
@@ -960,6 +961,7 @@ here.
 	* illegal ([Noto Font](https://www.google.com/get/noto/))
 	* lisa-presentation ([Noto Font](https://www.google.com/get/noto/))
 	* map ([Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro))
+	* modern-meme-gen ([Noto Font](https://www.google.com/get/noto/))
 	* new-password ([Noto Font](https://www.google.com/get/noto/))
 	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
 	* periodic-table ([Noto Font](https://www.google.com/get/noto/))
