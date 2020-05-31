@@ -224,13 +224,15 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 449
+Total: 451
 
 ### Utility:
 
 * **eval:** Executes JavaScript code. (Owner-Only)
 * **changelog:** Responds with the bot's latest 10 commits.
 * **cloc:** Responds with the bot's code line count.
+* **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
+* **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
 * **command-leaderboard:** Responds with the bot's most used commands.
 * **credit:** Responds with a command's credits list.
 * **donate:** Responds with the bot's donation links.
