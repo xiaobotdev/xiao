@@ -53,15 +53,15 @@ module.exports = class ScrollOfTruthCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = '60px Noto';
 		let fontSize = 60;
-		while (ctx.measureText(text).width > 678) {
+		while (ctx.measureText(text).width > 651) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const lines = await wrapText(ctx, text, 226);
+		const lines = await wrapText(ctx, text, 217);
 		const topMost = 850 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);
-			ctx.fillText(lines[i], 340, height);
+			ctx.fillText(lines[i], 350, height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'scroll-of-truth.png' }] });
 	}
