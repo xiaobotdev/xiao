@@ -65,6 +65,7 @@ module.exports = class MemeGenModernCommand extends Command {
 			const lineBreakLen = text.split('\n').length;
 			const linesLen = (23 * lines.length) + (23 * (lineBreakLen - 1)) + (9 * lines.length) + (9 * (lineBreakLen - 1));
 			canvas.height += linesLen;
+			console.log(linesLen);
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, linesLen);
@@ -73,7 +74,7 @@ module.exports = class MemeGenModernCommand extends Command {
 			ctx.drawImage(base, 0, linesLen);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'modern-meme-gen.png' }] });
+			return msg.say({ files: [{ attachment, name: 'meme-gen-modern.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
