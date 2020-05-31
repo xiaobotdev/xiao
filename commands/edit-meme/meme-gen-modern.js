@@ -67,10 +67,10 @@ module.exports = class MemeGenModernCommand extends Command {
 			const linesLen = (23 * lines.length) + (23 * (text.split('\n').length - 1)) + (9 * lines.length);
 			canvas.height += linesLen;
 			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, base.width, height);
+			ctx.fillRect(0, 0, base.width, linesLen);
 			ctx.fillStyle = 'black';
 			ctx.fillText(lines.join('\n'), 5, 5);
-			ctx.drawImage(base, 0, height + 1);
+			ctx.drawImage(base, 0, linesLen + 1);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'modern-meme-gen.png' }] });
