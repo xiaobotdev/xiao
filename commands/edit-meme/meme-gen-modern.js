@@ -75,6 +75,7 @@ module.exports = class MemeGenModernCommand extends Command {
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'modern-meme-gen.png' }] });
 		} catch (err) {
+			throw err;
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
