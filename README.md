@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 447
+Total: 448
 
 ### Utility:
 
@@ -615,6 +615,7 @@ Total: 447
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
+* **scroll-of-truth:** Sends a "Scroll of Truth" meme with the text of your choice.
 * **skyrim-skill:** Sends a "Skyrim Skill" meme with the skill and image of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
 * **sos:** Sends a "Esther Verkest's Help Sign" comic with the text of your choice.
@@ -963,6 +964,7 @@ here.
 	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
 	* periodic-table ([Noto Font](https://www.google.com/get/noto/))
 	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
+	* scroll-of-truth ([Noto Font](https://www.google.com/get/noto/))
 	* sos ([Noto Font](https://www.google.com/get/noto/))
 	* spongebob-burn ([Noto Font](https://www.google.com/get/noto/))
 	* steam-card ([Noto Font](https://www.google.com/get/noto/))
@@ -1283,6 +1285,8 @@ here.
 	* league-of-legends ([API](https://developer.riotgames.com/))
 - [RoboHash](https://robohash.org/)
 	* robohash (API)
+- [Robotatertot](https://robotatertot.tumblr.com/)
+	* scroll-of-truth ([Image](https://robotatertot.tumblr.com/post/156736308530/truth))
 - [RogerHub Final Grade Calculator](https://rogerhub.com/final-grade-calculator/)
 	* final-grade (Concept, Code)
 - [Rotten Tomatoes](https://www.rottentomatoes.com/)
