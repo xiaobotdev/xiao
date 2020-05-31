@@ -58,14 +58,13 @@ module.exports = class MemeGenModernCommand extends Command {
 		try {
 			const { body } = await request.get(image);
 			const base = await loadImage(body);
-			const canvas = createCanvas(body.width, body.height);
+			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.font = '23px Noto';
 			const lines = await wrapText(ctx, text, base.width - 10);
 			const lineBreakLen = text.split('\n').length;
 			const linesLen = (23 * lines.length) + (23 * (lineBreakLen - 1)) + (9 * lines.length) + (9 * (lineBreakLen - 1));
 			canvas.height += linesLen;
-			console.log(linesLen);
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, linesLen);
