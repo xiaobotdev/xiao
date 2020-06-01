@@ -5,7 +5,7 @@ module.exports = class ExplodeCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'explode',
-			aliases: ['explosion', 'megumin', 'boom', 'boom-boom', 'nuke'],
+			aliases: ['explosion', 'megumin', 'boom', 'boom-boom', 'nuke', 'xplode', 'plode'],
 			group: 'roleplay',
 			memberName: 'explode',
 			description: 'Explodes a user.',
