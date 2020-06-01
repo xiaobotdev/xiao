@@ -23,9 +23,11 @@ module.exports = class CommandLeaderboardCommand extends Command {
 	}
 
 	run(msg, { page }) {
+		const lb = this.makeLeaderboard(page);
+		if (!lb.length) return msg.say(`Page ${page} does not exist (yet).`);
 		return msg.say(stripIndents`
-			__**Command Usage Leaderboard (as of Last Restart):**__
-			${this.makeLeaderboard(page).join('\n')}
+			__**Command Usage Leaderboard (Page ${page}):**__
+			${lb.join('\n')}
 		`);
 	}
 
