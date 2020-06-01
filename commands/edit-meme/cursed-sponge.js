@@ -50,4 +50,3 @@ module.exports = class CursedSpongeCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'cursed-sponge.png' }] });
 	}
 };
-

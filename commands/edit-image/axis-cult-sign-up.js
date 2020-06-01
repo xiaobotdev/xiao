@@ -76,4 +76,3 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/jpeg'), name: 'axis-cult-sign-up.jpg' }] });
 	}
 };
-

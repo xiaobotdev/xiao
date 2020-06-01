@@ -84,4 +84,3 @@ module.exports = class PeriodicTableCommand extends Command {
 		);
 	}
 };
-
