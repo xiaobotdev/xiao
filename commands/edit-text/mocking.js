@@ -36,4 +36,3 @@ module.exports = class MockingCommand extends Command {
 		return MOCKING_EMOJI_ID && MOCKING_EMOJI_NAME ? ` <:${MOCKING_EMOJI_NAME}:${MOCKING_EMOJI_ID}>` : '';
 	}
 };
-

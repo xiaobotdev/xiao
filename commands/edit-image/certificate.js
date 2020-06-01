@@ -68,4 +68,3 @@ module.exports = class CertificateCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'certificate.png' }] });
 	}
 };
-

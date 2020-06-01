@@ -41,4 +41,3 @@ module.exports = class LolcatCommand extends Command {
 		}
 	}
 };
-
