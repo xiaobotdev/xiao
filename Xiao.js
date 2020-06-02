@@ -53,7 +53,6 @@ client.on('ready', () => {
 	client.activities.push(
 		{ text: () => `${formatNumber(client.guilds.cache.size)} servers`, type: 'WATCHING' },
 		{ text: () => `with ${formatNumber(client.registry.commands.size)} commands`, type: 'PLAYING' },
-		{ text: () => `${formatNumber(client.users.cache.size)} users`, type: 'WATCHING' },
 		{ text: () => `${formatNumber(client.channels.cache.size)} channels`, type: 'WATCHING' }
 	);
 	client.setInterval(() => {
