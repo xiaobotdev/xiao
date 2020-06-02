@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const slots = ['🍇', '🍊', '🍐', '🍒', '🍋'];
+const slots = ['🍇', '🍊', '🍐', '🍒', '🍋', '🍌', '🔔'];
 
 module.exports = class SlotsCommand extends Command {
 	constructor(client) {
@@ -13,18 +13,28 @@ module.exports = class SlotsCommand extends Command {
 	}
 
 	run(msg) {
-		const slotOne = slots[Math.floor(Math.random() * slots.length)];
-		const slotTwo = slots[Math.floor(Math.random() * slots.length)];
-		const slotThree = slots[Math.floor(Math.random() * slots.length)];
-		if (slotOne === slotTwo && slotOne === slotThree) {
-			return msg.reply(stripIndents`
-				${slotOne}|${slotTwo}|${slotThree}
-				Wow! You won! Great job... er... luck!
-			`);
-		}
+		const slotOne = Math.floor(Math.random() * slots.length);
+		const slotTwo = Math.floor(Math.random() * slots.length);
+		const slotThree = Math.floor(Math.random() * slots.length);
 		return msg.reply(stripIndents`
-			${slotOne}|${slotTwo}|${slotThree}
-			Aww... You lost... Guess it's just bad luck, huh?
+			**[  🎰 | SLOTS ]**
+			------------------
+			${this.wrapSlots(slotOne, false)} : ${this.wrapSlots(slotTwo, false)} : ${this.wrapSlots(slotThree, false)}
+
+			${slots[slotOne]} : ${slots[slotTwo]} : ${slots[slotThree]} **<**
+
+			${this.wrapSlots(slotOne, true)} : ${this.wrapSlots(slotTwo, true)} : ${this.wrapSlots(slotThree, true)}
+			------------------
+			| : : :  **${slotOne === slotTwo === slotThree ? 'WIN!' : 'LOST'}**  : : : |
 		`);
+	}
+
+	wrapSlots(slot, add) {
+		if (add) {
+			if (slot + 1 > slots.length - 1) return slots[0];
+			return slots[slot + 1];
+		}
+		if (slot - 1 < 0) return slots[slots.length - 1];
+		return slots[slot - 1];
 	}
 };
