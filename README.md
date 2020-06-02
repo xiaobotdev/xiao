@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 451
+Total: 452
 
 ### Utility:
 
@@ -244,6 +244,7 @@ Total: 451
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
 * **shutdown:** Shuts down the bot. (Owner-Only)
+* **uses:** Responds with a command's usage stats.
 
 ### Discord Information:
 

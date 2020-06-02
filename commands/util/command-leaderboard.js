@@ -36,7 +36,7 @@ module.exports = class CommandLeaderboardCommand extends Command {
 		let previousPts = null;
 		let positionsMoved = 1;
 		return this.client.registry.commands
-			.filter(command => command.uses !== undefined && !command.unknown && !command.hidden)
+			.filter(command => command.uses !== undefined)
 			.sort((a, b) => b.uses - a.uses)
 			.map(command => {
 				if (previousPts === command.uses) {
