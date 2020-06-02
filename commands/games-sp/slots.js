@@ -16,7 +16,7 @@ module.exports = class SlotsCommand extends Command {
 		const slotOne = Math.floor(Math.random() * slots.length);
 		const slotTwo = Math.floor(Math.random() * slots.length);
 		const slotThree = Math.floor(Math.random() * slots.length);
-		return msg.reply(stripIndents`
+		return msg.say(stripIndents`
 			**[  🎰 | SLOTS ]**
 			------------------
 			${this.wrapSlots(slotOne, false)} : ${this.wrapSlots(slotTwo, false)} : ${this.wrapSlots(slotThree, false)}
