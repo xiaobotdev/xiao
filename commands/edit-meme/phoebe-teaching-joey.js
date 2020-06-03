@@ -8,7 +8,7 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf
 const coord = [
 	[[136, 135], [416, 135]],
 	[[136, 328], [416, 328]],
-	[[136, 507], [416, 507]],
+	[[136, 517], [416, 517]],
 	[[136, 712], [416, 712]]
 ];
 
@@ -76,6 +76,7 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'white';
 		ctx.strokeStyle = 'black';
+		ctx.lineWidth = 5;
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
 		let i = 0;
