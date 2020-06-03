@@ -75,6 +75,7 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'white';
+		ctx.strokeStyle = 'black';
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
 		let i = 0;
@@ -89,6 +90,7 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 					fontSize -= 1;
 					ctx.font = `${fontSize}px Noto`;
 				}
+				ctx.strokeText(step, x, y, 260);
 				ctx.fillText(step, x, y, 260);
 				j++;
 			}
