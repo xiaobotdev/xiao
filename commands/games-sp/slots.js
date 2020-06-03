@@ -25,7 +25,7 @@ module.exports = class SlotsCommand extends Command {
 
 			${this.wrapSlots(slotOne, true)} : ${this.wrapSlots(slotTwo, true)} : ${this.wrapSlots(slotThree, true)}
 			------------------
-			| : : :  **${slotOne === slotTwo === slotThree ? 'WIN!' : 'LOST'}**  : : : |
+			| : : :  **${slotOne === slotTwo && slotOne === slotThree ? 'WIN!' : 'LOST'}**  : : : |
 		`);
 	}
 
