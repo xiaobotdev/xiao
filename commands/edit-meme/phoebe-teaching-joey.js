@@ -6,10 +6,10 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.t
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 const coord = [
-	[[107, 135], [439, 135]],
-	[[105, 328], [443, 328]],
-	[[120, 497], [445, 497]],
-	[[116, 712], [420, 712]]
+	[[136, 135], [416, 135]],
+	[[136, 328], [416, 328]],
+	[[136, 497], [416, 497]],
+	[[136, 712], [416, 712]]
 ];
 
 module.exports = class PhoebeTeachingJoeyCommand extends Command {
