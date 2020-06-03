@@ -76,17 +76,17 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'white';
 		ctx.strokeStyle = 'black';
-		ctx.lineWidth = 5;
+		ctx.lineWidth = 10;
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
 		let i = 0;
 		for (const coords of coord) {
 			let j = 0;
 			for (const [x, y] of coords) {
-				ctx.font = '18px Noto';
+				ctx.font = '20px Noto';
 				let step = steps[i];
 				if (step === incorrect && j === 0) step = correct.join(' ');
-				let fontSize = 18;
+				let fontSize = 20;
 				while (ctx.measureText(step).width > 260) {
 					fontSize -= 1;
 					ctx.font = `${fontSize}px Noto`;
