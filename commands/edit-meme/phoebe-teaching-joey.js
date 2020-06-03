@@ -85,12 +85,11 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 				let step = steps[i];
 				if (step === incorrect && j === 0) step = correct.join(' ');
 				let fontSize = 18;
-				while (ctx.measureText(step).width > 390) {
+				while (ctx.measureText(step).width > 260) {
 					fontSize -= 1;
 					ctx.font = `${fontSize}px Noto`;
 				}
-				const lines = await wrapText(ctx, step, 260);
-				ctx.fillText(lines.join('\n'), x, y);
+				ctx.fillText(step, x, y, 260);
 				j++;
 			}
 			i++;
