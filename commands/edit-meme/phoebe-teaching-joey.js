@@ -76,7 +76,7 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'white';
 		ctx.strokeStyle = 'black';
-		ctx.lineWidth = 10;
+		ctx.lineWidth = 5;
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
 		let i = 0;
