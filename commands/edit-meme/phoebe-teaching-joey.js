@@ -51,7 +51,7 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 					},
 					parse: correct => {
 						const words = correct.split(' ');
-						const divided = Math.ceil(words.length / 3);
+						const divided = Math.floor(words.length / 3);
 						const first = words.slice(0, divided).join(' ');
 						const second = words.slice(divided, divided * 2).join(' ');
 						const third = words.slice(divided * 2, words.length).join(' ');
@@ -74,17 +74,17 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.fillStyle = '#e3e35f';
+		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
 		let i = 0;
 		for (const coords of coord) {
 			let j = 0;
 			for (const [x, y] of coords) {
-				ctx.font = '15px Noto';
+				ctx.font = '18px Noto';
 				let step = steps[i];
 				if (step === incorrect && j === 0) step = correct.join(' ');
-				let fontSize = 15;
+				let fontSize = 18;
 				while (ctx.measureText(step).width > 390) {
 					fontSize -= 1;
 					ctx.font = `${fontSize}px Noto`;
