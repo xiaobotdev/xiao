@@ -618,6 +618,7 @@ Total: 452
 * **meme-gen-modern:** Sends a meme with the text and image of your choice.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
+* **phoebe-teaching-joey:** Sends a "Phoebe Teaching Joey" meme with text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **scroll-of-truth:** Sends a "Scroll of Truth" meme with the text of your choice.
 * **skyrim-skill:** Sends a "Skyrim Skill" meme with the skill and image of your choice.
@@ -968,6 +969,7 @@ here.
 	* new-password ([Noto Font](https://www.google.com/get/noto/))
 	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
 	* periodic-table ([Noto Font](https://www.google.com/get/noto/))
+	* phoebe-teaching-joey ([Noto Font](https://www.google.com/get/noto/))
 	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
 	* scroll-of-truth ([Noto Font](https://www.google.com/get/noto/))
 	* sos ([Noto Font](https://www.google.com/get/noto/))
@@ -1410,6 +1412,8 @@ here.
 	* this-for-that ([API](http://itsthisforthat.com/api.php))
 - [WAIT: What Anime Is This?](https://trace.moe/)
 	* what-anime ([API](https://soruly.github.io/trace.moe/#/))
+- [Warner Bros.](https://www.warnerbros.com/)
+	* phoebe-teaching-joey ([Images, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
 - [Wattpad](https://www.wattpad.com/)
 	* wattpad ([API](https://www.wattpad.com/developer/docs/api))
 - [wikiHow](https://www.wikihow.com/Main-Page)
