@@ -13,7 +13,15 @@ module.exports = class SuggestCommandCommand extends Command {
 	}
 
 	run(msg) {
-		const command = this.client.registry.commands.random();
+		const command = this.client.registry.commands
+			.filter(cmd => {
+				if (cmd.hidden || cmd.unknown) return false;
+				if (!msg.channel.nsfw && cmd.nsfw) return false;
+				if (!this.client.isOwner(msg.author) && cmd.ownerOnly) return false;
+				if (!msg.guild && cmd.guildOnly) return false;
+				return true;
+			})
+			.random();
 		return msg.say(stripIndents`
 			Have you tried **${command.name}**?
 			_${command.description}_
