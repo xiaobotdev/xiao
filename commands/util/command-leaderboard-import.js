@@ -48,7 +48,7 @@ module.exports = class CommandLeaderboardImportCommand extends Command {
 			if (typeof value !== 'number') continue;
 			const found = this.client.registry.commands.get(id);
 			if (!found || found.uses === undefined) continue;
-			found.uses += value;
+			found.uses = value;
 		}
 		return msg.say('Successfully imported command leaderboard.');
 	}
