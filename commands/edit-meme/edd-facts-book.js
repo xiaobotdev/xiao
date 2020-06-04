@@ -53,7 +53,7 @@ module.exports = class EddFactsBookCommand extends Command {
 		ctx.rotate(-15 * (Math.PI / 180));
 		ctx.font = '30px Noto';
 		let fontSize = 30;
-		while (ctx.measureText(first).width > 549) {
+		while (ctx.measureText(fact).width > 549) {
 			fontSize -= 1;
 			ctx.font = `${fontSize}px Noto`;
 		}
