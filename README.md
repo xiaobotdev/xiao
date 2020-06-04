@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 453
+Total: 454
 
 ### Utility:
 
@@ -605,6 +605,7 @@ Total: 453
 * **dislike:** Sends an "Everyone Disliked That" meme with the image of your choice.
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
+* **edd-facts-book:** Sends a "Double D's Facts Book" meme with the fact of your choice.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
@@ -846,6 +847,8 @@ here.
 - [Capcom](http://www.capcom.com/us/)
 	* ace-attorney ([Images, Original "Ace Attorney" Game](http://www.ace-attorney.com/))
 	* zero-dialogue ([Image, Original "Megaman Zero" Game](http://megaman.capcom.com/))
+- [Cartoon Network](https://www.cartoonnetworkme.com/)
+	* edd-facts-book ([Image, Original "Ed, Edd n Eddy" TV Series](https://www.cartoonnetworkme.com/show/ed-edd-n-eddy))
 - [cheesecakejedi](https://imgur.com/user/cheesecakejedi)
 	* axis-cult-sign-up ([Image](https://imgur.com/gallery/quQTD))
 - [Cheng Xiao](https://www.instagram.com/chengxiao_0715/)
@@ -956,6 +959,7 @@ here.
 	* catch ([Noto Font](https://www.google.com/get/noto/))
 	* dear-liberals ([Oswald Font](https://fonts.google.com/specimen/Oswald))
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
+	* edd-facts-book ([Noto Font](https://www.google.com/get/noto/))
 	* genie-rules ([Noto Font](https://www.google.com/get/noto/))
 	* google ([Custom Search API](https://cse.google.com/cse/all))
 	* google-autofill (Autofill API)
