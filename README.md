@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 455
+Total: 456
 
 ### Utility:
 
@@ -314,6 +314,7 @@ Total: 455
 ### Random Image:
 
 * **bird:** Responds with a random image of a bird.
+* **bunny:** Responds with a random image of a bunny.
 * **cat:** Responds with a random cat image.
 * **dog:** Responds with a random dog image.
 * **duck:** Responds with a random duck image.
@@ -843,6 +844,8 @@ here.
 	* bulbapedia ([API](https://bulbapedia.bulbagarden.net/w/api.php))
 - [Bulletin of the Atomic Scientists](https://thebulletin.org/)
 	* doomsday-clock ([Doomsday Clock Data](https://thebulletin.org/doomsday-clock/current-time/))
+- [bunnies.io](https://www.bunnies.io/)
+	* bunny (API)
 - [calzoneman](https://github.com/calzoneman)
 	* dec-talk ([API](https://github.com/calzoneman/aeiou))
 - [Capcom](http://www.capcom.com/us/)
