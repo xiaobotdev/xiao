@@ -58,7 +58,7 @@ module.exports = class FireCommand extends Command {
 			for (let i = 0; i < frameCount; i += 2) {
 				const frameID = `frame-${i.toString().padStart(2, '0')}.gif`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', frameID));
-				drawImageWithTint(ctx, avatar, '#fc671e', 0, 0);
+				drawImageWithTint(ctx, avatar, '#fc671e', 0, 0, avatar.width, avatar.height);
 				ctx.drawImage(frame, 0, avatar.height - height, avatar.width, height);
 				encoder.addFrame(ctx);
 				encoder.addFrame(ctx);
