@@ -1,4 +1,6 @@
 const Command = require('../../structures/Command');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = class CommandLeaderboardExportCommand extends Command {
 	constructor(client) {
@@ -30,6 +32,9 @@ module.exports = class CommandLeaderboardExportCommand extends Command {
 		}
 		text = text.slice(0, -1);
 		text += '}';
+		fs.writeFileSync(path.join(__dirname, '..', '..', 'command-leaderboard.json'), Buffer.from(text), {
+			encoding: 'utf8'
+		});
 		return msg.say({ files: [{ attachment: Buffer.from(text), name: 'command-leaderboard.json' }] });
 	}
 };
