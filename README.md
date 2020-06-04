@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 454
+Total: 455
 
 ### Utility:
 
@@ -535,7 +535,7 @@ Total: 454
 * **create-qr-code:** Converts text to a QR Code.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
-* **fire:** Draws a fiery border over an image or a user's avatar.
+* **fire-frame:** Draws a fiery border over an image or a user's avatar.
 * **fish-eye:** Draws an image or a user's avatar but with a fish-eye lens.
 * **frame:** Draws a frame around an image or a user's avatar.
 * **ghost:** Draws an image or a user's avatar but with a ghost-like transparency.
@@ -574,6 +574,7 @@ Total: 454
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
 * **bob-ross:** Draws a user's avatar over Bob Ross' canvas.
 * **chocolate-milk:** Draws a user's avatar holding chocolate milk.
+* **fire:** Burns a user's avatar.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **hearts:** Draws hearts around a user's avatar.
@@ -1115,6 +1116,8 @@ here.
 	* lorem-picsum (API)
 - [LoveToKnow](https://www.lovetoknow.com/)
 	* horse-race ([Horse Name Data](https://horses.lovetoknow.com/horse-names/funny-horse-names))
+- [LowGif](http://www.lowgif.com/)
+	* fire ([Images](http://www.lowgif.com/43360ebce9150f23.html))
 - [Mad Libs](http://www.madlibs.com/)
 	* mad-libs (Original Game)
 - [Mad:)Takes](https://www.madtakes.com/index.php)
@@ -1347,7 +1350,7 @@ here.
 - [Superpower Wiki](https://powerlisting.fandom.com/wiki/Superpower_Wiki)
 	* superpower (Superpower Data)
 - [susi1959](https://en.picmix.com/profile/susi1959)
-	* fire ([Image](https://en.picmix.com/stamp/FIRE-FRAME-ORANGE-cadre-feu-orange-360274))
+	* fire-frame ([Image](https://en.picmix.com/stamp/FIRE-FRAME-ORANGE-cadre-feu-orange-360274))
 - [Tatsumaki](https://tatsumaki.xyz/)
 	* beautiful (Image, Concept)
 	* fishy (Concept)
