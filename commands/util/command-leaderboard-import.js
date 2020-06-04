@@ -40,7 +40,7 @@ module.exports = class CommandLeaderboardImportCommand extends Command {
 				});
 				file = JSON.parse(read);
 			} catch (err) {
-				return msg.say(`Could not read \`command-leaderboard.json\`: ${err.message}`);
+				return msg.say(`Could not read \`command-leaderboard.json\`: \`${err.message}\`.`);
 			}
 		}
 		if (typeof file !== 'object' || Array.isArray(file)) return msg.reply('Please provide a valid JSON file.');
