@@ -52,6 +52,7 @@ module.exports = class FireCommand extends Command {
 			encoder.setRepeat(0);
 			encoder.setDelay(4);
 			encoder.setQuality(200);
+			encoder.setTransparent('#000000');
 			const ratio = avatar.width / avatar.height;
 			const height = Math.round(avatar.width / ratio);
 			for (let i = 0; i < frameCount; i += 2) {
