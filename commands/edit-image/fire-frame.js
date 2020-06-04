@@ -4,13 +4,13 @@ const request = require('node-superfetch');
 const path = require('path');
 const { drawImageWithTint } = require('../../util/Canvas');
 
-module.exports = class FireCommand extends Command {
+module.exports = class FireFrameCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'fire',
-			aliases: ['hell'],
+			name: 'fire-frame',
+			aliases: ['hell-frame', 'burn-frame'],
 			group: 'edit-image',
-			memberName: 'fire',
+			memberName: 'fire-frame',
 			description: 'Draws a fiery border over an image or a user\'s avatar.',
 			throttling: {
 				usages: 1,
@@ -38,7 +38,7 @@ module.exports = class FireCommand extends Command {
 
 	async run(msg, { image }) {
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire.png'));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire-frame.png'));
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
@@ -47,7 +47,7 @@ module.exports = class FireCommand extends Command {
 			ctx.drawImage(base, 0, 0, data.width, data.height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'fire.png' }] });
+			return msg.say({ files: [{ attachment, name: 'fire-frame.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
