@@ -50,7 +50,7 @@ module.exports = class EddFactsBookCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.textBaseline = 'top';
 		ctx.drawImage(base, 0, 0);
-		ctx.rotate(-15 * (Math.PI / 180));
+		ctx.rotate(15 * (Math.PI / 180));
 		ctx.font = '30px Noto';
 		let fontSize = 30;
 		while (ctx.measureText(fact).width > 549) {
@@ -58,8 +58,8 @@ module.exports = class EddFactsBookCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, fact, 183);
-		ctx.fillText(lines.join('\n'), 119, 306, 183);
-		ctx.rotate(15 * (Math.PI / 180));
+		ctx.fillText(lines.join('\n'), 119, 326, 183);
+		ctx.rotate(-15 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'edd-facts-book.png' }] });
 	}
 };
