@@ -50,7 +50,7 @@ module.exports = class FireCommand extends Command {
 			const stream = encoder.createReadStream();
 			encoder.start();
 			encoder.setRepeat(0);
-			encoder.setDelay(4);
+			encoder.setDelay(.4);
 			encoder.setQuality(200);
 			encoder.setTransparent('#000000');
 			const ratio = avatar.width / avatar.height;
