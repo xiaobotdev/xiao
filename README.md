@@ -389,10 +389,10 @@ Total: 456
 
 ### Search:
 
+* **anime-character:** Searches AniList for your query, getting character results.
 * **anime:** Searches AniList for your query, getting anime results.
 * **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
-* **character:** Searches AniList for your query, getting character results.
 * **company:** Responds with the name and logo of a company.
 * **country:** Responds with information on a country.
 * **danbooru:** Responds with an image from Danbooru, with optional query. (NSFW)
