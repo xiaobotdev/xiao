@@ -806,7 +806,7 @@ here.
 - [AniList](https://anilist.co/)
 	* anime ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* anime-airing ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
-	* character ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
+	* anime-character ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* manga ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 - [Antonio Guillem](http://antonioguillem.com/)
 	* distracted-boyfriend ([Image](https://www.istockphoto.com/photo/gm493656728-77018851))
