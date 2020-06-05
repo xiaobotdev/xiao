@@ -44,13 +44,13 @@ const types = {
 	MANGA: 'Manga'
 };
 
-module.exports = class CharacterCommand extends Command {
+module.exports = class AnimeCharacterCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'character',
-			aliases: ['anilist-character', 'anime-character', 'manga-character', 'manga-char', 'ani-char', 'char'],
+			name: 'anime-character',
+			aliases: ['anilist-character', 'character', 'manga-character', 'manga-char', 'ani-char', 'char'],
 			group: 'search',
-			memberName: 'character',
+			memberName: 'anime-character',
 			description: 'Searches AniList for your query, getting character results.',
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
@@ -82,7 +82,7 @@ module.exports = class CharacterCommand extends Command {
 				.setURL(character.siteUrl)
 				.setThumbnail(character.image.large || character.image.medium || null)
 				.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)
-				.setDescription(character.description ? cleanAnilistHTML(character.description) : 'No description.')
+				.setDescription(character.description ? cleanAnilistHTML(character.description, false) : 'No description.')
 				.addField('❯ Appearances', character.media.edges.map(edge => {
 					const title = edge.node.title.english || edge.node.title.userPreferred;
 					return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);

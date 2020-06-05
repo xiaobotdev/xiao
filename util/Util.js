@@ -175,9 +175,10 @@ module.exports = class Util {
 		return false;
 	}
 
-	static cleanAnilistHTML(html) {
-		let clean = html
-			.replace(/\r|\n|\f/g, '')
+	static cleanAnilistHTML(html, removeLineBreaks = true) {
+		let clean = html;
+		if (removeLineBreaks) clean = clean.replace(/\r|\n|\f/g, '');
+		clean = clean
 			.replace(/<br>/g, '\n')
 			.replace(/&#039;/g, '\'')
 			.replace(/&quot;/g, '"')
