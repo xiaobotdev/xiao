@@ -50,16 +50,22 @@ client.registry
 
 client.on('ready', () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
+
+	// Push client-related activities
 	client.activities.push(
 		{ text: () => `${formatNumber(client.guilds.cache.size)} servers`, type: 'WATCHING' },
 		{ text: () => `with ${formatNumber(client.registry.commands.size)} commands`, type: 'PLAYING' },
 		{ text: () => `${formatNumber(client.channels.cache.size)} channels`, type: 'WATCHING' }
 	);
+
+	// Interval to change activity every minute
 	client.setInterval(() => {
 		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
 		const text = typeof activity.text === 'function' ? activity.text() : activity.text;
 		client.user.setActivity(text, { type: activity.type });
 	}, 60000);
+
+	// Set up meme poster interval
 	if (client.memePoster) {
 		client.setInterval(async () => {
 			try {
@@ -70,12 +76,23 @@ client.on('ready', () => {
 			}
 		}, client.memePoster.postInterval);
 	}
+
+	// Import command-leaderboard.json
 	try {
 		const results = client.importCommandLeaderboard();
 		if (!results) client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
 	} catch (err) {
 		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
 	}
+
+	// Export command-leaderboard.json every 30 minutes
+	client.setInterval(() => {
+		try {
+			client.exportCommandLeaderboard();
+		} catch (err) {
+			client.logger.error(`[LEADERBOARD] Failed to export command-leaderboard.json:\n${err.stack}`);
+		}
+	}, 1.8e+6);
 });
 
 client.on('message', async msg => {
@@ -113,6 +130,7 @@ client.on('guildMemberRemove', async member => {
 
 client.on('disconnect', event => {
 	client.logger.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
+	client.exportCommandLeaderboard();
 	process.exit(0);
 });
 
