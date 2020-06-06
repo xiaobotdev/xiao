@@ -60,7 +60,7 @@ module.exports = class PokerCommand extends Command {
 					money: 5000,
 					id: player,
 					hand: [],
-					user: this.client.users.cache.get(player),
+					user: await this.client.users.fetch(player),
 					currentBet: 0,
 					hasGoneOnce: false,
 					strikes: 0
