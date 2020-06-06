@@ -65,7 +65,7 @@ module.exports = class BingoCommand extends Command {
 				const filter = res => {
 					if (!players.has(res.author.id)) return false;
 					if (res.content.toLowerCase() !== 'bingo') return false;
-					if (!this.checkBingo(players.get(res.author.id).board), called) {
+					if (!this.checkBingo(players.get(res.author.id).board, called)) {
 						msg.say(`${res.author}, you don't have bingo, liar.`).catch(() => null);
 						return false;
 					}
@@ -104,12 +104,12 @@ module.exports = class BingoCommand extends Command {
 	generateBoard() {
 		const result = [];
 		for (const [rowID, values] of Object.entries(nums)) {
-			const nums = [];
+			const picked = [];
 			for (let i = 0; i < 5; i++) {
-				const valid = values.filter(value => !nums.includes(value));
-				nums.push(valid[Math.floor(Math.random() * valid.length)]);
+				const valid = values.filter(value => !picked.includes(value));
+				picked.push(valid[Math.floor(Math.random() * valid.length)]);
 			}
-			const sorted = nums.sort((a, b) => a - b);
+			const sorted = picked.sort((a, b) => a - b);
 			if (rowID === 'N') sorted[2] = 'FR';
 			result.push(sorted);
 		}
@@ -122,7 +122,7 @@ module.exports = class BingoCommand extends Command {
 			const mapVal = values.map(value => {
 				if (called.includes(value) || value === 'FR') return 'XX';
 				return value.toString().padStart(2, '0');
-			}).join(' | ')
+			}).join(' | ');
 			return `${row} | ${mapVal}`;
 		}).join('\n\n');
 		return stripIndents`
