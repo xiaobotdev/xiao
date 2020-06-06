@@ -48,7 +48,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		if (typeof file !== 'object' || Array.isArray(file)) return null;
 		for (const [id, value] of Object.entries(file)) {
 			if (typeof value !== 'number') continue;
-			const found = this.client.registry.commands.get(id);
+			const found = this.registry.commands.get(id);
 			if (!found || found.uses === undefined) continue;
 			found.uses = value;
 		}
