@@ -17,18 +17,18 @@ module.exports = class NeedsMoreJpegCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'image',
-					prompt: 'What image would you like to edit?',
-					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
-				},
-				{
 					key: 'quality',
 					prompt: 'What quality should the resulting image use?',
 					type: 'float',
 					default: 0.5,
 					min: 0.01,
 					max: 10
+				},
+				{
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
