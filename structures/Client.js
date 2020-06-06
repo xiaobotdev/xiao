@@ -54,4 +54,19 @@ module.exports = class XiaoClient extends CommandoClient {
 		}
 		return file;
 	}
+
+	exportCommandLeaderboard() {
+		let text = '{';
+		for (const command of this.registry.commands.values()) {
+			if (command.uses === undefined) continue;
+			text += `"${command.name}":${command.uses},`;
+		}
+		text = text.slice(0, -1);
+		text += '}';
+		const buf = Buffer.from(text);
+		fs.writeFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), buf, {
+			encoding: 'utf8'
+		});
+		return buf;
+	}
 };

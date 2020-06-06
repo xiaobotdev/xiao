@@ -25,16 +25,7 @@ module.exports = class CommandLeaderboardExportCommand extends Command {
 	}
 
 	run(msg) {
-		let text = '{';
-		for (const command of this.client.registry.commands.values()) {
-			if (command.uses === undefined) continue;
-			text += `"${command.name}":${command.uses},`;
-		}
-		text = text.slice(0, -1);
-		text += '}';
-		fs.writeFileSync(path.join(__dirname, '..', '..', 'command-leaderboard.json'), Buffer.from(text), {
-			encoding: 'utf8'
-		});
-		return msg.say({ files: [{ attachment: Buffer.from(text), name: 'command-leaderboard.json' }] });
+		const result = this.client.exportCommandLeaderboard();
+		return msg.say({ files: [{ attachment: result, name: 'command-leaderboard.json' }] });
 	}
 };
