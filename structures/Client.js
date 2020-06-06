@@ -2,6 +2,8 @@ const { CommandoClient } = require('discord.js-commando');
 const { WebhookClient } = require('discord.js');
 const Collection = require('@discordjs/collection');
 const winston = require('winston');
+const fs = require('fs');
+const path = require('path');
 const PokemonStore = require('./pokemon/PokemonStore');
 const MemePosterClient = require('./MemePoster');
 const activities = require('../assets/json/activity');
@@ -36,5 +38,20 @@ module.exports = class XiaoClient extends CommandoClient {
 
 	inPhoneCall(channel) {
 		return this.phone.some(call => call.origin.id === channel.id || call.recipient.id === channel.id);
+	}
+
+	importCommandLeaderboard() {
+		const read = fs.readFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), {
+			encoding: 'utf8'
+		});
+		const file = JSON.parse(read);
+		if (typeof file !== 'object' || Array.isArray(file)) return null;
+		for (const [id, value] of Object.entries(file)) {
+			if (typeof value !== 'number') continue;
+			const found = this.client.registry.commands.get(id);
+			if (!found || found.uses === undefined) continue;
+			found.uses = value;
+		}
+		return file;
 	}
 };

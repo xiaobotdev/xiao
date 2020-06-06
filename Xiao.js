@@ -70,6 +70,12 @@ client.on('ready', () => {
 			}
 		}, client.memePoster.postInterval);
 	}
+	try {
+		const results = client.importCommandLeaderboard();
+		if (!results) client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
+	} catch (err) {
+		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
+	}
 });
 
 client.on('message', async msg => {
