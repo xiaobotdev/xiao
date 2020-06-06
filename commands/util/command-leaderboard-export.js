@@ -1,6 +1,4 @@
 const Command = require('../../structures/Command');
-const fs = require('fs');
-const path = require('path');
 
 module.exports = class CommandLeaderboardExportCommand extends Command {
 	constructor(client) {
