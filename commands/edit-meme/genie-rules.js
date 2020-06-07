@@ -55,7 +55,7 @@ module.exports = class GenieRulesCommand extends Command {
 		ctx.font = '40px Noto';
 		let fontSize = 40;
 		while (ctx.measureText(text).width > 1143) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, text, 381);

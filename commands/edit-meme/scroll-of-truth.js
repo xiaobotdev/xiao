@@ -54,7 +54,7 @@ module.exports = class ScrollOfTruthCommand extends Command {
 		ctx.font = '60px Noto';
 		let fontSize = 60;
 		while (ctx.measureText(text).width > 542) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, text, 217);

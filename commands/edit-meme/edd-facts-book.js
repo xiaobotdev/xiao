@@ -54,7 +54,7 @@ module.exports = class EddFactsBookCommand extends Command {
 		ctx.font = '30px Noto';
 		let fontSize = 30;
 		while (ctx.measureText(fact).width > 458) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, fact, 183);

@@ -60,7 +60,7 @@ module.exports = class TwoButtonsCommand extends Command {
 		ctx.font = '34px Noto';
 		let fontSize = 34;
 		while (ctx.measureText(first).width > 366) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const firstLines = await wrapText(ctx, first, 183);
@@ -72,7 +72,7 @@ module.exports = class TwoButtonsCommand extends Command {
 		ctx.font = '34px Noto';
 		fontSize = 34;
 		while (ctx.measureText(second).width > 244) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const secondLines = await wrapText(ctx, second, 118);

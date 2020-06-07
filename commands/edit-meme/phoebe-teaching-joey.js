@@ -87,7 +87,7 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 				if (step === incorrect && j === 0) step = correct.join(' ');
 				let fontSize = 20;
 				while (ctx.measureText(step).width > 260) {
-					fontSize -= 1;
+					fontSize--;
 					ctx.font = `${fontSize}px Noto`;
 				}
 				ctx.strokeText(step, x, y, 260);

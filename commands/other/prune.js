@@ -29,7 +29,7 @@ module.exports = class PruneCommand extends Command {
 	}
 
 	async run(msg, { count }) {
-		count += 1;
+		count++;
 		try {
 			const messages = await msg.channel.messages.fetch({ limit: count > 100 ? 100 : count });
 			await msg.channel.bulkDelete(messages, true);

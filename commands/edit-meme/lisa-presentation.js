@@ -54,7 +54,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		ctx.font = '40px Noto';
 		let fontSize = 40;
 		while (ctx.measureText(text).width > 1320) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, text, 330);

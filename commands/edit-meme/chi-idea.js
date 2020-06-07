@@ -58,7 +58,7 @@ module.exports = class ChiIdeaCommand extends Command {
 		ctx.font = '15px Wild Words';
 		let fontSize = 15;
 		while (ctx.measureText(text).width > 500) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Wild Words`;
 		}
 		const lines = await wrapText(ctx, text, 83);
