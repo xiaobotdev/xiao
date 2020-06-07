@@ -14,7 +14,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 		});
 	}
 
-	run(msg) {
+	async run(msg) {
 		const list = this.client.registry.groups
 			.map(g => {
 				const commands = g.commands.filter(c => !c.hidden);
@@ -24,6 +24,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 				}).join('\n')}`;
 			});
 		const text = `Total: ${this.client.registry.commands.size}\n${list.join('\n')}`;
-		return msg.say({ files: [{ attachment: Buffer.from(text), name: 'commands.txt' }] });
+		await msg.direct({ files: [{ attachment: Buffer.from(text), name: 'commands.txt' }] });
+		return msg.say('📬 Sent \`commands.txt\` to your DMs!');
 	}
 };

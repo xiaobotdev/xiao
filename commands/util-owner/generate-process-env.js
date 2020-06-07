@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const fs = require('fs');
 const path = require('path');
+const { verify } = require('../../util/Util');
 
 module.exports = class GenerateProcessEnvCommand extends Command {
 	constructor(client) {
@@ -16,7 +17,7 @@ module.exports = class GenerateProcessEnvCommand extends Command {
 		});
 	}
 
-	run(msg) {
+	async run(msg) {
 		const data = fs.readFileSync(path.join(__dirname, '..', '..', '.env.example'), { encoding: 'utf8' });
 		const list = data.split('\n').map(line => {
 			if (!line) return '';
@@ -24,6 +25,7 @@ module.exports = class GenerateProcessEnvCommand extends Command {
 			line = line.replace('=', '');
 			return `${line}="${process.env[line] || ''}"`;
 		}).join('\n');
-		return msg.say({ files: [{ attachment: Buffer.from(list), name: 'process.env.txt' }] });
+		await msg.direct({ files: [{ attachment: Buffer.from(list), name: 'process.env.txt' }] });
+		return msg.say('📬 Sent \`process.env.txt\` to your DMs!');
 	}
 };

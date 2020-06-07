@@ -15,7 +15,7 @@ module.exports = class GenerateCreditCommand extends Command {
 		});
 	}
 
-	run(msg) {
+	async run(msg) {
 		let credit = [];
 		for (const command of this.client.registry.commands.values()) {
 			if (!command.credit || command.credit.length <= 1) continue;
@@ -47,6 +47,7 @@ module.exports = class GenerateCreditCommand extends Command {
 				if (!cmd.reasonURL) return `	* ${cmd.name} (${cmd.reason})`;
 				return `	* ${cmd.name} (${embedURL(cmd.reason, cmd.reasonURL || '', false)})`;
 			}).join('\n')}`);
-		return msg.say({ files: [{ attachment: Buffer.from(mapped.join('\n')), name: 'credit.txt' }] });
+		await msg.direct({ files: [{ attachment: Buffer.from(mapped.join('\n')), name: 'credit.txt' }] });
+		return msg.say('📬 Sent \`credit.txt\` to your DMs!');
 	}
 };

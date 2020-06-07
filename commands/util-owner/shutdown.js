@@ -22,10 +22,11 @@ module.exports = class ShutdownCommand extends Command {
 		});
 	}
 
-	run(msg, { code }) {
+	async run(msg, { code }) {
 		this.uses++;
 		this.client.exportCommandLeaderboard();
 		this.client.logger.info('[SHUTDOWN] Manual shutdown engaged.');
+		await msg.say('Shutting down... :(');
 		process.exit(code);
 		return null;
 	}
