@@ -72,7 +72,7 @@ module.exports = class BingoCommand extends Command {
 					return true;
 				};
 				const bingo = await msg.channel.awaitMessages(filter, { max: 1, time: 10000 });
-				if (!bingo) continue;
+				if (!bingo.size) continue;
 				winner = bingo.first().author;
 			}
 			this.client.games.delete(msg.channel.id);
