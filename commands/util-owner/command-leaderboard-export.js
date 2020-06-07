@@ -22,8 +22,9 @@ module.exports = class CommandLeaderboardExportCommand extends Command {
 		});
 	}
 
-	run(msg) {
+	async run(msg) {
 		const result = this.client.exportCommandLeaderboard();
-		return msg.say({ files: [{ attachment: result, name: 'command-leaderboard.json' }] });
+		await msg.direct({ files: [{ attachment: result, name: 'command-leaderboard.json' }] });
+		return msg.say('📬 Sent \`command-leaderboard.json\` to your DMs!');
 	}
 };
