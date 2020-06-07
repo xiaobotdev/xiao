@@ -17,6 +17,7 @@ client.registry
 	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
 		['util', 'Utility'],
+		['util-owner', 'Utility (Owner)'],
 		['info', 'Discord Information'],
 		['random-res', 'Random Response'],
 		['random-img', 'Random Image'],
@@ -36,8 +37,7 @@ client.registry
 		['voice', 'Voice-Based'],
 		['phone', 'Phone'],
 		['other', 'Other'],
-		['roleplay', 'Roleplay'],
-		['readme', 'README Generators']
+		['roleplay', 'Roleplay']
 	])
 	.registerDefaultCommands({
 		help: false,
