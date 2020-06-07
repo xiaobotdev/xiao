@@ -56,10 +56,10 @@ module.exports = class XiaoClient extends CommandoClient {
 	}
 
 	exportCommandLeaderboard() {
-		let text = '{\n';
+		let text = '{';
 		for (const command of this.registry.commands.values()) {
 			if (command.uses === undefined) continue;
-			text += `\n	"${command.name}":${command.uses},`;
+			text += `\n	"${command.name}": ${command.uses},`;
 		}
 		text = text.slice(0, -1);
 		text += '\n}\n';
