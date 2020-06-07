@@ -20,7 +20,7 @@ module.exports = class ClocCommand extends Command {
 	}
 
 	async run(msg) {
-		const cloc = this.cache || await this.cloc();
+		const cloc = await this.cloc();
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter(`${cloc.header.cloc_url} ${cloc.header.cloc_version}`)
@@ -34,6 +34,7 @@ module.exports = class ClocCommand extends Command {
 	}
 
 	async cloc() {
+		if (this.cache) return this.cache;
 		const { stdout, stderr } = await exec(
 			path.join(__dirname, '..', '..', 'node_modules', '.bin', 'cloc'),
 			['--json', '--exclude-dir=node_modules', path.join(__dirname, '..', '..')]
