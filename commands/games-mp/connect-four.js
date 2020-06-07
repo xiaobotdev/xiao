@@ -88,7 +88,7 @@ module.exports = class ConnectFourCommand extends Command {
 				}
 				const i = Number.parseInt(choice, 10) - 1;
 				board[colLevels[i]][i] = sign;
-				colLevels[i] -= 1;
+				colLevels[i]--;
 				if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
 				if (lastTurnTimeout) lastTurnTimeout = false;
 				userTurn = !userTurn;

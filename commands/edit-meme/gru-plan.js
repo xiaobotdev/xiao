@@ -74,7 +74,7 @@ module.exports = class GruPlanCommand extends Command {
 			const step = steps[i];
 			let fontSize = 35;
 			while (ctx.measureText(step).width > 1100) {
-				fontSize -= 1;
+				fontSize--;
 				ctx.font = `${fontSize}px Noto`;
 			}
 			const lines = await wrapText(ctx, step, 252);

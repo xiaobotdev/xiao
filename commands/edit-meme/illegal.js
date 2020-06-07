@@ -62,7 +62,7 @@ module.exports = class IllegalCommand extends Command {
 		let fontSize = 45;
 		ctx.font = `${fontSize}px Noto`;
 		while (ctx.measureText(illegalText).width > 550) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, illegalText, 200);

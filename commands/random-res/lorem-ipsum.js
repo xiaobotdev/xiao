@@ -70,7 +70,7 @@ module.exports = class LoremIpsumCommand extends Command {
 				resultLength += 2;
 			} else {
 				result.push(' ');
-				resultLength += 1;
+				resultLength++;
 			}
 		}
 		return msg.say(result.join(''));

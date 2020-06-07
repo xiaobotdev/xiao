@@ -54,7 +54,7 @@ module.exports = class SosCommand extends Command {
 		ctx.rotate(15 * (Math.PI / 180));
 		let fontSize = 90;
 		while (ctx.measureText(message).width > 140) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		ctx.fillText(message.toUpperCase(), 362, 522);

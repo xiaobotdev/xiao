@@ -61,7 +61,7 @@ module.exports = class SpongebobBurnCommand extends Command {
 		ctx.font = '35px Noto';
 		let fontSize = 35;
 		while (ctx.measureText(burn).width > 400) {
-			fontSize -= 1;
+			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, burn, 180);
