@@ -48,6 +48,6 @@ module.exports = class GenerateCreditCommand extends Command {
 				return `	* ${cmd.name} (${embedURL(cmd.reason, cmd.reasonURL || '', false)})`;
 			}).join('\n')}`);
 		await msg.direct({ files: [{ attachment: Buffer.from(mapped.join('\n')), name: 'credit.txt' }] });
-		return msg.say('📬 Sent \`credit.txt\` to your DMs!');
+		return msg.say('📬 Sent `credit.txt` to your DMs!');
 	}
 };

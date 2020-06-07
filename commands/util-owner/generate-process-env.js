@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const fs = require('fs');
 const path = require('path');
-const { verify } = require('../../util/Util');
 
 module.exports = class GenerateProcessEnvCommand extends Command {
 	constructor(client) {
@@ -26,6 +25,6 @@ module.exports = class GenerateProcessEnvCommand extends Command {
 			return `${line}="${process.env[line] || ''}"`;
 		}).join('\n');
 		await msg.direct({ files: [{ attachment: Buffer.from(list), name: 'process.env.txt' }] });
-		return msg.say('📬 Sent \`process.env.txt\` to your DMs!');
+		return msg.say('📬 Sent `process.env.txt` to your DMs!');
 	}
 };
