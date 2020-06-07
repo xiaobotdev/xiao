@@ -45,7 +45,7 @@
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
 		"gifencoder": "^2.0.1",
-		"mathjs": "^7.0.0",
+		"mathjs": "^7.0.1",
 		"moment": "^2.26.0",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.31",
