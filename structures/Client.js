@@ -56,13 +56,13 @@ module.exports = class XiaoClient extends CommandoClient {
 	}
 
 	exportCommandLeaderboard() {
-		let text = '{';
+		let text = '{\n';
 		for (const command of this.registry.commands.values()) {
 			if (command.uses === undefined) continue;
-			text += `"${command.name}":${command.uses},`;
+			text += `\n	"${command.name}":${command.uses},`;
 		}
 		text = text.slice(0, -1);
-		text += '}';
+		text += '\n}\n';
 		const buf = Buffer.from(text);
 		fs.writeFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), buf, {
 			encoding: 'utf8'
