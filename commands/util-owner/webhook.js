@@ -5,7 +5,7 @@ module.exports = class WebhookCommand extends Command {
 		super(client, {
 			name: 'webhook',
 			aliases: ['rin', 'rin-say'],
-			group: 'edit-text',
+			group: 'util-owner',
 			memberName: 'webhook',
 			description: 'Posts a message to the webhook defined in the bot owner\'s `process.env`.',
 			details: 'Only the bot owner(s) may use this command.',

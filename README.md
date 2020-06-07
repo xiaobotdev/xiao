@@ -231,20 +231,27 @@ Total: 457
 * **eval:** Executes JavaScript code. (Owner-Only)
 * **changelog:** Responds with the bot's latest 10 commits.
 * **cloc:** Responds with the bot's code line count.
-* **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
-* **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
 * **command-leaderboard:** Responds with the bot's most used commands.
 * **credit:** Responds with a command's credits list.
 * **donate:** Responds with the bot's donation links.
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
-* **ip:** Responds with the IP address the bot's server is running on. (Owner-Only)
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
-* **shutdown:** Shuts down the bot. (Owner-Only)
 * **uses:** Responds with a command's usage stats.
+
+### Utility (Owner):
+
+* **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
+* **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
+* **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
+* **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
+* **generate-process-env:** Generates a backup list of Xiao's `process.env`. (Owner-Only)
+* **ip:** Responds with the IP address the bot's server is running on. (Owner-Only)
+* **shutdown:** Shuts down the bot. (Owner-Only)
+* **webhook:** Posts a message to the webhook defined in the bot owner's `process.env`. (Owner-Only)
 
 ### Discord Information:
 
@@ -679,7 +686,6 @@ Total: 457
 * **upside-down:** Flips text upside-down.
 * **url-decode:** Decodes URL characters to regular characters.
 * **url-encode:** Encodes text to URL-friendly characters.
-* **webhook:** Posts a message to the webhook defined in the bot owner's `process.env`. (Owner-Only)
 * **yoda:** Converts text to Yoda speak.
 * **zalgo:** Converts text to zalgo.
 
@@ -741,12 +747,6 @@ Total: 457
 * **wake-up:** Wakes up a user.
 * **wave:** Waves at a user.
 * **wink:** Winks at a user.
-
-### README Generators:
-
-* **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
-* **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
-* **generate-process-env:** Generates a backup list of Xiao's `process.env`. (Owner-Only)
 
 ## Other Features
 

@@ -5,7 +5,7 @@ module.exports = class ShutdownCommand extends Command {
 		super(client, {
 			name: 'shutdown',
 			aliases: ['die', 'restart', 'process.exit'],
-			group: 'util',
+			group: 'util-owner',
 			memberName: 'shutdown',
 			description: 'Shuts down the bot.',
 			details: 'Only the bot owner(s) may use this command.',
