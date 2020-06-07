@@ -52,7 +52,7 @@ module.exports = class LieSwatterCommand extends Command {
 				pts.set(player, {
 					points: 0,
 					id: player,
-					user: this.client.users.cache.get(player)
+					user: await this.client.users.fetch(player)
 				});
 			}
 			const questions = await this.fetchQuestions();
