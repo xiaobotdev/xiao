@@ -34,7 +34,7 @@
 		"@discordjs/collection": "^0.1.5",
 		"@discordjs/opus": "^0.3.2",
 		"@vitalets/google-translate-api": "^3.0.0",
-		"aki-api": "github:jgoralcz/aki-api",
+		"aki-api": "^5.0.0",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
 		"cloc": "^2.5.1",
