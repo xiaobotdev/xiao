@@ -43,7 +43,7 @@ module.exports = class FaceCommand extends Command {
 				emotions.slice(0).sort((a, b) => face.emotion[b] - face.emotion[a])[0]
 			)];
 			const smile = face.smile.value > face.smile.threshold;
-			const beautyScore = face.gender.value === 'Male' ? face.beauty.female_score : face.beauty.male_score;
+			const beautyScore = face.gender.value === 'Male' ? face.beauty.male_score : face.beauty.female_score;
 			return msg.reply(oneLine`
 				I think this is a photo of a ${face.age.value} year old ${face.gender.value.toLowerCase()}.
 				${pronoun} appears to be ${emotion}, and is ${smile ? 'smiling' : 'not smiling'}. I give this
