@@ -1,10 +1,10 @@
 const Command = require('../../structures/Command');
 const Collection = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
-const { randomRange } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
 const nums = require('../../assets/json/bingo');
 const rows = Object.keys(nums);
+const callNums = Array.from({ length: 75 }, (v, i) => i + 1);
 
 module.exports = class BingoCommand extends Command {
 	constructor(client) {
@@ -47,12 +47,13 @@ module.exports = class BingoCommand extends Command {
 			let winner = null;
 			const called = ['FR'];
 			while (!winner) {
-				const picked = randomRange(1, 75);
+				const validNums = callNums.filter(num => !called.includes(num));
+				const picked = validNums[Math.floor(Math.random() * validNums.length)];
 				called.push(picked);
 				for (const player of players.values()) {
 					try {
 						await player.user.send(stripIndents`
-							**${picked}** was called in ${msg.channel}.
+							**${this.findRowValue(picked)} ${picked}** was called in ${msg.channel}.
 							${this.generateBoardDisplay(player.board, called)}
 						`);
 					} catch {
@@ -60,10 +61,10 @@ module.exports = class BingoCommand extends Command {
 					}
 				}
 				await msg.say(stripIndents`
-					**${this.findRowValue(picked)}${picked}**!
+					**${this.findRowValue(picked)} ${picked}**!
 
 					Check your DMs for your board. If you have bingo, type \`bingo\`!
-					_Next number will be called in 10 seconds._
+					_Next number will be called in 20 seconds._
 				`);
 				const filter = res => {
 					if (!players.has(res.author.id)) return false;
@@ -74,7 +75,7 @@ module.exports = class BingoCommand extends Command {
 					}
 					return true;
 				};
-				const bingo = await msg.channel.awaitMessages(filter, { max: 1, time: 10000 });
+				const bingo = await msg.channel.awaitMessages(filter, { max: 1, time: 20000 });
 				if (!bingo.size) continue;
 				winner = bingo.first().author;
 			}
