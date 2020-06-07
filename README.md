@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 457
+Total: 458
 
 ### Utility:
 
@@ -541,6 +541,7 @@ Total: 457
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **contrast:** Draws an image or a user's avatar but with contrast.
+* **convert-image:** Converts an image or user's avatar from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
