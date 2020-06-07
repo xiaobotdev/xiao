@@ -50,7 +50,7 @@ module.exports = class FireCommand extends Command {
 			const stream = encoder.createReadStream();
 			encoder.start();
 			encoder.setRepeat(0);
-			encoder.setDelay(0.04);
+			encoder.setDelay(4);
 			encoder.setQuality(200);
 			encoder.setTransparent('#000000');
 			for (let i = 0; i < frameCount; i += 2) {
