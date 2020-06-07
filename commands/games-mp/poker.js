@@ -83,6 +83,8 @@ module.exports = class PokerCommand extends Command {
 					player.hand.push(...deck.draw(2));
 					try {
 						await player.user.send(stripIndents`
+							_Back to ${msg.channel}._
+
 							**Your Poker Hand:**
 							${player.hand.map(c => c.textDisplay).join('\n')}
 

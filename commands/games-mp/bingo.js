@@ -51,7 +51,10 @@ module.exports = class BingoCommand extends Command {
 				called.push(picked);
 				for (const player of players.values()) {
 					try {
-						await player.user.send(this.generateBoardDisplay(player.board, called));
+						await player.user.send(stripIndents`
+							**${picked}** was called in ${msg.channel}.
+							${this.generateBoardDisplay(player.board, called)}
+						`);
 					} catch {
 						await msg.say(`${player.user}, I couldn't send your board! Turn on DMs!`);
 					}
@@ -124,7 +127,7 @@ module.exports = class BingoCommand extends Command {
 				return value.toString().padStart(2, '0');
 			}).join(' | ');
 			return `${row} | ${mapVal}`;
-		}).join('\n\n');
+		}).join('\n--------------------------\n');
 		return stripIndents`
 			\`\`\`
 			${mapped}
