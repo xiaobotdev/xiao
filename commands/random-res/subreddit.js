@@ -23,10 +23,6 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 	}
 
 	generateText(post, subreddit, icon) {
-		const embed = this.makeEmbed(post, subreddit, icon);
-		if (post.thumbnail && post.thumbnail !== 'self' && post.post_hint !== 'image') {
-			embed.setThumbnail(post.thumbnail);
-		}
-		return embed;
+		return this.makeEmbed(post, subreddit, icon);
 	}
 };
