@@ -36,7 +36,7 @@ module.exports = class ShortenUrlCommand extends Command {
 		try {
 			const { body } = await request
 				.post('https://api-ssl.bitly.com/v4/shorten')
-				.query({ long_url: url })
+				.send({ long_url: url })
 				.set({ Authorization: `Bearer ${BITLY_KEY}` });
 			return msg.say(body.link);
 		} catch (err) {
