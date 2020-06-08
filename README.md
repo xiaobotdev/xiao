@@ -226,7 +226,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 462
+Total: 463
 
 ### Utility:
 
@@ -442,6 +442,7 @@ Total: 462
 * **paladins:** Responds with information on a Paladins player.
 * **periodic-table:** Finds an element on the periodic table.
 * **pokedex:** Searches the Pokédex for a Pokémon.
+* **pornhub:** Searches Pornhub for your query. (NSFW)
 * **recipe:** Searches for recipes based on your query.
 * **reddit:** Responds with information on a Reddit user.
 * **right-stuf:** Searches Right Stuf Anime for your query.
@@ -1274,6 +1275,8 @@ here.
 	* soundboard (Pikachu Sound)
 	* whos-that-pokemon (Images, Original Game)
 	* wynaut (Image, Original Anime)
+- [Pornhub](https://www.pornhub.com/)
+	* pornhub (Video Data)
 - [Pottermore](https://my.pottermore.com/sorting)
 	* sorting-hat (Original Quiz)
 - [PSYCHO-PASS](http://psycho-pass.com/)
