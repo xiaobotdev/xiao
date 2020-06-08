@@ -166,6 +166,7 @@ API. All are free unless otherwise stated.
 
 * `ALPHA_VANTAGE_KEY` can be obtained at the [Alpha Vantage website](https://www.alphavantage.co/support/#api-key).
 * `ANILIST_USERNAME` is the username of an [Anilist](https://anilist.co/) user. Not required, and defaults to `dragonfire535`.
+* `BITLY_KEY` can be obtained by getting a [Generic Access Token](https://bitly.is/accesstoken).
 * `CLEARBIT_KEY` can be obtained at the [Clearbit dashboard](https://dashboard.clearbit.com/).
 * `CLEVERBOT_KEY` can be obtained at the [Cleverbot API page](https://www.cleverbot.com/api/). It's not free.
 * `CUSTOM_SEARCH_ID` can be obtained by following [this tutorial](https://developers.google.com/custom-search/docs/tutorial/creatingcse).
