@@ -225,7 +225,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 460
+Total: 461
 
 ### Utility:
 
@@ -339,6 +339,7 @@ Total: 460
 * **porn:** Responds with a random porn image. (NSFW)
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
+* **shrek:** Responds with a random image of Shrek, the sexiest man alive.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Seeded Randomizers:
@@ -912,6 +913,8 @@ here.
 	* illegal (Himself, Image)
 - [Drake](https://drakeofficial.com/)
 	* drakeposting ([Original "Hotline Bling" Music Video](https://youtu.be/uxpDa-c-4Mc))
+- [DreamWorks](https://www.dreamworks.com/)
+	* shrek ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
 - [Dust: An Elysian Tail](https://www.noogy.com/main.html)
 	* fidget (Original Game)
 - [DynamicPickaxe](http://dynamicpickaxe.com/)
@@ -1057,6 +1060,7 @@ here.
 	* poke ([API](https://apidocs.imgur.com/))
 	* potato ([API](https://apidocs.imgur.com/))
 	* punch ([API](https://apidocs.imgur.com/))
+	* shrek ([API](https://apidocs.imgur.com/))
 	* slap ([API](https://apidocs.imgur.com/))
 	* sleep ([API](https://apidocs.imgur.com/))
 	* wake-up ([API](https://apidocs.imgur.com/))
