@@ -1,6 +1,6 @@
 const SubredditCommand = require('../../structures/commands/Subreddit');
 const { MessageEmbed } = require('discord.js');
-const { formatNumber } = require('../../util/Util');
+const { formatNumberK } = require('../../util/Util');
 
 module.exports = class AwwnimeCommand extends SubredditCommand {
 	constructor(client) {
@@ -25,6 +25,6 @@ module.exports = class AwwnimeCommand extends SubredditCommand {
 			.setImage(post.post_hint === 'image' ? post.url : null)
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
-			.setFooter(`⬆ ${formatNumber(post.ups)}`);
+			.setFooter(`⬆ ${formatNumberK(post.ups)}`);
 	}
 };
