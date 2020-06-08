@@ -225,7 +225,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 461
+Total: 462
 
 ### Utility:
 
@@ -679,6 +679,7 @@ Total: 461
 * **sha-1:** Creates a hash of text with the SHA-1 algorithm.
 * **sha-256:** Creates a hash of text with the SHA-256 algorithm.
 * **ship-name:** Creates a ship name from two names.
+* **shorten-url:** Shortens a URL using bit.ly.
 * **shuffle:** Shuffles text.
 * **snake-speak:** Convertsssss text to sssssnake ssssspeak.
 * **spoiler-letter:** Sends text with each and every character as an individual spoiler.
@@ -838,6 +839,8 @@ here.
 	* dislike ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 	* like ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 	* skyrim-skill ([Image, Original "The Elder Scrolls V: Skyrim" Game](https://elderscrolls.bethesda.net/en/skyrim))
+- [Bitly](https://bitly.com/)
+	* shorten-url ([API](https://dev.bitly.com/v4_documentation.html))
 - [Bob Ross](https://www.bobross.com/)
 	* bob-ross (Himself)
 - [Bowserinator](https://github.com/Bowserinator/)
