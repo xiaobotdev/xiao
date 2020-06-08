@@ -32,6 +32,6 @@ module.exports = class WouldYouRatherCommand extends Command {
 	async fetchScenario(nsfw) {
 		const { body } = await request.get('https://www.rrrather.com/botapi');
 		if (body.nsfw && !nsfw) return this.fetchScenario(nsfw);
-		return body; 
+		return body;
 	}
 };
