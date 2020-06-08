@@ -1,29 +1,19 @@
 const SubredditCommand = require('../../structures/commands/Subreddit');
 const { MessageEmbed } = require('discord.js');
-const { list, formatNumber } = require('../../util/Util');
-const subreddits = require('../../assets/json/meme');
+const { formatNumber } = require('../../util/Util');
 
-module.exports = class MemeCommand extends SubredditCommand {
+module.exports = class AwwnimeCommand extends SubredditCommand {
 	constructor(client) {
 		super(client, {
-			name: 'meme',
+			name: 'awwnime',
+			aliases: ['aww-anime', 'moe'],
 			group: 'random-img',
 			memberName: 'meme',
-			description: 'Responds with a random meme.',
-			details: `**Subreddits:** ${subreddits.join(', ')}`,
+			description: 'Responds with cute random anime art.',
 			clientPermissions: ['EMBED_LINKS'],
 			postType: 'image',
 			getIcon: true,
-			args: [
-				{
-					key: 'subreddit',
-					prompt: `What subreddit do you want to get memes from? Either ${list(subreddits, 'or')}.`,
-					type: 'string',
-					oneOf: subreddits,
-					default: () => subreddits[Math.floor(Math.random() * subreddits.length)],
-					parse: subreddit => subreddit.toLowerCase()
-				}
-			]
+			subreddit: 'awwnime'
 		});
 	}
 

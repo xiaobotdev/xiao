@@ -12,7 +12,7 @@ module.exports = class PornCommand extends SubredditCommand {
 			memberName: 'porn',
 			description: 'Responds with a random porn image.',
 			details: `**Subreddits:** ${subreddits.join(', ')}`,
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: ['EMBED_LINKS'],
 			nsfw: true,
 			postType: 'image',
 			getIcon: true,
@@ -20,7 +20,7 @@ module.exports = class PornCommand extends SubredditCommand {
 				{
 					name: 'Overtime2005',
 					url: 'https://github.com/Overtime2005',
-					reason: 'Subreddit List'
+					reason: 'Original Subreddit List'
 				}
 			],
 			args: [

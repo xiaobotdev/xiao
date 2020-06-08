@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 458
+Total: 459
 
 ### Utility:
 
@@ -320,6 +320,7 @@ Total: 458
 
 ### Random Image:
 
+* **awwnime:** Responds with cute random anime art.
 * **bird:** Responds with a random image of a bird.
 * **bunny:** Responds with a random image of a bunny.
 * **cat:** Responds with a random cat image.
@@ -1226,9 +1227,9 @@ here.
 - [Overtime2005](https://github.com/Overtime2005)
 	* alert (Concept)
 	* dislike (Concept)
-	* hentai (Subreddit List)
+	* hentai (Original Subreddit List)
 	* like (Concept)
-	* porn (Subreddit List)
+	* porn (Original Subreddit List)
 	* simp (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
 	* balloon-pop (Concept)
@@ -1285,6 +1286,7 @@ here.
 - [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop)
 	* hat ([Megumin Hat Image](https://www.redbubble.com/people/akbarmna/works/25443591-megumins-hat-minimalistic?p=poster))
 - [Reddit](https://www.reddit.com/)
+	* awwnime ([API](https://www.reddit.com/dev/api/))
 	* hentai ([API](https://www.reddit.com/dev/api/))
 	* meme ([API](https://www.reddit.com/dev/api/))
 	* porn ([API](https://www.reddit.com/dev/api/))
