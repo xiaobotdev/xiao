@@ -45,7 +45,7 @@ module.exports = class SubredditCommand extends Command {
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
 			.setFooter(`⬆ ${formatNumberK(post.ups)}`);
-		if (post.thumbnail && post.thumbnail !== 'self' && post.post_hint !== 'image') {
+		if (post.thumbnail && post.thumbnail !== 'self' && post.thumbnail !== 'default' && post.post_hint !== 'image') {
 			embed.setThumbnail(post.thumbnail);
 		}
 		return embed;
@@ -74,6 +74,6 @@ module.exports = class SubredditCommand extends Command {
 	async fetchIcon(subreddit) {
 		const { body } = await request.get(`https://www.reddit.com/r/${subreddit}/about.json`);
 		if (!body.data.icon_img && !body.data.community_icon) return 'https://i.imgur.com/DSBOK0P.png';
-		return body.data.icon_img || body.data.community_icon;
+		return body.data.icon_img || body.data.community_icon.replace(/\?.+/, '');
 	}
 };
