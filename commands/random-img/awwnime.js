@@ -8,7 +8,7 @@ module.exports = class AwwnimeCommand extends SubredditCommand {
 			name: 'awwnime',
 			aliases: ['aww-anime', 'moe'],
 			group: 'random-img',
-			memberName: 'meme',
+			memberName: 'awwnime',
 			description: 'Responds with cute random anime art.',
 			clientPermissions: ['EMBED_LINKS'],
 			postType: 'image',
