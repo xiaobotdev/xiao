@@ -37,7 +37,7 @@ module.exports = class SubredditCommand extends Command {
 	}
 
 	makeEmbed(post, subreddit, icon) {
-		return new MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor(0xFF4500)
 			.setAuthor(`r/${subreddit}`, icon, `https://www.reddit.com/r/${subreddit}/`)
 			.setTitle(shorten(post.title, 256))
@@ -45,6 +45,10 @@ module.exports = class SubredditCommand extends Command {
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
 			.setFooter(`⬆ ${formatNumberK(post.ups)}`);
+		if (post.thumbnail && post.thumbnail !== 'self' && post.post_hint !== 'image') {
+			embed.setThumbnail(post.thumbnail);
+		}
+		return embed;
 	}
 
 	async random(subreddit, nsfw) {

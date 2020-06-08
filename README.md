@@ -226,7 +226,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 463
+Total: 465
 
 ### Utility:
 
@@ -295,6 +295,7 @@ Total: 463
 * **magic-conch:** Asks your question to the Magic Conch.
 * **name:** Responds with a random name, with the gender of your choice.
 * **never-have-i-ever:** Responds with a random "Never Have I Ever..." statement.
+* **news:** Responds with a random news article.
 * **number-fact:** Responds with a random fact about a specific number.
 * **offspring:** Determines if your new child will be a boy or a girl.
 * **opinion:** Determines the opinion on something.
@@ -332,6 +333,7 @@ Total: 463
 * **fidget:** Responds with a random image of Fidget.
 * **fox:** Responds with a random fox image.
 * **hentai:** Responds with a random hentai image. (NSFW)
+* **interesting:** Responds with a random interesting image.
 * **karen:** Responds with a random image of Karen.
 * **lando:** Responds with a random image of Lando Calrissian.
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
@@ -1303,7 +1305,9 @@ here.
 - [Reddit](https://www.reddit.com/)
 	* awwnime ([API](https://www.reddit.com/dev/api/))
 	* hentai ([API](https://www.reddit.com/dev/api/))
+	* interesting ([API](https://www.reddit.com/dev/api/))
 	* meme ([API](https://www.reddit.com/dev/api/))
+	* news ([API](https://www.reddit.com/dev/api/))
 	* porn ([API](https://www.reddit.com/dev/api/))
 	* reddit ([API](https://www.reddit.com/dev/api/))
 	* shower-thought ([API](https://www.reddit.com/dev/api/))
