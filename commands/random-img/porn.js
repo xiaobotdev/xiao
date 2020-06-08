@@ -1,6 +1,5 @@
 const SubredditCommand = require('../../structures/commands/Subreddit');
-const { MessageEmbed } = require('discord.js');
-const { list, formatNumberK } = require('../../util/Util');
+const { list } = require('../../util/Util');
 const subreddits = require('../../assets/json/porn');
 
 module.exports = class PornCommand extends SubredditCommand {
@@ -37,13 +36,6 @@ module.exports = class PornCommand extends SubredditCommand {
 	}
 
 	generateText(post, subreddit, icon) {
-		return new MessageEmbed()
-			.setColor(0xFF4500)
-			.setAuthor(`r/${subreddit}`, icon, `https://www.reddit.com/r/${subreddit}/`)
-			.setTitle(post.title)
-			.setImage(post.post_hint === 'image' ? post.url : null)
-			.setURL(`https://www.reddit.com${post.permalink}`)
-			.setTimestamp(post.created_utc * 1000)
-			.setFooter(`⬆ ${formatNumberK(post.ups)}`);
+		return this.makeEmbed(post, subreddit, icon);
 	}
 };

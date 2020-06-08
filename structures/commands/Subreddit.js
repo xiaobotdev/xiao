@@ -1,5 +1,7 @@
 const request = require('node-superfetch');
 const Command = require('../Command');
+const { MessageEmbed } = require('discord.js');
+const { formatNumberK, shorten } = require('../../util/Util');
 
 module.exports = class SubredditCommand extends Command {
 	constructor(client, info) {
@@ -32,6 +34,17 @@ module.exports = class SubredditCommand extends Command {
 
 	generateText() {
 		throw new Error('The generateText method is required.');
+	}
+
+	makeEmbed(post, subreddit, icon) {
+		return new MessageEmbed()
+			.setColor(0xFF4500)
+			.setAuthor(`r/${subreddit}`, icon, `https://www.reddit.com/r/${subreddit}/`)
+			.setTitle(shorten(post.title, 256))
+			.setImage(post.post_hint === 'image' ? post.url : null)
+			.setURL(`https://www.reddit.com${post.permalink}`)
+			.setTimestamp(post.created_utc * 1000)
+			.setFooter(`⬆ ${formatNumberK(post.ups)}`);
 	}
 
 	async random(subreddit, nsfw) {
