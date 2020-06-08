@@ -39,7 +39,8 @@ module.exports = class ChuckNorrisCommand extends Command {
 				.get('http://api.icndb.com/jokes/random')
 				.query({
 					escape: 'javascript',
-					firstName: name
+					firstName: name,
+					exclude: msg.channel.nsfw ? '' : '[explicit]'
 				});
 			return msg.say(body.value.joke);
 		} catch (err) {
