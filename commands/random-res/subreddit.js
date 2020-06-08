@@ -1,6 +1,6 @@
 const SubredditCommandBase = require('../../structures/commands/Subreddit');
 const { MessageEmbed } = require('discord.js');
-const { shorten, formatNumber } = require('../../util/Util');
+const { shorten, formatNumberK } = require('../../util/Util');
 
 module.exports = class SubredditCommand extends SubredditCommandBase {
 	constructor(client) {
@@ -32,7 +32,7 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 			.setImage(post.post_hint === 'image' ? post.url : null)
 			.setURL(`https://www.reddit.com${post.permalink}`)
 			.setTimestamp(post.created_utc * 1000)
-			.setFooter(`⬆ ${formatNumber(post.score)}`);
+			.setFooter(`⬆ ${formatNumberK(post.score)}`);
 		if (post.thumbnail && post.thumbnail !== 'self' && post.post_hint !== 'image') {
 			embed.setThumbnail(post.thumbnail);
 		}

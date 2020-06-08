@@ -3,7 +3,7 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const moment = require('moment');
 const request = require('node-superfetch');
 const path = require('path');
-const { base64 } = require('../../util/Util');
+const { base64, formatNumberK } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
@@ -108,21 +108,21 @@ module.exports = class TweetCommand extends Command {
 			ctx.fillText('Twitter for Xiao', 31 + timeLen + 6, base2StartY + 16);
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '16px Noto';
-			ctx.fillText(this.formatNumber(replies), 87, base2StartY + 139);
-			ctx.fillText(this.formatNumber(likes), 509, base2StartY + 139);
-			ctx.fillText(this.formatNumber(retweets), 300, base2StartY + 139);
+			ctx.fillText(formatNumberK(replies), 87, base2StartY + 139);
+			ctx.fillText(formatNumberK(likes), 509, base2StartY + 139);
+			ctx.fillText(formatNumberK(retweets), 300, base2StartY + 139);
 			ctx.fillStyle = 'white';
 			ctx.font = 'normal bold 18px Noto';
-			ctx.fillText(this.formatNumber(retweets), 31, base2StartY + 77);
-			const retweetsLen = ctx.measureText(this.formatNumber(retweets)).width;
+			ctx.fillText(formatNumberK(retweets), 31, base2StartY + 77);
+			const retweetsLen = ctx.measureText(formatNumberK(retweets)).width;
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
 			ctx.fillText('Retweets', 31 + retweetsLen + 5, base2StartY + 77);
 			const retweetsWordLen = ctx.measureText('Retweets').width;
 			ctx.fillStyle = 'white';
 			ctx.font = 'normal bold 18px Noto';
-			ctx.fillText(this.formatNumber(likes), 31 + retweetsLen + 5 + retweetsWordLen + 10, base2StartY + 77);
-			const likesLen = ctx.measureText(this.formatNumber(likes)).width;
+			ctx.fillText(formatNumberK(likes), 31 + retweetsLen + 5 + retweetsWordLen + 10, base2StartY + 77);
+			const likesLen = ctx.measureText(formatNumberK(likes)).width;
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
 			ctx.fillText('Likes', 31 + retweetsLen + 5 + retweetsWordLen + 10 + likesLen + 5, base2StartY + 77);
@@ -171,9 +171,5 @@ module.exports = class TweetCommand extends Command {
 				verified: false
 			};
 		}
-	}
-
-	formatNumber(number) {
-		return number > 999 ? `${(number / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}K` : number;
 	}
 };
