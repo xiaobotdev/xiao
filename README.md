@@ -224,7 +224,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 459
+Total: 460
 
 ### Utility:
 
@@ -292,6 +292,7 @@ Total: 459
 * **lorem-ipsum:** Generates a randomized Lorem Ipsum placeholder text.
 * **magic-conch:** Asks your question to the Magic Conch.
 * **name:** Responds with a random name, with the gender of your choice.
+* **never-have-i-ever:** Responds with a random "Never Have I Ever..." statement.
 * **number-fact:** Responds with a random fact about a specific number.
 * **offspring:** Determines if your new child will be a boy or a girl.
 * **opinion:** Determines the opinion on something.
@@ -952,6 +953,8 @@ here.
 	* rename-all (Concept)
 - [Genderize.io](https://genderize.io/)
 	* gender (API)
+- [Gerhard Jordan](http://www.gerhardjordan.com/)
+	* never-have-i-ever ([Statement Data](http://www.neverhaveiever.org/))
 - [GIPHY](https://giphy.com/)
 	* giphy ([API](https://developers.giphy.com/))
 - [GitHub](https://github.com/)
@@ -1313,6 +1316,8 @@ here.
 	* final-grade (Concept, Code)
 - [Rotten Tomatoes](https://www.rottentomatoes.com/)
 	* rotten-tomatoes (API)
+- [rrrather](https://www.rrrather.com/)
+	* would-you-rather ([API](https://www.rrrather.com/botapi))
 - [Safebooru](https://safebooru.org/)
 	* safebooru (API)
 - [Serebii.net](https://www.serebii.net/index2.shtml)
