@@ -38,10 +38,10 @@ module.exports = class CountryCommand extends Command {
 				.setTitle(data.name)
 				.setThumbnail(`https://www.countryflags.io/${data.alpha2Code}/flat/64.png`)
 				.addField('❯ Population', formatNumber(data.population), true)
-				.addField('❯ Capital', data.capital, true)
+				.addField('❯ Capital', data.capital || 'None', true)
 				.addField('❯ Currency', data.currencies[0].symbol, true)
 				.addField('❯ Location', data.subregion || data.region, true)
-				.addField('❯ Demonym', data.demonym, true)
+				.addField('❯ Demonym', data.demonym || 'None', true)
 				.addField('❯ Native Name', data.nativeName, true)
 				.addField('❯ Area', `${formatNumber(data.area)}km`, true)
 				.addField('❯ Languages', data.languages.map(lang => lang.name).join('/'));
