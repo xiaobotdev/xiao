@@ -11,7 +11,7 @@ module.exports = class HentaiCommand extends SubredditCommand {
 			memberName: 'hentai',
 			description: 'Responds with a random hentai image.',
 			details: `**Subreddits:** ${subreddits.join(', ')}`,
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: ['EMBED_LINKS'],
 			nsfw: true,
 			postType: 'image',
 			getIcon: true,
@@ -19,7 +19,7 @@ module.exports = class HentaiCommand extends SubredditCommand {
 				{
 					name: 'Overtime2005',
 					url: 'https://github.com/Overtime2005',
-					reason: 'Subreddit List'
+					reason: 'Original Subreddit List'
 				}
 			],
 			args: [
