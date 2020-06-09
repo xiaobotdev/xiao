@@ -10,7 +10,6 @@ module.exports = class AiFoodCommand extends Command {
 			group: 'random-img',
 			memberName: 'ai-food',
 			description: 'Responds with a randomly generated food.',
-			nsfw: true,
 			credit: [
 				{
 					name: 'This Snack Does Not Exist',
