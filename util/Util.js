@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
 const inviteRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|(app)?\.com\/invite|\.me)\/([^ ]+)\/?/gi;
@@ -177,6 +178,25 @@ module.exports = class Util {
 		if (yes.includes(choice) || extraYes.includes(choice)) return true;
 		if (no.includes(choice) || extraNo.includes(choice)) return false;
 		return false;
+	}
+
+	static async awaitPlayers(msg, max, min = 1) {
+		if (max === 1) return [msg.author.id];
+		await msg.say(`You will need at least ${min} more player (at max ${max - 1}). To join, type \`join game\`.`);
+		const joined = [];
+		joined.push(msg.author.id);
+		const filter = res => {
+			if (res.author.bot) return false;
+			if (joined.includes(res.author.id)) return false;
+			if (res.content.toLowerCase() !== 'join game') return false;
+			joined.push(res.author.id);
+			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+			return true;
+		};
+		const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 30000 });
+		verify.set(msg.id, msg);
+		if (verify.size < min) return false;
+		return verify.map(player => player.author.id);
 	}
 
 	static cleanAnilistHTML(html, removeLineBreaks = true) {

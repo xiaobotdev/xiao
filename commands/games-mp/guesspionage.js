@@ -1,9 +1,8 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
-const { delay } = require('../../util/Util');
+const { delay, awaitPlayers } = require('../../util/Util');
 const questions = require('../../assets/json/guesspionage');
-const { SUCCESS_EMOJI_ID } = process.env;
 const guesses = ['much higher', 'higher', 'lower', 'much lower'];
 const max = 8;
 const min = 2;
@@ -54,7 +53,7 @@ module.exports = class GuesspionageCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			const awaitedPlayers = await this.awaitPlayers(msg, players);
+			const awaitedPlayers = await awaitPlayers(msg, players, min);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
@@ -162,24 +161,6 @@ module.exports = class GuesspionageCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
-	}
-
-	async awaitPlayers(msg, players) {
-		await msg.say(`You will need at least 1 more player (at max ${players - 1}). To join, type \`join game\`.`);
-		const joined = [];
-		joined.push(msg.author.id);
-		const filter = res => {
-			if (res.author.bot) return false;
-			if (joined.includes(res.author.id)) return false;
-			if (res.content.toLowerCase() !== 'join game') return false;
-			joined.push(res.author.id);
-			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
-			return true;
-		};
-		const verify = await msg.channel.awaitMessages(filter, { max: players - 1, time: 30000 });
-		verify.set(msg.id, msg);
-		if (verify.size < min) return false;
-		return verify.map(player => player.author.id);
 	}
 
 	makeLeaderboard(pts) {
