@@ -5,6 +5,7 @@ module.exports = class PokeCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'poke',
+			aliases: ['boop'],
 			group: 'roleplay',
 			memberName: 'poke',
 			description: 'Pokes a user.',
