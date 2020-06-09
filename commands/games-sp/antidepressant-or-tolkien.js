@@ -29,7 +29,7 @@ module.exports = class AntidepressantOrTolkienCommand extends Command {
 	async run(msg) {
 		const question = questions[Math.floor(Math.random() * questions.length)];
 		await msg.reply(stripIndents`
-			**You have 10 seconds, is this an Antidepressant or a Tolkien character?**
+			**You have 15 seconds, is this an Antidepressant or a Tolkien character?**
 			${question.name}
 		`);
 		const filter = res => {
