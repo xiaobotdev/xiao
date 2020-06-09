@@ -323,6 +323,9 @@ Total: 467
 
 ### Random Image:
 
+* **ai-fursona:** Responds with a randomly generated fursona.
+* **ai-person:** Responds with a randomly generated person.
+* **ai-waifu:** Responds with a randomly generated waifu.
 * **awwnime:** Responds with cute random anime art.
 * **bird:** Responds with a random image of a bird.
 * **bunny:** Responds with a random image of a bunny.
@@ -331,7 +334,6 @@ Total: 467
 * **duck:** Responds with a random duck image.
 * **fidget:** Responds with a random image of Fidget.
 * **fox:** Responds with a random fox image.
-* **fursona:** Responds with a randomly generated fursona.
 * **hentai:** Responds with a random hentai image. (NSFW)
 * **interesting:** Responds with a random interesting image.
 * **karen:** Responds with a random image of Karen.
@@ -339,12 +341,10 @@ Total: 467
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **lorem-picsum:** Responds with a random image of a certain size.
 * **meme:** Responds with a random meme.
-* **person:** Responds with a randomly generated person.
 * **porn:** Responds with a random porn image. (NSFW)
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
 * **shrek:** Responds with a random image of Shrek, the sexiest man alive.
-* **waifu:** Responds with a randomly generated waifu.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Seeded Randomizers:
@@ -1400,11 +1400,11 @@ here.
 - [The Onion](https://www.theonion.com/)
 	* the-onion ([RSS Feed](https://www.theonion.com/rss))
 - [This Fursona Does Not Exist](https://thisfursonadoesnotexist.com/)
-	* fursona (API)
+	* ai-fursona (API)
 - [This Person Does Not Exist](https://thispersondoesnotexist.com/)
-	* person (API)
+	* ai-person (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
-	* waifu (API)
+	* ai-waifu (API)
 - [Tim's Printables](https://www.timvandevall.com/)
 	* wanted ([Image](https://www.pinterest.com/pin/365002744774849370/))
 - [TrueAchievements](https://www.trueachievements.com/)

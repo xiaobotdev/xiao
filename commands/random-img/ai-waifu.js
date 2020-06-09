@@ -1,12 +1,12 @@
 const Command = require('../../structures/Command');
 
-module.exports = class WaifuCommand extends Command {
+module.exports = class AiWaifuCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'waifu',
-			aliases: ['this-waifu-does-not-exist'],
+			name: 'ai-waifu',
+			aliases: ['this-waifu-does-not-exist', 'waifu'],
 			group: 'random-img',
-			memberName: 'waifu',
+			memberName: 'ai-waifu',
 			description: 'Responds with a randomly generated waifu.',
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
