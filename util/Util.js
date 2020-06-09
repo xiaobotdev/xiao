@@ -193,7 +193,7 @@ module.exports = class Util {
 			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
 			return true;
 		};
-		const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 30000 });
+		const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 60000 });
 		verify.set(msg.id, msg);
 		if (verify.size < min) return false;
 		return verify.map(player => player.author.id);
