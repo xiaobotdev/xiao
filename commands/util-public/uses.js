@@ -4,7 +4,7 @@ module.exports = class UsesCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'uses',
-			group: 'util',
+			group: 'util-public',
 			memberName: 'uses',
 			description: 'Responds with a command\'s usage stats.',
 			guarded: true,

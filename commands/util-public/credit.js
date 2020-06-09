@@ -6,7 +6,7 @@ module.exports = class CreditCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'credit',
-			group: 'util',
+			group: 'util-public',
 			memberName: 'credit',
 			description: 'Responds with a command\'s credits list.',
 			guarded: true,

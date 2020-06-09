@@ -9,7 +9,7 @@ module.exports = class ClocCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'cloc',
-			group: 'util',
+			group: 'util-public',
 			memberName: 'cloc',
 			description: 'Responds with the bot\'s code line count.',
 			guarded: true,

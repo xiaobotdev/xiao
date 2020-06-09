@@ -6,7 +6,7 @@ module.exports = class CommandLeaderboardCommand extends Command {
 		super(client, {
 			name: 'command-leaderboard',
 			aliases: ['cmd-lb', 'cmd-leaderboard', 'command-lb'],
-			group: 'util',
+			group: 'util-public',
 			memberName: 'command-leaderboard',
 			description: 'Responds with the bot\'s most used commands.',
 			guarded: true,
