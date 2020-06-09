@@ -3,6 +3,7 @@ const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
 const { delay, awaitPlayers } = require('../../util/Util');
 const questions = require('../../assets/json/guesspionage');
+const { SUCCESS_EMOJI_ID } = process.env;
 const guesses = ['much higher', 'higher', 'lower', 'much lower'];
 const max = 8;
 const min = 2;
