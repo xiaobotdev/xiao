@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const Collection = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
-const { SUCCESS_EMOJI_ID } = process.env;
+const { awaitPlayers } = require('../../util/Util');
 const nums = require('../../assets/json/bingo');
 const rows = Object.keys(nums);
 const callNums = Array.from({ length: 75 }, (v, i) => i + 1);
@@ -31,7 +31,7 @@ module.exports = class BingoCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			const awaitedPlayers = await this.awaitPlayers(msg, playersCount);
+			const awaitedPlayers = await awaitPlayers(msg, playersCount);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
@@ -65,7 +65,7 @@ module.exports = class BingoCommand extends Command {
 					**${this.findRowValue(picked)} ${picked}**!
 
 					Check your DMs for your board. If you have bingo, type \`bingo\`!
-					_Next number will be called in 20 seconds._
+					_Next number will be called in 20 seconds. ${validNums.length - 1} numbers left._
 				`);
 				const filter = res => {
 					if (!players.has(res.author.id)) return false;
@@ -87,25 +87,6 @@ module.exports = class BingoCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
-	}
-
-	async awaitPlayers(msg, players) {
-		if (players === 1) return [msg.author.id];
-		await msg.say(`You will need at least 1 more player (at max ${players - 1}). To join, type \`join game\`.`);
-		const joined = [];
-		joined.push(msg.author.id);
-		const filter = res => {
-			if (res.author.bot) return false;
-			if (joined.includes(res.author.id)) return false;
-			if (res.content.toLowerCase() !== 'join game') return false;
-			joined.push(res.author.id);
-			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
-			return true;
-		};
-		const verify = await msg.channel.awaitMessages(filter, { max: players - 1, time: 30000 });
-		verify.set(msg.id, msg);
-		if (verify.size < 1) return false;
-		return verify.map(player => player.author.id);
 	}
 
 	generateBoard() {

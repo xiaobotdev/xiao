@@ -3,8 +3,7 @@ const Collection = require('@discordjs/collection');
 const { Hand } = require('pokersolver');
 const { stripIndents } = require('common-tags');
 const Deck = require('../../structures/cards/Deck');
-const { formatNumber, list, delay } = require('../../util/Util');
-const { SUCCESS_EMOJI_ID } = process.env;
+const { formatNumber, list, delay, awaitPlayers } = require('../../util/Util');
 const max = 6;
 const min = 2;
 const bigBlindAmount = 100;
@@ -49,7 +48,7 @@ module.exports = class PokerCommand extends Command {
 			}
 		});
 		try {
-			const awaitedPlayers = await this.awaitPlayers(msg, playersCount);
+			const awaitedPlayers = await awaitPlayers(msg, playersCount, min);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
@@ -179,24 +178,6 @@ module.exports = class PokerCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
-	}
-
-	async awaitPlayers(msg, players) {
-		await msg.say(`You will need at least 1 more player (at max ${players - 1}). To join, type \`join game\`.`);
-		const joined = [];
-		joined.push(msg.author.id);
-		const filter = res => {
-			if (res.author.bot) return false;
-			if (joined.includes(res.author.id)) return false;
-			if (res.content.toLowerCase() !== 'join game') return false;
-			joined.push(res.author.id);
-			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
-			return true;
-		};
-		const verify = await msg.channel.awaitMessages(filter, { max: players - 1, time: 30000 });
-		verify.set(msg.id, msg);
-		if (verify.size < min) return false;
-		return verify.map(player => player.author.id);
 	}
 
 	determineActions(turnPlayer, currentBet) {
