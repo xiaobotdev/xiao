@@ -226,7 +226,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 469
+Total: 470
 
 ### Utility:
 
@@ -494,6 +494,7 @@ Total: 469
 
 * **akinator:** Think about a real or fictional character, I will try to guess who it is.
 * **anagramica:** Try to find all the anagrams for a given set of letters.
+* **antidepressant-or-tolkien:** See if you can guess if a word is an Antidepressant or Tolkien character.
 * **blackjack:** Play a game of blackjack.
 * **box-choosing:** Do you believe that there are choices in life? Taken from Higurashi Chapter 4.
 * **bubble-wrap:** Pop some bubble wrap.
@@ -823,6 +824,8 @@ here.
 	* anime-airing ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* anime-character ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* manga ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
+- [Antidepressants or Tolkien](https://antidepressantsortolkien.now.sh/)
+	* antidepressant-or-tolkien (Question Data)
 - [Antonio Guillem](http://antonioguillem.com/)
 	* distracted-boyfriend ([Image](https://www.istockphoto.com/photo/gm493656728-77018851))
 - [Apple](https://www.apple.com/)

@@ -1,0 +1,122 @@
+[
+	{
+		"name": "Bilbo",
+		"type": "tolkien",
+		"text": "Easy one! Bilbo Baggins was a Hobbit of the Shire, the main protagonist of The Hobbit."
+	},
+	{
+		"name": "Azafen",
+		"type": "drug",
+		"text": "Approved in Russia for the treatment of depression introduced in the late 1960s and is still used today."
+	},
+	{
+		"name": "Bergil",
+		"type": "tolkien",
+		"text": "Bergil was born around T.A. 3009, was the eldest son of Beregond of Gondor. He accompanied Pippin Took when he first arrived in the city of Minas Tirith"
+	},
+	{
+		"name": "Celebrían",
+		"type": "tolkien",
+		"text": "Elf-lady of Lothlórien, the daughter of Celeborn and Galadriel. As the wife of Elrond, she was also known as Lady of Rivendell"
+	},
+	{
+		"name": "Círdan",
+		"type": "tolkien",
+		"text": "He was a Sindarin Elf, one of the wisest and most foresighted of the Elves, and by the Second Age the oldest known elf in Middle-earth. He was the bearer of the Great Ring Narya, which he in turn gave to Gandalf"
+	},
+	{
+		"name": "Clédial",
+		"type": "drug",
+		"text": "Medifoxamine, previously sold under the brand names Clédial and Gerdaxyl, is an atypical antidepressant with additional anxiolytic properties acting via dopaminergic and serotonergic mechanisms which was formerly marketed in France and Spain, as well as Morocco"
+	},
+	{
+		"name": "Desyrel",
+		"type": "drug",
+		"text": "Sold under many brand names, it is used to treat major depressive disorder, anxiety disorders, and, with other medications, alcohol dependence. It is taken by mouth. Common side-effects include dry mouth, feeling faint, vomiting, and headache."
+	},
+	{
+		"name": "Edronax",
+		"type": "drug",
+		"text": "Reboxetine, sold under the brand name Edronax among others, is a drug of the norepinephrine reuptake inhibitor class, marketed as an antidepressant for use in the treatment of major depression."
+	},
+	{
+		"name": "Elendil",
+		"type": "tolkien",
+		"text": "Elendil was also known as Elendil the Tall (being the tallest of Men who escaped the Downfall) and also known as Elendil the Fair."
+	},
+	{
+		"name": "Elronon",
+		"type": "drug",
+		"text": "Noxiptiline (brand names Agedal, Elronon, Nogedal), also known as noxiptyline and dibenzoxine, is a tricyclic antidepressant (TCA) that was introduced in Europe in the 1970s for the treatment of depression."
+	},
+	{
+		"name": "Erestor",
+		"type": "tolkien",
+		"text": "He was the chief counsellor of Elrond's household at the time of the War of the Ring; as such, he took part in the Council of Elrond. He did not support the idea of destroying The Ring, and preferred to guarding it from Sauron"
+	},
+	{
+		"name": "Eskalith",
+		"type": "drug",
+		"text": "Also knows as Lithium carbonate. This medication is used to treat manic-depressive disorder (bipolar disorder)."
+	},
+	{
+		"name": "Finarfin",
+		"type": "tolkien",
+		"text": "Finarfin was the youngest child and son of Finwë and Indis. After the Flight of the Noldor he remained in Tirion and ruled the Noldor who remained in Aman."
+	},
+	{
+		"name": "Haldir",
+		"type": "tolkien",
+		"text": "He was an Elf of Lothlórien, probably a Silvan Elf, and a marchwarden who guarded the forest's northern borders. When the Fellowship of the Ring arrived in Lórien, he became their guide to Caras Galadhon."
+	},
+	{
+		"name": "Minalcar",
+		"type": "tolkien",
+		"text": "Rómendacil II born Minalcar, was the nineteenth King of Gondor. "
+	},
+	{
+		"name": "Nardil",
+		"type": "drug",
+		"text": "Phenelzine (Nardil, Nardelzine) is a non-selective and irreversible monoamine oxidase inhibitor of the hydrazine class which is used as an antidepressant and anxiolytic."
+	},
+	{
+		"name": "Narmacil",
+		"type": "tolkien",
+		"text": "Narmacil I was the seventeenth King of Gondor after the death of his father Atanatar II. Narmacil II was the twenty-ninth King of Gondor and the son of Telumehtar."
+	},
+	{
+		"name": "Narvi",
+		"type": "tolkien",
+		"text": "He was a dwarf of Khazad-dûm (Moria) during the Second Age. He made the mighty Doors of Durin that guarded the West-gate of the Dwarven city."
+	},
+	{
+		"name": "Orophin",
+		"type": "tolkien",
+		"text": "He was one of three wardens of the northern border of Lothlórien met by the Fellowship as they entered the Golden Wood."
+	},
+	{
+		"name": "Sintamil",
+		"type": "drug",
+		"text": "Nitroxazepine (brand name Sintamil) is a tricyclic antidepressant (TCA) which was introduced by Ciba-Geigy (now Novartis) for the treatment of depression in India in 1982."
+	},
+	{
+		"name": "Luvox",
+		"type": "drug",
+		"text": "Fluvoxamine, sold under the brand name Luvox among others, is an antidepressant of the selective serotonin reuptake inhibitor (SSRI) class which is used primarily for the treatment of obsessive–compulsive disorder (OCD)."
+	},
+	{
+		"name": "Sildenafil",
+		"type": "drug",
+		"text": "Sildenafil, sold as the brand name Viagra among others, is a medication used to treat erectile dysfunction and pulmonary arterial hypertension. It is unclear if it is effective for treating sexual dysfunction in women)."
+	},
+	{
+		"name": "Cymbalta",
+		"type": "drug",
+		"text": "Duloxetine, sold under the brand name Cymbalta among others, is a medication used to treat major depressive disorder, generalized anxiety disorder, fibromyalgia, and neuropathic pain. It is taken by mouth"
+	},
+	{
+		"name": "Amantadine",
+		"type": "drug",
+		"text": "Amantadine (trade name Symmetrel, by Endo Pharmaceuticals) is a medication that has U.S. Food and Drug Administration approval for use both as an antiviral and an antiparkinsonian medication."
+	}
+]
