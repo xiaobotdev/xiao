@@ -90,6 +90,7 @@ module.exports = class BingoCommand extends Command {
 	}
 
 	async awaitPlayers(msg, players) {
+		if (players === 1) return [msg.author.id];
 		await msg.say(`You will need at least 1 more player (at max ${players - 1}). To join, type \`join game\`.`);
 		const joined = [];
 		joined.push(msg.author.id);
