@@ -24,7 +24,7 @@ const resultGraphQL = stripIndents`
 			}
 			description(asHtml: false)
 			siteUrl
-			media(page: 1, perPage: 10) {
+			media(page: 1, perPage: 5) {
 				edges {
 					node {
 						title {
@@ -86,7 +86,7 @@ module.exports = class AnimeCharacterCommand extends Command {
 				.addField('❯ Appearances', trimArray(character.media.edges.map(edge => {
 					const title = edge.node.title.english || edge.node.title.userPreferred;
 					return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
-				}), 10).join(', '));
+				}), 5).join(', '));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
