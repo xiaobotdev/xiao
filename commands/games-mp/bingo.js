@@ -48,6 +48,7 @@ module.exports = class BingoCommand extends Command {
 			const called = ['FR'];
 			while (!winner) {
 				const validNums = callNums.filter(num => !called.includes(num));
+				if (!validNums.length) break;
 				const picked = validNums[Math.floor(Math.random() * validNums.length)];
 				called.push(picked);
 				for (const player of players.values()) {
@@ -80,6 +81,7 @@ module.exports = class BingoCommand extends Command {
 				winner = bingo.first().author;
 			}
 			this.client.games.delete(msg.channel.id);
+			if (!winner) return msg.say('I called the entire board, but no one called bingo...');
 			return msg.say(`Congrats, ${winner.user}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
