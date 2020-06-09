@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 
-module.exports = class PersonCommand extends Command {
+module.exports = class AiPersonCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'person',
-			aliases: ['this-person-does-not-exist'],
+			name: 'ai-person',
+			aliases: ['this-person-does-not-exist', 'person'],
 			group: 'random-img',
-			memberName: 'person',
+			memberName: 'ai-person',
 			description: 'Responds with a randomly generated person.',
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [

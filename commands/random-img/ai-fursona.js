@@ -1,12 +1,12 @@
 const Command = require('../../structures/Command');
 
-module.exports = class FursonaCommand extends Command {
+module.exports = class AiFursonaCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'fursona',
-			aliases: ['this-fursona-does-not-exist'],
+			name: 'ai-fursona',
+			aliases: ['this-fursona-does-not-exist', 'fursona'],
 			group: 'random-img',
-			memberName: 'fursona',
+			memberName: 'ai-fursona',
 			description: 'Responds with a randomly generated fursona.',
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
