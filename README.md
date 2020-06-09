@@ -226,11 +226,10 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 465
+Total: 466
 
 ### Utility:
 
-* **eval:** Executes JavaScript code. (Owner-Only)
 * **changelog:** Responds with the bot's latest 10 commits.
 * **cloc:** Responds with the bot's code line count.
 * **command-leaderboard:** Responds with the bot's most used commands.
@@ -246,6 +245,7 @@ Total: 465
 
 ### Utility (Owner):
 
+* **eval:** Executes JavaScript code. (Owner-Only)
 * **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
 * **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
 * **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
@@ -338,6 +338,7 @@ Total: 465
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **lorem-picsum:** Responds with a random image of a certain size.
 * **meme:** Responds with a random meme.
+* **person:** Responds with a randomly generated person.
 * **porn:** Responds with a random porn image. (NSFW)
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
@@ -1397,6 +1398,8 @@ here.
 	* newspaper (API)
 - [The Onion](https://www.theonion.com/)
 	* the-onion ([RSS Feed](https://www.theonion.com/rss))
+- [This Person Does Not Exist](https://thispersondoesnotexist.com/)
+	* person (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
 	* waifu (API)
 - [Tim's Printables](https://www.timvandevall.com/)

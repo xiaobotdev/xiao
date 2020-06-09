@@ -6,7 +6,7 @@ module.exports = class DonateCommand extends Command {
 		super(client, {
 			name: 'donate',
 			aliases: ['paypal'],
-			group: 'util',
+			group: 'util-public',
 			memberName: 'donate',
 			description: 'Responds with the bot\'s donation links.',
 			guarded: true,

@@ -5,7 +5,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 		super(client, {
 			name: 'generate-commands',
 			aliases: ['gen-commands', 'generate-cmds', 'gen-cmds'],
-			group: 'util-owner',
+			group: 'util',
 			memberName: 'generate-commands',
 			description: 'Generates the commands list for Xiao\'s README.',
 			details: 'Only the bot owner(s) may use this command.',

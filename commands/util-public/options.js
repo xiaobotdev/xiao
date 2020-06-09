@@ -6,7 +6,7 @@ module.exports = class OptionsCommand extends Command {
 		super(client, {
 			name: 'options',
 			aliases: ['options-list'],
-			group: 'util',
+			group: 'util-public',
 			memberName: 'options',
 			description: 'Responds with a list of server options.',
 			guarded: true

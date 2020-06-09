@@ -6,7 +6,7 @@ module.exports = class GenerateCreditCommand extends Command {
 		super(client, {
 			name: 'generate-credit',
 			aliases: ['gen-credit'],
-			group: 'util-owner',
+			group: 'util',
 			memberName: 'generate-credit',
 			description: 'Generates the credit list for Xiao\'s README.',
 			details: 'Only the bot owner(s) may use this command.',
