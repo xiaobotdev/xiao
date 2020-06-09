@@ -226,7 +226,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 467
+Total: 469
 
 ### Utility:
 
@@ -323,6 +323,8 @@ Total: 467
 
 ### Random Image:
 
+* **ai-artwork:** Responds with randomly generated artwork.
+* **ai-food:** Responds with a randomly generated food.
 * **ai-fursona:** Responds with a randomly generated fursona.
 * **ai-person:** Responds with a randomly generated person.
 * **ai-waifu:** Responds with a randomly generated waifu.
@@ -1399,10 +1401,14 @@ here.
 	* newspaper (API)
 - [The Onion](https://www.theonion.com/)
 	* the-onion ([RSS Feed](https://www.theonion.com/rss))
+- [This Artwork Does Not Exist](https://thisartworkdoesnotexist.com/)
+	* ai-artwork (API)
 - [This Fursona Does Not Exist](https://thisfursonadoesnotexist.com/)
 	* ai-fursona (API)
 - [This Person Does Not Exist](https://thispersondoesnotexist.com/)
 	* ai-person (API)
+- [This Snack Does Not Exist](https://thissnackdoesnotexist.com/)
+	* ai-food (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
 	* ai-waifu (API)
 - [Tim's Printables](https://www.timvandevall.com/)
