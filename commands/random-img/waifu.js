@@ -19,7 +19,7 @@ module.exports = class WaifuCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		const num = Math.floor(Math.random() * 100000);
 		return msg.say({ files: [`https://www.thiswaifudoesnotexist.net/example-${num}.jpg`] });
 	}
