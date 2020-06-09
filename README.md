@@ -342,7 +342,7 @@ Total: 465
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
 * **shrek:** Responds with a random image of Shrek, the sexiest man alive.
-* **waifu:** Responds with a randomly generated waifu and backstory.
+* **waifu:** Responds with a randomly generated waifu.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Seeded Randomizers:
