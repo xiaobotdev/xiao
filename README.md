@@ -316,7 +316,6 @@ Total: 465
 * **superpower:** Responds with a random superpower.
 * **the-onion:** Responds with a random "The Onion" article.
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
-* **waifu:** Responds with a randomly generated waifu and backstory.
 * **will-you-press-the-button:** Responds with a random "Will You Press The Button?" dilemma.
 * **word:** Responds with a random word.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
@@ -343,6 +342,7 @@ Total: 465
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
 * **shrek:** Responds with a random image of Shrek, the sexiest man alive.
+* **waifu:** Responds with a randomly generated waifu and backstory.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Seeded Randomizers:
@@ -1284,8 +1284,6 @@ here.
 	* psycho-pass ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index%27))
 - [r/IsTodayFridayThe13th](https://www.reddit.com/r/IsTodayFridayThe13th/)
 	* friday-the-13th (Concept)
-- [r/Showerthoughts](https://www.reddit.com/r/showerthoughts)
-	* shower-thought (Shower Thought Data)
 - [Random-d.uk](https://random-d.uk/)
 	* duck ([API](https://random-d.uk/api))
 	* http-duck ([API](https://random-d.uk/http))
