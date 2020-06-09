@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
 const { embedURL, cleanAnilistHTML } = require('../../util/Util');
 const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
@@ -22,7 +21,6 @@ const resultGraphQL = stripIndents`
 	query media($id: Int, $type: MediaType) {
 		Media(id: $id, type: $type) {
 			id
-			idMal
 			title {
 				english
 				romaji
@@ -40,6 +38,7 @@ const resultGraphQL = stripIndents`
 			chapters
 			isAdult
 			meanScore
+			averageScore
 		}
 	}
 `;
@@ -79,11 +78,6 @@ module.exports = class MangaCommand extends Command {
 					url: 'https://anilist.co/',
 					reason: 'API',
 					reasonURL: 'https://anilist.gitbook.io/anilist-apiv2-docs/'
-				},
-				{
-					name: 'MyAnimeList',
-					url: 'https://myanimelist.net/',
-					reason: 'Score Data'
 				}
 			],
 			args: [
@@ -105,8 +99,6 @@ module.exports = class MangaCommand extends Command {
 			const manga = await this.fetchManga(id);
 			if (!this.personalList) await this.fetchPersonalList();
 			const entry = this.personalList.find(ma => ma.mediaId === id);
-			const malScore = await this.fetchMALScore(manga.idMal);
-			const malURL = `https://myanimelist.net/manga/${manga.idMal}`;
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
@@ -117,9 +109,9 @@ module.exports = class MangaCommand extends Command {
 				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
 				.addField('❯ Year', manga.startDate.year || '???', true)
-				.addField('❯ Average Score', manga.meanScore ? `${manga.meanScore}%` : '???', true)
-				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '?/10', true)
-				.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true);
+				.addField('❯ Mean Score', manga.meanScore ? `${manga.meanScore}%` : '???', true)
+				.addField('❯ Average Score', manga.averageScore ? `${manga.averageScore}%` : '???', true)
+				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -151,16 +143,6 @@ module.exports = class MangaCommand extends Command {
 				query: resultGraphQL
 			});
 		return body.data.Media;
-	}
-
-	async fetchMALScore(id) {
-		try {
-			const { text } = await request.get(`https://myanimelist.net/manga/${id}`);
-			const $ = cheerio.load(text);
-			return $('span[itemprop="ratingValue"]').first().text();
-		} catch {
-			return null;
-		}
 	}
 
 	async fetchPersonalList() {

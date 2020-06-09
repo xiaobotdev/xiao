@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { embedURL, cleanAnilistHTML } = require('../../util/Util');
+const { embedURL, cleanAnilistHTML, trimArray } = require('../../util/Util');
 const searchGraphQL = stripIndents`
 	query ($search: String) {
 		characters: Page (perPage: 1) {
@@ -83,10 +83,10 @@ module.exports = class AnimeCharacterCommand extends Command {
 				.setThumbnail(character.image.large || character.image.medium || null)
 				.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)
 				.setDescription(character.description ? cleanAnilistHTML(character.description, false) : 'No description.')
-				.addField('❯ Appearances', character.media.edges.map(edge => {
+				.addField('❯ Appearances', trimArray(character.media.edges.map(edge => {
 					const title = edge.node.title.english || edge.node.title.userPreferred;
 					return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
-				}).join(', '));
+				}), 10).join(', '));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
