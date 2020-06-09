@@ -22,6 +22,6 @@ module.exports = class AiPersonCommand extends Command {
 
 	async run(msg) {
 		const { body } = await request.get('https://thispersondoesnotexist.com/image');
-		return msg.say('AI-Generated Person', { files: [{ attachment: body, name: 'this-person-does-not-exist.jpg' }] });
+		return msg.say('AI-Generated Person', { files: [{ attachment: body, name: 'ai-person.jpg' }] });
 	}
 };
