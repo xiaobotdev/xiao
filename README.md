@@ -226,7 +226,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 466
+Total: 467
 
 ### Utility:
 
@@ -331,6 +331,7 @@ Total: 466
 * **duck:** Responds with a random duck image.
 * **fidget:** Responds with a random image of Fidget.
 * **fox:** Responds with a random fox image.
+* **fursona:** Responds with a randomly generated fursona.
 * **hentai:** Responds with a random hentai image. (NSFW)
 * **interesting:** Responds with a random interesting image.
 * **karen:** Responds with a random image of Karen.
@@ -1398,6 +1399,8 @@ here.
 	* newspaper (API)
 - [The Onion](https://www.theonion.com/)
 	* the-onion ([RSS Feed](https://www.theonion.com/rss))
+- [This Fursona Does Not Exist](https://thisfursonadoesnotexist.com/)
+	* fursona (API)
 - [This Person Does Not Exist](https://thispersondoesnotexist.com/)
 	* person (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
