@@ -8,14 +8,7 @@ module.exports = class ShowerThoughtCommand extends SubredditCommand {
 			group: 'random-res',
 			memberName: 'shower-thought',
 			description: 'Responds with a random shower thought, directly from r/Showerthoughts.',
-			subreddit: 'Showerthoughts',
-			credit: [
-				{
-					name: 'r/Showerthoughts',
-					url: 'https://www.reddit.com/r/showerthoughts',
-					reason: 'Shower Thought Data'
-				}
-			]
+			subreddit: 'Showerthoughts'
 		});
 	}
 
