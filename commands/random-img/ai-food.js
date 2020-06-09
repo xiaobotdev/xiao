@@ -26,7 +26,10 @@ module.exports = class AiFoodCommand extends Command {
 			const $ = cheerio.load(text);
 			const img = $('div[class="Absolute-Center"]').first().attr('style').match(/background-image:url\((.+)\);/i);
 			const name = $('h1[class="snack-description"]').first().text();
-			return msg.say(`AI-Generated Food: ${name}`, img ? { files: [{ attachment: img, name: 'ai-food.jpg' }] } : {});
+			return msg.say(
+				`AI-Generated Food: ${name}`,
+				img ? { files: [{ attachment: img[1], name: 'ai-food.jpg' }] } : {}
+			);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
