@@ -3,6 +3,7 @@ const Collection = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
 const { awaitPlayers } = require('../../util/Util');
 const nums = require('../../assets/json/bingo');
+const { SUCCESS_EMOJI_ID } = process.env;
 const rows = Object.keys(nums);
 const callNums = Array.from({ length: 75 }, (v, i) => i + 1);
 
@@ -65,10 +66,17 @@ module.exports = class BingoCommand extends Command {
 					**${this.findRowValue(picked)} ${picked}**!
 
 					Check your DMs for your board. If you have bingo, type \`bingo\`!
+					If you wish to drop out, type \`leave game\`.
 					_Next number will be called in 20 seconds. ${validNums.length - 1} numbers left._
 				`);
 				const filter = res => {
 					if (!players.has(res.author.id)) return false;
+					if (res.content.toLowerCase() === 'leave game') {
+						players.delete(res.author.id);
+						res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+						if (!players.size) return true;
+						return false;
+					}
 					if (res.content.toLowerCase() !== 'bingo') return false;
 					if (!this.checkBingo(players.get(res.author.id).board, called)) {
 						msg.say(`${res.author}, you don't have bingo, liar.`).catch(() => null);
@@ -77,10 +85,15 @@ module.exports = class BingoCommand extends Command {
 					return true;
 				};
 				const bingo = await msg.channel.awaitMessages(filter, { max: 1, time: 20000 });
+				if (!players.size) {
+					winner = 0;
+					break;
+				}
 				if (!bingo.size) continue;
 				winner = bingo.first().author;
 			}
 			this.client.games.delete(msg.channel.id);
+			if (winner === 0) return msg.say('Everyone dropped out...');
 			if (!winner) return msg.say('I called the entire board, but no one called bingo...');
 			return msg.say(`Congrats, ${winner.user}!`);
 		} catch (err) {
