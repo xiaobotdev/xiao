@@ -1,7 +1,4 @@
 const Command = require('../../structures/Command');
-const { MessageEmbed } = require('discord.js');
-const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
 
 module.exports = class WaifuCommand extends Command {
 	constructor(client) {
@@ -10,8 +7,8 @@ module.exports = class WaifuCommand extends Command {
 			aliases: ['this-waifu-does-not-exist'],
 			group: 'random-img',
 			memberName: 'waifu',
-			description: 'Responds with a randomly generated waifu and backstory.',
-			clientPermissions: ['EMBED_LINKS'],
+			description: 'Responds with a randomly generated waifu.',
+			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
 					name: 'This Waifu Does Not Exist',
@@ -24,10 +21,6 @@ module.exports = class WaifuCommand extends Command {
 
 	async run(msg) {
 		const num = Math.floor(Math.random() * 100000);
-		const { text } = await request.get(`https://www.thiswaifudoesnotexist.net/snippet-${num}.txt`);
-		const embed = new MessageEmbed()
-			.setDescription(shorten(text, 1000))
-			.setImage(`https://www.thiswaifudoesnotexist.net/example-${num}.jpg`);
-		return msg.embed(embed);
+		return msg.say({ files: [`https://www.thiswaifudoesnotexist.net/example-${num}.jpg`] });
 	}
 };
