@@ -12,7 +12,17 @@ module.exports = class AntidepressantOrTolkienCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'antidepressant-or-tolkien',
-			aliases: ['antidepressant-tolkien', 'drug-or-tolkien', 'drug-tolkien'],
+			aliases: [
+				'antidepressant-tolkien',
+				'drug-or-tolkien',
+				'drug-tolkien',
+				'tolkien-or-antidepressant',
+				'tolkien-or-drug',
+				'tolkien-antidepressant',
+				'tolkien-drug',
+				't-or-a',
+				'a-or-t'
+			],
 			group: 'games-sp',
 			memberName: 'antidepressant-or-tokien',
 			description: 'See if you can guess if a word is an Antidepressant or Tolkien character.',
