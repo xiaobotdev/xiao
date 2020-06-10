@@ -24,6 +24,6 @@ module.exports = class ExplodeCommand extends ImgurAlbumCommand {
 
 	generateText(msg, user) {
 		const noUserAuthor = msg.author.id !== user.id;
-		return `_**${msg.author.username}** explodes${noUserAuthor ? ` **${user.username}**` : ''}._`;
+		return `_**${msg.author.username}** ${noUserAuthor ? `explodes **${user.username}**` : 'casts explosion'}._`;
 	}
 };
