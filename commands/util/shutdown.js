@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const texts = require('../../assets/json/shutdown');
 
 module.exports = class ShutdownCommand extends Command {
 	constructor(client) {
@@ -27,7 +28,8 @@ module.exports = class ShutdownCommand extends Command {
 			this.uses++;
 			this.client.exportCommandLeaderboard();
 			this.client.logger.info('[SHUTDOWN] Manual shutdown engaged.');
-			await msg.say('Shutting down... :(');
+			const text = texts[Math.floor(Math.random() * texts.length)];
+			await msg.say(text);
 			process.exit(code);
 			return null;
 		} catch {
