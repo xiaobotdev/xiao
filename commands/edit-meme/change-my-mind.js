@@ -50,7 +50,7 @@ module.exports = class ChangeMyMindCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.textBaseline = 'top';
 		ctx.drawImage(base, 0, 0);
-		ctx.rotate(6 * (Math.PI / 180));
+		ctx.rotate(-6 * (Math.PI / 180));
 		ctx.font = '28px Noto';
 		let fontSize = 28;
 		while (ctx.measureText(text).width > 309) {
@@ -58,8 +58,8 @@ module.exports = class ChangeMyMindCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines = await wrapText(ctx, text, 206);
-		ctx.fillText(lines.join('\n'), 184, 253, 206);
-		ctx.rotate(-6 * (Math.PI / 180));
+		ctx.fillText(lines.join('\n'), 184, 233, 206);
+		ctx.rotate(6 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'change-my-mind.png' }] });
 	}
 };
