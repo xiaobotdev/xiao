@@ -99,14 +99,14 @@ module.exports = class PhoneCall {
 		this.setTimeout();
 		if (!this.client.isOwner(msg.author)) {
 			const ratelimit = this.ratelimitMeters.get(msg.author.id);
-			if (!ratelimit) ratelimit.set(msg.author.id, 1);
+			if (!ratelimit) this.ratelimitMeters.set(msg.author.id, 1);
 			if (ratelimit > 2) {
 				this.cooldown.add(msg.author.id);
 				setTimeout(() => this.cooldown.delete(msg.author.id), 10000);
-				ratelimit.set(msg.author.id, 0);
+				this.ratelimitMeters.set(msg.author.id, 0);
 			} else {
-				ratelimit.set(msg.author.id, ratelimit + 1);
-				setTimeout(() => ratelimit.set(msg.author.id, 0), 5000);
+				this.ratelimitMeters.set(msg.author.id, ratelimit + 1);
+				setTimeout(() => this.ratelimitMeters.set(msg.author.id, 0), 5000);
 			}
 		}
 		const attachments = hasImage ? msg.attachments.map(a => a.url).join('\n') : null;
