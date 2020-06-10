@@ -12,6 +12,7 @@ module.exports = class PhoneCall {
 		this.timeout = null;
 		this.ownerOrigin = ownerOrigin || false;
 		this.cooldown = new Set();
+		this.ratelimitMeters = new Map();
 	}
 
 	async start() {
@@ -93,12 +94,20 @@ module.exports = class PhoneCall {
 		}
 		if (this.cooldown.has(msg.author.id) && !this.client.isOwner(msg.author)) {
 			const badChannel = channel.id === this.origin.id ? this.recipient : this.origin;
-			return badChannel.send(`☎️ ${msg.author}, please wait **5** seconds between messages!`);
+			return badChannel.send(`☎️ ${msg.author}, slow down! You're sending messages too fast!`);
 		}
 		this.setTimeout();
 		if (!this.client.isOwner(msg.author)) {
-			this.cooldown.add(msg.author.id);
-			setTimeout(() => this.cooldown.delete(msg.author.id), 5000);
+			const ratelimit = this.ratelimitMeters.get(msg.author.id);
+			if (!ratelimit) ratelimit.set(msg.author.id, 1);
+			if (ratelimit > 2) {
+				this.cooldown.add(msg.author.id);
+				setTimeout(() => this.cooldown.delete(msg.author.id), 10000);
+				ratelimit.set(msg.author.id, 0);
+			} else {
+				ratelimit.set(msg.author.id, ratelimit + 1);
+				setTimeout(() => ratelimit.set(msg.author.id, 0), 5000);
+			}
 		}
 		const attachments = hasImage ? msg.attachments.map(a => a.url).join('\n') : null;
 		if (!hasText && hasImage) return channel.send(`☎️ **${msg.author.tag}:**\n${attachments}`);
