@@ -40,7 +40,6 @@ module.exports = class StockPhotoCommand extends Command {
 					query,
 					content_filter: msg.channel.nsfw ? 'low' : 'high'
 				});
-			if (!body) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
 				.setTitle(body.description ? shorten(body.description, 256) : 'Unnamed Image')
 				.setURL(body.links.download)
@@ -51,6 +50,7 @@ module.exports = class StockPhotoCommand extends Command {
 				.setTimestamp(new Date(body.updated_at));
 			return msg.embed(embed);
 		} catch (err) {
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
