@@ -226,7 +226,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 470
+Total: 471
 
 ### Utility:
 
@@ -622,6 +622,7 @@ Total: 470
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
 * **catch:** Catch users, revealing who is something.
 * **challenger:** Draws an image or a user's avatar over Smash Bros.'s "Challenger Approaching" screen.
+* **change-my-mind:** Sends a "Change My Mind" meme with the text of your choice.
 * **chi-idea:** Sends a "Daddy, I've got an idea!" Takagi-san meme with the text of your choice.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
@@ -985,6 +986,7 @@ here.
 	* book ([Books API](https://developers.google.com/books/))
 	* calendar ([Calendar API](https://developers.google.com/calendar/))
 	* catch ([Noto Font](https://www.google.com/get/noto/))
+	* change-my-mind ([Noto Font](https://www.google.com/get/noto/))
 	* dear-liberals ([Oswald Font](https://fonts.google.com/specimen/Oswald))
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
 	* edd-facts-book ([Noto Font](https://www.google.com/get/noto/))
@@ -1376,6 +1378,8 @@ here.
 	* steam-card ([Original Design](https://steamcommunity.com/tradingcards/))
 	* steam-now-playing (Original Design)
 	* steam-now-playing-classic (Original Design)
+- [Steven Crowder](https://www.youtube.com/StevenCrowder)
+	* change-my-mind (Image)
 - [Straw Poll](https://www.strawpoll.me/)
 	* strawpoll ([API](https://github.com/strawpoll/strawpoll/wiki/API))
 - [Superpower Wiki](https://powerlisting.fandom.com/wiki/Superpower_Wiki)
