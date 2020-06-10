@@ -99,7 +99,7 @@ module.exports = class PhoneCall {
 		this.setTimeout();
 		if (!this.client.isOwner(msg.author)) {
 			const ratelimit = this.ratelimitMeters.get(msg.author.id);
-			if (!ratelimit) this.ratelimitMeters.set(msg.author.id, 1);
+			if (!ratelimit) this.ratelimitMeters.set(msg.author.id, 0);
 			if (ratelimit > 1) {
 				this.cooldown.add(msg.author.id);
 				setTimeout(() => {
@@ -107,7 +107,7 @@ module.exports = class PhoneCall {
 					this.ratelimitMeters.set(msg.author.id, 0);
 				}, 10000);
 			} else {
-				this.ratelimitMeters.set(msg.author.id, ratelimit + 1);
+				this.ratelimitMeters.set(msg.author.id, this.ratelimitMeters.get(msg.author.id) + 1);
 				setTimeout(() => this.ratelimitMeters.set(msg.author.id, 0), 5000);
 			}
 		}
