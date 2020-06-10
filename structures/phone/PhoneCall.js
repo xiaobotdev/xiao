@@ -100,10 +100,12 @@ module.exports = class PhoneCall {
 		if (!this.client.isOwner(msg.author)) {
 			const ratelimit = this.ratelimitMeters.get(msg.author.id);
 			if (!ratelimit) this.ratelimitMeters.set(msg.author.id, 1);
-			if (ratelimit > 2) {
+			if (ratelimit > 1) {
 				this.cooldown.add(msg.author.id);
-				setTimeout(() => this.cooldown.delete(msg.author.id), 10000);
-				this.ratelimitMeters.set(msg.author.id, 0);
+				setTimeout(() => {
+					this.cooldown.delete(msg.author.id);
+					this.ratelimitMeters.set(msg.author.id, 0);
+				}, 10000);
 			} else {
 				this.ratelimitMeters.set(msg.author.id, ratelimit + 1);
 				setTimeout(() => this.ratelimitMeters.set(msg.author.id, 0), 5000);
