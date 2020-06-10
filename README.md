@@ -194,6 +194,7 @@ API. All are free unless otherwise stated.
 * `TMDB_KEY` can be obtained by [following these instructions at the TMDB website](https://www.themoviedb.org/documentation/api). Read the "How do I apply for an API key?" section.
 * `TUMBLR_KEY` can be obtained at the [Tumblr developer portal](https://www.tumblr.com/oauth/apps).
 * `TWITTER_KEY` and `TWITTER_SECRET` can be obtained at the [Twitter developer portal](https://developer.twitter.com/en/apps).
+* `UNSPLASH_KEY` can be obtained at the [Unsplash developer portal](https://unsplash.com/developers).
 * `USPS_USERID` can be obtained at the [Web Tools API Portal](https://www.usps.com/business/web-tools-apis/).
 * `WATTPAD_KEY` can be obtained at the [Wattpad developer portal](https://www.wattpad.com/developer/docs/api).
 * `WEBSTER_KEY` can be obtained by [going to the Dictionary API website](https://dictionaryapi.com/). Find the "GET STARTED USING OUR API" section.
@@ -226,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 471
+Total: 472
 
 ### Utility:
 
@@ -457,6 +458,7 @@ Total: 471
 * **safebooru:** Responds with an image from Safebooru, with optional query.
 * **stack-overflow:** Searches Stack Overflow for your query.
 * **steam:** Searches Steam for your query.
+* **stock-photo:** Searches for stock photos based on your query.
 * **stocks:** Responds with the current stocks for a company.
 * **tenor:** Searches Tenor for your query.
 * **tumblr:** Responds with information on a Tumblr blog.
@@ -1447,6 +1449,8 @@ here.
 	* genie-rules ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/bht9o6/i_made_an_hd_high_quality_version_of_the_4_rules/))
 - [UNDERTALE](https://undertale.com/)
 	* temmie (Original Game)
+- [Unsplash](https://unsplash.com/)
+	* stock-photo ([API](https://unsplash.com/developers))
 - [Urban Dictionary](https://www.urbandictionary.com/)
 	* urban ([API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation))
 - [USPS](https://www.usps.com/)
