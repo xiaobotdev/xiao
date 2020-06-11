@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 472
+Total: 473
 
 ### Utility:
 
@@ -590,6 +590,7 @@ Total: 472
 * **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
+* **subtitle:** Adds subtitles to an image.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
@@ -1013,6 +1014,7 @@ here.
 	* steam-card ([Noto Font](https://www.google.com/get/noto/))
 	* steam-now-playing ([Noto Font](https://www.google.com/get/noto/))
 	* steam-now-playing-classic ([Noto Font](https://www.google.com/get/noto/))
+	* subtitle ([Noto Font](https://www.google.com/get/noto/))
 	* translate ([Google Translate](https://translate.google.com/))
 	* tweet ([Noto Font](https://www.google.com/get/noto/))
 	* two-buttons ([Noto Font](https://www.google.com/get/noto/))
