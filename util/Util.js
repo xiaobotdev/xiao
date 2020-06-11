@@ -182,7 +182,8 @@ module.exports = class Util {
 
 	static async awaitPlayers(msg, max, min = 1) {
 		if (max === 1) return [msg.author.id];
-		await msg.say(`You will need at least ${min} more player (at max ${max - 1}). To join, type \`join game\`.`);
+		const addS = min - 1 > 1 ? 's': '';
+		await msg.say(`You will need at least ${min - 1} more player${addS} (at max ${max - 1}). To join, type \`join game\`.`);
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
