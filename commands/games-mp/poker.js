@@ -56,7 +56,7 @@ module.exports = class PokerCommand extends Command {
 			const { players, deck, turnData } = this.client.games.get(msg.channel.id).data;
 			for (const player of awaitedPlayers) {
 				players.set(player, {
-					money: 5000,
+					money: 2000,
 					id: player,
 					hand: [],
 					user: await this.client.users.fetch(player),
@@ -98,37 +98,37 @@ module.exports = class PokerCommand extends Command {
 				turnData.pot = bigBlindAmount + smallBlindAmount;
 				turnData.currentBet = bigBlindAmount;
 				turnData.highestBetter = bigBlind;
-				let keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				let keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				const dealerHand = deck.draw(3);
 				await msg.say(stripIndents`
 					**Dealer Hand:**
 					${dealerHand.map(card => card.textDisplay).join('\n')}
 
-					_Next betting round begins in 5 seconds._
+					_Next betting round begins in 10 seconds._
 				`);
-				await delay(5000);
-				keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				await delay(10000);
+				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
 					**Dealer Hand:**
 					${dealerHand.map(card => card.textDisplay).join('\n')}
 
-					_Next betting round begins in 5 seconds._
+					_Next betting round begins in 10 seconds._
 				`);
-				await delay(5000);
-				keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				await delay(10000);
+				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
 					**Dealer Hand:**
 					${dealerHand.map(card => card.textDisplay).join('\n')}
 
-					_Next betting round begins in 5 seconds._
+					_Next betting round begins in 10 seconds._
 				`);
-				await delay(5000);
-				keepGoing = await this.gameRound(msg, players, folded, turnData, bigBlind, smallBlind);
+				await delay(10000);
+				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
 				if (!keepGoing) continue;
 				const solved = [];
 				for (const playerID of rotation) {
@@ -150,7 +150,7 @@ module.exports = class PokerCommand extends Command {
 						__**Results**__
 						${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
 
-						_Next game starting in 10 seconds._
+						_Next game starting in 15 seconds._
 					`);
 					const splitPot = turnData.pot / winners.length;
 					for (const win of winners) win.user.money += splitPot;
@@ -161,16 +161,16 @@ module.exports = class PokerCommand extends Command {
 						__**Results**__
 						${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
 
-						_Next game starting in 10 seconds._
+						_Next game starting in 15 seconds._
 					`);
 					winners[0].user.money += turnData.pot;
 				}
-				await this.resetGame(msg, players);
+				await this.resetGame(msg, players, deck);
 				if (players.size <= 1) {
 					winner = players.first();
 					break;
 				}
-				await delay(10000);
+				await delay(15000);
 			}
 			this.client.games.delete(msg.channel.id);
 			return msg.say(`Congrats, ${winner.user}!`);
@@ -197,7 +197,7 @@ module.exports = class PokerCommand extends Command {
 		].filter(player => !folded.includes(player));
 	}
 
-	async gameRound(msg, players, folded, turnData, bigBlind, smallBlind) {
+	async gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind) {
 		let turnOver = false;
 		const turnRotation = this.makeTurnRotation(players, folded, bigBlind, smallBlind);
 		while (!turnOver) turnOver = await this.bettingRound(msg, players, turnRotation, folded, turnData);
@@ -207,11 +207,11 @@ module.exports = class PokerCommand extends Command {
 			await msg.say(stripIndents`
 				${remainer.user} takes the pot.
 
-				_Next game starting in 10 seconds._
+				_Next game starting in 15 seconds._
 			`);
 			remainer.money += turnData.pot;
-			await this.resetGame(msg, players);
-			await delay(10000);
+			await this.resetGame(msg, players, deck);
+			await delay(15000);
 			return false;
 		}
 		return true;
@@ -291,7 +291,8 @@ module.exports = class PokerCommand extends Command {
 			|| turnRotation.length === 1;
 	}
 
-	async resetGame(msg, players) {
+	async resetGame(msg, players, deck) {
+		deck.reset();
 		for (const player of players.values()) {
 			if (player.money <= 0 || player.strikes >= 3) {
 				await msg.say(`${player.user} has been kicked.`);
