@@ -52,7 +52,7 @@ module.exports = class IslandCommand extends Command {
 
 					You have **2 minutes** to make a decision before voting starts.
 				`);
-				await delay(120000);c
+				await delay(120000);
 				const choices = players.filter(player => playersLeft.has(player.id));
 				const ids = choices.map(player => player.id);
 				await msg.say(stripIndents`

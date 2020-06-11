@@ -508,7 +508,6 @@ Total: 474
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
-* **island:** Who will be the final two left on the island after a series of vote-kicks?
 * **jeopardy:** Answer a Jeopardy question.
 * **lottery:** Attempt to win the lottery with 6 numbers.
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
@@ -534,6 +533,7 @@ Total: 474
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **guesspionage:** Tests your knowledge of humans as you guess how people responded to poll questions.
 * **gunfight:** Engage in a western gunfight against another user. High noon.
+* **island:** Who will be the final two left on the island after a series of vote-kicks?
 * **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **poker:** Play poker with up to 5 other users.
