@@ -59,7 +59,7 @@ module.exports = class SubtitleCommand extends Command {
 			const lines = await wrapText(ctx, text, base.width - 10);
 			if (!lines) return msg.reply('There\'s not enough width to subtitle this image.');
 			ctx.textBaseline = 'bottom';
-			const initial = base.height - ((lines.length - 1) * fontSize) - ((lines.length - 1) * 10);
+			const initial = base.height - ((lines.length - 1) * fontSize) - (fontSize / 2) - ((lines.length - 1) * 10);
 			for (let i = 0; i < lines.length; i++) {
 				const textHeight = initial + (i * fontSize) + (i * 10);
 				ctx.strokeStyle = 'black';
