@@ -40,9 +40,10 @@ module.exports = class StockPhotoCommand extends Command {
 					query,
 					content_filter: msg.channel.nsfw ? 'low' : 'high'
 				});
+			await this.triggerDownload(body);
 			const embed = new MessageEmbed()
 				.setTitle(body.description ? shorten(body.description, 256) : 'Unnamed Image')
-				.setURL(body.links.download)
+				.setURL(body.user.links.html)
 				.setColor(body.color)
 				.setAuthor(body.user.name || body.user.username, undefined, body.user.links.html)
 				.setImage(body.urls.raw)
@@ -53,5 +54,11 @@ module.exports = class StockPhotoCommand extends Command {
 			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	triggerDownload(body) {
+		return request
+			.get(body.links.download_location)
+			.set({ Authorization: `Client-ID ${UNSPLASH_KEY}` });
 	}
 };
