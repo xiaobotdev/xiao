@@ -44,7 +44,7 @@ module.exports = class IslandCommand extends Command {
 				});
 			}
 			let lastTurnTimeout = false;
-			const playersLeft = new Set(...players.map(p => p.id));
+			const playersLeft = new Set(players.map(p => p.id));
 			while (playersLeft.size > 2) {
 				++turn;
 				await msg.say(stripIndents`
