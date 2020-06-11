@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 473
+Total: 474
 
 ### Utility:
 
@@ -508,6 +508,7 @@ Total: 473
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
+* **island:** Who will be the final two left on the island after a series of vote-kicks?
 * **jeopardy:** Answer a Jeopardy question.
 * **lottery:** Attempt to win the lottery with 6 numbers.
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
