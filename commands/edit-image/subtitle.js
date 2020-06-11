@@ -63,7 +63,8 @@ module.exports = class SubtitleCommand extends Command {
 			for (let i = 0; i < lines.length; i++) {
 				const textHeight = initial + (i * fontSize) + (i * 10);
 				ctx.strokeStyle = 'black';
-				ctx.lineWidth = 3;
+				const rounded = Math.round(base.height / 100)
+				ctx.lineWidth = rounded < 1 ? 1 : rounded;
 				ctx.strokeText(lines[i], base.width / 2, textHeight);
 				ctx.fillStyle = 'yellow';
 				ctx.fillText(lines[i], base.width / 2, textHeight);
