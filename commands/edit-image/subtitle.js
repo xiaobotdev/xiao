@@ -11,7 +11,7 @@ module.exports = class SubtitleCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'subtitle',
-			aliases: ['sub'],
+			aliases: ['closed-caption', 'closed-captions', 'cc', 'st'],
 			group: 'edit-image',
 			memberName: 'subtitle',
 			description: 'Adds subtitles to an image.',
