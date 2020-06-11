@@ -33,7 +33,7 @@ module.exports = class SubtitleCommand extends Command {
 					key: 'text',
 					prompt: 'What should the subtitles say?',
 					type: 'string',
-					max: 50
+					max: 200
 				},
 				{
 					key: 'image',
