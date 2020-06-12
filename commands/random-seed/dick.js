@@ -5,11 +5,10 @@ module.exports = class DickCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dick',
-			aliases: ['dick-size', 'penis', 'penis-size', 'pee-pee', 'pee-pee-size', 'cock', 'cock-size'],
+			aliases: ['dick-size', 'penis', 'penis-size', 'pee-pee', 'pee-pee-size', 'cock', 'cock-size', 'pp'],
 			group: 'random-seed',
 			memberName: 'dick',
 			description: 'Determines your dick size.',
-			nsfw: true,
 			args: [
 				{
 					key: 'user',

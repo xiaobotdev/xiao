@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 474
+Total: 475
 
 ### Utility:
 
@@ -660,6 +660,7 @@ Total: 474
 * **two-buttons:** Sends a "Two Buttons" meme with the buttons of your choice.
 * **ultimate-tattoo:** Draws an image or a user's avatar as "The Ultimate Tattoo".
 * **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
+* **worse-than-hitler:** Draws a user's avatar over Family Guy's "Worse Than Hitler" meme.
 * **worthless:** Draws an image or a user's avatar over Gravity Falls' "This is worthless." meme.
 
 ### Text Manipulation:
@@ -806,6 +807,7 @@ here.
 	* bart-chalkboard ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
 	* eat-pant ([Original "The Simpsons" Show](http://www.simpsonsworld.com/))
 	* lisa-presentation ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
+	* worse-than-hitler ([Image, Original "Family Guy" Show](https://www.fox.com/family-guy/))
 - [@Candasaurus](https://twitter.com/Candasaurus)
 	* sora-selfie ([Image](https://twitter.com/Candasaurus/status/1041946636656599045))
 - [@liltusk](https://twitter.com/liltusk)
@@ -1257,6 +1259,7 @@ here.
 	* like (Concept)
 	* porn (Original Subreddit List)
 	* simp (Concept)
+	* worse-than-hitler (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
 	* balloon-pop (Concept)
 - [PaladinsGuru](https://paladins.guru/)
