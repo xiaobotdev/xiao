@@ -95,6 +95,12 @@ module.exports = class HatCommand extends Command {
 					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
 					url: 'http://konosuba.com/',
 					reason: 'Megumin Hat Original Anime'
+				},
+				{
+					name: 'StickPNG',
+					url: 'https://www.stickpng.com/',
+					reason: 'Mask Hat Image',
+					reasonURL: 'https://www.stickpng.com/img/science/pandemic/white-surgical-face-mask-front-view'
 				}
 			],
 			args: [
