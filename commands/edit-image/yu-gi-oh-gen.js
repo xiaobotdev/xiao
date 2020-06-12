@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { wrapText } = require('../../util/Canvas');
+const { wrapText, centerImagePart } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Book.ttf'), { family: 'Matrix Book' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Small Caps.ttf'), { family: 'Matrix' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif.ttf'), { family: 'Stone Serif' });
@@ -113,7 +113,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(data, 109, 241, 590, 590);
+			const { x, y, width, height } = centerImagePart(data, 109, 241, 590, 590);
+			ctx.drawImage(data, x, y, width, height);
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(atr, 669, 61, 77, 77);
 			for (let i = 0; i < level; i++) {
