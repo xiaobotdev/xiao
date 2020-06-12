@@ -76,6 +76,20 @@ module.exports = class YuGiOhGenCommand extends Command {
 					max: 12
 				},
 				{
+					key: 'attack',
+					prompt: 'How much attack should the card have?',
+					type: 'integer',
+					min: 0,
+					max: 9999
+				},
+				{
+					key: 'defense',
+					prompt: 'How much defense should the card have?',
+					type: 'integer',
+					min: 0,
+					max: 9999
+				},
+				{
 					key: 'image',
 					prompt: 'What image would you like to edit?',
 					type: 'image',
@@ -85,14 +99,14 @@ module.exports = class YuGiOhGenCommand extends Command {
 		});
 	}
 
-	async run(msg, { name, effect, type, level, image }) {
+	async run(msg, { name, effect, type, level, attack, defense, image }) {
 		const id = Math.floor(Math.random() * 100000000);
 		const setID = Math.floor(Math.random() * 1000);
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'base.png'));
 			const atr = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'atr.png'));
 			const levelI = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'level.png'));
-			const line = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'line.png'))
+			const line = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'line.png'));
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
@@ -119,6 +133,9 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.font = '22px Stone Serif';
 			ctx.fillText(id.toString().padStart(8, '0'), 37, 1128);
 			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 572, 850);
+			ctx.font = '30px Stone Serif';
+			ctx.fillText(`ATK/${attack}`, 419, 1076);
+			ctx.fillText(`DEF/${defense}`, 578, 1076);
 			ctx.drawImage(line, 80, 1073);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'yu-gi-oh-gen.png' }] });
 		} catch (err) {
