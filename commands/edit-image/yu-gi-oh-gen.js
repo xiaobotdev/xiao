@@ -113,7 +113,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.fillText(name, 74, 64, 585);
 			ctx.font = '27px Matrix Book';
 			const wrappedEffect = await wrapText(ctx, effect, 660);
-			ctx.fillText(wrappedEffect.join('\n'), 76, 922);
+			ctx.fillText(wrappedEffect.join('\n'), 78, 925);
 			ctx.font = '31px Stone Serif Small Caps';
 			ctx.fillText(`[ ${type} / Effect ]`, 77, 889);
 			ctx.font = '22px Stone Serif';
