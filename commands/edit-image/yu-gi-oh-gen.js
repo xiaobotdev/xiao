@@ -5,13 +5,9 @@ const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Book.ttf'), { family: 'Matrix Book' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Small Caps.ttf'), { family: 'Matrix' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif Semibold.ttf'), {
-	family: 'Stone Serif',
-	weight: 'semibold'
-});
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif.ttf'), { family: 'Stone Serif' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif Small Caps.ttf'), {
-	family: 'Stone Serif',
-	weight: 'smallcaps'
+	family: 'Stone Serif Small Caps'
 });
 
 module.exports = class YuGiOhGenCommand extends Command {
@@ -96,6 +92,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'base.png'));
 			const atr = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'atr.png'));
 			const levelI = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'level.png'));
+			const line = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'line.png'))
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
@@ -106,24 +103,23 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(atr, 669, 61, 77, 77);
 			for (let i = 0; i < level; i++) {
-				const x = 676 - (676 * i) - (5 * i);
-				ctx.drawImage(levelI, x, 160);
+				const x = 676 - (50 * i) - (5 * i);
+				ctx.drawImage(levelI, x, 160, 50, 50);
 			}
 			ctx.font = '14px Noto';
 			ctx.fillStyle = 'black';
 			ctx.textBaseline = 'top';
 			ctx.font = '87px Matrix';
-			ctx.fillText(name, 74, 79, 585);
+			ctx.fillText(name, 74, 64, 585);
 			ctx.font = '27px Matrix Book';
 			const wrappedEffect = await wrapText(ctx, effect, 660);
-			ctx.fillText(wrappedEffect.join('\n'), 76, 929);
-			ctx.font = 'normal smallcaps 31px Stone Serif';
-			ctx.fillText(`[ ${type} / Effect ]`, 77, 896);
-			ctx.font = 'normal semibold 22px Stone Serif';
-			ctx.fillText(id.toString().padStart(8, '0'), 37, 1134);
-			ctx.fillText(`XIAO-${setID.toString().padStart(3, '0')}`, 572, 856);
-			ctx.font = 'normal semibold 21px Stone Serif';
-			ctx.fillText('⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺', 81, 1060);
+			ctx.fillText(wrappedEffect.join('\n'), 76, 922);
+			ctx.font = '31px Stone Serif Small Caps';
+			ctx.fillText(`[ ${type} / Effect ]`, 77, 889);
+			ctx.font = '22px Stone Serif';
+			ctx.fillText(id.toString().padStart(8, '0'), 37, 1128);
+			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 572, 850);
+			ctx.drawImage(line, 80, 1073);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'yu-gi-oh-gen.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
