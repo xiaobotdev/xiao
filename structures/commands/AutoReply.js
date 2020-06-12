@@ -9,6 +9,7 @@ module.exports = class AutoReplyCommand extends Command {
 	}
 
 	run(msg, args, fromPattern) {
+		if (msg.guild && !msg.channel.permissionsFor(this.client.user).has('SEND_MESSAGES')) return null;
 		return this.reply ? msg.reply(this.generateText(fromPattern)) : msg.say(this.generateText(fromPattern));
 	}
 
