@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 475
+Total: 476
 
 ### Utility:
 
@@ -650,6 +650,7 @@ Total: 475
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **phoebe-teaching-joey:** Sends a "Phoebe Teaching Joey" meme with text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
+* **pogchamp:** Sends a pogchamp duplicated however many times you want.
 * **scroll-of-truth:** Sends a "Scroll of Truth" meme with the text of your choice.
 * **skyrim-skill:** Sends a "Skyrim Skill" meme with the skill and image of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
@@ -1257,6 +1258,7 @@ here.
 	* dislike (Concept)
 	* hentai (Original Subreddit List)
 	* like (Concept)
+	* pogchamp (Concept)
 	* porn (Original Subreddit List)
 	* simp (Concept)
 	* worse-than-hitler (Concept)
@@ -1346,6 +1348,8 @@ here.
 	* rotten-tomatoes (API)
 - [rrrather](https://www.rrrather.com/)
 	* would-you-rather ([API](https://www.rrrather.com/botapi))
+- [Ryan Gutierrez](https://twitter.com/gootecks)
+	* pogchamp (Image)
 - [Safebooru](https://safebooru.org/)
 	* safebooru (API)
 - [Serebii.net](https://www.serebii.net/index2.shtml)
