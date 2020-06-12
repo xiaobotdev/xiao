@@ -2,7 +2,9 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
+const atrs = ['dark', 'divine', 'earth', 'fire', 'laugh', 'light', 'water', 'wind'];
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Book.ttf'), { family: 'Matrix Book' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Small Caps.ttf'), { family: 'Matrix' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif.ttf'), { family: 'Stone Serif' });
@@ -58,6 +60,13 @@ module.exports = class YuGiOhGenCommand extends Command {
 					max: 50
 				},
 				{
+					key: 'attribute',
+					prompt: `What attribute should the card be? Either ${list(atrs, 'or')}.`,
+					type: 'string',
+					oneOf: atrs,
+					parse: attribute => attribute.toLowerCase()
+				},
+				{
 					key: 'effect',
 					prompt: 'What should the card\'s effect be?',
 					type: 'string'
@@ -99,12 +108,14 @@ module.exports = class YuGiOhGenCommand extends Command {
 		});
 	}
 
-	async run(msg, { name, effect, type, level, attack, defense, image }) {
+	async run(msg, { name, attribute, effect, type, level, attack, defense, image }) {
 		const id = Math.floor(Math.random() * 100000000);
 		const setID = Math.floor(Math.random() * 1000);
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'base.png'));
-			const atr = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'atr.png'));
+			const atr = await loadImage(
+				path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'atrs', `${attribute}.png`)
+			);
 			const levelI = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'level.png'));
 			const line = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'yu-gi-oh-gen', 'line.png'));
 			const { body } = await request.get(image);
