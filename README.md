@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 479
+Total: 482
 
 ### Utility:
 
@@ -361,6 +361,7 @@ Total: 479
 * **psycho-pass:** Determines your Crime Coefficient.
 * **ship:** Ships two users together.
 * **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
+* **thicc:** Determines how thicc you are.
 
 ### Single Response:
 
@@ -375,6 +376,7 @@ Total: 479
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
 * **lenny:** Responds with the lenny face.
+* **nitro:** Sends an image of a fake nitro giveaway.
 * **spam:** Responds with a picture of Spam.
 * **tableflip:** Flips a table... With animation!
 * **wynaut:** Why not? Wynaut?
@@ -652,6 +654,7 @@ Total: 479
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **phoebe-teaching-joey:** Sends a "Phoebe Teaching Joey" meme with text of your choice.
+* **pills:** Sends a "Hard to Swallow Pills" meme with the text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **pogchamp:** Sends a pogchamp duplicated however many times you want.
 * **scroll-of-truth:** Sends a "Scroll of Truth" meme with the text of your choice.
@@ -1022,6 +1025,7 @@ here.
 	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
 	* periodic-table ([Noto Font](https://www.google.com/get/noto/))
 	* phoebe-teaching-joey ([Noto Font](https://www.google.com/get/noto/))
+	* pills ([Noto Font](https://www.google.com/get/noto/))
 	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
 	* scroll-of-truth ([Noto Font](https://www.google.com/get/noto/))
 	* sos ([Noto Font](https://www.google.com/get/noto/))
@@ -1275,9 +1279,11 @@ here.
 	* gun (Concept)
 	* hentai (Original Subreddit List)
 	* like (Concept)
+	* pills (Concept)
 	* pogchamp (Concept)
 	* porn (Original Subreddit List)
 	* simp (Concept)
+	* thicc (Concept)
 	* undertale (Concept)
 	* worse-than-hitler (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
@@ -1469,6 +1475,8 @@ here.
 	* waldo ([Concept](https://www.reddit.com/r/copypasta/comments/gkk7z1/wheres_waldo_game_created_by_me/))
 - [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington)
 	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/))
+- [u/MoonlightCapital](https://www.reddit.com/user/MoonlightCapital/)
+	* nitro ([Image](https://www.reddit.com/r/discordapp/comments/a9fr7x/troll_your_friends_with_this/))
 - [u/N1ffler](https://www.reddit.com/user/N1ffler/)
 	* sorting-hat ([Sorting Hat Quiz Analysis Data](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/))
 - [u/SupremeMemesXD](https://www.reddit.com/user/SupremeMemesXD/)
@@ -1501,6 +1509,8 @@ here.
 	* phoebe-teaching-joey ([Images, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
 - [Wattpad](https://www.wattpad.com/)
 	* wattpad ([API](https://www.wattpad.com/developer/docs/api))
+- [Why We Protest](https://whyweprotest.net/)
+	* hat ([Anon Hat Image](https://whyweprotest.net/threads/big-ass-guy-fawkes-mask-images-thread.22719/))
 - [wikiHow](https://www.wikihow.com/Main-Page)
 	* wikihow ([API](https://www.wikihow.com/api.php))
 - [Wikipedia](https://www.wikipedia.org/)

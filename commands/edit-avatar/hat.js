@@ -101,6 +101,12 @@ module.exports = class HatCommand extends Command {
 					url: 'https://www.stickpng.com/',
 					reason: 'Mask Hat Image',
 					reasonURL: 'https://www.stickpng.com/img/science/pandemic/white-surgical-face-mask-front-view'
+				},
+				{
+					name: 'Why We Protest',
+					url: 'https://whyweprotest.net/',
+					reason: 'Anon Hat Image',
+					reasonURL: 'https://whyweprotest.net/threads/big-ass-guy-fawkes-mask-images-thread.22719/'
 				}
 			],
 			args: [
