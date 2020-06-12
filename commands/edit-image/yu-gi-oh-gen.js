@@ -113,13 +113,14 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			const { x, y, width, height } = centerImagePart(data, 590, 590, 109, 241);
-			ctx.drawImage(data, x, y, width, height);
+			const { x, y } = centerImagePart(data, 590, 590, 109, 241);
+			const height = 590 / data.width;
+			ctx.drawImage(data, x, y, 590, height);
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(atr, 669, 61, 77, 77);
 			for (let i = 0; i < level; i++) {
-				const x = 676 - (50 * i) - (5 * i);
-				ctx.drawImage(levelI, x, 160, 50, 50);
+				const levelX = 676 - (50 * i) - (5 * i);
+				ctx.drawImage(levelI, levelX, 160, 50, 50);
 			}
 			ctx.font = '14px Noto';
 			ctx.fillStyle = 'black';
