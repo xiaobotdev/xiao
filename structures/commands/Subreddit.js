@@ -19,7 +19,10 @@ module.exports = class SubredditCommand extends Command {
 	}
 
 	async run(msg, { subreddit }, fromPattern) {
-		if (fromPattern) subreddit = msg.patternMatches[1];
+		if (fromPattern) {
+			if (msg.guild && !msg.channel.permissionsFor(this.client.user).has('SEND_MESSAGES')) return null;
+			subreddit = msg.patternMatches[1];
+		}
 		if (!subreddit) subreddit = typeof this.subreddit === 'function' ? this.subreddit() : this.subreddit;
 		try {
 			const post = await this.random(subreddit, msg.channel.nsfw);
