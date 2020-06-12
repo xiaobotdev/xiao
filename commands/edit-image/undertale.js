@@ -88,12 +88,12 @@ module.exports = class UndertaleCommand extends Command {
 			case 'papyrus': font = 'UndertalePapyrus'; break;
 			default: font = 'DeterminationMono'; break;
 		}
-		ctx.font = `20px ${font}`;
+		ctx.font = `31px ${font}`;
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
 		let text = await wrapText(ctx, quote, 385);
 		text = text.length > 3 ? `${text.slice(0, 3).join('\n')}...` : text.join('\n');
-		ctx.fillText(text, 176, 28);
+		ctx.fillText(text, 175, 20);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: `undertale-${character}.png` }] });
 	}
 };
