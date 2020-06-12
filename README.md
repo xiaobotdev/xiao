@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 478
+Total: 479
 
 ### Utility:
 
@@ -595,6 +595,7 @@ Total: 478
 * **subtitle:** Adds subtitles to an image.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
+* **undertale:** Sends a text box from Undertale with the quote and character of your choice.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
@@ -883,6 +884,8 @@ here.
 - [Capcom](http://www.capcom.com/us/)
 	* ace-attorney ([Images, Original "Ace Attorney" Game](http://www.ace-attorney.com/))
 	* zero-dialogue ([Image, Original "Megaman Zero" Game](http://megaman.capcom.com/))
+- [Carter Sande](https://gitlab.com/cartr)
+	* undertale ([Fonts](https://gitlab.com/cartr/undertale-fonts/tree/master))
 - [Cartoon Network](https://www.cartoonnetworkme.com/)
 	* edd-facts-book ([Image, Original "Ed, Edd n Eddy" TV Series](https://www.cartoonnetworkme.com/show/ed-edd-n-eddy))
 - [cheesecakejedi](https://imgur.com/user/cheesecakejedi)
@@ -918,6 +921,8 @@ here.
 	* emoji-emoji-revolution (Concept)
 - [Deathbulge](http://deathbulge.com/comics)
 	* ultimate-tattoo ([Image](http://deathbulge.com/comics/114))
+- [Demirramon](https://www.demirramon.com/)
+	* undertale ([Images](https://www.demirramon.com/en/generators/undertale_text_box_generator))
 - [Derpibooru](https://derpibooru.org/)
 	* derpibooru ([API](https://www.derpibooru.org/pages/api))
 - [DeviantArt](https://www.deviantart.com/)
@@ -1273,6 +1278,7 @@ here.
 	* pogchamp (Concept)
 	* porn (Original Subreddit List)
 	* simp (Concept)
+	* undertale (Concept)
 	* worse-than-hitler (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
 	* balloon-pop (Concept)
@@ -1473,6 +1479,7 @@ here.
 	* genie-rules ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/bht9o6/i_made_an_hd_high_quality_version_of_the_4_rules/))
 - [UNDERTALE](https://undertale.com/)
 	* temmie (Original Game)
+	* undertale (Original Game)
 - [Unsplash](https://unsplash.com/)
 	* stock-photo ([API](https://unsplash.com/developers))
 - [Urban Dictionary](https://www.urbandictionary.com/)
