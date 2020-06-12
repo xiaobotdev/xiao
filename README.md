@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 476
+Total: 477
 
 ### Utility:
 
@@ -594,6 +594,7 @@ Total: 476
 * **subtitle:** Adds subtitles to an image.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
+* **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Avatar Manipulation:
@@ -874,6 +875,8 @@ here.
 	* doomsday-clock ([Doomsday Clock Data](https://thebulletin.org/doomsday-clock/current-time/))
 - [bunnies.io](https://www.bunnies.io/)
 	* bunny (API)
+- [bushin](https://www.cardmaker.net/profile/220983-bushin/)
+	* yu-gi-oh-gen ([Fonts](https://www.cardmaker.net/forums/topic/308603-fonts-for-yu-gi-oh-card-making-with-multilingual-support/))
 - [calzoneman](https://github.com/calzoneman)
 	* dec-talk ([API](https://github.com/calzoneman/aeiou))
 - [Capcom](http://www.capcom.com/us/)
@@ -906,6 +909,8 @@ here.
 	* cow-say (API)
 - [Creative Certificates](https://www.creativecertificates.com/)
 	* certificate ([Image](https://www.creativecertificates.com/award-certificate-templates/))
+- [cylgom](https://www.deviantart.com/cylgom)
+	* yu-gi-oh-gen ([Card Base Template](https://www.deviantart.com/cylgom/art/Yu-GI-Oh-ultra-faithful-monster-card-template-728814822))
 - [Danbooru](https://danbooru.donmai.us/)
 	* danbooru (API)
 - [Dance Dance Revolution](https://www.ddrgame.com/)
@@ -1059,6 +1064,8 @@ here.
 	* rip ([Coffin Stone Font](https://www.fontspace.com/coffin-stone-font-f40998))
 - [iCrawl](https://github.com/iCrawl)
 	* butt ([Code, Concept](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js))
+- [icycatelf](https://www.deviantart.com/icycatelf)
+	* yu-gi-oh-gen ([Level Star Image](https://www.deviantart.com/icycatelf/art/Level-Star-Template-PSD-607344453))
 - [iFunny](https://ifunny.co/)
 	* ifunny (Logo)
 - [Illumination](http://www.illumination.com/)
@@ -1136,6 +1143,7 @@ here.
 	* look-what-karen-have ([Image](https://knowyourmeme.com/photos/1047091-kin-iro-mosaic-kinmoza))
 - [Konami](https://www.konami.com/en/)
 	* yu-gi-oh ([Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
+	* yu-gi-oh-gen ([Images, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
 	* yu-gi-oh-token ([Image, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
 - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
 	* axis-cult (Original Anime)
