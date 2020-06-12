@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 477
+Total: 478
 
 ### Utility:
 
@@ -568,6 +568,7 @@ Total: 477
 * **glass-shatter:** Draws an image or a user's avatar with a glass shatter in front of it.
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
+* **gun:** Draws a gun over an image or a user's avatar.
 * **highway-sign:** Sends a highway sign sign with the text of your choice.
 * **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
@@ -1165,6 +1166,8 @@ here.
 	* horse-race ([Horse Name Data](https://horses.lovetoknow.com/horse-names/funny-horse-names))
 - [LowGif](http://www.lowgif.com/)
 	* fire ([Images](http://www.lowgif.com/43360ebce9150f23.html))
+- [Luxoflux](http://www.luxoflux.com/)
+	* gun ([Image](https://knowyourmeme.com/memes/hand-pointing-a-gun))
 - [Mad Libs](http://www.madlibs.com/)
 	* mad-libs (Original Game)
 - [Mad:)Takes](https://www.madtakes.com/index.php)
@@ -1264,6 +1267,7 @@ here.
 - [Overtime2005](https://github.com/Overtime2005)
 	* alert (Concept)
 	* dislike (Concept)
+	* gun (Concept)
 	* hentai (Original Subreddit List)
 	* like (Concept)
 	* pogchamp (Concept)
