@@ -36,7 +36,7 @@ module.exports = class ThiccCommand extends Command {
 		const random = MersenneTwister19937.seed(clientAuthor ? msg.author.id : user.id);
 		const length = integer(0, 100)(random);
 		let pronoun = 'They';
-		if (user.id === msg.author.id) pronoun = 'You'
+		if (user.id === msg.author.id) pronoun = 'You';
 		return msg.reply(`${pronoun} are thi${'c'.repeat(clientAuthor ? length + 1 : length)}`);
 	}
 };
