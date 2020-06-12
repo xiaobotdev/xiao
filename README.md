@@ -1404,6 +1404,8 @@ here.
 	* steam-now-playing-classic (Original Design)
 - [Steven Crowder](https://www.youtube.com/StevenCrowder)
 	* change-my-mind ([Image](https://twitter.com/scrowder/status/964577508447449088))
+- [StickPNG](https://www.stickpng.com/)
+	* hat ([Mask Hat Image](https://www.stickpng.com/img/science/pandemic/white-surgical-face-mask-front-view))
 - [Straw Poll](https://www.strawpoll.me/)
 	* strawpoll ([API](https://github.com/strawpoll/strawpoll/wiki/API))
 - [Superpower Wiki](https://powerlisting.fandom.com/wiki/Superpower_Wiki)
