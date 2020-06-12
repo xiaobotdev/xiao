@@ -114,7 +114,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
 			const height = 590 / data.width;
-			ctx.drawImage(data, 109, 241, 590, height);
+			ctx.drawImage(data, 109, 241, 590, data.height * height);
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(atr, 669, 61, 77, 77);
 			for (let i = 0; i < level; i++) {
