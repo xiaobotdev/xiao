@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
-const { firstUpperCase, list } = require('../../util/Util');
+const { list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const characters = require('../../assets/json/undertale');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'DeterminationMono.ttf'), {
