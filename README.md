@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 483
+Total: 484
 
 ### Utility:
 
@@ -636,6 +636,7 @@ Total: 483
 * **chi-idea:** Sends a "Daddy, I've got an idea!" Takagi-san meme with the text of your choice.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
+* **deep-fry:** Draws an image or a user's avatar but deep-fried.
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **dislike:** Sends an "Everyone Disliked That" meme with the image of your choice.
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
