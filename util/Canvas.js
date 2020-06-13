@@ -66,8 +66,8 @@ module.exports = class CanvasUtil {
 			for (let j = 0; j < width; j++) {
 				const dest = ((j * width) + i) * 4;
 				const grey = Number.parseInt(
-					(0.2125 * data.data[dest]) + (0.7154 * data.data[dest + 1]) + (0.0721 * data.data[dest + 2])
-				, 10);
+					(0.2125 * data.data[dest]) + (0.7154 * data.data[dest + 1]) + (0.0721 * data.data[dest + 2]), 10
+				);
 				data.data[dest] += level * (grey - data.data[dest]);
 				data.data[dest + 1] += level * (grey - data.data[dest + 1]);
 				data.data[dest + 2] += level * (grey - data.data[dest + 2]);
