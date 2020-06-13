@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 482
+Total: 483
 
 ### Utility:
 
@@ -561,6 +561,7 @@ Total: 482
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **convert-image:** Converts an image or user's avatar from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
+* **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **fire-frame:** Draws a fiery border over an image or a user's avatar.
