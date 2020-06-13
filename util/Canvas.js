@@ -64,7 +64,7 @@ module.exports = class CanvasUtil {
 		const data = ctx.getImageData(x, y, width, height);
 		for (let i = 0; i < height; i++) {
 			for (let j = 0; j < width; j++) {
-				const dest = ((j * width) + i) * 4;
+				const dest = ((i * width) + j) * 4;
 				const grey = Number.parseInt(
 					(0.2125 * data.data[dest]) + (0.7154 * data.data[dest + 1]) + (0.0721 * data.data[dest + 2]), 10
 				);
