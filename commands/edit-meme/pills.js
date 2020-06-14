@@ -59,7 +59,10 @@ module.exports = class PillsCommand extends Command {
 		const lines = await wrapText(ctx, text, 280);
 		const topMost = 455 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
+			ctx.strokeStyle = 'white';
+			ctx.lineWidth = 5;
 			const height = topMost + ((fontSize + 10) * i);
+			ctx.strokeText(lines[i], 183, height);
 			ctx.fillText(lines[i], 183, height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'pills.png' }] });
