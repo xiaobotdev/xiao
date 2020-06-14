@@ -85,8 +85,8 @@ don't grant that permission.
 
 
 ## Fun Information
-- 400+ Commands
-- 24,000+ lines of JavaScript
+- 450+ Commands
+- 25,000+ lines of JavaScript
 - 61,000+ lines of JSON data
 - 3 years of development
 - 4,000+ commits
