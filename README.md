@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 484
+Total: 485
 
 ### Utility:
 
@@ -558,6 +558,7 @@ Total: 484
 * **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
+* **communist:** Draws the Communist flag over an image or a user's avatar.
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **convert-image:** Converts an image or user's avatar from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
@@ -1303,6 +1304,8 @@ here.
 	* guesspionage ([Question Data](https://www.playstationtrophies.org/game/the-jackbox-party-pack-3/trophy/157520-Guesspionage--Perfect-Surveillance.html))
 - [PNG Arts](https://www.pngarts.com/)
 	* police-tape ([Image](https://www.pngarts.com/explore/94078))
+- [PNGFuel](https://www.pngfuel.com/)
+	* communist ([Image](https://www.pngfuel.com/free-png/osnol))
 - [pngimg.com](https://pngimg.com/)
 	* thug-life ([Image](http://pngimg.com/download/58231))
 - [Pokemon Fusion](https://pokemon.alexonsager.net/)
