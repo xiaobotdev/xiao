@@ -82,11 +82,22 @@ module.exports = class UndertaleCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		let font;
+		let font = 'DeterminationMono';
 		switch (character) {
-			case 'sans': font = 'UndertaleSans'; break;
-			case 'papyrus': font = 'UndertalePapyrus'; break;
-			default: font = 'DeterminationMono'; break;
+			case 'sans':
+				font = 'UndertaleSans';
+				text = text.toLowerCase();
+				break;
+			case 'papyrus':
+				font = 'UndertalePapyrus';
+				text = text.toUpperCase();
+				break;
+			case 'napstablook':
+				text = text.toLowerCase();
+				break;
+			case 'temmie':
+				text = this.client.registry.commands.get('temmie').temmize(text);
+				break;
 		}
 		ctx.font = `31px ${font}`;
 		ctx.fillStyle = 'white';
