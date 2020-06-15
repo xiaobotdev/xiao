@@ -601,6 +601,7 @@ Total: 486
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **undertale:** Sends a text box from Undertale with the quote and character of your choice.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
+* **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Avatar Manipulation:
@@ -622,7 +623,6 @@ Total: 486
 * **steam-now-playing:** Draws a user's avatar over a Steam "now playing" notification.
 * **triggered:** Draws a user's avatar over the "Triggered" meme.
 * **wanted:** Draws a user's avatar over a wanted poster.
-* **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
 
 ### Meme Generators:
 
