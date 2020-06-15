@@ -40,19 +40,19 @@ module.exports = class WorthlessCommand extends Command {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'worthless.png'));
 			const { body } = await request.get(image);
-			const avatar = await loadImage(body);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(6 * (Math.PI / 180));
-			const center1 = centerImagePart(avatar, 400, 400, 496, 183);
-			ctx.drawImage(avatar, center1.x, center1.y, center1.width, center1.height);
+			const center1 = centerImagePart(data, 400, 400, 496, 183);
+			ctx.drawImage(data, center1.x, center1.y, center1.width, center1.height);
 			ctx.rotate(-6 * (Math.PI / 180));
 			ctx.translate(canvas.width / 2, canvas.height / 2);
 			ctx.rotate(160 * (Math.PI / 180));
 			ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
-			const center2 = centerImagePart(avatar, 75, 75, 625, 55);
-			ctx.drawImage(avatar, center2.x, center2.y, center2.width, center2.height);
+			const center2 = centerImagePart(data, 75, 75, 625, 55);
+			ctx.drawImage(data, center2.x, center2.y, center2.width, center2.height);
 			ctx.rotate(-160 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'worthless.png' }] });
 		} catch (err) {

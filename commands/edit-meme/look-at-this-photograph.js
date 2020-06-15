@@ -39,12 +39,12 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'look-at-this-photograph.png'));
 			const { body } = await request.get(image);
-			const avatar = await loadImage(body);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-13.5 * (Math.PI / 180));
-			ctx.drawImage(avatar, 280, 218, 175, 125);
+			ctx.drawImage(data, 280, 218, 175, 125);
 			ctx.rotate(13.5 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'look-at-this-photograph.png' }] });
 		} catch (err) {

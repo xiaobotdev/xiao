@@ -46,12 +46,12 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'girl-worth-fighting-for.png'));
 			const { body } = await request.get(image);
-			const avatar = await loadImage(body);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			const { x, y, width, height } = centerImagePart(avatar, 150, 150, 380, 511);
-			ctx.drawImage(avatar, x, y, width, height);
+			const { x, y, width, height } = centerImagePart(data, 150, 150, 380, 511);
+			ctx.drawImage(data, x, y, width, height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'girl-worth-fighting-for.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
