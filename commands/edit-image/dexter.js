@@ -38,13 +38,13 @@ module.exports = class DexterCommand extends Command {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'dexter.png'));
 			const { body } = await request.get(image);
-			const avatar = await loadImage(body);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-11 * (Math.PI / 180));
-			const { x, y, width, height } = centerImagePart(avatar, 225, 225, 234, 274);
-			ctx.drawImage(avatar, x, y, width, height);
+			const { x, y, width, height } = centerImagePart(data, 225, 225, 234, 274);
+			ctx.drawImage(data, x, y, width, height);
 			ctx.rotate(11 * (Math.PI / 180));
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'dexter.png' }] });
 		} catch (err) {

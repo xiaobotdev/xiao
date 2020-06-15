@@ -40,14 +40,14 @@ module.exports = class MyCollectionGrowsCommand extends Command {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'my-collection-grows.png'));
 			const { body } = await request.get(image);
-			const avatar = await loadImage(body);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
 			ctx.rotate(-14 * (Math.PI / 180));
-			const { x, y, width, height } = centerImagePart(avatar, 425, 425, 145, 179);
-			ctx.drawImage(avatar, x, y, width, height);
+			const { x, y, width, height } = centerImagePart(data, 425, 425, 145, 179);
+			ctx.drawImage(data, x, y, width, height);
 			ctx.rotate(14 * (Math.PI / 180));
 			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'my-collection-grows.png' }] });
