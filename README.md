@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 487
+Total: 488
 
 ### Utility:
 
@@ -666,6 +666,7 @@ Total: 487
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
 * **sos:** Sends a "Esther Verkest's Help Sign" comic with the text of your choice.
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
+* **this-guy:** Draws an image or a user's avatar over the "Get a load of this guy" meme.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
 * **two-buttons:** Sends a "Two Buttons" meme with the buttons of your choice.
@@ -1521,6 +1522,7 @@ here.
 	* what-anime ([API](https://soruly.github.io/trace.moe/#/))
 - [Warner Bros.](https://www.warnerbros.com/)
 	* phoebe-teaching-joey ([Images, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
+	* this-guy ([Image, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
 - [Wattpad](https://www.wattpad.com/)
 	* wattpad ([API](https://www.wattpad.com/developer/docs/api))
 - [Why We Protest](https://whyweprotest.net/)
