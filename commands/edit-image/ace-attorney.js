@@ -27,7 +27,7 @@ module.exports = class AceAttorneyCommand extends Command {
 			group: 'edit-image',
 			memberName: 'ace-attorney',
 			description: 'Sends a text box from Ace Attorney with the quote and character of your choice.',
-			details: `**Characters:** ${Object.keys(characters).join(', ')}`
+			details: `**Characters:** ${Object.keys(characters).join(', ')}`,
 			throttling: {
 				usages: 1,
 				duration: 10
