@@ -86,17 +86,17 @@ module.exports = class UndertaleCommand extends Command {
 		switch (character) {
 			case 'sans':
 				font = 'UndertaleSans';
-				text = text.toLowerCase();
+				quote = quote.toLowerCase();
 				break;
 			case 'papyrus':
 				font = 'UndertalePapyrus';
-				text = text.toUpperCase();
+				quote = quote.toUpperCase();
 				break;
 			case 'napstablook':
-				text = text.toLowerCase();
+				quote = quote.toLowerCase();
 				break;
 			case 'temmie':
-				text = this.client.registry.commands.get('temmie').temmize(text);
+				quote = this.client.registry.commands.get('temmie').temmize(quote);
 				break;
 		}
 		ctx.font = `31px ${font}`;
