@@ -2,7 +2,6 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { desaturate, contrast } = require('../../util/Canvas');
-const { load } = require('cheerio');
 
 module.exports = class DeepFryCommand extends Command {
 	constructor(client) {
