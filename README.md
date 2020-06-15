@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 486
+Total: 487
 
 ### Utility:
 
@@ -755,6 +755,7 @@ Total: 486
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
+* **smilebasic:** Responds with a ZIP file for a SmileBASIC project.
 * **strawpoll:** Generates a Strawpoll with the options you provide.
 
 ### Roleplay:
@@ -1401,6 +1402,8 @@ here.
 	* brony-speak ([English-to-Brony Dictionary Data](https://www.deviantart.com/shrick/art/Brony-dictionary-version-2-207157029))
 - [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
 	* steam-card ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
+- [SmileBASIC Source](https://smilebasicsource.com/)
+	* smilebasic ([API](https://smilebasicsource.com/page?pid=1360))
 - [SMWiki](http://www.smwiki.net/)
 	* smw-level ([Level Name Data](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels))
 - [Snapchat](https://www.snapchat.com/)
