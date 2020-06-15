@@ -16,6 +16,7 @@ module.exports = class ConvertImageCommand extends Command {
 			group: 'edit-image',
 			memberName: 'convert-image',
 			description: 'Converts an image or user\'s avatar from one format to another.',
+			details: `**Formats:** ${Object.keys(formats).join(', ')}`,
 			throttling: {
 				usages: 1,
 				duration: 10
