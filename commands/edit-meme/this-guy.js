@@ -11,7 +11,7 @@ module.exports = class ThisGuyCommand extends Command {
 			aliases: ['get-a-load-of-this-guy'],
 			group: 'edit-meme',
 			memberName: 'this-guy',
-			description: 'Draws an image or a user\'s avatar over the \"Get a load of this guy\" meme.',
+			description: 'Draws an image or a user\'s avatar over the "Get a load of this guy" meme.',
 			throttling: {
 				usages: 1,
 				duration: 10
