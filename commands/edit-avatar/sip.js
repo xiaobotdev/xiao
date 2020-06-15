@@ -33,7 +33,7 @@ module.exports = class SipCommand extends Command {
 				},
 				{
 					key: 'direction',
-					prompt: 'What direction should the avatar face?',
+					prompt: 'What direction should the avatar face? Either right or left.',
 					type: 'string',
 					oneOf: ['left', 'right'],
 					default: 'left',

@@ -28,6 +28,7 @@ module.exports = class UndertaleCommand extends Command {
 			group: 'edit-image',
 			memberName: 'undertale',
 			description: 'Sends a text box from Undertale with the quote and character of your choice.',
+			details: `**Characters:** ${characters.join(', ')}`,
 			throttling: {
 				usages: 1,
 				duration: 10

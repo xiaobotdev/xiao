@@ -14,6 +14,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			group: 'games-sp',
 			memberName: 'whos-that-pokemon',
 			description: 'Guess who that Pokémon is.',
+			details: `**Difficulties:** ${difficulties.join(', ')}`,
 			throttling: {
 				usages: 1,
 				duration: 10

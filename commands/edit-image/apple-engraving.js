@@ -11,6 +11,7 @@ module.exports = class AppleEngravingCommand extends Command {
 			group: 'edit-image',
 			memberName: 'apple-engraving',
 			description: 'Engraves the text of your choice onto an Apple product.',
+			details: `**Products:** ${Object.keys(products).join(', ')}`,
 			credit: [
 				{
 					name: 'Apple',
