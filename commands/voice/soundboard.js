@@ -29,9 +29,21 @@ module.exports = class SoundboardCommand extends Command {
 					reason: 'Nipah Sound'
 				},
 				{
-					name: 'Re:ZERO -Starting Life in Another World-',
-					url: 'http://re-zero-anime.jp/',
-					reason: 'Subaru Ringtone Sound'
+					name: 'KINMOZA!',
+					url: 'http://www.kinmosa.com/',
+					reason: 'Ayaya Sound'
+				},
+				{
+					name: 'Robret Henc',
+					url: 'https://www.youtube.com/channel/UCYz0kLfJbdNHU9baJy6u68A',
+					reason: 'Subaru Ringtone Sound',
+					reasonURL: 'https://www.youtube.com/watch?v=PEyKDgOTQi8'
+				},
+				{
+					name: 'Myinstants',
+					url: 'https://www.myinstants.com/index/us/',
+					reason: 'Various Meme Sounds',
+					reasonURL: 'https://www.myinstants.com/search/?name=meme'
 				}
 			],
 			args: [
@@ -39,8 +51,11 @@ module.exports = class SoundboardCommand extends Command {
 					key: 'sound',
 					prompt: `What sound do you want to play? Either ${list(sounds, 'or')}.`,
 					type: 'string',
-					default: () => `${sounds[Math.floor(Math.random() * sounds.length)]}.mp3`,
-					oneOf: sounds,
+					validate: sound => {
+						const choice = sound.toLowerCase().replace(/ /g, '-');
+						if (sounds.includes(choice)) return true;
+						return `You provided an invalid sound. Please choose either ${list(sounds, 'or')}.`;
+					},
 					parse: sound => `${sound.toLowerCase()}.mp3`
 				}
 			]
