@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 485
+Total: 486
 
 ### Utility:
 
@@ -654,6 +654,7 @@ Total: 485
 * **look-at-this-photograph:** Draws an image or a user's avatar over Nickelback's photograph.
 * **meme-gen-classic:** Sends a meme with the text and background of your choice.
 * **meme-gen-modern:** Sends a meme with the text and image of your choice.
+* **my-collection-grows:** Sends a "My collection grows richer" Nekopara meme with the text of your choice.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
 * **phoebe-teaching-joey:** Sends a "Phoebe Teaching Joey" meme with text of your choice.
@@ -1239,6 +1240,8 @@ here.
 	* spongebob-time-card ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
 - [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
 	* neko-atsume-password (API, Original Game)
+- [Nekopara](http://nekopara.com/main.html)
+	* my-collection-grows ([Image, Original Anime](https://nekopara-anime.com/))
 - [Neopets](http://www.neopets.com/)
 	* neopet (Pet Image Data, Original Game)
 	* neopets-item (Original Game)
