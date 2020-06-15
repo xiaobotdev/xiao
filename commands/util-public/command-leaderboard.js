@@ -23,20 +23,20 @@ module.exports = class CommandLeaderboardCommand extends Command {
 	}
 
 	run(msg, { page }) {
-		const totalPages = Math.ceil(this.client.registry.commands.size / 10);
+		const commands = this.filterCommands(this.client.registry.commands);
+		const totalPages = Math.ceil(commands.size / 10);
 		if (page > totalPages) return msg.say(`Page ${page} does not exist (yet).`);
 		return msg.say(stripIndents`
 			__**Command Usage Leaderboard (Page ${page}/${totalPages}):**__
-			${this.makeLeaderboard(page).join('\n')}
+			${this.makeLeaderboard(commands, page).join('\n')}
 		`);
 	}
 
-	makeLeaderboard(page) {
+	makeLeaderboard(commands, page) {
 		let i = 0;
 		let previousPts = null;
 		let positionsMoved = 1;
-		return this.client.registry.commands
-			.filter(command => command.uses !== undefined)
+		return commands
 			.sort((a, b) => b.uses - a.uses)
 			.map(command => {
 				if (previousPts === command.uses) {
@@ -49,5 +49,9 @@ module.exports = class CommandLeaderboardCommand extends Command {
 				return `**${i}.** ${command.name} (${command.uses} Use${command.uses === 1 ? '' : 's'})`;
 			})
 			.slice((page - 1) * 10, page * 10);
+	}
+
+	filterCommands(commands) {
+		return commands.filter(command => command.uses !== undefined && !command.unknown && !command.hidden);
 	}
 };
