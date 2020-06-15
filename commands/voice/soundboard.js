@@ -56,7 +56,7 @@ module.exports = class SoundboardCommand extends Command {
 						if (sounds.includes(choice)) return true;
 						return `You provided an invalid sound. Please choose either ${list(sounds, 'or')}.`;
 					},
-					parse: sound => `${sound.toLowerCase()}.mp3`
+					parse: sound => `${sound.toLowerCase().replace(/ /g, '-')}.mp3`
 				}
 			]
 		});
