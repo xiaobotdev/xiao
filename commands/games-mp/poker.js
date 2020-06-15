@@ -34,7 +34,6 @@ module.exports = class PokerCommand extends Command {
 	async run(msg, { playersCount }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		await msg.say(`**The \`${this.name}\` command is currently in beta. Do not expect it to work properly.**`);
 		this.client.games.set(msg.channel.id, {
 			name: this.name,
 			data: {
