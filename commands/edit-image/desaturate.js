@@ -7,6 +7,7 @@ module.exports = class DesaturateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'desaturate',
+			aliases: ['saturate'],
 			group: 'edit-image',
 			memberName: 'desaturate',
 			description: 'Draws an image or a user\'s avatar but desaturated.',
