@@ -10,7 +10,6 @@ module.exports = class ImageArgumentType extends ArgumentType {
 	async validate(value, msg, arg) {
 		const attachment = msg.attachments.first();
 		if (attachment) {
-			if (!attachment.height || !attachment.width) return false;
 			if (attachment.size > 8e+6) return 'Please provide an image under 8 MB.';
 			if (!fileTypeRe.test(attachment.name)) return 'Please only send PNG, JPG, BMP, or GIF format images.';
 			return true;
