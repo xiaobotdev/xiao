@@ -1,5 +1,5 @@
 const { ArgumentType } = require('discord.js-commando');
-const fileTypeRe = /\.(jpe?g|png|gif)$/i;
+const fileTypeRe = /\.(jpe?g|png|gif|jfif|bmp)$/i;
 const request = require('node-superfetch');
 
 module.exports = class ImageArgumentType extends ArgumentType {
@@ -12,7 +12,7 @@ module.exports = class ImageArgumentType extends ArgumentType {
 		if (attachment) {
 			if (!attachment.height || !attachment.width) return false;
 			if (attachment.size > 8e+6) return 'Please provide an image under 8 MB.';
-			if (!fileTypeRe.test(attachment.name)) return 'Please only send PNG, JPG, or GIF format images.';
+			if (!fileTypeRe.test(attachment.name)) return 'Please only send PNG, JPG, BMP, or GIF format images.';
 			return true;
 		}
 		if (fileTypeRe.test(value.toLowerCase())) {
