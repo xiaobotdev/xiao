@@ -102,7 +102,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 					key: 'image',
 					prompt: 'What image would you like to edit?',
 					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 })
 				}
 			]
 		});
