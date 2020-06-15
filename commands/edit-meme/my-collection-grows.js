@@ -45,11 +45,11 @@ module.exports = class MyCollectionGrowsCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(base, 0, 0);
 			ctx.rotate(-14 * (Math.PI / 180));
-			const { x, y, width, height } = centerImagePart(avatar, 850, 850, 289, 358);
+			const { x, y, width, height } = centerImagePart(avatar, 425, 425, 145, 179);
 			ctx.drawImage(avatar, x, y, width, height);
 			ctx.rotate(14 * (Math.PI / 180));
+			ctx.drawImage(base, 0, 0);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'my-collection-grows.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
