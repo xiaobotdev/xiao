@@ -10,7 +10,7 @@ module.exports = class NitroCommand extends Command {
 			memberName: 'nitro',
 			description: 'Sends an image of a fake nitro giveaway.',
 			clientPermissions: ['ATTACH_FILES'],
-			url: [
+			credit: [
 				{
 					name: 'u/MoonlightCapital',
 					url: 'https://www.reddit.com/user/MoonlightCapital/',
