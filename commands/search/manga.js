@@ -39,7 +39,10 @@ const resultGraphQL = stripIndents`
 			isAdult
 			meanScore
 			averageScore
-			externalLinks
+			externalLinks {
+				url
+				site
+			}
 		}
 	}
 `;
