@@ -107,6 +107,12 @@ module.exports = class HatCommand extends Command {
 					url: 'https://whyweprotest.net/',
 					reason: 'Anon Hat Image',
 					reasonURL: 'https://whyweprotest.net/threads/big-ass-guy-fawkes-mask-images-thread.22719/'
+				},
+				{
+					name: 'WebStockReview',
+					url: 'https://webstockreview.net/',
+					reason: 'Devil Hat Image',
+					reasonURL: 'https://webstockreview.net/explore/horn-clipart-purple-devil/'
 				}
 			],
 			args: [
