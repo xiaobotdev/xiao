@@ -4,6 +4,7 @@ const path = require('path');
 const { list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const characters = require('../../assets/json/undertale');
+const { listeners } = require('process');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'DeterminationMono.ttf'), {
 	family: 'DeterminationMono'
 });
@@ -130,8 +131,9 @@ module.exports = class UndertaleCommand extends Command {
 		ctx.font = `32px ${font}`;
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
-		let text = await wrapText(ctx, quote, 385);
-		for (let i = 0; i < 3; i++) {
+		const text = await wrapText(ctx, quote, 385);
+		const lines = text.length > 3 ? 3 : text.length;
+		for (let i = 0; i < lines; i++) {
 			ctx.fillText(text[i], 174, 22 + (22 * i) + (space * i));
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: `undertale-${character}.png` }] });
