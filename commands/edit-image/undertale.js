@@ -14,6 +14,7 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'UndertaleSans.
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'pixelated-wingdings.ttf'), {
 	family: 'Pixelated Wingdings'
 });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'apple_kid.ttf'), { family: 'Apple Kid' });
 
 module.exports = class UndertaleCommand extends Command {
 	constructor(client) {
@@ -62,6 +63,12 @@ module.exports = class UndertaleCommand extends Command {
 					reasonURL: 'https://fontstruct.com/fontstructions/show/1218140/pixelated-wingdings'
 				},
 				{
+					name: 'EarthBound Central',
+					url: 'https://earthboundcentral.com/',
+					reason: 'Apple Kid Font',
+					reasonURL: 'https://earthboundcentral.com/2009/11/ultimate-earthbound-font-pack/'
+				},
+				{
 					name: 'Overtime2005',
 					url: 'https://github.com/Overtime2005',
 					reason: 'Concept'
@@ -107,6 +114,9 @@ module.exports = class UndertaleCommand extends Command {
 				break;
 			case 'gaster':
 				font = 'Pixelated Wingdings';
+				break;
+			case 'ness':
+				font = 'Apple Kid';
 				break;
 			case 'temmie':
 				quote = this.client.registry.commands.get('temmie').temmize(quote);
