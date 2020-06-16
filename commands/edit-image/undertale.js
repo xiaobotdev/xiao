@@ -101,28 +101,28 @@ module.exports = class UndertaleCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		let font = 'DeterminationMono';
-		let space = 18;
+		let space = 12;
 		switch (character) {
 			case 'sans':
 				font = 'UndertaleSans';
 				quote = quote.toLowerCase();
-				space = 16;
+				space = 10;
 				break;
 			case 'papyrus':
 				font = 'UndertalePapyrus';
 				quote = quote.toUpperCase();
-				space = 14;
+				space = 8;
 				break;
 			case 'napstablook':
 				quote = quote.toLowerCase();
 				break;
 			case 'gaster':
 				font = 'Pixelated Wingdings';
-				space = 12;
+				space = 10;
 				break;
 			case 'ness':
 				font = 'Apple Kid';
-				space = 20;
+				space = 14;
 				break;
 			case 'temmie':
 				quote = this.client.registry.commands.get('temmie').temmize(quote);
