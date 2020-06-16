@@ -1494,6 +1494,8 @@ here.
 	* waldo ([Concept](https://www.reddit.com/r/copypasta/comments/gkk7z1/wheres_waldo_game_created_by_me/))
 - [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington)
 	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/))
+- [u/MoonlightCapital](https://www.reddit.com/user/MoonlightCapital/)
+	* nitro ([Image](https://www.reddit.com/r/discordapp/comments/a9fr7x/troll_your_friends_with_this/))
 - [u/N1ffler](https://www.reddit.com/user/N1ffler/)
 	* sorting-hat ([Sorting Hat Quiz Analysis Data](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/))
 - [u/SupremeMemesXD](https://www.reddit.com/user/SupremeMemesXD/)
