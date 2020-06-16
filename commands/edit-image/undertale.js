@@ -11,6 +11,9 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'UndertalePapyr
 	family: 'UndertalePapyrus'
 });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'UndertaleSans.ttf'), { family: 'UndertaleSans' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'pixelated-wingdings.ttf'), {
+	family: 'Pixelated Wingdings'
+});
 
 module.exports = class UndertaleCommand extends Command {
 	constructor(client) {
@@ -49,8 +52,14 @@ module.exports = class UndertaleCommand extends Command {
 				{
 					name: 'Carter Sande',
 					url: 'https://gitlab.com/cartr',
-					reason: 'Fonts',
+					reason: 'DeterminationMono, UndertaleSans, and UndertalePapyrus Fonts',
 					reasonURL: 'https://gitlab.com/cartr/undertale-fonts/tree/master'
+				},
+				{
+					name: 'Sigmath Bits',
+					url: 'https://fontstruct.com/fontstructors/1280718/sigmath6',
+					reason: 'Pixelated Wingdings Font',
+					reasonURL: 'https://fontstruct.com/fontstructions/show/1218140/pixelated-wingdings'
 				},
 				{
 					name: 'Overtime2005',
@@ -95,6 +104,9 @@ module.exports = class UndertaleCommand extends Command {
 				break;
 			case 'napstablook':
 				quote = quote.toLowerCase();
+				break;
+			case 'gaster':
+				font = 'Pixelated Wingdings';
 				break;
 			case 'temmie':
 				quote = this.client.registry.commands.get('temmie').temmize(quote);
