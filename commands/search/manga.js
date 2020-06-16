@@ -39,6 +39,7 @@ const resultGraphQL = stripIndents`
 			isAdult
 			meanScore
 			averageScore
+			externalLinks
 		}
 	}
 `;
@@ -111,7 +112,10 @@ module.exports = class MangaCommand extends Command {
 				.addField('❯ Year', manga.startDate.year || '???', true)
 				.addField('❯ Mean Score', manga.meanScore ? `${manga.meanScore}%` : '???', true)
 				.addField('❯ Average Score', manga.averageScore ? `${manga.averageScore}%` : '???', true)
-				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true);
+				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
+				.addField('❯ External Links', manga.externalLinks.length
+					? manga.externalLinks.map(link => `[${link.site}](${link.url})`).join(', ')
+					: 'None');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
