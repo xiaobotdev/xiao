@@ -4,7 +4,6 @@ const path = require('path');
 const { list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const characters = require('../../assets/json/undertale');
-const { listeners } = require('process');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'DeterminationMono.ttf'), {
 	family: 'DeterminationMono'
 });
