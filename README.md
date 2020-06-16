@@ -1529,6 +1529,8 @@ here.
 	* this-guy ([Image, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
 - [Wattpad](https://www.wattpad.com/)
 	* wattpad ([API](https://www.wattpad.com/developer/docs/api))
+- [WebStockReview](https://webstockreview.net/)
+	* hat ([Devil Hat Image](https://webstockreview.net/explore/horn-clipart-purple-devil/))
 - [Why We Protest](https://whyweprotest.net/)
 	* hat ([Anon Hat Image](https://whyweprotest.net/threads/big-ass-guy-fawkes-mask-images-thread.22719/))
 - [wikiHow](https://www.wikihow.com/Main-Page)
