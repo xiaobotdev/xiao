@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 488
+Total: 489
 
 ### Utility:
 
@@ -365,6 +365,7 @@ Total: 488
 
 ### Single Response:
 
+* **cave:** Sends a Minecraft cave that blends in with the chat.
 * **dark-light:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
 * **eggs-get-laid:** Sends the ultimate roast.
