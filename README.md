@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 489
+Total: 491
 
 ### Utility:
 
@@ -594,6 +594,7 @@ Total: 489
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **simp:** Draws a "simp" stamp over an image or a user's avatar.
 * **snapcode:** Responds with the Snapcode of a Snapchat user.
+* **speed-limit:** Sends a Speed Limit sign with the limit of your choice.
 * **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
@@ -601,6 +602,7 @@ Total: 489
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **undertale:** Sends a text box from Undertale with the quote and character of your choice.
+* **you-died:** Sends a "You Died" screen over an image or a user's avatar.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
 * **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
@@ -855,6 +857,7 @@ here.
 	* itunes ([iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/))
 - [Ash Pikachu Font](https://www.dafont.com/ashpikachu099.d2541)
 	* highway-sign ([Electronic Highway Sign Font](https://www.dafont.com/electronic-highway-sign.font))
+	* speed-limit ([Highway Gothic Font](https://www.dafont.com/highway-gothic.font))
 - [astrology.TV](https://astrology.tv/)
 	* horoscope ([Horoscope Data](https://astrology.tv/horoscope/daily/))
 - [ATOM.SMASHER.ORG](http://atom.smasher.org/)
@@ -994,6 +997,8 @@ here.
 	* hat ([Birthday Hat Image](https://www.freeiconspng.com/img/43917))
 - [Frinkiac](https://frinkiac.com/)
 	* frinkiac (API)
+- [FromSoftware](https://www.fromsoftware.jp/ww/)
+	* you-died (Image, Original "Dark Souls" Game)
 - [Gallery Yopriceville](https://gallery.yopriceville.com/)
 	* hat ([Pilgrim Hat Image](https://gallery.yopriceville.com/Free-Clipart-Pictures/Thanksgiving-PNG/Transparent_Brown_Pilgrim_Hat_PNG_Clipart))
 - [gautamkrishnar](https://github.com/gautamkrishnar/)
@@ -1297,9 +1302,11 @@ here.
 	* pogchamp (Concept)
 	* porn (Original Subreddit List)
 	* simp (Concept)
+	* speed-limit (Concept)
 	* thicc (Concept)
 	* undertale (Concept)
 	* worse-than-hitler (Concept)
+	* you-died (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
 	* balloon-pop (Concept)
 - [PaladinsGuru](https://paladins.guru/)
@@ -1376,6 +1383,8 @@ here.
 	* right-stuf (API)
 - [Riot Games](https://www.riotgames.com/en)
 	* league-of-legends ([API](https://developer.riotgames.com/))
+- [RoadTrafficSigns](https://www.roadtrafficsigns.com/)
+	* speed-limit ([Image](https://www.roadtrafficsigns.com/speed-limit-sign/speed-limit-70-sign/sku-x-r2-1-70.aspx))
 - [RoboHash](https://robohash.org/)
 	* robohash (API)
 - [Robotatertot](https://robotatertot.tumblr.com/)
