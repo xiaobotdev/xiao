@@ -54,7 +54,7 @@ module.exports = class SpeedLimitCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = '360px Highway Gothic';
 		ctx.fillStyle = 'black';
-		ctx.fillText(limit.toUpperCase(), 87, 356, 475);
+		ctx.fillText(limit.toUpperCase(), 77, 356, 475);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'speed-limit.png' }] });
 	}
 };
