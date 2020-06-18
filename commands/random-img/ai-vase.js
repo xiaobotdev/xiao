@@ -4,7 +4,7 @@ module.exports = class AiVaseCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'ai-vase',
-			aliases: ['this-vase-does-not-exist', 'vessel', 'this-vessel-does-not-exist'],
+			aliases: ['this-vase-does-not-exist', 'vessel', 'this-vessel-does-not-exist', 'vase'],
 			group: 'random-img',
 			memberName: 'ai-vase',
 			description: 'Responds with a randomly generated vase.',
