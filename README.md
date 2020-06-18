@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 494
+Total: 495
 
 ### Utility:
 
@@ -276,6 +276,7 @@ Total: 494
 * **8-ball:** Asks your question to the Magic 8 Ball.
 * **advice:** Responds with a random bit of advice.
 * **axis-cult:** Responds with a teaching of the Axis Cult.
+* **bunny-fact:** Responds with a random bunny fact.
 * **cat-fact:** Responds with a random cat fact.
 * **charlie-charlie:** Asks your question to Charlie.
 * **choose:** Chooses between options you provide.
