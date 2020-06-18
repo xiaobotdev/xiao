@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 491
+Total: 494
 
 ### Utility:
 
@@ -325,9 +325,12 @@ Total: 491
 ### Random Image:
 
 * **ai-artwork:** Responds with randomly generated artwork.
+* **ai-cat:** Responds with a randomly generated cat.
 * **ai-food:** Responds with a randomly generated food.
 * **ai-fursona:** Responds with a randomly generated fursona.
+* **ai-horse:** Responds with a randomly generated horse.
 * **ai-person:** Responds with a randomly generated person.
+* **ai-vase:** Responds with a randomly generated vase.
 * **ai-waifu:** Responds with a randomly generated waifu.
 * **awwnime:** Responds with cute random anime art.
 * **bird:** Responds with a random image of a bird.
@@ -1477,12 +1480,18 @@ here.
 	* the-onion ([RSS Feed](https://www.theonion.com/rss))
 - [This Artwork Does Not Exist](https://thisartworkdoesnotexist.com/)
 	* ai-artwork (API)
+- [This Cat Does Not Exist](https://thiscatdoesnotexist.com/)
+	* ai-cat (API)
 - [This Fursona Does Not Exist](https://thisfursonadoesnotexist.com/)
 	* ai-fursona (API)
+- [This Horse Does Not Exist](https://thishorsedoesnotexist.com/)
+	* ai-horse (API)
 - [This Person Does Not Exist](https://thispersondoesnotexist.com/)
 	* ai-person (API)
 - [This Snack Does Not Exist](https://thissnackdoesnotexist.com/)
 	* ai-food (API)
+- [This Vessel Does Not Exist](https://thisvesseldoesnotexist.com/#/)
+	* ai-vase (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
 	* ai-waifu (API)
 - [Tim's Printables](https://www.timvandevall.com/)
