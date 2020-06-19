@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 495
+Total: 496
 
 ### Utility:
 
@@ -785,6 +785,7 @@ Total: 495
 * **punch:** Punches a user.
 * **slap:** Slaps a user.
 * **sleep:** Puts a user to sleep.
+* **smiles:** Smiles at a user.
 * **wake-up:** Wakes up a user.
 * **wave:** Waves at a user.
 * **wink:** Winks at a user.
@@ -1122,6 +1123,7 @@ here.
 	* shrek ([API](https://apidocs.imgur.com/))
 	* slap ([API](https://apidocs.imgur.com/))
 	* sleep ([API](https://apidocs.imgur.com/))
+	* smile ([API](https://apidocs.imgur.com/))
 	* wake-up ([API](https://apidocs.imgur.com/))
 	* wave ([API](https://apidocs.imgur.com/))
 	* wink ([API](https://apidocs.imgur.com/))
