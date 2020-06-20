@@ -39,7 +39,7 @@ module.exports = class CreditCommand extends Command {
 			.map(com => {
 				const credit = com.credit.find(cred => cred.name.toLowerCase().includes(cmd));
 				if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
-				return `${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
+				return `\`${com.name}\`: ${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
 			});
 		if (!commands.length) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
