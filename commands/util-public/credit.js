@@ -37,7 +37,7 @@ module.exports = class CreditCommand extends Command {
 		const commands = this.client.registry.commands
 			.filter(c => c.credit && c.credit.length && c.credit.find(cred => cred.name.toLowerCase().includes(cmd)))
 			.map(com => {
-				const { credit } = com;
+				const credit = com.credit.find(cred => cred.name.toLowerCase().includes(cmd));
 				if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
 				return `${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
 			});
