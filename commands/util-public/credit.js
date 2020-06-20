@@ -38,7 +38,7 @@ module.exports = class CreditCommand extends Command {
 			.filter(c => c.credit && c.credit.length && c.credit.find(cred => cred.name.toLowerCase().includes(cmd)))
 			.map(com => {
 				const credit = com.credit.find(cred => cred.name.toLowerCase().includes(cmd));
-				if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
+				if (!credit.reasonURL) return `\`${com.name}\`: ${embedURL(credit.name, credit.url)} (${credit.reason})`;
 				return `\`${com.name}\`: ${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
 			});
 		if (!commands.length) return msg.say('Could not find any results.');
