@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const translate = require('@vitalets/google-translate-api');
 const { list } = require('../../util/Util');
-const codes = translate.languages;
+const codes = Object.keys(translate.languages).filter(code => typeof translate.languages[code] !== 'function');
 
 module.exports = class TranslateCommand extends Command {
 	constructor(client) {
@@ -12,7 +12,7 @@ module.exports = class TranslateCommand extends Command {
 			group: 'edit-text',
 			memberName: 'translate',
 			description: 'Translates text to a specific language.',
-			details: `**Codes:** ${Object.keys(codes).join(', ')}`,
+			details: `**Codes:** ${codes.join(', ')}`,
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
@@ -31,18 +31,13 @@ module.exports = class TranslateCommand extends Command {
 				},
 				{
 					key: 'target',
-					prompt: `Which language would you like to translate to? Either ${list(Object.keys(codes), 'or')}.`,
+					prompt: `Which language would you like to translate to? Either ${list(codes, 'or')}.`,
 					type: 'string',
 					validate: target => {
-						const value = target.toLowerCase();
-						if (codes[value] || Object.keys(codes).find(key => codes[key].toLowerCase() === value)) return true;
-						return `Invalid target, please enter either ${list(Object.keys(codes), 'or')}.`;
+						if (translate.languages.isSupported(target)) return true;
+						return `Invalid target, please enter either ${list(codes, 'or')}.`;
 					},
-					parse: target => {
-						const value = target.toLowerCase();
-						if (codes[value]) return value;
-						return Object.keys(codes).find(key => codes[key].toLowerCase() === value);
-					}
+					parse: target => translate.languages.getCode(target)
 				},
 				{
 					key: 'base',
@@ -50,15 +45,10 @@ module.exports = class TranslateCommand extends Command {
 					type: 'string',
 					default: 'auto',
 					validate: base => {
-						const value = base.toLowerCase();
-						if (codes[value] || Object.keys(codes).find(key => codes[key].toLowerCase() === value)) return true;
-						return `Invalid base, please enter either ${list(Object.keys(codes), 'or')}.`;
+						if (translate.languages.isSupported(base)) return true;
+						return `Invalid base, please enter either ${list(codes, 'or')}.`;
 					},
-					parse: base => {
-						const value = base.toLowerCase();
-						if (codes[value]) return value;
-						return Object.keys(codes).find(key => codes[key].toLowerCase() === value);
-					}
+					parse: base => translate.languages.getCode(base)
 				}
 			]
 		});
@@ -70,8 +60,8 @@ module.exports = class TranslateCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x4285F4)
 				.setFooter('Powered by Google Translate', 'https://i.imgur.com/h3RoHyp.png')
-				.addField(`❯ From: ${codes[from.language.iso]}`, from.text.value || text)
-				.addField(`❯ To: ${codes[target]}`, result);
+				.addField(`❯ From: ${translate.languages[from.language.iso]}`, from.text.value || text)
+				.addField(`❯ To: ${translate.languages[target]}`, result);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
