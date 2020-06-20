@@ -45,7 +45,7 @@ module.exports = class CreditCommand extends Command {
 		const embed = new MessageEmbed()
 			.setTitle(cmd)
 			.setColor(0x7289DA)
-			.setDescription(trimArray(commands, 15).join(', '));
+			.setDescription(trimArray(commands, 15).join('\n'));
 		return msg.embed(embed);
 	}
 };
