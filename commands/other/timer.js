@@ -23,7 +23,7 @@ module.exports = class TimerCommand extends Command {
 	async run(msg, { time }) {
 		const display = time > 59 ? `${time / 60} minutes` : `${time} seconds`;
 		await msg.say(`🕰️ Set a timer for **${display}**.`);
-		await delay(time / 1000);
+		await delay(time * 1000);
 		return msg.say(`🕰️ Your **${display}** timer is finished!`);
 	}
 };
