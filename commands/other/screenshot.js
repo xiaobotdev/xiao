@@ -57,7 +57,9 @@ module.exports = class ScreenshotCommand extends Command {
 	async fetchPornList(force = false) {
 		if (!force && this.pornList) return this.pornList;
 		const { text } = await request.get('https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt');
-		this.pornList = text.split('\n').filter(url => !url.startsWith('#')).map(url => url.replace(/^(0.0.0.0 )/, ''));
+		this.pornList = text.split('\n')
+			.filter(url => url && !url.startsWith('#'))
+			.map(url => url.replace(/^(0.0.0.0	)/, ''));
 		return this.postList;
 	}
 };
