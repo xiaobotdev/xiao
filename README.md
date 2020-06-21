@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 497
+Total: 498
 
 ### Utility:
 
@@ -764,6 +764,7 @@ Total: 497
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
+* **screenshot:** Takes a screenshot of any webpage.
 * **smilebasic:** Responds with a ZIP file for a SmileBASIC project.
 * **strawpoll:** Generates a Strawpoll with the options you provide.
 
@@ -876,6 +877,8 @@ here.
 	* axis-cult (Prayer Data)
 - [AZLyrics](https://www.azlyrics.com/)
 	* lyrics (Lyrics Data)
+- [AzuraApple](https://github.com/AzuraApple)
+	* screenshot (Concept)
 - [Bethesda](https://bethesda.net/en/dashboard)
 	* dislike ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 	* like ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
@@ -1498,6 +1501,8 @@ here.
 	* ai-vase (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
 	* ai-waifu (API)
+- [Thum.io](https://www.thum.io/)
+	* screenshot (API)
 - [Tim's Printables](https://www.timvandevall.com/)
 	* wanted ([Image](https://www.pinterest.com/pin/365002744774849370/))
 - [TrueAchievements](https://www.trueachievements.com/)
