@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 498
+Total: 499
 
 ### Utility:
 
@@ -767,6 +767,7 @@ Total: 498
 * **screenshot:** Takes a screenshot of any webpage.
 * **smilebasic:** Responds with a ZIP file for a SmileBASIC project.
 * **strawpoll:** Generates a Strawpoll with the options you provide.
+* **timer:** Sets a timer for anywhere from 1 second to 10 minutes.
 
 ### Roleplay:
 
