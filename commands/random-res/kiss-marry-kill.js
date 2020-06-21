@@ -16,7 +16,16 @@ module.exports = class KissMarryKillCommand extends Command {
 				'kill-fuck-marry',
 				'kill-marry-fuck',
 				'marry-fuck-kill',
-				'marry-kill-fuck'
+				'marry-kill-fuck',
+				'kmk',
+				'kkm',
+				'mkk',
+				'fmk',
+				'mfk',
+				'kfm',
+				'kmf',
+				'fkm',
+				'mkf'
 			],
 			group: 'random-res',
 			memberName: 'kiss-marry-kill',
