@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 496
+Total: 497
 
 ### Utility:
 
@@ -721,6 +721,7 @@ Total: 496
 * **tebahpla:** Reverses the alphabet of text.
 * **temmie:** Converts text to Temmie speak.
 * **translate:** Translates text to a specific language.
+* **txt:** Generates a TXT file from the text you provide.
 * **unspoiler:** Removes all spoilers from a message.
 * **uppercase:** Converts text to uppercase.
 * **upside-down:** Flips text upside-down.
