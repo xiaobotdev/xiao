@@ -26,8 +26,7 @@ module.exports = class ScreenshotCommand extends Command {
 				{
 					key: 'url',
 					prompt: 'What webpage do you want to take a screenshot of?',
-					type: 'string',
-					parse: url => encodeURIComponent(url)
+					type: 'string'
 				}
 			]
 		});
