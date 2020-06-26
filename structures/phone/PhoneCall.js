@@ -122,7 +122,7 @@ module.exports = class PhoneCall {
 	sendVoicemail(channel, msg) {
 		return channel.send(stripIndents`
 			☎️ New Voicemail from **${msg.guild.name}:**
-			**${msg.author.tag}:** ${msg.content}
+			**${msg.author.tag}:** ${stripInvites(msg.content)}
 		`);
 	}
 
