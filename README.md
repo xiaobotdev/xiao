@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 499
+Total: 501
 
 ### Utility:
 
@@ -366,6 +366,7 @@ Total: 499
 * **ship:** Ships two users together.
 * **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
 * **thicc:** Determines how thicc you are.
+* **worth:** Determines how much a user is worth.
 
 ### Single Response:
 
@@ -578,6 +579,7 @@ Total: 499
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
 * **gun:** Draws a gun over an image or a user's avatar.
+* **hands:** Draws creepy hands over an image or a user's avatar.
 * **highway-sign:** Sends a highway sign sign with the text of your choice.
 * **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
@@ -880,6 +882,7 @@ here.
 	* lyrics (Lyrics Data)
 - [AzuraApple](https://github.com/AzuraApple)
 	* screenshot (Concept)
+	* worth (Concept)
 - [Bethesda](https://bethesda.net/en/dashboard)
 	* dislike ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 	* like ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
@@ -1175,6 +1178,7 @@ here.
 	* hat ([Witch Hat Image](https://www.kissclipart.com/halloween-witch-hat-clipart-witch-hat-clip-art-qfycyt/))
 - [Know Your Meme](https://knowyourmeme.com/)
 	* bob-ross ([Image](https://knowyourmeme.com/photos/1160348))
+	* hands ([Image](https://knowyourmeme.com/photos/1583323-screen-reaching-emoji))
 	* hat ([Christmas Hat Image](https://knowyourmeme.com/forums/just-for-fun/topics/24821-christmas-hat-thread))
 	* know-your-meme (Meme Data)
 	* kyon-gun ([Image](https://knowyourmeme.com/photos/217992-endless-eight-kyon-kun-denwa))
@@ -1312,6 +1316,7 @@ here.
 	* alert (Concept)
 	* dislike (Concept)
 	* gun (Concept)
+	* hands (Concept)
 	* hentai (Original Subreddit List)
 	* like (Concept)
 	* pills (Concept)
