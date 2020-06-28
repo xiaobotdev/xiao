@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 502
+Total: 503
 
 ### Utility:
 
@@ -673,6 +673,7 @@ Total: 502
 * **pogchamp:** Sends a pogchamp duplicated however many times you want.
 * **scroll-of-truth:** Sends a "Scroll of Truth" meme with the text of your choice.
 * **skyrim-skill:** Sends a "Skyrim Skill" meme with the skill and image of your choice.
+* **sonic-says:** Sends a "Sonic Says" meme with the quote of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
 * **sos:** Sends a "Esther Verkest's Help Sign" comic with the text of your choice.
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
@@ -1060,6 +1061,7 @@ here.
 	* pills ([Noto Font](https://www.google.com/get/noto/))
 	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
 	* scroll-of-truth ([Noto Font](https://www.google.com/get/noto/))
+	* sonic-says ([Noto Font](https://www.google.com/get/noto/))
 	* sos ([Noto Font](https://www.google.com/get/noto/))
 	* spongebob-burn ([Noto Font](https://www.google.com/get/noto/))
 	* steam-card ([Noto Font](https://www.google.com/get/noto/))
@@ -1326,6 +1328,7 @@ here.
 	* pogchamp (Concept)
 	* porn (Original Subreddit List)
 	* simp (Concept)
+	* sonic-says (Concept)
 	* speed-limit (Concept)
 	* thicc (Concept)
 	* undertale (Concept)
@@ -1425,6 +1428,8 @@ here.
 	* pogchamp (Image)
 - [Safebooru](https://safebooru.org/)
 	* safebooru (API)
+- [SEGA](https://www.sega.com/)
+	* sonic-says ([Image, Original "Sonic the Hedgehog" Game](https://www.sonicthehedgehog.com/))
 - [Serebii.net](https://www.serebii.net/index2.shtml)
 	* pokedex (Images)
 	* whos-that-pokemon (Images)
