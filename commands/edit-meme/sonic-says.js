@@ -55,8 +55,8 @@ module.exports = class SonicSaysCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.textBaseline = 'top';
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '26px Noto';
-		let fontSize = 26;
+		ctx.font = '24px Noto';
+		let fontSize = 24;
 		while (ctx.measureText(text).width > 648) {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
