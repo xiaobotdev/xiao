@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 501
+Total: 502
 
 ### Utility:
 
@@ -656,6 +656,7 @@ Total: 501
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
+* **if-those-kids-could-read:** Sends a "If those kids could read, they'd be very upset" meme with the text of your choice.
 * **illegal:** Makes President Trump make your text illegal.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
 * **like:** Sends an "Everyone Liked That" meme with the image of your choice.
@@ -832,6 +833,7 @@ here.
 - [20th Century Fox](https://www.foxmovies.com/)
 	* bart-chalkboard ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
 	* eat-pant ([Original "The Simpsons" Show](http://www.simpsonsworld.com/))
+	* if-those-kids-could-read (Image, Original "King of the Hill" Show)
 	* lisa-presentation ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
 	* worse-than-hitler ([Image, Original "Family Guy" Show](https://www.fox.com/family-guy/))
 - [@Candasaurus](https://twitter.com/Candasaurus)
@@ -1046,6 +1048,7 @@ here.
 	* google-doodle ([Google Doodles API](https://www.google.com/doodles))
 	* google-feud (Autofill API)
 	* gru-plan ([Noto Font](https://www.google.com/get/noto/))
+	* if-those-kids-could-read ([Noto Font](https://www.google.com/get/noto/))
 	* illegal ([Noto Font](https://www.google.com/get/noto/))
 	* lisa-presentation ([Noto Font](https://www.google.com/get/noto/))
 	* map ([Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro))
