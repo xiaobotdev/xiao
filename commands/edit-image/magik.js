@@ -31,7 +31,7 @@ module.exports = class MagikCommand extends Command {
 			const { body } = await request.get(image);
 			const magik = gm(body);
 			magik.out('-liquid-rescale');
-			magik.out('50%x50%')
+			magik.out('50%x50%');
 			magik.implode(0.25);
 			magik.setFormat('png');
 			const attachment = await this.toBuffer(magik);
