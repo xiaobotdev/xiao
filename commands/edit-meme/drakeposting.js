@@ -72,7 +72,7 @@ module.exports = class DrakepostingCommand extends Command {
 			}
 			ctx.font = '50px Noto';
 			fontSize = 50;
-			while (ctx.measureText(yea).width > 3003) {
+			while (ctx.measureText(yeah).width > 3003) {
 				fontSize--;
 				ctx.font = `${fontSize}px Noto`;
 			}
