@@ -138,6 +138,7 @@ The difficulty in getting all of these keys is why I recommend
 
 * `XIAO_TOKEN` can be obtained at the [Discord Developer Portal](https://discord.com/developers/applications/).
 * `OWNERS` is a comma-seperated list of Discord User IDs.
+* `GIRLFRIEND_USER_ID` is a Discord User ID for your lover. It rigs commands like `coolness` and `cuteness`. Totally optional, loners can leave it out.
 * `XIAO_PREFIX` is the prefix you want the bot to have. Like `x;`.
 * `INVITE` is an invite link to a Discord server. The whole thing, not just the code.
 * `XIAO_WEBHOOK_ID` is the ID of the webhook you want the `webhook` command to use.

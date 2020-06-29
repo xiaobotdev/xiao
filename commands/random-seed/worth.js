@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MersenneTwister19937, integer } = require('random-js');
 const { formatNumber } = require('../../util/Util');
+const { GIRLFRIEND_USER_ID } = process.env;
 
 module.exports = class WorthCommand extends Command {
 	constructor(client) {
@@ -32,8 +33,11 @@ module.exports = class WorthCommand extends Command {
 		const authorUser = user.id === msg.author.id;
 		if (user.id === this.client.user.id) return msg.reply('Me? I\'m worth $5/month. At least that\'s how much I cost.');
 		if (this.client.isOwner(user)) {
-			if (authorUser) return msg.reply('Infinity, you amazing owner ❤');
+			if (authorUser) return msg.reply('Infinity, you amazing owner! ❤');
 			return msg.reply(`${user.username}, as in my owner? Worthless. Absolutely worthless.`);
+		}
+		if (user.id === GIRLFRIEND_USER_ID) {
+			return msg.reply(`${user.username} is worth more than anyone else on this Earth! ❤`);
 		}
 		const random = MersenneTwister19937.seed(user.id);
 		const worth = integer(0, 1000000)(random);

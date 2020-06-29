@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { MersenneTwister19937, bool } = require('random-js');
+const { GIRLFRIEND_USER_ID } = process.env;
 
 module.exports = class SmashOrPassCommand extends Command {
 	constructor(client) {
@@ -27,7 +28,7 @@ module.exports = class SmashOrPassCommand extends Command {
 			return msg.reply('I sure hope no one is dumb enough to smash that... Thing.');
 		}
 		const random = MersenneTwister19937.seed(user.id);
-		const smashOrPass = bool()(random);
+		const smashOrPass = user.id === GIRLFRIEND_USER_ID || bool()(random);
 		return msg.reply(smashOrPass ? 'Smash, I\'d definitely smash.' : 'Hard pass. Yuck.');
 	}
 };

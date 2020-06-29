@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MersenneTwister19937, integer } = require('random-js');
 const texts = require('../../assets/json/cuteness');
+const { GIRLFRIEND_USER_ID } = process.env;
 
 module.exports = class CutenessCommand extends Command {
 	constructor(client) {
@@ -35,6 +36,7 @@ module.exports = class CutenessCommand extends Command {
 			if (authorUser) return msg.reply('You\'re the most adorable little cutie I know! ❤');
 			return msg.reply(`${user.username} is ugly. Like, not cute at all.`);
 		}
+		if (user.id === GIRLFRIEND_USER_ID) return msg.reply(`${user.username} is by far the cutest person ever! ❤`);
 		const random = MersenneTwister19937.seed(user.id);
 		const cuteness = integer(0, texts.length - 1)(random);
 		return msg.reply(`${authorUser ? 'You are' : `${user.username} is`} ${texts[cuteness]}`);
