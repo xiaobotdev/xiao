@@ -42,7 +42,7 @@ module.exports = class MagikCommand extends Command {
 
 	toBuffer(magik) {
 		return new Promise((res, rej) => {
-			magik.toBuffer('PNG', (err, buffer) => {
+			magik.toBuffer((err, buffer) => {
 				if (err) return rej(err);
 				return res(buffer);
 			});
