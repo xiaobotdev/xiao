@@ -29,7 +29,7 @@ module.exports = class MagikCommand extends Command {
 	async run(msg, { image }) {
 		try {
 			const { body } = await request.get(image);
-			const magik = gm(body);
+			const magik = gm(body, 'magik.png');
 			magik.out('-liquid-rescale 75%x75%');
 			magik.implode(0.25);
 			const attachment = await this.toBuffer(magik);
