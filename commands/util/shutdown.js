@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { verify } = await require('../../util/Util');
+const { verify } = require('../../util/Util');
 const texts = require('../../assets/json/shutdown');
 
 module.exports = class ShutdownCommand extends Command {
