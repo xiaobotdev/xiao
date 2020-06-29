@@ -105,9 +105,10 @@ don't grant that permission.
 1. Open an **ADMIN POWERSHELL** window and run `npm i -g --production windows-build-tools`.
 2. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation:-Windows).
 3. [Follow these instructions to install ffmpeg](https://www.wikihow.com/Install-FFmpeg-on-Windows).
-4. Run `npm i --production` in the folder you cloned the bot.
-5. Run `npm i -g pm2` to install PM2.
-6. Run `pm2 start Xiao.js --name xiao` to run the bot.
+4. [Install ImageMagick](https://imagemagick.org/script/download.php).
+5. Run `npm i --production` in the folder you cloned the bot.
+6. Run `npm i -g pm2` to install PM2.
+7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ### Mac
 
@@ -122,9 +123,11 @@ don't grant that permission.
 3. Run `apt install python` to install python.
 4. Run `apt install ffmpeg` to install ffmpeg.
 5. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Ubuntu-and-other-Debian-based-systems).
-6. Run `npm i --production` in the folder you cloned the bot.
-7. Run `npm i -g pm2` to install PM2.
-8. Run `pm2 start Xiao.js --name xiao` to run the bot.
+6. Run `apt install liblqr-1-0-dev liblqr-1-0` to install liblqr (needed for ImageMagick).
+7. [Follow these instructions to install ImageMagick](https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/).
+8. Run `npm i --production` in the folder you cloned the bot.
+9. Run `npm i -g pm2` to install PM2.
+10. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Filling Out Your .env File
 
