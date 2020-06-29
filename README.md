@@ -651,7 +651,7 @@ Total: 504
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **dislike:** Sends an "Everyone Disliked That" meme with the image of your choice.
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
-* **drakeposting:** Draws two user's avatars over the "Drakeposting" meme.
+* **drakeposting:** Sends a "Drakeposting" meme with the text of your choice.
 * **edd-facts-book:** Sends a "Double D's Facts Book" meme with the fact of your choice.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
@@ -1044,6 +1044,7 @@ here.
 	* change-my-mind ([Noto Font](https://www.google.com/get/noto/))
 	* dear-liberals ([Oswald Font](https://fonts.google.com/specimen/Oswald))
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
+	* drakeposting ([Noto Font](https://www.google.com/get/noto/))
 	* edd-facts-book ([Noto Font](https://www.google.com/get/noto/))
 	* genie-rules ([Noto Font](https://www.google.com/get/noto/))
 	* google ([Custom Search API](https://cse.google.com/cse/all))
