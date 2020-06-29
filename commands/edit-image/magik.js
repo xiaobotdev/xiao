@@ -30,9 +30,9 @@ module.exports = class MagikCommand extends Command {
 		try {
 			const { body } = await request.get(image);
 			const magik = gm(body);
-			gm.out('-liquid-rescale 75%x75%');
-			gm.implode(0.25);
-			const attachment = await this.toBuffer(gm);
+			magik.out('-liquid-rescale 75%x75%');
+			magik.implode(0.25);
+			const attachment = await this.toBuffer(magik);
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'magik.png' }] });
 		} catch (err) {
@@ -40,9 +40,9 @@ module.exports = class MagikCommand extends Command {
 		}
 	}
 
-	toBuffer(gm) {
+	toBuffer(magik) {
 		return new Promise((res, rej) => {
-			gm.toBuffer('PNG', (err, buffer) => {
+			magik.toBuffer('PNG', (err, buffer) => {
 				if (err) return rej(err);
 				return res(buffer);
 			});
