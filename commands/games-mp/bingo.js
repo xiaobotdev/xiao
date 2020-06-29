@@ -95,7 +95,7 @@ module.exports = class BingoCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			if (winner === 0) return msg.say('Everyone dropped out...');
 			if (!winner) return msg.say('I called the entire board, but no one called bingo...');
-			return msg.say(`Congrats, ${winner.user}!`);
+			return msg.say(`Congrats, ${winner}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
