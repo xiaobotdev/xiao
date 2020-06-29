@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 503
+Total: 504
 
 ### Utility:
 
@@ -640,6 +640,7 @@ Total: 503
 * **bart-chalkboard:** Sends a "Bart Chalkboard" meme with the text of your choice.
 * **be-like-bill:** Sends a "Be Like Bill" meme with the name of your choice.
 * **beautiful:** Draws a user's avatar over Gravity Falls' "Oh, this? This is beautiful." meme.
+* **boardroom-meeting:** Sends a "Boardroom Meeting" meme with the text of your choice.
 * **catch:** Catch users, revealing who is something.
 * **challenger:** Draws an image or a user's avatar over Smash Bros.'s "Challenger Approaching" screen.
 * **change-my-mind:** Sends a "Change My Mind" meme with the text of your choice.
@@ -1036,6 +1037,7 @@ here.
 - [Go Nintendo](https://gonintendo.com/)
 	* hat ([Ash Hat Image](https://gonintendo.com/stories/306292))
 - [Google](https://www.google.com/)
+	* boardroom-meeting ([Noto Font](https://www.google.com/get/noto/))
 	* book ([Books API](https://developers.google.com/books/))
 	* calendar ([Calendar API](https://developers.google.com/calendar/))
 	* catch ([Noto Font](https://www.google.com/get/noto/))
@@ -1093,6 +1095,8 @@ here.
 	* scrabble-score ([Original "Scrabble" Game](https://scrabble.hasbro.com/en-us))
 - [hbl917070](https://github.com/hbl917070)
 	* axis-cult-sign-up ([Font](https://github.com/hbl917070/Konosuba-text))
+- [hejibits](https://hejibits.com/)
+	* boardroom-meeting ([Image](https://web.archive.org/web/20121226235748/https://hejibits.com/comics/outlook-oust/))
 - [Hollywood Walk of Fame](https://walkoffame.com/)
 	* hollywood-star (Concept)
 - [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas)
@@ -1319,6 +1323,7 @@ here.
 	* osu ([API](https://github.com/ppy/osu-api/wiki))
 - [Overtime2005](https://github.com/Overtime2005)
 	* alert (Concept)
+	* boardroom-meeting (Concept)
 	* dislike (Concept)
 	* gun (Concept)
 	* hands (Concept)
