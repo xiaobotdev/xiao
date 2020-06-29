@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 505
+Total: 506
 
 ### Utility:
 
@@ -358,6 +358,7 @@ Total: 505
 
 * **butt:** Determines a user's butt quality.
 * **coolness:** Determines a user's coolness.
+* **cuteness:** Determines a user's cuteness.
 * **dick:** Determines your dick size.
 * **friendship:** Determines how good friends two users are.
 * **guess-looks:** Guesses what a user looks like.
@@ -886,6 +887,7 @@ here.
 - [AZLyrics](https://www.azlyrics.com/)
 	* lyrics (Lyrics Data)
 - [AzuraApple](https://github.com/AzuraApple)
+	* cuteness (Concept)
 	* screenshot (Concept)
 	* worth (Concept)
 - [Bethesda](https://bethesda.net/en/dashboard)
