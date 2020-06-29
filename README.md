@@ -228,7 +228,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 506
+Total: 507
 
 ### Utility:
 
@@ -657,6 +657,7 @@ Total: 506
 * **drakeposting:** Sends a "Drakeposting" meme with the text of your choice.
 * **edd-facts-book:** Sends a "Double D's Facts Book" meme with the fact of your choice.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
+* **for-five-hours:** 'Sends an "I've looked at this for 5 hours now" meme with the image of your choice.
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
@@ -1285,6 +1286,8 @@ here.
 	* suicide-hotline (Phone Number)
 - [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc)
 	* spongebob-time-card ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
+- [NBC](https://www.nbc.com/)
+	* for-five-hours ([Image, Original "The Office" TV Series](https://www.nbc.com/the-office))
 - [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/)
 	* neko-atsume-password (API, Original Game)
 - [Nekopara](http://nekopara.com/main.html)
@@ -1330,6 +1333,7 @@ here.
 	* alert (Concept)
 	* boardroom-meeting (Concept)
 	* dislike (Concept)
+	* for-five-hours (Concept)
 	* gun (Concept)
 	* hands (Concept)
 	* hentai (Original Subreddit List)
