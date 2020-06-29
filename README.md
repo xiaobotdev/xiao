@@ -231,7 +231,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 507
+Total: 508
 
 ### Utility:
 
@@ -388,6 +388,7 @@ Total: 507
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
 * **lenny:** Responds with the lenny face.
 * **nitro:** Sends an image of a fake nitro giveaway.
+* **rickroll:** Sends a link to the "Never Gonna Give You Up" music video.
 * **spam:** Responds with a picture of Spam.
 * **tableflip:** Flips a table... With animation!
 * **wynaut:** Why not? Wynaut?
@@ -1423,6 +1424,8 @@ here.
 	* country (API)
 - [richchurcher](https://github.com/richchurcher)
 	* yoda ([API](https://github.com/richchurcher/yoda-api))
+- [Rick Astley](https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw)
+	* rickroll ([Original Music Video](https://www.youtube.com/watch?v=dQw4w9WgXcQ))
 - [Right Stuf Anime](https://www.rightstufanime.com/)
 	* right-stuf (API)
 - [Riot Games](https://www.riotgames.com/en)
