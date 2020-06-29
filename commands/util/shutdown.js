@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { verify } = await require('../../util/Util');
 const texts = require('../../assets/json/shutdown');
 
 module.exports = class ShutdownCommand extends Command {
@@ -24,6 +25,16 @@ module.exports = class ShutdownCommand extends Command {
 	}
 
 	async run(msg, { code }) {
+		if (this.client.games.size > 0) {
+			await msg.reply(`There are currently **${this.client.games.size}** games going on. Are you sure?`);
+			const verification = await verify(msg.channel, msg.author);
+			if (!verification) return msg.say('Aborted restart.');
+		}
+		if (this.client.phone.size > 0) {
+			await msg.reply(`There are currently **${this.client.phone.size}** phone calls going on. Are you sure?`);
+			const verification = await verify(msg.channel, msg.author);
+			if (!verification) return msg.say('Aborted restart.');
+		}
 		try {
 			this.uses++;
 			this.client.exportCommandLeaderboard();
