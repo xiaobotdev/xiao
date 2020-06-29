@@ -32,6 +32,7 @@ module.exports = class MagikCommand extends Command {
 			const magik = gm(body, 'magik.png');
 			magik.out('-liquid-rescale 75%x75%');
 			magik.implode(0.25);
+			magik.setFormat('png');
 			const attachment = await this.toBuffer(magik);
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'magik.png' }] });
