@@ -74,6 +74,7 @@ module.exports = class BoardroomMeetingCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
+		ctx.textBaseline = 'top';
 		ctx.font = '25px Noto';
 		ctx.fillText(question, 153, 8, 300);
 		ctx.font = '15px Noto';
