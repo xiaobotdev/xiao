@@ -227,7 +227,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 504
+Total: 505
 
 ### Utility:
 
@@ -585,6 +585,7 @@ Total: 504
 * **ifunny:** Draws an image with the iFunny logo.
 * **invert:** Draws an image or a user's avatar but inverted.
 * **jeopardy-question:** Sends a Jeopardy Question with the text of your choice.
+* **magik:** Draws an image or a user's avatar but with liquid rescale from ImageMagick.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
