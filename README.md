@@ -195,6 +195,7 @@ API. All are free unless otherwise stated.
 * `OSU_KEY` can be obtained by [signing up at the osu! API page](https://osu.ppy.sh/p/api/). Whether this link takes you to the right page or not is hit-or-miss.
 * `STACKOVERFLOW_KEY` can be obtained by [registering your app at stackapps](https://stackapps.com/apps/oauth/register).
 * `TENOR_KEY` can be obtained by [Registering an Application at the Tenor website](https://tenor.com/developer/keyregistration).
+* `THECATAPI_KEY` can be obtained at the [TheCatAPI website](https://thecatapi.com/).
 * `TMDB_KEY` can be obtained by [following these instructions at the TMDB website](https://www.themoviedb.org/documentation/api). Read the "How do I apply for an API key?" section.
 * `TUMBLR_KEY` can be obtained at the [Tumblr developer portal](https://www.tumblr.com/oauth/apps).
 * `TWITTER_KEY` and `TWITTER_SECRET` can be obtained at the [Twitter developer portal](https://developer.twitter.com/en/apps).
