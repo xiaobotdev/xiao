@@ -67,7 +67,7 @@ module.exports = class WildPokemonCommand extends Command {
 			ctx.drawImage(data, x, y, width, height);
 			ctx.textBaseline = 'top';
 			ctx.font = '16px Pokemon GB';
-			ctx.fillText(name.toUpperCase(), 110, 201, 215);
+			ctx.fillText(name.toUpperCase(), 110, 203, 215);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wild-pokemon.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
