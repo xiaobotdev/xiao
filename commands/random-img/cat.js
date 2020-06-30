@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { THECATAPI_KEY } = process.env;
 
 module.exports = class CatCommand extends Command {
 	constructor(client) {
@@ -12,9 +13,10 @@ module.exports = class CatCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'random.cat',
-					url: 'https://random.cat/',
-					reason: 'API'
+					name: 'TheCatAPI',
+					url: 'https://thecatapi.com/',
+					reason: 'API',
+					reasonURL: 'https://docs.thecatapi.com/'
 				}
 			]
 		});
@@ -22,7 +24,13 @@ module.exports = class CatCommand extends Command {
 
 	async run(msg) {
 		try {
-			const { body } = await request.get('https://aws.random.cat/meow');
+			const { body } = await request
+				.get('https://api.thecatapi.com/images/search')
+				.query({
+					limit: 1,
+					mime_types: 'jpg,png'
+				})
+				.set({ 'x-api-key': THECATAPI_KEY });
 			return msg.say({ files: [body.file] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
