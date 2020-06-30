@@ -25,13 +25,13 @@ module.exports = class CatCommand extends Command {
 	async run(msg) {
 		try {
 			const { body } = await request
-				.get('https://api.thecatapi.com/images/search')
+				.get('https://api.thecatapi.com/v1/images/search')
 				.query({
 					limit: 1,
 					mime_types: 'jpg,png'
 				})
 				.set({ 'x-api-key': THECATAPI_KEY });
-			return msg.say({ files: [body.file] });
+			return msg.say({ files: [body.images[0].url] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
