@@ -231,7 +231,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 511
+Total: 512
 
 ### Utility:
 
@@ -618,6 +618,7 @@ Total: 511
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **undertale:** Sends a text box from Undertale with the quote and character of your choice.
+* **wild-pokemon:** Draws an image or a user's avatar over a wild Pokémon appearance.
 * **you-died:** Sends a "You Died" screen over an image or a user's avatar.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
 * **yu-gi-oh-token:** Draws an image or a user's avatar over a blank Yu-Gi-Oh! Token card.
@@ -1170,6 +1171,8 @@ here.
 	* guesspionage ([Original "Guesspionage" Game](https://www.jackboxgames.com/guesspionage/))
 	* lie-swatter ([Original "Lie Swatter" Game](https://www.jackboxgames.com/lie-swatter/))
 	* word-spud ([Original "Word Spud" Game](https://www.jackboxgames.com/word-spud/))
+- [Jackster Productions](https://www.fontspace.com/jackster-productions)
+	* wild-pokemon ([Pokemon GB Font](https://www.fontspace.com/pokemon-gb-font-f9621))
 - [Jake Clark](https://jake-clark.tumblr.com/)
 	* two-buttons ([Image](https://twitter.com/jakeclarkdude/status/689141113584619524))
 - [jasmaa](https://github.com/jasmaa/)
@@ -1354,6 +1357,7 @@ here.
 	* speed-limit (Concept)
 	* thicc (Concept)
 	* undertale (Concept)
+	* wild-pokemon (Concept)
 	* worse-than-hitler (Concept)
 	* you-died (Concept)
 - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party)
@@ -1388,6 +1392,7 @@ here.
 	* pokemon-fusion (Original Game)
 	* soundboard (Pikachu Sound)
 	* whos-that-pokemon (Images, Original Game)
+	* wild-pokemon (Image, Original Game)
 	* wynaut (Image, Original Anime)
 - [Pornhub](https://www.pornhub.com/)
 	* pornhub (Video Data)
