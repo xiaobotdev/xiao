@@ -85,11 +85,10 @@ don't grant that permission.
 
 
 ## Fun Information
-- 500+ Commands
-- 26,000+ lines of JavaScript
+- 500+ commands
+- 27,000+ lines of JavaScript
 - 61,000+ lines of JSON data
 - 3 years of development
-- 4,000+ commits
 
 ## Installing
 
