@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { stripIndent } = require('common-tags');
+const { html } = require('common-tags');
 
 module.exports = class PoemCommand extends Command {
 	constructor(client) {
@@ -40,7 +40,7 @@ module.exports = class PoemCommand extends Command {
 			const { body } = await request.get(`https://poetrydb.org/author,title/${author};${title}`);
 			if (body.status === 404) return msg.say('Could not find any results.');
 			const data = body[0];
-			return msg.say(stripIndent`
+			return msg.say(html`
 				**${data.title}** by **${data.author}**
 				${data.lines.join('\n')}
 			`);
