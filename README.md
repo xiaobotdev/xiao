@@ -232,7 +232,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 508
+Total: 509
 
 ### Utility:
 
@@ -566,6 +566,7 @@ Total: 508
 * **apple-engraving:** Engraves the text of your choice onto an Apple product.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
+* **blur:** Draws an image or a user's avatar but blurred.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **certificate:** Sends a certificate of excellence with the name and reason of your choice.
 * **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.

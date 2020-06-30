@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "117.4.1",
+	"version": "117.5.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -54,6 +54,7 @@
 		"pokersolver": "^2.1.3",
 		"random-js": "^2.1.0",
 		"rss-parser": "^3.8.0",
+		"stackblur-canvas": "^2.3.0",
 		"winston": "^3.3.3"
 	},
 	"optionalDependencies": {
