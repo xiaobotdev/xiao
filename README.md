@@ -86,7 +86,7 @@ don't grant that permission.
 
 ## Fun Information
 - 500+ Commands
-- 25,000+ lines of JavaScript
+- 26,000+ lines of JavaScript
 - 61,000+ lines of JSON data
 - 3 years of development
 - 4,000+ commits
@@ -232,7 +232,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 510
+Total: 511
 
 ### Utility:
 
@@ -256,6 +256,7 @@ Total: 510
 * **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
 * **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
 * **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
+* **generate-fun-information:** Generates the "Fun Information" for Xiao's README. (Owner-Only)
 * **generate-process-env:** Generates a backup list of Xiao's `process.env`. (Owner-Only)
 * **ip:** Responds with the IP address the bot's server is running on. (Owner-Only)
 * **shutdown:** Shuts down the bot. (Owner-Only)
