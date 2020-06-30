@@ -232,7 +232,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 509
+Total: 510
 
 ### Utility:
 
@@ -534,6 +534,7 @@ Total: 509
 * **roulette:** Play a game of roulette.
 * **slots:** Play a game of slots.
 * **sorting-hat:** Take a quiz to determine your Hogwarts house.
+* **the-game:** If you think about the game, you lose.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **waldo:** Try to find Waldo with spoiler tags!
 * **whos-that-pokemon:** Guess who that Pokémon is.
@@ -619,7 +620,7 @@ Total: 509
 * **undertale:** Sends a text box from Undertale with the quote and character of your choice.
 * **you-died:** Sends a "You Died" screen over an image or a user's avatar.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
-* **yu-gi-oh-token:** Draws a user's avatar over a blank Yu-Gi-Oh! Token card.
+* **yu-gi-oh-token:** Draws an image or a user's avatar over a blank Yu-Gi-Oh! Token card.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Avatar Manipulation:
@@ -663,7 +664,7 @@ Total: 509
 * **drakeposting:** Sends a "Drakeposting" meme with the text of your choice.
 * **edd-facts-book:** Sends a "Double D's Facts Book" meme with the fact of your choice.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
-* **for-five-hours:** 'Sends an "I've looked at this for 5 hours now" meme with the image of your choice.
+* **for-five-hours:** Sends an "I've looked at this for 5 hours now" meme with the image of your choice.
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
@@ -803,7 +804,7 @@ Total: 509
 * **punch:** Punches a user.
 * **slap:** Slaps a user.
 * **sleep:** Puts a user to sleep.
-* **smiles:** Smiles at a user.
+* **smile:** Smiles at a user.
 * **wake-up:** Wakes up a user.
 * **wave:** Waves at a user.
 * **wink:** Winks at a user.
@@ -1343,6 +1344,7 @@ here.
 	* gun (Concept)
 	* hands (Concept)
 	* hentai (Original Subreddit List)
+	* if-those-kids-could-read (Concept)
 	* like (Concept)
 	* pills (Concept)
 	* pogchamp (Concept)
