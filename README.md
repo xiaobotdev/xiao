@@ -231,7 +231,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 512
+Total: 513
 
 ### Utility:
 
@@ -463,6 +463,7 @@ Total: 512
 * **osu:** Responds with information on an osu! user.
 * **paladins:** Responds with information on a Paladins player.
 * **periodic-table:** Finds an element on the periodic table.
+* **poem:** Searches for poems by a specific author.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **pornhub:** Searches Pornhub for your query. (NSFW)
 * **recipe:** Searches for recipes based on your query.
@@ -1379,6 +1380,8 @@ here.
 	* communist ([Image](https://www.pngfuel.com/free-png/osnol))
 - [pngimg.com](https://pngimg.com/)
 	* thug-life ([Image](http://pngimg.com/download/58231))
+- [PoetryDB](https://poetrydb.org/index.html)
+	* poem ([API](https://github.com/thundercomb/poetrydb/blob/master/README.md))
 - [Pokemon Fusion](https://pokemon.alexonsager.net/)
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
