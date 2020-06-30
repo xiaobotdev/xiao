@@ -60,4 +60,3 @@ module.exports = class SquishCommand extends Command {
 		});
 	}
 };
-};
