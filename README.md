@@ -231,7 +231,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 514
+Total: 515
 
 ### Utility:
 
@@ -670,6 +670,7 @@ Total: 514
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
+* **i-fear-no-man:** Sends a "I fear no man" meme with the text of your choice.
 * **if-those-kids-could-read:** Sends a "If those kids could read, they'd be very upset" meme with the text of your choice.
 * **illegal:** Makes President Trump make your text illegal.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
@@ -1352,6 +1353,7 @@ here.
 	* gun (Concept)
 	* hands (Concept)
 	* hentai (Original Subreddit List)
+	* i-fear-no-man (Concept)
 	* if-those-kids-could-read (Concept)
 	* like (Concept)
 	* pills (Concept)
@@ -1599,6 +1601,7 @@ here.
 	* usps-tracking ([API](https://www.usps.com/business/web-tools-apis/))
 - [Valve](https://www.valvesoftware.com/en/)
 	* fact-core ([Original "Portal 2" Game](http://www.thinkwithportals.com/))
+	* i-fear-no-man ([Image, Original "Team Fortress 2" Game](https://www.teamfortress.com/))
 	* oracle-turret ([Original "Portal 2" Game](http://www.thinkwithportals.com/))
 - [vician](https://www.123rf.com/profile_vician)
 	* rip ([Image](https://www.123rf.com/profile_vician?mediapopup=13181623))
