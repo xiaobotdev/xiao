@@ -9,7 +9,6 @@ module.exports = class SubredditCommand extends SubredditCommandBase {
 			memberName: 'subreddit',
 			description: 'Responds with a random post from a subreddit.',
 			clientPermissions: ['EMBED_LINKS'],
-			patterns: [/^r\/(.+)/i],
 			getIcon: true,
 			args: [
 				{

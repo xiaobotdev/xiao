@@ -376,6 +376,7 @@ Total: 513
 
 ### Single Response:
 
+* **can-you-not:** Can YOU not?
 * **cave:** Sends a Minecraft cave that blends in with the chat.
 * **dark-light:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
@@ -397,7 +398,6 @@ Total: 513
 
 ### Automatic Response:
 
-* **can-you-not:** Can YOU not?
 * **no-u:** no u
 * **unflip:** Unflips a flipped table.
 
@@ -819,11 +819,8 @@ nonetheless.
 - Leave messages are automatically sent to any channel that recieves welcome messages. These can be turned off with [an option](#options).
 - In Xiao's home server, Xiao posts a random meme from Reddit every hour using a webhook.
 - Some commands will automatically run when a certain phrase is said in any message, regardless of if the command itself was called or not. These are:
-	* Saying "can you not" or "can u not" runs `can-you-not`.
 	* Saying "no u" runs `no-u`.
 	* Saying "(╯°□°）╯︵ ┻━┻" runs `unflip`.
-	* Saying "r/subredditnamehere" runs `subreddit`. Obviously, replace "subbreditnamehere" with the name of the subreddit.
-	* Starting a message with "clevs" or "cleverbot" runs `cleverbot` using the text after either word as the text.
 
 ## Licensing
 

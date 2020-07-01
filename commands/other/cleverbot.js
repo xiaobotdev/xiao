@@ -27,8 +27,7 @@ module.exports = class CleverbotCommand extends Command {
 					prompt: 'What do you want to say to Cleverbot?',
 					type: 'string'
 				}
-			],
-			patterns: [/^(clevs|cleverbot) (.+)/i]
+			]
 		});
 
 		this.convos = new Map();
