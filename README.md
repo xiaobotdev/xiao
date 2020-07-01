@@ -231,7 +231,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 515
+Total: 513
 
 ### Utility:
 
@@ -398,9 +398,7 @@ Total: 515
 ### Automatic Response:
 
 * **can-you-not:** Can YOU not?
-* **kazuma-kazuma:** Hai, Kazuma desu.
 * **no-u:** no u
-* **suicide-hotline:** Responds with the phone number for the Suicide Hotline.
 * **unflip:** Unflips a flipped table.
 
 ### Events:
@@ -822,9 +820,7 @@ nonetheless.
 - In Xiao's home server, Xiao posts a random meme from Reddit every hour using a webhook.
 - Some commands will automatically run when a certain phrase is said in any message, regardless of if the command itself was called or not. These are:
 	* Saying "can you not" or "can u not" runs `can-you-not`.
-	* Saying "Kazuma, Kazuma!" runs `kazuma-kazuma`.
 	* Saying "no u" runs `no-u`.
-	* Saying "kms", "kill myself", or using a custom emote named "kms" runs `suicide-hotline`.
 	* Saying "(╯°□°）╯︵ ┻━┻" runs `unflip`.
 	* Saying "r/subredditnamehere" runs `subreddit`. Obviously, replace "subbreditnamehere" with the name of the subreddit.
 	* Starting a message with "clevs" or "cleverbot" runs `cleverbot` using the text after either word as the text.
@@ -1220,7 +1216,6 @@ here.
 	* axis-cult (Original Anime)
 	* axis-cult-sign-up (Original Anime)
 	* hat (Megumin Hat Original Anime)
-	* kazuma-kazuma (Original Anime)
 - [Latlmes](https://www.latlmes.com/)
 	* latlmes (API)
 - [LMGTFY](https://lmgtfy.com/)
@@ -1298,8 +1293,6 @@ here.
 	* dec-talk ([Original "Moonbase Alpha" Game](https://store.steampowered.com/app/39000/Moonbase_Alpha/))
 	* gravity ([Planet Gravity Data](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html))
 	* nasa ([NASA Image and Video Library API](https://api.nasa.gov/))
-- [National Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/)
-	* suicide-hotline (Phone Number)
 - [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc)
 	* spongebob-time-card ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
 - [NBC](https://www.nbc.com/)
