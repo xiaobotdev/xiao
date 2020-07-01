@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
+const { pixelize } = require('../../util/Canvas');
 
 module.exports = class PixelizeCommand extends Command {
 	constructor(client) {
@@ -32,11 +33,7 @@ module.exports = class PixelizeCommand extends Command {
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
-			ctx.imageSmoothingEnabled = false;
-			const width = canvas.width * 0.15;
-			const height = canvas.height * 0.15;
-			ctx.drawImage(data, 0, 0, width, height);
-			ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+			pixelize(ctx, 0.15, 0, 0, canvas.width, canvas.height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'pixelize.png' }] });

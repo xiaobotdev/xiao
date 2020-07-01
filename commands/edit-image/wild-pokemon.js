@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { centerImagePart, greyscale } = require('../../util/Canvas');
+const { centerImagePart, greyscale, pixelize } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGb.ttf'), { family: 'Pokemon GB' });
 
 module.exports = class WildPokemonCommand extends Command {
@@ -61,11 +61,8 @@ module.exports = class WildPokemonCommand extends Command {
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.imageSmoothingEnabled = false;
 			const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
-			ctx.drawImage(data, x, y, width * 0.30, height * 0.30);
-			ctx.drawImage(canvas, x, y, width * 0.30, height * 0.30, x, y, width, height);
-			ctx.imageSmoothingEnabled = true;
+			pixelize(ctx, 0.30, x, y, width, height);
 			greyscale(ctx, x, y, width, height);
 			ctx.textBaseline = 'top';
 			ctx.font = '16px Pokemon GB';

@@ -117,6 +117,14 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
+	static pixelize(ctx, level, x, y, width, height) {
+		ctx.imageSmoothingEnabled = false;
+		ctx.drawImage(data, x, y, width * level, height * level);
+		ctx.drawImage(canvas, x, y, width * level, height * level, x, y, width, height);
+		ctx.imageSmoothingEnabled = true;
+		return ctx;
+	}
+
 	static hasAlpha(image) {
 		const canvas = createCanvas(image.width, image.height);
 		const ctx = canvas.getContext('2d');
