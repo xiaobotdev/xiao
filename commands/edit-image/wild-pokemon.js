@@ -4,8 +4,6 @@ const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart, greyscale } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGb.ttf'), { family: 'Pokemon GB' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGbJapanHr.ttf'), { family: 'Pokemon GB' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGbJapanKt.ttf'), { family: 'Pokemon GB' });
 
 module.exports = class WildPokemonCommand extends Command {
 	constructor(client) {
