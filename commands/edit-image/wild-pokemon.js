@@ -65,8 +65,8 @@ module.exports = class WildPokemonCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.imageSmoothingEnabled = false;
 			const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
-			ctx.drawImage(data, x, y, width * 0.25, height * 0.25);
-			ctx.drawImage(canvas, x, y, width * 0.25, height * 0.25, x, y, width, height);
+			ctx.drawImage(data, x, y, width * 0.35, height * 0.35);
+			ctx.drawImage(canvas, x, y, width * 0.35, height * 0.35, x, y, width, height);
 			ctx.imageSmoothingEnabled = true;
 			greyscale(ctx, x, y, width, height);
 			ctx.textBaseline = 'top';
