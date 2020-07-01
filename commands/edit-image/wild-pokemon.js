@@ -62,7 +62,7 @@ module.exports = class WildPokemonCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
-			pixelize(ctx, 0.30, x, y, width, height);
+			pixelize(ctx, canvas, data, 0.30, x, y, width, height);
 			greyscale(ctx, x, y, width, height);
 			ctx.textBaseline = 'top';
 			ctx.font = '16px Pokemon GB';

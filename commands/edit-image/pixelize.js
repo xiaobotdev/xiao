@@ -33,7 +33,7 @@ module.exports = class PixelizeCommand extends Command {
 			const data = await loadImage(body);
 			const canvas = createCanvas(data.width, data.height);
 			const ctx = canvas.getContext('2d');
-			pixelize(ctx, 0.15, 0, 0, canvas.width, canvas.height);
+			pixelize(ctx, canvas, data, 0.15, 0, 0, canvas.width, canvas.height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'pixelize.png' }] });

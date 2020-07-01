@@ -117,9 +117,9 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
-	static pixelize(ctx, level, x, y, width, height) {
+	static pixelize(ctx, canvas, image, level, x, y, width, height) {
 		ctx.imageSmoothingEnabled = false;
-		ctx.drawImage(data, x, y, width * level, height * level);
+		ctx.drawImage(image, x, y, width * level, height * level);
 		ctx.drawImage(canvas, x, y, width * level, height * level, x, y, width, height);
 		ctx.imageSmoothingEnabled = true;
 		return ctx;
