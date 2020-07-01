@@ -85,11 +85,11 @@ module.exports = class SpidermanPointingCommand extends Command {
 			ctx.font = `${fontSize}px Noto`;
 		}
 		const lines2 = await wrapText(ctx, second, 290);
-		const topMost = 190 - (((fontSize * lines2.length) / 2) + ((10 * (lines2.length - 1)) / 2));
+		const topMost2 = 190 - (((fontSize * lines2.length) / 2) + ((10 * (lines2.length - 1)) / 2));
 		for (let i = 0; i < lines2.length; i++) {
 			ctx.strokeStyle = 'black';
 			ctx.lineWidth = 5;
-			const height = topMost + ((fontSize + 10) * i);
+			const height = topMost2 + ((fontSize + 10) * i);
 			ctx.strokeText(lines2[i], 596, height);
 			ctx.fillText(lines2[i], 596, height);
 		}
