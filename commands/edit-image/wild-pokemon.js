@@ -68,6 +68,7 @@ module.exports = class WildPokemonCommand extends Command {
 			ctx.drawImage(data, x, y, width * 0.15, height * 0.15);
 			ctx.drawImage(canvas, x, y, width * 0.15, height * 0.15, x, y, width, height);
 			ctx.imageSmoothingEnabled = true;
+			greyscale(ctx, x, y, width, height);
 			ctx.textBaseline = 'top';
 			ctx.font = '16px Pokemon GB';
 			ctx.fillText(name.toUpperCase(), 110, 203, 215);
