@@ -84,14 +84,14 @@ module.exports = class SpidermanPointingCommand extends Command {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const lines = await wrapText(ctx, second, 290);
-		const topMost = 190 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
-		for (let i = 0; i < lines.length; i++) {
+		const lines2 = await wrapText(ctx, second, 290);
+		const topMost = 190 - (((fontSize * lines2.length) / 2) + ((10 * (lines2.length - 1)) / 2));
+		for (let i = 0; i < lines2.length; i++) {
 			ctx.strokeStyle = 'black';
 			ctx.lineWidth = 5;
 			const height = topMost + ((fontSize + 10) * i);
-			ctx.strokeText(lines[i], 596, height);
-			ctx.fillText(lines[i], 596, height);
+			ctx.strokeText(lines2[i], 596, height);
+			ctx.fillText(lines2[i], 596, height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spiderman-pointing.png' }] });
 	}
