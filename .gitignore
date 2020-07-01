@@ -13,4 +13,3 @@ config.json
 command-leaderboard.json
 
 # In-Development Commands
-commands/games-sp/puyo-puyo.js

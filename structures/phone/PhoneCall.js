@@ -20,8 +20,8 @@ module.exports = class PhoneCall {
 			await this.origin.send(`☎️ Admin call started with **${this.recipient.guild.name}**.`);
 			await this.recipient.send(`☎️ An **ADMIN** call from **${this.origin.guild.name}** has begun.`);
 		} else {
-			await this.origin.send(`☎️ Calling **${this.recipient.guild.name}**...`);
-			await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name}**. Pick up?`);
+			await this.origin.send(`☎️ Calling **${this.recipient.guild.name} (${this.recipient.id})**...`);
+			await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name} (${this.origin.id})**. Pick up?`);
 			const validation = await verify(this.recipient, null);
 			if (!validation) {
 				await this.hangup('declined', validation);
