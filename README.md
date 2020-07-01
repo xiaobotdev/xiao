@@ -231,7 +231,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 513
+Total: 514
 
 ### Utility:
 
@@ -690,6 +690,7 @@ Total: 513
 * **sonic-says:** Sends a "Sonic Says" meme with the quote of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
 * **sos:** Sends a "Esther Verkest's Help Sign" comic with the text of your choice.
+* **spiderman-pointing:** Sends a "Spiderman Pointing at Spiderman" meme with the text of your choice.
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
 * **this-guy:** Draws an image or a user's avatar over the "Get a load of this guy" meme.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
@@ -1080,6 +1081,7 @@ here.
 	* scroll-of-truth ([Noto Font](https://www.google.com/get/noto/))
 	* sonic-says ([Noto Font](https://www.google.com/get/noto/))
 	* sos ([Noto Font](https://www.google.com/get/noto/))
+	* spiderman-pointing ([Noto Font](https://www.google.com/get/noto/))
 	* spongebob-burn ([Noto Font](https://www.google.com/get/noto/))
 	* steam-card ([Noto Font](https://www.google.com/get/noto/))
 	* steam-now-playing ([Noto Font](https://www.google.com/get/noto/))
@@ -1245,6 +1247,8 @@ here.
 	* box-choosing ([Original Translation](https://store.steampowered.com/app/526490/Higurashi_When_They_Cry_Hou__Ch4_Himatsubushi/))
 - [Martin Handford](https://www.candlewick.com/authill.asp?b=Author&m=bio&id=1497&pix=y)
 	* waldo (Original "Where's Wally?" Book Series)
+- [Marvel](https://www.marvel.com/)
+	* spiderman-pointing ([Image, Original "Spiderman" Comic](https://spiderman.marvelhq.com/))
 - [Marvelous](http://www.marv.jp/)
 	* give-flower ([Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
 	* xiao ([Images, Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
@@ -1356,6 +1360,7 @@ here.
 	* simp (Concept)
 	* sonic-says (Concept)
 	* speed-limit (Concept)
+	* spiderman-pointing (Concept)
 	* thicc (Concept)
 	* undertale (Concept)
 	* wild-pokemon (Concept)
