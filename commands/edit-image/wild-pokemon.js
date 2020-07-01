@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { centerImagePart } = require('../../util/Canvas');
+const { centerImagePart, greyscale } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGb.ttf'), { family: 'Pokemon GB' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGbJapanHr.ttf'), { family: 'Pokemon GB' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGbJapanKt.ttf'), { family: 'Pokemon GB' });
@@ -11,7 +11,7 @@ module.exports = class WildPokemonCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wild-pokemon',
-			aliases: ['wild-pokemon-appears', 'wild-appears', 'wild-pokémon', 'wild-pokémon-appears'],
+			aliases: ['wild-pokemon-appears', 'wild-appears', 'wild-pokémon', 'wild-pokémon-appears', 'wild-pkmn'],
 			group: 'edit-image',
 			memberName: 'wild-pokemon',
 			description: 'Draws an image or a user\'s avatar over a wild Pokémon appearance.',
@@ -63,8 +63,11 @@ module.exports = class WildPokemonCommand extends Command {
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
+			ctx.imageSmoothingEnabled = false;
 			const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
-			ctx.drawImage(data, x, y, width, height);
+			ctx.drawImage(data, x, y, width * 0.15, height * 0.15);
+			ctx.drawImage(canvas, x, y, width * 0.15, height * 0.15, x, y, width, height);
+			ctx.imageSmoothingEnabled = true;
 			ctx.textBaseline = 'top';
 			ctx.font = '16px Pokemon GB';
 			ctx.fillText(name.toUpperCase(), 110, 203, 215);
