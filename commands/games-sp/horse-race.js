@@ -5,7 +5,7 @@ const { stripIndents } = require('common-tags');
 const { shuffle, randomRange } = require('../../util/Util');
 const { drawImageWithTint } = require('../../util/Canvas');
 const horses = require('../../assets/json/horse-race');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Paladins-nl8P.otf'), { family: 'Paladins' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Paladins.otf'), { family: 'Paladins' });
 const colors = ['gold', 'silver', '#cd7f32'];
 
 module.exports = class HorseRaceCommand extends Command {

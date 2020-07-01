@@ -3,7 +3,7 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { greyscale } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'CoffinStone-vmmZL.otf'), { family: 'Coffin Stone' });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'CoffinStone.otf'), { family: 'Coffin Stone' });
 
 module.exports = class RipCommand extends Command {
 	constructor(client) {
