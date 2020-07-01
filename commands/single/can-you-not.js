@@ -7,7 +7,7 @@ module.exports = class CanYouNotCommand extends Command {
 			aliases: ['can-u-not'],
 			group: 'single',
 			memberName: 'can-you-not',
-			description: 'Can YOU not?',
+			description: 'Can YOU not?'
 		});
 	}
 
