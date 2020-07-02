@@ -161,6 +161,18 @@ simply switch to basic text.
 * `PORTAL` is used in `portal-send`.
 * `FLANKER`, `FRONT_LINE`, `SUPPORT`, and `DAMAGE` are used in `paladins`.
 
+### Dating Info
+
+This is the hilarious section that determines what comes out of the
+`dating` command.
+
+* `DATING_ALBUM_ID` is an Imgur album ID (see #imgur-album-ids) that includes the photos you want to send in the command.
+* `DATING_NAME` is the name you want to go by in the command.
+* `DATING_AGE` is the age you want to display in the command.
+* `DATING_TAG` is the Discord tag (ex. dragonfire535#8081) you want to display in the command.
+* `DATING_ORIENTATION` is either "girls" if you want girls, "boys" if you want boys, or "both" if you don't care.
+* `DATING_SERIOUS` is a boolean (true/false) value that determines if you want to be serious about this or not. Really want to meet someone? Set it to "true".
+
 ### API Keys, IDs, and Secrets
 
 Here's where things get LONG. If you're greeted with a log-in page
@@ -231,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 513
+Total: 514
 
 ### Utility:
 
@@ -779,6 +791,7 @@ Total: 513
 ### Other:
 
 * **cleverbot:** Talk to Cleverbot. (Owner-Only)
+* **dating:** Find the person of your dreams with this dating system!
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
