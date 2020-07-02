@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 514
+Total: 515
 
 ### Utility:
 
@@ -615,6 +615,7 @@ Total: 514
 * **police-tape:** Draws police tape over an image or a user's avatar.
 * **rainbow:** Draws a rainbow over an image or a user's avatar.
 * **rejected:** Draws a "rejected" stamp over an image or a user's avatar.
+* **resize:** Draws an image or a user's avatar resized to the size you want.
 * **robohash:** Creates a robot based on the text you provide.
 * **sepia:** Draws an image or a user's avatar in sepia.
 * **shields-io-badge:** Creates a badge from shields.io.
