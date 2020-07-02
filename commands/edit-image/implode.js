@@ -2,20 +2,26 @@ const Command = require('../../structures/Command');
 const gm = require('gm').subClass({ imageMagick: true });
 const request = require('node-superfetch');
 
-module.exports = class MagikCommand extends Command {
+module.exports = class ImplodeCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'magik',
-			aliases: ['magick', 'liquid-rescale'],
+			name: 'implode',
 			group: 'edit-image',
-			memberName: 'magik',
-			description: 'Draws an image or a user\'s avatar but with liquid rescale from ImageMagick.',
+			memberName: 'implode',
+			description: 'Draws an image or a user\'s avatar but imploded.',
 			throttling: {
 				usages: 1,
 				duration: 60
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
+				{
+					key: 'level',
+					prompt: 'What level would you like to use? From 1-100.',
+					type: 'integer',
+					min: 1,
+					max: 100
+				},
 				{
 					key: 'image',
 					prompt: 'What image would you like to edit?',
@@ -26,17 +32,15 @@ module.exports = class MagikCommand extends Command {
 		});
 	}
 
-	async run(msg, { image }) {
+	async run(msg, { level, image }) {
 		try {
 			const { body } = await request.get(image);
 			const magik = gm(body);
-			magik.out('-liquid-rescale');
-			magik.out('50%');
-			magik.implode(0.25);
+			magik.implode(level / 100);
 			magik.setFormat('png');
 			const attachment = await this.toBuffer(magik);
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'magik.png' }] });
+			return msg.say({ files: [{ attachment, name: 'implode.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

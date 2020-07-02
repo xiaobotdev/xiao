@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 515
+Total: 520
 
 ### Utility:
 
@@ -592,6 +592,7 @@ Total: 515
 * **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
+* **emboss:** Draws an image or a user's avatar but embossed.
 * **fire-frame:** Draws a fiery border over an image or a user's avatar.
 * **fish-eye:** Draws an image or a user's avatar but with a fish-eye lens.
 * **frame:** Draws a frame around an image or a user's avatar.
@@ -604,13 +605,16 @@ Total: 515
 * **highway-sign:** Sends a highway sign sign with the text of your choice.
 * **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
+* **implode:** Draws an image or a user's avatar but imploded.
 * **invert:** Draws an image or a user's avatar but inverted.
 * **jeopardy-question:** Sends a Jeopardy Question with the text of your choice.
-* **magik:** Draws an image or a user's avatar but with liquid rescale from ImageMagick.
+* **liquid-rescale:** Draws an image or a user's avatar but with liquid rescale from ImageMagick.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
 * **newspaper:** Creates a fake newspaper with the headline and body of your choice.
+* **noise:** Draws an image or a user's avatar but with noise.
+* **oil-painting:** Draws an image or a user's avatar but with oil paints.
 * **pixelize:** Draws an image or a user's avatar pixelized.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
 * **police-tape:** Draws police tape over an image or a user's avatar.
@@ -629,6 +633,7 @@ Total: 515
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
 * **subtitle:** Adds subtitles to an image.
+* **swirl:** Draws an image or a user's avatar but swirled.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **undertale:** Sends a text box from Undertale with the quote and character of your choice.
