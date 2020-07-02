@@ -14,6 +14,13 @@ module.exports = class EmbossCommand extends Command {
 				duration: 60
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'ImageMagick',
+					url: 'https://imagemagick.org/index.php',
+					reason: 'Image Manipulation'
+				}
+			],
 			args: [
 				{
 					key: 'image',
