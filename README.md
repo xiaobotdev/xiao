@@ -581,6 +581,7 @@ Total: 515
 * **blur:** Draws an image or a user's avatar but blurred.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **certificate:** Sends a certificate of excellence with the name and reason of your choice.
+* **charcoal:** Draws an image or a user's avatar but with charcoal.
 * **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
@@ -621,6 +622,7 @@ Total: 515
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **simp:** Draws a "simp" stamp over an image or a user's avatar.
+* **sketch:** Draws an image or a user's avatar but sketched.
 * **snapcode:** Responds with the Snapcode of a Snapchat user.
 * **speed-limit:** Sends a Speed Limit sign with the limit of your choice.
 * **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
