@@ -14,6 +14,13 @@ module.exports = class CharcoalCommand extends Command {
 				duration: 60
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			credit: [
+				{
+					name: 'ImageMagick',
+					url: 'https://imagemagick.org/index.php',
+					reason: 'Image Manipulation'
+				}
+			],
 			args: [
 				{
 					key: 'image',
