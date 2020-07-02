@@ -17,9 +17,9 @@ module.exports = class SwirlCommand extends Command {
 			args: [
 				{
 					key: 'degrees',
-					prompt: 'What degrees would you like to use? From 1-360.',
+					prompt: 'What degrees would you like to use? From -360-+360.',
 					type: 'integer',
-					min: 1,
+					min: -360,
 					max: 360
 				},
 				{
