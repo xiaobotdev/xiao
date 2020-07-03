@@ -344,7 +344,6 @@ Total: 523
 
 * **ai-artwork:** Responds with randomly generated artwork.
 * **ai-cat:** Responds with a randomly generated cat.
-* **ai-food:** Responds with a randomly generated food.
 * **ai-fursona:** Responds with a randomly generated fursona.
 * **ai-horse:** Responds with a randomly generated horse.
 * **ai-person:** Responds with a randomly generated person.
@@ -357,6 +356,7 @@ Total: 523
 * **dog:** Responds with a random dog image.
 * **duck:** Responds with a random duck image.
 * **fidget:** Responds with a random image of Fidget.
+* **food:** Responds with a randomly generated food.
 * **fox:** Responds with a random fox image.
 * **hentai:** Responds with a random hentai image. (NSFW)
 * **interesting:** Responds with a random interesting image.
@@ -1578,7 +1578,7 @@ here.
 - [This Person Does Not Exist](https://thispersondoesnotexist.com/)
 	* ai-person (API)
 - [This Snack Does Not Exist](https://thissnackdoesnotexist.com/)
-	* ai-food (API)
+	* food (API)
 - [This Vessel Does Not Exist](https://thisvesseldoesnotexist.com/#/)
 	* ai-vase (API)
 - [This Waifu Does Not Exist](https://www.thiswaifudoesnotexist.net/)
