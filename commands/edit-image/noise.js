@@ -14,7 +14,7 @@ module.exports = class NoiseCommand extends Command {
 			details: `**Types:** ${types.join(', ')}`,
 			throttling: {
 				usages: 1,
-				duration: 60
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [

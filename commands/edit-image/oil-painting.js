@@ -12,7 +12,7 @@ module.exports = class OilPaintingCommand extends Command {
 			description: 'Draws an image or a user\'s avatar but with oil paints.',
 			throttling: {
 				usages: 1,
-				duration: 60
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [

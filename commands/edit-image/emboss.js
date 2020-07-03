@@ -11,7 +11,7 @@ module.exports = class EmbossCommand extends Command {
 			description: 'Draws an image or a user\'s avatar but embossed.',
 			throttling: {
 				usages: 1,
-				duration: 60
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [

@@ -11,7 +11,7 @@ module.exports = class CharcoalCommand extends Command {
 			description: 'Draws an image or a user\'s avatar but with charcoal.',
 			throttling: {
 				usages: 1,
-				duration: 60
+				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
