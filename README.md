@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 522
+Total: 523
 
 ### Utility:
 
@@ -683,6 +683,7 @@ Total: 522
 * **distracted-boyfriend:** Draws three user's avatars over the "Distracted Boyfriend" meme.
 * **drakeposting:** Sends a "Drakeposting" meme with the text of your choice.
 * **edd-facts-book:** Sends a "Double D's Facts Book" meme with the fact of your choice.
+* **enslaved:** Sends a "Ah yes, enslaved" meme with the image and text of your choice.
 * **food-broke:** Draws a user's avatar over the "Food Broke" meme.
 * **for-five-hours:** Sends an "I've looked at this for 5 hours now" meme with the image of your choice.
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
@@ -1076,6 +1077,7 @@ here.
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
 	* drakeposting ([Noto Font](https://www.google.com/get/noto/))
 	* edd-facts-book ([Noto Font](https://www.google.com/get/noto/))
+	* enslaved ([Noto Font](https://www.google.com/get/noto/))
 	* genie-rules ([Noto Font](https://www.google.com/get/noto/))
 	* google ([Custom Search API](https://cse.google.com/cse/all))
 	* google-autofill (Autofill API)
@@ -1370,6 +1372,7 @@ here.
 	* alert (Concept)
 	* boardroom-meeting (Concept)
 	* dislike (Concept)
+	* enslaved (Concept)
 	* for-five-hours (Concept)
 	* gun (Concept)
 	* hands (Concept)
