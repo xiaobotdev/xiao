@@ -73,33 +73,33 @@ module.exports = class MarioBrosViewsCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.font = '36px Noto';
 		let fontSize = 36;
-		while (ctx.measureText(mario).width > 765) {
+		while (ctx.measureText(mario).width > 900) {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const marioLines = await wrapText(ctx, mario, 170);
+		const marioLines = await wrapText(ctx, mario, 200);
 		const marioTopMost = 450 - (((fontSize * marioLines.length) / 2) + ((20 * (marioLines.length - 1)) / 2));
 		for (let i = 0; i < marioLines.length; i++) {
 			ctx.strokeStyle = 'black';
 			ctx.lineWidth = 5;
 			const height = marioTopMost + ((fontSize + 20) * i);
-			ctx.strokeText(marioLines[i], 235, height);
-			ctx.fillText(marioLines[i], 235, height);
+			ctx.strokeText(marioLines[i], 205, height);
+			ctx.fillText(marioLines[i], 205, height);
 		}
 		ctx.font = '36px Noto';
 		fontSize = 36;
-		while (ctx.measureText(luigi).width > 765) {
+		while (ctx.measureText(luigi).width > 900) {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const luigiLines = await wrapText(ctx, luigi, 170);
+		const luigiLines = await wrapText(ctx, luigi, 200);
 		const luigiTopMost = 450 - (((fontSize * luigiLines.length) / 2) + ((20 * (luigiLines.length - 1)) / 2));
 		for (let i = 0; i < luigiLines.length; i++) {
 			ctx.strokeStyle = 'black';
 			ctx.lineWidth = 5;
 			const height = luigiTopMost + ((fontSize + 20) * i);
-			ctx.strokeText(luigiLines[i], 420, height);
-			ctx.fillText(luigiLines[i], 420, height);
+			ctx.strokeText(luigiLines[i], 390, height);
+			ctx.fillText(luigiLines[i], 390, height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'mario-bros-views.png' }] });
 	}
