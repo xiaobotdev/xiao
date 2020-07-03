@@ -12,7 +12,7 @@ module.exports = class LiquidRescaleCommand extends Command {
 			description: 'Draws an image or a user\'s avatar but with liquid rescale from ImageMagick.',
 			throttling: {
 				usages: 1,
-				duration: 60
+				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
