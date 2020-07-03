@@ -98,8 +98,8 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			ctx.strokeStyle = 'black';
 			ctx.lineWidth = 5;
 			const height = luigiTopMost + ((fontSize + 20) * i);
-			ctx.strokeText(luigiLines[i], 390, height);
-			ctx.fillText(luigiLines[i], 390, height);
+			ctx.strokeText(luigiLines[i], 450, height);
+			ctx.fillText(luigiLines[i], 450, height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'mario-bros-views.png' }] });
 	}
