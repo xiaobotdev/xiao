@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 523
+Total: 524
 
 ### Utility:
 
@@ -696,6 +696,7 @@ Total: 523
 * **like:** Sends an "Everyone Liked That" meme with the image of your choice.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
 * **look-at-this-photograph:** Draws an image or a user's avatar over Nickelback's photograph.
+* **mario-bros-views:** Sends a "Mario Bros. Views" meme with the text of your choice.
 * **meme-gen-classic:** Sends a meme with the text and background of your choice.
 * **meme-gen-modern:** Sends a meme with the text and image of your choice.
 * **my-collection-grows:** Sends a "My collection grows richer" Nekopara meme with the text of your choice.
@@ -1088,6 +1089,7 @@ here.
 	* illegal ([Noto Font](https://www.google.com/get/noto/))
 	* lisa-presentation ([Noto Font](https://www.google.com/get/noto/))
 	* map ([Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro))
+	* mario-bros-views ([Noto Font](https://www.google.com/get/noto/))
 	* meme-gen-modern ([Noto Font](https://www.google.com/get/noto/))
 	* new-password ([Noto Font](https://www.google.com/get/noto/))
 	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
@@ -1347,6 +1349,7 @@ here.
 	* nike-ad (Logo, Concept)
 - [Nintendo](https://www.nintendo.com/)
 	* challenger ([Original "Super Smash Bros." Game](https://www.smashbros.com/en_US/index.html))
+	* mario-bros-views ([Original "Super Mario Bros." Game](https://mario.nintendo.com/))
 	* smw-level ([Original "Super Mario World" Game](https://www.nintendo.co.jp/n02/shvc/mw/index.html))
 - [NotAWeebDev](https://github.com/NotAWeebDev/)
 	* triggered ([Image](https://github.com/NotAWeebDev/Misaki/blob/2e44f9efb467028dcbae5a2c9f836d2e99860b85/assets/images/plate_triggered.png))
@@ -1380,6 +1383,7 @@ here.
 	* i-fear-no-man (Concept)
 	* if-those-kids-could-read (Concept)
 	* like (Concept)
+	* mario-bros-views (Concept)
 	* pills (Concept)
 	* pogchamp (Concept)
 	* porn (Original Subreddit List)
