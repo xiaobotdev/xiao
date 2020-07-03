@@ -78,7 +78,7 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const marioLines = await wrapText(ctx, text, 381);
+		const marioLines = await wrapText(ctx, mario, 381);
 		const marioTopMost = 450 - (((fontSize * marioLines.length) / 2) + ((20 * (marioLines.length - 1)) / 2));
 		for (let i = 0; i < marioLines.length; i++) {
 			ctx.strokeStyle = 'black';
@@ -93,7 +93,7 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const luigiLines = await wrapText(ctx, text, 381);
+		const luigiLines = await wrapText(ctx, luigi, 381);
 		const luigiTopMost = 450 - (((fontSize * luigiLines.length) / 2) + ((20 * (luigiLines.length - 1)) / 2));
 		for (let i = 0; i < luigiLines.length; i++) {
 			ctx.strokeStyle = 'black';
