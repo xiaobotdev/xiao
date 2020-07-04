@@ -33,7 +33,7 @@ module.exports = class BalloonPopCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			const awaitedPlayers = await awaitPlayers(msg, playersCount);
+			const awaitedPlayers = await awaitPlayers(msg, playersCount, 2);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
@@ -47,7 +47,7 @@ module.exports = class BalloonPopCommand extends Command {
 				});
 			}
 			let loser = null;
-			let remains = players.size * 500;
+			let remains = players.size * 250;
 			let turns = 0;
 			const rotation = players.map(player => player.id);
 			while (!loser) {
@@ -62,14 +62,14 @@ module.exports = class BalloonPopCommand extends Command {
 					pump = await verify(msg.channel, user.user);
 				}
 				if (pump) {
-					remains -= randomRange(5, 100);
+					remains -= randomRange(10, 100);
 					const popped = Math.floor(Math.random() * remains);
 					if (popped <= 0) {
 						await msg.say('The balloon pops!');
 						loser = user;
 						break;
 					}
-					if (turns >= 10) {
+					if (turns >= 5) {
 						await msg.say(`${user.user} steps back!`);
 						turns = 0;
 						rotation.shift();
