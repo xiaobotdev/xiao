@@ -54,9 +54,9 @@ module.exports = class CatchCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.fillStyle = 'red';
 		ctx.font = '25px Noto';
-		ctx.fillText('EVERYONE CAUGHT IS A', 45, 165);
+		ctx.fillText('EVERYONE CAUGHT IS', 18, 165);
 		ctx.textAlign = 'center';
-		ctx.fillText(is.toUpperCase(), 186, 189);
+		ctx.fillText(is.toUpperCase(), 163, 202);
 		await msg.channel.send({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'catch', 'part-1.png')] });
 		await delay(time * 1000);
 		return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'part-2.png' }] });
