@@ -36,7 +36,7 @@ module.exports = class CharcoalCommand extends Command {
 		try {
 			const { body } = await request.get(image);
 			const magik = gm(body);
-			magik.charcoal(5);
+			magik.charcoal(1);
 			magik.setFormat('png');
 			const attachment = await this.toBuffer(magik);
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
