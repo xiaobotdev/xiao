@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 524
+Total: 525
 
 ### Utility:
 
@@ -511,6 +511,7 @@ Total: 524
 * **face:** Determines the race, gender, and age of a face.
 * **gender:** Determines the gender of a name.
 * **has-transparency:** Determines if an image has transparency in it.
+* **image-size:** Determines the size of an image.
 * **read-qr-code:** Reads a QR Code.
 * **scrabble-score:** Responds with the scrabble score of a word.
 * **severe-toxicity:** Determines the toxicity of text, but less sensitive to milder language.
