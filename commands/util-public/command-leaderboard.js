@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class CommandLeaderboardCommand extends Command {
 	constructor(client) {
@@ -46,7 +47,7 @@ module.exports = class CommandLeaderboardCommand extends Command {
 					positionsMoved = 1;
 				}
 				previousPts = command.uses;
-				return `**${i}.** ${command.name} (${command.uses} Use${command.uses === 1 ? '' : 's'})`;
+				return `**${i}.** ${command.name} (${formatNumber(command.uses)} Use${command.uses === 1 ? '' : 's'})`;
 			})
 			.slice((page - 1) * 10, page * 10);
 	}
