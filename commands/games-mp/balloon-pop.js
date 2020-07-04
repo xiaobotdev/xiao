@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
-const { randomRange, verify } = require('../../util/Util');
+const Collection = require('@discordjs/collection');
+const { randomRange, verify, awaitPlayers } = require('../../util/Util');
 
 module.exports = class BalloonPopCommand extends Command {
 	constructor(client) {
@@ -17,74 +18,72 @@ module.exports = class BalloonPopCommand extends Command {
 			],
 			args: [
 				{
-					key: 'opponent',
-					prompt: 'What user would you like to play against?',
-					type: 'user'
+					key: 'playersCount',
+					prompt: 'How many players are you expecting to have?',
+					type: 'integer',
+					min: 2,
+					max: 100
 				}
 			]
 		});
 	}
 
-	async run(msg, { opponent }) {
-		if (opponent.bot) return msg.reply('Bots may not be played against.');
-		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
+	async run(msg, { playersCount }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			await msg.say(`${opponent}, do you accept this challenge?`);
-			const verification = await verify(msg.channel, opponent);
-			if (!verification) {
+			const awaitedPlayers = await awaitPlayers(msg, playersCount);
+			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
-				return msg.say('Looks like they declined...');
+				return msg.say('Game could not be started...');
 			}
-			let userTurn = false;
-			let winner = null;
-			let remains = 500;
+			const players = new Collection();
+			for (const player of awaitedPlayers) {
+				players.set(player, {
+					pumps: 0,
+					id: player,
+					user: await this.client.users.fetch(player)
+				});
+			}
+			let loser = null;
+			let remains = players.size * 500;
 			let turns = 0;
-			let lastTurnTimeout = false;
-			while (!winner) {
-				const user = userTurn ? msg.author : opponent;
+			const rotation = players.map(player => player.id);
+			while (!loser) {
+				const user = players.get(rotation[0]);
 				let pump;
 				++turns;
 				if (turns === 1) {
-					await msg.say(`${user} pumps the balloon!`);
+					await msg.say(`${user.user} pumps the balloon!`);
 					pump = true;
 				} else {
-					await msg.say(`${user}, do you pump the balloon again?`);
-					pump = await verify(msg.channel, user);
+					await msg.say(`${user.user}, do you pump the balloon again?`);
+					pump = await verify(msg.channel, user.user);
 				}
 				if (pump) {
-					if (turns !== 1 && lastTurnTimeout) lastTurnTimeout = false;
-					remains -= randomRange(25, 75);
+					remains -= randomRange(5, 100);
 					const popped = Math.floor(Math.random() * remains);
 					if (popped <= 0) {
 						await msg.say('The balloon pops!');
-						winner = userTurn ? opponent : msg.author;
+						loser = user;
 						break;
 					}
-					if (turns >= 3) {
-						await msg.say(`${user} steps back!`);
+					if (turns >= 10) {
+						await msg.say(`${user.user} steps back!`);
 						turns = 0;
-						userTurn = !userTurn;
+						rotation.shift();
+						rotation.push(user.id);
 					}
 				} else {
-					if (pump !== 0 && lastTurnTimeout) lastTurnTimeout = false;
-					if (pump === 0) {
-						if (lastTurnTimeout) {
-							winner = 'time';
-							break;
-						} else {
-							lastTurnTimeout = true;
-						}
-					}
+					await msg.say(`${user.user} steps back!`);
 					turns = 0;
-					userTurn = !userTurn;
+					rotation.shift();
+					rotation.push(user.id);
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			if (winner === 'time') return msg.say('Game ended due to inactivity.');
-			return msg.say(`And the winner is... ${winner}! Great job!`);
+			return msg.say(`And the loser is... ${loser.user}! Great job everyone else!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
