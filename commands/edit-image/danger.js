@@ -55,7 +55,7 @@ module.exports = class DangerCommand extends Command {
 			fontSize--;
 			ctx.font = `normal bold ${fontSize}px Noto`;
 		}
-		const lines = await wrapText(ctx, text.toUpperCase(), 320);
+		const lines = await wrapText(ctx, text.toUpperCase(), 840);
 		const topMost = 510 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);

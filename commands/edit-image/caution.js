@@ -51,7 +51,7 @@ module.exports = class CautionCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = 'normal bold 60px Noto';
 		let fontSize = 60;
-		while (ctx.measureText(text).width > 3580) {
+		while (ctx.measureText(text).width > 3311) {
 			fontSize--;
 			ctx.font = `normal bold ${fontSize}px Noto`;
 		}
