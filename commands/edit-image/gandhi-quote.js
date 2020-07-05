@@ -12,7 +12,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 		super(client, {
 			name: 'gandhi-quote',
 			aliases: ['gandhi', 'mahatma-gandhi', 'mahatma-gandhi-quote'],
-			group: 'edit-meme',
+			group: 'edit-image',
 			memberName: 'gandhi-quote',
 			description: 'Makes Mahatma Gandhi say the quote you want.',
 			throttling: {
