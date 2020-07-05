@@ -8,7 +8,7 @@ module.exports = class PoliceTapeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'police-tape',
-			aliases: ['caution-tape', 'caution'],
+			aliases: ['caution-tape'],
 			group: 'edit-image',
 			memberName: 'police tape',
 			description: 'Draws police tape over an image or a user\'s avatar.',
