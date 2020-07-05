@@ -73,7 +73,7 @@ module.exports = class MarioBrosViewsCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.font = '36px Noto';
 		let fontSize = 36;
-		while (ctx.measureText(mario).width > 900) {
+		while (ctx.measureText(mario).width > 800) {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
@@ -88,7 +88,7 @@ module.exports = class MarioBrosViewsCommand extends Command {
 		}
 		ctx.font = '36px Noto';
 		fontSize = 36;
-		while (ctx.measureText(luigi).width > 900) {
+		while (ctx.measureText(luigi).width > 800) {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}

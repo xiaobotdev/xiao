@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 525
+Total: 526
 
 ### Utility:
 
@@ -597,6 +597,7 @@ Total: 525
 * **fire-frame:** Draws a fiery border over an image or a user's avatar.
 * **fish-eye:** Draws an image or a user's avatar but with a fish-eye lens.
 * **frame:** Draws a frame around an image or a user's avatar.
+* **gandhi-quote:** Makes Mahatma Gandhi say the quote you want.
 * **ghost:** Draws an image or a user's avatar but with a ghost-like transparency.
 * **glass-shatter:** Draws an image or a user's avatar with a glass shatter in front of it.
 * **glitch:** Draws an image or a user's avatar but glitched.
@@ -1122,6 +1123,8 @@ here.
 	* word-chain ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 - [Gravatar](https://en.gravatar.com/)
 	* gravatar ([API](https://en.gravatar.com/site/implement/))
+- [GUST e-foundry](https://www.fontsquirrel.com/fonts/list/foundry/gust-e-foundry)
+	* gandhi-quote ([Latin Modern Roman Font](https://www.fontsquirrel.com/fonts/Latin-Modern-Roman))
 - [Hackyon](http://www.hackyon.com/playground/fisheye/)
 	* fish-eye (Fish-Eye Code)
 - [Hasbro](https://shop.hasbro.com/en-us)
@@ -1378,6 +1381,7 @@ here.
 	* dislike (Concept)
 	* enslaved (Concept)
 	* for-five-hours (Concept)
+	* gandhi-quote (Concept)
 	* gun (Concept)
 	* hands (Concept)
 	* hentai (Original Subreddit List)
