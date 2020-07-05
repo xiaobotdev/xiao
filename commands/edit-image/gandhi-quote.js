@@ -52,6 +52,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.font = 'italic 50px Latin Modern Roman';
+		ctx.fillStyle = 'white';
 		let fontSize = 50;
 		while (ctx.measureText(text).width > 1485) {
 			fontSize--;
