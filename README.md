@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 526
+Total: 528
 
 ### Utility:
 
@@ -581,6 +581,7 @@ Total: 526
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
 * **blur:** Draws an image or a user's avatar but blurred.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
+* **caution:** Creates a caution sign with the text of your choice.
 * **certificate:** Sends a certificate of excellence with the name and reason of your choice.
 * **charcoal:** Draws an image or a user's avatar but with charcoal.
 * **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.
@@ -590,6 +591,7 @@ Total: 526
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **convert-image:** Converts an image or user's avatar from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
+* **danger:** Creates a danger sign with the text of your choice.
 * **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
@@ -1075,7 +1077,9 @@ here.
 	* book ([Books API](https://developers.google.com/books/))
 	* calendar ([Calendar API](https://developers.google.com/calendar/))
 	* catch ([Noto Font](https://www.google.com/get/noto/))
+	* caution ([Noto Font](https://www.google.com/get/noto/))
 	* change-my-mind ([Noto Font](https://www.google.com/get/noto/))
+	* danger ([Noto Font](https://www.google.com/get/noto/))
 	* dear-liberals ([Oswald Font](https://fonts.google.com/specimen/Oswald))
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
 	* drakeposting ([Noto Font](https://www.google.com/get/noto/))
@@ -1655,6 +1659,9 @@ here.
 	* hat ([Anon Hat Image](https://whyweprotest.net/threads/big-ass-guy-fawkes-mask-images-thread.22719/))
 - [wikiHow](https://www.wikihow.com/Main-Page)
 	* wikihow ([API](https://www.wikihow.com/api.php))
+- [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page)
+	* caution ([Image](https://commons.wikimedia.org/wiki/File:Caution_blank.svg))
+	* danger ([Image](https://commons.wikimedia.org/wiki/File:Danger_blank.svg))
 - [Wikipedia](https://www.wikipedia.org/)
 	* fact ([API](https://en.wikipedia.org/w/api.php))
 	* idiot (URL)
