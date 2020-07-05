@@ -54,9 +54,9 @@ module.exports = class GandhiQuoteCommand extends Command {
 		ctx.font = 'italic 50px Latin Modern Roman';
 		ctx.fillStyle = 'white';
 		let fontSize = 50;
-		while (ctx.measureText(quote).width > 1485) {
+		while (ctx.measureText(quote).width > 945) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = `italic ${fontSize}px Latin Modern Roman`;
 		}
 		const lines = await wrapText(ctx, quote, 270);
 		const topMost = 180 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
