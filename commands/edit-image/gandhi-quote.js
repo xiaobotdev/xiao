@@ -4,7 +4,7 @@ const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'lmroman10-italic.otf'), {
 	family: 'Latin Modern Roman',
-	weight: 'italic'
+	style: 'italic'
 });
 
 module.exports = class GandhiQuoteCommand extends Command {
@@ -51,7 +51,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = 'normal italic 50px Latin Modern Roman';
+		ctx.font = 'italic 50px Latin Modern Roman';
 		let fontSize = 50;
 		while (ctx.measureText(text).width > 1485) {
 			fontSize--;
