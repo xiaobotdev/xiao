@@ -54,7 +54,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 		ctx.font = 'italic 50px Latin Modern Roman';
 		ctx.fillStyle = 'white';
 		let fontSize = 50;
-		while (ctx.measureText(text).width > 1485) {
+		while (ctx.measureText(quote).width > 1485) {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
