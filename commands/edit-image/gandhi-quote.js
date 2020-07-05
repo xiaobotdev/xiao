@@ -44,7 +44,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 		});
 	}
 
-	async run(msg, { text }) {
+	async run(msg, { quote }) {
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'gandhi-quote.png'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
@@ -58,7 +58,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
-		const lines = await wrapText(ctx, text, 270);
+		const lines = await wrapText(ctx, quote, 270);
 		const topMost = 180 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);
