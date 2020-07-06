@@ -10,7 +10,7 @@ module.exports = class PanikKalmPanikCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'panik-kalm-panik',
-			aliases: ['panic-calm-panic'],
+			aliases: ['panic-calm-panic', 'pkp', 'panik', 'kalm'],
 			group: 'edit-meme',
 			memberName: 'panik-kalm-panik',
 			description: 'Sends a "Panik, Kalm, Panik" meme with the text of your choice.',
