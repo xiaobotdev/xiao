@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripInvites } = require('../../util/Util');
+const { stripIndents } = require('common-tags');
 const { PORTAL_EMOJI_ID, PORTAL_EMOJI_NAME } = process.env;
 
 module.exports = class PortalSendCommand extends Command {
@@ -38,7 +39,11 @@ module.exports = class PortalSendCommand extends Command {
 		const channel = channels.random();
 		try {
 			const displayName = msg.guild ? msg.guild.name : 'DM';
-			await channel.send(`**${this.portalEmoji} ${msg.author.tag} (${displayName}):** ${message}`);
+			const attachments = msg.attachments.size ? msg.attachments.map(a => a.url).join('\n') : null;
+			await channel.send(stripIndents`
+				**${this.portalEmoji} ${msg.author.tag} (${displayName}):** ${message}
+				${attachments || ''}
+			`);
 			return msg.say(`Message sent to **${channel.name}** in **${channel.guild.name}**!`);
 		} catch {
 			return msg.reply('Failed to send the message. Try again later!');
