@@ -11,9 +11,9 @@ module.exports = class SteamCardCommand extends Command {
 		super(client, {
 			name: 'steam-card',
 			aliases: ['valve-card'],
-			group: 'edit-avatar',
+			group: 'edit-image',
 			memberName: 'steam-card',
-			description: 'Draws a user\'s avatar on a Steam Trading Card.',
+			description: 'Draws an image or a user\'s avatar on a Steam Trading Card.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -41,32 +41,38 @@ module.exports = class SteamCardCommand extends Command {
 			],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'name',
+					prompt: 'What do you want the card to be named?',
+					type: 'string',
+					max: 50
+				},
+				{
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+	async run(msg, { name, image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
+			const { body } = await request.get(image);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = '#feb2c1';
 			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.drawImage(avatar, 12, 19, 205, 205);
+			const height = 205 / data.width;
+			ctx.drawImage(data, 12, 19, 205, height * data.height);
 			ctx.drawImage(base, 0, 0);
 			ctx.font = '14px Noto';
 			ctx.fillStyle = 'black';
-			ctx.fillText(user.username, 16, 25);
+			ctx.fillText(name, 16, 25);
 			ctx.fillStyle = 'white';
-			ctx.fillText(user.username, 15, 24);
+			ctx.fillText(name, 15, 24);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

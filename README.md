@@ -580,6 +580,7 @@ Total: 529
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
 * **blur:** Draws an image or a user's avatar but blurred.
+* **bob-ross:** Draws an image or a user's avatar over Bob Ross' canvas.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
 * **caution:** Creates a caution sign with the text of your choice.
 * **certificate:** Sends a certificate of excellence with the name and reason of your choice.
@@ -636,11 +637,13 @@ Total: 529
 * **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
+* **steam-card:** Draws an image or a user's avatar on a Steam Trading Card.
 * **subtitle:** Adds subtitles to an image.
 * **swirl:** Draws an image or a user's avatar but swirled.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **undertale:** Sends a text box from Undertale with the quote and character of your choice.
+* **wanted:** Draws an image or a user's avatar over a wanted poster.
 * **wild-pokemon:** Draws an image or a user's avatar over a wild Pokémon appearance.
 * **you-died:** Sends a "You Died" screen over an image or a user's avatar.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
@@ -650,22 +653,18 @@ Total: 529
 ### Avatar Manipulation:
 
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
-* **bob-ross:** Draws a user's avatar over Bob Ross' canvas.
 * **chocolate-milk:** Draws a user's avatar holding chocolate milk.
 * **fire:** Burns a user's avatar.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **hearts:** Draws hearts around a user's avatar.
 * **i-have-the-power:** Draws a user's avatar over He-Man's face.
-* **look-what-karen-have:** Draws a user's avatar over Karen's piece of paper.
 * **rip:** Draws a user's avatar over a gravestone.
 * **sip:** Draws a user's avatar sipping tea.
 * **status-button:** Creates a Discord status button from c99.nl.
-* **steam-card:** Draws a user's avatar on a Steam Trading Card.
 * **steam-now-playing-classic:** Draws a user's avatar over a Steam "now playing" notification (old skin).
 * **steam-now-playing:** Draws a user's avatar over a Steam "now playing" notification.
 * **triggered:** Draws a user's avatar over the "Triggered" meme.
-* **wanted:** Draws a user's avatar over a wanted poster.
 
 ### Meme Generators:
 
@@ -700,6 +699,7 @@ Total: 529
 * **like:** Sends an "Everyone Liked That" meme with the image of your choice.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
 * **look-at-this-photograph:** Draws an image or a user's avatar over Nickelback's photograph.
+* **look-what-karen-have:** Draws an image or a user's avatar over Karen's piece of paper.
 * **mario-bros-views:** Sends a "Mario Bros. Views" meme with the text of your choice.
 * **meme-gen-classic:** Sends a meme with the text and background of your choice.
 * **meme-gen-modern:** Sends a meme with the text and image of your choice.
