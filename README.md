@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 528
+Total: 529
 
 ### Utility:
 
@@ -706,6 +706,7 @@ Total: 528
 * **my-collection-grows:** Sends a "My collection grows richer" Nekopara meme with the text of your choice.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
+* **panik-kalm-panik:** Sends a "Panik, Kalm, Panik" meme with the text of your choice.
 * **phoebe-teaching-joey:** Sends a "Phoebe Teaching Joey" meme with text of your choice.
 * **pills:** Sends a "Hard to Swallow Pills" meme with the text of your choice.
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
@@ -1099,6 +1100,7 @@ here.
 	* meme-gen-modern ([Noto Font](https://www.google.com/get/noto/))
 	* new-password ([Noto Font](https://www.google.com/get/noto/))
 	* nike-ad ([Noto Font](https://www.google.com/get/noto/))
+	* panik-kalm-panik ([Noto Font](https://www.google.com/get/noto/))
 	* periodic-table ([Noto Font](https://www.google.com/get/noto/))
 	* phoebe-teaching-joey ([Noto Font](https://www.google.com/get/noto/))
 	* pills ([Noto Font](https://www.google.com/get/noto/))
@@ -1393,6 +1395,7 @@ here.
 	* if-those-kids-could-read (Concept)
 	* like (Concept)
 	* mario-bros-views (Concept)
+	* panik-kalm-panik (Concept)
 	* pills (Concept)
 	* pogchamp (Concept)
 	* porn (Original Subreddit List)
