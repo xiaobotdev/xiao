@@ -2,16 +2,16 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { sepia } = require('../../util/Canvas');
+const { sepia, centerImagePart } = require('../../util/Canvas');
 
 module.exports = class WantedCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'wanted',
 			aliases: ['wanted-poster'],
-			group: 'edit-avatar',
+			group: 'edit-image',
 			memberName: 'wanted',
-			description: 'Draws a user\'s avatar over a wanted poster.',
+			description: 'Draws an image or a user\'s avatar over a wanted poster.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -27,26 +27,26 @@ module.exports = class WantedCommand extends Command {
 			],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+	async run(msg, { image }) {
 		try {
 			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'wanted.png'));
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
+			const { body } = await request.get(image);
+			const data = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 150, 360, 430, 430);
-			sepia(ctx, 150, 360, 430, 430);
+			const { x, y, width, height } = centerImagePart(data, 430, 430, 150, 360); 
+			ctx.drawImage(data, x, y, width, height);
+			sepia(ctx, x, y, width, height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
