@@ -44,7 +44,7 @@ module.exports = class WantedCommand extends Command {
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
-			const { x, y, width, height } = centerImagePart(data, 430, 430, 150, 360); 
+			const { x, y, width, height } = centerImagePart(data, 430, 430, 150, 360);
 			ctx.drawImage(data, x, y, width, height);
 			sepia(ctx, x, y, width, height);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wanted.png' }] });
