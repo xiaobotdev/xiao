@@ -27,7 +27,7 @@ module.exports = class PortalSendCommand extends Command {
 						}
 						return true;
 					},
-					parse: message => stripInvites(message),
+					parse: val => val ? stripInvites(val) : '',
 					isEmpty: (val, msg) => !msg.attachments.size && !val
 				}
 			]
