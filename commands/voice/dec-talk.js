@@ -49,7 +49,8 @@ module.exports = class DECTalkCommand extends Command {
 		const inGuild = msg.guild ? undefined : null;
 		const connection = this.client.voice.connections.get(msg.guild.id);
 		if (!connection) {
-			return msg.reply(`I am not in a voice channel. Use ${msg.anyUsage('join', inGuild, inGuild)} to fix that!`);
+			const usage = this.client.registry.commands.get('join').usage();
+			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		try {
 			const { url } = await request

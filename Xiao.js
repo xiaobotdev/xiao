@@ -114,6 +114,16 @@ client.on('message', async msg => {
 	}
 });
 
+client.on('guildCreate', async guild => {
+	if (!guild.systemChannel || !guild.systemChannel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
+	try {
+		const usage = client.registry.commands.get('help').usage();
+		await guild.systemChannel.send(`Hi! I'm Xiao, use ${usage} to see my commands, yes?`);
+	} catch {
+		return; // eslint-disable-line no-useless-return
+	}
+});
+
 client.on('guildMemberRemove', async member => {
 	if (member.id === client.user.id) return null;
 	const channel = member.guild.systemChannel;

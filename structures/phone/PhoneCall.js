@@ -41,8 +41,9 @@ module.exports = class PhoneCall {
 		this.timeStarted = new Date();
 		this.setTimeout();
 		if (this.ownerOrigin) return this;
-		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Type \`hang up\` to hang up.`);
-		await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Type \`hang up\` to hang up.`);
+		const usage = this.client.registry.commands.get('hang-up').usage();
+		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Use ${usage} to hang up.`);
+		await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Use ${usage} to hang up.`);
 		return this;
 	}
 
