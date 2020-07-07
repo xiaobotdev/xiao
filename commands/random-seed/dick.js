@@ -9,6 +9,7 @@ module.exports = class DickCommand extends Command {
 			group: 'random-seed',
 			memberName: 'dick',
 			description: 'Determines your dick size.',
+			nsfw: true,
 			args: [
 				{
 					key: 'user',
@@ -22,12 +23,12 @@ module.exports = class DickCommand extends Command {
 
 	run(msg, { user }) {
 		if (this.client.isOwner(user)) {
-			if (user.id === msg.author.id) return msg.reply(`8${'='.repeat(20)}D`);
+			if (user.id === msg.author.id) return msg.reply(`8${'='.repeat(50)}D`);
 			return msg.reply(`8=D`);
 		}
 		const clientAuthor = user.id === this.client.user.id;
 		const random = MersenneTwister19937.seed(clientAuthor ? msg.author.id : user.id);
-		const length = integer(0, 20)(random);
+		const length = integer(0, 50)(random);
 		return msg.reply(`8${'='.repeat(clientAuthor ? length + 1 : length)}D`);
 	}
 };
