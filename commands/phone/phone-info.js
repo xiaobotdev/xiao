@@ -28,7 +28,7 @@ module.exports = class PhoneInfoCommand extends Command {
 			.addField('❯ Recipient Channel', `#${otherChannel.name}`, true)
 			.addField('❯ Recipient Server', otherChannel.guild.name, true)
 			.addField('❯ Recipient ID', otherChannel.id, true)
-			.addField('❯ Call Duration', moment.duration(Date.now() - call.timeStarted).format('d:hh:mm:ss'), true)
+			.addField('❯ Call Duration', moment.duration(Date.now() - call.timeStarted).format('hh[h]mm[m]ss[s]'), true)
 			.addField('❯ Admin Call?', call.ownerOrigin ? 'Yes' : 'No', true)
 			.addField('❯ Started By', call.startUser.tag, true);
 		return msg.embed(embed);
