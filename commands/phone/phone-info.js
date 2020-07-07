@@ -15,7 +15,7 @@ module.exports = class PhoneInfoCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		const origin = this.client.phone.find(call => call.origin.id === msg.channel.id);
 		const recipient = this.client.phone.find(call => call.recipient.id === msg.channel.id);
 		if (!origin && !recipient) return msg.reply('☎️ This channel is not in a phone call.');
