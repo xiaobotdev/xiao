@@ -6,6 +6,7 @@ require('moment-duration-format');
 const { formatNumber, embedURL } = require('../../util/Util');
 const { version, dependencies } = require('../../package');
 const permissions = require('../../assets/json/permissions');
+const copyright = require('../../assets/json/copyright');
 const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
 const source = XIAO_GITHUB_REPO_NAME && XIAO_GITHUB_REPO_USERNAME;
 
@@ -27,7 +28,7 @@ module.exports = class InfoCommand extends Command {
 		const repoURL = `https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}`;
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
-			.setFooter('©2017-2020 dragonfire535#8081')
+			.setFooter(copyright.join('\n'))
 			.addField('❯ Servers', formatNumber(this.client.guilds.cache.size), true)
 			.addField('❯ Commands', formatNumber(this.client.registry.commands.size), true)
 			.addField('❯ Shards', formatNumber(this.client.options.shardCount), true)
