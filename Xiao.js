@@ -131,7 +131,7 @@ client.on('guildCreate', async guild => {
 			.setTitle(`Joined ${guild.name}!`)
 			.setFooter(`ID: ${guild.id}`)
 			.setTimestamp()
-			.addField('❯ Members', guild.memberCount);
+			.addField('❯ Members', formatNumber(guild.memberCount));
 		await joinLeaveChannel.send({ embed });
 	}
 });
@@ -145,7 +145,7 @@ client.on('guildDelete', async guild => {
 			.setTitle(`Left ${guild.name}...`)
 			.setFooter(`ID: ${guild.id}`)
 			.setTimestamp()
-			.addField('❯ Members', guild.memberCount);
+			.addField('❯ Members', formatNumber(guild.memberCount));
 		await joinLeaveChannel.send({ embed });
 	}
 });
