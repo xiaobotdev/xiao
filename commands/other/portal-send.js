@@ -22,7 +22,7 @@ module.exports = class PortalSendCommand extends Command {
 					type: 'string',
 					max: 1000,
 					parse: message => stripInvites(message),
-					emptyChecker: (val, msg) => !msg.attachments.size && !val
+					isEmpty: (val, msg) => !msg.attachments.size && !val
 				}
 			]
 		});
