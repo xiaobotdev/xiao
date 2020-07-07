@@ -19,8 +19,14 @@ module.exports = class PortalSendCommand extends Command {
 				{
 					key: 'message',
 					prompt: 'What message would you like to send?',
-					type: 'string',
 					max: 1000,
+					validate: (val, msg, arg) => {
+						if (!val) return true;
+						if (val.length > arg.max) {
+							return `Please keep the ${arg.label} below or exactly ${arg.max} characters.`;
+						}
+						return true;
+					},
 					parse: message => stripInvites(message),
 					isEmpty: (val, msg) => !msg.attachments.size && !val
 				}
