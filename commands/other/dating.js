@@ -8,7 +8,7 @@ module.exports = class DatingCommand extends ImgurAlbumCommand {
 		super(client, {
 			name: 'dating',
 			aliases: ['date', 'tinder'],
-			group: 'random-img',
+			group: 'other',
 			memberName: 'dating',
 			description: 'Find the person of your dreams with this dating system!',
 			clientPermissions: ['ATTACH_FILES'],
