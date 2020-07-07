@@ -2,17 +2,19 @@ const { stripIndents } = require('common-tags');
 const { shorten, stripInvites, verify } = require('../../util/Util');
 
 module.exports = class PhoneCall {
-	constructor(client, origin, recipient, ownerOrigin) {
+	constructor(client, startUser, origin, recipient, ownerOrigin) {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.id = `${origin.id}:${recipient.id}`;
 		this.origin = origin;
 		this.recipient = recipient;
+		this.startUser = startUser;
 		this.active = false;
 		this.timeout = null;
 		this.ownerOrigin = ownerOrigin || false;
 		this.cooldown = new Set();
 		this.ratelimitMeters = new Map();
+		this.timeStarted = null;
 	}
 
 	async start() {
@@ -34,6 +36,7 @@ module.exports = class PhoneCall {
 
 	async accept() {
 		this.active = true;
+		this.timeStarted = new Date();
 		this.setTimeout();
 		if (this.ownerOrigin) return this;
 		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Type \`hang up\` to hang up.`);

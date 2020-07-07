@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 529
+Total: 530
 
 ### Utility:
 
@@ -801,6 +801,7 @@ Total: 529
 * **admin-phone:** Starts an admin phone call with a server. (Owner-Only)
 * **hang-up:** Hangs up the current phone call.
 * **phone-book:** Looks up phone-enabled servers.
+* **phone-info:** Gives information on the current phone call.
 * **phone:** Starts a phone call with a random server.
 
 ### Other:
