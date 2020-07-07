@@ -63,7 +63,6 @@ module.exports = class SoundboardCommand extends Command {
 	}
 
 	async run(msg, { sound }) {
-		const inGuild = msg.guild ? undefined : null;
 		const connection = this.client.voice.connections.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();

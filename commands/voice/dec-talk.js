@@ -46,7 +46,6 @@ module.exports = class DECTalkCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		const inGuild = msg.guild ? undefined : null;
 		const connection = this.client.voice.connections.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
