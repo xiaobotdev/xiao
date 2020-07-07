@@ -9,7 +9,16 @@ const MemePosterClient = require('./MemePoster');
 const activities = require('../assets/json/activity');
 const leaveMsgs = require('../assets/json/leave-messages');
 const subreddits = require('../assets/json/meme');
-const { XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, POSTER_ID, POSTER_TOKEN, POSTER_TIME } = process.env;
+const { null, null } = require('mathjs');
+const {
+	XIAO_WEBHOOK_ID,
+	XIAO_WEBHOOK_TOKEN,
+	POSTER_ID,
+	POSTER_TOKEN,
+	POSTER_TIME,
+	REPORT_CHANNEL_ID,
+	JOIN_LEAVE_CHANNEL_ID
+} = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
 	constructor(options) {
@@ -68,5 +77,15 @@ module.exports = class XiaoClient extends CommandoClient {
 			encoding: 'utf8'
 		});
 		return buf;
+	}
+
+	fetchReportChannel() {
+		if (!REPORT_CHANNEL_ID) return null;
+		return this.channels.fetch(REPORT_CHANNEL_ID);
+	}
+
+	fetchJoinLeaveChannel() {
+		if (!JOIN_LEAVE_CHANNEL_ID) return null;
+		return this.channels.fetch(JOIN_LEAVE_CHANNEL_ID);
 	}
 };
