@@ -342,7 +342,6 @@ Total: 530
 
 ### Random Image:
 
-* **dating:** Find the person of your dreams with this dating system!
 * **ai-artwork:** Responds with randomly generated artwork.
 * **ai-cat:** Responds with a randomly generated cat.
 * **ai-fursona:** Responds with a randomly generated fursona.
@@ -808,6 +807,7 @@ Total: 530
 ### Other:
 
 * **cleverbot:** Talk to Cleverbot. (Owner-Only)
+* **dating:** Find the person of your dreams with this dating system!
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
 * **rename-all:** Renames every member of the server. (Owner-Only)
