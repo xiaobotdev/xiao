@@ -66,7 +66,8 @@ module.exports = class SoundboardCommand extends Command {
 		const inGuild = msg.guild ? undefined : null;
 		const connection = this.client.voice.connections.get(msg.guild.id);
 		if (!connection) {
-			return msg.reply(`I am not in a voice channel. Use ${msg.anyUsage('join', inGuild, inGuild)} to fix that!`);
+			const usage = this.client.registry.commands.get('join').usage();
+			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'soundboard', sound));
 		if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
