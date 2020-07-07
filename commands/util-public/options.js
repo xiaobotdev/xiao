@@ -23,6 +23,7 @@ module.exports = class OptionsCommand extends Command {
 			\`<xiao:phone:no-voicemail>\` Prevents this channel from recieving voicemails for missed calls.
 			\`<xiao:phone-book:hide>\` Hides this channel from \`phone-book\`.
 			\`<xiao:portal>\` Marks the channel as a portal channel for \`portal-send\`.
+			\`<xiao:portal:hide-name>\` Hides the channel's name when the channel is chosen to recieve a portal message.
 		`);
 	}
 };
