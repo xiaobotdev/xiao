@@ -21,7 +21,8 @@ module.exports = class PortalSendCommand extends Command {
 					prompt: 'What message would you like to send?',
 					type: 'string',
 					max: 1000,
-					parse: message => stripInvites(message)
+					parse: message => stripInvites(message),
+					emptyChecker: (val, msg) => !msg.attachments.size && !val
 				}
 			]
 		});
