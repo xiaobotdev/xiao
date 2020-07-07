@@ -243,7 +243,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 530
+Total: 531
 
 ### Utility:
 
@@ -635,6 +635,7 @@ Total: 530
 * **snapcode:** Responds with the Snapcode of a Snapchat user.
 * **speed-limit:** Sends a Speed Limit sign with the limit of your choice.
 * **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
+* **spotify-now-playing:** Draws an image or a user's avatar on a Spotify album with the name and artist of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
 * **steam-card:** Draws an image or a user's avatar on a Steam Trading Card.
@@ -1111,6 +1112,7 @@ here.
 	* sos ([Noto Font](https://www.google.com/get/noto/))
 	* spiderman-pointing ([Noto Font](https://www.google.com/get/noto/))
 	* spongebob-burn ([Noto Font](https://www.google.com/get/noto/))
+	* spotify-now-playing ([Noto Font](https://www.google.com/get/noto/))
 	* steam-card ([Noto Font](https://www.google.com/get/noto/))
 	* steam-now-playing ([Noto Font](https://www.google.com/get/noto/))
 	* steam-now-playing-classic ([Noto Font](https://www.google.com/get/noto/))
@@ -1405,6 +1407,7 @@ here.
 	* sonic-says (Concept)
 	* speed-limit (Concept)
 	* spiderman-pointing (Concept)
+	* spotify-now-playing (Concept)
 	* thicc (Concept)
 	* undertale (Concept)
 	* wild-pokemon (Concept)
@@ -1507,6 +1510,8 @@ here.
 	* pogchamp (Image)
 - [Safebooru](https://safebooru.org/)
 	* safebooru (API)
+- [Sam Thik](https://www.pinterest.com/Samthik/)
+	* spotify-now-playing ([Image](https://www.pinterest.com/pin/500251471109108490/))
 - [SEGA](https://www.sega.com/)
 	* sonic-says ([Image, Original "Sonic the Hedgehog" Game](https://www.sonicthehedgehog.com/))
 - [Serebii.net](https://www.serebii.net/index2.shtml)
@@ -1537,6 +1542,8 @@ here.
 	* lolcat (Translation Data)
 - [Spongebob Fanon](https://spongebob-new-fanon.fandom.com/wiki/SpongeBob_Fanon_Wiki)
 	* spongebob-time-card ([Images](https://spongebob-new-fanon.fandom.com/wiki/Gallery_of_Textless_Title_Cards))
+- [Spotify](https://www.spotify.com/us/)
+	* spotify-now-playing (Original Design)
 - [Square Enix](https://square-enix-games.com/)
 	* nobody-name ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
 	* sora-selfie ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
