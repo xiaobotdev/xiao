@@ -1,4 +1,6 @@
 const { stripIndents } = require('common-tags');
+const moment = require('moment');
+require('moment-duration-format');
 const { shorten, stripInvites, verify } = require('../../util/Util');
 
 module.exports = class PhoneCall {
@@ -48,8 +50,8 @@ module.exports = class PhoneCall {
 		this.active = false;
 		clearTimeout(this.timeout);
 		if (nonQuitter === 'time') {
-			await this.origin.send('☎️ Call ended due to inactivity.');
-			await this.recipient.send('☎️ Call ended due to inactivity.');
+			await this.origin.send(`☎️ Call ended due to inactivity. _(Lasted ${this.durationDisplay})_`);
+			await this.recipient.send(`☎️ Call ended due to inactivity. _(Lasted ${this.durationDisplay})_`);
 		} else if (nonQuitter === 'declined') {
 			const canVoicemail = this.recipient.topic && !this.recipient.topic.includes('<xiao:phone:no-voicemail>');
 			const recipientMsg = validation === 0
@@ -81,8 +83,8 @@ module.exports = class PhoneCall {
 			}
 		} else {
 			const quitter = nonQuitter.id === this.origin.id ? this.recipient : this.origin;
-			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up.`);
-			await quitter.send('☎️ Hung up.');
+			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up. _(Lasted ${this.durationDisplay})_`);
+			await quitter.send(`☎️ Hung up. _(Lasted ${this.durationDisplay})_`);
 		}
 		this.client.phone.delete(this.id);
 		return this;
@@ -133,5 +135,9 @@ module.exports = class PhoneCall {
 		if (this.timeout) clearTimeout(this.timeout);
 		this.timeout = setTimeout(() => this.hangup('time'), 60000);
 		return this.timeout;
+	}
+
+	get durationDisplay() {
+		return moment.duration(Date.now() - this.timeStarted).format('hh[h]mm[m]ss[s]');
 	}
 };
