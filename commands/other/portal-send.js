@@ -51,6 +51,9 @@ module.exports = class PortalSendCommand extends Command {
 				**${this.portalEmoji} ${msg.author.tag} (${displayName}):** ${message}
 				${attachments || ''}
 			`);
+			if (channel.topic.includes('<xiao:portal:hide-name>')) {
+				return msg.say('Message sent to a server too terrified to show their name.');
+			}
 			return msg.say(`Message sent to **${channel.name}** in **${channel.guild.name}**!`);
 		} catch {
 			return msg.reply('Failed to send the message. Try again later!');
