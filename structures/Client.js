@@ -9,7 +9,6 @@ const MemePosterClient = require('./MemePoster');
 const activities = require('../assets/json/activity');
 const leaveMsgs = require('../assets/json/leave-messages');
 const subreddits = require('../assets/json/meme');
-const { null, null } = require('mathjs');
 const {
 	XIAO_WEBHOOK_ID,
 	XIAO_WEBHOOK_TOKEN,
