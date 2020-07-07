@@ -64,7 +64,7 @@ module.exports = class PhoneCommand extends Command {
 		}
 		try {
 			const id = `${msg.channel.id}:${channel.id}`;
-			this.client.phone.set(id, new PhoneCall(this.client, msg.channel, channel));
+			this.client.phone.set(id, new PhoneCall(this.client, msg.author, msg.channel, channel));
 			await this.client.phone.get(id).start();
 			return null;
 		} catch {
