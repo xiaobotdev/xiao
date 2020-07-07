@@ -384,7 +384,7 @@ Total: 531
 * **butt:** Determines a user's butt quality.
 * **coolness:** Determines a user's coolness.
 * **cuteness:** Determines a user's cuteness.
-* **dick:** Determines your dick size.
+* **dick:** Determines your dick size. (NSFW)
 * **friendship:** Determines how good friends two users are.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
