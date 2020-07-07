@@ -36,8 +36,10 @@ module.exports = class PhoneCall {
 		this.active = true;
 		this.setTimeout();
 		if (this.ownerOrigin) return this;
-		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Type \`hang up\` to hang up.`);
-		await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Type \`hang up\` to hang up.`);
+		const inGuild = msg.guild ? undefined : null;
+		const cmd = msg.anyUsage('hang-up', inGuild, inGuild);
+		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Use ${cmd} hang up.`);
+		await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Use ${cmd} to hang up.`);
 		return this;
 	}
 
