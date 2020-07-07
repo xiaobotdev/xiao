@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const path = require('path');
-const { Intents } = require('discord.js');
+const { Intents, MessageEmbed } = require('discord.js');
 const Client = require('./structures/Client');
 const client = new Client({
 	commandPrefix: XIAO_PREFIX,
@@ -115,12 +115,38 @@ client.on('message', async msg => {
 });
 
 client.on('guildCreate', async guild => {
-	if (!guild.systemChannel || !guild.systemChannel.permissionsFor(client.user).has('SEND_MESSAGES')) return;
-	try {
-		const usage = client.registry.commands.get('help').usage();
-		await guild.systemChannel.send(`Hi! I'm Xiao, use ${usage} to see my commands, yes?`);
-	} catch {
-		return; // eslint-disable-line no-useless-return
+	if (guild.systemChannel && guild.systemChannel.permissionsFor(client.user).has('SEND_MESSAGES')) {
+		try {
+			const usage = client.registry.commands.get('help').usage();
+			await guild.systemChannel.send(`Hi! I'm Xiao, use ${usage} to see my commands, yes?`);
+		} catch {
+			// Nothing!
+		}
+	}
+	const joinLeaveChannel = await client.fetchJoinLeaveChannel();
+	if (joinLeaveChannel) {
+		const embed = new MessageEmbed()
+			.setColor(0x7CFC00)
+			.setThumbnail(guild.iconURL({ format: 'png' }))
+			.setTitle(`Joined ${guild.name}!`)
+			.setFooter(`ID: ${guild.id}`)
+			.setTimestamp()
+			.addField('❯ Members', guild.memberCount);
+		await joinLeaveChannel.send({ embed });
+	}
+});
+
+client.on('guildDelete', async guild => {
+	const joinLeaveChannel = await client.fetchJoinLeaveChannel();
+	if (joinLeaveChannel) {
+		const embed = new MessageEmbed()
+			.setColor(0xFF0000)
+			.setThumbnail(guild.iconURL({ format: 'png' }))
+			.setTitle(`Left ${guild.name}...`)
+			.setFooter(`ID: ${guild.id}`)
+			.setTimestamp()
+			.addField('❯ Members', guild.memberCount);
+		await joinLeaveChannel.send({ embed });
 	}
 });
 
