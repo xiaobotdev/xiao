@@ -206,6 +206,7 @@ API. All are free unless otherwise stated.
 	- [Maps Static API](https://console.developers.google.com/apis/library/static-maps-backend.googleapis.com)
 	- [Google Calendar API](https://console.developers.google.com/apis/library/calendar-json.googleapis.com)
 	- [Books API](https://console.developers.google.com/apis/library/books.googleapis.com)
+	- [Safe Browsing API](https://console.developers.google.com/apis/library/safebrowsing.googleapis.com)
 	- Go to the [Perspective API website](https://www.perspectiveapi.com/#/home) to set up the Perspective API.
 * `GOV_KEY` can be obtained at the [NASA Open APIs portal](https://api.nasa.gov/).
 * `IDIOT_PAGE_ID` is the ID of a Wikipedia article for use in the `idiot` command. Not required, and defaults to `Donald_Trump`. If this offends you, I don't care.
@@ -252,7 +253,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 532
+Total: 533
 
 ### Utility:
 
@@ -522,6 +523,7 @@ Total: 532
 * **has-transparency:** Determines if an image has transparency in it.
 * **image-size:** Determines the size of an image.
 * **read-qr-code:** Reads a QR Code.
+* **safe-url:** Determines if a URL is safe or not.
 * **scrabble-score:** Responds with the scrabble score of a word.
 * **severe-toxicity:** Determines the toxicity of text, but less sensitive to milder language.
 * **toxicity:** Determines the toxicity of text.
@@ -1117,6 +1119,7 @@ here.
 	* phoebe-teaching-joey ([Noto Font](https://www.google.com/get/noto/))
 	* pills ([Noto Font](https://www.google.com/get/noto/))
 	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
+	* safe-url ([Safe Browsing API](https://developers.google.com/safe-browsing/))
 	* scroll-of-truth ([Noto Font](https://www.google.com/get/noto/))
 	* sonic-says ([Noto Font](https://www.google.com/get/noto/))
 	* sos ([Noto Font](https://www.google.com/get/noto/))
