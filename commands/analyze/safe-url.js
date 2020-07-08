@@ -46,8 +46,8 @@ module.exports = class SafeUrlCommand extends Command {
 						threatEntries: [{ url }]
 					}
 				});
-			if (body.matches.length) return msg.reply('⚠️ This link is unsafe! **Do not click it!** ⚠️');
-			return msg.reply(`👍 Good to go! This link is safe!`);
+			if (!body.matches) return msg.reply(`👍 Good to go! This link is safe!`);
+			return msg.reply('⚠️ This link is unsafe! **Do not click it!** ⚠️');
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
