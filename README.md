@@ -252,7 +252,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 531
+Total: 532
 
 ### Utility:
 
@@ -576,6 +576,7 @@ Total: 531
 * **poker:** Play poker with up to 5 other users.
 * **quiz-duel:** Answer a series of quiz questions against an opponent.
 * **russian-roulette:** Who will pull the trigger and die first?
+* **spam-war:** See who can type more characters the fastest.
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
 * **word-chain:** Try to come up with words that start with the last letter of your opponent's word.
 * **word-spud:** Hot potato, but with words.
