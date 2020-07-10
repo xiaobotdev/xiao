@@ -57,7 +57,7 @@ module.exports = class TuxedoPoohCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
-			ctx.textBaseline = 'middle';
+			ctx.textBaseline = 'top';
 			ctx.font = '50px Noto';
 			let fontSize = 50;
 			while (ctx.measureText(normal).width > 1320) {
