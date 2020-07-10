@@ -57,7 +57,7 @@ module.exports = class TuxedoPoohCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
-			ctx.textBaseline = 'top';
+			ctx.textBaseline = 'middle';
 			ctx.font = '50px Noto';
 			let fontSize = 50;
 			while (ctx.measureText(normal).width > 1320) {
@@ -68,7 +68,7 @@ module.exports = class TuxedoPoohCommand extends Command {
 			const normalTopMost = 145 - (((fontSize * normalLines.length) / 2) + ((10 * (normalLines.length - 1)) / 2));
 			for (let i = 0; i < normalLines.length; i++) {
 				const height = normalTopMost + ((fontSize + 10) * i);
-				ctx.fillText(normalLines[i], 560, height);
+				ctx.fillText(normalLines[i], 570, height);
 			}
 			ctx.font = '50px Noto';
 			fontSize = 50;
@@ -80,7 +80,7 @@ module.exports = class TuxedoPoohCommand extends Command {
 			const tuxedoTopMost = 436 - (((fontSize * tuxedoLines.length) / 2) + ((10 * (tuxedoLines.length - 1)) / 2));
 			for (let i = 0; i < tuxedoLines.length; i++) {
 				const height = tuxedoTopMost + ((fontSize + 10) * i);
-				ctx.fillText(tuxedoLines[i], 560, height);
+				ctx.fillText(tuxedoLines[i], 570, height);
 			}
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tuxedo-pooh.png' }] });
 		} catch (err) {
