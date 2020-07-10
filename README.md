@@ -253,7 +253,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 533
+Total: 534
 
 ### Utility:
 
@@ -734,6 +734,7 @@ Total: 533
 * **this-guy:** Draws an image or a user's avatar over the "Get a load of this guy" meme.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
+* **tuxedo-pooh:** Sends a "Tuxedo Winnie the Pooh" meme with the text of your choice.
 * **two-buttons:** Sends a "Two Buttons" meme with the buttons of your choice.
 * **ultimate-tattoo:** Draws an image or a user's avatar as "The Ultimate Tattoo".
 * **vietnam-flashbacks:** Edits Vietnam flashbacks behind an image or a user's avatar.
@@ -1022,6 +1023,7 @@ here.
 	* beautiful ([Original "Gravity Falls" Show](https://disneynow.com/shows/gravity-falls))
 	* girl-worth-fighting-for ([Original "Mulan" Movie](https://movies.disney.com/mulan))
 	* he-lives-in-you ([Image, Original "The Lion King" Movie](https://movies.disney.com/the-lion-king))
+	* tuxedo-pooh ([Original "Winnie the Pooh" Movie](https://winniethepooh.disney.com/))
 	* worthless ([Original "Gravity Falls" Show](https://disneynow.com/shows/gravity-falls))
 - [Dog CEO](https://dog.ceo/)
 	* dog ([Dog API](https://dog.ceo/dog-api/))
@@ -1131,6 +1133,7 @@ here.
 	* steam-now-playing-classic ([Noto Font](https://www.google.com/get/noto/))
 	* subtitle ([Noto Font](https://www.google.com/get/noto/))
 	* translate ([Google Translate](https://translate.google.com/))
+	* tuxedo-pooh ([Noto Font](https://www.google.com/get/noto/))
 	* tweet ([Noto Font](https://www.google.com/get/noto/))
 	* two-buttons ([Noto Font](https://www.google.com/get/noto/))
 	* youtube ([YouTube Data API](https://developers.google.com/youtube/v3/))
