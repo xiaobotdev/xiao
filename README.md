@@ -253,7 +253,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 534
+Total: 535
 
 ### Utility:
 
@@ -731,6 +731,7 @@ Total: 534
 * **sos:** Sends a "Esther Verkest's Help Sign" comic with the text of your choice.
 * **spiderman-pointing:** Sends a "Spiderman Pointing at Spiderman" meme with the text of your choice.
 * **spongebob-burn:** Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.
+* **that-sign-wont-stop-me:** Sends a "That Sign Won't Stop Me, I Can't read!" meme with the presentation of your choice.
 * **this-guy:** Draws an image or a user's avatar over the "Get a load of this guy" meme.
 * **thug-life:** Draws "Thug Life" over an image or a user's avatar.
 * **to-be-continued:** Draws an image with the "To Be Continued..." arrow.
@@ -1331,6 +1332,8 @@ here.
 	* pirate ([English-to-Pirate Dictionary Data](https://github.com/mikewesthad/pirate-speak/blob/master/lib/pirate-speak.js#L1-L155))
 - [Minecraft Achievement Generator](https://www.minecraftskinstealer.com/achievement/)
 	* achievement (Image)
+- [Missy Meyer](https://missymeyer.com/)
+	* that-sign-wont-stop-me ([Tragic Marker Font](https://missymeyer.com/tragic-marker-free-font))
 - [Mojang](https://www.mojang.com/)
 	* achievement ([Original "Minecraft" Game](https://www.minecraft.net/en-us/))
 	* minecraft-skin ([API, Original "Minecraft" Game](https://wiki.vg/Mojang_API))
@@ -1424,7 +1427,9 @@ here.
 	* speed-limit (Concept)
 	* spiderman-pointing (Concept)
 	* spotify-now-playing (Concept)
+	* that-sign-wont-stop-me (Concept)
 	* thicc (Concept)
+	* tuxedo-pooh (Concept)
 	* undertale (Concept)
 	* wild-pokemon (Concept)
 	* worse-than-hitler (Concept)
@@ -1435,6 +1440,8 @@ here.
 	* paladins (API)
 - [PayPal](https://www.paypal.com/us/home)
 	* donate (Donation Gathering)
+- [PBS Kids](https://pbskids.org/)
+	* that-sign-wont-stop-me ([Image, Original "Arthur" Show](https://pbskids.org/arthur/))
 - [Perspective API](https://www.perspectiveapi.com/#/)
 	* severe-toxicity (API)
 	* toxicity (API)
