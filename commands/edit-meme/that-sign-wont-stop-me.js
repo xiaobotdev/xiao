@@ -61,7 +61,7 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			ctx.font = `${fontSize}px Tragic Marker`;
 		}
 		const lines = await wrapText(ctx, text, 334);
-		const topMost = 230 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
+		const topMost = 240 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 10) * i);
 			ctx.fillText(lines[i], 210, height);
@@ -73,7 +73,7 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			ctx.font = `${fontSize}px Tragic Marker`;
 		}
 		const bLines = await wrapText(ctx, text, 88);
-		const bTopMost = 640 - (((fontSize * bLines.length) / 2) + ((2 * (bLines.length - 1)) / 2));
+		const bTopMost = 645 - (((fontSize * bLines.length) / 2) + ((2 * (bLines.length - 1)) / 2));
 		for (let i = 0; i < bLines.length; i++) {
 			const height = bTopMost + ((fontSize + 2) * i);
 			ctx.fillText(bLines[i], 280, height);
