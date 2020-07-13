@@ -38,7 +38,7 @@ module.exports = class AkinatorCommand extends Command {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {
-			const aki = new Aki(region);
+			const aki = new Aki(region, !msg.channel.nsfw);
 			let ans = null;
 			let win = false;
 			let timesGuessed = 0;

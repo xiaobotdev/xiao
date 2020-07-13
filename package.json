@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "119.16.0",
+	"version": "119.16.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -34,7 +34,7 @@
 		"@discordjs/collection": "^0.1.5",
 		"@discordjs/opus": "^0.3.2",
 		"@vitalets/google-translate-api": "^3.0.0",
-		"aki-api": "^5.0.0",
+		"aki-api": "^5.1.0",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
 		"cloc": "^2.5.1",
@@ -46,7 +46,7 @@
 		"dotenv": "^8.2.0",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
-		"mathjs": "^7.0.2",
+		"mathjs": "^7.1.0",
 		"moment": "^2.27.0",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.31",
@@ -62,7 +62,7 @@
 		"utf-8-validate": "^5.0.2"
 	},
 	"devDependencies": {
-		"eslint": "^7.3.1",
+		"eslint": "^7.4.0",
 		"eslint-config-amber": "^2.0.3",
 		"eslint-plugin-json": "^2.1.1"
 	},
