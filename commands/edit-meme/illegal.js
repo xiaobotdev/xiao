@@ -1,10 +1,10 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
+const GIFEncoder = require('gifencoder');
 const path = require('path');
-const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
+const { streamToArray } = require('../../util/Util');
+const frames = require('../../assets/json/illegal');
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Impact.ttf'), { family: 'Impact' });
 
 module.exports = class IllegalCommand extends Command {
 	constructor(client) {
@@ -16,7 +16,7 @@ module.exports = class IllegalCommand extends Command {
 			description: 'Makes President Trump make your text illegal.',
 			throttling: {
 				usages: 1,
-				duration: 10
+				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
@@ -26,10 +26,10 @@ module.exports = class IllegalCommand extends Command {
 					reason: 'Himself, Image'
 				},
 				{
-					name: 'Google',
-					url: 'https://www.google.com/',
-					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					name: 'ShareFonts.net',
+					url: 'https://www.wfonts.com/',
+					reason: 'Impact Font',
+					reasonURL: 'https://www.wfonts.com/font/impact'
 				}
 			],
 			args: [
@@ -53,21 +53,33 @@ module.exports = class IllegalCommand extends Command {
 	}
 
 	async run(msg, { text, verb }) {
-		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'illegal.png'));
-		const canvas = createCanvas(base.width, base.height);
+		const encoder = new GIFEncoder(262, 264);
+		const stream = encoder.createReadStream();
+		encoder.start();
+		encoder.setRepeat(0);
+		encoder.setDelay(100);
+		encoder.setQuality(200);
+		const canvas = createCanvas(262, 264);
 		const ctx = canvas.getContext('2d');
-		ctx.drawImage(base, 0, 0);
-		ctx.rotate(7 * (Math.PI / 180));
-		const illegalText = `${text} ${verb} NOW ILLEGAL.`;
-		let fontSize = 45;
-		ctx.font = `${fontSize}px Noto`;
-		while (ctx.measureText(illegalText).width > 550) {
-			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+		for (const frame of frames) {
+			const img = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'illegal', frame.file));
+			ctx.drawImage(img, 0, 0);
+			if (!frame.show) {
+				encoder.addFrame(ctx);
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				continue;
+			}
+			ctx.textBaseline = 'top';
+			ctx.font = '20px Impact';
+			const widthMid = frame.corners[2][0] - frame.corners[0][0];
+			const heightMid = frame.corners[2][1] - frame.corners[0][1];
+			const maxLen = frame.corners[0][0] - frame.corners[2][0];
+			ctx.fillText(`${text}\n${verb} NOW\nILLEGAL`, widthMid, heightMid, maxLen);
+			encoder.addFrame(Ctx);
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
 		}
-		const lines = await wrapText(ctx, illegalText, 200);
-		ctx.fillText(lines.join('\n'), 750, 290);
-		ctx.rotate(-7 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'illegal.png' }] });
+		encoder.finish();
+		const buffer = await streamToArray(stream);
+		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'illegal.gif' }] });
 	}
 };
