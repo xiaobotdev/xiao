@@ -12,7 +12,7 @@ module.exports = class PhoneCommand extends Command {
 			guildOnly: true,
 			throttling: {
 				usages: 1,
-				duration: 60
+				duration: 45
 			},
 			args: [
 				{
