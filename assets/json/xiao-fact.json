@@ -55,5 +55,15 @@
 	"The `jeopardy` command will play the Jeopardy think music if both you and the bot are in a voice channel when the command is used.",
 	"In the `undertale` command, you can provide \"ness\" as an option, a reference to UNDERTALE's origins as an EarthBound project.",
 	"There are many clones of Xiao. One of them, Time, even got a DMCA takedown notice!",
-	"Dragon Fire, the creator of Xiao, is forever alone."
+	"Dragon Fire, the creator of Xiao, is forever alone.",
+	"In the `rip` command, if you type text after the user's mention, you can add a cause of death to the tombstone.",
+	"The `ace-attorney` command supports various versions of the character's names. For example, Phoenix Wright can also be used by typing Naruhodo, his Japanese name.",
+	"The text in the box of the `axis-cult-sign-up` command's image reads \"ERIS PADS HER CHEST!\".",
+	"In the `roman` command, typing \"zero\" will give you \"_nulla_\", the latin word for zero. This is because zero does not exist in roman numerals.",
+	"The `horse-race` command contains several references: real horse names, My Little Pony characters, and various pop culture jokes. Even a few Xiao jokes are snuck in there!",
+	"In `horse-race`, you will occasionally encounter horses named \"Donald Trump\" and \"Dragon Fire\". Be careful, as these aren't horses, their times are based on the actual human running the race!",
+	"To this day, no one has actually tried to date Dragon Fire after using the `dating` command. Several irl friends thought the joke was funny, though.",
+	"The `screenshot` command uses a massive 2,000,000 entry array to check for adult sites. Some _still_ fall through the cracks.",
+	"The `ship` command will call you a narcissist if you test yourself with yourself.",
+	"Whenever Dragon Fire gets a real fortune cookie, he adds the fortune to the `fortune` command."
 ]
