@@ -59,14 +59,13 @@ module.exports = class IllegalCommand extends Command {
 		encoder.setRepeat(0);
 		encoder.setDelay(100);
 		encoder.setQuality(200);
-		const canvas = createCanvas(262, 264);
-		const ctx = canvas.getContext('2d');
 		for (const frame of frames) {
 			const img = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'illegal', frame.file));
+			const canvas = createCanvas(img.width, img.height);
+			const ctx = canvas.getContext('2d');
 			ctx.drawImage(img, 0, 0);
 			if (!frame.show) {
 				encoder.addFrame(ctx);
-				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				continue;
 			}
 			ctx.textBaseline = 'top';
@@ -76,7 +75,6 @@ module.exports = class IllegalCommand extends Command {
 			const maxLen = frame.corners[0][0] - frame.corners[2][0];
 			ctx.fillText(`${text}\n${verb} NOW\nILLEGAL`, widthMid, heightMid, maxLen);
 			encoder.addFrame(ctx);
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
 		}
 		encoder.finish();
 		const buffer = await streamToArray(stream);
