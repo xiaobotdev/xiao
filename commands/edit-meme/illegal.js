@@ -68,7 +68,7 @@ module.exports = class IllegalCommand extends Command {
 				encoder.addFrame(ctx);
 				continue;
 			}
-			ctx.textBaseline = 'top';
+			ctx.textBaseline = 'middle';
 			ctx.font = '20px Impact';
 			ctx.textAlign = 'center';
 			const maxLen = frame.corners[1][0] - frame.corners[0][0];
