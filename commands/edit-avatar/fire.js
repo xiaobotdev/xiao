@@ -54,7 +54,7 @@ module.exports = class FireCommand extends Command {
 			encoder.setQuality(200);
 			encoder.setTransparent('#000000');
 			for (let i = 0; i < frameCount; i += 2) {
-				const frameID = `frame-${i.toString().padStart(2, '0')}.gif`;
+				const frameID = `frame-${i.toString().padStart(2, '0')}.png`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', frameID));
 				const ratio = frame.width / frame.height;
 				const height = Math.round(avatar.width / ratio);
