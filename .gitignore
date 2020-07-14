@@ -13,6 +13,3 @@ config.json
 command-leaderboard.json
 
 # In-Development Commands
-assets/images/illegal/
-assets/json/illegal.json
-commands/edit-meme/illegal.js
