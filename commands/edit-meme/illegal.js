@@ -71,7 +71,7 @@ module.exports = class IllegalCommand extends Command {
 			ctx.textBaseline = 'top';
 			ctx.font = '20px Impact';
 			ctx.textAlign = 'center';
-			const maxLen = frame.corners[2][0] - frame.corners[0][0];
+			const maxLen = frame.corners[1][0] - frame.corners[0][0];
 			const widthMid = frame.corners[0][0] + (maxLen / 2);
 			const heightMid = frame.corners[0][1] + ((frame.corners[2][1] - frame.corners[0][1]) / 2);
 			console.log(widthMid, 'x', heightMid, 'x', maxLen);
