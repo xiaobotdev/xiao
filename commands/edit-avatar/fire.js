@@ -52,7 +52,6 @@ module.exports = class FireCommand extends Command {
 			encoder.setRepeat(0);
 			encoder.setDelay(100);
 			encoder.setQuality(200);
-			encoder.setTransparent('#000000');
 			for (let i = 0; i < frameCount; i += 2) {
 				const frameID = `frame-${i.toString().padStart(2, '0')}.png`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', frameID));
