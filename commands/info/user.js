@@ -39,7 +39,7 @@ module.exports = class UserCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const userFlags = user.flags.toArray();
+		const userFlags = user.flags ? user.flags.toArray() : [];
 		const embed = new MessageEmbed()
 			.setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true }))
 			.setAuthor(user.tag)
