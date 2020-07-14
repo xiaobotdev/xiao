@@ -75,7 +75,7 @@ module.exports = class IllegalCommand extends Command {
 			const heightMid = frame.corners[2][1] - frame.corners[0][1];
 			const maxLen = frame.corners[0][0] - frame.corners[2][0];
 			ctx.fillText(`${text}\n${verb} NOW\nILLEGAL`, widthMid, heightMid, maxLen);
-			encoder.addFrame(Ctx);
+			encoder.addFrame(ctx);
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 		}
 		encoder.finish();
