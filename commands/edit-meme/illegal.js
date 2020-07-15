@@ -23,7 +23,13 @@ module.exports = class IllegalCommand extends Command {
 				{
 					name: 'Donald J. Trump',
 					url: 'https://www.donaldjtrump.com/',
-					reason: 'Himself, Image'
+					reason: 'Himself'
+				},
+				{
+					name: 'IsNowIllegal.com',
+					url: 'http://isnowillegal.com/',
+					reason: 'Images',
+					reasonURL: 'https://github.com/ivanseidel/Is-Now-Illegal/tree/master/GIF/Trump'
 				},
 				{
 					name: 'ShareFonts.net',
