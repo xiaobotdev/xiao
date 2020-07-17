@@ -46,7 +46,11 @@ module.exports = class ReportRespondCommand extends Command {
 			.setFooter(`ID: ${msg.author.id}`)
 			.setTimestamp()
 			.setColor(typesColors[type]);
-		await user.send('Your report has been evaluated with the following message:', { embed });
-		return msg.say(`${displaytypes[type]} sent to ${user.tag}.`);
+		try {
+			await user.send('Your report has been evaluated with the following message:', { embed });
+			return msg.say(`${displaytypes[type]} sent to ${user.tag}.`);
+		} catch {
+			return msg.say(`Could not send ${displaytypes[type]} to ${user.tag}. Probably blocked me.`);
+		}
 	}
 };
