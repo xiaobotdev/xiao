@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
 const { base64 } = require('../../util/Util');
 const { WHATANIME_KEY } = process.env;
@@ -37,7 +38,8 @@ module.exports = class WhatAnimeCommand extends Command {
 			if (!status.status) {
 				return msg.reply(`Oh no, I'm out of requests! Please wait ${status.refresh} seconds and try again.`);
 			}
-			const { body } = await request.get(screenshot);
+			let { body } = await request.get(screenshot);
+			if (screenshot.endsWith('.gif')) body = await this.convertGIF(body);
 			const result = await this.search(body, msg.channel.nsfw);
 			if (result === 'size') return msg.reply('Please do not send an image larger than 10MB.');
 			if (result.nsfw && !msg.channel.nsfw) {
@@ -92,5 +94,13 @@ module.exports = class WhatAnimeCommand extends Command {
 		} catch {
 			return null;
 		}
+	}
+
+	async convertGIF(image) {
+		const data = await loadImage(image);
+		const canvas = createCanvas(data.width, data.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(data, 0, 0);
+		return canvas.toBuffer();
 	}
 };
