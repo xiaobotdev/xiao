@@ -253,7 +253,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 535
+Total: 536
 
 ### Utility:
 
@@ -626,6 +626,7 @@ Total: 535
 * **implode:** Draws an image or a user's avatar but imploded.
 * **invert:** Draws an image or a user's avatar but inverted.
 * **jeopardy-question:** Sends a Jeopardy Question with the text of your choice.
+* **lego-icon:** Edits an image or avatar onto a character icon from LEGO Star Wars.
 * **liquid-rescale:** Draws an image or a user's avatar but with liquid rescale from ImageMagick.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
@@ -1284,6 +1285,8 @@ here.
 	* hat (Megumin Hat Original Anime)
 - [Latlmes](https://www.latlmes.com/)
 	* latlmes (API)
+- [LEGO](https://www.lego.com/en-us)
+	* lego-icon ([Original Design](https://store.steampowered.com/app/32440/LEGO_Star_Wars__The_Complete_Saga/))
 - [LMGTFY](https://lmgtfy.com/)
 	* google (API)
 	* lmgtfy (API)
@@ -1662,6 +1665,8 @@ here.
 	* nitro ([Image](https://www.reddit.com/r/discordapp/comments/a9fr7x/troll_your_friends_with_this/))
 - [u/N1ffler](https://www.reddit.com/user/N1ffler/)
 	* sorting-hat ([Sorting Hat Quiz Analysis Data](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/))
+- [u/PowderedShmegma](https://www.reddit.com/user/PowderedShmegma/)
+	* lego-icon ([Image](https://www.reddit.com/r/legostarwars/comments/eheb76/lego_sw_character_icon_template/))
 - [u/SupremeMemesXD](https://www.reddit.com/user/SupremeMemesXD/)
 	* girl-worth-fighting-for ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/8h39vi/girl_worth_fighting_for_template/))
 - [u/THANOS_COPTER](https://www.reddit.com/user/THANOS_COPTER/)
