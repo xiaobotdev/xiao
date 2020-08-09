@@ -55,6 +55,8 @@ module.exports = class PaladinsCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0x1E9BAD)
 				.setAuthor('Paladins Guru', 'https://i.imgur.com/iIAdriK.png', 'https://paladins.guru/')
+				.setTitle('View Profile on Paladins Guru')
+				.setURL(`https://paladins.guru/profile/${data.player.id}`)
 				.addField('❯ Name', data.player.name, true)
 				.addField('❯ ID', data.player.id, true)
 				.addField('❯ Level', data.player.level, true)
