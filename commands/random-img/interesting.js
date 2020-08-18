@@ -1,6 +1,6 @@
 const SubredditCommand = require('../../structures/commands/Subreddit');
 const { list } = require('../../util/Util');
-const subreddits = ['interestingasfuck', 'mildlyinteresting'];
+const subreddits = ['interestingasfuck', 'mildlyinteresting', 'damnthatsinteresting'];
 
 module.exports = class InterestingCommand extends SubredditCommand {
 	constructor(client) {
