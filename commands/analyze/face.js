@@ -38,6 +38,7 @@ module.exports = class FaceCommand extends Command {
 		try {
 			const face = await this.detect(image);
 			if (!face) return msg.reply('There are no faces in this image.');
+			if (face === 'size') return msg.reply('This image is too large.');
 			const pronoun = face.gender.value === 'Male' ? 'He' : 'She';
 			const emotion = emotionResponse[emotions.indexOf(
 				emotions.slice(0).sort((a, b) => face.emotion[b] - face.emotion[a])[0]
@@ -57,12 +58,14 @@ module.exports = class FaceCommand extends Command {
 	}
 
 	async detect(image) {
+		const imgData = await request.get(image);
+		if (Buffer.byteLength(imgData.body) >= 2e+6) return 'size';
 		const { body } = await request
 			.post('https://api-us.faceplusplus.com/facepp/v3/detect')
+			.attach('image_file', imgData.body)
 			.query({
 				api_key: FACEPLUSPLUS_KEY,
 				api_secret: FACEPLUSPLUS_SECRET,
-				image_url: image,
 				return_attributes: 'gender,age,smiling,emotion,ethnicity,beauty'
 			});
 		if (!body.faces || !body.faces.length) return null;
