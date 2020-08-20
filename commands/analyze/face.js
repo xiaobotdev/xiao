@@ -52,6 +52,7 @@ module.exports = class FaceCommand extends Command {
 				${beautyScore > 50 ? beautyScore > 70 ? beautyScore > 90 ? 'Hot!' : 'Not bad.' : 'Not _too_ ugly.' : 'Uggggly!'}
 			`);
 		} catch (err) {
+			if (err.status === 400) return msg.reply('There are no faces in this image.');
 			if (err.status === 403) return msg.reply('Hold your horses! The command is overloaded! Try again soon.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
