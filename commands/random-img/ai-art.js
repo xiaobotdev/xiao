@@ -21,7 +21,7 @@ module.exports = class AiArtworkCommand extends Command {
 	}
 
 	async run(msg) {
-		const { body } = await request.get('https://thisartworkdoesnotexist.com/artwork');
+		const { body } = await request.get('https://thisartworkdoesnotexist.com/');
 		return msg.say('AI-Generated Artwork', { files: [{ attachment: body, name: 'ai-artwork.jpg' }] });
 	}
 };
