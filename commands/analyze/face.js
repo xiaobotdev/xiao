@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { oneLine } = require('common-tags');
+const { base64 } = require('../../util/Util');
 const { FACEPLUSPLUS_KEY, FACEPLUSPLUS_SECRET } = process.env;
 const emotions = ['anger', 'disgust', 'fear', 'happiness', 'neutral', 'sadness', 'surprise'];
 const emotionResponse = ['angry', 'disgusted', 'afraid', 'happy', 'uncaring', 'sad', 'surprised'];
@@ -63,8 +64,7 @@ module.exports = class FaceCommand extends Command {
 		if (Buffer.byteLength(imgData.body) >= 2e+6) return 'size';
 		const { body } = await request
 			.post('https://api-us.faceplusplus.com/facepp/v3/detect')
-			.set({ 'content-type': 'multipart/form-data' })
-			.attach('image_file', imgData.body)
+			.attach('image_base64', base64(imgData.body))
 			.query({
 				api_key: FACEPLUSPLUS_KEY,
 				api_secret: FACEPLUSPLUS_SECRET,
