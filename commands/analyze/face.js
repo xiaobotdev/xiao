@@ -63,7 +63,7 @@ module.exports = class FaceCommand extends Command {
 		if (Buffer.byteLength(imgData.body) >= 2e+6) return 'size';
 		const { body } = await request
 			.post('https://api-us.faceplusplus.com/facepp/v3/detect')
-			.headers({ 'Content-Type': 'multipart/form-data' })
+			.set({ 'Content-Type': 'multipart/form-data' })
 			.attach({ image_file: imgData.body })
 			.query({
 				api_key: FACEPLUSPLUS_KEY,
