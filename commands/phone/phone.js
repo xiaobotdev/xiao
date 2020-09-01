@@ -47,6 +47,7 @@ module.exports = class PhoneCommand extends Command {
 		const channels = this.client.channels.cache.filter(channel => channel.guild
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
+			&& !channel.topic.includes('<xiao:phone:no-random>')
 			&& !msg.guild.channels.cache.has(channel.id)
 			&& (channelID ? true : !this.client.inPhoneCall(channel)));
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
