@@ -248,6 +248,7 @@ in the appropriate channel's topic to use it.
 * `<xiao:phone>` Allows a channel to recieve phone calls from the `phone` command.
 * `<xiao:phone:no-voicemail>` Prevents this channel from recieving voicemails for missed calls.
 * `<xiao:phone:no-random>` Makes the channel only able to be called directly in the `phone` command, rather than be picked at random.
+* `<xiao:phone:block:INSERTIDHERE>` Blocks a channel or server from contacting the channel via phone.
 * `<xiao:phone-book:hide>` Hides a channel from the `phone-book` command.
 * `<xiao:portal>` Allows a channel to recieve portal messages from the `portal-send` command.
 * `<xiao:portal:hide-name>` Hides the channel and server name from the `portal-send` command when your channel is picked.
