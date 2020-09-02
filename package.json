@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
 		"@discordjs/opus": "^0.3.2",
-		"@vitalets/google-translate-api": "^3.0.0",
+		"@vitalets/google-translate-api": "^4.0.0",
 		"aki-api": "^5.1.1",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
@@ -46,7 +46,7 @@
 		"dotenv": "^8.2.0",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
-		"mathjs": "^7.1.0",
+		"mathjs": "^7.2.0",
 		"moment": "^2.27.0",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.31",
@@ -54,7 +54,7 @@
 		"pokersolver": "^2.1.4",
 		"random-js": "^2.1.0",
 		"rss-parser": "^3.9.0",
-		"stackblur-canvas": "^2.3.0",
+		"stackblur-canvas": "^2.4.0",
 		"winston": "^3.3.3"
 	},
 	"optionalDependencies": {
@@ -62,7 +62,7 @@
 		"utf-8-validate": "^5.0.2"
 	},
 	"devDependencies": {
-		"eslint": "^7.7.0",
+		"eslint": "^7.8.1",
 		"eslint-config-amber": "^2.0.3",
 		"eslint-plugin-json": "^2.1.2"
 	},
