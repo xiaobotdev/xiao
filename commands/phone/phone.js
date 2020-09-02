@@ -65,7 +65,7 @@ module.exports = class PhoneCommand extends Command {
 			if (channel.topic.includes(`<xiao:phone:block:${msg.channel.id}>`)) {
 				return msg.reply('That channel has blocked this channel from calling them.');
 			}
-			if (channel.topic.includes(`<xiao:phone:block:${mag.guild.id}>`)) {
+			if (channel.topic.includes(`<xiao:phone:block:${msg.guild.id}>`)) {
 				return msg.replY('That channel has blocked this server from calling them.');
 			}
 		} else {
