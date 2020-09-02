@@ -255,7 +255,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 538
+Total: 539
 
 ### Utility:
 
@@ -431,6 +431,7 @@ Total: 538
 * **anime-airing:** Responds with a list of the anime that air today.
 * **apod:** Responds with today's Astronomy Picture of the Day.
 * **calendar:** Responds with today's holidays.
+* **days-since:** Responds with how many days there have been since a certain date.
 * **days-until:** Responds with how many days there are until a certain date.
 * **doomsday-clock:** Responds with the current time of the Doomsday Clock.
 * **friday-the-13th:** Determines if today is Friday the 13th.
