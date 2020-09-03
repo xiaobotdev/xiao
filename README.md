@@ -255,7 +255,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 539
+Total: 540
 
 ### Utility:
 
@@ -820,6 +820,7 @@ Total: 539
 
 * **admin-phone:** Starts an admin phone call with a server. (Owner-Only)
 * **hang-up:** Hangs up the current phone call.
+* **phone-block:** Gives instructions for blocking a channel or server.
 * **phone-book:** Looks up phone-enabled servers.
 * **phone-info:** Gives information on the current phone call.
 * **phone:** Starts a phone call with a random server.
