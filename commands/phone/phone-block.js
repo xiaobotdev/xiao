@@ -23,8 +23,7 @@ module.exports = class PhoneBlockCommand extends Command {
 	run(msg, { query }) {
 		const channels = this.client.channels.cache.filter(channel => {
 			const search = query.toLowerCase();
-			return channel.guild
-				&& (channel.guild.name.toLowerCase().includes(search) || channel.name.includes(search) || channel.id === search);
+			return channel.guild && (channel.name.includes(search) || channel.id === search);
 		});
 		if (!channels.size) return msg.reply('Could not find any results.');
 		if (channels.size > 1) return msg.reply(`Found ${channels.size} channels, please be more specific (or use ID).`);
