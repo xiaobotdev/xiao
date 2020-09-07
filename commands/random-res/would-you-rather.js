@@ -12,26 +12,24 @@ module.exports = class WouldYouRatherCommand extends Command {
 			description: 'Responds with a random "Would you rather ...?" question.',
 			credit: [
 				{
-					name: 'rrrather',
-					url: 'https://www.rrrather.com/',
-					reason: 'API',
-					reasonURL: 'https://www.rrrather.com/botapi'
+					name: 'either',
+					url: 'http://either.io',
+					reason: 'API'
 				}
 			]
 		});
 	}
 
 	async run(msg) {
-		const data = await this.fetchScenario(msg.channel.nsfw || false);
+		const data = await this.fetchScenario();
 		return msg.say(stripIndents`
-			${data.title}
-			**${data.choicea}** or **${data.choiceb}**
+			${data.prefix ? `${data.prefix}, would you rather...` : 'Would you rather...'}
+			**${data.option_1}** or **${data.option_2}**
 		`);
 	}
 
-	async fetchScenario(nsfw) {
-		const { body } = await request.get('https://www.rrrather.com/botapi');
-		if (body.nsfw && !nsfw) return this.fetchScenario(nsfw);
-		return body;
+	async fetchScenario() {
+		const { text } = await request.get('http://either.io/');
+		return JSON.parse(text.match(/window.initial_question = (\{.+\})/)[1]).question;
 	}
 };
