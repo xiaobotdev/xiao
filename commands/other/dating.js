@@ -1,7 +1,15 @@
 const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { stripIndents } = require('common-tags');
 const texts = require('../../assets/json/dating');
-const { DATING_ALBUM_ID, DATING_NAME, DATING_AGE, DATING_TAG, DATING_ORIENTATION, DATING_SERIOUS } = process.env;
+const {
+	DATING_OFF,
+	DATING_ALBUM_ID,
+	DATING_NAME,
+	DATING_AGE,
+	DATING_TAG,
+	DATING_ORIENTATION,
+	DATING_SERIOUS
+} = process.env;
 
 module.exports = class DatingCommand extends ImgurAlbumCommand {
 	constructor(client) {
@@ -17,6 +25,7 @@ module.exports = class DatingCommand extends ImgurAlbumCommand {
 	}
 
 	generateText() {
+		if (DATING_OFF) return 'The dating feature is currently inactive. Check back soon!';
 		const text = texts[Math.floor(Math.random() * texts.length)];
 		return stripIndents`
 			**${DATING_NAME}, ${DATING_AGE}**

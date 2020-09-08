@@ -174,6 +174,7 @@ simply switch to basic text.
 This is the hilarious section that determines what comes out of the
 `dating` command.
 
+* `DATING_OFF` completely turns off the dating feature. Put anything here and it's off.
 * `DATING_ALBUM_ID` is an Imgur album ID (see #imgur-album-ids) that includes the photos you want to send in the command.
 * `DATING_NAME` is the name you want to go by in the command.
 * `DATING_AGE` is the age you want to display in the command.
