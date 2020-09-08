@@ -14,9 +14,11 @@ module.exports = class ImgurAlbumCommand extends Command {
 			reason: 'API',
 			reasonURL: 'https://apidocs.imgur.com/'
 		});
+		this.noImage = info.noImage;
 	}
 
 	async run(msg, { user }) {
+		if (this.noImage) return msg.say(this.generateText(msg, user));
 		try {
 			const image = await this.random();
 			if (!image) return msg.reply('This album has no images...');
