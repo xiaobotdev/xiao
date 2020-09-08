@@ -20,7 +20,8 @@ module.exports = class DatingCommand extends ImgurAlbumCommand {
 			memberName: 'dating',
 			description: 'Find the person of your dreams with this dating system!',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: DATING_ALBUM_ID
+			albumID: DATING_ALBUM_ID,
+			noImage: Boolean(DATING_OFF)
 		});
 	}
 
