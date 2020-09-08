@@ -14,7 +14,7 @@ module.exports = class ImgurAlbumCommand extends Command {
 			reason: 'API',
 			reasonURL: 'https://apidocs.imgur.com/'
 		});
-		this.noImage = info.noImage;
+		this.noImage = info.noImage || false;
 	}
 
 	async run(msg, { user }) {
