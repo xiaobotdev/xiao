@@ -51,7 +51,7 @@ module.exports = class YuGiOhCommand extends Command {
 				.setURL(`https://db.ygoprodeck.com/card/?search=${data.id}`)
 				.setDescription(data.type === 'Normal Monster' ? `_${shorten(data.desc)}_` : shorten(data.desc))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
-				.setThumbnail(data.card_images.image_url)
+				.setThumbnail(data.card_images[0].image_url)
 				.setFooter(data.id)
 				.addField('❯ Type', data.type, true)
 				.addField(data.type.includes('Monster') ? '❯ Race' : '❯ Spell Type', data.race, true);
