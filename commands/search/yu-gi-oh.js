@@ -39,19 +39,19 @@ module.exports = class YuGiOhCommand extends Command {
 	async run(msg, { card }) {
 		try {
 			const { body } = await request
-				.get('https://db.ygoprodeck.com/api/v4/cardinfo.php')
+				.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
 				.query({
-					name: card,
+					fname: card,
 					la: 'english'
 				});
-			const data = body[0][0];
+			const data = body.data[0];
 			const embed = new MessageEmbed()
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
 				.setURL(`https://db.ygoprodeck.com/card/?search=${data.id}`)
 				.setDescription(data.type === 'Normal Monster' ? `_${shorten(data.desc)}_` : shorten(data.desc))
 				.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
-				.setThumbnail(data.image_url)
+				.setThumbnail(data.card_images.image_url)
 				.setFooter(data.id)
 				.addField('❯ Type', data.type, true)
 				.addField(data.type.includes('Monster') ? '❯ Race' : '❯ Spell Type', data.race, true);
