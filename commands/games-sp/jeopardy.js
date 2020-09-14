@@ -75,7 +75,19 @@ module.exports = class JeopardyCommand extends Command {
 		const { body } = await request
 			.get('http://jservice.io/api/random')
 			.query({ count: 1 });
-		return body[0];
+		const data = body[0];
+		if (!data.question || !data.answer) {
+			await this.markInvalid(data.id);
+			return this.fetchQuestion();
+		}
+		return data;
+	}
+
+	async markInvalid(id) {
+		const { body } = await request
+			.post('http://jservice.io/api/invalid')
+			.query({ id });
+		return body;
 	}
 
 	async generateClueCard(question) {
