@@ -256,7 +256,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 540
+Total: 541
 
 ### Utility:
 
@@ -278,6 +278,7 @@ Total: 540
 * **eval:** Executes JavaScript code. (Owner-Only)
 * **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
 * **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
+* **exec:** Executes a command-line application. (Owner-Only)
 * **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
 * **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
 * **generate-fun-information:** Generates the "Fun Information" for Xiao's README. (Owner-Only)
