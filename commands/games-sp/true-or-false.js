@@ -56,7 +56,7 @@ module.exports = class TrueOrFalseCommand extends Command {
 			`);
 			const filter = res => {
 				if (res.author.id !== msg.author.id) return false;
-				return trueAns.includes(res.content.toUpperCase()) || falseAns.includes(res.content.toUpperCase());
+				return trueAns.includes(res.content.toLowerCase()) || falseAns.includes(res.content.toLowerCase());
 			}
 			const msgs = await msg.channel.awaitMessages(filter, {
 				max: 1,
