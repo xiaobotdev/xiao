@@ -37,7 +37,7 @@
 		"aki-api": "^5.1.1",
 		"canvas": "^2.6.1",
 		"cheerio": "^1.0.0-rc.3",
-		"cloc": "^2.6.0",
+		"cloc": "^2.7.0",
 		"common-tags": "^1.8.0",
 		"custom-translate": "^2.2.8",
 		"didyoumean2": "^4.1.0",
