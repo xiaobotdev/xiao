@@ -25,7 +25,7 @@ module.exports = class ExecCommand extends Command {
 	run(msg, { command }) {
 		const results = this.exec(command);
 		return msg.reply(stripIndents`
-			_${results.err ? 'Successfully executed.' : 'An error occurred:'}_
+			_${results.err ? 'An error occurred:' : 'Successfully executed.'}_
 			\`\`\`sh
 			${results.std}
 			\`\`\`
