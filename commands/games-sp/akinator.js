@@ -118,13 +118,11 @@ module.exports = class AkinatorCommand extends Command {
 					} else if (verification) {
 						win = false;
 						break;
+					} else if (timesGuessed >= 3 || forceGuess) {
+						win = true;
+						break;
 					} else {
-						if (timesGuessed < 3 && !forceGuess) {
-							await msg.say('Hmm... Is that so? I can keep going!');
-						} else {
-							win = true;
-							break;
-						}
+						await msg.say('Hmm... Is that so? I can keep going!');
 					}
 				}
 			}
