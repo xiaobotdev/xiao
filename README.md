@@ -256,7 +256,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 541
+Total: 542
 
 ### Utility:
 
@@ -564,6 +564,7 @@ Total: 541
 * **slots:** Play a game of slots.
 * **sorting-hat:** Take a quiz to determine your Hogwarts house.
 * **the-game:** If you think about the game, you lose.
+* **true-or-false:** Answer a true or false question.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **waldo:** Try to find Waldo with spoiler tags!
 * **whos-that-pokemon:** Guess who that Pokémon is.
@@ -1413,6 +1414,7 @@ here.
 	* lie-swatter ([API](https://opentdb.com/api_config.php))
 	* quiz ([API](https://opentdb.com/api_config.php))
 	* quiz-duel ([API](https://opentdb.com/api_config.php))
+	* true-or-false ([API](https://opentdb.com/api_config.php))
 - [OpenWeatherMap](https://openweathermap.org/)
 	* weather ([API](https://openweathermap.org/api))
 - [OPTIFONT](http://opti.netii.net/)
