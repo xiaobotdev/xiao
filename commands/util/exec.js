@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
-const { promisify } = require('util');
-const exec = promisify(require('child_process').exec);
+const { execSync } = require('child_process');
+const { stripIndents } = require('common-tags');
 
 module.exports = class ExecCommand extends Command {
 	constructor(client) {
@@ -22,14 +22,19 @@ module.exports = class ExecCommand extends Command {
 		});
 	}
 
-	async run(msg, { command }) {
-		const results = await this.exec(command);
-		return msg.code('sh', results);
+	run(msg, { command }) {
+		const results = this.exec(command);
+		return msg.reply(stripIndents`
+			_${results.err ? 'Successfully executed.' : 'An error occurred:'}_
+			\`\`\`sh
+			${results.std}
+			\`\`\`
+		`);
 	}
 
-	async exec(command) {
-		const { stdout, stderr } = await exec(command);
-		if (stderr) return stderr.trim();
-		return stdout.trim();
+	exec(command) {
+		const { stdout, stderr } = execSync(command);
+		if (stderr) return { err: true, std: stderr.trim() };
+		return { err: false, std: stdout.trim() };
 	}
 };
