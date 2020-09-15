@@ -119,9 +119,9 @@ module.exports = class AkinatorCommand extends Command {
 						win = false;
 						break;
 					} else {
-						const exMsg = timesGuessed >= 3 || forceGuess ? 'I give up.' : 'I can keep going!';
-						await msg.say(`Hmm... Is that so? ${exMsg}`);
-						if (timesGuessed >= 3 || forceGuess) {
+						if (timesGuessed < 3 && !forceGuess) {
+							await msg.say('Hmm... Is that so? I can keep going!');
+						} else {
 							win = true;
 							break;
 						}
