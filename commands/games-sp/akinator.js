@@ -103,7 +103,11 @@ module.exports = class AkinatorCommand extends Command {
 					const embed = new MessageEmbed()
 						.setColor(0xF78B26)
 						.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
-						.setDescription(`${guess.name}${guess.description ? `\n_${guess.description}_` : ''}`)
+						.setDescription(stripIndents`
+							${guess.name}${guess.description ? `\n_${guess.description}_` : ''}
+
+							_**Type [y]es or [n]o to continue.**_
+						`)
 						.setThumbnail(guess.absolute_picture_path || null)
 						.setFooter(forceGuess ? 'Final Guess' : `Guess ${timesGuessed}`);
 					await msg.embed(embed);
