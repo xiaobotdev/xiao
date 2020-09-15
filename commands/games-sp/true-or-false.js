@@ -1,18 +1,19 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
-const { shuffle, list } = require('../../util/Util');
+const { list } = require('../../util/Util');
 const difficulties = ['easy', 'medium', 'hard'];
-const choices = ['A', 'B', 'C', 'D'];
+const trueAns = ['true', 't', 'tru', 'yes', 'y'];
+const falseAns = ['false', 'f', 'no', 'n'];
 
-module.exports = class QuizCommand extends Command {
+module.exports = class TrueOrFalseCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'quiz',
-			aliases: ['trivia'],
+			name: 'true-or-false',
+			aliases: ['true-false', 'tf', 'quiz-boolean'],
 			group: 'games-sp',
-			memberName: 'quiz',
-			description: 'Answer a quiz question.',
+			memberName: 'true-or-false',
+			description: 'Answer a true or false question.',
 			details: `**Difficulties:** ${difficulties.join(', ')}`,
 			credit: [
 				{
@@ -41,28 +42,30 @@ module.exports = class QuizCommand extends Command {
 				.get('https://opentdb.com/api.php')
 				.query({
 					amount: 1,
-					type: 'multiple',
+					type: 'boolean',
 					encode: 'url3986',
 					difficulty
 				});
 			if (!body.results) return msg.reply('Oh no, a question could not be fetched. Try again later!');
-			const answers = body.results[0].incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
 			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
-			answers.push(correct);
-			const shuffled = shuffle(answers);
+			const correctBool = correct === 'true';
 			await msg.reply(stripIndents`
 				**You have 15 seconds to answer this question.**
 				${decodeURIComponent(body.results[0].question)}
-				${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join('\n')}
+				**[T]rue or [F]alse?**
 			`);
-			const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toUpperCase());
+			const filter = res => {
+				if (res.author.id !== msg.author.id) return false;
+				return trueAns.includes(res.content.toUpperCase()) || falseAns.includes(res.content.toUpperCase());
+			}
 			const msgs = await msg.channel.awaitMessages(filter, {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${correct}.`);
-			const win = shuffled[choices.indexOf(msgs.first().content.toUpperCase())] === correct;
-			if (!win) return msg.reply(`Nope, sorry, it's ${correct}.`);
+			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${correctBool}.`);
+			const ans = msgs.first().content.toLowerCase();
+			const ansBool = trueAns.includes(ans);
+			if (correctBool !== ansBool) return msg.reply(`Nope, sorry, it's ${correctBool}.`);
 			return msg.reply('Nice job! 10/10! You deserve some cake!');
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
