@@ -51,7 +51,7 @@ module.exports = class QuizCommand extends Command {
 			answers.push(correct);
 			const shuffled = shuffle(answers);
 			await msg.reply(stripIndents`
-				**You have 15 seconds to answer this question.**
+				**You have 15 seconds. The category is _${decodeURIComponent(body.results[0].category)}_.**
 				${decodeURIComponent(body.results[0].question)}
 				${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join('\n')}
 			`);
