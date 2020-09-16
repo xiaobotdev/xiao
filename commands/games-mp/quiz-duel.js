@@ -1,7 +1,9 @@
 const Command = require('../../structures/Command');
-const { stripIndents, oneLine } = require('common-tags');
 const request = require('node-superfetch');
-const { shuffle, verify } = require('../../util/Util');
+const { stripIndents } = require('common-tags');
+const Collection = require('@discordjs/collection');
+const { delay, awaitPlayers, shuffle } = require('../../util/Util');
+const { SUCCESS_EMOJI_ID } = process.env;
 const choices = ['A', 'B', 'C', 'D'];
 
 module.exports = class QuizDuelCommand extends Command {
@@ -11,7 +13,7 @@ module.exports = class QuizDuelCommand extends Command {
 			aliases: ['trivia-duel'],
 			group: 'games-mp',
 			memberName: 'quiz-duel',
-			description: 'Answer a series of quiz questions against an opponent.',
+			description: 'Answer a series of quiz questions against other opponents.',
 			credit: [
 				{
 					name: 'Open Trivia DB',
@@ -22,116 +24,138 @@ module.exports = class QuizDuelCommand extends Command {
 			],
 			args: [
 				{
-					key: 'opponent',
-					prompt: 'What user would you like to play against?',
-					type: 'user'
-				},
-				{
-					key: 'maxPts',
-					label: 'maximum amount of points',
-					prompt: 'What amount of points should determine the winner?',
+					key: 'players',
+					prompt: 'How many players are you expecting to have?',
 					type: 'integer',
 					min: 1,
-					max: 10
+					max: 100
 				}
 			]
 		});
 	}
 
-	async run(msg, { opponent, maxPts }) {
-		if (opponent.bot) return msg.reply('Bots may not be played against.');
-		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
+	async run(msg, { players }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			await msg.say(`${opponent}, do you accept this challenge?`);
-			const verification = await verify(msg.channel, opponent);
-			if (!verification) {
-				this.client.games.delete(msg.channel.id);
-				return msg.say('Looks like they declined...');
+			const awaitedPlayers = await awaitPlayers(msg, players);
+			let turn = 0;
+			const pts = new Collection();
+			for (const player of awaitedPlayers) {
+				pts.set(player, {
+					points: 0,
+					id: player,
+					user: await this.client.users.fetch(player)
+				});
 			}
-			let winner = null;
-			let userPoints = 0;
-			let oppoPoints = 0;
+			const questions = await this.fetchQuestions();
 			let lastTurnTimeout = false;
-			while (!winner) {
-				const question = await this.fetchQuestion();
+			while (questions.length) {
+				++turn;
+				const question = questions[0];
+				questions.shift();
 				await msg.say(stripIndents`
-					**You have 15 seconds to answer this question.**
+					**${turn}. ${question.category}**
 					${question.question}
 					${question.answers.map((answer, i) => `**${choices[i]}.** ${answer}`).join('\n')}
 				`);
-				const answered = [];
 				const filter = res => {
-					const choice = res.content.toUpperCase();
-					if (!choices.includes(choice) || answered.includes(res.author.id)) return false;
-					if (![msg.author.id, opponent.id].includes(res.author.id)) return false;
-					answered.push(res.author.id);
-					if (question.answers[choices.indexOf(res.content.toUpperCase())] !== question.correct) {
-						msg.say(`${res.author}, that's incorrect!`).catch(() => null);
-						return false;
+					if (!awaitedPlayers.includes(res.author.id)) return false;
+					const answer = res.content.toUpperCase();
+					if (choices.includes(answer)) {
+						res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+						return true;
 					}
-					return true;
+					return false;
 				};
 				const msgs = await msg.channel.awaitMessages(filter, {
-					max: 1,
-					time: 15000
+					max: pts.size,
+					time: 30000
 				});
 				if (!msgs.size) {
-					await msg.say(`Sorry, time is up! It was ${question.correct}.`);
-					if (!answered.length) {
-						if (lastTurnTimeout) {
-							winner = 'time';
-							break;
-						} else {
-							lastTurnTimeout = true;
-							continue;
-						}
+					await msg.say(`No answers? Well, it was **${question.correct}**.`);
+					if (lastTurnTimeout) {
+						break;
+					} else {
+						lastTurnTimeout = true;
+						continue;
 					}
-					continue;
 				}
-				const result = msgs.first();
-				const userWin = result.author.id === msg.author.id;
-				if (userWin) ++userPoints;
-				else ++oppoPoints;
-				if (userPoints >= maxPts) winner = msg.author;
-				else if (oppoPoints >= maxPts) winner = opponent;
-				const score = oneLine`
-					${userWin ? '**' : ''}${userPoints}${userWin ? '**' : ''} -
-					${userWin ? '' : '**'}${oppoPoints}${userWin ? '' : '**'}
-				`;
-				await msg.say(`Nice one, ${result.author}! The score is now ${score}!`);
+				const answers = msgs.map(res => {
+					return {
+						answer: question.answers[choices.indexOf(res.content.toUpperCase())],
+						id: res.author.id
+					};
+				});
+				const correct = answers.filter(answer => answer.answer === question.correct);
+				for (const answer of correct) {
+					const player = pts.get(answer.id);
+					if (correct[0].id === answer.id) player.points += 75;
+					else player.points += 50;
+				}
+				await msg.say(stripIndents`
+					It was... **${question.correct}**!
+
+					_Fastest Guess: ${correct.length ? `${pts.get(correct[0].id).user.tag} (+75 pts)` : 'No One...'}_
+
+					${questions.length ? '_Next round starting in 5 seconds..._' : ''}
+				`);
 				if (lastTurnTimeout) lastTurnTimeout = false;
+				if (questions.length) await delay(5000);
 			}
 			this.client.games.delete(msg.channel.id);
-			if (winner === 'time') return msg.say('Game ended due to inactivity.');
-			if (!winner) return msg.say('Aww, no one won...');
-			return msg.say(`Congrats, ${winner}, you won!`);
+			const winner = pts.sort((a, b) => b.points - a.points).first().user;
+			return msg.say(stripIndents`
+				Congrats, ${winner}!
+
+				__**Top 10:**__
+				${this.makeLeaderboard(pts).slice(0, 10).join('\n')}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 
-	async fetchQuestion() {
+	async fetchQuestions() {
 		const { body } = await request
 			.get('https://opentdb.com/api.php')
 			.query({
-				amount: 1,
+				amount: 7,
 				type: 'multiple',
 				encode: 'url3986'
 			});
-		if (!body.results) return this.fetchQuestion();
-		const question = body.results[0];
-		const answers = question.incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
-		const correct = decodeURIComponent(question.correct_answer.toLowerCase());
-		answers.push(correct);
-		const shuffled = shuffle(answers);
-		return {
-			question: decodeURIComponent(question.question),
-			answers: shuffled,
-			correct
-		};
+		if (!body.results) return this.fetchQuestions();
+		const questions = body.results;
+		return questions.map(question => {
+			const answers = question.incorrect_answers.map(answer => decodeURIComponent(answer.toLowerCase()));
+			const correct = decodeURIComponent(question.correct_answer.toLowerCase());
+			answers.push(correct);
+			return {
+				question: decodeURIComponent(question.question),
+				category: decodeURIComponent(question.category),
+				answers: shuffle(answers),
+				correct
+			};
+		});
+	}
+
+	makeLeaderboard(pts) {
+		let i = 0;
+		let previousPts = null;
+		let positionsMoved = 1;
+		return pts
+			.sort((a, b) => b.points - a.points)
+			.map(player => {
+				if (previousPts === player.points) {
+					positionsMoved++;
+				} else {
+					i += positionsMoved;
+					positionsMoved = 1;
+				}
+				previousPts = player.points;
+				return `**${i}.** ${player.user.tag} (${player.points} Point${player.points === 1 ? '' : 's'})`;
+			});
 	}
 };
