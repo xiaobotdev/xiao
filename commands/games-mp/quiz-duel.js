@@ -83,8 +83,9 @@ module.exports = class QuizDuelCommand extends Command {
 					}
 				}
 				const answers = msgs.map(res => {
+					const choice = choices.indexOf(res.content.toUpperCase());
 					return {
-						answer: question.answers[choices.indexOf(res.content.toUpperCase())],
+						answer: question.answers[choice],
 						id: res.author.id
 					};
 				});
