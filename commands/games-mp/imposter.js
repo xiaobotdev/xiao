@@ -3,6 +3,7 @@ const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
 const { delay, awaitPlayers, list } = require('../../util/Util');
 const words = require('../../assets/json/imposter');
+const { SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class ImposterCommand extends Command {
 	constructor(client) {
@@ -55,7 +56,6 @@ module.exports = class ImposterCommand extends Command {
 			let lastTurnTimeout = false;
 			const winners = [];
 			while (players.some(player => !player.killed) > 2) {
-				++turn;
 				const playersLeft = players.filter(player => !player.killed).size;
 				await msg.say(`There are **${playersLeft}** players left. Talk until someone says the kill word.`);
 				const filter = res => {
@@ -88,18 +88,19 @@ module.exports = class ImposterCommand extends Command {
 				}
 				await delay(60000);
 				const choices = players.filter(player => !player.killed);
+				const ids = choices.map(player => player.id);
 				await msg.say(stripIndents`
 					Alright, who do you think the imposter is? You have 1 minute to vote.
 
 					_Type the number of the player you think is the imposter._
 					${choices.map((player, i) => `**${i + 1}.** ${player.user.tag}`).join('\n')}
-				`)
+				`);
 				const votes = new Collection();
 				const voteFilter = res => {
 					const player = players.get(res.author.id);
 					if (!player || player.killed) return false;
 					const int = Number.parseInt(res.content, 10);
-					if (int >= 1 && int <= players.filter(player => !player.killed).size) {
+					if (int >= 1 && int <= players.filter(p => !p.killed).size) {
 						const currentVotes = votes.get(choices[int - 1]);
 						votes.set(ids[int - 1], {
 							votes: currentVotes ? currentVotes + 1 : 1,
