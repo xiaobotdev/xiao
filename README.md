@@ -256,7 +256,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 542
+Total: 543
 
 ### Utility:
 
@@ -580,6 +580,7 @@ Total: 542
 * **guesspionage:** Tests your knowledge of humans as you guess how people responded to poll questions.
 * **gunfight:** Engage in a western gunfight against another user. High noon.
 * **island:** Who will be the final two left on the island after a series of vote-kicks?
+* **imposter:** Who is the imposter among us?
 * **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **poker:** Play poker with up to 5 other users.
