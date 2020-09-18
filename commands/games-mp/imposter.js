@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { stripIndents } = require('common-tags');
+const { stripIndents, oneLine } = require('common-tags');
 const Collection = require('@discordjs/collection');
 const { delay, awaitPlayers, list } = require('../../util/Util');
 const words = require('../../assets/json/imposter');
@@ -42,6 +42,13 @@ module.exports = class ImposterCommand extends Command {
 			const wordRegex = new RegExp(`\\b${word}\\b`, 'i');
 			const players = new Collection();
 			const imposter = awaitedPlayers[Math.floor(Math.random() * awaitedPlayers.length)];
+			await msg.say(oneLine`
+				Welcome to Imposter! In this game, you will have to figure out who the imposter is!
+				All you have to do is watch what other players say. There's a special word called a kill word.
+				Only the imposter can say it, and if anyone else does, they die! To win, figure out what the kill
+				word is, and try to catch the imposter saying it. As for the imposter, you know the word, try to get
+				everyone to say it!
+			`);
 			for (const player of awaitedPlayers) {
 				players.set(player, {
 					id: player,
@@ -51,11 +58,11 @@ module.exports = class ImposterCommand extends Command {
 				});
 				const newPlayer = players.get(player);
 				if (imposter === player) newPlayer.user.send(`You are the imposter. The kill word is ${word}.`);
-				else newPlayer.user.send('You are not the imposter.');
+				else newPlayer.user.send('You are not the imposter. Be careful what you say!');
 			}
 			let lastTurnTimeout = false;
 			const winners = [];
-			while (players.some(player => !player.killed) > 2) {
+			while (players.filter(player => !player.killed).size > 2) {
 				const playersLeft = players.filter(player => !player.killed).size;
 				await msg.say(`There are **${playersLeft}** players left. Talk until someone says the kill word.`);
 				const filter = res => {
