@@ -256,7 +256,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 543
+Total: 544
 
 ### Utility:
 
@@ -843,6 +843,7 @@ Total: 543
 
 ### Roleplay:
 
+* **bite:** Bites a user.
 * **blush:** Blushes at a user.
 * **bro-hoof:** Gives a user a bro hoof.
 * **celebrate:** Celebrates.
