@@ -256,7 +256,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 544
+Total: 547
 
 ### Utility:
 
@@ -828,6 +828,12 @@ Total: 544
 * **phone-book:** Looks up phone-enabled servers.
 * **phone-info:** Gives information on the current phone call.
 * **phone:** Starts a phone call with a random server.
+
+### Coding Tools:
+
+* **beautify:** Beautifies code with js-beautify.
+* **lint-rule:** Responds with information on an ESLint rule.
+* **lint:** Lints code using ESLint.
 
 ### Other:
 

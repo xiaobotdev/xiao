@@ -1,0 +1,41 @@
+{
+	"goodMessages": [
+		"It's all good fam.",
+		"Nice job.",
+		"Great code.",
+		"I like.",
+		"Nice code, bro.",
+		"Nice code!",
+		"Always a pleasure to see good and nice code."
+	],
+	"badMessages": [
+		"I think you may want to take a second look.",
+		"Looks like you have some problems!",
+		"Did you lint your code?",
+		"Get a linter bro.",
+		"Uh oh!",
+		"I don't like this code.",
+		"BAD!",
+		"Did you try to copy that off of GitHub?",
+		"Do you know JS?",
+		"smh",
+		"no",
+		"You are dumb because:",
+		"You tried, but failed miserably.",
+		"What a noob."
+	],
+	"defaultConfig": {
+		"extends": "eslint:recommended",
+		"parserOptions": {
+			"ecmaVersion": 2020,
+			"sourceType": "module"
+		},
+		"env": {
+			"es6": true,
+			"node": true
+		},
+		"rules": {
+			"no-console": 0
+		}
+	}
+}

@@ -36,6 +36,7 @@ client.registry
 		['edit-number', 'Number Manipulation'],
 		['voice', 'Voice-Based'],
 		['phone', 'Phone'],
+		['code', 'Coding Tools'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay']
 	])

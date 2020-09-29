@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "119.27.1",
+	"version": "119.28.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -44,8 +44,10 @@
 		"discord.js": "^12.3.1",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
+		"eslint": "^7.10.0",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
+		"js-beautify": "^1.13.0",
 		"mathjs": "^7.3.0",
 		"moment": "^2.29.0",
 		"moment-duration-format": "^2.3.2",
@@ -62,7 +64,6 @@
 		"utf-8-validate": "^5.0.2"
 	},
 	"devDependencies": {
-		"eslint": "^7.10.0",
 		"eslint-config-amber": "^2.0.3",
 		"eslint-plugin-json": "^2.1.2"
 	},
