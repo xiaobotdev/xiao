@@ -21,7 +21,7 @@ module.exports = class BeautifyCommand extends Command {
 		});
 	}
 
-	async run(msg, { code }) {
+	run(msg, { code }) {
 		return msg.reply(stripIndents`
 			\`\`\`${code.lang || 'js'}
 			${beautify(code.code)}
