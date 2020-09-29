@@ -24,7 +24,7 @@ module.exports = class LintCommand extends Command {
 		});
 	}
 
-	async run(msg, { code }) {
+	run(msg, { code }) {
 		if (!code.lang || ['js', 'javascript'].includes(code.lang)) {
 			const errors = linter.verify(code.code, defaultConfig);
 			if (!errors.length) return msg.reply(goodMessages[Math.floor(Math.random() * goodMessages.length)]);
