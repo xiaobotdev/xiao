@@ -6,12 +6,12 @@ module.exports = class CodeArgumentType extends ArgumentType {
 		super(client, 'code');
 	}
 
-	async validate(value) {
+	validate(value) {
 		if (!value) return false;
 		return true;
 	}
 
-	parse(value, msg) {
+	async parse(value, msg) {
 		if (!value) return null;
 		if (/^[0-9]+$/.test(value)) {
 			try {
