@@ -11,7 +11,7 @@ module.exports = class CodeArgumentType extends ArgumentType {
 		return true;
 	}
 
-	parse(value) {
+	parse(value, msg) {
 		if (!value) return null;
 		if (/^[0-9]+$/.test(value)) {
 			try {
