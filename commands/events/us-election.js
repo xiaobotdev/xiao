@@ -30,7 +30,7 @@ module.exports = class UsElectionCommand extends Command {
 		try {
 			const { winners, simulations } = await this.getList();
 			const chances = Object.entries(winners)
-				.map(([canidate, chances]) => `**${canidate}:** ${chances} in ${simulations}`);
+				.map(([canidate, chance]) => `**${canidate}:** ${chance} in ${simulations}`);
 			return msg.say(stripIndents`
 				__**Chances of Winning the 2020 US Presidential Election (Accoring to FiveThirtyEight):**__
 				${chances.join('\n')}
