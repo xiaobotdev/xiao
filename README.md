@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 547
+Total: 548
 
 ### Utility:
 
@@ -447,6 +447,7 @@ Total: 547
 * **people-in-space:** Responds with the people currently in space.
 * **time:** Responds with the current time in a particular location.
 * **today-in-history:** Responds with an event that occurred today in history.
+* **us-election:** Responds with the odds of each canidate winning the presidential election, according to 538.
 
 ### Search:
 
@@ -1075,6 +1076,8 @@ here.
 	* wikia ([API](https://www.wikia.com/api/v1/))
 - [festivalclaca.cat](https://www.festivalclaca.cat/)
 	* hat ([Soviet Hat Image](https://www.festivalclaca.cat/maxvi/mmbwJ/))
+- [FiveThirtyEight](https://fivethirtyeight.com/)
+	* us-election ([API](https://projects.fivethirtyeight.com/2020-election-forecast/))
 - [Flickr](https://www.flickr.com/)
 	* flickr ([API](https://www.flickr.com/services/api/))
 - [FML](https://www.fmylife.com/)
