@@ -32,7 +32,7 @@ module.exports = class UsElectionCommand extends Command {
 			const chances = Object.entries(winners)
 				.map(([canidate, chances]) => `**${canidate}:** ${chances} in ${simulations}`);
 			return msg.say(stripIndents`
-				**Chances of Winning the 2020 US Presidential Election (Accoring to FiveThirtyEight):**
+				__**Chances of Winning the 2020 US Presidential Election (Accoring to FiveThirtyEight):**__
 				${chances.join('\n')}
 
 				_More detailed information is available at <https://projects.fivethirtyeight.com/2020-election-forecast/>._
