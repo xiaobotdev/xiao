@@ -50,6 +50,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Number Manipulation](#number-manipulation)
 	* [Voice-Based](#voice-based)
 	* [Phone](#phone)
+	* [Coding Tools](#coding-tools)
 	* [Other](#other)
 	* [Roleplay](#roleplay)
 - [Other Features](#other-features)
