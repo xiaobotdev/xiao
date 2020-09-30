@@ -12,7 +12,6 @@ module.exports = class UrbanCommand extends Command {
 			memberName: 'urban',
 			description: 'Defines a word, but with Urban Dictionary.',
 			clientPermissions: ['EMBED_LINKS'],
-			nsfw: true,
 			credit: [
 				{
 					name: 'Urban Dictionary',
