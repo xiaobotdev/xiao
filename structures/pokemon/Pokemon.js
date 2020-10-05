@@ -6,12 +6,19 @@ module.exports = class Pokemon {
 	constructor(store, data) {
 		this.store = store;
 		this.id = data.id;
-		this.name = data.names.find(entry => entry.language.name === 'en').name;
+		const slugName = firstUpperCase(data.name).replace(new RegExp(`${this.slug}-?`, 'i'), '').replace(/-/g, ' ');
+		this.name = data.names.length
+			? data.names.find(entry => entry.language.name === 'en').name
+			: slugName;
 		this.entries = removeDuplicates(data.flavor_text_entries
 			.filter(entry => entry.language.name === 'en')
 			.map(entry => entry.flavor_text.replace(/\n|\f|\r/g, ' ')));
-		this.names = data.names.map(entry => ({ name: entry.name, language: entry.language.name }));
-		this.genus = `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`;
+		this.names = data.names.length
+			? data.names.map(entry => ({ name: entry.name, language: entry.language.name }))
+			: [slugName];
+		this.genus = data.genera.length
+			? `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`
+			: 'Genus Unknown';
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
 				.replace(new RegExp(`${this.slug}-?`, 'i'), '')
@@ -24,7 +31,10 @@ module.exports = class Pokemon {
 				types: data.missingno ? variety.types : []
 			};
 		});
-		this.chain = { url: data.evolution_chain.url, data: data.missingno ? missingno.chain : [] };
+		this.chain = {
+			url: data.evolution_chain ? data.evolution_chain.url : null,
+			data: data.missingno ? missingno.chain : data.evolution_chain ? [] : [data.id]
+		};
 		this.typesCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 	}
@@ -40,17 +50,17 @@ module.exports = class Pokemon {
 
 	get spriteImageURL() {
 		if (this.missingno) return missingno.sprite;
-		return `https://www.serebii.net/sunmoon/pokemon/${this.displayID}.png`;
+		return `https://www.serebii.net/swordshield/pokemon/${this.displayID}.png`;
 	}
 
 	get boxImageURL() {
 		if (this.missingno) return missingno.box;
-		return `https://www.serebii.net/pokedex-sm/icon/${this.displayID}.png`;
+		return `https://www.serebii.net/pokedex-swsh/icon/${this.displayID}.png`;
 	}
 
 	get serebiiURL() {
 		if (this.missingno) return missingno.url;
-		return `https://www.serebii.net/pokedex-sm/${this.displayID}.shtml`;
+		return `https://www.serebii.net/pokedex-swsh/${this.displayID}.shtml`;
 	}
 
 	async fetchTypes() {
