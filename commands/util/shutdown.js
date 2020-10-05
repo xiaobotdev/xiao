@@ -40,7 +40,7 @@ module.exports = class ShutdownCommand extends Command {
 			if (calls > 0) {
 				currentString += `${calls} phone call${calls > 1 ? 's' : ''}`;
 				if (games < 1 && timers > 0) currentString += ' and ';
-				if (timers > 0) currentString += ', and';
+				if (timers > 0) currentString += ', and ';
 				if (calls === 1 && (games > 0 ? games === 1 : true)) areIs = 'is';
 			}
 			if (timers > 0) {
