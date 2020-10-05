@@ -25,13 +25,23 @@ module.exports = class ShutdownCommand extends Command {
 	}
 
 	async run(msg, { code }) {
-		if (this.client.games.size > 0) {
-			await msg.reply(`There are currently **${this.client.games.size}** games going on. Are you sure?`);
-			const verification = await verify(msg.channel, msg.author);
-			if (!verification) return msg.say('Aborted restart.');
-		}
-		if (this.client.phone.size > 0) {
-			await msg.reply(`There are currently **${this.client.phone.size}** phone calls going on. Are you sure?`);
+		const games = this.client.games.size;
+		const calls = this.client.phone.size;
+		const timers = this.client.registry.commands.get('timer').timers.size;
+		if (games > 0 || calls > 0 || timers > 0) {
+			let currentString = '';
+			if (games > 0) {
+				currentString += `${games} games`;
+				if ((calls > 0 && timers < 1) || (calls < 1 && timers > 0)) currentString += ' and ';
+				else if (calls > 0 && timers > 0) currentString += ', ';
+			}
+			if (calls > 0) {
+				currentString += `${calls} phone calls`;
+				if (games < 1 && timers > 0) currentString += ' and ';
+				if (timers > 0) currentString += ', and';
+			}
+			if (timers > 0) currentString += `${timers} timers`;
+			await msg.reply(`There are currently ${currentString}. Are you sure?`);
 			const verification = await verify(msg.channel, msg.author);
 			if (!verification) return msg.say('Aborted restart.');
 		}
