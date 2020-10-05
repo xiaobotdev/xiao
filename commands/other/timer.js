@@ -18,12 +18,18 @@ module.exports = class TimerCommand extends Command {
 				}
 			]
 		});
+
+		this.timers = new Map();
 	}
 
 	async run(msg, { time }) {
+		if (this.timers.has(msg.channel.id)) return msg.reply('Only one timer can be set per channel.');
 		const display = time > 59 ? `${time / 60} minutes` : `${time} seconds`;
-		await msg.say(`🕰️ Set a timer for **${display}**.`);
-		await delay(time * 1000);
-		return msg.say(`🕰️ Your **${display}** timer is finished ${msg.author}!`);
+		const timeout = setTimeout(async () => {
+			await msg.say(`🕰️ Your **${display}** timer is finished ${msg.author}!`);
+			this.timers.delete(msg.channel.id);
+		}, time * 1000);
+		this.timers.set(msg.channel.id, timeout);
+		return msg.say(`🕰️ Set a timer for **${display}**.`);
 	}
 };
