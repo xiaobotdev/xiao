@@ -28,20 +28,26 @@ module.exports = class ShutdownCommand extends Command {
 		const games = this.client.games.size;
 		const calls = this.client.phone.size;
 		const timers = this.client.registry.commands.get('timer').timers.size;
+		let areIs = 'are';
 		if (games > 0 || calls > 0 || timers > 0) {
 			let currentString = '';
 			if (games > 0) {
-				currentString += `${games} games`;
+				currentString += `${games} game${games > 1 ? 's' : ''}`;
 				if ((calls > 0 && timers < 1) || (calls < 1 && timers > 0)) currentString += ' and ';
 				else if (calls > 0 && timers > 0) currentString += ', ';
+				if (games === 1) areIs = 'is';
 			}
 			if (calls > 0) {
-				currentString += `${calls} phone calls`;
+				currentString += `${calls} phone call${calls > 1 ? 's' : ''}`;
 				if (games < 1 && timers > 0) currentString += ' and ';
 				if (timers > 0) currentString += ', and';
+				if (calls === 1 && (games > 0 ? games === 1 : true)) areIs = 'is';
 			}
-			if (timers > 0) currentString += `${timers} timers`;
-			await msg.reply(`There are currently ${currentString}. Are you sure?`);
+			if (timers > 0) {
+				currentString += `${timers} timer${timers > 1 ? 's' : ''}`;
+				if (timers === 1 && (games > 0 ? games === 1 : true) && (calls > 0 ? calls === 1 : true)) areIs = 'is';
+			}
+			await msg.reply(`There ${areIs} currently **${currentString}**. Are you sure?`);
 			const verification = await verify(msg.channel, msg.author);
 			if (!verification) return msg.say('Aborted restart.');
 		}
