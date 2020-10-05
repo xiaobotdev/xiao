@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const { delay } = require('../../util/Util');
 
 module.exports = class TimerCommand extends Command {
 	constructor(client) {
@@ -22,7 +21,7 @@ module.exports = class TimerCommand extends Command {
 		this.timers = new Map();
 	}
 
-	async run(msg, { time }) {
+	run(msg, { time }) {
 		if (this.timers.has(msg.channel.id)) return msg.reply('Only one timer can be set per channel.');
 		const display = time > 59 ? `${time / 60} minutes` : `${time} seconds`;
 		const timeout = setTimeout(async () => {
