@@ -6,7 +6,7 @@ module.exports = class Pokemon {
 	constructor(store, data) {
 		this.store = store;
 		this.id = data.id;
-		const slugName = firstUpperCase(data.name).replace(new RegExp(`${this.slug}-?`, 'i'), '').replace(/-/g, ' ');
+		const slugName = firstUpperCase(data.name).replace(/-/g, ' ');
 		this.name = data.names.length
 			? data.names.find(entry => entry.language.name === 'en').name
 			: slugName;
