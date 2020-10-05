@@ -4,7 +4,7 @@ const request = require('node-superfetch');
 const { list } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 const difficulties = ['easy', 'hard'];
-const pokemonCount = 807;
+const pokemonCount = 893;
 
 module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {
