@@ -15,10 +15,10 @@ module.exports = class Pokemon {
 			.map(entry => entry.flavor_text.replace(/\n|\f|\r/g, ' ')));
 		this.names = data.names.length
 			? data.names.map(entry => ({ name: entry.name, language: entry.language.name }))
-			: [slugName];
+			: [{ name: slugName, language: 'en' }];
 		this.genus = data.genera.length
 			? `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`
-			: 'Genus Unknown';
+			: 'Galar Native';
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
 				.replace(new RegExp(`${this.slug}-?`, 'i'), '')
