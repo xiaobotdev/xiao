@@ -96,11 +96,12 @@ module.exports = class ImposterCommand extends Command {
 				await delay(60000);
 				const choices = players.filter(player => !player.killed);
 				const ids = choices.map(player => player.id);
+				let i = 0;
 				await msg.say(stripIndents`
 					Alright, who do you think the imposter is? You have 1 minute to vote.
 
 					_Type the number of the player you think is the imposter._
-					${choices.map((player, i) => `**${i + 1}.** ${player.user.tag}`).join('\n')}
+					${choices.map(player => { i++; return `**${i}.** ${player.user.tag}`; }).join('\n')}
 				`);
 				const votes = new Collection();
 				const voteFilter = res => {
