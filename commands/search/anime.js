@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
-const { cleanHTML, embedURL } = require('../../util/Util');
+const { cleanAnilistHTML, embedURL } = require('../../util/Util');
 const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
@@ -124,7 +124,7 @@ module.exports = class AnimeCommand extends Command {
 				.setURL(anime.siteUrl)
 				.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
 				.setTitle(anime.title.english || anime.title.romaji)
-				.setDescription(anime.description ? cleanHTML(anime.description) : 'No description.')
+				.setDescription(anime.description ? cleanAnilistHTML(anime.description) : 'No description.')
 				.addField('❯ Status', statuses[anime.status], true)
 				.addField('❯ Episodes', anime.episodes || '???', true)
 				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
