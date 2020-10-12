@@ -25,11 +25,11 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 		try {
 			const dilemma = await this.fetchDilemma();
 			await msg.reply(stripIndents`
-				**${dilemma.txt1}** but **${dilemma.txt2}**. Will you press the button?
+				**${dilemma.txt1}** but **${dilemma.txt2}** Will you press the button?
 				_Respond with [y]es or [n]o to continue._
 			`);
 			const verification = await verify(msg.channel, msg.author);
-			if (!verification) return msg.reply('No response? Too bad.');
+			if (verification === 0) return msg.reply('No response? Too bad.');
 			await this.postResponse(dilemma.id, verification);
 			const totalVotes = dilemma.yes + dilemma.no;
 			return msg.reply(stripIndents`
