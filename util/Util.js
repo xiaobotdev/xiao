@@ -202,7 +202,7 @@ module.exports = class Util {
 		return verify.map(player => player.author.id);
 	}
 
-	static cleanAnilistHTML(html, removeLineBreaks = true) {
+	static cleanHTML(html, removeLineBreaks = true) {
 		let clean = html;
 		if (removeLineBreaks) clean = clean.replace(/\r|\n|\f/g, '');
 		clean = clean

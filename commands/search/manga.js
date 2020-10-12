@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
-const { cleanAnilistHTML, embedURL } = require('../../util/Util');
+const { cleanHTML, embedURL } = require('../../util/Util');
 const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
@@ -118,7 +118,7 @@ module.exports = class MangaCommand extends Command {
 				.setURL(manga.siteUrl)
 				.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
 				.setTitle(manga.title.english || manga.title.romaji)
-				.setDescription(manga.description ? cleanAnilistHTML(manga.description) : 'No description.')
+				.setDescription(manga.description ? cleanHTML(manga.description) : 'No description.')
 				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
 				.addField('❯ Year', manga.startDate.year || '???', true)

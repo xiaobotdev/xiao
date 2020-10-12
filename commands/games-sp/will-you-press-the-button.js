@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { verify, cleanHTML } = require('../../util/Util');
 
 module.exports = class WillYouPressTheButtonCommand extends Command {
 	constructor(client) {
@@ -28,7 +28,7 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 		try {
 			const dilemma = await this.fetchDilemma();
 			await msg.reply(stripIndents`
-				**${dilemma.txt1}** but **${dilemma.txt2}**
+				**${cleanHTML(dilemma.txt1)}** but **${cleanHTML(dilemma.txt2)}**
 
 				Will you press the button?
 				_Respond with [y]es or [n]o to continue._
