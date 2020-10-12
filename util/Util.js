@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { unescape } = require('html-escaper');
 const { SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
@@ -202,17 +203,15 @@ module.exports = class Util {
 		return verify.map(player => player.author.id);
 	}
 
-	static cleanHTML(html, removeLineBreaks = true) {
+	static cleanAnilistHTML(html, removeLineBreaks = true) {
 		let clean = html;
 		if (removeLineBreaks) clean = clean.replace(/\r|\n|\f/g, '');
+		clean = unescape(clean);
 		clean = clean
-			.replace(/<br>/g, '\n')
-			.replace(/&#039;/g, '\'')
-			.replace(/&quot;/g, '"')
+			.replace(/<br/g, '\n')
 			.replace(/<\/?i>/g, '*')
 			.replace(/<\/?b>/g, '**')
-			.replace(/~!|!~/g, '||')
-			.replace(/&mdash;/g, '—');
+			.replace(/~!|!~/g, '||');
 		if (clean.length > 2000) clean = `${clean.substr(0, 1995)}...`;
 		const spoilers = (clean.match(/\|\|/g) || []).length;
 		if (spoilers !== 0 && (spoilers && (spoilers % 2))) clean += '||';
