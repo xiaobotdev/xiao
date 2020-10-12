@@ -8,7 +8,7 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 		super(client, {
 			name: 'will-you-press-the-button',
 			aliases: ['press-the-button', 'button', 'wyptb', 'press-button'],
-			group: 'random-res',
+			group: 'games-sp',
 			memberName: 'will-you-press-the-button',
 			description: 'Responds with a random "Will You Press The Button?" dilemma.',
 			credit: [
@@ -22,21 +22,31 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 	}
 
 	async run(msg) {
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const dilemma = await this.fetchDilemma();
 			await msg.reply(stripIndents`
-				**${dilemma.txt1}** but **${dilemma.txt2}** Will you press the button?
+				**${dilemma.txt1}** but **${dilemma.txt2}**
+
+				Will you press the button?
 				_Respond with [y]es or [n]o to continue._
 			`);
 			const verification = await verify(msg.channel, msg.author);
-			if (verification === 0) return msg.reply('No response? Too bad.');
+			if (verification === 0) {
+				this.client.games.delete(msg.channel.id);
+				return msg.reply('No response? Too bad.');
+			}
 			await this.postResponse(dilemma.id, verification);
 			const totalVotes = dilemma.yes + dilemma.no;
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(stripIndents`
 				**${Math.round(((verification ? dilemma.yes : dilemma.no) / totalVotes) * 100)}%** of people agree!
 				Yes ${dilemma.yes} - ${dilemma.no} No
 			`);
 		} catch (err) {
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}

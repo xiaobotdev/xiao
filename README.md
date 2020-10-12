@@ -351,7 +351,6 @@ Total: 548
 * **superpower:** Responds with a random superpower.
 * **the-onion:** Responds with a random "The Onion" article.
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
-* **will-you-press-the-button:** Responds with a random "Will You Press The Button?" dilemma.
 * **word:** Responds with a random word.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
 * **xiao-fact:** Responds with a random fact about Xiao.
@@ -570,6 +569,7 @@ Total: 548
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **waldo:** Try to find Waldo with spoiler tags!
 * **whos-that-pokemon:** Guess who that Pokémon is.
+* **will-you-press-the-button:** Responds with a random "Will You Press The Button?" dilemma.
 
 ### Multi-Player Games:
 
@@ -1735,7 +1735,7 @@ here.
 	* time ([Time Zone Data](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
 	* wikipedia ([API](https://en.wikipedia.org/w/api.php))
 - [Will You Press The Button?](https://willyoupressthebutton.com/)
-	* will-you-press-the-button (Dilemma Data)
+	* will-you-press-the-button (API)
 - [World of Tanks](https://worldoftanks.com/)
 	* simp ([Image](https://worldoftanks.com/es-ar/content/silver-league/open-standings/))
 - [www.aljanh.net](http://www.aljanh.net/)
