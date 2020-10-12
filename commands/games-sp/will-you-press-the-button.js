@@ -3,7 +3,7 @@ const request = require('node-superfetch');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { verify, formatNumber } = require('../../util/Util');
 
 module.exports = class WillYouPressTheButtonCommand extends Command {
 	constructor(client) {
@@ -45,7 +45,7 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(stripIndents`
 				**${Math.round(((verification ? dilemma.yes : dilemma.no) / totalVotes) * 100)}%** of people agree!
-				Yes ${dilemma.yes} - ${dilemma.no} No
+				Yes ${formatNumber(dilemma.yes)} - ${formatNumber(dilemma.no)} No
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
