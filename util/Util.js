@@ -1,5 +1,6 @@
 const crypto = require('crypto');
-const { unescape } = require('html-escaper');
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 const { SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
@@ -206,7 +207,7 @@ module.exports = class Util {
 	static cleanAnilistHTML(html, removeLineBreaks = true) {
 		let clean = html;
 		if (removeLineBreaks) clean = clean.replace(/\r|\n|\f/g, '');
-		clean = unescape(clean);
+		clean = entities.decode(clean);
 		clean = clean
 			.replace(/<br/g, '\n')
 			.replace(/<\/?i>/g, '*')
