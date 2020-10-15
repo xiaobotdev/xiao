@@ -8,7 +8,7 @@ const client = new Client({
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	disableMentions: 'everyone',
-	ws: { intents: Intents.NON_PRIVILEGED }
+	ws: { intents: [Intents.NON_PRIVILEGED, 'GUILD_MEMBERS'] }
 });
 const { formatNumber } = require('./util/Util');
 
