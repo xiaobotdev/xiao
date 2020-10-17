@@ -1275,6 +1275,7 @@ here.
 - [Jisho](https://jisho.org/)
 	* jisho (API)
 - [JoJo's Bizzare Adventure](http://www.araki-jojo.com/)
+	* dark-light (Original Anime)
 	* to-be-continued (Original Anime)
 - [Jon Bernhardt](http://web.mit.edu/jonb/www/)
 	* bart-chalkboard ([Akbar Font](https://www.wobblymusic.com/groening/akbar.html))
