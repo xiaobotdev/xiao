@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const { null } = require('mathjs');
 
 module.exports = class MessageCommand extends Command {
 	constructor(client) {
