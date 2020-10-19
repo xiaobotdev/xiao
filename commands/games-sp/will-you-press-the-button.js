@@ -3,7 +3,7 @@ const request = require('node-superfetch');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 const { stripIndents } = require('common-tags');
-const { verify, formatNumber } = require('../../util/Util');
+const { verify, formatNumber, formatNumberK } = require('../../util/Util');
 
 module.exports = class WillYouPressTheButtonCommand extends Command {
 	constructor(client) {
@@ -38,7 +38,10 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 			const verification = await verify(msg.channel, msg.author);
 			if (verification === 0) {
 				this.client.games.delete(msg.channel.id);
-				return msg.reply('No response? Too bad.');
+				return msg.reply(stripIndents`
+					No response? Too bad.
+					Yes ${formatNumber(dilemma.yes)} - ${formatNumber(dilemma.no)} No
+				`);
 			}
 			await this.postResponse(dilemma.id, verification);
 			const totalVotes = dilemma.yes + dilemma.no;
