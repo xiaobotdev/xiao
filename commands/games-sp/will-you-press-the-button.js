@@ -3,7 +3,7 @@ const request = require('node-superfetch');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 const { stripIndents } = require('common-tags');
-const { verify, formatNumber, formatNumberK } = require('../../util/Util');
+const { verify, formatNumber } = require('../../util/Util');
 
 module.exports = class WillYouPressTheButtonCommand extends Command {
 	constructor(client) {
