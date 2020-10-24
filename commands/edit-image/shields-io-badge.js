@@ -22,13 +22,13 @@ module.exports = class ShieldsIoBadgeCommand extends Command {
 					key: 'subject',
 					prompt: 'What is the subject of the badge?',
 					type: 'string',
-					parse: subject => encodeURIComponent(subject.replace(/-/g, '--').replace(/_/g, '__'))
+					parse: subject => encodeURIComponent(subject.replaceAll('-', '--').replaceAll('_', '__'))
 				},
 				{
 					key: 'status',
 					prompt: 'What is the status of the badge?',
 					type: 'string',
-					parse: status => encodeURIComponent(status.replace(/-/g, '--').replace(/_/g, '__'))
+					parse: status => encodeURIComponent(status.replaceAll('-', '--').replaceAll('_', '__'))
 				},
 				{
 					key: 'color',

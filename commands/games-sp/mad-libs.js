@@ -51,7 +51,7 @@ module.exports = class MadLibsCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			let finished = lib.text;
 			for (let i = 0; i < choices.length; i++) {
-				finished = finished.replace(new RegExp(`\\{${i}\\}`, 'g'), `**${choices[i]}**`);
+				finished = finished.replaceAll(`{${i}}`, `**${choices[i]}**`);
 			}
 			return msg.say(finished);
 		} catch (err) {

@@ -51,7 +51,7 @@ module.exports = class BeLikeBillCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.font = 'normal bold 23px Arial';
-		const text = await wrapText(ctx, texts[Math.floor(Math.random() * texts.length)].replace(/{{name}}/gi, name), 569);
+		const text = await wrapText(ctx, texts[Math.floor(Math.random() * texts.length)].replaceAll('{{name}}', name), 569);
 		ctx.fillText(stripIndents`
 			This is ${name}.
 

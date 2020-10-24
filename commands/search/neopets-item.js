@@ -70,7 +70,7 @@ module.exports = class NeopetsItemCommand extends Command {
 			name: details.match(/<h1>(.+)<\/h1>/)[1],
 			details: details.match(/<em>(.+)<\/em>/)[1],
 			image: `https://items.jellyneo.net/assets/imgs/items/${id[1]}.gif`,
-			price: price ? Number.parseInt(price[1].replace(/,/g, ''), 10) : null,
+			price: price ? Number.parseInt(price[1].replaceAll(',', ''), 10) : null,
 			currency: price ? price[2] : null
 		};
 	}

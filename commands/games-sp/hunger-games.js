@@ -89,13 +89,10 @@ module.exports = class HungerGamesCommand extends Command {
 	}
 
 	parseEvent(event, tributes) {
-		return event
-			.replace(/\(Player1\)/gi, `**${tributes[0]}**`)
-			.replace(/\(Player2\)/gi, `**${tributes[1]}**`)
-			.replace(/\(Player3\)/gi, `**${tributes[2]}**`)
-			.replace(/\(Player4\)/gi, `**${tributes[3]}**`)
-			.replace(/\(Player5\)/gi, `**${tributes[4]}**`)
-			.replace(/\(Player6\)/gi, `**${tributes[5]}**`);
+		for (let i = 0; i < 6; i++) {
+			event = event.replaceAll(`(Player${i + 1})`, `**${tributes[i]}**`);
+		}
+		return event;
 	}
 
 	makeEvents(tributes, kills, eventsArr, deaths, results) {

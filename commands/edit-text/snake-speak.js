@@ -23,6 +23,6 @@ module.exports = class SnakeSpeakCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.say(text.replace(/s/gi, 'sssss'));
+		return msg.say(text.replaceAll('s', 'sssss').replaceAll('S', 'SSSSS'));
 	}
 };

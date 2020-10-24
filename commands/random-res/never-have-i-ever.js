@@ -23,7 +23,7 @@ module.exports = class NeverHaveIEverCommand extends Command {
 	async run(msg) {
 		try {
 			const { text } = await request.get('http://www.neverhaveiever.org/randomtext.php');
-			return msg.say(text.match(/<h1>(.+)<\/h1>/i)[1].replace(/<\/br>/g, ''));
+			return msg.say(text.match(/<h1>(.+)<\/h1>/i)[1].replaceAll('</br>', ''));
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

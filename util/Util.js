@@ -156,7 +156,7 @@ module.exports = class Util {
 	}
 
 	static embedURL(title, url, display) {
-		return `[${title}](${url.replace(/\)/g, '%27')}${display ? ` "${display}"` : ''})`;
+		return `[${title}](${url.replaceAll(')', '%29')}${display ? ` "${display}"` : ''})`;
 	}
 
 	static stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' } = {}) {
@@ -209,7 +209,7 @@ module.exports = class Util {
 		if (removeLineBreaks) clean = clean.replace(/\r|\n|\f/g, '');
 		clean = entities.decode(clean);
 		clean = clean
-			.replace(/<br/g, '\n')
+			.replaceAll('<br>', '\n')
 			.replace(/<\/?i>/g, '*')
 			.replace(/<\/?b>/g, '**')
 			.replace(/~!|!~/g, '||');

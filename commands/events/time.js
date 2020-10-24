@@ -33,7 +33,7 @@ module.exports = class TimeCommand extends Command {
 					label: 'time zone',
 					prompt: 'Which time zone do you want to get the time of?',
 					type: 'string',
-					parse: timeZone => timeZone.replace(/ /g, '_').toLowerCase()
+					parse: timeZone => timeZone.replaceAll(' ', '_').toLowerCase()
 				}
 			]
 		});

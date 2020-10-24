@@ -42,8 +42,9 @@ module.exports = class TemmieCommand extends Command {
 
 	temmize(text) {
 		return wordTrans(text, dictionary)
-			.replace(/ing/gi, 'in')
-			.replace(/!/g, '!!!!111!1!')
-			.replace(/'/g, '');
+			.replaceAll('ing', 'in')
+			.replaceAll('ING', 'IN')
+			.replaceAll('!', '!!!!111!1!')
+			.replaceAll('\'', '');
 	}
 };
