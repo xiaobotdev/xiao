@@ -51,8 +51,8 @@ module.exports = class WikipediaCommand extends Command {
 				.setTitle(data.title)
 				.setAuthor('Wikipedia', 'https://i.imgur.com/Z7NJBK2.png', 'https://www.wikipedia.org/')
 				.setThumbnail(data.thumbnail ? data.thumbnail.source : null)
-				.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replace(/\)/g, '%29')}`)
-				.setDescription(shorten(data.extract.replace(/\n/g, '\n\n')));
+				.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
+				.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

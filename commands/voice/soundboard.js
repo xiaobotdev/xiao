@@ -52,11 +52,11 @@ module.exports = class SoundboardCommand extends Command {
 					prompt: `What sound do you want to play? Either ${list(sounds, 'or')}.`,
 					type: 'string',
 					validate: sound => {
-						const choice = sound.toLowerCase().replace(/ /g, '-');
+						const choice = sound.toLowerCase().replaceAll(' ', '-');
 						if (sounds.includes(choice)) return true;
 						return `You provided an invalid sound. Please choose either ${list(sounds, 'or')}.`;
 					},
-					parse: sound => `${sound.toLowerCase().replace(/ /g, '-')}.mp3`
+					parse: sound => `${sound.toLowerCase().replaceAll(' ', '-')}.mp3`
 				}
 			]
 		});

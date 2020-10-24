@@ -40,7 +40,7 @@ module.exports = class ApodCommand extends Command {
 				)
 				.setImage(body.media_type === 'image' ? body.url : null)
 				.setURL(body.url)
-				.setFooter(`Image Credits: ${body.copyright ? body.copyright.replace(/\n/g, '/') : 'Public Domain'}`)
+				.setFooter(`Image Credits: ${body.copyright ? body.copyright.replaceAll('\n', '/') : 'Public Domain'}`)
 				.setTimestamp();
 			return msg.embed(embed);
 		} catch (err) {

@@ -20,14 +20,14 @@ module.exports = class LatlmesCommand extends Command {
 					prompt: 'What section of the news should the link display?',
 					type: 'string',
 					max: 100,
-					parse: query => encodeURIComponent(query.replace(/ /g, '-').toLowerCase())
+					parse: query => encodeURIComponent(query.replaceAll(' ', '-').toLowerCase())
 				},
 				{
 					key: 'query',
 					prompt: 'What would you like the link to display as?',
 					type: 'string',
 					max: 500,
-					parse: query => encodeURIComponent(query.replace(/ /g, '-').toLowerCase())
+					parse: query => encodeURIComponent(query.replaceAll(' ', '-').toLowerCase())
 				}
 			]
 		});

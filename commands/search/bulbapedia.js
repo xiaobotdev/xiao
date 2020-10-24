@@ -51,8 +51,8 @@ module.exports = class BulbapediaCommand extends Command {
 				.setTitle(data.title)
 				.setAuthor('Bulbapedia', 'https://i.imgur.com/ePpoeFA.png', 'https://bulbapedia.bulbagarden.net/')
 				.setThumbnail(data.thumbnail ? data.thumbnail.source : null)
-				.setURL(`https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(query).replace(/\)/g, '%29')}`)
-				.setDescription(shorten(data.extract.replace(/\n/g, '\n\n')));
+				.setURL(`https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
+				.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

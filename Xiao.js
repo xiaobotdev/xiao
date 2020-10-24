@@ -158,7 +158,7 @@ client.on('guildMemberRemove', async member => {
 	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
 	try {
 		const leaveMessage = client.leaveMessages[Math.floor(Math.random() * client.leaveMessages.length)];
-		await channel.send(leaveMessage.replace(/{{user}}/gi, `**${member.user.tag}**`));
+		await channel.send(leaveMessage.replaceAll('{{user}}', `**${member.user.tag}**`));
 		return null;
 	} catch {
 		return null;
