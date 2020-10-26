@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 548
+Total: 549
 
 ### Utility:
 
@@ -447,6 +447,7 @@ Total: 548
 * **time:** Responds with the current time in a particular location.
 * **today-in-history:** Responds with an event that occurred today in history.
 * **us-election:** Responds with the odds of each canidate winning the presidential election, according to 538.
+* **year-progress:** Responds with the progress of the current year.
 
 ### Search:
 
