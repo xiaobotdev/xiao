@@ -12,10 +12,10 @@ module.exports = class YearProgressCommand extends Command {
 	}
 
 	run(msg) {
-        const today = new Date();
-        const start = new Date(today.getFullYear(), 0, 1);
-        const end = new Date(today.getFullYear() + 1, 0, 1);
-        const percent = (Math.abs(today - start) / Math.abs(end - start)) * 100;
-        return msg.say(`The year ${now.getFullYear()} is **${percent}%** complete!`);
+		const today = new Date();
+		const start = new Date(today.getFullYear(), 0, 1);
+		const end = new Date(today.getFullYear() + 1, 0, 1);
+		const percent = (Math.abs(today - start) / Math.abs(end - start)) * 100;
+		return msg.say(`The year ${now.getFullYear()} is **${percent}%** complete!`);
 	}
 };
