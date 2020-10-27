@@ -7,7 +7,7 @@ module.exports = class HorseInfoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'horse-info',
-			aliases: ['horse'],
+			aliases: ['horse', 'race-horse'],
 			group: 'games-sp',
 			memberName: 'horse-info',
 			description: 'Responds with detailed information on a horse.',

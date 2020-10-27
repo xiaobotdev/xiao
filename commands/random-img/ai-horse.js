@@ -5,7 +5,7 @@ module.exports = class AiHorseCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'ai-horse',
-			aliases: ['this-horse-does-not-exist', 'horse'],
+			aliases: ['this-horse-does-not-exist'],
 			group: 'random-img',
 			memberName: 'ai-horse',
 			description: 'Responds with a randomly generated horse.',
