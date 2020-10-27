@@ -15,24 +15,24 @@ module.exports = class HorseInfoCommand extends Command {
 				{
 					key: 'horse',
 					prompt: 'Which horse would you like to get information on?',
-                    type: 'string',
-                    validate: horse => {
+					type: 'string',
+					validate: horse => {
 						const valid = horses.filter(h => h.name.toLowerCase().includes(horse.toLowerCase()));
 						if (valid.length > 1) return 'Multiple horses found. Please be more specific.';
 						return Boolean(valid.length);
 					},
-                    parse: horse => horses.find(h => h.name.toLowerCase().includes(horse.toLowerCase()))
+					parse: horse => horses.find(h => h.name.toLowerCase().includes(horse.toLowerCase()))
 				}
 			]
 		});
 	}
 
 	run(msg, { horse }) {
-        return msg.say(stripIndents`
-            __**Information on ${horse.name}**__
-            **Name:** ${horse.name}
-            **Fastest Recorded Time:** ${formatTime(horse.minTime)}
-            **Name Origin:** ${horse.origin || 'None'}
-        `);
-    }
+		return msg.say(stripIndents`
+			__**Information on ${horse.name}**__
+			**Name:** ${horse.name}
+			**Fastest Recorded Time:** ${formatTime(horse.minTime)}
+			**Name Origin:** ${horse.origin || 'None'}
+		`);
+	}
 };
