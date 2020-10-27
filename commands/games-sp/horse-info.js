@@ -16,7 +16,7 @@ module.exports = class HorseInfoCommand extends Command {
 					key: 'horse',
 					prompt: 'Which horse would you like to get information on?',
                     type: 'string',
-                    validate: horse => horses.some(h => h.name.toLowerCase() === horse.toLowerCase()),
+                    oneOf: Object.values(horses).map(horse => horse.name.toLowerCase()),
                     parse: horse => horses.find(h => h.name.toLowerCase() === horse.toLowerCase())
 				}
 			]
