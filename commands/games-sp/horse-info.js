@@ -16,8 +16,12 @@ module.exports = class HorseInfoCommand extends Command {
 					key: 'horse',
 					prompt: 'Which horse would you like to get information on?',
                     type: 'string',
-                    oneOf: Object.values(horses).map(horse => horse.name.toLowerCase()),
-                    parse: horse => horses.find(h => h.name.toLowerCase() === horse.toLowerCase())
+                    validate: horse => {
+						const valid = horses.filter(h => h.name.toLowerCase().includes(horse.toLowerCase()));
+						if (valid.length > 1) return 'Multiple horses found. Please be more specific.';
+						return Boolean(horses.length);
+					},
+                    parse: horse => horses.find(h => h.name.toLowerCase().includes(horse.toLowerCase()))
 				}
 			]
 		});
