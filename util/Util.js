@@ -79,6 +79,13 @@ module.exports = class Util {
 		return number > 999 ? `${(number / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}K` : number;
 	}
 
+	static formatTime(time) {
+		const min = Math.floor(time / 60);
+		const sec = Math.floor(time - (min * 60));
+		const ms = time - sec - (min * 60);
+		return `${min}:${sec.toString().padStart(2, '0')}.${ms.toFixed(4).slice(2)}`;
+	}
+
 	static base64(text, mode = 'encode') {
 		if (mode === 'encode') return Buffer.from(text).toString('base64');
 		if (mode === 'decode') return Buffer.from(text, 'base64').toString('utf8') || null;

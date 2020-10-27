@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 549
+Total: 550
 
 ### Utility:
 
@@ -552,6 +552,7 @@ Total: 549
 * **fishy:** Go fishing.
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
+* **horse-info:** Responds with detailed information on a horse.
 * **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
 * **jeopardy:** Answer a Jeopardy question.

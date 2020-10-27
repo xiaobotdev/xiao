@@ -1,11 +1,13 @@
 [
 	{
 		"name": "Johnny Lightning",
-		"minTime": 95
+		"minTime": 95,
+		"origin": "Die-cast Car Brand Johnny Lightning"
 	},
 	{
 		"name": "Superbee",
-		"minTime": 116
+		"minTime": 116,
+		"origin": "The Dodge Super Bee"
 	},
 	{
 		"name": "Arrrrr",
@@ -13,19 +15,23 @@
 	},
 	{
 		"name": "Covfefe",
-		"minTime": 105
+		"minTime": 105,
+		"origin": "Reference to a spelling mistake made by former president Donald Trump"
 	},
 	{
 		"name": "Donald Trump",
-		"minTime": 1800
+		"minTime": 1800,
+		"origin": "Idiocy"
 	},
 	{
 		"name": "Doremifasolatido",
-		"minTime": 106
+		"minTime": 106,
+		"origin": "Solfège"
 	},
 	{
 		"name": "Clydesdale Earnhardt Jr.",
-		"minTime": 108
+		"minTime": 108,
+		"origin": "Wordplay on the name \"Dale Earnhardt Jr.\""
 	},
 	{
 		"name": "Sea Biscuit",
@@ -37,7 +43,8 @@
 	},
 	{
 		"name": "Burgoo King",
-		"minTime": 126
+		"minTime": 126,
+		"origin": "Wordplay on the restaurant \"Burger King\""
 	},
 	{
 		"name": "Small John",
@@ -57,55 +64,68 @@
 	},
 	{
 		"name": "Rainbow Dash",
-		"minTime": 100
+		"minTime": 100,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Twilight Sparkle",
-		"minTime": 130
+		"minTime": 130,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Pinkie Pie",
-		"minTime": 121
+		"minTime": 121,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Applejack",
-		"minTime": 105
+		"minTime": 105,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Rarity",
-		"minTime": 108
+		"minTime": 108,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Fluttershy",
-		"minTime": 120
+		"minTime": 120,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Trixie",
-		"minTime": 142
+		"minTime": 142,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Vert Wheeler",
-		"minTime": 122
+		"minTime": 122,
+		"origin": "Hot Wheels Acceleracers"
 	},
 	{
 		"name": "Invite Xiao",
-		"minTime": 127
+		"minTime": 127,
+		"origin": "Xiao"
 	},
 	{
 		"name": "Mystery",
-		"minTime": 126
+		"minTime": 126,
+		"origin": "Spongebob Squarepants"
 	},
 	{
 		"name": "Dr. Fager",
-		"minTime": 114
+		"minTime": 114,
+		"origin": "Dr. Fager, A Real Race Horse"
 	},
 	{
 		"name": "Fiftyshadesofhay",
-		"minTime": 144
+		"minTime": 144,
+		"origin": "Wordplay on the book \"Fifty Shades of Gray\""
 	},
 	{
 		"name": "Dr. Pepper",
-		"minTime": 104
+		"minTime": 104,
+		"origin": "Soft Drink"
 	},
 	{
 		"name": "First Dude",
@@ -121,11 +141,13 @@
 	},
 	{
 		"name": "Santa's Little Helper",
-		"minTime": 144
+		"minTime": 144,
+		"origin": "The Simpsons"
 	},
 	{
 		"name": "Whirlwind",
-		"minTime": 110
+		"minTime": 110,
+		"origin": "The Simpsons"
 	},
 	{
 		"name": "Harass",
@@ -133,7 +155,8 @@
 	},
 	{
 		"name": "Hoof Hearted",
-		"minTime": 143
+		"minTime": 143,
+		"origin": "Wordplay on the phrase \"Half Hearted\""
 	},
 	{
 		"name": "I'll Have Another",
@@ -141,23 +164,28 @@
 	},
 	{
 		"name": "John Henry",
-		"minTime": 115
+		"minTime": 115,
+		"origin": "Folk Legend John Henry"
 	},
 	{
 		"name": "Notacatbutallama",
-		"minTime": 141
+		"minTime": 141,
+		"origin": "Wordplay on the phrase \"Not a cat but a llama\""
 	},
 	{
 		"name": "Larry the Cucumber",
-		"minTime": 105
+		"minTime": 105,
+		"origin": "VeggieTales"
 	},
 	{
 		"name": "Bob the Tomato",
-		"minTime": 134
+		"minTime": 134,
+		"origin": "VeggieTales"
 	},
 	{
 		"name": "Onoitsmymothernlaw",
-		"minTime": 116
+		"minTime": 116,
+		"origin": "Wordplay on the phrase \"Oh no it's my mother in law\""
 	},
 	{
 		"name": "Panty Raid",
@@ -165,7 +193,8 @@
 	},
 	{
 		"name": "Yakahickamickadola",
-		"minTime": 113
+		"minTime": 113,
+		"origin": "https://www.youtube.com/watch?v=MRtf1YuVGIo"
 	},
 	{
 		"name": "Last Place",
@@ -173,7 +202,8 @@
 	},
 	{
 		"name": "Luke Horsewalker",
-		"minTime": 108
+		"minTime": 108,
+		"origin": "Star Wars Character Luke Skywalker"
 	},
 	{
 		"name": "Willy",
@@ -185,35 +215,43 @@
 	},
 	{
 		"name": "Spirit",
-		"minTime": 98
+		"minTime": 98,
+		"origin": "Spirit: Stallion of the Cimarron"
 	},
 	{
 		"name": "Jackbox",
-		"minTime": 123
+		"minTime": 123,
+		"origin": "Game Developer Jackbox Games"
 	},
 	{
 		"name": "Emporer Horseitine",
-		"minTime": 113
+		"minTime": 113,
+		"origin": "Star Wars Character Emperor Palpatine"
 	},
 	{
 		"name": "Darth Horse",
-		"minTime": 136
+		"minTime": 136,
+		"origin": "Star Wars Character Darth Vader"
 	},
 	{
 		"name": "Jar-Jar Hooves",
-		"minTime": 110
+		"minTime": 110,
+		"origin": "Star Wars Character Jar-Jar Binks"
 	},
 	{
 		"name": "Hoarse",
-		"minTime": 123
+		"minTime": 123,
+		"origin": "Hoarse and Horse sound similar"
 	},
 	{
 		"name": "Dragon Fire",
-		"minTime": 960
+		"minTime": 960,
+		"origin": "Creator of Xiao dragonfire535"
 	},
 	{
 		"name": "Long Face",
-		"minTime": 143
+		"minTime": 143,
+		"origin": "Reference to the joke \"Hey man, why the long face?\""
 	},
 	{
 		"name": "Pony Up",
@@ -221,7 +259,8 @@
 	},
 	{
 		"name": "Magic of Friendship",
-		"minTime": 106
+		"minTime": 106,
+		"origin": "My Little Pony: Friendship is Magic"
 	},
 	{
 		"name": "Help My Jockey Fell",
@@ -233,11 +272,13 @@
 	},
 	{
 		"name": "Calvin Johnson",
-		"minTime": 138
+		"minTime": 138,
+		"origin": "Football Player Calvin Johnson"
 	},
 	{
 		"name": "Rando Cardrissian",
-		"minTime": 118
+		"minTime": 118,
+		"origin": "Cards Against Humanity"
 	},
 	{
 		"name": "Ocean Cookie",
@@ -253,59 +294,73 @@
 	},
 	{
 		"name": "Pickle Rick",
-		"minTime": 115
+		"minTime": 115,
+		"origin": "Rick and Morty"
 	},
 	{
 		"name": "Nolo",
-		"minTime": 118
+		"minTime": 118,
+		"origin": "Hot Wheels Acceleracers"
 	},
 	{
 		"name": "Mare N' Go",
-		"minTime": 108
+		"minTime": 108,
+		"origin": "Wordplay on the phrase \"Stop N' Go\""
 	},
 	{
 		"name": "Sgt. Wreck Less",
-		"minTime": 144
+		"minTime": 144,
+		"origin": "Wordplay on the name \"Sgt. Reckless\""
 	},
 	{
 		"name": "Daytona",
-		"minTime": 136
+		"minTime": 136,
+		"origin": "Daytona 500 (NASCAR)"
 	},
 	{
 		"name": "Wild Horse",
-		"minTime": 100
+		"minTime": 100,
+		"origin": "The Wild"
 	},
 	{
 		"name": "Sent Ore",
-		"minTime": 124
+		"minTime": 124,
+		"origin": "Wordplay on the word \"Center\""
 	},
 	{
 		"name": "Gogoat",
-		"minTime": 116
+		"minTime": 116,
+		"origin": "Pokémon"
 	},
 	{
 		"name": "Snail Male",
-		"minTime": 132
+		"minTime": 132,
+		"origin": "Wordplay on the phrase \"Snail Mail\""
 	},
 	{
 		"name": "D'apples are Sweet",
-		"minTime": 134
+		"minTime": 134,
+		"origin": "Wordplay on the phrase \"The Apples are Sweet\""
 	},
 	{
 		"name": "Neighkid",
-		"minTime": 107
+		"minTime": 107,
+		"origin": "Wordplay on the word \"Naked\""
 	},
 	{
 		"name": "Neighsayer",
-		"minTime": 120
+		"minTime": 120,
+		"origin": "Wordplay on the word \"Naysayer\""
 	},
 	{
 		"name": "Dee Canter",
-		"minTime": 128
+		"minTime": 128,
+		"origin": "Wordplay on the word \"Decanter\""
 	},
 	{
 		"name": "Mustang",
-		"minTime": 121
+		"minTime": 121,
+		"origin": "The mustang breed of horse"
 	},
 	{
 		"name": "Rocket",
@@ -313,30 +368,47 @@
 	},
 	{
 		"name": "What the Buck",
-		"minTime": 136
+		"minTime": 136,
+		"origin": "Wordplay on the phrase \"What the f***\""
 	},
 	{
 		"name": "Just Mare-ied",
-		"minTime": 124
+		"minTime": 124,
+		"origin": "Wordplay on the phrase \"Just Married\""
 	},
 	{
 		"name": "Kolt Kardashian",
-		"minTime": 105
+		"minTime": 105,
+		"origin": "Wordplay on the name \"Kim Kardashian\""
 	},
 	{
 		"name": "Rogue One",
-		"minTime": 121
+		"minTime": 121,
+		"origin": "Star Wars"
 	},
 	{
 		"name": "Eat Pant",
-		"minTime": 128
+		"minTime": 128,
+		"origin": "Bort Sampson"
 	},
 	{
 		"name": "Rapidash",
-		"minTime": 102
+		"minTime": 102,
+		"origin": "Pokémon"
 	},
 	{
 		"name": "[object Object]",
-		"minTime": 99
+		"minTime": 99,
+		"origin": "JavaScript"
+	},
+	{
+		"name": "Princess Katsuhime",
+		"minTime": 151,
+		"origin": "Azumanga Daioh"
+	},
+	{
+		"name": "Esprit Mako-mako",
+		"minTime": 110,
+		"origin": "Azumanga Daioh"
 	}
 ]
