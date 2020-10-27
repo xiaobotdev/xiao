@@ -19,7 +19,7 @@ module.exports = class HorseInfoCommand extends Command {
                     validate: horse => {
 						const valid = horses.filter(h => h.name.toLowerCase().includes(horse.toLowerCase()));
 						if (valid.length > 1) return 'Multiple horses found. Please be more specific.';
-						return Boolean(horses.length);
+						return Boolean(valid.length);
 					},
                     parse: horse => horses.find(h => h.name.toLowerCase().includes(horse.toLowerCase()))
 				}
