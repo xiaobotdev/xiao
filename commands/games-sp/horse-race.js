@@ -12,7 +12,7 @@ module.exports = class HorseRaceCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'horse-race',
-			aliases: ['race-horse', 'kentucky-derby'],
+			aliases: ['kentucky-derby'],
 			group: 'games-sp',
 			memberName: 'horse-race',
 			description: 'Bet on the fastest horse in a 6-horse race.',
