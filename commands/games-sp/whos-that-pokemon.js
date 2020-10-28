@@ -88,7 +88,8 @@ module.exports = class WhosThatPokemonCommand extends Command {
 	async createImage(pokemon, hide) {
 		const name = `${pokemon.id}${hide ? '-hidden' : ''}.png`;
 		const image = await request.get(pokemon.spriteImageURL);
-		const bg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'whos-that-pokemon.png'));
+		const file = hide ? 'hidden' : 'show';
+		const bg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'whos-that-pokemon', `${file}.png`));
 		const pkmn = await loadImage(image.body);
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
@@ -106,9 +107,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			ctx.textBaseline = 'bottom';
 			ctx.lineWidth = 10;
 			ctx.strokeStyle = '#3c5aa6';
-			ctx.strokeText(pokemon.name, 362, 158, 250);
+			ctx.strokeText(pokemon.name, 362, 158, 240);
 			ctx.fillStyle = '#ffcb05';
-			ctx.fillText(pokemon.name, 362, 158, 250);
+			ctx.fillText(pokemon.name, 362, 158, 240);
 		}
 		return { attachment: canvas.toBuffer(), name };
 	}
