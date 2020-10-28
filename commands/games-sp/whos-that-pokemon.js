@@ -89,7 +89,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const name = `${pokemon.id}${hide ? '-hidden' : ''}.png`;
 		const image = await request.get(pokemon.spriteImageURL);
 		const file = hide ? 'hidden' : 'show';
-		const bg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'whos-that-pokemon', `${file}.png`));
+		const bg = await loadImage(
+			path.join(__dirname, '..', '..', 'assets', 'images', 'whos-that-pokemon', `${file}.png`)
+		);
 		const pkmn = await loadImage(image.body);
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
