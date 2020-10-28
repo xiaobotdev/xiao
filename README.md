@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 551
+Total: 552
 
 ### Utility:
 
@@ -824,6 +824,7 @@ Total: 551
 * **join:** Joins your voice channel.
 * **leave:** Leaves the current voice channel.
 * **soundboard:** Plays a sound in a voice channel.
+* **vocodes:** Speak text like a variety of famous figures.
 
 ### Phone:
 
@@ -1722,6 +1723,8 @@ here.
 	* rip ([Image](https://www.123rf.com/profile_vician?mediapopup=13181623))
 - [VocaDB](https://vocadb.net/)
 	* vocadb ([API](https://vocadb.net/swagger/ui/index))
+- [Vocodes](https://vo.codes/)
+	* vocodes (API)
 - [Wait, what does your startup do?](http://itsthisforthat.com/)
 	* this-for-that ([API](http://itsthisforthat.com/api.php))
 - [WAIT: What Anime Is This?](https://trace.moe/)
