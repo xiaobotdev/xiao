@@ -14,7 +14,13 @@ module.exports = class AdorableCommand extends Command {
 				{
 					name: 'Adorable Avatars',
 					url: 'http://avatars.adorable.io/',
-					reason: 'API'
+					reason: 'Original API'
+				},
+				{
+					name: 'gfauchart',
+					url: 'https://github.com/gfauchart',
+					reason: 'API',
+					reasonURL: 'https://github.com/adorableio/avatars-api-middleware/issues/108'
 				}
 			],
 			args: [
@@ -30,7 +36,7 @@ module.exports = class AdorableCommand extends Command {
 
 	async run(msg, { text }) {
 		try {
-			const { body } = await request.get(`https://api.adorable.io/avatars/285/${text}.png`);
+			const { body } = await request.get(`https://api.hello-avatar.com/adorables/285/${text}.png`);
 			return msg.say({ files: [{ attachment: body, name: 'adorable.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
