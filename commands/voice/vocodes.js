@@ -2,12 +2,7 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { Readable } = require('stream');
 const { list } = require('../../util/Util');
-const voices = {
-	sonic: 'sonic',
-	homer: 'homer-simpson',
-	spongebob: 'spongebob-squarepants',
-	arnold: 'arnold-schwarzenegger'
-};
+const voices = require('../../assets/json/vocodes');
 
 module.exports = class VocodesCommand extends Command {
 	constructor(client) {
