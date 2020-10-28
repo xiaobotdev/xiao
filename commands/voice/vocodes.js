@@ -54,7 +54,7 @@ module.exports = class VocodesCommand extends Command {
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		try {
-			const body = await request
+			const { body } = await request
 				.post('https://mumble.stream/speak_spectrogram')
 				.send({
 					speaker: voice,
