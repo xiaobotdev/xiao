@@ -1,8 +1,9 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const { silhouette } = require('../../util/Canvas');
 const path = require('path');
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pokemon Solid.ttf'), { family: 'Pokemon' });
 const pokemonCount = 893;
 
 module.exports = class WhosThatPokemonCommand extends Command {
@@ -94,6 +95,14 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			ctx.drawImage(silhouetteCanvas, 30, 39, 200, 200);
 		} else {
 			ctx.drawImage(pkmn, 30, 39, 200, 200);
+			ctx.font = '60px Pokemon';
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'bottom';
+			ctx.lineWidth = 5;
+			ctx.strokeStyle = '#3c5aa6';
+			ctx.strokeText(pokemon.name, 362, 138, 250);
+			ctx.fillStyle = '#ffcb05';
+			ctx.fillText(pokemon.name, 362, 138, 250);
 		}
 		return { attachment: canvas.toBuffer(), name };
 	}
