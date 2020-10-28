@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 550
+Total: 551
 
 ### Utility:
 
@@ -619,6 +619,7 @@ Total: 550
 * **danger:** Creates a danger sign with the text of your choice.
 * **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
+* **dicebear:** Creates a DiceBear avatar based on the text you provide.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **emboss:** Draws an image or a user's avatar but embossed.
 * **fire-frame:** Draws a fiery border over an image or a user's avatar.
@@ -916,7 +917,7 @@ here.
 - [@liltusk](https://twitter.com/liltusk)
 	* food-broke ([Image](https://twitter.com/liltusk/status/835719948597137408))
 - [Adorable Avatars](http://avatars.adorable.io/)
-	* adorable (API)
+	* adorable (Original API)
 - [Advice Slip](https://adviceslip.com/)
 	* advice ([API](https://api.adviceslip.com/))
 - [Akinator](https://en.akinator.com/)
@@ -1035,6 +1036,8 @@ here.
 	* deviantart ([API](https://www.deviantart.com/developers/))
 - [devsnek](https://github.com/devsnek)
 	* owo (Code)
+- [DiceBear](https://avatars.dicebear.com/)
+	* dicebear (API)
 - [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm)
 	* dec-talk (Original DECTalk Software)
 - [Discord](https://discord.com/)
@@ -1107,6 +1110,8 @@ here.
 	* gender (API)
 - [Gerhard Jordan](http://www.gerhardjordan.com/)
 	* never-have-i-ever ([Statement Data](http://www.neverhaveiever.org/))
+- [gfauchart](https://github.com/gfauchart)
+	* adorable ([API](https://github.com/adorableio/avatars-api-middleware/issues/108))
 - [GIPHY](https://giphy.com/)
 	* giphy ([API](https://developers.giphy.com/))
 - [GitHub](https://github.com/)
