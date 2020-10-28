@@ -1,9 +1,8 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const { list } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
-const difficulties = ['easy', 'hard'];
+const path = require('path');
 const pokemonCount = 893;
 
 module.exports = class WhosThatPokemonCommand extends Command {
@@ -14,7 +13,6 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			group: 'games-sp',
 			memberName: 'whos-that-pokemon',
 			description: 'Guess who that Pokémon is.',
-			details: `**Difficulties:** ${difficulties.join(', ')}`,
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -35,17 +33,16 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					name: 'Serebii.net',
 					url: 'https://www.serebii.net/index2.shtml',
 					reason: 'Images'
+				},
+				{
+					name: 'u/CaptainRako',
+					url: 'https://www.reddit.com/user/CaptainRako/',
+					reason: 'Background Image',
+					// eslint-disable-next-line max-len
+					reasonURL: 'https://www.reddit.com/r/pokemon/comments/420xiv/whos_that_pokemon_1920x1080_hd_template_i_just/'
 				}
 			],
 			args: [
-				{
-					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
-					type: 'string',
-					oneOf: difficulties,
-					parse: difficulty => difficulty.toLowerCase(),
-					default: 'hard'
-				},
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon do you want to use?',
@@ -58,35 +55,45 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		});
 	}
 
-	async run(msg, { difficulty, pokemon }) {
+	async run(msg, { pokemon }) {
 		try {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
-			const attachment = await this.fetchImage(data, difficulty);
+			const attachment = await this.createImage(data, true);
+			const answerAttachment = await this.createImage(data, false);
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${data.name}.`);
+			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${data.name}.`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
 			const slug = this.client.pokemon.makeSlug(guess);
-			if (!names.includes(guess) && data.slug !== slug) return msg.reply(`Nope, sorry, it's ${data.name}.`);
-			return msg.reply('Nice job! 10/10! You deserve some cake!');
+			if (!names.includes(guess) && data.slug !== slug) {
+				return msg.reply(`Nope, sorry, it's ${data.name}.`, { files: [answerAttachment] });
+			}
+			return msg.reply('Nice job! 10/10! You deserve some cake!', { files: [answerAttachment] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
-	async fetchImage(pokemon, difficulty) {
-		const name = `${pokemon.id}.png`;
+	async createImage(pokemon, hide) {
+		const name = `${pokemon.id}${hide ? '-hidden' : ''}.png`;
 		const image = await request.get(pokemon.spriteImageURL);
-		if (difficulty === 'easy') return { attachment: image.body, name };
-		const base = await loadImage(image.body);
-		const canvas = createCanvas(base.width, base.height);
+		const bg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'whos-that-pokemon.png'));
+		const pkmn = await loadImage(image.body);
+		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
-		ctx.drawImage(base, 0, 0);
-		silhouette(ctx, 0, 0, base.width, base.height);
+		ctx.drawImage(bg, 0, 0);
+		if (hide) {
+			const silhouetteCanvas = createCanvas(pkmn.width, pkmn.height);
+			const silhouetteCtx = silhouetteCanvas.getContext('2d');
+			silhouette(silhouetteCtx, 0, 0, pkmn.width, pkmn.height);
+			ctx.drawImage(silhouetteCanvas, 30, 39, 200, 200);
+		} else {
+			ctx.drawImage(pkmn, 30, 39, 200, 200);
+		}
 		return { attachment: canvas.toBuffer(), name };
 	}
 };
