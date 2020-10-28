@@ -89,6 +89,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		if (hide) {
 			const silhouetteCanvas = createCanvas(pkmn.width, pkmn.height);
 			const silhouetteCtx = silhouetteCanvas.getContext('2d');
+			silhouetteCtx.drawImage(pkmn, 0, 0);
 			silhouette(silhouetteCtx, 0, 0, pkmn.width, pkmn.height);
 			ctx.drawImage(silhouetteCanvas, 30, 39, 200, 200);
 		} else {
