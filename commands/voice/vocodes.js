@@ -8,9 +8,11 @@ module.exports = class VocodesCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'vocodes',
+			aliases: ['vocode'],
 			group: 'voice',
 			memberName: 'vocodes',
 			description: 'Speak text like a variety of famous figures.',
+			details: `**Voices:** ${Object.keys(voices).join(', ')}`,
 			guildOnly: true,
 			throttling: {
 				usages: 1,
