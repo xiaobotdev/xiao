@@ -98,11 +98,11 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			ctx.font = '60px Pokemon';
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'bottom';
-			ctx.lineWidth = 5;
+			ctx.lineWidth = 10;
 			ctx.strokeStyle = '#3c5aa6';
-			ctx.strokeText(pokemon.name, 362, 138, 250);
+			ctx.strokeText(pokemon.name, 362, 158, 250);
 			ctx.fillStyle = '#ffcb05';
-			ctx.fillText(pokemon.name, 362, 138, 250);
+			ctx.fillText(pokemon.name, 362, 158, 250);
 		}
 		return { attachment: canvas.toBuffer(), name };
 	}
