@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { Readable } = require('stream');
 const { LOADING_EMOJI_ID } = process.env;
 
 module.exports = class DECTalkCommand extends Command {
@@ -56,10 +57,10 @@ module.exports = class DECTalkCommand extends Command {
 			if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
 				await msg.react(LOADING_EMOJI_ID);
 			}
-			const { url } = await request
+			const { body } = await request
 				.get('http://tts.cyzon.us/tts')
 				.query({ text });
-			connection.play(url);
+			connection.play(Readable.from([body]));
 			if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
 				await msg.react('🔉');
 			}
