@@ -66,8 +66,14 @@ module.exports = class AceAttorneyCommand extends Command {
 	}
 
 	async run(msg, { character, quote }) {
+		let file;
+		for (const [id, arr] of Object.entries(characters)) {
+			if (!arr.includes(character.toLowerCase())) continue;
+			file = id;
+			break;
+		}
 		const base = await loadImage(
-			path.join(__dirname, '..', '..', 'assets', 'images', 'ace-attorney', `${character}.png`)
+			path.join(__dirname, '..', '..', 'assets', 'images', 'ace-attorney', `${file}.png`)
 		);
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
