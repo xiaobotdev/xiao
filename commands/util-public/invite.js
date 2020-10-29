@@ -14,7 +14,7 @@ module.exports = class InviteCommand extends Command {
 	}
 
 	async run(msg) {
-		const invite = await this.client.generateInvite(permissions);
+		const invite = await this.client.generateInvite({ permissions });
 		return msg.say(stripIndents`
 			Invite me using this link:
 			<${invite}>

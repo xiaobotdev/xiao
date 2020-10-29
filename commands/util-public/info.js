@@ -24,7 +24,7 @@ module.exports = class InfoCommand extends Command {
 	}
 
 	async run(msg) {
-		const invite = await this.client.generateInvite(permissions);
+		const invite = await this.client.generateInvite({ permissions });
 		const repoURL = `https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}`;
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
