@@ -162,6 +162,15 @@ module.exports = class Util {
 		return today;
 	}
 
+	static magikToBuffer(magik) {
+		return new Promise((res, rej) => {
+			magik.toBuffer((err, buffer) => {
+				if (err) return rej(err);
+				return res(buffer);
+			});
+		});
+	}
+
 	static embedURL(title, url, display) {
 		return `[${title}](${url.replaceAll(')', '%29')}${display ? ` "${display}"` : ''})`;
 	}
@@ -170,6 +179,18 @@ module.exports = class Util {
 		if (guild) str = str.replace(inviteRegex, text);
 		if (bot) str = str.replace(botInvRegex, text);
 		return str;
+	}
+
+	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
+		if (fallbackEmoji && !msg.channel.permissionsFor(user).has('USE_EXTERNAL_EMOJIS')) emoji = fallbackEmoji;
+		if (msg.channel.permissionsFor(user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+			try {
+				await msg.react(emoji);
+			} catch {
+				return null;
+			}
+		}
+		return null;
 	}
 
 	static async verify(channel, user, { time = 30000, extraYes = [], extraNo = [] } = {}) {

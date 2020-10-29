@@ -53,13 +53,7 @@ module.exports = class AceAttorneyCommand extends Command {
 					prompt: `What character do you want to use? Either ${list(Object.keys(characters), 'or')}.`,
 					type: 'string',
 					oneOf: Object.values(characters).reduce((a, b) => a.concat(b)),
-					parse: character => {
-						for (const [id, arr] of Object.entries(characters)) {
-							if (!arr.includes(character.toLowerCase())) continue;
-							return id;
-						}
-						return character.toLowerCase();
-					}
+					parse: character => character.toLowerCase()
 				},
 				{
 					key: 'quote',
