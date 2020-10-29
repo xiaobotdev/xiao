@@ -73,13 +73,13 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				max: 1,
 				time: 15000
 			});
-			if (!msgs.size) return msg.reply(`Sorry, time is up! It was ${data.name}.`, { files: [answerAttachment] });
+			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
 			const slug = this.client.pokemon.makeSlug(guess);
 			if (!names.includes(guess) && data.slug !== slug) {
-				return msg.reply(`Nope, sorry, it's ${data.name}.`, { files: [answerAttachment] });
+				return msg.reply(`Nope! It's **${data.name}**!`, { files: [answerAttachment] });
 			}
-			return msg.reply('Nice job! 10/10! You deserve some cake!', { files: [answerAttachment] });
+			return msg.reply(`Nice! It's **${data.name}**!`, { files: [answerAttachment] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
