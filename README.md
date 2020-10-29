@@ -94,9 +94,10 @@ don't grant that permission.
 
 
 ## Fun Information
+
 - 500+ commands
-- 28,000+ lines of JavaScript
-- 61,000+ lines of JSON data
+- 29,000+ lines of JavaScript
+- 62,000+ lines of JSON data
 - 3 years of development
 
 ## Installing
@@ -508,7 +509,7 @@ Total: 552
 * **tumblr:** Responds with information on a Tumblr blog.
 * **tv-show:** Searches TMDB for your query, getting TV show results.
 * **twitter:** Responds with information on a Twitter user.
-* **urban:** Defines a word, but with Urban Dictionary. (NSFW)
+* **urban:** Defines a word, but with Urban Dictionary.
 * **usps-tracking:** Gets tracking information for a package shipped via USPS.
 * **vocadb:** Searches VocaDB for your query.
 * **wattpad:** Searches Wattpad for your query.
@@ -583,12 +584,12 @@ Total: 552
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **guesspionage:** Tests your knowledge of humans as you guess how people responded to poll questions.
 * **gunfight:** Engage in a western gunfight against another user. High noon.
-* **island:** Who will be the final two left on the island after a series of vote-kicks?
 * **imposter:** Who is the imposter among us?
+* **island:** Who will be the final two left on the island after a series of vote-kicks?
 * **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **poker:** Play poker with up to 5 other users.
-* **quiz-duel:** Answer a series of quiz questions against an opponent.
+* **quiz-duel:** Answer a series of quiz questions against other opponents.
 * **russian-roulette:** Who will pull the trigger and die first?
 * **spam-war:** See who can type more characters the fastest.
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
@@ -730,6 +731,7 @@ Total: 552
 * **mario-bros-views:** Sends a "Mario Bros. Views" meme with the text of your choice.
 * **meme-gen-classic:** Sends a meme with the text and background of your choice.
 * **meme-gen-modern:** Sends a meme with the text and image of your choice.
+* **metamorphosis:** Sends a "My Metamorphosis Begins" meme with the image and text of your choice.
 * **my-collection-grows:** Sends a "My collection grows richer" Nekopara meme with the text of your choice.
 * **new-password:** Sends a "Weak Password/Strong Password" meme with the passwords of your choice.
 * **nike-ad:** Sends a "Believe in Something" Nike Ad meme with the text of your choice.
@@ -1039,7 +1041,7 @@ here.
 	* deviantart ([API](https://www.deviantart.com/developers/))
 - [devsnek](https://github.com/devsnek)
 	* owo (Code)
-- [DiceBear](https://avatars.dicebear.com/)
+- [DiceBear Avatars](https://avatars.dicebear.com/)
 	* dicebear (API)
 - [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm)
 	* dec-talk (Original DECTalk Software)
@@ -1228,6 +1230,7 @@ here.
 	* squish (Image Manipulation)
 	* swirl (Image Manipulation)
 - [Imgur](https://imgur.com/)
+	* bite ([API](https://apidocs.imgur.com/))
 	* blush ([API](https://apidocs.imgur.com/))
 	* bro-hoof ([API](https://apidocs.imgur.com/))
 	* celebrate ([API](https://apidocs.imgur.com/))
@@ -1520,7 +1523,7 @@ here.
 - [PSYCHO-PASS](http://psycho-pass.com/)
 	* psycho-pass (Original Anime)
 - [Psycho-Pass Wiki](https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki)
-	* psycho-pass ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index%27))
+	* psycho-pass ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index%29))
 - [r/IsTodayFridayThe13th](https://www.reddit.com/r/IsTodayFridayThe13th/)
 	* friday-the-13th (Concept)
 - [Random-d.uk](https://random-d.uk/)
