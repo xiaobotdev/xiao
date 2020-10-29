@@ -63,6 +63,6 @@ module.exports = class ScreenshotCommand extends Command {
 		this.pornList = text.split('\n')
 			.filter(site => site && !site.startsWith('#'))
 			.map(site => site.replace(/^(0.0.0.0	)/, '')); // eslint-disable-line no-control-regex
-		return this.postList;
+		return this.pornList;
 	}
 };
