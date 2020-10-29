@@ -62,7 +62,7 @@ module.exports = class ScreenshotCommand extends Command {
 		const { text } = await request.get('https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt');
 		this.pornList = text.split('\n')
 			.filter(site => site && !site.startsWith('#'))
-			.map(site => site.replace(/^(0.0.0.0	)/, '')); // eslint-disable-line no-control-regex
+			.map(site => site.replace(/^(0.0.0.0 )/, '')); // eslint-disable-line no-control-regex
 		return this.pornList;
 	}
 };
