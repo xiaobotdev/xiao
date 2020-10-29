@@ -3,6 +3,7 @@ const request = require('node-superfetch');
 const { Readable } = require('stream');
 const { list } = require('../../util/Util');
 const voices = require('../../assets/json/vocodes');
+const { LOADING_EMOJI_ID } = process.env;
 
 module.exports = class VocodesCommand extends Command {
 	constructor(client) {
