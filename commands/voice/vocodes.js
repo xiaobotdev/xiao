@@ -51,6 +51,9 @@ module.exports = class VocodesCommand extends Command {
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		try {
+			if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+				await msg.react(LOADING_EMOJI_ID);
+			}
 			const { body } = await request
 				.post('https://mumble.stream/speak_spectrogram')
 				.send({
