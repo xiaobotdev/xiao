@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const path = require('path');
-const { list } = require('../../util/Util');
+const { list, reactIfAble } = require('../../util/Util');
 const sounds = require('../../assets/json/soundboard');
 
 module.exports = class SoundboardCommand extends Command {
@@ -69,9 +69,7 @@ module.exports = class SoundboardCommand extends Command {
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'soundboard', sound));
-		if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
-			await msg.react('🔉');
-		}
+		await reactIfAble(msg, this.client.user, '🔉');
 		return null;
 	}
 };

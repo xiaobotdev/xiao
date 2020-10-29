@@ -14,8 +14,8 @@ module.exports = class RandomUserCommand extends Command {
 	run(msg) {
 		if (msg.channel.type === 'dm') {
 			const members = [this.client.user, msg.channel.recipient];
-			return msg.say(`I choose ${members[Math.floor(Math.random() * members.length)].username}!`);
+			return msg.say(`I choose ${members[Math.floor(Math.random() * members.length)].tag}!`);
 		}
-		return msg.say(`I choose ${msg.guild.members.cache.random().displayName}!`);
+		return msg.say(`I choose ${msg.guild.members.cache.random().user.tag}!`);
 	}
 };

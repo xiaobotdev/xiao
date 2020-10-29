@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const path = require('path');
+const { reactIfAble } = require('../../util/Util');
 const sounds = require('../../assets/json/airhorn');
 
 module.exports = class AirhornCommand extends Command {
@@ -34,9 +35,7 @@ module.exports = class AirhornCommand extends Command {
 		}
 		const airhorn = sounds[Math.floor(Math.random() * sounds.length)];
 		connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'airhorn', airhorn));
-		if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
-			await msg.react('🔉');
-		}
+		await reactIfAble(msg, this.client.user, '🔉');
 		return null;
 	}
 };

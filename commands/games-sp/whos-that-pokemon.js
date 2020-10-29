@@ -107,7 +107,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			ctx.font = '60px Pokemon';
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'bottom';
-			ctx.lineWidth = 10;
+			ctx.lineWidth = 8;
 			ctx.strokeStyle = '#3c5aa6';
 			ctx.strokeText(pokemon.name, 362, 158, 240);
 			ctx.fillStyle = '#ffcb05';

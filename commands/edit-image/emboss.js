@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const gm = require('gm').subClass({ imageMagick: true });
 const request = require('node-superfetch');
+const { magikToBuffer } = require('../../util/Util');
 
 module.exports = class EmbossCommand extends Command {
 	constructor(client) {
@@ -38,20 +39,11 @@ module.exports = class EmbossCommand extends Command {
 			const magik = gm(body);
 			magik.emboss();
 			magik.setFormat('png');
-			const attachment = await this.toBuffer(magik);
+			const attachment = await magikToBuffer(magik);
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'emboss.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
-	}
-
-	toBuffer(magik) {
-		return new Promise((res, rej) => {
-			magik.toBuffer((err, buffer) => {
-				if (err) return rej(err);
-				return res(buffer);
-			});
-		});
 	}
 };

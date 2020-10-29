@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { createCanvas, registerFont } = require('canvas');
 const path = require('path');
+const { reactIfAble } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OPTIKorinna-Agency.otf'), { family: 'Korinna' });
 
@@ -47,9 +48,7 @@ module.exports = class JeopardyCommand extends Command {
 			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 			if (connection) {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
-				if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
-					await msg.react('🔉');
-				}
+				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			await msg.reply(`The category is: **${question.category.title.toUpperCase()}**. 30 seconds, good luck.`, {
 				files: [{ attachment: clueCard, name: 'clue-card.png' }]

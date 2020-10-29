@@ -20,7 +20,8 @@ module.exports = class GenderCommand extends Command {
 				{
 					key: 'name',
 					prompt: 'What name do you want to determine the gender of?',
-					type: 'string'
+					type: 'string',
+					max: 20
 				}
 			]
 		});
