@@ -33,11 +33,7 @@ module.exports = class CleverbotCommand extends Command {
 		this.convos = new Map();
 	}
 
-	async run(msg, { text }, fromPattern) {
-		if (fromPattern) {
-			if (msg.guild && !msg.channel.permissionsFor(this.client.user).has('SEND_MESSAGES')) return null;
-			text = msg.patternMatches[2];
-		}
+	async run(msg, { text }) {
 		try {
 			const convo = this.convos.get(msg.channel.id);
 			const { body } = await request
@@ -52,7 +48,6 @@ module.exports = class CleverbotCommand extends Command {
 			this.convos.set(msg.channel.id, { cs: body.cs, timeout });
 			return msg.reply(body.output || blankResponses[Math.floor(Math.random() * blankResponses.length)]);
 		} catch (err) {
-			if (fromPattern) return null;
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
