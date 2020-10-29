@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { LOADING_EMOJI_ID } = process.env;
 
 module.exports = class DECTalkCommand extends Command {
 	constructor(client) {
@@ -52,6 +53,9 @@ module.exports = class DECTalkCommand extends Command {
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		try {
+			if (msg.channel.permissionsFor(this.client.user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+				await msg.react(LOADING_EMOJI_ID);
+			}
 			const { url } = await request
 				.get('http://tts.cyzon.us/tts')
 				.query({ text });
