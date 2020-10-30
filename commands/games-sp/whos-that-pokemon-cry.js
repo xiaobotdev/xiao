@@ -92,6 +92,7 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 				max: 1,
 				time: 15000
 			});
+			connection.play(Readable.from([data.cry]));
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [attachment] });
 			const guess = msgs.first().content.toLowerCase();
 			const slug = this.client.pokemon.makeSlug(guess);
