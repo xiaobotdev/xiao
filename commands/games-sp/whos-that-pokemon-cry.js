@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { Readable } = require('stream');
 const { reactIfAble } = require('../../util/Util');
-const path = require('path');
 const pokemonCount = 893;
 
 module.exports = class WhosThatPokemonCryCommand extends Command {
