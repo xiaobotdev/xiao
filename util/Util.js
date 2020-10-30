@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
+const { stripIndents } = require('common-tags');
 const { SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
@@ -208,6 +209,23 @@ module.exports = class Util {
 		if (yes.includes(choice) || extraYes.includes(choice)) return true;
 		if (no.includes(choice) || extraNo.includes(choice)) return false;
 		return false;
+	}
+
+	static async pickWhenMany(msg, arr, defalt, arrListFunc, { time = 30000 }) {
+		const resultsList = arr.map(arrListFunc);
+		await msg.reply(stripIndents`
+			__**Found ${arr.length} results, which would you like to view?**__
+			${resultsList.join('\n')}
+		`);
+		const filter = res => {
+			if (res.author.id !== msg.author.id) return false;
+			const num = Number.parseInt(res.content, 10);
+			if (!num) return false;
+			return num > 0 && num <= arr.length;
+		};
+		const msgs = await msg.channel.awaitMessages(filter, { max: 1, time });
+		if (!msgs.size) return defalt;
+		return arr[Number.parseInt(msgs.first().content, 10) - 1];
 	}
 
 	static async awaitPlayers(msg, max, min = 1) {
