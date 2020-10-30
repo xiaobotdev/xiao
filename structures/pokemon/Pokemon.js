@@ -112,6 +112,7 @@ module.exports = class Pokemon {
 
 	async fetchCry() {
 		if (this.cry) return this.cry;
+		if (this.missingno) return null;
 		try {
 			const { body } = await request.get(`https://pokemoncries.com/cries/${this.id}.mp3`);
 			this.cry = body;

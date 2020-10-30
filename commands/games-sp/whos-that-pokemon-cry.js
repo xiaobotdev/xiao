@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { Readable } = require('stream');
 const { reactIfAble } = require('../../util/Util');
 const pokemonCount = 893;
+const blacklist = [0, 803, 804, 805, 806, 807, 808, 809, 890, 891, 892, 893];
 
 module.exports = class WhosThatPokemonCryCommand extends Command {
 	constructor(client) {
@@ -59,7 +60,15 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 					type: 'integer',
 					max: pokemonCount,
 					min: 0,
-					default: () => Math.floor(Math.random() * (pokemonCount + 1))
+					default: () => {
+						let num;
+						while (!num) {
+							const chosen = Math.floor(Math.random() * (pokemonCount + 1));
+							if (blacklist.includes(chosen)) continue;
+							num = chosen;
+						}
+						return num;
+					}
 				}
 			]
 		});
