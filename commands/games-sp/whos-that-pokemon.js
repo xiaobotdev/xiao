@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
-const { Readable } = require('stream');
 const { reactIfAble } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 const path = require('path');
@@ -51,9 +50,22 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					reasonURL: 'https://www.dafont.com/pokemon.font'
 				},
 				{
-					name: 'Pokemoncries.com',
-					url: 'https://pokemoncries.com/',
-					reason: 'Cry Sound Effects'
+					name: 'The Sounds Resource',
+					url: 'https://www.sounds-resource.com/',
+					reason: 'Cry Sound Effects (Gen 1-7)',
+					reasonURL: 'https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/'
+				},
+				{
+					name: 'The Sounds Resource',
+					url: 'https://www.sounds-resource.com/',
+					reason: 'Cry Sound Effects (Gen 8)',
+					reasonURL: 'https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/'
+				},
+				{
+					name: 'Pokémon Showdown',
+					url: 'https://play.pokemonshowdown.com/',
+					reason: 'Cry Sound Effects (Meltan and Melmetal)',
+					reasonURL: 'https://play.pokemonshowdown.com/audio/cries/'
 				}
 			],
 			args: [
@@ -87,11 +99,8 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			});
 			if (connection) {
 				if (connection.dispatcher) connection.dispatcher.end();
-				await data.fetchCry();
-				if (data.cry) {
-					connection.play(Readable.from([data.cry]));
-					await reactIfAble(msg, this.client.user, '🔉');
-				}
+				connection.play(data.cry);
+				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
