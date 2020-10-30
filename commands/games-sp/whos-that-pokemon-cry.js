@@ -75,7 +75,7 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 		try {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
-			const attachment = await this.client.registry.command.get('whos-that-pokemon').createImage(data, false);
+			const attachment = await this.client.registry.commands.get('whos-that-pokemon').createImage(data, false);
 			await data.fetchCry();
 			connection.play(Readable.from([data.cry]));
 			await reactIfAble(msg, this.client.user, '🔉');
