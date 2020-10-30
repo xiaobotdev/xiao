@@ -78,6 +78,8 @@ module.exports = class PokedexCommand extends Command {
 					connection.play(Readable.from([data.cry]));
 					await reactIfAble(msg, this.client.user, '🔉');
 				}
+			} else {
+				embed.setFooter('Join a voice channel to hear the Pokémon\'s cry.');
 			}
 			return msg.embed(embed);
 		} catch (err) {
