@@ -571,8 +571,8 @@ Total: 553
 * **true-or-false:** Answer a true or false question.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **waldo:** Try to find Waldo with spoiler tags!
-* **whos-that-pokemon:** Guess who that Pokémon is, based on their silhouette.
 * **whos-that-pokemon-cry:** Guess who that Pokémon is, based on their cry.
+* **whos-that-pokemon:** Guess who that Pokémon is, based on their silhouette.
 * **will-you-press-the-button:** Responds with a random "Will You Press The Button?" dilemma.
 
 ### Multi-Player Games:
@@ -1666,12 +1666,12 @@ here.
 - [The Onion](https://www.theonion.com/)
 	* the-onion ([RSS Feed](https://www.theonion.com/rss))
 - [The Sounds Resource](https://www.sounds-resource.com/)
-	* pokedex ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 	* pokedex ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
-	* whos-that-pokemon ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
+	* pokedex ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 	* whos-that-pokemon ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
-	* whos-that-pokemon-cry ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
+	* whos-that-pokemon ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 	* whos-that-pokemon-cry ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
+	* whos-that-pokemon-cry ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 - [TheCatAPI](https://thecatapi.com/)
 	* cat ([API](https://docs.thecatapi.com/))
 - [This Artwork Does Not Exist](https://thisartworkdoesnotexist.com/)
