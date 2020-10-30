@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten, formatNumber } = require('../../util/Util');
+const { shorten, formatNumber, pickWhenMany } = require('../../util/Util');
 const { TMDB_KEY } = process.env;
 
 module.exports = class TvShowCommand extends Command {
@@ -41,9 +41,12 @@ module.exports = class TvShowCommand extends Command {
 					query
 				});
 			if (!search.body.results.length) return msg.say('Could not find any results.');
-			const find = search.body.results.find(
-				m => m.name.toLowerCase() === query.toLowerCase()
-			) || search.body.results[0];
+			let find = search.body.results.find(m => m.name.toLowerCase() === query.toLowerCase())
+				|| search.body.results[0];
+			if (search.body.results > 1) {
+				const resultListFunc = (show, i) => `**${i + 1}.** ${show.name} (${show.first_air_date || 'TBA'})`;
+				find = await pickWhenMany(msg, search.body.results, find, resultListFunc);
+			}
 			const { body } = await request
 				.get(`https://api.themoviedb.org/3/tv/${find.id}`)
 				.query({ api_key: TMDB_KEY });
