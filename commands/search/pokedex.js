@@ -1,6 +1,8 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
+const { Readable } = require('stream');
+const { reactIfAble } = require('../../util/Util');
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -69,6 +71,14 @@ module.exports = class PokedexCommand extends Command {
 					if (found.id === data.id) return `**${found.name}**`;
 					return found.name;
 				}).join(' -> '));
+			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+			if (connection) {
+				await data.fetchCry();
+				if (data.cry) {
+					connection.play(Readable.from([data.cry]));
+					await reactIfAble(msg, this.client.user, '🔉');
+				}
+			}
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

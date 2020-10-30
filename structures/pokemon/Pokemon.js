@@ -37,6 +37,7 @@ module.exports = class Pokemon {
 		};
 		this.typesCached = data.missingno || false;
 		this.missingno = data.missingno || false;
+		this.cry = null;
 	}
 
 	get displayID() {
@@ -107,5 +108,16 @@ module.exports = class Pokemon {
 			if (evos2.length) this.chain.data.push(evos2.length === 1 ? evos2[0] : evos2);
 		}
 		return this.chain.data;
+	}
+
+	async fetchCry() {
+		if (this.cry) return this.cry;
+		try {
+			const { body } = await request.get(`https://pokemoncries.com/cries/${this.id}.mp3`);
+			this.cry = body;
+			return this.cry;
+		} catch {
+			return null;
+		}
 	}
 };

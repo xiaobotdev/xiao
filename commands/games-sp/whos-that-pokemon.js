@@ -1,6 +1,8 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
+const { Readable } = require('stream');
+const { reactIfAble } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 const path = require('path');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pokemon Solid.ttf'), { family: 'Pokemon' });
@@ -68,11 +70,24 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const names = data.names.map(name => name.name.toLowerCase());
 			const attachment = await this.createImage(data, true);
 			const answerAttachment = await this.createImage(data, false);
+			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+			if (connection) {
+				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3'));
+				await reactIfAble(msg, this.client.user, '🔉');
+			}
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
 				time: 15000
 			});
+			if (connection) {
+				connection.dispatcher.end();
+				await data.fetchCry();
+				if (data.cry) {
+					connection.play(Readable.from([data.cry]));
+					await reactIfAble(msg, this.client.user, '🔉');
+				}
+			}
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
 			const slug = this.client.pokemon.makeSlug(guess);
