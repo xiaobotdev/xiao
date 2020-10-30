@@ -43,7 +43,7 @@ module.exports = class MovieCommand extends Command {
 			if (!search.body.results.length) return msg.say('Could not find any results.');
 			let find = search.body.results.find(m => m.title.toLowerCase() === query.toLowerCase())
 				|| search.body.results[0];
-			if (search.body.results > 1) {
+			if (search.body.results.length > 1) {
 				const resultListFunc = (movie, i) => `**${i + 1}.** ${movie.title} (${movie.release_date || 'TBA'})`;
 				find = await pickWhenMany(msg, search.body.results, find, resultListFunc);
 			}
