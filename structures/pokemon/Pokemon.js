@@ -1,4 +1,5 @@
 const request = require('node-superfetch');
+const path = require('path');
 const { removeDuplicates, firstUpperCase } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
 
@@ -37,7 +38,7 @@ module.exports = class Pokemon {
 		};
 		this.typesCached = data.missingno || false;
 		this.missingno = data.missingno || false;
-		this.cry = null;
+		this.cry = path.join(__dirname, '..', '..', 'assets', 'sounds', 'pokedex', `${data.id}.wav`);
 	}
 
 	get displayID() {
@@ -108,17 +109,5 @@ module.exports = class Pokemon {
 			if (evos2.length) this.chain.data.push(evos2.length === 1 ? evos2[0] : evos2);
 		}
 		return this.chain.data;
-	}
-
-	async fetchCry() {
-		if (this.cry) return this.cry;
-		if (this.missingno) return null;
-		try {
-			const { body } = await request.get(`https://pokemoncries.com/cries/${this.id}.mp3`);
-			this.cry = body;
-			return this.cry;
-		} catch {
-			return null;
-		}
 	}
 };

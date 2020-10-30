@@ -1,8 +1,6 @@
 const Command = require('../../structures/Command');
-const { Readable } = require('stream');
 const { reactIfAble } = require('../../util/Util');
 const pokemonCount = 893;
-const blacklist = [0, 803, 804, 805, 806, 807, 808, 809, 890, 891, 892, 893];
 
 module.exports = class WhosThatPokemonCryCommand extends Command {
 	constructor(client) {
@@ -48,9 +46,22 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 					reasonURL: 'https://www.dafont.com/pokemon.font'
 				},
 				{
-					name: 'Pokemoncries.com',
-					url: 'https://pokemoncries.com/',
-					reason: 'Cry Sound Effects'
+					name: 'The Sounds Resource',
+					url: 'https://www.sounds-resource.com/',
+					reason: 'Cry Sound Effects (Gen 1-7)',
+					reasonURL: 'https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/'
+				},
+				{
+					name: 'The Sounds Resource',
+					url: 'https://www.sounds-resource.com/',
+					reason: 'Cry Sound Effects (Gen 8)',
+					reasonURL: 'https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/'
+				},
+				{
+					name: 'Pokémon Showdown',
+					url: 'https://play.pokemonshowdown.com/',
+					reason: 'Cry Sound Effects (Meltan and Melmetal)',
+					reasonURL: 'https://play.pokemonshowdown.com/audio/cries/'
 				}
 			],
 			args: [
@@ -60,15 +71,7 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 					type: 'integer',
 					max: pokemonCount,
 					min: 0,
-					default: () => {
-						let num;
-						while (!num) {
-							const chosen = Math.floor(Math.random() * (pokemonCount + 1));
-							if (blacklist.includes(chosen)) continue;
-							num = chosen;
-						}
-						return num;
-					}
+					default: () => Math.floor(Math.random() * (pokemonCount + 1))
 				}
 			]
 		});
@@ -84,15 +87,14 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
 			const attachment = await this.client.registry.commands.get('whos-that-pokemon').createImage(data, false);
-			await data.fetchCry();
-			connection.play(Readable.from([data.cry]));
+			connection.play(data.cry);
 			await reactIfAble(msg, this.client.user, '🔉');
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**');
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 				max: 1,
 				time: 15000
 			});
-			connection.play(Readable.from([data.cry]));
+			connection.play(data.cry);
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [attachment] });
 			const guess = msgs.first().content.toLowerCase();
 			const slug = this.client.pokemon.makeSlug(guess);

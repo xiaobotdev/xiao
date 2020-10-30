@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { Readable } = require('stream');
 const { reactIfAble } = require('../../util/Util');
 
 module.exports = class PokedexCommand extends Command {
@@ -30,9 +29,22 @@ module.exports = class PokedexCommand extends Command {
 					reason: 'Images'
 				},
 				{
-					name: 'Pokemoncries.com',
-					url: 'https://pokemoncries.com/',
-					reason: 'Cry Sound Effects'
+					name: 'The Sounds Resource',
+					url: 'https://www.sounds-resource.com/',
+					reason: 'Cry Sound Effects (Gen 1-7)',
+					reasonURL: 'https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/'
+				},
+				{
+					name: 'The Sounds Resource',
+					url: 'https://www.sounds-resource.com/',
+					reason: 'Cry Sound Effects (Gen 8)',
+					reasonURL: 'https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/'
+				},
+				{
+					name: 'Pokémon Showdown',
+					url: 'https://play.pokemonshowdown.com/',
+					reason: 'Cry Sound Effects (Meltan and Melmetal)',
+					reasonURL: 'https://play.pokemonshowdown.com/audio/cries/'
 				}
 			],
 			args: [
@@ -78,11 +90,8 @@ module.exports = class PokedexCommand extends Command {
 				}).join(' -> '));
 			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 			if (connection) {
-				await data.fetchCry();
-				if (data.cry) {
-					connection.play(Readable.from([data.cry]));
-					await reactIfAble(msg, this.client.user, '🔉');
-				}
+				connection.play(data.cry);
+				await reactIfAble(msg, this.client.user, '🔉');
 			} else {
 				const usage = this.client.registry.commands.get('join').usage();
 				embed.setFooter(`Join a voice channel and use ${usage} to hear the Pokémon's cry.`);
