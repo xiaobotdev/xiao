@@ -49,6 +49,11 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					url: 'https://www.dafont.com/',
 					reason: 'Pokemon Solid Font',
 					reasonURL: 'https://www.dafont.com/pokemon.font'
+				},
+				{
+					name: 'Pokemoncries.com',
+					url: 'https://pokemoncries.com/',
+					reason: 'Cry Sound Effects'
 				}
 			],
 			args: [
@@ -81,7 +86,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				time: 15000
 			});
 			if (connection) {
-				connection.dispatcher.end();
+				if (connection.dispatcher) connection.dispatcher.end();
 				await data.fetchCry();
 				if (data.cry) {
 					connection.play(Readable.from([data.cry]));
