@@ -15,7 +15,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			aliases: ['who-pokemon', 'whos-that-pokémon', 'who-pokémon'],
 			group: 'games-sp',
 			memberName: 'whos-that-pokemon',
-			description: 'Guess who that Pokémon is.',
+			description: 'Guess who that Pokémon is, based on their silhouette.',
 			throttling: {
 				usages: 1,
 				duration: 10

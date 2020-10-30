@@ -258,7 +258,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 552
+Total: 553
 
 ### Utility:
 
@@ -571,7 +571,8 @@ Total: 552
 * **true-or-false:** Answer a true or false question.
 * **typing-test:** See how fast you can type a sentence in a given time limit.
 * **waldo:** Try to find Waldo with spoiler tags!
-* **whos-that-pokemon:** Guess who that Pokémon is.
+* **whos-that-pokemon:** Guess who that Pokémon is, based on their silhouette.
+* **whos-that-pokemon-cry:** Guess who that Pokémon is, based on their cry.
 * **will-you-press-the-button:** Responds with a random "Will You Press The Button?" dilemma.
 
 ### Multi-Player Games:
@@ -1027,6 +1028,7 @@ here.
 	* yu-gi-oh-gen ([Card Base Template](https://www.deviantart.com/cylgom/art/Yu-GI-Oh-ultra-faithful-monster-card-template-728814822))
 - [DaFont](https://www.dafont.com/)
 	* whos-that-pokemon ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
+	* whos-that-pokemon-cry ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
 - [Danbooru](https://danbooru.donmai.us/)
 	* danbooru (API)
 - [Dance Dance Revolution](https://www.ddrgame.com/)
@@ -1506,9 +1508,11 @@ here.
 - [Pokemoncries.com](https://pokemoncries.com/)
 	* pokedex (Cry Sound Effects)
 	* whos-that-pokemon (Cry Sound Effects)
+	* whos-that-pokemon-cry (Cry Sound Effects)
 - [PokéAPI](https://pokeapi.co/)
 	* pokedex (API)
 	* whos-that-pokemon (API)
+	* whos-that-pokemon-cry (API)
 - [Pokémon](https://www.pokemon.com/us/)
 	* 3000-years (Image, Original Game)
 	* dexter (Image, Original Anime)
@@ -1517,6 +1521,7 @@ here.
 	* pokemon-fusion (Original Game)
 	* soundboard (Pikachu Sound)
 	* whos-that-pokemon (Images, Original Game)
+	* whos-that-pokemon-cry (Images, Original Game)
 	* wild-pokemon (Image, Original Game)
 	* wynaut (Image, Original Anime)
 - [Pornhub](https://www.pornhub.com/)
@@ -1585,6 +1590,7 @@ here.
 - [Serebii.net](https://www.serebii.net/index2.shtml)
 	* pokedex (Images)
 	* whos-that-pokemon (Images)
+	* whos-that-pokemon-cry (Images)
 - [ShareFonts.net](https://www.wfonts.com/)
 	* illegal ([Impact Font](https://www.wfonts.com/font/impact))
 	* meme-gen-classic ([Impact Font](https://www.wfonts.com/font/impact))
@@ -1696,6 +1702,7 @@ here.
 	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magi))
 - [u/CaptainRako](https://www.reddit.com/user/CaptainRako/)
 	* whos-that-pokemon ([Background Image](https://www.reddit.com/r/pokemon/comments/420xiv/whos_that_pokemon_1920x1080_hd_template_i_just/))
+	* whos-that-pokemon-cry ([Background Image](https://www.reddit.com/r/pokemon/comments/420xiv/whos_that_pokemon_1920x1080_hd_template_i_just/))
 - [u/guschuma](https://www.reddit.com/user/guschuma/)
 	* waldo ([Concept](https://www.reddit.com/r/copypasta/comments/gkk7z1/wheres_waldo_game_created_by_me/))
 - [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington)
