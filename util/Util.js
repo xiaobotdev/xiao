@@ -211,7 +211,7 @@ module.exports = class Util {
 		return false;
 	}
 
-	static async pickWhenMany(msg, arr, defalt, arrListFunc, { time = 30000 }) {
+	static async pickWhenMany(msg, arr, defalt, arrListFunc, { time = 30000 } = {}) {
 		const resultsList = arr.map(arrListFunc);
 		await msg.reply(stripIndents`
 			__**Found ${arr.length} results, which would you like to view?**__
