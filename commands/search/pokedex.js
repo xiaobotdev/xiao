@@ -28,6 +28,11 @@ module.exports = class PokedexCommand extends Command {
 					name: 'Serebii.net',
 					url: 'https://www.serebii.net/index2.shtml',
 					reason: 'Images'
+				},
+				{
+					name: 'Pokemoncries.com',
+					url: 'https://pokemoncries.com/',
+					reason: 'Cry Sound Effects'
 				}
 			],
 			args: [
@@ -79,7 +84,8 @@ module.exports = class PokedexCommand extends Command {
 					await reactIfAble(msg, this.client.user, '🔉');
 				}
 			} else {
-				embed.setFooter('Join a voice channel to hear the Pokémon\'s cry.');
+				const usage = this.client.registry.commands.get('join').usage();
+				embed.setFooter(`Join a voice channel and use ${usage} to hear the Pokémon\'s cry.`);
 			}
 			return msg.embed(embed);
 		} catch (err) {

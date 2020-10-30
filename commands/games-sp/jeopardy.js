@@ -57,7 +57,7 @@ module.exports = class JeopardyCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			if (connection) connection.dispatcher.end();
+			if (connection && connection.dispatcher) connection.dispatcher.end();
 			const answer = question.answer.replace(/<\/?i>/gi, '*');
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);
