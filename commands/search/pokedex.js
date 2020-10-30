@@ -85,7 +85,7 @@ module.exports = class PokedexCommand extends Command {
 				}
 			} else {
 				const usage = this.client.registry.commands.get('join').usage();
-				embed.setFooter(`Join a voice channel and use ${usage} to hear the Pokémon\'s cry.`);
+				embed.setFooter(`Join a voice channel and use ${usage} to hear the Pokémon's cry.`);
 			}
 			return msg.embed(embed);
 		} catch (err) {
