@@ -36,13 +36,13 @@ module.exports = class HearingTestCommand extends Command {
 		}
 		try {
 			let age;
-			for (const [dataAge, file] of Object.entries(data)) {
+			for (const { age: dataAge, file } of data) {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'hearing-test', file));
 				await delay(2000);
 				await msg.reply('Did you hear that sound? Reply with [y]es or [n]o.');
 				const heard = await verify(msg.channel, msg.author);
 				if (!heard) {
-					age = dataAge.replace(/a|b|c|d/, '');
+					age = dataAge;
 					break;
 				}
 			}
