@@ -270,6 +270,8 @@ Total: 554
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
+* **join:** Joins your voice channel.
+* **leave:** Leaves the current voice channel.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
@@ -821,12 +823,10 @@ Total: 554
 * **tax:** Determines the total cost of something plus tax.
 * **units:** Converts units to/from other units.
 
-### Voice-Based:
+### Play Audio:
 
 * **airhorn:** Plays an airhorn sound in a voice channel.
 * **dec-talk:** The world's best Text-to-Speech.
-* **join:** Joins your voice channel.
-* **leave:** Leaves the current voice channel.
 * **soundboard:** Plays a sound in a voice channel.
 * **vocodes:** Speak text like a variety of famous figures.
 
