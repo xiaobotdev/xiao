@@ -38,7 +38,7 @@ module.exports = class HearingTestCommand extends Command {
 			let age;
 			for (const { age: dataAge, file } of data) {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'hearing-test', file));
-				await delay(2000);
+				await delay(4000);
 				await msg.reply('Did you hear that sound? Reply with [y]es or [n]o.');
 				const heard = await verify(msg.channel, msg.author);
 				if (!heard) {
