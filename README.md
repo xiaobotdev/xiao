@@ -258,7 +258,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 553
+Total: 554
 
 ### Utility:
 
@@ -553,6 +553,7 @@ Total: 553
 * **fishy:** Go fishing.
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
+* **hearing-test:** Test your hearing.
 * **horse-info:** Responds with detailed information on a horse.
 * **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
@@ -1429,6 +1430,8 @@ here.
 	* challenger ([Original "Super Smash Bros." Game](https://www.smashbros.com/en_US/index.html))
 	* mario-bros-views ([Original "Super Mario Bros." Game](https://mario.nintendo.com/))
 	* smw-level ([Original "Super Mario World" Game](https://www.nintendo.co.jp/n02/shvc/mw/index.html))
+- [Noise addicts](http://www.noiseaddicts.com/)
+	* hearing-test ([Sounds](http://www.noiseaddicts.com/2011/06/mosquito-ringtones/))
 - [NotAWeebDev](https://github.com/NotAWeebDev/)
 	* triggered ([Image](https://github.com/NotAWeebDev/Misaki/blob/2e44f9efb467028dcbae5a2c9f836d2e99860b85/assets/images/plate_triggered.png))
 - [npm](https://www.npmjs.com/)
