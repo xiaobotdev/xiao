@@ -34,7 +34,7 @@ client.registry
 		['edit-meme', 'Meme Generators'],
 		['edit-text', 'Text Manipulation'],
 		['edit-number', 'Number Manipulation'],
-		['voice', 'Voice-Based'],
+		['voice', 'Play Audio'],
 		['phone', 'Phone'],
 		['code', 'Coding Tools'],
 		['other', 'Other'],
