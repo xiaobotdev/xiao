@@ -41,6 +41,7 @@ module.exports = class HelpCommand extends Command {
 				const commands = group.commands.filter(cmd => {
 					if (owner) return true;
 					if (cmd.ownerOnly || cmd.hidden) return false;
+					if (cmd.nsfw && !msg.channel.nsfw) return false;
 					return true;
 				});
 				if (!commands.size) continue;
