@@ -1,8 +1,8 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten, base64, embedURL } = require('../../util/Util');
-const { GITHUB_USERNAME, GITHUB_PASSWORD, XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
+const { shorten, embedURL } = require('../../util/Util');
+const { GITHUB_ACCESS_TOKEN, XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
 
 module.exports = class ChangelogCommand extends Command {
 	constructor(client) {
@@ -27,7 +27,7 @@ module.exports = class ChangelogCommand extends Command {
 	async run(msg) {
 		const { body } = await request
 			.get(`https://api.github.com/repos/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}/commits`)
-			.set({ Authorization: `Basic ${base64(`${GITHUB_USERNAME}:${GITHUB_PASSWORD}`)}` });
+			.set({ Authorization: `token ${GITHUB_ACCESS_TOKEN}` });
 		const commits = body.slice(0, 10);
 		const embed = new MessageEmbed()
 			.setTitle(`[${XIAO_GITHUB_REPO_NAME}:master] Latest 10 commits`)
