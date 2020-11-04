@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
-const { drawText } = require('node-canvas-text');
+const { default: drawText } = require('node-canvas-text');
 const GIFEncoder = require('gifencoder');
 const opentype = require('opentype.js');
 const path = require('path');
