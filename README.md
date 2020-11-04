@@ -728,7 +728,7 @@ Total: 554
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
 * **i-fear-no-man:** Sends a "I fear no man" meme with the text of your choice.
 * **if-those-kids-could-read:** Sends a "If those kids could read, they'd be very upset" meme with the text of your choice.
-* **illegal:** Makes President Trump make your text illegal.
+* **illegal:** Makes Donald Trump make your text illegal.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
 * **like:** Sends an "Everyone Liked That" meme with the image of your choice.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
