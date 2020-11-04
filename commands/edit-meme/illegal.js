@@ -1,13 +1,10 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
-const { default: drawText } = require('node-canvas-text');
 const GIFEncoder = require('gifencoder');
-const opentype = require('opentype.js');
 const path = require('path');
 const { streamToArray } = require('../../util/Util');
 const frames = require('../../assets/json/illegal');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Impact.ttf'), { family: 'Impact' });
-const impactFont = opentype.loadSync(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Impact.ttf'));
 
 module.exports = class IllegalCommand extends Command {
 	constructor(client) {
@@ -79,19 +76,8 @@ module.exports = class IllegalCommand extends Command {
 			}
 			ctx.textBaseline = 'top';
 			ctx.font = '20px Impact';
-			const rect = {
-				x: frame.corners[0][0],
-				y: frame.corners[0][1],
-				width: frame.corners[1][0] - frame.corners[0][0],
-				height: frame.corners[2][1] - frame.corners[0][1]
-			};
-			drawText(ctx, `${text}\n${verb} NOW\nILLEGAL`, impactFont, rect, {
-				minSize: 5,
-				maxSize: 20,
-				hAlign: 'center',
-				wAlign: 'center',
-				textPadding: 5
-			});
+			const maxLen = frame.corners[1][0] - frame.corners[0][0];
+			ctx.fillText(`${text}\n${verb} NOW\nILLEGAL`, frame.corners[0][0], frame.corners[0][1], maxLen);
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
