@@ -82,8 +82,8 @@ module.exports = class IllegalCommand extends Command {
 			const rect = {
 				x: frame.corners[0][0],
 				y: frame.corners[0][1],
-				width: frame.corners[1][0],
-				height: frame.corners[0][0]
+				width: frame.corners[0][0],
+				height: frame.corners[1][0]
 			};
 			drawText(ctx, `${text}\n${verb} NOW\nILLEGAL`, impactFont, rect, {
 				minSize: 5,
