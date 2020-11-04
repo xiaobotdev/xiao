@@ -80,10 +80,10 @@ module.exports = class IllegalCommand extends Command {
 			ctx.textBaseline = 'top';
 			ctx.font = '20px Impact';
 			const rect = {
-				x: frame.corners[0][0],
-				y: frame.corners[1][0],
-				width: frame.corners[0][0],
-				height: frame.corners[0][1]
+				x: frame.corners[1][0],
+				y: frame.corners[0][0],
+				width: frame.corners[0][1],
+				height: frame.corners[0][0]
 			};
 			drawText(ctx, `${text}\n${verb} NOW\nILLEGAL`, impactFont, rect, {
 				minSize: 5,
