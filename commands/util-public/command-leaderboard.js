@@ -24,7 +24,11 @@ module.exports = class CommandLeaderboardCommand extends Command {
 	}
 
 	run(msg, { page }) {
-		const commands = this.filterCommands(this.client.registry.commands, this.client.isOwner(msg.author));
+		const commands = this.filterCommands(
+			this.client.registry.commands,
+			this.client.isOwner(msg.author),
+			Boolean(msg.channel.nsfw)
+		);
 		const totalPages = Math.ceil(commands.size / 10);
 		if (page > totalPages) return msg.say(`Page ${page} does not exist (yet).`);
 		return msg.say(stripIndents`
@@ -52,11 +56,12 @@ module.exports = class CommandLeaderboardCommand extends Command {
 			.slice((page - 1) * 10, page * 10);
 	}
 
-	filterCommands(commands, owner) {
+	filterCommands(commands, owner, nsfw) {
 		return commands.filter(command => {
-			if (command.uses === undefined) return false;
-			if (command.unknown || command.hidden) return false;
+			if (command.uses === undefined || command.unknown) return false;
+			if (!owner && command.hidden) return false;
 			if (!owner && command.ownerOnly) return false;
+			if (!owner && command.nsfw && !nsfw) return false;
 			return true;
 		});
 	}
