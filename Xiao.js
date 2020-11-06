@@ -8,6 +8,7 @@ const client = new Client({
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	disableMentions: 'everyone',
+	partials: ['GUILD_MEMBER'],
 	ws: { intents: [Intents.NON_PRIVILEGED, 'GUILD_MEMBERS'] }
 });
 const { formatNumber } = require('./util/Util');
@@ -153,6 +154,7 @@ client.on('guildDelete', async guild => {
 
 client.on('guildMemberRemove', async member => {
 	if (member.id === client.user.id) return null;
+	if (member.partial) await member.fetch();
 	const channel = member.guild.systemChannel;
 	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
 	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
