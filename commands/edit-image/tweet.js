@@ -77,7 +77,7 @@ module.exports = class TweetCommand extends Command {
 			const likes = Math.floor(Math.random() * 100000) + 1;
 			const retweets = Math.floor(Math.random() * 100000) + 1;
 			const quoteTweets = Math.floor(Math.random() * 100000) + 1;
-			// const replies = Math.floor(Math.random() * 100000) + 1;
+			const replies = Math.floor(Math.random() * 100000) + 1;
 			ctx.fillStyle = '#15202b';
 			ctx.fillRect(0, base1.height, canvas.width, linesLen);
 			ctx.drawImage(base1, 0, 0);
@@ -109,9 +109,9 @@ module.exports = class TweetCommand extends Command {
 			ctx.fillText('Twitter for Xiao', 31 + timeLen + 6, base2StartY + 16);
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '16px Noto';
-			// ctx.fillText(formatNumberK(replies), 87, base2StartY + 139);
-			// ctx.fillText(formatNumberK(likes), 509, base2StartY + 139);
-			// ctx.fillText(formatNumberK(retweets), 300, base2StartY + 139);
+			ctx.fillText(formatNumberK(replies), 87, base2StartY + 139);
+			ctx.fillText(formatNumberK(likes), 509, base2StartY + 139);
+			ctx.fillText(formatNumberK(retweets + quoteTweets), 300, base2StartY + 139);
 			let currentLen = 31;
 			ctx.fillStyle = 'white';
 			ctx.font = 'normal bold 18px Noto';
