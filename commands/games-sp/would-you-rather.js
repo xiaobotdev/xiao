@@ -44,7 +44,7 @@ module.exports = class WouldYouRatherCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.reply(stripIndents`
 					No response? Too bad.
-					1 ${formatNumber(data.option1_total)} - ${formatNumber(data.option2_total)} 2
+					${formatNumber(data.option1_total)} - ${formatNumber(data.option2_total)}
 				`);
 			}
 			const option1 = msgs.first().content.toLowerCase() === '1';
@@ -53,7 +53,7 @@ module.exports = class WouldYouRatherCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(stripIndents`
 				**${Math.round((numToUse / totalVotes) * 100)}%** of people agree!
-				1 ${formatNumber(data.option1_total)} - ${formatNumber(data.option2_total)} 2
+				${formatNumber(data.option1_total)} - ${formatNumber(data.option2_total)}
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
