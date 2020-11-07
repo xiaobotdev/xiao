@@ -358,7 +358,6 @@ Total: 555
 * **the-onion:** Responds with a random "The Onion" article.
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
 * **word:** Responds with a random word.
-* **would-you-rather:** Responds with a random "Would you rather ...?" question.
 * **xiao-fact:** Responds with a random fact about Xiao.
 
 ### Random Image:
@@ -580,6 +579,7 @@ Total: 555
 * **whos-that-pokemon-cry:** Guess who that Pokémon is, based on their cry.
 * **whos-that-pokemon:** Guess who that Pokémon is, based on their silhouette.
 * **will-you-press-the-button:** Responds with a random "Will You Press The Button?" dilemma.
+* **would-you-rather:** Responds with a random "Would you rather ...?" question.
 
 ### Multi-Player Games:
 
