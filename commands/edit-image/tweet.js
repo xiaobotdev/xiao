@@ -140,7 +140,7 @@ module.exports = class TweetCommand extends Command {
 			currentLen += 5;
 			ctx.fillStyle = '#8899a6';
 			ctx.font = '18px Noto';
-			ctx.fillText('Likes', 31 + retweetsLen + 5 + retweetsWordLen + 10 + likesLen + 5, base2StartY + 77);
+			ctx.fillText('Likes', currentLen, base2StartY + 77);
 			ctx.beginPath();
 			ctx.arc(30 + 32, 84 + 32, 32, 0, Math.PI * 2);
 			ctx.closePath();
