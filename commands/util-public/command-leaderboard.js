@@ -27,7 +27,7 @@ module.exports = class CommandLeaderboardCommand extends Command {
 		const commands = this.filterCommands(
 			this.client.registry.commands,
 			this.client.isOwner(msg.author),
-			Boolean(msg.channel.nsfw)
+			msg.channel.nsfw
 		);
 		const totalPages = Math.ceil(commands.size / 10);
 		if (page > totalPages) return msg.say(`Page ${page} does not exist (yet).`);
