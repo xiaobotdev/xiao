@@ -38,6 +38,7 @@ module.exports = class WikiaCommand extends Command {
 	async run(msg, { wiki, query }) {
 		try {
 			const { id, url } = await this.search(wiki, query);
+			if (!id) return msg.say('Could not find any results.');
 			const data = await this.fetchArticle(wiki, id);
 			const embed = new MessageEmbed()
 				.setColor(0x002D54)
@@ -63,6 +64,7 @@ module.exports = class WikiaCommand extends Command {
 				format: 'json',
 				formatversion: 2
 			});
+		if (data.body.query.pages[0].missing) return { id: null, url: data.url };
 		return { id: data.body.query.pages[0].pageid, url: data.url };
 	}
 
