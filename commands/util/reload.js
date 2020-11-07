@@ -22,7 +22,7 @@ module.exports = class ReloadCommand extends Command {
 		});
 	}
 
-	async run(msg, { cmdOrGrp }) {
+	run(msg, { cmdOrGrp }) {
 		const isCmd = Boolean(cmdOrGrp.groupID);
 		cmdOrGrp.reload();
 		if (isCmd) return msg.say(`Reloaded the \`${cmdOrGrp.name}\` command.`);
