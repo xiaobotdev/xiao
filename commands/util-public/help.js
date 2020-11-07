@@ -27,7 +27,7 @@ module.exports = class HelpCommand extends Command {
 		if (!command) {
 			const embeds = [];
 			for (let i = 0; i < Math.ceil(this.client.registry.groups.size / 10); i++) {
-				const nsfw = msg.channel.nsfw && !this.client.isOwner(msg.author);
+				const nsfw = msg.channel.nsfw || this.client.isOwner(msg.author);
 				const embed = new MessageEmbed()
 					.setTitle(`Command List (Page ${i + 1})`)
 					.setDescription(nsfw ? '' : 'Use in an NSFW channel to see NSFW commands.')
