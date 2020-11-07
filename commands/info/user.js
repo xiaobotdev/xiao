@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js');
 const { trimArray } = require('../../util/Util');
 const flags = {
 	DISCORD_EMPLOYEE: 'Discord Employee',
-	DISCORD_PARTNER: 'Discord Partner',
+	PARTNERED_SERVER_OWNER: 'Discord Partner',
 	BUGHUNTER_LEVEL_1: 'Bug Hunter (Level 1)',
 	BUGHUNTER_LEVEL_2: 'Bug Hunter (Level 2)',
 	HYPESQUAD_EVENTS: 'HypeSquad Events',
@@ -15,8 +15,9 @@ const flags = {
 	TEAM_USER: 'Team User',
 	SYSTEM: 'System',
 	VERIFIED_BOT: 'Verified Bot',
-	VERIFIED_DEVELOPER: 'Verified Bot Developer'
+	EARLY_VERIFIED_BOT_DEVELOPER: 'Early Verified Bot Developer'
 };
+const deprecated = ['DISCORD_PARTNER', 'VERIFIED_DEVELOPER'];
 
 module.exports = class UserCommand extends Command {
 	constructor(client) {
@@ -39,7 +40,7 @@ module.exports = class UserCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const userFlags = user.flags ? user.flags.toArray() : [];
+		const userFlags = user.flags ? user.flags.toArray().filter(flag => !deprecated.includes(flag)) : [];
 		const embed = new MessageEmbed()
 			.setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true }))
 			.setAuthor(user.tag)
