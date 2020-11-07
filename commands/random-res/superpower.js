@@ -31,7 +31,7 @@ module.exports = class SuperpowerCommand extends Command {
 			const article = await this.fetchSuperpower(id);
 			return msg.reply(stripIndents`
 				Your superpower is... **${article.title}**!
-				_${article.abstract}_
+				_${article.abstract.split('1')[0].trim()}_
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -55,7 +55,10 @@ module.exports = class SuperpowerCommand extends Command {
 	async fetchSuperpower(id) {
 		const { body } = await request
 			.get('https://powerlisting.fandom.com/api/v1/Articles/Details')
-			.query({ ids: id });
+			.query({
+				ids: id,
+				abstract: 500
+			});
 		return body.items[id.toString()];
 	}
 };
