@@ -15,7 +15,7 @@ const flags = {
 	TEAM_USER: 'Team User',
 	SYSTEM: 'System',
 	VERIFIED_BOT: 'Verified Bot',
-	EARLY_VERIFIED_BOT_DEVELOPER: 'Early Verified Bot Developer'
+	EARLY_VERIFIED_DEVELOPER: 'Early Verified Bot Developer'
 };
 const deprecated = ['DISCORD_PARTNER', 'VERIFIED_DEVELOPER'];
 
