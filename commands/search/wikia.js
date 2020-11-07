@@ -39,11 +39,11 @@ module.exports = class WikiaCommand extends Command {
 		try {
 			const id = await this.search(wiki, query);
 			if (!id) return msg.say('Could not find any results.');
-			const data = await this.fetchArticle(wiki, id);
+			const { data, basePath } = await this.fetchArticle(wiki, id);
 			const embed = new MessageEmbed()
 				.setColor(0x002D54)
 				.setTitle(data.title)
-				.setURL(`${data.basepath}${data.url}`)
+				.setURL(`${basePath}${data.url}`)
 				.setAuthor('FANDOM', 'https://i.imgur.com/kBDqFIN.png', 'https://www.fandom.com/')
 				.setDescription(data.abstract)
 				.setThumbnail(data.thumbnail);
@@ -75,6 +75,6 @@ module.exports = class WikiaCommand extends Command {
 				ids: id,
 				abstract: 500
 			});
-		return body.items[id.toString()];
+		return { data: body.items[id.toString()], basePath: body.basepath };
 	}
 };
