@@ -55,7 +55,7 @@ module.exports = class WikiaCommand extends Command {
 
 	async search(wiki, query) {
 		const data = await request
-			.get(`http://${wiki}.fandom.com/api.php`)
+			.get(`https://${wiki}.fandom.com/api.php`)
 			.query({
 				action: 'query',
 				titles: query,
@@ -63,7 +63,7 @@ module.exports = class WikiaCommand extends Command {
 				format: 'json',
 				formatversion: 2
 			});
-		return { id: data.body.pages[0].pageid, url: data.url };
+		return { id: data.body.query.pages[0].pageid, url: data.url };
 	}
 
 	async fetchArticle(wiki, id) {
