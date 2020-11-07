@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { shorten } = require('../../util/Util');
 
 module.exports = class SuperpowerCommand extends Command {
 	constructor(client) {
@@ -32,7 +31,7 @@ module.exports = class SuperpowerCommand extends Command {
 			const article = await this.fetchSuperpower(id);
 			return msg.reply(stripIndents`
 				Your superpower is... **${article.title}**!
-				_${shorten(article.content.map(section => section.text).join('\n\n'), 1950)}_
+				_${article.abstract}_
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -41,7 +40,7 @@ module.exports = class SuperpowerCommand extends Command {
 
 	async random() {
 		const { body } = await request
-			.get('http://powerlisting.wikia.com/api.php')
+			.get('http://powerlisting.fandom.com/api.php')
 			.query({
 				action: 'query',
 				list: 'random',
@@ -55,8 +54,8 @@ module.exports = class SuperpowerCommand extends Command {
 
 	async fetchSuperpower(id) {
 		const { body } = await request
-			.get('http://powerlisting.wikia.com/api/v1/Articles/AsSimpleJson/')
-			.query({ id });
-		return body.sections[0];
+			.get('https://powerlisting.fandom.com/api/v1/Articles/Details')
+			.query({ ids: id });
+		return body.items[id.toString()];
 	}
 };

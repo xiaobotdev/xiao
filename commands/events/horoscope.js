@@ -42,6 +42,7 @@ module.exports = class HoroscopeCommand extends Command {
 				.setTitle(`Horoscope for ${firstUpperCase(sign)}...`)
 				.setURL(`https://astrology.tv/horoscope/signs/${sign}/`)
 				.setFooter('© Kelli Fox, The Astrologer')
+				.setThumbnail(this.getImageURL(sign))
 				.setTimestamp()
 				.setDescription(horoscope);
 			return msg.embed(embed);
@@ -54,5 +55,9 @@ module.exports = class HoroscopeCommand extends Command {
 		const { text } = await request.get(`https://astrology.tv/horoscope/signs/${sign}/`);
 		const $ = cheerio.load(text);
 		return $('div[class="ct-text-block day-tabs-content_horoscope"]').eq(1).text();
+	}
+
+	getImageURL(sign) {
+		return `https://astrology.tv/wp-content/uploads/2019/07/astrology_tv_${sign}_cover-768x768.jpg`;
 	}
 };

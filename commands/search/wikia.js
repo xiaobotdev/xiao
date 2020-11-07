@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
 
 module.exports = class WikiaCommand extends Command {
 	constructor(client) {
@@ -44,19 +43,19 @@ module.exports = class WikiaCommand extends Command {
 				.setColor(0x002D54)
 				.setTitle(data.title)
 				.setURL(url)
-				.setAuthor('Wikia', 'https://i.imgur.com/15A34JT.png', 'http://www.wikia.com/fandom')
-				.setDescription(shorten(data.content.map(section => section.text).join('\n\n')))
-				.setThumbnail(data.images.length ? data.images[0].src : null);
+				.setAuthor('FANDOM', 'https://i.imgur.com/15A34JT.png', 'https://www.fandom.com/')
+				.setDescription(data.abstract)
+				.setThumbnail(data.thumbnail);
 			return msg.embed(embed);
 		} catch (err) {
-			if (err.status === 404) return msg.say('Could not find any results');
+			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.say(`Oh no, an error occurred: \`${err.message}\`. Perhaps you entered an invalid wiki?`);
 		}
 	}
 
 	async search(wiki, query) {
 		const { body } = await request
-			.get(`https://${wiki}.wikia.com/api/v1/Search/List/`)
+			.get(`https://${wiki}.fandom.com/api/v1/Search/List/`)
 			.query({
 				query,
 				limit: 1,
@@ -68,8 +67,8 @@ module.exports = class WikiaCommand extends Command {
 
 	async fetchArticle(wiki, id) {
 		const { body } = await request
-			.get(`https://${wiki}.wikia.com/api/v1/Articles/AsSimpleJson/`)
-			.query({ id });
-		return body.sections[0];
+			.get(`https://${wiki}.fandom.com/api/v1/Articles/Details`)
+			.query({ ids: id });
+		return body.items[id.toString()];
 	}
 };

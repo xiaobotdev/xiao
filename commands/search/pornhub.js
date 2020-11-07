@@ -43,7 +43,7 @@ module.exports = class PornhubCommand extends Command {
 			.query({ search: query });
 		if (text.includes('<div class="noResultsWrapper">')) return null;
 		const $ = cheerio.load(text);
-		const video = $('li[class="pcVideoListItem  js-pop videoblock videoBox"]').eq(5);
+		const video = $('li[class="pcVideoListItem js-pop videoblock videoBox]').eq(5);
 		return `https://www.pornhub.com/view_video.php?viewkey=${video.attr('_vkey')}`;
 	}
 };

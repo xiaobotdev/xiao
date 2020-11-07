@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { html } = require('common-tags');
+const { shorten } = require('../../util/Util');
 
 module.exports = class PoemCommand extends Command {
 	constructor(client) {
@@ -42,7 +43,7 @@ module.exports = class PoemCommand extends Command {
 			const data = body[0];
 			return msg.say(html`
 				**${data.title}** by **${data.author}**
-				${data.lines.join('\n')}
+				${shorten(data.lines.join('\n'), 1750)}
 			`);
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
