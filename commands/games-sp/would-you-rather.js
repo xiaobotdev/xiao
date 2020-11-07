@@ -48,6 +48,7 @@ module.exports = class WouldYouRatherCommand extends Command {
 				`);
 			}
 			const option1 = msgs.first().content.toLowerCase() === '1';
+			await this.postResponse(data.id, option1);
 			const totalVotes = Number.parseInt(data.option1_total, 10) + Number.parseInt(data.option2_total, 10);
 			const numToUse = option1 ? Number.parseInt(data.option1_total, 10) : Number.parseInt(data.option2_total, 10);
 			this.client.games.delete(msg.channel.id);
@@ -64,5 +65,16 @@ module.exports = class WouldYouRatherCommand extends Command {
 	async fetchScenario() {
 		const { text } = await request.get('http://either.io/');
 		return JSON.parse(text.match(/window.initial_question = (\{.+\})/)[1]).question;
+	}
+
+	async postResponse(id, bool) {
+		try {
+			const { text } = await request
+				.get(`http://either.io/vote/${id}/${bool ? '1' : '2'}`)
+				.set({ 'X-Requested-With': 'XMLHttpRequest' });
+			return JSON.parse(text).result;
+		} catch {
+			return false;
+		}
 	}
 };
