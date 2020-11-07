@@ -68,7 +68,10 @@ module.exports = class WikiaCommand extends Command {
 	async fetchArticle(wiki, id) {
 		const { body } = await request
 			.get(`https://${wiki}.fandom.com/api/v1/Articles/Details`)
-			.query({ ids: id });
+			.query({
+				ids: id,
+				abstract: 500
+			});
 		return body.items[id.toString()];
 	}
 };
