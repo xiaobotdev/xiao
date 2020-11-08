@@ -52,7 +52,7 @@ module.exports = class Pokemon {
 
 	get spriteImageURL() {
 		if (this.missingno) return missingno.sprite;
-		return `https://www.serebii.net/swordshield/pokemon/${this.displayID}.png`;
+		return `https://serebii.net/pokemon/art/${this.displayID}.png`;
 	}
 
 	get boxImageURL() {
