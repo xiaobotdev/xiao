@@ -82,6 +82,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
+		const current = this.client.games.get(msg.channel.id);
+		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
@@ -102,6 +105,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				connection.play(data.cry);
 				await reactIfAble(msg, this.client.user, '🔉');
 			}
+			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
 			const slug = this.client.pokemon.makeSlug(guess);
@@ -110,6 +114,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			}
 			return msg.reply(`Nice! It's **${data.name}**!`, { files: [answerAttachment] });
 		} catch (err) {
+			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
