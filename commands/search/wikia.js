@@ -64,7 +64,7 @@ module.exports = class WikiaCommand extends Command {
 				format: 'json',
 				formatversion: 2
 			});
-		if (body.query.pages[0].missing) return null;
+		if (!body || body.query.pages[0].missing) return null;
 		return body.query.pages[0].pageid;
 	}
 
