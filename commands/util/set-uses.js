@@ -45,7 +45,7 @@ module.exports = class SetUsesCommand extends Command {
 		});
 	}
 
-	async run(msg, { mode, command, num }) {
+	run(msg, { mode, command, num }) {
 		switch (mode) {
 			case 'add': command.uses += num; break;
 			case 'subtract': command.uses -= num; break;
