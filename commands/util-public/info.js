@@ -14,7 +14,7 @@ module.exports = class InfoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'info',
-			aliases: ['stats', 'uptime'],
+			aliases: ['stats', 'uptime', 'bot-info'],
 			group: 'util-public',
 			memberName: 'info',
 			description: 'Responds with detailed bot information.',
