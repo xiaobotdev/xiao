@@ -183,8 +183,11 @@ module.exports = class Util {
 	}
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
-		if (fallbackEmoji && !msg.channel.permissionsFor(user).has('USE_EXTERNAL_EMOJIS')) emoji = fallbackEmoji;
-		if (msg.channel.permissionsFor(user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+		const dm = !msg.guild;
+		if (fallbackEmoji && (!dm && !msg.channel.permissionsFor(user).has('USE_EXTERNAL_EMOJIS'))) {
+			emoji = fallbackEmoji;
+		}
+		if (dm || msg.channel.permissionsFor(user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
 			try {
 				await msg.react(emoji);
 			} catch {
