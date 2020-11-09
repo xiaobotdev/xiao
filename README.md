@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 557
+Total: 558
 
 ### Utility:
 
@@ -314,6 +314,7 @@ Total: 557
 ### Random Response:
 
 * **8-ball:** Asks your question to the Magic 8 Ball.
+* **acrostic:** Creates an acrostic from any word or name.
 * **advice:** Responds with a random bit of advice.
 * **axis-cult:** Responds with a teaching of the Axis Cult.
 * **bunny-fact:** Responds with a random bunny fact.
@@ -1187,6 +1188,7 @@ here.
 	* create-qr-code ([QR code API](http://goqr.me/api/))
 	* read-qr-code ([QR code API](http://goqr.me/api/))
 - [Grady Ward](https://en.wikipedia.org/wiki/Grady_Ward)
+	* acrostic ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 	* hangman ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 	* word ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 	* word-chain ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
