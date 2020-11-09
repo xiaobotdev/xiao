@@ -51,6 +51,7 @@ module.exports = class SetUsesCommand extends Command {
 			case 'subtract': command.uses -= num; break;
 			case 'exact': command.uses = num; break;
 		}
+		this.client.exportCommandLeaderboard();
 		return msg.say(`${modeDesc[mode]} **${num}** ${conj[mode]} the uses of the \`${command.name}\` command.`);
 	}
 };
