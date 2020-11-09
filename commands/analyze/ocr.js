@@ -35,6 +35,7 @@ module.exports = class OcrCommand extends Command {
 		const { data: { text } } = await worker.recognize(image);
 		await worker.terminate();
 		await reactIfAble(msg, this.client.user, SUCCESS_EMOJI_ID, '✅');
+		if (!text) return msg.reply('There is no text in this image.');
 		if (text.length > 2000) {
 			return msg.reply('The result was over 2000 characters, so here\'s a TXT file.', {
 				files: [{ attachment: Buffer.from(text), name: 'ocr.txt' }]
