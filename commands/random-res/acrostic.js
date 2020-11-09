@@ -35,7 +35,7 @@ module.exports = class AcrosticCommand extends Command {
 	run(msg, { word }) {
 		const results = [];
 		for (const letter of word) {
-			const filteredWords = wordList.filter(wrd => wrd.startsWith(letter.toLowerCase()));
+			const filteredWords = words.filter(wrd => wrd.startsWith(letter.toLowerCase()));
 			const chosen = filteredWords[Math.floor(Math.random() * filteredWords.length)];
 			results.push(`**${letter.toUpperCase()}**${chosen.slice(1)}`);
 		}
