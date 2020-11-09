@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 556
+Total: 557
 
 ### Utility:
 
@@ -292,6 +292,7 @@ Total: 556
 * **ip:** Responds with the IP address the bot's server is running on. (Owner-Only)
 * **reload:** Reloads a command or command group. (Owner-Only)
 * **report-respond:** Responds to a submitted report. (Owner-Only)
+* **set-uses:** Changes command usage stats. (Owner-Only)
 * **shutdown:** Shuts down the bot. (Owner-Only)
 * **webhook:** Posts a message to the webhook defined in the bot owner's `process.env`. (Owner-Only)
 
