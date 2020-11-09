@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 555
+Total: 556
 
 ### Utility:
 
@@ -535,6 +535,7 @@ Total: 555
 * **gender:** Determines the gender of a name.
 * **has-transparency:** Determines if an image has transparency in it.
 * **image-size:** Determines the size of an image.
+* **ocr:** Performs Optical Character Recognition on an image.
 * **read-qr-code:** Reads a QR Code.
 * **safe-url:** Determines if a URL is safe or not.
 * **scrabble-score:** Responds with the scrabble score of a word.
