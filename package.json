@@ -57,6 +57,7 @@
 		"pokersolver": "^2.1.4",
 		"random-js": "^2.1.0",
 		"rss-parser": "^3.9.0",
+		"sherlockjs": "^1.4.0",
 		"stackblur-canvas": "^2.4.0",
 		"tesseract.js": "^2.1.4",
 		"winston": "^3.3.3"

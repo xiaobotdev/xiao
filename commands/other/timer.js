@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const moment = require('moment');
 
 module.exports = class TimerCommand extends Command {
 	constructor(client) {
@@ -10,10 +11,8 @@ module.exports = class TimerCommand extends Command {
 			args: [
 				{
 					key: 'time',
-					prompt: 'How long should the timer last (in seconds)?',
-					type: 'integer',
-					max: 600,
-					min: 1
+					prompt: 'How long should the timer last?',
+					type: 'sherlock'
 				}
 			]
 		});
@@ -23,11 +22,13 @@ module.exports = class TimerCommand extends Command {
 
 	run(msg, { time }) {
 		if (this.timers.has(msg.channel.id)) return msg.reply('Only one timer can be set per channel.');
-		const display = time > 59 ? `${Math.trunc(time / 60)} minutes, ${time % 60} seconds` : `${time} seconds`;
+		const timeMs = time.startDate.getTime() - Date.now();
+		if (timeMs > 600000) return msg.reply('Times above 10 minutes are not currently supported. Sorry!');
+		const display = moment().add(timeMs, 'ms').fromNow();
 		const timeout = setTimeout(async () => {
 			await msg.channel.send(`🕰️ Your **${display}** timer is finished ${msg.author}!`);
 			this.timers.delete(msg.channel.id);
-		}, time * 1000);
+		}, timeMs);
 		this.timers.set(msg.channel.id, timeout);
 		return msg.say(`🕰️ Set a timer for **${display}**.`);
 	}
