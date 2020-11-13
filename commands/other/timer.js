@@ -11,7 +11,7 @@ module.exports = class TimerCommand extends Command {
 			args: [
 				{
 					key: 'time',
-					prompt: 'How long should the timer last?',
+					prompt: 'What do you want me to remind you about, and in how long?',
 					type: 'sherlock'
 				}
 			]
@@ -26,10 +26,10 @@ module.exports = class TimerCommand extends Command {
 		if (timeMs > 600000) return msg.reply('Times above 10 minutes are not currently supported. Sorry!');
 		const display = moment().add(timeMs, 'ms').fromNow();
 		const timeout = setTimeout(async () => {
-			await msg.channel.send(`🕰️ Your **${display}** timer is finished ${msg.author}!`);
+			await msg.channel.send(`🕰️ ${msg.author}, you wanted me to remind you of: **"${time.eventTitle}"**.`);
 			this.timers.delete(msg.channel.id);
 		}, timeMs);
 		this.timers.set(msg.channel.id, timeout);
-		return msg.say(`🕰️ Set a timer for **${display}**.`);
+		return msg.say(`🕰️ Okay, I will remind you **"${time.eventTitle}" ${display}**.`);
 	}
 };
