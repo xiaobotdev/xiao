@@ -30,6 +30,6 @@ module.exports = class TimerCommand extends Command {
 			this.timers.delete(msg.channel.id);
 		}, timeMs);
 		this.timers.set(msg.channel.id, timeout);
-		return msg.say(`🕰️ Okay, I will remind you **"${time.eventTitle}" ${display}**.`);
+		return msg.say(`🕰️ Okay, I will remind you **"${time.eventTitle}"** ${display}.`);
 	}
 };
