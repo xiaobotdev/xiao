@@ -23,7 +23,7 @@ module.exports = class TimerCommand extends Command {
 
 	run(msg, { time }) {
 		if (this.timers.has(msg.channel.id)) return msg.reply('Only one timer can be set per channel.');
-		const display = time > 59 ? `${time / 60} minutes` : `${time} seconds`;
+		const display = time > 59 ? `${Math.trunc(time / 60)} minutes, ${time % 60} seconds` : `${time} seconds`;
 		const timeout = setTimeout(async () => {
 			await msg.channel.send(`🕰️ Your **${display}** timer is finished ${msg.author}!`);
 			this.timers.delete(msg.channel.id);
