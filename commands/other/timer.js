@@ -5,9 +5,10 @@ module.exports = class TimerCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'timer',
+			aliases: ['remind', 'remind-me'],
 			group: 'other',
 			memberName: 'timer',
-			description: 'Sets a timer for anywhere from 1 second to 10 minutes.',
+			description: 'Sets a timer.',
 			args: [
 				{
 					key: 'time',
