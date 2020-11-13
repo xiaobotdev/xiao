@@ -26,11 +26,12 @@ module.exports = class TimerCommand extends Command {
 		const timeMs = time.startDate.getTime() - Date.now();
 		if (timeMs > 600000) return msg.reply('Times above 10 minutes are not currently supported. Sorry!');
 		const display = moment().add(timeMs, 'ms').fromNow();
+		const title = time.eventTitle || 'something';
 		const timeout = setTimeout(async () => {
-			await msg.channel.send(`🕰️ ${msg.author}, you wanted me to remind you of: **"${time.eventTitle}"**.`);
+			await msg.channel.send(`🕰️ ${msg.author}, you wanted me to remind you of: **"${title}"**.`);
 			this.timers.delete(msg.channel.id);
 		}, timeMs);
 		this.timers.set(msg.channel.id, timeout);
-		return msg.say(`🕰️ Okay, I will remind you **"${time.eventTitle}"** ${display}.`);
+		return msg.say(`🕰️ Okay, I will remind you **"${title}"** ${display}.`);
 	}
 };
