@@ -27,6 +27,7 @@ module.exports = class OcrCommand extends Command {
 	}
 
 	async run(msg, { image }) {
+		if (image.toLowerCase().endsWith('.gif')) return msg.reply('I cannot read text from GIF images.');
 		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 		const worker = createWorker();
 		await worker.load();
