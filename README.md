@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 558
+Total: 559
 
 ### Utility:
 
@@ -361,6 +361,7 @@ Total: 558
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
 * **word:** Responds with a random word.
 * **xiao-fact:** Responds with a random fact about Xiao.
+* **yo-mama:** Responds with a random "Yo Mama" joke.
 
 ### Random Image:
 
@@ -1549,6 +1550,8 @@ here.
 	* http-duck ([API](https://random-d.uk/http))
 - [RandomFox](https://randomfox.ca/)
 	* fox (API)
+- [rdegges](https://github.com/rdegges)
+	* yo-mama ([Joke Data](https://github.com/rdegges/yomomma-api/blob/master/jokes.txt))
 - [Recipe Puppy](http://www.recipepuppy.com/)
 	* recipe ([API](http://www.recipepuppy.com/about/api/))
 - [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop)
