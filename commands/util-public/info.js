@@ -4,7 +4,8 @@ const { version: commandoVersion } = require('discord.js-commando');
 const moment = require('moment');
 require('moment-duration-format');
 const { formatNumber, embedURL } = require('../../util/Util');
-const { version, dependencies } = require('../../package');
+const { version, dependencies, optionalDependencies } = require('../../package');
+const deps = { ...dependencies, ...optionalDependencies };
 const permissions = require('../../assets/json/permissions');
 const copyright = require('../../assets/json/copyright');
 const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
@@ -42,7 +43,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Node.js', process.version, true)
 			.addField('❯ Discord.js', `v${djsVersion}`, true)
 			.addField('❯ Commando', `v${commandoVersion}`, true)
-			.addField('❯ Dependencies', Object.keys(dependencies).join(', '));
+			.addField('❯ Dependencies', Object.keys(deps).sort().join(', '));
 		return msg.embed(embed);
 	}
 };
