@@ -52,7 +52,7 @@
 		"mathjs": "^8.0.1",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",
-		"moment-timezone": "^0.5.31",
+		"moment-timezone": "^0.5.32",
 		"node-superfetch": "^0.1.10",
 		"pokersolver": "^2.1.4",
 		"random-js": "^2.1.0",
