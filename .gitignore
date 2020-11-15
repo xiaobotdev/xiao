@@ -11,5 +11,6 @@ report*.json
 .env
 config.json
 command-leaderboard.json
+eng.traineddata
 
 # In-Development Commands
