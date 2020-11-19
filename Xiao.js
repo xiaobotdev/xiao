@@ -50,8 +50,11 @@ client.registry
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.on('ready', () => {
+client.on('ready', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
+
+	// Set up existing timers
+	await client.timers.fetchAll();
 
 	// Push client-related activities
 	client.activities.push(
