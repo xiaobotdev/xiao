@@ -1,14 +1,14 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
 
-module.exports = class TimerCommand extends Command {
+module.exports = class RemindCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'timer',
-			aliases: ['remind', 'remind-me'],
+			name: 'remind',
+			aliases: ['timer', 'remind-me'],
 			group: 'other',
-			memberName: 'timer',
-			description: 'Sets a timer.',
+			memberName: 'remind',
+			description: 'Sets a reminder.',
 			args: [
 				{
 					key: 'time',
@@ -21,7 +21,7 @@ module.exports = class TimerCommand extends Command {
 
 	async run(msg, { time }) {
 		const exists = await this.client.timers.exists(msg.channel.id, msg.author.id);
-		if (exists) return msg.reply('Only one timer can be set per channel per user.');
+		if (exists) return msg.reply('Only one reminder can be set per channel per user.');
 		const timeMs = time.startDate.getTime() - Date.now();
 		const display = moment().add(timeMs, 'ms').fromNow();
 		const title = time.eventTitle || 'something';

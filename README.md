@@ -865,11 +865,11 @@ Total: 559
 * **dating:** Find the person of your dreams with this dating system!
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
+* **remind:** Sets a reminder.
 * **rename-all:** Renames every member of the server. (Owner-Only)
 * **screenshot:** Takes a screenshot of any webpage.
 * **smilebasic:** Responds with a ZIP file for a SmileBASIC project.
 * **strawpoll:** Generates a Strawpoll with the options you provide.
-* **timer:** Sets a timer for anywhere from 1 second to 10 minutes.
 
 ### Roleplay:
 
