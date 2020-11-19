@@ -17,21 +17,15 @@ module.exports = class TimerCommand extends Command {
 				}
 			]
 		});
-
-		this.timers = new Map();
 	}
 
-	run(msg, { time }) {
-		if (this.timers.has(msg.channel.id)) return msg.reply('Only one timer can be set per channel.');
+	async run(msg, { time }) {
+		const exists = await this.client.timers.exists(msg.channel.id, msg.author.id);
+		if (exists) return msg.reply('Only one timer can be set per channel per user.');
 		const timeMs = time.startDate.getTime() - Date.now();
-		if (timeMs > 600000) return msg.reply('Times above 10 minutes are not currently supported. Sorry!');
 		const display = moment().add(timeMs, 'ms').fromNow();
 		const title = time.eventTitle || 'something';
-		const timeout = setTimeout(async () => {
-			await msg.channel.send(`🕰️ ${msg.author}, you wanted me to remind you of: **"${title}"**.`);
-			this.timers.delete(msg.channel.id);
-		}, timeMs);
-		this.timers.set(msg.channel.id, timeout);
+		await this.client.timers.setTimer(msg.channel.id, timeMs, msg.author.id, title);
 		return msg.say(`🕰️ Okay, I will remind you **"${title}"** ${display}.`);
 	}
 };

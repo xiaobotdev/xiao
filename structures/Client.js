@@ -4,6 +4,8 @@ const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const fs = require('fs');
 const path = require('path');
+const Redis = require('./Redis');
+const TimerManager = require('./timer/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
 const MemePosterClient = require('./MemePoster');
 const activities = require('../assets/json/activity');
@@ -30,7 +32,9 @@ module.exports = class XiaoClient extends CommandoClient {
 				winston.format.printf(log => `[${log.timestamp}] [${log.level.toUpperCase()}]: ${log.message}`)
 			)
 		});
+		this.redis = Redis ? Redis.db : null;
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
+		this.timers = new TimerManager(this);
 		this.pokemon = new PokemonStore();
 		this.memePoster = POSTER_ID && POSTER_TOKEN ? new MemePosterClient(POSTER_ID, POSTER_TOKEN, {
 			subreddits,

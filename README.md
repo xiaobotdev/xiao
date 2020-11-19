@@ -161,6 +161,13 @@ The difficulty in getting all of these keys is why I recommend
 * `REPORT_CHANNEL_ID` is the ID of the Discord channel you want to send messages from `report` to. Not required, and if not provided the report command simply DMs the owner.
 * `JOIN_LEAVE_CHANNEL_ID` is the ID of the Discord channel to send a message to whenever a new server adds or removes the bot. Not required.
 
+### Redis Info
+
+This is information for connecting to Redis.
+
+* `REDIS_HOST` is the host for your Redis connection. Probably `127.0.0.1`.
+* `REDIS_PASS` is the password for your Redis connection.
+
 ### Emoji IDs
 
 All the emoji IDs are the IDs of Discord custom emoji. You need to
