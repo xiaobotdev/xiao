@@ -7,7 +7,7 @@ module.exports = class TimerManager {
 
 	async fetchAll() {
 		const timers = await Redis.db.hgetall('timer');
-		for (let data of Object.keys(timers)) {
+		for (let data of Object.values(timers)) {
 			data = JSON.parse(data);
 			await this.setTimer(data.channelID, new Date(data.time) - new Date(), data.userID, data.title, false);
 		}
