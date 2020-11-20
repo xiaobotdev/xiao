@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
+const { shorten } = require('../../util/Util');
 
 module.exports = class RemindCommand extends Command {
 	constructor(client) {
@@ -24,7 +25,7 @@ module.exports = class RemindCommand extends Command {
 		if (exists) return msg.reply('Only one reminder can be set per channel per user.');
 		const timeMs = time.startDate.getTime() - Date.now();
 		const display = moment().add(timeMs, 'ms').fromNow();
-		const title = time.eventTitle || 'something';
+		const title = time.eventTitle ? shorten(time.eventTitle, 500) : 'something';
 		await this.client.timers.setTimer(msg.channel.id, timeMs, msg.author.id, title);
 		return msg.say(`🕰️ Okay, I will remind you **"${title}"** ${display}.`);
 	}
