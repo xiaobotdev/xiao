@@ -58,6 +58,11 @@ const types = {
 	ANIME: 'Anime',
 	MANGA: 'Manga'
 };
+const roles = {
+	MAIN: 'Main',
+	SUPPORTING: 'Supporting',
+	BACKGROUND: 'Background'
+};
 
 module.exports = class AnimeStaffCommand extends Command {
 	constructor(client) {
@@ -101,7 +106,7 @@ module.exports = class AnimeStaffCommand extends Command {
 				.addField('❯ Voice Roles',
 					staff.characterMedia.edges.length ? trimArray(staff.characterMedia.edges.map(edge => {
 						const title = edge.node.title.english || edge.node.title.romaji;
-						return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
+						return embedURL(`${title} (${roles[edge.node.characterRole]})`, edge.node.siteUrl);
 					}), 5).join(', ') : 'None')
 				.addField('❯ Production Roles',
 					staff.staffMedia.edges.length ? trimArray(staff.staffMedia.edges.map(edge => {
