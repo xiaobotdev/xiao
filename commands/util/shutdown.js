@@ -32,7 +32,7 @@ module.exports = class ShutdownCommand extends Command {
 			let currentString = '';
 			if (games > 0) {
 				currentString += `${games} game${games > 1 ? 's' : ''}`;
-				if (calls > 1) currentString += ' and ';
+				if (calls > 0) currentString += ' and ';
 				if (games === 1 && calls < 1) areIs = 'is';
 			}
 			if (calls > 0) {
