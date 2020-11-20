@@ -5,14 +5,14 @@ const { stripIndents } = require('common-tags');
 const { embedURL, cleanAnilistHTML, trimArray } = require('../../util/Util');
 const searchGraphQL = stripIndents`
 	query ($search: String) {
-		characters: Page (perPage: 1) {
-			results: characters (search: $search) { id }
+		staff: Page (perPage: 1) {
+			results: staff (search: $search) { id }
 		}
 	}
 `;
 const resultGraphQL = stripIndents`
 	query ($id: Int!) {
-		Character (id: $id) {
+		Staff (id: $id) {
 			id
 			name {
 				first
@@ -24,7 +24,17 @@ const resultGraphQL = stripIndents`
 			}
 			description(asHtml: false)
 			siteUrl
-			media(page: 1, perPage: 5) {
+			characters(page: 1, perPage: 5) {
+				edges {
+					node {
+						name {
+							full
+						}
+						siteUrl
+					}
+				}
+			}
+			staffMedia(page: 1, perPage: 5) {
 				edges {
 					node {
 						title {
@@ -34,6 +44,7 @@ const resultGraphQL = stripIndents`
 						type
 						siteUrl
 					}
+					staffRole
 				}
 			}
 		}
@@ -44,14 +55,14 @@ const types = {
 	MANGA: 'Manga'
 };
 
-module.exports = class AnimeCharacterCommand extends Command {
+module.exports = class AnimeStaffCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'anime-character',
-			aliases: ['anilist-character', 'character', 'manga-character', 'manga-char', 'ani-char', 'char', 'anime-char'],
+			name: 'anime-staff',
+			aliases: ['anilist-staff', 'staff', 'manga-staff', 'ani-staff'],
 			group: 'search',
-			memberName: 'anime-character',
-			description: 'Searches AniList for your query, getting character results.',
+			memberName: 'anime-staff',
+			description: 'Searches AniList for your query, getting staff results.',
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
@@ -64,7 +75,7 @@ module.exports = class AnimeCharacterCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What character would you like to search for?',
+					prompt: 'What staff member would you like to search for?',
 					type: 'string'
 				}
 			]
@@ -75,18 +86,21 @@ module.exports = class AnimeCharacterCommand extends Command {
 		try {
 			const id = await this.search(query);
 			if (!id) return msg.say('Could not find any results.');
-			const character = await this.fetchCharacter(id);
+			const staff = await this.fetchStaff(id);
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setURL(character.siteUrl)
-				.setThumbnail(character.image.large || character.image.medium || null)
-				.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)
-				.setDescription(character.description ? cleanAnilistHTML(character.description, false) : 'No description.')
-				.addField('❯ Appearances', trimArray(character.media.edges.map(edge => {
-					const title = edge.node.title.english || edge.node.title.romaji;
-					return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
-				}), 5).join(', '));
+				.setURL(staff.siteUrl)
+				.setThumbnail(staff.image.large || staff.image.medium || null)
+				.setTitle(`${staff.name.first || ''}${staff.name.last ? ` ${staff.name.last}` : ''}`)
+				.setDescription(staff.description ? cleanAnilistHTML(staff.description, false) : 'No description.')
+				.addField('❯ Voice Roles', staff.characters.edges.length
+					? trimArray(staff.characters.edges.map(edge => embedURL(edge.name.full, edge.node.siteUrl)), 5).join(', ')
+					: 'None')
+				.addField('❯ Production Roles', staff.staffMedia.edges.length ? trimArray(staff.staffMedia.edges.map(edge => {
+						const title = edge.node.title.english || edge.node.title.romaji;
+						return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
+					}), 5).join(', ') : 'None');
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -100,17 +114,17 @@ module.exports = class AnimeCharacterCommand extends Command {
 				variables: { search: query },
 				query: searchGraphQL
 			});
-		if (!body.data.characters.results.length) return null;
-		return body.data.characters.results[0].id;
+		if (!body.data.staff.results.length) return null;
+		return body.data.staff.results[0].id;
 	}
 
-	async fetchCharacter(id) {
+	async fetchStaff(id) {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
 			.send({
 				variables: { id },
 				query: resultGraphQL
 			});
-		return body.data.Character;
+		return body.data.Staff;
 	}
 };
