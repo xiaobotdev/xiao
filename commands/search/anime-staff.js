@@ -24,14 +24,18 @@ const resultGraphQL = stripIndents`
 			}
 			description(asHtml: false)
 			siteUrl
-			characters(page: 1, perPage: 5) {
+			characterMedia(page: 1, perPage: 5) {
 				edges {
 					node {
-						name {
-							full
+						title {
+							english
+							romaji
 						}
+						type
 						siteUrl
 					}
+					characterRole
+					staffRole
 				}
 			}
 			staffMedia(page: 1, perPage: 5) {
@@ -94,10 +98,13 @@ module.exports = class AnimeStaffCommand extends Command {
 				.setThumbnail(staff.image.large || staff.image.medium || null)
 				.setTitle(`${staff.name.first || ''}${staff.name.last ? ` ${staff.name.last}` : ''}`)
 				.setDescription(staff.description ? cleanAnilistHTML(staff.description, false) : 'No description.')
-				.addField('❯ Voice Roles', staff.characters.edges.length
-					? trimArray(staff.characters.edges.map(edge => embedURL(edge.name.full, edge.node.siteUrl)), 5).join(', ')
-					: 'None')
-				.addField('❯ Production Roles', staff.staffMedia.edges.length ? trimArray(staff.staffMedia.edges.map(edge => {
+				.addField('❯ Voice Roles',
+					staff.characterMedia.edges.length ? trimArray(staff.characterMedia.edges.map(edge => {
+						const title = edge.node.title.english || edge.node.title.romaji;
+						return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
+					}), 5).join(', ') : 'None')
+				.addField('❯ Production Roles',
+					staff.staffMedia.edges.length ? trimArray(staff.staffMedia.edges.map(edge => {
 						const title = edge.node.title.english || edge.node.title.romaji;
 						return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
 					}), 5).join(', ') : 'None');
