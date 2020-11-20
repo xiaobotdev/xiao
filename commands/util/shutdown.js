@@ -32,12 +32,12 @@ module.exports = class ShutdownCommand extends Command {
 			let currentString = '';
 			if (games > 0) {
 				currentString += `${games} game${games > 1 ? 's' : ''}`;
-				if (calls < 1) currentString += ' and ';
-				if (games === 1) areIs = 'is';
+				if (calls > 1) currentString += ' and ';
+				if (games === 1 && calls < 1) areIs = 'is';
 			}
 			if (calls > 0) {
 				currentString += `${calls} phone call${calls > 1 ? 's' : ''}`;
-				if (calls === 1 && (games > 0 ? games === 1 : true)) areIs = 'is';
+				if (calls === 1 && games < 1) areIs = 'is';
 			}
 			await msg.reply(`There ${areIs} currently **${currentString}**. Are you sure?`);
 			const verification = await verify(msg.channel, msg.author);
