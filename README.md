@@ -268,7 +268,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 559
+Total: 560
 
 ### Utility:
 
@@ -468,6 +468,7 @@ Total: 559
 ### Search:
 
 * **anime-character:** Searches AniList for your query, getting character results.
+* **anime-staff:** Searches AniList for your query, getting staff results.
 * **anime:** Searches AniList for your query, getting anime results.
 * **book:** Searches Google Books for a book.
 * **bulbapedia:** Searches Bulbapedia for your query.
@@ -954,6 +955,7 @@ here.
 	* anime ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* anime-airing ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* anime-character ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
+	* anime-staff ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* manga ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 - [Antidepressants or Tolkien](https://antidepressantsortolkien.now.sh/)
 	* antidepressant-or-tolkien (Question Data)
