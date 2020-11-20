@@ -3,7 +3,6 @@ const request = require('node-superfetch');
 const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
 const { base64 } = require('../../util/Util');
-const { WHATANIME_KEY } = process.env;
 
 module.exports = class WhatAnimeCommand extends Command {
 	constructor(client) {
@@ -48,7 +47,7 @@ module.exports = class WhatAnimeCommand extends Command {
 			const title = `${result.title}${result.episode ? ` episode ${result.episode}` : ''}`;
 			return msg.reply(stripIndents`
 				I'm ${result.prob}% sure this is from ${title}.
-				${result.prob < 90 ? '_This probablity is rather low, try using a higher quality image._' : ''}
+				${result.prob < 87 ? '_This probablity is rather low, try using a higher quality image._' : ''}
 			`, result.preview ? { files: [{ attachment: result.preview, name: 'preview.mp4' }] } : {});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -57,9 +56,7 @@ module.exports = class WhatAnimeCommand extends Command {
 
 	async fetchRateLimit() {
 		try {
-			const { body } = await request
-				.get('https://trace.moe/api/me')
-				.query({ token: WHATANIME_KEY });
+			const { body } = await request.get('https://trace.moe/api/me');
 			return { status: body.quota > 0, refresh: body.quota_ttl };
 		} catch {
 			return { status: false, refresh: Infinity };
@@ -70,7 +67,6 @@ module.exports = class WhatAnimeCommand extends Command {
 		if (Buffer.byteLength(file) > 1e+7) return 'size';
 		const { body } = await request
 			.post('https://trace.moe/api/search')
-			.query({ token: WHATANIME_KEY })
 			.attach('image', base64(file));
 		const data = body.docs[0];
 		return {
