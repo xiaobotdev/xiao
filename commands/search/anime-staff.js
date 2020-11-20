@@ -24,7 +24,7 @@ const resultGraphQL = stripIndents`
 			}
 			description(asHtml: false)
 			siteUrl
-			characterMedia(page: 1, perPage: 5) {
+			characterMedia(page: 1, perPage: 25) {
 				edges {
 					node {
 						title {
@@ -38,7 +38,7 @@ const resultGraphQL = stripIndents`
 					staffRole
 				}
 			}
-			staffMedia(page: 1, perPage: 5) {
+			staffMedia(page: 1, perPage: 25) {
 				edges {
 					node {
 						title {
