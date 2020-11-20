@@ -24,6 +24,7 @@ module.exports = class RemindCommand extends Command {
 		const exists = await this.client.timers.exists(msg.channel.id, msg.author.id);
 		if (exists) return msg.reply('Only one reminder can be set per channel per user.');
 		const timeMs = time.startDate.getTime() - Date.now();
+		if (timeMs > 0x7FFFFFFF) return msg.reply('Reminders have a maximum length of ~24.84 days.');
 		const display = moment().add(timeMs, 'ms').fromNow();
 		const title = time.eventTitle ? shorten(time.eventTitle, 500) : 'something';
 		await this.client.timers.setTimer(msg.channel.id, timeMs, msg.author.id, title);
