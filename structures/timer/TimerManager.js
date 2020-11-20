@@ -1,12 +1,10 @@
-const Redis = require('../Redis');
-
 module.exports = class TimerManager {
 	constructor(client) {
 		Object.defineProperty(this, 'client', { value: client });
 	}
 
 	async fetchAll() {
-		const timers = await Redis.db.hgetall('timer');
+		const timers = await this.client.redis.hgetall('timer');
 		for (let data of Object.values(timers)) {
 			data = JSON.parse(data);
 			await this.setTimer(data.channelID, new Date(data.time) - new Date(), data.userID, data.title, false);
@@ -21,14 +19,14 @@ module.exports = class TimerManager {
 				const channel = await this.client.channels.fetch(channelID);
 				await channel.send(`🕰️ <@${userID}>, you wanted me to remind you of: **"${title}"**.`);
 			} finally {
-				await Redis.db.hdel('timer', `${channelID}-${userID}`);
+				await this.client.redis.hdel('timer', `${channelID}-${userID}`);
 			}
 		}, time);
-		if (updateRedis) await Redis.db.hset('timer', { [`${channelID}-${userID}`]: JSON.stringify(data) });
+		if (updateRedis) await this.client.redis.hset('timer', { [`${channelID}-${userID}`]: JSON.stringify(data) });
 		return timeout;
 	}
 
 	exists(channelID, userID) {
-		return Redis.db.hexists('timer', `${channelID}-${userID}`);
+		return this.client.redis.hexists('timer', `${channelID}-${userID}`);
 	}
 };
