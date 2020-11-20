@@ -237,7 +237,6 @@ API. All are free unless otherwise stated.
 * `USPS_USERID` can be obtained at the [Web Tools API Portal](https://www.usps.com/business/web-tools-apis/).
 * `WATTPAD_KEY` can be obtained at the [Wattpad developer portal](https://www.wattpad.com/developer/docs/api).
 * `WEBSTER_KEY` can be obtained by [going to the Dictionary API website](https://dictionaryapi.com/). Find the "GET STARTED USING OUR API" section.
-* `WHATANIME_KEY` can be obtained by [following these instructions](https://soruly.github.io/trace.moe/#/#rate-limit-and-search-quota). You'll need to email the developer to get an API key.
 * `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are just the username and name of Xiao's repo on GitHub. For example, `dragonfire535` for the username and `xiao` for the name.
 
 ### Imgur Album IDs
