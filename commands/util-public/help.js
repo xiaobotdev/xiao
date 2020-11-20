@@ -52,6 +52,7 @@ module.exports = class HelpCommand extends Command {
 				embeds[embedIndex].addField(`❯ ${group.name}`, commands.map(cmd => `\`${cmd.name}\``).join(' '));
 			}
 			const allShown = cmdCount === this.client.registry.commands.size;
+			embeds[0].setDescription(`To run a command, use ${msg.anyUsage('<command>')}.`);
 			embeds[embeds.length - 1]
 				.setFooter(`${this.client.registry.commands.size} Commands${allShown ? '' : ` (${cmdCount} Shown)`}`);
 			try {
