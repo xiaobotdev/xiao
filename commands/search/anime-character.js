@@ -24,7 +24,7 @@ const resultGraphQL = stripIndents`
 			}
 			description(asHtml: false)
 			siteUrl
-			media(page: 1, perPage: 5) {
+			media(page: 1, perPage: 25) {
 				edges {
 					node {
 						title {
