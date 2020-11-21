@@ -35,9 +35,9 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Discord Information](#discord-information)
 	* [Random Response](#random-response)
 	* [Random Image](#random-image)
+	* [Seeded Randomizers](#seeded-randomizers)
 	* [Single Response](#single-response)
 	* [Automatic Response](#automatic-response)
-	* [Seeded Randomizers](#seeded-randomizers)
 	* [Events](#events)
 	* [Search](#search)
 	* [Analyzers](#analyzers)
@@ -48,7 +48,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Meme Generators](#meme-generators)
 	* [Text Manipulation](#text-manipulation)
 	* [Number Manipulation](#number-manipulation)
-	* [Voice-Based](#voice-based)
+	* [Play Audio](#play-audio)
 	* [Phone](#phone)
 	* [Coding Tools](#coding-tools)
 	* [Other](#other)
@@ -96,8 +96,8 @@ don't grant that permission.
 ## Fun Information
 
 - 500+ commands
-- 29,000+ lines of JavaScript
-- 62,000+ lines of JSON data
+- 30,000+ lines of JavaScript
+- 63,000+ lines of JSON data
 - 3 years of development
 
 ## Installing
@@ -298,7 +298,7 @@ Total: 561
 * **generate-fun-information:** Generates the "Fun Information" for Xiao's README. (Owner-Only)
 * **generate-process-env:** Generates a backup list of Xiao's `process.env`. (Owner-Only)
 * **ip:** Responds with the IP address the bot's server is running on. (Owner-Only)
-* **reload:** Reloads a command or command group. (Owner-Only)
+* **reload:** Reloads a command. (Owner-Only)
 * **report-respond:** Responds to a submitted report. (Owner-Only)
 * **set-uses:** Changes command usage stats. (Owner-Only)
 * **shutdown:** Shuts down the bot. (Owner-Only)
