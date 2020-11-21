@@ -15,7 +15,8 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 				duration: 10
 			},
 			guildOnly: true,
-			userPermissions: ['CONNECT', 'SPEAK', 'ATTACH_FILES'],
+			userPermissions: ['CONNECT', 'SPEAK'],
+			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
 					name: 'Pokémon',

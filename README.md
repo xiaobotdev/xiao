@@ -268,7 +268,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 560
+Total: 561
 
 ### Utility:
 
@@ -843,6 +843,7 @@ Total: 560
 
 * **airhorn:** Plays an airhorn sound in a voice channel.
 * **dec-talk:** The world's best Text-to-Speech.
+* **pokemon-cry:** Plays a Pokémon's cry.
 * **soundboard:** Plays a sound in a voice channel.
 * **vocodes:** Speak text like a variety of famous figures.
 
@@ -1528,6 +1529,7 @@ here.
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
 	* pokedex (API)
+	* pokemon-cry (API)
 	* whos-that-pokemon (API)
 	* whos-that-pokemon-cry (API)
 - [Pokémon](https://www.pokemon.com/us/)
@@ -1535,6 +1537,7 @@ here.
 	* dexter (Image, Original Anime)
 	* hat (Ash Hat Original Anime)
 	* pokedex (Images, Original Game)
+	* pokemon-cry (Original Game)
 	* pokemon-fusion (Original Game)
 	* soundboard (Pikachu Sound)
 	* whos-that-pokemon (Images, Original Game)
@@ -1543,6 +1546,7 @@ here.
 	* wynaut (Image, Original Anime)
 - [Pokémon Showdown](https://play.pokemonshowdown.com/)
 	* pokedex ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
+	* pokemon-cry ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
 	* whos-that-pokemon ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
 	* whos-that-pokemon-cry ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
 - [Pornhub](https://www.pornhub.com/)
@@ -1691,6 +1695,8 @@ here.
 - [The Sounds Resource](https://www.sounds-resource.com/)
 	* pokedex ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
 	* pokedex ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
+	* pokemon-cry ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
+	* pokemon-cry ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 	* whos-that-pokemon ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
 	* whos-that-pokemon ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 	* whos-that-pokemon-cry ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
