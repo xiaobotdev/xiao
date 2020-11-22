@@ -168,7 +168,6 @@ module.exports = class PokerCommand extends Command {
 				for (const playerID of rotation) {
 					if (!players.has(playerID)) removeFromArray(rotation, playerID);
 				}
-				console.log(players.size);
 				if (players.size < 2) {
 					winner = players.first();
 					break;
@@ -299,7 +298,7 @@ module.exports = class PokerCommand extends Command {
 		for (const player of players.values()) {
 			if (player.money <= 100 || player.strikes >= 3) {
 				await msg.say(`${player.user} has been kicked.`);
-				console.log(players.delete(player.id));
+				players.delete(player.id);
 			} else {
 				player.currentBet = 0;
 				player.hand = [];
