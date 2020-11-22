@@ -124,7 +124,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.textBaseline = 'top';
 			ctx.font = '87px Matrix';
-			ctx.fillText(name, 55, 57, 620);
+			ctx.fillText(name, 57, 57, 620);
 			ctx.font = '31px Stone Serif Small Caps';
 			if (type === 'monster') {
 				let typeStr = `[ ${firstUpperCase(species)} / ${firstUpperCase(monsterType)}`;
