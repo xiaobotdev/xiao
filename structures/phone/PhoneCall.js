@@ -92,12 +92,6 @@ module.exports = class PhoneCall {
 	}
 
 	send(channel, msg, hasText, hasImage, hasEmbed) {
-		if (msg.content && msg.content.toLowerCase() === 'hang up') {
-			if (this.ownerOrigin && channel.id === this.origin.id && !this.client.isOwner(msg.author)) {
-				return this.recipient.send('☎️ You cannot hang up in an admin call.');
-			}
-			return this.hangup(channel);
-		}
 		if (this.cooldown.has(msg.author.id) && !this.client.isOwner(msg.author)) {
 			const badChannel = channel.id === this.origin.id ? this.recipient : this.origin;
 			return badChannel.send(`☎️ ${msg.author}, slow down! You're sending messages too fast!`);

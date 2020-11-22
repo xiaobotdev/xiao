@@ -4,6 +4,7 @@ module.exports = class HangUpCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'hang-up',
+			aliases: ['hang'],
 			group: 'phone',
 			memberName: 'hang-up',
 			description: 'Hangs up the current phone call.',
