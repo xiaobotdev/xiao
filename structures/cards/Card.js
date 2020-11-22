@@ -29,7 +29,7 @@ module.exports = class Card {
 	}
 
 	get pokersolverKey() {
-		if (this.value === 'Joker') return null;
+		if (this.value === 'Joker') return 'Or';
 		let suitLetter;
 		switch (this.suit) {
 			case 'clubs': suitLetter = 'c'; break;
