@@ -167,7 +167,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
 			return res.content.toLowerCase() === 'cancel' || monsterTypes.includes(res.content.toLowerCase());
-		}
+		};
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 60000
@@ -202,7 +202,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
 			return res.content.toLowerCase() === 'cancel' || atrs.includes(res.content.toLowerCase());
-		}
+		};
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 60000
