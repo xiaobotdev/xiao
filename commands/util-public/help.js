@@ -30,7 +30,10 @@ module.exports = class HelpCommand extends Command {
 				const nsfw = msg.channel.nsfw || this.client.isOwner(msg.author);
 				const embed = new MessageEmbed()
 					.setTitle(`Command List (Page ${i + 1})`)
-					.setDescription(nsfw ? '' : 'Use in an NSFW channel to see NSFW commands.')
+					.setDescription(stripIndents`
+						To run a command, use ${msg.anyUsage('<command>')}.
+						${nsfw ? '' : 'Use in an NSFW channel to see NSFW commands.'}
+					`)
 					.setColor(0x00AE86);
 				embeds.push(embed);
 			}
@@ -52,7 +55,6 @@ module.exports = class HelpCommand extends Command {
 				embeds[embedIndex].addField(`❯ ${group.name}`, commands.map(cmd => `\`${cmd.name}\``).join(' '));
 			}
 			const allShown = cmdCount === this.client.registry.commands.size;
-			embeds[0].setDescription(`To run a command, use ${msg.anyUsage('<command>')}.`);
 			embeds[embeds.length - 1]
 				.setFooter(`${this.client.registry.commands.size} Commands${allShown ? '' : ` (${cmdCount} Shown)`}`);
 			try {

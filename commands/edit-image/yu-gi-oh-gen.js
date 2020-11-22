@@ -183,7 +183,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 		return res.toLowerCase();
 	}
 
-	async determineName(msg) {
+	async determineName(msg, monsterType) {
+		if (monsterType === 'token') return 'Token';
 		await msg.reply(stripIndents`
 			What name should your card have?
 			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.

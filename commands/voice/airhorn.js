@@ -1,7 +1,8 @@
 const Command = require('../../structures/Command');
 const path = require('path');
 const { reactIfAble } = require('../../util/Util');
-const sounds = require('../../assets/json/airhorn');
+const fs = require('fs');
+const sounds = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'sounds', 'airhorn'));
 
 module.exports = class AirhornCommand extends Command {
 	constructor(client) {

@@ -138,8 +138,7 @@
 	},
 	{
 		"text": "What percentage of people would, if offered by a sexy vampire, seize the chance to become vampires themselves?",
-		"answer": 45,
-		"nsfw": true
+		"answer": 45
 	},
 	{
 		"text": "What percentage of people have accidentally walked in on their parents having sex?",
@@ -584,8 +583,7 @@
 	},
 	{
 		"text": "What percentage of people have knowingly eaten dishes that contain testicles?",
-		"answer": 6,
-		"nsfw": true
+		"answer": 6
 	},
 	{
 		"text": "What percentage of people have worn bathing suits under their clothes because they were out of underwear?",
