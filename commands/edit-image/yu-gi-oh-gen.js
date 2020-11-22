@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const { stripIndents } = require('common-tags');
 const { list, firstUpperCase } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const types = ['monster', 'spell', 'trap'];
@@ -159,65 +160,100 @@ module.exports = class YuGiOhGenCommand extends Command {
 
 	async determineMonsterType(msg, type) {
 		if (type !== 'monster') return type;
-		await msg.reply(`What kind of monster do you want to make? Either ${list(monsterTypes, 'or')}.`);
-		const filter = res => res.author.id === msg.author.id && monsterTypes.includes(res.content.toLowerCase());
+		await msg.reply(stripIndents`
+			What kind of monster do you want to make? Either ${list(monsterTypes, 'or')}.
+			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+		`);
+		const filter = res => {
+			if (res.author.id !== msg.author.id) return false;
+			return res.content.toLowerCase() === 'cancel' || monsterTypes.includes(res.content.toLowerCase());
+		}
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content.toLowerCase();
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res.toLowerCase();
 	}
 
 	async determineName(msg) {
-		await msg.reply('What name should your card have?');
+		await msg.reply(stripIndents`
+			What name should your card have?
+			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content;
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res;
 	}
 
 	async determineAttribute(msg, type) {
 		if (type !== 'monster') return type;
-		await msg.reply(`What attribute should your monster be? Either ${list(atrs, 'or')}.`);
-		const filter = res => res.author.id === msg.author.id && atrs.includes(res.content.toLowerCase());
+		await msg.reply(stripIndents`
+			What attribute should your monster be? Either ${list(atrs, 'or')}.
+			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+		`);
+		const filter = res => {
+			if (res.author.id !== msg.author.id) return false;
+			return res.content.toLowerCase() === 'cancel' || atrs.includes(res.content.toLowerCase());
+		}
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content.toLowerCase();
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res.toLowerCase();
 	}
 
 	async determineType(msg, type) {
 		if (type !== 'monster') return type;
-		await msg.reply('What type should your monster be? For example, "Dragon".');
+		await msg.reply(stripIndents`
+			What type should your monster be? For example, "Dragon".
+			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content;
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res;
 	}
 
 	async determineEffect(msg, monsterType) {
 		if (monsterType === 'token') return 'This card can be used as any Token.';
-		await msg.reply('What effect should your card have?');
+		await msg.reply(stripIndents`
+			What effect should your card have?
+			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+		`);
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content;
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res;
 	}
 
 	async determineLevel(msg, type, monsterType) {
 		if (type !== 'monster' || monsterType === 'link') return -1;
-		await msg.reply(`What ${monsterType === 'xyz' ? 'rank' : 'level'} should your monster be? From 0-12.`);
+		await msg.reply(stripIndents`
+			What ${monsterType === 'xyz' ? 'rank' : 'level'} should your monster be? From 0-12.
+			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+		`);
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
+			if (res.content.toLowerCase() === 'cancel') return true;
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= 12;
 		};
@@ -226,14 +262,20 @@ module.exports = class YuGiOhGenCommand extends Command {
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content;
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res;
 	}
 
 	async determineAttack(msg, type) {
 		if (type !== 'monster') return -1;
-		await msg.reply('How much attack should your monster have? From 0-9999.');
+		await msg.reply(stripIndents`
+			How much attack should your monster have? From 0-9999.
+			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+		`);
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
+			if (res.content.toLowerCase() === 'cancel') return true;
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= 9999;
 		};
@@ -242,15 +284,27 @@ module.exports = class YuGiOhGenCommand extends Command {
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content;
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res;
 	}
 
 	async determineDefense(msg, type, monsterType) {
 		if (type !== 'monster') return -1;
-		if (monsterType === 'link') await msg.reply('What link rating should your monster have? From 0-8.');
-		else await msg.reply('How much defense should your monster have? From 0-9999.');
+		if (monsterType === 'link') {
+			await msg.reply(`
+				What link rating should your monster have? From 0-8.
+				Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+			`);
+		} else {
+			await msg.reply(stripIndents`
+				How much defense should your monster have? From 0-9999.
+				Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
+			`);
+		}
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
+			if (res.content.toLowerCase() === 'cancel') return true;
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= (monsterType === 'link' ? 8 : 9999);
 		};
@@ -259,6 +313,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			time: 60000
 		});
 		if (!msgs.size) return null;
-		return msgs.first().content;
+		const res = msgs.first().content;
+		if (res.toLowerCase() === 'cancel') return null;
+		return res;
 	}
 };
