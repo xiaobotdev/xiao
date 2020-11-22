@@ -121,10 +121,11 @@ module.exports = class YuGiOhGenCommand extends Command {
 				}
 			}
 			ctx.font = '14px Noto';
-			ctx.fillStyle = 'black';
+			ctx.fillStyle = monsterType === 'xyz' || monsterType === 'link' ? 'white' : 'black';
 			ctx.textBaseline = 'top';
 			ctx.font = '87px Matrix';
 			ctx.fillText(name, 57, 57, 620);
+			ctx.fillStyle = 'black';
 			ctx.font = '31px Stone Serif Small Caps';
 			if (type === 'monster') {
 				let typeStr = `[ ${firstUpperCase(species)} / ${firstUpperCase(monsterType)}`;
