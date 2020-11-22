@@ -65,7 +65,7 @@ module.exports = class PokerCommand extends Command {
 				});
 			}
 			let winner = null;
-			let rotation = players.map(p => p.id);
+			const rotation = players.map(p => p.id);
 			while (!winner) {
 				const bigBlind = players.get(rotation[1]);
 				bigBlind.money -= bigBlindAmount;
