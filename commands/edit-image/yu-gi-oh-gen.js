@@ -14,6 +14,9 @@ registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif.tt
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif Small Caps.ttf'), {
 	family: 'Stone Serif Small Caps'
 });
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif LT Italic.ttf'), {
+	family: 'Stone Serif LT Italic'
+});
 
 module.exports = class YuGiOhGenCommand extends Command {
 	constructor(client) {
@@ -145,7 +148,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 				ctx.font = '35px Stone Serif Small Caps';
 				ctx.fillText('[ Trap Card ]', 489, 141);
 			}
-			ctx.font = '27px Matrix Book';
+			ctx.font = monsterType === 'normal' ? '27px Stone Serif LT Italic' : '27px Matrix Book';
 			const wrappedEffect = await wrapText(ctx, effect, 690);
 			ctx.fillText(wrappedEffect.join('\n'), 63, 930 - (type === 'monster' ? 0 : 31));
 			ctx.font = '22px Stone Serif';
