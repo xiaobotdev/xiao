@@ -297,7 +297,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 	async determineDefense(msg, type, monsterType) {
 		if (type !== 'monster') return -1;
 		if (monsterType === 'link') {
-			await msg.reply(`
+			await msg.reply(stripIndents`
 				What link rating should your monster have? From 0-8.
 				Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
 			`);
