@@ -65,7 +65,7 @@ module.exports = class PokerCommand extends Command {
 				});
 			}
 			let winner = null;
-			const rotation = players.map(p => p.id);
+			let rotation = players.map(p => p.id);
 			while (!winner) {
 				const bigBlind = players.get(rotation[1]);
 				bigBlind.money -= bigBlindAmount;
@@ -166,7 +166,7 @@ module.exports = class PokerCommand extends Command {
 				}
 				await this.resetGame(msg, players, deck);
 				for (const playerID of rotation) {
-					if (!players.has(playerID)) removeFromArray(rotation, playerID);
+					if (!players.has(playerID)) rotation = removeFromArray(rotation, playerID);
 				}
 				if (players.size < 2) {
 					winner = players.first();
