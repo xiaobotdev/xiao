@@ -144,7 +144,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.font = '22px Stone Serif';
 			ctx.fillStyle = monsterType === 'xyz' ? 'white' : 'black';
 			ctx.fillText(id.toString().padStart(8, '0'), 43, 1128);
-			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 589, 849);
+			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 589 - (monsterType === 'link' ? 58 : 0), 849);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'yu-gi-oh-gen.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -214,7 +214,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			if (res.author.id !== msg.author.id) return false;
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= 12;
-		}
+		};
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 60000
@@ -230,7 +230,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			if (res.author.id !== msg.author.id) return false;
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= 9999;
-		}
+		};
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 60000
@@ -246,8 +246,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
 			const int = Number.parseInt(res.content, 10);
-			return int >= 0 && int <= monsterType === 'link' ? 8 : 9999;
-		}
+			return int >= 0 && int <= (monsterType === 'link' ? 8 : 9999);
+		};
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 60000
