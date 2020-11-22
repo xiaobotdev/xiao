@@ -124,7 +124,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.textBaseline = 'top';
 			ctx.font = '87px Matrix';
-			ctx.fillText(name, 55, 65, 620);
+			ctx.fillText(name, 55, 57, 620);
 			ctx.font = '31px Stone Serif Small Caps';
 			if (type === 'monster') {
 				let typeStr = `[ ${firstUpperCase(species)} / ${firstUpperCase(monsterType)}`;
@@ -133,16 +133,16 @@ module.exports = class YuGiOhGenCommand extends Command {
 				}
 				typeStr += ' ]';
 				ctx.fillText(typeStr, 60, 894);
-				ctx.font = '22px Stone Serif';
+				ctx.font = '29px Stone Serif';
 				ctx.fillText(atk, 514, 1081);
 				ctx.fillText(def, monsterType === 'link' ? 722 : 675, 1081);
 			}
 			ctx.font = '27px Matrix Book';
 			const wrappedEffect = await wrapText(ctx, effect, 690);
-			ctx.fillText(wrappedEffect.join('\n'), 78, 925 - (type === 'monster' ? 0 : 31));
+			ctx.fillText(wrappedEffect.join('\n'), 63, 930 - (type === 'monster' ? 0 : 31));
 			ctx.font = '22px Stone Serif';
 			ctx.fillText(id.toString().padStart(8, '0'), 43, 1128);
-			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 589, 859);
+			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 589, 854);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'yu-gi-oh-gen.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
