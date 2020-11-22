@@ -134,8 +134,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 				typeStr += ' ]';
 				ctx.fillText(typeStr, 60, 894);
 				ctx.font = '29px Stone Serif';
-				ctx.fillText(atk, 512, 1081);
-				ctx.fillText(def, monsterType === 'link' ? 720 : 673, 1081);
+				ctx.fillText(atk, 514, 1079);
+				ctx.fillText(def, monsterType === 'link' ? 722 : 675, 1079);
 			}
 			ctx.font = '27px Matrix Book';
 			const wrappedEffect = await wrapText(ctx, effect, 690);
