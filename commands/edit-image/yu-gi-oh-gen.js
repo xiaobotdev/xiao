@@ -124,7 +124,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			ctx.fillStyle = monsterType === 'xyz' || monsterType === 'link' ? 'white' : 'black';
 			ctx.textBaseline = 'top';
 			ctx.font = '87px Matrix';
-			ctx.fillText(name, 57, 57, 620);
+			ctx.fillText(name, 60, 57, 620);
 			ctx.fillStyle = 'black';
 			ctx.font = '31px Stone Serif Small Caps';
 			if (type === 'monster') {
@@ -142,6 +142,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const wrappedEffect = await wrapText(ctx, effect, 690);
 			ctx.fillText(wrappedEffect.join('\n'), 63, 930 - (type === 'monster' ? 0 : 31));
 			ctx.font = '22px Stone Serif';
+			ctx.fillStyle = monsterType === 'xyz' ? 'white' : 'black';
 			ctx.fillText(id.toString().padStart(8, '0'), 43, 1128);
 			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 589, 849);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'yu-gi-oh-gen.png' }] });
