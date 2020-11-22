@@ -61,7 +61,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 					type: 'string',
 					oneOf: types,
 					parse: type => type.toLowerCase()
-				}
+				},
 				{
 					key: 'image',
 					prompt: 'What image would you like to edit?',
