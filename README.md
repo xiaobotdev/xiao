@@ -268,7 +268,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 561
+Total: 560
 
 ### Utility:
 
@@ -695,7 +695,6 @@ Total: 561
 * **wild-pokemon:** Draws an image or a user's avatar over a wild Pokémon appearance.
 * **you-died:** Sends a "You Died" screen over an image or a user's avatar.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
-* **yu-gi-oh-token:** Draws an image or a user's avatar over a blank Yu-Gi-Oh! Token card.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Avatar Manipulation:
@@ -1043,8 +1042,6 @@ here.
 	* cow-say (API)
 - [Creative Certificates](https://www.creativecertificates.com/)
 	* certificate ([Image](https://www.creativecertificates.com/award-certificate-templates/))
-- [cylgom](https://www.deviantart.com/cylgom)
-	* yu-gi-oh-gen ([Card Base Template](https://www.deviantart.com/cylgom/art/Yu-GI-Oh-ultra-faithful-monster-card-template-728814822))
 - [DaFont](https://www.dafont.com/)
 	* whos-that-pokemon ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
 	* whos-that-pokemon-cry ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
@@ -1236,7 +1233,7 @@ here.
 - [iCrawl](https://github.com/iCrawl)
 	* butt ([Code, Concept](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js))
 - [icycatelf](https://www.deviantart.com/icycatelf)
-	* yu-gi-oh-gen ([Level Star Image](https://www.deviantart.com/icycatelf/art/Level-Star-Template-PSD-607344453))
+	* yu-gi-oh-gen ([Level/Rank Star Image](https://www.deviantart.com/icycatelf/art/Level-Star-Template-PSD-607344453))
 - [iFunny](https://ifunny.co/)
 	* ifunny (Logo)
 - [Illumination](http://www.illumination.com/)
@@ -1335,7 +1332,6 @@ here.
 - [Konami](https://www.konami.com/en/)
 	* yu-gi-oh ([Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
 	* yu-gi-oh-gen ([Images, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
-	* yu-gi-oh-token ([Image, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
 - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/)
 	* axis-cult (Original Anime)
 	* axis-cult-sign-up (Original Anime)
@@ -1632,6 +1628,8 @@ here.
 	* undertale ([Pixelated Wingdings Font](https://fontstruct.com/fontstructions/show/1218140/pixelated-wingdings))
 - [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
 	* steam-card ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
+- [sl777123](https://www.deviantart.com/sl777123)
+	* yu-gi-oh-gen ([Card Base Templates](https://www.deviantart.com/sl777123/art/Normals-711959461))
 - [SmileBASIC Source](https://smilebasicsource.com/)
 	* smilebasic ([API](https://smilebasicsource.com/page?pid=1360))
 - [SMWiki](http://www.smwiki.net/)
