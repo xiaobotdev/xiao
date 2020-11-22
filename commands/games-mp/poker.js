@@ -297,9 +297,9 @@ module.exports = class PokerCommand extends Command {
 	async resetGame(msg, players, deck) {
 		deck.reset();
 		for (const player of players.values()) {
-			if (player.money <= 0 || player.strikes >= 3) {
+			if (player.money <= 100 || player.strikes >= 3) {
 				await msg.say(`${player.user} has been kicked.`);
-				players.delete(player.id);
+				console.log(players.delete(player.id));
 			} else {
 				player.currentBet = 0;
 				player.hand = [];
