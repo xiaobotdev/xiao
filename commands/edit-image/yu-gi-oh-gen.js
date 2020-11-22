@@ -6,7 +6,7 @@ const { stripIndents } = require('common-tags');
 const { list, firstUpperCase } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const types = ['monster', 'spell', 'trap'];
-const monsterTypes = ['normal', 'effect', 'fusion', 'synchro', 'xyz', 'link', 'token'];
+const monsterTypes = ['normal', 'effect', 'ritual', 'fusion', 'synchro', 'xyz', 'link', 'token'];
 const atrs = ['dark', 'divine', 'earth', 'fire', 'laugh', 'light', 'water', 'wind'];
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Book.ttf'), { family: 'Matrix Book' });
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Small Caps.ttf'), { family: 'Matrix' });
