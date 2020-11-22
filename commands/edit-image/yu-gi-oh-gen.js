@@ -139,10 +139,10 @@ module.exports = class YuGiOhGenCommand extends Command {
 				ctx.fillText(def, monsterType === 'link' ? 722 : 675, 1079);
 			} else if (type === 'spell') {
 				ctx.font = '35px Stone Serif Small Caps';
-				ctx.fillText('[Spell Card]', 502, 141);
+				ctx.fillText('[ Spell Card ]', 479, 141);
 			} else if (type === 'trap') {
 				ctx.font = '35px Stone Serif Small Caps';
-				ctx.fillText('[Trap Card]', 512, 141);
+				ctx.fillText('[ Trap Card ]', 489, 141);
 			}
 			ctx.font = '27px Matrix Book';
 			const wrappedEffect = await wrapText(ctx, effect, 690);
