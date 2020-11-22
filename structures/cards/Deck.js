@@ -12,18 +12,19 @@ module.exports = class Deck {
 	}
 
 	makeCards(deckCount) {
+		const newDeck = [];
 		for (let i = 0; i < deckCount; i++) {
 			for (const suit of suits) {
-				this.deck.push(new Card('Ace', suit));
-				for (let j = 2; j <= 10; j++) this.deck.push(new Card(j, suit));
-				for (const face of faces) this.deck.push(new Card(face, suit));
+				newDeck.push(new Card('Ace', suit));
+				for (let j = 2; j <= 10; j++) newDeck.push(new Card(j, suit));
+				for (const face of faces) newDeck.push(new Card(face, suit));
 			}
 			if (this.includeJokers) {
-				this.deck.push(new Card('Joker', 'joker'));
-				this.deck.push(new Card('Joker', 'joker'));
+				newDeck.push(new Card('Joker', 'joker'));
+				newDeck.push(new Card('Joker', 'joker'));
 			}
 		}
-		this.deck = shuffle(this.deck);
+		this.deck = shuffle(newDeck);
 		return this.deck;
 	}
 
@@ -38,7 +39,7 @@ module.exports = class Deck {
 	}
 
 	reset() {
-		this.deck = this.makeCards(this.deckCount);
+		this.makeCards(this.deckCount);
 		return this;
 	}
 };
