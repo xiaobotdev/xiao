@@ -1629,7 +1629,7 @@ here.
 - [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
 	* steam-card ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
 - [sl777123](https://www.deviantart.com/sl777123)
-	* yu-gi-oh-gen ([Card Base Templates](https://www.deviantart.com/sl777123/art/Normals-711959461))
+	* yu-gi-oh-gen ([Card Base Templates](https://www.deviantart.com/sl777123/gallery/64574029/templates))
 - [SmileBASIC Source](https://smilebasicsource.com/)
 	* smilebasic ([API](https://smilebasicsource.com/page?pid=1360))
 - [SMWiki](http://www.smwiki.net/)

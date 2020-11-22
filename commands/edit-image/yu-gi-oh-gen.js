@@ -42,7 +42,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 					name: 'sl777123',
 					url: 'https://www.deviantart.com/sl777123',
 					reason: 'Card Base Templates',
-					reasonURL: 'https://www.deviantart.com/sl777123/art/Normals-711959461'
+					reasonURL: 'https://www.deviantart.com/sl777123/gallery/64574029/templates'
 				},
 				{
 					name: 'icycatelf',
@@ -124,7 +124,6 @@ module.exports = class YuGiOhGenCommand extends Command {
 					ctx.drawImage(levelI, levelX, 141, 50, 50);
 				}
 			}
-			ctx.font = '14px Noto';
 			ctx.fillStyle = monsterType === 'xyz' || monsterType === 'link' ? 'white' : 'black';
 			ctx.textBaseline = 'top';
 			ctx.font = '87px Matrix';
