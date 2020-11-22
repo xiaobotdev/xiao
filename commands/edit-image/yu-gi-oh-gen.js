@@ -206,12 +206,12 @@ module.exports = class YuGiOhGenCommand extends Command {
 	}
 
 	async determineLevel(msg, type, monsterType) {
-		if (type !== 'monster' || monsterType === 'link') return 0;
-		await msg.reply(`What ${monsterType === 'xyz' ? 'rank' : 'level'} should your monster be? From 1-12.`);
+		if (type !== 'monster' || monsterType === 'link') return -1;
+		await msg.reply(`What ${monsterType === 'xyz' ? 'rank' : 'level'} should your monster be? From 0-12.`);
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
 			const int = Number.parseInt(res.content, 10);
-			return int >= 1 && int <= 12;
+			return int >= 0 && int <= 12;
 		}
 		const msgs = await msg.channel.awaitMessages(filter, {
 			max: 1,
@@ -222,7 +222,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 	}
 
 	async determineAttack(msg, type) {
-		if (type !== 'monster') return 0;
+		if (type !== 'monster') return -1;
 		await msg.reply('How much attack should your monster have? From 0-9999.');
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;
@@ -238,7 +238,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 	}
 
 	async determineDefense(msg, type, monsterType) {
-		if (type !== 'monster') return 0;
+		if (type !== 'monster') return -1;
 		if (monsterType === 'link') await msg.reply('What link rating should your monster have? From 0-8.');
 		else await msg.reply('How much defense should your monster have? From 0-9999.');
 		const filter = res => {
