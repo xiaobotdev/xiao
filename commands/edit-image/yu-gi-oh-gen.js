@@ -139,9 +139,9 @@ module.exports = class YuGiOhGenCommand extends Command {
 				typeStr += ' ]';
 				ctx.fillText(typeStr, 60, 894);
 				ctx.font = '29px Stone Serif';
-				ctx.fillText(atk.padStart(4, ' '), 514, 1079);
+				ctx.fillText(atk.padStart(4, '  '), 514, 1079);
 				if (monsterType === 'link') ctx.fillText(def, 722, 1079);
-				else ctx.fillText(def.padStart(4, ' '), 675, 1079);
+				else ctx.fillText(def.padStart(4, '  '), 675, 1079);
 			} else if (type === 'spell') {
 				ctx.font = '35px Stone Serif Small Caps';
 				ctx.fillText('[ Spell Card ]', 479, 141);
