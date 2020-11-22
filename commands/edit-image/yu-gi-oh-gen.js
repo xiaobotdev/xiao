@@ -150,7 +150,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			}
 			ctx.font = monsterType === 'normal' ? '27px Stone Serif LT Italic' : '27px Matrix Book';
 			const wrappedEffect = await wrapText(ctx, effect, 690);
-			ctx.fillText(wrappedEffect.join('\n'), 63, 930 - (type === 'monster' ? 0 : 31));
+			const trimmed = wrappedEffect.slice(0, (type === 'monster' ? 4 : 6));
+			ctx.fillText(trimmed.join('\n'), 63, 930 - (type === 'monster' ? 0 : 31));
 			ctx.font = '22px Stone Serif';
 			ctx.fillStyle = monsterType === 'xyz' ? 'white' : 'black';
 			ctx.fillText(id.toString().padStart(8, '0'), 43, 1128);
