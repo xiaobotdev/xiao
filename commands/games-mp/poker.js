@@ -3,7 +3,7 @@ const Collection = require('@discordjs/collection');
 const { Hand } = require('pokersolver');
 const { stripIndents } = require('common-tags');
 const Deck = require('../../structures/cards/Deck');
-const { formatNumber, list, delay, awaitPlayers } = require('../../util/Util');
+const { formatNumber, list, delay, removeFromArray, awaitPlayers } = require('../../util/Util');
 const max = 6;
 const min = 2;
 const bigBlindAmount = 100;
@@ -65,7 +65,7 @@ module.exports = class PokerCommand extends Command {
 				});
 			}
 			let winner = null;
-			const rotation = players.map(p => p.id);
+			let rotation = players.map(p => p.id);
 			while (!winner) {
 				const bigBlind = players.get(rotation[1]);
 				bigBlind.money -= bigBlindAmount;
@@ -165,7 +165,11 @@ module.exports = class PokerCommand extends Command {
 					winners[0].user.money += turnData.pot;
 				}
 				await this.resetGame(msg, players, deck);
-				if (players.size <= 1) {
+				for (const playerID of rotation) {
+					if (!players.has(playerID)) removeFromArray(rotation, playerID);
+				}
+				console.log(players.size);
+				if (players.size < 2) {
 					winner = players.first();
 					break;
 				}

@@ -48,6 +48,12 @@ module.exports = class Util {
 		return arr;
 	}
 
+	static removeFromArray(arr, value) {
+		const index = arr.indexOf(value);
+		if (index > -1) return arr.splice(index, 1);
+		return arr;
+	}
+
 	static removeDuplicates(arr) {
 		if (arr.length === 0 || arr.length === 1) return arr;
 		const newArr = [];
