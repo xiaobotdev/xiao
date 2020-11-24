@@ -19,7 +19,7 @@ module.exports = class ParseTimeCommand extends Command {
 		});
 	}
 
-	async run(msg, { time }) {
+	run(msg, { time }) {
 		const timeMs = time.startDate.getTime() - Date.now();
 		const display = moment().add(timeMs, 'ms').fromNow();
 		return msg.say(`This time duration parses as **${display}**.`);
