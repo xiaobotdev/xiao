@@ -3,7 +3,7 @@ const Collection = require('@discordjs/collection');
 const { Hand } = require('pokersolver');
 const { stripIndents } = require('common-tags');
 const Deck = require('../../structures/cards/Deck');
-const { formatNumber, list, delay, awaitPlayers } = require('../../util/Util');
+const { formatNumber, list, delay, awaitPlayers, removeFromArray } = require('../../util/Util');
 const max = 6;
 const min = 2;
 const bigBlindAmount = 100;
@@ -67,6 +67,10 @@ module.exports = class PokerCommand extends Command {
 			let winner = null;
 			let rotation = players.map(p => p.id);
 			while (!winner) {
+				for (const player of players.values()) {
+					if (players.has(player.id)) continue;
+					rotation = removeFromArray(player.id);
+				}
 				const bigBlind = players.get(rotation[1]);
 				bigBlind.money -= bigBlindAmount;
 				bigBlind.currentBet += bigBlindAmount;
