@@ -26,7 +26,8 @@ module.exports = class GravityCommand extends Command {
 				},
 				{
 					key: 'planet',
-					prompt: `What planet do you want to use as the base? Either ${list(Object.keys(planets), 'or')}.`,
+					label: 'celestial object',
+					prompt: `What celestial object do you want to use? Either ${list(Object.keys(planets), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(planets),
 					parse: planet => planet.toLowerCase()
