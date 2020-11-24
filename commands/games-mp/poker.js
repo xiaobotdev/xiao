@@ -3,7 +3,7 @@ const Collection = require('@discordjs/collection');
 const { Hand } = require('pokersolver');
 const { stripIndents } = require('common-tags');
 const Deck = require('../../structures/cards/Deck');
-const { formatNumber, list, delay, removeFromArray, awaitPlayers } = require('../../util/Util');
+const { formatNumber, list, delay, awaitPlayers } = require('../../util/Util');
 const max = 6;
 const min = 2;
 const bigBlindAmount = 100;
@@ -98,7 +98,13 @@ module.exports = class PokerCommand extends Command {
 				turnData.currentBet = bigBlindAmount;
 				turnData.highestBetter = bigBlind;
 				let keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) continue;
+				if (!keepGoing) {
+					if (players.size < 2) {
+						winner = players.first();
+						break;
+					}
+					continue;
+				}
 				const dealerHand = deck.draw(3);
 				await msg.say(stripIndents`
 					**Dealer Hand:**
@@ -108,7 +114,13 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(10000);
 				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) continue;
+				if (!keepGoing) {
+					if (players.size < 2) {
+						winner = players.first();
+						break;
+					}
+					continue;
+				}
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
 					**Dealer Hand:**
@@ -118,7 +130,13 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(10000);
 				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) continue;
+				if (!keepGoing) {
+					if (players.size < 2) {
+						winner = players.first();
+						break;
+					}
+					continue;
+				}
 				dealerHand.push(deck.draw());
 				await msg.say(stripIndents`
 					**Dealer Hand:**
@@ -128,7 +146,13 @@ module.exports = class PokerCommand extends Command {
 				`);
 				await delay(10000);
 				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) continue;
+				if (!keepGoing) {
+					if (players.size < 2) {
+						winner = players.first();
+						break;
+					}
+					continue;
+				}
 				const solved = [];
 				for (const playerID of rotation) {
 					if (folded.includes(playerID)) continue;
@@ -165,9 +189,6 @@ module.exports = class PokerCommand extends Command {
 					winners[0].user.money += turnData.pot;
 				}
 				await this.resetGame(msg, players, deck);
-				for (const playerID of rotation) {
-					if (!players.has(playerID)) rotation = removeFromArray(rotation, playerID);
-				}
 				if (players.size < 2) {
 					winner = players.first();
 					break;
