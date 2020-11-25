@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
+require('moment-duration-format');
 
 module.exports = class ParseTimeCommand extends Command {
 	constructor(client) {
@@ -20,8 +21,8 @@ module.exports = class ParseTimeCommand extends Command {
 	}
 
 	run(msg, { time }) {
-		const timeMs = time.startDate.getTime() - Date.now();
-		const display = moment().add(timeMs, 'ms').fromNow();
+		const time = moment.duration(Date.now() - time.startDate.getTime());
+		const display = time.format('Y [years,] M [months,] d [days,] h [hours,] m [minutes and] s [seconds]');
 		return msg.say(`This time duration parses as **${display}**.`);
 	}
 };
