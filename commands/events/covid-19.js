@@ -38,13 +38,17 @@ module.exports = class Covid19Command extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xA2D84E)
 				.setAuthor('Worldometers', 'https://i.imgur.com/IoaBMuK.jpg', 'https://www.worldometers.info/coronavirus/')
-				.setTitle(`Stats for ${data.country}`)
-				.setURL(`https://www.worldometers.info/coronavirus/country/${data.countryInfo.iso2}/`)
-				.setThumbnail(data.countryInfo.flag || null)
-				.addField('❯ Total Cases', `${formatNumber(data.cases)} (${formatNumber(data.casesToday)} Today)`, true)
-				.addField('❯ Total Deaths', `${formatNumber(data.deaths)} (${formatNumber(data.deathsToday)} Today)`, true)
+				.setTitle(`Stats for ${country === 'all' ? 'The World' : data.country}`)
+				.setURL(country === 'all'
+					? `https://www.worldometers.info/coronavirus/country/${data.countryInfo.iso2}/`
+					: 'https://www.worldometers.info/coronavirus/')
+				.setThumbnail(country === 'all' ? null : data.countryInfo.flag || null)
+				.setFooter('Last Updated')
+				.setTimestamp(data.updated)
+				.addField('❯ Total Cases', `${formatNumber(data.cases)} (${formatNumber(data.todayCases)} Today)`, true)
+				.addField('❯ Total Deaths', `${formatNumber(data.deaths)} (${formatNumber(data.todayDeaths)} Today)`, true)
 				.addField('❯ Total Recoveries',
-					`${formatNumber(data.recovered)} (${formatNumber(data.recoveredToday)} Today)`, true)
+					`${formatNumber(data.recovered)} (${formatNumber(data.todayRecovered)} Today)`, true)
 				.addField('❯ Active Cases', formatNumber(data.active), true)
 				.addField('❯ Active Critical Cases', formatNumber(data.critical), true)
 				.addField('❯ Tests', formatNumber(data.tests), true);
