@@ -21,7 +21,7 @@ module.exports = class ParseTimeCommand extends Command {
 	}
 
 	run(msg, { time }) {
-		const duration = moment.duration(Date.now() - time.startDate.getTime());
+		const duration = moment.duration(time.startDate.getTime() - Date.now());
 		const display = duration.format('Y [years,] M [months,] d [days,] h [hours,] m [minutes and] s [seconds]');
 		return msg.say(`This time duration parses as **${display}**.`);
 	}
