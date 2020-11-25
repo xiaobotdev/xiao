@@ -268,7 +268,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 562
+Total: 563
 
 ### Utility:
 
@@ -449,6 +449,7 @@ Total: 562
 * **anime-airing:** Responds with a list of the anime that air today.
 * **apod:** Responds with today's Astronomy Picture of the Day.
 * **calendar:** Responds with today's holidays.
+* **covid-19:** Responds with stats for COVID-19.
 * **days-since:** Responds with how many days there have been since a certain date.
 * **days-until:** Responds with how many days there are until a certain date.
 * **doomsday-clock:** Responds with the current time of the Doomsday Clock.
@@ -1065,6 +1066,8 @@ here.
 	* dicebear (API)
 - [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm)
 	* dec-talk (Original DECTalk Software)
+- [disease.sh](https://disease.sh/)
+	* covid-19 ([COVID-19 API](https://disease.sh/docs/#/))
 - [Discord](https://discord.com/)
 	* airhorn ([Airhorn Sounds](https://github.com/discord/airhornbot/tree/master/audio))
 - [Discord Status Button](https://discord.c99.nl/)
