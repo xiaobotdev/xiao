@@ -13,7 +13,7 @@ module.exports = class DeleteReminderCommand extends Command {
 
 	async run(msg) {
 		const exists = await this.client.timers.exists(msg.channel.id, msg.author.id);
-		if (!exists) return msg.reply('You do not have a timer set in this channel.');
+		if (!exists) return msg.reply('🕰️ You do not have a timer set in this channel.');
 		await this.client.timers.deleteTimer(msg.channel.id, msg.author.id);
 		return msg.say('🕰️ Your timer has been deleted.');
 	}
