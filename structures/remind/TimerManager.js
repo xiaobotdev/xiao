@@ -1,6 +1,8 @@
 module.exports = class TimerManager {
 	constructor(client) {
 		Object.defineProperty(this, 'client', { value: client });
+
+		this.timeouts = new Map();
 	}
 
 	async fetchAll() {
@@ -23,7 +25,14 @@ module.exports = class TimerManager {
 			}
 		}, time);
 		if (updateRedis) await this.client.redis.hset('timer', { [`${channelID}-${userID}`]: JSON.stringify(data) });
+		this.timeouts.set(`${channelID}-${userID}`, timeout);
 		return timeout;
+	}
+
+	deleteTimer(channelID, userID) {
+		clearTimeout(this.timeouts.get(`${channelID}-${userID}`));
+		this.timeouts.delete(`${channelID}-${userID}`);
+		return this.client.redis.hdel('timer', `${channelID}-${userID}`);
 	}
 
 	exists(channelID, userID) {
