@@ -88,13 +88,15 @@ module.exports = class PokedexCommand extends Command {
 					if (found.id === data.id) return `**${found.name}**`;
 					return found.name;
 				}).join(' -> '));
-			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
-			if (connection) {
-				connection.play(data.cry);
-				await reactIfAble(msg, this.client.user, '🔉');
-			} else {
-				const usage = this.client.registry.commands.get('join').usage();
-				embed.setFooter(`Join a voice channel and use ${usage} to hear the Pokémon's cry.`);
+			if (data.cry) {
+				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+				if (connection) {
+					connection.play(data.cry);
+					await reactIfAble(msg, this.client.user, '🔉');
+				} else {
+					const usage = this.client.registry.commands.get('join').usage();
+					embed.setFooter(`Join a voice channel and use ${usage} to hear the Pokémon's cry.`);
+				}
 			}
 			return msg.embed(embed);
 		} catch (err) {

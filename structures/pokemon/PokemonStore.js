@@ -4,6 +4,13 @@ const Pokemon = require('./Pokemon');
 const missingno = require('../../assets/json/missingno');
 
 module.exports = class PokemonStore extends Collection {
+	constructor(options) {
+		super(options);
+
+		this.pokemonCount = 897;
+		this.pokemonCountWithCry = 893;
+	}
+
 	async fetch(query) {
 		query = this.makeSlug(query);
 		if (!query) return null;

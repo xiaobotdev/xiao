@@ -19,7 +19,7 @@ module.exports = class Pokemon {
 			: [{ name: slugName, language: 'en' }];
 		this.genus = data.genera.length
 			? `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`
-			: 'Galar Native';
+			: 'Undiscovered Pokémon';
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
 				.replace(new RegExp(`${this.slug}-?`, 'i'), '')
@@ -38,7 +38,9 @@ module.exports = class Pokemon {
 		};
 		this.typesCached = data.missingno || false;
 		this.missingno = data.missingno || false;
-		this.cry = path.join(__dirname, '..', '..', 'assets', 'sounds', 'pokedex', `${data.id}.wav`);
+		this.cry = data.id > store.pokemonCountWithCry
+			? null
+			: path.join(__dirname, '..', '..', 'assets', 'sounds', 'pokedex', `${data.id}.wav`);
 	}
 
 	get displayID() {

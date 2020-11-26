@@ -5,7 +5,6 @@ const { reactIfAble } = require('../../util/Util');
 const { silhouette } = require('../../util/Canvas');
 const path = require('path');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pokemon Solid.ttf'), { family: 'Pokemon' });
-const pokemonCount = 893;
 
 module.exports = class WhosThatPokemonCommand extends Command {
 	constructor(client) {
@@ -73,9 +72,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					key: 'pokemon',
 					prompt: 'What Pokémon do you want to use?',
 					type: 'integer',
-					max: pokemonCount,
+					max: client.pokemon.pokemonCount,
 					min: 0,
-					default: () => Math.floor(Math.random() * (pokemonCount + 1))
+					default: () => Math.floor(Math.random() * (client.pokemon.pokemonCount + 1))
 				}
 			]
 		});
@@ -100,10 +99,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				max: 1,
 				time: 15000
 			});
-			if (connection) {
+			if (connection && data.cry) {
 				if (connection.dispatcher) connection.dispatcher.end();
 				connection.play(data.cry);
-				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });

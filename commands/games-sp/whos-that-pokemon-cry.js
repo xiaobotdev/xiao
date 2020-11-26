@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { reactIfAble } = require('../../util/Util');
-const pokemonCount = 893;
 
 module.exports = class WhosThatPokemonCryCommand extends Command {
 	constructor(client) {
@@ -70,9 +69,9 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 					key: 'pokemon',
 					prompt: 'What Pokémon do you want to use?',
 					type: 'integer',
-					max: pokemonCount,
+					max: client.pokemon.pokemonCountWithCry,
 					min: 0,
-					default: () => Math.floor(Math.random() * (pokemonCount + 1))
+					default: () => Math.floor(Math.random() * (client.pokemon.pokemonCountWithCry + 1))
 				}
 			]
 		});
