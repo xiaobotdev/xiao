@@ -59,7 +59,7 @@ Xiao is a Discord bot coded in JavaScript with
 
 ## Copyright
 
-- ©2017-2020 dragonfire535#8081
+- ©2017-2021 dragonfire535#8081
 - Xiao Pai/Rune Factory 4: ©2012 Marvelous Inc.
 - Avatar Art: ©2018 airful
 
