@@ -184,19 +184,6 @@ simply switch to basic text.
 * `FLANKER`, `FRONT_LINE`, `SUPPORT`, and `DAMAGE` are used in `paladins`.
 * `LOADING` is used in commands that need to load for a long time before giving a response, such as `vocodes` and `dec-talk`.
 
-### Dating Info
-
-This is the hilarious section that determines what comes out of the
-`dating` command.
-
-* `DATING_OFF` completely turns off the dating feature. Put anything here and it's off.
-* `DATING_ALBUM_ID` is an Imgur album ID (see #imgur-album-ids) that includes the photos you want to send in the command.
-* `DATING_NAME` is the name you want to go by in the command.
-* `DATING_AGE` is the age you want to display in the command.
-* `DATING_TAG` is the Discord tag (ex. dragonfire535#8081) you want to display in the command.
-* `DATING_ORIENTATION` is either "girls" if you want girls, "boys" if you want boys, or "both" if you don't care.
-* `DATING_SERIOUS` is a boolean (true/false) value that determines if you want to be serious about this or not. Really want to meet someone? Set it to "true".
-
 ### API Keys, IDs, and Secrets
 
 Here's where things get LONG. If you're greeted with a log-in page
