@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
-const { delay, awaitPlayers } = require('../../util/Util');
+const { delay, awaitPlayers, reactIfAble } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
 const trueOptions = ['true', 'yes', 'the truth', 't', 'tru', 'tr', 'y', 'ye'];
 const falseOptions = ['false', 'lie', 'no', 'a lie', 'f', 'fals', 'fal', 'fa', 'n', 'l'];
@@ -71,7 +71,7 @@ module.exports = class LieSwatterCommand extends Command {
 					if (!awaitedPlayers.includes(res.author.id)) return false;
 					const answer = res.content.toLowerCase();
 					if (trueOptions.includes(answer) || falseOptions.includes(answer)) {
-						res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+						reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 						return true;
 					}
 					return false;

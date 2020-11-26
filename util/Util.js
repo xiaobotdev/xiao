@@ -250,7 +250,7 @@ module.exports = class Util {
 			if (joined.includes(res.author.id)) return false;
 			if (res.content.toLowerCase() !== 'join game') return false;
 			joined.push(res.author.id);
-			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+			Util.reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 			return true;
 		};
 		const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 60000 });

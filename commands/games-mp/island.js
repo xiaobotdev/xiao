@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
-const { delay, awaitPlayers } = require('../../util/Util');
+const { delay, awaitPlayers, reactIfAble } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class IslandCommand extends Command {
@@ -71,7 +71,7 @@ module.exports = class IslandCommand extends Command {
 							votes: currentVotes ? currentVotes + 1 : 1,
 							id: ids[int - 1]
 						});
-						res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+						reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 						return true;
 					}
 					return false;

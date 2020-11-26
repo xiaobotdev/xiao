@@ -81,17 +81,19 @@ don't grant that permission.
 - **View Channels** is required for every single command to work.
 - **Send Messages** is required for every single command to work.
 - **Manage Messages** allows Xiao to use the `prune` command.
+	* It also allows the `say` command to delete your message, but the command will still work without it.
 - **Embed Links** is required to allow commands that send embeds to work. Too many commands to list use it.
 - **Attach Files** is required to allow commands that send files to work. Too many commands to list use it.
 - **Read Message History** allows Xiao to use the `first-message` and `prune` commands.
+	* It is also required to allow Xiao to react to messages alongside "Add Reactions".
 - **Use External Emojis** allows Xiao to use custom emoji in certain commands.
 	* While the commands benefit from it, it is not required for the commands to work.
 - **Add Reactions** allows Xiao to use commands that add reactions to messages in certain commands.
-	* While the commands benefit from it, it is not requried for the commands to work.
-- **Connect** allows Xiao to connect to voice channels. This is needed for commands in the "Voice-Based" group.
-- **Speak** allows Xiao to speak in voice channels. This is needed for commands in the "Voice-Based" group.
+	* While the commands benefit from it, it is not required for the commands to work.
+	* "Read Message History" is also required to allow Xiao to react.
+- **Connect** allows Xiao to connect to voice channels. This is needed for commands that play audio.
+- **Speak** allows Xiao to speak in voice channels. This is needed for commands that play audio.
 - **Use Voice Activity** is not _needed_, but is included as an extra precaution for voice commands.
-
 
 ## Fun Information
 

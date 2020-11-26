@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
-const { delay, awaitPlayers } = require('../../util/Util');
+const { delay, awaitPlayers, reactIfAble } = require('../../util/Util');
 const questions = require('../../assets/json/guesspionage');
 const { SUCCESS_EMOJI_ID } = process.env;
 const guesses = ['much higher', 'higher', 'lower', 'much lower'];
@@ -112,7 +112,7 @@ module.exports = class GuesspionageCommand extends Command {
 					if (!awaitedPlayers.includes(res.author.id)) return false;
 					if (!guesses.includes(res.content.toLowerCase())) return false;
 					guessed.push(res.author.id);
-					res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+					reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 					return true;
 				};
 				const everyoneElse = await msg.channel.awaitMessages(everyoneElseFilter, {
