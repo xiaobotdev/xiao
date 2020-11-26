@@ -268,7 +268,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 563
+Total: 564
 
 ### Utility:
 
@@ -849,6 +849,11 @@ Total: 563
 * **soundboard:** Plays a sound in a voice channel.
 * **vocodes:** Speak text like a variety of famous figures.
 
+### Reminders:
+
+* **delete-reminder:** Deletes your reminder.
+* **remind:** Sets a reminder.
+
 ### Phone:
 
 * **admin-phone:** Starts an admin phone call with a server. (Owner-Only)
@@ -870,7 +875,6 @@ Total: 563
 * **dating:** Find the person of your dreams with this dating system!
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
-* **remind:** Sets a reminder.
 * **rename-all:** Renames every member of the server. (Owner-Only)
 * **screenshot:** Takes a screenshot of any webpage.
 * **smilebasic:** Responds with a ZIP file for a SmileBASIC project.
