@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const Collection = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
-const { awaitPlayers } = require('../../util/Util');
+const { awaitPlayers, reactIfAble } = require('../../util/Util');
 const nums = require('../../assets/json/bingo');
 const { SUCCESS_EMOJI_ID } = process.env;
 const rows = Object.keys(nums);
@@ -73,7 +73,7 @@ module.exports = class BingoCommand extends Command {
 					if (!players.has(res.author.id)) return false;
 					if (res.content.toLowerCase() === 'leave game') {
 						players.delete(res.author.id);
-						res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+						reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 						if (!players.size) return true;
 						return false;
 					}

@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
+const { reactIfAble } = require('../../util/Util');
 const scores = require('../../assets/json/anagramica');
 const pool = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
@@ -54,12 +55,12 @@ module.exports = class AnagramicaCommand extends Command {
 				if (!valid.includes(res.content.toLowerCase())) {
 					points -= score;
 					picked.push(res.content.toLowerCase());
-					res.react(FAILURE_EMOJI_ID || '❌').catch(() => null);
+					reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 					return false;
 				}
 				points += score;
 				picked.push(res.content.toLowerCase());
-				res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+				reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 				return true;
 			};
 			const msgs = await msg.channel.awaitMessages(filter, {
