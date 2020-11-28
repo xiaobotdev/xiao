@@ -23,10 +23,10 @@ module.exports = class SosCommand extends Command {
 					reason: 'Image'
 				},
 				{
-					name: 'Google',
-					url: 'https://www.google.com/',
-					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					name: 'Walter E Stewart',
+					url: 'https://www.1001freefonts.com/designer-walter-e-stewart-fontlisting.php',
+					reason: 'Sun Dried Font',
+					reasonURL: 'https://www.1001freefonts.com/sun-dried.font'
 				}
 			],
 			args: [
