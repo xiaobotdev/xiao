@@ -18,7 +18,6 @@ module.exports = class NewsCommand extends SubredditCommand {
 					prompt: `What subreddit do you want to get news from? Either ${list(subreddits, 'or')}.`,
 					type: 'string',
 					oneOf: subreddits,
-					default: () => subreddits[Math.floor(Math.random() * subreddits.length)],
 					parse: subreddit => subreddit.toLowerCase()
 				}
 			]

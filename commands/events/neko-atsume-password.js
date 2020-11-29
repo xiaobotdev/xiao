@@ -15,6 +15,7 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 			group: 'events',
 			memberName: 'neko-atsume-password',
 			description: 'Responds with today\'s Neko Atsume password.',
+			details: `**Locales:** ${locales.join(', ')}`,
 			credit: [
 				{
 					name: 'Neko Atsume: Kitty Collector',

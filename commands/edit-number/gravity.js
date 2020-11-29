@@ -8,8 +8,8 @@ module.exports = class GravityCommand extends Command {
 			name: 'gravity',
 			group: 'edit-number',
 			memberName: 'gravity',
-			description: 'Determines weight on another planet.',
-			details: `**Planets:** ${Object.keys(planets).join(', ')}`,
+			description: 'Determines weight on another celestial object.',
+			details: `**Celestial Objects:** ${Object.keys(planets).join(', ')}`,
 			credit: [
 				{
 					name: 'NASA',
