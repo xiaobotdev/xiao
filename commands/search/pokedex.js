@@ -7,7 +7,7 @@ module.exports = class PokedexCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'pokedex',
-			aliases: ['pokemon', 'pokémon', 'pokédex'],
+			aliases: ['pokemon', 'pokémon', 'pokédex', 'pkmn'],
 			group: 'search',
 			memberName: 'pokedex',
 			description: 'Searches the Pokédex for a Pokémon.',

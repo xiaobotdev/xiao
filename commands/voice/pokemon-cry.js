@@ -5,7 +5,7 @@ module.exports = class PokemonCryCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'pokemon-cry',
-			aliases: ['pokedex-cry', 'pokémon-cry', 'pokédex-cry'],
+			aliases: ['pokedex-cry', 'pokémon-cry', 'pokédex-cry', 'pkmn-cry'],
 			group: 'voice',
 			memberName: 'pokemon-cry',
 			description: 'Plays a Pokémon\'s cry.',

@@ -7,7 +7,7 @@ module.exports = class PokemonFusionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'pokemon-fusion',
-			aliases: ['poke-fusion', 'poke-fuse', 'pokémon-fusion', 'poké-fusion', 'poké-fuse'],
+			aliases: ['poke-fusion', 'poke-fuse', 'pokémon-fusion', 'poké-fusion', 'poké-fuse', 'pkmn-fuse', 'pkmn-fusion'],
 			group: 'edit-image',
 			memberName: 'pokemon-fusion',
 			description: 'Fuses two Generation I Pokémon together.',
