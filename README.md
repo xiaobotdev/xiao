@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 564
+Total: 565
 
 ### Utility:
 
@@ -273,6 +273,7 @@ Total: 564
 * **leave:** Leaves the current voice channel.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
+* **prefix:** Responds with the bot's command prefix.
 * **report:** Reports something to the bot owner(s).
 * **uses:** Responds with a command's usage stats.
 
