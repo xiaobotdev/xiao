@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class UsesCommand extends Command {
 	constructor(client) {
@@ -21,6 +22,6 @@ module.exports = class UsesCommand extends Command {
 
 	run(msg, { command }) {
 		if (command.uses === undefined) return msg.reply('That command\'s usage stats aren\'t being tracked.');
-		return msg.say(`The \`${command.name}\` command has been used **${command.uses}** times.`);
+		return msg.say(`The \`${command.name}\` command has been used **${formatNumber(command.uses)}** times.`);
 	}
 };
