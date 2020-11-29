@@ -53,7 +53,7 @@ module.exports = class ChangeMyMindCommand extends Command {
 		ctx.rotate(-24 * (Math.PI / 180));
 		ctx.font = '35px Noto';
 		let fontSize = 35;
-		while (ctx.measureText(text).width > 506) {
+		while (ctx.measureText(text).width > 843) {
 			fontSize--;
 			ctx.font = `${fontSize}px Noto`;
 		}
