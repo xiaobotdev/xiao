@@ -4,7 +4,7 @@ require('moment-duration-format');
 const { shorten, stripInvites, verify } = require('../../util/Util');
 
 module.exports = class PhoneCall {
-	constructor(client, startUser, origin, recipient, ownerOrigin) {
+	constructor(client, startUser, origin, recipient, adminCall) {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.id = `${origin.id}:${recipient.id}`;
@@ -13,14 +13,14 @@ module.exports = class PhoneCall {
 		this.startUser = startUser;
 		this.active = false;
 		this.timeout = null;
-		this.ownerOrigin = ownerOrigin || false;
+		this.adminCall = adminCall || false;
 		this.cooldown = new Set();
 		this.ratelimitMeters = new Map();
 		this.timeStarted = null;
 	}
 
 	async start() {
-		if (this.ownerOrigin) {
+		if (this.adminCall) {
 			await this.origin.send(`☎️ Admin call started with **${this.recipient.guild.name}**.`);
 			await this.recipient.send(`☎️ An **ADMIN** call from **${this.origin.guild.name}** has begun.`);
 		} else {
@@ -40,7 +40,7 @@ module.exports = class PhoneCall {
 		this.active = true;
 		this.timeStarted = new Date();
 		this.setTimeout();
-		if (this.ownerOrigin) return this;
+		if (this.adminCall) return this;
 		const usage = this.client.registry.commands.get('hang-up').usage();
 		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Use ${usage} to hang up.`);
 		await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Use ${usage} to hang up.`);

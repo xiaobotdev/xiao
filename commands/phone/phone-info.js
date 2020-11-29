@@ -27,7 +27,7 @@ module.exports = class PhoneInfoCommand extends Command {
 			.addField('❯ Recipient Server', otherChannel.guild.name, true)
 			.addField('❯ Recipient ID', otherChannel.id, true)
 			.addField('❯ Call Duration', call.durationDisplay, true)
-			.addField('❯ Admin Call?', call.ownerOrigin ? 'Yes' : 'No', true)
+			.addField('❯ Admin Call?', call.adminCall ? 'Yes' : 'No', true)
 			.addField('❯ Started By', call.startUser.tag, true);
 		return msg.embed(embed);
 	}

@@ -110,9 +110,9 @@ client.on('message', async msg => {
 	const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
 	if (!origin && !recipient) return;
 	const call = origin || recipient;
-	if (!call.ownerOrigin && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>'))) return;
+	if (!call.adminCall && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>'))) return;
 	if (!call.active) return;
-	if (call.ownerOrigin && msg.guild.id === call.origin.guild.id && !client.isOwner(msg.author)) return;
+	if (call.adminCall && msg.guild.id === call.origin.guild.id && !client.isOwner(msg.author)) return;
 	try {
 		await call.send(origin ? call.recipient : call.origin, msg, hasText, hasImage, hasEmbed);
 	} catch {
