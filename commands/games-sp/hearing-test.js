@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const path = require('path');
+const { stripIndents } = require('common-tags');
 const { delay, verify } = require('../../util/Util');
 const data = require('../../assets/json/hearing-test');
 
@@ -36,18 +37,33 @@ module.exports = class HearingTestCommand extends Command {
 		}
 		try {
 			let age;
-			for (const { age: dataAge, file } of data) {
+			let range;
+			let previousAge = 'all';
+			let previousRange = 8;
+			for (const { age: dataAge, khz, file } of data) {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'hearing-test', file));
 				await delay(3500);
 				await msg.reply('Did you hear that sound? Reply with **[y]es** or **[n]o**.');
 				const heard = await verify(msg.channel, msg.author);
 				if (!heard || file === data[data.length - 1].file) {
-					age = dataAge;
+					age = previousAge;
+					range = previousRange;
 					break;
 				}
+				previousAge = dataAge;
+				previousRange = khz;
 			}
 			if (age === 'all') return msg.reply('Everyone should be able to hear that. You cannot hear.');
-			return msg.reply(`You have the hearing of someone **${Number.parseInt(age, 10) + 1} or older**.`);
+			if (age === 'max') {
+				return msg.reply(stripIndents`
+					You can hear any frequency of which a human is capable.
+					The maximum frequency you were able to hear was **${range}000hz**.
+				`);
+			}
+			return msg.reply(stripIndents`
+				You have the hearing of someone **${Number.parseInt(age, 10) + 1} or older**.
+				The maximum frequency you were able to hear was **${range}000hz**.
+			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
