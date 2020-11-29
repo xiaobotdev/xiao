@@ -26,6 +26,11 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					reason: 'Images, Original Game'
 				},
 				{
+					name: '4Kids',
+					url: 'https://www.4kidsentertainmentinc.com/',
+					reason: '"Who\'s That Pokémon?" Sound'
+				},
+				{
 					name: 'PokéAPI',
 					url: 'https://pokeapi.co/',
 					reason: 'API'
