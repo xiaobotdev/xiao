@@ -113,6 +113,11 @@ module.exports = class HatCommand extends Command {
 					url: 'https://webstockreview.net/',
 					reason: 'Devil Hat Image',
 					reasonURL: 'https://webstockreview.net/explore/horn-clipart-purple-devil/'
+				},
+				{
+					name: 'Becel',
+					url: 'https://www.becel.ca/en-ca',
+					reason: 'Becel Hat Image'
 				}
 			],
 			args: [

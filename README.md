@@ -823,7 +823,7 @@ Total: 565
 * **currency:** Converts currency from one currency to another.
 * **final-grade:** Determines the grade you need to make on your final to get your desired course grade.
 * **grade:** Determines your grade on an assignment on an 100-point scale.
-* **gravity:** Determines weight on another planet.
+* **gravity:** Determines weight on another celestial object.
 * **math:** Evaluates a math expression.
 * **prime:** Determines if a number is a prime number.
 * **roman:** Converts a number to roman numerals.
@@ -985,6 +985,8 @@ here.
 	* cuteness (Concept)
 	* screenshot (Concept)
 	* worth (Concept)
+- [Becel](https://www.becel.ca/en-ca)
+	* hat (Becel Hat Image)
 - [Bethesda](https://bethesda.net/en/dashboard)
 	* dislike ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 	* like ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
