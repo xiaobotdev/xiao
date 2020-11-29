@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const path = require('path');
 const { list, reactIfAble } = require('../../util/Util');
 const sounds = require('../../assets/json/soundboard');
-const soundsChoice = sounds.map(sound => sound[sounds.length - 1].replace(/\.mp3$/, ''));
+const soundsChoice = sounds.map(sound => sound[sound.length - 1].replace(/\.mp3$/, ''));
 
 module.exports = class SoundboardCommand extends Command {
 	constructor(client) {
