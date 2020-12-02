@@ -36,7 +36,7 @@ module.exports = class CalendarCommand extends Command {
 			------------------------------------
 		`;
 		display += '\n';
-		const startDay = new Date(`${month}/1/${year}`).getDay();
+		const startDay = new Date(year, month - 1, 1).getDay();
 		for (let i = 0; i < startDay; i++) {
 			display += '     ';
 		}

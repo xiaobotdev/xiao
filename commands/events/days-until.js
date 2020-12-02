@@ -31,7 +31,7 @@ module.exports = class DaysUntilCommand extends Command {
 		const now = new Date();
 		let year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
 		if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
-		const future = new Date(`${month}/${day}/${year}`);
+		const future = new Date(year, month - 1, day);
 		const futureFormat = moment.utc(future).format('dddd, MMMM Do, YYYY');
 		const time = moment.duration(future - now);
 		const link = time.months() ? time.months() === 1 ? 'is' : 'are' : time.days() === 1 ? 'is' : 'are';

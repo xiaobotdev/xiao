@@ -34,7 +34,7 @@ module.exports = class DaysSinceCommand extends Command {
 
 	run(msg, { month, day, year }) {
 		const now = new Date();
-		const past = new Date(`${month}/${day}/${year}`);
+		const past = new Date(year, month - 1, day);
 		const pastFormat = moment.utc(past).format('dddd, MMMM Do, YYYY');
 		const time = moment.duration(now - past);
 		return msg.say(`There have been ${time.format('Y [years,] M [months and] d [days]')} since ${pastFormat}!`);
