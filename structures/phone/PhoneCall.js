@@ -9,6 +9,7 @@ module.exports = class PhoneCall {
 
 		this.id = `${origin.id}:${recipient.id}`;
 		this.origin = origin;
+		this.originDM = !Boolean(origin.guild);
 		this.recipient = recipient;
 		this.startUser = startUser;
 		this.active = false;
@@ -22,10 +23,18 @@ module.exports = class PhoneCall {
 	async start() {
 		if (this.adminCall) {
 			await this.origin.send(`☎️ Admin call started with **${this.recipient.guild.name}**.`);
-			await this.recipient.send(`☎️ An **ADMIN** call from **${this.origin.guild.name}** has begun.`);
+			if (this.originDM) {
+				await this.recipient.send(`☎️ An **ADMIN** call from **${this.startUser.tag}'s DMs** has begun.`);
+			} else {
+				await this.recipient.send(`☎️ An **ADMIN** call from **${this.origin.guild.name}** has begun.`);
+			}
 		} else {
 			await this.origin.send(`☎️ Calling **${this.recipient.guild.name} (${this.recipient.id})**...`);
-			await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name} (${this.origin.id})**. Pick up?`);
+			if (this.originDM) {
+				await this.recipient.send(`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.origin.id})**. Pick up?`);
+			} else {
+				await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name} (${this.origin.id})**. Pick up?`);
+			}
 			const validation = await verify(this.recipient, null);
 			if (!validation) {
 				await this.hangup('declined', validation);
@@ -43,7 +52,11 @@ module.exports = class PhoneCall {
 		if (this.adminCall) return this;
 		const usage = this.client.registry.commands.get('hang-up').usage();
 		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Use ${usage} to hang up.`);
-		await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Use ${usage} to hang up.`);
+		if (this.originDM) {
+			await this.recipient.send(`☎️ Accepted call from **${this.startUser.tag}'s DM**. Use ${usage} to hang up.`);
+		} else {
+			await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Use ${usage} to hang up.`);
+		}
 		return this;
 	}
 
@@ -84,7 +97,11 @@ module.exports = class PhoneCall {
 			}
 		} else {
 			const quitter = nonQuitter.id === this.origin.id ? this.recipient : this.origin;
-			await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up. _(Lasted ${this.durationDisplay})_`);
+			if (quitter.guild) {
+				await nonQuitter.send(`☎️ **${quitter.guild.name}** hung up. _(Lasted ${this.durationDisplay})_`);
+			} else {
+				await nonQuitter.send(`☎️ **${this.startUser.tag}** hung up. _(Lasted ${this.durationDisplay})_`);
+			}
 			await quitter.send(`☎️ Hung up. _(Lasted ${this.durationDisplay})_`);
 		}
 		this.client.phone.delete(this.id);
@@ -121,7 +138,7 @@ module.exports = class PhoneCall {
 
 	sendVoicemail(channel, msg) {
 		return channel.send(stripIndents`
-			☎️ New Voicemail from **${msg.guild.name}:**
+			☎️ New Voicemail from **${this.originDM ? `${this.startUser.tag}'s DMs` : this.origin.guild.name}:**
 			**${msg.author.tag}:** ${stripInvites(msg.content)}
 		`);
 	}

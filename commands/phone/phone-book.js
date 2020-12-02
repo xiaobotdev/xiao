@@ -8,7 +8,6 @@ module.exports = class PhoneBookCommand extends Command {
 			group: 'phone',
 			memberName: 'phone-book',
 			description: 'Looks up phone-enabled servers.',
-			guildOnly: true,
 			args: [
 				{
 					key: 'query',

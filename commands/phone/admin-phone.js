@@ -9,7 +9,6 @@ module.exports = class AdminPhoneCommand extends Command {
 			group: 'phone',
 			memberName: 'admin-phone',
 			description: 'Starts an admin phone call with a server.',
-			guildOnly: true,
 			ownerOnly: true,
 			args: [
 				{
