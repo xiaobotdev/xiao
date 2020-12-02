@@ -44,7 +44,7 @@ module.exports = class CalendarCommand extends Command {
 		let currentDay = startDay;
 		for (let i = 0; i < daysInMonth; i++) {
 			display += `| ${(i + 1).toString().padStart(2, '0')} `;
-			if (currentDay === 6) {
+			if (currentDay === 6 && i + 1 !== daysInMonth) {
 				display += '|\n------------------------------------\n';
 				currentDay = 0;
 			} else {
