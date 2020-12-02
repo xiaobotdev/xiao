@@ -31,7 +31,7 @@ module.exports = class PhoneCall {
 		} else {
 			await this.origin.send(`☎️ Calling **${this.recipient.guild.name} (${this.recipient.id})**...`);
 			if (this.originDM) {
-				await this.recipient.send(`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.origin.id})**. Pick up?`);
+				await this.recipient.send(`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.startUser.id})**. Pick up?`);
 			} else {
 				await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name} (${this.origin.id})**. Pick up?`);
 			}
