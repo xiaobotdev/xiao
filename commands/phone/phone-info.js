@@ -23,10 +23,9 @@ module.exports = class PhoneInfoCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(otherChannelDM
-				? call.origin.startUser.displayAvatarURL({ format: 'png' })
+				? call.startUser.displayAvatarURL({ format: 'png' })
 				: otherChannel.guild.iconURL({ format: 'png' }))
-			.addField('❯ Recipient Channel',
-				otherChannelDM ? `@${call.origin.startUser.tag}` : `#${otherChannel.name}`, true)
+			.addField('❯ Recipient Channel', otherChannelDM ? `@${call.startUser.tag}` : `#${otherChannel.name}`, true)
 			.addField('❯ Recipient Server', otherChannelDM ? 'DM' : otherChannel.guild.name, true)
 			.addField('❯ Recipient ID', otherChannel.id, true)
 			.addField('❯ Call Duration', call.durationDisplay, true)
