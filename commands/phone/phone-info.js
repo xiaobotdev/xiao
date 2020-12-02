@@ -19,7 +19,7 @@ module.exports = class PhoneInfoCommand extends Command {
 		const call = origin || recipient;
 		if (!call.active) return msg.reply('☎️ This call is not currently active.');
 		const otherChannel = msg.channel.id === call.origin.id ? call.recipient : call.origin;
-		const otherChannelDM = msg.channel.id === call.origin.id ? false : Boolean(call.origin.guild);
+		const otherChannelDM = msg.channel.id === call.origin.id ? false : !call.origin.guild;
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(otherChannelDM
