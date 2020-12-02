@@ -22,7 +22,7 @@ module.exports = class CalendarCommand extends Command {
 					key: 'year',
 					prompt: 'What year would you like to get the calendar of?',
 					type: 'integer',
-					min: 1
+					min: 100
 				}
 			]
 		});

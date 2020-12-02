@@ -26,7 +26,7 @@ module.exports = class DaysSinceCommand extends Command {
 					key: 'year',
 					prompt: 'What year would you like to get the days since?',
 					type: 'integer',
-					min: 1
+					min: 100
 				}
 			]
 		});
