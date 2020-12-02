@@ -22,7 +22,7 @@ module.exports = class CalendarCommand extends Command {
 					key: 'year',
 					prompt: 'What year would you like to get the calendar of?',
 					type: 'integer',
-					min: 100
+					min: 1
 				}
 			]
 		});
@@ -37,6 +37,7 @@ module.exports = class CalendarCommand extends Command {
 		`;
 		display += '\n';
 		const startDay = new Date(year, month - 1, 1).getDay();
+		if (year > 100) startDay.setFullYear(year);
 		for (let i = 0; i < startDay; i++) {
 			display += '     ';
 		}
