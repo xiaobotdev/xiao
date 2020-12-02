@@ -27,7 +27,7 @@ module.exports = class AdminPhoneCommand extends Command {
 		const channel = this.client.channels.cache.get(channelID);
 		if (!channel || !channel.guild) return msg.reply('This channel does not exist.');
 		try {
-			const id = `${msg.channel.id}:${channel.id}`;
+			const id = `${msg.guild ? msg.channel.id : msg.author.id}:${channel.id}`;
 			this.client.phone.set(id, new PhoneCall(this.client, msg.author, msg.channel, channel, true));
 			await this.client.phone.get(id).start();
 			return null;

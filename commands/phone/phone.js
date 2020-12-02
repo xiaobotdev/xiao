@@ -58,8 +58,9 @@ module.exports = class PhoneCommand extends Command {
 		if (channelID) {
 			if (channelID === 'count') return msg.say(`☎️ **${channels.size}** currently open lines.`);
 			channel = this.client.channels.cache.get(channelID);
-			if (!channel) return msg.reply('This channel does not exist.');
-			if (!channel.guild) return msg.reply('You cannot call DM channels.');
+			const user = this.client.users.cache.get(channelID);
+			if (user) return msg.reply('You cannot call DM channels.');
+			if (!channel || !channel.guild) return msg.reply('This channel does not exist.');
 			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
 				return msg.reply('This channel does not allow phone calls.');
 			}
@@ -74,7 +75,7 @@ module.exports = class PhoneCommand extends Command {
 			channel = channels.random();
 		}
 		try {
-			const id = `${msg.channel.id}:${channel.id}`;
+			const id = `${msg.guild ? msg.channel.id : msg.author.id}:${channel.id}`;
 			this.client.phone.set(id, new PhoneCall(this.client, msg.author, msg.channel, channel));
 			await this.client.phone.get(id).start();
 			return null;

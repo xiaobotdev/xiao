@@ -7,7 +7,7 @@ module.exports = class PhoneCall {
 	constructor(client, startUser, origin, recipient, adminCall) {
 		Object.defineProperty(this, 'client', { value: client });
 
-		this.id = `${origin.id}:${recipient.id}`;
+		this.id = `${origin.guild ? origin.id : startUser.id}:${recipient.id}`;
 		this.origin = origin;
 		this.originDM = !origin.guild;
 		this.recipient = recipient;
