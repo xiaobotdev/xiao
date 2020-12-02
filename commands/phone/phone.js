@@ -48,10 +48,10 @@ module.exports = class PhoneCommand extends Command {
 			&& channel.topic.includes('<xiao:phone>')
 			&& !channel.topic.includes('<xiao:phone:no-random>')
 			&& !channel.topic.includes(`<xiao:phone:block:${msg.channel.id}>`)
-			&& (msg.guild && !channel.topic.includes(`<xiao:phone:block:${msg.guild.id}>`))
+			&& (msg.guild ? !channel.topic.includes(`<xiao:phone:block:${msg.guild.id}>`) : true)
 			&& (msg.channel.topic && !msg.channel.topic.includes(`<xiao:phone:block:${channel.id}>`))
 			&& (msg.channel.topic && !msg.channel.topic.includes(`<xiao:phone:block:${channel.guild.id}>`))
-			&& (msg.guild && !msg.guild.channels.cache.has(channel.id))
+			&& (msg.guild ? !msg.guild.channels.cache.has(channel.id) : true)
 			&& (channelID ? true : !this.client.inPhoneCall(channel)));
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
 		let channel;
