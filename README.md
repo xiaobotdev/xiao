@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 565
+Total: 566
 
 ### Utility:
 
@@ -438,13 +438,14 @@ Total: 565
 
 * **anime-airing:** Responds with a list of the anime that air today.
 * **apod:** Responds with today's Astronomy Picture of the Day.
-* **calendar:** Responds with today's holidays.
+* **calendar:** Responds with the calendar for a specific month and year.
 * **covid-19:** Responds with stats for COVID-19.
 * **days-since:** Responds with how many days there have been since a certain date.
 * **days-until:** Responds with how many days there are until a certain date.
 * **doomsday-clock:** Responds with the current time of the Doomsday Clock.
 * **friday-the-13th:** Determines if today is Friday the 13th.
 * **google-doodle:** Responds with a Google Doodle, either the latest one or a random one from the past.
+* **holidays:** Responds with today's holidays.
 * **horoscope:** Responds with today's horoscope for a specific Zodiac sign.
 * **humble-bundle:** Responds with the current Humble Bundle.
 * **is-tuesday:** Determines if today is Tuesday.
@@ -1153,7 +1154,6 @@ here.
 - [Google](https://www.google.com/)
 	* boardroom-meeting ([Noto Font](https://www.google.com/get/noto/))
 	* book ([Books API](https://developers.google.com/books/))
-	* calendar ([Calendar API](https://developers.google.com/calendar/))
 	* catch ([Noto Font](https://www.google.com/get/noto/))
 	* caution ([Noto Font](https://www.google.com/get/noto/))
 	* change-my-mind ([Noto Font](https://www.google.com/get/noto/))
@@ -1169,6 +1169,7 @@ here.
 	* google-doodle ([Google Doodles API](https://www.google.com/doodles))
 	* google-feud (Autofill API)
 	* gru-plan ([Noto Font](https://www.google.com/get/noto/))
+	* holidays ([Calendar API](https://developers.google.com/calendar/))
 	* if-those-kids-could-read ([Noto Font](https://www.google.com/get/noto/))
 	* lisa-presentation ([Noto Font](https://www.google.com/get/noto/))
 	* map ([Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro))

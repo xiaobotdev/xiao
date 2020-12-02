@@ -1,62 +1,61 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
-const { list, today, tomorrow } = require('../../util/Util');
-const { GOOGLE_KEY, GOOGLE_CALENDAR_ID, PERSONAL_GOOGLE_CALENDAR_ID } = process.env;
+const { stripIndents } = require('common-tags');
+const { firstUpperCase } = require('../../util/Util');
+const monthsWith30 = [4, 6, 9, 11];
+const months = require('../../assets/json/month');
 
 module.exports = class CalendarCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'calendar',
-			aliases: ['holidays', 'events'],
+			aliases: ['cal'],
 			group: 'events',
 			memberName: 'calendar',
-			description: 'Responds with today\'s holidays.',
-			credit: [
+			description: 'Responds with the calendar for a specific month and year.',
+			args: [
 				{
-					name: 'Google',
-					url: 'https://www.google.com/',
-					reason: 'Calendar API',
-					reasonURL: 'https://developers.google.com/calendar/'
+					key: 'month',
+					prompt: 'What month would you like to get the calendar of?',
+					type: 'month'
+				},
+				{
+					key: 'year',
+					prompt: 'What year would you like to get the calendar of?',
+					type: 'integer',
+					min: 1
 				}
 			]
 		});
 	}
 
-	async run(msg) {
-		try {
-			const events = [];
-			const standardEvents = await this.fetchHolidays(GOOGLE_CALENDAR_ID);
-			if (standardEvents) events.push(...standardEvents);
-			if (PERSONAL_GOOGLE_CALENDAR_ID) {
-				const personalEvents = await this.fetchHolidays(PERSONAL_GOOGLE_CALENDAR_ID);
-				if (personalEvents) events.push(...personalEvents);
-			}
-			if (!events.length) return msg.say('There are no holidays today...');
-			const holidays = list(events.map(event => `**${event}**`));
-			return msg.say(`Today${events.length === 1 ? ' is' : `'s holidays are`} ${holidays}!`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+	run(msg, { month, year }) {
+		let display = stripIndents`
+			${firstUpperCase(months[month - 1])} ${year}
+			------------------------------------
+			| Su | Mo | Tu | We | Th | Fr | Sa |
+			------------------------------------
+		`;
+		display += '\n';
+		const startDay = new Date(`${month}/1/${year}`).getDay();
+		for (let i = 0; i < startDay; i++) {
+			display += '     ';
 		}
+		const daysInMonth = month === 2 ? this.isLeap(year) ? 29 : 28 : monthsWith30.includes(month) ? 30 : 31;
+		let currentDay = startDay;
+		for (let i = 0; i < daysInMonth; i++) {
+			display += `| ${(i + 1).toString().padStart(2, '0')} `;
+			if (currentDay === 6) {
+				display += '|\n------------------------------------\n';
+				currentDay = 0;
+			} else {
+				currentDay += 1;
+			}
+		}
+		display += '|';
+		return msg.code(null, display);
 	}
 
-	async fetchHolidays(id) {
-		try {
-			const { body } = await request
-				.get(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events`)
-				.query({
-					maxResults: 20,
-					orderBy: 'startTime',
-					singleEvents: true,
-					timeMax: tomorrow().toISOString(),
-					timeMin: today().toISOString(),
-					timeZone: 'UTC',
-					key: GOOGLE_KEY
-				});
-			if (!body.items.length) return null;
-			return body.items.map(holiday => holiday.summary);
-		} catch (err) {
-			if (err.status === 404) return null;
-			throw err;
-		}
+	isLeap(year) {
+		return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
 	}
 };
