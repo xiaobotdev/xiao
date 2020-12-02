@@ -8,8 +8,7 @@ module.exports = class PhoneInfoCommand extends Command {
 			aliases: ['call-info', 'phone-call-info'],
 			group: 'phone',
 			memberName: 'phone-info',
-			description: 'Gives information on the current phone call.',
-			guildOnly: true
+			description: 'Gives information on the current phone call.'
 		});
 	}
 
@@ -20,11 +19,13 @@ module.exports = class PhoneInfoCommand extends Command {
 		const call = origin || recipient;
 		if (!call.active) return msg.reply('☎️ This call is not currently active.');
 		const otherChannel = msg.channel.id === call.origin.id ? call.recipient : call.origin;
+		const otherChannelDM = msg.channel.id === call.origin.id ? false : Boolean(call.origin.guild);
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(otherChannel.guild.iconURL({ format: 'png' }))
-			.addField('❯ Recipient Channel', `#${otherChannel.name}`, true)
-			.addField('❯ Recipient Server', otherChannel.guild.name, true)
+			.addField('❯ Recipient Channel',
+				otherChannelDM ? `@${call.origin.startUser.tag}` : `#${otherChannel.name}`, true)
+			.addField('❯ Recipient Server', otherChannelDM ? 'DM' : otherChannel.guild.name, true)
 			.addField('❯ Recipient ID', otherChannel.id, true)
 			.addField('❯ Call Duration', call.durationDisplay, true)
 			.addField('❯ Admin Call?', call.adminCall ? 'Yes' : 'No', true)

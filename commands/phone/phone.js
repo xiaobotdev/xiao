@@ -9,7 +9,6 @@ module.exports = class PhoneCommand extends Command {
 			group: 'phone',
 			memberName: 'phone',
 			description: 'Starts a phone call with a random server.',
-			guildOnly: true,
 			throttling: {
 				usages: 1,
 				duration: 45
@@ -38,7 +37,7 @@ module.exports = class PhoneCommand extends Command {
 	}
 
 	async run(msg, { channelID }) {
-		if (channelID !== 'count' && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>'))) {
+		if (channelID !== 'count' && (msg.guild && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')))) {
 			return msg.say('You can only start a call in a channel with `<xiao:phone>` in the topic.');
 		}
 		if (channelID !== 'count' && this.client.inPhoneCall(msg.channel)) {
@@ -68,7 +67,7 @@ module.exports = class PhoneCommand extends Command {
 				return msg.reply('That channel has blocked this channel from calling them.');
 			}
 			if (channel.topic.includes(`<xiao:phone:block:${msg.guild.id}>`)) {
-				return msg.replY('That channel has blocked this server from calling them.');
+				return msg.reply('That channel has blocked this server from calling them.');
 			}
 		} else {
 			channel = channels.random();
