@@ -58,7 +58,8 @@ module.exports = class PhoneCommand extends Command {
 		if (channelID) {
 			if (channelID === 'count') return msg.say(`☎️ **${channels.size}** currently open lines.`);
 			channel = this.client.channels.cache.get(channelID);
-			if (!channel || !channel.guild) return msg.reply('This channel does not exist.');
+			if (!channel) return msg.reply('This channel does not exist.');
+			if (!channel.guild) return msg.reply('You cannot call DM channels.');
 			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
 				return msg.reply('This channel does not allow phone calls.');
 			}
