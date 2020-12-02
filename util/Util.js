@@ -169,6 +169,10 @@ module.exports = class Util {
 		return today;
 	}
 
+	static isLeap(year) {
+		return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
+	}
+
 	static magikToBuffer(magik) {
 		return new Promise((res, rej) => {
 			magik.toBuffer((err, buffer) => {

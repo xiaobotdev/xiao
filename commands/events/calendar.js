@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { firstUpperCase } = require('../../util/Util');
+const { firstUpperCase, isLeap } = require('../../util/Util');
 const monthsWith30 = [4, 6, 9, 11];
 const months = require('../../assets/json/month');
 
@@ -42,7 +42,7 @@ module.exports = class CalendarCommand extends Command {
 		for (let i = 0; i < startDay; i++) {
 			display += '     ';
 		}
-		const daysInMonth = month === 2 ? this.isLeap(year) ? 29 : 28 : monthsWith30.includes(month) ? 30 : 31;
+		const daysInMonth = month === 2 ? isLeap(year) ? 29 : 28 : monthsWith30.includes(month) ? 30 : 31;
 		let currentDay = startDay;
 		for (let i = 0; i < daysInMonth; i++) {
 			display += `| ${(i + 1).toString().padStart(2, '0')} `;
@@ -55,9 +55,5 @@ module.exports = class CalendarCommand extends Command {
 		}
 		display += '|';
 		return msg.code(null, display);
-	}
-
-	isLeap(year) {
-		return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
 	}
 };
