@@ -22,7 +22,9 @@ module.exports = class PhoneInfoCommand extends Command {
 		const otherChannelDM = msg.channel.id === call.origin.id ? false : Boolean(call.origin.guild);
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
-			.setThumbnail(otherChannel.guild.iconURL({ format: 'png' }))
+			.setThumbnail(otherChannelDM
+				? call.origin.startUser.displayAvatarURL({ format: 'png' })
+				: otherChannel.guild.iconURL({ format: 'png' }))
 			.addField('❯ Recipient Channel',
 				otherChannelDM ? `@${call.origin.startUser.tag}` : `#${otherChannel.name}`, true)
 			.addField('❯ Recipient Server', otherChannelDM ? 'DM' : otherChannel.guild.name, true)
