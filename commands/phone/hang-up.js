@@ -7,8 +7,7 @@ module.exports = class HangUpCommand extends Command {
 			aliases: ['hang'],
 			group: 'phone',
 			memberName: 'hang-up',
-			description: 'Hangs up the current phone call.',
-			guildOnly: true
+			description: 'Hangs up the current phone call.'
 		});
 	}
 
