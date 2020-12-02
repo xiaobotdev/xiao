@@ -9,7 +9,7 @@ module.exports = class PhoneCall {
 
 		this.id = `${origin.id}:${recipient.id}`;
 		this.origin = origin;
-		this.originDM = !Boolean(origin.guild);
+		this.originDM = !origin.guild;
 		this.recipient = recipient;
 		this.startUser = startUser;
 		this.active = false;
@@ -31,7 +31,9 @@ module.exports = class PhoneCall {
 		} else {
 			await this.origin.send(`☎️ Calling **${this.recipient.guild.name} (${this.recipient.id})**...`);
 			if (this.originDM) {
-				await this.recipient.send(`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.startUser.id})**. Pick up?`);
+				await this.recipient.send(
+					`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.startUser.id})**. Pick up?`
+				);
 			} else {
 				await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name} (${this.origin.id})**. Pick up?`);
 			}
