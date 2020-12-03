@@ -80,6 +80,8 @@ module.exports = class PhoneCommand extends Command {
 			await this.client.phone.get(id).start();
 			return null;
 		} catch {
+			const id = `${msg.guild ? msg.channel.id : msg.author.id}:${channel.id}`;
+			this.client.phone.delete(id);
 			return msg.reply('Failed to start the call. Try again later!');
 		}
 	}
