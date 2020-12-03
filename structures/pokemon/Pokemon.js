@@ -97,6 +97,7 @@ module.exports = class Pokemon {
 			const { body } = await request.get(ability.ability.url);
 			this.abilities.push(body.names.find(name => name.language.name === 'en').name);
 		}
+		await this.fetchChain();
 		this.gameDataCached = true;
 		return this;
 	}

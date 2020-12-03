@@ -62,7 +62,6 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			if (!data.chain.data.length) await data.fetchChain();
 			const typesShown = data.varieties.filter(variety => variety.display);
 			const repeat = {
 				hp: Math.round((data.stats.hp / 255) * 10) * 2,
