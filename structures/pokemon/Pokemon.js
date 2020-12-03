@@ -37,6 +37,7 @@ module.exports = class Pokemon {
 			data: data.missingno ? missingno.chain : data.evolution_chain ? [] : [data.id]
 		};
 		this.stats = data.missingno ? data.stats : null;
+		this.abilities = data.missingno ? data.abilities : null;
 		this.gameDataCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
@@ -91,6 +92,10 @@ module.exports = class Pokemon {
 			} else {
 				variety.display = true;
 			}
+		}
+		for (const ability of defaultBody.abilities) {
+			const { body } = await request.get(ability.ability.url);
+			this.abilities.push(body.names.find(name => name.language.name === 'en').name);
 		}
 		this.gameDataCached = true;
 		return this;
