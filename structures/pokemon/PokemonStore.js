@@ -7,7 +7,7 @@ module.exports = class PokemonStore extends Collection {
 	constructor(options) {
 		super(options);
 
-		this.pokemonCount = 897;
+		this.pokemonCount = 898;
 		this.pokemonCountWithCry = 893;
 	}
 
