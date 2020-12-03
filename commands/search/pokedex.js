@@ -70,7 +70,7 @@ module.exports = class PokedexCommand extends Command {
 				sAtk: Math.round((data.stats.sAtk / 255) * 10) * 2,
 				sDef: Math.round((data.stats.sDef / 255) * 10) * 2,
 				spd: Math.round((data.stats.spd / 255) * 10) * 2,
-				total: Math.round((data.baseStatTotal / 1530) * 10) * 2
+				total: Math.round((data.baseStatTotal / 720) * 10) * 2
 			};
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
