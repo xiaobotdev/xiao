@@ -40,7 +40,8 @@
 			"types": [
 				"Bird",
 				"Normal"
-			]
+			],
+			"abilities": ["N/A"]
 		},
 		{
 			"is_default": false,
@@ -50,7 +51,8 @@
 			"types": [
 				"Normal",
 				"999"
-			]
+			],
+			"abilities": ["N/A"]
 		}
 	],
 	"evolution_chain": {
@@ -70,7 +72,6 @@
 	},
 	"height": 120,
 	"weight": 3507.2,
-	"abilities": ["N/A"],
 	"chain": [0],
 	"missingno": true,
 	"sprite": "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png",

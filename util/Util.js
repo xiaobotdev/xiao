@@ -64,6 +64,10 @@ module.exports = class Util {
 		return newArr;
 	}
 
+	static arrayEquals(a, b) {
+		return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((val, i) => val === b[i]);
+	}
+
 	static sortByName(arr, prop) {
 		return arr.sort((a, b) => {
 			if (prop) return a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : -1;
