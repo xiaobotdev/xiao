@@ -64,6 +64,7 @@
 		"sDef": 6,
 		"spd": 29
 	},
+	"abilities": ["N/A"],
 	"chain": [0],
 	"missingno": true,
 	"sprite": "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png",

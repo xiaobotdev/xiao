@@ -103,7 +103,8 @@ module.exports = class PokedexCommand extends Command {
 					\`Sp. Attack:  [${'█'.repeat(repeat.sAtk)}${' '.repeat(20 - repeat.sAtk)}]\` **${data.stats.sAtk}**
 					\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${data.stats.sDef}**
 					\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${data.stats.spd}**
-				`);
+				`)
+				.addField('❯ Abilities', data.abilities.join(' / '));
 			if (data.cry) {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				if (connection) {
