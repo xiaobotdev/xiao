@@ -36,7 +36,8 @@ module.exports = class Pokemon {
 			url: data.evolution_chain ? data.evolution_chain.url : null,
 			data: data.missingno ? missingno.chain : data.evolution_chain ? [] : [data.id]
 		};
-		this.typesCached = data.missingno || false;
+		this.stats = data.missingno.stats || null;
+		this.gameDataCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
 			? null
@@ -67,12 +68,20 @@ module.exports = class Pokemon {
 		return `https://www.serebii.net/pokedex-swsh/${this.displayID}.shtml`;
 	}
 
-	async fetchTypes() {
-		if (this.typesCached) return this;
+	async fetchGameData() {
+		if (this.gameDataCached) return this;
 		const defaultVariety = this.varieties.find(variety => variety.default);
 		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
 		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
 		defaultVariety.display = true;
+		this.stats = {
+			hp: defaultBody.stats.find(stat => stat.stat.name === 'hp').base_stat,
+			atk: defaultBody.stats.find(stat => stat.stat.name === 'attack').base_stat,
+			def: defaultBody.stats.find(stat => stat.stat.name === 'defense').base_stat,
+			sAtk: defaultBody.stats.find(stat => stat.stat.name === 'special-attack').base_stat,
+			sDef: defaultBody.stats.find(stat => stat.stat.name === 'special-defense').base_stat,
+			spd: defaultBody.stats.find(stat => stat.stat.name === 'speed').base_stat
+		};
 		for (const variety of this.varieties) {
 			if (variety.id === defaultVariety.id) continue;
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
@@ -83,7 +92,7 @@ module.exports = class Pokemon {
 				variety.display = true;
 			}
 		}
-		this.typesCached = true;
+		this.gameDataCached = true;
 		return this;
 	}
 

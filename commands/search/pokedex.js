@@ -61,9 +61,17 @@ module.exports = class PokedexCommand extends Command {
 		try {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
-			if (!data.typesCached) await data.fetchTypes();
+			if (!data.gameDataCached) await data.fetchGameData();
 			if (!data.chain.data.length) await data.fetchChain();
 			const typesShown = data.varieties.filter(variety => variety.display);
+			const repeat = {
+				hp: Math.round((data.stats.hp / 255) * 5),
+				atk: Math.round((data.stats.atk / 255) * 5),
+				def: Math.round((data.stats.def / 255) * 5),
+				sAtk: Math.round((data.stats.sAtk / 255) * 5),
+				sDef: Math.round((data.stats.sDef / 255) * 5),
+				spd: Math.round((data.stats.spd / 255) * 5)
+			};
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
@@ -87,7 +95,15 @@ module.exports = class PokedexCommand extends Command {
 					const found = this.client.pokemon.get(pkmn);
 					if (found.id === data.id) return `**${found.name}**`;
 					return found.name;
-				}).join(' -> '));
+				}).join(' -> '))
+				.addField('❯ Base Stats (Base Form)', stripIndents`
+					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${data.stats.hp}**
+					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${data.stats.atk}**
+					\`Defense:     [${'█'.repeat(repeat.def)}${' '.repeat(20 - repeat.def)}]\` **${data.stats.def}**
+					\`Sp. Attack:  [${'█'.repeat(repeat.sAtk)}${' '.repeat(20 - repeat.sAtk)}]\` **${data.stats.sAtk}**
+					\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${data.stats.sDef}**
+					\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${data.stats.spd}**
+				`);
 			if (data.cry) {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				if (connection) {
