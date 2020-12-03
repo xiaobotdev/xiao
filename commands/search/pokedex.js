@@ -69,7 +69,8 @@ module.exports = class PokedexCommand extends Command {
 				def: Math.round((data.stats.def / 255) * 10) * 2,
 				sAtk: Math.round((data.stats.sAtk / 255) * 10) * 2,
 				sDef: Math.round((data.stats.sDef / 255) * 10) * 2,
-				spd: Math.round((data.stats.spd / 255) * 10) * 2
+				spd: Math.round((data.stats.spd / 255) * 10) * 2,
+				total: Math.round((data.baseStatTotal / 1530) * 10) * 2
 			};
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
@@ -103,7 +104,7 @@ module.exports = class PokedexCommand extends Command {
 					\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${data.stats.sDef}**
 					\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${data.stats.spd}**
 					\`-----------------------------------\`
-					\`Total:                             \` **${data.baseStatTotal}**
+					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${data.baseStatTotal}**
 				`)
 				.addField('❯ Abilities', data.abilities.join(' / '));
 			if (data.cry) {
