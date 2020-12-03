@@ -36,8 +36,8 @@ module.exports = class Pokemon {
 				id: variety.pokemon.name,
 				name: name || null,
 				default: variety.is_default,
-				display: data.missingno ? true : null,
-				types: data.missingno ? variety.types : []
+				types: data.missingno ? variety.types : [],
+				abilities: data.missingno ? variety.abilities : []
 			};
 		});
 		this.chain = {
@@ -45,7 +45,6 @@ module.exports = class Pokemon {
 			data: data.missingno ? missingno.chain : data.evolution_chain ? [] : [data.id]
 		};
 		this.stats = data.missingno ? data.stats : null;
-		this.abilities = data.missingno ? data.abilities : [];
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
 		this.gameDataCached = data.missingno || false;
@@ -111,15 +110,10 @@ module.exports = class Pokemon {
 			if (variety.id === defaultVariety.id) continue;
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
 			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
-			if (variety.types[0] === defaultVariety.types[0] && variety.types[1] === defaultVariety.types[1]) {
-				variety.display = false;
-			} else {
-				variety.display = true;
+			for (const ability of body.abilities) {
+				const { body } = await request.get(ability.ability.url);
+				variety.abilities.push(body.names.find(name => name.language.name === 'en').name);
 			}
-		}
-		for (const ability of defaultBody.abilities) {
-			const { body } = await request.get(ability.ability.url);
-			this.abilities.push(body.names.find(name => name.language.name === 'en').name);
 		}
 		this.height = defaultBody.height * 3.94;
 		this.weight = defaultBody.weight * 0.2205;

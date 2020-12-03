@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { firstUpperCase, reactIfAble } = require('../../util/Util');
+const { arrayEquals, firstUpperCase, reactIfAble } = require('../../util/Util');
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -62,7 +62,15 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const typesShown = data.varieties.filter(variety => variety.display);
+			const defaultVariety = data.varieties.find(variety => variety.default);
+			const typesShown = data.varieties.filter(variety => {
+				if (variety.default) return true;
+				return !arrayEquals(defaultVariety.types, variety.types);
+			});
+			const abilitiesShown = data.varieties.filter(variety => {
+				if (variety.default) return true;
+				return !arrayEquals(defaultVariety.abilities, variety.abilities);
+			});
 			const repeat = {
 				hp: Math.round((data.stats.hp / 255) * 10) * 2,
 				atk: Math.round((data.stats.atk / 255) * 10) * 2,
@@ -110,7 +118,10 @@ module.exports = class PokedexCommand extends Command {
 					\`-----------------------------------\`
 					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${data.baseStatTotal}**
 				`)
-				.addField('❯ Abilities', data.abilities.join(' / '))
+				.addField('❯ Abilities', abilitiesShown.map(variety => {
+					const showParens = variety.name && abilitiesShown.length > 1;
+					return `${variety.abilities.join('/')}${showParens ? ` (${variety.name})` : ''}`;
+				}).join('\n'))
 				.addField('❯ Gender Rate',
 					data.genderRate.genderless ? 'Genderless' : `♂️ ${data.genderRate.male}% ♀️ ${data.genderRate.female}%`);
 			if (data.cry) {
