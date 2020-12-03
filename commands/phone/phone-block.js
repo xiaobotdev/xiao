@@ -25,6 +25,18 @@ module.exports = class PhoneBlockCommand extends Command {
 			const search = query.toLowerCase();
 			return channel.guild && (channel.name.includes(search) || channel.id === search);
 		});
+		let user;
+		try {
+			user = await this.client.users.fetch(query);
+		} catch {
+			user = null;
+		}
+		if (user) {
+			return msg.say(stripIndents`
+				__To block **${user.tag} (${user.id})** from DM calling and messages:__
+				Place \`<xiao:phone:block:${user.id}>\` in this channel's topic
+			`);
+		}
 		if (!channels.size) return msg.reply('Could not find any results.');
 		if (channels.size > 1) return msg.reply(`Found ${channels.size} channels, please be more specific (or use ID).`);
 		const channel = channels.first();

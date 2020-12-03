@@ -47,10 +47,7 @@ module.exports = class PhoneCommand extends Command {
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
 			&& !channel.topic.includes('<xiao:phone:no-random>')
-			&& !channel.topic.includes(`<xiao:phone:block:${msg.guild ? msg.channel.id : msg.author.id}>`)
-			&& (msg.guild ? !channel.topic.includes(`<xiao:phone:block:${msg.guild.id}>`) : true)
-			&& (msg.guild ? msg.channel.topic && !msg.channel.topic.includes(`<xiao:phone:block:${channel.id}>`) : true)
-			&& (msg.guild ? msg.channel.topic && !msg.channel.topic.includes(`<xiao:phone:block:${channel.guild.id}>`) : true)
+			&& !this.client.phone.isBlockedFromPhone(msg.channel, channel, msg.author)
 			&& (msg.guild ? !msg.guild.channels.cache.has(channel.id) : true)
 			&& (channelID ? true : !this.client.inPhoneCall(channel)));
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
@@ -65,11 +62,8 @@ module.exports = class PhoneCommand extends Command {
 				return msg.reply('This channel does not allow phone calls.');
 			}
 			if (this.client.inPhoneCall(channel)) return msg.reply('This channel is already in a call.');
-			if (channel.topic.includes(`<xiao:phone:block:${msg.channel.id}>`)) {
+			if (this.client.isBlockedFromPhone(msg.channel, channel, msg.author)) {
 				return msg.reply('That channel has blocked this channel from calling them.');
-			}
-			if (msg.guild && channel.topic.includes(`<xiao:phone:block:${msg.guild.id}>`)) {
-				return msg.reply('That channel has blocked this server from calling them.');
 			}
 		} else {
 			channel = channels.random();
