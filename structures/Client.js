@@ -53,11 +53,11 @@ module.exports = class XiaoClient extends CommandoClient {
 	}
 
 	isBlockedFromPhone(origin, recipient, caller) {
-		return recipient.topic.includes(`<xiao:phone:block:${origin.id}>`)
-			|| recipient.topic.includes(`<xiao:phone:block:${caller.id}>`)
-			|| (origin.guild && recipient.topic.includes(`<xiao:phone:block:${origin.guild.id}>`))
+		return (recipient.guild && recipient.topic.includes(`<xiao:phone:block:${origin.id}>`))
+			|| (recipient.guild && recipient.topic.includes(`<xiao:phone:block:${caller.id}>`))
+			|| (origin.guild && recipient.guild && recipient.topic.includes(`<xiao:phone:block:${origin.guild.id}>`))
 			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${recipient.id}>`))
-			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${recipient.guild.id}>`))
+			|| (origin.guild && recipient.guild && origin.topic.includes(`<xiao:phone:block:${recipient.guild.id}>`))
 			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${caller.id}>`));
 	}
 
