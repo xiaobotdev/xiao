@@ -257,7 +257,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 566
+Total: 567
 
 ### Utility:
 
@@ -607,6 +607,7 @@ Total: 566
 * **russian-roulette:** Who will pull the trigger and die first?
 * **spam-war:** See who can type more characters the fastest.
 * **tic-tac-toe:** Play a game of tic-tac-toe with another user.
+* **typing-race:** Race a user to see who can type a sentence faster.
 * **word-chain:** Try to come up with words that start with the last letter of your opponent's word.
 * **word-spud:** Hot potato, but with words.
 

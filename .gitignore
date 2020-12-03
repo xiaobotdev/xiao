@@ -11,6 +11,8 @@ report*.json
 .env
 config.json
 command-leaderboard.json
-eng.traineddata
+
+# Tesseract Trained Data
+*.traineddata
 
 # In-Development Commands
