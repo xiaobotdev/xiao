@@ -37,7 +37,7 @@ module.exports = class Pokemon {
 			data: data.missingno ? missingno.chain : data.evolution_chain ? [] : [data.id]
 		};
 		this.stats = data.missingno ? data.stats : null;
-		this.abilities = data.missingno ? data.abilities : null;
+		this.abilities = data.missingno ? data.abilities : [];
 		this.gameDataCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
