@@ -45,6 +45,11 @@ module.exports = class Pokemon {
 			: path.join(__dirname, '..', '..', 'assets', 'sounds', 'pokedex', `${data.id}.wav`);
 	}
 
+	get baseStatTotal() {
+		if (!this.stats) return null;
+		return this.stats.hp + this.stats.atk + this.stats.def + this.stats.sAtk + this.stats.sDef + this.stats.spd;
+	}
+
 	get displayID() {
 		if (this.missingno) return '???';
 		return this.id.toString().padStart(3, '0');
