@@ -111,9 +111,12 @@ module.exports = class PhoneCall {
 	}
 
 	send(channel, msg, hasText, hasImage, hasEmbed) {
+		const otherChannel = channel.id === this.origin.id ? this.recipient : this.origin;
 		if (this.cooldown.has(msg.author.id) && !this.client.isOwner(msg.author)) {
-			const badChannel = channel.id === this.origin.id ? this.recipient : this.origin;
-			return badChannel.send(`☎️ ${msg.author}, slow down! You're sending messages too fast!`);
+			return otherChannel.send(`☎️ ${msg.author}, slow down! You're sending messages too fast!`);
+		}
+		if (this.client.isBlockedFromPhone(otherChannel, channel, msg.author)) {
+			return otherChannel.send(`☎️ ${msg.author}, you are blocked from sending messages to this channel!`);
 		}
 		this.setTimeout();
 		if (!this.client.isOwner(msg.author)) {
