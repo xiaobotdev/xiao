@@ -65,12 +65,12 @@ module.exports = class PokedexCommand extends Command {
 			if (!data.chain.data.length) await data.fetchChain();
 			const typesShown = data.varieties.filter(variety => variety.display);
 			const repeat = {
-				hp: Math.round((data.stats.hp / 255) * 5),
-				atk: Math.round((data.stats.atk / 255) * 5),
-				def: Math.round((data.stats.def / 255) * 5),
-				sAtk: Math.round((data.stats.sAtk / 255) * 5),
-				sDef: Math.round((data.stats.sDef / 255) * 5),
-				spd: Math.round((data.stats.spd / 255) * 5)
+				hp: Math.round((data.stats.hp / 255) * 10) * 2,
+				atk: Math.round((data.stats.atk / 255) * 10) * 2,
+				def: Math.round((data.stats.def / 255) * 10) * 2,
+				sAtk: Math.round((data.stats.sAtk / 255) * 10) * 2,
+				sDef: Math.round((data.stats.sDef / 255) * 10) * 2,
+				spd: Math.round((data.stats.spd / 255) * 10) * 2
 			};
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
