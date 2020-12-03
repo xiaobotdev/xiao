@@ -46,8 +46,8 @@ module.exports = class TypingRaceCommand extends Command {
 				time: 30000
 			});
 			this.client.games.delete(msg.channel.id);
-			if (!winner.size) return msg.reply('Oh... No one won.');
-			return msg.reply(`The winner is ${winner.first().author}! (Took ${(Date.now() - now) / 1000} seconds)`);
+			if (!winner.size) return msg.say('Oh... No one won.');
+			return msg.say(`The winner is ${winner.first().author}! (Took ${(Date.now() - now) / 1000} seconds)`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
