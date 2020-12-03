@@ -57,11 +57,11 @@ module.exports = class PhoneCommand extends Command {
 			channel = this.client.channels.cache.get(channelID);
 			const user = this.client.users.cache.get(channelID);
 			if (user) return msg.reply('You cannot call DM channels.');
-			if (!channel || !channel.guild) return msg.reply('This channel does not exist.');
+			if (!channel || !channel.guild) return msg.reply('That channel does not exist.');
 			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
-				return msg.reply('This channel does not allow phone calls.');
+				return msg.reply('That channel does not allow phone calls.');
 			}
-			if (this.client.inPhoneCall(channel)) return msg.reply('This channel is already in a call.');
+			if (this.client.inPhoneCall(channel)) return msg.reply('That channel is already in a call.');
 			if (this.client.isBlockedFromPhone(msg.channel, channel, msg.author)) {
 				return msg.reply('That channel has blocked this channel from calling them.');
 			}
