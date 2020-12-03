@@ -35,7 +35,7 @@ module.exports = class TypingRaceCommand extends Command {
 				return msg.say('Looks like they declined...');
 			}
 			const sentence = sentences[Math.floor(Math.random() * sentences.length)];
-			await msg.reply(stripIndents`
+			await msg.say(stripIndents`
 				**Type the following sentence within 30 seconds:**
 				${sentence}
 			`);
