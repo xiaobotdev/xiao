@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const { verify } = require('../../util/Util');
 const sentences = require('../../assets/json/typing-test');
 
 module.exports = class TypingRaceCommand extends Command {
