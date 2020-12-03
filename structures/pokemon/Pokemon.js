@@ -20,6 +20,14 @@ module.exports = class Pokemon {
 		this.genus = data.genera.length
 			? `The ${data.genera.filter(entry => entry.language.name === 'en')[0].genus}`
 			: 'Undiscovered Pokémon';
+		this.genderRate = {
+			male: data.gender_rate === -1 ? 0 : 100 - ((data.gender_rate / 8) * 100),
+			female: data.gender_rate === -1 ? 0 : (data.gender_rate / 8) * 100,
+			genderless: data.gender_rate === -1
+		};
+		this.legendary = data.is_legendary;
+		this.mythical = data.is_mythical;
+		this.baby = data.is_baby;
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
 				.replace(new RegExp(`${this.slug}-?`, 'i'), '')
@@ -38,6 +46,8 @@ module.exports = class Pokemon {
 		};
 		this.stats = data.missingno ? data.stats : null;
 		this.abilities = data.missingno ? data.abilities : [];
+		this.height = data.missingno ? data.height : null;
+		this.weight = data.missingno ? data.weight : null;
 		this.gameDataCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
@@ -48,6 +58,14 @@ module.exports = class Pokemon {
 	get baseStatTotal() {
 		if (!this.stats) return null;
 		return this.stats.hp + this.stats.atk + this.stats.def + this.stats.sAtk + this.stats.sDef + this.stats.spd;
+	}
+
+	get class() {
+		if (this.legendary) return 'legendary';
+		if (this.mythical) return 'mythical';
+		if (this.baby) return 'baby';
+		if (this.missingno) return 'glitch';
+		return 'standard';
 	}
 
 	get displayID() {
@@ -61,6 +79,7 @@ module.exports = class Pokemon {
 
 	get spriteImageURL() {
 		if (this.missingno) return missingno.sprite;
+		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
 		return `https://serebii.net/pokemon/art/${this.displayID}.png`;
 	}
 
@@ -102,6 +121,8 @@ module.exports = class Pokemon {
 			const { body } = await request.get(ability.ability.url);
 			this.abilities.push(body.names.find(name => name.language.name === 'en').name);
 		}
+		this.height = defaultBody.height * 3.94;
+		this.weight = defaultBody.weight * 0.2205;
 		await this.fetchChain();
 		this.gameDataCached = true;
 		return this;

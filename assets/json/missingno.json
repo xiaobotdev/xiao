@@ -56,6 +56,10 @@
 	"evolution_chain": {
 		"url": null
 	},
+	"is_legendary": false,
+	"is_mythical": false,
+	"is_baby": false,
+	"gender_rate": -1,
 	"stats": {
 		"hp": 33,
 		"atk": 136,
@@ -64,6 +68,8 @@
 		"sDef": 6,
 		"spd": 29
 	},
+	"height": 120,
+	"weight": 3507.2,
 	"abilities": ["N/A"],
 	"chain": [0],
 	"missingno": true,

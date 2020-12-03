@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { reactIfAble } = require('../../util/Util');
+const { firstUpperCase, reactIfAble } = require('../../util/Util');
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -72,6 +72,7 @@ module.exports = class PokedexCommand extends Command {
 				spd: Math.round((data.stats.spd / 255) * 10) * 2,
 				total: Math.round((data.baseStatTotal / 720) * 10) * 2
 			};
+			const feet = Math.floor(data.height / 12);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
@@ -80,6 +81,9 @@ module.exports = class PokedexCommand extends Command {
 					${data.entries[Math.floor(Math.random() * data.entries.length)]}
 				`)
 				.setThumbnail(data.spriteImageURL)
+				.addField('❯ Class', firstUpperCase(data.class), true)
+				.addField('❯ Height', `${feet}'${Math.round(data.height % 12)}"`, true)
+				.addField('❯ Weight', `${data.weight} lbs.`, true)
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
@@ -106,7 +110,9 @@ module.exports = class PokedexCommand extends Command {
 					\`-----------------------------------\`
 					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${data.baseStatTotal}**
 				`)
-				.addField('❯ Abilities', data.abilities.join(' / '));
+				.addField('❯ Abilities', data.abilities.join(' / '))
+				.addField('❯ Gender Rate',
+					data.genderRate.genderless ? 'Genderless' : `♂️ ${data.genderRate.male}% ♀️ ${data.genderRate.female}%`);
 			if (data.cry) {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				if (connection) {
