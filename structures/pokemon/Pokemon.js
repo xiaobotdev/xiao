@@ -97,7 +97,10 @@ module.exports = class Pokemon {
 		const defaultVariety = this.varieties.find(variety => variety.default);
 		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
 		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
-		defaultVariety.display = true;
+		for (const ability of defaultBody.abilities) {
+			const { body: defaultAbilityBody } = await request.get(ability.ability.url);
+			defaultVariety.abilities.push(defaultAbilityBody.names.find(name => name.language.name === 'en').name);
+		}
 		this.stats = {
 			hp: defaultBody.stats.find(stat => stat.stat.name === 'hp').base_stat,
 			atk: defaultBody.stats.find(stat => stat.stat.name === 'attack').base_stat,
