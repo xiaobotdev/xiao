@@ -20,7 +20,7 @@ module.exports = class PhoneBlockCommand extends Command {
 		});
 	}
 
-	run(msg, { query }) {
+	async run(msg, { query }) {
 		const channels = this.client.channels.cache.filter(channel => {
 			const search = query.toLowerCase();
 			return channel.guild && (channel.name.includes(search) || channel.id === search);
