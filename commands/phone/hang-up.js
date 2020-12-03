@@ -20,7 +20,8 @@ module.exports = class HangUpCommand extends Command {
 		if (call.adminCall && !this.client.isOwner(msg.author)) {
 			return msg.reply('☎️ You cannot hang up in an admin call.');
 		}
-		if (this.client.isBlockedFromPhone(origin, recipient, msg.author)) {
+		const otherChannel = call.origin.id === msg.channel.id ? call.recipient : call.origin;
+		if (this.client.isBlockedFromPhone(msg.channel, otherChannel, msg.author)) {
 			return msg.reply('☎️ You are blocked from hanging up this phone call.');
 		}
 		const nonQuitter = msg.channel.id === call.origin.id ? call.recipient : call.origin;
