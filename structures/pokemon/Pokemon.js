@@ -111,8 +111,8 @@ module.exports = class Pokemon {
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
 			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
 			for (const ability of body.abilities) {
-				const { body } = await request.get(ability.ability.url);
-				variety.abilities.push(body.names.find(name => name.language.name === 'en').name);
+				const { body: abilityBody } = await request.get(ability.ability.url);
+				variety.abilities.push(abilityBody.names.find(name => name.language.name === 'en').name);
 			}
 		}
 		this.height = defaultBody.height * 3.94;
