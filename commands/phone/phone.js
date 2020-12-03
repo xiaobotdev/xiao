@@ -47,7 +47,7 @@ module.exports = class PhoneCommand extends Command {
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
 			&& !channel.topic.includes('<xiao:phone:no-random>')
-			&& !this.client.phone.isBlockedFromPhone(msg.channel, channel, msg.author)
+			&& !this.client.isBlockedFromPhone(msg.channel, channel, msg.author)
 			&& (msg.guild ? !msg.guild.channels.cache.has(channel.id) : true)
 			&& (channelID ? true : !this.client.inPhoneCall(channel)));
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
