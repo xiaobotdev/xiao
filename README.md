@@ -86,6 +86,7 @@ don't grant that permission.
 - **Attach Files** is required to allow commands that send files to work. Too many commands to list use it.
 - **Read Message History** allows Xiao to use the `first-message` and `prune` commands.
 	* It is also required to allow Xiao to react to messages alongside "Add Reactions".
+- **Mention @everyone, @here, and All Roles** allows Xiao to use the `where-is-everybody` command.
 - **Use External Emojis** allows Xiao to use custom emoji in certain commands.
 	* While the commands benefit from it, it is not required for the commands to work.
 - **Add Reactions** allows Xiao to use commands that add reactions to messages in certain commands.
@@ -257,7 +258,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 567
+Total: 568
 
 ### Utility:
 
@@ -426,6 +427,7 @@ Total: 567
 * **rickroll:** Sends a link to the "Never Gonna Give You Up" music video.
 * **spam:** Responds with a picture of Spam.
 * **tableflip:** Flips a table... With animation!
+* **where-is-everybody:** Where is everybody?
 * **wynaut:** Why not? Wynaut?
 * **yoff:** Posts a picture that truly defines modern art.
 
@@ -1090,6 +1092,7 @@ here.
 	* drakeposting ([Original "Hotline Bling" Music Video](https://youtu.be/uxpDa-c-4Mc))
 - [DreamWorks](https://www.dreamworks.com/)
 	* shrek ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
+	* where-is-everybody ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
 - [Dust: An Elysian Tail](https://www.noogy.com/main.html)
 	* fidget (Original Game)
 - [DynamicPickaxe](http://dynamicpickaxe.com/)
