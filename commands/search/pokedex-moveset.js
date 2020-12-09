@@ -61,7 +61,7 @@ module.exports = class PokedexMovesetCommand extends Command {
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
 				.setDescription(data.moveSet.map(move => `**Level ${move.level}:** ${move.name}`).join('\n'))
 				.setThumbnail(data.spriteImageURL)
-				.setFooter(`Moveset data taken from ${versions[pokemon.moveSetVersion]}.`);
+				.setFooter(`Moveset data taken from ${versions[data.moveSetVersion]}.`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
