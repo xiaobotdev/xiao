@@ -258,7 +258,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 568
+Total: 569
 
 ### Utility:
 
@@ -503,6 +503,7 @@ Total: 568
 * **paladins:** Responds with information on a Paladins player.
 * **periodic-table:** Finds an element on the periodic table.
 * **poem:** Searches for poems by a specific author.
+* **pokedex-moveset:** Responds with the moveset for a Pokémon.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **pornhub:** Searches Pornhub for your query. (NSFW)
 * **recipe:** Searches for recipes based on your query.
@@ -1544,6 +1545,7 @@ here.
 - [Pokemon Fusion](https://pokemon.alexonsager.net/)
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
+	* pokemon-moveset (API)
 	* pokedex (API)
 	* pokemon-cry (API)
 	* whos-that-pokemon (API)
@@ -1552,6 +1554,7 @@ here.
 	* 3000-years (Image, Original Game)
 	* dexter (Image, Original Anime)
 	* hat (Ash Hat Original Anime)
+	* pokedex-moveset (Images, Original Game)
 	* pokedex (Images, Original Game)
 	* pokemon-cry (Original Game)
 	* pokemon-fusion (Original Game)
@@ -1628,6 +1631,7 @@ here.
 - [SEGA](https://www.sega.com/)
 	* sonic-says ([Image, Original "Sonic the Hedgehog" Game](https://www.sonicthehedgehog.com/))
 - [Serebii.net](https://www.serebii.net/index2.shtml)
+	* pokedex-moveset (Images)
 	* pokedex (Images)
 	* whos-that-pokemon (Images)
 	* whos-that-pokemon-cry (Images)

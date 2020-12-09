@@ -47,6 +47,7 @@ module.exports = class Pokemon {
 		this.stats = data.missingno ? data.stats : null;
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
+		this.moveSet = data.missingno ? data.moveSet : [];
 		this.gameDataCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
@@ -109,6 +110,14 @@ module.exports = class Pokemon {
 			sDef: defaultBody.stats.find(stat => stat.stat.name === 'special-defense').base_stat,
 			spd: defaultBody.stats.find(stat => stat.stat.name === 'speed').base_stat
 		};
+		for (const move of defaultBody.moves) {
+			if (!move.version_group_details.some(mve => mve.move_learn_method.name === 'level-up')) continue;
+			const { body: moveBody } = await request.get(move.url);
+			this.moveSet.push({
+				name: moveBody.names.find(name => name.language.name === 'en').name,
+				level: move.version_group_details[move.version_group_details.length - 1].level_learned_at
+			});
+		}
 		for (const variety of this.varieties) {
 			if (variety.id === defaultVariety.id) continue;
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
