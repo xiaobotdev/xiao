@@ -117,8 +117,8 @@ module.exports = class Pokemon {
 				name: moveBody.names.find(name => name.language.name === 'en').name,
 				level: move.version_group_details[move.version_group_details.length - 1].level_learned_at
 			});
-			this.moveSet = this.moveSet.sort((a, b) => a.level - b.level);
 		}
+		this.moveSet = this.moveSet.sort((a, b) => a.level - b.level);
 		for (const variety of this.varieties) {
 			if (variety.id === defaultVariety.id) continue;
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
