@@ -48,6 +48,7 @@ module.exports = class Pokemon {
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
 		this.moveSet = data.missingno ? data.moveSet : [];
+		this.moveSetVersion = data.missingno ? 'red-blue' : 'ultra-sun-ultra-moon';
 		this.gameDataCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
@@ -111,11 +112,12 @@ module.exports = class Pokemon {
 			spd: defaultBody.stats.find(stat => stat.stat.name === 'speed').base_stat
 		};
 		for (const move of defaultBody.moves) {
-			if (!move.version_group_details[move.version_group_details.length - 1].level_learned_at) continue;
+			const versionGroup = move.version_group_details.find(version => version.name === this.moveSetVersion);
+			if (!versionGroup.level_learned_at) continue;
 			const { body: moveBody } = await request.get(move.move.url);
 			this.moveSet.push({
 				name: moveBody.names.find(name => name.language.name === 'en').name,
-				level: move.version_group_details[move.version_group_details.length - 1].level_learned_at
+				level: versionGroup.level_learned_at
 			});
 		}
 		this.moveSet = this.moveSet.sort((a, b) => a.level - b.level);

@@ -1,6 +1,9 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
+const versions = {
+	'red-blue': 'Red and Blue',
+	'ultra-sun-ultra-moon': 'Ultra Sun and Ultra Moon'
+};
 
 module.exports = class PokedexMovesetCommand extends Command {
 	constructor(client) {
@@ -57,7 +60,8 @@ module.exports = class PokedexMovesetCommand extends Command {
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
 				.setDescription(data.moveSet.map(move => `**Level ${move.level}:** ${move.name}`).join('\n'))
-				.setThumbnail(data.spriteImageURL);
+				.setThumbnail(data.spriteImageURL)
+				.setFooter(`Moveset data taken from ${versions[pokemon.moveSetVersion]}.`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
