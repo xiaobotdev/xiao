@@ -112,9 +112,8 @@ module.exports = class Pokemon {
 			spd: defaultBody.stats.find(stat => stat.stat.name === 'speed').base_stat
 		};
 		for (const move of defaultBody.moves) {
-			const versionGroup = move.version_group_details
-				.find(version => version.version_group.name === this.moveSetVersion);
-			if (!versionGroup.level_learned_at) continue;
+			const versionGroup = move.version_group_details.find(mve => mve.version_group.name === this.moveSetVersion);
+			if (!versionGroup || !versionGroup.level_learned_at) continue;
 			const { body: moveBody } = await request.get(move.move.url);
 			this.moveSet.push({
 				name: moveBody.names.find(name => name.language.name === 'en').name,
