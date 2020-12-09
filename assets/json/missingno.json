@@ -72,6 +72,20 @@
 	},
 	"height": 120,
 	"weight": 3507.2,
+	"moveSet": [
+		{
+			"name": "Water Gun",
+			"level": 1
+		},
+		{
+			"name": "Water Gun",
+			"level": 1
+		},
+		{
+			"name": "Sky Attack",
+			"level": 1
+		}
+	],
 	"chain": [0],
 	"missingno": true,
 	"sprite": "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png",

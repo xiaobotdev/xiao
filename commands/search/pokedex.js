@@ -126,12 +126,17 @@ module.exports = class PokedexCommand extends Command {
 					data.genderRate.genderless ? 'Genderless' : `♂️ ${data.genderRate.male}% ♀️ ${data.genderRate.female}%`);
 			if (data.cry) {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+				const moveUsage = this.client.registry.commands.get('pokedex-moveset').usage();
 				if (connection) {
+					embed.setFooter(`Use ${moveUsage} to get the Pokémon's moveset.`);
 					connection.play(data.cry);
 					await reactIfAble(msg, this.client.user, '🔉');
 				} else {
 					const usage = this.client.registry.commands.get('join').usage();
-					embed.setFooter(`Join a voice channel and use ${usage} to hear the Pokémon's cry.`);
+					embed.setFooter(stripIndents`
+						Join a voice channel and use ${usage} to hear the Pokémon's cry.
+						Use ${moveUsage} to get the Pokémon's moveset.
+					`);
 				}
 			}
 			return msg.embed(embed);
