@@ -112,7 +112,7 @@ module.exports = class Pokemon {
 		};
 		for (const move of defaultBody.moves) {
 			if (!move.version_group_details.some(mve => mve.move_learn_method.name === 'level-up')) continue;
-			const { body: moveBody } = await request.get(move.url);
+			const { body: moveBody } = await request.get(move.move.url);
 			this.moveSet.push({
 				name: moveBody.names.find(name => name.language.name === 'en').name,
 				level: move.version_group_details[move.version_group_details.length - 1].level_learned_at
