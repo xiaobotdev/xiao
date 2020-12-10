@@ -48,7 +48,7 @@ module.exports = class Pokemon {
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
 		this.moveSet = data.missingno ? data.moveSet : [];
-		this.moveSetVersion = data.missingno ? 'red-blue' : 'ultra-sun-ultra-moon';
+		this.moveSetVersion = data.missingno ? data.moveSetVersion : null;
 		this.gameDataCached = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
@@ -111,6 +111,9 @@ module.exports = class Pokemon {
 			sDef: defaultBody.stats.find(stat => stat.stat.name === 'special-defense').base_stat,
 			spd: defaultBody.stats.find(stat => stat.stat.name === 'speed').base_stat
 		};
+		const inSwordShield = defaultBody.moves
+			.some(move => move.version_group_details.some(mve => mve.version_group.name === 'sword-shield'));
+		this.moveSetVersion = inSwordShield ? 'sword-shield' : 'ultra-sun-ultra-moon';
 		for (const move of defaultBody.moves) {
 			const versionGroup = move.version_group_details.find(mve => mve.version_group.name === this.moveSetVersion);
 			if (!versionGroup || !versionGroup.level_learned_at) continue;

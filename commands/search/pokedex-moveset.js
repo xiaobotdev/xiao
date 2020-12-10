@@ -2,7 +2,8 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const versions = {
 	'red-blue': 'Red and Blue',
-	'ultra-sun-ultra-moon': 'Ultra Sun and Ultra Moon'
+	'ultra-sun-ultra-moon': 'Ultra Sun and Ultra Moon',
+	'sword-shield': 'Sword and Shield'
 };
 
 module.exports = class PokedexMovesetCommand extends Command {
@@ -56,6 +57,7 @@ module.exports = class PokedexMovesetCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
+			if (!data.moveSet.length) return msg.say('This Pokémon\'s moves are not yet documented.');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
