@@ -207,7 +207,7 @@ module.exports = class Pokemon {
 
 	async fetchEncounters() {
 		if (!this.encountersURL) return null;
-		if (this.encounters.length) return this.encounters;
+		if (this.encounters) return this.encounters;
 		const { body } = await request.get(this.encountersURL);
 		if (!body.length) {
 			this.encounters = body;
