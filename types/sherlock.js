@@ -8,7 +8,7 @@ module.exports = class SherlockType extends ArgumentType {
 
 	validate(value) {
 		const time = sherlock.parse(value);
-		if (!time.startDate) return `Please provide a valid starting time.`;
+		if (!time.startDate) return 'Please provide a valid starting time.';
 		return true;
 	}
 
