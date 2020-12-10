@@ -213,6 +213,7 @@ module.exports = class Pokemon {
 			this.encounters = body;
 			return body;
 		}
+		this.encounters = [];
 		for (const encounter of body) {
 			if (!encounter.version_details.some(version => versions[version.version.name])) continue;
 			const { body: encounterBody } = await request.get(encounter.location_area.url);
