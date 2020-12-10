@@ -65,11 +65,20 @@ module.exports = class Pokemon {
 		return this.stats.hp + this.stats.atk + this.stats.def + this.stats.sAtk + this.stats.sDef + this.stats.spd;
 	}
 
+	get pseudo() {
+		if (!this.stats) return null;
+		if (this.legendary || this.mythical || this.baby || this.missingno) return false;
+		if (this.baseStatTotal !== 600) return false;
+		if (this.chain.length !== 3) return false;
+		return true;
+	}
+
 	get class() {
 		if (this.legendary) return 'legendary';
 		if (this.mythical) return 'mythical';
 		if (this.baby) return 'baby';
 		if (this.missingno) return 'glitch';
+		if (this.pseudo) return 'pseudo';
 		return 'standard';
 	}
 
