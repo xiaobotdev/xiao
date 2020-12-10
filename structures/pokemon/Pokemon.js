@@ -66,7 +66,7 @@ module.exports = class Pokemon {
 	}
 
 	get pseudo() {
-		if (!this.stats) return null;
+		if (!this.gameDataCached) return null;
 		if (this.legendary || this.mythical || this.baby || this.missingno) return false;
 		if (this.baseStatTotal !== 600) return false;
 		if (this.chain.data.length !== 3) return false;
