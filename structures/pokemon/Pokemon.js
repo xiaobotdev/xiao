@@ -28,7 +28,7 @@ module.exports = class Pokemon {
 		this.legendary = data.is_legendary;
 		this.mythical = data.is_mythical;
 		this.baby = data.is_baby;
-		this.heldItems = data.missingno ? data.heldItems : [];
+		this.heldItems = data.missingno ? data.held_items : [];
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
 				.replace(new RegExp(`${this.slug}-?`, 'i'), '')
