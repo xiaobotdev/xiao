@@ -2,6 +2,7 @@ const request = require('node-superfetch');
 const path = require('path');
 const { removeDuplicates, firstUpperCase } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
+const versions = require('../../assets/json/pokedex-location');
 
 module.exports = class Pokemon {
 	constructor(store, data) {
@@ -45,6 +46,8 @@ module.exports = class Pokemon {
 			url: data.evolution_chain ? data.evolution_chain.url : null,
 			data: data.missingno ? missingno.chain : data.evolution_chain ? [] : [data.id]
 		};
+		this.encountersURL = null;
+		this.encounters = data.missingno ? data.encounters : null;
 		this.stats = data.missingno ? data.stats : null;
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
@@ -138,29 +141,30 @@ module.exports = class Pokemon {
 		this.weight = defaultBody.weight * 0.2205;
 		this.heldItems = defaultBody.held_items
 			.filter(item => item.version_details.some(version => {
-				const inSwordShield = version.version.name === 'sword' || version.version.name === 'shield';
-				if (inSwordShield) return true;
-				if (!inSwordShield && (version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon')) {
+				const inSwordShield2 = version.version.name === 'sword' || version.version.name === 'shield';
+				if (inSwordShield2) return true;
+				if (!inSwordShield2 && (version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon')) {
 					return true;
 				}
 				return false;
 			}))
 			.map(item => {
-				const inSwordShield = item.version_details
+				const inSwordShield2 = item.version_details
 					.some(version => version.version.name === 'sword' || version.version.name === 'shield');
-				const rarity = item.version_details
+				const { rarity } = item.version_details
 					.find(version => {
-						if (inSwordShield) return true;
+						if (inSwordShield2) return true;
 						const sunMoon = version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon';
-						if (!inSwordShield && sunMoon) return true;
+						if (!inSwordShield2 && sunMoon) return true;
 						return false;
-					}).rarity;
+					});
 				return {
 					url: item.item.url,
 					name: null,
 					rarity
 				};
 			});
+		this.encountersURL = defaultBody.location_area_encounters;
 		await this.fetchHeldItemNames();
 		await this.fetchChain();
 		this.gameDataCached = true;
@@ -199,5 +203,27 @@ module.exports = class Pokemon {
 			item.name = body.names.find(name => name.language.name === 'en').name;
 		}
 		return this.heldItems;
+	}
+
+	async fetchEncounters() {
+		if (!this.encountersURL) return null;
+		if (this.encounters.length) return this.encounters;
+		const { body } = await request.get(this.encountersURL);
+		if (!body.length) {
+			this.encounters = body;
+			return body;
+		}
+		for (const encounter of body) {
+			if (!encounter.version_details.some(version => versions[version.version.name])) continue;
+			const { body: encounterBody } = await request.get(encounter.location_area.url);
+			const { body: locationBody } = await request.get(encounterBody.location.url);
+			this.encounters.push({
+				name: locationBody.names.find(name => name.language.name === 'en').name,
+				versions: encounter.version_details
+					.filter(version => versions[version.version.name])
+					.map(version => version.version.name)
+			});
+		}
+		return this.encounters;
 	}
 };

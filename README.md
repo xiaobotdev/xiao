@@ -503,6 +503,7 @@ Total: 569
 * **paladins:** Responds with information on a Paladins player.
 * **periodic-table:** Finds an element on the periodic table.
 * **poem:** Searches for poems by a specific author.
+* **pokedex-location:** Responds with the location data for a Pokémon.
 * **pokedex-moveset:** Responds with the moveset for a Pokémon.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 * **pornhub:** Searches Pornhub for your query. (NSFW)
@@ -1545,7 +1546,8 @@ here.
 - [Pokemon Fusion](https://pokemon.alexonsager.net/)
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
-	* pokemon-moveset (API)
+	* pokedex-location (API)
+	* pokedex-moveset (API)
 	* pokedex (API)
 	* pokemon-cry (API)
 	* whos-that-pokemon (API)
@@ -1554,6 +1556,7 @@ here.
 	* 3000-years (Image, Original Game)
 	* dexter (Image, Original Anime)
 	* hat (Ash Hat Original Anime)
+	* pokedex-location (Images, Original Game)
 	* pokedex-moveset (Images, Original Game)
 	* pokedex (Images, Original Game)
 	* pokemon-cry (Original Game)
@@ -1631,6 +1634,7 @@ here.
 - [SEGA](https://www.sega.com/)
 	* sonic-says ([Image, Original "Sonic the Hedgehog" Game](https://www.sonicthehedgehog.com/))
 - [Serebii.net](https://www.serebii.net/index2.shtml)
+	* pokedex-location (Images)
 	* pokedex-moveset (Images)
 	* pokedex (Images)
 	* whos-that-pokemon (Images)
