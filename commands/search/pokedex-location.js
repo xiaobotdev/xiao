@@ -58,7 +58,7 @@ module.exports = class PokedexLocationCommand extends Command {
 				? data.encounters
 					.map(location => `${location.name} (${location.versions.map(v => versions[v]).join('/')})`)
 					.join('\n')
-				: 'Location Unknown'
+				: 'Location Unknown';
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
