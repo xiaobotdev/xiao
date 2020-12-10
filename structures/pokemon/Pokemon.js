@@ -161,7 +161,7 @@ module.exports = class Pokemon {
 					rarity
 				};
 			});
-		await this.fetchHeldItemNames(defaultBody);
+		await this.fetchHeldItemNames();
 		await this.fetchChain();
 		this.gameDataCached = true;
 		return this;
