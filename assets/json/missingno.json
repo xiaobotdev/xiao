@@ -31,6 +31,7 @@
 			"genus": "??? Pokémon"
 		}
 	],
+	"held_items": [],
 	"varieties": [
 		{
 			"is_default": true,
