@@ -122,7 +122,8 @@ module.exports = class PokedexCommand extends Command {
 					const showParens = variety.name && abilitiesShown.length > 1;
 					return `${variety.abilities.join('/')}${showParens ? ` (${variety.name})` : ''}`;
 				}).join('\n'))
-				.addField('❯ Held Items', data.heldItems.length ? data.heldItems.map(item => item.name).join('/') : 'None')
+				.addField('❯ Held Items',
+					data.heldItems.length ? data.heldItems.map(item => `${item.name} (${item.rarity}%)`).join('\n') : 'None')
 				.addField('❯ Gender Rate',
 					data.genderRate.genderless ? 'Genderless' : `♂️ ${data.genderRate.male}% ♀️ ${data.genderRate.female}%`);
 			if (data.cry) {

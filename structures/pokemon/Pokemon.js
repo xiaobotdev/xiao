@@ -145,7 +145,7 @@ module.exports = class Pokemon {
 				}
 				return false;
 			}))
-			.map(item => ({ url: item.item.url, name: null }));
+			.map(item => ({ url: item.item.url, name: null, rarity: item.rarity }));
 		await this.fetchHeldItemNames(defaultBody);
 		await this.fetchChain();
 		this.gameDataCached = true;
