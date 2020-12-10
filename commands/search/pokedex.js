@@ -122,6 +122,7 @@ module.exports = class PokedexCommand extends Command {
 					const showParens = variety.name && abilitiesShown.length > 1;
 					return `${variety.abilities.join('/')}${showParens ? ` (${variety.name})` : ''}`;
 				}).join('\n'))
+				.addField('❯ Held Items', data.heldItems.length ? data.heldItems.map(item => item.name).join('/') : 'None')
 				.addField('❯ Gender Rate',
 					data.genderRate.genderless ? 'Genderless' : `♂️ ${data.genderRate.male}% ♀️ ${data.genderRate.female}%`);
 			if (data.cry) {
@@ -134,8 +135,8 @@ module.exports = class PokedexCommand extends Command {
 				} else {
 					const usage = this.client.registry.commands.get('join').usage();
 					embed.setFooter(stripIndents`
-						Join a voice channel and use ${usage} to hear the Pokémon's cry.
 						Use ${moveUsage} to get the Pokémon's moveset.
+						Join a voice channel and use ${usage} to hear the Pokémon's cry.
 					`);
 				}
 			}

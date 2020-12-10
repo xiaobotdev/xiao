@@ -28,6 +28,16 @@ module.exports = class Pokemon {
 		this.legendary = data.is_legendary;
 		this.mythical = data.is_mythical;
 		this.baby = data.is_baby;
+		this.heldItems = data.held_items
+			.filter(item => item.version_details.some(version => {
+				const inSwordShield = version.version.name === 'sword' || version.version.name === 'shield';
+				if (inSwordShield) return true;
+				if (!inSwordShield && (version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon')) {
+					return true;
+				}
+				return false;
+			}))
+			.map(item => ({ url: item.item.url, name: null }));
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
 				.replace(new RegExp(`${this.slug}-?`, 'i'), '')
@@ -135,6 +145,7 @@ module.exports = class Pokemon {
 		}
 		this.height = defaultBody.height * 3.94;
 		this.weight = defaultBody.weight * 0.2205;
+		await this.fetchHeldItemNames();
 		await this.fetchChain();
 		this.gameDataCached = true;
 		return this;
@@ -164,5 +175,13 @@ module.exports = class Pokemon {
 			if (evos2.length) this.chain.data.push(evos2.length === 1 ? evos2[0] : evos2);
 		}
 		return this.chain.data;
+	}
+
+	async fetchHeldItemNames() {
+		for (const item of this.heldItems) {
+			const { body } = await request.get(item.url);
+			item.name = body.names.find(name => name.language.name === 'en').name;
+		}
+		return this.heldItems;
 	}
 };
