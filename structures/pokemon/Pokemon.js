@@ -145,7 +145,22 @@ module.exports = class Pokemon {
 				}
 				return false;
 			}))
-			.map(item => ({ url: item.item.url, name: null, rarity: item.rarity }));
+			.map(item => {
+				const inSwordShield = item.version_details
+					.some(version => version.version.name === 'sword' || version.version.name === 'shield');
+				const rarity = item.version_details
+					.find(version => {
+						if (inSwordShield) return true;
+						const sunMoon = version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon';
+						if (!inSwordShield && sunMoon) return true;
+						return false;
+					}).rarity;
+				return {
+					url: item.item.url,
+					name: null,
+					rarity
+				};
+			});
 		await this.fetchHeldItemNames(defaultBody);
 		await this.fetchChain();
 		this.gameDataCached = true;
