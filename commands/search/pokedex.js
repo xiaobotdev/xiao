@@ -80,7 +80,7 @@ module.exports = class PokedexCommand extends Command {
 				spd: Math.round((data.stats.spd / 255) * 10) * 2,
 				total: Math.round((data.baseStatTotal / 720) * 10) * 2
 			};
-			const feet = Math.round(data.height / 12);
+			const feet = Math.floor(data.height / 12);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
@@ -90,7 +90,7 @@ module.exports = class PokedexCommand extends Command {
 				`)
 				.setThumbnail(data.spriteImageURL)
 				.addField('❯ Class', firstUpperCase(data.class), true)
-				.addField('❯ Height', `${feet}'${Math.round(data.height) % 12}"`, true)
+				.addField('❯ Height', `${feet}'${Math.floor(data.height) - (feet * 12)}"`, true)
 				.addField('❯ Weight', `${data.weight} lbs.`, true)
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
