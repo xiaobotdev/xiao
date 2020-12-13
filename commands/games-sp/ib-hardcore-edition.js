@@ -3,7 +3,7 @@ const Command = require('../../structures/Command');
 module.exports = class IbHardcoreEditionCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'ib-hardcore-editon',
+			name: 'ib-hardcore-edition',
 			aliases: ['ib-hardcore', 'ib'],
 			group: 'games-sp',
 			memberName: 'ib-hardcore-edition',

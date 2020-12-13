@@ -572,7 +572,7 @@ Total: 570
 * **horse-info:** Responds with detailed information on a horse.
 * **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
-* **ib-hardcore-editon:** Responds with the download link for Ib: Hardcore Edition.
+* **ib-hardcore-edition:** Responds with the download link for Ib: Hardcore Edition.
 * **jeopardy:** Answer a Jeopardy question.
 * **lottery:** Attempt to win the lottery with 6 numbers.
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
