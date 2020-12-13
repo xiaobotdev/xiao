@@ -48,12 +48,12 @@ module.exports = class TypingRaceCommand extends Command {
 			const newScore = Date.now() - now;
 			const highScoreGet = await this.client.redis.get('typing-test');
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-			if (!highScore || highScore < newScore) await this.client.redis.set('typing-test', newScore);
+			if (!highScore || highScore > newScore) await this.client.redis.set('typing-test', newScore);
 			this.client.games.delete(msg.channel.id);
 			if (!winner.size) return msg.say('Oh... No one won.');
 			return msg.say(stripIndents`
 				The winner is ${winner.first().author}! (Took ${newScore / 1000} seconds)
-				${!highScore || highScore < newScore ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}
+				${!highScore || highScore > newScore ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);

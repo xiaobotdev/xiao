@@ -32,12 +32,12 @@ module.exports = class ReactionTimeCommand extends Command {
 			const newScore = Date.now() - now;
 			const highScoreGet = await this.client.redis.get('reaction-time');
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-			if (!highScore || highScore < newScore) await this.client.redis.set('reaction-time', newScore);
+			if (!highScore || highScore > newScore) await this.client.redis.set('reaction-time', newScore);
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.say('Failed to answer within 30 seconds.');
 			return msg.say(stripIndents`
 				Nice one! (Took ${newScore / 1000} seconds)
-				${!highScore || highScore < newScore ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}
+				${!highScore || highScore > newScore ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
