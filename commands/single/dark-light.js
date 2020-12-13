@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const path = require('path');
 const { list } = require('../../util/Util');
-const types = ['default', 'moth', 'jojo'];
+const types = ['default', 'moth', 'jojo', 'spoiler'];
 
 module.exports = class DarkLightCommand extends Command {
 	constructor(client) {
