@@ -49,6 +49,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Text Manipulation](#text-manipulation)
 	* [Number Manipulation](#number-manipulation)
 	* [Play Audio](#play-audio)
+	* [Reminders](#reminders)
 	* [Phone](#phone)
 	* [Coding Tools](#coding-tools)
 	* [Other](#other)
@@ -99,7 +100,7 @@ don't grant that permission.
 ## Fun Information
 
 - 500+ commands
-- 30,000+ lines of JavaScript
+- 31,000+ lines of JavaScript
 - 63,000+ lines of JSON data
 - 3 years of development
 
@@ -258,7 +259,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 569
+Total: 570
 
 ### Utility:
 
@@ -571,7 +572,7 @@ Total: 569
 * **horse-info:** Responds with detailed information on a horse.
 * **horse-race:** Bet on the fastest horse in a 6-horse race.
 * **hunger-games:** Simulate a Hunger Games match with up to 24 tributes.
-* **ib-hardcore-edition:** Responds with the download link for Ib: Hardcore Edition.
+* **ib-hardcore-editon:** Responds with the download link for Ib: Hardcore Edition.
 * **jeopardy:** Answer a Jeopardy question.
 * **lottery:** Attempt to win the lottery with 6 numbers.
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
@@ -1546,9 +1547,9 @@ here.
 - [Pokemon Fusion](https://pokemon.alexonsager.net/)
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
+	* pokedex (API)
 	* pokedex-location (API)
 	* pokedex-moveset (API)
-	* pokedex (API)
 	* pokemon-cry (API)
 	* whos-that-pokemon (API)
 	* whos-that-pokemon-cry (API)
@@ -1556,9 +1557,9 @@ here.
 	* 3000-years (Image, Original Game)
 	* dexter (Image, Original Anime)
 	* hat (Ash Hat Original Anime)
+	* pokedex (Images, Original Game)
 	* pokedex-location (Images, Original Game)
 	* pokedex-moveset (Images, Original Game)
-	* pokedex (Images, Original Game)
 	* pokemon-cry (Original Game)
 	* pokemon-fusion (Original Game)
 	* whos-that-pokemon (Images, Original Game)
@@ -1634,9 +1635,9 @@ here.
 - [SEGA](https://www.sega.com/)
 	* sonic-says ([Image, Original "Sonic the Hedgehog" Game](https://www.sonicthehedgehog.com/))
 - [Serebii.net](https://www.serebii.net/index2.shtml)
+	* pokedex (Images)
 	* pokedex-location (Images)
 	* pokedex-moveset (Images)
-	* pokedex (Images)
 	* whos-that-pokemon (Images)
 	* whos-that-pokemon-cry (Images)
 - [ShareFonts.net](https://www.wfonts.com/)
