@@ -66,10 +66,26 @@ module.exports = class AnagramicaCommand extends Command {
 			const msgs = await msg.channel.awaitMessages(filter, {
 				time: time * 1000
 			});
+			const highScoreGet = await this.client.redis.get('anagramica');
+			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
+			if (!highScore || highScore < points) await this.client.redis.set('anagramica', points);
 			this.client.games.delete(msg.channel.id);
-			if (!msgs.size) return msg.reply('Couldn\'t even think of one? Ouch.');
-			if (points < 1) return msg.reply(`Ouch, your final score was **${points}**. Try harder next time!`);
-			return msg.reply(`Nice job! Your final score was **${points}**!`);
+			if (!msgs.size) {
+				return msg.reply(stripIndents`
+					Couldn't even think of one? Ouch.
+					${!highScore || highScore < points ? `**New High Score!** Old:` : `High Score:`} ${highScore}
+				`);
+			}
+			if (points < 1) {
+				return msg.reply(stripIndents`
+					Ouch, your final score was **${points}**. Try harder next time!
+					${!highScore || highScore < points ? `**New High Score!** Old:` : `High Score:`} ${highScore}
+				`);
+			}
+			return msg.reply(stripIndents`
+				Nice job! Your final score was **${points}**!
+				${!highScore || highScore < points ? `**New High Score!** Old:` : `High Score:`} ${highScore}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

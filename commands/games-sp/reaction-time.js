@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 const { delay, randomRange } = require('../../util/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull', 'boom'];
 
@@ -28,9 +29,16 @@ module.exports = class ReactionTimeCommand extends Command {
 				max: 1,
 				time: 30000
 			});
+			const newScore = Date.now() - now;
+			const highScoreGet = await this.client.redis.get('reaction-time');
+			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
+			if (!highScore || highScore < newScore) await this.client.redis.set('reaction-time', newScore);
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.say('Failed to answer within 30 seconds.');
-			return msg.say(`Nice one! (Took ${(Date.now() - now) / 1000} seconds)`);
+			return msg.say(stripIndents`
+				Nice one! (Took ${newScore / 1000} seconds)
+				${!highScore || highScore < newScore ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
