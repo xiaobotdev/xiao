@@ -1389,7 +1389,6 @@ here.
 	* give-flower ([Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
 	* xiao ([Images, Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
 - [mathjs](https://mathjs.org/)
-	* math (Expression Parser)
 	* units (Expression Parser)
 - [Mattel](https://www.mattel.com/en-us)
 	* 8-ball ([Original Concept](https://www.mattelgames.com/games/en-us/kids/magic-8-ball))
