@@ -20,7 +20,7 @@ module.exports = class MathCommand extends Command {
 	}
 
 	run(msg, { expression }) {
-		try {	
+		try {
 			const evaluated = Parser.evaluate(expression).toString();
 			return msg.reply(evaluated).catch(() => msg.reply('Invalid expression.'));
 		} catch {
