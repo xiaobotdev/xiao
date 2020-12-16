@@ -259,7 +259,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 570
+Total: 571
 
 ### Utility:
 
@@ -284,6 +284,7 @@ Total: 570
 * **eval:** Executes JavaScript code. (Owner-Only)
 * **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
 * **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
+* **dependency-update:** Checks for dependency updates. (Owner-Only)
 * **exec:** Executes a command-line application. (Owner-Only)
 * **generate-commands:** Generates the commands list for Xiao's README. (Owner-Only)
 * **generate-credit:** Generates the credit list for Xiao's README. (Owner-Only)
@@ -1468,6 +1469,7 @@ here.
 - [NotAWeebDev](https://github.com/NotAWeebDev/)
 	* triggered ([Image](https://github.com/NotAWeebDev/Misaki/blob/2e44f9efb467028dcbae5a2c9f836d2e99860b85/assets/images/plate_triggered.png))
 - [npm](https://www.npmjs.com/)
+	* dependency-update (API)
 	* npm (API)
 - [Numbers API](http://numbersapi.com/)
 	* number-fact (Trivia API)
