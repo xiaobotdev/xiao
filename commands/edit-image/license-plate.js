@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
-const { wrapText } = require('../../util/Canvas');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'LicensePlate.ttf'), { family: 'License Plate' });
 
 module.exports = class LicensePlateCommand extends Command {
