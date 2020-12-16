@@ -28,17 +28,17 @@ module.exports = class DependencyUpdateCommand extends Command {
 	async run(msg) {
 		const needUpdate = [];
 		for (const [dep, ver] of Object.entries(dependencies)) {
-			const update = this.parseUpdate(dep, ver);
+			const update = await this.parseUpdate(dep, ver);
 			if (!update) continue;
 			needUpdate.push(update);
 		}
 		for (const [dep, ver] of Object.entries(devDependencies)) {
-			const update = this.parseUpdate(dep, ver);
+			const update = await this.parseUpdate(dep, ver);
 			if (!update) continue;
 			needUpdate.push(update);
 		}
 		for (const [dep, ver] of Object.entries(optionalDependencies)) {
-			const update = this.parseUpdate(dep, ver);
+			const update = await this.parseUpdate(dep, ver);
 			if (!update) continue;
 			needUpdate.push(update);
 		}
