@@ -259,7 +259,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 571
+Total: 572
 
 ### Utility:
 
@@ -661,6 +661,7 @@ Total: 571
 * **invert:** Draws an image or a user's avatar but inverted.
 * **jeopardy-question:** Sends a Jeopardy Question with the text of your choice.
 * **lego-icon:** Edits an image or avatar onto a character icon from LEGO Star Wars.
+* **license-plate:** Creates a license plate with the text of your choice.
 * **liquid-rescale:** Draws an image or a user's avatar but with liquid rescale from ImageMagick.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
@@ -1062,6 +1063,8 @@ here.
 	* danbooru (API)
 - [Dance Dance Revolution](https://www.ddrgame.com/)
 	* emoji-emoji-revolution (Concept)
+- [Dave Hansen](https://www.fontspace.com/dave-hansen)
+	* license-plate ([License Plate Font](https://www.fontspace.com/license-plate-font-f3359))
 - [Deathbulge](http://deathbulge.com/comics)
 	* ultimate-tattoo ([Image](http://deathbulge.com/comics/114))
 - [Demirramon](https://www.demirramon.com/)
@@ -1533,6 +1536,8 @@ here.
 - [Perspective API](https://www.perspectiveapi.com/#/)
 	* severe-toxicity (API)
 	* toxicity (API)
+- [Pin Clipart](https://www.pinclipart.com/)
+	* license-plate ([Image](https://www.pinclipart.com/maxpin/bJxii/))
 - [Platinum Designz](http://store.platinumdesignz.com/)
 	* glass-shatter ([Image](https://www.jing.fm/iclipt/u2q8u2a9o0t4i1q8/))
 - [Playstation Trophies](https://www.playstationtrophies.org/)
