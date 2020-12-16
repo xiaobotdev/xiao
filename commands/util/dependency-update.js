@@ -28,7 +28,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 	async run(msg) {
 		const needUpdate = [];
 		for (const [dep, ver] of Object.entries(dependencies)) {
-			const latest = this.fetchVersion(dep);
+			const latest = await this.fetchVersion(dep);
 			const clean = semver.clean(ver);
 			if (latest === clean) continue;
 			needUpdate.push({
@@ -39,7 +39,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 			});
 		}
 		for (const [dep, ver] of Object.entries(devDependencies)) {
-			const latest = this.fetchVersion(dep);
+			const latest = await this.fetchVersion(dep);
 			const clean = semver.clean(ver);
 			if (latest === clean) continue;
 			needUpdate.push({
