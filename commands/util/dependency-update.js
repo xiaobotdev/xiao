@@ -35,7 +35,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 				name: dep,
 				oldVer: clean,
 				newVer: latest,
-				breaking: !semver.satisfies(ver, latest)
+				breaking: !semver.satisfies(latest, ver)
 			});
 		}
 		for (const [dep, ver] of Object.entries(devDependencies)) {
@@ -46,7 +46,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 				name: dep,
 				oldVer: clean,
 				newVer: latest,
-				breaking: !semver.satisfies(ver, latest)
+				breaking: !semver.satisfies(latest, ver)
 			});
 		}
 		if (!needUpdate.length) return msg.say('All packages are up to date.');
