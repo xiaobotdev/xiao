@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const semver = require('semver');
 const { stripIndents } = require('common-tags');
-const { dependencies, devDependencies } = require('../../package');
+const { dependencies, devDependencies, optionalDependencies } = require('../../package');
 
 module.exports = class DependencyUpdateCommand extends Command {
 	constructor(client) {
@@ -28,26 +28,19 @@ module.exports = class DependencyUpdateCommand extends Command {
 	async run(msg) {
 		const needUpdate = [];
 		for (const [dep, ver] of Object.entries(dependencies)) {
-			const latest = await this.fetchVersion(dep);
-			const clean = ver.replace(/^(\^|<=?|>=?|=|~)/, '');
-			if (latest === clean) continue;
-			needUpdate.push({
-				name: dep,
-				oldVer: clean,
-				newVer: latest,
-				breaking: !semver.satisfies(latest, ver)
-			});
+			const update = this.parseUpdate(dep, ver);
+			if (!update) continue;
+			needUpdate.push(update);
 		}
 		for (const [dep, ver] of Object.entries(devDependencies)) {
-			const latest = await this.fetchVersion(dep);
-			const clean = ver.replace(/^(\^|<=?|>=?|=|~)/, '');
-			if (latest === clean) continue;
-			needUpdate.push({
-				name: dep,
-				oldVer: clean,
-				newVer: latest,
-				breaking: !semver.satisfies(latest, ver)
-			});
+			const update = this.parseUpdate(dep, ver);
+			if (!update) continue;
+			needUpdate.push(update);
+		}
+		for (const [dep, ver] of Object.entries(optionalDependencies)) {
+			const update = this.parseUpdate(dep, ver);
+			if (!update) continue;
+			needUpdate.push(update);
 		}
 		if (!needUpdate.length) return msg.say('All packages are up to date.');
 		const updatesList = needUpdate.map(pkg => {
@@ -64,5 +57,18 @@ module.exports = class DependencyUpdateCommand extends Command {
 		const { body } = await request.get(`https://registry.npmjs.com/${dependency}`);
 		if (body.time.unpublished) return null;
 		return body['dist-tags'].latest;
+	}
+
+	async parseUpdate(dep, ver) {
+		if (ver.startsWith('github:')) return null;
+		const latest = await this.fetchVersion(dep);
+		const clean = ver.replace(/^(\^|<=?|>=?|=|~)/, '');
+		if (latest === clean) return null;
+		return {
+			name: dep,
+			oldVer: clean,
+			newVer: latest,
+			breaking: !semver.satisfies(latest, ver)
+		};
 	}
 };
