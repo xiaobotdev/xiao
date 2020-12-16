@@ -29,24 +29,24 @@ module.exports = class DependencyUpdateCommand extends Command {
 		const needUpdate = [];
 		for (const [dep, ver] of Object.entries(dependencies)) {
 			const latest = await this.fetchVersion(dep);
-			const clean = semver.clean(ver);
+			const clean = ver.replace(/^(\^|<=?|>=?|=|~)/, '');
 			if (latest === clean) continue;
 			needUpdate.push({
 				name: dep,
 				oldVer: clean,
 				newVer: latest,
-				breaking: !semver.satisfies(clean, latest)
+				breaking: !semver.satisfies(ver, latest)
 			});
 		}
 		for (const [dep, ver] of Object.entries(devDependencies)) {
 			const latest = await this.fetchVersion(dep);
-			const clean = semver.clean(ver);
+			const clean = ver.replace(/^(\^|<=?|>=?|=|~)/, '');
 			if (latest === clean) continue;
 			needUpdate.push({
 				name: dep,
 				oldVer: clean,
 				newVer: latest,
-				breaking: !semver.satisfies(clean, latest)
+				breaking: !semver.satisfies(ver, latest)
 			});
 		}
 		if (!needUpdate.length) return msg.say('All packages are up to date.');
@@ -63,6 +63,6 @@ module.exports = class DependencyUpdateCommand extends Command {
 	async fetchVersion(dependency) {
 		const { body } = await request.get(`https://registry.npmjs.com/${dependency}`);
 		if (body.time.unpublished) return null;
-		return body.versions[body['dist-tags'].latest];
+		return body['dist-tags'].latest;
 	}
 };
