@@ -93,7 +93,7 @@ module.exports = class PokedexCommand extends Command {
 				.addField('❯ Class', firstUpperCase(data.class), true)
 				.addField('❯ Height', `${feet}'${Math.floor(data.height) - (feet * 12)}"`, true)
 				.addField('❯ Weight', `${data.weight} lbs.`, true)
-				.addField(`❯ ${this.megaEvolveEmoji}?`, data.mega ? 'Yes' : 'No', true)
+				.addField(`❯ ${this.megaEvolveEmoji} Mega?`, data.mega ? 'Yes' : 'No', true)
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
@@ -152,6 +152,6 @@ module.exports = class PokedexCommand extends Command {
 	get megaEvolveEmoji() {
 		return MEGA_EVOLVE_EMOJI_ID && MEGA_EVOLVE_EMOJI_NAME
 			? `<:${MEGA_EVOLVE_EMOJI_NAME}:${MEGA_EVOLVE_EMOJI_ID}>`
-			: 'Mega Evolve';
+			: '';
 	}
 };
