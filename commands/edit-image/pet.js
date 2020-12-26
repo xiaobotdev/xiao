@@ -42,6 +42,7 @@ module.exports = class PetCommand extends Command {
 			encoder.setRepeat(0);
 			encoder.setDelay(20);
 			encoder.setQuality(200);
+			encoder.setTransparent('#000000');
 			for (let i = 0; i < frameCount; i++) {
 				const frameID = `frame_${i.toString().padStart(2, '0')}.png`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'pet', frameID));
