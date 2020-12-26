@@ -93,11 +93,11 @@ module.exports = class PokedexCommand extends Command {
 				.addField('❯ Class', firstUpperCase(data.class), true)
 				.addField('❯ Height', `${feet}'${Math.floor(data.height) - (feet * 12)}"`, true)
 				.addField('❯ Weight', `${data.weight} lbs.`, true)
+				.addField(`❯ ${this.megaEvolveEmoji}?`, data.mega ? 'Yes' : 'No', true)
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
-				}).join('\n'))
-				.addField(`❯ ${this.megaEvolveEmoji}?`, data.mega ? 'Yes' : 'No', true)
+				}).join('\n'), true)
 				.addField('❯ Evolution Chain', data.chain.data.map(pkmn => {
 					if (Array.isArray(pkmn)) {
 						return pkmn.map(pkmn2 => {
