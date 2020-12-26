@@ -85,7 +85,7 @@ module.exports = class Pokemon {
 
 	get mega() {
 		if (!this.gameDataCached) return null;
-		return this.varieties.filter(variety => variety.mega);
+		return this.varieties.some(variety => variety.mega);
 	}
 
 	get displayID() {
