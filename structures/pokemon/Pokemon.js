@@ -37,6 +37,7 @@ module.exports = class Pokemon {
 			return {
 				id: variety.pokemon.name,
 				name: name || null,
+				mega: data.missingno ? false : null,
 				default: variety.is_default,
 				types: data.missingno ? variety.types : [],
 				abilities: data.missingno ? variety.abilities : []
@@ -80,6 +81,11 @@ module.exports = class Pokemon {
 		if (this.missingno) return 'glitch';
 		if (this.pseudo) return 'pseudo';
 		return 'standard';
+	}
+
+	get mega() {
+		if (!this.gameDataCached) return null;
+		return this.varieties.filter(variety => variety.mega);
 	}
 
 	get displayID() {
@@ -140,7 +146,9 @@ module.exports = class Pokemon {
 		for (const variety of this.varieties) {
 			if (variety.id === defaultVariety.id) continue;
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
+			const { body: formBody } = await request.get(`https://pokeapi.co/api/v2/pokemon-form/${variety.id}`);
 			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
+			variety.mega = formBody.is_mega || false;
 			for (const ability of body.abilities) {
 				const { body: abilityBody } = await request.get(ability.ability.url);
 				variety.abilities.push(abilityBody.names.find(name => name.language.name === 'en').name);

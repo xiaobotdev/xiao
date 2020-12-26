@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { arrayEquals, firstUpperCase, reactIfAble } = require('../../util/Util');
+const { MEGA_EVOLVE_EMOJI_NAME, MEGA_EVOLVE_EMOJI_ID } = process.env;
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -96,6 +97,7 @@ module.exports = class PokedexCommand extends Command {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
 				}).join('\n'))
+				.addField(`> ${this.megaEvolveEmoji}?`, data.mega ? 'Yes' : 'No', true)
 				.addField('❯ Evolution Chain', data.chain.data.map(pkmn => {
 					if (Array.isArray(pkmn)) {
 						return pkmn.map(pkmn2 => {
@@ -145,5 +147,11 @@ module.exports = class PokedexCommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	get megaEvolveEmoji() {
+		return MEGA_EVOLVE_EMOJI_ID && MEGA_EVOLVE_EMOJI_NAME
+			? `<:${MEGA_EVOLVE_EMOJI_NAME}:${MEGA_EVOLVE_EMOJI_ID}>`
+			: 'Mega Evolve';
 	}
 };
