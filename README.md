@@ -259,7 +259,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 572
+Total: 573
 
 ### Utility:
 
@@ -669,6 +669,7 @@ Total: 572
 * **newspaper:** Creates a fake newspaper with the headline and body of your choice.
 * **noise:** Draws an image or a user's avatar but with noise.
 * **oil-painting:** Draws an image or a user's avatar but with oil paints.
+* **pet:** Pets an image or a user's avatar.
 * **pixelize:** Draws an image or a user's avatar pixelized.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
 * **police-tape:** Draws police tape over an image or a user's avatar.
