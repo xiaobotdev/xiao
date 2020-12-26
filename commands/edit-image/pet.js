@@ -43,7 +43,7 @@ module.exports = class PetCommand extends Command {
 			encoder.setDelay(200);
 			encoder.setQuality(200);
 			for (let i = 0; i < frameCount; i++) {
-				const frameID = `frame-${i.toString().padStart(2, '0')}.png`;
+				const frameID = `frame_${i.toString().padStart(2, '0')}.png`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'pet', frameID));
 				const { x, y, width, height } = centerImagePart(data, 75, 75, 27, 38);
 				ctx.drawImage(data, x, y, width, height);
