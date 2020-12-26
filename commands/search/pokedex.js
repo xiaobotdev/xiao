@@ -97,7 +97,7 @@ module.exports = class PokedexCommand extends Command {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
 				}).join('\n'))
-				.addField(`> ${this.megaEvolveEmoji}?`, data.mega ? 'Yes' : 'No', true)
+				.addField(`❯ ${this.megaEvolveEmoji}?`, data.mega ? 'Yes' : 'No', true)
 				.addField('❯ Evolution Chain', data.chain.data.map(pkmn => {
 					if (Array.isArray(pkmn)) {
 						return pkmn.map(pkmn2 => {
