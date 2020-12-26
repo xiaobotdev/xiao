@@ -5,7 +5,7 @@ const request = require('node-superfetch');
 const path = require('path');
 const { streamToArray } = require('../../util/Util');
 const { centerImagePart } = require('../../util/Canvas');
-const frameCount = 8;
+const frameCount = 10;
 
 module.exports = class PetCommand extends Command {
 	constructor(client) {
@@ -40,7 +40,7 @@ module.exports = class PetCommand extends Command {
 			const stream = encoder.createReadStream();
 			encoder.start();
 			encoder.setRepeat(0);
-			encoder.setDelay(200);
+			encoder.setDelay(100);
 			encoder.setQuality(200);
 			for (let i = 0; i < frameCount; i++) {
 				const frameID = `frame_${i.toString().padStart(2, '0')}.png`;
@@ -49,6 +49,7 @@ module.exports = class PetCommand extends Command {
 				ctx.drawImage(data, x, y, width, height);
 				ctx.drawImage(frame, 0, 0);
 				encoder.addFrame(ctx);
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
 			}
 			encoder.finish();
 			const buffer = await streamToArray(stream);
