@@ -40,7 +40,7 @@ module.exports = class PetCommand extends Command {
 			const stream = encoder.createReadStream();
 			encoder.start();
 			encoder.setRepeat(0);
-			encoder.setDelay(100);
+			encoder.setDelay(20);
 			encoder.setQuality(200);
 			for (let i = 0; i < frameCount; i++) {
 				const frameID = `frame_${i.toString().padStart(2, '0')}.png`;
