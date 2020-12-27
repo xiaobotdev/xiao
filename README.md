@@ -185,6 +185,7 @@ simply switch to basic text.
 * `PORTAL` is used in `portal-send`.
 * `FLANKER`, `FRONT_LINE`, `SUPPORT`, and `DAMAGE` are used in `paladins`.
 * `LOADING` is used in commands that need to load for a long time before giving a response, such as `vocodes` and `dec-talk`.
+* `MEGA_EVOLVE` is used in `pokedex`.
 
 ### API Keys, IDs, and Secrets
 
