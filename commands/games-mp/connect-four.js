@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
-const blankEmoji = '⚪️';
+const blankEmoji = '⚪';
 const playerOneEmoji = '🔴';
 const playerTwoEmoji = '🟡';
 const nums = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣'];
