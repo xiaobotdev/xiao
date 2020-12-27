@@ -90,7 +90,17 @@ module.exports = class SoundboardCommand extends Command {
 				{
 					name: 'Microsoft',
 					url: 'https://www.microsoft.com/en-us',
-					reason: 'Windows Start Up Sound'
+					reason: 'Windows Start Up and Windows Error Sounds'
+				},
+				{
+					name: 'Star Wars',
+					url: 'https://www.starwars.com/',
+					reason: 'Hello There Sound'
+				},
+				{
+					name: 'Rockstar Games',
+					url: 'https://www.rockstargames.com/',
+					reason: 'Here We Go Again Sound'
 				}
 			],
 			args: [
