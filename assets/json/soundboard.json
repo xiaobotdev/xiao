@@ -4,6 +4,8 @@
 	["soundboard", "cat.mp3"],
 	["soundboard", "cow.mp3"],
 	["soundboard", "dun-dun-dun.mp3"],
+	["soundboard", "hello-there.mp3"],
+	["soundboard", "here-we-go-again.mp3"],
 	["jeopardy.mp3"],
 	["soundboard", "laugh-track.mp3"],
 	["soundboard", "nipah.mp3"],
@@ -11,5 +13,6 @@
 	["soundboard", "sad-violin.mp3"],
 	["soundboard", "slow-clap.mp3"],
 	["whos-that-pokemon.mp3"],
+	["soundboard", "windows-error.mp3"],
 	["soundboard", "windows-start-up.mp3"]
 ]
