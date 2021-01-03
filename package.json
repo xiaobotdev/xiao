@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "124.3.3",
+	"version": "124.4.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -44,14 +44,14 @@
 		"discord.js": "^12.5.1",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
-		"eslint": "^7.16.0",
+		"eslint": "^7.17.0",
 		"expr-eval": "^2.0.2",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
-		"html-entities": "^1.4.0",
+		"html-entities": "^2.0.2",
 		"ioredis": "^4.19.4",
 		"js-beautify": "^1.13.0",
-		"mathjs": "^8.1.0",
+		"mathjs": "^8.1.1",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.32",
@@ -66,7 +66,7 @@
 		"winston": "^3.3.3"
 	},
 	"optionalDependencies": {
-		"bufferutil": "^4.0.2",
+		"bufferutil": "^4.0.3",
 		"erlpack": "github:discord/erlpack",
 		"sodium": "^3.0.2",
 		"utf-8-validate": "^5.0.3",
