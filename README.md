@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 573
+Total: 574
 
 ### Utility:
 
@@ -319,6 +319,7 @@ Total: 573
 * **acrostic:** Creates an acrostic from any word or name.
 * **advice:** Responds with a random bit of advice.
 * **axis-cult:** Responds with a teaching of the Axis Cult.
+* **boredom:** Responds with a random activity to try when you're bored.
 * **bunny-fact:** Responds with a random bunny fact.
 * **cat-fact:** Responds with a random cat fact.
 * **charlie-charlie:** Asks your question to Charlie.
@@ -1008,6 +1009,8 @@ here.
 	* screenshot ([NSFW Site List](https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt))
 - [Bob Ross](https://www.bobross.com/)
 	* bob-ross (Himself)
+- [Bored API](https://www.boredapi.com/)
+	* boredom (API)
 - [Bowserinator](https://github.com/Bowserinator/)
 	* periodic-table ([Periodic Table Data](https://github.com/Bowserinator/Periodic-Table-JSON))
 - [BrantSteele](https://brantsteele.com/)
