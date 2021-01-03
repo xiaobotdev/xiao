@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const Entities = require('html-entities').AllHtmlEntities;
-const entities = new Entities();
+const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
 const { verify, formatNumber } = require('../../util/Util');
 
@@ -30,7 +29,7 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 		try {
 			const dilemma = await this.fetchDilemma();
 			await msg.reply(stripIndents`
-				**${entities.decode(dilemma.txt1)}** but **${entities.decode(dilemma.txt2)}**
+				**${decodeHTML(dilemma.txt1)}** but **${decodeHTML(dilemma.txt2)}**
 
 				Will you press the button?
 				_Respond with [y]es or [n]o to continue._
