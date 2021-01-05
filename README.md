@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 574
+Total: 575
 
 ### Utility:
 
@@ -797,6 +797,7 @@ Total: 574
 * **fancy:** Converts text to fancy letters.
 * **hex:** Converts text to hex.
 * **latlmes:** Creates a Latlmes fake link that redirects to a rickroll.
+* **leet:** Converts text to l33t speak.
 * **lmgtfy:** Creates a LMGTFY link with the query you provide.
 * **lolcat:** Converts text to lolcat.
 * **lowercase:** Converts text to lowercase.
@@ -936,6 +937,8 @@ here.
 - [07th Expansion](http://07th-expansion.net/)
 	* box-choosing (Original Game)
 	* soundboard (Nipah Sound)
+- [1337.me](https://1337.me/)
+	* leet (Code)
 - [20th Century Fox](https://www.foxmovies.com/)
 	* bart-chalkboard ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
 	* eat-pant ([Original "The Simpsons" Show](http://www.simpsonsworld.com/))
