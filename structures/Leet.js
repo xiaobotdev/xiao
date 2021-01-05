@@ -222,13 +222,13 @@ module.exports = class Leet {
 	}
 
 	change(t1, t2) {
-		var tr = this.textIn;
-		var lp = 0;
+		let tr = this.textIn;
+		let lp = 0;
 		while (tr.indexOf(t1) > -1) {
 			if (++lp > 200) {
 				return tr;
 			}
-			var occ = tr.indexOf(t1);
+			const occ = tr.indexOf(t1);
 			tr = tr.substr(0, occ) + t2 + tr.substr(occ + t1.length);
 		}
 		this.textIn = tr;
