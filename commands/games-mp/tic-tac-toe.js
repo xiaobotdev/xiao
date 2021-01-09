@@ -105,11 +105,13 @@ module.exports = class TicTacToeCommand extends Command {
 	}
 
 	convertBoard(board) {
-		const newBoard = [];
+		const newBoard = [[], [], []];
+		let col = 0;
 		for (const piece of board) {
-			if (piece === 'X') newBoard.push('x');
-			if (piece === 'O') newBoard.push('o');
-			newBoard.push('_');
+			if (piece === 'X') newBoard[col].push('x');
+			if (piece === 'O') newBoard[col].push('o');
+			newBoard[col].push('_');
+			if (newBoard[col].length === 3) col++;
 		}
 		return newBoard;
 	}
