@@ -52,8 +52,8 @@ module.exports = class PetCommand extends Command {
 				ctx.drawImage(frame, 0, 0);
 				encoder.addFrame(ctx);
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
-				if (i + 1 > frameCount / 2) squish -= 5;
-				else squish += 5;
+				if (i + 1 > frameCount / 2) squish -= 4;
+				else squish += 4;
 			}
 			encoder.finish();
 			const buffer = await streamToArray(stream);
