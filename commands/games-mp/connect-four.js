@@ -16,7 +16,6 @@ module.exports = class ConnectFourCommand extends Command {
 			group: 'games-mp',
 			memberName: 'connect-four',
 			description: 'Play a game of Connect Four with another user.',
-			guildOnly: true,
 			credit: [
 				{
 					name: 'Hasbro',
