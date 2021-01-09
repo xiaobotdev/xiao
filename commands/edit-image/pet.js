@@ -43,14 +43,17 @@ module.exports = class PetCommand extends Command {
 			encoder.setDelay(20);
 			encoder.setQuality(200);
 			encoder.setTransparent('#000000');
+			let squish = 0;
 			for (let i = 0; i < frameCount; i++) {
 				const frameID = `frame_${i.toString().padStart(2, '0')}.png`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'pet', frameID));
 				const { x, y, width, height } = centerImagePart(data, 75, 75, 27, 38);
-				ctx.drawImage(data, x, y, width, height);
+				ctx.drawImage(data, x, y + squish, width, height - squish);
 				ctx.drawImage(frame, 0, 0);
 				encoder.addFrame(ctx);
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				if (i + 1 > frameCount / 2) squish -= 3;
+				else squish += 3;
 			}
 			encoder.finish();
 			const buffer = await streamToArray(stream);
