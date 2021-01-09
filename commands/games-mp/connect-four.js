@@ -38,7 +38,7 @@ module.exports = class ConnectFourCommand extends Command {
 				},
 				{
 					key: 'color',
-					prompt: `What color do you want to be? Either ${Object.keys(colors, 'or')}.`,
+					prompt: `What color do you want to be? Either ${list(Object.keys(colors), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(colors),
 					parse: color => color.toLowerCase()
