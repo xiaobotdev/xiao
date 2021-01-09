@@ -77,15 +77,18 @@ module.exports = class ConnectFourCommand extends Command {
 			let winner = null;
 			const colLevels = [5, 5, 5, 5, 5, 5, 5];
 			let lastTurnTimeout = false;
+			let lastMove;
 			while (!winner && board.some(row => row.includes(null))) {
 				const user = userTurn ? msg.author : opponent;
 				const sign = userTurn ? 'user' : 'oppo';
 				let i;
 				if (opponent.bot && !userTurn) {
 					i = AIEngine.playAI('hard');
+					lastMove = i;
 				} else {
 					await msg.say(stripIndents`
 						${user}, which column do you pick? Type \`end\` to forefeit.
+						${AIEngine ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
 
 						${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
 						${nums.join('')}
@@ -119,6 +122,7 @@ module.exports = class ConnectFourCommand extends Command {
 					}
 					i = Number.parseInt(choice, 10) - 1;
 					if (AIEngine) AIEngine.play(i);
+					lastMove = i;
 				}
 				board[colLevels[i]][i] = sign;
 				colLevels[i]--;
