@@ -128,7 +128,12 @@ module.exports = class ConnectFourCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			if (winner === 'time') return msg.say('Game ended due to inactivity.');
-			return msg.say(winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...');
+			return msg.say(stripIndents`
+				${winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...'}
+
+				${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
+				${nums.join('')}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
