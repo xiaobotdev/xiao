@@ -1,10 +1,18 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { verify, list } = require('../../util/Util');
 const blankEmoji = '⚪';
-const playerOneEmoji = '🔴';
-const playerTwoEmoji = '🟡';
 const nums = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣'];
+const colors = {
+	red: '🔴',
+	yellow: '🟡',
+	blue: '🔵',
+	brown: '🟤',
+	green: '🟢',
+	orange: '🟠',
+	purple: '🟣',
+	black: '⚫'
+};
 
 module.exports = class ConnectFourCommand extends Command {
 	constructor(client) {
@@ -27,17 +35,26 @@ module.exports = class ConnectFourCommand extends Command {
 					key: 'opponent',
 					prompt: 'What user would you like to challenge?',
 					type: 'user'
+				},
+				{
+					key: 'color',
+					prompt: `What color do you want to be? Either ${Object.keys(colors, 'or')}.`,
+					type: 'string',
+					oneOf: Object.keys(colors),
+					parse: color => color.toLowerCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, { opponent }) {
+	async run(msg, { opponent, color }) {
 		if (opponent.bot) return msg.reply('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
+		const playerOneEmoji = colors[color];
+		let playerTwoEmoji = color === 'yellow' ? colors.red : colors.yellow;
 		try {
 			await msg.say(`${opponent}, do you accept this challenge?`);
 			const verification = await verify(msg.channel, opponent);
@@ -45,6 +62,14 @@ module.exports = class ConnectFourCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
+			const available = Object.keys(colors).filter(clr => color != clr);
+			await msg.say(`${opponent}, what color do you want to be? Either ${list(available, 'or')}.`);
+			const filter = res => res.author.id === opponent.id && available.includes(res.content.toLowerCase());
+			const p2Color = await msg.channel.awaitMessages(filter, {
+				max: 1,
+				time: 30000
+			});
+			if (p2Color.size) playerTwoEmoji = colors[p2Color.first().content.toLowerCase()];
 			const board = this.generateBoard();
 			let userTurn = true;
 			let winner = null;
@@ -56,7 +81,7 @@ module.exports = class ConnectFourCommand extends Command {
 				await msg.say(stripIndents`
 					${user}, which column do you pick? Type \`end\` to forefeit.
 
-					${this.displayBoard(board)}
+					${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
 					${nums.join('')}
 				`);
 				const filter = res => {
@@ -138,7 +163,7 @@ module.exports = class ConnectFourCommand extends Command {
 		return arr;
 	}
 
-	displayBoard(board) {
+	displayBoard(board, playerOneEmoji, playerTwoEmoji) {
 		return board.map(row => row.map(piece => {
 			if (piece === 'user') return playerOneEmoji;
 			if (piece === 'oppo') return playerTwoEmoji;
