@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const tictactoe = require('tictactoe-minimax-ai');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
+const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
 
 module.exports = class TicTacToeCommand extends Command {
 	constructor(client) {
@@ -48,13 +49,8 @@ module.exports = class TicTacToeCommand extends Command {
 				} else {
 					await msg.say(stripIndents`
 						${user}, which side do you pick? Type \`end\` to forefeit.
-						\`\`\`
-						${sides[0]} | ${sides[1]} | ${sides[2]}
-						—————————
-						${sides[3]} | ${sides[4]} | ${sides[5]}
-						—————————
-						${sides[6]} | ${sides[7]} | ${sides[8]}
-						\`\`\`
+
+						${this.displayBoard(sides)}
 					`);
 					const filter = res => {
 						if (res.author.id !== user.id) return false;
@@ -118,5 +114,20 @@ module.exports = class TicTacToeCommand extends Command {
 			if (newBoard[col].length === 3) col++;
 		}
 		return newBoard;
+	}
+
+	displayBoard(board) {
+		let str = '';
+		for (let i = 0; i < board.length; i++) {
+			if (board[i] === 'X') {
+				str += '❌';
+			} else if (board[i] === 'O') {
+				str += '⭕';
+			} else {
+				str += nums[i];
+			}
+			if (i % 3 === 2) str += '\n';
+		}
+		return str;
 	}
 };

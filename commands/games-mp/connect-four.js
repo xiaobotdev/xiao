@@ -4,7 +4,7 @@ const { stripIndents } = require('common-tags');
 const { verify, list } = require('../../util/Util');
 const { LOADING_EMOJI_ID } = process.env;
 const blankEmoji = '⚪';
-const nums = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣'];
+const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣'];
 const colors = require('../../assets/json/connect-four');
 colors.loading = `<a:loading:${LOADING_EMOJI_ID}>`;
 
