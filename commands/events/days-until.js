@@ -43,6 +43,7 @@ module.exports = class DaysUntilCommand extends Command {
 		const future = new Date(year, month - 1, day);
 		const futureFormat = moment.utc(future).format('dddd, MMMM Do, YYYY');
 		const time = moment.duration(future - now);
+		if (time < 0) return msg.say('This date has already passed!');
 		const link = time.months() ? time.months() === 1 ? 'is' : 'are' : time.days() === 1 ? 'is' : 'are';
 		return msg.say(`There ${link} ${time.format('Y [years], M [months and] d [days]')} until ${futureFormat}!`);
 	}
