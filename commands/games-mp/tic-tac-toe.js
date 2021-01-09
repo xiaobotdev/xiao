@@ -9,8 +9,7 @@ module.exports = class TicTacToeCommand extends Command {
 			name: 'tic-tac-toe',
 			group: 'games-mp',
 			memberName: 'tic-tac-toe',
-			description: 'Play a game of tic-tac-toe with another user.',
-			guildOnly: true,
+			description: 'Play a game of tic-tac-toe with another user or the AI.',
 			args: [
 				{
 					key: 'opponent',
