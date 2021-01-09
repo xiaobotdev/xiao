@@ -22,15 +22,24 @@ module.exports = class DaysUntilCommand extends Command {
 					type: 'integer',
 					min: 1,
 					max: 31
+				},
+				{
+					key: 'year',
+					prompt: 'What year would you like to get the days until?',
+					type: 'integer',
+					min: new Date().getFullYear(),
+					default: ''
 				}
 			]
 		});
 	}
 
-	run(msg, { month, day }) {
+	run(msg, { month, day, year }) {
 		const now = new Date();
-		let year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
-		if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
+		if (!year) {
+			year = now.getMonth() + 1 <= month ? now.getFullYear() : now.getFullYear() + 1;
+			if (month === now.getMonth() + 1 && now.getDate() >= day) ++year;
+		}
 		const future = new Date(year, month - 1, day);
 		const futureFormat = moment.utc(future).format('dddd, MMMM Do, YYYY');
 		const time = moment.duration(future - now);
