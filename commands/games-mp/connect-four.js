@@ -4,36 +4,8 @@ const { verify, list } = require('../../util/Util');
 const { LOADING_EMOJI_ID } = process.env;
 const blankEmoji = '⚪';
 const nums = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣'];
-const colors = {
-	red: '🔴',
-	yellow: '🟡',
-	blue: '🔵',
-	brown: '🟤',
-	green: '🟢',
-	orange: '🟠',
-	purple: '🟣',
-	black: '⚫',
-	cheese: '🧀',
-	face: '😶',
-	moon: '🌘',
-	earth: '🌎',
-	donut: '🍙',
-	cookie: '🍪',
-	baseball: '⚾',
-	softball: '🥎',
-	tennisball: '🎾',
-	volleyball: '🏐',
-	basketball: '🏀',
-	soccerball: '⚽',
-	'8ball': '🎱',
-	cd: '💿',
-	dvd: '📀',
-	nsfw: '🔞',
-	nosmoke: '🚭',
-	clock: '🕓',
-	coin: '🪙',
-	loading: `<a:loading:${LOADING_EMOJI_ID}>`
-};
+const colors = require('../../assets/json/connect-four');
+colors.loading = `<a:loading:${LOADING_EMOJI_ID}>`;
 
 module.exports = class ConnectFourCommand extends Command {
 	constructor(client) {
