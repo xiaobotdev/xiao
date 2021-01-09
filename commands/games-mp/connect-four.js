@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { verify, list } = require('../../util/Util');
+const { LOADING_EMOJI_ID } = process.env;
 const blankEmoji = '⚪';
 const nums = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣'];
 const colors = {
@@ -30,7 +31,8 @@ const colors = {
 	nsfw: '🔞',
 	nosmoke: '🚭',
 	clock: '🕓',
-	coin: '🪙'
+	coin: '🪙',
+	loading: `<a:loading:${LOADING_EMOJI_ID}>`
 };
 
 module.exports = class ConnectFourCommand extends Command {
