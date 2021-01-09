@@ -99,7 +99,7 @@ module.exports = class TicTacToeCommand extends Command {
 	}
 
 	verifyWin(sides) {
-		const evaluated = tictactoe.boardEvaluate(this.convertBoard(sides));
+		const evaluated = tictactoe.boardEvaluate(this.convertBoard(sides)).status;
 		if (evaluated === 'win' || evaluated === 'loss' || evaluated === 'tie') return true;
 		return false;
 	}
