@@ -81,14 +81,15 @@ module.exports = class TicTacToeCommand extends Command {
 				}
 				sides[opponent.bot && !userTurn ? choice : Number.parseInt(choice, 10) - 1] = sign;
 				taken.push(choice);
-				if (this.verifyWin(sides)) winner = userTurn ? msg.author : opponent;
+				const win = this.verifyWin(sides, msg.author, opponent);
+				if (win) winner = win;
 				if (lastTurnTimeout) lastTurnTimeout = false;
 				userTurn = !userTurn;
 			}
 			this.client.games.delete(msg.channel.id);
 			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			return msg.say(stripIndents`
-				${winner ? `Congrats, ${winner}!` : 'Oh... The cat won.'}
+				${winner !== 'tie' ? `Congrats, ${winner}!` : 'Oh... The cat won.'}
 
 				${this.displayBoard(sides)}
 			`);
@@ -98,9 +99,11 @@ module.exports = class TicTacToeCommand extends Command {
 		}
 	}
 
-	verifyWin(sides) {
+	verifyWin(sides, player1, player2) {
 		const evaluated = tictactoe.boardEvaluate(this.convertBoard(sides)).status;
-		if (evaluated === 'win' || evaluated === 'loss' || evaluated === 'tie') return true;
+		if (evaluated === 'win') return player1;
+		if (evaluated === 'loss') return player2;
+		if (evaluated === 'tie') return 'tie';
 		return false;
 	}
 
