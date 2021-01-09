@@ -134,6 +134,7 @@ module.exports = class ConnectFourCommand extends Command {
 			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			return msg.say(stripIndents`
 				${winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...'}
+				Final Move: **${lastMove}**
 
 				${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
 				${nums.join('')}
