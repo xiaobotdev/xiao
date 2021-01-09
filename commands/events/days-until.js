@@ -44,6 +44,6 @@ module.exports = class DaysUntilCommand extends Command {
 		const futureFormat = moment.utc(future).format('dddd, MMMM Do, YYYY');
 		const time = moment.duration(future - now);
 		const link = time.months() ? time.months() === 1 ? 'is' : 'are' : time.days() === 1 ? 'is' : 'are';
-		return msg.say(`There ${link} ${time.format('M [months and] d [days]')} until ${futureFormat}!`);
+		return msg.say(`There ${link} ${time.format('Y [years], M [months and] d [days]')} until ${futureFormat}!`);
 	}
 };
