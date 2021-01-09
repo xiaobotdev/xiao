@@ -34,7 +34,7 @@ module.exports = class FirstMessageCommand extends Command {
 			.setDescription(message.content)
 			.setTimestamp(message.createdAt)
 			.setFooter(`ID: ${message.id}`)
-			.addField('❯ Jump', message.url);
+			.addField('❯ Jump', `[Click Here to Jump](${message.url})`);
 		return msg.embed(embed);
 	}
 };
