@@ -11,7 +11,25 @@ const colors = {
 	green: '🟢',
 	orange: '🟠',
 	purple: '🟣',
-	black: '⚫'
+	black: '⚫',
+	cheese: '🧀',
+	face: '😶',
+	moon: '🌘',
+	earth: '🌎',
+	donut: '🍙',
+	cookie: '🍪',
+	baseball: '⚾',
+	softball: '🥎',
+	tennisball: '🎾',
+	volleyball: '🏐',
+	basketball: '🏀',
+	soccerball: '⚽',
+	'8ball': '🎱',
+	cd: '💿',
+	dvd: '📀',
+	nsfw: '🔞',
+	nosmoke: '🚭',
+	clock: '🕓'
 };
 
 module.exports = class ConnectFourCommand extends Command {
