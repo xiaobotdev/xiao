@@ -83,7 +83,11 @@ module.exports = class ConnectFourCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
-			const available = Object.keys(colors).filter(clr => color !== clr);
+			const available = Object.keys(colors).filter(clr => {
+				if (color === 'blue' && clr === 'purple') return false;
+				if (color === 'purple' && clr === 'blue') return false;
+				return color !== clr;
+			});
 			await msg.say(`${opponent}, what color do you want to be? Either ${list(available, 'or')}.`);
 			const filter = res => res.author.id === opponent.id && available.includes(res.content.toLowerCase());
 			const p2Color = await msg.channel.awaitMessages(filter, {
