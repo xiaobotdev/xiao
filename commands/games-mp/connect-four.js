@@ -29,7 +29,8 @@ const colors = {
 	dvd: '📀',
 	nsfw: '🔞',
 	nosmoke: '🚭',
-	clock: '🕓'
+	clock: '🕓',
+	coin: '🪙'
 };
 
 module.exports = class ConnectFourCommand extends Command {
