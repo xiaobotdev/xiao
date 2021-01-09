@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "124.5.2",
+	"version": "124.5.3",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -64,6 +64,7 @@
 		"sherlockjs": "^1.4.0",
 		"stackblur-canvas": "^2.4.0",
 		"tesseract.js": "^2.1.4",
+		"tictactoe-minimax-ai": "^1.2.1",
 		"winston": "^3.3.3"
 	},
 	"optionalDependencies": {
