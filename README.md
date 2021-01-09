@@ -601,7 +601,7 @@ Total: 575
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **bingo:** Play bingo with up to 99 other users.
-* **connect-four:** Play a game of Connect Four with another user.
+* **connect-four:** Play a game of Connect Four with another user or the AI.
 * **dots-and-boxes:** Play a game of Dots and Boxes with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **guesspionage:** Tests your knowledge of humans as you guess how people responded to poll questions.
@@ -614,7 +614,7 @@ Total: 575
 * **quiz-duel:** Answer a series of quiz questions against other opponents.
 * **russian-roulette:** Who will pull the trigger and die first?
 * **spam-war:** See who can type more characters the fastest.
-* **tic-tac-toe:** Play a game of tic-tac-toe with another user.
+* **tic-tac-toe:** Play a game of tic-tac-toe with another user or the AI.
 * **typing-race:** Race a user to see who can type a sentence faster.
 * **word-chain:** Try to come up with words that start with the last letter of your opponent's word.
 * **word-spud:** Hot potato, but with words.
