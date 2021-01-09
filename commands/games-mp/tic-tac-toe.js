@@ -89,7 +89,7 @@ module.exports = class TicTacToeCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			if (winner === 'time') return msg.say('Game ended due to inactivity.');
 			return msg.say(stripIndents`
-				${winner !== 'tie' ? `Congrats, ${winner}!` : 'Oh... The cat won.'}
+				${winner === 'tie' ? 'Oh... The cat won.' : `Congrats, ${winner}!`}
 
 				${this.displayBoard(sides)}
 			`);
