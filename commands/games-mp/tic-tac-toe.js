@@ -58,9 +58,9 @@ module.exports = class TicTacToeCommand extends Command {
 					`);
 					const filter = res => {
 						if (res.author.id !== user.id) return false;
-						const choice = res.content;
-						if (choice.toLowerCase() === 'end') return true;
-						return sides.includes(choice) && !taken.includes(choice);
+						const pick = res.content;
+						if (pick.toLowerCase() === 'end') return true;
+						return sides.includes(pick) && !taken.includes(pick);
 					};
 					const turn = await msg.channel.awaitMessages(filter, {
 						max: 1,
