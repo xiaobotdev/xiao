@@ -8,14 +8,16 @@ module.exports = class TicTacToeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'tic-tac-toe',
+			aliases: ['ttt', 'tic-tac'],
 			group: 'games-mp',
 			memberName: 'tic-tac-toe',
 			description: 'Play a game of tic-tac-toe with another user or the AI.',
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge? To play against AI, choose me.',
-					type: 'user'
+					prompt: 'What user would you like to challenge?',
+					type: 'user',
+					default: () => this.client.user
 				}
 			]
 		});
