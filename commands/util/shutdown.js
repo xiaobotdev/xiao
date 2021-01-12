@@ -43,7 +43,8 @@ module.exports = class ShutdownCommand extends Command {
 			const verification = await verify(msg.channel, msg.author);
 			if (verification) {
 				await msg.reply('Waiting...');
-				while (games > 0 || calls > 0) await delay(5000);
+				// eslint-disable-next-line no-unmodified-loop-condition
+				while (this.client.games.size > 0 || this.client.phone.size > 0) await delay(5000);
 			}
 		}
 		try {
