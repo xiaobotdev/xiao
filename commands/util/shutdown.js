@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { verify } = require('../../util/Util');
+const { verify, delay } = require('../../util/Util');
 const texts = require('../../assets/json/shutdown');
 
 module.exports = class ShutdownCommand extends Command {
@@ -39,9 +39,12 @@ module.exports = class ShutdownCommand extends Command {
 				currentString += `${calls} phone call${calls > 1 ? 's' : ''}`;
 				if (calls === 1 && (games > 0 ? games === 1 : true)) areIs = 'is';
 			}
-			await msg.reply(`There ${areIs} currently **${currentString}**. Are you sure?`);
+			await msg.reply(`There ${areIs} currently **${currentString}**. Wait for them to finish?`);
 			const verification = await verify(msg.channel, msg.author);
-			if (!verification) return msg.say('Aborted restart.');
+			if (verification) {
+				await msg.reply('Waiting...');
+				while (games > 0 || calls > 0) delay(5000);
+			}
 		}
 		try {
 			this.uses++;
