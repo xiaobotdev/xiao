@@ -21,7 +21,7 @@ module.exports = class NeverHaveIEverCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		if (msg.channel.nsfw) return msg.say(all[Math.floor(Math.random() * all.length)]);
 		return msg.say(safe[Math.floor(Math.random() * safe.length)]);
 	}
