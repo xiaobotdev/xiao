@@ -137,8 +137,10 @@ module.exports = class Pokemon {
 			const versionGroup = move.version_group_details.find(mve => mve.version_group.name === this.moveSetVersion);
 			if (!versionGroup || !versionGroup.level_learned_at) continue;
 			const { body: moveBody } = await request.get(move.move.url);
+			const name = moveBody.names.find(name => name.language.name === 'en').name;
+			if (this.moveSet.some(move => move.name === name)) continue;
 			this.moveSet.push({
-				name: moveBody.names.find(name => name.language.name === 'en').name,
+				name,
 				level: versionGroup.level_learned_at
 			});
 		}

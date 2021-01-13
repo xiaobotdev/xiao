@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
+const { safe, nsfw } = require('../../assets/json/never-have-i-ever');
+const all = [...safe, ...nsfw];
 
 module.exports = class NeverHaveIEverCommand extends Command {
 	constructor(client) {
@@ -11,21 +12,17 @@ module.exports = class NeverHaveIEverCommand extends Command {
 			description: 'Responds with a random "Never Have I Ever..." statement.',
 			credit: [
 				{
-					name: 'Gerhard Jordan',
-					url: 'http://www.gerhardjordan.com/',
+					name: 'PsyCat Games',
+					url: 'https://psycatgames.com/',
 					reason: 'Statement Data',
-					reasonURL: 'http://www.neverhaveiever.org/'
+					reasonURL: 'https://psycatgames.com/app/never-have-i-ever/'
 				}
 			]
 		});
 	}
 
 	async run(msg) {
-		try {
-			const { text } = await request.get('http://www.neverhaveiever.org/randomtext.php');
-			return msg.say(text.match(/<h1>(.+)<\/h1>/i)[1].replaceAll('</br>', ''));
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		if (msg.channel.nsfw) return msg.say(all[Math.floor(Math.random() * all.length)]);
+		return msg.say(safe[Math.floor(Math.random() * safe.length)]);
 	}
 };

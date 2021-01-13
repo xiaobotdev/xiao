@@ -79,7 +79,7 @@ module.exports = class AnimeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'anime',
-			aliases: ['anilist-anime', 'anilist', 'ani', 'myanimelist', 'mal', 'mal-score'],
+			aliases: ['anilist-anime', 'ani', 'myanimelist', 'mal', 'mal-score'],
 			group: 'search',
 			memberName: 'anime',
 			description: 'Searches AniList for your query, getting anime results.',

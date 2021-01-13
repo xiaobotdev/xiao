@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const { decode: decodeHTML } = require('html-entities');
 const { formatNumber, embedURL } = require('../../util/Util');
 const { STACKOVERFLOW_KEY } = process.env;
 
@@ -51,7 +52,7 @@ module.exports = class StackOverflowCommand extends Command {
 				.setColor(0xF48023)
 				.setAuthor('Stack Overflow', 'https://i.imgur.com/P2jAgE3.png', 'https://stackoverflow.com/')
 				.setURL(data.link)
-				.setTitle(data.title)
+				.setTitle(decodeHTML(data.title))
 				.addField('❯ ID', data.question_id, true)
 				.addField('❯ Asker', embedURL(data.owner.display_name, data.owner.link), true)
 				.addField('❯ Views', formatNumber(data.view_count), true)
