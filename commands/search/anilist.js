@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const searchGraphQL = stripIndents`
 	query ($name: String) {
