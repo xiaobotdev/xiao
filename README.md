@@ -427,7 +427,6 @@ Total: 576
 * **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
 * **lenny:** Responds with the lenny face.
-* **nitro:** Sends an image of a fake nitro giveaway.
 * **rickroll:** Sends a link to the "Never Gonna Give You Up" music video.
 * **spam:** Responds with a picture of Spam.
 * **tableflip:** Flips a table... With animation!
@@ -508,6 +507,7 @@ Total: 576
 * **paladins:** Responds with information on a Paladins player.
 * **periodic-table:** Finds an element on the periodic table.
 * **poem:** Searches for poems by a specific author.
+* **pokedex-image:** Responds with the image of a Pokémon.
 * **pokedex-location:** Responds with the location data for a Pokémon.
 * **pokedex-moveset:** Responds with the moveset for a Pokémon.
 * **pokedex:** Searches the Pokédex for a Pokémon.
@@ -1787,7 +1787,7 @@ here.
 - [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington)
 	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/))
 - [u/MoonlightCapital](https://www.reddit.com/user/MoonlightCapital/)
-	* nitro ([Image](https://www.reddit.com/r/discordapp/comments/a9fr7x/troll_your_friends_with_this/))
+	* dark-light ([Image](https://www.reddit.com/r/discordapp/comments/a9fr7x/troll_your_friends_with_this/))
 - [u/N1ffler](https://www.reddit.com/user/N1ffler/)
 	* sorting-hat ([Sorting Hat Quiz Analysis Data](https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/))
 - [u/PowderedShmegma](https://www.reddit.com/user/PowderedShmegma/)

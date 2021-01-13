@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const path = require('path');
 const { list } = require('../../util/Util');
-const types = ['default', 'moth', 'jojo', 'spoiler'];
+const types = ['default', 'moth', 'jojo', 'spoiler', 'nitro'];
 
 module.exports = class DarkLightCommand extends Command {
 	constructor(client) {
@@ -30,6 +30,12 @@ module.exports = class DarkLightCommand extends Command {
 					name: 'JoJo\'s Bizzare Adventure',
 					url: 'http://www.araki-jojo.com/',
 					reason: 'Original Anime'
+				},
+				{
+					name: 'u/MoonlightCapital',
+					url: 'https://www.reddit.com/user/MoonlightCapital/',
+					reason: 'Image',
+					reasonURL: 'https://www.reddit.com/r/discordapp/comments/a9fr7x/troll_your_friends_with_this/'
 				}
 			],
 			args: [
