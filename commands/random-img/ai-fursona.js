@@ -12,7 +12,7 @@ module.exports = class AiFursonaCommand extends Command {
 			credit: [
 				{
 					name: 'This Fursona Does Not Exist',
-					url: 'https://thisfursonadoesnotexist.com/',
+					url: 'http://thisfursonadoesnotexist.com/',
 					reason: 'API'
 				}
 			]
@@ -22,7 +22,7 @@ module.exports = class AiFursonaCommand extends Command {
 	run(msg) {
 		const num = Math.floor(Math.random() * 100000);
 		return msg.say(`AI-Generated Fursona #${num}`, {
-			files: [`https://thisfursonadoesnotexist.com/v2/jpgs/seed${num.toString().padStart(5, '0')}.jpg`]
+			files: [`http://thisfursonadoesnotexist.com/v2/jpgs/seed${num.toString().padStart(5, '0')}.jpg`]
 		});
 	}
 };

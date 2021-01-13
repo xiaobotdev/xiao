@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 575
+Total: 576
 
 ### Utility:
 
@@ -465,6 +465,7 @@ Total: 575
 
 ### Search:
 
+* **anilist:** Responds with user information for an Anilist user.
 * **anime-character:** Searches AniList for your query, getting character results.
 * **anime-staff:** Searches AniList for your query, getting staff results.
 * **anime:** Searches AniList for your query, getting anime results.
@@ -967,6 +968,7 @@ here.
 - [Andrew Tyler](https://www.dafont.com/andrew-tyler.d2526)
 	* achievement ([Minecraftia Font](https://www.dafont.com/minecraftia.font))
 - [AniList](https://anilist.co/)
+	* anilist ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* anime ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* anime-airing ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
 	* anime-character ([API](https://anilist.gitbook.io/anilist-apiv2-docs/))
@@ -1158,8 +1160,6 @@ here.
 	* rename-all (Concept)
 - [Genderize.io](https://genderize.io/)
 	* gender (API)
-- [Gerhard Jordan](http://www.gerhardjordan.com/)
-	* never-have-i-ever ([Statement Data](http://www.neverhaveiever.org/))
 - [gfauchart](https://github.com/gfauchart)
 	* adorable ([API](https://github.com/adorableio/avatars-api-middleware/issues/108))
 - [GIPHY](https://giphy.com/)
@@ -1589,6 +1589,8 @@ here.
 	* pornhub (Video Data)
 - [Pottermore](https://my.pottermore.com/sorting)
 	* sorting-hat (Original Quiz)
+- [PsyCat Games](https://psycatgames.com/)
+	* never-have-i-ever ([Statement Data](https://psycatgames.com/app/never-have-i-ever/))
 - [PSYCHO-PASS](http://psycho-pass.com/)
 	* psycho-pass (Original Anime)
 - [Psycho-Pass Wiki](https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki)
@@ -1748,7 +1750,7 @@ here.
 	* ai-artwork (API)
 - [This Cat Does Not Exist](https://thiscatdoesnotexist.com/)
 	* ai-cat (API)
-- [This Fursona Does Not Exist](https://thisfursonadoesnotexist.com/)
+- [This Fursona Does Not Exist](http://thisfursonadoesnotexist.com/)
 	* ai-fursona (API)
 - [This Horse Does Not Exist](https://thishorsedoesnotexist.com/)
 	* ai-horse (API)

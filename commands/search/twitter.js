@@ -66,6 +66,7 @@ module.exports = class TwitterCommand extends Command {
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 401) await this.fetchToken();
+			if (err.status === 403) return msg.say('This user is either private or suspended.');
 			if (err.status === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
