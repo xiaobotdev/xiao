@@ -165,6 +165,14 @@ module.exports = class TweetCommand extends Command {
 	}
 
 	async fetchUser(msg, user) {
+		if (user.toLowerCase() === 'realdonaldtrump') {
+			return {
+				screenName: 'realDonaldTrump',
+				name: 'Donald J. Trump',
+				avatar: path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'realdonaldtrump.jpg'),
+				verified: true
+			};
+		}
 		try {
 			const { body } = await request
 				.get('https://api.twitter.com/1.1/users/show.json')
