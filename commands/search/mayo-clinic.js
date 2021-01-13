@@ -63,10 +63,11 @@ module.exports = class MayoClinicCommand extends Command {
 		const $ = cheerio.load(text);
 		const header = $('h2').first();
 		if (header.text() === 'Overview') {
+			const caption = $('p[class="caption"]').first().next().text().trim();
 			return {
 				name: $('h1').first().text().trim(),
 				url: location,
-				description: header.next().text().trim()
+				description: caption || header.next().text().trim()
 			};
 		}
 		return location;
