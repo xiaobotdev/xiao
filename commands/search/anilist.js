@@ -43,7 +43,9 @@ module.exports = class AnilistCommand extends Command {
 		try {
 			const data = await this.search(query);
 			if (!data || !data.id || !data.name) return msg.say('Could not find any results.');
-			return msg.say(`https://anilist.co/user/${data.name}`, { files: [`https://img.anili.st/user/${data.id}`] });
+			return msg.say(`https://anilist.co/user/${data.name}`, {
+				files: [{ attachment: `https://img.anili.st/user/${data.id}`, name: 'anilist.png' }]
+			});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
