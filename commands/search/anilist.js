@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 const searchGraphQL = stripIndents`
 	query ($name: String) {
 		users: Page (perPage: 1) {
