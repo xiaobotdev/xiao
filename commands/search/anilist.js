@@ -55,7 +55,7 @@ module.exports = class AnilistCommand extends Command {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
 			.send({
-				variables: { search: query },
+				variables: { name: query },
 				query: searchGraphQL
 			});
 		if (!body.data.users.results.length) return null;
