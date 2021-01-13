@@ -66,7 +66,7 @@ module.exports = class MayoClinicCommand extends Command {
 			return {
 				name: $('h1').first().text().trim(),
 				url: location,
-				description: $('p').eq(1).text().trim()
+				description: $('p[class="caption"]').first().text().trim()
 			};
 		}
 		return location;
