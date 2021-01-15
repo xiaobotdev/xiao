@@ -43,7 +43,7 @@ module.exports = class NameRaterCommand extends Command {
 		if (!str) return 0;
 		let hash = 0;
 		for (const char of str.split('')) {
-			hash = (31 * hash) + char.charCodeAt(0);
+			hash += char.charCodeAt(0);
 		}
 		return hash;
 	}
