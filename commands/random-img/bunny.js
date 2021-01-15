@@ -1,14 +1,15 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const facts = require('../../assets/json/bunny-fact');
 
 module.exports = class BunnyCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'bunny',
-			aliases: ['bun', 'rabbit'],
+			aliases: ['bun', 'rabbit', 'bunny-fact', 'bun-fact', 'rabbit-fact'],
 			group: 'random-img',
 			memberName: 'bunny',
-			description: 'Responds with a random image of a bunny.',
+			description: 'Responds with a random bunny image and fact.',
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
@@ -35,7 +36,9 @@ module.exports = class BunnyCommand extends Command {
 			} else {
 				fileToSend = gif.body;
 			}
-			return msg.say({ files: [{ attachment: fileToSend, name: `${body.id}.${fileType}` }] });
+			return msg.say(facts[Math.floor(Math.random() * facts.length)], {
+				files: [{ attachment: fileToSend, name: `${body.id}.${fileType}` }]
+			});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

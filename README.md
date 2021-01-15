@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 576
+Total: 573
 
 ### Utility:
 
@@ -320,14 +320,11 @@ Total: 576
 * **advice:** Responds with a random bit of advice.
 * **axis-cult:** Responds with a teaching of the Axis Cult.
 * **boredom:** Responds with a random activity to try when you're bored.
-* **bunny-fact:** Responds with a random bunny fact.
-* **cat-fact:** Responds with a random cat fact.
 * **charlie-charlie:** Asks your question to Charlie.
 * **choose:** Chooses between options you provide.
 * **chuck-norris:** Responds with a random Chuck Norris joke.
 * **coin:** Flips a coin.
 * **compliment:** Compliments a user.
-* **dog-fact:** Responds with a random dog fact.
 * **draw-cards:** Draws a random hand of playing cards.
 * **fact-core:** Responds with a random Fact Core quote.
 * **fact:** Responds with a random fact.
@@ -377,9 +374,9 @@ Total: 576
 * **ai-waifu:** Responds with a randomly generated waifu.
 * **awwnime:** Responds with cute random anime art.
 * **bird:** Responds with a random image of a bird.
-* **bunny:** Responds with a random image of a bunny.
-* **cat:** Responds with a random cat image.
-* **dog:** Responds with a random dog image.
+* **bunny:** Responds with a random bunny image and fact..
+* **cat:** Responds with a random cat image and fact.
+* **dog:** Responds with a random dog image and fact.
 * **duck:** Responds with a random duck image.
 * **fidget:** Responds with a random image of Fidget.
 * **food:** Responds with a randomly generated food.
