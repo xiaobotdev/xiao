@@ -51,7 +51,7 @@
 		"gm": "^1.23.1",
 		"html-entities": "^2.0.2",
 		"ioredis": "^4.19.4",
-		"js-beautify": "^1.13.2",
+		"js-beautify": "^1.13.4",
 		"mathjs": "^8.1.1",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",
