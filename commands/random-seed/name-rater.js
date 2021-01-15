@@ -41,9 +41,9 @@ module.exports = class NameRaterCommand extends Command {
 
 	stringToSeed(str) {
 		if (!str) return 0;
-		let hash = 0n;
+		let hash = 0;
 		for (const char of str.split('')) {
-			hash = (31n * hash) + BigInt(char.charCodeAt(0));
+			hash = (31 * hash) + char.charCodeAt(0);
 		}
 		return hash;
 	}
