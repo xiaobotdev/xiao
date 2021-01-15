@@ -34,8 +34,17 @@ module.exports = class NameRaterCommand extends Command {
 		if (name.toLowerCase() === 'xiao') {
 			return msg.reply(`<:nameRater:${NAME_RATER_EMOJI_ID}> Yes, ${name}! What a perfect name! I'm speechless!`);
 		}
-		const random = MersenneTwister19937.seed(name.toLowerCase());
+		const random = MersenneTwister19937.seed(this.stringToSeed(name.toLowerCase()));
 		const quality = integer(0, texts.length - 1)(random);
 		return msg.reply(`<:nameRater:${NAME_RATER_EMOJI_ID}> ${texts[quality].replace(/{{name}}/gi, name)}`);
+	}
+
+	stringToSeed(str) {
+		if (!str) return 0;
+		let hash = 0n;
+		for (const char of s.split('')) {
+			hash = (31n * hash) + BigInt(char.charCodeAt(0));
+		}
+		return hash;
 	}
 };
