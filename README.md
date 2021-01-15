@@ -100,9 +100,9 @@ don't grant that permission.
 ## Fun Information
 
 - 500+ commands
-- 31,000+ lines of JavaScript
-- 63,000+ lines of JSON data
-- 3 years of development
+- 32,000+ lines of JavaScript
+- 65,000+ lines of JSON data
+- 4 years of development
 
 ## Installing
 
@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 573
+Total: 574
 
 ### Utility:
 
@@ -374,7 +374,7 @@ Total: 573
 * **ai-waifu:** Responds with a randomly generated waifu.
 * **awwnime:** Responds with cute random anime art.
 * **bird:** Responds with a random image of a bird.
-* **bunny:** Responds with a random bunny image and fact..
+* **bunny:** Responds with a random bunny image and fact.
 * **cat:** Responds with a random cat image and fact.
 * **dog:** Responds with a random dog image and fact.
 * **duck:** Responds with a random duck image.
@@ -403,7 +403,7 @@ Total: 573
 * **friendship:** Determines how good friends two users are.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
-* **name-rater:** 'Determines a name's quality.
+* **name-rater:** Determines a name's quality.
 * **psycho-pass:** Determines your Crime Coefficient.
 * **ship:** Ships two users together.
 * **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
@@ -1560,6 +1560,7 @@ here.
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
 	* pokedex (API)
+	* pokedex-image (API)
 	* pokedex-location (API)
 	* pokedex-moveset (API)
 	* pokemon-cry (API)
@@ -1571,6 +1572,7 @@ here.
 	* hat (Ash Hat Original Anime)
 	* name-rater (Sprite)
 	* pokedex (Images, Original Game)
+	* pokedex-image (Images, Original Game)
 	* pokedex-location (Images, Original Game)
 	* pokedex-moveset (Images, Original Game)
 	* pokemon-cry (Original Game)
@@ -1653,6 +1655,7 @@ here.
 	* sonic-says ([Image, Original "Sonic the Hedgehog" Game](https://www.sonicthehedgehog.com/))
 - [Serebii.net](https://www.serebii.net/index2.shtml)
 	* pokedex (Images)
+	* pokedex-image (Images)
 	* pokedex-location (Images)
 	* pokedex-moveset (Images)
 	* whos-that-pokemon (Images)
