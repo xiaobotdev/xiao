@@ -403,6 +403,7 @@ Total: 573
 * **friendship:** Determines how good friends two users are.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
+* **name-rater:** 'Determines a name's quality.
 * **psycho-pass:** Determines your Crime Coefficient.
 * **ship:** Ships two users together.
 * **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
@@ -1568,6 +1569,7 @@ here.
 	* 3000-years (Image, Original Game)
 	* dexter (Image, Original Anime)
 	* hat (Ash Hat Original Anime)
+	* name-rater (Sprite)
 	* pokedex (Images, Original Game)
 	* pokedex-location (Images, Original Game)
 	* pokedex-moveset (Images, Original Game)
