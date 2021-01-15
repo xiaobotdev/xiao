@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const { User } = require('discord.js');
 const { MersenneTwister19937, integer } = require('random-js');
 const texts = require('../../assets/json/name-rater');
 const { NAME_RATER_EMOJI_ID } = process.env;
@@ -23,7 +22,7 @@ module.exports = class NameRaterCommand extends Command {
 				{
 					key: 'name',
 					prompt: 'What name do you want to determine the quality of?',
-					type: 'user|string',
+					type: 'string',
 					max: 20,
 					default: msg => msg.author.username
 				}
@@ -32,13 +31,12 @@ module.exports = class NameRaterCommand extends Command {
 	}
 
 	run(msg, { name }) {
-		if (name instanceof User) name = name.username;
 		if (name.toLowerCase() === 'xiao') {
-			return msg.reply(`<:nameRater:${NAME_RATER_EMOJI_ID}> Yes, ${name}! What a perfect name! I'm speechless!`);
+			return msg.say(`<:nameRater:${NAME_RATER_EMOJI_ID}> Yes, ${name}! What a perfect name! I'm speechless!`);
 		}
 		const random = MersenneTwister19937.seed(this.stringToSeed(name.toLowerCase()));
 		const quality = integer(0, texts.length - 1)(random);
-		return msg.reply(`<:nameRater:${NAME_RATER_EMOJI_ID}> ${texts[quality].replace(/{{name}}/gi, name)}`);
+		return msg.say(`<:nameRater:${NAME_RATER_EMOJI_ID}> ${texts[quality].replace(/{{name}}/gi, name)}`);
 	}
 
 	stringToSeed(str) {
