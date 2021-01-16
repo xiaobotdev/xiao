@@ -49,7 +49,7 @@ module.exports = class MinesweeperCommand extends Command {
 					if (!coordPicked) return false;
 					const x = Number.parseInt(coordPicked[1], 10);
 					const y = Number.parseInt(coordPicked[2], 10);
-					if (taken.includes(`${x},${y}`)) return false;
+					if (game.mask[x - 1][y - 1]) return false;
 					return true;
 				};
 				const turn = await msg.channel.awaitMessages(filter, {
