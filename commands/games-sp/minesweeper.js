@@ -75,7 +75,7 @@ module.exports = class MinesweeperCommand extends Command {
 				const flag = Boolean(coordPicked[1]);
 				if (flag) {
 					if (flagged.includes(`${x - 1},${y - 1}`)) {
-						flagged = removeFromArray(flagged, `${x - 1},${y - 1}`);
+						removeFromArray(flagged, `${x - 1},${y - 1}`);
 					} else {
 						flagged.push(`${x - 1},${y - 1}`);
 					}
