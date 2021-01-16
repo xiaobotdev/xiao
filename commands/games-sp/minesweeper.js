@@ -35,6 +35,7 @@ module.exports = class MinesweeperCommand extends Command {
 			game.onWin = () => { win = true; };
 			game.onLoss = () => { win = false; };
 			while (!win) {
+				if (win === true || win === false) break;
 				await msg.say(stripIndents`
 					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
 
@@ -70,7 +71,7 @@ module.exports = class MinesweeperCommand extends Command {
 				game.CheckCell(x - 1, y - 1);
 			}
 			this.client.games.delete(msg.channel.id);
-			if (!win) return msg.say('Game ended due to inactivity.');
+			if (win === null) return msg.say('Game ended due to inactivity.');
 			return msg.say(stripIndents`
 				${win ? 'Nice job! You win!' : 'Sorry... You lose.'}
 
