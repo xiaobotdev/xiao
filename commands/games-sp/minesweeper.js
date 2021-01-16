@@ -31,10 +31,9 @@ module.exports = class MinesweeperCommand extends Command {
 		try {
 			const game = new BombSweeper(size, size);
 			game.PlaceBombs(size + 1);
-			const taken = [];
 			let win = null;
 			game.onWin = () => { win = true; };
-			game.onLose = () => { win = false; };
+			game.onLoss = () => { win = false; };
 			while (!win) {
 				await msg.say(stripIndents`
 					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
@@ -68,7 +67,6 @@ module.exports = class MinesweeperCommand extends Command {
 				const coordPicked = choice.match(/(\d), ?(\d)/i)
 				const x = Number.parseInt(coordPicked[1], 10);
 				const y = Number.parseInt(coordPicked[2], 10);
-				taken.push(`${x},${y}`);
 				game.CheckCell(x - 1, y - 1);
 			}
 			this.client.games.delete(msg.channel.id);
