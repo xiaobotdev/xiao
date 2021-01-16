@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 574
+Total: 575
 
 ### Utility:
 
@@ -580,6 +580,7 @@ Total: 574
 * **mad-libs:** Choose words that fill in the blanks to create a crazy story!
 * **math-quiz:** See how fast you can answer a math problem in a given time limit.
 * **memory:** Test your memory.
+* **minesweeper:** Play a game of Minesweeper.
 * **quiz:** Answer a quiz question.
 * **reaction-time:** Test your reaction time.
 * **rock-paper-scissors:** Play Rock-Paper-Scissors.
