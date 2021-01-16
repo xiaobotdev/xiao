@@ -37,13 +37,15 @@ module.exports = class MinesweeperCommand extends Command {
 			game.onWin = () => { win = true; };
 			game.onLoss = () => { win = false; };
 			const flagged = [];
+			const startTime = new Date();
 			while (win === null) {
+				const currentTime = moment.duration(new Date() - startTime).format('mm:ss');
 				await msg.say(stripIndents`
 					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
 					Type \`flag <coordinates>\` to flag a spot as a bomb. To remove a flag, run it again.
 
 					${this.displayBoard(game.board, game.mask, flagged)}
-					**Total Mines:** ${size + 1} | **Flagged:** ${flagged.length}
+					**Total Mines:** ${size + 1} | **Flagged:** ${flagged.length} | **Time:** ${currentTime}
 				`);
 				const filter = res => {
 					if (res.author.id !== msg.author.id) return false;
@@ -93,10 +95,17 @@ module.exports = class MinesweeperCommand extends Command {
 					if (win === true || win === false) break;
 				}
 			}
+			const newScore = Date.now() - startTime;
+			const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
+			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
+			if (!highScore || highScore > newScore) await this.client.redis.set(`minesweeper-${size}`, newScore);
 			this.client.games.delete(msg.channel.id);
 			if (win === null) return msg.say('Game ended due to inactivity.');
+			const newDisplayTime = moment.duration(newScore).format('mm:ss');
+			const displayTime = moment.duration(highScore).format('mm:ss');
 			return msg.say(stripIndents`
-				${win ? 'Nice job! You win!' : 'Sorry... You lose.'}
+				${win ? 'Nice job! You win!' : 'Sorry... You lose.'} (Took ${newDisplayTime})
+				${!highScore || highScore > newScore ? `**New High Score!** Old:` : `High Score:`} ${displayTime}
 
 				${this.displayBoard(game.board)}
 			`);
