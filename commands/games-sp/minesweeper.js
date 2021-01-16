@@ -27,9 +27,9 @@ module.exports = class MinesweeperCommand extends Command {
 	async run(msg, { size }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const game = new BombSweeper(size, size);
+			this.client.games.set(msg.channel.id, { name: this.name, data: game });
 			game.PlaceBombs(size + 1); // eslint-disable-line new-cap
 			let win = null;
 			game.onWin = () => { win = true; };
