@@ -37,12 +37,12 @@ module.exports = class MinesweeperCommand extends Command {
 			game.onLose = () => { win = false; };
 			while (!win) {
 				await msg.say(stripIndents`
-					${user}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
+					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
 
 					${this.displayBoard(game.board, game.mask)}
 				`);
 				const filter = res => {
-					if (res.author.id !== user.id) return false;
+					if (res.author.id !== msg.author.id) return false;
 					const pick = res.content;
 					if (pick.toLowerCase() === 'end') return true;
 					const coordPicked = pick.match(/(\d), ?(\d)/i);
@@ -62,7 +62,7 @@ module.exports = class MinesweeperCommand extends Command {
 				}
 				const choice = turn.first().content;
 				if (choice.toLowerCase() === 'end') {
-					winner = userTurn ? opponent : msg.author;
+					win = false;
 					break;
 				}
 				const coordPicked = choice.match(/(\d), ?(\d)/i)
