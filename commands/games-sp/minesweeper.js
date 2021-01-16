@@ -30,7 +30,7 @@ module.exports = class MinesweeperCommand extends Command {
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const game = new BombSweeper(size, size);
-			game.PlaceBombs(size + 1);
+			game.PlaceBombs(size + 1); // eslint-disable-line new-cap
 			let win = null;
 			game.onWin = () => { win = true; };
 			game.onLoss = () => { win = false; };
@@ -64,10 +64,10 @@ module.exports = class MinesweeperCommand extends Command {
 					win = false;
 					break;
 				}
-				const coordPicked = choice.match(/(\d), ?(\d)/i)
+				const coordPicked = choice.match(/(\d), ?(\d)/i);
 				const x = Number.parseInt(coordPicked[1], 10);
 				const y = Number.parseInt(coordPicked[2], 10);
-				game.CheckCell(x - 1, y - 1);
+				game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
 				if (win === true || win === false) break;
 			}
 			this.client.games.delete(msg.channel.id);
@@ -86,7 +86,7 @@ module.exports = class MinesweeperCommand extends Command {
 	displayBoard(board, mask) {
 		let str = '';
 		str += '⬛';
-		str += nums.slice(0, board.length).join('');	
+		str += nums.slice(0, board.length).join('');
 		str += '\n';
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
