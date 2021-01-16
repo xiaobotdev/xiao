@@ -260,7 +260,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 575
+Total: 576
 
 ### Utility:
 
@@ -542,6 +542,7 @@ Total: 575
 * **birthstone:** Responds with the Birthstone for a month.
 * **character-count:** Responds with the character count of text.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
+* **dominant-color:** Determines the dominant color of an image.
 * **face:** Determines the race, gender, and age of a face.
 * **gender:** Determines the gender of a name.
 * **has-transparency:** Determines if an image has transparency in it.
