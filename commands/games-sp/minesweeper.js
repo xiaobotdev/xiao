@@ -69,7 +69,7 @@ module.exports = class MinesweeperCommand extends Command {
 				const x = Number.parseInt(coordPicked[1], 10);
 				const y = Number.parseInt(coordPicked[2], 10);
 				taken.push(`${x},${y}`);
-				game.CheckCell(x, y);
+				game.CheckCell(x - 1, y - 1);
 			}
 			this.client.games.delete(msg.channel.id);
 			if (!win) return msg.say('Game ended due to inactivity.');
@@ -88,7 +88,7 @@ module.exports = class MinesweeperCommand extends Command {
 		let str = '';
 		str += '⬛⬛';
 		str += nums.slice(0, board.length).join('');	
-		str += `\n⬛${'⬛'.repeat(board.length)}\n`;
+		str += `\n${'⬛'.repeat(board.length + 2)}\n`;
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
 			str += '⬛';
