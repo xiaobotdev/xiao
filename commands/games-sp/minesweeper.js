@@ -1,7 +1,9 @@
 const Command = require('../../structures/Command');
 const BombSweeper = require('bombsweeper.js');
 const { stripIndents } = require('common-tags');
-const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
+const { removeFromArray, verify } = require('../../util/Util');
+const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
+const turnRegex = /(flag )?(\d+), ?(\d+)/i;
 
 module.exports = class MinesweeperCommand extends Command {
 	constructor(client) {
@@ -17,7 +19,7 @@ module.exports = class MinesweeperCommand extends Command {
 					prompt: 'What size board do you want to use?',
 					type: 'integer',
 					default: 9,
-					max: 9,
+					max: 10,
 					min: 3
 				}
 			]
@@ -34,20 +36,22 @@ module.exports = class MinesweeperCommand extends Command {
 			let win = null;
 			game.onWin = () => { win = true; };
 			game.onLoss = () => { win = false; };
+			let flagged = [];
 			while (win === null) {
 				await msg.say(stripIndents`
 					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
+					Type \`flag <coordinates>\` to flag a spot as a bomb. To remove a flag, run it again.
 
-					${this.displayBoard(game.board, game.mask)}
+					${this.displayBoard(game.board, game.mask, flagged)}
 				`);
 				const filter = res => {
 					if (res.author.id !== msg.author.id) return false;
 					const pick = res.content;
 					if (pick.toLowerCase() === 'end') return true;
-					const coordPicked = pick.match(/(\d), ?(\d)/i);
+					const coordPicked = pick.match(turnRegex);
 					if (!coordPicked) return false;
-					const x = Number.parseInt(coordPicked[1], 10);
-					const y = Number.parseInt(coordPicked[2], 10);
+					const x = Number.parseInt(coordPicked[2], 10);
+					const y = Number.parseInt(coordPicked[3], 10);
 					if (x > size || y > size || x < 1 || y < 1) return false;
 					if (game.mask[y - 1][x - 1]) return false;
 					return true;
@@ -65,11 +69,28 @@ module.exports = class MinesweeperCommand extends Command {
 					win = false;
 					break;
 				}
-				const coordPicked = choice.match(/(\d), ?(\d)/i);
-				const x = Number.parseInt(coordPicked[1], 10);
-				const y = Number.parseInt(coordPicked[2], 10);
-				game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
-				if (win === true || win === false) break;
+				const coordPicked = choice.match(turnRegex);
+				const x = Number.parseInt(coordPicked[2], 10);
+				const y = Number.parseInt(coordPicked[3], 10);
+				const flag = Boolean(coordPicked[1]);
+				if (flag) {
+					if (flagged.includes(`${x - 1},${y - 1}`)) {
+						flagged = removeFromArray(flagged, `${x - 1},${y - 1}`);
+					} else {
+						flagged.push(`${x - 1},${y - 1}`);
+					}
+				} else {
+					if (flagged.includes(`${x - 1},${y - 1}`)) {
+						await msg.say('Are you sure you want to check this spot? You have it flagged.');
+						const verification = await verify(msg.channel, msg.author);
+						if (!verification) {
+							await msg.say('Okay, the spot will remain unchecked.');
+							continue;
+						}
+					}
+					game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
+					if (win === true || win === false) break;
+				}
 			}
 			this.client.games.delete(msg.channel.id);
 			if (win === null) return msg.say('Game ended due to inactivity.');
@@ -84,7 +105,7 @@ module.exports = class MinesweeperCommand extends Command {
 		}
 	}
 
-	displayBoard(board, mask) {
+	displayBoard(board, mask, flagged) {
 		let str = '';
 		str += '⬛';
 		str += nums.slice(0, board.length).join('');
@@ -100,6 +121,8 @@ module.exports = class MinesweeperCommand extends Command {
 					} else {
 						str += nums[item - 1];
 					}
+				} else if (flagged.includes(`${i},${j}`)) {
+					str += '🚩';
 				} else {
 					str += '❓';
 				}
