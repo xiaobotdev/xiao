@@ -65,7 +65,7 @@ module.exports = class PokerCommand extends Command {
 				});
 			}
 			let winner = null;
-			let rotation = players.map(p => p.id);
+			const rotation = players.map(p => p.id);
 			while (!winner) {
 				for (const player of players.values()) {
 					if (players.has(player.id)) continue;
