@@ -8,7 +8,7 @@ module.exports = class MinesweeperCommand extends Command {
 		super(client, {
 			name: 'minesweeper',
 			aliases: ['bombsweeper', 'mines', 'bombs', 'msweeper', 'minesweep', 'msweep'],
-			group: 'games-mp',
+			group: 'games-sp',
 			memberName: 'minesweeper',
 			description: 'Play a game of Minesweeper.',
 			args: [
