@@ -100,14 +100,16 @@ module.exports = class MinesweeperCommand extends Command {
 			const newScore = Date.now() - startTime;
 			const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-			if (!highScore || highScore > newScore) await this.client.redis.set(`minesweeper-${size}`, newScore);
+			if (win && (!highScore || highScore > newScore)) {
+				await this.client.redis.set(`minesweeper-${size}`, newScore);
+			}
 			this.client.games.delete(msg.channel.id);
 			if (win === null) return msg.say('Game ended due to inactivity.');
 			const newDisplayTime = moment.duration(newScore).format('mm:ss');
 			const displayTime = moment.duration(highScore).format('mm:ss');
 			return msg.say(stripIndents`
-				${win ? 'Nice job! You win!' : 'Sorry... You lose.'} (Took ${newDisplayTime})
-				${!highScore || highScore > newScore ? `**New High Score!** Old:` : `High Score:`} ${displayTime}
+				${win ? `Nice job! You win! (Took ${newDisplayTime})` : 'Sorry... You lose.'}
+				${win && (!highScore || highScore > newScore) ? `**New High Score!** Old:` : `High Score:`} ${displayTime}
 
 				${this.displayBoard(game.board)}
 			`);
