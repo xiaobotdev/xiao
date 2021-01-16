@@ -1,5 +1,7 @@
 const Command = require('../../structures/Command');
 const BombSweeper = require('bombsweeper.js');
+const moment = require('moment');
+require('moment-duration-format');
 const { stripIndents } = require('common-tags');
 const { removeFromArray, verify } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
