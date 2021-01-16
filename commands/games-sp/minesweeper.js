@@ -92,7 +92,7 @@ module.exports = class MinesweeperCommand extends Command {
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
 			board[i].forEach((item, j) => {
-				if (!mask || mask[j][i]) {
+				if (!mask || mask[i][j]) {
 					if (item === '*') {
 						str += '💣';
 					} else if (item === 0) {
