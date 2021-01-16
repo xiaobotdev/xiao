@@ -3,7 +3,7 @@ const BombSweeper = require('bombsweeper.js');
 const { stripIndents } = require('common-tags');
 const { removeFromArray, verify } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
-const turnRegex = /(flag )?(\d+), ?(\d+)/i;
+const turnRegex = /^(flag )?(\d+), ?(\d+)/i;
 
 module.exports = class MinesweeperCommand extends Command {
 	constructor(client) {
