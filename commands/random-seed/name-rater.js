@@ -23,7 +23,7 @@ module.exports = class NameRaterCommand extends Command {
 					key: 'name',
 					prompt: 'What name do you want to determine the quality of?',
 					type: 'string',
-					max: 20,
+					max: 25,
 					default: msg => msg.author.username
 				}
 			]
