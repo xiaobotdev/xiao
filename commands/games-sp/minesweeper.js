@@ -33,8 +33,8 @@ module.exports = class MinesweeperCommand extends Command {
 			game.PlaceBombs(size + 1);
 			const taken = [];
 			let win = null;
-			game.onWin(() => { win = true; });
-			game.onLose(() => { win = false; });
+			game.onWin = () => { win = true; };
+			game.onLose = () => { win = false; };
 			while (!win) {
 				await msg.say(stripIndents`
 					${user}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
