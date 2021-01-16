@@ -86,12 +86,10 @@ module.exports = class MinesweeperCommand extends Command {
 
 	displayBoard(board, mask) {
 		let str = '';
-		str += '⬛⬛';
+		str += '⬛';
 		str += nums.slice(0, board.length).join('');	
-		str += `\n${'⬛'.repeat(board.length + 2)}\n`;
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
-			str += '⬛';
 			board[i].forEach((item, j) => {
 				if (mask[i][j]) {
 					if (item === '*') {
