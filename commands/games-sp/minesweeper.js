@@ -48,8 +48,8 @@ module.exports = class MinesweeperCommand extends Command {
 					if (!coordPicked) return false;
 					const x = Number.parseInt(coordPicked[1], 10);
 					const y = Number.parseInt(coordPicked[2], 10);
-					console.log(game.mask[x - 1][y - 1]);
-					if (game.mask[x - 1][y - 1]) return false;
+					console.log(game.mask[y - 1][x - 1]);
+					if (game.mask[y - 1][x - 1]) return false;
 					return true;
 				};
 				const turn = await msg.channel.awaitMessages(filter, {
@@ -92,7 +92,7 @@ module.exports = class MinesweeperCommand extends Command {
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
 			board[i].forEach((item, j) => {
-				if (!mask || mask[i][j]) {
+				if (!mask || mask[j][i]) {
 					if (item === '*') {
 						str += '💣';
 					} else if (item === 0) {
