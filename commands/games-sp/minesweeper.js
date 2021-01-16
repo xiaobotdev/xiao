@@ -48,6 +48,7 @@ module.exports = class MinesweeperCommand extends Command {
 					if (!coordPicked) return false;
 					const x = Number.parseInt(coordPicked[1], 10);
 					const y = Number.parseInt(coordPicked[2], 10);
+					if (x > size || y > size) return false;
 					if (game.mask[y - 1][x - 1]) return false;
 					return true;
 				};
