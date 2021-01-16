@@ -42,6 +42,8 @@ module.exports = class MinesweeperCommand extends Command {
 					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
 					Type \`flag <coordinates>\` to flag a spot as a bomb. To remove a flag, run it again.
 
+					**Total Mines:** ${size + 1}
+					**Flagged:** ${flagged.length}
 					${this.displayBoard(game.board, game.mask, flagged)}
 				`);
 				const filter = res => {
