@@ -121,7 +121,7 @@ module.exports = class MinesweeperCommand extends Command {
 					} else {
 						str += nums[item - 1];
 					}
-				} else if (flagged.includes(`${i},${j}`)) {
+				} else if (flagged.includes(`${j},${i}`)) {
 					str += '🚩';
 				} else {
 					str += '❓';
