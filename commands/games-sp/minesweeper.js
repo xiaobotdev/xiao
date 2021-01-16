@@ -48,13 +48,12 @@ module.exports = class MinesweeperCommand extends Command {
 					if (!coordPicked) return false;
 					const x = Number.parseInt(coordPicked[1], 10);
 					const y = Number.parseInt(coordPicked[2], 10);
-					console.log(game.mask[y - 1][x - 1]);
 					if (game.mask[y - 1][x - 1]) return false;
 					return true;
 				};
 				const turn = await msg.channel.awaitMessages(filter, {
 					max: 1,
-					time: 30000
+					time: 120000
 				});
 				if (!turn.size) {
 					await msg.say('Sorry, time is up!');
