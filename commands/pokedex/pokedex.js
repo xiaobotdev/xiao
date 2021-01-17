@@ -9,7 +9,7 @@ module.exports = class PokedexCommand extends Command {
 		super(client, {
 			name: 'pokedex',
 			aliases: ['pokemon', 'pokémon', 'pokédex', 'pkmn'],
-			group: 'search',
+			group: 'pokedex',
 			memberName: 'pokedex',
 			description: 'Searches the Pokédex for a Pokémon.',
 			clientPermissions: ['EMBED_LINKS'],

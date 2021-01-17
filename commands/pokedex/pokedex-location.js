@@ -17,7 +17,7 @@ module.exports = class PokedexLocationCommand extends Command {
 				'pokédex-locate',
 				'pkmn-locate'
 			],
-			group: 'search',
+			group: 'pokedex',
 			memberName: 'pokedex-location',
 			description: 'Responds with the location data for a Pokémon.',
 			clientPermissions: ['EMBED_LINKS'],

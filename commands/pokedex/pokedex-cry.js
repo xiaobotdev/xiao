@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
 const { reactIfAble } = require('../../util/Util');
 
-module.exports = class PokemonCryCommand extends Command {
+module.exports = class PokedexCryCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'pokemon-cry',
-			aliases: ['pokedex-cry', 'pokémon-cry', 'pokédex-cry', 'pkmn-cry'],
-			group: 'voice',
-			memberName: 'pokemon-cry',
+			name: 'pokedex-cry',
+			aliases: ['pokemon-cry', 'pokémon-cry', 'pokédex-cry', 'pkmn-cry'],
+			group: 'pokedex',
+			memberName: 'pokedex-cry',
 			description: 'Plays a Pokémon\'s cry.',
 			userPermissions: ['CONNECT', 'SPEAK'],
 			throttling: {

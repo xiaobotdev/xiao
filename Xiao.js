@@ -27,6 +27,7 @@ client.registry
 		['auto', 'Automatic Response'],
 		['events', 'Events'],
 		['search', 'Search'],
+		['pokedex', 'Pokédex'],
 		['analyze', 'Analyzers'],
 		['games-sp', 'Single-Player Games'],
 		['games-mp', 'Multi-Player Games'],
