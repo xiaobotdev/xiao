@@ -103,7 +103,7 @@ module.exports = class MinesweeperCommand extends Command {
 			const highScoreUser = await this.client.redis.get(`minesweeper-${size}-user`);
 			const scoreBeat = win && (!highScore || highScore > newScore);
 			let user;
-			if (user) {
+			if (minesweeperUser) {
 				try {
 					const fetched = await this.client.users.fetch(highScoreUser);
 					user = fetched.tag;
