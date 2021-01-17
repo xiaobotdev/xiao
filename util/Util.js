@@ -271,6 +271,21 @@ module.exports = class Util {
 		return verify.map(player => player.author.id);
 	}
 
+	static async fetchHSUserDisplay(client, userID) {
+		let user;
+		if (userID) {
+			try {
+				const fetched = await client.users.fetch(userID);
+				user = fetched.tag;
+			} catch {
+				user = 'Unknown';
+			}
+		} else {
+			user = 'no one';
+		}
+		return user;
+	}
+
 	static cleanAnilistHTML(html, removeLineBreaks = true) {
 		let clean = html;
 		if (removeLineBreaks) clean = clean.replace(/\r|\n|\f/g, '');

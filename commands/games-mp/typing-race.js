@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { verify, fetchHSUserDisplay } = require('../../util/Util');
 const sentences = require('../../assets/json/typing-test');
 
 module.exports = class TypingRaceCommand extends Command {
@@ -48,12 +48,18 @@ module.exports = class TypingRaceCommand extends Command {
 			const newScore = Date.now() - now;
 			const highScoreGet = await this.client.redis.get('typing-test');
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-			if (!highScore || highScore > newScore) await this.client.redis.set('typing-test', newScore);
+			const highScoreUser = await this.client.redis.get('typing-test-user');
+			const scoreBeat = !highScore || highScore > newScore;
+			const user = await fetchHSUserDisplay(this.client, highScoreUser);
+			if (scoreBeat) {
+				await this.client.redis.set('typing-test', newScore);
+				await this.client.redis.set('typing-test-user', winner.first().author.id);
+			}
 			this.client.games.delete(msg.channel.id);
 			if (!winner.size) return msg.say('Oh... No one won.');
 			return msg.say(stripIndents`
 				The winner is ${winner.first().author}! (Took ${newScore / 1000} seconds)
-				${!highScore || highScore > newScore ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}
+				${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
