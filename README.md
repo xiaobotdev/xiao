@@ -40,7 +40,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Automatic Response](#automatic-response)
 	* [Events](#events)
 	* [Search](#search)
-	* [Pokédex](#pokedex)
+	* [Pokédex](#pokédex)
 	* [Analyzers](#analyzers)
 	* [Single-Player Games](#single-player-games)
 	* [Multi-Player Games](#multi-player-games)
