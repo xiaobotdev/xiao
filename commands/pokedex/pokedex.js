@@ -105,7 +105,7 @@ module.exports = class PokedexCommand extends Command {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				const moveUsage = this.client.registry.commands.get('pokedex-moveset').usage();
 				const statsUsage = this.client.registry.commands.get('pokedex-stats').usage();
-				const locationUsage = this.client.regsitry.commands.get('pokedex-location').usage();
+				const locationUsage = this.client.registry.commands.get('pokedex-location').usage();
 				if (connection) {
 					embed.setFooter(stripIndents`
 						Use ${statsUsage} to get their stats.
