@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { list } = require('../../util/Util');
+const { list, fetchHSUserDisplay } = require('../../util/Util');
 const sentences = require('../../assets/json/typing-test');
 const difficulties = ['baby', 'easy', 'medium', 'hard', 'extreme', 'impossible'];
 const times = {
@@ -47,12 +47,18 @@ module.exports = class TypingTestCommand extends Command {
 		const newScore = Date.now() - now;
 		const highScoreGet = await this.client.redis.get('typing-test');
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-		if (!highScore || highScore > newScore) await this.client.redis.set('typing-test', newScore);
+		const highScoreUser = await this.client.redis.get('typing-test-user');
+		const scoreBeat = !highScore || highScore > newScore;
+		const user = await fetchHSUserDisplay(this.client, highScoreUser);
+		if (scoreBeat) {
+			await this.client.redis.set('typing-test', newScore);
+			await this.client.redis.set('typing-test-user', msg.author.id);
+		}
 		if (!msgs.size) return msg.reply('Sorry! You lose!');
 		if (msgs.first().content !== sentence) return msg.reply('Sorry! You made a typo, so you lose!');
 		return msg.reply(stripIndents`
 			Nice job! 10/10! You deserve some cake! (Took ${newScore / 1000} seconds)
-			${!highScore || highScore > newScore ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}
+			${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})
 		`);
 	}
 };

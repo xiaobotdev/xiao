@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
-const { reactIfAble } = require('../../util/Util');
+const { reactIfAble, fetchHSUserDisplay } = require('../../util/Util');
 const scores = require('../../assets/json/anagramica');
 const pool = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
@@ -68,23 +68,29 @@ module.exports = class AnagramicaCommand extends Command {
 			});
 			const highScoreGet = await this.client.redis.get('anagramica');
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-			if (!highScore || highScore < points) await this.client.redis.set('anagramica', points);
+			const highScoreUser = await this.client.redis.get('anagramica-user');
+			const scoreBeat = !highScore || highScore < points;
+			const user = await fetchHSUserDisplay(this.client, highScoreUser);
+			if (scoreBeat) {
+				await this.client.redis.set('anagramica', points);
+				await this.client.redis.set('anagramica-user', msg.author.id);
+			}
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) {
 				return msg.reply(stripIndents`
 					Couldn't even think of one? Ouch.
-					${!highScore || highScore < points ? `**New High Score!** Old:` : `High Score:`} ${highScore}
+					${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore} (Held by ${user})
 				`);
 			}
 			if (points < 1) {
 				return msg.reply(stripIndents`
 					Ouch, your final score was **${points}**. Try harder next time!
-					${!highScore || highScore < points ? `**New High Score!** Old:` : `High Score:`} ${highScore}
+					${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore} (Held by ${user})
 				`);
 			}
 			return msg.reply(stripIndents`
 				Nice job! Your final score was **${points}**!
-				${!highScore || highScore < points ? `**New High Score!** Old:` : `High Score:`} ${highScore}
+				${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore} (Held by ${user})
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);

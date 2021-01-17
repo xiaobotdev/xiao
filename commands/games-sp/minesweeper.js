@@ -3,7 +3,7 @@ const BombSweeper = require('bombsweeper.js');
 const moment = require('moment');
 require('moment-duration-format');
 const { stripIndents } = require('common-tags');
-const { removeFromArray, verify } = require('../../util/Util');
+const { removeFromArray, verify, fetchHSUserDisplay } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
 const turnRegex = /^(flag )?(\d+), ?(\d+)/i;
 
@@ -102,17 +102,7 @@ module.exports = class MinesweeperCommand extends Command {
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
 			const highScoreUser = await this.client.redis.get(`minesweeper-${size}-user`);
 			const scoreBeat = win && (!highScore || highScore > newScore);
-			let user;
-			if (highScoreUser) {
-				try {
-					const fetched = await this.client.users.fetch(highScoreUser);
-					user = fetched.tag;
-				} catch {
-					user = 'Unknown';
-				}
-			} else {
-				user = 'no one';
-			}
+			const user = await fetchHSUserDisplay(this.client, highScoreUser);
 			if (scoreBeat) {
 				await this.client.redis.set(`minesweeper-${size}`, newScore);
 				await this.client.redis.set(`minesweeper-${size}-user`, msg.author.id);
