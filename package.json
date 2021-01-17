@@ -53,7 +53,7 @@
 		"html-entities": "^2.0.2",
 		"ioredis": "^4.19.4",
 		"js-beautify": "^1.13.4",
-		"mathjs": "^8.1.1",
+		"mathjs": "^9.0.0",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.32",
