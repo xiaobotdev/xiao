@@ -4,7 +4,7 @@ const request = require('node-superfetch');
 const { shuffle, reactIfAble, fetchHSUserDisplay } = require('../../util/Util');
 const scores = require('../../assets/json/anagramica');
 const pool = 'abcdefghijklmnopqrstuvwxyz'.split('');
-const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
+const vowels = ['a', 'e', 'i', 'o', 'u'];
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 module.exports = class AnagramicaCommand extends Command {
