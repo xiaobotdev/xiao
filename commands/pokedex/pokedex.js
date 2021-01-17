@@ -68,19 +68,6 @@ module.exports = class PokedexCommand extends Command {
 				if (variety.default) return true;
 				return !arrayEquals(defaultVariety.types, variety.types);
 			});
-			const abilitiesShown = data.varieties.filter(variety => {
-				if (variety.default) return true;
-				return !arrayEquals(defaultVariety.abilities, variety.abilities);
-			});
-			const repeat = {
-				hp: Math.round((data.stats.hp / 255) * 10) * 2,
-				atk: Math.round((data.stats.atk / 255) * 10) * 2,
-				def: Math.round((data.stats.def / 255) * 10) * 2,
-				sAtk: Math.round((data.stats.sAtk / 255) * 10) * 2,
-				sDef: Math.round((data.stats.sDef / 255) * 10) * 2,
-				spd: Math.round((data.stats.spd / 255) * 10) * 2,
-				total: Math.round((data.baseStatTotal / 720) * 10) * 2
-			};
 			const feet = Math.floor(data.height / 12);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
@@ -110,20 +97,6 @@ module.exports = class PokedexCommand extends Command {
 					if (found.id === data.id) return `**${found.name}**`;
 					return found.name;
 				}).join(' -> '))
-				.addField('❯ Base Stats (Base Form)', stripIndents`
-					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${data.stats.hp}**
-					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${data.stats.atk}**
-					\`Defense:     [${'█'.repeat(repeat.def)}${' '.repeat(20 - repeat.def)}]\` **${data.stats.def}**
-					\`Sp. Attack:  [${'█'.repeat(repeat.sAtk)}${' '.repeat(20 - repeat.sAtk)}]\` **${data.stats.sAtk}**
-					\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${data.stats.sDef}**
-					\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${data.stats.spd}**
-					\`-----------------------------------\`
-					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${data.baseStatTotal}**
-				`)
-				.addField('❯ Abilities', abilitiesShown.map(variety => {
-					const showParens = variety.name && abilitiesShown.length > 1;
-					return `${variety.abilities.join('/')}${showParens ? ` (${variety.name})` : ''}`;
-				}).join('\n'))
 				.addField('❯ Held Items',
 					data.heldItems.length ? data.heldItems.map(item => `${item.name} (${item.rarity}%)`).join('\n') : 'None')
 				.addField('❯ Gender Rate',
@@ -131,13 +104,18 @@ module.exports = class PokedexCommand extends Command {
 			if (data.cry) {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				const moveUsage = this.client.registry.commands.get('pokedex-moveset').usage();
+				const statsUsage = this.client.registry.commands.get('pokedex-stats').usage();
 				if (connection) {
-					embed.setFooter(`Use ${moveUsage} to get the Pokémon's moveset.`);
+					embed.setFooter(stripIndents`
+						Use ${statsUsage} to get the Pokémon's stats.
+						Use ${moveUsage} to get the Pokémon's moveset.
+					`);
 					connection.play(data.cry);
 					await reactIfAble(msg, this.client.user, '🔉');
 				} else {
 					const usage = this.client.registry.commands.get('join').usage();
 					embed.setFooter(stripIndents`
+						Usage ${statsUsage} to get the Pokémon's stats.
 						Use ${moveUsage} to get the Pokémon's moveset.
 						Join a voice channel and use ${usage} to hear the Pokémon's cry.
 					`);
