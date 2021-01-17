@@ -61,10 +61,6 @@ module.exports = class PokedexCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
-				.setDescription(stripIndents`
-					**${data.genus}**
-					${data.entries[Math.floor(Math.random() * data.entries.length)]}
-				`)
 				.setThumbnail(data.spriteImageURL)
 				.addField('❯ Base Stats (Base Form)', stripIndents`
 					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${data.stats.hp}**
