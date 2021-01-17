@@ -37,7 +37,7 @@ module.exports = class HighScoresCommand extends Command {
 		}
 		const reactionTimeGet = await this.client.redis.get('reaction-time');
 		const reactionTime = reactionTimeGet ? Number.parseInt(reactionTimeGet, 10) : null;
-		const reactionTimeUser = await this.client.redis.get('reaction-time');
+		const reactionTimeUser = await this.client.redis.get('reaction-time-user');
 		const reactionTimeUserDisplay = await fetchHSUserDisplay(this.client, reactionTimeUser);
 		const minesweeperDisplay = Object.entries(minesweeperScores)
 			.map(([size, score]) => `\`${size}x${size}\`: ${score} (Held by ${minesweeperUsers[size]})`)
