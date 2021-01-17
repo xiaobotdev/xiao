@@ -46,7 +46,7 @@
 		"discord.js": "^12.5.1",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
-		"eslint": "^7.17.0",
+		"eslint": "^7.18.0",
 		"expr-eval": "^2.0.2",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
