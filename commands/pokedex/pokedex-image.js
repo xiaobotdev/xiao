@@ -15,7 +15,7 @@ module.exports = class PokedexImageCommand extends Command {
 				'pokédex-img',
 				'pkmn-img'
 			],
-			group: 'search',
+			group: 'pokedex',
 			memberName: 'pokedex-image',
 			description: 'Responds with the image of a Pokémon.',
 			clientPermissions: ['ATTACH_FILES'],

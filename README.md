@@ -40,6 +40,7 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Automatic Response](#automatic-response)
 	* [Events](#events)
 	* [Search](#search)
+	* [Pokédex](#pokedex)
 	* [Analyzers](#analyzers)
 	* [Single-Player Games](#single-player-games)
 	* [Multi-Player Games](#multi-player-games)
@@ -505,10 +506,6 @@ Total: 576
 * **paladins:** Responds with information on a Paladins player.
 * **periodic-table:** Finds an element on the periodic table.
 * **poem:** Searches for poems by a specific author.
-* **pokedex-image:** Responds with the image of a Pokémon.
-* **pokedex-location:** Responds with the location data for a Pokémon.
-* **pokedex-moveset:** Responds with the moveset for a Pokémon.
-* **pokedex:** Searches the Pokédex for a Pokémon.
 * **pornhub:** Searches Pornhub for your query. (NSFW)
 * **recipe:** Searches for recipes based on your query.
 * **reddit:** Responds with information on a Reddit user.
@@ -535,6 +532,14 @@ Total: 576
 * **xkcd:** Responds with an XKCD comic, either today's, a random one, or a specific one.
 * **youtube:** Searches YouTube for your query.
 * **yu-gi-oh:** Responds with info on a Yu-Gi-Oh! card.
+
+### Pokédex:
+
+* **pokedex-cry:** Plays a Pokémon's cry.
+* **pokedex-image:** Responds with the image of a Pokémon.
+* **pokedex-location:** Responds with the location data for a Pokémon.
+* **pokedex-moveset:** Responds with the moveset for a Pokémon.
+* **pokedex:** Searches the Pokédex for a Pokémon.
 
 ### Analyzers:
 
@@ -849,7 +854,6 @@ Total: 576
 
 * **airhorn:** Plays an airhorn sound in a voice channel.
 * **dec-talk:** The world's best Text-to-Speech.
-* **pokemon-cry:** Plays a Pokémon's cry.
 * **soundboard:** Plays a sound in a voice channel.
 * **vocodes:** Speak text like a variety of famous figures.
 

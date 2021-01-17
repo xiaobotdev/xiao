@@ -21,7 +21,7 @@ module.exports = class PokedexMovesetCommand extends Command {
 				'pokédex-moves',
 				'pkmn-moves'
 			],
-			group: 'search',
+			group: 'pokedex',
 			memberName: 'pokedex-moveset',
 			description: 'Responds with the moveset for a Pokémon.',
 			clientPermissions: ['EMBED_LINKS'],
