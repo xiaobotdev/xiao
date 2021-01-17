@@ -140,7 +140,7 @@ module.exports = class MinesweeperCommand extends Command {
 			board[i].forEach((item, j) => {
 				if (cheatMode && item === '*') {
 					str += '💣';
-				if (!mask || mask[i][j]) {
+				} else if (!mask || mask[i][j]) {
 					if (item === '*') {
 						str += '💣';
 					} else if (item === 0) {
