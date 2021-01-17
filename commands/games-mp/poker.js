@@ -61,7 +61,8 @@ module.exports = class PokerCommand extends Command {
 					user: await this.client.users.fetch(player),
 					currentBet: 0,
 					hasGoneOnce: false,
-					strikes: 0
+					strikes: 0,
+					isAllIn: false
 				});
 			}
 			let winner = null;
@@ -207,12 +208,14 @@ module.exports = class PokerCommand extends Command {
 		}
 	}
 
-	determineActions(turnPlayer, currentBet) {
+	determineActions(turnPlayer, currentBet, playerAllIn) {
 		const actions = [];
+		if (playerAllIn) return ['check'];
 		if (turnPlayer.currentBet !== currentBet) actions.push('fold');
 		if (turnPlayer.money > currentBet) actions.push('raise <amount>');
 		if (turnPlayer.money >= currentBet && turnPlayer.currentBet !== currentBet) actions.push('call');
 		if (currentBet === turnPlayer.currentBet) actions.push('check');
+		actions.push('all in');
 		return actions;
 	}
 
@@ -247,7 +250,7 @@ module.exports = class PokerCommand extends Command {
 	async bettingRound(msg, players, turnRotation, folded, data) {
 		const oldHighestBetter = data.highestBetter;
 		const turnPlayer = players.get(turnRotation[0]);
-		const actions = this.determineActions(turnPlayer, data.currentBet);
+		const actions = this.determineActions(turnPlayer, data.currentBet, turnPlayer.isAllIn);
 		const displayActions = list(actions.map(action => `\`${action}\``), 'or');
 		await msg.say(stripIndents`
 			**Pot: $${formatNumber(data.pot)}**
@@ -306,6 +309,13 @@ module.exports = class PokerCommand extends Command {
 			await msg.say(`${turnPlayer.user} **folds**.`);
 		} else if (choiceAction === 'check') {
 			await msg.say(`${turnPlayer.user} **checks**.`);
+		} else if (choiceAction === 'all in') {
+			const currentMoney = turnPlayer.money;
+			turnPlayer.currentBet += currentMoney;
+			turnPlayer.money = 0;
+			data.pot += currentMoney;
+			turnPlayer.isAllIn = true;
+			await msg.say(`${turnPlayer.user} **goes all in with $${formatNumber(currentMoney)}**.`);
 		}
 		if (choiceAction !== 'fold') turnRotation.push(turnRotation[0]);
 		turnRotation.shift();
@@ -325,6 +335,7 @@ module.exports = class PokerCommand extends Command {
 				await msg.say(`${player.user} has been kicked.`);
 				players.delete(player.id);
 			} else {
+				player.isAllIn = false;
 				player.currentBet = 0;
 				player.hand = [];
 				player.hasGoneOnce = false;
