@@ -31,9 +31,9 @@ module.exports = class HighScoresCommand extends Command {
 		const reactionTime = reactionTimeGet ? Number.parseInt(reactionTimeGet, 10) : null;
 		return msg.say(stripIndents`
 			__**Single-Score Games:**__
-			\`typing-race\`/\`typing-test\`: ${typingRace}s
+			\`typing-race\`/\`typing-test\`: ${typingRace / 1000}s
 			\`anagramica\`: ${anagrams}
-			\`reaction-time\`: ${reactionTime}s
+			\`reaction-time\`: ${reactionTime / 1000}s
 
 			__**Minesweeper:**__
 			${Object.entries(minesweeperScores).map(([size, score]) => `\`${size}x${size}\`: ${score}`).join('\n')}
