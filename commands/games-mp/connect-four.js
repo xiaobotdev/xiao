@@ -35,7 +35,7 @@ module.exports = class ConnectFourCommand extends Command {
 					prompt: `What color do you want to be? Either an emoji or one of ${list(Object.keys(colors), 'or')}.`,
 					type: 'default-emoji|string',
 					validate: color => {
-						const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(value);
+						const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(color);
 						if (!hasEmoji && !colors[color.toLowerCase()]) {
 							return `Please enter an emoji or one of the following: ${list(Object.keys(colors), 'or')}.`;
 						}
