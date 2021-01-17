@@ -115,7 +115,7 @@ module.exports = class PokedexCommand extends Command {
 				} else {
 					const usage = this.client.registry.commands.get('join').usage();
 					embed.setFooter(stripIndents`
-						Usage ${statsUsage} to get the Pokémon's stats.
+						Use ${statsUsage} to get the Pokémon's stats.
 						Use ${moveUsage} to get the Pokémon's moveset.
 						Join a voice channel and use ${usage} to hear the Pokémon's cry.
 					`);
