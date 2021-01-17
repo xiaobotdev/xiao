@@ -105,19 +105,22 @@ module.exports = class PokedexCommand extends Command {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				const moveUsage = this.client.registry.commands.get('pokedex-moveset').usage();
 				const statsUsage = this.client.registry.commands.get('pokedex-stats').usage();
+				const locationUsage = this.client.regsitry.commands.get('pokedex-location').usage();
 				if (connection) {
 					embed.setFooter(stripIndents`
-						Use ${statsUsage} to get the Pokémon's stats.
-						Use ${moveUsage} to get the Pokémon's moveset.
+						Use ${statsUsage} to get their stats.
+						Use ${moveUsage} to get their moveset.
+						Use ${locationUsage} to get their locations.
 					`);
 					connection.play(data.cry);
 					await reactIfAble(msg, this.client.user, '🔉');
 				} else {
 					const usage = this.client.registry.commands.get('join').usage();
 					embed.setFooter(stripIndents`
-						Use ${statsUsage} to get the Pokémon's stats.
-						Use ${moveUsage} to get the Pokémon's moveset.
-						Join a voice channel and use ${usage} to hear the Pokémon's cry.
+						Use ${statsUsage} to get their stats.
+						Use ${moveUsage} to get their moveset.
+						Use ${locationUsage} to get their locations.
+						Join a voice channel and use ${usage} to hear their cry.
 					`);
 				}
 			}
