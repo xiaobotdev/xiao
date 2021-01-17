@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 const { delay, randomRange, verify } = require('../../util/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull', 'boom'];
 
@@ -39,13 +40,27 @@ module.exports = class GunfightCommand extends Command {
 			const word = words[Math.floor(Math.random() * words.length)];
 			await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
 			const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === word;
+			const now = Date.now();
 			const winner = await msg.channel.awaitMessages(filter, {
 				max: 1,
 				time: 30000
 			});
+			const newScore = Date.now() - now;
+			const highScoreGet = await this.client.redis.get('reaction-time');
+			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
+			const highScoreUser = await this.client.redis.get('reaction-time-user');
+			const scoreBeat = !highScore || highScore > newScore;
+			const user = await fetchHSUserDisplay(this.client, highScoreUser);
+			if (scoreBeat) {
+				await this.client.redis.set('reaction-time', newScore);
+				await this.client.redis.set('reaction-time-user', winner.first().author);
+			}
 			this.client.games.delete(msg.channel.id);
 			if (!winner.size) return msg.say('Oh... No one won.');
-			return msg.say(`The winner is ${winner.first().author}!`);
+			return msg.say(stripIndents`
+				The winner is ${winner.first().author}! (Took ${newScore / 1000} seconds)
+				${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
