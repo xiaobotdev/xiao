@@ -138,12 +138,14 @@ module.exports = class MinesweeperCommand extends Command {
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
 			board[i].forEach((item, j) => {
-				if (cheatMode || !mask || mask[i][j]) {
+				if (cheatMode && item === '*') {
+					str += '💣';
+				if (!mask || mask[i][j]) {
 					if (item === '*') {
 						str += '💣';
-					} else if (!cheatMode && item === 0) {
+					} else if (item === 0) {
 						str += '⬜';
-					} else if (!cheatMode) {
+					} else {
 						str += nums[item - 1];
 					}
 				} else if (flagged.includes(`${j},${i}`)) {
