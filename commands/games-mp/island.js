@@ -55,11 +55,17 @@ module.exports = class IslandCommand extends Command {
 				await delay(120000);
 				const choices = players.filter(player => playersLeft.has(player.id));
 				const ids = choices.map(player => player.id);
+				let i = 0;
+				const display = choices.map(player => {
+					const res = `**${i + 1}.** ${player.user.tag}`;
+					i++;
+					return res;
+				});
 				await msg.say(stripIndents`
 					Alright, who do you want to kick off the island? You have 1 minute to vote.
 
 					_Type the number of the player you want to kick._
-					${choices.map((player, i) => `**${i + 1}.** ${player.user.tag}`).join('\n')}
+					${display.join('\n')}
 				`);
 				const votes = new Collection();
 				const voteFilter = res => {
