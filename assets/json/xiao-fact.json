@@ -62,7 +62,6 @@
 	"In the `roman` command, typing \"zero\" will give you \"_nulla_\", the latin word for zero. This is because zero does not exist in roman numerals.",
 	"The `horse-race` command contains several references: real horse names, My Little Pony characters, and various pop culture jokes. Even a few Xiao jokes are snuck in there!",
 	"In `horse-race`, you will occasionally encounter horses named \"Donald Trump\" and \"Dragon Fire\". Be careful, as these aren't horses, their times are based on the actual human running the race!",
-	"To this day, no one has actually tried to date Dragon Fire after using the `dating` command. Several irl friends thought the joke was funny, though.",
 	"The `screenshot` command uses a massive 2,000,000 entry array to check for adult sites. Some _still_ fall through the cracks.",
 	"The `ship` command will call you a narcissist if you test yourself with yourself.",
 	"Whenever Dragon Fire gets a real fortune cookie, he adds the fortune to the `fortune` command.",
@@ -70,5 +69,6 @@
 	"The `pokedex` command will play the Pokémon's cry if both you and the bot are in a voice channel when the command is used.",
 	"Answers from `would-you-rather` and `will-you-press-the-button` are sent to their respective sites in order to improve their results.",
 	"Reminders in the `remind` command have a maximum length of ~24.84 days. This is due to how JavaScript timeouts work, anything higher than this will fire early, or possibly even instantly.",
-	"For a very long time, `yu-gi-oh-gen` only supported Effect Monsters. `yu-gi-oh-token` was also a seperate command, and did not allow any customization outside of the image."
+	"For a very long time, `yu-gi-oh-gen` only supported Effect Monsters. `yu-gi-oh-token` was also a seperate command, and did not allow any customization outside of the image.",
+	"In `minesweeper`, typing \"xyzzy\" at any point in the game will activate cheat mode, displaying where mines are on the board. No high scores can be saved in this mode, however."
 ]

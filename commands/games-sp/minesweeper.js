@@ -40,18 +40,20 @@ module.exports = class MinesweeperCommand extends Command {
 			game.onLoss = () => { win = false; };
 			const flagged = [];
 			const startTime = new Date();
+			let cheatMode = false;
 			while (win === null) {
 				const currentTime = moment.duration(new Date() - startTime).format('mm:ss');
 				await msg.say(stripIndents`
 					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
 					Type \`flag <coordinates>\` to flag a spot as a bomb. To remove a flag, run it again.
 
-					${this.displayBoard(game.board, game.mask, flagged)}
+					${this.displayBoard(game.board, game.mask, flagged, cheatMode)}
 					**Total Mines:** ${size + 1} | **Flagged:** ${flagged.length} | **Time:** ${currentTime}
 				`);
 				const filter = res => {
 					if (res.author.id !== msg.author.id) return false;
 					const pick = res.content;
+					if (pick.toLowerCase() === 'xyzzy' && !cheatMode) return true;
 					if (pick.toLowerCase() === 'end') return true;
 					const coordPicked = pick.match(turnRegex);
 					if (!coordPicked) return false;
@@ -73,6 +75,11 @@ module.exports = class MinesweeperCommand extends Command {
 				if (choice.toLowerCase() === 'end') {
 					win = false;
 					break;
+				}
+				if (choice.toLowerCase() === 'xyzzy') {
+					cheatMode = true;
+					await msg.say('Cheat mode is now active. No high score will be saved.');
+					continue;
 				}
 				const coordPicked = choice.match(turnRegex);
 				const x = Number.parseInt(coordPicked[2], 10);
@@ -101,7 +108,7 @@ module.exports = class MinesweeperCommand extends Command {
 			const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
 			const highScoreUser = await this.client.redis.get(`minesweeper-${size}-user`);
-			const scoreBeat = win && (!highScore || highScore > newScore);
+			const scoreBeat = !cheatMode && win && (!highScore || highScore > newScore);
 			const user = await fetchHSUserDisplay(this.client, highScoreUser);
 			if (scoreBeat) {
 				await this.client.redis.set(`minesweeper-${size}`, newScore);
@@ -123,7 +130,7 @@ module.exports = class MinesweeperCommand extends Command {
 		}
 	}
 
-	displayBoard(board, mask, flagged) {
+	displayBoard(board, mask, flagged, cheatMode = false) {
 		let str = '';
 		str += '⬛';
 		str += nums.slice(0, board.length).join('');
@@ -131,12 +138,12 @@ module.exports = class MinesweeperCommand extends Command {
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
 			board[i].forEach((item, j) => {
-				if (!mask || mask[i][j]) {
+				if (cheatMode || !mask || mask[i][j]) {
 					if (item === '*') {
 						str += '💣';
-					} else if (item === 0) {
+					} else if (!cheatMode && item === 0) {
 						str += '⬜';
-					} else {
+					} else if (!cheatMode) {
 						str += nums[item - 1];
 					}
 				} else if (flagged.includes(`${j},${i}`)) {
