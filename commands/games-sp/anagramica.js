@@ -1,9 +1,10 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
-const { reactIfAble, fetchHSUserDisplay } = require('../../util/Util');
+const { shuffle, reactIfAble, fetchHSUserDisplay } = require('../../util/Util');
 const scores = require('../../assets/json/anagramica');
 const pool = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 module.exports = class AnagramicaCommand extends Command {
@@ -100,9 +101,11 @@ module.exports = class AnagramicaCommand extends Command {
 
 	async fetchList() {
 		const letters = [];
-		for (let i = 0; i < 10; i++) letters.push(pool[Math.floor(Math.random() * pool.length)]);
+		letters.push(vowels[Math.floor(Math.random() * vowels.length)]);
+		letters.push(vowels[Math.floor(Math.random() * vowels.length)]);
+		for (let i = 0; i < 8; i++) letters.push(pool[Math.floor(Math.random() * pool.length)]);
 		const { body } = await request.get(`http://www.anagramica.com/all/${letters.join('')}`);
-		return { valid: body.all, letters };
+		return { valid: body.all, letters: shuffle(letters) };
 	}
 
 	getScore(letters, word) {
