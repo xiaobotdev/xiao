@@ -79,7 +79,7 @@ module.exports = class StocksCommand extends Command {
 				interval: '1min',
 				apikey: ALPHA_VANTAGE_KEY
 			});
-		if (body['Error Message']) return null;
+		if (body['Error Message'] || !body['Time Series (1min)']) return null;
 		const data = Object.values(body['Time Series (1min)'])[0];
 		return {
 			symbol,
