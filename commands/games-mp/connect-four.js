@@ -74,9 +74,9 @@ module.exports = class ConnectFourCommand extends Command {
 				);
 				const filter = res => {
 					if (res.author.id !== opponent.id) return false;
-					const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(value);
+					const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(res.content);
 					return hasEmoji || available.includes(res.content.toLowerCase());
-				}
+				};
 				const p2Color = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: 30000
