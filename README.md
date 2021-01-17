@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 576
+Total: 577
 
 ### Utility:
 
@@ -271,6 +271,7 @@ Total: 576
 * **credit:** Responds with a command's credits list.
 * **donate:** Responds with the bot's donation links.
 * **help:** Displays a list of available commands, or detailed information for a specific command.
+* **high-scores:** Responds with the high scores the bot has saved.
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
 * **join:** Joins your voice channel.
