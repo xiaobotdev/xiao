@@ -100,8 +100,22 @@ module.exports = class MinesweeperCommand extends Command {
 			const newScore = Date.now() - startTime;
 			const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-			if (win && (!highScore || highScore > newScore)) {
+			const highScoreUser = await this.client.redis.get(`minesweeper-${size}-user`);
+			const scoreBeat = win && (!highScore || highScore > newScore);
+			let user;
+			if (user) {
+				try {
+					const fetched = await this.client.users.fetch(highScoreUser);
+					user = fetched.tag;
+				} catch {
+					user = 'Unknown';
+				}
+			} else {
+				user = 'no one';
+			}
+			if (scoreBeat) {
 				await this.client.redis.set(`minesweeper-${size}`, newScore);
+				await this.client.redis.set(`minesweeper-${size}-user`, msg.author.id);
 			}
 			this.client.games.delete(msg.channel.id);
 			if (win === null) return msg.say('Game ended due to inactivity.');
@@ -109,7 +123,7 @@ module.exports = class MinesweeperCommand extends Command {
 			const displayTime = moment.duration(highScore).format('mm:ss');
 			return msg.say(stripIndents`
 				${win ? `Nice job! You win! (Took ${newDisplayTime})` : 'Sorry... You lose.'}
-				${win && (!highScore || highScore > newScore) ? `**New High Score!** Old:` : `High Score:`} ${displayTime}
+				${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${displayTime} (Held by ${user})
 
 				${this.displayBoard(game.board)}
 			`);
