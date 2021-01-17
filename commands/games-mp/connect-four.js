@@ -52,12 +52,12 @@ module.exports = class ConnectFourCommand extends Command {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
-		const playerOneEmoji = colors[color];
-		let playerTwoEmoji = color === 'yellow' ? colors.red : colors.yellow;
+		const playerOneEmoji = color;
+		let playerTwoEmoji = color === colors.yellow ? colors.red : colors.yellow;
 		try {
 			const available = Object.keys(colors).filter(clr => {
-				if (color === 'blue' && clr === 'purple') return false;
-				if (color === 'purple' && clr === 'blue') return false;
+				if (color === colors.blue && clr === colors.purple) return false;
+				if (color === colors.purple && clr === colors.blue) return false;
 				return color !== clr;
 			});
 			if (opponent.bot) {
