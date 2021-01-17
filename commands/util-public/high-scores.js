@@ -46,7 +46,7 @@ module.exports = class HighScoresCommand extends Command {
 			__**Single-Score Games:**__
 			\`typing-race\`/\`typing-test\`: ${typingRace / 1000}s (Held by ${typingRaceUserDisplay})
 			\`anagramica\`: ${anagrams} (Held by ${anagramsUserDisplay})
-			\`reaction-time\`: ${reactionTime / 1000}s (Held by ${reactionTimeUserDisplay})
+			\`gunfight\`/\`reaction-time\`: ${reactionTime / 1000}s (Held by ${reactionTimeUserDisplay})
 
 			__**Minesweeper:**__
 			${minesweeperDisplay}
