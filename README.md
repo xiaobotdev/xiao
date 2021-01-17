@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 577
+Total: 578
 
 ### Utility:
 
@@ -540,6 +540,7 @@ Total: 577
 * **pokedex-image:** Responds with the image of a Pokémon.
 * **pokedex-location:** Responds with the location data for a Pokémon.
 * **pokedex-moveset:** Responds with the moveset for a Pokémon.
+* **pokedex-stats:** Responds with the stats for a Pokémon.
 * **pokedex:** Searches the Pokédex for a Pokémon.
 
 ### Analyzers:
@@ -1567,10 +1568,11 @@ here.
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
 	* pokedex (API)
+	* pokedex-cry (API)
 	* pokedex-image (API)
 	* pokedex-location (API)
 	* pokedex-moveset (API)
-	* pokemon-cry (API)
+	* pokedex-stats (API)
 	* whos-that-pokemon (API)
 	* whos-that-pokemon-cry (API)
 - [Pokémon](https://www.pokemon.com/us/)
@@ -1579,10 +1581,11 @@ here.
 	* hat (Ash Hat Original Anime)
 	* name-rater (Sprite)
 	* pokedex (Images, Original Game)
+	* pokedex-cry (Original Game)
 	* pokedex-image (Images, Original Game)
 	* pokedex-location (Images, Original Game)
 	* pokedex-moveset (Images, Original Game)
-	* pokemon-cry (Original Game)
+	* pokedex-stats (Images, Original Game)
 	* pokemon-fusion (Original Game)
 	* whos-that-pokemon (Images, Original Game)
 	* whos-that-pokemon-cry (Images, Original Game)
@@ -1590,7 +1593,7 @@ here.
 	* wynaut (Image, Original Anime)
 - [Pokémon Showdown](https://play.pokemonshowdown.com/)
 	* pokedex ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
-	* pokemon-cry ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
+	* pokedex-cry ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
 	* whos-that-pokemon ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
 	* whos-that-pokemon-cry ([Cry Sound Effects (Meltan and Melmetal)](https://play.pokemonshowdown.com/audio/cries/))
 - [Pornhub](https://www.pornhub.com/)
@@ -1665,6 +1668,7 @@ here.
 	* pokedex-image (Images)
 	* pokedex-location (Images)
 	* pokedex-moveset (Images)
+	* pokedex-stats (Images)
 	* whos-that-pokemon (Images)
 	* whos-that-pokemon-cry (Images)
 - [ShareFonts.net](https://www.wfonts.com/)
@@ -1747,8 +1751,8 @@ here.
 - [The Sounds Resource](https://www.sounds-resource.com/)
 	* pokedex ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
 	* pokedex ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
-	* pokemon-cry ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
-	* pokemon-cry ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
+	* pokedex-cry ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
+	* pokedex-cry ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 	* whos-that-pokemon ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
 	* whos-that-pokemon ([Cry Sound Effects (Gen 1-7)](https://www.sounds-resource.com/3ds/pokemonultrasunultramoon/))
 	* whos-that-pokemon-cry ([Cry Sound Effects (Gen 8)](https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/))
