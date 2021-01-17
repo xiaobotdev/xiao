@@ -69,6 +69,18 @@ module.exports = class PokedexCommand extends Command {
 				return !arrayEquals(defaultVariety.types, variety.types);
 			});
 			const feet = Math.floor(data.height / 12);
+			const evoChain = data.chain.data.map(pkmn => {
+				if (Array.isArray(pkmn)) {
+					return pkmn.map(pkmn2 => {
+						const found = this.client.pokemon.get(pkmn2);
+						if (found.id === data.id) return `**${found.name}**`;
+						return found.name;
+					}).join('/');
+				}
+				const found = this.client.pokemon.get(pkmn);
+				if (found.id === data.id) return `**${found.name}**`;
+				return found.name;
+			}).join(' -> ');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
@@ -80,23 +92,11 @@ module.exports = class PokedexCommand extends Command {
 				.addField('❯ Class', firstUpperCase(data.class), true)
 				.addField('❯ Height', `${feet}'${Math.floor(data.height) - (feet * 12)}"`, true)
 				.addField('❯ Weight', `${data.weight} lbs.`, true)
-				.addField(`❯ ${this.megaEvolveEmoji} Mega?`, data.mega ? 'Yes' : 'No', true)
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
-				}).join('\n'), true)
-				.addField('❯ Evolution Chain', data.chain.data.map(pkmn => {
-					if (Array.isArray(pkmn)) {
-						return pkmn.map(pkmn2 => {
-							const found = this.client.pokemon.get(pkmn2);
-							if (found.id === data.id) return `**${found.name}**`;
-							return found.name;
-						}).join('/');
-					}
-					const found = this.client.pokemon.get(pkmn);
-					if (found.id === data.id) return `**${found.name}**`;
-					return found.name;
-				}).join(' -> '))
+				}).join('\n'))
+				.addField('❯ Evolution Chain', `${evoChain}${data.mega ? ` -> ${this.megaEvolveEmoji}` : ''}`)
 				.addField('❯ Held Items',
 					data.heldItems.length ? data.heldItems.map(item => `${item.name} (${item.rarity}%)`).join('\n') : 'None')
 				.addField('❯ Gender Rate',
