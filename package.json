@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "126.4.0",
+	"version": "126.4.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -46,6 +46,7 @@
 		"discord.js": "^12.5.1",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
+		"emoji-regex": "^9.2.0",
 		"eslint": "^7.18.0",
 		"expr-eval": "^2.0.2",
 		"gifencoder": "^2.0.1",

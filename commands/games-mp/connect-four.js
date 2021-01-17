@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { Connect4AI } = require('connect4-ai');
 const { stripIndents } = require('common-tags');
+const emojiRegex = require('emoji-regex/RGI_Emoji.js');
 const { verify, list } = require('../../util/Util');
 const { LOADING_EMOJI_ID } = process.env;
 const blankEmoji = '⚪';
@@ -31,10 +32,16 @@ module.exports = class ConnectFourCommand extends Command {
 				},
 				{
 					key: 'color',
-					prompt: `What color do you want to be? Either ${list(Object.keys(colors), 'or')}.`,
-					type: 'string',
-					oneOf: Object.keys(colors),
-					parse: color => color.toLowerCase()
+					prompt: `What color do you want to be? Either an emoji or one of ${list(Object.keys(colors), 'or')}.`,
+					type: 'default-emoji|string',
+					validate: color => {
+						const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(value);
+						if (!hasEmoji && !colors[color.toLowerCase()]) {
+							return `Please enter an emoji or one of the following: ${list(Object.keys(colors), 'or')}.`;
+						}
+						return true;
+					},
+					parse: color => colors[color.toLowerCase()] || color
 				}
 			]
 		});
@@ -62,13 +69,22 @@ module.exports = class ConnectFourCommand extends Command {
 					this.client.games.delete(msg.channel.id);
 					return msg.say('Looks like they declined...');
 				}
-				await msg.say(`${opponent}, what color do you want to be? Either ${list(available, 'or')}.`);
-				const filter = res => res.author.id === opponent.id && available.includes(res.content.toLowerCase());
+				await msg.say(
+					`${opponent}, what color do you want to be? Either an emoji or one of ${list(available, 'or')}.`
+				);
+				const filter = res => {
+					if (res.author.id !== opponent.id) return false;
+					const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(value);
+					return hasEmoji || available.includes(res.content.toLowerCase());
+				}
 				const p2Color = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: 30000
 				});
-				if (p2Color.size) playerTwoEmoji = colors[p2Color.first().content.toLowerCase()];
+				if (p2Color.size) {
+					const choice = p2Color.first().content.toLowerCase();
+					playerTwoEmoji = colors[choice] || choice;
+				}
 			}
 			let AIEngine = null;
 			if (opponent.bot) AIEngine = new Connect4AI();
