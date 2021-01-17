@@ -29,7 +29,7 @@ module.exports = class HighScoresCommand extends Command {
 			const minesweeperUser = await this.client.redis.get(`minesweeper-${size}-user`);
 			minesweeperScores[size] = moment.duration(minesweeper).format('mm:ss');
 			let user;
-			if (user) {
+			if (minesweeperUser) {
 				try {
 					const fetched = await this.client.users.fetch(minesweeperUser);
 					user = fetched.tag;
