@@ -100,9 +100,17 @@ module.exports = class Pokemon {
 	}
 
 	get spriteImageURL() {
-		if (this.missingno) return missingno.sprite;
+		if (this.missingno) return missingno.sprites.default;
 		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
 		return `https://serebii.net/pokemon/art/${this.displayID}.png`;
+	}
+
+	formSpriteImageURL(variety) {
+		if (this.missingno && form === 'yellow') return missingno.sprites.yellow;
+		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
+		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
+		const name = found.name ? found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('') : '';
+		return `https://serebii.net/pokemon/art/${this.displayID}${name ? `-${name}` : ''}.png`;
 	}
 
 	get boxImageURL() {
