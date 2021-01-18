@@ -71,7 +71,7 @@ module.exports = class PokedexCommand extends Command {
 				sAtk: Math.round((variety.stats.sAtk / 255) * 10) * 2,
 				sDef: Math.round((variety.stats.sDef / 255) * 10) * 2,
 				spd: Math.round((variety.stats.spd / 255) * 10) * 2,
-				total: Math.round((statTotal / 720) * 10) * 2
+				total: Math.round((statTotal / 1125) * 10) * 2
 			};
 			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
 			const embed = new MessageEmbed()
