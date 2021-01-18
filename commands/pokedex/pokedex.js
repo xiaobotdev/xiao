@@ -126,7 +126,6 @@ module.exports = class PokedexCommand extends Command {
 			}
 			return msg.embed(embed);
 		} catch (err) {
-			throw err;
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
