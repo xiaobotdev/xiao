@@ -62,7 +62,7 @@ module.exports = class Pokemon {
 	}
 
 	baseStatTotal(variety) {
-		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : variety.default);
+		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
 		if (!found) return null;
 		return found.stats.hp + found.stats.atk + found.stats.def + found.stats.sAtk + found.stats.sDef + found.stats.spd;
 	}
