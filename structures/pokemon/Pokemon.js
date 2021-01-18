@@ -121,6 +121,13 @@ module.exports = class Pokemon {
 		return `https://www.serebii.net/pokedex-swsh/icon/${this.displayID}.png`;
 	}
 
+	formBoxImageURL(variety) {
+		if (this.missingno) return missingno.box;
+		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
+		const name = found.default ? '' : found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('');
+		return `https://www.serebii.net/pokedex-swsh/icon/${this.displayID}${name ? `-${name}` : ''}.png`;
+	}
+
 	get serebiiURL() {
 		if (this.missingno) return missingno.url;
 		return `https://www.serebii.net/pokedex-swsh/${this.displayID}.shtml`;
