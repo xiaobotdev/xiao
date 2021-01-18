@@ -39,6 +39,7 @@ module.exports = class ConnectFourCommand extends Command {
 						if (!hasEmoji && !colors[color.toLowerCase()]) {
 							return `Please enter an emoji or one of the following: ${list(Object.keys(colors), 'or')}.`;
 						}
+						if (color === blankEmoji) return 'You cannot use this emoji.';
 						return true;
 					},
 					parse: color => colors[color.toLowerCase()] || color
@@ -74,6 +75,7 @@ module.exports = class ConnectFourCommand extends Command {
 				);
 				const filter = res => {
 					if (res.author.id !== opponent.id) return false;
+					if (res.content === blankEmoji) return false;
 					const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(res.content);
 					return hasEmoji || available.includes(res.content.toLowerCase());
 				};
