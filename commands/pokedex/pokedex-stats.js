@@ -54,7 +54,7 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const variety = data.varieties.find(vrity => form ? vrity.name.toLowerCase() === form : variety.default);
+			const variety = data.varieties.find(vrity => form ? vrity.name.toLowerCase() === form : vrity.default);
 			if (!variety) {
 				const varieties = data.varieties.map(vrity => vrity.name || 'Normal');
 				return msg.say(`Invalid form. The forms available for this Pokémon are: ${list(varieties, 'and')}`);
