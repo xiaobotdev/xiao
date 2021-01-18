@@ -54,13 +54,14 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const variety = data.varieties.find(vrity => {
+			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
+			const variety = displayForms.find(vrity => {
 				if (!form || form === 'normal') return vrity.default;
 				if (!vrity.name) return false;
 				return vrity.name.toLowerCase() === form;
 			});
 			if (!variety) {
-				const varieties = data.varieties.map(vrity => vrity.name || 'Normal');
+				const varieties = displayForms.map(vrity => vrity.name || 'Normal');
 				return msg.say(`Invalid form. The forms available for this Pokémon are: ${list(varieties, 'and')}`);
 			}
 			const statTotal = data.baseStatTotal(variety.id);
@@ -73,7 +74,6 @@ module.exports = class PokedexCommand extends Command {
 				spd: Math.round((variety.stats.spd / 255) * 10) * 2,
 				total: Math.round((statTotal / 1125) * 10) * 2
 			};
-			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
