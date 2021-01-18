@@ -32,11 +32,12 @@ module.exports = class CountryCommand extends Command {
 		try {
 			const { body } = await request.get(`https://restcountries.eu/rest/v2/name/${encodeURIComponent(query)}`);
 			const data = body.find(country => {
-				return country.name.toLowerCase() === query.toLowerCase()
-					|| country.altSpellings.some(alt => alt.toLowerCase() === query.toLowerCase())
-					|| country.alpha2Code.toLowerCase() === query.toLowerCase()
-					|| country.alpha3Code.toLowerCase() === query.toLowerCase()
-					|| country.nativeName.toLowerCase() === query.toLowerCase()
+				const search = query.toLowerCase();
+				return country.name.toLowerCase() === search
+					|| country.altSpellings.some(alt => alt.toLowerCase() === search)
+					|| country.alpha2Code.toLowerCase() === search
+					|| country.alpha3Code.toLowerCase() === search
+					|| country.nativeName.toLowerCase() === search
 			}) || body[0];
 			const embed = new MessageEmbed()
 				.setColor(0x00AE86)
