@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { arrayEquals } = require('../../util/Util');
+const { list } = require('../../util/Util');
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -34,48 +34,60 @@ module.exports = class PokedexCommand extends Command {
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
 					type: 'string'
+				},
+				{
+					key: 'form',
+					prompt: 'What form do you want to get information for?',
+					type: 'string',
+					default: '',
+					parse: form => {
+						if (form.toLowerCase() === 'normal') return '';
+						return form.toLowerCase();
+					}
 				}
 			]
 		});
 	}
 
-	async run(msg, { pokemon }) {
+	async run(msg, { pokemon, form }) {
 		try {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const defaultVariety = data.varieties.find(variety => variety.default);
-			const abilitiesShown = data.varieties.filter(variety => {
-				if (variety.default) return true;
-				return !arrayEquals(defaultVariety.abilities, variety.abilities);
-			});
+			const variety = data.varieties.find(vrity => form ? vrity.name.toLowerCase() === form : variety.default);
+			if (!variety) {
+				const varieties = data.varieties.map(vrity => vrity.name || 'Normal');
+				return msg.say(`Invalid form. The forms available for this Pokémon are: ${list(varieties, 'and')}`);
+			}
+			const statTotal = data.baseStatTotal(variety.id);
 			const repeat = {
-				hp: Math.round((data.stats.hp / 255) * 10) * 2,
-				atk: Math.round((data.stats.atk / 255) * 10) * 2,
-				def: Math.round((data.stats.def / 255) * 10) * 2,
-				sAtk: Math.round((data.stats.sAtk / 255) * 10) * 2,
-				sDef: Math.round((data.stats.sDef / 255) * 10) * 2,
-				spd: Math.round((data.stats.spd / 255) * 10) * 2,
-				total: Math.round((data.baseStatTotal / 720) * 10) * 2
+				hp: Math.round((variety.stats.hp / 255) * 10) * 2,
+				atk: Math.round((variety.stats.atk / 255) * 10) * 2,
+				def: Math.round((variety.stats.def / 255) * 10) * 2,
+				sAtk: Math.round((variety.stats.sAtk / 255) * 10) * 2,
+				sDef: Math.round((variety.stats.sDef / 255) * 10) * 2,
+				spd: Math.round((variety.stats.spd / 255) * 10) * 2,
+				total: Math.round((statTotal / 720) * 10) * 2
 			};
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
 				.setThumbnail(data.spriteImageURL)
-				.addField('❯ Base Stats (Base Form)', stripIndents`
-					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${data.stats.hp}**
-					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${data.stats.atk}**
-					\`Defense:     [${'█'.repeat(repeat.def)}${' '.repeat(20 - repeat.def)}]\` **${data.stats.def}**
-					\`Sp. Attack:  [${'█'.repeat(repeat.sAtk)}${' '.repeat(20 - repeat.sAtk)}]\` **${data.stats.sAtk}**
-					\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${data.stats.sDef}**
-					\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${data.stats.spd}**
+				.addField(`❯ Base Stats (${variety.name || 'Base'} Form)`, stripIndents`
+					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${variety.stats.hp}**
+					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${variety.stats.atk}**
+					\`Defense:     [${'█'.repeat(repeat.def)}${' '.repeat(20 - repeat.def)}]\` **${variety.stats.def}**
+					\`Sp. Attack:  [${'█'.repeat(repeat.sAtk)}${' '.repeat(20 - repeat.sAtk)}]\` **${variety.stats.sAtk}**
+					\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${variety.stats.sDef}**
+					\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${variety.stats.spd}**
 					\`-----------------------------------\`
-					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${data.baseStatTotal}**
+					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${statTotal}**
 				`)
-				.addField('❯ Abilities', abilitiesShown.map(variety => {
-					const showParens = variety.name && abilitiesShown.length > 1;
-					return `${variety.abilities.join('/')}${showParens ? ` (${variety.name})` : ''}`;
-				}).join('\n'));
+				.addField('❯ Abilities', variety.abilities.join('/'))
+				.addField('❯ Other Forms', stripIndents`
+					Use ${this.usage(`${data.id} <form>`)} to get stats for another form.
+					Forms Available: ${data.varieties.map(vrity => vrity.name || 'Normal').join(', ')}
+				`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

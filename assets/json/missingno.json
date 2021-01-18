@@ -42,7 +42,15 @@
 				"Bird",
 				"Normal"
 			],
-			"abilities": ["N/A"]
+			"abilities": ["N/A"],
+			"stats": {
+				"hp": 33,
+				"atk": 136,
+				"def": 0,
+				"sAtk": 6,
+				"sDef": 6,
+				"spd": 29
+			}
 		},
 		{
 			"is_default": false,
@@ -53,7 +61,15 @@
 				"Normal",
 				"999"
 			],
-			"abilities": ["N/A"]
+			"abilities": ["N/A"],
+			"stats": {
+				"hp": 178,
+				"atk": 19,
+				"def": 11,
+				"sAtk": 23,
+				"sDef": 23,
+				"spd": 0
+			}
 		}
 	],
 	"evolution_chain": {
@@ -63,14 +79,6 @@
 	"is_mythical": false,
 	"is_baby": false,
 	"gender_rate": -1,
-	"stats": {
-		"hp": 33,
-		"atk": 136,
-		"def": 0,
-		"sAtk": 6,
-		"sDef": 6,
-		"spd": 29
-	},
 	"height": 120,
 	"weight": 3507.2,
 	"moveSet": [
