@@ -32,7 +32,7 @@ module.exports = class CountryCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { body } = await request.get(`https://restcountries.eu/rest/v2/name/${query}`);
-			const data = body[0];
+			const data = body.find(country => country.name.toLowerCase() === query.toLowerCase()) || body[0];
 			const embed = new MessageEmbed()
 				.setColor(0x00AE86)
 				.setTitle(data.name)
