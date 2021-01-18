@@ -77,7 +77,7 @@ module.exports = class PokedexCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
-				.setThumbnail(data.spriteImageURL)
+				.setThumbnail(data.formSpriteImageURL(variety.id))
 				.addField(`❯ Base Stats (${variety.name || 'Base'} Form)`, stripIndents`
 					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${variety.stats.hp}**
 					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${variety.stats.atk}**
