@@ -112,7 +112,9 @@ module.exports = class Pokemon {
 		}
 		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
 		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
-		const name = found.default ? '' : found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('');
+		const name = found.default ? '' : found.mega
+			? found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('')
+			: found.name.toLowerCase().charAt(0);
 		return `https://serebii.net/pokemon/art/${this.displayID}${name ? `-${name}` : ''}.png`;
 	}
 
@@ -124,7 +126,9 @@ module.exports = class Pokemon {
 	formBoxImageURL(variety) {
 		if (this.missingno) return missingno.box;
 		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
-		const name = found.default ? '' : found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('');
+		const name = found.default ? '' : found.mega
+			? found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('')
+			: found.name.toLowerCase().charAt(0);
 		return `https://www.serebii.net/pokedex-swsh/icon/${this.displayID}${name ? `-${name}` : ''}.png`;
 	}
 
