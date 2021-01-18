@@ -106,7 +106,10 @@ module.exports = class Pokemon {
 	}
 
 	formSpriteImageURL(variety) {
-		if (this.missingno && variety === 'yellow') return missingno.sprites.yellow;
+		if (this.missingno) {
+			if (variety === 'yellow') return missingno.sprites.yellow;
+			return missingno.sprites.default;
+		}
 		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
 		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
 		const name = found.default ? '' : found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('');
