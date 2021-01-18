@@ -22,8 +22,7 @@ module.exports = class CountryCommand extends Command {
 				{
 					key: 'query',
 					prompt: 'What country would you like to search for?',
-					type: 'string',
-					parse: query => encodeURIComponent(query)
+					type: 'string'
 				}
 			]
 		});
@@ -31,7 +30,7 @@ module.exports = class CountryCommand extends Command {
 
 	async run(msg, { query }) {
 		try {
-			const { body } = await request.get(`https://restcountries.eu/rest/v2/name/${query}`);
+			const { body } = await request.get(`https://restcountries.eu/rest/v2/name/${encodeURIComponent(query)}`);
 			const data = body.find(country => {
 				return country.name.toLowerCase() === query.toLowerCase()
 					|| country.altSpellings.some(alt => alt.toLowerCase() === query.toLowerCase())
