@@ -107,7 +107,7 @@ module.exports = class Pokemon {
 
 	formSpriteImageURL(variety) {
 		if (this.missingno) {
-			if (variety === 'yellow') return missingno.sprites.yellow;
+			if (variety.toLowerCase() === 'missingno-yellow') return missingno.sprites.yellow;
 			return missingno.sprites.default;
 		}
 		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
