@@ -39,6 +39,7 @@ module.exports = class Pokemon {
 				name: name || null,
 				mega: data.missingno ? false : null,
 				stats: data.missingno ? variety.stats : {},
+				statsDiffer: data.missingno ? true : null,
 				default: variety.is_default,
 				types: data.missingno ? variety.types : [],
 				abilities: data.missingno ? variety.abilities : []
@@ -139,6 +140,7 @@ module.exports = class Pokemon {
 			sDef: defaultBody.stats.find(stat => stat.stat.name === 'special-defense').base_stat,
 			spd: defaultBody.stats.find(stat => stat.stat.name === 'speed').base_stat
 		};
+		defaultVariety.statsDiffer = true;
 		const inSwordShield = defaultBody.moves
 			.some(move => move.version_group_details.some(mve => mve.version_group.name === 'sword-shield'));
 		this.moveSetVersion = inSwordShield ? 'sword-shield' : 'ultra-sun-ultra-moon';
@@ -165,7 +167,14 @@ module.exports = class Pokemon {
 				sAtk: body.stats.find(stat => stat.stat.name === 'special-attack').base_stat,
 				sDef: body.stats.find(stat => stat.stat.name === 'special-defense').base_stat,
 				spd: body.stats.find(stat => stat.stat.name === 'speed').base_stat
-			}
+			};
+			const baseStats = defaultVariety.stats;
+			variety.statsDiffer = baseStats.hp !== variety.stats.hp
+				|| baseStats.atk !== variety.stats.atk
+				|| baseStats.def !== variety.stats.def
+				|| baseStats.sAtk !== variety.stats.sAtk
+				|| baseStats.sDef !== variety.stats.sDef
+				|| baseStats.spd !== variety.stats.spd;
 			for (const ability of body.abilities) {
 				const { body: abilityBody } = await request.get(ability.ability.url);
 				variety.abilities.push(abilityBody.names.find(name => name.language.name === 'en').name);

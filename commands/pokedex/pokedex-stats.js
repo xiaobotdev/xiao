@@ -54,7 +54,11 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const variety = data.varieties.find(vrity => form ? vrity.name.toLowerCase() === form : vrity.default);
+			const variety = data.varieties.find(vrity => {
+				if (!form) return vrity.default;
+				if (!vrity.name && form === 'normal') return true;
+				return vrity.name.toLowerCase() === form;
+			});
 			if (!variety) {
 				const varieties = data.varieties.map(vrity => vrity.name || 'Normal');
 				return msg.say(`Invalid form. The forms available for this Pokémon are: ${list(varieties, 'and')}`);
@@ -69,6 +73,7 @@ module.exports = class PokedexCommand extends Command {
 				spd: Math.round((variety.stats.spd / 255) * 10) * 2,
 				total: Math.round((statTotal / 720) * 10) * 2
 			};
+			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
@@ -85,8 +90,9 @@ module.exports = class PokedexCommand extends Command {
 				`)
 				.addField('❯ Abilities', variety.abilities.join('/'))
 				.addField('❯ Other Forms', stripIndents`
-					Use ${this.usage(`${data.id} <form>`)} to get stats for another form.
-					Forms Available: ${data.varieties.map(vrity => vrity.name || 'Normal').join(', ')}
+					_Use ${this.usage(`${data.id} <form>`)} to get stats for another form._
+
+					**Forms Available:** ${displayForms.map(vrity => `\`${vrity.name || 'Normal'}\``).join(', ')}
 				`);
 			return msg.embed(embed);
 		} catch (err) {
