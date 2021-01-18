@@ -115,13 +115,18 @@ module.exports = class Pokemon {
 
 	async fetchGameData() {
 		if (this.gameDataCached) return this;
+		await this.fetchDefaultVariety();
+		await this.fetchOtherVarieties();
+		await this.fetchChain();
+		this.gameDataCached = true;
+		return this;
+	}
+
+	async fetchDefaultVariety() {
 		const defaultVariety = this.varieties.find(variety => variety.default);
 		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
 		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
-		for (const ability of defaultBody.abilities) {
-			const { body: defaultAbilityBody } = await request.get(ability.ability.url);
-			defaultVariety.abilities.push(defaultAbilityBody.names.find(name => name.language.name === 'en').name);
-		}
+		this.fetchAbilities(defaultBody.abilities);
 		this.stats = {
 			hp: defaultBody.stats.find(stat => stat.stat.name === 'hp').base_stat,
 			atk: defaultBody.stats.find(stat => stat.stat.name === 'attack').base_stat,
@@ -133,7 +138,37 @@ module.exports = class Pokemon {
 		const inSwordShield = defaultBody.moves
 			.some(move => move.version_group_details.some(mve => mve.version_group.name === 'sword-shield'));
 		this.moveSetVersion = inSwordShield ? 'sword-shield' : 'ultra-sun-ultra-moon';
-		for (const move of defaultBody.moves) {
+		this.height = defaultBody.height * 3.94;
+		this.weight = defaultBody.weight * 0.2205;
+		this.encountersURL = defaultBody.location_area_encounters;
+		await this.fetchMoves(defaultBody.moves);
+		await this.fetchHeldItems(defaultBody.held_items);
+		return this;
+	}
+
+	async fetchOtherVarieties() {
+		const defaultVariety = this.varieties.find(variety => variety.default);
+		for (const variety of this.varieties) {
+			if (variety.id === defaultVariety.id) continue;
+			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
+			const { body: formBody } = await request.get(`https://pokeapi.co/api/v2/pokemon-form/${variety.id}`);
+			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
+			variety.mega = formBody.is_mega || false;
+			await this.fetchAbilities(body.abilities);
+		}
+		return this.varieties;
+	}
+
+	async fetchAbilities(abilities) {
+		for (const ability of abilities) {
+			const { body: defaultAbilityBody } = await request.get(ability.ability.url);
+			abilities.push(defaultAbilityBody.names.find(name => name.language.name === 'en').name);
+		}
+		return abilities;
+	}
+
+	async fetchMoves(moves) {
+		for (const move of moves) {
 			const versionGroup = move.version_group_details.find(mve => mve.version_group.name === this.moveSetVersion);
 			if (!versionGroup || !versionGroup.level_learned_at) continue;
 			const { body: moveBody } = await request.get(move.move.url);
@@ -145,36 +180,27 @@ module.exports = class Pokemon {
 			});
 		}
 		this.moveSet = this.moveSet.sort((a, b) => a.level - b.level);
-		for (const variety of this.varieties) {
-			if (variety.id === defaultVariety.id) continue;
-			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
-			const { body: formBody } = await request.get(`https://pokeapi.co/api/v2/pokemon-form/${variety.id}`);
-			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
-			variety.mega = formBody.is_mega || false;
-			for (const ability of body.abilities) {
-				const { body: abilityBody } = await request.get(ability.ability.url);
-				variety.abilities.push(abilityBody.names.find(name => name.language.name === 'en').name);
-			}
-		}
-		this.height = defaultBody.height * 3.94;
-		this.weight = defaultBody.weight * 0.2205;
-		this.heldItems = defaultBody.held_items
+		return this.moveSet;
+	}
+
+	async fetchHeldItems(heldItems) {
+		this.heldItems = heldItems
 			.filter(item => item.version_details.some(version => {
-				const inSwordShield2 = version.version.name === 'sword' || version.version.name === 'shield';
-				if (inSwordShield2) return true;
-				if (!inSwordShield2 && (version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon')) {
+				const inSwordShield = version.version.name === 'sword' || version.version.name === 'shield';
+				if (inSwordShield) return true;
+				if (!inSwordShield && (version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon')) {
 					return true;
 				}
 				return false;
 			}))
 			.map(item => {
-				const inSwordShield2 = item.version_details
+				const inSwordShield = item.version_details
 					.some(version => version.version.name === 'sword' || version.version.name === 'shield');
 				const { rarity } = item.version_details
 					.find(version => {
-						if (inSwordShield2) return true;
+						if (inSwordShield) return true;
 						const sunMoon = version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon';
-						if (!inSwordShield2 && sunMoon) return true;
+						if (!inSwordShield && sunMoon) return true;
 						return false;
 					});
 				return {
@@ -183,11 +209,8 @@ module.exports = class Pokemon {
 					rarity
 				};
 			});
-		this.encountersURL = defaultBody.location_area_encounters;
 		await this.fetchHeldItemNames();
-		await this.fetchChain();
-		this.gameDataCached = true;
-		return this;
+		return this.heldItems;
 	}
 
 	async fetchChain() {
