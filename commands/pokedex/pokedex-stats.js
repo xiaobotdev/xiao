@@ -55,8 +55,8 @@ module.exports = class PokedexCommand extends Command {
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
 			const variety = data.varieties.find(vrity => {
-				if (!form) return vrity.default;
-				if (!vrity.name && form === 'normal') return true;
+				if (!form || form === 'normal') return vrity.default;
+				if (!vrity.name) return false;
 				return vrity.name.toLowerCase() === form;
 			});
 			if (!variety) {
