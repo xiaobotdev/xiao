@@ -38,6 +38,7 @@ module.exports = class Pokemon {
 				id: variety.pokemon.name,
 				name: name || null,
 				mega: data.missingno ? false : null,
+				stats: data.missingno ? variety.stats : {},
 				default: variety.is_default,
 				types: data.missingno ? variety.types : [],
 				abilities: data.missingno ? variety.abilities : []
@@ -49,7 +50,6 @@ module.exports = class Pokemon {
 		};
 		this.encountersURL = null;
 		this.encounters = data.missingno ? data.encounters : null;
-		this.stats = data.missingno ? data.stats : null;
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
 		this.moveSet = data.missingno ? data.moveSet : [];
@@ -61,15 +61,16 @@ module.exports = class Pokemon {
 			: path.join(__dirname, '..', '..', 'assets', 'sounds', 'pokedex', `${data.id}.wav`);
 	}
 
-	get baseStatTotal() {
-		if (!this.stats) return null;
-		return this.stats.hp + this.stats.atk + this.stats.def + this.stats.sAtk + this.stats.sDef + this.stats.spd;
+	baseStatTotal(variety) {
+		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : variety.default);
+		if (!found) return null;
+		return found.stats.hp + found.stats.atk + found.stats.def + found.stats.sAtk + found.stats.sDef + found.stats.spd;
 	}
 
 	get pseudo() {
 		if (!this.gameDataCached) return null;
 		if (this.legendary || this.mythical || this.baby || this.missingno) return false;
-		if (this.baseStatTotal !== 600) return false;
+		if (this.baseStatTotal() !== 600) return false;
 		if (this.chain.data.length !== 3) return false;
 		return true;
 	}
@@ -127,7 +128,7 @@ module.exports = class Pokemon {
 		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
 		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
 		this.fetchAbilities(defaultBody.abilities);
-		this.stats = {
+		defaultVariety.stats = {
 			hp: defaultBody.stats.find(stat => stat.stat.name === 'hp').base_stat,
 			atk: defaultBody.stats.find(stat => stat.stat.name === 'attack').base_stat,
 			def: defaultBody.stats.find(stat => stat.stat.name === 'defense').base_stat,
@@ -154,6 +155,14 @@ module.exports = class Pokemon {
 			const { body: formBody } = await request.get(`https://pokeapi.co/api/v2/pokemon-form/${variety.id}`);
 			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
 			variety.mega = formBody.is_mega || false;
+			variety.stats = {
+				hp: body.stats.find(stat => stat.stat.name === 'hp').base_stat,
+				atk: body.stats.find(stat => stat.stat.name === 'attack').base_stat,
+				def: body.stats.find(stat => stat.stat.name === 'defense').base_stat,
+				sAtk: body.stats.find(stat => stat.stat.name === 'special-attack').base_stat,
+				sDef: body.stats.find(stat => stat.stat.name === 'special-defense').base_stat,
+				spd: body.stats.find(stat => stat.stat.name === 'speed').base_stat
+			}
 			await this.fetchAbilities(body.abilities);
 		}
 		return this.varieties;
