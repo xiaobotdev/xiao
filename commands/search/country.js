@@ -37,6 +37,7 @@ module.exports = class CountryCommand extends Command {
 					|| country.altSpellings.some(alt => alt.toLowerCase() === query.toLowerCase())
 					|| country.alpha2Code.toLowerCase() === query.toLowerCase()
 					|| country.alpha3Code.toLowerCase() === query.toLowerCase()
+					|| country.nativeName.toLowerCase() === query.toLowerCase()
 			}) || body[0];
 			const embed = new MessageEmbed()
 				.setColor(0x00AE86)
