@@ -32,7 +32,12 @@ module.exports = class CountryCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { body } = await request.get(`https://restcountries.eu/rest/v2/name/${query}`);
-			const data = body.find(country => country.name.toLowerCase() === query.toLowerCase()) || body[0];
+			const data = body.find(country => {
+				return country.name.toLowerCase() === query.toLowerCase()
+					|| country.altSpellings.some(alt => alt.toLowerCase() === query.toLowerCase())
+					|| country.alpha2Code.toLowerCase() === query.toLowerCase()
+					|| country.alpha3Code.toLowerCase() === query.toLowerCase()
+			}) || body[0];
 			const embed = new MessageEmbed()
 				.setColor(0x00AE86)
 				.setTitle(data.name)
