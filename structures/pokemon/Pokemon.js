@@ -127,7 +127,10 @@ module.exports = class Pokemon {
 		const defaultVariety = this.varieties.find(variety => variety.default);
 		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
 		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
-		this.fetchAbilities(defaultBody.abilities);
+		for (const ability of defaultBody.abilities) {
+			const { body: defaultAbilityBody } = await request.get(ability.ability.url);
+			defaultVariety.abilities.push(defaultAbilityBody.names.find(name => name.language.name === 'en').name);
+		}
 		defaultVariety.stats = {
 			hp: defaultBody.stats.find(stat => stat.stat.name === 'hp').base_stat,
 			atk: defaultBody.stats.find(stat => stat.stat.name === 'attack').base_stat,
@@ -163,17 +166,12 @@ module.exports = class Pokemon {
 				sDef: body.stats.find(stat => stat.stat.name === 'special-defense').base_stat,
 				spd: body.stats.find(stat => stat.stat.name === 'speed').base_stat
 			}
-			await this.fetchAbilities(body.abilities);
+			for (const ability of body.abilities) {
+				const { body: abilityBody } = await request.get(ability.ability.url);
+				variety.abilities.push(abilityBody.names.find(name => name.language.name === 'en').name);
+			}
 		}
 		return this.varieties;
-	}
-
-	async fetchAbilities(abilities) {
-		for (const ability of abilities) {
-			const { body: defaultAbilityBody } = await request.get(ability.ability.url);
-			abilities.push(defaultAbilityBody.names.find(name => name.language.name === 'en').name);
-		}
-		return abilities;
 	}
 
 	async fetchMoves(moves) {
