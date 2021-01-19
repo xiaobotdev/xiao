@@ -61,8 +61,8 @@ module.exports = class JengaCommand extends Command {
 						if (res.author.id !== user.id) return false;
 						const choice = res.content;
 						if (choice.toLowerCase() === 'end') return true;
-						const i = Number.parseInt(choice, 10) - 1;
-						return board[i];
+						const j = Number.parseInt(choice, 10) - 1;
+						return board[j];
 					};
 					const turn = await msg.channel.awaitMessages(pickFilter, {
 						max: 1,
