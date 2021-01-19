@@ -104,6 +104,7 @@ module.exports = class ConnectFourCommand extends Command {
 				} else {
 					await msg.say(stripIndents`
 						${user}, which column do you pick? Type \`end\` to forefeit.
+						Can't think of a move? Use \`play for me\`.
 						${opponent.bot ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
 
 						${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
@@ -113,6 +114,7 @@ module.exports = class ConnectFourCommand extends Command {
 						if (res.author.id !== user.id) return false;
 						const choice = res.content;
 						if (choice.toLowerCase() === 'end') return true;
+						if (choice.toLowerCase() === 'play for me') return true;
 						const j = Number.parseInt(choice, 10) - 1;
 						return board[colLevels[j]] && board[colLevels[j]][j] !== undefined;
 					};
@@ -124,13 +126,17 @@ module.exports = class ConnectFourCommand extends Command {
 						await msg.say('Sorry, time is up! I\'ll pick their move for them.');
 						i = AIEngine.playAI('hard');
 						lastMove = i + 1;
-						userTurn = !userTurn;
 						continue;
 					}
 					const choice = turn.first().content;
 					if (choice.toLowerCase() === 'end') {
 						winner = userTurn ? opponent : msg.author;
 						break;
+					}
+					if (choice.toLowerCase() === 'play for me') {
+						i = AIEngine.playAI('hard');
+						lastMove = i + 1;
+						continue;
 					}
 					i = Number.parseInt(choice, 10) - 1;
 					AIEngine.play(i);
