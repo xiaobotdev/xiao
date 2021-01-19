@@ -90,10 +90,10 @@ module.exports = class JengaCommand extends Command {
 				const fell = Math.floor(Math.random() * ((board.length + 1) - i));
 				if (!fell) {
 					winner = userTurn ? opponent : msg.author;
-					await msg.say('And the tower topples!');
+					await msg.say(`${opponent.bot && !userTurn ? `I pick ${i + 1}, a` : 'A'}nd the tower topples!`);
 					break;
 				}
-				await msg.say('Thankfully, the tower stands.');
+				await msg.say(`${opponent.bot && !userTurn ? `I pick ${i + 1}. ` : ''}Thankfully, the tower stands.`);
 				board.shift();
 				userTurn = !userTurn;
 			}
