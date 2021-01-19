@@ -122,7 +122,8 @@ module.exports = class ConnectFourCommand extends Command {
 					});
 					if (!turn.size) {
 						await msg.say('Sorry, time is up! I\'ll pick their move for them.');
-						AIEngine.playAI('hard');
+						i = AIEngine.playAI('hard');
+						lastMove = i + 1;
 						userTurn = !userTurn;
 						continue;
 					}
