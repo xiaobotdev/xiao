@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 578
+Total: 579
 
 ### Utility:
 
@@ -616,6 +616,7 @@ Total: 578
 * **gunfight:** Engage in a western gunfight against another user. High noon.
 * **imposter:** Who is the imposter among us?
 * **island:** Who will be the final two left on the island after a series of vote-kicks?
+* **jenga:** Play a game of Jenga with another user or the AI.
 * **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **poker:** Play poker with up to 5 other users.
@@ -1337,6 +1338,8 @@ here.
 	* jeopardy (Music, Original Show)
 	* jeopardy-question (Original Show)
 	* soundboard (Jeopardy Sound)
+- [Jenga](https://jenga.com/)
+	* jenga (Original Game)
 - [Jessica Knable](https://picsart.com/u/jessicaknable)
 	* hearts ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
 - [Jisho](https://jisho.org/)
