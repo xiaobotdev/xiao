@@ -46,10 +46,16 @@ module.exports = class AnagramicaCommand extends Command {
 			await msg.reply(stripIndents`
 				**You have ${time} seconds to provide anagrams for the following letters:**
 				${letters.map(letter => `\`${letter.toUpperCase()}\``).join(' ')}
+
+				_Need to see the list again? Type \`send list\`._
 			`);
 			const picked = [];
 			const filter = res => {
 				if (res.author.id !== msg.author.id) return false;
+				if (res.content.toLowerCase() === 'send list') {
+					msg.reply(letters.map(letter => `\`${letter.toUpperCase()}\``).join(' ')).catch(() => null);
+					return true;
+				}
 				if (picked.includes(res.content.toLowerCase())) return false;
 				const score = this.getScore(letters, res.content.toLowerCase());
 				if (!score) return false;
