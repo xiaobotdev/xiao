@@ -47,25 +47,26 @@ module.exports = class AnagramicaCommand extends Command {
 				**You have ${time} seconds to provide anagrams for the following letters:**
 				${letters.map(letter => `\`${letter.toUpperCase()}\``).join(' ')}
 
-				_Need to see the list again? Type \`send list\`._
+				_Need to see the list again? Type \`send list\` (or \`sl\`)._
 			`);
 			const picked = [];
 			const filter = res => {
 				if (res.author.id !== msg.author.id) return false;
-				if (res.content.toLowerCase() === 'send list') {
+				const choice = res.content.toLowerCase();
+				if (choice === 'send list' || choice === 'sl') {
 					msg.reply(letters.map(letter => `\`${letter.toUpperCase()}\``).join(' ')).catch(() => null);
 					return true;
 				}
-				if (picked.includes(res.content.toLowerCase())) return false;
-				const score = this.getScore(letters, res.content.toLowerCase());
+				if (picked.includes(choice)) return false;
+				const score = this.getScore(letters, choice);
 				if (!score) return false;
-				if (!valid.includes(res.content.toLowerCase())) {
-					picked.push(res.content.toLowerCase());
+				if (!valid.includes(choice)) {
+					picked.push(choice);
 					reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 					return false;
 				}
 				points += score;
-				picked.push(res.content.toLowerCase());
+				picked.push(choice);
 				reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 				return true;
 			};
