@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 579
+Total: 580
 
 ### Utility:
 
@@ -363,6 +363,7 @@ Total: 579
 * **this-for-that:** So, basically, it's like a bot command for this dumb meme.
 * **word:** Responds with a random word.
 * **xiao-fact:** Responds with a random fact about Xiao.
+* **yes-no:** Answers a yes/no question randomly.
 * **yo-mama:** Responds with a random "Yo Mama" joke.
 
 ### Random Image:
