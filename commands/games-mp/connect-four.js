@@ -102,8 +102,9 @@ module.exports = class ConnectFourCommand extends Command {
 					i = AIEngine.playAI('hard');
 					lastMove = i + 1;
 				} else {
+					const emoji = userTurn ? playerOneEmoji : playerTwoEmoji;
 					await msg.say(stripIndents`
-						${user}, which column do you pick? Type \`end\` to forefeit.
+						${emoji} ${user}, which column do you pick? Type \`end\` to forefeit.
 						Can't think of a move? Use \`play for me\`.
 						${opponent.bot ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
 
@@ -122,7 +123,7 @@ module.exports = class ConnectFourCommand extends Command {
 						max: 1,
 						time: 60000
 					});
-					const choice = turn ? turn.first().content : null;
+					const choice = turn.size ? turn.first().content : null;
 					if (!choice) {
 						await msg.say('Sorry, time is up! I\'ll pick their move for them.');
 						i = AIEngine.playAI('hard');
