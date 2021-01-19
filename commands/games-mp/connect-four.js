@@ -88,13 +88,11 @@ module.exports = class ConnectFourCommand extends Command {
 					playerTwoEmoji = colors[choice] || choice;
 				}
 			}
-			let AIEngine = null;
-			if (opponent.bot) AIEngine = new Connect4AI();
+			const AIEngine = new Connect4AI();
 			const board = this.generateBoard();
 			let userTurn = true;
 			let winner = null;
 			const colLevels = [5, 5, 5, 5, 5, 5, 5];
-			let lastTurnTimeout = false;
 			let lastMove = 'None';
 			while (!winner && board.some(row => row.includes(null))) {
 				const user = userTurn ? msg.author : opponent;
@@ -106,7 +104,7 @@ module.exports = class ConnectFourCommand extends Command {
 				} else {
 					await msg.say(stripIndents`
 						${user}, which column do you pick? Type \`end\` to forefeit.
-						${AIEngine ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
+						${opponent.bot ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
 
 						${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
 						${nums.join('')}
@@ -123,15 +121,10 @@ module.exports = class ConnectFourCommand extends Command {
 						time: 60000
 					});
 					if (!turn.size) {
-						await msg.say('Sorry, time is up!');
-						if (lastTurnTimeout) {
-							winner = 'time';
-							break;
-						} else {
-							lastTurnTimeout = true;
-							userTurn = !userTurn;
-							continue;
-						}
+						await msg.say('Sorry, time is up! I\'ll pick their move for them.');
+						AIEngine.playAI('hard');
+						userTurn = !userTurn;
+						continue;
 					}
 					const choice = turn.first().content;
 					if (choice.toLowerCase() === 'end') {
@@ -139,13 +132,12 @@ module.exports = class ConnectFourCommand extends Command {
 						break;
 					}
 					i = Number.parseInt(choice, 10) - 1;
-					if (AIEngine) AIEngine.play(i);
+					AIEngine.play(i);
 					lastMove = i + 1;
 				}
 				board[colLevels[i]][i] = sign;
 				colLevels[i]--;
 				if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
-				if (lastTurnTimeout) lastTurnTimeout = false;
 				userTurn = !userTurn;
 			}
 			this.client.games.delete(msg.channel.id);
