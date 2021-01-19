@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { stripIndent } = require('common-tags');
+const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
 
@@ -52,12 +52,11 @@ module.exports = class JengaCommand extends Command {
 				if (opponent.bot && !userTurn) {
 					i = Math.floor(Math.random() * board.length);
 				} else {
-					await msg.say(stripIndent`
+					const text = stripIndents`
 						${user}, which block do you want to remove? Type \`end\` to forefeit.
 						Each block you go lower on the tower, the more likely the tower falls.
-
-						${this.displayBoard(board)}
-					`);
+					`;
+					await msg.say(`${text}\n\n${this.displayBoard(board)}`);
 					const pickFilter = res => {
 						if (res.author.id !== user.id) return false;
 						const choice = res.content;
@@ -88,7 +87,7 @@ module.exports = class JengaCommand extends Command {
 					}
 					i = picked - 1;
 				}
-				const fell = Math.floor(Math.random() * (10 - i));
+				const fell = Math.floor(Math.random() * ((board.length + 1) - i));
 				if (!fell) {
 					winner = userTurn ? opponent : msg.author;
 					await msg.say('And the tower topples!');
