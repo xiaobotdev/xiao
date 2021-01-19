@@ -88,9 +88,8 @@ module.exports = class JengaCommand extends Command {
 					}
 					i = picked - 1;
 				}
-				const numToUse = Math.ceil(((board.length + 1) - ((board.length + 1) - (i + 1))) / 2);
-				const notFell = Math.floor(Math.random() * numToUse);
-				if (!notFell) {
+				const fell = Math.floor(Math.random() * (10 - i));
+				if (!fell) {
 					winner = userTurn ? opponent : msg.author;
 					await msg.say('And the tower topples!');
 					break;
