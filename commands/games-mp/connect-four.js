@@ -122,25 +122,22 @@ module.exports = class ConnectFourCommand extends Command {
 						max: 1,
 						time: 60000
 					});
-					if (!turn.size) {
+					const choice = turn ? turn.first().content : null;
+					if (!choice) {
 						await msg.say('Sorry, time is up! I\'ll pick their move for them.');
 						i = AIEngine.playAI('hard');
 						lastMove = i + 1;
-						continue;
-					}
-					const choice = turn.first().content;
-					if (choice.toLowerCase() === 'end') {
+					} else if (choice.toLowerCase() === 'end') {
 						winner = userTurn ? opponent : msg.author;
 						break;
-					}
-					if (choice.toLowerCase() === 'play for me') {
+					} else if (choice.toLowerCase() === 'play for me') {
 						i = AIEngine.playAI('hard');
 						lastMove = i + 1;
-						continue;
+					} else {
+						i = Number.parseInt(choice, 10) - 1;
+						AIEngine.play(i);
+						lastMove = i + 1;
 					}
-					i = Number.parseInt(choice, 10) - 1;
-					AIEngine.play(i);
-					lastMove = i + 1;
 				}
 				board[colLevels[i]][i] = sign;
 				colLevels[i]--;
