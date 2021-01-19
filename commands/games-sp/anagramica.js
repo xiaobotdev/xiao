@@ -60,7 +60,6 @@ module.exports = class AnagramicaCommand extends Command {
 				const score = this.getScore(letters, res.content.toLowerCase());
 				if (!score) return false;
 				if (!valid.includes(res.content.toLowerCase())) {
-					points -= score;
 					picked.push(res.content.toLowerCase());
 					reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 					return false;
@@ -83,21 +82,20 @@ module.exports = class AnagramicaCommand extends Command {
 				await this.client.redis.set('anagramica-user', msg.author.id);
 			}
 			this.client.games.delete(msg.channel.id);
+			const moreWords = shuffle(valid.filter(word => !picked.includes(word))).slice(0, 5);
 			if (!msgs.size) {
 				return msg.reply(stripIndents`
 					Couldn't even think of one? Ouch.
 					${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore} (Held by ${user})
-				`);
-			}
-			if (points < 1) {
-				return msg.reply(stripIndents`
-					Ouch, your final score was **${points}**. Try harder next time!
-					${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore} (Held by ${user})
+
+					Here's some words you missed: ${moreWords.map(word => `\`${word}\``).join(', ')}
 				`);
 			}
 			return msg.reply(stripIndents`
 				Nice job! Your final score was **${points}**!
 				${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore} (Held by ${user})
+
+				Here's some words you missed: ${moreWords.map(word => `\`${word}\``).join(', ')}
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
