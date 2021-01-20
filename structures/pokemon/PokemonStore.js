@@ -9,6 +9,7 @@ module.exports = class PokemonStore extends Collection {
 
 		this.pokemonCount = 898;
 		this.pokemonCountWithCry = 893;
+		this.smogonData = {};
 	}
 
 	async fetch(query) {
@@ -32,6 +33,15 @@ module.exports = class PokemonStore extends Collection {
 			if (err.status === 404) return null;
 			throw err;
 		}
+	}
+
+	async fetchSmogonData(gen) {
+		if (this.smogonData[gen.toLowerCase()]) return this.smogonData[gen.toLowerCase()];
+		const { text } = await request.get(`https://www.smogon.com/dex/${gen}/pokemon/`);
+		this.smogonData[gen.toLowerCase()] = JSON.parse(text.match(/dexSettings = ({.+})/i)[1])
+			.injectRpcs[1][1]
+			.pokemon
+			.map(pkmn => ({ id: pkmn.oob.dex_number, formats: pkmn.formats }));
 	}
 
 	makeSlug(query) {
