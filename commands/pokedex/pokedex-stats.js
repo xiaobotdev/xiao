@@ -65,7 +65,7 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const fetchGames = genGames.slice(data.generation, data.missingno ? 1 : genGames.length);
+			const fetchGames = genGames.slice(data.generation, data.missingno ? 2 : genGames.length);
 			if (!data.missingno) await data.fetchSmogonTiers(...fetchGames);
 			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
 			const variety = displayForms.find(vrity => {
