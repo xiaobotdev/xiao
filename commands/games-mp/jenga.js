@@ -87,6 +87,13 @@ module.exports = class JengaCommand extends Command {
 					}
 					i = picked - 1;
 				}
+				if (board.length === 1) {
+					winner = userTurn ? msg.author : opponent;
+					const text = opponent.bot && !userTurn
+						? 'I pick up the last piece and win!'
+						: `${winner} picks up the last piece, winning the game!`;
+					await msg.say(text);
+				}
 				const fell = Math.floor(Math.random() * ((board.length + 1) - (i + 1)));
 				if (!fell) {
 					winner = userTurn ? opponent : msg.author;
