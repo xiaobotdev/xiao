@@ -292,7 +292,7 @@ module.exports = class Util {
 		clean = decodeHTML(clean);
 		clean = clean
 			.replaceAll('<br>', '\n')
-			.replace(/<\/?i>/g, '*')
+			.replace(/<\/?(i|em)>/g, '*')
 			.replace(/<\/?b>/g, '**')
 			.replace(/~!|!~/g, '||');
 		if (clean.length > 2000) clean = `${clean.substr(0, 1995)}...`;
