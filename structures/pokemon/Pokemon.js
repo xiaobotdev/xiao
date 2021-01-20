@@ -86,8 +86,8 @@ module.exports = class Pokemon {
 		if (this.id >= 387) return 4;
 		if (this.id >= 252) return 3;
 		if (this.id >= 152) return 2;
-		if (this.id >= 1) return 1;
-		return 0;
+		if (this.id >= 0) return 1;
+		return null;
 	}
 
 	get class() {
