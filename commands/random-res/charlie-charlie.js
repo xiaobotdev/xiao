@@ -24,7 +24,7 @@ module.exports = class CharlieCharlieCommand extends Command {
 	run(msg, { question }) {
 		const answer = answers[Math.floor(Math.random() * answers.length)];
 		return msg.say(stripIndent`
-			${question}
+			_${question}_
 			\`\`\`
 			    ${answer === 'no' ? '\\' : ' '}  |  ${answer === 'yes' ? '/' : ' '}
 			  NO ${answer === 'no' ? '\\' : ' '} | ${answer === 'yes' ? '/' : ' '}YES

@@ -22,7 +22,7 @@ module.exports = class OpinionCommand extends Command {
 
 	run(msg, { question }) {
 		return msg.say(stripIndents`
-			${question}
+			_${question}_
 			${opinions[Math.floor(Math.random() * opinions.length)]}
 		`);
 	}

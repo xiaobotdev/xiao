@@ -23,7 +23,7 @@ module.exports = class YesNoCommand extends Command {
 
 	run(msg, { question }) {
 		return msg.say(stripIndents`
-			${question}
+			_${question}_
 			${answers[Math.floor(Math.random() * answers.length)]}
 		`);
 	}
