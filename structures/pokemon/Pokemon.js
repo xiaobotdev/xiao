@@ -77,6 +77,19 @@ module.exports = class Pokemon {
 		return true;
 	}
 
+	get generation() {
+		if (this.id < 898) return null;
+		if (this.id >= 810) return 8;
+		if (this.id >= 722) return 7;
+		if (this.id >= 650) return 6;
+		if (this.id >= 494) return 5;
+		if (this.id >= 387) return 4;
+		if (this.id >= 252) return 3;
+		if (this.id >= 152) return 2;
+		if (this.id >= 1) return 1;
+		return 0;
+	}
+
 	get class() {
 		if (this.legendary) return 'legendary';
 		if (this.mythical) return 'mythical';
@@ -138,16 +151,18 @@ module.exports = class Pokemon {
 		return `https://www.serebii.net/pokedex-swsh/${this.displayID}.shtml`;
 	}
 
-	get smogonURL() {
+	smogonURL(gen) {
 		if (this.missingno) return missingno.url;
-		return `https://www.smogon.com/dex/${this.id > 807 ? 'ss' : 'sm'}/pokemon/${this.slug}/`;
+		return `https://www.smogon.com/dex/${gen.toLowerCase()}/pokemon/${this.slug}/`;
 	}
 
-	async fetchSmogonTiers(gen) {
-		if (!this.store.smogonData[gen.toLowerCase()]) await this.store.fetchSmogonData(gen.toLowerCase());
-		const pkmn = this.store.smogonData[gen.toLowerCase()].find(data => data.id === this.id);
-		this.smogonTiers[gen.toLowerCase()] = pkmn.formats;
-		return this.smogonTiers[gen.toLowerCase()];
+	async fetchSmogonTiers(...gens) {
+		for (const gen of gens) {
+			if (!this.store.smogonData[gen.toLowerCase()]) await this.store.fetchSmogonData(gen.toLowerCase());
+			const pkmn = this.store.smogonData[gen.toLowerCase()].find(data => data.id === this.id);
+			this.smogonTiers[gen.toLowerCase()] = pkmn.formats;
+		}
+		return this.smogonTiers;
 	}
 
 	async fetchGameData() {

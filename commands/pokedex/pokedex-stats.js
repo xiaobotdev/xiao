@@ -2,8 +2,14 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
+const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss'];
 const games = {
 	rb: 'Red/Blue',
+	gs: 'Gold/Silver',
+	rs: 'Ruby/Sapphire',
+	dp: 'Diamond/Pearl',
+	bw: 'Black/White',
+	xy: 'X/Y',
 	sm: 'Sun/Moon',
 	ss: 'Sword/Shield'
 };
@@ -59,8 +65,8 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const game = data.missingno ? 'rb' : data.id > 807 ? 'ss' : 'sm';
-			if (!data.smogonTiers[game]) await data.fetchSmogonTiers(game);
+			const fetchGames = genGames.slice(data.missingno ? 0 : data.generation, data.missingno ? 1 : genGames.length);
+			if (!data.missingno) await data.fetchSmogonTiers(fetchGames);
 			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
 			const variety = displayForms.find(vrity => {
 				if (!form || form === 'normal') return vrity.default;
@@ -96,7 +102,11 @@ module.exports = class PokedexCommand extends Command {
 					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${statTotal}**
 				`)
 				.addField('❯ Abilities', variety.abilities.join('/'))
-				.addField('❯ Smogon Tiers', `[${data.smogonTiers[game].join('/')}](${data.smogonURL}) (${games[game]})`)
+				.addField('❯ Smogon Tiers',
+					games.map(game => {
+						const smogonData = data.smogonTiers[game];
+						return `[${smogonData.join('/')}](${data.smogonURL(game)}) (${games[game]})`;
+					}).join('\n'))
 				.addField('❯ Other Forms', stripIndents`
 					_Use ${this.usage(`${data.id} <form>`)} to get stats for another form._
 

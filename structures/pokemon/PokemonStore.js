@@ -41,6 +41,7 @@ module.exports = class PokemonStore extends Collection {
 		this.smogonData[gen.toLowerCase()] = JSON.parse(text.match(/dexSettings = ({.+})/i)[1])
 			.injectRpcs[1][1]
 			.pokemon
+			.filter(pkmn => pkmn.oob)
 			.map(pkmn => ({ id: pkmn.oob.dex_number, formats: pkmn.formats }));
 		return this.smogonData[gen.toLowerCase()];
 	}
