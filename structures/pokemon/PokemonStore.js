@@ -42,6 +42,7 @@ module.exports = class PokemonStore extends Collection {
 			.injectRpcs[1][1]
 			.pokemon
 			.map(pkmn => ({ id: pkmn.oob.dex_number, formats: pkmn.formats }));
+		return this.smogonData[gen.toLowerCase()];
 	}
 
 	makeSlug(query) {
