@@ -103,7 +103,7 @@ module.exports = class PokedexCommand extends Command {
 				`)
 				.addField('❯ Abilities', variety.abilities.join('/'))
 				.addField('❯ Smogon Tiers',
-					games.map(game => {
+					fetchGames.map(game => {
 						const smogonData = data.smogonTiers[game];
 						return `[${smogonData.join('/')}](${data.smogonURL(game)}) (${games[game]})`;
 					}).join('\n'))
