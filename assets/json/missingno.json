@@ -96,6 +96,9 @@
 		}
 	],
 	"moveSetVersion": "red-blue",
+	"smogonTiers": {
+		"rb": ["Anything Goes"]
+	},
 	"encounters": [],
 	"chain": [0],
 	"missingno": true,
