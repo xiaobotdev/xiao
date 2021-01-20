@@ -139,7 +139,7 @@ module.exports = class Pokemon {
 	}
 
 	get smogonURL() {
-		if (this.missingno) return null;
+		if (this.missingno) return missingno.url;
 		return `https://www.smogon.com/dex/${this.id > 807 ? 'ss' : 'sm'}/pokemon/${this.slug}/`;
 	}
 
