@@ -145,7 +145,7 @@ module.exports = class Pokemon {
 
 	async fetchSmogonTiers(gen) {
 		if (!this.store.smogonData[gen.toLowerCase()]) await this.store.fetchSmogonData(gen.toLowerCase());
-		const pkmn = this.store.smogonData[gen.toLowerCase()].find(pkmn => pkmn.id === this.id);
+		const pkmn = this.store.smogonData[gen.toLowerCase()].find(data => data.id === this.id);
 		this.smogonTiers[gen.toLowerCase()] = pkmn.formats;
 		return this.smogonTiers[gen.toLowerCase()];
 	}
