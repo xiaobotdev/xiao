@@ -109,7 +109,7 @@ module.exports = class JengaCommand extends Command {
 					? 'I pick up the last piece and win!'
 					: `${winner} picks up the last piece, winning the game!`;
 			} else {
-				text = `${opponent.bot && !userTurn ? `I pick ${i + 1}, a` : 'A'}nd the tower topples!`
+				text = `${opponent.bot && !userTurn ? `I pick ${i + 1}, a` : 'A'}nd the tower topples!`;
 			}
 			return msg.say(stripIndents`
 				${text}
