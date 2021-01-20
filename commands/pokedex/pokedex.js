@@ -3,6 +3,17 @@ const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { arrayEquals, firstUpperCase, reactIfAble } = require('../../util/Util');
 const { MEGA_EVOLVE_EMOJI_NAME, MEGA_EVOLVE_EMOJI_ID } = process.env;
+const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss'];
+const games = {
+	rb: 'Red/Blue',
+	gs: 'Gold/Silver',
+	rs: 'Ruby/Sapphire',
+	dp: 'Diamond/Pearl',
+	bw: 'Black/White',
+	xy: 'X/Y',
+	sm: 'Sun/Moon',
+	ss: 'Sword/Shield'
+};
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {
@@ -89,7 +100,7 @@ module.exports = class PokedexCommand extends Command {
 					${data.entries[Math.floor(Math.random() * data.entries.length)]}
 				`)
 				.setThumbnail(data.spriteImageURL)
-				.addField('❯ Class', firstUpperCase(data.class), true)
+				.addField('❯ Introduced In', games[genGames[data.generation]], true)
 				.addField('❯ Height', `${feet}'${Math.floor(data.height) - (feet * 12)}"`, true)
 				.addField('❯ Weight', `${data.weight} lbs.`, true)
 				.addField('❯ Types', typesShown.map(variety => {
