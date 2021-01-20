@@ -45,10 +45,11 @@ module.exports = class JengaCommand extends Command {
 			const board = [true, true, true, true, true, true, true, true, true, true];
 			let userTurn = true;
 			let winner = null;
+			let wonByFinalPiece = false;
 			let lastTurnTimeout = false;
+			let i;
 			while (!winner && board.length) {
 				const user = userTurn ? msg.author : opponent;
-				let i;
 				if (opponent.bot && !userTurn) {
 					i = Math.floor(Math.random() * board.length);
 				} else {
@@ -89,15 +90,11 @@ module.exports = class JengaCommand extends Command {
 				}
 				if (board.length === 1) {
 					winner = userTurn ? msg.author : opponent;
-					const text = opponent.bot && !userTurn
-						? 'I pick up the last piece and win!'
-						: `${winner} picks up the last piece, winning the game!`;
-					await msg.say(text);
+					wonByFinalPiece = true;
 				}
 				const fell = Math.floor(Math.random() * ((board.length + 1) - (i + 1)));
 				if (!fell) {
 					winner = userTurn ? opponent : msg.author;
-					await msg.say(`${opponent.bot && !userTurn ? `I pick ${i + 1}, a` : 'A'}nd the tower topples!`);
 					break;
 				}
 				await msg.say(`${opponent.bot && !userTurn ? `I pick ${i + 1}. ` : ''}Thankfully, the tower stands.`);
@@ -106,7 +103,18 @@ module.exports = class JengaCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			if (winner === 'time') return msg.say('Game ended due to inactivity.');
-			return msg.say(winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...');
+			let text;
+			if (wonByFinalPiece) {
+				text = opponent.bot && !userTurn
+					? 'I pick up the last piece and win!'
+					: `${winner} picks up the last piece, winning the game!`;
+			} else {
+				text = `${opponent.bot && !userTurn ? `I pick ${i + 1}, a` : 'A'}nd the tower topples!`
+			}
+			return msg.say(stripIndents`
+				${text}
+				${winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...'}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
