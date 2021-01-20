@@ -60,6 +60,7 @@ module.exports = class Pokemon {
 		this.cry = data.id > store.pokemonCountWithCry
 			? null
 			: path.join(__dirname, '..', '..', 'assets', 'sounds', 'pokedex', `${data.id}.wav`);
+		this.smogonTiers = data.missingno ? data.smogonTiers : {};
 	}
 
 	baseStatTotal(variety) {
@@ -135,6 +136,18 @@ module.exports = class Pokemon {
 	get serebiiURL() {
 		if (this.missingno) return missingno.url;
 		return `https://www.serebii.net/pokedex-swsh/${this.displayID}.shtml`;
+	}
+
+	get smogonURL() {
+		if (this.missingno) return null;
+		return `https://www.smogon.com/dex/${this.id > 807 ? 'ss' : 'sm'}/pokemon/${this.slug}/`;
+	}
+
+	async fetchSmogonTiers(gen) {
+		if (!this.store.smogonData[gen.toLowerCase()]) await this.store.fetchSmogonData(gen.toLowerCase());
+		const pkmn = this.store.smogonData[gen.toLowerCase()].find(pkmn => pkmn.id === this.id);
+		this.smogonTiers[gen.toLowerCase()] = pkmn.formats;
+		return this.smogonTiers[gen.toLowerCase()];
 	}
 
 	async fetchGameData() {
