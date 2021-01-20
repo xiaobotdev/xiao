@@ -66,7 +66,7 @@ module.exports = class PokedexCommand extends Command {
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
 			const fetchGames = genGames.slice(data.missingno ? 0 : data.generation, data.missingno ? 1 : genGames.length);
-			if (!data.missingno) await data.fetchSmogonTiers(fetchGames);
+			if (!data.missingno) await data.fetchSmogonTiers(...fetchGames);
 			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
 			const variety = displayForms.find(vrity => {
 				if (!form || form === 'normal') return vrity.default;
