@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { arrayEquals, firstUpperCase, reactIfAble } = require('../../util/Util');
+const { arrayEquals, reactIfAble } = require('../../util/Util');
 const { MEGA_EVOLVE_EMOJI_NAME, MEGA_EVOLVE_EMOJI_ID } = process.env;
 const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss'];
 const games = {
