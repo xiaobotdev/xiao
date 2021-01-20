@@ -78,7 +78,7 @@ module.exports = class Pokemon {
 	}
 
 	get generation() {
-		if (this.id < 898) return null;
+		if (this.id > 898) return null;
 		if (this.id >= 810) return 8;
 		if (this.id >= 722) return 7;
 		if (this.id >= 650) return 6;
