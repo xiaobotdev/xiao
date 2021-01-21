@@ -62,8 +62,8 @@ module.exports = class SmogonCommand extends Command {
 			if (!data.missingno) await data.fetchSmogonTiers(...fetchGames);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${data.displayID} - ${data.name}`, data.formBoxImageURL(variety.id), data.serebiiURL)
-				.setThumbnail(data.formSpriteImageURL(variety.id));
+				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
+				.setThumbnail(data.spriteImageURL);
 			for (const game of fetchGames) {
 				embed.addField(`❯ ${games[game]}`, `[${data.smogonTiers[game].join('/')}](${data.smogonURL(game)})`, true);
 			}
