@@ -68,7 +68,7 @@ module.exports = class SmogonCommand extends Command {
 				embed.addField(`❯ ${games[game]}`, `[${data.smogonTiers[game].join('/')}](${data.smogonURL(game)})`, true);
 			}
 			if (fetchGames.length % 3 !== 0 && fetchGames.length > 3) {
-				for (let i = 0; i > 3 - (fetchGames.length % 3); i++) {
+				for (let i = 0; i < 3 - (fetchGames.length % 3); i++) {
 					embed.addField('\u200B', '\u200B', true);
 				}
 			}
