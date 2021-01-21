@@ -65,8 +65,6 @@ module.exports = class PokedexCommand extends Command {
 			const data = await this.client.pokemon.fetch(pokemon);
 			if (!data) return msg.say('Could not find any results.');
 			if (!data.gameDataCached) await data.fetchGameData();
-			const fetchGames = genGames.slice(data.generation, data.missingno ? 2 : genGames.length);
-			if (!data.missingno) await data.fetchSmogonTiers(...fetchGames);
 			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
 			const variety = displayForms.find(vrity => {
 				if (!form || form === 'normal') return vrity.default;
@@ -102,11 +100,6 @@ module.exports = class PokedexCommand extends Command {
 					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${statTotal}**
 				`)
 				.addField('❯ Abilities', variety.abilities.join('/'))
-				.addField('❯ Smogon Tiers',
-					fetchGames.map(game => {
-						const smogonData = data.smogonTiers[game];
-						return `[${smogonData.join('/')}](${data.smogonURL(game)}) (${games[game]})`;
-					}).join('\n'))
 				.addField('❯ Other Forms', stripIndents`
 					_Use ${this.usage(`${data.id} <form>`)} to get stats for another form._
 
