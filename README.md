@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 580
+Total: 581
 
 ### Utility:
 
@@ -543,6 +543,7 @@ Total: 580
 * **pokedex-moveset:** Responds with the moveset for a Pokémon.
 * **pokedex-stats:** Responds with the stats for a Pokémon.
 * **pokedex:** Searches the Pokédex for a Pokémon.
+* **smogon:** Responds with the Smogon tiers for a Pokémon.
 
 ### Analyzers:
 
@@ -1335,12 +1336,12 @@ here.
 	* neko-atsume-password ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
 - [JellyNeo Item Database](https://items.jellyneo.net/)
 	* neopets-item (Item Data)
+- [Jenga](https://jenga.com/)
+	* jenga (Original Game)
 - [Jeopardy](https://www.jeopardy.com/)
 	* jeopardy (Music, Original Show)
 	* jeopardy-question (Original Show)
 	* soundboard (Jeopardy Sound)
-- [Jenga](https://jenga.com/)
-	* jenga (Original Game)
 - [Jessica Knable](https://picsart.com/u/jessicaknable)
 	* hearts ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
 - [Jisho](https://jisho.org/)
@@ -1577,6 +1578,7 @@ here.
 	* pokedex-location (API)
 	* pokedex-moveset (API)
 	* pokedex-stats (API)
+	* smogon (API)
 	* whos-that-pokemon (API)
 	* whos-that-pokemon-cry (API)
 - [Pokémon](https://www.pokemon.com/us/)
@@ -1591,6 +1593,7 @@ here.
 	* pokedex-moveset (Images, Original Game)
 	* pokedex-stats (Images, Original Game)
 	* pokemon-fusion (Original Game)
+	* smogon (Images, Original Game)
 	* whos-that-pokemon (Images, Original Game)
 	* whos-that-pokemon-cry (Images, Original Game)
 	* wild-pokemon (Image, Original Game)
@@ -1673,6 +1676,7 @@ here.
 	* pokedex-location (Images)
 	* pokedex-moveset (Images)
 	* pokedex-stats (Images)
+	* smogon (Images)
 	* whos-that-pokemon (Images)
 	* whos-that-pokemon-cry (Images)
 - [ShareFonts.net](https://www.wfonts.com/)
@@ -1693,6 +1697,8 @@ here.
 	* yu-gi-oh-gen ([Card Base Templates](https://www.deviantart.com/sl777123/gallery/64574029/templates))
 - [SmileBASIC Source](https://smilebasicsource.com/)
 	* smilebasic ([API](https://smilebasicsource.com/page?pid=1360))
+- [Smogon](https://www.smogon.com/)
+	* smogon (Tier Data)
 - [SMWiki](http://www.smwiki.net/)
 	* smw-level ([Level Name Data](http://old.smwiki.net/wiki/List_of_Super_Mario_World_levels))
 - [Snapchat](https://www.snapchat.com/)
