@@ -2,17 +2,6 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
-const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss'];
-const games = {
-	rb: 'Red/Blue',
-	gs: 'Gold/Silver',
-	rs: 'Ruby/Sapphire',
-	dp: 'Diamond/Pearl',
-	bw: 'Black/White',
-	xy: 'X/Y',
-	sm: 'Sun/Moon',
-	ss: 'Sword/Shield'
-};
 
 module.exports = class PokedexCommand extends Command {
 	constructor(client) {

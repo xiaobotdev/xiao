@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
 const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss'];
 const games = {
 	rb: 'Red/Blue',
