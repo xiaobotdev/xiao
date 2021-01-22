@@ -8,7 +8,8 @@ module.exports = class MoveStore extends Collection {
 	}
 
 	async fetch(query) {
-		query = this.makeSlug(query);
+		if (this.has(query)) return this.get(query);
+		query = this.makeSlug(query.toString());
 		if (!query) return null;
 		const found = this.find(pokemon => pokemon.slug === query);
 		if (found) return found;
