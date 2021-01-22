@@ -61,7 +61,7 @@ module.exports = class PokedexMovesetCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
-				.setDescription(data.moveSet.map(move => `**Level ${move.level}:** ${move.name}`).join('\n'))
+				.setDescription(data.moveSet.map(move => `**Level ${move.level}:** ${move.move.name}`).join('\n'))
 				.setThumbnail(data.spriteImageURL)
 				.setFooter(`Moveset data taken from ${versions[data.moveSetVersion]}.`);
 			return msg.embed(embed);

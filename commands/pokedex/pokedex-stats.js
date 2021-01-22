@@ -88,7 +88,7 @@ module.exports = class PokedexCommand extends Command {
 					\`-----------------------------------\`
 					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${statTotal}**
 				`)
-				.addField('❯ Abilities', variety.abilities.join('/'))
+				.addField('❯ Abilities', variety.abilities.map(ability => ability.name).join('/'))
 				.addField('❯ Other Forms', stripIndents`
 					_Use ${this.usage(`${data.id} <form>`)} to get stats for another form._
 
