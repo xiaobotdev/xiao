@@ -3,10 +3,6 @@ const request = require('node-superfetch');
 const Ability = require('./Ability');
 
 module.exports = class AbilityStore extends Collection {
-	constructor(options) {
-		super(options);
-	}
-
 	async fetch(query) {
 		if (this.has(query)) return this.get(query);
 		query = this.makeSlug(query.toString());
