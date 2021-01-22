@@ -95,9 +95,9 @@ module.exports = class NimCommand extends Command {
 				`);
 				const rowFilter = res => {
 					if (res.author.id !== user.id) return false;
-					const choice = res.content;
-					if (choice.toLowerCase() === 'end' || choice.toLowerCase() === 'back') return true;
-					const i = Number.parseInt(choice, 10) - 1;
+					const chosen = res.content;
+					if (chosen.toLowerCase() === 'end' || chosen.toLowerCase() === 'back') return true;
+					const i = Number.parseInt(chosen, 10) - 1;
 					return row >= i && row > 0;
 				};
 				const rowTurn = await msg.channel.awaitMessages(rowFilter, {
@@ -124,7 +124,7 @@ module.exports = class NimCommand extends Command {
 				if (rowChoice.toLowerCase() === 'back') continue;
 				board[picked - 1] -= rowPicked;
 				if (!userTurn && firstTurn) firstTurn = false;
-				if (!board.some(row => row !== 0)) {
+				if (!board.some(r => r !== 0)) {
 					winner = userTurn ? opponent : msg.author;
 					break;
 				}
