@@ -115,8 +115,8 @@ module.exports = class NimCommand extends Command {
 						continue;
 					}
 				}
-				const rowChoice = turn.first().content;
-				const rowPicked = Number.parseInt(choice, 10);
+				const rowChoice = rowTurn.first().content;
+				const rowPicked = Number.parseInt(rowChoice, 10);
 				if (rowChoice.toLowerCase() === 'end') {
 					winner = userTurn ? opponent : msg.author;
 					break;
