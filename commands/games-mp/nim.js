@@ -77,6 +77,7 @@ module.exports = class NimCommand extends Command {
 					} else {
 						await msg.say('Sorry, time is up!');
 						lastTurnTimeout = true;
+						userTurn = !userTurn;
 						continue;
 					}
 				}
@@ -88,7 +89,7 @@ module.exports = class NimCommand extends Command {
 				}
 				const row = board[picked - 1];
 				await msg.say(stripIndents`
-					How many ${objectEmoji} do you want to remove from row ${picked}? Type \`end\` to forefeit.
+					${user}, how many ${objectEmoji} do you want to remove from row ${picked}? Type \`end\` to forefeit.
 					If you want to go back, type \`back\`.
 
 					${nums[picked - 1]}${objectEmoji.repeat(row)}
@@ -112,6 +113,7 @@ module.exports = class NimCommand extends Command {
 					} else {
 						await msg.say('Sorry, time is up!');
 						lastTurnTimeout = true;
+						userTurn = !userTurn;
 						continue;
 					}
 				}
