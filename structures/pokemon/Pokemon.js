@@ -179,7 +179,7 @@ module.exports = class Pokemon {
 		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
 		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
 		for (const ability of defaultBody.abilities) {
-			const defaultAbilityData = await this.store.abilities.fetch(ability.ability.id);
+			const defaultAbilityData = await this.store.abilities.fetch(ability.ability.name);
 			defaultVariety.abilities.push(defaultAbilityData);
 		}
 		defaultVariety.stats = {
@@ -226,7 +226,7 @@ module.exports = class Pokemon {
 				|| baseStats.sDef !== variety.stats.sDef
 				|| baseStats.spd !== variety.stats.spd;
 			for (const ability of body.abilities) {
-				const abilityData = await this.store.abilities.fetch(ability.ability.id);
+				const abilityData = await this.store.abilities.fetch(ability.ability.name);
 				variety.abilities.push(abilityData);
 			}
 		}
@@ -237,7 +237,7 @@ module.exports = class Pokemon {
 		for (const move of moves) {
 			const versionGroup = move.version_group_details.find(mve => mve.version_group.name === this.moveSetVersion);
 			if (!versionGroup || !versionGroup.level_learned_at) continue;
-			const moveData = await this.store.moves.fetch(move.id);
+			const moveData = await this.store.moves.fetch(move.name);
 			if (this.moveSet.some(mve => mve.move.id === moveData.id)) continue;
 			this.moveSet.push({
 				move: moveData,
