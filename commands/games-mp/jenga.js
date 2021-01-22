@@ -77,6 +77,7 @@ module.exports = class JengaCommand extends Command {
 						} else {
 							await msg.say('Sorry, time is up!');
 							lastTurnTimeout = true;
+							userTurn = !userTurn;
 							continue;
 						}
 					}
