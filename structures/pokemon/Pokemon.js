@@ -237,7 +237,7 @@ module.exports = class Pokemon {
 		for (const move of moves) {
 			const versionGroup = move.version_group_details.find(mve => mve.version_group.name === this.moveSetVersion);
 			if (!versionGroup || !versionGroup.level_learned_at) continue;
-			const moveData = await this.store.moves.fetch(move.name);
+			const moveData = await this.store.moves.fetch(move.move.name);
 			if (this.moveSet.some(mve => mve.move.id === moveData.id)) continue;
 			this.moveSet.push({
 				move: moveData,
