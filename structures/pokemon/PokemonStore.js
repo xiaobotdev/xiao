@@ -17,7 +17,8 @@ module.exports = class PokemonStore extends Collection {
 	}
 
 	async fetch(query) {
-		query = this.makeSlug(query);
+		if (this.has(query)) return this.get(query);
+		query = this.makeSlug(query.toString());
 		if (!query) return null;
 		const num = Number.parseInt(query, 10);
 		if (this.has(num)) return this.get(num);
