@@ -54,7 +54,7 @@ module.exports = class NimCommand extends Command {
 					${user}, from which row do you want to remove from? Type \`end\` to forefeit.
 					After this step, you will decide how many ${objectEmoji} to remove from that row.
 
-					${this.displayBoard(board)}
+					${this.displayBoard(board, objectEmoji)}
 
 					${firstTurn ? '_In Nim, you win by forcing the opponent to take the last object._' : ''}
 				`);
