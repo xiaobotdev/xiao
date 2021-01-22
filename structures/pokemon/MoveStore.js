@@ -3,10 +3,6 @@ const request = require('node-superfetch');
 const Move = require('./Move');
 
 module.exports = class MoveStore extends Collection {
-	constructor(options) {
-		super(options);
-	}
-
 	async fetch(query) {
 		if (this.has(query)) return this.get(query);
 		query = this.makeSlug(query.toString());

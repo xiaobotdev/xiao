@@ -101,7 +101,7 @@ don't grant that permission.
 ## Fun Information
 
 - 500+ commands
-- 32,000+ lines of JavaScript
+- 33,000+ lines of JavaScript
 - 65,000+ lines of JSON data
 - 4 years of development
 
@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 582
+Total: 584
 
 ### Utility:
 
@@ -537,9 +537,11 @@ Total: 582
 
 ### Pokédex:
 
+* **pokedex-ability:** Searches the Pokédex for a Pokémon ability.
 * **pokedex-cry:** Plays a Pokémon's cry.
 * **pokedex-image:** Responds with the image of a Pokémon.
 * **pokedex-location:** Responds with the location data for a Pokémon.
+* **pokedex-move:** Searches the Pokédex for a Pokémon move.
 * **pokedex-moveset:** Responds with the moveset for a Pokémon.
 * **pokedex-stats:** Responds with the stats for a Pokémon.
 * **pokedex:** Searches the Pokédex for a Pokémon.
@@ -1574,9 +1576,11 @@ here.
 	* pokemon-fusion (Images)
 - [PokéAPI](https://pokeapi.co/)
 	* pokedex (API)
+	* pokedex-ability (API)
 	* pokedex-cry (API)
 	* pokedex-image (API)
 	* pokedex-location (API)
+	* pokedex-move (API)
 	* pokedex-moveset (API)
 	* pokedex-stats (API)
 	* smogon (API)
@@ -1588,9 +1592,11 @@ here.
 	* hat (Ash Hat Original Anime)
 	* name-rater (Sprite)
 	* pokedex (Images, Original Game)
+	* pokedex-ability (Original Game)
 	* pokedex-cry (Original Game)
 	* pokedex-image (Images, Original Game)
 	* pokedex-location (Images, Original Game)
+	* pokedex-move (Original Game)
 	* pokedex-moveset (Images, Original Game)
 	* pokedex-stats (Images, Original Game)
 	* pokemon-fusion (Original Game)
