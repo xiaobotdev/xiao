@@ -14,7 +14,7 @@ module.exports = class Move {
 		this.power = data.power;
 		this.pp = data.pp;
 		this.type = firstUpperCase(data.type.name);
-		this.contestType = firstUpperCase(data.contest_type.name);
+		this.contestType = data.contest_type ? firstUpperCase(data.contest_type.name) : null;
 		this.class = firstUpperCase(data.damage_class.name);
 	}
 

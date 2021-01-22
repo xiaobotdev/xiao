@@ -44,7 +44,7 @@ module.exports = class PokedexMoveCommand extends Command {
 				.addField('❯ Power', data.power, true)
 				.addField('❯ PP', data.pp, true)
 				.addField('❯ Type', data.type, true)
-				.addField('❯ Contest Type', data.contestType, true)
+				.addField('❯ Contest Type', data.contestType || 'N/A', true)
 				.addField('❯ Class', data.class, true);
 			return msg.embed(embed);
 		} catch (err) {
