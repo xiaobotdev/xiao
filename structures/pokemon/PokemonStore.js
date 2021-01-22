@@ -1,6 +1,8 @@
 const Collection = require('@discordjs/collection');
 const request = require('node-superfetch');
 const Pokemon = require('./Pokemon');
+const MoveStore = require('./MoveStore');
+const AbilityStore = require('./AbilityStore');
 const missingno = require('../../assets/json/missingno');
 
 module.exports = class PokemonStore extends Collection {
@@ -10,6 +12,8 @@ module.exports = class PokemonStore extends Collection {
 		this.pokemonCount = 898;
 		this.pokemonCountWithCry = 893;
 		this.smogonData = {};
+		this.moves = new MoveStore();
+		this.abilities = new AbilityStore();
 	}
 
 	async fetch(query) {
