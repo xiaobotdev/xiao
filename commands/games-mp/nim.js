@@ -98,7 +98,7 @@ module.exports = class NimCommand extends Command {
 					const chosen = res.content;
 					if (chosen.toLowerCase() === 'end' || chosen.toLowerCase() === 'back') return true;
 					const i = Number.parseInt(chosen, 10) - 1;
-					return row >= i && row > 0;
+					return i <= row && i > 0;
 				};
 				const rowTurn = await msg.channel.awaitMessages(rowFilter, {
 					max: 1,
