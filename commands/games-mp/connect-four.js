@@ -8,6 +8,7 @@ const blankEmoji = '⚪';
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣'];
 const colors = require('../../assets/json/connect-four');
 colors.loading = `<a:loading:${LOADING_EMOJI_ID}>`;
+const customEmojiRegex = /^(?:<a?:([a-zA-Z0-9_]+):)?([0-9]+)>?$/;
 
 module.exports = class ConnectFourCommand extends Command {
 	constructor(client) {
@@ -33,16 +34,25 @@ module.exports = class ConnectFourCommand extends Command {
 				{
 					key: 'color',
 					prompt: `What color do you want to be? Either an emoji or one of ${list(Object.keys(colors), 'or')}.`,
-					type: 'default-emoji|string',
-					validate: color => {
+					type: 'default-emoji|custom-emoji|string',
+					validate: (color, msg) => {
 						const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(color);
-						if (!hasEmoji && !colors[color.toLowerCase()]) {
+						const hasCustom = color.match(customEmojiRegex);
+						if (hasCustom && !msg.guild) return 'You can only use custom emoji in a server.';
+						if (hasCustom && msg.guild && !msg.guild.emojis.cache.has(hasCustom[2])) {
+							return 'You can only use custom emoji from this server.';
+						}
+						if (!hasCustom && !hasEmoji && !colors[color.toLowerCase()]) {
 							return `Please enter an emoji or one of the following: ${list(Object.keys(colors), 'or')}.`;
 						}
 						if (color === blankEmoji) return 'You cannot use this emoji.';
 						return true;
 					},
-					parse: color => colors[color.toLowerCase()] || color
+					parse: (color, msg) => {
+						const hasCustom = color.match(customEmojiRegex);
+						if (hasCustom && msg.guild) return msg.guild.emojis.cache.get(hasCustom[2]).toString();
+						return colors[color.toLowerCase()] || color;
+					}
 				}
 			]
 		});
@@ -77,7 +87,9 @@ module.exports = class ConnectFourCommand extends Command {
 					if (res.author.id !== opponent.id) return false;
 					if (res.content === blankEmoji) return false;
 					const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(res.content);
-					return hasEmoji || available.includes(res.content.toLowerCase());
+					const hasCustom = res.content.match(customEmojiRegex);
+					if (hasCustom && msg.guild && !msg.guild.emojis.cache.has(hasCustom[2])) return false;
+					return (hasCustom && msg.guild) || hasEmoji || available.includes(res.content.toLowerCase());
 				};
 				const p2Color = await msg.channel.awaitMessages(filter, {
 					max: 1,
@@ -85,7 +97,12 @@ module.exports = class ConnectFourCommand extends Command {
 				});
 				if (p2Color.size) {
 					const choice = p2Color.first().content.toLowerCase();
-					playerTwoEmoji = colors[choice] || choice;
+					const hasCustom = choice.match(customEmojiRegex);
+					if (hasCustom && msg.guild) {
+						playerTwoEmoji = msg.guild.emojis.cache.get(hasCustom[2]).toString();
+					} else {
+						playerTwoEmoji = colors[choice] || choice;
+					}
 				}
 			}
 			const AIEngine = new Connect4AI();
