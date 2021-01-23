@@ -76,7 +76,7 @@ module.exports = class ChessCommand extends Command {
 						const move = choice.match(turnRegex);
 						if (!move) return false;
 						const moves = game.moves();
-						if (!moves[move[1]].includes(move[2])) {
+						if (!moves[move[1]] || !moves[move[1]].includes(move[2])) {
 							reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 							return false;
 						}
