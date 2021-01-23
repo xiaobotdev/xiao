@@ -198,6 +198,9 @@ module.exports = class NimCommand extends Command {
 				}
 			}
 		}
-		return null;
+		const randomRow = Math.floor(Math.random() * board.length);
+		const randomAmount = Math.floor(Math.random() * board[randomRow]) + 1;
+		board[randomRow] -= randomAmount;
+		return [randomRow, randomAmount];
 	}
 };
