@@ -101,6 +101,7 @@ module.exports = class ChessCommand extends Command {
 							continue;
 						}
 					}
+					if (turn.first().content.toLowerCase() === 'end') break;
 					const choice = turn.first().content.toUpperCase().match(turnRegex);
 					game.move(choice[1], choice[2]);
 				}
@@ -133,7 +134,7 @@ module.exports = class ChessCommand extends Command {
 			ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
 			w += 52 + 2;
 			col += 1;
-			if (i % 8 === 0 && i !== 0) {
+			if (col % 8 === 0 && col !== 0) {
 				w = 36;
 				col = 0;
 				h += 52 + 2;
