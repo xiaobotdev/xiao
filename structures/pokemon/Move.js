@@ -8,9 +8,9 @@ module.exports = class Move {
 		this.name = data.names.length
 			? data.names.find(entry => entry.language.name === 'en').name
 			: slugName;
-		this.description = data.effect_entries
+		this.description = data.effect_entries.length
 			? data.effect_entries.find(entry => entry.language.name === 'en').effect
-			: data.flavor_text_entries
+			: data.flavor_text_entries.length
 				? data.flavor_text_entries.find(entry => entry.language.name === 'en').flavor_text
 				: null;
 		this.accuracy = data.accuracy;
