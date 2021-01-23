@@ -130,7 +130,7 @@ module.exports = class ChessCommand extends Command {
 		let col = 0;
 		for (let i = 0; i < 64; i++) {
 			const piece = gameState.pieces[`${cols[col]}${row}`];
-			const prevGamePiece = prevGameState.pieces[`${cols[col]}${row}`];
+			const prevGamePiece = prevGameState ? prevGameState.pieces[`${cols[col]}${row}`] : null;
 			if (piece) {
 				const parsed = this.pickImage(piece);
 				if (prevGameState && prevGamePiece !== piece && !prevGamePiece) {
