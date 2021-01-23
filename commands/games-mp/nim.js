@@ -185,6 +185,17 @@ module.exports = class NimCommand extends Command {
 	}
 
 	computerTurn(board) {
+		let clearRows = 0;
+		const unclearRows = [];
+		for (const row of board) {
+			if (row === 0) clearRows++;
+			else unclearRows.push(row);
+		}
+		if (clearRows === board.length - 1) {
+			const amount = board[unclearRows[0]] - 1;
+			board[unclearRows[0]] -= amount;
+			return [unclearRows[0], amount];
+		}
 		for (let i = 0; i < board.length; i++) {
 			if (board[i] > 0) {
 				for (let j = 1; j <= board[i]; j++) {
@@ -199,8 +210,8 @@ module.exports = class NimCommand extends Command {
 			}
 		}
 		const randomRow = Math.floor(Math.random() * board.length);
-		const randomAmount = Math.floor(Math.random() * board[randomRow]) + 1;
-		board[randomRow] -= randomAmount;
-		return [randomRow, randomAmount];
+		const amount = board[randomRow] - 1;
+		board[randomRow] -= amount;
+		return [randomRow, amount];
 	}
 };
