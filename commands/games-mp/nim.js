@@ -11,14 +11,6 @@ module.exports = class NimCommand extends Command {
 			group: 'games-mp',
 			memberName: 'nim',
 			description: 'Play a game of nim with another user or the AI.',
-			credit: [
-				{
-					name: 'PuKoren',
-					url: 'https://github.com/PuKoren',
-					reason: 'AI Code',
-					reasonURL: 'https://github.com/PuKoren/ai-nim/blob/master/main.cpp'
-				}
-			],
 			args: [
 				{
 					key: 'opponent',
@@ -97,7 +89,7 @@ module.exports = class NimCommand extends Command {
 					}
 					const choice = turn.first().content;
 					const picked = Number.parseInt(choice, 10);
-						if (choice.toLowerCase() === 'end') {
+					if (choice.toLowerCase() === 'end') {
 						winner = userTurn ? opponent : msg.author;
 						break;
 					}
@@ -203,10 +195,10 @@ module.exports = class NimCommand extends Command {
 			for (let j = 1; j <= board[i]; j++) {
 				board[i] -= j;
 				const sum = this.xOr(board);
-				if (sum !== 0) {
-					board[i] += j;
-				} else {
+				if (sum === 0) {
 					return [i, j];
+				} else {
+					board[i] += j;
 				}
 			}
 		}
