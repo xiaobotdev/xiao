@@ -191,7 +191,7 @@ module.exports = class NimCommand extends Command {
 			if (row === 0) clearRows++;
 			else unclearRows.push(row);
 		}
-		if (clearRows === board.length - 1) {
+		if (unclearRows.length === 2) {
 			const amount = board[unclearRows[0]] - 1;
 			board[unclearRows[0]] -= amount;
 			return [unclearRows[0], amount];
