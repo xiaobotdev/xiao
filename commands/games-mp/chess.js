@@ -134,7 +134,7 @@ module.exports = class ChessCommand extends Command {
 			const prevGamePiece = prevGameState ? prevGameState.pieces[`${cols[col]}${row}`] : null;
 			if (piece) {
 				const parsed = this.pickImage(piece);
-				if (piece !== prevGamePiece) {
+				if (prevGameState && piece !== prevGamePiece) {
 					drawImageWithTint(ctx, this.images[parsed.color][parsed.name], 'green', w, h, 52, 52);
 				} else {
 					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
