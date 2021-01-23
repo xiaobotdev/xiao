@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 584
+Total: 585
 
 ### Utility:
 
@@ -613,6 +613,7 @@ Total: 584
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **bingo:** Play bingo with up to 99 other users.
+* **chess:** Play a game of Chess with another user or the AI.
 * **connect-four:** Play a game of Connect Four with another user or the AI.
 * **dots-and-boxes:** Play a game of Dots and Boxes with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
@@ -1057,6 +1058,8 @@ here.
 	* axis-cult-sign-up ([Image](https://imgur.com/gallery/quQTD))
 - [Cheng Xiao](https://www.instagram.com/chengxiao_0715/)
 	* certificate (Signature)
+- [Chessboard Image](https://chessboardimage.com/)
+	* chess (Piece Images)
 - [Christoph Mueller](https://www.fontsquirrel.com/fonts/list/foundry/christoph-mueller)
 	* captcha ([Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter))
 - [Chuck Norris](https://chucknorris.com/)
@@ -1869,6 +1872,7 @@ here.
 	* wikihow ([API](https://www.wikihow.com/api.php))
 - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page)
 	* caution ([Image](https://commons.wikimedia.org/wiki/File:Caution_blank.svg))
+	* chess ([Board Image](https://commons.wikimedia.org/wiki/File:Chess_board_blank.svg))
 	* danger ([Image](https://commons.wikimedia.org/wiki/File:Danger_blank.svg))
 - [Wikipedia](https://www.wikipedia.org/)
 	* fact ([API](https://en.wikipedia.org/w/api.php))
