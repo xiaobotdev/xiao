@@ -69,13 +69,13 @@ module.exports = class ChessCommand extends Command {
 						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 					`, { files: [{ attachment: this.displayBoard(gameState), name: 'chess.png' }] });
+					const moves = game.moves();
 					const pickFilter = res => {
 						if (res.author.id !== user.id) return false;
 						const choice = res.content.toUpperCase();
 						if (choice === 'END') return true;
 						const move = choice.match(turnRegex);
 						if (!move) return false;
-						const moves = game.moves();
 						if (!moves[move[1]] || !moves[move[1]].includes(move[2])) {
 							reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 							return false;
@@ -88,11 +88,9 @@ module.exports = class ChessCommand extends Command {
 					});
 					if (!turn.size) {
 						if (lastTurnTimeout) {
-							await msg.say('Game ended due to inactivity.');
 							break;
 						} else {
 							await msg.say('Sorry, time is up! Playing random move.');
-							const moves = game.moves();
 							const available = Object.keys(moves);
 							const piece = available[Math.floor(Math.random() * available.length)];
 							const move = moves[piece][Math.floor(Math.random() * moves[piece].length)];
