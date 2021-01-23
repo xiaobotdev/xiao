@@ -71,6 +71,7 @@ module.exports = class ChessCommand extends Command {
 						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 					`, { files: [{ attachment: this.displayBoard(gameState, prevGameState), name: 'chess.png' }] });
+					prevGameState = game.exportJson();
 					const moves = game.moves();
 					const pickFilter = res => {
 						if (res.author.id !== user.id) return false;
@@ -104,7 +105,6 @@ module.exports = class ChessCommand extends Command {
 					if (turn.first().content.toLowerCase() === 'end') break;
 					const choice = turn.first().content.toUpperCase().match(turnRegex);
 					game.move(choice[1], choice[2]);
-					prevGameState = gameState;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
