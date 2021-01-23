@@ -187,9 +187,9 @@ module.exports = class NimCommand extends Command {
 	computerTurn(board) {
 		let clearRows = 0;
 		const unclearRows = [];
-		for (const row of board) {
-			if (row === 0) clearRows++;
-			else unclearRows.push(row);
+		for (let i = 0; i < board.length; i++) {
+			if (board[i] === 0) clearRows++;
+			else unclearRows.push(i);
 		}
 		if (unclearRows.length === 2) {
 			const amount = board[unclearRows[0]] - 1;
