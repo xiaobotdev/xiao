@@ -65,7 +65,7 @@ module.exports = class ChessCommand extends Command {
 				const user = game.exportJson().turn === 'black' ? opponent : msg.author;
 				const gameState = game.exportJson();
 				if (user.bot) {
-					prevGameState = gameState;
+					prevGameState = game.exportJson();
 					game.aiMove(3);
 				} else {
 					await msg.say(stripIndents`
@@ -132,7 +132,6 @@ module.exports = class ChessCommand extends Command {
 		for (let i = 0; i < 64; i++) {
 			const piece = gameState.pieces[`${cols[col]}${row}`];
 			const prevGamePiece = prevGameState ? prevGameState.pieces[`${cols[col]}${row}`] : null;
-			console.log(prevGamePiece === piece);
 			if (piece) {
 				const parsed = this.pickImage(piece);
 				if (prevGameState && !prevGamePiece) {
@@ -140,8 +139,7 @@ module.exports = class ChessCommand extends Command {
 				} else {
 					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
 				}
-			}
-			if (prevGameState && !piece && prevGamePiece) {
+			} else if (prevGameState && prevGamePiece) {
 				ctx.fillStyle = 'green';
 				ctx.globalAlpha = 0.5;
 				ctx.fillRect(w, h, 52, 52);
