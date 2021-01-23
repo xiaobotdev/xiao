@@ -65,6 +65,7 @@ module.exports = class ChessCommand extends Command {
 				const user = game.exportJson().turn === 'black' ? opponent : msg.author;
 				const gameState = game.exportJson();
 				if (user.bot) {
+					prevGameState = gameState;
 					game.aiMove(3);
 				} else {
 					await msg.say(stripIndents`
