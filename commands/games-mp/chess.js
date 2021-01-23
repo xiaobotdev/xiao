@@ -93,8 +93,8 @@ module.exports = class ChessCommand extends Command {
 						} else {
 							await msg.say('Sorry, time is up! Playing random move.');
 							const moves = game.moves();
-							const pieces = Object.keys(moves);
-							const piece = pieces[Math.floor(Math.random() * pieces.length)];
+							const available = Object.keys(moves);
+							const piece = available[Math.floor(Math.random() * available.length)];
 							const move = moves[piece][Math.floor(Math.random() * moves[piece].length)];
 							game.move(piece, move);
 							lastTurnTimeout = true;
