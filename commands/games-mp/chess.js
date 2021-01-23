@@ -60,7 +60,7 @@ module.exports = class ChessCommand extends Command {
 			}
 			const game = new jsChess.Game();
 			let lastTurnTimeout = false;
-			let prevGameState = null;
+			let prevGameState = game.exportJson();
 			while (!game.exportJson().checkMate) {
 				const user = game.exportJson().turn === 'black' ? opponent : msg.author;
 				const gameState = game.exportJson();
@@ -121,7 +121,7 @@ module.exports = class ChessCommand extends Command {
 		}
 	}
 
-	displayBoard(gameState, prevGameState) {
+	displayBoard(gameState, prevGameState = { pieces: {} }) {
 		const canvas = createCanvas(this.images.board.width, this.images.board.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(this.images.board, 0, 0);
@@ -131,10 +131,10 @@ module.exports = class ChessCommand extends Command {
 		let col = 0;
 		for (let i = 0; i < 64; i++) {
 			const piece = gameState.pieces[`${cols[col]}${row}`];
-			const prevGamePiece = prevGameState ? prevGameState.pieces[`${cols[col]}${row}`] : null;
+			const prevGamePiece = prevGameState.pieces[`${cols[col]}${row}`];
 			if (piece) {
 				const parsed = this.pickImage(piece);
-				if (prevGameState && piece !== prevGamePiece) {
+				if (prevGamePiece && piece !== prevGamePiece) {
 					drawImageWithTint(ctx, this.images[parsed.color][parsed.name], 'green', w, h, 52, 52);
 				} else {
 					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
