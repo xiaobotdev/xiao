@@ -62,7 +62,7 @@ module.exports = class NimCommand extends Command {
 				const user = userTurn ? msg.author : opponent;
 				if (!userTurn && opponent.bot) {
 					const turn = this.computerTurn(board);
-					await msg.say(`For my turn, I remove **${turn[1]}** ${objectEmoji} from **row ${turn[0]}**.`);
+					await msg.say(`For my turn, I remove **${turn[1]}** ${objectEmoji} from **row ${turn[0] + 1}**.`);
 				} else {
 					await msg.say(stripIndents`
 						${user}, from which row do you want to remove from? Type \`end\` to forefeit.
