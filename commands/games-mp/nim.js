@@ -191,7 +191,11 @@ module.exports = class NimCommand extends Command {
 			const isOdd = movesLeft % 2 === 1;
 			const largest = Math.max(...board);
 			const indexOfMax = board.indexOf(largest);
-			if (largest === 1 && isOdd) return [indexOfMax, 1];
+			if (largest === 1 && isOdd) {
+				board[indexOfMax] -= 1;
+				return [indexOfMax, 1];
+			}
+			board[indexOfMax] -= largest - Number(isOdd);
 			return [indexOfMax, largest - Number(isOdd)];
 		}
 		for (let i = 0; i < board.length; i++) {
