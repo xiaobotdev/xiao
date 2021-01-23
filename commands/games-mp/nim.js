@@ -176,15 +176,24 @@ module.exports = class NimCommand extends Command {
 		return value;
 	}
 
-	sum(board) {
-		let value = 0;
-		for (let i = 0; i < board.length; i++) {
-			value += board[i];
-		}
-		return value;
-	}
-
 	computerTurn(board) {
+		let nearEnd = false;
+		let countNon1 = 0;
+		for (const row of board) {
+			if (row > 1) countNon1++;
+		}
+		nearEnd = countNon1 <= 1;
+		if (nearEnd) {
+			let movesLeft = 0;
+			for (const row of board) {
+				if (row > 0) movesLeft++;
+			}
+			const isOdd = movesLeft % 2 === 1;
+			const largest = Math.max(...board);
+			const indexOfMax = board.indexOf(largest);
+			if (largest === 1 && isOdd) return [indexOfMax, 1];
+			return [indexOfMax, largest - Number(isOdd)];
+		}
 		for (let i = 0; i < board.length; i++) {
 			if (board[i] < 0) continue;
 			for (let j = 1; j <= board[i]; j++) {
