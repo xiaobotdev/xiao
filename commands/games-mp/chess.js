@@ -47,7 +47,7 @@ module.exports = class ChessCommand extends Command {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
-		if (!images) await this.loadImages();
+		if (!this.images) await this.loadImages();
 		try {
 			if (!opponent.bot) {
 				await msg.say(`${opponent}, do you accept this challenge?`);
