@@ -139,7 +139,7 @@ module.exports = class ChessCommand extends Command {
 					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
 				}
 			}
-			if (prevGameState && !piece) {
+			if (prevGameState && !piece && prevGamePiece) {
 				ctx.fillStyle = 'green';
 				ctx.globalAlpha = 0.5;
 				ctx.fillRect(w, h, 52, 52);
