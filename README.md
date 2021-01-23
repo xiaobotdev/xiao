@@ -622,7 +622,7 @@ Total: 584
 * **island:** Who will be the final two left on the island after a series of vote-kicks?
 * **jenga:** Play a game of Jenga with another user or the AI.
 * **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
-* **nim:** Play a game of nim with another user.
+* **nim:** Play a game of nim with another user or the AI.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **poker:** Play poker with up to 5 other users.
 * **quiz-duel:** Answer a series of quiz questions against other opponents.
@@ -1620,6 +1620,8 @@ here.
 	* psycho-pass (Original Anime)
 - [Psycho-Pass Wiki](https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki)
 	* psycho-pass ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index%29))
+- [PuKoren](https://github.com/PuKoren)
+	* nim ([AI Code](https://github.com/PuKoren/ai-nim/blob/master/main.cpp))
 - [r/IsTodayFridayThe13th](https://www.reddit.com/r/IsTodayFridayThe13th/)
 	* friday-the-13th (Concept)
 - [Random-d.uk](https://random-d.uk/)
