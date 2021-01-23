@@ -62,7 +62,7 @@ module.exports = class NimCommand extends Command {
 				const user = userTurn ? msg.author : opponent;
 				if (!userTurn && opponent.bot) {
 					const turn = this.computerTurn(board);
-					await msg.say(`For my turn, I remove **${turn[1]}** ${objectEmoji} from **row ${turn[0] + 1}**.`);
+					await msg.say(`For my turn, I remove **${turn[1]}** ${objectEmoji} from **row ${turn[0]}**.`);
 				} else {
 					await msg.say(stripIndents`
 						${user}, from which row do you want to remove from? Type \`end\` to forefeit.
@@ -185,37 +185,30 @@ module.exports = class NimCommand extends Command {
 	}
 
 	computerTurn(board) {
-		let clearRows = 0;
-		const unclearRows = [];
 		for (let i = 0; i < board.length; i++) {
-			if (board[i] === 0) clearRows++;
-			else unclearRows.push(i);
-		}
-		if (unclearRows.length === 2) {
-			const amount = board[unclearRows[0]] - 1;
-			board[unclearRows[0]] -= amount;
-			return [unclearRows[0], amount];
-		}
-		for (let i = 0; i < board.length; i++) {
-			if (board[i] > 0) {
-				for (let j = 1; j <= board[i]; j++) {
-					board[i] -= j;
-					const sum = this.xOr(board);
-					if (sum !== 0) {
-						board[i] += j;
-					} else {
-						return [i, j];
-					}
+			if (board[i] < 0) continue;
+			for (let j = 1; j <= board[i]; j++) {
+				board[i] -= j;
+				const sum = this.xOr(board);
+				if (sum !== 0) {
+					board[i] += j;
+				} else {
+					return [i, j];
 				}
 			}
 		}
-		const validRows = [];
-		for (const row of board) {
-			if (row !== 0) validRows.push(row);
+		let i = 0;
+		let keepGoing = true;
+		let finalValues = null;
+		while (keepGoing) {
+			if (board[i] === 0) {
+				continue;
+			} else {
+				board[i] -= 1;
+				finalValues = [i, 1];
+				keepGoing = false;
+			}
 		}
-		const randomRow = validRows[Math.floor(Math.random() * validRows.length)];
-		const amount = board[randomRow];
-		board[randomRow] -= amount;
-		return [randomRow, amount];
+		return finalValues;
 	}
 };
