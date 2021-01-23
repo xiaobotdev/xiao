@@ -202,6 +202,7 @@ module.exports = class NimCommand extends Command {
 		let finalValues = null;
 		while (keepGoing) {
 			if (board[i] === 0) {
+				i++;
 				continue;
 			} else {
 				board[i] -= 1;
