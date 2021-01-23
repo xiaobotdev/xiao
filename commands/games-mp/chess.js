@@ -4,6 +4,7 @@ const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
+const { drawImageWithTint } = require('../../util/Canvas');
 const { FAILURE_EMOJI_ID } = process.env;
 const turnRegex = /^([A-H][1-8]) ?([A-H][1-8])$/;
 const pieces = ['pawn', 'rook', 'knight', 'king', 'queen', 'bishop'];
@@ -59,6 +60,7 @@ module.exports = class ChessCommand extends Command {
 			}
 			const game = new jsChess.Game();
 			let lastTurnTimeout = false;
+			let prevGameState = null;
 			while (!game.exportJson().checkMate) {
 				const user = game.exportJson().turn === 'black' ? opponent : msg.author;
 				const gameState = game.exportJson();
@@ -68,7 +70,7 @@ module.exports = class ChessCommand extends Command {
 					await msg.say(stripIndents`
 						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
-					`, { files: [{ attachment: this.displayBoard(gameState), name: 'chess.png' }] });
+					`, { files: [{ attachment: this.displayBoard(gameState, prevGameState), name: 'chess.png' }] });
 					const moves = game.moves();
 					const pickFilter = res => {
 						if (res.author.id !== user.id) return false;
@@ -102,6 +104,7 @@ module.exports = class ChessCommand extends Command {
 					if (turn.first().content.toLowerCase() === 'end') break;
 					const choice = turn.first().content.toUpperCase().match(turnRegex);
 					game.move(choice[1], choice[2]);
+					prevGameState = gameState;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
@@ -117,7 +120,7 @@ module.exports = class ChessCommand extends Command {
 		}
 	}
 
-	displayBoard(gameState) {
+	displayBoard(gameState, prevGameState) {
 		const canvas = createCanvas(this.images.board.width, this.images.board.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(this.images.board, 0, 0);
@@ -127,9 +130,20 @@ module.exports = class ChessCommand extends Command {
 		let col = 0;
 		for (let i = 0; i < 64; i++) {
 			const piece = gameState.pieces[`${cols[col]}${row}`];
+			const prevGamePiece = prevGameState.pieces[`${cols[col]}${row}`];
 			if (piece) {
 				const parsed = this.pickImage(piece);
-				ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
+				if (prevGameState && prevGamePiece !== piece && !prevGamePiece) {
+					drawImageWithTint(ctx, 'green', this.images[parsed.color][parsed.name], w, h, 52, 52);
+				} else {
+					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
+				}
+			}
+			if (prevGameState && prevGamePiece !== piece && !piece) {
+				ctx.fillStyle = 'green';
+				ctx.globalAlpha = 0.5;
+				ctx.fillRect(w, h, 52, 52);
+				ctx.globalAlpha = 1;
 			}
 			w += 52 + 2;
 			col += 1;
