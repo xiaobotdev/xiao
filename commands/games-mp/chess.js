@@ -129,9 +129,10 @@ module.exports = class ChessCommand extends Command {
 		let col = 0;
 		for (let i = 0; i < 64; i++) {
 			const piece = gameState.pieces[`${cols[col]}${row}`];
-			if (!piece) continue;
-			const parsed = this.pickImage(piece);
-			ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
+			if (piece) {
+				const parsed = this.pickImage(piece);
+				ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
+			}
 			w += 52 + 2;
 			col += 1;
 			if (col % 8 === 0 && col !== 0) {
