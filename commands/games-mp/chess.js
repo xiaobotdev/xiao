@@ -133,13 +133,13 @@ module.exports = class ChessCommand extends Command {
 			const prevGamePiece = prevGameState ? prevGameState.pieces[`${cols[col]}${row}`] : null;
 			if (piece) {
 				const parsed = this.pickImage(piece);
-				if (prevGameState && prevGamePiece !== piece && !prevGamePiece) {
-					drawImageWithTint(ctx, 'green', this.images[parsed.color][parsed.name], w, h, 52, 52);
+				if (prevGameState && !prevGamePiece) {
+					drawImageWithTint(ctx, this.images[parsed.color][parsed.name], 'green', w, h, 52, 52);
 				} else {
 					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
 				}
 			}
-			if (prevGameState && prevGamePiece !== piece && !piece) {
+			if (prevGameState && !piece) {
 				ctx.fillStyle = 'green';
 				ctx.globalAlpha = 0.5;
 				ctx.fillRect(w, h, 52, 52);
