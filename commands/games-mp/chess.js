@@ -6,7 +6,7 @@ const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
 const { drawImageWithTint } = require('../../util/Canvas');
 const { FAILURE_EMOJI_ID } = process.env;
-const turnRegex = /^([A-H][1-8]) ?([A-H][1-8])$/;
+const turnRegex = /^([A-H][1-8])(?: |, ?|-?>?)?([A-H][1-8])$/;
 const pieces = ['pawn', 'rook', 'knight', 'king', 'queen', 'bishop'];
 const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -88,16 +88,16 @@ module.exports = class ChessCommand extends Command {
 					};
 					const turn = await msg.channel.awaitMessages(pickFilter, {
 						max: 1,
-						time: 60000
+						time: 120000
 					});
 					if (!turn.size) {
 						if (lastTurnTimeout) {
 							break;
 						} else {
-							await msg.say('Sorry, time is up! Playing random move.');
 							const available = Object.keys(moves);
 							const piece = available[Math.floor(Math.random() * available.length)];
 							const move = moves[piece][Math.floor(Math.random() * moves[piece].length)];
+							await msg.say(`Sorry, time is up! Playing random move (${piece}->${move}).`);
 							game.move(piece, move);
 							lastTurnTimeout = true;
 							continue;
@@ -134,12 +134,12 @@ module.exports = class ChessCommand extends Command {
 			const prevGamePiece = prevGameState ? prevGameState.pieces[`${cols[col]}${row}`] : null;
 			if (piece) {
 				const parsed = this.pickImage(piece);
-				if (prevGameState && !prevGamePiece) {
+				if (piece !== prevGamePiece) {
 					drawImageWithTint(ctx, this.images[parsed.color][parsed.name], 'green', w, h, 52, 52);
 				} else {
 					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
 				}
-			} else if (prevGameState && prevGamePiece) {
+			} else if (prevGamePiece) {
 				ctx.fillStyle = 'green';
 				ctx.globalAlpha = 0.5;
 				ctx.fillRect(w, h, 52, 52);
