@@ -210,7 +210,7 @@ module.exports = class NimCommand extends Command {
 			}
 		}
 		const randomRow = Math.floor(Math.random() * board.length);
-		const amount = board[randomRow] - 1;
+		const amount = board[randomRow];
 		board[randomRow] -= amount;
 		return [randomRow, amount];
 	}
