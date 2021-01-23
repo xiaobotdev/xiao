@@ -39,7 +39,7 @@ module.exports = class PokedexMoveCommand extends Command {
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
 				.setTitle(data.name)
-				.setDescription(data.cleanDescription)
+				.setDescription(data.description ? data.cleanDescription : 'No description available.')
 				.addField('❯ Accuracy', `${data.accuracy}%`, true)
 				.addField('❯ Power', data.power, true)
 				.addField('❯ PP', data.pp, true)
