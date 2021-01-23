@@ -62,7 +62,7 @@ module.exports = class ChessCommand extends Command {
 			while (!game.exportJson().checkMate) {
 				const user = game.exportJson().turn === 'black' ? opponent : msg.author;
 				const gameState = game.exportJson();
-				if (opponent.bot && !userTurn) {
+				if (user.bot) {
 					game.aiMove(3);
 				} else {
 					await msg.say(stripIndents`
