@@ -137,6 +137,7 @@ module.exports = class NimCommand extends Command {
 					break;
 				}
 				userTurn = !userTurn;
+				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
 			this.client.games.delete(msg.channel.id);
 			if (winner === 'time') return msg.say('Game ended due to inactivity.');

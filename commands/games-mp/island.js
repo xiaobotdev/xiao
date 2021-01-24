@@ -105,6 +105,7 @@ module.exports = class IslandCommand extends Command {
 				`);
 				if (playersLeft.size > 2) await delay(30000);
 				else break;
+				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
 			this.client.games.delete(msg.channel.id);
 			const winners = players.filter(player => playersLeft.has(player.id));
