@@ -130,12 +130,12 @@ module.exports = class ChessCommand extends Command {
 					}
 					if (turn.first().content.toLowerCase() === 'end') break;
 					if (turn.first().content.toLowerCase() === 'save') {
-						const author = turn.first().author;
+						const { author } = turn.first();
 						const alreadySaved = await this.client.redis.get(`chess-${author.id}`);
 						if (alreadySaved) {
 							await msg.say('You already have a saved game, do you want to overwrite it?');
 							const verification = await verify(msg.channel, author);
-							if (!verification) continue;
+							if (!verification) continue; // eslint-disable-line max-depth
 						}
 						await this.client.redis.set(
 							`chess-${author.id}`,
