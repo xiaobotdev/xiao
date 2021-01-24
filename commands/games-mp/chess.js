@@ -70,7 +70,7 @@ module.exports = class ChessCommand extends Command {
 				if (user.bot) {
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const now = new Date();
-					game.aiMove(3);
+					game.aiMove(1);
 					const timeTaken = new Date() - now;
 					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
 					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
