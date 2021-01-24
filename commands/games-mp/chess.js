@@ -162,7 +162,7 @@ module.exports = class ChessCommand extends Command {
 			if (!gameState.checkMate) return msg.say('Game ended due to forfeit.');
 			const winner = gameState.turn === 'black' ? whitePlayer : blackPlayer;
 			return msg.say(`Checkmate! Congrats, ${winner}!`, {
-				files: [{ attachment: this.displayBoard(gameState), name: 'chess.png' }]
+				files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
 			});
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
