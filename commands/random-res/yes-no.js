@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const answers = ['Yes', 'No'];
+const answers = ['😄 Yes', '🙁 No'];
 
 module.exports = class YesNoCommand extends Command {
 	constructor(client) {

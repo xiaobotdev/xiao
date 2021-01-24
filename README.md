@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 588
+Total: 582
 
 ### Utility:
 
@@ -386,15 +386,12 @@ Total: 588
 * **fox:** Responds with a random fox image.
 * **hentai:** Responds with a random hentai image. (NSFW)
 * **interesting:** Responds with a random interesting image.
-* **karen:** Responds with a random image of Karen.
-* **lando:** Responds with a random image of Lando Calrissian.
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **lorem-picsum:** Responds with a random image of a certain size.
 * **meme:** Responds with a random meme.
 * **porn:** Responds with a random porn image. (NSFW)
 * **potato:** Responds with a random potato image.
 * **shiba:** Responds with a random image of a Shiba Inu.
-* **shrek:** Responds with a random image of Shrek, the sexiest man alive.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Seeded Randomizers:
@@ -424,8 +421,6 @@ Total: 588
 * **give-flower:** Gives Xiao Pai a flower.
 * **hi:** Hello.
 * **idiot:** Responds with the Wikipedia page of an idiot.
-* **isnt-joke:** Isn't joke...
-* **its-joke:** It's joke!
 * **just-do-it:** Sends a link to the "Just Do It!" motivational speech.
 * **lenny:** Responds with the lenny face.
 * **rickroll:** Sends a link to the "Never Gonna Give You Up" music video.
@@ -764,7 +759,6 @@ Total: 588
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
 * **i-fear-no-man:** Sends a "I fear no man" meme with the text of your choice.
 * **if-those-kids-could-read:** Sends a "If those kids could read, they'd be very upset" meme with the text of your choice.
-* **illegal:** Makes Donald Trump make your text illegal.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
 * **like:** Sends an "Everyone Liked That" meme with the image of your choice.
 * **lisa-presentation:** Sends a "Lisa Presentation" meme with the presentation of your choice.
@@ -1122,12 +1116,9 @@ here.
 	* worthless ([Original "Gravity Falls" Show](https://disneynow.com/shows/gravity-falls))
 - [Dog CEO](https://dog.ceo/)
 	* dog ([Dog API](https://dog.ceo/dog-api/))
-- [Donald J. Trump](https://www.donaldjtrump.com/)
-	* illegal (Himself)
 - [Drake](https://drakeofficial.com/)
 	* drakeposting ([Original "Hotline Bling" Music Video](https://youtu.be/uxpDa-c-4Mc))
 - [DreamWorks](https://www.dreamworks.com/)
-	* shrek ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
 	* where-is-everybody ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
 - [Dust: An Elysian Tail](https://www.noogy.com/main.html)
 	* fidget (Original Game)
@@ -1310,15 +1301,12 @@ here.
 	* hug ([API](https://apidocs.imgur.com/))
 	* imgur ([API](https://apidocs.imgur.com/))
 	* inhale ([API](https://apidocs.imgur.com/))
-	* karen ([API](https://apidocs.imgur.com/))
 	* kill ([API](https://apidocs.imgur.com/))
 	* kiss ([API](https://apidocs.imgur.com/))
-	* lando ([API](https://apidocs.imgur.com/))
 	* pat ([API](https://apidocs.imgur.com/))
 	* poke ([API](https://apidocs.imgur.com/))
 	* potato ([API](https://apidocs.imgur.com/))
 	* punch ([API](https://apidocs.imgur.com/))
-	* shrek ([API](https://apidocs.imgur.com/))
 	* slap ([API](https://apidocs.imgur.com/))
 	* sleep ([API](https://apidocs.imgur.com/))
 	* smile ([API](https://apidocs.imgur.com/))
@@ -1330,8 +1318,6 @@ here.
 	* chi-idea ([Wild Words Font](https://www.insidescanlation.com/etc/the-idiots-guide-to-editing-manga/guide/type/fonts.html))
 - [ipify API](https://www.ipify.org/)
 	* ip (API)
-- [IsNowIllegal.com](http://isnowillegal.com/)
-	* illegal ([Images](https://github.com/ivanseidel/Is-Now-Illegal/tree/master/GIF/Trump))
 - [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ)
 	* challenger ([Image](https://www.youtube.com/watch?v=3FebRrXg0bk))
 - [Jackbox Games](https://www.jackboxgames.com/)
@@ -1367,7 +1353,6 @@ here.
 	* kickstarter (API)
 - [KINMOZA!](http://www.kinmosa.com/)
 	* eggs-get-laid (Original Anime)
-	* karen (Original Anime)
 	* look-what-karen-have (Original Anime)
 - [KissClipart.com](https://www.kissclipart.com/)
 	* hat ([Witch Hat Image](https://www.kissclipart.com/halloween-witch-hat-clipart-witch-hat-clip-art-qfycyt/))
@@ -1694,7 +1679,6 @@ here.
 	* whos-that-pokemon (Images)
 	* whos-that-pokemon-cry (Images)
 - [ShareFonts.net](https://www.wfonts.com/)
-	* illegal ([Impact Font](https://www.wfonts.com/font/impact))
 	* meme-gen-classic ([Impact Font](https://www.wfonts.com/font/impact))
 - [shibe.online](https://shibe.online/)
 	* bird (API)
@@ -1733,7 +1717,6 @@ here.
 - [Stadium Talk](https://www.stadiumtalk.com/)
 	* horse-race ([Horse Name Data](https://www.stadiumtalk.com/s/best-racehorse-names-be7b8ad6b49a42df))
 - [Star Wars](https://www.starwars.com/)
-	* lando (Original Movie)
 	* soundboard (Hello There Sound)
 - [Steam](https://store.steampowered.com/)
 	* steam (API)
