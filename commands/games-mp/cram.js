@@ -79,7 +79,7 @@ module.exports = class CramCommand extends Command {
 					${this.displayBoard(board, userEmoji, oppoEmoji)}
 				`);
 				const possibleMoves = this.possibleMoves(board);
-				const filter = res => {
+				const colorFilter = res => {
 					if (res.author.id !== user.id) return false;
 					const pick = res.content;
 					if (pick.toLowerCase() === 'end') return true;
@@ -92,7 +92,7 @@ module.exports = class CramCommand extends Command {
 					if (!possibleMoves.includes(`${direction}${x - 1},${y - 1}`)) return false;
 					return true;
 				};
-				const turn = await msg.channel.awaitMessages(filter, {
+				const turn = await msg.channel.awaitMessages(colorFilter, {
 					max: 1,
 					time: 60000
 				});
