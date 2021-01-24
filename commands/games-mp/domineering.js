@@ -122,7 +122,7 @@ module.exports = class DomineeringCommand extends Command {
 				if (userTurn && !board[i + 1]) continue;
 				if (!userTurn && board[i][j + 1] === undefined) continue;
 				if (board[userTurn ? i + 1 : i][userTurn ? j : j + 1]) continue;
-				possibleMoves.push(`${i},${j}`);
+				possibleMoves.push(`${j},${i}`);
 			}
 		}
 		return possibleMoves;
