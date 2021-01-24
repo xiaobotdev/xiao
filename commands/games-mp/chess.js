@@ -60,19 +60,19 @@ module.exports = class ChessCommand extends Command {
 			}
 			const game = new jsChess.Game();
 			let lastTurnTimeout = false;
-			let prevGameState = game.exportJson();
+			let prevPieces = null;
 			while (!game.exportJson().checkMate) {
 				const user = game.exportJson().turn === 'black' ? opponent : msg.author;
 				const gameState = game.exportJson();
 				if (user.bot) {
-					prevGameState = game.exportJson();
+					prevPieces = Object.assign({}, game.exportJson().pieces);
 					game.aiMove(3);
 				} else {
 					await msg.say(stripIndents`
 						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
-					`, { files: [{ attachment: this.displayBoard(gameState, prevGameState), name: 'chess.png' }] });
-					prevGameState = game.exportJson();
+					`, { files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }] });
+					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const moves = game.moves();
 					const pickFilter = res => {
 						if (res.author.id !== user.id) return false;
@@ -121,7 +121,7 @@ module.exports = class ChessCommand extends Command {
 		}
 	}
 
-	displayBoard(gameState, prevGameState = { pieces: {} }) {
+	displayBoard(gameState, prevPieces) {
 		const canvas = createCanvas(this.images.board.width, this.images.board.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(this.images.board, 0, 0);
@@ -131,7 +131,7 @@ module.exports = class ChessCommand extends Command {
 		let col = 0;
 		for (let i = 0; i < 64; i++) {
 			const piece = gameState.pieces[`${cols[col]}${row}`];
-			const prevGamePiece = prevGameState.pieces[`${cols[col]}${row}`];
+			const prevGamePiece = prevPieces ? prevPieces[`${cols[col]}${row}`] : null;
 			if (piece) {
 				const parsed = this.pickImage(piece);
 				if (prevGamePiece && piece !== prevGamePiece) {
