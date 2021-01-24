@@ -107,7 +107,11 @@ module.exports = class DomineeringCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			if (winner === 'time') return msg.say('Game ended due to inactivity.');
-			return msg.say(`Congrats, ${winner}! Your opponent has no possible moves left!`);
+			return msg.say(stripIndents`
+				Congrats, ${winner}! Your opponent has no possible moves left!
+
+				${this.displayBoard(board, userEmoji, oppoEmoji)}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
