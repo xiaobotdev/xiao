@@ -616,6 +616,7 @@ Total: 587
 * **chess-delete:** Deletes your saved Chess game.
 * **chess:** Play a game of Chess with another user or the AI.
 * **connect-four:** Play a game of Connect Four with another user or the AI.
+* **cram:** Play a game of Cram with another user.
 * **domineering:** Play a game of Domineering with another user.
 * **dots-and-boxes:** Play a game of Dots and Boxes with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
