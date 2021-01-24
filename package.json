@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "126.14.2",
+	"version": "126.15.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -55,6 +55,8 @@
 		"ioredis": "^4.19.4",
 		"js-beautify": "^1.13.4",
 		"js-chess-engine": "^0.6.0",
+		"kuroshiro": "^1.1.2",
+		"kuroshiro-analyzer-kuromoji": "^1.1.0",
 		"mathjs": "^9.0.0",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",

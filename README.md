@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 587
+Total: 588
 
 ### Utility:
 
@@ -828,6 +828,7 @@ Total: 587
 * **pirate:** Converts text to pirate.
 * **repeat:** Repeat text over and over and over and over (etc).
 * **reverse:** Reverses text.
+* **romaji:** Converts Japanese text to Romaji.
 * **say:** Make me say what you want, master.
 * **sha-1:** Creates a hash of text with the SHA-1 algorithm.
 * **sha-256:** Creates a hash of text with the SHA-256 algorithm.
