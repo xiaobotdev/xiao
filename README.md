@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 585
+Total: 587
 
 ### Utility:
 
@@ -613,8 +613,10 @@ Total: 585
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **bingo:** Play bingo with up to 99 other users.
+* **chess-delete:** Deletes your saved Chess game.
 * **chess:** Play a game of Chess with another user or the AI.
 * **connect-four:** Play a game of Connect Four with another user or the AI.
+* **domineering:** Play a game of Domineering with another user.
 * **dots-and-boxes:** Play a game of Dots and Boxes with another user.
 * **emoji-emoji-revolution:** Can you type arrow emoji faster than anyone else has ever typed them before?
 * **guesspionage:** Tests your knowledge of humans as you guess how people responded to poll questions.
