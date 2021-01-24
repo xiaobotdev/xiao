@@ -66,8 +66,8 @@ module.exports = class DomineeringCommand extends Command {
 					if (pick.toLowerCase() === 'end') return true;
 					const coordPicked = pick.match(turnRegex);
 					if (!coordPicked) return false;
-					const x = Number.parseInt(coordPicked[2], 10);
-					const y = Number.parseInt(coordPicked[3], 10);
+					const x = Number.parseInt(coordPicked[1], 10);
+					const y = Number.parseInt(coordPicked[2], 10);
 					if (x > size || y > size || x < 1 || y < 1) return false;
 					if (!possibleMoves.includes(`${x - 1},${y - 1}`)) return false;
 					return true;
