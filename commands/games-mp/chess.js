@@ -67,7 +67,7 @@ module.exports = class ChessCommand extends Command {
 			let blackPlayer = opponent;
 			if (resumeGame) {
 				await msg.reply('You have a saved game, do you want to resume it?');
-				const verification = await verify(msg.channel, opponent);
+				const verification = await verify(msg.channel, msg.author);
 				if (verification) {
 					const data = JSON.parse(resumeGame);
 					game = new jsChess.Game(resumeGame.fen);
