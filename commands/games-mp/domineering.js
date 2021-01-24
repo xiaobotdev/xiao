@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { verify, list } = require('../../util/Util');
+const colors = require('../../assets/json/domineering');
 const blankEmoji = '⬜';
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
 const turnRegex = /^(\d+), ?(\d+)/i;
@@ -21,6 +22,13 @@ module.exports = class DomineeringCommand extends Command {
 					type: 'user'
 				},
 				{
+					key: 'color',
+					prompt: `What color do you want to be? Either ${list(Object.keys(colors), 'or')}.`,
+					type: 'string',
+					oneOf: Object.keys(colors),
+					parse: color => color.toLowerCase()
+				},
+				{
 					key: 'size',
 					prompt: 'What board size do you want to use?',
 					type: 'integer',
@@ -32,25 +40,36 @@ module.exports = class DomineeringCommand extends Command {
 		});
 	}
 
-	async run(msg, { opponent, size }) {
+	async run(msg, { opponent, color, size }) {
 		if (opponent.bot) return msg.reply('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
+		const userEmoji = colors[color];
+		let oppoEmoji = userEmoji === colors.blue ? colors.red : colors.blue;
 		try {
+			const available = Object.keys(colors).filter(clr => color !== clr);
 			await msg.say(`${opponent}, do you accept this challenge?`);
 			const verification = await verify(msg.channel, opponent);
 			if (!verification) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
+			await msg.say(`${opponent}, what color do you want to be? Either ${list(available, 'or')}.`);
+			const filter = res => {
+				if (res.author.id !== opponent.id) return false;
+				return available.includes(res.content.toLowerCase());
+			};
+			const p2Color = await msg.channel.awaitMessages(filter, {
+				max: 1,
+				time: 30000
+			});
+			if (p2Color.size) oppoEmoji = colors[p2Color.first().content.toLowerCase()];
 			const board = this.generateBoard(size);
 			let userTurn = true;
 			let winner = null;
 			let lastTurnTimeout = false;
-			const userEmoji = '🟥';
-			const oppoEmoji = '🟦';
 			while (!winner) {
 				const user = userTurn ? msg.author : opponent;
 				await msg.say(stripIndents`
