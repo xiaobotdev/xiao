@@ -84,9 +84,10 @@ module.exports = class ChessCommand extends Command {
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const moves = game.moves();
 					const pickFilter = res => {
-						if (res.author.id !== user.id) return false;
+						if (![msg.author.id, opponent.id].includes(res.author.id)) return false;
 						const choice = res.content.toUpperCase();
 						if (choice === 'END') return true;
+						if (res.author.id !== user.id) return false;
 						const move = choice.match(turnRegex);
 						if (!move) return false;
 						if (!moves[move[1]] || !moves[move[1]].includes(move[2])) {
