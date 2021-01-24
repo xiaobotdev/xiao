@@ -75,6 +75,7 @@ module.exports = class ChessCommand extends Command {
 					blackTime = data.blackTime;
 					whitePlayer = data.playerColor === 'white' ? msg.author : opponent;
 					blackPlayer = data.playerColor === 'black' ? msg.author : opponent;
+					await this.client.redis.del(`chess-${msg.author.id}`);
 				} else {
 					game = new jsChess.Game();
 				}
