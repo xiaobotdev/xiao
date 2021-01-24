@@ -70,7 +70,7 @@ module.exports = class ChessCommand extends Command {
 				const verification = await verify(msg.channel, msg.author);
 				if (verification) {
 					const data = JSON.parse(resumeGame);
-					game = new jsChess.Game(resumeGame.fen);
+					game = new jsChess.Game(data.fen);
 					whiteTime = data.whiteTime;
 					blackTime = data.blackTime;
 					whitePlayer = data.playerColor === 'white' ? msg.author : opponent;
