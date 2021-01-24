@@ -20,7 +20,7 @@ module.exports = class RomajiCommand extends Command {
 				}
 			]
 		});
-	
+
 		this.analyzer = new Kuroshiro();
 		this.inited = false;
 	}
