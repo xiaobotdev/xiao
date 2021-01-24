@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const jsChess = require('js-chess-engine');
 const { createCanvas, loadImage } = require('canvas');
+const moment = require('moment');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
@@ -59,18 +60,26 @@ module.exports = class ChessCommand extends Command {
 				}
 			}
 			const game = new jsChess.Game();
-			let lastTurnTimeout = false;
 			let prevPieces = null;
+			let whiteTime = 900000;
+			let blackTime = 900000;
 			while (!game.exportJson().checkMate) {
-				const user = game.exportJson().turn === 'black' ? opponent : msg.author;
 				const gameState = game.exportJson();
+				const user = gameState.turn === 'black' ? opponent : msg.author;
+				const time = gameState.turn === 'black' ? blackTime : whiteTime;
 				if (user.bot) {
 					prevPieces = Object.assign({}, game.exportJson().pieces);
+					const now = new Date();
 					game.aiMove(3);
+					const timeTaken = new Date() - now;
+					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
+					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
 				} else {
 					await msg.say(stripIndents`
 						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
+
+						**Time Remaining: ${moment.duration(time).format()}**
 					`, { files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }] });
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const moves = game.moves();
@@ -86,31 +95,26 @@ module.exports = class ChessCommand extends Command {
 						}
 						return true;
 					};
+					const now = new Date();
 					const turn = await msg.channel.awaitMessages(pickFilter, {
 						max: 1,
-						time: 120000
+						time
 					});
 					if (!turn.size) {
-						if (lastTurnTimeout) {
-							break;
-						} else {
-							const available = Object.keys(moves);
-							const piece = available[Math.floor(Math.random() * available.length)];
-							const move = moves[piece][Math.floor(Math.random() * moves[piece].length)];
-							await msg.say(`Sorry, time is up! Playing random move (${piece}->${move}).`);
-							game.move(piece, move);
-							lastTurnTimeout = true;
-							continue;
-						}
+						this.client.games.delete(msg.channel.id);
+						return msg.say(`${user.id === msg.author.id ? opponent : msg.author} wins from timeout!`);
 					}
 					if (turn.first().content.toLowerCase() === 'end') break;
+					const timeTaken = new Date() - now;
+					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
+					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
 					const choice = turn.first().content.toUpperCase().match(turnRegex);
 					game.move(choice[1], choice[2]);
 				}
 			}
 			this.client.games.delete(msg.channel.id);
 			const gameState = game.exportJson();
-			if (!gameState.checkMate) return msg.say('Game ended due to inactivity or forfeit.');
+			if (!gameState.checkMate) return msg.say('Game ended due to forfeit.');
 			const winner = gameState.turn === 'black' ? msg.author : opponent;
 			return msg.say(`Checkmate! Congrats, ${winner}!`, {
 				files: [{ attachment: this.displayBoard(gameState), name: 'chess.png' }]
