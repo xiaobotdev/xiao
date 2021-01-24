@@ -59,13 +59,33 @@ module.exports = class ChessCommand extends Command {
 					return msg.say('Looks like they declined...');
 				}
 			}
-			const game = new jsChess.Game();
-			let prevPieces = null;
+			const resumeGame = await this.client.redis.get(`chess-${msg.author.id}`);
+			let game;
 			let whiteTime = 900000;
 			let blackTime = 900000;
+			let whitePlayer = msg.author;
+			let blackPlayer = opponent;
+			if (resumeGame) {
+				await msg.reply('You have a saved game, do you want to resume it?');
+				const verification = await verify(msg.channel, opponent);
+				if (verification) {
+					const data = JSON.parse(resumeGame);
+					game = new jsChess.Game(resumeGame.fen);
+					whiteTime = data.whiteTime;
+					blackTime = data.blackTime;
+					whitePlayer = data.playerColor === 'white' ? msg.author : opponent;
+					blackPlayer = data.playerColor === 'black' ? msg.author : opponent;
+				} else {
+					game = new jsChess.Game();
+				}
+			} else {
+				game = new jsChess.Game();
+			}
+			let prevPieces = null;
+			let saved = false;
 			while (!game.exportJson().checkMate) {
 				const gameState = game.exportJson();
-				const user = gameState.turn === 'black' ? opponent : msg.author;
+				const user = gameState.turn === 'black' ? blackPlayer : whitePlayer;
 				const time = gameState.turn === 'black' ? blackTime : whiteTime;
 				if (user.bot) {
 					prevPieces = Object.assign({}, game.exportJson().pieces);
@@ -77,6 +97,7 @@ module.exports = class ChessCommand extends Command {
 				} else {
 					await msg.say(stripIndents`
 						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
+						You can save your game by typing \`save\`.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 
 						**Time Remaining: ${moment.duration(time).format()}**
@@ -87,6 +108,7 @@ module.exports = class ChessCommand extends Command {
 						if (![msg.author.id, opponent.id].includes(res.author.id)) return false;
 						const choice = res.content.toUpperCase();
 						if (choice === 'END') return true;
+						if (choice === 'SAVE') return true;
 						if (res.author.id !== user.id) return false;
 						const move = choice.match(turnRegex);
 						if (!move) return false;
@@ -106,6 +128,21 @@ module.exports = class ChessCommand extends Command {
 						return msg.say(`${user.id === msg.author.id ? opponent : msg.author} wins from timeout!`);
 					}
 					if (turn.first().content.toLowerCase() === 'end') break;
+					if (turn.first().content.toLowerCase() === 'save') {
+						const author = turn.first().author;
+						const alreadySaved = await this.client.redis.get(`chess-${author.id}`);
+						if (alreadySaved) {
+							await msg.say('You already have a saved game, do you want to overwrite it?');
+							const verification = await verify(msg.channel, author);
+							if (!verification) continue;
+						}
+						await this.client.redis.set(
+							`chess-${author.id}`,
+							this.exportGame(game, blackTime, whiteTime, whitePlayer.id === author.id ? 'white' : 'black')
+						);
+						saved = true;
+						break;
+					}
 					const timeTaken = new Date() - now;
 					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
 					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
@@ -114,9 +151,16 @@ module.exports = class ChessCommand extends Command {
 				}
 			}
 			this.client.games.delete(msg.channel.id);
+			if (saved) {
+				return msg.say(stripIndents`
+					Game saved! Use ${this.usage(opponent.tag)} to resume it.
+					You do not have to use the same opponent to resume the game.
+					If you want to delete your saved game, use ${this.client.registry.commands.get('chess-delete').usage()}.
+				`);
+			}
 			const gameState = game.exportJson();
 			if (!gameState.checkMate) return msg.say('Game ended due to forfeit.');
-			const winner = gameState.turn === 'black' ? msg.author : opponent;
+			const winner = gameState.turn === 'black' ? whitePlayer : blackPlayer;
 			return msg.say(`Checkmate! Congrats, ${winner}!`, {
 				files: [{ attachment: this.displayBoard(gameState), name: 'chess.png' }]
 			});
@@ -229,5 +273,14 @@ module.exports = class ChessCommand extends Command {
 				break;
 		}
 		return { name, color };
+	}
+
+	exportGame(game, blackTime, whiteTime, playerColor) {
+		return JSON.stringify({
+			fen: game.exportFEN(),
+			blackTime,
+			whiteTime,
+			color: playerColor
+		});
 	}
 };
