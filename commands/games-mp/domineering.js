@@ -149,7 +149,7 @@ module.exports = class DomineeringCommand extends Command {
 		str += '\n';
 		for (let i = 0; i < board.length; i++) {
 			str += nums[i];
-			board[i].forEach((item, j) => {
+			board[i].forEach(item => {
 				if (item === 'U') str += userColor;
 				else if (item === 'O') str += oppoColor;
 				else str += blankEmoji;
