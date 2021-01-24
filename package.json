@@ -80,7 +80,7 @@
 		"zlib-sync": "^0.1.7"
 	},
 	"devDependencies": {
-		"eslint-config-amber": "^2.0.4",
+		"eslint-config-amber": "github:dragonfire535/eslint-config-amber",
 		"eslint-plugin-json": "^2.1.2"
 	},
 	"eslintConfig": {
