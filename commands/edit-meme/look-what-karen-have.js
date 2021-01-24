@@ -8,7 +8,7 @@ module.exports = class LookWhatKarenHaveCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'look-what-karen-have',
-			aliases: ['look-at-what-karen-has', 'look-what-karen-has'],
+			aliases: ['look-at-what-karen-has', 'look-what-karen-has', 'karen', 'ayaya'],
 			group: 'edit-meme',
 			memberName: 'look-what-karen-have',
 			description: 'Draws an image or a user\'s avatar over Karen\'s piece of paper.',
