@@ -152,6 +152,7 @@ module.exports = class ImposterCommand extends Command {
 					winners.push(players.find(player => player.imposter).user.tag);
 					break;
 				}
+				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
 			this.client.games.delete(msg.channel.id);
 			return msg.say(`Congrats, ${list(winners)}! The kill word was **${word}**.`);

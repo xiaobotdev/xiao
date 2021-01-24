@@ -16,4 +16,3 @@ command-leaderboard.json
 *.traineddata
 
 # In-Development Commands
-commands/games-mp/domineering.js
