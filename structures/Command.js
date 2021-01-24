@@ -5,6 +5,7 @@ module.exports = class XiaoCommand extends Command {
 		super(client, info);
 
 		this.argsSingleQuotes = info.argsSingleQuotes || false;
+		this.argsPromptLimit = info.argsPromptLimit || 1;
 		this.throttling = info.unknown ? null : info.throttling || { usages: 1, duration: 2 };
 		this.uses = 0;
 		this.credit = info.credit || [];
