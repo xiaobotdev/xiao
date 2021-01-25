@@ -169,7 +169,9 @@ module.exports = class CarRaceCommand extends Command {
 				let text;
 				if (lastRoundWinner) {
 					if (userCarSpaces > oppoCarSpaces || oppoCarSpaces > userCarSpaces) {
-						text = `${lastRoundWinner} pulls ahead!`;
+						const leader = userCarSpaces > oppoCarSpaces ? msg.author : opponent;
+						if (leader.id === lastRoundWinner.id) text = `${lastRoundWinner} pulls ahead!`;
+						else text = `${lastRoundWinner} catches up!`;
 					} else if (userCarSpaces === oppoCarSpaces) {
 						text = `${lastRoundWinner} ties it up!`;
 					}
@@ -180,7 +182,7 @@ module.exports = class CarRaceCommand extends Command {
 						Either player can type \`end\` at any time to end the game.
 					`;
 				}
-				await msg.say(`${text}\n\nGet Ready...`, { files: [{ attachment: board, name: 'car-race.png' }] });
+				await msg.say(`${text}\nGet Ready...`, { files: [{ attachment: board, name: 'car-race.png' }] });
 				const earlyFilter = res => {
 					if (![opponent.id, msg.author.id].includes(res.author.id)) return false;
 					return res.content.toLowerCase() === 'end';
