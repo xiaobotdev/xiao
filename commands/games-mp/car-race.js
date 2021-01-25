@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
-const { verify, list, delay } = require('../../util/Util');
+const { verify, list, delay, randomRange } = require('../../util/Util');
 const fs = require('fs');
 const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars'))
 	.map(car => car.replace('.png', ''));
@@ -216,10 +216,10 @@ module.exports = class CarRaceCommand extends Command {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
-		const userCarX = -155 + (92 * userCarSpaces);
-		ctx.drawImage(userCar, userCarX, 254);
 		const oppoCarX = -155 + (92 * oppoCarSpaces);
 		ctx.drawImage(oppoCar, oppoCarX, 208);
+		const userCarX = -155 + (92 * userCarSpaces);
+		ctx.drawImage(userCar, userCarX, 254);
 		return canvas.toBuffer();
 	}
 };
