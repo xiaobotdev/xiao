@@ -177,8 +177,8 @@ module.exports = class CarRaceCommand extends Command {
 					time: randomRange(1000, 30000)
 				});
 				if (earlyEnd.size) {
-					if (earlyEnd.author.id === msg.author.id) oppoCarSpaces = 5;
-					else if (earlyEnd.author.id === opponent.id) userCarSpaces = 5;
+					if (earlyEnd.first().author.id === msg.author.id) oppoCarSpaces = 5;
+					else if (earlyEnd.first().author.id === opponent.id) userCarSpaces = 5;
 					break;
 				}
 				const word = words[Math.floor(Math.random() * words.length)];
