@@ -102,6 +102,55 @@ module.exports = class CarRaceCommand extends Command {
 					url: 'https://www.deviantart.com/zekewhipper',
 					reason: 'Mach 5 Car Image',
 					reasonURL: 'https://www.deviantart.com/zekewhipper/art/Mach-5-My-Version-112814534'
+				},
+				{
+					name: 'Iconscout',
+					url: 'https://iconscout.com/',
+					reason: 'Runner Car Image',
+					reasonURL: 'https://iconscout.com/illustrations/marathon-race'
+				},
+				{
+					name: 'pixabay',
+					url: 'https://pixabay.com/',
+					reason: 'Cybertruck Car Image',
+					reasonURL: 'https://pixabay.com/vectors/tesla-cybertruck-electric-car-4770084/'
+				},
+				{
+					name: 'Zero Error\'s randomised blog',
+					url: 'http://yanko06.blogspot.com/',
+					reason: 'Lego Car Image',
+					reasonURL: 'http://yanko06.blogspot.com/2016/03/nissan-240sx-lego-build.html'
+				},
+				{
+					name: 'Stick PNG',
+					url: 'https://www.stickpng.com/',
+					reason: 'Horse Car Image',
+					reasonURL: 'https://www.stickpng.com/img/animals/horses/race-horse-side-view'
+				},
+				{
+					name: 'DashieSparkle',
+					url: 'https://www.deviantart.com/dashiesparkle',
+					reason: 'Rainbow Car Image',
+					reasonURL: 'https://www.deviantart.com/dashiesparkle/art/Vector-475-Rainbow-Dash-58-609921260'
+				},
+				{
+					name: 'MotorBiscuit',
+					url: 'https://www.motorbiscuit.com/',
+					reason: 'Pickup Car Image',
+					reasonURL: 'https://www.motorbiscuit.com/1000-hp-nissan-franken-navara-worlds-best-pickup-says-builder/'
+				},
+				{
+					name: 'Lake Keowee Chrysler Dodge Jeep Ram',
+					url: 'https://www.lakekeoweechryslerdodge.com/',
+					reason: 'Jeep Car Image',
+					reasonURL: 'https://www.lakekeoweechryslerdodge.com/2017-jeep-wrangler-seneca--sc.htm'
+				},
+				{
+					name: 'The BLOODHOUND Project',
+					url: 'https://www.bloodhoundlsr.com/',
+					reason: 'Bloodhound Car Image',
+					// eslint-disable-next-line max-len
+					reasonURL: 'http://sendy.bloodhoundssc.com/w/r66GIuC7uX1SMJnEzBQclA/RYS3PGArp6y5QLtigCCOVA/3JZqlel0Hcux67634uBAdtpg'
 				}
 			],
 			args: [
