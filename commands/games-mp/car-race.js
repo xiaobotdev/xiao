@@ -155,7 +155,7 @@ module.exports = class CarRaceCommand extends Command {
 			let oppoCarSpaces = 0;
 			let lastRoundWinner;
 			let lastTurnTimeout = false;
-			while (userCarSpaces < 6 && oppoCarSpaces < 6) {
+			while (userCarSpaces < 7 && oppoCarSpaces < 7) {
 				const board = this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces);
 				let text;
 				if (lastRoundWinner) {
@@ -177,8 +177,8 @@ module.exports = class CarRaceCommand extends Command {
 					time: randomRange(1000, 30000)
 				});
 				if (earlyEnd.size) {
-					if (earlyEnd.first().author.id === msg.author.id) oppoCarSpaces = 6;
-					else if (earlyEnd.first().author.id === opponent.id) userCarSpaces = 6;
+					if (earlyEnd.first().author.id === msg.author.id) oppoCarSpaces = 7;
+					else if (earlyEnd.first().author.id === opponent.id) userCarSpaces = 7;
 					break;
 				}
 				const word = words[Math.floor(Math.random() * words.length)];
@@ -204,8 +204,8 @@ module.exports = class CarRaceCommand extends Command {
 				}
 				const win = winner.first();
 				if (win.content.toLowerCase() === 'end') {
-					if (win.author.id === msg.author.id) oppoCarSpaces = 6;
-					else if (win.author.id === opponent.id) userCarSpaces = 6;
+					if (win.author.id === msg.author.id) oppoCarSpaces = 7;
+					else if (win.author.id === opponent.id) userCarSpaces = 7;
 					break;
 				}
 				if (win.author.id === msg.author.id) userCarSpaces += 1;
