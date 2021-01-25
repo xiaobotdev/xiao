@@ -25,6 +25,12 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://www.istockphoto.com/vector/side-view-of-a-road-with-a-crash-barrier-roadside-green-meadow-and-clear-blue-sky-gm1081596948-290039955'
 				},
 				{
+					name: 'Currituck County',
+					url: 'https://co.currituck.nc.us/',
+					reason: 'Fireworks Image',
+					reasonURL: 'https://co.currituck.nc.us/fireworks/'
+				},
+				{
 					name: 'PNGkit',
 					url: 'https://www.pngkit.com/',
 					reason: 'Earnhardt Car Image',
@@ -90,6 +96,12 @@ module.exports = class CarRaceCommand extends Command {
 					url: 'https://codepen.io/natefr0st',
 					reason: 'Mario Car Image',
 					reasonURL: 'https://codepen.io/natefr0st/pen/GrMrZV'
+				},
+				{
+					name: 'zekewhipper',
+					url: 'https://www.deviantart.com/zekewhipper',
+					reason: 'Mach 5 Car Image',
+					reasonURL: 'https://www.deviantart.com/zekewhipper/art/Mach-5-My-Version-112814534'
 				}
 			],
 			args: [
@@ -137,16 +149,13 @@ module.exports = class CarRaceCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			let car2;
 			if (p2Car.size) {
 				const choice = p2Car.first().content.toLowerCase();
-				car2 = choice;
 				oppoCar = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${choice}.png`)
 				);
 			} else {
 				const chosen = cars[Math.floor(Math.random() * cars.length)];
-				car2 = chosen;
 				oppoCar = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${chosen}.png`)
 				);
@@ -156,10 +165,14 @@ module.exports = class CarRaceCommand extends Command {
 			let lastRoundWinner;
 			let lastTurnTimeout = false;
 			while (userCarSpaces < 7 && oppoCarSpaces < 7) {
-				const board = this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces);
+				const board = await this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces);
 				let text;
 				if (lastRoundWinner) {
-					text = `${lastRoundWinner} pulls ahead!`;
+					if (userCarSpaces > oppoCarSpaces || oppoCarSpaces > userCarSpaces) {
+						text = `${lastRoundWinner} pulls ahead!`;
+					} else if (userCarSpaces === oppoCarSpaces) {
+						text = `${lastRoundWinner} ties it up!`;
+					}
 				} else {
 					text = stripIndents`
 						Welcome to \`car-race\`! Whenever a message pops up, type the word provided.
@@ -215,9 +228,10 @@ module.exports = class CarRaceCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			const winner = userCarSpaces > oppoCarSpaces ? msg.author : opponent;
-			const winnerCar = winner.id === msg.author.id ? car : car2;
+			const winnerCar = winner.id === msg.author.id ? userCar : oppoCar;
+			const board = await this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces, true, winnerCar);
 			return msg.say(`Congrats, ${winner}!`, {
-				files: [path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${winnerCar}.png`)]
+				files: [{ attachment: board, name: 'car-race-win.png' }]
 			});
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
@@ -225,7 +239,7 @@ module.exports = class CarRaceCommand extends Command {
 		}
 	}
 
-	generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces) {
+	async generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces, win, winnerCar) {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
@@ -233,6 +247,17 @@ module.exports = class CarRaceCommand extends Command {
 		ctx.drawImage(oppoCar, oppoCarX, 208);
 		const userCarX = -155 + (92 * userCarSpaces);
 		ctx.drawImage(userCar, userCarX, 254);
+		if (win) {
+			const fireworks = await loadImage(
+				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'fireworks.png')
+			);
+			const congrats = await loadImage(
+				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'congrats.png')
+			);
+			ctx.drawImage(fireworks, 106, -48, 400, 283);
+			ctx.drawImage(congrats, 182, 21, 250, 62);
+			ctx.drawImage(winnerCar, 152, 84);
+		}
 		return canvas.toBuffer();
 	}
 };
