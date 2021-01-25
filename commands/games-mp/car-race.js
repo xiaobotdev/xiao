@@ -164,7 +164,7 @@ module.exports = class CarRaceCommand extends Command {
 					text = stripIndents`
 						Welcome to \`car-race\`! Whenever a message pops up, type the word provided.
 						Whoever types the word first advances their car!
-						Either play can type \`end\` at any time to end the game.
+						Either player can type \`end\` at any time to end the game.
 					`;
 				}
 				await msg.say(`${text}\n\nGet Ready...`, { files: [{ attachment: board, name: 'car-race.png' }] });
