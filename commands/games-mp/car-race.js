@@ -202,8 +202,10 @@ module.exports = class CarRaceCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			const winner = userCarSpaces > oppoCarSpaces ? msg.author : opponent;
-			const car = winner.id === msg.author.id ? car : car2;
-			return msg.say(`Congrats, ${winner}!`, { files: [car2] });
+			const winnerCar = winner.id === msg.author.id ? car : car2;
+			return msg.say(`Congrats, ${winner}!`, {
+				files: [path.join(__dirname, '..', '..', 'assets', 'json', 'car-race', 'cars', `${winnerCar}.png`)]
+			});
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
