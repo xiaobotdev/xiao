@@ -154,6 +154,7 @@ module.exports = class CarRaceCommand extends Command {
 			let userCarSpaces = 0;
 			let oppoCarSpaces = 0;
 			let lastRoundWinner;
+			let lastTurnTimeout = false;
 			while (userCarSpaces < 10 && oppoCarSpaces < 10) {
 				const board = this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces);
 				let text;
