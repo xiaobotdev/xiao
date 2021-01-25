@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
-const { verify, list, delay, randomRange } = require('../../util/Util');
+const { verify, list, randomRange } = require('../../util/Util');
 const fs = require('fs');
 const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars'))
 	.map(car => car.replace('.png', ''));
@@ -168,7 +168,19 @@ module.exports = class CarRaceCommand extends Command {
 					`;
 				}
 				await msg.say(`${text}\n\nGet Ready...`, { files: [{ attachment: board, name: 'car-race.png' }] });
-				await delay(randomRange(1000, 30000));
+				const earlyFilter = res => {
+					if (![opponent.id, msg.author.id].includes(res.author.id)) return false;
+					return res.content.toLowerCase() === 'end';
+				}
+				const earlyEnd = await msg.channel.awaitMessages(earlyFilter, {
+					max: 1,
+					time: randomRange(1000, 30000)
+				});
+				if (earlyEnd.size) {
+					if (win.author.id === msg.author.id) oppoCarSpaces = 10;
+					else if (win.author.id === opponent.id) userCarSpaces = 10;
+					break;
+				}
 				const word = words[Math.floor(Math.random() * words.length)];
 				await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
 				const filter = res => {
