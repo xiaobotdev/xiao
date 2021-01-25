@@ -155,7 +155,7 @@ module.exports = class CarRaceCommand extends Command {
 			let oppoCarSpaces = 0;
 			let lastRoundWinner;
 			let lastTurnTimeout = false;
-			while (userCarSpaces < 10 && oppoCarSpaces < 10) {
+			while (userCarSpaces < 5 && oppoCarSpaces < 5) {
 				const board = this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces);
 				let text;
 				if (lastRoundWinner) {
@@ -177,8 +177,8 @@ module.exports = class CarRaceCommand extends Command {
 					time: randomRange(1000, 30000)
 				});
 				if (earlyEnd.size) {
-					if (win.author.id === msg.author.id) oppoCarSpaces = 10;
-					else if (win.author.id === opponent.id) userCarSpaces = 10;
+					if (earlyEnd.author.id === msg.author.id) oppoCarSpaces = 5;
+					else if (earlyEnd.author.id === opponent.id) userCarSpaces = 5;
 					break;
 				}
 				const word = words[Math.floor(Math.random() * words.length)];
@@ -204,8 +204,8 @@ module.exports = class CarRaceCommand extends Command {
 				}
 				const win = winner.first();
 				if (win.content.toLowerCase() === 'end') {
-					if (win.author.id === msg.author.id) oppoCarSpaces = 10;
-					else if (win.author.id === opponent.id) userCarSpaces = 10;
+					if (win.author.id === msg.author.id) oppoCarSpaces = 5;
+					else if (win.author.id === opponent.id) userCarSpaces = 5;
 					break;
 				}
 				if (win.author.id === msg.author.id) userCarSpaces += 1;
@@ -229,9 +229,9 @@ module.exports = class CarRaceCommand extends Command {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
-		const oppoCarX = -155 + (46 * oppoCarSpaces);
+		const oppoCarX = -155 + (92 * oppoCarSpaces);
 		ctx.drawImage(oppoCar, oppoCarX, 208);
-		const userCarX = -155 + (46 * userCarSpaces);
+		const userCarX = -155 + (92 * userCarSpaces);
 		ctx.drawImage(userCar, userCarX, 254);
 		return canvas.toBuffer();
 	}
