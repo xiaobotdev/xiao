@@ -171,7 +171,7 @@ module.exports = class CarRaceCommand extends Command {
 				const earlyFilter = res => {
 					if (![opponent.id, msg.author.id].includes(res.author.id)) return false;
 					return res.content.toLowerCase() === 'end';
-				}
+				};
 				const earlyEnd = await msg.channel.awaitMessages(earlyFilter, {
 					max: 1,
 					time: randomRange(1000, 30000)
@@ -183,12 +183,12 @@ module.exports = class CarRaceCommand extends Command {
 				}
 				const word = words[Math.floor(Math.random() * words.length)];
 				await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
-				const filter = res => {
+				const turnFilter = res => {
 					if (![opponent.id, msg.author.id].includes(res.author.id)) return false;
 					if (res.content.toLowerCase() === 'end') return true;
 					return res.content.toLowerCase() === word;
 				};
-				const winner = await msg.channel.awaitMessages(filter, {
+				const winner = await msg.channel.awaitMessages(turnFilter, {
 					max: 1,
 					time: 30000
 				});
