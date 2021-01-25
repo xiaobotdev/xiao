@@ -139,7 +139,7 @@ module.exports = class CarRaceCommand extends Command {
 			});
 			let car2;
 			if (p2Car.size) {
-				const choice = p2Color.first().content.toLowerCase();
+				const choice = p2Car.first().content.toLowerCase();
 				car2 = choice;
 				oppoCar = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${choice}.png`)
