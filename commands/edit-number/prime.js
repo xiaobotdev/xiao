@@ -26,7 +26,8 @@ module.exports = class PrimeCommand extends Command {
 
 	isPrime(number) {
 		if (number < 2) return false;
-		for (let i = 2, s = Math.sqrt(number); i <= s; i++) {
+		const sqrt = Math.sqrt(number);
+		for (let i = 2; i <= sqrt; i++) {
 			if (number % i === 0) return false;
 		}
 		return true;
