@@ -145,7 +145,7 @@ module.exports = class ObstructionCommand extends Command {
 		const arr = [];
 		for (let i = 0; i < size; i++) {
 			const row = [];
-			for (let j = 0; j < size; j++) row.push(null);
+			for (let j = 0; j < size; j++) row.push('NA');
 			arr.push(row);
 		}
 		return arr;
