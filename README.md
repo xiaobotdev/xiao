@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 584
+Total: 585
 
 ### Utility:
 
@@ -623,6 +623,7 @@ Total: 584
 * **jenga:** Play a game of Jenga with another user or the AI.
 * **lie-swatter:** Players are given a fact and must quickly decide if it's True or a Lie.
 * **nim:** Play a game of nim with another user or the AI.
+* **obstruction:** Play a game of Obstruction with another user.
 * **pick-a-number:** Two players pick a number between 1 and 10. Whoever's closer wins.
 * **poker:** Play poker with up to 5 other users.
 * **quiz-duel:** Answer a series of quiz questions against other opponents.
