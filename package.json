@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
 		"@discordjs/opus": "^0.3.3",
-		"@vitalets/google-translate-api": "^4.0.0",
+		"@vitalets/google-translate-api": "^5.0.0",
 		"aki-api": "^5.2.1",
 		"bombsweeper.js": "^1.0.1",
 		"canvas": "^2.6.1",
