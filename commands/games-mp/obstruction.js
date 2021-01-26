@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { verify, list } = require('../../util/Util');
-const colors = require('../../assets/json/domineering');
+const { verify } = require('../../util/Util');
 const blankEmoji = '⬜';
 const blockEmoji = '🚫';
 const userEmoji = '❌';
