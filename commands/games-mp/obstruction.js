@@ -98,14 +98,18 @@ module.exports = class ObstructionCommand extends Command {
 				const x = Number.parseInt(matched[1], 10) - 1;
 				const y = Number.parseInt(matched[2], 10) - 1;
 				board[y][x] = userTurn ? 'X' : 'O';
-				board[y - 1][x] = 'B';
-				board[y - 1][x - 1] = 'B';
-				board[y][x - 1] = 'B';
-				board[y + 1][x] = 'B';
-				board[y + 1][x + 1] = 'B';
-				board[y][x + 1] = 'B';
-				board[y - 1][x + 1] = 'B';
-				board[y + 1][x - 1] = 'B';
+				if (board[y - 1]) {
+					if (board[y - 1][x]) board[y - 1][x] = 'B';
+					if (board[y - 1][x - 1]) board[y - 1][x - 1] = 'B';
+					if (board[y - 1][x + 1]) board[y - 1][x + 1] = 'B';
+				}
+				if (board[y + 1]) {
+					if (board[y + 1][x]) board[y + 1][x] = 'B';
+					if (board[y + 1][x + 1]) board[y + 1][x + 1] = 'B';
+					if (board[y + 1][x - 1]) board[y + 1][x - 1] = 'B';
+				}
+				if (board[y][x - 1]) board[y][x - 1] = 'B';
+				if (board[y][x + 1]) board[y][x + 1] = 'B';
 				userTurn = !userTurn;
 				if (lastTurnTimeout) lastTurnTimeout = false;
 				const oppoPossible = this.possibleMoves(board);
