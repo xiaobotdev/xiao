@@ -12,7 +12,7 @@ module.exports = class CarRaceCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'car-race',
-			aliases: ['cars'],
+			aliases: ['cars', 'race'],
 			group: 'games-mp',
 			memberName: 'car-race',
 			description: 'Race a car against another user.',
@@ -294,9 +294,9 @@ module.exports = class CarRaceCommand extends Command {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
-		const oppoCarX = -155 + (92 * oppoCarSpaces);
+		const oppoCarX = -155 + (77 * oppoCarSpaces);
 		ctx.drawImage(oppoCar, oppoCarX, 208);
-		const userCarX = -155 + (92 * userCarSpaces);
+		const userCarX = -155 + (77 * userCarSpaces);
 		ctx.drawImage(userCar, userCarX, 254);
 		if (win) {
 			const fireworks = await loadImage(

@@ -5,7 +5,7 @@ module.exports = class ChineseZodiacCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'chinese-zodiac',
-			aliases: ['chinese-zodiac-sign'],
+			aliases: ['chinese-zodiac-sign', 'c-zodiac', 'c-zodiac-sign'],
 			group: 'analyze',
 			memberName: 'chinese-zodiac',
 			description: 'Responds with the Chinese Zodiac Sign for the given year.',

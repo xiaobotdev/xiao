@@ -6,7 +6,7 @@ module.exports = class BattleCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'battle',
-			aliases: ['fight', 'death-battle'],
+			aliases: ['fight', 'death-battle', 'rpg-battle'],
 			group: 'games-mp',
 			memberName: 'battle',
 			description: 'Engage in a turn-based battle against another user or the AI.',

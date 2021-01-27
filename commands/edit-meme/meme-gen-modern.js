@@ -25,7 +25,8 @@ module.exports = class MemeGenModernCommand extends Command {
 				'm-meme-generator',
 				'create-m-meme',
 				'mgm',
-				'mg'
+				'mg',
+				'reaction-meme'
 			],
 			group: 'edit-meme',
 			memberName: 'meme-gen-modern',

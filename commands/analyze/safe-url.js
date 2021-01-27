@@ -7,7 +7,7 @@ module.exports = class SafeUrlCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'safe-url',
-			aliases: ['check-url', 'safe-browsing', 'virus', 'safe-link', 'check-link'],
+			aliases: ['check-url', 'safe-browsing', 'virus', 'safe-link', 'check-link', 'spoopy-link'],
 			group: 'analyze',
 			memberName: 'safe-url',
 			description: 'Determines if a URL is safe or not.',

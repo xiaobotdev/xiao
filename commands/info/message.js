@@ -5,7 +5,7 @@ module.exports = class MessageCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'message',
-			aliases: ['message-info', 'msg', 'msg-info', 'reply'],
+			aliases: ['message-info', 'msg', 'msg-info'],
 			group: 'info',
 			memberName: 'message',
 			description: 'Responds with detailed information on a message.',

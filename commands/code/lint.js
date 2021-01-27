@@ -9,7 +9,7 @@ module.exports = class LintCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'lint',
-			aliases: ['eslint'],
+			aliases: ['eslint', 'linter'],
 			group: 'code',
 			memberName: 'lint',
 			description: 'Lints code using ESLint.',

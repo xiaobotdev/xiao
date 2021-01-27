@@ -7,7 +7,7 @@ module.exports = class SipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'sip',
-			aliases: ['tea'],
+			aliases: ['tea', 'sip-tea'],
 			group: 'edit-avatar',
 			memberName: 'sip',
 			description: 'Draws a user\'s avatar sipping tea.',

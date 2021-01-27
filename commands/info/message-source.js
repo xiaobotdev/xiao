@@ -5,7 +5,7 @@ module.exports = class MessageSourceCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'message-source',
-			aliases: ['msg-source', 'message-src', 'msg-src'],
+			aliases: ['msg-source', 'message-src', 'msg-src', 'source', 'src'],
 			group: 'info',
 			memberName: 'message-source',
 			description: 'Responds with a codeblock containing a message\'s contents.',

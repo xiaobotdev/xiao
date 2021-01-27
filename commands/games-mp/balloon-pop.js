@@ -6,6 +6,7 @@ module.exports = class BalloonPopCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'balloon-pop',
+			aliases: ['balloons'],
 			group: 'games-mp',
 			memberName: 'balloon-pop',
 			description: 'Don\'t let yourself be the last one to pump the balloon before it pops!',

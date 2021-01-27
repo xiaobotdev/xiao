@@ -8,7 +8,7 @@ module.exports = class AchievementCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'achievement',
-			aliases: ['minecraft-achievement'],
+			aliases: ['minecraft-achievement', 'achieve'],
 			group: 'edit-image',
 			memberName: 'achievement',
 			description: 'Sends a Minecraft achievement with the text of your choice.',
