@@ -9,9 +9,10 @@ const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images',
 const words = ['go', 'zoom', 'drive', 'advance', 'pedal', 'vroom'];
 const difficulties = {
 	baby: 30000,
-	easy: 7500,
-	medium: 5000,
-	hard: 2500
+	easy: 5000,
+	medium: 2500,
+	hard: 1000,
+	impossible: 500
 };
 
 module.exports = class CarRaceCommand extends Command {
