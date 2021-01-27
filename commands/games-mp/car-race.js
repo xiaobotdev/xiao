@@ -356,9 +356,9 @@ module.exports = class CarRaceCommand extends Command {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
-		const oppoCarX = oppoCarSpaces < 7 ? -155 + (77 * oppoCarSpaces) : bg.width + 155;
+		const oppoCarX = oppoCarSpaces < 7 ? -155 + (77 * oppoCarSpaces) : bg.width - 155;
 		ctx.drawImage(oppoCar, oppoCarX, 208);
-		const userCarX = userCarSpaces < 7 ? -155 + (77 * userCarSpaces) : bg.width + 155;
+		const userCarX = userCarSpaces < 7 ? -155 + (77 * userCarSpaces) : bg.width - 155;
 		ctx.drawImage(userCar, userCarX, 254);
 		if (win) {
 			const fireworks = await loadImage(
