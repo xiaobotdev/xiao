@@ -7,6 +7,12 @@ const fs = require('fs');
 const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars'))
 	.map(car => car.replace('.png', ''));
 const words = ['go', 'zoom', 'drive', 'advance', 'pedal', 'vroom'];
+const difficulties = {
+	baby: 30000,
+	easy: 7500,
+	medium: 5000,
+	hard: 2500
+};
 
 module.exports = class CarRaceCommand extends Command {
 	constructor(client) {
@@ -15,7 +21,7 @@ module.exports = class CarRaceCommand extends Command {
 			aliases: ['cars', 'race'],
 			group: 'games-mp',
 			memberName: 'car-race',
-			description: 'Race a car against another user.',
+			description: 'Race a car against another user or the AI.',
 			credit: [
 				{
 					name: 'iStock',
@@ -185,7 +191,7 @@ module.exports = class CarRaceCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge?',
+					prompt: 'What user would you like to challenge? To play against AI, choose me.',
 					type: 'user'
 				},
 				{
@@ -200,7 +206,6 @@ module.exports = class CarRaceCommand extends Command {
 	}
 
 	async run(msg, { opponent, car }) {
-		if (opponent.bot) return msg.reply('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
@@ -210,33 +215,55 @@ module.exports = class CarRaceCommand extends Command {
 			path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${car}.png`)
 		);
 		let oppoCar;
+		let difficulty;
 		try {
 			const available = cars.filter(car2 => car !== car2);
-			await msg.say(`${opponent}, do you accept this challenge?`);
-			const verification = await verify(msg.channel, opponent);
-			if (!verification) {
-				this.client.games.delete(msg.channel.id);
-				return msg.say('Looks like they declined...');
-			}
-			await msg.say(`${opponent}, what car do you want to be? Either ${list(available, 'or')}.`);
-			const filter = res => {
-				if (res.author.id !== opponent.id) return false;
-				return available.includes(res.content.toLowerCase());
-			};
-			const p2Car = await msg.channel.awaitMessages(filter, {
-				max: 1,
-				time: 30000
-			});
-			if (p2Car.size) {
-				const choice = p2Car.first().content.toLowerCase();
+			if (opponent.bot) {
+				await msg.reply(`What difficulty do you want to use? Either ${list(Object.keys(difficulties), 'or')}.`);
+				const difficultyFilter = res => {
+					if (res.author.id !== msg.author.id) return false;
+					return Object.keys(difficulties).includes(res.content.toLowerCase());
+				};
+				const difficultyPick = await msg.channel.awaitMessages(difficultyFilter, {
+					max: 1,
+					time: 30000
+				});
+				if (!difficultyPick.size) {
+					this.client.games.delete(msg.channel.id);
+					return msg.say('Failed to pick difficulty. Aborted command.');
+				}
+				difficulty = difficultyPick.first().content.toLowerCase();
+				const oppoCarPick = available[Math.floor(Math.random() * available.length)];
 				oppoCar = await loadImage(
-					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${choice}.png`)
+					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${oppoCarPick}.png`)
 				);
 			} else {
-				const chosen = cars[Math.floor(Math.random() * cars.length)];
-				oppoCar = await loadImage(
-					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${chosen}.png`)
-				);
+				await msg.say(`${opponent}, do you accept this challenge?`);
+				const verification = await verify(msg.channel, opponent);
+				if (!verification) {
+					this.client.games.delete(msg.channel.id);
+					return msg.say('Looks like they declined...');
+				}
+				await msg.say(`${opponent}, what car do you want to be? Either ${list(available, 'or')}.`);
+				const filter = res => {
+					if (res.author.id !== opponent.id) return false;
+					return available.includes(res.content.toLowerCase());
+				};
+				const p2Car = await msg.channel.awaitMessages(filter, {
+					max: 1,
+					time: 30000
+				});
+				if (p2Car.size) {
+					const choice = p2Car.first().content.toLowerCase();
+					oppoCar = await loadImage(
+						path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${choice}.png`)
+					);
+				} else {
+					const chosen = cars[Math.floor(Math.random() * cars.length)];
+					oppoCar = await loadImage(
+						path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${chosen}.png`)
+					);
+				}
 			}
 			let userCarSpaces = 0;
 			let oppoCarSpaces = 0;
@@ -283,10 +310,15 @@ module.exports = class CarRaceCommand extends Command {
 				};
 				const winner = await msg.channel.awaitMessages(turnFilter, {
 					max: 1,
-					time: 30000
+					time: opponent.bot ? difficulties[difficulty] : 30000
 				});
 				if (!winner.size) {
-					if (lastTurnTimeout) {
+					if (opponent.bot) {
+						oppoCarSpaces += 1;
+						lastRoundWinner = opponent;
+						if (lastTurnTimeout) lastTurnTimeout = false;
+						continue;
+					} else if (lastTurnTimeout) {
 						this.client.games.delete(msg.channel.id);
 						return msg.say('Game ended due to inactivity.');
 					} else {
