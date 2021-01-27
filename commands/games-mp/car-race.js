@@ -151,6 +151,35 @@ module.exports = class CarRaceCommand extends Command {
 					reason: 'Bloodhound Car Image',
 					// eslint-disable-next-line max-len
 					reasonURL: 'http://sendy.bloodhoundssc.com/w/r66GIuC7uX1SMJnEzBQclA/RYS3PGArp6y5QLtigCCOVA/3JZqlel0Hcux67634uBAdtpg'
+				},
+				{
+					name: 'PNGio.com',
+					url: 'https://pngio.com/png',
+					reason: 'General Lee Car Image',
+					reasonURL: 'https://pngio.com/images/png-a980119.html'
+				},
+				{
+					name: 'PicsArt',
+					url: 'https://picsart.com/',
+					reason: 'Bean Car Image',
+					reasonURL: 'https://picsart.com/i/287426979049211'
+				},
+				{
+					name: 'SeekPNG',
+					url: 'https://www.seekpng.com/',
+					reason: 'Herbie Car Image',
+					reasonURL: 'https://www.seekpng.com/ima/u2q8r5a9y3t4w7u2/'
+				},
+				{
+					name: 'TVS Racing',
+					url: 'https://www.tvsracing.com/',
+					reason: 'Motorcycle Car Image'
+				},
+				{
+					name: 'KYB Sport',
+					url: 'https://kybsport.com/',
+					reason: 'Miku Car Image',
+					reasonURL: 'https://kybsport.com/teams/gsr/'
 				}
 			],
 			args: [
