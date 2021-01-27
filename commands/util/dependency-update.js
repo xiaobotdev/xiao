@@ -8,7 +8,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dependency-update',
-			aliases: ['dep-update', 'dependencies-update', 'npm-update'],
+			aliases: ['dep-update', 'dependencies-update', 'npm-update', 'deps'],
 			group: 'util',
 			memberName: 'dependency-update',
 			description: 'Checks for dependency updates.',

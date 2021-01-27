@@ -7,6 +7,7 @@ module.exports = class MinecraftSkinCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'minecraft-skin',
+			aliases: ['mc-skin'],
 			group: 'edit-image',
 			memberName: 'minecraft-skin',
 			description: 'Sends the Minecraft skin for a user.',

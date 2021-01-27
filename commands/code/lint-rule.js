@@ -8,7 +8,7 @@ module.exports = class LintRuleCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'lint-rule',
-			aliases: ['eslint-rule'],
+			aliases: ['eslint-rule', 'linter-rule'],
 			group: 'code',
 			memberName: 'lint-rule',
 			description: 'Responds with information on an ESLint rule.',

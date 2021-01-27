@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { formatNumber } = require('../../util/Util');
+const { Message } = require('discord.js');
 
 module.exports = class CharacterCountCommand extends Command {
 	constructor(client) {
@@ -13,13 +14,16 @@ module.exports = class CharacterCountCommand extends Command {
 				{
 					key: 'text',
 					prompt: 'What text would you like to get the character count of?',
-					type: 'string'
+					type: 'message|string'
 				}
 			]
 		});
 	}
 
 	run(msg, { text }) {
+		if (text instanceof Message) {
+			return msg.reply(formatNumber(text.content ? text.content.length : 0));
+		}
 		return msg.reply(formatNumber(text.length));
 	}
 };

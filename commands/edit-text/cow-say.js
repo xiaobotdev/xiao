@@ -5,6 +5,7 @@ module.exports = class CowSayCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'cow-say',
+			aliases: ['cow'],
 			group: 'edit-text',
 			memberName: 'cow-say',
 			description: 'Makes a cow say your text.',

@@ -6,7 +6,7 @@ module.exports = class SevereToxicityCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'severe-toxicity',
-			aliases: ['severe-perspective', 'severe-comment-toxicity'],
+			aliases: ['severe-perspective', 'severe-comment-toxicity', 'severe-toxic'],
 			group: 'analyze',
 			memberName: 'severe-toxicity',
 			description: 'Determines the toxicity of text, but less sensitive to milder language.',

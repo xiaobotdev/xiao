@@ -10,7 +10,7 @@ module.exports = class ChangeMyMindCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'change-my-mind',
-			aliases: ['change-mind', 'mind-change'],
+			aliases: ['change-mind', 'mind-change', 'cmv', 'cmm'],
 			group: 'edit-meme',
 			memberName: 'change-my-mind',
 			description: 'Sends a "Change My Mind" meme with the text of your choice.',

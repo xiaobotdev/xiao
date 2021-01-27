@@ -11,7 +11,7 @@ module.exports = class EnslavedCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'enslaved',
-			aliases: ['ah-yes-enslaved', 'ah-yes'],
+			aliases: ['ah-yes-enslaved', 'ah-yes', 'enslave'],
 			group: 'edit-meme',
 			memberName: 'enslaved',
 			description: 'Sends a "Ah yes, enslaved" meme with the image and text of your choice.',

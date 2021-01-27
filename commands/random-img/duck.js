@@ -5,7 +5,7 @@ module.exports = class DuckCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'duck',
-			aliases: ['ducky'],
+			aliases: ['ducky', 'quack'],
 			group: 'random-img',
 			memberName: 'duck',
 			description: 'Responds with a random duck image.',

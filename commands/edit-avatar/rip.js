@@ -9,7 +9,7 @@ module.exports = class RipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'rip',
-			aliases: ['grave', 'grave-stone'],
+			aliases: ['grave', 'grave-stone', 'rest-in-peace'],
 			group: 'edit-avatar',
 			memberName: 'rip',
 			description: 'Draws a user\'s avatar over a gravestone.',

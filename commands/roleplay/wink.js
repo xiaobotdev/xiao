@@ -5,6 +5,7 @@ module.exports = class WinkCommand extends ImgurAlbumCommand {
 	constructor(client) {
 		super(client, {
 			name: 'wink',
+			aliases: ['flirt'],
 			group: 'roleplay',
 			memberName: 'wink',
 			description: 'Winks at a user.',

@@ -6,6 +6,7 @@ module.exports = class CurrencyCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'currency',
+			aliases: ['money-convert', 'convert-money'],
 			group: 'edit-number',
 			memberName: 'currency',
 			description: 'Converts currency from one currency to another.',

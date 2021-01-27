@@ -11,7 +11,7 @@ module.exports = class SteamNowPlayingClassicCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'steam-now-playing-classic',
-			aliases: ['now-playing-classic'],
+			aliases: ['now-playing-classic', 'steam-now-playing-c', 'now-playing-c'],
 			group: 'edit-avatar',
 			memberName: 'steam-now-playing-classic',
 			description: 'Draws a user\'s avatar over a Steam "now playing" notification (old skin).',
