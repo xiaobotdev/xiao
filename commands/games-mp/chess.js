@@ -36,6 +36,13 @@ module.exports = class ChessCommand extends Command {
 					key: 'opponent',
 					prompt: 'What user would you like to challenge? To play against AI, choose me.',
 					type: 'user'
+				},
+				{
+					key: 'time',
+					prompt: 'How long should the chess timers be set for (in minutes)?',
+					type: 'integer',
+					max: 60,
+					min: 5
 				}
 			]
 		});
@@ -43,7 +50,7 @@ module.exports = class ChessCommand extends Command {
 		this.images = null;
 	}
 
-	async run(msg, { opponent }) {
+	async run(msg, { opponent, time }) {
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
@@ -60,8 +67,8 @@ module.exports = class ChessCommand extends Command {
 			}
 			const resumeGame = await this.client.redis.get(`chess-${msg.author.id}`);
 			let game;
-			let whiteTime = 900000;
-			let blackTime = 900000;
+			let whiteTime = time * 60000;
+			let blackTime = time * 60000;
 			let whitePlayer = msg.author;
 			let blackPlayer = opponent;
 			if (resumeGame) {
@@ -86,7 +93,7 @@ module.exports = class ChessCommand extends Command {
 			while (!game.exportJson().checkMate) {
 				const gameState = game.exportJson();
 				const user = gameState.turn === 'black' ? blackPlayer : whitePlayer;
-				const time = gameState.turn === 'black' ? blackTime : whiteTime;
+				const userTime = gameState.turn === 'black' ? blackTime : whiteTime;
 				if (user.bot) {
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const now = new Date();
@@ -100,7 +107,7 @@ module.exports = class ChessCommand extends Command {
 						You can save your game by typing \`save\`.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 
-						**Time Remaining: ${moment.duration(time).format()}**
+						**Time Remaining: ${moment.duration(time).format()}** (Max 10min per turn)
 					`, { files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }] });
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const moves = game.moves();
@@ -121,11 +128,16 @@ module.exports = class ChessCommand extends Command {
 					const now = new Date();
 					const turn = await msg.channel.awaitMessages(pickFilter, {
 						max: 1,
-						time
+						time: Math.min(userTime, 600000)
 					});
 					if (!turn.size) {
+						const timeTaken = new Date() - now;
 						this.client.games.delete(msg.channel.id);
-						return msg.say(`${user.id === msg.author.id ? opponent : msg.author} wins from timeout!`);
+						if (userTime - timeTaken <= 0) {
+							return msg.say(`${user.id === msg.author.id ? opponent : msg.author} wins from timeout!`);
+						} else {
+							return msg.say(`${user}, the game has been ended. You cannot take more than 10 minutes.`);
+						}
 					}
 					if (turn.first().content.toLowerCase() === 'end') break;
 					if (turn.first().content.toLowerCase() === 'save') {
