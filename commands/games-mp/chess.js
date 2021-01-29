@@ -39,10 +39,10 @@ module.exports = class ChessCommand extends Command {
 				},
 				{
 					key: 'time',
-					prompt: 'How long should the chess timers be set for (in minutes)?',
+					prompt: 'How long should the chess timers be set for (in minutes)? Use 0 for infinite.',
 					type: 'integer',
-					max: 60,
-					min: 5
+					max: 120,
+					min: 0
 				}
 			]
 		});
@@ -67,18 +67,21 @@ module.exports = class ChessCommand extends Command {
 			}
 			const resumeGame = await this.client.redis.get(`chess-${msg.author.id}`);
 			let game;
-			let whiteTime = time * 60000;
-			let blackTime = time * 60000;
+			let whiteTime = time === 0 ? Infinity : time * 60000;
+			let blackTime = time === 0 ? Infinity : time * 60000;
 			let whitePlayer = msg.author;
 			let blackPlayer = opponent;
 			if (resumeGame) {
-				await msg.reply('You have a saved game, do you want to resume it?');
+				await msg.reply(stripIndents`
+					You have a saved game, do you want to resume it?
+					**This will delete your saved game.**
+				`);
 				const verification = await verify(msg.channel, msg.author);
 				if (verification) {
 					const data = JSON.parse(resumeGame);
 					game = new jsChess.Game(data.fen);
-					whiteTime = data.whiteTime;
-					blackTime = data.blackTime;
+					whiteTime = data.whiteTime === -1 ? Infinity : data.whiteTime;
+					blackTime = data.blackTime === -1 ? Infinity : data.blackTime;
 					whitePlayer = data.color === 'white' ? msg.author : opponent;
 					blackPlayer = data.color === 'black' ? msg.author : opponent;
 					await this.client.redis.del(`chess-${msg.author.id}`);
@@ -102,12 +105,13 @@ module.exports = class ChessCommand extends Command {
 					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
 					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
 				} else {
+					const displayTime = userTime === Infinity ? 'Infinite' : moment.duration(userTime).format();
 					await msg.say(stripIndents`
 						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
 						You can save your game by typing \`save\`.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 
-						**Time Remaining: ${moment.duration(userTime).format()}** (Max 10min per turn)
+						**Time Remaining: ${displayTime}** (Max 10min per turn)
 					`, { files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }] });
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const moves = game.moves();
@@ -290,8 +294,8 @@ module.exports = class ChessCommand extends Command {
 	exportGame(game, blackTime, whiteTime, playerColor) {
 		return JSON.stringify({
 			fen: game.exportFEN(),
-			blackTime,
-			whiteTime,
+			blackTime: blackTime === Infinity ? -1 : blackTime,
+			whiteTime: whiteTime === Infinity ? -1 : whiteTime,
 			color: playerColor
 		});
 	}
