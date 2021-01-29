@@ -107,7 +107,7 @@ module.exports = class ChessCommand extends Command {
 						You can save your game by typing \`save\`.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 
-						**Time Remaining: ${moment.duration(time).format()}** (Max 10min per turn)
+						**Time Remaining: ${moment.duration(userTime).format()}** (Max 10min per turn)
 					`, { files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }] });
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const moves = game.moves();
