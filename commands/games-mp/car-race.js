@@ -427,7 +427,7 @@ module.exports = class CarRaceCommand extends Command {
 			}
 		} else {
 			const vs = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'vs.png'));
-			ctx.drawImage(vs, (bg.width / 2) - (vs.width / 2), 80, 75, 75);
+			ctx.drawImage(vs, (bg.width / 2) - (75 / 2), 80, 75, 75);
 			ctx.fillStyle = 'black';
 			ctx.fillRect(105, 45, 135, 135);
 			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
