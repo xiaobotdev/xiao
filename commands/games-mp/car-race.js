@@ -371,8 +371,7 @@ module.exports = class CarRaceCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			const winner = userData.spaces > oppoData.spaces ? msg.author : opponent;
-			const winnerCar = winner.id === msg.author.id ? userData.car : oppoData.car;
-			const board = await this.generateBoard(bg, userData, oppoData, null, true, winnerCar);
+			const board = await this.generateBoard(bg, userData, oppoData, null, true);
 			return msg.say(`Congrats, ${winner}!`, {
 				files: [{ attachment: board, name: 'car-race-win.png' }]
 			});
@@ -382,7 +381,7 @@ module.exports = class CarRaceCommand extends Command {
 		}
 	}
 
-	async generateBoard(bg, userData, oppoData, turnWin, win, winnerCar) {
+	async generateBoard(bg, userData, oppoData, turnWin, win) {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
@@ -399,7 +398,10 @@ module.exports = class CarRaceCommand extends Command {
 			);
 			ctx.drawImage(fireworks, 106, -48, 400, 283);
 			ctx.drawImage(congrats, 182, 21, 250, 62);
-			ctx.drawImage(winnerCar, 152, 84);
+			ctx.fillStyle = 'black';
+			const x = (bg.width / 2) - 50;
+			ctx.fillRect(85, bg.width / 2, x + 5, 110, 110);
+			ctx.drawImage(turnWin.id === userData.user.id ? userData.avatar : oppoData.avatar, x, 90, 100, 100);
 		} else {
 			const stars = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'stars.png')
