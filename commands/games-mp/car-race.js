@@ -404,20 +404,19 @@ module.exports = class CarRaceCommand extends Command {
 			const stars = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'stars.png')
 			);
-			ctx.fillStyle = turnWin.id === userData.user.id ? 'green' : 'black';
+			ctx.fillStyle = 'black';
 			ctx.fillRect(105, 45, 130, 130);
 			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
-			if (turnWin.id === userData.user.id) {
+			if (turnWin && turnWin.id === userData.user.id) {
 				ctx.drawImage(stars, 95, 0, 150, 125);
-			} else {
+			} else if (turnWin) {
 				greyscale(ctx, 110, 50, 125, 125);
 			}
-			ctx.fillStyle = turnWin.id === oppoData.user.id ? 'green' : 'black';
 			ctx.fillRect(bg.width - 115 - 125, 45, 130, 130);
 			ctx.drawImage(oppoData.avatar, bg.width - 110 - 125, 50, 125, 125);
-			if (turnWin.id === oppoData.user.id) {
+			if (turnWin && turnWin.id === oppoData.user.id) {
 				ctx.drawImage(stars, bg.width - 110 - 125 - 15, 0, 125, 125);
-			} else {
+			} else if (turnWin) {
 				greyscale(ctx, bg.width - 110 - 125, 50, 125, 125);
 			}
 		}
