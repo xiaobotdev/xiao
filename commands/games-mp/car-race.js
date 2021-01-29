@@ -8,10 +8,10 @@ const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images',
 	.map(car => car.replace('.png', ''));
 const words = ['go', 'zoom', 'drive', 'advance', 'pedal', 'vroom'];
 const difficulties = {
-	baby: 30000,
-	easy: 5000,
-	medium: 2500,
-	hard: 1000,
+	baby: 5000,
+	easy: 3000,
+	medium: 2250,
+	hard: 1500,
 	impossible: 500
 };
 
