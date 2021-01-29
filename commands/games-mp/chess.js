@@ -153,6 +153,8 @@ module.exports = class ChessCommand extends Command {
 							const verification = await verify(msg.channel, author);
 							if (!verification) continue; // eslint-disable-line max-depth
 						}
+						if (gameState.turn === 'black') blackTime -= new Date() - now;
+						if (gameState.turn === 'white') whiteTime -= new Date() - now;
 						await this.client.redis.set(
 							`chess-${author.id}`,
 							this.exportGame(game, blackTime, whiteTime, whitePlayer.id === author.id ? 'white' : 'black')
