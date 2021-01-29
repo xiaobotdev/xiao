@@ -372,7 +372,7 @@ module.exports = class CarRaceCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			const winner = userData.spaces > oppoData.spaces ? msg.author : opponent;
 			const winnerCar = winner.id === msg.author.id ? userData.car : oppoData.car;
-			const board = await this.generateBoard(bg, userData, oppoDate, null, true, winnerCar);
+			const board = await this.generateBoard(bg, userData, oppoData, null, true, winnerCar);
 			return msg.say(`Congrats, ${winner}!`, {
 				files: [{ attachment: board, name: 'car-race-win.png' }]
 			});
@@ -405,17 +405,17 @@ module.exports = class CarRaceCommand extends Command {
 				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'stars.png')
 			);
 			ctx.fillStyle = 'black';
-			ctx.fillRect(105, 45, 130, 130);
+			ctx.fillRect(105, 45, 135, 135);
 			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
 			if (turnWin && turnWin.id === userData.user.id) {
 				ctx.drawImage(stars, 95, 0, 150, 125);
 			} else if (turnWin) {
 				greyscale(ctx, 110, 50, 125, 125);
 			}
-			ctx.fillRect(bg.width - 115 - 125, 45, 130, 130);
+			ctx.fillRect(bg.width - 115 - 125, 45, 135, 135);
 			ctx.drawImage(oppoData.avatar, bg.width - 110 - 125, 50, 125, 125);
 			if (turnWin && turnWin.id === oppoData.user.id) {
-				ctx.drawImage(stars, bg.width - 110 - 125 - 15, 0, 125, 125);
+				ctx.drawImage(stars, bg.width - 110 - 125 - 15, 0, 150, 125);
 			} else if (turnWin) {
 				greyscale(ctx, bg.width - 110 - 125, 50, 125, 125);
 			}
