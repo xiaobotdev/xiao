@@ -400,7 +400,7 @@ module.exports = class CarRaceCommand extends Command {
 			ctx.drawImage(congrats, 182, 21, 250, 62);
 			ctx.fillStyle = 'black';
 			const x = (bg.width / 2) - 50;
-			ctx.fillRect(85, x + 5, 110, 110);
+			ctx.fillRect(x + 5, 85, 110, 110);
 			ctx.drawImage(win.id === userData.user.id ? userData.avatar : oppoData.avatar, x, 90, 100, 100);
 		} else {
 			const stars = await loadImage(
