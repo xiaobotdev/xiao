@@ -40,6 +40,12 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://co.currituck.nc.us/fireworks/'
 				},
 				{
+					name: 'Max Pixel',
+					url: 'https://www.maxpixel.net/',
+					reason: 'Stars Image',
+					reasonURL: 'https://www.maxpixel.net/Stars-Confetti-Curly-String-Balloons-Watercolor-5403247'
+				},
+				{
 					name: 'PNGkit',
 					url: 'https://www.pngkit.com/',
 					reason: 'Earnhardt Car Image',
@@ -402,10 +408,8 @@ module.exports = class CarRaceCommand extends Command {
 			const x = (bg.width / 2) - 50;
 			ctx.fillRect(x - 5, 85, 110, 110);
 			ctx.drawImage(win.id === userData.user.id ? userData.avatar : oppoData.avatar, x, 90, 100, 100);
-		} else {
-			const stars = await loadImage(
-				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'stars.png')
-			);
+		} else if (turnWin) {
+			const stars = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'stars.png'));
 			ctx.fillStyle = 'black';
 			ctx.fillRect(105, 45, 135, 135);
 			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
@@ -421,6 +425,14 @@ module.exports = class CarRaceCommand extends Command {
 			} else if (turnWin) {
 				greyscale(ctx, bg.width - 110 - 125, 50, 125, 125);
 			}
+		} else {
+			const vs = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'vs.png'));
+			ctx.drawImage(vs, (bg.width / 2) - (vs.width / 2), 80, 75, 75);
+			ctx.fillStyle = 'black';
+			ctx.fillRect(105, 45, 135, 135);
+			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
+			ctx.fillRect(bg.width - 115 - 125, 45, 135, 135);
+			ctx.drawImage(oppoData.avatar, bg.width - 110 - 125, 50, 125, 125);
 		}
 		return canvas.toBuffer();
 	}
