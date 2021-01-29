@@ -1,8 +1,10 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
+const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { verify, list, randomRange } = require('../../util/Util');
+const { greyscale } = require('../../util/Canvas');
 const fs = require('fs');
 const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars'))
 	.map(car => car.replace('.png', ''));
@@ -231,10 +233,19 @@ module.exports = class CarRaceCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		const bg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'bg.png'));
-		const userCar = await loadImage(
+		const userData = {
+			user: msg.author,
+			spaces: 0
+		};
+		const oppoData = {
+			user: opponent,
+			spaces: 0
+		};
+		userData.car = await loadImage(
 			path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${car}.png`)
 		);
-		let oppoCar;
+		const userAvatar = await request.get(msg.author.displayAvatarURL({ format: 'png', size: 128 }));
+		userData.avatar = await loadImage(userAvatar.body);
 		let difficulty;
 		try {
 			const available = cars.filter(car2 => car !== car2);
@@ -254,7 +265,7 @@ module.exports = class CarRaceCommand extends Command {
 				}
 				difficulty = difficultyPick.first().content.toLowerCase();
 				const oppoCarPick = available[Math.floor(Math.random() * available.length)];
-				oppoCar = await loadImage(
+				oppoData.car = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${oppoCarPick}.png`)
 				);
 			} else {
@@ -275,29 +286,29 @@ module.exports = class CarRaceCommand extends Command {
 				});
 				if (p2Car.size) {
 					const choice = p2Car.first().content.toLowerCase();
-					oppoCar = await loadImage(
+					oppoData.car = await loadImage(
 						path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${choice}.png`)
 					);
 				} else {
 					const chosen = cars[Math.floor(Math.random() * cars.length)];
-					oppoCar = await loadImage(
+					oppoData.car = await loadImage(
 						path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${chosen}.png`)
 					);
 				}
 			}
-			let userCarSpaces = 0;
-			let oppoCarSpaces = 0;
+			const oppoAvatar = await request.get(opponent.displayAvatarURL({ format: 'png', size: 128 }));
+			oppoData.avatar = await loadImage(oppoAvatar.body);
 			let lastRoundWinner;
 			let lastTurnTimeout = false;
-			while (userCarSpaces < 7 && oppoCarSpaces < 7) {
-				const board = await this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces);
+			while (userData.spaces < 7 && oppoData.spaces < 7) {
+				const board = await this.generateBoard(bg, userData, oppoData, lastRoundWinner);
 				let text;
 				if (lastRoundWinner) {
-					if (userCarSpaces > oppoCarSpaces || oppoCarSpaces > userCarSpaces) {
-						const leader = userCarSpaces > oppoCarSpaces ? msg.author : opponent;
+					if (userData.spaces > oppoData.spaces || oppoData.spaces > userData.spaces) {
+						const leader = userData.spaces > oppoData.spaces ? msg.author : opponent;
 						if (leader.id === lastRoundWinner.id) text = `${lastRoundWinner} pulls ahead!`;
 						else text = `${lastRoundWinner} catches up!`;
-					} else if (userCarSpaces === oppoCarSpaces) {
+					} else if (userData.spaces === oppoData.spaces) {
 						text = `${lastRoundWinner} ties it up!`;
 					}
 				} else {
@@ -317,8 +328,8 @@ module.exports = class CarRaceCommand extends Command {
 					time: randomRange(1000, 30000)
 				});
 				if (earlyEnd.size) {
-					if (earlyEnd.first().author.id === msg.author.id) oppoCarSpaces = 7;
-					else if (earlyEnd.first().author.id === opponent.id) userCarSpaces = 7;
+					if (earlyEnd.first().author.id === msg.author.id) oppoData.spaces = 7;
+					else if (earlyEnd.first().author.id === opponent.id) userData.spaces = 7;
 					break;
 				}
 				const word = words[Math.floor(Math.random() * words.length)];
@@ -334,7 +345,7 @@ module.exports = class CarRaceCommand extends Command {
 				});
 				if (!winner.size) {
 					if (opponent.bot) {
-						oppoCarSpaces += 1;
+						oppoData.spaces += 1;
 						lastRoundWinner = opponent;
 						if (lastTurnTimeout) lastTurnTimeout = false;
 						continue;
@@ -349,19 +360,19 @@ module.exports = class CarRaceCommand extends Command {
 				}
 				const win = winner.first();
 				if (win.content.toLowerCase() === 'end') {
-					if (win.author.id === msg.author.id) oppoCarSpaces = 7;
-					else if (win.author.id === opponent.id) userCarSpaces = 7;
+					if (win.author.id === msg.author.id) oppoData.spaces = 7;
+					else if (win.author.id === opponent.id) userData.spaces = 7;
 					break;
 				}
-				if (win.author.id === msg.author.id) userCarSpaces += 1;
-				else if (win.author.id === opponent.id) oppoCarSpaces += 1;
+				if (win.author.id === msg.author.id) userData.spaces += 1;
+				else if (win.author.id === opponent.id) oppoData.spaces += 1;
 				lastRoundWinner = win.author;
 				if (lastTurnTimeout) lastTurnTimeout = false;
 			}
 			this.client.games.delete(msg.channel.id);
-			const winner = userCarSpaces > oppoCarSpaces ? msg.author : opponent;
-			const winnerCar = winner.id === msg.author.id ? userCar : oppoCar;
-			const board = await this.generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces, true, winnerCar);
+			const winner = userData.spaces > oppoData.spaces ? msg.author : opponent;
+			const winnerCar = winner.id === msg.author.id ? userData.car : oppoData.car;
+			const board = await this.generateBoard(bg, userData, oppoDate, null, true, winnerCar);
 			return msg.say(`Congrats, ${winner}!`, {
 				files: [{ attachment: board, name: 'car-race-win.png' }]
 			});
@@ -371,14 +382,14 @@ module.exports = class CarRaceCommand extends Command {
 		}
 	}
 
-	async generateBoard(bg, userCar, oppoCar, userCarSpaces, oppoCarSpaces, win, winnerCar) {
+	async generateBoard(bg, userData, oppoData, turnWin, win, winnerCar) {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
-		const oppoCarX = oppoCarSpaces < 7 ? -155 + (77 * oppoCarSpaces) : bg.width - 155;
-		ctx.drawImage(oppoCar, oppoCarX, 208);
-		const userCarX = userCarSpaces < 7 ? -155 + (77 * userCarSpaces) : bg.width - 155;
-		ctx.drawImage(userCar, userCarX, 254);
+		const oppoCarX = oppoData.spaces < 7 ? -155 + (77 * oppoData.spaces) : bg.width - 155;
+		ctx.drawImage(oppoData.car, oppoCarX, 208);
+		const userCarX = userData.spaces < 7 ? -155 + (77 * userData.spaces) : bg.width - 155;
+		ctx.drawImage(userData.car, userCarX, 254);
 		if (win) {
 			const fireworks = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'fireworks.png')
@@ -389,6 +400,26 @@ module.exports = class CarRaceCommand extends Command {
 			ctx.drawImage(fireworks, 106, -48, 400, 283);
 			ctx.drawImage(congrats, 182, 21, 250, 62);
 			ctx.drawImage(winnerCar, 152, 84);
+		} else {
+			const stars = await loadImage(
+				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'stars.png')
+			);
+			ctx.fillStyle = turnWin.id === userData.user.id ? 'green' : 'black';
+			ctx.fillRect(105, 45, 130, 130);
+			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
+			if (turnWin.id === userData.user.id) {
+				ctx.drawImage(stars, 95, 0, 150, 125);
+			} else {
+				greyscale(ctx, 110, 50, 125, 125);
+			}
+			ctx.fillStyle = turnWin.id === oppoData.user.id ? 'green' : 'black';
+			ctx.fillRect(bg.width - 115 - 125, 45, 130, 130);
+			ctx.drawImage(oppoData.avatar, bg.width - 110 - 125, 50, 125, 125);
+			if (turnWin.id === oppoData.user.id) {
+				ctx.drawImage(stars, bg.width - 110 - 125 - 15, 0, 125, 125);
+			} else {
+				greyscale(ctx, bg.width - 110 - 125, 50, 125, 125);
+			}
 		}
 		return canvas.toBuffer();
 	}
