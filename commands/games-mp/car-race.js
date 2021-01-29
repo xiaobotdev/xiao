@@ -408,14 +408,14 @@ module.exports = class CarRaceCommand extends Command {
 			ctx.fillRect(105, 45, 135, 135);
 			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
 			if (turnWin && turnWin.id === userData.user.id) {
-				ctx.drawImage(stars, 95, 0, 150, 125);
+				ctx.drawImage(stars, 85, 0, 175, 150);
 			} else if (turnWin) {
 				greyscale(ctx, 110, 50, 125, 125);
 			}
 			ctx.fillRect(bg.width - 115 - 125, 45, 135, 135);
 			ctx.drawImage(oppoData.avatar, bg.width - 110 - 125, 50, 125, 125);
 			if (turnWin && turnWin.id === oppoData.user.id) {
-				ctx.drawImage(stars, bg.width - 110 - 125 - 15, 0, 150, 125);
+				ctx.drawImage(stars, bg.width - 110 - 125 - 25, 0, 175, 150);
 			} else if (turnWin) {
 				greyscale(ctx, bg.width - 110 - 125, 50, 125, 125);
 			}
