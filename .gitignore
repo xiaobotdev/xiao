@@ -16,3 +16,4 @@ command-leaderboard.json
 *.traineddata
 
 # In-Development Commands
+commands/games-sp/crossword.js

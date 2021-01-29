@@ -187,6 +187,25 @@ module.exports = class CarRaceCommand extends Command {
 					url: 'https://kybsport.com/',
 					reason: 'Miku Car Image',
 					reasonURL: 'https://kybsport.com/teams/gsr/'
+				},
+				{
+					name: 'KOSTYA_ex_tubli',
+					url: 'https://www.gran-turismo.com/us/gtsport/user/profile/6290075/overview',
+					reason: 'Flintstones Car Image',
+					// eslint-disable-next-line max-len
+					reasonURL: 'https://www.gran-turismo.com/us/gtsport/user/discover/search/decal/decal/6290075/4684382513076895744'
+				},
+				{
+					name: 'Clipart Library',
+					url: 'http://clipart-library.com/',
+					reason: 'Plane Car Image',
+					reasonURL: 'http://clipart-library.com/clipart/228505.htm'
+				},
+				{
+					name: 'Pin Clipart',
+					url: 'https://www.pinclipart.com/',
+					reason: 'Wheelchair Car Image',
+					reasonURL: 'https://www.pinclipart.com/maxpin/xToJi/'
 				}
 			],
 			args: [
