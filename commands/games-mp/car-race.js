@@ -366,8 +366,13 @@ module.exports = class CarRaceCommand extends Command {
 				}
 				const win = winner.first();
 				if (win.content.toLowerCase() === 'end') {
-					if (win.author.id === msg.author.id) oppoData.spaces = 7;
-					else if (win.author.id === opponent.id) userData.spaces = 7;
+					if (win.author.id === msg.author.id) {
+						oppoData.spaces = 7;
+						lastRoundWinner = opponent;
+					} else if (win.author.id === opponent.id) {
+						userData.spaces = 7;
+						lastRoundWinner = msg.author;
+					}
 					break;
 				}
 				if (win.author.id === msg.author.id) userData.spaces += 1;
@@ -392,13 +397,13 @@ module.exports = class CarRaceCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
 		const oppoCarX = oppoData.spaces < 7 ? -155 + (77 * oppoData.spaces) : bg.width - 155;
-		if (turnWin) {
+		if (turnWin && oppoData.spaces > 0) {
 			motionBlur(ctx, oppoData.car, oppoCarX, 208, oppoData.car.width, oppoData.car.height);
 		} else {
 			ctx.drawImage(oppoData.car, oppoCarX, 208);
 		}
 		const userCarX = userData.spaces < 7 ? -155 + (77 * userData.spaces) : bg.width - 155;
-		if (turnWin) {
+		if (turnWin && userData.spaces > 0) {
 			motionBlur(ctx, userData.car, userCarX, 254, userData.car.width, userData.car.height);
 		} else {
 			ctx.drawImage(userData.car, userCarX, 254);
