@@ -29,7 +29,7 @@ module.exports = class FaceCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What face would you like to scan?',
-					type: 'image'
+					type: 'image-or-avatar'
 				}
 			]
 		});

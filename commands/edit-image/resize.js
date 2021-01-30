@@ -32,7 +32,7 @@ module.exports = class ResizeCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'Which image would you like to edit?',
-					type: 'image',
+					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
 				}
 			]

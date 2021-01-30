@@ -24,8 +24,7 @@ module.exports = class WhatAnimeCommand extends Command {
 				{
 					key: 'screenshot',
 					prompt: 'What screenshot do you want to scan?',
-					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
+					type: 'image'
 				}
 			]
 		});

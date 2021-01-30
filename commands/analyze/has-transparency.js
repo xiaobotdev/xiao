@@ -19,8 +19,7 @@ module.exports = class HasTransparencyCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What image would you like to test?',
-					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
+					type: 'image-or-avatar'
 				}
 			]
 		});
