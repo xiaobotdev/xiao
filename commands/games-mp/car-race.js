@@ -403,7 +403,7 @@ module.exports = class CarRaceCommand extends Command {
 				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'congrats.png')
 			);
 			ctx.drawImage(fireworks, 106, -48, 400, 283);
-			ctx.drawImage(congrats, 182, 21, 250, 62);
+			ctx.drawImage(congrats, (bg.width / 2) - (250 / 2), 21, 250, 62);
 			ctx.fillStyle = 'black';
 			const x = (bg.width / 2) - 50;
 			ctx.fillRect(x - 5, 85, 110, 110);
