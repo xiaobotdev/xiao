@@ -8,8 +8,8 @@ module.exports = class ImageArgumentType extends ArgumentType {
 		super(client, 'image');
 	}
 
-	async validate(value, msg) {
-		const attachment = msg.attachments.first();
+	async validate(value, msg, arg, currentMsg) {
+		const attachment = currentMsg.attachments.first();
 		if (attachment) {
 			if (attachment.size > 8e+6) return 'Please provide an image under 8 MB.';
 			if (!fileTypeRe.test(attachment.name)) return 'Please only send PNG, JPG, BMP, or GIF format images.';
@@ -27,15 +27,15 @@ module.exports = class ImageArgumentType extends ArgumentType {
 		return false;
 	}
 
-	parse(value, msg) {
-		const attachment = msg.attachments.first();
+	parse(value, msg, arg, currentMsg) {
+		const attachment = currentMsg.attachments.first();
 		if (attachment) return attachment.url;
 		if (fileTypeRe.test(value.toLowerCase())) return value;
 		return null;
 	}
 
-	isEmpty(value, msg) {
-		if (msg.attachments.size) return false;
-		return true;
+	isEmpty(value, msg, arg, currentMsg) {
+		if (currentMsg.attachments.size) return false;
+		return !value;
 	}
 };
