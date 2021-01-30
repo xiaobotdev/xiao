@@ -428,6 +428,8 @@ module.exports = class CarRaceCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.fillRect(105, 45, 135, 135);
 			ctx.drawImage(userData.avatar, 110, 50, 125, 125);
+			ctx.fillRect(173, 155, 62, 20);
+			ctx.drawImage(userData.car, 173, 155, 62, 20);
 			if (turnWin && turnWin.id === userData.user.id) {
 				ctx.drawImage(stars, 85, 0, 175, 150);
 			} else if (turnWin) {
@@ -435,6 +437,8 @@ module.exports = class CarRaceCommand extends Command {
 			}
 			ctx.fillRect(bg.width - 115 - 125, 45, 135, 135);
 			ctx.drawImage(oppoData.avatar, bg.width - 110 - 125, 50, 125, 125);
+			ctx.fillText(440, 155, 62, 20);
+			ctx.drawImage(oppoData.car, 440, 155, 62, 20);
 			if (turnWin && turnWin.id === oppoData.user.id) {
 				ctx.drawImage(stars, bg.width - 110 - 125 - 25, 0, 175, 150);
 			} else if (turnWin) {
