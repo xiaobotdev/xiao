@@ -16,7 +16,7 @@ module.exports = class ImageArgumentType extends ArgumentType {
 			return true;
 		}
 		if (fileTypeRe.test(value.toLowerCase())) {
-			if (!validURL.isHttpUri(value) && !validURL.isHttpsUri(value)) return false;
+			if (!validURL.isWebUri(value)) return false;
 			try {
 				await request.get(value);
 				return true;
