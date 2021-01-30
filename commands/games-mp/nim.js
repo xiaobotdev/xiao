@@ -76,7 +76,6 @@ module.exports = class NimCommand extends Command {
 					});
 					if (!turn.size) {
 						if (lastTurnTimeout) {
-							await msg.say('Game ended due to inactivity.');
 							winner = 'time';
 							break;
 						} else {
@@ -112,7 +111,6 @@ module.exports = class NimCommand extends Command {
 					});
 					if (!rowTurn.size) {
 						if (lastTurnTimeout) {
-							await msg.say('Game ended due to inactivity.');
 							winner = 'time';
 							break;
 						} else {
