@@ -126,6 +126,7 @@ module.exports = class CanvasUtil {
 	}
 
 	static motionBlur(ctx, image, x, y, width, height) {
+		ctx.drawImage(image, x, y, width, height);
 		ctx.globalAlpha = 0.1;
 		for (let i = 0; i < 10; ++i) ctx.drawImage(image, x + i, y, width, height);
 		ctx.globalAlpha = 1;
