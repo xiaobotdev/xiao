@@ -4,7 +4,7 @@ const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { verify, list, randomRange } = require('../../util/Util');
-const { greyscale } = require('../../util/Canvas');
+const { greyscale, motionBlur } = require('../../util/Canvas');
 const fs = require('fs');
 const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars'))
 	.map(car => car.replace('.png', ''));
@@ -377,7 +377,7 @@ module.exports = class CarRaceCommand extends Command {
 			}
 			this.client.games.delete(msg.channel.id);
 			const winner = userData.spaces > oppoData.spaces ? msg.author : opponent;
-			const board = await this.generateBoard(bg, userData, oppoData, null, winner);
+			const board = await this.generateBoard(bg, userData, oppoData, lastRoundWinner, winner);
 			return msg.say(`Congrats, ${winner}!`, {
 				files: [{ attachment: board, name: 'car-race-win.png' }]
 			});
@@ -392,9 +392,17 @@ module.exports = class CarRaceCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
 		const oppoCarX = oppoData.spaces < 7 ? -155 + (77 * oppoData.spaces) : bg.width - 155;
-		ctx.drawImage(oppoData.car, oppoCarX, 208);
+		if (turnWin && turnWin.id === oppoData.user.id) {
+			motionBlur(ctx, oppoData.car, oppoCarX, 208, oppoData.car.width, oppoData.car.height);
+		} else {
+			ctx.drawImage(oppoData.car, oppoCarX, 208);
+		}
 		const userCarX = userData.spaces < 7 ? -155 + (77 * userData.spaces) : bg.width - 155;
-		ctx.drawImage(userData.car, userCarX, 254);
+		if (turnWin && turnWin.id === userData.user.id) {
+			motionBlur(ctx, userData.car, userCarX, 208, userData.car.width, userData.car.height);
+		} else {
+			ctx.drawImage(userData.car, userCarX, 254);
+		}
 		if (win) {
 			const fireworks = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'fireworks.png')
