@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 585
+Total: 586
 
 ### Utility:
 
@@ -682,6 +682,7 @@ Total: 585
 * **liquid-rescale:** Draws an image or a user's avatar but with liquid rescale from ImageMagick.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
+* **motion-blur:** Draws an image or a user's avatar with motion blur.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
 * **newspaper:** Creates a fake newspaper with the headline and body of your choice.
 * **noise:** Draws an image or a user's avatar but with noise.
