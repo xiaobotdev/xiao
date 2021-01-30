@@ -35,7 +35,7 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What image would you like to edit?',
-					type: 'iimage-or-avatarmage',
+					type: 'image-or-avatarmage',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}
 			]
