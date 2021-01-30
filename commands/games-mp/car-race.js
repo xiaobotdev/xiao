@@ -392,14 +392,14 @@ module.exports = class CarRaceCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
 		const oppoCarX = oppoData.spaces < 7 ? -155 + (77 * oppoData.spaces) : bg.width - 155;
-		if (turnWin && turnWin.id === oppoData.user.id) {
+		if (turnWin) {
 			motionBlur(ctx, oppoData.car, oppoCarX, 208, oppoData.car.width, oppoData.car.height);
 		} else {
 			ctx.drawImage(oppoData.car, oppoCarX, 208);
 		}
 		const userCarX = userData.spaces < 7 ? -155 + (77 * userData.spaces) : bg.width - 155;
-		if (turnWin && turnWin.id === userData.user.id) {
-			motionBlur(ctx, userData.car, userCarX, 208, userData.car.width, userData.car.height);
+		if (turnWin) {
+			motionBlur(ctx, userData.car, userCarX, 254, userData.car.width, userData.car.height);
 		} else {
 			ctx.drawImage(userData.car, userCarX, 254);
 		}
