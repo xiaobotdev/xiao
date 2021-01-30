@@ -30,7 +30,7 @@ module.exports = class CreditCommand extends Command {
 				.setDescription(trimArray(command.credit.map(credit => {
 					if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
 					return `${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
-				}), 15).join('\n'));
+				}), 10).join('\n'));
 			return msg.embed(embed);
 		}
 		const cmd = command.toLowerCase();
@@ -45,7 +45,7 @@ module.exports = class CreditCommand extends Command {
 		const embed = new MessageEmbed()
 			.setTitle(cmd)
 			.setColor(0x7289DA)
-			.setDescription(trimArray(commands, 15).join('\n'));
+			.setDescription(trimArray(commands, 10).join('\n'));
 		return msg.embed(embed);
 	}
 };
