@@ -31,7 +31,7 @@ module.exports = class MDNCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const { body } = await request
-				.get('https://developer.mozilla.org/en-US/search.json')
+				.get('https://developer.mozilla.org/api/v1/search')
 				.query({
 					q: query,
 					locale: 'en-US',
