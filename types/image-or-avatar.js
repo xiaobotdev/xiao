@@ -11,7 +11,7 @@ module.exports = class ImageOrAvatarArgumentType extends ArgumentType {
 	}
 
 	async parse(value, msg, arg) {
-		const image = await this.client.registry.types.get('image').parse(value, msg, arg);
+		const image = this.client.registry.types.get('image').parse(value, msg, arg);
 		if (image) return image;
 		const user = await this.client.registry.types.get('user').parse(value, msg, arg);
 		return user.displayAvatarURL({ format: 'png', size: 512 });
