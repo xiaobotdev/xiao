@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 586
+Total: 587
 
 ### Utility:
 
@@ -560,6 +560,7 @@ Total: 586
 * **scrabble-score:** Responds with the scrabble score of a word.
 * **severe-toxicity:** Determines the toxicity of text, but less sensitive to milder language.
 * **toxicity:** Determines the toxicity of text.
+* **valid-url:** Tests whether a URL is valid or not.
 * **what-anime:** Determines what anime a screenshot is from.
 * **zodiac-sign:** Responds with the Zodiac Sign for the given month/day.
 
