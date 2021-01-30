@@ -437,7 +437,7 @@ module.exports = class CarRaceCommand extends Command {
 			}
 			ctx.fillRect(bg.width - 115 - 125, 45, 135, 135);
 			ctx.drawImage(oppoData.avatar, bg.width - 110 - 125, 50, 125, 125);
-			ctx.fillText(440, 155, 62, 20);
+			ctx.fillRect(440, 155, 62, 20);
 			ctx.drawImage(oppoData.car, 440, 155, 62, 20);
 			if (turnWin && turnWin.id === oppoData.user.id) {
 				ctx.drawImage(stars, bg.width - 110 - 125 - 25, 0, 175, 150);
