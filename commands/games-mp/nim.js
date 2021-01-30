@@ -92,41 +92,46 @@ module.exports = class NimCommand extends Command {
 						break;
 					}
 					const row = board[picked - 1];
-					await msg.say(stripIndents`
-						${user}, how many ${objectEmoji} do you want to remove from row ${picked}? Type \`end\` to forefeit.
-						If you want to go back, type \`back\`.
+					let rowPicked;
+					if (row === 1) {
+						rowPicked = 1;
+					} else {
+						await msg.say(stripIndents`
+							${user}, how many ${objectEmoji} do you want to take from row ${picked}? Type \`end\` to forefeit.
+							If you want to go back, type \`back\`.
 
-						${nums[picked - 1]}${objectEmoji.repeat(row)}
-					`);
-					const rowFilter = res => {
-						if (res.author.id !== user.id) return false;
-						const chosen = res.content;
-						if (chosen.toLowerCase() === 'end' || chosen.toLowerCase() === 'back') return true;
-						const i = Number.parseInt(chosen, 10);
-						return i <= row && i > 0;
-					};
-					const rowTurn = await msg.channel.awaitMessages(rowFilter, {
-						max: 1,
-						time: 60000
-					});
-					if (!rowTurn.size) {
-						if (lastTurnTimeout) {
-							winner = 'time';
-							break;
-						} else {
-							await msg.say('Sorry, time is up!');
-							lastTurnTimeout = true;
-							userTurn = !userTurn;
-							continue;
+							${nums[picked - 1]}${objectEmoji.repeat(row)}
+						`);
+						const rowFilter = res => {
+							if (res.author.id !== user.id) return false;
+							const chosen = res.content;
+							if (chosen.toLowerCase() === 'end' || chosen.toLowerCase() === 'back') return true;
+							const i = Number.parseInt(chosen, 10);
+							return i <= row && i > 0;
+						};
+						const rowTurn = await msg.channel.awaitMessages(rowFilter, {
+							max: 1,
+							time: 60000
+						});
+						if (!rowTurn.size) {
+							if (lastTurnTimeout) {
+								winner = 'time';
+								break;
+							} else {
+								await msg.say('Sorry, time is up!');
+								lastTurnTimeout = true;
+								userTurn = !userTurn;
+								continue;
+							}
 						}
+						const rowChoice = rowTurn.first().content;
+						rowPicked = Number.parseInt(rowChoice, 10);
+						if (rowChoice.toLowerCase() === 'end') {
+							winner = userTurn ? opponent : msg.author;
+							break;
+						}
+						if (rowChoice.toLowerCase() === 'back') continue;
 					}
-					const rowChoice = rowTurn.first().content;
-					const rowPicked = Number.parseInt(rowChoice, 10);
-					if (rowChoice.toLowerCase() === 'end') {
-						winner = userTurn ? opponent : msg.author;
-						break;
-					}
-					if (rowChoice.toLowerCase() === 'back') continue;
 					board[picked - 1] -= rowPicked;
 				}
 				if (!userTurn && firstTurn) firstTurn = false;
