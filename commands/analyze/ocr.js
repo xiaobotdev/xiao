@@ -19,8 +19,7 @@ module.exports = class OcrCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What image would you like to perform OCR on?',
-					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
+					type: 'image-or-avatar'
 				}
 			]
 		});

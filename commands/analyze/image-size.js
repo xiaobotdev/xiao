@@ -18,8 +18,7 @@ module.exports = class ImageSizeCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What image would you like to get the size of?',
-					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
+					type: 'image-or-avatar'
 				}
 			]
 		});

@@ -15,7 +15,7 @@ module.exports = class ConvertImageCommand extends Command {
 			aliases: ['convert-img', 'image-convert', 'img-convert'],
 			group: 'edit-image',
 			memberName: 'convert-image',
-			description: 'Converts an image or user\'s avatar from one format to another.',
+			description: 'Converts an image from one format to another.',
 			details: `**Formats:** ${Object.keys(formats).join(', ')}`,
 			throttling: {
 				usages: 1,
@@ -33,8 +33,7 @@ module.exports = class ConvertImageCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'Which image would you like to edit?',
-					type: 'image',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
+					type: 'image'
 				}
 			]
 		});

@@ -22,7 +22,7 @@ module.exports = class ReadQRCodeCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What QR Code would you like to read?',
-					type: 'image'
+					type: 'image-or-avatar'
 				}
 			]
 		});
