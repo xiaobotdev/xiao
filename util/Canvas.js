@@ -125,6 +125,13 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
+	static motionBlur(ctx, image, x, y, width, height) {
+		ctx.globalAlpha = 0.1;
+		for (let i = 0; i < 10; ++i) ctx.drawImage(image, x, y + i, width, height);
+		ctx.globalAlpha = 1;
+		return ctx;
+	}
+
 	static hasAlpha(image) {
 		const canvas = createCanvas(image.width, image.height);
 		const ctx = canvas.getContext('2d');
@@ -148,6 +155,7 @@ module.exports = class CanvasUtil {
 		ctx.fillRect(x, y, width, height);
 		ctx.fillStyle = fillStyle;
 		ctx.globalAlpha = globalAlpha;
+		return ctx;
 	}
 
 	static shortenText(ctx, text, maxWidth) {
