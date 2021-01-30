@@ -214,6 +214,12 @@ module.exports = class CarRaceCommand extends Command {
 					url: 'https://www.pinclipart.com/',
 					reason: 'Wheelchair Car Image',
 					reasonURL: 'https://www.pinclipart.com/maxpin/xToJi/'
+				},
+				{
+					name: 'Clip Art Mag',
+					url: 'http://clipartmag.com/',
+					reason: 'Deora Car Image',
+					reasonURL: 'http://clipartmag.com/download-clipart-image#55-chevy-drawing-24.jpg'
 				}
 			],
 			args: [
