@@ -5,7 +5,7 @@ module.exports = class ImageOrAvatarArgumentType extends ArgumentType {
 		super(client, 'image-or-avatar');
 	}
 
-	async validate(value, msg, arg) {
+	validate(value, msg, arg) {
 		return this.client.registry.types.get('image').validate(value, msg, arg)
 			|| this.client.registry.types.get('user').validate(value, msg, arg);
 	}
@@ -18,7 +18,7 @@ module.exports = class ImageOrAvatarArgumentType extends ArgumentType {
 	}
 
 	isEmpty(value, msg, arg) {
-		return this.client.registry.types.get('image').isEmpty(value, msg, arg) 
+		return this.client.registry.types.get('image').isEmpty(value, msg, arg)
 			|| this.client.registry.types.get('user').isEmpty(value, msg, arg);
 	}
 };

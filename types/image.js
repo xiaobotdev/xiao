@@ -27,7 +27,7 @@ module.exports = class ImageArgumentType extends ArgumentType {
 		return false;
 	}
 
-	async parse(value, msg) {
+	parse(value, msg) {
 		const attachment = msg.attachments.first();
 		if (attachment) return attachment.url;
 		if (fileTypeRe.test(value.toLowerCase())) return value;
