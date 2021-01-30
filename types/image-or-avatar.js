@@ -5,9 +5,10 @@ module.exports = class ImageOrAvatarArgumentType extends ArgumentType {
 		super(client, 'image-or-avatar');
 	}
 
-	validate(value, msg, arg) {
-		return this.client.registry.types.get('image').validate(value, msg, arg)
-			|| this.client.registry.types.get('user').validate(value, msg, arg);
+	async validate(value, msg, arg) {
+		const image = await this.client.registry.types.get('image').validate(value, msg, arg);
+		if (image) return image;
+		return this.client.registry.types.get('user').validate(value, msg, arg);
 	}
 
 	async parse(value, msg, arg) {
