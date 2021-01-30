@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "128.1.0",
+	"version": "128.1.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -46,18 +46,18 @@
 		"discord.js": "^12.5.1",
 		"discord.js-commando": "github:discordjs/Commando",
 		"dotenv": "^8.2.0",
-		"emoji-regex": "^9.2.0",
+		"emoji-regex": "^9.2.1",
 		"eslint": "^7.18.0",
 		"expr-eval": "^2.0.2",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
-		"html-entities": "^2.0.4",
+		"html-entities": "^2.1.0",
 		"ioredis": "^4.19.4",
-		"js-beautify": "^1.13.4",
+		"js-beautify": "^1.13.5",
 		"js-chess-engine": "^0.6.0",
 		"kuroshiro": "^1.1.2",
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
-		"mathjs": "^9.0.0",
+		"mathjs": "^9.1.0",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.32",
@@ -70,6 +70,7 @@
 		"stackblur-canvas": "^2.4.0",
 		"tesseract.js": "^2.1.4",
 		"tictactoe-minimax-ai": "^1.2.1",
+		"valid-url": "^1.0.9",
 		"winston": "^3.3.3"
 	},
 	"optionalDependencies": {
