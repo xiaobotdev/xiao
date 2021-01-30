@@ -19,6 +19,6 @@ module.exports = class ImageOrAvatarArgumentType extends ArgumentType {
 
 	isEmpty(value, msg, arg) {
 		return this.client.registry.types.get('image').isEmpty(value, msg, arg)
-			|| this.client.registry.types.get('user').isEmpty(value, msg, arg);
+			&& this.client.registry.types.get('user').isEmpty(value, msg, arg);
 	}
 };
