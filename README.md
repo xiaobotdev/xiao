@@ -609,7 +609,7 @@ Total: 587
 * **balloon-pop:** Don't let yourself be the last one to pump the balloon before it pops!
 * **battle:** Engage in a turn-based battle against another user or the AI.
 * **bingo:** Play bingo with up to 99 other users.
-* **car-race:** Race a car against another user.
+* **car-race:** Race a car against another user or the AI.
 * **chess-delete:** Deletes your saved Chess game.
 * **chess:** Play a game of Chess with another user or the AI.
 * **connect-four:** Play a game of Connect Four with another user or the AI.
@@ -654,7 +654,7 @@ Total: 587
 * **color:** Sends an image of the color you choose.
 * **communist:** Draws the Communist flag over an image or a user's avatar.
 * **contrast:** Draws an image or a user's avatar but with contrast.
-* **convert-image:** Converts an image or user's avatar from one format to another.
+* **convert-image:** Converts an image from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
 * **danger:** Creates a danger sign with the text of your choice.
 * **desaturate:** Draws an image or a user's avatar but desaturated.
@@ -1070,6 +1070,8 @@ here.
 	* company ([Autocomplete API](https://dashboard.clearbit.com/docs#autocomplete-api))
 - [Cleverbot](https://www.cleverbot.com/)
 	* cleverbot ([API](https://www.cleverbot.com/api/))
+- [Clip Art Mag](http://clipartmag.com/)
+	* car-race ([Deora Car Image](http://clipartmag.com/download-clipart-image#55-chevy-drawing-24.jpg))
 - [Clipart Library](http://clipart-library.com/)
 	* car-race ([Plane Car Image](http://clipart-library.com/clipart/228505.htm))
 	* hat ([Leprechaun Hat Image](http://clipart-library.com/clipart/1107361.htm))
@@ -1442,6 +1444,8 @@ here.
 	* i-have-the-power (Image, Original "He-Man" Show)
 - [Max Irwin](http://binarymax.com/)
 	* anagramica ([Original "Anagramica" Game, API](http://anagramica.com/))
+- [Max Pixel](https://www.maxpixel.net/)
+	* car-race ([Stars Image](https://www.maxpixel.net/Stars-Confetti-Curly-String-Balloons-Watercolor-5403247))
 - [Mayo Clinic](https://www.mayoclinic.org/)
 	* mayo-clinic (Disease Data)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/)
