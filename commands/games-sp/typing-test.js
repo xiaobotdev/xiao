@@ -2,18 +2,9 @@ const Command = require('../../structures/Command');
 const { createCanvas, registerFont } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
-const { list, fetchHSUserDisplay } = require('../../util/Util');
+const { fetchHSUserDisplay } = require('../../util/Util');
 const words = require('../../assets/json/word-list');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-const difficulties = ['baby', 'easy', 'medium', 'hard', 'extreme', 'impossible'];
-const times = {
-	baby: 60000,
-	easy: 25000,
-	medium: 20000,
-	hard: 15000,
-	extreme: 10000,
-	impossible: 5000
-};
 
 module.exports = class TypingTestCommand extends Command {
 	constructor(client) {
@@ -21,30 +12,19 @@ module.exports = class TypingTestCommand extends Command {
 			name: 'typing-test',
 			group: 'games-sp',
 			memberName: 'typing-test',
-			description: 'See how fast you can type a sentence in a given time limit.',
-			details: `**Difficulties:** ${difficulties.join(', ')}`,
-			args: [
-				{
-					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
-					type: 'string',
-					oneOf: difficulties,
-					parse: difficulty => difficulty.toLowerCase()
-				}
-			]
+			description: 'See how fast you can type a sentence.'
 		});
 	}
 
-	async run(msg, { difficulty }) {
+	async run(msg) {
 		const sentence = this.generateSentence(5);
-		const time = times[difficulty];
-		await msg.reply(`**You have ${time / 1000} seconds to type this sentence.**`, {
+		await msg.reply(`**You have 30 seconds to type this sentence.**`, {
 			files: [{ attachment: this.generateImage(sentence), name: 'typing-test.png' }]
 		});
 		const now = Date.now();
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
-			time
+			time: 30000
 		});
 		const win = msgs.size && msgs.first().content.toLowerCase() === sentence;
 		const newScore = Date.now() - now;
