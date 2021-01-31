@@ -46,11 +46,12 @@ module.exports = class TypingTestCommand extends Command {
 			max: 1,
 			time
 		});
+		const win = msgs.size && msgs.first().content === sentence;
 		const newScore = Date.now() - now;
 		const highScoreGet = await this.client.redis.get('typing-test');
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
 		const highScoreUser = await this.client.redis.get('typing-test-user');
-		const scoreBeat = !highScore || highScore > newScore;
+		const scoreBeat = win && (!highScore || highScore > newScore);
 		const user = await fetchHSUserDisplay(this.client, highScoreUser);
 		if (scoreBeat) {
 			await this.client.redis.set('typing-test', newScore);
