@@ -46,7 +46,7 @@ module.exports = class TypingTestCommand extends Command {
 			max: 1,
 			time
 		});
-		const win = msgs.size && msgs.first().content === sentence;
+		const win = msgs.size && msgs.first().content.toLowerCase() === sentence;
 		const newScore = Date.now() - now;
 		const highScoreGet = await this.client.redis.get('typing-test');
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
@@ -58,7 +58,7 @@ module.exports = class TypingTestCommand extends Command {
 			await this.client.redis.set('typing-test-user', msg.author.id);
 		}
 		if (!msgs.size) return msg.reply('Sorry! You lose!');
-		if (msgs.first().content !== sentence) return msg.reply('Sorry! You made a typo, so you lose!');
+		if (msgs.first().content.toLowerCase() !== sentence) return msg.reply('Sorry! You made a typo, so you lose!');
 		return msg.reply(stripIndents`
 			Nice job! 10/10! You deserve some cake! (Took ${newScore / 1000} seconds)
 			${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})

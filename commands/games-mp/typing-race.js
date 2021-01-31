@@ -39,7 +39,10 @@ module.exports = class TypingRaceCommand extends Command {
 				files: [{ attachment: img, name: 'typing-race.png' }]
 			});
 			const now = Date.now();
-			const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content === sentence;
+			const filter = res => {
+				if (![opponent.id, msg.author.id].includes(res.author.id)) return false;
+				return res.content.toLowerCase() === sentence;
+			};
 			const winner = await msg.channel.awaitMessages(filter, {
 				max: 1,
 				time: 30000
