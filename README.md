@@ -598,7 +598,7 @@ Total: 588
 * **sorting-hat:** Take a quiz to determine your Hogwarts house.
 * **the-game:** If you think about the game, you lose.
 * **true-or-false:** Answer a true or false question.
-* **typing-test:** See how fast you can type a sentence in a given time limit.
+* **typing-test:** See how fast you can type a sentence.
 * **waldo:** Try to find Waldo with spoiler tags!
 * **whos-that-pokemon-cry:** Guess who that Pokémon is, based on their cry.
 * **whos-that-pokemon:** Guess who that Pokémon is, based on their silhouette.
