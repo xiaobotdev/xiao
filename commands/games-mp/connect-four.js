@@ -117,7 +117,7 @@ module.exports = class ConnectFourCommand extends Command {
 				} else {
 					const emoji = userTurn ? playerOneEmoji : playerTwoEmoji;
 					await msg.say(stripIndents`
-						${emoji} ${user}, which column do you pick? Type \`end\` to forefeit.
+						${emoji} ${user}, which column do you pick? Type \`end\` to forfeit.
 						Can't think of a move? Use \`play for me\`.
 						${opponent.bot ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
 

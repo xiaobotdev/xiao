@@ -45,7 +45,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			while (taken.length < 40) {
 				const user = userTurn ? msg.author : opponent;
 				await msg.say(stripIndents`
-					${user}, which connection do you pick? Type \`end\` to forefeit.
+					${user}, which connection do you pick? Type \`end\` to forfeit.
 					_Format like \`1-2\` or \`0-5\`. Any two spaces bordering **vertical or horizontal**._
 
 					P1: ${msg.author.tag} | P2: ${opponent.tag}

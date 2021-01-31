@@ -53,7 +53,7 @@ module.exports = class JengaCommand extends Command {
 					i = Math.floor(Math.random() * board.length);
 				} else {
 					const text = stripIndents`
-						${user}, which block do you want to remove? Type \`end\` to forefeit.
+						${user}, which block do you want to remove? Type \`end\` to forfeit.
 						Each block you go lower on the tower, the more likely the tower falls.
 					`;
 					await msg.say(`${text}\n\n${this.displayBoard(board)}`);

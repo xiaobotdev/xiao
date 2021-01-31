@@ -49,7 +49,7 @@ module.exports = class TicTacToeCommand extends Command {
 					choice = tictactoe.bestMove(this.convertBoard(sides), { computer: 'o', opponent: 'x' });
 				} else {
 					await msg.say(stripIndents`
-						${user}, which side do you pick? Type \`end\` to forefeit.
+						${user}, which side do you pick? Type \`end\` to forfeit.
 
 						${this.displayBoard(sides)}
 					`);
