@@ -1,7 +1,9 @@
 const Command = require('../../structures/Command');
+const { createCanvas, registerFont } = require('canvas');
 const { stripIndents } = require('common-tags');
 const { list, fetchHSUserDisplay } = require('../../util/Util');
-const sentences = require('../../assets/json/typing-test');
+const words = require('../../assets/json/word-list');
+registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 const difficulties = ['baby', 'easy', 'medium', 'hard', 'extreme', 'impossible'];
 const times = {
 	baby: 60000,
@@ -33,12 +35,11 @@ module.exports = class TypingTestCommand extends Command {
 	}
 
 	async run(msg, { difficulty }) {
-		const sentence = sentences[Math.floor(Math.random() * sentences.length)];
+		const sentence = this.generateSentence(6);
 		const time = times[difficulty];
-		await msg.reply(stripIndents`
-			**You have ${time / 1000} seconds to type this sentence.**
-			${sentence}
-		`);
+		await msg.reply(`**You have ${time / 1000} seconds to type this sentence.**`, {
+			files: [{ attachment: this.generateImage(sentence), name: 'typing-test.png' }]
+		});
 		const now = Date.now();
 		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
 			max: 1,
@@ -60,5 +61,28 @@ module.exports = class TypingTestCommand extends Command {
 			Nice job! 10/10! You deserve some cake! (Took ${newScore / 1000} seconds)
 			${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})
 		`);
+	}
+
+	generateSentence(length) {
+		const sentence = [];
+		for (let i = 0; i < length; i++) sentence.push(words[Math.floor(Math.random() * words.length)]);
+		return sentence.join(' ');
+	}
+
+	generateImage(sentence) {
+		const canvasPre = createCanvas(1, 1);
+		const ctxPre = canvasPre.getContext('2d');
+		ctxPre.font = '75px Noto';
+		const len = ctxPre.measureText(sentence);
+		const canvas = createCanvas(100 + len.width, 200);
+		const ctx = canvas.getContext('2d');
+		ctx.font = '75px Noto';
+		ctx.textBaseline = 'middle';
+		ctx.textAlign = 'center';
+		ctx.fillStyle = 'white';
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		ctx.fillStyle = 'black';
+		ctx.fillText(sentence, canvas.width / 2, canvas.height / 2);
+		return canvas.toBuffer();
 	}
 };
