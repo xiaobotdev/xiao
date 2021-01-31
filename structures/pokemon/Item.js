@@ -9,9 +9,9 @@ module.exports = class Item {
 			? data.names.find(entry => entry.language.name === 'en').name
 			: slugName;
 		this.description = data.effect_entries.length
-			? data.effect_entries.find(entry => entry.language.name === 'en').effect
+			? data.effect_entries.find(entry => entry.language.name === 'en').effect.replace(/\n|\f|\r/g, ' ')
 			: data.flavor_text_entries.length
-				? data.flavor_text_entries.find(entry => entry.language.name === 'en').flavor_text
+				? data.flavor_text_entries.find(entry => entry.language.name === 'en').flavor_text.replace(/\n|\f|\r/g, ' ')
 				: null;
 		this.spriteURL = data.sprites.default || null;
 		this.cost = data.cost || 0;
