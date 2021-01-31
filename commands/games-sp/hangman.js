@@ -43,7 +43,7 @@ module.exports = class HangmanCommand extends Command {
 			while (word.length !== confirmation.length && points < 6) {
 				await msg.say(stripIndents`
 					${displayText === null ? 'Here we go!' : displayText ? 'Good job!' : 'Nope!'}
-					\`${display.join(' ')}\`. Which letter do you choose?
+					\`${display.join(' ')}\`. Which letter do you choose? Type \`end\` to forfeit.
 					Incorrect Tries: ${incorrect.join(', ') || 'None'}
 					\`\`\`
 					___________
