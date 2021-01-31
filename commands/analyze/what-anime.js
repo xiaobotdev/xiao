@@ -85,7 +85,7 @@ module.exports = class WhatAnimeCommand extends Command {
 					t: data.at,
 					token: data.tokenthumb,
 					mute: true,
-					size: 's'
+					size: 'm'
 				});
 			return body;
 		} catch {
