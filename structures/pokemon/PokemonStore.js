@@ -3,6 +3,7 @@ const request = require('node-superfetch');
 const Pokemon = require('./Pokemon');
 const MoveStore = require('./MoveStore');
 const AbilityStore = require('./AbilityStore');
+const ItemStore = require('./ItemStore');
 const missingno = require('../../assets/json/missingno');
 
 module.exports = class PokemonStore extends Collection {
@@ -14,6 +15,7 @@ module.exports = class PokemonStore extends Collection {
 		this.smogonData = {};
 		this.moves = new MoveStore();
 		this.abilities = new AbilityStore();
+		this.items = new ItemStore();
 	}
 
 	async fetch(query) {

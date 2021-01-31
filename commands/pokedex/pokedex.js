@@ -108,8 +108,9 @@ module.exports = class PokedexCommand extends Command {
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
 				}).join('\n'))
 				.addField('❯ Evolution Chain', `${evoChain}${data.mega ? ` -> ${this.megaEvolveEmoji}` : ''}`)
-				.addField('❯ Held Items',
-					data.heldItems.length ? data.heldItems.map(item => `${item.name} (${item.rarity}%)`).join('\n') : 'None')
+				.addField('❯ Held Items', data.heldItems.length
+					? data.heldItems.map(item => `${item.data.name} (${item.rarity}%)`).join('\n')
+					: 'None')
 				.addField('❯ Gender Rate',
 					data.genderRate.genderless ? 'Genderless' : `♂️ ${data.genderRate.male}% ♀️ ${data.genderRate.female}%`);
 			if (data.cry) {

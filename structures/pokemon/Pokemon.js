@@ -269,8 +269,8 @@ module.exports = class Pokemon {
 						return false;
 					});
 				return {
-					url: item.item.url,
-					name: null,
+					data: null,
+					slug: item.item.name,
 					rarity
 				};
 			});
@@ -306,8 +306,8 @@ module.exports = class Pokemon {
 
 	async fetchHeldItemNames() {
 		for (const item of this.heldItems) {
-			const { body } = await request.get(item.url);
-			item.name = body.names.find(name => name.language.name === 'en').name;
+			const data = await this.store.items.fetch(item.slug);
+			item.data = data;
 		}
 		return this.heldItems;
 	}
