@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { createCanvas, registerFont } = require('canvas');
 const { stripIndents } = require('common-tags');
+const path = require('path');
 const { list, fetchHSUserDisplay } = require('../../util/Util');
 const words = require('../../assets/json/word-list');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
