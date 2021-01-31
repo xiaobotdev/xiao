@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 587
+Total: 588
 
 ### Utility:
 
@@ -535,6 +535,7 @@ Total: 587
 * **pokedex-ability:** Searches the Pokédex for a Pokémon ability.
 * **pokedex-cry:** Plays a Pokémon's cry.
 * **pokedex-image:** Responds with the image of a Pokémon.
+* **pokedex-item:** Searches the Pokédex for a Pokémon item.
 * **pokedex-location:** Responds with the location data for a Pokémon.
 * **pokedex-move:** Searches the Pokédex for a Pokémon move.
 * **pokedex-moveset:** Responds with the moveset for a Pokémon.
@@ -1621,6 +1622,7 @@ here.
 	* pokedex-ability (API)
 	* pokedex-cry (API)
 	* pokedex-image (API)
+	* pokedex-item (API)
 	* pokedex-location (API)
 	* pokedex-move (API)
 	* pokedex-moveset (API)
@@ -1637,6 +1639,7 @@ here.
 	* pokedex-ability (Original Game)
 	* pokedex-cry (Original Game)
 	* pokedex-image (Images, Original Game)
+	* pokedex-item (Images, Original Game)
 	* pokedex-location (Images, Original Game)
 	* pokedex-move (Original Game)
 	* pokedex-moveset (Images, Original Game)
