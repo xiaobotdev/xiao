@@ -55,7 +55,7 @@ module.exports = class ObstructionCommand extends Command {
 			while (!winner) {
 				const user = userTurn ? msg.author : opponent;
 				await msg.say(stripIndents`
-					${user}, at what coordinates do you want to place your piece (ex. 1,1)? Type \`end\` to forefeit.
+					${user}, at what coordinates do you want to place your piece (ex. 1,1)? Type \`end\` to forfeit.
 					Every piece you place will obstruct the 8 pieces around it.
 
 					${this.displayBoard(board)}

@@ -73,7 +73,7 @@ module.exports = class CramCommand extends Command {
 			while (!winner) {
 				const user = userTurn ? msg.author : opponent;
 				await msg.say(stripIndents`
-					${user}, at what coordinates do you want to place your block? Type \`end\` to forefeit.
+					${user}, at what coordinates do you want to place your block? Type \`end\` to forfeit.
 					You must also choose a direction. (ex. v1,1 or h3,4).
 
 					${this.displayBoard(board, userEmoji, oppoEmoji)}

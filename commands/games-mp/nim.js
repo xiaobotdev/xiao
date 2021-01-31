@@ -56,7 +56,7 @@ module.exports = class NimCommand extends Command {
 					await msg.say(`For my turn, I remove **${turn[1]}** ${objectEmoji} from **row ${turn[0] + 1}**.`);
 				} else {
 					await msg.say(stripIndents`
-						${user}, from which row do you want to remove from? Type \`end\` to forefeit.
+						${user}, from which row do you want to remove from? Type \`end\` to forfeit.
 						After this step, you will decide how many ${objectEmoji} to remove from that row.
 
 						${this.displayBoard(board, objectEmoji)}
@@ -97,7 +97,7 @@ module.exports = class NimCommand extends Command {
 						rowPicked = 1;
 					} else {
 						await msg.say(stripIndents`
-							${user}, how many ${objectEmoji} do you want to take from row ${picked}? Type \`end\` to forefeit.
+							${user}, how many ${objectEmoji} do you want to take from row ${picked}? Type \`end\` to forfeit.
 							If you want to go back, type \`back\`.
 
 							${nums[picked - 1]}${objectEmoji.repeat(row)}

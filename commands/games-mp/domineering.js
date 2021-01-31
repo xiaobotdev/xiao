@@ -73,7 +73,7 @@ module.exports = class DomineeringCommand extends Command {
 			while (!winner) {
 				const user = userTurn ? msg.author : opponent;
 				await msg.say(stripIndents`
-					${user}, at what coordinates do you want to place your block (ex. 1,1)? Type \`end\` to forefeit.
+					${user}, at what coordinates do you want to place your block (ex. 1,1)? Type \`end\` to forfeit.
 					Your pieces are **${userTurn ? 'vertical' : 'horizontal'}**.
 
 					${this.displayBoard(board, userEmoji, oppoEmoji)}

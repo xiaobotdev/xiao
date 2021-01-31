@@ -44,7 +44,7 @@ module.exports = class MinesweeperCommand extends Command {
 			while (win === null) {
 				const currentTime = moment.duration(new Date() - startTime).format('mm:ss');
 				await msg.say(stripIndents`
-					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forefeit.
+					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forfeit.
 					Type \`flag <coordinates>\` to flag a spot as a bomb. To remove a flag, run it again.
 
 					${this.displayBoard(game.board, game.mask, flagged, cheatMode)}
