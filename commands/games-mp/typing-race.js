@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { verify, fetchHSUserDisplay } = require('../../util/Util');
-const sentences = require('../../assets/json/typing-test');
 
 module.exports = class TypingRaceCommand extends Command {
 	constructor(client) {
@@ -34,11 +33,11 @@ module.exports = class TypingRaceCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
-			const sentence = sentences[Math.floor(Math.random() * sentences.length)];
-			await msg.say(stripIndents`
-				**Type the following sentence within 30 seconds:**
-				${sentence}
-			`);
+			const sentence = this.client.registry.commands.get('typing-test').generateSentence(6);
+			const img = await this.client.registry.commands.get('typing-test').generateImage(sentence);
+			await msg.say(`**Type the following sentence within 30 seconds:**`, {
+				files: [{ attachment: img, name: 'typing-race.png' }]
+			});
 			const now = Date.now();
 			const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content === sentence;
 			const winner = await msg.channel.awaitMessages(filter, {
