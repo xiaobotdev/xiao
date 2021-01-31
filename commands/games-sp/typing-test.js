@@ -36,7 +36,7 @@ module.exports = class TypingTestCommand extends Command {
 	}
 
 	async run(msg, { difficulty }) {
-		const sentence = this.generateSentence(6);
+		const sentence = this.generateSentence(5);
 		const time = times[difficulty];
 		await msg.reply(`**You have ${time / 1000} seconds to type this sentence.**`, {
 			files: [{ attachment: this.generateImage(sentence), name: 'typing-test.png' }]

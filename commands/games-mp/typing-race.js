@@ -33,7 +33,7 @@ module.exports = class TypingRaceCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Looks like they declined...');
 			}
-			const sentence = this.client.registry.commands.get('typing-test').generateSentence(6);
+			const sentence = this.client.registry.commands.get('typing-test').generateSentence(5);
 			const img = await this.client.registry.commands.get('typing-test').generateImage(sentence);
 			await msg.say(`**Type the following sentence within 30 seconds:**`, {
 				files: [{ attachment: img, name: 'typing-race.png' }]
