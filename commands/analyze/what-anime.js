@@ -46,7 +46,7 @@ module.exports = class WhatAnimeCommand extends Command {
 			const title = `${result.title}${result.episode ? ` episode ${result.episode}` : ''}`;
 			return msg.reply(stripIndents`
 				I'm ${result.prob}% sure this is from ${title}.
-				${result.prob < 87 ? '_This probablity is rather low, try using a higher quality image._' : ''}
+				${result.prob < 90 ? '_This probablity is rather low, try using a higher quality image._' : ''}
 			`, result.preview ? { files: [{ attachment: result.preview, name: 'preview.mp4' }] } : {});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -56,7 +56,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	async fetchRateLimit() {
 		try {
 			const { body } = await request.get('https://trace.moe/api/me');
-			return { status: body.quota > 0, refresh: body.quota_ttl };
+			return { status: body.limit > 0, refresh: body.limit_ttl };
 		} catch {
 			return { status: false, refresh: Infinity };
 		}
@@ -83,7 +83,9 @@ module.exports = class WhatAnimeCommand extends Command {
 				.get(`https://media.trace.moe/video/${data.anilist_id}/${encodeURIComponent(data.filename)}`)
 				.query({
 					t: data.at,
-					token: data.tokenthumb
+					token: data.tokenthumb,
+					mute: true,
+					size: 's'
 				});
 			return body;
 		} catch {
