@@ -16,4 +16,8 @@ module.exports = class Item {
 		this.spriteURL = data.sprites.default || null;
 		this.cost = data.cost || 0;
 	}
+
+	get slug() {
+		return this.store.makeSlug(this.name);
+	}
 };

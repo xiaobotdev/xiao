@@ -14,4 +14,8 @@ module.exports = class Ability {
 				? data.flavor_text_entries.find(entry => entry.language.name === 'en').flavor_text
 				: null;
 	}
+
+	get slug() {
+		return this.store.makeSlug(this.name);
+	}
 };

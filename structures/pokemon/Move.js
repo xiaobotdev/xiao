@@ -26,4 +26,8 @@ module.exports = class Move {
 		return this.description
 			.replace(/\$effect_chance/gi, this.effectChance);
 	}
+
+	get slug() {
+		return this.store.makeSlug(this.name);
+	}
 };
