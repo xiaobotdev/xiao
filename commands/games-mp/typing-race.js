@@ -48,7 +48,7 @@ module.exports = class TypingRaceCommand extends Command {
 			const highScoreGet = await this.client.redis.get('typing-test');
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
 			const highScoreUser = await this.client.redis.get('typing-test-user');
-			const scoreBeat = !highScore || highScore > newScore;
+			const scoreBeat = winner.size && (!highScore || highScore > newScore);
 			const user = await fetchHSUserDisplay(this.client, highScoreUser);
 			if (scoreBeat) {
 				await this.client.redis.set('typing-test', newScore);
