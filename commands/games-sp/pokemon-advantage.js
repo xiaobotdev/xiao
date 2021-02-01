@@ -73,8 +73,8 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			const pkmn1 = await this.client.pokemon.fetch(num1);
 			const num2 = Math.floor(Math.random() * (this.client.pokemon.pokemonCount + 1));
 			const pkmn2 = await this.client.pokemon.fetch(num2);
-			if (!pkmn1.gameDataCached) await pkmn1.fetchGameData();
-			if (!pkmn2.gameDataCached) await pkmn2.fetchGameData();
+			await pkmn1.fetchDefaultVariety();
+			await pkmn2.fetchDefaultVariety();
 			const attachment = await this.createImage(pkmn1, pkmn2, null);
 			const answer = this.calculateAdvantage(pkmn1, pkmn2);
 			const answerAttachment = await this.createImage(pkmn1, pkmn2, answer);
