@@ -37,7 +37,8 @@ module.exports = class CreditCommand extends Command {
 			.setDescription(command.credit.slice((page - 1) * 10, page * 10).map(credit => {
 				if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
 				return `${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
-			}).join('\n'));
+			}).join('\n'))
+			.setFooter(`${command.credit.length} Total Credit${command.credit.length === 1 ? '' : 's'}`);
 		return msg.embed(embed);
 	}
 };
