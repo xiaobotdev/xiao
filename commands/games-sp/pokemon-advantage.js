@@ -121,6 +121,8 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			if (winner === true) {
 				ctx.drawImage(stars, 20, 0, 200, 200);
 				ctx.drawImage(stars, 250, 0, 200, 200);
+				ctx.drawImage(pkmn1, 41, 12, 175, 175);
+				ctx.drawImage(pkmn2, 261, 12, 175, 175);
 			} else if (winner.id === pokemon1.id) {
 				ctx.drawImage(stars, 20, 0, 200, 200);
 				const greyCanvas = createCanvas(pkmn2.width, pkmn2.height);
@@ -157,6 +159,8 @@ module.exports = class PokemonAdvantageCommand extends Command {
 
 	calculateAdvantage(pkmn1, pkmn2) {
 		if (pkmn1.id === pkmn2.id) return null;
+		if (pkmn1.missingno) return pkmn1;
+		if (pkmn2.missingno) return pkmn2;
 		const types1 = pkmn1.varieties.find(variety => variety.default).types;
 		const types2 = pkmn2.varieties.find(variety => variety.default).types;
 		if (types1[0] === types2[0] && types1[1] === types2[1]) return true;
