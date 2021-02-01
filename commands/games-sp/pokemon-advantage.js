@@ -132,7 +132,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 				ctx.drawImage(greyCanvas, 261, 12, 175, 175);
 				ctx.drawImage(pkmn1, 41, 12, 175, 175);
 			} else if (winner.id === pokemon2.id) {
-				ctx.drawImage(stars, 20, 0, 200, 200);
+				ctx.drawImage(stars, 250, 0, 200, 200);
 				const greyCanvas = createCanvas(pkmn1.width, pkmn1.height);
 				const greyCtx = greyCanvas.getContext('2d');
 				greyCtx.drawImage(pkmn1, 0, 0);
