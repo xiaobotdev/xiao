@@ -29,7 +29,6 @@ module.exports = class Pokemon {
 		this.legendary = data.is_legendary;
 		this.mythical = data.is_mythical;
 		this.baby = data.is_baby;
-		this.rawHeldItems = null;
 		this.heldItems = data.missingno ? data.held_items : [];
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
@@ -172,7 +171,7 @@ module.exports = class Pokemon {
 		if (this.gameDataCached) return this;
 		await this.fetchDefaultVariety();
 		await this.fetchMoves(this.rawMoveSet);
-		await this.fetchHeldItems(this.rawHeldItems);
+		await this.fetchHeldItemNames();
 		await this.fetchOtherVarieties();
 		await this.fetchChain();
 		this.gameDataCached = true;
@@ -205,7 +204,7 @@ module.exports = class Pokemon {
 		this.weight = defaultBody.weight * 0.2205;
 		this.encountersURL = defaultBody.location_area_encounters;
 		this.rawMoveSet = defaultBody.moves;
-		this.rawHeldItems = defaultBody.held_items;
+		await this.fetchHeldItems(defaultBody.held_items);
 		return this;
 	}
 
@@ -283,7 +282,6 @@ module.exports = class Pokemon {
 					rarity
 				};
 			});
-		await this.fetchHeldItemNames();
 		return this.heldItems;
 	}
 
