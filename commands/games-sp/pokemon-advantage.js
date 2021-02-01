@@ -79,7 +79,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			const answer = this.calculateAdvantage(pkmn1, pkmn2);
 			const answerAttachment = await this.createImage(pkmn1, pkmn2, answer);
 			await msg.reply(stripIndents`
-				**You have 15 seconds, who\'s got the advantage?**
+				**You have 15 seconds, who\'s got the type advantage?**
 				_If the Pokémon are evenly matched, type \`even\`._
 			`, { files: [attachment] });
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
@@ -90,7 +90,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			if (!msgs.size) return msg.reply(`Time! It's **${answer.name}**!`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
 			const slug = this.client.pokemon.makeSlug(guess);
-			if (!answer) {
+			if (answer === true) {
 				if (guess === 'even') return msg.reply('Nice! These two are even!', { files: [answerAttachment] });
 				return msg.reply('Nope! These two are even!', { files: [answerAttachment] });
 			}
