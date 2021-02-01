@@ -42,7 +42,8 @@ module.exports = class Pokemon {
 				statsDiffer: data.missingno ? true : null,
 				default: variety.is_default,
 				types: data.missingno ? variety.types : [],
-				abilities: data.missingno ? variety.abilities : []
+				abilities: data.missingno ? variety.abilities : [],
+				gameDataCached: data.missingno || false
 			};
 		});
 		this.chain = {
@@ -176,6 +177,7 @@ module.exports = class Pokemon {
 
 	async fetchDefaultVariety() {
 		const defaultVariety = this.varieties.find(variety => variety.default);
+		if (defaultVariety.gameDataCached) return this;
 		const { body: defaultBody } = await request.get(`https://pokeapi.co/api/v2/pokemon/${defaultVariety.id}`);
 		defaultVariety.types.push(...defaultBody.types.map(type => firstUpperCase(type.type.name)));
 		for (const ability of defaultBody.abilities) {
@@ -191,6 +193,7 @@ module.exports = class Pokemon {
 			spd: defaultBody.stats.find(stat => stat.stat.name === 'speed').base_stat
 		};
 		defaultVariety.statsDiffer = true;
+		defaultVariety.gameDataCached = true;
 		const inSwordShield = defaultBody.moves
 			.some(move => move.version_group_details.some(mve => mve.version_group.name === 'sword-shield'));
 		this.moveSetVersion = inSwordShield ? 'sword-shield' : 'ultra-sun-ultra-moon';
@@ -206,6 +209,7 @@ module.exports = class Pokemon {
 		const defaultVariety = this.varieties.find(variety => variety.default);
 		for (const variety of this.varieties) {
 			if (variety.id === defaultVariety.id) continue;
+			if (variety.gameDataCached) continue;
 			const { body } = await request.get(`https://pokeapi.co/api/v2/pokemon/${variety.id}`);
 			const { body: formBody } = await request.get(`https://pokeapi.co/api/v2/pokemon-form/${variety.id}`);
 			variety.types.push(...body.types.map(type => firstUpperCase(type.type.name)));
@@ -229,6 +233,7 @@ module.exports = class Pokemon {
 				const abilityData = await this.store.abilities.fetch(ability.ability.name);
 				variety.abilities.push(abilityData);
 			}
+			variety.gameDataCached = true;
 		}
 		return this.varieties;
 	}
