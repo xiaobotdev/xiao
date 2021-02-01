@@ -170,10 +170,10 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		const secndEffectives2 = types2[1] ? advantages.data[types2[1]] : null;
 		let firstResult = 0;
 		let secndResult = 0;
-		firstResult += this.calculateAdvantage(types2, firstEffectives1);
-		if (firstEffectives2) firstResult += this.calculateAdvantage(types2, firstEffectives2);
-		secndResult += this.calculateAdvantage(types1, secndEffectives1);
-		if (secndEffectives2) secndResult += this.calculateAdvantage(types1, secndEffectives2);
+		firstResult += this.calculateSingleAdvantage(types2, firstEffectives1);
+		if (firstEffectives2) firstResult += this.calculateSingleAdvantage(types2, firstEffectives2);
+		secndResult += this.calculateSingleAdvantage(types1, secndEffectives1);
+		if (secndEffectives2) secndResult += this.calculateSingleAdvantage(types1, secndEffectives2);
 		if (firstResult === secndResult) return true;
 		return firstResult > secndResult ? pkmn2 : pkmn1;
 	}
