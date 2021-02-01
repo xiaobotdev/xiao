@@ -116,7 +116,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		ctx.drawImage(bg, 0, 0);
 		if (winner) {
 			const stars = await loadImage(
-				path.join(__dirname, '..', '..', 'assets', 'images', 'pokmeon-advantage', 'stars.png')
+				path.join(__dirname, '..', '..', 'assets', 'images', 'pokemon-advantage', 'stars.png')
 			);
 			if (winner === true) {
 				ctx.drawImage(stars, 20, 0, 200, 200);
