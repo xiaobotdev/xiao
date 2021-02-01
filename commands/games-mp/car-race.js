@@ -52,10 +52,31 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://www.pngkit.com/bigpic/u2r5r5o0a9y3w7q8/'
 				},
 				{
+					name: 'Hendrick Motorsports',
+					url: 'http://www.hendrickmotorsports.com/',
+					reason: 'Earnhardt Car Original Design'
+				},
+				{
+					name: 'Dale Earnhardt Jr.',
+					url: 'https://www.dalejr.com/',
+					reason: 'Earnhardt Car Original Driver'
+				},
+				{
 					name: 'Disneyclips.com',
 					url: 'https://www.disneyclips.com/main.html',
 					reason: 'McQueen Car Image',
 					reasonURL: 'https://www.disneyclips.com/images2/cars2.html'
+				},
+				{
+					name: 'Disney',
+					url: 'https://www.disney.com/',
+					reason: 'McQueen/Herbie Cars Original Designs'
+				},
+				{
+					name: 'Pixar Animation Studios',
+					url: 'https://www.pixar.com/',
+					reason: 'McQueen Car Original Design',
+					reasonURL: 'https://www.pixar.com/feature-films/cars'
 				},
 				{
 					name: 'NicolasDavila',
@@ -64,16 +85,33 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://www.deviantart.com/nicolasdavila/art/Reverb-Wireframe-Blueprint-777342814'
 				},
 				{
+					name: 'Mattel',
+					url: 'https://www.mattel.com/en-us',
+					reason: 'Reverb/Deora Cars Original Designs',
+					reasonURL: 'https://hotwheels.mattel.com/shop'
+				},
+				{
 					name: 'Sherif Saad',
 					url: 'https://www.behance.net/SherifSaad',
 					reason: 'AE86 Car Image',
 					reasonURL: 'https://www.behance.net/gallery/62672149/AE86-Tattoo'
 				},
 				{
+					name: 'Initial D',
+					url: 'https://initiald-portal.com/',
+					reason: 'AE86 Car Original Design'
+				},
+				{
 					name: 'ClipArtBest',
 					url: 'http://www.clipartbest.com/',
 					reason: 'Kitano Car Image',
 					reasonURL: 'http://www.clipartbest.com/clipart-KinXey4XT'
+				},
+				{
+					name: 'Electronic Arts',
+					url: 'https://www.ea.com/',
+					reason: 'Kitano Car Original Design',
+					reasonURL: 'https://www.ea.com/games/burnout'
 				},
 				{
 					name: 'Marien Bierhuizen',
@@ -88,16 +126,32 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://www.lalinea.de/pkw/neuwagen/lotus/elise/roadster-2-tuerer/2011/'
 				},
 				{
+					name: 'Lotus',
+					url: 'https://www.lotuscars.com/en-US/',
+					reason: 'Elise Car Original Design'
+				},
+				{
 					name: 'PNGkey.com',
 					url: 'https://www.pngkey.com/',
 					reason: 'Sonic Car Image',
 					reasonURL: 'https://www.pngkey.com/maxpic/u2e6y3t4a9o0a9a9/'
 				},
 				{
+					name: 'SEGA',
+					url: 'https://www.sega.com/',
+					reason: 'Sonic Car Original Design',
+					reasonURL: 'https://www.sonicthehedgehog.com/'
+				}
+				{
 					name: 'MinionFan1024',
 					url: 'https://www.deviantart.com/minionfan1024',
 					reason: 'Anakin Car Image',
 					reasonURL: 'https://www.deviantart.com/minionfan1024/art/Anakin-s-podracer-829694073'
+				},
+				{
+					name: 'Star Wars',
+					url: 'https://www.starwars.com/',
+					reason: 'Anakin Car Original Design'
 				},
 				{
 					name: 'theraymachine',
@@ -107,16 +161,32 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://www.gran-turismo.com/ch/gtsport/user/profile/1679092/gallery/all/decal/1679092/7359459034929333784'
 				},
 				{
+					name: 'Back to the Future',
+					url: 'https://www.backtothefuture.com/',
+					reason: 'DeLorean Car Original Design'
+				},
+				{
 					name: 'Kevin Zino',
 					url: 'https://codepen.io/natefr0st',
 					reason: 'Mario Car Image',
 					reasonURL: 'https://codepen.io/natefr0st/pen/GrMrZV'
 				},
 				{
+					name: 'Nintendo',
+					url: 'https://www.nintendo.com/',
+					reason: 'Mario Car Original Design',
+					reasonURL: 'https://mario.nintendo.com/'
+				},
+				{
 					name: 'zekewhipper',
 					url: 'https://www.deviantart.com/zekewhipper',
 					reason: 'Mach 5 Car Image',
 					reasonURL: 'https://www.deviantart.com/zekewhipper/art/Mach-5-My-Version-112814534'
+				},
+				{
+					name: 'Speed Racer',
+					url: 'https://www.speedracergogogo.com/',
+					reason: 'Mach 5 Car Original Design'
 				},
 				{
 					name: 'Iconscout',
@@ -131,10 +201,21 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://pixabay.com/vectors/tesla-cybertruck-electric-car-4770084/'
 				},
 				{
+					name: 'Tesla',
+					url: 'https://www.tesla.com/',
+					reason: 'Cybertruck Car Original Design',
+					reasonURL: 'https://www.tesla.com/cybertruck'
+				}
+				{
 					name: 'Zero Error\'s randomised blog',
 					url: 'http://yanko06.blogspot.com/',
 					reason: 'Lego Car Image',
 					reasonURL: 'http://yanko06.blogspot.com/2016/03/nissan-240sx-lego-build.html'
+				},
+				{
+					name: 'LEGO',
+					url: 'https://www.lego.com/en-us',
+					reason: 'Lego Car Original Design'
 				},
 				{
 					name: 'Stick PNG',
@@ -149,6 +230,12 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://www.deviantart.com/dashiesparkle/art/Vector-475-Rainbow-Dash-58-609921260'
 				},
 				{
+					name: 'Hasbro',
+					url: 'https://shop.hasbro.com/en-us',
+					reason: 'Rainbow Car Original Design',
+					reasonURL: 'https://mylittlepony.hasbro.com/en-us'
+				}
+				{
 					name: 'MotorBiscuit',
 					url: 'https://www.motorbiscuit.com/',
 					reason: 'Pickup Car Image',
@@ -161,9 +248,14 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://www.lakekeoweechryslerdodge.com/2017-jeep-wrangler-seneca--sc.htm'
 				},
 				{
+					name: 'Jeep',
+					url: 'https://www.jeep.com/',
+					reason: 'Jeep Car Original Design'
+				},
+				{
 					name: 'The BLOODHOUND Project',
 					url: 'https://www.bloodhoundlsr.com/',
-					reason: 'Bloodhound Car Image',
+					reason: 'Bloodhound Car Image/Original Design',
 					// eslint-disable-next-line max-len
 					reasonURL: 'http://sendy.bloodhoundssc.com/w/r66GIuC7uX1SMJnEzBQclA/RYS3PGArp6y5QLtigCCOVA/3JZqlel0Hcux67634uBAdtpg'
 				},
@@ -174,11 +266,21 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://pngio.com/images/png-a980119.html'
 				},
 				{
+					name: 'Warner Bros.',
+					url: 'https://www.warnerbros.com/',
+					reason: 'General Lee Car Original Design'
+				}
+				{
 					name: 'PicsArt',
 					url: 'https://picsart.com/',
 					reason: 'Bean Car Image',
 					reasonURL: 'https://picsart.com/i/287426979049211'
 				},
+				{
+					name: 'Mr. Bean',
+					url: 'https://www.mrbean.com/',
+					reason: 'Bean Car Original Design'
+				}
 				{
 					name: 'SeekPNG',
 					url: 'https://www.seekpng.com/',
@@ -197,12 +299,22 @@ module.exports = class CarRaceCommand extends Command {
 					reasonURL: 'https://kybsport.com/teams/gsr/'
 				},
 				{
+					name: 'Goodsmile Racing',
+					url: 'https://www.goodsmileracing.com/en/',
+					reason: 'Miku Car Original Design'
+				},
+				{
 					name: 'KOSTYA_ex_tubli',
 					url: 'https://www.gran-turismo.com/us/gtsport/user/profile/6290075/overview',
 					reason: 'Flintstones Car Image',
 					// eslint-disable-next-line max-len
 					reasonURL: 'https://www.gran-turismo.com/us/gtsport/user/discover/search/decal/decal/6290075/4684382513076895744'
 				},
+				{
+					name: 'Hanna-Barbera',
+					url: 'http://www.webrockonline.com/',
+					reason: 'Flintstones Car Original Design'
+				}
 				{
 					name: 'Clipart Library',
 					url: 'http://clipart-library.com/',
