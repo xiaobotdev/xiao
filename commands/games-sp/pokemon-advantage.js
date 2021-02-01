@@ -121,24 +121,22 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			if (winner === true) {
 				ctx.drawImage(stars, 20, 0, 200, 200);
 				ctx.drawImage(stars, 250, 0, 200, 200);
-			} else {
-				if (winner.id === pokemon1.id) {
-					ctx.drawImage(stars, 20, 0, 200, 200);
-					const greyCanvas = createCanvas(pkmn2.width, pkmn2.height);
-					const greyCtx = greyCanvas.getContext('2d');
-					greyCtx.drawImage(pkmn2, 0, 0);
-					greyscale(greyCtx, 0, 0, pkmn2.width, pkmn2.height);
-					ctx.drawImage(greyCanvas, 261, 12, 175, 175);
-					ctx.drawImage(pkmn1, 41, 12, 175, 175);
-				} else if (winner.id === pokemon2.id) {
-					ctx.drawImage(stars, 20, 0, 200, 200);
-					const greyCanvas = createCanvas(pkmn1.width, pkmn1.height);
-					const greyCtx = greyCanvas.getContext('2d');
-					greyCtx.drawImage(pkmn1, 0, 0);
-					greyscale(greyCtx, 0, 0, pkmn1.width, pkmn1.height);
-					ctx.drawImage(greyCanvas, 41, 12, 175, 175);
-					ctx.drawImage(pkmn2, 261, 12, 175, 175);
-				}
+			} else if (winner.id === pokemon1.id) {
+				ctx.drawImage(stars, 20, 0, 200, 200);
+				const greyCanvas = createCanvas(pkmn2.width, pkmn2.height);
+				const greyCtx = greyCanvas.getContext('2d');
+				greyCtx.drawImage(pkmn2, 0, 0);
+				greyscale(greyCtx, 0, 0, pkmn2.width, pkmn2.height);
+				ctx.drawImage(greyCanvas, 261, 12, 175, 175);
+				ctx.drawImage(pkmn1, 41, 12, 175, 175);
+			} else if (winner.id === pokemon2.id) {
+				ctx.drawImage(stars, 20, 0, 200, 200);
+				const greyCanvas = createCanvas(pkmn1.width, pkmn1.height);
+				const greyCtx = greyCanvas.getContext('2d');
+				greyCtx.drawImage(pkmn1, 0, 0);
+				greyscale(greyCtx, 0, 0, pkmn1.width, pkmn1.height);
+				ctx.drawImage(greyCanvas, 41, 12, 175, 175);
+				ctx.drawImage(pkmn2, 261, 12, 175, 175);
 			}
 		} else {
 			ctx.drawImage(pkmn1, 41, 12, 175, 175);
@@ -180,5 +178,5 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		const x1 = advs[advantages.types.indexOf(types[0])];
 		const x2 = types[1] ? advs[advantages.types.indexOf(types[1])] : 1;
 		return x1 * x2;
-	} 
+	}
 };
