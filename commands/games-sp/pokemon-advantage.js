@@ -175,7 +175,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		secndResult += this.calculateSingleAdvantage(types1, secndEffectives1);
 		if (secndEffectives2) secndResult += this.calculateSingleAdvantage(types1, secndEffectives2);
 		if (firstResult === secndResult) return true;
-		return firstResult > secndResult ? pkmn2 : pkmn1;
+		return firstResult > secndResult ? pkmn1 : pkmn2;
 	}
 
 	calculateSingleAdvantage(types, advs) {
