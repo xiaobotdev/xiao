@@ -141,7 +141,7 @@ module.exports = class CarRaceCommand extends Command {
 					url: 'https://www.sega.com/',
 					reason: 'Sonic Car Original Design',
 					reasonURL: 'https://www.sonicthehedgehog.com/'
-				}
+				},
 				{
 					name: 'MinionFan1024',
 					url: 'https://www.deviantart.com/minionfan1024',
@@ -205,7 +205,7 @@ module.exports = class CarRaceCommand extends Command {
 					url: 'https://www.tesla.com/',
 					reason: 'Cybertruck Car Original Design',
 					reasonURL: 'https://www.tesla.com/cybertruck'
-				}
+				},
 				{
 					name: 'Zero Error\'s randomised blog',
 					url: 'http://yanko06.blogspot.com/',
@@ -234,7 +234,7 @@ module.exports = class CarRaceCommand extends Command {
 					url: 'https://shop.hasbro.com/en-us',
 					reason: 'Rainbow Car Original Design',
 					reasonURL: 'https://mylittlepony.hasbro.com/en-us'
-				}
+				},
 				{
 					name: 'MotorBiscuit',
 					url: 'https://www.motorbiscuit.com/',
@@ -269,7 +269,7 @@ module.exports = class CarRaceCommand extends Command {
 					name: 'Warner Bros.',
 					url: 'https://www.warnerbros.com/',
 					reason: 'General Lee Car Original Design'
-				}
+				},
 				{
 					name: 'PicsArt',
 					url: 'https://picsart.com/',
@@ -280,7 +280,7 @@ module.exports = class CarRaceCommand extends Command {
 					name: 'Mr. Bean',
 					url: 'https://www.mrbean.com/',
 					reason: 'Bean Car Original Design'
-				}
+				},
 				{
 					name: 'SeekPNG',
 					url: 'https://www.seekpng.com/',
@@ -314,7 +314,7 @@ module.exports = class CarRaceCommand extends Command {
 					name: 'Hanna-Barbera',
 					url: 'http://www.webrockonline.com/',
 					reason: 'Flintstones Car Original Design'
-				}
+				},
 				{
 					name: 'Clipart Library',
 					url: 'http://clipart-library.com/',
