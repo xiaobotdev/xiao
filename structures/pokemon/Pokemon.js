@@ -256,7 +256,7 @@ module.exports = class Pokemon {
 		return this.moveSet;
 	}
 
-	async fetchHeldItems(heldItems) {
+	fetchHeldItems(heldItems) {
 		this.heldItems = heldItems
 			.filter(item => item.version_details.some(version => {
 				const inSwordShield = version.version.name === 'sword' || version.version.name === 'shield';
