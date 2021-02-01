@@ -29,6 +29,7 @@ module.exports = class Pokemon {
 		this.legendary = data.is_legendary;
 		this.mythical = data.is_mythical;
 		this.baby = data.is_baby;
+		this.rawHeldItems = null;
 		this.heldItems = data.missingno ? data.held_items : [];
 		this.varieties = data.varieties.map(variety => {
 			const name = firstUpperCase(variety.pokemon.name
@@ -54,6 +55,7 @@ module.exports = class Pokemon {
 		this.encounters = data.missingno ? data.encounters : null;
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
+		this.rawMoveSet = null;
 		this.moveSet = data.missingno ? data.moveSet : [];
 		this.moveSetVersion = data.missingno ? data.moveSetVersion : null;
 		this.gameDataCached = data.missingno || false;
@@ -169,6 +171,8 @@ module.exports = class Pokemon {
 	async fetchGameData() {
 		if (this.gameDataCached) return this;
 		await this.fetchDefaultVariety();
+		await this.fetchMoves(this.rawMoveSet);
+		await this.fetchHeldItems(this.rawHeldItems);
 		await this.fetchOtherVarieties();
 		await this.fetchChain();
 		this.gameDataCached = true;
@@ -200,8 +204,8 @@ module.exports = class Pokemon {
 		this.height = defaultBody.height * 3.94;
 		this.weight = defaultBody.weight * 0.2205;
 		this.encountersURL = defaultBody.location_area_encounters;
-		await this.fetchMoves(defaultBody.moves);
-		await this.fetchHeldItems(defaultBody.held_items);
+		this.rawMoveSet = defaultBody.moves;
+		this.rawHeldItems = defaultBody.held_items;
 		return this;
 	}
 
