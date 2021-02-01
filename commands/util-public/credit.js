@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
-const { Command: CommandoCommand } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-const { trimArray, embedURL } = require('../../util/Util');
+const { embedURL } = require('../../util/Util');
 
 module.exports = class CreditCommand extends Command {
 	constructor(client) {
@@ -15,37 +14,30 @@ module.exports = class CreditCommand extends Command {
 				{
 					key: 'command',
 					prompt: 'Which command would you like to view the credits list of?',
-					type: 'command|string'
+					type: 'command'
+				},
+				{
+					key: 'page',
+					prompt: 'What page do you want to view?',
+					type: 'integer',
+					default: 1,
+					min: 1
 				}
 			]
 		});
 	}
 
-	run(msg, { command }) {
-		if (command instanceof CommandoCommand) {
-			if (!command.credit) return msg.say('This command is credited to no one. It just appeared.');
-			const embed = new MessageEmbed()
-				.setTitle(command.name)
-				.setColor(0x7289DA)
-				.setDescription(trimArray(command.credit.map(credit => {
-					if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
-					return `${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
-				}), 10).join('\n'));
-			return msg.embed(embed);
-		}
-		const cmd = command.toLowerCase();
-		const commands = this.client.registry.commands
-			.filter(c => c.credit && c.credit.length && c.credit.find(cred => cred.name.toLowerCase().includes(cmd)))
-			.map(com => {
-				const credit = com.credit.find(cred => cred.name.toLowerCase().includes(cmd));
-				if (!credit.reasonURL) return `\`${com.name}\`: ${embedURL(credit.name, credit.url)} (${credit.reason})`;
-				return `\`${com.name}\`: ${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
-			});
-		if (!commands.length) return msg.say('Could not find any results.');
+	run(msg, { command, page }) {
+		if (!command.credit) return msg.say('This command is credited to no one. It just appeared.');
+		const totalPages = Math.ceil(command.credit.length / 10);
+		if (page > totalPages) return msg.say(`Page ${page} does not exist (yet).`);
 		const embed = new MessageEmbed()
-			.setTitle(cmd)
+			.setTitle(`${command.name} (Page ${page}/${totalPages})`)
 			.setColor(0x7289DA)
-			.setDescription(trimArray(commands, 10).join('\n'));
+			.setDescription(command.credit.slice((page - 1) * 10, page * 10).map(credit => {
+				if (!credit.reasonURL) return `${embedURL(credit.name, credit.url)} (${credit.reason})`;
+				return `${embedURL(credit.name, credit.url)} (${embedURL(credit.reason, credit.reasonURL)})`;
+			}).join('\n'));
 		return msg.embed(embed);
 	}
 };
