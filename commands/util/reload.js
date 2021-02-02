@@ -24,8 +24,10 @@ module.exports = class ReloadCommand extends Command {
 
 	run(msg, { command }) {
 		this.client.exportCommandLeaderboard();
+		this.client.exportLastRun();
 		command.reload();
 		this.client.importCommandLeaderboard();
+		this.client.importLastRun();
 		return msg.say(`Reloaded the \`${command.name}\` command.`);
 	}
 };

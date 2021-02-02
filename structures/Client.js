@@ -91,6 +91,38 @@ module.exports = class XiaoClient extends CommandoClient {
 		return buf;
 	}
 
+	importLastRun() {
+		const read = fs.readFileSync(path.join(__dirname, '..', 'command-last-run.json'), {
+			encoding: 'utf8'
+		});
+		const file = JSON.parse(read);
+		if (typeof file !== 'object' || Array.isArray(file)) return null;
+		for (const [id, value] of Object.entries(file)) {
+			if (!value) continue;
+			const date = new Date(value);
+			if (date.toString() === 'Invalid Date') continue;
+			const found = this.registry.commands.get(id);
+			if (!found || found.lastRun === undefined) continue;
+			found.lastRun = date;
+		}
+		return file;
+	}
+
+	exportLastRun() {
+		let text = '{';
+		for (const command of this.registry.commands.values()) {
+			if (command.lastRun === undefined) continue;
+			text += `\n	"${command.name}": "${command.lastRun ? command.lastRun.toISOString() : null}",`;
+		}
+		text = text.slice(0, -1);
+		text += '\n}\n';
+		const buf = Buffer.from(text);
+		fs.writeFileSync(path.join(__dirname, '..', 'command-last-run.json'), buf, {
+			encoding: 'utf8'
+		});
+		return buf;
+	}
+
 	fetchReportChannel() {
 		if (!REPORT_CHANNEL_ID) return null;
 		return this.channels.fetch(REPORT_CHANNEL_ID);
