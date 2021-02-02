@@ -44,7 +44,7 @@ module.exports = class LastRunLeaderboardCommand extends Command {
 		return commands
 			.sort((a, b) => a.lastRun ? b.lastRun - a.lastRun : 1)
 			.map(command => {
-				if (previousPts === command.lastRun || previousPts === command.lastRun.toISOString()) {
+				if (previousPts === command.lastRun || (command.lastRun && previousPts === command.lastRun.toISOString())) {
 					positionsMoved++;
 				} else {
 					i += positionsMoved;
