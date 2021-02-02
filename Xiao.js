@@ -188,6 +188,8 @@ client.on('warn', warn => client.logger.warn(warn));
 client.on('commandRun', command => {
 	if (command.uses === undefined) return;
 	command.uses++;
+	if (command.lastRun === undefined) return;
+	command.lastRun = new Date();
 });
 
 client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));
