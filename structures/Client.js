@@ -112,7 +112,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		let text = '{';
 		for (const command of this.registry.commands.values()) {
 			if (command.lastRun === undefined) continue;
-			text += `\n	"${command.name}": "${command.lastRun ? command.lastRun.toISOString() : null}",`;
+			text += `\n	"${command.name}": ${command.lastRun ? `"${command.lastRun.toISOString()}"` : null},`;
 		}
 		text = text.slice(0, -1);
 		text += '\n}\n';
