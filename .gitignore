@@ -11,6 +11,7 @@ report*.json
 .env
 config.json
 command-leaderboard.json
+command-last-run.json
 
 # Tesseract Trained Data
 *.traineddata

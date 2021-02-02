@@ -50,6 +50,7 @@ module.exports = class ShutdownCommand extends Command {
 		try {
 			this.uses++;
 			this.client.exportCommandLeaderboard();
+			this.client.exportLastRun();
 			this.client.logger.info('[SHUTDOWN] Manual shutdown engaged.');
 			const text = texts[Math.floor(Math.random() * texts.length)];
 			await msg.say(text);

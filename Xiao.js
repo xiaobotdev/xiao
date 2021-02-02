@@ -92,12 +92,25 @@ client.on('ready', async () => {
 		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
 	}
 
-	// Export command-leaderboard.json every 30 minutes
+	// Export command-last-run.json
+	try {
+		const results = client.importLastRun();
+		if (!results) client.logger.error('[LASTRUN] command-last-run.json is not formatted correctly.');
+	} catch (err) {
+		client.logger.error(`[LASTRUN] Could not parse command-last-run.json:\n${err.stack}`);
+	}
+
+	// Export command-leaderboard.json and command-last-run.json every 30 minutes
 	client.setInterval(() => {
 		try {
 			client.exportCommandLeaderboard();
 		} catch (err) {
 			client.logger.error(`[LEADERBOARD] Failed to export command-leaderboard.json:\n${err.stack}`);
+		}
+		try {
+			client.exportLastRun();
+		} catch (err) {
+			client.logger.error(`[LASTRUN] Failed to export command-last-run.json:\n${err.stack}`);
 		}
 	}, 1.8e+6);
 });
@@ -178,6 +191,7 @@ client.on('guildMemberRemove', async member => {
 client.on('disconnect', event => {
 	client.logger.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	client.exportCommandLeaderboard();
+	client.exportLastRun();
 	process.exit(0);
 });
 

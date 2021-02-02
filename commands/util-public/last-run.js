@@ -22,7 +22,7 @@ module.exports = class LastRunCommand extends Command {
 
 	run(msg, { command }) {
 		if (command.lastRun === undefined) return msg.reply('That command\'s usage stats aren\'t being tracked.');
-		if (!command.lastRun) return msg.reply(`The \`${command.name}\` command has not been run since last reboot.`);
+		if (!command.lastRun) return msg.reply(`The \`${command.name}\` command has never been run.`);
 		const displayTime = moment.utc(command.lastRun).format('MM/DD/YYYY h:mm A');
 		return msg.say(`The \`${command.name}\` command was last run on **${displayTime}**.`);
 	}
