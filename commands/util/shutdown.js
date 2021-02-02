@@ -49,6 +49,7 @@ module.exports = class ShutdownCommand extends Command {
 		}
 		try {
 			this.uses++;
+			this.lastRun = new Date();
 			this.client.exportCommandLeaderboard();
 			this.client.exportLastRun();
 			this.client.logger.info('[SHUTDOWN] Manual shutdown engaged.');
