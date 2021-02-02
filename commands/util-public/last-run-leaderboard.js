@@ -34,6 +34,8 @@ module.exports = class LastRunLeaderboardCommand extends Command {
 		return msg.say(stripIndents`
 			__**Command Last Run Leaderboard (Page ${page}/${totalPages}):**__
 			${this.makeLeaderboard(commands, page).join('\n')}
+
+			_Current Time: ${moment.utc().format('MM/DD/YYYY h:mm A')}_
 		`);
 	}
 
