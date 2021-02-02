@@ -101,7 +101,7 @@ don't grant that permission.
 ## Fun Information
 
 - 500+ commands
-- 34,000+ lines of JavaScript
+- 35,000+ lines of JavaScript
 - 65,000+ lines of JSON data
 - 4 years of development
 
@@ -261,7 +261,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 588
+Total: 593
 
 ### Utility:
 
@@ -275,6 +275,8 @@ Total: 588
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
 * **join:** Joins your voice channel.
+* **last-run-leaderboard:** Responds with the bot's most recently run commands.
+* **last-run:** Responds with a command's most recent run date.
 * **leave:** Leaves the current voice channel.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
@@ -285,6 +287,8 @@ Total: 588
 ### Utility (Owner):
 
 * **eval:** Executes JavaScript code. (Owner-Only)
+* **command-last-run-export:** Exports a command last run JSON file. (Owner-Only)
+* **command-last-run-import:** Imports a command last run JSON file. (Owner-Only)
 * **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
 * **command-leaderboard-import:** Imports a command leaderboard JSON file. (Owner-Only)
 * **dependency-update:** Checks for dependency updates. (Owner-Only)
@@ -590,6 +594,7 @@ Total: 588
 * **math-quiz:** See how fast you can answer a math problem in a given time limit.
 * **memory:** Test your memory.
 * **minesweeper:** Play a game of Minesweeper.
+* **pokemon-advantage:** Guess which Pokémon has the type advantage.
 * **quiz:** Answer a quiz question.
 * **reaction-time:** Test your reaction time.
 * **rock-paper-scissors:** Play Rock-Paper-Scissors.
@@ -1094,6 +1099,7 @@ here.
 - [Currituck County](https://co.currituck.nc.us/)
 	* car-race ([Fireworks Image](https://co.currituck.nc.us/fireworks/))
 - [DaFont](https://www.dafont.com/)
+	* pokemon-advantage ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
 	* whos-that-pokemon ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
 	* whos-that-pokemon-cry ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
 - [Dale Earnhardt Jr.](https://www.dalejr.com/)
@@ -1654,6 +1660,7 @@ here.
 	* pokedex-move (API)
 	* pokedex-moveset (API)
 	* pokedex-stats (API)
+	* pokemon-advantage (API)
 	* smogon (API)
 	* whos-that-pokemon (API)
 	* whos-that-pokemon-cry (API)
@@ -1671,6 +1678,7 @@ here.
 	* pokedex-move (Original Game)
 	* pokedex-moveset (Images, Original Game)
 	* pokedex-stats (Images, Original Game)
+	* pokemon-advantage (Images, Original Game)
 	* pokemon-fusion (Original Game)
 	* smogon (Images, Original Game)
 	* whos-that-pokemon (Images, Original Game)
@@ -1758,6 +1766,7 @@ here.
 	* pokedex-location (Images)
 	* pokedex-moveset (Images)
 	* pokedex-stats (Images)
+	* pokemon-advantage (Images)
 	* smogon (Images)
 	* whos-that-pokemon (Images)
 	* whos-that-pokemon-cry (Images)
@@ -1772,6 +1781,8 @@ here.
 	* shields-io-badge (API)
 - [Shrick](https://www.deviantart.com/shrick)
 	* brony-speak ([English-to-Brony Dictionary Data](https://www.deviantart.com/shrick/art/Brony-dictionary-version-2-207157029))
+- [Shutterstock](https://www.shutterstock.com/)
+	* pokemon-advantage ([Background Image](https://www.shutterstock.com/video/search/anime-zoom))
 - [Sigmath Bits](https://fontstruct.com/fontstructors/1280718/sigmath6)
 	* undertale ([Pixelated Wingdings Font](https://fontstruct.com/fontstructions/show/1218140/pixelated-wingdings))
 - [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj)
@@ -1921,6 +1932,8 @@ here.
 - [UNDERTALE](https://undertale.com/)
 	* temmie (Original Game)
 	* undertale (Original Game)
+- [United States Judo Federation](https://www.usjf.com/)
+	* pokemon-advantage ([Stars Image](https://www.usjf.com/2019/11/five-star-dojo-program/))
 - [Unsplash](https://unsplash.com/)
 	* stock-photo ([API](https://unsplash.com/developers))
 - [Urban Dictionary](https://www.urbandictionary.com/)
@@ -1950,6 +1963,8 @@ here.
 	* this-guy ([Image, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
 - [Wattpad](https://www.wattpad.com/)
 	* wattpad ([API](https://www.wattpad.com/developer/docs/api))
+- [wavebeem](https://github.com/wavebeem)
+	* pokemon-advantage ([Type Advantage Data](https://github.com/wavebeem/pkmn.help/blob/master/src/data.ts))
 - [WebStockReview](https://webstockreview.net/)
 	* hat ([Devil Hat Image](https://webstockreview.net/explore/horn-clipart-purple-devil/))
 - [Why We Protest](https://whyweprotest.net/)
