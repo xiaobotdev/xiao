@@ -44,13 +44,13 @@ module.exports = class LastRunLeaderboardCommand extends Command {
 		return commands
 			.sort((a, b) => a.lastRun ? b.lastRun - a.lastRun : 1)
 			.map(command => {
-				if (previousPts === command.lastRun.toISOString()) {
+				if (previousPts === command.lastRun || previousPts === command.lastRun.toISOString()) {
 					positionsMoved++;
 				} else {
 					i += positionsMoved;
 					positionsMoved = 1;
 				}
-				previousPts = command.lastRun.toISOString();
+				previousPts = command.lastRun ? command.lastRun.toISOString() : null;
 				const displayTime = command.lastRun ? moment.utc(command.lastRun).format('MM/DD/YYYY h:mm A') : null;
 				return `**${i}.** ${command.name} (${displayTime || 'Never'})`;
 			})
