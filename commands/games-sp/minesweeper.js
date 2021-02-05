@@ -5,7 +5,7 @@ require('moment-duration-format');
 const { stripIndents } = require('common-tags');
 const { removeFromArray, verify, fetchHSUserDisplay } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
-const turnRegex = /^(flag )?(\d+)(\-\d+)?, ?(\d+)(\-\d+)?/i;
+const turnRegex = /^(flag )?(\d+)(-\d+)?, ?(\d+)(-\d+)?/i;
 
 module.exports = class MinesweeperCommand extends Command {
 	constructor(client) {
@@ -95,6 +95,7 @@ module.exports = class MinesweeperCommand extends Command {
 					await msg.say('You cannot flag a range.');
 					continue;
 				}
+				// eslint-disable max-depth
 				if (xRange) {
 					for (let i = x; i <= xRange; i++) {
 						if (flag) {
@@ -139,27 +140,26 @@ module.exports = class MinesweeperCommand extends Command {
 						}
 						if (win === true || win === false) break;
 					}
-				} else {
-					if (flag) {
-						if (flagged.includes(`${x - 1},${y - 1}`)) {
-							removeFromArray(flagged, `${x - 1},${y - 1}`);
-						} else {
-							flagged.push(`${x - 1},${y - 1}`);
-						}
+				} else if (flag) {
+					if (flagged.includes(`${x - 1},${y - 1}`)) {
+						removeFromArray(flagged, `${x - 1},${y - 1}`);
 					} else {
-						if (flagged.includes(`${x - 1},${y - 1}`)) {
-							await msg.say('Are you sure you want to check this spot? You have it flagged.');
-							const verification = await verify(msg.channel, msg.author);
-							if (!verification) {
-								await msg.say('Okay, the spot will remain unchecked.');
-								continue;
-							}
-						}
-						game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
-						if (win === true || win === false) break;
+						flagged.push(`${x - 1},${y - 1}`);
 					}
+				} else {
+					if (flagged.includes(`${x - 1},${y - 1}`)) {
+						await msg.say('Are you sure you want to check this spot? You have it flagged.');
+						const verification = await verify(msg.channel, msg.author);
+						if (!verification) {
+							await msg.say('Okay, the spot will remain unchecked.');
+							continue;
+						}
+					}
+					game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
+					if (win === true || win === false) break;
 				}
 			}
+			// eslint-enable max-depth
 			const newScore = Date.now() - startTime;
 			const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
