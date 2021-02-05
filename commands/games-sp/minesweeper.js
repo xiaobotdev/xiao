@@ -96,7 +96,7 @@ module.exports = class MinesweeperCommand extends Command {
 					continue;
 				}
 				if (xRange) {
-					for (let i = x; i < xRange; i++) {
+					for (let i = x; i <= xRange; i++) {
 						if (flag) {
 							if (flagged.includes(`${i - 1},${y - 1}`)) {
 								removeFromArray(flagged, `${i - 1},${y - 1}`);
@@ -118,7 +118,7 @@ module.exports = class MinesweeperCommand extends Command {
 						if (win === true || win === false) break;
 					}
 				} else if (yRange) {
-					for (let i = y; i < yRange; i++) {
+					for (let i = y; i <= yRange; i++) {
 						if (flag) {
 							if (flagged.includes(`${x - 1},${i - 1}`)) {
 								removeFromArray(flagged, `${x - 1},${i - 1}`);
