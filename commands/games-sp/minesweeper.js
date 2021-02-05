@@ -95,7 +95,7 @@ module.exports = class MinesweeperCommand extends Command {
 					await msg.say('You cannot flag a range.');
 					continue;
 				}
-				// eslint-disable max-depth
+				/* eslint-disable max-depth */
 				if (xRange) {
 					for (let i = x; i <= xRange; i++) {
 						if (flag) {
@@ -159,7 +159,7 @@ module.exports = class MinesweeperCommand extends Command {
 					if (win === true || win === false) break;
 				}
 			}
-			// eslint-enable max-depth
+			/* eslint-enable max-depth */
 			const newScore = Date.now() - startTime;
 			const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
