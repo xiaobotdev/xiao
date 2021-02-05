@@ -5,7 +5,7 @@ require('moment-duration-format');
 const { stripIndents } = require('common-tags');
 const { removeFromArray, verify, fetchHSUserDisplay } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
-const turnRegex = /^(flag )?(\d+), ?(\d+)/i;
+const turnRegex = /^(flag )?(\d+)(\-\d+)?, ?(\d+)(\-\d+)?/i;
 
 module.exports = class MinesweeperCommand extends Command {
 	constructor(client) {
@@ -58,7 +58,7 @@ module.exports = class MinesweeperCommand extends Command {
 					const coordPicked = pick.match(turnRegex);
 					if (!coordPicked) return false;
 					const x = Number.parseInt(coordPicked[2], 10);
-					const y = Number.parseInt(coordPicked[3], 10);
+					const y = Number.parseInt(coordPicked[4], 10);
 					if (x > size || y > size || x < 1 || y < 1) return false;
 					if (game.mask[y - 1][x - 1]) return false;
 					return true;
@@ -83,25 +83,81 @@ module.exports = class MinesweeperCommand extends Command {
 				}
 				const coordPicked = choice.match(turnRegex);
 				const x = Number.parseInt(coordPicked[2], 10);
-				const y = Number.parseInt(coordPicked[3], 10);
+				const y = Number.parseInt(coordPicked[4], 10);
+				const xRange = coordPicked[3] ? Math.abs(Number.parseInt(coordPicked[3], 10)) : null;
+				const yRange = coordPicked[5] ? Math.abs(Number.parseInt(coordPicked[5], 10)) : null;
 				const flag = Boolean(coordPicked[1]);
-				if (flag) {
-					if (flagged.includes(`${x - 1},${y - 1}`)) {
-						removeFromArray(flagged, `${x - 1},${y - 1}`);
-					} else {
-						flagged.push(`${x - 1},${y - 1}`);
+				if (xRange && yRange) {
+					await msg.say('You cannot have both an X and Y range.');
+					continue;
+				}
+				if ((yRange && flag) || (xRange && flag)) {
+					await msg.say('You cannot flag a range.');
+					continue;
+				}
+				if (xRange) {
+					for (let i = x; i < xRange; i++) {
+						if (flag) {
+							if (flagged.includes(`${i - 1},${y - 1}`)) {
+								removeFromArray(flagged, `${i - 1},${y - 1}`);
+							} else {
+								flagged.push(`${i - 1},${y - 1}`);
+							}
+						} else {
+							if (flagged.includes(`${i - 1},${y - 1}`)) {
+								await msg.say(`Are you sure you want to check (${x - 1}, ${y - 1})? You have it flagged.`);
+								const verification = await verify(msg.channel, msg.author);
+								if (!verification) {
+									await msg.say('Okay, the spot will remain unchecked.');
+									continue;
+								}
+							}
+							game.CheckCell(i - 1, y - 1); // eslint-disable-line new-cap
+							if (win === true || win === false) break;
+						}
+						if (win === true || win === false) break;
+					}
+				} else if (yRange) {
+					for (let i = y; i < yRange; i++) {
+						if (flag) {
+							if (flagged.includes(`${x - 1},${i - 1}`)) {
+								removeFromArray(flagged, `${x - 1},${i - 1}`);
+							} else {
+								flagged.push(`${x - 1},${i - 1}`);
+							}
+						} else {
+							if (flagged.includes(`${x - 1},${i - 1}`)) {
+								await msg.say(`Are you sure you want to check (${x - 1}, ${y - 1})? You have it flagged.`);
+								const verification = await verify(msg.channel, msg.author);
+								if (!verification) {
+									await msg.say('Okay, the spot will remain unchecked.');
+									continue;
+								}
+							}
+							game.CheckCell(x - 1, i - 1); // eslint-disable-line new-cap
+							if (win === true || win === false) break;
+						}
+						if (win === true || win === false) break;
 					}
 				} else {
-					if (flagged.includes(`${x - 1},${y - 1}`)) {
-						await msg.say('Are you sure you want to check this spot? You have it flagged.');
-						const verification = await verify(msg.channel, msg.author);
-						if (!verification) {
-							await msg.say('Okay, the spot will remain unchecked.');
-							continue;
+					if (flag) {
+						if (flagged.includes(`${x - 1},${y - 1}`)) {
+							removeFromArray(flagged, `${x - 1},${y - 1}`);
+						} else {
+							flagged.push(`${x - 1},${y - 1}`);
 						}
+					} else {
+						if (flagged.includes(`${x - 1},${y - 1}`)) {
+							await msg.say('Are you sure you want to check this spot? You have it flagged.');
+							const verification = await verify(msg.channel, msg.author);
+							if (!verification) {
+								await msg.say('Okay, the spot will remain unchecked.');
+								continue;
+							}
+						}
+						game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
+						if (win === true || win === false) break;
 					}
-					game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
-					if (win === true || win === false) break;
 				}
 			}
 			const newScore = Date.now() - startTime;
