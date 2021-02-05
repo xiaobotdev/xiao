@@ -46,6 +46,7 @@ module.exports = class MinesweeperCommand extends Command {
 				await msg.say(stripIndents`
 					${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forfeit.
 					Type \`flag <coordinates>\` to flag a spot as a bomb. To remove a flag, run it again.
+					You can also use ranges to mark multiple spots (ex. 4-7,5 or 7,4-5).
 
 					${this.displayBoard(game.board, game.mask, flagged, cheatMode)}
 					**Total Mines:** ${size + 1} | **Flagged:** ${flagged.length} | **Time:** ${currentTime}
