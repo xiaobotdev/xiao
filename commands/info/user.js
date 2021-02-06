@@ -23,7 +23,7 @@ module.exports = class UserCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'user',
-			aliases: ['user-info', 'member', 'member-info', 'profile'],
+			aliases: ['user-info', 'member', 'member-info', 'profile', 'who-is', 'who'],
 			group: 'info',
 			memberName: 'user',
 			description: 'Responds with detailed information on a user.',
