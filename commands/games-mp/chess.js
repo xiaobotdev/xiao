@@ -42,8 +42,7 @@ module.exports = class ChessCommand extends Command {
 					prompt: 'How long should the chess timers be set for (in minutes)? Use 0 for infinite.',
 					type: 'integer',
 					max: 120,
-					min: 0,
-					default: 15
+					min: 0
 				},
 				{
 					key: 'fen',
