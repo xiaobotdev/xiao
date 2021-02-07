@@ -22,11 +22,6 @@ module.exports = class YouDiedCommand extends Command {
 					name: 'FromSoftware',
 					url: 'https://www.fromsoftware.jp/ww/',
 					reason: 'Image, Original "Dark Souls" Game'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

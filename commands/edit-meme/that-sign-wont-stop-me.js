@@ -29,11 +29,6 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 					url: 'https://missymeyer.com/',
 					reason: 'Tragic Marker Font',
 					reasonURL: 'https://missymeyer.com/tragic-marker-free-font'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

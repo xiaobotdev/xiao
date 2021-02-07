@@ -19,11 +19,6 @@ module.exports = class AlertCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
-				},
-				{
 					name: 'Apple',
 					url: 'https://www.apple.com/',
 					reason: 'San Francisco Font',

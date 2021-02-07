@@ -26,7 +26,7 @@ module.exports = class BeautifulCommand extends Command {
 				{
 					name: 'Tatsumaki',
 					url: 'https://tatsumaki.xyz/',
-					reason: 'Image, Concept'
+					reason: 'Image'
 				}
 			],
 			args: [

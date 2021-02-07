@@ -20,11 +20,6 @@ module.exports = class PogchampCommand extends Command {
 					name: 'Ryan Gutierrez',
 					url: 'https://twitter.com/gootecks',
 					reason: 'Image'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

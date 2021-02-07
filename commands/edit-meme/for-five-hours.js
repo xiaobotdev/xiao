@@ -22,11 +22,6 @@ module.exports = class ForFiveHoursCommand extends Command {
 					url: 'https://www.nbc.com/',
 					reason: 'Image, Original "The Office" TV Series',
 					reasonURL: 'https://www.nbc.com/the-office'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

@@ -18,11 +18,6 @@ module.exports = class HandsCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
-				},
-				{
 					name: 'Know Your Meme',
 					url: 'https://knowyourmeme.com/',
 					reason: 'Image',

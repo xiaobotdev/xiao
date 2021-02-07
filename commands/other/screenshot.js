@@ -18,11 +18,6 @@ module.exports = class ScreenshotCommand extends Command {
 					reason: 'API'
 				},
 				{
-					name: 'AzuraApple',
-					url: 'https://github.com/AzuraApple',
-					reason: 'Concept'
-				},
-				{
 					name: 'Block List Project',
 					url: 'https://blocklist.site/',
 					reason: 'NSFW Site List',

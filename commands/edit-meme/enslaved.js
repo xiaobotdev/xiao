@@ -26,11 +26,6 @@ module.exports = class EnslavedCommand extends Command {
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
 					reasonURL: 'https://www.google.com/get/noto/'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

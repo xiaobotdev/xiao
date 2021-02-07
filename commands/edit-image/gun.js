@@ -17,11 +17,6 @@ module.exports = class GunCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
-				},
-				{
 					name: 'Luxoflux',
 					url: 'http://www.luxoflux.com/',
 					reason: 'Image',
