@@ -183,7 +183,7 @@ module.exports = class ChessCommand extends Command {
 					game.move(choice[0], choice[1]);
 					const finalRow = gameState.turn === 'black' ? '8' : '1';
 					if (gameState.pieces[choice[1]].toUpperCase() === 'P' && choice[1].endsWith(finalRow)) {
-						game.board.configuation.pieces[choice[1]] = gameState.turn = 'black'
+						game.board.configuration.pieces[choice[1]] = gameState.turn = 'black'
 							? choice[2]
 							: choice[2].toLowerCase()
 					}
