@@ -174,6 +174,7 @@ module.exports = class ChessCommand extends Command {
 					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
 					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
 					const choice = this.parseSAN(gameState, moves, turn.first().content.toUpperCase().match(turnRegex));
+					console.log(choice);
 					game.move(choice[0], choice[1]);
 					if (gameState.pieces[choice[0]].toUpperCase() === 'P') {
 						fiftyRuleMove = 0;
