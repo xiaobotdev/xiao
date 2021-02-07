@@ -7,7 +7,7 @@ const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
 const { centerImagePart } = require('../../util/Canvas');
 const { FAILURE_EMOJI_ID } = process.env;
-const turnRegex = /^((?:[A-H][1-8])|(?:[PKRQBN]))?([A-H])?(?: |, ?|-?>?)?([A-H][1-8])$/;
+const turnRegex = /^((?:[A-H][1-8])|(?:[PKRQBNX]))?([A-H])?(?: |, ?|-?>?)?([A-H][1-8])$/;
 const pieces = ['pawn', 'rook', 'knight', 'king', 'queen', 'bishop'];
 const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -208,8 +208,9 @@ module.exports = class ChessCommand extends Command {
 		const initial = move[1] || 'P';
 		if (gameState.pieces[initial]) return [initial, move[3]];
 		const possiblePieces = Object.keys(gameState.pieces).filter(piece => {
-			if (gameState.pieces[piece] !== initial) return false;
-			if (move[2] && !piece.startsWith(move[2])) return false;
+			if (this.pickImage(gameState.pieces[piece]).color !== gameState.turn) return false;
+			if (gameState.pieces[piece].toUpperCase() !== initial) return false;
+			if (move[2] && move[2] !== 'X' && !piece.startsWith(move[2])) return false;
 			if (!moves[piece]) return false;
 			return moves[piece].includes(move[3]);
 		});
