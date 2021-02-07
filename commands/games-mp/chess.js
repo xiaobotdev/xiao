@@ -204,12 +204,16 @@ module.exports = class ChessCommand extends Command {
 				const img = this.images[parsed.color][parsed.name];
 				const { x, y, width, height } = centerImagePart(img, 61, 61, w, h);
 				if (prevPieces && (!prevGamePiece || piece !== prevGamePiece)) {
-					drawImageWithTint(ctx, img, 'green', x, y, width, height);
+					ctx.fillStyle = 'yellow';
+					ctx.globalAlpha = 0.5;
+					ctx.fillRect(w, h, 61, 61);
+					ctx.globalAlpha = 1;
+					ctx.drawImage(img, x, y, width, height);
 				} else {
 					ctx.drawImage(img, x, y, width, height);
 				}
 			} else if (prevGamePiece) {
-				ctx.fillStyle = 'green';
+				ctx.fillStyle = 'yellow';
 				ctx.globalAlpha = 0.5;
 				ctx.fillRect(w, h, 61, 61);
 				ctx.globalAlpha = 1;
