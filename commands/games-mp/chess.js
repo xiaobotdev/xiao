@@ -5,7 +5,7 @@ const moment = require('moment');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
-const { drawImageWithTint } = require('../../util/Canvas');
+const { drawImageWithTint, centerImagePart } = require('../../util/Canvas');
 const { FAILURE_EMOJI_ID } = process.env;
 const turnRegex = /^([A-H][1-8])(?: |, ?|-?>?)?([A-H][1-8])$/;
 const pieces = ['pawn', 'rook', 'knight', 'king', 'queen', 'bishop'];
@@ -25,10 +25,9 @@ module.exports = class ChessCommand extends Command {
 					reason: 'Piece Images'
 				},
 				{
-					name: 'Wikimedia Commons',
-					url: 'https://commons.wikimedia.org/wiki/Main_Page',
-					reason: 'Board Image',
-					reasonURL: 'https://commons.wikimedia.org/wiki/File:Chess_board_blank.svg'
+					name: 'Chess.com',
+					url: 'https://www.chess.com/',
+					reason: 'Board Image'
 				}
 			],
 			args: [
@@ -193,8 +192,8 @@ module.exports = class ChessCommand extends Command {
 		const canvas = createCanvas(this.images.board.width, this.images.board.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(this.images.board, 0, 0);
-		let w = 36;
-		let h = 40;
+		let w = 2;
+		let h = 3;
 		let row = 8;
 		let col = 0;
 		for (let i = 0; i < 64; i++) {
@@ -202,23 +201,25 @@ module.exports = class ChessCommand extends Command {
 			const prevGamePiece = prevPieces ? prevPieces[`${cols[col]}${row}`] : null;
 			if (piece) {
 				const parsed = this.pickImage(piece);
+				const img = this.images[parsed.color][parsed.name];
+				const { x, y, width, height } = centerImagePart(img, 61, 61, w, h);
 				if (prevPieces && (!prevGamePiece || piece !== prevGamePiece)) {
-					drawImageWithTint(ctx, this.images[parsed.color][parsed.name], 'green', w, h, 52, 52);
+					drawImageWithTint(ctx, img, 'green', x, y, width, height);
 				} else {
-					ctx.drawImage(this.images[parsed.color][parsed.name], w, h, 52, 52);
+					ctx.drawImage(img, x, y, width, height);
 				}
 			} else if (prevGamePiece) {
 				ctx.fillStyle = 'green';
 				ctx.globalAlpha = 0.5;
-				ctx.fillRect(w, h, 52, 52);
+				ctx.fillRect(w, h, 61, 61);
 				ctx.globalAlpha = 1;
 			}
-			w += 52 + 2;
+			w += 61 + 1;
 			col += 1;
 			if (col % 8 === 0 && col !== 0) {
-				w = 36;
+				w = 2;
 				col = 0;
-				h += 52 + 2;
+				h += 61 + 1;
 				row -= 1;
 			}
 		}
