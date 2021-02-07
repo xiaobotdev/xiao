@@ -202,11 +202,11 @@ module.exports = class ChessCommand extends Command {
 			if (piece) {
 				const parsed = this.pickImage(piece);
 				const img = this.images[parsed.color][parsed.name];
-				const { x, y, width, height } = centerImagePart(img, 61, 61, w, h);
+				const { x, y, width, height } = centerImagePart(img, 62, 62, w, h);
 				if (prevPieces && (!prevGamePiece || piece !== prevGamePiece)) {
 					ctx.fillStyle = 'yellow';
 					ctx.globalAlpha = 0.5;
-					ctx.fillRect(w, h, 61, 61);
+					ctx.fillRect(w, h, 62, 62);
 					ctx.globalAlpha = 1;
 					ctx.drawImage(img, x, y, width, height);
 				} else {
@@ -215,15 +215,15 @@ module.exports = class ChessCommand extends Command {
 			} else if (prevGamePiece) {
 				ctx.fillStyle = 'yellow';
 				ctx.globalAlpha = 0.5;
-				ctx.fillRect(w, h, 61, 61);
+				ctx.fillRect(w, h, 62, 62);
 				ctx.globalAlpha = 1;
 			}
-			w += 61 + 1;
+			w += 62;
 			col += 1;
 			if (col % 8 === 0 && col !== 0) {
 				w = 2;
 				col = 0;
-				h += 61 + 1;
+				h += 62;
 				row -= 1;
 			}
 		}
