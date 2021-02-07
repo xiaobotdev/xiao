@@ -274,7 +274,13 @@ module.exports = class ChessCommand extends Command {
 				const parsed = this.pickImage(piece);
 				const img = this.images[parsed.color][parsed.name];
 				const { x, y, width, height } = centerImagePart(img, 62, 62, w, h);
-				if (prevPieces && (!prevGamePiece || piece !== prevGamePiece)) {
+				if ((gameState.check || gameState.checkMate) && piece.toUpperCase() === 'K') {
+					ctx.fillStyle = 'red';
+					ctx.globalAlpha = 0.5;
+					ctx.fillRect(w, h, 62, 62);
+					ctx.globalAlpha = 1;
+					ctx.drawImage(img, x, y, width, height);
+				} else if (prevPieces && (!prevGamePiece || piece !== prevGamePiece)) {
 					ctx.fillStyle = 'yellow';
 					ctx.globalAlpha = 0.5;
 					ctx.fillRect(w, h, 62, 62);
