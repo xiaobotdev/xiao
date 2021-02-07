@@ -193,8 +193,8 @@ module.exports = class ChessCommand extends Command {
 						fiftyRuleMove++;
 					}
 					game.move(choice[0], choice[1]);
-					if (pawnMoved && choice[1].endsWith(gameState.turn === 'black' ? '8' : '1')) {
-						game.board.configuration.pieces[choice[1]] = gameState.turn = 'black'
+					if (pawnMoved && choice[1].endsWith(gameState.turn === 'white' ? '8' : '1')) {
+						game.board.configuration.pieces[choice[1]] = gameState.turn === 'white'
 							? choice[2]
 							: choice[2].toLowerCase()
 					}
