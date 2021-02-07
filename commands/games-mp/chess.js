@@ -181,6 +181,12 @@ module.exports = class ChessCommand extends Command {
 						fiftyRuleMove++;
 					}
 					game.move(choice[0], choice[1]);
+					const finalRow = gameState.turn === 'black' ? '8' : '1';
+					if (gameState.pieces[choice[1]].toUpperCase() === 'P' && choice[1].endsWith(finalRow)) {
+						game.board.configuation.pieces[choice[1]] = gameState.turn = 'black'
+							? choice[2]
+							: choice[2].toLowerCase()
+					}
 					if (!Object.keys(game.moves()).length) stalemate = true;
 				}
 			}
@@ -211,15 +217,17 @@ module.exports = class ChessCommand extends Command {
 	parseSAN(gameState, moves, move) {
 		if (!move || !move[3]) return null;
 		const initial = move[1] || 'P';
-		if (gameState.pieces[initial]) return [initial, move[3]];
+		if (gameState.pieces[initial]) return [initial, move[3], move[4] || 'Q'];
 		const possiblePieces = Object.keys(gameState.pieces).filter(piece => {
 			if (this.pickImage(gameState.pieces[piece]).color !== gameState.turn) return false;
 			if (gameState.pieces[piece].toUpperCase() !== initial) return false;
 			if (move[2] && move[2] !== 'X' && !piece.startsWith(move[2])) return false;
+			if (move[4] && !piece.endsWith(gameState.turn === 'black' ? '2' : '7')) return false;
+			if (move[4] && gameState.pieces[piece].toUpperCase() !== 'P') return false;
 			if (!moves[piece]) return false;
 			return moves[piece].includes(move[3]);
 		});
-		if (possiblePieces.length === 1) return [possiblePieces[0], move[3]];
+		if (possiblePieces.length === 1) return [possiblePieces[0], move[3], move[4] || 'Q'];
 		return null;
 	}
 
