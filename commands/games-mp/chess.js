@@ -274,7 +274,7 @@ module.exports = class ChessCommand extends Command {
 				const parsed = this.pickImage(piece);
 				const img = this.images[parsed.color][parsed.name];
 				const { x, y, width, height } = centerImagePart(img, 62, 62, w, h);
-				if ((gameState.check || gameState.checkMate) && piece === gameState.turn === 'white' ? 'K' : 'k') {
+				if ((gameState.check || gameState.checkMate) && piece === (gameState.turn === 'white' ? 'K' : 'k')) {
 					ctx.fillStyle = 'red';
 					ctx.globalAlpha = 0.5;
 					ctx.fillRect(w, h, 62, 62);
