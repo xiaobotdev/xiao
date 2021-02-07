@@ -118,9 +118,9 @@ module.exports = class ChessCommand extends Command {
 					const displayTime = userTime === Infinity ? 'Infinite' : moment.duration(userTime).format();
 					await msg.say(stripIndents`
 						${user}, what move do you want to make (ex. A1A2 or NC3)? Type \`end\` to forfeit.
-						You can save your game by typing \`save\`.
-						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
+						You can save your game by typing \`save\`. Can't think of a move? Use \`play for me\`.
 
+						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 						**Time Remaining: ${displayTime}** (Max 10min per turn)
 					`, { files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }] });
 					prevPieces = Object.assign({}, game.exportJson().pieces);
@@ -130,6 +130,7 @@ module.exports = class ChessCommand extends Command {
 						const choice = res.content.toUpperCase();
 						if (choice === 'END') return true;
 						if (choice === 'SAVE') return true;
+						if (choice === 'PLAY FOR ME') return true;
 						if (res.author.id !== user.id) return false;
 						const move = choice.match(turnRegex);
 						if (!move) return false;
@@ -177,17 +178,21 @@ module.exports = class ChessCommand extends Command {
 						saved = true;
 						break;
 					}
+					if (turn.first().content.toLowerCase() === 'play for me') {
+						game.aiMove(1);
+					} else {
+						const choice = this.parseSAN(gameState, moves, turn.first().content.toUpperCase().match(turnRegex));
+						const pawnMoved = gameState.pieces[choice[0]].toUpperCase() === 'P';
+						game.move(choice[0], choice[1]);
+						if (pawnMoved && choice[1].endsWith(gameState.turn === 'white' ? '8' : '1')) {
+							game.board.configuration.pieces[choice[1]] = gameState.turn === 'white'
+								? choice[2]
+								: choice[2].toLowerCase();
+						}
+					}
 					const timeTaken = new Date() - now;
 					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
 					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
-					const choice = this.parseSAN(gameState, moves, turn.first().content.toUpperCase().match(turnRegex));
-					const pawnMoved = gameState.pieces[choice[0]].toUpperCase() === 'P';
-					game.move(choice[0], choice[1]);
-					if (pawnMoved && choice[1].endsWith(gameState.turn === 'white' ? '8' : '1')) {
-						game.board.configuration.pieces[choice[1]] = gameState.turn === 'white'
-							? choice[2]
-							: choice[2].toLowerCase();
-					}
 				}
 			}
 			this.client.games.delete(msg.channel.id);
