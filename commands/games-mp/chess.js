@@ -179,7 +179,7 @@ module.exports = class ChessCommand extends Command {
 						break;
 					}
 					if (turn.first().content.toLowerCase() === 'play for me') {
-						game.aiMove(1);
+						game.aiMove(0);
 					} else {
 						const choice = this.parseSAN(gameState, moves, turn.first().content.toUpperCase().match(turnRegex));
 						const pawnMoved = gameState.pieces[choice[0]].toUpperCase() === 'P';
