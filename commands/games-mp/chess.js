@@ -196,7 +196,7 @@ module.exports = class ChessCommand extends Command {
 					if (pawnMoved && choice[1].endsWith(gameState.turn === 'white' ? '8' : '1')) {
 						game.board.configuration.pieces[choice[1]] = gameState.turn === 'white'
 							? choice[2]
-							: choice[2].toLowerCase()
+							: choice[2].toLowerCase();
 					}
 					if (!Object.keys(game.moves()).length) stalemate = true;
 				}
@@ -212,9 +212,11 @@ module.exports = class ChessCommand extends Command {
 			if (fiftyRuleMove > 50) return msg.say('Due to the fifty move rule, this game is a draw.');
 			const gameState = game.exportJson();
 			const winner = gameState.turn === 'black' ? whitePlayer : blackPlayer;
-			if (stalemate) return msg.say('Stalemate! This game is a draw.', {
-				files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
-			});
+			if (stalemate) {
+				return msg.say('Stalemate! This game is a draw.', {
+					files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
+				});
+			}
 			if (!gameState.checkMate) return msg.say('Game ended due to forfeit.');
 			return msg.say(`Checkmate! Congrats, ${winner}!`, {
 				files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
