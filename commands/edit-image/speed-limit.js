@@ -28,11 +28,6 @@ module.exports = class SpeedLimitCommand extends Command {
 					url: 'https://www.dafont.com/ashpikachu099.d2541',
 					reason: 'Highway Gothic Font',
 					reasonURL: 'https://www.dafont.com/highway-gothic.font'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

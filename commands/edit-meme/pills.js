@@ -21,11 +21,6 @@ module.exports = class PillsCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
-				},
-				{
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',

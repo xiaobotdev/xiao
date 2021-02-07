@@ -27,11 +27,6 @@ module.exports = class SpidermanPointingCommand extends Command {
 					reasonURL: 'https://spiderman.marvelhq.com/'
 				},
 				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
-				},
-				{
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',

@@ -23,11 +23,6 @@ module.exports = class UltimateTattooCommand extends Command {
 					url: 'http://deathbulge.com/comics',
 					reason: 'Image',
 					reasonURL: 'http://deathbulge.com/comics/114'
-				},
-				{
-					name: 'YorkAARGH',
-					url: 'https://github.com/YorkAARGH',
-					reason: 'Concept'
 				}
 			],
 			args: [

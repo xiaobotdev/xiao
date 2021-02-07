@@ -31,11 +31,6 @@ module.exports = class SonicSaysCommand extends Command {
 					url: 'https://www.sega.com/',
 					reason: 'Image, Original "Sonic the Hedgehog" Game',
 					reasonURL: 'https://www.sonicthehedgehog.com/'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

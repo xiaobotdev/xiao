@@ -22,11 +22,6 @@ module.exports = class WorseThanHitlerCommand extends Command {
 					url: 'https://www.foxmovies.com/',
 					reason: 'Image, Original "Family Guy" Show',
 					reasonURL: 'https://www.fox.com/family-guy/'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

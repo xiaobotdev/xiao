@@ -22,11 +22,6 @@ module.exports = class DislikeCommand extends Command {
 					url: 'https://bethesda.net/en/dashboard',
 					reason: 'Image, Original "Fallout" Game',
 					reasonURL: 'https://fallout.bethesda.net/en/'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

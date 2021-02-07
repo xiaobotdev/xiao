@@ -18,11 +18,6 @@ module.exports = class SimpCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
-				},
-				{
 					name: 'World of Tanks',
 					url: 'https://worldoftanks.com/',
 					reason: 'Image',

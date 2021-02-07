@@ -26,11 +26,6 @@ module.exports = class GandhiQuoteCommand extends Command {
 					url: 'https://www.fontsquirrel.com/fonts/list/foundry/gust-e-foundry',
 					reason: 'Latin Modern Roman Font',
 					reasonURL: 'https://www.fontsquirrel.com/fonts/Latin-Modern-Roman'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

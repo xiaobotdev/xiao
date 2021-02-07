@@ -23,11 +23,6 @@ module.exports = class IFearNoManCommand extends Command {
 					url: 'https://www.valvesoftware.com/en/',
 					reasonURL: 'https://www.teamfortress.com/',
 					reason: 'Image, Original "Team Fortress 2" Game'
-				},
-				{
-					name: '0vertime-dev',
-					url: 'https://github.com/0vertime-dev',
-					reason: 'Concept'
 				}
 			],
 			args: [

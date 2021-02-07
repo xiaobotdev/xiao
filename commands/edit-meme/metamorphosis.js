@@ -28,11 +28,6 @@ module.exports = class MetamorphosisCommand extends Command {
 					reasonURL: 'https://www.google.com/get/noto/'
 				},
 				{
-					name: 'LuckyAquapura',
-					url: 'https://twitter.com/alcremimiga',
-					reason: 'Concept'
-				},
-				{
 					name: 'Yeah I\'m Stuck in the Void, Keep Scrolling',
 					url: 'https://www.facebook.com/voidmanthing/',
 					reason: 'Image',
