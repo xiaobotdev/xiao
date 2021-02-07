@@ -7,7 +7,7 @@ const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
 const { centerImagePart } = require('../../util/Canvas');
 const { FAILURE_EMOJI_ID } = process.env;
-const turnRegex = /^(?:((?:[A-H][1-8])|(?:[PKRQBN]))?([A-H]|X)?([A-H][1-8])(?:=([QRNB]))?)|(?:0\-0(?:\-0)?)$/;
+const turnRegex = /^(?:((?:[A-H][1-8])|(?:[PKRQBN]))?([A-H]|X)?([A-H][1-8])(?:=([QRNB]))?)|(?:0-0(?:-0)?)$/;
 const pieces = ['pawn', 'rook', 'knight', 'king', 'queen', 'bishop'];
 const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
