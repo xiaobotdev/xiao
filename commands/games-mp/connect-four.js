@@ -66,7 +66,7 @@ module.exports = class ConnectFourCommand extends Command {
 		const playerOneEmoji = color;
 		let playerTwoEmoji = color === colors.yellow ? colors.red : colors.yellow;
 		try {
-			const available = Object.keys(colors).filter(clr => color !== clr);
+			const available = Object.keys(colors).filter(clr => color !== colors[clr]);
 			if (opponent.bot) {
 				playerTwoEmoji = colors[available[Math.floor(Math.random() * available.length)]];
 			} else {
