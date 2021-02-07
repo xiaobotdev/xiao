@@ -18,8 +18,8 @@ module.exports = class SimpCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			credit: [
 				{
-					name: 'Overtime2005',
-					url: 'https://github.com/Overtime2005',
+					name: '0vertime-dev',
+					url: 'https://github.com/0vertime-dev',
 					reason: 'Concept'
 				},
 				{

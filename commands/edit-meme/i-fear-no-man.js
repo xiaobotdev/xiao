@@ -25,8 +25,8 @@ module.exports = class IFearNoManCommand extends Command {
 					reason: 'Image, Original "Team Fortress 2" Game'
 				},
 				{
-					name: 'Overtime2005',
-					url: 'https://github.com/Overtime2005',
+					name: '0vertime-dev',
+					url: 'https://github.com/0vertime-dev',
 					reason: 'Concept'
 				}
 			],

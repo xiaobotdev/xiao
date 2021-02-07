@@ -31,8 +31,8 @@ module.exports = class WildPokemonCommand extends Command {
 					reasonURL: 'https://www.fontspace.com/pokemon-gb-font-f9621'
 				},
 				{
-					name: 'Overtime2005',
-					url: 'https://github.com/Overtime2005',
+					name: '0vertime-dev',
+					url: 'https://github.com/0vertime-dev',
 					reason: 'Concept'
 				}
 			],
