@@ -199,11 +199,11 @@ module.exports = class ChessCommand extends Command {
 				`);
 			}
 			if (fiftyRuleMove > 50) return msg.say('Due to the fifty move rule, this game is a draw.');
+			const gameState = game.exportJson();
 			const winner = gameState.turn === 'black' ? whitePlayer : blackPlayer;
 			if (stalemate) return msg.say('Stalemate! This game is a draw.', {
 				files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
 			});
-			const gameState = game.exportJson();
 			if (!gameState.checkMate) return msg.say('Game ended due to forfeit.');
 			return msg.say(`Checkmate! Congrats, ${winner}!`, {
 				files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
