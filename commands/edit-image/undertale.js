@@ -69,8 +69,8 @@ module.exports = class UndertaleCommand extends Command {
 					reasonURL: 'https://earthboundcentral.com/2009/11/ultimate-earthbound-font-pack/'
 				},
 				{
-					name: 'Overtime2005',
-					url: 'https://github.com/Overtime2005',
+					name: '0vertime-dev',
+					url: 'https://github.com/0vertime-dev',
 					reason: 'Concept'
 				}
 			],

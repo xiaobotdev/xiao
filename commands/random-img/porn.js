@@ -17,8 +17,8 @@ module.exports = class PornCommand extends SubredditCommand {
 			getIcon: true,
 			credit: [
 				{
-					name: 'Overtime2005',
-					url: 'https://github.com/Overtime2005',
+					name: '0vertime-dev',
+					url: 'https://github.com/0vertime-dev',
 					reason: 'Original Subreddit List'
 				}
 			],

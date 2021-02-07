@@ -24,8 +24,8 @@ module.exports = class WorseThanHitlerCommand extends Command {
 					reasonURL: 'https://www.fox.com/family-guy/'
 				},
 				{
-					name: 'Overtime2005',
-					url: 'https://github.com/Overtime2005',
+					name: '0vertime-dev',
+					url: 'https://github.com/0vertime-dev',
 					reason: 'Concept'
 				}
 			],
