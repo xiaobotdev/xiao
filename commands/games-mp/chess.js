@@ -7,7 +7,7 @@ const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
 const { centerImagePart } = require('../../util/Canvas');
 const { FAILURE_EMOJI_ID } = process.env;
-const turnRegex = /^((?:[A-H][1-8])|(?:[PKRQBNX]))?([A-H])?(?: |, ?|-?>?)?([A-H][1-8])(=[QRNB])?$/;
+const turnRegex = /^((?:[A-H][1-8])|(?:[PKRQBNX]))?([A-H])?(?: |, ?|-?>?)?([A-H][1-8])(?:=([QRNB]))?$/;
 const pieces = ['pawn', 'rook', 'knight', 'king', 'queen', 'bishop'];
 const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -79,14 +79,25 @@ module.exports = class ChessCommand extends Command {
 				`);
 				const verification = await verify(msg.channel, msg.author);
 				if (verification) {
-					const data = JSON.parse(resumeGame);
-					game = new jsChess.Game(data.fen);
-					whiteTime = data.whiteTime === -1 ? Infinity : data.whiteTime;
-					blackTime = data.blackTime === -1 ? Infinity : data.blackTime;
-					whitePlayer = data.color === 'white' ? msg.author : opponent;
-					blackPlayer = data.color === 'black' ? msg.author : opponent;
-					fiftyRuleMove = data.fiftyRuleMove;
-					await this.client.redis.del(`chess-${msg.author.id}`);
+					try {
+						const data = JSON.parse(resumeGame);
+						game = new jsChess.Game(data.fen);
+						whiteTime = data.whiteTime === -1 ? Infinity : data.whiteTime;
+						blackTime = data.blackTime === -1 ? Infinity : data.blackTime;
+						whitePlayer = data.color === 'white' ? msg.author : opponent;
+						blackPlayer = data.color === 'black' ? msg.author : opponent;
+						fiftyRuleMove = data.fiftyRuleMove;
+						await this.client.redis.del(`chess-${msg.author.id}`);
+					} catch {
+						await msg.reply('An error occurred reading your saved game. Deleting it and aborting...');
+						game = new jsChess.Game();
+						whiteTime = time * 60000;
+						blackTime = time * 60000;
+						whitePlayer = msg.author;
+						blackPlayer = opponent;
+						fiftyRuleMove = 0;
+						await this.client.redis.del(`chess-${msg.author.id}`);
+					}
 				} else {
 					game = new jsChess.Game();
 				}
@@ -175,14 +186,14 @@ module.exports = class ChessCommand extends Command {
 					if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
 					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
 					const choice = this.parseSAN(gameState, moves, turn.first().content.toUpperCase().match(turnRegex));
-					if (gameState.pieces[choice[0]].toUpperCase() === 'P') {
+					const pawnMoved = gameState.pieces[choice[0]].toUpperCase() === 'P';
+					if (pawnMoved) {
 						fiftyRuleMove = 0;
 					} else {
 						fiftyRuleMove++;
 					}
 					game.move(choice[0], choice[1]);
-					const finalRow = gameState.turn === 'black' ? '8' : '1';
-					if (gameState.pieces[choice[1]].toUpperCase() === 'P' && choice[1].endsWith(finalRow)) {
+					if (pawnMoved && choice[1].endsWith(gameState.turn === 'black' ? '8' : '1')) {
 						game.board.configuration.pieces[choice[1]] = gameState.turn = 'black'
 							? choice[2]
 							: choice[2].toLowerCase()
