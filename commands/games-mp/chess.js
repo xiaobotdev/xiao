@@ -5,9 +5,9 @@ const moment = require('moment');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
-const { drawImageWithTint, centerImagePart } = require('../../util/Canvas');
+const { centerImagePart } = require('../../util/Canvas');
 const { FAILURE_EMOJI_ID } = process.env;
-const turnRegex = /^([A-H][1-8])(?: |, ?|-?>?)?([A-H][1-8])$/;
+const turnRegex = /^((?:[A-H][1-8])|(?:[PKRQBN]))?([A-H])?(?: |, ?|-?>?)?([A-H][1-8])$/;
 const pieces = ['pawn', 'rook', 'knight', 'king', 'queen', 'bishop'];
 const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -71,6 +71,7 @@ module.exports = class ChessCommand extends Command {
 			let blackTime = time === 0 ? Infinity : time * 60000;
 			let whitePlayer = msg.author;
 			let blackPlayer = opponent;
+			let fiftyRuleMove = 0;
 			if (resumeGame) {
 				await msg.reply(stripIndents`
 					You have a saved game, do you want to resume it?
@@ -84,6 +85,7 @@ module.exports = class ChessCommand extends Command {
 					blackTime = data.blackTime === -1 ? Infinity : data.blackTime;
 					whitePlayer = data.color === 'white' ? msg.author : opponent;
 					blackPlayer = data.color === 'black' ? msg.author : opponent;
+					fiftyRuleMove = data.fiftyRuleMove;
 					await this.client.redis.del(`chess-${msg.author.id}`);
 				} else {
 					game = new jsChess.Game();
@@ -93,7 +95,7 @@ module.exports = class ChessCommand extends Command {
 			}
 			let prevPieces = null;
 			let saved = false;
-			while (!game.exportJson().checkMate) {
+			while (!game.exportJson().checkMate && fiftyRuleMove <= 50) {
 				const gameState = game.exportJson();
 				const user = gameState.turn === 'black' ? blackPlayer : whitePlayer;
 				const userTime = gameState.turn === 'black' ? blackTime : whiteTime;
@@ -123,7 +125,8 @@ module.exports = class ChessCommand extends Command {
 						if (res.author.id !== user.id) return false;
 						const move = choice.match(turnRegex);
 						if (!move) return false;
-						if (!moves[move[1]] || !moves[move[1]].includes(move[2])) {
+						const parsed = this.parseSAN(gameState, moves, move);
+						if (!parsed || !moves[parsed[0]] || !moves[parsed[0]].includes(parsed[1])) {
 							reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 							return false;
 						}
@@ -156,7 +159,13 @@ module.exports = class ChessCommand extends Command {
 						if (gameState.turn === 'white') whiteTime -= new Date() - now;
 						await this.client.redis.set(
 							`chess-${author.id}`,
-							this.exportGame(game, blackTime, whiteTime, whitePlayer.id === author.id ? 'white' : 'black')
+							this.exportGame(
+								game,
+								blackTime,
+								whiteTime,
+								whitePlayer.id === author.id ? 'white' : 'black',
+								fiftyRuleMove
+							)
 						);
 						saved = true;
 						break;
@@ -166,6 +175,11 @@ module.exports = class ChessCommand extends Command {
 					if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
 					const choice = turn.first().content.toUpperCase().match(turnRegex);
 					game.move(choice[1], choice[2]);
+					if (gameState.pieces[choice[1]].toUpperCase() === 'P') {
+						fiftyRuleMove = 0;
+					} else {
+						fiftyRuleMove++;
+					}
 				}
 			}
 			this.client.games.delete(msg.channel.id);
@@ -176,6 +190,7 @@ module.exports = class ChessCommand extends Command {
 					If you want to delete your saved game, use ${this.client.registry.commands.get('chess-delete').usage()}.
 				`);
 			}
+			if (fiftyRuleMove > 50) return msg.say('Due to the fifty move rule, this game is a draw.');
 			const gameState = game.exportJson();
 			if (!gameState.checkMate) return msg.say('Game ended due to forfeit.');
 			const winner = gameState.turn === 'black' ? whitePlayer : blackPlayer;
@@ -186,6 +201,19 @@ module.exports = class ChessCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
+	}
+
+	parseSAN(gameState, moves, move) {
+		if (!move || !move[3]) return null;
+		const initial = move[1] || 'P';
+		if (gameState.pieces[initial]) return [initial, move[3]];
+		const possiblePieces = Object.keys(gameState.pieces).filter(piece => {
+			if (gameState.pieces[piece] !== initial) return false;
+			if (move[2] && !piece.startsWith(move[2])) return false;
+			return moves[piece].includes(move[3]);
+		});
+		if (possiblePieces.length === 1) return [possiblePieces[0], move[3]];
+		return null;
 	}
 
 	displayBoard(gameState, prevPieces) {
@@ -299,12 +327,13 @@ module.exports = class ChessCommand extends Command {
 		return { name, color };
 	}
 
-	exportGame(game, blackTime, whiteTime, playerColor) {
+	exportGame(game, blackTime, whiteTime, playerColor, fiftyRuleMove) {
 		return JSON.stringify({
 			fen: game.exportFEN(),
 			blackTime: blackTime === Infinity ? -1 : blackTime,
 			whiteTime: whiteTime === Infinity ? -1 : whiteTime,
-			color: playerColor
+			color: playerColor,
+			fiftyRuleMove
 		});
 	}
 };
