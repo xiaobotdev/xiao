@@ -2,6 +2,7 @@ const Command = require('../../structures/Command');
 const jsChess = require('js-chess-engine');
 const { createCanvas, loadImage } = require('canvas');
 const moment = require('moment');
+const validateFEN = require('fen-validator').default;
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { verify, reactIfAble } = require('../../util/Util');
@@ -43,6 +44,13 @@ module.exports = class ChessCommand extends Command {
 					max: 120,
 					min: 0,
 					default: 15
+				},
+				{
+					key: 'fen',
+					prompt: 'What FEN would you like to use for the start board?',
+					type: 'string',
+					default: '',
+					validate: fen => validateFEN(fen)
 				}
 			]
 		});
@@ -50,7 +58,7 @@ module.exports = class ChessCommand extends Command {
 		this.images = null;
 	}
 
-	async run(msg, { opponent, time }) {
+	async run(msg, { opponent, time, fen }) {
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
@@ -92,10 +100,10 @@ module.exports = class ChessCommand extends Command {
 						return msg.reply('An error occurred reading your saved game. Please try again.');
 					}
 				} else {
-					game = new jsChess.Game();
+					game = new jsChess.Game(fen || undefined);
 				}
 			} else {
-				game = new jsChess.Game();
+				game = new jsChess.Game(fen || undefined);
 			}
 			let prevPieces = null;
 			let saved = false;
