@@ -141,9 +141,10 @@ don't grant that permission.
 6. Run `apt install liblqr-1-0-dev liblqr-1-0` to install liblqr (needed for ImageMagick).
 7. [Follow these instructions to install ImageMagick](https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/).
 8. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04). Remember to set up a password!
-9. Run `npm i --production` in the folder you cloned the bot.
-10. Run `npm i -g pm2` to install PM2.
-11. Run `pm2 start Xiao.js --name xiao` to run the bot.
+9. Run `apt install libtool` so sodium can compile if necessary. **(Optional)**
+10. Run `npm i --production` in the folder you cloned the bot.
+11. Run `npm i -g pm2` to install PM2.
+12. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Filling Out Your .env File
 
