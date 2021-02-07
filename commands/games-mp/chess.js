@@ -95,7 +95,8 @@ module.exports = class ChessCommand extends Command {
 			}
 			let prevPieces = null;
 			let saved = false;
-			while (!game.exportJson().checkMate && fiftyRuleMove <= 50) {
+			let stalemate = false;
+			while (!game.exportJson().checkMate && fiftyRuleMove <= 50 && !stalemate) {
 				const gameState = game.exportJson();
 				const user = gameState.turn === 'black' ? blackPlayer : whitePlayer;
 				const userTime = gameState.turn === 'black' ? blackTime : whiteTime;
@@ -180,6 +181,7 @@ module.exports = class ChessCommand extends Command {
 						fiftyRuleMove++;
 					}
 					game.move(choice[0], choice[1]);
+					if (!game.moves().length) stalemate = true;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
@@ -191,9 +193,12 @@ module.exports = class ChessCommand extends Command {
 				`);
 			}
 			if (fiftyRuleMove > 50) return msg.say('Due to the fifty move rule, this game is a draw.');
+			const winner = gameState.turn === 'black' ? whitePlayer : blackPlayer;
+			if (stalemate) return msg.say('Stalemate! This game is a draw.', {
+				files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
+			});
 			const gameState = game.exportJson();
 			if (!gameState.checkMate) return msg.say('Game ended due to forfeit.');
-			const winner = gameState.turn === 'black' ? whitePlayer : blackPlayer;
 			return msg.say(`Checkmate! Congrats, ${winner}!`, {
 				files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }]
 			});
