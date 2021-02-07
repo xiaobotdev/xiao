@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const validateFEN = require('fen-validator').default;
 
 module.exports = class ChessSetUpCommand extends Command {
 	constructor(client) {
@@ -12,7 +13,8 @@ module.exports = class ChessSetUpCommand extends Command {
 				{
 					key: 'fen',
 					prompt: 'What FEN would you like to use for the game?',
-					type: 'string'
+					type: 'string',
+					validate: fen => validateFEN(fen)
 				}
 			]
 		});

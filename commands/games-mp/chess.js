@@ -87,13 +87,9 @@ module.exports = class ChessCommand extends Command {
 						blackPlayer = data.color === 'black' ? msg.author : opponent;
 						await this.client.redis.del(`chess-${msg.author.id}`);
 					} catch {
-						await msg.reply('An error occurred reading your saved game. Deleting it and aborting...');
-						game = new jsChess.Game();
-						whiteTime = time * 60000;
-						blackTime = time * 60000;
-						whitePlayer = msg.author;
-						blackPlayer = opponent;
+						this.client.games.delete(msg.channel.id);
 						await this.client.redis.del(`chess-${msg.author.id}`);
+						return msg.reply('An error occurred reading your saved game. Please try again.');
 					}
 				} else {
 					game = new jsChess.Game();
