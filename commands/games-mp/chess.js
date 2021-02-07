@@ -109,7 +109,7 @@ module.exports = class ChessCommand extends Command {
 				} else {
 					const displayTime = userTime === Infinity ? 'Infinite' : moment.duration(userTime).format();
 					await msg.say(stripIndents`
-						${user}, what move do you want to make (ex. A1A2)? Type \`end\` to forfeit.
+						${user}, what move do you want to make (ex. A1A2 or NC4)? Type \`end\` to forfeit.
 						You can save your game by typing \`save\`.
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 
