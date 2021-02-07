@@ -235,8 +235,10 @@ module.exports = class ChessCommand extends Command {
 			if (this.pickImage(gameState.pieces[piece]).color !== gameState.turn) return false;
 			if (gameState.pieces[piece].toUpperCase() !== initial) return false;
 			if (move[2] && move[2] !== 'X' && !piece.startsWith(move[2])) return false;
-			if (move[4] && !piece.endsWith(gameState.turn === 'black' ? '2' : '7')) return false;
-			if (move[4] && gameState.pieces[piece].toUpperCase() !== 'P') return false;
+			if (move[4]) {
+				if (!piece.endsWith(gameState.turn === 'black' ? '2' : '7')) return false;
+				if (gameState.pieces[piece].toUpperCase() !== 'P') return false;
+			}
 			if (!moves[piece]) return false;
 			return moves[piece].includes(move[3]);
 		});
