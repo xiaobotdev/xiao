@@ -262,7 +262,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 593
+Total: 594
 
 ### Utility:
 
@@ -618,6 +618,7 @@ Total: 593
 * **bingo:** Play bingo with up to 99 other users.
 * **car-race:** Race a car against another user or the AI.
 * **chess-delete:** Deletes your saved Chess game.
+* **chess-set-up:** Sets up and saves a custom Chess game.
 * **chess:** Play a game of Chess with another user or the AI.
 * **connect-four:** Play a game of Connect Four with another user or the AI.
 * **cram:** Play a game of Cram with another user.
