@@ -210,6 +210,7 @@ module.exports = class ChessCommand extends Command {
 		const possiblePieces = Object.keys(gameState.pieces).filter(piece => {
 			if (gameState.pieces[piece] !== initial) return false;
 			if (move[2] && !piece.startsWith(move[2])) return false;
+			if (!moves[piece]) return false;
 			return moves[piece].includes(move[3]);
 		});
 		if (possiblePieces.length === 1) return [possiblePieces[0], move[3]];
