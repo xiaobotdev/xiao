@@ -41,7 +41,7 @@ module.exports = class TypingTestCommand extends Command {
 		if (msgs.first().content.toLowerCase() !== sentence) return msg.reply('Sorry! You made a typo, so you lose!');
 		const wpm = (sentence.length / 5) / ((newScore / 1000) / 60);
 		return msg.reply(stripIndents`
-			Nice job! 10/10! You deserve some cake! (Took ${newScore / 1000} seconds, ${wpm} WPM)
+			Nice job! 10/10! You deserve some cake! (Took ${newScore / 1000} seconds, ${Math.round(wpm)} WPM)
 			${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})
 		`);
 	}
