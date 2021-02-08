@@ -62,7 +62,7 @@ module.exports = class TypingRaceCommand extends Command {
 			const wpm = (sentence.length / 5) / ((newScore / 1000) / 60);
 			return msg.say(stripIndents`
 				The winner is ${winner.first().author}! (Took ${newScore / 1000} seconds, ${Math.round(wpm)} WPM)
-				${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})
+				${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}s (Held by ${user})
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);

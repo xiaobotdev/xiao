@@ -42,7 +42,7 @@ module.exports = class TypingTestCommand extends Command {
 		const wpm = (sentence.length / 5) / ((newScore / 1000) / 60);
 		return msg.reply(stripIndents`
 			Nice job! 10/10! You deserve some cake! (Took ${newScore / 1000} seconds, ${Math.round(wpm)} WPM)
-			${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000} (Held by ${user})
+			${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${highScore / 1000}s (Held by ${user})
 		`);
 	}
 
