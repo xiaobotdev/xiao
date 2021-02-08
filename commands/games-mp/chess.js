@@ -21,9 +21,10 @@ module.exports = class ChessCommand extends Command {
 			description: 'Play a game of Chess with another user or the AI.',
 			credit: [
 				{
-					name: 'Chessboard Image',
-					url: 'https://chessboardimage.com/',
-					reason: 'Piece Images'
+					name: 'PNGkey.com',
+					url: 'https://www.pngkey.com/',
+					reason: 'Piece Images',
+					reasonURL: 'https://www.pngkey.com/maxpic/u2w7q8o0r5y3t4w7/'
 				},
 				{
 					name: 'Chess.com',
