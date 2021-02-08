@@ -262,7 +262,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 594
+Total: 593
 
 ### Utility:
 
