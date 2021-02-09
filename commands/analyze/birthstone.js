@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { list, firstUpperCase } = require('../../util/Util');
-const months = require('../../assets/json/month');
+const { months } = require('../../assets/json/month');
 const stones = require('../../assets/json/birthstone');
 
 module.exports = class BirthstoneCommand extends Command {

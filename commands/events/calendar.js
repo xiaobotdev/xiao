@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { firstUpperCase, isLeap } = require('../../util/Util');
 const monthsWith30 = [4, 6, 9, 11];
-const months = require('../../assets/json/month');
+const { months } = require('../../assets/json/month');
 
 module.exports = class CalendarCommand extends Command {
 	constructor(client) {
