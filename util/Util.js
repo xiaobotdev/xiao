@@ -182,7 +182,7 @@ module.exports = class Util {
 	}
 
 	static textDiff(oldText, newText) {
-		const changed = [];
+		let changed = [];
 		return oldText.split('').map((char, i) => {
 			if (char === newText.charAt(i)) {
 				const chars = changed.length ? `**${changed.join('')}**${char}` : char;
