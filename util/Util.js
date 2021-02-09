@@ -181,6 +181,19 @@ module.exports = class Util {
 		return ((r << 16) | (g << 8) | b).toString(16);
 	}
 
+	static textDiff(oldText, newText) {
+		const changed = [];
+		return oldText.split('').map((char, i) => {
+			if (char === newText.charAt(i)) {
+				const chars = changed.length ? `**${changed.join('')}**${char}` : char;
+				if (changed.length) changed = [];
+				return chars;
+			}
+			changed.push(newText.charAt(i));
+			return '';
+		}).join('');
+	}
+
 	static magikToBuffer(magik) {
 		return new Promise((res, rej) => {
 			magik.toBuffer((err, buffer) => {
