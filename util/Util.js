@@ -182,16 +182,16 @@ module.exports = class Util {
 	}
 
 	static textDiff(oldText, newText) {
-		let changed = [];
-		return oldText.split('').map((char, i) => {
-			if (char === newText.charAt(i)) {
-				const chars = changed.length ? `**${changed.join('')}**${char}` : char;
-				if (changed.length) changed = [];
-				return chars;
-			}
-			changed.push(newText.charAt(i));
-			return i === oldText.length - 1 ? `**${changed.join('')}${newText.slice(oldText.length)}**` : '';
-		}).join('');
+        let changed = [];
+        return oldText.split('').map((char, i) => {
+            if (char === newText.charAt(i)) {
+                const chars = changed.length ? `**${changed.join('')}**${char}` : char;
+                if (changed.length) changed = [];
+                return i === oldText.length - 1 ? `${chars}**${newText.slice(oldText.length)}**` : chars;
+            }
+            changed.push(newText.charAt(i));
+            return i === oldText.length - 1 ? `**${changed.join('')}${newText.slice(oldText.length)}**` : '';
+        }).join('');
 	}
 
 	static magikToBuffer(magik) {
