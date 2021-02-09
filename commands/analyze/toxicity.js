@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { Message } = require('discord.js');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class ToxicityCommand extends Command {
@@ -21,13 +22,14 @@ module.exports = class ToxicityCommand extends Command {
 				{
 					key: 'text',
 					prompt: 'What text do you want to test the toxicity of?',
-					type: 'string'
+					type: 'message|string'
 				}
 			]
 		});
 	}
 
 	async run(msg, { text }) {
+		if (text instanceof Message) text = text.content;
 		try {
 			const { body } = await request
 				.post('https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze')
