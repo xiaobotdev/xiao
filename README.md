@@ -262,7 +262,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 593
+Total: 594
 
 ### Utility:
 
@@ -271,6 +271,7 @@ Total: 593
 * **command-leaderboard:** Responds with the bot's most used commands.
 * **credit:** Responds with a command's credits list.
 * **donate:** Responds with the bot's donation links.
+* **group-leaderboard:** Responds with the bot's most used command groups.
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **high-scores:** Responds with the high scores the bot has saved.
 * **info:** Responds with detailed bot information.
