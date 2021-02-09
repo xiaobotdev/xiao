@@ -1,8 +1,9 @@
 const Command = require('../../structures/Command');
 const { createCanvas, registerFont } = require('canvas');
 const { stripIndents } = require('common-tags');
+const Diff = require('text-diff');
 const path = require('path');
-const { textDiff, fetchHSUserDisplay } = require('../../util/Util');
+const { fetchHSUserDisplay } = require('../../util/Util');
 const words = require('../../assets/json/word-list');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 
@@ -39,9 +40,16 @@ module.exports = class TypingTestCommand extends Command {
 		}
 		if (!msgs.size) return msg.reply('Sorry! You lose!');
 		if (msgs.first().content.toLowerCase() !== sentence) {
+			const diff = new Diff();
+			const textDiff = diff.main(msgs.first().content.toLowerCase(), sentence);
+			const formatted = diff.cleanupSemantic(textDiff).map(change => {
+				if (change[0] === 1) return `**${change[1]}**`;
+				if (change[0] === 0) return change[1];
+				return '';
+			}).join('');
 			return msg.reply(stripIndents`
 				Sorry! You made a typo, so you lose!
-				${textDiff(msgs.first().content.toLowerCase(), sentence)}
+				${formatted}
 			`);
 		}
 		const wpm = (sentence.length / 5) / ((newScore / 1000) / 60);
