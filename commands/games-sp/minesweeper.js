@@ -22,7 +22,7 @@ module.exports = class MinesweeperCommand extends Command {
 					type: 'integer',
 					default: 9,
 					max: 10,
-					min: 3
+					min: 2
 				}
 			]
 		});
