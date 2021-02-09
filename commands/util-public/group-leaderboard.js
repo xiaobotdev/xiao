@@ -30,7 +30,7 @@ module.exports = class GroupLeaderboardCommand extends Command {
 				group
 			};
 		});
-		const totalPages = Math.ceil(groups.size / 10);
+		const totalPages = Math.ceil(this.client.registry.groups.size / 10);
 		if (page > totalPages) return msg.say(`Page ${page} does not exist (yet).`);
 		return msg.say(stripIndents`
 			__**Command Group Usage Leaderboard (Page ${page}/${totalPages}):**__
