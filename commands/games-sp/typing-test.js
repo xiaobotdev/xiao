@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { createCanvas, registerFont } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
-const { fetchHSUserDisplay } = require('../../util/Util');
+const { textDiff, fetchHSUserDisplay } = require('../../util/Util');
 const words = require('../../assets/json/word-list');
 registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 
@@ -38,7 +38,12 @@ module.exports = class TypingTestCommand extends Command {
 			await this.client.redis.set('typing-test-user', msg.author.id);
 		}
 		if (!msgs.size) return msg.reply('Sorry! You lose!');
-		if (msgs.first().content.toLowerCase() !== sentence) return msg.reply('Sorry! You made a typo, so you lose!');
+		if (msgs.first().content.toLowerCase() !== sentence) {
+			return msg.reply(stripIndents`
+				Sorry! You made a typo, so you lose!
+				${textDiff(msgs.first().content.toLowerCase(), sentence)}
+			`);
+		}
 		const wpm = (sentence.length / 5) / ((newScore / 1000) / 60);
 		return msg.reply(stripIndents`
 			Nice job! 10/10! You deserve some cake! (Took ${newScore / 1000} seconds, ${Math.round(wpm)} WPM)
