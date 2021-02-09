@@ -44,15 +44,15 @@ module.exports = class GroupLeaderboardCommand extends Command {
 		let positionsMoved = 1;
 		return groups
 			.sort((a, b) => b.uses - a.uses)
-			.map(groups => {
-				if (previousPts === groups.uses) {
+			.map(group => {
+				if (previousPts === group.uses) {
 					positionsMoved++;
 				} else {
 					i += positionsMoved;
 					positionsMoved = 1;
 				}
-				previousPts = groups.uses;
-				return `**${i}.** ${group.group.name} (${formatNumber(groups.uses)} Use${groups.uses === 1 ? '' : 's'})`;
+				previousPts = group.uses;
+				return `**${i}.** ${group.group.name} (${formatNumber(group.uses)} Use${group.uses === 1 ? '' : 's'})`;
 			})
 			.slice((page - 1) * 10, page * 10);
 	}
