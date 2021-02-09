@@ -25,10 +25,8 @@ module.exports = class GroupLeaderboardCommand extends Command {
 
 	run(msg, { page }) {
 		const groups = this.client.registry.groups.map(group => {
-			return {
-				uses: group.commands.reduce((a, b) => a + (b.uses || 0), 0),
-				group
-			};
+			const uses = group.commands.reduce((a, b) => a + (b.uses || 0), 0);
+			return { uses, group };
 		});
 		const totalPages = Math.ceil(this.client.registry.groups.size / 10);
 		if (page > totalPages) return msg.say(`Page ${page} does not exist (yet).`);
