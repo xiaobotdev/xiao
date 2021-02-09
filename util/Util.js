@@ -187,7 +187,8 @@ module.exports = class Util {
             if (char === newText.charAt(i)) {
                 const chars = changed.length ? `**${changed.join('')}**${char}` : char;
                 if (changed.length) changed = [];
-                return i === oldText.length - 1 ? `${chars}**${newText.slice(oldText.length)}**` : chars;
+				const extraText = newText.slice(oldText.length);
+                return i === oldText.length - 1 ? `${chars}${extraText.length ? `**${extraText}**` : ''}` : chars;
             }
             changed.push(newText.charAt(i));
             return i === oldText.length - 1 ? `**${changed.join('')}${newText.slice(oldText.length)}**` : '';
