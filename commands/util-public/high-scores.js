@@ -3,7 +3,7 @@ const { stripIndents } = require('common-tags');
 const moment = require('moment');
 require('moment-duration-format');
 const { fetchHSUserDisplay } = require('../../util/Util');
-const minesweeperSizes = [3, 4, 5, 6, 7, 8, 9, 10];
+const minesweeperSizes = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 module.exports = class HighScoresCommand extends Command {
 	constructor(client) {
