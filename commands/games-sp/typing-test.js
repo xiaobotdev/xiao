@@ -42,7 +42,8 @@ module.exports = class TypingTestCommand extends Command {
 		if (msgs.first().content.toLowerCase() !== sentence) {
 			const diff = new Diff();
 			const textDiff = diff.main(msgs.first().content.toLowerCase(), sentence);
-			const formatted = diff.cleanupSemantic(textDiff).map(change => {
+			diff.cleanupSemantic(textDiff);
+			const formatted = textDiff.map(change => {
 				if (change[0] === 1) return `**${change[1]}**`;
 				if (change[0] === 0) return change[1];
 				return '';
