@@ -190,7 +190,7 @@ module.exports = class Util {
 				return chars;
 			}
 			changed.push(newText.charAt(i));
-			return '';
+			return i === oldText.length - 1 ? `**${changed.join('')}**` : '';
 		}).join('');
 	}
 
