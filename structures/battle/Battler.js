@@ -28,6 +28,7 @@ module.exports = class Battler {
 		`;
 		if (this.battle.turn === 1 || this.battle.turn === 2) {
 			content += '\n\n_Special uses 25 MP whether or not it hits. Cure takes remaining MP and heals half that amount._';
+			content += '\n_To use Final, you must have under 100 HP and over 50 MP. Final can only be used once!_'
 		}
 		await msg.say(content);
 		const filter = res => {
