@@ -91,7 +91,7 @@ module.exports = class TrainerCardCommand extends Command {
 		try {
 			const pokemonUsed = [];
 			for (const pkmn of pokemon) {
-				const id = await this.fetchPokemonID(pkmn);
+				const id = await pokemon.fetchCardID();
 				pokemonUsed.push(id);
 			}
 			const card = await this.createCard(style, name, character, badgeChoice, pokemonUsed);
@@ -113,14 +113,5 @@ module.exports = class TrainerCardCommand extends Command {
 			.attach('pokemonUsed', pokemon.join(','))
 			.attach('_xfResponseType', 'json');
 		return Buffer.from(body.trainerCard, 'base64');
-	}
-
-	async fetchPokemonID(pokemon) {
-		const { body } = await request
-			.post('https://pokecharms.com/trainer-card-maker/pokemon-panels')
-			.attach('number', pokemon.id)
-			.attach('_xfResponseType', 'json');
-		const $ = cheerio.load(body.templateHtml);
-		return $('li[class="Panel"]').first().attr('data-id');
 	}
 };
