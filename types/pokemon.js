@@ -11,7 +11,7 @@ module.exports = class PokemonArgumentType extends ArgumentType {
 		return true;
 	}
 
-	async parse(value) {
+	parse(value) {
 		return this.client.pokemon.fetch(value);
 	}
 };
