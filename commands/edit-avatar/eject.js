@@ -76,7 +76,7 @@ module.exports = class EjectCommand extends Command {
 			for (let i = 0; i < frameCount; i++) {
 				const frameID = `frame_${i.toString().padStart(2, '0')}.gif`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'eject', frameID));
-				if (i <= 16) {
+				if (i <= 20) {
 					ctx.drawImage(frame, 0, 0);
 					const x = (320 / 15) * i;
 					const y = (frame.height / 2) - 25;
@@ -91,7 +91,7 @@ module.exports = class EjectCommand extends Command {
 					// ctx.rotate(angle);
 				}
 				if (i > 12) {
-					if (i <= 20) {
+					if (i <= 22) {
 						ctx.drawImage(frame, 0, 0);
 						const letters = Math.ceil((text.length / 10) * ((i - 10) + 1));
 						const toDraw = text.slice(0, letters + 1);
