@@ -82,11 +82,11 @@ module.exports = class EjectCommand extends Command {
 					const x = (320 / 10) * i;
 					const y = (frame.height / 2) - 25;
 					const angle = rotation * (Math.PI / 180);
-					ctx.rotate(angle);
+					ctx.rotate(-angle);
 					const x2 = x + (x * Math.cos(angle));
 					const y2 = y + (x * Math.sin(angle));
 					ctx.drawImage(avatar, x2, y2, 50, 50);
-					ctx.rotate(-rotation * (Math.PI / 180));
+					ctx.rotate(angle);
 				}
 				if (i > 10) {
 					if (i <= 20) {
