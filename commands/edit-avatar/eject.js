@@ -78,8 +78,8 @@ module.exports = class EjectCommand extends Command {
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'eject', frameID));
 				if (i <= 11) {
 					const rotation = (360 / 10) * i;
-					const x = ((320 / 10) * i) + (rotation / 2);
-					const y = ((frame.height / 2) - 25) - (rotation / 2)
+					const x = ((320 / 10) * i) + (rotation / 4);
+					const y = ((frame.height / 2) - 25) - (rotation / 4);
 					ctx.drawImage(frame, 0, 0);
 					ctx.rotate(rotation * (Math.PI / 180));
 					ctx.drawImage(avatar, x, y, 50, 50);
