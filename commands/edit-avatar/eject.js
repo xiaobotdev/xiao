@@ -88,7 +88,9 @@ module.exports = class EjectCommand extends Command {
 					ctx.rotate(-angle);
 					ctx.translate(-originX, -originY);
 					ctx.drawImage(avatar, x, y, 50, 50);
+					ctx.translate(originX, originY);
 					ctx.rotate(angle);
+					ctx.translate(-originX, -originY);
 				}
 				if (i > 17) {
 					if (i <= 27) {
