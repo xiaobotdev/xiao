@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
 const { styles, characters, badges } = require('../../assets/json/trainer-card');
@@ -91,7 +90,7 @@ module.exports = class TrainerCardCommand extends Command {
 		try {
 			const pokemonUsed = [];
 			for (const pkmn of pokemon) {
-				const id = await pokemon.fetchCardID();
+				const id = await pkmn.fetchCardID();
 				pokemonUsed.push(id);
 			}
 			const card = await this.createCard(style, name, character, badgeChoice, pokemonUsed);
