@@ -1,6 +1,6 @@
 const request = require('node-superfetch');
 const path = require('path');
-const { removeDuplicates, firstUpperCase } = require('../../util/Util');
+const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
 const versions = require('../../assets/json/pokedex-location');
 
@@ -58,6 +58,7 @@ module.exports = class Pokemon {
 		this.moveSet = data.missingno ? data.moveSet : [];
 		this.moveSetVersion = data.missingno ? data.moveSetVersion : null;
 		this.gameDataCached = data.missingno || false;
+		this.gameDataFetching = data.missingno || false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
 			? null
@@ -169,11 +170,17 @@ module.exports = class Pokemon {
 
 	async fetchGameData() {
 		if (this.gameDataCached) return this;
+		if (this.gameDataFetching) {
+			await delay(1000);
+			return this.fetchGameData();
+		}
+		this.gameDataFetching = true;
 		await this.fetchDefaultVariety();
 		await this.fetchMoves(this.rawMoveSet);
 		await this.fetchHeldItemNames();
 		await this.fetchOtherVarieties();
 		await this.fetchChain();
+		this.gameDataFetching = false;
 		this.gameDataCached = true;
 		return this;
 	}
