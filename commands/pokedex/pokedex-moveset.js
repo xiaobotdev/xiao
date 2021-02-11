@@ -46,7 +46,7 @@ module.exports = class PokedexMovesetCommand extends Command {
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
-					type: 'string'
+					type: 'pokemon'
 				}
 			]
 		});
@@ -54,16 +54,14 @@ module.exports = class PokedexMovesetCommand extends Command {
 
 	async run(msg, { pokemon }) {
 		try {
-			const data = await this.client.pokemon.fetch(pokemon);
-			if (!data) return msg.say('Could not find any results.');
-			if (!data.gameDataCached) await data.fetchGameData();
-			if (!data.moveSet.length) return msg.say('This Pokémon\'s moves are not yet documented.');
+			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+			if (!pokemon.moveSet.length) return msg.say('This Pokémon\'s moves are not yet documented.');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
-				.setDescription(data.moveSet.map(move => `**Level ${move.level}:** ${move.move.name}`).join('\n'))
-				.setThumbnail(data.spriteImageURL)
-				.setFooter(`Moveset data taken from ${versions[data.moveSetVersion]}.`);
+				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, pokemon.boxImageURL, pokemon.serebiiURL)
+				.setDescription(pokemon.moveSet.map(move => `**Level ${move.level}:** ${move.move.name}`).join('\n'))
+				.setThumbnail(pokemon.spriteImageURL)
+				.setFooter(`Moveset data taken from ${versions[pokemon.moveSetVersion]}.`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);

@@ -47,7 +47,7 @@ module.exports = class SmogonCommand extends Command {
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
-					type: 'string'
+					type: 'pokemon'
 				}
 			]
 		});
@@ -55,16 +55,15 @@ module.exports = class SmogonCommand extends Command {
 
 	async run(msg, { pokemon }) {
 		try {
-			const data = await this.client.pokemon.fetch(pokemon);
-			if (!data) return msg.say('Could not find any results.');
-			const fetchGames = genGames.slice(data.generation, data.missingno ? 2 : genGames.length);
-			if (!data.missingno) await data.fetchSmogonTiers(...fetchGames);
+			const fetchGames = genGames.slice(pokemon.generation, pokemon.missingno ? 2 : genGames.length);
+			if (!pokemon.missingno) await pokemon.fetchSmogonTiers(...fetchGames);
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
-				.setThumbnail(data.spriteImageURL);
+				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, pokemon.boxImageURL, pokemon.serebiiURL)
+				.setThumbnail(pokemon.spriteImageURL);
 			for (const game of fetchGames) {
-				embed.addField(`❯ ${games[game]}`, `[${data.smogonTiers[game].join('/')}](${data.smogonURL(game)})`, true);
+				embed.addField(`❯ ${games[game]}`,
+					`[${pokemon.smogonTiers[game].join('/')}](${pokemon.smogonURL(game)})`, true);
 			}
 			if (fetchGames.length % 3 !== 0 && fetchGames.length > 3) {
 				for (let i = 0; i < 3 - (fetchGames.length % 3); i++) {

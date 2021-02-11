@@ -33,7 +33,7 @@ module.exports = class PokedexCommand extends Command {
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
-					type: 'string'
+					type: 'pokemon'
 				},
 				{
 					key: 'form',
@@ -51,10 +51,8 @@ module.exports = class PokedexCommand extends Command {
 
 	async run(msg, { pokemon, form }) {
 		try {
-			const data = await this.client.pokemon.fetch(pokemon);
-			if (!data) return msg.say('Could not find any results.');
-			if (!data.gameDataCached) await data.fetchGameData();
-			const displayForms = data.varieties.filter(vrity => vrity.statsDiffer);
+			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+			const displayForms = pokemon.varieties.filter(vrity => vrity.statsDiffer);
 			const variety = displayForms.find(vrity => {
 				if (!form || form === 'normal') return vrity.default;
 				if (!vrity.name) return false;
@@ -64,7 +62,7 @@ module.exports = class PokedexCommand extends Command {
 				const varieties = displayForms.map(vrity => vrity.name || 'Normal');
 				return msg.say(`Invalid form. The forms available for this Pokémon are: ${list(varieties, 'and')}`);
 			}
-			const statTotal = data.baseStatTotal(variety.id);
+			const statTotal = pokemon.baseStatTotal(variety.id);
 			const repeat = {
 				hp: Math.round((variety.stats.hp / 255) * 10) * 2,
 				atk: Math.round((variety.stats.atk / 255) * 10) * 2,
@@ -76,8 +74,12 @@ module.exports = class PokedexCommand extends Command {
 			};
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${data.displayID} - ${data.name}`, data.formBoxImageURL(variety.id), data.serebiiURL)
-				.setThumbnail(data.formSpriteImageURL(variety.id))
+				.setAuthor(
+					`#${pokemon.displayID} - ${pokemon.name}`,
+					pokemon.formBoxImageURL(variety.id),
+					pokemon.serebiiURL
+				)
+				.setThumbnail(pokemon.formSpriteImageURL(variety.id))
 				.addField(`❯ Base Stats (${variety.name || 'Base'} Form)`, stripIndents`
 					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${variety.stats.hp}**
 					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${variety.stats.atk}**
@@ -90,7 +92,7 @@ module.exports = class PokedexCommand extends Command {
 				`)
 				.addField('❯ Abilities', variety.abilities.map(ability => ability.name).join('/'))
 				.addField('❯ Other Forms', stripIndents`
-					_Use ${this.usage(`${data.id} <form>`)} to get stats for another form._
+					_Use ${this.usage(`${pokemon.id} <form>`)} to get stats for another form._
 
 					**Forms Available:** ${displayForms.map(vrity => `\`${vrity.name || 'Normal'}\``).join(', ')}
 				`);

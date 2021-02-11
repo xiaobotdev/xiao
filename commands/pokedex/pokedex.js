@@ -63,7 +63,7 @@ module.exports = class PokedexCommand extends Command {
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
-					type: 'string'
+					type: 'pokemon'
 				}
 			]
 		});
@@ -71,52 +71,51 @@ module.exports = class PokedexCommand extends Command {
 
 	async run(msg, { pokemon }) {
 		try {
-			const data = await this.client.pokemon.fetch(pokemon);
-			if (!data) return msg.say('Could not find any results.');
-			if (!data.gameDataCached) await data.fetchGameData();
-			const defaultVariety = data.varieties.find(variety => variety.default);
-			const typesShown = data.varieties.filter(variety => {
+			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+			const defaultVariety = pokemon.varieties.find(variety => variety.default);
+			const typesShown = pokemon.varieties.filter(variety => {
 				if (variety.default) return true;
 				return !arrayEquals(defaultVariety.types, variety.types);
 			});
-			const feet = Math.floor(data.height / 12);
-			const evoChain = data.chain.data.map(pkmn => {
+			const feet = Math.floor(pokemon.height / 12);
+			const evoChain = pokemon.chain.data.map(pkmn => {
 				if (Array.isArray(pkmn)) {
 					return pkmn.map(pkmn2 => {
 						const found = this.client.pokemon.get(pkmn2);
-						if (found.id === data.id) return `**${found.name}**`;
+						if (found.id === pokemon.id) return `**${found.name}**`;
 						return found.name;
 					}).join('/');
 				}
 				const found = this.client.pokemon.get(pkmn);
-				if (found.id === data.id) return `**${found.name}**`;
+				if (found.id === pokemon.id) return `**${found.name}**`;
 				return found.name;
 			}).join(' -> ');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
+				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, pokemon.boxImageURL, pokemon.serebiiURL)
 				.setDescription(stripIndents`
-					**${data.genus}**
-					${data.entries[Math.floor(Math.random() * data.entries.length)]}
+					**${pokemon.genus}**
+					${pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)]}
 				`)
-				.setThumbnail(data.spriteImageURL)
-				.addField('❯ Introduced In', games[genGames[data.generation]], true)
-				.addField('❯ Height', `${feet}'${Math.floor(data.height) - (feet * 12)}"`, true)
-				.addField('❯ Weight', `${data.weight} lbs.`, true)
+				.setThumbnail(pokemon.spriteImageURL)
+				.addField('❯ Introduced In', games[genGames[pokemon.generation]], true)
+				.addField('❯ Height', `${feet}'${Math.floor(pokemon.height) - (feet * 12)}"`, true)
+				.addField('❯ Weight', `${pokemon.weight} lbs.`, true)
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
 				}).join('\n'))
-				.addField('❯ Evolution Chain', `${evoChain}${data.mega ? ` -> ${this.megaEvolveEmoji}` : ''}`)
-				.addField('❯ Held Items', data.heldItems.length
-					? data.heldItems.map(item => `${item.data.name} (${item.rarity}%)`).join('\n')
+				.addField('❯ Evolution Chain', `${evoChain}${pokemon.mega ? ` -> ${this.megaEvolveEmoji}` : ''}`)
+				.addField('❯ Held Items', pokemon.heldItems.length
+					? pokemon.heldItems.map(item => `${item.data.name} (${item.rarity}%)`).join('\n')
 					: 'None')
-				.addField('❯ Gender Rate',
-					data.genderRate.genderless ? 'Genderless' : `♂️ ${data.genderRate.male}% ♀️ ${data.genderRate.female}%`);
-			if (data.cry) {
+				.addField('❯ Gender Rate', pokemon.genderRate.genderless
+					? 'Genderless'
+					: `♂️ ${pokemon.genderRate.male}% ♀️ ${pokemon.genderRate.female}%`);
+			if (pokemon.cry) {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				if (connection) {
-					connection.play(data.cry);
+					connection.play(pokemon.cry);
 					await reactIfAble(msg, this.client.user, '🔉');
 				}
 			}
