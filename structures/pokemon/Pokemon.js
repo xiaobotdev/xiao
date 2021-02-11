@@ -1,4 +1,5 @@
 const request = require('node-superfetch');
+const cheerio = require('cheerio');
 const path = require('path');
 const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
@@ -57,6 +58,7 @@ module.exports = class Pokemon {
 		this.rawMoveSet = null;
 		this.moveSet = data.missingno ? data.moveSet : [];
 		this.moveSetVersion = data.missingno ? data.moveSetVersion : null;
+		this.trainerCardID = null;
 		this.gameDataCached = data.missingno || false;
 		this.gameDataFetching = data.missingno || false;
 		this.missingno = data.missingno || false;
@@ -166,6 +168,18 @@ module.exports = class Pokemon {
 			this.smogonTiers[gen.toLowerCase()] = pkmn.formats;
 		}
 		return this.smogonTiers;
+	}
+
+	async fetchCardID() {
+		if (this.trainerCardID) return this.trainerCardID;
+		const { body } = await request
+			.post('https://pokecharms.com/trainer-card-maker/pokemon-panels')
+			.attach('number', this.id)
+			.attach('_xfResponseType', 'json');
+		const $ = cheerio.load(body.templateHtml);
+		const id = $('li[class="Panel"]').first().attr('data-id');
+		this.trainerCardID = id;
+		return id;
 	}
 
 	async fetchGameData() {
