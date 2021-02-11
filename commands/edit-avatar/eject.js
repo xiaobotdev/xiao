@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const GIFEncoder = require('gifencoder');
 const { MersenneTwister19937, bool } = require('random-js');
 const request = require('node-superfetch');
