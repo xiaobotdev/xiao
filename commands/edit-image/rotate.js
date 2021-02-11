@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const { centerImage } = require('../../util/Canvas');
 
 module.exports = class RotateCommand extends Command {
 	constructor(client) {
@@ -43,8 +42,7 @@ module.exports = class RotateCommand extends Command {
 			ctx.translate(canvas.width / 2, canvas.height / 2);
 			ctx.rotate(degrees * (Math.PI / 180));
 			ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
-			const { x, y, width, height } = centerImage(canvas, data);
-			ctx.drawImage(data, x, y, width, height);
+			ctx.drawImage(data, canvas.width / 2, canvas.height / 2);
 			ctx.translate(canvas.width / 2, canvas.height / 2);
 			ctx.rotate(-degrees * (Math.PI / 180));
 			const attachment = canvas.toBuffer();
