@@ -49,7 +49,7 @@ module.exports = class PokedexCryCommand extends Command {
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to play the cry of?',
-					type: 'string'
+					type: 'pokemon'
 				}
 			]
 		});
@@ -62,9 +62,7 @@ module.exports = class PokedexCryCommand extends Command {
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		try {
-			const data = await this.client.pokemon.fetch(pokemon);
-			if (!data) return msg.say('Could not find any results.');
-			connection.play(data.cry);
+			connection.play(pokemon.cry);
 			await reactIfAble(msg, this.client.user, '🔉');
 			return null;
 		} catch (err) {

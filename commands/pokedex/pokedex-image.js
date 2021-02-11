@@ -40,7 +40,7 @@ module.exports = class PokedexImageCommand extends Command {
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get the image of?',
-					type: 'string'
+					type: 'pokemon'
 				}
 			]
 		});
@@ -48,9 +48,7 @@ module.exports = class PokedexImageCommand extends Command {
 
 	async run(msg, { pokemon }) {
 		try {
-			const data = await this.client.pokemon.fetch(pokemon);
-			if (!data) return msg.say('Could not find any results.');
-			return msg.say(`#${data.displayID} - ${data.name}`, { files: [data.spriteImageURL] });
+			return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, { files: [pokemon.spriteImageURL] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

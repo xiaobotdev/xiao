@@ -42,7 +42,7 @@ module.exports = class PokedexLocationCommand extends Command {
 				{
 					key: 'pokemon',
 					prompt: 'What Pokémon would you like to get information on?',
-					type: 'string'
+					type: 'pokemon'
 				}
 			]
 		});
@@ -50,20 +50,18 @@ module.exports = class PokedexLocationCommand extends Command {
 
 	async run(msg, { pokemon }) {
 		try {
-			const data = await this.client.pokemon.fetch(pokemon);
-			if (!data) return msg.say('Could not find any results.');
-			if (!data.gameDataCached) await data.fetchGameData();
-			if (!data.encounters) await data.fetchEncounters();
-			const desc = data.encounters.length
-				? data.encounters
+			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+			if (!pokemon.encounters) await pokemon.fetchEncounters();
+			const desc = pokemon.encounters.length
+				? pokemon.encounters
 					.map(location => `${location.name} (${location.versions.map(v => versions[v]).join('/')})`)
 					.join('\n')
 				: 'Location Unknown';
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${data.displayID} - ${data.name}`, data.boxImageURL, data.serebiiURL)
+				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, pokemon.boxImageURL, pokemon.serebiiURL)
 				.setDescription(desc)
-				.setThumbnail(data.spriteImageURL);
+				.setThumbnail(pokemon.spriteImageURL);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
