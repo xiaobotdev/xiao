@@ -108,9 +108,9 @@ module.exports = class TrainerCardCommand extends Command {
 			.attach('background', style)
 			.attach('character', character)
 			.attach('badges', 8)
-			.attach('badgesUsed', badgeChoice)
+			.attach('badgesUsed', badgeChoice.join(','))
 			.attach('pokemon', pokemon.length)
-			.attach('pokemonUsed', pokemon)
+			.attach('pokemonUsed', pokemon.join(','))
 			.attach('_xfResponseType', 'json');
 		return Buffer.from(body.trainerCard, 'base64');
 	}
