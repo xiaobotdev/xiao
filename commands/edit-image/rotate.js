@@ -42,7 +42,7 @@ module.exports = class RotateCommand extends Command {
 			ctx.translate(canvas.width / 2, canvas.height / 2);
 			ctx.rotate(degrees * (Math.PI / 180));
 			ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
-			ctx.drawImage(data, canvas.width / 2, canvas.height / 2);
+			ctx.drawImage(data, (canvas.width / 2) - (data.width / 2), (canvas.height / 2) - (data.height / 2));
 			ctx.translate(canvas.width / 2, canvas.height / 2);
 			ctx.rotate(-degrees * (Math.PI / 180));
 			const attachment = canvas.toBuffer();
