@@ -84,9 +84,9 @@ module.exports = class EjectCommand extends Command {
 					ctx.drawImage(avatar, x, (frame.height / 2) - 25, 50, 50);
 					ctx.rotate(-rotation * (Math.PI / 180));
 				}
-				if (i >= 10 && i <= 20) {
+				if (i > 10 && i <= 20) {
 					ctx.drawImage(frame, 0, 0);
-					const letters = Math.ceil((text.length / 10) * (i + 1));
+					const letters = Math.ceil((text.length / 10) * ((i - 10) + 1));
 					const toDraw = text.slice(0, letters + 1);
 					ctx.fillText(toDraw, frame.width / 2, frame.height / 2, 300);
 				} else {
