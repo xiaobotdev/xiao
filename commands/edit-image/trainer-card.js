@@ -91,7 +91,7 @@ module.exports = class TrainerCardCommand extends Command {
 		try {
 			const pokemonUsed = [];
 			for (const pkmn of pokemon) {
-				const id = await this.fetchPokemonID(pkmn.id);
+				const id = await this.fetchPokemonID(pkmn);
 				pokemonUsed.push(id);
 			}
 			const card = await this.createCard(style, name, character, badgeChoice, pokemonUsed);
