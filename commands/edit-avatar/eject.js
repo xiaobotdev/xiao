@@ -76,9 +76,9 @@ module.exports = class EjectCommand extends Command {
 			for (let i = 0; i < frameCount; i++) {
 				const frameID = `frame_${i.toString().padStart(2, '0')}.gif`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'eject', frameID));
-				if (i <= 20) {
+				if (i <= 30) {
 					ctx.drawImage(frame, 0, 0);
-					const x = (320 / 15) * i;
+					const x = ((320 / 15) * i) - 50;
 					const y = (frame.height / 2) - 25;
 					/*
 					const rotation = (360 / 10) * i;
