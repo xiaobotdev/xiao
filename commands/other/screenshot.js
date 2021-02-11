@@ -41,7 +41,7 @@ module.exports = class ScreenshotCommand extends Command {
 		try {
 			if (!this.pornList) await this.fetchPornList();
 			const parsed = url.parse(site);
-			if (this.pornList.some(pornURL => parsed.host === pornURL) && !msg.channel.nsfw) {
+			if (!msg.channel.nsfw && this.pornList.some(pornURL => parsed.host === pornURL)) {
 				return msg.reply('This site is NSFW.');
 			}
 			const { body } = await request.get(`https://image.thum.io/get/width/1920/crop/675/noanimate/${site}`);
