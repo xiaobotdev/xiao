@@ -29,7 +29,7 @@ module.exports = class PhoneBookCommand extends Command {
 		});
 		if (!channels.size) return msg.reply('Could not find any results.');
 		return msg.say(stripIndents`
-			__**Results:**__ _(${channels.size} Results)_
+			__**Results:**__ _(${channels.size} Results${channels.size > 10 ? ', Showing 10' : ''})_
 			${channels.map(c => `**${c.id}** (#${c.name}: ${c.guild.name})`).slice(0, 10).join('\n')}
 		`);
 	}
