@@ -262,7 +262,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 594
+Total: 595
 
 ### Utility:
 
@@ -731,6 +731,7 @@ Total: 594
 
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
 * **chocolate-milk:** Draws a user's avatar holding chocolate milk.
+* **eject:** Ejects a user.
 * **fire:** Burns a user's avatar.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
@@ -1227,6 +1228,7 @@ here.
 	* demotivational ([Noto Font](https://www.google.com/get/noto/))
 	* drakeposting ([Noto Font](https://www.google.com/get/noto/))
 	* edd-facts-book ([Noto Font](https://www.google.com/get/noto/))
+	* eject ([Noto Font](https://www.google.com/get/noto/))
 	* enslaved ([Noto Font](https://www.google.com/get/noto/))
 	* genie-rules ([Noto Font](https://www.google.com/get/noto/))
 	* google ([Custom Search API](https://cse.google.com/cse/all))
@@ -1359,6 +1361,8 @@ here.
 	* xiao ([API](https://apidocs.imgur.com/))
 - [Initial D](https://initiald-portal.com/)
 	* car-race (AE86 Car Original Design)
+- [InnerSloth](https://innersloth.com/index.php)
+	* eject ([Original "Among Us" Game](https://innersloth.com/gameAmongUs.php))
 - [Inside Scanlation](https://www.insidescanlation.com/)
 	* chi-idea ([Wild Words Font](https://www.insidescanlation.com/etc/the-idiots-guide-to-editing-manga/guide/type/fonts.html))
 - [ipify API](https://www.ipify.org/)
@@ -1956,6 +1960,8 @@ here.
 	* wikipedia ([API](https://en.wikipedia.org/w/api.php))
 - [Will You Press The Button?](https://willyoupressthebutton.com/)
 	* will-you-press-the-button (API)
+- [Wisq](https://www.youtube.com/channel/UCrOS0iXaZgW45AdbEznGXLA)
+	* eject ([Images](https://www.youtube.com/watch?v=yx4Hp8TBVtQ))
 - [World of Tanks](https://worldoftanks.com/)
 	* simp ([Image](https://worldoftanks.com/es-ar/content/silver-league/open-standings/))
 - [www.aljanh.net](http://www.aljanh.net/)
