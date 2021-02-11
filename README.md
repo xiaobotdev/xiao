@@ -262,7 +262,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 595
+Total: 596
 
 ### Utility:
 
@@ -704,6 +704,7 @@ Total: 595
 * **rejected:** Draws a "rejected" stamp over an image or a user's avatar.
 * **resize:** Draws an image or a user's avatar resized to the size you want.
 * **robohash:** Creates a robot based on the text you provide.
+* **rotate:** Draws an image or a user's avatar but rotated a number of degrees.
 * **sepia:** Draws an image or a user's avatar in sepia.
 * **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
