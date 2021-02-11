@@ -92,7 +92,7 @@ module.exports = class EjectCommand extends Command {
 				}
 				if (i > 17) {
 					if (i <= 27) {
-						const letters = Math.ceil((text.length / 10) * ((i - 10) + 1));
+						const letters = Math.ceil(((text.length / 10) * (i - 17)) + 1);
 						const toDraw = text.slice(0, letters + 1);
 						ctx.fillText(toDraw, frame.width / 2, frame.height / 2, 300);
 					} else {
