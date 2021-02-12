@@ -62,7 +62,7 @@ module.exports = class TrainerCardCommand extends Command {
 				},
 				{
 					key: 'character',
-					prompt: `What character do you want to use? Either ${list(Object.keys(characters, 'or'))}.`,
+					prompt: `What character do you want to use? Either ${list(Object.keys(characters), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(characters),
 					parse: character => characters[character.toLowerCase()]
