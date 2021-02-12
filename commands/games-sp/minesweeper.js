@@ -96,71 +96,24 @@ module.exports = class MinesweeperCommand extends Command {
 					await msg.say('You cannot flag a range.');
 					continue;
 				}
-				/* eslint-disable max-depth */
 				if (xRange) {
 					for (let i = x; i <= xRange; i++) {
-						if (flag) {
-							if (flagged.includes(`${i - 1},${y - 1}`)) {
-								removeFromArray(flagged, `${i - 1},${y - 1}`);
-							} else {
-								flagged.push(`${i - 1},${y - 1}`);
-							}
-						} else {
-							if (flagged.includes(`${i - 1},${y - 1}`)) {
-								await msg.say(`Are you sure you want to check (${x - 1}, ${y - 1})? You have it flagged.`);
-								const verification = await verify(msg.channel, msg.author);
-								if (!verification) {
-									await msg.say('Okay, the spot will remain unchecked.');
-									continue;
-								}
-							}
-							game.CheckCell(i - 1, y - 1); // eslint-disable-line new-cap
-							if (win === true || win === false) break;
-						}
-						if (win === true || win === false) break;
+						const keepGoing = await this.runResult(msg, game, i, y, flag, flagged, win);
+						if (keepGoing === false) break;
+						if (keepGoing === null) continue;
 					}
 				} else if (yRange) {
 					for (let i = y; i <= yRange; i++) {
-						if (flag) {
-							if (flagged.includes(`${x - 1},${i - 1}`)) {
-								removeFromArray(flagged, `${x - 1},${i - 1}`);
-							} else {
-								flagged.push(`${x - 1},${i - 1}`);
-							}
-						} else {
-							if (flagged.includes(`${x - 1},${i - 1}`)) {
-								await msg.say(`Are you sure you want to check (${x - 1}, ${y - 1})? You have it flagged.`);
-								const verification = await verify(msg.channel, msg.author);
-								if (!verification) {
-									await msg.say('Okay, the spot will remain unchecked.');
-									continue;
-								}
-							}
-							game.CheckCell(x - 1, i - 1); // eslint-disable-line new-cap
-							if (win === true || win === false) break;
-						}
-						if (win === true || win === false) break;
-					}
-				} else if (flag) {
-					if (flagged.includes(`${x - 1},${y - 1}`)) {
-						removeFromArray(flagged, `${x - 1},${y - 1}`);
-					} else {
-						flagged.push(`${x - 1},${y - 1}`);
+						const keepGoing = await this.runResult(msg, game, x, i, flag, flagged, win);
+						if (keepGoing === false) break;
+						if (keepGoing === null) continue;
 					}
 				} else {
-					if (flagged.includes(`${x - 1},${y - 1}`)) {
-						await msg.say('Are you sure you want to check this spot? You have it flagged.');
-						const verification = await verify(msg.channel, msg.author);
-						if (!verification) {
-							await msg.say('Okay, the spot will remain unchecked.');
-							continue;
-						}
-					}
-					game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
-					if (win === true || win === false) break;
+					const keepGoing = await this.runResult(msg, game, x, y, flag, flagged, win);
+					if (keepGoing === false) break;
+					if (keepGoing === null) continue;
 				}
 			}
-			/* eslint-enable max-depth */
 			const newScore = Date.now() - startTime;
 			const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
 			const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
@@ -185,6 +138,29 @@ module.exports = class MinesweeperCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
+	}
+
+	async runResult(msg, game, x, y, flag, flagged, win) {
+		if (flag) {
+			if (flagged.includes(`${x - 1},${y - 1}`)) {
+				removeFromArray(flagged, `${x - 1},${y - 1}`);
+			} else {
+				flagged.push(`${x - 1},${y - 1}`);
+			}
+		} else {
+			if (flagged.includes(`${x - 1},${y - 1}`)) {
+				await msg.say(`Are you sure you want to check (${x - 1}, ${y - 1})? You have it flagged.`);
+				const verification = await verify(msg.channel, msg.author);
+				if (!verification) {
+					await msg.say('Okay, the spot will remain unchecked.');
+					return null;
+				}
+			}
+			game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
+			if (win === true || win === false) return false;
+		}
+		if (win === true || win === false) return false;
+		return true;
 	}
 
 	displayBoard(board, mask, flagged, cheatMode = false) {
