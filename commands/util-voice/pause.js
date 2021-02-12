@@ -1,13 +1,13 @@
 const Command = require('../../structures/Command');
 
-module.exports = class StopCommand extends Command {
+module.exports = class PauseCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'stop',
-			aliases: ['stop-voice-channel', 'stop-vc', 'stop-voice', 'stop-music', 'stop-playing'],
+			name: 'pause',
+			aliases: ['pause-voice-channel', 'pause-vc', 'pause-voice', 'pause-music', 'pause-playing'],
 			group: 'util-voice',
-			memberName: 'stop',
-			description: 'Stops the current audio playing.',
+			memberName: 'pause',
+			description: 'Pauses the current audio playing.',
 			guildOnly: true,
 			guarded: true
 		});
@@ -22,7 +22,7 @@ module.exports = class StopCommand extends Command {
 		if (!this.client.dispatchers.has(msg.guild.id)) {
 			return msg.reply(`I am not currently playing audio in this server.`);
 		}
-		this.client.dispatchers.get(msg.guild.id).end();
-		return msg.reply('Stopped playing.');
+		this.client.dispatchers.get(msg.guild.id).pause();
+		return msg.reply('Paused playing.');
 	}
 };
