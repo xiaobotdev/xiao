@@ -45,7 +45,7 @@ module.exports = class PlayCommand extends Command {
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		if (this.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing music in this server.');
-		const result = await this.searchForVideo(query);
+		const result = await this.searchForVideo(query, msg.channel.nsfw || false);
 		if (!result) return msg.say('Could not find any results for your query.');
 		const canPlay = await this.canUseVideo(result, msg.channel.nsfw || false);
 		if (!canPlay) return msg.say('I cannot play this video.');
@@ -57,7 +57,7 @@ module.exports = class PlayCommand extends Command {
 		return null;
 	}
 
-	async searchForVideo(query) {
+	async searchForVideo(query, nsfw) {
 		if (ytdl.validateURL(query)) return ytdl.getURLVideoID(query);
 		if (ytdl.validateID(query)) return query;
 		const { body } = await request
@@ -67,7 +67,7 @@ module.exports = class PlayCommand extends Command {
 				type: 'video',
 				maxResults: 1,
 				q: query,
-				safeSearch: msg.channel.nsfw ? 'none' : 'strict',
+				safeSearch: nsfw ? 'none' : 'strict',
 				key: GOOGLE_KEY
 			});
 		if (!body.items.length) return null;
