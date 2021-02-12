@@ -48,18 +48,26 @@ module.exports = class EjectCommand extends Command {
 					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
 					default: msg => msg.author
+				},
+				{
+					key: 'imposter',
+					prompt: 'Is the user an imposter?',
+					type: 'boolean',
+					default: ''
 				}
 			]
 		});
 	}
 
-	async run(msg, { user }) {
+	async run(msg, { user, imposter }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
 		try {
 			const { body } = await request.get(avatarURL);
 			const avatar = await loadImage(body);
-			const random = MersenneTwister19937.seed(user.id);
-			const imposter = bool()(random);
+			if (imposter === '') {
+				const random = MersenneTwister19937.seed(user.id);
+				imposter = bool()(random);
+			}
 			const text = `${user.username} was${imposter ? ' ' : ' not '}An Imposter.`;
 			const encoder = new GIFEncoder(320, 180);
 			const canvas = createCanvas(320, 180);
