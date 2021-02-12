@@ -262,7 +262,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 598
+Total: 602
 
 ### Utility:
 
@@ -276,15 +276,21 @@ Total: 598
 * **high-scores:** Responds with the high scores the bot has saved.
 * **info:** Responds with detailed bot information.
 * **invite:** Responds with the bot's invite links.
-* **join:** Joins your voice channel.
 * **last-run-leaderboard:** Responds with the bot's most recently run commands.
 * **last-run:** Responds with a command's most recent run date.
-* **leave:** Leaves the current voice channel.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **prefix:** Responds with the bot's command prefix.
 * **report:** Reports something to the bot owner(s).
 * **uses:** Responds with a command's usage stats.
+
+### Utility (Voice):
+
+* **join:** Joins your voice channel.
+* **leave:** Leaves the current voice channel.
+* **pause:** Pauses the current audio playing.
+* **resume:** Resume the current audio playing.
+* **stop:** Stops the current audio playing.
 
 ### Utility (Owner):
 
@@ -880,6 +886,10 @@ Total: 598
 * **soundboard:** Plays a sound in a voice channel.
 * **vocodes:** Speak text like a variety of famous figures.
 
+### Music:
+
+* **play:** Plays a YouTube video in your voice channel.
+
 ### Reminders:
 
 * **delete-reminder:** Deletes your reminder.
@@ -1253,6 +1263,7 @@ here.
 	* phoebe-teaching-joey ([Noto Font](https://www.google.com/get/noto/))
 	* pills ([Noto Font](https://www.google.com/get/noto/))
 	* plankton-plan ([Noto Font](https://www.google.com/get/noto/))
+	* play ([YouTube Data API](https://developers.google.com/youtube/v3/))
 	* safe-url ([Safe Browsing API](https://developers.google.com/safe-browsing/))
 	* scroll-of-truth ([Noto Font](https://www.google.com/get/noto/))
 	* sonic-says ([Noto Font](https://www.google.com/get/noto/))
