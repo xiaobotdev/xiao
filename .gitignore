@@ -17,4 +17,3 @@ command-last-run.json
 *.traineddata
 
 # In-Development Commands
-commands/music/
