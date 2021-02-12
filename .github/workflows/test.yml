@@ -13,8 +13,8 @@ jobs:
         with:
           node-version: 15
 
-      - name: Install Latest NPM v7 Patch
-        run: npm install -g npm@7
+      - name: Install NPM v6 (v7 is Broken)
+        run: npm install -g npm@6
 
       - name: Install ESLint v7
         run: npm install -g eslint@7
