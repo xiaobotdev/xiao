@@ -1,6 +1,10 @@
 {
 	"styles": {
-		"default": 3
+		"default": 3,
+		"black": 50,
+		"collector": 96,
+		"dp": 5,
+		"purple": 43
 	},
 	"characters": {
 		"ash": 13,
