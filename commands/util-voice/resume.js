@@ -22,6 +22,10 @@ module.exports = class ResumeCommand extends Command {
 		if (!this.client.dispatchers.has(msg.guild.id)) {
 			return msg.reply(`I am not currently playing audio in this server.`);
 		}
+		// Temporary workaround: https://github.com/discordjs/discord.js/issues/5300
+		this.client.dispatchers.get(msg.guild.id).pause();
+		this.client.dispatchers.get(msg.guild.id).resume();
+		this.client.dispatchers.get(msg.guild.id).pause();
 		this.client.dispatchers.get(msg.guild.id).resume();
 		return msg.reply('Resumed playing.');
 	}
