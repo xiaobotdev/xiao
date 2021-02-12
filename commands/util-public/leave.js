@@ -19,6 +19,10 @@ module.exports = class LeaveCommand extends Command {
 		if (!msg.channel.permissionsFor(msg.author).has('MOVE_MEMBERS') && connection.channel.members.size > 2) {
 			return msg.reply('You need the "Move members" permission to remove me from this voice channel.');
 		}
+		if (this.client.dispatchers.has(msg.guild.id)) {
+			const usage = this.client.registry.commands.get('stop').usage();
+			return msg.reply(`I am currently playing audio in this server. Please use ${usage} first.`);
+		}
 		connection.channel.leave();
 		return msg.reply(`Left **${connection.channel.name}**...`);
 	}
