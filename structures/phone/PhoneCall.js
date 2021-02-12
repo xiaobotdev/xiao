@@ -1,7 +1,7 @@
 const { stripIndents } = require('common-tags');
 const moment = require('moment');
 require('moment-duration-format');
-const { shorten, stripInvites, verify } = require('../../util/Util');
+const { shorten, stripInvites, preventURLEmbeds, verify } = require('../../util/Util');
 
 module.exports = class PhoneCall {
 	constructor(client, startUser, origin, recipient, adminCall) {
@@ -133,18 +133,17 @@ module.exports = class PhoneCall {
 				setTimeout(() => this.ratelimitMeters.set(msg.author.id, 0), 5000);
 			}
 		}
-		const attachments = hasImage ? msg.attachments.map(a => a.url).join('\n') : null;
+		const attachments = hasImage ? msg.attachments.map(a => this.cleanContent(a.url)).join('\n') : null;
 		if (!hasText && hasImage) return channel.send(`☎️ **${msg.author.tag}:**\n${attachments}`);
 		if (!hasText && hasEmbed) return channel.send(`☎️ **${msg.author.tag}** sent an embed.`);
-		let content = stripInvites(msg.content);
-		content = content.length > 1000 ? `${shorten(content, 500)} (Message too long)` : content;
-		return channel.send(`☎️ **${msg.author.tag}:** ${content}\n${attachments || ''}`.trim());
+		const content = content.length > 1000 ? `${shorten(content, 500)} (Message too long)` : content;
+		return channel.send(`☎️ **${msg.author.tag}:** ${this.cleanContent(content)}\n${attachments || ''}`.trim());
 	}
 
 	sendVoicemail(channel, msg) {
 		return channel.send(stripIndents`
 			☎️ New Voicemail from **${this.originDM ? `${this.startUser.tag}'s DMs` : this.origin.guild.name}:**
-			**${msg.author.tag}:** ${stripInvites(msg.content)}
+			**${msg.author.tag}:** ${this.cleanContent(msg.content)}
 		`);
 	}
 
@@ -156,5 +155,11 @@ module.exports = class PhoneCall {
 
 	get durationDisplay() {
 		return moment.duration(Date.now() - this.timeStarted).format('hh[h]mm[m]ss[s]');
+	}
+
+	cleanContent(str) {
+		str = stripInvites(str);
+		str = preventURLEmbeds(str);
+		return str;
 	}
 };

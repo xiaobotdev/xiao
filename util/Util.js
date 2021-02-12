@@ -200,6 +200,10 @@ module.exports = class Util {
 		return str;
 	}
 
+	static preventURLEmbeds(str) {
+		return str.replace(/(https?:\/\/\S+)/g, '<$1>');
+	}
+
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
 		const dm = !msg.guild;
 		if (fallbackEmoji && (!dm && !msg.channel.permissionsFor(user).has('USE_EXTERNAL_EMOJIS'))) {
