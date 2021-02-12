@@ -128,7 +128,11 @@ module.exports = class SoundboardCommand extends Command {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
-		connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', ...sound));
+		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
+		const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', ...sound));
+		this.client.dispatchers.set(msg.guild.id, dispatcher);
+		dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
+		dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 		await reactIfAble(msg, this.client.user, '🔉');
 		return null;
 	}

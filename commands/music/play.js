@@ -34,8 +34,6 @@ module.exports = class PlayCommand extends Command {
 				}
 			]
 		});
-
-		this.dispatchers = new Map();
 	}
 
 	async run(msg, { query }) {
@@ -44,15 +42,15 @@ module.exports = class PlayCommand extends Command {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
-		if (this.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing music in this server.');
+		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
 		const result = await this.searchForVideo(query, msg.channel.nsfw || false);
 		if (!result) return msg.say('Could not find any results for your query.');
 		const canPlay = await this.canUseVideo(result, msg.channel.nsfw || false);
 		if (!canPlay) return msg.say('I cannot play this video.');
 		const dispatcher = connection.play(ytdl(result, { filter: 'audioonly', quality: 'lowest' }));
-		this.dispatchers.set(msg.guild.id, dispatcher);
-		dispatcher.once('finish', () => this.dispatchers.delete(msg.guild.id));
-		dispatcher.once('error', () => this.dispatchers.delete(msg.guild.id));
+		this.client.dispatchers.set(msg.guild.id, dispatcher);
+		dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
+		dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 		await reactIfAble(msg, this.client.user, '🔉');
 		return null;
 	}

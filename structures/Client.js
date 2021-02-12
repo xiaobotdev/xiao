@@ -43,6 +43,7 @@ module.exports = class XiaoClient extends CommandoClient {
 			disableMentions: 'everyone'
 		}) : null;
 		this.games = new Collection();
+		this.dispatchers = new Map();
 		this.phone = new Collection();
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
