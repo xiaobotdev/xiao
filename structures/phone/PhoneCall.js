@@ -136,7 +136,7 @@ module.exports = class PhoneCall {
 		const attachments = hasImage ? msg.attachments.map(a => this.cleanContent(a.url)).join('\n') : null;
 		if (!hasText && hasImage) return channel.send(`☎️ **${msg.author.tag}:**\n${attachments}`);
 		if (!hasText && hasEmbed) return channel.send(`☎️ **${msg.author.tag}** sent an embed.`);
-		const content = content.length > 1000 ? `${shorten(content, 500)} (Message too long)` : content;
+		const content = msg.content.length > 1000 ? `${shorten(msg.content, 500)} (Message too long)` : msg.content;
 		return channel.send(`☎️ **${msg.author.tag}:** ${this.cleanContent(content)}\n${attachments || ''}`.trim());
 	}
 
