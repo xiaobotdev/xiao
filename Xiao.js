@@ -18,6 +18,7 @@ client.registry
 	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
 		['util-public', 'Utility'],
+		['util-voice', 'Utility (Voice)'],
 		['util', 'Utility (Owner)'],
 		['info', 'Discord Information'],
 		['random-res', 'Random Response'],
