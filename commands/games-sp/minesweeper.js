@@ -149,7 +149,7 @@ module.exports = class MinesweeperCommand extends Command {
 			}
 		} else {
 			if (flagged.includes(`${x - 1},${y - 1}`)) {
-				await msg.say(`Are you sure you want to check (${x - 1}, ${y - 1})? You have it flagged.`);
+				await msg.say(`Are you sure you want to check (${x}, ${y})? You have it flagged.`);
 				const verification = await verify(msg.channel, msg.author);
 				if (!verification) {
 					await msg.say('Okay, the spot will remain unchecked.');
