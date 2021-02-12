@@ -262,7 +262,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 596
+Total: 598
 
 ### Utility:
 
@@ -720,6 +720,7 @@ Total: 596
 * **subtitle:** Adds subtitles to an image.
 * **swirl:** Draws an image or a user's avatar but swirled.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
+* **trainer-card:** Creates a trainer card for a Pokémon trainer.
 * **tweet:** Sends a Twitter tweet with the user and text of your choice.
 * **undertale:** Sends a text box from Undertale with the quote and character of your choice.
 * **wanted:** Draws an image or a user's avatar over a wanted poster.
@@ -757,6 +758,7 @@ Total: 596
 * **challenger:** Draws an image or a user's avatar over Smash Bros.'s "Challenger Approaching" screen.
 * **change-my-mind:** Sends a "Change My Mind" meme with the text of your choice.
 * **chi-idea:** Sends a "Daddy, I've got an idea!" Takagi-san meme with the text of your choice.
+* **crush:** Draws an image or a user's avatar as Wolverine's crush.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
 * **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
 * **deep-fry:** Draws an image or a user's avatar but deep-fried.
@@ -1469,6 +1471,7 @@ here.
 - [Martin Handford](https://www.candlewick.com/authill.asp?b=Author&m=bio&id=1497&pix=y)
 	* waldo (Original "Where's Wally?" Book Series)
 - [Marvel](https://www.marvel.com/)
+	* crush ([Image, Original "X-Men" Comic](https://www.marvel.com/teams-and-groups/x-men))
 	* spiderman-pointing ([Image, Original "Spiderman" Comic](https://spiderman.marvelhq.com/))
 - [Marvelous](http://www.marv.jp/)
 	* give-flower ([Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
@@ -1641,8 +1644,11 @@ here.
 	* pokedex-stats (API)
 	* pokemon-advantage (API)
 	* smogon (API)
+	* trainer-card (API)
 	* whos-that-pokemon (API)
 	* whos-that-pokemon-cry (API)
+- [Pokécharms](https://pokecharms.com/)
+	* trainer-card ([Trainer Card API](https://pokecharms.com/trainer-card-maker/))
 - [Pokémon](https://www.pokemon.com/us/)
 	* 3000-years (Image, Original Game)
 	* dexter (Image, Original Anime)
@@ -1660,6 +1666,7 @@ here.
 	* pokemon-advantage (Images, Original Game)
 	* pokemon-fusion (Original Game)
 	* smogon (Images, Original Game)
+	* trainer-card (Images, Original Game)
 	* whos-that-pokemon (Images, Original Game)
 	* whos-that-pokemon-cry (Images, Original Game)
 	* wild-pokemon (Image, Original Game)
