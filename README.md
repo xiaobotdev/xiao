@@ -108,20 +108,20 @@ don't grant that permission.
 ### Before You Begin
 
 1. Make sure you have installed [Node.js](https://nodejs.org/en/) (you will need **at least v15.0.0**) and [Git](https://git-scm.com/).
+	- If on Windows, [make sure to check the box in the section of the installer for "Tools for Native Modules"](https://i.imgur.com/RMrlz2S.png).
 2. Clone this repository with `git clone https://github.com/dragonfire535/xiao.git`.
 3. Run `cd xiao` to move into the folder that you just created.
 4. Create a file named `.env` and fill it out as shown in `.env.example`.
 
 ### Windows
 
-1. Open an **ADMIN POWERSHELL** window and run `npm i -g --production windows-build-tools`.
-2. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation:-Windows).
-3. [Follow these instructions to install ffmpeg](https://www.wikihow.com/Install-FFmpeg-on-Windows).
-4. [Install ImageMagick](https://imagemagick.org/script/download.php).
-5. [Follow these instructions to install Redis](https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows). Remember to set up a password!
-6. Run `npm i --production` in the folder you cloned the bot.
-7. Run `npm i -g pm2` to install PM2.
-8. Run `pm2 start Xiao.js --name xiao` to run the bot.
+1. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation:-Windows).
+2. [Follow these instructions to install ffmpeg](https://www.wikihow.com/Install-FFmpeg-on-Windows).
+3. [Install ImageMagick](https://imagemagick.org/script/download.php).
+4. [Follow these instructions to install Redis](https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows). Remember to set up a password!
+5. Run `npm i --production` in the folder you cloned the bot.
+6. Run `npm i -g pm2` to install PM2.
+7. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ### Mac
 
