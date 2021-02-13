@@ -70,10 +70,12 @@ module.exports = class XiaoClient extends CommandoClient {
 		if (!file.guild || !file.user) return null;
 		for (const id of file.guild) {
 			if (typeof id !== 'string') continue;
+			if (this.blacklist.guild.includes(id)) continue;
 			this.blacklist.guild.push(id);
 		}
 		for (const id of file.user) {
 			if (typeof id !== 'string') continue;
+			if (this.blacklist.user.includes(id)) continue;
 			this.blacklist.user.push(id);
 		}
 		return file;
