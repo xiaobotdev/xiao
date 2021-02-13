@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const { escapeMarkdown } = require('discord.js');
 const jsChess = require('js-chess-engine');
 const { createCanvas, loadImage } = require('canvas');
 const moment = require('moment');
@@ -127,7 +126,7 @@ module.exports = class ChessCommand extends Command {
 
 						_You are ${gameState.check ? '**in check!**' : 'not in check.'}_
 						**Time Remaining: ${displayTime}** (Max 10min per turn)
-						**FEN:** ${escapeMarkdown(game.exportFEN())}
+						**FEN:** \`${game.exportFEN()}\`
 					`, { files: [{ attachment: this.displayBoard(gameState, prevPieces), name: 'chess.png' }] });
 					prevPieces = Object.assign({}, game.exportJson().pieces);
 					const moves = game.moves();
