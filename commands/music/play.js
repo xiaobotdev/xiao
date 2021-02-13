@@ -47,7 +47,7 @@ module.exports = class PlayCommand extends Command {
 		const result = await this.searchForVideo(query, msg.channel.nsfw || false);
 		if (!result) return msg.say('Could not find any results for your query.');
 		const data = await ytdl.getInfo(result);
-		const canPlay = await this.canUseVideo(data, msg.channel.nsfw || false);
+		const canPlay = this.canUseVideo(data, msg.channel.nsfw || false);
 		if (!canPlay) return msg.say('I cannot play this video.');
 		await msg.reply('Is this the video you want to play? Type **[y]es** or **[n]o**.', {
 			embed: this.generateEmbed(data)
