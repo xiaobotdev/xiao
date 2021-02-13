@@ -11,10 +11,11 @@ Xiao is a Discord bot coded in JavaScript with
 500 commands, she is one of the most feature-rich bots out there. Formerly
 "XiaoBot".
 
+# [Home Server](https://discord.gg/mTr83zt) | [Invite](https://discordapp.com/api/oauth2/authorize?client_id=278305350804045834&permissions=104721601&scope=bot)
+
 ## Table of Contents
 
 - [Copyright](#copyright)
-- [Invite](#invite)
 - [Permissions](#permissions)
 - [Fun Information](#fun-information)
 - [Installing](#installing)
@@ -66,11 +67,6 @@ Xiao is a Discord bot coded in JavaScript with
 - ©2017-2021 dragonfire535#8081
 - Xiao Pai/Rune Factory 4: ©2012 Marvelous Inc.
 - Avatar Art: ©2018 airful
-
-## Invite
-
-- [Home Server](https://discord.gg/mTr83zt)
-- [Invite](https://discordapp.com/api/oauth2/authorize?client_id=278305350804045834&permissions=104721601&scope=bot)
 
 ## Permissions
 
