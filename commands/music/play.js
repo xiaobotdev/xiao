@@ -1,7 +1,8 @@
 const Command = require('../../structures/Command');
+const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const ytdl = require('ytdl-core');
-const { reactIfAble } = require('../../util/Util');
+const { shorten, verify, reactIfAble } = require('../../util/Util');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class PlayCommand extends Command {
@@ -45,14 +46,19 @@ module.exports = class PlayCommand extends Command {
 		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
 		const result = await this.searchForVideo(query, msg.channel.nsfw || false);
 		if (!result) return msg.say('Could not find any results for your query.');
-		const canPlay = await this.canUseVideo(result, msg.channel.nsfw || false);
+		const data = await ytdl.getInfo(result);
+		const canPlay = await this.canUseVideo(data, msg.channel.nsfw || false);
 		if (!canPlay) return msg.say('I cannot play this video.');
+		await msg.reply('Is this the video you want to play? Type **[y]es** or **[n]o**.', {
+			embed: this.generateEmbed(data)
+		});
+		const verification = await verify(msg.channel, msg.author);
+		if (!verification) return msg.say('Aborting playback.');
 		const dispatcher = connection.play(ytdl(result, { filter: 'audioonly', quality: 'lowest' }));
 		this.client.dispatchers.set(msg.guild.id, dispatcher);
 		dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
 		dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
-		await reactIfAble(msg, this.client.user, '🔉');
-		return null;
+		return msg.reply(`🔉 Now playing **${shorten(data.videoDetails.title, 70)}**!`);
 	}
 
 	async searchForVideo(query, nsfw) {
@@ -73,10 +79,21 @@ module.exports = class PlayCommand extends Command {
 		return data.id.videoId;
 	}
 
-	async canUseVideo(id, nsfw) {
-		const data = await ytdl.getInfo(id);
+	async canUseVideo(data, nsfw) {
 		if (data.videoDetails.isPrivate || data.videoDetails.isLiveContent) return false;
 		if (data.videoDetails.age_restricted && nsfw) return false;
 		return true;
+	}
+
+	generateEmbed(data) {
+		return new MessageEmbed()
+			.setColor(0xDD2825)
+			.setTitle(shorten(data.videoDetails.title, 70))
+			.setDescription(shorten(data.videoDetails.description, 100))
+			.setAuthor('YouTube', 'https://i.imgur.com/kKHJg9Q.png', 'https://www.youtube.com/')
+			.setURL(data.videoDetails.video_url)
+			.setThumbnail(data.videoDetails.thumbnails.length ? data.videoDetails.thumbnails[0].url : null)
+			.addField('❯ ID', data.videoDetails.videoId, true)
+			.addField('❯ Publish Date', data.videoDetails.publishDate, true);
 	}
 };
