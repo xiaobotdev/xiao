@@ -86,6 +86,14 @@ client.on('ready', async () => {
 		}, client.memePoster.postInterval);
 	}
 
+	// Import blacklist
+	try {
+		const results = client.importBlacklist();
+		if (!results) client.logger.error('[BLACKLIST] blacklist.json is not formatted correctly.');
+	} catch (err) {
+		client.logger.error(`[BLACKLIST] Could not parse blacklist.json:\n${err.stack}`);
+	}
+
 	// Import command-leaderboard.json
 	try {
 		const results = client.importCommandLeaderboard();
@@ -138,6 +146,10 @@ client.on('message', async msg => {
 });
 
 client.on('guildCreate', async guild => {
+	if (client.blacklist.guild.includes(guild.id) || client.blacklist.user.includes(guild.ownerID)) {
+		guild.leave();
+		return;
+	}
 	if (guild.systemChannel && guild.systemChannel.permissionsFor(client.user).has('SEND_MESSAGES')) {
 		try {
 			const usage = client.registry.commands.get('help').usage();
@@ -205,6 +217,12 @@ client.on('commandRun', command => {
 	command.uses++;
 	if (command.lastRun === undefined) return;
 	command.lastRun = new Date();
+});
+
+client.dispatcher.addInhibitor(msg => {
+	if (client.blacklist.user.includes(msg.author.id)) return 'blacklisted';
+	if (client.blacklist.guild.includes(msg.guild.id)) return 'blacklisted';
+	return false;
 });
 
 client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));

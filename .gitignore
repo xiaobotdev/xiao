@@ -12,6 +12,7 @@ report*.json
 config.json
 command-leaderboard.json
 command-last-run.json
+blacklist.json
 
 # Tesseract Trained Data
 *.traineddata
