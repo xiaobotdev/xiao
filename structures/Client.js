@@ -35,6 +35,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.redis = Redis ? Redis.db : null;
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.timers = new TimerManager(this);
+		this.blacklist = { guild: [], user: [] };
 		this.pokemon = new PokemonStore();
 		this.memePoster = POSTER_ID && POSTER_TOKEN ? new MemePosterClient(POSTER_ID, POSTER_TOKEN, {
 			subreddits,
@@ -60,6 +61,39 @@ module.exports = class XiaoClient extends CommandoClient {
 			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${recipient.id}>`))
 			|| (origin.guild && recipient.guild && origin.topic.includes(`<xiao:phone:block:${recipient.guild.id}>`))
 			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${caller.id}>`));
+	}
+
+	importBlacklist() {
+		const read = fs.readFileSync(path.join(__dirname, '..', 'blacklist.json'), { encoding: 'utf8' });
+		const file = JSON.parse(read);
+		if (typeof file !== 'object' || Array.isArray(file)) return null;
+		if (!file.guild || !file.user) return null;
+		for (const id of file.guild) {
+			if (typeof value !== 'string') continue;
+			this.blacklist.guild.push(id);
+		}
+		for (const id of file.user) {
+			if (typeof value !== 'string') continue;
+			this.blacklist.user.push(id);
+		}
+		return file;
+	}
+
+	exportBlacklist() {
+		let text = '{\n	"guild": [\n		';
+		for (const id of this.blacklist.guild) {
+			text += `"${id}",`;
+		}
+		text = text.slice(0, -1);
+		text += '\n		]\n	},\n	"user": [\n		';
+		for (const id of this.blacklist.user) {
+			text += `"${id}",`;
+		}
+		text = text.slice(0, -1);
+		text += '\n		]\n	}\n}\n';
+		const buf = Buffer.from(text);
+		fs.writeFileSync(path.join(__dirname, '..', 'blacklist.json'), buf, { encoding: 'utf8' });
+		return buf;
 	}
 
 	importCommandLeaderboard() {
