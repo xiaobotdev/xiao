@@ -221,7 +221,7 @@ client.on('commandRun', command => {
 
 client.dispatcher.addInhibitor(msg => {
 	if (client.blacklist.user.includes(msg.author.id)) return 'blacklisted';
-	if (client.blacklist.guild.includes(msg.guild.id)) return 'blacklisted';
+	if (msg.guild && client.blacklist.guild.includes(msg.guild.id)) return 'blacklisted';
 	return false;
 });
 
