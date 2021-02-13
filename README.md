@@ -251,6 +251,7 @@ in the appropriate channel's topic to use it.
 
 * `<xiao:disable-leave>` Disables leave messages (Place in the channel you recieve welcome messages in).
 * `<xiao:phone>` Allows a channel to recieve phone calls from the `phone` command.
+* `<xiao:phone:no-notice>` Hides the abuse notice from phone call pick-ups.
 * `<xiao:phone:no-voicemail>` Prevents this channel from recieving voicemails for missed calls.
 * `<xiao:phone:no-random>` Makes the channel only able to be called directly in the `phone` command, rather than be picked at random.
 * `<xiao:phone:block:INSERTIDHERE>` Blocks a channel or server from contacting the channel via phone.
