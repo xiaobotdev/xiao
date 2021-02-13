@@ -23,6 +23,7 @@ module.exports = class OptionsCommand extends Command {
 
 			__Phone Options__
 			\`<xiao:phone>\` Allows this channel to recieve phone calls.
+			\`<xiao:phone:no-notice>\` Hides the abuse notice from phone call pick-ups.
 			\`<xiao:phone:no-voicemail>\` Prevents this channel from recieving voicemails for missed calls.
 			\`<xiao:phone:no-random>\` Makes the channel only able to be called directly, rather than picked randomly.
 			\`<xiao:phone:block:INSERTIDHERE>\` Blocks a channel or server from contacting you via phone.

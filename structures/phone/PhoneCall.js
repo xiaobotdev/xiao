@@ -53,10 +53,13 @@ module.exports = class PhoneCall {
 		this.setTimeout();
 		if (this.adminCall) return this;
 		const usage = this.client.registry.commands.get('hang-up').usage();
+		if (!this.origin.topic.includes('<xiao:phone:no-notice>')) await this.sendNotice(this.origin);
 		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Use ${usage} to hang up.`);
 		if (this.originDM) {
+			await this.sendNotice(this.recipient, true);
 			await this.recipient.send(`☎️ Accepted call from **${this.startUser.tag}'s DM**. Use ${usage} to hang up.`);
 		} else {
+			if (!this.recipient.topic.includes('<xiao:phone:no-notice>')) await this.sendNotice(this.recipient);
 			await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Use ${usage} to hang up.`);
 		}
 		return this;
@@ -161,5 +164,15 @@ module.exports = class PhoneCall {
 		str = stripInvites(str);
 		str = preventURLEmbeds(str);
 		return str;
+	}
+
+	sendNotice(channel, dm) {
+		const reportUsage = this.client.registry.commands.get('report').usage('abuse <reason>');
+		return channel.send(stripIndents`
+			⚠️ **Notice:** ⚠️
+			Sending illegal, NSFW, obscene, or hateful content can result in you and your server being banned from Xiao.
+			To report abuse, use ${reportUsage} (please include IDs and user tags).
+			${dm ? '' : 'To hide this notice, place `<xiao:phone:no-notice>` in your channel topic.'}
+		`);
 	}
 };
