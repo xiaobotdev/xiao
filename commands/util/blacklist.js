@@ -30,6 +30,7 @@ module.exports = class BlacklistCommand extends Command {
 	}
 
 	run(msg, { type, target }) {
+		if (this.client.blacklist[type].includes(target)) return msg.say(`🔨 \`${target}\` is already blacklisted.`);
 		this.client.blacklist[type].push(target);
 		this.client.exportBlacklist();
 		return msg.say(`🔨 Blacklisted ${type} \`${target}\`.`);
