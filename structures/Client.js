@@ -85,12 +85,12 @@ module.exports = class XiaoClient extends CommandoClient {
 			text += `"${id}",`;
 		}
 		text = text.slice(0, -1);
-		text += '\n		]\n	},\n	"user": [\n		';
+		text += '\n	],\n	"user": [\n		';
 		for (const id of this.blacklist.user) {
 			text += `"${id}",`;
 		}
 		text = text.slice(0, -1);
-		text += '\n		]\n	}\n}\n';
+		text += '\n	]\n}\n';
 		const buf = Buffer.from(text);
 		fs.writeFileSync(path.join(__dirname, '..', 'blacklist.json'), buf, { encoding: 'utf8' });
 		return buf;
