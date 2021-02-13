@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const ytdl = require('ytdl-core');
-const { shorten, verify, reactIfAble } = require('../../util/Util');
+const { shorten, verify } = require('../../util/Util');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class PlayCommand extends Command {
@@ -79,7 +79,7 @@ module.exports = class PlayCommand extends Command {
 		return data.id.videoId;
 	}
 
-	async canUseVideo(data, nsfw) {
+	canUseVideo(data, nsfw) {
 		if (data.videoDetails.isPrivate || data.videoDetails.isLiveContent) return false;
 		if (data.videoDetails.age_restricted && nsfw) return false;
 		return true;
