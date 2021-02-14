@@ -56,7 +56,7 @@ module.exports = class WhatAnimeCommand extends Command {
 	async fetchRateLimit() {
 		try {
 			const { body } = await request.get('https://trace.moe/api/me');
-			return { status: body.limit > 0, refresh: body.limit_ttl };
+			return { status: body.user_limit > 0, refresh: body.user_limit_ttl };
 		} catch {
 			return { status: false, refresh: Infinity };
 		}
