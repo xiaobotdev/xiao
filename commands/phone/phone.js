@@ -40,16 +40,16 @@ module.exports = class PhoneCommand extends Command {
 		if (channelID !== 'count' && (msg.guild && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')))) {
 			return msg.say('You can only start a call in a channel with `<xiao:phone>` in the topic.');
 		}
-		if (channelID !== 'count' && this.client.inPhoneCall(msg.channel)) {
+		if (channelID !== 'count' && this.client.phone.inCall(msg.channel)) {
 			return msg.say('This channel is already in a phone call.');
 		}
 		const channels = this.client.channels.cache.filter(channel => channel.guild
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
 			&& !channel.topic.includes('<xiao:phone:no-random>')
-			&& !this.client.isBlockedFromPhone(msg.channel, channel, msg.author)
+			&& !this.client.phone.isBlocked(msg.channel, channel, msg.author)
 			&& (msg.guild ? !msg.guild.channels.cache.has(channel.id) : true)
-			&& (channelID ? true : !this.client.inPhoneCall(channel)));
+			&& (channelID ? true : !this.client.phone.inCall(channel)));
 		if (!channels.size) return msg.reply('No channels currently allow phone calls...');
 		let channel;
 		if (channelID) {
@@ -61,8 +61,8 @@ module.exports = class PhoneCommand extends Command {
 			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
 				return msg.reply('That channel does not allow phone calls.');
 			}
-			if (this.client.inPhoneCall(channel)) return msg.reply('That channel is already in a call.');
-			if (this.client.isBlockedFromPhone(msg.channel, channel, msg.author)) {
+			if (this.client.phone.inCall(channel)) return msg.reply('That channel is already in a call.');
+			if (this.client.phone.isBlocked(msg.channel, channel, msg.author)) {
 				return msg.reply('That channel has blocked this channel from calling them.');
 			}
 		} else {

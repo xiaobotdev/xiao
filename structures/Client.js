@@ -5,6 +5,7 @@ const winston = require('winston');
 const fs = require('fs');
 const path = require('path');
 const Redis = require('./Redis');
+const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
 const MemePosterClient = require('./MemePoster');
@@ -45,22 +46,9 @@ module.exports = class XiaoClient extends CommandoClient {
 		}) : null;
 		this.games = new Collection();
 		this.dispatchers = new Map();
-		this.phone = new Collection();
+		this.phone = new PhoneManager(this);
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
-	}
-
-	inPhoneCall(channel) {
-		return this.phone.some(call => call.origin.id === channel.id || call.recipient.id === channel.id);
-	}
-
-	isBlockedFromPhone(origin, recipient, caller) {
-		return (recipient.guild && recipient.topic.includes(`<xiao:phone:block:${origin.id}>`))
-			|| (recipient.guild && recipient.topic.includes(`<xiao:phone:block:${caller.id}>`))
-			|| (origin.guild && recipient.guild && recipient.topic.includes(`<xiao:phone:block:${origin.guild.id}>`))
-			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${recipient.id}>`))
-			|| (origin.guild && recipient.guild && origin.topic.includes(`<xiao:phone:block:${recipient.guild.id}>`))
-			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${caller.id}>`));
 	}
 
 	importBlacklist() {
