@@ -118,7 +118,7 @@ module.exports = class PhoneCall {
 		if (this.cooldown.has(msg.author.id) && !this.client.isOwner(msg.author)) {
 			return otherChannel.send(`☎️ ${msg.author}, slow down! You're sending messages too fast!`);
 		}
-		if (this.client.isBlockedFromPhone(otherChannel, channel, msg.author)) {
+		if (this.client.phone.isBlocked(otherChannel, channel, msg.author)) {
 			return otherChannel.send(`☎️ ${msg.author}, you are blocked from sending messages to this channel!`);
 		}
 		this.setTimeout();
