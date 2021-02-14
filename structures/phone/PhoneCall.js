@@ -30,6 +30,10 @@ module.exports = class PhoneCall {
 			}
 		} else {
 			await this.origin.send(`☎️ Calling **${this.recipient.guild.name} (${this.recipient.id})**...`);
+			if (this.recipient.topic && this.recipient.topic.includes('<xiao:phone:auto-accept>')) {
+				await this.accept();
+				return this;
+			}
 			if (this.originDM) {
 				await this.recipient.send(
 					`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.startUser.id})**. Pick up?`
@@ -53,13 +57,19 @@ module.exports = class PhoneCall {
 		this.setTimeout();
 		if (this.adminCall) return this;
 		const usage = this.client.registry.commands.get('hang-up').usage();
-		if (!this.origin.topic.includes('<xiao:phone:no-notice>')) await this.sendNotice(this.origin);
+		if (this.originDM || (this.origin.topic && !this.origin.topic.includes('<xiao:phone:no-notice>'))) {
+			await this.sendNotice(this.origin, this.originDM);
+		}
 		await this.origin.send(`☎️ **${this.recipient.guild.name}** picked up! Use ${usage} to hang up.`);
 		if (this.originDM) {
-			await this.sendNotice(this.recipient, true);
+			if (this.recipient.topic && !this.recipient.topic.includes('<xiao:phone:no-notice>')) {
+				await this.sendNotice(this.recipient);
+			}
 			await this.recipient.send(`☎️ Accepted call from **${this.startUser.tag}'s DM**. Use ${usage} to hang up.`);
 		} else {
-			if (!this.recipient.topic.includes('<xiao:phone:no-notice>')) await this.sendNotice(this.recipient);
+			if (this.recipient.topic && !this.recipient.topic.includes('<xiao:phone:no-notice>')) {
+				await this.sendNotice(this.recipient);
+			}
 			await this.recipient.send(`☎️ Accepted call from **${this.origin.guild.name}**. Use ${usage} to hang up.`);
 		}
 		return this;
