@@ -30,6 +30,9 @@ Xiao is a Discord bot coded in JavaScript with
 	* [Imgur Album IDs](#imgur-album-ids)
 - [Related Bots](#related-bots)
 - [Options](#Options)
+	* [General Options](#general-options)
+	* [Phone Options](#phone-options)
+	* [Portal Options](#portal-options)
 - [Commands](#commands)
 	* [Utility](#utility)
 	* [Utility (Voice)](#utility-voice)
@@ -249,16 +252,21 @@ why you shouldn't self-host Xiao.
 Options in Xiao are configured using channel topics. Place the option
 in the appropriate channel's topic to use it.
 
-* `<xiao:disable-leave>` Disables leave messages (Place in the channel you recieve welcome messages in).
-* `<xiao:phone>` Allows a channel to recieve phone calls from the `phone` command.
+### General Options
+* `<xiao:disable-leave>` Disables leave messages (System Channel).
+
+### Phone Options
+* `<xiao:phone>` Allows this channel to recieve phone calls.
 * `<xiao:phone:auto-accept>` Automatically accepts all incoming phone calls.
 * `<xiao:phone:no-notice>` Hides the abuse notice from phone call pick-ups.
 * `<xiao:phone:no-voicemail>` Prevents this channel from recieving voicemails for missed calls.
-* `<xiao:phone:no-random>` Makes the channel only able to be called directly in the `phone` command, rather than be picked at random.
-* `<xiao:phone:block:INSERTIDHERE>` Blocks a channel or server from contacting the channel via phone.
-* `<xiao:phone-book:hide>` Hides a channel from the `phone-book` command.
-* `<xiao:portal>` Allows a channel to recieve portal messages from the `portal-send` command.
-* `<xiao:portal:hide-name>` Hides the channel and server name from the `portal-send` command when your channel is picked.
+* `<xiao:phone:no-random>` Makes the channel only able to be called directly, rather than picked randomly.
+* `<xiao:phone:block:INSERTIDHERE>` Blocks a channel or server from contacting you via phone.
+* `<xiao:phone-book:hide>` Hides this channel from `phone-book`.
+
+### Portal Options
+* `<xiao:portal>` Marks the channel as a portal channel for `portal-send`.
+* `<xiao:portal:hide-name>` Hides the channel's name when the channel is chosen to recieve a portal message.
 
 ## Commands
 
