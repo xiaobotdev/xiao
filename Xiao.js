@@ -147,8 +147,11 @@ client.on('message', async msg => {
 
 client.on('guildCreate', async guild => {
 	if (client.blacklist.guild.includes(guild.id) || client.blacklist.user.includes(guild.ownerID)) {
-		guild.leave();
-		return;
+		try {
+			await guild.leave();
+		} finally {
+			return;
+		}
 	}
 	if (guild.systemChannel && guild.systemChannel.permissionsFor(client.user).has('SEND_MESSAGES')) {
 		try {
