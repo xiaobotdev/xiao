@@ -2,9 +2,9 @@ const Collection = require('@discordjs/collection');
 
 module.exports = class PhoneManager extends Collection {
 	constructor(client, options) {
-		Object.defineProperty(this, 'client', { value: client });
-
 		super(options);
+
+		Object.defineProperty(this, 'client', { value: client });
 	}
 
 	inCall(channel) {
@@ -19,5 +19,4 @@ module.exports = class PhoneManager extends Collection {
 			|| (origin.guild && recipient.guild && origin.topic.includes(`<xiao:phone:block:${recipient.guild.id}>`))
 			|| (origin.guild && origin.topic.includes(`<xiao:phone:block:${caller.id}>`));
 	}
-
 };
