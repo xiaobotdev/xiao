@@ -253,7 +253,7 @@ module.exports = class Util {
 		return arr[Number.parseInt(msgs.first().content, 10) - 1];
 	}
 
-	static async awaitPlayers(msg, max, min = 1) {
+	static async awaitPlayers(msg, max, min, blacklist) {
 		if (max === 1) return [msg.author.id];
 		const addS = min - 1 === 1 ? '' : 's';
 		await msg.say(
@@ -263,6 +263,7 @@ module.exports = class Util {
 		joined.push(msg.author.id);
 		const filter = res => {
 			if (res.author.bot) return false;
+			if (blacklist.includes(res.author.id)) return false;
 			if (joined.includes(res.author.id)) return false;
 			if (res.content.toLowerCase() !== 'join game') return false;
 			joined.push(res.author.id);

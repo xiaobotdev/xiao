@@ -25,6 +25,7 @@ module.exports = class GunfightCommand extends Command {
 	async run(msg, { opponent }) {
 		if (opponent.bot) return msg.reply('Bots may not be fought.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not fight yourself.');
+		if (this.client.blacklist.user.includes(opponent.id)) return msg.reply('This user is blacklisted.');
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
