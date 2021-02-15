@@ -97,7 +97,7 @@ client.on('ready', async () => {
 	// Make sure bot is not in any blacklisted guilds
 	for (const id of client.blacklist.guild) {
 		try {
-			const guild = await this.client.guilds.fetch(id, false);
+			const guild = await client.guilds.fetch(id, false);
 			await guild.leave();
 			client.logger.info(`[BLACKLIST] Left blacklisted guild ${id}.`);
 		} catch {
@@ -107,7 +107,7 @@ client.on('ready', async () => {
 
 	// Make sure bot is not in any guilds owned by a blacklisted user
 	let guildsLeft = 0;
-	for (const guild of this.client.guilds.cache.values()) {
+	for (const guild of client.guilds.cache.values()) {
 		if (client.blacklist.user.includes(guild.ownerID)) {
 			try {
 				await guild.leave();
