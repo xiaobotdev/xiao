@@ -94,6 +94,31 @@ client.on('ready', async () => {
 		client.logger.error(`[BLACKLIST] Could not parse blacklist.json:\n${err.stack}`);
 	}
 
+	// Make sure bot is not in any blacklisted guilds
+	for (const id of client.blacklist.guild) {
+		try {
+			const guild = await this.client.guilds.fetch(id, false);
+			await guild.leave();
+			client.logger.info(`[BLACKLIST] Left blacklisted guild ${id}.`);
+		} catch {
+			client.logger.info(`[BLACKLIST] Failed to leave blacklisted guild ${id}.`);
+		}
+	}
+
+	// Make sure bot is not in any guilds owned by a blacklisted user
+	let guildsLeft = 0;
+	for (const guild of this.client.guilds.cache.values()) {
+		if (client.blacklist.user.includes(guild.ownerID)) {
+			try {
+				await guild.leave();
+				guildsLeft++;
+			} catch {
+				client.logger.info(`[BLACKLIST] Failed to leave blacklisted guild ${guild.id}.`);
+			}
+		}
+	}
+	client.logger.info(`[BLACKLIST] Left ${guildsLeft} guilds owned by blacklisted users.`);
+
 	// Import command-leaderboard.json
 	try {
 		const results = client.importCommandLeaderboard();
