@@ -156,6 +156,7 @@ client.on('message', async msg => {
 	const hasImage = msg.attachments.size !== 0;
 	const hasEmbed = msg.embeds.length !== 0;
 	if (msg.author.bot || (!hasText && !hasImage && !hasEmbed)) return;
+	if (client.blacklist.user.includes(msg.author.id)) return;
 	const origin = client.phone.find(call => call.origin.id === msg.channel.id);
 	const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
 	if (!origin && !recipient) return;
