@@ -54,7 +54,7 @@ module.exports = class PlayCommand extends Command {
 		});
 		const verification = await verify(msg.channel, msg.author);
 		if (!verification) return msg.say('Aborting playback.');
-		const dispatcher = connection.play(ytdl(result, { filter: 'audioonly', quality: 'lowest' }));
+		const dispatcher = connection.play(ytdl(result, { filter: 'audioonly' }));
 		this.client.dispatchers.set(msg.guild.id, dispatcher);
 		dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
 		dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
