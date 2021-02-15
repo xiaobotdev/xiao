@@ -101,6 +101,7 @@ client.on('ready', async () => {
 			await guild.leave();
 			client.logger.info(`[BLACKLIST] Left blacklisted guild ${id}.`);
 		} catch {
+			if (!client.guilds.cache.has(id)) continue;
 			client.logger.info(`[BLACKLIST] Failed to leave blacklisted guild ${id}.`);
 		}
 	}
