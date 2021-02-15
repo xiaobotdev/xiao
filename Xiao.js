@@ -186,7 +186,8 @@ client.on('guildDelete', async guild => {
 			.setTitle(`Left ${guild.name}...`)
 			.setFooter(`ID: ${guild.id}`)
 			.setTimestamp()
-			.addField('❯ Members', formatNumber(guild.memberCount));
+			.addField('❯ Members', formatNumber(guild.memberCount))
+			.addField('❯ Owner', guild.ownerID);
 		await joinLeaveChannel.send({ embed });
 	}
 });
