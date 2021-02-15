@@ -34,7 +34,7 @@ module.exports = class BalloonPopCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			const awaitedPlayers = await awaitPlayers(msg, playersCount, 2);
+			const awaitedPlayers = await awaitPlayers(msg, playersCount, 2, this.client.blacklist.user);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');

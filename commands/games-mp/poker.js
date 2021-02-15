@@ -47,7 +47,7 @@ module.exports = class PokerCommand extends Command {
 			}
 		});
 		try {
-			const awaitedPlayers = await awaitPlayers(msg, playersCount, min);
+			const awaitedPlayers = await awaitPlayers(msg, playersCount, min, this.client.blacklist.user);
 			if (!awaitedPlayers) {
 				this.client.games.delete(msg.channel.id);
 				return msg.say('Game could not be started...');
