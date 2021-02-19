@@ -18,13 +18,21 @@ module.exports = class CommandLeaderboardImportCommand extends Command {
 			description: 'Imports a command leaderboard JSON file.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,
-			guarded: true
+			guarded: true,
+			args: [
+				{
+					key: 'add',
+					prompt: 'Do you want to add the values to the existing ones?',
+					type: 'boolean',
+					default: false
+				}
+			]
 		});
 	}
 
-	run(msg) {
+	run(msg, { add }) {
 		try {
-			const results = this.client.importCommandLeaderboard();
+			const results = this.client.importCommandLeaderboard(add);
 			if (!results) return msg.reply('The JSON file provided is invalid.');
 			return msg.say('Successfully imported command leaderboard.');
 		} catch (err) {

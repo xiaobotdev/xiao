@@ -90,7 +90,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		return buf;
 	}
 
-	importCommandLeaderboard() {
+	importCommandLeaderboard(add = false) {
 		const read = fs.readFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), {
 			encoding: 'utf8'
 		});
@@ -100,7 +100,8 @@ module.exports = class XiaoClient extends CommandoClient {
 			if (typeof value !== 'number') continue;
 			const found = this.registry.commands.get(id);
 			if (!found || found.uses === undefined) continue;
-			found.uses = value;
+			if (add) found.uses += value;
+			else found.uses = value;
 		}
 		return file;
 	}
