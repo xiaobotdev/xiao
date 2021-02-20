@@ -6,7 +6,7 @@ module.exports = class FontCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'font',
-			aliases: ['font-test'],
+			aliases: ['font-test', 'text-image', 'txt-img', 'text-img', 'txt-image'],
 			group: 'edit-image',
 			memberName: 'font',
 			description: 'Types text in a specific font.',
