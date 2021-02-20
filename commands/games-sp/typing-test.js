@@ -67,7 +67,7 @@ module.exports = class TypingTestCommand extends Command {
 	generateImage(sentence) {
 		const canvasPre = createCanvas(1, 1);
 		const ctxPre = canvasPre.getContext('2d');
-		ctxPre.font = '75px Noto';
+		ctxPre.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(75);
 		const len = ctxPre.measureText(sentence);
 		const canvas = createCanvas(100 + len.width, 200);
 		const ctx = canvas.getContext('2d');

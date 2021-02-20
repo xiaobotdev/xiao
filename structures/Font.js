@@ -40,4 +40,8 @@ module.exports = class Font {
 	get filenameNoExt() {
 		return this.filename.replace(/(\.(otf|ttf))$/, '');
 	}
+
+	get isVariant() {
+		return variants[this.filename];
+	}
 };
