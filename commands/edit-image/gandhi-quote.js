@@ -1,11 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'lmroman10-italic.otf'), {
-	family: 'Latin Modern Roman',
-	style: 'italic'
-});
 
 module.exports = class GandhiQuoteCommand extends Command {
 	constructor(client) {
@@ -46,12 +42,12 @@ module.exports = class GandhiQuoteCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = 'italic 50px Latin Modern Roman';
+		ctx.font = this.client.fonts.get('lmroman10-italic.otf').toCanvasString(50);
 		ctx.fillStyle = 'white';
 		let fontSize = 50;
 		while (ctx.measureText(quote).width > 945) {
 			fontSize--;
-			ctx.font = `italic ${fontSize}px Latin Modern Roman`;
+			ctx.font = this.client.fonts.get('lmroman10-italic.otf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, quote, 270);
 		const topMost = 180 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));

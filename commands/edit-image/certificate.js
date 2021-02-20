@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const moment = require('moment');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'oldengl.ttf'), { family: 'Old English Text MT' });
 
 module.exports = class CertificateCommand extends Command {
 	constructor(client) {
@@ -59,7 +58,7 @@ module.exports = class CertificateCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '30px Old English Text MT';
+		ctx.font = this.client.fonts.get('oldengl.ttf').toCanvasString(30);
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
 		ctx.fillText(reason, 518, 273);

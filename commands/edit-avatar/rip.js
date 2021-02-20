@@ -1,9 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { greyscale } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'CoffinStone.otf'), { family: 'Coffin Stone' });
 
 module.exports = class RipCommand extends Command {
 	constructor(client) {
@@ -63,12 +62,12 @@ module.exports = class RipCommand extends Command {
 			greyscale(ctx, 194, 399, 500, 500);
 			ctx.textBaseline = 'top';
 			ctx.textAlign = 'center';
-			ctx.font = '62px Coffin Stone';
+			ctx.font = this.client.fonts.get('CoffinStone.otf').toCanvasString(62);
 			ctx.fillStyle = 'black';
 			ctx.fillText(user.username, 438, 330, 500);
 			ctx.fillStyle = 'white';
 			if (cause) ctx.fillText(cause, 438, 910, 500);
-			ctx.font = '37px Coffin Stone';
+			ctx.font = this.client.fonts.get('CoffinStone.otf').toCanvasString(37);
 			ctx.fillText('In Loving Memory of', 438, 292);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
 		} catch (err) {

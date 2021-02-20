@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class TwoButtonsCommand extends Command {
 	constructor(client) {
@@ -57,11 +54,11 @@ module.exports = class TwoButtonsCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(-12 * (Math.PI / 180));
-		ctx.font = '34px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(34);
 		let fontSize = 34;
 		while (ctx.measureText(first).width > 366) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const firstLines = await wrapText(ctx, first, 183);
 		let lineOffset = 0;
@@ -69,11 +66,11 @@ module.exports = class TwoButtonsCommand extends Command {
 			ctx.fillText(firstLines[i], 25 + lineOffset, 116 + (fontSize * i) + (10 * i), 183);
 			lineOffset += 5;
 		}
-		ctx.font = '34px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(34);
 		fontSize = 34;
 		while (ctx.measureText(second).width > 244) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const secondLines = await wrapText(ctx, second, 118);
 		lineOffset = 0;

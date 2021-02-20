@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Oswald-SemiBold.ttf'), { family: 'Oswald' });
 
 module.exports = class DearLiberalsCommand extends Command {
 	constructor(client) {
@@ -65,12 +64,12 @@ module.exports = class DearLiberalsCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
-		ctx.font = '20px Oswald SemiBold';
+		ctx.font = this.client.fonts.get('Oswald-SemiBold.ttf').toCanvasString(20);
 		ctx.rotate(12.30 * (Math.PI / 180));
 		ctx.fillText(`#${hashtag}`, 200, 210);
 		ctx.rotate(-12.30 * (Math.PI / 180));
 		ctx.fillStyle = '#002046';
-		ctx.font = '27px Oswald SemiBold';
+		ctx.font = this.client.fonts.get('Oswald-SemiBold.ttf').toCanvasString(27);
 		const blueLines = await wrapText(ctx, blueText, 270);
 		ctx.fillText(blueLines.join('\n'), 207, 90);
 		ctx.fillStyle = '#c31a41';

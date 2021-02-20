@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 const coord = [[240, 63], [689, 63], [705, 383], [220, 380]];
 
 module.exports = class PlanktonPlanCommand extends Command {
@@ -70,12 +67,12 @@ module.exports = class PlanktonPlanCommand extends Command {
 		ctx.textBaseline = 'top';
 		let i = 0;
 		for (const [x, y] of coord) {
-			ctx.font = '35px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(35);
 			const step = steps[i];
 			let fontSize = 35;
 			while (ctx.measureText(step).width > 420) {
 				fontSize--;
-				ctx.font = `${fontSize}px Noto`;
+				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const lines = await wrapText(ctx, step, 155);
 			ctx.fillText(lines.join('\n'), x, y);

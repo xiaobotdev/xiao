@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class DrakepostingCommand extends Command {
 	constructor(client) {
@@ -58,11 +55,11 @@ module.exports = class DrakepostingCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
-			ctx.font = '50px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
 			let fontSize = 50;
 			while (ctx.measureText(nah).width > 3003) {
 				fontSize--;
-				ctx.font = `${fontSize}px Noto`;
+				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const nahLines = await wrapText(ctx, nah, 462);
 			const nahTopMost = 256 - (((fontSize * nahLines.length) / 2) + ((10 * (nahLines.length - 1)) / 2));
@@ -70,11 +67,11 @@ module.exports = class DrakepostingCommand extends Command {
 				const height = nahTopMost + ((fontSize + 10) * i);
 				ctx.fillText(nahLines[i], 768, height);
 			}
-			ctx.font = '50px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
 			fontSize = 50;
 			while (ctx.measureText(yeah).width > 3003) {
 				fontSize--;
-				ctx.font = `${fontSize}px Noto`;
+				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const yeahLines = await wrapText(ctx, yeah, 462);
 			const yeahTopMost = 768 - (((fontSize * yeahLines.length) / 2) + ((10 * (yeahLines.length - 1)) / 2));

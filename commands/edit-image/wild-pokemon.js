@@ -1,9 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart, greyscale, pixelize } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'PokemonGb.ttf'), { family: 'Pokemon GB' });
 
 module.exports = class WildPokemonCommand extends Command {
 	constructor(client) {
@@ -60,7 +59,7 @@ module.exports = class WildPokemonCommand extends Command {
 			pixelize(ctx, canvas, data, 0.30, x, y, width, height);
 			greyscale(ctx, x, y, width, height);
 			ctx.textBaseline = 'top';
-			ctx.font = '16px Pokemon GB';
+			ctx.font = this.client.fonts.get('PokemonGb.ttf').toCanvasString(16);
 			ctx.fillText(name.toUpperCase(), 110, 203, 215);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wild-pokemon.png' }] });
 		} catch (err) {

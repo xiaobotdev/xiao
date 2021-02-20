@@ -1,8 +1,6 @@
 const Command = require('../../structures/Command');
-const { createCanvas, registerFont } = require('canvas');
-const path = require('path');
+const { createCanvas } = require('canvas');
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Captcha.ttf'), { family: 'Captcha' });
 
 module.exports = class CaptchaCommand extends Command {
 	constructor(client) {
@@ -36,7 +34,7 @@ module.exports = class CaptchaCommand extends Command {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.beginPath();
 		ctx.strokeStyle = '#0088cc';
-		ctx.font = '26px Captcha';
+		ctx.font = this.client.fonts.get('Captcha.ttf').toCanvasString(26);
 		ctx.rotate(-0.05);
 		ctx.strokeText(text, 15, 26);
 		await msg.reply(

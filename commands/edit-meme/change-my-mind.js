@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class ChangeMyMindCommand extends Command {
 	constructor(client) {
@@ -51,11 +48,11 @@ module.exports = class ChangeMyMindCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(-24 * (Math.PI / 180));
-		ctx.font = '35px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(35);
 		let fontSize = 35;
 		while (ctx.measureText(text).width > 843) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, text, 337);
 		ctx.fillText(lines.join('\n'), 142, 430, 337);

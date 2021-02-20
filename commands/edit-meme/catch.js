@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { delay } = require('../../util/Util');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class CatchCommand extends Command {
 	constructor(client) {
@@ -53,7 +50,7 @@ module.exports = class CatchCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textBaseline = 'top';
 		ctx.fillStyle = 'red';
-		ctx.font = '25px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(25);
 		ctx.fillText('EVERYONE CAUGHT IS', 18, 165);
 		ctx.textAlign = 'center';
 		ctx.fillText(is.toUpperCase(), 163, 202);

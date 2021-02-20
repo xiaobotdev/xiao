@@ -1,9 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Impact.ttf'), { family: 'Impact' });
 
 module.exports = class MemeGenClassicCommand extends Command {
 	constructor(client) {
@@ -70,7 +68,7 @@ module.exports = class MemeGenClassicCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			const fontSize = Math.round(base.height / 10);
-			ctx.font = `${fontSize}px Impact`;
+			ctx.font = this.client.fonts.get('Impact.ttf').toCanvasString(fontSize);
 			ctx.fillStyle = 'white';
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';

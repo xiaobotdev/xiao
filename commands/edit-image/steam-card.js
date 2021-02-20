@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class SteamCardCommand extends Command {
 	constructor(client) {
@@ -68,7 +65,7 @@ module.exports = class SteamCardCommand extends Command {
 			const height = 205 / data.width;
 			ctx.drawImage(data, 12, 19, 205, height * data.height);
 			ctx.drawImage(base, 0, 0);
-			ctx.font = '14px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(14);
 			ctx.fillStyle = 'black';
 			ctx.fillText(name, 16, 25);
 			ctx.fillStyle = 'white';

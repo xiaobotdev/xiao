@@ -1,11 +1,9 @@
 const Command = require('../../structures/Command');
-const { createCanvas, registerFont } = require('canvas');
+const { createCanvas } = require('canvas');
 const { stripIndents } = require('common-tags');
 const Diff = require('text-diff');
-const path = require('path');
 const { fetchHSUserDisplay } = require('../../util/Util');
 const words = require('../../assets/json/word-list');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 
 module.exports = class TypingTestCommand extends Command {
 	constructor(client) {
@@ -73,7 +71,7 @@ module.exports = class TypingTestCommand extends Command {
 		const len = ctxPre.measureText(sentence);
 		const canvas = createCanvas(100 + len.width, 200);
 		const ctx = canvas.getContext('2d');
-		ctx.font = '75px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(75);
 		ctx.textBaseline = 'middle';
 		ctx.textAlign = 'center';
 		ctx.fillStyle = 'white';

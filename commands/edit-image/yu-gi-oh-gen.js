@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { stripIndents } = require('common-tags');
@@ -8,15 +8,6 @@ const { wrapText } = require('../../util/Canvas');
 const types = ['monster', 'spell', 'trap'];
 const monsterTypes = ['normal', 'effect', 'ritual', 'fusion', 'synchro', 'xyz', 'link', 'token'];
 const atrs = ['dark', 'divine', 'earth', 'fire', 'laugh', 'light', 'water', 'wind'];
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Book.ttf'), { family: 'Matrix Book' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Matrix Small Caps.ttf'), { family: 'Matrix' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif.ttf'), { family: 'Stone Serif' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif Small Caps.ttf'), {
-	family: 'Stone Serif Small Caps'
-});
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Stone Serif LT Italic.ttf'), {
-	family: 'Stone Serif LT Italic'
-});
 
 module.exports = class YuGiOhGenCommand extends Command {
 	constructor(client) {
@@ -126,33 +117,34 @@ module.exports = class YuGiOhGenCommand extends Command {
 			}
 			ctx.fillStyle = monsterType === 'xyz' || monsterType === 'link' ? 'white' : 'black';
 			ctx.textBaseline = 'top';
-			ctx.font = '87px Matrix';
+			ctx.font = this.client.fonts.get('Matrix Book.ttf').toCanvasString(87);
 			ctx.fillText(name, 60, 57, 620);
 			ctx.fillStyle = 'black';
 			if (type === 'monster') {
-				ctx.font = '31px Stone Serif Small Caps';
+				ctx.font = this.client.fonts.get('Stone Serif Small Caps.ttf').toCanvasString(31);
 				let typeStr = `[ ${firstUpperCase(species)} / ${firstUpperCase(monsterType)}`;
 				if (monsterType !== 'normal' && monsterType !== 'effect' && monsterType !== 'token') {
 					typeStr += ' / Effect';
 				}
 				typeStr += ' ]';
 				ctx.fillText(typeStr, 60, 894);
-				ctx.font = '29px Stone Serif';
+				ctx.font = this.client.fonts.get('Stone Serif.ttf').toCanvasString(29);
 				ctx.fillText(atk.padStart(4, '  '), 514, 1079);
 				if (monsterType === 'link') ctx.fillText(def, 722, 1079);
 				else ctx.fillText(def.padStart(4, '  '), 675, 1079);
 			} else if (type === 'spell') {
-				ctx.font = '35px Stone Serif Small Caps';
+				ctx.font = this.client.fonts.get('Stone Serif Small Caps.ttf').toCanvasString(35);
 				ctx.fillText('[ Spell Card ]', 479, 141);
 			} else if (type === 'trap') {
-				ctx.font = '35px Stone Serif Small Caps';
+				ctx.font = this.client.fonts.get('Stone Serif Small Caps.ttf').toCanvasString(35);
 				ctx.fillText('[ Trap Card ]', 489, 141);
 			}
-			ctx.font = monsterType === 'normal' ? '27px Stone Serif LT Italic' : '27px Matrix Book';
+			const font = monsterType === 'normal' ? 'Stone Serif LT Italic.ttf' : 'Matrix Book.ttf';
+			ctx.font = this.client.fonts.get(font).toCanvasString(27);
 			const wrappedEffect = await wrapText(ctx, effect, 690);
 			const trimmed = wrappedEffect.slice(0, type === 'monster' ? 4 : 6);
 			ctx.fillText(trimmed.join('\n'), 63, 933 - (type === 'monster' ? 0 : 34));
-			ctx.font = '22px Stone Serif';
+			ctx.font = this.client.fonts.get('Stone Serif.ttf').toCanvasString(22);
 			ctx.fillStyle = monsterType === 'xyz' ? 'white' : 'black';
 			ctx.fillText(id.toString().padStart(8, '0'), 43, 1128);
 			ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 589 - (monsterType === 'link' ? 58 : 0), 849);

@@ -1,20 +1,9 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const characters = require('../../assets/json/undertale');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'DeterminationMono.ttf'), {
-	family: 'DeterminationMono'
-});
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'UndertalePapyrus.ttf'), {
-	family: 'UndertalePapyrus'
-});
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'UndertaleSans.ttf'), { family: 'UndertaleSans' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'pixelated-wingdings.ttf'), {
-	family: 'Pixelated Wingdings'
-});
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'apple_kid.ttf'), { family: 'Apple Kid' });
 
 module.exports = class UndertaleCommand extends Command {
 	constructor(client) {
@@ -94,16 +83,16 @@ module.exports = class UndertaleCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		let font = 'DeterminationMono';
+		let font = 'DeterminationMono.ttf';
 		let space = -3;
 		switch (character) {
 			case 'sans':
-				font = 'UndertaleSans';
+				font = 'UndertaleSans.ttf';
 				quote = quote.toLowerCase();
 				space = -4;
 				break;
 			case 'papyrus':
-				font = 'UndertalePapyrus';
+				font = 'UndertalePapyrus.ttf';
 				quote = quote.toUpperCase();
 				space = -5;
 				break;
@@ -111,18 +100,18 @@ module.exports = class UndertaleCommand extends Command {
 				quote = quote.toLowerCase();
 				break;
 			case 'gaster':
-				font = 'Pixelated Wingdings';
+				font = 'pixelated-wingdings.ttf';
 				space = -4;
 				break;
 			case 'ness':
-				font = 'Apple Kid';
+				font = 'apple_kid.ttf';
 				space = -2;
 				break;
 			case 'temmie':
 				quote = this.client.registry.commands.get('temmie').temmize(quote);
 				break;
 		}
-		ctx.font = `32px ${font}`;
+		ctx.font = this.client.fonts.get(font).toCanvasString(32);
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
 		const text = await wrapText(ctx, quote, 385);

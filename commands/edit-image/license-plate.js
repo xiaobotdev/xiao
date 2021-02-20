@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'LicensePlate.ttf'), { family: 'License Plate' });
 
 module.exports = class LicensePlateCommand extends Command {
 	constructor(client) {
@@ -47,7 +46,7 @@ module.exports = class LicensePlateCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
-		ctx.font = '180px License Plate';
+		ctx.font = this.client.fonts.get('LicensePlate.ttf').toCanvasString(180);
 		ctx.fillText(text.toUpperCase(), base.width / 2, base.height / 2, 700);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'license-plate.png' }] });
 	}

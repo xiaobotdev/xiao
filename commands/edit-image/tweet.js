@@ -1,15 +1,11 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const moment = require('moment');
 const request = require('node-superfetch');
 const path = require('path');
 const { base64, formatNumberK } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Bold.ttf'), { family: 'Noto', weight: 'bold' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class TweetCommand extends Command {
 	constructor(client) {
@@ -66,7 +62,7 @@ module.exports = class TweetCommand extends Command {
 			const base2 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-2.png'));
 			const canvas = createCanvas(base1.width, base1.height + base2.height);
 			const ctx = canvas.getContext('2d');
-			ctx.font = '23px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(23);
 			const lines = await wrapText(ctx, text, 710);
 			const lineBreakLen = text.split('\n').length;
 			const linesLen = (23 * lines.length)
@@ -84,7 +80,7 @@ module.exports = class TweetCommand extends Command {
 			const base2StartY = base1.height + linesLen;
 			ctx.drawImage(base2, 0, base2StartY);
 			ctx.textBaseline = 'top';
-			ctx.font = 'normal bold 18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 			ctx.fillStyle = 'white';
 			ctx.fillText(userData.name, 105, 84);
 			if (userData.verified) {
@@ -94,52 +90,52 @@ module.exports = class TweetCommand extends Command {
 				const nameLen = ctx.measureText(userData.name).width;
 				ctx.drawImage(verified, 105 + nameLen + 4, 88, 18, 18);
 			}
-			ctx.font = '17px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(17);
 			ctx.fillStyle = '#8899a6';
 			ctx.fillText(`@${userData.screenName}`, 106, 111);
 			ctx.fillStyle = 'white';
-			ctx.font = '23px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(23);
 			ctx.fillText(lines.join('\n'), 32, 164);
 			ctx.fillStyle = '#8899a6';
-			ctx.font = '18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 			const time = moment().format('h:mm A ∙ MMMM D, YYYY ∙');
 			ctx.fillText(time, 31, base2StartY + 16);
 			const timeLen = ctx.measureText(time).width;
 			ctx.fillStyle = '#1b95e0';
 			ctx.fillText('Twitter for Xiao', 31 + timeLen + 6, base2StartY + 16);
 			ctx.fillStyle = '#8899a6';
-			ctx.font = '16px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(16);
 			ctx.fillText(formatNumberK(replies), 87, base2StartY + 139);
 			ctx.fillText(formatNumberK(likes), 509, base2StartY + 139);
 			ctx.fillText(formatNumberK(retweets + quoteTweets), 300, base2StartY + 139);
 			let currentLen = 31;
 			ctx.fillStyle = 'white';
-			ctx.font = 'normal bold 18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 			ctx.fillText(formatNumberK(retweets), currentLen, base2StartY + 77);
 			currentLen += ctx.measureText(formatNumberK(retweets)).width;
 			currentLen += 5;
 			ctx.fillStyle = '#8899a6';
-			ctx.font = '18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 			ctx.fillText('Retweets', currentLen, base2StartY + 77);
 			currentLen += ctx.measureText('Retweets').width;
 			currentLen += 10;
 			ctx.fillStyle = 'white';
-			ctx.font = 'normal bold 18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 			ctx.fillText(formatNumberK(quoteTweets), currentLen, base2StartY + 77);
 			currentLen += ctx.measureText(formatNumberK(quoteTweets)).width;
 			currentLen += 5;
 			ctx.fillStyle = '#8899a6';
-			ctx.font = '18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 			ctx.fillText('Quote Tweets', currentLen, base2StartY + 77);
 			currentLen += ctx.measureText('Quote Tweets').width;
 			currentLen += 10;
 			ctx.fillStyle = 'white';
-			ctx.font = 'normal bold 18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 			ctx.fillText(formatNumberK(likes), currentLen, base2StartY + 77);
 			currentLen += ctx.measureText(formatNumberK(likes)).width;
 			currentLen += 5;
 			ctx.fillStyle = '#8899a6';
-			ctx.font = '18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 			ctx.fillText('Likes', currentLen, base2StartY + 77);
 			ctx.beginPath();
 			ctx.arc(30 + 32, 84 + 32, 32, 0, Math.PI * 2);

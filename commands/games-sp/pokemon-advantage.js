@@ -1,11 +1,10 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { greyscale } = require('../../util/Canvas');
 const path = require('path');
 const advantages = require('../../assets/json/pokemon-advantage');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pokemon Solid.ttf'), { family: 'Pokemon' });
 
 module.exports = class PokemonAdvantageCommand extends Command {
 	constructor(client) {
@@ -144,7 +143,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			ctx.drawImage(pkmn1, 41, 12, 175, 175);
 			ctx.drawImage(pkmn2, 261, 12, 175, 175);
 		}
-		ctx.font = '30px Pokemon';
+		ctx.font = this.client.fonts.get('Pokemon Solid.ttf').toCanvasString(30);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'bottom';
 		ctx.lineWidth = 8;

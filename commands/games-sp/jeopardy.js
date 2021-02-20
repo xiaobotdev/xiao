@@ -1,10 +1,9 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { createCanvas, registerFont } = require('canvas');
+const { createCanvas } = require('canvas');
 const path = require('path');
 const { reactIfAble } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'OPTIKorinna-Agency.otf'), { family: 'Korinna' });
 
 module.exports = class JeopardyCommand extends Command {
 	constructor(client) {
@@ -97,7 +96,7 @@ module.exports = class JeopardyCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.fillStyle = 'white';
-		ctx.font = '62px Korinna';
+		ctx.font = this.client.fonts.get('OPTIKorinna-Agency.otf').toCanvasString(62);
 		const lines = await wrapText(ctx, question.toUpperCase(), 813);
 		const topMost = (canvas.height / 2) - (((52 * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {

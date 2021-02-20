@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { shortenText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class NewPasswordCommand extends Command {
 	constructor(client) {
@@ -49,7 +46,7 @@ module.exports = class NewPasswordCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '60px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(60);
 		ctx.fillText(shortenText(ctx, weak, 780), 70, 191);
 		ctx.fillText(shortenText(ctx, strong, 780), 70, 667);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'new-password.png' }] });

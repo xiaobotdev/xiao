@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class SpidermanPointingCommand extends Command {
 	constructor(client) {
@@ -57,12 +54,12 @@ module.exports = class SpidermanPointingCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = '50px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
 		ctx.fillStyle = 'white';
 		let fontSize = 50;
 		while (ctx.measureText(first).width > 725) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, first, 290);
 		const topMost = 189 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
@@ -73,11 +70,11 @@ module.exports = class SpidermanPointingCommand extends Command {
 			ctx.strokeText(lines[i], 222, height);
 			ctx.fillText(lines[i], 222, height);
 		}
-		ctx.font = '50px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
 		fontSize = 50;
 		while (ctx.measureText(second).width > 725) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const lines2 = await wrapText(ctx, second, 290);
 		const topMost2 = 190 - (((fontSize * lines2.length) / 2) + ((10 * (lines2.length - 1)) / 2));

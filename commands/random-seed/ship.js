@@ -1,11 +1,10 @@
 const Command = require('../../structures/Command');
 const { MersenneTwister19937, integer } = require('random-js');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { percentColor } = require('../../util/Util');
 const { GIRLFRIEND_USER_ID } = process.env;
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Pinky Cupid.otf'), { family: 'Pinky Cupid' });
 const percentColors = [
 	{ pct: 0.0, color: { r: 0, g: 0, b: 255 } },
 	{ pct: 0.5, color: { r: 255 / 2, g: 0, b: 255 / 2 } },
@@ -85,16 +84,16 @@ module.exports = class ShipCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = '#ff6c6c';
-			ctx.font = '40px Pinky Cupid';
+			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(40);
 			ctx.fillText('~Xiao\'s Compatability Meter~', 600, 15);
 			ctx.fillStyle = 'white';
 			ctx.fillText(first.username, 270, 448);
 			ctx.fillText(second.username, 930, 448);
-			ctx.font = '60px Pinky Cupid';
+			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(60);
 			ctx.fillStyle = percentColor(level / 100, percentColors);
 			ctx.fillText(`~${level}%~`, 600, 230);
 			ctx.fillText(this.calculateLevelText(level, self, owner, authorUser, botUser), 600, 296);
-			ctx.font = '90px Pinky Cupid';
+			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
 			ctx.fillText(level > 49 ? '❤️' : '💔', 600, 100);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ship.png' }] });
 		} catch (err) {

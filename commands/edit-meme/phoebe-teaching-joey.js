@@ -1,9 +1,6 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 const coord = [
 	[[136, 135], [416, 135]],
 	[[136, 328], [416, 328]],
@@ -82,13 +79,13 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 		for (const coords of coord) {
 			let j = 0;
 			for (const [x, y] of coords) {
-				ctx.font = '20px Noto';
+				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 				let step = steps[i];
 				if (step === incorrect && j === 0) step = correct.join(' ');
 				let fontSize = 20;
 				while (ctx.measureText(step).width > 260) {
 					fontSize--;
-					ctx.font = `${fontSize}px Noto`;
+					ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 				}
 				ctx.strokeText(step, x, y, 260);
 				ctx.fillText(step, x, y, 260);

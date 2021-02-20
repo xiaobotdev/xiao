@@ -1,11 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { shortenText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class SteamNowPlayingClassicCommand extends Command {
 	constructor(client) {
@@ -62,7 +59,7 @@ module.exports = class SteamNowPlayingClassicCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(avatar, 21, 21, 32, 32);
 			ctx.fillStyle = '#90ba3c';
-			ctx.font = '10px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(10);
 			ctx.fillText(user.username, 63, 26);
 			ctx.fillText(shortenText(ctx, game, 160), 63, 54);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing-classic.png' }] });

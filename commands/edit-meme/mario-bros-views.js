@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class MarioBrosViewsCommand extends Command {
 	constructor(client) {
@@ -63,14 +60,14 @@ module.exports = class MarioBrosViewsCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
-		ctx.font = '47px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(47);
 		ctx.fillText(thing, 420, 108, 180);
 		ctx.fillStyle = 'white';
-		ctx.font = '36px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(36);
 		let fontSize = 36;
 		while (ctx.measureText(mario).width > 800) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const marioLines = await wrapText(ctx, mario, 200);
 		const marioTopMost = 450 - (((fontSize * marioLines.length) / 2) + ((20 * (marioLines.length - 1)) / 2));
@@ -81,11 +78,11 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			ctx.strokeText(marioLines[i], 205, height);
 			ctx.fillText(marioLines[i], 205, height);
 		}
-		ctx.font = '36px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(36);
 		fontSize = 36;
 		while (ctx.measureText(luigi).width > 800) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const luigiLines = await wrapText(ctx, luigi, 200);
 		const luigiTopMost = 450 - (((fontSize * luigiLines.length) / 2) + ((20 * (luigiLines.length - 1)) / 2));

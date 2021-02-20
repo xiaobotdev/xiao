@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Bold.ttf'), { family: 'Noto', weight: 'bold' });
 
 module.exports = class CautionCommand extends Command {
 	constructor(client) {
@@ -49,11 +48,11 @@ module.exports = class CautionCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = 'normal bold 60px Noto';
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(60);
 		let fontSize = 60;
 		while (ctx.measureText(text).width > 3311) {
 			fontSize--;
-			ctx.font = `normal bold ${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, text.toUpperCase(), 895);
 		const topMost = 470 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
