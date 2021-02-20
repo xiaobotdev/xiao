@@ -57,6 +57,9 @@ client.registry
 client.on('ready', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
 
+	// Register all canvas fonts
+	await client.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
+
 	// Set up existing timers
 	await client.timers.fetchAll();
 
