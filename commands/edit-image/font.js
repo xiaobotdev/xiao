@@ -10,6 +10,10 @@ module.exports = class FontCommand extends Command {
 			group: 'edit-image',
 			memberName: 'font',
 			description: 'Types text in a specific font.',
+			throttling: {
+				uses: 1,
+				duration: 10
+			},
 			args: [
 				{
 					key: 'font',
@@ -25,16 +29,17 @@ module.exports = class FontCommand extends Command {
 		});
 	}
 
-	run(msg, { font, text }) {
-		return msg.say({ files: [{ attachment: this.generateImage(font, text), name: `${font.filenameNoExt}.png` }] });
+	async run(msg, { font, text }) {
+		const image = await this.generateImage(font, text);
+		return msg.say({ files: [{ attachment: image, name: `${font.filenameNoExt}.png` }] });
 	}
 
-	generateImage(font, text) {
+	async generateImage(font, text) {
 		const canvasPre = createCanvas(1, 1);
 		const ctxPre = canvasPre.getContext('2d');
 		ctxPre.font = this.client.fonts.get(font.filename).toCanvasString(75);
 		const len = ctxPre.measureText(text);
-		const lines = wrapText(ctxPre, text, 450);
+		const lines = await wrapText(ctxPre, text, 450);
 		const canvas = createCanvas(Math.min(len, 500), 50 + (75 * lines.length));
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get(font.filename).toCanvasString(75);
