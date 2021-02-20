@@ -31,16 +31,17 @@ module.exports = class FontArgumentType extends ArgumentType {
 	parse(value) {
 		const choice = value.toLowerCase();
 		let found = this.client.fonts.filter(font => {
+			if (font.isVariant) return false;
 			if (font.name.toLowerCase().includes(choice)) return true;
 			if (font.filenameNoExt.toLowerCase().includes(choice)) return true;
-			return true;
+			return false;
 		});
 		if (found.size === 0) return null;
 		if (found.size === 1) return found.first();
 		const foundExact = found.filter(font => {
 			if (font.name.toLowerCase() === choice) return true;
 			if (font.filenameNoExt.toLowerCase() === choice) return true;
-			return true;
+			return false;
 		});
 		if (foundExact.size === 1) return foundExact.first();
 		return null;
