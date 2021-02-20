@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'wildwordsroman.ttf'), { family: 'Wild Words' });
 
 module.exports = class ChiIdeaCommand extends Command {
 	constructor(client) {
@@ -55,11 +54,11 @@ module.exports = class ChiIdeaCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = '15px Wild Words';
+		ctx.font = this.client.fonts.get('wildwordsroman.ttf').toCanvasString(15);
 		let fontSize = 15;
 		while (ctx.measureText(text).width > 500) {
 			fontSize--;
-			ctx.font = `${fontSize}px Wild Words`;
+			ctx.font = this.client.fonts.get('wildwordsroman.ttf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, text, 83);
 		const topMost = 137 - (((fontSize * lines.length) / 2) + ((5 * (lines.length - 1)) / 2));

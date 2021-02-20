@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'SF-Pro-Display-Medium.otf'), { family: 'SF Pro' });
 
 module.exports = class AlertCommand extends Command {
 	constructor(client) {
@@ -48,7 +47,7 @@ module.exports = class AlertCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '30px SF Pro';
+		ctx.font = this.client.fonts.get('SF-Pro-Display-Medium.otf').toCanvasString(30);
 		ctx.fillStyle = '#1f1f1f';
 		ctx.textBaseline = 'top';
 		let text = await wrapText(ctx, message, 540);

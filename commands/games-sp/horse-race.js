@@ -1,11 +1,10 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { stripIndents } = require('common-tags');
 const { shuffle, randomRange, formatTime } = require('../../util/Util');
 const { drawImageWithTint } = require('../../util/Canvas');
 const horses = require('../../assets/json/horse-race');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Paladins.otf'), { family: 'Paladins' });
 const colors = ['gold', 'silver', '#cd7f32'];
 
 module.exports = class HorseRaceCommand extends Command {
@@ -101,9 +100,9 @@ module.exports = class HorseRaceCommand extends Command {
 			const result = results[i];
 			const horse = chosenHorses.find(hor => hor.name === result.name);
 			if (colors[i]) drawImageWithTint(ctx, horseImg, colors[i], 37, 114 + (49 * i), 49, 49);
-			ctx.font = '34px Paladins';
+			ctx.font = this.client.fonts.get('Paladins.otf').toCanvasString(34);
 			ctx.fillText(formatTime(result.time), 755, 138 + (49 * i));
-			ctx.font = '15px Paladins';
+			ctx.font = this.client.fonts.get('Paladins.otf').toCanvasString(15);
 			ctx.fillText(horse.name, 251, 138 + (49 * i));
 		}
 		return { attachment: canvas.toBuffer(), name: 'leaderboard.png' };

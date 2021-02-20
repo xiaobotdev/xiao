@@ -1,11 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class MemeGenModernCommand extends Command {
 	constructor(client) {
@@ -66,7 +62,7 @@ module.exports = class MemeGenModernCommand extends Command {
 			const base = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
-			ctx.font = '40px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 			const lines = await wrapText(ctx, text, base.width - 10);
 			const lineBreakLen = text.split('\n').length;
 			const linesLen = (40 * lines.length)
@@ -75,7 +71,7 @@ module.exports = class MemeGenModernCommand extends Command {
 				+ (14 * (lineBreakLen - 1))
 				+ 14;
 			canvas.height += linesLen;
-			ctx.font = '40px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, linesLen);

@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Futura Condensed.ttf'), { family: 'Futura' });
 
 module.exports = class SkyrimSkillCommand extends Command {
 	constructor(client) {
@@ -60,7 +59,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0, plate.width, height);
 			ctx.drawImage(plate, 0, height + 1);
-			ctx.font = '77px Futura';
+			ctx.font = this.client.fonts.get('Futura Condensed.ttf').toCanvasString(77);
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillStyle = 'black';

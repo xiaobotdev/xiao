@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { shortenText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'akbar.ttf'), { family: 'Akbar' });
 
 module.exports = class LisaPresentationCommand extends Command {
 	constructor(client) {
@@ -48,7 +47,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.textBaseline = 'top';
-		ctx.font = '19px Akbar';
+		ctx.font = this.client.fonts.get('akbar.ttf').toCanvasString(19);
 		ctx.fillStyle = 'white';
 		const shortened = shortenText(ctx, text.toUpperCase(), 500);
 		const arr = [];

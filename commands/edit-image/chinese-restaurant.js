@@ -1,11 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Futura Condensed Bold.otf'), {
-	family: 'Futura',
-	weight: 'bold'
-});
 
 module.exports = class ChineseRestaurantCommand extends Command {
 	constructor(client) {
@@ -52,7 +48,7 @@ module.exports = class ChineseRestaurantCommand extends Command {
 		ctx.fillStyle = '#1f1f1f';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = 'normal bold 28px Futura';
+		ctx.font = this.client.fonts.get('Futura Condensed Bold.otf').toCanvasString(28);
 		const lines = await wrapText(ctx, text.toUpperCase(), 340);
 		if (lines.length === 1) {
 			ctx.fillText(lines[0], base.width / 2, 288);

@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class EddFactsBookCommand extends Command {
 	constructor(client) {
@@ -51,11 +48,11 @@ module.exports = class EddFactsBookCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.drawImage(base, 0, 0);
 		ctx.rotate(15 * (Math.PI / 180));
-		ctx.font = '30px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(30);
 		let fontSize = 30;
 		while (ctx.measureText(fact).width > 458) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, fact, 183);
 		ctx.fillText(lines.join('\n'), 119, 306, 183);

@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { elements, colors } = require('../../assets/json/periodic-table');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
 
 module.exports = class PeriodicTableCommand extends Command {
 	constructor(client) {
@@ -66,15 +65,15 @@ module.exports = class PeriodicTableCommand extends Command {
 			const batman = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'batman.png'));
 			ctx.drawImage(batman, 100, 166);
 		} else {
-			ctx.font = '210px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(210);
 			ctx.fillStyle = colors[element.phase] || 'gray';
 			ctx.fillText(element.symbol, 250, 320);
 		}
 		ctx.fillStyle = 'black';
-		ctx.font = '45px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(45);
 		ctx.fillText(element.number, 250, 100);
 		ctx.fillText(element.name, 250, 450);
-		ctx.font = '30px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(30);
 		ctx.fillText(element.mass || '?', 250, 400);
 		const period = element.number === 0 ? element.period : `period ${element.period}`;
 		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;

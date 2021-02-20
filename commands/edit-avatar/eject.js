@@ -1,14 +1,11 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const GIFEncoder = require('gifencoder');
 const { MersenneTwister19937, bool } = require('random-js');
 const request = require('node-superfetch');
 const path = require('path');
 const { streamToArray } = require('../../util/Util');
 const frameCount = 52;
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class EjectCommand extends Command {
 	constructor(client) {
@@ -75,7 +72,7 @@ module.exports = class EjectCommand extends Command {
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
 			ctx.fillStyle = 'white';
-			ctx.font = '18px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 			const stream = encoder.createReadStream();
 			encoder.start();
 			encoder.setRepeat(0);

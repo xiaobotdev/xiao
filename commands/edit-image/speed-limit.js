@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'HWYGWDE.ttf'), { family: 'Highway Gothic' });
 
 module.exports = class SpeedLimitCommand extends Command {
 	constructor(client) {
@@ -48,7 +47,7 @@ module.exports = class SpeedLimitCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textBaseline = 'top';
 		ctx.textAlign = 'center';
-		ctx.font = '360px Highway Gothic';
+		ctx.font = this.client.fonts.get('HWYGWDE.ttf').toCanvasString(360);
 		ctx.fillStyle = 'black';
 		ctx.fillText(limit.toUpperCase(), 313, 356, 475);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'speed-limit.png' }] });

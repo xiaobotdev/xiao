@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'megaman_zero_dialog.ttf'), { family: 'MM Zero' });
 
 module.exports = class ZeroDialogueCommand extends Command {
 	constructor(client) {
@@ -59,7 +58,7 @@ module.exports = class ZeroDialogueCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '42px MM Zero';
+		ctx.font = this.client.fonts.get('megaman_zero_dialog.ttf').toCanvasString(42);
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
 		let text = await wrapText(ctx, quote, 425);

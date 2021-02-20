@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class PanikKalmPanikCommand extends Command {
 	constructor(client) {
@@ -59,11 +56,11 @@ module.exports = class PanikKalmPanikCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
-			ctx.font = '40px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 			let fontSize = 40;
 			while (ctx.measureText(panik).width > 1136) {
 				fontSize--;
-				ctx.font = `${fontSize}px Noto`;
+				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const panikLines = await wrapText(ctx, panik, 284);
 			const panikTopMost = 130 - (((fontSize * panikLines.length) / 2) + ((10 * (panikLines.length - 1)) / 2));
@@ -71,11 +68,11 @@ module.exports = class PanikKalmPanikCommand extends Command {
 				const height = panikTopMost + ((fontSize + 10) * i);
 				ctx.fillText(panikLines[i], 150, height);
 			}
-			ctx.font = '40px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 			fontSize = 40;
 			while (ctx.measureText(kalm).width > 1136) {
 				fontSize--;
-				ctx.font = `${fontSize}px Noto`;
+				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const kalmLines = await wrapText(ctx, kalm, 284);
 			const kalmTopMost = 430 - (((fontSize * kalmLines.length) / 2) + ((10 * (kalmLines.length - 1)) / 2));
@@ -83,11 +80,11 @@ module.exports = class PanikKalmPanikCommand extends Command {
 				const height = kalmTopMost + ((fontSize + 10) * i);
 				ctx.fillText(kalmLines[i], 150, height);
 			}
-			ctx.font = '40px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 			fontSize = 40;
 			while (ctx.measureText(panik2).width > 1136) {
 				fontSize--;
-				ctx.font = `${fontSize}px Noto`;
+				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const panik2Lines = await wrapText(ctx, panik2, 284);
 			const panik2TopMost = 730 - (((fontSize * panik2Lines.length) / 2) + ((10 * (panik2Lines.length - 1)) / 2));

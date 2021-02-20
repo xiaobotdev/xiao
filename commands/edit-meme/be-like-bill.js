@@ -1,10 +1,9 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 const texts = require('../../assets/json/be-like-bill');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'arialbd.ttf'), { family: 'Arial', weight: 'bold' });
 
 module.exports = class BeLikeBillCommand extends Command {
 	constructor(client) {
@@ -50,7 +49,7 @@ module.exports = class BeLikeBillCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = 'normal bold 23px Arial';
+		ctx.font = this.client.fonts.get('arialbd.ttf').toCanvasString(23);
 		const text = await wrapText(ctx, texts[Math.floor(Math.random() * texts.length)].replaceAll('{{name}}', name), 569);
 		ctx.fillText(stripIndents`
 			This is ${name}.

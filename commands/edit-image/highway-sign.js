@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'EHSMB.ttf'), { family: 'Electronic Highway Sign' });
 
 module.exports = class HighwaySignCommand extends Command {
 	constructor(client) {
@@ -49,7 +48,7 @@ module.exports = class HighwaySignCommand extends Command {
 		ctx.fillStyle = '#efe390';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = '18px Electronic Highway Sign';
+		ctx.font = this.client.fonts.get('EHSMB.ttf').toCanvasString(18);
 		const lines = await wrapText(ctx, text.toUpperCase(), 178);
 		if (lines.length === 1) {
 			ctx.fillText(lines[0], 318, 109);

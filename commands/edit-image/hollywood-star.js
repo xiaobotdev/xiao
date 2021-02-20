@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'HollywoodStar.otf'), { family: 'Hollywood Star' });
 
 module.exports = class HollywoodStarCommand extends Command {
 	constructor(client) {
@@ -51,7 +50,7 @@ module.exports = class HollywoodStarCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '28px Hollywood Star';
+		ctx.font = this.client.fonts.get('HollywoodStar.otf').toCanvasString(28);
 		ctx.fillStyle = '#fadfd4';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';

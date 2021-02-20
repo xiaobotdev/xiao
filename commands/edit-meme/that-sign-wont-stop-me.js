@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'TragicMarker.otf'), { family: 'Tragic Marker' });
 
 module.exports = class ThatSignWontStopMeCommand extends Command {
 	constructor(client) {
@@ -49,11 +48,11 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = '62px Tragic Marker';
+		ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(62);
 		let fontSize = 62;
 		while (ctx.measureText(text).width > 1002) {
 			fontSize--;
-			ctx.font = `${fontSize}px Tragic Marker`;
+			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, text, 334);
 		const topMost = 240 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
@@ -61,11 +60,11 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			const height = topMost + ((fontSize + 10) * i);
 			ctx.fillText(lines[i], 210, height);
 		}
-		ctx.font = '16px Tragic Marker';
+		ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(16);
 		fontSize = 16;
 		while (ctx.measureText(text).width > 264) {
 			fontSize--;
-			ctx.font = `${fontSize}px Tragic Marker`;
+			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(fontSize);
 		}
 		const bLines = await wrapText(ctx, text, 88);
 		const bTopMost = 645 - (((fontSize * bLines.length) / 2) + ((2 * (bLines.length - 1)) / 2));

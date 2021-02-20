@@ -1,11 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class SubtitleCommand extends Command {
 	constructor(client) {
@@ -53,7 +50,7 @@ module.exports = class SubtitleCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
 			const fontSize = Math.round(base.height / 15);
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			ctx.fillStyle = 'yellow';
 			ctx.textAlign = 'center';
 			const lines = await wrapText(ctx, text, base.width - 10);

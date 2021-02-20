@@ -1,11 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Bold.ttf'), { family: 'Noto', weight: 'bold' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class SpotifyNowPlayingCommand extends Command {
 	constructor(client) {
@@ -76,11 +72,11 @@ module.exports = class SpotifyNowPlayingCommand extends Command {
 			ctx.drawImage(base, 0, 0);
 			ctx.textBaseline = 'top';
 			ctx.textAlign = 'center';
-			ctx.font = 'normal bold 25px Noto';
+			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(25);
 			ctx.fillStyle = 'white';
 			ctx.fillText(name, base.width / 2, 685);
 			ctx.fillStyle = '#bdbec2';
-			ctx.font = '20px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 			ctx.fillText(artist, base.width / 2, 720);
 			ctx.fillText('Xiao\'s Picks', base.width / 2, 65);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spotify-now-playing.png' }] });

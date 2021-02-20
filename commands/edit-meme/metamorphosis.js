@@ -1,11 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class MetamorphosisCommand extends Command {
 	constructor(client) {
@@ -62,7 +59,7 @@ module.exports = class MetamorphosisCommand extends Command {
 			const { x, y, width, height } = centerImagePart(data, 200, 200, 412, 257);
 			ctx.drawImage(data, x, y, width, height);
 			ctx.textBaseline = 'top';
-			ctx.font = '20px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 			ctx.fillText(`le ${name.toLowerCase()}`, 345, 466, 330);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'metamorphosis.png' }] });
 		} catch (err) {

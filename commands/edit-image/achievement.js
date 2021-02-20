@@ -1,8 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { shortenText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Minecraftia.ttf'), { family: 'Minecraftia' });
 
 module.exports = class AchievementCommand extends Command {
 	constructor(client) {
@@ -52,7 +51,7 @@ module.exports = class AchievementCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '17px Minecraftia';
+		ctx.font = this.client.fonts.get('Minecraftia.ttf').toCanvasString(17);
 		ctx.fillStyle = '#ffff00';
 		ctx.fillText('Achievement Get!', 60, 40);
 		ctx.fillStyle = '#ffffff';

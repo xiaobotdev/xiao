@@ -1,11 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const path = require('path');
 const { shortenText, centerImagePart } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class DemotivationalCommand extends Command {
 	constructor(client) {
@@ -70,10 +66,10 @@ module.exports = class DemotivationalCommand extends Command {
 			ctx.fillRect(x, y, width, height);
 			ctx.drawImage(data, x, y, width, height);
 			ctx.textAlign = 'center';
-			ctx.font = '60px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(60);
 			ctx.fillStyle = 'aquamarine';
 			ctx.fillText(shortenText(ctx, title, 610), 375, 518);
-			ctx.font = '27px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(27);
 			ctx.fillStyle = 'white';
 			ctx.fillText(shortenText(ctx, text, 610), 375, 565);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'demotivational-poster.png' }] });

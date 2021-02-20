@@ -1,11 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { wrapText, greyscale, drawImageWithTint } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class NikeAdCommand extends Command {
 	constructor(client) {
@@ -70,7 +67,7 @@ module.exports = class NikeAdCommand extends Command {
 			const height = Math.round(width / ratio);
 			ctx.drawImage(base, (data.width / 2) - (width / 2), data.height - height, width, height);
 			const fontSize = Math.round(data.height / 25);
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			ctx.fillStyle = 'white';
 			ctx.textAlign = 'center';
 			const lines = await wrapText(ctx, `Believe in ${something}. Even if it means ${sacrifice}.`, data.width - 20);

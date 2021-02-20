@@ -1,9 +1,6 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class BoardroomMeetingCommand extends Command {
 	constructor(client) {
@@ -70,9 +67,9 @@ module.exports = class BoardroomMeetingCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.textBaseline = 'top';
-		ctx.font = '25px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(25);
 		ctx.fillText(question, 153, 8, 300);
-		ctx.font = '15px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(15);
 		ctx.fillText(suggestion1, 30, 251, 90);
 		ctx.fillText(suggestion2, 167, 258, 75);
 		ctx.fillText(final, 310, 269, 130);

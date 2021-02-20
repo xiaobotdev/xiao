@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'SunDried.ttf'), { family: 'Sun Dried' });
 
 module.exports = class SosCommand extends Command {
 	constructor(client) {
@@ -45,7 +44,7 @@ module.exports = class SosCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '90px Sun Dried';
+		ctx.font = this.client.fonts.get('SunDried.ttf').toCanvasString(90);
 		ctx.fillStyle = 'black';
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
@@ -53,7 +52,7 @@ module.exports = class SosCommand extends Command {
 		let fontSize = 90;
 		while (ctx.measureText(message).width > 140) {
 			fontSize--;
-			ctx.font = `${fontSize}px Sun Dried`;
+			ctx.font = this.client.fonts.get('SunDried.ttf').toCanvasString(fontSize);
 		}
 		ctx.fillText(message.toUpperCase(), 362, 522);
 		ctx.rotate(-15 * (Math.PI / 180));

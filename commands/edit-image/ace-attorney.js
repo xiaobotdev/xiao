@@ -1,9 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { firstUpperCase, list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Ace-Attorney.ttf'), { family: 'Ace Attorney' });
 const characters = {
 	phoenix: ['phoenix', 'wright', 'naruhodo', 'ryuuichi', 'ryu', 'nick'],
 	edgeworth: ['miles', 'edgeworth', 'mitsurugi', 'reiji', 'edgey'],
@@ -78,7 +77,7 @@ module.exports = class AceAttorneyCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = '14px Ace Attorney';
+		ctx.font = this.client.fonts.get('Ace-Attorney.ttf').toCanvasString(14);
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
 		ctx.fillText(firstUpperCase(character), 6, 176);

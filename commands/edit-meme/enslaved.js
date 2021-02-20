@@ -1,11 +1,8 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class EnslavedCommand extends Command {
 	constructor(client) {
@@ -58,7 +55,7 @@ module.exports = class EnslavedCommand extends Command {
 			ctx.textBaseline = 'top';
 			ctx.textAlign = 'center';
 			ctx.fillStyle = 'white';
-			ctx.font = '50px Noto';
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
 			ctx.fillText(name.toLowerCase(), 365, 400, 240);
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'enslaved.png' }] });
 		} catch (err) {

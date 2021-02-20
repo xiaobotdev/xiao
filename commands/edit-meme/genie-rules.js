@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class GenieRulesCommand extends Command {
 	constructor(client) {
@@ -52,11 +49,11 @@ module.exports = class GenieRulesCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = '40px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 		let fontSize = 40;
 		while (ctx.measureText(text).width > 1143) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, text, 381);
 		const topMost = 580 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));

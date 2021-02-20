@@ -1,10 +1,7 @@
 const Command = require('../../structures/Command');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Regular.ttf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-CJK.otf'), { family: 'Noto' });
-registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 module.exports = class SpongebobBurnCommand extends Command {
 	constructor(client) {
@@ -58,17 +55,17 @@ module.exports = class SpongebobBurnCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.fillStyle = 'black';
 		ctx.textBaseline = 'top';
-		ctx.font = '35px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(35);
 		let fontSize = 35;
 		while (ctx.measureText(burn).width > 400) {
 			fontSize--;
-			ctx.font = `${fontSize}px Noto`;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
 		const lines = await wrapText(ctx, burn, 180);
 		ctx.fillText(lines.join('\n'), 55, 103);
-		ctx.font = '25px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(25);
 		ctx.fillText(person, 382, 26);
-		ctx.font = '20px Noto';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 		ctx.fillText(person, 119, 405);
 		ctx.fillText(person, 439, 434);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spongebob-burn.png' }] });
