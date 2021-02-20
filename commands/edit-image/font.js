@@ -37,14 +37,13 @@ module.exports = class FontCommand extends Command {
 	async generateImage(font, text) {
 		const canvasPre = createCanvas(1, 1);
 		const ctxPre = canvasPre.getContext('2d');
-		ctxPre.font = this.client.fonts.get(font.filename).toCanvasString(75);
+		ctxPre.font = this.client.fonts.get(font.filename).toCanvasString(50);
 		const len = ctxPre.measureText(text);
 		const lines = await wrapText(ctxPre, text, 950);
-		const canvas = createCanvas(Math.min(len.width + 50, 1000), 50 + (75 * lines.length) + (5 * lines.length));
+		const canvas = createCanvas(Math.min(len.width + 50, 1000), 50 + (50 * lines.length) + (10 * lines.length));
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get(font.filename).toCanvasString(75);
 		ctx.textBaseline = 'top';
-		ctx.textAlign = 'center';
 		ctx.fillStyle = 'white';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'black';
