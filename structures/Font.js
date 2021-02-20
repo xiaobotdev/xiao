@@ -20,6 +20,7 @@ module.exports = class Font {
 	constructor(path, filename, metadata) {
 		this.path = path;
 		this.name = variants[filename] || metadata.name || filename;
+		this.filename = filename;
 		this.style = metadata.style === 'regular' ? 'normal' : metadata.style || 'normal';
 		this.weight = weights[metadata.weight] || metadata.weight || 'normal';
 		this.type = metadata.type;
@@ -29,10 +30,14 @@ module.exports = class Font {
 	register() {
 		if (this.registered) return null;
 		this.registered = true;
-		return registerFont(this.path, { family: this.name, style: this.style, weight: this.weight });
+		return registerFont(this.path, { family: this.filenameNoExt, style: this.style, weight: this.weight });
 	}
 
 	toCanvasString(size) {
-		return `${this.style} ${this.weight} ${size}px ${this.name}`;
+		return `${this.style} ${this.weight} ${size}px ${this.filenameNoExt}`;
+	}
+
+	get filenameNoExt() {
+		return this.filename.replace(/(\.(otf|ttf))$/, '');
 	}
 };
