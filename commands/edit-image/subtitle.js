@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
 module.exports = class SubtitleCommand extends Command {
