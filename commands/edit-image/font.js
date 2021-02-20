@@ -42,13 +42,12 @@ module.exports = class FontCommand extends Command {
 		const lines = await wrapText(ctxPre, text, 950);
 		const canvas = createCanvas(Math.min(len.width + 50, 1000), 50 + (50 * lines.length) + (10 * lines.length));
 		const ctx = canvas.getContext('2d');
-		ctx.font = this.client.fonts.get(font.filename).toCanvasString(75);
+		ctx.font = this.client.fonts.get(font.filename).toCanvasString(50);
 		ctx.textBaseline = 'top';
-		ctx.textAlign = 'center';
 		ctx.fillStyle = 'white';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'black';
-		ctx.fillText(lines.join('\n'), canvas.width / 2, 25);
+		ctx.fillText(lines.join('\n'), 25, 25);
 		return canvas.toBuffer();
 	}
 };
