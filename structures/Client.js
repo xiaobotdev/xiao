@@ -54,11 +54,11 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.leaveMessages = leaveMsgs;
 	}
 
-	async registerFontsIn(path) {
-		const files = fs.readdirSync(path);
+	async registerFontsIn(filepath) {
+		const files = fs.readdirSync(filepath);
 		for (const file of files) {
-			const metadata = await fontFinder.get(path.join(path, file));
-			const font = new Font(path.join(path, file), file, metadata);
+			const metadata = await fontFinder.get(path.join(filepath, file));
+			const font = new Font(path.join(filepath, file), file, metadata);
 			this.fonts.set(file, font);
 			font.register();
 		}
