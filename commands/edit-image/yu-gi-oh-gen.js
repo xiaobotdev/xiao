@@ -117,7 +117,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			}
 			ctx.fillStyle = monsterType === 'xyz' || monsterType === 'link' ? 'white' : 'black';
 			ctx.textBaseline = 'top';
-			ctx.font = this.client.fonts.get('Matrix Book.ttf').toCanvasString(87);
+			ctx.font = this.client.fonts.get('Matrix Small Caps.ttf').toCanvasString(87);
 			ctx.fillText(name, 60, 57, 620);
 			ctx.fillStyle = 'black';
 			if (type === 'monster') {
