@@ -2,9 +2,11 @@ const { CommandoClient } = require('discord.js-commando');
 const { WebhookClient } = require('discord.js');
 const Collection = require('@discordjs/collection');
 const winston = require('winston');
+const fontFinder = require('font-finder');
 const fs = require('fs');
 const path = require('path');
 const Redis = require('./Redis');
+const Font = require('./Font');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
@@ -33,6 +35,7 @@ module.exports = class XiaoClient extends CommandoClient {
 				winston.format.printf(log => `[${log.timestamp}] [${log.level.toUpperCase()}]: ${log.message}`)
 			)
 		});
+		this.fonts = new Map();
 		this.redis = Redis ? Redis.db : null;
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.timers = new TimerManager(this);
@@ -49,6 +52,17 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.phone = new PhoneManager(this);
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
+	}
+
+	async registerFontsIn(path) {
+		const files = fs.readdirSync(path);
+		for (const file of files) {
+			const metadata = await fontFinder.get(path.join(path, file));
+			const font = new Font(path.join(path, file), file, metadata);
+			this.fonts.set(file, font);
+			font.register();
+		}
+		return this.fonts;
 	}
 
 	importBlacklist() {
