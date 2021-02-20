@@ -44,6 +44,7 @@ module.exports = class FontCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get(font.filename).toCanvasString(75);
 		ctx.textBaseline = 'top';
+		ctx.textAlign = 'center';
 		ctx.fillStyle = 'white';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'black';
