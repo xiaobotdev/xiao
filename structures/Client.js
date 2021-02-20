@@ -35,7 +35,7 @@ module.exports = class XiaoClient extends CommandoClient {
 				winston.format.printf(log => `[${log.timestamp}] [${log.level.toUpperCase()}]: ${log.message}`)
 			)
 		});
-		this.fonts = new Map();
+		this.fonts = new Collection();
 		this.redis = Redis ? Redis.db : null;
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.timers = new TimerManager(this);
