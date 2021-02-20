@@ -11,11 +11,15 @@ const weights = {
 	900: 'heavy',
 	950: 'extraBlack'
 };
+const variants = {
+	'Noto-CJK.otf': 'Noto Sans',
+	'Noto-Emoji.ttf': 'Noto Sans'
+};
 
 module.exports = class Font {
 	constructor(path, filename, metadata) {
 		this.path = path;
-		this.name = metadata.name || filename;
+		this.name = variants[filename] || metadata.name || filename;
 		this.style = metadata.style === 'regular' ? 'normal' : metadata.style || 'normal';
 		this.weight = weights[metadata.weight] || metadata.weight || 'normal';
 		this.type = metadata.type;
