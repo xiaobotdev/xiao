@@ -31,8 +31,8 @@ module.exports = class Font {
 		return registerFont(this.path, { family: this.filenameNoExt, style: this.style, weight: this.weight });
 	}
 
-	toCanvasString(size, fallbacks = true) {
-		const shouldFall = fallbacks ? `, ${this.fallbacks.join(', ')}` : '';
+	toCanvasString(size, shouldDoFallbacks = true) {
+		const shouldFall = shouldDoFallbacks ? `, ${this.fallbacks.join(', ')}` : '';
 		return `${this.style} ${this.weight} ${size}px ${this.filenameNoExt}${shouldFall}`;
 	}
 
