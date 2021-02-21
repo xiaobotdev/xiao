@@ -58,7 +58,7 @@ module.exports = class ThinkOfCommand extends Command {
 		} else if (girlfriendUser && owner) {
 			thought = thoughts[5];
 		} else {
-			const calculated = Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
+			const calculated = Number.parseInt(BigInt(first.id) - BigInt(second.id), 10);
 			const random = MersenneTwister19937.seed(calculated);
 			thought = thoughts[integer(0, thoughts.length - 1)(random)];
 		}
