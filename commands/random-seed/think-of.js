@@ -49,7 +49,6 @@ module.exports = class ThinkOfCommand extends Command {
 		let thought;
 		const self = first.id === second.id;
 		const owner = this.client.isOwner(first) || this.client.isOwner(second);
-		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
 		const botUser = first.id === this.client.user.id || second.id === this.client.user.id;
 		const girlfriendUser = first.id === GIRLFRIEND_USER_ID || second.id === GIRLFRIEND_USER_ID;
 		if (owner && botUser) {
@@ -95,29 +94,5 @@ module.exports = class ThinkOfCommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
-	}
-
-	calculateLevelText(level, self, owner, authorUser, botUser) {
-		if (owner && botUser) {
-			if (authorUser) return 'Pervert';
-			else return 'Yuck';
-		}
-		if (self) return 'Narcissist';
-		if (level === 0) return 'Abysmal';
-		if (level > 0 && level < 10) return 'Horrid';
-		if (level > 9 && level < 20) return 'Awful';
-		if (level > 19 && level < 30) return 'Very Bad';
-		if (level > 29 && level < 40) return 'Bad';
-		if (level > 39 && level < 50) return 'Poor';
-		if (level > 49 && level < 60) return 'Average';
-		if (level > 59 && level < 70) {
-			if (level === 69) return 'Nice';
-			return 'Fine';
-		}
-		if (level > 69 && level < 80) return 'Good';
-		if (level > 79 && level < 90) return 'Great';
-		if (level > 89 && level < 100) return 'Amazing';
-		if (level === 100) return 'Soulmates';
-		return '???';
 	}
 };
