@@ -48,7 +48,7 @@ module.exports = class PetCommand extends Command {
 				const frameID = `frame_${i.toString().padStart(2, '0')}.png`;
 				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'pet', frameID));
 				const { x, y, width, height } = centerImagePart(data, 75, 75, 27, 38);
-				ctx.drawImage(data, x - squish, y + squish, width + squish, height - squish);
+				ctx.drawImage(data, x - (squish / 2), y + squish, width + squish, height - squish);
 				ctx.drawImage(frame, 0, 0);
 				encoder.addFrame(ctx);
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
