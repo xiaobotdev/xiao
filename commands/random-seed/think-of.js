@@ -85,9 +85,9 @@ module.exports = class ThinkOfCommand extends Command {
 			ctx.fillText(first.username, 270, 448);
 			ctx.fillText(second.username, 930, 448);
 			ctx.fillStyle = thought.color;
-			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(20);
-			ctx.fillText('thinks this user is', 600, 230);
-			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(50);
+			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(40);
+			ctx.fillText('thinks they are', 600, 230);
+			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(60);
 			ctx.fillText(thought.text, 600, 296);
 			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
 			ctx.fillText(thought.emoji, 600, 100);
