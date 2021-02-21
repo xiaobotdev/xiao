@@ -32,7 +32,7 @@ module.exports = class WillYouPressTheButtonCommand extends Command {
 				**${decodeHTML(dilemma.txt1)}** but **${decodeHTML(dilemma.txt2)}**
 
 				Will you press the button?
-				_Respond with [y]es or [n]o to continue._
+				_Respond with **[y]es** or **[n]o** to continue._
 			`);
 			const verification = await verify(msg.channel, msg.author);
 			if (verification === 0) {
