@@ -238,10 +238,11 @@ client.on('guildMemberRemove', async member => {
 
 client.on('voiceStateUpdate', (oldState, newState) => {
 	if (newState.id !== client.user.id || oldState.id !== client.user.id) return;
-	const dispatcher = client.dispatchers.get(newState.channelID);
+	if (newState.channel) return;
+	const dispatcher = client.dispatchers.get(oldState.guild.id);
 	if (!dispatcher) return;
 	dispatcher.end();
-	client.dispatchers.delete(newState.channelID);
+	client.dispatchers.delete(oldState.guild.id);
 });
 
 client.on('disconnect', event => {
