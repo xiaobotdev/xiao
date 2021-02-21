@@ -11,10 +11,7 @@ const weights = {
 	900: 'heavy',
 	950: 'extraBlack'
 };
-const variants = {
-	'Noto-CJK.otf': 'Noto Sans',
-	'Noto-Emoji.ttf': 'Noto Sans'
-};
+const fallbacks = ['Symbola', 'Noto-CJK'];
 
 module.exports = class Font {
 	constructor(path, filename, metadata) {
@@ -25,6 +22,7 @@ module.exports = class Font {
 		this.weight = weights[metadata.weight] || metadata.weight || 'normal';
 		this.type = metadata.type;
 		this.registered = false;
+		this.fallbacks = fallbacks.filter(fallback => fallback !== this.filenameNoExt);
 	}
 
 	register() {
@@ -33,8 +31,9 @@ module.exports = class Font {
 		return registerFont(this.path, { family: this.filenameNoExt, style: this.style, weight: this.weight });
 	}
 
-	toCanvasString(size) {
-		return `${this.style} ${this.weight} ${size}px ${this.filenameNoExt}`;
+	toCanvasString(size, fallbacks = true) {
+		const shouldFall = fallbacks ? `, ${this.fallbacks.join(', ')}` : '';
+		return `${this.style} ${this.weight} ${size}px ${this.filenameNoExt}${shouldFall}`;
 	}
 
 	get filenameNoExt() {
@@ -43,5 +42,9 @@ module.exports = class Font {
 
 	get isVariant() {
 		return variants[this.filename];
+	}
+
+	get isFallback() {
+		return fallbacks.includes(this.filenameNoExt);
 	}
 };
