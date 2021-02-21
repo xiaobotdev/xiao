@@ -41,7 +41,7 @@ module.exports = class PokedexMoveCommand extends Command {
 				.setTitle(data.name)
 				.setDescription(data.description ? data.cleanDescription : 'No description available.')
 				.addField('❯ Accuracy', `${data.accuracy}%`, true)
-				.addField('❯ Power', data.power, true)
+				.addField('❯ Power', data.power || '???', true)
 				.addField('❯ PP', data.pp, true)
 				.addField('❯ Type', data.type, true)
 				.addField('❯ Contest Type', data.contestType || 'N/A', true)
