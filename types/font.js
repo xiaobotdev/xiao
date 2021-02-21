@@ -10,7 +10,6 @@ module.exports = class FontArgumentType extends ArgumentType {
 		const choice = value.toLowerCase();
 		let found = this.client.fonts.filter(font => {
 			if (font.isFallback) return false;
-			if (font.isVariant) return false;
 			if (font.name.toLowerCase().includes(choice)) return true;
 			if (font.filenameNoExt.toLowerCase().includes(choice)) return true;
 			return false;
@@ -33,7 +32,6 @@ module.exports = class FontArgumentType extends ArgumentType {
 		const choice = value.toLowerCase();
 		const found = this.client.fonts.filter(font => {
 			if (font.isFallback) return false;
-			if (font.isVariant) return false;
 			if (font.name.toLowerCase().includes(choice)) return true;
 			if (font.filenameNoExt.toLowerCase().includes(choice)) return true;
 			return false;

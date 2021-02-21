@@ -16,7 +16,7 @@ const fallbacks = ['Symbola', 'Noto-CJK'];
 module.exports = class Font {
 	constructor(path, filename, metadata) {
 		this.path = path;
-		this.name = variants[filename] || metadata.name || filename;
+		this.name = metadata.name || filename;
 		this.filename = filename;
 		this.style = metadata.style === 'regular' ? 'normal' : metadata.style || 'normal';
 		this.weight = weights[metadata.weight] || metadata.weight || 'normal';
@@ -38,10 +38,6 @@ module.exports = class Font {
 
 	get filenameNoExt() {
 		return this.filename.replace(/(\.(otf|ttf))$/, '');
-	}
-
-	get isVariant() {
-		return variants[this.filename];
 	}
 
 	get isFallback() {
