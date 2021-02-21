@@ -2,7 +2,7 @@
 	{
 		"text": "annoying",
 		"emoji": "🙄",
-		"color": "red"
+		"color": "orange"
 	},
 	{
 		"text": "kinda cute",
@@ -12,12 +12,12 @@
 	{
 		"text": "gross",
 		"emoji": "🤢",
-		"color": "red"
+		"color": "#87ab08"
 	},
 	{
 		"text": "hot",
 		"emoji": "🥵",
-		"color": "pink"
+		"color": "#ff69b4"
 	},
 	{
 		"text": "boring",
@@ -32,12 +32,12 @@
 	{
 		"text": "sexy",
 		"emoji": "🥵",
-		"color": "pink"
+		"color": "#ff69b4"
 	},
 	{
 		"text": "ugly",
 		"emoji": "🤢",
-		"color": "red"
+		"color": "#87ab08"
 	},
 	{
 		"text": "fun",
