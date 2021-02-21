@@ -68,9 +68,9 @@ module.exports = class PokerCommand extends Command {
 			let winner = null;
 			const rotation = players.map(p => p.id);
 			while (!winner) {
-				for (const player of players.values()) {
-					if (players.has(player.id)) continue;
-					removeFromArray(rotation, player.id);
+				for (const player of rotation) {
+					if (players.has(player)) continue;
+					removeFromArray(rotation, player);
 				}
 				const bigBlind = players.get(rotation[1]);
 				bigBlind.money -= bigBlindAmount;
