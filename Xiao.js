@@ -241,7 +241,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 	const dispatcher = client.dispatchers.get(newState.channelID)
 	if (!dispatcher) return;
 	dispatcher.end();
-	client.dispatchers.remove(newState.channelID);
+	client.dispatchers.delete(newState.channelID);
 });
 
 client.on('disconnect', event => {
