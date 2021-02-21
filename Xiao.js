@@ -236,6 +236,14 @@ client.on('guildMemberRemove', async member => {
 	}
 });
 
+client.on('voiceStateUpdate', (oldState, newState) => {
+	if (newState.id !== client.user.id || oldState.id !== client.user.id) return;
+	const dispatcher = client.dispatchers.get(newState.channelID)
+	if (!dispatcher) return;
+	dispatcher.end();
+	client.dispatchers.remove(newState.channelID);
+});
+
 client.on('disconnect', event => {
 	client.logger.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	client.exportCommandLeaderboard();
