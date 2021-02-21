@@ -1,0 +1,67 @@
+[
+	{
+		"text": "annoying",
+		"emoji": "🙄",
+		"color": "red"
+	},
+	{
+		"text": "kinda cute",
+		"emoji": "😊",
+		"color": "pink"
+	},
+	{
+		"text": "gross",
+		"emoji": "🤢",
+		"color": "red"
+	},
+	{
+		"text": "hot",
+		"emoji": "🥵",
+		"color": "pink"
+	},
+	{
+		"text": "boring",
+		"emoji": "😐",
+		"color": "orange"
+	},
+	{
+		"text": "beautiful",
+		"emoji": "😊",
+		"color": "pink"
+	},
+	{
+		"text": "sexy",
+		"emoji": "🥵",
+		"color": "pink"
+	},
+	{
+		"text": "ugly",
+		"emoji": "🤢",
+		"color": "red"
+	},
+	{
+		"text": "fun",
+		"emoji": "😄",
+		"color": "green"
+	},
+	{
+		"text": "okay",
+		"emoji": "🙂",
+		"color": "orange"
+	},
+	{
+		"text": "meh",
+		"emoji": "😐",
+		"color": "orange"
+	},
+	{
+		"text": "funny",
+		"emoji": "😆",
+		"color": "green"
+	},
+	{
+		"text": "gay",
+		"emoji": "🏳️‍🌈",
+		"color": "green"
+	}
+]
