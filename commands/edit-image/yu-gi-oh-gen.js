@@ -99,8 +99,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const ctx = canvas.getContext('2d');
 			ctx.fillStyle = 'white';
 			ctx.fillRect(0, 0, base.width, base.height);
-			const height = 617 / data.width;
-			ctx.drawImage(data, 98, 217, 617, data.height * height);
+			ctx.drawImage(this.squareImage(data), 98, 217, 617, 617);
 			ctx.drawImage(base, 0, 0);
 			ctx.drawImage(atr, 686, 55 + (monsterType === 'link' ? 4 : 0), 70, 70);
 			if (level > 0) {
@@ -152,6 +151,14 @@ module.exports = class YuGiOhGenCommand extends Command {
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	squareImage(image) {
+		const dimensions = image.width <= image.height ? image.width : image.height;
+		const canvas = createCanvas(dimensions, dimensions);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(image, (canvas.width / 2) - (image.width / 2), 0);
+		return canvas;
 	}
 
 	async determineMonsterType(msg, type) {
