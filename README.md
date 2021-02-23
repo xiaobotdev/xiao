@@ -960,7 +960,6 @@ Some Xiao features aren't technically commands, but are part of Xiao
 nonetheless.
 
 - Leave messages are automatically sent to any channel that recieves welcome messages. These can be turned off with [an option](#options).
-- In Xiao's home server, Xiao posts a random meme from Reddit every hour using a webhook.
 - Some commands will automatically run when a certain phrase is said in any message, regardless of if the command itself was called or not. These are:
 	* Saying "no u" runs `no-u`.
 	* Saying "(╯°□°）╯︵ ┻━┻" runs `unflip`.

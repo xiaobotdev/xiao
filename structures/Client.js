@@ -10,16 +10,11 @@ const Font = require('./Font');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
-const MemePosterClient = require('./MemePoster');
 const activities = require('../assets/json/activity');
 const leaveMsgs = require('../assets/json/leave-messages');
-const subreddits = require('../assets/json/meme');
 const {
 	XIAO_WEBHOOK_ID,
 	XIAO_WEBHOOK_TOKEN,
-	POSTER_ID,
-	POSTER_TOKEN,
-	POSTER_TIME,
 	REPORT_CHANNEL_ID,
 	JOIN_LEAVE_CHANNEL_ID
 } = process.env;
@@ -41,12 +36,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.timers = new TimerManager(this);
 		this.blacklist = { guild: [], user: [] };
 		this.pokemon = new PokemonStore();
-		this.memePoster = POSTER_ID && POSTER_TOKEN ? new MemePosterClient(POSTER_ID, POSTER_TOKEN, {
-			subreddits,
-			postTypes: ['image', 'rich:video'],
-			postInterval: POSTER_TIME,
-			disableMentions: 'everyone'
-		}) : null;
 		this.games = new Collection();
 		this.dispatchers = new Map();
 		this.phone = new PhoneManager(this);
