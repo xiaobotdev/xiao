@@ -207,6 +207,7 @@ module.exports = class Util {
 
 	static stripNSFWURLs(str, siteList, text = '[redacted nsfw url]') {
 		const uris = str.match(/(https?:\/\/\S+)/g);
+		if (!uris) return str;
 		for (const uri of uris) {
 			const parsed = url.parse(uri);
 			if (!siteList.some(pornURL => parsed.host === pornURL)) continue;
