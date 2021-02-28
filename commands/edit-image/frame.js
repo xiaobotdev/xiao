@@ -46,7 +46,7 @@ module.exports = class FrameCommand extends Command {
 
 	async run(msg, { frame, image }) {
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'frames', frame.file));
+			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'frame', frame.file));
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
 			let canvas;
