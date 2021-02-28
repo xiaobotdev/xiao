@@ -163,11 +163,11 @@ client.on('message', async msg => {
 	if (!call.adminCall && (msg.guild && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')))) return;
 	if (!call.active) return;
 	if (call.adminCall && msg.guild.id === call.origin.guild.id && !client.isOwner(msg.author)) return;
-	try {
+	// try {
 		await call.send(origin ? call.recipient : call.origin, msg, hasText, hasImage, hasEmbed);
-	} catch {
-		return; // eslint-disable-line no-useless-return
-	}
+	//} catch {
+	//	return; // eslint-disable-line no-useless-return
+	//}
 });
 
 client.on('guildCreate', async guild => {
