@@ -58,8 +58,8 @@ module.exports = class FrameCommand extends Command {
 			} else {
 				canvas = createCanvas(base.width, base.height);
 				const ctx = canvas.getContext('2d');
-				ctx.drawImage(base, 0, 0);
 				ctx.drawImage(data, frame.xStart, frame.yStart, frame.xSize, frame.ySize);
+				ctx.drawImage(base, 0, 0);
 			}
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
