@@ -3,6 +3,7 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { list } = require('../../util/Util');
+const { centerImagePart } = require('../../util/Canvas');
 const frames = require('../../assets/json/frame');
 
 module.exports = class FrameCommand extends Command {
@@ -58,7 +59,10 @@ module.exports = class FrameCommand extends Command {
 			} else {
 				canvas = createCanvas(base.width, base.height);
 				const ctx = canvas.getContext('2d');
-				ctx.drawImage(data, frame.xStart, frame.yStart, frame.xSize, frame.ySize);
+				ctx.fillStyle = 'black';
+				ctx.fillRect(frame.xStart, frame.yStart, frame.xSize, frame.ySize);
+				const { x, y, width, height } = centerImagePart(data, frame.xSize, frame.ySize, frame.xStart, frame.yStart);
+				ctx.drawImage(data, x, y, width, height);
 				ctx.drawImage(base, 0, 0);
 			}
 			const attachment = canvas.toBuffer();
