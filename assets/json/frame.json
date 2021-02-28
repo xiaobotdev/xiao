@@ -1,8 +1,10 @@
 {
 	"classic": {
+		"file": "classic.png",
 		"stretch": true
 	},
 	"sakura": {
+		"file": "sakura.png",
 		"stretch": false,
 		"xStart": 189,
 		"yStart": 182,
@@ -10,6 +12,7 @@
 		"ySize": 1700
 	},
 	"neon": {
+		"file": "neon.png",
 		"stretch": false,
 		"xStart": 79,
 		"yStart": 191,
