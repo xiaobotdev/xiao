@@ -1,5 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
 const { WebhookClient } = require('discord.js');
+const request = require('node-superfetch');
 const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const fontFinder = require('font-finder');
