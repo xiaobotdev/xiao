@@ -1991,7 +1991,7 @@ here.
 - [World of Tanks](https://worldoftanks.com/)
 	* simp ([Image](https://worldoftanks.com/es-ar/content/silver-league/open-standings/))
 - [www.aljanh.net](http://www.aljanh.net/)
-	* frame ([Image](http://www.aljanh.net/frame-wallpapers/1508614706.html))
+	* frame ([Classic Image](http://www.aljanh.net/frame-wallpapers/1508614706.html))
 - [xertris](https://www.deviantart.com/xertris)
 	* hat ([Dunce Hat Image](https://www.deviantart.com/xertris/art/Dunce-Cap-634349483))
 - [xkcd](https://xkcd.com/)

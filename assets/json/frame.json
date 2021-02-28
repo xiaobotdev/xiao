@@ -1,0 +1,19 @@
+{
+	"classic": {
+		"stretch": true
+	},
+	"sakura": {
+		"stretch": false,
+		"xStart": 189,
+		"yStart": 182,
+		"xSize": 2550,
+		"ySize": 1700
+	},
+	"neon": {
+		"stretch": false,
+		"xStart": 79,
+		"yStart": 191,
+		"xSize": 625,
+		"ySize": 374
+	}
+}
