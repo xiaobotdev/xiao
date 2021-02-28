@@ -24,7 +24,7 @@ module.exports = class ScreenshotCommand extends Command {
 					key: 'site',
 					prompt: 'What webpage do you want to take a screenshot of?',
 					type: 'string',
-					validate: site => validURL.isWebUri(site)
+					validate: site => Boolean(validURL.isWebUri(site))
 				}
 			]
 		});
