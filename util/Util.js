@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
+const url = require('url');
 const { SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
@@ -202,6 +203,16 @@ module.exports = class Util {
 
 	static preventURLEmbeds(str) {
 		return str.replace(/(https?:\/\/\S+)/g, '<$1>');
+	}
+
+	static stripNSFWURLs(str, siteList, text = '[redacted nsfw url]') {
+		const uris = str.match(/(https?:\/\/\S+)/g);
+		for (const uri of uris) {
+			const parsed = url.parse(uri);
+			if (!siteList.some(pornURL => parsed.host === pornURL)) continue;
+			str = str.replace(uri, text);
+		}
+		return str;
 	}
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {

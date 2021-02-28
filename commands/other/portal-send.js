@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { stripInvites } = require('../../util/Util');
+const { stripInvites, stripNSFWURLs } = require('../../util/Util');
 const { stripIndents } = require('common-tags');
 const { PORTAL_EMOJI_ID, PORTAL_EMOJI_NAME } = process.env;
 
@@ -27,7 +27,6 @@ module.exports = class PortalSendCommand extends Command {
 						}
 						return true;
 					},
-					parse: val => val ? stripInvites(val) : '',
 					isEmpty: (val, msg) => !msg.attachments.size && !val
 				}
 			]
@@ -47,8 +46,11 @@ module.exports = class PortalSendCommand extends Command {
 		try {
 			const displayName = msg.guild ? msg.guild.name : 'DM';
 			const attachments = msg.attachments.size ? msg.attachments.map(a => a.url).join('\n') : null;
+			const content = !msg.channel.nsfw && this.client.adultSiteList
+				? stripNSFWURLs(stripInvites(message), this.client.adultSiteList)
+				: stripInvites(message);
 			await channel.send(stripIndents`
-				**${this.portalEmoji} ${msg.author.tag} (${displayName}):** ${message}
+				**${this.portalEmoji} ${msg.author.tag} (${displayName}):** ${content}
 				${attachments || ''}
 			`);
 			if (channel.topic.includes('<xiao:portal:hide-name>')) {

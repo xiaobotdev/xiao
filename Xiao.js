@@ -57,12 +57,6 @@ client.registry
 client.on('ready', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
 
-	// Register all canvas fonts
-	await client.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
-
-	// Set up existing timers
-	await client.timers.fetchAll();
-
 	// Push client-related activities
 	client.activities.push(
 		{ text: () => `${formatNumber(client.guilds.cache.size)} servers`, type: 'WATCHING' },
@@ -76,6 +70,36 @@ client.on('ready', async () => {
 		const text = typeof activity.text === 'function' ? activity.text() : activity.text;
 		client.user.setActivity(text, { type: activity.type });
 	}, 60000);
+
+	// Import command-leaderboard.json
+	try {
+		const results = client.importCommandLeaderboard();
+		if (!results) client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
+	} catch (err) {
+		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
+	}
+
+	// Import command-last-run.json
+	try {
+		const results = client.importLastRun();
+		if (!results) client.logger.error('[LASTRUN] command-last-run.json is not formatted correctly.');
+	} catch (err) {
+		client.logger.error(`[LASTRUN] Could not parse command-last-run.json:\n${err.stack}`);
+	}
+
+	// Export command-leaderboard.json and command-last-run.json every 30 minutes
+	client.setInterval(() => {
+		try {
+			client.exportCommandLeaderboard();
+		} catch (err) {
+			client.logger.error(`[LEADERBOARD] Failed to export command-leaderboard.json:\n${err.stack}`);
+		}
+		try {
+			client.exportLastRun();
+		} catch (err) {
+			client.logger.error(`[LASTRUN] Failed to export command-last-run.json:\n${err.stack}`);
+		}
+	}, 1.8e+6);
 
 	// Import blacklist
 	try {
@@ -111,35 +135,18 @@ client.on('ready', async () => {
 	}
 	client.logger.info(`[BLACKLIST] Left ${guildsLeft} guilds owned by blacklisted users.`);
 
-	// Import command-leaderboard.json
-	try {
-		const results = client.importCommandLeaderboard();
-		if (!results) client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
-	} catch (err) {
-		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
-	}
+	// Set up existing timers
+	await client.timers.fetchAll();
 
-	// Export command-last-run.json
-	try {
-		const results = client.importLastRun();
-		if (!results) client.logger.error('[LASTRUN] command-last-run.json is not formatted correctly.');
-	} catch (err) {
-		client.logger.error(`[LASTRUN] Could not parse command-last-run.json:\n${err.stack}`);
-	}
+	// Register all canvas fonts
+	await client.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
 
-	// Export command-leaderboard.json and command-last-run.json every 30 minutes
-	client.setInterval(() => {
-		try {
-			client.exportCommandLeaderboard();
-		} catch (err) {
-			client.logger.error(`[LEADERBOARD] Failed to export command-leaderboard.json:\n${err.stack}`);
-		}
-		try {
-			client.exportLastRun();
-		} catch (err) {
-			client.logger.error(`[LASTRUN] Failed to export command-last-run.json:\n${err.stack}`);
-		}
-	}, 1.8e+6);
+	// Fetch adult site list
+	try {
+		await this.client.fetchAdultSiteList();
+	} catch (err) {
+		client.logger.error(`[ADULT SITES] Failed to fetch list\n${err.stack}`);
+	}
 });
 
 client.on('message', async msg => {
