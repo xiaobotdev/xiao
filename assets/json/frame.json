@@ -6,10 +6,10 @@
 	"sakura": {
 		"file": "sakura.png",
 		"stretch": false,
-		"xStart": 189,
-		"yStart": 182,
-		"xSize": 2550,
-		"ySize": 1700
+		"xStart": 63,
+		"yStart": 61,
+		"xSize": 850,
+		"ySize": 567
 	},
 	"neon": {
 		"file": "neon.png",
