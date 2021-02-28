@@ -33,7 +33,7 @@ module.exports = class ScreenshotCommand extends Command {
 	async run(msg, { site }) {
 		try {
 			const parsed = url.parse(site);
-			if (!msg.channel.nsfw && this.client.adultSiteList.some(pornURL => parsed.host === pornURL)) {
+			if (!msg.channel.nsfw && this.client.adultSiteList.includes(parsed.host)) {
 				return msg.reply('This site is NSFW.');
 			}
 			const { body } = await request.get(`https://image.thum.io/get/width/1920/crop/675/noanimate/${site}`);

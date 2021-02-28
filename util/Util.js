@@ -210,7 +210,7 @@ module.exports = class Util {
 		if (!uris) return str;
 		for (const uri of uris) {
 			const parsed = url.parse(uri);
-			if (!siteList.some(pornURL => parsed.host === pornURL)) continue;
+			if (!siteList.includes(parsed.host)) continue;
 			str = str.replace(uri, text);
 		}
 		return str;
