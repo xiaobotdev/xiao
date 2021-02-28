@@ -41,6 +41,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.phone = new PhoneManager(this);
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
+		this.adultSiteList = null;
 	}
 
 	async registerFontsIn(filepath) {
@@ -154,6 +155,15 @@ module.exports = class XiaoClient extends CommandoClient {
 			encoding: 'utf8'
 		});
 		return buf;
+	}
+
+	async fetchAdultSiteList(force = false) {
+		if (!force && this.adultSiteList) return this.adultSiteList;
+		const { text } = await request.get('https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt');
+		this.adultSiteList = text.split('\n')
+			.filter(site => site && !site.startsWith('#'))
+			.map(site => site.replace(/^(0.0.0.0 )/, '')); // eslint-disable-line no-control-regex
+		return this.adultSiteList;
 	}
 
 	fetchReportChannel() {
