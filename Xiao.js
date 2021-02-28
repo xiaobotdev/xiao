@@ -143,7 +143,7 @@ client.on('ready', async () => {
 
 	// Fetch adult site list
 	try {
-		await this.client.fetchAdultSiteList();
+		await client.fetchAdultSiteList();
 	} catch (err) {
 		client.logger.error(`[ADULT SITES] Failed to fetch list\n${err.stack}`);
 	}
