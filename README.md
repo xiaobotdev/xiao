@@ -8,7 +8,7 @@
 Xiao is a Discord bot coded in JavaScript with
 [discord.js](https://discord.js.org/) using the
 [Commando](https://github.com/discordjs/Commando) command framework. With over
-500 commands, she is one of the most feature-rich bots out there. Formerly
+600 commands, she is one of the most feature-rich bots out there. Formerly
 "XiaoBot".
 
 # [Home Server](https://discord.gg/mTr83zt) | [Invite](https://discordapp.com/api/oauth2/authorize?client_id=278305350804045834&permissions=104721601&scope=bot)
@@ -101,8 +101,8 @@ don't grant that permission.
 
 ## Fun Information
 
-- 500+ commands
-- 35,000+ lines of JavaScript
+- 600+ commands
+- 36,000+ lines of JavaScript
 - 65,000+ lines of JSON data
 - 4 years of development
 
@@ -270,7 +270,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 602
+Total: 607
 
 ### Utility:
 
@@ -303,6 +303,7 @@ Total: 602
 ### Utility (Owner):
 
 * **eval:** Executes JavaScript code. (Owner-Only)
+* **blacklist:** Blacklists a user or server. (Owner-Only)
 * **command-last-run-export:** Exports a command last run JSON file. (Owner-Only)
 * **command-last-run-import:** Imports a command last run JSON file. (Owner-Only)
 * **command-leaderboard-export:** Exports a command leaderboard JSON file. (Owner-Only)
@@ -318,6 +319,7 @@ Total: 602
 * **report-respond:** Responds to a submitted report. (Owner-Only)
 * **set-uses:** Changes command usage stats. (Owner-Only)
 * **shutdown:** Shuts down the bot. (Owner-Only)
+* **unblacklist:** Unblacklists a user or server. (Owner-Only)
 * **webhook:** Posts a message to the webhook defined in the bot owner's `process.env`. (Owner-Only)
 
 ### Discord Information:
@@ -428,6 +430,7 @@ Total: 602
 * **ship:** Ships two users together.
 * **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
 * **thicc:** Determines how thicc you are.
+* **think-of:** Determines what a user thinks of another user.
 * **worth:** Determines how much a user is worth.
 
 ### Single Response:
@@ -686,6 +689,7 @@ Total: 602
 * **emboss:** Draws an image or a user's avatar but embossed.
 * **fire-frame:** Draws a fiery border over an image or a user's avatar.
 * **fish-eye:** Draws an image or a user's avatar but with a fish-eye lens.
+* **font:** Types text in a specific font.
 * **frame:** Draws a frame around an image or a user's avatar.
 * **gandhi-quote:** Makes Mahatma Gandhi say the quote you want.
 * **ghost:** Draws an image or a user's avatar but with a ghost-like transparency.
@@ -878,6 +882,7 @@ Total: 602
 
 * **currency:** Converts currency from one currency to another.
 * **final-grade:** Determines the grade you need to make on your final to get your desired course grade.
+* **format-number:** Formats a number to look more readable.
 * **grade:** Determines your grade on an assignment on an 100-point scale.
 * **gravity:** Determines weight on another celestial object.
 * **math:** Evaluates a math expression.
@@ -1042,6 +1047,7 @@ here.
 - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339)
 	* friendship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 	* ship ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
+	* think-of ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 - [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index)
 	* axis-cult (Prayer Data)
 - [AZLyrics](https://www.azlyrics.com/)
@@ -1059,8 +1065,6 @@ here.
 	* skyrim-skill ([Image, Original "The Elder Scrolls V: Skyrim" Game](https://elderscrolls.bethesda.net/en/skyrim))
 - [Bitly](https://bitly.com/)
 	* shorten-url ([API](https://dev.bitly.com/v4_documentation.html))
-- [Block List Project](https://blocklist.site/)
-	* screenshot ([NSFW Site List](https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt))
 - [Bob Ross](https://www.bobross.com/)
 	* bob-ross (Himself)
 - [Bored API](https://www.boredapi.com/)
