@@ -270,7 +270,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 607
+Total: 608
 
 ### Utility:
 
@@ -407,6 +407,7 @@ Total: 607
 * **food:** Responds with a randomly generated food.
 * **fox:** Responds with a random fox image.
 * **hentai:** Responds with a random hentai image. (NSFW)
+* **inspiration:** Responds with a randomly generated inspiration.
 * **interesting:** Responds with a random interesting image.
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **lorem-picsum:** Responds with a random image of a certain size.
@@ -1390,6 +1391,8 @@ here.
 	* eject ([Original "Among Us" Game](https://innersloth.com/gameAmongUs.php))
 - [Inside Scanlation](https://www.insidescanlation.com/)
 	* chi-idea ([Wild Words Font](https://www.insidescanlation.com/etc/the-idiots-guide-to-editing-manga/guide/type/fonts.html))
+- [InspiroBot](https://inspirobot.me/)
+	* inspiration (API)
 - [ipify API](https://www.ipify.org/)
 	* ip (API)
 - [iStock](https://www.istockphoto.com/)
