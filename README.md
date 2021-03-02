@@ -270,7 +270,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 608
+Total: 609
 
 ### Utility:
 
@@ -897,6 +897,7 @@ Total: 608
 
 * **airhorn:** Plays an airhorn sound in a voice channel.
 * **dec-talk:** The world's best Text-to-Speech.
+* **mindfulness:** Immerse yourself in some mindful quotes.
 * **soundboard:** Plays a sound in a voice channel.
 * **vocodes:** Speak text like a variety of famous figures.
 
@@ -1393,6 +1394,7 @@ here.
 	* chi-idea ([Wild Words Font](https://www.insidescanlation.com/etc/the-idiots-guide-to-editing-manga/guide/type/fonts.html))
 - [InspiroBot](https://inspirobot.me/)
 	* inspiration (API)
+	* mindfulness (API)
 - [ipify API](https://www.ipify.org/)
 	* ip (API)
 - [iStock](https://www.istockphoto.com/)
