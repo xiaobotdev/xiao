@@ -3,7 +3,7 @@ const { oneLine } = require('common-tags');
 const { MersenneTwister19937, integer } = require('random-js');
 const genders = ['male', 'female'];
 const { eyeColors, hairColors, hairStyles, extras } = require('../../assets/json/guess-looks');
-const { GIRLFRIEND_USER_ID } = process.env;
+const { LOVER_USER_ID } = process.env;
 
 module.exports = class GuessLooksCommand extends Command {
 	constructor(client) {
@@ -31,7 +31,7 @@ module.exports = class GuessLooksCommand extends Command {
 			if (authorUser) return msg.reply('You look amazing as always! ❤');
 			return msg.reply(`${user.username} looks like a monkey, and smells like one too.`);
 		}
-		if (user.id === GIRLFRIEND_USER_ID) {
+		if (user.id === LOVER_USER_ID) {
 			return msg.reply(`Know what perfection looks like? That's what ${user.username} looks like. ❤`);
 		}
 		const random = MersenneTwister19937.seed(user.id);
