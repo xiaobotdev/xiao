@@ -4,7 +4,7 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { percentColor } = require('../../util/Util');
-const { GIRLFRIEND_USER_ID } = process.env;
+const { LOVER_USER_ID } = process.env;
 const percentColors = [
 	{ pct: 0.0, color: { r: 0, g: 0, b: 255 } },
 	{ pct: 0.5, color: { r: 255 / 2, g: 0, b: 255 / 2 } },
@@ -56,7 +56,7 @@ module.exports = class ShipCommand extends Command {
 		const owner = this.client.isOwner(first) || this.client.isOwner(second);
 		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
 		const botUser = first.id === this.client.user.id || second.id === this.client.user.id;
-		const girlfriendUser = first.id === GIRLFRIEND_USER_ID || second.id === GIRLFRIEND_USER_ID;
+		const girlfriendUser = first.id === LOVER_USER_ID || second.id === LOVER_USER_ID;
 		if (owner && botUser) {
 			level = 0;
 		} else if (self) {
