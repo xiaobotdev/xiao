@@ -45,7 +45,7 @@ module.exports = class MindfulnessCommand extends Command {
 			dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 			await reactIfAble(msg, this.client.user, '🔉');
 			for (const item of flow.data) {
-				if (item.type !== 'text') continue;
+				if (item.type !== 'quote') continue;
 				setTimeout(() => msg.say(item.text).catch(() => null), item.time * 1000);
 			}
 			return null;
