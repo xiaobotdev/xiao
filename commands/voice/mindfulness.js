@@ -46,7 +46,7 @@ module.exports = class MindfulnessCommand extends Command {
 			await reactIfAble(msg, this.client.user, '🔉');
 			for (const item of flow.data) {
 				if (item.type !== 'quote') continue;
-				const text = item.text.replace(/\[pause \d+\]/gi, ' ');
+				const text = item.text.replace(/\[pause \d+\]/gi, '');
 				setTimeout(() => msg.say(text).catch(() => null), item.time * 1000);
 			}
 			return null;
