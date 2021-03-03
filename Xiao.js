@@ -38,7 +38,6 @@ client.registry
 		['edit-text', 'Text Manipulation'],
 		['edit-number', 'Number Manipulation'],
 		['voice', 'Play Audio'],
-		['music', 'Music'],
 		['remind', 'Reminders'],
 		['phone', 'Phone'],
 		['code', 'Coding Tools'],
