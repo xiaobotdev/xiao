@@ -898,12 +898,9 @@ Total: 609
 * **airhorn:** Plays an airhorn sound in a voice channel.
 * **dec-talk:** The world's best Text-to-Speech.
 * **mindfulness:** Immerse yourself in some mindful quotes.
+* **play:** Plays a YouTube video in your voice channel.
 * **soundboard:** Plays a sound in a voice channel.
 * **vocodes:** Speak text like a variety of famous figures.
-
-### Music:
-
-* **play:** Plays a YouTube video in your voice channel.
 
 ### Reminders:
 

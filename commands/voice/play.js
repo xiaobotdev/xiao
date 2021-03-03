@@ -10,7 +10,7 @@ module.exports = class PlayCommand extends Command {
 		super(client, {
 			name: 'play',
 			aliases: ['play-music', 'music'],
-			group: 'music',
+			group: 'voice',
 			memberName: 'play',
 			description: 'Plays a YouTube video in your voice channel.',
 			guildOnly: true,
