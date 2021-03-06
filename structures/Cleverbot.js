@@ -41,10 +41,10 @@ module.exports = class Cleverbot {
 	}
 
 	get channel() {
-		return this.client.channels.cache.get(channelID);
+		return this.client.channels.cache.get(this.channelID);
 	}
 
 	get author() {
-		return this.client.users.cache.get(authorID);
+		return this.client.users.cache.get(this.authorID);
 	}
 };
