@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
+const Cleverbot = require('../../structures/Cleverbot');
 
 module.exports = class CleverbotCommand extends Command {
 	constructor(client) {
@@ -24,6 +25,8 @@ module.exports = class CleverbotCommand extends Command {
 		if (this.client.cleverbots.has(msg.channel.id)) {
 			return msg.say('There is already a Cleverbot conversation in this channel.');
 		}
+		const cleverbot = new Cleverbot(this.client, msg.channel.id, msg.author.id);
+		this.client.cleverbots.set(msg.channel.id, cleverbot);
 		const usage = this.client.registry.commands.get('cleverbot-end').usage();
 		return msg.reply(stripIndents`
 			Cleverbot is now active in this channel, replying to ${msg.author}.
