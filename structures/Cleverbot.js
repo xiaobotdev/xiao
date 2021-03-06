@@ -11,6 +11,7 @@ module.exports = class Cleverbot {
 		this.cs = null;
 		this.timeout = this.setTimeout();
 		this.key = key;
+		this.active = false;
 	}
 
 	async respond(input) {
