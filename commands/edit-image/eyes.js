@@ -52,8 +52,8 @@ module.exports = class EyesCommand extends Command {
 				const leftHeight = eyes.height * leftRatio;
 				ctx.drawImage(
 					eyes,
-					landmarks.left_eye_left_corner.x - leftWidth,
-					landmarks.left_eye_left_corner.y - (leftHeight / 2) - leftHeight,
+					landmarks.left_eye_left_corner.x - (leftWidth / 2),
+					landmarks.left_eye_left_corner.y - (leftHeight / 2) - (leftHeight / 2),
 					leftWidth * 2,
 					leftHeight * 2
 				);
@@ -62,8 +62,8 @@ module.exports = class EyesCommand extends Command {
 				const rightHeight = eyes.height * rightRatio;
 				ctx.drawImage(
 					eyes,
-					landmarks.right_eye_left_corner.x - rightWidth,
-					landmarks.right_eye_left_corner.y - (rightHeight / 2) - rightHeight,
+					landmarks.right_eye_left_corner.x - (rightWidth / 2),
+					landmarks.right_eye_left_corner.y - (rightHeight / 2) - (rightHeight / 2),
 					rightWidth * 2,
 					rightHeight * 2
 				);
