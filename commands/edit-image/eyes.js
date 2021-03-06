@@ -52,20 +52,20 @@ module.exports = class EyesCommand extends Command {
 				const leftHeight = eyes.height * leftRatio;
 				ctx.drawImage(
 					eyes,
-					landmarks.left_eye_left_corner.x,
-					landmarks.left_eye_left_corner.y - (leftHeight / 2),
-					leftWidth,
-					leftHeight
+					landmarks.left_eye_left_corner.x - leftWidth,
+					landmarks.left_eye_left_corner.y - (leftHeight / 2) - leftHeight,
+					leftWidth * 2,
+					leftHeight * 2
 				);
 				const rightWidth = landmarks.right_eye_right_corner.x - landmarks.right_eye_left_corner.x;
 				const rightRatio = rightWidth / eyes.width;
 				const rightHeight = eyes.height * rightRatio;
 				ctx.drawImage(
 					eyes,
-					landmarks.right_eye_left_corner.x,
-					landmarks.right_eye_left_corner.y - (rightHeight / 2),
-					rightWidth,
-					rightHeight
+					landmarks.right_eye_left_corner.x - rightWidth,
+					landmarks.right_eye_left_corner.y - (rightHeight / 2) - rightHeight,
+					rightWidth * 2,
+					rightHeight * 2
 				);
 			}
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'eyes.png' }] });
