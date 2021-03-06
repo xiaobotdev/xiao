@@ -15,6 +15,11 @@ module.exports = class Cleverbot {
 	}
 
 	async respond(input) {
+		if (!input) {
+			clearTimeout(this.timeout);
+			this.timeout = this.setTimeout();
+			return blankResponses[Math.floor(Math.random() * blankResponses.length)];
+		}
 		const { body } = await request
 			.get('https://www.cleverbot.com/getreply')
 			.query({
