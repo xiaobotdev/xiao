@@ -19,6 +19,11 @@ module.exports = class DannyDevitoCommand extends Command {
 			},
 			credit: [
 				{
+					name: 'Danny DeVito',
+					url: 'https://twitter.com/dannydevito',
+					reason: 'Himself'
+				},
+				{
 					name: 'Face++ Cognitive Services',
 					url: 'https://www.faceplusplus.com/',
 					reason: 'Face Detection API',
