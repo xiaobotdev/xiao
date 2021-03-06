@@ -41,7 +41,7 @@ module.exports = class EyesCommand extends Command {
 			const faces = await this.detect(imgData);
 			if (!faces) return msg.reply('There are no faces in this image.');
 			if (faces === 'size') return msg.reply('This image is too large.');
-			const base = await loadImage(imgData);
+			const base = await loadImage(imgData.body);
 			const canvas = createCanvas(base.width, base.height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0);
