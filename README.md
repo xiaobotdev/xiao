@@ -269,7 +269,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 609
+Total: 612
 
 ### Utility:
 
@@ -682,11 +682,13 @@ Total: 609
 * **convert-image:** Converts an image from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
 * **danger:** Creates a danger sign with the text of your choice.
+* **danny-devito:** Draws Danny Devito's face onto the faces in an image.
 * **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **dicebear:** Creates a DiceBear avatar based on the text you provide.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **emboss:** Draws an image or a user's avatar but embossed.
+* **eyes:** Draws emoji eyes onto the faces in an image.
 * **fire-frame:** Draws a fiery border over an image or a user's avatar.
 * **fish-eye:** Draws an image or a user's avatar but with a fish-eye lens.
 * **font:** Types text in a specific font.
@@ -923,7 +925,8 @@ Total: 609
 
 ### Other:
 
-* **cleverbot:** Talk to Cleverbot. (Owner-Only)
+* **cleverbot-end:** Ends the current Cleverbot chat.
+* **cleverbot:** Starts a Cleverbot conversation.
 * **dating:** Find the person of your dreams with this dating system!
 * **portal-send:** Send a message to a portal channel.
 * **prune:** Deletes up to 99 messages from the current channel.
@@ -1136,6 +1139,8 @@ here.
 	* danbooru (API)
 - [Dance Dance Revolution](https://www.ddrgame.com/)
 	* emoji-emoji-revolution (Concept)
+- [Danny DeVito](https://twitter.com/dannydevito)
+	* danny-devito (Himself)
 - [DashieSparkle](https://www.deviantart.com/dashiesparkle)
 	* car-race ([Rainbow Car Image](https://www.deviantart.com/dashiesparkle/art/Vector-475-Rainbow-Dash-58-609921260))
 - [Dave Hansen](https://www.fontspace.com/dave-hansen)
@@ -1194,6 +1199,8 @@ here.
 - [Evil Mojo Games](https://www.evilmojogames.com/)
 	* paladins ([Original "Paladins" Game](https://www.paladins.com/))
 - [Face++ Cognitive Services](https://www.faceplusplus.com/)
+	* danny-devito ([Face Detection API](https://www.faceplusplus.com/face-detection/))
+	* eyes ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 	* face ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 - [FANDOM](https://www.fandom.com/)
 	* superpower ([API](https://powerlisting.fandom.com/api.php))
