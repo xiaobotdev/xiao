@@ -154,6 +154,18 @@ client.on('message', async msg => {
 	const hasEmbed = msg.embeds.length !== 0;
 	if (msg.author.bot || (!hasText && !hasImage && !hasEmbed)) return;
 	if (client.blacklist.user.includes(msg.author.id)) return;
+
+	// Cleverbot handler
+	const cleverbot = client.cleverbots.get(msg.channel.id);
+	if (cleverbot) {
+		if (!hasText) return;
+		if (!cleverbot.shouldRespond(msg)) return;
+		const response = await cleverbot.respond(msg.cleanContent);
+		await msg.reply(response);
+		return;
+	}
+
+	// Phone message handler
 	const origin = client.phone.find(call => call.origin.id === msg.channel.id);
 	const recipient = client.phone.find(call => call.recipient.id === msg.channel.id);
 	if (!origin && !recipient) return;
