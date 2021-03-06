@@ -158,10 +158,9 @@ client.on('message', async msg => {
 	// Cleverbot handler
 	const cleverbot = client.cleverbots.get(msg.channel.id);
 	if (cleverbot && cleverbot.active) {
-		if (!hasText) return;
 		if (!cleverbot.shouldRespond(msg)) return;
 		const response = await cleverbot.respond(msg.cleanContent);
-		await msg.reply(response);
+		await msg.channel.send(response);
 		return;
 	}
 
