@@ -1,7 +1,5 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
-const { CLEVERBOT_KEY } = process.env;
-const blankResponses = ['What?', 'Huh?', 'I don\'t understand.', 'Speak up, please.'];
+const { stripIndents } = require('common-tags');
 
 module.exports = class CleverbotCommand extends Command {
 	constructor(client) {
@@ -10,9 +8,7 @@ module.exports = class CleverbotCommand extends Command {
 			aliases: ['clevs', 'chat'],
 			group: 'other',
 			memberName: 'cleverbot',
-			description: 'Talk to Cleverbot.',
-			details: 'Only the bot owner(s) may use this command.',
-			ownerOnly: true,
+			description: 'Starts a Cleverbot conversation.',
 			credit: [
 				{
 					name: 'Cleverbot',
@@ -20,35 +16,18 @@ module.exports = class CleverbotCommand extends Command {
 					reason: 'API',
 					reasonURL: 'https://www.cleverbot.com/api/'
 				}
-			],
-			args: [
-				{
-					key: 'text',
-					prompt: 'What do you want to say to Cleverbot?',
-					type: 'string'
-				}
 			]
 		});
-
-		this.convos = new Map();
 	}
 
-	async run(msg, { text }) {
-		try {
-			const convo = this.convos.get(msg.channel.id);
-			const { body } = await request
-				.get('https://www.cleverbot.com/getreply')
-				.query({
-					key: CLEVERBOT_KEY,
-					cs: convo ? convo.cs : '',
-					input: text
-				});
-			if (convo) clearTimeout(convo.timeout);
-			const timeout = setTimeout(() => this.convos.delete(msg.channel.id), 600000);
-			this.convos.set(msg.channel.id, { cs: body.cs, timeout });
-			return msg.reply(body.output || blankResponses[Math.floor(Math.random() * blankResponses.length)]);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+	run(msg) {
+		if (this.client.cleverbots.has(msg.channel.id)) {
+			return msg.say('There is already a Cleverbot conversation in this channel.');
 		}
+		const usage = this.client.registry.commands.get('cleverbot-end').usage();
+		return msg.reply(stripIndents`
+			Cleverbot is now active in this channel, replying to ${msg.author}.
+			To end the conversation, use ${usage}.
+		`);
 	}
 };

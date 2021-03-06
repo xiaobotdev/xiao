@@ -39,6 +39,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.pokemon = new PokemonStore();
 		this.games = new Collection();
 		this.dispatchers = new Map();
+		this.cleverbots = new Map();
 		this.phone = new PhoneManager(this);
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
