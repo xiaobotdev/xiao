@@ -265,7 +265,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 612
+Total: 613
 
 ### Utility:
 
@@ -350,6 +350,7 @@ Total: 612
 * **fml:** Responds with a FML quote. (NSFW)
 * **fortune:** Responds with a random fortune.
 * **github-zen:** Responds with a random GitHub design philosophy.
+* **incorrect-quote:** Generates an incorrect quote.
 * **joke:** Responds with a random joke.
 * **kiss-marry-kill:** Determines who to kiss, who to marry, and who to kill.
 * **light-novel-title:** Responds with a randomly generated Light Novel title.
@@ -1770,6 +1771,8 @@ here.
 	* safebooru (API)
 - [Sam Thik](https://www.pinterest.com/Samthik/)
 	* spotify-now-playing ([Image](https://www.pinterest.com/pin/500251471109108490/))
+- [ScatterPatter's Incorrect Quotes Generator](https://incorrect-quotes-generator.neocities.org/)
+	* incorrect-quote (Quote Data)
 - [SeekPNG](https://www.seekpng.com/)
 	* car-race ([Herbie Car Image](https://www.seekpng.com/ima/u2q8r5a9y3t4w7u2/))
 - [SEGA](https://www.sega.com/)
