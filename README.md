@@ -265,7 +265,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 615
+Total: 616
 
 ### Utility:
 
@@ -574,6 +574,7 @@ Total: 615
 * **gender:** Determines the gender of a name.
 * **has-transparency:** Determines if an image has transparency in it.
 * **image-size:** Determines the size of an image.
+* **is-it-down:** Determines if a website is down or not.
 * **ocr:** Performs Optical Character Recognition on an image.
 * **parse-time:** Analyzes the time duration you provide and gives the result.
 * **read-qr-code:** Reads a QR Code.
@@ -1403,6 +1404,8 @@ here.
 	* mindfulness (API)
 - [ipify API](https://www.ipify.org/)
 	* ip (API)
+- [Is It Down Right Now?](https://www.isitdownrightnow.com/)
+	* is-it-down (API)
 - [iStock](https://www.istockphoto.com/)
 	* car-race ([Background Image](https://www.istockphoto.com/vector/side-view-of-a-road-with-a-crash-barrier-roadside-green-meadow-and-clear-blue-sky-gm1081596948-290039955))
 - [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ)
