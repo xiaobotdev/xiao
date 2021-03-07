@@ -155,10 +155,11 @@ client.on('message', async msg => {
 	const hasEmbed = msg.embeds.length !== 0;
 	if (msg.author.bot || (!hasText && !hasImage && !hasEmbed)) return;
 	if (client.blacklist.user.includes(msg.author.id)) return;
+	if (msg.isCommand) return;
 
 	// Cleverbot handler
 	const cleverbot = client.cleverbots.get(msg.channel.id);
-	if (cleverbot && cleverbot.active) {
+	if (cleverbot) {
 		if (!cleverbot.shouldRespond(msg)) return;
 		const response = await cleverbot.respond(msg.cleanContent);
 		await msg.channel.send(response);
