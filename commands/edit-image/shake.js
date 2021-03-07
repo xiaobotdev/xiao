@@ -50,6 +50,7 @@ module.exports = class ShakeCommand extends Command {
 			encoder.setQuality(200);
 			const frames = this.generateFrames(amount);
 			for (const { x, y } of frames) {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				ctx.drawImage(base, x, y, 512, height);
 				encoder.addFrame(ctx);
 			}
