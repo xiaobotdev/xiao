@@ -265,7 +265,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 613
+Total: 614
 
 ### Utility:
 
@@ -660,6 +660,7 @@ Total: 613
 ### Image Manipulation:
 
 * **adorable:** Creates an adorable avatar based on the text you provide.
+* **anime-eyes:** Draws anime eyes onto the faces in an image.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **blur:** Draws an image or a user's avatar but blurred.
 * **bob-ross:** Draws an image or a user's avatar over Bob Ross' canvas.
@@ -1199,6 +1200,7 @@ here.
 - [Evil Mojo Games](https://www.evilmojogames.com/)
 	* paladins ([Original "Paladins" Game](https://www.paladins.com/))
 - [Face++ Cognitive Services](https://www.faceplusplus.com/)
+	* anime-eyes ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 	* danny-devito ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 	* eyes ([Face Detection API](https://www.faceplusplus.com/face-detection/))
 	* face ([Face Detection API](https://www.faceplusplus.com/face-detection/))
