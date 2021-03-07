@@ -265,7 +265,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 614
+Total: 615
 
 ### Utility:
 
@@ -709,6 +709,7 @@ Total: 614
 * **robohash:** Creates a robot based on the text you provide.
 * **rotate:** Draws an image or a user's avatar but rotated a number of degrees.
 * **sepia:** Draws an image or a user's avatar in sepia.
+* **shake:** Draws an image or a user's avatar shaking.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **simp:** Draws a "simp" stamp over an image or a user's avatar.
 * **sketch:** Draws an image or a user's avatar but sketched.
