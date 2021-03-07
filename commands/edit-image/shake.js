@@ -22,7 +22,9 @@ module.exports = class ShakeCommand extends Command {
 				{
 					key: 'amount',
 					prompt: 'How much do you want to shake the image? Give a number, like 1.',
-					type: 'integer'
+					type: 'integer',
+					max: 50,
+					min: 1
 				},
 				{
 					key: 'image',
