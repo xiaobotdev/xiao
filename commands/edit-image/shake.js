@@ -3,7 +3,6 @@ const { createCanvas, loadImage } = require('canvas');
 const GIFEncoder = require('gifencoder');
 const request = require('node-superfetch');
 const { streamToArray } = require('../../util/Util');
-const { centerImage } = require('../../util/Canvas');
 
 module.exports = class ShakeCommand extends Command {
 	constructor(client) {
@@ -65,7 +64,7 @@ module.exports = class ShakeCommand extends Command {
 	}
 
 	generateFrames(amount) {
-		amount = amount * 5;
+		amount *= 5;
 		return [
 			{ x: -amount, y: 0 },
 			{ x: 0, y: -amount },
