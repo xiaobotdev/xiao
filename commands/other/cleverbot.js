@@ -21,18 +21,16 @@ module.exports = class CleverbotCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		if (this.client.cleverbots.has(msg.channel.id)) {
 			return msg.say('There is already a Cleverbot conversation in this channel.');
 		}
 		const cleverbot = new Cleverbot(this.client, msg.channel.id, msg.author.id);
 		this.client.cleverbots.set(msg.channel.id, cleverbot);
 		const usage = this.client.registry.commands.get('cleverbot-end').usage();
-		await msg.reply(stripIndents`
+		return msg.reply(stripIndents`
 			Cleverbot is now active in this channel, replying to ${msg.author}.
 			To end the conversation, use ${usage}.
 		`);
-		cleverbot.active = true;
-		return null;
 	}
 };
