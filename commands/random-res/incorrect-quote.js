@@ -52,6 +52,6 @@ module.exports = class IncorrectQuoteCommand extends Command {
 		if (characters.length >= 6) {
 			quote = quote.replace(/\{F\}/g, characters[5]).replace(/\{L\}/g, characters[5].toUpperCase());
 		}
-		return quote;	
+		return quote;
 	}
 };
