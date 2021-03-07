@@ -54,20 +54,20 @@ module.exports = class AnimeEyesCommand extends Command {
 				const leftHeight = leftEye.height * leftRatio;
 				ctx.drawImage(
 					leftEye,
-					landmarks.left_eye_left_corner.x - (leftWidth / 2),
-					landmarks.left_eye_left_corner.y - (leftHeight / 2) - (leftHeight / 2),
-					leftWidth * 2,
-					leftHeight * 2
+					landmarks.left_eye_left_corner.x - (leftWidth * 0.25),
+					landmarks.left_eye_left_corner.y - (leftHeight / 2) - (leftHeight * 0.25),
+					leftWidth * 1.5,
+					leftHeight * 1.5
 				);
 				const rightWidth = landmarks.right_eye_right_corner.x - landmarks.right_eye_left_corner.x;
 				const rightRatio = rightWidth / rightEye.width;
 				const rightHeight = rightEye.height * rightRatio;
 				ctx.drawImage(
 					rightEye,
-					landmarks.right_eye_left_corner.x - (rightWidth / 2),
-					landmarks.right_eye_left_corner.y - (rightHeight / 2) - (rightHeight / 2),
-					rightWidth * 2,
-					rightHeight * 2
+					landmarks.right_eye_left_corner.x - (rightWidth * 0.25),
+					landmarks.right_eye_left_corner.y - (rightHeight / 2) - (rightHeight * 0.25),
+					rightWidth * 1.5,
+					rightHeight * 1.5
 				);
 			}
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'anime-eyes.png' }] });
