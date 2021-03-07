@@ -36,18 +36,22 @@ module.exports = class IncorrectQuoteCommand extends Command {
 	}
 
 	replaceCharacters(quote, characters) {
-		return quote
-			.replace(/\{A\}/g, characters[0])
-			.replace(/\{B\}/g, characters[1])
-			.replace(/\{C\}/g, characters[2])
-			.replace(/\{D\}/g, characters[3])
-			.replace(/\{E\}/g, characters[4])
-			.replace(/\{F\}/g, characters[5])
-			.replace(/\{G\}/g, characters[0].toUpperCase())
-			.replace(/\{H\}/g, characters[1].toUpperCase())
-			.replace(/\{I\}/g, characters[2].toUpperCase())
-			.replace(/\{J\}/g, characters[3].toUpperCase())
-			.replace(/\{K\}/g, characters[4].toUpperCase())
-			.replace(/\{L\}/g, characters[5].toUpperCase());
+		quote = quote.replace(/\{A\}/g, characters[0]).replace(/\{G\}/g, characters[0].toUpperCase());
+		if (characters.length >= 2) {
+			quote = quote.replace(/\{B\}/g, characters[1]).replace(/\{H\}/g, characters[1].toUpperCase());
+		}
+		if (characters.length >= 3) {
+			quote = quote.replace(/\{C\}/g, characters[2]).replace(/\{I\}/g, characters[2].toUpperCase());
+		}
+		if (characters.length >= 4) {
+			quote = quote.replace(/\{D\}/g, characters[3]).replace(/\{J\}/g, characters[3].toUpperCase());
+		}
+		if (characters.length >= 5) {
+			quote = quote.replace(/\{E\}/g, characters[4]).replace(/\{K\}/g, characters[4].toUpperCase());
+		}
+		if (characters.length >= 6) {
+			quote = quote.replace(/\{F\}/g, characters[5]).replace(/\{L\}/g, characters[5].toUpperCase());
+		}
+		return quote;	
 	}
 };
