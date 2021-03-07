@@ -242,10 +242,6 @@ command you want to use. Use the ID of that album (look at the URL)
 as the variable. Yes, you need to fill these albums yourself. This is
 why you shouldn't self-host Xiao.
 
-## Related Bots
-
-* [Rando Cardrissian](https://github.com/dragonfire535/rando-cardrissian) is a Cards Against Humanity bot, whose features were originally built into Xiao.
-
 ## Options
 
 Options in Xiao are configured using channel topics. Place the option
@@ -662,26 +658,18 @@ Total: 612
 
 ### Image Manipulation:
 
-* **ace-attorney:** Sends a text box from Ace Attorney with the quote and character of your choice.
-* **achievement:** Sends a Minecraft achievement with the text of your choice.
 * **adorable:** Creates an adorable avatar based on the text you provide.
-* **apple-engraving:** Engraves the text of your choice onto an Apple product.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
-* **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
 * **blur:** Draws an image or a user's avatar but blurred.
 * **bob-ross:** Draws an image or a user's avatar over Bob Ross' canvas.
 * **brazzers:** Draws an image with the Brazzers logo in the corner. (NSFW)
-* **caution:** Creates a caution sign with the text of your choice.
-* **certificate:** Sends a certificate of excellence with the name and reason of your choice.
 * **charcoal:** Draws an image or a user's avatar but with charcoal.
-* **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.
 * **circle:** Draws an image or a user's avatar as a circle.
 * **color:** Sends an image of the color you choose.
 * **communist:** Draws the Communist flag over an image or a user's avatar.
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **convert-image:** Converts an image from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
-* **danger:** Creates a danger sign with the text of your choice.
 * **danny-devito:** Draws Danny Devito's face onto the faces in an image.
 * **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
@@ -691,29 +679,22 @@ Total: 612
 * **eyes:** Draws emoji eyes onto the faces in an image.
 * **fire-frame:** Draws a fiery border over an image or a user's avatar.
 * **fish-eye:** Draws an image or a user's avatar but with a fish-eye lens.
-* **font:** Types text in a specific font.
 * **frame:** Draws a frame around an image or a user's avatar.
-* **gandhi-quote:** Makes Mahatma Gandhi say the quote you want.
 * **ghost:** Draws an image or a user's avatar but with a ghost-like transparency.
 * **glass-shatter:** Draws an image or a user's avatar with a glass shatter in front of it.
 * **glitch:** Draws an image or a user's avatar but glitched.
 * **greyscale:** Draws an image or a user's avatar in greyscale.
 * **gun:** Draws a gun over an image or a user's avatar.
 * **hands:** Draws creepy hands over an image or a user's avatar.
-* **highway-sign:** Sends a highway sign sign with the text of your choice.
-* **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
 * **ifunny:** Draws an image with the iFunny logo.
 * **implode:** Draws an image or a user's avatar but imploded.
 * **invert:** Draws an image or a user's avatar but inverted.
-* **jeopardy-question:** Sends a Jeopardy Question with the text of your choice.
 * **lego-icon:** Edits an image or avatar onto a character icon from LEGO Star Wars.
-* **license-plate:** Creates a license plate with the text of your choice.
 * **liquid-rescale:** Draws an image or a user's avatar but with liquid rescale from ImageMagick.
 * **minecraft-skin:** Sends the Minecraft skin for a user.
 * **mirror:** Draws an image or a user's avatar but mirrored on the X/Y axis (or both).
 * **motion-blur:** Draws an image or a user's avatar with motion blur.
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
-* **newspaper:** Creates a fake newspaper with the headline and body of your choice.
 * **noise:** Draws an image or a user's avatar but with noise.
 * **oil-painting:** Draws an image or a user's avatar but with oil paints.
 * **pet:** Pets an image or a user's avatar.
@@ -726,13 +707,10 @@ Total: 612
 * **robohash:** Creates a robot based on the text you provide.
 * **rotate:** Draws an image or a user's avatar but rotated a number of degrees.
 * **sepia:** Draws an image or a user's avatar in sepia.
-* **shields-io-badge:** Creates a badge from shields.io.
 * **silhouette:** Draws a silhouette of an image or a user's avatar.
 * **simp:** Draws a "simp" stamp over an image or a user's avatar.
 * **sketch:** Draws an image or a user's avatar but sketched.
 * **snapcode:** Responds with the Snapcode of a Snapchat user.
-* **speed-limit:** Sends a Speed Limit sign with the limit of your choice.
-* **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
 * **spotify-now-playing:** Draws an image or a user's avatar on a Spotify album with the name and artist of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
@@ -741,15 +719,34 @@ Total: 612
 * **swirl:** Draws an image or a user's avatar but swirled.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
 * **trainer-card:** Creates a trainer card for a Pokémon trainer.
-* **tweet:** Sends a Twitter tweet with the user and text of your choice.
-* **undertale:** Sends a text box from Undertale with the quote and character of your choice.
 * **wanted:** Draws an image or a user's avatar over a wanted poster.
 * **wild-pokemon:** Draws an image or a user's avatar over a wild Pokémon appearance.
 * **you-died:** Sends a "You Died" screen over an image or a user's avatar.
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
-* **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Image Text Manipulation:
+
+* **ace-attorney:** Sends a text box from Ace Attorney with the quote and character of your choice.
+* **achievement:** Sends a Minecraft achievement with the text of your choice.
+* **apple-engraving:** Engraves the text of your choice onto an Apple product.
+* **axis-cult-sign-up:** Sends an Axis Cult Sign-Up sheet for you. Join today!
+* **caution:** Creates a caution sign with the text of your choice.
+* **certificate:** Sends a certificate of excellence with the name and reason of your choice.
+* **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.
+* **danger:** Creates a danger sign with the text of your choice.
+* **font:** Types text in a specific font.
+* **gandhi-quote:** Makes Mahatma Gandhi say the quote you want.
+* **highway-sign:** Sends a highway sign sign with the text of your choice.
+* **hollywood-star:** Sends a Hollywood Walk of Fame star with the name of your choice.
+* **jeopardy-question:** Sends a Jeopardy Question with the text of your choice.
+* **license-plate:** Creates a license plate with the text of your choice.
+* **newspaper:** Creates a fake newspaper with the headline and body of your choice.
+* **shields-io-badge:** Creates a badge from shields.io.
+* **speed-limit:** Sends a Speed Limit sign with the limit of your choice.
+* **spongebob-time-card:** Sends a Spongebob Time Card with the text of your choice.
+* **tweet:** Sends a Twitter tweet with the user and text of your choice.
+* **undertale:** Sends a text box from Undertale with the quote and character of your choice.
+* **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
 ### Avatar Manipulation:
 
