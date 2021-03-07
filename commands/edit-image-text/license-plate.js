@@ -6,7 +6,7 @@ module.exports = class LicensePlateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'license-plate',
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'license-plate',
 			description: 'Creates a license plate with the text of your choice.',
 			throttling: {

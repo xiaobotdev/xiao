@@ -3,14 +3,14 @@ const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
-module.exports = class DangerCommand extends Command {
+module.exports = class CautionCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'danger',
-			aliases: ['danger-sign'],
-			group: 'edit-image',
-			memberName: 'danger',
-			description: 'Creates a danger sign with the text of your choice.',
+			name: 'caution',
+			aliases: ['caution-sign'],
+			group: 'edit-image-text',
+			memberName: 'caution',
+			description: 'Creates a caution sign with the text of your choice.',
 			throttling: {
 				usages: 1,
 				duration: 10
@@ -27,13 +27,13 @@ module.exports = class DangerCommand extends Command {
 					name: 'Wikimedia Commons',
 					url: 'https://commons.wikimedia.org/wiki/Main_Page',
 					reason: 'Image',
-					reasonURL: 'https://commons.wikimedia.org/wiki/File:Danger_blank.svg'
+					reasonURL: 'https://commons.wikimedia.org/wiki/File:Caution_blank.svg'
 				}
 			],
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text should the danger sign say?',
+					prompt: 'What text should the caution sign say?',
 					type: 'string',
 					max: 500
 				}
@@ -42,7 +42,7 @@ module.exports = class DangerCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'danger.png'));
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'caution.png'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
@@ -50,16 +50,16 @@ module.exports = class DangerCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(60);
 		let fontSize = 60;
-		while (ctx.measureText(text).width > 2520) {
+		while (ctx.measureText(text).width > 3311) {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, text.toUpperCase(), 840);
-		const topMost = 510 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
+		const lines = await wrapText(ctx, text.toUpperCase(), 895);
+		const topMost = 470 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);
 			ctx.fillText(lines[i], base.width / 2, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'danger.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'caution.png' }] });
 	}
 };

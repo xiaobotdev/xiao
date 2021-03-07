@@ -8,7 +8,7 @@ module.exports = class AchievementCommand extends Command {
 		super(client, {
 			name: 'achievement',
 			aliases: ['minecraft-achievement', 'achieve'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'achievement',
 			description: 'Sends a Minecraft achievement with the text of your choice.',
 			throttling: {

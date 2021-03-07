@@ -8,7 +8,7 @@ module.exports = class AppleEngravingCommand extends Command {
 		super(client, {
 			name: 'apple-engraving',
 			aliases: ['apple-engrave', 'apple-e', 'a-engrave', 'a-engraving'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'apple-engraving',
 			description: 'Engraves the text of your choice onto an Apple product.',
 			details: `**Products:** ${Object.keys(products).join(', ')}`,

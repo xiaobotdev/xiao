@@ -12,7 +12,7 @@ module.exports = class TweetCommand extends Command {
 		super(client, {
 			name: 'tweet',
 			aliases: ['fake-tweet', 'twitter-tweet', 'fake-twitter-tweet'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'tweet',
 			description: 'Sends a Twitter tweet with the user and text of your choice.',
 			throttling: {

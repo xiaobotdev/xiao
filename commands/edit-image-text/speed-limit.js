@@ -7,7 +7,7 @@ module.exports = class SpeedLimitCommand extends Command {
 		super(client, {
 			name: 'speed-limit',
 			aliases: ['speed', 'speed-limit-sign'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'speed-limit',
 			description: 'Sends a Speed Limit sign with the limit of your choice.',
 			throttling: {

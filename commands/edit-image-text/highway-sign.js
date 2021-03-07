@@ -8,7 +8,7 @@ module.exports = class HighwaySignCommand extends Command {
 		super(client, {
 			name: 'highway-sign',
 			aliases: ['road-sign', 'road-work-sign', 'electronic-highway-sign'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'highway-sign',
 			description: 'Sends a highway sign sign with the text of your choice.',
 			throttling: {

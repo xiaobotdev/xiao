@@ -7,7 +7,7 @@ module.exports = class HollywoodStarCommand extends Command {
 		super(client, {
 			name: 'hollywood-star',
 			aliases: ['hollywood', 'walk-of-fame', 'walk-of-fame-star'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'hollywood-star',
 			description: 'Sends a Hollywood Walk of Fame star with the name of your choice.',
 			throttling: {

@@ -33,6 +33,7 @@ client.registry
 		['games-sp', 'Single-Player Games'],
 		['games-mp', 'Multi-Player Games'],
 		['edit-image', 'Image Manipulation'],
+		['edit-image-text', 'Image Text Manipulation'],
 		['edit-avatar', 'Avatar Manipulation'],
 		['edit-meme', 'Meme Generators'],
 		['edit-text', 'Text Manipulation'],

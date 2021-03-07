@@ -8,7 +8,7 @@ module.exports = class ChineseRestaurantCommand extends Command {
 		super(client, {
 			name: 'chinese-restaurant',
 			aliases: ['chinese-restaurant-sign', 'chinese-food-sign', 'chinese-sign'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'chinese-restaurant',
 			description: 'Sends a Chinese restaurant sign with the text of your choice.',
 			throttling: {

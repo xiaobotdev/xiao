@@ -6,7 +6,7 @@ module.exports = class NewspaperCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'newspaper',
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'newspaper',
 			description: 'Creates a fake newspaper with the headline and body of your choice.',
 			credit: [

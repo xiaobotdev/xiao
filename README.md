@@ -749,6 +749,8 @@ Total: 612
 * **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
 * **zero-dialogue:** Sends a text box from Megaman Zero with the quote of your choice.
 
+### Image Text Manipulation:
+
 ### Avatar Manipulation:
 
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
