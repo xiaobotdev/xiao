@@ -7,7 +7,7 @@ module.exports = class FontCommand extends Command {
 		super(client, {
 			name: 'font',
 			aliases: ['font-test', 'text-image', 'txt-img', 'text-img', 'txt-image'],
-			group: 'edit-image',
+			group: 'edit-image-text',
 			memberName: 'font',
 			description: 'Types text in a specific font.',
 			throttling: {
