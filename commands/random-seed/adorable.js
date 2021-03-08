@@ -6,7 +6,7 @@ module.exports = class AdorableCommand extends Command {
 		super(client, {
 			name: 'adorable',
 			aliases: ['adorable-avatar'],
-			group: 'edit-image',
+			group: 'random-seed',
 			memberName: 'adorable',
 			description: 'Creates an adorable avatar based on the text you provide.',
 			clientPermissions: ['ATTACH_FILES'],

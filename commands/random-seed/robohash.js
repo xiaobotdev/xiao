@@ -5,7 +5,7 @@ module.exports = class RobohashCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'robohash',
-			group: 'edit-image',
+			group: 'random-seed',
 			memberName: 'robohash',
 			description: 'Creates a robot based on the text you provide.',
 			clientPermissions: ['ATTACH_FILES'],
