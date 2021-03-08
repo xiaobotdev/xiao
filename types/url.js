@@ -11,7 +11,7 @@ module.exports = class UrlType extends ArgumentType {
 		return Boolean(validURL.isWebUri(value));
 	}
 
-	async parse(value) {
+	parse(value) {
 		return new URL(value);
 	}
 };
