@@ -61,6 +61,7 @@ module.exports = class PhoneCommand extends Command {
 			if (!channel.topic || !channel.topic.includes('<xiao:phone>')) {
 				return msg.reply('That channel does not allow phone calls.');
 			}
+			if (msg.channel.id === channel.id) return msg.reply('You are literally in that channel right now.');
 			if (this.client.phone.inCall(channel)) return msg.reply('That channel is already in a call.');
 			if (this.client.phone.isBlocked(msg.channel, channel, msg.author)) {
 				return msg.reply('That channel has blocked this channel from calling them.');
