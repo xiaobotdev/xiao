@@ -1,5 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const url = require('url');
+const validURL = require('valid-url');
 
 module.exports = class IsItDownCommand extends Command {
 	constructor(client) {
@@ -20,17 +22,19 @@ module.exports = class IsItDownCommand extends Command {
 				{
 					key: 'url',
 					prompt: 'What URL do you want to test?',
-					type: 'string'
+					type: 'string',
+					validate: site => Boolean(validURL.isWebUri(site))
 				}
 			]
 		});
 	}
 
 	async run(msg, { url }) {
+		const parsed = url.parse(site);
 		try {
 			const { text } = await request
 				.post('https://www.isitdownrightnow.com/check.php')
-				.query({ domain: url });
+				.query({ domain: parsed.host });
 			const down = text.includes('div class="statusdown"');
 			if (!down) return msg.reply('👍 This site is up and running.');
 			return msg.reply('👎 Looks like this site is down for everyone...');
