@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const url = require('url');
+const { URL } = require('url');
 const validURL = require('valid-url');
 
 module.exports = class IsItDownCommand extends Command {
@@ -30,7 +30,7 @@ module.exports = class IsItDownCommand extends Command {
 	}
 
 	async run(msg, { site }) {
-		const parsed = url.parse(site);
+		const parsed = new URL(site);
 		try {
 			const { text } = await request
 				.post('https://www.isitdownrightnow.com/check.php')

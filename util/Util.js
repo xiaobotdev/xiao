@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
-const url = require('url');
+const { URL } = require('url');
 const { SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
@@ -209,7 +209,7 @@ module.exports = class Util {
 		const uris = str.match(/(https?:\/\/\S+)/g);
 		if (!uris) return str;
 		for (const uri of uris) {
-			const parsed = url.parse(uri);
+			const parsed = new URL(uri);
 			if (!siteList.includes(parsed.host)) continue;
 			str = str.replace(uri, text);
 		}
