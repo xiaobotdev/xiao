@@ -41,7 +41,7 @@ module.exports = class SexySinglesCommand extends Command {
 			const width = Math.round(base.width * scaleW);
 			const canvas = createCanvas(plate.width + width, plate.height);
 			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0, plate.width + 1, 0);
+			ctx.drawImage(base, plate.width + 1, 0, width, plate.height);
 			ctx.drawImage(plate, 0, 0);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
