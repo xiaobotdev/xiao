@@ -265,7 +265,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 617
+Total: 618
 
 ### Utility:
 
@@ -737,6 +737,7 @@ Total: 617
 * **caution:** Creates a caution sign with the text of your choice.
 * **certificate:** Sends a certificate of excellence with the name and reason of your choice.
 * **chinese-restaurant:** Sends a Chinese restaurant sign with the text of your choice.
+* **cool-text:** Writes text in some cool fonts.
 * **danger:** Creates a danger sign with the text of your choice.
 * **font:** Types text in a specific font.
 * **gandhi-quote:** Makes Mahatma Gandhi say the quote you want.
@@ -1127,6 +1128,8 @@ here.
 	* zalgo ([Zalgo Character Data](https://github.com/clux/zalgolize/blob/master/zalgo.js#L3-L21))
 - [CoolClips.com](http://search.coolclips.com/)
 	* sip ([Image](http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/))
+- [Cool Text Graphics Generator](https://cooltext.com/)
+	* cool-text (API)
 - [cowsay Online](http://cowsay.morecode.org/)
 	* cow-say (API)
 - [Creative Certificates](https://www.creativecertificates.com/)
