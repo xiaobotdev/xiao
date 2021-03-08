@@ -161,6 +161,7 @@ client.on('message', async msg => {
 	const cleverbot = client.cleverbots.get(msg.channel.id);
 	if (cleverbot) {
 		if (!cleverbot.shouldRespond(msg)) return;
+		client.registry.commands.get('cleverbot').uses++;
 		msg.channel.startTyping().catch(() => null);
 		try {
 			const response = await cleverbot.respond(msg.cleanContent);
