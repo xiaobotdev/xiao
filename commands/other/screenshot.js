@@ -1,7 +1,5 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { URL } = require('url');
-const validURL = require('valid-url');
 
 module.exports = class ScreenshotCommand extends Command {
 	constructor(client) {
@@ -21,22 +19,20 @@ module.exports = class ScreenshotCommand extends Command {
 			],
 			args: [
 				{
-					key: 'site',
+					key: 'url',
 					prompt: 'What webpage do you want to take a screenshot of?',
-					type: 'string',
-					validate: site => Boolean(validURL.isWebUri(site))
+					type: 'url'
 				}
 			]
 		});
 	}
 
-	async run(msg, { site }) {
+	async run(msg, { url }) {
 		try {
-			const parsed = new URL(site);
-			if (!msg.channel.nsfw && this.client.adultSiteList.includes(parsed.host)) {
+			if (!msg.channel.nsfw && this.client.adultSiteList.includes(url.host)) {
 				return msg.reply('This site is NSFW.');
 			}
-			const { body } = await request.get(`https://image.thum.io/get/width/1920/crop/675/noanimate/${site}`);
+			const { body } = await request.get(`https://image.thum.io/get/width/1920/crop/675/noanimate/${url.href}`);
 			return msg.say({ files: [{ attachment: body, name: 'screenshot.png' }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results. Invalid URL?');
