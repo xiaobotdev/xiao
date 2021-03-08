@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const url = require('url');
+const { URL } = require('url');
 const validURL = require('valid-url');
 
 module.exports = class ScreenshotCommand extends Command {
@@ -32,7 +32,7 @@ module.exports = class ScreenshotCommand extends Command {
 
 	async run(msg, { site }) {
 		try {
-			const parsed = url.parse(site);
+			const parsed = new URL(site);
 			if (!msg.channel.nsfw && this.client.adultSiteList.includes(parsed.host)) {
 				return msg.reply('This site is NSFW.');
 			}
