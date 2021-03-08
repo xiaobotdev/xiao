@@ -102,7 +102,7 @@ don't grant that permission.
 
 - 600+ commands
 - 36,000+ lines of JavaScript
-- 65,000+ lines of JSON data
+- 66,000+ lines of JSON data
 - 4 years of development
 
 ## Installing
@@ -817,7 +817,7 @@ Total: 618
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **pogchamp:** Sends a pogchamp duplicated however many times you want.
 * **scroll-of-truth:** Sends a "Scroll of Truth" meme with the text of your choice.
-* **sexy-singles:** Sends an "Sexy Singles in Your Area" meme with the image of your choice.
+* **sexy-singles:** Sends an "Sexy Singles in Your Area" meme with the image of your choice. (NSFW)
 * **skyrim-skill:** Sends a "Skyrim Skill" meme with the skill and image of your choice.
 * **sonic-says:** Sends a "Sonic Says" meme with the quote of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
@@ -1126,10 +1126,10 @@ here.
 	* hat ([Top Hat Image](https://www.clipartsfree.net/clipart/51355-gray-top-hat-clipart.html))
 - [clux](https://github.com/clux)
 	* zalgo ([Zalgo Character Data](https://github.com/clux/zalgolize/blob/master/zalgo.js#L3-L21))
-- [CoolClips.com](http://search.coolclips.com/)
-	* sip ([Image](http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/))
 - [Cool Text Graphics Generator](https://cooltext.com/)
 	* cool-text (API)
+- [CoolClips.com](http://search.coolclips.com/)
+	* sip ([Image](http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/))
 - [cowsay Online](http://cowsay.morecode.org/)
 	* cow-say (API)
 - [Creative Certificates](https://www.creativecertificates.com/)
