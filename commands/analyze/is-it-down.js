@@ -20,7 +20,7 @@ module.exports = class IsItDownCommand extends Command {
 			],
 			args: [
 				{
-					key: 'url',
+					key: 'site',
 					prompt: 'What URL do you want to test?',
 					type: 'string',
 					validate: site => Boolean(validURL.isWebUri(site))
@@ -29,7 +29,7 @@ module.exports = class IsItDownCommand extends Command {
 		});
 	}
 
-	async run(msg, { url }) {
+	async run(msg, { site }) {
 		const parsed = url.parse(site);
 		try {
 			const { text } = await request
