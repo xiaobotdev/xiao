@@ -40,7 +40,7 @@ module.exports = class CoolTextCommand extends Command {
 			const { body } = await request
 				.post('https://cooltext.com/PostChange')
 				.attach({
-					...fonts[font].options,
+					...fonts[font],
 					Text: text
 				});
 			return msg.say({ files: [body.renderLocation] });
