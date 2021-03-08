@@ -161,7 +161,9 @@ client.on('message', async msg => {
 	const cleverbot = client.cleverbots.get(msg.channel.id);
 	if (cleverbot) {
 		if (!cleverbot.shouldRespond(msg)) return;
+		msg.channel.startTyping().catch(() => null);
 		const response = await cleverbot.respond(msg.cleanContent);
+		msg.channel.stopTyping(true);
 		await msg.channel.send(response);
 		return;
 	}
