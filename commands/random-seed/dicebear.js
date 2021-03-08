@@ -9,7 +9,7 @@ module.exports = class DicebearCommand extends Command {
 		super(client, {
 			name: 'dicebear',
 			aliases: ['dicebear-avatar'],
-			group: 'edit-image',
+			group: 'random-seed',
 			memberName: 'dicebear',
 			description: 'Creates a DiceBear avatar based on the text you provide.',
 			clientPermissions: ['ATTACH_FILES'],

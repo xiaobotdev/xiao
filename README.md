@@ -415,15 +415,18 @@ Total: 618
 
 ### Seeded Randomizers:
 
+* **adorable:** Creates an adorable avatar based on the text you provide.
 * **butt:** Determines a user's butt quality.
 * **coolness:** Determines a user's coolness.
 * **cuteness:** Determines a user's cuteness.
+* **dicebear:** Creates a DiceBear avatar based on the text you provide.
 * **dick:** Determines your dick size. (NSFW)
 * **friendship:** Determines how good friends two users are.
 * **guess-looks:** Guesses what a user looks like.
 * **iq:** Determines a user's IQ.
 * **name-rater:** Determines a name's quality.
 * **psycho-pass:** Determines your Crime Coefficient.
+* **robohash:** Creates a robot based on the text you provide.
 * **ship:** Ships two users together.
 * **smash-or-pass:** Determines if a user is worthy of a smash or a pass.
 * **thicc:** Determines how thicc you are.
@@ -660,7 +663,6 @@ Total: 618
 
 ### Image Manipulation:
 
-* **adorable:** Creates an adorable avatar based on the text you provide.
 * **anime-eyes:** Draws anime eyes onto the faces in an image.
 * **approved:** Draws an "approved" stamp over an image or a user's avatar.
 * **blur:** Draws an image or a user's avatar but blurred.
@@ -676,7 +678,6 @@ Total: 618
 * **danny-devito:** Draws Danny Devito's face onto the faces in an image.
 * **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
-* **dicebear:** Creates a DiceBear avatar based on the text you provide.
 * **distort:** Draws an image or a user's avatar but distorted.
 * **emboss:** Draws an image or a user's avatar but embossed.
 * **eyes:** Draws emoji eyes onto the faces in an image.
@@ -707,7 +708,6 @@ Total: 618
 * **rainbow:** Draws a rainbow over an image or a user's avatar.
 * **rejected:** Draws a "rejected" stamp over an image or a user's avatar.
 * **resize:** Draws an image or a user's avatar resized to the size you want.
-* **robohash:** Creates a robot based on the text you provide.
 * **rotate:** Draws an image or a user's avatar but rotated a number of degrees.
 * **sepia:** Draws an image or a user's avatar in sepia.
 * **shake:** Draws an image or a user's avatar shaking.
