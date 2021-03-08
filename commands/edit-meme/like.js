@@ -45,7 +45,7 @@ module.exports = class LikeCommand extends Command {
 			const canvas = createCanvas(plate.width, plate.height + height);
 			const ctx = canvas.getContext('2d');
 			ctx.drawImage(base, 0, 0, plate.width, height);
-			ctx.drawImage(plate, 0, height + 1);
+			ctx.drawImage(plate, 0, height);
 			const attachment = canvas.toBuffer();
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'like.png' }] });
