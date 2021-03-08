@@ -43,7 +43,11 @@ module.exports = class CoolTextCommand extends Command {
 					...fonts[font],
 					Text: text
 				});
-			return msg.say({ files: [body.renderLocation] });
+			process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+			const { body: imageBody } = await request.get(body.renderLocation);
+			process.env.NODE_TLS_REJECT_UNAUTHORIZED = undefined;
+			const format = body.isAnimated ? 'gif' : 'png';
+			return msg.say({ files: [{ attachment: imageBody, name: `${font}.${format}` }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
