@@ -9,6 +9,7 @@ module.exports = class Cleverbot {
 		this.channelID = channelID;
 		this.authorID = authorID;
 		this.cs = null;
+		this.interactions = 0;
 		this.timeout = this.setTimeout();
 		this.key = key;
 	}
@@ -29,6 +30,7 @@ module.exports = class Cleverbot {
 		clearTimeout(this.timeout);
 		this.timeout = this.setTimeout();
 		this.cs = body.cs;
+		this.interactions = Number.parseInt(body.interaction_count, 10);
 		return body.output || blankResponses[Math.floor(Math.random() * blankResponses.length)];
 	}
 

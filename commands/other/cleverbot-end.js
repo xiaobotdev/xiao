@@ -12,10 +12,9 @@ module.exports = class CleverbotEndCommand extends Command {
 	}
 
 	run(msg) {
-		if (!this.client.cleverbots.has(msg.channel.id)) {
-			return msg.say('There is not a Cleverbot conversation in this channel.');
-		}
+		const cleverbot = this.client.cleverbots.get(msg.channel.id);
+		if (!cleverbot) return msg.say('There is not a Cleverbot conversation in this channel.');
 		this.client.cleverbots.delete(msg.channel.id);
-		return msg.reply('Ended the current conversation.');
+		return msg.reply(`Ended the current conversation. Chatted **${cleverbot.interactions}** times.`);
 	}
 };
