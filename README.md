@@ -265,7 +265,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 616
+Total: 617
 
 ### Utility:
 
@@ -816,6 +816,7 @@ Total: 616
 * **plankton-plan:** Sends a Plankton's Plan meme with steps of your choice.
 * **pogchamp:** Sends a pogchamp duplicated however many times you want.
 * **scroll-of-truth:** Sends a "Scroll of Truth" meme with the text of your choice.
+* **sexy-singles:** Sends an "Sexy Singles in Your Area" meme with the image of your choice.
 * **skyrim-skill:** Sends a "Skyrim Skill" meme with the skill and image of your choice.
 * **sonic-says:** Sends a "Sonic Says" meme with the quote of your choice.
 * **sora-selfie:** Draws an image or a user's avatar behind Sora taking a selfie.
