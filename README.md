@@ -2,6 +2,7 @@
 
 # Xiao
 [![Build Status](https://github.com/dragonfire535/xiao/workflows/Lint/badge.svg?branch=master&event=push)](https://github.com/dragonfire535/xiao/actions)
+[![Donate on Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/xiaodiscord)
 [![Donate on PayPal](https://img.shields.io/badge/paypal-donate-blue.svg)](https://www.paypal.me/dragonfire535)
 [![Discord](https://discordapp.com/api/guilds/252317073814978561/embed.png)](https://discord.gg/mTr83zt)
 
@@ -1635,6 +1636,8 @@ here.
 	* balloon-pop (Concept)
 - [PaladinsGuru](https://paladins.guru/)
 	* paladins (API)
+- [Patreon](https://www.patreon.com/)
+	* donate (Donation Gathering)
 - [PayPal](https://www.paypal.com/us/home)
 	* donate (Donation Gathering)
 - [PBS Kids](https://pbskids.org/)
