@@ -72,7 +72,7 @@ module.exports = class TweetCommand extends Command {
 			canvas.height += linesLen;
 			const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
 			const retweets = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
-			const quoteTweets = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
+			const quotTweets = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 			const replies = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 			ctx.fillStyle = '#15202b';
 			ctx.fillRect(0, base1.height, canvas.width, linesLen);
@@ -107,7 +107,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(16);
 			ctx.fillText(formatNumberK(replies), 87, base2StartY + 139);
 			ctx.fillText(formatNumberK(likes), 509, base2StartY + 139);
-			ctx.fillText(formatNumberK(retweets + quoteTweets), 300, base2StartY + 139);
+			ctx.fillText(formatNumberK(retweets + quotTweets), 300, base2StartY + 139);
 			let currentLen = 31;
 			ctx.fillStyle = 'white';
 			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
@@ -121,8 +121,8 @@ module.exports = class TweetCommand extends Command {
 			currentLen += 10;
 			ctx.fillStyle = 'white';
 			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
-			ctx.fillText(formatNumberK(quoteTweets), currentLen, base2StartY + 77);
-			currentLen += ctx.measureText(formatNumberK(quoteTweets)).width;
+			ctx.fillText(formatNumberK(quotTweets), currentLen, base2StartY + 77);
+			currentLen += ctx.measureText(formatNumberK(quotTweets)).width;
 			currentLen += 5;
 			ctx.fillStyle = '#8899a6';
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
