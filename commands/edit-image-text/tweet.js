@@ -167,7 +167,7 @@ module.exports = class TweetCommand extends Command {
 				name: 'Donald J. Trump',
 				avatar: path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'realdonaldtrump.jpg'),
 				verified: true,
-				followers: 88776124
+				followers: 5000000
 			};
 		}
 		try {
@@ -181,7 +181,7 @@ module.exports = class TweetCommand extends Command {
 				name: body.name,
 				avatar: avatarRes.body,
 				verified: body.verified,
-				followers: body.followers_count
+				followers: Math.min(body.followers_count, 5000000)
 			};
 		} catch {
 			const avatarRes = await request.get(msg.author.displayAvatarURL({ format: 'png', size: 64 }));
