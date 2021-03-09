@@ -23,9 +23,27 @@ module.exports = class NameRaterCommand extends Command {
 				{
 					key: 'name',
 					prompt: 'What name do you want to determine the quality of?',
-					type: 'user|string',
+					type: 'string',
 					max: 25,
-					default: msg => msg.author.username
+					default: msg => msg.author.username,
+					validate: name => {
+						const matches = name.match(/^(?:<@!?)?([0-9]+)>?$/);
+						if (matches) {
+							try {
+								const user = await this.client.users.fetch(matches[1]);
+								if (!user) return false;
+								return true;
+							} catch (err) {
+								return false;
+							}
+						}
+						return true;
+					},
+					parse: name => {
+						const matches = name.match(/^(?:<@!?)?([0-9]+)>?$/);
+						if (matches) return this.client.users.cache.get(matches[1]) || null;
+						return name;
+					}
 				}
 			]
 		});
