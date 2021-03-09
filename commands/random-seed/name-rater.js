@@ -27,7 +27,7 @@ module.exports = class NameRaterCommand extends Command {
 					max: 25,
 					default: msg => msg.author.username,
 					validate: async name => {
-						const matches = name.match(/^(?:<@!?)?([0-9]+)>?$/);
+						const matches = name.match(/^(?:<@!?)([0-9]+)>$/);
 						if (matches) {
 							try {
 								const user = await this.client.users.fetch(matches[1]);
@@ -40,7 +40,7 @@ module.exports = class NameRaterCommand extends Command {
 						return true;
 					},
 					parse: name => {
-						const matches = name.match(/^(?:<@!?)?([0-9]+)>?$/);
+						const matches = name.match(/^(?:<@!?)([0-9]+)>$/);
 						if (matches) return this.client.users.cache.get(matches[1]) || null;
 						return name;
 					}
