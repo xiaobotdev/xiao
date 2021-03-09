@@ -70,10 +70,10 @@ module.exports = class TweetCommand extends Command {
 				+ (9 * (lines.length - 1))
 				+ (9 * (lineBreakLen - 1));
 			canvas.height += linesLen;
-			const likes = Math.floor(Math.random() * 100000) + 1;
-			const retweets = Math.floor(Math.random() * 100000) + 1;
-			const quoteTweets = Math.floor(Math.random() * 100000) + 1;
-			const replies = Math.floor(Math.random() * 100000) + 1;
+			const likes = Math.floor(Math.random() * Math.ceil(userData.followers * 0.02)) + 1;
+			const retweets = Math.floor(Math.random() * Math.ceil(userData.followers * 0.002)) + 1;
+			const quoteTweets = Math.floor(Math.random() * Math.ceil(userData.followers * 0.0002)) + 1;
+			const replies = Math.floor(Math.random() * Math.ceil(userData.followers * 0.0002)) + 1;
 			ctx.fillStyle = '#15202b';
 			ctx.fillRect(0, base1.height, canvas.width, linesLen);
 			ctx.drawImage(base1, 0, 0);
@@ -166,7 +166,8 @@ module.exports = class TweetCommand extends Command {
 				screenName: 'realDonaldTrump',
 				name: 'Donald J. Trump',
 				avatar: path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'realdonaldtrump.jpg'),
-				verified: true
+				verified: true,
+				followers: 88776124
 			};
 		}
 		try {
@@ -179,7 +180,8 @@ module.exports = class TweetCommand extends Command {
 				screenName: body.screen_name,
 				name: body.name,
 				avatar: avatarRes.body,
-				verified: body.verified
+				verified: body.verified,
+				followers: body.followers_count
 			};
 		} catch {
 			const avatarRes = await request.get(msg.author.displayAvatarURL({ format: 'png', size: 64 }));
@@ -187,7 +189,8 @@ module.exports = class TweetCommand extends Command {
 				screenName: msg.author.username.slice(0, 15),
 				name: msg.member ? msg.member.displayName.slice(0, 50) : msg.author.username.slice(0, 50),
 				avatar: avatarRes.body,
-				verified: false
+				verified: false,
+				followers: 0
 			};
 		}
 	}
