@@ -26,7 +26,7 @@ module.exports = class NameRaterCommand extends Command {
 					type: 'string',
 					max: 25,
 					default: msg => msg.author.username,
-					validate: name => {
+					validate: async name => {
 						const matches = name.match(/^(?:<@!?)?([0-9]+)>?$/);
 						if (matches) {
 							try {
