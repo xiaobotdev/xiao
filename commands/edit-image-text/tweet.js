@@ -3,7 +3,7 @@ const { createCanvas, loadImage } = require('canvas');
 const moment = require('moment');
 const request = require('node-superfetch');
 const path = require('path');
-const { base64, formatNumberK } = require('../../util/Util');
+const { base64, formatNumberK, randomRange } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 
@@ -70,10 +70,10 @@ module.exports = class TweetCommand extends Command {
 				+ (9 * (lines.length - 1))
 				+ (9 * (lineBreakLen - 1));
 			canvas.height += linesLen;
-			const likes = Math.floor(Math.random() * Math.ceil(userData.followers * 0.02)) + 1;
-			const retweets = Math.floor(Math.random() * Math.ceil(userData.followers * 0.002)) + 1;
-			const quoteTweets = Math.floor(Math.random() * Math.ceil(userData.followers * 0.0002)) + 1;
-			const replies = Math.floor(Math.random() * Math.ceil(userData.followers * 0.0002)) + 1;
+			const likes = randomRange(Math.ceil(userData.followers * 0.015), Math.ceil(userData.followers * 0.02));
+			const retweets = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
+			const quoteTweets = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
+			const replies = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
 			ctx.fillStyle = '#15202b';
 			ctx.fillRect(0, base1.height, canvas.width, linesLen);
 			ctx.drawImage(base1, 0, 0);
