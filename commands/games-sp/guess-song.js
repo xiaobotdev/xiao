@@ -117,7 +117,7 @@ module.exports = class GuessSongCommand extends Command {
 	}
 
 	async fetchAlternativePreview(id) {
-        const { text } = await request.get(`https://open.spotify.com/embed/track/${id}`);
+		const { text } = await request.get(`https://open.spotify.com/embed/track/${id}`);
 		const $ = cheerio.load(text);
 		return JSON.parse(decodeURIComponent($('script[id="resource"]')[0].children[0].data)).preview_url;
 	}
