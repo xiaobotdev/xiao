@@ -122,7 +122,7 @@ module.exports = class GuessSongCommand extends Command {
 			})
 			.send('grant_type=client_credentials');
 		this.token = body.access_token;
-		setTimeout(() => { this.token = null; }, body.expires_in);
+		setTimeout(() => { this.token = null; }, body.expires_in * 1000);
 		return body;
 	}
 };
