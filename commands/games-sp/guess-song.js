@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const request = require('node-superfetch');
 const csvParse = require('csv-parse');
 const { Readable } = require('stream');
 const { reactIfAble, base64, list } = require('../../util/Util');
