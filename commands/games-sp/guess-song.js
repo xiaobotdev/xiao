@@ -83,7 +83,7 @@ module.exports = class GuessSongCommand extends Command {
 		const { text } = await request.get('https://spotifycharts.com/regional/us/daily/latest/download');
 		return new Promise((res, rej) => {
 			csvParse(text, { comment: '#' }, (err, output) => {
-				if (err) return rej(error);
+				if (err) return rej(err);
 				this.charts = output.slice(2).map(song => song[4].replace('https://open.spotify.com/track/', ''));
 				setTimeout(() => { this.charts = null; }, 4.32e+7);
 				return res(this.charts);
@@ -91,7 +91,7 @@ module.exports = class GuessSongCommand extends Command {
 		});
 	}
 
-	async fetchRandomSong() {
+	fetchRandomSong() {
 		const songs = [...this.charts, otherSongs];
 		const choice = songs[Math.floor(Math.random() * songs.length)];
 		return choice;
