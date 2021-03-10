@@ -222,6 +222,7 @@ API. All are free unless otherwise stated.
 * `IMGUR_KEY` can be obtained by [Registering an Application at the Imgur website](https://api.imgur.com/oauth2/addclient).
 * `OPENWEATHERMAP_KEY` can be obtained at the [OpenWeatherMap website](https://openweathermap.org/price). Click "Get API Key" on the plan you want (probably Free).
 * `OSU_KEY` can be obtained by [signing up at the osu! API page](https://osu.ppy.sh/p/api/). Whether this link takes you to the right page or not is hit-or-miss.
+* `SPOTIFY_KEY` and `SPOTIFY_SECRET` can be obtained at the [Spotify Developer Hub](https://developer.spotify.com/).
 * `STACKOVERFLOW_KEY` can be obtained by [registering your app at stackapps](https://stackapps.com/apps/oauth/register).
 * `TENOR_KEY` can be obtained by [Registering an Application at the Tenor website](https://tenor.com/developer/keyregistration).
 * `THECATAPI_KEY` can be obtained at the [TheCatAPI website](https://thecatapi.com/).
@@ -266,7 +267,7 @@ in the appropriate channel's topic to use it.
 
 ## Commands
 
-Total: 618
+Total: 619
 
 ### Utility:
 
@@ -603,6 +604,7 @@ Total: 618
 * **doors:** Open the right door, and you win the money! Make the wrong choice, and you get the fire!
 * **fishy:** Go fishing.
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
+* **guess-song:** Guess what song is playing.
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **hearing-test:** Test your hearing.
 * **horse-info:** Responds with detailed information on a horse.
@@ -1837,6 +1839,7 @@ here.
 - [Spongebob Fanon](https://spongebob-new-fanon.fandom.com/wiki/SpongeBob_Fanon_Wiki)
 	* spongebob-time-card ([Images](https://spongebob-new-fanon.fandom.com/wiki/Gallery_of_Textless_Title_Cards))
 - [Spotify](https://www.spotify.com/us/)
+	* guess-song ([API](https://developer.spotify.com/))
 	* spotify-now-playing (Original Design)
 - [Square Enix](https://square-enix-games.com/)
 	* nobody-name ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
