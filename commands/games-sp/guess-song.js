@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const cheerio = require('cheerio');
 const csvParse = require('csv-parse');
 const { Readable } = require('stream');
 const { reactIfAble, base64, list } = require('../../util/Util');
@@ -101,15 +102,24 @@ module.exports = class GuessSongCommand extends Command {
 		if (this.cache.has(id)) return this.cache.get(id);
 		const { body } = await request
 			.get(`https://api.spotify.com/v1/tracks/${id}`)
-			.set({ Authorization: `Bearer ${this.token}` });
+			.set({ Authorization: `Bearer ${this.token}` })
+			.query({ market: 'US' });
+		let previewURL = body.preview_url;
+		if (!body.preview_url) previewURL = await this.fetchAlternativePreview(id);
 		const result = {
 			id,
 			name: body.name,
 			artist: list(body.artists.map(artist => artist.name)),
-			preview: body.preview_url
+			preview: previewURL
 		};
 		this.cache.set(id, result);
 		return result;
+	}
+
+	async fetchAlternativePreview(id) {
+        const { text } = await request.get(`https://open.spotify.com/embed/track/${id}`);
+		const $ = cheerio.load(text);
+		return JSON.parse(decodeURIComponent($('script[id="resource"]')[0].children[0].data)).preview_url;
 	}
 
 	async fetchToken() {
