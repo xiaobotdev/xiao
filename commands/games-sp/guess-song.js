@@ -101,8 +101,7 @@ module.exports = class GuessSongCommand extends Command {
 		if (this.cache.has(id)) return this.cache.get(id);
 		const { body } = await request
 			.get(`https://api.spotify.com/v1/tracks/${id}`)
-			.set({ Authorization: `Bearer ${this.token}` })
-			.query({ market: 'us' });
+			.set({ Authorization: `Bearer ${this.token}` });
 		const result = {
 			id,
 			name: body.name,
