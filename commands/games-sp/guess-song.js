@@ -117,7 +117,7 @@ module.exports = class GuessSongCommand extends Command {
 		const { body } = await request
 			.post('https://accounts.spotify.com/api/token')
 			.set({ Authorization: `Basic ${base64(`${SPOTIFY_KEY}:${SPOTIFY_SECRET}`)}` })
-			.send('grant_type=client_credentials');
+			.attach('grant_type', 'client_credentials');
 		this.token = body.access_token;
 		setTimeout(() => { this.token = null; }, body.expires_in);
 		return body;
