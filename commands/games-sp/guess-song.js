@@ -67,7 +67,7 @@ module.exports = class GuessSongCommand extends Command {
 			this.client.dispatchers.delete(msg.guild.id);
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}** by **${data.artist}**!`);
 			const guess = msgs.first().content.toLowerCase();
-			if (guess.includes(data.name.toLowerCase())) {
+			if (!guess.includes(data.name.toLowerCase()) && !data.name.toLowerCase().includes(guess)) {
 				return msg.reply(`Nope! It's **${data.name}** by **${data.artist}**!`);
 			}
 			return msg.reply(`Nice! It's **${data.name}** by **${data.artist}**!`);
