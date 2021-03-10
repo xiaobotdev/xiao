@@ -257,7 +257,7 @@ client.on('guildMemberRemove', async member => {
 	}
 });
 
-client.on('voiceStateUpdate', (oldState, newState) => {
+client.on('voiceStateUpdate', async (oldState, newState) => {
 	if (!newState.channel) await client.channels.fetch(newState.channelID);
 	if (newState.channel.members.size === 1 && newState.channel.members.has(client.user.id)) {
 		const dispatcher = client.dispatchers.get(oldState.guild.id);
