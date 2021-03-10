@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "131.13.0",
+	"version": "132.0.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -22,7 +22,7 @@
 		"discord-js-commando"
 	],
 	"author": "dragonfire535 <danielbodendahl@gmail.com>",
-	"license": "GPL-3.0",
+	"license": "UNLICENSED",
 	"bugs": {
 		"url": "https://github.com/dragonfire535/xiao/issues"
 	},

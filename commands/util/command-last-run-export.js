@@ -5,13 +5,19 @@ module.exports = class CommandLastRunExportCommand extends Command {
 		super(client, {
 			name: 'command-last-run-export',
 			aliases: [
+				'lr-export',
+				'lrlb-export',
+				'last-run-export',
 				'cmd-lr-export',
 				'cmd-last-run-export',
 				'command-lr-export',
 				'export-cmd-lr',
 				'export-cmd-last-run',
 				'export-command-lr',
-				'export-command-last-run'
+				'export-command-last-run',
+				'export-lr',
+				'export-lrlb',
+				'export-last-run'
 			],
 			group: 'util',
 			memberName: 'command-last-run-export',
