@@ -8,8 +8,6 @@ const { version, dependencies, optionalDependencies } = require('../../package')
 const deps = { ...dependencies, ...optionalDependencies };
 const permissions = require('../../assets/json/permissions');
 const copyright = require('../../assets/json/copyright');
-const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME } = process.env;
-const source = XIAO_GITHUB_REPO_NAME && XIAO_GITHUB_REPO_USERNAME;
 
 module.exports = class InfoCommand extends Command {
 	constructor(client) {
@@ -26,7 +24,6 @@ module.exports = class InfoCommand extends Command {
 
 	async run(msg) {
 		const invite = await this.client.generateInvite({ permissions });
-		const repoURL = `https://github.com/${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}`;
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter(copyright.join('\n'))
@@ -36,7 +33,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Home Server',
 				this.client.options.invite ? embedURL('Invite', this.client.options.invite) : 'None', true)
 			.addField('❯ Invite', embedURL('Add Me', invite), true)
-			.addField('❯ Source Code', source ? embedURL('GitHub', repoURL) : 'N/A', true)
+			.addField('❯ Top.gg', embedURL('Vote!', `https://top.gg/bot/${this.client.user.id}`), true)
 			.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime', moment.duration(this.client.uptime).format('d:hh:mm:ss'), true)
 			.addField('❯ Version', `v${version}`, true)

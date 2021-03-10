@@ -5,13 +5,19 @@ module.exports = class CommandLastRunImportCommand extends Command {
 		super(client, {
 			name: 'command-last-run-import',
 			aliases: [
+				'lr-import',
+				'lrlb-import',
+				'last-run-import',
 				'cmd-lr-import',
 				'cmd-last-run-import',
 				'command-lr-import',
 				'import-cmd-lr',
 				'import-cmd-last-run',
 				'import-command-lr',
-				'import-command-last-run'
+				'import-command-last-run',
+				'import-lr',
+				'import-lrlb',
+				'import-last-run'
 			],
 			group: 'util',
 			memberName: 'command-last-run-import',
