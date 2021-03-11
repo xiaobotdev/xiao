@@ -89,6 +89,7 @@ module.exports = class KinoCommand extends Command {
 				currentChunk = '';
 			}
 		}
+		chunks.push(currentChunk);
 		return chunks;
 	}
 };
