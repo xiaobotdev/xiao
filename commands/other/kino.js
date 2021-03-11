@@ -54,8 +54,8 @@ module.exports = class KinoCommand extends Command {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
-		const storyData = await this.generateStory(story);
 		try {
+			const storyData = await this.generateStory(story);
 			let i = 0;
 			let end = false;
 			while (!end) {
