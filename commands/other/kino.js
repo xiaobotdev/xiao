@@ -39,7 +39,7 @@ module.exports = class KinoCommand extends Command {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
-		const storyData = await this.generateStory(`${story}.txt`);
+		const storyData = await this.generateStory(story);
 		try {
 			let i = 0;
 			let end = false;
@@ -71,7 +71,7 @@ module.exports = class KinoCommand extends Command {
 
 	async generateStory(file) {
 		const filename = stories.find(story => story.toLowerCase() === file);
-		const story = await readFile(path.join(__dirname, '..', '..', 'assets', 'txt', 'kino', filename), {
+		const story = await readFile(path.join(__dirname, '..', '..', 'assets', 'txt', 'kino', `${filename}.txt`), {
 			encoding: 'utf8'
 		});
 		const chunks = [];
