@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
 const { escapeMarkdown } = require('discord.js');
-const { verify, list } = require('../../util/Util');
+const { verify } = require('../../util/Util');
 const path = require('path');
 const fs = require('fs');
 const { readFile } = require('fs/promises');
@@ -43,7 +43,7 @@ module.exports = class KinoCommand extends Command {
 							return choice.toLowerCase();
 						}
 						const num = Number.parseInt(choice, 10);
-						return stories[num];
+						return stories[num].toLowerCase();
 					}
 				}
 			]
