@@ -54,7 +54,7 @@ module.exports = class KinoCommand extends Command {
 
 					_Proceed?_
 				`);
-				const verification = await verify(msg.channel, msg.author, { time: 120000 });
+				const verification = await verify(msg.channel, msg.author, { time: 300000 });
 				if (!verification) {
 					end = true;
 					break;
