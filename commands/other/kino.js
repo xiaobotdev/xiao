@@ -13,7 +13,7 @@ module.exports = class KinoCommand extends Command {
 		super(client, {
 			name: 'kino',
 			aliases: ['kino-journey', 'kinos-journey', 'kino\'s-journey'],
-			group: 'games-sp',
+			group: 'other',
 			memberName: 'kino',
 			description: 'Read various Kino\'s Journey fan stories by dragonfire535.',
 			credit: [
