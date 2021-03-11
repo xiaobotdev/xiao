@@ -33,16 +33,16 @@ module.exports = class KinoCommand extends Command {
 						\`\`\`
 					`,
 					type: 'string',
-					validate: story => {
-						if (stories.some(story => story.toLowerCase() === story.toLowerCase())) return true;
-						const num = Number.parseInt(story, 10);
+					validate: choice => {
+						if (stories.some(story => choice.toLowerCase() === story.toLowerCase())) return true;
+						const num = Number.parseInt(choice, 10);
 						return Boolean(stories[num]);
 					},
-					parse: story => {
-						if (stories.some(story => story.toLowerCase() === story.toLowerCase())) {
-							return story.toLowerCase();
+					parse: choice => {
+						if (stories.some(story => choice.toLowerCase() === story.toLowerCase())) {
+							return choice.toLowerCase();
 						}
-						const num = Number.parseInt(story, 10);
+						const num = Number.parseInt(choice, 10);
 						return stories[num];
 					}
 				}
