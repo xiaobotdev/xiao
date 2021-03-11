@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { execSync } = require('child_process');
 const { stripIndents } = require('common-tags');
+const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME, GITHUB_ACCESS_TOKEN } = process.env;
 
 module.exports = class ExecCommand extends Command {
 	constructor(client) {
@@ -23,6 +24,10 @@ module.exports = class ExecCommand extends Command {
 	}
 
 	run(msg, { command }) {
+		if (command === 'git pull') {
+			const repo = `${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}`;
+			command = `git pull https://${GITHUB_ACCESS_TOKEN}@github.com/${repo}.git`;
+		}
 		const results = this.exec(command);
 		return msg.reply(stripIndents`
 			_${results.err ? 'An error occurred:' : 'Successfully executed.'}_
