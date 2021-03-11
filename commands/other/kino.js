@@ -50,7 +50,7 @@ module.exports = class KinoCommand extends Command {
 					break;
 				}
 				await msg.say(stripIndents`
-					${escapeMarkdown(line)}
+					${escapeMarkdown(line.trim())}
 
 					_Proceed?_
 				`);
