@@ -26,10 +26,25 @@ module.exports = class KinoCommand extends Command {
 			args: [
 				{
 					key: 'story',
-					prompt: `What story do you want to read? Either ${list(stories, 'or')}.`,
+					prompt: stripIndents`
+						What story do you want to read? You can type the number or the name.
+						\`\`\`
+						${stories.map((story, i) => `${i.toString().padStart(2, '0')}. ${story}`).join('\n')}
+						\`\`\`
+					`,
 					type: 'string',
-					oneOf: stories.map(story => story.toLowerCase()),
-					parse: story => story.toLowerCase()
+					validate: story => {
+						if (stories.some(story => story.toLowerCase() === story.toLowerCase())) return true;
+						const num = Number.parseInt(story, 10);
+						return Boolean(stories[num]);
+					},
+					parse: story => {
+						if (stories.some(story => story.toLowerCase() === story.toLowerCase())) {
+							return story.toLowerCase();
+						}
+						const num = Number.parseInt(story, 10);
+						return stories[num];
+					}
 				}
 			]
 		});
