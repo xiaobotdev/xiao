@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
+const { URLSearchParams } = require('url');
 
 module.exports = class GoogleCommand extends Command {
 	constructor(client) {
@@ -63,7 +64,8 @@ module.exports = class GoogleCommand extends Command {
 			if ($(h3).parent()) {
 				const href = $(h3).parent().attr('href');
 				if (href) {
-					links.push(href);
+					const params = new URLSearchParams(href);
+					links.push(params.url);
 				}
 			}
 		});
