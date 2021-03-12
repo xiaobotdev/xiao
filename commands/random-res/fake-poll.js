@@ -32,7 +32,7 @@ module.exports = class FakePollCommand extends Command {
 	}
 
 	poll() {
-		const results = { yes: 0, no: 0 }; 
+		const results = { yes: 0, no: 0 };
 		const seed = Math.floor(Math.random() * 5) + 2;
 		const shouldYes = Math.floor(Math.random() * 5) + 2;
 		const amount = randomRange(100, 1000);
