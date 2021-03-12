@@ -65,7 +65,7 @@ module.exports = class GoogleCommand extends Command {
 				const href = $(h3).parent().attr('href');
 				if (href) {
 					const params = new URLSearchParams(href);
-					links.push(params.url);
+					links.push(params.get('url'));
 				}
 			}
 		});
