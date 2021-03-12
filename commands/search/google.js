@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { GOOGLE_KEY, CUSTOM_SEARCH_ID } = process.env;
+const cheerio = require('cheerio');
 
 module.exports = class GoogleCommand extends Command {
 	constructor(client) {
@@ -14,8 +14,7 @@ module.exports = class GoogleCommand extends Command {
 				{
 					name: 'Google',
 					url: 'https://www.google.com/',
-					reason: 'Custom Search API',
-					reasonURL: 'https://cse.google.com/cse/all'
+					reason: 'Search'
 				},
 				{
 					name: 'LMGTFY',
@@ -39,9 +38,8 @@ module.exports = class GoogleCommand extends Command {
 
 	async run(msg, { query }) {
 		let href;
-		const nsfw = msg.channel.nsfw || false;
 		try {
-			href = await this.customSearch(query, nsfw);
+			href = await this.search(query, msg.channel.nsfw || false);
 		} catch {
 			href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 		}
@@ -49,16 +47,26 @@ module.exports = class GoogleCommand extends Command {
 		return msg.say(href);
 	}
 
-	async customSearch(query, nsfw) {
-		const { body } = await request
-			.get('https://www.googleapis.com/customsearch/v1')
+	async search(query, nsfw) {
+		const { text } = await request
+			.get('https://www.google.com/search')
 			.query({
-				key: GOOGLE_KEY,
-				cx: CUSTOM_SEARCH_ID,
-				safe: nsfw ? 'off' : 'active',
+				safe: nsfw ? 'images' : 'active',
+				pws: 0,
+				filter: 0,
 				q: query
-			});
-		if (!body.items) return null;
-		return body.items[0].formattedUrl;
+			})
+			.set({ 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1' });
+		const $ = cheerio.load(text);
+		const links = [];
+		$('body').find('h3').each((i, h3) => {
+			if ($(h3).parent()) {
+				const href = $(h3).parent().attr('href');
+				if (href) {
+					links.push(href);
+				}
+			}
+		});
+		return links[0];
 	}
 };
