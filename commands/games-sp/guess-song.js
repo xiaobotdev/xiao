@@ -86,7 +86,10 @@ module.exports = class GuessSongCommand extends Command {
 			csvParse(text, { comment: '#' }, (err, output) => {
 				if (err) return rej(err);
 				this.charts = output.slice(2).map(song => song[4].replace('https://open.spotify.com/track/', ''));
-				setTimeout(() => { this.charts = null; }, 4.32e+7);
+				setTimeout(() => {
+					this.charts = null;
+					this.cache.clear();
+				}, 4.32e+7);
 				return res(this.charts);
 			});
 		});
