@@ -40,7 +40,7 @@ module.exports = class EsrbCommand extends Command {
 				.setColor(0x1C8CDE)
 				.setTitle(`${data.title} by ${data.company}`)
 				.setDescription(data.descriptors || 'No Descriptors')
-				.setAuthor('ESRB', 'https://i.imgur.com/ZyCxONf.jpg', 'https://www.esrb.org/')
+				.setAuthor('ESRB', 'https://i.imgur.com/29U6Bax.jpg', 'https://www.esrb.org/')
 				.setThumbnail('attachment://rating.png')
 				.setURL(`https://www.esrb.org/ratings/${data.certificate}/`);
 			return msg.embed(embed);
