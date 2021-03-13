@@ -2,7 +2,6 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { URLSearchParams, URL } = require('url');
-const { trimArray } = require('../../util/Util');
 
 module.exports = class GoogleCommand extends Command {
 	constructor(client) {
@@ -39,14 +38,14 @@ module.exports = class GoogleCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		let href;
+		let hrefs;
 		try {
-			href = await this.search(query, msg.channel.nsfw || false);
+			hrefs = await this.search(query, msg.channel.nsfw || false);
 		} catch {
-			href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
+			hrefs = [`http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`];
 		}
-		if (!href) return msg.say('Could not find any results.');
-		return msg.say(`<${href}>`);
+		if (!hrefs) return msg.say('Could not find any results.');
+		return msg.say(hrefs.map(href => `<${href}>`).join('\n\n'));
 	}
 
 	async search(query, nsfw) {
@@ -74,6 +73,6 @@ module.exports = class GoogleCommand extends Command {
 			}
 		});
 		if (!links.length) return null;
-		return links[0];
+		return links.slice(0, 3);
 	}
 };
