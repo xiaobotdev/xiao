@@ -47,10 +47,12 @@ module.exports = class GuessSongCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
 		this.client.games.set(msg.channel.id, { name: this.name });
+		let songID;
 		try {
 			if (!this.token) await this.fetchToken();
 			if (!this.charts) await this.fetchCharts();
 			const song = await this.fetchRandomSong();
+			songID = song;
 			const data = await this.fetchSongPreview(song);
 			const { body: previewBody } = await request.get(data.preview);
 			const dispatcher = connection.play(Readable.from([previewBody]));
@@ -75,7 +77,7 @@ module.exports = class GuessSongCommand extends Command {
 		} catch (err) {
 			this.client.dispatchers.delete(msg.guild.id);
 			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Song ID: \`${songID}\`.`);
 		}
 	}
 
