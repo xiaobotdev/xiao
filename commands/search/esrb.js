@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const path = require('path');
-const { shorten } = require('../../util/Util');
+const { decode: decodeHTML } = require('html-entities');
 
 module.exports = class EsrbCommand extends Command {
 	constructor(client) {
@@ -38,7 +38,7 @@ module.exports = class EsrbCommand extends Command {
 			const embed = new MessageEmbed()
 				.attachFiles([{ attachment: ratingFile, name: 'rating.png' }])
 				.setColor(0x1C8CDE)
-				.setTitle(`${data.title} by ${data.company}`)
+				.setTitle(`${decodeHTML(data.title)} by ${decodeHTML(data.company)}`)
 				.setDescription(data.descriptors || 'No Descriptors')
 				.setAuthor('ESRB', 'https://i.imgur.com/29U6Bax.jpg', 'https://www.esrb.org/')
 				.setThumbnail('attachment://rating.png')
