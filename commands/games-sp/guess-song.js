@@ -17,7 +17,7 @@ module.exports = class GuessSongCommand extends Command {
 			description: 'Guess what song is playing.',
 			throttling: {
 				usages: 1,
-				duration: 30
+				duration: 15
 			},
 			guildOnly: true,
 			userPermissions: ['CONNECT', 'SPEAK'],
