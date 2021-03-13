@@ -35,12 +35,11 @@ module.exports = class WikipediaCommand extends Command {
 				.get('https://en.wikipedia.org/w/api.php')
 				.query({
 					action: 'query',
-					prop: 'extracts|pageimages',
+					prop: 'extracts',
 					format: 'json',
 					titles: query,
 					exintro: '',
 					explaintext: '',
-					pithumbsize: 150,
 					redirects: '',
 					formatversion: 2
 				});
@@ -50,7 +49,6 @@ module.exports = class WikipediaCommand extends Command {
 				.setColor(0xE7E7E7)
 				.setTitle(data.title)
 				.setAuthor('Wikipedia', 'https://i.imgur.com/Z7NJBK2.png', 'https://www.wikipedia.org/')
-				.setThumbnail(data.thumbnail ? data.thumbnail.source : null)
 				.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
 				.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
 			return msg.embed(embed);
