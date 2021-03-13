@@ -1,5 +1,5 @@
 {
-	"white":[
+	"whiteCards": [
 		"#fearvokallchicks.",
 		"Getting so angry that you pop a boner.",
 		"Oral sex that tastes like urine.",
@@ -13532,7 +13532,7 @@
 		"[object Object]",
 		"The eventual release of Xiao's public source code."
 	],
-	"black":[
+	"blackCards": [
 		{
 			"text": "_ ? there is medication for that, you know.",
 			"pick": 1
