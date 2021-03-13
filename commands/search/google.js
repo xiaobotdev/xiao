@@ -1,7 +1,8 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const { URLSearchParams } = require('url');
+const { URLSearchParams, URL } = require('url');
+const { trimArray } = require('../../util/Util');
 
 module.exports = class GoogleCommand extends Command {
 	constructor(client) {
@@ -65,10 +66,14 @@ module.exports = class GoogleCommand extends Command {
 				const href = $(h3).parent().attr('href');
 				if (href) {
 					const params = new URLSearchParams(href);
-					links.push(params.get('url'));
+					const url = new URL(params.get('url'));
+					if (nsfw || !this.client.adultSiteList.includes(url.host)) {
+						links.push(url.href);
+					}
 				}
 			}
 		});
+		if (!links.length) return null;
 		return links[0];
 	}
 };
