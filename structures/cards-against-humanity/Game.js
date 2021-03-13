@@ -1,7 +1,7 @@
 const Collection = require('@discordjs/collection');
 const Player = require('./Player');
 const Deck = require('./Deck');
-const { removeFromArray, awaitPlayers } = require('../util/Util');
+const { removeFromArray, awaitPlayers } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 module.exports = class Game {
