@@ -42,10 +42,10 @@ module.exports = class GoogleCommand extends Command {
 		try {
 			hrefs = await this.search(query, msg.channel.nsfw || false);
 		} catch {
-			hrefs = [`http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`];
+			hrefs = [{ href: `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`, title: 'LMGTFY' }];
 		}
 		if (!hrefs) return msg.say('Could not find any results.');
-		return msg.say(hrefs.map(href => `<${href}>`).join('\n\n'));
+		return msg.say(hrefs.map(href => `${href.title}\n<${href.href}>`).join('\n\n'));
 	}
 
 	async search(query, nsfw) {
@@ -67,7 +67,7 @@ module.exports = class GoogleCommand extends Command {
 					const params = new URLSearchParams(href);
 					const url = new URL(params.get('url'));
 					if (nsfw || !this.client.adultSiteList.includes(url.host)) {
-						links.push(url.href);
+						links.push({ href: url.href, title: $(h3).text() });
 					}
 				}
 			}
