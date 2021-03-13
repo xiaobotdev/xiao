@@ -46,7 +46,7 @@ module.exports = class GoogleCommand extends Command {
 			href = `http://lmgtfy.com/?iie=1&q=${encodeURIComponent(query)}`;
 		}
 		if (!href) return msg.say('Could not find any results.');
-		return msg.say(href);
+		return msg.say(`<${href}>`);
 	}
 
 	async search(query, nsfw) {
