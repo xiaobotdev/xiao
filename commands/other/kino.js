@@ -65,6 +65,8 @@ module.exports = class KinoCommand extends Command {
 					break;
 				}
 				await msg.say(stripIndents`
+					**Page ${i + 1}/${storyData.length}**
+
 					${escapeMarkdown(line.trim())}
 
 					_Proceed?_
