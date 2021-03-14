@@ -42,7 +42,7 @@ module.exports = class Player {
 			const chosen = [];
 			for (let i = 0; i < black.pick; i++) {
 				const valid = hand.filter(card => !chosen.includes(card));
-				chosen.push(valid[Math.floor(Math.random() * valid.length)]);
+				chosen.push(escapeMarkdown(valid[Math.floor(Math.random() * valid.length)]));
 			}
 			for (const card of chosen) this.hand.delete(card);
 			chosenCards.push({ id: this.id, cards: chosen });
@@ -80,7 +80,7 @@ module.exports = class Player {
 				return;
 			} else if (existing) {
 				await msg.react(SUCCESS_EMOJI_ID || '✅');
-				chosen.push(existing);
+				chosen.push(escapeMarkdown(existing));
 			}
 			if (chosen.length >= black.pick * (gambled ? 2 : 1)) collector.stop();
 		});
@@ -89,7 +89,7 @@ module.exports = class Player {
 				const count = black.pick - chosen.length;
 				for (let i = 0; i < count; i++) {
 					const valid = hand.filter(card => !chosen.includes(card));
-					chosen.push(valid[Math.floor(Math.random() * valid.length)]);
+					chosen.push(escapeMarkdown(valid[Math.floor(Math.random() * valid.length)]));
 				}
 				this.strikes++;
 			}
