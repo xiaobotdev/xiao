@@ -63,6 +63,6 @@ module.exports = class EsrbCommand extends Command {
 			});
 		const body = JSON.parse(text);
 		if (!body.games.length) return null;
-		return body.games[0];
+		return body.games.find(game => game.title.toLowerCase() === query.toLowerCase()) || body.games[0];
 	}
 };
