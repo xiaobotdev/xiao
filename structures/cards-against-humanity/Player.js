@@ -108,7 +108,7 @@ module.exports = class Player {
 	sendHand(hand, black) {
 		return this.user.send(stripIndents`
 			__**Your hand is:**__
-			${hand.map((card, i) => `**${i + 1}.** ${card}`).join('\n')}
+			${hand.map((card, i) => `**${i + 1}.** ${escapeMarkdown(card)}`).join('\n')}
 
 			**${this.game.blackType} Card:** ${escapeMarkdown(black.text)}
 			**Card Czar:** ${this.game.czar.user.username}
