@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { stripIndents } = require('common-tags');
 
 module.exports = class SakugabooruCommand extends Command {
 	constructor(client) {
@@ -41,7 +42,11 @@ module.exports = class SakugabooruCommand extends Command {
 				return post.file_url;
 			});
 			if (!posts.length) return msg.say('Could not find any results.');
-			return msg.say(posts[Math.floor(Math.random() * posts.length)].file_url);
+			const post = posts[Math.floor(Math.random() * posts.length)];
+			return msg.say(stripIndents`
+				${post.tags}
+				${post.file_url}
+			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
