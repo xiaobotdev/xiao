@@ -9,11 +9,10 @@ module.exports = class SakugabooruCommand extends Command {
 			group: 'search',
 			memberName: 'sakugabooru',
 			description: 'Responds with an image from Sakugabooru, with optional query.',
-			nsfw: true,
 			credit: [
 				{
-					name: 'Danbooru',
-					url: 'https://danbooru.donmai.us/',
+					name: 'Sakugabooru',
+					url: 'https://www.sakugabooru.com/',
 					reason: 'API'
 				}
 			],
@@ -33,11 +32,16 @@ module.exports = class SakugabooruCommand extends Command {
 			const { body } = await request
 				.get('https://www.sakugabooru.com/post.json')
 				.query({
-					tags: `${query} order:random`,
-					limit: 1
+					tags: query,
+					limit: 100
 				});
-			if (!body.length || !body[0].file_url) return msg.say('Could not find any results.');
-			return msg.say(body[0].file_url);
+			if (!body.length) return msg.say('Could not find any results.');
+			const posts = body.filter(post => {
+				if (!msg.channel.nsfw && (post.rating === 'e' || post.rating === 'q')) return false;
+				return post.file_url;
+			});
+			if (!posts.length) return msg.say('Could not find any results.');
+			return msg.say(posts[Math.floor(Math.random() * posts.length)].file_url);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
