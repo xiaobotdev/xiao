@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const { verify, delay } = require('../../util/Util');
+const { verify, list } = require('../../util/Util');
 const texts = require('../../assets/json/shutdown');
 
 module.exports = class ShutdownCommand extends Command {
@@ -25,27 +25,15 @@ module.exports = class ShutdownCommand extends Command {
 	}
 
 	async run(msg, { code }) {
-		const games = this.client.games.size;
-		const calls = this.client.phone.size;
-		let areIs = 'are';
-		if (games > 0 || calls > 0) {
-			let currentString = '';
-			if (games > 0) {
-				currentString += `${games} game${games > 1 ? 's' : ''}`;
-				if (calls > 0) currentString += ' and ';
-				if (games === 1 && (calls > 0 ? calls === 1 : true)) areIs = 'is';
-			}
-			if (calls > 0) {
-				currentString += `${calls} phone call${calls > 1 ? 's' : ''}`;
-				if (calls === 1 && (games > 0 ? games === 1 : true)) areIs = 'is';
-			}
-			await msg.reply(`There ${areIs} currently **${currentString}**. Wait for them to finish?`);
+		const blocks = [];
+		if (this.client.games.size > 0) blocks.push(`${this.client.games.size} game(s)`);
+		if (this.client.phone.size > 0) blocks.push(`${this.client.phone.size} phone call(s)`);
+		if (this.client.dispatchers.size > 0) blocks.push(`${this.client.dispatchers.size} voice command(s)`);
+		if (this.client.cleverbots.size > 0) blocks.push(`${this.client.cleverbots.size} Cleverbot(s)`);
+		if (blocks.length) {
+			await msg.reply(`There are currently **${list(blocks)}**. Are you sure?`);
 			const verification = await verify(msg.channel, msg.author);
-			if (verification) {
-				await msg.reply('Waiting...');
-				// eslint-disable-next-line no-unmodified-loop-condition
-				while (this.client.games.size > 0 || this.client.phone.size > 0) await delay(5000);
-			}
+			if (!verification) return msg.reply('Aborted restart.');
 		}
 		try {
 			this.uses++;
