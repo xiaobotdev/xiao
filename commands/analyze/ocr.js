@@ -36,7 +36,7 @@ module.exports = class OcrCommand extends Command {
 		setTimeout(async () => {
 			timedOut = true;
 			await worker.terminate();
-			await reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
+			await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
 			await msg.reply('Scanning took longer than 30 seconds, so I\'ve given up.');
 		}, 30000);
 		const { data: { text } } = await worker.recognize(image);
