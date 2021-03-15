@@ -38,7 +38,7 @@ module.exports = class TtsCommand extends Command {
 					key: 'text',
 					prompt: 'What text do you want to say?',
 					type: 'string',
-					max: 1024
+					max: 200
 				}
 			]
 		});
