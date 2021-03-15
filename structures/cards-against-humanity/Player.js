@@ -1,5 +1,6 @@
 const { stripIndents } = require('common-tags');
 const { escapeMarkdown } = require('discord.js');
+const { reactIfAble } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 module.exports = class Player {
@@ -57,7 +58,7 @@ module.exports = class Player {
 			if (res.content.toLowerCase() === 'gamble' && this.points > 0 && !gambled) return true;
 			const existing = hand[Number.parseInt(res.content, 10) - 1];
 			if (!existing || chosen.includes(existing)) {
-				res.react(FAILURE_EMOJI_ID || '❌').catch(() => null);
+				reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 				return false;
 			}
 			return true;
@@ -65,7 +66,7 @@ module.exports = class Player {
 		collector.on('collect', async msg => {
 			const existing = hand[Number.parseInt(msg.content, 10) - 1];
 			if (msg.content.toLowerCase() === 'swap') {
-				await msg.react(SUCCESS_EMOJI_ID || '✅');
+				await reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 				for (const card of this.hand) this.hand.delete(card);
 				this.dealHand();
 				hand = Array.from(this.hand);
@@ -74,12 +75,12 @@ module.exports = class Player {
 				await this.sendHand(hand, black);
 				return;
 			} else if (msg.content.toLowerCase() === 'gamble') {
-				await msg.react(SUCCESS_EMOJI_ID || '✅');
+				await reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 				this.points--;
 				gambled = true;
 				return;
 			} else if (existing) {
-				await msg.react(SUCCESS_EMOJI_ID || '✅');
+				await reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 				chosen.push(existing);
 			}
 			if (chosen.length >= black.pick * (gambled ? 2 : 1)) collector.stop();

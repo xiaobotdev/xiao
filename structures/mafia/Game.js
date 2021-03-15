@@ -2,7 +2,7 @@ const Collection = require('@discordjs/collection');
 const path = require('path');
 const { stripIndents } = require('common-tags');
 const Player = require('./Player');
-const { shuffle } = require('../../util/Util');
+const { shuffle, reactIfAble } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class Game {
@@ -67,7 +67,7 @@ module.exports = class Game {
 			if (voted.includes(res.author.id)) return false;
 			if (!playersArr[Number.parseInt(res.content, 10) - 1]) return false;
 			voted.push(res.author.id);
-			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+			reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 			return true;
 		};
 		const votes = await this.channel.awaitMessages(filter, {
