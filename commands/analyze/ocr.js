@@ -34,7 +34,7 @@ module.exports = class OcrCommand extends Command {
 		await worker.initialize('eng');
 		let timedOut = false;
 		setTimeout(async () => {
-			timedOut = false;
+			timedOut = true;
 			await worker.terminate();
 		}, 30000);
 		const { data: { text } } = await worker.recognize(image);
