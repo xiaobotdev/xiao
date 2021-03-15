@@ -1,17 +1,18 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { Readable } = require('stream');
-const { reactIfAble } = require('../../util/Util');
+const { reactIfAble, list } = require('../../util/Util');
+const accents = require('../../assets/json/tts');
 const { LOADING_EMOJI_ID } = process.env;
 
-module.exports = class DECTalkCommand extends Command {
+module.exports = class TtsCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'dec-talk',
-			aliases: ['moonbase-alpha', 'dec', 'd-talk'],
+			name: 'tts',
+			aliases: ['text-to-speech'],
 			group: 'voice',
-			memberName: 'dec-talk',
-			description: 'The world\'s best Text-to-Speech.',
+			memberName: 'tts',
+			description: 'Say the text you provide in the accent you choose.',
 			guildOnly: true,
 			throttling: {
 				usages: 1,
@@ -20,24 +21,19 @@ module.exports = class DECTalkCommand extends Command {
 			userPermissions: ['CONNECT', 'SPEAK'],
 			credit: [
 				{
-					name: 'calzoneman',
-					url: 'https://github.com/calzoneman',
-					reason: 'API',
-					reasonURL: 'https://github.com/calzoneman/aeiou'
-				},
-				{
-					name: 'Digital Equipment Corporation',
-					url: 'http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm',
-					reason: 'Original DECTalk Software'
-				},
-				{
-					name: 'NASA',
-					url: 'https://www.nasa.gov/',
-					reason: 'Original "Moonbase Alpha" Game',
-					reasonURL: 'https://store.steampowered.com/app/39000/Moonbase_Alpha/'
+					name: 'Google',
+					url: 'https://www.google.com/',
+					reason: 'Translate TTS API'
 				}
 			],
 			args: [
+				{
+					key: 'accent',
+					prompt: `What accent do you want to use? Either ${list(accents, 'or')}.`,
+					type: 'string',
+					oneOf: accents,
+					parse: accent => accent.toUpperCase()
+				},
 				{
 					key: 'text',
 					prompt: 'What text do you want to say?',
@@ -48,7 +44,7 @@ module.exports = class DECTalkCommand extends Command {
 		});
 	}
 
-	async run(msg, { text }) {
+	async run(msg, { accent, text }) {
 		const connection = this.client.voice.connections.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
@@ -58,8 +54,18 @@ module.exports = class DECTalkCommand extends Command {
 		try {
 			await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 			const { body } = await request
-				.get('http://tts.cyzon.us/tts')
-				.query({ text });
+				.get('https://translate.google.com/translate_tts')
+				.query({
+					ie: 'UTF-8',
+					q: text,
+					tl: accent === 'JP' ? 'ja-JP' : `en-${accent}`,
+					total: 1,
+					idx: 0,
+					textlen: text.length,
+					client: 'tw-ob',
+					prev: 'input',
+					ttsspeed: 1
+				});
 			const dispatcher = connection.play(Readable.from([body]));
 			this.client.dispatchers.set(msg.guild.id, dispatcher);
 			dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
