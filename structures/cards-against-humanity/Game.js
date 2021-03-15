@@ -1,7 +1,7 @@
 const Collection = require('@discordjs/collection');
 const Player = require('./Player');
 const Deck = require('./Deck');
-const { removeFromArray, awaitPlayers } = require('../../util/Util');
+const { removeFromArray, awaitPlayers, reactIfAble } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 module.exports = class Game {
@@ -61,11 +61,11 @@ module.exports = class Game {
 			if (this.players.has(res.author.id) && res.content.toLowerCase() !== 'leave game') return false;
 			if (!this.players.has(res.author.id) && res.content.toLowerCase() !== 'join game') return false;
 			if (this.czar.id === res.author.id || this.players.size >= 10) {
-				res.react(FAILURE_EMOJI_ID || '❌').catch(() => null);
+				reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
 				return false;
 			}
 			if (!['join game', 'leave game'].includes(res.content.toLowerCase())) return false;
-			res.react(SUCCESS_EMOJI_ID || '✅').catch(() => null);
+			reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 			return true;
 		});
 		collector.on('collect', msg => {
