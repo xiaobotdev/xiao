@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const UserAgent = require('user-agents');
 const { URLSearchParams, URL } = require('url');
 
 module.exports = class GoogleCommand extends Command {
@@ -58,7 +57,7 @@ module.exports = class GoogleCommand extends Command {
 				filter: 0,
 				q: query
 			})
-			.set({ 'User-Agent': new UserAgent({ deviceCategory: 'desktop' }).toString() });
+			.set({ 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1' });
 		const $ = cheerio.load(text);
 		const links = [];
 		$('body').find('h3').each((i, h3) => {
