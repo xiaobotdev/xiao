@@ -33,7 +33,9 @@ module.exports = class OcrCommand extends Command {
 		await worker.loadLanguage('eng');
 		await worker.initialize('eng');
 		let timedOut = false;
-		setTimeout(async () => {
+		let finished = false;
+		const timeout = setTimeout(async () => {
+			if (finished) return;
 			timedOut = true;
 			await worker.terminate();
 			await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
@@ -41,6 +43,7 @@ module.exports = class OcrCommand extends Command {
 		}, 30000);
 		const { data: { text } } = await worker.recognize(image);
 		if (timedOut) return null;
+		clearTimeout(timeout);
 		await worker.terminate();
 		await reactIfAble(msg, this.client.user, SUCCESS_EMOJI_ID, '✅');
 		if (!text) return msg.reply('There is no text in this image.');
