@@ -66,7 +66,7 @@ module.exports = class Player {
 		collector.on('collect', async msg => {
 			const existing = hand[Number.parseInt(msg.content, 10) - 1];
 			if (msg.content.toLowerCase() === 'swap') {
-				await reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+				await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 				for (const card of this.hand) this.hand.delete(card);
 				this.dealHand();
 				hand = Array.from(this.hand);
@@ -75,12 +75,12 @@ module.exports = class Player {
 				await this.sendHand(hand, black);
 				return;
 			} else if (msg.content.toLowerCase() === 'gamble') {
-				await reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+				await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 				this.points--;
 				gambled = true;
 				return;
 			} else if (existing) {
-				await reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+				await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 				chosen.push(existing);
 			}
 			if (chosen.length >= black.pick * (gambled ? 2 : 1)) collector.stop();
