@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
+const UserAgent = require('user-agents');
 const { shorten } = require('../../util/Util');
 
 module.exports = class RottenTomatoesCommand extends Command {
@@ -57,7 +58,8 @@ module.exports = class RottenTomatoesCommand extends Command {
 			.query({
 				limit: 10,
 				q: query
-			});
+			})
+			.set({ 'User-Agent': new UserAgent().toString() });
 		if (!body.movies.length) return null;
 		const find = body.movies.find(m => m.name.toLowerCase() === query.toLowerCase()) || body.movies[0];
 		return find.url.replace('/m/', '');
