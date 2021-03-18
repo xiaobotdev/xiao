@@ -58,7 +58,7 @@ module.exports = class GoogleCommand extends Command {
 				filter: 0,
 				q: query
 			})
-			.set({ 'User-Agent': new UserAgent().toString() });
+			.set({ 'User-Agent': new UserAgent({ deviceCategory: 'desktop' }).toString() });
 		const $ = cheerio.load(text);
 		const links = [];
 		$('body').find('h3').each((i, h3) => {
