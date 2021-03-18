@@ -66,7 +66,9 @@ module.exports = class RottenTomatoesCommand extends Command {
 	}
 
 	async fetchMovie(id) {
-		const { text } = await request.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${id}`);
+		const { text } = await request
+			.get(`https://www.rottentomatoes.com/api/private/v1.0/movies/${id}`)
+			.set({ 'User-Agent': new UserAgent().toString() });
 		return JSON.parse(text);
 	}
 };
