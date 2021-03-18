@@ -33,9 +33,7 @@ module.exports = class OcrCommand extends Command {
 		await worker.loadLanguage('eng');
 		await worker.initialize('eng');
 		let timedOut = false;
-		let finished = false;
 		const timeout = setTimeout(async () => {
-			if (finished) return;
 			timedOut = true;
 			await worker.terminate();
 			await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
