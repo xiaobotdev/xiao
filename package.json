@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "132.8.0",
+	"version": "132.9.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -32,7 +32,7 @@
 	},
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
-		"@discordjs/opus": "^0.4.0",
+		"@discordjs/opus": "^0.5.0",
 		"@vitalets/google-translate-api": "^5.1.0",
 		"aki-api": "^5.2.1",
 		"bombsweeper.js": "^1.0.1",
@@ -54,7 +54,7 @@
 		"font-finder": "^1.1.0",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
-		"html-entities": "^2.1.0",
+		"html-entities": "^2.1.1",
 		"ioredis": "^4.24.2",
 		"js-beautify": "^1.13.5",
 		"js-chess-engine": "^0.10.0",
@@ -74,7 +74,7 @@
 		"tesseract.js": "^2.1.4",
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "^1.2.1",
-		"user-agents": "^1.0.594",
+		"user-agents": "^1.0.595",
 		"valid-url": "^1.0.9",
 		"winston": "^3.3.3",
 		"ytdl-core": "^4.5.0"
