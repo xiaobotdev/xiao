@@ -99,7 +99,7 @@ module.exports = class AnimaleseCommand extends Command {
 		}
 		const wav = new WaveFile();
 		wav.fromScratch(1, sampleFreq, '32', data);
-		return wav.toBuffer();
+		return Buffer.from(wav.toBuffer());
 	}
 
 	shortenWord(str) {
