@@ -67,7 +67,7 @@ module.exports = class AnimaleseCommand extends Command {
 		}
 		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
 		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
-		const dispatcher = connection.play(this.animalese(text, pitch));
+		const dispatcher = connection.play(Readable.from([this.animalese(text, pitch)]));
 		this.client.dispatchers.set(msg.guild.id, dispatcher);
 		dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
 		dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
@@ -99,7 +99,7 @@ module.exports = class AnimaleseCommand extends Command {
 		}
 		const wav = new WaveFile();
 		wav.fromScratch(1, sampleFreq, '32', data);
-		return Readable.from([wav.toBuffer()]);
+		return wav.toBuffer();
 	}
 
 	shortenWord(str) {
