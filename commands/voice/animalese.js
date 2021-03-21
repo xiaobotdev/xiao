@@ -56,7 +56,7 @@ module.exports = class AnimaleseCommand extends Command {
 			]
 		});
 
-		this.library = new fs.readFileSync(path.join(__dirname, '..', '..', 'assets', 'sounds', 'animalese.wav'));
+		this.library = fs.readFileSync(path.join(__dirname, '..', '..', 'assets', 'sounds', 'animalese.wav'));
 	}
 
 	async run(msg, { pitch, text }) {
@@ -87,14 +87,14 @@ module.exports = class AnimaleseCommand extends Command {
 			const c = processedScript.toUpperCase()[cIndex];
 			if (c >= 'A' && c <= 'Z') {
 				const libraryLetterStart = librarySamplesPerLetter * (c.charCodeAt(0) - 'A'.charCodeAt(0));
-				for (var i = 0; i < outputSamplesPerLetter; i++) {
+				for (let i = 0; i < outputSamplesPerLetter; i++) {
 					const libIndex = this.library[44 + libraryLetterStart + Math.floor(i * pitch)];
-					data[cIndex * outputSamplesPerLetter + i] = libIndex;
-			  	}
+					data[(cIndex * outputSamplesPerLetter) + i] = libIndex;
+				}
 			} else {
-			  	for (var i = 0; i < outputSamplesPerLetter; i++) {
-					data[cIndex * outputSamplesPerLetter + i] = 127;
-			  	}
+				for (let i = 0; i < outputSamplesPerLetter; i++) {
+					data[(cIndex * outputSamplesPerLetter) + i] = 127;
+				}
 			}
 		}
 		const wav = new WaveFile();
