@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "132.9.0",
+	"version": "132.10.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -55,9 +55,10 @@
 		"gifencoder": "^2.0.1",
 		"gm": "^1.23.1",
 		"html-entities": "^2.1.1",
+		"image-to-ascii": "^3.0.13",
 		"ioredis": "^4.24.2",
 		"js-beautify": "^1.13.5",
-		"js-chess-engine": "^0.10.0",
+		"js-chess-engine": "^0.11.0",
 		"kuroshiro": "^1.1.2",
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
 		"mathjs": "^9.3.0",
@@ -74,7 +75,7 @@
 		"tesseract.js": "^2.1.4",
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "^1.2.1",
-		"user-agents": "^1.0.595",
+		"user-agents": "^1.0.597",
 		"valid-url": "^1.0.9",
 		"winston": "^3.3.3",
 		"ytdl-core": "^4.5.0"
