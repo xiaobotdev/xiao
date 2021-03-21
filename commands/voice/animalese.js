@@ -98,7 +98,7 @@ module.exports = class AnimaleseCommand extends Command {
 			}
 		}
 		const wav = new WaveFile();
-		wav.fromScratch(1, sampleFreq, '32', Array.from(data));
+		wav.fromScratch(1, sampleFreq, '32', data);
 		return Readable.from([wav.toBuffer()]);
 	}
 
