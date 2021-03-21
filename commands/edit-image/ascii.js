@@ -40,8 +40,8 @@ module.exports = class AsciiCommand extends Command {
 		const options = {
 			colored: false,
 			size: {
-				height: height >= width ? 25 : undefined,
-				width: width > height ? 25 : undefined
+				height: height >= width ? 20 : undefined,
+				width: width > height ? 20 : undefined
 			}
 		};
 		return new Promise((res, rej) => {
