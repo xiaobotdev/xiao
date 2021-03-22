@@ -148,6 +148,13 @@ client.on('ready', async () => {
 		client.logger.error(`[ADULT SITES] Failed to fetch list\n${err.stack}`);
 	}
 
+	// Fetch NSFW model
+	try {
+		await client.loadNSFWModel();
+	} catch (err) {
+		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
+	}
+
 	// Post bot list stats
 	await client.postBotsGGStats();
 	setInterval(() => client.postBotsGGStats(), 1.8e+6);

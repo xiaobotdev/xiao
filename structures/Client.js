@@ -4,7 +4,9 @@ const request = require('node-superfetch');
 const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const fontFinder = require('font-finder');
+const nsfw = require('nsfwjs');
 const fs = require('fs');
+const url = require('url');
 const path = require('path');
 const Redis = require('./Redis');
 const Font = require('./Font');
@@ -45,6 +47,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
 		this.adultSiteList = null;
+		this.nsfwModel = null;
 	}
 
 	async registerFontsIn(filepath) {
@@ -181,6 +184,12 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.adultSiteList = text.split('\n').filter(site => site && !site.startsWith('#'));
 		setTimeout(() => this.fetchAdultSiteList(true), 8.64e+7);
 		return this.adultSiteList;
+	}
+
+	async loadNSFWModel() {
+		const model = await nsfw.load(url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'nsfw')));
+		this.nsfwModel = model;
+		return this.nsfwModel;
 	}
 
 	fetchReportChannel() {
