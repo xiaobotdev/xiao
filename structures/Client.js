@@ -187,7 +187,7 @@ module.exports = class XiaoClient extends CommandoClient {
 	}
 
 	async loadNSFWModel() {
-		const model = await nsfw.load(url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'nsfw')));
+		const model = await nsfw.load(url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'nsfw', 'web_model')));
 		this.nsfwModel = model;
 		return this.nsfwModel;
 	}
