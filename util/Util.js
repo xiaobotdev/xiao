@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const tf = require('@tensorflow/tfjs-node');
 const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
 const { URL } = require('url');
@@ -214,6 +215,13 @@ module.exports = class Util {
 			str = str.replace(uri, text);
 		}
 		return str;
+	}
+
+	static isImageNSFW(model, image, bool = true) {
+		const img = await tf.node.decodeImage(new Uint8Array(image), 3);
+		const predictions = model.classify(image, 1);
+		img.dispose();
+		return bool ? predictions[0] !== 'Neutral' && predictions[0] !== 'Drawing' : predictions[0];
 	}
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {

@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "133.0.0",
+	"version": "133.1.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -33,6 +33,7 @@
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
 		"@discordjs/opus": "^0.5.0",
+		"@tensorflow/tfjs-node": "^3.3.0",
 		"@vitalets/google-translate-api": "^5.1.0",
 		"aki-api": "^5.2.1",
 		"bombsweeper.js": "^1.0.1",
@@ -66,6 +67,7 @@
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.33",
 		"node-superfetch": "^0.1.11",
+		"nsfwjs": "^2.3.0",
 		"pokersolver": "^2.1.4",
 		"random-js": "^2.1.0",
 		"rss-parser": "^3.12.0",

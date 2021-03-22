@@ -14,6 +14,9 @@ command-leaderboard.json
 command-last-run.json
 blacklist.json
 
+# Tensorflow Models
+tf_models/
+
 # Tesseract Trained Data
 *.traineddata
 
