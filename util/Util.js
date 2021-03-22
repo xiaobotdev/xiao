@@ -221,7 +221,7 @@ module.exports = class Util {
 	static async isImageNSFW(model, image, bool = true) {
 		const dimensions = sizeOf(image);
 		const data = {
-			data: new Uint8Array(image),
+			data: image,
 			width: dimensions.width,
 			height: dimensions.height
 		};
