@@ -176,10 +176,10 @@ module.exports = class XiaoClient extends CommandoClient {
 
 	async fetchAdultSiteList(force = false) {
 		if (!force && this.adultSiteList) return this.adultSiteList;
-		const { text } = await request.get('https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt');
-		this.adultSiteList = text.split('\n')
-			.filter(site => site && !site.startsWith('#'))
-			.map(site => site.replace(/^(0.0.0.0 )/, '')); // eslint-disable-line no-control-regex
+		const { text } = await request
+			.get('https://raw.githubusercontent.com/blocklistproject/Lists/master/alt-version/porn-nl.txt');
+		this.adultSiteList = text.split('\n').filter(site => site && !site.startsWith('#'));
+		setTimeout(() => this.fetchAdultSiteList(true), 8.64e+7);
 		return this.adultSiteList;
 	}
 
