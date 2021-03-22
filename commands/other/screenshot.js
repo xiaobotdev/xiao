@@ -12,6 +12,10 @@ module.exports = class ScreenshotCommand extends Command {
 			memberName: 'screenshot',
 			description: 'Takes a screenshot of any webpage.',
 			clientPermissions: ['ATTACH_FILES'],
+			throttling: {
+				usages: 1,
+				duration: 30
+			},
 			credit: [
 				{
 					name: 'Thum.io',
