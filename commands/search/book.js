@@ -50,7 +50,7 @@ module.exports = class BookCommand extends Command {
 				.setAuthor('Google Books', 'https://i.imgur.com/N3oHABo.png', 'https://books.google.com/')
 				.setDescription(data.description ? shorten(data.description) : 'No description available.')
 				.setThumbnail(data.imageLinks ? data.imageLinks.thumbnail : null)
-				.addField('❯ Authors', data.authors.length ? data.authors.join(', ') : '???')
+				.addField('❯ Authors', data.authors && data.authors.length ? data.authors.join(', ') : '???')
 				.addField('❯ Publish Date', data.publishedDate || '???', true)
 				.addField('❯ Page Count', data.pageCount ? formatNumber(data.pageCount) : '???', true);
 			return msg.embed(embed);
