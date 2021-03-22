@@ -2,7 +2,8 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { createCanvas, loadImage } = require('canvas');
 const { stripIndents } = require('common-tags');
-const { base64 } = require('../../util/Util');
+const { base64, reactIfAble } = require('../../util/Util');
+const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 
 module.exports = class WhatAnimeCommand extends Command {
 	constructor(client) {
@@ -32,23 +33,31 @@ module.exports = class WhatAnimeCommand extends Command {
 
 	async run(msg, { screenshot }) {
 		try {
+			await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 			const status = await this.fetchRateLimit();
 			if (!status.status) {
+				await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
 				return msg.reply(`Oh no, I'm out of requests! Please wait ${status.refresh} seconds and try again.`);
 			}
 			let { body } = await request.get(screenshot);
 			if (screenshot.endsWith('.gif')) body = await this.convertGIF(body);
 			const result = await this.search(body, msg.channel.nsfw);
-			if (result === 'size') return msg.reply('Please do not send an image larger than 10MB.');
+			if (result === 'size') {
+				await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
+				return msg.reply('Please do not send an image larger than 10MB.');
+			}
 			if (result.nsfw && !msg.channel.nsfw) {
+				await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
 				return msg.reply('This is from a hentai, and this isn\'t an NSFW channel, pervert.');
 			}
+			await reactIfAble(msg, this.client.user, SUCCESS_EMOJI_ID, '✅');
 			const title = `${result.title}${result.episode ? ` episode ${result.episode}` : ''}`;
 			return msg.reply(stripIndents`
 				I'm ${result.prob}% sure this is from ${title}.
 				${result.prob < 90 ? '_This probablity is rather low, try using a higher quality image._' : ''}
 			`, result.preview ? { files: [{ attachment: result.preview, name: 'preview.mp4' }] } : {});
 		} catch (err) {
+			await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
