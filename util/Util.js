@@ -221,7 +221,7 @@ module.exports = class Util {
 		const img = await tf.node.decodeImage(image, 3);
 		const predictions = await model.classify(img, 1);
 		img.dispose();
-		return bool ? predictions[0] !== 'Neutral' && predictions[0] !== 'Drawing' : predictions[0];
+		return bool ? predictions[0].className !== 'Neutral' && predictions[0].className !== 'Drawing' : predictions[0];
 	}
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
