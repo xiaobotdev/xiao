@@ -40,7 +40,7 @@ module.exports = class ScreenshotCommand extends Command {
 						const parsedNewURL = new URL(newURL);
 						if (this.client.adultSiteList.includes(parsedNewURL.host)) nsfw = true;
 					} catch {
-						nsfw = false;
+						return msg.reply('This site did not respond, or sent an error.');
 					}
 				}
 				if (nsfw) return msg.reply('This site is NSFW.');
