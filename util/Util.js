@@ -226,7 +226,7 @@ module.exports = class Util {
 			height: dimensions.height
 		};
 		const img = await tf.node.decodeImage(data, 3);
-		const predictions = await model.classify(image, 1);
+		const predictions = await model.classify(img, 1);
 		img.dispose();
 		return bool ? predictions[0] !== 'Neutral' && predictions[0] !== 'Drawing' : predictions[0];
 	}
