@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { URL } = require('url');
+const { isImageNSFW } = require('../../util/Util');
 
 module.exports = class ScreenshotCommand extends Command {
 	constructor(client) {
@@ -46,6 +47,10 @@ module.exports = class ScreenshotCommand extends Command {
 				if (nsfw) return msg.reply('This site is NSFW.');
 			}
 			const { body } = await request.get(`https://image.thum.io/get/width/1920/crop/675/noanimate/${url.href}`);
+			if (!msg.channel.nsfw) {
+				const aiDetect = await isImageNSFW(this.client.nsfwModel, body);
+				if (aiDetect) return msg.reply('This site isn\'t NSFW, but the resulting image was.');
+			}
 			return msg.say({ files: [{ attachment: body, name: 'screenshot.png' }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results. Invalid URL?');
