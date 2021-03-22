@@ -34,6 +34,9 @@ module.exports = class CompanyCommand extends Command {
 		try {
 			const data = await this.fetchCompany(query);
 			if (!data) return msg.say('Could not find any results.');
+			if (!msg.channel.nsfw && this.client.adultSiteList.includes(data.domain)) {
+				return msg.reply('This site is NSFW.');
+			}
 			const embed = new MessageEmbed()
 				.setTitle(data.name)
 				.setImage(data.logo)
