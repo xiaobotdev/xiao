@@ -10,6 +10,10 @@ module.exports = class FlickrCommand extends Command {
 			group: 'search',
 			memberName: 'flickr',
 			description: 'Searches Flickr for your query.',
+			throttling: {
+				usages: 1,
+				duration: 30
+			},
 			credit: [
 				{
 					name: 'Flickr',
