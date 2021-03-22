@@ -68,6 +68,7 @@ module.exports = class XiaoClient extends CommandoClient {
 			return body;
 		} catch (err) {
 			this.logger.error(`[BOTS.GG] Failed to post stats:\n${err.stack}`);
+			return err;
 		}
 	}
 
