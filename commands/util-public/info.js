@@ -33,8 +33,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Home Server',
 				this.client.options.invite ? embedURL('Invite', this.client.options.invite) : 'None', true)
 			.addField('❯ Invite', embedURL('Add Me', invite), true)
-			.addField('❯ Bot List',
-				embedURL('discord.bots.gg', `https://discord.bots.gg/bots/${this.client.user.id}`), true)
+			.addField('❯ Donate', embedURL('Patreon', 'https://www.patreon.com/xiaodiscord'), true)
 			.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime', moment.duration(this.client.uptime).format('d:hh:mm:ss'), true)
 			.addField('❯ Version', `v${version}`, true)
