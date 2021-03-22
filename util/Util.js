@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const tf = require('@tensorflow/tfjs-node');
+const sizeOf = require('buffer-image-size');
 const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
 const { URL } = require('url');
@@ -218,8 +219,14 @@ module.exports = class Util {
 	}
 
 	static async isImageNSFW(model, image, bool = true) {
-		const img = await tf.node.decodeImage(new Uint8Array(image), 3);
-		const predictions = model.classify(image, 1);
+		const dimensions = sizeOf(image);
+		const data = {
+			data: new Uint8Array(image),
+			width: dimensions.width,
+			height: dimensions.height
+		};
+		const img = await tf.node.decodeImage(data, 3);
+		const predictions = await model.classify(image, 1);
 		img.dispose();
 		return bool ? predictions[0] !== 'Neutral' && predictions[0] !== 'Drawing' : predictions[0];
 	}
