@@ -1,7 +1,7 @@
 const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { stripIndents } = require('common-tags');
 const texts = require('../../assets/json/dating');
-const { DATING_ALBUM_ID } = process.env;
+const { XIAO_ALBUM_ID } = process.env;
 
 module.exports = class DatingCommand extends ImgurAlbumCommand {
 	constructor(client) {
@@ -12,7 +12,7 @@ module.exports = class DatingCommand extends ImgurAlbumCommand {
 			memberName: 'dating',
 			description: 'Find the person of your dreams with this dating system!',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: DATING_ALBUM_ID
+			albumID: XIAO_ALBUM_ID
 		});
 	}
 
