@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
 		"@discordjs/opus": "^0.5.0",
-		"@tensorflow/tfjs": "^3.3.0",
+		"@tensorflow/tfjs-node": "^3.3.0",
 		"@vitalets/google-translate-api": "^5.1.0",
 		"aki-api": "^5.2.1",
 		"bombsweeper.js": "^1.0.1",
