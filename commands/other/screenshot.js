@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { URL } = require('url');
 
 module.exports = class ScreenshotCommand extends Command {
 	constructor(client) {
@@ -29,8 +30,20 @@ module.exports = class ScreenshotCommand extends Command {
 
 	async run(msg, { url }) {
 		try {
-			if (!msg.channel.nsfw && this.client.adultSiteList.includes(url.host)) {
-				return msg.reply('This site is NSFW.');
+			if (!msg.channel.nsfw) {
+				let nsfw;
+				if (this.client.adultSiteList.includes(url.host)) {
+					nsfw = true;
+				} else {
+					try {
+						const { url: newURL } = await request.get(url);
+						const parsedNewURL = new URL(newURL);
+						if (this.client.adultSiteList.includes(parsedNewURL.host)) nsfw = true;
+					} catch {
+						nsfw = false;
+					}
+				}
+				if (nsfw) return msg.reply('This site is NSFW.');
 			}
 			const { body } = await request.get(`https://image.thum.io/get/width/1920/crop/675/noanimate/${url.href}`);
 			return msg.say({ files: [{ attachment: body, name: 'screenshot.png' }] });
