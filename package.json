@@ -37,7 +37,6 @@
 		"@vitalets/google-translate-api": "^5.1.0",
 		"aki-api": "^5.2.1",
 		"bombsweeper.js": "^1.0.1",
-		"buffer-image-size": "^0.6.4",
 		"canvas": "^2.7.0",
 		"cheerio": "^1.0.0-rc.5",
 		"cloc": "^2.7.0",
