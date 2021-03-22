@@ -17,7 +17,8 @@ const {
 	XIAO_WEBHOOK_ID,
 	XIAO_WEBHOOK_TOKEN,
 	REPORT_CHANNEL_ID,
-	JOIN_LEAVE_CHANNEL_ID
+	JOIN_LEAVE_CHANNEL_ID,
+	BOTS_GG_TOKEN
 } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
@@ -55,6 +56,19 @@ module.exports = class XiaoClient extends CommandoClient {
 			font.register();
 		}
 		return this.fonts;
+	}
+
+	async postBotsGGStats() {
+		try {
+			const { body } = await request
+				.post(`https://discord.bots.gg/api/bots/${this.user.id}/stats`)
+				.set({ Authorization: BOTS_GG_TOKEN })
+				.send({ guildCount: this.guilds.size });
+			this.logger.info('[BOTS.GG] Posted stats.');
+			return body;
+		} catch (err) {
+			this.logger.error(`[BOTS.GG] Failed to post stats:\n${err.stack}`);
+		}
 	}
 
 	importBlacklist() {

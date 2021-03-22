@@ -147,6 +147,10 @@ client.on('ready', async () => {
 	} catch (err) {
 		client.logger.error(`[ADULT SITES] Failed to fetch list\n${err.stack}`);
 	}
+
+	// Post bot list stats
+	await client.postBotsGGStats();
+	setInterval(() => client.postBotsGGStats(), 1.8e+6);
 });
 
 client.on('message', async msg => {
