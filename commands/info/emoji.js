@@ -22,7 +22,7 @@ module.exports = class EmojiCommand extends Command {
 		});
 	}
 
-	run(msg, { emoji }) {
+	async run(msg, { emoji }) {
 		if (!emoji.author) await emoji.fetchAuthor();
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
