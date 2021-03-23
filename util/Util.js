@@ -225,7 +225,7 @@ module.exports = class Util {
 		results.push(predictions[0]);
 		for (const result of predictions) {
 			if (result.className === predictions[0].className) continue;
-			if (result.probability >= predictions[0].probability - 5) results.push(result);
+			if (result.probability >= predictions[0].probability - 0.05) results.push(result);
 		}
 		return bool
 			? results.some(result => result.className !== 'Drawing' && result.className !== 'Neutral')
