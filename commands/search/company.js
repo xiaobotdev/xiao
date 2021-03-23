@@ -41,7 +41,7 @@ module.exports = class CompanyCommand extends Command {
 				.setTitle(data.name)
 				.setImage(data.logo)
 				.setFooter('Logos provided by Clearbit')
-				.setURL('https://clearbit.com/')
+				.setURL(data.domain ? `https://${data.domain}` : null)
 				.setColor(0x00AE86);
 			return msg.embed(embed);
 		} catch (err) {
@@ -53,7 +53,8 @@ module.exports = class CompanyCommand extends Command {
 		if (dragonFireAliases.includes(query.toLowerCase())) {
 			return {
 				name: 'Dragon Fire',
-				logo: 'https://i.imgur.com/tHxWaoA.png'
+				logo: 'https://i.imgur.com/tHxWaoA.png',
+				domain: null
 			};
 		}
 		const { body } = await request
