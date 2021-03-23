@@ -219,9 +219,17 @@ module.exports = class Util {
 
 	static async isImageNSFW(model, image, bool = true) {
 		const img = await tf.node.decodeImage(image, 3);
-		const predictions = await model.classify(img, 1);
+		const predictions = await model.classify(img, 2);
 		img.dispose();
-		return bool ? predictions[0].className !== 'Neutral' && predictions[0].className !== 'Drawing' : predictions[0];
+		const results = [];
+		results.push(predictions[0]);
+		for (const result of predictions) {
+			if (result.className === predictions[0].className) continue;
+			if (result.probability >= predictions[0].probability - 5) results.push(result);
+		}
+		return bool
+			? results.some(result => result.className !== 'Drawing' && result.className !== 'Neutral')
+			: results;
 	}
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
