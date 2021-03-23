@@ -11,7 +11,7 @@ module.exports = class EmojiCommand extends Command {
 			memberName: 'emoji',
 			description: 'Responds with detailed information on an emoji.',
 			guildOnly: true,
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: ['EMBED_LINKS', 'MANAGE_EMOJIS'],
 			args: [
 				{
 					key: 'emoji',
@@ -23,7 +23,7 @@ module.exports = class EmojiCommand extends Command {
 	}
 
 	async run(msg, { emoji }) {
-		if (!emoji.author) await emoji.fetchAuthor();
+		if (!emoji.author && !emoji.managed) await emoji.fetchAuthor();
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(emoji.url)
