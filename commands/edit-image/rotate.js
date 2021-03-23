@@ -10,7 +10,7 @@ module.exports = class RotateCommand extends Command {
 			memberName: 'rotate',
 			description: 'Draws an image or a user\'s avatar but rotated a number of degrees.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

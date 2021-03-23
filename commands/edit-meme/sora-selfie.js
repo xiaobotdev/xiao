@@ -12,7 +12,7 @@ module.exports = class SoraSelfieCommand extends Command {
 			memberName: 'sora-selfie',
 			description: 'Draws an image or a user\'s avatar behind Sora taking a selfie.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

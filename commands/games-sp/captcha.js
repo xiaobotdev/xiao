@@ -11,7 +11,7 @@ module.exports = class CaptchaCommand extends Command {
 			memberName: 'captcha',
 			description: 'Try to guess what the captcha says.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

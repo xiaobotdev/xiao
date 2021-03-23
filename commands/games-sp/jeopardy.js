@@ -13,7 +13,7 @@ module.exports = class JeopardyCommand extends Command {
 			memberName: 'jeopardy',
 			description: 'Answer a Jeopardy question.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			credit: [

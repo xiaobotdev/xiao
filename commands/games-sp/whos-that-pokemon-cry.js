@@ -10,7 +10,7 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 			memberName: 'whos-that-pokemon-cry',
 			description: 'Guess who that Pokémon is, based on their cry.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			guildOnly: true,

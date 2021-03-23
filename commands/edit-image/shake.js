@@ -13,7 +13,7 @@ module.exports = class ShakeCommand extends Command {
 			memberName: 'shake',
 			description: 'Draws an image or a user\'s avatar shaking.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -12,7 +12,7 @@ module.exports = class TwoButtonsCommand extends Command {
 			memberName: 'two-buttons',
 			description: 'Sends a "Two Buttons" meme with the buttons of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

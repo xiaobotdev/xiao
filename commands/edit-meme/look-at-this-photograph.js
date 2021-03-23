@@ -12,7 +12,7 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 			memberName: 'look-at-this-photograph',
 			description: 'Draws an image or a user\'s avatar over Nickelback\'s photograph.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

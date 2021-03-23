@@ -18,7 +18,7 @@ module.exports = class ConvertImageCommand extends Command {
 			description: 'Converts an image from one format to another.',
 			details: `**Formats:** ${Object.keys(formats).join(', ')}`,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

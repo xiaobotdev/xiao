@@ -12,7 +12,7 @@ module.exports = class BlurCommand extends Command {
 			memberName: 'blur',
 			description: 'Draws an image or a user\'s avatar but blurred.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

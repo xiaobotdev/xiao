@@ -12,7 +12,7 @@ module.exports = class SquishCommand extends Command {
 			memberName: 'squish',
 			description: 'Draws an image or a user\'s avatar but squished across the X or Y axis.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 60
 			},
 			clientPermissions: ['ATTACH_FILES'],

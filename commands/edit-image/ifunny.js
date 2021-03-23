@@ -11,7 +11,7 @@ module.exports = class IfunnyCommand extends Command {
 			memberName: 'ifunny',
 			description: 'Draws an image with the iFunny logo.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

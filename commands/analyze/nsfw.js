@@ -11,7 +11,7 @@ module.exports = class NsfwCommand extends Command {
 			memberName: 'nsfw',
 			description: 'Determines if an image is NSFW.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			args: [

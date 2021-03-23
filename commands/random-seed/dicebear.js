@@ -14,7 +14,7 @@ module.exports = class DicebearCommand extends Command {
 			description: 'Creates a DiceBear avatar based on the text you provide.',
 			clientPermissions: ['ATTACH_FILES'],
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			credit: [

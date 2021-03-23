@@ -20,7 +20,7 @@ module.exports = class FriendshipCommand extends Command {
 			memberName: 'friendship',
 			description: 'Determines how good friends two users are.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -13,6 +13,10 @@ module.exports = class WhatAnimeCommand extends Command {
 			group: 'analyze',
 			memberName: 'what-anime',
 			description: 'Determines what anime a screenshot is from.',
+			throttling: {
+				usages: 2,
+				duration: 30
+			},
 			credit: [
 				{
 					name: 'WAIT: What Anime Is This?',

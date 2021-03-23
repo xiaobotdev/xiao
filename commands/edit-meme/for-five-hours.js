@@ -12,7 +12,7 @@ module.exports = class ForFiveHoursCommand extends Command {
 			memberName: 'for-five-hours',
 			description: 'Sends an "I\'ve looked at this for 5 hours now" meme with the image of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

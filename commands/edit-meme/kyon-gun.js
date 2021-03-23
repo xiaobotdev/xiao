@@ -12,7 +12,7 @@ module.exports = class KyonGunCommand extends Command {
 			memberName: 'kyon-gun',
 			description: 'Draws an image or a user\'s avatar behind Kyon shooting a gun.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

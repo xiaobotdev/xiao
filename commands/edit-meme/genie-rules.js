@@ -12,7 +12,7 @@ module.exports = class GenieRulesCommand extends Command {
 			memberName: 'genie-rules',
 			description: 'Sends a "There are 4 rules" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

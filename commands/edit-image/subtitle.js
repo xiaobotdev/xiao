@@ -12,7 +12,7 @@ module.exports = class SubtitleCommand extends Command {
 			memberName: 'subtitle',
 			description: 'Adds subtitles to an image.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

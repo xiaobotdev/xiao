@@ -12,7 +12,7 @@ module.exports = class SpongebobBurnCommand extends Command {
 			memberName: 'spongebob-burn',
 			description: 'Sends a "Spongebob Throwing Something into a Fire" meme with words of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -14,7 +14,7 @@ module.exports = class FaceCommand extends Command {
 			memberName: 'face',
 			description: 'Determines the race, gender, and age of a face.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			credit: [

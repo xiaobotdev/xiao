@@ -17,7 +17,7 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 			memberName: 'phoebe-teaching-joey',
 			description: 'Sends a "Phoebe Teaching Joey" meme with text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

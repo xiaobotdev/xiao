@@ -11,7 +11,7 @@ module.exports = class PokedexCryCommand extends Command {
 			description: 'Plays a Pokémon\'s cry.',
 			userPermissions: ['CONNECT', 'SPEAK'],
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			guildOnly: true,

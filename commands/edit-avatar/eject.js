@@ -15,7 +15,7 @@ module.exports = class EjectCommand extends Command {
 			memberName: 'eject',
 			description: 'Ejects a user.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],

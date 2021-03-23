@@ -12,7 +12,7 @@ module.exports = class SpotifyNowPlayingCommand extends Command {
 			memberName: 'spotify-now-playing',
 			description: 'Draws an image or a user\'s avatar on a Spotify album with the name and artist of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

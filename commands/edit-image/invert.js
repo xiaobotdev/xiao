@@ -11,7 +11,7 @@ module.exports = class InvertCommand extends Command {
 			memberName: 'invert',
 			description: 'Draws an image or a user\'s avatar but inverted.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

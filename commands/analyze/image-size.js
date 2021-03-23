@@ -11,7 +11,7 @@ module.exports = class ImageSizeCommand extends Command {
 			memberName: 'image-size',
 			description: 'Determines the size of an image.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			args: [

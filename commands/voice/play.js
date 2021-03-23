@@ -15,8 +15,8 @@ module.exports = class PlayCommand extends Command {
 			description: 'Plays a YouTube video in your voice channel.',
 			guildOnly: true,
 			throttling: {
-				usages: 1,
-				duration: 10
+				usages: 2,
+				duration: 60
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],
 			credit: [

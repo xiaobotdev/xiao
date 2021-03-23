@@ -13,7 +13,7 @@ module.exports = class UltimateTattooCommand extends Command {
 			memberName: 'ultimate-tattoo',
 			description: 'Draws an image or a user\'s avatar as "The Ultimate Tattoo".',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -14,7 +14,7 @@ module.exports = class DannyDevitoCommand extends Command {
 			memberName: 'danny-devito',
 			description: 'Draws Danny Devito\'s face onto the faces in an image.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 60
 			},
 			credit: [

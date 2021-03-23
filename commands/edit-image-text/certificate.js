@@ -12,7 +12,7 @@ module.exports = class CertificateCommand extends Command {
 			memberName: 'certificate',
 			description: 'Sends a certificate of excellence with the name and reason of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

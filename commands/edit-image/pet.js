@@ -15,7 +15,7 @@ module.exports = class PetCommand extends Command {
 			memberName: 'pet',
 			description: 'Pets an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],

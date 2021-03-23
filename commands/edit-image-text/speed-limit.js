@@ -11,7 +11,7 @@ module.exports = class SpeedLimitCommand extends Command {
 			memberName: 'speed-limit',
 			description: 'Sends a Speed Limit sign with the limit of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

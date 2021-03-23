@@ -11,7 +11,7 @@ module.exports = class AsciiCommand extends Command {
 			memberName: 'ascii',
 			description: 'Draws an image or a user\'s avatar but with ascii.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 15
 			},
 			args: [

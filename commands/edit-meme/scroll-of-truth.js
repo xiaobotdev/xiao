@@ -12,7 +12,7 @@ module.exports = class ScrollOfTruthCommand extends Command {
 			memberName: 'scroll-of-truth',
 			description: 'Sends a "Scroll of Truth" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

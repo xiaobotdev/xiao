@@ -11,7 +11,7 @@ module.exports = class PogchampCommand extends Command {
 			memberName: 'pogchamp',
 			description: 'Sends a pogchamp duplicated however many times you want.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],

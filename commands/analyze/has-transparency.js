@@ -12,7 +12,7 @@ module.exports = class HasTransparencyCommand extends Command {
 			memberName: 'has-transparency',
 			description: 'Determines if an image has transparency in it.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			args: [

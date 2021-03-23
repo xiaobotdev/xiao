@@ -22,7 +22,7 @@ module.exports = class AnimaleseCommand extends Command {
 			description: 'Makes animalese based on text.',
 			guildOnly: true,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],

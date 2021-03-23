@@ -13,7 +13,7 @@ module.exports = class NoiseCommand extends Command {
 			description: 'Draws an image or a user\'s avatar but with noise.',
 			details: `**Types:** ${types.join(', ')}`,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 15
 			},
 			clientPermissions: ['ATTACH_FILES'],

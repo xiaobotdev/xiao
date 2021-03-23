@@ -14,7 +14,7 @@ module.exports = class BeLikeBillCommand extends Command {
 			memberName: 'be-like-bill',
 			description: 'Sends a "Be Like Bill" meme with the name of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

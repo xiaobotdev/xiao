@@ -13,7 +13,7 @@ module.exports = class AirhornCommand extends Command {
 			description: 'Plays an airhorn sound in a voice channel.',
 			guildOnly: true,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],

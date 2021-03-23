@@ -12,7 +12,7 @@ module.exports = class LisaPresentationCommand extends Command {
 			memberName: 'bart-chalkboard',
 			description: 'Sends a "Bart Chalkboard" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

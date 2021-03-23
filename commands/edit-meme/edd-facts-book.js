@@ -12,7 +12,7 @@ module.exports = class EddFactsBookCommand extends Command {
 			memberName: 'edd-facts-book',
 			description: 'Sends a "Double D\'s Facts Book" meme with the fact of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

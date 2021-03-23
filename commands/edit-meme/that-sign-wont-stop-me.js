@@ -12,7 +12,7 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			memberName: 'that-sign-wont-stop-me',
 			description: 'Sends a "That Sign Won\'t Stop Me, I Can\'t read!" meme with the presentation of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

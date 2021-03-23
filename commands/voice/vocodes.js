@@ -16,8 +16,8 @@ module.exports = class VocodesCommand extends Command {
 			details: `**Voices:** ${Object.keys(voices).join(', ')}`,
 			guildOnly: true,
 			throttling: {
-				usages: 1,
-				duration: 10
+				usages: 2,
+				duration: 30
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],
 			credit: [

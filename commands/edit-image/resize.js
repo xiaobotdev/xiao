@@ -10,7 +10,7 @@ module.exports = class ResizeCommand extends Command {
 			memberName: 'resize',
 			description: 'Draws an image or a user\'s avatar resized to the size you want.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

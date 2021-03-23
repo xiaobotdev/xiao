@@ -16,7 +16,7 @@ module.exports = class TweetCommand extends Command {
 			memberName: 'tweet',
 			description: 'Sends a Twitter tweet with the user and text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

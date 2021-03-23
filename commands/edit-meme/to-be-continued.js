@@ -13,7 +13,7 @@ module.exports = class ToBeContinuedCommand extends Command {
 			memberName: 'to-be-continued',
 			description: 'Draws an image with the "To Be Continued..." arrow.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

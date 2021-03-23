@@ -12,7 +12,7 @@ module.exports = class TuxedoPoohCommand extends Command {
 			memberName: 'tuxedo-pooh',
 			description: 'Sends a "Tuxedo Winnie the Pooh" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

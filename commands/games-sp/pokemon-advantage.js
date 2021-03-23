@@ -15,7 +15,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			memberName: 'pokemon-advantage',
 			description: 'Guess which Pokémon has the type advantage.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

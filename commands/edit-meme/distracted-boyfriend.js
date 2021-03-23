@@ -12,7 +12,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 			memberName: 'distracted-boyfriend',
 			description: 'Draws three user\'s avatars over the "Distracted Boyfriend" meme.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

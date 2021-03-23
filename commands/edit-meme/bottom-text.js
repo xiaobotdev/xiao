@@ -8,7 +8,7 @@ module.exports = class BottomTextCommand extends Command {
 			memberName: 'bottom-text',
 			description: 'Sends a bottom text meme.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

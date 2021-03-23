@@ -13,7 +13,7 @@ module.exports = class LookWhatKarenHaveCommand extends Command {
 			memberName: 'look-what-karen-have',
 			description: 'Draws an image or a user\'s avatar over Karen\'s piece of paper.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -11,7 +11,7 @@ module.exports = class NeedsMoreJpegCommand extends Command {
 			memberName: 'needs-more-jpeg',
 			description: 'Draws an image or a user\'s avatar as a low quality JPEG.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

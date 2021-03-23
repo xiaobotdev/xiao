@@ -12,7 +12,7 @@ module.exports = class PanikKalmPanikCommand extends Command {
 			memberName: 'panik-kalm-panik',
 			description: 'Sends a "Panik, Kalm, Panik" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

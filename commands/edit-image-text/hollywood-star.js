@@ -11,7 +11,7 @@ module.exports = class HollywoodStarCommand extends Command {
 			memberName: 'hollywood-star',
 			description: 'Sends a Hollywood Walk of Fame star with the name of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -11,7 +11,7 @@ module.exports = class BoardroomMeetingCommand extends Command {
 			memberName: 'boardroom-meeting',
 			description: 'Sends a "Boardroom Meeting" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

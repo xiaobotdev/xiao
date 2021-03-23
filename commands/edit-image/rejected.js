@@ -13,7 +13,7 @@ module.exports = class RejctedCommand extends Command {
 			memberName: 'rejected',
 			description: 'Draws a "rejected" stamp over an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -12,7 +12,7 @@ module.exports = class WorseThanHitlerCommand extends Command {
 			memberName: 'worse-than-hitler',
 			description: 'Draws a user\'s avatar over Family Guy\'s "Worse Than Hitler" meme.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

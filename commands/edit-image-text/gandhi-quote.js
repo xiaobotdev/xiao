@@ -12,7 +12,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 			memberName: 'gandhi-quote',
 			description: 'Makes Mahatma Gandhi say the quote you want.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -12,7 +12,7 @@ module.exports = class SipCommand extends Command {
 			memberName: 'sip',
 			description: 'Draws a user\'s avatar sipping tea.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

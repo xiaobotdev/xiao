@@ -13,7 +13,7 @@ module.exports = class HeartsCommand extends Command {
 			memberName: 'hearts',
 			description: 'Draws hearts around a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

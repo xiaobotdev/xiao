@@ -14,7 +14,7 @@ module.exports = class HatCommand extends Command {
 			description: 'Draws a hat over a user\'s avatar.',
 			details: `**Hats:** ${hats.join(', ')}`,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

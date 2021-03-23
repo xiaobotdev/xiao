@@ -13,7 +13,7 @@ module.exports = class GruPlanCommand extends Command {
 			memberName: 'gru-plan',
 			description: 'Sends a Gru\'s Plan meme with steps of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

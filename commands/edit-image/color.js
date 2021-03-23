@@ -10,7 +10,7 @@ module.exports = class ColorCommand extends Command {
 			memberName: 'color',
 			description: 'Sends an image of the color you choose.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -13,7 +13,7 @@ module.exports = class CrushCommand extends Command {
 			memberName: 'crush',
 			description: 'Draws an image or a user\'s avatar as Wolverine\'s crush.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

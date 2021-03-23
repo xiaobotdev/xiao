@@ -23,7 +23,7 @@ module.exports = class MemeGenClassicCommand extends Command {
 			memberName: 'meme-gen-classic',
 			description: 'Sends a meme with the text and background of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

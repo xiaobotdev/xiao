@@ -12,7 +12,7 @@ module.exports = class ChocolateMilkCommand extends Command {
 			memberName: 'chocolate-milk',
 			description: 'Draws a user\'s avatar holding chocolate milk.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

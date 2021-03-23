@@ -12,7 +12,7 @@ module.exports = class DearLiberalsCommand extends Command {
 			memberName: 'dear-liberals',
 			description: 'Sends a "Dear Liberals" meme with words of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
