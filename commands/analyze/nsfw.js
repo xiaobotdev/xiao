@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { stripIndents } = require('common-tags');
 const { isImageNSFW } = require('../../util/Util');
 
 module.exports = class NsfwCommand extends Command {
@@ -27,9 +28,12 @@ module.exports = class NsfwCommand extends Command {
 	async run(msg, { image }) {
 		try {
 			const { body } = await request.get(image);
-			const prediction = await isImageNSFW(this.client.nsfwModel, body, false);
-			const prob = Math.round(prediction.probability * 100);
-			return msg.reply(`I'm **${prob}%** sure this image is: **${prediction.className}**.`);
+			const predictions = await isImageNSFW(this.client.nsfwModel, body, false);
+			const formatted = predictions.map(result => `${Math.round(result.probability * 100)}% ${result.className}`);
+			return msg.reply(stripIndents`
+				**This image gives the following results:**
+				${formatted.join('\n')}
+			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
