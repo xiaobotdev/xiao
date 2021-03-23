@@ -11,7 +11,7 @@ module.exports = class JeopardyQuestionCommand extends Command {
 			memberName: 'jeopardy-question',
 			description: 'Sends a Jeopardy Question with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

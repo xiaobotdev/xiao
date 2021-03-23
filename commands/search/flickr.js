@@ -11,7 +11,7 @@ module.exports = class FlickrCommand extends Command {
 			memberName: 'flickr',
 			description: 'Searches Flickr for your query.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			credit: [

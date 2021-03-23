@@ -13,7 +13,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			memberName: 'steam-now-playing',
 			description: 'Draws a user\'s avatar over a Steam "now playing" notification.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

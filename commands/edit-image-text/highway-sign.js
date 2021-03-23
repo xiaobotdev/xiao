@@ -12,7 +12,7 @@ module.exports = class HighwaySignCommand extends Command {
 			memberName: 'highway-sign',
 			description: 'Sends a highway sign sign with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

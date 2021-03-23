@@ -12,7 +12,7 @@ module.exports = class DrakepostingCommand extends Command {
 			memberName: 'drakeposting',
 			description: 'Sends a "Drakeposting" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

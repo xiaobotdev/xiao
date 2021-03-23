@@ -13,7 +13,7 @@ module.exports = class IFearNoManCommand extends Command {
 			memberName: 'i-fear-no-man',
 			description: 'Sends a "I fear no man" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

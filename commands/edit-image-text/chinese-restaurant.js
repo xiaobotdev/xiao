@@ -12,7 +12,7 @@ module.exports = class ChineseRestaurantCommand extends Command {
 			memberName: 'chinese-restaurant',
 			description: 'Sends a Chinese restaurant sign with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

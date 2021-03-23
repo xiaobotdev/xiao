@@ -12,7 +12,7 @@ module.exports = class OcrCommand extends Command {
 			memberName: 'ocr',
 			description: 'Performs Optical Character Recognition on an image.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 60
 			},
 			args: [

@@ -11,7 +11,7 @@ module.exports = class SepiaCommand extends Command {
 			memberName: 'sepia',
 			description: 'Draws an image or a user\'s avatar in sepia.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

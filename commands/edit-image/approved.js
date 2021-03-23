@@ -13,7 +13,7 @@ module.exports = class ApprovedCommand extends Command {
 			memberName: 'approved',
 			description: 'Draws an "approved" stamp over an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

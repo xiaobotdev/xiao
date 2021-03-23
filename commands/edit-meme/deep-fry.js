@@ -11,7 +11,7 @@ module.exports = class DeepFryCommand extends Command {
 			memberName: 'deep-fry',
 			description: 'Draws an image or a user\'s avatar but deep-fried.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

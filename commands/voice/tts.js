@@ -15,7 +15,7 @@ module.exports = class TtsCommand extends Command {
 			description: 'Say the text you provide in the accent you choose.',
 			guildOnly: true,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],

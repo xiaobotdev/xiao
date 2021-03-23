@@ -16,7 +16,7 @@ module.exports = class FireCommand extends Command {
 			memberName: 'fire',
 			description: 'Burns a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],

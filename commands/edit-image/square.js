@@ -10,7 +10,7 @@ module.exports = class SquareCommand extends Command {
 			memberName: 'square',
 			description: 'Draws an image or a user\'s avatar as a square.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -11,7 +11,7 @@ module.exports = class CircleCommand extends Command {
 			memberName: 'circle',
 			description: 'Draws an image or a user\'s avatar as a circle.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

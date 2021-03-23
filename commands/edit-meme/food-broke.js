@@ -13,7 +13,7 @@ module.exports = class FoodBrokeCommand extends Command {
 			memberName: 'food-broke',
 			description: 'Draws a user\'s avatar over the "Food Broke" meme.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

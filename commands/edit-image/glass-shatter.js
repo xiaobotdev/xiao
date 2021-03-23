@@ -12,7 +12,7 @@ module.exports = class GlassShatterCommand extends Command {
 			memberName: 'glass-shatter',
 			description: 'Draws an image or a user\'s avatar with a glass shatter in front of it.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -11,7 +11,7 @@ module.exports = class DistortCommand extends Command {
 			memberName: 'distort',
 			description: 'Draws an image or a user\'s avatar but distorted.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

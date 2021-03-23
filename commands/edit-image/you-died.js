@@ -13,7 +13,7 @@ module.exports = class YouDiedCommand extends Command {
 			memberName: 'you-died',
 			description: 'Sends a "You Died" screen over an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

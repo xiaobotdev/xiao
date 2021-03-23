@@ -13,7 +13,7 @@ module.exports = class ThugLifeCommand extends Command {
 			memberName: 'thug-life',
 			description: 'Draws "Thug Life" over an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

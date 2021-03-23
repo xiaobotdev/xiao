@@ -12,7 +12,7 @@ module.exports = class SonicSaysCommand extends Command {
 			memberName: 'sonic-says',
 			description: 'Sends a "Sonic Says" meme with the quote of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

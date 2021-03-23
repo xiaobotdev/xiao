@@ -12,7 +12,7 @@ module.exports = class MirrorCommand extends Command {
 			memberName: 'mirror',
 			description: 'Draws an image or a user\'s avatar but mirrored on the X/Y axis (or both).',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -13,7 +13,7 @@ module.exports = class HearingTestCommand extends Command {
 			memberName: 'hearing-test',
 			description: 'Test your hearing.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			guildOnly: true,

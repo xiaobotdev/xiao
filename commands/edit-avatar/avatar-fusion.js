@@ -11,7 +11,7 @@ module.exports = class AvatarFusionCommand extends Command {
 			memberName: 'avatar-fusion',
 			description: 'Draws a a user\'s avatar over a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

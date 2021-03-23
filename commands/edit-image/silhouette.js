@@ -11,7 +11,7 @@ module.exports = class SilhouetteCommand extends Command {
 			memberName: 'silhouette',
 			description: 'Draws a silhouette of an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

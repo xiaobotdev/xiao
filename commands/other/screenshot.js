@@ -13,7 +13,7 @@ module.exports = class ScreenshotCommand extends Command {
 			description: 'Takes a screenshot of any webpage.',
 			clientPermissions: ['ATTACH_FILES'],
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			credit: [

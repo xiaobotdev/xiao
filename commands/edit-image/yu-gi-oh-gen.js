@@ -18,7 +18,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 			memberName: 'yu-gi-oh-gen',
 			description: 'Draws an image or a user\'s avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

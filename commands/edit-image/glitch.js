@@ -11,7 +11,7 @@ module.exports = class GlitchCommand extends Command {
 			memberName: 'glitch',
 			description: 'Draws an image or a user\'s avatar but glitched.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

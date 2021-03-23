@@ -12,7 +12,7 @@ module.exports = class DominantColorCommand extends Command {
 			memberName: 'dominant-color',
 			description: 'Determines the dominant color of an image.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			args: [

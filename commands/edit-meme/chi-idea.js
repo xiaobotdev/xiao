@@ -12,7 +12,7 @@ module.exports = class ChiIdeaCommand extends Command {
 			memberName: 'chi-idea',
 			description: 'Sends a "Daddy, I\'ve got an idea!" Takagi-san meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

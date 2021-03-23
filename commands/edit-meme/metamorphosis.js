@@ -13,7 +13,7 @@ module.exports = class MetamorphosisCommand extends Command {
 			memberName: 'metamorphosis',
 			description: 'Sends a "My Metamorphosis Begins" meme with the image and text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

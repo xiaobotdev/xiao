@@ -28,7 +28,7 @@ module.exports = class AceAttorneyCommand extends Command {
 			description: 'Sends a text box from Ace Attorney with the quote and character of your choice.',
 			details: `**Characters:** ${Object.keys(characters).join(', ')}`,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -13,7 +13,7 @@ module.exports = class WantedCommand extends Command {
 			memberName: 'wanted',
 			description: 'Draws an image or a user\'s avatar over a wanted poster.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

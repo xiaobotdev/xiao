@@ -12,7 +12,7 @@ module.exports = class DemotivationalCommand extends Command {
 			memberName: 'demotivational',
 			description: 'Draws an image or a user\'s avatar and the text you specify as a demotivational poster.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

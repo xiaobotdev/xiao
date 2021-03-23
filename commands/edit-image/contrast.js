@@ -11,7 +11,7 @@ module.exports = class ContrastCommand extends Command {
 			memberName: 'contrast',
 			description: 'Draws an image or a user\'s avatar but with contrast.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

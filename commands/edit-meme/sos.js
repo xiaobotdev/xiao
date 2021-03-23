@@ -11,7 +11,7 @@ module.exports = class SosCommand extends Command {
 			memberName: 'sos',
 			description: 'Sends a "Esther Verkest\'s Help Sign" comic with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

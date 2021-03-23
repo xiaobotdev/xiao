@@ -12,7 +12,7 @@ module.exports = class ChangeMyMindCommand extends Command {
 			memberName: 'change-my-mind',
 			description: 'Sends a "Change My Mind" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

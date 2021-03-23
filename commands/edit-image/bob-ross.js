@@ -13,7 +13,7 @@ module.exports = class BobRossCommand extends Command {
 			memberName: 'bob-ross',
 			description: 'Draws an image or a user\'s avatar over Bob Ross\' canvas.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

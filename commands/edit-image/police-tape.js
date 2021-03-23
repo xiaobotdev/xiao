@@ -13,7 +13,7 @@ module.exports = class PoliceTapeCommand extends Command {
 			memberName: 'police tape',
 			description: 'Draws police tape over an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

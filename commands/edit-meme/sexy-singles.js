@@ -14,7 +14,7 @@ module.exports = class SexySinglesCommand extends Command {
 			description: 'Sends an "Sexy Singles in Your Area" meme with the image of your choice.',
 			nsfw: true,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

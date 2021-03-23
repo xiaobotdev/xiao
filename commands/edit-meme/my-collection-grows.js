@@ -13,7 +13,7 @@ module.exports = class MyCollectionGrowsCommand extends Command {
 			memberName: 'my-collection-grows',
 			description: 'Sends a "My collection grows richer" Nekopara meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

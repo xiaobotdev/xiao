@@ -12,7 +12,7 @@ module.exports = class GreyscaleCommand extends Command {
 			memberName: 'greyscale',
 			description: 'Draws an image or a user\'s avatar in greyscale.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

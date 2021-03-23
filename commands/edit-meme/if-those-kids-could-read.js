@@ -12,7 +12,7 @@ module.exports = class IfThoseKidsCouldReadCommand extends Command {
 			memberName: 'if-those-kids-could-read',
 			description: 'Sends a "If those kids could read, they\'d be very upset" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -12,7 +12,7 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 			memberName: 'spongebob-time-card',
 			description: 'Sends a Spongebob Time Card with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

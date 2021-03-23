@@ -11,7 +11,7 @@ module.exports = class CursedSpongeCommand extends Command {
 			memberName: 'cursed-sponge',
 			description: 'Sends a cursed sponge duplicated however many times you want.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 30
 			},
 			clientPermissions: ['ATTACH_FILES'],

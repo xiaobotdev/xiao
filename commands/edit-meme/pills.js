@@ -12,7 +12,7 @@ module.exports = class PillsCommand extends Command {
 			memberName: 'pills',
 			description: 'Sends a "Hard to Swallow Pills" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

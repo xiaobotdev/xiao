@@ -13,7 +13,7 @@ module.exports = class HeLivesInYouCommand extends Command {
 			memberName: 'he-lives-in-you',
 			description: 'Draws a user\'s avatar over Simba from The Lion King\'s reflection.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

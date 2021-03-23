@@ -11,7 +11,7 @@ module.exports = class AxisCultSignUpCommand extends Command {
 			memberName: 'axis-cult-sign-up',
 			description: 'Sends an Axis Cult Sign-Up sheet for you. Join today!',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

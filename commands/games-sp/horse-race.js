@@ -16,7 +16,7 @@ module.exports = class HorseRaceCommand extends Command {
 			memberName: 'horse-race',
 			description: 'Bet on the fastest horse in a 6-horse race.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

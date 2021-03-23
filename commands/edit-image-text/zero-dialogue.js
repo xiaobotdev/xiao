@@ -24,7 +24,7 @@ module.exports = class ZeroDialogueCommand extends Command {
 			memberName: 'zero-dialogue',
 			description: 'Sends a text box from Megaman Zero with the quote of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -13,7 +13,7 @@ module.exports = class EyesCommand extends Command {
 			memberName: 'eyes',
 			description: 'Draws emoji eyes onto the faces in an image.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 60
 			},
 			credit: [

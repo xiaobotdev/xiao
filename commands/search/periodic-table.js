@@ -12,7 +12,7 @@ module.exports = class PeriodicTableCommand extends Command {
 			memberName: 'periodic-table',
 			description: 'Finds an element on the periodic table.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

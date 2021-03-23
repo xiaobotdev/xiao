@@ -12,7 +12,7 @@ module.exports = class NewPasswordCommand extends Command {
 			memberName: 'new-password',
 			description: 'Sends a "Weak Password/Strong Password" meme with the passwords of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

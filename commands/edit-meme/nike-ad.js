@@ -13,7 +13,7 @@ module.exports = class NikeAdCommand extends Command {
 			memberName: 'nike-ad',
 			description: 'Sends a "Believe in Something" Nike Ad meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

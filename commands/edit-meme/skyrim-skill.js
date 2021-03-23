@@ -12,7 +12,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 			memberName: 'skyrim-skill',
 			description: 'Sends a "Skyrim Skill" meme with the skill and image of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

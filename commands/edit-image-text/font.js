@@ -11,7 +11,7 @@ module.exports = class FontCommand extends Command {
 			memberName: 'font',
 			description: 'Types text in a specific font.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			args: [

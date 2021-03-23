@@ -13,7 +13,7 @@ module.exports = class CommunistCommand extends Command {
 			memberName: 'communist',
 			description: 'Draws the Communist flag over an image or a user\'s avatar.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

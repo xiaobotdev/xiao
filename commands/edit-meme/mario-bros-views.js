@@ -12,7 +12,7 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			memberName: 'mario-bros-views',
 			description: 'Sends a "Mario Bros. Views" meme with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

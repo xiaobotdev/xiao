@@ -11,7 +11,7 @@ module.exports = class TintCommand extends Command {
 			memberName: 'tint',
 			description: 'Draws an image or a user\'s avatar but tinted a specific color.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

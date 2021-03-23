@@ -12,7 +12,7 @@ module.exports = class BrazzersCommand extends Command {
 			description: 'Draws an image with the Brazzers logo in the corner.',
 			nsfw: true,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

@@ -13,7 +13,7 @@ module.exports = class WildPokemonCommand extends Command {
 			memberName: 'wild-pokemon',
 			description: 'Draws an image or a user\'s avatar over a wild Pokémon appearance.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

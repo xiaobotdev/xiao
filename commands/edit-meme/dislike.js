@@ -12,7 +12,7 @@ module.exports = class DislikeCommand extends Command {
 			memberName: 'dislike',
 			description: 'Sends an "Everyone Disliked That" meme with the image of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

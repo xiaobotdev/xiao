@@ -12,7 +12,7 @@ module.exports = class IHaveThePowerCommand extends Command {
 			memberName: 'i-have-the-power',
 			description: 'Draws a user\'s avatar over He-Man\'s face.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

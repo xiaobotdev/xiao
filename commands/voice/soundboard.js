@@ -15,7 +15,7 @@ module.exports = class SoundboardCommand extends Command {
 			details: `**Sounds:** ${soundsChoice.join(', ')}`,
 			guildOnly: true,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],

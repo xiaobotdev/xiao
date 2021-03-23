@@ -10,7 +10,7 @@ module.exports = class PruneCommand extends Command {
 			description: 'Deletes up to 99 messages from the current channel.',
 			guildOnly: true,
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['READ_MESSAGE_HISTORY', 'MANAGE_MESSAGES'],

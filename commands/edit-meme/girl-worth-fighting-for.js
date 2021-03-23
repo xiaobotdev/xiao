@@ -13,7 +13,7 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 			memberName: 'girl-worth-fighting-for',
 			description: 'Draws an image or a user\'s avatar as the object of Ling\'s affection.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

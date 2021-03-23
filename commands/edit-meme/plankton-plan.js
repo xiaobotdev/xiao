@@ -13,7 +13,7 @@ module.exports = class PlanktonPlanCommand extends Command {
 			memberName: 'plankton-plan',
 			description: 'Sends a Plankton\'s Plan meme with steps of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],

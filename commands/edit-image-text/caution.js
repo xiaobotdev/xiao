@@ -12,7 +12,7 @@ module.exports = class CautionCommand extends Command {
 			memberName: 'caution',
 			description: 'Creates a caution sign with the text of your choice.',
 			throttling: {
-				usages: 1,
+				usages: 2,
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
