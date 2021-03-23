@@ -29,7 +29,9 @@ module.exports = class EmojiCommand extends Command {
 			.addField('❯ Name', emoji.name, true)
 			.addField('❯ ID', emoji.id, true)
 			.addField('❯ Creation Date', moment.utc(emoji.createdAt).format('MM/DD/YYYY h:mm A'), true)
-			.addField('❯ Animated?', emoji.animated ? 'Yes' : 'No', true);
+			.addField('❯ Animated?', emoji.animated ? 'Yes' : 'No', true)
+			.addField('❯ External?', emoji.managed ? 'Yes' : 'No', true)
+			.addField('❯ Added By', emoji.author ? emoji.author.tag : '???', true);
 		return msg.embed(embed);
 	}
 };
