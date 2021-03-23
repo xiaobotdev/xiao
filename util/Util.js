@@ -221,15 +221,16 @@ module.exports = class Util {
 		const img = await tf.node.decodeImage(image, 3);
 		const predictions = await model.classify(img, 2);
 		img.dispose();
-		const results = [];
-		results.push(predictions[0]);
-		for (const result of predictions) {
-			if (result.className === predictions[0].className) continue;
-			if (result.probability >= predictions[0].probability - 0.05) results.push(result);
+		if (bool) {
+			const results = [];
+			results.push(predictions[0]);
+			for (const result of predictions) {
+				if (result.className === predictions[0].className) continue;
+				if (result.probability >= predictions[0].probability - 0.1) results.push(result);
+			}
+			return results.some(result => result.className !== 'Drawing' && result.className !== 'Neutral');
 		}
-		return bool
-			? results.some(result => result.className !== 'Drawing' && result.className !== 'Neutral')
-			: results;
+		return predictions;
 	}
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
