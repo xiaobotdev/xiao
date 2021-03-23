@@ -219,7 +219,7 @@ module.exports = class Util {
 
 	static async isImageNSFW(model, image, bool = true) {
 		const img = await tf.node.decodeImage(image, 3);
-		const predictions = await model.classify(img, 2);
+		const predictions = await model.classify(img);
 		img.dispose();
 		if (bool) {
 			const results = [];
