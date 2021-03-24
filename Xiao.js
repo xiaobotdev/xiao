@@ -74,7 +74,11 @@ client.on('ready', async () => {
 	// Import command-leaderboard.json
 	try {
 		const results = client.importCommandLeaderboard();
-		if (!results) client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
+		if (results) {
+			client.logger.info('[LEADERBOARD] command-leaderboard.json successfully loaded.');
+		} else {
+			client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
+		}
 	} catch (err) {
 		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
 	}
@@ -82,7 +86,11 @@ client.on('ready', async () => {
 	// Import command-last-run.json
 	try {
 		const results = client.importLastRun();
-		if (!results) client.logger.error('[LASTRUN] command-last-run.json is not formatted correctly.');
+		if (results) {
+			client.logger.info('[LASTRUN] command-last-run.json successfully loaded.');
+		} else {
+			client.logger.error('[LASTRUN] command-last-run.json is not formatted correctly.');
+		}
 	} catch (err) {
 		client.logger.error(`[LASTRUN] Could not parse command-last-run.json:\n${err.stack}`);
 	}
@@ -91,11 +99,13 @@ client.on('ready', async () => {
 	client.setInterval(() => {
 		try {
 			client.exportCommandLeaderboard();
+			client.logger.info('[LEADERBOARD] command-leaderboard.json successfully exported.');
 		} catch (err) {
 			client.logger.error(`[LEADERBOARD] Failed to export command-leaderboard.json:\n${err.stack}`);
 		}
 		try {
 			client.exportLastRun();
+			client.logger.info('[LASTRUN] command-last-run.json successfully exported.');
 		} catch (err) {
 			client.logger.error(`[LASTRUN] Failed to export command-last-run.json:\n${err.stack}`);
 		}
@@ -104,7 +114,11 @@ client.on('ready', async () => {
 	// Import blacklist
 	try {
 		const results = client.importBlacklist();
-		if (!results) client.logger.error('[BLACKLIST] blacklist.json is not formatted correctly.');
+		if (results) {
+			client.logger.info('[BLACKLIST] blacklist.json successfully loaded.');
+		} else {
+			client.logger.error('[BLACKLIST] blacklist.json is not formatted correctly.');
+		}
 	} catch (err) {
 		client.logger.error(`[BLACKLIST] Could not parse blacklist.json:\n${err.stack}`);
 	}
@@ -137,13 +151,16 @@ client.on('ready', async () => {
 
 	// Set up existing timers
 	await client.timers.fetchAll();
+	client.logger.info('[TIMERS] All timers imported.');
 
 	// Register all canvas fonts
 	await client.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
+	client.logger.info('[FONTS] All fonts loaded.');
 
 	// Fetch adult site list
 	try {
 		await client.fetchAdultSiteList();
+		client.logger.info('[ADULT SITES] Fetched adult site list.');
 	} catch (err) {
 		client.logger.error(`[ADULT SITES] Failed to fetch list\n${err.stack}`);
 	}
@@ -151,6 +168,7 @@ client.on('ready', async () => {
 	// Fetch NSFW model
 	try {
 		await client.loadNSFWModel();
+		client.logger.info('[NSFW MODEL] Loaded NSFW model.');
 	} catch (err) {
 		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
 	}
