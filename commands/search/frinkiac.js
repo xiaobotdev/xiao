@@ -34,7 +34,7 @@ module.exports = class FrinkiacCommand extends Command {
 			if (!search) return msg.say('Could not find any results.');
 			const data = await this.fetchCaption(search.Episode, search.Timestamp);
 			const time = moment.duration(data.Frame.Timestamp).format();
-			const caption = data.Subtitles.map(sub => sub.Content).join(' ').split(' ');
+			const caption = data.Subtitles.slice(1, 3).map(sub => sub.Content).join(' ').split(' ');
 			let url = `https://frinkiac.com/meme/${data.Frame.Episode}/${data.Frame.Timestamp}.jpg`;
 			const wrapped = [''];
 			let currentLine = 0;
