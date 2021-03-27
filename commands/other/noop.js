@@ -12,6 +12,6 @@ module.exports = class NoopCommand extends Command {
 	}
 
 	run() {
-		return;
+		return; // eslint-disable-line no-useless-return
 	}
 };
