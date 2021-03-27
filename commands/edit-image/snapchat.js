@@ -1,7 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const visualCenter = require('visual-center');
 
 module.exports = class SnapchatCommand extends Command {
 	constructor(client) {
@@ -56,23 +55,12 @@ module.exports = class SnapchatCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(base.height / 24);
 		const barHeight = (base.height / 24) * 2;
-		const { visualTop } = await this.visualCenter(body);
-		const moveCenter = visualTop > 0.5 ? 1 - visualTop - 0.5 : visualTop < 0.5 ? 1 + (visualTop - 0.5) : 1;
-		const barPosition = base.height - (base.height * moveCenter);
+		const barPosition = base.height - (base.height / 3);
 		ctx.globalAlpha = 0.3;
 		ctx.fillStyle = 'black';
 		ctx.fillRect(0, barPosition - barHeight, base.width, barHeight);
 		ctx.globalAlpha = 1;
 		ctx.fillText(text, base.width / 2, (barPosition - barHeight) * 0.4);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'snapchat.png' }] });
-	}
-
-	visualCenter(image) {
-		return new Promise((res, rej) => {
-			visualCenter(image.toString('base64'), (err, data) => {
-				if (err) return rej(err);
-				return res(data);
-			});
-		});
 	}
 };
