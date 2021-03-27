@@ -260,6 +260,7 @@ client.on('guildCreate', async guild => {
 client.on('guildDelete', async guild => {
 	const joinLeaveChannel = await client.fetchJoinLeaveChannel();
 	if (joinLeaveChannel) {
+		const owner = client.users.cache.get(guild.ownerID);
 		const embed = new MessageEmbed()
 			.setColor(0xFF0000)
 			.setThumbnail(guild.iconURL({ format: 'png' }))
@@ -267,7 +268,7 @@ client.on('guildDelete', async guild => {
 			.setFooter(`ID: ${guild.id}`)
 			.setTimestamp()
 			.addField('❯ Members', formatNumber(guild.memberCount))
-			.addField('❯ Owner', guild.ownerID);
+			.addField('❯ Owner', owner ? owner.tag : guild.ownerID);
 		await joinLeaveChannel.send({ embed });
 	}
 });
