@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "134.2.0",
+	"version": "134.3.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -79,6 +79,7 @@
 		"tictactoe-minimax-ai": "^1.2.1",
 		"user-agents": "^1.0.602",
 		"valid-url": "^1.0.9",
+		"visual-center": "^0.1.1",
 		"wavefile": "^11.0.0",
 		"winston": "^3.3.3",
 		"ytdl-core": "^4.5.0"

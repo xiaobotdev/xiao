@@ -5,7 +5,6 @@ module.exports = class SnapcodeCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'snapcode',
-			aliases: ['snapchat'],
 			group: 'edit-image',
 			memberName: 'snapcode',
 			description: 'Responds with the Snapcode of a Snapchat user.',
