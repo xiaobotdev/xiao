@@ -52,7 +52,6 @@ module.exports = class SnapchatCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
-		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(base.height / 24);
 		const barHeight = (base.height / 24) * 2;
 		const barPosition = base.height - (base.height / 3);
