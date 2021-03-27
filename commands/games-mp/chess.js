@@ -191,9 +191,7 @@ module.exports = class ChessCommand extends Command {
 						const pawnMoved = gameState.pieces[choice[0]].toUpperCase() === 'P';
 						game.move(choice[0], choice[1]);
 						if (pawnMoved && choice[1].endsWith(gameState.turn === 'white' ? '8' : '1')) {
-							game.board.configuration.pieces[choice[1]] = gameState.turn === 'white'
-								? choice[2]
-								: choice[2].toLowerCase();
+							game.setPiece(choice[1], gameState.turn === 'white' ? choice[2] : choice[2].toLowerCase());
 						}
 					}
 					const timeTaken = new Date() - now;
