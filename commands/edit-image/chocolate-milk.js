@@ -8,9 +8,9 @@ module.exports = class ChocolateMilkCommand extends Command {
 		super(client, {
 			name: 'chocolate-milk',
 			aliases: ['milk', 'sip-milk', 'sip-chocolate-milk', 'choccy', 'sip-choccy'],
-			group: 'edit-avatar',
+			group: 'edit-image',
 			memberName: 'chocolate-milk',
-			description: 'Draws a user\'s avatar holding chocolate milk.',
+			description: 'Draws an image or user\'s avatar holding chocolate milk.',
 			throttling: {
 				usages: 2,
 				duration: 10
@@ -18,10 +18,10 @@ module.exports = class ChocolateMilkCommand extends Command {
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
-					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
-					type: 'user',
-					default: msg => msg.author
+					key: 'image',
+					prompt: 'What image would you like to edit?',
+					type: 'image-or-avatar',
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 })
 				},
 				{
 					key: 'direction',
@@ -35,23 +35,26 @@ module.exports = class ChocolateMilkCommand extends Command {
 		});
 	}
 
-	async run(msg, { user, direction }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+	async run(msg, { image, direction }) {
 		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'chocolate-milk.png'));
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
+			const overlay = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'chocolate-milk.png'));
+			const { body } = await request.get(image);
+			const base = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
+			const scaleH = overlay.width / base.width;
+			const height = Math.round(base.height * scaleH);
 			const ctx = canvas.getContext('2d');
-			ctx.fillRect(0, 0, base.width, base.height);
+			ctx.fillRect(0, 0, overlay.width, overlay.height);
 			if (direction === 'right') {
-				ctx.translate(base.width, 0);
+				ctx.translate(overlay.width, 0);
 				ctx.scale(-1, 1);
 			}
-			ctx.drawImage(avatar, 0, 0, 512, 512);
+			ctx.drawImage(base, 0, 0, overlay.width, height);
 			if (direction === 'right') ctx.setTransform(1, 0, 0, 1, 0, 0);
-			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'chocolate-milk.png' }] });
+			ctx.drawImage(overlay, 0, 0);
+			const attachment = canvas.toBuffer();
+			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+			return msg.say({ files: [{ attachment, name: 'chocolate-milk.png' }] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
