@@ -21,4 +21,3 @@ tf_models/
 *.traineddata
 
 # In-Development Commands
-commands/edit-image/vintage.js
