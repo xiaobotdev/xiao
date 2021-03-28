@@ -55,7 +55,6 @@ module.exports = class Pokemon {
 		this.encounters = data.missingno ? data.encounters : null;
 		this.height = data.missingno ? data.height : null;
 		this.weight = data.missingno ? data.weight : null;
-		this.rawMoveSet = null;
 		this.moveSet = data.missingno ? data.moveSet : [];
 		this.moveSetVersion = data.missingno ? data.moveSetVersion : null;
 		this.trainerCardID = null;
@@ -190,7 +189,6 @@ module.exports = class Pokemon {
 		}
 		this.gameDataFetching = true;
 		await this.fetchDefaultVariety();
-		await this.fetchMoves(this.rawMoveSet);
 		await this.fetchHeldItemNames();
 		await this.fetchOtherVarieties();
 		await this.fetchChain();
@@ -224,7 +222,7 @@ module.exports = class Pokemon {
 		this.height = defaultBody.height * 3.94;
 		this.weight = defaultBody.weight * 0.2205;
 		this.encountersURL = defaultBody.location_area_encounters;
-		this.rawMoveSet = defaultBody.moves;
+		await this.fetchMoves(defaultBody.moves);
 		await this.fetchHeldItems(defaultBody.held_items);
 		return this;
 	}
