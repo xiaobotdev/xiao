@@ -3,29 +3,13 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { wrapText } = require('../../util/Canvas');
 
-module.exports = class MemeGenModernCommand extends Command {
+module.exports = class ReactionMemeCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'meme-gen-modern',
-			aliases: [
-				'meme-gen',
-				'meme-generator',
-				'create-meme',
-				'meme-generator-modern',
-				'create-meme-modern',
-				'meme-gen-m',
-				'modern-meme-gen',
-				'modern-meme-generator',
-				'create-modern-meme',
-				'm-meme-gen',
-				'm-meme-generator',
-				'create-m-meme',
-				'mgm',
-				'mg',
-				'reaction-meme'
-			],
+			name: 'reaction-meme',
+			aliases: ['meme-gen-modern', 'mgm'],
 			group: 'edit-meme',
-			memberName: 'meme-gen-modern',
+			memberName: 'reaction-meme',
 			description: 'Sends a meme with the text and image of your choice.',
 			throttling: {
 				usages: 2,

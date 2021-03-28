@@ -3,22 +3,11 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { wrapText } = require('../../util/Canvas');
 
-module.exports = class MemeGenClassicCommand extends Command {
+module.exports = class MemeGenCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'meme-gen-classic',
-			aliases: [
-				'meme-generator-classic',
-				'create-meme-classic',
-				'meme-gen-c',
-				'classic-meme-gen',
-				'classic-meme-generator',
-				'create-classic-meme',
-				'c-meme-gen',
-				'c-meme-generator',
-				'create-c-meme',
-				'mgc'
-			],
+			name: 'meme-gen',
+			aliases: ['meme-generator', 'gen-meme', 'mg', 'mgc'],
 			group: 'edit-meme',
 			memberName: 'meme-gen-classic',
 			description: 'Sends a meme with the text and background of your choice.',
