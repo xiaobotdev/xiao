@@ -51,7 +51,11 @@ module.exports = class AnimaleseCommand extends Command {
 				{
 					key: 'text',
 					prompt: 'What text should be said?',
-					type: 'string'
+					type: 'string',
+					validate: text => {
+						if (!this.processScript(text)) return 'This text has no audible characters.';
+						return true;
+					}
 				}
 			]
 		});
@@ -76,7 +80,7 @@ module.exports = class AnimaleseCommand extends Command {
 	}
 
 	animalese(script, pitch) {
-		const processedScript = script.replace(/[^a-z]/gi, ' ').split(' ').map(this.shortenWord).join('');
+		const processedScript = this.processScript(script);
 		const data = [];
 		const sampleFreq = 44100;
 		const libraryLetterSecs = 0.15;
@@ -107,5 +111,9 @@ module.exports = class AnimaleseCommand extends Command {
 			return str[0] + str[str.length - 1];
 		}
 		return str;
+	}
+
+	processScript(str) {
+		return str.replace(/[^a-z]/gi, ' ').split(' ').map(this.shortenWord).join('');
 	}
 };
