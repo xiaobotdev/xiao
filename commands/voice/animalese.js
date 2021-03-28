@@ -107,8 +107,8 @@ module.exports = class AnimaleseCommand extends Command {
 	}
 
 	shortenWord(str) {
-		if (str.length > 1) {
-			return str[0] + str[str.length - 1];
+		if (str.length > 4) {
+			return `${str.charAt(0)}${str.charAt(1)}${str.charAt(str.length - 2)}${str.charAt(str.length - 1)}`;
 		}
 		return str;
 	}
