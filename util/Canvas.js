@@ -137,7 +137,7 @@ module.exports = class CanvasUtil {
 		const outerRadius = width * 0.5;
 		const innerRadius = width * 0.2;
 		const grd = ctx.createRadialGradient(width / 2, height / 2, innerRadius, width / 2, height / 2, outerRadius);
-		for (let i = 0; i <= 1; i += 0.1) {
+		for (let i = 0; i < 1; i += 0.1) {
 			grd.addColorStop(i, `rgba(0, 0, 0, ${i})`);
 		}
 		ctx.fillStyle = grd;
