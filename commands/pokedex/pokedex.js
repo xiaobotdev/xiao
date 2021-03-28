@@ -112,7 +112,7 @@ module.exports = class PokedexCommand extends Command {
 				.addField('❯ Gender Rate', pokemon.genderRate.genderless
 					? 'Genderless'
 					: `♂️ ${pokemon.genderRate.male}% ♀️ ${pokemon.genderRate.female}%`);
-			if (pokemon.cry && !this.client.dispatchers.has(msg.guild.id)) {
+			if (msg.guild && pokemon.cry && !this.client.dispatchers.has(msg.guild.id)) {
 				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
 				if (connection) {
 					const dispatcher = connection.play(pokemon.cry);
