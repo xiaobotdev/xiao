@@ -8,7 +8,7 @@ module.exports = class SipCommand extends Command {
 		super(client, {
 			name: 'sip',
 			aliases: ['tea', 'sip-tea'],
-			group: 'edit-avatar',
+			group: 'edit-image',
 			memberName: 'sip',
 			description: 'Draws a user\'s avatar sipping tea.',
 			throttling: {
@@ -46,7 +46,7 @@ module.exports = class SipCommand extends Command {
 	async run(msg, { image, direction }) {
 		try {
 			const overlay = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'sip.png'));
-			const { body } = await request.get(avatarURL);
+			const { body } = await request.get(image);
 			const base = await loadImage(body);
 			const canvas = createCanvas(base.width, base.height);
 			const scaleH = overlay.width / base.width;
