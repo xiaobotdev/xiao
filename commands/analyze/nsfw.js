@@ -38,7 +38,7 @@ module.exports = class NsfwCommand extends Command {
 			const predictions = await isImageNSFW(this.client.nsfwModel, body, false);
 			const formatted = predictions.map(result => {
 				const percentage = Math.round(result.probability * 100);
-				return `${percentage}% ${displayNames[result.className]}`
+				return `${percentage}% ${displayNames[result.className]}`;
 			});
 			return msg.reply(stripIndents`
 				**This image gives the following results:**
