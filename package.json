@@ -60,6 +60,7 @@
 		"ioredis": "^4.24.5",
 		"js-beautify": "^1.13.5",
 		"js-chess-engine": "^0.11.1",
+		"jszip": "^3.6.0",
 		"kuroshiro": "^1.1.2",
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
 		"mathjs": "^9.3.0",
