@@ -1,6 +1,8 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const JSZip = require('jszip');
+const { reactIfAble } = require('../../util/Util');
+const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class EmojiZipCommand extends Command {
 	constructor(client) {
@@ -21,6 +23,7 @@ module.exports = class EmojiZipCommand extends Command {
 	async run(msg) {
 		const emojis = msg.guild.emojis.cache;
 		if (!emojis.size) return msg.say('This server has no custom emoji.');
+		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 		const zip = new JSZip();
 		await Promise.all(emojis.map(async emoji => {
 			const { body } = await request.get(emoji.url);
@@ -28,6 +31,7 @@ module.exports = class EmojiZipCommand extends Command {
 			zip.file(`${emoji.id}.${format}`, body);
 		}));
 		const zipped = await zip.generateAsync({ type: 'nodebuffer' });
+		await reactIfAble(msg, this.client.user, SUCCESS_EMOJI_ID, '✅');
 		return msg.say({ files: [{ attachment: zipped, name: 'emoji.zip' }] });
 	}
 };
