@@ -2,6 +2,13 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { isImageNSFW } = require('../../util/Util');
+const displayNames = {
+	Drawing: 'SFW (Drawing)',
+	Neutral: 'SFW',
+	Porn: 'NSFW',
+	Hentai: 'NSFW (Drawing)',
+	Sexy: 'Suggestive'
+};
 
 module.exports = class NsfwCommand extends Command {
 	constructor(client) {
@@ -29,7 +36,10 @@ module.exports = class NsfwCommand extends Command {
 		try {
 			const { body } = await request.get(image);
 			const predictions = await isImageNSFW(this.client.nsfwModel, body, false);
-			const formatted = predictions.map(result => `${Math.round(result.probability * 100)}% ${result.className}`);
+			const formatted = predictions.map(result => {
+				const percentage = Math.round(result.probability * 100);
+				return `${percentage}% ${displayNames[result.className]}`
+			});
 			return msg.reply(stripIndents`
 				**This image gives the following results:**
 				${formatted.join('\n')}
