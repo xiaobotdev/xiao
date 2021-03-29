@@ -106,14 +106,7 @@ module.exports = class AnimaleseCommand extends Command {
 		return Buffer.from(wav.toBuffer());
 	}
 
-	shortenWord(str) {
-		if (str.length > 4) {
-			return `${str.charAt(0)}${str.charAt(1)}${str.charAt(str.length - 2)}${str.charAt(str.length - 1)}`;
-		}
-		return str;
-	}
-
 	processScript(str) {
-		return str.replace(/[^a-z]/gi, ' ').split(' ').map(this.shortenWord).join('');
+		return str.replace(/[^a-z]/gi, ' ').split(' ').join('');
 	}
 };
