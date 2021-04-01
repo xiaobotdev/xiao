@@ -41,16 +41,17 @@ module.exports = class Game {
 	}
 
 	playAudio(id) {
-		this.dispatcher = this.connection.play(
+		const dispatcher = this.connection.play(
 			path.join(__dirname, '..', '..', 'assets', 'sounds', 'mafia', `${id}.mp3`), { volume: 2 }
 		);
+		this.client.dispatchers.set(this.channel.guild.id, dispatcher);
 		return new Promise((res, rej) => {
 			this.dispatcher.once('finish', () => {
-				this.dispatcher = null;
+				this.client.dispatchers.delete(this.channel.guild.id);
 				return res(true);
 			});
 			this.dispatcher.once('error', err => {
-				this.dispatcher = null;
+				this.client.dispatchers.delete(this.channel.guild.id);
 				return rej(err);
 			});
 		});
