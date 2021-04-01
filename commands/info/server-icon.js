@@ -1,5 +1,12 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
+const { embedURL } = require('../../util/Util');
+const displayFmts = {
+	jpg: 'JPEG',
+	png: 'PNG',
+	gif: 'GIF',
+	webp: 'WebP'
+};
 
 module.exports = class ServerIconCommand extends Command {
 	constructor(client) {
@@ -14,7 +21,7 @@ module.exports = class ServerIconCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		if (!msg.guild.icon) return msg.reply('This server has no icon.');
 		const formats = ['png', 'jpg', 'webp'];
 		const format = msg.guild.icon && msg.guild.icon.startsWith('a_') ? 'gif' : 'png';
