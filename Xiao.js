@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
+const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE, APRIL_FOOLS } = process.env;
 const path = require('path');
 const { Intents, MessageEmbed } = require('discord.js');
 const Client = require('./structures/Client');
@@ -329,6 +329,14 @@ client.on('commandRun', command => {
 client.dispatcher.addInhibitor(msg => {
 	if (client.blacklist.user.includes(msg.author.id)) return 'blacklisted';
 	if (msg.guild && client.blacklist.guild.includes(msg.guild.id)) return 'blacklisted';
+	return false;
+});
+
+client.dispatcher.addInhibitor(msg => {
+	if (APRIL_FOOLS !== 'true') return false;
+	if (client.isOwner(msg.author)) return false;
+	const random = Math.floor(Math.random() * 2);
+	if (random === 1) return msg.reply('You don\'t command me! Try again some other time!');
 	return false;
 });
 
