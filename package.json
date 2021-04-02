@@ -3,6 +3,7 @@
 	"version": "134.6.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
+	"private": true,
 	"scripts": {
 		"test": "npm run lint",
 		"lint": "eslint . --ext .js --ext .json",
