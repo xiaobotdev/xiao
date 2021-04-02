@@ -16,6 +16,10 @@ owner.
 If a public bot is found using Xiao's code it will be reported to Discord and
 removed.
 
+**Please don't push to the repository.** It will simply be reverted and your
+rights to view it will be removed. Git is a powerful tool, so don't try your
+luck on this one.
+
 ## Installing
 
 ### Before You Begin
