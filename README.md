@@ -40,10 +40,11 @@ luck on this one.
 14. Download [the NSFW model](https://github.com/gantman/nsfw_model) and extract the contents to `<xiao folder>/tf_models/nsfw`.
 15. Download DECTalk and extract it to `<xiao folder>/dectalk`. You will have to find this yourself. You need the files `say.exe`, `dectalk.dll`, and `dtalk_us.dic`.
 16. Run `apt install wine` to install wine.
-17. Run `dpkg --add-architecture i386` to allow installation of `wine32`.
+17. Run `dpkg --add-architecture i386` to allow installation of wine32.
 18. Run `apt update` again.
 19. Run `apt install wine32` to install wine32.
 20. Run `apt install xvfb` to install xvfb.
 21. Run `npm i --production` in the folder you cloned the bot.
-22. Run `npm i -g pm2` to install PM2.
-23. Run `pm2 start Xiao.js --name xiao` to run the bot.
+22. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
+23. Run `npm i -g pm2` to install PM2.
+24. Run `pm2 start Xiao.js --name xiao` to run the bot.
