@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
-const { URL } = require('url');
 const { isImageNSFW, isUrlNSFW } = require('../../util/Util');
 
 module.exports = class ScreenshotCommand extends Command {
