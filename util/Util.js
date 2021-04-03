@@ -222,7 +222,7 @@ module.exports = class Util {
 		}
 		const parsedRedirect = new URL(redirectURL);
 		const { type: reType, domain: reDomain, topLevelDomains: reTop } = parseDomain(parsedRedirect.hostname);
-		if (reType !== ParseResultType.Listsed) return null;
+		if (reType !== ParseResultType.Listed) return null;
 		if (siteList.includes(`${reDomain}.${reTop.join('.')}`)) return true;
 		return false;
 	}
