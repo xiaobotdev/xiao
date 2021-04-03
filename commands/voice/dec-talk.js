@@ -69,16 +69,18 @@ module.exports = class DECTalkCommand extends Command {
 	}
 
 	async tts(id, input) {
-		await writeFile(path.join(__dirname, '..', '..', 'tmp', `${id}.txt`), input);
-		await execAsync(`xvfb-run wine say.exe -w ${id}.wav < ${path.join(__dirname, '..', '..', 'tmp', `${id}.txt`)}`, {
+		const inputFile = path.join(__dirname, '..', '..', 'tmp', `${id}.txt`);
+		await writeFile(inputFile, input);
+		const outputFile = path.join(__dirname, '..', '..', 'tmp', `${id}.wav`);
+		await execAsync(`xvfb-run wine say.exe -w ${outputFile} < ${inputFile}`, {
 			cwd: path.join(__dirname, '..', '..', 'dectalk'),
 			timeout: 30000
 		});
 		let result;
 		try {
-			result = await readFile(path.join(__dirname, '..', '..', 'tmp', `${id}.wav`));
-			await unlink(path.join(__dirname, '..', '..', 'tmp', `${id}.txt`));
-			await unlink(path.join(__dirname, '..', '..', 'tmp', `${id}.wav`));
+			result = await readFile(outputFile);
+			await unlink(inputFile);
+			await unlink(outputFile);
 		} catch {
 			if (!result) result = null;
 		}
