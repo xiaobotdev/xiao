@@ -37,9 +37,10 @@ luck on this one.
 3. [Install ImageMagick](https://imagemagick.org/script/download.php).
 4. [Follow these instructions to install Redis](https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows). Remember to set up a password!
 5. Download [the NSFW model](https://github.com/gantman/nsfw_model) and extract the contents to `<xiao folder>/tf_models/nsfw`.
-6. Run `npm i --production` in the folder you cloned the bot.
-7. Run `npm i -g pm2` to install PM2.
-8. Run `pm2 start Xiao.js --name xiao` to run the bot.
+6. Download DECTalk and extract it to `<xiao folder>/dectalk`. You will have to find this yourself. You need the files `say.exe`, `dectalk.dll`, and `dtalk_us.dic`.
+7. Run `npm i --production` in the folder you cloned the bot.
+8. Run `npm i -g pm2` to install PM2.
+9. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ### Mac
 
@@ -59,6 +60,12 @@ luck on this one.
 8. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04). Remember to set up a password!
 9. Run `apt install libtool` so sodium can compile if necessary. **(Optional)**
 10. Download [the NSFW model](https://github.com/gantman/nsfw_model) and extract the contents to `<xiao folder>/tf_models/nsfw`.
-11. Run `npm i --production` in the folder you cloned the bot.
-12. Run `npm i -g pm2` to install PM2.
-13. Run `pm2 start Xiao.js --name xiao` to run the bot.
+11. Download DECTalk and extract it to `<xiao folder>/dectalk`. You will have to find this yourself. You need the files `say.exe`, `dectalk.dll`, and `dtalk_us.dic`.
+12. Run `apt install wine` to install wine.
+13. Run `dpkg --add-architecture i386` to allow installation of `wine32`.
+14. Run `apt update` again.
+15. Run `apt install wine32` to install wine32.
+16. Run `apt install xvfb` to install xvfb.
+17. Run `npm i --production` in the folder you cloned the bot.
+18. Run `npm i -g pm2` to install PM2.
+19. Run `pm2 start Xiao.js --name xiao` to run the bot.
