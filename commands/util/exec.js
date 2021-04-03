@@ -1,5 +1,7 @@
 const Command = require('../../structures/Command');
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
+const { promisify } = require('util');
+const execAsync = promisify(exec);
 const { stripIndents } = require('common-tags');
 const { XIAO_GITHUB_REPO_USERNAME, XIAO_GITHUB_REPO_NAME, GITHUB_ACCESS_TOKEN } = process.env;
 
@@ -23,12 +25,12 @@ module.exports = class ExecCommand extends Command {
 		});
 	}
 
-	run(msg, { command }) {
+	async run(msg, { command }) {
 		if (command === 'git pull') {
 			const repo = `${XIAO_GITHUB_REPO_USERNAME}/${XIAO_GITHUB_REPO_NAME}`;
 			command = `git pull https://${GITHUB_ACCESS_TOKEN}@github.com/${repo}.git`;
 		}
-		const results = this.exec(command);
+		const results = await this.exec(command);
 		return msg.reply(stripIndents`
 			_${results.err ? 'An error occurred:' : 'Successfully executed.'}_
 			\`\`\`sh
@@ -37,9 +39,9 @@ module.exports = class ExecCommand extends Command {
 		`);
 	}
 
-	exec(command) {
+	async exec(command) {
 		try {
-			const stdout = execSync(command, { timeout: 30000, encoding: 'utf8' });
+			const stdout = await execAsync(command, { timeout: 30000, encoding: 'utf8' });
 			return { err: false, std: stdout.trim() };
 		} catch (err) {
 			return { err: true, std: err.stderr.trim() };

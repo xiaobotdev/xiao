@@ -1,6 +1,10 @@
 const Command = require('../../structures/Command');
-const request = require('node-superfetch');
 const { Readable } = require('stream');
+const { exec } = require('child_process');
+const { promisify } = require('util');
+const execAsync = promisify(exec);
+const { writeFile, unlink, readFile } = require('fs/promises');
+const path = require('path');
 const { reactIfAble } = require('../../util/Util');
 const { LOADING_EMOJI_ID } = process.env;
 
@@ -19,12 +23,6 @@ module.exports = class DECTalkCommand extends Command {
 			},
 			userPermissions: ['CONNECT', 'SPEAK'],
 			credit: [
-				{
-					name: 'calzoneman',
-					url: 'https://github.com/calzoneman',
-					reason: 'API',
-					reasonURL: 'https://github.com/calzoneman/aeiou'
-				},
 				{
 					name: 'Digital Equipment Corporation',
 					url: 'http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm',
@@ -57,9 +55,7 @@ module.exports = class DECTalkCommand extends Command {
 		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
 		try {
 			await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
-			const { body } = await request
-				.get('http://tts.cyzon.us/tts')
-				.query({ text });
+			const body = await this.tts(msg.guild.id, text);
 			const dispatcher = connection.play(Readable.from([body]));
 			this.client.dispatchers.set(msg.guild.id, dispatcher);
 			dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
@@ -70,5 +66,22 @@ module.exports = class DECTalkCommand extends Command {
 			await reactIfAble(msg, this.client.user, '⚠️');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+	}
+
+	async tts(id, input) {
+		await writeFile(path.join(__dirname, '..', '..', 'tmp', `${id}.txt`), input);
+		await execAsync(`xvfb-run wine say.exe -w ${id}.wav < ${path.join(__dirname, '..', '..', 'tmp', `${id}.txt`)}`, {
+			cwd: path.join(__dirname, '..', '..', 'dectalk'),
+			timeout: 30000
+		});
+		let result;
+		try {
+			result = await readFile(path.join(__dirname, '..', '..', 'tmp', `${id}.wav`));
+			await unlink(path.join(__dirname, '..', '..', 'tmp', `${id}.txt`));
+			await unlink(path.join(__dirname, '..', '..', 'tmp', `${id}.wav`));
+		} catch {
+			if (!result) result = null;
+		}
+		return result;
 	}
 };
