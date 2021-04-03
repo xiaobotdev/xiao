@@ -1,5 +1,7 @@
 const crypto = require('crypto');
+const request = require('node-superfetch');
 const tf = require('@tensorflow/tfjs-node');
+const { parseDomain, ParseResultType } = require('parse-domain');
 const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
 const { URL } = require('url');
@@ -206,12 +208,33 @@ module.exports = class Util {
 		return str.replace(/(https?:\/\/\S+)/g, '<$1>');
 	}
 
+	static async isUrlNSFW(uri, siteList) {
+		const parsed = new URL(uri);
+		const { type, domain, topLevelDomains } = parseDomain(parsed.hostname);
+		if (type !== ParseResultType.Listed) return null;
+		if (siteList.includes(`${domain}.${topLevelDomains.join('.')}`)) return true;
+		let redirectURL;
+		try {
+			const { url: redirected } = await request.get(uri);
+			redirectURL = redirected;
+		} catch {
+			return null;
+		}
+		const parsedRedirect = new URL(redirectURL);
+		const { type: reType, domain: reDomain, topLevelDomains: reTop } = parseDomain(parsedRedirect.hostname);
+		if (reType !== ParseResultType.Listsed) return null;
+		if (siteList.includes(`${reDomain}.${reTop.join('.')}`)) return true;
+		return false;
+	}
+
 	static stripNSFWURLs(str, siteList, text = '[redacted nsfw url]') {
 		const uris = str.match(/(https?:\/\/\S+)/g);
 		if (!uris) return str;
 		for (const uri of uris) {
 			const parsed = new URL(uri);
-			if (!siteList.includes(parsed.host)) continue;
+			const { type, domain, topLevelDomains } = parseDomain(parsed.hostname);
+			if (type !== ParseResultType.Listed) continue;
+			if (!siteList.includes(`${domain}.${topLevelDomains.join('.')}`)) continue;
 			str = str.replace(uri, text);
 		}
 		return str;
