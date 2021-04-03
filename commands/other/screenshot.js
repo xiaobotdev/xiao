@@ -36,7 +36,7 @@ module.exports = class ScreenshotCommand extends Command {
 	async run(msg, { url }) {
 		try {
 			if (!msg.channel.nsfw) {
-				const nsfw = await isUrlNSFW(url.href);
+				const nsfw = await isUrlNSFW(url.href, this.client.adultSiteList);
 				if (nsfw === null) return msg.reply('This site did not respond, or sent an error.');
 				if (nsfw) return msg.reply('This site is NSFW.');
 			}
