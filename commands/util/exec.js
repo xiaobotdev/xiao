@@ -40,7 +40,11 @@ module.exports = class ExecCommand extends Command {
 	}
 
 	async exec(command) {
-		const { stdout, stderr } = await execAsync(command, { timeout: 30000, encoding: 'utf8' });
-		return { err: Boolean(stderr), std: stderr ? stderr.trim() : stdout.trim() };
+		try {
+			const { stdout } = await execAsync(command, { timeout: 30000, encoding: 'utf8' });
+			return { err: false, std: stdout.trim() };
+		} catch (err) {
+			return { err: true, std: err.stderr.trim() };
+		}
 	}
 };
