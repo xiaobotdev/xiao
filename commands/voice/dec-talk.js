@@ -78,8 +78,8 @@ module.exports = class DECTalkCommand extends Command {
 		});
 		let result;
 		try {
-			result = await readFile(outputFile);
 			await unlink(inputFile);
+			result = await readFile(outputFile);
 			await unlink(outputFile);
 		} catch {
 			if (!result) result = null;
