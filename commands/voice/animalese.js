@@ -107,6 +107,6 @@ module.exports = class AnimaleseCommand extends Command {
 	}
 
 	processScript(str) {
-		return str.replace(/[^a-z]/gi, ' ').split(' ').join('');
+		return str.replace(/[^a-z]/gi, ' ').trim();
 	}
 };
