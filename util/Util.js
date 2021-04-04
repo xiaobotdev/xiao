@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const request = require('node-superfetch');
+const fs = require('fs');
 const tf = require('@tensorflow/tfjs-node');
 const { parseDomain, ParseResultType } = require('parse-domain');
 const { decode: decodeHTML } = require('html-entities');
@@ -196,6 +197,10 @@ module.exports = class Util {
 
 	static embedURL(title, uri, display) {
 		return `[${title}](${uri.replaceAll(')', '%29')}${display ? ` "${display}"` : ''})`;
+	}
+
+	static checkFileExists(filepath) {
+		return new Promise((res) => fs.access(filepath, fs.constants.F_OK, error => res(!error)));
 	}
 
 	static stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' } = {}) {

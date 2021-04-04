@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE, APRIL_FOOLS } = process.env;
+const { mkdir } = require('fs/promises');
 const path = require('path');
 const { Intents, MessageEmbed } = require('discord.js');
 const Client = require('./structures/Client');
@@ -11,7 +12,7 @@ const client = new Client({
 	partials: ['GUILD_MEMBER'],
 	ws: { intents: [Intents.NON_PRIVILEGED, 'GUILD_MEMBERS'] }
 });
-const { formatNumber } = require('./util/Util');
+const { formatNumber, checkFileExists } = require('./util/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -56,6 +57,12 @@ client.registry
 
 client.on('ready', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
+
+	// Make temp directories
+	const tmpFolderExists = await checkFileExists(path.join(__dirname, 'tmp'));
+	if (!tmpFolderExists) await mkdir(path.join(__dirname, 'tmp'));
+	const decTalkFolderExists = await checkFileExists(path.join(__dirname, 'tmp', 'dec-talk'));
+	if (!decTalkFolderExists) await mkdir(path.join(__dirname, 'tmp', 'dec-talk'));
 
 	// Push client-related activities
 	client.activities.push(
