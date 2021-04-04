@@ -200,7 +200,7 @@ module.exports = class Util {
 	}
 
 	static checkFileExists(filepath) {
-		return new Promise((res) => fs.access(filepath, fs.constants.F_OK, error => res(!error)));
+		return new Promise(res => fs.access(filepath, fs.constants.F_OK, error => res(!error)));
 	}
 
 	static stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' } = {}) {
