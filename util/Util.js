@@ -220,7 +220,7 @@ module.exports = class Util {
 		if (siteList.includes(`${domain}.${topLevelDomains.join('.')}`)) return true;
 		let redirectURL;
 		try {
-			const { url: redirected } = await request.get(uri);
+			const { url: redirected } = await request.get(uri, { noResultData: true });
 			redirectURL = redirected;
 		} catch {
 			return null;
