@@ -44,8 +44,8 @@ module.exports = class StrainCommand extends Command {
 				.setURL(`https://www.leafly.com/strains/${strain.slug}`)
 				.setFooter(strain.subtitle)
 				.addField('❯ Effects', effects.map(effect => effect.name))
-				.addField('❯ Phenotype', data.phenotype, true)
-				.addField('❯ Rating', `${formatNumber(data.averageRating)} ⭐`, true);
+				.addField('❯ Phenotype', strain.phenotype, true)
+				.addField('❯ Rating', `${formatNumber(strain.averageRating)} ⭐`, true);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
