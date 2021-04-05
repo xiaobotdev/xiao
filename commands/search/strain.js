@@ -42,7 +42,7 @@ module.exports = class StrainCommand extends Command {
 				.setThumbnail(strain.nugImage || null)
 				.setDescription(strain.shortDescriptionPlain || 'No description.')
 				.setURL(`https://www.leafly.com/strains/${strain.slug}`)
-				.setFooter(strain.subtitle)
+				.setFooter(strain.subtitle || 'No alternative names.')
 				.addField('❯ Effects', effects.map(effect => effect.name).join(', '))
 				.addField('❯ Phenotype', strain.phenotype, true)
 				.addField('❯ Rating', `${formatNumber(strain.averageRating)} ⭐`, true);
