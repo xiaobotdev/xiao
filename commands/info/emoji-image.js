@@ -1,4 +1,8 @@
 const Command = require('../../structures/Command');
+const { GuildEmoji } = require('discord.js');
+const twemoji = require('twemoji-parser');
+const request = require('node-superfetch');
+const { createCanvas, loadImage } = require('canvas');
 
 module.exports = class EmojiImageCommand extends Command {
 	constructor(client) {
@@ -8,20 +12,30 @@ module.exports = class EmojiImageCommand extends Command {
 			group: 'info',
 			memberName: 'emoji-image',
 			description: 'Responds with an emoji\'s full-scale image.',
-			guildOnly: true,
+			throttling: {
+				usages: 2,
+				duration: 10
+			},
 			clientPermissions: ['ATTACH_FILES'],
 			args: [
 				{
 					key: 'emoji',
 					prompt: 'Which emoji would you like to get the image of?',
-					type: 'custom-emoji',
-					default: msg => msg.guild.emojis.cache.random()
+					type: 'default-emoji|custom-emoji'
 				}
 			]
 		});
 	}
 
-	run(msg, { emoji }) {
-		return msg.say({ files: [emoji.url] });
+	async run(msg, { emoji }) {
+		if (emoji instanceof GuildEmoji) return msg.say({ files: [emoji.url] });
+		const parsed = twemoji.parse(emoji);
+		if (!parsed.length || !parsed[0].url) return msg.reply('This emoji is not yet supported.');
+		const { body } = await request.get(parsed[0].url);
+		const emojiImage = await loadImage(body);
+		const canvas = createCanvas(512, 512);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(emojiImage, 0, 0, 512, 512);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'emoji-image.png' }]});
 	}
 };
