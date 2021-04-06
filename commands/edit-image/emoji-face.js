@@ -64,8 +64,8 @@ module.exports = class EmojiFaceCommand extends Command {
 			for (const face of faces) {
 				const landmarks = face.landmark;
 				const width = landmarks.contour_right1.x - landmarks.contour_left1.x;
-				const ratio = width / danny.width;
-				const height = danny.height * ratio;
+				const ratio = width / emojiImg.width;
+				const height = emojiImg.height * ratio;
 				ctx.drawImage(
 					emojiImg,
 					landmarks.contour_left1.x - (width * 0.25),
