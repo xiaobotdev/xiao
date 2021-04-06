@@ -35,13 +35,14 @@ module.exports = class Covid19Command extends Command {
 	async run(msg, { country }) {
 		try {
 			const data = await this.fetchStats(country);
+			const slug = data.country === 'USA' ? 'us' : data.country.toLowerCase();
 			const embed = new MessageEmbed()
 				.setColor(0xA2D84E)
 				.setAuthor('Worldometers', 'https://i.imgur.com/IoaBMuK.jpg', 'https://www.worldometers.info/coronavirus/')
 				.setTitle(`Stats for ${country === 'all' ? 'The World' : data.country}`)
 				.setURL(country === 'all'
 					? 'https://www.worldometers.info/coronavirus/'
-					: `https://www.worldometers.info/coronavirus/country/${data.countryInfo.iso2}/`)
+					: `https://www.worldometers.info/coronavirus/country/${slug}/`)
 				.setThumbnail(country === 'all' ? null : data.countryInfo.flag || null)
 				.setFooter('Last Updated')
 				.setTimestamp(data.updated)
