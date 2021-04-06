@@ -10,13 +10,13 @@ const displayNames = {
 	Sexy: 'Suggestive'
 };
 
-module.exports = class NsfwCommand extends Command {
+module.exports = class NsfwImageCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'nsfw',
-			aliases: ['nsfw-image', 'nsfw-img', 'img-nsfw', 'image-nsfw'],
+			name: 'nsfw-image',
+			aliases: ['nsfw', 'nsfw-img', 'img-nsfw', 'image-nsfw'],
 			group: 'analyze',
-			memberName: 'nsfw',
+			memberName: 'nsfw-image',
 			description: 'Determines if an image is NSFW.',
 			throttling: {
 				usages: 2,
