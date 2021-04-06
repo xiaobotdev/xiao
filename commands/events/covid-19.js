@@ -35,7 +35,7 @@ module.exports = class Covid19Command extends Command {
 	async run(msg, { country }) {
 		try {
 			const data = await this.fetchStats(country);
-			const slug = data.country === 'USA' ? 'us' : data.country.toLowerCase();
+			const slug = country === 'all' ? null : data.country === 'USA' ? 'us' : data.country.toLowerCase();
 			const embed = new MessageEmbed()
 				.setColor(0xA2D84E)
 				.setAuthor('Worldometers', 'https://i.imgur.com/IoaBMuK.jpg', 'https://www.worldometers.info/coronavirus/')
