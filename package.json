@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "134.8.0",
+	"version": "134.9.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"private": true,
@@ -80,6 +80,7 @@
 		"tesseract.js": "^2.1.4",
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "^1.2.1",
+		"twemoji-parser": "^13.0.0",
 		"user-agents": "^1.0.611",
 		"valid-url": "^1.0.9",
 		"wavefile": "^11.0.0",
