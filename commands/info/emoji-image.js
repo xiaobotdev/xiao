@@ -33,6 +33,10 @@ module.exports = class EmojiImageCommand extends Command {
 		if (!parsed.length || !parsed[0].url) return msg.reply('This emoji is not yet supported.');
 		const { body } = await request.get(parsed[0].url);
 		const emojiImage = await loadImage(body);
+		if (parsed[0].url.endsWith('svg')) {
+			emojiImage.width *= 4;
+			emojiImage.height *= 4;
+		}
 		const canvas = createCanvas(512, 512);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(emojiImage, 0, 0, 512, 512);
