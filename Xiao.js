@@ -36,6 +36,7 @@ client.registry
 		['edit-image', 'Image Manipulation'],
 		['edit-image-text', 'Image Text Manipulation'],
 		['edit-avatar', 'Avatar Manipulation'],
+		['edit-face', 'Face Manipulation'],
 		['edit-meme', 'Meme Generators'],
 		['edit-text', 'Text Manipulation'],
 		['edit-number', 'Number Manipulation'],

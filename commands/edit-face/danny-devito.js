@@ -10,7 +10,7 @@ module.exports = class DannyDevitoCommand extends Command {
 		super(client, {
 			name: 'danny-devito',
 			aliases: ['devito'],
-			group: 'edit-image',
+			group: 'edit-face',
 			memberName: 'danny-devito',
 			description: 'Draws Danny Devito\'s face onto the faces in an image.',
 			throttling: {
