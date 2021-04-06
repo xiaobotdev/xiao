@@ -51,7 +51,7 @@ module.exports = class EmojiFaceCommand extends Command {
 			emojiURL = parsed[0].url;
 		}
 		const emojiData = await request.get(emojiURL);
-		const emojiImg = await loadImage(emojiData);
+		const emojiImg = await loadImage(emojiData.body);
 		const imgData = await request.get(image);
 		try {
 			const faces = await this.detect(imgData);
