@@ -47,7 +47,7 @@ module.exports = class EmojiFaceCommand extends Command {
 			emojiURL = emoji.url;
 		} else {
 			const parsed = twemoji.parse(emoji);
-			if (!parsed.length || !parsed[0] || !parsed[0].url) return msg.reply('This emoji is not yet supported.');
+			if (!parsed.length || !parsed[0].url) return msg.reply('This emoji is not yet supported.');
 			emojiURL = parsed[0].url;
 		}
 		const emojiData = await request.get(emojiURL);
