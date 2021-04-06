@@ -42,7 +42,7 @@ module.exports = class Covid19Command extends Command {
 				.setTitle(`Stats for ${country === 'all' ? 'The World' : data.country}`)
 				.setURL(country === 'all'
 					? 'https://www.worldometers.info/coronavirus/'
-					: `https://www.worldometers.info/coronavirus/country/${slug}/`)
+					: `https://www.worldometers.info/coronavirus/country/${encodeURIComponent(slug)}/`)
 				.setThumbnail(country === 'all' ? null : data.countryInfo.flag || null)
 				.setFooter('Last Updated')
 				.setTimestamp(data.updated)
