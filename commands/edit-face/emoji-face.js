@@ -52,6 +52,10 @@ module.exports = class EmojiFaceCommand extends Command {
 		}
 		const emojiData = await request.get(emojiURL);
 		const emojiImg = await loadImage(emojiData.body);
+		if (emojiURL.endsWith('svg')) {
+			emojiImg.width *= 4;
+			emojiImg.height *= 4;
+		}
 		const imgData = await request.get(image);
 		try {
 			const faces = await this.detect(imgData);
