@@ -49,6 +49,7 @@ module.exports = class PlayCommand extends Command {
 		const data = await ytdl.getInfo(result);
 		const canPlay = this.canUseVideo(data, msg.channel.nsfw || false);
 		if (!canPlay) return msg.say('I cannot play this video.');
+		if (canPlay === 'length') return msg.say('This video is longer than 15 minutes, so I can\'t play it.');
 		await msg.reply('Is this the video you want to play? Type **[y]es** or **[n]o**.', {
 			embed: this.generateEmbed(data)
 		});
@@ -82,6 +83,7 @@ module.exports = class PlayCommand extends Command {
 	canUseVideo(data, nsfw) {
 		if (data.videoDetails.isPrivate || data.videoDetails.isLiveContent) return false;
 		if (data.videoDetails.age_restricted && nsfw) return false;
+		if (Number.parseInt(data.lengthSeconds, 10) > 900) return 'length';
 		return true;
 	}
 
