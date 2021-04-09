@@ -83,7 +83,7 @@ module.exports = class PlayCommand extends Command {
 	canUseVideo(data, nsfw) {
 		if (data.videoDetails.isPrivate || data.videoDetails.isLiveContent) return false;
 		if (data.videoDetails.age_restricted && nsfw) return false;
-		if (Number.parseInt(data.lengthSeconds, 10) > 900) return 'length';
+		if (Number.parseInt(data.videoDetails.lengthSeconds, 10) > 900) return 'length';
 		return true;
 	}
 
