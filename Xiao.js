@@ -13,6 +13,7 @@ const client = new Client({
 	ws: { intents: [Intents.NON_PRIVILEGED, 'GUILD_MEMBERS'] }
 });
 const { formatNumber, checkFileExists } = require('./util/Util');
+const aprilFoolsMsgs = require('./assets/json/april-fools');
 
 client.registry
 	.registerDefaultTypes()
@@ -344,7 +345,7 @@ client.dispatcher.addInhibitor(msg => {
 	if (APRIL_FOOLS !== 'true') return false;
 	if (client.isOwner(msg.author)) return false;
 	const random = Math.floor(Math.random() * 2);
-	if (random === 1) return msg.reply('You don\'t command me! Try again some other time!');
+	if (random === 1) return msg.reply(aprilFoolsMsgs[Math.floor(Math.random() * aprilFoolsMsgs.length)]);
 	return false;
 });
 
