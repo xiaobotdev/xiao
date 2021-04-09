@@ -66,7 +66,7 @@ module.exports = class YuGiOhCommand extends Command {
 						true
 					);
 			}
-			embed.addField('❯ TCGPlayer Price', `$${data.card_prices[0].tcgplayer_price}`)
+			embed.addField('❯ TCGPlayer Price', `$${data.card_prices[0].tcgplayer_price}`);
 			return msg.embed(embed);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
