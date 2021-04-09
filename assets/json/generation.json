@@ -1,18 +1,23 @@
 [
 	{
-		"name": "Gen Z",
-		"start": 1996,
+		"name": "Generation Alpha",
+		"start": 2011,
 		"end": null
 	},
 	{
+		"name": "Generation Z",
+		"start": 1997,
+		"end": 2010
+	},
+	{
 		"name": "Millennials",
-		"start": 1977,
-		"end": 1995
+		"start": 1981,
+		"end": 1996
 	},
 	{
 		"name": "Generation X",
 		"start": 1965,
-		"end": 1976
+		"end": 1980
 	},
 	{
 		"name": "Baby Boomers",
@@ -21,7 +26,22 @@
 	},
 	{
 		"name": "Silent Generation",
-		"start": 1,
+		"start": 1928,
 		"end": 1945
+	},
+	{
+		"name": "Greatest Generation",
+		"start": 1901,
+		"end": 1927
+	},
+	{
+		"name": "Lost Generation",
+		"start": 1883,
+		"end": 1900
+	},
+	{
+		"name": "BG (Before Generations)",
+		"start": 1,
+		"end": 1882
 	}
 ]
