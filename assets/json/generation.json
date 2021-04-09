@@ -1,0 +1,27 @@
+[
+	{
+		"name": "Gen Z",
+		"start": 1996,
+		"end": null
+	},
+	{
+		"name": "Millennials",
+		"start": 1977,
+		"end": 1995
+	},
+	{
+		"name": "Generation X",
+		"start": 1965,
+		"end": 1976
+	},
+	{
+		"name": "Baby Boomers",
+		"start": 1946,
+		"end": 1964
+	},
+	{
+		"name": "Silent Generation",
+		"start": 1,
+		"end": 1945
+	}
+]
