@@ -45,16 +45,16 @@ module.exports = class PlayCommand extends Command {
 		}
 		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
 		const result = await this.searchForVideo(query, msg.channel.nsfw || false);
-		if (!result) return msg.say('Could not find any results for your query.');
+		if (!result) return msg.reply('Could not find any results for your query.');
 		const data = await ytdl.getInfo(result);
 		const canPlay = this.canUseVideo(data, msg.channel.nsfw || false);
-		if (!canPlay) return msg.say('I cannot play this video.');
-		if (canPlay === 'length') return msg.say('This video is longer than 15 minutes, so I can\'t play it.');
+		if (!canPlay) return msg.reply('I cannot play this video.');
+		if (canPlay === 'length') return msg.reply('This video is longer than 15 minutes, so I can\'t play it.');
 		await msg.reply('Is this the video you want to play? Type **[y]es** or **[n]o**.', {
 			embed: this.generateEmbed(data)
 		});
 		const verification = await verify(msg.channel, msg.author);
-		if (!verification) return msg.say('Aborting playback.');
+		if (!verification) return msg.reply('Aborting playback.');
 		const dispatcher = connection.play(ytdl(result, { filter: 'audioonly' }));
 		this.client.dispatchers.set(msg.guild.id, dispatcher);
 		dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
