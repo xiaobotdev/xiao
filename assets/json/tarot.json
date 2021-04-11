@@ -2601,19 +2601,18 @@
 		],
 		"meanings": {
 			"light": [
-				"An unknown factor which cannot be revealed at this time.",
-				"A random element which cannot be controlled.",
-				"A wild card that represents the unforseeable in any circumstance.",
-				"An irony.",
-				"That which is vague and mysterious."
+				"An unknown factor which cannot be revealed at this time",
+				"A random element which cannot be controlled",
+				"A wild card that represents the unforseeable in any circumstance",
+				"An irony",
+				"That which is vague and mysterious"
 			],
 			"shadow": [
-				"Be careful what you sow.",
-				"Mindless scurrying might be fun but what about the results?",
-				"Some things are better left buried.",
-				"All that is fuzzy and cute is NOT cuddly.",
-				"Negative energy veiled in a fuzzy suit.",
-				"That which should seem tamable, but isn't."
+				"Be careful what you sow",
+				"Some things are better left buried",
+				"All that is fuzzy and cute is NOT cuddly",
+				"Negative energy veiled in a fuzzy suit",
+				"That which should seem tamable, but isn't"
 			]
 		},
 		"name": "The Happy Squirrel",
