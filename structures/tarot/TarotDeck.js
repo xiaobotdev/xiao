@@ -18,13 +18,13 @@ module.exports = class TarotDeck {
 	}
 
 	draw(amount = 1) {
-		const cards = [];
+		const drawn = [];
 		for (let i = 0; i < amount; i++) {
 			const card = this.deck[0];
 			this.deck.shift();
-			cards.push(card);
+			drawn.push(card);
 		}
-		return amount === 1 ? cards[0] : cards;
+		return amount === 1 ? drawn[0] : drawn;
 	}
 
 	reset() {
