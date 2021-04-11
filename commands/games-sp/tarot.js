@@ -31,7 +31,7 @@ module.exports = class TarotCommand extends Command {
 		try {
 			const deck = new TarotDeck();
 			const cards = deck.draw(3);
-			for (let i = 0; i > cards.length; i++) {
+			for (let i = 0; i < cards.length; i++) {
 				const card = cards[i];
 				await msg.say(stripIndents`
 					Your ${displayNums[i]} card is **${card.name}**.
