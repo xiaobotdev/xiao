@@ -40,7 +40,7 @@ module.exports = class CompanyCommand extends Command {
 			const embed = new MessageEmbed()
 				.setTitle(data.name)
 				.setImage(data.logo)
-				.setFooter('Logos provided by Clearbit')
+				.setFooter(data.dragonFire ? 'Logo by MissPeahen' : 'Logos provided by Clearbit')
 				.setURL(data.domain ? `https://${data.domain}` : null)
 				.setColor(0x00AE86);
 			return msg.embed(embed);
@@ -54,7 +54,8 @@ module.exports = class CompanyCommand extends Command {
 			return {
 				name: 'Dragon Fire',
 				logo: 'https://i.imgur.com/tHxWaoA.png',
-				domain: null
+				domain: null,
+				dragonFire: true
 			};
 		}
 		const { body } = await request
