@@ -2586,5 +2586,38 @@
 		"name": "king of coins",
 		"rank": "king",
 		"suit": "coins"
+	},
+	{
+		"fortune_telling": [
+			"The Happy Squirrel scampers up and down and around the World Tree, careless as can be. What a show off! He makes spiritual travel seem easy!",
+			"There is much to learn from this creature that travels both above and below, who can be fearless, hide in a flash, and even fly at times. Smart enough to prepare for the long dark winter, brave enough to slowly hop into your sight and then freeze and stare at you...as if challenging you to pass or chase."
+		],
+		"keywords": [
+			"caution",
+			"charm",
+			"confidence",
+			"vague",
+			"mysterious"
+		],
+		"meanings": {
+			"light": [
+				"An unknown factor which cannot be revealed at this time.",
+				"A random element which cannot be controlled.",
+				"A wild card that represents the unforseeable in any circumstance.",
+				"An irony.",
+				"That which is vague and mysterious."
+			],
+			"shadow": [
+				"Be careful what you sow.",
+				"Mindless scurrying might be fun but what about the results?",
+				"Some things are better left buried.",
+				"All that is fuzzy and cute is NOT cuddly.",
+				"Negative energy veiled in a fuzzy suit.",
+				"That which should seem tamable, but isn't."
+			]
+		},
+		"name": "The Happy Squirrel",
+		"rank": 23,
+		"suit": "major"
 	}
 ]
