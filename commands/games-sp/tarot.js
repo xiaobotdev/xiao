@@ -13,6 +13,32 @@ module.exports = class TarotCommand extends Command {
 			group: 'games-sp',
 			memberName: 'tarot',
 			description: 'Provides a fortune using Tarot cards.',
+			credit: [
+				{
+					name: 'dariusk',
+					url: 'https://github.com/dariusk',
+					reason: 'Tarot Reading Data',
+					reasonURL: 'https://github.com/dariusk/corpora/blob/master/data/divination/tarot_interpretations.json'
+				},
+				{
+					name: 'Tarot Card Meanings',
+					url: 'https://www.tarotcardmeanings.net/',
+					reason: 'Images',
+					reasonURL: 'https://www.tarotcardmeanings.net/tarotcards.htm'
+				},
+				{
+					name: 'Ask.Cards',
+					url: 'http://askthecards.info/',
+					reason: '"Happy Squirrel" Card Reading and Image',
+					reasonURL: 'http://askthecards.info/tarot_card_meanings/the_happy_squirrel.shtml'
+				},
+				{
+					name: '20th Century Fox',
+					url: 'https://www.foxmovies.com/',
+					reason: 'Original "The Simpsons" Show, "Happy Squirrel" Concept',
+					reasonURL: 'http://www.simpsonsworld.com/'
+				}
+			],
 			args: [
 				{
 					key: 'question',
