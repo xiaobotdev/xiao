@@ -12,7 +12,7 @@ module.exports = class AvatarCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'avatar',
-			aliases: ['profile-picture', 'profile-pic', 'pfp'],
+			aliases: ['profile-picture', 'profile-pic', 'pfp', 'av'],
 			group: 'info',
 			memberName: 'avatar',
 			description: 'Responds with a user\'s avatar.',
