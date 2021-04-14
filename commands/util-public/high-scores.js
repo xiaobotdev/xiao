@@ -9,7 +9,7 @@ module.exports = class HighScoresCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'high-scores',
-			aliases: ['high-score', 'hs', 'h-score', 'high-s'],
+			aliases: ['high-score', 'hs', 'h-score', 'high-s', 'leaderboard', 'lb'],
 			group: 'util-public',
 			memberName: 'high-scores',
 			description: 'Responds with the high scores the bot has saved.',
