@@ -87,6 +87,7 @@ module.exports = class XiaoClient extends CommandoClient {
 				.set({ Authorization: BOTS_GG_TOKEN })
 				.send({ guildCount: this.guilds.size });
 			this.logger.info('[DISCORDBOTLIST] Posted stats.');
+			return body;
 		} catch (err) {
 			this.logger.error(`[DISCORDBOTLIST] Failed to post stats:\n${err.stack}`);
 			return err;
