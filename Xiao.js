@@ -310,6 +310,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
 		client.dispatchers.delete(oldState.guild.id);
 	} else {
 		const channel = await client.channels.fetch(oldState.channelID);
+		if (!channel) return;
 		if (channel.members.size === 1 && channel.members.has(client.user.id)) {
 			const dispatcher = client.dispatchers.get(oldState.guild.id);
 			if (dispatcher) {
