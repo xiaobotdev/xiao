@@ -66,12 +66,8 @@ module.exports = class XiaoClient extends CommandoClient {
 		try {
 			const { body } = await request
 				.post(`https://discordbotlist.com/api/v1/bots/${this.user.id}/stats`)
-				.set({ Authorization: DISCORDBOTLIST_TOKEN })
-				.send({
-					guilds: this.guilds.size,
-					users: this.users.size,
-					voice_connections: this.dispatchers.size
-				});
+				.set({ Authorization: BOTS_GG_TOKEN })
+				.send({ guildCount: this.guilds.size });
 			this.logger.info('[BOTS.GG] Posted stats.');
 			return body;
 		} catch (err) {
@@ -84,8 +80,12 @@ module.exports = class XiaoClient extends CommandoClient {
 		try {
 			const { body } = await request
 				.post(`https://discord.bots.gg/api/bots/${this.user.id}/stats`)
-				.set({ Authorization: BOTS_GG_TOKEN })
-				.send({ guildCount: this.guilds.size });
+				.set({ Authorization: DISCORDBOTLIST_TOKEN })
+				.send({
+					guilds: this.guilds.size,
+					users: this.users.size,
+					voice_connections: this.dispatchers.size
+				});
 			this.logger.info('[DISCORDBOTLIST] Posted stats.');
 			return body;
 		} catch (err) {
