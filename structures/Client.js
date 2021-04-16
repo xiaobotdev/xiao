@@ -20,6 +20,7 @@ const {
 	XIAO_WEBHOOK_TOKEN,
 	REPORT_CHANNEL_ID,
 	JOIN_LEAVE_CHANNEL_ID,
+	TOP_GG_TOKEN,
 	BOTS_GG_TOKEN,
 	DISCORDBOTLIST_TOKEN
 } = process.env;
@@ -62,7 +63,23 @@ module.exports = class XiaoClient extends CommandoClient {
 		return this.fonts;
 	}
 
+	async postTopGGStats() {
+		if (!TOP_GG_TOKEN) return null;
+		try {
+			const { body } = await request
+				.post(`https://top.gg/api/bots/${this.user.id}/stats`)
+				.set({ Authorization: TOP_GG_TOKEN })
+				.send({ server_count: this.guilds.cache.size });
+			this.logger.info('[TOP.GG] Posted stats.');
+			return body;
+		} catch (err) {
+			this.logger.error(`[TOP.GG] Failed to post stats:\n${err.stack}`);
+			return err;
+		}
+	}
+
 	async postBotsGGStats() {
+		if (!BOTS_GG_TOKEN) return null;
 		try {
 			const { body } = await request
 				.post(`https://discord.bots.gg/api/bots/${this.user.id}/stats`)
@@ -77,6 +94,7 @@ module.exports = class XiaoClient extends CommandoClient {
 	}
 
 	async postDiscordBotListStats() {
+		if (!DISCORDBOTLIST_TOKEN) return null;
 		try {
 			const { body } = await request
 				.post(`https://discordbotlist.com/api/v1/bots/${this.user.id}/stats`)

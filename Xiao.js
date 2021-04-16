@@ -183,9 +183,11 @@ client.on('ready', async () => {
 	}
 
 	// Post bot list stats
+	await client.postTopGGStats();
 	await client.postBotsGGStats();
 	await client.postDiscordBotListStats();
 	setInterval(() => {
+		client.postTopGGStats();
 		client.postBotsGGStats();
 		client.postDiscordBotListStats();
 	}, 1.8e+6);
