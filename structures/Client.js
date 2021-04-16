@@ -65,7 +65,7 @@ module.exports = class XiaoClient extends CommandoClient {
 	async postBotsGGStats() {
 		try {
 			const { body } = await request
-				.post(`https://discordbotlist.com/api/v1/bots/${this.user.id}/stats`)
+				.post(`https://discord.bots.gg/api/bots/${this.user.id}/stats`)
 				.set({ Authorization: BOTS_GG_TOKEN })
 				.send({ guildCount: this.guilds.size });
 			this.logger.info('[BOTS.GG] Posted stats.');
@@ -79,7 +79,7 @@ module.exports = class XiaoClient extends CommandoClient {
 	async postDiscordBotListStats() {
 		try {
 			const { body } = await request
-				.post(`https://discord.bots.gg/api/bots/${this.user.id}/stats`)
+				.post(`https://discordbotlist.com/api/v1/bots/${this.user.id}/stats`)
 				.set({ Authorization: DISCORDBOTLIST_TOKEN })
 				.send({
 					guilds: this.guilds.size,
