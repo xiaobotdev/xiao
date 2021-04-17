@@ -96,13 +96,13 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const answers = [];
 		$(resultText).find('a').each((i, elem) => {
 			const href = `${baseURI}${$(elem).attr('href')}`;
-			answers.push({ href, text: $(elem).text().trim() })
+			answers.push({ href, text: $(elem).text().trim() });
 		});
 		return {
 			question: resultText.text().split('\n')[0],
 			answers,
 			url: `${baseURI}${startURL}`
-		}
+		};
 	}
 
 	async nextQuestion(url, referer) {
@@ -127,12 +127,12 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const answers = [];
 		$(resultText).find('a').each((i, elem) => {
 			const href = `${baseURI}${$(elem).attr('href')}`;
-			answers.push({ href, text: $(elem).text().trim() })
+			answers.push({ href, text: $(elem).text().trim() });
 		});
 		return {
 			question: resultText.text().split('\n')[0],
 			answers,
 			url
-		}
+		};
 	}
 };
