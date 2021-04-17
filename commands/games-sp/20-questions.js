@@ -2,7 +2,8 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
-const baseURI = 'http://y.20q.net';
+const { list } = require('../../util/Util');
+const games = require('../../assets/json/20-questions');
 
 module.exports = class TwentyQuestionsCommand extends Command {
 	constructor(client) {
@@ -18,16 +19,25 @@ module.exports = class TwentyQuestionsCommand extends Command {
 					url: 'http://20q.net/',
 					reason: 'API'
 				}
+			],
+			args: [
+				{
+					key: 'game',
+					prompt: `What game do you want to play? Either ${list(Object.keys(games), 'or')}.`,
+					type: 'string',
+					oneOf: Object.keys(games),
+					parse: game => games[game.toLowerCase()]
+				}
 			]
 		});
 	}
 
-	async run(msg) {
+	async run(msg, { game }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {
-			const startURL = await this.initialize();
-			let question = await this.startGame(startURL);
+			const startURL = await this.initialize(game);
+			let question = await this.startGame(game, startURL);
 			let win = null;
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (win === null) {
@@ -53,7 +63,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 					break;
 				}
 				const answer = question.answers[answers.indexOf(choice)];
-				question = await this.nextQuestion(answer.href, question.url);
+				question = await this.nextQuestion(game, answer.href, question.url);
 				if (typeof question.win !== 'undefined') {
 					win = question.win;
 					break;
@@ -71,20 +81,25 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		}
 	}
 
-	async initialize() {
+	makeBaseURI(game) {
+		if (!game) return 'http://y.20q.net';
+		return `http://${game}.20q.net`;
+	}
+
+	async initialize(game) {
 		const { text } = await request
-			.get(`${baseURI}/gsq-en`)
+			.get(`${this.makeBaseURI(game)}/gsq${game ? '' : '-en'}`)
 			.set({ Referer: 'http://www.20q.net/' });
 		const $ = cheerio.load(text);
 		return $('form').first().attr('action');
 	}
 
-	async startGame(startURL) {
+	async startGame(game, startURL) {
 		const { text } = await request
-			.post(`${baseURI}${startURL}`)
+			.post(`${this.makeBaseURI(game)}${startURL}`)
 			.set({
-				Origin: `${baseURI}/`,
-				Referer: `${baseURI}/gsq-en`
+				Origin: `${this.makeBaseURI(game)}/`,
+				Referer: `${this.makeBaseURI(game)}/gsq${game ? '' : '-en'}`
 			})
 			.attach({
 				submit: '  Play  ',
@@ -95,17 +110,17 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const resultText = $('big').eq(2).children().first();
 		const answers = [];
 		$(resultText).find('a').each((i, elem) => {
-			const href = `${baseURI}${$(elem).attr('href')}`;
+			const href = `${this.makeBaseURI(game)}${$(elem).attr('href')}`;
 			answers.push({ href, text: $(elem).text().trim() });
 		});
 		return {
 			question: resultText.text().split('\n')[0],
 			answers,
-			url: `${baseURI}${startURL}`
+			url: `${this.makeBaseURI(game)}${startURL}`
 		};
 	}
 
-	async nextQuestion(url, referer) {
+	async nextQuestion(game, url, referer) {
 		const { text } = await request
 			.get(url)
 			.set({ Referer: referer });
@@ -126,7 +141,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const resultText = $('big').first().children().first();
 		const answers = [];
 		$(resultText).find('a').each((i, elem) => {
-			const href = `${baseURI}${$(elem).attr('href')}`;
+			const href = `${this.makeBaseURI(game)}${$(elem).attr('href')}`;
 			answers.push({ href, text: $(elem).text().trim() });
 		});
 		return {
