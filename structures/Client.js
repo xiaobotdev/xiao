@@ -120,7 +120,8 @@ module.exports = class XiaoClient extends CommandoClient {
 				.post('https://www.carbonitex.net/discord/data/botdata.php')
 				.send({
 					key: CARBON_TOKEN,
-					servercount: this.guilds.cache.size
+					servercount: this.guilds.cache.size,
+					botid: this.client.user.id
 				});
 			this.logger.info('[CARBON] Posted stats.');
 			return body;
