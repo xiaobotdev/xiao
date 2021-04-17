@@ -107,9 +107,10 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				cctkr: 'US,AR,VI,GB,AF,PL'
 			});
 		const $ = cheerio.load(text);
-		const resultText = $('big').eq(2).children().first();
+		const i = game === 'starwars' || game === 'marvel' ? 5 : 2;
+		const resultText = $('big').eq(i).children().first();
 		const answers = [];
-		$(resultText).find('a').each((i, elem) => {
+		$(resultText).find('a').each((j, elem) => {
 			const href = `${this.makeBaseURI(game)}${$(elem).attr('href')}`;
 			answers.push({ href, text: $(elem).text().trim() });
 		});
