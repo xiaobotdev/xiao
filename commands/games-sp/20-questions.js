@@ -93,14 +93,14 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				cctkr: 'US,AR,VI,GB,AF,PL'
 			});
 		const $ = cheerio.load(text);
-		const text = $('big').eq(2).children().first();
+		const resultText = $('big').eq(2).children().first();
 		const answers = [];
-		$(text).find('a').each((i, elem) => {
+		$(resultText).find('a').each((i, elem) => {
 			const href = `${baseURI}${$(elem).attr('href')}`;
 			answers.push({ href, text: $(elem).text().trim() })
 		});
 		return {
-			question: text.text().split('\n')[0],
+			question: resultText.text().split('\n')[0],
 			answers,
 			url: `${baseURI}${startURL}`
 		}
@@ -124,14 +124,14 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				result: 'I was unable to guess what you were thinking. Nice job!'
 			};
 		}
-		const text = $('big').first().children().first();
+		const resultText = $('big').first().children().first();
 		const answers = [];
-		$(text).find('a').each((i, elem) => {
+		$(resultText).find('a').each((i, elem) => {
 			const href = `${baseURI}${$(elem).attr('href')}`;
 			answers.push({ href, text: $(elem).text().trim() })
 		});
 		return {
-			question: text.text().split('\n')[0],
+			question: resultText.text().split('\n')[0],
 			answers,
 			url: `${baseURI}${startURL}`
 		}
