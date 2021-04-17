@@ -133,7 +133,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		return {
 			question: resultText.text().split('\n')[0],
 			answers,
-			url: `${baseURI}${startURL}`
+			url
 		}
 	}
 };
