@@ -82,7 +82,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		if (!BOTS_GG_TOKEN) return null;
 		try {
 			const { body } = await request
-				.post(`https://discord.bots.gg/api/bots/${this.user.id}/stats`)
+				.post(`https://discord.bots.gg/api/v1/bots/${this.user.id}/stats`)
 				.set({ Authorization: BOTS_GG_TOKEN })
 				.send({ guildCount: this.guilds.cache.size });
 			this.logger.info('[BOTS.GG] Posted stats.');
