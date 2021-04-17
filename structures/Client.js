@@ -22,7 +22,8 @@ const {
 	JOIN_LEAVE_CHANNEL_ID,
 	TOP_GG_TOKEN,
 	BOTS_GG_TOKEN,
-	DISCORDBOTLIST_TOKEN
+	DISCORDBOTLIST_TOKEN,
+	CARBON_TOKEN
 } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
@@ -108,6 +109,23 @@ module.exports = class XiaoClient extends CommandoClient {
 			return body;
 		} catch (err) {
 			this.logger.error(`[DISCORDBOTLIST] Failed to post stats:\n${err.stack}`);
+			return err;
+		}
+	}
+
+	async postCarbonStats() {
+		if (!CARBON_TOKEN) return null;
+		try {
+			const { body } = await request
+				.post('https://www.carbonitex.net/discord/data/botdata.php')
+				.send({
+					key: CARBON_TOKEN,
+					servercount: this.guilds.cache.size
+				});
+			this.logger.info('[CARBON] Posted stats.');
+			return body;
+		} catch (err) {
+			this.logger.error(`[CARBON] Failed to post stats:\n${err.stack}`);
 			return err;
 		}
 	}
