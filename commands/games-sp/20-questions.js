@@ -28,7 +28,6 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		try {
 			const startURL = await this.initialize();
 			let question = await this.startGame(startURL);
-			let referer = question.url;
 			let win = null;
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (win === null) {
@@ -55,7 +54,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				}
 				const answer = question.answers[answers.indexOf(choice)];
 				question = await this.nextQuestion(answer.href, question.url);
-				if (question.win) {
+				if (typeof question.win !== 'undefined') {
 					win = question.win;
 					break;
 				}
