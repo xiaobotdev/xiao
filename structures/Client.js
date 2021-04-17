@@ -121,7 +121,7 @@ module.exports = class XiaoClient extends CommandoClient {
 				.send({
 					key: CARBON_TOKEN,
 					servercount: this.guilds.cache.size,
-					botid: this.client.user.id
+					botid: this.user.id
 				});
 			this.logger.info('[CARBON] Posted stats.');
 			return body;
