@@ -88,7 +88,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 
 	async initialize(game) {
 		const { text } = await request
-			.get(`${this.makeBaseURI(game)}/gsq${game ? '' : '-en'}`)
+			.get(`${this.makeBaseURI(game)}/gs${game ? 'e' : 'q-en'}`)
 			.set({ Referer: 'http://www.20q.net/' });
 		const $ = cheerio.load(text);
 		return $('form').first().attr('action');
@@ -99,7 +99,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			.post(`${this.makeBaseURI(game)}${startURL}`)
 			.set({
 				Origin: `${this.makeBaseURI(game)}/`,
-				Referer: `${this.makeBaseURI(game)}/gsq${game ? '' : '-en'}`
+				Referer: `${this.makeBaseURI(game)}/gs${game ? 'e' : 'q-en'}`
 			})
 			.attach({
 				submit: '  Play  ',
