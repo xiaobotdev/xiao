@@ -204,6 +204,7 @@ module.exports = class Util {
 	}
 
 	static stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' } = {}) {
+		if (!str) return '';
 		if (guild) str = str.replace(inviteRegex, text);
 		if (bot) str = str.replace(botInvRegex, text);
 		return str;
@@ -233,6 +234,7 @@ module.exports = class Util {
 	}
 
 	static stripNSFWURLs(str, siteList, text = '[redacted nsfw url]') {
+		if (!str) return '';
 		const uris = str.match(/(https?:\/\/\S+)/g);
 		if (!uris) return str;
 		for (const uri of uris) {
