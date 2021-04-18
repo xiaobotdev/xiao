@@ -68,7 +68,10 @@ module.exports = class AkinatorCommand extends Command {
 					**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
 					${aki.answers.join(' | ')}${aki.currentStep > 0 ? ` | Back` : ''} | End
 				`);
-				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
+				const filter = res => {
+					const content = res.content.toLowerCase().replace(/’/g, '\'');
+					return res.author.id === msg.author.id && answers.includes(content);
+				};
 				const msgs = await msg.channel.awaitMessages(filter, {
 					max: 1,
 					time: 30000
