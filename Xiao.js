@@ -45,6 +45,7 @@ client.registry
 		['remind', 'Reminders'],
 		['phone', 'Phone'],
 		['code', 'Coding Tools'],
+		['cleverbot', 'Cleverbot'],
 		['other', 'Other'],
 		['roleplay', 'Roleplay']
 	])

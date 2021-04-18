@@ -39,7 +39,7 @@ module.exports = class PortalSendCommand extends Command {
 			channel => channel.guild && channel.topic && channel.topic.includes('<xiao:portal>')
 		);
 		if (msg.guild) channels = channels.filter(channel => !msg.guild.channels.cache.has(channel.id));
-		if (message.toLowerCase() === 'count') {
+		if (message && message.toLowerCase() === 'count') {
 			return msg.say(`**${this.portalEmoji} ${channels.size}** currently open portals.`);
 		}
 		if (!channels.size) return msg.reply('No channels have an open portal...');
