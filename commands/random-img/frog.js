@@ -20,13 +20,9 @@ module.exports = class FrogCommand extends Command {
 		});
 	}
 
-	async run(msg) {
-		try {
-			const chosen = Math.floor(Math.random() * 54) + 1;
-			const str = chosen.toString().padStart(4, '0');
-			return msg.say({ files: [`http://www.allaboutfrogs.org/funstuff/random/${str}.jpg`] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+	run(msg) {
+		const chosen = Math.floor(Math.random() * 54) + 1;
+		const str = chosen.toString().padStart(4, '0');
+		return msg.say({ files: [`http://www.allaboutfrogs.org/funstuff/random/${str}.jpg`] });
 	}
 };
