@@ -77,7 +77,7 @@ module.exports = class TwitchCommand extends Command {
 				grant_type: 'client_credentials'
 			});
 		this.token = body.access_token;
-		setTimeout(() => { this.token = null; }, body.expires_in * 1000);
+		setTimeout(() => { this.token = null; }, body.expires_in);
 		return body;
 	}
 };
