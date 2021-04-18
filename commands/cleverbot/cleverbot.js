@@ -7,7 +7,7 @@ module.exports = class CleverbotCommand extends Command {
 		super(client, {
 			name: 'cleverbot',
 			aliases: ['clevs', 'chat'],
-			group: 'other',
+			group: 'cleverbot',
 			memberName: 'cleverbot',
 			description: 'Starts a Cleverbot conversation.',
 			credit: [
