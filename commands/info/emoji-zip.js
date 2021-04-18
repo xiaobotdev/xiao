@@ -21,8 +21,8 @@ module.exports = class EmojiZipCommand extends Command {
 	}
 
 	async run(msg) {
-		const emojis = msg.guild.emojis.cache;
-		if (!emojis.size) return msg.say('This server has no custom emoji.');
+		if (!msg.guild.emojis.cache.size) return msg.say('This server has no custom emoji.');
+		const emojis = msg.guild.emojis.cache.filter(emoji => !emoji.animated);
 		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 		const zip = new JSZip();
 		await Promise.all(emojis.map(async emoji => {
@@ -32,6 +32,8 @@ module.exports = class EmojiZipCommand extends Command {
 		}));
 		const zipped = await zip.generateAsync({ type: 'nodebuffer' });
 		await reactIfAble(msg, this.client.user, SUCCESS_EMOJI_ID, '✅');
-		return msg.say({ files: [{ attachment: zipped, name: 'emoji.zip' }] });
+		return msg.say('_Note: Due to file size concerns, animated emoji are not included._', {
+			files: [{ attachment: zipped, name: 'emoji.zip' }]
+		});
 	}
 };
