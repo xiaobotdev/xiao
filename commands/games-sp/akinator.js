@@ -81,7 +81,7 @@ module.exports = class AkinatorCommand extends Command {
 					win = 'time';
 					break;
 				}
-				const choice = msgs.first().content.toLowerCase();
+				const choice = msgs.first().content.toLowerCase().replace(/’/g, '\'');
 				if (choice === 'end') {
 					forceGuess = true;
 				} else if (choice === 'back') {
