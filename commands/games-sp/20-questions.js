@@ -72,7 +72,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			if (win === 'time') return msg.say('Game ended due to forfeit.');
 			return msg.say(stripIndents`
-				**${question.win ? 'You won!' : '20Q won!'}**
+				**${question.winText}**
 				${question.result}
 			`);
 		} catch (err) {
@@ -130,13 +130,22 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		if (win === '20Q won!') {
 			return {
 				win: false,
+				winText: win,
 				result: $('big').first().children().first().text()
 			};
 		}
 		if (win === 'You won!') {
 			return {
 				win: true,
+				winText: win,
 				result: 'I was unable to guess what you were thinking. Nice job!'
+			};
+		}
+		if (win === 'You won, but 20Q guessed it eventually') {
+			return {
+				win: true,
+				winText: win,
+				result: $('big').first().children().first().text()
 			};
 		}
 		const resultText = $('big').first().children().first();
