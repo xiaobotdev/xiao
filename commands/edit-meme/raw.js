@@ -43,13 +43,8 @@ module.exports = class RawCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		ctx.font = this.client.fonts.get('wildwordsroman.ttf').toCanvasString(24);
-		let fontSize = 24;
-		while (ctx.measureText(text).width > 168) {
-			fontSize--;
-			ctx.font = this.client.fonts.get('wildwordsroman.ttf').toCanvasString(fontSize);
-		}
-		ctx.fillText(text, 520, 142);
+		ctx.font = this.client.fonts.get('wildwordsroman.ttf').toCanvasString(23);
+		ctx.fillText(text, 520, 145, 165);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'raw.png' }] });
 	}
 };
