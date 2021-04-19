@@ -12,6 +12,6 @@ module.exports = class UserAgentCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.reply(new UserAgent().toString());
+		return msg.say(new UserAgent().toString());
 	}
 };
