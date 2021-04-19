@@ -44,7 +44,7 @@ module.exports = class RawCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('wildwordsroman.ttf').toCanvasString(23);
-		ctx.fillText(text, 520, 145, 165);
+		ctx.fillText(text, 520, 143, 165);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'raw.png' }] });
 	}
 };
