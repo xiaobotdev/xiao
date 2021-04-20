@@ -32,7 +32,7 @@ module.exports = class ColorCommand extends Command {
 		const name = ntc.name(color);
 		ctx.fillStyle = color.toLowerCase();
 		ctx.fillRect(0, 0, 250, 250);
-		return msg.say(`#${color.toUpperCase()} - ${name[1]}`, {
+		return msg.say(`${color.toUpperCase()} - ${name[1]}`, {
 			files: [{ attachment: canvas.toBuffer(), name: 'color.png' }]
 		});
 	}
