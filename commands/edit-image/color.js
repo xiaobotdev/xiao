@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas } = require('canvas');
+const ntc = require('ntcjs');
 
 module.exports = class ColorCommand extends Command {
 	constructor(client) {
@@ -17,9 +18,9 @@ module.exports = class ColorCommand extends Command {
 			args: [
 				{
 					key: 'color',
-					prompt: 'What color do you want to view? This can be #colorcode or a name.',
+					prompt: 'What color do you want to view? This must be a #colorcode.',
 					type: 'string',
-					parse: color => color.toLowerCase()
+					validate: color => /^#[0-9A-F]{6}$/i.test(color)
 				}
 			]
 		});
@@ -28,8 +29,11 @@ module.exports = class ColorCommand extends Command {
 	run(msg, { color }) {
 		const canvas = createCanvas(250, 250);
 		const ctx = canvas.getContext('2d');
-		ctx.fillStyle = color;
+		const name = ntc.name(color);
+		ctx.fillStyle = color.toLowerCase();
 		ctx.fillRect(0, 0, 250, 250);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'color.png' }] });
+		return msg.say(`#${color.toUpperCase()} - ${name[1]}`, {
+			files: [{ attachment: canvas.toBuffer(), name: 'color.png' }]
+		});
 	}
 };
