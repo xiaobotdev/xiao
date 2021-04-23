@@ -34,18 +34,21 @@ module.exports = class BotCommand extends Command {
 		if (!user.bot) return msg.say('This user is not a bot.');
 		try {
 			const { body } = await request.get(`https://discord.bots.gg/api/v1/bots/${user.id}`);
+			const avatar = body.avatarURL === '/img/bot_icon_placeholder.png'
+				? 'https://discord.bots.gg/img/bot_icon_placeholder.png'
+				: body.avatarURL;
 			const embed = new MessageEmbed()
 				.setColor(0x000001)
 				.setTitle(`${body.username} by ${body.owner.username}#${body.owner.discriminator}`)
 				.setDescription(body.shortDescription)
 				.setAuthor('Discord Bots', 'https://i.imgur.com/OhZCqVd.jpg', 'https://discord.bots.gg/')
-				.setThumbnail(body.avatarURL)
+				.setThumbnail(avatar)
 				.setURL(`https://discord.bots.gg/bots/${user.id}`)
 				.setFooter(user.id)
 				.addField('❯ Prefix', body.prefix || '???', true)
 				.addField('❯ Library', body.libraryName || '???', true)
 				.addField('❯ Servers', body.guildCount ? formatNumber(body.guildCount) : '???', true)
-				.addField('❯ Invite', embedURL('Here', body.botInvite), true)
+				.addField('❯ Invite', body.botInvite ? embedURL('Here', body.botInvite) : '???', true)
 				.addField('❯ Server', body.supportInvite ? embedURL('Here', body.supportInvite) : '???', true)
 				.addField('❯ Public List Date', moment.utc(body.addedDate).format('MM/DD/YYYY h:mm A'), true);
 			return msg.embed(embed);
