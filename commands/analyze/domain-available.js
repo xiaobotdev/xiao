@@ -30,7 +30,7 @@ module.exports = class DomainAvailableCommand extends Command {
 	}
 
 	async run(msg, { url }) {
-		const { type, domain, topLevelDomains } = parseDomain(parsed.hostname);
+		const { type, domain, topLevelDomains } = parseDomain(url.hostname);
 		if (type !== ParseResultType.Listed) return msg.reply('This domain is not supported.');
 		try {
 			const { body } = await request
