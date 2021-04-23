@@ -23,7 +23,8 @@ const {
 	TOP_GG_TOKEN,
 	BOTS_GG_TOKEN,
 	DISCORDBOTLIST_TOKEN,
-	CARBON_TOKEN
+	CARBON_TOKEN,
+	BLIST_TOKEN
 } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
@@ -127,6 +128,21 @@ module.exports = class XiaoClient extends CommandoClient {
 			return body;
 		} catch (err) {
 			this.logger.error(`[CARBON] Failed to post stats:\n${err.stack}`);
+			return err;
+		}
+	}
+
+	async postBlistStats() {
+		if (!BLIST_TOKEN) return null;
+		try {
+			const { body } = await request
+				.patch(`https://blist.xyz/api/v2/bot/${this.user.id}/stats/`)
+				.set({ Authorization: BLIST_TOKEN })
+				.send({ server_count: this.guilds.cache.size });
+			this.logger.info('[BLIST] Posted stats.');
+			return body;
+		} catch (err) {
+			this.logger.error(`[BLIST] Failed to post stats:\n${err.stack}`);
 			return err;
 		}
 	}
