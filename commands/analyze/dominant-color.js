@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
+const ntc = require('ntcjs');
 const { rgbToHex } = require('../../util/Util');
 
 module.exports = class DominantColorCommand extends Command {
@@ -36,7 +37,10 @@ module.exports = class DominantColorCommand extends Command {
 			const hexColor = `#${rgbToHex(imgData[0], imgData[1], imgData[2]).padStart(6, '0')}`;
 			ctx.fillStyle = hexColor;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
-			return msg.say(hexColor, { files: [{ attachment: canvas.toBuffer(), name: 'dominant-color.png' }] });
+			const name = ntc.name(hexColor);
+			return msg.say(`${hexColor.toUpperCase()} - ${name}`, {
+				files: [{ attachment: canvas.toBuffer(), name: 'dominant-color.png' }]
+			});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
