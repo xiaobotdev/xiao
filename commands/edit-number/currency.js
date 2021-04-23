@@ -52,7 +52,7 @@ module.exports = class CurrencyCommand extends Command {
 		try {
 			const rate = await this.fetchRate(base, target);
 			const baseName = this.currencies[base];
-			const targetName = this.currencies[target]
+			const targetName = this.currencies[target];
 			return msg.say(`${formatNumber(amount)} ${baseName} is ${formatNumber(amount * rate)} ${targetName}.`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
