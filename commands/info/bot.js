@@ -2,7 +2,7 @@ const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const moment = require('moment');
-const { embedURL } = require('../../util/Util');
+const { embedURL, formatNumber } = require('../../util/Util');
 
 module.exports = class BotCommand extends Command {
 	constructor(client) {
@@ -44,7 +44,7 @@ module.exports = class BotCommand extends Command {
 				.setFooter(user.id)
 				.addField('❯ Prefix', body.prefix || '???', true)
 				.addField('❯ Library', body.libraryName || '???', true)
-				.addField('❯ Servers', body.guildCount || '???', true)
+				.addField('❯ Servers', body.guildCount ? formatNumber(body.guildCount) : '???', true)
 				.addField('❯ Invite', embedURL('Here', body.botInvite), true)
 				.addField('❯ Server', body.supportInvite ? embedURL('Here', body.supportInvite) : '???', true)
 				.addField('❯ Public List Date', moment.utc(body.addedDate).format('MM/DD/YYYY h:mm A'), true);
