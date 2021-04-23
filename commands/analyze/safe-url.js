@@ -23,7 +23,7 @@ module.exports = class SafeUrlCommand extends Command {
 				{
 					key: 'url',
 					prompt: 'What URL do you want to test?',
-					type: 'string'
+					type: 'url'
 				}
 			]
 		});
