@@ -12,9 +12,10 @@ module.exports = class CurrencyCommand extends Command {
 			description: 'Converts currency from one currency to another.',
 			credit: [
 				{
-					name: 'Foreign exchange rates API',
-					url: 'https://exchangeratesapi.io/',
-					reason: 'API'
+					name: 'Fawaz Ahmed',
+					url: 'https://github.com/fawazahmed0',
+					reason: 'API',
+					reasonURL: 'https://github.com/fawazahmed0/currency-api'
 				}
 			],
 			args: [
@@ -28,45 +29,47 @@ module.exports = class CurrencyCommand extends Command {
 					prompt: 'What currency code (e.g. USD) do you want to use as the base?',
 					type: 'string',
 					min: 3,
-					max: 3,
-					parse: base => base.toUpperCase()
+					max: 3
 				},
 				{
 					key: 'target',
 					prompt: 'What currency code (e.g. USD) do you want to convert to?',
 					type: 'string',
 					min: 3,
-					max: 3,
-					parse: target => target.toUpperCase()
+					max: 3
 				}
 			]
 		});
 
-		this.rates = new Map();
+		this.currencies = null;
 	}
 
 	async run(msg, { base, target, amount }) {
+		if (!this.currencies) await this.fetchCurrencies();
+		if (!this.currencies[base]) return msg.say('You provided an invalid base currency code.');
+		if (!this.currencies[target]) return msg.say('You provided an invalid target currency code.');
 		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
 		try {
 			const rate = await this.fetchRate(base, target);
-			return msg.say(`${formatNumber(amount)} ${base} is ${formatNumber(amount * rate)} ${target}.`);
+			const baseName = this.currencies[base];
+			const targetName = this.currencies[target]
+			return msg.say(`${formatNumber(amount)} ${baseName} is ${formatNumber(amount * rate)} ${targetName}.`);
 		} catch (err) {
-			if (err.status === 400) return msg.say('Invalid base/target.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 
-	async fetchRate(base, target) {
-		const query = `${base}-${target}`;
-		if (this.rates.has(query)) return this.rates.get(query);
+	async fetchCurrencies() {
 		const { body } = await request
-			.get('https://api.exchangeratesapi.io/latest')
-			.query({
-				base,
-				symbols: target
-			});
-		this.rates.set(query, body.rates[target]);
-		setTimeout(() => this.rates.delete(query), 1.8e+6);
-		return body.rates[target];
+			.get('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json');
+		this.currencies = body;
+		setTimeout(() => { this.currencies = null; }, 1.8e+6);
+		return this.currencies;
+	}
+
+	async fetchRate(base, target) {
+		const { body } = await request
+			.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${base}/${target}.json`);
+		return body[target];
 	}
 };
