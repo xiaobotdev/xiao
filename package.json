@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "136.3.1",
+	"version": "136.4.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"private": true,
@@ -48,6 +48,7 @@
 		"didyoumean2": "^4.1.0",
 		"discord.js": "^12.5.3",
 		"discord.js-commando": "github:discordjs/Commando",
+		"discord.js-docs": "github:TeeSeal/discord.js-docs",
 		"dotenv": "^8.2.0",
 		"emoji-regex": "^9.2.2",
 		"eslint": "^7.24.0",
