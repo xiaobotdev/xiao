@@ -42,7 +42,7 @@ module.exports = class ClocCommand extends Command {
 				'--exclude-dir=node_modules',
 				'--read-lang-def',
 				path.join(__dirname, '..', '..', 'assets', 'txt', 'txt_definition.txt'),
-				'--force-lang="TXT",txt',
+				'--force-lang=TXT,txt',
 				path.join(__dirname, '..', '..')
 			]
 		);
