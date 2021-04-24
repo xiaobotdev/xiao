@@ -23,6 +23,7 @@ module.exports = class DocstCommand extends Command {
 	async run(msg, { query }) {
 		const doc = await Docs.fetch('stable');
 		const embed = doc.resolveEmbed(query);
+		if (!embed) return msg.say('Could not find any results.');
 		return msg.embed(embed);
 	}
 };
