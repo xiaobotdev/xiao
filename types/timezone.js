@@ -13,8 +13,8 @@ module.exports = class TimezoneType extends ArgumentType {
 		const directZone = moment.tz.zone(value);
 		if (directZone) return true;
 		try {
-			const zipZone = new ZipToTz().full(value);
-			return zipZone;
+			new ZipToTz().full(value);
+			return true;
 		} catch {
 			const cityZone = cityTimezones.lookupViaCity(value);
 			if (cityZone.length) return true;
@@ -28,10 +28,15 @@ module.exports = class TimezoneType extends ArgumentType {
 		value = value.replaceAll(' ', '_').toLowerCase();
 		const directZone = moment.tz.zone(value);
 		if (directZone) return directZone.name;
-		const cityZone = cityTimezones.lookupViaCity(value);
-		if (cityZone.length) return cityZone[0].timezone;
-		const provZone = cityTimezones.findFromCityStateProvince(value);
-		if (provZone.length) return provZone[0].timezone;
+		try {
+			const zipZone = new ZipToTz().full(value);
+			return zipZone;
+		} catch {
+			const cityZone = cityTimezones.lookupViaCity(value);
+			if (cityZone.length) return cityZone[0].timezone;
+			const provZone = cityTimezones.findFromCityStateProvince(value);
+			if (provZone.length) return provZone[0].timezone;
+		}
 		return null;
 	}
 };
