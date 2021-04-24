@@ -5,6 +5,7 @@ const Collection = require('@discordjs/collection');
 const winston = require('winston');
 const fontFinder = require('font-finder');
 const nsfw = require('nsfwjs');
+const moment = require('moment-timezone');
 const fs = require('fs');
 const url = require('url');
 const path = require('path');
@@ -63,6 +64,12 @@ module.exports = class XiaoClient extends CommandoClient {
 			font.register();
 		}
 		return this.fonts;
+	}
+
+	setTimezones() {
+		moment.tz.link('America/Vancouver|Neopia');
+		moment.tz.link('America/Los_Angeles|Discord');
+		moment.tz.link('America/New_York|Dragon');
 	}
 
 	async postTopGGStats() {
