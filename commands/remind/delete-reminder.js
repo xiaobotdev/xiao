@@ -7,14 +7,16 @@ module.exports = class DeleteReminderCommand extends Command {
 			aliases: ['delete-remind', 'delete-timer', 'del-reminder', 'del-remind', 'del-timer'],
 			group: 'remind',
 			memberName: 'delete-reminder',
-			description: 'Deletes your reminder.'
+			description: 'Deletes your reminder(s) set in this channel.'
 		});
 	}
 
 	async run(msg) {
-		const exists = await this.client.timers.exists(msg.channel.id, msg.author.id);
-		if (!exists) return msg.reply('🕰️ You do not have a reminder set in this channel.');
-		await this.client.timers.deleteTimer(msg.channel.id, msg.author.id);
-		return msg.say('🕰️ Your reminder has been deleted.');
+		const found = this.client.timers.findAll(msg.channel.id, msg.author.id);
+		if (!found.size) return msg.reply('🕰️ You do not have a reminder set in this channel.');
+		for (const timer of found.values()) {
+			await timer.delete();
+		}
+		return msg.say('🕰️ Your reminder(s) set in this channel have been deleted.');
 	}
 };
