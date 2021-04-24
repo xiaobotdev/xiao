@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { parseDomain, ParseResultType } = require('parse-domain');
 
 module.exports = class IsItDownCommand extends Command {
 	constructor(client) {
@@ -27,10 +28,12 @@ module.exports = class IsItDownCommand extends Command {
 	}
 
 	async run(msg, { url }) {
+		const { type, domain, topLevelDomains } = parseDomain(url.hostname);
+		if (type !== ParseResultType.Listed) return msg.reply('This domain is not supported.');
 		try {
 			const { text } = await request
 				.post('https://www.isitdownrightnow.com/check.php')
-				.query({ domain: url.host });
+				.query({ domain: `${domain}.${topLevelDomains.join('.')}` });
 			const down = text.includes('div class="statusdown"');
 			if (!down) return msg.reply('👍 This site is up and running.');
 			return msg.reply('👎 Looks like this site is down for everyone...');
