@@ -29,7 +29,7 @@ module.exports = class Timer {
 				await channel.send(`🕰️ <@${this.userID}>, you wanted me to remind you of: **"${this.title}"**.`);
 			} finally {
 				this.client.timers.delete(this.id);
-				await this.client.redis.hdel('timer', id);
+				await this.client.redis.hdel('timer', this.id);
 			}
 		}, time);
 	}
