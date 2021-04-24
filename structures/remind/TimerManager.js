@@ -2,7 +2,9 @@ const Collection = require('@discordjs/collection');
 const Timer = require('./Timer');
 
 module.exports = class TimerManager extends Collection {
-	constructor(client) {
+	constructor(client, options) {
+		super(options);
+
 		Object.defineProperty(this, 'client', { value: client });
 	}
 
