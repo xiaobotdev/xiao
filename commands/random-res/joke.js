@@ -29,7 +29,7 @@ module.exports = class JokeCommand extends Command {
 				.query({ blacklistFlags: blacklist.join(',') });
 			if (body.type === 'twopart') {
 				return msg.say(stripIndents`
-					_${body.setup}_
+					${body.setup}
 					${body.delivery}
 				`);
 			}
