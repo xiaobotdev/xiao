@@ -88,7 +88,8 @@ module.exports = class KinoCommand extends Command {
 
 	async generateStory(file) {
 		const filename = stories.find(story => story.toLowerCase() === file);
-		const story = await readFile(path.join(__dirname, '..', '..', 'assets', 'txt', 'kino', `${filename}.txt`), {
+		const num = stories.indexOf(filename).toString().padStart(2, '0');
+		const story = await readFile(path.join(__dirname, '..', '..', 'assets', 'txt', 'kino', `${num} ${filename}.txt`), {
 			encoding: 'utf8'
 		});
 		const chunks = [];
