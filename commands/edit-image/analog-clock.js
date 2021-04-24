@@ -1,8 +1,6 @@
 const Command = require('../../structures/Command');
 const { createCanvas } = require('canvas');
 const moment = require('moment-timezone');
-const { default: didYouMean, ReturnTypeEnums } = require('didyoumean2');
-const { stripIndents } = require('common-tags');
 const { firstUpperCase } = require('../../util/Util');
 
 module.exports = class AnalogClockCommand extends Command {
@@ -38,22 +36,13 @@ module.exports = class AnalogClockCommand extends Command {
 					key: 'timeZone',
 					label: 'time zone',
 					prompt: 'Which time zone do you want to get the time of?',
-					type: 'string',
-					parse: timeZone => timeZone.replaceAll(' ', '_').toLowerCase()
+					type: 'timezone'
 				}
 			]
 		});
 	}
 
 	run(msg, { timeZone }) {
-		if (!moment.tz.zone(timeZone)) {
-			const results = didYouMean(timeZone, moment.tz.names(), { returnType: ReturnTypeEnums.ALL_SORTED_MATCHES });
-			return msg.reply(stripIndents`
-				Invalid time zone. Refer to <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>.
-
-				${results.length ? `Did You Mean: ${results.slice(0, 5).map(c => `\`${c}\``).join(', ')}` : ''}
-			`);
-		}
 		const time = moment().tz(timeZone);
 		const location = timeZone.split('/');
 		const main = firstUpperCase(location[0], /[_ ]/);
