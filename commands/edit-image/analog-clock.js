@@ -110,7 +110,7 @@ module.exports = class AnalogClockCommand extends Command {
 		ctx.textBaseline = 'middle';
 		ctx.textAlign = 'center';
 		ctx.fillStyle = 'white';
-		ctx.fillText(meridiem, ctx.canvas.width - 100, ctx.canvas.height - 100);
+		ctx.fillText(meridiem, ctx.canvas.width - 75, ctx.canvas.height - 75);
 		return ctx;
 	}
 
