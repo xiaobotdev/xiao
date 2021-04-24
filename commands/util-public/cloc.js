@@ -40,8 +40,8 @@ module.exports = class ClocCommand extends Command {
 			[
 				'--json',
 				'--exclude-dir=node_modules',
-				`--read-lang-def=${path.join(__dirname, '..', '..', 'assets', 'txt', 'txt_definition.txt')}`,
-				'--force-lang="Text File",txt',
+				'--read-lang-def',
+				path.join(__dirname, '..', '..', 'assets', 'txt', 'txt_definition.txt'),
 				path.join(__dirname, '..', '..')
 			]
 		);
