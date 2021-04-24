@@ -8,10 +8,11 @@ module.exports = class UrlType extends ArgumentType {
 	}
 
 	validate(value) {
-		return Boolean(validURL.isWebUri(value));
+		return Boolean(validURL.isWebUri(value) || validURL.isWebUri(`http://${value}`));
 	}
 
 	parse(value) {
+		if (!validURL.isWebUri(value)) return new URL(`http://${value}`);
 		return new URL(value);
 	}
 };
