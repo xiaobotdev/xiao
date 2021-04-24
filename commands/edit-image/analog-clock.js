@@ -55,6 +55,8 @@ module.exports = class AnalogClockCommand extends Command {
 		const parens = sub ? ` (${subMain ? `${sub}, ` : ''}${main})` : '';
 		const canvas = createCanvas(1000, 1000);
 		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = 'black';
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		let radius = canvas.height / 2;
 		ctx.translate(radius, radius);
 		radius = radius * 0.9;
@@ -117,7 +119,7 @@ module.exports = class AnalogClockCommand extends Command {
 		ctx.textBaseline = 'middle';
 		ctx.textAlign = 'center';
 		ctx.fillStyle = 'white';
-		ctx.fillText(meridiem, ctx.canvas.width - 10, ctx.canvas.height - 10);
+		ctx.fillText(meridiem, ctx.canvas.width - 50, ctx.canvas.height - 50);
 		return ctx;
 	}
 
