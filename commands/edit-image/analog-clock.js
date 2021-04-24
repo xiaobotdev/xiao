@@ -60,7 +60,7 @@ module.exports = class AnalogClockCommand extends Command {
 		let radius = canvas.height / 2;
 		this.drawMeridiem(ctx, radius, time.format('A'));
 		ctx.translate(radius, radius);
-		radius = radius * 0.9;
+		radius *= 0.9;
 		this.drawFace(ctx, radius);
 		this.drawNumbers(ctx, radius);
 		this.drawTime(ctx, radius, time);
@@ -74,7 +74,7 @@ module.exports = class AnalogClockCommand extends Command {
 		ctx.arc(0, 0, radius, 0, 2 * Math.PI);
 		ctx.fillStyle = 'white';
 		ctx.fill();
-		let grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+		const grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
 		grad.addColorStop(0, '#333');
 		grad.addColorStop(0.5, 'white');
 		grad.addColorStop(1, '#333');
@@ -115,15 +115,14 @@ module.exports = class AnalogClockCommand extends Command {
 	}
 
 	drawTime(ctx, radius, time) {
-		let hour = time.hours();
+		let hour = time.hours() % 12;
 		let minute = time.minutes();
 		let second = time.seconds();
-		hour = hour % 12;
 		hour = (hour * (Math.PI / 6)) + ((minute * Math.PI) / (6 * 60)) + ((second * Math.PI) / (360 * 60));
 		this.drawHand(ctx, hour, radius * 0.5, radius * 0.07);
 		minute = (minute * (Math.PI / 30)) + ((second * Math.PI) / (30 * 60));
 		this.drawHand(ctx, minute, radius * 0.8, radius * 0.07);
-		second = (second * (Math.PI / 30));
+		second *= Math.PI / 30;
 		this.drawHand(ctx, second, radius * 0.9, radius * 0.02);
 		return ctx;
 	}
