@@ -9,8 +9,7 @@ module.exports = class TimezoneType extends ArgumentType {
 	}
 
 	validate(value) {
-		value = value.replaceAll(' ', '_').toLowerCase();
-		const directZone = moment.tz.zone(value);
+		const directZone = moment.tz.zone(value.replaceAll(' ', '_').toLowerCase());
 		if (directZone) return true;
 		try {
 			new ZipToTz().full(value);
@@ -25,8 +24,7 @@ module.exports = class TimezoneType extends ArgumentType {
 	}
 
 	parse(value) {
-		value = value.replaceAll(' ', '_').toLowerCase();
-		const directZone = moment.tz.zone(value);
+		const directZone = moment.tz.zone(value.replaceAll(' ', '_').toLowerCase());
 		if (directZone) return directZone.name;
 		try {
 			const zipZone = new ZipToTz().full(value);
