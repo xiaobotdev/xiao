@@ -58,11 +58,12 @@ module.exports = class AnalogClockCommand extends Command {
 		ctx.fillStyle = 'black';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		let radius = canvas.height / 2;
+		this.drawMeridiem(ctx, radius, time.format('A'));
 		ctx.translate(radius, radius);
 		radius = radius * 0.9;
 		this.drawFace(ctx, radius);
 		this.drawNumbers(ctx, radius);
-		this.drawTime(ctx, radius, time, time.format('A'));
+		this.drawTime(ctx, radius, time);
 		return msg.say(`${subMain || sub || main}${parens}`, {
 			files: [{ attachment: canvas.toBuffer(), name: 'analog-clock.png' }]
 		});
@@ -104,7 +105,16 @@ module.exports = class AnalogClockCommand extends Command {
 		return ctx;
 	}
 
-	drawTime(ctx, radius, time, meridiem) {
+	drawMeridiem(ctx, radius, meridiem) {
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(radius * 0.15);
+		ctx.textBaseline = 'middle';
+		ctx.textAlign = 'center';
+		ctx.fillStyle = 'white';
+		ctx.fillText(meridiem, ctx.canvas.width - 50, ctx.canvas.height - 50);
+		return ctx;
+	}
+
+	drawTime(ctx, radius, time) {
 		let hour = time.hours();
 		let minute = time.minutes();
 		let second = time.seconds();
@@ -115,11 +125,6 @@ module.exports = class AnalogClockCommand extends Command {
 		this.drawHand(ctx, minute, radius * 0.8, radius * 0.07);
 		second = (second * (Math.PI / 30));
 		this.drawHand(ctx, second, radius * 0.9, radius * 0.02);
-		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(radius * 0.15);
-		ctx.textBaseline = 'middle';
-		ctx.textAlign = 'center';
-		ctx.fillStyle = 'white';
-		ctx.fillText(meridiem, ctx.canvas.width - 50, ctx.canvas.height - 50);
 		return ctx;
 	}
 
