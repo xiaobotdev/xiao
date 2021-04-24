@@ -88,7 +88,8 @@
 		"valid-url": "^1.0.9",
 		"wavefile": "^11.0.0",
 		"winston": "^3.3.3",
-		"ytdl-core": "^4.5.0"
+		"ytdl-core": "^4.5.0",
+		"zip-to-timezone": "^1.1.5"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.3",
