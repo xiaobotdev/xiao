@@ -19,9 +19,9 @@ client.registry
 	.registerDefaultTypes()
 	.registerTypesIn(path.join(__dirname, 'types'))
 	.registerGroups([
+		['util', 'Utility (Owner)'],
 		['util-public', 'Utility'],
 		['util-voice', 'Utility (Voice)'],
-		['util', 'Utility (Owner)'],
 		['info', 'Discord Information'],
 		['random-res', 'Random Response'],
 		['random-img', 'Random Image'],
@@ -32,6 +32,7 @@ client.registry
 		['search', 'Search'],
 		['pokedex', 'Pokédex'],
 		['analyze', 'Analyzers'],
+		['code', 'Programming'],
 		['games-sp', 'Single-Player Games'],
 		['games-mp', 'Multi-Player Games'],
 		['edit-image', 'Image Manipulation'],
@@ -44,10 +45,9 @@ client.registry
 		['voice', 'Play Audio'],
 		['remind', 'Reminders'],
 		['phone', 'Phone'],
-		['code', 'Coding Tools'],
 		['cleverbot', 'Cleverbot'],
-		['other', 'Other'],
-		['roleplay', 'Roleplay']
+		['roleplay', 'Roleplay'],
+		['other', 'Other']
 	])
 	.registerDefaultCommands({
 		help: false,

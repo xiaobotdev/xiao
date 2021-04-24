@@ -7,7 +7,7 @@ module.exports = class ScreenshotCommand extends Command {
 		super(client, {
 			name: 'screenshot',
 			aliases: ['capture', 'ss'],
-			group: 'other',
+			group: 'analyze',
 			memberName: 'screenshot',
 			description: 'Takes a screenshot of any webpage.',
 			clientPermissions: ['ATTACH_FILES'],
