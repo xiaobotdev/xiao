@@ -6,7 +6,7 @@ module.exports = class MDNCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'mdn',
-			group: 'search',
+			group: 'code',
 			memberName: 'mdn',
 			description: 'Searches MDN for your query.',
 			clientPermissions: ['EMBED_LINKS'],
