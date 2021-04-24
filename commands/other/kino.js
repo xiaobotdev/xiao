@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const { readFile } = require('fs/promises');
 const stories = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'txt', 'kino'))
-	.map(story => story.replace('.txt', ''));
+	.map(story => story.slice(3).replace('.txt', ''));
 
 module.exports = class KinoCommand extends Command {
 	constructor(client) {
