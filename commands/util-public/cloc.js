@@ -37,7 +37,12 @@ module.exports = class ClocCommand extends Command {
 		if (this.cache) return this.cache;
 		const { stdout, stderr } = await exec(
 			path.join(__dirname, '..', '..', 'node_modules', '.bin', 'cloc'),
-			['--json', '--exclude-dir=node_modules', path.join(__dirname, '..', '..')]
+			[
+				'--json',
+				'--exclude-dir=node_modules',
+				`--read-lang-def=${path.join(__dirname, '..', '..', 'assets', 'txt', 'txt_definition.txt')}`,
+				path.join(__dirname, '..', '..')
+			]
 		);
 		if (stderr) throw new Error(stderr.trim());
 		this.cache = JSON.parse(stdout.trim());
