@@ -1,41 +1,28 @@
-module.exports = class TimerManager {
+const Collection = require('@discordjs/collection');
+const Timer = require('./Timer');
+
+module.exports = class TimerManager extends Collection {
 	constructor(client) {
 		Object.defineProperty(this, 'client', { value: client });
-
-		this.timeouts = new Map();
 	}
 
 	async fetchAll() {
 		const timers = await this.client.redis.hgetall('timer');
 		for (let data of Object.values(timers)) {
 			data = JSON.parse(data);
-			await this.setTimer(data.channelID, new Date(data.time) - new Date(), data.userID, data.title, false);
+			await this.setTimer(data.id, data.channelID, new Date(data.time) - new Date(), data.userID, data.title, false);
 		}
 		return this;
 	}
 
-	async setTimer(channelID, time, userID, title, updateRedis = true) {
-		const data = { time: new Date(Date.now() + time).toISOString(), channelID, userID, title };
-		const timeout = setTimeout(async () => {
-			try {
-				const channel = await this.client.channels.fetch(channelID);
-				await channel.send(`🕰️ <@${userID}>, you wanted me to remind you of: **"${title}"**.`);
-			} finally {
-				await this.client.redis.hdel('timer', `${channelID}-${userID}`);
-			}
-		}, time);
-		if (updateRedis) await this.client.redis.hset('timer', { [`${channelID}-${userID}`]: JSON.stringify(data) });
-		this.timeouts.set(`${channelID}-${userID}`, timeout);
-		return timeout;
+	async setTimer(id, channelID, time, userID, title, updateRedis = true) {
+		const timer = new Timer(this.client, id, channelID, userID, time, title);
+		if (updateRedis) await this.client.redis.hset('timer', { [timer.id]: timer.stringify() });
+		this.set(timer.id, timer);
+		return timer;
 	}
 
-	deleteTimer(channelID, userID) {
-		clearTimeout(this.timeouts.get(`${channelID}-${userID}`));
-		this.timeouts.delete(`${channelID}-${userID}`);
-		return this.client.redis.hdel('timer', `${channelID}-${userID}`);
-	}
-
-	exists(channelID, userID) {
-		return this.client.redis.hexists('timer', `${channelID}-${userID}`);
+	findAll(channelID, userID) {
+		return this.filter(timer => timer.channelID === channelID && timer.userID === userID);
 	}
 };
