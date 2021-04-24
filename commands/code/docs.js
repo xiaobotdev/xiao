@@ -6,7 +6,7 @@ module.exports = class DocstCommand extends Command {
 		super(client, {
 			name: 'docs',
 			aliases: ['discord-js-docs', 'discord-js', 'djs', 'djs-docs'],
-			group: 'search',
+			group: 'code',
 			memberName: 'docs',
 			description: 'Searches the discord.js docs for your query.',
 			clientPermissions: ['EMBED_LINKS'],
