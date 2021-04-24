@@ -1,5 +1,6 @@
 const { ArgumentType } = require('discord.js-commando');
 const cityTimezones = require('city-timezones');
+const { ZipToTz } = require('zip-to-timezone');
 const moment = require('moment-timezone');
 
 module.exports = class TimezoneType extends ArgumentType {
@@ -11,10 +12,15 @@ module.exports = class TimezoneType extends ArgumentType {
 		value = value.replaceAll(' ', '_').toLowerCase();
 		const directZone = moment.tz.zone(value);
 		if (directZone) return true;
-		const cityZone = cityTimezones.lookupViaCity(value);
-		if (cityZone.length) return true;
-		const provZone = cityTimezones.findFromCityStateProvince(value);
-		if (provZone.length) return true;
+		try {
+			const zipZone = new ZipToTz().full(value);
+			return zipZone;
+		} catch {
+			const cityZone = cityTimezones.lookupViaCity(value);
+			if (cityZone.length) return true;
+			const provZone = cityTimezones.findFromCityStateProvince(value);
+			if (provZone.length) return true;
+		}
 		return false;
 	}
 
