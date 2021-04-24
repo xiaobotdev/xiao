@@ -1,4 +1,4 @@
-Text File
+TXT
     filter remove_matches .*
     extension txt
     3rd_gen_scale 1.00
