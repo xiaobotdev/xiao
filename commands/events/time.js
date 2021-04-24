@@ -1,5 +1,7 @@
 const Command = require('../../structures/Command');
 const moment = require('moment-timezone');
+const { default: didYouMean, ReturnTypeEnums } = require('didyoumean2');
+const { stripIndents } = require('common-tags');
 const { firstUpperCase } = require('../../util/Util');
 
 module.exports = class TimeCommand extends Command {
@@ -38,7 +40,12 @@ module.exports = class TimeCommand extends Command {
 
 	run(msg, { timeZone }) {
 		if (!moment.tz.zone(timeZone)) {
-			return msg.reply('Invalid time zone. Refer to <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>.');
+			const results = didYouMean(timeZone, moment.tz.names(), { returnType: ReturnTypeEnums.ALL_SORTED_MATCHES });
+			return msg.reply(stripIndents`
+				Invalid time zone. Refer to <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>.
+
+				${results.length ? `Did You Mean: ${results.slice(0, 5).map(c => `\`${c}\``).join(', ')}` : ''}
+			`);
 		}
 		const time = moment().tz(timeZone).format('h:mm A');
 		const location = timeZone.split('/');
