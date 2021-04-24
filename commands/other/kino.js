@@ -95,7 +95,7 @@ module.exports = class KinoCommand extends Command {
 		const chunks = [];
 		let currentChunk = '';
 		for (const paragraph of story.split('\n\n')) {
-			if (paragraph === '***') {
+			if (paragraph === '***' && currentChunk) {
 				chunks.push(currentChunk);
 				currentChunk = '***\n\n';
 				continue;
