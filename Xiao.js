@@ -160,12 +160,28 @@ client.on('ready', async () => {
 	client.logger.info(`[BLACKLIST] Left ${guildsLeft} guilds owned by blacklisted users.`);
 
 	// Set up existing timers
-	await client.timers.fetchAll();
-	client.logger.info('[TIMERS] All timers imported.');
+	try {
+		await client.timers.fetchAll();
+		client.logger.info('[TIMERS] All timers imported.');
+	} catch (err) {
+		client.logger.error(`[TIMERS] Failed to import timers\n${err.stack}`);
+	}
 
 	// Register all canvas fonts
-	await client.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
-	client.logger.info('[FONTS] All fonts loaded.');
+	try {
+		await client.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
+		client.logger.info('[FONTS] All fonts loaded.');
+	} catch (err) {
+		client.logger.error(`[FONTS] Failed to load fonts\n${err.stack}`);
+	}
+
+	// Set up moment timezones
+	try {
+		client.setTimezones();
+		client.logger.info('[TIMEZONES] Set all custom timezones.');
+	} catch (err) {
+		client.logger.error(`[TIMEZONES] Failed to set timezones\n${err.stack}`);
+	}
 
 	// Fetch adult site list
 	try {

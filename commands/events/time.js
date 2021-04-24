@@ -1,9 +1,6 @@
 const Command = require('../../structures/Command');
 const moment = require('moment-timezone');
 const { firstUpperCase } = require('../../util/Util');
-moment.tz.link('America/Vancouver|Neopia');
-moment.tz.link('America/Los_Angeles|Discord');
-moment.tz.link('America/New_York|Dragon');
 
 module.exports = class TimeCommand extends Command {
 	constructor(client) {
