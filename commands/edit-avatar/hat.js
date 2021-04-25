@@ -2,8 +2,10 @@ const Command = require('../../structures/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
+const fs = require('fs');
 const { list } = require('../../util/Util');
-const hats = require('../../assets/json/hat');
+const hats = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'hat'))
+	.map(hat => hat.replace('.png', ''));
 
 module.exports = class HatCommand extends Command {
 	constructor(client) {
