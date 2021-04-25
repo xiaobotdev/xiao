@@ -45,18 +45,25 @@ module.exports = class KinoCommand extends Command {
 						const num = Number.parseInt(choice, 10);
 						return stories[num].toLowerCase();
 					}
+				},
+				{
+					key: 'page',
+					prompt: 'What page do you want to start from?',
+					type: 'integer',
+					min: 1,
+					default: 1
 				}
 			]
 		});
 	}
 
-	async run(msg, { story }) {
+	async run(msg, { story, page }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const storyData = await this.generateStory(story);
-			let i = 0;
+			let i = page - 1;
 			let end = false;
 			while (!end) {
 				const line = storyData[i];
@@ -73,8 +80,11 @@ module.exports = class KinoCommand extends Command {
 				`);
 				const verification = await verify(msg.channel, msg.author, { time: 300000 });
 				if (!verification) {
-					end = true;
-					break;
+					this.client.games.delete(msg.channel.id);
+					const filename = stories.find(story => story.toLowerCase() === file);
+					const num = stories.indexOf(filename).toString().padStart(2, '0');
+					const usage = this.usage(`${num} ${i}`);
+					return msg.say(`You can resume reading from where you were by using ${usage}.`);
 				}
 				i++;
 			}
