@@ -1,8 +1,8 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
-const { formatNumber } = require('../../util/Util');
-const questions = require('../../assets/json/google-feud');
+const { formatNumber, list } = require('../../util/Util');
+const categories = ['qotd', 'culture', 'people', 'names', 'questions'];
 
 module.exports = class GoogleFeudCommand extends Command {
 	constructor(client) {
@@ -20,25 +20,30 @@ module.exports = class GoogleFeudCommand extends Command {
 				{
 					name: 'Google Feud',
 					url: 'http://www.googlefeud.com/',
-					reason: 'Original Game'
+					reason: 'Question Data, Original Game'
 				}
 			],
 			args: [
 				{
-					key: 'question',
-					prompt: 'What question do you want to use for the game?',
+					key: 'category',
+					prompt: `What category do you want to use for the game? Either ${list(categories, 'or')}.`,
 					type: 'string',
-					default: () => questions[Math.floor(Math.random() * questions.length)]
+					oneOf: categories,
+					parse: category => category.toLowerCase()
 				}
 			]
 		});
+
+		this.questions = null;
 	}
 
-	async run(msg, { question }) {
+	async run(msg, { category }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
+			if (!this.questions) await this.fetchQuestions();
+			const question = this.questions[category][Math.floor(Math.random() * this.questions[category].length)];
 			const suggestions = await this.fetchSuggestions(question);
 			if (!suggestions) return msg.say('Could not find any results.');
 			const display = new Array(suggestions.length).fill('???');
@@ -86,6 +91,15 @@ module.exports = class GoogleFeudCommand extends Command {
 			.filter(suggestion => suggestion.toLowerCase() !== question.toLowerCase());
 		if (!suggestions.length) return null;
 		return suggestions.map(suggestion => suggestion.toLowerCase().replace(question.toLowerCase(), '').trim());
+	}
+
+	async fetchQuestions() {
+		if (this.questions) return this.questions;
+		const { body } = await request.get('https://www.googlefeud.com/autocomplete/js/questions-en.json');
+		const questions = {};
+		for (const category of categories) questions[category] = body[category];
+		this.questions = questions;
+		return this.questions;
 	}
 
 	makeEmbed(question, tries, suggestions, display) {
