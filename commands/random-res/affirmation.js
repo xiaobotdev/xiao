@@ -20,6 +20,6 @@ module.exports = class AffirmationCommand extends Command {
 	}
 
 	run(msg) {
-		return msg.say(`${affirmations[Math.floor(Math.random() * affirmations.length)]}.`);
+		return msg.say(affirmations[Math.floor(Math.random() * affirmations.length)]);
 	}
 };
