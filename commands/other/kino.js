@@ -83,7 +83,7 @@ module.exports = class KinoCommand extends Command {
 					this.client.games.delete(msg.channel.id);
 					const filename = stories.find(sto => sto.toLowerCase() === story);
 					const num = stories.indexOf(filename).toString().padStart(2, '0');
-					const usage = this.usage(`${num} ${i}`);
+					const usage = this.usage(`${num} ${i + 1}`);
 					return msg.say(`You can resume reading from where you were by using ${usage}.`);
 				}
 				i++;
