@@ -81,7 +81,7 @@ module.exports = class KinoCommand extends Command {
 				const verification = await verify(msg.channel, msg.author, { time: 300000 });
 				if (!verification) {
 					this.client.games.delete(msg.channel.id);
-					const filename = stories.find(story => story.toLowerCase() === file);
+					const filename = stories.find(sto => sto.toLowerCase() === story);
 					const num = stories.indexOf(filename).toString().padStart(2, '0');
 					const usage = this.usage(`${num} ${i}`);
 					return msg.say(`You can resume reading from where you were by using ${usage}.`);
