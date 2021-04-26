@@ -15,9 +15,9 @@ module.exports = class TimezoneType extends ArgumentType {
 			new ZipToTz().full(value);
 			return true;
 		} catch {
-			const cityZone = cityTimezones.lookupViaCity(value);
+			const cityZone = cityTimezones.lookupViaCity(value).filter(res => res.timezone);
 			if (cityZone.length) return true;
-			const provZone = cityTimezones.findFromCityStateProvince(value);
+			const provZone = cityTimezones.findFromCityStateProvince(value).filter(res => res.timezone);
 			if (provZone.length) return true;
 		}
 		return false;
@@ -30,9 +30,9 @@ module.exports = class TimezoneType extends ArgumentType {
 			const zipZone = new ZipToTz().full(value);
 			return zipZone;
 		} catch {
-			const cityZone = cityTimezones.lookupViaCity(value);
+			const cityZone = cityTimezones.lookupViaCity(value).filter(res => res.timezone);
 			if (cityZone.length) return cityZone[0].timezone;
-			const provZone = cityTimezones.findFromCityStateProvince(value);
+			const provZone = cityTimezones.findFromCityStateProvince(value).filter(res => res.timezone);
 			if (provZone.length) return provZone[0].timezone;
 		}
 		return null;
