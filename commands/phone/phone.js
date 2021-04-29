@@ -42,7 +42,6 @@ module.exports = class PhoneCommand extends Command {
 		const channels = this.client.channels.cache.filter(channel => channel.guild
 			&& channel.topic
 			&& channel.topic.includes('<xiao:phone>')
-			&& !channel.topic.includes('<xiao:phone:no-random>')
 			&& !this.client.phone.isBlocked(msg.channel, channel, msg.author)
 			&& (msg.guild ? !msg.guild.channels.cache.has(channel.id) : true)
 			&& !this.client.phone.inCall(channel));
