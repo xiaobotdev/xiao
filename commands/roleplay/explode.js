@@ -11,6 +11,7 @@ module.exports = class ExplodeCommand extends ImgurAlbumCommand {
 			description: 'Explodes a user.',
 			clientPermissions: ['ATTACH_FILES'],
 			albumID: EXPLODE_ALBUM_ID,
+			audio: 'explosion.mp3',
 			args: [
 				{
 					key: 'user',
