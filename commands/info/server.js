@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
+const { formatNumber } = require('../../util/Util');
 const filterLevels = {
 	DISABLED: 'Off',
 	MEMBERS_WITHOUT_ROLES: 'No Role',
@@ -36,14 +37,15 @@ module.exports = class ServerCommand extends Command {
 			.addField('❯ ID', msg.guild.id, true)
 			.addField('❯ Creation Date', moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm A'), true)
 			.addField('❯ Owner', msg.guild.owner.user.tag, true)
-			.addField('❯ Boost Count', msg.guild.premiumSubscriptionCount || 0, true)
+			.addField('❯ Boost Count', formatNumber(msg.guild.premiumSubscriptionCount || 0), true)
 			.addField('❯ Boost Tier', msg.guild.premiumTier ? `Tier ${msg.guild.premiumTier}` : 'None', true)
 			.addField('❯ Region', msg.guild.region.toUpperCase(), true)
 			.addField('❯ Explicit Filter', filterLevels[msg.guild.explicitContentFilter], true)
 			.addField('❯ Verification Level', verificationLevels[msg.guild.verificationLevel], true)
-			.addField('❯ Members', msg.guild.memberCount, true)
-			.addField('❯ Roles', msg.guild.roles.cache.size, true)
-			.addField('❯ Channels', msg.guild.channels.cache.filter(channel => channel.type !== 'category').size, true);
+			.addField('❯ Members', formatNumber(msg.guild.memberCount), true)
+			.addField('❯ Roles', formatNumber(msg.guild.roles.cache.size), true)
+			.addField('❯ Channels',
+				formatNumber(msg.guild.channels.cache.filter(channel => channel.type !== 'category').size), true);
 		return msg.embed(embed);
 	}
 };
