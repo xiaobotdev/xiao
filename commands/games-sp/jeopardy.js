@@ -45,7 +45,9 @@ module.exports = class JeopardyCommand extends Command {
 			const question = await this.fetchQuestion();
 			const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
 			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+			let playing = false;
 			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
+				playing = true;
 				const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
 				this.client.dispatchers.set(msg.guild.id, dispatcher);
 				dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
@@ -59,7 +61,7 @@ module.exports = class JeopardyCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			if (connection && connection.dispatcher) connection.dispatcher.end();
+			if (playing) connection.dispatcher.end();
 			const answer = question.answer.replace(/<\/?i>/gi, '*');
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);
