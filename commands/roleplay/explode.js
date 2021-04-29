@@ -12,6 +12,13 @@ module.exports = class ExplodeCommand extends ImgurAlbumCommand {
 			clientPermissions: ['ATTACH_FILES'],
 			albumID: EXPLODE_ALBUM_ID,
 			audio: 'explosion.mp3',
+			credit: [
+				{
+					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
+					url: 'http://konosuba.com/',
+					reason: 'Sound Effect'
+				}
+			],
 			args: [
 				{
 					key: 'user',
