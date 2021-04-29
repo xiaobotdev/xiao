@@ -76,5 +76,6 @@
 	"The `tweet` command uses follower count to calculate realistic average reply, retweet, and like counts based on the user provided.",
 	"The `cleverbot` command adds a use for every message sent to Cleverbot, not just when starting the conversation.",
 	"Xiao will automatically leave a voice channel if she is the only member left in it.",
-	"If you and Xiao are in a voice channel when `explode` is used, audio of Megumin from Konosuba chanting will play."
+	"If you and Xiao are in a voice channel when `explode` is used, audio of Megumin from Konosuba chanting will play.",
+	"In `tarot`, the \"Happy Squirrel\" fake card from The Simpsons is included as a possible card to draw."
 ]
