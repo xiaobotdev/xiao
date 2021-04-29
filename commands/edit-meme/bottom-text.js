@@ -39,6 +39,6 @@ module.exports = class BottomTextCommand extends Command {
 	}
 
 	run(msg, { top, image }) {
-		return this.client.registry.commands.get('meme-gen-classic').run(msg, { top, bottom: 'BOTTOM TEXT', image });
+		return this.client.registry.commands.get('meme-gen').run(msg, { top, bottom: 'BOTTOM TEXT', image });
 	}
 };
