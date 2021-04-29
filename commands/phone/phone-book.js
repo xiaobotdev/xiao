@@ -24,7 +24,7 @@ module.exports = class PhoneBookCommand extends Command {
 			return channel.guild
 				&& channel.topic
 				&& channel.topic.includes('<xiao:phone>')
-				&& !channel.topic.includes('<xiao:phone-book:hide>')
+				&& channel.topic.includes('<xiao:phone-book>')
 				&& (channel.guild.name.toLowerCase().includes(search) || channel.name.includes(search));
 		});
 		if (!channels.size) return msg.reply('Could not find any results.');
