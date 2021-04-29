@@ -12,22 +12,24 @@ module.exports = class PhoneBlockCommand extends Command {
 			guildOnly: true,
 			args: [
 				{
-					key: 'query',
-					prompt: 'What channel would you like to search for?',
+					key: 'id',
+					prompt: 'What is the ID of the channel or user you would like to block?',
 					type: 'string'
 				}
 			]
 		});
 	}
 
-	async run(msg, { query }) {
-		const channels = this.client.channels.cache.filter(channel => {
-			const search = query.toLowerCase();
-			return channel.guild && (channel.name.includes(search) || channel.id === search);
-		});
+	async run(msg, { id }) {
+		let channel;
+		try {
+			channel = await this.client.channels.fetch(id);
+		} catch {
+			channel = null;
+		}
 		let user;
 		try {
-			user = await this.client.users.fetch(query);
+			user = await this.client.users.fetch(id);
 		} catch {
 			user = null;
 		}
@@ -37,9 +39,7 @@ module.exports = class PhoneBlockCommand extends Command {
 				Place \`<xiao:phone:block:${user.id}>\` in this channel's topic
 			`);
 		}
-		if (!channels.size) return msg.reply('Could not find any results.');
-		if (channels.size > 1) return msg.reply(`Found ${channels.size} channels, please be more specific (or use ID).`);
-		const channel = channels.first();
+		if (!channel) return msg.reply('Could not find any results.');
 		return msg.say(stripIndents`
 			__To block **#${channel.name} (${channel.id})**:__
 			Just the channel: Place \`<xiao:phone:block:${channel.id}>\` in this channel's topic

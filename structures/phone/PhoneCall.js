@@ -4,48 +4,41 @@ require('moment-duration-format');
 const { shorten, stripInvites, preventURLEmbeds, stripNSFWURLs, verify } = require('../../util/Util');
 
 module.exports = class PhoneCall {
-	constructor(client, startUser, origin, recipient, adminCall) {
+	constructor(client, startUser, origin, recipient) {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.id = `${origin.guild ? origin.id : startUser.id}:${recipient.id}`;
 		this.origin = origin;
-		this.originDM = !origin.guild;
 		this.recipient = recipient;
 		this.startUser = startUser;
 		this.active = false;
 		this.timeout = null;
-		this.adminCall = adminCall || false;
 		this.cooldown = new Set();
 		this.ratelimitMeters = new Map();
 		this.timeStarted = null;
 	}
 
+	get originDM() {
+		return !this.origin.guild;
+	}
+
 	async start() {
-		if (this.adminCall) {
-			await this.origin.send(`☎️ Admin call started with **${this.recipient.guild.name}**.`);
-			if (this.originDM) {
-				await this.recipient.send(`☎️ An **ADMIN** call from **${this.startUser.tag}'s DMs** has begun.`);
-			} else {
-				await this.recipient.send(`☎️ An **ADMIN** call from **${this.origin.guild.name}** has begun.`);
-			}
+		await this.origin.send(`☎️ Calling **${this.recipient.guild.name} (${this.recipient.id})**...`);
+		if (this.recipient.topic && this.recipient.topic.includes('<xiao:phone:auto-accept>')) {
+			await this.accept();
+			return this;
+		}
+		if (this.originDM) {
+			await this.recipient.send(
+				`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.startUser.id})**. Pick up?`
+			);
 		} else {
-			await this.origin.send(`☎️ Calling **${this.recipient.guild.name} (${this.recipient.id})**...`);
-			if (this.recipient.topic && this.recipient.topic.includes('<xiao:phone:auto-accept>')) {
-				await this.accept();
-				return this;
-			}
-			if (this.originDM) {
-				await this.recipient.send(
-					`☎️ Incoming call from **${this.startUser.tag}'s DM (${this.startUser.id})**. Pick up?`
-				);
-			} else {
-				await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name} (${this.origin.id})**. Pick up?`);
-			}
-			const validation = await verify(this.recipient, null);
-			if (!validation) {
-				await this.hangup('declined', validation);
-				return this;
-			}
+			await this.recipient.send(`☎️ Incoming call from **${this.origin.guild.name} (${this.origin.id})**. Pick up?`);
+		}
+		const validation = await verify(this.recipient, null);
+		if (!validation) {
+			await this.hangup('declined', validation);
+			return this;
 		}
 		await this.accept();
 		return this;
@@ -55,7 +48,6 @@ module.exports = class PhoneCall {
 		this.active = true;
 		this.timeStarted = new Date();
 		this.setTimeout();
-		if (this.adminCall) return this;
 		const usage = this.client.registry.commands.get('hang-up').usage();
 		if (this.originDM || (this.origin.topic && !this.origin.topic.includes('<xiao:phone:no-notice>'))) {
 			await this.sendNotice(this.origin, this.originDM);
