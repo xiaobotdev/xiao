@@ -22,6 +22,7 @@ module.exports = class MafiaCommand extends Command {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
+		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
 		for (const member of connection.channel.members.values()) await msg.guild.members.fetch(member.id);
 		if (connection.channel.members.size > 16) {
 			return msg.reply('Please do not have more than 15 users in this voice channel.');

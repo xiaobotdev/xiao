@@ -1,5 +1,7 @@
 const request = require('node-superfetch');
 const Command = require('../Command');
+const path = require('path');
+const { reactIfAble } = require('../../util/Util');
 const { IMGUR_KEY } = process.env;
 
 module.exports = class ImgurAlbumCommand extends Command {
@@ -14,11 +16,20 @@ module.exports = class ImgurAlbumCommand extends Command {
 			reason: 'API',
 			reasonURL: 'https://apidocs.imgur.com/'
 		});
-		this.noImage = info.noImage || false;
+		this.audio = info.audio || null;
 	}
 
 	async run(msg, { user }) {
-		if (this.noImage) return msg.say(this.generateText(msg, user));
+		if (this.audio) {
+			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
+				const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', this.audio));
+				this.client.dispatchers.set(msg.guild.id, dispatcher);
+				dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
+				dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
+				await reactIfAble(msg, this.client.user, '🔉');
+			}
+		}
 		try {
 			const image = await this.random();
 			if (!image) return msg.reply('This album has no images...');

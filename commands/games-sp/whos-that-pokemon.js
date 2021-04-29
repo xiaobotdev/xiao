@@ -94,8 +94,13 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const attachment = await this.createImage(data, true);
 			const answerAttachment = await this.createImage(data, false);
 			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
-			if (connection) {
-				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3'));
+			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
+				const dispatcher = connection.play(
+					path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3')
+				);
+				this.client.dispatchers.set(msg.guild.id, dispatcher);
+				dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
+				dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });

@@ -45,8 +45,11 @@ module.exports = class JeopardyCommand extends Command {
 			const question = await this.fetchQuestion();
 			const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
 			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
-			if (connection) {
-				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
+			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
+				const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
+				this.client.dispatchers.set(msg.guild.id, dispatcher);
+				dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
+				dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			await msg.reply(`The category is: **${question.category.title.toUpperCase()}**. 30 seconds, good luck.`, {
