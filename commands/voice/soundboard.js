@@ -101,6 +101,11 @@ module.exports = class SoundboardCommand extends Command {
 					name: 'Rockstar Games',
 					url: 'https://www.rockstargames.com/',
 					reason: 'Here We Go Again Sound'
+				},
+				{
+					name: 'KONOSUBA -God\'s blessing on this wonderful world!',
+					url: 'http://konosuba.com/',
+					reason: 'Explosion Sound'
 				}
 			],
 			args: [
