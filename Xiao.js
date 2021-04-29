@@ -252,9 +252,8 @@ client.on('message', async msg => {
 	if (!origin && !recipient) return;
 	const call = origin || recipient;
 	if (call.originDM && call.startUser.id !== msg.author.id) return;
-	if (!call.adminCall && (msg.guild && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>')))) return;
+	if (msg.guild && (!msg.channel.topic || !msg.channel.topic.includes('<xiao:phone>'))) return;
 	if (!call.active) return;
-	if (call.adminCall && msg.guild.id === call.origin.guild.id && !client.isOwner(msg.author)) return;
 	try {
 		await call.send(origin ? call.recipient : call.origin, msg, hasText, hasImage, hasEmbed);
 	} catch {
