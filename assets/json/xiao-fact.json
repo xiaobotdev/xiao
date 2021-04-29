@@ -75,5 +75,6 @@
 	"All stories in the `kino` command are written by dragonfire535 himself.",
 	"The `tweet` command uses follower count to calculate realistic average reply, retweet, and like counts based on the user provided.",
 	"The `cleverbot` command adds a use for every message sent to Cleverbot, not just when starting the conversation.",
-	"Xiao will automatically leave a voice channel if she is the only member left in it."
+	"Xiao will automatically leave a voice channel if she is the only member left in it.",
+	"If you and Xiao are in a voice channel when `explode` is used, audio of Megumin from Konosuba chanting will play."
 ]
