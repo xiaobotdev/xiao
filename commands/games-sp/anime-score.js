@@ -8,7 +8,7 @@ const searchGraphQL = stripIndents`
 			pageInfo {
 				total
 			}
-			media (type: $type, popularity_greater: 1000, averageScore_not: 0, isAdult: $isAdult) {
+			media (type: $type, popularity_greater: 2500, averageScore_not: 0, isAdult: $isAdult) {
 				id
 				averageScore
 				title {
