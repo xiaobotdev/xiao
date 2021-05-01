@@ -35,7 +35,7 @@ module.exports = class RepostCommand extends Command {
 			const results = await this.checkImage(body, image);
 			if (results === false) return msg.reply('This image is clean.');
 			return msg.reply(stripIndents`
-				This image may be a repost. I've seen it **${results.matches.length}** times.
+				This image may be a repost. I've seen it **${results.matches.length + 1}** times.
 				The closest match is at **${results.closest_match.hamming_match_percent}%** similarity.
 				${results.closest_match.post.url} 
 			`);
