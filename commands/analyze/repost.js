@@ -5,6 +5,7 @@ const { stripIndents } = require('common-tags');
 const { reactIfAble } = require('../../util/Util');
 const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 const fileTypeRe = /\.(jpe?g|png|gif|jfif|bmp)(\?.+)?$/i;
+const notAllowed = ['gif', 'jfif', 'bmp'];
 
 module.exports = class RepostCommand extends Command {
 	constructor(client) {
@@ -32,7 +33,9 @@ module.exports = class RepostCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		if (image.toLowerCase().endsWith('.gif')) return msg.reply('I cannot analyze GIF images.');
+		if (notAllowed.includes(image.toLowerCase().match(fileTypeRe)[1])) {
+			return msg.reply('I cannot analyze images in this format.');
+		}
 		try {
 			await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 			const { body } = await request.get(image);
