@@ -1,10 +1,9 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const csvParse = require('csv-parse');
 const { Readable } = require('stream');
 const { reactIfAble, base64, list } = require('../../util/Util');
-const otherSongs = require('../../assets/json/guess-song');
+const playlists = require('../../assets/json/guess-song');
 const { SPOTIFY_KEY, SPOTIFY_SECRET } = process.env;
 
 module.exports = class GuessSongCommand extends Command {
@@ -29,15 +28,24 @@ module.exports = class GuessSongCommand extends Command {
 					reason: 'API',
 					reasonURL: 'https://developer.spotify.com/'
 				}
+			],
+			args: [
+				{
+					key: 'chart',
+					prompt: `What chart do you want to use for the game? Either ${list(Object.keys(playlists, 'or'))}.`,
+					type: 'string',
+					oneOf: Object.keys(playlists),
+					parse: chart => chart.toLowerCase()
+				}
 			]
 		});
 
 		this.token = null;
-		this.charts = null;
+		this.charts = new Map();
 		this.cache = new Map();
 	}
 
-	async run(msg) {
+	async run(msg, { chart }) {
 		const connection = this.client.voice.connections.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
@@ -50,10 +58,7 @@ module.exports = class GuessSongCommand extends Command {
 		let songID;
 		try {
 			if (!this.token) await this.fetchToken();
-			if (!this.charts) await this.fetchCharts();
-			const song = await this.fetchRandomSong();
-			songID = song;
-			const data = await this.fetchSongPreview(song);
+			const data = await this.fetchRandomSong(chart);
 			const { body: previewBody } = await request.get(data.preview);
 			const dispatcher = connection.play(Readable.from([previewBody]));
 			this.client.dispatchers.set(msg.guild.id, dispatcher);
@@ -81,26 +86,26 @@ module.exports = class GuessSongCommand extends Command {
 		}
 	}
 
-	async fetchCharts() {
-		if (this.charts) return this.charts;
-		const { text } = await request.get('https://spotifycharts.com/regional/us/daily/latest/download');
-		return new Promise((res, rej) => {
-			csvParse(text, { comment: '#' }, (err, output) => {
-				if (err) return rej(err);
-				this.charts = output.slice(2).map(song => song[4].replace('https://open.spotify.com/track/', ''));
-				setTimeout(() => {
-					this.charts = null;
-					this.cache.clear();
-				}, 4.32e+7);
-				return res(this.charts);
+	async fetchCharts(playlist) {
+		if (this.charts.has(playlist)) return this.charts.get(playlist);
+		const { body } = await request
+			.get('https://spotifycharts.com/regional/us/daily/latest/download')
+			.set({ Authorization: `Bearer ${this.token}` })
+			.query({
+				market: 'US',
+				fields: 'items(track(id))',
+				limit: 100
 			});
-		});
+		const list = body.items.map(item => item.track.id);
+		this.charts.set(playlist, list);
+		setTimeout(() => this.charts.delete(playlist), 4.32e+7);
+		return list;
 	}
 
-	fetchRandomSong() {
-		const songs = [...this.charts, otherSongs];
+	async fetchRandomSong(playlist) {
+		const songs = await this.fetchCharts(playlist);
 		const choice = songs[Math.floor(Math.random() * songs.length)];
-		return choice;
+		return this.fetchSongPreview(choice);
 	}
 
 	async fetchSongPreview(id) {
