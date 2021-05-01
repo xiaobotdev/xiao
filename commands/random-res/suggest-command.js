@@ -15,9 +15,8 @@ module.exports = class SuggestCommandCommand extends Command {
 	run(msg) {
 		const command = this.client.registry.commands
 			.filter(cmd => {
-				if (cmd.hidden || cmd.unknown) return false;
+				if (cmd.hidden || cmd.unknown || cmd.ownerOnly) return false;
 				if (!msg.channel.nsfw && cmd.nsfw) return false;
-				if (!this.client.isOwner(msg.author) && cmd.ownerOnly) return false;
 				if (!msg.guild && cmd.guildOnly) return false;
 				return true;
 			})
