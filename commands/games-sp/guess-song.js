@@ -89,7 +89,7 @@ module.exports = class GuessSongCommand extends Command {
 	async fetchCharts(playlist) {
 		if (this.charts.has(playlist)) return this.charts.get(playlist);
 		const { body } = await request
-			.get('https://spotifycharts.com/regional/us/daily/latest/download')
+			.get(`https://api.spotify.com/v1/playlists/${playlists[playlist]}/tracks`)
 			.set({ Authorization: `Bearer ${this.token}` })
 			.query({
 				market: 'US',
