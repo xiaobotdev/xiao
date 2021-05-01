@@ -76,7 +76,8 @@ module.exports = class AnimeScoreCommand extends Command {
 			});
 			if (!msgs.size) return msg.reply(`Sorry, time is up! It was **${anime.averageScore}%**.`);
 			const ans = Number.parseInt(msgs.first().content, 10);
-			if (Math.abs(ans - anime.averageScore) <= 10) return msg.reply(`Close! It was **${anime.averageScore}%**.`);
+			const close = Math.abs(ans - anime.averageScore);
+			if (close <= 10 && close !== 0) return msg.reply(`Close! It was **${anime.averageScore}%**.`);
 			if (ans !== anime.averageScore) return msg.reply(`Nope, sorry, it was **${anime.averageScore}%**.`);
 			return msg.reply(`Nice job! It was **${anime.averageScore}%**!`);
 		} catch (err) {
