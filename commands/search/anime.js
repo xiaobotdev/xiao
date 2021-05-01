@@ -35,6 +35,7 @@ const resultGraphQL = stripIndents`
 			description(asHtml: false)
 			season
 			type
+			format
 			siteUrl
 			status
 			episodes
