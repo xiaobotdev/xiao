@@ -45,7 +45,7 @@ module.exports = class AnimeScoreCommand extends Command {
 
 	async run(msg) {
 		try {
-			const data = await this.getRandomAnime(msg.channel.nsfw);
+			const anime = await this.getRandomAnime(msg.channel.nsfw);
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
