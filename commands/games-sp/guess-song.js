@@ -96,10 +96,10 @@ module.exports = class GuessSongCommand extends Command {
 				fields: 'items(track(id))',
 				limit: 100
 			});
-		const list = body.items.map(item => item.track.id);
-		this.charts.set(playlist, list);
+		const songList = body.items.map(item => item.track.id);
+		this.charts.set(playlist, songList);
 		setTimeout(() => this.charts.delete(playlist), 4.32e+7);
-		return list;
+		return songList;
 	}
 
 	async fetchRandomSong(playlist) {
