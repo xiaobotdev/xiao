@@ -13,6 +13,7 @@ const searchGraphQL = stripIndents`
 				averageScore
 				title {
 					english
+					romaji
 				}
 				coverImage {
 					large
@@ -46,12 +47,11 @@ module.exports = class AnimeScoreCommand extends Command {
 	async run(msg) {
 		try {
 			const anime = await this.getRandomAnime(msg.channel.nsfw);
-			const title = anime.title.english || anime.title.romaji;
 			const embed = new MessageEmbed()
 				.setColor(0x02A9FF)
 				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
 				.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
-				.setTitle(title)
+				.setTitle(anime.title.english || anime.title.romaji)
 				.setFooter(anime.id);
 			await msg.reply('**You have 15 seconds, what score do you think this anime has?**', { embed });
 			const filter = res => {
