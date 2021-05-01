@@ -2,6 +2,8 @@ const Command = require('../../structures/Command');
 const request = require('node-superfetch');
 const UserAgent = require('user-agents');
 const { stripIndents } = require('common-tags');
+const { reactIfAble } = require('../../util/Util');
+const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 const fileTypeRe = /\.(jpe?g|png|gif|jfif|bmp)(\?.+)?$/i;
 
 module.exports = class RepostCommand extends Command {
@@ -30,9 +32,12 @@ module.exports = class RepostCommand extends Command {
 	}
 
 	async run(msg, { image }) {
+		if (image.toLowerCase().endsWith('.gif')) return msg.reply('I cannot analyze GIF images.');
 		try {
+			await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 			const { body } = await request.get(image);
 			const results = await this.checkImage(body, image);
+			await reactIfAble(msg, this.client.user, SUCCESS_EMOJI_ID, '✅');
 			if (results === false) return msg.reply('This image is clean.');
 			return msg.reply(stripIndents`
 				This image may be a repost. I've seen it **${results.matches.length + 1}** times.
@@ -40,6 +45,7 @@ module.exports = class RepostCommand extends Command {
 				${results.closest_match.post.url} 
 			`);
 		} catch (err) {
+			await reactIfAble(msg, msg.author, FAILURE_EMOJI_ID, '❌');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
