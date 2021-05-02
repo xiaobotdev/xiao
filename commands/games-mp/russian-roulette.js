@@ -48,7 +48,8 @@ module.exports = class RussianRouletteCommand extends Command {
 			const gun = shuffle([true, false, false, false, false, false, false, false]);
 			let round = 0;
 			let loser = null;
-			while (!loser) {
+			let winner = null;
+			while (!loser && !winner) {
 				const player = players.get(turn[0]);
 				turn.push(turn[0]);
 				turn.shift();
@@ -78,10 +79,12 @@ module.exports = class RussianRouletteCommand extends Command {
 							removeFromArray(turn, next);
 						}
 					}
+					if (players.size === 1) winner = players.first();
 					round++;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
+			if (winner) return msg.say(`The winner is ${winner.user}!`);
 			return msg.say(`The loser is ${loser.user}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
