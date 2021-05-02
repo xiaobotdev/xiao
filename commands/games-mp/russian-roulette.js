@@ -48,7 +48,7 @@ module.exports = class RussianRouletteCommand extends Command {
 			const gun = shuffle([true, false, false, false, false, false, false, false]);
 			let round = 0;
 			let loser = null;
-			while (!winner) {
+			while (!loser) {
 				const player = players.get(turn[0]);
 				turn.push(turn[0]);
 				turn.shift();
