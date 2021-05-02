@@ -329,7 +329,7 @@ module.exports = class Util {
 			if (res.content.toLowerCase() !== 'join game') return false;
 			return true;
 		};
-		const collector = msg.channel.createMessageCollector(filter, { max: max - 1, time: 60000 });
+		const collector = msg.channel.createMessageCollector(filter, { max: max - 1, time: 120000 });
 		collector.on('collect', res => {
 			if (res.content.toLowerCase() === 'start game') {
 				Util.reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
