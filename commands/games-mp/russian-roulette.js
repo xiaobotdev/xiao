@@ -59,7 +59,7 @@ module.exports = class RussianRouletteCommand extends Command {
 					const nextUp = players.get(turn[0]).user;
 					await msg.say(stripIndents`
 						**${player.user.tag}** pulls the trigger... **And lives...**
-						${nextUp.bot ? '' : `Will you take the gun, ${nextUp.user}?`}
+						${nextUp.bot ? '' : `Will you take the gun, ${nextUp}?`}
 					`);
 					if (!nextUp.bot) {
 						let first = true;
