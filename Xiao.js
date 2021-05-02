@@ -313,7 +313,7 @@ client.on('guildMemberRemove', async member => {
 	if (member.id === client.user.id) return null;
 	const channel = member.guild.systemChannel;
 	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
-	if (channel.systemChannelFlags.has('WELCOME_MESSAGE_DISABLED')) return null;
+	if (member.guild.systemChannelFlags.has('WELCOME_MESSAGE_DISABLED')) return null;
 	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
 	try {
 		const leaveMessage = client.leaveMessages[Math.floor(Math.random() * client.leaveMessages.length)];
