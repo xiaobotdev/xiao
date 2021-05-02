@@ -134,12 +134,13 @@ module.exports = class GuessSongCommand extends Command {
 	}
 
 	async shortTrackName(longName) {
-		const { body } = await request
+		const { text } = await request
 			.get('https://demaster.hankapi.com/demaster')
 			.query({
 				long_track_name: longName,
 				format: 'json'
 			});
+		const body = JSON.parse(text);
 		return body.short_track_name;
 	}
 
