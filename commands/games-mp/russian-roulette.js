@@ -64,6 +64,7 @@ module.exports = class RussianRouletteCommand extends Command {
 					`);
 					if (!nextUp.bot) {
 						let first = true;
+						/* eslint-disable max-depth */
 						for (const next of turn) {
 							const nextPlayer = players.get(next);
 							if (!first) {
@@ -78,6 +79,7 @@ module.exports = class RussianRouletteCommand extends Command {
 							players.delete(next);
 							removeFromArray(turn, next);
 						}
+						/* eslint-enable max-depth */
 					}
 					if (players.size === 1) winner = players.first();
 					round++;
