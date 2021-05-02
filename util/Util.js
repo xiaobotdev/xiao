@@ -342,8 +342,8 @@ module.exports = class Util {
 		return new Promise(res => {
 			collector.once('end', verify => {
 				verify.set(msg.id, msg);
-				if (verify.size < min) return res(false);
-				return res(verify.map(player => player.author.id));
+				if (joined.length < min) return res(false);
+				return res(joined);
 			});
 		});
 	}
