@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { stripIndents } = require('common-tags');
-const { shuffle, verify } = require('../../util/Util');
+const { shuffle, verify, awaitPlayers, removeFromArray } = require('../../util/Util');
 
 module.exports = class RussianRouletteCommand extends Command {
 	constructor(client) {
@@ -12,58 +12,75 @@ module.exports = class RussianRouletteCommand extends Command {
 			description: 'Who will pull the trigger and die first?',
 			args: [
 				{
-					key: 'opponent',
-					prompt: 'What user would you like to play against? To play against AI, choose me.',
-					type: 'user'
+					key: 'playersCount',
+					prompt: 'How many players are you expecting to have?',
+					type: 'integer',
+					min: 1,
+					max: 7
 				}
 			]
 		});
 	}
 
-	async run(msg, { opponent }) {
-		if (opponent.id === msg.author.id) return msg.reply('You may not challenge yourself.');
-		if (this.client.blacklist.user.includes(opponent.id)) return msg.reply('This user is blacklisted.');
+	async run(msg, { playersCount }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			if (!opponent.bot) {
-				await msg.say(`${opponent}, do you accept this challenge?`);
-				const verification = await verify(msg.channel, opponent);
-				if (!verification) {
-					this.client.games.delete(msg.channel.id);
-					return msg.say('Looks like they declined...');
-				}
+			const awaitedPlayers = await awaitPlayers(msg, playersCount, 1, this.client.blacklist.user);
+			if (!awaitedPlayers) {
+				this.client.games.delete(msg.channel.id);
+				return msg.say('Game could not be started...');
 			}
-			let userTurn = true;
+			const players = new Collection();
+			for (const player of awaitedPlayers) {
+				players.set(player, {
+					id: player,
+					user: await this.client.users.fetch(player)
+				});
+			}
+			players.set(this.client.user.id, {
+				id: this.client.user.id,
+				user: this.client.user
+			});
+			const turn = shuffle(players.map(player => player.id));
 			const gun = shuffle([true, false, false, false, false, false, false, false]);
 			let round = 0;
-			let winner = null;
-			let quit = false;
+			let loser = null;
 			while (!winner) {
-				const player = userTurn ? msg.author : opponent;
-				const notPlayer = userTurn ? opponent : msg.author;
+				const player = players.get(turn[0]);
+				turn.push(turn[0]);
+				turn.shift();
 				if (gun[round]) {
 					await msg.say(`**${player.tag}** pulls the trigger... **And dies!**`);
-					winner = notPlayer;
+					loser = player;
 				} else {
 					await msg.say(stripIndents`
 						**${player.tag}** pulls the trigger... **And lives...**
-						${opponent.bot ? 'Continue?' : `Will you take the gun, ${notPlayer}?`} (${8 - round - 1} shots left)
+						${opponent.bot ? '' : `Will you take the gun, ${players.get(turn[0]).user}?`}
 					`);
-					const keepGoing = await verify(msg.channel, opponent.bot ? msg.author : notPlayer);
-					if (!keepGoing) {
-						if (opponent.bot) winner = opponent;
-						else winner = player;
-						quit = true;
+					if (!opponent.bot) {
+						let first = true;
+						for (const next of turn) {
+							const nextPlayer = players.get(next);
+							if (!first) {
+								await msg.say(stripIndents`
+									Coward.
+									${nextPlayer.user}, will YOU take the gun?
+								`);
+							}
+							if (first) first = false;
+							const keepGoing = await verify(msg.channel, nextPlayer.user);
+							if (keepGoing) break;
+							players.delete(next);
+							removeFromArray(turn, next);
+						}
 					}
 					round++;
-					userTurn = !userTurn;
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			if (quit) return msg.say(`${winner} wins, because their opponent was a coward.`);
-			return msg.say(`The winner is ${winner}!`);
+			return msg.say(`The loser is ${loser.user}!`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
