@@ -75,7 +75,7 @@ module.exports = class GuessSongCommand extends Command {
 			this.client.dispatchers.delete(msg.guild.id);
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}** by **${data.artist}**!`);
 			const guess = msgs.first().content.toLowerCase();
-			if (!guess.includes(data.name.toLowerCase())) {
+			if (!guess.includes(data.name.toLowerCase()) && !guess.includes(data.shortName.toLowerCase())) {
 				return msg.reply(`Nope! It's **${data.name}** by **${data.artist}**!`);
 			}
 			return msg.reply(`Nice! It's **${data.name}** by **${data.artist}**!`);
@@ -119,6 +119,7 @@ module.exports = class GuessSongCommand extends Command {
 		const result = {
 			id,
 			name: body.name,
+			shortName: await this.shortTrackName(body.name),
 			artist: list(body.artists.map(artist => artist.name)),
 			preview: previewURL
 		};
@@ -130,6 +131,16 @@ module.exports = class GuessSongCommand extends Command {
 		const { text } = await request.get(`https://open.spotify.com/embed/track/${id}`);
 		const $ = cheerio.load(text);
 		return JSON.parse(decodeURIComponent($('script[id="resource"]')[0].children[0].data)).preview_url;
+	}
+
+	async shortTrackName(longName) {
+		const { body } = await request
+			.get('https://demaster.hankapi.com/demaster')
+			.query({
+				long_track_name: longName,
+				format: 'json'
+			});
+		return body.short_track_name;
 	}
 
 	async fetchToken() {
