@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const Collection = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
 const { shuffle, verify, awaitPlayers, removeFromArray } = require('../../util/Util');
 
