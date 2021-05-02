@@ -315,24 +315,37 @@ module.exports = class Util {
 	static async awaitPlayers(msg, max, min, blacklist) {
 		if (max === 1) return [msg.author.id];
 		const addS = min - 1 === 1 ? '' : 's';
-		await msg.say(
-			`You will need at least ${min - 1} more player${addS} (at max ${max - 1}). To join, type \`join game\`.`
-		);
+		await msg.say(stripIndents`
+			You will need at least ${min - 1} more player${addS} (at max ${max - 1}). To join, type \`join game\`.
+			As the host, ${msg.author}, you can type \`start game\` to start the game early.
+		`);
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = res => {
 			if (res.author.bot) return false;
 			if (blacklist.includes(res.author.id)) return false;
+			if (res.author.id === msg.author.id && res.content.toLowerCase() === 'start game') return true;
 			if (joined.includes(res.author.id)) return false;
 			if (res.content.toLowerCase() !== 'join game') return false;
-			joined.push(res.author.id);
-			Util.reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 			return true;
 		};
-		const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 60000 });
-		verify.set(msg.id, msg);
-		if (verify.size < min) return false;
-		return verify.map(player => player.author.id);
+		const collector = msg.channel.createMessageCollector(filter, { max: max - 1, time: 60000 });
+		collector.on('collect', res => {
+			if (res.content.toLowerCase() === 'start game') {
+				Util.reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+				collector.stop();
+				return;
+			}
+			joined.push(res.author.id);
+			Util.reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+		});
+		return new Promise(res => {
+			collector.once('end', verify => {
+				verify.set(msg.id, msg);
+				if (verify.size < min) return res(false);
+				return res(verify.map(player => player.author.id));
+			});
+		});
 	}
 
 	static async fetchHSUserDisplay(client, userID) {
