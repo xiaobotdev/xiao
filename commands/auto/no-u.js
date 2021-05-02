@@ -12,7 +12,8 @@ module.exports = class NoUCommand extends Command {
 		});
 	}
 
-	generateText() {
+	generateText(fromPattern) {
+		if (!fromPattern) return 'no u';
 		const chance = Boolean(Math.floor(Math.random() * 2));
 		if (chance) return null;
 		return 'no u';
