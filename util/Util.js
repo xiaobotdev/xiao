@@ -111,6 +111,20 @@ module.exports = class Util {
 		return crypto.createHash(algorithm).update(text).digest('hex');
 	}
 
+	static gcd(a, b) {
+		if (b > a) {
+			const temp = a;
+			a = b;
+			b = temp;
+		}
+		while (b !== 0) {
+			const m = a % b;
+			a = b;
+			b = m;
+		}
+		return a;
+	}
+
 	static streamToArray(stream) {
 		if (!stream.readable) return Promise.resolve([]);
 		return new Promise((resolve, reject) => {
