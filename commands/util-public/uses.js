@@ -21,7 +21,9 @@ module.exports = class UsesCommand extends Command {
 	}
 
 	run(msg, { command }) {
-		if (command.uses === undefined) return msg.reply('That command\'s usage stats aren\'t being tracked.');
+		if (command.unknown || command.uses === undefined) {
+			return msg.reply('That command\'s usage stats aren\'t being tracked.');
+		}
 		return msg.say(`The \`${command.name}\` command has been used **${formatNumber(command.uses)}** times.`);
 	}
 };
