@@ -25,7 +25,10 @@ module.exports = class GroupLeaderboardCommand extends Command {
 
 	run(msg, { page }) {
 		const groups = this.client.registry.groups.map(group => {
-			const uses = group.commands.reduce((a, b) => a + (b.uses || 0), 0);
+			const uses = group.commands.reduce((a, b) => {
+				if (b.unknown || !b.uses) return a;
+				return a + b.uses;
+			}, 0);
 			return { uses, group };
 		});
 		const totalPages = Math.ceil(this.client.registry.groups.size / 10);

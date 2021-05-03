@@ -213,6 +213,7 @@ module.exports = class XiaoClient extends CommandoClient {
 	exportCommandLeaderboard() {
 		let text = '{';
 		for (const command of this.registry.commands.values()) {
+			if (command.unknown) continue;
 			if (command.uses === undefined) continue;
 			text += `\n	"${command.name}": ${command.uses},`;
 		}
@@ -245,6 +246,7 @@ module.exports = class XiaoClient extends CommandoClient {
 	exportLastRun() {
 		let text = '{';
 		for (const command of this.registry.commands.values()) {
+			if (command.unknown) continue;
 			if (command.lastRun === undefined) continue;
 			text += `\n	"${command.name}": ${command.lastRun ? `"${command.lastRun.toISOString()}"` : null},`;
 		}
