@@ -356,11 +356,15 @@ client.on('error', err => client.logger.error(err.stack));
 
 client.on('warn', warn => client.logger.warn(warn));
 
-client.on('commandRun', command => {
+client.on('commandRun', async command => {
+	client.logger.info(`[COMMAND] ${command.name} was used.`);
 	if (command.uses === undefined) return;
 	command.uses++;
 	if (command.lastRun === undefined) return;
 	command.lastRun = new Date();
+	const channel = await client.fetchCommandChannel();
+	channel.send(`\`${command.name}\` was used! It has now been used **${formatNumber(command.uses)}** times!`)
+		.catch(() => null);
 });
 
 client.dispatcher.addInhibitor(msg => {
