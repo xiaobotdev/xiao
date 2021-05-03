@@ -21,6 +21,7 @@ const {
 	XIAO_WEBHOOK_TOKEN,
 	REPORT_CHANNEL_ID,
 	JOIN_LEAVE_CHANNEL_ID,
+	COMMAND_CHANNEL_ID,
 	TOP_GG_TOKEN,
 	BOTS_GG_TOKEN,
 	DISCORDBOTLIST_TOKEN,
@@ -282,5 +283,10 @@ module.exports = class XiaoClient extends CommandoClient {
 	fetchJoinLeaveChannel() {
 		if (!JOIN_LEAVE_CHANNEL_ID) return null;
 		return this.channels.fetch(JOIN_LEAVE_CHANNEL_ID);
+	}
+
+	fetchCommandChannel() {
+		if (!COMMAND_CHANNEL_ID) return null;
+		return this.channels.fetch(COMMAND_CHANNEL_ID);
 	}
 };
