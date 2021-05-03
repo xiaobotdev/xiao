@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command');
 const { loadImage } = require('canvas');
 const request = require('node-superfetch');
+const { gcd } = require('../../util/Util');
 
 module.exports = class AspectRatioCommand extends Command {
 	constructor(client) {
@@ -28,28 +29,10 @@ module.exports = class AspectRatioCommand extends Command {
 		try {
 			const { body } = await request.get(image);
 			const data = await loadImage(body);
-			return msg.reply(`This image has an aspect ratio of **${this.ratio(data.width, data.height)}**.`);
+			const common = gcd(data.width, data.height);
+			return msg.reply(`This image has an aspect ratio of **${data.width / common}:${data.height / common}**.`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
-	}
-
-	gcd(a, b) {
-		if (b > a) {
-			const temp = a;
-			a = b;
-			b = temp;
-		}
-		while (b !== 0) {
-			const m = a % b;
-			a = b;
-			b = m;
-		}
-		return a;
-	}
-
-	ratio(x, y) {
-		const c = this.gcd(x, y);
-		return `${x / c}:${y / c}`;
 	}
 };
