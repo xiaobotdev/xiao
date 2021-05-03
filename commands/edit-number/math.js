@@ -30,7 +30,7 @@ module.exports = class MathCommand extends Command {
 	run(msg, { expression }) {
 		try {
 			const evaluated = math.evaluate(expression);
-			if (typeof result === 'function') return msg.reply('Invalid expression.');
+			if (typeof evaluated === 'function') return msg.reply('Invalid expression.');
 			return msg.reply(evaluated.toString());
 		} catch {
 			return msg.reply('Invalid expression.');
