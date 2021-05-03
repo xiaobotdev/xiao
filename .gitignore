@@ -20,9 +20,6 @@ blacklist.json
 # Tensorflow Models
 tf_models/
 
-# DECTalk Files
-dectalk/
-
 # Tesseract Trained Data
 *.traineddata
 
