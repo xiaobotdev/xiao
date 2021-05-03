@@ -8,7 +8,7 @@ math.import({
 	parse: () => { throw new Error('Function parse is disabled'); },
 	simplify: () => { throw new Error('Function simplify is disabled'); },
 	derivative: () => { throw new Error('Function derivative is disabled'); }
-  }, { override: true });
+}, { override: true });
 
 module.exports = class MathCommand extends Command {
 	constructor(client) {
