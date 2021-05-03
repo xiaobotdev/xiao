@@ -52,7 +52,6 @@
 		"dotenv": "^8.2.0",
 		"emoji-regex": "^9.2.2",
 		"eslint": "^7.25.0",
-		"expr-eval": "^2.0.2",
 		"fen-validator": "^1.4.1",
 		"font-finder": "^1.1.0",
 		"gifencoder": "^2.0.1",
