@@ -40,7 +40,8 @@ module.exports = class Cleverbot {
 
 	setTimeout() {
 		return setTimeout(() => {
-			this.manager.delete(this.channelID);
+			if (!this.client.cleverbots.has(this.channelID)) return;
+			this.client.cleverbots.delete(this.channelID);
 			if (!this.channel) return;
 			this.channel.send('Conversation timed out.').catch(() => null);
 		}, 600000);
