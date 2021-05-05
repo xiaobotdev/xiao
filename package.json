@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "139.2.0",
+	"version": "139.2.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"private": true,
@@ -34,7 +34,7 @@
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
 		"@discordjs/opus": "^0.5.0",
-		"@tensorflow/tfjs-node": "^3.6.0",
+		"@tensorflow/tfjs-node": "^3.6.1",
 		"@vitalets/google-translate-api": "^7.0.0",
 		"aki-api": "^5.2.1",
 		"bombsweeper.js": "^1.0.1",
@@ -58,7 +58,7 @@
 		"gm": "^1.23.1",
 		"html-entities": "^2.3.2",
 		"image-to-ascii": "^3.0.13",
-		"ioredis": "^4.27.1",
+		"ioredis": "^4.27.2",
 		"js-beautify": "^1.13.13",
 		"js-chess-engine": "^0.11.3",
 		"jszip": "^3.6.0",
@@ -82,26 +82,29 @@
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "^1.2.1",
 		"twemoji-parser": "^13.0.0",
-		"user-agents": "^1.0.637",
+		"user-agents": "^1.0.642",
 		"valid-url": "^1.0.9",
 		"wavefile": "^11.0.0",
 		"winston": "^3.3.3",
-		"ytdl-core": "^4.5.0",
+		"ytdl-core": "^4.7.0",
 		"zip-to-timezone": "^1.1.5"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.3",
 		"erlpack": "github:discord/erlpack",
 		"sodium": "^3.0.2",
-		"utf-8-validate": "^5.0.4",
+		"utf-8-validate": "^5.0.5",
 		"zlib-sync": "^0.1.7"
 	},
 	"devDependencies": {
 		"eslint-config-amber": "^2.0.4",
-		"eslint-plugin-json": "^2.1.2"
+		"eslint-plugin-json": "^3.0.0"
 	},
 	"eslintConfig": {
-		"extends": "amber",
+		"extends": [
+			"amber",
+			"plugin:json/recommended"
+		],
 		"plugins": [
 			"json"
 		]
