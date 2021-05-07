@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const path = require('path');
 const { list } = require('../../util/Util');
-const types = ['default', 'blastyoff', 'disyoffjs', 'yoffcirius', 'yoffice', 'yofficer'];
+const types = ['default', 'blastyoff', 'disyoffjs', 'yoffcirius', 'yoffice', 'yofficer', 'gameyoff'];
 
 module.exports = class YoffCommand extends Command {
 	constructor(client) {
