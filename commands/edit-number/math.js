@@ -1,9 +1,12 @@
 const Command = require('../../structures/Command');
 const core = require('mathjs/number');
 const math = core.create(core.all);
+const limitedEvaluate = math.evaluate;
 math.import({
 	import: () => { throw new Error('Function import is disabled'); },
 	createUnit: () => { throw new Error('Function createUnit is disabled'); },
+	evaluate: () => { throw new Error('Function evaluate is disabled'); },
+	parse: () => { throw new Error('Function parse is disabled'); },
 	simplify: () => { throw new Error('Function simplify is disabled'); },
 	derivative: () => { throw new Error('Function derivative is disabled'); }
 }, { override: true });
@@ -35,7 +38,7 @@ module.exports = class MathCommand extends Command {
 
 	run(msg, { expression }) {
 		try {
-			const evaluated = math.evaluate(expression);
+			const evaluated = limitedEvaluate(expression);
 			if (typeof evaluated === 'function') return msg.reply('Invalid expression.');
 			return msg.reply(evaluated.toString());
 		} catch {
