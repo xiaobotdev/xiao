@@ -4,7 +4,6 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { percentColor } = require('../../util/Util');
-const { LOVER_USER_ID } = process.env;
 const percentColors = [
 	{ pct: 0.0, color: { r: 0, g: 0, b: 255 } },
 	{ pct: 0.5, color: { r: 0, g: 255 / 2, b: 255 / 2 } },
@@ -56,13 +55,10 @@ module.exports = class FriendshipCommand extends Command {
 		const owner = this.client.isOwner(first) || this.client.isOwner(second);
 		const authorUser = first.id === msg.author.id || second.id === msg.author.id;
 		const botUser = first.id === this.client.user.id || second.id === this.client.user.id;
-		const girlfriendUser = first.id === LOVER_USER_ID || second.id === LOVER_USER_ID;
 		if (owner && botUser) {
 			if (authorUser) level = 100;
 			else level = 0;
 		} else if (self) {
-			level = 100;
-		} else if (girlfriendUser && owner) {
 			level = 100;
 		} else {
 			const calculated = -Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
