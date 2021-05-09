@@ -62,7 +62,7 @@ module.exports = class ShipCommand extends Command {
 		} else if (self) {
 			level = 100;
 		} else if (girlfriendUser && owner) {
-			level = 100;
+			level = 95;
 		} else {
 			const calculated = Math.abs(Number.parseInt(BigInt(first.id) - BigInt(second.id), 10));
 			const random = MersenneTwister19937.seed(calculated);
