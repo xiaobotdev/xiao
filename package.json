@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "139.3.0",
+	"version": "139.4.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"private": true,
@@ -64,6 +64,7 @@
 		"jszip": "^3.6.0",
 		"kuroshiro": "^1.1.2",
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
+		"leven": "^3.1.0",
 		"mathjs": "^9.3.2",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",
