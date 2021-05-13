@@ -61,10 +61,10 @@ module.exports = class WhiteboardCommand extends Command {
 				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const initialLines = await wrapText(ctx, initial, 405);
-			const initialTopMost = 48 - (((fontSize * initialLines.length) / 2) + ((10 * (initialLines.length - 1)) / 2));
+			const initialTopMost = 58 - (((fontSize * initialLines.length) / 2) + ((10 * (initialLines.length - 1)) / 2));
 			for (let i = 0; i < initialLines.length; i++) {
 				const height = initialTopMost + ((fontSize + 10) * i);
-				ctx.fillText(initialLines[i], 24, height);
+				ctx.fillText(initialLines[i], 34, height);
 			}
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 			fontSize = 40;
@@ -73,10 +73,10 @@ module.exports = class WhiteboardCommand extends Command {
 				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const resolveLines = await wrapText(ctx, resolved, 367);
-			const resolveTopMost = 443 - (((fontSize * resolveLines.length) / 2) + ((10 * (resolveLines.length - 1)) / 2));
+			const resolveTopMost = 453 - (((fontSize * resolveLines.length) / 2) + ((10 * (resolveLines.length - 1)) / 2));
 			for (let i = 0; i < resolveLines.length; i++) {
 				const height = resolveTopMost + ((fontSize + 10) * i);
-				ctx.fillText(resolveLines[i], 14, height);
+				ctx.fillText(resolveLines[i], 24, height);
 			}
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'whiteboard.png' }] });
 		} catch (err) {
