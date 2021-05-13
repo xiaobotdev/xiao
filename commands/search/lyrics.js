@@ -55,6 +55,8 @@ module.exports = class LyricsCommand extends Command {
 		return lyrics
 			.replaceAll('<br>', '')
 			.replace(/<\/?div>/g, '')
+			.replace(/<\/?i>/g, '*')
+			.replace(/<\/?b>/g, '**')
 			.trim();
 	}
 };
