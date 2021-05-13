@@ -76,7 +76,7 @@ module.exports = class WhiteboardCommand extends Command {
 			const resolveTopMost = 500 - (((fontSize * resolveLines.length) / 2) + ((10 * (resolveLines.length - 1)) / 2));
 			for (let i = 0; i < resolveLines.length; i++) {
 				const height = resolveTopMost + ((fontSize + 10) * i);
-				ctx.fillText(resolveLines[i], 183, height);
+				ctx.fillText(resolveLines[i], 190, height);
 			}
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'whiteboard.png' }] });
 		} catch (err) {
