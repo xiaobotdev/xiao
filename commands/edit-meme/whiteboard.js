@@ -56,7 +56,7 @@ module.exports = class WhiteboardCommand extends Command {
 			ctx.textBaseline = 'top';
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(46);
 			let fontSize = 46;
-			while (ctx.measureText(nah).width > 608) {
+			while (ctx.measureText(initial).width > 608) {
 				fontSize--;
 				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
@@ -68,7 +68,7 @@ module.exports = class WhiteboardCommand extends Command {
 			}
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
 			fontSize = 40;
-			while (ctx.measureText(yeah).width > 551) {
+			while (ctx.measureText(resolved).width > 551) {
 				fontSize--;
 				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
