@@ -38,6 +38,7 @@ module.exports = class MathCommand extends Command {
 
 	run(msg, { expression }) {
 		try {
+			if (expression.includes(':')) return msg.reply('Invalid expression.');
 			const evaluated = limitedEvaluate(expression);
 			if (typeof evaluated === 'function') return msg.reply('Invalid expression.');
 			return msg.reply(evaluated.toString());
