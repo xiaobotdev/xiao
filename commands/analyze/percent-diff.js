@@ -1,14 +1,14 @@
 const Command = require('../../structures/Command');
-const leven = require('leven');
+const stringSimilarity = require('string-similarity');
 
 module.exports = class PercentDiffCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'percent-diff',
-			aliases: ['name-diff', 'leven-diff', 'levenshtein-diff'],
+			aliases: ['name-diff'],
 			group: 'analyze',
 			memberName: 'percent-diff',
-			description: 'Determines the percentage between two strings.',
+			description: 'Determines the percentage of difference between two strings.',
 			args: [
 				{
 					key: 'text1',
@@ -25,9 +25,7 @@ module.exports = class PercentDiffCommand extends Command {
 	}
 
 	run(msg, { text1, text2 }) {
-		const distance = leven(text1, text2);
-		const bigger = Math.max(text1.length, text2.length);
-		const diff = Math.round(((bigger - distance) / bigger) * 100);
-		return msg.reply(`${diff}%`);
+		const diff = stringSimilarity.compareTwoStrings(text1, text2);
+		return msg.reply(`${Math.round(diff * 100)}%`);
 	}
 };
