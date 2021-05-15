@@ -9,7 +9,7 @@ module.exports = class WordOfTheDayCommand extends Command {
 		super(client, {
 			name: 'word-of-the-day',
 			aliases: ['daily-word', 'wotd', 'word-of-day'],
-			group: 'search',
+			group: 'events',
 			memberName: 'word-of-the-day',
 			description: 'Responds with today\'s word of the day.',
 			credit: [
