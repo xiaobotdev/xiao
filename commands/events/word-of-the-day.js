@@ -29,7 +29,7 @@ module.exports = class WordOfTheDayCommand extends Command {
 		try {
 			const word = await this.fetchWordOfTheDay();
 			let data;
-			if (this.cache.word === word) {
+			if (this.cache?.word === word) {
 				data = this.cache.data;
 			} else {
 				const { body } = await request
