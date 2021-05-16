@@ -49,6 +49,7 @@ module.exports = class RussianRouletteCommand extends Command {
 			let round = 0;
 			let loser = null;
 			let winner = null;
+			const wallOfShame = [];
 			while (!loser && !winner) {
 				const player = players.get(turn[0]);
 				turn.push(turn[0]);
@@ -76,6 +77,7 @@ module.exports = class RussianRouletteCommand extends Command {
 							if (first) first = false;
 							const keepGoing = await verify(msg.channel, nextPlayer.user);
 							if (keepGoing) break;
+							wallOfShame.push(players.get(next).user.toString());
 							players.delete(next);
 							removeFromArray(turn, next);
 						}
@@ -86,8 +88,20 @@ module.exports = class RussianRouletteCommand extends Command {
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			if (winner) return msg.say(`The winner is ${winner.user}!`);
-			return msg.say(`The loser is ${loser.user}!`);
+			if (winner) {
+				return msg.say(stripIndents`
+					The winner is ${winner.user}!
+
+					__**Wall Of Shame:**__
+					${wallOfShame.length ? wallOfShame.join('\n') : 'No one!'}
+				`);
+			}
+			return msg.say(stripIndents`
+				The loser is ${loser.user}!
+
+				__**Wall Of Shame:**__
+				${wallOfShame.length ? wallOfShame.join('\n') : 'No one!'}
+			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
