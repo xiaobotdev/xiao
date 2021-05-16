@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const stringSimilarity = require('string-similarity');
+const wuzzy = require('wuzzy');
 
 module.exports = class PercentDiffCommand extends Command {
 	constructor(client) {
@@ -25,7 +25,7 @@ module.exports = class PercentDiffCommand extends Command {
 	}
 
 	run(msg, { text1, text2 }) {
-		const diff = stringSimilarity.compareTwoStrings(text1, text2);
+		const diff = wuzzy.jaccard(text1.toLowerCase(), text2.toLowerCase());
 		return msg.reply(`${Math.round(diff * 100)}%`);
 	}
 };
