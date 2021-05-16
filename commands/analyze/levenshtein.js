@@ -1,5 +1,5 @@
 const Command = require('../../structures/Command');
-const leven = require('leven');
+const wuzzy = require('wuzzy');
 
 module.exports = class LevenshteinCommand extends Command {
 	constructor(client) {
@@ -25,7 +25,7 @@ module.exports = class LevenshteinCommand extends Command {
 	}
 
 	run(msg, { text1, text2 }) {
-		const distance = leven(text1, text2);
+		const distance = wuzzy.levenshtein(text1, text2);
 		return msg.reply(distance);
 	}
 };
