@@ -22,6 +22,8 @@ const {
 	REPORT_CHANNEL_ID,
 	JOIN_LEAVE_CHANNEL_ID,
 	COMMAND_CHANNEL_ID,
+	PATREON_ACCESS_TOKEN,
+	PATREON_CAMPAIGN_ID,
 	TOP_GG_TOKEN,
 	BOTS_GG_TOKEN,
 	DISCORDBOTLIST_TOKEN,
@@ -45,6 +47,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.timers = new TimerManager(this);
 		this.blacklist = { guild: [], user: [] };
+		this.patrons = null;
 		this.pokemon = new PokemonStore();
 		this.games = new Collection();
 		this.dispatchers = new Map();
@@ -72,6 +75,23 @@ module.exports = class XiaoClient extends CommandoClient {
 		moment.tz.link('America/Vancouver|Neopia');
 		moment.tz.link('America/Los_Angeles|Discord');
 		moment.tz.link('America/New_York|Dragon');
+	}
+
+	async fetchPatrons() {
+		if (!PATREON_ACCESS_TOKEN || !PATREON_CAMPAIGN_ID) return null;
+		const { body } = await request
+			.get(`https://www.patreon.com/api/oauth2/v2/campaigns/${PATREON_CAMPAIGN_ID}/members`)
+			.set({ Authorization: `Bearer ${PATREON_ACCESS_TOKEN}` })
+			.query({ 'fields[user]': 'user' });
+		const patrons = [];
+		for (const patron of body.data) {
+			if (patron.attributes.patron_status !== 'active_patron') continue;
+			const userData = patron.user.social_connections.discord;
+			if (!userData) continue;
+			patrons.push(userData.user_id);
+		}
+		this.patrons = patrons;
+		return patrons;
 	}
 
 	async postTopGGStats() {
