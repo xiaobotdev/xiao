@@ -211,6 +211,25 @@ client.on('ready', async () => {
 		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
 	}
 
+	// Import Patrons
+	try {
+		await client.fetchPatrons();
+		for (const patron of client.patrons) {
+			if (client.allowedUsers.includes(patron)) continue;
+			client.allowedUsers.push(patron);
+		}
+		setInterval(() => {
+			client.fetchPatrons().catch(() => null);
+			for (const patron of client.patrons) {
+				if (client.allowedUsers.includes(patron)) continue;
+				client.allowedUsers.push(patron);
+			}
+		}, 3.6e+6);
+		client.logger.info(`[PATREON] Fetched ${client.patrons.length} patrons.`);
+	} catch (err) {
+		client.logger.error(`[PATREON] Failed to fetch patrons:\n${err.stack}`);
+	}
+
 	// Post bot list stats
 	await client.postTopGGStats();
 	await client.postBotsGGStats();
