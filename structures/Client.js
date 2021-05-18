@@ -84,7 +84,8 @@ module.exports = class XiaoClient extends CommandoClient {
 			.set({ Authorization: `Bearer ${PATREON_ACCESS_TOKEN}` })
 			.query({
 				include: 'currently_entitled_tiers,user',
-				'fields[user]': 'social_connections'
+				'fields[user]': 'social_connections',
+				'fields[member]': 'patron_status'
 			});
 		const body = JSON.parse(text);
 		const patrons = [];
