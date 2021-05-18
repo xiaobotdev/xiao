@@ -210,7 +210,7 @@ module.exports = class XiaoClient extends CommandoClient {
 	exportCleverbotAllowed() {
 		let text = '[\n	';
 		if (this.allowedUsers.length) {
-			for (const id of this.allowedUsers.guild) {
+			for (const id of this.allowedUsers) {
 				text += `"${id}",\n	`;
 			}
 			text = text.slice(0, -3);
