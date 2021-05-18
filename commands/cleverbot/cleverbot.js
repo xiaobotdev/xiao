@@ -23,7 +23,10 @@ module.exports = class CleverbotCommand extends Command {
 
 	run(msg) {
 		if (!this.client.isOwner(msg.author) && !this.client.allowedUsers.includes(msg.author.id)) {
-			return msg.say('You are not currently allowed to use Cleverbot.');
+			return msg.say(stripIndents`
+				You are not currently allowed to use Cleverbot.
+				Please visit ${this.client.options.invite} for more information.
+			`);
 		}
 		if (this.client.cleverbots.has(msg.channel.id)) {
 			return msg.say('There is already a Cleverbot conversation in this channel.');
