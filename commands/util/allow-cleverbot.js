@@ -21,7 +21,7 @@ module.exports = class AllowCleverbotCommand extends Command {
 		});
 	}
 
-	async run(msg, { target }) {
+	run(msg, { target }) {
 		if (this.client.allowedUsers.includes(target)) return msg.say(`🧠 \`${target}\` is already allowed.`);
 		this.client.allowedUsers.push(target);
 		this.client.exportCleverbotAllowed();

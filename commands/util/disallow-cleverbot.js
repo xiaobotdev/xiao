@@ -22,7 +22,7 @@ module.exports = class DisallowCleverbotCommand extends Command {
 		});
 	}
 
-	async run(msg, { target }) {
+	run(msg, { target }) {
 		if (!this.client.allowedUsers.includes(target)) return msg.say(`🧠 \`${target}\` is not allowed.`);
 		removeFromArray(this.client.allowedUsers, target);
 		this.client.exportCleverbotAllowed();
