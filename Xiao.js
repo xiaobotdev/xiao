@@ -219,11 +219,12 @@ client.on('ready', async () => {
 			client.allowedUsers.push(patron);
 		}
 		setInterval(() => {
-			client.fetchPatrons().catch(() => null);
-			for (const patron of client.patrons) {
-				if (client.allowedUsers.includes(patron)) continue;
-				client.allowedUsers.push(patron);
-			}
+			client.fetchPatrons().then(() => {
+				for (const patron of client.patrons) {
+					if (client.allowedUsers.includes(patron)) continue;
+					client.allowedUsers.push(patron);
+				}
+			});
 		}, 3.6e+6);
 		client.logger.info(`[PATREON] Fetched ${client.patrons.length} patrons.`);
 	} catch (err) {
