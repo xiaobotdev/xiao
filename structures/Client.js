@@ -82,7 +82,10 @@ module.exports = class XiaoClient extends CommandoClient {
 		const { body } = await request
 			.get(`https://www.patreon.com/api/oauth2/v2/campaigns/${PATREON_CAMPAIGN_ID}/members`)
 			.set({ Authorization: `Bearer ${PATREON_ACCESS_TOKEN}` })
-			.query({ 'fields[user]': 'social_connections' });
+			.query({
+				include: 'currently_entitled_tiers',
+				'fields[member]': 'social_connections'
+			});
 		const patrons = [];
 		for (const patron of body.data) {
 			if (patron.attributes.patron_status !== 'active_patron') continue;
