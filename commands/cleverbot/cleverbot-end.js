@@ -13,7 +13,7 @@ module.exports = class CleverbotEndCommand extends Command {
 	}
 
 	run(msg) {
-		if (!this.client.isOwner(msg.author) && !this.client.allowedUsers.includes(msg.author.id)) {
+		if (!this.client.isOwner(msg.author) && !this.client.patreon.isPatron(msg.author.id)) {
 			return msg.say(stripIndents`
 				You are not currently allowed to use Cleverbot.
 				Please visit ${this.client.options.invite} for more information.

@@ -121,16 +121,16 @@ client.on('ready', async () => {
 		}
 	}, 1.8e+6);
 
-	// Import Cleverbot users
+	// Import forced patrons
 	try {
-		const results = client.importCleverbotAllowed();
+		const results = client.patreon.importForced();
 		if (results) {
-			client.logger.info('[CLEVERBOT] cleverbot.json successfully loaded.');
+			client.logger.info('[CLEVERBOT] patreon.json successfully loaded.');
 		} else {
-			client.logger.error('[CLEVERBOT] cleverbot.json is not formatted correctly.');
+			client.logger.error('[CLEVERBOT] patreon.json is not formatted correctly.');
 		}
 	} catch (err) {
-		client.logger.error(`[CLEVERBOT] Could not parse cleverbot.json:\n${err.stack}`);
+		client.logger.error(`[CLEVERBOT] Could not parse patreon.json:\n${err.stack}`);
 	}
 
 	// Import blacklist
@@ -213,37 +213,29 @@ client.on('ready', async () => {
 
 	// Import Patrons
 	try {
-		await client.fetchPatrons();
-		for (const patron of client.patrons) {
-			if (client.allowedUsers.includes(patron)) continue;
-			client.allowedUsers.push(patron);
-		}
+		await client.patreon.fetchPatrons();
 		setInterval(() => {
-			client.fetchPatrons().then(() => {
-				for (const patron of client.patrons) {
-					if (client.allowedUsers.includes(patron)) continue;
-					client.allowedUsers.push(patron);
-				}
-				client.logger.info('[PATREON] Updated patron list.');
-			}).catch(err => client.logger.error(`[PATREON] Failed to update patron list:\n${err.stack}`));
+			client.patreon.fetchPatrons()
+				.then(() => client.logger.info('[PATREON] Updated patron list.'))
+				.catch(err => client.logger.error(`[PATREON] Failed to update patron list:\n${err.stack}`));
 		}, 3.6e+6);
-		client.logger.info(`[PATREON] Fetched ${client.patrons.length} patrons.`);
+		client.logger.info('[PATREON] Fetched patrons.');
 	} catch (err) {
 		client.logger.error(`[PATREON] Failed to fetch patrons:\n${err.stack}`);
 	}
 
 	// Post bot list stats
-	await client.postTopGGStats();
-	await client.postBotsGGStats();
-	await client.postDiscordBotListStats();
-	await client.postCarbonStats();
-	await client.postBlistStats();
+	await client.botList.postTopGGStats();
+	await client.botList.postBotsGGStats();
+	await client.botList.postDiscordBotListStats();
+	await client.botList.postCarbonStats();
+	await client.botList.postBlistStats();
 	setInterval(() => {
-		client.postTopGGStats();
-		client.postBotsGGStats();
-		client.postDiscordBotListStats();
-		client.postCarbonStats();
-		client.postBlistStats();
+		client.botList.postTopGGStats();
+		client.botList.postBotsGGStats();
+		client.botList.postDiscordBotListStats();
+		client.botList.postCarbonStats();
+		client.botList.postBlistStats();
 	}, 1.8e+6);
 });
 
