@@ -121,6 +121,18 @@ client.on('ready', async () => {
 		}
 	}, 1.8e+6);
 
+	// Import Cleverbot users
+	try {
+		const results = client.importCleverbotAllowed();
+		if (results) {
+			client.logger.info('[CLEVERBOT] cleverbot.json successfully loaded.');
+		} else {
+			client.logger.error('[CLEVERBOT] cleverbot.json is not formatted correctly.');
+		}
+	} catch (err) {
+		client.logger.error(`[CLEVERBOT] Could not parse cleverbot.json:\n${err.stack}`);
+	}
+
 	// Import blacklist
 	try {
 		const results = client.importBlacklist();

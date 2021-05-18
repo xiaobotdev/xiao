@@ -22,7 +22,7 @@ module.exports = class BlacklistCommand extends Command {
 				},
 				{
 					key: 'target',
-					prompt: 'What do you want to blacklist? Use the ID.',
+					prompt: 'Who do you want to blacklist? Use the ID.',
 					type: 'string'
 				}
 			]
