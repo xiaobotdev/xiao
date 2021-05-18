@@ -224,6 +224,7 @@ client.on('ready', async () => {
 					if (client.allowedUsers.includes(patron)) continue;
 					client.allowedUsers.push(patron);
 				}
+				client.logger.info('[PATREON] Updated patron list.');
 			});
 		}, 3.6e+6);
 		client.logger.info(`[PATREON] Fetched ${client.patrons.length} patrons.`);
