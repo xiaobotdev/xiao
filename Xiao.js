@@ -225,7 +225,7 @@ client.on('ready', async () => {
 					client.allowedUsers.push(patron);
 				}
 				client.logger.info('[PATREON] Updated patron list.');
-			});
+			}).catch(err => client.logger.error(`[PATREON] Failed to update patron list:\n${err.stack}`));
 		}, 3.6e+6);
 		client.logger.info(`[PATREON] Fetched ${client.patrons.length} patrons.`);
 	} catch (err) {
