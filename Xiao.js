@@ -125,12 +125,12 @@ client.on('ready', async () => {
 	try {
 		const results = client.patreon.importForced();
 		if (results) {
-			client.logger.info('[CLEVERBOT] patreon.json successfully loaded.');
+			client.logger.info('[PATREON] patreon.json successfully loaded.');
 		} else {
-			client.logger.error('[CLEVERBOT] patreon.json is not formatted correctly.');
+			client.logger.error('[PATREON] patreon.json is not formatted correctly.');
 		}
 	} catch (err) {
-		client.logger.error(`[CLEVERBOT] Could not parse patreon.json:\n${err.stack}`);
+		client.logger.error(`[PATREON] Could not parse patreon.json:\n${err.stack}`);
 	}
 
 	// Import blacklist
