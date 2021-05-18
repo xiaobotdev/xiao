@@ -1,5 +1,6 @@
 const request = require('node-superfetch');
 const fs = require('fs');
+const path = require('path');
 const { PATREON_ACCESS_TOKEN, PATREON_CAMPAIGN_ID } = process.env;
 
 module.exports = class Patreon {
