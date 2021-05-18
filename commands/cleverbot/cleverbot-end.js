@@ -12,6 +12,9 @@ module.exports = class CleverbotEndCommand extends Command {
 	}
 
 	run(msg) {
+		if (!this.client.isOwner(msg.author) && !this.client.allowedUsers.includes(msg.author.id)) {
+			return msg.say('You are not currently allowed to use Cleverbot.');
+		}
 		const cleverbot = this.client.cleverbots.get(msg.channel.id);
 		if (!cleverbot) return msg.say('There is not a Cleverbot conversation in this channel.');
 		clearTimeout(cleverbot.timeout);

@@ -23,7 +23,7 @@ module.exports = class UnblacklistCommand extends Command {
 				},
 				{
 					key: 'target',
-					prompt: 'What do you want to unblacklist? Use the ID.',
+					prompt: 'Who do you want to unblacklist? Use the ID.',
 					type: 'string'
 				}
 			]

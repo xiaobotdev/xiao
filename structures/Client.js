@@ -49,6 +49,7 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.games = new Collection();
 		this.dispatchers = new Map();
 		this.cleverbots = new Map();
+		this.allowedUsers = [];
 		this.phone = new PhoneManager(this);
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
@@ -191,6 +192,32 @@ module.exports = class XiaoClient extends CommandoClient {
 		text += '\n	]\n}\n';
 		const buf = Buffer.from(text);
 		fs.writeFileSync(path.join(__dirname, '..', 'blacklist.json'), buf, { encoding: 'utf8' });
+		return buf;
+	}
+
+	importCleverbotAllowed() {
+		const read = fs.readFileSync(path.join(__dirname, '..', 'cleverbot.json'), { encoding: 'utf8' });
+		const file = JSON.parse(read);
+		if (!Array.isArray(file)) return null;
+		for (const id of file) {
+			if (typeof id !== 'string') continue;
+			if (this.allowedUsers.includes(id)) continue;
+			this.allowedUsers.push(id);
+		}
+		return file;
+	}
+
+	exportCleverbotAllowed() {
+		let text = '[\n	';
+		if (this.allowedUsers.length) {
+			for (const id of this.allowedUsers.guild) {
+				text += `"${id}",\n	`;
+			}
+			text = text.slice(0, -3);
+		}
+		text += '\n]\n';
+		const buf = Buffer.from(text);
+		fs.writeFileSync(path.join(__dirname, '..', 'cleverbot.json'), buf, { encoding: 'utf8' });
 		return buf;
 	}
 
