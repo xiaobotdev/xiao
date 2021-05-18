@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const { stripIndents } = require('common-tags');
 
 module.exports = class CleverbotEndCommand extends Command {
 	constructor(client) {
@@ -13,7 +14,10 @@ module.exports = class CleverbotEndCommand extends Command {
 
 	run(msg) {
 		if (!this.client.isOwner(msg.author) && !this.client.allowedUsers.includes(msg.author.id)) {
-			return msg.say('You are not currently allowed to use Cleverbot.');
+			return msg.say(stripIndents`
+				You are not currently allowed to use Cleverbot.
+				Please visit ${this.client.options.invite} for more information.
+			`);
 		}
 		const cleverbot = this.client.cleverbots.get(msg.channel.id);
 		if (!cleverbot) return msg.say('There is not a Cleverbot conversation in this channel.');
