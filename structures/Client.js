@@ -11,6 +11,8 @@ const url = require('url');
 const path = require('path');
 const Redis = require('./Redis');
 const Font = require('./Font');
+const BotList = require('./BotList');
+const Patreon = require('./Patreon');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
@@ -21,14 +23,7 @@ const {
 	XIAO_WEBHOOK_TOKEN,
 	REPORT_CHANNEL_ID,
 	JOIN_LEAVE_CHANNEL_ID,
-	COMMAND_CHANNEL_ID,
-	PATREON_ACCESS_TOKEN,
-	PATREON_CAMPAIGN_ID,
-	TOP_GG_TOKEN,
-	BOTS_GG_TOKEN,
-	DISCORDBOTLIST_TOKEN,
-	CARBON_TOKEN,
-	BLIST_TOKEN
+	COMMAND_CHANNEL_ID
 } = process.env;
 
 module.exports = class XiaoClient extends CommandoClient {
@@ -46,13 +41,14 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.redis = Redis ? Redis.db : null;
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.timers = new TimerManager(this);
+		this.botList = new BotList(this);
+		this.patreon = new Patreon();
 		this.blacklist = { guild: [], user: [] };
 		this.patrons = null;
 		this.pokemon = new PokemonStore();
 		this.games = new Collection();
 		this.dispatchers = new Map();
 		this.cleverbots = new Map();
-		this.allowedUsers = [];
 		this.phone = new PhoneManager(this);
 		this.activities = activities;
 		this.leaveMessages = leaveMsgs;
@@ -75,111 +71,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		moment.tz.link('America/Vancouver|Neopia');
 		moment.tz.link('America/Los_Angeles|Discord');
 		moment.tz.link('America/New_York|Dragon');
-	}
-
-	async fetchPatrons() {
-		if (!PATREON_ACCESS_TOKEN || !PATREON_CAMPAIGN_ID) return null;
-		const { text } = await request
-			.get(`https://www.patreon.com/api/oauth2/v2/campaigns/${PATREON_CAMPAIGN_ID}/members`)
-			.set({ Authorization: `Bearer ${PATREON_ACCESS_TOKEN}` })
-			.query({
-				include: 'currently_entitled_tiers,user',
-				'fields[user]': 'social_connections',
-				'fields[member]': 'patron_status'
-			});
-		const body = JSON.parse(text);
-		const patrons = [];
-		for (const patron of body.data) {
-			if (patron.attributes.patron_status !== 'active_patron') continue;
-			const socials = body.included.find(user => user.id === patron.relationships.user.data.id)
-				?.attributes?.social_connections;
-			if (!socials || !socials.discord || !socials.discord.user_id) continue;
-			patrons.push(socials.discord.user_id);
-		}
-		this.patrons = patrons;
-		return patrons;
-	}
-
-	async postTopGGStats() {
-		if (!TOP_GG_TOKEN) return null;
-		try {
-			const { body } = await request
-				.post(`https://top.gg/api/bots/${this.user.id}/stats`)
-				.set({ Authorization: TOP_GG_TOKEN })
-				.send({ server_count: this.guilds.cache.size });
-			this.logger.info('[TOP.GG] Posted stats.');
-			return body;
-		} catch (err) {
-			this.logger.error(`[TOP.GG] Failed to post stats:\n${err.stack}`);
-			return err;
-		}
-	}
-
-	async postBotsGGStats() {
-		if (!BOTS_GG_TOKEN) return null;
-		try {
-			const { body } = await request
-				.post(`https://discord.bots.gg/api/v1/bots/${this.user.id}/stats`)
-				.set({ Authorization: BOTS_GG_TOKEN })
-				.send({ guildCount: this.guilds.cache.size });
-			this.logger.info('[BOTS.GG] Posted stats.');
-			return body;
-		} catch (err) {
-			this.logger.error(`[BOTS.GG] Failed to post stats:\n${err.stack}`);
-			return err;
-		}
-	}
-
-	async postDiscordBotListStats() {
-		if (!DISCORDBOTLIST_TOKEN) return null;
-		try {
-			const { body } = await request
-				.post(`https://discordbotlist.com/api/v1/bots/${this.user.id}/stats`)
-				.set({ Authorization: DISCORDBOTLIST_TOKEN })
-				.send({
-					guilds: this.guilds.cache.size,
-					users: this.users.cache.size,
-					voice_connections: this.dispatchers.size
-				});
-			this.logger.info('[DISCORDBOTLIST] Posted stats.');
-			return body;
-		} catch (err) {
-			this.logger.error(`[DISCORDBOTLIST] Failed to post stats:\n${err.stack}`);
-			return err;
-		}
-	}
-
-	async postCarbonStats() {
-		if (!CARBON_TOKEN) return null;
-		try {
-			const { body } = await request
-				.post('https://www.carbonitex.net/discord/data/botdata.php')
-				.send({
-					key: CARBON_TOKEN,
-					servercount: this.guilds.cache.size,
-					botid: this.user.id
-				});
-			this.logger.info('[CARBON] Posted stats.');
-			return body;
-		} catch (err) {
-			this.logger.error(`[CARBON] Failed to post stats:\n${err.stack}`);
-			return err;
-		}
-	}
-
-	async postBlistStats() {
-		if (!BLIST_TOKEN) return null;
-		try {
-			const { body } = await request
-				.patch(`https://blist.xyz/api/v2/bot/${this.user.id}/stats/`)
-				.set({ Authorization: BLIST_TOKEN })
-				.send({ server_count: this.guilds.cache.size });
-			this.logger.info('[BLIST] Posted stats.');
-			return body;
-		} catch (err) {
-			this.logger.error(`[BLIST] Failed to post stats:\n${err.stack}`);
-			return err;
-		}
 	}
 
 	importBlacklist() {
@@ -218,32 +109,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		text += '\n	]\n}\n';
 		const buf = Buffer.from(text);
 		fs.writeFileSync(path.join(__dirname, '..', 'blacklist.json'), buf, { encoding: 'utf8' });
-		return buf;
-	}
-
-	importCleverbotAllowed() {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'cleverbot.json'), { encoding: 'utf8' });
-		const file = JSON.parse(read);
-		if (!Array.isArray(file)) return null;
-		for (const id of file) {
-			if (typeof id !== 'string') continue;
-			if (this.allowedUsers.includes(id)) continue;
-			this.allowedUsers.push(id);
-		}
-		return file;
-	}
-
-	exportCleverbotAllowed() {
-		let text = '[\n	';
-		if (this.allowedUsers.length) {
-			for (const id of this.allowedUsers) {
-				text += `"${id}",\n	`;
-			}
-			text = text.slice(0, -3);
-		}
-		text += '\n]\n';
-		const buf = Buffer.from(text);
-		fs.writeFileSync(path.join(__dirname, '..', 'cleverbot.json'), buf, { encoding: 'utf8' });
 		return buf;
 	}
 
