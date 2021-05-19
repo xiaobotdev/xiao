@@ -50,6 +50,7 @@ module.exports = class SmashBrosCommand extends Command {
 				)
 				.setDescription(fighter.dlc ? '_DLC Fighter_' : '')
 				.setImage(fighter.image)
+				.setThumbnail(fighter.logoImage)
 				.setFooter(`Fighter ${fighter.number}`, fighter.smallImage);
 			return msg.embed(embed);
 		} catch (err) {
@@ -70,6 +71,7 @@ module.exports = class SmashBrosCommand extends Command {
 				url: `https://www.smashbros.com/en_US/fighter/${fighter.url}.html`,
 				image: `https://www.smashbros.com/assets_v2/img/fighter/${fighter.file}/main.png`,
 				smallImage: `https://www.smashbros.com/assets_v2/img/fighter/pict/${fighter.file}.png`,
+				logoImage: `https://www.smashbros.com/assets_v2/img/fighter/logo/${figher.series}_en.png`,
 				series: fighter.series,
 				color: fighter.color,
 				dlc: Boolean(fighter.dlc),
