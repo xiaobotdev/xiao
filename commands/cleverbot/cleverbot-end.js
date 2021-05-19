@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const { stripIndents } = require('common-tags');
 
 module.exports = class CleverbotEndCommand extends Command {
 	constructor(client) {
@@ -8,17 +7,12 @@ module.exports = class CleverbotEndCommand extends Command {
 			aliases: ['clevs-end', 'chat-end', 'end'],
 			group: 'cleverbot',
 			memberName: 'cleverbot-end',
-			description: 'Ends the current Cleverbot chat.'
+			description: 'Ends the current Cleverbot chat.',
+			patronOnly: true
 		});
 	}
 
 	run(msg) {
-		if (!this.client.isOwner(msg.author) && !this.client.patreon.isPatron(msg.author.id)) {
-			return msg.say(stripIndents`
-				You are not currently allowed to use Cleverbot.
-				Please visit ${this.client.options.invite} for more information.
-			`);
-		}
 		const cleverbot = this.client.cleverbots.get(msg.channel.id);
 		if (!cleverbot) return msg.say('There is not a Cleverbot conversation in this channel.');
 		clearTimeout(cleverbot.timeout);
