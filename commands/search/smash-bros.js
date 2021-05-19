@@ -34,11 +34,11 @@ module.exports = class SmashBrosCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const fighters = await this.fetchFighters();
-			const found = fighters.find(fighter => {
+			const fighter = fighters.find(fighter => {
 				const search = query.toLowerCase().replaceAll(' ', '_').replace(/[^A-Z_]/i, '');
 				return search === fighter.slug;
 			});
-			if (!found) return msg.say('Could not find any results.');
+			if (!fighter) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
 				.setColor(fighter.color)
 				.setTitle(fighter.name)
