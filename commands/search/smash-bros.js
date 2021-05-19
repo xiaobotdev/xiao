@@ -34,9 +34,9 @@ module.exports = class SmashBrosCommand extends Command {
 	async run(msg, { query }) {
 		try {
 			const fighters = await this.fetchFighters();
-			const fighter = fighters.find(fighter => {
+			const fighter = fighters.find(char => {
 				const search = this.makeSlug(query).replace('_and_', '_&_');
-				return search === fighter.slug || fighter.alias === search;
+				return search === char.slug || char.alias === search;
 			});
 			if (!fighter) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
