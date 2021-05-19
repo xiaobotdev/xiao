@@ -35,8 +35,8 @@ module.exports = class SmashBrosCommand extends Command {
 		try {
 			const fighters = await this.fetchFighters();
 			const fighter = fighters.find(fighter => {
-				const search = query.toLowerCase().replaceAll(' ', '_').replace(/[^A-Z_]/ig, '');
-				return search === fighter.slug;
+				const search = this.makeSlug(query);
+				return search === fighter.slug || fighter.alias === search;
 			});
 			if (!fighter) return msg.say('Could not find any results.');
 			const embed = new MessageEmbed()
@@ -64,6 +64,7 @@ module.exports = class SmashBrosCommand extends Command {
 		for (const fighter of body.fighters) {
 			const data = {
 				name: fighter.displayName.en_US.replaceAll('<br>', ''),
+				alias: this.makeAlias(fighter.displayName.en_US),
 				number: fighter.displayNum,
 				id: fighter.id,
 				url: `https://www.smashbros.com/en_US/fighter/${fighter.url}.html`,
@@ -72,16 +73,28 @@ module.exports = class SmashBrosCommand extends Command {
 				series: fighter.series,
 				color: fighter.color,
 				dlc: Boolean(fighter.dlc),
-				slug: fighter.displayName.en_US
-					.replaceAll('<br>', '')
-					.replaceAll(' ', '_')
-					.replace(/[^A-Z_&]/ig, '')
-					.toLowerCase()
+				slug: this.makeSlug(fighter.displayName.en_US)
 			};
 			fighters.push(data);
 		}
 		this.cache = fighters;
 		setTimeout(() => { this.cache = null; }, 8.64e+7);
 		return this.cache;
+	}
+
+	makeSlug(name) {
+		return name
+			.replace(/\/.+/, '')
+			.trim()
+			.replaceAll('<br>', '')
+			.replaceAll(' ', '_')
+			.replace(/[^A-Z_&]/ig, '')
+			.toLowerCase();
+	}
+
+	makeAlias(name) {
+		const alias = name.match(/\/(.+)/, '');
+		if (!alias) return null;
+		return this.makeSlug(alias[1]);
 	}
 };
