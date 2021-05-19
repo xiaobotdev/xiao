@@ -44,7 +44,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.botList = new BotList(this);
 		this.patreon = new Patreon();
 		this.blacklist = { guild: [], user: [] };
-		this.patrons = null;
 		this.pokemon = new PokemonStore();
 		this.games = new Collection();
 		this.dispatchers = new Map();
