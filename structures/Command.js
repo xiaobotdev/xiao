@@ -19,13 +19,14 @@ module.exports = class XiaoCommand extends Command {
 		});
 	}
 
-	hasPermission(msg) {
+	hasPermission(msg, ownerOverride) {
+		if (ownerOverride && this.client.isOwner(msg.author)) return true;
 		if (this.patronOnly && !this.client.patreon.isPatron(msg.author.id)) {
 			return stripIndents`
 				The \`${this.name}\` command can only be used by Patrons.
 				Visit <https://www.patreon.com/xiaodiscord> to sign-up!
 			`;
 		}
-		return super.hasPermission(msg);
+		return super.hasPermission(msg, ownerOverride);
 	}
 };
