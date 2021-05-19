@@ -26,6 +26,6 @@ module.exports = class XiaoCommand extends Command {
 				Visit <https://www.patreon.com/xiaodiscord> to sign-up!
 			`;
 		}
-		return true;
+		return super.hasPermission(msg);
 	}
 };
