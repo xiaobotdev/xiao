@@ -54,7 +54,8 @@ module.exports = class JeopardyCommand extends Command {
 				dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 				await reactIfAble(msg, this.client.user, '🔉');
 			}
-			await msg.reply(`The category is: **${question.category.title.toUpperCase()}**. 30 seconds, good luck.`, {
+			const category = question.category ? question.category.title.toUpperCase() : '';
+			await msg.reply(`${category ? `The category is: **${category}**. ` : ''}30 seconds, good luck.`, {
 				files: [{ attachment: clueCard, name: 'clue-card.png' }]
 			});
 			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
