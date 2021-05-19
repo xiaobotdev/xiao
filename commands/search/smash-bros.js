@@ -48,7 +48,7 @@ module.exports = class SmashBrosCommand extends Command {
 					'https://i.imgur.com/p407YZ5.jpg',
 					'https://www.smashbros.com/en_US/index.html'
 				)
-				.setDescription(fighter.dlc ? '_DLC Fighter_' : null)
+				.setDescription(fighter.dlc ? '_DLC Fighter_' : '')
 				.setImage(fighter.image)
 				.setFooter(`Fighter ${fighter.number}`, fighter.smallImage);
 			return msg.embed(embed);
