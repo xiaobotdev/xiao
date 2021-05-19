@@ -66,7 +66,7 @@ module.exports = class SmashBrosCommand extends Command {
 			const data = {
 				name: fighter.displayName.en_US.replaceAll('<br>', ''),
 				alias: this.makeAlias(fighter.displayName.en_US),
-				number: fighter.displayNum,
+				number: fighter.displayNum.replace('\'', 'E'),
 				id: fighter.id,
 				url: `https://www.smashbros.com/en_US/fighter/${fighter.url}.html`,
 				image: `https://www.smashbros.com/assets_v2/img/fighter/${fighter.file}/main.png`,
