@@ -75,7 +75,7 @@ module.exports = class SmashBrosCommand extends Command {
 				slug: fighter.displayName.en_US
 					.replaceAll('<br>', '')
 					.replaceAll(' ', '_')
-					.replace(/[^A-Z_]/i, '')
+					.replace(/[^A-Z_&]/ig, '')
 					.toLowerCase()
 			};
 			fighters.push(data);
