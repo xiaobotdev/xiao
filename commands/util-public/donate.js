@@ -26,6 +26,9 @@ module.exports = class DonateCommand extends Command {
 	}
 
 	run(msg) {
+		if (this.client.patreon.patrons.includes(msg.author.id)) {
+			return msg.say('🎉 You are already a patron. Enjoy your rewards!');
+		}
 		return msg.say(stripIndents`
 			Contribute to development!
 			<https://www.patreon.com/xiaodiscord>
