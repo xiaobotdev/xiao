@@ -35,7 +35,7 @@ module.exports = class SmashBrosCommand extends Command {
 		try {
 			const fighters = await this.fetchFighters();
 			const fighter = fighters.find(fighter => {
-				const search = query.toLowerCase().replaceAll(' ', '_').replace(/[^A-Z_]/i, '');
+				const search = query.toLowerCase().replaceAll(' ', '_').replace(/[^A-Z_]/ig, '');
 				return search === fighter.slug;
 			});
 			if (!fighter) return msg.say('Could not find any results.');
