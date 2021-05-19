@@ -10,6 +10,7 @@ module.exports = class CleverbotCommand extends Command {
 			group: 'cleverbot',
 			memberName: 'cleverbot',
 			description: 'Starts a Cleverbot conversation.',
+			patronOnly: true,
 			credit: [
 				{
 					name: 'Cleverbot',
@@ -22,12 +23,6 @@ module.exports = class CleverbotCommand extends Command {
 	}
 
 	run(msg) {
-		if (!this.client.isOwner(msg.author) && !this.client.patreon.isPatron(msg.author.id)) {
-			return msg.say(stripIndents`
-				You are not currently allowed to use Cleverbot.
-				Please visit ${this.client.options.invite} for more information.
-			`);
-		}
 		if (this.client.cleverbots.has(msg.channel.id)) {
 			return msg.say('There is already a Cleverbot conversation in this channel.');
 		}
