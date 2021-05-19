@@ -8,7 +8,7 @@ module.exports = class Patreon {
 		this.patrons = [];
 		this.forced = [];
 		this.accessToken = accessToken || PATREON_ACCESS_TOKEN;
-		this.campignID = campaignID || PATREON_CAMPAIGN_ID;
+		this.campaignID = campaignID || PATREON_CAMPAIGN_ID;
 	}
 
 	isPatron(id) {
@@ -16,7 +16,7 @@ module.exports = class Patreon {
 	}
 
 	async fetchPatrons() {
-		if (!this.accessToken || !this.campignID) return null;
+		if (!this.accessToken || !this.campaignID) return null;
 		const { text } = await request
 			.get(`https://www.patreon.com/api/oauth2/v2/campaigns/${PATREON_CAMPAIGN_ID}/members`)
 			.set({ Authorization: `Bearer ${PATREON_ACCESS_TOKEN}` })
