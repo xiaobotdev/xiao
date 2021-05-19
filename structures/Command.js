@@ -20,7 +20,7 @@ module.exports = class XiaoCommand extends Command {
 	}
 
 	hasPermission(msg, ownerOverride) {
-		if (ownerOverride && this.client.isOwner(msg.author)) return true;
+		if (this.client.isOwner(msg.author)) return true;
 		if (this.patronOnly && !this.client.patreon.isPatron(msg.author.id)) {
 			return stripIndents`
 				The \`${this.name}\` command can only be used by Patrons.
