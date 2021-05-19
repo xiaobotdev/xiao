@@ -10,14 +10,20 @@ const {
 module.exports = class BotList {
 	constructor(client) {
 		Object.defineProperty(this, 'client', { value: client });
+
+		this.topGGToken = TOP_GG_TOKEN;
+		this.botsGGToken = BOTS_GG_TOKEN;
+		this.discordBotsListToken = DISCORDBOTLIST_TOKEN;
+		this.carbonToken = CARBON_TOKEN;
+		this.blistToken = BLIST_TOKEN;
 	}
 
 	async postTopGGStats() {
-		if (!TOP_GG_TOKEN) return null;
+		if (!this.topGGToken) return null;
 		try {
 			const { body } = await request
 				.post(`https://top.gg/api/bots/${this.client.user.id}/stats`)
-				.set({ Authorization: TOP_GG_TOKEN })
+				.set({ Authorization: this.topGGToken })
 				.send({ server_count: this.client.guilds.cache.size });
 			this.client.logger.info('[TOP.GG] Posted stats.');
 			return body;
@@ -28,11 +34,11 @@ module.exports = class BotList {
 	}
 
 	async postBotsGGStats() {
-		if (!BOTS_GG_TOKEN) return null;
+		if (!this.botsGGToken) return null;
 		try {
 			const { body } = await request
 				.post(`https://discord.bots.gg/api/v1/bots/${this.client.user.id}/stats`)
-				.set({ Authorization: BOTS_GG_TOKEN })
+				.set({ Authorization: this.botsGGToken })
 				.send({ guildCount: this.client.guilds.cache.size });
 			this.client.logger.info('[BOTS.GG] Posted stats.');
 			return body;
@@ -43,11 +49,11 @@ module.exports = class BotList {
 	}
 
 	async postDiscordBotListStats() {
-		if (!DISCORDBOTLIST_TOKEN) return null;
+		if (!this.discordBotsListToken) return null;
 		try {
 			const { body } = await request
 				.post(`https://discordbotlist.com/api/v1/bots/${this.client.user.id}/stats`)
-				.set({ Authorization: DISCORDBOTLIST_TOKEN })
+				.set({ Authorization: this.discordBotsListToken })
 				.send({
 					guilds: this.client.guilds.cache.size,
 					users: this.client.users.cache.size,
@@ -62,12 +68,12 @@ module.exports = class BotList {
 	}
 
 	async postCarbonStats() {
-		if (!CARBON_TOKEN) return null;
+		if (!this.carbonToken) return null;
 		try {
 			const { body } = await request
 				.post('https://www.carbonitex.net/discord/data/botdata.php')
 				.send({
-					key: CARBON_TOKEN,
+					key: this.carbonToken,
 					servercount: this.client.guilds.cache.size,
 					botid: this.client.user.id
 				});
@@ -80,11 +86,11 @@ module.exports = class BotList {
 	}
 
 	async postBlistStats() {
-		if (!BLIST_TOKEN) return null;
+		if (!this.blistToken) return null;
 		try {
 			const { body } = await request
 				.patch(`https://blist.xyz/api/v2/bot/${this.client.user.id}/stats/`)
-				.set({ Authorization: BLIST_TOKEN })
+				.set({ Authorization: this.blistToken })
 				.send({ server_count: this.client.guilds.cache.size });
 			this.client.logger.info('[BLIST] Posted stats.');
 			return body;
