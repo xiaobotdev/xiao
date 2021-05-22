@@ -63,7 +63,7 @@ module.exports = class WouldYouRatherCommand extends Command {
 	}
 
 	async fetchScenario() {
-		const { text } = await request.get('http://either.io/questions/next/');
+		const { text } = await request.get('http://either.io/questions/next/1');
 		return JSON.parse(text).questions[0];
 	}
 
