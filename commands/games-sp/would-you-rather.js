@@ -63,8 +63,8 @@ module.exports = class WouldYouRatherCommand extends Command {
 	}
 
 	async fetchScenario() {
-		const { text } = await request.get('http://either.io/');
-		return JSON.parse(text.match(/window.initial_question = (\{.+\})/)[1]).question;
+		const { text } = await request.get('http://either.io/questions/next/');
+		return JSON.parse(text).questions[0];
 	}
 
 	async postResponse(id, bool) {
