@@ -400,13 +400,14 @@ client.dispatcher.addInhibitor(msg => {
 	return false;
 });
 
-client.dispatcher.addInhibitor(msg => {
-	if (APRIL_FOOLS !== 'true') return false;
-	if (client.isOwner(msg.author)) return false;
-	const random = Math.floor(Math.random() * 2);
-	if (random === 1) return msg.reply(aprilFoolsMsgs[Math.floor(Math.random() * aprilFoolsMsgs.length)]);
-	return false;
-});
+if (APRIL_FOOLS) {
+	client.dispatcher.addInhibitor(msg => {
+		if (client.isOwner(msg.author)) return false;
+		const random = Math.floor(Math.random() * 2);
+		if (random === 1) return msg.reply(aprilFoolsMsgs[Math.floor(Math.random() * aprilFoolsMsgs.length)]);
+		return false;
+	});
+}
 
 client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));
 
