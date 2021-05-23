@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { js_beautify: beautify } = require('js-beautify');
-const { stripIndent } = require('common-tags');
 
 module.exports = class BeautifyCommand extends Command {
 	constructor(client) {
@@ -22,10 +21,6 @@ module.exports = class BeautifyCommand extends Command {
 	}
 
 	run(msg, { code }) {
-		return msg.reply(stripIndent`
-			\`\`\`${code.lang || 'js'}
-			${beautify(code.code)}
-			\`\`\`
-		`);
+		return msg.reply(`\`\`\`${code.lang || 'js'}\n${beautify(code.code)}\n\`\`\``);
 	}
 };
