@@ -32,21 +32,9 @@
 		"node": ">=15"
 	},
 	"imports": {
-		"#assets": {
-			"default": "./assets"
-		},
-		"#commands": {
-			"default": "./commands"
-		},
-		"#structures": {
-			"default": "./structures"
-		},
-		"#types": {
-			"default": "./types"
-		},
-		"#util": {
-			"default": "./util"
-		}
+		"#assets/*": "./assets/json/*.json",
+		"#canvas": "./util/Canvas.js",
+		"#util": "./util/Util.js"
 	},
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
