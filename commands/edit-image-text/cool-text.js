@@ -1,7 +1,9 @@
 const Command = require('../../structures/Command');
 const request = require('node-superfetch');
+const { Agent } = require('https');
 const { list } = require('../../util/Util');
 const fonts = require('../../assets/json/cool-text');
+const noRejectAgent = new Agent({ rejectUnauthorized: false });
 
 module.exports = class CoolTextCommand extends Command {
 	constructor(client) {
@@ -43,9 +45,7 @@ module.exports = class CoolTextCommand extends Command {
 					...fonts[font],
 					Text: text
 				});
-			process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-			const { body: imageBody } = await request.get(body.renderLocation);
-			process.env.NODE_TLS_REJECT_UNAUTHORIZED = undefined;
+			const { body: imageBody } = await request.get(body.renderLocation, { agent: noRejectAgent });
 			const format = body.isAnimated ? 'gif' : 'png';
 			return msg.say({ files: [{ attachment: imageBody, name: `${font}.${format}` }] });
 		} catch (err) {
