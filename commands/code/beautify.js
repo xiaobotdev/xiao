@@ -22,6 +22,6 @@ module.exports = class BeautifyCommand extends Command {
 
 	run(msg, { code }) {
 		if (code.lang && code.lang !== 'js') return msg.reply('I can only beautify JavaScript.');
-		return msg.reply(`\`\`\`${code.lang || 'js'}\n${beautify(code.code)}\n\`\`\``);
+		return msg.reply(`\`\`\`js\n${beautify(code.code)}\n\`\`\``);
 	}
 };
