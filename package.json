@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "140.3.0",
+	"version": "140.3.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"private": true,
@@ -30,6 +30,23 @@
 	"homepage": "https://github.com/dragonfire535/xiao#readme",
 	"engines": {
 		"node": ">=15"
+	},
+	"imports": {
+		"#assets": {
+			"default": "./assets"
+		},
+		"#commands": {
+			"default": "./commands"
+		},
+		"#structures": {
+			"default": "./structures"
+		},
+		"#types": {
+			"default": "./types"
+		},
+		"#util": {
+			"default": "./util"
+		}
 	},
 	"dependencies": {
 		"@discordjs/collection": "^0.1.6",
