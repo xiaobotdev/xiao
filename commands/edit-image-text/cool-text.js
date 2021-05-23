@@ -39,13 +39,13 @@ module.exports = class CoolTextCommand extends Command {
 
 	async run(msg, { font, text }) {
 		try {
-			const { body, text } = await request
+			const { body, text: content } = await request
 				.post('https://cooltext.com/PostChange')
 				.attach({
 					...fonts[font],
 					Text: text
 				});
-			if (!text) return msg.say('Failed to create an image with this text.');
+			if (!content) return msg.say('Failed to create an image with this text.');
 			const { body: imageBody } = await request.get(body.renderLocation, { agent: noRejectAgent });
 			const format = body.isAnimated ? 'gif' : 'png';
 			return msg.say({ files: [{ attachment: imageBody, name: `${font}.${format}` }] });
