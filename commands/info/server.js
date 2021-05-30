@@ -29,14 +29,14 @@ module.exports = class ServerCommand extends Command {
 	}
 
 	async run(msg) {
-		if (!msg.guild.members.cache.has(msg.guild.ownerID)) await msg.guild.members.fetch(msg.guild.ownerID);
+		const owner = await msg.guild.fetchOwner();
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setThumbnail(msg.guild.iconURL({ format: 'png' }))
 			.addField('❯ Name', msg.guild.name, true)
 			.addField('❯ ID', msg.guild.id, true)
 			.addField('❯ Creation Date', moment.utc(msg.guild.createdAt).format('MM/DD/YYYY h:mm A'), true)
-			.addField('❯ Owner', msg.guild.owner.user.tag, true)
+			.addField('❯ Owner', owner.user.tag, true)
 			.addField('❯ Boost Count', formatNumber(msg.guild.premiumSubscriptionCount || 0), true)
 			.addField('❯ Boost Tier', msg.guild.premiumTier ? `Tier ${msg.guild.premiumTier}` : 'None', true)
 			.addField('❯ Region', msg.guild.region.toUpperCase(), true)
