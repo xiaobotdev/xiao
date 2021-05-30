@@ -1,4 +1,5 @@
 const Command = require('../../structures/Command');
+const Collection = require('@discordjs/collection');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 
@@ -28,7 +29,7 @@ module.exports = class SmashBrosCommand extends Command {
 			]
 		});
 
-		this.cache = null;
+		this.cache = new Collection();
 	}
 
 	async run(msg, { query }) {
@@ -59,9 +60,8 @@ module.exports = class SmashBrosCommand extends Command {
 	}
 
 	async fetchFighters() {
-		if (this.cache) return this.cache;
+		if (this.cache.size) return this.cache;
 		const { body } = await request.get('https://www.smashbros.com/assets_v2/data/fighter.json');
-		const fighters = [];
 		for (const fighter of body.fighters) {
 			const data = {
 				name: fighter.displayName.en_US.replaceAll('<br>', ''),
@@ -77,10 +77,9 @@ module.exports = class SmashBrosCommand extends Command {
 				dlc: Boolean(fighter.dlc),
 				slug: this.makeSlug(fighter.displayName.en_US)
 			};
-			fighters.push(data);
+			this.cache.set(fighter.id, data);
 		}
-		this.cache = fighters;
-		setTimeout(() => { this.cache = null; }, 8.64e+7);
+		setTimeout(() => this.cache.clear(), 8.64e+7);
 		return this.cache;
 	}
 
