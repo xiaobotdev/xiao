@@ -1,5 +1,5 @@
 const request = require('node-superfetch');
-const Command = require('../Command');
+const Command = require('../../framework/Command');
 const path = require('path');
 const { reactIfAble } = require('../../util/Util');
 const { IMGUR_KEY } = process.env;

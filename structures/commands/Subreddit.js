@@ -1,5 +1,5 @@
 const request = require('node-superfetch');
-const Command = require('../Command');
+const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const { formatNumberK, shorten } = require('../../util/Util');
 
