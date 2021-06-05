@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { above100, above92, above88, above80, below80 } = require('../../assets/json/final-grade');
 
 module.exports = class FinalGradeCommand extends Command {

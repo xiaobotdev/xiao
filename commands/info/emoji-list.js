@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { list } = require('../../util/Util');
 const types = ['animated', 'regular'];
 

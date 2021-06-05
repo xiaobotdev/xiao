@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const facts = require('../../assets/json/cat-fact');
 const { THECATAPI_KEY } = process.env;

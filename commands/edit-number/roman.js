@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const numerals = require('../../assets/json/roman');
 
 module.exports = class RomanCommand extends Command {

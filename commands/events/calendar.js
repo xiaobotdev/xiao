@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const { firstUpperCase, isLeap } = require('../../util/Util');
 const monthsWith30 = [4, 6, 9, 11];

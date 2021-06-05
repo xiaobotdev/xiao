@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { safe, nsfw } = require('../../assets/json/never-have-i-ever');
 const all = [...safe, ...nsfw];
 

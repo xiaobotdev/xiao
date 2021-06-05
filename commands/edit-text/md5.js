@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { hash } = require('../../util/Util');
 
 module.exports = class MD5Command extends Command {

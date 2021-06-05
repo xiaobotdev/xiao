@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { createCanvas } = require('canvas');
 const { stripIndents } = require('common-tags');
 const Diff = require('text-diff');

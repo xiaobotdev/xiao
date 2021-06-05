@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const zalgo = require('../../assets/json/zalgo');
 
 module.exports = class ZalgoCommand extends Command {

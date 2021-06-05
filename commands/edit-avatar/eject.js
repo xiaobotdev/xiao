@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const GIFEncoder = require('gifencoder');
 const { MersenneTwister19937, bool } = require('random-js');

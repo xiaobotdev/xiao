@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const words = require('../../assets/json/word-list');
 
 module.exports = class WordCommand extends Command {

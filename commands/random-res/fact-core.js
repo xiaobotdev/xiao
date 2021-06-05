@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const facts = require('../../assets/json/fact-core');
 
 module.exports = class FactCoreCommand extends Command {

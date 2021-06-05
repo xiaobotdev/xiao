@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { shuffle, firstUpperCase } = require('../../util/Util');
 const forced = require('../../assets/json/nobody-name');
 

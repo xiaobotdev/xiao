@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const Kuroshiro = require('kuroshiro');
 const KuromojiAnalyzer = require('kuroshiro-analyzer-kuromoji');
 

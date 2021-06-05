@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const pokemon = require('../../assets/json/pokemon-fusion');
 const { firstUpperCase } = require('../../util/Util');
 const pokeKeys = Object.keys(pokemon);

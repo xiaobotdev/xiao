@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const path = require('path');
 
 module.exports = class EatPantCommand extends Command {

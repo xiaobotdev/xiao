@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { Connect4AI } = require('connect4-ai');
 const { stripIndents } = require('common-tags');
 const emojiRegex = require('emoji-regex/RGI_Emoji.js');

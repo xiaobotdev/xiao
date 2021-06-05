@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { GuildEmoji } = require('discord.js');
 const twemoji = require('twemoji-parser');
 const request = require('node-superfetch');

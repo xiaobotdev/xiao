@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { loadImage } = require('canvas');
 const request = require('node-superfetch');
 

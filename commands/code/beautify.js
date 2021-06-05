@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { js_beautify: beautify } = require('js-beautify');
 
 module.exports = class BeautifyCommand extends Command {

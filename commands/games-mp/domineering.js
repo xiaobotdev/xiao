@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const { verify, list } = require('../../util/Util');
 const colors = require('../../assets/json/domineering');

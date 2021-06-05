@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { MOCKING_EMOJI_ID, MOCKING_EMOJI_NAME } = process.env;
 
 module.exports = class MockingCommand extends Command {

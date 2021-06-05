@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const { shuffle, removeDuplicates, verify } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');

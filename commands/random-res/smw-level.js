@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { start, end } = require('../../assets/json/smw-level');
 
 module.exports = class SmwLevelCommand extends Command {

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { list } = require('../../util/Util');
 const types = ['face', 'front', 'frontfull', 'head', 'bust', 'full', 'skin'];

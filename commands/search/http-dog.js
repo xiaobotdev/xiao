@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 
 module.exports = class HttpDogCommand extends Command {

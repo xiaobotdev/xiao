@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { randomRange } = require('../../util/Util');
 const fishes = require('../../assets/json/fishy');
 

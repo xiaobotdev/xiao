@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const validURL = require('valid-url');
 
 module.exports = class ValidUrlCommand extends Command {

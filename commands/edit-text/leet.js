@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const Leet = require('../../structures/Leet');
 
 module.exports = class LeetCommand extends Command {

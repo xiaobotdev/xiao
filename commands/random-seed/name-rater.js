@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { User } = require('discord.js');
 const { MersenneTwister19937, integer } = require('random-js');
 const texts = require('../../assets/json/name-rater');

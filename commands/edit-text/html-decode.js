@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { decode: decodeHTML } = require('html-entities');
 
 module.exports = class HtmlDecodeCommand extends Command {

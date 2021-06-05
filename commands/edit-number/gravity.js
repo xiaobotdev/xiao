@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { list, firstUpperCase, formatNumber } = require('../../util/Util');
 const planets = require('../../assets/json/gravity');
 

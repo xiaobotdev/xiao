@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const rules = require('../../assets/json/rule');
 
 module.exports = class RuleCommand extends Command {

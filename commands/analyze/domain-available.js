@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { parseDomain, ParseResultType } = require('parse-domain');
 const { GODADDY_KEY, GODADDY_SECRET } = process.env;

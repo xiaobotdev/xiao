@@ -1,4 +1,4 @@
-const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
+const ImgurAlbumCommand = require('../../framework/Commands/ImgurAlbum');
 const { HUG_ALBUM_ID } = process.env;
 
 module.exports = class HugCommand extends ImgurAlbumCommand {

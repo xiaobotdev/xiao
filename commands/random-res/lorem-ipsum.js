@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { firstUpperCase } = require('../../util/Util');
 const words = require('../../assets/json/lorem-ipsum');
 const firstSentence = ['Lorem', 'ipsum', 'dolor', 'sit', 'amet,', 'consectetur', 'adipiscing', 'elit'];

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const Collection = require('@discordjs/collection');
 const { randomRange, verify, awaitPlayers } = require('../../util/Util');
 

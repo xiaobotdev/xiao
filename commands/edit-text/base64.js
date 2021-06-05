@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { list, base64 } = require('../../util/Util');
 const modes = ['encode', 'decode'];
 

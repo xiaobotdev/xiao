@@ -1,4 +1,4 @@
-const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
+const ImgurAlbumCommand = require('../../framework/Commands/ImgurAlbum');
 const { WAKE_UP_ALBUM_ID } = process.env;
 
 module.exports = class WakeUpCommand extends ImgurAlbumCommand {

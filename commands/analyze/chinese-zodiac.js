@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const signs = require('../../assets/json/chinese-zodiac');
 
 module.exports = class ChineseZodiacCommand extends Command {

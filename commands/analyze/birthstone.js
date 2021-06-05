@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { list, firstUpperCase } = require('../../util/Util');
 const { months } = require('../../assets/json/month');
 const stones = require('../../assets/json/birthstone');

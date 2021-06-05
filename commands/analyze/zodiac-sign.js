@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const signs = require('../../assets/json/zodiac-sign');
 const monthsWith30 = [4, 6, 9, 11];
 

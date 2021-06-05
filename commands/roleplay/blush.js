@@ -1,4 +1,4 @@
-const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
+const ImgurAlbumCommand = require('../../framework/Commands/ImgurAlbum');
 const { BLUSH_ALBUM_ID } = process.env;
 
 module.exports = class BlushCommand extends ImgurAlbumCommand {

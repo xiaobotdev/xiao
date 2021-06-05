@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const libs = require('../../assets/json/mad-libs');
 
 module.exports = class MadLibsCommand extends Command {

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const jokes = require('../../assets/json/yo-mama');
 
 module.exports = class YoMamaCommand extends Command {

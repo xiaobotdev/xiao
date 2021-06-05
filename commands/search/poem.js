@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { html } = require('common-tags');
 const { shorten } = require('../../util/Util');

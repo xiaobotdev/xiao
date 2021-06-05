@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const { Aki, regions } = require('aki-api');
 const { stripIndents } = require('common-tags');

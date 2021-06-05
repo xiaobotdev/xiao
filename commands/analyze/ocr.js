@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { createWorker } = require('tesseract.js');
 const { reactIfAble } = require('../../util/Util');
 const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;

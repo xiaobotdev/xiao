@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class PokedexItemCommand extends Command {

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { letterTrans } = require('custom-translate');
 const dictionary = require('../../assets/json/tebahpla');
 

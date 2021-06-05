@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const modes = ['add', 'subtract', 'exact'];
 const modeDesc = {
 	add: 'Added',

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { oneLine } = require('common-tags');
 const { MersenneTwister19937, integer } = require('random-js');
 const genders = ['male', 'female'];

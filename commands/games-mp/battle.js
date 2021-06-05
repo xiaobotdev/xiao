@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const Battle = require('../../structures/battle/Battle');
 const { randomRange, verify } = require('../../util/Util');
 

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const versions = require('../../assets/json/pokedex-location');
 

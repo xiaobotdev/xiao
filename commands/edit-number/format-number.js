@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { formatNumber } = require('../../util/Util');
 
 module.exports = class FormatNumberCommand extends Command {

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const RSS = require('rss-parser');
 const { stripIndents } = require('common-tags');
 

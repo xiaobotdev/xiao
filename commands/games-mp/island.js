@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const Collection = require('@discordjs/collection');
 const { delay, awaitPlayers, reactIfAble } = require('../../util/Util');

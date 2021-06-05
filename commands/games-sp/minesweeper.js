@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const BombSweeper = require('bombsweeper.js');
 const moment = require('moment');
 require('moment-duration-format');
