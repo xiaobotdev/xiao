@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const { Linter } = require('eslint');
 const linter = new Linter();

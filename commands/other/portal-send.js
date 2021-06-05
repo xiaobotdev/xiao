@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripInvites, stripNSFWURLs } = require('../../util/Util');
 const { stripIndents } = require('common-tags');
 const { PORTAL_EMOJI_ID, PORTAL_EMOJI_NAME } = process.env;

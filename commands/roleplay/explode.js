@@ -1,4 +1,4 @@
-const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
+const ImgurAlbumCommand = require('../../framework/Commands/ImgurAlbum');
 const { EXPLODE_ALBUM_ID } = process.env;
 
 module.exports = class ExplodeCommand extends ImgurAlbumCommand {

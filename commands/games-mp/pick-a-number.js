@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { verify } = require('../../util/Util');
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

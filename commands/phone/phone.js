@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const PhoneCall = require('../../structures/phone/PhoneCall');
 
 module.exports = class PhoneCommand extends Command {

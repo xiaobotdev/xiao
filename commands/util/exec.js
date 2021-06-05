@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);

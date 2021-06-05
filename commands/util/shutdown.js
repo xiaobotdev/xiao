@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { verify, list } = require('../../util/Util');
 const texts = require('../../assets/json/shutdown');
 

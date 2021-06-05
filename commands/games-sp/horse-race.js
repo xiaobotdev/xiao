@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { stripIndents } = require('common-tags');

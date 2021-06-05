@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const { delay, randomRange, verify, fetchHSUserDisplay } = require('../../util/Util');
 const words = ['fire', 'draw', 'shoot', 'bang', 'pull', 'boom'];

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const wuzzy = require('wuzzy');
 
 module.exports = class PercentDiffCommand extends Command {

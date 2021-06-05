@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 
 module.exports = class ChanceCommand extends Command {
 	constructor(client) {

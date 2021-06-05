@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { shorten } = require('../../util/Util');
 
 module.exports = class MessageSourceCommand extends Command {

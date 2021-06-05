@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const path = require('path');
 const { list, reactIfAble } = require('../../util/Util');
 const sounds = require('../../assets/json/soundboard');

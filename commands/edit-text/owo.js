@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const faces = ['(・\\`ω´・)', ';;w;;', 'owo', 'UwU', '>w<', '^w^'];
 
 module.exports = class OwOCommand extends Command {

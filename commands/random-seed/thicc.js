@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { MersenneTwister19937, integer } = require('random-js');
 
 module.exports = class ThiccCommand extends Command {

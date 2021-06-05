@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const math = require('mathjs');
 const { stripIndents } = require('common-tags');
 const { formatNumber } = require('../../util/Util');

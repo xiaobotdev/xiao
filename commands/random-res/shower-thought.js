@@ -1,4 +1,4 @@
-const SubredditCommand = require('../../structures/commands/Subreddit');
+const SubredditCommand = require('../../framework/Commands/Subreddit');
 
 module.exports = class ShowerThoughtCommand extends SubredditCommand {
 	constructor(client) {

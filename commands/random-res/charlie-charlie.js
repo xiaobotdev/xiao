@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripIndent } = require('common-tags');
 const answers = ['yes', 'no'];
 

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { version } = require('../../package');
 const { GOOGLE_KEY } = process.env;

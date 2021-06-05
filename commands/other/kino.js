@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const { escapeMarkdown } = require('discord.js');
 const { verify } = require('../../util/Util');

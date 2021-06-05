@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { formatNumber } = require('../../util/Util');
 const letters = require('../../assets/json/scrabble-score');
 

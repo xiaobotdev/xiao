@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { default: didYouMean, ReturnTypeEnums } = require('didyoumean2');
 const { stripIndents } = require('common-tags');
 

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const teachings = require('../../assets/json/axis-cult');
 
 module.exports = class AxisCultCommand extends Command {

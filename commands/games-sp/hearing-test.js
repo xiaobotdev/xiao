@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const path = require('path');
 const { stripIndents } = require('common-tags');
 const { delay, verify } = require('../../util/Util');

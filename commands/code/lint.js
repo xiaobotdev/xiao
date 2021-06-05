@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { Linter } = require('eslint');
 const linter = new Linter();
 const { stripIndents } = require('common-tags');

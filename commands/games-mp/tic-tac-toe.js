@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const tictactoe = require('tictactoe-minimax-ai');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');

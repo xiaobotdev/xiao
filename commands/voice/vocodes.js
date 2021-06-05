@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { Readable } = require('stream');
 const { list, reactIfAble } = require('../../util/Util');

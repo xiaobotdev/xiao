@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const sides = [NaN, 0, null, undefined, ''];
 
 module.exports = class QuantumCoinCommand extends Command {

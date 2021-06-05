@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const Game = require('../../structures/mafia/Game');
 const { verify } = require('../../util/Util');
 const storyCount = 21;

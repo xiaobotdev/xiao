@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const Diff = require('text-diff');
 
 module.exports = class TextDiffCommand extends Command {

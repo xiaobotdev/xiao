@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { randomRange, formatNumber } = require('../../util/Util');
 
 module.exports = class RollCommand extends Command {

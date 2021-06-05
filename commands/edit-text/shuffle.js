@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { shuffle } = require('../../util/Util');
 
 module.exports = class ShuffleCommand extends Command {

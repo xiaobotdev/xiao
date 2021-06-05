@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const core = require('mathjs/number');
 const math = core.create(core.all);
 const limitedEvaluate = math.evaluate;

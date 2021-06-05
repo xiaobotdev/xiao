@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const choices = ['rock', 'paper', 'scissors'];
 
 module.exports = class RockPaperScissorsCommand extends Command {

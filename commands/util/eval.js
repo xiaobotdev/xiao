@@ -3,7 +3,7 @@ const util = require('util');
 const discord = require('discord.js');
 const tags = require('common-tags');
 const { escapeRegex } = require('../../util/Util');
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 
 const nl = '!!NL!!';
 const nlPattern = new RegExp(nl, 'g');

@@ -1,4 +1,4 @@
-const Command = require('../../structures/Command');
+const Command = require('../../framework/Command');
 const { MersenneTwister19937, integer } = require('random-js');
 const { formatNumber } = require('../../util/Util');
 const { LOVER_USER_ID } = process.env;
