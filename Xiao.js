@@ -1,8 +1,8 @@
 require('dotenv').config();
-const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE, APRIL_FOOLS } = process.env;
+const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const { mkdir } = require('fs/promises');
 const path = require('path');
-const { Intents, Permissions, SystemChannelFlags, MessageEmbed } = require('discord.js');
+const { Intents, MessageEmbed } = require('discord.js');
 const Client = require('./structures/Client');
 const client = new Client({
 	commandPrefix: XIAO_PREFIX,
@@ -16,7 +16,6 @@ const client = new Client({
 	intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILD_MEMBERS]
 });
 const { formatNumber, checkFileExists } = require('./util/Util');
-const aprilFoolsMsgs = require('./assets/json/april-fools');
 
 client.registry
 	.registerDefaultTypes()
@@ -52,13 +51,6 @@ client.registry
 		['roleplay', 'Roleplay'],
 		['other', 'Other']
 	])
-	.registerDefaultCommands({
-		help: false,
-		ping: false,
-		prefix: false,
-		commandState: false,
-		unknownCommand: false
-	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on('ready', async () => {
@@ -248,7 +240,7 @@ client.on('message', async msg => {
 	const hasEmbed = msg.embeds.length !== 0;
 	if (msg.author.bot || (!hasText && !hasImage && !hasEmbed)) return;
 	if (client.blacklist.user.includes(msg.author.id)) return;
-	if (msg.isCommand && msg.channel.type !== 'dm') return;
+	if (client.dispatcher.isCommand(msg) && msg.channel.type !== 'dm') return;
 	if (client.games.has(msg.channel.id)) return;
 
 	// Cleverbot handler
@@ -340,8 +332,8 @@ client.on('guildDelete', async guild => {
 client.on('guildMemberRemove', async member => {
 	if (member.id === client.user.id) return null;
 	const channel = member.guild.systemChannel;
-	if (!channel || !channel.permissionsFor(client.user).has(Permissions.FLAGS.SEND_MESSAGES)) return null;
-	if (member.guild.systemChannelFlags.has(SystemChannelFlags.FLAGS.SUPPRESS_JOIN_NOTIFICATIONS)) return null;
+	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
+	if (member.guild.systemChannelFlags.has('SUPPRESS_JOIN_NOTIFICATIONS')) return null;
 	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
 	try {
 		const leaveMessage = client.leaveMessages[Math.floor(Math.random() * client.leaveMessages.length)];
@@ -387,29 +379,10 @@ client.on('warn', warn => client.logger.warn(warn));
 client.on('commandRun', async command => {
 	if (command.unknown) return;
 	client.logger.info(`[COMMAND] ${command.name} was used.`);
-	if (command.uses === undefined) return;
-	command.uses++;
-	if (command.lastRun === undefined) return;
-	command.lastRun = new Date();
 	const channel = await client.fetchCommandChannel();
 	channel.send(`\`${command.name}\` was used! It has now been used **${formatNumber(command.uses)}** times!`)
 		.catch(() => null);
 });
-
-client.dispatcher.addInhibitor(msg => {
-	if (client.blacklist.user.includes(msg.author.id)) return 'blacklisted';
-	if (msg.guild && client.blacklist.guild.includes(msg.guild.id)) return 'blacklisted';
-	return false;
-});
-
-if (APRIL_FOOLS) {
-	client.dispatcher.addInhibitor(msg => {
-		if (client.isOwner(msg.author)) return false;
-		const random = Math.floor(Math.random() * 2);
-		if (random === 1) return msg.reply(aprilFoolsMsgs[Math.floor(Math.random() * aprilFoolsMsgs.length)]);
-		return false;
-	});
-}
 
 client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));
 

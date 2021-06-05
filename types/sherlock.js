@@ -1,14 +1,14 @@
-const { ArgumentType } = require('discord.js-commando');
+const Argument = require('../framework/ArgumentType');
 const sherlock = require('sherlockjs');
 
-module.exports = class SherlockType extends ArgumentType {
+module.exports = class SherlockType extends Argument {
 	constructor(client) {
 		super(client, 'sherlock');
 	}
 
 	validate(value) {
 		const time = sherlock.parse(value);
-		if (!time.startDate) return 'Please provide a valid starting time.';
+		if (!time.startDate) return false;
 		return true;
 	}
 

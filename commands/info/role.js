@@ -1,7 +1,7 @@
 const Command = require('../../structures/Command');
 const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
-const { util: { permissions } } = require('discord.js-commando');
+const permissions = require('../../assets/json/permission-names');
 
 module.exports = class RoleCommand extends Command {
 	constructor(client) {

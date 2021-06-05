@@ -1,6 +1,5 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed, version: djsVersion } = require('discord.js');
-const { version: commandoVersion } = require('discord.js-commando');
 const moment = require('moment');
 require('moment-duration-format');
 const { formatNumber, embedURL } = require('../../util/Util');
@@ -39,7 +38,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Version', `v${version}`, true)
 			.addField('❯ Node.js', process.version, true)
 			.addField('❯ Discord.js', `v${djsVersion}`, true)
-			.addField('❯ Commando', `v${commandoVersion}`, true)
+			.addField('❯ Framework', 'Custom', true)
 			.addField('❯ Dependencies', Object.keys(deps).sort().join(', '));
 		return msg.embed(embed);
 	}

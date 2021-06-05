@@ -1,8 +1,8 @@
-const { ArgumentType } = require('discord.js-commando');
+const Argument = require('../framework/ArgumentType');
 const { URL } = require('url');
 const validURL = require('valid-url');
 
-module.exports = class UrlType extends ArgumentType {
+module.exports = class UrlType extends Argument {
 	constructor(client) {
 		super(client, 'url');
 	}
