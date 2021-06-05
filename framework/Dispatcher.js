@@ -32,15 +32,15 @@ module.exports = class CommandDispatcher {
 			};
 		}
 		const content = msg.content.replace(this.commandPattern, '').trim();
-		const firstResult = (content.match(argRegex) || []).map(m => m.replace(argRegex, '$1$2'));
-		const parsed = minimist(firstResult);
-		const result = { flags: [...parsed] };
+		const result = (content.match(argRegex) || []).map(m => m.replace(argRegex, '$1$2'));
+		const parsed = minimist(result);
+		const finalResult = { flags: parsed };
 		for (let i = 0; i < command.args.length; i++) {
 			const arg = command.args[i];
 			const parsedArg = result._[i];
 			if (arg.isEmpty(parsedArg, msg, arg)) {
 				if (arg.default) {
-					result[arg.name] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
+					finalResult[arg.name] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 					continue;
 				} else {
 					return `The "${arg.label || arg.name}" argument is required.`;
@@ -48,9 +48,9 @@ module.exports = class CommandDispatcher {
 			}
 			const valid = await arg.validate(parsedArg, msg, arg);
 			if (!valid) return `An invalid value was provided for the "${arg.label || arg.name}" argument.`;
-			result[arg.name] = await arg.parse(parsedArg, msg, arg);
+			finalResult[arg.name] = await arg.parse(parsedArg, msg, arg);
 		}
-		return { command, args: result };
+		return { command, args: finalResult };
 	}
 
 	resolveCommand(command) {
