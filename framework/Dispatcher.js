@@ -1,5 +1,5 @@
 const minimist = require('minimist');
-const argRegex = /"([^"]*)"|(\S+)/g;
+const argRegex = /"([^"]*)"|(\b[^]+)/g;
 
 module.exports = class CommandDispatcher {
 	constructor(client) {
