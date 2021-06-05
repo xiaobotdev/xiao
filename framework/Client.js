@@ -39,7 +39,7 @@ module.exports = class CommandClient extends Client {
 
 		if (msg.channel.partial) msg.channel = await this.channels.fetch(msg.channel.id);
 		if (msg.partial) msg = await msg.channel.messages.fetch(msg.id);
-		if (msg.member.partial || !msg.guild.members.cache.has(msg.author.id)) {
+		if (!msg.member || msg.member.partial || !msg.guild.members.cache.has(msg.author.id)) {
 			await msg.guild.members.fetch(msg.author.id);
 		}
 
