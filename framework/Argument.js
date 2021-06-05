@@ -5,6 +5,7 @@ module.exports = class Argument {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.key = options.key.toLowerCase();
+		this.label = options.label;
 		this.typeID = options.type.toLowerCase();
 		this.min = options.min;
 		this.max = options.max;
