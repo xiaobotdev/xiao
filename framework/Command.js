@@ -10,7 +10,7 @@ module.exports = class Command {
 		this.memberName = options.memberName.toLowerCase();
 		this.description = options.description;
 		this.details = options.details || null;
-		this.args = options.args ? options.args.map(arg => new Argument(arg)) : [];
+		this.args = options.args ? options.args.map(arg => new Argument(client, arg)) : [];
 		this.clientPermissions = options.clientPermissions || [];
 		this.userPermissions = options.userPermissions || [];
 		this.ownerOnly = options.ownerOnly || false;
