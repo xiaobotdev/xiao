@@ -50,7 +50,7 @@ module.exports = class CommandClient extends Client {
 		if (msg.author.bot) return;
 		if (this.blacklist.user.includes(msg.author.id)) return;
 		if (msg.guild && this.blacklist.guild.includes(msg.guild.id)) return;
-		if (!msg.channel.permissionsFor(this.user).has('SEND_MESSAGES')) return;
+		if (msg.guild && !msg.channel.permissionsFor(this.user).has('SEND_MESSAGES')) return;
 		if (!this.dispatcher.isCommand(msg)) return;
 
 		const parsed = await this.dispatcher.parseMessage(msg);
