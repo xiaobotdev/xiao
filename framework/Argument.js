@@ -10,6 +10,7 @@ module.exports = class Argument {
 		this.max = options.max;
 		this.oneOf = options.oneOf;
 		this.default = options.default;
+		this.infinite = options.infinite || false;
 		this.avatarSize = options.avatarSize || 2048;
 		this.validator = options.validate;
 		this.parser = options.parse;

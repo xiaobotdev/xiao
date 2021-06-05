@@ -37,6 +37,25 @@ module.exports = class CommandDispatcher {
 		const finalResult = { flags: parsed };
 		for (let i = 0; i < command.args.length; i++) {
 			const arg = command.args[i];
+			if (arg.infinite) {
+				const infinite = parsed.slice(i);
+				const parsedArgs = [];
+				for (const parsedArg of infinite) {
+					if (arg.isEmpty(parsedArg, msg, arg)) {
+						if (arg.default) {
+							finalResult[arg.name] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
+							continue;
+						} else {
+							return `The "${arg.label || arg.name}" argument is required.`;
+						}
+					}
+					const valid = await arg.validate(parsedArg, msg, arg);
+					if (!valid) return `An invalid value was provided for one of the "${arg.label || arg.name}" arguments.`;
+					parsedArgs.push(await arg.parse(parsedArg, msg, arg));
+				}
+				finalResult[arg.name] = parsedArgs;
+				break;
+			}
 			const parsedArg = parsed._[i];
 			if (arg.isEmpty(parsedArg, msg, arg)) {
 				if (arg.default) {
