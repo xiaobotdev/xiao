@@ -23,7 +23,8 @@ module.exports = class CommandDispatcher {
 	}
 
 	async parseMessage(msg) {
-		const command = this.resolveCommand(command[2].toLowerCase());
+		const matched = msg.content.match(this.commandPattern);
+		const command = this.resolveCommand(matched[2].toLowerCase());
 		if (!command) {
 			return {
 				command: this.registry.commands.find(cmd => cmd.unknown),
