@@ -27,7 +27,7 @@ module.exports = class CommandDispatcher {
 		const command = this.resolveCommand(matched[2].toLowerCase());
 		if (!command) {
 			return {
-				command: this.registry.commands.find(cmd => cmd.unknown),
+				command: this.client.registry.commands.find(cmd => cmd.unknown),
 				args: { command: command[2].toLowerCase() }
 			};
 		}
@@ -54,6 +54,6 @@ module.exports = class CommandDispatcher {
 	}
 
 	resolveCommand(command) {
-		return this.registry.commands.find(cmd => cmd.name === command || cmd.aliases.includes(command));
+		return this.client.registry.commands.find(cmd => cmd.name === command || cmd.aliases.includes(command));
 	}
 };
