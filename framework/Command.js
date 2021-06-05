@@ -38,7 +38,7 @@ module.exports = class Command {
 
 	usage() {
 		const args = this.args
-			.map(arg => `${arg.default ? '[' : '<'}${arg.label || arg.name}${arg.default ? ']' : '>'}`).join(' ');
+			.map(arg => `${arg.default ? '[' : '<'}${arg.label || arg.key}${arg.default ? ']' : '>'}`).join(' ');
 		return `\`${this.client.commandPrefix}${this.name} ${args}\` or \`@${this.client.user.tag} ${this.name} ${args}\``;
 	}
 

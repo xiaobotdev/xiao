@@ -43,31 +43,31 @@ module.exports = class CommandDispatcher {
 				for (const parsedArg of infinite) {
 					if (arg.isEmpty(parsedArg, msg, arg)) {
 						if (arg.default) {
-							finalResult[arg.name] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
-							continue;
+							finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
+							break;
 						} else {
-							return `The "${arg.label || arg.name}" argument is required.`;
+							return `The "${arg.label || arg.key}" argument is required.`;
 						}
 					}
 					const valid = await arg.validate(parsedArg, msg, arg);
-					if (!valid) return `An invalid value was provided for one of the "${arg.label || arg.name}" arguments.`;
+					if (!valid) return `An invalid value was provided for one of the "${arg.label || arg.key}" arguments.`;
 					parsedArgs.push(await arg.parse(parsedArg, msg, arg));
 				}
-				finalResult[arg.name] = parsedArgs;
+				finalResult[arg.key] = parsedArgs;
 				break;
 			}
 			const parsedArg = parsed._[i];
 			if (arg.isEmpty(parsedArg, msg, arg)) {
 				if (arg.default) {
-					finalResult[arg.name] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
+					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 					continue;
 				} else {
-					return `The "${arg.label || arg.name}" argument is required.`;
+					return `The "${arg.label || arg.key}" argument is required.`;
 				}
 			}
 			const valid = await arg.validate(parsedArg, msg, arg);
-			if (!valid) return `An invalid value was provided for the "${arg.label || arg.name}" argument.`;
-			finalResult[arg.name] = await arg.parse(parsedArg, msg, arg);
+			if (!valid) return `An invalid value was provided for the "${arg.label || arg.key}" argument.`;
+			finalResult[arg.key] = await arg.parse(parsedArg, msg, arg);
 		}
 		return { command, args: finalResult };
 	}
