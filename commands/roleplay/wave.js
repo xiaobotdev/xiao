@@ -1,4 +1,4 @@
-const ImgurAlbumCommand = require('../../framework/Commands/ImgurAlbum');
+const ImgurAlbumCommand = require('../../structures/Commands/ImgurAlbum');
 const { WAVE_ALBUM_ID } = process.env;
 
 module.exports = class WaveCommand extends ImgurAlbumCommand {

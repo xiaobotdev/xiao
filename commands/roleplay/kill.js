@@ -1,4 +1,4 @@
-const ImgurAlbumCommand = require('../../framework/Commands/ImgurAlbum');
+const ImgurAlbumCommand = require('../../structures/Commands/ImgurAlbum');
 const { KILL_ALBUM_ID } = process.env;
 
 module.exports = class KillCommand extends ImgurAlbumCommand {

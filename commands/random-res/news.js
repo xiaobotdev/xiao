@@ -1,4 +1,4 @@
-const SubredditCommand = require('../../framework/Commands/Subreddit');
+const SubredditCommand = require('../../structures/Commands/Subreddit');
 const { list } = require('../../util/Util');
 const subreddits = require('../../assets/json/news');
 
