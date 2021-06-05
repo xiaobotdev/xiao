@@ -38,7 +38,7 @@ module.exports = class CommandDispatcher {
 		for (let i = 0; i < command.args.length; i++) {
 			const arg = command.args[i];
 			if (arg.infinite) {
-				const infinite = parsed._.slice(i);
+				const infinite = parsed._.slice(i).map(j => j.toString());
 				const parsedArgs = [];
 				for (const parsedArg of infinite) {
 					if (arg.isEmpty(parsedArg, msg, arg)) {
@@ -56,7 +56,7 @@ module.exports = class CommandDispatcher {
 				finalResult[arg.key] = parsedArgs;
 				break;
 			}
-			const parsedArg = parsed._[i];
+			const parsedArg = parsed._[i].toString();
 			if (arg.isEmpty(parsedArg, msg, arg)) {
 				if (arg.default) {
 					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
