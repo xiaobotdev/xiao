@@ -32,7 +32,7 @@ module.exports = class EvalCommand extends Command {
 
 	run(msg, args) {
 		// Make a bunch of helpers
-		/* eslint-disable no-unused-vars, destructuring */
+		/* eslint-disable no-unused-vars, prefer-destructuring */
 		const message = msg;
 		const client = msg.client;
 		const lastResult = this.lastResult;
@@ -48,7 +48,7 @@ module.exports = class EvalCommand extends Command {
 				}
 			}
 		};
-		/* eslint-enable no-unused-vars, destructuring */
+		/* eslint-enable no-unused-vars, prefer-destructuring */
 
 		// Remove any surrounding code blocks before evaluation
 		if (args.script.startsWith('```') && args.script.endsWith('```')) {
