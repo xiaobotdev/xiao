@@ -380,6 +380,7 @@ client.on('commandRun', async command => {
 	if (command.unknown) return;
 	client.logger.info(`[COMMAND] ${command.name} was used.`);
 	const channel = await client.fetchCommandChannel();
+	if (!channel) return;
 	channel.send(`\`${command.name}\` was used! It has now been used **${formatNumber(command.uses)}** times!`)
 		.catch(() => null);
 });
