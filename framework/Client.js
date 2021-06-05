@@ -40,7 +40,11 @@ module.exports = class CommandClient extends Client {
 		if (msg.channel.partial) msg.channel = await this.channels.fetch(msg.channel.id);
 		if (msg.partial) msg = await msg.channel.messages.fetch(msg.id);
 		if (msg.guild && (!msg.member || msg.member.partial || !msg.guild.members.cache.has(msg.author.id))) {
-			await msg.guild.members.fetch(msg.author.id);
+			try {
+				await msg.guild.members.fetch(msg.author.id);
+			} catch {
+				// Ignore
+			}
 		}
 
 		if (msg.author.bot) return;
@@ -79,14 +83,14 @@ module.exports = class CommandClient extends Client {
 			`);
 			return;
 		}
-		if (command.clientPermissions.length) {
+		if (msg.guild && command.clientPermissions.length) {
 			for (const permission of command.clientPermissions) {
 				if (msg.channel.permissionsFor(this.user).has(permission)) continue;
 				await msg.reply(`The \`${command.name}\` command requires me to have the "${permission}" permission.`);
 				return;
 			}
 		}
-		if (command.userPermissions.length) {
+		if (msg.guild && command.userPermissions.length) {
 			for (const permission of command.userPermissions) {
 				if (msg.channel.permissionsFor(msg.author).has(permission)) continue;
 				await msg.reply(`You need the "${permission}" permission to use the \`${command.name}\` command.`);
