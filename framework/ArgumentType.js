@@ -1,5 +1,7 @@
 module.exports = class ArgumentType {
-	constructor(id) {
+	constructor(client, id) {
+		Object.defineProperty(this, 'client', { value: client });
+
 		this.id = id.toLowerCase();
 	}
 
