@@ -17,6 +17,10 @@ module.exports = class Util {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
+	static escapeRegex(str) {
+		return str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
+	}
+
 	static shuffle(array) {
 		const arr = array.slice(0);
 		for (let i = arr.length - 1; i >= 0; i--) {

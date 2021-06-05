@@ -1,9 +1,9 @@
-const { ArgumentType } = require('discord.js-commando');
+const Argument = require('../framework/ArgumentType');
 const cityTimezones = require('city-timezones');
 const { ZipToTz } = require('zip-to-timezone');
 const moment = require('moment-timezone');
 
-module.exports = class TimezoneType extends ArgumentType {
+module.exports = class TimezoneType extends Argument {
 	constructor(client) {
 		super(client, 'timezone');
 	}

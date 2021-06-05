@@ -18,7 +18,7 @@ module.exports = class UnknownCommandCommand extends Command {
 	run(msg) {
 		if (!msg.guild) return null;
 		const commands = this.makeCommandArray(this.client.isOwner(msg.author), msg.channel.nsfw);
-		const command = msg.content.match(this.client.dispatcher._commandPatterns[this.client.commandPrefix]);
+		const command = msg.content.match(this.client.dispatcher.commandPattern);
 		const str = command ? command[2] : msg.content.split(' ')[0];
 		const results = didYouMean(str, commands, { returnType: ReturnTypeEnums.ALL_SORTED_MATCHES });
 		return msg.reply(stripIndents`

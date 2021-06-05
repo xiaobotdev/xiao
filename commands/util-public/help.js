@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command');
 const { MessageEmbed } = require('discord.js');
-const { util: { permissions } } = require('discord.js-commando');
+const permissions = require('../../assets/json/permission-names');
 const { stripIndents } = require('common-tags');
 
 module.exports = class HelpCommand extends Command {
@@ -31,7 +31,7 @@ module.exports = class HelpCommand extends Command {
 				const embed = new MessageEmbed()
 					.setTitle(`Command List (Page ${i + 1})`)
 					.setDescription(stripIndents`
-						To run a command, use ${msg.anyUsage('<command>')}.
+						To run a command, use ${this.usage()}.
 						${nsfw ? '' : 'Use in an NSFW channel to see NSFW commands.'}
 					`)
 					.setColor(0x00AE86);

@@ -1,14 +1,13 @@
-const { ArgumentType, util: { disambiguation } } = require('discord.js-commando');
-const { escapeMarkdown } = require('discord.js');
+const Argument = require('../framework/ArgumentType');
 
-module.exports = class FontArgumentType extends ArgumentType {
+module.exports = class FontArgument extends Argument {
 	constructor(client) {
 		super(client, 'font');
 	}
 
 	validate(value) {
 		const choice = value.toLowerCase();
-		let found = this.client.fonts.filter(font => {
+		const found = this.client.fonts.filter(font => {
 			if (font.isFallback) return false;
 			if (font.name.toLowerCase().includes(choice)) return true;
 			if (font.filenameNoExt.toLowerCase().includes(choice)) return true;
@@ -22,10 +21,7 @@ module.exports = class FontArgumentType extends ArgumentType {
 			return false;
 		});
 		if (foundExact.size === 1) return true;
-		if (foundExact.size > 0) found = foundExact;
-		return found.size <= 15
-			? `${disambiguation(found.map(font => escapeMarkdown(font.filenameNoExt)), 'fonts', null)}\n`
-			: 'Multiple fonts found. Please be more specific.';
+		return false;
 	}
 
 	parse(value) {

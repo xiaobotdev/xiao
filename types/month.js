@@ -1,7 +1,7 @@
-const { ArgumentType } = require('discord.js-commando');
+const Argument = require('../framework/ArgumentType');
 const { months, shorthand } = require('../assets/json/month');
 
-module.exports = class MonthArgumentType extends ArgumentType {
+module.exports = class MonthArgument extends Argument {
 	constructor(client) {
 		super(client, 'month');
 	}

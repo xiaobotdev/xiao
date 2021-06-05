@@ -1,4 +1,4 @@
-const { CommandoClient } = require('discord.js-commando');
+const CommandClient = require('../framework/Client');
 const { WebhookClient } = require('discord.js');
 const request = require('node-superfetch');
 const Collection = require('@discordjs/collection');
@@ -12,7 +12,6 @@ const path = require('path');
 const Redis = require('./Redis');
 const Font = require('./Font');
 const BotList = require('./BotList');
-const Patreon = require('./Patreon');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
@@ -26,7 +25,7 @@ const {
 	COMMAND_CHANNEL_ID
 } = process.env;
 
-module.exports = class XiaoClient extends CommandoClient {
+module.exports = class XiaoClient extends CommandClient {
 	constructor(options) {
 		super(options);
 
@@ -42,8 +41,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
 		this.timers = new TimerManager(this);
 		this.botList = new BotList(this);
-		this.patreon = new Patreon();
-		this.blacklist = { guild: [], user: [] };
 		this.pokemon = new PokemonStore();
 		this.games = new Collection();
 		this.dispatchers = new Map();
@@ -70,110 +67,6 @@ module.exports = class XiaoClient extends CommandoClient {
 		moment.tz.link('America/Vancouver|Neopia');
 		moment.tz.link('America/Los_Angeles|Discord');
 		moment.tz.link('America/New_York|Dragon');
-	}
-
-	importBlacklist() {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'blacklist.json'), { encoding: 'utf8' });
-		const file = JSON.parse(read);
-		if (typeof file !== 'object' || Array.isArray(file)) return null;
-		if (!file.guild || !file.user) return null;
-		for (const id of file.guild) {
-			if (typeof id !== 'string') continue;
-			if (this.blacklist.guild.includes(id)) continue;
-			this.blacklist.guild.push(id);
-		}
-		for (const id of file.user) {
-			if (typeof id !== 'string') continue;
-			if (this.blacklist.user.includes(id)) continue;
-			this.blacklist.user.push(id);
-		}
-		return file;
-	}
-
-	exportBlacklist() {
-		let text = '{\n	"guild": [\n		';
-		if (this.blacklist.guild.length) {
-			for (const id of this.blacklist.guild) {
-				text += `"${id}",\n		`;
-			}
-			text = text.slice(0, -4);
-		}
-		text += '\n	],\n	"user": [\n		';
-		if (this.blacklist.user.length) {
-			for (const id of this.blacklist.user) {
-				text += `"${id}",\n		`;
-			}
-			text = text.slice(0, -4);
-		}
-		text += '\n	]\n}\n';
-		const buf = Buffer.from(text);
-		fs.writeFileSync(path.join(__dirname, '..', 'blacklist.json'), buf, { encoding: 'utf8' });
-		return buf;
-	}
-
-	importCommandLeaderboard(add = false) {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), {
-			encoding: 'utf8'
-		});
-		const file = JSON.parse(read);
-		if (typeof file !== 'object' || Array.isArray(file)) return null;
-		for (const [id, value] of Object.entries(file)) {
-			if (typeof value !== 'number') continue;
-			const found = this.registry.commands.get(id);
-			if (!found || found.uses === undefined) continue;
-			if (add) found.uses += value;
-			else found.uses = value;
-		}
-		return file;
-	}
-
-	exportCommandLeaderboard() {
-		let text = '{';
-		for (const command of this.registry.commands.values()) {
-			if (command.unknown) continue;
-			if (command.uses === undefined) continue;
-			text += `\n	"${command.name}": ${command.uses},`;
-		}
-		text = text.slice(0, -1);
-		text += '\n}\n';
-		const buf = Buffer.from(text);
-		fs.writeFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), buf, {
-			encoding: 'utf8'
-		});
-		return buf;
-	}
-
-	importLastRun() {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'command-last-run.json'), {
-			encoding: 'utf8'
-		});
-		const file = JSON.parse(read);
-		if (typeof file !== 'object' || Array.isArray(file)) return null;
-		for (const [id, value] of Object.entries(file)) {
-			if (!value) continue;
-			const date = new Date(value);
-			if (date.toString() === 'Invalid Date') continue;
-			const found = this.registry.commands.get(id);
-			if (!found || found.lastRun === undefined) continue;
-			found.lastRun = date;
-		}
-		return file;
-	}
-
-	exportLastRun() {
-		let text = '{';
-		for (const command of this.registry.commands.values()) {
-			if (command.unknown) continue;
-			if (command.lastRun === undefined) continue;
-			text += `\n	"${command.name}": ${command.lastRun ? `"${command.lastRun.toISOString()}"` : null},`;
-		}
-		text = text.slice(0, -1);
-		text += '\n}\n';
-		const buf = Buffer.from(text);
-		fs.writeFileSync(path.join(__dirname, '..', 'command-last-run.json'), buf, {
-			encoding: 'utf8'
-		});
-		return buf;
 	}
 
 	async fetchAdultSiteList(force = false) {

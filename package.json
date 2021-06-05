@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "140.3.1",
+	"version": "141.0.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"private": true,
@@ -15,12 +15,10 @@
 	},
 	"keywords": [
 		"bot",
-		"commando",
 		"discord",
 		"discord-api",
 		"discord-bot",
-		"discord-js",
-		"discord-js-commando"
+		"discord-js"
 	],
 	"author": "dragonfire535 <danielbodendahl@gmail.com>",
 	"license": "UNLICENSED",
@@ -52,7 +50,6 @@
 		"custom-translate": "^2.2.8",
 		"didyoumean2": "^4.2.0",
 		"discord.js": "github:discordjs/discord.js",
-		"discord.js-commando": "github:discordjs/Commando",
 		"discord.js-docs": "github:TeeSeal/discord.js-docs",
 		"dotenv": "^9.0.2",
 		"emoji-regex": "^9.2.2",
@@ -70,6 +67,7 @@
 		"kuroshiro": "^1.1.2",
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
 		"mathjs": "^9.4.0",
+		"minimist": "^1.2.5",
 		"moment": "^2.29.1",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.33",

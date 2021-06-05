@@ -1,7 +1,7 @@
-const { ArgumentType } = require('discord.js-commando');
+const Argument = require('../framework/ArgumentType');
 const codeblock = /```(?:(\S+)\n)?\s*([^]+?)\s*```/i;
 
-module.exports = class CodeArgumentType extends ArgumentType {
+module.exports = class CodeArgument extends Argument {
 	constructor(client) {
 		super(client, 'code');
 	}

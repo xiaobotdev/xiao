@@ -1,6 +1,6 @@
-const { ArgumentType } = require('discord.js-commando');
+const Argument = require('../framework/ArgumentType');
 
-module.exports = class PokemonArgumentType extends ArgumentType {
+module.exports = class PokemonArgument extends Argument {
 	constructor(client) {
 		super(client, 'pokemon');
 	}
