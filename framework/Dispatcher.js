@@ -34,7 +34,7 @@ module.exports = class CommandDispatcher {
 		const firstResult = (content.match(argRegex) || []).map(m => m.replace(argRegex, '$1$2'));
 		const parsed = minimist(firstResult);
 		const result = { flags: [...parsed] };
-		for (let i = 0; i > command.args.length; i++) {
+		for (let i = 0; i < command.args.length; i++) {
 			const arg = command.args[i];
 			const parsedArg = result._[i];
 			if (arg.isEmpty(parsedArg, msg, arg)) {
