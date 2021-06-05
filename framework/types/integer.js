@@ -6,7 +6,7 @@ module.exports = class IntegerArgumentType extends ArgumentType {
 	}
 
 	validate(val, msg, arg) {
-		const int = Number.parseInt(val);
+		const int = Number.parseInt(val, 10);
 		if (Number.isNaN(int)) return false;
 		if (arg.oneOf && !arg.oneOf.includes(int)) return false;
 		if (arg.min !== null && typeof arg.min !== 'undefined' && int < arg.min) return false;
@@ -15,6 +15,6 @@ module.exports = class IntegerArgumentType extends ArgumentType {
 	}
 
 	parse(val) {
-		return Number.parseInt(val);
+		return Number.parseInt(val, 10);
 	}
-}
+};

@@ -15,4 +15,4 @@ module.exports = class StringArgumentType extends ArgumentType {
 	parse(val) {
 		return val;
 	}
-}
+};

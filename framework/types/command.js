@@ -14,4 +14,4 @@ module.exports = class CommandArgumentType extends ArgumentType {
 	parse(val) {
 		return this.client.registry.findCommands(val).first();
 	}
-}
+};

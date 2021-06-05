@@ -1,11 +1,7 @@
 const { Structures } = require('discord.js');
 
 module.exports = Structures.extend('Message', Message => {
-	return class CommandMessage extends Message {
-		constructor(...args) {
-			super(...args);
-		}
-
+	class CommandMessage extends Message {
 		say(content, options) {
 			return this.channel.send(content, options);
 		}
@@ -18,4 +14,5 @@ module.exports = Structures.extend('Message', Message => {
 			return this.channel.send(content, { code: lang, ...options });
 		}
 	}
+	return CommandMessage;
 });

@@ -5,7 +5,7 @@ module.exports = class UserArgumentType extends ArgumentType {
 		super(client, 'user');
 	}
 
-	async validate(val, msg, arg) {
+	async validate(val, msg) {
 		const matches = val.match(/^(?:<@!?)?([0-9]+)>?$/);
 		if (matches) {
 			try {
@@ -38,16 +38,16 @@ module.exports = class UserArgumentType extends ArgumentType {
 		if (exactMembers.size === 1) return exactMembers.first().user;
 		return null;
 	}
-}
+};
 
 function memberFilterExact(search) {
-	return mem => mem.user.username.toLowerCase() === search ||
-		(mem.nickname && mem.nickname.toLowerCase() === search) ||
-		mem.tag.toLowerCase() === search;
+	return mem => mem.user.username.toLowerCase() === search
+		|| (mem.nickname && mem.nickname.toLowerCase() === search)
+		|| mem.tag.toLowerCase() === search;
 }
 
 function memberFilterInexact(search) {
-	return mem => mem.user.username.toLowerCase().includes(search) ||
-		(mem.nickname && mem.nickname.toLowerCase().includes(search)) ||
-		mem.tag.toLowerCase().includes(search);
+	return mem => mem.user.username.toLowerCase().includes(search)
+		|| (mem.nickname && mem.nickname.toLowerCase().includes(search))
+		|| mem.tag.toLowerCase().includes(search);
 }

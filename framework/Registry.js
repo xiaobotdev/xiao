@@ -28,8 +28,8 @@ module.exports = class Registry {
 			const commands = fs.readdirSync(path.join(dir, group));
 			for (const command of commands) {
 				if (!command.endsWith('.js')) continue;
-				const required = require(path.join(dir, group, command));
-				this.registerCommand(new required(this.client));
+				const Required = require(path.join(dir, group, command));
+				this.registerCommand(new Required(this.client));
 			}
 		}
 		return this;
@@ -62,8 +62,8 @@ module.exports = class Registry {
 		const types = fs.readdirSync(dir);
 		for (const type of types) {
 			if (!type.endsWith('.js')) continue;
-			const required = require(path.join(dir, type));
-			this.registerType(new required(this.client));
+			const Required = require(path.join(dir, type));
+			this.registerType(new Required(this.client));
 		}
 		return this;
 	}
