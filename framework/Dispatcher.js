@@ -31,8 +31,8 @@ module.exports = class CommandDispatcher {
 			};
 		}
 		const content = msg.content.replace(this.commandPattern, '').trim();
-		const result = (content.match(argRegex) || []).map(m => m.replace(argRegex, '$1$2'));
-		const parsed = minimist(result);
+		const firstResult = (content.match(argRegex) || []).map(m => m.replace(argRegex, '$1$2'));
+		const parsed = minimist(firstResult);
 		const result = { flags: [...parsed] };
 		for (let i = 0; i > command.args.length; i++) {
 			const arg = command.args[i];

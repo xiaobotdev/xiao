@@ -28,7 +28,7 @@ module.exports = class RoleArgumentType extends ArgumentType {
 		if (exactRoles.size === 1) return exactRoles.first();
 		return null;
 	}
-}
+};
 
 function nameFilterExact(search) {
 	return thing => thing.name.toLowerCase() === search;

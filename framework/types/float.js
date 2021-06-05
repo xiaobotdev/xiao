@@ -17,4 +17,4 @@ module.exports = class FloatArgumentType extends ArgumentType {
 	parse(val) {
 		return Number.parseFloat(val);
 	}
-}
+};

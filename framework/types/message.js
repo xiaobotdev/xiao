@@ -13,4 +13,4 @@ module.exports = class MessageArgumentType extends ArgumentType {
 	parse(val, msg) {
 		return msg.channel.messages.cache.get(val);
 	}
-}
+};

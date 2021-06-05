@@ -18,4 +18,4 @@ module.exports = class BooleanArgumentType extends ArgumentType {
 		if (this.falsy.has(lc)) return false;
 		throw new RangeError('Unknown boolean value.');
 	}
-}
+};

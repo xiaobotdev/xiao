@@ -1,5 +1,6 @@
 const { Client } = require('discord.js');
 const fs = require('fs');
+const path = require('path');
 const { stripIndents } = require('common-tags');
 const Registry = require('./Registry');
 const Dispatcher = require('./Dispatcher');
@@ -95,7 +96,9 @@ module.exports = class CommandClient extends Client {
 		const throttleAmount = command.throttles.get(msg.author.id) || 0;
 		if (throttleAmount >= command.throttling.uses) {
 			const timeout = command._timeouts.get(msg.author.id);
-			await msg.reply(`Please wait ${getTimeLeft(timeout)} seconds before using the \`${command.name}\` command again.`);
+			await msg.reply(
+				`Please wait ${getTimeLeft(timeout)} seconds before using the \`${command.name}\` command again.`
+			);
 			return;
 		}
 		command.throttles.set(msg.author.id, throttleAmount + 1);
@@ -224,5 +227,5 @@ module.exports = class CommandClient extends Client {
 };
 
 function getTimeLeft(timeout) {
-    return Math.ceil((timeout._idleStart + timeout._idleTimeout - Date.now()) / 1000);
+	return Math.ceil((timeout._idleStart + timeout._idleTimeout - Date.now()) / 1000);
 }

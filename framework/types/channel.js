@@ -28,7 +28,7 @@ module.exports = class ChannelArgumentType extends ArgumentType {
 		if (exactChannels.size === 1) return exactChannels.first();
 		return null;
 	}
-}
+};
 
 function nameFilterExact(search) {
 	return thing => thing.name.toLowerCase() === search;

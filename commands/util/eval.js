@@ -32,7 +32,7 @@ module.exports = class EvalCommand extends Command {
 
 	run(msg, args) {
 		// Make a bunch of helpers
-		/* eslint-disable no-unused-vars */
+		/* eslint-disable no-unused-vars destructuring */
 		const message = msg;
 		const client = msg.client;
 		const lastResult = this.lastResult;
@@ -42,13 +42,13 @@ module.exports = class EvalCommand extends Command {
 			} else {
 				const result = this.makeResultMessages(val, process.hrtime(this.hrStart));
 				if (Array.isArray(result)) {
-					for(const item of result) msg.reply(item);
+					for (const item of result) msg.reply(item);
 				} else {
 					msg.reply(result);
 				}
 			}
 		};
-		/* eslint-enable no-unused-vars */
+		/* eslint-enable no-unused-vars destructuring */
 
 		// Remove any surrounding code blocks before evaluation
 		if (args.script.startsWith('```') && args.script.endsWith('```')) {
@@ -81,10 +81,10 @@ module.exports = class EvalCommand extends Command {
 			.replace(this.sensitivePattern, '--snip--');
 		const split = inspected.split('\n');
 		const last = inspected.length - 1;
-		const prependPart = inspected[0] !== '{' && inspected[0] !== '[' && inspected[0] !== "'" ? split[0] : inspected[0];
-		const appendPart = inspected[last] !== '}' && inspected[last] !== ']' && inspected[last] !== "'" ?
-			split[split.length - 1] :
-			inspected[last];
+		const prependPart = inspected[0] !== '{' && inspected[0] !== '[' && inspected[0] !== '\'' ? split[0] : inspected[0];
+		const appendPart = inspected[last] !== '}' && inspected[last] !== ']' && inspected[last] !== '\''
+			? split[split.length - 1]
+			: inspected[last];
 		const prepend = `\`\`\`javascript\n${prependPart}\n`;
 		const append = `\n${appendPart}\n\`\`\``;
 		if (input) {
@@ -106,9 +106,8 @@ module.exports = class EvalCommand extends Command {
 
 	get sensitivePattern() {
 		if (!this._sensitivePattern) {
-			const client = this.client;
 			let pattern = '';
-			if (client.token) pattern += escapeRegex(client.token);
+			if (this.client.token) pattern += escapeRegex(this.client.token);
 			Object.defineProperty(this, '_sensitivePattern', { value: new RegExp(pattern, 'gi'), configurable: false });
 		}
 		return this._sensitivePattern;

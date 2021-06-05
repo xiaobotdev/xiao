@@ -15,4 +15,4 @@ module.exports = class DefaultEmojiArgumentType extends ArgumentType {
 	parse(value) {
 		return value;
 	}
-}
+};

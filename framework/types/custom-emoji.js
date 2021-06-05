@@ -29,7 +29,7 @@ module.exports = class CustomEmojiArgumentType extends ArgumentType {
 		if (exactEmojis.size === 1) return exactEmojis.first();
 		return null;
 	}
-}
+};
 
 function nameFilterExact(search) {
 	return emoji => emoji.name.toLowerCase() === search;
