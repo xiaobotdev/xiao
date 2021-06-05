@@ -1,4 +1,4 @@
-const SubredditCommand = require('../../structures/Commands/Subreddit');
+const SubredditCommand = require('../../structures/commands/Subreddit');
 const { list } = require('../../util/Util');
 const subreddits = require('../../assets/json/hentai');
 

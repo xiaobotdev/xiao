@@ -1,4 +1,4 @@
-const SubredditCommand = require('../../structures/Commands/Subreddit');
+const SubredditCommand = require('../../structures/commands/Subreddit');
 
 module.exports = class AwwnimeCommand extends SubredditCommand {
 	constructor(client) {

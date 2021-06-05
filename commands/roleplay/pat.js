@@ -1,4 +1,4 @@
-const ImgurAlbumCommand = require('../../structures/Commands/ImgurAlbum');
+const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
 const { PAT_ALBUM_ID } = process.env;
 
 module.exports = class PatCommand extends ImgurAlbumCommand {
