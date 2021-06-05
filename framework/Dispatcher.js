@@ -28,7 +28,7 @@ module.exports = class CommandDispatcher {
 		if (!command) {
 			return {
 				command: this.client.registry.commands.find(cmd => cmd.unknown),
-				args: { command: command[2].toLowerCase() }
+				args: { command: matched[2].toLowerCase() }
 			};
 		}
 		const content = msg.content.replace(this.commandPattern, '').trim();
