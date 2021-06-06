@@ -61,29 +61,6 @@ module.exports = class CommandClient extends Client {
 			return;
 		}
 		const { command, args } = parsed;
-		if (!command._enabled) {
-			await msg.reply(`The \`${command.name}\` command is disabled.`);
-			return;
-		}
-		if (command.ownerOnly && !this.isOwner(msg.author)) {
-			await msg.reply(`The \`${command.name}\` command can only be used by the bot owner.`);
-			return;
-		}
-		if (command.guildOnly && !msg.guild) {
-			await msg.reply(`The \`${command.name}\` command can only be used in a server channel.`);
-			return;
-		}
-		if (command.nsfw && !msg.channel.nsfw) {
-			await msg.reply(`The \`${command.name}\` command can only be used in NSFW channels.`);
-			return;
-		}
-		if (command.patronOnly && !this.patreon.isPatron(msg.author.id)) {
-			await msg.reply(stripIndents`
-				The \`${command.name}\` command can only be used by Patrons.
-				Visit <https://www.patreon.com/xiaodiscord> to sign-up!
-			`);
-			return;
-		}
 		if (msg.guild && command.clientPermissions.length) {
 			for (const permission of command.clientPermissions) {
 				if (msg.channel.permissionsFor(this.user).has(permission)) continue;
@@ -91,25 +68,50 @@ module.exports = class CommandClient extends Client {
 				return;
 			}
 		}
-		if (msg.guild && command.userPermissions.length) {
-			for (const permission of command.userPermissions) {
-				if (msg.channel.permissionsFor(msg.author).has(permission)) continue;
-				await msg.reply(`You need the "${permission}" permission to use the \`${command.name}\` command.`);
+		if (!this.isOwner(msg.author)) {
+			if (!command._enabled) {
+				await msg.reply(`The \`${command.name}\` command is disabled.`);
 				return;
 			}
-		}
-		const throttleAmount = command.throttles.get(msg.author.id) || 0;
-		if (throttleAmount >= command.throttling.uses) {
-			const timeout = command._timeouts.get(msg.author.id);
-			await msg.reply(
-				`Please wait ${getTimeLeft(timeout)} seconds before using the \`${command.name}\` command again.`
-			);
-			return;
-		}
-		command.throttles.set(msg.author.id, throttleAmount + 1);
-		if (!throttleAmount) {
-			const timeout = setTimeout(() => command.throttles.delete(msg.author.id), command.throttling.duration);
-			command._timeouts.set(msg.author.id, timeout);
+			if (command.ownerOnly) {
+				await msg.reply(`The \`${command.name}\` command can only be used by the bot owner.`);
+				return;
+			}
+			if (command.guildOnly && !msg.guild) {
+				await msg.reply(`The \`${command.name}\` command can only be used in a server channel.`);
+				return;
+			}
+			if (command.nsfw && !msg.channel.nsfw) {
+				await msg.reply(`The \`${command.name}\` command can only be used in NSFW channels.`);
+				return;
+			}
+			if (command.patronOnly && !this.patreon.isPatron(msg.author.id)) {
+				await msg.reply(stripIndents`
+					The \`${command.name}\` command can only be used by Patrons.
+					Visit <https://www.patreon.com/xiaodiscord> to sign-up!
+				`);
+				return;
+			}
+			if (msg.guild && command.userPermissions.length) {
+				for (const permission of command.userPermissions) {
+					if (msg.channel.permissionsFor(msg.author).has(permission)) continue;
+					await msg.reply(`You need the "${permission}" permission to use the \`${command.name}\` command.`);
+					return;
+				}
+			}
+			const throttleAmount = command.throttles.get(msg.author.id) || 0;
+			if (throttleAmount >= command.throttling.uses) {
+				const timeout = command._timeouts.get(msg.author.id);
+				await msg.reply(
+					`Please wait ${getTimeLeft(timeout)} seconds before using the \`${command.name}\` command again.`
+				);
+				return;
+			}
+			command.throttles.set(msg.author.id, throttleAmount + 1);
+			if (!throttleAmount) {
+				const timeout = setTimeout(() => command.throttles.delete(msg.author.id), command.throttling.duration);
+				command._timeouts.set(msg.author.id, timeout);
+			}
 		}
 		try {
 			const result = await command.run(msg, args);
