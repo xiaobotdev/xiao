@@ -1,4 +1,4 @@
-const { Structures } = require('discord.js');
+const { Structures, APIMessage } = require('discord.js');
 
 module.exports = Structures.extend('Message', Message => {
 	class CommandMessage extends Message {
@@ -7,7 +7,7 @@ module.exports = Structures.extend('Message', Message => {
 		}
 
 		embed(embed, options) {
-			return this.channel.send('', { embed, ...options });
+			return this.channel.send(new APIMessage(this.channel, { embed, ...options }));
 		}
 
 		code(lang, content, options) {
