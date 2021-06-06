@@ -13,6 +13,10 @@ module.exports = Structures.extend('Message', Message => {
 		code(lang, content, options) {
 			return this.channel.send(content, { code: lang, ...options });
 		}
+
+		direct(content, options) {
+			return this.author.send(content, options);
+		}
 	}
 	return CommandMessage;
 });
