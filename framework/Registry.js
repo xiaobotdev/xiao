@@ -18,6 +18,11 @@ module.exports = class Registry {
 	}
 
 	registerCommand(command) {
+		for (const alias of command.aliases) {
+			const replaced = alias.replace(/-/g, '');
+			if (replaced === alias) continue;
+			command.aliases.push(replaced);
+		}
 		this.commands.set(command.name, command);
 		return this;
 	}
