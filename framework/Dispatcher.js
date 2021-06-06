@@ -1,5 +1,5 @@
 const minimist = require('minimist');
-const argRegex = /"([^"]*)"|(\b[^]+)/g;
+const argRegex = /"([^"]*)"|(\S+)/g;
 
 module.exports = class CommandDispatcher {
 	constructor(client) {
@@ -56,7 +56,7 @@ module.exports = class CommandDispatcher {
 				finalResult[arg.key] = parsedArgs;
 				break;
 			}
-			const parsedArg = parsed._[i]?.toString();
+			const parsedArg = i + 1 === command.args.length ? parsed._.slice(i).join(' ') : parsed._[i]?.toString();
 			if (arg.isEmpty(parsedArg, msg, arg)) {
 				if (arg.default === null) {
 					return `The "${arg.label || arg.key}" argument is required.`;
