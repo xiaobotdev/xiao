@@ -12,6 +12,7 @@ module.exports = class CommandClient extends Client {
 		super(options);
 
 		this.commandPrefix = options.commandPrefix;
+		this.mentionPrefix = typeof options.mentionPrefix === 'undefined' ? true : Boolean(options.mentionPrefix);
 		this.owner = typeof options.owner === 'string' ? [options.owner] : options.owner;
 		this.invite = options.invite || null;
 		this.registry = new Registry(this);
