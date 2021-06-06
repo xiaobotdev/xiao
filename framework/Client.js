@@ -25,7 +25,7 @@ module.exports = class CommandClient extends Client {
 	}
 
 	isOwner(user) {
-		return this.owners.includes(user.id);
+		return this.owner.includes(user.id);
 	}
 
 	async onceReady() {
