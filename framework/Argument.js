@@ -5,17 +5,17 @@ module.exports = class Argument {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.key = options.key.toLowerCase();
-		this.label = options.label;
+		this.label = options.label || null;
 		this.typeID = options.type.toLowerCase();
-		this.min = options.min;
-		this.max = options.max;
-		this.oneOf = options.oneOf;
-		this.default = options.default;
+		this.min = options.min || null;
+		this.max = options.max || null;
+		this.oneOf = options.oneOf || null;
+		this.default = options.default || null;
 		this.infinite = options.infinite || false;
 		this.avatarSize = options.avatarSize || 2048;
-		this.validator = options.validate;
-		this.parser = options.parse;
-		this.emptyChecker = options.isEmpty;
+		this.validator = options.validate || null;
+		this.parser = options.parse || null;
+		this.emptyChecker = options.isEmpty || null;
 	}
 
 	get type() {
