@@ -6,7 +6,7 @@ const { Intents, MessageEmbed } = require('discord.js');
 const Client = require('./structures/Client');
 const client = new Client({
 	commandPrefix: XIAO_PREFIX,
-	mentionPrefix: false,
+	mentionPrefix: true,
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	allowedMentions: {
