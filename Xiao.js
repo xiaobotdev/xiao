@@ -241,7 +241,7 @@ client.on('message', async msg => {
 	const hasEmbed = msg.embeds.length !== 0;
 	if (msg.author.bot || (!hasText && !hasImage && !hasEmbed)) return;
 	if (client.blacklist.user.includes(msg.author.id)) return;
-	if (client.dispatcher.isCommand(msg) && msg.channel.type !== 'dm') return;
+	if (client.dispatcher.isCommand(msg)) return;
 	if (client.games.has(msg.channel.id)) return;
 
 	// Cleverbot handler
