@@ -11,8 +11,9 @@ module.exports = class CommandDispatcher {
 	get commandPattern() {
 		if (this._commandPattern) return this._commandPattern;
 		const prefix = this.client.commandPrefix;
+		const mention = `<@!?${this.client.user.id}>\\s+(?:${prefix}}\\s*)?|`;
 		this._commandPattern = new RegExp(
-			`^(<@!?${this.client.user.id}>\\s+(?:${prefix}}\\s*)?|${prefix}\\s*)([^\\s]+)`, 'i'
+			`^(${this.client.mentionPrefix ? mention : ''}${prefix}\\s*)([^\\s]+)`, 'i'
 		);
 		return this._commandPattern;
 	}
