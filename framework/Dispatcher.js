@@ -58,7 +58,7 @@ module.exports = class CommandDispatcher {
 			}
 			const parsedArg = parsed._[i]?.toString();
 			if (arg.isEmpty(parsedArg, msg, arg)) {
-				if (arg.default === null) {
+				if (arg.default !== null) {
 					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 					continue;
 				} else {
