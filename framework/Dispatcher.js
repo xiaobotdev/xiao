@@ -58,11 +58,11 @@ module.exports = class CommandDispatcher {
 			}
 			const parsedArg = parsed._[i]?.toString();
 			if (arg.isEmpty(parsedArg, msg, arg)) {
-				if (arg.default !== null) {
+				if (arg.default === null) {
+					return `The "${arg.label || arg.key}" argument is required.`;
+				} else {
 					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 					continue;
-				} else {
-					return `The "${arg.label || arg.key}" argument is required.`;
 				}
 			}
 			const valid = await arg.validate(parsedArg, msg, arg);
