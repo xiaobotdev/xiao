@@ -66,10 +66,10 @@ module.exports = class HelpCommand extends Command {
 				return msg.reply('Failed to send DM. You probably have DMs disabled.');
 			}
 		}
-		const userPerms = command.userPermissions
+		const userPerms = command.userPermissions.length
 			? command.userPermissions.map(perm => permissions[perm]).join(', ')
 			: 'None';
-		const clientPerms = command.clientPermissions
+		const clientPerms = command.clientPermissions.length
 			? command.clientPermissions.map(perm => permissions[perm]).join(', ')
 			: 'None';
 		return msg.say(stripIndents`
