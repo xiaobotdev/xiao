@@ -51,4 +51,11 @@ module.exports = class Command {
 	enable() {
 		this._enabled = true;
 	}
+
+	reload() {
+		delete require.cache[require.resolve(`../commands/${this.groupID}/${this.memberName}.js`)];
+		const NewCmd = require(`../commands/${this.groupID}/${this.memberName}.js`);
+		this.client.registry.commands.delete(this.name);
+		this.client.registry.registerCommand(this.name, new NewCmd(this.client));
+	}
 };
