@@ -26,6 +26,6 @@ module.exports = class LevenshteinCommand extends Command {
 
 	run(msg, { text1, text2 }) {
 		const distance = wuzzy.levenshtein(text1, text2);
-		return msg.reply(distance);
+		return msg.reply(distance.toString());
 	}
 };

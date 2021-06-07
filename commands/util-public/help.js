@@ -76,6 +76,9 @@ module.exports = class HelpCommand extends Command {
 			__Command **${command.name}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
 			${command.description}${command.details ? `\n${command.details}` : ''}
 
+			**Flags:**
+			${command.flags.length ? command.flags.map(flag => `--${flag.key} (${flag.description})`).join('\n') : 'None'}
+
 			**Format:** ${command.usage(command.format || '')}
 			**Aliases:** ${command.aliases.join(', ') || 'None'}
 			**Group:** ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
