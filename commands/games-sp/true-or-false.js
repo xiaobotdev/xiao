@@ -62,11 +62,12 @@ module.exports = class TrueOrFalseCommand extends Command {
 				time: 15000
 			});
 			if (!interactions.size) return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
-			const ans = interactions.first().customID === 'true';
-			if (correctBool !== ans) return questionMsg.edit(`Nope, sorry, it's ${correctBool}.`, { components: [] });
-			return questionMsg.edit('Nice job! 10/10! You deserve some cake!', { components: [] });
+			const ans = interactions.first();
+			const ansBool = ans.customID === 'true';
+			if (correctBool !== ansBool) return ans.editReply(`Nope, sorry, it's ${correctBool}.`, { components: [] });
+			return ans.editReply('Nice job! 10/10! You deserve some cake!', { components: [] });
 		} catch (err) {
-			return questionMsg.edit(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
