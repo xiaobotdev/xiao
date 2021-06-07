@@ -45,7 +45,7 @@ module.exports = class ToxicityCommand extends Command {
 					languages: ['en'],
 					requestedAttributes: severe ? { SEVERE_TOXICITY: {} } : { TOXICITY: {} }
 				});
-			const score = severe ? body.body.attributeScores.SEVERE_TOXICITY : body.attributeScores.TOXICITY;
+			const score = severe ? body.attributeScores.SEVERE_TOXICITY : body.attributeScores.TOXICITY;
 			const toxicity = Math.round(score.summaryScore.value * 100);
 			if (toxicity >= 70) return msg.reply(`Likely to be perceived as toxic. (${toxicity}%)`);
 			if (toxicity >= 40) return msg.reply(`Unsure if this will be perceived as toxic. (${toxicity}%)`);
