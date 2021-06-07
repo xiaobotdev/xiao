@@ -11,6 +11,12 @@ module.exports = class ToxicityCommand extends Command {
 			group: 'analyze',
 			memberName: 'toxicity',
 			description: 'Determines the toxicity of text.',
+			flags: [
+				{
+					key: 'severe',
+					description: 'Makes the check much less vulnerable to basic swearing.'
+				}
+			],
 			credit: [
 				{
 					name: 'Perspective API',
@@ -28,7 +34,7 @@ module.exports = class ToxicityCommand extends Command {
 		});
 	}
 
-	async run(msg, { text }) {
+	async run(msg, { text, flags: { severe } }) {
 		if (text instanceof Message) text = text.content;
 		try {
 			const { body } = await request
@@ -37,9 +43,10 @@ module.exports = class ToxicityCommand extends Command {
 				.send({
 					comment: { text },
 					languages: ['en'],
-					requestedAttributes: { TOXICITY: {} }
+					requestedAttributes: severe ? { SEVERE_TOXICITY: {} } : { TOXICITY: {} }
 				});
-			const toxicity = Math.round(body.attributeScores.TOXICITY.summaryScore.value * 100);
+			const score = severe ? body.body.attributeScores.SEVERE_TOXICITY : body.attributeScores.TOXICITY;
+			const toxicity = Math.round(score.summaryScore.value * 100);
 			if (toxicity >= 70) return msg.reply(`Likely to be perceived as toxic. (${toxicity}%)`);
 			if (toxicity >= 40) return msg.reply(`Unsure if this will be perceived as toxic. (${toxicity}%)`);
 			return msg.reply(`Unlikely to be perceived as toxic. (${toxicity}%)`);
