@@ -37,7 +37,7 @@ module.exports = class AkinatorCommand extends Command {
 	async run(msg, { region }) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		/* try { */
+		try {
 			const aki = new Aki(region, !msg.channel.nsfw);
 			let ans = null;
 			let win = false;
@@ -156,11 +156,9 @@ module.exports = class AkinatorCommand extends Command {
 			if (win === 'time') return buttonPress.update('I guess your silence means I have won.', { components: [] });
 			if (win) return buttonPress.update('Bravo, you have defeated me.', { components: [] });
 			return buttonPress.update('Guessed right one more time! I love playing with you!', { components: [] });
-		/*
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
-		*/
 	}
 };
