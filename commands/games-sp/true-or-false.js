@@ -64,8 +64,8 @@ module.exports = class TrueOrFalseCommand extends Command {
 			if (!interactions.size) return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
 			const ans = interactions.first();
 			const ansBool = ans.customID === 'true';
-			if (correctBool !== ansBool) return ans.editReply(`Nope, sorry, it's ${correctBool}.`, { components: [] });
-			return ans.editReply('Nice job! 10/10! You deserve some cake!', { components: [] });
+			if (correctBool !== ansBool) return ans.update(`Nope, sorry, it's ${correctBool}.`, { components: [] });
+			return ans.update('Nice job! 10/10! You deserve some cake!', { components: [] });
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
