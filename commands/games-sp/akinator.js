@@ -1,8 +1,8 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const { Aki, regions } = require('aki-api');
 const { stripIndents } = require('common-tags');
-const { list, verify } = require('../../util/Util');
+const { list } = require('../../util/Util');
 
 module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
@@ -45,6 +45,22 @@ module.exports = class AkinatorCommand extends Command {
 			let guessResetNum = 0;
 			let wentBack = false;
 			let forceGuess = false;
+			const initialRow = new MessageActionRow().addComponents(
+				new MessageButton().setCustomID('true').setLabel('Ready!').setStyle('PRIMARY'),
+				new MessageButton().setCustomID('false').setLabel('Nevermind').setStyle('SECONDARY')
+			);
+			const gameMsg = await msg.reply('Welcome to Akinator! Think of a character, and I will try to guess it.', {
+				components: [initialRow]
+			});
+			const initialVerify = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
+				max: 1,
+				time: 30000
+			});
+			if (!initialVerify.size) {
+				return gameMsg.edit('Guess you didn\'t want to play after all...', { components: [] });
+			}
+			let buttonPress = initialVerify.first();
+			if (buttonPress.customID === 'false') return buttonPress.update('Too bad...', { components: [] });
 			const guessBlacklist = [];
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (timesGuessed < 3) {
@@ -61,27 +77,28 @@ module.exports = class AkinatorCommand extends Command {
 					}
 				}
 				if (!aki.answers || aki.currentStep >= 79) forceGuess = true;
-				const answers = aki.answers.map(answer => answer.toLowerCase());
-				answers.push('end');
-				if (aki.currentStep > 0) answers.push('back');
-				await msg.say(stripIndents`
+				const row = new MessageActionRow();
+				for (const answer of aki.answers) {
+					row.addComponents(new MessageButton().setCustomID(answer).setStyle('PRIMARY').setLabel(answer));
+				}
+				if (aki.currentStep > 0) {
+					row.addComponents(new MessageButton().setCustomID('back').setStyle('SECONDARY').setLabel('Back'));
+				}
+				row.addComponents(new MessageButton().setCustomID('end').setStyle('DANGER').setLabel('End'));
+				await buttonPress.update(stripIndents`
 					**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
 					${aki.answers.join(' | ')}${aki.currentStep > 0 ? ` | Back` : ''} | End
-				`);
-				const filter = res => {
-					const content = res.content.toLowerCase().replace(/’/g, '\'');
-					return res.author.id === msg.author.id && answers.includes(content);
-				};
-				const msgs = await msg.channel.awaitMessages(filter, {
+				`, { components: [row] });
+				const interactions = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
 					max: 1,
 					time: 30000
 				});
-				if (!msgs.size) {
-					await msg.say('Sorry, time is up!');
+				if (!interactions.size) {
 					win = 'time';
 					break;
 				}
-				const choice = msgs.first().content.toLowerCase().replace(/’/g, '\'');
+				buttonPress = interactions.first();
+				const choice = interactions.first().customID;
 				if (choice === 'end') {
 					forceGuess = true;
 				} else if (choice === 'back') {
@@ -90,7 +107,7 @@ module.exports = class AkinatorCommand extends Command {
 					await aki.back();
 					continue;
 				} else {
-					ans = answers.indexOf(choice);
+					ans = aki.answers.indexOf(choice);
 				}
 				if ((aki.progress >= 90 && !guessResetNum) || forceGuess) {
 					timesGuessed++;
@@ -98,7 +115,6 @@ module.exports = class AkinatorCommand extends Command {
 					await aki.win();
 					const guess = aki.answers.filter(g => !guessBlacklist.includes(g.id))[0];
 					if (!guess) {
-						await msg.say('I can\'t think of anyone.');
 						win = true;
 						break;
 					}
@@ -113,26 +129,33 @@ module.exports = class AkinatorCommand extends Command {
 						`)
 						.setThumbnail(guess.absolute_picture_path || null)
 						.setFooter(forceGuess ? 'Final Guess' : `Guess ${timesGuessed}`);
-					await msg.embed(embed);
-					const verification = await verify(msg.channel, msg.author);
-					if (verification === 0) {
+					const guessRow = new MessageActionRow().addComponents(
+						new MessageButton().setCustomID('true').setLabel('Yes').setStyle('SUCCESS'),
+						new MessageButton().setCustomID('false').setLabel('No').setStyle('DANGER')
+					);
+					await buttonPress.update('Is this your character?', { embed, components: [guessRow] });
+					const verification = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
+						max: 1,
+						time: 30000
+					});
+					if (!verification.size) {
 						win = 'time';
 						break;
-					} else if (verification) {
+					}
+					const guessResult = verification.first();
+					if (guessResult.customID === 'true') {
 						win = false;
 						break;
 					} else if (timesGuessed >= 3 || forceGuess) {
 						win = true;
 						break;
-					} else {
-						await msg.say('Hmm... Is that so? I can keep going!');
 					}
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			if (win === 'time') return msg.say('I guess your silence means I have won.');
-			if (win) return msg.say('Bravo, you have defeated me.');
-			return msg.say('Guessed right one more time! I love playing with you!');
+			if (win === 'time') return buttonPress.update('I guess your silence means I have won.', { components: [] });
+			if (win) return buttonPress.update('Bravo, you have defeated me.', { components: [] });
+			return buttonPress.update('Guessed right one more time! I love playing with you!', { components: [] });
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
