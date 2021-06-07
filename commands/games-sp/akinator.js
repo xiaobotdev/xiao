@@ -61,6 +61,7 @@ module.exports = class AkinatorCommand extends Command {
 			}
 			let buttonPress = initialVerify.first();
 			if (buttonPress.customID === 'false') return buttonPress.update('Too bad...', { components: [] });
+			await buttonPress.deferUpdate();
 			const guessBlacklist = [];
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (timesGuessed < 3) {
@@ -85,7 +86,7 @@ module.exports = class AkinatorCommand extends Command {
 					row.addComponents(new MessageButton().setCustomID('back').setStyle('SECONDARY').setLabel('Back'));
 				}
 				row.addComponents(new MessageButton().setCustomID('end').setStyle('DANGER').setLabel('End'));
-				await buttonPress.update(stripIndents`
+				await buttonPress.editReply(stripIndents`
 					**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
 					${aki.answers.join(' | ')}${aki.currentStep > 0 ? ` | Back` : ''} | End
 				`, { components: [row] });
@@ -98,6 +99,7 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				}
 				buttonPress = interactions.first();
+				await buttonPress.deferUpdate();
 				const choice = interactions.first().customID;
 				if (choice === 'end') {
 					forceGuess = true;
