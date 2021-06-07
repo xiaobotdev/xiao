@@ -52,21 +52,21 @@ module.exports = class TrueOrFalseCommand extends Command {
 				new MessageButton().setCustomID('true').setStyle('SUCCESS').setLabel('True'),
 				new MessageButton().setCustomID('false').setStyle('DANGER').setLabel('False')
 			);
-			await msg.reply(stripIndents`
+			const questionMsg = await msg.reply(stripIndents`
 				**You have 15 seconds to answer this question.**
 				${decodeURIComponent(body.results[0].question)}
 			`, { components: [row] });
 			const filter = res => res.author.id !== msg.author.id;
-			const interactions = await msg.awaitMessageComponentInteractions(filter, {
+			const interactions = await questionMsg.awaitMessageComponentInteractions(filter, {
 				max: 1,
 				time: 15000
 			});
-			if (!interactions.size) return msg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
+			if (!interactions.size) return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
 			const ans = interactions.first().customID === 'true';
-			if (correctBool !== ans) return msg.edit(`Nope, sorry, it's ${correctBool}.`, { components: [] });
-			return msg.edit('Nice job! 10/10! You deserve some cake!', { components: [] });
+			if (correctBool !== ans) return questionMsg.edit(`Nope, sorry, it's ${correctBool}.`, { components: [] });
+			return questionMsg.edit('Nice job! 10/10! You deserve some cake!', { components: [] });
 		} catch (err) {
-			return msg.edit(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			return questionMsg.edit(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 };
