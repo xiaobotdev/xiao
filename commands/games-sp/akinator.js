@@ -157,9 +157,17 @@ module.exports = class AkinatorCommand extends Command {
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			if (win === 'time') return buttonPress.editReply('I guess your silence means I have won.', { components: [] });
-			if (win) return buttonPress.editReply('Bravo, you have defeated me.', { components: [] });
-			return buttonPress.editReply('Guessed right one more time! I love playing with you!', { components: [] });
+			const row = new MessageActionRow();
+			row.addComponents(
+				new MessageButton().setLabel('Akinator Website').setStyle('LINK').setURL('https://akinator.com/')
+			);
+			if (win === 'time') {
+				return buttonPress.editReply('I guess your silence means I have won.', { components: [row] });
+			}
+			if (win) {
+				return buttonPress.editReply('Bravo, you have defeated me.', { components: [row] });
+			}
+			return buttonPress.editReply('Guessed right one more time! I love playing with you!', { components: [row] });
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
