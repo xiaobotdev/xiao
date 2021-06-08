@@ -61,7 +61,7 @@ module.exports = class AkinatorCommand extends Command {
 			}
 			let buttonPress = initialVerify.first();
 			if (buttonPress.customID === 'false') return buttonPress.update('Too bad...', { components: [] });
-			await buttonPress.deferUpdate();
+			await this.sendLoadingMessage(buttonPress, [initialRow]);
 			const guessBlacklist = [];
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (timesGuessed < 3) {
@@ -100,7 +100,7 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				}
 				buttonPress = interactions.first();
-				await buttonPress.deferUpdate();
+				await this.sendLoadingMessage(buttonPress, [row, sRow]);
 				const choice = interactions.first().customID;
 				if (choice === 'end') {
 					forceGuess = true;
@@ -146,7 +146,7 @@ module.exports = class AkinatorCommand extends Command {
 						break;
 					}
 					buttonPress = verification.first();
-					await buttonPress.deferUpdate();
+					await this.sendLoadingMessage(buttonPress, [guessRow]);
 					if (buttonPress.customID === 'true') {
 						win = false;
 						break;
@@ -172,5 +172,14 @@ module.exports = class AkinatorCommand extends Command {
 			this.client.games.delete(msg.channel.id);
 			throw err;
 		}
+	}
+
+	sendLoadingMessage(buttonPress, rows) {
+		for (const row of rows) {
+			for (const button of row.components) {
+				button.setDisabled(true);
+			}
+		}
+		return buttonPress.update('Loading...', { components: [rows] });
 	}
 };
