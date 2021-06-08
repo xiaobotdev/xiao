@@ -82,14 +82,15 @@ module.exports = class AkinatorCommand extends Command {
 				for (const answer of aki.answers) {
 					row.addComponents(new MessageButton().setCustomID(answer).setStyle('PRIMARY').setLabel(answer));
 				}
+				const sRow = new MessageActionRow();
 				if (aki.currentStep > 0) {
-					row.addComponents(new MessageButton().setCustomID('back').setStyle('SECONDARY').setLabel('Back'));
+					sRow.addComponents(new MessageButton().setCustomID('back').setStyle('SECONDARY').setLabel('Back'));
 				}
-				row.addComponents(new MessageButton().setCustomID('end').setStyle('DANGER').setLabel('End'));
+				sRow.addComponents(new MessageButton().setCustomID('end').setStyle('DANGER').setLabel('End'));
 				await buttonPress.editReply(stripIndents`
 					**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
 					${aki.answers.join(' | ')}${aki.currentStep > 0 ? ` | Back` : ''} | End
-				`, { components: [row] });
+				`, { components: [row, sRow] });
 				const interactions = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
 					max: 1,
 					time: 30000
