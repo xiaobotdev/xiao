@@ -136,7 +136,7 @@ module.exports = class AkinatorCommand extends Command {
 						new MessageButton().setCustomID('true').setLabel('Yes').setStyle('SUCCESS'),
 						new MessageButton().setCustomID('false').setLabel('No').setStyle('DANGER')
 					);
-					await buttonPress.editReply('Is this your character?', { embed, components: [guessRow] });
+					await buttonPress.editReply('Is this your character?', { embeds: [embed], components: [guessRow] });
 					const verification = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
 						max: 1,
 						time: 30000
@@ -156,9 +156,9 @@ module.exports = class AkinatorCommand extends Command {
 				}
 			}
 			this.client.games.delete(msg.channel.id);
-			if (win === 'time') return buttonPress.update('I guess your silence means I have won.', { components: [] });
-			if (win) return buttonPress.update('Bravo, you have defeated me.', { components: [] });
-			return buttonPress.update('Guessed right one more time! I love playing with you!', { components: [] });
+			if (win === 'time') return buttonPress.editReply('I guess your silence means I have won.', { components: [] });
+			if (win) return buttonPress.editReply('Bravo, you have defeated me.', { components: [] });
+			return buttonPress.editReply('Guessed right one more time! I love playing with you!', { components: [] });
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			throw err;
