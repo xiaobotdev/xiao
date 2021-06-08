@@ -36,38 +36,34 @@ module.exports = class TrueOrFalseCommand extends Command {
 	}
 
 	async run(msg, { difficulty }) {
-		try {
-			const { body } = await request
-				.get('https://opentdb.com/api.php')
-				.query({
-					amount: 1,
-					type: 'boolean',
-					encode: 'url3986',
-					difficulty
-				});
-			if (!body.results) return msg.reply('Oh no, a question could not be fetched. Try again later!');
-			const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
-			const correctBool = correct === 'true';
-			const row = new MessageActionRow().addComponents(
-				new MessageButton().setCustomID('true').setStyle('SUCCESS').setLabel('True'),
-				new MessageButton().setCustomID('false').setStyle('DANGER').setLabel('False')
-			);
-			const questionMsg = await msg.reply(stripIndents`
-				**You have 15 seconds to answer this question.**
-				${decodeURIComponent(body.results[0].question)}
-			`, { components: [row] });
-			const filter = res => res.user.id === msg.author.id;
-			const interactions = await questionMsg.awaitMessageComponentInteractions(filter, {
-				max: 1,
-				time: 15000
+		const { body } = await request
+			.get('https://opentdb.com/api.php')
+			.query({
+				amount: 1,
+				type: 'boolean',
+				encode: 'url3986',
+				difficulty
 			});
-			if (!interactions.size) return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
-			const ans = interactions.first();
-			const ansBool = ans.customID === 'true';
-			if (correctBool !== ansBool) return ans.update(`Nope, sorry, it's ${correctBool}.`, { components: [] });
-			return ans.update('Nice job! 10/10! You deserve some cake!', { components: [] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		if (!body.results) return msg.reply('Oh no, a question could not be fetched. Try again later!');
+		const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
+		const correctBool = correct === 'true';
+		const row = new MessageActionRow().addComponents(
+			new MessageButton().setCustomID('true').setStyle('SUCCESS').setLabel('True'),
+			new MessageButton().setCustomID('false').setStyle('DANGER').setLabel('False')
+		);
+		const questionMsg = await msg.reply(stripIndents`
+			**You have 15 seconds to answer this question.**
+			${decodeURIComponent(body.results[0].question)}
+		`, { components: [row] });
+		const filter = res => res.user.id === msg.author.id;
+		const interactions = await questionMsg.awaitMessageComponentInteractions(filter, {
+			max: 1,
+			time: 15000
+		});
+		if (!interactions.size) return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
+		const ans = interactions.first();
+		const ansBool = ans.customID === 'true';
+		if (correctBool !== ansBool) return ans.update(`Nope, sorry, it's ${correctBool}.`, { components: [] });
+		return ans.update('Nice job! 10/10! You deserve some cake!', { components: [] });
 	}
 };
