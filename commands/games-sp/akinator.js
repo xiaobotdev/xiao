@@ -146,6 +146,7 @@ module.exports = class AkinatorCommand extends Command {
 						break;
 					}
 					buttonPress = verification.first();
+					await buttonPress.deferUpdate();
 					if (buttonPress.customID === 'true') {
 						win = false;
 						break;
