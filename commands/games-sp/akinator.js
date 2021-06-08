@@ -87,10 +87,10 @@ module.exports = class AkinatorCommand extends Command {
 					sRow.addComponents(new MessageButton().setCustomID('back').setStyle('SECONDARY').setLabel('Back'));
 				}
 				sRow.addComponents(new MessageButton().setCustomID('end').setStyle('DANGER').setLabel('End'));
-				await buttonPress.editReply(stripIndents`
-					**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)
-					${aki.answers.join(' | ')}${aki.currentStep > 0 ? ` | Back` : ''} | End
-				`, { components: [row, sRow] });
+				await buttonPress.editReply(
+					`**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
+					{ components: [row, sRow] }
+				);
 				const interactions = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
 					max: 1,
 					time: 30000
@@ -136,7 +136,7 @@ module.exports = class AkinatorCommand extends Command {
 						new MessageButton().setCustomID('true').setLabel('Yes').setStyle('SUCCESS'),
 						new MessageButton().setCustomID('false').setLabel('No').setStyle('DANGER')
 					);
-					await buttonPress.update('Is this your character?', { embed, components: [guessRow] });
+					await buttonPress.editReply('Is this your character?', { embed, components: [guessRow] });
 					const verification = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
 						max: 1,
 						time: 30000
