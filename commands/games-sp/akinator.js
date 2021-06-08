@@ -180,6 +180,6 @@ module.exports = class AkinatorCommand extends Command {
 				button.setDisabled(true);
 			}
 		}
-		return buttonPress.update('Loading...', { components: [rows] });
+		return buttonPress.update('Loading...', { components: rows });
 	}
 };
