@@ -145,8 +145,8 @@ module.exports = class AkinatorCommand extends Command {
 						win = 'time';
 						break;
 					}
-					const guessResult = verification.first();
-					if (guessResult.customID === 'true') {
+					buttonPress = verification.first();
+					if (buttonPress.customID === 'true') {
 						win = false;
 						break;
 					} else if (timesGuessed >= 3 || forceGuess) {
