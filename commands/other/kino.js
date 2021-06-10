@@ -71,7 +71,8 @@ module.exports = class KinoCommand extends Command {
 			Press the "Next" button to go to the next page, and "Prev" to go back.
 			Press "End" at any time to stop reading.
 		`, { components: [row] });
-		const initialInteractions = await initialMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
+		const filter = res => res.user.id === msg.author.id;
+		const initialInteractions = await initialMsg.awaitMessageComponentInteractions(filter, {
 			max: 1,
 			time: 15000
 		});
@@ -94,14 +95,14 @@ module.exports = class KinoCommand extends Command {
 
 				${escapeMarkdown(line.trim())}
 			`, { components: [row] });
-			const interactions = await initialMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {
+			const interactions = await initialMsg.awaitMessageComponentInteractions(filter, {
 				max: 1,
 				time: 15000
 			});
 			if (!interactions.size) break;
 			choice = interactions.first();
 			if (choice.customID === 'next') {
-				i++
+				i++;
 			} else if (choice.customID === 'prev') {
 				i--;
 			} else if (choice.customID === 'end') {
