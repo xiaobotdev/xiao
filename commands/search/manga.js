@@ -121,7 +121,7 @@ module.exports = class MangaCommand extends Command {
 				.setDescription(manga.description ? cleanAnilistHTML(manga.description) : 'No description.')
 				.addField('❯ Status', statuses[manga.status], true)
 				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
-				.addField('❯ Year', manga.startDate.year || '???', true)
+				.addField('❯ Year', manga.startDate.year?.toString() || '???', true)
 				.addField('❯ Average Score', manga.averageScore ? `${manga.averageScore}%` : '???', true)
 				.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
 				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
