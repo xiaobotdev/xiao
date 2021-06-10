@@ -75,9 +75,9 @@ module.exports = class KinoCommand extends Command {
 			max: 1,
 			time: 15000
 		});
-		if (!initialInteractions.size) return initialMsg.update('Maybe next time!');
-		const choice = initialInteractions.first().customID;
-		if (choice === 'end') return initialMsg.update('Maybe next time!');
+		if (!initialInteractions.size) return initialMsg.edit('Maybe next time!');
+		let choice = initialInteractions.first();
+		if (choice.customID === 'end') return choice.update('Maybe next time!');
 		while (!end) {
 			if (i === 0) {
 				row.components[0].setDisabled(true);
@@ -89,7 +89,7 @@ module.exports = class KinoCommand extends Command {
 				end = true;
 				break;
 			}
-			await initialMsg.update(stripIndents`
+			await choice.update(stripIndents`
 				**Page ${i + 1}/${storyData.length}**
 
 				${escapeMarkdown(line.trim())}
@@ -99,18 +99,18 @@ module.exports = class KinoCommand extends Command {
 				time: 15000
 			});
 			if (!interactions.size) break;
-			const choice = interactions.first().customID;
-			if (choice === 'next') {
+			choice = interactions.first();
+			if (choice.customID === 'next') {
 				i++
-			} else if (choice === 'prev') {
+			} else if (choice.customID === 'prev') {
 				i--;
-			} else if (choice === 'end') {
+			} else if (choice.customID === 'end') {
 				break;
 			} else {
-				break;
+				return initialMsg.edit('Maybe next time!');
 			}
 		}
-		return initialMsg.update('Thank you for reading this chapter of Kino\'s Journey!');
+		return choice.update('Thank you for reading this chapter of Kino\'s Journey!');
 	}
 
 	async generateStory(file) {
