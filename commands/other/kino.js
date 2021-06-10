@@ -97,7 +97,7 @@ module.exports = class KinoCommand extends Command {
 			`, { components: [row] });
 			const interactions = await initialMsg.awaitMessageComponentInteractions(filter, {
 				max: 1,
-				time: 15000
+				time: 120000
 			});
 			if (!interactions.size) break;
 			choice = interactions.first();
