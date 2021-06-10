@@ -71,6 +71,13 @@ module.exports = class KinoCommand extends Command {
 			Press the "Next" button to go to the next page, and "Prev" to go back.
 			Press "End" at any time to stop reading.
 		`, { components: [row] });
+		const initialInteractions = await questionMsg.awaitMessageComponentInteractions(filter, {
+			max: 1,
+			time: 15000
+		});
+		if (!initialInteractions.size) break;
+		const choice = initialInteractions.first().customID;
+		if (choice === 'end') return initialMsg.update('Maybe next time!');
 		while (!end) {
 			if (i === 0) {
 				row.components[0].setDisabled(true);
