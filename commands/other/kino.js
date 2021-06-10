@@ -75,7 +75,7 @@ module.exports = class KinoCommand extends Command {
 			max: 1,
 			time: 15000
 		});
-		if (!initialInteractions.size) break;
+		if (!initialInteractions.size) return initialMsg.update('Maybe next time!');
 		const choice = initialInteractions.first().customID;
 		if (choice === 'end') return initialMsg.update('Maybe next time!');
 		while (!end) {
