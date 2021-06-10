@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
+const { MessageActionRow, MessageButton } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { escapeMarkdown } = require('discord.js');
-const { verify } = require('../../util/Util');
 const path = require('path');
 const fs = require('fs');
 const { readFile } = require('fs/promises');
@@ -16,6 +16,12 @@ module.exports = class KinoCommand extends Command {
 			group: 'other',
 			memberName: 'kino',
 			description: 'Read various Kino\'s Journey fan stories by dragonfire535.',
+			details: stripIndents`
+				**Stories:**
+				\`\`\`
+				${stories.map((story, i) => `${i.toString().padStart(2, '0')}. ${story}`).join('\n')}
+				\`\`\`
+			`,
 			credit: [
 				{
 					name: 'Kino\'s Journey',
@@ -45,55 +51,59 @@ module.exports = class KinoCommand extends Command {
 						const num = Number.parseInt(choice, 10);
 						return stories[num].toLowerCase();
 					}
-				},
-				{
-					key: 'page',
-					prompt: 'What page do you want to start from?',
-					type: 'integer',
-					min: 1,
-					default: 1
 				}
 			]
 		});
 	}
 
-	async run(msg, { story, page }) {
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
-		try {
-			const storyData = await this.generateStory(story);
-			let i = page - 1;
-			let end = false;
-			while (!end) {
-				const line = storyData[i];
-				if (!line) {
-					end = true;
-					break;
-				}
-				await msg.say(stripIndents`
-					**Page ${i + 1}/${storyData.length}**
-
-					${escapeMarkdown(line.trim())}
-
-					_Proceed?_
-				`);
-				const verification = await verify(msg.channel, msg.author, { time: 300000 });
-				if (!verification) {
-					this.client.games.delete(msg.channel.id);
-					const filename = stories.find(sto => sto.toLowerCase() === story);
-					const num = stories.indexOf(filename).toString().padStart(2, '0');
-					const usage = this.usage(`${num} ${i + 1}`);
-					return msg.say(`You can resume reading from where you were by using ${usage}.`);
-				}
-				i++;
+	async run(msg, { story }) {
+		const storyData = await this.generateStory(story);
+		let i = 0;
+		let end = false;
+		const row = new MessageActionRow();
+		row.addComponents(
+			new MessageButton().setCustomID('prev').setLabel('Prev').setStyle('PRIMARY').setDisabled(true),
+			new MessageButton().setCustomID('next').setLabel('Next').setStyle('PRIMARY'),
+			new MessageButton().setCustomID('end').setLabel('End').setStyle('DANGER')
+		);
+		const initialMsg = await msg.say(stripIndents`
+			Welcome to Kino's Journey!
+			Press the "Next" button to go to the next page, and "Prev" to go back.
+			Press "End" at any time to stop reading.
+		`, { components: [row] });
+		while (!end) {
+			if (i === 0) {
+				row[0].setDisabled(true);
+			} else {
+				row[0].setDisabled(false);
 			}
-			this.client.games.delete(msg.channel.id);
-			return msg.say('Thank you for reading this chapter of Kino\'s Journey!');
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			throw err;
+			const line = storyData[i];
+			if (!line) {
+				end = true;
+				break;
+			}
+			await initialMsg.update(stripIndents`
+				**Page ${i + 1}/${storyData.length}**
+
+				${escapeMarkdown(line.trim())}
+			`, { components: [row] });
+			const interactions = await questionMsg.awaitMessageComponentInteractions(filter, {
+				max: 1,
+				time: 15000
+			});
+			if (!interactions.size) break;
+			const choice = interactions.first().customID;
+			if (choice === 'next') {
+				i++
+			} else if (choice === 'prev') {
+				i--;
+			} else if (choice === 'end') {
+				break;
+			} else {
+				break;
+			}
 		}
+		return initialMsg.update('Thank you for reading this chapter of Kino\'s Journey!');
 	}
 
 	async generateStory(file) {
