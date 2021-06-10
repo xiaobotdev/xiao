@@ -41,7 +41,7 @@ module.exports = class CommandDispatcher {
 			if (arg.infinite) {
 				const infinite = parsed._.slice(i);
 				if (!infinite.length) {
-					if (arg.isEmpty(parsedArg, msg, arg)) {
+					if (arg.isEmpty(infinite.join(' '), msg, arg)) {
 						if (arg.default) {
 							finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 							break;
