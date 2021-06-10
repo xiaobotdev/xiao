@@ -73,9 +73,9 @@ module.exports = class KinoCommand extends Command {
 		`, { components: [row] });
 		while (!end) {
 			if (i === 0) {
-				row[0].setDisabled(true);
+				row.components[0].setDisabled(true);
 			} else {
-				row[0].setDisabled(false);
+				row.components[0].setDisabled(false);
 			}
 			const line = storyData[i];
 			if (!line) {
