@@ -1,5 +1,4 @@
 const Command = require('../../framework/Command');
-const { MessageActionRow, MessageButton } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { shuffle, removeDuplicates, verify } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');
