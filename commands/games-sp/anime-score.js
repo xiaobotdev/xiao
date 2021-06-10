@@ -64,7 +64,7 @@ module.exports = class AnimeScoreCommand extends Command {
 				.setImage(anime.coverImage.large || anime.coverImage.medium || null)
 				.setTitle(anime.title.english || anime.title.romaji)
 				.setDescription(`_${anime.startDate.year}, ${formats[anime.format]}_`)
-				.setFooter(anime.id);
+				.setFooter(anime.id.toString());
 			await msg.reply('**You have 15 seconds, what score do you think this anime has?**', { embed });
 			const filter = res => {
 				if (res.author.id !== msg.author.id) return false;
