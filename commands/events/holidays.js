@@ -2,11 +2,12 @@ const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { list, today, tomorrow } = require('../../util/Util');
 const { GOOGLE_KEY, PERSONAL_GOOGLE_CALENDAR_ID } = process.env;
-const holidayCals = [
-	'en.usa#holiday@group.v.calendar.google.com',
-	'en.japanese#holiday@group.v.calendar.google.com',
-	'en.uk#holiday@group.v.calendar.google.com'
-];
+const holidayCals = {
+	USA: 'en.usa#holiday@group.v.calendar.google.com',
+	Japan: 'en.japanese#holiday@group.v.calendar.google.com',
+	UK: 'en.uk#holiday@group.v.calendar.google.com',
+	Australia: 'en.australian#holiday@group.v.calendar.google.com'
+};
 
 module.exports = class HolidaysCommand extends Command {
 	constructor(client) {
@@ -30,9 +31,12 @@ module.exports = class HolidaysCommand extends Command {
 	async run(msg) {
 		try {
 			const events = [];
-			for (const calID of holidayCals) {
+			for (const [country, calID] of Object.entries(holidayCals)) {
 				const standardEvents = await this.fetchHolidays(calID);
-				if (standardEvents) events.push(...standardEvents);
+				if (standardEvents) {
+					const mapped = standardEvents.map(event => `${event} (${country})`);
+					events.push(...mapped);
+				}
 			}
 			if (PERSONAL_GOOGLE_CALENDAR_ID) {
 				const personalEvents = await this.fetchHolidays(PERSONAL_GOOGLE_CALENDAR_ID);
