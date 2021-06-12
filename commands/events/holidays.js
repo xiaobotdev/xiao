@@ -6,7 +6,8 @@ const holidayCals = {
 	USA: 'en.usa#holiday@group.v.calendar.google.com',
 	Japan: 'en.japanese#holiday@group.v.calendar.google.com',
 	UK: 'en.uk#holiday@group.v.calendar.google.com',
-	Australia: 'en.australian#holiday@group.v.calendar.google.com'
+	Australia: 'en.australian#holiday@group.v.calendar.google.com',
+	Canada: 'en.canadian#holiday@group.v.calendar.google.com'
 };
 
 module.exports = class HolidaysCommand extends Command {
