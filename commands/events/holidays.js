@@ -1,7 +1,12 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { list, today, tomorrow } = require('../../util/Util');
-const { GOOGLE_KEY, GOOGLE_CALENDAR_ID, PERSONAL_GOOGLE_CALENDAR_ID } = process.env;
+const { GOOGLE_KEY, PERSONAL_GOOGLE_CALENDAR_ID } = process.env;
+const holidayCals = [
+	'en.usa#holiday@group.v.calendar.google.com',
+	'en.japanese#holiday@group.v.calendar.google.com',
+	'en.uk#holiday@group.v.calendar.google.com'
+];
 
 module.exports = class HolidaysCommand extends Command {
 	constructor(client) {
@@ -25,8 +30,10 @@ module.exports = class HolidaysCommand extends Command {
 	async run(msg) {
 		try {
 			const events = [];
-			const standardEvents = await this.fetchHolidays(GOOGLE_CALENDAR_ID);
-			if (standardEvents) events.push(...standardEvents);
+			for (const calID of holidayCals) {
+				const standardEvents = await this.fetchHolidays(calID);
+				if (standardEvents) events.push(...standardEvents);
+			}
 			if (PERSONAL_GOOGLE_CALENDAR_ID) {
 				const personalEvents = await this.fetchHolidays(PERSONAL_GOOGLE_CALENDAR_ID);
 				if (personalEvents) events.push(...personalEvents);
