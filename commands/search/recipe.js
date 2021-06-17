@@ -48,15 +48,13 @@ module.exports = class RecipeCommand extends Command {
 	}
 
 	async fetchRecipe(query) {
-		let result;
 		try {
 			const { text } = await request
 				.get('http://www.recipepuppy.com/api/')
 				.query({ q: query });
-			result = text;
-			return JSON.parse(result);
-		} catch {
-			return JSON.parse(result.split('<!DOCTYPE html')[0]);
+			return JSON.parse(text);
+		} catch (err) {
+			return JSON.parse(err.text.split('<!DOCTYPE html')[0]);
 		}
 	}
 };
