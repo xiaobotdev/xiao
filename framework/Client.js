@@ -109,7 +109,7 @@ module.exports = class CommandClient extends Client {
 			}
 			command.throttles.set(msg.author.id, throttleAmount + 1);
 			if (!throttleAmount) {
-				const timeout = setTimeout(() => command.throttles.delete(msg.author.id), command.throttling.duration);
+				const timeout = setTimeout(() => command.throttles.delete(msg.author.id), command.throttling.duration * 1000);
 				command._timeouts.set(msg.author.id, timeout);
 			}
 		}
