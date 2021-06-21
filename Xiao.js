@@ -301,7 +301,7 @@ client.on('guildCreate', async guild => {
 	}
 	const joinLeaveChannel = await client.fetchJoinLeaveChannel();
 	if (joinLeaveChannel) {
-		if (!guild.members.cache.has(guild.ownerID)) await guild.members.fetch(guild.ownerID);
+		const owner = await guild.fetchOwner();
 		const embed = new MessageEmbed()
 			.setColor(0x7CFC00)
 			.setThumbnail(guild.iconURL({ format: 'png' }))
@@ -309,7 +309,7 @@ client.on('guildCreate', async guild => {
 			.setFooter(`ID: ${guild.id}`)
 			.setTimestamp()
 			.addField('❯ Members', formatNumber(guild.memberCount))
-			.addField('❯ Owner', guild.owner.user.tag);
+			.addField('❯ Owner', owner.user.tag);
 		await joinLeaveChannel.send({ embed });
 	}
 });
