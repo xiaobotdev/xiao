@@ -99,15 +99,17 @@ module.exports = class CommandClient extends Client {
 					return;
 				}
 			}
-			const throttleAmount = command.throttles.get(msg.author.id) || 0;
-			if (throttleAmount >= command.throttling.usages) {
+			const throttleAmount = command.throttles.get(msg.author.id);
+			if (throttleAmount && throttleAmount.usages >= command.throttling.usages) {
 				const timeout = command._timeouts.get(msg.author.id);
-				await msg.reply(
-					`Please wait ${getTimeLeft(timeout)} seconds before using the \`${command.name}\` command again.`
-				);
+				const timeLeft = Math.round((timeout.timeFinish - Date.now()) / 1000);
+				await msg.reply(`Please wait ${timeLeft} seconds before using the \`${command.name}\` command again.`);
 				return;
 			}
-			command.throttles.set(msg.author.id, throttleAmount + 1);
+			command.throttles.set(msg.author.id, {
+				usages: throttleAmount + 1,
+				timeFinish: Date.now() + (command.throttling.duration * 1000)
+			});
 			if (!throttleAmount) {
 				const timeout = setTimeout(() => command.throttles.delete(msg.author.id), command.throttling.duration * 1000);
 				command._timeouts.set(msg.author.id, timeout);
@@ -232,7 +234,3 @@ module.exports = class CommandClient extends Client {
 		return buf;
 	}
 };
-
-function getTimeLeft(timeout) {
-	return Math.ceil((timeout._idleStart + timeout._idleTimeout - Date.now()) / 1000);
-}
