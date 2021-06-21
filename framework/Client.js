@@ -106,7 +106,7 @@ module.exports = class CommandClient extends Client {
 				return;
 			}
 			command.throttles.set(msg.author.id, {
-				usages: throttleAmount.usages + 1,
+				usages: (throttleAmount?.usages || 0) + 1,
 				timeFinish: Date.now() + (command.throttling.duration * 1000)
 			});
 			if (!throttleAmount) {
