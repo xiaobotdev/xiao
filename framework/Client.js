@@ -101,8 +101,7 @@ module.exports = class CommandClient extends Client {
 			}
 			const throttleAmount = command.throttles.get(msg.author.id);
 			if (throttleAmount && throttleAmount.usages >= command.throttling.usages) {
-				const timeout = command._timeouts.get(msg.author.id);
-				const timeLeft = Math.round((timeout.timeFinish - Date.now()) / 1000);
+				const timeLeft = Math.round((throttleAmount.timeFinish - Date.now()) / 1000);
 				await msg.reply(`Please wait ${timeLeft} seconds before using the \`${command.name}\` command again.`);
 				return;
 			}
