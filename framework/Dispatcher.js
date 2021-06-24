@@ -53,7 +53,9 @@ module.exports = class CommandDispatcher {
 				const parsedArgs = [];
 				for (const parsedArg of infinite) {
 					const valid = await arg.validate(parsedArg, msg, arg);
-					if (!valid) return `An invalid value was provided for one of the "${arg.label || arg.key}" arguments.`;
+					if (!valid || typeof valid === 'string') {
+						return `An invalid value was provided for one of the "${arg.label || arg.key}" arguments.`;
+					}
 					parsedArgs.push(await arg.parse(parsedArg, msg, arg));
 				}
 				finalResult[arg.key] = parsedArgs;
@@ -69,7 +71,9 @@ module.exports = class CommandDispatcher {
 				}
 			}
 			const valid = await arg.validate(parsedArg, msg, arg);
-			if (!valid) return `An invalid value was provided for the "${arg.label || arg.key}" argument.`;
+			if (!valid || typeof valid === 'string') {
+				return `An invalid value was provided for the "${arg.label || arg.key}" argument.`;
+			}
 			finalResult[arg.key] = await arg.parse(parsedArg, msg, arg);
 		}
 		return { command, args: finalResult };
