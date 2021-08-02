@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const Kuroshiro = require('kuroshiro');
+const { Kuroshiro } = require('kuroshiro');
 const KuromojiAnalyzer = require('kuroshiro-analyzer-kuromoji');
 
 module.exports = class RomajiCommand extends Command {
