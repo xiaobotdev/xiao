@@ -7,7 +7,6 @@ const { parseDomain, ParseResultType } = require('parse-domain');
 const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
 const { URL } = require('url');
-const { SUCCESS_EMOJI_ID } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'si', 'sí', 'oui', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
 const inviteRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|(app)?\.com\/invite|\.me)\/([^ ]+)\/?/gi;
@@ -343,7 +342,7 @@ module.exports = class Util {
 			As the host, ${msg.author}, you can start the game early.
 		`;
 		text += '\n';
-		await msg.say(text, { components: [row] });
+		const initialMsg = await msg.say(text, { components: [row] });
 		const joined = [];
 		joined.push(msg.author.id);
 		const filter = interaction => {
@@ -364,17 +363,17 @@ module.exports = class Util {
 				collector.stop();
 				return;
 			}
-			joined.push(res.author.id);
+			joined.push(interaction.user.id);
 			text += '✅';
 			interaction.update(text);
 		});
 		return new Promise(res => {
 			collector.once('end', () => {
 				if (joined.length < min) {
-					interaction.update('Failed to start the game.', { components: [] });
+					initialMsg.edit('Failed to start the game.', { components: [] });
 					return res(false);
 				}
-				interaction.update('Let the game begin!', { components: [] });
+				initialMsg.edit('Let the game begin!', { components: [] });
 				return res(joined);
 			});
 		});
