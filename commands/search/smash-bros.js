@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 

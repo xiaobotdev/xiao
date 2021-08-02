@@ -1,4 +1,4 @@
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const request = require('node-superfetch');
 const Move = require('./Move');
 

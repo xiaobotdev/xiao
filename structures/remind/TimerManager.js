@@ -1,4 +1,4 @@
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const Timer = require('./Timer');
 
 module.exports = class TimerManager extends Collection {

@@ -1,4 +1,4 @@
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 
 module.exports = class PhoneManager extends Collection {
 	constructor(client, options) {

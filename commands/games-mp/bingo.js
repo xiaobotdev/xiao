@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
 const { awaitPlayers, reactIfAble } = require('../../util/Util');
 const nums = require('../../assets/json/bingo');
