@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const { Hand } = require('pokersolver');
 const { stripIndents } = require('common-tags');
 const Deck = require('../../structures/cards/Deck');

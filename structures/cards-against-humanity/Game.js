@@ -1,4 +1,4 @@
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const Player = require('./Player');
 const Deck = require('./Deck');
 const { removeFromArray, awaitPlayers, reactIfAble } = require('../../util/Util');

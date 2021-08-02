@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { stripIndents, oneLine } = require('common-tags');
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const { delay, awaitPlayers, list, reactIfAble } = require('../../util/Util');
 const words = require('../../assets/json/imposter');
 const { SUCCESS_EMOJI_ID } = process.env;

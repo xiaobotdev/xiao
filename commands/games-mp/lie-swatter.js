@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const { delay, awaitPlayers, reactIfAble } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID } = process.env;
 const trueOptions = ['true', 'yes', 'the truth', 't', 'tru', 'tr', 'y', 'ye'];

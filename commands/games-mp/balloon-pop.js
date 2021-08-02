@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const { randomRange, verify, awaitPlayers } = require('../../util/Util');
 
 module.exports = class BalloonPopCommand extends Command {

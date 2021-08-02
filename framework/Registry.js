@@ -1,4 +1,4 @@
-const Collection = require('@discordjs/collection');
+const { Collection } = require('@discordjs/collection');
 const fs = require('fs');
 const path = require('path');
 const Group = require('./Group');
