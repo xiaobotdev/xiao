@@ -22,7 +22,7 @@ module.exports = class CommandClient extends Client {
 		this._throttlingTimeouts = new Map();
 
 		this.once('ready', this.onceReady);
-		this.on('message', this.onMessage);
+		this.on('messageCreate', this.onMessage);
 	}
 
 	isOwner(user) {

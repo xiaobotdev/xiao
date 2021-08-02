@@ -83,7 +83,7 @@ client.on('ready', async () => {
 	);
 
 	// Interval to change activity every minute
-	client.setInterval(() => {
+	setInterval(() => {
 		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
 		const text = typeof activity.text === 'function' ? activity.text() : activity.text;
 		client.user.setActivity(text, { type: activity.type });
@@ -114,7 +114,7 @@ client.on('ready', async () => {
 	}
 
 	// Export command-leaderboard.json and command-last-run.json every 30 minutes
-	client.setInterval(() => {
+	setInterval(() => {
 		try {
 			client.exportCommandLeaderboard();
 			client.logger.info('[LEADERBOARD] command-leaderboard.json successfully exported.');
@@ -247,7 +247,7 @@ client.on('ready', async () => {
 	}, 1.8e+6);
 });
 
-client.on('message', async msg => {
+client.on('messageCreate', async msg => {
 	const hasText = Boolean(msg.content);
 	const hasImage = msg.attachments.size !== 0;
 	const hasEmbed = msg.embeds.length !== 0;
