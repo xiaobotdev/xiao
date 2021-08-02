@@ -51,7 +51,7 @@ module.exports = class PlayCommand extends Command {
 		if (!canPlay) return msg.reply('I cannot play this video.');
 		if (canPlay === 'length') return msg.reply('This video is longer than 15 minutes, so I can\'t play it.');
 		await msg.reply('Is this the video you want to play? Type **[y]es** or **[n]o**.', {
-			embed: this.generateEmbed(data)
+			embeds: [this.generateEmbed(data)]
 		});
 		const verification = await verify(msg.channel, msg.author);
 		if (!verification) return msg.reply('Aborting playback.');

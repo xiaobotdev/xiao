@@ -73,7 +73,7 @@ module.exports = class GoogleFeudCommand extends Command {
 				return msg.say(`You win! Nice job, master of Google!\n**Final Score: $${formatNumber(score)}**`);
 			}
 			const final = this.makeEmbed(question, tries, suggestions, suggestions);
-			return msg.say(`Better luck next time!\n**Final Score: $${formatNumber(score)}**`, { embed: final });
+			return msg.say(`Better luck next time!\n**Final Score: $${formatNumber(score)}**`, { embeds: [final] });
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
