@@ -38,7 +38,10 @@ module.exports = class XiaoClient extends CommandClient {
 		});
 		this.fonts = new Collection();
 		this.redis = Redis ? Redis.db : null;
-		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableMentions: 'everyone' });
+		this.webhook = new WebhookClient(
+			{ id: XIAO_WEBHOOK_ID, token: XIAO_WEBHOOK_TOKEN },
+			{ disableMentions: 'everyone' }
+		);
 		this.timers = new TimerManager(this);
 		this.botList = new BotList(this);
 		this.pokemon = new PokemonStore();
