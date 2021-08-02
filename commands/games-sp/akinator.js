@@ -34,7 +34,7 @@ module.exports = class AkinatorCommand extends Command {
 	}
 
 	async run(msg, { region }) {
-		const aki = new Aki(region, !msg.channel.nsfw);
+		const aki = new Aki({ region, childMode: !msg.channel.nsfw });
 		let ans = null;
 		let win = false;
 		let timesGuessed = 0;

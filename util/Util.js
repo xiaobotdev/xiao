@@ -1,3 +1,4 @@
+const { MessageActionRow, MessageButton } = require('discord.js');
 const crypto = require('crypto');
 const request = require('node-superfetch');
 const fs = require('fs');
@@ -333,34 +334,47 @@ module.exports = class Util {
 	static async awaitPlayers(msg, max, min, blacklist) {
 		if (max === 1) return [msg.author.id];
 		const addS = min - 1 === 1 ? '' : 's';
-		await msg.say(stripIndents`
-			You will need at least ${min - 1} more player${addS} (at max ${max - 1}). To join, type \`join game\`.
-			As the host, ${msg.author}, you can type \`start game\` to start the game early.
-		`);
+		const row = new MessageActionRow().addComponents(
+			new MessageButton().setCustomID('join').setLabel('Join Game').setStyle('PRIMARY'),
+			new MessageButton().setCustomID('start').setLabel('Start Game').setStyle('SUCCESS')
+		);
+		let text = stripIndents`
+			You will need at least ${min - 1} more player${addS} (at max ${max - 1}).
+			As the host, ${msg.author}, you can start the game early.
+		`;
+		text += '\n';
+		await msg.say(text, { components: [row] });
 		const joined = [];
 		joined.push(msg.author.id);
-		const filter = res => {
-			if (res.author.bot) return false;
-			if (blacklist.includes(res.author.id)) return false;
-			if (res.author.id === msg.author.id && res.content.toLowerCase() === 'start game') return true;
-			if (joined.includes(res.author.id)) return false;
-			if (res.content.toLowerCase() !== 'join game') return false;
+		const filter = interaction => {
+			if (interaction.user.bot) return false;
+			if (blacklist.includes(interaction.user.id)) return false;
+			if (interaction.user.id !== msg.author.id && interaction.customID === 'start') return false;
+			if (joined.includes(interaction.user.id)) return false;
 			return true;
 		};
-		const collector = msg.channel.createMessageCollector(filter, { max: max - 1, time: 120000 });
-		collector.on('collect', res => {
-			if (res.content.toLowerCase() === 'start game') {
-				Util.reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+		const collector = msg.channel.createMessageComponentCollector(filter, {
+			componentType: 'BUTTON',
+			max: max - 1,
+			time: 120000
+		});
+		collector.on('collect', interaction => {
+			if (interaction.customID === 'start') {
+				interaction.deferUpdate();
 				collector.stop();
 				return;
 			}
 			joined.push(res.author.id);
-			Util.reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+			text += '✅';
+			interaction.update(text);
 		});
 		return new Promise(res => {
-			collector.once('end', verify => {
-				verify.set(msg.id, msg);
-				if (joined.length < min) return res(false);
+			collector.once('end', () => {
+				if (joined.length < min) {
+					interaction.update('Failed to start the game.', { components: [] });
+					return res(false);
+				}
+				interaction.update('Let the game begin!', { components: [] });
 				return res(joined);
 			});
 		});
