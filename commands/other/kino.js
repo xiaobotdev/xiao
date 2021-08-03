@@ -72,7 +72,7 @@ module.exports = class KinoCommand extends Command {
 			Press "End" at any time to stop reading.
 		`, { components: [row] });
 		const filter = res => res.user.id === msg.author.id;
-		const initialInteractions = await initialMsg.awaitMessageComponentInteractions(filter, {
+		const initialInteractions = await initialMsg.awaitMessageComponent(filter, {
 			max: 1,
 			time: 15000
 		});
@@ -95,7 +95,7 @@ module.exports = class KinoCommand extends Command {
 
 				${escapeMarkdown(line.trim())}
 			`, { components: [row] });
-			const interactions = await initialMsg.awaitMessageComponentInteractions(filter, {
+			const interactions = await initialMsg.awaitMessageComponent(filter, {
 				max: 1,
 				time: 120000
 			});
