@@ -48,8 +48,8 @@ module.exports = class TrueOrFalseCommand extends Command {
 		const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 		const correctBool = correct === 'true';
 		const row = new MessageActionRow().addComponents(
-			new MessageButton().setCustomID('true').setStyle('SUCCESS').setLabel('True'),
-			new MessageButton().setCustomID('false').setStyle('DANGER').setLabel('False')
+			new MessageButton().setCustomId('true').setStyle('SUCCESS').setLabel('True'),
+			new MessageButton().setCustomId('false').setStyle('DANGER').setLabel('False')
 		);
 		const questionMsg = await msg.reply(stripIndents`
 			**You have 15 seconds to answer this question.**

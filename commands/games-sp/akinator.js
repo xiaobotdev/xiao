@@ -42,8 +42,8 @@ module.exports = class AkinatorCommand extends Command {
 		let wentBack = false;
 		let forceGuess = false;
 		const initialRow = new MessageActionRow().addComponents(
-			new MessageButton().setCustomID('true').setLabel('Ready!').setStyle('PRIMARY'),
-			new MessageButton().setCustomID('false').setLabel('Nevermind').setStyle('SECONDARY')
+			new MessageButton().setCustomId('true').setLabel('Ready!').setStyle('PRIMARY'),
+			new MessageButton().setCustomId('false').setLabel('Nevermind').setStyle('SECONDARY')
 		);
 		const gameMsg = await msg.reply('Welcome to Akinator! Think of a character, and I will try to guess it.', {
 			components: [initialRow]
@@ -75,13 +75,13 @@ module.exports = class AkinatorCommand extends Command {
 			if (!aki.answers || aki.currentStep >= 79) forceGuess = true;
 			const row = new MessageActionRow();
 			for (const answer of aki.answers) {
-				row.addComponents(new MessageButton().setCustomID(answer).setStyle('PRIMARY').setLabel(answer));
+				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
 			}
 			const sRow = new MessageActionRow();
 			if (aki.currentStep > 0) {
-				sRow.addComponents(new MessageButton().setCustomID('back').setStyle('SECONDARY').setLabel('Back'));
+				sRow.addComponents(new MessageButton().setCustomId('back').setStyle('SECONDARY').setLabel('Back'));
 			}
-			sRow.addComponents(new MessageButton().setCustomID('end').setStyle('DANGER').setLabel('End'));
+			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
 			await buttonPress.editReply(
 				`**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
 				{ components: [row, sRow] }
@@ -124,8 +124,8 @@ module.exports = class AkinatorCommand extends Command {
 					.setThumbnail(guess.absolute_picture_path || null)
 					.setFooter(forceGuess ? 'Final Guess' : `Guess ${timesGuessed}`);
 				const guessRow = new MessageActionRow().addComponents(
-					new MessageButton().setCustomID('true').setLabel('Yes').setStyle('SUCCESS'),
-					new MessageButton().setCustomID('false').setLabel('No').setStyle('DANGER')
+					new MessageButton().setCustomId('true').setLabel('Yes').setStyle('SUCCESS'),
+					new MessageButton().setCustomId('false').setLabel('No').setStyle('DANGER')
 				);
 				await buttonPress.editReply('Is this your character?', { embeds: [embed], components: [guessRow] });
 				const verification = await gameMsg.awaitMessageComponentInteractions(res => res.user.id === msg.author.id, {

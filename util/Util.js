@@ -334,8 +334,8 @@ module.exports = class Util {
 		if (max === 1) return [msg.author.id];
 		const addS = min - 1 === 1 ? '' : 's';
 		const row = new MessageActionRow().addComponents(
-			new MessageButton().setCustomID('join').setLabel('Join Game').setStyle('PRIMARY'),
-			new MessageButton().setCustomID('start').setLabel('Start Game').setStyle('SUCCESS')
+			new MessageButton().setCustomId('join').setLabel('Join Game').setStyle('PRIMARY'),
+			new MessageButton().setCustomId('start').setLabel('Start Game').setStyle('SUCCESS')
 		);
 		let text = stripIndents`
 			You will need at least ${min - 1} more player${addS} (at max ${max - 1}).

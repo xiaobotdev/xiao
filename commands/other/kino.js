@@ -62,9 +62,9 @@ module.exports = class KinoCommand extends Command {
 		let end = false;
 		const row = new MessageActionRow();
 		row.addComponents(
-			new MessageButton().setCustomID('prev').setLabel('Prev').setStyle('PRIMARY').setDisabled(true),
-			new MessageButton().setCustomID('next').setLabel('Next').setStyle('PRIMARY'),
-			new MessageButton().setCustomID('end').setLabel('End').setStyle('DANGER')
+			new MessageButton().setCustomId('prev').setLabel('Prev').setStyle('PRIMARY').setDisabled(true),
+			new MessageButton().setCustomId('next').setLabel('Next').setStyle('PRIMARY'),
+			new MessageButton().setCustomId('end').setLabel('End').setStyle('DANGER')
 		);
 		const initialMsg = await msg.say(stripIndents`
 			Welcome to Kino's Journey!
