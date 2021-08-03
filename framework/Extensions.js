@@ -17,3 +17,8 @@ Reflect.defineProperty(Message.prototype, 'direct', { value: function (content, 
 	if (typeof content === 'object') return this.author.send(content);
 	return this.author.send({ content, options });
 } });
+
+Reflect.defineProperty(Message.prototype, 'reply', { value: function (content, options) {
+	if (typeof content === 'object') return this.channel.send(content, { reply: { messageReference: this } });
+	return this.channel.send({ content, ...options, reply: { messageReference: this } });
+} });
