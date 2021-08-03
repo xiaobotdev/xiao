@@ -1,4 +1,4 @@
-const { Message, MessagePayload, APIMessage } = require('discord.js');
+const { Message } = require('discord.js');
 
 Reflect.defineProperty(Message.prototype, 'say', { value: function (content, options) {
 	if (typeof content === 'object') return this.channel.send(content);

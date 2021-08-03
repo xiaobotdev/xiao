@@ -23,7 +23,7 @@ module.exports = class SubredditCommand extends Command {
 		try {
 			const post = await this.random(subreddit, msg.channel.nsfw);
 			if (!post) return msg.reply('Could not find any results.');
-			return msg.say(this.generateText(post.post, post.origin, post.icon));
+			return msg.embed(this.generateText(post.post, post.origin, post.icon));
 		} catch (err) {
 			if (err.status === 403) return msg.say('This subreddit is private.');
 			if (err.status === 404) return msg.say('Could not find any results.');
