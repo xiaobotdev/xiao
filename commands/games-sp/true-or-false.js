@@ -62,7 +62,7 @@ module.exports = class TrueOrFalseCommand extends Command {
 		});
 		if (!interactions.size) return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
 		const ans = interactions.first();
-		const ansBool = ans.customID === 'true';
+		const ansBool = ans.customId === 'true';
 		if (correctBool !== ansBool) return ans.update(`Nope, sorry, it's ${correctBool}.`, { components: [] });
 		return ans.update('Nice job! 10/10! You deserve some cake!', { components: [] });
 	}

@@ -78,7 +78,7 @@ module.exports = class KinoCommand extends Command {
 		});
 		if (!initialInteractions.size) return initialMsg.edit('Maybe next time!', { components: [] });
 		let choice = initialInteractions.first();
-		if (choice.customID === 'end') return choice.update('Maybe next time!', { components: [] });
+		if (choice.customId === 'end') return choice.update('Maybe next time!', { components: [] });
 		while (!end) {
 			if (i === 0) {
 				row.components[0].setDisabled(true);
@@ -101,11 +101,11 @@ module.exports = class KinoCommand extends Command {
 			});
 			if (!interactions.size) break;
 			choice = interactions.first();
-			if (choice.customID === 'next') {
+			if (choice.customId === 'next') {
 				i++;
-			} else if (choice.customID === 'prev') {
+			} else if (choice.customId === 'prev') {
 				i--;
-			} else if (choice.customID === 'end') {
+			} else if (choice.customId === 'end') {
 				break;
 			} else {
 				return initialMsg.edit('Maybe next time!', { components: [] });
