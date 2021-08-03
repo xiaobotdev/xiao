@@ -56,7 +56,7 @@ module.exports = class AkinatorCommand extends Command {
 			return gameMsg.edit('Guess you didn\'t want to play after all...', { components: [] });
 		}
 		let buttonPress = initialVerify.first();
-		if (buttonPress.customID === 'false') return buttonPress.update('Too bad...', { components: [] });
+		if (buttonPress.customId === 'false') return buttonPress.update('Too bad...', { components: [] });
 		await this.sendLoadingMessage(buttonPress, [initialRow]);
 		const guessBlacklist = [];
 		while (timesGuessed < 3) {
@@ -96,7 +96,7 @@ module.exports = class AkinatorCommand extends Command {
 			}
 			buttonPress = interactions.first();
 			await this.sendLoadingMessage(buttonPress, [row, sRow]);
-			const choice = interactions.first().customID;
+			const choice = interactions.first().customId;
 			if (choice === 'end') {
 				forceGuess = true;
 			} else if (choice === 'back') {
@@ -138,7 +138,7 @@ module.exports = class AkinatorCommand extends Command {
 				}
 				buttonPress = verification.first();
 				await this.sendLoadingMessage(buttonPress, [guessRow]);
-				if (buttonPress.customID === 'true') {
+				if (buttonPress.customId === 'true') {
 					win = false;
 					break;
 				} else if (timesGuessed >= 3 || forceGuess) {
