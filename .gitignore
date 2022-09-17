@@ -24,4 +24,7 @@ tf_models/
 # Tesseract Trained Data
 *.traineddata
 
+# Mac Files
+.DS_Store
+
 # In-Development Commands
