@@ -16,7 +16,7 @@ module.exports = class JoinCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		const voiceChannel = msg.member.voice.channel;
 		if (!voiceChannel) return msg.reply('Please enter a voice channel first.');
 		if (!voiceChannel.permissionsFor(this.client.user).has(['CONNECT', 'SPEAK', 'VIEW_CHANNEL'])) {
@@ -29,7 +29,7 @@ module.exports = class JoinCommand extends Command {
 		joinVoiceChannel({
 			channelId: voiceChannel.id,
 			guildId: voiceChannel.guild.id,
-			adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+			adapterCreator: voiceChannel.guild.voiceAdapterCreator
 		});
 		this.client.dispatchers.set(msg.guild.id, new Dispatcher(voiceChannel));
 		return msg.reply(`Joined **${voiceChannel.name}**!`);
