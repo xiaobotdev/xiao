@@ -9,7 +9,8 @@ const games = {
 	bw: 'Black/White',
 	xy: 'X/Y',
 	sm: 'Sun/Moon',
-	ss: 'Sword/Shield'
+	ss: 'Sword/Shield',
+	sv: 'Scarlet/Violet'
 };
 
 module.exports = class SmogonCommand extends Command {
