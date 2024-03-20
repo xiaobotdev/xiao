@@ -95,10 +95,10 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const attachment = await this.createImage(data, true);
 			const answerAttachment = await this.createImage(data, false);
 			const connection = msg.guild ? getVoiceConnection(msg.guild.id) : null;
-			const resource = createAudioResource(
-				path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3')
-			);
 			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
+				const resource = createAudioResource(
+					path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3')
+				);
 				const dispatcher = createAudioPlayer();
 				connection.subscribe(dispatcher);
 				dispatcher.play(resource);
@@ -119,20 +119,6 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				max: 1,
 				time: 15000
 			});
-			if (connection && data.cry) {
-				const dispatcher = createAudioPlayer();
-				connection.subscribe(dispatcher);
-				dispatcher.play(resource);
-				this.client.dispatchers.set(msg.guild.id, dispatcher);
-				dispatcher.once(AudioPlayerStatus.Idle, () => {
-					this.client.dispatchers.get(msg.guild.id).stop();
-					this.client.dispatchers.delete(msg.guild.id);
-				});
-				dispatcher.once('error', () => {
-					this.client.dispatchers.get(msg.guild.id).stop();
-					this.client.dispatchers.delete(msg.guild.id);
-				});
-			}
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
