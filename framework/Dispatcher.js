@@ -1,5 +1,6 @@
 const minimist = require('minimist');
 const { stripIndents } = require('common-tags');
+const { list } = require('../util/Util');
 const argRegex = /"([^"]*)"|(\S+)/g;
 
 module.exports = class CommandDispatcher {
@@ -47,7 +48,10 @@ module.exports = class CommandDispatcher {
 							finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 							break;
 						} else {
-							return `The "${arg.label || arg.key}" argument is required.`;
+							return stripIndents`
+								The "${arg.label || arg.key}" argument is required.
+								${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
+							`;
 						}
 					}
 				}
@@ -57,7 +61,7 @@ module.exports = class CommandDispatcher {
 					if (!valid || typeof valid === 'string') {
 						return stripIndents`
 							An invalid value was provided for one of the "${arg.label || arg.key}" arguments.
-							${arg.oneOf ? `It must be one of the following: ${arg.oneOf.map(a => `\`${a}\``)}` : ''}
+							${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
 						`;
 					}
 					parsedArgs.push(await arg.parse(parsedArg, msg, arg));
@@ -70,7 +74,7 @@ module.exports = class CommandDispatcher {
 				if (arg.default === null) {
 					return stripIndents`
 						The "${arg.label || arg.key}" argument is required.
-						${arg.oneOf ? `It must be one of the following: ${arg.oneOf.map(a => `\`${a}\``)}` : ''}
+						${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
 					`;
 				} else {
 					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
@@ -81,7 +85,7 @@ module.exports = class CommandDispatcher {
 			if (!valid || typeof valid === 'string') {
 				return stripIndents`
 					An invalid value was provided for the "${arg.label || arg.key}" argument.
-					${arg.oneOf ? `It must be one of the following: ${arg.oneOf.map(a => `\`${a}\``)}` : ''}
+					${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
 				`;
 			}
 			finalResult[arg.key] = await arg.parse(parsedArg, msg, arg);
