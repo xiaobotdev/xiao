@@ -119,7 +119,6 @@ module.exports = class Pokemon {
 
 	get spriteImageURL() {
 		if (this.missingno) return missingno.sprites.default;
-		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
 		return `https://serebii.net/pokemon/art/${this.displayID}.png`;
 	}
 
@@ -128,7 +127,6 @@ module.exports = class Pokemon {
 			if (variety.toLowerCase() === 'missingno-yellow') return missingno.sprites.yellow;
 			return missingno.sprites.default;
 		}
-		if (this.id === 898) return 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/898.png';
 		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
 		const name = found.default ? '' : found.mega
 			? found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('')
@@ -138,7 +136,7 @@ module.exports = class Pokemon {
 
 	get boxImageURL() {
 		if (this.missingno) return missingno.box;
-		return `https://www.serebii.net/pokedex-swsh/icon/${this.displayID}.png`;
+		return `https://www.serebii.net/pokedex-sv/icon/${this.displayID}.png`;
 	}
 
 	formBoxImageURL(variety) {
@@ -147,12 +145,12 @@ module.exports = class Pokemon {
 		const name = found.default ? '' : found.mega
 			? found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('')
 			: found.name.toLowerCase().charAt(0);
-		return `https://www.serebii.net/pokedex-swsh/icon/${this.displayID}${name ? `-${name}` : ''}.png`;
+		return `https://www.serebii.net/pokedex-sv/icon/${this.displayID}${name ? `-${name}` : ''}.png`;
 	}
 
 	get serebiiURL() {
 		if (this.missingno) return missingno.url;
-		return `https://www.serebii.net/pokedex-swsh/${this.displayID}.shtml`;
+		return `https://www.serebii.net/pokedex-sv/${this.displayID}.shtml`;
 	}
 
 	smogonURL(gen) {
