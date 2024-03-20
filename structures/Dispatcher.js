@@ -46,6 +46,6 @@ module.exports = class VoiceDispatcher {
 	}
 
 	get canPlay() {
-		return this.player.state === AudioPlayerStatus.Idle;
+		return this.player.state.status === AudioPlayerStatus.Idle;
 	}
 };
