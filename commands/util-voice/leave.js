@@ -22,6 +22,6 @@ module.exports = class LeaveCommand extends Command {
 			return msg.reply(`I am currently playing audio in this server. Please use ${usage} first.`);
 		}
 		connection.destroy();
-		return msg.reply(`Left **${connection.channel.name}**...`);
+		return msg.reply('No more words out of me...');
 	}
 };
