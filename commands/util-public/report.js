@@ -53,9 +53,9 @@ module.exports = class ReportCommand extends Command {
 	}
 
 	async sendOwnerDM(embed) {
-		for (const owner of this.client.owners) {
+		for (const owner of this.client.owner) {
 			try {
-				await owner.send({ embed });
+				await this.client.users.cache.get(owner).send({ embed });
 			} catch {
 				continue;
 			}
