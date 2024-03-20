@@ -36,6 +36,6 @@ module.exports = class TextDiffCommand extends Command {
 			if (change[0] === -1) return `~~${change[1]}~~`;
 			return '';
 		}).join('');
-		return msg.reply(`${formatted} (${Math.round(diff * 100)}% similarity)`);
+		return msg.reply(`${formatted} (${Math.round(wuzzyDiff * 100)}% similarity)`);
 	}
 };

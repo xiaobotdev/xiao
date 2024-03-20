@@ -61,7 +61,6 @@ client.registry
 		['remind', 'Reminders'],
 		['phone', 'Phone'],
 		['cleverbot', 'Cleverbot'],
-		['roleplay', 'Roleplay'],
 		['other', 'Other']
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
