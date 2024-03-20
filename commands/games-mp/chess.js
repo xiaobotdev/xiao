@@ -148,7 +148,8 @@ module.exports = class ChessCommand extends Command {
 						return true;
 					};
 					const now = new Date();
-					const turn = await msg.channel.awaitMessages(pickFilter, {
+					const turn = await msg.channel.awaitMessages({
+						filter: pickFilter,
 						max: 1,
 						time: Math.min(userTime, 600000)
 					});
