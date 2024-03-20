@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { Connect4AI } = require('connect4-ai');
 const { stripIndents } = require('common-tags');
-const emojiRegex = require('emoji-regex/RGI_Emoji.js');
+const emojiRegex = require('emoji-regex');
 const { verify, list } = require('../../util/Util');
 const { LOADING_EMOJI_ID } = process.env;
 const blankEmoji = '⚪';
@@ -36,7 +36,7 @@ module.exports = class ConnectFourCommand extends Command {
 					prompt: `What color do you want to be? Either an emoji or one of ${list(Object.keys(colors), 'or')}.`,
 					type: 'default-emoji|custom-emoji|string',
 					validate: (color, msg) => {
-						const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(color);
+						const hasEmoji = new RegExp(`^(?:${emojiRegex().toString()})$`).test(color);
 						const hasCustom = color.match(customEmojiRegex);
 						if (hasCustom && !msg.guild) return 'You can only use custom emoji in a server.';
 						if (hasCustom && msg.guild && !msg.guild.emojis.cache.has(hasCustom[2])) {
