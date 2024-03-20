@@ -21,6 +21,7 @@ module.exports = class StopCommand extends Command {
 			return msg.reply(`I am not currently playing audio in this server.`);
 		}
 		this.client.dispatchers.get(msg.guild.id).stop();
+		this.client.dispatchers.delete(msg.guild.id);
 		return msg.reply('Stopped playing.');
 	}
 };
