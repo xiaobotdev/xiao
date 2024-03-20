@@ -5,7 +5,7 @@ require('moment-duration-format');
 const { formatNumber, embedURL } = require('../../util/Util');
 const { version, dependencies, optionalDependencies } = require('../../package');
 const deps = { ...dependencies, ...optionalDependencies };
-const permissions = require('../../assets/json/permissions');
+// const permissions = require('../../assets/json/permissions');
 const copyright = require('../../assets/json/copyright');
 
 module.exports = class InfoCommand extends Command {
@@ -22,7 +22,8 @@ module.exports = class InfoCommand extends Command {
 	}
 
 	async run(msg) {
-		const invite = await this.client.generateInvite({ permissions, scopes: ['bot'] });
+		// const invite = await this.client.generateInvite({ permissions, scopes: ['bot'] });
+		const invite = 'https://google.com';
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter(copyright.join('\n'))
