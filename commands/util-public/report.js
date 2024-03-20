@@ -42,7 +42,7 @@ module.exports = class ReportCommand extends Command {
 		const channel = await this.client.fetchReportChannel();
 		if (channel) {
 			try {
-				await channel.send({ embed });
+				await channel.send({ embeds: [embed] });
 			} catch {
 				await this.sendOwnerDM(embed);
 			}
@@ -55,7 +55,7 @@ module.exports = class ReportCommand extends Command {
 	async sendOwnerDM(embed) {
 		for (const owner of this.client.owner) {
 			try {
-				await this.client.users.cache.get(owner).send({ embed });
+				await this.client.users.cache.get(owner).send({ embeds: [embed] });
 			} catch {
 				continue;
 			}
