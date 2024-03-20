@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { getVoiceConnection } = require('@discordjs/voice');
 
 module.exports = class PauseCommand extends Command {
 	constructor(client) {
@@ -14,7 +15,7 @@ module.exports = class PauseCommand extends Command {
 	}
 
 	run(msg) {
-		const connection = this.client.voice.connections.get(msg.guild.id);
+		const connection = getVoiceConnection(msg.guild.id);
 		if (!connection) return msg.reply('I am not in a voice channel.');
 		if (!msg.channel.permissionsFor(msg.author).has('MOVE_MEMBERS') && connection.channel.members.size > 2) {
 			return msg.reply('You need the "Move members" permission to stop playing audio.');

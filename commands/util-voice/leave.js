@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { getVoiceConnection } = require('@discordjs/voice');
 
 module.exports = class LeaveCommand extends Command {
 	constructor(client) {
@@ -14,7 +15,7 @@ module.exports = class LeaveCommand extends Command {
 	}
 
 	run(msg) {
-		const connection = this.client.voice.connections.get(msg.guild.id);
+		const connection = getVoiceConnection(msg.guild.id);
 		if (!connection) return msg.reply('I am not in a voice channel.');
 		if (!connection.channel.members.has(msg.author.id)) {
 			return msg.reply('You must be in the voice channel to remove me from it.');
@@ -26,7 +27,7 @@ module.exports = class LeaveCommand extends Command {
 			const usage = this.client.registry.commands.get('stop').usage();
 			return msg.reply(`I am currently playing audio in this server. Please use ${usage} first.`);
 		}
-		connection.channel.leave();
+		connection.destroy();
 		return msg.reply(`Left **${connection.channel.name}**...`);
 	}
 };
