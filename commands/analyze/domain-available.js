@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { parseDomain, ParseResultType } = import('parse-domain');
 const { GODADDY_KEY, GODADDY_SECRET } = process.env;
 
 module.exports = class DomainAvailableCommand extends Command {
@@ -30,8 +29,8 @@ module.exports = class DomainAvailableCommand extends Command {
 	}
 
 	async run(msg, { url }) {
-		const { type, domain, topLevelDomains } = parseDomain(url.hostname);
-		if (type !== ParseResultType.Listed) return msg.reply('This domain is not supported.');
+		const { type, domain, topLevelDomains } = this.client.parseDomain(url.hostname);
+		if (type !== this.client.ParseResultType.Listed) return msg.reply('This domain is not supported.');
 		try {
 			const { body } = await request
 				.get('https://api.godaddy.com/v1/domains/available')
