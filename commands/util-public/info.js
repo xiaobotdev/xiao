@@ -22,7 +22,7 @@ module.exports = class InfoCommand extends Command {
 	}
 
 	async run(msg) {
-		const invite = await this.client.generateInvite({ permissions, scope: 'bot' });
+		const invite = await this.client.generateInvite({ permissions, scopes: ['bot'] });
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter(copyright.join('\n'))
