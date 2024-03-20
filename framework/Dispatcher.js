@@ -1,4 +1,5 @@
 const minimist = require('minimist');
+const { stripIndents } = require('common-tags');
 const argRegex = /"([^"]*)"|(\S+)/g;
 
 module.exports = class CommandDispatcher {
@@ -54,7 +55,10 @@ module.exports = class CommandDispatcher {
 				for (const parsedArg of infinite) {
 					const valid = await arg.validate(parsedArg, msg, arg);
 					if (!valid || typeof valid === 'string') {
-						return `An invalid value was provided for one of the "${arg.label || arg.key}" arguments.`;
+						return stripIndents`
+							An invalid value was provided for one of the "${arg.label || arg.key}" arguments.
+							${arg.oneOf ? `It must be one of the following: ${arg.oneOf.map(a => `\`${a}\``)}` : ''}
+						`;
 					}
 					parsedArgs.push(await arg.parse(parsedArg, msg, arg));
 				}
@@ -64,7 +68,10 @@ module.exports = class CommandDispatcher {
 			const parsedArg = i + 1 === command.args.length ? parsed._.slice(i).join(' ') : parsed._[i]?.toString();
 			if (arg.isEmpty(parsedArg, msg, arg)) {
 				if (arg.default === null) {
-					return `The "${arg.label || arg.key}" argument is required.`;
+					return stripIndents`
+						The "${arg.label || arg.key}" argument is required.
+						${arg.oneOf ? `It must be one of the following: ${arg.oneOf.map(a => `\`${a}\``)}` : ''}
+					`;
 				} else {
 					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 					continue;
@@ -72,7 +79,10 @@ module.exports = class CommandDispatcher {
 			}
 			const valid = await arg.validate(parsedArg, msg, arg);
 			if (!valid || typeof valid === 'string') {
-				return `An invalid value was provided for the "${arg.label || arg.key}" argument.`;
+				return stripIndents`
+					An invalid value was provided for the "${arg.label || arg.key}" argument.
+					${arg.oneOf ? `It must be one of the following: ${arg.oneOf.map(a => `\`${a}\``)}` : ''}
+				`;
 			}
 			finalResult[arg.key] = await arg.parse(parsedArg, msg, arg);
 		}
