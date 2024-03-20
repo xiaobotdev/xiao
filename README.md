@@ -1,24 +1,6 @@
 ## Agreement
 
-You are not to publish this code to the public under any circumstance. It is
-private, and if found on the web you may be held liable in court. Xiao is
-not licensed, meaning her code is completely under copyright. No one is
-allowed to use any part of her code under any circumstance unless given
-explicit permission from the copyright holder.
-
-I, as the copyright holder, grant you the ability to use it as a reference
-point for your projects and allow you to use the code as a learning tool.
-You may take ideas and reformat code into another library, but you may not 
-simply copy and self-host the code, unless the bot using it is COMPLETELY
-PRIVATE. This means it cannot be added to any servers but those of the bot
-owner.
-
-If a public bot is found using Xiao's code it will be reported to Discord and
-removed.
-
-**Please don't push to the repository.** It will simply be reverted and your
-rights to view it will be removed. Git is a powerful tool, so don't try your
-luck on this one.
+If you self-host this you're nuts.
 
 ## Installing
 
