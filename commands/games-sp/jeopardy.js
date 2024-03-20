@@ -44,14 +44,11 @@ module.exports = class JeopardyCommand extends Command {
 			this.client.games.set(msg.channel.id, { name: this.name });
 			const question = await this.fetchQuestion();
 			const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
-			const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+			const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
 			let playing = false;
-			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
+			if (msg.guild && connection && connection.canPlay) {
 				playing = true;
-				const dispatcher = connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
-				this.client.dispatchers.set(msg.guild.id, dispatcher);
-				dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
-				dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
+				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
 				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			const category = question.category ? question.category.title.toUpperCase() : '';
@@ -63,7 +60,7 @@ module.exports = class JeopardyCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			if (playing) connection.dispatcher.end();
+			if (playing) connection.stop();
 			const answer = question.answer.replace(/<\/?i>/gi, '*');
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);

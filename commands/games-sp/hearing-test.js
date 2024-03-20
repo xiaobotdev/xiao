@@ -30,11 +30,12 @@ module.exports = class HearingTestCommand extends Command {
 	}
 
 	async run(msg) {
-		const connection = this.client.voice.connections.get(msg.guild.id);
+		const connection = this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
+		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
 		try {
 			let age;
 			let range;

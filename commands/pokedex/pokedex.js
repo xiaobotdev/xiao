@@ -113,12 +113,9 @@ module.exports = class PokedexCommand extends Command {
 					? 'Genderless'
 					: `♂️ ${pokemon.genderRate.male}% ♀️ ${pokemon.genderRate.female}%`);
 			if (msg.guild && pokemon.cry && !this.client.dispatchers.has(msg.guild.id)) {
-				const connection = msg.guild ? this.client.voice.connections.get(msg.guild.id) : null;
+				const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
 				if (connection) {
-					const dispatcher = connection.play(pokemon.cry);
-					this.client.dispatchers.set(msg.guild.id, dispatcher);
-					dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
-					dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
+					connection.play(pokemon.cry);
 					await reactIfAble(msg, this.client.user, '🔉');
 				}
 			}

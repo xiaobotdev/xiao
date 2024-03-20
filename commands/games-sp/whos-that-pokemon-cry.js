@@ -78,23 +78,20 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
-		const connection = this.client.voice.connections.get(msg.guild.id);
+		const connection = this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
+		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
 			const data = await this.client.pokemon.fetch(pokemon.toString());
 			const names = data.names.map(name => name.name.toLowerCase());
 			const attachment = await this.client.registry.commands.get('whos-that-pokemon').createImage(data, false);
-			const dispatcher = connection.play(data.cry);
-			this.client.dispatchers.set(msg.guild.id, dispatcher);
-			dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
-			dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
+			connection.play(data.cry);
 			await reactIfAble(msg, this.client.user, '🔉');
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**');
 			const msgs = await msg.channel.awaitMessages({
@@ -112,7 +109,6 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 			}
 			return msg.reply(`Nice! It's **${data.name}**!`, { files: [attachment] });
 		} catch (err) {
-			this.client.dispatchers.delete(msg.guild.id);
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

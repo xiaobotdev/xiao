@@ -52,24 +52,21 @@ module.exports = class GuessSongCommand extends Command {
 	}
 
 	async run(msg, { chart }) {
-		const connection = this.client.voice.connections.get(msg.guild.id);
+		const connection = this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
+		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
 		this.client.games.set(msg.channel.id, { name: this.name });
 		let songID;
 		try {
 			if (!this.token) await this.fetchToken();
 			const data = await this.fetchRandomSong(chart);
 			const { body: previewBody } = await request.get(data.preview);
-			const dispatcher = connection.play(Readable.from([previewBody]));
-			this.client.dispatchers.set(msg.guild.id, dispatcher);
-			dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
-			dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
+			connection.play(Readable.from([previewBody]));
 			await reactIfAble(msg, this.client.user, '🔉');
 			await msg.reply('**You have 30 seconds, what song is this?**');
 			const msgs = await msg.channel.awaitMessages({
@@ -78,8 +75,7 @@ module.exports = class GuessSongCommand extends Command {
 				time: 30000
 			});
 			this.client.games.delete(msg.channel.id);
-			dispatcher.end();
-			this.client.dispatchers.delete(msg.guild.id);
+			connection.stop();
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}** by **${data.artist}**!`);
 			const guess = msgs.first().content.toLowerCase();
 			if (!guess.includes(data.name.toLowerCase()) && !guess.includes(data.shortName.toLowerCase())) {
@@ -87,7 +83,6 @@ module.exports = class GuessSongCommand extends Command {
 			}
 			return msg.reply(`Nice! It's **${data.name}** by **${data.artist}**!`);
 		} catch (err) {
-			this.client.dispatchers.delete(msg.guild.id);
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Song ID: \`${songID}\`.`);
 		}
