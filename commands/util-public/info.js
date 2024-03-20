@@ -20,7 +20,7 @@ module.exports = class InfoCommand extends Command {
 		});
 	}
 
-	async run(msg) {
+	run(msg) {
 		const invite = this.client.generateInvite({ permissions: ['ADMINISTRATOR'], scopes: ['bot'] });
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
