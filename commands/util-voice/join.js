@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { joinVoiceChannel } = require('@discordjs/voice');
+const { joinVoiceChannel, getVoiceConnection } = require('@discordjs/voice');
 
 module.exports = class JoinCommand extends Command {
 	constructor(client) {
@@ -22,7 +22,7 @@ module.exports = class JoinCommand extends Command {
 			return msg.reply('I\'m missing the "Connect", "Speak", or "View Channel" permission for this channel.');
 		}
 		if (!voiceChannel.joinable) return msg.reply('Your voice channel is not joinable.');
-		if (this.client.voice.connections.has(voiceChannel.guild.id)) {
+		if (getVoiceConnection(voiceChannel.guild.id)) {
 			return msg.reply('I am already in a voice channel.');
 		}
 		joinVoiceChannel({
