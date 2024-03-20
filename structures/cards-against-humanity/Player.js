@@ -1,5 +1,5 @@
 const { stripIndents } = require('common-tags');
-const { escapeMarkdown } = require('discord.js');
+const { Util: { escapeMarkdown } } = require('discord.js');
 const { reactIfAble } = require('../../util/Util');
 const { SUCCESS_EMOJI_ID, FAILURE_EMOJI_ID } = process.env;
 

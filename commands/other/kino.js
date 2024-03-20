@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { MessageActionRow, MessageButton } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { escapeMarkdown } = require('discord.js');
+const { Util: { escapeMarkdown } } = require('discord.js');
 const path = require('path');
 const fs = require('fs');
 const { readFile } = require('fs/promises');
