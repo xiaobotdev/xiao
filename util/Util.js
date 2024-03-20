@@ -283,6 +283,7 @@ module.exports = class Util {
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
 		const dm = !msg.guild;
+		if (!emoji) emoji = fallbackEmoji;
 		if (fallbackEmoji && (!dm && !msg.channel.permissionsFor(user).has('USE_EXTERNAL_EMOJIS'))) {
 			emoji = fallbackEmoji;
 		}
@@ -326,7 +327,7 @@ module.exports = class Util {
 			if (!num) return false;
 			return num > 0 && num <= arr.length;
 		};
-		const msgs = await msg.channel.awaitMessages({ filter, max: 1, time });
+		const msgs = await msg.channel.awaitMessages({ filter,max: 1, time });
 		if (!msgs.size) return defalt;
 		return arr[Number.parseInt(msgs.first().content, 10) - 1];
 	}
