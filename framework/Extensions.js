@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { Message } = require('discord.js');
 
 Reflect.defineProperty(Message.prototype, 'say', { value: function (content, options) {
@@ -22,3 +23,4 @@ Reflect.defineProperty(Message.prototype, 'reply', { value: function (content, o
 	if (typeof content === 'object') return this.channel.send(content, { reply: { messageReference: this } });
 	return this.channel.send({ content, ...options, reply: { messageReference: this } });
 } });
+/* eslint-enable */
