@@ -1,5 +1,4 @@
 const Command = require('../../framework/Command');
-const { getVoiceConnection, createAudioPlayer, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { reactIfAble } = require('../../util/Util');
@@ -94,23 +93,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const names = data.names.map(name => name.name.toLowerCase());
 			const attachment = await this.createImage(data, true);
 			const answerAttachment = await this.createImage(data, false);
-			const connection = msg.guild ? getVoiceConnection(msg.guild.id) : null;
-			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
-				const resource = createAudioResource(
-					path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3')
-				);
-				const dispatcher = createAudioPlayer();
-				connection.subscribe(dispatcher);
-				dispatcher.play(resource);
-				this.client.dispatchers.set(msg.guild.id, dispatcher);
-				dispatcher.once(AudioPlayerStatus.Idle, () => {
-					this.client.dispatchers.get(msg.guild.id).stop();
-					this.client.dispatchers.delete(msg.guild.id);
-				});
-				dispatcher.once('error', () => {
-					this.client.dispatchers.get(msg.guild.id).stop();
-					this.client.dispatchers.delete(msg.guild.id);
-				});
+			const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
+			if (msg.guild && connection && connection.canPlay) {
+				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3'));
 				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });
@@ -119,6 +104,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				max: 1,
 				time: 15000
 			});
+			if (connection && data.cry) connection.play(data.cry);
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
 			const guess = msgs.first().content.toLowerCase();
