@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { arrayEquals, reactIfAble } = require('../../util/Util');
 const { MEGA_EVOLVE_EMOJI_NAME, MEGA_EVOLVE_EMOJI_ID } = process.env;
-const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss'];
+const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss', 'sv'];
 const games = {
 	rb: 'Red/Blue',
 	gs: 'Gold/Silver',
@@ -12,7 +12,8 @@ const games = {
 	bw: 'Black/White',
 	xy: 'X/Y',
 	sm: 'Sun/Moon',
-	ss: 'Sword/Shield'
+	ss: 'Sword/Shield',
+	sv: 'Scarlet/Violet'
 };
 
 module.exports = class PokedexCommand extends Command {
