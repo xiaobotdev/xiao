@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const request = require('node-superfetch');
 const fs = require('fs');
 const tf = require('@tensorflow/tfjs-node');
-const { parseDomain, ParseResultType } = require('parse-domain');
+import { parseDomain, ParseResultType } from 'parse-domain';
 const { decode: decodeHTML } = require('html-entities');
 const { stripIndents } = require('common-tags');
 const { URL } = require('url');
