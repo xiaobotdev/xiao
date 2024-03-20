@@ -70,7 +70,8 @@ module.exports = class AnagramicaCommand extends Command {
 				reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 				return true;
 			};
-			const msgs = await msg.channel.awaitMessages(filter, {
+			const msgs = await msg.channel.awaitMessages({
+				filter,
 				time: time * 1000
 			});
 			const highScoreGet = await this.client.redis.get('anagramica');

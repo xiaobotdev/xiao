@@ -81,7 +81,8 @@ module.exports = class PokemonAdvantageCommand extends Command {
 				**You have 15 seconds, who\'s got the type advantage?**
 				_If the Pokémon are evenly matched, type \`even\`._
 			`, { files: [attachment] });
-			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+			const msgs = await msg.channel.awaitMessages({
+				filter: res => res.author.id === msg.author.id,
 				max: 1,
 				time: 15000
 			});

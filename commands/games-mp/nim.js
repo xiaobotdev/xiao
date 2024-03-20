@@ -71,7 +71,8 @@ module.exports = class NimCommand extends Command {
 						const i = Number.parseInt(choice, 10) - 1;
 						return board[i] && board[i] > 0;
 					};
-					const turn = await msg.channel.awaitMessages(pickFilter, {
+					const turn = await msg.channel.awaitMessages({
+						filter: pickFilter,
 						max: 1,
 						time: 60000
 					});
@@ -110,7 +111,8 @@ module.exports = class NimCommand extends Command {
 							const i = Number.parseInt(chosen, 10);
 							return i <= row && i > 0;
 						};
-						const rowTurn = await msg.channel.awaitMessages(rowFilter, {
+						const rowTurn = await msg.channel.awaitMessages({
+							filter: rowFilter,
 							max: 1,
 							time: 60000
 						});

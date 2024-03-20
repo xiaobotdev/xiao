@@ -65,7 +65,8 @@ module.exports = class JengaCommand extends Command {
 						const j = Number.parseInt(choice, 10) - 1;
 						return board[j];
 					};
-					const turn = await msg.channel.awaitMessages(pickFilter, {
+					const turn = await msg.channel.awaitMessages({
+						filter: pickFilter,
 						max: 1,
 						time: 60000
 					});

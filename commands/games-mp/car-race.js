@@ -380,7 +380,8 @@ module.exports = class CarRaceCommand extends Command {
 					if (res.author.id !== msg.author.id) return false;
 					return Object.keys(difficulties).includes(res.content.toLowerCase());
 				};
-				const difficultyPick = await msg.channel.awaitMessages(difficultyFilter, {
+				const difficultyPick = await msg.channel.awaitMessages({
+					filter: difficultyFilter,
 					max: 1,
 					time: 30000
 				});
@@ -405,7 +406,8 @@ module.exports = class CarRaceCommand extends Command {
 					if (res.author.id !== opponent.id) return false;
 					return available.includes(res.content.toLowerCase());
 				};
-				const p2Car = await msg.channel.awaitMessages(filter, {
+				const p2Car = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 30000
 				});
@@ -448,7 +450,8 @@ module.exports = class CarRaceCommand extends Command {
 					if (![opponent.id, msg.author.id].includes(res.author.id)) return false;
 					return res.content.toLowerCase() === 'end';
 				};
-				const earlyEnd = await msg.channel.awaitMessages(earlyFilter, {
+				const earlyEnd = await msg.channel.awaitMessages({
+					filter: earlyFilter,
 					max: 1,
 					time: randomRange(1000, 30000)
 				});
@@ -464,7 +467,8 @@ module.exports = class CarRaceCommand extends Command {
 					if (res.content.toLowerCase() === 'end') return true;
 					return res.content.toLowerCase() === word;
 				};
-				const winner = await msg.channel.awaitMessages(turnFilter, {
+				const winner = await msg.channel.awaitMessages({
+					filter: turnFilter,
 					max: 1,
 					time: opponent.bot ? difficulties[difficulty] : 30000
 				});

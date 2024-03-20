@@ -82,7 +82,8 @@ module.exports = class IslandCommand extends Command {
 					}
 					return false;
 				};
-				const vote = await msg.channel.awaitMessages(voteFilter, {
+				const vote = await msg.channel.awaitMessages({
+					filter: voteFilter,
 					max: playersLeft.size,
 					time: 60000
 				});

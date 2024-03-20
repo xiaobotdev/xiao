@@ -68,7 +68,8 @@ module.exports = class HorseRaceCommand extends Command {
 			if (!num) return false;
 			return num > 0 && num <= chosenHorses.length;
 		};
-		const msgs = await msg.channel.awaitMessages(filter, {
+		const msgs = await msg.channel.awaitMessages({
+			filter,
 			max: 1,
 			time: 30000
 		});

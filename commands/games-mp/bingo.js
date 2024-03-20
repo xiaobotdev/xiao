@@ -84,7 +84,7 @@ module.exports = class BingoCommand extends Command {
 					}
 					return true;
 				};
-				const bingo = await msg.channel.awaitMessages(filter, { max: 1, time: 20000 });
+				const bingo = await msg.channel.awaitMessages({ filter, max: 1, time: 20000 });
 				if (!players.size) {
 					winner = 0;
 					break;

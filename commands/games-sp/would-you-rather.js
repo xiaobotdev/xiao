@@ -36,7 +36,8 @@ module.exports = class WouldYouRatherCommand extends Command {
 				_Respond with either **1** or **2** to continue._
 			`);
 			const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toLowerCase());
-			const msgs = await msg.channel.awaitMessages(filter, {
+			const msgs = await msg.channel.awaitMessages({
+				filter,
 				time: 30000,
 				max: 1
 			});

@@ -58,7 +58,8 @@ module.exports = class HangmanCommand extends Command {
 					const choice = res.content.toLowerCase();
 					return res.author.id === msg.author.id && !confirmation.includes(choice) && !incorrect.includes(choice);
 				};
-				const guess = await msg.channel.awaitMessages(filter, {
+				const guess = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 30000
 				});

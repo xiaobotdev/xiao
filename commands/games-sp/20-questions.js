@@ -48,7 +48,8 @@ module.exports = class TwentyQuestionsCommand extends Command {
 					${question.answers.map(answer => answer.text).join(' | ')} | End
 				`);
 				const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
-				const msgs = await msg.channel.awaitMessages(filter, {
+				const msgs = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 30000
 				});

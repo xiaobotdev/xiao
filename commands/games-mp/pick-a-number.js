@@ -45,7 +45,8 @@ module.exports = class PickANumberCommand extends Command {
 				if (!userTurn && num === player1Pick) return false;
 				return num && nums.includes(num);
 			};
-			const player1 = await msg.channel.awaitMessages(filter, {
+			const player1 = await msg.channel.awaitMessages({
+				filter,
 				max: 1,
 				time: 30000
 			});
@@ -62,7 +63,8 @@ module.exports = class PickANumberCommand extends Command {
 			} else {
 				userTurn = false;
 				await msg.say(`${opponent}, pick a number from 1 to 10, except ${player1Pick}.`);
-				const player2 = await msg.channel.awaitMessages(filter, {
+				const player2 = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 30000
 				});

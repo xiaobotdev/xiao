@@ -70,7 +70,8 @@ module.exports = class AnimeScoreCommand extends Command {
 				if (res.author.id !== msg.author.id) return false;
 				return Boolean(Number.parseInt(res.content, 10));
 			};
-			const msgs = await msg.channel.awaitMessages(filter, {
+			const msgs = await msg.channel.awaitMessages({
+				filter,
 				max: 1,
 				time: 15000
 			});

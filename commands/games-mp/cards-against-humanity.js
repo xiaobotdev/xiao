@@ -96,7 +96,8 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					if (!cards[Number.parseInt(res.content, 10) - 1]) return false;
 					return true;
 				};
-				const chosen = await msg.channel.awaitMessages(filter, {
+				const chosen = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 120000
 				});

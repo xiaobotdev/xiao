@@ -71,7 +71,8 @@ module.exports = class ImposterCommand extends Command {
 					if (res.content && wordRegex.test(res.content)) return true;
 					return false;
 				};
-				const msgs = await msg.channel.awaitMessages(filter, {
+				const msgs = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 600000
 				});
@@ -119,7 +120,8 @@ module.exports = class ImposterCommand extends Command {
 					}
 					return false;
 				};
-				const vote = await msg.channel.awaitMessages(voteFilter, {
+				const vote = await msg.channel.awaitMessages({
+					filter: voteFilter,
 					max: players.filter(player => !player.killed).size,
 					time: 60000
 				});

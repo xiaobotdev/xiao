@@ -54,7 +54,8 @@ module.exports = class WordSpudCommand extends Command {
 					_Type \`end\` to end the game._
 				`);
 				const filter = res => res.author.id === player.id && res.content.length <= 100;
-				const msgs = await msg.channel.awaitMessages(filter, {
+				const msgs = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 30000
 				});
