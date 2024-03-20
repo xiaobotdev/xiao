@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { escapeMarkdown } = require('discord.js');
+const { Util: { escapeMarkdown } } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { shuffle } = require('../../util/Util');
 const Game = require('../../structures/cards-against-humanity/Game');
