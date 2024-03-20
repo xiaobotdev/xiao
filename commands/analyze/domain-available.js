@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-import { parseDomain, ParseResultType } from 'parse-domain';
+const { parseDomain, ParseResultType } = import('parse-domain');
 const { GODADDY_KEY, GODADDY_SECRET } = process.env;
 
 module.exports = class DomainAvailableCommand extends Command {
