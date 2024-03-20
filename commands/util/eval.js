@@ -2,9 +2,9 @@
 const util = require('util');
 /* eslint-disable no-unused-vars, prefer-destructuring */
 const discord = require('discord.js');
+const Util = require('../../util/Util');
 /* eslint-enable no-unused-vars, prefer-destructuring */
 const tags = require('common-tags');
-const { escapeRegex, splitMessage } = require('../../util/Util');
 const Command = require('../../framework/Command');
 
 const nl = '!!NL!!';
@@ -90,14 +90,14 @@ module.exports = class EvalCommand extends Command {
 		const prepend = `\`\`\`javascript\n${prependPart}\n`;
 		const append = `\n${appendPart}\n\`\`\``;
 		if (input) {
-			return splitMessage(tags.stripIndents`
+			return Util.splitMessage(tags.stripIndents`
 				*Executed in ${hrDiff[0] > 0 ? `${hrDiff[0]}s ` : ''}${hrDiff[1] / 1000000}ms.*
 				\`\`\`javascript
 				${inspected}
 				\`\`\`
 			`, { maxLength: 1900, prepend, append });
 		} else {
-			return splitMessage(tags.stripIndents`
+			return Util.splitMessage(tags.stripIndents`
 				*Callback executed after ${hrDiff[0] > 0 ? `${hrDiff[0]}s ` : ''}${hrDiff[1] / 1000000}ms.*
 				\`\`\`javascript
 				${inspected}
@@ -109,7 +109,7 @@ module.exports = class EvalCommand extends Command {
 	get sensitivePattern() {
 		if (!this._sensitivePattern) {
 			let pattern = '';
-			if (this.client.token) pattern += escapeRegex(this.client.token);
+			if (this.client.token) pattern += Util.escapeRegex(this.client.token);
 			Object.defineProperty(this, '_sensitivePattern', { value: new RegExp(pattern, 'gi'), configurable: false });
 		}
 		return this._sensitivePattern;

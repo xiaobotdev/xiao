@@ -23,7 +23,8 @@ module.exports = class Player {
 			${valid.map((p, i) => `**${i + 1}.** ${p.user.tag}`).join('\n')}
 		`);
 		const filter = res => valid[Number.parseInt(res.content, 10) - 1];
-		const decision = await this.user.dmChannel.awaitMessages(filter, {
+		const decision = await this.user.dmChannel.awaitMessages({
+			filter,
 			max: 1,
 			time: 120000
 		});

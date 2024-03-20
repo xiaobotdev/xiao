@@ -302,7 +302,8 @@ module.exports = class Util {
 			return (user ? res.author.id === user.id : true)
 				&& (yes.includes(value) || no.includes(value) || extraYes.includes(value) || extraNo.includes(value));
 		};
-		const verify = await channel.awaitMessages(filter, {
+		const verify = await channel.awaitMessages({
+			filter,
 			max: 1,
 			time
 		});
@@ -325,7 +326,7 @@ module.exports = class Util {
 			if (!num) return false;
 			return num > 0 && num <= arr.length;
 		};
-		const msgs = await msg.channel.awaitMessages(filter, { max: 1, time });
+		const msgs = await msg.channel.awaitMessages({ filter, max: 1, time });
 		if (!msgs.size) return defalt;
 		return arr[Number.parseInt(msgs.first().content, 10) - 1];
 	}

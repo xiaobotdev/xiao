@@ -46,7 +46,8 @@ module.exports = class Battler {
 			}
 			return false;
 		};
-		const turn = await msg.channel.awaitMessages(filter, {
+		const turn = await msg.channel.awaitMessages({
+			filter,
 			max: 1,
 			time: 30000
 		});
