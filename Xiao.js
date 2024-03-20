@@ -247,7 +247,7 @@ client.on('ready', async () => {
 	}, 1.8e+6);
 
 	// Fetch all members
-	for (const [id, guild] of client.guilds.cache) {
+	for (const [id, guild] of client.guilds.cache) { // eslint-disable-line no-unused-vars
 		await guild.members.fetch();
 	}
 	client.logger.info('[MEMBERS] Fetched all guild members.');
