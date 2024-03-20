@@ -95,10 +95,10 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const attachment = await this.createImage(data, true);
 			const answerAttachment = await this.createImage(data, false);
 			const connection = msg.guild ? getVoiceConnection(msg.guild.id) : null;
+			const resource = createAudioResource(
+				path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3')
+			);
 			if (msg.guild && connection && !this.client.dispatchers.has(msg.guild.id)) {
-				const resource = createAudioResource(
-					path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3')
-				);
 				const dispatcher = createAudioPlayer();
 				connection.subscribe(dispatcher);
 				dispatcher.play(resource);
