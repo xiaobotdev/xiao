@@ -56,7 +56,8 @@ module.exports = class TrueOrFalseCommand extends Command {
 			${decodeURIComponent(body.results[0].question)}
 		`, { components: [row] });
 		const filter = res => res.user.id === msg.author.id;
-		const interactions = await questionMsg.awaitMessageComponent(filter, {
+		const interactions = await questionMsg.awaitMessageComponent({
+			filter,
 			max: 1,
 			time: 15000
 		});
