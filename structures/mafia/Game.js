@@ -3,6 +3,7 @@ const path = require('path');
 const { stripIndents } = require('common-tags');
 const Player = require('./Player');
 const { shuffle, reactIfAble } = require('../../util/Util');
+const { AudioPlayerStatus } = require('@discordjs/voice');
 const { SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class Game {
@@ -41,19 +42,12 @@ module.exports = class Game {
 	}
 
 	playAudio(id) {
-		const dispatcher = this.connection.play(
+		this.connection.play(
 			path.join(__dirname, '..', '..', 'assets', 'sounds', 'mafia', `${id}.mp3`), { volume: 2 }
 		);
-		this.client.dispatchers.set(this.channel.guild.id, dispatcher);
 		return new Promise((res, rej) => {
-			this.dispatcher.once('finish', () => {
-				this.client.dispatchers.delete(this.channel.guild.id);
-				return res(true);
-			});
-			this.dispatcher.once('error', err => {
-				this.client.dispatchers.delete(this.channel.guild.id);
-				return rej(err);
-			});
+			this.dispatcher.once(AudioPlayerStatus.Idle, () => res(true));
+			this.dispatcher.once('error', err => rej(err));
 		});
 	}
 

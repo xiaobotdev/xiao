@@ -17,12 +17,12 @@ module.exports = class MafiaCommand extends Command {
 	async run(msg) {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		const connection = this.client.voice.connections.get(msg.guild.id);
+		const connection = this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
-		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
+		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
 		for (const member of connection.channel.members.values()) await msg.guild.members.fetch(member.id);
 		if (connection.channel.members.size > 16) {
 			return msg.reply('Please do not have more than 15 users in this voice channel.');

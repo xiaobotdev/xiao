@@ -56,17 +56,14 @@ module.exports = class PokedexCryCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
-		const connection = this.client.voice.connections.get(msg.guild.id);
+		const connection = this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
-		if (this.client.dispatchers.has(msg.guild.id)) return msg.reply('I am already playing audio in this server.');
+		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
 		try {
-			const dispatcher = connection.play(pokemon.cry);
-			this.client.dispatchers.set(msg.guild.id, dispatcher);
-			dispatcher.once('finish', () => this.client.dispatchers.delete(msg.guild.id));
-			dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
+			connection.play(pokemon.cry);
 			await reactIfAble(msg, this.client.user, '🔉');
 			return null;
 		} catch (err) {
