@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { joinVoiceChannel } = require('@discordjs/voice');
 
 module.exports = class JoinCommand extends Command {
 	constructor(client) {
@@ -24,7 +25,11 @@ module.exports = class JoinCommand extends Command {
 		if (this.client.voice.connections.has(voiceChannel.guild.id)) {
 			return msg.reply('I am already in a voice channel.');
 		}
-		await voiceChannel.join();
+		joinVoiceChannel({
+			channelId: voiceChannel.id,
+			guildId: voiceChannel.guild.id,
+			adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+		});
 		return msg.reply(`Joined **${voiceChannel.name}**!`);
 	}
 };
