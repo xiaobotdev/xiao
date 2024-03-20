@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-import { parseDomain, ParseResultType } from 'parse-domain';
+const { parseDomain, ParseResultType } = import('parse-domain');
 
 module.exports = class IsItDownCommand extends Command {
 	constructor(client) {
