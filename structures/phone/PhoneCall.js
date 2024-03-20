@@ -84,7 +84,8 @@ module.exports = class PhoneCall {
 				const voicemailValidation = await verify(this.origin, null);
 				if (voicemailValidation) {
 					await this.origin.send('☎️ Please leave your message (max 280 characters) after the beep. _Beep_.');
-					const voicemail = await this.origin.awaitMessages(res => res.content && res.content.length <= 280, {
+					const voicemail = await this.origin.awaitMessages({
+						filter: res => res.content && res.content.length <= 280,
 						time: 30000,
 						max: 1
 					});

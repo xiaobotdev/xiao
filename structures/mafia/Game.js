@@ -71,7 +71,8 @@ module.exports = class Game {
 			reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 			return true;
 		};
-		const votes = await this.channel.awaitMessages(filter, {
+		const votes = await this.channel.awaitMessages({
+			filter,
 			max: this.players.size,
 			time: 90000
 		});
