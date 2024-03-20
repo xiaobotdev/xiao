@@ -96,7 +96,7 @@ module.exports = class PokedexCommand extends Command {
 				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, pokemon.boxImageURL, pokemon.serebiiURL)
 				.setDescription(stripIndents`
 					**${pokemon.genus}**
-					${pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)]}
+					${pokemon.entries.length ? pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)] : 'No data.'}
 				`)
 				.setThumbnail(pokemon.spriteImageURL)
 				.addField('❯ Introduced In', games[genGames[pokemon.generation]], true)
