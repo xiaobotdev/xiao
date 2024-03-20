@@ -66,7 +66,8 @@ module.exports = class MathQuizCommand extends Command {
 			**You have 10 seconds to answer this question.**
 			${value1} ${operation} ${value2}
 		`);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
 			max: 1,
 			time: 10000
 		});

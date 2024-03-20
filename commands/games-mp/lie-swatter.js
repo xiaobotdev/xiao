@@ -76,7 +76,8 @@ module.exports = class LieSwatterCommand extends Command {
 					}
 					return false;
 				};
-				const msgs = await msg.channel.awaitMessages(filter, {
+				const msgs = await msg.channel.awaitMessages({
+					filter,
 					max: pts.size,
 					time: 30000
 				});

@@ -56,7 +56,8 @@ module.exports = class QuizCommand extends Command {
 				${shuffled.map((answer, i) => `**${choices[i]}.** ${answer}`).join('\n')}
 			`);
 			const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toUpperCase());
-			const msgs = await msg.channel.awaitMessages(filter, {
+			const msgs = await msg.channel.awaitMessages({
+				filter,
 				max: 1,
 				time: 15000
 			});

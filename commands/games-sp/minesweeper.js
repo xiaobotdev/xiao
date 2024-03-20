@@ -64,7 +64,8 @@ module.exports = class MinesweeperCommand extends Command {
 					if (game.mask[y - 1][x - 1]) return false;
 					return true;
 				};
-				const turn = await msg.channel.awaitMessages(filter, {
+				const turn = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 120000
 				});

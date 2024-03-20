@@ -41,7 +41,8 @@ module.exports = class CaptchaCommand extends Command {
 			'**You have 15 seconds, what does the captcha say?**',
 			{ files: [{ attachment: canvas.toBuffer(), name: 'captcha-quiz.png' }] }
 		);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
 			max: 1,
 			time: 15000
 		});

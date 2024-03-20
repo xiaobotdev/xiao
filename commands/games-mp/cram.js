@@ -62,7 +62,8 @@ module.exports = class CramCommand extends Command {
 				if (res.author.id !== opponent.id) return false;
 				return available.includes(res.content.toLowerCase());
 			};
-			const p2Color = await msg.channel.awaitMessages(filter, {
+			const p2Color = await msg.channel.awaitMessages({
+				filter,
 				max: 1,
 				time: 30000
 			});
@@ -93,7 +94,8 @@ module.exports = class CramCommand extends Command {
 					if (!possibleMoves.includes(`${direction}${x - 1},${y - 1}`)) return false;
 					return true;
 				};
-				const turn = await msg.channel.awaitMessages(colorFilter, {
+				const turn = await msg.channel.awaitMessages({
+					filter: colorFilter,
 					max: 1,
 					time: 60000
 				});

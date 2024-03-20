@@ -42,7 +42,8 @@ module.exports = class GunfightCommand extends Command {
 			await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
 			const filter = res => [opponent.id, msg.author.id].includes(res.author.id) && res.content.toLowerCase() === word;
 			const now = Date.now();
-			const winner = await msg.channel.awaitMessages(filter, {
+			const winner = await msg.channel.awaitMessages({
+				filter,
 				max: 1,
 				time: 30000
 			});

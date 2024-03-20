@@ -90,7 +90,8 @@ module.exports = class GuesspionageCommand extends Command {
 					const int = Number.parseInt(res.content, 10);
 					return int >= 0 && int <= 100;
 				};
-				const initialGuess = await msg.channel.awaitMessages(initialGuessFilter, {
+				const initialGuess = await msg.channel.awaitMessages({
+					filter: initialGuessFilter,
 					max: 1,
 					time: 30000
 				});
@@ -115,7 +116,8 @@ module.exports = class GuesspionageCommand extends Command {
 					reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 					return true;
 				};
-				const everyoneElse = await msg.channel.awaitMessages(everyoneElseFilter, {
+				const everyoneElse = await msg.channel.awaitMessages({
+					filter: everyoneElseFilter,
 					max: awaitedPlayers.length - 1,
 					time: 30000
 				});

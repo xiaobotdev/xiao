@@ -171,7 +171,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			if (res.author.id !== msg.author.id) return false;
 			return res.content.toLowerCase() === 'cancel' || monsterTypes.includes(res.content.toLowerCase());
 		};
-		const msgs = await msg.channel.awaitMessages(filter, {
+		const msgs = await msg.channel.awaitMessages({
+			filter,
 			max: 1,
 			time: 60000
 		});
@@ -187,7 +188,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			What name should your card have?
 			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
 		`);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
 			max: 1,
 			time: 60000
 		});
@@ -207,7 +209,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			if (res.author.id !== msg.author.id) return false;
 			return res.content.toLowerCase() === 'cancel' || atrs.includes(res.content.toLowerCase());
 		};
-		const msgs = await msg.channel.awaitMessages(filter, {
+		const msgs = await msg.channel.awaitMessages({
+			filter,
 			max: 1,
 			time: 60000
 		});
@@ -223,7 +226,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			What type should your monster be? For example, "Dragon".
 			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
 		`);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
 			max: 1,
 			time: 60000
 		});
@@ -239,7 +243,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			What effect should your card have?
 			Respond with \`cancel\` to cancel the command. The command will automatically be cancelled in 60 seconds.
 		`);
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
 			max: 1,
 			time: 60000
 		});
@@ -261,7 +266,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= 12;
 		};
-		const msgs = await msg.channel.awaitMessages(filter, {
+		const msgs = await msg.channel.awaitMessages({
+			filter,
 			max: 1,
 			time: 60000
 		});
@@ -283,7 +289,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= 9999;
 		};
-		const msgs = await msg.channel.awaitMessages(filter, {
+		const msgs = await msg.channel.awaitMessages({
+			filter,
 			max: 1,
 			time: 60000
 		});
@@ -312,7 +319,8 @@ module.exports = class YuGiOhGenCommand extends Command {
 			const int = Number.parseInt(res.content, 10);
 			return int >= 0 && int <= (monsterType === 'link' ? 8 : 9999);
 		};
-		const msgs = await msg.channel.awaitMessages(filter, {
+		const msgs = await msg.channel.awaitMessages({
+			filter,
 			max: 1,
 			time: 60000
 		});

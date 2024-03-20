@@ -58,7 +58,8 @@ module.exports = class JeopardyCommand extends Command {
 			await msg.reply(`${category ? `The category is: **${category}**. ` : ''}30 seconds, good luck.`, {
 				files: [{ attachment: clueCard, name: 'clue-card.png' }]
 			});
-			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+			const msgs = await msg.channel.awaitMessages({
+				filter: res => res.author.id === msg.author.id,
 				max: 1,
 				time: 30000
 			});

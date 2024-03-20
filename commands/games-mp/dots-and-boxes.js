@@ -79,7 +79,8 @@ module.exports = class DotsAndBoxesCommand extends Command {
 					}
 					return !taken.includes(`${first}-${second}`);
 				};
-				const turn = await msg.channel.awaitMessages(filter, {
+				const turn = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 60000
 				});

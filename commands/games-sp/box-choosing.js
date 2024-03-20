@@ -51,7 +51,8 @@ module.exports = class BoxChoosingCommand extends Command {
 				`);
 				if (line.options) {
 					const filter = res => res.author.id === msg.author.id && line.options.includes(res.content.toLowerCase());
-					const choose = await msg.channel.awaitMessages(filter, {
+					const choose = await msg.channel.awaitMessages({
+						filter,
 						max: 1,
 						time: 120000
 					});

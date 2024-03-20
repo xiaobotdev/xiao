@@ -21,7 +21,8 @@ module.exports = class TypingTestCommand extends Command {
 			files: [{ attachment: this.generateImage(sentence), name: 'typing-test.png' }]
 		});
 		const now = Date.now();
-		const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
 			max: 1,
 			time: 30000
 		});

@@ -74,7 +74,8 @@ module.exports = class ObstructionCommand extends Command {
 					if (!possibleMoves.includes(`${x - 1},${y - 1}`)) return false;
 					return true;
 				};
-				const turn = await msg.channel.awaitMessages(turnFilter, {
+				const turn = await msg.channel.awaitMessages({
+					filter: turnFilter,
 					max: 1,
 					time: 60000
 				});

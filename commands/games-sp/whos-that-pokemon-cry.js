@@ -97,7 +97,8 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 			dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 			await reactIfAble(msg, this.client.user, '🔉');
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**');
-			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+			const msgs = await msg.channel.awaitMessages({
+				filter: res => res.author.id === msg.author.id,
 				max: 1,
 				time: 15000
 			});

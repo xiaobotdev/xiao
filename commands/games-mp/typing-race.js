@@ -44,7 +44,8 @@ module.exports = class TypingRaceCommand extends Command {
 				if (![opponent.id, msg.author.id].includes(res.author.id)) return false;
 				return res.content.toLowerCase() === sentence;
 			};
-			const winner = await msg.channel.awaitMessages(filter, {
+			const winner = await msg.channel.awaitMessages({
+				filter,
 				max: 1,
 				time: 30000
 			});

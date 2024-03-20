@@ -72,7 +72,8 @@ module.exports = class GuessSongCommand extends Command {
 			dispatcher.once('error', () => this.client.dispatchers.delete(msg.guild.id));
 			await reactIfAble(msg, this.client.user, '🔉');
 			await msg.reply('**You have 30 seconds, what song is this?**');
-			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+			const msgs = await msg.channel.awaitMessages({
+				filter: res => res.author.id === msg.author.id,
 				max: 1,
 				time: 30000
 			});

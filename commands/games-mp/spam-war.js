@@ -37,7 +37,8 @@ module.exports = class SpamWarCommand extends Command {
 			await msg.say('You get one point per character in your messages. You get 1 minute to spam.');
 			await delay(5000);
 			await msg.say('You have **1 minute** to spam. Go!');
-			const msgs = await msg.channel.awaitMessages(res => [opponent.id, msg.author.id].includes(res.author.id), {
+			const msgs = await msg.channel.awaitMessages({
+				filter: res => [opponent.id, msg.author.id].includes(res.author.id),
 				time: 60000
 			});
 			const authorMsgs = msgs

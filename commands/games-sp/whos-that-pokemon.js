@@ -104,7 +104,8 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				await reactIfAble(msg, this.client.user, '🔉');
 			}
 			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });
-			const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+			const msgs = await msg.channel.awaitMessages({
+				filter: res => res.author.id === msg.author.id,
 				max: 1,
 				time: 15000
 			});

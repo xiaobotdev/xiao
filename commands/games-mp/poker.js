@@ -275,7 +275,7 @@ module.exports = class PokerCommand extends Command {
 			}
 			return false;
 		};
-		const msgs = await msg.channel.awaitMessages(filter, { max: 1, time: 60000 });
+		const msgs = await msg.channel.awaitMessages({ filter, max: 1, time: 60000 });
 		let choiceAction;
 		if (msgs.size) {
 			choiceAction = msgs.first().content.toLowerCase().replace(/[$,]/g, '');

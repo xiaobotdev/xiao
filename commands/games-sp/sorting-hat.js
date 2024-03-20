@@ -62,7 +62,8 @@ module.exports = class SortingHatCommand extends Command {
 				`);
 				const filter = res =>
 					res.author.id === msg.author.id && choices.slice(0, answers.length).includes(res.content.toUpperCase());
-				const choice = await msg.channel.awaitMessages(filter, {
+				const choice = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 120000
 				});

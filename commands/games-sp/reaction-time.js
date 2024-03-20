@@ -25,7 +25,8 @@ module.exports = class ReactionTimeCommand extends Command {
 			await msg.say(`TYPE \`${word.toUpperCase()}\` NOW!`);
 			const filter = res => msg.author.id === res.author.id && res.content.toLowerCase() === word;
 			const now = Date.now();
-			const msgs = await msg.channel.awaitMessages(filter, {
+			const msgs = await msg.channel.awaitMessages({
+				filter,
 				max: 1,
 				time: 30000
 			});

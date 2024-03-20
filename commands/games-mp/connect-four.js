@@ -88,7 +88,8 @@ module.exports = class ConnectFourCommand extends Command {
 					if (hasCustom && msg.guild && !msg.guild.emojis.cache.has(hasCustom[2])) return false;
 					return (hasCustom && msg.guild) || hasEmoji || available.includes(res.content.toLowerCase());
 				};
-				const p2Color = await msg.channel.awaitMessages(filter, {
+				const p2Color = await msg.channel.awaitMessages({
+					filter,
 					max: 1,
 					time: 30000
 				});
@@ -133,7 +134,8 @@ module.exports = class ConnectFourCommand extends Command {
 						const j = Number.parseInt(choice, 10) - 1;
 						return board[colLevels[j]] && board[colLevels[j]][j] !== undefined;
 					};
-					const turn = await msg.channel.awaitMessages(pickFilter, {
+					const turn = await msg.channel.awaitMessages({
+						filter: pickFilter,
 						max: 1,
 						time: 60000
 					});

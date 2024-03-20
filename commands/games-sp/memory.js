@@ -38,7 +38,8 @@ module.exports = class MemoryCommand extends Command {
 			await delay(10000);
 			await memorizeMsg.edit('Type what you saw. Don\'t worry about formatting, just the words.');
 			const memorizeType = memorize.join(' ');
-			const msgs = await msg.channel.awaitMessages(res => msg.author.id === res.author.id, {
+			const msgs = await msg.channel.awaitMessages({
+				filter: res => msg.author.id === res.author.id,
 				max: 1,
 				time: 30000
 			});
