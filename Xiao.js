@@ -247,7 +247,7 @@ client.on('ready', async () => {
 	}, 1.8e+6);
 
 	// Fetch all members
-	for (const guild of client.guilds) {
+	for (const guild of client.guilds.cache) {
 		await guild.members.fetch();
 	}
 	client.logger.info('[MEMBERS] Fetched all guild members.');
