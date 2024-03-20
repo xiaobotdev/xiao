@@ -19,7 +19,7 @@ module.exports = class JeopardyCommand extends Command {
 			credit: [
 				{
 					name: 'jService',
-					url: 'http://jservice.io/',
+					url: 'https://jservice.xyz/',
 					reason: 'API'
 				},
 				{
@@ -74,21 +74,7 @@ module.exports = class JeopardyCommand extends Command {
 	}
 
 	async fetchQuestion() {
-		const { body } = await request
-			.get('http://jservice.io/api/random')
-			.query({ count: 1 });
-		const data = body[0];
-		if (!data.question || !data.answer) {
-			await this.markInvalid(data.id);
-			return this.fetchQuestion();
-		}
-		return data;
-	}
-
-	async markInvalid(id) {
-		const { body } = await request
-			.post('http://jservice.io/api/invalid')
-			.query({ id });
+		const { body } = await request.get('https://jservice.xyz/api/random-clue');
 		return body;
 	}
 
