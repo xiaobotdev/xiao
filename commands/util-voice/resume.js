@@ -1,5 +1,4 @@
 const Command = require('../../framework/Command');
-const { getVoiceConnection } = require('@discordjs/voice');
 
 module.exports = class ResumeCommand extends Command {
 	constructor(client) {
@@ -15,12 +14,12 @@ module.exports = class ResumeCommand extends Command {
 	}
 
 	run(msg) {
-		const connection = getVoiceConnection(msg.guild.id);
+		const connection = this.client.dispatchers.get(msg.guild.id);
 		if (!connection) return msg.reply('I am not in a voice channel.');
-		if (!this.client.dispatchers.has(msg.guild.id)) {
-			return msg.reply(`I am not currently playing audio in this server.`);
+		if (connection.canPlay) {
+			return msg.reply('I am not currently playing audio in this server.');
 		}
-		this.client.dispatchers.get(msg.guild.id).unpause();
+		connection.unpause();
 		return msg.reply('Resumed playing.');
 	}
 };
