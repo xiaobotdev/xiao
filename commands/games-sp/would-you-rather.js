@@ -14,12 +14,14 @@ module.exports = class WouldYouRatherCommand extends Command {
 			description: 'Responds with a random "Would you rather ...?" question.',
 			credit: [
 				{
-					name: 'either',
-					url: 'http://either.io',
+					name: 'wouldurather.io',
+					url: 'https://wouldurather.io',
 					reason: 'API'
 				}
 			]
 		});
+
+		this.availableQuestions = null;
 	}
 
 	async run(msg) {
@@ -27,11 +29,12 @@ module.exports = class WouldYouRatherCommand extends Command {
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id, { name: this.name });
 		try {
-			const data = await this.fetchScenario();
+			if (!this.availableQuestions) await this.fetchAvailableQuestions();
+			const data = await this.fetchRandomQuestion();
 			await msg.say(stripIndents`
-				${data.prefix ? `${data.prefix}, would you rather...` : 'Would you rather...'}
-				**1.** ${data.option_1}
-				**2.** ${data.option_2}
+				Would you rather...
+				**1.** ${data.option1}
+				**2.** ${data.option2}
 
 				_Respond with either **1** or **2** to continue._
 			`);
@@ -45,17 +48,16 @@ module.exports = class WouldYouRatherCommand extends Command {
 				this.client.games.delete(msg.channel.id);
 				return msg.reply(stripIndents`
 					No response? Too bad.
-					${formatNumber(data.option1_total)} - ${formatNumber(data.option2_total)}
+					${formatNumber(data.option1Votes)} - ${formatNumber(data.option2Votes)}
 				`);
 			}
 			const option1 = msgs.first().content.toLowerCase() === '1';
-			await this.postResponse(data.id, option1);
-			const totalVotes = Number.parseInt(data.option1_total, 10) + Number.parseInt(data.option2_total, 10);
-			const numToUse = option1 ? Number.parseInt(data.option1_total, 10) : Number.parseInt(data.option2_total, 10);
+			const totalVotes = Number.parseInt(data.option1Votes, 10) + Number.parseInt(data.option2Votes, 10);
+			const numToUse = option1 ? Number.parseInt(data.option1Votes, 10) : Number.parseInt(data.option2Votes, 10);
 			this.client.games.delete(msg.channel.id);
 			return msg.reply(stripIndents`
 				**${Math.round((numToUse / totalVotes) * 100)}%** of people agree!
-				${formatNumber(data.option1_total)} - ${formatNumber(data.option2_total)}
+				${formatNumber(data.option1Votes)} - ${formatNumber(data.option2Votes)}
 			`);
 		} catch (err) {
 			this.client.games.delete(msg.channel.id);
@@ -63,19 +65,21 @@ module.exports = class WouldYouRatherCommand extends Command {
 		}
 	}
 
-	async fetchScenario() {
-		const { text } = await request.get('http://either.io/questions/next/1');
-		return JSON.parse(text).questions[0];
+	async fetchAvailableQuestions() {
+		const { body } = await request.get('https://wouldurather.io/api/availableQuestions');
+		this.availableQuestions = body.question_array;
+		return this.availableQuestions;
 	}
 
-	async postResponse(id, bool) {
-		try {
-			const { text } = await request
-				.get(`http://either.io/vote/${id}/${bool ? '1' : '2'}`)
-				.set({ 'X-Requested-With': 'XMLHttpRequest' });
-			return JSON.parse(text).result;
-		} catch {
-			return false;
-		}
+	async fetchQuestion(id) {
+		const { body } = await request
+			.get('https://wouldurather.io/api/question')
+			.query({ id });
+		return body;
+	}
+
+	fetchRandomQuestion() {
+		const id = this.availableQuestions[Math.floor(Math.random() * this.availableQuestions.length)];
+		return this.fetchQuestion(id);
 	}
 };
