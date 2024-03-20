@@ -55,6 +55,13 @@ module.exports = class XiaoClient extends CommandClient {
 		this.nsfwModel = null;
 	}
 
+	async loadParseDomain() {
+		const parseDomainModule = await import('parse-domain');
+		this.parseDomain = parseDomainModule.parseDomain;
+		this.ParseResultType = parseDomainModule.ParseResultType;
+		return parseDomainModule;
+	}
+
 	async registerFontsIn(filepath) {
 		const files = fs.readdirSync(filepath);
 		for (const file of files) {

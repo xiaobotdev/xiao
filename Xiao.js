@@ -203,6 +203,10 @@ client.on('ready', async () => {
 		client.logger.error(`[TIMEZONES] Failed to set timezones\n${err.stack}`);
 	}
 
+	// Set up parse-domain
+	await client.loadParseDomain();
+	client.logger.info('[PARSE DOMAIN] parse-domain loaded.');
+
 	// Fetch adult site list
 	try {
 		await client.fetchAdultSiteList();
