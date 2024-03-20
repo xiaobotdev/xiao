@@ -59,7 +59,7 @@ module.exports = class HelpCommand extends Command {
 				.setFooter(`${this.client.registry.commands.size} Commands${allShown ? '' : ` (${cmdCount} Shown)`}`);
 			try {
 				const msgs = [];
-				for (const embed of embeds) msgs.push(await msg.direct({ embed }));
+				for (const embed of embeds) msgs.push(await msg.direct({ embeds: [embed] }));
 				if (msg.channel.type !== 'dm') msgs.push(await msg.say('📬 Sent you a DM with information.'));
 				return msgs;
 			} catch (err) {
