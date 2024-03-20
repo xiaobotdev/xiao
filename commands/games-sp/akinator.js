@@ -48,7 +48,8 @@ module.exports = class AkinatorCommand extends Command {
 		const gameMsg = await msg.reply('Welcome to Akinator! Think of a character, and I will try to guess it.', {
 			components: [initialRow]
 		});
-		const initialVerify = await gameMsg.awaitMessageComponent(res => res.user.id === msg.author.id, {
+		const initialVerify = await gameMsg.awaitMessageComponent({
+			filter: res => res.user.id === msg.author.id,
 			max: 1,
 			time: 30000
 		});
@@ -86,7 +87,8 @@ module.exports = class AkinatorCommand extends Command {
 				`**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
 				{ components: [row, sRow] }
 			);
-			const interactions = await gameMsg.awaitMessageComponent(res => res.user.id === msg.author.id, {
+			const interactions = await gameMsg.awaitMessageComponent({
+				filter: res => res.user.id === msg.author.id,
 				max: 1,
 				time: 30000
 			});
@@ -128,7 +130,8 @@ module.exports = class AkinatorCommand extends Command {
 					new MessageButton().setCustomId('false').setLabel('No').setStyle('DANGER')
 				);
 				await buttonPress.editReply('Is this your character?', { embeds: [embed], components: [guessRow] });
-				const verification = await gameMsg.awaitMessageComponent(res => res.user.id === msg.author.id, {
+				const verification = await gameMsg.awaitMessageComponent({
+					filter: res => res.user.id === msg.author.id,
 					max: 1,
 					time: 30000
 				});
