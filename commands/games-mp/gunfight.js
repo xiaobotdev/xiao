@@ -55,7 +55,7 @@ module.exports = class GunfightCommand extends Command {
 			const user = await fetchHSUserDisplay(this.client, highScoreUser);
 			if (scoreBeat) {
 				await this.client.redis.set('reaction-time', newScore);
-				await this.client.redis.set('reaction-time-user', winner.first().author);
+				await this.client.redis.set('reaction-time-user', winner.first().author.id);
 			}
 			this.client.games.delete(msg.channel.id);
 			if (!winner.size) return msg.say('Oh... No one won.');
