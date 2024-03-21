@@ -291,7 +291,7 @@ client.on('guildCreate', async guild => {
 			.setTimestamp()
 			.addField('❯ Members', formatNumber(guild.memberCount))
 			.addField('❯ Owner', owner.user.tag);
-		await joinLeaveChannel.send({ embed });
+		await joinLeaveChannel.send({ embeds: [embed] });
 	}
 });
 
@@ -307,7 +307,7 @@ client.on('guildDelete', async guild => {
 			.setTimestamp()
 			.addField('❯ Members', formatNumber(guild.memberCount))
 			.addField('❯ Owner', owner ? owner.tag : guild.ownerID);
-		await joinLeaveChannel.send({ embed });
+		await joinLeaveChannel.send({ embeds: [embed] });
 	}
 });
 
