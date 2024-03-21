@@ -22,7 +22,7 @@ module.exports = class NsfwUrlCommand extends Command {
 	async run(msg, { url }) {
 		const nsfw = await isUrlNSFW(url, this.client.adultSiteList);
 		if (nsfw === null) return msg.reply('❔ This site sent an error, or just didn\'t respond.');
-		if (!nsfw) return msg.reply('👍 This site is safe!');
+		if (!nsfw) return msg.reply('👍 This site is SFW!');
 		return msg.reply('👎 This site is NSFW.');
 	}
 };

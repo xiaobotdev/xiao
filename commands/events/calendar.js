@@ -54,6 +54,6 @@ module.exports = class CalendarCommand extends Command {
 			}
 		}
 		display += '|';
-		return msg.code(null, display);
+		return msg.say(`\`\`\`\n${display}\n\`\`\``);
 	}
 };
