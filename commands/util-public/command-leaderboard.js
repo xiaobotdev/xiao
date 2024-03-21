@@ -59,8 +59,8 @@ module.exports = class CommandLeaderboardCommand extends Command {
 	filterCommands(commands, owner, nsfw) {
 		return commands.filter(command => {
 			if (command.uses === undefined || command.unknown) return false;
-			if (!owner && command.hidden) return false;
-			if (!owner && command.ownerOnly) return false;
+			if (command.hidden) return false;
+			if (command.ownerOnly) return false;
 			if (!owner && command.nsfw && !nsfw) return false;
 			return true;
 		});
