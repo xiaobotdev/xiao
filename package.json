@@ -81,7 +81,6 @@
 		"semver": "^7.6.0",
 		"sherlockjs": "^1.4.2",
 		"stackblur-canvas": "^2.7.0",
-		"tesseract.js": "^5.0.5",
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "github:marianoheller/tic-tac-toe-minimax",
 		"twemoji-parser": "^14.0.0",

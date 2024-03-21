@@ -11,7 +11,7 @@ Reflect.defineProperty(Message.prototype, 'embed', { value: function (embed, opt
 } });
 
 Reflect.defineProperty(Message.prototype, 'code', { value: function (lang, content, options) {
-	return this.channel.send({ content, lang, ...options });
+	return this.channel.send({ content, ...options });
 } });
 
 Reflect.defineProperty(Message.prototype, 'direct', { value: function (content, options) {

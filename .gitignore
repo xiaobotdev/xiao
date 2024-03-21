@@ -20,9 +20,6 @@ blacklist.json
 # Tensorflow Models
 tf_models/
 
-# Tesseract Trained Data
-*.traineddata
-
 # Mac Files
 .DS_Store
 
