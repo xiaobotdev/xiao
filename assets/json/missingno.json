@@ -103,9 +103,9 @@
 	"chain": [0],
 	"missingno": true,
 	"sprites": {
-		"default": "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png",
-		"yellow": "https://cdn.bulbagarden.net/upload/0/03/Missingno_Y.png"
+		"default": "https://archives.bulbagarden.net/media/upload/9/98/Missingno_RB.png",
+		"yellow": "https://archives.bulbagarden.net/media/upload/0/03/Missingno_Y.png"
 	},
-	"box": "https://cdn.bulbagarden.net/upload/1/1f/AniMS_Missingno_I.png",
+	"box": "https://archives.bulbagarden.net/media/upload/1/1f/AniMS_Missingno_I.png",
 	"url": "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
 }
