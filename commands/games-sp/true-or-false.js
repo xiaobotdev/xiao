@@ -56,15 +56,17 @@ module.exports = class TrueOrFalseCommand extends Command {
 			${decodeURIComponent(body.results[0].question)}
 		`, { components: [row] });
 		const filter = res => res.user.id === msg.author.id;
-		const interactions = await questionMsg.awaitMessageComponent({
-			filter,
-			max: 1,
-			time: 15000
-		});
-		if (!interactions.size) return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
-		const ans = interactions.first();
-		const ansBool = ans.customId === 'true';
-		if (correctBool !== ansBool) return ans.update(`Nope, sorry, it's ${correctBool}.`, { components: [] });
-		return ans.update('Nice job! 10/10! You deserve some cake!', { components: [] });
+		try {
+			const ans = await questionMsg.awaitMessageComponent({
+				filter,
+				max: 1,
+				time: 15000
+			});
+			const ansBool = ans.customId === 'true';
+			if (correctBool !== ansBool) return ans.update(`Nope, sorry, it's ${correctBool}.`, { components: [] });
+			return ans.update('Nice job! 10/10! You deserve some cake!', { components: [] });
+		} catch {
+			return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
+		}
 	}
 };
