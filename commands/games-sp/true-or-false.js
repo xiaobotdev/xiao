@@ -63,10 +63,10 @@ module.exports = class TrueOrFalseCommand extends Command {
 				time: 15000
 			});
 			const ansBool = ans.customId === 'true';
-			if (correctBool !== ansBool) return ans.update(`Nope, sorry, it's ${correctBool}.`, { components: [] });
-			return ans.update('Nice job! 10/10! You deserve some cake!', { components: [] });
+			if (correctBool !== ansBool) return ans.update({ content: `Nope, sorry, it's ${correctBool}.`, components: [] });
+			return ans.update({ content: 'Nice job! 10/10! You deserve some cake!', components: [] });
 		} catch {
-			return questionMsg.edit(`Sorry, time is up! It was ${correctBool}.`, { components: [] });
+			return questionMsg.edit({ content: `Sorry, time is up! It was ${correctBool}.`, components: [] });
 		}
 	}
 };
