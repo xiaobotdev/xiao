@@ -154,7 +154,7 @@ module.exports = class HatCommand extends Command {
 					type: 'integer',
 					min: 0,
 					max: 1000,
-					default: 0
+					default: 1
 				}
 			]
 		});
