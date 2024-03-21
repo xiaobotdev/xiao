@@ -1,6 +1,7 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
+const UserAgent = require('user-agents');
 const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
 const games = require('../../assets/json/20-questions');
@@ -36,8 +37,9 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		try {
-			const startURL = await this.initialize(game);
-			let question = await this.startGame(game, startURL);
+			const agent = new UserAgent().toString();
+			const startURL = await this.initialize(game, agent);
+			let question = await this.startGame(game, startURL, agent);
 			let win = null;
 			this.client.games.set(msg.channel.id, { name: this.name });
 			while (win === null) {
@@ -64,7 +66,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 					break;
 				}
 				const answer = question.answers[answers.indexOf(choice)];
-				question = await this.nextQuestion(game, answer.href, question.url);
+				question = await this.nextQuestion(game, answer.href, question.url, agent);
 				if (typeof question.win !== 'undefined') {
 					win = question.win;
 					break;
@@ -87,20 +89,24 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		return `http://${game}.20q.net`;
 	}
 
-	async initialize(game) {
+	async initialize(game, agent) {
 		const { text } = await request
 			.get(`${this.makeBaseURI(game)}/gs${game ? 'e' : 'q-en'}`)
-			.set({ Referer: 'http://www.20q.net/' });
+			.set({
+				Referer: 'http://www.20q.net/',
+				'User-Agent': agent
+			});
 		const $ = cheerio.load(text);
 		return $('form').first().attr('action');
 	}
 
-	async startGame(game, startURL) {
+	async startGame(game, startURL, agent) {
 		const { text } = await request
 			.post(`${this.makeBaseURI(game)}${startURL}`)
 			.set({
 				Origin: `${this.makeBaseURI(game)}/`,
-				Referer: `${this.makeBaseURI(game)}/gs${game ? 'e' : 'q-en'}`
+				Referer: `${this.makeBaseURI(game)}/gs${game ? 'e' : 'q-en'}`,
+				'User-Agent': agent
 			})
 			.attach({
 				submit: '  Play  ',
@@ -122,10 +128,13 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		};
 	}
 
-	async nextQuestion(game, url, referer) {
+	async nextQuestion(game, url, referer, agent) {
 		const { text } = await request
 			.get(url)
-			.set({ Referer: referer });
+			.set({
+				Referer: referer,
+				'User-Agent': agent
+			});
 		const $ = cheerio.load(text);
 		const win = $('h2').first().text();
 		if (win === '20Q won!') {
