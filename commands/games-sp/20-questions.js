@@ -104,8 +104,16 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const { text } = await request
 			.post(`${this.makeBaseURI(game)}${startURL}`)
 			.set({
+				Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+				'Accept-Encoding': 'gzip, deflate',
+				'Accept-Language': 'en-US,en;q=0.5',
+				Connection: 'keep-alive',
+				DNT: 1,
+				Host: this.makeBaseURI(game).slice(7),
 				Origin: this.makeBaseURI(game),
 				Referer: `${this.makeBaseURI(game)}/gs${game ? 'e' : 'q-en'}`,
+				'See-GPC': 1,
+				'Upgrade-Insecure-Requests': 1,
 				'User-Agent': agent
 			})
 			.attach({
