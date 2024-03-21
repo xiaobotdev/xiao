@@ -48,16 +48,16 @@ module.exports = class AkinatorCommand extends Command {
 		const gameMsg = await msg.reply('Welcome to Akinator! Think of a character, and I will try to guess it.', {
 			components: [initialRow]
 		});
-		const initialVerify = await gameMsg.awaitMessageComponent({
-			filter: res => res.user.id === msg.author.id,
-			max: 1,
-			time: 30000
-		});
-		if (!initialVerify.size) {
+		try {
+			const initialVerify = await gameMsg.awaitMessageComponent({
+				filter: res => res.user.id === msg.author.id,
+				max: 1,
+				time: 30000
+			});
+			if (initialVerify.customId === 'false') return initialVerify.update('Too bad...', { components: [] });
+		} catch {
 			return gameMsg.edit('Guess you didn\'t want to play after all...', { components: [] });
-		}
-		let buttonPress = initialVerify.first();
-		if (buttonPress.customId === 'false') return buttonPress.update('Too bad...', { components: [] });
+		} 
 		await this.sendLoadingMessage(buttonPress, [initialRow]);
 		const guessBlacklist = [];
 		while (timesGuessed < 3) {
@@ -87,16 +87,17 @@ module.exports = class AkinatorCommand extends Command {
 				`**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
 				{ components: [row, sRow] }
 			);
-			const interactions = await gameMsg.awaitMessageComponent({
-				filter: res => res.user.id === msg.author.id,
-				max: 1,
-				time: 30000
-			});
-			if (!interactions.size) {
+			let buttonPress;
+			try {
+				buttonPress = await gameMsg.awaitMessageComponent({
+					filter: res => res.user.id === msg.author.id,
+					max: 1,
+					time: 30000
+				});
+			} catch {
 				win = 'time';
 				break;
 			}
-			buttonPress = interactions.first();
 			await this.sendLoadingMessage(buttonPress, [row, sRow]);
 			const choice = interactions.first().customId;
 			if (choice === 'end') {
@@ -130,16 +131,16 @@ module.exports = class AkinatorCommand extends Command {
 					new MessageButton().setCustomId('false').setLabel('No').setStyle('DANGER')
 				);
 				await buttonPress.editReply('Is this your character?', { embeds: [embed], components: [guessRow] });
-				const verification = await gameMsg.awaitMessageComponent({
-					filter: res => res.user.id === msg.author.id,
-					max: 1,
-					time: 30000
-				});
-				if (!verification.size) {
+				try {
+					buttonPress = await gameMsg.awaitMessageComponent({
+						filter: res => res.user.id === msg.author.id,
+						max: 1,
+						time: 30000
+					});
+				} catch {
 					win = 'time';
 					break;
 				}
-				buttonPress = verification.first();
 				await this.sendLoadingMessage(buttonPress, [guessRow]);
 				if (buttonPress.customId === 'true') {
 					win = false;

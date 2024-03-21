@@ -56,17 +56,19 @@ module.exports = class Game {
 	}
 
 	createJoinLeaveCollector() {
-		const collector = this.channel.createMessageCollector(res => {
-			if (res.author.bot) return false;
-			if (this.players.has(res.author.id) && res.content.toLowerCase() !== 'leave game') return false;
-			if (!this.players.has(res.author.id) && res.content.toLowerCase() !== 'join game') return false;
-			if (this.czar.id === res.author.id || this.players.size >= 10) {
-				reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
-				return false;
+		const collector = this.channel.createMessageCollector({
+			filter: res => {
+				if (res.author.bot) return false;
+				if (this.players.has(res.author.id) && res.content.toLowerCase() !== 'leave game') return false;
+				if (!this.players.has(res.author.id) && res.content.toLowerCase() !== 'join game') return false;
+				if (this.czar.id === res.author.id || this.players.size >= 10) {
+					reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
+					return false;
+				}
+				if (!['join game', 'leave game'].includes(res.content.toLowerCase())) return false;
+				reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
+				return true;
 			}
-			if (!['join game', 'leave game'].includes(res.content.toLowerCase())) return false;
-			reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
-			return true;
 		});
 		collector.on('collect', msg => {
 			if (msg.content.toLowerCase() === 'join game') this.addUser(msg.author);

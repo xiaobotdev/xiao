@@ -359,7 +359,8 @@ module.exports = class Util {
 			if (joined.includes(interaction.user.id)) return false;
 			return true;
 		};
-		const collector = msg.channel.createMessageComponentCollector(filter, {
+		const collector = msg.channel.createMessageComponentCollector({
+			filter,
 			componentType: 'BUTTON',
 			max: max - 1,
 			time: 120000

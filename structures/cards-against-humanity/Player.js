@@ -53,16 +53,19 @@ module.exports = class Player {
 		await this.sendHand(hand, black);
 		let gambled = false;
 		let swapped = false;
-		const collector = this.user.dmChannel.createMessageCollector(res => {
-			if (res.content.toLowerCase() === 'swap' && this.points > 0 && !swapped) return true;
-			if (res.content.toLowerCase() === 'gamble' && this.points > 0 && !gambled) return true;
-			const existing = hand[Number.parseInt(res.content, 10) - 1];
-			if (!existing || chosen.includes(existing)) {
-				reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
-				return false;
-			}
-			return true;
-		}, { time: 60000 });
+		const collector = this.user.dmChannel.createMessageCollector({
+			filter: res => {
+				if (res.content.toLowerCase() === 'swap' && this.points > 0 && !swapped) return true;
+				if (res.content.toLowerCase() === 'gamble' && this.points > 0 && !gambled) return true;
+				const existing = hand[Number.parseInt(res.content, 10) - 1];
+				if (!existing || chosen.includes(existing)) {
+					reactIfAble(res, res.author, FAILURE_EMOJI_ID, '❌');
+					return false;
+				}
+				return true;
+			},
+			time: 60000 
+		});
 		collector.on('collect', async msg => {
 			const existing = hand[Number.parseInt(msg.content, 10) - 1];
 			if (msg.content.toLowerCase() === 'swap') {
