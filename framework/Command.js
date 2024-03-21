@@ -17,7 +17,6 @@ module.exports = class Command {
 		this.ownerOnly = options.ownerOnly || false;
 		this.nsfw = options.nsfw || false;
 		this.guildOnly = options.guildOnly || false;
-		this.patronOnly = options.patronOnly || false;
 		this.guarded = options.guarded || false;
 		this.unknown = options.unknown || false;
 		this.throttling = options.throttling || { usages: 2, duration: 5 };

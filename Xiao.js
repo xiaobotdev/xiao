@@ -53,7 +53,6 @@ client.registry
 		['edit-image', 'Image Manipulation'],
 		['edit-image-text', 'Image Text Manipulation'],
 		['edit-avatar', 'Avatar Manipulation'],
-		['edit-face', 'Face Manipulation'],
 		['edit-meme', 'Meme Generators'],
 		['edit-text', 'Text Manipulation'],
 		['edit-number', 'Number Manipulation'],
@@ -127,18 +126,6 @@ client.on('ready', async () => {
 			client.logger.error(`[LASTRUN] Failed to export command-last-run.json:\n${err.stack}`);
 		}
 	}, 1.8e+6);
-
-	// Import forced patrons
-	try {
-		const results = client.patreon.importForced();
-		if (results) {
-			client.logger.info('[PATREON] patreon.json successfully loaded.');
-		} else {
-			client.logger.error('[PATREON] patreon.json is not formatted correctly.');
-		}
-	} catch (err) {
-		client.logger.error(`[PATREON] Could not parse patreon.json:\n${err.stack}`);
-	}
 
 	// Import blacklist
 	try {
@@ -221,33 +208,6 @@ client.on('ready', async () => {
 	} catch (err) {
 		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
 	}
-
-	// Import Patrons
-	try {
-		await client.patreon.fetchPatrons();
-		setInterval(() => {
-			client.patreon.fetchPatrons()
-				.then(() => client.logger.info('[PATREON] Updated patron list.'))
-				.catch(err => client.logger.error(`[PATREON] Failed to update patron list:\n${err.stack}`));
-		}, 3.6e+6);
-		client.logger.info('[PATREON] Fetched patrons.');
-	} catch (err) {
-		client.logger.error(`[PATREON] Failed to fetch patrons:\n${err.stack}`);
-	}
-
-	// Post bot list stats
-	await client.botList.postTopGGStats();
-	await client.botList.postBotsGGStats();
-	await client.botList.postDiscordBotListStats();
-	await client.botList.postCarbonStats();
-	await client.botList.postBlistStats();
-	setInterval(() => {
-		client.botList.postTopGGStats();
-		client.botList.postBotsGGStats();
-		client.botList.postDiscordBotListStats();
-		client.botList.postCarbonStats();
-		client.botList.postBlistStats();
-	}, 1.8e+6);
 
 	// Fetch all members
 	for (const [id, guild] of client.guilds.cache) { // eslint-disable-line no-unused-vars

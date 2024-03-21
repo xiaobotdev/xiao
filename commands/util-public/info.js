@@ -11,7 +11,7 @@ module.exports = class InfoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'info',
-			aliases: ['stats', 'uptime'],
+			aliases: ['stats', 'uptime', 'prefix', 'invite'],
 			group: 'util-public',
 			memberName: 'info',
 			description: 'Responds with detailed bot information.',
@@ -22,6 +22,7 @@ module.exports = class InfoCommand extends Command {
 
 	run(msg) {
 		const invite = this.client.generateInvite({ permissions: ['ADMINISTRATOR'], scopes: ['bot'] });
+		const prefix = msg.guild ? msg.guild.commandPrefix : this.client.commandPrefix;
 		const embed = new MessageEmbed()
 			.setColor(0x00AE86)
 			.setFooter(copyright.join('\n'))
@@ -31,7 +32,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Home Server',
 				this.client.options.invite ? embedURL('Invite', this.client.options.invite) : 'None', true)
 			.addField('❯ Invite', embedURL('Add Me', invite), true)
-			.addField('❯ Donate', embedURL('Patreon', 'https://www.patreon.com/xiaodiscord'), true)
+			.addField('❯ Prefix', prefix || 'None', true)
 			.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
 			.addField('❯ Uptime', moment.duration(this.client.uptime).format('d:hh:mm:ss'), true)
 			.addField('❯ Version', `v${version}`, true)

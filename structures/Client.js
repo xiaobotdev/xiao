@@ -1,5 +1,4 @@
 const CommandClient = require('../framework/Client');
-const { WebhookClient } = require('discord.js');
 const request = require('node-superfetch');
 const { Collection } = require('@discordjs/collection');
 const winston = require('winston');
@@ -11,19 +10,12 @@ const url = require('url');
 const path = require('path');
 const Redis = require('./Redis');
 const Font = require('./Font');
-const BotList = require('./BotList');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
 const activities = require('../assets/json/activity');
 const leaveMsgs = require('../assets/json/leave-messages');
-const {
-	XIAO_WEBHOOK_ID,
-	XIAO_WEBHOOK_TOKEN,
-	REPORT_CHANNEL_ID,
-	JOIN_LEAVE_CHANNEL_ID,
-	COMMAND_CHANNEL_ID
-} = process.env;
+const { REPORT_CHANNEL_ID, JOIN_LEAVE_CHANNEL_ID, COMMAND_CHANNEL_ID } = process.env;
 
 module.exports = class XiaoClient extends CommandClient {
 	constructor(options) {
@@ -38,12 +30,7 @@ module.exports = class XiaoClient extends CommandClient {
 		});
 		this.fonts = new Collection();
 		this.redis = Redis ? Redis.db : null;
-		this.webhook = new WebhookClient(
-			{ id: XIAO_WEBHOOK_ID, token: XIAO_WEBHOOK_TOKEN },
-			{ disableMentions: 'everyone' }
-		);
 		this.timers = new TimerManager(this);
-		this.botList = new BotList(this);
 		this.pokemon = new PokemonStore();
 		this.games = new Collection();
 		this.dispatchers = new Map();

@@ -10,7 +10,6 @@ module.exports = class CleverbotCommand extends Command {
 			group: 'cleverbot',
 			memberName: 'cleverbot',
 			description: 'Starts a Cleverbot conversation.',
-			patronOnly: true,
 			credit: [
 				{
 					name: 'Cleverbot',
