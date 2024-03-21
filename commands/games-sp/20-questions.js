@@ -104,14 +104,14 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const { text } = await request
 			.post(`${this.makeBaseURI(game)}${startURL}`)
 			.set({
-				Origin: `${this.makeBaseURI(game)}/`,
+				Origin: this.makeBaseURI(game),
 				Referer: `${this.makeBaseURI(game)}/gs${game ? 'e' : 'q-en'}`,
 				'User-Agent': agent
 			})
 			.attach({
-				submit: '  Play  ',
 				age: '',
-				cctkr: 'US,AR,VI,GB,AF,PL'
+				cctkr: 'US,AR,VI,GB,AF,PL',
+				submit: '++Play++'
 			});
 		const $ = cheerio.load(text);
 		const i = game === 'starwars' || game === 'marvel' ? 5 : 2;
