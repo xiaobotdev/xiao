@@ -87,7 +87,8 @@ module.exports = class AkinatorCommand extends Command {
 			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
 			await buttonPress.editReply({
 				content: `**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
-				components: [row, sRow]
+				components: [row, sRow],
+				embeds: []
 			});
 			try {
 				buttonPress = await gameMsg.awaitMessageComponent({
