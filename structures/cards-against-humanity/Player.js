@@ -64,7 +64,7 @@ module.exports = class Player {
 				}
 				return true;
 			},
-			time: 60000 
+			time: 60000
 		});
 		collector.on('collect', async msg => {
 			const existing = hand[Number.parseInt(msg.content, 10) - 1];

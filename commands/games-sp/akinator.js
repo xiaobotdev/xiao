@@ -48,8 +48,9 @@ module.exports = class AkinatorCommand extends Command {
 		const gameMsg = await msg.reply('Welcome to Akinator! Think of a character, and I will try to guess it.', {
 			components: [initialRow]
 		});
+		let buttonPress;
 		try {
-			const initialVerify = await gameMsg.awaitMessageComponent({
+			buttonPress = await gameMsg.awaitMessageComponent({
 				filter: res => res.user.id === msg.author.id,
 				max: 1,
 				time: 30000
@@ -57,7 +58,7 @@ module.exports = class AkinatorCommand extends Command {
 			if (initialVerify.customId === 'false') return initialVerify.update('Too bad...', { components: [] });
 		} catch {
 			return gameMsg.edit('Guess you didn\'t want to play after all...', { components: [] });
-		} 
+		}
 		await this.sendLoadingMessage(buttonPress, [initialRow]);
 		const guessBlacklist = [];
 		while (timesGuessed < 3) {
@@ -99,7 +100,7 @@ module.exports = class AkinatorCommand extends Command {
 				break;
 			}
 			await this.sendLoadingMessage(buttonPress, [row, sRow]);
-			const choice = interactions.first().customId;
+			const choice = buttonPress.customId;
 			if (choice === 'end') {
 				forceGuess = true;
 			} else if (choice === 'back') {
