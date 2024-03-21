@@ -55,7 +55,7 @@ module.exports = class AkinatorCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			if (buttonPress.customId === 'false') return initialVerify.update('Too bad...', { components: [] });
+			if (buttonPress.customId === 'false') return buttonPress.update('Too bad...', { components: [] });
 		} catch {
 			return gameMsg.edit('Guess you didn\'t want to play after all...', { components: [] });
 		}
