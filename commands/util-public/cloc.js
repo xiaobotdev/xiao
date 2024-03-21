@@ -26,8 +26,6 @@ module.exports = class ClocCommand extends Command {
 			.setFooter(`${cloc.header.cloc_url} ${cloc.header.cloc_version}`)
 			.addField(`❯ JS (${formatNumber(cloc.JavaScript.nFiles)})`, formatNumber(cloc.JavaScript.code), true)
 			.addField(`❯ JSON (${formatNumber(cloc.JSON.nFiles)})`, formatNumber(cloc.JSON.code), true)
-			.addField(`❯ TXT (${formatNumber(cloc.TXT.nFiles)})`, formatNumber(cloc.TXT.comment), true)
-			.addField(`❯ YAML (${formatNumber(cloc.YAML.nFiles)})`, formatNumber(cloc.YAML.code), true)
 			.addField(`❯ MD (${formatNumber(cloc.Markdown.nFiles)})`, formatNumber(cloc.Markdown.code), true)
 			.addField(`❯ Total (${formatNumber(cloc.SUM.nFiles)})`, formatNumber(cloc.SUM.code), true);
 		return msg.embed(embed);
