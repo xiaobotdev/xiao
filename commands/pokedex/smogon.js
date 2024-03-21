@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
-const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss'];
+const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss', 'sv'];
 const games = {
 	rb: 'Red/Blue',
 	gs: 'Gold/Silver',
