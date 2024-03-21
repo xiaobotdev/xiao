@@ -42,7 +42,9 @@
 				"Bird",
 				"Normal"
 			],
-			"abilities": ["N/A"],
+			"abilities": [{
+				"name": "N/A"
+			}],
 			"stats": {
 				"hp": 33,
 				"atk": 136,
@@ -61,7 +63,9 @@
 				"Normal",
 				"999"
 			],
-			"abilities": ["N/A"],
+			"abilities": [{
+				"name": "N/A"
+			}],
 			"stats": {
 				"hp": 178,
 				"atk": 19,
