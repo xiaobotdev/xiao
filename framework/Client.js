@@ -4,7 +4,6 @@ const path = require('path');
 const { stripIndents } = require('common-tags');
 const Registry = require('./Registry');
 const Dispatcher = require('./Dispatcher');
-const Patreon = require('../structures/Patreon');
 require('./Extensions');
 
 module.exports = class CommandClient extends Client {
@@ -17,7 +16,6 @@ module.exports = class CommandClient extends Client {
 		this.invite = options.invite || null;
 		this.registry = new Registry(this);
 		this.dispatcher = new Dispatcher(this);
-		this.patreon = new Patreon();
 		this.blacklist = { user: [], guild: [] };
 		this._throttlingTimeouts = new Map();
 
@@ -83,13 +81,6 @@ module.exports = class CommandClient extends Client {
 			}
 			if (command.nsfw && !msg.channel.nsfw) {
 				await msg.reply(`The \`${command.name}\` command can only be used in NSFW channels.`);
-				return;
-			}
-			if (command.patronOnly && !this.patreon.isPatron(msg.author.id)) {
-				await msg.reply(stripIndents`
-					The \`${command.name}\` command can only be used by Patrons.
-					Visit <https://www.patreon.com/xiaodiscord> to sign-up!
-				`);
 				return;
 			}
 			if (msg.guild && command.userPermissions.length) {
