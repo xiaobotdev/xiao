@@ -45,7 +45,7 @@ module.exports = class HighScoresCommand extends Command {
 		return msg.say(stripIndents`
 			__**Single-Score Games:**__
 			\`typing-race\`/\`typing-test\`: ${typingRace / 1000}s (Held by ${typingRaceUserDisplay})
-			\`anagramica\`: ${anagrams} (Held by ${anagramsUserDisplay})
+			\`anagramica\`: ${anagrams || 0} (Held by ${anagramsUserDisplay})
 			\`gunfight\`/\`reaction-time\`: ${reactionTime / 1000}s (Held by ${reactionTimeUserDisplay})
 
 			__**Minesweeper:**__
