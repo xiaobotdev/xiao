@@ -88,7 +88,6 @@ module.exports = class AkinatorCommand extends Command {
 				`**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
 				{ components: [row, sRow] }
 			);
-			let buttonPress;
 			try {
 				buttonPress = await gameMsg.awaitMessageComponent({
 					filter: res => res.user.id === msg.author.id,
