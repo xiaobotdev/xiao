@@ -45,7 +45,8 @@ module.exports = class AkinatorCommand extends Command {
 			new MessageButton().setCustomId('true').setLabel('Ready!').setStyle('PRIMARY'),
 			new MessageButton().setCustomId('false').setLabel('Nevermind').setStyle('SECONDARY')
 		);
-		const gameMsg = await msg.reply('Welcome to Akinator! Think of a character, and I will try to guess it.', {
+		const gameMsg = await msg.reply({
+			content: 'Welcome to Akinator! Think of a character, and I will try to guess it.',
 			components: [initialRow]
 		});
 		let buttonPress;
@@ -55,9 +56,9 @@ module.exports = class AkinatorCommand extends Command {
 				max: 1,
 				time: 30000
 			});
-			if (buttonPress.customId === 'false') return buttonPress.update('Too bad...', { components: [] });
+			if (buttonPress.customId === 'false') return buttonPress.update({ content: 'Too bad...', components: [] });
 		} catch {
-			return gameMsg.edit('Guess you didn\'t want to play after all...', { components: [] });
+			return gameMsg.edit({ content: 'Guess you didn\'t want to play after all...', components: [] });
 		}
 		await this.sendLoadingMessage(buttonPress, [initialRow]);
 		const guessBlacklist = [];
@@ -84,10 +85,10 @@ module.exports = class AkinatorCommand extends Command {
 				sRow.addComponents(new MessageButton().setCustomId('back').setStyle('SECONDARY').setLabel('Back'));
 			}
 			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
-			await buttonPress.editReply(
-				`**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
-				{ components: [row, sRow] }
-			);
+			await buttonPress.editReply({
+				content: `**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
+				components: [row, sRow]
+			});
 			try {
 				buttonPress = await gameMsg.awaitMessageComponent({
 					filter: res => res.user.id === msg.author.id,
@@ -130,7 +131,11 @@ module.exports = class AkinatorCommand extends Command {
 					new MessageButton().setCustomId('true').setLabel('Yes').setStyle('SUCCESS'),
 					new MessageButton().setCustomId('false').setLabel('No').setStyle('DANGER')
 				);
-				await buttonPress.editReply('Is this your character?', { embeds: [embed], components: [guessRow] });
+				await buttonPress.editReply({
+					content: 'Is this your character?',
+					embeds: [embed],
+					components: [guessRow]
+				});
 				try {
 					buttonPress = await gameMsg.awaitMessageComponent({
 						filter: res => res.user.id === msg.author.id,
@@ -156,12 +161,15 @@ module.exports = class AkinatorCommand extends Command {
 			new MessageButton().setLabel('Akinator Website').setStyle('LINK').setURL('https://akinator.com/')
 		);
 		if (win === 'time') {
-			return buttonPress.editReply('I guess your silence means I have won.', { components: [row] });
+			return buttonPress.editReply({ content: 'I guess your silence means I have won.', components: [row] });
 		}
 		if (win) {
-			return buttonPress.editReply('Bravo, you have defeated me.', { components: [row] });
+			return buttonPress.editReply({ content: 'Bravo, you have defeated me.', components: [row] });
 		}
-		return buttonPress.editReply('Guessed right one more time! I love playing with you!', { components: [row] });
+		return buttonPress.editReply({
+			content: 'Guessed right one more time! I love playing with you!',
+			components: [row]
+		});
 	}
 
 	sendLoadingMessage(buttonPress, rows) {
@@ -170,6 +178,6 @@ module.exports = class AkinatorCommand extends Command {
 				button.setDisabled(true);
 			}
 		}
-		return buttonPress.update('Loading...', { components: rows });
+		return buttonPress.update({ content: 'Loading...', components: rows });
 	}
 };

@@ -378,10 +378,10 @@ module.exports = class Util {
 		return new Promise(res => {
 			collector.once('end', () => {
 				if (joined.length < min) {
-					initialMsg.edit('Failed to start the game.', { components: [] });
+					initialMsg.edit({ content: 'Failed to start the game.', components: [] });
 					return res(false);
 				}
-				initialMsg.edit('Let the game begin!', { components: [] });
+				initialMsg.edit({ content: 'Let the game begin!', components: [] });
 				return res(joined);
 			});
 		});
