@@ -4,7 +4,7 @@ module.exports = class Argument {
 	constructor(client, options) {
 		Object.defineProperty(this, 'client', { value: client });
 
-		this.key = options.key.toLowerCase();
+		this.key = options.key;
 		this.label = typeof options.label === 'undefined' ? null : options.label;
 		this.typeID = options.type.toLowerCase();
 		this.min = typeof options.min === 'undefined' ? null : options.min;
