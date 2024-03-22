@@ -1,7 +1,9 @@
-const ImgurAlbumCommand = require('../../structures/commands/ImgurAlbum');
-const { XIAO_ALBUM_ID } = process.env;
+const Command = require('../../framework/Command');
+const fs = require('fs');
+const path = require('path');
+const images = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao'));
 
-module.exports = class XiaoCommand extends ImgurAlbumCommand {
+module.exports = class XiaoCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'xiao',
@@ -22,7 +24,8 @@ module.exports = class XiaoCommand extends ImgurAlbumCommand {
 		});
 	}
 
-	generateText() {
-		return 'It\'s me, yes?';
+	run(msg) {
+		const image = images[Math.floor(Math.random() * images.length)];
+		return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', images[image])] });
 	}
 };
