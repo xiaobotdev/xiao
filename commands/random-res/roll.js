@@ -33,13 +33,9 @@ module.exports = class RollCommand extends Command {
 	}
 
 	run(msg, { maxValue, minValue }) {
-		console.log(maxValue);
-		console.log(minValue);
 		let result;
 		if (minValue) result = randomRange(minValue, maxValue);
 		else result = Math.floor(Math.random() * maxValue) + 1;
-		console.log(result);
-		console.log(formatNumber(result));
 		return msg.say(`You rolled a ${formatNumber(result)}.`);
 	}
 };
