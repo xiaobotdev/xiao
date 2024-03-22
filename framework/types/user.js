@@ -49,5 +49,5 @@ function memberFilterExact(search) {
 function memberFilterInexact(search) {
 	return mem => mem.user.username.toLowerCase().includes(search)
 		|| (mem.nickname && mem.nickname.toLowerCase().includes(search))
-		|| mem.tag.toLowerCase().includes(search);
+		|| mem.user.tag.toLowerCase().includes(search);
 }
