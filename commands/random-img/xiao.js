@@ -12,7 +12,6 @@ module.exports = class XiaoCommand extends Command {
 			memberName: 'xiao',
 			description: 'Responds with a random image of Xiao Pai.',
 			clientPermissions: ['ATTACH_FILES'],
-			albumID: XIAO_ALBUM_ID,
 			credit: [
 				{
 					name: 'Marvelous',
