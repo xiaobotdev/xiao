@@ -1,6 +1,5 @@
 const minimist = require('minimist');
 const { stripIndents } = require('common-tags');
-const { list } = require('../util/Util');
 const argRegex = /"([^"]*)"|(\S+)/g;
 
 module.exports = class CommandDispatcher {
@@ -50,7 +49,7 @@ module.exports = class CommandDispatcher {
 						} else {
 							return stripIndents`
 								The "${arg.label || arg.key}" argument is required.
-								${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
+								${arg.invalidText}
 							`;
 						}
 					}
@@ -61,7 +60,7 @@ module.exports = class CommandDispatcher {
 					if (!valid || typeof valid === 'string') {
 						return stripIndents`
 							An invalid value was provided for one of the "${arg.label || arg.key}" arguments.
-							${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
+							${arg.invalidText}
 						`;
 					}
 					parsedArgs.push(await arg.parse(parsedArg, msg, arg));
@@ -74,7 +73,7 @@ module.exports = class CommandDispatcher {
 				if (arg.default === null) {
 					return stripIndents`
 						The "${arg.label || arg.key}" argument is required.
-						${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
+						${arg.invalidText}
 					`;
 				} else {
 					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
@@ -85,7 +84,7 @@ module.exports = class CommandDispatcher {
 			if (!valid || typeof valid === 'string') {
 				return stripIndents`
 					An invalid value was provided for the "${arg.label || arg.key}" argument.
-					${arg.oneOf ? `It must be one of the following: ${list(arg.oneOf, 'or')}` : ''}
+					${arg.invalidText}
 				`;
 			}
 			finalResult[arg.key] = await arg.parse(parsedArg, msg, arg);
