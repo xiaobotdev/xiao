@@ -1,7 +1,8 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
+const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
-const year = 2020;
+const year = 2024;
 
 module.exports = class UsElectionCommand extends Command {
 	constructor(client) {
@@ -10,13 +11,12 @@ module.exports = class UsElectionCommand extends Command {
 			aliases: ['election', 'usa-election', 'presidential-election', 'president-election', `${year}-election`],
 			group: 'events',
 			memberName: 'us-election',
-			description: 'Responds with the odds of each canidate winning the presidential election, according to 538.',
+			description: 'Responds with the odds of each canidate winning the presidential election.',
 			credit: [
 				{
-					name: 'FiveThirtyEight',
-					url: 'https://fivethirtyeight.com/',
-					reason: 'API',
-					reasonURL: 'https://projects.fivethirtyeight.com/2020-election-forecast/'
+					name: 'Election Betting Odds',
+					url: 'https://electionbettingodds.com/',
+					reason: 'Betting Data'
 				}
 			]
 		});
@@ -28,14 +28,15 @@ module.exports = class UsElectionCommand extends Command {
 			return msg.reply(`This command has not been updated to reflect the ${currentYear} election season.`);
 		}
 		try {
-			const { winners, simulations } = await this.getList();
-			const chances = Object.entries(winners)
-				.map(([canidate, chance]) => `**${canidate}:** ${chance} in ${simulations}`);
+			const canidates = await this.getList();
+			const list = canidates.map(
+				canidate => `**${canidate.name}:** ${canidate.score} (${canidate.percentChange} in last day)`
+			);
 			return msg.say(stripIndents`
-				__**Chances of Winning the 2020 US Presidential Election (According to FiveThirtyEight):**__
-				${chances.join('\n')}
+				__**Chances of Winning the ${year} US Presidential Election (According to Betting Markets):**__
+				${list.join('\n')}
 
-				_More detailed information is available at <https://projects.fivethirtyeight.com/2020-election-forecast/>._
+				_More detailed information is available at <https://electionbettingodds.com/>._
 			`);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
@@ -43,17 +44,18 @@ module.exports = class UsElectionCommand extends Command {
 	}
 
 	async getList() {
-		const { body } = await request
-			.get('https://projects.fivethirtyeight.com/2020-election-forecast/us_simulations.json');
-		const winners = {};
-		for (const simulation of body[0].simulations) {
-			const existing = winners[simulation.winner];
-			if (!existing) {
-				winners[simulation.winner] = 1;
-				continue;
-			}
-			winners[simulation.winner] += 1;
+		const { text } = await request.get('https://electionbettingodds.com/');
+		const $ = cheerio.load(text);
+		const canidates = [];
+		const tables = $('table').eq(18).children().first().children();
+		for (let i = 1; i < tables.length; i++) {
+			let name = tables.eq(1).children().first().text().trim().match(/(.+) details/);
+			if (!name) name = 'Other';
+			else name = name[1];
+			const score = tables.eq(i).children().eq(1).children().first().text().trim();
+			const percentChange = tables.eq(i).children().eq(1).children().eq(1).text().trim();
+			canidates.push({ name, score, percentChange });
 		}
-		return { winners, simulations: body[0].simulations.length };
+		return canidates;
 	}
 };
