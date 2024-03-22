@@ -309,42 +309,6 @@ client.on('guildDelete', async guild => {
 	}
 });
 
-client.on('guildMemberRemove', async member => {
-	if (member.id === client.user.id) return null;
-	const channel = member.guild.systemChannel;
-	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
-	if (member.guild.systemChannelFlags.has('SUPPRESS_JOIN_NOTIFICATIONS')) return null;
-	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
-	try {
-		const leaveMessage = client.leaveMessages[Math.floor(Math.random() * client.leaveMessages.length)];
-		await channel.send(leaveMessage.replaceAll('{{user}}', `**${member.user.tag}**`));
-		return null;
-	} catch {
-		return null;
-	}
-});
-
-client.on('voiceStateUpdate', async (oldState, newState) => {
-	if (newState.channel || !oldState.channel) return;
-	if (oldState.id === client.user.id) {
-		const dispatcher = client.dispatchers.get(oldState.guild.id);
-		if (!dispatcher) return;
-		dispatcher.end();
-		client.dispatchers.delete(oldState.guild.id);
-	} else {
-		const channel = await client.channels.fetch(oldState.channelID);
-		if (!channel) return;
-		if (channel.members.size === 1 && channel.members.has(client.user.id)) {
-			const dispatcher = client.dispatchers.get(oldState.guild.id);
-			if (dispatcher) {
-				dispatcher.end();
-				client.dispatchers.delete(oldState.guild.id);
-			}
-			channel.leave();
-		}
-	}
-});
-
 client.on('disconnect', event => {
 	client.logger.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
 	client.exportCommandLeaderboard();
