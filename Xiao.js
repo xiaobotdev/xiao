@@ -230,7 +230,7 @@ client.on('messageCreate', async msg => {
 	if (cleverbot) {
 		if (!cleverbot.shouldRespond(msg)) return;
 		client.registry.commands.get('cleverbot').uses++;
-		msg.channel.startTyping().catch(() => null);
+		msg.channel.sendTyping().catch(() => null);
 		try {
 			const response = await cleverbot.respond(msg.cleanContent);
 			msg.channel.stopTyping(true);
