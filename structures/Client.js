@@ -36,7 +36,6 @@ module.exports = class XiaoClient extends CommandClient {
 		this.cleverbots = new Map();
 		this.phone = new PhoneManager(this);
 		this.activities = activities;
-		this.leaveMessages = leaveMsgs;
 		this.adultSiteList = null;
 		this.nsfwModel = null;
 	}
