@@ -25,6 +25,6 @@ module.exports = class XiaoCommand extends Command {
 
 	run(msg) {
 		const image = images[Math.floor(Math.random() * images.length)];
-		return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', images[image])] });
+		return msg.say({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', image)] });
 	}
 };
