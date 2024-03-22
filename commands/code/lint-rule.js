@@ -30,8 +30,8 @@ module.exports = class LintRuleCommand extends Command {
 		const embed = new MessageEmbed()
 			.setAuthor('ESLint', 'https://i.imgur.com/04GhEhU.png', 'https://eslint.org/')
 			.setColor(0x3A33D1)
-			.setTitle(`${rule} (${data.docs.category})`)
-			.setURL(`https://eslint.org/docs/rules/${rule}`)
+			.setTitle(rule)
+			.setURL(data.docs.url)
 			.setDescription(data.docs.description);
 		return msg.embed(embed);
 	}
