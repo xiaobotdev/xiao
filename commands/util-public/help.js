@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
-const permissions = require('../../assets/json/permission-names');
 const { stripIndents } = require('common-tags');
 
 module.exports = class HelpCommand extends Command {
@@ -66,12 +65,8 @@ module.exports = class HelpCommand extends Command {
 				return msg.reply('Failed to send DM. You probably have DMs disabled.');
 			}
 		}
-		const userPerms = command.userPermissions.length
-			? command.userPermissions.map(perm => permissions[perm]).join(', ')
-			: 'None';
-		const clientPerms = command.clientPermissions.length
-			? command.clientPermissions.map(perm => permissions[perm]).join(', ')
-			: 'None';
+		const userPerms = command.userPermissions.length ? command.userPermissions.join(', ') : 'None';
+		const clientPerms = command.clientPermissions.length ? command.clientPermissions.join(', ') : 'None';
 		return msg.say(stripIndents`
 			__Command **${command.name}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
 			${command.description}${command.details ? `\n${command.details}` : ''}
