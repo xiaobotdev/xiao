@@ -53,7 +53,7 @@ module.exports = class UsElectionCommand extends Command {
 			if (!name) name = 'Other';
 			else name = name[1];
 			const score = tables.eq(i).children().eq(1).children().first().text().trim();
-			const percentChange = tables.eq(i).children().eq(1).children().eq(1).text().trim();
+			const percentChange = tables.eq(i).children().eq(1).children().eq(1).text().trim() || 0;
 			canidates.push({ name, score, percentChange });
 		}
 		return canidates;
