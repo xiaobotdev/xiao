@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 const { Readable } = require('stream');
 const { reactIfAble, base64, list } = require('../../util/Util');
 const playlists = require('../../assets/json/guess-song');
+const demaster = /(\s(\(|-\s+))((199\d|20[0-2]\d)\s+)?(Remast|Live|Mono|From|Feat|Original|Motion|Deluxe).*/i;
 const { SPOTIFY_KEY, SPOTIFY_SECRET } = process.env;
 
 module.exports = class GuessSongCommand extends Command {
@@ -135,15 +136,8 @@ module.exports = class GuessSongCommand extends Command {
 		return JSON.parse(decodeURIComponent($('script[id="resource"]')[0].children[0].data)).preview_url;
 	}
 
-	async shortTrackName(longName) {
-		const { text } = await request
-			.get('https://demaster.hankapi.com/demaster')
-			.query({
-				long_track_name: longName,
-				format: 'json'
-			});
-		const body = JSON.parse(text);
-		return body.short_track_name;
+	shortTrackName(longName) {
+		return longName.replace(demaster, '');
 	}
 
 	async fetchToken() {
