@@ -28,15 +28,18 @@ module.exports = class WhereIsEverybodyCommand extends Command {
 	}
 
 	async run(msg) {
-		await msg.channel.send('"It\'s quiet..."', {
+		await msg.channel.send({
+			content: '"It\'s quiet..."',
 			files: [path.join(__dirname, '..', '..', 'assets', 'images', 'where-is-everybody', 'part-1.jpg')]
 		});
 		await delay(5000);
-		await msg.channel.send('"Too quiet..."', {
+		await msg.channel.send({
+			content: '"Too quiet..."',
 			files: [path.join(__dirname, '..', '..', 'assets', 'images', 'where-is-everybody', 'part-2.jpg')]
 		});
 		await delay(5000);
-		return msg.channel.send('"Where is @everyone?"', {
+		return msg.channel.send({
+			content: '"Where is @everyone?"',
 			disableMentions: 'none',
 			files: [path.join(__dirname, '..', '..', 'assets', 'images', 'where-is-everybody', 'part-3.jpg')]
 		});
