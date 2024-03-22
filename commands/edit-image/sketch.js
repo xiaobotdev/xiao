@@ -37,12 +37,14 @@ module.exports = class SketchCommand extends Command {
 	async run(msg, { image }) {
 		try {
 			const { body } = await request.get(image);
+			await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 			const magik = gm(body);
 			magik.colorspace('gray');
 			magik.out('-sketch');
 			magik.out('0x20+120');
 			magik.setFormat('png');
 			const attachment = await magikToBuffer(magik);
+			reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
 			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 			return msg.say({ files: [{ attachment, name: 'sketch.png' }] });
 		} catch (err) {
