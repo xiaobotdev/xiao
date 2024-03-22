@@ -28,12 +28,6 @@ module.exports = class GuessSongCommand extends Command {
 					url: 'https://www.spotify.com/us/',
 					reason: 'API',
 					reasonURL: 'https://developer.spotify.com/'
-				},
-				{
-					name: 'hankhank10',
-					url: 'https://github.com/hankhank10',
-					reason: 'Demaster API',
-					reasonURL: 'https://demaster.hankapi.com/'
 				}
 			],
 			args: [
