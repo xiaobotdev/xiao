@@ -58,11 +58,11 @@ module.exports = class YuGiOhCommand extends Command {
 			if (data.type.includes('Monster')) {
 				embed
 					.addField('❯ Attribute', data.attribute, true)
-					.addField('❯ Level', data.level || 'N/A', true)
-					.addField('❯ ATK', formatNumber(data.atk), true)
+					.addField('❯ Level', data.level?.toString() || 'N/A', true)
+					.addField('❯ ATK', formatNumber(data.atk).toString(), true)
 					.addField(
 						data.type === 'Link Monster' ? '❯ Link Value' : '❯ DEF',
-						formatNumber(data.type === 'Link Monster' ? data.linkval : data.def),
+						formatNumber(data.type === 'Link Monster' ? data.linkval : data.def).toString(),
 						true
 					);
 			}
