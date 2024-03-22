@@ -25,7 +25,7 @@ module.exports = class FmlCommand extends Command {
 		try {
 			const { text } = await request.get('http://www.fmylife.com/random');
 			const $ = cheerio.load(text, { normalizeWhitespace: true });
-			const fml = $('a.block text-blue-500 dark:text-white my-4 ').first().text().trim();
+			const fml = $('a.block text-blue-500').first().text().trim();
 			return msg.say(fml);
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
