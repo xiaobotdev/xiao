@@ -50,8 +50,8 @@ module.exports = class UsElectionCommand extends Command {
 		const tables = $('table').eq(18).children().first().children();
 		for (let i = 1; i < tables.length; i++) {
 			let name = tables.eq(i).children().first().text().trim().match(/(.+) details/);
-			if (!name) name = 'Other';
-			else name = name[1];
+			if (name) name = name[1];
+			else name = 'Other';
 			const score = tables.eq(i).children().eq(1).children().first().text().trim();
 			const percentChange = tables.eq(i).children().eq(1).children().eq(1).text().trim() || '-0.0%';
 			canidates.push({ name, score, percentChange });
