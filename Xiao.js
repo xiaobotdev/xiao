@@ -233,11 +233,9 @@ client.on('messageCreate', async msg => {
 		msg.channel.sendTyping().catch(() => null);
 		try {
 			const response = await cleverbot.respond(msg.cleanContent);
-			msg.channel.stopTyping(true);
 			await msg.channel.send(response);
 			return;
 		} catch (err) {
-			msg.channel.stopTyping(true);
 			if (err.status === 503) {
 				await msg.channel.send('Monthly API limit reached. Ending conversation.');
 				client.cleverbots.delete(msg.channel.id);
