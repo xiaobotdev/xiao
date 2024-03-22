@@ -1,5 +1,4 @@
 const request = require('node-superfetch');
-const cheerio = require('cheerio');
 const path = require('path');
 const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
