@@ -1,11 +1,12 @@
 const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
+const { TwitterOpenApi } = require('twitter-openapi-typescript');
+const api = new TwitterOpenApi();
 const moment = require('moment');
 const request = require('node-superfetch');
 const path = require('path');
-const { base64, formatNumberK, randomRange } = require('../../util/Util');
+const { formatNumberK, randomRange } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
-const { TWITTER_KEY, TWITTER_SECRET } = process.env;
 
 module.exports = class TweetCommand extends Command {
 	constructor(client) {
@@ -50,12 +51,12 @@ module.exports = class TweetCommand extends Command {
 			]
 		});
 
-		this.token = null;
+		this.guestClient = null;
 	}
 
 	async run(msg, { user, text }) {
 		try {
-			if (!this.token) await this.fetchToken();
+			if (!this.guestClient) this.guestClient = await api.getGuestClient();
 			const userData = await this.fetchUser(msg, user);
 			const avatar = await loadImage(userData.avatar);
 			const base1 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-1.png'));
@@ -148,40 +149,17 @@ module.exports = class TweetCommand extends Command {
 		}
 	}
 
-	async fetchToken() {
-		const { body } = await request
-			.post('https://api.twitter.com/oauth2/token')
-			.set({
-				Authorization: `Basic ${base64(`${TWITTER_KEY}:${TWITTER_SECRET}`)}`,
-				'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-			})
-			.send('grant_type=client_credentials');
-		this.token = body.access_token;
-		return body;
-	}
-
 	async fetchUser(msg, user) {
-		if (user.toLowerCase() === 'realdonaldtrump') {
-			return {
-				screenName: 'realDonaldTrump',
-				name: 'Donald J. Trump',
-				avatar: path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'realdonaldtrump.jpg'),
-				verified: true,
-				followers: 88776124
-			};
-		}
 		try {
-			const { body } = await request
-				.get('https://api.twitter.com/1.1/users/show.json')
-				.set({ Authorization: `Bearer ${this.token}` })
-				.query({ screen_name: user });
-			const avatarRes = await request.get(body.profile_image_url_https.replace('_normal', '_bigger'));
+			const { data } = await this.guestClient.getUserApi().getUserByScreenName({ screenName: user });
+			const body = data.user.legacy;
+			const avatarRes = await request.get(body.profileImageUrlHttps);
 			return {
-				screenName: body.screen_name,
+				screenName: body.screenName,
 				name: body.name,
 				avatar: avatarRes.body,
-				verified: body.verified,
-				followers: body.followers_count
+				verified: data.user.isBlueVerified,
+				followers: body.followersCount
 			};
 		} catch {
 			const avatarRes = await request.get(msg.author.displayAvatarURL({ format: 'png', size: 64 }));
