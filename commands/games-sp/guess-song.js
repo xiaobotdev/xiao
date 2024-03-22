@@ -116,7 +116,7 @@ module.exports = class GuessSongCommand extends Command {
 		const result = {
 			id,
 			name: body.name,
-			shortName: await this.shortTrackName(body.name),
+			shortName: body.name.replace(demaster, ''),
 			artist: list(body.artists.map(artist => artist.name)),
 			preview: previewURL
 		};
@@ -129,10 +129,6 @@ module.exports = class GuessSongCommand extends Command {
 		const $ = cheerio.load(text);
 		const body = JSON.parse(decodeURIComponent($('script[id="__NEXT_DATA__"]')[0].children[0].data));
 		return body.props.pageProps.state.data.entity.audioPreview.url;
-	}
-
-	shortTrackName(longName) {
-		return longName.replace(demaster, '');
 	}
 
 	async fetchToken() {
