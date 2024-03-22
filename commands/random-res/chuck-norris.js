@@ -25,7 +25,7 @@ module.exports = class ChuckNorrisCommand extends Command {
 		});
 	}
 
-	async run(msg, { name }) {
+	async run(msg) {
 		try {
 			const { body } = await request.get('https://api.chucknorris.io/jokes/random');
 			return msg.say(body.value);
