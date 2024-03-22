@@ -41,19 +41,19 @@ module.exports = class Argument {
 
 	get invalidText() {
 		if (this.oneOf) {
-			return `It must be one of the following: ${list(arg.oneOf, 'or')}`;
+			return `It must be one of the following: ${list(this.oneOf, 'or')}`;
 		} else if (this.max !== null && this.min !== null && (this.typeID === 'integer' || this.typeID === 'float')) {
 			return `It must be a number from ${this.min} to ${this.max}.`;
 		} else if (this.max !== null && this.min === null && (this.typeID === 'integer' || this.typeID === 'float')) {
 			return `It must be a number less than or equal to ${this.max}.`;
 		} else if (this.min !== null && this.max === null && (this.typeID === 'integer' || this.typeID === 'float')) {
-			return `It must be a number greater than or equal to ${this.min}.`
+			return `It must be a number greater than or equal to ${this.min}.`;
 		} else if (this.min !== null && this.max !== null && this.typeID === 'string') {
 			return `It must be at least ${this.min} characters long and at most ${this.max} characters long.`;
 		} else if (this.min !== null && this.max === null && this.typeID === 'string') {
 			return `It must be at least ${this.min} characters long.`;
 		} else if (this.max !== null && this.min === null && this.typeID === 'string') {
-			return `It must be at most ${this.max} characters long.`; 
+			return `It must be at most ${this.max} characters long.`;
 		}
 		return `It must be a ${this.typeID}.`;
 	}
