@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const gm = require('gm').subClass({ imageMagick: true });
 const request = require('node-superfetch');
 const { magikToBuffer, reactIfAble } = require('../../util/Util');
+const { LOADING_EMOJI_ID } = process.env;
 
 module.exports = class SketchCommand extends Command {
 	constructor(client) {
