@@ -86,7 +86,7 @@ module.exports = class TicTacToeCommand extends Command {
 				sides[opponent.bot && !userTurn ? choice : Number.parseInt(choice, 10) - 1] = sign;
 				taken.push(choice);
 				const win = this.verifyWin(sides, msg.author, opponent);
-				if (taken.length === 8 && !win) win = 'tie';
+				if (taken.length === 8 && !win) winner = 'tie';
 				if (win) winner = win;
 				if (lastTurnTimeout) lastTurnTimeout = false;
 				userTurn = !userTurn;
