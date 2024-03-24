@@ -27,8 +27,8 @@ module.exports = class ArgumentUnionType extends ArgumentType {
 		results = await Promise.all(results);
 		for (let i = 0; i < results.length; i++) {
 			if (results[i] && typeof results[i] !== 'string') return this.types[i].parse(val, msg, arg);
+			console.log(results[i], typeof results[i]);
 		}
-		console.log(results[i], typeof results[i]);
 		throw new Error(`Couldn't parse value "${val}" with union type ${this.id}.`);
 	}
 
