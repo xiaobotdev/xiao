@@ -46,10 +46,10 @@ module.exports = class AnimeEyesCommand extends Command {
 			for (const face of faces) {
 				const faceWidth = face.box.width;
 				const faceHeight = face.box.height;
-				const leftEye = face.keypoints.find(landmark => landmark.name === 'leftEye');
-				ctx.drawImage(leftEye, leftEye.x, leftEye.y, faceWidth / 10, faceHeight / 10);
-				const rightEye = face.keypoints.find(landmark => landmark.name === 'rightEye');
-				ctx.drawImage(rightEye, rightEye.x, rightEye.y, faceWidth / 10, faceHeight / 10);
+				const leftEyeData = face.keypoints.find(landmark => landmark.name === 'leftEye');
+				ctx.drawImage(leftEye, leftEyeData.x, leftEyeData.y, faceWidth / 10, faceHeight / 10);
+				const rightEyeData = face.keypoints.find(landmark => landmark.name === 'rightEye');
+				ctx.drawImage(rightEye, rightEyeData.x, rightEyeData.y, faceWidth / 10, faceHeight / 10);
 			}
 			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'anime-eyes.png' }] });
 		} catch (err) {
