@@ -37,7 +37,7 @@ module.exports = class TicTacToeCommand extends Command {
 					return msg.say('Looks like they declined...');
 				}
 			}
-			const sides = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+			const sides = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 			const taken = [];
 			let userTurn = true;
 			let winner = null;
@@ -48,7 +48,7 @@ module.exports = class TicTacToeCommand extends Command {
 				let choice;
 				if (opponent.bot && !userTurn) {
 					// eslint-disable-next-line new-cap
-					choice = ComputerMove(this.convertBoard(sides), { aiPlayer: 'O', huPlayer: 'X' }, 'Hard');
+					choice = ComputerMove(sides, { aiPlayer: 'O', huPlayer: 'X' }, 'Hard');
 				} else {
 					await msg.say(stripIndents`
 						${user}, which side do you pick? Type \`end\` to forfeit.
@@ -122,22 +122,6 @@ module.exports = class TicTacToeCommand extends Command {
 		if (this.playerWon(board, 'X')) return player1;
 		if (this.playerWon(board, 'O')) return player2;
 		return null;
-	}
-
-	convertBoard(board) {
-		const newBoard = [];
-		let num = 0;
-		for (const piece of board) {
-			if (piece === 'X') {
-				newBoard.push('X');
-			} else if (piece === 'O') {
-				newBoard.push('O');
-			} else {
-				newBoard.push(num);
-			}
-			num++;
-		}
-		return newBoard;
 	}
 
 	displayBoard(board) {
