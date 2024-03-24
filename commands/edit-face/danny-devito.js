@@ -47,8 +47,8 @@ module.exports = class DannyDevitoCommand extends Command {
 			const height = danny.height * ratio;
 			ctx.drawImage(
 				danny,
-				face.box.xMin - (face.box.width * 0.5),
-				face.box.yMin - (height / 2) - (height * 0.5),
+				face.box.xMin - (face.box.width * 0.2),
+				face.box.yMin - (height / 2) - (height * 0.2),
 				face.box.width * 1.25,
 				height * 1.25
 			);
