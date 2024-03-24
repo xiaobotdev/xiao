@@ -58,7 +58,7 @@ module.exports = class AnimeEyesCommand extends Command {
 	}
 
 	async detect(imgData) {
-		if (Buffer.byteLength(imgData.body) >= 2e+6) return 'size';
+		if (Buffer.byteLength(imgData.body) >= 4e+6) return 'size';
 		tfnode.setBackend('tensorflow');
 		const image = tfnode.node.decodeImage(imgData);
 		tfnode.setBackend('cpu');
