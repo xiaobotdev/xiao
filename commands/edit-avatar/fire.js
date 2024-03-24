@@ -53,7 +53,7 @@ module.exports = class FireCommand extends Command {
 			encoder.setDelay(100);
 			encoder.setQuality(200);
 			for (let i = 0; i < frameCount; i++) {
-				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', `frame-${i}.png`));
+				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', `frame-${i}.gif`));
 				const ratio = frame.width / frame.height;
 				const height = Math.round(avatar.width / ratio);
 				drawImageWithTint(ctx, avatar, '#fc671e', 0, 0, avatar.width, avatar.height);
