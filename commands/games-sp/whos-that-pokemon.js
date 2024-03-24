@@ -138,14 +138,14 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const width = pkmn.width * ratio;
 		if (hide) {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, 25, 44, width, 200);
+			ctx.drawImage(silhouetteCanvas, 25 + (200 - width), 44, width, 200);
 			ctx.globalAlpha = 1;
-			ctx.drawImage(silhouetteCanvas, 30, 39, width, 200);
+			ctx.drawImage(silhouetteCanvas, 30 + (200 - width), 39, width, 200);
 		} else {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, 25, 44, width, 200);
+			ctx.drawImage(silhouetteCanvas, 25 + (200 - width), 44, width, 200);
 			ctx.globalAlpha = 1;
-			ctx.drawImage(pkmn, 30, 39, width, 200);
+			ctx.drawImage(pkmn, 30 + (200 - width), 39, width, 200);
 			ctx.font = this.client.fonts.get('Pokemon Solid.ttf').toCanvasString(60);
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'bottom';
