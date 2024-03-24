@@ -11,6 +11,7 @@ module.exports = class DefaultEmojiArgumentType extends ArgumentType {
 	}
 
 	parse(value) {
+		value += value;
 		return value.match(emojiRegex)[0];
 	}
 };
