@@ -37,7 +37,7 @@ module.exports = class FacesCommand extends Command {
 			ctx.fillStyle = 'blue';
 			ctx.fillRect(face.box.xMin, face.box.yMin, 10, face.box.height);
 			ctx.fillRect(face.box.xMin, face.box.yMin, face.box.width, 10);
-			ctx.fillRect(face.box.xMin, face.box.yMax, face.box.width, 10);
+			ctx.fillRect(face.box.xMin, face.box.yMax, face.box.width + 10, 10);
 			ctx.fillRect(face.box.xMax, face.box.yMin, 10, face.box.height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'faces.png' }] });
