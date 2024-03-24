@@ -118,8 +118,8 @@ module.exports = class TicTacToeCommand extends Command {
 	}
 
 	verifyWin(board, player1, player2) {
-		if (this.playerWon(board, player1)) return player1;
-		if (this.playerWon(board, player2)) return player2;
+		if (this.playerWon(board, 'X')) return player1;
+		if (this.playerWon(board, 'O')) return player2;
 		return null;
 	}
 
