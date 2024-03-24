@@ -55,8 +55,8 @@ module.exports = class EmojiFaceCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		for (const face of faces) {
-			const ratio = face.box.width / danny.width;
-			const height = danny.height * ratio;
+			const ratio = face.box.width / emojiImg.width;
+			const height = emojiImg.height * ratio;
 			ctx.drawImage(
 				emojiImg,
 				face.box.xMin - (face.box.width * 0.2),
