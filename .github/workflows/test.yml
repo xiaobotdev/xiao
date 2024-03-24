@@ -20,7 +20,7 @@ jobs:
         run: npm install -g eslint
         
       - name: Install ESLint Configs and Plugins
-        run: npm install -g eslint-config-amber eslint-plugin-json
+        run: npm install --only=dev
 
       - name: Run ESLint
         run: npm test
