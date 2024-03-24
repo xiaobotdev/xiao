@@ -61,7 +61,7 @@ module.exports = class JeopardyCommand extends Command {
 				time: 30000
 			});
 			if (playing) connection.stop();
-			const answer = question.answer.replace(/<\/?i>/gi, '*');
+			const answer = question.answer.replace(/<\/?i>/gi, '*').replace(/\(|\)/g, '');
 			this.client.games.delete(msg.channel.id);
 			if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);
 			const win = msgs.first().content.toLowerCase() === answer.toLowerCase();
