@@ -61,13 +61,13 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				{
 					name: 'The Sounds Resource',
 					url: 'https://www.sounds-resource.com/',
-					reason: 'Cry Sound Effects (Gen 8)',
+					reason: 'Cry Sound Effects (Gen 8-9)',
 					reasonURL: 'https://www.sounds-resource.com/nintendo_switch/pokemonswordshield/'
 				},
 				{
 					name: 'Pokémon Showdown',
 					url: 'https://play.pokemonshowdown.com/',
-					reason: 'Cry Sound Effects (Meltan and Melmetal)',
+					reason: 'Cry Sound Effects (Meltan and Melmetal, Legends: Arceus)',
 					reasonURL: 'https://play.pokemonshowdown.com/audio/cries/'
 				}
 			],
