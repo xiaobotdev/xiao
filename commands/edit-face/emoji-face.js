@@ -47,7 +47,7 @@ module.exports = class EmojiFaceCommand extends Command {
 			emojiImg.height *= 4;
 		}
 		const imgData = await request.get(image);
-		const faces = await this.detect(imgData.body);
+		const faces = await this.client.detectFaces(imgData.body);
 		if (!faces) return msg.reply('There are no faces in this image.');
 		if (faces === 'size') return msg.reply('This image is too large.');
 		const base = await loadImage(imgData.body);
