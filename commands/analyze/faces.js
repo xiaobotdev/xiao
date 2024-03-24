@@ -34,11 +34,12 @@ module.exports = class FacesCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		for (const face of faces) {
+			const lineSize = base.width / 70;
 			ctx.fillStyle = 'blue';
-			ctx.fillRect(face.box.xMin, face.box.yMin, 10, face.box.height);
-			ctx.fillRect(face.box.xMin, face.box.yMin, face.box.width, 10);
-			ctx.fillRect(face.box.xMin, face.box.yMax, face.box.width + 10, 10);
-			ctx.fillRect(face.box.xMax, face.box.yMin, 10, face.box.height);
+			ctx.fillRect(face.box.xMin, face.box.yMin, lineSize, face.box.height);
+			ctx.fillRect(face.box.xMin, face.box.yMin, face.box.width, lineSize);
+			ctx.fillRect(face.box.xMin, face.box.yMax, face.box.width + lineSize, lineSize);
+			ctx.fillRect(face.box.xMax, face.box.yMin, lineSize, face.box.height);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'faces.png' }] });
 	}
