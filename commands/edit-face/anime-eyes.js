@@ -35,26 +35,22 @@ module.exports = class AnimeEyesCommand extends Command {
 		const leftEye = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'anime-eyes', 'left.png'));
 		const rightEye = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'anime-eyes', 'right.png'));
 		const imgData = await request.get(image);
-		try {
-			const faces = await this.detect(imgData.body);
-			if (!faces) return msg.reply('There are no faces in this image.');
-			if (faces === 'size') return msg.reply('This image is too large.');
-			const base = await loadImage(imgData.body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			for (const face of faces) {
-				const faceWidth = face.box.width;
-				const faceHeight = face.box.height;
-				const leftEyeData = face.keypoints.find(landmark => landmark.name === 'leftEye');
-				ctx.drawImage(leftEye, leftEyeData.x, leftEyeData.y, faceWidth / 10, faceHeight / 10);
-				const rightEyeData = face.keypoints.find(landmark => landmark.name === 'rightEye');
-				ctx.drawImage(rightEye, rightEyeData.x, rightEyeData.y, faceWidth / 10, faceHeight / 10);
-			}
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'anime-eyes.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const faces = await this.detect(imgData.body);
+		if (!faces) return msg.reply('There are no faces in this image.');
+		if (faces === 'size') return msg.reply('This image is too large.');
+		const base = await loadImage(imgData.body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		for (const face of faces) {
+			const faceWidth = face.box.width;
+			const faceHeight = face.box.height;
+			const leftEyeData = face.keypoints.find(landmark => landmark.name === 'leftEye');
+			ctx.drawImage(leftEye, leftEyeData.x, leftEyeData.y, faceWidth / 10, faceHeight / 10);
+			const rightEyeData = face.keypoints.find(landmark => landmark.name === 'rightEye');
+			ctx.drawImage(rightEye, rightEyeData.x, rightEyeData.y, faceWidth / 10, faceHeight / 10);
 		}
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'anime-eyes.png' }] });
 	}
 
 	async detect(imgData) {
