@@ -83,7 +83,7 @@
 		"sherlockjs": "^1.4.2",
 		"stackblur-canvas": "^2.7.0",
 		"text-diff": "^1.0.1",
-		"tictactoe-minimax-ai": "^1.2.1",
+		"tictactoe-minimax-ai": "github:marianoheller/tic-tac-toe-minimax",
 		"twemoji-parser": "^14.0.0",
 		"twitter-openapi-typescript": "^0.0.31",
 		"user-agents": "^1.1.148",
