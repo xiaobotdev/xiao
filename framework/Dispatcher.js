@@ -80,6 +80,7 @@ module.exports = class CommandDispatcher {
 					continue;
 				}
 			}
+			console.log(parsedArg);
 			const valid = await arg.validate(parsedArg, msg, arg);
 			if (!valid || typeof valid === 'string') {
 				return stripIndents`
@@ -87,6 +88,7 @@ module.exports = class CommandDispatcher {
 					${arg.invalidText}
 				`;
 			}
+			console.log(parsedArg);
 			finalResult[arg.key] = await arg.parse(parsedArg, msg, arg);
 		}
 		return { command, args: finalResult };
