@@ -135,8 +135,14 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			const silhouetteCtx = silhouetteCanvas.getContext('2d');
 			silhouetteCtx.drawImage(pkmn, 0, 0);
 			silhouette(silhouetteCtx, 0, 0, pkmn.width, pkmn.height);
+			ctx.globalAlpha = 0.5;
+			ctx.drawImage(silhouetteCanvas, 25, 44, 200, 200);
+			ctx.globalAlpha = 1;
 			ctx.drawImage(silhouetteCanvas, 30, 39, 200, 200);
 		} else {
+			ctx.globalAlpha = 0.5;
+			ctx.drawImage(pkmn, 25, 44, 200, 200);
+			ctx.globalAlpha = 1;
 			ctx.drawImage(pkmn, 30, 39, 200, 200);
 			ctx.font = this.client.fonts.get('Pokemon Solid.ttf').toCanvasString(60);
 			ctx.textAlign = 'center';
@@ -146,9 +152,9 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			ctx.globalAlpha = 0.5;
 			ctx.strokeText(pokemon.name, 357, 163, 240);
 			ctx.globalAlpha = 1;
-			ctx.strokeStyle = '#3c5aa6';
+			ctx.strokeStyle = '#ffcb05';
 			ctx.strokeText(pokemon.name, 362, 158, 240);
-			ctx.fillStyle = '#ffcb05';
+			ctx.fillStyle = '#3c5aa6';
 			ctx.fillText(pokemon.name, 362, 158, 240);
 		}
 		return { attachment: canvas.toBuffer(), name };
