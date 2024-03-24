@@ -8,16 +8,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Node v15
+      - name: Install Node v21
         uses: actions/setup-node@v1
         with:
-          node-version: 15
+          node-version: 21
 
-      - name: Install NPM v6 (v7 is Broken)
-        run: npm install -g npm@6
+      - name: Install NPM
+        run: npm install -g npm
 
-      - name: Install ESLint v7
-        run: npm install -g eslint@7
+      - name: Install ESLint
+        run: npm install -g eslint
         
       - name: Install ESLint Configs and Plugins
         run: npm install eslint-config-amber eslint-plugin-json
