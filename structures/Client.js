@@ -78,11 +78,11 @@ module.exports = class XiaoClient extends CommandClient {
 	}
 
 	async loadNSFWModel() {
-		const model = await nsfw.load(
+		const nsfwModel = await nsfw.load(
 			`${url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'nsfw', 'web_model')).href}/`,
 			{ type: 'graph' }
 		);
-		this.nsfwModel = model;
+		this.nsfwModel = nsfwModel;
 		return this.nsfwModel;
 	}
 
