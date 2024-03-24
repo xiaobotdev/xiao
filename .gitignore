@@ -24,5 +24,4 @@ tf_models/
 .DS_Store
 
 # In-Development Commands
-commands/edit-face/danny-devito.js
 commands/edit-face/emoji-face.js
