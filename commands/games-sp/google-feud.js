@@ -92,6 +92,11 @@ module.exports = class GoogleFeudCommand extends Command {
 			const num = formatNumber(10000 - (i * 1000));
 			embed.addField(`❯ ${num}`, display[i], true);
 		}
+		if (suggestions.length % 3 !== 0 && suggestions.length > 3) {
+			for (let i = 0; i < 3 - (suggestions.length % 3); i++) {
+				embed.addField('\u200B', '\u200B', true);
+			}
+		}
 		return embed;
 	}
 };
