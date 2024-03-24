@@ -27,10 +27,7 @@ module.exports = class CatCommand extends Command {
 		try {
 			const { body } = await request
 				.get('https://api.thecatapi.com/v1/images/search')
-				.query({
-					limit: 1,
-					mime_types: 'jpg,png'
-				})
+				.query({ limit: 1 })
 				.set({ 'x-api-key': THECATAPI_KEY });
 			return msg.say(facts[Math.floor(Math.random() * facts.length)], { files: [body[0].url] });
 		} catch (err) {
