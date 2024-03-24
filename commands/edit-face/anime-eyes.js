@@ -62,7 +62,7 @@ module.exports = class AnimeEyesCommand extends Command {
 		tfnode.setBackend('tensorflow');
 		const image = tfnode.node.decodeImage(imgData);
 		tfnode.setBackend('cpu');
-		const faces = await detector.estimateFaces(image);
+		const faces = await this.detector.estimateFaces(image);
 		tfnode.setBackend('tensorflow');
 		if (!faces || !faces.length) return null;
 		return faces;
