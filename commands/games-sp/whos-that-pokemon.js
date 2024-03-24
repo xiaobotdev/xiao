@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { reactIfAble } = require('../../util/Util');
-const { silhouette } = require('../../util/Canvas');
+const { silhouette, centerImagePart } = require('../../util/Canvas');
 const path = require('path');
 
 module.exports = class WhosThatPokemonCommand extends Command {
@@ -134,18 +134,17 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const silhouetteCtx = silhouetteCanvas.getContext('2d');
 		silhouetteCtx.drawImage(pkmn, 0, 0);
 		silhouette(silhouetteCtx, 0, 0, pkmn.width, pkmn.height);
-		const ratio = 200 / pkmn.height;
-		const width = pkmn.width * ratio;
+		const { x, y, width, height } = centerImagePart(pkmn, 30, 39, 200, 200);
 		if (hide) {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, 25 + (200 - width), 44, width, 200);
+			ctx.drawImage(silhouetteCanvas, x - 5, x + 5, width, height);
 			ctx.globalAlpha = 1;
-			ctx.drawImage(silhouetteCanvas, 30 + (200 - width), 39, width, 200);
+			ctx.drawImage(silhouetteCanvas, x, y, width, height);
 		} else {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, 25 + (200 - width), 44, width, 200);
+			ctx.drawImage(silhouetteCanvas, x - 5, x + 5, width, height);
 			ctx.globalAlpha = 1;
-			ctx.drawImage(pkmn, 30 + (200 - width), 39, width, 200);
+			ctx.drawImage(pkmn, x, y, width, height);
 			ctx.font = this.client.fonts.get('Pokemon Solid.ttf').toCanvasString(60);
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'bottom';
