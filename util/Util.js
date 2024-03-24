@@ -348,7 +348,7 @@ module.exports = class Util {
 			You will need at least ${min - 1} more player${addS} (at max ${max - 1}).
 			As the host, ${msg.author}, you can start the game early.
 		`;
-		text += '\n';
+		text += '\n\n';
 		const initialMsg = await msg.say(text, { components: [row] });
 		const joined = [];
 		joined.push(msg.author.id);
@@ -372,7 +372,7 @@ module.exports = class Util {
 				return;
 			}
 			joined.push(interaction.user.id);
-			text += '✅';
+			text += `${interaction.user.tag} is in!\n`;
 			interaction.update(text);
 		});
 		return new Promise(res => {
