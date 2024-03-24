@@ -27,7 +27,7 @@ module.exports = class EyesCommand extends Command {
 	async run(msg, { image }) {
 		const eyes = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'eyes.png'));
 		const imgData = await request.get(image);
-		const faces = await this.client.detectFaces(imgData);
+		const faces = await this.client.detectFaces(imgData.body);
 		if (!faces) return msg.reply('There are no faces in this image.');
 		if (faces === 'size') return msg.reply('This image is too large.');
 		const base = await loadImage(imgData.body);
