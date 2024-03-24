@@ -7,11 +7,11 @@ module.exports = class DefaultEmojiArgumentType extends ArgumentType {
 	}
 
 	validate(value) {
+		value += value;
 		return emojiRegex.test(value);
 	}
 
 	parse(value) {
-		value += value;
 		return value.match(emojiRegex)[0];
 	}
 };
