@@ -20,7 +20,7 @@ module.exports = class EmojiFaceCommand extends Command {
 				{
 					key: 'emoji',
 					prompt: 'What emoji do you want to draw?',
-					type: 'default-emoji|custom-emoji'
+					type: 'custom-emoji|default-emoji'
 				},
 				{
 					key: 'image',

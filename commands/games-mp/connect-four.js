@@ -34,7 +34,7 @@ module.exports = class ConnectFourCommand extends Command {
 				{
 					key: 'color',
 					prompt: `What color do you want to be? Either an emoji or one of ${list(Object.keys(colors), 'or')}.`,
-					type: 'default-emoji|custom-emoji|string',
+					type: 'custom-emoji|default-emoji|string',
 					validate: (color, msg) => {
 						const hasEmoji = new RegExp(`^(?:${emojiRegex().toString()})$`).test(color);
 						const hasCustom = color.match(customEmojiRegex);
