@@ -66,6 +66,10 @@ module.exports = class CommandClient extends Client {
 				return;
 			}
 		}
+		if (command.guildOnly && !msg.guild) {
+			await msg.reply(`The \`${command.name}\` command can only be used in a server channel.`);
+			return;
+		}
 		if (!this.isOwner(msg.author)) {
 			if (!command._enabled) {
 				await msg.reply(`The \`${command.name}\` command is disabled.`);
@@ -73,10 +77,6 @@ module.exports = class CommandClient extends Client {
 			}
 			if (command.ownerOnly) {
 				await msg.reply(`The \`${command.name}\` command can only be used by the bot owner.`);
-				return;
-			}
-			if (command.guildOnly && !msg.guild) {
-				await msg.reply(`The \`${command.name}\` command can only be used in a server channel.`);
 				return;
 			}
 			if (command.nsfw && !msg.channel.nsfw) {
