@@ -134,7 +134,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const silhouetteCtx = silhouetteCanvas.getContext('2d');
 		silhouetteCtx.drawImage(pkmn, 0, 0);
 		silhouette(silhouetteCtx, 0, 0, pkmn.width, pkmn.height);
-		const { x, y, width, height } = centerImagePart(pkmn, 30, 39, 200, 200);
+		const { x, y, width, height } = centerImagePart(pkmn, 200, 200, 30, 39);
 		if (hide) {
 			ctx.globalAlpha = 0.5;
 			ctx.drawImage(silhouetteCanvas, x - 5, x + 5, width, height);
