@@ -137,12 +137,12 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const { x, y, width, height } = centerImagePart(pkmn, 200, 200, 30, 39);
 		if (hide) {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, x - 5, x + 5, width, height);
+			ctx.drawImage(silhouetteCanvas, x - 5, y + 5, width, height);
 			ctx.globalAlpha = 1;
 			ctx.drawImage(silhouetteCanvas, x, y, width, height);
 		} else {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, x - 5, x + 5, width, height);
+			ctx.drawImage(silhouetteCanvas, x - 5, y + 5, width, height);
 			ctx.globalAlpha = 1;
 			ctx.drawImage(pkmn, x, y, width, height);
 			ctx.font = this.client.fonts.get('Pokemon Solid.ttf').toCanvasString(60);
