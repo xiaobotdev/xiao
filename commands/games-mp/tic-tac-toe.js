@@ -48,7 +48,7 @@ module.exports = class TicTacToeCommand extends Command {
 				let choice;
 				if (opponent.bot && !userTurn) {
 					// eslint-disable-next-line new-cap
-					choice = ComputerMove(this.convertBoard(sides), { aiPlayer: 'o', huPlayer: 'x' }, 'Hard');
+					choice = ComputerMove(this.convertBoard(sides), { aiPlayer: 'O', huPlayer: 'X' }, 'Hard');
 				} else {
 					await msg.say(stripIndents`
 						${user}, which side do you pick? Type \`end\` to forfeit.
