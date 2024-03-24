@@ -47,6 +47,7 @@ module.exports = class TicTacToeCommand extends Command {
 				const sign = userTurn ? 'X' : 'O';
 				let choice;
 				if (opponent.bot && !userTurn) {
+					// eslint-disable-next-line new-cap
 					choice = ComputerMove(this.convertBoard(sides), { aiPlayer: 'o', huPlayer: 'x' }, 'Hard');
 				} else {
 					await msg.say(stripIndents`
@@ -104,14 +105,14 @@ module.exports = class TicTacToeCommand extends Command {
 
 	playerWon(board, player) {
 		if (
-			(board[0] === player && board[1] === player && board[2] === player) ||
-			(board[3] === player && board[4] === player && board[5] === player) ||
-			(board[6] === player && board[7] === player && board[8] === player) ||
-			(board[0] === player && board[3] === player && board[6] === player) ||
-			(board[1] === player && board[4] === player && board[7] === player) ||
-			(board[2] === player && board[5] === player && board[8] === player) ||
-			(board[0] === player && board[4] === player && board[8] === player) ||
-			(board[2] === player && board[4] === player && board[6] === player)
+			(board[0] === player && board[1] === player && board[2] === player)
+			|| (board[3] === player && board[4] === player && board[5] === player)
+			|| (board[6] === player && board[7] === player && board[8] === player)
+			|| (board[0] === player && board[3] === player && board[6] === player)
+			|| (board[1] === player && board[4] === player && board[7] === player)
+			|| (board[2] === player && board[5] === player && board[8] === player)
+			|| (board[0] === player && board[4] === player && board[8] === player)
+			|| (board[2] === player && board[4] === player && board[6] === player)
 		) return true;
 		return false;
 	}
@@ -124,16 +125,16 @@ module.exports = class TicTacToeCommand extends Command {
 
 	convertBoard(board) {
 		const newBoard = [];
-		let col = 0;
+		let num = 0;
 		for (const piece of board) {
 			if (piece === 'X') {
-				newBoard.push('x');
+				newBoard.push('X');
 			} else if (piece === 'O') {
-				newBoard.push('o');
+				newBoard.push('O');
 			} else {
-				newBoard.push('_');
+				newBoard.push(num);
 			}
-			if (newBoard.length === 3) col++;
+			num++;
 		}
 		return newBoard;
 	}
