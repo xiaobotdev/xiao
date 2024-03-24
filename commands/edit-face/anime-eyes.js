@@ -43,8 +43,8 @@ module.exports = class AnimeEyesCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		for (const face of faces) {
-			const eyeWidth = face.box.width / 3;
-			const eyeHeight = face.box.height / 3;
+			const eyeWidth = face.box.width / 4;
+			const eyeHeight = face.box.height / 4;
 			const leftEyeData = face.keypoints.find(landmark => landmark.name === 'leftEye');
 			const rightEyeData = face.keypoints.find(landmark => landmark.name === 'rightEye');
 			const leftEyeX = leftEyeData.x - (eyeWidth / 2);
