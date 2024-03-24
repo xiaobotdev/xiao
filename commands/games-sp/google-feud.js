@@ -40,7 +40,8 @@ module.exports = class GoogleFeudCommand extends Command {
 			while (display.includes('???') && tries) {
 				const embed = this.makeEmbed(question, tries, suggestions, display);
 				await msg.embed(embed);
-				const msgs = await msg.channel.awaitMessages(res => res.author.id === msg.author.id, {
+				const msgs = await msg.channel.awaitMessages({
+					filter: res => res.author.id === msg.author.id,
 					max: 1,
 					time: 30000
 				});
