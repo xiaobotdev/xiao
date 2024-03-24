@@ -3,6 +3,7 @@ const { default: { ComputerMove } } = require('tictactoe-minimax-ai');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
+const valid = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 module.exports = class TicTacToeCommand extends Command {
 	constructor(client) {
@@ -59,7 +60,7 @@ module.exports = class TicTacToeCommand extends Command {
 						if (res.author.id !== user.id) return false;
 						const pick = res.content;
 						if (pick.toLowerCase() === 'end') return true;
-						return sides.includes(pick) && !taken.includes(pick);
+						return valid.includes(pick) && !taken.includes(pick);
 					};
 					const turn = await msg.channel.awaitMessages({
 						filter,
