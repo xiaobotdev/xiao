@@ -7,8 +7,7 @@ module.exports = class DefaultEmojiArgumentType extends ArgumentType {
 	}
 
 	validate(value) {
-		if (!emojiRegex.test(value)) return false;
-		return true;
+		return emojiRegex.test(value);
 	}
 
 	parse(value) {
