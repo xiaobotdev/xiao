@@ -134,16 +134,18 @@ module.exports = class WhosThatPokemonCommand extends Command {
 		const silhouetteCtx = silhouetteCanvas.getContext('2d');
 		silhouetteCtx.drawImage(pkmn, 0, 0);
 		silhouette(silhouetteCtx, 0, 0, pkmn.width, pkmn.height);
+		const ratio = pkmn.width / 200;
+		const height = pkmn.height * ratio;
 		if (hide) {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, 25, 44, 200, 200);
+			ctx.drawImage(silhouetteCanvas, 25, 44, 200, height);
 			ctx.globalAlpha = 1;
-			ctx.drawImage(silhouetteCanvas, 30, 39, 200, 200);
+			ctx.drawImage(silhouetteCanvas, 30, 39, 200, height);
 		} else {
 			ctx.globalAlpha = 0.5;
-			ctx.drawImage(silhouetteCanvas, 25, 44, 200, 200);
+			ctx.drawImage(silhouetteCanvas, 25, 44, 200, height);
 			ctx.globalAlpha = 1;
-			ctx.drawImage(pkmn, 30, 39, 200, 200);
+			ctx.drawImage(pkmn, 30, 39, 200, height);
 			ctx.font = this.client.fonts.get('Pokemon Solid.ttf').toCanvasString(60);
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'bottom';
