@@ -36,7 +36,7 @@ module.exports = class AnimeEyesCommand extends Command {
 		const rightEye = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'anime-eyes', 'right.png'));
 		const imgData = await request.get(image);
 		try {
-			const faces = await this.detect(imgData);
+			const faces = await this.detect(imgData.body);
 			if (!faces) return msg.reply('There are no faces in this image.');
 			if (faces === 'size') return msg.reply('This image is too large.');
 			const base = await loadImage(imgData.body);
