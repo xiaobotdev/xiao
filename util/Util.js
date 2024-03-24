@@ -355,6 +355,7 @@ module.exports = class Util {
 		const filter = interaction => {
 			if (interaction.user.bot) return false;
 			if (blacklist.includes(interaction.user.id)) return false;
+			console.log(interaction.user, msg.author.id, interaction.customId);
 			if (interaction.user.id !== msg.author.id && interaction.customId === 'start') return false;
 			if (joined.includes(interaction.user.id)) return false;
 			return true;
