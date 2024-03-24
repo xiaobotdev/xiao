@@ -49,7 +49,7 @@ module.exports = class DannyDevitoCommand extends Command {
 				danny,
 				face.box.xMin - (face.box.width * 0.2),
 				face.box.yMin - (height / 2.5),
-				face.box.width * 1.25,
+				face.box.width * 1.5,
 				height * 1.5
 			);
 		}
