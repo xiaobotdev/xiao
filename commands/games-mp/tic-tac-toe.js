@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const tictactoe = require('tictactoe-minimax-ai');
+const { ComputerMove } = require('tictactoe-minimax-ai');
 const { stripIndents } = require('common-tags');
 const { verify } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
@@ -47,7 +47,7 @@ module.exports = class TicTacToeCommand extends Command {
 				const sign = userTurn ? 'X' : 'O';
 				let choice;
 				if (opponent.bot && !userTurn) {
-					choice = tictactoe.bestMove(this.convertBoard(sides), { computer: 'o', opponent: 'x' });
+					choice = ComputerMove(this.convertBoard(sides), { aiPlayer: 'o', huPlayer: 'x' }, 'Hard');
 				} else {
 					await msg.say(stripIndents`
 						${user}, which side do you pick? Type \`end\` to forfeit.
@@ -102,26 +102,38 @@ module.exports = class TicTacToeCommand extends Command {
 		}
 	}
 
-	verifyWin(sides, player1, player2) {
-		const evaluated = tictactoe.boardEvaluate(this.convertBoard(sides)).status;
-		if (evaluated === 'win') return player1;
-		if (evaluated === 'loss') return player2;
-		if (evaluated === 'tie') return 'tie';
+	playerWon(board, player) {
+		if (
+			(board[0] === player && board[1] === player && board[2] === player) ||
+			(board[3] === player && board[4] === player && board[5] === player) ||
+			(board[6] === player && board[7] === player && board[8] === player) ||
+			(board[0] === player && board[3] === player && board[6] === player) ||
+			(board[1] === player && board[4] === player && board[7] === player) ||
+			(board[2] === player && board[5] === player && board[8] === player) ||
+			(board[0] === player && board[4] === player && board[8] === player) ||
+			(board[2] === player && board[4] === player && board[6] === player)
+		) return true;
 		return false;
 	}
 
+	verifyWin(board, player1, player2) {
+		if (this.playerWon(board, player1)) return player1;
+		if (this.playerWon(board, player2)) return player2;
+		return null;
+	}
+
 	convertBoard(board) {
-		const newBoard = [[], [], []];
+		const newBoard = [];
 		let col = 0;
 		for (const piece of board) {
 			if (piece === 'X') {
-				newBoard[col].push('x');
+				newBoard.push('x');
 			} else if (piece === 'O') {
-				newBoard[col].push('o');
+				newBoard.push('o');
 			} else {
-				newBoard[col].push('_');
+				newBoard.push('_');
 			}
-			if (newBoard[col].length === 3) col++;
+			if (newBoard.length === 3) col++;
 		}
 		return newBoard;
 	}
