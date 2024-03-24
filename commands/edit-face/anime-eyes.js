@@ -43,12 +43,12 @@ module.exports = class AnimeEyesCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		for (const face of faces) {
-			const faceWidth = face.box.width;
-			const faceHeight = face.box.height;
+			const eyeWidth = face.box.width / 5;
+			const eyeHeight = face.box.height / 5;
 			const leftEyeData = face.keypoints.find(landmark => landmark.name === 'leftEye');
-			ctx.drawImage(leftEye, leftEyeData.x, leftEyeData.y, faceWidth / 10, faceHeight / 10);
+			ctx.drawImage(rightEye, leftEyeData.x - eyeWidth, leftEyeData.y - eyeHeight, eyeWidth, eyeHeight;
 			const rightEyeData = face.keypoints.find(landmark => landmark.name === 'rightEye');
-			ctx.drawImage(rightEye, rightEyeData.x, rightEyeData.y, faceWidth / 10, faceHeight / 10);
+			ctx.drawImage(leftEye, rightEyeData.x - eyeWidth, rightEyeData.y - eyeHeight, eyeWidth, eyeHeight);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'anime-eyes.png' }] });
 	}
