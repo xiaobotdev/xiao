@@ -24,4 +24,3 @@ tf_models/
 .DS_Store
 
 # In-Development Commands
-commands/edit-face/emoji-face.js
