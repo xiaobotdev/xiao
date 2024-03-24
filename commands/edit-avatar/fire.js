@@ -5,7 +5,7 @@ const request = require('node-superfetch');
 const path = require('path');
 const { streamToArray } = require('../../util/Util');
 const { drawImageWithTint } = require('../../util/Canvas');
-const frameCount = 31;
+const frameCount = 46;
 
 module.exports = class FireCommand extends Command {
 	constructor(client) {
@@ -52,9 +52,8 @@ module.exports = class FireCommand extends Command {
 			encoder.setRepeat(0);
 			encoder.setDelay(100);
 			encoder.setQuality(200);
-			for (let i = 0; i < frameCount; i += 2) {
-				const frameID = `frame-${i.toString().padStart(2, '0')}.png`;
-				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', frameID));
+			for (let i = 0; i < frameCount; i++) {
+				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', `frame-${i}.png`));
 				const ratio = frame.width / frame.height;
 				const height = Math.round(avatar.width / ratio);
 				drawImageWithTint(ctx, avatar, '#fc671e', 0, 0, avatar.width, avatar.height);
