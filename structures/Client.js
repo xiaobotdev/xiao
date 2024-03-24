@@ -4,6 +4,9 @@ const { Collection } = require('@discordjs/collection');
 const winston = require('winston');
 const fontFinder = require('font-finder');
 const nsfw = require('nsfwjs');
+const tfnode = require('@tensorflow/tfjs-node');
+const faceDetection = require('@tensorflow-models/face-detection');
+const model = faceDetection.SupportedModels.MediaPipeFaceDetector;
 const moment = require('moment-timezone');
 const fs = require('fs');
 const url = require('url');
@@ -38,6 +41,7 @@ module.exports = class XiaoClient extends CommandClient {
 		this.activities = activities;
 		this.adultSiteList = null;
 		this.nsfwModel = null;
+		this.faceDetector = null;
 	}
 
 	async loadParseDomain() {
@@ -80,6 +84,22 @@ module.exports = class XiaoClient extends CommandClient {
 		);
 		this.nsfwModel = model;
 		return this.nsfwModel;
+	}
+
+	async loadFaceDetector() {
+		this.faceDetector = await faceDetection.createDetector(model, { runtime: 'tfjs', maxFaces: 10 });
+		return this.faceDetector;
+	}
+
+	async detectFaces(imgData) {
+		if (Buffer.byteLength(imgData) >= 4e+6) return 'size';
+		tfnode.setBackend('tensorflow');
+		const image = tfnode.node.decodeImage(imgData);
+		tfnode.setBackend('cpu');
+		const faces = await this.faceDetector.estimateFaces(image);
+		tfnode.setBackend('tensorflow');
+		if (!faces || !faces.length) return null;
+		return faces;
 	}
 
 	fetchReportChannel() {

@@ -210,6 +210,10 @@ client.on('ready', async () => {
 		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
 	}
 
+	// Set up face detection
+	await client.loadFaceDetector();
+	client.logger.info('[FACE DETECTOR] Loaded face detector.');
+
 	// Fetch all members
 	for (const [id, guild] of client.guilds.cache) { // eslint-disable-line no-unused-vars
 		await guild.members.fetch();

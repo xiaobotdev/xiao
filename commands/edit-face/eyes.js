@@ -3,14 +3,13 @@ const request = require('node-superfetch');
 const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 
-module.exports = class AnimeEyesCommand extends Command {
+module.exports = class EyesCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'anime-eyes',
-			aliases: ['ani-eyes', 'manga-eyes'],
+			name: 'eyes',
 			group: 'edit-face',
-			memberName: 'anime-eyes',
-			description: 'Draws anime eyes onto the faces in an image.',
+			memberName: 'eyes',
+			description: 'Draws emoji eyes onto the faces in an image.',
 			throttling: {
 				usages: 1,
 				duration: 60
@@ -26,10 +25,9 @@ module.exports = class AnimeEyesCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		const leftEye = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'anime-eyes', 'left.png'));
-		const rightEye = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'anime-eyes', 'right.png'));
+		const eyes = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'eyes.png'));
 		const imgData = await request.get(image);
-		const faces = await this.client.detectFaces(imgData.body);
+		const faces = await this.client.detectFaces(imgData);
 		if (!faces) return msg.reply('There are no faces in this image.');
 		if (faces === 'size') return msg.reply('This image is too large.');
 		const base = await loadImage(imgData.body);
@@ -45,9 +43,9 @@ module.exports = class AnimeEyesCommand extends Command {
 			const leftEyeY = leftEyeData.y - (eyeHeight / 2);
 			const rightEyeX = rightEyeData.x - (eyeWidth / 2);
 			const rightEyeY = rightEyeData.y - (eyeHeight / 2);
-			ctx.drawImage(rightEye, leftEyeX, leftEyeY, eyeWidth, eyeHeight);
-			ctx.drawImage(leftEye, rightEyeX, rightEyeY, eyeWidth, eyeHeight);
+			ctx.drawImage(eyes, leftEyeX, leftEyeY, eyeWidth, eyeHeight);
+			ctx.drawImage(eyes, rightEyeX, rightEyeY, eyeWidth, eyeHeight);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'anime-eyes.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'eyes.png' }] });
 	}
 };
