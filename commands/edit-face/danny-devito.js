@@ -48,9 +48,9 @@ module.exports = class DannyDevitoCommand extends Command {
 			ctx.drawImage(
 				danny,
 				face.box.xMin - (face.box.width * 0.2),
-				face.box.yMin - (height / 2.50),
+				face.box.yMin - (height / 2.5),
 				face.box.width * 1.25,
-				height * 1.25
+				height * 1.35
 			);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'danny-devito.png' }] });
