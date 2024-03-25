@@ -53,7 +53,9 @@ module.exports = class YodaCommand extends Command {
 			const split = sentence.split(' ');
 			return split.map((word, i) => i === 0 || word === 'i' ? firstUpperCase(word) : word).join(' ');
 		});
-		if (newSentences.length === 1) newSentences.push('.');
+		if (newSentences.length === 1) {
+			return `${newSentences.join('. ').trim()}. ${ends[Math.floor(Math.random() * ends.length)]}`;
+		}
 		return `${newSentences.join('. ').trim()} ${ends[Math.floor(Math.random() * ends.length)]}`;
 	}
 };
