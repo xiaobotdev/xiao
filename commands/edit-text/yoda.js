@@ -26,13 +26,13 @@ module.exports = class YodaCommand extends Command {
 
 	yodaSpeak(text) {
 		const sentences = text.split(/\?|!|\./);
-		const newSentences = [];
+		let newSentences = [];
 		for (const sentence of sentences) {
 			const trimmed = sentence.trim();
 			const breaks = trimmed.split(',');
 			const newBreaks = [];
 			for (const broke of breaks) {
-				let newText = [];
+				const newText = [];
 				const pivoted = [];
 				const words = broke.split(' ');
 				for (let i = 0; i < words.length; i++) {
@@ -45,11 +45,14 @@ module.exports = class YodaCommand extends Command {
 						newText.push(clean);
 					}
 				}
-				newText = newText.map((word, i) => i === 0 ? firstUpperCase(word) : word);
 				newBreaks.push(`${newText.join(' ').trim()} ${pivoted.join(' ').trim()}`);
 			}
 			newSentences.push(newBreaks.join(', ').trim());
 		}
+		newSentences = newSentences.map(sentence => {
+			const split = sentence.split(' ');
+			return split.map((word, i) => i === 0 || word === 'i' ? firstUpperCase(word) : word);
+		});
 		return `${newSentences.join('. ').trim()} ${ends[Math.floor(Math.random() * ends.length)]}`;
 	}
 };
