@@ -3,7 +3,8 @@ const { MessageEmbed } = require('discord.js');
 const versions = {
 	'red-blue': 'Red and Blue',
 	'ultra-sun-ultra-moon': 'Ultra Sun and Ultra Moon',
-	'sword-shield': 'Sword and Shield'
+	'sword-shield': 'Sword and Shield',
+	'scarlet-violet': 'Scarlet and Violet'
 };
 
 module.exports = class PokedexMovesetCommand extends Command {
