@@ -80,7 +80,7 @@ module.exports = class PokedexCommand extends Command {
 					pokemon.serebiiURL
 				)
 				.setThumbnail(pokemon.formSpriteImageURL(variety.id))
-				.addField(`❯ Base Stats (${variety.name || 'Base'} Form)`, stripIndents`
+				.addField(`❯ Base Stats (${variety.name || 'Normal'} Form)`, stripIndents`
 					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${variety.stats.hp}**
 					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${variety.stats.atk}**
 					\`Defense:     [${'█'.repeat(repeat.def)}${' '.repeat(20 - repeat.def)}]\` **${variety.stats.def}**

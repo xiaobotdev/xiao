@@ -203,7 +203,9 @@ module.exports = class Pokemon {
 		defaultVariety.gameDataCached = true;
 		const inSwordShield = defaultBody.moves
 			.some(move => move.version_group_details.some(mve => mve.version_group.name === 'sword-shield'));
-		this.moveSetVersion = inSwordShield ? 'sword-shield' : 'ultra-sun-ultra-moon';
+		const inScarletViolet = defaultBody.moves
+			.some(move => move.version_group_details.some(mve => mve.version_group.name === 'scarlet-violet'));
+		this.moveSetVersion = inScarletViolet ? 'scarlet-violet' : inSwordShield ? 'sword-shield' : 'ultra-sun-ultra-moon';
 		this.height = defaultBody.height * 3.94;
 		this.weight = defaultBody.weight * 0.2205;
 		this.encountersURL = defaultBody.location_area_encounters;
@@ -230,12 +232,12 @@ module.exports = class Pokemon {
 				spd: body.stats.find(stat => stat.stat.name === 'speed').base_stat
 			};
 			const baseStats = defaultVariety.stats;
-			variety.statsDiffer = baseStats.hp !== variety.stats.hp
-				|| baseStats.atk !== variety.stats.atk
-				|| baseStats.def !== variety.stats.def
-				|| baseStats.sAtk !== variety.stats.sAtk
-				|| baseStats.sDef !== variety.stats.sDef
-				|| baseStats.spd !== variety.stats.spd;
+			variety.statsDiffer = !(baseStats.hp === variety.stats.hp
+				&& baseStats.atk === variety.stats.atk
+				&& baseStats.def === variety.stats.def
+				&& baseStats.sAtk === variety.stats.sAtk
+				&& baseStats.sDef === variety.stats.sDef
+				&& baseStats.spd === variety.stats.spd);
 			for (const ability of body.abilities) {
 				const abilityData = await this.store.abilities.fetch(ability.ability.name);
 				variety.abilities.push(abilityData);
