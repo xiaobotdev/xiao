@@ -33,7 +33,7 @@ module.exports = class UsElectionCommand extends Command {
 				canidate => `**${canidate.name}:** ${canidate.score} (${canidate.percentChange} in last day)`
 			);
 			return msg.say(stripIndents`
-				__**Chances of Winning the ${year} US Presidential Election (According to Betting Markets):**__
+				__**Chances of Winning the ${year} US Election:**__
 				${list.join('\n')}
 
 				_More detailed information is available at <https://electionbettingodds.com/>._
