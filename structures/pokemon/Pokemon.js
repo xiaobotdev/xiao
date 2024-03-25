@@ -265,21 +265,25 @@ module.exports = class Pokemon {
 	fetchHeldItems(heldItems) {
 		this.heldItems = heldItems
 			.filter(item => item.version_details.some(version => {
+				const inScarletViolet = version.version.name === 'scarlet' || version.version.name === 'violet';
 				const inSwordShield = version.version.name === 'sword' || version.version.name === 'shield';
+				const inUsUm = version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon';
+				if (inScarletViolet) return true;
 				if (inSwordShield) return true;
-				if (!inSwordShield && (version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon')) {
-					return true;
-				}
+				if (!inSwordShield && !inScarletViolet && inUsUm) return true;
 				return false;
 			}))
 			.map(item => {
+				const inScarletViolet = item.version_details
+					.some(version => version.version.name === 'scarlet' || version.version.name === 'violet');
 				const inSwordShield = item.version_details
 					.some(version => version.version.name === 'sword' || version.version.name === 'shield');
 				const { rarity } = item.version_details
 					.find(version => {
+						if (inScarletViolet) return true;
 						if (inSwordShield) return true;
 						const sunMoon = version.version.name === 'ultra-sun' || version.version.name === 'ultra-moon';
-						if (!inSwordShield && sunMoon) return true;
+						if (!inSwordShield && !inScarletViolet && sunMoon) return true;
 						return false;
 					});
 				return {
