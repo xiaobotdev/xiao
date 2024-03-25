@@ -51,7 +51,7 @@ module.exports = class YodaCommand extends Command {
 		}
 		newSentences = newSentences.map(sentence => {
 			const split = sentence.split(' ');
-			return split.map((word, i) => i === 0 || word === 'i' ? firstUpperCase(word) : word);
+			return split.map((word, i) => i === 0 || word === 'i' ? firstUpperCase(word) : word).join(' ');
 		});
 		return `${newSentences.join('. ').trim()} ${ends[Math.floor(Math.random() * ends.length)]}`;
 	}
