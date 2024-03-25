@@ -338,8 +338,10 @@ module.exports = class Pokemon {
 			if (!encounter.version_details.some(version => versions[version.version.name])) continue;
 			const { body: encounterBody } = await request.get(encounter.location_area.url);
 			const { body: locationBody } = await request.get(encounterBody.location.url);
+			let name = locationBody.names.find(nm => nm.language?.name === 'en')?.name;
+			if (!name) name = firstUpperCase(locationBody.name.replace(/-/g, ' '));
 			this.encounters.push({
-				name: locationBody.names.find(name => name.language.name === 'en').name,
+				name,
 				versions: encounter.version_details
 					.filter(version => versions[version.version.name])
 					.map(version => version.version.name)
