@@ -17,7 +17,7 @@ module.exports = class GenerateCreditCommand extends Command {
 	}
 
 	async run(msg) {
-		const npm = `* ${deps.map(dep => `[${dep}](https://registry.npmjs.com/${dep})`).join('\n* ')}`;
+		const npm = `* ${deps.map(dep => `[${dep}](https://www.npmjs.com/package/${dep})`).join('\n* ')}`;
 		const list = this.client.registry.groups
 			.map(g => {
 				const commands = g.commands.filter(c => !c.hidden && !c.ownerOnly && c.credit.length - 1 !== 0);
