@@ -4,7 +4,7 @@ const moment = require('moment');
 require('moment-duration-format');
 const { formatNumber, embedURL } = require('../../util/Util');
 const { version, dependencies, optionalDependencies } = require('../../package');
-const deps = { ...dependencies, ...optionalDependencies };
+const deps = Object.keys({ ...dependencies, ...optionalDependencies }).sort();
 const copyright = require('../../assets/json/copyright');
 
 module.exports = class InfoCommand extends Command {
@@ -39,7 +39,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Node.js', process.version, true)
 			.addField('❯ Discord.js', `v${djsVersion}`, true)
 			.addField('❯ Framework', 'Custom', true)
-			.addField('❯ Dependencies', Object.keys(deps).sort().join(', '));
+			.addField('❯ Dependencies', deps.join(', '));
 		return msg.embed(embed);
 	}
 };

@@ -1,4 +1,6 @@
 const Command = require('../../framework/Command');
+const { dependencies, optionalDependencies } = require('../../package');
+const deps = Object.keys({ ...dependencies, ...optionalDependencies }).sort();
 
 module.exports = class GenerateCreditCommand extends Command {
 	constructor(client) {
@@ -15,6 +17,7 @@ module.exports = class GenerateCreditCommand extends Command {
 	}
 
 	async run(msg) {
+		const npm = `* ${deps.map(dep => `[${dep}](https://registry.npmjs.com/${dep})`).join('* \n')}`;
 		const list = this.client.registry.groups
 			.map(g => {
 				const commands = g.commands.filter(c => !c.hidden && !c.ownerOnly && c.credit.length - 1 !== 0);
@@ -27,7 +30,8 @@ module.exports = class GenerateCreditCommand extends Command {
 				}).join('\n');
 			})
 			.filter(cmds => cmds);
-		await msg.direct({ files: [{ attachment: Buffer.from(list.join('\n')), name: 'credits.txt' }] });
+		const file = Buffer.from(`# Credits\n## NPM Packages\n${npm}\n## Other Credits${list.join('\n')}`);
+		await msg.direct({ files: [{ attachment: file, name: 'credits.txt' }] });
 		return msg.say('📬 Sent `credits.txt` to your DMs!');
 	}
 };
