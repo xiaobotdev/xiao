@@ -3,8 +3,7 @@ const { MessageEmbed, version: djsVersion } = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
 const { formatNumber, embedURL } = require('../../util/Util');
-const { version, dependencies, optionalDependencies } = require('../../package');
-const deps = Object.keys({ ...dependencies, ...optionalDependencies }).sort();
+const { version } = require('../../package');
 const copyright = require('../../assets/json/copyright');
 
 module.exports = class InfoCommand extends Command {
@@ -38,8 +37,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Version', `v${version}`, true)
 			.addField('❯ Node.js', process.version, true)
 			.addField('❯ Discord.js', `v${djsVersion}`, true)
-			.addField('❯ Framework', 'Custom', true)
-			.addField('❯ Dependencies', deps.join(', '));
+			.addField('❯ Framework', 'Custom', true);
 		return msg.embed(embed);
 	}
 };
