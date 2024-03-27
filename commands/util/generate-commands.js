@@ -17,9 +17,13 @@ module.exports = class GenerateCommandsCommand extends Command {
 	async run(msg) {
 		const list = this.client.registry.groups
 			.map(g => {
-				const commands = g.commands.filter(c => !c.hidden && !c.ownerOnly && !c.nsfw);
+				const commands = g.commands.filter(c => !c.hidden && !c.ownerOnly);
 				if (!commands.size) return null;
-				return `\n### ${g.name}:\n\n${commands.map(c => `* **${c.name}:** ${c.description}`).join('\n')}`;
+				const mapped = commands.map(c => {
+					const nsfw = c.nsfw ? ` (NSFW)` : '';
+					return `* **${c.name}:** ${c.description}${nsfw}`;
+				});
+				return `\n### ${g.name}:\n\n${mapped.join('\n')}`;
 			})
 			.filter(cmds => cmds);
 		const text = `Total: ${this.client.registry.commands.size}\n${list.join('\n')}`;
