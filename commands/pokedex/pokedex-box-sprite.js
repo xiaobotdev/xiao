@@ -45,6 +45,12 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 					name: 'Serebii.net',
 					url: 'https://www.serebii.net/index2.shtml',
 					reason: 'Images'
+				},
+				{
+					name: 'Pokémon Showdown',
+					url: 'https://play.pokemonshowdown.com/',
+					reason: 'Box Sprite Sheet',
+					reasonURL: 'https://play.pokemonshowdown.com/sprites/'
 				}
 			],
 			args: [

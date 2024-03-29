@@ -58,6 +58,12 @@ module.exports = class PokedexCommand extends Command {
 					url: 'https://play.pokemonshowdown.com/',
 					reason: 'Cry Sound Effects (Meltan and Melmetal, Legends: Arceus)',
 					reasonURL: 'https://play.pokemonshowdown.com/audio/cries/'
+				},
+				{
+					name: 'Pokémon Showdown',
+					url: 'https://play.pokemonshowdown.com/',
+					reason: 'Box Sprite Sheet',
+					reasonURL: 'https://play.pokemonshowdown.com/sprites/'
 				}
 			],
 			args: [
