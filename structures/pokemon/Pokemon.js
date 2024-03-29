@@ -2,6 +2,7 @@ const request = require('node-superfetch');
 const { createCanvas } = require('canvas');
 const path = require('path');
 const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
+const { cropToContent } = require('../../util/Canvas');
 const missingno = require('../../assets/json/missingno');
 const versions = require('../../assets/json/pokedex-location');
 
@@ -157,6 +158,7 @@ module.exports = class Pokemon {
 		const x = 40 * (this.id % 12);
 		const y = Math.floor(this.id / 12) * 30;
 		ctx.drawImage(this.store.sprites, x, y, 40, 30, 0, 0, 40, 30);
+		cropToContent(ctx, canvas.width, canvas.height);
 		return canvas.toBuffer();
 	}
 
