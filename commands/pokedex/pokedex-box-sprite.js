@@ -69,12 +69,12 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 		if (!this.client.pokemon.sprites) await this.client.pokemon.loadSprites();
 		const canvas = createCanvas(250, 250);
 		const ctx = canvas.getContext('2d');
-		const x = 40 * (this.id % 12);
-		const y = Math.floor(this.id / 12) * 30;
+		const x = 40 * (pokemon.id % 12);
+		const y = Math.floor(pokemon.id / 12) * 30;
 		ctx.imageSmoothingEnabled = false;
 		const ratio = 250 / 40;
 		const height = 30 * ratio;
-		ctx.drawImage(this.client.pokemon.sprites, x, y, 40, 30, 0, 0, 40, 30);
+		ctx.drawImage(this.client.pokemon.sprites, x, y, 40, 30, 0, 0, 250, height);
 		cropToContent(ctx, canvas, canvas.width, canvas.height);
 		return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, {
 			files: [{
