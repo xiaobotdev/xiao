@@ -74,7 +74,7 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 		ctx.imageSmoothingEnabled = false;
 		const ratio = 250 / 40;
 		const height = 30 * ratio;
-		ctx.drawImage(this.client.pokemon.sprites, x, y, 40, 30, 0, 0, 250, height);
+		ctx.drawImage(this.client.pokemon.sprites, x, y, 40, 30, 0, 0, 40, 30);
 		cropToContent(ctx, canvas, canvas.width, canvas.height);
 		return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, {
 			files: [{
