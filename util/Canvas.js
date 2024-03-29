@@ -146,9 +146,9 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
-	static cropToContent(ctx, w, h) {
+	static cropToContent(ctx, canvas, w, h) {
 		const pix = { x: [], y: [] };
-		const imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+		const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 		let index;
 		for (let y = 0; y < h; y++) {
 			for (let x = 0; x < w; x++) {
@@ -165,8 +165,8 @@ module.exports = class CanvasUtil {
 		const newW = (1 + pix.x[n]) - pix.x[0];
 		const newH = (1 + pix.y[n]) - pix.y[0];
 		const cut = ctx.getImageData(pix.x[0], pix.y[0], newW, newH);
-		ctx.canvas.width = newW;
-		ctx.canvas.height = newH;
+		canvas.width = newW;
+		canvas.height = newH;
 		ctx.putImageData(cut, 0, 0);
 		return ctx;
 	}
