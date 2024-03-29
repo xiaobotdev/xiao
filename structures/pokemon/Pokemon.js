@@ -98,9 +98,15 @@ module.exports = class Pokemon {
 		if (this.legendary) return 'legendary';
 		if (this.mythical) return 'mythical';
 		if (this.baby) return 'baby';
+		if (this.ultraBeast) return 'ultra beast';
 		if (this.missingno) return 'glitch';
 		if (this.pseudo) return 'pseudo';
-		return 'standard';
+		return 'normal';
+	}
+
+	get ultraBeast() {
+		if (!this.gameDataCached) return null;
+		return this.varieties.some(variety => variety.abilities.some(ability => ability.slug === 'beast-boost'));
 	}
 
 	get mega() {
