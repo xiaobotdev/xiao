@@ -42,6 +42,12 @@ module.exports = class SmogonCommand extends Command {
 					name: 'Smogon',
 					url: 'https://www.smogon.com/',
 					reason: 'Tier Data'
+				},
+				{
+					name: 'Pokémon Showdown',
+					url: 'https://play.pokemonshowdown.com/',
+					reason: 'Box Sprite Sheet',
+					reasonURL: 'https://play.pokemonshowdown.com/sprites/'
 				}
 			],
 			args: [
