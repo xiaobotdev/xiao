@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { arrayEquals, reactIfAble } = require('../../util/Util');
+const { arrayEquals, reactIfAble, firstUpperCase } = require('../../util/Util');
 const { MEGA_EVOLVE_EMOJI_NAME, MEGA_EVOLVE_EMOJI_ID } = process.env;
 const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss', 'sv'];
 const games = {
@@ -111,14 +111,15 @@ module.exports = class PokedexCommand extends Command {
 				.addField('❯ Types', typesShown.map(variety => {
 					const showParens = variety.name && typesShown.length > 1;
 					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
-				}).join('\n'))
+				}).join('\n'), true)
+				.addField('❯ Class', firstUpperCase(pokemon.class), true)
+				.addField('❯ Gender Rate', pokemon.genderRate.genderless
+					? 'Genderless'
+					: `♂️ ${pokemon.genderRate.male}% ♀️ ${pokemon.genderRate.female}%`, true)
 				.addField('❯ Evolution Chain', `${evoChain}${pokemon.mega ? ` -> ${this.megaEvolveEmoji}` : ''}`)
 				.addField('❯ Held Items', pokemon.heldItems.length
 					? pokemon.heldItems.map(item => `${item.data.name} (${item.rarity}%)`).join('\n')
-					: 'None')
-				.addField('❯ Gender Rate', pokemon.genderRate.genderless
-					? 'Genderless'
-					: `♂️ ${pokemon.genderRate.male}% ♀️ ${pokemon.genderRate.female}%`);
+					: 'None');
 			if (msg.guild && pokemon.cry) {
 				const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
 				if (connection) {
