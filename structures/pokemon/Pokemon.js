@@ -1,4 +1,5 @@
 const request = require('node-superfetch');
+const { createCanvas } = require('canvas');
 const path = require('path');
 const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
 const missingno = require('../../assets/json/missingno');
@@ -133,20 +134,6 @@ module.exports = class Pokemon {
 		return `https://serebii.net/pokemon/art/${this.displayID}${name ? `-${name}` : ''}.png`;
 	}
 
-	get boxImageURL() {
-		if (this.missingno) return missingno.box;
-		return `https://www.serebii.net/pokedex-sv/icon/${this.displayID}.png`;
-	}
-
-	formBoxImageURL(variety) {
-		if (this.missingno) return missingno.box;
-		const found = this.varieties.find(vrity => variety ? vrity.id === variety.toLowerCase() : vrity.default);
-		const name = found.default ? '' : found.mega
-			? found.name.toLowerCase().split(' ').map(n => n.charAt(0)).join('')
-			: found.name.toLowerCase().charAt(0);
-		return `https://www.serebii.net/pokedex-sv/icon/${this.displayID}${name ? `-${name}` : ''}.png`;
-	}
-
 	get serebiiURL() {
 		if (this.missingno) return missingno.url;
 		return `https://www.serebii.net/pokedex-sv/${this.displayID}.shtml`;
@@ -155,6 +142,16 @@ module.exports = class Pokemon {
 	smogonURL(gen) {
 		if (this.missingno) return missingno.url;
 		return `https://www.smogon.com/dex/${gen.toLowerCase()}/pokemon/${this.slug}/`;
+	}
+
+	async generateBoxImage() {
+		if (!this.store.sprites) await this.store.loadSprites();
+		const canvas = createCanvas(40, 30);
+		const ctx = canvas.getContext('2d');
+		const x = 40 * (this.id % 12);
+		const y = Math.floor(this.id / 12) * 30;
+		ctx.drawImage(this.store.sprites, x, y, 40, 30, 0, 0, 40, 30);
+		return canvas.toBuffer();
 	}
 
 	async fetchSmogonTiers(...gens) {

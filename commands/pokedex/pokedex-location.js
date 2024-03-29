@@ -59,10 +59,16 @@ module.exports = class PokedexLocationCommand extends Command {
 				: 'Location Unknown';
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, pokemon.boxImageURL, pokemon.serebiiURL)
+				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
 				.setDescription(desc)
 				.setThumbnail(pokemon.spriteImageURL);
-			return msg.embed(embed);
+			return msg.channel.send({
+				embeds: [embed],
+				files: [{
+					attachment: await pokemon.generateBoxImage(),
+					name: 'box.png'
+				}]
+			});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

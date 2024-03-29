@@ -93,7 +93,7 @@ module.exports = class PokedexCommand extends Command {
 			}).join(' -> ');
 			const embed = new MessageEmbed()
 				.setColor(0xED1C24)
-				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, pokemon.boxImageURL, pokemon.serebiiURL)
+				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
 				.setDescription(stripIndents`
 					**${pokemon.genus}**
 					${pokemon.entries.length ? pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)] : 'No data.'}
@@ -120,7 +120,13 @@ module.exports = class PokedexCommand extends Command {
 					await reactIfAble(msg, this.client.user, '🔉');
 				}
 			}
-			return msg.embed(embed);
+			return msg.channel.send({
+				embeds: [embed],
+				files: [{
+					attachment: await pokemon.generateBoxImage(),
+					name: 'box.png'
+				}]
+			});
 		} catch (err) {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}

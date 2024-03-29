@@ -1,5 +1,7 @@
 const { Collection } = require('@discordjs/collection');
 const request = require('node-superfetch');
+const { loadImage } = require('canvas');
+const path = require('path');
 const Pokemon = require('./Pokemon');
 const MoveStore = require('./MoveStore');
 const AbilityStore = require('./AbilityStore');
@@ -16,6 +18,14 @@ module.exports = class PokemonStore extends Collection {
 		this.moves = new MoveStore();
 		this.abilities = new AbilityStore();
 		this.items = new ItemStore();
+		this.sprites = null;
+	}
+
+	async loadSprites() {
+		if (this.sprites) return this.sprites;
+		const sprites = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'pokedex', 'sprites.png'));
+		this.sprites = sprites;
+		return this.sprites;
 	}
 
 	async fetch(query) {
