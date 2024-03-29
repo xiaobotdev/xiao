@@ -1,4 +1,6 @@
 const Command = require('../../framework/Command');
+const { createCanvas } = require('canvas');
+const { cropToContent } = require('../../util/Canvas');
 
 module.exports = class PokedexBoxSpriteCommand extends Command {
 	constructor(client) {
@@ -65,9 +67,17 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 
 	async run(msg, { pokemon }) {
 		try {
+			if (!this.client.pokemon.sprites) await this.client.pokemon.loadSprites();
+			const canvas = createCanvas(250, 250);
+			const ctx = canvas.getContext('2d');
+			const x = 40 * (this.id % 12);
+			const y = Math.floor(this.id / 12) * 30;
+			ctx.imageSmoothingEnabled = false;
+			ctx.drawImage(this.store.sprites, x, y, 40, 30, 0, 0, 250, 250);
+			cropToContent(ctx, canvas.width, canvas.height);
 			return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, {
 				files: [{
-					attachment: await pokemon.generateBoxImage(),
+					attachment: canvas.toBuffer(),
 					name: 'box.png'
 				}]
 			});

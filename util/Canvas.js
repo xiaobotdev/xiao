@@ -146,6 +146,31 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
+	static cropToContent(ctx, w, h) {
+		const pix = { x: [], y: [] };
+		const imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+		let index;
+		for (let y = 0; y < h; y++) {
+			for (let x = 0; x < w; x++) {
+				index = ((y * w) + x) * 4;
+				if (imageData.data[index + 3] > 0) {
+					pix.x.push(x);
+					pix.y.push(y);
+				}
+			}
+		}
+		pix.x.sort((a, b) => a - b);
+		pix.y.sort((a, b) => a - b);
+		const n = pix.x.length - 1;
+		const newW = (1 + pix.x[n]) - pix.x[0];
+		const newH = (1 + pix.y[n]) - pix.y[0];
+		const cut = ctx.getImageData(pix.x[0], pix.y[0], newW, newH);
+		ctx.canvas.width = newW;
+		ctx.canvas.height = newH;
+		ctx.putImageData(cut, 0, 0);
+		return ctx;
+	}
+
 	static hasAlpha(image) {
 		const canvas = createCanvas(image.width, image.height);
 		const ctx = canvas.getContext('2d');
