@@ -100,6 +100,13 @@ client.on('ready', async () => {
 		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
 	}
 
+	// Set up disabled commands
+	const disabled = await this.client.redis.hgetall('disabled');
+	for (const command of Object.keys(disabled)) {
+		client.registry.commands.get(command).disable();
+		client.logger.info(`[DISABLED] Disabled the ${command} command.`);
+	}
+
 	// Import command-last-run.json
 	try {
 		const results = client.importLastRun();

@@ -20,9 +20,10 @@ module.exports = class EnableCommand extends Command {
 		});
 	}
 
-	run(msg, { command }) {
+	async run(msg, { command }) {
 		if (command._enabled) return msg.say(`The \`${command.name}\` command is already enabled.`);
 		command.enable();
+		await this.client.redis.hdel('disabled', command.name);
 		return msg.say(`Enabled the \`${command.name}\` command.`);
 	}
 };
