@@ -28,32 +28,28 @@ module.exports = class FrinkiacCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const search = await this.search(query);
-			if (!search) return msg.say('Could not find any results.');
-			const data = await this.fetchCaption(search.Episode, search.Timestamp);
-			const time = moment.duration(data.Frame.Timestamp).format();
-			const caption = data.Subtitles.map(sub => sub.Content).join(' ').split(' ');
-			let url = `https://frinkiac.com/meme/${data.Frame.Episode}/${data.Frame.Timestamp}.jpg`;
-			const wrapped = [''];
-			let currentLine = 0;
-			for (const word of caption) {
-				if (wrapped[currentLine].length + word.length < 26) {
-					wrapped[currentLine] += ` ${word}`;
-				} else {
-					wrapped.push(` ${word}`);
-					currentLine++;
-				}
+		const search = await this.search(query);
+		if (!search) return msg.say('Could not find any results.');
+		const data = await this.fetchCaption(search.Episode, search.Timestamp);
+		const time = moment.duration(data.Frame.Timestamp).format();
+		const caption = data.Subtitles.map(sub => sub.Content).join(' ').split(' ');
+		let url = `https://frinkiac.com/meme/${data.Frame.Episode}/${data.Frame.Timestamp}.jpg`;
+		const wrapped = [''];
+		let currentLine = 0;
+		for (const word of caption) {
+			if (wrapped[currentLine].length + word.length < 26) {
+				wrapped[currentLine] += ` ${word}`;
+			} else {
+				wrapped.push(` ${word}`);
+				currentLine++;
 			}
-			url += `?b64lines=${base64(wrapped.join('\n')).replace(/\//g, '_')}`;
-			const seasonEpisode = `S${data.Episode.Season}E${data.Episode.EpisodeNumber}`;
-			return msg.say(
-				`This is from **${seasonEpisode} ("${data.Episode.Title}") @ ${time}**.`,
-				{ files: [url] }
-			);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+		url += `?b64lines=${base64(wrapped.join('\n')).replace(/\//g, '_')}`;
+		const seasonEpisode = `S${data.Episode.Season}E${data.Episode.EpisodeNumber}`;
+		return msg.say(
+			`This is from **${seasonEpisode} ("${data.Episode.Title}") @ ${time}**.`,
+			{ files: [url] }
+		);
 	}
 
 	async search(query) {

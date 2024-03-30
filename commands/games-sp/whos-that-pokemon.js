@@ -18,6 +18,7 @@ module.exports = class WhosThatPokemonCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			game: true,
 			credit: [
 				{
 					name: 'Pokémon',
@@ -84,38 +85,29 @@ module.exports = class WhosThatPokemonCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
-		try {
-			const data = await this.client.pokemon.fetch(pokemon.toString());
-			const names = data.names.map(name => name.name.toLowerCase());
-			const attachment = await this.createImage(data, true);
-			const answerAttachment = await this.createImage(data, false);
-			const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
-			if (msg.guild && connection && connection.canPlay) {
-				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3'));
-				await reactIfAble(msg, this.client.user, '🔉');
-			}
-			await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });
-			const msgs = await msg.channel.awaitMessages({
-				filter: res => res.author.id === msg.author.id,
-				max: 1,
-				time: 15000
-			});
-			if (connection && data.cry) connection.play(data.cry);
-			this.client.games.delete(msg.channel.id);
-			if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
-			const guess = msgs.first().content.toLowerCase();
-			const slug = this.client.pokemon.makeSlug(guess);
-			if (!names.includes(guess) && data.slug !== slug) {
-				return msg.reply(`Nope! It's **${data.name}**!`, { files: [answerAttachment] });
-			}
-			return msg.reply(`Nice! It's **${data.name}**!`, { files: [answerAttachment] });
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const data = await this.client.pokemon.fetch(pokemon.toString());
+		const names = data.names.map(name => name.name.toLowerCase());
+		const attachment = await this.createImage(data, true);
+		const answerAttachment = await this.createImage(data, false);
+		const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
+		if (msg.guild && connection && connection.canPlay) {
+			connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'whos-that-pokemon.mp3'));
+			await reactIfAble(msg, this.client.user, '🔉');
 		}
+		await msg.reply('**You have 15 seconds, who\'s that Pokémon?**', { files: [attachment] });
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
+			max: 1,
+			time: 15000
+		});
+		if (connection && data.cry) connection.play(data.cry);
+		if (!msgs.size) return msg.reply(`Time! It's **${data.name}**!`, { files: [answerAttachment] });
+		const guess = msgs.first().content.toLowerCase();
+		const slug = this.client.pokemon.makeSlug(guess);
+		if (!names.includes(guess) && data.slug !== slug) {
+			return msg.reply(`Nope! It's **${data.name}**!`, { files: [answerAttachment] });
+		}
+		return msg.reply(`Nice! It's **${data.name}**!`, { files: [answerAttachment] });
 	}
 
 	async createImage(pokemon, hide) {

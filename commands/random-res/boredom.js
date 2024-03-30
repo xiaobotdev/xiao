@@ -20,11 +20,7 @@ module.exports = class BoredomCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { body } = await request.get('https://www.boredapi.com/api/activity/');
-			return msg.say(`${body.activity} (${body.type})`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get('https://www.boredapi.com/api/activity/');
+		return msg.say(`${body.activity} (${body.type})`);
 	}
 };

@@ -22,6 +22,7 @@ module.exports = class GuessSongCommand extends Command {
 			guildOnly: true,
 			userPermissions: ['CONNECT', 'SPEAK'],
 			clientPermissions: ['ATTACH_FILES'],
+			game: true,
 			credit: [
 				{
 					name: 'Spotify',
@@ -51,35 +52,25 @@ module.exports = class GuessSongCommand extends Command {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
-		this.client.games.set(msg.channel.id, { name: this.name });
-		let songID;
-		try {
-			if (!this.token) await this.fetchToken();
-			const data = await this.fetchRandomSong(chart);
-			const { body: previewBody } = await request.get(data.preview);
-			connection.play(Readable.from([previewBody]));
-			await reactIfAble(msg, this.client.user, '🔉');
-			await msg.reply('**You have 30 seconds, what song is this?**');
-			const msgs = await msg.channel.awaitMessages({
-				filter: res => res.author.id === msg.author.id,
-				max: 1,
-				time: 30000
-			});
-			this.client.games.delete(msg.channel.id);
-			connection.stop();
-			if (!msgs.size) return msg.reply(`Time! It's **${data.name}** by **${data.artist}**!`);
-			const guess = msgs.first().content.toLowerCase();
-			if (!guess.includes(data.name.toLowerCase()) && !guess.includes(data.shortName.toLowerCase())) {
-				return msg.reply(`Nope! It's **${data.name}** by **${data.artist}**!`);
-			}
-			return msg.reply(`Nice! It's **${data.name}** by **${data.artist}**!`);
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Song ID: \`${songID}\`.`);
+		if (!this.token) await this.fetchToken();
+		const data = await this.fetchRandomSong(chart);
+		const { body: previewBody } = await request.get(data.preview);
+		connection.play(Readable.from([previewBody]));
+		await reactIfAble(msg, this.client.user, '🔉');
+		await msg.reply('**You have 30 seconds, what song is this?**');
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
+			max: 1,
+			time: 30000
+		});
+		connection.stop();
+		if (!msgs.size) return msg.reply(`Time! It's **${data.name}** by **${data.artist}**!`);
+		const guess = msgs.first().content.toLowerCase();
+		if (!guess.includes(data.name.toLowerCase()) && !guess.includes(data.shortName.toLowerCase())) {
+			return msg.reply(`Nope! It's **${data.name}** by **${data.artist}**!`);
 		}
+		return msg.reply(`Nice! It's **${data.name}** by **${data.artist}**!`);
 	}
 
 	async fetchCharts(playlist) {

@@ -15,6 +15,7 @@ module.exports = class CaptchaCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			game: true,
 			credit: [
 				{
 					name: 'Christoph Mueller',

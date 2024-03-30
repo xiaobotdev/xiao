@@ -1,4 +1,5 @@
 const { Client } = require('discord.js');
+const { Collection } = require('@discordjs/collection');
 const fs = require('fs');
 const path = require('path');
 const { stripIndents } = require('common-tags');
@@ -16,6 +17,7 @@ module.exports = class CommandClient extends Client {
 		this.invite = options.invite || null;
 		this.registry = new Registry(this);
 		this.dispatcher = new Dispatcher(this);
+		this.games = new Collection();
 		this.blacklist = { user: [], guild: [] };
 		this._throttlingTimeouts = new Map();
 
@@ -106,11 +108,21 @@ module.exports = class CommandClient extends Client {
 			}
 		}
 		try {
+			if (command.game) {
+				const current = this.games.get(msg.channel.id);
+				if (current) {
+					await msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
+					return;
+				}
+				this.games.set(msg.channel.id, { name: command.name });
+			}
 			const result = await command.run(msg, args);
+			if (command.game) this.games.delete(msg.channel.id);
 			command.uses++;
 			command.lastRun = new Date();
 			this.emit('commandRun', command, result, msg, args);
 		} catch (err) {
+			if (command.game) this.games.delete(msg.channel.id);
 			this.emit('commandError', command, err, msg, args);
 			await msg.reply(stripIndents`
 				An error occurred while running this command: \`${err.message}\`.

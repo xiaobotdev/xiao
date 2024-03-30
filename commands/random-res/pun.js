@@ -23,19 +23,15 @@ module.exports = class PunCommand extends Command {
 
 	async run(msg) {
 		const blacklist = msg.channel.nsfw ? blacklistFlags : blacklistFlags.concat(nsfw);
-		try {
-			const { body } = await request
-				.get('https://v2.jokeapi.dev/joke/Pun')
-				.query({ blacklistFlags: blacklist.join(',') });
-			if (body.type === 'twopart') {
-				return msg.say(stripIndents`
-					${body.setup}
-					${body.delivery}
-				`);
-			}
-			return msg.say(body.joke);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const { body } = await request
+			.get('https://v2.jokeapi.dev/joke/Pun')
+			.query({ blacklistFlags: blacklist.join(',') });
+		if (body.type === 'twopart') {
+			return msg.say(stripIndents`
+				${body.setup}
+				${body.delivery}
+			`);
 		}
+		return msg.say(body.joke);
 	}
 };

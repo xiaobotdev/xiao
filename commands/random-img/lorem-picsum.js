@@ -42,11 +42,7 @@ module.exports = class LoremPicsumCommand extends Command {
 	}
 
 	async run(msg, { width, height, seed }) {
-		try {
-			const { body } = await request.get(`https://picsum.photos/${seed ? `seed/${seed}/` : ''}${width}/${height}`);
-			return msg.say({ files: [{ attachment: body, name: `${width}x${height}.jpg` }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(`https://picsum.photos/${seed ? `seed/${seed}/` : ''}${width}/${height}`);
+		return msg.say({ files: [{ attachment: body, name: `${width}x${height}.jpg` }] });
 	}
 };

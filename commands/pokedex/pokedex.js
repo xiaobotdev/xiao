@@ -76,66 +76,62 @@ module.exports = class PokedexCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
-		try {
-			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
-			const defaultVariety = pokemon.varieties.find(variety => variety.default);
-			const typesShown = pokemon.varieties.filter(variety => {
-				if (variety.default) return true;
-				return !arrayEquals(defaultVariety.types, variety.types);
-			});
-			const feet = Math.floor(pokemon.height / 12);
-			const evoChain = pokemon.chain.data.map(pkmn => {
-				if (Array.isArray(pkmn)) {
-					return pkmn.map(pkmn2 => {
-						const found = this.client.pokemon.get(pkmn2);
-						if (found.id === pokemon.id) return `**${found.name}**`;
-						return found.name;
-					}).join('/');
-				}
-				const found = this.client.pokemon.get(pkmn);
-				if (found.id === pokemon.id) return `**${found.name}**`;
-				return found.name;
-			}).join(' -> ');
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
-				.setDescription(stripIndents`
-					**${pokemon.genus}**
-					${pokemon.entries.length ? pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)] : 'No data.'}
-				`)
-				.setThumbnail(pokemon.spriteImageURL)
-				.addField('❯ Introduced In', games[genGames[pokemon.generation]], true)
-				.addField('❯ Height', `${feet}'${Math.floor(pokemon.height) - (feet * 12)}"`, true)
-				.addField('❯ Weight', `${pokemon.weight} lbs.`, true)
-				.addField('❯ Types', typesShown.map(variety => {
-					const showParens = variety.name && typesShown.length > 1;
-					return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
-				}).join('\n'), true)
-				.addField('❯ Class', firstUpperCase(pokemon.class), true)
-				.addField('❯ Gender Rate', pokemon.genderRate.genderless
-					? 'Genderless'
-					: `♂️ ${pokemon.genderRate.male}% ♀️ ${pokemon.genderRate.female}%`, true)
-				.addField('❯ Evolution Chain', `${evoChain}${pokemon.mega ? ` -> ${this.megaEvolveEmoji}` : ''}`)
-				.addField('❯ Held Items', pokemon.heldItems.length
-					? pokemon.heldItems.map(item => `${item.data.name} (${item.rarity}%)`).join('\n')
-					: 'None');
-			if (msg.guild && pokemon.cry) {
-				const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
-				if (connection) {
-					connection.play(pokemon.cry);
-					await reactIfAble(msg, this.client.user, '🔉');
-				}
+		if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+		const defaultVariety = pokemon.varieties.find(variety => variety.default);
+		const typesShown = pokemon.varieties.filter(variety => {
+			if (variety.default) return true;
+			return !arrayEquals(defaultVariety.types, variety.types);
+		});
+		const feet = Math.floor(pokemon.height / 12);
+		const evoChain = pokemon.chain.data.map(pkmn => {
+			if (Array.isArray(pkmn)) {
+				return pkmn.map(pkmn2 => {
+					const found = this.client.pokemon.get(pkmn2);
+					if (found.id === pokemon.id) return `**${found.name}**`;
+					return found.name;
+				}).join('/');
 			}
-			return msg.channel.send({
-				embeds: [embed],
-				files: [{
-					attachment: await pokemon.generateBoxImage(),
-					name: 'box.png'
-				}]
-			});
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			const found = this.client.pokemon.get(pkmn);
+			if (found.id === pokemon.id) return `**${found.name}**`;
+			return found.name;
+		}).join(' -> ');
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setDescription(stripIndents`
+				**${pokemon.genus}**
+				${pokemon.entries.length ? pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)] : 'No data.'}
+			`)
+			.setThumbnail(pokemon.spriteImageURL)
+			.addField('❯ Introduced In', games[genGames[pokemon.generation]], true)
+			.addField('❯ Height', `${feet}'${Math.floor(pokemon.height) - (feet * 12)}"`, true)
+			.addField('❯ Weight', `${pokemon.weight} lbs.`, true)
+			.addField('❯ Types', typesShown.map(variety => {
+				const showParens = variety.name && typesShown.length > 1;
+				return `${variety.types.join('/')}${showParens ? ` (${variety.name})` : ''}`;
+			}).join('\n'), true)
+			.addField('❯ Class', firstUpperCase(pokemon.class), true)
+			.addField('❯ Gender Rate', pokemon.genderRate.genderless
+				? 'Genderless'
+				: `♂️ ${pokemon.genderRate.male}% ♀️ ${pokemon.genderRate.female}%`, true)
+			.addField('❯ Evolution Chain', `${evoChain}${pokemon.mega ? ` -> ${this.megaEvolveEmoji}` : ''}`)
+			.addField('❯ Held Items', pokemon.heldItems.length
+				? pokemon.heldItems.map(item => `${item.data.name} (${item.rarity}%)`).join('\n')
+				: 'None');
+		if (msg.guild && pokemon.cry) {
+			const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
+			if (connection) {
+				connection.play(pokemon.cry);
+				await reactIfAble(msg, this.client.user, '🔉');
+			}
 		}
+		return msg.channel.send({
+			embeds: [embed],
+			files: [{
+				attachment: await pokemon.generateBoxImage(),
+				name: 'box.png'
+			}]
+		});
 	}
 
 	get megaEvolveEmoji() {

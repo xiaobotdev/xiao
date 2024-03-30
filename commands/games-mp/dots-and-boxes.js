@@ -12,6 +12,7 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			memberName: 'dots-and-boxes',
 			description: 'Play a game of Dots and Boxes with another user.',
 			guildOnly: true,
+			game: true,
 			args: [
 				{
 					key: 'opponent',
@@ -25,113 +26,101 @@ module.exports = class DotsAndBoxesCommand extends Command {
 		if (opponent.bot) return msg.reply('Bots may not be played against.');
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		if (this.client.blacklist.user.includes(opponent.id)) return msg.reply('This user is blacklisted.');
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
-		try {
-			await msg.say(`${opponent}, do you accept this challenge?`);
-			const verification = await verify(msg.channel, opponent);
-			if (!verification) {
-				this.client.games.delete(msg.channel.id);
-				return msg.say('Looks like they declined...');
-			}
-			const board = this.generateBoard();
-			const taken = [];
-			const userOwned = [];
-			const oppoOwned = [];
-			let userTurn = true;
-			let winner = null;
-			let lastTurnTimeout = false;
-			while (taken.length < 40) {
-				const user = userTurn ? msg.author : opponent;
-				await msg.say(stripIndents`
-					${user}, which connection do you pick? Type \`end\` to forfeit.
-					_Format like \`1-2\` or \`0-5\`. Any two spaces bordering **vertical or horizontal**._
+		await msg.say(`${opponent}, do you accept this challenge?`);
+		const verification = await verify(msg.channel, opponent);
+		if (!verification) return msg.say('Looks like they declined...');
+		const board = this.generateBoard();
+		const taken = [];
+		const userOwned = [];
+		const oppoOwned = [];
+		let userTurn = true;
+		let winner = null;
+		let lastTurnTimeout = false;
+		while (taken.length < 40) {
+			const user = userTurn ? msg.author : opponent;
+			await msg.say(stripIndents`
+				${user}, which connection do you pick? Type \`end\` to forfeit.
+				_Format like \`1-2\` or \`0-5\`. Any two spaces bordering **vertical or horizontal**._
 
-					P1: ${msg.author.tag} | P2: ${opponent.tag}
-					\`\`\`
-					${this.displayBoard(board, taken, userOwned, oppoOwned)}
-					\`\`\`
-				`);
-				const filter = res => {
-					if (res.author.id !== user.id) return false;
-					const choice = res.content;
-					if (choice.toLowerCase() === 'end') return true;
-					const matched = choice.match(/([0-9]+)-([0-9]+)/);
-					if (!matched) return false;
-					let first = Number.parseInt(matched[1], 10);
-					let second = Number.parseInt(matched[2], 10);
-					if (first === second) return false;
-					if (second < first) {
-						const temp = first;
-						first = second;
-						second = temp;
-					}
-					if (first > 24 || second > 24 || first < 0 || second < 0) return false;
-					const column1 = first % 5;
-					const column2 = second % 5;
-					if (second !== first + 1 && column1 !== column2) {
-						const row1 = Math.floor(first / 5);
-						const row2 = Math.floor(second / 5);
-						if (row2 !== row1 - 1) return false;
-						return !taken.includes(`${first}-${second}`);
-					}
-					return !taken.includes(`${first}-${second}`);
-				};
-				const turn = await msg.channel.awaitMessages({
-					filter,
-					max: 1,
-					time: 60000
-				});
-				if (!turn.size) {
-					await msg.say('Sorry, time is up!');
-					if (lastTurnTimeout) {
-						winner = 'time';
-						break;
-					} else {
-						lastTurnTimeout = true;
-						userTurn = !userTurn;
-						continue;
-					}
-				}
-				const choice = turn.first().content;
-				if (choice.toLowerCase() === 'end') {
-					winner = userTurn ? opponent : msg.author;
-					break;
-				}
+				P1: ${msg.author.tag} | P2: ${opponent.tag}
+				\`\`\`
+				${this.displayBoard(board, taken, userOwned, oppoOwned)}
+				\`\`\`
+			`);
+			const filter = res => {
+				if (res.author.id !== user.id) return false;
+				const choice = res.content;
+				if (choice.toLowerCase() === 'end') return true;
 				const matched = choice.match(/([0-9]+)-([0-9]+)/);
+				if (!matched) return false;
 				let first = Number.parseInt(matched[1], 10);
 				let second = Number.parseInt(matched[2], 10);
+				if (first === second) return false;
 				if (second < first) {
 					const temp = first;
 					first = second;
 					second = temp;
 				}
-				taken.push(`${first}-${second}`);
-				const newSquares = this.calcNewSquare(taken, userOwned, oppoOwned);
-				if (newSquares.length) {
-					for (const newSquare of newSquares) {
-						if (userTurn) userOwned.push(newSquare);
-						else oppoOwned.push(newSquare);
-					}
-					if (taken.length < 40) {
-						await msg.say(`${user}, great job! Keep going until you can't make any more!`);
-					}
-				} else {
-					userTurn = !userTurn;
+				if (first > 24 || second > 24 || first < 0 || second < 0) return false;
+				const column1 = first % 5;
+				const column2 = second % 5;
+				if (second !== first + 1 && column1 !== column2) {
+					const row1 = Math.floor(first / 5);
+					const row2 = Math.floor(second / 5);
+					if (row2 !== row1 - 1) return false;
+					return !taken.includes(`${first}-${second}`);
 				}
-				if (lastTurnTimeout) lastTurnTimeout = false;
+				return !taken.includes(`${first}-${second}`);
+			};
+			const turn = await msg.channel.awaitMessages({
+				filter,
+				max: 1,
+				time: 60000
+			});
+			if (!turn.size) {
+				await msg.say('Sorry, time is up!');
+				if (lastTurnTimeout) {
+					winner = 'time';
+					break;
+				} else {
+					lastTurnTimeout = true;
+					userTurn = !userTurn;
+					continue;
+				}
 			}
-			this.client.games.delete(msg.channel.id);
-			if (winner === 'time') return msg.say('Game ended due to inactivity.');
-			winner = userOwned.length === oppoOwned.length
-				? null
-				: userOwned.length > oppoOwned.length ? msg.author : opponent;
-			return msg.say(winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...');
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			throw err;
+			const choice = turn.first().content;
+			if (choice.toLowerCase() === 'end') {
+				winner = userTurn ? opponent : msg.author;
+				break;
+			}
+			const matched = choice.match(/([0-9]+)-([0-9]+)/);
+			let first = Number.parseInt(matched[1], 10);
+			let second = Number.parseInt(matched[2], 10);
+			if (second < first) {
+				const temp = first;
+				first = second;
+				second = temp;
+			}
+			taken.push(`${first}-${second}`);
+			const newSquares = this.calcNewSquare(taken, userOwned, oppoOwned);
+			if (newSquares.length) {
+				for (const newSquare of newSquares) {
+					if (userTurn) userOwned.push(newSquare);
+					else oppoOwned.push(newSquare);
+				}
+				if (taken.length < 40) {
+					await msg.say(`${user}, great job! Keep going until you can't make any more!`);
+				}
+			} else {
+				userTurn = !userTurn;
+			}
+			if (lastTurnTimeout) lastTurnTimeout = false;
 		}
+		if (winner === 'time') return msg.say('Game ended due to inactivity.');
+		winner = userOwned.length === oppoOwned.length
+			? null
+			: userOwned.length > oppoOwned.length ? msg.author : opponent;
+		return msg.say(winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...');
 	}
 
 	calcSquare(num, taken) {

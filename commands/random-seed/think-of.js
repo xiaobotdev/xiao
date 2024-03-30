@@ -62,35 +62,31 @@ module.exports = class ThinkOfCommand extends Command {
 		}
 		const firstAvatarURL = first.displayAvatarURL({ format: 'png', size: 512 });
 		const secondAvatarURL = second.displayAvatarURL({ format: 'png', size: 512 });
-		try {
-			const firstAvatarData = await request.get(firstAvatarURL);
-			const firstAvatar = await loadImage(firstAvatarData.body);
-			const secondAvatarData = await request.get(secondAvatarURL);
-			const secondAvatar = await loadImage(secondAvatarData.body);
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'friendship.png'));
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(firstAvatar, 70, 56, 400, 400);
-			ctx.drawImage(secondAvatar, 730, 56, 400, 400);
-			ctx.drawImage(base, 0, 0);
-			ctx.textAlign = 'center';
-			ctx.textBaseline = 'top';
-			ctx.fillStyle = 'green';
-			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(40);
-			ctx.fillText('~Xiao\'s Thought Reader~', 600, 15);
-			ctx.fillStyle = 'white';
-			ctx.fillText(first.username, 270, 448);
-			ctx.fillText(second.username, 930, 448);
-			ctx.fillStyle = thought.color;
-			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(40);
-			ctx.fillText('thinks they are', 600, 230);
-			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(60);
-			ctx.fillText(thought.text, 600, 296);
-			ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
-			ctx.fillText(thought.emoji, 600, 100);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'think-of.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const firstAvatarData = await request.get(firstAvatarURL);
+		const firstAvatar = await loadImage(firstAvatarData.body);
+		const secondAvatarData = await request.get(secondAvatarURL);
+		const secondAvatar = await loadImage(secondAvatarData.body);
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'friendship.png'));
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(firstAvatar, 70, 56, 400, 400);
+		ctx.drawImage(secondAvatar, 730, 56, 400, 400);
+		ctx.drawImage(base, 0, 0);
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'top';
+		ctx.fillStyle = 'green';
+		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(40);
+		ctx.fillText('~Xiao\'s Thought Reader~', 600, 15);
+		ctx.fillStyle = 'white';
+		ctx.fillText(first.username, 270, 448);
+		ctx.fillText(second.username, 930, 448);
+		ctx.fillStyle = thought.color;
+		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(40);
+		ctx.fillText('thinks they are', 600, 230);
+		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(60);
+		ctx.fillText(thought.text, 600, 296);
+		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
+		ctx.fillText(thought.emoji, 600, 100);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'think-of.png' }] });
 	}
 };

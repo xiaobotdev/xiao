@@ -18,6 +18,7 @@ module.exports = class ConnectFourCommand extends Command {
 			group: 'games-mp',
 			memberName: 'connect-four',
 			description: 'Play a game of Connect Four with another user or the AI.',
+			game: true,
 			credit: [
 				{
 					name: 'Hasbro',
@@ -59,119 +60,107 @@ module.exports = class ConnectFourCommand extends Command {
 	async run(msg, { opponent, color }) {
 		if (opponent.id === msg.author.id) return msg.reply('You may not play against yourself.');
 		if (this.client.blacklist.user.includes(opponent.id)) return msg.reply('This user is blacklisted.');
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
 		const playerOneEmoji = color;
 		let playerTwoEmoji = color === colors.yellow ? colors.red : colors.yellow;
-		try {
-			const available = Object.keys(colors).filter(clr => color !== colors[clr]);
-			if (opponent.bot) {
-				playerTwoEmoji = colors[available[Math.floor(Math.random() * available.length)]];
-			} else {
-				await msg.say(`${opponent}, do you accept this challenge?`);
-				const verification = await verify(msg.channel, opponent);
-				if (!verification) {
-					this.client.games.delete(msg.channel.id);
-					return msg.say('Looks like they declined...');
-				}
-				await msg.say(
-					`${opponent}, what color do you want to be? Either an emoji or one of ${list(available, 'or')}.`
-				);
-				const filter = res => {
-					if (res.author.id !== opponent.id) return false;
-					if (res.content === blankEmoji) return false;
-					const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(res.content);
-					const hasCustom = res.content.match(customEmojiRegex);
-					if (hasCustom && msg.guild && !msg.guild.emojis.cache.has(hasCustom[2])) return false;
-					return (hasCustom && msg.guild) || hasEmoji || available.includes(res.content.toLowerCase());
-				};
-				const p2Color = await msg.channel.awaitMessages({
-					filter,
-					max: 1,
-					time: 30000
-				});
-				if (p2Color.size) {
-					const choice = p2Color.first().content.toLowerCase();
-					const hasCustom = choice.match(customEmojiRegex);
-					if (hasCustom && msg.guild) {
-						playerTwoEmoji = msg.guild.emojis.cache.get(hasCustom[2]).toString();
-					} else {
-						playerTwoEmoji = colors[choice] || choice;
-					}
+		const available = Object.keys(colors).filter(clr => color !== colors[clr]);
+		if (opponent.bot) {
+			playerTwoEmoji = colors[available[Math.floor(Math.random() * available.length)]];
+		} else {
+			await msg.say(`${opponent}, do you accept this challenge?`);
+			const verification = await verify(msg.channel, opponent);
+			if (!verification) return msg.say('Looks like they declined...');
+			await msg.say(
+				`${opponent}, what color do you want to be? Either an emoji or one of ${list(available, 'or')}.`
+			);
+			const filter = res => {
+				if (res.author.id !== opponent.id) return false;
+				if (res.content === blankEmoji) return false;
+				const hasEmoji = new RegExp(`^(?:${emojiRegex().source})$`).test(res.content);
+				const hasCustom = res.content.match(customEmojiRegex);
+				if (hasCustom && msg.guild && !msg.guild.emojis.cache.has(hasCustom[2])) return false;
+				return (hasCustom && msg.guild) || hasEmoji || available.includes(res.content.toLowerCase());
+			};
+			const p2Color = await msg.channel.awaitMessages({
+				filter,
+				max: 1,
+				time: 30000
+			});
+			if (p2Color.size) {
+				const choice = p2Color.first().content.toLowerCase();
+				const hasCustom = choice.match(customEmojiRegex);
+				if (hasCustom && msg.guild) {
+					playerTwoEmoji = msg.guild.emojis.cache.get(hasCustom[2]).toString();
+				} else {
+					playerTwoEmoji = colors[choice] || choice;
 				}
 			}
-			const AIEngine = new Connect4AI();
-			const board = this.generateBoard();
-			let userTurn = true;
-			let winner = null;
-			const colLevels = [5, 5, 5, 5, 5, 5, 5];
-			let lastMove = 'None';
-			while (!winner && board.some(row => row.includes(null))) {
-				const user = userTurn ? msg.author : opponent;
-				const sign = userTurn ? 'user' : 'oppo';
-				let i;
-				if (opponent.bot && !userTurn) {
+		}
+		const AIEngine = new Connect4AI();
+		const board = this.generateBoard();
+		let userTurn = true;
+		let winner = null;
+		const colLevels = [5, 5, 5, 5, 5, 5, 5];
+		let lastMove = 'None';
+		while (!winner && board.some(row => row.includes(null))) {
+			const user = userTurn ? msg.author : opponent;
+			const sign = userTurn ? 'user' : 'oppo';
+			let i;
+			if (opponent.bot && !userTurn) {
+				i = AIEngine.playAI('hard');
+				lastMove = i + 1;
+			} else {
+				const emoji = userTurn ? playerOneEmoji : playerTwoEmoji;
+				await msg.say(stripIndents`
+					${emoji} ${user}, which column do you pick? Type \`end\` to forfeit.
+					Can't think of a move? Use \`play for me\`.
+					${opponent.bot ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
+
+					${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
+					${nums.join('')}
+				`);
+				const pickFilter = res => {
+					if (res.author.id !== user.id) return false;
+					const choice = res.content;
+					if (choice.toLowerCase() === 'end') return true;
+					if (choice.toLowerCase() === 'play for me') return true;
+					const j = Number.parseInt(choice, 10) - 1;
+					return board[colLevels[j]] && board[colLevels[j]][j] !== undefined;
+				};
+				const turn = await msg.channel.awaitMessages({
+					filter: pickFilter,
+					max: 1,
+					time: 60000
+				});
+				const choice = turn.size ? turn.first().content : null;
+				if (!choice) {
+					await msg.say('Sorry, time is up! I\'ll pick their move for them.');
+					i = AIEngine.playAI('hard');
+					lastMove = i + 1;
+				} else if (choice.toLowerCase() === 'end') {
+					winner = userTurn ? opponent : msg.author;
+					break;
+				} else if (choice.toLowerCase() === 'play for me') {
 					i = AIEngine.playAI('hard');
 					lastMove = i + 1;
 				} else {
-					const emoji = userTurn ? playerOneEmoji : playerTwoEmoji;
-					await msg.say(stripIndents`
-						${emoji} ${user}, which column do you pick? Type \`end\` to forfeit.
-						Can't think of a move? Use \`play for me\`.
-						${opponent.bot ? `I placed mine in **${lastMove}**.` : `Previous Move: **${lastMove}**`}
-
-						${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
-						${nums.join('')}
-					`);
-					const pickFilter = res => {
-						if (res.author.id !== user.id) return false;
-						const choice = res.content;
-						if (choice.toLowerCase() === 'end') return true;
-						if (choice.toLowerCase() === 'play for me') return true;
-						const j = Number.parseInt(choice, 10) - 1;
-						return board[colLevels[j]] && board[colLevels[j]][j] !== undefined;
-					};
-					const turn = await msg.channel.awaitMessages({
-						filter: pickFilter,
-						max: 1,
-						time: 60000
-					});
-					const choice = turn.size ? turn.first().content : null;
-					if (!choice) {
-						await msg.say('Sorry, time is up! I\'ll pick their move for them.');
-						i = AIEngine.playAI('hard');
-						lastMove = i + 1;
-					} else if (choice.toLowerCase() === 'end') {
-						winner = userTurn ? opponent : msg.author;
-						break;
-					} else if (choice.toLowerCase() === 'play for me') {
-						i = AIEngine.playAI('hard');
-						lastMove = i + 1;
-					} else {
-						i = Number.parseInt(choice, 10) - 1;
-						AIEngine.play(i);
-						lastMove = i + 1;
-					}
+					i = Number.parseInt(choice, 10) - 1;
+					AIEngine.play(i);
+					lastMove = i + 1;
 				}
-				board[colLevels[i]][i] = sign;
-				colLevels[i]--;
-				if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
-				userTurn = !userTurn;
 			}
-			this.client.games.delete(msg.channel.id);
-			if (winner === 'time') return msg.say('Game ended due to inactivity.');
-			return msg.say(stripIndents`
+			board[colLevels[i]][i] = sign;
+			colLevels[i]--;
+			if (this.verifyWin(board)) winner = userTurn ? msg.author : opponent;
+			userTurn = !userTurn;
+		}
+		if (winner === 'time') return msg.say('Game ended due to inactivity.');
+		return msg.say(stripIndents`
 				${winner ? `Congrats, ${winner}!` : 'Looks like it\'s a draw...'}
 				Final Move: **${lastMove}**
 
 				${this.displayBoard(board, playerOneEmoji, playerTwoEmoji)}
 				${nums.join('')}
 			`);
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			throw err;
-		}
 	}
 
 	checkLine(a, b, c, d) {

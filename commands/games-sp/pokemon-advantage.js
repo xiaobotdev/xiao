@@ -19,6 +19,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			game: true,
 			credit: [
 				{
 					name: 'Pokémon',
@@ -64,44 +65,35 @@ module.exports = class PokemonAdvantageCommand extends Command {
 	}
 
 	async run(msg) {
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
-		try {
-			const num1 = Math.floor(Math.random() * (this.client.pokemon.pokemonCount + 1));
-			const pkmn1 = await this.client.pokemon.fetch(num1);
-			const num2 = Math.floor(Math.random() * (this.client.pokemon.pokemonCount + 1));
-			const pkmn2 = await this.client.pokemon.fetch(num2);
-			await pkmn1.fetchDefaultVariety();
-			await pkmn2.fetchDefaultVariety();
-			const attachment = await this.createImage(pkmn1, pkmn2, null);
-			const answer = this.calculateAdvantage(pkmn1, pkmn2);
-			const answerAttachment = await this.createImage(pkmn1, pkmn2, answer);
-			await msg.reply(stripIndents`
-				**You have 15 seconds, who\'s got the type advantage?**
-				_If the Pokémon are evenly matched, type \`even\`._
-			`, { files: [attachment] });
-			const msgs = await msg.channel.awaitMessages({
-				filter: res => res.author.id === msg.author.id,
-				max: 1,
-				time: 15000
-			});
-			this.client.games.delete(msg.channel.id);
-			if (!msgs.size) return msg.reply(`Time! It's **${answer.name}**!`, { files: [answerAttachment] });
-			const guess = msgs.first().content.toLowerCase();
-			const slug = this.client.pokemon.makeSlug(guess);
-			if (answer === true) {
-				if (guess === 'even') return msg.reply('Nice! These two are even!', { files: [answerAttachment] });
-				return msg.reply('Nope! These two are even!', { files: [answerAttachment] });
-			}
-			if (!answer.names.includes(guess) && answer.slug !== slug) {
-				return msg.reply(`Nope! It's **${answer.name}**!`, { files: [answerAttachment] });
-			}
-			return msg.reply(`Nice! It's **${answer.name}**!`, { files: [answerAttachment] });
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const num1 = Math.floor(Math.random() * (this.client.pokemon.pokemonCount + 1));
+		const pkmn1 = await this.client.pokemon.fetch(num1);
+		const num2 = Math.floor(Math.random() * (this.client.pokemon.pokemonCount + 1));
+		const pkmn2 = await this.client.pokemon.fetch(num2);
+		await pkmn1.fetchDefaultVariety();
+		await pkmn2.fetchDefaultVariety();
+		const attachment = await this.createImage(pkmn1, pkmn2, null);
+		const answer = this.calculateAdvantage(pkmn1, pkmn2);
+		const answerAttachment = await this.createImage(pkmn1, pkmn2, answer);
+		await msg.reply(stripIndents`
+			**You have 15 seconds, who\'s got the type advantage?**
+			_If the Pokémon are evenly matched, type \`even\`._
+		`, { files: [attachment] });
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
+			max: 1,
+			time: 15000
+		});
+		if (!msgs.size) return msg.reply(`Time! It's **${answer.name}**!`, { files: [answerAttachment] });
+		const guess = msgs.first().content.toLowerCase();
+		const slug = this.client.pokemon.makeSlug(guess);
+		if (answer === true) {
+			if (guess === 'even') return msg.reply('Nice! These two are even!', { files: [answerAttachment] });
+			return msg.reply('Nope! These two are even!', { files: [answerAttachment] });
 		}
+		if (!answer.names.includes(guess) && answer.slug !== slug) {
+			return msg.reply(`Nope! It's **${answer.name}**!`, { files: [answerAttachment] });
+		}
+		return msg.reply(`Nice! It's **${answer.name}**!`, { files: [answerAttachment] });
 	}
 
 	async createImage(pokemon1, pokemon2, winner) {

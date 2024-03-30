@@ -21,17 +21,13 @@ module.exports = class BirdCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { body } = await request
-				.get('https://shibe.online/api/birds')
-				.query({
-					count: 1,
-					urls: true,
-					httpsUrls: true
-				});
-			return msg.say({ files: [body[0]] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('https://shibe.online/api/birds')
+			.query({
+				count: 1,
+				urls: true,
+				httpsUrls: true
+			});
+		return msg.say({ files: [body[0]] });
 	}
 };

@@ -38,31 +38,19 @@ module.exports = class XKCDCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const current = await request.get('https://xkcd.com/info.0.json');
-			if (query === 'today') {
-				const embed = new MessageEmbed()
-					.setTitle(`${current.body.num} - ${current.body.title}`)
-					.setColor(0x9797FF)
-					.setURL(`https://xkcd.com/${current.body.num}`)
-					.setImage(current.body.img)
-					.setFooter(current.body.alt);
-				return msg.embed(embed);
-			}
-			if (query === 'random') {
-				const random = Math.floor(Math.random() * current.body.num) + 1;
-				const { body } = await request.get(`https://xkcd.com/${random}/info.0.json`);
-				const embed = new MessageEmbed()
-					.setTitle(`${body.num} - ${body.title}`)
-					.setColor(0x9797FF)
-					.setURL(`https://xkcd.com/${body.num}`)
-					.setImage(body.img)
-					.setFooter(body.alt);
-				return msg.embed(embed);
-			}
-			const choice = Number.parseInt(query, 10);
-			if (current.body.num < choice) return msg.say('Could not find any results.');
-			const { body } = await request.get(`https://xkcd.com/${choice}/info.0.json`);
+		const current = await request.get('https://xkcd.com/info.0.json');
+		if (query === 'today') {
+			const embed = new MessageEmbed()
+				.setTitle(`${current.body.num} - ${current.body.title}`)
+				.setColor(0x9797FF)
+				.setURL(`https://xkcd.com/${current.body.num}`)
+				.setImage(current.body.img)
+				.setFooter(current.body.alt);
+			return msg.embed(embed);
+		}
+		if (query === 'random') {
+			const random = Math.floor(Math.random() * current.body.num) + 1;
+			const { body } = await request.get(`https://xkcd.com/${random}/info.0.json`);
 			const embed = new MessageEmbed()
 				.setTitle(`${body.num} - ${body.title}`)
 				.setColor(0x9797FF)
@@ -70,8 +58,16 @@ module.exports = class XKCDCommand extends Command {
 				.setImage(body.img)
 				.setFooter(body.alt);
 			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+		const choice = Number.parseInt(query, 10);
+		if (current.body.num < choice) return msg.say('Could not find any results.');
+		const { body } = await request.get(`https://xkcd.com/${choice}/info.0.json`);
+		const embed = new MessageEmbed()
+			.setTitle(`${body.num} - ${body.title}`)
+			.setColor(0x9797FF)
+			.setURL(`https://xkcd.com/${body.num}`)
+			.setImage(body.img)
+			.setFooter(body.alt);
+		return msg.embed(embed);
 	}
 };

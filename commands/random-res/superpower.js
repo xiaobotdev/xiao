@@ -26,16 +26,12 @@ module.exports = class SuperpowerCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const id = await this.random();
-			const article = await this.fetchSuperpower(id);
-			return msg.reply(stripIndents`
-				Your superpower is... **${article.title}**!
-				_${article.abstract.split('1')[0].trim()}_
-			`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const id = await this.random();
+		const article = await this.fetchSuperpower(id);
+		return msg.reply(stripIndents`
+			Your superpower is... **${article.title}**!
+			_${article.abstract.split('1')[0].trim()}_
+		`);
 	}
 
 	async random() {

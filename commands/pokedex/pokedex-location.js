@@ -54,28 +54,24 @@ module.exports = class PokedexLocationCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
-		try {
-			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
-			if (!pokemon.encounters) await pokemon.fetchEncounters();
-			const desc = pokemon.encounters.length
-				? pokemon.encounters
-					.map(location => `${location.name} (${location.versions.map(v => versions[v]).join('/')})`)
-					.join('\n')
-				: 'Location Unknown';
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
-				.setDescription(desc)
-				.setThumbnail(pokemon.spriteImageURL);
-			return msg.channel.send({
-				embeds: [embed],
-				files: [{
-					attachment: await pokemon.generateBoxImage(),
-					name: 'box.png'
-				}]
-			});
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+		if (!pokemon.encounters) await pokemon.fetchEncounters();
+		const desc = pokemon.encounters.length
+			? pokemon.encounters
+				.map(location => `${location.name} (${location.versions.map(v => versions[v]).join('/')})`)
+				.join('\n')
+			: 'Location Unknown';
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setDescription(desc)
+			.setThumbnail(pokemon.spriteImageURL);
+		return msg.channel.send({
+			embeds: [embed],
+			files: [{
+				attachment: await pokemon.generateBoxImage(),
+				name: 'box.png'
+			}]
+		});
 	}
 };

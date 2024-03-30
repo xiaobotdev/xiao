@@ -32,16 +32,12 @@ module.exports = class PokedexAbilityCommand extends Command {
 	}
 
 	async run(msg, { ability }) {
-		try {
-			const data = await this.client.pokemon.abilities.fetch(ability);
-			if (!data) return msg.say('Could not find any results.');
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setTitle(data.name)
-				.setDescription(data.description || 'No description available.');
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const data = await this.client.pokemon.abilities.fetch(ability);
+		if (!data) return msg.say('Could not find any results.');
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setTitle(data.name)
+			.setDescription(data.description || 'No description available.');
+		return msg.embed(embed);
 	}
 };

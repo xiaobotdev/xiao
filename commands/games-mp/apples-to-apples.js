@@ -14,6 +14,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 			memberName: 'apples-to-apples',
 			description: 'Compete to see who can come up with the best card to match an adjective.',
 			guildOnly: true,
+			game: true,
 			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
 			credit: [
 				{
@@ -52,17 +53,10 @@ module.exports = class ApplesToApplesCommand extends Command {
 
 	async run(msg, { maxPts, flags }) {
 		const bot = flags.bot || flags.b;
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id,
-			new Game(this.client, this.name, msg.channel, redCards, greenCards, 'Green'));
-		const game = this.client.games.get(msg.channel.id);
+		const game = new Game(this.client, this.name, msg.channel, redCards, greenCards, 'Green');
 		try {
 			const awaitedPlayers = await game.awaitPlayers(msg, bot);
-			if (!awaitedPlayers) {
-				this.client.games.delete(msg.channel.id);
-				return msg.say('Game could not be started...');
-			}
+			if (!awaitedPlayers) return msg.say('Game could not be started...');
 			game.createJoinLeaveCollector(msg.channel, game);
 			while (!game.winner) {
 				const czar = game.changeCzar();
@@ -133,13 +127,11 @@ module.exports = class ApplesToApplesCommand extends Command {
 				}
 			}
 			game.stopJoinLeaveCollector();
-			this.client.games.delete(msg.channel.id);
 			if (!game.winner) return msg.say('See you next time!');
 			return msg.say(`And the winner is... ${game.winner}! Great job!`);
 		} catch (err) {
 			game.stopJoinLeaveCollector();
-			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

@@ -30,19 +30,15 @@ module.exports = class NameCommand extends Command {
 	}
 
 	async run(msg, { gender }) {
-		try {
-			const { body } = await request
-				.get('https://randomuser.me/api/')
-				.query({
-					inc: 'name',
-					noinfo: '',
-					gender: gender === 'both' ? '' : gender,
-					nat: 'AU,US,CA,GB'
-				});
-			const data = body.results[0].name;
-			return msg.say(`${data.first} ${data.last}`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('https://randomuser.me/api/')
+			.query({
+				inc: 'name',
+				noinfo: '',
+				gender: gender === 'both' ? '' : gender,
+				nat: 'AU,US,CA,GB'
+			});
+		const data = body.results[0].name;
+		return msg.say(`${data.first} ${data.last}`);
 	}
 };

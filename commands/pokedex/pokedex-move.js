@@ -32,22 +32,18 @@ module.exports = class PokedexMoveCommand extends Command {
 	}
 
 	async run(msg, { move }) {
-		try {
-			const data = await this.client.pokemon.moves.fetch(move);
-			if (!data) return msg.say('Could not find any results.');
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setTitle(data.name)
-				.setDescription(data.description ? data.cleanDescription : 'No description available.')
-				.addField('❯ Accuracy', `${data.accuracy}%`, true)
-				.addField('❯ Power', data.power.toString() || '???', true)
-				.addField('❯ PP', data.pp.toString(), true)
-				.addField('❯ Type', data.type.toString(), true)
-				.addField('❯ Contest Type', data.contestType || 'N/A', true)
-				.addField('❯ Class', data.class, true);
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const data = await this.client.pokemon.moves.fetch(move);
+		if (!data) return msg.say('Could not find any results.');
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setTitle(data.name)
+			.setDescription(data.description ? data.cleanDescription : 'No description available.')
+			.addField('❯ Accuracy', `${data.accuracy}%`, true)
+			.addField('❯ Power', data.power.toString() || '???', true)
+			.addField('❯ PP', data.pp.toString(), true)
+			.addField('❯ Type', data.type.toString(), true)
+			.addField('❯ Contest Type', data.contestType || 'N/A', true)
+			.addField('❯ Class', data.class, true);
+		return msg.embed(embed);
 	}
 };

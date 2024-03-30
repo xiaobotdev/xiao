@@ -46,10 +46,6 @@ module.exports = class PokedexImageCommand extends Command {
 	}
 
 	run(msg, { pokemon }) {
-		try {
-			return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, { files: [pokemon.spriteImageURL] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, { files: [pokemon.spriteImageURL] });
 	}
 };

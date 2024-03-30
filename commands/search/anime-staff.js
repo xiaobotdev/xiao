@@ -91,31 +91,27 @@ module.exports = class AnimeStaffCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const id = await this.search(query);
-			if (!id) return msg.say('Could not find any results.');
-			const staff = await this.fetchStaff(id);
-			const embed = new MessageEmbed()
-				.setColor(0x02A9FF)
-				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setURL(staff.siteUrl)
-				.setThumbnail(staff.image.large || staff.image.medium || null)
-				.setTitle(`${staff.name.first || ''}${staff.name.last ? ` ${staff.name.last}` : ''}`)
-				.setDescription(staff.description ? cleanAnilistHTML(staff.description, false) : 'No description.')
-				.addField('❯ Voice Roles',
-					staff.characterMedia.edges.length ? trimArray(staff.characterMedia.edges.map(edge => {
-						const title = edge.node.title.english || edge.node.title.romaji;
-						return embedURL(`${title} (${roles[edge.characterRole]})`, edge.node.siteUrl);
-					}), 5).join(', ') : 'None')
-				.addField('❯ Production Roles',
-					staff.staffMedia.edges.length ? trimArray(staff.staffMedia.edges.map(edge => {
-						const title = edge.node.title.english || edge.node.title.romaji;
-						return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
-					}), 5).join(', ') : 'None');
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const id = await this.search(query);
+		if (!id) return msg.say('Could not find any results.');
+		const staff = await this.fetchStaff(id);
+		const embed = new MessageEmbed()
+			.setColor(0x02A9FF)
+			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setURL(staff.siteUrl)
+			.setThumbnail(staff.image.large || staff.image.medium || null)
+			.setTitle(`${staff.name.first || ''}${staff.name.last ? ` ${staff.name.last}` : ''}`)
+			.setDescription(staff.description ? cleanAnilistHTML(staff.description, false) : 'No description.')
+			.addField('❯ Voice Roles',
+				staff.characterMedia.edges.length ? trimArray(staff.characterMedia.edges.map(edge => {
+					const title = edge.node.title.english || edge.node.title.romaji;
+					return embedURL(`${title} (${roles[edge.characterRole]})`, edge.node.siteUrl);
+				}), 5).join(', ') : 'None')
+			.addField('❯ Production Roles',
+				staff.staffMedia.edges.length ? trimArray(staff.staffMedia.edges.map(edge => {
+					const title = edge.node.title.english || edge.node.title.romaji;
+					return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
+				}), 5).join(', ') : 'None');
+		return msg.embed(embed);
 	}
 
 	async search(query) {

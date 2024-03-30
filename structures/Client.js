@@ -34,7 +34,6 @@ module.exports = class XiaoClient extends CommandClient {
 		this.redis = Redis ? Redis.db : null;
 		this.timers = new TimerManager(this);
 		this.pokemon = new PokemonStore();
-		this.games = new Collection();
 		this.dispatchers = new Map();
 		this.cleverbots = new Map();
 		this.phone = new PhoneManager(this);

@@ -103,34 +103,30 @@ module.exports = class MangaCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const id = await this.search(query);
-			if (!id) return msg.say('Could not find any results.');
-			const manga = await this.fetchManga(id);
-			if (!this.personalList) await this.fetchPersonalList();
-			const entry = this.personalList.find(ma => ma.mediaId === id);
-			const malScore = await this.fetchMALScore(manga.idMal);
-			const malURL = `https://myanimelist.net/manga/${manga.idMal}`;
-			const embed = new MessageEmbed()
-				.setColor(0x02A9FF)
-				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setURL(manga.siteUrl)
-				.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
-				.setTitle(manga.title.english || manga.title.romaji)
-				.setDescription(manga.description ? cleanAnilistHTML(manga.description) : 'No description.')
-				.addField('❯ Status', statuses[manga.status], true)
-				.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
-				.addField('❯ Year', manga.startDate.year?.toString() || '???', true)
-				.addField('❯ Average Score', manga.averageScore ? `${manga.averageScore}%` : '???', true)
-				.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
-				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
-				.addField('❯ External Links', manga.externalLinks.length
-					? manga.externalLinks.map(link => `[${link.site}](${link.url})`).join(', ')
-					: 'None');
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const id = await this.search(query);
+		if (!id) return msg.say('Could not find any results.');
+		const manga = await this.fetchManga(id);
+		if (!this.personalList) await this.fetchPersonalList();
+		const entry = this.personalList.find(ma => ma.mediaId === id);
+		const malScore = await this.fetchMALScore(manga.idMal);
+		const malURL = `https://myanimelist.net/manga/${manga.idMal}`;
+		const embed = new MessageEmbed()
+			.setColor(0x02A9FF)
+			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setURL(manga.siteUrl)
+			.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
+			.setTitle(manga.title.english || manga.title.romaji)
+			.setDescription(manga.description ? cleanAnilistHTML(manga.description) : 'No description.')
+			.addField('❯ Status', statuses[manga.status], true)
+			.addField('❯ Chapters / Volumes', `${manga.chapters || '???'}/${manga.volumes || '???'}`, true)
+			.addField('❯ Year', manga.startDate.year?.toString() || '???', true)
+			.addField('❯ Average Score', manga.averageScore ? `${manga.averageScore}%` : '???', true)
+			.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
+			.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
+			.addField('❯ External Links', manga.externalLinks.length
+				? manga.externalLinks.map(link => `[${link.site}](${link.url})`).join(', ')
+				: 'None');
+		return msg.embed(embed);
 	}
 
 	async search(query) {

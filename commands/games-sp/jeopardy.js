@@ -16,6 +16,7 @@ module.exports = class JeopardyCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
+			game: true,
 			credit: [
 				{
 					name: 'jService',
@@ -38,39 +39,30 @@ module.exports = class JeopardyCommand extends Command {
 	}
 
 	async run(msg) {
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		try {
-			this.client.games.set(msg.channel.id, { name: this.name });
-			const question = await this.fetchQuestion();
-			const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
-			const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
-			let playing = false;
-			if (msg.guild && connection && connection.canPlay) {
-				playing = true;
-				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
-				await reactIfAble(msg, this.client.user, '🔉');
-			}
-			const category = question.category ? question.category.title.toUpperCase() : '';
-			await msg.reply(`${category ? `The category is: **${category}**. ` : ''}30 seconds, good luck.`, {
-				files: [{ attachment: clueCard, name: 'clue-card.png' }]
-			});
-			const msgs = await msg.channel.awaitMessages({
-				filter: res => res.author.id === msg.author.id,
-				max: 1,
-				time: 30000
-			});
-			if (playing) connection.stop();
-			const answer = question.answer.replace(/<\/?i>/gi, '*').replace(/\(|\)/g, '');
-			this.client.games.delete(msg.channel.id);
-			if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);
-			const win = msgs.first().content.toLowerCase() === answer.toLowerCase();
-			if (!win) return msg.reply(`The answer was **${answer}**.`);
-			return msg.reply(`The answer was **${answer}**. Good job!`);
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const question = await this.fetchQuestion();
+		const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
+		const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
+		let playing = false;
+		if (msg.guild && connection && connection.canPlay) {
+			playing = true;
+			connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
+			await reactIfAble(msg, this.client.user, '🔉');
 		}
+		const category = question.category ? question.category.title.toUpperCase() : '';
+		await msg.reply(`${category ? `The category is: **${category}**. ` : ''}30 seconds, good luck.`, {
+			files: [{ attachment: clueCard, name: 'clue-card.png' }]
+		});
+		const msgs = await msg.channel.awaitMessages({
+			filter: res => res.author.id === msg.author.id,
+			max: 1,
+			time: 30000
+		});
+		if (playing) connection.stop();
+		const answer = question.answer.replace(/<\/?i>/gi, '*').replace(/\(|\)/g, '');
+		if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);
+		const win = msgs.first().content.toLowerCase() === answer.toLowerCase();
+		if (!win) return msg.reply(`The answer was **${answer}**.`);
+		return msg.reply(`The answer was **${answer}**. Good job!`);
 	}
 
 	async fetchQuestion() {
