@@ -32,18 +32,14 @@ module.exports = class DistortCommand extends Command {
 	}
 
 	async run(msg, { level, image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(data.width, data.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(data, 0, 0);
-			distort(ctx, level, 0, 0, data.width, data.height);
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'distort.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(data.width, data.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(data, 0, 0);
+		distort(ctx, level, 0, 0, data.width, data.height);
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'distort.png' }] });
 	}
 };

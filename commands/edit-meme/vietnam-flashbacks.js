@@ -35,22 +35,18 @@ module.exports = class VietnamFlashbacksCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'vietnam-flashbacks.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(data.width, data.height);
-			const ctx = canvas.getContext('2d');
-			const ratio = base.width / base.height;
-			const width = Math.round(data.height * ratio);
-			ctx.drawImage(base, (data.width / 2) - (width / 2), 0, width, data.height);
-			ctx.globalAlpha = 0.675;
-			ctx.drawImage(data, 0, 0);
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'vietnam-flashbacks.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'vietnam-flashbacks.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(data.width, data.height);
+		const ctx = canvas.getContext('2d');
+		const ratio = base.width / base.height;
+		const width = Math.round(data.height * ratio);
+		ctx.drawImage(base, (data.width / 2) - (width / 2), 0, width, data.height);
+		ctx.globalAlpha = 0.675;
+		ctx.drawImage(data, 0, 0);
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'vietnam-flashbacks.png' }] });
 	}
 };

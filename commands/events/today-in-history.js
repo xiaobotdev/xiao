@@ -56,7 +56,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 			return msg.embed(embed);
 		} catch (err) {
 			if (err.status === 404 || err.status === 500) return msg.say('Invalid date.');
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

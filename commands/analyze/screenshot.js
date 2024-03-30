@@ -47,7 +47,7 @@ module.exports = class ScreenshotCommand extends Command {
 			return msg.say({ files: [{ attachment: body, name: 'screenshot.png' }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results. Invalid URL?');
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

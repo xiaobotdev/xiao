@@ -29,15 +29,11 @@ module.exports = class IsItDownCommand extends Command {
 	async run(msg, { url }) {
 		const { type, domain, topLevelDomains } = this.client.parseDomain(url.hostname);
 		if (type !== this.client.ParseResultType.Listed) return msg.reply('This domain is not supported.');
-		try {
-			const { text } = await request
-				.post('https://www.isitdownrightnow.com/check.php')
-				.query({ domain: `${domain}.${topLevelDomains.join('.')}` });
-			const down = text.includes('div class="statusdown"');
-			if (!down) return msg.reply('👍 This site is up and running.');
-			return msg.reply('👎 Looks like this site is down for everyone...');
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { text } = await request
+			.post('https://www.isitdownrightnow.com/check.php')
+			.query({ domain: `${domain}.${topLevelDomains.join('.')}` });
+		const down = text.includes('div class="statusdown"');
+		if (!down) return msg.reply('👍 This site is up and running.');
+		return msg.reply('👎 Looks like this site is down for everyone...');
 	}
 };

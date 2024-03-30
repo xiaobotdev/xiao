@@ -59,29 +59,25 @@ module.exports = class SpotifyNowPlayingCommand extends Command {
 	}
 
 	async run(msg, { name, artist, image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'spotify-now-playing.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, base.width, base.height);
-			const height = 504 / data.width;
-			ctx.drawImage(data, 66, 132, 504, height * data.height);
-			ctx.drawImage(base, 0, 0);
-			ctx.textBaseline = 'top';
-			ctx.textAlign = 'center';
-			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(25);
-			ctx.fillStyle = 'white';
-			ctx.fillText(name, base.width / 2, 685);
-			ctx.fillStyle = '#bdbec2';
-			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
-			ctx.fillText(artist, base.width / 2, 720);
-			ctx.fillText('Xiao\'s Picks', base.width / 2, 65);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spotify-now-playing.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'spotify-now-playing.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = 'white';
+		ctx.fillRect(0, 0, base.width, base.height);
+		const height = 504 / data.width;
+		ctx.drawImage(data, 66, 132, 504, height * data.height);
+		ctx.drawImage(base, 0, 0);
+		ctx.textBaseline = 'top';
+		ctx.textAlign = 'center';
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(25);
+		ctx.fillStyle = 'white';
+		ctx.fillText(name, base.width / 2, 685);
+		ctx.fillStyle = '#bdbec2';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
+		ctx.fillText(artist, base.width / 2, 720);
+		ctx.fillText('Xiao\'s Picks', base.width / 2, 65);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spotify-now-playing.png' }] });
 	}
 };

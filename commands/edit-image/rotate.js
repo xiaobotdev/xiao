@@ -33,24 +33,20 @@ module.exports = class RotateCommand extends Command {
 	}
 
 	async run(msg, { degrees, image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const newDims = this.adjustCanvasSize(data.width, data.height, degrees);
-			const canvas = createCanvas(newDims.width, newDims.height);
-			const ctx = canvas.getContext('2d');
-			ctx.translate(canvas.width / 2, canvas.height / 2);
-			ctx.rotate(degrees * (Math.PI / 180));
-			ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
-			ctx.drawImage(data, (canvas.width / 2) - (data.width / 2), (canvas.height / 2) - (data.height / 2));
-			ctx.translate(canvas.width / 2, canvas.height / 2);
-			ctx.rotate(-degrees * (Math.PI / 180));
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'rotate.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const newDims = this.adjustCanvasSize(data.width, data.height, degrees);
+		const canvas = createCanvas(newDims.width, newDims.height);
+		const ctx = canvas.getContext('2d');
+		ctx.translate(canvas.width / 2, canvas.height / 2);
+		ctx.rotate(degrees * (Math.PI / 180));
+		ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
+		ctx.drawImage(data, (canvas.width / 2) - (data.width / 2), (canvas.height / 2) - (data.height / 2));
+		ctx.translate(canvas.width / 2, canvas.height / 2);
+		ctx.rotate(-degrees * (Math.PI / 180));
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'rotate.png' }] });
 	}
 
 	adjustCanvasSize(width, height, angle) {

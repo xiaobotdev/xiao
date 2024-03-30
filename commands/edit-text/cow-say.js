@@ -28,16 +28,12 @@ module.exports = class CowSayCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		try {
-			const { body } = await request
-				.get('http://cowsay.morecode.org/say')
-				.query({
-					message: text,
-					format: 'json'
-				});
-			return msg.code(null, body.cow);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('http://cowsay.morecode.org/say')
+			.query({
+				message: text,
+				format: 'json'
+			});
+		return msg.code(null, body.cow);
 	}
 };

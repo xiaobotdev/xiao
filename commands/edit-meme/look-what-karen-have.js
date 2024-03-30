@@ -42,22 +42,18 @@ module.exports = class LookWhatKarenHaveCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'look-what-karen-have.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.rotate(-6.5 * (Math.PI / 180));
-			const { x, y, width, height } = centerImagePart(data, 512, 512, 514, 50);
-			ctx.drawImage(data, x, y, width, height);
-			ctx.rotate(6.5 * (Math.PI / 180));
-			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'look-what-karen-have.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'look-what-karen-have.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = 'white';
+		ctx.fillRect(0, 0, base.width, base.height);
+		ctx.rotate(-6.5 * (Math.PI / 180));
+		const { x, y, width, height } = centerImagePart(data, 512, 512, 514, 50);
+		ctx.drawImage(data, x, y, width, height);
+		ctx.rotate(6.5 * (Math.PI / 180));
+		ctx.drawImage(base, 0, 0);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'look-what-karen-have.png' }] });
 	}
 };

@@ -30,24 +30,20 @@ module.exports = class SexySinglesCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const base = await loadImage(body);
-			const choice = Math.floor(Math.random() * count);
-			const plate = await loadImage(
-				path.join(__dirname, '..', '..', 'assets', 'images', 'sexy-singles', `${choice}.png`)
-			);
-			const scaleW = plate.height / base.height;
-			const width = Math.round(base.width * scaleW);
-			const canvas = createCanvas(plate.width + width, plate.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, plate.width, 0, width, plate.height);
-			ctx.drawImage(plate, 0, 0);
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'sexy-singles.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const base = await loadImage(body);
+		const choice = Math.floor(Math.random() * count);
+		const plate = await loadImage(
+			path.join(__dirname, '..', '..', 'assets', 'images', 'sexy-singles', `${choice}.png`)
+		);
+		const scaleW = plate.height / base.height;
+		const width = Math.round(base.width * scaleW);
+		const canvas = createCanvas(plate.width + width, plate.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, plate.width, 0, width, plate.height);
+		ctx.drawImage(plate, 0, 0);
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'sexy-singles.png' }] });
 	}
 };

@@ -47,40 +47,36 @@ module.exports = class WhiteboardCommand extends Command {
 	}
 
 	async run(msg, { initial, resolved }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'whiteboard.png'));
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.textAlign = 'center';
-			ctx.textBaseline = 'top';
-			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(46);
-			let fontSize = 46;
-			while (ctx.measureText(initial).width > 608) {
-				fontSize--;
-				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
-			}
-			const initialLines = await wrapText(ctx, initial, 405);
-			const initialTopMost = 111 - (((fontSize * initialLines.length) / 2) + ((10 * (initialLines.length - 1)) / 2));
-			for (let i = 0; i < initialLines.length; i++) {
-				const height = initialTopMost + ((fontSize + 10) * i);
-				ctx.fillText(initialLines[i], 210, height);
-			}
-			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
-			fontSize = 40;
-			while (ctx.measureText(resolved).width > 551) {
-				fontSize--;
-				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
-			}
-			const resolveLines = await wrapText(ctx, resolved, 367);
-			const resolveTopMost = 500 - (((fontSize * resolveLines.length) / 2) + ((10 * (resolveLines.length - 1)) / 2));
-			for (let i = 0; i < resolveLines.length; i++) {
-				const height = resolveTopMost + ((fontSize + 10) * i);
-				ctx.fillText(resolveLines[i], 195, height);
-			}
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'whiteboard.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'whiteboard.png'));
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'top';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(46);
+		let fontSize = 46;
+		while (ctx.measureText(initial).width > 608) {
+			fontSize--;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
+		const initialLines = await wrapText(ctx, initial, 405);
+		const initialTopMost = 111 - (((fontSize * initialLines.length) / 2) + ((10 * (initialLines.length - 1)) / 2));
+		for (let i = 0; i < initialLines.length; i++) {
+			const height = initialTopMost + ((fontSize + 10) * i);
+			ctx.fillText(initialLines[i], 210, height);
+		}
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
+		fontSize = 40;
+		while (ctx.measureText(resolved).width > 551) {
+			fontSize--;
+			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
+		}
+		const resolveLines = await wrapText(ctx, resolved, 367);
+		const resolveTopMost = 500 - (((fontSize * resolveLines.length) / 2) + ((10 * (resolveLines.length - 1)) / 2));
+		for (let i = 0; i < resolveLines.length; i++) {
+			const height = resolveTopMost + ((fontSize + 10) * i);
+			ctx.fillText(resolveLines[i], 195, height);
+		}
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'whiteboard.png' }] });
 	}
 };

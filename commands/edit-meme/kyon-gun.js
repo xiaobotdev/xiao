@@ -41,21 +41,17 @@ module.exports = class KyonGunCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'kyon-gun.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'black';
-			ctx.fillRect(0, 0, base.width, base.height);
-			const ratio = data.width / data.height;
-			const width = Math.round(base.height * ratio);
-			ctx.drawImage(data, (base.width / 2) - (width / 2), 0, width, base.height);
-			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'kyon-gun.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'kyon-gun.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = 'black';
+		ctx.fillRect(0, 0, base.width, base.height);
+		const ratio = data.width / data.height;
+		const width = Math.round(base.height * ratio);
+		ctx.drawImage(data, (base.width / 2) - (width / 2), 0, width, base.height);
+		ctx.drawImage(base, 0, 0);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'kyon-gun.png' }] });
 	}
 };

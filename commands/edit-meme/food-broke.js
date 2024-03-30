@@ -38,20 +38,16 @@ module.exports = class FoodBrokeCommand extends Command {
 
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'food-broke.png'));
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.drawImage(avatar, 23, 9, 125, 125);
-			contrast(ctx, 23, 9, 125, 125);
-			ctx.drawImage(avatar, 117, 382, 75, 75);
-			contrast(ctx, 117, 382, 75, 75);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'food-broke.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'food-broke.png'));
+		const { body } = await request.get(avatarURL);
+		const avatar = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		ctx.drawImage(avatar, 23, 9, 125, 125);
+		contrast(ctx, 23, 9, 125, 125);
+		ctx.drawImage(avatar, 117, 382, 75, 75);
+		contrast(ctx, 117, 382, 75, 75);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'food-broke.png' }] });
 	}
 };

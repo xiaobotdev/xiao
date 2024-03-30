@@ -55,16 +55,12 @@ module.exports = class TranslateCommand extends Command {
 	}
 
 	async run(msg, { text, target, base }) {
-		try {
-			const { text: result, from } = await translate(text, { to: target, from: base });
-			const embed = new MessageEmbed()
-				.setColor(0x4285F4)
-				.setFooter('Powered by Google Translate', 'https://i.imgur.com/h3RoHyp.png')
-				.addField(`❯ From: ${translate.languages[from.language.iso]}`, from.text.value || text)
-				.addField(`❯ To: ${translate.languages[target]}`, result);
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { text: result, from } = await translate(text, { to: target, from: base });
+		const embed = new MessageEmbed()
+			.setColor(0x4285F4)
+			.setFooter('Powered by Google Translate', 'https://i.imgur.com/h3RoHyp.png')
+			.addField(`❯ From: ${translate.languages[from.language.iso]}`, from.text.value || text)
+			.addField(`❯ To: ${translate.languages[target]}`, result);
+		return msg.embed(embed);
 	}
 };

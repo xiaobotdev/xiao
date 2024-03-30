@@ -26,20 +26,16 @@ module.exports = class GhostCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(data.width, data.height);
-			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, data.width, data.height);
-			ctx.globalAlpha = 0.25;
-			ctx.drawImage(data, 0, 0);
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'ghost.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(data.width, data.height);
+		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = 'white';
+		ctx.fillRect(0, 0, data.width, data.height);
+		ctx.globalAlpha = 0.25;
+		ctx.drawImage(data, 0, 0);
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'ghost.png' }] });
 	}
 };

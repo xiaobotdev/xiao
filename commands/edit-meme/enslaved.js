@@ -43,23 +43,19 @@ module.exports = class EnslavedCommand extends Command {
 	}
 
 	async run(msg, { name, image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'enslaved.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			const { x, y, width, height } = centerImagePart(data, 200, 200, 254, 145);
-			ctx.drawImage(data, x, y, width, height);
-			ctx.textBaseline = 'top';
-			ctx.textAlign = 'center';
-			ctx.fillStyle = 'white';
-			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
-			ctx.fillText(name.toLowerCase(), 365, 400, 240);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'enslaved.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'enslaved.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		const { x, y, width, height } = centerImagePart(data, 200, 200, 254, 145);
+		ctx.drawImage(data, x, y, width, height);
+		ctx.textBaseline = 'top';
+		ctx.textAlign = 'center';
+		ctx.fillStyle = 'white';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
+		ctx.fillText(name.toLowerCase(), 365, 400, 240);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'enslaved.png' }] });
 	}
 };

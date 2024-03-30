@@ -42,22 +42,18 @@ module.exports = class LegoIconCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'lego-icon.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.beginPath();
-			ctx.arc(base.width / 2, base.height / 2, 764 / 2, 0, Math.PI * 2);
-			ctx.closePath();
-			ctx.clip();
-			const height = 764 / data.width;
-			ctx.drawImage(data, (base.width / 2) - (764 / 2), (base.height / 2) - (764 / 2), 764, data.height * height);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'lego-icon.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'lego-icon.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		ctx.beginPath();
+		ctx.arc(base.width / 2, base.height / 2, 764 / 2, 0, Math.PI * 2);
+		ctx.closePath();
+		ctx.clip();
+		const height = 764 / data.width;
+		ctx.drawImage(data, (base.width / 2) - (764 / 2), (base.height / 2) - (764 / 2), 764, data.height * height);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'lego-icon.png' }] });
 	}
 };

@@ -41,7 +41,7 @@ module.exports = class ShortenUrlCommand extends Command {
 			return msg.say(body.link);
 		} catch (err) {
 			if (err.status === 400) return msg.reply('You provided an invalid URL. Please try again.');
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

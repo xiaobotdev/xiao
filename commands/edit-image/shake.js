@@ -36,31 +36,27 @@ module.exports = class ShakeCommand extends Command {
 	}
 
 	async run(msg, { amount, image }) {
-		try {
-			const { body } = await request.get(image);
-			const base = await loadImage(body);
-			const ratio = base.width / base.height;
-			const height = 512 / ratio;
-			const encoder = new GIFEncoder(512, height);
-			const canvas = createCanvas(512, height);
-			const ctx = canvas.getContext('2d');
-			const stream = encoder.createReadStream();
-			encoder.start();
-			encoder.setRepeat(0);
-			encoder.setDelay(20);
-			encoder.setQuality(200);
-			const frames = this.generateFrames(amount);
-			for (const { x, y } of frames) {
-				ctx.clearRect(0, 0, canvas.width, canvas.height);
-				ctx.drawImage(base, x, y, 512, height);
-				encoder.addFrame(ctx);
-			}
-			encoder.finish();
-			const buffer = await streamToArray(stream);
-			return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'shake.gif' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const { body } = await request.get(image);
+		const base = await loadImage(body);
+		const ratio = base.width / base.height;
+		const height = 512 / ratio;
+		const encoder = new GIFEncoder(512, height);
+		const canvas = createCanvas(512, height);
+		const ctx = canvas.getContext('2d');
+		const stream = encoder.createReadStream();
+		encoder.start();
+		encoder.setRepeat(0);
+		encoder.setDelay(20);
+		encoder.setQuality(200);
+		const frames = this.generateFrames(amount);
+		for (const { x, y } of frames) {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.drawImage(base, x, y, 512, height);
+			encoder.addFrame(ctx);
 		}
+		encoder.finish();
+		const buffer = await streamToArray(stream);
+		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'shake.gif' }] });
 	}
 
 	generateFrames(amount) {

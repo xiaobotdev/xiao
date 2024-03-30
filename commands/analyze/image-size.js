@@ -25,12 +25,8 @@ module.exports = class ImageSizeCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			return msg.reply(`This image is ${data.width}x${data.height}.`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		return msg.reply(`This image is ${data.width}x${data.height}.`);
 	}
 };

@@ -40,15 +40,11 @@ module.exports = class ResizeCommand extends Command {
 	}
 
 	async run(msg, { width, height, image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(width, height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(data, 0, 0, width, height);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'resize.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(width, height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(data, 0, 0, width, height);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'resize.png' }] });
 	}
 };

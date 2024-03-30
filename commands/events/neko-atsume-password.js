@@ -43,17 +43,13 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 	}
 
 	async run(msg, { locale }) {
-		try {
-			const data = await this.fetchPassword(locale);
-			return msg.say(stripIndents`
-				The current Neko Atsume password is **${data.password}**.
-				It will expire in **${moment.duration(data.expires - data.date).format('hh:mm:ss', { trim: false })}**.
+		const data = await this.fetchPassword(locale);
+		return msg.say(stripIndents`
+			The current Neko Atsume password is **${data.password}**.
+			It will expire in **${moment.duration(data.expires - data.date).format('hh:mm:ss', { trim: false })}**.
 
-				${data.gold} ${this.goldFishEmoji} ${data.silver} ${this.silverFishEmoji}
-			`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+			${data.gold} ${this.goldFishEmoji} ${data.silver} ${this.silverFishEmoji}
+		`);
 	}
 
 	async fetchPassword(locale) {

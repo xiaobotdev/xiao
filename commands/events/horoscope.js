@@ -35,20 +35,16 @@ module.exports = class HoroscopeCommand extends Command {
 	}
 
 	async run(msg, { sign }) {
-		try {
-			const horoscope = await this.fetchHoroscope(sign);
-			const embed = new MessageEmbed()
-				.setColor(0x9797FF)
-				.setTitle(`Horoscope for ${firstUpperCase(sign)}...`)
-				.setURL(`https://astrology.tv/horoscope/signs/${sign}/`)
-				.setFooter('© Kelli Fox, The Astrologer')
-				.setThumbnail(this.getImageURL(sign))
-				.setTimestamp()
-				.setDescription(horoscope);
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const horoscope = await this.fetchHoroscope(sign);
+		const embed = new MessageEmbed()
+			.setColor(0x9797FF)
+			.setTitle(`Horoscope for ${firstUpperCase(sign)}...`)
+			.setURL(`https://astrology.tv/horoscope/signs/${sign}/`)
+			.setFooter('© Kelli Fox, The Astrologer')
+			.setThumbnail(this.getImageURL(sign))
+			.setTimestamp()
+			.setDescription(horoscope);
+		return msg.embed(embed);
 	}
 
 	async fetchHoroscope(sign) {

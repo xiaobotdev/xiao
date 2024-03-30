@@ -36,21 +36,17 @@ module.exports = class LikeCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const base = await loadImage(body);
-			const plate = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'like.png'));
-			const scaleH = plate.width / base.width;
-			const height = Math.round(base.height * scaleH);
-			const canvas = createCanvas(plate.width, plate.height + height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0, plate.width, height);
-			ctx.drawImage(plate, 0, height);
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'like.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const base = await loadImage(body);
+		const plate = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'like.png'));
+		const scaleH = plate.width / base.width;
+		const height = Math.round(base.height * scaleH);
+		const canvas = createCanvas(plate.width, plate.height + height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0, plate.width, height);
+		ctx.drawImage(plate, 0, height);
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'like.png' }] });
 	}
 };

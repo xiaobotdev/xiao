@@ -26,13 +26,9 @@ module.exports = class AsciiCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const asciiImg = await this.ascii(body);
-			return msg.code(null, asciiImg);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const asciiImg = await this.ascii(body);
+		return msg.code(null, asciiImg);
 	}
 
 	async ascii(image) {

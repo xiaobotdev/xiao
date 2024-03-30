@@ -37,22 +37,18 @@ module.exports = class MyCollectionGrowsCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'my-collection-grows.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = 'white';
-			ctx.fillRect(0, 0, base.width, base.height);
-			ctx.rotate(-14 * (Math.PI / 180));
-			const { x, y, width, height } = centerImagePart(data, 425, 425, 145, 179);
-			ctx.drawImage(data, x, y, width, height);
-			ctx.rotate(14 * (Math.PI / 180));
-			ctx.drawImage(base, 0, 0);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'my-collection-grows.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'my-collection-grows.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = 'white';
+		ctx.fillRect(0, 0, base.width, base.height);
+		ctx.rotate(-14 * (Math.PI / 180));
+		const { x, y, width, height } = centerImagePart(data, 425, 425, 145, 179);
+		ctx.drawImage(data, x, y, width, height);
+		ctx.rotate(14 * (Math.PI / 180));
+		ctx.drawImage(base, 0, 0);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'my-collection-grows.png' }] });
 	}
 };
