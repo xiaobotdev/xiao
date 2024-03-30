@@ -65,6 +65,7 @@ module.exports = class XiaoCommand extends Command {
 				numres: 16
 			})
 			.attach('file', await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', img)));
+		console.log(body.header.message);
 		if (!body.results || !body.results.length) return null;
 		const result = body.results[0];
 		if (Number.parseFloat(result.header.similarity) < 90) return null;
