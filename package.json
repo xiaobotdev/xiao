@@ -78,6 +78,7 @@
 		"parse-domain": "^8.0.2",
 		"pokersolver": "^2.1.4",
 		"random-js": "^2.1.0",
+		"sagiri": "^3.4.0",
 		"semver": "^7.6.0",
 		"sherlockjs": "^1.4.2",
 		"stackblur-canvas": "^2.7.0",
