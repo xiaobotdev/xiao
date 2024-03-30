@@ -30,6 +30,8 @@ module.exports = class XiaoCommand extends Command {
 				}
 			]
 		});
+
+		this.cache = new Map();
 	}
 
 	async run(msg) {
@@ -40,6 +42,7 @@ module.exports = class XiaoCommand extends Command {
 	}
 
 	async getSource(img) {
+		if (this.cache.has(img)) return this.cache.get(img);
 		const source = img.match(sourceRegex);
 		const site = source[1];
 		if (site === 'official') return 'Official Art';
@@ -58,8 +61,10 @@ module.exports = class XiaoCommand extends Command {
 				result += `Art Source: <${sauce.url}>`;
 			}
 		} catch {
+			this.cache.set(img, result);
 			return result;
 		}
+		this.cache.set(img, result);
 		return result;
 	}
 
