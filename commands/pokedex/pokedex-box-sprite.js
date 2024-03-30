@@ -55,6 +55,16 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 					reasonURL: 'https://play.pokemonshowdown.com/sprites/'
 				}
 			],
+			flags: [
+				{
+					key: 'small',
+					description: 'Generates the image with the original 40x30 size.'
+				},
+				{
+					key: 's',
+					description: 'Alias for small.'
+				}
+			],
 			args: [
 				{
 					key: 'pokemon',
@@ -65,22 +75,23 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 		});
 	}
 
-	async run(msg, { pokemon }) {
+	async run(msg, { pokemon, flags }) {
 		if (!this.client.pokemon.sprites) await this.client.pokemon.loadSprites();
 		const canvas = createCanvas(250, 250);
 		const ctx = canvas.getContext('2d');
-		const x = 40 * (pokemon.id % 12);
-		const y = Math.floor(pokemon.id / 12) * 30;
-		ctx.imageSmoothingEnabled = false;
-		const ratio = 250 / 40;
-		const height = 30 * ratio;
-		ctx.drawImage(this.client.pokemon.sprites, x, y, 40, 30, 0, 0, 250, height);
-		cropToContent(ctx, canvas, canvas.width, canvas.height);
-		return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, {
-			files: [{
-				attachment: canvas.toBuffer(),
-				name: 'box.png'
-			}]
-		});
+		let attachment;
+		if (flags.small || flags.s) {
+			attachment = await pokemon.generateBoxImage();
+		} else {
+			const x = 40 * (pokemon.id % 12);
+			const y = Math.floor(pokemon.id / 12) * 30;
+			ctx.imageSmoothingEnabled = false;
+			const ratio = 250 / 40;
+			const height = 30 * ratio;
+			ctx.drawImage(this.client.pokemon.sprites, x, y, 40, 30, 0, 0, 250, height);
+			cropToContent(ctx, canvas, canvas.width, canvas.height);
+			attachment = canvas.toBuffer();
+		}
+		return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, { files: [{ attachment, name: 'box.png' }] });
 	}
 };

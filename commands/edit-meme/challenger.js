@@ -31,13 +31,17 @@ module.exports = class ChallengerCommand extends Command {
 					reasonURL: 'https://www.smashbros.com/en_US/index.html'
 				}
 			],
-			args: [
+			flags: [
 				{
-					key: 'silhouetted',
-					prompt: 'Should the image be silhouetted?',
-					type: 'boolean',
-					default: true
+					key: 'show',
+					description: 'Does not silhouette the image.'
 				},
+				{
+					key: 's',
+					description: 'Alias for show.'
+				}
+			],
+			args: [
 				{
 					key: 'image',
 					prompt: 'What image would you like to edit?',
@@ -48,7 +52,8 @@ module.exports = class ChallengerCommand extends Command {
 		});
 	}
 
-	async run(msg, { image, silhouetted }) {
+	async run(msg, { image, flags }) {
+		const silhouetted = flags.show || flags.s;
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
 		const { body } = await request.get(image);
 		const data = await loadImage(body);
