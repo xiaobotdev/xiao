@@ -11,7 +11,6 @@ module.exports = class URLEncodeCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to encode?',
 					type: 'string',
 					validate: text => {
 						if (encodeURIComponent(text).length < 2000) return true;

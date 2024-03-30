@@ -12,7 +12,6 @@ module.exports = class RuleCommand extends Command {
 			args: [
 				{
 					key: 'rule',
-					prompt: 'Which rule would you like to view?',
 					type: 'integer',
 					min: 1,
 					max: rules.length

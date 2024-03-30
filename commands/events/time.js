@@ -28,7 +28,6 @@ module.exports = class TimeCommand extends Command {
 				{
 					key: 'timeZone',
 					label: 'time zone',
-					prompt: 'Which time zone do you want to get the time of?',
 					type: 'timezone'
 				}
 			]

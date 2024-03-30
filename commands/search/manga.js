@@ -94,7 +94,6 @@ module.exports = class MangaCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What manga would you like to search for?',
 					type: 'string'
 				}
 			]

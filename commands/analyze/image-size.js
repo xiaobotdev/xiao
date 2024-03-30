@@ -17,7 +17,6 @@ module.exports = class ImageSizeCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					prompt: 'What image would you like to get the size of?',
 					type: 'image-or-avatar'
 				}
 			]

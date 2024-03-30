@@ -33,7 +33,6 @@ module.exports = class EddFactsBookCommand extends Command {
 			args: [
 				{
 					key: 'fact',
-					prompt: 'What should the fact on Edd\'s book be?',
 					type: 'string',
 					max: 500
 				}

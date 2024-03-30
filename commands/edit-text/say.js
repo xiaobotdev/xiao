@@ -11,7 +11,6 @@ module.exports = class SayCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like me to say?',
 					type: 'string'
 				}
 			]

@@ -28,19 +28,16 @@ module.exports = class PanikKalmPanikCommand extends Command {
 				{
 					key: 'panik',
 					label: 'first panik',
-					prompt: 'What text should be the first panik?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'kalm',
-					prompt: 'What text should be the kalm?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'panik2',
-					prompt: 'What text should be the second panik?',
 					type: 'string',
 					max: 500
 				}

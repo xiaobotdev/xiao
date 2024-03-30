@@ -34,13 +34,11 @@ module.exports = class SpongebobBurnCommand extends Command {
 				{
 					key: 'burn',
 					label: 'thing to burn',
-					prompt: 'What should Spongebob burn?',
 					type: 'string',
 					max: 150
 				},
 				{
 					key: 'person',
-					prompt: 'What should Spongebob be labelled as?',
 					type: 'string',
 					max: 15
 				}

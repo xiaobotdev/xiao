@@ -25,7 +25,6 @@ module.exports = class TemmieCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to Temmie speak?',
 					type: 'string',
 					validate: text => {
 						if (this.temmize(text).length < 2000) return true;

@@ -13,7 +13,6 @@ module.exports = class BirthstoneCommand extends Command {
 			args: [
 				{
 					key: 'month',
-					prompt: 'What month would you like to get the birthstone for?',
 					type: 'month'
 				}
 			]

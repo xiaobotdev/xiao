@@ -33,13 +33,11 @@ module.exports = class SpidermanPointingCommand extends Command {
 			args: [
 				{
 					key: 'first',
-					prompt: 'What should the first spiderman be?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'second',
-					prompt: 'What should the second spiderman be?',
 					type: 'string',
 					max: 500
 				}

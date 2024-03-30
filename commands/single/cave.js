@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const path = require('path');
-const { list } = require('../../util/Util');
 const types = ['default', 'steve'];
 
 module.exports = class CaveCommand extends Command {
@@ -16,7 +15,6 @@ module.exports = class CaveCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type of cave do you want to use? Either ${list(types, 'or')}.`,
 					type: 'string',
 					default: 'default',
 					oneOf: types,

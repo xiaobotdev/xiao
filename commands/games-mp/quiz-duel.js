@@ -25,7 +25,6 @@ module.exports = class QuizDuelCommand extends Command {
 			args: [
 				{
 					key: 'players',
-					prompt: 'How many players are you expecting to have?',
 					type: 'integer',
 					min: 1,
 					max: 100

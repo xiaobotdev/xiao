@@ -21,7 +21,6 @@ module.exports = class ShortenUrlCommand extends Command {
 			args: [
 				{
 					key: 'url',
-					prompt: 'What url would you like to shorten?',
 					type: 'string',
 					validate: url => {
 						if (encodeURI(url).length > 2083) return 'Your URL is too long.';

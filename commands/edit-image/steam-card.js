@@ -39,13 +39,11 @@ module.exports = class SteamCardCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What do you want the card to be named?',
 					type: 'string',
 					max: 50
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}

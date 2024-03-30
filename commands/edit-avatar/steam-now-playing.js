@@ -33,12 +33,10 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			args: [
 				{
 					key: 'game',
-					prompt: 'Which game would you like the user to be playing?',
 					type: 'string'
 				},
 				{
 					key: 'user',
-					prompt: 'Which user would you like to be playing the game?',
 					type: 'user',
 					default: msg => msg.author
 				}

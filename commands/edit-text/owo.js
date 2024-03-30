@@ -19,7 +19,6 @@ module.exports = class OwOCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to OwO?',
 					type: 'string',
 					validate: text => {
 						if (this.owo(text).length < 2000) return true;

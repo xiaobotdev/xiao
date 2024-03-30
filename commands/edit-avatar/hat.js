@@ -3,7 +3,6 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const fs = require('fs');
-const { list } = require('../../util/Util');
 const hats = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'hat'))
 	.map(hat => hat.replace('.png', ''));
 
@@ -125,14 +124,12 @@ module.exports = class HatCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type of hat would you like to use? Either ${list(hats, 'or')}.`,
 					type: 'string',
 					oneOf: hats,
 					parse: type => type.toLowerCase()
 				},
 				{
 					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
 					default: msg => msg.author
 				}

@@ -25,14 +25,12 @@ module.exports = class ImplodeCommand extends Command {
 			args: [
 				{
 					key: 'level',
-					prompt: 'What level would you like to use? From 1-100.',
 					type: 'integer',
 					min: 1,
 					max: 100
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

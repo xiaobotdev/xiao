@@ -19,7 +19,6 @@ module.exports = class PruneCommand extends Command {
 				{
 					key: 'count',
 					label: 'amount of messages',
-					prompt: 'How many messages do you want to delete? Limit of up to 100.',
 					type: 'integer',
 					min: 1,
 					max: 100

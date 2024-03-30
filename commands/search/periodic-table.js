@@ -33,7 +33,6 @@ module.exports = class PeriodicTableCommand extends Command {
 			args: [
 				{
 					key: 'element',
-					prompt: 'What element do you want to find? You can enter the name, symbol, or atomic number.',
 					type: 'string',
 					validate: element => {
 						const num = Number.parseInt(element, 10);

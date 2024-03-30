@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
-const { list } = require('../../util/Util');
 const reasons = ['bug', 'feedback', 'suggestion', 'abuse'];
 const reasonColors = ['RED', 'GREEN', 'YELLOW', 'ORANGE'];
 const displayReasons = ['🐛 Bug Report', '📬 Feedback', '❓ Suggestion', '⚠️ Abuse'];
@@ -17,14 +16,12 @@ module.exports = class ReportCommand extends Command {
 			args: [
 				{
 					key: 'reason',
-					prompt: `What is the reason for your report? Either ${list(reasons, 'or')}.`,
 					type: 'string',
 					oneOf: reasons,
 					parse: reason => reasons.indexOf(reason.toLowerCase())
 				},
 				{
 					key: 'message',
-					prompt: 'What is the message of your report? If you are reporting abuse, be sure to include IDs.',
 					type: 'string'
 				}
 			]

@@ -13,7 +13,6 @@ module.exports = class RomajiCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to romaji?',
 					type: 'string',
 					max: 500,
 					validate: text => Kuroshiro.Util.hasJapanese(text)

@@ -12,7 +12,6 @@ module.exports = class FormatNumberCommand extends Command {
 			args: [
 				{
 					key: 'number',
-					prompt: 'What number do you want to format?',
 					type: 'float'
 				}
 			]

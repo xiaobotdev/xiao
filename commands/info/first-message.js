@@ -13,7 +13,6 @@ module.exports = class FirstMessageCommand extends Command {
 			args: [
 				{
 					key: 'channel',
-					prompt: 'Which channel would you like to get the first message of?',
 					type: 'channel',
 					default: msg => msg.channel
 				}

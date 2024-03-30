@@ -21,7 +21,6 @@ module.exports = class PirateCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to pirate?',
 					type: 'string',
 					validate: text => {
 						if (wordTrans(text, dictionary).length < 2000) return true;

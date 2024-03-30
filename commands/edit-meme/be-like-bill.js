@@ -35,7 +35,6 @@ module.exports = class BeLikeBillCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What should the name on the meme be?',
 					type: 'string',
 					default: 'Bill',
 					max: 20

@@ -35,21 +35,18 @@ module.exports = class GruPlanCommand extends Command {
 				{
 					key: 'step1',
 					label: 'step 1',
-					prompt: 'What should the first step of Gru\'s plan be?',
 					type: 'string',
 					max: 150
 				},
 				{
 					key: 'step2',
 					label: 'step 2',
-					prompt: 'What should the second step of Gru\'s plan be?',
 					type: 'string',
 					max: 150
 				},
 				{
 					key: 'step3',
 					label: 'step 3',
-					prompt: 'What should the third step of Gru\'s plan be?',
 					type: 'string',
 					max: 150
 				}

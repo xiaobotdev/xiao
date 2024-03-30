@@ -38,7 +38,6 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 			args: [
 				{
 					key: 'correct',
-					prompt: 'What should Phoebe try to teach Joey?',
 					type: 'string',
 					validate: correct => {
 						if (correct.split(' ') < 3) return 'Please provide at least three words.';
@@ -56,7 +55,6 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 				},
 				{
 					key: 'incorrect',
-					prompt: 'What should Joey repeat back?',
 					type: 'string',
 					max: 50
 				}

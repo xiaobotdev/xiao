@@ -42,7 +42,6 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 				{
 					key: 'maxPts',
 					label: 'awesome points',
-					prompt: 'What amount of awesome points should determine the winner?',
 					type: 'integer',
 					max: 20,
 					min: 1

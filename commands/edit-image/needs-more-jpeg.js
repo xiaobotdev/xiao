@@ -18,7 +18,6 @@ module.exports = class NeedsMoreJpegCommand extends Command {
 			args: [
 				{
 					key: 'quality',
-					prompt: 'What quality should the resulting image use?',
 					type: 'float',
 					default: 0.5,
 					min: 0.01,
@@ -26,7 +25,6 @@ module.exports = class NeedsMoreJpegCommand extends Command {
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

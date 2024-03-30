@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const path = require('path');
-const { list } = require('../../util/Util');
 const types = ['default', 'blastyoff', 'disyoffjs', 'yoffcirius', 'yoffice', 'yofficer', 'gameyoff'];
 
 module.exports = class YoffCommand extends Command {
@@ -21,7 +20,6 @@ module.exports = class YoffCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type of yoff do you want to see? Either ${list(types, 'or')}.`,
 					type: 'string',
 					default: 'default',
 					oneOf: types,

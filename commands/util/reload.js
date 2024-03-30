@@ -15,7 +15,6 @@ module.exports = class ReloadCommand extends Command {
 				{
 					key: 'command',
 					label: 'command',
-					prompt: 'Which command would you like to reload?',
 					type: 'command'
 				}
 			]

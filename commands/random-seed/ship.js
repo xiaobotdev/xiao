@@ -36,13 +36,11 @@ module.exports = class ShipCommand extends Command {
 				{
 					key: 'first',
 					label: 'first user',
-					prompt: 'Who is the first user in the ship?',
 					type: 'user'
 				},
 				{
 					key: 'second',
 					label: 'second user',
-					prompt: 'Who is the second user in the ship?',
 					type: 'user',
 					default: msg => msg.author
 				}

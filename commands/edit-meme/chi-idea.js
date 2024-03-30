@@ -39,7 +39,6 @@ module.exports = class ChiIdeaCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What is Chi\'s idea?',
 					type: 'string',
 					max: 100
 				}

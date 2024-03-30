@@ -13,7 +13,6 @@ module.exports = class PickANumberCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to play against? To play against AI, choose me.',
 					type: 'user'
 				}
 			]

@@ -34,13 +34,11 @@ module.exports = class MetamorphosisCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What is the name of thing to morph into?',
 					type: 'string',
 					max: 280
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}

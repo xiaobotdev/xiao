@@ -11,7 +11,6 @@ module.exports = class ClapCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What 👏 text 👏 would 👏 you 👏 like 👏 to 👏 convert?',
 					type: 'string',
 					validate: text => {
 						if (text.replaceAll(' ', ' 👏 ').length < 2000) return true;

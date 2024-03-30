@@ -11,7 +11,6 @@ module.exports = class RateCommand extends Command {
 			args: [
 				{
 					key: 'thing',
-					prompt: 'What do you want to rate?',
 					type: 'string',
 					max: 1950
 				}

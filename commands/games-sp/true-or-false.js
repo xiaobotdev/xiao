@@ -2,7 +2,6 @@ const Command = require('../../framework/Command');
 const { MessageActionRow, MessageButton } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
-const { list } = require('../../util/Util');
 const difficulties = ['easy', 'medium', 'hard'];
 
 module.exports = class TrueOrFalseCommand extends Command {
@@ -25,7 +24,6 @@ module.exports = class TrueOrFalseCommand extends Command {
 			args: [
 				{
 					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
 					type: 'string',
 					default: '',
 					oneOf: difficulties,

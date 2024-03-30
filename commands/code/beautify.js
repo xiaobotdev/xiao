@@ -13,7 +13,6 @@ module.exports = class BeautifyCommand extends Command {
 			args: [
 				{
 					key: 'code',
-					prompt: 'What code do you want to beautify?',
 					type: 'code'
 				}
 			]

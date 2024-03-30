@@ -10,7 +10,6 @@ module.exports = class TxtCommand extends Command {
 			args: [
 				{
 					key: 'content',
-					prompt: 'What content do you want to include in the TXT file?',
 					type: 'string'
 				}
 			]

@@ -13,7 +13,6 @@ module.exports = class TypingRaceCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to race against?',
 					type: 'user'
 				}
 			]

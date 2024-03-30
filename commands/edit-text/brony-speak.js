@@ -27,7 +27,6 @@ module.exports = class BronySpeakCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to brony speak?',
 					type: 'string',
 					validate: text => {
 						if (wordTrans(text, dictionary).length < 2000) return true;

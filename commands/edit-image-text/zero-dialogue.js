@@ -45,7 +45,6 @@ module.exports = class ZeroDialogueCommand extends Command {
 			args: [
 				{
 					key: 'quote',
-					prompt: 'What should Zero say?',
 					type: 'string',
 					max: 50
 				}

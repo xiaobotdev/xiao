@@ -12,7 +12,6 @@ module.exports = class IQCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user do you want me to guess the IQ of?',
 					type: 'user',
 					default: msg => msg.author
 				}

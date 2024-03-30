@@ -12,7 +12,6 @@ module.exports = class RoastCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user do you want to roast?',
 					type: 'user',
 					default: msg => msg.author
 				}

@@ -19,7 +19,6 @@ module.exports = class ZalgoCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to zalgo?',
 					type: 'string',
 					max: 200
 				}

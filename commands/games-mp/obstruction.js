@@ -20,12 +20,10 @@ module.exports = class ObstructionCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge?',
 					type: 'user'
 				},
 				{
 					key: 'size',
-					prompt: 'What board size do you want to use?',
 					type: 'integer',
 					min: 6,
 					max: 10,

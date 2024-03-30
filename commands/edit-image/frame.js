@@ -2,7 +2,6 @@ const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { list } = require('../../util/Util');
 const { centerImagePart } = require('../../util/Canvas');
 const frames = require('../../assets/json/frame');
 
@@ -30,14 +29,12 @@ module.exports = class FrameCommand extends Command {
 			args: [
 				{
 					key: 'frame',
-					prompt: `What kind of frame do you want to use? Either ${list(Object.keys(frames), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(frames),
 					parse: frame => frames[frame.toLowerCase()]
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

@@ -19,7 +19,6 @@ module.exports = class DominantColorCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					prompt: 'What image would you like to test?',
 					type: 'image-or-avatar'
 				}
 			]

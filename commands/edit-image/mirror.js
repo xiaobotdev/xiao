@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const { list } = require('../../util/Util');
 const types = ['x', 'y', 'both'];
 
 module.exports = class MirrorCommand extends Command {
@@ -19,14 +18,12 @@ module.exports = class MirrorCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What axis do you want to mirror? Either ${list(types, 'or')}.`,
 					type: 'string',
 					oneOf: types,
 					parse: type => type.toLowerCase()
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

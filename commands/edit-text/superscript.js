@@ -13,7 +13,6 @@ module.exports = class SuperscriptCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to tiny text?',
 					type: 'string'
 				}
 			]

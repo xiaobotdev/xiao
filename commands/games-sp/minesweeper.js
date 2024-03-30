@@ -18,7 +18,6 @@ module.exports = class MinesweeperCommand extends Command {
 			args: [
 				{
 					key: 'size',
-					prompt: 'What size board do you want to use?',
 					type: 'integer',
 					default: 9,
 					max: 10,

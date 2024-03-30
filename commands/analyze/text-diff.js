@@ -13,12 +13,10 @@ module.exports = class TextDiffCommand extends Command {
 			args: [
 				{
 					key: 'text1',
-					prompt: 'What is the first text you would like to compare?',
 					type: 'string'
 				},
 				{
 					key: 'text2',
-					prompt: 'What is the second text you would like to compare?',
 					type: 'string'
 				}
 			]

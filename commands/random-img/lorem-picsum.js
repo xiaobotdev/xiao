@@ -20,21 +20,18 @@ module.exports = class LoremPicsumCommand extends Command {
 			args: [
 				{
 					key: 'width',
-					prompt: 'What do you want the width of the image to be?',
 					type: 'integer',
 					max: 2000,
 					min: 10
 				},
 				{
 					key: 'height',
-					prompt: 'What do you want the height of the image to be?',
 					type: 'integer',
 					max: 2000,
 					min: 10
 				},
 				{
 					key: 'seed',
-					prompt: 'What seed do you want to provide for image generation?',
 					type: 'string',
 					default: '',
 					max: 100,

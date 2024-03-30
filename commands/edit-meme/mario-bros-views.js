@@ -33,19 +33,16 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			args: [
 				{
 					key: 'thing',
-					prompt: 'What do you want the Mario Bros. to tell their views on?',
 					type: 'string',
 					max: 20
 				},
 				{
 					key: 'mario',
-					prompt: 'What should Mario\'s views be?',
 					type: 'string',
 					max: 280
 				},
 				{
 					key: 'luigi',
-					prompt: 'What should Luigi\'s views be?',
 					type: 'string',
 					max: 280
 				}

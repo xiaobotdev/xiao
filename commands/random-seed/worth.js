@@ -14,7 +14,6 @@ module.exports = class WorthCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user do you want me to get the worth of?',
 					type: 'user',
 					default: msg => msg.author
 				}

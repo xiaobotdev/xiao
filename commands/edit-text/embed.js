@@ -12,7 +12,6 @@ module.exports = class EmbedCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to embed?',
 					type: 'string'
 				}
 			]

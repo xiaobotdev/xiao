@@ -25,7 +25,6 @@ module.exports = class PokedexItemCommand extends Command {
 			args: [
 				{
 					key: 'item',
-					prompt: 'What item would you like to get information on?',
 					type: 'string'
 				}
 			]

@@ -33,13 +33,11 @@ module.exports = class DrakepostingCommand extends Command {
 			args: [
 				{
 					key: 'nah',
-					prompt: 'What text should be the "nah"?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'yeah',
-					prompt: 'What text should be the "yeah"?',
 					type: 'string',
 					max: 500
 				}

@@ -19,7 +19,6 @@ module.exports = class NumberFactCommand extends Command {
 			args: [
 				{
 					key: 'number',
-					prompt: 'What number do you want to get a fact for?',
 					type: 'integer'
 				}
 			]

@@ -13,12 +13,10 @@ module.exports = class ZodiacSignCommand extends Command {
 			args: [
 				{
 					key: 'month',
-					prompt: 'What month would you like to get the Zodiac Sign for?',
 					type: 'month'
 				},
 				{
 					key: 'day',
-					prompt: 'What day would you like to get the Zodiac Sign for?',
 					type: 'integer',
 					min: 1,
 					max: 31

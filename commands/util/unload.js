@@ -13,7 +13,6 @@ module.exports = class UnloadCommand extends Command {
 			args: [
 				{
 					key: 'command',
-					prompt: 'What is the command\'s name?',
 					type: 'command'
 				}
 			]

@@ -18,12 +18,10 @@ module.exports = class DistortCommand extends Command {
 			args: [
 				{
 					key: 'level',
-					prompt: 'What level of distortion would you like to use?',
 					type: 'integer'
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

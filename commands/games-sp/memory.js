@@ -15,7 +15,6 @@ module.exports = class MemoryCommand extends Command {
 			args: [
 				{
 					key: 'level',
-					prompt: 'How many directions do you want to have to memorize?',
 					type: 'integer',
 					min: 1,
 					max: 20

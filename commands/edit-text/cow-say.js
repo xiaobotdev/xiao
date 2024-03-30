@@ -19,7 +19,6 @@ module.exports = class CowSayCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like the cow to say?',
 					type: 'string',
 					max: 1000
 				}

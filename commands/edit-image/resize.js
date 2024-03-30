@@ -17,21 +17,18 @@ module.exports = class ResizeCommand extends Command {
 			args: [
 				{
 					key: 'width',
-					prompt: 'What do you want the new width of the image to be?',
 					type: 'integer',
 					min: 1,
 					max: 2000
 				},
 				{
 					key: 'height',
-					prompt: 'What do you want the new height of the image to be?',
 					type: 'integer',
 					min: 1,
 					max: 2000
 				},
 				{
 					key: 'image',
-					prompt: 'Which image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
 				}

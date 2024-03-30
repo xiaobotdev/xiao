@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
-const { list } = require('../../util/Util');
 const formats = {
 	jpg: 'image/jpeg',
 	jpeg: 'image/jpeg',
@@ -25,14 +24,12 @@ module.exports = class ConvertImageCommand extends Command {
 			args: [
 				{
 					key: 'format',
-					prompt: `What format do you want to convert the image to? Either ${list(Object.keys(formats), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(formats),
 					parse: format => format.toLowerCase()
 				},
 				{
 					key: 'image',
-					prompt: 'Which image would you like to edit?',
 					type: 'image'
 				}
 			]

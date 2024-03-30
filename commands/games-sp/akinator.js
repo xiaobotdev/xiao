@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const { Aki, regions } = require('aki-api');
-const { list } = require('../../util/Util');
 
 module.exports = class AkinatorCommand extends Command {
 	constructor(client) {
@@ -23,7 +22,6 @@ module.exports = class AkinatorCommand extends Command {
 			args: [
 				{
 					key: 'region',
-					prompt: `What region do you want to use? Either ${list(regions, 'or')}.`,
 					type: 'string',
 					default: 'en',
 					oneOf: regions,

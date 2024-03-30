@@ -33,7 +33,6 @@ module.exports = class CautionCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text should the caution sign say?',
 					type: 'string',
 					max: 500
 				}

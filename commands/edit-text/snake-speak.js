@@ -11,7 +11,6 @@ module.exports = class SnakeSpeakCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to sssssnake ssssspeak?',
 					type: 'string',
 					validate: text => {
 						if (text.replace(/s/gi, 'sssss').length < 2000) return true;

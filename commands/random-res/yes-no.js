@@ -13,7 +13,6 @@ module.exports = class YesNoCommand extends Command {
 			args: [
 				{
 					key: 'question',
-					prompt: 'What do you want to get an answer for?',
 					type: 'string',
 					max: 1950
 				}

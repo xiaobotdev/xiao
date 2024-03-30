@@ -31,7 +31,6 @@ module.exports = class LicensePlateCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text should the license plate say?',
 					type: 'string',
 					max: 10
 				}

@@ -13,7 +13,6 @@ module.exports = class PhoneBlockCommand extends Command {
 			args: [
 				{
 					key: 'id',
-					prompt: 'What is the ID of the channel or user you would like to block?',
 					type: 'string'
 				}
 			]

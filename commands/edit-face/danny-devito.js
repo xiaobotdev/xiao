@@ -25,7 +25,6 @@ module.exports = class DannyDevitoCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					prompt: 'What face would you like to scan?',
 					type: 'image-or-avatar'
 				}
 			]

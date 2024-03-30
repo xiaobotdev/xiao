@@ -23,7 +23,6 @@ module.exports = class KnowYourMemeCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What meme would you like to search for?',
 					type: 'string'
 				}
 			]

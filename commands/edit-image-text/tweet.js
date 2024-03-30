@@ -38,13 +38,11 @@ module.exports = class TweetCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user should say the tweet? Use the handle, not the name.',
 					type: 'string',
 					max: 15
 				},
 				{
 					key: 'text',
-					prompt: 'What should the text of the tweet be?',
 					type: 'string',
 					max: 280
 				}

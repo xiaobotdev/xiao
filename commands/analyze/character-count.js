@@ -13,7 +13,6 @@ module.exports = class CharacterCountCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to get the character count of?',
 					type: 'message|string'
 				}
 			]

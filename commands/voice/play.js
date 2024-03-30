@@ -30,7 +30,6 @@ module.exports = class PlayCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What video would you like to play? Either a URL or search query.',
 					type: 'string'
 				}
 			]

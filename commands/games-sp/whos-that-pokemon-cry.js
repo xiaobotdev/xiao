@@ -67,7 +67,6 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 			args: [
 				{
 					key: 'pokemon',
-					prompt: 'What Pokémon do you want to use?',
 					type: 'integer',
 					max: client.pokemon.pokemonCountWithCry,
 					min: 0,

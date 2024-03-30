@@ -11,7 +11,6 @@ module.exports = class URLDecodeCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to decode?',
 					type: 'string',
 					validate: text => {
 						if (decodeURIComponent(text).length < 2000) return true;

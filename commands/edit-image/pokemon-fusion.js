@@ -27,7 +27,6 @@ module.exports = class PokemonFusionCommand extends Command {
 			args: [
 				{
 					key: 'body',
-					prompt: 'What Pokémon should be fused as the body?',
 					type: 'string',
 					default: () => pokeKeys[Math.floor(Math.random() * pokeKeys.length)],
 					validate: body => {
@@ -38,7 +37,6 @@ module.exports = class PokemonFusionCommand extends Command {
 				},
 				{
 					key: 'palette',
-					prompt: 'What Pokémon should be fused as the palette?',
 					type: 'string',
 					default: () => pokeKeys[Math.floor(Math.random() * pokeKeys.length)],
 					validate: palette => {

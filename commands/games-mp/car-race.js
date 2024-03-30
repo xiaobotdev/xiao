@@ -337,12 +337,10 @@ module.exports = class CarRaceCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge? To play against AI, choose me.',
 					type: 'user'
 				},
 				{
 					key: 'car',
-					prompt: `What car do you want to use? Either ${list(cars, 'or')}.`,
 					type: 'string',
 					oneOf: cars,
 					parse: car => car.toLowerCase()

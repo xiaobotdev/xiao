@@ -39,7 +39,6 @@ module.exports = class PokedexImageCommand extends Command {
 			args: [
 				{
 					key: 'pokemon',
-					prompt: 'What Pokémon would you like to get the image of?',
 					type: 'pokemon'
 				}
 			]

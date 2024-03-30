@@ -35,13 +35,11 @@ module.exports = class FriendshipCommand extends Command {
 				{
 					key: 'first',
 					label: 'first user',
-					prompt: 'Who is the first friend?',
 					type: 'user'
 				},
 				{
 					key: 'second',
 					label: 'second user',
-					prompt: 'Who is the second friend?',
 					type: 'user',
 					default: msg => msg.author
 				}

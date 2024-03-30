@@ -25,7 +25,6 @@ module.exports = class HoroscopeCommand extends Command {
 			args: [
 				{
 					key: 'sign',
-					prompt: `Which sign would you like to get the horoscope for? Either ${list(signs, 'or')}.`,
 					type: 'string',
 					oneOf: signs,
 					parse: sign => sign.toLowerCase()

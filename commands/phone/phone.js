@@ -16,7 +16,6 @@ module.exports = class PhoneCommand extends Command {
 			args: [
 				{
 					key: 'count',
-					prompt: 'Do you want to get the count of phone servers?',
 					type: 'string',
 					default: '',
 					parse: count => count.toLowerCase()

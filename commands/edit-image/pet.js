@@ -22,7 +22,6 @@ module.exports = class PetCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 128 })
 				}

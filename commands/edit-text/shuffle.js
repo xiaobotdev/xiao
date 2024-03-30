@@ -11,7 +11,6 @@ module.exports = class ShuffleCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to shuffle?',
 					type: 'string'
 				}
 			]

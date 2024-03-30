@@ -31,13 +31,11 @@ module.exports = class SnapchatCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text should the snap say?',
 					type: 'string',
 					max: 32
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

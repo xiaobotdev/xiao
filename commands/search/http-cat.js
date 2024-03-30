@@ -19,7 +19,6 @@ module.exports = class HttpCatCommand extends Command {
 			args: [
 				{
 					key: 'code',
-					prompt: 'What code do you want to get the cat of?',
 					type: 'integer'
 				}
 			]

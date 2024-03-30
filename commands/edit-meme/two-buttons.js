@@ -33,13 +33,11 @@ module.exports = class TwoButtonsCommand extends Command {
 			args: [
 				{
 					key: 'first',
-					prompt: 'What should the text of the first button be?',
 					type: 'string',
 					max: 280
 				},
 				{
 					key: 'second',
-					prompt: 'What should the text of the second button be?',
 					type: 'string',
 					max: 280
 				}

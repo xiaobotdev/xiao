@@ -12,7 +12,6 @@ module.exports = class ChineseZodiacCommand extends Command {
 			args: [
 				{
 					key: 'year',
-					prompt: 'What year would you like to get the Chinese Zodiac Sign for?',
 					type: 'integer',
 					min: 1
 				}

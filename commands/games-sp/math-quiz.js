@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
-const { list } = require('../../util/Util');
 const difficulties = ['baby', 'easy', 'medium', 'hard', 'extreme', 'impossible'];
 const operations = ['+', '-', '*'];
 const maxValues = {
@@ -31,7 +30,6 @@ module.exports = class MathQuizCommand extends Command {
 			args: [
 				{
 					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
 					type: 'string',
 					oneOf: difficulties,
 					parse: difficulty => difficulty.toLowerCase()

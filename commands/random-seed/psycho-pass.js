@@ -31,7 +31,6 @@ module.exports = class PsychoPassCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user do you want to determine the Crime Coefficient of?',
 					type: 'user',
 					default: msg => msg.author
 				}

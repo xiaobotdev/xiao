@@ -27,13 +27,11 @@ module.exports = class CatchCommand extends Command {
 			args: [
 				{
 					key: 'is',
-					prompt: 'What is everyone who gets caught?',
 					type: 'string',
 					max: 15
 				},
 				{
 					key: 'time',
-					prompt: 'How long should I wait before revealing the second half of the image (in seconds)?',
 					type: 'integer',
 					max: 60,
 					min: 1,

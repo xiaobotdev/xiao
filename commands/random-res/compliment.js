@@ -11,7 +11,6 @@ module.exports = class ComplimentCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user do you want to compliment?',
 					type: 'user',
 					default: msg => msg.author
 				}

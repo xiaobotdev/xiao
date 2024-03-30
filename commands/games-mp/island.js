@@ -16,7 +16,6 @@ module.exports = class IslandCommand extends Command {
 				{
 					key: 'playersCount',
 					label: 'players',
-					prompt: 'How many players are you expecting to have?',
 					type: 'integer',
 					min: 3,
 					max: 20

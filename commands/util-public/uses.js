@@ -13,7 +13,6 @@ module.exports = class UsesCommand extends Command {
 			args: [
 				{
 					key: 'command',
-					prompt: 'Which command would you like to view the uses of?',
 					type: 'command'
 				}
 			]

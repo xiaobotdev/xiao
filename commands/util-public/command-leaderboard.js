@@ -14,7 +14,6 @@ module.exports = class CommandLeaderboardCommand extends Command {
 			args: [
 				{
 					key: 'page',
-					prompt: 'What page do you want to view?',
 					type: 'integer',
 					default: 1,
 					min: 1

@@ -101,7 +101,6 @@ module.exports = class AnimeCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What anime would you like to search for?',
 					type: 'string'
 				}
 			]

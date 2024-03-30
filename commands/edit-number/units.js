@@ -26,18 +26,15 @@ module.exports = class UnitsCommand extends Command {
 			args: [
 				{
 					key: 'amount',
-					prompt: 'How many units should be converted?',
 					type: 'float'
 				},
 				{
 					key: 'base',
-					prompt: 'What unit type do you want to convert from?',
 					type: 'string',
 					parse: base => base.toLowerCase()
 				},
 				{
 					key: 'target',
-					prompt: 'What unit type do you want to convert to?',
 					type: 'string',
 					parse: target => target.toLowerCase()
 				}

@@ -13,7 +13,6 @@ module.exports = class MorseCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to morse?',
 					type: 'string',
 					validate: text => {
 						if (letterTrans(text.toLowerCase(), dictionary, ' ').length < 2000) return true;

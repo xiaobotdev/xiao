@@ -20,20 +20,17 @@ module.exports = class FinalGradeCommand extends Command {
 				{
 					key: 'current',
 					label: 'current grade',
-					prompt: 'What is your current grade in the class?',
 					type: 'integer',
 					min: 0
 				},
 				{
 					key: 'desired',
 					label: 'desired grade',
-					prompt: 'What is the minimum grade you want in the class?',
 					type: 'integer',
 					min: 0
 				},
 				{
 					key: 'weight',
-					prompt: 'What percentage of your grade is the final worth?',
 					type: 'integer',
 					max: 100,
 					min: 0

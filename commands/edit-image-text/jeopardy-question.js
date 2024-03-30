@@ -31,7 +31,6 @@ module.exports = class JeopardyQuestionCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text of the question be?',
 					type: 'string',
 					max: 500
 				}

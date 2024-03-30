@@ -84,7 +84,6 @@ module.exports = class AnimeStaffCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What staff member would you like to search for?',
 					type: 'string'
 				}
 			]

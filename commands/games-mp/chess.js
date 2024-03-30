@@ -35,19 +35,16 @@ module.exports = class ChessCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge? To play against AI, choose me.',
 					type: 'user'
 				},
 				{
 					key: 'time',
-					prompt: 'How long should the chess timers be set for (in minutes)? Use 0 for infinite.',
 					type: 'integer',
 					max: 120,
 					min: 0
 				},
 				{
 					key: 'fen',
-					prompt: 'What FEN would you like to use for the start board?',
 					type: 'string',
 					default: '',
 					validate: fen => validateFEN(fen)

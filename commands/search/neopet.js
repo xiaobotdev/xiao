@@ -26,12 +26,10 @@ module.exports = class NeopetCommand extends Command {
 			args: [
 				{
 					key: 'pet',
-					prompt: 'What pet would you like to get an image of?',
 					type: 'string'
 				},
 				{
 					key: 'mood',
-					prompt: `What mood should the pet be in? Either ${list(Object.keys(moods), 'or')}.`,
 					type: 'string',
 					default: 1,
 					validate: mood => {

@@ -29,7 +29,6 @@ module.exports = class YuGiOhCommand extends Command {
 			args: [
 				{
 					key: 'card',
-					prompt: 'What card would you like to get information on?',
 					type: 'string'
 				}
 			]

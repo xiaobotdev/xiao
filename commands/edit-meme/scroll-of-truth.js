@@ -33,7 +33,6 @@ module.exports = class ScrollOfTruthCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What do you want the scroll of truth to say?',
 					type: 'string',
 					max: 500
 				}

@@ -13,7 +13,6 @@ module.exports = class DickCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user do you want to determine the dick size of?',
 					type: 'user',
 					default: msg => msg.author
 				}

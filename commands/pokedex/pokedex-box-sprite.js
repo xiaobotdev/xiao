@@ -68,7 +68,6 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 			args: [
 				{
 					key: 'pokemon',
-					prompt: 'What Pokémon would you like to get the box sprite of?',
 					type: 'pokemon'
 				}
 			]

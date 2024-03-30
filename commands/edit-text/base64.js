@@ -13,14 +13,12 @@ module.exports = class Base64Command extends Command {
 			args: [
 				{
 					key: 'mode',
-					prompt: `Would you like to ${list(modes, 'or')}?`,
 					type: 'string',
 					oneOf: modes,
 					parse: mode => mode.toLowerCase()
 				},
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to Base64?',
 					type: 'string',
 					validate: text => {
 						if (base64(text).length < 2000) return true;

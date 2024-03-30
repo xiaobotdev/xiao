@@ -25,7 +25,6 @@ module.exports = class ScreenshotCommand extends Command {
 			args: [
 				{
 					key: 'url',
-					prompt: 'What webpage do you want to take a screenshot of?',
 					type: 'url'
 				}
 			]

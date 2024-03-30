@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-const { list } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const characters = require('../../assets/json/undertale');
 
@@ -61,14 +60,12 @@ module.exports = class UndertaleCommand extends Command {
 			args: [
 				{
 					key: 'character',
-					prompt: `What character do you want to use? Either ${list(characters, 'or')}.`,
 					type: 'string',
 					oneOf: characters,
 					parse: character => character.toLowerCase()
 				},
 				{
 					key: 'quote',
-					prompt: 'What should the character say?',
 					type: 'string',
 					max: 250
 				}

@@ -27,13 +27,11 @@ module.exports = class SubtitleCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the subtitles say?',
 					type: 'string',
 					max: 200
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

@@ -38,7 +38,6 @@ module.exports = class AchievementCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text of the achievement be?',
 					type: 'string',
 					max: 50
 				}

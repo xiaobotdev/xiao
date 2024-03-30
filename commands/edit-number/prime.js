@@ -12,7 +12,6 @@ module.exports = class PrimeCommand extends Command {
 			args: [
 				{
 					key: 'number',
-					prompt: 'What number do you want to check?',
 					type: 'integer',
 					max: Number.MAX_SAFE_INTEGER
 				}

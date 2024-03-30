@@ -21,7 +21,6 @@ module.exports = class ScrabbleScoreCommand extends Command {
 			args: [
 				{
 					key: 'word',
-					prompt: 'What word would you like to get the scrabble score of?',
 					type: 'string',
 					parse: word => word.toLowerCase()
 				}

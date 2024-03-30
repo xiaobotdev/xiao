@@ -33,7 +33,6 @@ module.exports = class ChangeMyMindCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should be on the poster?',
 					type: 'string',
 					max: 500
 				}

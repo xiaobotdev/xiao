@@ -33,7 +33,6 @@ module.exports = class SonicSaysCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should Sonic say?',
 					type: 'string',
 					max: 500
 				}

@@ -11,7 +11,6 @@ module.exports = class UppercaseCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to uppercase?',
 					type: 'string'
 				}
 			]

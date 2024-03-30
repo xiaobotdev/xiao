@@ -32,7 +32,6 @@ module.exports = class AnilistCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What user would you like to get the information of?',
 					type: 'string'
 				}
 			]

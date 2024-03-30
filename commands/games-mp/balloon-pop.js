@@ -20,7 +20,6 @@ module.exports = class BalloonPopCommand extends Command {
 			args: [
 				{
 					key: 'playersCount',
-					prompt: 'How many players are you expecting to have?',
 					type: 'integer',
 					min: 2,
 					max: 100

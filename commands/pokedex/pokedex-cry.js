@@ -48,7 +48,6 @@ module.exports = class PokedexCryCommand extends Command {
 			args: [
 				{
 					key: 'pokemon',
-					prompt: 'What Pokémon would you like to play the cry of?',
 					type: 'pokemon'
 				}
 			]

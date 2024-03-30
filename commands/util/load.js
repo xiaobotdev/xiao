@@ -14,12 +14,10 @@ module.exports = class LoadCommand extends Command {
 			args: [
 				{
 					key: 'group',
-					prompt: 'Which group is the new command in?',
 					type: 'group'
 				},
 				{
 					key: 'name',
-					prompt: 'What is the new command\'s name?',
 					type: 'string',
 					parse: name => name.toLowerCase()
 				}

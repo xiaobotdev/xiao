@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const path = require('path');
-const { list } = require('../../util/Util');
 const types = ['default', 'moth', 'jojo', 'spoiler', 'nitro'];
 
 module.exports = class DarkLightCommand extends Command {
@@ -41,7 +40,6 @@ module.exports = class DarkLightCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type of meme do you want to use? Either ${list(types, 'or')}.`,
 					type: 'string',
 					default: 'default',
 					oneOf: types,

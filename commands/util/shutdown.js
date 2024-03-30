@@ -16,7 +16,6 @@ module.exports = class ShutdownCommand extends Command {
 			args: [
 				{
 					key: 'code',
-					prompt: 'What code do you want to send to `process.exit`?',
 					type: 'integer',
 					default: 0
 				}

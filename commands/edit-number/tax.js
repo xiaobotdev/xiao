@@ -11,14 +11,12 @@ module.exports = class TaxCommand extends Command {
 			args: [
 				{
 					key: 'rate',
-					prompt: 'What is the tax rate (in %)?',
 					type: 'integer',
 					max: 100,
 					min: 0
 				},
 				{
 					key: 'amount',
-					prompt: 'How much money should be converted?',
 					type: 'float'
 				}
 			]

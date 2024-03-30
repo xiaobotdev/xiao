@@ -19,7 +19,6 @@ module.exports = class IncorrectQuoteCommand extends Command {
 			args: [
 				{
 					key: 'characters',
-					prompt: 'What characters do you want to use? Up to 6.',
 					type: 'string',
 					max: 20,
 					infinite: true

@@ -18,7 +18,6 @@ module.exports = class PortalSendCommand extends Command {
 			args: [
 				{
 					key: 'message',
-					prompt: 'What message would you like to send?',
 					max: 1000,
 					type: 'string',
 					validate: (val, msg, arg) => {

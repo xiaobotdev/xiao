@@ -21,7 +21,6 @@ module.exports = class ReadQRCodeCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					prompt: 'What QR Code would you like to read?',
 					type: 'image-or-avatar'
 				}
 			]

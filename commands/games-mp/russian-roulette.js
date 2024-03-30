@@ -14,7 +14,6 @@ module.exports = class RussianRouletteCommand extends Command {
 			args: [
 				{
 					key: 'playersCount',
-					prompt: 'How many players are you expecting to have?',
 					type: 'integer',
 					min: 1,
 					max: 7

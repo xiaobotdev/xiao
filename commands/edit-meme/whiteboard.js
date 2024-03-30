@@ -32,13 +32,11 @@ module.exports = class WhiteboardCommand extends Command {
 			args: [
 				{
 					key: 'initial',
-					prompt: 'What text should be on the first panel?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'resolved',
-					prompt: 'What text should be on the second panel?',
 					type: 'string',
 					max: 500
 				}

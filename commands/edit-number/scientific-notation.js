@@ -11,7 +11,6 @@ module.exports = class ScientificNotationCommand extends Command {
 			args: [
 				{
 					key: 'number',
-					prompt: 'What number do you want to convert to scientific notation?',
 					type: 'float'
 				}
 			]

@@ -26,7 +26,6 @@ module.exports = class AnagramicaCommand extends Command {
 			args: [
 				{
 					key: 'time',
-					prompt: 'How long should the game last in seconds? Max 90, min 15.',
 					type: 'integer',
 					default: 45,
 					max: 90,

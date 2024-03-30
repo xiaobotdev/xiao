@@ -22,7 +22,6 @@ module.exports = class WikipediaCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What article would you like to search for?',
 					type: 'string'
 				}
 			]

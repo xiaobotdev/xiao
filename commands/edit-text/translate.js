@@ -25,13 +25,11 @@ module.exports = class TranslateCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to translate?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'target',
-					prompt: `Which language would you like to translate to? Either ${list(codes, 'or')}.`,
 					type: 'string',
 					validate: target => {
 						if (translate.languages.isSupported(target)) return true;
@@ -41,7 +39,6 @@ module.exports = class TranslateCommand extends Command {
 				},
 				{
 					key: 'base',
-					prompt: `Which language would you like to use as the base? Either ${list(Object.keys(codes), 'or')}.`,
 					type: 'string',
 					default: 'auto',
 					validate: base => {

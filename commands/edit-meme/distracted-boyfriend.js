@@ -28,17 +28,14 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 				{
 					key: 'otherGirl',
 					label: 'other girl',
-					prompt: 'Which user should be the "other girl"?',
 					type: 'user'
 				},
 				{
 					key: 'girlfriend',
-					prompt: 'Which user should be the girlfriend?',
 					type: 'user'
 				},
 				{
 					key: 'boyfriend',
-					prompt: 'Which user should be the boyfriend?',
 					type: 'user'
 				}
 			]

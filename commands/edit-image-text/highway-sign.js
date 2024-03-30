@@ -33,7 +33,6 @@ module.exports = class HighwaySignCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text of the sign be?',
 					type: 'string'
 				}
 			]

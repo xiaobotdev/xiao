@@ -18,7 +18,6 @@ module.exports = class ExecCommand extends Command {
 			args: [
 				{
 					key: 'command',
-					prompt: 'What command do you want to execute?',
 					type: 'string'
 				}
 			]

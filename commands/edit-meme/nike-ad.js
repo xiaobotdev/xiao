@@ -33,19 +33,16 @@ module.exports = class NikeAdCommand extends Command {
 			args: [
 				{
 					key: 'something',
-					prompt: 'What should the something to believe in be?',
 					type: 'string',
 					max: 50
 				},
 				{
 					key: 'sacrifice',
-					prompt: 'What should believing result in (e.g. sacrificing everything)?',
 					type: 'string',
 					max: 50
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
 				}

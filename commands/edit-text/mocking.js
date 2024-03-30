@@ -12,7 +12,6 @@ module.exports = class MockingCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'WHaT tEXt WoUlD yOu LiKE to COnvErt?',
 					type: 'string',
 					max: 1950,
 					parse: text => text.toLowerCase()

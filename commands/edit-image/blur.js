@@ -19,14 +19,12 @@ module.exports = class BlurCommand extends Command {
 			args: [
 				{
 					key: 'radius',
-					prompt: 'What blur radius would you like to use?',
 					type: 'integer',
 					max: 180,
 					min: 1
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

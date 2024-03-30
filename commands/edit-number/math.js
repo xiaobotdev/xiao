@@ -22,7 +22,6 @@ module.exports = class MathCommand extends Command {
 			args: [
 				{
 					key: 'expression',
-					prompt: 'What expression do you want to evaluate?',
 					type: 'string'
 				}
 			],

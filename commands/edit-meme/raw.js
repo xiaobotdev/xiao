@@ -28,7 +28,6 @@ module.exports = class RawCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What makes her want to do it raw?',
 					type: 'string',
 					max: 100
 				}

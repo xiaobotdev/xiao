@@ -18,7 +18,6 @@ module.exports = class ColorCommand extends Command {
 			args: [
 				{
 					key: 'color',
-					prompt: 'What color do you want to view? This must be a #colorcode.',
 					type: 'string',
 					validate: color => /^#[0-9A-F]{6}$/i.test(color)
 				}
