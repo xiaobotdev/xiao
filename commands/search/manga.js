@@ -4,6 +4,7 @@ const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
 const { cleanAnilistHTML, embedURL } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
@@ -112,7 +113,7 @@ module.exports = class MangaCommand extends Command {
 		const malURL = `https://myanimelist.net/manga/${manga.idMal}`;
 		const embed = new MessageEmbed()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
 			.setURL(manga.siteUrl)
 			.setThumbnail(manga.coverImage.large || manga.coverImage.medium || null)
 			.setTitle(manga.title.english || manga.title.romaji)

@@ -3,6 +3,7 @@ const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 const { GITHUB_ACCESS_TOKEN } = process.env;
 
 module.exports = class GithubCommand extends Command {
@@ -44,7 +45,7 @@ module.exports = class GithubCommand extends Command {
 				.set({ Authorization: `token ${GITHUB_ACCESS_TOKEN}` });
 			const embed = new MessageEmbed()
 				.setColor(0xFFFFFF)
-				.setAuthor('GitHub', 'https://i.imgur.com/e4HunUm.png', 'https://github.com/')
+				.setAuthor('GitHub', logos.github, 'https://github.com/')
 				.setTitle(body.full_name)
 				.setURL(body.html_url)
 				.setDescription(body.description ? shorten(body.description) : 'No description.')

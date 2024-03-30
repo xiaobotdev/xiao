@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 
 module.exports = class UrbanCommand extends Command {
 	constructor(client) {
@@ -37,7 +38,7 @@ module.exports = class UrbanCommand extends Command {
 		const data = body.list[0];
 		const embed = new MessageEmbed()
 			.setColor(0x32A8F0)
-			.setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png', 'https://www.urbandictionary.com/')
+			.setAuthor('Urban Dictionary', logos.urban, 'https://www.urbandictionary.com/')
 			.setURL(data.permalink)
 			.setTitle(data.word)
 			.setDescription(shorten(data.definition.replace(/\[|\]/g, '')))

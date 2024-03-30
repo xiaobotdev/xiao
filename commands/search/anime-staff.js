@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { embedURL, cleanAnilistHTML, trimArray } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 const searchGraphQL = stripIndents`
 	query ($search: String) {
 		staff: Page (perPage: 1) {
@@ -96,7 +97,7 @@ module.exports = class AnimeStaffCommand extends Command {
 		const staff = await this.fetchStaff(id);
 		const embed = new MessageEmbed()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
 			.setURL(staff.siteUrl)
 			.setThumbnail(staff.image.large || staff.image.medium || null)
 			.setTitle(`${staff.name.first || ''}${staff.name.last ? ` ${staff.name.last}` : ''}`)

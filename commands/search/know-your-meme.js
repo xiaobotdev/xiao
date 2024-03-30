@@ -3,6 +3,7 @@ const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { MessageEmbed } = require('discord.js');
 const { shorten } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 
 module.exports = class KnowYourMemeCommand extends Command {
 	constructor(client) {
@@ -35,7 +36,7 @@ module.exports = class KnowYourMemeCommand extends Command {
 		const data = await this.fetchMeme(location);
 		const embed = new MessageEmbed()
 			.setColor(0x12133F)
-			.setAuthor('Know Your Meme', 'https://i.imgur.com/WvcH4Z2.png', 'https://knowyourmeme.com/')
+			.setAuthor('Know Your Meme', logos.kym, 'https://knowyourmeme.com/')
 			.setTitle(data.name)
 			.setDescription(shorten(data.description || 'No description available.'))
 			.setURL(data.url)

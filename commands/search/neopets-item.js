@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
 const { formatNumber } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 
 module.exports = class NeopetsItemCommand extends Command {
 	constructor(client) {
@@ -38,7 +39,7 @@ module.exports = class NeopetsItemCommand extends Command {
 		if (!data) return msg.say('Could not find any results.');
 		const embed = new MessageEmbed()
 			.setColor(0xFFCE31)
-			.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png', 'http://www.neopets.com/')
+			.setAuthor('Neopets', logos.neopets, 'http://www.neopets.com/')
 			.setTitle(data.name)
 			.setDescription(data.details)
 			.setURL(data.url)

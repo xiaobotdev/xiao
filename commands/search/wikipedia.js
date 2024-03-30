@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 
 module.exports = class WikipediaCommand extends Command {
 	constructor(client) {
@@ -46,7 +47,7 @@ module.exports = class WikipediaCommand extends Command {
 		const embed = new MessageEmbed()
 			.setColor(0xE7E7E7)
 			.setTitle(data.title)
-			.setAuthor('Wikipedia', 'https://i.imgur.com/Z7NJBK2.png', 'https://www.wikipedia.org/')
+			.setAuthor('Wikipedia', logos.wikipedia, 'https://www.wikipedia.org/')
 			.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
 			.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
 		return msg.embed(embed);
