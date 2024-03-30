@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { Readable } = require('stream');
-const { reactIfAble, list } = require('../../util/Util');
+const { reactIfAble } = require('../../util/Util');
 const accents = require('../../assets/json/tts');
 const { LOADING_EMOJI_ID } = process.env;
 

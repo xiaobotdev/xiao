@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
-const { shuffle, list } = require('../../util/Util');
+const { shuffle } = require('../../util/Util');
 const difficulties = ['easy', 'medium', 'hard'];
 const choices = ['A', 'B', 'C', 'D'];
 

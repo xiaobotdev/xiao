@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const gm = require('gm').subClass({ imageMagick: true });
 const request = require('node-superfetch');
-const { list, magikToBuffer } = require('../../util/Util');
+const { magikToBuffer } = require('../../util/Util');
 const types = ['uniform', 'gaussian', 'multiplicative', 'impulse', 'laplacian', 'poisson'];
 
 module.exports = class NoiseCommand extends Command {
