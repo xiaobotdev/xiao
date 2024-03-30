@@ -46,7 +46,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 					type: 'integer',
 					max: 20,
 					min: 1
-				},
+				}
 			]
 		});
 	}
