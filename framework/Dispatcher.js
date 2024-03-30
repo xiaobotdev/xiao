@@ -57,7 +57,9 @@ module.exports = class CommandDispatcher {
 				const parsedArgs = [];
 				for (const parsedArg of infinite) {
 					const valid = await arg.validate(parsedArg, msg, arg);
-					if (!valid || typeof valid === 'string') {
+					if (typeof valid === 'string') {
+						return valid;
+					} else if (!valid) {
 						return stripIndents`
 							An invalid value was provided for one of the "${arg.label || arg.key}" arguments.
 							${arg.invalidText}
@@ -81,7 +83,9 @@ module.exports = class CommandDispatcher {
 				}
 			}
 			const valid = await arg.validate(parsedArg, msg, arg);
-			if (!valid || typeof valid === 'string') {
+			if (typeof valid === 'string') {
+				return valid;
+			} else if (!valid) {
 				return stripIndents`
 					An invalid value was provided for the "${arg.label || arg.key}" argument.
 					${arg.invalidText}
