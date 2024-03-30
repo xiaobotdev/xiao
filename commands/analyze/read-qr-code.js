@@ -29,15 +29,11 @@ module.exports = class ReadQRCodeCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request
-				.get('https://api.qrserver.com/v1/read-qr-code/')
-				.query({ fileurl: image });
-			const data = body[0].symbol[0];
-			if (!data.data) return msg.reply(`Could not read QR Code: ${data.error}.`);
-			return msg.reply(shorten(data.data, 2000 - (msg.author.toString().length + 2)));
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('https://api.qrserver.com/v1/read-qr-code/')
+			.query({ fileurl: image });
+		const data = body[0].symbol[0];
+		if (!data.data) return msg.reply(`Could not read QR Code: ${data.error}.`);
+		return msg.reply(shorten(data.data, 2000 - (msg.author.toString().length + 2)));
 	}
 };

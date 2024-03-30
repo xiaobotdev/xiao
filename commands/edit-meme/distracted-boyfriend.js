@@ -49,27 +49,23 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 		const boyfriendAvatarURL = boyfriend.displayAvatarURL({ format: 'png', size: 256 });
 		const girlfriendAvatarURL = girlfriend.displayAvatarURL({ format: 'png', size: 256 });
 		const otherGirlAvatarURL = otherGirl.displayAvatarURL({ format: 'png', size: 256 });
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'distracted-boyfriend.png'));
-			const boyfriendAvatarData = await request.get(boyfriendAvatarURL);
-			const boyfriendAvatar = await loadImage(boyfriendAvatarData.body);
-			const girlfriendAvatarData = await request.get(girlfriendAvatarURL);
-			const girlfriendAvatar = await loadImage(girlfriendAvatarData.body);
-			const otherGirlAvatarData = await request.get(otherGirlAvatarURL);
-			const otherGirlAvatar = await loadImage(otherGirlAvatarData.body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.rotate(-18.06 * (Math.PI / 180));
-			ctx.drawImage(boyfriendAvatar, 290, 165, 125, 125);
-			ctx.rotate(18.06 * (Math.PI / 180));
-			ctx.rotate(3.11 * (Math.PI / 180));
-			ctx.drawImage(girlfriendAvatar, 539, 67, 100, 125);
-			ctx.rotate(-3.11 * (Math.PI / 180));
-			ctx.drawImage(otherGirlAvatar, 120, 96, 175, 175);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distracted-boyfriend.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'distracted-boyfriend.png'));
+		const boyfriendAvatarData = await request.get(boyfriendAvatarURL);
+		const boyfriendAvatar = await loadImage(boyfriendAvatarData.body);
+		const girlfriendAvatarData = await request.get(girlfriendAvatarURL);
+		const girlfriendAvatar = await loadImage(girlfriendAvatarData.body);
+		const otherGirlAvatarData = await request.get(otherGirlAvatarURL);
+		const otherGirlAvatar = await loadImage(otherGirlAvatarData.body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		ctx.rotate(-18.06 * (Math.PI / 180));
+		ctx.drawImage(boyfriendAvatar, 290, 165, 125, 125);
+		ctx.rotate(18.06 * (Math.PI / 180));
+		ctx.rotate(3.11 * (Math.PI / 180));
+		ctx.drawImage(girlfriendAvatar, 539, 67, 100, 125);
+		ctx.rotate(-3.11 * (Math.PI / 180));
+		ctx.drawImage(otherGirlAvatar, 120, 96, 175, 175);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'distracted-boyfriend.png' }] });
 	}
 };

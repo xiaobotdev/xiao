@@ -46,30 +46,26 @@ module.exports = class FrameCommand extends Command {
 	}
 
 	async run(msg, { frame, image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'frame', frame.file));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			let canvas;
-			if (frame.stretch) {
-				canvas = createCanvas(data.width, data.height);
-				const ctx = canvas.getContext('2d');
-				ctx.drawImage(data, 0, 0);
-				ctx.drawImage(base, 0, 0, data.width, data.height);
-			} else {
-				canvas = createCanvas(base.width, base.height);
-				const ctx = canvas.getContext('2d');
-				ctx.fillStyle = 'black';
-				ctx.fillRect(frame.xStart, frame.yStart, frame.xSize, frame.ySize);
-				const { x, y, width, height } = centerImagePart(data, frame.xSize, frame.ySize, frame.xStart, frame.yStart);
-				ctx.drawImage(data, x, y, width, height);
-				ctx.drawImage(base, 0, 0);
-			}
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: `frame-${frame.file}` }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'frame', frame.file));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		let canvas;
+		if (frame.stretch) {
+			canvas = createCanvas(data.width, data.height);
+			const ctx = canvas.getContext('2d');
+			ctx.drawImage(data, 0, 0);
+			ctx.drawImage(base, 0, 0, data.width, data.height);
+		} else {
+			canvas = createCanvas(base.width, base.height);
+			const ctx = canvas.getContext('2d');
+			ctx.fillStyle = 'black';
+			ctx.fillRect(frame.xStart, frame.yStart, frame.xSize, frame.ySize);
+			const { x, y, width, height } = centerImagePart(data, frame.xSize, frame.ySize, frame.xStart, frame.yStart);
+			ctx.drawImage(data, x, y, width, height);
+			ctx.drawImage(base, 0, 0);
 		}
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: `frame-${frame.file}` }] });
 	}
 };

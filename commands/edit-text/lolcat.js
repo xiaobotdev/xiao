@@ -29,15 +29,11 @@ module.exports = class LolcatCommand extends Command {
 	}
 
 	async run(msg, { from }) {
-		try {
-			const { text } = await request
-				.get('https://speaklolcat.com/')
-				.query({ from });
-			const $ = cheerio.load(text);
-			const translated = $('textarea[id="to"]').first().text();
-			return msg.say(translated);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { text } = await request
+			.get('https://speaklolcat.com/')
+			.query({ from });
+		const $ = cheerio.load(text);
+		const translated = $('textarea[id="to"]').first().text();
+		return msg.say(translated);
 	}
 };

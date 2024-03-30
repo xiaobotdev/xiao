@@ -45,17 +45,13 @@ module.exports = class SquishCommand extends Command {
 		let command;
 		if (axis === 'x') command = '15%x100%';
 		if (axis === 'y') command = '100%x15%';
-		try {
-			const { body } = await request.get(image);
-			const magik = gm(body);
-			magik.out('-liquid-rescale');
-			magik.out(command);
-			magik.setFormat('png');
-			const attachment = await magikToBuffer(magik);
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'squish.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const magik = gm(body);
+		magik.out('-liquid-rescale');
+		magik.out(command);
+		magik.setFormat('png');
+		const attachment = await magikToBuffer(magik);
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'squish.png' }] });
 	}
 };

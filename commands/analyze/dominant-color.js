@@ -27,22 +27,18 @@ module.exports = class DominantColorCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(250, 250);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(data, 0, 0, 1, 1);
-			const imgData = ctx.getImageData(0, 0, 1, 1).data;
-			const hexColor = `#${rgbToHex(imgData[0], imgData[1], imgData[2]).padStart(6, '0')}`;
-			ctx.fillStyle = hexColor;
-			ctx.fillRect(0, 0, canvas.width, canvas.height);
-			const name = ntc.name(hexColor);
-			return msg.say(`${hexColor.toUpperCase()} - ${name[1]}`, {
-				files: [{ attachment: canvas.toBuffer(), name: 'dominant-color.png' }]
-			});
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(250, 250);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(data, 0, 0, 1, 1);
+		const imgData = ctx.getImageData(0, 0, 1, 1).data;
+		const hexColor = `#${rgbToHex(imgData[0], imgData[1], imgData[2]).padStart(6, '0')}`;
+		ctx.fillStyle = hexColor;
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		const name = ntc.name(hexColor);
+		return msg.say(`${hexColor.toUpperCase()} - ${name[1]}`, {
+			files: [{ attachment: canvas.toBuffer(), name: 'dominant-color.png' }]
+		});
 	}
 };

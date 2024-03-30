@@ -49,14 +49,10 @@ module.exports = class CurrencyCommand extends Command {
 		if (!this.currencies[base]) return msg.say('You provided an invalid base currency code.');
 		if (!this.currencies[target]) return msg.say('You provided an invalid target currency code.');
 		if (base === target) return msg.say(`Converting ${base} to ${target} is the same value, dummy.`);
-		try {
-			const rate = await this.fetchRate(base, target);
-			const baseName = this.currencies[base];
-			const targetName = this.currencies[target];
-			return msg.say(`${formatNumber(amount)} ${baseName} is ${formatNumber(amount * rate)} ${targetName}.`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const rate = await this.fetchRate(base, target);
+		const baseName = this.currencies[base];
+		const targetName = this.currencies[target];
+		return msg.say(`${formatNumber(amount)} ${baseName} is ${formatNumber(amount * rate)} ${targetName}.`);
 	}
 
 	async fetchCurrencies() {

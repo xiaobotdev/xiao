@@ -33,19 +33,15 @@ module.exports = class NsfwImageCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const predictions = await isImageNSFW(this.client.nsfwModel, body, false);
-			const formatted = predictions.map(result => {
-				const percentage = Math.round(result.probability * 100);
-				return `${percentage}% ${displayNames[result.className]}`;
-			});
-			return msg.reply(stripIndents`
-				**This image gives the following results:**
-				${formatted.join('\n')}
-			`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const predictions = await isImageNSFW(this.client.nsfwModel, body, false);
+		const formatted = predictions.map(result => {
+			const percentage = Math.round(result.probability * 100);
+			return `${percentage}% ${displayNames[result.className]}`;
+		});
+		return msg.reply(stripIndents`
+			**This image gives the following results:**
+			${formatted.join('\n')}
+		`);
 	}
 };

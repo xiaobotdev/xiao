@@ -41,30 +41,26 @@ module.exports = class FireCommand extends Command {
 
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
-		try {
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
-			const encoder = new GIFEncoder(avatar.width, avatar.height);
-			const canvas = createCanvas(avatar.width, avatar.height);
-			const ctx = canvas.getContext('2d');
-			const stream = encoder.createReadStream();
-			encoder.start();
-			encoder.setRepeat(0);
-			encoder.setDelay(0);
-			encoder.setQuality(200);
-			for (let i = 0; i < frameCount; i++) {
-				const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', `frame-${i}.gif`));
-				const ratio = frame.width / frame.height;
-				const height = Math.round(avatar.width / ratio);
-				drawImageWithTint(ctx, avatar, '#fc671e', 0, 0, avatar.width, avatar.height);
-				ctx.drawImage(frame, 0, avatar.height - height, avatar.width, height);
-				encoder.addFrame(ctx);
-			}
-			encoder.finish();
-			const buffer = await streamToArray(stream);
-			return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'fire.gif' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const { body } = await request.get(avatarURL);
+		const avatar = await loadImage(body);
+		const encoder = new GIFEncoder(avatar.width, avatar.height);
+		const canvas = createCanvas(avatar.width, avatar.height);
+		const ctx = canvas.getContext('2d');
+		const stream = encoder.createReadStream();
+		encoder.start();
+		encoder.setRepeat(0);
+		encoder.setDelay(0);
+		encoder.setQuality(200);
+		for (let i = 0; i < frameCount; i++) {
+			const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', `frame-${i}.gif`));
+			const ratio = frame.width / frame.height;
+			const height = Math.round(avatar.width / ratio);
+			drawImageWithTint(ctx, avatar, '#fc671e', 0, 0, avatar.width, avatar.height);
+			ctx.drawImage(frame, 0, avatar.height - height, avatar.width, height);
+			encoder.addFrame(ctx);
 		}
+		encoder.finish();
+		const buffer = await streamToArray(stream);
+		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'fire.gif' }] });
 	}
 };

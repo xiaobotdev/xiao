@@ -27,20 +27,16 @@ module.exports = class UsElectionCommand extends Command {
 		if (year !== currentYear) {
 			return msg.reply(`This command has not been updated to reflect the ${currentYear} election season.`);
 		}
-		try {
-			const canidates = await this.getList();
-			const list = canidates.map(
-				canidate => `**${canidate.name}:** ${canidate.score} (${canidate.percentChange} in last day)`
-			);
-			return msg.say(stripIndents`
-				__**Chances of Winning the ${year} US Election:**__
-				${list.join('\n')}
+		const canidates = await this.getList();
+		const list = canidates.map(
+			canidate => `**${canidate.name}:** ${canidate.score} (${canidate.percentChange} in last day)`
+		);
+		return msg.say(stripIndents`
+			__**Chances of Winning the ${year} US Election:**__
+			${list.join('\n')}
 
-				_More detailed information is available at <https://electionbettingodds.com/>._
-			`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+			_More detailed information is available at <https://electionbettingodds.com/>._
+		`);
 	}
 
 	async getList() {

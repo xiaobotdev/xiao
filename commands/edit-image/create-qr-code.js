@@ -28,13 +28,9 @@ module.exports = class CreateQRCodeCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		try {
-			const { body } = await request
-				.get('https://api.qrserver.com/v1/create-qr-code/')
-				.query({ data: text });
-			return msg.say({ files: [{ attachment: body, name: 'qr-code.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('https://api.qrserver.com/v1/create-qr-code/')
+			.query({ data: text });
+		return msg.say({ files: [{ attachment: body, name: 'qr-code.png' }] });
 	}
 };

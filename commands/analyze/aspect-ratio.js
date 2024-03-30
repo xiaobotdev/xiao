@@ -26,13 +26,9 @@ module.exports = class AspectRatioCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const common = gcd(data.width, data.height);
-			return msg.reply(`This image has an aspect ratio of **${data.width / common}:${data.height / common}**.`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const common = gcd(data.width, data.height);
+		return msg.reply(`This image has an aspect ratio of **${data.width / common}:${data.height / common}**.`);
 	}
 };

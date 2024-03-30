@@ -54,25 +54,21 @@ module.exports = class SteamCardCommand extends Command {
 	}
 
 	async run(msg, { name, image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.fillStyle = '#feb2c1';
-			ctx.fillRect(0, 0, base.width, base.height);
-			const height = 205 / data.width;
-			ctx.drawImage(data, 12, 19, 205, height * data.height);
-			ctx.drawImage(base, 0, 0);
-			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(14);
-			ctx.fillStyle = 'black';
-			ctx.fillText(name, 16, 25);
-			ctx.fillStyle = 'white';
-			ctx.fillText(name, 15, 24);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-card.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = '#feb2c1';
+		ctx.fillRect(0, 0, base.width, base.height);
+		const height = 205 / data.width;
+		ctx.drawImage(data, 12, 19, 205, height * data.height);
+		ctx.drawImage(base, 0, 0);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(14);
+		ctx.fillStyle = 'black';
+		ctx.fillText(name, 16, 25);
+		ctx.fillStyle = 'white';
+		ctx.fillText(name, 15, 24);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
 	}
 };

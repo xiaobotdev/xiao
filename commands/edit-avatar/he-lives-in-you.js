@@ -38,19 +38,15 @@ module.exports = class HeLivesInYouCommand extends Command {
 
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'he-lives-in-you.png'));
-			const { body } = await request.get(avatarURL);
-			const avatar = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			ctx.rotate(-24 * (Math.PI / 180));
-			drawImageWithTint(ctx, avatar, '#00115d', 75, 160, 130, 150);
-			ctx.rotate(24 * (Math.PI / 180));
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'he-lives-in-you.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'he-lives-in-you.png'));
+		const { body } = await request.get(avatarURL);
+		const avatar = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		ctx.rotate(-24 * (Math.PI / 180));
+		drawImageWithTint(ctx, avatar, '#00115d', 75, 160, 130, 150);
+		ctx.rotate(24 * (Math.PI / 180));
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'he-lives-in-you.png' }] });
 	}
 };

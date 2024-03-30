@@ -26,25 +26,21 @@ module.exports = class WordOfTheDayCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const word = await this.fetchWordOfTheDay();
-			let data;
-			if (this.cache?.word === word) {
-				data = this.cache.data;
-			} else {
-				const { body } = await request
-					.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}`)
-					.query({ key: WEBSTER_KEY });
-				data = body[0];
-				this.cache = { word, data };
-			}
-			return msg.say(stripIndents`
-				**${data.meta.stems[0]}** (${data.fl})
-				${data.shortdef.map((definition, i) => `(${i + 1}) ${definition}`).join('\n')}
-			`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const word = await this.fetchWordOfTheDay();
+		let data;
+		if (this.cache?.word === word) {
+			data = this.cache.data;
+		} else {
+			const { body } = await request
+				.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}`)
+				.query({ key: WEBSTER_KEY });
+			data = body[0];
+			this.cache = { word, data };
 		}
+		return msg.say(stripIndents`
+			**${data.meta.stems[0]}** (${data.fl})
+			${data.shortdef.map((definition, i) => `(${i + 1}) ${definition}`).join('\n')}
+		`);
 	}
 
 	async fetchWordOfTheDay() {

@@ -25,26 +25,22 @@ module.exports = class ApodCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { body } = await request
-				.get('https://api.nasa.gov/planetary/apod')
-				.query({ api_key: GOV_KEY });
-			const embed = new MessageEmbed()
-				.setTitle(body.title)
-				.setDescription(shorten(body.explanation))
-				.setColor(0x2E528E)
-				.setAuthor(
-					'Astronomy Picture of the Day',
-					'https://i.imgur.com/Wh8jY9c.png',
-					'https://apod.nasa.gov/apod/astropix.html'
-				)
-				.setImage(body.media_type === 'image' ? body.url : null)
-				.setURL(body.url)
-				.setFooter(`Image Credits: ${body.copyright ? body.copyright.replaceAll('\n', '/') : 'Public Domain'}`)
-				.setTimestamp();
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('https://api.nasa.gov/planetary/apod')
+			.query({ api_key: GOV_KEY });
+		const embed = new MessageEmbed()
+			.setTitle(body.title)
+			.setDescription(shorten(body.explanation))
+			.setColor(0x2E528E)
+			.setAuthor(
+				'Astronomy Picture of the Day',
+				'https://i.imgur.com/Wh8jY9c.png',
+				'https://apod.nasa.gov/apod/astropix.html'
+			)
+			.setImage(body.media_type === 'image' ? body.url : null)
+			.setURL(body.url)
+			.setFooter(`Image Credits: ${body.copyright ? body.copyright.replaceAll('\n', '/') : 'Public Domain'}`)
+			.setTimestamp();
+		return msg.embed(embed);
 	}
 };

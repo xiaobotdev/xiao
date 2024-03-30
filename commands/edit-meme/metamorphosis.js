@@ -49,21 +49,17 @@ module.exports = class MetamorphosisCommand extends Command {
 	}
 
 	async run(msg, { name, image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'metamorphosis.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			const { x, y, width, height } = centerImagePart(data, 200, 200, 412, 257);
-			ctx.drawImage(data, x, y, width, height);
-			ctx.textBaseline = 'top';
-			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
-			ctx.fillText(`le ${name.toLowerCase()}`, 345, 466, 330);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'metamorphosis.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'metamorphosis.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		const { x, y, width, height } = centerImagePart(data, 200, 200, 412, 257);
+		ctx.drawImage(data, x, y, width, height);
+		ctx.textBaseline = 'top';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
+		ctx.fillText(`le ${name.toLowerCase()}`, 345, 466, 330);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'metamorphosis.png' }] });
 	}
 };

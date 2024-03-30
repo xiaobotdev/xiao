@@ -27,19 +27,15 @@ module.exports = class DeepFryCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		try {
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(data.width, data.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(data, 0, 0);
-			desaturate(ctx, -20, 0, 0, data.width, data.height);
-			contrast(ctx, 0, 0, data.width, data.height);
-			const attachment = canvas.toBuffer('image/jpeg', { quality: 0.2 });
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'deep-fry.jpeg' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(data.width, data.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(data, 0, 0);
+		desaturate(ctx, -20, 0, 0, data.width, data.height);
+		contrast(ctx, 0, 0, data.width, data.height);
+		const attachment = canvas.toBuffer('image/jpeg', { quality: 0.2 });
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'deep-fry.jpeg' }] });
 	}
 };

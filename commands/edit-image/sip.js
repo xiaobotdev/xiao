@@ -44,27 +44,23 @@ module.exports = class SipCommand extends Command {
 	}
 
 	async run(msg, { image, direction }) {
-		try {
-			const overlay = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'sip.png'));
-			const { body } = await request.get(image);
-			const base = await loadImage(body);
-			const canvas = createCanvas(overlay.width, overlay.height);
-			const scaleH = overlay.width / base.width;
-			const height = Math.round(base.height * scaleH);
-			const ctx = canvas.getContext('2d');
-			ctx.fillRect(0, 0, overlay.width, overlay.height);
-			if (direction === 'right') {
-				ctx.translate(overlay.width, 0);
-				ctx.scale(-1, 1);
-			}
-			ctx.drawImage(base, 0, 0, overlay.width, height);
-			if (direction === 'right') ctx.setTransform(1, 0, 0, 1, 0, 0);
-			ctx.drawImage(overlay, 0, 0);
-			const attachment = canvas.toBuffer();
-			if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
-			return msg.say({ files: [{ attachment, name: 'sip.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const overlay = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'sip.png'));
+		const { body } = await request.get(image);
+		const base = await loadImage(body);
+		const canvas = createCanvas(overlay.width, overlay.height);
+		const scaleH = overlay.width / base.width;
+		const height = Math.round(base.height * scaleH);
+		const ctx = canvas.getContext('2d');
+		ctx.fillRect(0, 0, overlay.width, overlay.height);
+		if (direction === 'right') {
+			ctx.translate(overlay.width, 0);
+			ctx.scale(-1, 1);
 		}
+		ctx.drawImage(base, 0, 0, overlay.width, height);
+		if (direction === 'right') ctx.setTransform(1, 0, 0, 1, 0, 0);
+		ctx.drawImage(overlay, 0, 0);
+		const attachment = canvas.toBuffer();
+		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		return msg.say({ files: [{ attachment, name: 'sip.png' }] });
 	}
 };

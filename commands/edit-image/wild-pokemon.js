@@ -48,22 +48,18 @@ module.exports = class WildPokemonCommand extends Command {
 	}
 
 	async run(msg, { name, image }) {
-		try {
-			const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'wild-pokemon.png'));
-			const { body } = await request.get(image);
-			const data = await loadImage(body);
-			const canvas = createCanvas(base.width, base.height);
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(base, 0, 0);
-			const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
-			pixelize(ctx, canvas, data, 0.30, x, y, width, height);
-			greyscale(ctx, x, y, width, height);
-			ctx.textBaseline = 'top';
-			ctx.font = this.client.fonts.get('PokemonGb.ttf').toCanvasString(16);
-			ctx.fillText(name.toUpperCase(), 110, 203, 215);
-			return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wild-pokemon.png' }] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'wild-pokemon.png'));
+		const { body } = await request.get(image);
+		const data = await loadImage(body);
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(base, 0, 0);
+		const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
+		pixelize(ctx, canvas, data, 0.30, x, y, width, height);
+		greyscale(ctx, x, y, width, height);
+		ctx.textBaseline = 'top';
+		ctx.font = this.client.fonts.get('PokemonGb.ttf').toCanvasString(16);
+		ctx.fillText(name.toUpperCase(), 110, 203, 215);
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wild-pokemon.png' }] });
 	}
 };
