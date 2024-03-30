@@ -33,7 +33,7 @@ module.exports = class SauceNaoCommand extends Command {
 		if (!data.length) return msg.reply('No results for this image.');
 		const sauce = data[0];
 		const embed = new MessageEmbed()
-			.setThumbnail(sauce.thumbnail)
+			.setImage(sauce.thumbnail)
 			.setURL(sauce.url)
 			.setAuthor(sauce.authorName || 'Unknown Author', sauce.authorUrl || sauce.url)
 			.setFooter(`${sauce.similarity}% similarity`);
