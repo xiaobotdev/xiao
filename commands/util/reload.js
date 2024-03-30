@@ -27,6 +27,7 @@ module.exports = class ReloadCommand extends Command {
 		command.reload();
 		this.client.importCommandLeaderboard();
 		this.client.importLastRun();
+		this.client.registry.commands.get('cloc').cache = null;
 		return msg.say(`Reloaded the \`${command.name}\` command.`);
 	}
 };
