@@ -53,7 +53,7 @@ module.exports = class ChallengerCommand extends Command {
 	}
 
 	async run(msg, { image, flags }) {
-		const silhouetted = flags.show || flags.s;
+		const silhouetted = !(flags.show || flags.s);
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
 		const { body } = await request.get(image);
 		const data = await loadImage(body);
