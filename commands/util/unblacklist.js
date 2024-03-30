@@ -16,14 +16,12 @@ module.exports = class UnblacklistCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type do you want to unblacklist? Either ${list(types, 'or')}.`,
 					type: 'string',
 					oneOf: types,
 					parse: type => type.toLowerCase()
 				},
 				{
 					key: 'target',
-					prompt: 'Who do you want to unblacklist? Use the ID.',
 					type: 'string'
 				}
 			]

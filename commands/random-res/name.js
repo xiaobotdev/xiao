@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { list } = require('../../util/Util');
 const genders = ['male', 'female', 'both'];
 
 module.exports = class NameCommand extends Command {
@@ -21,7 +20,6 @@ module.exports = class NameCommand extends Command {
 			args: [
 				{
 					key: 'gender',
-					prompt: `Which gender do you want to generate a name for? Either ${list(genders, 'or')}.`,
 					type: 'string',
 					default: 'both',
 					oneOf: genders,

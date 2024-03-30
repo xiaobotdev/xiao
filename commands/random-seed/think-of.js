@@ -31,13 +31,11 @@ module.exports = class ThinkOfCommand extends Command {
 				{
 					key: 'second',
 					label: 'second user',
-					prompt: 'What user should they think about?',
 					type: 'user'
 				},
 				{
 					key: 'first',
 					label: 'first user',
-					prompt: 'Who is the user doing the thinking?',
 					type: 'user',
 					default: msg => msg.author
 				}

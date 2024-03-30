@@ -20,14 +20,12 @@ module.exports = class ShakeCommand extends Command {
 			args: [
 				{
 					key: 'amount',
-					prompt: 'How much do you want to shake the image? Give a number, like 1.',
 					type: 'integer',
 					max: 50,
 					min: 1
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

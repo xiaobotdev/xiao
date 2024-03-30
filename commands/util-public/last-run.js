@@ -13,7 +13,6 @@ module.exports = class LastRunCommand extends Command {
 			args: [
 				{
 					key: 'command',
-					prompt: 'Which command would you like to view the last run date of?',
 					type: 'command'
 				}
 			]

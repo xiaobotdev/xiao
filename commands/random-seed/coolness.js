@@ -14,7 +14,6 @@ module.exports = class CoolnessCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user do you want to determine the coolness of?',
 					type: 'user',
 					default: msg => msg.author
 				}

@@ -12,7 +12,6 @@ module.exports = class ThiccCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user do you want to determine the thiccness of?',
 					type: 'user',
 					default: msg => msg.author
 				}

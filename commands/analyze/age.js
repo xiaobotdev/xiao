@@ -10,7 +10,6 @@ module.exports = class AgeCommand extends Command {
 			args: [
 				{
 					key: 'year',
-					prompt: 'What year would you like to get the age for?',
 					type: 'integer',
 					min: 1
 				}

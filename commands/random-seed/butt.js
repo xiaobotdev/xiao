@@ -21,7 +21,6 @@ module.exports = class ButtCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user do you want to determine the butt quality of?',
 					type: 'user',
 					default: msg => msg.author
 				}

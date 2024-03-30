@@ -14,7 +14,6 @@ module.exports = class CutenessCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user do you want to determine the cuteness of?',
 					type: 'user',
 					default: msg => msg.author
 				}

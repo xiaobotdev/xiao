@@ -38,13 +38,11 @@ module.exports = class CertificateCommand extends Command {
 			args: [
 				{
 					key: 'reason',
-					prompt: 'What is the reason for the award?',
 					type: 'string',
 					max: 30
 				},
 				{
 					key: 'name',
-					prompt: 'What is the name of the person recieving the award?',
 					type: 'string',
 					max: 30,
 					default: msg => msg.author.username

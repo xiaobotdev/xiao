@@ -28,13 +28,11 @@ module.exports = class EnslavedCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What is the name of thing you want to enslave?',
 					type: 'string',
 					max: 20
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}

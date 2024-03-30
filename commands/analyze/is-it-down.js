@@ -19,7 +19,6 @@ module.exports = class IsItDownCommand extends Command {
 			args: [
 				{
 					key: 'url',
-					prompt: 'What URL do you want to test?',
 					type: 'url'
 				}
 			]

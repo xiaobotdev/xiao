@@ -20,7 +20,6 @@ module.exports = class CreateQRCodeCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to a QR Code?',
 					type: 'string'
 				}
 			]

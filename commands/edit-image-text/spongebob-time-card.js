@@ -39,7 +39,6 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text of the time card be?',
 					type: 'string',
 					max: 280
 				}

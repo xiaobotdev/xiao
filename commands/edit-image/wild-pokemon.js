@@ -33,13 +33,11 @@ module.exports = class WildPokemonCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What is the name of the Pokémon that should appear?',
 					type: 'string',
 					max: 13
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 128 })
 				}

@@ -18,19 +18,16 @@ module.exports = class DomineeringCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge?',
 					type: 'user'
 				},
 				{
 					key: 'color',
-					prompt: `What color do you want to be? Either ${list(Object.keys(colors), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(colors),
 					parse: color => color.toLowerCase()
 				},
 				{
 					key: 'size',
-					prompt: 'What board size do you want to use?',
 					type: 'integer',
 					min: 3,
 					max: 10,

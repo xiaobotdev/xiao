@@ -10,7 +10,6 @@ module.exports = class PigLatinCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to pig latin?',
 					type: 'string',
 					validate: text => {
 						if (this.pigLatin(text).length < 2000) return true;

@@ -13,7 +13,6 @@ module.exports = class RollCommand extends Command {
 				{
 					key: 'maxValue',
 					label: 'highest number',
-					prompt: 'What is the highest number you wish to appear?',
 					type: 'integer',
 					default: 6,
 					min: 1,
@@ -22,7 +21,6 @@ module.exports = class RollCommand extends Command {
 				{
 					key: 'minValue',
 					label: 'lowest number',
-					prompt: 'What is the lowest number you wish to appear?',
 					type: 'integer',
 					default: 0,
 					min: 0,

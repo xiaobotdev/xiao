@@ -19,12 +19,10 @@ module.exports = class EmojiFaceCommand extends Command {
 			args: [
 				{
 					key: 'emoji',
-					prompt: 'What emoji do you want to draw?',
 					type: 'custom-emoji|default-emoji'
 				},
 				{
 					key: 'image',
-					prompt: 'What face would you like to scan?',
 					type: 'image-or-avatar'
 				}
 			]

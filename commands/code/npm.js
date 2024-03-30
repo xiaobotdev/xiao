@@ -23,7 +23,6 @@ module.exports = class NPMCommand extends Command {
 				{
 					key: 'pkg',
 					label: 'package',
-					prompt: 'What package would you like to get information on?',
 					type: 'string',
 					parse: pkg => encodeURIComponent(pkg.replaceAll(' ', '-'))
 				}

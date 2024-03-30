@@ -38,7 +38,6 @@ module.exports = class DECTalkCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text do you want to say?',
 					type: 'string',
 					max: 1024
 				}

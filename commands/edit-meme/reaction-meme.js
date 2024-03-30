@@ -27,12 +27,10 @@ module.exports = class ReactionMemeCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text of the meme be?',
 					type: 'string'
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 })
 				}

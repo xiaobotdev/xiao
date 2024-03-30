@@ -33,14 +33,12 @@ module.exports = class SkyrimSkillCommand extends Command {
 			args: [
 				{
 					key: 'skill',
-					prompt: 'What skill should be used?',
 					type: 'string',
 					max: 20,
 					parse: skill => skill.toUpperCase()
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
 				}

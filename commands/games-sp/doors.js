@@ -26,7 +26,6 @@ module.exports = class DoorsCommand extends Command {
 			args: [
 				{
 					key: 'door',
-					prompt: 'Which door number do you want to pick? A number from 1-3.',
 					type: 'integer',
 					min: 1,
 					max: 3

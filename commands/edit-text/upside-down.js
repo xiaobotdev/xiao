@@ -13,7 +13,6 @@ module.exports = class UpsideDownCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to flip upside-down?',
 					type: 'string'
 				}
 			]

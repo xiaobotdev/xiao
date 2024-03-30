@@ -33,13 +33,11 @@ module.exports = class TuxedoPoohCommand extends Command {
 			args: [
 				{
 					key: 'normal',
-					prompt: 'What text should be the normal Pooh?',
 					type: 'string',
 					max: 500
 				},
 				{
 					key: 'tuxedo',
-					prompt: 'What text should be the tuxedo Pooh?',
 					type: 'string',
 					max: 500
 				}

@@ -18,7 +18,6 @@ module.exports = class AspectRatioCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					prompt: 'What image would you like to get the aspect ratio of?',
 					type: 'image-or-avatar'
 				}
 			]

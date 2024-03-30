@@ -23,7 +23,6 @@ module.exports = class DrawCardsCommand extends Command {
 				{
 					key: 'amount',
 					label: 'hand size',
-					prompt: 'How many cards do you want to draw?',
 					type: 'integer',
 					max: 10,
 					min: 1

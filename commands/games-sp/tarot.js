@@ -42,7 +42,6 @@ module.exports = class TarotCommand extends Command {
 			args: [
 				{
 					key: 'question',
-					prompt: 'What question should the tarot reading answer?',
 					type: 'string',
 					max: 50
 				}

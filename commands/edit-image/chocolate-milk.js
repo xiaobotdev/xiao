@@ -19,13 +19,11 @@ module.exports = class ChocolateMilkCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 })
 				},
 				{
 					key: 'direction',
-					prompt: 'What direction should the avatar face? Either right or left.',
 					type: 'string',
 					oneOf: ['left', 'right'],
 					default: 'left',

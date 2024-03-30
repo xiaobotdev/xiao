@@ -25,12 +25,10 @@ module.exports = class WordChainCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge?',
 					type: 'user'
 				},
 				{
 					key: 'time',
-					prompt: 'How long do you want to wait for input of new words (in seconds)?',
 					type: 'integer',
 					default: 10,
 					max: 10,

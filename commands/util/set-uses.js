@@ -24,20 +24,17 @@ module.exports = class SetUsesCommand extends Command {
 			args: [
 				{
 					key: 'mode',
-					prompt: 'Do you want to add, subtract, or set exact?',
 					type: 'string',
 					oneOf: modes,
 					parse: mode => mode.toLowerCase()
 				},
 				{
 					key: 'command',
-					prompt: 'What command do you want to modify?',
 					type: 'command'
 				},
 				{
 					key: 'num',
 					label: 'number',
-					prompt: 'How much do you want to change the usage?',
 					type: 'integer',
 					min: 1
 				}

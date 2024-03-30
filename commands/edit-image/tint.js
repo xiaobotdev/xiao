@@ -18,13 +18,11 @@ module.exports = class TintCommand extends Command {
 			args: [
 				{
 					key: 'color',
-					prompt: 'What color do you want to use? This can be #colorcode or a name.',
 					type: 'string',
 					parse: color => color.toLowerCase()
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

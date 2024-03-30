@@ -10,7 +10,6 @@ module.exports = class BubbleWrapCommand extends Command {
 			args: [
 				{
 					key: 'amount',
-					prompt: 'How many bubbles should there be?',
 					type: 'integer',
 					default: 156,
 					min: 1,

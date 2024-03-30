@@ -43,14 +43,12 @@ module.exports = class AnimaleseCommand extends Command {
 			args: [
 				{
 					key: 'pitch',
-					prompt: `What pitch do you want to use? Either ${list(Object.keys(pitches, 'or'))}.`,
 					type: 'string',
 					oneOf: Object.keys(pitches),
 					parse: pitch => pitches[pitch.toLowerCase()]
 				},
 				{
 					key: 'text',
-					prompt: 'What text should be said?',
 					type: 'string',
 					validate: text => {
 						if (!this.processScript(text)) return 'This text has no audible characters.';

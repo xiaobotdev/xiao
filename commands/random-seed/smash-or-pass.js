@@ -13,7 +13,6 @@ module.exports = class SmashOrPassCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user do you want to check?',
 					type: 'user',
 					default: msg => msg.author
 				}

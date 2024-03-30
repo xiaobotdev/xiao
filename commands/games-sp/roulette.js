@@ -19,7 +19,6 @@ module.exports = class RouletteCommand extends Command {
 			args: [
 				{
 					key: 'space',
-					prompt: 'What space do you want to bet on?',
 					type: 'string',
 					validate: space => {
 						if (numbers.includes(Number.parseInt(space, 10))) return true;

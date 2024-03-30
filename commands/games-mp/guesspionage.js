@@ -40,7 +40,6 @@ module.exports = class GuesspionageCommand extends Command {
 			args: [
 				{
 					key: 'players',
-					prompt: 'How many players are you expecting to have?',
 					type: 'integer',
 					min,
 					max

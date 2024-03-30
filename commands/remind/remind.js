@@ -13,7 +13,6 @@ module.exports = class RemindCommand extends Command {
 			args: [
 				{
 					key: 'time',
-					prompt: 'What do you want me to remind you about, and in how long?',
 					type: 'sherlock'
 				}
 			]

@@ -11,7 +11,6 @@ module.exports = class UnspoilerCommand extends Command {
 			args: [
 				{
 					key: 'message',
-					prompt: 'What message would you like to unspoiler?',
 					type: 'message'
 				}
 			]

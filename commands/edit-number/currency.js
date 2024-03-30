@@ -21,19 +21,16 @@ module.exports = class CurrencyCommand extends Command {
 			args: [
 				{
 					key: 'amount',
-					prompt: 'How much currency should be converted? Do not use symbols.',
 					type: 'float'
 				},
 				{
 					key: 'base',
-					prompt: 'What currency code (e.g. USD) do you want to use as the base?',
 					type: 'string',
 					min: 3,
 					max: 3
 				},
 				{
 					key: 'target',
-					prompt: 'What currency code (e.g. USD) do you want to convert to?',
 					type: 'string',
 					min: 3,
 					max: 3

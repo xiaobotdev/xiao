@@ -47,7 +47,6 @@ module.exports = class PokedexLocationCommand extends Command {
 			args: [
 				{
 					key: 'pokemon',
-					prompt: 'What Pokémon would you like to get information on?',
 					type: 'pokemon'
 				}
 			]

@@ -34,7 +34,6 @@ module.exports = class AlertCommand extends Command {
 			args: [
 				{
 					key: 'message',
-					prompt: 'What should the alert say?',
 					type: 'string',
 					max: 280
 				}

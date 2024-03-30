@@ -22,7 +22,6 @@ module.exports = class PokerCommand extends Command {
 			args: [
 				{
 					key: 'playersCount',
-					prompt: 'How many players are you expecting to have?',
 					type: 'integer',
 					min,
 					max

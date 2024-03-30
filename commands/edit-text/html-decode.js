@@ -12,7 +12,6 @@ module.exports = class HtmlDecodeCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to decode?',
 					type: 'string',
 					validate: text => {
 						if (decodeHTML(text).length < 2000) return true;

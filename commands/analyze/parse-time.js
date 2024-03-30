@@ -13,7 +13,6 @@ module.exports = class ParseTimeCommand extends Command {
 			args: [
 				{
 					key: 'time',
-					prompt: 'What do you want me to analyze?',
 					type: 'sherlock'
 				}
 			]

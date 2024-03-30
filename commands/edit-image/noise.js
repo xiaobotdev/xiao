@@ -27,14 +27,12 @@ module.exports = class NoiseCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type of noise would you like to add? Either ${list(types, 'or')}.`,
 					type: 'string',
 					oneOf: types,
 					default: 'poisson'
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

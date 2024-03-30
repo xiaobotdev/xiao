@@ -21,13 +21,11 @@ module.exports = class GravityCommand extends Command {
 			args: [
 				{
 					key: 'weight',
-					prompt: 'What should the starting weight be (in KG)?',
 					type: 'float'
 				},
 				{
 					key: 'planet',
 					label: 'celestial object',
-					prompt: `What celestial object do you want to use? Either ${list(Object.keys(planets), 'or')}.`,
 					type: 'string',
 					oneOf: Object.keys(planets),
 					parse: planet => planet.toLowerCase()

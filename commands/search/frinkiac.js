@@ -21,7 +21,6 @@ module.exports = class FrinkiacCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What line would you like to look up?',
 					type: 'string'
 				}
 			]

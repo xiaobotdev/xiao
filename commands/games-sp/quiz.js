@@ -25,7 +25,6 @@ module.exports = class QuizCommand extends Command {
 			args: [
 				{
 					key: 'difficulty',
-					prompt: `What should the difficulty of the game be? Either ${list(difficulties, 'or')}.`,
 					type: 'string',
 					default: '',
 					oneOf: difficulties,

@@ -15,12 +15,10 @@ module.exports = class CalendarCommand extends Command {
 			args: [
 				{
 					key: 'month',
-					prompt: 'What month would you like to get the calendar of?',
 					type: 'month'
 				},
 				{
 					key: 'year',
-					prompt: 'What year would you like to get the calendar of?',
 					type: 'integer',
 					min: 1
 				}

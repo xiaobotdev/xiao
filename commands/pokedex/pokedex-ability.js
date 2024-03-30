@@ -25,7 +25,6 @@ module.exports = class PokedexAbilityCommand extends Command {
 			args: [
 				{
 					key: 'ability',
-					prompt: 'What ability would you like to get information on?',
 					type: 'string'
 				}
 			]

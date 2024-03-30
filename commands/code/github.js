@@ -25,13 +25,11 @@ module.exports = class GithubCommand extends Command {
 			args: [
 				{
 					key: 'author',
-					prompt: 'Who is the author of the repository?',
 					type: 'string',
 					parse: author => encodeURIComponent(author)
 				},
 				{
 					key: 'repository',
-					prompt: 'What is the name of the repository?',
 					type: 'string',
 					parse: repository => encodeURIComponent(repository)
 				}

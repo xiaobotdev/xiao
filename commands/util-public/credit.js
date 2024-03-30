@@ -13,12 +13,10 @@ module.exports = class CreditCommand extends Command {
 			args: [
 				{
 					key: 'command',
-					prompt: 'Which command would you like to view the credits list of?',
 					type: 'command'
 				},
 				{
 					key: 'page',
-					prompt: 'What page do you want to view?',
 					type: 'integer',
 					default: 1,
 					min: 1

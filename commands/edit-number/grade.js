@@ -12,14 +12,12 @@ module.exports = class GradeCommand extends Command {
 				{
 					key: 'earned',
 					label: 'points earned',
-					prompt: 'How many points did you get?',
 					type: 'integer',
 					min: 0
 				},
 				{
 					key: 'total',
 					label: 'total points',
-					prompt: 'How many points are available to recieve?',
 					type: 'integer',
 					min: 0
 				}

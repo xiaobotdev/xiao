@@ -37,20 +37,17 @@ module.exports = class AxisCultSignUpCommand extends Command {
 			args: [
 				{
 					key: 'gender',
-					prompt: 'What is your gender?',
 					type: 'string',
 					oneOf: ['male', 'female']
 				},
 				{
 					key: 'age',
-					prompt: 'How old are you?',
 					type: 'integer',
 					min: 1,
 					max: 10000
 				},
 				{
 					key: 'profession',
-					prompt: 'What is your profession?',
 					type: 'string',
 					max: 15
 				}

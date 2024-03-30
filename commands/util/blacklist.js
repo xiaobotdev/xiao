@@ -1,5 +1,4 @@
 const Command = require('../../framework/Command');
-const { list } = require('../../util/Util');
 const types = ['user', 'guild'];
 
 module.exports = class BlacklistCommand extends Command {
@@ -15,14 +14,12 @@ module.exports = class BlacklistCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type do you want to blacklist? Either ${list(types, 'or')}.`,
 					type: 'string',
 					oneOf: types,
 					parse: type => type.toLowerCase()
 				},
 				{
 					key: 'target',
-					prompt: 'Who do you want to blacklist? Use the ID.',
 					type: 'string'
 				}
 			]

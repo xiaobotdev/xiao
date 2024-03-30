@@ -13,7 +13,6 @@ module.exports = class LotteryCommand extends Command {
 			args: [
 				{
 					key: 'choices',
-					prompt: 'What numbers do you choose? Only the first six will be counted.',
 					type: 'integer',
 					infinite: true,
 					max: 70,

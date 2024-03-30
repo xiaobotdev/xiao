@@ -27,20 +27,17 @@ module.exports = class DemotivationalCommand extends Command {
 			args: [
 				{
 					key: 'title',
-					prompt: 'What should the title of the poster be?',
 					type: 'string',
 					max: 50,
 					parse: title => title.toUpperCase()
 				},
 				{
 					key: 'text',
-					prompt: 'What should the text of the poster be?',
 					type: 'string',
 					max: 100
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

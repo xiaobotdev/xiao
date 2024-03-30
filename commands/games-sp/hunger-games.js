@@ -22,7 +22,6 @@ module.exports = class HungerGamesCommand extends Command {
 			args: [
 				{
 					key: 'tributes',
-					prompt: 'Who should compete in the games? Up to 24 tributes can participate.',
 					type: 'string',
 					infinite: true,
 					max: 20

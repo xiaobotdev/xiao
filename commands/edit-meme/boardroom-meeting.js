@@ -32,28 +32,24 @@ module.exports = class BoardroomMeetingCommand extends Command {
 			args: [
 				{
 					key: 'question',
-					prompt: 'What question should the meeting leader ask?',
 					type: 'string',
 					max: 100
 				},
 				{
 					key: 'suggestion1',
 					label: 'first suggestion',
-					prompt: 'What should the first employee suggest?',
 					type: 'string',
 					max: 50
 				},
 				{
 					key: 'suggestion2',
 					label: 'second suggestion',
-					prompt: 'What should the second employee suggest?',
 					type: 'string',
 					max: 50
 				},
 				{
 					key: 'final',
 					label: 'final suggestion',
-					prompt: 'What should the employee who gets thrown out the window suggest?',
 					type: 'string',
 					max: 50
 				}

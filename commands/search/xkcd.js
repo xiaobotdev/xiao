@@ -23,7 +23,6 @@ module.exports = class XKCDCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'Please enter either a specific comic number, today, or random.',
 					type: 'string',
 					default: 'today',
 					validate: query => {

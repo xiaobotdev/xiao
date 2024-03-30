@@ -32,7 +32,6 @@ module.exports = class SpeedLimitCommand extends Command {
 			args: [
 				{
 					key: 'limit',
-					prompt: 'What limit should be on the sign?',
 					type: 'string',
 					max: 5
 				}

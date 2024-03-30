@@ -22,7 +22,6 @@ module.exports = class NASACommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What image would you like to search for?',
 					type: 'string'
 				}
 			]

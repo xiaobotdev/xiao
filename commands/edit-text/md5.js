@@ -11,7 +11,6 @@ module.exports = class MD5Command extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to create an MD5 hash of?',
 					type: 'string'
 				}
 			]

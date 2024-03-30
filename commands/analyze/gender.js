@@ -19,7 +19,6 @@ module.exports = class GenderCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What name do you want to determine the gender of?',
 					type: 'string',
 					max: 20
 				}

@@ -12,7 +12,6 @@ module.exports = class NsfwUrlCommand extends Command {
 			args: [
 				{
 					key: 'url',
-					prompt: 'What URL would you like to test?',
 					type: 'url'
 				}
 			]

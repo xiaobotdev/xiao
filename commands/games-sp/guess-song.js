@@ -33,7 +33,6 @@ module.exports = class GuessSongCommand extends Command {
 			args: [
 				{
 					key: 'chart',
-					prompt: `What chart do you want to use for the game? Either ${list(Object.keys(playlists, 'or'))}.`,
 					type: 'string',
 					oneOf: Object.keys(playlists),
 					parse: chart => chart.toLowerCase()

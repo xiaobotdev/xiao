@@ -26,14 +26,12 @@ module.exports = class SquishCommand extends Command {
 			args: [
 				{
 					key: 'axis',
-					prompt: 'What axis do you want to squish?',
 					type: 'string',
 					oneOf: ['x', 'y'],
 					parse: axis => axis.toLowerCase()
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

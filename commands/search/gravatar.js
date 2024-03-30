@@ -21,7 +21,6 @@ module.exports = class GravatarCommand extends Command {
 			args: [
 				{
 					key: 'email',
-					prompt: 'What email do you want to get the Gravatar for?',
 					type: 'string',
 					parse: email => email.toLowerCase()
 				}

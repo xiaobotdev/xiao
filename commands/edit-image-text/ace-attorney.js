@@ -49,14 +49,12 @@ module.exports = class AceAttorneyCommand extends Command {
 			args: [
 				{
 					key: 'character',
-					prompt: `What character do you want to use? Either ${list(Object.keys(characters), 'or')}.`,
 					type: 'string',
 					oneOf: Object.values(characters).reduce((a, b) => a.concat(b)),
 					parse: character => character.toLowerCase()
 				},
 				{
 					key: 'quote',
-					prompt: 'What should the character say?',
 					type: 'string',
 					max: 250
 				}

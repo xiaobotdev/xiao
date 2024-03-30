@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
-const { list } = require('../../util/Util');
 const types = ['reject', 'info', 'approve'];
 const typesColors = ['RED', 'YELLOW', 'GREEN'];
 const displaytypes = ['❌ Rejected', '❓ Need More Info', '✅ Accepted/Fixed'];
@@ -19,19 +18,16 @@ module.exports = class ReportRespondCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'What user do you want to respond to?',
 					type: 'user'
 				},
 				{
 					key: 'type',
-					prompt: `What is the reason for your report? Either ${list(types, 'or')}.`,
 					type: 'string',
 					oneOf: types,
 					parse: type => types.indexOf(type.toLowerCase())
 				},
 				{
 					key: 'message',
-					prompt: 'What response do you want to send?',
 					type: 'string'
 				}
 			]

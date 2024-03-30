@@ -21,13 +21,11 @@ module.exports = class GoogleDoodleCommand extends Command {
 			args: [
 				{
 					key: 'month',
-					prompt: 'What month would you like to get doodles for?',
 					type: 'month',
 					default: 'latest'
 				},
 				{
 					key: 'year',
-					prompt: 'What year would you like to get doodles for?',
 					type: 'integer',
 					default: ''
 				}

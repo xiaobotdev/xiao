@@ -11,7 +11,6 @@ module.exports = class LowercaseCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to lowercase?',
 					type: 'string'
 				}
 			]

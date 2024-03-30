@@ -22,7 +22,6 @@ module.exports = class WordSpudCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to play against?',
 					type: 'user'
 				}
 			]

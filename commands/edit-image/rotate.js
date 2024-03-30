@@ -17,14 +17,12 @@ module.exports = class RotateCommand extends Command {
 			args: [
 				{
 					key: 'degrees',
-					prompt: 'How many degrees do you want to rotate the image?',
 					type: 'integer',
 					min: -360,
 					max: 360
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}

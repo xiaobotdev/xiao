@@ -17,7 +17,6 @@ module.exports = class LintCommand extends Command {
 			args: [
 				{
 					key: 'code',
-					prompt: 'What code do you want to lint?',
 					type: 'code'
 				}
 			]

@@ -27,7 +27,6 @@ module.exports = class PillsCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What do you want to be hard to swallow?',
 					type: 'string',
 					max: 500
 				}

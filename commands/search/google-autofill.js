@@ -19,7 +19,6 @@ module.exports = class GoogleAutofillCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What would you like to search for?',
 					type: 'string'
 				}
 			]

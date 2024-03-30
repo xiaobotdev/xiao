@@ -13,7 +13,6 @@ module.exports = class GcdCommand extends Command {
 				{
 					key: 'number1',
 					label: 'first number',
-					prompt: 'What is the first number you want to check?',
 					type: 'integer',
 					max: Number.MAX_SAFE_INTEGER,
 					min: 1
@@ -21,7 +20,6 @@ module.exports = class GcdCommand extends Command {
 				{
 					key: 'number2',
 					label: 'second number',
-					prompt: 'What is the second number you want to check?',
 					type: 'integer',
 					max: Number.MAX_SAFE_INTEGER,
 					min: 1

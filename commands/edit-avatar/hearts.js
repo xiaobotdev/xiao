@@ -28,7 +28,6 @@ module.exports = class HeartsCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
 					default: msg => msg.author
 				}

@@ -11,7 +11,6 @@ module.exports = class ShipNameCommand extends Command {
 				{
 					key: 'start',
 					label: 'start name',
-					prompt: 'What name should be at the start of the ship name?',
 					type: 'string',
 					max: 500,
 					parse: start => start.toLowerCase()
@@ -19,7 +18,6 @@ module.exports = class ShipNameCommand extends Command {
 				{
 					key: 'end',
 					label: 'end name',
-					prompt: 'What name should be at the end of the ship name?',
 					type: 'string',
 					max: 500,
 					parse: end => end.toLowerCase()

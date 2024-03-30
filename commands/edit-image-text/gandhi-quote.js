@@ -27,7 +27,6 @@ module.exports = class GandhiQuoteCommand extends Command {
 			args: [
 				{
 					key: 'quote',
-					prompt: 'What quote should Gandhi say?',
 					type: 'string',
 					max: 500
 				}

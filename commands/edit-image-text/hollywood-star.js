@@ -37,7 +37,6 @@ module.exports = class HollywoodStarCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What name should be on the star?',
 					type: 'string',
 					max: 30
 				}

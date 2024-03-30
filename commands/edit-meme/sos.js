@@ -31,7 +31,6 @@ module.exports = class SosCommand extends Command {
 			args: [
 				{
 					key: 'message',
-					prompt: 'What should Esther spell out to signal for help?',
 					type: 'string',
 					max: 10
 				}

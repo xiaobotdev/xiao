@@ -32,7 +32,6 @@ module.exports = class IfThoseKidsCouldReadCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text of Bobby\'s poster be?',
 					type: 'string',
 					max: 500
 				}

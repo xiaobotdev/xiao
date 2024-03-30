@@ -23,14 +23,12 @@ module.exports = class BottomTextCommand extends Command {
 			args: [
 				{
 					key: 'top',
-					prompt: 'What should the top row of the meme to be?',
 					type: 'string',
 					max: 50,
 					parse: top => top.toUpperCase()
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
 				}

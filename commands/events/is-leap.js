@@ -12,7 +12,6 @@ module.exports = class IsLeapCommand extends Command {
 			args: [
 				{
 					key: 'year',
-					prompt: 'What year would you like to get data for?',
 					type: 'integer',
 					default: () => new Date().getFullYear(),
 					min: 1

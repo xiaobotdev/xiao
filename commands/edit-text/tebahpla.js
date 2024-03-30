@@ -13,7 +13,6 @@ module.exports = class TebahplaCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to reverse the alphabet of?',
 					type: 'string'
 				}
 			]

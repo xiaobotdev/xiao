@@ -14,12 +14,10 @@ module.exports = class NimCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge? To play against AI, choose me.',
 					type: 'user'
 				},
 				{
 					key: 'rows',
-					prompt: 'How many rows do you want to have?',
 					type: 'integer',
 					default: 5,
 					min: 1,

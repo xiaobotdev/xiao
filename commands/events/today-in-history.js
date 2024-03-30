@@ -23,13 +23,11 @@ module.exports = class TodayInHistoryCommand extends Command {
 			args: [
 				{
 					key: 'month',
-					prompt: 'What month would you like to get an event for?',
 					type: 'month',
 					default: ''
 				},
 				{
 					key: 'day',
-					prompt: 'What day would you like to get an event for?',
 					type: 'integer',
 					default: '',
 					min: 1,

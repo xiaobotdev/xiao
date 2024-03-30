@@ -12,7 +12,6 @@ module.exports = class GenerationCommand extends Command {
 			args: [
 				{
 					key: 'year',
-					prompt: 'What year would you like to get the Generation for?',
 					type: 'integer',
 					min: 1,
 					max: new Date().getFullYear()

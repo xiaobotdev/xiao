@@ -64,7 +64,6 @@ module.exports = class AnimeCharacterCommand extends Command {
 			args: [
 				{
 					key: 'query',
-					prompt: 'What character would you like to search for?',
 					type: 'string'
 				}
 			]

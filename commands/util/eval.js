@@ -22,7 +22,6 @@ module.exports = class EvalCommand extends Command {
 			args: [
 				{
 					key: 'script',
-					prompt: 'What code would you like to evaluate?',
 					type: 'string'
 				}
 			]

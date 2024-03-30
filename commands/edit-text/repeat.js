@@ -10,14 +10,12 @@ module.exports = class RepeatCommand extends Command {
 			args: [
 				{
 					key: 'amount',
-					prompt: 'How many times do you want to repeat your text?',
 					type: 'integer',
 					min: 1,
 					max: 2000
 				},
 				{
 					key: 'text',
-					prompt: 'What text would you like to repeat over and over and over and over?',
 					type: 'string',
 					validate: text => {
 						if (!text.includes('@everyone') && !text.includes('@here')) return true;

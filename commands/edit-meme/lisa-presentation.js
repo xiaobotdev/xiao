@@ -33,7 +33,6 @@ module.exports = class LisaPresentationCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text of the presentation be?',
 					type: 'string',
 					max: 500
 				}

@@ -20,7 +20,6 @@ module.exports = class LolcatCommand extends Command {
 				{
 					key: 'from',
 					label: 'text',
-					prompt: 'What text would you like to convert to lolcat?',
 					type: 'string',
 					max: 500
 				}

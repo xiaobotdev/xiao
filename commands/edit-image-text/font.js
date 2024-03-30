@@ -17,12 +17,10 @@ module.exports = class FontCommand extends Command {
 			args: [
 				{
 					key: 'font',
-					prompt: 'What font do you want to use? Only fonts used in other commands are available.',
 					type: 'font'
 				},
 				{
 					key: 'text',
-					prompt: 'What text do you want to type?',
 					type: 'string'
 				}
 			]

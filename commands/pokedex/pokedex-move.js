@@ -25,7 +25,6 @@ module.exports = class PokedexMoveCommand extends Command {
 			args: [
 				{
 					key: 'move',
-					prompt: 'What move would you like to get information on?',
 					type: 'string'
 				}
 			]

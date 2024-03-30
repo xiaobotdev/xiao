@@ -34,7 +34,6 @@ module.exports = class GenieRulesCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What do you want to wish for?',
 					type: 'string',
 					max: 500
 				}

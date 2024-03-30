@@ -15,7 +15,6 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge?',
 					type: 'user'
 				}
 			]

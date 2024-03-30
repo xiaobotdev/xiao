@@ -10,7 +10,6 @@ module.exports = class BinaryCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to binary?',
 					type: 'string',
 					validate: text => {
 						if (this.binary(text).length < 2000) return true;

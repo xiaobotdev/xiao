@@ -11,7 +11,6 @@ module.exports = class ChanceCommand extends Command {
 			args: [
 				{
 					key: 'chance',
-					prompt: 'What is the chance of winning? 1 in what?',
 					type: 'string',
 					default: 1000
 				}

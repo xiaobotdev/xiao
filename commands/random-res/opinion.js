@@ -12,7 +12,6 @@ module.exports = class OpinionCommand extends Command {
 			args: [
 				{
 					key: 'question',
-					prompt: 'What do you want to get an opinion on?',
 					type: 'string',
 					max: 1950
 				}

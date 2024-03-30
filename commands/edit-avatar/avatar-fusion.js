@@ -18,12 +18,10 @@ module.exports = class AvatarFusionCommand extends Command {
 			args: [
 				{
 					key: 'overlay',
-					prompt: 'Which user would you like to put over the base?',
 					type: 'user'
 				},
 				{
 					key: 'base',
-					prompt: 'Which user would you like to be the base?',
 					type: 'user',
 					default: msg => msg.author
 				}

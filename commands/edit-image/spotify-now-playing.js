@@ -38,19 +38,16 @@ module.exports = class SpotifyNowPlayingCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					prompt: 'What do you want the song to be named?',
 					type: 'string',
 					max: 50
 				},
 				{
 					key: 'artist',
-					prompt: 'Who is the artist of the song?',
 					type: 'string',
 					max: 50
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 256 })
 				}

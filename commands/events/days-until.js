@@ -13,19 +13,16 @@ module.exports = class DaysUntilCommand extends Command {
 			args: [
 				{
 					key: 'month',
-					prompt: 'What month would you like to get the days until?',
 					type: 'month'
 				},
 				{
 					key: 'day',
-					prompt: 'What day would you like to get the days until?',
 					type: 'integer',
 					min: 1,
 					max: 31
 				},
 				{
 					key: 'year',
-					prompt: 'What year would you like to get the days until?',
 					type: 'integer',
 					min: new Date().getFullYear(),
 					default: ''

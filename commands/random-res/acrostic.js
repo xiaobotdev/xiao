@@ -19,7 +19,6 @@ module.exports = class AcrosticCommand extends Command {
 			args: [
 				{
 					key: 'word',
-					prompt: 'What word do you want to use to generate the acrostic? Only letters and spaces.',
 					type: 'string',
 					max: 20,
 					validate: word => {

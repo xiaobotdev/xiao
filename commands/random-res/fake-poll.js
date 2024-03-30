@@ -13,7 +13,6 @@ module.exports = class FakePollCommand extends Command {
 			args: [
 				{
 					key: 'question',
-					prompt: 'What do you want to ask?',
 					type: 'string',
 					max: 500
 				}

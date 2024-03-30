@@ -33,7 +33,6 @@ module.exports = class LisaPresentationCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What should the text on the chalkboard be?',
 					type: 'string',
 					max: 50
 				}

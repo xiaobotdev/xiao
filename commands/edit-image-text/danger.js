@@ -33,7 +33,6 @@ module.exports = class DangerCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text should the danger sign say?',
 					type: 'string',
 					max: 500
 				}

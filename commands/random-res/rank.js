@@ -11,7 +11,6 @@ module.exports = class RankCommand extends Command {
 			args: [
 				{
 					key: 'choices',
-					prompt: 'What choices do you want me rank?',
 					type: 'string',
 					infinite: true,
 					max: 150

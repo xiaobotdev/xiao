@@ -13,7 +13,6 @@ module.exports = class BattleCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to battle? To play against AI, choose me.',
 					type: 'user'
 				}
 			]

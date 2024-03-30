@@ -11,7 +11,6 @@ module.exports = class SHA1Command extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to create an SHA-1 hash of?',
 					type: 'string'
 				}
 			]

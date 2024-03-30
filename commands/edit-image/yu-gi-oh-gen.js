@@ -52,14 +52,12 @@ module.exports = class YuGiOhGenCommand extends Command {
 			args: [
 				{
 					key: 'type',
-					prompt: `What type of card do you want to make? Either ${list(types, 'or')}.`,
 					type: 'string',
 					oneOf: types,
 					parse: type => type.toLowerCase()
 				},
 				{
 					key: 'image',
-					prompt: 'What image would you like to edit?',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 })
 				}

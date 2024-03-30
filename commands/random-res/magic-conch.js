@@ -21,7 +21,6 @@ module.exports = class MagicConchCommand extends Command {
 			args: [
 				{
 					key: 'question',
-					prompt: 'What do you want to ask the magic conch?',
 					type: 'string',
 					max: 1950
 				}

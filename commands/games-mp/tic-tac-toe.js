@@ -16,7 +16,6 @@ module.exports = class TicTacToeCommand extends Command {
 			args: [
 				{
 					key: 'opponent',
-					prompt: 'What user would you like to challenge? To play against AI, choose me.',
 					type: 'user'
 				}
 			]

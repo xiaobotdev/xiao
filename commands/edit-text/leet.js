@@ -19,7 +19,6 @@ module.exports = class LeetCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to l33t speak?',
 					type: 'string',
 					max: 500
 				}

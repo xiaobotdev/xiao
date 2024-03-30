@@ -42,13 +42,11 @@ module.exports = class EjectCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user would you like to edit the avatar of?',
 					type: 'user',
 					default: msg => msg.author
 				},
 				{
 					key: 'imposter',
-					prompt: 'Is the user an imposter?',
 					type: 'boolean',
 					default: ''
 				}

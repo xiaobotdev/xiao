@@ -32,7 +32,6 @@ module.exports = class DearLiberalsCommand extends Command {
 			args: [
 				{
 					key: 'hashtag',
-					prompt: 'What hashtag should be on Ben Shapiro\'s sign? No spaces or symbols.',
 					type: 'string',
 					max: 10,
 					validate: hashtag => /^[A-Z0-9]+$/i.test(hashtag)
@@ -40,7 +39,6 @@ module.exports = class DearLiberalsCommand extends Command {
 				{
 					key: 'blueText',
 					label: 'blue text',
-					prompt: 'What should the blue text be?',
 					type: 'string',
 					max: 42,
 					parse: blueText => blueText.toUpperCase()
@@ -48,7 +46,6 @@ module.exports = class DearLiberalsCommand extends Command {
 				{
 					key: 'redText',
 					label: 'red text',
-					prompt: 'What should the red text be?',
 					type: 'string',
 					max: 24,
 					parse: redText => redText.toUpperCase()

@@ -14,7 +14,6 @@ module.exports = class HorseInfoCommand extends Command {
 			args: [
 				{
 					key: 'horse',
-					prompt: 'Which horse would you like to get information on?',
 					type: 'string',
 					validate: horse => {
 						const valid = horses.filter(h => h.name.toLowerCase().includes(horse.toLowerCase()));

@@ -28,7 +28,6 @@ module.exports = class NobodyNameCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What name would you like to convert?',
 					type: 'string',
 					max: 1950,
 					parse: text => text.toLowerCase()

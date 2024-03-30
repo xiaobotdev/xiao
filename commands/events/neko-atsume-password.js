@@ -32,7 +32,6 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 			args: [
 				{
 					key: 'locale',
-					prompt: `What locale do you want to use? Either ${list(locales, 'or')}.`,
 					type: 'string',
 					default: 'en',
 					oneOf: locales,

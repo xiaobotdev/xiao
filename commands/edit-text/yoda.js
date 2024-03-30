@@ -13,7 +13,6 @@ module.exports = class YodaCommand extends Command {
 			args: [
 				{
 					key: 'text',
-					prompt: 'What text would you like to convert to yoda speak?',
 					type: 'string'
 				}
 			]

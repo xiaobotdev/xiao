@@ -16,7 +16,6 @@ module.exports = class LintRuleCommand extends Command {
 			args: [
 				{
 					key: 'rule',
-					prompt: 'Which rule would you like to get information on?',
 					type: 'string',
 					parse: rule => rule.toLowerCase().replaceAll(' ', '-')
 				}

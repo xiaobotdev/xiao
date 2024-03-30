@@ -23,7 +23,6 @@ module.exports = class UrbanCommand extends Command {
 			args: [
 				{
 					key: 'word',
-					prompt: 'What word would you like to look up?',
 					type: 'string'
 				}
 			]

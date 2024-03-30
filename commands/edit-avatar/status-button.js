@@ -20,7 +20,6 @@ module.exports = class StatusButtonCommand extends Command {
 			args: [
 				{
 					key: 'user',
-					prompt: 'Which user would you like to get the status button of?',
 					type: 'user',
 					default: msg => msg.author
 				}

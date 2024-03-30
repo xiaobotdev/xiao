@@ -29,14 +29,12 @@ module.exports = class TtsCommand extends Command {
 			args: [
 				{
 					key: 'accent',
-					prompt: `What accent do you want to use? Either ${list(accents, 'or')}.`,
 					type: 'string',
 					oneOf: accents,
 					parse: accent => accent.toUpperCase()
 				},
 				{
 					key: 'text',
-					prompt: 'What text do you want to say?',
 					type: 'string',
 					max: 200
 				}
