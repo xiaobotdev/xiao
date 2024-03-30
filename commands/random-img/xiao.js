@@ -51,7 +51,7 @@ module.exports = class XiaoCommand extends Command {
 		try {
 			const data = await this.sauceNao(img);
 			if (data && data[0].similarity > 90) {
-				result = `Art by [${data.authorName}](${data.authorUrl}) | Source: <${data.url}>`;
+				result = `Art by [${data[0].authorName}](${data[0].authorUrl}) | Source: <${data[0].url}>`;
 			}
 		} catch {
 			return result;
