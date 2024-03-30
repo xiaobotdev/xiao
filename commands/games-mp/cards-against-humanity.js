@@ -28,6 +28,16 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					reason: 'Card Data'
 				}
 			],
+			flags: [
+				{
+					key: 'bot',
+					description: 'Adds the bot as a player.'
+				},
+				{
+					key: 'b',
+					description: 'Alias for bot.'
+				}
+			],
 			args: [
 				{
 					key: 'maxPts',
@@ -36,17 +46,13 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 					type: 'integer',
 					max: 20,
 					min: 1
-				},
-				{
-					key: 'bot',
-					prompt: 'Do you want me to play as well?',
-					type: 'boolean'
 				}
 			]
 		});
 	}
 
-	async run(msg, { maxPts, bot }) {
+	async run(msg, { maxPts, flags }) {
+		const bot = flags.bot || flags.b;
 		const current = this.client.games.get(msg.channel.id);
 		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
 		this.client.games.set(msg.channel.id,
