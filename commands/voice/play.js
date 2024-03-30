@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const ytdl = require('ytdl-core');
 const { shorten, verify } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 const { GOOGLE_KEY } = process.env;
 
 module.exports = class PlayCommand extends Command {
@@ -88,7 +89,7 @@ module.exports = class PlayCommand extends Command {
 			.setColor(0xDD2825)
 			.setTitle(shorten(data.videoDetails.title, 70))
 			.setDescription(shorten(data.videoDetails.description, 100))
-			.setAuthor('YouTube', 'https://i.imgur.com/kKHJg9Q.png', 'https://www.youtube.com/')
+			.setAuthor('YouTube', logos.youtube, 'https://www.youtube.com/')
 			.setURL(data.videoDetails.video_url)
 			.setThumbnail(data.videoDetails.thumbnails.length ? data.videoDetails.thumbnails[0].url : null)
 			.addField('❯ ID', data.videoDetails.videoId, true)

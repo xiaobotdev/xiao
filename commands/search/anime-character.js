@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { embedURL, cleanAnilistHTML, trimArray } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 const searchGraphQL = stripIndents`
 	query ($search: String) {
 		characters: Page (perPage: 1) {
@@ -76,7 +77,7 @@ module.exports = class AnimeCharacterCommand extends Command {
 		const character = await this.fetchCharacter(id);
 		const embed = new MessageEmbed()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
 			.setURL(character.siteUrl)
 			.setThumbnail(character.image.large || character.image.medium || null)
 			.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)

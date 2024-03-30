@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
+const logos = require('../../assets/json/logos');
 const searchGraphQL = stripIndents`
 	query ($page: Int, $type: MediaType, $isAdult: Boolean) {
 		Page (page: $page) {
@@ -60,7 +61,7 @@ module.exports = class AnimeScoreCommand extends Command {
 		const anime = await this.getRandomAnime(msg.channel.nsfw);
 		const embed = new MessageEmbed()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
 			.setImage(anime.coverImage.large || anime.coverImage.medium || null)
 			.setTitle(anime.title.english || anime.title.romaji)
 			.setDescription(`_${anime.startDate.year}, ${formats[anime.format]}_`)

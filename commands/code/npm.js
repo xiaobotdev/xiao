@@ -3,6 +3,7 @@ const moment = require('moment');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { trimArray } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 
 module.exports = class NPMCommand extends Command {
 	constructor(client) {
@@ -39,7 +40,7 @@ module.exports = class NPMCommand extends Command {
 			const dependencies = version.dependencies ? trimArray(Object.keys(version.dependencies)) : null;
 			const embed = new MessageEmbed()
 				.setColor(0xCB0000)
-				.setAuthor('NPM', 'https://i.imgur.com/ErKf5Y0.png', 'https://www.npmjs.com/')
+				.setAuthor('NPM', logos.npm, 'https://www.npmjs.com/')
 				.setTitle(body.name)
 				.setURL(`https://www.npmjs.com/package/${pkg}`)
 				.setDescription(body.description || 'No description.')

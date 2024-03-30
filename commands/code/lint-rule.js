@@ -1,5 +1,6 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
+const logos = require('../../assets/json/logos');
 const { Linter } = require('eslint');
 const linter = new Linter();
 const rules = linter.getRules();
@@ -27,7 +28,7 @@ module.exports = class LintRuleCommand extends Command {
 		if (!rules.has(rule)) return msg.say('Could not find any results.');
 		const data = rules.get(rule).meta;
 		const embed = new MessageEmbed()
-			.setAuthor('ESLint', 'https://i.imgur.com/04GhEhU.png', 'https://eslint.org/')
+			.setAuthor('ESLint', logos.eslint, 'https://eslint.org/')
 			.setColor(0x3A33D1)
 			.setTitle(rule)
 			.setURL(data.docs.url)

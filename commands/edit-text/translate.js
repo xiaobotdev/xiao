@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const translate = require('@vitalets/google-translate-api');
 const { list } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 const codes = Object.keys(translate.languages).filter(code => typeof translate.languages[code] !== 'function');
 
 module.exports = class TranslateCommand extends Command {
@@ -55,7 +56,7 @@ module.exports = class TranslateCommand extends Command {
 		const { text: result, from } = await translate(text, { to: target, from: base });
 		const embed = new MessageEmbed()
 			.setColor(0x4285F4)
-			.setFooter('Powered by Google Translate', 'https://i.imgur.com/h3RoHyp.png')
+			.setFooter('Powered by Google Translate', logos.googleTranslate)
 			.addField(`❯ From: ${translate.languages[from.language.iso]}`, from.text.value || text)
 			.addField(`❯ To: ${translate.languages[target]}`, result);
 		return msg.embed(embed);

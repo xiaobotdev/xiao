@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
+const logos = require('../../assets/json/logos');
 
 module.exports = class YuGiOhCommand extends Command {
 	constructor(client) {
@@ -48,7 +49,7 @@ module.exports = class YuGiOhCommand extends Command {
 			.setTitle(data.name)
 			.setURL(`https://db.ygoprodeck.com/card/?search=${data.id}`)
 			.setDescription(data.type === 'Normal Monster' ? `_${shorten(data.desc)}_` : shorten(data.desc))
-			.setAuthor('Yu-Gi-Oh!', 'https://i.imgur.com/AJNBflD.png', 'http://www.yugioh-card.com/')
+			.setAuthor('Yu-Gi-Oh!', logos.yugioh, 'http://www.yugioh-card.com/')
 			.setThumbnail(data.card_images[0].image_url)
 			.setFooter(data.id.toString())
 			.addField('❯ Type', data.type, true)
