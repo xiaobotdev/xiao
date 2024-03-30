@@ -59,7 +59,7 @@ module.exports = class Pokemon {
 		this.moveSet = data.missingno ? data.moveSet : [];
 		this.moveSetVersion = data.missingno ? data.moveSetVersion : null;
 		this.gameDataCached = data.missingno || false;
-		this.gameDataFetching = data.missingno || false;
+		this.gameDataFetching = false;
 		this.missingno = data.missingno || false;
 		this.cry = data.id > store.pokemonCountWithCry
 			? null
