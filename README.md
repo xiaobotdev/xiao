@@ -30,7 +30,7 @@ If you self-host this you're nuts.
 22. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Commands
-Total: 505
+Total: 506
 
 ### Utility:
 
@@ -209,6 +209,7 @@ Total: 505
 ### Pokédex:
 
 * **pokedex-ability:** Searches the Pokédex for a Pokémon ability.
+* **pokedex-box-sprite:** Responds with the box sprite of a Pokémon.
 * **pokedex-cry:** Plays a Pokémon's cry.
 * **pokedex-image:** Responds with the image of a Pokémon.
 * **pokedex-item:** Searches the Pokédex for a Pokémon item.
@@ -850,6 +851,11 @@ Total: 505
 * **pokedex-ability:**
    - [Pokémon](https://www.pokemon.com/us/) (Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
+* **pokedex-box-sprite:**
+   - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
+   - [PokéAPI](https://pokeapi.co/) (API)
+   - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **pokedex-cry:**
    - [Pokémon](https://www.pokemon.com/us/) (Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
@@ -867,6 +873,7 @@ Total: 505
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **pokedex-move:**
    - [Pokémon](https://www.pokemon.com/us/) (Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
@@ -874,10 +881,12 @@ Total: 505
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **pokedex-stats:**
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **pokedex:**
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
@@ -885,11 +894,13 @@ Total: 505
    - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 1-7))
    - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 8-9))
    - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Cry Sound Effects (Meltan and Melmetal, Legends: Arceus))
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **smogon:**
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
    - [Smogon](https://www.smogon.com/) (Tier Data)
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **gender:**
    - [Genderize.io](https://genderize.io/) (API)
 * **is-it-down:**
