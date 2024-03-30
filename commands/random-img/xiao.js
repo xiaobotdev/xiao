@@ -57,7 +57,7 @@ module.exports = class XiaoCommand extends Command {
 	}
 
 	async sauceNao(img) {
-		const { body } = await request.get('https://saucenao.com/search.php')
+		const { body } = await request.post('https://saucenao.com/search.php')
 			.query({
 				api_key: SAUCENAO_KEY,
 				db: 999,
