@@ -43,17 +43,20 @@ module.exports = class XiaoCommand extends Command {
 		const source = img.match(sourceRegex);
 		const site = source[1];
 		if (site === 'official') return 'Official Art';
-		let data;
+		let result;
+		if (site === 'unknown') result = 'Artist Unknown';
+		else if (site === 'deviant') result = `Art by <https://www.deviantart.com/${source[2]}>`;
+		else if (site === 'pixiv') result = `Art Source: <https://www.pixiv.net/en/artworks/${source[2]}>`;
+		else result = `Art by ${site}`;
 		try {
-			data = await this.sauceNao(img);
-			if (!data) return 'Artist Unknown';
-			return `Art Source: ${data.ext_urls[0]}`;
+			const data = await this.sauceNao(img);
+			if (data && data.similarity > 90) {
+				result = `Art by [${data.authorName}](${data.authorUrl}) | Source: <${data.url}>`;
+			}
 		} catch {
-			if (site === 'unknown') return 'Artist Unknown';
-			if (site === 'deviant') return `Art by <https://www.deviantart.com/${source[2]}>`;
-			if (site === 'pixiv') return `Art Source: <https://www.pixiv.net/en/artworks/${source[2]}>`;
-			return `Art by ${site}`;
+			return result;
 		}
+		return result;
 	}
 
 	sauceNao(img) {
