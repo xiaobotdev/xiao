@@ -1,5 +1,6 @@
 const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
+const { isUrlNSFW } = require('../../util/Util');
 const sagiri = require('sagiri');
 const { SAUCENAO_KEY } = process.env;
 const sagiriClient = sagiri(SAUCENAO_KEY);
@@ -37,6 +38,10 @@ module.exports = class SauceNaoCommand extends Command {
 		}
 		if (!data.length) return msg.reply('No results for this image.');
 		const sauce = data[0];
+		if (!msg.channel.nsfw) {
+			const nsfw = await isUrlNSFW(sauce.url, this.client.adultSiteList);
+			if (nsfw || nsfw === null) return msg.reply('The result was NSFW.');
+		}
 		const embed = new MessageEmbed()
 			.setImage(sauce.thumbnail)
 			.setURL(sauce.url)
