@@ -40,7 +40,7 @@ module.exports = class SauceNaoCommand extends Command {
 		const sauce = data[0];
 		if (!msg.channel.nsfw) {
 			const nsfw = await isUrlNSFW(sauce.url, this.client.adultSiteList);
-			if (nsfw || nsfw === null) return msg.reply('The result was NSFW.');
+			if (nsfw) return msg.reply('The result was NSFW.');
 		}
 		const embed = new MessageEmbed()
 			.setImage(sauce.thumbnail)
