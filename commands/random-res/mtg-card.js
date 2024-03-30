@@ -21,11 +21,7 @@ module.exports = class MtgCardCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { url } = await request.get('https://scryfall.com/random?q=is%3Aspell+game%3Apaper');
-			return msg.say(url);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { url } = await request.get('https://scryfall.com/random?q=is%3Aspell+game%3Apaper');
+		return msg.say(url);
 	}
 };

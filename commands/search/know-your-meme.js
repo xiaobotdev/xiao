@@ -30,21 +30,17 @@ module.exports = class KnowYourMemeCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const location = await this.search(query);
-			if (!location) return msg.say('Could not find any results.');
-			const data = await this.fetchMeme(location);
-			const embed = new MessageEmbed()
-				.setColor(0x12133F)
-				.setAuthor('Know Your Meme', 'https://i.imgur.com/WvcH4Z2.png', 'https://knowyourmeme.com/')
-				.setTitle(data.name)
-				.setDescription(shorten(data.description || 'No description available.'))
-				.setURL(data.url)
-				.setThumbnail(data.thumbnail);
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const location = await this.search(query);
+		if (!location) return msg.say('Could not find any results.');
+		const data = await this.fetchMeme(location);
+		const embed = new MessageEmbed()
+			.setColor(0x12133F)
+			.setAuthor('Know Your Meme', 'https://i.imgur.com/WvcH4Z2.png', 'https://knowyourmeme.com/')
+			.setTitle(data.name)
+			.setDescription(shorten(data.description || 'No description available.'))
+			.setURL(data.url)
+			.setThumbnail(data.thumbnail);
+		return msg.embed(embed);
 	}
 
 	async search(query) {

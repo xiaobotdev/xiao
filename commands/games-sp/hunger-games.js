@@ -11,6 +11,7 @@ module.exports = class HungerGamesCommand extends Command {
 			group: 'games-sp',
 			memberName: 'hunger-games',
 			description: 'Simulate a Hunger Games match with up to 24 tributes.',
+			game: true,
 			credit: [
 				{
 					name: 'BrantSteele',
@@ -36,55 +37,43 @@ module.exports = class HungerGamesCommand extends Command {
 		if (removeDuplicates(tributes).length !== tributes.length) {
 			return msg.reply('Please do not enter the same tribute twice.');
 		}
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
-		try {
-			let sun = true;
-			let turn = 0;
-			let bloodbath = true;
-			const kills = {};
-			for (const tribute of tributes) kills[tribute] = 0;
-			const remaining = new Set(shuffle(tributes));
-			while (remaining.size > 1) {
-				if (!bloodbath && sun) ++turn;
-				const sunEvents = bloodbath ? events.bloodbath : sun ? events.day : events.night;
-				const results = [];
-				const deaths = [];
-				this.makeEvents(remaining, kills, sunEvents, deaths, results);
-				let text = stripIndents`
-					__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}:**__
-					${results.join('\n')}
+		let sun = true;
+		let turn = 0;
+		let bloodbath = true;
+		const kills = {};
+		for (const tribute of tributes) kills[tribute] = 0;
+		const remaining = new Set(shuffle(tributes));
+		while (remaining.size > 1) {
+			if (!bloodbath && sun) ++turn;
+			const sunEvents = bloodbath ? events.bloodbath : sun ? events.day : events.night;
+			const results = [];
+			const deaths = [];
+			this.makeEvents(remaining, kills, sunEvents, deaths, results);
+			let text = stripIndents`
+				__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}:**__
+				${results.join('\n')}
+			`;
+			if (deaths.length) {
+				text += '\n\n';
+				text += stripIndents`
+					**${deaths.length} cannon shot${deaths.length === 1 ? '' : 's'} can be heard in the distance.**
+					${deaths.join('\n')}
 				`;
-				if (deaths.length) {
-					text += '\n\n';
-					text += stripIndents`
-						**${deaths.length} cannon shot${deaths.length === 1 ? '' : 's'} can be heard in the distance.**
-						${deaths.join('\n')}
-					`;
-				}
-				text += `\n\n_Proceed?_`;
-				await msg.say(text);
-				const verification = await verify(msg.channel, msg.author, { time: 120000 });
-				if (!verification) {
-					this.client.games.delete(msg.channel.id);
-					return msg.say('See you next time!');
-				}
-				if (!bloodbath) sun = !sun;
-				if (bloodbath) bloodbath = false;
 			}
-			this.client.games.delete(msg.channel.id);
-			const remainingArr = Array.from(remaining);
-			return msg.say(stripIndents`
-				And the winner is... **${remainingArr[0]}**!
-
-				__**Kills Leaderboard:**__
-				${this.makeLeaderboard(tributes, kills).join('\n')}
-			`);
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			throw err;
+			text += `\n\n_Proceed?_`;
+			await msg.say(text);
+			const verification = await verify(msg.channel, msg.author, { time: 120000 });
+			if (!verification) return msg.say('See you next time!');
+			if (!bloodbath) sun = !sun;
+			if (bloodbath) bloodbath = false;
 		}
+		const remainingArr = Array.from(remaining);
+		return msg.say(stripIndents`
+			And the winner is... **${remainingArr[0]}**!
+
+			__**Kills Leaderboard:**__
+			${this.makeLeaderboard(tributes, kills).join('\n')}
+		`);
 	}
 
 	parseEvent(event, tributes) {

@@ -20,11 +20,7 @@ module.exports = class FoxCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { body } = await request.get('https://randomfox.ca/floof/');
-			return msg.say({ files: [body.image] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request.get('https://randomfox.ca/floof/');
+		return msg.say({ files: [body.image] });
 	}
 };

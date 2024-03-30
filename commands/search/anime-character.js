@@ -71,25 +71,21 @@ module.exports = class AnimeCharacterCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const id = await this.search(query);
-			if (!id) return msg.say('Could not find any results.');
-			const character = await this.fetchCharacter(id);
-			const embed = new MessageEmbed()
-				.setColor(0x02A9FF)
-				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setURL(character.siteUrl)
-				.setThumbnail(character.image.large || character.image.medium || null)
-				.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)
-				.setDescription(character.description ? cleanAnilistHTML(character.description, false) : 'No description.')
-				.addField('❯ Appearances', trimArray(character.media.edges.map(edge => {
-					const title = edge.node.title.english || edge.node.title.romaji;
-					return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
-				}), 5).join(', '));
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const id = await this.search(query);
+		if (!id) return msg.say('Could not find any results.');
+		const character = await this.fetchCharacter(id);
+		const embed = new MessageEmbed()
+			.setColor(0x02A9FF)
+			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setURL(character.siteUrl)
+			.setThumbnail(character.image.large || character.image.medium || null)
+			.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)
+			.setDescription(character.description ? cleanAnilistHTML(character.description, false) : 'No description.')
+			.addField('❯ Appearances', trimArray(character.media.edges.map(edge => {
+				const title = edge.node.title.english || edge.node.title.romaji;
+				return embedURL(`${title} (${types[edge.node.type]})`, edge.node.siteUrl);
+			}), 5).join(', '));
+		return msg.embed(embed);
 	}
 
 	async search(query) {

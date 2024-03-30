@@ -54,61 +54,57 @@ module.exports = class PokedexCommand extends Command {
 	}
 
 	async run(msg, { pokemon, form }) {
-		try {
-			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
-			const displayForms = pokemon.varieties.filter(vrity => vrity.statsDiffer);
-			const variety = displayForms.find(vrity => {
-				if (!form || form === 'normal') return vrity.default;
-				if (!vrity.name) return false;
-				return vrity.name.toLowerCase() === form;
-			});
-			if (!variety) {
-				const varieties = displayForms.map(vrity => vrity.name || 'Normal');
-				return msg.say(`Invalid form. The forms available for this Pokémon are: ${list(varieties, 'and')}`);
-			}
-			const statTotal = pokemon.baseStatTotal(variety.id);
-			const repeat = {
-				hp: Math.round((variety.stats.hp / 255) * 10) * 2,
-				atk: Math.round((variety.stats.atk / 255) * 10) * 2,
-				def: Math.round((variety.stats.def / 255) * 10) * 2,
-				sAtk: Math.round((variety.stats.sAtk / 255) * 10) * 2,
-				sDef: Math.round((variety.stats.sDef / 255) * 10) * 2,
-				spd: Math.round((variety.stats.spd / 255) * 10) * 2,
-				total: Math.round((statTotal / 1125) * 10) * 2
-			};
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setAuthor(
-					`#${pokemon.displayID} - ${pokemon.name}`,
-					'attachment://box.png',
-					pokemon.serebiiURL
-				)
-				.setThumbnail(pokemon.formSpriteImageURL(variety.id))
-				.addField(`❯ Base Stats (${variety.name || 'Normal'} Form)`, stripIndents`
-					\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${variety.stats.hp}**
-					\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${variety.stats.atk}**
-					\`Defense:     [${'█'.repeat(repeat.def)}${' '.repeat(20 - repeat.def)}]\` **${variety.stats.def}**
-					\`Sp. Attack:  [${'█'.repeat(repeat.sAtk)}${' '.repeat(20 - repeat.sAtk)}]\` **${variety.stats.sAtk}**
-					\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${variety.stats.sDef}**
-					\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${variety.stats.spd}**
-					\`-----------------------------------\`
-					\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${statTotal}**
-				`)
-				.addField('❯ Abilities', variety.abilities.map(ability => ability.name).join('/'))
-				.addField('❯ Other Forms', stripIndents`
-					_Use ${this.usage(`${pokemon.id} <form>`)} to get stats for another form._
-
-					**Forms Available:** ${displayForms.map(vrity => `\`${vrity.name || 'Normal'}\``).join(', ')}
-				`);
-			return msg.channel.send({
-				embeds: [embed],
-				files: [{
-					attachment: await pokemon.generateBoxImage(),
-					name: 'box.png'
-				}]
-			});
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+		const displayForms = pokemon.varieties.filter(vrity => vrity.statsDiffer);
+		const variety = displayForms.find(vrity => {
+			if (!form || form === 'normal') return vrity.default;
+			if (!vrity.name) return false;
+			return vrity.name.toLowerCase() === form;
+		});
+		if (!variety) {
+			const varieties = displayForms.map(vrity => vrity.name || 'Normal');
+			return msg.say(`Invalid form. The forms available for this Pokémon are: ${list(varieties, 'and')}`);
 		}
+		const statTotal = pokemon.baseStatTotal(variety.id);
+		const repeat = {
+			hp: Math.round((variety.stats.hp / 255) * 10) * 2,
+			atk: Math.round((variety.stats.atk / 255) * 10) * 2,
+			def: Math.round((variety.stats.def / 255) * 10) * 2,
+			sAtk: Math.round((variety.stats.sAtk / 255) * 10) * 2,
+			sDef: Math.round((variety.stats.sDef / 255) * 10) * 2,
+			spd: Math.round((variety.stats.spd / 255) * 10) * 2,
+			total: Math.round((statTotal / 1125) * 10) * 2
+		};
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setAuthor(
+				`#${pokemon.displayID} - ${pokemon.name}`,
+				'attachment://box.png',
+				pokemon.serebiiURL
+			)
+			.setThumbnail(pokemon.formSpriteImageURL(variety.id))
+			.addField(`❯ Base Stats (${variety.name || 'Normal'} Form)`, stripIndents`
+				\`HP:          [${'█'.repeat(repeat.hp)}${' '.repeat(20 - repeat.hp)}]\` **${variety.stats.hp}**
+				\`Attack:      [${'█'.repeat(repeat.atk)}${' '.repeat(20 - repeat.atk)}]\` **${variety.stats.atk}**
+				\`Defense:     [${'█'.repeat(repeat.def)}${' '.repeat(20 - repeat.def)}]\` **${variety.stats.def}**
+				\`Sp. Attack:  [${'█'.repeat(repeat.sAtk)}${' '.repeat(20 - repeat.sAtk)}]\` **${variety.stats.sAtk}**
+				\`Sp. Defense: [${'█'.repeat(repeat.sDef)}${' '.repeat(20 - repeat.sDef)}]\` **${variety.stats.sDef}**
+				\`Speed:       [${'█'.repeat(repeat.spd)}${' '.repeat(20 - repeat.spd)}]\` **${variety.stats.spd}**
+				\`-----------------------------------\`
+				\`Total:       [${'█'.repeat(repeat.total)}${' '.repeat(20 - repeat.total)}]\` **${statTotal}**
+			`)
+			.addField('❯ Abilities', variety.abilities.map(ability => ability.name).join('/'))
+			.addField('❯ Other Forms', stripIndents`
+				_Use ${this.usage(`${pokemon.id} <form>`)} to get stats for another form._
+
+				**Forms Available:** ${displayForms.map(vrity => `\`${vrity.name || 'Normal'}\``).join(', ')}
+			`);
+		return msg.channel.send({
+			embeds: [embed],
+			files: [{
+				attachment: await pokemon.generateBoxImage(),
+				name: 'box.png'
+			}]
+		});
 	}
 };

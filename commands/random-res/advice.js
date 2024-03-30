@@ -21,12 +21,8 @@ module.exports = class AdviceCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { text } = await request.get('http://api.adviceslip.com/advice');
-			const body = JSON.parse(text);
-			return msg.say(`${body.slip.advice} (#${body.slip.id})`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { text } = await request.get('http://api.adviceslip.com/advice');
+		const body = JSON.parse(text);
+		return msg.say(`${body.slip.advice} (#${body.slip.id})`);
 	}
 };

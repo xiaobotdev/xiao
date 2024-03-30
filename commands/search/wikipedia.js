@@ -29,30 +29,26 @@ module.exports = class WikipediaCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const { body } = await request
-				.get('https://en.wikipedia.org/w/api.php')
-				.query({
-					action: 'query',
-					prop: 'extracts',
-					format: 'json',
-					titles: query,
-					exintro: '',
-					explaintext: '',
-					redirects: '',
-					formatversion: 2
-				});
-			const data = body.query.pages[0];
-			if (data.missing) return msg.say('Could not find any results.');
-			const embed = new MessageEmbed()
-				.setColor(0xE7E7E7)
-				.setTitle(data.title)
-				.setAuthor('Wikipedia', 'https://i.imgur.com/Z7NJBK2.png', 'https://www.wikipedia.org/')
-				.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
-				.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('https://en.wikipedia.org/w/api.php')
+			.query({
+				action: 'query',
+				prop: 'extracts',
+				format: 'json',
+				titles: query,
+				exintro: '',
+				explaintext: '',
+				redirects: '',
+				formatversion: 2
+			});
+		const data = body.query.pages[0];
+		if (data.missing) return msg.say('Could not find any results.');
+		const embed = new MessageEmbed()
+			.setColor(0xE7E7E7)
+			.setTitle(data.title)
+			.setAuthor('Wikipedia', 'https://i.imgur.com/Z7NJBK2.png', 'https://www.wikipedia.org/')
+			.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
+			.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
+		return msg.embed(embed);
 	}
 };

@@ -20,11 +20,7 @@ module.exports = class LightNovelTitleCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { text } = await request.get('https://salty-salty-studios.com/shiz/ln.php');
-			return msg.say(text.match(/<h1>(.+)<\/h1>/i)[1]);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { text } = await request.get('https://salty-salty-studios.com/shiz/ln.php');
+		return msg.say(text.match(/<h1>(.+)<\/h1>/i)[1]);
 	}
 };

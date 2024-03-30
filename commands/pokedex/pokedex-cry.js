@@ -67,7 +67,7 @@ module.exports = class PokedexCryCommand extends Command {
 			return null;
 		} catch (err) {
 			await reactIfAble(msg, this.client.user, '⚠️');
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

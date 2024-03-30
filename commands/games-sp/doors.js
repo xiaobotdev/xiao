@@ -11,6 +11,7 @@ module.exports = class DoorsCommand extends Command {
 			group: 'games-sp',
 			memberName: 'doors',
 			description: 'Open the right door, and you win the money! Make the wrong choice, and you get the fire!',
+			game: true,
 			credit: [
 				{
 					name: 'Mythbusters',
@@ -35,27 +36,18 @@ module.exports = class DoorsCommand extends Command {
 	}
 
 	async run(msg, { door }) {
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
-		try {
-			const win = doors[Math.floor(Math.random() * doors.length)];
-			const noWin = doors.filter(thisDoor => thisDoor !== win && door !== thisDoor)[0];
-			await msg.reply(stripIndents`
-				Well, there's nothing behind door number **${noWin}**. Do you want to stick with door ${door}?
-				${this.emoji(1, noWin)} ${this.emoji(2, noWin)} ${this.emoji(3, noWin)}
-			`);
-			const stick = await verify(msg.channel, msg.author);
-			if (!stick) door = doors.filter(thisDoor => door !== thisDoor && thisDoor !== noWin)[0];
-			this.client.games.delete(msg.channel.id);
-			return msg.reply(stripIndents`
-				${door === win ? 'You chose wisely.' : 'Hmm... Try again.'}
-				${this.emoji(1, noWin, win, door)} ${this.emoji(2, noWin, win, door)} ${this.emoji(3, noWin, win, door)}
-			`);
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			throw err;
-		}
+		const win = doors[Math.floor(Math.random() * doors.length)];
+		const noWin = doors.filter(thisDoor => thisDoor !== win && door !== thisDoor)[0];
+		await msg.reply(stripIndents`
+			Well, there's nothing behind door number **${noWin}**. Do you want to stick with door ${door}?
+			${this.emoji(1, noWin)} ${this.emoji(2, noWin)} ${this.emoji(3, noWin)}
+		`);
+		const stick = await verify(msg.channel, msg.author);
+		if (!stick) door = doors.filter(thisDoor => door !== thisDoor && thisDoor !== noWin)[0];
+		return msg.reply(stripIndents`
+			${door === win ? 'You chose wisely.' : 'Hmm... Try again.'}
+			${this.emoji(1, noWin, win, door)} ${this.emoji(2, noWin, win, door)} ${this.emoji(3, noWin, win, door)}
+		`);
 	}
 
 	emoji(door, noWin, win, chosen) {

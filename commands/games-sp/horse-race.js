@@ -20,6 +20,7 @@ module.exports = class HorseRaceCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: ['ATTACH_FILES'],
+			game: true,
 			credit: [
 				{
 					name: 'Ambition',

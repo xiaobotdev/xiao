@@ -11,7 +11,8 @@ module.exports = class TypingTestCommand extends Command {
 			name: 'typing-test',
 			group: 'games-sp',
 			memberName: 'typing-test',
-			description: 'See how fast you can type a sentence.'
+			description: 'See how fast you can type a sentence.',
+			game: true
 		});
 	}
 

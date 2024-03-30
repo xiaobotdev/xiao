@@ -34,21 +34,17 @@ module.exports = class NeopetsItemCommand extends Command {
 	}
 
 	async run(msg, { item }) {
-		try {
-			const data = await this.fetchItem(item);
-			if (!data) return msg.say('Could not find any results.');
-			const embed = new MessageEmbed()
-				.setColor(0xFFCE31)
-				.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png', 'http://www.neopets.com/')
-				.setTitle(data.name)
-				.setDescription(data.details)
-				.setURL(data.url)
-				.setThumbnail(data.image)
-				.addField('❯ Price', data.price ? `${formatNumber(data.price)} ${data.currency}` : 'Not for Sale');
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const data = await this.fetchItem(item);
+		if (!data) return msg.say('Could not find any results.');
+		const embed = new MessageEmbed()
+			.setColor(0xFFCE31)
+			.setAuthor('Neopets', 'https://i.imgur.com/BP8qxJH.png', 'http://www.neopets.com/')
+			.setTitle(data.name)
+			.setDescription(data.details)
+			.setURL(data.url)
+			.setThumbnail(data.image)
+			.addField('❯ Price', data.price ? `${formatNumber(data.price)} ${data.currency}` : 'Not for Sale');
+		return msg.embed(embed);
 	}
 
 	async fetchItem(query) {

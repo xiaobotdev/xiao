@@ -60,31 +60,26 @@ module.exports = class SmogonCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
-		try {
-			const fetchGames = genGames.slice(pokemon.generation, pokemon.missingno ? 2 : genGames.length);
-			if (!pokemon.missingno) await pokemon.fetchSmogonTiers(...fetchGames);
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
-				.setThumbnail(pokemon.spriteImageURL);
-			for (const game of fetchGames) {
-				embed.addField(`❯ ${games[game]}`,
-					`[${pokemon.smogonTiers[game].join('/')}](${pokemon.smogonURL(game)})`, true);
-			}
-			if (fetchGames.length % 3 !== 0 && fetchGames.length > 3) {
-				for (let i = 0; i < 3 - (fetchGames.length % 3); i++) {
-					embed.addField('\u200B', '\u200B', true);
-				}
-			}
-			return msg.channel.send({
-				embeds: [embed],
-				files: [{
-					attachment: await pokemon.generateBoxImage(),
-					name: 'box.png'
-				}]
-			});
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const fetchGames = genGames.slice(pokemon.generation, pokemon.missingno ? 2 : genGames.length);
+		if (!pokemon.missingno) await pokemon.fetchSmogonTiers(...fetchGames);
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setThumbnail(pokemon.spriteImageURL);
+		for (const game of fetchGames) {
+			embed.addField(`❯ ${games[game]}`, `[${pokemon.smogonTiers[game].join('/')}](${pokemon.smogonURL(game)})`, true);
 		}
+		if (fetchGames.length % 3 !== 0 && fetchGames.length > 3) {
+			for (let i = 0; i < 3 - (fetchGames.length % 3); i++) {
+				embed.addField('\u200B', '\u200B', true);
+			}
+		}
+		return msg.channel.send({
+			embeds: [embed],
+			files: [{
+				attachment: await pokemon.generateBoxImage(),
+				name: 'box.png'
+			}]
+		});
 	}
 };

@@ -24,14 +24,10 @@ module.exports = class CatCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const { body } = await request
-				.get('https://api.thecatapi.com/v1/images/search')
-				.query({ limit: 1 })
-				.set({ 'x-api-key': THECATAPI_KEY });
-			return msg.say(facts[Math.floor(Math.random() * facts.length)], { files: [body[0].url] });
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { body } = await request
+			.get('https://api.thecatapi.com/v1/images/search')
+			.query({ limit: 1 })
+			.set({ 'x-api-key': THECATAPI_KEY });
+		return msg.say(facts[Math.floor(Math.random() * facts.length)], { files: [body[0].url] });
 	}
 };

@@ -110,34 +110,30 @@ module.exports = class AnimeCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const id = await this.search(query);
-			if (!id) return msg.say('Could not find any results.');
-			const anime = await this.fetchAnime(id);
-			if (!this.personalList) await this.fetchPersonalList();
-			const entry = this.personalList.find(ani => ani.mediaId === id);
-			const malScore = await this.fetchMALScore(anime.idMal);
-			const malURL = `https://myanimelist.net/anime/${anime.idMal}`;
-			const embed = new MessageEmbed()
-				.setColor(0x02A9FF)
-				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setURL(anime.siteUrl)
-				.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
-				.setTitle(anime.title.english || anime.title.romaji)
-				.setDescription(anime.description ? cleanAnilistHTML(anime.description) : 'No description.')
-				.addField('❯ Status', statuses[anime.status], true)
-				.addField('❯ Episodes', anime.episodes?.toString() || '???', true)
-				.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
-				.addField('❯ Average Score', anime.averageScore ? `${anime.averageScore}%` : '???', true)
-				.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
-				.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
-				.addField('❯ External Links', anime.externalLinks.length
-					? anime.externalLinks.map(link => `[${link.site}](${link.url})`).join(', ')
-					: 'None');
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const id = await this.search(query);
+		if (!id) return msg.say('Could not find any results.');
+		const anime = await this.fetchAnime(id);
+		if (!this.personalList) await this.fetchPersonalList();
+		const entry = this.personalList.find(ani => ani.mediaId === id);
+		const malScore = await this.fetchMALScore(anime.idMal);
+		const malURL = `https://myanimelist.net/anime/${anime.idMal}`;
+		const embed = new MessageEmbed()
+			.setColor(0x02A9FF)
+			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setURL(anime.siteUrl)
+			.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
+			.setTitle(anime.title.english || anime.title.romaji)
+			.setDescription(anime.description ? cleanAnilistHTML(anime.description) : 'No description.')
+			.addField('❯ Status', statuses[anime.status], true)
+			.addField('❯ Episodes', anime.episodes?.toString() || '???', true)
+			.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
+			.addField('❯ Average Score', anime.averageScore ? `${anime.averageScore}%` : '???', true)
+			.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
+			.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
+			.addField('❯ External Links', anime.externalLinks.length
+				? anime.externalLinks.map(link => `[${link.site}](${link.url})`).join(', ')
+				: 'None');
+		return msg.embed(embed);
 	}
 
 	async search(query) {

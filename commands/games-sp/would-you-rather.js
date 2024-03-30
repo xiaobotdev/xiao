@@ -12,6 +12,7 @@ module.exports = class WouldYouRatherCommand extends Command {
 			group: 'games-sp',
 			memberName: 'would-you-rather',
 			description: 'Responds with a random "Would you rather ...?" question.',
+			game: true,
 			credit: [
 				{
 					name: 'wouldurather.io',
@@ -25,44 +26,34 @@ module.exports = class WouldYouRatherCommand extends Command {
 	}
 
 	async run(msg) {
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, { name: this.name });
-		try {
-			if (!this.availableQuestions) await this.fetchAvailableQuestions();
-			const data = await this.fetchRandomQuestion();
-			await msg.say(stripIndents`
-				Would you rather...
-				**1.** ${data.option1}
-				**2.** ${data.option2}
+		if (!this.availableQuestions) await this.fetchAvailableQuestions();
+		const data = await this.fetchRandomQuestion();
+		await msg.say(stripIndents`
+			Would you rather...
+			**1.** ${data.option1}
+			**2.** ${data.option2}
 
-				_Respond with either **1** or **2** to continue._
-			`);
-			const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toLowerCase());
-			const msgs = await msg.channel.awaitMessages({
-				filter,
-				time: 30000,
-				max: 1
-			});
-			if (!msgs.size) {
-				this.client.games.delete(msg.channel.id);
-				return msg.reply(stripIndents`
-					No response? Too bad.
-					${formatNumber(data.option1Votes)} - ${formatNumber(data.option2Votes)}
-				`);
-			}
-			const option1 = msgs.first().content.toLowerCase() === '1';
-			const totalVotes = Number.parseInt(data.option1Votes, 10) + Number.parseInt(data.option2Votes, 10);
-			const numToUse = option1 ? Number.parseInt(data.option1Votes, 10) : Number.parseInt(data.option2Votes, 10);
-			this.client.games.delete(msg.channel.id);
+			_Respond with either **1** or **2** to continue._
+		`);
+		const filter = res => res.author.id === msg.author.id && choices.includes(res.content.toLowerCase());
+		const msgs = await msg.channel.awaitMessages({
+			filter,
+			time: 30000,
+			max: 1
+		});
+		if (!msgs.size) {
 			return msg.reply(stripIndents`
-				**${Math.round((numToUse / totalVotes) * 100)}%** of people agree!
+				No response? Too bad.
 				${formatNumber(data.option1Votes)} - ${formatNumber(data.option2Votes)}
 			`);
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
+		const option1 = msgs.first().content.toLowerCase() === '1';
+		const totalVotes = Number.parseInt(data.option1Votes, 10) + Number.parseInt(data.option2Votes, 10);
+		const numToUse = option1 ? Number.parseInt(data.option1Votes, 10) : Number.parseInt(data.option2Votes, 10);
+		return msg.reply(stripIndents`
+			**${Math.round((numToUse / totalVotes) * 100)}%** of people agree!
+			${formatNumber(data.option1Votes)} - ${formatNumber(data.option2Votes)}
+		`);
 	}
 
 	async fetchAvailableQuestions() {

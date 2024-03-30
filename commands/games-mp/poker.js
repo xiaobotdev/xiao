@@ -19,6 +19,7 @@ module.exports = class PokerCommand extends Command {
 			memberName: 'poker',
 			description: `Play poker with up to ${max - 1} other users.`,
 			guildOnly: true,
+			game: true,
 			args: [
 				{
 					key: 'playersCount',
@@ -31,180 +32,159 @@ module.exports = class PokerCommand extends Command {
 	}
 
 	async run(msg, { playersCount }) {
-		const current = this.client.games.get(msg.channel.id);
-		if (current) return msg.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-		this.client.games.set(msg.channel.id, {
-			name: this.name,
-			data: {
-				deck: new Deck(),
-				players: new Collection(),
-				turnData: {
-					pot: 0,
-					currentBet: 0,
-					highestBetter: null
-				}
+		const awaitedPlayers = await awaitPlayers(msg, playersCount, min, this.client.blacklist.user);
+		if (!awaitedPlayers) return msg.say('Game could not be started...');
+		const players = new Collection();
+		const deck = new Deck();
+		const turnData = { pot: 0, currentBet: 0, highestBetter: 0 };
+		for (const player of awaitedPlayers) {
+			players.set(player, {
+				money: 2000,
+				id: player,
+				hand: [],
+				user: await this.client.users.fetch(player),
+				currentBet: 0,
+				hasGoneOnce: false,
+				strikes: 0,
+				isAllIn: false
+			});
+		}
+		let winner = null;
+		const rotation = players.map(p => p.id);
+		while (!winner) {
+			for (const player of rotation) {
+				if (players.has(player)) continue;
+				removeFromArray(rotation, player);
 			}
-		});
-		try {
-			const awaitedPlayers = await awaitPlayers(msg, playersCount, min, this.client.blacklist.user);
-			if (!awaitedPlayers) {
-				this.client.games.delete(msg.channel.id);
-				return msg.say('Game could not be started...');
-			}
-			const { players, deck, turnData } = this.client.games.get(msg.channel.id).data;
-			for (const player of awaitedPlayers) {
-				players.set(player, {
-					money: 2000,
-					id: player,
-					hand: [],
-					user: await this.client.users.fetch(player),
-					currentBet: 0,
-					hasGoneOnce: false,
-					strikes: 0,
-					isAllIn: false
-				});
-			}
-			let winner = null;
-			const rotation = players.map(p => p.id);
-			while (!winner) {
-				for (const player of rotation) {
-					if (players.has(player)) continue;
-					removeFromArray(rotation, player);
-				}
-				const bigBlind = players.get(rotation[1]);
-				bigBlind.money -= bigBlindAmount;
-				bigBlind.currentBet += bigBlindAmount;
-				const smallBlind = players.get(rotation[2] || rotation[0]);
-				smallBlind.money -= smallBlindAmount;
-				smallBlind.currentBet += smallBlindAmount;
-				rotation.push(rotation[0]);
-				rotation.shift();
-				const folded = [];
-				await msg.say('Dealing player hands...');
-				for (const player of players.values()) {
-					player.hand.push(...deck.draw(2));
-					try {
-						await player.user.send(stripIndents`
-							_Back to ${msg.channel}._
+			const bigBlind = players.get(rotation[1]);
+			bigBlind.money -= bigBlindAmount;
+			bigBlind.currentBet += bigBlindAmount;
+			const smallBlind = players.get(rotation[2] || rotation[0]);
+			smallBlind.money -= smallBlindAmount;
+			smallBlind.currentBet += smallBlindAmount;
+			rotation.push(rotation[0]);
+			rotation.shift();
+			const folded = [];
+			await msg.say('Dealing player hands...');
+			for (const player of players.values()) {
+				player.hand.push(...deck.draw(2));
+				try {
+					await player.user.send(stripIndents`
+						_Back to ${msg.channel}._
 
-							**Your Poker Hand:**
-							${player.hand.map(c => c.textDisplay).join('\n')}
+						**Your Poker Hand:**
+						${player.hand.map(c => c.textDisplay).join('\n')}
 
-							**Money:** $${formatNumber(player.money)}
-							${bigBlind.id === player.id ? '_You are the big blind._' : ''}
-							${smallBlind.id === player.id ? '_You are the small blind._' : ''}
-						`);
-					} catch {
-						await msg.say(`${player.user}, I couldn't send your hand! Turn on DMs!`);
-					}
-				}
-				turnData.pot = bigBlindAmount + smallBlindAmount;
-				turnData.currentBet = bigBlindAmount;
-				turnData.highestBetter = bigBlind;
-				let keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) {
-					if (players.size < 2) {
-						winner = players.first();
-						break;
-					}
-					continue;
-				}
-				const dealerHand = deck.draw(3);
-				await msg.say(stripIndents`
-					**Dealer Hand:**
-					${dealerHand.map(card => card.textDisplay).join('\n')}
-
-					_Next betting round begins in 10 seconds._
-				`);
-				await delay(10000);
-				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) {
-					if (players.size < 2) {
-						winner = players.first();
-						break;
-					}
-					continue;
-				}
-				dealerHand.push(deck.draw());
-				await msg.say(stripIndents`
-					**Dealer Hand:**
-					${dealerHand.map(card => card.textDisplay).join('\n')}
-
-					_Next betting round begins in 10 seconds._
-				`);
-				await delay(10000);
-				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) {
-					if (players.size < 2) {
-						winner = players.first();
-						break;
-					}
-					continue;
-				}
-				dealerHand.push(deck.draw());
-				await msg.say(stripIndents`
-					**Dealer Hand:**
-					${dealerHand.map(card => card.textDisplay).join('\n')}
-
-					_Next betting round begins in 10 seconds._
-				`);
-				await delay(10000);
-				keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
-				if (!keepGoing) {
-					if (players.size < 2) {
-						winner = players.first();
-						break;
-					}
-					continue;
-				}
-				const solved = [];
-				for (const playerID of rotation) {
-					if (folded.includes(playerID)) continue;
-					const player = players.get(playerID);
-					const solvedHand = Hand.solve([
-						...player.hand.map(card => card.pokersolverKey),
-						...dealerHand.map(card => card.pokersolverKey)
-					]);
-					solvedHand.user = player;
-					solved.push(solvedHand);
-				}
-				const winners = Hand.winners(solved);
-				if (winners.length > 1) {
-					await msg.say(stripIndents`
-						The pot will be split between ${list(winners.map(w => `**${w.user.user}**`))}.
-						${winners.map(winner.descr).join(', ')}
-
-						__**Results**__
-						${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
-
-						_Next game starting in 15 seconds._
+						**Money:** $${formatNumber(player.money)}
+						${bigBlind.id === player.id ? '_You are the big blind._' : ''}
+						${smallBlind.id === player.id ? '_You are the small blind._' : ''}
 					`);
-					const splitPot = turnData.pot / winners.length;
-					for (const win of winners) win.user.money += splitPot;
-				} else {
-					await msg.say(stripIndents`
-						${winners[0].user.user} takes the pot, with **${winners[0].descr}**.
-
-						__**Results**__
-						${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
-
-						_Next game starting in 15 seconds._
-					`);
-					winners[0].user.money += turnData.pot;
+				} catch {
+					await msg.say(`${player.user}, I couldn't send your hand! Turn on DMs!`);
 				}
-				await this.resetGame(msg, players, deck);
+			}
+			turnData.pot = bigBlindAmount + smallBlindAmount;
+			turnData.currentBet = bigBlindAmount;
+			turnData.highestBetter = bigBlind;
+			let keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
+			if (!keepGoing) {
 				if (players.size < 2) {
 					winner = players.first();
 					break;
 				}
-				await delay(15000);
+				continue;
 			}
-			this.client.games.delete(msg.channel.id);
-			return msg.say(`Congrats, ${winner.user}!`);
-		} catch (err) {
-			this.client.games.delete(msg.channel.id);
-			throw err;
+			const dealerHand = deck.draw(3);
+			await msg.say(stripIndents`
+				**Dealer Hand:**
+				${dealerHand.map(card => card.textDisplay).join('\n')}
+
+				_Next betting round begins in 10 seconds._
+			`);
+			await delay(10000);
+			keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
+			if (!keepGoing) {
+				if (players.size < 2) {
+					winner = players.first();
+					break;
+				}
+				continue;
+			}
+			dealerHand.push(deck.draw());
+			await msg.say(stripIndents`
+				**Dealer Hand:**
+				${dealerHand.map(card => card.textDisplay).join('\n')}
+
+				_Next betting round begins in 10 seconds._
+			`);
+			await delay(10000);
+			keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
+			if (!keepGoing) {
+				if (players.size < 2) {
+					winner = players.first();
+					break;
+				}
+				continue;
+			}
+			dealerHand.push(deck.draw());
+			await msg.say(stripIndents`
+				**Dealer Hand:**
+				${dealerHand.map(card => card.textDisplay).join('\n')}
+
+				_Next betting round begins in 10 seconds._
+			`);
+			await delay(10000);
+			keepGoing = await this.gameRound(msg, players, deck, folded, turnData, bigBlind, smallBlind);
+			if (!keepGoing) {
+				if (players.size < 2) {
+					winner = players.first();
+					break;
+				}
+				continue;
+			}
+			const solved = [];
+			for (const playerID of rotation) {
+				if (folded.includes(playerID)) continue;
+				const player = players.get(playerID);
+				const solvedHand = Hand.solve([
+					...player.hand.map(card => card.pokersolverKey),
+					...dealerHand.map(card => card.pokersolverKey)
+				]);
+				solvedHand.user = player;
+				solved.push(solvedHand);
+			}
+			const winners = Hand.winners(solved);
+			if (winners.length > 1) {
+				await msg.say(stripIndents`
+					The pot will be split between ${list(winners.map(w => `**${w.user.user}**`))}.
+					${winners.map(winner.descr).join(', ')}
+
+					__**Results**__
+					${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
+
+					_Next game starting in 15 seconds._
+				`);
+				const splitPot = turnData.pot / winners.length;
+				for (const win of winners) win.user.money += splitPot;
+			} else {
+				await msg.say(stripIndents`
+					${winners[0].user.user} takes the pot, with **${winners[0].descr}**.
+
+					__**Results**__
+					${solved.map(solve => `${solve.user.user.tag}: ${solve.descr}`).join('\n')}
+
+					_Next game starting in 15 seconds._
+				`);
+				winners[0].user.money += turnData.pot;
+			}
+			await this.resetGame(msg, players, deck);
+			if (players.size < 2) {
+				winner = players.first();
+				break;
+			}
+			await delay(15000);
 		}
+		return msg.say(`Congrats, ${winner.user}!`);
 	}
 
 	determineActions(turnPlayer, currentBet, playerAllIn) {

@@ -43,6 +43,7 @@ module.exports = class AnimeScoreCommand extends Command {
 			group: 'games-sp',
 			memberName: 'anime-score',
 			description: 'See if you can guess what a random anime\'s score is.',
+			game: true,
 			clientPermissions: ['EMBED_LINKS'],
 			credit: [
 				{
@@ -56,34 +57,30 @@ module.exports = class AnimeScoreCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const anime = await this.getRandomAnime(msg.channel.nsfw);
-			const embed = new MessageEmbed()
-				.setColor(0x02A9FF)
-				.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
-				.setImage(anime.coverImage.large || anime.coverImage.medium || null)
-				.setTitle(anime.title.english || anime.title.romaji)
-				.setDescription(`_${anime.startDate.year}, ${formats[anime.format]}_`)
-				.setFooter(anime.id.toString());
-			await msg.reply('**You have 15 seconds, what score do you think this anime has?**', { embeds: [embed] });
-			const filter = res => {
-				if (res.author.id !== msg.author.id) return false;
-				return Boolean(Number.parseInt(res.content, 10));
-			};
-			const msgs = await msg.channel.awaitMessages({
-				filter,
-				max: 1,
-				time: 15000
-			});
-			if (!msgs.size) return msg.reply(`Sorry, time is up! It was **${anime.averageScore}%**.`);
-			const ans = Number.parseInt(msgs.first().content, 10);
-			const close = Math.abs(ans - anime.averageScore);
-			if (close <= 10 && close !== 0) return msg.reply(`Close! It was **${anime.averageScore}%**.`);
-			if (ans !== anime.averageScore) return msg.reply(`Nope, sorry, it was **${anime.averageScore}%**.`);
-			return msg.reply(`Nice job! It was **${anime.averageScore}%**!`);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const anime = await this.getRandomAnime(msg.channel.nsfw);
+		const embed = new MessageEmbed()
+			.setColor(0x02A9FF)
+			.setAuthor('AniList', 'https://i.imgur.com/iUIRC7v.png', 'https://anilist.co/')
+			.setImage(anime.coverImage.large || anime.coverImage.medium || null)
+			.setTitle(anime.title.english || anime.title.romaji)
+			.setDescription(`_${anime.startDate.year}, ${formats[anime.format]}_`)
+			.setFooter(anime.id.toString());
+		await msg.reply('**You have 15 seconds, what score do you think this anime has?**', { embeds: [embed] });
+		const filter = res => {
+			if (res.author.id !== msg.author.id) return false;
+			return Boolean(Number.parseInt(res.content, 10));
+		};
+		const msgs = await msg.channel.awaitMessages({
+			filter,
+			max: 1,
+			time: 15000
+		});
+		if (!msgs.size) return msg.reply(`Sorry, time is up! It was **${anime.averageScore}%**.`);
+		const ans = Number.parseInt(msgs.first().content, 10);
+		const close = Math.abs(ans - anime.averageScore);
+		if (close <= 10 && close !== 0) return msg.reply(`Close! It was **${anime.averageScore}%**.`);
+		if (ans !== anime.averageScore) return msg.reply(`Nope, sorry, it was **${anime.averageScore}%**.`);
+		return msg.reply(`Nice job! It was **${anime.averageScore}%**!`);
 	}
 
 	async getRandomAnime(nsfw) {

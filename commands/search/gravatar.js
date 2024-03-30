@@ -41,7 +41,7 @@ module.exports = class GravatarCommand extends Command {
 			return msg.say({ files: [{ attachment: body, name: `${emailHash}.jpg` }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+			throw err;
 		}
 	}
 };

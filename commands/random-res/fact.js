@@ -20,30 +20,26 @@ module.exports = class FactCommand extends Command {
 	}
 
 	async run(msg) {
-		try {
-			const article = await this.randomWikipediaArticle();
-			const { body } = await request
-				.get('https://en.wikipedia.org/w/api.php')
-				.query({
-					action: 'query',
-					prop: 'extracts',
-					format: 'json',
-					titles: article,
-					exintro: '',
-					explaintext: '',
-					redirects: '',
-					formatversion: 2
-				});
-			let fact = body.query.pages[0].extract;
-			if (fact.length > 200) {
-				const facts = fact.split('.');
-				fact = `${facts[0]}.`;
-				if (fact.length < 200 && facts.length > 1) fact += `${facts[1]}.`;
-			}
-			return msg.say(fact);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+		const article = await this.randomWikipediaArticle();
+		const { body } = await request
+			.get('https://en.wikipedia.org/w/api.php')
+			.query({
+				action: 'query',
+				prop: 'extracts',
+				format: 'json',
+				titles: article,
+				exintro: '',
+				explaintext: '',
+				redirects: '',
+				formatversion: 2
+			});
+		let fact = body.query.pages[0].extract;
+		if (fact.length > 200) {
+			const facts = fact.split('.');
+			fact = `${facts[0]}.`;
+			if (fact.length < 200 && facts.length > 1) fact += `${facts[1]}.`;
 		}
+		return msg.say(fact);
 	}
 
 	async randomWikipediaArticle() {

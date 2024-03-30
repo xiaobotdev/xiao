@@ -32,18 +32,14 @@ module.exports = class PokedexItemCommand extends Command {
 	}
 
 	async run(msg, { item }) {
-		try {
-			const data = await this.client.pokemon.items.fetch(item);
-			if (!data) return msg.say('Could not find any results.');
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setTitle(data.name)
-				.setDescription(data.description || 'No description available.')
-				.setThumbnail(data.spriteURL)
-				.addField('❯ Cost', `${data.cost} ¥`, true);
-			return msg.embed(embed);
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const data = await this.client.pokemon.items.fetch(item);
+		if (!data) return msg.say('Could not find any results.');
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setTitle(data.name)
+			.setDescription(data.description || 'No description available.')
+			.setThumbnail(data.spriteURL)
+			.addField('❯ Cost', `${data.cost} ¥`, true);
+		return msg.embed(embed);
 	}
 };

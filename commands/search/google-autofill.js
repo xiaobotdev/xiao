@@ -26,18 +26,14 @@ module.exports = class GoogleAutofillCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		try {
-			const { text } = await request
-				.get('https://suggestqueries.google.com/complete/search')
-				.query({
-					client: 'firefox',
-					q: query
-				});
-			const data = JSON.parse(text)[1];
-			if (!data.length) return msg.say('Could not find any results.');
-			return msg.say(data.join('\n'));
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		const { text } = await request
+			.get('https://suggestqueries.google.com/complete/search')
+			.query({
+				client: 'firefox',
+				q: query
+			});
+		const data = JSON.parse(text)[1];
+		if (!data.length) return msg.say('Could not find any results.');
+		return msg.say(data.join('\n'));
 	}
 };

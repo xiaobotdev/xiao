@@ -59,24 +59,20 @@ module.exports = class PokedexMovesetCommand extends Command {
 	}
 
 	async run(msg, { pokemon }) {
-		try {
-			if (!pokemon.gameDataCached) await pokemon.fetchGameData();
-			if (!pokemon.moveSet.length) return msg.say('This Pokémon\'s moves are not yet documented.');
-			const embed = new MessageEmbed()
-				.setColor(0xED1C24)
-				.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
-				.setDescription(pokemon.moveSet.map(move => `**Level ${move.level}:** ${move.move.name}`).join('\n'))
-				.setThumbnail(pokemon.spriteImageURL)
-				.setFooter(`Moveset data taken from ${versions[pokemon.moveSetVersion]}.`);
-			return msg.channel.send({
-				embeds: [embed],
-				files: [{
-					attachment: await pokemon.generateBoxImage(),
-					name: 'box.png'
-				}]
-			});
-		} catch (err) {
-			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-		}
+		if (!pokemon.gameDataCached) await pokemon.fetchGameData();
+		if (!pokemon.moveSet.length) return msg.say('This Pokémon\'s moves are not yet documented.');
+		const embed = new MessageEmbed()
+			.setColor(0xED1C24)
+			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setDescription(pokemon.moveSet.map(move => `**Level ${move.level}:** ${move.move.name}`).join('\n'))
+			.setThumbnail(pokemon.spriteImageURL)
+			.setFooter(`Moveset data taken from ${versions[pokemon.moveSetVersion]}.`);
+		return msg.channel.send({
+			embeds: [embed],
+			files: [{
+				attachment: await pokemon.generateBoxImage(),
+				name: 'box.png'
+			}]
+		});
 	}
 };
