@@ -35,7 +35,7 @@ module.exports = class SauceNaoCommand extends Command {
 		const embed = new MessageEmbed()
 			.setImage(sauce.thumbnail)
 			.setURL(sauce.url)
-			.setAuthor(sauce.authorName || 'Unknown Author', sauce.authorUrl || sauce.url)
+			.setAuthor(sauce.authorName || 'Unknown Author', undefined, sauce.authorUrl || sauce.url)
 			.setFooter(`${sauce.similarity}% similarity`);
 		return msg.reply({ embeds: [embed] });
 	}
