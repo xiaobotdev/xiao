@@ -1,10 +1,10 @@
 const Command = require('../../framework/Command');
-const request = require('node-superfetch');
+const sagiri = require('sagiri');
+const { SAUCENAO_KEY } = process.env;
+const sagiriClient = sagiri(SAUCENAO_KEY);
 const fs = require('fs');
-const { readFile } = require('fs/promises');
 const path = require('path');
 const images = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao'));
-const { SAUCENAO_KEY } = process.env;
 const sourceRegex = /([A-Z ]+)-?([0-9A-Z]+)?(-[0-9]+)?(\.[A-Z])?/i;
 
 module.exports = class XiaoCommand extends Command {
@@ -56,19 +56,7 @@ module.exports = class XiaoCommand extends Command {
 		}
 	}
 
-	async sauceNao(img) {
-		const { body } = await request.post('https://saucenao.com/search.php')
-			.query({
-				api_key: SAUCENAO_KEY,
-				db: 999,
-				output_type: 2,
-				numres: 16
-			})
-			.attach('file', await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', img)));
-		console.log(body.header.message);
-		if (!body.results || !body.results.length) return null;
-		const result = body.results[0];
-		if (Number.parseFloat(result.header.similarity) < 90) return null;
-		return body.results[0].data;
+	sauceNao(img) {
+		return sagiriClient(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', img));
 	}
 };
