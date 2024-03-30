@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-const { firstUpperCase, list } = require('../../util/Util');
+const { firstUpperCase } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
 const characters = {
 	phoenix: ['phoenix', 'wright', 'naruhodo', 'ryuuichi', 'ryu', 'nick'],

@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { list, base64 } = require('../../util/Util');
+const { base64 } = require('../../util/Util');
 const modes = ['encode', 'decode'];
 
 module.exports = class Base64Command extends Command {

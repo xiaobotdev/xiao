@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { list, removeFromArray } = require('../../util/Util');
+const { removeFromArray } = require('../../util/Util');
 const types = ['user', 'guild'];
 
 module.exports = class UnblacklistCommand extends Command {

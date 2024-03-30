@@ -3,7 +3,7 @@ const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const moment = require('moment');
 require('moment-duration-format');
-const { list, tomorrow } = require('../../util/Util');
+const { tomorrow } = require('../../util/Util');
 const { GOLD_FISH_EMOJI_ID, GOLD_FISH_EMOJI_NAME, SILVER_FISH_EMOJI_ID, SILVER_FISH_EMOJI_NAME } = process.env;
 const locales = ['en', 'jp'];
 

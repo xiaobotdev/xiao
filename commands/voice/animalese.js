@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const path = require('path');
-const { reactIfAble, list } = require('../../util/Util');
+const { reactIfAble } = require('../../util/Util');
 const fs = require('fs');
 const { WaveFile } = require('wavefile');
 const { Readable } = require('stream');

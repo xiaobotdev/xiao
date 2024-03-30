@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { MessageEmbed } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const { list, firstUpperCase } = require('../../util/Util');
+const { firstUpperCase } = require('../../util/Util');
 const signs = require('../../assets/json/horoscope');
 
 module.exports = class HoroscopeCommand extends Command {
