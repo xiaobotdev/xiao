@@ -29,7 +29,12 @@ module.exports = class SauceNaoCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		const data = await sagiriClient(image);
+		let data;
+		try {
+			data = await sagiriClient(image);
+		} catch {
+			return msg.reply('No results for this image.');
+		}
 		if (!data.length) return msg.reply('No results for this image.');
 		const sauce = data[0];
 		const embed = new MessageEmbed()
