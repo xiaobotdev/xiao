@@ -1,7 +1,10 @@
 const Command = require('../../framework/Command');
+const request = require('node-superfetch');
 const fs = require('fs');
+const { readFile } = require('fs/promises');
 const path = require('path');
 const images = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao'));
+const { SAUCENAO_KEY } = process.env;
 const sourceRegex = /([A-Z ]+)-?([0-9A-Z]+)?(-[0-9]+)?(\.[A-Z])?/i;
 
 module.exports = class XiaoCommand extends Command {
@@ -19,25 +22,52 @@ module.exports = class XiaoCommand extends Command {
 					url: 'http://www.marv.jp/',
 					reasonURL: 'http://www.runefactory4.com/index1.html',
 					reason: 'Images, Original "Rune Factory 4" Game'
+				},
+				{
+					name: 'SauceNAO',
+					url: 'https://saucenao.com/',
+					reason: 'API'
 				}
 			]
 		});
 	}
 
-	run(msg) {
+	async run(msg) {
 		const image = images[Math.floor(Math.random() * images.length)];
-		return msg.say(this.getSource(image), {
+		return msg.say(await this.getSource(image), {
 			files: [path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', image)]
 		});
 	}
 
-	getSource(img) {
+	async getSource(img) {
 		const source = img.match(sourceRegex);
 		const site = source[1];
-		if (site === 'unknown') return 'Artist Unknown';
 		if (site === 'official') return 'Official Art';
-		if (site === 'deviant') return `Art by <https://www.deviantart.com/${source[2]}>`;
-		if (site === 'pixiv') return `Art Source: <https://www.pixiv.net/en/artworks/${source[2]}>`;
-		return `Art by ${site}`;
+		let data;
+		try {
+			data = await this.sauceNao(img);
+			if (!data) return 'Artist Unknown';
+			return `Art Source: ${data.ext_urls[0]}`;
+		} catch {
+			if (site === 'unknown') return 'Artist Unknown';
+			if (site === 'deviant') return `Art by <https://www.deviantart.com/${source[2]}>`;
+			if (site === 'pixiv') return `Art Source: <https://www.pixiv.net/en/artworks/${source[2]}>`;
+			return `Art by ${site}`;
+		}
+	}
+
+	async sauceNao(img) {
+		const { body } = await request.get('https://saucenao.com/search.php')
+			.query({
+				api_key: SAUCENAO_KEY,
+				db: 999,
+				output_type: 2,
+				numres: 16
+			})
+			.attach('file', await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', img)));
+		if (!body.results || !body.results.length) return null;
+		const result = body.results[0];
+		if (Number.parseFloat(result.header.similarity) < 90) return null;
+		return body.results[0].data;
 	}
 };
