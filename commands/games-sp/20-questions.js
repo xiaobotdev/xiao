@@ -61,7 +61,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			const answers = question.answers.map(answer => answer.text);
 			const rowCount = Math.ceil(answers.length / 5);
 			const rows = [];
-			for (let i = 0; i <= rowCount; i++) rows.push(new MessageActionRow());
+			for (let i = 0; i < rowCount; i++) rows.push(new MessageActionRow());
 			let rowi = 0;
 			for (let i = 0; i < answers.length; i++) {
 				const answer = answers[i];
