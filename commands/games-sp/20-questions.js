@@ -2,7 +2,6 @@ const Command = require('../../framework/Command');
 const { MessageButton, MessageActionRow } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const { stripIndents } = require('common-tags');
 const { list } = require('../../util/Util');
 const games = require('../../assets/json/20-questions');
 
@@ -65,8 +64,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			for (let i = 0; i <= rowCount; i++) rows.push(new MessageActionRow());
 			for (let i = 0; i < answers.length; i++) {
 				const answer = answers[i];
-				const row = rows[i % 5];
-				if (!row) continue;
+				const row = rows[Math.floor(i / 5)];
 				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
 			}
 			const sRow = new MessageActionRow();
@@ -98,11 +96,8 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				break;
 			}
 		}
-		if (win === 'time') return msg.say('Game ended due to forfeit.');
-		return msg.say(stripIndents`
-			**${question.winText}**
-			${question.result}
-		`);
+		if (win === 'time') return buttonPress.editReply({ content: 'Game ended due to forfeit.' });
+		return buttonPress.editReply({ content: `**${question.winText}**\n${question.result}` });
 	}
 
 	makeBaseURI(game) {
