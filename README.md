@@ -1452,6 +1452,8 @@ Total: 509
    - [ebearskittychan](https://twitter.com/ebearskittychan) (English-to-Temmie Dictionary Data)
 * **translate:**
    - [Google](https://www.google.com/) (Google Translate)
+* **yoda:**
+   - [The Yoda-Speak Generator](http://www.yodaspeak.co.uk/index.php) (API)
 * **zalgo:**
    - [clux](https://github.com/clux) (Zalgo Character Data)
 * **currency:**
