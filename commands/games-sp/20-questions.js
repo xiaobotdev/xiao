@@ -60,15 +60,19 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		await this.sendLoadingMessage(buttonPress, [initialRow]);
 		while (win === null) {
 			const answers = question.answers.map(answer => answer.text.toLowerCase());
-			const row = new MessageActionRow();
-			for (const answer of answers) {
+			const rowCount = Math.ceil(answers.length / 5);
+			const rows = [];
+			for (let i = 0; i < rowCount; i++) rows.push(new MessageActionRow());
+			for (let i = 0; i < answers.length; i++) {
+				const answer = answers[i];
+				const row = rows[i % 5];
 				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
 			}
 			const sRow = new MessageActionRow();
 			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
 			await buttonPress.editReply({
 				content: question.question,
-				components: [row, sRow]
+				components: [...rows, sRow]
 			});
 			try {
 				buttonPress = await gameMsg.awaitMessageComponent({
