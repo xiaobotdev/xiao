@@ -1,6 +1,6 @@
 ## Agreement
 
-If you self-host this you're nuts.
+Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 
 ## Installing
 
