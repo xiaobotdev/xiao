@@ -21,7 +21,7 @@
 		"discord-js"
 	],
 	"author": "dragonfire535 <danielbodendahl@gmail.com>",
-	"license": "UNLICENSED",
+	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/dragonfire535/xiao/issues"
 	},
@@ -29,15 +29,11 @@
 	"engines": {
 		"node": ">=15"
 	},
-	"imports": {
-		"#assets/*": "./assets/json/*.json",
-		"#canvas": "./util/Canvas.js",
-		"#util": "./util/Util.js"
-	},
 	"dependencies": {
 		"@discordjs/collection": "^2.0.0",
 		"@discordjs/opus": "^0.9.0",
 		"@discordjs/voice": "^0.16.1",
+		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@tensorflow/tfjs-node": "^4.17.0",
 		"@tensorflow-models/face-detection": "^1.0.2",
 		"@vitalets/google-translate-api": "^8.0.0",
@@ -72,7 +68,7 @@
 		"moment": "^2.30.1",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.45",
-		"node-superfetch": "^0.3.3",
+		"node-superfetch": "^0.3.4",
 		"nsfwjs": "^4.1.0",
 		"ntcjs": "^1.1.3",
 		"parse-domain": "^8.0.2",
@@ -85,17 +81,17 @@
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "github:marianoheller/tic-tac-toe-minimax",
 		"twemoji-parser": "^14.0.0",
-		"twitter-openapi-typescript": "^0.0.31",
+		"twitter-openapi-typescript": "^0.0.32",
 		"valid-url": "^1.0.9",
 		"wavefile": "^11.0.0",
-		"winston": "^3.12.0",
+		"winston": "^3.13.0",
 		"wuzzy": "^0.1.8",
 		"ytdl-core": "^4.11.5",
 		"zip-to-timezone": "^1.1.5"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.8",
-		"sodium-native": "^4.0.10",
+		"sodium-native": "^4.1.1",
 		"utf-8-validate": "^6.0.3",
 		"zlib-sync": "^0.1.9"
 	},
