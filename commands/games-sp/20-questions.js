@@ -59,13 +59,14 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		}
 		await this.sendLoadingMessage(buttonPress, [initialRow]);
 		while (win === null) {
-			const answers = question.answers.map(answer => answer.text.toLowerCase());
+			const answers = question.answers.map(answer => answer.text);
 			const rowCount = Math.ceil(answers.length / 5);
 			const rows = [];
 			for (let i = 0; i <= rowCount; i++) rows.push(new MessageActionRow());
 			for (let i = 0; i < answers.length; i++) {
 				const answer = answers[i];
 				const row = rows[i % 5];
+				if (!row) continue;
 				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
 			}
 			const sRow = new MessageActionRow();
@@ -84,7 +85,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				win = 'time';
 				break;
 			}
-			await this.sendLoadingMessage(buttonPress, [row, sRow]);
+			await this.sendLoadingMessage(buttonPress, [...rows, sRow]);
 			const choice = buttonPress.customId;
 			if (choice === 'end') {
 				win = 'time';
