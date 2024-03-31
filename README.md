@@ -747,6 +747,7 @@ Total: 509
    - [shibe.online](https://shibe.online/) (API)
 * **xiao:**
    - [Marvelous](http://www.marv.jp/) (Images, Original "Rune Factory 4" Game)
+   - [SauceNAO](https://saucenao.com/) (API)
 * **butt:**
    - [iCrawl](https://github.com/iCrawl) (Code, Concept)
 * **cuteness:**
