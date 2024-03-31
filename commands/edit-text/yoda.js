@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
-const { firstUpperCase } = require('../../util/Util');
-const pivots = ['is', 'be', 'will', 'show', 'do', 'try', 'are', 'teach', 'have', 'am'];
-const ends = ['Hmmmmm.', 'Herh herh herh.', 'Yes, hmmm?'];
+const request = require('node-superfetch');
+const cheerio = require('cheerio');
 
 module.exports = class YodaCommand extends Command {
 	constructor(client) {
@@ -10,51 +9,31 @@ module.exports = class YodaCommand extends Command {
 			group: 'edit-text',
 			memberName: 'yoda',
 			description: 'Converts text to Yoda speak.',
+			credit: [
+				{
+					name: 'The Yoda-Speak Generator',
+					url: 'http://www.yodaspeak.co.uk/index.php',
+					reason: 'API'
+				}
+			],
 			args: [
 				{
-					key: 'text',
+					key: 'message',
+					label: 'text',
 					type: 'string'
 				}
 			]
 		});
 	}
 
-	run(msg, { text }) {
-		return msg.say(this.yodaSpeak(text));
-	}
-
-	yodaSpeak(text) {
-		const sentences = text.split(/\?|!|\./);
-		let newSentences = [];
-		for (const sentence of sentences) {
-			const trimmed = sentence.trim();
-			const breaks = trimmed.split(',');
-			const newBreaks = [];
-			for (const broke of breaks) {
-				const newText = [];
-				const pivoted = [];
-				const words = broke.split(' ');
-				for (let i = 0; i < words.length; i++) {
-					const clean = words[i].toLowerCase().replace(/[^a-z]/, '').trim();
-					if (pivots.includes(clean)) {
-						const fixed = newText.slice(i - 1);
-						newText.splice(-i);
-						pivoted.push(fixed, clean);
-					} else {
-						newText.push(clean);
-					}
-				}
-				newBreaks.push(`${newText.join(' ').trim()} ${pivoted.join(' ').trim()}`);
-			}
-			newSentences.push(newBreaks.join(', ').trim());
-		}
-		newSentences = newSentences.map(sentence => {
-			const split = sentence.split(' ');
-			return split.map((word, i) => i === 0 || word === 'i' ? firstUpperCase(word) : word).join(' ');
-		});
-		if (newSentences.length === 1) {
-			return `${newSentences.join('. ').trim()}. ${ends[Math.floor(Math.random() * ends.length)]}`;
-		}
-		return `${newSentences.join('. ').trim()} ${ends[Math.floor(Math.random() * ends.length)]}`;
+	async run(msg, { message }) {
+		const data = new URLSearchParams();
+		data.append('YodaMe', message);
+		const { text } = await request
+			.post('http://yodaspeak.co.uk/index.php')
+			.send(data, true)
+			.set({ 'Content-Type': 'application/x-www-form-urlencoded' });
+		const $ = cheerio.load(text);
+		return msg.say($('textarea[name="YodaSpeak"]').first().text().trim());
 	}
 };
