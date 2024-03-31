@@ -20,7 +20,8 @@ module.exports = class YodaCommand extends Command {
 				{
 					key: 'message',
 					label: 'text',
-					type: 'string'
+					type: 'string',
+					max: 500
 				}
 			]
 		});
