@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { MessageButton, MessageActionRow } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
@@ -26,6 +27,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 					key: 'game',
 					prompt: `What game do you want to play? Either ${list(Object.keys(games), 'or')}.`,
 					type: 'string',
+					default: '',
 					oneOf: Object.keys(games),
 					parse: game => games[game.toLowerCase()]
 				}
@@ -37,25 +39,50 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const startURL = await this.initialize(game);
 		let question = await this.startGame(game, startURL);
 		let win = null;
-		while (win === null) {
-			const answers = question.answers.map(answer => answer.text.toLowerCase());
-			answers.push('end');
-			await msg.say(stripIndents`
-				**${question.question}**
-				${question.answers.map(answer => answer.text).join(' | ')} | End
-			`);
-			const filter = res => res.author.id === msg.author.id && answers.includes(res.content.toLowerCase());
-			const msgs = await msg.channel.awaitMessages({
-				filter,
+		const initialRow = new MessageActionRow().addComponents(
+			new MessageButton().setCustomId('true').setLabel('Ready!').setStyle('PRIMARY'),
+			new MessageButton().setCustomId('false').setLabel('Nevermind').setStyle('SECONDARY')
+		);
+		const gameMsg = await msg.reply({
+			content: 'Welcome to 20 Questions! Think of something, and I will try to guess it.',
+			components: [initialRow]
+		});
+		let buttonPress;
+		try {
+			buttonPress = await gameMsg.awaitMessageComponent({
+				filter: res => res.user.id === msg.author.id,
 				max: 1,
 				time: 30000
 			});
-			if (!msgs.size) {
-				await msg.say('Sorry, time is up!');
+			if (buttonPress.customId === 'false') return buttonPress.update({ content: 'Too bad...', components: [] });
+		} catch {
+			return gameMsg.edit({ content: 'Guess you didn\'t want to play after all...', components: [] });
+		}
+		await this.sendLoadingMessage(buttonPress, [initialRow]);
+		while (win === null) {
+			const answers = question.answers.map(answer => answer.text.toLowerCase());
+			const row = new MessageActionRow();
+			for (const answer of answers) {
+				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
+			}
+			const sRow = new MessageActionRow();
+			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
+			await buttonPress.editReply({
+				content: question.question,
+				components: [row, sRow]
+			});
+			try {
+				buttonPress = await gameMsg.awaitMessageComponent({
+					filter: res => res.user.id === msg.author.id,
+					max: 1,
+					time: 30000
+				});
+			} catch {
 				win = 'time';
 				break;
 			}
-			const choice = msgs.first().content.toLowerCase();
+			await this.sendLoadingMessage(buttonPress, [row, sRow]);
+			const choice = buttonPress.customId;
 			if (choice === 'end') {
 				win = 'time';
 				break;
@@ -153,5 +180,14 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			answers,
 			url
 		};
+	}
+
+	sendLoadingMessage(buttonPress, rows) {
+		for (const row of rows) {
+			for (const button of row.components) {
+				button.setDisabled(true);
+			}
+		}
+		return buttonPress.update({ content: 'Loading...', components: rows });
 	}
 };
