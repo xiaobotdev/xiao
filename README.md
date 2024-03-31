@@ -603,6 +603,7 @@ Total: 509
 * [@discordjs/collection](https://www.npmjs.com/package/@discordjs/collection)
 * [@discordjs/opus](https://www.npmjs.com/package/@discordjs/opus)
 * [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
+* [@mediapipe/face_detection](https://www.npmjs.com/package/@mediapipe/face_detection)
 * [@tensorflow-models/face-detection](https://www.npmjs.com/package/@tensorflow-models/face-detection)
 * [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
 * [@vitalets/google-translate-api](https://www.npmjs.com/package/@vitalets/google-translate-api)
