@@ -61,9 +61,9 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			const answers = question.answers.map(answer => answer.text);
 			const rowCount = Math.ceil(answers.length / 5);
 			const rows = [];
-			for (let i = 0; i <= rowCount; i++) rows.push(new MessageActionRow());
+			for (let i = 0; i < rowCount; i++) rows.push(new MessageActionRow());
 			for (let i = 0; i < answers.length; i += 5) {
-				const row = rows[i];
+				const row = rows[Math.floor(i / 5)];
 				const components = answers.slice(i, i + 5);
 				for (const component of components) {
 					row.addComponents(new MessageButton().setCustomId(component).setStyle('PRIMARY').setLabel(component));
