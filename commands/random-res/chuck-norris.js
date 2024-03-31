@@ -31,7 +31,7 @@ module.exports = class ChuckNorrisCommand extends Command {
 	async run(msg) {
 		if (!this.categories) await this.fetchCategories();
 		const categories = msg.channel.nsfw
-			? this.categories
+			? 'explicit'
 			: this.categories.filter(cat => !nsfwCategories.includes(cat));
 		const { body } = await request
 			.get('https://api.chucknorris.io/jokes/random')
