@@ -65,11 +65,11 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			for (let i = 0; i < answers.length; i += 5) {
 				const row = rows[i];
 				row.addComponents([
-					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i]),
-					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 1]),
-					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 2]),
-					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 3]),
-					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 4])
+					new MessageButton().setCustomId(answers[i]).setStyle('PRIMARY').setLabel(answers[i]),
+					new MessageButton().setCustomId(answers[i + 1]).setStyle('PRIMARY').setLabel(answers[i + 1]),
+					new MessageButton().setCustomId(answers[i + 2]).setStyle('PRIMARY').setLabel(answers[i + 2]),
+					new MessageButton().setCustomId(answers[i + 3]).setStyle('PRIMARY').setLabel(answers[i + 3]),
+					new MessageButton().setCustomId(answers[i + 4]).setStyle('PRIMARY').setLabel(answers[i + 4])
 				]);
 			}
 			const sRow = new MessageActionRow();
