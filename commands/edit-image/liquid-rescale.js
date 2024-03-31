@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const gm = require('gm').subClass({ imageMagick: true });
+const gm = require('gm').subClass({ imageMagick: '7+' });
 const request = require('node-superfetch');
 const { magikToBuffer } = require('../../util/Util');
 
