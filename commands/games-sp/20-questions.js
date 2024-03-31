@@ -24,7 +24,6 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			args: [
 				{
 					key: 'game',
-					prompt: `What game do you want to play? Either ${list(Object.keys(games), 'or')}.`,
 					type: 'string',
 					default: '',
 					oneOf: Object.keys(games),
