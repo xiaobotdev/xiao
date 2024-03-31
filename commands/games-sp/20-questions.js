@@ -62,9 +62,11 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			const rowCount = Math.ceil(answers.length / 5);
 			const rows = [];
 			for (let i = 0; i <= rowCount; i++) rows.push(new MessageActionRow());
+			let rowi = 0;
 			for (let i = 0; i < answers.length; i++) {
 				const answer = answers[i];
-				const row = rows[Math.floor(i / 5)];
+				if (rows[rowi].components.length > 5) rowi++;
+				const row = rows[rowi];
 				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
 			}
 			const sRow = new MessageActionRow();
