@@ -1,5 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
+const nsfwCategories = ['explicit'];
 
 module.exports = class ChuckNorrisCommand extends Command {
 	constructor(client) {
@@ -23,10 +24,25 @@ module.exports = class ChuckNorrisCommand extends Command {
 				}
 			]
 		});
+
+		this.categories = null;
 	}
 
 	async run(msg) {
-		const { body } = await request.get('https://api.chucknorris.io/jokes/random');
+		if (!this.categories) await this.fetchCategories();
+		const categories = msg.channel.nsfw
+			? this.categories
+			: this.categories.filter(cat => !nsfwCategories.includes(cat));
+		const { body } = await request
+			.get('https://api.chucknorris.io/jokes/random')
+			.query({ category: categories.join(',') });
 		return msg.say(body.value);
+	}
+
+	async fetchCategories() {
+		if (this.categories) return this.categories;
+		const { body } = await request.get('https://api.chucknorris.io/jokes/categories');
+		this.categories = body;
+		return this.categories;
 	}
 };
