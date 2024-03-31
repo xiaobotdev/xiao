@@ -65,7 +65,7 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			let rowi = 0;
 			for (let i = 0; i < answers.length; i++) {
 				const answer = answers[i];
-				if (rows[rowi].components.length > 5) rowi++;
+				if (rows[rowi].components.length > 5) ++rowi;
 				const row = rows[rowi];
 				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
 			}
