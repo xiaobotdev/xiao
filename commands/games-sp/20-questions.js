@@ -98,8 +98,16 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				break;
 			}
 		}
-		if (win === 'time') return buttonPress.editReply({ content: 'Game ended due to forfeit.' });
-		return buttonPress.editReply({ content: `**${question.winText}**\n${question.result}` });
+		if (win === 'time') {
+			return buttonPress.editReply({
+				content: 'Game ended due to forfeit.',
+				components: []
+			});
+		}
+		return buttonPress.editReply({
+			content: `**${question.winText}**\n${question.result}`,
+			components: []
+		});
 	}
 
 	makeBaseURI(game) {
