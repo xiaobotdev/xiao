@@ -30,7 +30,7 @@ If you self-host this you're nuts.
 22. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Commands
-Total: 508
+Total: 509
 
 ### Utility:
 
