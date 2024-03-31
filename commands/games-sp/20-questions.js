@@ -62,12 +62,15 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			const rowCount = Math.ceil(answers.length / 5);
 			const rows = [];
 			for (let i = 0; i < rowCount; i++) rows.push(new MessageActionRow());
-			let rowi = 0;
-			for (let i = 0; i < answers.length; i++) {
-				const answer = answers[i];
-				if (rows[rowi].components.length > 5) ++rowi;
-				const row = rows[rowi];
-				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
+			for (let i = 0; i < answers.length; i += 5) {
+				const row = rows[i];
+				row.addComponents([
+					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i]),
+					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 1]),
+					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 2]),
+					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 3]),
+					new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answers[i + 4])
+				]);
 			}
 			const sRow = new MessageActionRow();
 			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
