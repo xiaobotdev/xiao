@@ -58,10 +58,9 @@ module.exports = class MagicCommand extends Command {
 		const embed = new MessageEmbed()
 			.setURL(card.scryfall_uri)
 			.setThumbnail(card.card_faces ? card.card_faces[0].image_uris.art_crop : card.image_uris.art_crop)
-			.setDescription(`${manaCost}\n\n${oracleText}`)
+			.setDescription(`${manaCost} ${card.type_line}\n\n${oracleText}`)
 			.setAuthor('Scryfall', logos.scryfall, 'https://scryfall.com/')
 			.setTitle(card.name)
-			.setFooter(card.type_line)
 			.addField('❯ Price', stripIndents`
 				**Non-Foil:** [${card.prices.usd ? `$${card.prices.usd}` : '???'}](${card.purchase_uris.tcgplayer})
 				**Foil:** [${card.prices.usd_foil ? `$${card.prices.usd_foil}` : '???'}](${card.purchase_uris.tcgplayer})
