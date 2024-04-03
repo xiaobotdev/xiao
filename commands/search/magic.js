@@ -22,7 +22,7 @@ module.exports = class MagicCommand extends Command {
 		super(client, {
 			name: 'magic',
 			aliases: ['mtg', 'mtg-card', 'magic-the-gathering', 'magic-the-gathering-card'],
-			group: 'random-res',
+			group: 'search',
 			memberName: 'magic',
 			description: 'Responds with info on a Magic: The Gathering card.',
 			credit: [
