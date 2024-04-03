@@ -105,7 +105,7 @@ module.exports = class PeriodicTableCommand extends Command {
 		const { text } = await request
 			.get('https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json');
 		this.table = JSON.parse(text).elements;
-		this.table.elements.unshift(batman);
+		this.table.unshift(batman);
 		return this.table;
 	}
 };
