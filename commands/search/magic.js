@@ -75,7 +75,7 @@ module.exports = class MagicCommand extends Command {
 			const { body } = await request
 				.get('https://api.scryfall.com/cards/search')
 				.query({ q: `${query}${isFunny ? ' is:funny' : ''}` });
-			if (body.status === 404) return null;
+			if (!body.data || !body.data.length || body.status === 404) return null;
 			return body.data[0];
 		} catch (err) {
 			if (err.status === 404) return null;
