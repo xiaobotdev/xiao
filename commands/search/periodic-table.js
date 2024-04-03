@@ -1,7 +1,20 @@
 const Command = require('../../framework/Command');
+const request = require('node-superfetch');
 const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-const { elements, colors } = require('../../assets/json/periodic-table');
+const colors = 	{
+	Solid: 'black',
+	Liquid: 'blue',
+	Gas: 'green'
+};
+const batman = {
+	name: 'Batman',
+	mass: 5.736e+28,
+	number: 0,
+	period: 'Gotham City',
+	phase: 'Solid',
+	symbol: '🦇'
+};
 
 module.exports = class PeriodicTableCommand extends Command {
 	constructor(client) {
@@ -36,23 +49,26 @@ module.exports = class PeriodicTableCommand extends Command {
 					type: 'string',
 					validate: element => {
 						const num = Number.parseInt(element, 10);
-						if (!Number.isNaN(num) && num >= 0 && num <= elements.length - 1) return true;
+						if (!Number.isNaN(num) && num >= 0 && num <= this.table.length - 1) return true;
 						const search = element.toString().toLowerCase();
-						if (elements.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search)) return true;
+						if (this.table.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search)) return true;
 						return 'Invalid element, please enter a valid element symbol, name, or atomic number.';
 					},
 					parse: element => {
 						const num = Number.parseInt(element, 10);
-						if (!Number.isNaN(num)) return elements[num];
+						if (!Number.isNaN(num)) return this.table[num];
 						const search = element.toLowerCase();
-						return elements.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search);
+						return this.table.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search);
 					}
 				}
 			]
 		});
+
+		this.table = null;
 	}
 
 	async run(msg, { element }) {
+		if (!this.table) await this.fetchTable();
 		const canvas = createCanvas(500, 500);
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = 'black';
@@ -61,8 +77,8 @@ module.exports = class PeriodicTableCommand extends Command {
 		ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
 		ctx.textAlign = 'center';
 		if (element.number === 0) {
-			const batman = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'batman.png'));
-			ctx.drawImage(batman, 100, 166);
+			const batmanImg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'batman.png'));
+			ctx.drawImage(batmanImg, 100, 166);
 		} else {
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(210);
 			ctx.fillStyle = colors[element.phase] || 'gray';
@@ -80,5 +96,14 @@ module.exports = class PeriodicTableCommand extends Command {
 			`**${element.name} (${element.symbol})** is a ${phase} in ${period}.`,
 			{ files: [{ attachment: canvas.toBuffer(), name: `${element.name}.png` }] }
 		);
+	}
+
+	async fetchTable() {
+		if (this.table) return this.table;
+		const { text } = await request
+			.get('https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json');
+		this.table = JSON.parse(text).elements;
+		this.table.elements.unshift(batman);
+		return this.table;
 	}
 };
