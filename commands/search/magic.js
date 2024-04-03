@@ -52,6 +52,7 @@ module.exports = class MagicCommand extends Command {
 
 	async run(msg, { query }) {
 		const card = query ? await this.search(query) : await this.random();
+		if (!card) return msg.say('Could not find any results.');
 		const isMDFC = Boolean(card.card_faces);
 		const oracleText = isMDFC ? card.card_faces.map(c => c.oracle_text).join('\n\n//\n\n') : card.oracle_text;
 		const manaCost = isMDFC ? card.card_faces.map(c => c.mana_cost).join(' // ') : card.mana_cost;
@@ -75,7 +76,6 @@ module.exports = class MagicCommand extends Command {
 			const { body } = await request
 				.get('https://api.scryfall.com/cards/search')
 				.query({ q: `${query}${isFunny ? ' is:funny' : ''}` });
-			if (!body.data || !body.data.length || body.status === 404) return null;
 			return body.data[0];
 		} catch (err) {
 			if (err.status === 404) return null;
