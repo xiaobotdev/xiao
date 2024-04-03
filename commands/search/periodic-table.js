@@ -47,14 +47,16 @@ module.exports = class PeriodicTableCommand extends Command {
 				{
 					key: 'element',
 					type: 'string',
-					validate: element => {
+					validate: async element => {
+						if (!this.table) await this.fetchTable();
 						const num = Number.parseInt(element, 10);
 						if (!Number.isNaN(num) && num >= 0 && num <= this.table.length - 1) return true;
 						const search = element.toString().toLowerCase();
 						if (this.table.find(e => e.name.toLowerCase() === search || e.symbol.toLowerCase() === search)) return true;
 						return 'Invalid element, please enter a valid element symbol, name, or atomic number.';
 					},
-					parse: element => {
+					parse: async element => {
+						if (!this.table) await this.fetchTable();
 						const num = Number.parseInt(element, 10);
 						if (!Number.isNaN(num)) return this.table[num];
 						const search = element.toLowerCase();
