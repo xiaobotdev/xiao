@@ -18,9 +18,6 @@ module.exports = class OptionsCommand extends Command {
 			__**Server Options**__
 			Place the option in the appropriate channel's topic to use.
 
-			__General Options__
-			\`<xiao:disable-leave>\` Disables leave messages (System Channel).
-
 			__Phone Options__
 			\`<xiao:phone>\` Allows this channel to recieve phone calls.
 			\`<xiao:phone:auto-accept>\` Automatically accepts all incoming phone calls.
