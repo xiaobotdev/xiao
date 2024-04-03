@@ -91,7 +91,6 @@ Total: 510
 * **light-novel-title:** Responds with a randomly generated Light Novel title.
 * **lorem-ipsum:** Generates a randomized Lorem Ipsum placeholder text.
 * **magic-conch:** Asks your question to the Magic Conch.
-* **mtg-card:** Responds with a random castable Magic: The Gathering card for Discord, Lord of Disharmony.
 * **name:** Responds with a random name, with the gender of your choice.
 * **never-have-i-ever:** Responds with a random "Never Have I Ever..." statement.
 * **number-fact:** Responds with a random fact about a specific number.
@@ -195,6 +194,7 @@ Total: 510
 * **gravatar:** Responds with the Gravatar for an email.
 * **http-cat:** Responds with a cat for an HTTP status code.
 * **know-your-meme:** Searches Know Your Meme for your query.
+* **magic:** Responds with info on a Magic: The Gathering card.
 * **manga:** Searches AniList for your query, getting manga results.
 * **nasa:** Searches NASA's image archive for your query.
 * **neopet:** Responds with the image of a specific Neopet.
@@ -698,8 +698,6 @@ Total: 510
    - [LN title generator](https://salty-salty-studios.com/shiz/ln.php) (API)
 * **magic-conch:**
    - [Nickelodeon](https://www.nick.com/) (Original "Spongebob Squarepants" Show)
-* **mtg-card:**
-   - [Scryfall](https://scryfall.com/) (Random Results)
 * **name:**
    - [Random User Generator](https://randomuser.me/) (API)
 * **never-have-i-ever:**
@@ -830,6 +828,9 @@ Total: 510
    - [HTTP Cats](https://http.cat/) (API)
 * **know-your-meme:**
    - [Know Your Meme](https://knowyourmeme.com/) (Meme Data)
+* **magic:**
+   - [Wizards of the Coast](https://company.wizards.com/en) (Original Game)
+   - [Scryfall](https://scryfall.com/) (API)
 * **manga:**
    - [AniList](https://anilist.co/) (API)
    - [MyAnimeList](https://myanimelist.net/) (Score Data)
