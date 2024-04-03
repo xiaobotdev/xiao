@@ -9,7 +9,7 @@ const colors = 	{
 };
 const batman = {
 	name: 'Batman',
-	mass: 5.736e+28,
+	atomic_mass: 5.736e+28,
 	number: 0,
 	period: 'Gotham City',
 	phase: 'Solid',
@@ -91,7 +91,7 @@ module.exports = class PeriodicTableCommand extends Command {
 		ctx.fillText(element.number, 250, 100);
 		ctx.fillText(element.name, 250, 450);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(30);
-		ctx.fillText(element.mass || '?', 250, 400);
+		ctx.fillText(element.atomic_mass || '?', 250, 400);
 		const period = element.number === 0 ? element.period : `period ${element.period}`;
 		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;
 		return msg.say(
