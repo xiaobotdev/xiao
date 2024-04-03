@@ -30,7 +30,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Commands
-Total: 509
+Total: 510
 
 ### Utility:
 
@@ -42,8 +42,8 @@ Total: 509
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **high-scores:** Responds with the high scores the bot has saved.
 * **info:** Responds with detailed bot information.
-* **last-run-leaderboard:** Responds with the bot's most recently run commands.
 * **last-run:** Responds with a command's most recent run date.
+* **last-run-leaderboard:** Responds with the bot's most recently run commands.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
@@ -79,8 +79,8 @@ Total: 509
 * **coin:** Flips a coin.
 * **compliment:** Compliments a user.
 * **draw-cards:** Draws a random hand of playing cards.
-* **fact-core:** Responds with a random Fact Core quote.
 * **fact:** Responds with a random fact.
+* **fact-core:** Responds with a random Fact Core quote.
 * **fake-poll:** Randomly polls a bunch of fake users for their opinion on a yes/no question.
 * **fml:** Responds with a FML quote. (NSFW)
 * **fortune:** Responds with a random fortune.
@@ -186,9 +186,9 @@ Total: 509
 ### Search:
 
 * **anilist:** Responds with user information for an Anilist user.
+* **anime:** Searches AniList for your query, getting anime results.
 * **anime-character:** Searches AniList for your query, getting character results.
 * **anime-staff:** Searches AniList for your query, getting staff results.
-* **anime:** Searches AniList for your query, getting anime results.
 * **define:** Defines a word.
 * **frinkiac:** Input a line from the Simpsons to get the episode/season.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
@@ -208,6 +208,7 @@ Total: 509
 
 ### Pokédex:
 
+* **pokedex:** Searches the Pokédex for a Pokémon.
 * **pokedex-ability:** Searches the Pokédex for a Pokémon ability.
 * **pokedex-box-sprite:** Responds with the box sprite of a Pokémon.
 * **pokedex-cry:** Plays a Pokémon's cry.
@@ -217,7 +218,6 @@ Total: 509
 * **pokedex-move:** Searches the Pokédex for a Pokémon move.
 * **pokedex-moveset:** Responds with the moveset for a Pokémon.
 * **pokedex-stats:** Responds with the stats for a Pokémon.
-* **pokedex:** Searches the Pokédex for a Pokémon.
 * **smogon:** Responds with the Smogon tiers for a Pokémon.
 
 ### Analyzers:
@@ -248,12 +248,13 @@ Total: 509
 
 * **beautify:** Beautifies code with js-beautify.
 * **github:** Responds with information on a GitHub repository.
-* **lint-rule:** Responds with information on an ESLint rule.
 * **lint:** Lints code using ESLint.
+* **lint-rule:** Responds with information on an ESLint rule.
 * **npm:** Responds with information on an NPM package.
 
 ### Single-Player Games:
 
+* **20-questions:** Think of something and 20Q will read your mind by asking a few simple questions.
 * **akinator:** Think about a real or fictional character, I will try to guess who it is.
 * **anagramica:** Try to find all the anagrams for a given set of letters.
 * **anime-score:** See if you can guess what a random anime's score is.
@@ -288,8 +289,8 @@ Total: 509
 * **the-game:** If you think about the game, you lose.
 * **true-or-false:** Answer a true or false question.
 * **typing-test:** See how fast you can type a sentence.
-* **whos-that-pokemon-cry:** Guess who that Pokémon is, based on their cry.
 * **whos-that-pokemon:** Guess who that Pokémon is, based on their silhouette.
+* **whos-that-pokemon-cry:** Guess who that Pokémon is, based on their cry.
 * **would-you-rather:** Responds with a random "Would you rather ...?" question.
 
 ### Multi-Player Games:
@@ -300,8 +301,8 @@ Total: 509
 * **bingo:** Play bingo with up to 99 other users.
 * **car-race:** Race a car against another user or the AI.
 * **cards-against-humanity:** Compete to see who can come up with the best card to fill in the blank. (NSFW)
-* **chess-delete:** Deletes your saved Chess game.
 * **chess:** Play a game of Chess with another user or the AI.
+* **chess-delete:** Deletes your saved Chess game.
 * **connect-four:** Play a game of Connect Four with another user or the AI.
 * **cram:** Play a game of Cram with another user.
 * **domineering:** Play a game of Domineering with another user.
@@ -583,14 +584,14 @@ Total: 509
 ### Phone:
 
 * **hang-up:** Hangs up the current phone call.
+* **phone:** Starts a phone call with a random server.
 * **phone-block:** Gives instructions for blocking a channel or server.
 * **phone-info:** Gives information on the current phone call.
-* **phone:** Starts a phone call with a random server.
 
 ### Cleverbot:
 
-* **cleverbot-end:** Ends the current Cleverbot chat.
 * **cleverbot:** Starts a Cleverbot conversation.
+* **cleverbot-end:** Ends the current Cleverbot chat.
 
 ### Other:
 
@@ -645,6 +646,7 @@ Total: 509
 * [parse-domain](https://www.npmjs.com/package/parse-domain)
 * [pokersolver](https://www.npmjs.com/package/pokersolver)
 * [random-js](https://www.npmjs.com/package/random-js)
+* [sagiri](https://www.npmjs.com/package/sagiri)
 * [semver](https://www.npmjs.com/package/semver)
 * [sherlockjs](https://www.npmjs.com/package/sherlockjs)
 * [sodium-native](https://www.npmjs.com/package/sodium-native)
@@ -680,10 +682,10 @@ Total: 509
 * **chuck-norris:**
    - [Chuck Norris](https://chucknorris.com/) (Himself)
    - [chucknorris.io](https://api.chucknorris.io/) (API)
-* **fact-core:**
-   - [Valve](https://www.valvesoftware.com/en/) (Original "Portal 2" Game)
 * **fact:**
    - [Wikipedia](https://www.wikipedia.org/) (API)
+* **fact-core:**
+   - [Valve](https://www.valvesoftware.com/en/) (Original "Portal 2" Game)
 * **fml:**
    - [FML](https://www.fmylife.com/) (FML Data)
 * **github-zen:**
@@ -809,13 +811,13 @@ Total: 509
    - [Merriam-Webster's Collegiate® Dictionary](https://www.merriam-webster.com/) (API)
 * **anilist:**
    - [AniList](https://anilist.co/) (API)
+* **anime:**
+   - [AniList](https://anilist.co/) (API)
+   - [MyAnimeList](https://myanimelist.net/) (Score Data)
 * **anime-character:**
    - [AniList](https://anilist.co/) (API)
 * **anime-staff:**
    - [AniList](https://anilist.co/) (API)
-* **anime:**
-   - [AniList](https://anilist.co/) (API)
-   - [MyAnimeList](https://myanimelist.net/) (Score Data)
 * **define:**
    - [Merriam-Webster's Collegiate® Dictionary](https://www.merriam-webster.com/) (API)
 * **frinkiac:**
@@ -850,6 +852,14 @@ Total: 509
 * **yu-gi-oh:**
    - [Konami](https://www.konami.com/en/) (Original "Yu-Gi-Oh!" Game)
    - [YGOPRODECK](https://ygoprodeck.com/) (API)
+* **pokedex:**
+   - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
+   - [PokéAPI](https://pokeapi.co/) (API)
+   - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
+   - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 1-7))
+   - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 8-9))
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Cry Sound Effects (Meltan and Melmetal, Legends: Arceus))
+   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **pokedex-ability:**
    - [Pokémon](https://www.pokemon.com/us/) (Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
@@ -889,14 +899,6 @@ Total: 509
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
    - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
-* **pokedex:**
-   - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
-   - [PokéAPI](https://pokeapi.co/) (API)
-   - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
-   - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 1-7))
-   - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 8-9))
-   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Cry Sound Effects (Meltan and Melmetal, Legends: Arceus))
-   - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Box Sprite Sheet)
 * **smogon:**
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
@@ -917,6 +919,8 @@ Total: 509
    - [GitHub](https://github.com/) (API)
 * **npm:**
    - [npm](https://www.npmjs.com/) (API)
+* **20-questions:**
+   - [20Q.net](http://20q.net/) (API)
 * **akinator:**
    - [Akinator](https://en.akinator.com/) (API)
 * **anagramica:**
@@ -978,8 +982,9 @@ Total: 509
    - [20th Century Fox](https://www.foxmovies.com/) (Original "The Simpsons" Show, "Happy Squirrel" Concept)
 * **true-or-false:**
    - [Open Trivia DB](https://opentdb.com/) (API)
-* **whos-that-pokemon-cry:**
+* **whos-that-pokemon:**
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
+   - [4Kids](https://www.4kidsentertainmentinc.com/) ("Who's That Pokémon?" Sound)
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
    - [u/CaptainRako](https://www.reddit.com/user/CaptainRako/) (Background Image)
@@ -987,9 +992,8 @@ Total: 509
    - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 1-7))
    - [The Sounds Resource](https://www.sounds-resource.com/) (Cry Sound Effects (Gen 8-9))
    - [Pokémon Showdown](https://play.pokemonshowdown.com/) (Cry Sound Effects (Meltan and Melmetal, Legends: Arceus))
-* **whos-that-pokemon:**
+* **whos-that-pokemon-cry:**
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
-   - [4Kids](https://www.4kidsentertainmentinc.com/) ("Who's That Pokémon?" Sound)
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
    - [u/CaptainRako](https://www.reddit.com/user/CaptainRako/) (Background Image)
