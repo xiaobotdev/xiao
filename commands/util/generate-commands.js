@@ -17,7 +17,9 @@ module.exports = class GenerateCommandsCommand extends Command {
 	async run(msg) {
 		const list = this.client.registry.groups
 			.map(g => {
-				const commands = g.commands.filter(c => !c.hidden && !c.ownerOnly);
+				const commands = g.commands
+					.filter(c => !c.hidden && !c.ownerOnly)
+					.sort((a, b) => a.name.localeCompare(b.name));
 				if (!commands.size) return null;
 				const mapped = commands.map(c => {
 					const nsfw = c.nsfw ? ` (NSFW)` : '';

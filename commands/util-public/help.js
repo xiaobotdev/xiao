@@ -46,7 +46,7 @@ module.exports = class HelpCommand extends Command {
 					if (cmd.ownerOnly || cmd.hidden) return false;
 					if (cmd.nsfw && !msg.channel.nsfw) return false;
 					return true;
-				});
+				}).sort((a, b) => a.name.localeCompare(b.name));
 				if (!commands.size) continue;
 				cmdCount += commands.size;
 				if (i > (embedIndex * 10) + 10) embedIndex++;

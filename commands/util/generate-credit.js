@@ -20,7 +20,9 @@ module.exports = class GenerateCreditCommand extends Command {
 		const npm = `* ${deps.map(dep => `[${dep}](https://www.npmjs.com/package/${dep})`).join('\n* ')}`;
 		const list = this.client.registry.groups
 			.map(g => {
-				const commands = g.commands.filter(c => !c.hidden && !c.ownerOnly && c.credit.length - 1 !== 0);
+				const commands = g.commands
+					.filter(c => !c.hidden && !c.ownerOnly && c.credit.length - 1 !== 0)
+					.sort((a, b) => a.name.localeCompare(b.name));
 				if (!commands.size) return null;
 				return commands.map(c => {
 					const credits = c.credit
