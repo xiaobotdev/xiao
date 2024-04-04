@@ -45,12 +45,12 @@ module.exports = class MorseCommand extends Command {
 			}
 			const letter = letters[i];
 			if (letter === '.') {
-				connection.play(path.join(__dirname, '..', '..', 'sounds', 'morse', 'dot.wav'));
+				connection.play(path.join(__dirname, '..', '..', 'sounds', 'morse', 'dot.mp3'));
 				await delay(1000);
 				continue;
 			}
 			if (letter === '-') {
-				connection.play(path.join(__dirname, '..', '..', 'sounds', 'morse', 'dash.wav'));
+				connection.play(path.join(__dirname, '..', '..', 'sounds', 'morse', 'dash.mp3'));
 				await delay(1000);
 				continue;
 			}
