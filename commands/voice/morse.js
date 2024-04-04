@@ -46,22 +46,23 @@ module.exports = class MorseCommand extends Command {
 				continue;
 			}
 			const letter = letters[i];
+			const timeUnit = 60;
 			if (letter === '.') {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse', 'dot.mp3'));
-				await delay(500);
+				await delay(timeUnit * 2);
 				continue;
 			}
 			if (letter === '-') {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse', 'dash.mp3'));
-				await delay(500);
+				await delay(timeUnit * 4);
 				continue;
 			}
 			if (letter === ' ' && letters[i + 1] === ' ') {
 				skip = true;
-				await delay(3500);
+				await delay(timeUnit * 7);
 				continue;
 			}
-			await delay(1500);
+			await delay(timeUnit * 3);
 		}
 		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		return null;
