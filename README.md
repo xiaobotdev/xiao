@@ -523,7 +523,6 @@ Total: 510
 * **lowercase:** Converts text to lowercase.
 * **md5:** Creates a hash of text with the MD5 algorithm.
 * **mocking:** SenDs TexT lIkE ThiS.
-* **morse:** Converts text to morse code.
 * **nobody-name:** Converts a name into the Organization XIII style.
 * **owo:** OwO.
 * **pig-latin:** Converts text to pig latin.
@@ -573,6 +572,7 @@ Total: 510
 * **animalese:** Makes animalese based on text.
 * **dec-talk:** The world's best Text-to-Speech.
 * **mindfulness:** Immerse yourself in some mindful quotes.
+* **morse:** Converts text to morse code.
 * **play:** Plays a YouTube video in your voice channel.
 * **tts:** Say the text you provide in the accent you choose.
 
