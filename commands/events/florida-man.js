@@ -44,7 +44,7 @@ module.exports = class FloridaManCommand extends Command {
 		return msg.say(stripIndents`
 			**${article.title}**
 			${article.firstLine}
-			[Read more...](https://floridamanbirthday.org/${months[month - 1]}-${day})
+			[Read more...](<https://floridamanbirthday.org/${months[month - 1]}-${day}>)
 		`, { files: [article.image] });
 	}
 
@@ -55,7 +55,7 @@ module.exports = class FloridaManCommand extends Command {
 			return {
 				title: decodeHTML($('p').first().children().first().text()),
 				firstLine: decodeHTML($('p').eq(1).children().first().text()),
-				image: `https:${$('img').eq(2).attr('data-lazy-src')}`
+				image: `https:${$('img').eq(1).attr('data-lazy-src')}`
 			};
 		} catch (err) {
 			if (err.status === 404) return null;
