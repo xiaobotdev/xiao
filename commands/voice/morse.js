@@ -46,20 +46,20 @@ module.exports = class MorseCommand extends Command {
 			const letter = letters[i];
 			if (letter === '.') {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse', 'dot.mp3'));
-				await delay(1000);
+				await delay(500);
 				continue;
 			}
 			if (letter === '-') {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse', 'dash.mp3'));
-				await delay(1000);
+				await delay(500);
 				continue;
 			}
 			if (letter === ' ' && letters[i + 1] === ' ') {
 				skip = true;
-				await delay(7000);
+				await delay(3500);
 				continue;
 			}
-			await delay(3000);
+			await delay(1500);
 		}
 		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		return null;
