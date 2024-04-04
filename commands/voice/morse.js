@@ -46,7 +46,7 @@ module.exports = class MorseCommand extends Command {
 				continue;
 			}
 			const letter = letters[i];
-			const timeUnit = 180;
+			const timeUnit = 250;
 			if (letter === '.') {
 				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse', 'dot.mp3'));
 				await delay(timeUnit);
