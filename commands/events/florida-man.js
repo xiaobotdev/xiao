@@ -36,6 +36,8 @@ module.exports = class FloridaManCommand extends Command {
 				}
 			]
 		});
+
+		this.cache = new Map();
 	}
 
 	async run(msg, { month, day }) {
@@ -49,14 +51,17 @@ module.exports = class FloridaManCommand extends Command {
 	}
 
 	async fetchArticle(month, day) {
+		if (this.cache.has(`${month}-${day}`)) return this.cache.get(`${month}-${day}`);
 		try {
 			const { text } = await request.get(`https://floridamanbirthday.org/${months[month - 1]}-${day}`);
 			const $ = cheerio.load(text);
-			return {
+			const result = {
 				title: decodeHTML($('p').first().children().first().text()),
 				firstLine: decodeHTML($('p').eq(1).children().first().text()),
 				image: `https:${$('img').eq(1).attr('data-lazy-src')}`
 			};
+			this.cache.set(`${month}-${day}`, result);
+			return result;
 		} catch (err) {
 			if (err.status === 404) return null;
 			throw err;
