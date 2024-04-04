@@ -49,9 +49,9 @@ module.exports = class ICantBelieveCommand extends Command {
 		ctx.font = this.client.fonts.get('The Lord Night.ttf').toCanvasString(94);
 		ctx.lineWidth = 6;
 		ctx.strokeStyle = 'white';
-		ctx.strokeText(firstUpperCase(text, null), 13, 54, 171);
+		ctx.strokeText(firstUpperCase(text.toLowerCase(), null), 13, 54, 171);
 		ctx.fillStyle = '#13487b';
-		ctx.fillText(firstUpperCase(text, null), 13, 54, 171);
+		ctx.fillText(firstUpperCase(text.toLowerCase(), null), 13, 54, 171);
 		ctx.rotate(8 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'i-cant-believe.png' }] });
 	}
