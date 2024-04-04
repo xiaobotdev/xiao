@@ -25,12 +25,12 @@ module.exports = class FloridaManCommand extends Command {
 				{
 					key: 'month',
 					type: 'month',
-					default: ''
+					default: new Date().getMonth() + 1
 				},
 				{
 					key: 'day',
 					type: 'integer',
-					default: '',
+					default: new Date().getDate(),
 					min: 1,
 					max: 31
 				}
@@ -39,8 +39,7 @@ module.exports = class FloridaManCommand extends Command {
 	}
 
 	async run(msg, { month, day }) {
-		const today = new Date();
-		const article = await this.fetchArticle(month || today.getMonth() + 1, day || today.getDate());
+		const article = await this.fetchArticle(month, day);
 		if (!article) return msg.say('Could not find any results.');
 		return msg.say(stripIndents`
 			**${article.title}**
