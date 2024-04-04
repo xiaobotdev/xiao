@@ -18,7 +18,8 @@ module.exports = class MorseCommand extends Command {
 					key: 'text',
 					type: 'string',
 					validate: text => {
-						if (letterTrans(text.toLowerCase(), dictionary, ' ').length < 2000) return true;
+						const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
+						if (translated.replace(/ {2}/g, ' / ').length < 2000) return true;
 						return 'Invalid text, your text is too long.';
 					},
 					parse: text => text.toLowerCase()
@@ -34,7 +35,8 @@ module.exports = class MorseCommand extends Command {
 			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
 		}
 		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
-		const translated = letterTrans(text, dictionary, ' ');
+		const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
+		await msg.say(translated.replace(/ {2}/g, ' / '));
 		const letters = translated.split('');
 		let skip = false;
 		await reactIfAble(msg, this.client.user, '🔉');
