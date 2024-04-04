@@ -50,7 +50,7 @@ module.exports = class UsElectionCommand extends Command {
 			else name = 'Other';
 			const score = tables.eq(i).children().eq(1).children().first().text().trim();
 			const percentChange = Number.parseFloat(tables.eq(i).children().eq(1).children().eq(1).text().trim() || 0);
-			canidates.push({ name, score, percentChange: `${percentChange > 0 ? '+' : ''}${percentChange}%` });
+			canidates.push({ name, score, percentChange: `${percentChange > -1 ? '+' : ''}${percentChange}%` });
 		}
 		return canidates;
 	}
