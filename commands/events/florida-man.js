@@ -46,7 +46,7 @@ module.exports = class FloridaManCommand extends Command {
 			**${article.title}**
 			${article.firstLine}
 			[Read more...](https://floridamanbirthday.org/${months[month - 1]}-${day})
-		`, { attachments: [article.image] });
+		`, { files: [article.image] });
 	}
 
 	async fetchArticle(month, day) {
