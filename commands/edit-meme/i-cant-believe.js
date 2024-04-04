@@ -1,6 +1,7 @@
 const Command = require('../../framework/Command');
 const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
+const { firstUpperCase } = require('../../util/Util');
 
 module.exports = class ICantBelieveCommand extends Command {
 	constructor(client) {
@@ -32,7 +33,7 @@ module.exports = class ICantBelieveCommand extends Command {
 				{
 					key: 'text',
 					type: 'string',
-					max: 500
+					max: 15
 				}
 			]
 		});
@@ -48,9 +49,9 @@ module.exports = class ICantBelieveCommand extends Command {
 		ctx.font = this.client.fonts.get('The Lord Night.ttf').toCanvasString(94);
 		ctx.lineWidth = 6;
 		ctx.strokeStyle = 'white';
-		ctx.strokeText(text, 13, 54, 171);
+		ctx.strokeText(firstUpperCase(text, null), 13, 54, 171);
 		ctx.fillStyle = '#13487b';
-		ctx.fillText(text, 13, 54, 171);
+		ctx.fillText(firstUpperCase(text, null), 13, 54, 171);
 		ctx.rotate(8 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'i-cant-believe.png' }] });
 	}

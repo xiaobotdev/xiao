@@ -30,7 +30,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Commands
-Total: 510
+Total: 511
 
 ### Utility:
 
@@ -463,6 +463,7 @@ Total: 510
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
+* **i-cant-believe:** Sends a "I Can't believe it's not butter!" meme with the text of your choice.
 * **i-fear-no-man:** Sends a "I fear no man" meme with the text of your choice.
 * **if-those-kids-could-read:** Sends a "If those kids could read, they'd be very upset" meme with the text of your choice.
 * **kyon-gun:** Draws an image or a user's avatar behind Kyon shooting a gun.
@@ -1339,6 +1340,9 @@ Total: 510
 * **gru-plan:**
    - [Illumination](http://www.illumination.com/) (Original "Despicable Me" Movie)
    - [Google](https://www.google.com/) (Noto Font)
+* **i-cant-believe:**
+   - [I Can't Believe It's Not Butter!](https://www.icantbelieveitsnotbutter.com/en) (Original Logo)
+   - [Kong Font](https://www.dafont.com/kong-font.d8299) (The Lord Night Font)
 * **i-fear-no-man:**
    - [Valve](https://www.valvesoftware.com/en/) (Image, Original "Team Fortress 2" Game)
 * **if-those-kids-could-read:**
