@@ -30,7 +30,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Commands
-Total: 511
+Total: 512
 
 ### Utility:
 
@@ -171,6 +171,7 @@ Total: 511
 * **calendar:** Responds with the calendar for a specific month and year.
 * **days-since:** Responds with how many days there have been since a certain date.
 * **days-until:** Responds with how many days there are until a certain date.
+* **florida-man:** Responds with the Flordia man of the day.
 * **google-doodle:** Responds with a Google Doodle, either the latest one or a random one from the past.
 * **horoscope:** Responds with today's horoscope for a specific Zodiac sign.
 * **is-leap:** Responds with if a year is a leap year.
@@ -792,6 +793,8 @@ Total: 511
    - [AniList](https://anilist.co/) (API)
 * **apod:**
    - [NASA](https://www.nasa.gov/) (APOD API)
+* **florida-man:**
+   - [floridamanbirthday.org](https://floridamanbirthday.org/) (News Data)
 * **google-doodle:**
    - [Google](https://www.google.com/) (Google Doodles API)
 * **horoscope:**
