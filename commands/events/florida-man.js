@@ -56,8 +56,8 @@ module.exports = class FloridaManCommand extends Command {
 			const { text } = await request.get(`https://floridamanbirthday.org/${months[month - 1]}-${day}`);
 			const $ = cheerio.load(text);
 			const result = {
-				title: decodeHTML($('p').first().children().first().text()),
-				firstLine: decodeHTML($('p').eq(1).children().first().text()),
+				title: decodeHTML($('p').first().text().replace(/\n/g, ' ')),
+				firstLine: decodeHTML($('p').eq(1).text().replace(/\n/g, ' ')),
 				image: `https:${$('img').eq(1).attr('data-lazy-src')}`
 			};
 			this.cache.set(`${month}-${day}`, result);
