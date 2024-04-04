@@ -3,6 +3,7 @@ const path = require('path');
 const { letterTrans } = require('custom-translate');
 const { reactIfAble, delay } = require('../../util/Util');
 const dictionary = require('../../assets/json/morse');
+const { SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class MorseCommand extends Command {
 	constructor(client) {
@@ -60,6 +61,7 @@ module.exports = class MorseCommand extends Command {
 			}
 			await delay(3000);
 		}
+		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		return null;
 	}
 };
