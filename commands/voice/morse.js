@@ -52,8 +52,12 @@ module.exports = class MorseCommand extends Command {
 		const processedScript = this.processScript(str);
 		const data = [];
 		const sampleFreq = 8000;
-		const timeUnitSecs = 0.06;
-		const timeUnitSamples = Math.floor(timeUnitSecs * sampleFreq);
+		const dotSecs = 0.065;
+		const dotSamples = Math.floor(dotSecs * sampleFreq);
+		const dashSecs = 0.185;
+		const dashSamples = Math.floor(dashSecs * sampleFreq);
+		const breakSecs = 0.5;
+		const breakSamples = Math.floor(breakSecs * sampleFreq);
 		let skip = false;
 		for (let cIndex = 0; cIndex < processedScript.length; cIndex++) {
 			if (skip) {
@@ -62,31 +66,31 @@ module.exports = class MorseCommand extends Command {
 			}
 			const c = processedScript[cIndex];
 			if (c === '.') {
-				for (let i = 0; i < timeUnitSamples * 8; i++) {
-					if (i > timeUnitSamples) {
-						data[(cIndex * timeUnitSamples) + i] = 127;
+				for (let i = 0; i < dotSamples + breakSamples; i++) {
+					if (i > dotSamples) {
+						data[(cIndex * dotSamples) + i] = 127;
 					} else {
 						const libIndex = this.library[44 + i];
-						data[(cIndex * timeUnitSamples) + i] = libIndex;
+						data[(cIndex * dotSamples) + i] = libIndex;
 					}
 				}
 			} else if (c === '-') {
-				for (let i = 0; i < timeUnitSamples * 16; i++) {
-					if (i > (timeUnitSamples * 3)) {
-						data[(cIndex * timeUnitSamples) + i] = 127;
+				for (let i = 0; i < dashSamples + breakSamples; i++) {
+					if (i > dashSamples) {
+						data[(cIndex * dashSamples) + i] = 127;
 					} else {
-						const libIndex = this.library[44 + timeUnitSamples + i];
-						data[(cIndex * timeUnitSamples) + i] = libIndex;
+						const libIndex = this.library[44 + dashSamples + i];
+						data[(cIndex * dashSamples) + i] = libIndex;
 					}
 				}
 			} else if (c === ' ' && processedScript[cIndex + 1] === ' ') {
-				for (let i = 0; i < timeUnitSamples * 28; i++) {
-					data[(cIndex * timeUnitSamples) + i] = 127;
+				for (let i = 0; i < breakSamples * 3; i++) {
+					data[(cIndex * breakSamples) + i] = 127;
 				}
 				skip = true;
 			} else {
-				for (let i = 0; i < timeUnitSamples * 12; i++) {
-					data[(cIndex * timeUnitSamples) + i] = 127;
+				for (let i = 0; i < breakSamples; i++) {
+					data[(cIndex * breakSamples) + i] = 127;
 				}
 			}
 		}
