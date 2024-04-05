@@ -137,6 +137,6 @@ module.exports = class PokedexCommand extends Command {
 	get megaEvolveEmoji() {
 		return MEGA_EVOLVE_EMOJI_ID && MEGA_EVOLVE_EMOJI_NAME
 			? `<:${MEGA_EVOLVE_EMOJI_NAME}:${MEGA_EVOLVE_EMOJI_ID}>`
-			: '';
+			: 'MEGA';
 	}
 };
