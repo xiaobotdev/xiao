@@ -79,7 +79,7 @@ module.exports = class MorseCommand extends Command {
 					if (i > dashSamples) {
 						data[(currentIndex * dashSamples) + i] = 127;
 					} else {
-						const libIndex = this.library[44 + dashSamples + i];
+						const libIndex = this.library[44 + dotSamples + i];
 						data[(currentIndex * dashSamples) + i] = libIndex;
 					}
 				}
