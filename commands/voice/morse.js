@@ -54,11 +54,10 @@ module.exports = class MorseCommand extends Command {
 		const sampleFreq = 8000;
 		const dotSecs = 0.06;
 		const dotSamples = Math.floor(dotSecs * sampleFreq);
-		const dashSecs = 0.18;
+		const dashSecs = dotSecs * 3;
 		const dashSamples = Math.floor(dashSecs * sampleFreq);
-		const breakSecs = 0.75;
-		const breakSamples = Math.floor(breakSecs * sampleFreq);
 		let skip = false;
+		let currentIndex = 0;
 		for (let cIndex = 0; cIndex < processedScript.length; cIndex++) {
 			if (skip) {
 				skip = false;
@@ -66,32 +65,36 @@ module.exports = class MorseCommand extends Command {
 			}
 			const c = processedScript[cIndex];
 			if (c === '.') {
-				for (let i = 0; i < dotSamples + breakSamples; i++) {
+				for (let i = 0; i < dotSamples * 2; i++) {
 					if (i > dotSamples) {
-						data[(cIndex * dotSamples) + i] = 127;
+						data[(currentIndex * dotSamples) + i] = 127;
 					} else {
 						const libIndex = this.library[44 + i];
-						data[(cIndex * dotSamples) + i] = libIndex;
+						data[(currentIndex * dotSamples) + i] = libIndex;
 					}
 				}
+				currentIndex += 2;
 			} else if (c === '-') {
-				for (let i = 0; i < dashSamples + breakSamples; i++) {
+				for (let i = 0; i < dashSamples + dotSamples; i++) {
 					if (i > dashSamples) {
-						data[(cIndex * dashSamples) + i] = 127;
+						data[(currentIndex * dashSamples) + i] = 127;
 					} else {
 						const libIndex = this.library[44 + dashSamples + i];
-						data[(cIndex * dashSamples) + i] = libIndex;
+						data[(currentIndex * dashSamples) + i] = libIndex;
 					}
 				}
+				currentIndex += 4;
 			} else if (c === ' ' && processedScript[cIndex + 1] === ' ') {
-				for (let i = 0; i < breakSamples * 3; i++) {
-					data[(cIndex * breakSamples) + i] = 127;
+				for (let i = 0; i < dotSamples * 7; i++) {
+					data[(currentIndex * dotSamples) + i] = 127;
 				}
 				skip = true;
+				currentIndex += 7;
 			} else {
-				for (let i = 0; i < breakSamples; i++) {
-					data[(cIndex * breakSamples) + i] = 127;
+				for (let i = 0; i < dotSamples * 3; i++) {
+					data[(currentIndex * dotSamples) + i] = 127;
 				}
+				currentIndex += 3;
 			}
 		}
 		const wav = new WaveFile();
