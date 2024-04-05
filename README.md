@@ -6,11 +6,52 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 
 > Only Linux-based systems can run Xiao. She will (probably) not run on Windows or Mac without significant changes.
 
+### Filling Out `.env`
+#### Discord-related info
+* `XIAO_TOKEN` is the token of your bot. You can get this at the [Discord Developer Portal](https://discord.com/developers/applications).
+* `OWNERS` is the Discord user IDs of users you want to have access to sensitive commands. Be careful putting anyone but yourself here.
+* `LOVER_USER_ID` is the Discord user ID of your significant other. This rigs certain commands, like `ship`. Optional for loners.
+* `XIAO_PREFIX` is the prefix the bot should have.
+* `INVITE` is an invite link for the bot's support server. Optional.
+* `REPORT_CHANNEL_ID` is a channel ID for the bot to send reports to. Optional, by default it'll send the owners a DM.
+* `JOIN_LEAVE_CHANNEL_ID` is a channel ID for the bot to send server join/leave information to. Optional.
+* `COMMAND_CHANNEL_ID` is a channel ID for the bot to send command usage data to. Optional.
+
+#### Redis info
+* `REDIS_HOST` is the hostname of your Redis server. If unsure, it's probably `localhost`.
+* `REDIS_PASS` is the password to your Redis server.
+
+#### Emojis IDs
+* `SUCCESS_EMOJI_ID` is an emoji ID for when things succeed. Defaults to "✅".
+* `FAILURE_EMOJI_ID` is an emoji ID for when things fail. Defaults to "❌".
+* `LOADING_EMOJI_ID` is an emoji ID for when things are loading. Defaults to "💬".
+* `GOLD_FISH_EMOJI_ID` and `GOLD_FISH_EMOJI_NAME` are for **neko-atsume-password**. Defaults to "Gold Fish".
+* `SILVER_FISH_EMOJI_ID` and `SILVER_FISH_EMOJI_NAME` are for **neko-atsume-password**. Defaults to "Silver Fish".
+* `MOCKING_EMOJI_ID` and `MOCKING_EMOJI_NAME` are for **mocking**. Defaults to nothing, it just won't be there.
+* `PORTAL_EMOJI_ID` and `PORTAL_EMOJI_NAME` are for **portal-send**. Defaults to "PORTAL".
+* `MEGA_EVOLVE_EMOJI_ID` and `MEGA_EVOLVE_EMOJI_NAME` are for **pokedex**. Defaults to "MEGA".
+* `NAME_RATER_EMOJI_ID` is for **name-rater**. Defaults to nothing, it just won't be there.
+
+#### API Keys, IDs, and Secrets
+* `ANILIST_USERNAME` is your username for [Anilist](https://anilist.co/home). Optional, defaults to "dragonfire535".
+* `BITLY_KEY` is your API key for Bit.ly. You can get one [here](https://dev.bitly.com/docs/getting-started/authentication/).
+* `CLEVERBOT_KEY` is your API key for Cleverbot. You can get one [here](https://www.cleverbot.com/api/).
+* `GITHUB_ACCESS_TOKEN` is your access token for GitHub. [Follow these steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) to make one.
+* `GOOGLE_KEY` is your API key for Google, used for the YouTube Data API. You can get one [here](https://console.cloud.google.com/apis/dashboard). You must also [activate the YouTube Data API](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com?q=search).
+* `GOV_KEY` is your API key for NASA. You get get one [here](https://api.nasa.gov/).
+* `SAUCENAO_KEY` is your API key for SauceNAO. Register, login, and click [here](https://saucenao.com/user.php?page=search-api) to get one.
+* `SPOTIFY_KEY` and `SPOTIFY_SECRET` are your key and secret for the Spotify API. You can get one by [following these instructions](https://developer.spotify.com/documentation/web-api).
+* `THECATAPI_KEY` is your API key for The Cat API. You can get one [here](https://thecatapi.com/).
+* `THEDOGAPI_KEY` is your API key for The Dog API. You can get one [here](https://thedogapi.com/).
+* `WEBSTER_KEY` is your API key for Merriam-Webster. You can get one [here](https://dictionaryapi.com/).
+* `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are the name and username of the GitHub repo where Xiao lives. These are optional, and default to "xiao" and "dragonfire535" respectively.
+
+### Run
 1. Install [Node.js](https://nodejs.org/en/) (you will need **at least v15.0.0**).
 2. Run `apt install git` to install git.
 3. Clone this repository with `git clone https://github.com/dragonfire535/xiao.git`.
 4. Run `cd xiao` to move into the folder that you just created.
-5. Create a file named `.env` and fill it out as shown in `.env.example`.
+5. Create a file named `.env` and fill it out as shown in above and in `.env.example`.
 6. Run `apt update` and `apt upgrade` to install the latest dependencies of your distro.
 7. Run `apt install ffmpeg` to install ffmpeg.
 8. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Ubuntu-and-other-Debian-based-systems).
