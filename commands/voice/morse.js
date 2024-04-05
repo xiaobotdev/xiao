@@ -43,7 +43,7 @@ module.exports = class MorseCommand extends Command {
 		const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
 		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 		await msg.say(translated.replace(/ {2}/g, ' / '));
-		connection.play(Readable.from([this.morse(text)]));
+		connection.play(Readable.from([this.morse(translated)]));
 		await reactIfAble(msg, this.client.user, '🔉');
 		return null;
 	}
