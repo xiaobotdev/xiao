@@ -73,7 +73,7 @@ module.exports = class MorseCommand extends Command {
 			} else if (c === '-') {
 				for (let i = 0; i < dashSamples; i++) {
 					const libIndex = this.library[44 + dotSamples + i];
-					data[(currentIndex * dashSamples) + i] = libIndex;
+					data[(currentIndex * dotSamples) + i] = libIndex;
 				}
 				currentIndex += 3;
 			} else if (c === ' ' && processedScript[cIndex + 1] === ' ') {
