@@ -1,9 +1,12 @@
 const Command = require('../../framework/Command');
 const path = require('path');
+const fs = require('fs');
 const { letterTrans } = require('custom-translate');
-const { reactIfAble, delay } = require('../../util/Util');
+const { WaveFile } = require('wavefile');
+const { Readable } = require('stream');
+const { reactIfAble } = require('../../util/Util');
 const dictionary = require('../../assets/json/morse');
-const { SUCCESS_EMOJI_ID } = process.env;
+const { LOADING_EMOJI_ID } = process.env;
 
 module.exports = class MorseCommand extends Command {
 	constructor(client) {
@@ -26,6 +29,8 @@ module.exports = class MorseCommand extends Command {
 				}
 			]
 		});
+
+		this.library = fs.readFileSync(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse.wav'));
 	}
 
 	async run(msg, { text }) {
@@ -36,35 +41,53 @@ module.exports = class MorseCommand extends Command {
 		}
 		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
 		const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
+		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
 		await msg.say(translated.replace(/ {2}/g, ' / '));
-		const letters = translated.split('');
-		let skip = false;
+		connection.play(Readable.from([this.morse(text)]));
 		await reactIfAble(msg, this.client.user, '🔉');
-		for (let i = 0; i < letters.length; i++) {
+		return null;
+	}
+
+	morse(str) {
+		const processedScript = this.processScript(str);
+		const data = [];
+		const sampleFreq = 8000;
+		const timeUnitSecs = 0.06;
+		const timeUnitSamples = Math.floor(timeUnitSecs * sampleFreq);
+		let skip = false;
+		for (let cIndex = 0; cIndex < processedScript.length; cIndex++) {
 			if (skip) {
 				skip = false;
 				continue;
 			}
-			const letter = letters[i];
-			const timeUnit = 250;
-			if (letter === '.') {
-				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse', 'dot.mp3'));
-				await delay(timeUnit);
-				continue;
-			}
-			if (letter === '-') {
-				connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'morse', 'dash.mp3'));
-				await delay(timeUnit);
-				continue;
-			}
-			if (letter === ' ' && letters[i + 1] === ' ') {
+			const c = processedScript[cIndex];
+			if (c === '.') {
+				for (let i = 0; i < timeUnitSamples; i++) {
+					const libIndex = this.library[44 + i];
+					data[(cIndex * timeUnitSamples) + i] = libIndex;
+				}
+			} else if (c === '-') {
+				for (let i = 0; i < timeUnitSamples * 3; i++) {
+					const libIndex = this.library[44 + timeUnitSamples + i];
+					data[(cIndex * timeUnitSamples) + i] = libIndex;
+				}
+			} else if (c === ' ' && processedScript[cIndex + 1] === ' ') {
+				for (let i = 0; i < timeUnitSamples * 7; i++) {
+					data[(cIndex * timeUnitSamples) + i] = 127;
+				}
 				skip = true;
-				await delay(timeUnit * 7);
-				continue;
+			} else {
+				for (let i = 0; i < timeUnitSamples * 3; i++) {
+					data[(cIndex * timeUnitSamples) + i] = 127;
+				}
 			}
-			await delay(timeUnit * 3);
 		}
-		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
-		return null;
+		const wav = new WaveFile();
+		wav.fromScratch(1, sampleFreq, '8', data);
+		return Buffer.from(wav.toBuffer());
+	}
+
+	processScript(str) {
+		return str.replace(/[^a-z]/gi, ' ').trim();
 	}
 };
