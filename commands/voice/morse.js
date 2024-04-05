@@ -48,7 +48,7 @@ module.exports = class MorseCommand extends Command {
 		}
 		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
 		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
-		await msg.say(parsed);
+		await msg.reply(parsed);
 		connection.play(Readable.from([this.morse(translated)]));
 		await reactIfAble(msg, this.client.user, '🔉');
 		return null;
