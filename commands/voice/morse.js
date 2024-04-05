@@ -62,14 +62,22 @@ module.exports = class MorseCommand extends Command {
 			}
 			const c = processedScript[cIndex];
 			if (c === '.') {
-				for (let i = 0; i < timeUnitSamples; i++) {
-					const libIndex = this.library[44 + i];
-					data[(cIndex * timeUnitSamples) + i] = libIndex;
+				for (let i = 0; i < timeUnitSamples * 2; i++) {
+					if (i > timeUnitSamples) {
+						data[(cIndex * timeUnitSamples) + i] = 127;
+					} else {
+						const libIndex = this.library[44 + i];
+						data[(cIndex * timeUnitSamples) + i] = libIndex;
+					}
 				}
 			} else if (c === '-') {
-				for (let i = 0; i < timeUnitSamples * 3; i++) {
-					const libIndex = this.library[44 + timeUnitSamples + i];
-					data[(cIndex * timeUnitSamples) + i] = libIndex;
+				for (let i = 0; i < timeUnitSamples * 4; i++) {
+					if (i > timeUnitSamples) {
+						data[(cIndex * timeUnitSamples) + i] = 127;
+					} else {
+						const libIndex = this.library[44 + timeUnitSamples + i];
+						data[(cIndex * timeUnitSamples) + i] = libIndex;
+					}
 				}
 			} else if (c === ' ' && processedScript[cIndex + 1] === ' ') {
 				for (let i = 0; i < timeUnitSamples * 7; i++) {
