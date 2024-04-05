@@ -1,9 +1,11 @@
 const Command = require('../../framework/Command');
+const { Util: { escapeMarkdown } } = require('discord.js');
 const path = require('path');
 const fs = require('fs');
 const { letterTrans } = require('custom-translate');
 const { WaveFile } = require('wavefile');
 const { Readable } = require('stream');
+const { stripIndents } = require('common-tags');
 const { reactIfAble } = require('../../util/Util');
 const dictionary = require('../../assets/json/morse');
 const { LOADING_EMOJI_ID } = process.env;
@@ -22,7 +24,7 @@ module.exports = class MorseCommand extends Command {
 					type: 'string',
 					validate: text => {
 						const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
-						if (translated.replace(/ {2}/g, ' / ').length < 2000) return true;
+						if (escapeMarkdown(translated.replace(/ {2}/g, ' / ')).length < 2000) return true;
 						return 'Invalid text, your text is too long.';
 					},
 					parse: text => text.toLowerCase()
@@ -34,15 +36,19 @@ module.exports = class MorseCommand extends Command {
 	}
 
 	async run(msg, { text }) {
+		const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
+		const parsed = escapeMarkdown(translated.replace(/ {2}/g, ' / '));
 		const connection = this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
-			return msg.reply(`I am not in a voice channel. Use ${usage} to fix that!`);
+			return msg.reply(stripIndents`
+				${parsed}
+				_If I am in a voice channel when using this command, I can play audio. Use ${usage} to try it!_
+			`);
 		}
 		if (!connection.canPlay) return msg.reply('I am already playing audio in this server.');
-		const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
 		await reactIfAble(msg, this.client.user, LOADING_EMOJI_ID, '💬');
-		await msg.say(translated.replace(/ {2}/g, ' / '));
+		await msg.say(parsed);
 		connection.play(Readable.from([this.morse(translated)]));
 		await reactIfAble(msg, this.client.user, '🔉');
 		return null;
