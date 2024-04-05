@@ -1,5 +1,4 @@
 const Command = require('../../framework/Command');
-const { Util: { escapeMarkdown } } = require('discord.js');
 const path = require('path');
 const fs = require('fs');
 const { letterTrans } = require('custom-translate');
@@ -24,7 +23,7 @@ module.exports = class MorseCommand extends Command {
 					type: 'string',
 					validate: text => {
 						const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
-						if (escapeMarkdown(translated.replace(/ {2}/g, ' / ')).length < 2000) return true;
+						if (this.escapeMarkdown(translated.replace(/ {2}/g, ' / ')).length < 2000) return true;
 						return 'Invalid text, your text is too long.';
 					},
 					parse: text => text.toLowerCase()
@@ -37,7 +36,7 @@ module.exports = class MorseCommand extends Command {
 
 	async run(msg, { text }) {
 		const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
-		const parsed = escapeMarkdown(translated.replace(/ {2}/g, ' / '));
+		const parsed = this.escapeMarkdown(translated.replace(/ {2}/g, ' / '));
 		const connection = msg.guild && this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
@@ -110,5 +109,9 @@ module.exports = class MorseCommand extends Command {
 
 	processScript(str) {
 		return str.replace(/[^.-]/gi, ' ').trim();
+	}
+
+	escapeMarkdown(str) {
+		return str.replace(/-/g, '\\-');
 	}
 };
