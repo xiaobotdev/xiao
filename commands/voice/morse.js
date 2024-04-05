@@ -88,6 +88,6 @@ module.exports = class MorseCommand extends Command {
 	}
 
 	processScript(str) {
-		return str.replace(/[^a-z]/gi, ' ').trim();
+		return str.replace(/[^.-]/gi, ' ').trim();
 	}
 };
