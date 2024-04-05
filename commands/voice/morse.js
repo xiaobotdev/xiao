@@ -38,7 +38,7 @@ module.exports = class MorseCommand extends Command {
 	async run(msg, { text }) {
 		const translated = letterTrans(text.toLowerCase(), dictionary, ' ');
 		const parsed = escapeMarkdown(translated.replace(/ {2}/g, ' / '));
-		const connection = this.client.dispatchers.get(msg.guild.id);
+		const connection = msg.guild && this.client.dispatchers.get(msg.guild.id);
 		if (!connection) {
 			const usage = this.client.registry.commands.get('join').usage();
 			return msg.reply(stripIndents`
