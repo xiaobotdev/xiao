@@ -52,8 +52,25 @@ module.exports = class CommandClient extends Client {
 		if (this.blacklist.user.includes(msg.author.id)) return;
 		if (msg.guild && this.blacklist.guild.includes(msg.guild.id)) return;
 		if (msg.guild && !msg.channel.permissionsFor(this.user).has('SEND_MESSAGES')) return;
-		if (!this.dispatcher.isCommand(msg)) return;
 
+		const patternCmd = this.dispatcher.isPatternCommand(msg);
+		if (patternCmd) {
+			try {
+				const result = await patternCmd.run(msg);
+				patternCmd.uses++;
+				patternCmd.lastRun = new Date();
+				this.emit('commandRun', patternCmd, result, msg);
+			} catch (err) {
+				this.emit('commandError', patternCmd, err, msg);
+				await msg.reply(stripIndents`
+					An error occurred while running this command: \`${err.message}\`.
+					You shouldn't ever recieve an error like this.
+					${this.invite ? `Please visit ${this.invite} for support.` : ''}
+				`);
+			}
+		}
+
+		if (!this.dispatcher.isCommand(msg)) return;
 		const parsed = await this.dispatcher.parseMessage(msg);
 		if (typeof parsed === 'string') {
 			const helpUsage = this.registry.commands.get('help').usage();

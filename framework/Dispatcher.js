@@ -24,6 +24,13 @@ module.exports = class CommandDispatcher {
 		return Boolean(command);
 	}
 
+	isPatternCommand(msg) {
+		const patternCommands = this.commands
+			.filter(cmd => cmd.patterns.length && cmd.patterns.some(pattern => pattern.test(msg.content)));
+		if (!patternCommands.size) return false;
+		return patternCommands.first();
+	}
+
 	async parseMessage(msg) {
 		const matched = msg.content.match(this.commandPattern);
 		const command = this.resolveCommand(matched[2].toLowerCase());
