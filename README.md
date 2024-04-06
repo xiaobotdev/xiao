@@ -4,8 +4,6 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 
 ## Installing
 
-> Only Linux-based systems can run Xiao. She will (probably) not run on Windows or Mac without significant changes.
-
 ### Filling Out `.env`
 #### Discord-related info
 * `XIAO_TOKEN` is the token of your bot. You can get this at the [Discord Developer Portal](https://discord.com/developers/applications).
@@ -46,8 +44,10 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 * `WEBSTER_KEY` is your API key for Merriam-Webster. You can get one [here](https://dictionaryapi.com/).
 * `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are the name and username of the GitHub repo where Xiao lives. These are optional, and default to "xiao" and "dragonfire535" respectively.
 
-### Run
-1. Install [Node.js](https://nodejs.org/en/) (you will need **at least v15.0.0**).
+> Install instructions below are for Linux. She should work on Windows, but I can't guarantee anything.
+
+### Run (Linux)
+1. Install [Node.js](https://nodejs.org/en/).
 2. Run `apt install git` to install git.
 3. Clone this repository with `git clone https://github.com/dragonfire535/xiao.git`.
 4. Run `cd xiao` to move into the folder that you just created.
@@ -68,8 +68,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 19. Run `apt install xvfb` to install xvfb.
 20. Run `yarn install --production` in the folder you cloned the bot.
 21. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
-22. Run `npm i -g pm2` to install PM2.
-23. Run `pm2 start Xiao.js --name xiao` to run the bot.
+22. Start Xiao up!
 
 ## Commands
 Total: 510
