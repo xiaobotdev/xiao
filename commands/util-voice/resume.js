@@ -19,6 +19,9 @@ module.exports = class ResumeCommand extends Command {
 		if (connection.canPlay) {
 			return msg.reply('I am not currently playing audio in this server.');
 		}
+		if (!connection.channel.permissionsFor(msg.author).has('MOVE_MEMBERS')) {
+			return msg.reply(`You need the "MOVE_MEMBERS" permission to use the \`${this.name}\` command.`);
+		}
 		connection.unpause();
 		return msg.reply('Resumed playing.');
 	}

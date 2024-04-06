@@ -19,6 +19,9 @@ module.exports = class PauseCommand extends Command {
 		if (connection.canPlay) {
 			return msg.reply('I am not currently playing audio in this server.');
 		}
+		if (!connection.channel.permissionsFor(msg.author).has('MOVE_MEMBERS')) {
+			return msg.reply(`You need the "MOVE_MEMBERS" permission to use the \`${this.name}\` command.`);
+		}
 		connection.pause();
 		return msg.reply('Paused playing.');
 	}
