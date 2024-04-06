@@ -71,7 +71,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Run `pm2 start Xiao.js --name xiao` to run the bot.
 
 ## Commands
-Total: 512
+Total: 510
 
 ### Utility:
 
@@ -232,6 +232,7 @@ Total: 512
 * **anime-staff:** Searches AniList for your query, getting staff results.
 * **define:** Defines a word.
 * **frinkiac:** Input a line from the Simpsons to get the episode/season.
+* **github:** Responds with information on a GitHub repository.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
 * **gravatar:** Responds with the Gravatar for an email.
 * **http-cat:** Responds with a cat for an HTTP status code.
@@ -241,6 +242,7 @@ Total: 512
 * **nasa:** Searches NASA's image archive for your query.
 * **neopet:** Responds with the image of a specific Neopet.
 * **neopets-item:** Responds with information on a specific Neopets item.
+* **npm:** Responds with information on an NPM package.
 * **periodic-table:** Finds an element on the periodic table.
 * **rule:** Responds with a rule of the internet.
 * **urban:** Defines a word, but with Urban Dictionary.
@@ -285,14 +287,6 @@ Total: 512
 * **text-diff:** Compares two different bits of text.
 * **valid-url:** Tests whether a URL is valid or not.
 * **zodiac-sign:** Responds with the Zodiac Sign for the given month/day.
-
-### Programming:
-
-* **beautify:** Beautifies code with js-beautify.
-* **github:** Responds with information on a GitHub repository.
-* **lint:** Lints code using ESLint.
-* **lint-rule:** Responds with information on an ESLint rule.
-* **npm:** Responds with information on an NPM package.
 
 ### Single-Player Games:
 
@@ -665,7 +659,6 @@ Total: 512
 * [discord.js](https://www.npmjs.com/package/discord.js)
 * [dotenv](https://www.npmjs.com/package/dotenv)
 * [emoji-regex](https://www.npmjs.com/package/emoji-regex)
-* [eslint](https://www.npmjs.com/package/eslint)
 * [fen-validator](https://www.npmjs.com/package/fen-validator)
 * [font-finder](https://www.npmjs.com/package/font-finder)
 * [gifencoder](https://www.npmjs.com/package/gifencoder)
@@ -673,7 +666,6 @@ Total: 512
 * [html-entities](https://www.npmjs.com/package/html-entities)
 * [image-to-ascii](https://www.npmjs.com/package/image-to-ascii)
 * [ioredis](https://www.npmjs.com/package/ioredis)
-* [js-beautify](https://www.npmjs.com/package/js-beautify)
 * [js-chess-engine](https://www.npmjs.com/package/js-chess-engine)
 * [jszip](https://www.npmjs.com/package/jszip)
 * [kuroshiro](https://www.npmjs.com/package/kuroshiro)
@@ -706,6 +698,7 @@ Total: 512
 * [ytdl-core](https://www.npmjs.com/package/ytdl-core)
 * [zip-to-timezone](https://www.npmjs.com/package/zip-to-timezone)
 * [zlib-sync](https://www.npmjs.com/package/zlib-sync)
+
 ### Other Credits
 * **changelog:**
    - [GitHub](https://github.com/) (API)
@@ -865,6 +858,8 @@ Total: 512
    - [Merriam-Webster's Collegiate® Dictionary](https://www.merriam-webster.com/) (API)
 * **frinkiac:**
    - [Frinkiac](https://frinkiac.com/) (API)
+* **github:**
+   - [GitHub](https://github.com/) (API)
 * **google-autofill:**
    - [Google](https://www.google.com/) (Autofill API)
 * **gravatar:**
@@ -886,6 +881,8 @@ Total: 512
 * **neopets-item:**
    - [Neopets](http://www.neopets.com/) (Original Game)
    - [JellyNeo Item Database](https://items.jellyneo.net/) (Item Data)
+* **npm:**
+   - [npm](https://www.npmjs.com/) (API)
 * **periodic-table:**
    - [Bowserinator](https://github.com/Bowserinator/) (Periodic Table Data)
    - [Google](https://www.google.com/) (Noto Font)
@@ -961,10 +958,6 @@ Total: 512
    - [Hasbro](https://shop.hasbro.com/en-us) (Original "Scrabble" Game)
 * **screenshot:**
    - [Thum.io](https://www.thum.io/) (API)
-* **github:**
-   - [GitHub](https://github.com/) (API)
-* **npm:**
-   - [npm](https://www.npmjs.com/) (API)
 * **20-questions:**
    - [20Q.net](http://20q.net/) (API)
 * **akinator:**
