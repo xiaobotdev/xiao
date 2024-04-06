@@ -6,6 +6,7 @@ module.exports = [
 	...eslintPluginJsonc.configs['flat/recommended-with-json'],
 	{
 		files: ['**/*.js'],
+		sourceType: 'commonjs',
 		rules: {
 			...js.configs.recommended.rules,
 			...amber.rules
