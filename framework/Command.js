@@ -12,6 +12,7 @@ module.exports = class Command {
 		this.details = options.details || null;
 		this.flags = options.flags || [];
 		this.args = options.args ? options.args.map(arg => new Argument(client, arg)) : [];
+		this.patterns = options.patterns || [];
 		this.clientPermissions = options.clientPermissions || [];
 		this.userPermissions = options.userPermissions || [];
 		this.ownerOnly = options.ownerOnly || false;
