@@ -44,7 +44,6 @@ module.exports = class WhosThatPokemonCommand extends Command {
 					name: 'u/CaptainRako',
 					url: 'https://www.reddit.com/user/CaptainRako/',
 					reason: 'Background Image',
-					// eslint-disable-next-line max-len
 					reasonURL: 'https://www.reddit.com/r/pokemon/comments/420xiv/whos_that_pokemon_1920x1080_hd_template_i_just/'
 				},
 				{

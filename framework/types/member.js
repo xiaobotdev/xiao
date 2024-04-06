@@ -12,7 +12,7 @@ module.exports = class MemberArgumentType extends ArgumentType {
 				const member = await msg.guild.members.fetch(await this.client.users.fetch(matches[1]));
 				if (!member) return false;
 				return true;
-			} catch (err) {
+			} catch {
 				return false;
 			}
 		}

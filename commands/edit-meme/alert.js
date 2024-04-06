@@ -27,7 +27,6 @@ module.exports = class AlertCommand extends Command {
 					name: 'The Hill',
 					url: 'https://thehill.com/',
 					reason: 'Image',
-					// eslint-disable-next-line max-len
 					reasonURL: 'https://thehill.com/policy/technology/409737-this-is-a-test-us-officials-test-presidential-alert'
 				}
 			],

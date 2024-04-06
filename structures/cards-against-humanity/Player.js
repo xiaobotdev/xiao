@@ -31,7 +31,7 @@ module.exports = class Player {
 			const extra = await this.chooseCards(black, chosenCards);
 			if (!this.user.bot) await this.user.send(`Nice! Return to ${this.game.channel} to await the results!`);
 			return extra;
-		} catch (err) {
+		} catch {
 			this.strikes++;
 			return 0;
 		}

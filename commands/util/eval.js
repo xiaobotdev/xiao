@@ -1,9 +1,9 @@
 // Credit: https://github.com/discordjs/Commando/blob/master/src/commands/util/eval.js
 const util = require('util');
-/* eslint-disable no-unused-vars, prefer-destructuring */
+/* eslint-disable no-unused-vars */
 const discord = require('discord.js');
 const Util = require('../../util/Util');
-/* eslint-enable no-unused-vars, prefer-destructuring */
+/* eslint-enable no-unused-vars */
 const tags = require('common-tags');
 const Command = require('../../framework/Command');
 

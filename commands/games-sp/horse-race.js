@@ -26,7 +26,6 @@ module.exports = class HorseRaceCommand extends Command {
 					name: 'Ambition',
 					url: 'https://ambition.com/',
 					reason: 'Image',
-					// eslint-disable-next-line max-len
 					reasonURL: 'https://help.ambition.com/hc/en-us/articles/360005048011-How-do-I-set-up-a-Leaderboard-Slide-'
 				},
 				{

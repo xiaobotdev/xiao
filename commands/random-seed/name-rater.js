@@ -32,7 +32,7 @@ module.exports = class NameRaterCommand extends Command {
 								const user = await this.client.users.fetch(matches[1]);
 								if (!user) return false;
 								return true;
-							} catch (err) {
+							} catch {
 								return false;
 							}
 						}
