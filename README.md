@@ -44,9 +44,10 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 * `WEBSTER_KEY` is your API key for Merriam-Webster. You can get one [here](https://dictionaryapi.com/).
 * `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are the name and username of the GitHub repo where Xiao lives. These are optional, and default to "xiao" and "dragonfire535" respectively.
 
+### Run (Linux)
+
 > Install instructions below are for Linux. She should work on Windows, but I can't guarantee anything.
 
-### Run (Linux)
 1. Install [Node.js](https://nodejs.org/en/).
 2. Run `apt install git` to install git.
 3. Clone this repository with `git clone https://github.com/dragonfire535/xiao.git`.
