@@ -68,7 +68,8 @@ module.exports = class DECTalkCommand extends Command {
 		const inputFile = path.join(__dirname, '..', '..', 'tmp', 'dec-talk', `${id}.txt`);
 		await writeFile(inputFile, input);
 		const outputFile = path.join(__dirname, '..', '..', 'tmp', 'dec-talk', `${id}.wav`);
-		await execAsync(`xvfb-run wine say.exe -pre "[:phoneme on]" -w ${outputFile} < ${inputFile}`, {
+		const pre = process.platform === 'win32' ? '' : 'xvfb-run wine ';
+		await execAsync(`${pre}say.exe -pre "[:phoneme on]" -w ${outputFile} < ${inputFile}`, {
 			cwd: path.join(__dirname, '..', '..', 'dectalk'),
 			timeout: 30000
 		});
