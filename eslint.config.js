@@ -1,5 +1,5 @@
 const { default: eslintPluginJsonc } = require('eslint-plugin-jsonc');
-const { default: js } = require('@eslint/js');
+const js = require('@eslint/js');
 const amber = require('eslint-config-amber');
 
 module.exports = [
