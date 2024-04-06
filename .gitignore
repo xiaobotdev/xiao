@@ -18,6 +18,9 @@ command-leaderboard.json
 command-last-run.json
 blacklist.json
 
+# DECTalk
+dectalk/
+
 # Tensorflow Models
 tf_models/
 
