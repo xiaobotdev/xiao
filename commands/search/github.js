@@ -11,7 +11,7 @@ module.exports = class GithubCommand extends Command {
 		super(client, {
 			name: 'github',
 			aliases: ['repo', 'gh', 'github-repo', 'gh-repo'],
-			group: 'code',
+			group: 'search',
 			memberName: 'github',
 			description: 'Responds with information on a GitHub repository.',
 			clientPermissions: ['EMBED_LINKS'],

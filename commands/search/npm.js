@@ -9,7 +9,7 @@ module.exports = class NPMCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'npm',
-			group: 'code',
+			group: 'search',
 			memberName: 'npm',
 			description: 'Responds with information on an NPM package.',
 			clientPermissions: ['EMBED_LINKS'],
