@@ -20,7 +20,7 @@ jobs:
         run: npm install eslint@9
         
       - name: Install ESLint Configs and Plugins
-        run: npm install @eslint/js@9 eslint-config-amber eslint-plugin-jsonc
+        run: npm install @eslint/js@9 globals eslint-config-amber eslint-plugin-jsonc
 
       - name: Run ESLint
         run: npm test
