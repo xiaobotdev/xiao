@@ -17,7 +17,7 @@ jobs:
         run: npm install -g npm@6
 
       - name: Install ESLint v9
-        run: npm install -g eslint@9
+        run: npm install eslint@9
         
       - name: Install ESLint Configs and Plugins
         run: npm install @eslint/js@9 eslint-config-amber eslint-plugin-jsonc
