@@ -109,7 +109,7 @@ module.exports = class NimCommand extends Command {
 						time: 60000
 					});
 					if (!rowTurn.size) {
-						if (lastTurnTimeout) { // eslint-disable-line max-depth
+						if (lastTurnTimeout) {
 							winner = 'time';
 							break;
 						} else {

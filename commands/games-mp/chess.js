@@ -158,7 +158,7 @@ module.exports = class ChessCommand extends Command {
 					if (alreadySaved) {
 						await msg.say('You already have a saved game, do you want to overwrite it?');
 						const verification = await verify(msg.channel, author);
-						if (!verification) continue; // eslint-disable-line max-depth
+						if (!verification) continue;
 					}
 					if (gameState.turn === 'black') blackTime -= new Date() - now;
 					if (gameState.turn === 'white') whiteTime -= new Date() - now;

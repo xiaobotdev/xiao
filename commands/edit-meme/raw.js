@@ -21,7 +21,6 @@ module.exports = class RawCommand extends Command {
 					name: 'Inside Scanlation',
 					url: 'https://www.insidescanlation.com/',
 					reason: 'Wild Words Font',
-					// eslint-disable-next-line max-len
 					reasonURL: 'https://www.insidescanlation.com/etc/the-idiots-guide-to-editing-manga/guide/type/fonts.html'
 				}
 			],

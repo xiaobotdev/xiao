@@ -72,7 +72,7 @@ module.exports = class HangmanCommand extends Command {
 			} else if (word.includes(choice)) {
 				displayText = true;
 				for (let i = 0; i < word.length; i++) {
-					if (word.charAt(i) !== choice) continue; // eslint-disable-line max-depth
+					if (word.charAt(i) !== choice) continue;
 					confirmation.push(word.charAt(i));
 					display[i] = word.charAt(i);
 				}
@@ -112,7 +112,7 @@ module.exports = class HangmanCommand extends Command {
 				partOfSpeech: data.fl,
 				definiton: data.shortdef.map((definition, i) => `(${i + 1}) ${definition}`).join('\n')
 			};
-		} catch (err) {
+		} catch {
 			return null;
 		}
 	}

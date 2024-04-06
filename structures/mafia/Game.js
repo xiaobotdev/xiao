@@ -29,7 +29,7 @@ module.exports = class Game {
 		for (const user of list) {
 			try {
 				await user.send(`You are ${roles[i] === 'detective' ? 'the' : 'a part of the'} **${roles[i]}**.`);
-			} catch (err) {
+			} catch {
 				await this.channel.send(
 					`${user}, I couldn't send a DM to you. Please open your DMs and use the \`me\` command to see your role.`
 				);

@@ -12,7 +12,7 @@ module.exports = class UserArgumentType extends ArgumentType {
 				const user = await msg.client.users.fetch(matches[1]);
 				if (!user) return false;
 				return true;
-			} catch (err) {
+			} catch {
 				return false;
 			}
 		}
