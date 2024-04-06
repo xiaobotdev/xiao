@@ -25,7 +25,7 @@ module.exports = class CommandDispatcher {
 	}
 
 	isPatternCommand(msg) {
-		const patternCommands = this.commands
+		const patternCommands = this.client.registry.commands
 			.filter(cmd => cmd.patterns.length && cmd.patterns.some(pattern => pattern.test(msg.content)));
 		if (!patternCommands.size) return false;
 		return patternCommands.first();
