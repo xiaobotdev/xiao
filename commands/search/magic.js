@@ -63,7 +63,7 @@ module.exports = class MagicCommand extends Command {
 			.setDescription(`${manaCost} ${card.type_line}\n\n${oracleText}`)
 			.setAuthor('Scryfall', logos.scryfall, 'https://scryfall.com/')
 			.setTitle(card.name)
-		if (card.type_line.includes('Creature')) {
+		if (card.power && card.toughness) {
 			embed.addField('❯ Power', card.power, true);
 			embed.addField('❯ Toughness', card.toughness, true);
 			embed.addField('\u200B', '\u200B', true);
