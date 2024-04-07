@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const pokemon = require('../../assets/json/pokemon-fusion');
 const { firstUpperCase } = require('../../util/Util');
 const pokeKeys = Object.keys(pokemon);
@@ -11,7 +12,7 @@ module.exports = class PokemonFusionCommand extends Command {
 			group: 'edit-image',
 			memberName: 'pokemon-fusion',
 			description: 'Fuses two Generation I Pokémon together.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Pokémon',

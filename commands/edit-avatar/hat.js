@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
@@ -18,7 +19,7 @@ module.exports = class HatCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Go Nintendo',
@@ -138,7 +139,7 @@ module.exports = class HatCommand extends Command {
 	}
 
 	async run(msg, { type, user }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'hat', `${type}.png`));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);

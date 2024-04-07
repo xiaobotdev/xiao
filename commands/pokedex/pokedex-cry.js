@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { reactIfAble } = require('../../util/Util');
 
 module.exports = class PokedexCryCommand extends Command {
@@ -9,7 +10,7 @@ module.exports = class PokedexCryCommand extends Command {
 			group: 'pokedex',
 			memberName: 'pokedex-cry',
 			description: 'Plays a Pokémon\'s cry.',
-			userPermissions: ['CONNECT', 'SPEAK'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
 			throttling: {
 				usages: 2,
 				duration: 10

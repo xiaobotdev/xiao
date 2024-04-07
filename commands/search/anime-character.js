@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { embedURL, cleanAnilistHTML, trimArray } = require('../../util/Util');
@@ -53,7 +53,7 @@ module.exports = class AnimeCharacterCommand extends Command {
 			group: 'search',
 			memberName: 'anime-character',
 			description: 'Searches AniList for your query, getting character results.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'AniList',
@@ -75,9 +75,9 @@ module.exports = class AnimeCharacterCommand extends Command {
 		const id = await this.search(query);
 		if (!id) return msg.say('Could not find any results.');
 		const character = await this.fetchCharacter(id);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
+			.setAuthor({ name: 'AniList', iconURL: logos.anilist, url: 'https://anilist.co/' })
 			.setURL(character.siteUrl)
 			.setThumbnail(character.image.large || character.image.medium || null)
 			.setTitle(`${character.name.first || ''}${character.name.last ? ` ${character.name.last}` : ''}`)

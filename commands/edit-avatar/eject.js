@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const GIFEncoder = require('gifencoder');
 const { MersenneTwister19937, bool } = require('random-js');
@@ -18,7 +19,7 @@ module.exports = class EjectCommand extends Command {
 				usages: 2,
 				duration: 30
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Wisq',
@@ -55,7 +56,7 @@ module.exports = class EjectCommand extends Command {
 	}
 
 	async run(msg, { user, imposter }) {
-		const avatarURL = user.displayAvatarURL({ format: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
 		if (imposter === '') {

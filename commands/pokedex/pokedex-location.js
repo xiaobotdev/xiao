@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const versions = require('../../assets/json/pokedex-location');
 
 module.exports = class PokedexLocationCommand extends Command {
@@ -20,7 +20,7 @@ module.exports = class PokedexLocationCommand extends Command {
 			group: 'pokedex',
 			memberName: 'pokedex-location',
 			description: 'Responds with the location data for a Pokémon.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Pokémon',
@@ -61,9 +61,13 @@ module.exports = class PokedexLocationCommand extends Command {
 				.map(location => `${location.name} (${location.versions.map(v => versions[v]).join('/')})`)
 				.join('\n')
 			: 'Location Unknown';
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xED1C24)
-			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setAuthor({
+				name: `#${pokemon.displayID} - ${pokemon.name}`,
+				iconURL: 'attachment://box.png',
+				url: pokemon.serebiiURL
+			})
 			.setDescription(desc)
 			.setThumbnail(pokemon.spriteImageURL);
 		return msg.channel.send({

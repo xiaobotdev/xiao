@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { shorten } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 
@@ -13,7 +13,7 @@ module.exports = class KnowYourMemeCommand extends Command {
 			group: 'search',
 			memberName: 'know-your-meme',
 			description: 'Searches Know Your Meme for your query.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Know Your Meme',
@@ -34,9 +34,9 @@ module.exports = class KnowYourMemeCommand extends Command {
 		const location = await this.search(query);
 		if (!location) return msg.say('Could not find any results.');
 		const data = await this.fetchMeme(location);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x12133F)
-			.setAuthor('Know Your Meme', logos.kym, 'https://knowyourmeme.com/')
+			.setAuthor({ name: 'Know Your Meme', iconURL: logos.kym, url: 'https://knowyourmeme.com/' })
 			.setTitle(data.name)
 			.setDescription(shorten(data.description || 'No description available.'))
 			.setURL(data.url)

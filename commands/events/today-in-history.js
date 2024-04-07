@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { embedURL } = require('../../util/Util');
 
@@ -11,7 +11,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 			group: 'events',
 			memberName: 'today-in-history',
 			description: 'Responds with an event that occurred today in history.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'muffinlabs - Today in History',
@@ -44,7 +44,7 @@ module.exports = class TodayInHistoryCommand extends Command {
 			const body = JSON.parse(text);
 			const events = body.data.Events;
 			const event = events[Math.floor(Math.random() * events.length)];
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(0x9797FF)
 				.setURL(body.url)
 				.setTitle(`On this day (${body.date})...`)

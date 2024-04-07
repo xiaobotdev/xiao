@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { isImageNSFW, isUrlNSFW } = require('../../util/Util');
 
@@ -10,7 +11,7 @@ module.exports = class ScreenshotCommand extends Command {
 			group: 'analyze',
 			memberName: 'screenshot',
 			description: 'Takes a screenshot of any webpage.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			throttling: {
 				usages: 2,
 				duration: 30

@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { firstUpperCase } = require('../../util/Util');
@@ -13,7 +13,7 @@ module.exports = class HoroscopeCommand extends Command {
 			memberName: 'horoscope',
 			description: 'Responds with today\'s horoscope for a specific Zodiac sign.',
 			details: `**Signs:** ${signs.join(', ')}`,
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'astrology.TV',
@@ -35,11 +35,11 @@ module.exports = class HoroscopeCommand extends Command {
 
 	async run(msg, { sign }) {
 		const horoscope = await this.fetchHoroscope(sign);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x9797FF)
 			.setTitle(`Horoscope for ${firstUpperCase(sign)}...`)
 			.setURL(`https://astrology.tv/horoscope/signs/${sign}/`)
-			.setFooter('© Kelli Fox, The Astrologer')
+			.setFooter({ text: '© Kelli Fox, The Astrologer' })
 			.setThumbnail(this.getImageURL(sign))
 			.setTimestamp()
 			.setDescription(horoscope);

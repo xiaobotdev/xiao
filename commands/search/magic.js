@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const logos = require('../../assets/json/logos');
 
@@ -59,17 +59,17 @@ module.exports = class MagicCommand extends Command {
 		const isMDFC = Boolean(card.card_faces);
 		const oracleText = isMDFC ? card.card_faces.map(c => c.oracle_text).join('\n\n//\n\n') : card.oracle_text;
 		const manaCost = isMDFC ? card.card_faces.map(c => c.mana_cost).join(' // ') : card.mana_cost;
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setURL(card.scryfall_uri)
 			.setColor(0x2B253A)
 			.setThumbnail(card.card_faces ? card.card_faces[0].image_uris.art_crop : card.image_uris.art_crop)
 			.setDescription(`${manaCost} ${card.type_line}\n\n${oracleText}`)
-			.setAuthor('Scryfall', logos.scryfall, 'https://scryfall.com/')
+			.setAuthor({ name: 'Scryfall', iconURL: logos.scryfall, url: 'https://scryfall.com/' })
 			.setTitle(card.name);
 		if (card.power && card.toughness) {
 			embed.addField('❯ Power', card.power, true);
 			embed.addField('❯ Toughness', card.toughness, true);
-			embed.addField('\u200B', '\u200B', true);
+			embed.addBlankField(true);
 		}
 		if (card.loyalty) {
 			embed.addField('❯ Loyalty', card.loyalty);

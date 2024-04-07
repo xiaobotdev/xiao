@@ -2,7 +2,7 @@ require('dotenv').config();
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const { mkdir } = require('fs/promises');
 const path = require('path');
-const { Intents, MessageEmbed } = require('discord.js');
+const { GatewayIntentBits, Partials, AllowedMentionsTypes, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
 const Client = require('./structures/Client');
 const client = new Client({
 	commandPrefix: XIAO_PREFIX,
@@ -10,22 +10,21 @@ const client = new Client({
 	owner: OWNERS.split(','),
 	invite: INVITE,
 	allowedMentions: {
-		parse: ['users'],
+		parse: [AllowedMentionsTypes.User],
 		repliedUser: true
 	},
-	partials: ['GUILD_MEMBER', 'CHANNEL'],
+	partials: [Partials.GuildMember, Partials.Channel],
 	intents: [
-		Intents.FLAGS.GUILDS,
-		Intents.FLAGS.GUILD_MEMBERS,
-		Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-		Intents.FLAGS.GUILD_VOICE_STATES,
-		Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-		Intents.FLAGS.GUILD_MESSAGE_TYPING,
-		Intents.FLAGS.GUILD_WEBHOOKS,
-		Intents.FLAGS.DIRECT_MESSAGES,
-		Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-		Intents.FLAGS.DIRECT_MESSAGE_TYPING
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildEmojisAndStickers,
+		GatewayIntentBits.GuildVoiceStates,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMessageReactions,
+		GatewayIntentBits.GuildMessageTyping,
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.DirectMessageReactions,
+		GatewayIntentBits.DirectMessageTyping
 	]
 });
 const { formatNumber, checkFileExists } = require('./util/Util');
@@ -73,17 +72,10 @@ client.on('ready', async () => {
 	const decTalkFolderExists = await checkFileExists(path.join(__dirname, 'tmp', 'dec-talk'));
 	if (!decTalkFolderExists) await mkdir(path.join(__dirname, 'tmp', 'dec-talk'));
 
-	// Push client-related activities
-	client.activities.push(
-		{ text: () => `${formatNumber(client.guilds.cache.size)} servers`, type: 'WATCHING' },
-		{ text: () => `with ${formatNumber(client.registry.commands.size)} commands`, type: 'PLAYING' },
-		{ text: () => `${formatNumber(client.channels.cache.size)} channels`, type: 'WATCHING' }
-	);
-
 	// Interval to change activity every minute
 	setInterval(() => {
 		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
-		const text = typeof activity.text === 'function' ? activity.text() : activity.text;
+		const text = typeof activity.text === 'function' ? activity.text(client) : activity.text;
 		client.user.setActivity(text, { type: activity.type });
 	}, 60000);
 
@@ -221,7 +213,7 @@ client.on('ready', async () => {
 	client.logger.info('[FACE DETECTOR] Loaded face detector.');
 
 	// Fetch all members
-	for (const [id, guild] of client.guilds.cache) { // eslint-disable-line no-unused-vars
+	for (const [, guild] of client.guilds.cache) {
 		await guild.members.fetch();
 	}
 	client.logger.info('[MEMBERS] Fetched all guild members.');
@@ -281,7 +273,7 @@ client.on('guildCreate', async guild => {
 			return;
 		}
 	}
-	if (guild.systemChannel && guild.systemChannel.permissionsFor(client.user).has('SEND_MESSAGES')) {
+	if (guild.systemChannel && guild.systemChannel.permissionsFor(client.user).has(PermissionFlagsBits.SendMessages)) {
 		try {
 			const usage = client.registry.commands.get('help').usage();
 			await guild.systemChannel.send(`Hi! I'm Xiao, use ${usage} to see my commands, yes?`);
@@ -292,11 +284,11 @@ client.on('guildCreate', async guild => {
 	const joinLeaveChannel = await client.fetchJoinLeaveChannel();
 	if (joinLeaveChannel) {
 		const owner = await guild.fetchOwner();
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x7CFC00)
-			.setThumbnail(guild.iconURL({ format: 'png' }))
+			.setThumbnail(guild.iconURL({ extension: 'png' }))
 			.setTitle(`Joined ${guild.name}!`)
-			.setFooter(`ID: ${guild.id}`)
+			.setFooter({ text: `ID: ${guild.id}` })
 			.setTimestamp()
 			.addField('❯ Members', formatNumber(guild.memberCount))
 			.addField('❯ Owner', owner.user.tag);
@@ -308,11 +300,11 @@ client.on('guildDelete', async guild => {
 	const joinLeaveChannel = await client.fetchJoinLeaveChannel();
 	if (joinLeaveChannel) {
 		const owner = client.users.cache.get(guild.ownerID);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xFF0000)
-			.setThumbnail(guild.iconURL({ format: 'png' }))
+			.setThumbnail(guild.iconURL({ extension: 'png' }))
 			.setTitle(`Left ${guild.name}...`)
-			.setFooter(`ID: ${guild.id}`)
+			.setFooter({ text: `ID: ${guild.id}` })
 			.setTimestamp()
 			.addField('❯ Members', formatNumber(guild.memberCount))
 			.addField('❯ Owner', owner ? owner.tag : guild.ownerID);

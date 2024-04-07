@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const facts = require('../../assets/json/cat-fact');
 const { THECATAPI_KEY } = process.env;
@@ -11,7 +12,7 @@ module.exports = class CatCommand extends Command {
 			group: 'random-img',
 			memberName: 'cat',
 			description: 'Responds with a random cat image and fact.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'TheCatAPI',

@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
 const difficulties = ['easy', 'medium', 'hard'];
@@ -45,9 +45,9 @@ module.exports = class TrueOrFalseCommand extends Command {
 		if (!body.results) return msg.reply('Oh no, a question could not be fetched. Try again later!');
 		const correct = decodeURIComponent(body.results[0].correct_answer.toLowerCase());
 		const correctBool = correct === 'true';
-		const row = new MessageActionRow().addComponents(
-			new MessageButton().setCustomId('true').setStyle('SUCCESS').setLabel('True'),
-			new MessageButton().setCustomId('false').setStyle('DANGER').setLabel('False')
+		const row = new ActionRowBuilder().addComponents(
+			new ButtonBuilder().setCustomId('true').setStyle(ButtonStyle.Success).setLabel('True'),
+			new ButtonBuilder().setCustomId('false').setStyle(ButtonStyle.Danger).setLabel('False')
 		);
 		const questionMsg = await msg.reply(stripIndents`
 			**You have 15 seconds to answer this question.**

@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
 module.exports = class StatusButtonCommand extends Command {
@@ -9,7 +10,7 @@ module.exports = class StatusButtonCommand extends Command {
 			group: 'edit-avatar',
 			memberName: 'status-button',
 			description: 'Creates a Discord status button from c99.nl.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Discord Status Button',

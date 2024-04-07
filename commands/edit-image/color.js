@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas } = require('canvas');
 const ntc = require('ntcjs');
 
@@ -14,7 +15,7 @@ module.exports = class ColorCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			args: [
 				{
 					key: 'color',

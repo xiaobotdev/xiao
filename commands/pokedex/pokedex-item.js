@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 
 module.exports = class PokedexItemCommand extends Command {
 	constructor(client) {
@@ -9,7 +9,7 @@ module.exports = class PokedexItemCommand extends Command {
 			group: 'pokedex',
 			memberName: 'pokedex-item',
 			description: 'Searches the Pokédex for a Pokémon item.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Pokémon',
@@ -34,7 +34,7 @@ module.exports = class PokedexItemCommand extends Command {
 	async run(msg, { item }) {
 		const data = await this.client.pokemon.items.fetch(item);
 		if (!data) return msg.say('Could not find any results.');
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xED1C24)
 			.setTitle(data.name)
 			.setDescription(data.description || 'No description available.')

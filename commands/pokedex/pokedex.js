@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { arrayEquals, reactIfAble, firstUpperCase } = require('../../util/Util');
 const { MEGA_EVOLVE_EMOJI_NAME, MEGA_EVOLVE_EMOJI_ID } = process.env;
@@ -24,7 +24,7 @@ module.exports = class PokedexCommand extends Command {
 			group: 'pokedex',
 			memberName: 'pokedex',
 			description: 'Searches the Pokédex for a Pokémon.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Pokémon',
@@ -95,9 +95,13 @@ module.exports = class PokedexCommand extends Command {
 			if (found.id === pokemon.id) return `**${found.name}**`;
 			return found.name;
 		}).join(' -> ');
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xED1C24)
-			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setAuthor({
+				name: `#${pokemon.displayID} - ${pokemon.name}`,
+				iconURL: 'attachment://box.png',
+				url: pokemon.serebiiURL
+			})
 			.setDescription(stripIndents`
 				**${pokemon.genus}**
 				${pokemon.entries.length ? pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)] : 'No data.'}

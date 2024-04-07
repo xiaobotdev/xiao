@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 
 module.exports = class HttpCatCommand extends Command {
@@ -8,7 +9,7 @@ module.exports = class HttpCatCommand extends Command {
 			group: 'search',
 			memberName: 'http-cat',
 			description: 'Responds with a cat for an HTTP status code.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'HTTP Cats',

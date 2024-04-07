@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { Readable } = require('stream');
 const { exec } = require('child_process');
 const { promisify } = require('util');
@@ -21,7 +22,7 @@ module.exports = class DECTalkCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			userPermissions: ['CONNECT', 'SPEAK'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
 			credit: [
 				{
 					name: 'Digital Equipment Corporation',

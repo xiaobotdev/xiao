@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
@@ -18,7 +19,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			game: true,
 			credit: [
 				{

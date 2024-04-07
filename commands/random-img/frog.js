@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = class FrogCommand extends Command {
 	constructor(client) {
@@ -8,7 +9,7 @@ module.exports = class FrogCommand extends Command {
 			group: 'random-img',
 			memberName: 'frog',
 			description: 'Responds with a random frog image.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'FROGLAND!',

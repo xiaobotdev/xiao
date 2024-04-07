@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 const { reactIfAble } = require('../../util/Util');
 const fs = require('fs');
@@ -16,7 +17,7 @@ module.exports = class AirhornCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			userPermissions: ['CONNECT', 'SPEAK'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
 			credit: [
 				{
 					name: 'Discord',

@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 
 module.exports = class FirstMessageCommand extends Command {
 	constructor(client) {
@@ -9,7 +9,7 @@ module.exports = class FirstMessageCommand extends Command {
 			group: 'info',
 			memberName: 'first-message',
 			description: 'Responds with the first message ever sent to a channel.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			args: [
 				{
 					key: 'channel',
@@ -26,13 +26,13 @@ module.exports = class FirstMessageCommand extends Command {
 		}
 		const messages = await channel.messages.fetch({ after: 1, limit: 1 });
 		const message = messages.first();
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
-			.setThumbnail(message.author.displayAvatarURL({ format: 'png', dynamic: true }))
-			.setAuthor(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true }))
+			.setThumbnail(message.author.displayAvatarURL({ extension: 'png' }))
+			.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL({ extension: 'png' }) })
 			.setDescription(message.content)
 			.setTimestamp(message.createdAt)
-			.setFooter(`ID: ${message.id}`)
+			.setFooter({ text: `ID: ${message.id}` })
 			.addField('❯ Jump', `[Click Here to Jump](${message.url})`);
 		return msg.embed(embed);
 	}

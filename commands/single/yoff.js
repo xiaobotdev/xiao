@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 const types = ['default', 'blastyoff', 'disyoffjs', 'yoffcirius', 'yoffice', 'yofficer', 'gameyoff'];
 
@@ -9,7 +10,7 @@ module.exports = class YoffCommand extends Command {
 			group: 'single',
 			memberName: 'yoff',
 			description: 'Posts a picture that truly defines modern art.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: '1Computer1',

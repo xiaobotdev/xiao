@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageButton, MessageActionRow } = require('discord.js');
+const { ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { list } = require('../../util/Util');
@@ -37,9 +37,9 @@ module.exports = class TwentyQuestionsCommand extends Command {
 		const startURL = await this.initialize(game);
 		let question = await this.startGame(game, startURL);
 		let win = null;
-		const initialRow = new MessageActionRow().addComponents(
-			new MessageButton().setCustomId('true').setLabel('Ready!').setStyle('PRIMARY'),
-			new MessageButton().setCustomId('false').setLabel('Nevermind').setStyle('SECONDARY')
+		const initialRow = new ActionRowBuilder().addComponents(
+			new ButtonBuilder().setCustomId('true').setLabel('Ready!').setStyle(ButtonStyle.Primary),
+			new ButtonBuilder().setCustomId('false').setLabel('Nevermind').setStyle(ButtonStyle.Secondary)
 		);
 		const gameMsg = await msg.reply({
 			content: 'Welcome to 20 Questions! Think of something, and I will try to guess it.',
@@ -61,16 +61,16 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			const answers = question.answers.map(answer => answer.text);
 			const rowCount = Math.ceil(answers.length / 5);
 			const rows = [];
-			for (let i = 0; i < rowCount; i++) rows.push(new MessageActionRow());
+			for (let i = 0; i < rowCount; i++) rows.push(new ActionRowBuilder());
 			for (let i = 0; i < answers.length; i += 5) {
 				const row = rows[Math.floor(i / 5)];
 				const components = answers.slice(i, i + 5);
 				for (const component of components) {
-					row.addComponents(new MessageButton().setCustomId(component).setStyle('PRIMARY').setLabel(component));
+					row.addComponents(new ButtonBuilder().setCustomId(component).setStyle(ButtonStyle.Primary).setLabel(component));
 				}
 			}
-			const sRow = new MessageActionRow();
-			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
+			const sRow = new ActionRowBuilder();
+			sRow.addComponents(new ButtonBuilder().setCustomId('end').setStyle(ButtonStyle.Danger).setLabel('End'));
 			await buttonPress.editReply({
 				content: question.question,
 				components: [...rows, sRow]

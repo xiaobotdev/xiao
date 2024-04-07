@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
@@ -12,7 +12,7 @@ module.exports = class YuGiOhCommand extends Command {
 			group: 'search',
 			memberName: 'yu-gi-oh',
 			description: 'Responds with info on a Yu-Gi-Oh! card.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Konami',
@@ -45,14 +45,14 @@ module.exports = class YuGiOhCommand extends Command {
 					la: 'english'
 				});
 			const data = body.data[0];
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(0xBE5F1F)
 				.setTitle(data.name)
 				.setURL(`https://db.ygoprodeck.com/card/?search=${data.id}`)
 				.setDescription(data.type === 'Normal Monster' ? `_${shorten(data.desc)}_` : shorten(data.desc))
-				.setAuthor('Yu-Gi-Oh!', logos.yugioh, 'http://www.yugioh-card.com/')
+				.setAuthor({ name: 'Yu-Gi-Oh!', iconURL: logos.yugioh, url: 'http://www.yugioh-card.com/' })
 				.setThumbnail(data.card_images[0].image_url)
-				.setFooter(data.id.toString())
+				.setFooter({ text: data.id.toString() })
 				.addField('❯ Type', data.type, true)
 				.addField(data.type.includes('Monster') ? '❯ Race' : '❯ Spell Type', data.race, true);
 			if (data.type.includes('Monster')) {

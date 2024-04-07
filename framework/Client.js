@@ -1,4 +1,4 @@
-const { Client } = require('discord.js');
+const { Client, PermissionFlagsBits } = require('discord.js');
 const { Collection } = require('@discordjs/collection');
 const fs = require('fs');
 const path = require('path');
@@ -39,7 +39,7 @@ module.exports = class CommandClient extends Client {
 		if (!msg.author) return;
 
 		if (msg.channel.partial) msg.channel = await this.channels.fetch(msg.channel.id);
-		if (msg.partial) msg = await msg.channel.messages.fetch(msg.id);
+		if (msg.partial) msg = await msg.channel.messages.fetch({ message: msg.id });
 		if (msg.guild && (!msg.member || msg.member.partial || !msg.guild.members.cache.has(msg.author.id))) {
 			try {
 				await msg.guild.members.fetch(msg.author.id);
@@ -51,7 +51,7 @@ module.exports = class CommandClient extends Client {
 		if (msg.author.bot) return;
 		if (this.blacklist.user.includes(msg.author.id)) return;
 		if (msg.guild && this.blacklist.guild.includes(msg.guild.id)) return;
-		if (msg.guild && !msg.channel.permissionsFor(this.user).has('SEND_MESSAGES')) return;
+		if (msg.guild && !msg.channel.permissionsFor(this.user).has(PermissionFlagsBits.SendMessages)) return;
 
 		const patternCmd = this.dispatcher.isPatternCommand(msg);
 		if (patternCmd) {

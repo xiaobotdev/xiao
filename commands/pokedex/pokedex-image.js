@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = class PokedexImageCommand extends Command {
 	constructor(client) {
@@ -18,7 +19,7 @@ module.exports = class PokedexImageCommand extends Command {
 			group: 'pokedex',
 			memberName: 'pokedex-image',
 			description: 'Responds with the image of a Pokémon.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Pokémon',

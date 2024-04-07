@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const facts = require('../../assets/json/dog-fact');
 const { THEDOGAPI_KEY } = process.env;
@@ -11,7 +12,7 @@ module.exports = class DogCommand extends Command {
 			group: 'random-img',
 			memberName: 'dog',
 			description: 'Responds with a random dog image and fact.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'TheDogAPI',

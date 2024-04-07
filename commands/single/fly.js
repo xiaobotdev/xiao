@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 
 module.exports = class FlyCommand extends Command {
@@ -8,7 +9,7 @@ module.exports = class FlyCommand extends Command {
 			group: 'single',
 			memberName: 'fly',
 			description: 'Sends a fake fly that looks surprisngly real.',
-			clientPermissions: ['ATTACH_FILES']
+			clientPermissions: [PermissionFlagsBits.AttachFiles]
 		});
 	}
 

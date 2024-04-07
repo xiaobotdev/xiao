@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { Util: { escapeMarkdown } } = require('discord.js');
+const { escapeMarkdown, PermissionFlagsBits } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { shuffle } = require('../../util/Util');
 const Game = require('../../structures/cards-against-humanity/Game');
@@ -16,7 +16,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 			guildOnly: true,
 			nsfw: true,
 			game: true,
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
+			clientPermissions: [PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'],
 			credit: [
 				{
 					name: 'Cards Against Humanity',

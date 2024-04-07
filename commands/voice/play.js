@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const ytdl = require('ytdl-core');
 const { shorten, verify } = require('../../util/Util');
@@ -19,7 +19,7 @@ module.exports = class PlayCommand extends Command {
 				usages: 2,
 				duration: 60
 			},
-			userPermissions: ['CONNECT', 'SPEAK'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
 			credit: [
 				{
 					name: 'Google',
@@ -85,11 +85,11 @@ module.exports = class PlayCommand extends Command {
 	}
 
 	generateEmbed(data) {
-		return new MessageEmbed()
+		return new EmbedBuilder()
 			.setColor(0xDD2825)
 			.setTitle(shorten(data.videoDetails.title, 70))
 			.setDescription(shorten(data.videoDetails.description, 100))
-			.setAuthor('YouTube', logos.youtube, 'https://www.youtube.com/')
+			.setAuthor({ name: 'YouTube', iconURL: logos.youtube, url: 'https://www.youtube.com/' })
 			.setURL(data.videoDetails.video_url)
 			.setThumbnail(data.videoDetails.thumbnails.length ? data.videoDetails.thumbnails[0].url : null)
 			.addField('❯ ID', data.videoDetails.videoId, true)

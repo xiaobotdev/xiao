@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 
@@ -14,7 +15,7 @@ module.exports = class AvatarFusionCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			args: [
 				{
 					key: 'overlay',
@@ -30,8 +31,8 @@ module.exports = class AvatarFusionCommand extends Command {
 	}
 
 	async run(msg, { overlay, base }) {
-		const baseAvatarURL = base.displayAvatarURL({ format: 'png', size: 512 });
-		const overlayAvatarURL = overlay.displayAvatarURL({ format: 'png', size: 512 });
+		const baseAvatarURL = base.displayAvatarURL({ extension: 'png', size: 512 });
+		const overlayAvatarURL = overlay.displayAvatarURL({ extension: 'png', size: 512 });
 		const baseAvatarData = await request.get(baseAvatarURL);
 		const baseAvatar = await loadImage(baseAvatarData.body);
 		const overlayAvatarData = await request.get(overlayAvatarURL);

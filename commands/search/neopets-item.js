@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { formatNumber } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 
@@ -12,7 +12,7 @@ module.exports = class NeopetsItemCommand extends Command {
 			group: 'search',
 			memberName: 'neopets-item',
 			description: 'Responds with information on a specific Neopets item.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Neopets',
@@ -37,9 +37,9 @@ module.exports = class NeopetsItemCommand extends Command {
 	async run(msg, { item }) {
 		const data = await this.fetchItem(item);
 		if (!data) return msg.say('Could not find any results.');
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xFFCE31)
-			.setAuthor('Neopets', logos.neopets, 'http://www.neopets.com/')
+			.setAuthor({ name: 'Neopets', iconURL: logos.neopets, url: 'http://www.neopets.com/' })
 			.setTitle(data.name)
 			.setDescription(data.details)
 			.setURL(data.url)

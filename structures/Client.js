@@ -16,7 +16,7 @@ const Font = require('./Font');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
-const activities = require('../assets/json/activity');
+const activities = require('./activity');
 const { REPORT_CHANNEL_ID, JOIN_LEAVE_CHANNEL_ID, COMMAND_CHANNEL_ID } = process.env;
 
 module.exports = class XiaoClient extends CommandClient {

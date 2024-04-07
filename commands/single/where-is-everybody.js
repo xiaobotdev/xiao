@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 const { delay } = require('../../util/Util');
 
@@ -14,8 +15,8 @@ module.exports = class WhereIsEverybodyCommand extends Command {
 				usages: 1,
 				duration: 30
 			},
-			clientPermissions: ['ATTACH_FILES', 'MENTION_EVERYONE'],
-			userPermissions: ['MENTION_EVERYONE'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles, PermissionFlagsBits.MentionEveryone],
+			userPermissions: [PermissionFlagsBits.MentionEveryone],
 			credit: [
 				{
 					name: 'DreamWorks',

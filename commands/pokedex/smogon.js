@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss', 'sv'];
 const games = {
 	rb: 'Red/Blue',
@@ -21,7 +21,7 @@ module.exports = class SmogonCommand extends Command {
 			group: 'pokedex',
 			memberName: 'smogon',
 			description: 'Responds with the Smogon tiers for a Pokémon.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Pokémon',
@@ -62,16 +62,20 @@ module.exports = class SmogonCommand extends Command {
 	async run(msg, { pokemon }) {
 		const fetchGames = genGames.slice(pokemon.generation, pokemon.missingno ? 2 : genGames.length);
 		if (!pokemon.missingno) await pokemon.fetchSmogonTiers(...fetchGames);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xED1C24)
-			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setAuthor({
+				name: `#${pokemon.displayID} - ${pokemon.name}`,
+				iconURL: 'attachment://box.png',
+				url: pokemon.serebiiURL
+			})
 			.setThumbnail(pokemon.spriteImageURL);
 		for (const game of fetchGames) {
 			embed.addField(`❯ ${games[game]}`, `[${pokemon.smogonTiers[game].join('/')}](${pokemon.smogonURL(game)})`, true);
 		}
 		if (fetchGames.length % 3 !== 0 && fetchGames.length > 3) {
 			for (let i = 0; i < 3 - (fetchGames.length % 3); i++) {
-				embed.addField('\u200B', '\u200B', true);
+				embed.addBlankField(true);
 			}
 		}
 		return msg.channel.send({

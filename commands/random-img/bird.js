@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 
 module.exports = class BirdCommand extends Command {
@@ -9,7 +10,7 @@ module.exports = class BirdCommand extends Command {
 			group: 'random-img',
 			memberName: 'bird',
 			description: 'Responds with a random image of a bird.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'shibe.online',

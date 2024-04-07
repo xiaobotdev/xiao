@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const { TwitterOpenApi } = require('twitter-openapi-typescript');
 const api = new TwitterOpenApi();
@@ -20,7 +21,7 @@ module.exports = class TweetCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Twitter',
@@ -156,7 +157,7 @@ module.exports = class TweetCommand extends Command {
 				followers: body.followersCount
 			};
 		} catch {
-			const avatarRes = await request.get(msg.author.displayAvatarURL({ format: 'png', size: 64 }));
+			const avatarRes = await request.get(msg.author.displayAvatarURL({ extension: 'png', size: 64 }));
 			return {
 				screenName: msg.author.username.slice(0, 15),
 				name: msg.member ? msg.member.displayName.slice(0, 50) : msg.author.username.slice(0, 50),

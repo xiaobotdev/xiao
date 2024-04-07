@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { embedURL, cleanAnilistHTML, trimArray } = require('../../util/Util');
@@ -73,7 +73,7 @@ module.exports = class AnimeStaffCommand extends Command {
 			group: 'search',
 			memberName: 'anime-staff',
 			description: 'Searches AniList for your query, getting staff results.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'AniList',
@@ -95,9 +95,9 @@ module.exports = class AnimeStaffCommand extends Command {
 		const id = await this.search(query);
 		if (!id) return msg.say('Could not find any results.');
 		const staff = await this.fetchStaff(id);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
+			.setAuthor({ name: 'AniList', iconURL: logos.anilist, url: 'https://anilist.co/' })
 			.setURL(staff.siteUrl)
 			.setThumbnail(staff.image.large || staff.image.medium || null)
 			.setTitle(`${staff.name.first || ''}${staff.name.last ? ` ${staff.name.last}` : ''}`)

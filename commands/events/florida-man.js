@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
@@ -14,7 +15,7 @@ module.exports = class FloridaManCommand extends Command {
 			group: 'events',
 			memberName: 'florida-man',
 			description: 'Responds with the Flordia man of the day.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'floridamanbirthday.org',

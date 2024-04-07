@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { Readable } = require('stream');
@@ -20,8 +21,8 @@ module.exports = class GuessSongCommand extends Command {
 				duration: 15
 			},
 			guildOnly: true,
-			userPermissions: ['CONNECT', 'SPEAK'],
-			clientPermissions: ['ATTACH_FILES'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			game: true,
 			credit: [
 				{

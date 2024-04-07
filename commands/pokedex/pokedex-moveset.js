@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const versions = {
 	'red-blue': 'Red and Blue',
 	'ultra-sun-ultra-moon': 'Ultra Sun and Ultra Moon',
@@ -25,7 +25,7 @@ module.exports = class PokedexMovesetCommand extends Command {
 			group: 'pokedex',
 			memberName: 'pokedex-moveset',
 			description: 'Responds with the moveset for a Pokémon.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Pokémon',
@@ -61,12 +61,16 @@ module.exports = class PokedexMovesetCommand extends Command {
 	async run(msg, { pokemon }) {
 		if (!pokemon.gameDataCached) await pokemon.fetchGameData();
 		if (!pokemon.moveSet.length) return msg.say('This Pokémon\'s moves are not yet documented.');
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xED1C24)
-			.setAuthor(`#${pokemon.displayID} - ${pokemon.name}`, 'attachment://box.png', pokemon.serebiiURL)
+			.setAuthor({
+				name: `#${pokemon.displayID} - ${pokemon.name}`,
+				iconURL: 'attachment://box.png',
+				url: pokemon.serebiiURL
+			})
 			.setDescription(pokemon.moveSet.map(move => `**Level ${move.level}:** ${move.move.name}`).join('\n'))
 			.setThumbnail(pokemon.spriteImageURL)
-			.setFooter(`Moveset data taken from ${versions[pokemon.moveSetVersion]}.`);
+			.setFooter({ text: `Moveset data taken from ${versions[pokemon.moveSetVersion]}.` });
 		return msg.channel.send({
 			embeds: [embed],
 			files: [{

@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = class BottomTextCommand extends Command {
 	constructor(client) {
@@ -11,7 +12,7 @@ module.exports = class BottomTextCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'ShareFonts.net',
@@ -30,7 +31,7 @@ module.exports = class BottomTextCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 2048 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 2048 })
 				}
 			]
 		});

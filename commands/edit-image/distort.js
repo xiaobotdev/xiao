@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { distort } = require('../../util/Canvas');
@@ -14,7 +15,7 @@ module.exports = class DistortCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			args: [
 				{
 					key: 'level',
@@ -23,7 +24,7 @@ module.exports = class DistortCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512 })
 				}
 			]
 		});

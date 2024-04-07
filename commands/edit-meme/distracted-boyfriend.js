@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
@@ -15,7 +16,7 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Antonio Guillem',
@@ -43,9 +44,9 @@ module.exports = class DistractedBoyfriendCommand extends Command {
 	}
 
 	async run(msg, { otherGirl, girlfriend, boyfriend }) {
-		const boyfriendAvatarURL = boyfriend.displayAvatarURL({ format: 'png', size: 256 });
-		const girlfriendAvatarURL = girlfriend.displayAvatarURL({ format: 'png', size: 256 });
-		const otherGirlAvatarURL = otherGirl.displayAvatarURL({ format: 'png', size: 256 });
+		const boyfriendAvatarURL = boyfriend.displayAvatarURL({ extension: 'png', size: 256 });
+		const girlfriendAvatarURL = girlfriend.displayAvatarURL({ extension: 'png', size: 256 });
+		const otherGirlAvatarURL = otherGirl.displayAvatarURL({ extension: 'png', size: 256 });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'distracted-boyfriend.png'));
 		const boyfriendAvatarData = await request.get(boyfriendAvatarURL);
 		const boyfriendAvatar = await loadImage(boyfriendAvatarData.body);

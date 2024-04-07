@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
@@ -21,7 +22,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Konami',
@@ -59,7 +60,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 1024 })
 				}
 			]
 		});
