@@ -84,7 +84,7 @@
 		"winston": "^3.13.0",
 		"wuzzy": "^0.1.8",
 		"ytdl-core": "^4.11.5",
-		"zip-to-timezone": "^1.1.5"
+		"zip-to-timezone": "^1.2.1"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.8",
