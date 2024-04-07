@@ -72,7 +72,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Start Xiao up!
 
 ## Commands
-Total: 510
+Total: 511
 
 ### Utility:
 
@@ -192,7 +192,6 @@ Total: 510
 
 ### Single Response:
 
-* **can-you-not:** Can YOU not?
 * **cave:** Sends a Minecraft cave that blends in with the chat.
 * **dark-light:** Determines whether you use dark or light theme.
 * **eat-pant:** Eat pant.
@@ -205,6 +204,11 @@ Total: 510
 * **tableflip:** Flips a table... With animation!
 * **where-is-everybody:** Where is everybody?
 * **yoff:** Posts a picture that truly defines modern art.
+
+### Automatic Response:
+
+* **can-you-not:** Can YOU not?
+* **unflip:** Unflips a table.
 
 ### Events:
 
@@ -238,6 +242,7 @@ Total: 510
 * **gravatar:** Responds with the Gravatar for an email.
 * **http-cat:** Responds with a cat for an HTTP status code.
 * **know-your-meme:** Searches Know Your Meme for your query.
+* **lorcana:** Responds with info on a Lorcana card.
 * **magic:** Responds with info on a Magic: The Gathering card.
 * **manga:** Searches AniList for your query, getting manga results.
 * **nasa:** Searches NASA's image archive for your query.
@@ -869,6 +874,9 @@ Total: 510
    - [HTTP Cats](https://http.cat/) (API)
 * **know-your-meme:**
    - [Know Your Meme](https://knowyourmeme.com/) (Meme Data)
+* **lorcana:**
+   - [Ravensburger](https://www.disneylorcana.com/en-US) (Original Game)
+   - [Lorcana API](https://lorcana-api.com/Home.html) (API)
 * **magic:**
    - [Wizards of the Coast](https://company.wizards.com/en) (Original Game)
    - [Scryfall](https://scryfall.com/) (API)
