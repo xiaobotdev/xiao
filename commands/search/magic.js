@@ -68,6 +68,9 @@ module.exports = class MagicCommand extends Command {
 			embed.addField('❯ Toughness', card.toughness, true);
 			embed.addField('\u200B', '\u200B', true);
 		}
+		if (card.loyalty) {
+			embed.addField('❯ Loyalty', card.loyalty);
+		}
 		embed.addField('❯ Price', stripIndents`
 			**Non-Foil:** [${card.prices.usd ? `$${card.prices.usd}` : '???'}](${card.purchase_uris.tcgplayer})
 			**Foil:** [${card.prices.usd_foil ? `$${card.prices.usd_foil}` : '???'}](${card.purchase_uris.tcgplayer})
