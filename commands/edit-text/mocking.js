@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { MOCKING_EMOJI_ID, MOCKING_EMOJI_NAME } = process.env;
 
 module.exports = class MockingCommand extends Command {

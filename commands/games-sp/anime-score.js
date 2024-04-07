@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const logos = require('../../assets/json/logos');

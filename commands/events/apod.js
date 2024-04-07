@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { shorten } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 const { GOV_KEY } = process.env;

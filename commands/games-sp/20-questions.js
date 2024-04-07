@@ -66,7 +66,11 @@ module.exports = class TwentyQuestionsCommand extends Command {
 				const row = rows[Math.floor(i / 5)];
 				const components = answers.slice(i, i + 5);
 				for (const component of components) {
-					row.addComponents(new ButtonBuilder().setCustomId(component).setStyle(ButtonStyle.Primary).setLabel(component));
+					const button = new ButtonBuilder()
+						.setCustomId(component)
+						.setStyle(ButtonStyle.Primary)
+						.setLabel(component);
+					row.addComponents(button);
 				}
 			}
 			const sRow = new ActionRowBuilder();

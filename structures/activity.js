@@ -59,15 +59,11 @@ module.exports = [
 		type: ActivityType.Playing
 	},
 	{
-		text: (client) => `${formatNumber(client.guilds.cache.size)} servers`,
+		text: client => `${formatNumber(client.guilds.cache.size)} servers`,
 		type: ActivityType.Watching
 	},
 	{
-		text: (client) => `with ${formatNumber(client.registry.commands.size)} commands`,
+		text: client => `with ${formatNumber(client.registry.commands.size)} commands`,
 		type: ActivityType.Playing
-	},
-	{
-		text: (client) => `${formatNumber(client.channels.cache.size)} channels`,
-		type: ActivityType.Watching
 	}
 ];
