@@ -63,10 +63,15 @@ module.exports = class MagicCommand extends Command {
 			.setDescription(`${manaCost} ${card.type_line}\n\n${oracleText}`)
 			.setAuthor('Scryfall', logos.scryfall, 'https://scryfall.com/')
 			.setTitle(card.name)
-			.addField('❯ Price', stripIndents`
-				**Non-Foil:** [${card.prices.usd ? `$${card.prices.usd}` : '???'}](${card.purchase_uris.tcgplayer})
-				**Foil:** [${card.prices.usd_foil ? `$${card.prices.usd_foil}` : '???'}](${card.purchase_uris.tcgplayer})
-			`);
+		if (card.type_line.includes('Creature')) {
+			embed.addField('❯ Power', card.power, true);
+			embed.addField('❯ Toughness', card.toughness, true);
+			embed.addField('\u200B', '\u200B', true);
+		}
+		embed.addField('❯ Price', stripIndents`
+			**Non-Foil:** [${card.prices.usd ? `$${card.prices.usd}` : '???'}](${card.purchase_uris.tcgplayer})
+			**Foil:** [${card.prices.usd_foil ? `$${card.prices.usd_foil}` : '???'}](${card.purchase_uris.tcgplayer})
+		`);
 		return msg.embed(embed);
 	}
 
