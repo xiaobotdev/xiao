@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { joinVoiceChannel } = require('@discordjs/voice');
 const Dispatcher = require('../../structures/Dispatcher');
+const perms = [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak, PermissionFlagsBits.ViewChannel];
 
 module.exports = class JoinCommand extends Command {
 	constructor(client) {
@@ -20,7 +21,7 @@ module.exports = class JoinCommand extends Command {
 	run(msg) {
 		const voiceChannel = msg.member.voice.channel;
 		if (!voiceChannel) return msg.reply('Please enter a voice channel first.');
-		if (!voiceChannel.permissionsFor(this.client.user).has([PermissionFlagsBits.Connect, PermissionFlagsBits.Speak, 'VIEW_CHANNEL'])) {
+		if (!voiceChannel.permissionsFor(this.client.user).has(perms)) {
 			return msg.reply('I\'m missing the "Connect", "Speak", or "View Channel" permission for this channel.');
 		}
 		if (!voiceChannel.joinable) return msg.reply('Your voice channel is not joinable.');

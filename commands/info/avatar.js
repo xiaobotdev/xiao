@@ -34,7 +34,10 @@ module.exports = class AvatarCommand extends Command {
 		const embed = new EmbedBuilder()
 			.setTitle(user.tag)
 			.setDescription(
-				formats.map(fmt => embedURL(displayFmts[fmt], user.displayAvatarURL({ extension: fmt, size: 2048 }))).join(' | ')
+				formats.map(fmt => {
+					const avatar = user.displayAvatarURL({ extension: fmt, size: 2048 });
+					return embedURL(displayFmts[fmt], avatar);
+				}).join(' | ')
 			)
 			.setImage(user.displayAvatarURL({ format, size: 2048 }))
 			.setColor(0x00AE86);
