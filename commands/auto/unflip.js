@@ -7,7 +7,7 @@ module.exports = class UnflipCommand extends Command {
 			group: 'auto',
 			memberName: 'unflip',
 			description: 'Unflips a table.',
-			patterns: [/\(╯°□°()|）)╯︵ ┻━┻/i]
+			patterns: [/\(╯°□°(\)|）)╯︵ ┻━┻/i]
 		});
 	}
 
