@@ -1,5 +1,8 @@
 const Command = require('../../framework/Command');
 const { DataResolver } = require('discord.js');
+const { REST, Routes } = require('@discordjs/rest');
+const { XIAO_TOKEN } = process.env;
+const rest = new REST({ version: '10' }).setToken(XIAO_TOKEN);
 
 module.exports = class BannerCommand extends Command {
 	constructor(client) {
@@ -21,7 +24,7 @@ module.exports = class BannerCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		await this.client.rest.patch('/users/@me', {
+		await rest.patch(Routes.user(), {
 			body: { banner: await DataResolver.resolveImage(image) }
 		});
 		return msg.say('Set the banner.');
