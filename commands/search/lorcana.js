@@ -49,15 +49,24 @@ module.exports = class LorcanaCommand extends Command {
 			.setTitle(card.Name)
 			.addField('❯ Color', card.Color, true)
 			.addField('❯ Inkable?', card.Inkable ? 'Yes' : 'No', true)
-			.addField('❯ Lore', card.Lore ? card.Lore.toString() : '0', true);
+		if (card.Type === 'Character') {
+			embed.addField('❯ Strength', card.Strength.toString(), true);
+			embed.addField('❯ Willpower', card.Willpower.toString(), true);
+			embed.addField('❯ Lore', card.Lore ? card.Lore.toString() : '0', true);
+		}
+		if (card.Type === 'Location') {
+			embed.addField('❯ Willpower', card.Willpower.toString(), true);
+			embed.addField('❯ Move Cost', card.Move_Cost.toString(), true);
+			embed.addField('❯ Lore', card.Lore ? card.Lore.toString() : '0', true);
+		}
 		return msg.embed(embed);
 	}
 
 	async search(query) {
 		if (!this.cache) await this.fetchCards();
 		const results = this.cache.filter(card => {
-			const q = query.replace(/( - )|,/g, '');
-			return card.Name.toLowerCase().replace(/( - )|,/g, '').includes(q.toLowerCase());
+			const q = query.replace(/( -)|,/g, '');
+			return card.Name.toLowerCase().replace(/( -)|,/g, '').includes(q.toLowerCase());
 		});
 		if (!results.length) return null;
 		return results[0];
