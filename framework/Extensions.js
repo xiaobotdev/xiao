@@ -1,5 +1,5 @@
 /* eslint-disable */
-const { Message } = require('discord.js');
+const { Message, EmbedBuilder } = require('discord.js');
 
 Reflect.defineProperty(Message.prototype, 'say', { value: function (content, options) {
 	if (typeof content === 'object') return this.channel.send(content);
@@ -22,5 +22,13 @@ Reflect.defineProperty(Message.prototype, 'direct', { value: function (content, 
 Reflect.defineProperty(Message.prototype, 'reply', { value: function (content, options) {
 	if (typeof content === 'object') return this.channel.send(content, { reply: { messageReference: this } });
 	return this.channel.send({ content, ...options, reply: { messageReference: this } });
+} });
+
+Reflect.defineProperty(EmbedBuilder.prototype, 'addField', { value: function (name, value, inline = false) {
+	return this.addFields([{ name, value, inline }]);
+} });
+
+Reflect.defineProperty(EmbedBuilder.prototype, 'addBlankField', { value: function (inline = false) {
+	return this.addFields([{ name: '\u200b', value: '\u200b', inline }]);
 } });
 /* eslint-enable */

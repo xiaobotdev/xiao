@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const facts = require('../../assets/json/bunny-fact');
 
@@ -10,7 +11,7 @@ module.exports = class BunnyCommand extends Command {
 			group: 'random-img',
 			memberName: 'bunny',
 			description: 'Responds with a random bunny image and fact.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'bunnies.io',

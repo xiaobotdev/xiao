@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 const types = ['default', 'moth', 'jojo', 'spoiler', 'nitro'];
 
@@ -11,7 +12,7 @@ module.exports = class DarkLightCommand extends Command {
 			memberName: 'dark-light',
 			description: 'Determines whether you use dark or light theme.',
 			details: `**Types:** ${types.join(', ')}`,
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'u/LennyMcLennington',

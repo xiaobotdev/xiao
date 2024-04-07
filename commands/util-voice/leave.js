@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = class LeaveCommand extends Command {
 	constructor(client) {
@@ -20,7 +21,7 @@ module.exports = class LeaveCommand extends Command {
 			const usage = this.client.registry.commands.get('stop').usage();
 			return msg.reply(`I am currently playing audio in this server. Please use ${usage} first.`);
 		}
-		if (!connection.channel.permissionsFor(msg.author).has('MOVE_MEMBERS')) {
+		if (!connection.channel.permissionsFor(msg.author).has(PermissionFlagsBits.MoveMembers)) {
 			return msg.reply(`You need the "MOVE_MEMBERS" permission to use the \`${this.name}\` command.`);
 		}
 		connection.leave();

@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed, version: djsVersion } = require('discord.js');
+const { EmbedBuilder, version: djsVersion, PermissionFlagsBits } = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
 const { formatNumber, embedURL } = require('../../util/Util');
@@ -15,16 +15,16 @@ module.exports = class InfoCommand extends Command {
 			memberName: 'info',
 			description: 'Responds with detailed bot information.',
 			guarded: true,
-			clientPermissions: ['EMBED_LINKS']
+			clientPermissions: [PermissionFlagsBits.EmbedLinks]
 		});
 	}
 
 	run(msg) {
-		const invite = this.client.generateInvite({ permissions: ['ADMINISTRATOR'], scopes: ['bot'] });
+		const invite = this.client.generateInvite({ permissions: [PermissionFlagsBits.Administrator], scopes: ['bot'] });
 		const prefix = msg.guild ? msg.guild.commandPrefix : this.client.commandPrefix;
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x00AE86)
-			.setFooter(copyright.join('\n'))
+			.setFooter({ text: copyright.join('\n') })
 			.addField('❯ Servers', formatNumber(this.client.guilds.cache.size), true)
 			.addField('❯ Commands', formatNumber(this.client.registry.commands.size), true)
 			.addField('❯ Shards', formatNumber(this.client.options.shardCount), true)

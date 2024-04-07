@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
@@ -85,7 +85,7 @@ module.exports = class AnimeCommand extends Command {
 			group: 'search',
 			memberName: 'anime',
 			description: 'Searches AniList for your query, getting anime results.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'AniList',
@@ -118,9 +118,9 @@ module.exports = class AnimeCommand extends Command {
 		const entry = this.personalList.find(ani => ani.mediaId === id);
 		const malScore = await this.fetchMALScore(anime.idMal);
 		const malURL = `https://myanimelist.net/anime/${anime.idMal}`;
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
+			.setAuthor({ name: 'AniList', iconURL: logos.anilist, url: 'https://anilist.co/' })
 			.setURL(anime.siteUrl)
 			.setThumbnail(anime.coverImage.large || anime.coverImage.medium || null)
 			.setTitle(anime.title.english || anime.title.romaji)

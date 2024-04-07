@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const moment = require('moment');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
@@ -14,7 +14,7 @@ module.exports = class GithubCommand extends Command {
 			group: 'search',
 			memberName: 'github',
 			description: 'Responds with information on a GitHub repository.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'GitHub',
@@ -43,9 +43,9 @@ module.exports = class GithubCommand extends Command {
 			const { body } = await request
 				.get(`https://api.github.com/repos/${author}/${repository}`)
 				.set({ Authorization: `token ${GITHUB_ACCESS_TOKEN}` });
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(0xFFFFFF)
-				.setAuthor('GitHub', logos.github, 'https://github.com/')
+				.setAuthor({ name: 'GitHub', iconURL: logos.github, url: 'https://github.com/' })
 				.setTitle(body.full_name)
 				.setURL(body.html_url)
 				.setDescription(body.description ? shorten(body.description) : 'No description.')

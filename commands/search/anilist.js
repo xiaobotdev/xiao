@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const searchGraphQL = stripIndents`
@@ -20,7 +21,7 @@ module.exports = class AnilistCommand extends Command {
 			group: 'search',
 			memberName: 'anilist',
 			description: 'Responds with user information for an Anilist user.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'AniList',

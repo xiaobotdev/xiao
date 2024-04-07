@@ -1,4 +1,4 @@
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, PermissionFlagsBits, ButtonStyle, ComponentType } = require('discord.js');
 const crypto = require('crypto');
 const request = require('node-superfetch');
 const fs = require('fs');
@@ -289,10 +289,10 @@ module.exports = class Util {
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
 		const dm = !msg.guild;
 		if (!emoji) emoji = fallbackEmoji;
-		if (fallbackEmoji && (!dm && !msg.channel.permissionsFor(user).has('USE_EXTERNAL_EMOJIS'))) {
+		if (fallbackEmoji && (!dm && !msg.channel.permissionsFor(user).has(PermissionFlagsBits.UseExternalEmojis))) {
 			emoji = fallbackEmoji;
 		}
-		if (dm || msg.channel.permissionsFor(user).has(['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'])) {
+		if (dm || msg.channel.permissionsFor(user).has([PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'])) {
 			try {
 				await msg.react(emoji);
 			} catch {
@@ -340,9 +340,9 @@ module.exports = class Util {
 	static async awaitPlayers(msg, max, min, blacklist) {
 		if (max === 1) return [msg.author.id];
 		const addS = min - 1 === 1 ? '' : 's';
-		const row = new MessageActionRow().addComponents(
-			new MessageButton().setCustomId('join').setLabel('Join Game').setStyle('PRIMARY'),
-			new MessageButton().setCustomId('start').setLabel('Start Game').setStyle('SUCCESS')
+		const row = new ActionRowBuilder().addComponents(
+			new ButtonBuilder().setCustomId('join').setLabel('Join Game').setStyle(ButtonStyle.Primary),
+			new ButtonBuilder().setCustomId('start').setLabel('Start Game').setStyle(ButtonStyle.Success)
 		);
 		let text = stripIndents`
 			You will need at least ${min - 1} more player${addS} (at max ${max - 1}).
@@ -364,7 +364,7 @@ module.exports = class Util {
 		};
 		const collector = msg.channel.createMessageComponentCollector({
 			filter,
-			componentType: 'BUTTON',
+			componentType: ComponentType.Button,
 			max: max - 1,
 			time: 120000
 		});

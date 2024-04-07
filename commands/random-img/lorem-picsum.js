@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 
 module.exports = class LoremPicsumCommand extends Command {
@@ -9,7 +10,7 @@ module.exports = class LoremPicsumCommand extends Command {
 			group: 'random-img',
 			memberName: 'lorem-picsum',
 			description: 'Responds with a random image of a certain size.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Lorem Picsum',

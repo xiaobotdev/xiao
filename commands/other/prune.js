@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = class PruneCommand extends Command {
 	constructor(client) {
@@ -13,8 +14,8 @@ module.exports = class PruneCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['READ_MESSAGE_HISTORY', 'MANAGE_MESSAGES'],
-			userPermissions: ['MANAGE_MESSAGES'],
+			clientPermissions: ['READ_MESSAGE_HISTORY', PermissionFlagsBits.ManageMessages],
+			userPermissions: [PermissionFlagsBits.ManageMessages],
 			args: [
 				{
 					key: 'count',

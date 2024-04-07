@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const reasons = ['bug', 'feedback', 'suggestion', 'abuse'];
-const reasonColors = ['RED', 'GREEN', 'YELLOW', 'ORANGE'];
+const reasonColors = ['Red', 'Green', 'Yellow', 'Orange'];
 const displayReasons = ['🐛 Bug Report', '📬 Feedback', '❓ Suggestion', '⚠️ Abuse'];
 
 module.exports = class ReportCommand extends Command {
@@ -29,11 +29,11 @@ module.exports = class ReportCommand extends Command {
 	}
 
 	async run(msg, { reason, message }) {
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setDescription(message)
 			.setTitle(displayReasons[reason])
-			.setAuthor(msg.author.tag)
-			.setFooter(`ID: ${msg.author.id}`)
+			.setAuthor({ name: msg.author.tag })
+			.setFooter({ text: `ID: ${msg.author.id}` })
 			.setTimestamp()
 			.setColor(reasonColors[reason]);
 		const channel = await this.client.fetchReportChannel();

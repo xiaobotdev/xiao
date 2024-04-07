@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const logos = require('../../assets/json/logos');
@@ -45,7 +45,7 @@ module.exports = class AnimeScoreCommand extends Command {
 			memberName: 'anime-score',
 			description: 'See if you can guess what a random anime\'s score is.',
 			game: true,
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'AniList',
@@ -59,13 +59,13 @@ module.exports = class AnimeScoreCommand extends Command {
 
 	async run(msg) {
 		const anime = await this.getRandomAnime(msg.channel.nsfw);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x02A9FF)
-			.setAuthor('AniList', logos.anilist, 'https://anilist.co/')
+			.setAuthor({ name: 'AniList', iconURL: logos.anilist, url: 'https://anilist.co/' })
 			.setImage(anime.coverImage.large || anime.coverImage.medium || null)
 			.setTitle(anime.title.english || anime.title.romaji)
 			.setDescription(`_${anime.startDate.year}, ${formats[anime.format]}_`)
-			.setFooter(anime.id.toString());
+			.setFooter({ text: anime.id.toString() });
 		await msg.reply('**You have 15 seconds, what score do you think this anime has?**', { embeds: [embed] });
 		const filter = res => {
 			if (res.author.id !== msg.author.id) return false;

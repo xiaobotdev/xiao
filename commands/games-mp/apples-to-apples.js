@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { Util: { escapeMarkdown } } = require('discord.js');
+const { escapeMarkdown, PermissionFlagsBits } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { shuffle } = require('../../util/Util');
 const Game = require('../../structures/cards-against-humanity/Game');
@@ -15,7 +15,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 			description: 'Compete to see who can come up with the best card to match an adjective.',
 			guildOnly: true,
 			game: true,
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
+			clientPermissions: [PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'],
 			credit: [
 				{
 					name: 'Mattel',

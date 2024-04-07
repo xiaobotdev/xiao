@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const questions = require('../../assets/json/google-feud');
 const { formatNumber } = require('../../util/Util');
 
@@ -75,18 +75,18 @@ module.exports = class GoogleFeudCommand extends Command {
 	}
 
 	makeEmbed(question, tries, suggestions, display) {
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x005AF0)
 			.setTitle(`${question}...?`)
 			.setDescription('Type the choice you think is a suggestion _without_ the question.')
-			.setFooter(`${tries} ${tries === 1 ? 'try' : 'tries'} remaining!`);
+			.setFooter({ text: `${tries} ${tries === 1 ? 'try' : 'tries'} remaining!` });
 		for (let i = 0; i < suggestions.length; i++) {
 			const num = formatNumber(10000 - (i * 1000));
 			embed.addField(`❯ ${num}`, display[i], true);
 		}
 		if (suggestions.length % 3 !== 0 && suggestions.length > 3) {
 			for (let i = 0; i < 3 - (suggestions.length % 3); i++) {
-				embed.addField('\u200B', '\u200B', true);
+				embed.addBlankField(true);
 			}
 		}
 		return embed;

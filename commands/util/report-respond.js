@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const types = ['reject', 'info', 'approve'];
 const typesColors = ['RED', 'YELLOW', 'GREEN'];
 const displaytypes = ['❌ Rejected', '❓ Need More Info', '✅ Accepted/Fixed'];
@@ -35,11 +35,11 @@ module.exports = class ReportRespondCommand extends Command {
 	}
 
 	async run(msg, { user, type, message }) {
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setDescription(message)
 			.setTitle(displaytypes[type])
-			.setAuthor(msg.author.tag)
-			.setFooter(`ID: ${msg.author.id}`)
+			.setAuthor({ name: msg.author.tag })
+			.setFooter({ text: `ID: ${msg.author.id}` })
 			.setTimestamp()
 			.setColor(typesColors[type]);
 		try {

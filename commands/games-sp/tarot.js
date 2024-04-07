@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { Util: { escapeMarkdown } } = require('discord.js');
+const { escapeMarkdown } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { list, verify } = require('../../util/Util');
 const TarotDeck = require('../../structures/tarot/TarotDeck');

@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 
 module.exports = class EggsGetLaidCommand extends Command {
@@ -9,7 +10,7 @@ module.exports = class EggsGetLaidCommand extends Command {
 			group: 'single',
 			memberName: 'eggs-get-laid',
 			description: 'Sends the ultimate roast.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'KINMOZA!',

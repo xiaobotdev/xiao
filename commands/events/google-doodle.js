@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const moment = require('moment');
 
@@ -9,7 +10,7 @@ module.exports = class GoogleDoodleCommand extends Command {
 			group: 'events',
 			memberName: 'google-doodle',
 			description: 'Responds with a Google Doodle, either the latest one or a random one from the past.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Google',

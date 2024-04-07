@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { hash } = require('../../util/Util');
 
@@ -9,7 +10,7 @@ module.exports = class GravatarCommand extends Command {
 			group: 'search',
 			memberName: 'gravatar',
 			description: 'Responds with the Gravatar for an email.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Gravatar',

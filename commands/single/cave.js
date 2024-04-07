@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 const types = ['default', 'steve'];
 
@@ -11,7 +12,7 @@ module.exports = class CaveCommand extends Command {
 			memberName: 'cave',
 			description: 'Sends a Minecraft cave that blends in with the chat.',
 			details: `**Types:** ${types.join(', ')}`,
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			args: [
 				{
 					key: 'type',

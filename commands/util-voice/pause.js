@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = class PauseCommand extends Command {
 	constructor(client) {
@@ -19,7 +20,7 @@ module.exports = class PauseCommand extends Command {
 		if (connection.canPlay) {
 			return msg.reply('I am not currently playing audio in this server.');
 		}
-		if (!connection.channel.permissionsFor(msg.author).has('MOVE_MEMBERS')) {
+		if (!connection.channel.permissionsFor(msg.author).has(PermissionFlagsBits.MoveMembers)) {
 			return msg.reply(`You need the "MOVE_MEMBERS" permission to use the \`${this.name}\` command.`);
 		}
 		connection.pause();

@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const moment = require('moment-timezone');
@@ -28,7 +29,7 @@ module.exports = class AnimeAiringCommand extends Command {
 			group: 'events',
 			memberName: 'anime-airing',
 			description: 'Responds with a list of the anime that air today.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'AniList',

@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 
 module.exports = class EmbedCommand extends Command {
 	constructor(client) {
@@ -8,7 +8,7 @@ module.exports = class EmbedCommand extends Command {
 			group: 'edit-text',
 			memberName: 'embed',
 			description: 'Sends text in an embed.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			args: [
 				{
 					key: 'text',
@@ -19,6 +19,6 @@ module.exports = class EmbedCommand extends Command {
 	}
 
 	run(msg, { text }) {
-		return msg.embed(new MessageEmbed().setDescription(text));
+		return msg.embed(new EmbedBuilder().setDescription(text));
 	}
 };

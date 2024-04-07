@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = class AutoReplyCommand extends Command {
 	constructor(client, info) {
@@ -9,7 +10,7 @@ module.exports = class AutoReplyCommand extends Command {
 	}
 
 	run(msg) {
-		if (msg.guild && !msg.channel.permissionsFor(this.client.user).has('SEND_MESSAGES')) return null;
+		if (msg.guild && !msg.channel.permissionsFor(this.client.user).has(PermissionFlagsBits.SendMessages)) return null;
 		const text = this.generateText();
 		if (!text) return null;
 		return this.reply ? msg.reply(text) : msg.say(text);

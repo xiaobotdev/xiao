@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, formatNumber } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
@@ -12,7 +12,7 @@ module.exports = class UrbanCommand extends Command {
 			group: 'search',
 			memberName: 'urban',
 			description: 'Defines a word, but with Urban Dictionary.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Urban Dictionary',
@@ -36,13 +36,13 @@ module.exports = class UrbanCommand extends Command {
 			.query({ term: word });
 		if (!body.list.length) return msg.say('Could not find any results.');
 		const data = body.list[0];
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x32A8F0)
-			.setAuthor('Urban Dictionary', logos.urban, 'https://www.urbandictionary.com/')
+			.setAuthor({ name: 'Urban Dictionary', iconURL: logos.urban, url: 'https://www.urbandictionary.com/' })
 			.setURL(data.permalink)
 			.setTitle(data.word)
 			.setDescription(shorten(data.definition.replace(/\[|\]/g, '')))
-			.setFooter(`👍 ${formatNumber(data.thumbs_up)} 👎 ${formatNumber(data.thumbs_down)}`)
+			.setFooter({ text: `👍 ${formatNumber(data.thumbs_up)} 👎 ${formatNumber(data.thumbs_down)}` })
 			.setTimestamp(new Date(data.written_on))
 			.addField('❯ Example', data.example ? shorten(data.example.replace(/\[|\]/g, ''), 1000) : 'None');
 		return msg.embed(embed);

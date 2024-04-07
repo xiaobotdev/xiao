@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { stripIndents, oneLine } = require('common-tags');
 const { Collection } = require('@discordjs/collection');
 const { delay, awaitPlayers, list, reactIfAble } = require('../../util/Util');
@@ -15,7 +16,7 @@ module.exports = class ImposterCommand extends Command {
 			description: 'Who is the imposter among us?',
 			guildOnly: true,
 			game: true,
-			clientPermissions: ['ADD_REACTIONS', 'READ_MESSAGE_HISTORY'],
+			clientPermissions: [PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'],
 			args: [
 				{
 					key: 'playersCount',

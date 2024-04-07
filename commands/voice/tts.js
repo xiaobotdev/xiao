@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { Readable } = require('stream');
 const { reactIfAble } = require('../../util/Util');
@@ -18,7 +19,7 @@ module.exports = class TtsCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			userPermissions: ['CONNECT', 'SPEAK'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
 			credit: [
 				{
 					name: 'Google',

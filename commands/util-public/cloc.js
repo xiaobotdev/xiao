@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { formatNumber } = require('../../util/Util');
 const { promisify } = require('util');
 const exec = promisify(require('child_process').execFile);
@@ -13,7 +13,7 @@ module.exports = class ClocCommand extends Command {
 			memberName: 'cloc',
 			description: 'Responds with the bot\'s code line count.',
 			guarded: true,
-			clientPermissions: ['EMBED_LINKS']
+			clientPermissions: [PermissionFlagsBits.EmbedLinks]
 		});
 
 		this.cache = null;
@@ -21,9 +21,9 @@ module.exports = class ClocCommand extends Command {
 
 	async run(msg) {
 		const cloc = await this.cloc();
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x00AE86)
-			.setFooter(`${cloc.header.cloc_url} ${cloc.header.cloc_version}`)
+			.setFooter({ text: `${cloc.header.cloc_url} ${cloc.header.cloc_version}` })
 			.addField(`❯ JS (${formatNumber(cloc.JavaScript.nFiles)})`, formatNumber(cloc.JavaScript.code), true)
 			.addField(`❯ JSON (${formatNumber(cloc.JSON.nFiles)})`, formatNumber(cloc.JSON.code), true)
 			.addField(`❯ MD (${formatNumber(cloc.Markdown.nFiles)})`, formatNumber(cloc.Markdown.code), true)

@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { shorten, embedURL } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 
@@ -11,7 +11,7 @@ module.exports = class NASACommand extends Command {
 			group: 'search',
 			memberName: 'nasa',
 			description: 'Searches NASA\'s image archive for your query.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'NASA',
@@ -39,13 +39,13 @@ module.exports = class NASACommand extends Command {
 		const images = body.collection.items;
 		if (!images.length) return msg.say('Could not find any results.');
 		const data = images[Math.floor(Math.random() * images.length)];
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setTitle(shorten(data.data[0].title, 256))
 			.setDescription(shorten(this.cleanHTML(data.data[0].description)))
 			.setColor(0x2E528E)
-			.setAuthor('NASA', logos.nasa, 'https://www.nasa.gov/multimedia/imagegallery/index.html')
+			.setAuthor({ name: 'NASA', iconURL: logos.nasa, url: 'https://www.nasa.gov/multimedia/imagegallery/index.html' })
 			.setImage(`https://images-assets.nasa.gov/image/${data.data[0].nasa_id}/${data.data[0].nasa_id}~thumb.jpg`)
-			.setFooter(`Image Credits: ${data.data[0].center || 'Public Domain'}`)
+			.setFooter({ text: `Image Credits: ${data.data[0].center || 'Public Domain'}` })
 			.setTimestamp(new Date(data.data[0].date_created));
 		return msg.embed(embed);
 	}

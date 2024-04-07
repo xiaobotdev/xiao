@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const gm = require('gm').subClass({ imageMagick: '7+' });
 const request = require('node-superfetch');
 const { magikToBuffer } = require('../../util/Util');
@@ -14,7 +15,7 @@ module.exports = class EmbossCommand extends Command {
 				usages: 2,
 				duration: 15
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'ImageMagick',
@@ -26,7 +27,7 @@ module.exports = class EmbossCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512 })
 				}
 			]
 		});

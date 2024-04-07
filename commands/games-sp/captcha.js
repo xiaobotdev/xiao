@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas } = require('canvas');
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
 
@@ -14,7 +15,7 @@ module.exports = class CaptchaCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			game: true,
 			credit: [
 				{

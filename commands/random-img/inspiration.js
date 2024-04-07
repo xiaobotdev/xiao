@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 
 module.exports = class InspirationCommand extends Command {
@@ -9,7 +10,7 @@ module.exports = class InspirationCommand extends Command {
 			group: 'random-img',
 			memberName: 'inspiration',
 			description: 'Responds with a randomly generated inspiration.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'InspiroBot',

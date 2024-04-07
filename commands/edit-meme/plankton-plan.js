@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
@@ -16,7 +17,7 @@ module.exports = class PlanktonPlanCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Nickelodeon',

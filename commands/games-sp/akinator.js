@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, PermissionFlagsBits, ButtonStyle } = require('discord.js');
 const { Aki, regions } = require('aki-api');
 
 module.exports = class AkinatorCommand extends Command {
@@ -11,7 +11,7 @@ module.exports = class AkinatorCommand extends Command {
 			memberName: 'akinator',
 			description: 'Think about a real or fictional character, I will try to guess who it is.',
 			details: `**Regions:** ${regions.join(', ')}`,
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Akinator',
@@ -39,9 +39,9 @@ module.exports = class AkinatorCommand extends Command {
 		let guessResetNum = 0;
 		let wentBack = false;
 		let forceGuess = false;
-		const initialRow = new MessageActionRow().addComponents(
-			new MessageButton().setCustomId('true').setLabel('Ready!').setStyle('PRIMARY'),
-			new MessageButton().setCustomId('false').setLabel('Nevermind').setStyle('SECONDARY')
+		const initialRow = new ActionRowBuilder().addComponents(
+			new ButtonBuilder().setCustomId('true').setLabel('Ready!').setStyle(ButtonStyle.Primary),
+			new ButtonBuilder().setCustomId('false').setLabel('Nevermind').setStyle(ButtonStyle.Secondary)
 		);
 		const gameMsg = await msg.reply({
 			content: 'Welcome to Akinator! Think of a character, and I will try to guess it.',
@@ -74,15 +74,15 @@ module.exports = class AkinatorCommand extends Command {
 				}
 			}
 			if (!aki.answers || aki.currentStep >= 79) forceGuess = true;
-			const row = new MessageActionRow();
+			const row = new ActionRowBuilder();
 			for (const answer of aki.answers) {
-				row.addComponents(new MessageButton().setCustomId(answer).setStyle('PRIMARY').setLabel(answer));
+				row.addComponents(new ButtonBuilder().setCustomId(answer).setStyle(ButtonStyle.Primary).setLabel(answer));
 			}
-			const sRow = new MessageActionRow();
+			const sRow = new ActionRowBuilder();
 			if (aki.currentStep > 0) {
-				sRow.addComponents(new MessageButton().setCustomId('back').setStyle('SECONDARY').setLabel('Back'));
+				sRow.addComponents(new ButtonBuilder().setCustomId('back').setStyle(ButtonStyle.Secondary).setLabel('Back'));
 			}
-			sRow.addComponents(new MessageButton().setCustomId('end').setStyle('DANGER').setLabel('End'));
+			sRow.addComponents(new ButtonBuilder().setCustomId('end').setStyle(ButtonStyle.Danger).setLabel('End'));
 			await buttonPress.editReply({
 				content: `**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
 				components: [row, sRow],
@@ -120,15 +120,15 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				}
 				guessBlacklist.push(guess.id);
-				const embed = new MessageEmbed()
+				const embed = new EmbedBuilder()
 					.setColor(0xF78B26)
 					.setTitle(`I'm ${Math.round(guess.proba * 100)}% sure it's...`)
 					.setDescription(`${guess.name}${guess.description ? `\n_${guess.description}_` : ''}`)
 					.setThumbnail(guess.absolute_picture_path || null)
-					.setFooter(forceGuess ? 'Final Guess' : `Guess ${timesGuessed}`);
-				const guessRow = new MessageActionRow().addComponents(
-					new MessageButton().setCustomId('true').setLabel('Yes').setStyle('SUCCESS'),
-					new MessageButton().setCustomId('false').setLabel('No').setStyle('DANGER')
+					.setFooter({ text: forceGuess ? 'Final Guess' : `Guess ${timesGuessed}` });
+				const guessRow = new ActionRowBuilder().addComponents(
+					new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
+					new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
 				);
 				await buttonPress.editReply({
 					content: 'Is this your character?',
@@ -155,9 +155,9 @@ module.exports = class AkinatorCommand extends Command {
 				}
 			}
 		}
-		const row = new MessageActionRow();
+		const row = new ActionRowBuilder();
 		row.addComponents(
-			new MessageButton().setLabel('Akinator Website').setStyle('LINK').setURL('https://akinator.com/')
+			new ButtonBuilder().setLabel('Akinator Website').setStyle(ButtonStyle.Link).setURL('https://akinator.com/')
 		);
 		if (win === 'time') {
 			return buttonPress.editReply({ content: 'I guess your silence means I have won.', components: [row] });

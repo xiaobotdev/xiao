@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const moment = require('moment');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { trimArray } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
@@ -12,7 +12,7 @@ module.exports = class NPMCommand extends Command {
 			group: 'search',
 			memberName: 'npm',
 			description: 'Responds with information on an NPM package.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'npm',
@@ -38,9 +38,9 @@ module.exports = class NPMCommand extends Command {
 			const version = body.versions[body['dist-tags'].latest];
 			const maintainers = trimArray(body.maintainers.map(user => user.name));
 			const dependencies = version.dependencies ? trimArray(Object.keys(version.dependencies)) : null;
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(0xCB0000)
-				.setAuthor('NPM', logos.npm, 'https://www.npmjs.com/')
+				.setAuthor({ name: 'NPM', iconURL: logos.npm, url: 'https://www.npmjs.com/' })
 				.setTitle(body.name)
 				.setURL(`https://www.npmjs.com/package/${pkg}`)
 				.setDescription(body.description || 'No description.')

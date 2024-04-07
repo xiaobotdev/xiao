@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const path = require('path');
 const { stripIndents } = require('common-tags');
 const { delay, verify } = require('../../util/Util');
@@ -17,7 +18,7 @@ module.exports = class HearingTestCommand extends Command {
 				duration: 10
 			},
 			guildOnly: true,
-			userPermissions: ['CONNECT', 'SPEAK'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
 			game: true,
 			credit: [
 				{

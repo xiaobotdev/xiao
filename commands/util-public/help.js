@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
 module.exports = class HelpCommand extends Command {
@@ -26,7 +26,7 @@ module.exports = class HelpCommand extends Command {
 			const embeds = [];
 			for (let i = 0; i < Math.ceil(this.client.registry.groups.size / 10); i++) {
 				const nsfw = msg.channel.nsfw || this.client.isOwner(msg.author);
-				const embed = new MessageEmbed()
+				const embed = new EmbedBuilder()
 					.setTitle(`Command List (Page ${i + 1})`)
 					.setDescription(stripIndents`
 						To run a command, use ${this.usage()}.
@@ -54,7 +54,7 @@ module.exports = class HelpCommand extends Command {
 			}
 			const allShown = cmdCount === this.client.registry.commands.size;
 			embeds[embeds.length - 1]
-				.setFooter(`${this.client.registry.commands.size} Commands${allShown ? '' : ` (${cmdCount} Shown)`}`);
+				.setFooter({ text: `${this.client.registry.commands.size} Commands${allShown ? '' : ` (${cmdCount} Shown)`}` });
 			try {
 				const msgs = [];
 				for (const embed of embeds) msgs.push(await msg.direct({ embeds: [embed] }));
@@ -64,8 +64,6 @@ module.exports = class HelpCommand extends Command {
 				return msg.reply('Failed to send DM. You probably have DMs disabled.');
 			}
 		}
-		const userPerms = command.userPermissions.length ? command.userPermissions.join(', ') : 'None';
-		const clientPerms = command.clientPermissions.length ? command.clientPermissions.join(', ') : 'None';
 		return msg.say(stripIndents`
 			__Command **${command.name}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
 			${command.description}${command.details ? `\n${command.details}` : ''}
@@ -76,8 +74,6 @@ module.exports = class HelpCommand extends Command {
 			**Aliases:** ${command.aliases.join(', ') || 'None'}
 			**Group:** ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
 			**NSFW:** ${command.nsfw ? 'Yes' : 'No'}
-			**Permissions You Need:** ${userPerms}
-			**Permissions I Need:** ${clientPerms}
 		`);
 	}
 };

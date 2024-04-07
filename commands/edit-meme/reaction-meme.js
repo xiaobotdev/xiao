@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { wrapText } = require('../../util/Canvas');
@@ -15,7 +16,7 @@ module.exports = class ReactionMemeCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Google',
@@ -32,7 +33,7 @@ module.exports = class ReactionMemeCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
-					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 1024 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 1024 })
 				}
 			]
 		});

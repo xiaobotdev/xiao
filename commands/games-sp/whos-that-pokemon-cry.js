@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { reactIfAble } = require('../../util/Util');
 
 module.exports = class WhosThatPokemonCryCommand extends Command {
@@ -14,8 +15,8 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 				duration: 10
 			},
 			guildOnly: true,
-			userPermissions: ['CONNECT', 'SPEAK'],
-			clientPermissions: ['ATTACH_FILES'],
+			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			game: true,
 			credit: [
 				{

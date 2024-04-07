@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas } = require('canvas');
 const { cropToContent } = require('../../util/Canvas');
 
@@ -31,7 +32,7 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 			group: 'pokedex',
 			memberName: 'pokedex-box-sprite',
 			description: 'Responds with the box sprite of a Pokémon.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Pokémon',

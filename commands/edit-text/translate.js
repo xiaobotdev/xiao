@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const translate = require('@vitalets/google-translate-api');
 const { list } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
@@ -14,7 +14,7 @@ module.exports = class TranslateCommand extends Command {
 			memberName: 'translate',
 			description: 'Translates text to a specific language.',
 			details: `**Codes:** ${codes.join(', ')}`,
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Google',
@@ -54,9 +54,9 @@ module.exports = class TranslateCommand extends Command {
 
 	async run(msg, { text, target, base }) {
 		const { text: result, from } = await translate(text, { to: target, from: base });
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0x4285F4)
-			.setFooter('Powered by Google Translate', logos.googleTranslate)
+			.setFooter({ text: 'Powered by Google Translate', iconURL: logos.googleTranslate })
 			.addField(`❯ From: ${translate.languages[from.language.iso]}`, from.text.value || text)
 			.addField(`❯ To: ${translate.languages[target]}`, result);
 		return msg.embed(embed);

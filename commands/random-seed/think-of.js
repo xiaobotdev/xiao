@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const { MersenneTwister19937, integer } = require('random-js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
@@ -18,7 +19,7 @@ module.exports = class ThinkOfCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Attype Studio',
@@ -60,8 +61,8 @@ module.exports = class ThinkOfCommand extends Command {
 			const random = MersenneTwister19937.seed(calculated);
 			thought = thoughts[integer(0, thoughts.length - 1)(random)];
 		}
-		const firstAvatarURL = first.displayAvatarURL({ format: 'png', size: 512 });
-		const secondAvatarURL = second.displayAvatarURL({ format: 'png', size: 512 });
+		const firstAvatarURL = first.displayAvatarURL({ extension: 'png', size: 512 });
+		const secondAvatarURL = second.displayAvatarURL({ extension: 'png', size: 512 });
 		const firstAvatarData = await request.get(firstAvatarURL);
 		const firstAvatar = await loadImage(firstAvatarData.body);
 		const secondAvatarData = await request.get(secondAvatarURL);

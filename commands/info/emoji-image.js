@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { GuildEmoji } = require('discord.js');
+const { GuildEmoji, PermissionFlagsBits } = require('discord.js');
 const twemoji = require('twemoji-parser');
 const request = require('node-superfetch');
 const { createCanvas, loadImage } = require('canvas');
@@ -16,7 +16,7 @@ module.exports = class EmojiImageCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			args: [
 				{
 					key: 'emoji',

@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const sagiri = require('sagiri');
 const { SAUCENAO_KEY } = process.env;
 const sagiriClient = sagiri(SAUCENAO_KEY);
@@ -15,7 +16,7 @@ module.exports = class XiaoCommand extends Command {
 			group: 'random-img',
 			memberName: 'xiao',
 			description: 'Responds with a random image of Xiao Pai.',
-			clientPermissions: ['ATTACH_FILES'],
+			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
 					name: 'Marvelous',

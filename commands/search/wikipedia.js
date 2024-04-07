@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
@@ -11,7 +11,7 @@ module.exports = class WikipediaCommand extends Command {
 			group: 'search',
 			memberName: 'wikipedia',
 			description: 'Searches Wikipedia for your query.',
-			clientPermissions: ['EMBED_LINKS'],
+			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'Wikipedia',
@@ -44,10 +44,10 @@ module.exports = class WikipediaCommand extends Command {
 			});
 		const data = body.query.pages[0];
 		if (data.missing) return msg.say('Could not find any results.');
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(0xE7E7E7)
 			.setTitle(data.title)
-			.setAuthor('Wikipedia', logos.wikipedia, 'https://www.wikipedia.org/')
+			.setAuthor({ name: 'Wikipedia', iconURL: logos.wikipedia, url: 'https://www.wikipedia.org/' })
 			.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
 			.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
 		return msg.embed(embed);
