@@ -42,7 +42,7 @@ module.exports = class CommandDispatcher {
 		}
 		const content = msg.content.replace(this.commandPattern, '').trim();
 		const result = (content.match(argRegex) || []).map(m => m.replace(argRegex, '$1$2'));
-		const parsed = minimist(result);
+		const parsed = minimist(result, { boolean: true });
 		const finalResult = { flags: parsed };
 		for (let i = 0; i < command.args.length; i++) {
 			const arg = command.args[i];
