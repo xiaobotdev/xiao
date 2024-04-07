@@ -49,7 +49,7 @@ module.exports = class MagicCommand extends Command {
 
 	async run(msg, { query, flags }) {
 		const funny = Boolean(flags.funny || flags.f);
-		const card = query ? await this.search(query, funny) : await this.random();
+		const card = query ? await this.search(query, funny) : await this.random(funny);
 		if (!card) return msg.say('Could not find any results.');
 		const isMDFC = Boolean(card.card_faces);
 		const oracleText = isMDFC ? card.card_faces.map(c => c.oracle_text).join('\n\n//\n\n') : card.oracle_text;
