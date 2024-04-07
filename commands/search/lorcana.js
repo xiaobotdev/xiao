@@ -47,7 +47,7 @@ module.exports = class LorcanaCommand extends Command {
 			.setDescription(`{${card.Cost}} ${card.Type}${classifications}\n\n${oracleText}`)
 			.setAuthor('Lorcana', logos.lorcana, 'https://www.disneylorcana.com/en-US')
 			.setTitle(card.Name)
-			.setFooter(`${card.Set_Name} - ${Card_Num}`)
+			.setFooter(`${card.Set_Name} - ${card.Card_Num}`)
 			.addField('❯ Color', card.Color, true)
 			.addField('❯ Inkable?', card.Inkable ? 'Yes' : 'No', true)
 			.addField('\u200B', '\u200B', true);
