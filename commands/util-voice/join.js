@@ -8,7 +8,7 @@ module.exports = class JoinCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'join',
-			aliases: ['join-voice-channel', 'join-vc', 'join-voice', 'join-channel', PermissionFlagsBits.Connect],
+			aliases: ['join-voice-channel', 'join-vc', 'join-voice', 'join-channel', 'connect'],
 			group: 'util-voice',
 			memberName: 'join',
 			description: 'Joins your voice channel.',
