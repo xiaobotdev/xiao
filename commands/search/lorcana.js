@@ -49,7 +49,7 @@ module.exports = class LorcanaCommand extends Command {
 			.setTitle(card.Name)
 			.addField('❯ Color', card.Color, true)
 			.addField('❯ Inkable?', card.Inkable ? 'Yes' : 'No', true)
-			.addField('❯ Lore', card.Lore || 0, true);
+			.addField('❯ Lore', card.Lore ? card.Lore.toString() : '0', true);
 		return msg.embed(embed);
 	}
 
