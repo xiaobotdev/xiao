@@ -3,19 +3,6 @@ const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const logos = require('../../assets/json/logos');
-const funny = [
-	'cheatyface',
-	'rainbow dash',
-	'pinkie pie',
-	'twilight sparkle',
-	'applejack',
-	'fluttershy',
-	'rarity',
-	'nightmare moon',
-	'princess luna',
-	'discord',
-	'discord, lord of disharmony'
-];
 
 module.exports = class MagicCommand extends Command {
 	constructor(client) {
@@ -39,6 +26,16 @@ module.exports = class MagicCommand extends Command {
 					reasonURL: 'https://scryfall.com/docs/api'
 				}
 			],
+			flags: [
+				{
+					key: 'funny',
+					description: 'Searches for silver-border and acorn cards.'
+				},
+				{
+					key: 'f',
+					description: 'Alias for funny.'
+				}
+			],
 			args: [
 				{
 					key: 'query',
@@ -50,8 +47,9 @@ module.exports = class MagicCommand extends Command {
 		});
 	}
 
-	async run(msg, { query }) {
-		const card = query ? await this.search(query) : await this.random();
+	async run(msg, { query, flags }) {
+		const funny = Boolean(flags.funny || flags.f);
+		const card = query ? await this.search(query, funny) : await this.random();
 		if (!card) return msg.say('Could not find any results.');
 		const isMDFC = Boolean(card.card_faces);
 		const oracleText = isMDFC ? card.card_faces.map(c => c.oracle_text).join('\n\n//\n\n') : card.oracle_text;
@@ -78,12 +76,11 @@ module.exports = class MagicCommand extends Command {
 		return msg.embed(embed);
 	}
 
-	async search(query) {
+	async search(query, funny = false) {
 		try {
-			const isFunny = funny.includes(query);
 			const { body } = await request
 				.get('https://api.scryfall.com/cards/search')
-				.query({ q: `${query} game:paper ${isFunny ? ' is:funny' : ''}` });
+				.query({ q: `${query} game:paper${funny ? ' is:funny' : ''}` });
 			return body.data[0];
 		} catch (err) {
 			if (err.status === 404) return null;
@@ -91,10 +88,10 @@ module.exports = class MagicCommand extends Command {
 		}
 	}
 
-	async random() {
+	async random(funny) {
 		const { body } = await request
 			.get('https://api.scryfall.com/cards/random')
-			.query({ q: 'is:spell game:paper' });
+			.query({ q: `is:spell game:paper${funny ? ' is:funny' : ''}` });
 		return body;
 	}
 };
