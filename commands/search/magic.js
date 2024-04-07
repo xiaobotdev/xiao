@@ -64,7 +64,9 @@ module.exports = class MagicCommand extends Command {
 			.setAuthor('Scryfall', logos.scryfall, 'https://scryfall.com/')
 			.setTitle(card.name)
 		if (card.power && card.toughness) {
-			embed.addField('❯ P/T', `${card.power}/${card.toughness}`);
+			embed.addField('❯ Power', card.power, true);
+			embed.addField('❯ Toughness', card.toughness, true);
+			embed.addField('\u200B', '\u200B', true);
 		}
 		embed.addField('❯ Price', stripIndents`
 			**Non-Foil:** [${card.prices.usd ? `$${card.prices.usd}` : '???'}](${card.purchase_uris.tcgplayer})
