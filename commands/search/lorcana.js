@@ -66,9 +66,15 @@ module.exports = class LorcanaCommand extends Command {
 
 	async search(query) {
 		if (!this.cache) await this.fetchCards();
+		const q = query.replace(/( -)|,/g, '');
+		const exactResults = this.cache.filter(card => {
+			const slug = card.Name.toLowerCase().replace(/( -)|,/g, '');
+			return slug === q;
+		});
+		if (exactResults.length) return exactResults[0];
 		const results = this.cache.filter(card => {
-			const q = query.replace(/( -)|,/g, '');
-			return card.Name.toLowerCase().replace(/( -)|,/g, '').includes(q.toLowerCase());
+			const slug = card.Name.toLowerCase().replace(/( -)|,/g, '');
+			return slug.includes(q.toLowerCase());
 		});
 		if (!results.length) return null;
 		return results[0];
