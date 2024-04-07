@@ -1,5 +1,5 @@
 const { ActivityType } = require('discord.js');
-const { formatNumber } = require('./util/Util');
+const { formatNumber } = require('../util/Util');
 
 module.exports = [
 	{
