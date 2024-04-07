@@ -1,7 +1,7 @@
 const Command = require('../../structures/commands/AutoReply');
 
 module.exports = class UnflipCommand extends Command {
-	constructor(client, info) {
+	constructor(client) {
 		super(client, {
 			name: 'unflip',
 			group: 'auto',
