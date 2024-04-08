@@ -24,7 +24,8 @@ const client = new Client({
 		GatewayIntentBits.GuildMessageTyping,
 		GatewayIntentBits.DirectMessages,
 		GatewayIntentBits.DirectMessageReactions,
-		GatewayIntentBits.DirectMessageTyping
+		GatewayIntentBits.DirectMessageTyping,
+		GatewayIntentBits.MessageContent
 	]
 });
 const { formatNumber, checkFileExists } = require('./util/Util');
@@ -67,14 +68,6 @@ client.slashRegistry.registerCommandsIn(path.join(__dirname, 'slash-commands'));
 
 client.on('ready', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
-
-	// Register Slash Commands in Test Server
-	try {
-		const slashCmds = await client.slashRegistry.uploadTestCommands();
-		client.logger.info(`[SLASH] Registered ${slashCmds.length} slash commands for testing!`);
-	} catch (err) {
-		client.logger.error(`[SLASH] Failed to register slash commands for testing:\n${err.stack}`);
-	}
 
 	// Make temp directories
 	const tmpFolderExists = await checkFileExists(path.join(__dirname, 'tmp'));
