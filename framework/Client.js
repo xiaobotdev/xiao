@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { stripIndents } = require('common-tags');
 const Registry = require('./Registry');
+const SlashRegistry = require('./slash/SlashRegistry');
 const Dispatcher = require('./Dispatcher');
 require('./Extensions');
 
@@ -16,6 +17,7 @@ module.exports = class CommandClient extends Client {
 		this.owner = typeof options.owner === 'string' ? [options.owner] : options.owner;
 		this.invite = options.invite || null;
 		this.registry = new Registry(this);
+		this.slashRegistry = new SlashRegistry(this);
 		this.dispatcher = new Dispatcher(this);
 		this.games = new Collection();
 		this.blacklist = { user: [], guild: [] };
@@ -23,6 +25,7 @@ module.exports = class CommandClient extends Client {
 
 		this.once('ready', this.onceReady);
 		this.on('messageCreate', this.onMessage);
+		this.on('interactionCreate', this.onInteractionCreate);
 	}
 
 	isOwner(user) {
@@ -146,6 +149,25 @@ module.exports = class CommandClient extends Client {
 				You shouldn't ever recieve an error like this.
 				${this.invite ? `Please visit ${this.invite} for support.` : ''}
 			`);
+		}
+	}
+
+	async onInteractionCreate(interaction) {
+		if (!interaction.isChatInputCommand()) return;
+
+		const command = this.slashRegistry.commands.get(interaction.commandName);
+		if (!command) return;
+
+		try {
+			const result = await command.run(interaction);
+			this.emit('commandRun', command, result, interaction);
+		} catch (err) {
+			this.emit('commandError', interaction, err);
+			if (interaction.replied || interaction.deferred) {
+				await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+			} else {
+				await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+			}
 		}
 	}
 
