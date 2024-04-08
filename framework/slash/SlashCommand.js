@@ -10,5 +10,7 @@ module.exports = class SlashCommand {
 			url: 'https://github.com/dragonfire535',
 			reason: 'Code'
 		});
+		this.uses = 0;
+		this.lastRun = null;
 	}
 };
