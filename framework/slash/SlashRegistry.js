@@ -15,6 +15,8 @@ module.exports = class SlashRegistry {
 		const slashCmd = new SlashCommandBuilder()
 			.setName(command.name)
 			.setDescription(command.description);
+		if (command.guildOnly) slashCmd.setDMPermission(false);
+		if (command.nsfw) slashCmd.setNSFW(true);
 		this.commands.set(command.name, { command, data: slashCmd });
 		return this;
 	}
