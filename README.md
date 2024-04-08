@@ -11,6 +11,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 * `LOVER_USER_ID` is the Discord user ID of your significant other. This rigs certain commands, like `ship`. Optional for loners.
 * `XIAO_PREFIX` is the prefix the bot should have.
 * `INVITE` is an invite link for the bot's support server. Optional.
+* `TEST_GUILD_ID` is a guild ID for the server you want to deploy test slash commands to.
 * `REPORT_CHANNEL_ID` is a channel ID for the bot to send reports to. Optional, by default it'll send the owners a DM.
 * `JOIN_LEAVE_CHANNEL_ID` is a channel ID for the bot to send server join/leave information to. Optional.
 * `COMMAND_CHANNEL_ID` is a channel ID for the bot to send command usage data to. Optional.
