@@ -31,15 +31,15 @@ module.exports = class SlashRegistry {
 
 	uploadTestCommands() {
 		return this.client.rest.put(
-			Routes.applicationGuildCommands(this.client.id, TEST_GUILD_ID),
+			Routes.applicationGuildCommands(this.client.user.id, TEST_GUILD_ID),
 			{ body: this.commands.map(cmd => cmd.data.toJSON()) }
 		);
 	}
 
 	uploadGlobalCommands() {
 		return this.client.rest.put(
-			Routes.applicationCommands(this.client.id),
-			{ body: commands }
+			Routes.applicationCommands(this.client.user.id),
+			{ body: this.commands.map(cmd => cmd.data.toJSON()) }
 		);
 	}
 };
