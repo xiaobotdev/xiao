@@ -155,7 +155,7 @@ module.exports = class CommandClient extends Client {
 	async onInteractionCreate(interaction) {
 		if (!interaction.isChatInputCommand()) return;
 
-		const command = this.slashRegistry.commands.get(interaction.commandName);
+		const { command } = this.slashRegistry.commands.get(interaction.commandName);
 		if (!command) return;
 
 		try {
