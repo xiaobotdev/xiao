@@ -160,6 +160,8 @@ module.exports = class CommandClient extends Client {
 
 		try {
 			const result = await command.run(interaction);
+			command.uses++;
+			command.lastRun = new Date();
 			this.emit('commandRun', command, result, interaction);
 		} catch (err) {
 			this.emit('commandError', interaction, err);
