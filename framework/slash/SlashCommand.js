@@ -4,6 +4,8 @@ module.exports = class SlashCommand {
 
 		this.name = options.name.toLowerCase();
 		this.description = options.description;
+		this.nsfw = options.nsfw || false;
+		this.guildOnly = options.guildOnly || false;
 		this.credit = options.credit || [];
 		this.credit.push({
 			name: 'Dragon Fire',
