@@ -324,7 +324,7 @@ client.on('error', err => client.logger.error(err.stack));
 
 client.on('warn', warn => client.logger.warn(warn));
 
-client.on('commandRun', async command => {
+client.on('commandRun', command => {
 	if (command.unknown) return;
 	client.logger.info(`[COMMAND] ${command.name} was used.`);
 });
