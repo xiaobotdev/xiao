@@ -64,8 +64,6 @@ client.registry
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.slashRegistry.registerCommandsIn(path.join(__dirname, 'slash-commands'));
-
 client.on('ready', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
 
@@ -329,11 +327,6 @@ client.on('warn', warn => client.logger.warn(warn));
 client.on('commandRun', async command => {
 	if (command.unknown) return;
 	client.logger.info(`[COMMAND] ${command.name} was used.`);
-	if (command.ownerOnly) return;
-	const channel = await client.fetchCommandChannel();
-	if (!channel) return;
-	channel.send(`\`${command.name}\` was used! It has now been used **${formatNumber(command.uses)}** times!`)
-		.catch(() => null);
 });
 
 client.on('commandError', (command, err) => client.logger.error(`[COMMAND:${command.name}]\n${err.stack}`));
