@@ -17,7 +17,7 @@ const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
 const activities = require('./activity');
-const { REPORT_CHANNEL_ID, JOIN_LEAVE_CHANNEL_ID, COMMAND_CHANNEL_ID } = process.env;
+const { REPORT_CHANNEL_ID, JOIN_LEAVE_CHANNEL_ID } = process.env;
 
 module.exports = class XiaoClient extends CommandClient {
 	constructor(options) {
@@ -109,10 +109,5 @@ module.exports = class XiaoClient extends CommandClient {
 	fetchJoinLeaveChannel() {
 		if (!JOIN_LEAVE_CHANNEL_ID) return null;
 		return this.channels.fetch(JOIN_LEAVE_CHANNEL_ID);
-	}
-
-	fetchCommandChannel() {
-		if (!COMMAND_CHANNEL_ID) return null;
-		return this.channels.fetch(COMMAND_CHANNEL_ID);
 	}
 };
