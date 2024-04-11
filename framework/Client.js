@@ -81,7 +81,7 @@ module.exports = class CommandClient extends Client {
 		if (msg.guild && command.clientPermissions.length) {
 			for (const permission of command.clientPermissions) {
 				if (msg.channel.permissionsFor(this.user).has(permission)) continue;
-				await msg.reply(`The \`${command.name}\` command requires me to have the "${permission}" permission.`);
+				await msg.reply('Looks like I\'m missing the permissions required for this command.');
 				return;
 			}
 		}
@@ -105,7 +105,7 @@ module.exports = class CommandClient extends Client {
 			if (msg.guild && command.userPermissions.length) {
 				for (const permission of command.userPermissions) {
 					if (msg.channel.permissionsFor(msg.author).has(permission)) continue;
-					await msg.reply(`You need the "${permission}" permission to use the \`${command.name}\` command.`);
+					await msg.reply(`You do not have the required permissions to use the \`${command.name}\` command.`);
 					return;
 				}
 			}

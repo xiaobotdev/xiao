@@ -33,8 +33,8 @@ module.exports = class EmojiImageCommand extends Command {
 		const { body } = await request.get(parsed[0].url);
 		const emojiImage = await loadImage(body);
 		if (parsed[0].url.endsWith('svg')) {
-			emojiImage.width *= 4;
-			emojiImage.height *= 4;
+			emojiImage.width = 512;
+			emojiImage.height = 512;
 		}
 		const canvas = createCanvas(512, 512);
 		const ctx = canvas.getContext('2d');
