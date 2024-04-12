@@ -292,7 +292,8 @@ module.exports = class Util {
 		if (fallbackEmoji && (!dm && !msg.channel.permissionsFor(user).has(PermissionFlagsBits.UseExternalEmojis))) {
 			emoji = fallbackEmoji;
 		}
-		if (dm || msg.channel.permissionsFor(user).has([PermissionFlagsBits.AddReactions, PermissionFlagsBits.ReadMessageHistory])) {
+		const perms = [PermissionFlagsBits.AddReactions, PermissionFlagsBits.ReadMessageHistory];
+		if (dm || msg.channel.permissionsFor(user).has(perms)) {
 			try {
 				await msg.react(emoji);
 			} catch {
