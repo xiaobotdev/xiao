@@ -583,7 +583,6 @@ Total: 512
 * **superscript:** Converts text to tiny text.
 * **tebahpla:** Reverses the alphabet of text.
 * **temmie:** Converts text to Temmie speak.
-* **translate:** Translates text to a specific language.
 * **txt:** Generates a TXT file from the text you provide.
 * **unspoiler:** Removes all spoilers from a message.
 * **uppercase:** Converts text to uppercase.
@@ -649,7 +648,6 @@ Total: 512
 * [@tensorflow-models/face-detection](https://www.npmjs.com/package/@tensorflow-models/face-detection)
 * [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
 * [@twemoji/parser](https://www.npmjs.com/package/@twemoji/parser)
-* [@vitalets/google-translate-api](https://www.npmjs.com/package/@vitalets/google-translate-api)
 * [aki-api](https://www.npmjs.com/package/aki-api)
 * [bombsweeper.js](https://www.npmjs.com/package/bombsweeper.js)
 * [bufferutil](https://www.npmjs.com/package/bufferutil)
@@ -1502,9 +1500,6 @@ Total: 512
    - [Bitly](https://bitly.com/) (API)
 * **temmie:**
    - [UNDERTALE](https://undertale.com/) (Original Game)
-   - [ebearskittychan](https://twitter.com/ebearskittychan) (English-to-Temmie Dictionary Data)
-* **translate:**
-   - [Google](https://www.google.com/) (Google Translate)
 * **yoda:**
    - [The Yoda-Speak Generator](http://www.yodaspeak.co.uk/index.php) (API)
 * **zalgo:**
