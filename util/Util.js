@@ -316,7 +316,7 @@ module.exports = class Util {
 		});
 		if (!verify.size) return 0;
 		const choice = verify.first().content.toLowerCase();
-		if (yes.includes(choice) || extraYes.includes(choice)) return verify.first();
+		if (yes.includes(choice) || extraYes.includes(choice)) return true;
 		if (no.includes(choice) || extraNo.includes(choice)) return false;
 		return false;
 	}
