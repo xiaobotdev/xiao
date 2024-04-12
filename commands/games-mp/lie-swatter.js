@@ -102,7 +102,6 @@ module.exports = class LieSwatterCommand extends Command {
 				It was... **${question.answer ? 'true' : 'a lie'}**!
 
 				_Fastest Guess: ${correct.length ? `${pts.get(correct[0].id).user.tag} (+75 pts)` : 'No One...'}_
-
 				${questions.length ? '_Next round starting in 5 seconds..._' : ''}
 			`);
 			if (lastTurnTimeout) lastTurnTimeout = false;
