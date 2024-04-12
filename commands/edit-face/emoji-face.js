@@ -40,10 +40,6 @@ module.exports = class EmojiFaceCommand extends Command {
 		}
 		const emojiData = await request.get(emojiURL);
 		const emojiImg = await loadImage(emojiData.body);
-		if (emojiURL.endsWith('svg')) {
-			emojiImg.width *= 4;
-			emojiImg.height *= 4;
-		}
 		const imgData = await request.get(image);
 		const faces = await this.client.detectFaces(imgData.body);
 		if (!faces) return msg.reply('There are no faces in this image.');
@@ -55,6 +51,10 @@ module.exports = class EmojiFaceCommand extends Command {
 		for (const face of faces) {
 			const ratio = face.box.width / emojiImg.width;
 			const height = emojiImg.height * ratio;
+			if (emojiURL.endsWith('svg')) {
+				emojiImg.width = face.box.width * 1.4;
+				emojiImg.height = height * 1.4;
+			}
 			ctx.drawImage(
 				emojiImg,
 				face.box.xMin - (face.box.width * 0.2),
