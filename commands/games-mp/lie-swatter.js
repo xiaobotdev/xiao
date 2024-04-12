@@ -57,7 +57,7 @@ module.exports = class LieSwatterCommand extends Command {
 			++turn;
 			const question = questions[0];
 			questions.shift();
-			await msg.say(`**${turn}. ${question.category}** ${question.question.trim()}\n_Is it True or is it a Lie?_`);
+			await msg.say(`**${turn}. ${question.category}** ${question.question}\n_Is it True or is it a Lie?_`);
 			const filter = res => {
 				if (!awaitedPlayers.includes(res.author.id)) return false;
 				const answer = res.content.toLowerCase();
