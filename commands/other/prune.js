@@ -14,7 +14,7 @@ module.exports = class PruneCommand extends Command {
 				usages: 2,
 				duration: 10
 			},
-			clientPermissions: ['READ_MESSAGE_HISTORY', PermissionFlagsBits.ManageMessages],
+			clientPermissions: [PermissionFlagsBits.ReadMessageHistory, PermissionFlagsBits.ManageMessages],
 			userPermissions: [PermissionFlagsBits.ManageMessages],
 			args: [
 				{

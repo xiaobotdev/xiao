@@ -16,7 +16,7 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 			guildOnly: true,
 			nsfw: true,
 			game: true,
-			clientPermissions: [PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'],
+			clientPermissions: [PermissionFlagsBits.AddReactions, PermissionFlagsBits.ReadMessageHistory],
 			credit: [
 				{
 					name: 'Cards Against Humanity',
