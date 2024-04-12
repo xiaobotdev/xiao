@@ -16,7 +16,7 @@ module.exports = class ImposterCommand extends Command {
 			description: 'Who is the imposter among us?',
 			guildOnly: true,
 			game: true,
-			clientPermissions: [PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'],
+			clientPermissions: [PermissionFlagsBits.AddReactions, PermissionFlagsBits.ReadMessageHistory],
 			args: [
 				{
 					key: 'playersCount',

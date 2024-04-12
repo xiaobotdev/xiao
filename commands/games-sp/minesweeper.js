@@ -1,4 +1,5 @@
 const Command = require('../../framework/Command');
+const { PermissionFlagsBits } = require('discord.js');
 const BombSweeper = require('bombsweeper.js');
 const moment = require('moment');
 require('moment-duration-format');
@@ -15,6 +16,7 @@ module.exports = class MinesweeperCommand extends Command {
 			group: 'games-sp',
 			memberName: 'minesweeper',
 			description: 'Play a game of Minesweeper.',
+			clientPermissions: [PermissionFlagsBits.ManageMessages, PermissionFlagsBits.ReadMessageHistory],
 			game: true,
 			args: [
 				{
@@ -37,9 +39,10 @@ module.exports = class MinesweeperCommand extends Command {
 		const flagged = [];
 		const startTime = new Date();
 		let cheatMode = false;
+		const gameMsg = await msg.say('Loading...');
 		while (win === null) {
 			const currentTime = moment.duration(new Date() - startTime).format('mm:ss');
-			await msg.say(stripIndents`
+			await gameMsg.edit(stripIndents`
 				${msg.author}, what coordinates do you pick (ex. 4,5)? Type \`end\` to forfeit.
 				Type \`flag <coordinates>\` to flag a spot as a bomb. To remove a flag, run it again.
 				You can also use ranges to mark multiple spots (ex. 4-7,5 or 7,4-5).
@@ -66,17 +69,22 @@ module.exports = class MinesweeperCommand extends Command {
 				time: 120000
 			});
 			if (!turn.size) {
-				await msg.say('Sorry, time is up!');
+				await msg.say('Sorry, time is up!')
+					.then(helpMsg => setTimeout(() => helpMsg.delete().catch(() => null), 5000));
 				break;
 			}
-			const choice = turn.first().content;
+			const choiceMsg = turn.first();
+			const choice = choiceMsg.content;
 			if (choice.toLowerCase() === 'end') {
+				choiceMsg.delete().catch(() => null);
 				win = false;
 				break;
 			}
 			if (choice.toLowerCase() === 'xyzzy') {
+				choiceMsg.delete().catch(() => null);
 				cheatMode = true;
-				await msg.say('Cheat mode is now active. No high score will be saved.');
+				await msg.say('Cheat mode is now active. No high score will be saved.')
+					.then(helpMsg => setTimeout(() => helpMsg.delete().catch(() => null), 5000));
 				continue;
 			}
 			const coordPicked = choice.match(turnRegex);
@@ -86,26 +94,33 @@ module.exports = class MinesweeperCommand extends Command {
 			const yRange = coordPicked[5] ? Math.abs(Number.parseInt(coordPicked[5], 10)) : null;
 			const flag = Boolean(coordPicked[1]);
 			if (xRange && yRange) {
-				await msg.say('You cannot have both an X and Y range.');
+				choiceMsg.delete().catch(() => null);
+				await msg.say('You cannot have both an X and Y range.')
+					.then(helpMsg => setTimeout(() => helpMsg.delete().catch(() => null), 5000));
 				continue;
 			}
 			if ((yRange && flag) || (xRange && flag)) {
-				await msg.say('You cannot flag a range.');
+				choiceMsg.delete().catch(() => null);
+				await msg.say('You cannot flag a range.')
+					.then(helpMsg => setTimeout(() => helpMsg.delete().catch(() => null), 5000));
 				continue;
 			}
 			if (xRange) {
+				choiceMsg.delete().catch(() => null);
 				for (let i = x; i <= xRange; i++) {
 					const keepGoing = await this.runResult(msg, game, i, y, flag, flagged, win);
 					if (keepGoing === false) break;
 					if (keepGoing === null) continue;
 				}
 			} else if (yRange) {
+				choiceMsg.delete().catch(() => null);
 				for (let i = y; i <= yRange; i++) {
 					const keepGoing = await this.runResult(msg, game, x, i, flag, flagged, win);
 					if (keepGoing === false) break;
 					if (keepGoing === null) continue;
 				}
 			} else {
+				choiceMsg.delete().catch(() => null);
 				const keepGoing = await this.runResult(msg, game, x, y, flag, flagged, win);
 				if (keepGoing === false) break;
 				if (keepGoing === null) continue;
@@ -121,10 +136,10 @@ module.exports = class MinesweeperCommand extends Command {
 			await this.client.redis.set(`minesweeper-${size}`, newScore);
 			await this.client.redis.set(`minesweeper-${size}-user`, msg.author.id);
 		}
-		if (win === null) return msg.say('Game ended due to inactivity.');
+		if (win === null) return gameMsg.edit('Game ended due to inactivity.');
 		const newDisplayTime = moment.duration(newScore).format('mm:ss');
 		const displayTime = moment.duration(highScore).format('mm:ss');
-		return msg.say(stripIndents`
+		return gameMsg.edit(stripIndents`
 			${win ? `Nice job! You win! (Took ${newDisplayTime})` : 'Sorry... You lose.'}
 			${scoreBeat ? `**New High Score!** Old:` : `High Score:`} ${displayTime} (Held by ${user})
 
@@ -141,10 +156,13 @@ module.exports = class MinesweeperCommand extends Command {
 			}
 		} else {
 			if (flagged.includes(`${x - 1},${y - 1}`)) {
-				await msg.say(`Are you sure you want to check (${x}, ${y})? You have it flagged.`);
+				const checkMsg = await msg.say(`Are you sure you want to check (${x}, ${y})? You have it flagged.`);
 				const verification = await verify(msg.channel, msg.author);
 				if (!verification) {
-					await msg.say('Okay, the spot will remain unchecked.');
+					verification.delete().catch(() => null);
+					checkMsg.delete().catch(() => null);
+					await msg.say('Okay, the spot will remain unchecked.')
+						.then(helpMsg => setTimeout(() => helpMsg.delete().catch(() => null), 5000));
 					return null;
 				}
 			}

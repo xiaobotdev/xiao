@@ -292,7 +292,7 @@ module.exports = class Util {
 		if (fallbackEmoji && (!dm && !msg.channel.permissionsFor(user).has(PermissionFlagsBits.UseExternalEmojis))) {
 			emoji = fallbackEmoji;
 		}
-		if (dm || msg.channel.permissionsFor(user).has([PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'])) {
+		if (dm || msg.channel.permissionsFor(user).has([PermissionFlagsBits.AddReactions, PermissionFlagsBits.ReadMessageHistory])) {
 			try {
 				await msg.react(emoji);
 			} catch {
@@ -315,7 +315,7 @@ module.exports = class Util {
 		});
 		if (!verify.size) return 0;
 		const choice = verify.first().content.toLowerCase();
-		if (yes.includes(choice) || extraYes.includes(choice)) return true;
+		if (yes.includes(choice) || extraYes.includes(choice)) return verify.first();
 		if (no.includes(choice) || extraNo.includes(choice)) return false;
 		return false;
 	}

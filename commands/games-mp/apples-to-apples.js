@@ -15,7 +15,7 @@ module.exports = class ApplesToApplesCommand extends Command {
 			description: 'Compete to see who can come up with the best card to match an adjective.',
 			guildOnly: true,
 			game: true,
-			clientPermissions: [PermissionFlagsBits.AddReactions, 'READ_MESSAGE_HISTORY'],
+			clientPermissions: [PermissionFlagsBits.AddReactions, PermissionFlagsBits.ReadMessageHistory],
 			credit: [
 				{
 					name: 'Mattel',
