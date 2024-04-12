@@ -4,7 +4,7 @@ const BombSweeper = require('bombsweeper.js');
 const moment = require('moment');
 require('moment-duration-format');
 const { stripIndents } = require('common-tags');
-const { removeFromArray, verify, fetchHSUserDisplay } = require('../../util/Util');
+const { removeFromArray, fetchHSUserDisplay } = require('../../util/Util');
 const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
 const turnRegex = /^(flag )?(\d+)(-\d+)?, ?(\d+)(-\d+)?/i;
 
@@ -108,20 +108,20 @@ module.exports = class MinesweeperCommand extends Command {
 			if (xRange) {
 				choiceMsg.delete().catch(() => null);
 				for (let i = x; i <= xRange; i++) {
-					const keepGoing = await this.runResult(msg, game, i, y, flag, flagged, win);
+					const keepGoing = await this.runResult(game, i, y, flag, flagged, win);
 					if (keepGoing === false) break;
 					if (keepGoing === null) continue;
 				}
 			} else if (yRange) {
 				choiceMsg.delete().catch(() => null);
 				for (let i = y; i <= yRange; i++) {
-					const keepGoing = await this.runResult(msg, game, x, i, flag, flagged, win);
+					const keepGoing = await this.runResult(game, x, i, flag, flagged, win);
 					if (keepGoing === false) break;
 					if (keepGoing === null) continue;
 				}
 			} else {
 				choiceMsg.delete().catch(() => null);
-				const keepGoing = await this.runResult(msg, game, x, y, flag, flagged, win);
+				const keepGoing = await this.runResult(game, x, y, flag, flagged, win);
 				if (keepGoing === false) break;
 				if (keepGoing === null) continue;
 			}
@@ -147,7 +147,7 @@ module.exports = class MinesweeperCommand extends Command {
 		`);
 	}
 
-	async runResult(msg, game, x, y, flag, flagged, win) {
+	async runResult(game, x, y, flag, flagged, win) {
 		if (flag) {
 			if (flagged.includes(`${x - 1},${y - 1}`)) {
 				removeFromArray(flagged, `${x - 1},${y - 1}`);
@@ -155,17 +155,6 @@ module.exports = class MinesweeperCommand extends Command {
 				flagged.push(`${x - 1},${y - 1}`);
 			}
 		} else {
-			if (flagged.includes(`${x - 1},${y - 1}`)) {
-				const checkMsg = await msg.say(`Are you sure you want to check (${x}, ${y})? You have it flagged.`);
-				const verification = await verify(msg.channel, msg.author);
-				if (!verification) {
-					verification.delete().catch(() => null);
-					checkMsg.delete().catch(() => null);
-					await msg.say('Okay, the spot will remain unchecked.')
-						.then(helpMsg => setTimeout(() => helpMsg.delete().catch(() => null), 5000));
-					return null;
-				}
-			}
 			game.CheckCell(x - 1, y - 1); // eslint-disable-line new-cap
 			if (win === true || win === false) return false;
 		}
