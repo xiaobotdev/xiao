@@ -58,8 +58,7 @@ module.exports = class LieSwatterCommand extends Command {
 			const question = questions[0];
 			questions.shift();
 			await msg.say(stripIndents`
-				**${turn}. ${question.category}**
-				${question.question}
+				**${turn}. ${question.category}** ${question.question}
 
 				_Is it True or is it a Lie?_
 			`);
