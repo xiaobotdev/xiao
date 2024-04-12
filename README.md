@@ -643,12 +643,12 @@ Total: 512
 
 ## Credits
 ### NPM Packages
-* [@discordjs/collection](https://www.npmjs.com/package/@discordjs/collection)
 * [@discordjs/opus](https://www.npmjs.com/package/@discordjs/opus)
 * [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
 * [@mediapipe/face_detection](https://www.npmjs.com/package/@mediapipe/face_detection)
 * [@tensorflow-models/face-detection](https://www.npmjs.com/package/@tensorflow-models/face-detection)
 * [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
+* [@twemoji/parser](https://www.npmjs.com/package/@twemoji/parser)
 * [@vitalets/google-translate-api](https://www.npmjs.com/package/@vitalets/google-translate-api)
 * [aki-api](https://www.npmjs.com/package/aki-api)
 * [bombsweeper.js](https://www.npmjs.com/package/bombsweeper.js)
@@ -693,7 +693,6 @@ Total: 512
 * [stackblur-canvas](https://www.npmjs.com/package/stackblur-canvas)
 * [text-diff](https://www.npmjs.com/package/text-diff)
 * [tictactoe-minimax-ai](https://www.npmjs.com/package/tictactoe-minimax-ai)
-* [twemoji-parser](https://www.npmjs.com/package/twemoji-parser)
 * [twitter-openapi-typescript](https://www.npmjs.com/package/twitter-openapi-typescript)
 * [utf-8-validate](https://www.npmjs.com/package/utf-8-validate)
 * [valid-url](https://www.npmjs.com/package/valid-url)
