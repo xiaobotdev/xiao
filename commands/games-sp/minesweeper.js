@@ -108,20 +108,20 @@ module.exports = class MinesweeperCommand extends Command {
 			if (xRange) {
 				choiceMsg.delete().catch(() => null);
 				for (let i = x; i <= xRange; i++) {
-					const keepGoing = await this.runResult(game, i, y, flag, flagged, win);
+					const keepGoing = this.runResult(game, i, y, flag, flagged, win);
 					if (keepGoing === false) break;
 					if (keepGoing === null) continue;
 				}
 			} else if (yRange) {
 				choiceMsg.delete().catch(() => null);
 				for (let i = y; i <= yRange; i++) {
-					const keepGoing = await this.runResult(game, x, i, flag, flagged, win);
+					const keepGoing = this.runResult(game, x, i, flag, flagged, win);
 					if (keepGoing === false) break;
 					if (keepGoing === null) continue;
 				}
 			} else {
 				choiceMsg.delete().catch(() => null);
-				const keepGoing = await this.runResult(game, x, y, flag, flagged, win);
+				const keepGoing = this.runResult(game, x, y, flag, flagged, win);
 				if (keepGoing === false) break;
 				if (keepGoing === null) continue;
 			}
@@ -147,7 +147,7 @@ module.exports = class MinesweeperCommand extends Command {
 		`);
 	}
 
-	async runResult(game, x, y, flag, flagged, win) {
+	runResult(game, x, y, flag, flagged, win) {
 		if (flag) {
 			if (flagged.includes(`${x - 1},${y - 1}`)) {
 				removeFromArray(flagged, `${x - 1},${y - 1}`);
