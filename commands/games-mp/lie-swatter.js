@@ -112,7 +112,7 @@ module.exports = class LieSwatterCommand extends Command {
 		const collector = msg.channel.createMessageComponentCollector({
 			filter: res => players.includes(res.user.id),
 			componentType: ComponentType.Button,
-			max: max,
+			max,
 			time: 30000
 		});
 		const answers = [];
