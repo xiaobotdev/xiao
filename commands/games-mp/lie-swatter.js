@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { Collection } = require('@discordjs/collection');
@@ -64,17 +64,8 @@ module.exports = class LieSwatterCommand extends Command {
 				content: `**(${turn}) ${question.category}**\n${question.question}`,
 				components: [row]
 			});
-			let choices;
-			try {
-				choices = await msg.channel.awaitMessageComponent({
-					filter: res => awaitedPlayers.includes(res.user.id),
-					max: pts.size,
-					time: 30000
-				});
-			} catch {
-				choices = null;
-			}
-			if (!choices) {
+			const answers = await this.getChoices(msg, pts.size, awaitedPlayers);
+			if (!answers) {
 				await gameMsg.edit({
 					content: `No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`,
 					components: []
@@ -86,12 +77,6 @@ module.exports = class LieSwatterCommand extends Command {
 					continue;
 				}
 			}
-			const answers = choices.map(ans => {
-				let answer;
-				if (ans.customId === 'true') answer = true;
-				else if (ans.customId === 'false') answer = false;
-				return { answer, id: res.author.id };
-			});
 			const correct = answers.filter(answer => answer.answer === question.answer);
 			for (const answer of correct) {
 				const player = pts.get(answer.id);
@@ -119,6 +104,28 @@ module.exports = class LieSwatterCommand extends Command {
 				${this.makeLeaderboard(pts).slice(0, 10).join('\n')}
 			`,
 			components: []
+		});
+	}
+
+	async getChoices(msg, max, players) {
+		const collector = msg.channel.createMessageComponentCollector({
+			filter: res => players.includes(res.user.id),
+			componentType: ComponentType.Button,
+			max: max,
+			time: 30000
+		});
+		const answers = [];
+		collector.on('collect', interaction => {
+			let answer;
+			if (interaction.customId === 'true') answer = true;
+			if (interaction.customId === 'false') answer = false;
+			answers.push({ id: interaction.user.id, answer });
+		});
+		return new Promise(res => {
+			collector.once('end', () => {
+				if (answers.length === 0) res(null);
+				return res(answers);
+			});
 		});
 	}
 
