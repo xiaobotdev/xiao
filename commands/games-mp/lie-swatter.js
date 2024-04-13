@@ -1,11 +1,9 @@
 const Command = require('../../framework/Command');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { Collection } = require('@discordjs/collection');
-const { delay, awaitPlayers, reactIfAble } = require('../../util/Util');
-const { SUCCESS_EMOJI_ID } = process.env;
-const trueOptions = ['true', 'yes', 'the truth', 't', 'tru', 'tr', 'y', 'ye'];
-const falseOptions = ['false', 'lie', 'no', 'a lie', 'f', 'fals', 'fal', 'fa', 'n', 'l'];
+const { delay, awaitPlayers } = require('../../util/Util');
 
 module.exports = class LieSwatterCommand extends Command {
 	constructor(client) {
@@ -53,27 +51,23 @@ module.exports = class LieSwatterCommand extends Command {
 		}
 		const questions = await this.fetchQuestions();
 		let lastTurnTimeout = false;
+		const gameMsg = await msg.say('Loading...');
 		while (questions.length) {
 			++turn;
 			const question = questions[0];
 			questions.shift();
-			await msg.say(`**(${turn}) ${question.category}**\n${question.question}\n\n_Is it True or is it a Lie?_`);
-			const filter = res => {
-				if (!awaitedPlayers.includes(res.author.id)) return false;
-				const answer = res.content.toLowerCase();
-				if (trueOptions.includes(answer) || falseOptions.includes(answer)) {
-					reactIfAble(res, res.author, SUCCESS_EMOJI_ID, '✅');
-					return true;
-				}
-				return false;
-			};
-			const msgs = await msg.channel.awaitMessages({
-				filter,
+			const row = new ActionRowBuilder().addComponents(
+				new ButtonBuilder().setCustomId('true').setStyle(ButtonStyle.Success).setLabel('The Truth'),
+				new ButtonBuilder().setCustomId('false').setStyle(ButtonStyle.Danger).setLabel('A Lie')
+			);
+			await gameMsg.edit(`**(${turn}) ${question.category}**\n${question.question}`, { components: [row] });
+			const choices = await msg.channel.awaitMessageComponent({
+				filter: res => awaitedPlayers.includes(res.author.id),
 				max: pts.size,
 				time: 30000
 			});
-			if (!msgs.size) {
-				await msg.say(`No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`);
+			if (!choices.size) {
+				await gameMsg.edit(`No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`, { components: [] });
 				if (lastTurnTimeout) {
 					break;
 				} else {
@@ -81,10 +75,10 @@ module.exports = class LieSwatterCommand extends Command {
 					continue;
 				}
 			}
-			const answers = msgs.map(res => {
+			const answers = choices.map(ans => {
 				let answer;
-				if (trueOptions.includes(res.content.toLowerCase())) answer = true;
-				else if (falseOptions.includes(res.content.toLowerCase())) answer = false;
+				if (ans.customId === 'true') answer = true;
+				else if (ans.customId === 'false') answer = false;
 				return { answer, id: res.author.id };
 			});
 			const correct = answers.filter(answer => answer.answer === question.answer);
@@ -93,17 +87,17 @@ module.exports = class LieSwatterCommand extends Command {
 				if (correct[0].id === answer.id) player.points += 75;
 				else player.points += 50;
 			}
-			await msg.say(stripIndents`
+			await gameMsg.edit(stripIndents`
 				It was... **${question.answer ? 'true' : 'a lie'}**!
 
 				_Fastest Guess: ${correct.length ? `${pts.get(correct[0].id).user.tag} (+75 pts)` : 'No One...'}_
 				${questions.length ? '_Next round starting in 5 seconds..._' : ''}
-			`);
+			`, { components: [] });
 			if (lastTurnTimeout) lastTurnTimeout = false;
 			if (questions.length) await delay(5000);
 		}
 		const winner = pts.sort((a, b) => b.points - a.points).first().user;
-		return msg.say(stripIndents`
+		return gameMsg.edit(stripIndents`
 			Congrats, ${winner}!
 
 			__**Top 10:**__
