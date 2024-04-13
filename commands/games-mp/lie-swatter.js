@@ -71,6 +71,7 @@ module.exports = class LieSwatterCommand extends Command {
 					content: `No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`,
 					components: []
 				});
+				if (questions.length) await delay(5000);
 				if (lastTurnTimeout) {
 					break;
 				} else {
