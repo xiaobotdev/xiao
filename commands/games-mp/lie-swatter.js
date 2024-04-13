@@ -67,7 +67,7 @@ module.exports = class LieSwatterCommand extends Command {
 			let choices;
 			try {
 				choices = await msg.channel.awaitMessageComponent({
-					filter: res => awaitedPlayers.includes(res.author.id),
+					filter: res => awaitedPlayers.includes(res.user.id),
 					max: pts.size,
 					time: 30000
 				});
