@@ -60,12 +60,12 @@ module.exports = class LieSwatterCommand extends Command {
 				new ButtonBuilder().setCustomId('true').setStyle(ButtonStyle.Success).setLabel('The Truth'),
 				new ButtonBuilder().setCustomId('false').setStyle(ButtonStyle.Danger).setLabel('A Lie')
 			);
-			const text = `**(${turn}) ${question.category}**\n${question.question}\n`;
+			const text = `**(${turn}) ${question.category}**\n${question.question}`;
 			await gameMsg.edit({
 				content: text,
 				components: [row]
 			});
-			const answers = await this.getChoices(msg, text, pts.size, awaitedPlayers);
+			const answers = await this.getChoices(msg, pts.size, awaitedPlayers);
 			if (!answers) {
 				await gameMsg.edit({
 					content: `No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`,
@@ -108,7 +108,7 @@ module.exports = class LieSwatterCommand extends Command {
 		});
 	}
 
-	getChoices(msg, text, max, players) {
+	getChoices(msg, max, players) {
 		const collector = msg.channel.createMessageComponentCollector({
 			filter: res => players.includes(res.user.id),
 			componentType: ComponentType.Button,
@@ -120,8 +120,7 @@ module.exports = class LieSwatterCommand extends Command {
 			let answer;
 			if (interaction.customId === 'true') answer = true;
 			if (interaction.customId === 'false') answer = false;
-			text += `\n${interaction.user.tag} has answered!`;
-			interaction.update(text);
+			interaction.deferUpdate();
 			answers.push({ id: interaction.user.id, answer });
 		});
 		return new Promise(res => {
