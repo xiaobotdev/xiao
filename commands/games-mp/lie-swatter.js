@@ -60,14 +60,25 @@ module.exports = class LieSwatterCommand extends Command {
 				new ButtonBuilder().setCustomId('true').setStyle(ButtonStyle.Success).setLabel('The Truth'),
 				new ButtonBuilder().setCustomId('false').setStyle(ButtonStyle.Danger).setLabel('A Lie')
 			);
-			await gameMsg.edit(`**(${turn}) ${question.category}**\n${question.question}`, { components: [row] });
-			const choices = await msg.channel.awaitMessageComponent({
-				filter: res => awaitedPlayers.includes(res.author.id),
-				max: pts.size,
-				time: 30000
+			await gameMsg.edit({
+				content: `**(${turn}) ${question.category}**\n${question.question}`,
+				components: [row]
 			});
-			if (!choices.size) {
-				await gameMsg.edit(`No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`, { components: [] });
+			let choices;
+			try {
+				choices = await msg.channel.awaitMessageComponent({
+					filter: res => awaitedPlayers.includes(res.author.id),
+					max: pts.size,
+					time: 30000
+				});
+			} catch {
+				choices = null;
+			}
+			if (!choices) {
+				await gameMsg.edit({
+					content: `No answers? Well, it was ${question.answer ? 'true' : 'a lie'}.`,
+					components: []
+				});
 				if (lastTurnTimeout) {
 					break;
 				} else {
@@ -87,22 +98,28 @@ module.exports = class LieSwatterCommand extends Command {
 				if (correct[0].id === answer.id) player.points += 75;
 				else player.points += 50;
 			}
-			await gameMsg.edit(stripIndents`
-				It was... **${question.answer ? 'true' : 'a lie'}**!
+			await gameMsg.edit({
+				content: stripIndents`
+					It was... **${question.answer ? 'true' : 'a lie'}**!
 
-				_Fastest Guess: ${correct.length ? `${pts.get(correct[0].id).user.tag} (+75 pts)` : 'No One...'}_
-				${questions.length ? '_Next round starting in 5 seconds..._' : ''}
-			`, { components: [] });
+					_Fastest Guess: ${correct.length ? `${pts.get(correct[0].id).user.tag} (+75 pts)` : 'No One...'}_
+					${questions.length ? '_Next round starting in 5 seconds..._' : ''}
+				`,
+				components: []
+			});
 			if (lastTurnTimeout) lastTurnTimeout = false;
 			if (questions.length) await delay(5000);
 		}
 		const winner = pts.sort((a, b) => b.points - a.points).first().user;
-		return gameMsg.edit(stripIndents`
-			Congrats, ${winner}!
+		return gameMsg.edit({
+			content: stripIndents`
+				Congrats, ${winner}!
 
-			__**Top 10:**__
-			${this.makeLeaderboard(pts).slice(0, 10).join('\n')}
-		`);
+				__**Top 10:**__
+				${this.makeLeaderboard(pts).slice(0, 10).join('\n')}
+			`,
+			components: []
+		});
 	}
 
 	async fetchQuestions() {
