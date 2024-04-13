@@ -376,6 +376,7 @@ module.exports = class Util {
 				return;
 			}
 			joined.push(interaction.user.id);
+			if (joined.length === max) return;
 			text += `${interaction.user.tag} is in!\n`;
 			interaction.update(text);
 		});
