@@ -53,10 +53,9 @@ module.exports = class TrueOrFalseCommand extends Command {
 			**You have 15 seconds to answer this question.**
 			${decodeURIComponent(body.results[0].question)}
 		`, { components: [row] });
-		const filter = res => res.user.id === msg.author.id;
 		try {
 			const ans = await questionMsg.awaitMessageComponent({
-				filter,
+				filter: res => res.user.id === msg.author.id,
 				max: 1,
 				time: 15000
 			});
