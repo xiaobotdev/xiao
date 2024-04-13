@@ -108,7 +108,7 @@ module.exports = class LieSwatterCommand extends Command {
 		});
 	}
 
-	async getChoices(msg, text, max, players) {
+	getChoices(msg, text, max, players) {
 		const collector = msg.channel.createMessageComponentCollector({
 			filter: res => players.includes(res.user.id),
 			componentType: ComponentType.Button,
