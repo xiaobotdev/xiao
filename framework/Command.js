@@ -40,11 +40,11 @@ module.exports = class Command {
 	}
 
 	usage(forcedArgs) {
-		const args = typeof forcedArgs !== 'undefined' ? forcedArgs : this.args
+		const args = typeof forcedArgs === 'undefined' ? this.args
 			.map(arg => {
 				const hasDefault = arg.default !== null;
 				return `${hasDefault ? '[' : '<'}${arg.label || arg.key}${hasDefault ? ']' : '>'}`;
-			}).join(' ');
+			}).join(' ') : forcedArgs;
 		return `\`${this.client.commandPrefix}${this.name} ${args}\` or \`@${this.client.user.tag} ${this.name} ${args}\``;
 	}
 
