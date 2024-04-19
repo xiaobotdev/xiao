@@ -276,7 +276,7 @@ client.on('guildCreate', async guild => {
 	}
 	if (guild.systemChannel && guild.systemChannel.permissionsFor(client.user).has(PermissionFlagsBits.SendMessages)) {
 		try {
-			const usage = client.registry.commands.get('help').usage(true);
+			const usage = client.registry.commands.get('help').usage('');
 			await guild.systemChannel.send(`Hi! I'm Xiao, use ${usage} to see my commands, yes?`);
 		} catch {
 			// Nothing!

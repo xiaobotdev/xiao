@@ -39,11 +39,11 @@ module.exports = class Command {
 		return this.client.registry.groups.get(this.groupID);
 	}
 
-	usage(noArgs = false) {
-		const args = noArgs ? '' : this.args
+	usage(forcedArgs) {
+		const args = typeof forcedArgs !== 'undefined' ? forcedArgs : this.args
 			.map(arg => {
 				const hasDefault = arg.default !== null;
-				return `${hasDefault ? '[' : '<'}${arg.label || arg.key}${hasDefault ? ']' : '>'}`
+				return `${hasDefault ? '[' : '<'}${arg.label || arg.key}${hasDefault ? ']' : '>'}`;
 			}).join(' ');
 		return `\`${this.client.commandPrefix}${this.name} ${args}\` or \`@${this.client.user.tag} ${this.name} ${args}\``;
 	}
