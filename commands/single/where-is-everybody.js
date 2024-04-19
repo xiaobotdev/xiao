@@ -41,7 +41,7 @@ module.exports = class WhereIsEverybodyCommand extends Command {
 		await delay(5000);
 		return msg.channel.send({
 			content: '"Where is @everyone?"',
-			disableMentions: 'none',
+			allowedMentions: { parse: ['everyone'] },
 			files: [path.join(__dirname, '..', '..', 'assets', 'images', 'where-is-everybody', 'part-3.jpg')]
 		});
 	}
