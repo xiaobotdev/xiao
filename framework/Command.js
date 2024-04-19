@@ -39,9 +39,12 @@ module.exports = class Command {
 		return this.client.registry.groups.get(this.groupID);
 	}
 
-	usage() {
-		const args = this.args
-			.map(arg => `${arg.default ? '[' : '<'}${arg.label || arg.key}${arg.default ? ']' : '>'}`).join(' ');
+	usage(noArgs = false) {
+		const args = noArgs ? '' : this.args
+			.map(arg => {
+				const hasDefault = arg.default !== null;
+				return `${hasDefault ? '[' : '<'}${arg.label || arg.key}${hasDefault ? ']' : '>'}`
+			}).join(' ');
 		return `\`${this.client.commandPrefix}${this.name} ${args}\` or \`@${this.client.user.tag} ${this.name} ${args}\``;
 	}
 
