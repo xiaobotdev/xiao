@@ -62,7 +62,7 @@ module.exports = class MagicCommand extends Command {
 		const embed = new EmbedBuilder()
 			.setURL(card.scryfall_uri)
 			.setColor(0x2B253A)
-			.setThumbnail(card.card_faces ? card.card_faces[0].image_uris.art_crop : card.image_uris.art_crop)
+			.setThumbnail(card.card_faces ? card.card_faces[0].image_uris.normal : card.image_uris.normal)
 			.setDescription(`${manaCost} ${card.type_line}\n\n${oracleText}`)
 			.setAuthor({ name: 'Scryfall', iconURL: logos.scryfall, url: 'https://scryfall.com/' })
 			.setTitle(card.name);
