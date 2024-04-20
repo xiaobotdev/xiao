@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { joinVoiceChannel } = require('@discordjs/voice');
-const Dispatcher = require('../../structures/Dispatcher');
+const VoiceDispatcher = require('../../structures/VoiceDispatcher');
 const perms = [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak, PermissionFlagsBits.ViewChannel];
 
 module.exports = class JoinCommand extends Command {
@@ -33,7 +33,7 @@ module.exports = class JoinCommand extends Command {
 			guildId: voiceChannel.guild.id,
 			adapterCreator: voiceChannel.guild.voiceAdapterCreator
 		});
-		this.client.dispatchers.set(msg.guild.id, new Dispatcher(voiceChannel));
+		this.client.dispatchers.set(msg.guild.id, new VoiceDispatcher(voiceChannel));
 		return msg.reply(`Joined **${voiceChannel.name}**!`);
 	}
 };
