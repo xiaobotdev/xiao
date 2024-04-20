@@ -30,7 +30,7 @@ module.exports = class FirstMessageCommand extends Command {
 			.setColor(message.member ? message.member.displayHexColor : 0x00AE86)
 			.setThumbnail(message.author.displayAvatarURL({ extension: 'png' }))
 			.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL({ extension: 'png' }) })
-			.setDescription(message.content)
+			.setDescription(message.content || 'No content.')
 			.setTimestamp(message.createdAt)
 			.setFooter({ text: `ID: ${message.id}` })
 			.addField('❯ Jump', `[Click Here to Jump](${message.url})`);
