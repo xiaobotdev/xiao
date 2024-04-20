@@ -65,7 +65,7 @@ module.exports = class CommandClient extends Client {
 				await msg.reply(stripIndents`
 					An error occurred while running this command: \`${err.message}\`.
 					You shouldn't ever recieve an error like this.
-					${this.invite ? `Please visit ${this.invite} for support.` : ''}
+					${this.invite ? `Please visit ${this.invite} for support.` : 'Please pray to any god that listens.'}
 				`);
 			}
 		}
@@ -144,7 +144,7 @@ module.exports = class CommandClient extends Client {
 			await msg.reply(stripIndents`
 				An error occurred while running this command: \`${err.message}\`.
 				You shouldn't ever recieve an error like this.
-				${this.invite ? `Please visit ${this.invite} for support.` : ''}
+				${this.invite ? `Please visit ${this.invite} for support.` : 'Please pray to any god that listens.'}
 			`);
 		}
 	}
