@@ -22,7 +22,7 @@ module.exports = class UnknownCommandCommand extends Command {
 		const str = command ? command[2] : msg.content.split(' ')[0];
 		const results = didYouMean(str, commands, { returnType: ReturnTypeEnums.ALL_SORTED_MATCHES });
 		return msg.reply(stripIndents`
-			Unknown command. Use ${this.client.registry.commands.get('help').usage()} to view the command list.
+			Unknown command. Use ${this.client.registry.commands.get('help').usage('')} to view the command list.
 
 			${results.length ? `Did You Mean: ${results.slice(0, 5).map(c => `\`${c}\``).join(', ')}` : ''}
 		`);
