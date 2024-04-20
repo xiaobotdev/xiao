@@ -29,8 +29,8 @@ module.exports = class HelpCommand extends Command {
 				const embed = new EmbedBuilder()
 					.setTitle(`Command List (Page ${i + 1})`)
 					.setDescription(stripIndents`
-						To run a command, use ${this.usage()}.
-						${nsfw ? '' : 'Use in an NSFW channel to see NSFW commands.'}
+						To see help for a specific command, use ${this.usage()}.
+						${nsfw ? '' : '_NSFW commands are hidden._'}
 					`)
 					.setColor(0x00AE86);
 				embeds.push(embed);
