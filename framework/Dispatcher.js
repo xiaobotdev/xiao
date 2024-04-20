@@ -54,10 +54,10 @@ module.exports = class CommandDispatcher {
 							finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 							break;
 						} else {
-							return stripIndents`
+							return { command, error: stripIndents`
 								The "${arg.label || arg.key}" argument is required.
 								${arg.invalidText}
-							`;
+							` };
 						}
 					}
 				}
@@ -65,12 +65,12 @@ module.exports = class CommandDispatcher {
 				for (const parsedArg of infinite) {
 					const valid = await arg.validate(parsedArg, msg, arg);
 					if (typeof valid === 'string') {
-						return valid;
+						return { command, error: valid };
 					} else if (!valid) {
-						return stripIndents`
+						return { command, error: stripIndents`
 							An invalid value was provided for one of the "${arg.label || arg.key}" arguments.
 							${arg.invalidText}
-						`;
+						` };
 					}
 					parsedArgs.push(await arg.parse(parsedArg, msg, arg));
 				}
@@ -80,10 +80,10 @@ module.exports = class CommandDispatcher {
 			const parsedArg = i + 1 === command.args.length ? parsed._.slice(i).join(' ') : parsed._[i]?.toString();
 			if (arg.isEmpty(parsedArg, msg, arg)) {
 				if (arg.default === null) {
-					return stripIndents`
+					return { command, error: stripIndents`
 						The "${arg.label || arg.key}" argument is required.
 						${arg.invalidText}
-					`;
+					` };
 				} else {
 					finalResult[arg.key] = typeof arg.default === 'function' ? arg.default(msg) : arg.default;
 					continue;
@@ -91,12 +91,12 @@ module.exports = class CommandDispatcher {
 			}
 			const valid = await arg.validate(parsedArg, msg, arg);
 			if (typeof valid === 'string') {
-				return valid;
+				return { command, error: valid };
 			} else if (!valid) {
-				return stripIndents`
+				return { command, error: stripIndents`
 					An invalid value was provided for the "${arg.label || arg.key}" argument.
 					${arg.invalidText}
-				`;
+				` };
 			}
 			finalResult[arg.key] = await arg.parse(parsedArg, msg, arg);
 		}

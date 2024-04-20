@@ -93,10 +93,14 @@ client.on('ready', async () => {
 	}
 
 	// Set up disabled commands
-	const disabled = await client.redis.hgetall('disabled');
-	for (const command of Object.keys(disabled)) {
-		client.registry.commands.get(command).disable();
-		client.logger.info(`[DISABLED] Disabled the ${command} command.`);
+	try {
+		const disabled = await client.redis.hgetall('disabled');
+		for (const command of Object.keys(disabled)) {
+			client.registry.commands.get(command).disable();
+			client.logger.info(`[DISABLED] Disabled the ${command} command.`);
+		}
+	} catch (err) {
+		client.logger.error(`[DISABLED] Error while disabling commands:\n${err.stack}`);
 	}
 
 	// Import command-last-run.json
@@ -163,7 +167,7 @@ client.on('ready', async () => {
 			}
 		}
 	}
-	client.logger.info(`[BLACKLIST] Left ${guildsLeft} guilds owned by blacklisted users.`);
+	if (guildsLeft > 0) client.logger.info(`[BLACKLIST] Left ${guildsLeft} guilds owned by blacklisted users.`);
 
 	// Set up existing timers
 	try {
@@ -190,8 +194,12 @@ client.on('ready', async () => {
 	}
 
 	// Set up parse-domain
-	await client.loadParseDomain();
-	client.logger.info('[PARSE DOMAIN] parse-domain loaded.');
+	try {
+		await client.loadParseDomain();
+		client.logger.info('[PARSE DOMAIN] parse-domain loaded.');
+	} catch (err) {
+		client.logger.error(`[PARSE DOMAIN] Failed to load parse-domain\n${err.stack}`);
+	}
 
 	// Fetch adult site list
 	try {
@@ -210,14 +218,22 @@ client.on('ready', async () => {
 	}
 
 	// Set up face detection
-	await client.loadFaceDetector();
-	client.logger.info('[FACE DETECTOR] Loaded face detector.');
+	try {
+		await client.loadFaceDetector();
+		client.logger.info('[FACE DETECTOR] Loaded face detector.');
+	} catch (err) {
+		client.logger.error(`[FACE DETECTOR] Failed to load face detector\n${err.stack}`);
+	}
 
 	// Fetch all members
-	for (const [, guild] of client.guilds.cache) {
-		await guild.members.fetch();
+	try {
+		for (const guild of client.guilds.cache.values()) {
+			await guild.members.fetch();
+		}
+		client.logger.info('[MEMBERS] Fetched all guild members.');
+	} catch (err) {
+		client.logger.error(`[MEMBERS] Failed to fetch guild members\n${err.stack}`);
 	}
-	client.logger.info('[MEMBERS] Fetched all guild members.');
 });
 
 client.on('messageCreate', async msg => {

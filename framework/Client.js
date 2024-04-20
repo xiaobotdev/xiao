@@ -72,9 +72,9 @@ module.exports = class CommandClient extends Client {
 
 		if (!this.dispatcher.isCommand(msg)) return;
 		const parsed = await this.dispatcher.parseMessage(msg);
-		if (typeof parsed === 'string') {
-			const helpUsage = this.registry.commands.get('help').usage();
-			await msg.reply(`${parsed}\n\nUse ${helpUsage} for more information.`);
+		if (parsed.error) {
+			const helpUsage = this.registry.commands.get('help').usage(parsed.command.name);
+			await msg.reply(`${parsed.error}\n\nUse ${helpUsage} for more information.`);
 			return;
 		}
 		const { command, args } = parsed;
