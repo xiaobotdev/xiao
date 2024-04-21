@@ -100,9 +100,9 @@ module.exports = class Util {
 	}
 
 	static formatNumberK(number) {
-		if (number > 999999999) `${(number / 1000000000).toLocaleString(undefined, { maximumFractionDigits: 1 })}B`;
-		if (number > 999999) `${(number / 1000000).toLocaleString(undefined, { maximumFractionDigits: 1 })}M`;
-		if (number > 999) return `${(number / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}K`;
+		if (number > 999999999) return `${Math.floor(number / 1000000000)}B`;
+		if (number > 999999) return `${Math.floor(number / 1000000)}M`;
+		if (number > 999) return `${Math.floor(number / 1000)}K`;
 		return number;
 	}
 
