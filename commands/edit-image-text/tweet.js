@@ -46,6 +46,11 @@ module.exports = class TweetCommand extends Command {
 					key: 'text',
 					type: 'string',
 					max: 280
+				},
+				{
+					key: 'image',
+					type: 'image',
+					default: ''
 				}
 			]
 		});
@@ -53,7 +58,7 @@ module.exports = class TweetCommand extends Command {
 		this.guestClient = null;
 	}
 
-	async run(msg, { user, text }) {
+	async run(msg, { user, text, image }) {
 		if (!this.guestClient) this.guestClient = await api.getGuestClient();
 		const userData = await this.fetchUser(msg, user);
 		const avatar = await loadImage(userData.avatar);
@@ -68,18 +73,28 @@ module.exports = class TweetCommand extends Command {
 				+ (23 * (lineBreakLen - 1))
 				+ (9 * (lines.length - 1))
 				+ (9 * (lineBreakLen - 1))
-				+ 20;
+				+ 15;
 		canvas.height += linesLen;
+		let imageHeight = 0;
+		ctx.fillStyle = 'black';
+		ctx.fillRect(0, base1.height, canvas.width, linesLen);
+		if (image) {
+			const { body } = await request.get(image);
+			const imageData = await loadImage(body);
+			const imageHeightRatio = 740 / imageData.width;
+			imageHeight = imageData.height * imageHeightRatio;
+			canvas.height += imageHeight + 15;
+			ctx.fillRect(0, base1.height + linesLen, canvas.width, imageHeight + 15);
+			ctx.drawImage(imageData, 17, base1.height + linesLen, 740, imageHeight);
+		}
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
 		const retweets = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
 		const quotTweets = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 		const replies = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 		const bookmarks = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 		const views = randomRange(Math.ceil(userData.followers * 50), Math.ceil(userData.followers * 100));
-		ctx.fillStyle = 'black';
-		ctx.fillRect(0, base1.height, canvas.width, linesLen);
 		ctx.drawImage(base1, 0, 0);
-		const base2StartY = base1.height + linesLen;
+		const base2StartY = base1.height + linesLen + (image ? imageHeight + 15 : 0);
 		ctx.drawImage(base2, 0, base2StartY);
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
