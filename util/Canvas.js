@@ -207,48 +207,30 @@ module.exports = class CanvasUtil {
 	}
 
 	static wrapText(ctx, text, maxWidth) {
-		return new Promise(resolve => {
-			if (ctx.measureText(text).width < maxWidth) return resolve([text]);
-			if (ctx.measureText('W').width > maxWidth) return resolve(null);
-			const words = text.split(' ');
-			const lines = [];
-			let line = '';
-			for (let i = 0; i < words.length; i++) {
-				let split = false;
-				while (ctx.measureText(words[i]).width >= maxWidth) {
-					const temp = words[i];
-					words[i] = temp.slice(i, -1);
-					if (split) {
-						words[i + 1] = `${temp.slice(-1)}${words[i + 1]}`;
-					} else {
-						split = true;
-						words.splice(i + 1, i, temp.slice(-1));
-					}
-				}
-				const word = words[i];
-				if (word.includes('\n')) {
-					const parts = word.split('\n');
-					for (let j = 0; j < parts.length; j++) {
-						const part = parts[j];
-						if (ctx.measureText(`${line}${part}`).width <= maxWidth) {
-							line += `${part} `;
-						} else {
-							lines.push(line.trim());
-							line = `${part} `;
-						}
-						lines.push(line.trim());
-						line = '';
-					}
-				} else if (ctx.measureText(`${line}${word}`).width <= maxWidth) {
-					line += `${word} `;
+		const lines = [];
+		const wordsAndBreaks = text.split('\n');
+		for (let i = 0; i < wordsAndBreaks.length; i++) {
+			const segment = wordsAndBreaks[i];
+			if (segment === '') {
+				lines.push('');
+				continue;
+			}
+			const words = segment.split(' ');
+			let currentLine = '';
+			for (let j = 0; j < words.length; j++) {
+				const word = words[j];
+				if (ctx.measureText(`${currentLine} ${word}`).width <= maxWidth) {
+					currentLine += `${currentLine === '' ? '' : ' '}${word}`;
 				} else {
-					lines.push(line.trim());
-					line = `${word} `;
+					lines.push(currentLine.trim());
+					currentLine = word;
 				}
 			}
-			lines.push(line.trim());
-			return resolve(lines);
-		});
+			if (currentLine !== '') {
+				lines.push(currentLine.trim());
+			}
+		}
+		return lines;
 	}
 
 	static centerImage(base, data) {
