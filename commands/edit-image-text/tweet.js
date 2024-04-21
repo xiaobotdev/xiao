@@ -100,7 +100,7 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillText(lines.join('\n'), 17, 160);
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
-		const time = moment().format('h:mm A ∙ MMMM D, YYYY ∙');
+		const time = moment().format('h:mm A ∙ MMM D, YYYY ∙');
 		ctx.fillText(time, 18, base2StartY + 12);
 		const timeLen = ctx.measureText(time).width;
 		ctx.fillStyle = 'white';
@@ -110,14 +110,14 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
 		ctx.fillText('Views', 18 + timeLen + 6 + viewsLen + 6, base2StartY + 12);
-		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(16);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(16);
 		ctx.fillText(formatNumberK(replies), 64, base2StartY + 145);
 		ctx.fillText(formatNumberK(likes), 415, base2StartY + 145);
 		ctx.fillText(formatNumberK(retweets + quotTweets), 242, base2StartY + 145);
 		ctx.fillText(formatNumberK(bookmarks), 588, base2StartY + 145);
 		let currentLen = 17;
 		ctx.fillStyle = 'white';
-		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 		ctx.fillText(formatNumberK(retweets), currentLen, base2StartY + 75);
 		currentLen += ctx.measureText(formatNumberK(retweets)).width;
 		currentLen += 5;
@@ -127,7 +127,7 @@ module.exports = class TweetCommand extends Command {
 		currentLen += ctx.measureText('Reposts').width;
 		currentLen += 10;
 		ctx.fillStyle = 'white';
-		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 		ctx.fillText(formatNumberK(quotTweets), currentLen, base2StartY + 75);
 		currentLen += ctx.measureText(formatNumberK(quotTweets)).width;
 		currentLen += 5;
@@ -137,7 +137,7 @@ module.exports = class TweetCommand extends Command {
 		currentLen += ctx.measureText('Quotes').width;
 		currentLen += 10;
 		ctx.fillStyle = 'white';
-		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 		ctx.fillText(formatNumberK(likes), currentLen, base2StartY + 75);
 		currentLen += ctx.measureText(formatNumberK(likes)).width;
 		currentLen += 5;
@@ -147,7 +147,7 @@ module.exports = class TweetCommand extends Command {
 		currentLen += ctx.measureText('Likes').width;
 		currentLen += 10;
 		ctx.fillStyle = 'white';
-		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 		ctx.fillText(formatNumberK(bookmarks), currentLen, base2StartY + 75);
 		currentLen += ctx.measureText(formatNumberK(bookmarks)).width;
 		currentLen += 5;
