@@ -202,7 +202,7 @@ module.exports = class TweetCommand extends Command {
 		const wrapped = await wrapText(ctx, text, maxLineLen);
 		const emoji = text.match(emojiRegex());
 		if (!emoji) {
-			ctx.fillText(lines.join('\n'), x, y);
+			ctx.fillText(wrapped.join('\n'), x, y);
 			return ctx;
 		}
 		for (let currentLine = 0; currentLine < wrapped.length; currentLine++) {
