@@ -133,7 +133,7 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillText(`@${userData.screenName}`, 80, 113);
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
-		this.fillTextWithEmoji(ctx, text, 17, 160, 710, 23);
+		await this.fillTextWithEmoji(ctx, text, 17, 160, 710, 23);
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		const time = moment().format('h:mm A ∙ MMM D, YYYY ∙');
