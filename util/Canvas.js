@@ -220,34 +220,32 @@ module.exports = class CanvasUtil {
 			for (let j = 0; j < words.length; j++) {
 				const word = words[j];
 				if (ctx.measureText(`${currentLine} ${word}`).width <= maxWidth) {
-					currentLine += `${currentLine === '' ? '' : ' '} ${word}`;
-				} else {
-					if (ctx.measureText(word).width > maxWidth) {
-						const chunks = [];
-						let currentChunk = '';
-						for (let k = 0; k < word.length; k++) {
-							const char = word[k];
-							if (ctx.measureText(`${currentChunk}${char}`).width <= maxWidth) {
-								currentChunk += char;
-							} else {
-								chunks.push(currentChunk);
-								currentChunk = char;
-							}
-						}
-						if (currentChunk !== '') {
+					currentLine += `${currentLine === '' ? '' : ' '}${word}`;
+				} else if (ctx.measureText(word).width > maxWidth) {
+					const chunks = [];
+					let currentChunk = '';
+					for (let k = 0; k < word.length; k++) {
+						const char = word[k];
+						if (ctx.measureText(`${currentChunk}${char}`).width <= maxWidth) {
+							currentChunk += char;
+						} else {
 							chunks.push(currentChunk);
+							currentChunk = char;
 						}
-						for (let k = 0; k < chunks.length; k++) {
-							if (ctx.measureText(`${currentLine} ${chunks[k]}`).width > maxWidth) {
-								lines.push(currentLine.trim());
-								currentLine = '';
-							}
-							currentLine += `${currentLine === '' ? '' : ' '}${chunks[k]}`;
-						}
-					} else {
-						lines.push(currentLine.trim());
-						currentLine = word;
 					}
+					if (currentChunk !== '') {
+						chunks.push(currentChunk);
+					}
+					for (let k = 0; k < chunks.length; k++) {
+						if (ctx.measureText(`${currentLine} ${chunks[k]}`).width > maxWidth) {
+							lines.push(currentLine.trim());
+							currentLine = '';
+						}
+						currentLine += `${currentLine === '' ? '' : ' '}${chunks[k]}`;
+					}
+				} else {
+					lines.push(currentLine.trim());
+					currentLine = word;
 				}
 			}
 			if (currentLine !== '') {
