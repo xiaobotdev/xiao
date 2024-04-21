@@ -213,26 +213,33 @@ module.exports = class CanvasUtil {
 			const words = text.split(' ');
 			const lines = [];
 			let line = '';
-			while (words.length > 0) {
-				let split = false;
-				while (ctx.measureText(words[0]).width >= maxWidth) {
-					const temp = words[0];
-					words[0] = temp.slice(0, -1);
-					if (split) {
-						words[1] = `${temp.slice(-1)}${words[1]}`;
+			for (let i = 0; i < words.length; i++) {
+				const word = words[i];
+				if (word.includes('\n')) {
+					const parts = word.split('\n');
+					for (let j = 0; j < parts.length; j++) {
+						const part = parts[j];
+						if (ctx.measureText(`${line}${part}`).width <= maxWidth) {
+							line += `${part} `;
+						} else {
+							lines.push(line.trim());
+							line = `${part} `;
+						}
+						if (j < parts.length - 1) {
+							lines.push(line.trim());
+							line = '';
+						}
+					}
+				} else {
+					if (ctx.measureText(`${line}${word}`).width <= maxWidth) {
+						line += `${word} `;
 					} else {
-						split = true;
-						words.splice(1, 0, temp.slice(-1));
+						lines.push(line.trim());
+						line = `${word} `;
 					}
 				}
-				if (ctx.measureText(`${line}${words[0]}`).width < maxWidth) {
-					line += `${words.shift()} `;
-				} else {
-					lines.push(line.trim());
-					line = '';
-				}
-				if (words.length === 0) lines.push(line.trim());
 			}
+			lines.push(line.trim());
 			return resolve(lines);
 		});
 	}
