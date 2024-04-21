@@ -70,12 +70,7 @@ module.exports = class TweetCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
 		const lines = await wrapText(ctx, text, 710);
-		const lineBreakLen = text.split('\n').length;
-		const linesLen = (23 * lines.length)
-				+ (23 * (lineBreakLen - 1))
-				+ (9 * (lines.length - 1))
-				+ (9 * (lineBreakLen - 1))
-				+ 15;
+		const linesLen = (23 * lines.length) + (9 * (lines.length - 1)) + 15;
 		canvas.height += linesLen;
 		let imageHeight = 0;
 		ctx.fillStyle = 'black';
