@@ -104,9 +104,11 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillText(time, 18, base2StartY + 12);
 		const timeLen = ctx.measureText(time).width;
 		ctx.fillStyle = 'white';
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 		ctx.fillText(formatNumberK(views), 18 + timeLen + 6, base2StartY + 12);
 		const viewsLen = ctx.measureText(formatNumberK(views)).width;
 		ctx.fillStyle = '#71767b';
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		ctx.fillText('Views', 18 + timeLen + 6 + viewsLen + 6, base2StartY + 12);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(16);
 		ctx.fillText(formatNumberK(replies), 64, base2StartY + 145);
