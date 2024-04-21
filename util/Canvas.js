@@ -251,9 +251,6 @@ module.exports = class CanvasUtil {
 			if (currentLine !== '') {
 				lines.push(currentLine.trim());
 			}
-			if (i < wordsAndBreaks.length - 1) {
-				lines.push('');
-			}
 		}
 		return lines;
 	}
