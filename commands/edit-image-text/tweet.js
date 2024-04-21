@@ -99,12 +99,12 @@ module.exports = class TweetCommand extends Command {
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
 		ctx.fillText(lines.join('\n'), 17, 160);
 		ctx.fillStyle = '#71767b';
-		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		const time = moment().format('h:mm A ∙ MMM D, YYYY ∙');
 		ctx.fillText(time, 18, base2StartY + 12);
 		const timeLen = ctx.measureText(time).width;
 		ctx.fillStyle = 'white';
-		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
 		ctx.fillText(formatNumberK(views), 18 + timeLen + 6, base2StartY + 12);
 		const viewsLen = ctx.measureText(formatNumberK(views)).width;
 		ctx.fillStyle = '#71767b';
