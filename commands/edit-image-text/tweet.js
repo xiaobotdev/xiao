@@ -2,6 +2,8 @@ const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const { TwitterOpenApi } = require('twitter-openapi-typescript');
+const emojiRegex = require('emoji-regex');
+const twemoji = require('@twemoji/parser');
 const api = new TwitterOpenApi();
 const moment = require('moment');
 const request = require('node-superfetch');
@@ -131,7 +133,7 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillText(`@${userData.screenName}`, 80, 113);
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
-		ctx.fillText(lines.join('\n'), 17, 160);
+		this.fillTextWithEmoji(ctx, text, 17, 160, 710, 23);
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		const time = moment().format('h:mm A ∙ MMM D, YYYY ∙');
@@ -194,6 +196,39 @@ module.exports = class TweetCommand extends Command {
 		ctx.clip();
 		ctx.drawImage(avatar, 17, 84, 52, 52);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
+	}
+
+	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
+		const wrapped = await wrapText(ctx, text, maxLineLen);
+		const emoji = text.match(emojiRegex());
+		if (!emoji.length) {
+			ctx.fillText(lines.join('\n'), x, y);
+			return ctx;
+		}
+		for (let currentLine = 0; currentLine < wrapped.length; currentLine++) {
+			const line = wrapped[currentLine];
+			const lineNoEmoji = line.split(emojiRegex());
+			const lineEmoji = line.match(emojiRegex());
+			if (!lineEmoji.length) {
+				ctx.fillText(line, x, y + (23 * currentLine) + (9 * currentLine));
+				continue;
+			}
+			let currentX = x;
+			for (let i = 0; i < lineNoEmoji.length; i++) {
+				const linePart = lineNoEmoji[i];
+				ctx.fillText(linePart, currentX, y + (23 * currentLine) + (9 * currentLine));
+				currentX += ctx.measureText(linePart).width;
+				const parsedEmoji = twemoji.parse(emoji[i]);
+				if (!parsedEmoji.length || !parsedEmoji[0].url) continue;
+				const { body } = await request.get(parsedEmoji[0].url);
+				const loadedEmoji = await loadImage(body);
+				loadedEmoji.width = emojiSize;
+				loadedEmoji.height = emojiSize;
+				ctx.drawImage(loadedEmoji, currentX, y + (23 * currentLine) + (9 * currentLine), emojiSize, emojiSize);
+				currentX += emojiSize;
+			}
+		}
+		return ctx;
 	}
 
 	async fetchUser(msg, user) {
