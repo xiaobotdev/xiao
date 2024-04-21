@@ -85,7 +85,23 @@ module.exports = class TweetCommand extends Command {
 			imageHeight = imageData.height * imageHeightRatio;
 			canvas.height += imageHeight + 15;
 			ctx.fillRect(0, base1.height, canvas.width, linesLen + imageHeight + 15);
-			ctx.drawImage(imageData, 17, base1.height + linesLen, 740, imageHeight);
+			const x = 17;
+			const y = base1.height + linesLen;
+			const imageWidth = 740;
+			const radius = 10;
+			ctx.beginPath();
+			ctx.moveTo(x + radius, y);
+			ctx.lineTo(x + imageWidth - radius, y);
+			ctx.quadraticCurveTo(x + imageWidth, y, x + imageWidth, y + radius);
+			ctx.lineTo(x + imageWidth, y + imageHeight - radius);
+			ctx.quadraticCurveTo(x + imageWidth, y + imageHeight, x + imageWidth - radius, y + imageHeight);
+			ctx.lineTo(x + radius, y + imageHeight);
+			ctx.quadraticCurveTo(x, y + imageHeight, x, y + imageHeight - radius);
+			ctx.lineTo(x, y + radius);
+			ctx.quadraticCurveTo(x, y, x + radius, y);
+			ctx.closePath();
+			ctx.clip();
+			ctx.drawImage(imageData, x, y, imageWidth, imageHeight);
 		}
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
 		const retweets = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
