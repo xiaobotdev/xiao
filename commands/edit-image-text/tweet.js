@@ -90,7 +90,7 @@ module.exports = class TweetCommand extends Command {
 			const x = 0;
 			const y = 0;
 			const imageWidth = 740;
-			const radius = 10;
+			const radius = 15;
 			imageCtx.beginPath();
 			imageCtx.moveTo(x + radius, y);
 			imageCtx.lineTo(x + imageWidth - radius, y);
