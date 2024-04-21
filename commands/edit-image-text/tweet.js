@@ -108,7 +108,7 @@ module.exports = class TweetCommand extends Command {
 		const quotTweets = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 		const replies = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 		const bookmarks = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
-		const views = randomRange(Math.ceil(userData.followers * 50), Math.ceil(userData.followers * 100));
+		const views = randomRange(Math.ceil(userData.followers * 10), Math.ceil(userData.followers * 30));
 		ctx.drawImage(base1, 0, 0);
 		const base2StartY = base1.height + linesLen + (image ? imageHeight + 15 : 0);
 		ctx.drawImage(base2, 0, base2StartY);
