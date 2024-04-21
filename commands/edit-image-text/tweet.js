@@ -213,7 +213,7 @@ module.exports = class TweetCommand extends Command {
 				ctx.fillText(line, x, y + (23 * currentLine) + (9 * currentLine));
 				continue;
 			}
-			let currentX = x + 0;
+			let currentX = x;
 			for (let i = 0; i < lineNoEmoji.length; i++) {
 				const linePart = lineNoEmoji[i];
 				ctx.fillText(linePart, currentX, y + (23 * currentLine) + (9 * currentLine));
