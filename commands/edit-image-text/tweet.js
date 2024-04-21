@@ -103,6 +103,7 @@ module.exports = class TweetCommand extends Command {
 			imageCtx.quadraticCurveTo(x, y, x + radius, y);
 			imageCtx.closePath();
 			imageCtx.clip();
+			imageCtx.drawImage(imageData, 0, 0);
 			ctx.drawImage(imageCanvas, x, y, imageWidth, imageHeight);
 		}
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
