@@ -201,7 +201,7 @@ module.exports = class TweetCommand extends Command {
 	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
 		const wrapped = await wrapText(ctx, text, maxLineLen);
 		const emoji = text.match(emojiRegex());
-		if (!emoji.length) {
+		if (!emoji) {
 			ctx.fillText(lines.join('\n'), x, y);
 			return ctx;
 		}
@@ -209,7 +209,7 @@ module.exports = class TweetCommand extends Command {
 			const line = wrapped[currentLine];
 			const lineNoEmoji = line.split(emojiRegex());
 			const lineEmoji = line.match(emojiRegex());
-			if (!lineEmoji.length) {
+			if (!lineEmoji) {
 				ctx.fillText(line, x, y + (23 * currentLine) + (9 * currentLine));
 				continue;
 			}
