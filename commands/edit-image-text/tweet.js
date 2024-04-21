@@ -87,8 +87,8 @@ module.exports = class TweetCommand extends Command {
 			const imageCtx = imageCanvas.getContext('2d');
 			canvas.height += imageHeight + 15;
 			ctx.fillRect(0, base1.height, canvas.width, linesLen + imageHeight + 15);
-			const x = 17;
-			const y = base1.height + linesLen;
+			const x = 0;
+			const y = 0;
 			const imageWidth = 740;
 			const radius = 10;
 			imageCtx.beginPath();
