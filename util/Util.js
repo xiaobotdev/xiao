@@ -100,7 +100,10 @@ module.exports = class Util {
 	}
 
 	static formatNumberK(number) {
-		return number > 999 ? `${(number / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}K` : number;
+		if (number > 999999999) `${(number / 1000000000).toLocaleString(undefined, { maximumFractionDigits: 1 })}B`;
+		if (number > 999999) `${(number / 1000000).toLocaleString(undefined, { maximumFractionDigits: 1 })}M`;
+		if (number > 999) return `${(number / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}K`;
+		return number;
 	}
 
 	static formatTime(time) {
