@@ -109,10 +109,10 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillStyle = '#71767b';
 		ctx.fillText('Views', 18 + timeLen + 6 + viewsLen + 6, base2StartY + 12);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(16);
-		ctx.fillText(formatNumberK(replies), 64, base2StartY + 140);
-		ctx.fillText(formatNumberK(likes), 415, base2StartY + 140);
-		ctx.fillText(formatNumberK(retweets + quotTweets), 242, base2StartY + 140);
-		ctx.fillText(formatNumberK(bookmarks), 588, base2StartY + 140);
+		ctx.fillText(formatNumberK(replies), 64, base2StartY + 145);
+		ctx.fillText(formatNumberK(likes), 415, base2StartY + 145);
+		ctx.fillText(formatNumberK(retweets + quotTweets), 242, base2StartY + 145);
+		ctx.fillText(formatNumberK(bookmarks), 588, base2StartY + 145);
 		let currentLen = 17;
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
