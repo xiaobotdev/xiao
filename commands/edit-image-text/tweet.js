@@ -108,7 +108,7 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillText(formatNumberK(views), 18 + timeLen + 6, base2StartY + 12);
 		const viewsLen = ctx.measureText(formatNumberK(views)).width;
 		ctx.fillStyle = '#71767b';
-		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		ctx.fillText('Views', 18 + timeLen + 6 + viewsLen + 6, base2StartY + 12);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(16);
 		ctx.fillText(formatNumberK(replies), 64, base2StartY + 145);
@@ -122,7 +122,7 @@ module.exports = class TweetCommand extends Command {
 		currentLen += ctx.measureText(formatNumberK(retweets)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
-		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		ctx.fillText('Reposts', currentLen, base2StartY + 75);
 		currentLen += ctx.measureText('Reposts').width;
 		currentLen += 10;
@@ -132,7 +132,7 @@ module.exports = class TweetCommand extends Command {
 		currentLen += ctx.measureText(formatNumberK(quotTweets)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
-		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		ctx.fillText('Quotes', currentLen, base2StartY + 75);
 		currentLen += ctx.measureText('Quotes').width;
 		currentLen += 10;
@@ -142,7 +142,7 @@ module.exports = class TweetCommand extends Command {
 		currentLen += ctx.measureText(formatNumberK(likes)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
-		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		ctx.fillText('Likes', currentLen, base2StartY + 75);
 		currentLen += ctx.measureText('Likes').width;
 		currentLen += 10;
@@ -152,7 +152,7 @@ module.exports = class TweetCommand extends Command {
 		currentLen += ctx.measureText(formatNumberK(bookmarks)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
-		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(18);
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		ctx.fillText('Bookmarks', currentLen, base2StartY + 75);
 		ctx.beginPath();
 		ctx.arc(17 + 26, 84 + 26, 26, 0, Math.PI * 2);
