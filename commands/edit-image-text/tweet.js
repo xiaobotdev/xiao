@@ -26,7 +26,7 @@ module.exports = class TweetCommand extends Command {
 				{
 					name: 'Twitter',
 					url: 'https://twitter.com/',
-					reason: 'Image, API',
+					reason: 'Image, Chirp Font, API',
 					reasonURL: 'https://developer.twitter.com/en/docs.html'
 				},
 				{
