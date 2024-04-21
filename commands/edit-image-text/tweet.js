@@ -67,7 +67,8 @@ module.exports = class TweetCommand extends Command {
 		const linesLen = (23 * lines.length)
 				+ (23 * (lineBreakLen - 1))
 				+ (9 * (lines.length - 1))
-				+ (9 * (lineBreakLen - 1));
+				+ (9 * (lineBreakLen - 1))
+				+ 20;
 		canvas.height += linesLen;
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
 		const retweets = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
@@ -89,7 +90,7 @@ module.exports = class TweetCommand extends Command {
 				path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'verified.png')
 			);
 			const nameLen = ctx.measureText(userData.name).width;
-			ctx.drawImage(verified, 80 + nameLen + 3, 85, 23, 23);
+			ctx.drawImage(verified, 80 + nameLen + 3, 86, 22, 22);
 		}
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(17);
 		ctx.fillStyle = '#71767b';
@@ -108,54 +109,54 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillStyle = '#71767b';
 		ctx.fillText('Views', 18 + timeLen + 6 + viewsLen + 6, base2StartY + 12);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(16);
-		ctx.fillText(formatNumberK(replies), 102, base2StartY + 150);
-		ctx.fillText(formatNumberK(likes), 637, base2StartY + 150);
-		ctx.fillText(formatNumberK(retweets + quotTweets), 373, base2StartY + 150);
-		ctx.fillText(formatNumberK(bookmarks), 901, base2StartY + 150);
+		ctx.fillText(formatNumberK(replies), 64, base2StartY + 150);
+		ctx.fillText(formatNumberK(likes), 415, base2StartY + 150);
+		ctx.fillText(formatNumberK(retweets + quotTweets), 242, base2StartY + 150);
+		ctx.fillText(formatNumberK(bookmarks), 588, base2StartY + 150);
 		let currentLen = 17;
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
-		ctx.fillText(formatNumberK(retweets), currentLen, base2StartY + 82);
+		ctx.fillText(formatNumberK(retweets), currentLen, base2StartY + 72);
 		currentLen += ctx.measureText(formatNumberK(retweets)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
-		ctx.fillText('Reposts', currentLen, base2StartY + 82);
+		ctx.fillText('Reposts', currentLen, base2StartY + 72);
 		currentLen += ctx.measureText('Reposts').width;
 		currentLen += 10;
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
-		ctx.fillText(formatNumberK(quotTweets), currentLen, base2StartY + 82);
+		ctx.fillText(formatNumberK(quotTweets), currentLen, base2StartY + 72);
 		currentLen += ctx.measureText(formatNumberK(quotTweets)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
-		ctx.fillText('Quotes', currentLen, base2StartY + 82);
+		ctx.fillText('Quotes', currentLen, base2StartY + 72);
 		currentLen += ctx.measureText('Quotes').width;
 		currentLen += 10;
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
-		ctx.fillText(formatNumberK(likes), currentLen, base2StartY + 82);
+		ctx.fillText(formatNumberK(likes), currentLen, base2StartY + 72);
 		currentLen += ctx.measureText(formatNumberK(likes)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
-		ctx.fillText('Likes', currentLen, base2StartY + 82);
+		ctx.fillText('Likes', currentLen, base2StartY + 72);
 		currentLen += ctx.measureText('Likes').width;
 		currentLen += 10;
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(18);
-		ctx.fillText(formatNumberK(bookmarks), currentLen, base2StartY + 82);
+		ctx.fillText(formatNumberK(bookmarks), currentLen, base2StartY + 72);
 		currentLen += ctx.measureText(formatNumberK(bookmarks)).width;
 		currentLen += 5;
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
-		ctx.fillText('Bookmarks', currentLen, base2StartY + 82);
+		ctx.fillText('Bookmarks', currentLen, base2StartY + 72);
 		ctx.beginPath();
-		ctx.arc(17 + 32, 84 + 32, 32, 0, Math.PI * 2);
+		ctx.arc(17 + 26, 84 + 26, 26, 0, Math.PI * 2);
 		ctx.closePath();
 		ctx.clip();
-		ctx.drawImage(avatar, 17, 84, 53, 53);
+		ctx.drawImage(avatar, 17, 84, 52, 52);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 	}
 
