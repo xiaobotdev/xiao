@@ -214,6 +214,17 @@ module.exports = class CanvasUtil {
 			const lines = [];
 			let line = '';
 			for (let i = 0; i < words.length; i++) {
+				let split = false;
+				while (ctx.measureText(words[i]).width >= maxWidth) {
+					const temp = words[i];
+					words[i] = temp.slice(i, -1);
+					if (split) {
+						words[i + 1] = `${temp.slice(-1)}${words[i + 1]}`;
+					} else {
+						split = true;
+						words.splice(i + 1, i, temp.slice(-1));
+					}
+				}
 				const word = words[i];
 				if (word.includes('\n')) {
 					const parts = word.split('\n');
