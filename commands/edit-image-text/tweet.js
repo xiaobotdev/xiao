@@ -84,7 +84,7 @@ module.exports = class TweetCommand extends Command {
 			const imageHeightRatio = 740 / imageData.width;
 			imageHeight = imageData.height * imageHeightRatio;
 			canvas.height += imageHeight + 15;
-			ctx.fillRect(0, base1.height + linesLen, canvas.width, imageHeight + 15);
+			ctx.fillRect(0, base1.height, canvas.width, linesLen + imageHeight + 15);
 			ctx.drawImage(imageData, 17, base1.height + linesLen, 740, imageHeight);
 		}
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
