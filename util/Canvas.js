@@ -225,18 +225,14 @@ module.exports = class CanvasUtil {
 							lines.push(line.trim());
 							line = `${part} `;
 						}
-						if (j < parts.length - 1) {
-							lines.push(line.trim());
-							line = '';
-						}
-					}
-				} else {
-					if (ctx.measureText(`${line}${word}`).width <= maxWidth) {
-						line += `${word} `;
-					} else {
 						lines.push(line.trim());
-						line = `${word} `;
+						line = '';
 					}
+				} else if (ctx.measureText(`${line}${word}`).width <= maxWidth) {
+					line += `${word} `;
+				} else {
+					lines.push(line.trim());
+					line = `${word} `;
 				}
 			}
 			lines.push(line.trim());
