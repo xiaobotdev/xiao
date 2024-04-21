@@ -242,7 +242,7 @@ module.exports = class CanvasUtil {
 								lines.push(currentLine.trim());
 								currentLine = '';
 							}
-							currentLine += `${currentLine === '' ? '' : ' '} ${chunks[k]}`;
+							currentLine += `${currentLine === '' ? '' : ' '}${chunks[k]}`;
 						}
 					} else {
 						lines.push(currentLine.trim());
