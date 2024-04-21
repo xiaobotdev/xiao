@@ -104,7 +104,7 @@ module.exports = class TweetCommand extends Command {
 			imageCtx.closePath();
 			imageCtx.clip();
 			imageCtx.drawImage(imageData, 0, 0);
-			ctx.drawImage(imageCanvas, x, y, imageWidth, imageHeight);
+			ctx.drawImage(imageCanvas, 17, base1.height + linesLen, imageWidth, imageHeight);
 		}
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
 		const retweets = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
