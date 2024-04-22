@@ -95,6 +95,7 @@ module.exports = class AkinatorCommand extends Command {
 				}
 				await this.sendLoadingMessage(buttonPress, [guessRow]);
 				if (buttonPress.customId === 'true') {
+					await aki.guess(true, false);
 					win = false;
 					break;
 				} else if (buttonPress.customId === 'false') {
