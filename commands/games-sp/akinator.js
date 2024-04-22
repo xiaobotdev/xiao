@@ -36,7 +36,6 @@ module.exports = class AkinatorCommand extends Command {
 		let ans = null;
 		let win = false;
 		let wentBack = false;
-		let gameOver = false;
 		let timesGuessed = 0;
 		const initialRow = new ActionRowBuilder().addComponents(
 			new ButtonBuilder().setCustomId('true').setLabel('Ready!').setStyle(ButtonStyle.Primary),
@@ -58,17 +57,13 @@ module.exports = class AkinatorCommand extends Command {
 			return gameMsg.edit({ content: 'Guess you didn\'t want to play after all...', components: [] });
 		}
 		await this.sendLoadingMessage(buttonPress, [initialRow]);
-		while (aki.akiWin === null && !gameOver) {
+		while (aki.akiWin === null) {
 			if (ans === null) {
 				await aki.start();
 			} else if (wentBack) {
 				wentBack = false;
 			} else {
-				try {
-					await aki.step(ans);
-				} catch {
-					await aki.step(ans);
-				}
+				await aki.step(ans);
 			}
 			if (aki.guessed) {
 				const guess = aki.guessed;
@@ -116,7 +111,7 @@ module.exports = class AkinatorCommand extends Command {
 				}
 				sRow.addComponents(new ButtonBuilder().setCustomId('end').setStyle(ButtonStyle.Danger).setLabel('End'));
 				await buttonPress.editReply({
-					content: `**${aki.currentStep}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
+					content: `**${aki.currentStep + 1}.** ${aki.question} (${Math.round(Number.parseInt(aki.progress, 10))}%)`,
 					components: [row, sRow],
 					embeds: []
 				});

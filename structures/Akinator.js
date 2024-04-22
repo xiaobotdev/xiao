@@ -53,7 +53,7 @@ class Akinator {
 			};
 			return this;
 		}
-		this.step++;
+		this.currentStep++;
 		this.progress = body.progression;
 		this.question = body.question;
 		return this;
@@ -70,7 +70,7 @@ class Akinator {
 				session: this.session,
 				signature: this.signature
 			});
-		this.step--;
+		this.currentStep--;
 		this.progress = body.progression;
 		this.question = body.question;
 		return this;
