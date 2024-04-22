@@ -1,4 +1,5 @@
 const request = require('node-superfetch');
+const { decode: decodeHTML } = require('html-entities');
 const regions = ['en', 'ar', 'cn', 'de', 'es', 'fr', 'il', 'it', 'jp', 'kr', 'nl', 'pt', 'ru', 'tr', 'id'];
 const answers = ['Yes', 'No', 'Don\'t know', 'Probably', 'Probably not'];
 
@@ -30,11 +31,11 @@ class Akinator {
 		this.session = text.match(/session: '(.+)'/)[1];
 		this.signature = text.match(/signature: '(.+)'/)[1];
 		this.answers = [
-			text.match(/<a class="li-game" href="#" id="a_yes" onclick="chooseAnswer\(0\)">(.+)<\/a>/)[1],
-			text.match(/<a class="li-game" href="#" id="a_no" onclick="chooseAnswer\(1\)">(.+)<\/a>/)[1],
-			text.match(/<a class="li-game" href="#" id="a_dont_know" onclick="chooseAnswer\(2\)">(.+)<\/a>/)[1],
-			text.match(/<a class="li-game" href="#" id="a_probably" onclick="chooseAnswer\(3\)">(.+)<\/a>/)[1],
-			text.match(/<a class="li-game" href="#" id="a_probaly_not" onclick="chooseAnswer\(4\)">(.+)<\/a>/)[1]
+			decodeHTML(text.match(/<a class="li-game" href="#" id="a_yes" onclick="chooseAnswer\(0\)">(.+)<\/a>/)[1]),
+			decodeHTML(text.match(/<a class="li-game" href="#" id="a_no" onclick="chooseAnswer\(1\)">(.+)<\/a>/)[1]),
+			decodeHTML(text.match(/<a class="li-game" href="#" id="a_dont_know" onclick="chooseAnswer\(2\)">(.+)<\/a>/)[1]),
+			decodeHTML(text.match(/<a class="li-game" href="#" id="a_probably" onclick="chooseAnswer\(3\)">(.+)<\/a>/)[1]),
+			decodeHTML(text.match(/<a class="li-game" href="#" id="a_probaly_not" onclick="chooseAnswer\(4\)">(.+)<\/a>/)[1])
 		];
 		return this;
 	}
