@@ -9,6 +9,7 @@ class Akinator {
 		this.childMode = Boolean(childMode);
 
 		this.currentStep = 0;
+		this.stepLastProposition = '';
 		this.progress = '0.00000';
 		this.answers = answers;
 		this.question = null;
@@ -40,7 +41,7 @@ class Akinator {
 				sid: '1',
 				cm: this.childMode,
 				answer,
-				step_last_proposition: '',
+				step_last_proposition: this.stepLastProposition,
 				session: this.session,
 				signature: this.signature
 			});
@@ -93,6 +94,7 @@ class Akinator {
 					signature: this.signature
 				});
 			this.guessed = null;
+			this.stepLastProposition = body.step;
 			this.progress = body.progression;
 			this.question = body.question;
 			return this;
