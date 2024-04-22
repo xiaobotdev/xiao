@@ -36,6 +36,7 @@ module.exports = class AkinatorCommand extends Command {
 		let ans = null;
 		let win = false;
 		let wentBack = false;
+		let guessedLastTurn = false;
 		let timesGuessed = 0;
 		const initialRow = new ActionRowBuilder().addComponents(
 			new ButtonBuilder().setCustomId('true').setLabel('Ready!').setStyle(ButtonStyle.Primary),
@@ -62,7 +63,7 @@ module.exports = class AkinatorCommand extends Command {
 				await aki.start();
 			} else if (wentBack) {
 				wentBack = false;
-			} else {
+			} else if (!guessedLastTurn) {
 				await aki.step(ans);
 			}
 			if (aki.guessed) {
@@ -100,6 +101,7 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				} else if (buttonPress.customId === 'false') {
 					await aki.guess(false, true);
+					guessedLastTurn = true;
 				}
 			} else {
 				const row = new ActionRowBuilder();
