@@ -63,7 +63,9 @@ module.exports = class AkinatorCommand extends Command {
 				await aki.start();
 			} else if (wentBack) {
 				wentBack = false;
-			} else if (!guessedLastTurn) {
+			} else if (guessedLastTurn) {
+				guessedLastTurn = false;
+			} else {
 				await aki.step(ans);
 			}
 			if (aki.guessed) {
