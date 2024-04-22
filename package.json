@@ -36,7 +36,6 @@
 		"@tensorflow-models/face-detection": "^1.0.2",
 		"@tensorflow/tfjs-node": "^4.17.0",
 		"@twemoji/parser": "^15.1.1",
-		"aki-api": "^6.0.9",
 		"bombsweeper.js": "^1.0.1",
 		"canvas": "^2.11.2",
 		"cheerio": "1.0.0-rc.12",
