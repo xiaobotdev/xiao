@@ -68,7 +68,10 @@ module.exports = class AkinatorCommand extends Command {
 			} else {
 				await aki.step(ans);
 			}
-			if (aki.guessed) {
+			if (!aki.question) {
+				win = false;
+				break;
+			} else if (aki.guessed) {
 				const guess = aki.guessed;
 				timesGuessed++;
 				const embed = new EmbedBuilder()

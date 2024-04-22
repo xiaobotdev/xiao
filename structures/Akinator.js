@@ -57,6 +57,7 @@ class Akinator {
 		this.currentStep++;
 		this.progress = body.progression;
 		this.question = body.question;
+		if (!this.question) this.akiWin = false;
 		return this;
 	}
 
