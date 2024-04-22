@@ -1,5 +1,5 @@
 const request = require('node-superfetch');
-const regions = ['en'];
+const regions = ['en', 'ar', 'cn', 'de', 'es', 'fr', 'il', 'it', 'jp', 'kr', 'nl', 'pt', 'ru', 'tr', 'id'];
 const answers = ['Yes', 'No', 'Don\'t know', 'Probably', 'Probably not'];
 
 class Akinator {
@@ -29,6 +29,13 @@ class Akinator {
 		this.question = text.match(/<p class="question-text" id="question-label">(.+)<\/p>/)[1];
 		this.session = text.match(/session: '(.+)'/)[1];
 		this.signature = text.match(/signature: '(.+)'/)[1];
+		this.answers = [
+			text.match(/<a class="li-game" href="#" id="a_yes" onclick="chooseAnswer\(0)">(.+)<\/a>/)[1],
+			text.match(/<a class="li-game" href="#" id="a_no" onclick="chooseAnswer\(1)">(.+)<\/a>/)[1],
+			text.match(/<a class="li-game" href="#" id="a_dont_know" onclick="chooseAnswer\(2)">(.+)<\/a>/)[1],
+			text.match(/<a class="li-game" href="#" id="a_probably" onclick="chooseAnswer\(3)">(.+)<\/a>/)[1],
+			text.match(/<a class="li-game" href="#" id="a_probaly_not" onclick="chooseAnswer\(4)">(.+)<\/a>/)[1]
+		];
 		return this;
 	}
 
