@@ -648,7 +648,6 @@ Total: 511
 * [@tensorflow-models/face-detection](https://www.npmjs.com/package/@tensorflow-models/face-detection)
 * [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
 * [@twemoji/parser](https://www.npmjs.com/package/@twemoji/parser)
-* [aki-api](https://www.npmjs.com/package/aki-api)
 * [bombsweeper.js](https://www.npmjs.com/package/bombsweeper.js)
 * [bufferutil](https://www.npmjs.com/package/bufferutil)
 * [canvas](https://www.npmjs.com/package/canvas)
@@ -1266,7 +1265,7 @@ Total: 511
    - [Spongebob Fanon](https://spongebob-new-fanon.fandom.com/wiki/SpongeBob_Fanon_Wiki) (Images)
    - [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc) (Spongeboytt1 Font)
 * **tweet:**
-   - [Twitter](https://twitter.com/) (Image, API)
+   - [Twitter](https://twitter.com/) (Image, Chirp Font, API)
    - [Google](https://www.google.com/) (Noto Font)
 * **undertale:**
    - [UNDERTALE](https://undertale.com/) (Original Game)
