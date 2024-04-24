@@ -75,7 +75,7 @@ module.exports = class EjectCommand extends Command {
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(100);
-		encoder.setQuality(200);
+		encoder.setQuality(10);
 		for (let i = 0; i < frameCount; i++) {
 			const frameID = `frame_${i.toString().padStart(2, '0')}.gif`;
 			const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'eject', frameID));

@@ -55,7 +55,7 @@ module.exports = class TriggeredCommand extends Command {
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(50);
-		encoder.setQuality(200);
+		encoder.setQuality(10);
 		for (let i = 0; i < 4; i++) {
 			drawImageWithTint(ctx, avatar, 'red', coord1[i], coord2[i], 300, 300);
 			ctx.drawImage(base, 0, 218, 256, 38);
