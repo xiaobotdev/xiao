@@ -60,10 +60,10 @@ module.exports = class MatrixCommand extends Command {
 		for (let i = 0; i < frameCount; i++) {
 			const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'matrix', `frame-${i}.gif`));
 			const ratio = frame.width / frame.height;
-			const height = Math.round(avatar.width / ratio);
+			const width = Math.round(avatar.height / ratio);
 			ctx.drawImage(avatar, 0, 0);
 			distort(ctx, 20, 0, 0, avatar.width, avatar.height, 5);
-			ctx.drawImage(frame, 0, avatar.height - height, avatar.width, height);
+			ctx.drawImage(frame, avatar.width - width, 0, width, avatar.height);
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
