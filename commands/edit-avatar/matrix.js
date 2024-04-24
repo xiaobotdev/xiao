@@ -5,7 +5,7 @@ const GIFEncoder = require('gifencoder');
 const request = require('node-superfetch');
 const path = require('path');
 const { streamToArray, reactIfAble } = require('../../util/Util');
-const { distort } = require('../../util/Canvas');
+const { distort, drawImageWithTint } = require('../../util/Canvas');
 const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
 const frameCount = 249;
 
@@ -58,10 +58,10 @@ module.exports = class MatrixCommand extends Command {
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(0);
-		encoder.setQuality(100);
+		encoder.setQuality(10);
 		const distortedCanvas = createCanvas(avatar.width, avatar.height);
 		const distortedCtx = distortedCanvas.getContext('2d');
-		distortedCtx.drawImage(avatar, 0, 0);
+		drawImageWithTint(distortedCtx, avatar, 'black', 0, 0, avatar.width, avatar.height);
 		distort(distortedCtx, 20, 0, 0, avatar.width, avatar.height, 5);
 		for (let i = 0; i < frameCount; i++) {
 			const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'matrix', `frame-${i}.gif`));
