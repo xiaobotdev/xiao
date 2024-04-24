@@ -7,6 +7,7 @@ const path = require('path');
 const { streamToArray } = require('../../util/Util');
 const { drawImageWithTint } = require('../../util/Canvas');
 const frameCount = 46;
+const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class FireCommand extends Command {
 	constructor(client) {
@@ -41,6 +42,7 @@ module.exports = class FireCommand extends Command {
 
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 256 });
+		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
 		const encoder = new GIFEncoder(avatar.width, avatar.height);
@@ -61,6 +63,7 @@ module.exports = class FireCommand extends Command {
 		}
 		encoder.finish();
 		const buffer = await streamToArray(stream);
+		reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'fire.gif' }] });
 	}
 };
