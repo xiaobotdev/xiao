@@ -47,7 +47,7 @@ module.exports = class MatrixCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 256 });
 		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
@@ -63,7 +63,7 @@ module.exports = class MatrixCommand extends Command {
 		const distortedCtx = distortedCanvas.getContext('2d');
 		distortedCtx.drawImage(avatar, 0, 0);
 		distort(distortedCtx, 20, 0, 0, avatar.width, avatar.height, 5);
-		for (let i = 0; i < frameCount; i += 2) {
+		for (let i = 0; i < frameCount; i++) {
 			const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'matrix', `frame-${i}.gif`));
 			const ratio = frame.width / frame.height;
 			const width = Math.round(avatar.height / ratio);

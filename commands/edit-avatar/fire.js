@@ -40,7 +40,7 @@ module.exports = class FireCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 256 });
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
 		const encoder = new GIFEncoder(avatar.width, avatar.height);
