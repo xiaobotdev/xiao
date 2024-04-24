@@ -50,7 +50,7 @@ module.exports = class FireCommand extends Command {
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(0);
-		encoder.setQuality(100);
+		encoder.setQuality(10);
 		for (let i = 0; i < frameCount; i++) {
 			const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'fire', `frame-${i}.gif`));
 			const ratio = frame.width / frame.height;
