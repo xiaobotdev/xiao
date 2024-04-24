@@ -58,12 +58,12 @@ module.exports = class MatrixCommand extends Command {
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(0);
-		encoder.setQuality(200);
+		encoder.setQuality(100);
 		const distortedCanvas = createCanvas(avatar.width, avatar.height);
 		const distortedCtx = distortedCanvas.getContext('2d');
 		distortedCtx.drawImage(avatar, 0, 0);
 		distort(distortedCtx, 20, 0, 0, avatar.width, avatar.height, 5);
-		for (let i = 0; i < frameCount; i++) {
+		for (let i = 0; i < frameCount; i += 2) {
 			const frame = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'matrix', `frame-${i}.gif`));
 			const ratio = frame.width / frame.height;
 			const width = Math.round(avatar.height / ratio);
