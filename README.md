@@ -71,7 +71,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Start Xiao up!
 
 ## Commands
-Total: 511
+Total: 512
 
 ### Utility:
 
@@ -471,6 +471,7 @@ Total: 511
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **hearts:** Draws hearts around a user's avatar.
 * **i-have-the-power:** Draws a user's avatar over He-Man's face.
+* **matrix:** Draws Matrix rain over a user's avatar.
 * **rip:** Draws a user's avatar over a gravestone.
 * **status-button:** Creates a Discord status button from c99.nl.
 * **steam-now-playing:** Draws a user's avatar over a Steam "now playing" notification.
@@ -1306,6 +1307,9 @@ Total: 511
    - [Jessica Knable](https://picsart.com/u/jessicaknable) (Image)
 * **i-have-the-power:**
    - [Mattel](https://www.mattel.com/en-us) (Image, Original "He-Man" Show)
+* **matrix:**
+   - [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) (Images)
+   - [Warner Bros.](https://www.warnerbros.com/) ("The Matrix" Original Movie)
 * **rip:**
    - [vician](https://www.123rf.com/profile_vician) (Image)
    - [Iconian Fonts](https://www.fontspace.com/iconian-fonts) (Coffin Stone Font)
