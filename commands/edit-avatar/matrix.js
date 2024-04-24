@@ -6,6 +6,7 @@ const request = require('node-superfetch');
 const path = require('path');
 const { streamToArray } = require('../../util/Util');
 const { distort } = require('../../util/Canvas');
+const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
 const frameCount = 249;
 
 module.exports = class MatrixCommand extends Command {
@@ -47,6 +48,7 @@ module.exports = class MatrixCommand extends Command {
 
 	async run(msg, { user }) {
 		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
+		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
 		const encoder = new GIFEncoder(avatar.width, avatar.height);
@@ -68,6 +70,7 @@ module.exports = class MatrixCommand extends Command {
 		}
 		encoder.finish();
 		const buffer = await streamToArray(stream);
+		reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'matrix.gif' }] });
 	}
 };
