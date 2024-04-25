@@ -15,7 +15,7 @@ module.exports = class CurrencyCommand extends Command {
 					name: 'Fawaz Ahmed',
 					url: 'https://github.com/fawazahmed0',
 					reason: 'API',
-					reasonURL: 'https://github.com/fawazahmed0/currency-api'
+					reasonURL: 'https://github.com/fawazahmed0/exchange-api'
 				}
 			],
 			args: [
@@ -54,7 +54,7 @@ module.exports = class CurrencyCommand extends Command {
 
 	async fetchCurrencies() {
 		const { body } = await request
-			.get('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json');
+			.get('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json');
 		this.currencies = body;
 		setTimeout(() => { this.currencies = null; }, 1.8e+6);
 		return this.currencies;
@@ -62,7 +62,7 @@ module.exports = class CurrencyCommand extends Command {
 
 	async fetchRate(base, target) {
 		const { body } = await request
-			.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${base}/${target}.json`);
+			.get(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${base}/${target}.json`);
 		return body[target];
 	}
 };
