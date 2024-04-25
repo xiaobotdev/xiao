@@ -32,7 +32,7 @@ module.exports = class PetCommand extends Command {
 	async run(msg, { image }) {
 		const { body } = await request.get(image);
 		const data = await loadImage(body);
-		const encoder = new GIFEncoder(112, 112);
+		const encoder = new GIFEncoder(112, 112, 'octree', true);
 		const canvas = createCanvas(112, 112);
 		const ctx = canvas.getContext('2d');
 		encoder.start();
