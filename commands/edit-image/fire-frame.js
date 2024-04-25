@@ -9,7 +9,7 @@ module.exports = class FireFrameCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'fire-frame',
-			aliases: ['hell-frame', 'burn-frame', 'flames-frame'],
+			aliases: ['hell-frame', 'burn-frame', 'flames-frame', 'fire', 'hell', 'burn', 'flames'],
 			group: 'edit-image',
 			memberName: 'fire-frame',
 			description: 'Draws a fiery border over an image or a user\'s avatar.',
