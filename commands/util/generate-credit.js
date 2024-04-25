@@ -25,9 +25,10 @@ module.exports = class GenerateCreditCommand extends Command {
 					.sort((a, b) => a.name.localeCompare(b.name));
 				if (!commands.size) return null;
 				return commands.map(c => {
+					const reason = cred.reasonURL ? `[${cred.reason}](${cred.reasonURL})` : cred.reason;
 					const credits = c.credit
 						.filter(cred => cred.name !== 'Dragon Fire')
-						.map(cred => `[${cred.name}](${cred.url}) (${cred.reason})`);
+						.map(cred => `[${cred.name}](${cred.url}) (${reason})`);
 					return `* **${c.name}:**\n   - ${credits.join('\n   - ')}`;
 				}).join('\n');
 			})
