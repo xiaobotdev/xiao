@@ -71,7 +71,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Start Xiao up!
 
 ## Commands
-Total: 512
+Total: 510
 
 ### Utility:
 
@@ -466,12 +466,10 @@ Total: 512
 
 * **avatar-fusion:** Draws a a user's avatar over a user's avatar.
 * **eject:** Ejects a user.
-* **fire:** Burns a user's avatar.
 * **hat:** Draws a hat over a user's avatar.
 * **he-lives-in-you:** Draws a user's avatar over Simba from The Lion King's reflection.
 * **hearts:** Draws hearts around a user's avatar.
 * **i-have-the-power:** Draws a user's avatar over He-Man's face.
-* **matrix:** Draws Matrix rain over a user's avatar.
 * **rip:** Draws a user's avatar over a gravestone.
 * **status-button:** Creates a Discord status button from c99.nl.
 * **steam-now-playing:** Draws a user's avatar over a Steam "now playing" notification.
@@ -1281,8 +1279,6 @@ Total: 512
    - [Wisq](https://www.youtube.com/channel/UCrOS0iXaZgW45AdbEznGXLA) ([Images](https://www.youtube.com/watch?v=yx4Hp8TBVtQ))
    - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
    - [InnerSloth](https://innersloth.com/index.php) ([Original "Among Us" Game](https://innersloth.com/gameAmongUs.php))
-* **fire:**
-   - [LowGif](http://www.lowgif.com/) ([Images](http://www.lowgif.com/43360ebce9150f23.html))
 * **hat:**
    - [Go Nintendo](https://gonintendo.com/) ([Ash Hat Image](https://gonintendo.com/stories/306292))
    - [freeiconspng.com](https://www.freeiconspng.com/) ([Birthday Hat Image](https://www.freeiconspng.com/img/43917))
@@ -1307,9 +1303,6 @@ Total: 512
    - [Jessica Knable](https://picsart.com/u/jessicaknable) ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
 * **i-have-the-power:**
    - [Mattel](https://www.mattel.com/en-us) (Image, Original "He-Man" Show)
-* **matrix:**
-   - [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) ([Images](https://en.wikipedia.org/wiki/File:Digital_rain_animation_small_letters_shine.gif))
-   - [Warner Bros.](https://www.warnerbros.com/) (["The Matrix" Original Movie](https://www.whatisthematrix.com/))
 * **rip:**
    - [vician](https://www.123rf.com/profile_vician) ([Image](https://www.123rf.com/profile_vician?mediapopup=13181623))
    - [Iconian Fonts](https://www.fontspace.com/iconian-fonts) ([Coffin Stone Font](https://www.fontspace.com/coffin-stone-font-f40998))
