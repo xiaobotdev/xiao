@@ -45,7 +45,7 @@ module.exports = class FireCommand extends Command {
 		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
-		const encoder = new GIFEncoder(avatar.width, avatar.height);
+		const encoder = new GIFEncoder(avatar.width, avatar.height, 'octree', true);
 		const canvas = createCanvas(avatar.width, avatar.height);
 		const ctx = canvas.getContext('2d');
 		encoder.start();

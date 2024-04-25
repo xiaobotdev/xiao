@@ -63,7 +63,7 @@ module.exports = class EjectCommand extends Command {
 			imposter = bool()(random);
 		}
 		const text = `${user.username} was${imposter ? ' ' : ' not '}An Imposter.`;
-		const encoder = new GIFEncoder(320, 180);
+		const encoder = new GIFEncoder(320, 180, 'octree', true);
 		const canvas = createCanvas(320, 180);
 		const ctx = canvas.getContext('2d');
 		ctx.textAlign = 'center';
