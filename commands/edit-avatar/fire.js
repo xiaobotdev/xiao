@@ -1,10 +1,10 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gifencoder');
+const GIFEncoder = require('gif-encoder-2');
 const request = require('node-superfetch');
 const path = require('path');
-const { streamToArray, reactIfAble } = require('../../util/Util');
+const { reactIfAble } = require('../../util/Util');
 const { drawImageWithTint } = require('../../util/Canvas');
 const frameCount = 46;
 const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
@@ -48,7 +48,6 @@ module.exports = class FireCommand extends Command {
 		const encoder = new GIFEncoder(avatar.width, avatar.height);
 		const canvas = createCanvas(avatar.width, avatar.height);
 		const ctx = canvas.getContext('2d');
-		const stream = encoder.createReadStream();
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(0);
@@ -62,8 +61,8 @@ module.exports = class FireCommand extends Command {
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
-		const buffer = await streamToArray(stream);
+		const attachment = encoder.out.getData();
 		reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
-		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'fire.gif' }] });
+		return msg.say({ files: [{ attachment, name: 'fire.gif' }] });
 	}
 };
