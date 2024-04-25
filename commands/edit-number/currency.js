@@ -63,6 +63,6 @@ module.exports = class CurrencyCommand extends Command {
 	async fetchRate(base, target) {
 		const { body } = await request
 			.get(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${base}.json`);
-		return body[target];
+		return body[base][target];
 	}
 };
