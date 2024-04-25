@@ -1,10 +1,9 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gifencoder');
+const GIFEncoder = require('gif-encoder-2');
 const request = require('node-superfetch');
 const path = require('path');
-const { streamToArray } = require('../../util/Util');
 const { drawImageWithTint } = require('../../util/Canvas');
 const coord1 = [-25, -33, -42, -14];
 const coord2 = [-25, -13, -34, -10];
@@ -51,7 +50,6 @@ module.exports = class TriggeredCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = 'white';
 		ctx.fillRect(0, 0, base.width, base.width);
-		const stream = encoder.createReadStream();
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(50);
@@ -62,7 +60,7 @@ module.exports = class TriggeredCommand extends Command {
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
-		const buffer = await streamToArray(stream);
-		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'triggered.gif' }] });
+		const attachment = encoder.out.getData();
+		return msg.say({ files: [{ attachment, name: 'triggered.gif' }] });
 	}
 };

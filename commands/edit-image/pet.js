@@ -1,10 +1,9 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gifencoder');
+const GIFEncoder = require('gif-encoder-2');
 const request = require('node-superfetch');
 const path = require('path');
-const { streamToArray } = require('../../util/Util');
 const { centerImagePart } = require('../../util/Canvas');
 const frameCount = 10;
 
@@ -36,7 +35,6 @@ module.exports = class PetCommand extends Command {
 		const encoder = new GIFEncoder(112, 112);
 		const canvas = createCanvas(112, 112);
 		const ctx = canvas.getContext('2d');
-		const stream = encoder.createReadStream();
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(20);
@@ -55,7 +53,7 @@ module.exports = class PetCommand extends Command {
 			else squish += 4;
 		}
 		encoder.finish();
-		const buffer = await streamToArray(stream);
-		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'pet.gif' }] });
+		const attachment = encoder.out.getData();
+		return msg.say({ files: [{ attachment, name: 'pet.gif' }] });
 	}
 };

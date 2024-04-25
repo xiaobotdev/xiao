@@ -1,9 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gifencoder');
+const GIFEncoder = require('gif-encoder-2');
 const request = require('node-superfetch');
-const { streamToArray } = require('../../util/Util');
 
 module.exports = class ShakeCommand extends Command {
 	constructor(client) {
@@ -42,7 +41,6 @@ module.exports = class ShakeCommand extends Command {
 		const encoder = new GIFEncoder(512, height);
 		const canvas = createCanvas(512, height);
 		const ctx = canvas.getContext('2d');
-		const stream = encoder.createReadStream();
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(20);
@@ -54,8 +52,8 @@ module.exports = class ShakeCommand extends Command {
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
-		const buffer = await streamToArray(stream);
-		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'shake.gif' }] });
+		const attachment = encoder.out.getData();
+		return msg.say({ files: [{ attachment, name: 'shake.gif' }] });
 	}
 
 	generateFrames(amount) {

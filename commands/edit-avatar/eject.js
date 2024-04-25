@@ -1,11 +1,10 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gifencoder');
+const GIFEncoder = require('gif-encoder-2');
 const { MersenneTwister19937, bool } = require('random-js');
 const request = require('node-superfetch');
 const path = require('path');
-const { streamToArray } = require('../../util/Util');
 const frameCount = 52;
 
 module.exports = class EjectCommand extends Command {
@@ -71,7 +70,6 @@ module.exports = class EjectCommand extends Command {
 		ctx.textBaseline = 'middle';
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
-		const stream = encoder.createReadStream();
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(100);
@@ -107,7 +105,7 @@ module.exports = class EjectCommand extends Command {
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
-		const buffer = await streamToArray(stream);
-		return msg.say({ files: [{ attachment: Buffer.concat(buffer), name: 'eject.gif' }] });
+		const attachment = encoder.out.getData();
+		return msg.say({ files: [{ attachment, name: 'eject.gif' }] });
 	}
 };
