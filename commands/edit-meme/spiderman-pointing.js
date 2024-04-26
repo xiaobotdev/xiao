@@ -60,7 +60,7 @@ module.exports = class SpidermanPointingCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, first, 290);
+		const lines = wrapText(ctx, first, 290);
 		const topMost = 189 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			ctx.strokeStyle = 'black';
@@ -75,7 +75,7 @@ module.exports = class SpidermanPointingCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const lines2 = await wrapText(ctx, second, 290);
+		const lines2 = wrapText(ctx, second, 290);
 		const topMost2 = 190 - (((fontSize * lines2.length) / 2) + ((10 * (lines2.length - 1)) / 2));
 		for (let i = 0; i < lines2.length; i++) {
 			ctx.strokeStyle = 'black';

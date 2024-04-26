@@ -54,7 +54,7 @@ module.exports = class CautionCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Bold.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, text.toUpperCase(), 895);
+		const lines = wrapText(ctx, text.toUpperCase(), 895);
 		const topMost = 470 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);

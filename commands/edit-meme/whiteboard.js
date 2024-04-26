@@ -58,7 +58,7 @@ module.exports = class WhiteboardCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const initialLines = await wrapText(ctx, initial, 405);
+		const initialLines = wrapText(ctx, initial, 405);
 		const initialTopMost = 111 - (((fontSize * initialLines.length) / 2) + ((10 * (initialLines.length - 1)) / 2));
 		for (let i = 0; i < initialLines.length; i++) {
 			const height = initialTopMost + ((fontSize + 10) * i);
@@ -70,7 +70,7 @@ module.exports = class WhiteboardCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const resolveLines = await wrapText(ctx, resolved, 367);
+		const resolveLines = wrapText(ctx, resolved, 367);
 		const resolveTopMost = 500 - (((fontSize * resolveLines.length) / 2) + ((10 * (resolveLines.length - 1)) / 2));
 		for (let i = 0; i < resolveLines.length; i++) {
 			const height = resolveTopMost + ((fontSize + 10) * i);

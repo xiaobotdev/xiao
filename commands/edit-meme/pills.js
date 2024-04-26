@@ -48,7 +48,7 @@ module.exports = class PillsCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, text, 280);
+		const lines = wrapText(ctx, text, 280);
 		const topMost = 455 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			ctx.strokeStyle = 'white';

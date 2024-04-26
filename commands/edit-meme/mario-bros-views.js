@@ -67,7 +67,7 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const marioLines = await wrapText(ctx, mario, 200);
+		const marioLines = wrapText(ctx, mario, 200);
 		const marioTopMost = 450 - (((fontSize * marioLines.length) / 2) + ((20 * (marioLines.length - 1)) / 2));
 		for (let i = 0; i < marioLines.length; i++) {
 			ctx.strokeStyle = 'black';
@@ -82,7 +82,7 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const luigiLines = await wrapText(ctx, luigi, 200);
+		const luigiLines = wrapText(ctx, luigi, 200);
 		const luigiTopMost = 450 - (((fontSize * luigiLines.length) / 2) + ((20 * (luigiLines.length - 1)) / 2));
 		for (let i = 0; i < luigiLines.length; i++) {
 			ctx.strokeStyle = 'black';

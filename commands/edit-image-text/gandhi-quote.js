@@ -49,7 +49,7 @@ module.exports = class GandhiQuoteCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('lmroman10-italic.otf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, quote, 270);
+		const lines = wrapText(ctx, quote, 270);
 		const topMost = 180 - (((fontSize * lines.length) / 2) + ((20 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 20) * i);

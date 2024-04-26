@@ -59,7 +59,7 @@ module.exports = class DrakepostingCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const nahLines = await wrapText(ctx, nah, 462);
+		const nahLines = wrapText(ctx, nah, 462);
 		const nahTopMost = 256 - (((fontSize * nahLines.length) / 2) + ((10 * (nahLines.length - 1)) / 2));
 		for (let i = 0; i < nahLines.length; i++) {
 			const height = nahTopMost + ((fontSize + 10) * i);
@@ -71,7 +71,7 @@ module.exports = class DrakepostingCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const yeahLines = await wrapText(ctx, yeah, 462);
+		const yeahLines = wrapText(ctx, yeah, 462);
 		const yeahTopMost = 768 - (((fontSize * yeahLines.length) / 2) + ((10 * (yeahLines.length - 1)) / 2));
 		for (let i = 0; i < yeahLines.length; i++) {
 			const height = yeahTopMost + ((fontSize + 10) * i);

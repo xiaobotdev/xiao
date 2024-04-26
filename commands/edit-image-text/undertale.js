@@ -112,7 +112,7 @@ module.exports = class UndertaleCommand extends Command {
 		ctx.font = this.client.fonts.get(font).toCanvasString(32);
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
-		const text = await wrapText(ctx, quote, 385);
+		const text = wrapText(ctx, quote, 385);
 		const lines = text.length > 3 ? 3 : text.length;
 		for (let i = 0; i < lines; i++) {
 			ctx.fillText(text[i], 174, 22 + (22 * i) + (22 * i) + (space * i));

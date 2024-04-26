@@ -72,7 +72,7 @@ module.exports = class GruPlanCommand extends Command {
 				fontSize--;
 				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
-			const lines = await wrapText(ctx, step, 252);
+			const lines = wrapText(ctx, step, 252);
 			ctx.fillText(lines.join('\n'), x, y);
 			i++;
 		}

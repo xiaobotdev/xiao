@@ -69,7 +69,7 @@ module.exports = class TweetCommand extends Command {
 		const canvas = createCanvas(base1.width, base1.height + base2.height);
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
-		const lines = await wrapText(ctx, text, 710);
+		const lines = wrapText(ctx, text, 710);
 		const linesLen = (23 * lines.length) + (7 * (lines.length - 1)) + 15;
 		canvas.height += linesLen;
 		let imageHeight = 0;
@@ -194,7 +194,7 @@ module.exports = class TweetCommand extends Command {
 	}
 
 	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
-		const wrapped = await wrapText(ctx, text, maxLineLen);
+		const wrapped = wrapText(ctx, text, maxLineLen);
 		const emoji = text.match(emojiRegex());
 		if (!emoji) {
 			ctx.fillText(wrapped.join('\n'), x, y);

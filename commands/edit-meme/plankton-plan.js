@@ -72,7 +72,7 @@ module.exports = class PlanktonPlanCommand extends Command {
 				fontSize--;
 				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
-			const lines = await wrapText(ctx, step, 155);
+			const lines = wrapText(ctx, step, 155);
 			ctx.fillText(lines.join('\n'), x, y);
 			i++;
 		}

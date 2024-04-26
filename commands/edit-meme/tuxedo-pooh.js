@@ -59,7 +59,7 @@ module.exports = class TuxedoPoohCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const normalLines = await wrapText(ctx, normal, 440);
+		const normalLines = wrapText(ctx, normal, 440);
 		const normalTopMost = 145 - (((fontSize * normalLines.length) / 2) + ((10 * (normalLines.length - 1)) / 2));
 		for (let i = 0; i < normalLines.length; i++) {
 			const height = normalTopMost + ((fontSize + 10) * i);
@@ -71,7 +71,7 @@ module.exports = class TuxedoPoohCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const tuxedoLines = await wrapText(ctx, tuxedo, 440);
+		const tuxedoLines = wrapText(ctx, tuxedo, 440);
 		const tuxedoTopMost = 436 - (((fontSize * tuxedoLines.length) / 2) + ((10 * (tuxedoLines.length - 1)) / 2));
 		for (let i = 0; i < tuxedoLines.length; i++) {
 			const height = tuxedoTopMost + ((fontSize + 10) * i);
