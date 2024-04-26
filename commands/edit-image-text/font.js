@@ -27,12 +27,12 @@ module.exports = class FontCommand extends Command {
 		});
 	}
 
-	async run(msg, { font, text }) {
-		const image = await this.generateImage(font, text);
+	run(msg, { font, text }) {
+		const image = this.generateImage(font, text);
 		return msg.say({ files: [{ attachment: image, name: `${font.filenameNoExt}.png` }] });
 	}
 
-	async generateImage(font, text) {
+	generateImage(font, text) {
 		const canvasPre = createCanvas(1, 1);
 		const ctxPre = canvasPre.getContext('2d');
 		ctxPre.font = this.client.fonts.get(font.filename).toCanvasString(50);

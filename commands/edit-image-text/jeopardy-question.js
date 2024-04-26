@@ -39,7 +39,7 @@ module.exports = class JeopardyQuestionCommand extends Command {
 		});
 	}
 
-	async run(msg, { text }) {
+	run(msg, { text }) {
 		const canvas = createCanvas(1280, 720);
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = '#030e78';
