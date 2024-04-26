@@ -40,7 +40,7 @@ module.exports = class JeopardyCommand extends Command {
 
 	async run(msg) {
 		const question = await this.fetchQuestion();
-		const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
+		const clueCard = this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
 		const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
 		let playing = false;
 		if (msg.guild && connection && connection.canPlay) {
@@ -70,7 +70,7 @@ module.exports = class JeopardyCommand extends Command {
 		return body;
 	}
 
-	async generateClueCard(question) {
+	generateClueCard(question) {
 		const canvas = createCanvas(1280, 720);
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = '#030e78';
