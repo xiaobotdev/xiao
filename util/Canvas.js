@@ -235,7 +235,7 @@ module.exports = class CanvasUtil {
 					}
 					if (currentChunk !== '') {
 						chunks.push(currentChunk);
-						}
+					}
 					for (let k = 0; k < chunks.length; k++) {
 						if (ctx.measureText(`${currentLine} ${chunks[k]}`).width > maxWidth) {
 							lines.push(currentLine.trim());
