@@ -246,6 +246,7 @@ module.exports = class TweetCommand extends Command {
 			for (let i = 0; i < words.length; i++) {
 				const word = words[i];
 				if (!word.startsWith('#') && !word.startsWith('@')) continue;
+				if (word.match(emojiRegex())) continue;
 				let preWords = words.slice(0, i).join(' ');
 				if (i !== 0) preWords += ' ';
 				const emoji = preWords.match(emojiRegex());
