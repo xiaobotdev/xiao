@@ -129,7 +129,7 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillText(`@${userData.screenName}`, 80, 113);
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
-		await this.fillTextWithEmoji(ctx, metrics, text, 17, 160, 710, 26);
+		await this.fillTextWithEmoji(ctx, text, 17, 160, 710, 26);
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		const time = moment().format('h:mm A ∙ MMM D, YYYY ∙');
@@ -194,9 +194,10 @@ module.exports = class TweetCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 	}
 
-	async fillTextWithEmoji(ctx, metrics, text, x, y, maxLineLen, emojiSize) {
+	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
 		const wrapped = wrapText(ctx, text, maxLineLen, true);
 		const emoji = text.match(emojiRegex());
+		const metrics = ctx.measureText('W');
 		if (!emoji) {
 			ctx.fillText(wrapped.join('\n'), x, y);
 			return ctx;
