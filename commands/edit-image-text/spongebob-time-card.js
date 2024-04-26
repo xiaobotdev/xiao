@@ -57,14 +57,15 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
-		const lines = wrapText(ctx, text.toUpperCase(), 1800);
 		let fontSize = 345;
 		ctx.font = this.client.fonts.get('Spongeboytt1.ttf').toCanvasString(fontSize);
+		let lines = wrapText(ctx, text.toUpperCase(), 1800);
 		let metrics = ctx.measureText(lines.join('\n'));
 		while (metrics.width > 1800 || (metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent) > 1000) {
 			fontSize -= 10;
 			ctx.font = this.client.fonts.get('Spongeboytt1.ttf').toCanvasString(fontSize);
 			metrics = ctx.measureText(lines.join('\n'));
+			lines = wrapText(ctx, text.toUpperCase(), 1800);
 		}
 		const topMost = (canvas.height / 2) - (((fontSize * lines.length) / 2) + ((60 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
