@@ -194,8 +194,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.clip();
 		}
 		ctx.drawImage(avatar, 17, 84, 52, 52);
-		const errMsg = userData.err ? `_An error occurred fetching profile: \`${userData.err.message}\`_` : undefined;
-		return msg.say(errMsg, { files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 	}
 
 	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
@@ -247,8 +246,7 @@ module.exports = class TweetCommand extends Command {
 				avatar: avatarRes.body,
 				avatarShape: data.user.profileImageShape,
 				checkType,
-				followers: body.followersCount,
-				err: undefined
+				followers: body.followersCount
 			};
 		} catch (err) {
 			const defaultPfp = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'default.png'));
