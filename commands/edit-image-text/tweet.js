@@ -118,12 +118,17 @@ module.exports = class TweetCommand extends Command {
 		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
 		ctx.fillStyle = 'white';
 		ctx.fillText(userData.name, 80, 88);
+		const nameLen = ctx.measureText(userData.name).width;
 		if (userData.checkType) {
 			const verified = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', `${userData.checkType}.png`)
 			);
-			const nameLen = ctx.measureText(userData.name).width;
 			ctx.drawImage(verified, 80 + nameLen + 3, 90, 20, 20);
+		}
+		if (userData.label) {
+			const labelData = await request.get(userData.label);
+			const labelImg = await loadImage(labelData.body);
+			ctx.drawImage(labelImg, 80 + nameLen + 3 + 20 + 3, 90, 20, 20);
 		}
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(17);
 		ctx.fillStyle = '#71767b';
@@ -240,11 +245,13 @@ module.exports = class TweetCommand extends Command {
 			if (body.verifiedType === 'Government') checkType = 'gov';
 			else if (body.verifiedType === 'Business') checkType = 'business';
 			else if (data.user.isBlueVerified) checkType = 'blue';
+			const label = data.user.affiliatesHighlightedLabel.label?.badge?.url;
 			return {
 				screenName: body.screenName,
 				name: body.name,
 				avatar: avatarRes.body,
 				avatarShape: data.user.profileImageShape,
+				label,
 				checkType,
 				followers: body.followersCount
 			};
@@ -256,6 +263,7 @@ module.exports = class TweetCommand extends Command {
 				avatar: defaultPfp,
 				avatarShape: 'Circle',
 				checkType: null,
+				label: null,
 				followers: 5,
 				err
 			};
