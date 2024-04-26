@@ -44,7 +44,7 @@ module.exports = class ShakeCommand extends Command {
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(20);
-		encoder.setQuality(10);
+		encoder.setQuality(20);
 		const frames = this.generateFrames(amount);
 		for (const { x, y } of frames) {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);

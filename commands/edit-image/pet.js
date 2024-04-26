@@ -38,7 +38,7 @@ module.exports = class PetCommand extends Command {
 		encoder.start();
 		encoder.setRepeat(0);
 		encoder.setDelay(20);
-		encoder.setQuality(10);
+		encoder.setQuality(20);
 		encoder.setTransparent('#000000');
 		let squish = 0;
 		for (let i = 0; i < frameCount; i++) {
