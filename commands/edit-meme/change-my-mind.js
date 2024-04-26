@@ -54,7 +54,7 @@ module.exports = class ChangeMyMindCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, text, 337);
+		const lines = wrapText(ctx, text, 337);
 		ctx.fillText(lines.join('\n'), 142, 430, 337);
 		ctx.rotate(24 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'change-my-mind.png' }] });

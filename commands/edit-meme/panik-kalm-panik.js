@@ -59,7 +59,7 @@ module.exports = class PanikKalmPanikCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const panikLines = await wrapText(ctx, panik, 284);
+		const panikLines = wrapText(ctx, panik, 284);
 		const panikTopMost = 130 - (((fontSize * panikLines.length) / 2) + ((10 * (panikLines.length - 1)) / 2));
 		for (let i = 0; i < panikLines.length; i++) {
 			const height = panikTopMost + ((fontSize + 10) * i);
@@ -71,7 +71,7 @@ module.exports = class PanikKalmPanikCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const kalmLines = await wrapText(ctx, kalm, 284);
+		const kalmLines = wrapText(ctx, kalm, 284);
 		const kalmTopMost = 430 - (((fontSize * kalmLines.length) / 2) + ((10 * (kalmLines.length - 1)) / 2));
 		for (let i = 0; i < kalmLines.length; i++) {
 			const height = kalmTopMost + ((fontSize + 10) * i);
@@ -83,7 +83,7 @@ module.exports = class PanikKalmPanikCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const panik2Lines = await wrapText(ctx, panik2, 284);
+		const panik2Lines = wrapText(ctx, panik2, 284);
 		const panik2TopMost = 730 - (((fontSize * panik2Lines.length) / 2) + ((10 * (panik2Lines.length - 1)) / 2));
 		for (let i = 0; i < panik2Lines.length; i++) {
 			const height = panik2TopMost + ((fontSize + 10) * i);

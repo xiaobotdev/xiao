@@ -59,7 +59,7 @@ module.exports = class TwoButtonsCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const firstLines = await wrapText(ctx, first, 183);
+		const firstLines = wrapText(ctx, first, 183);
 		let lineOffset = 0;
 		for (let i = 0; i < firstLines.length; i++) {
 			ctx.fillText(firstLines[i], 25 + lineOffset, 116 + (fontSize * i) + (10 * i), 183);
@@ -71,7 +71,7 @@ module.exports = class TwoButtonsCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const secondLines = await wrapText(ctx, second, 118);
+		const secondLines = wrapText(ctx, second, 118);
 		lineOffset = 0;
 		for (let i = 0; i < secondLines.length; i++) {
 			ctx.fillText(secondLines[i], 254 + lineOffset, 130 + (fontSize * i) + (10 * i), 118);

@@ -68,10 +68,10 @@ module.exports = class DearLiberalsCommand extends Command {
 		ctx.rotate(-12.30 * (Math.PI / 180));
 		ctx.fillStyle = '#002046';
 		ctx.font = this.client.fonts.get('Oswald-SemiBold.ttf').toCanvasString(27);
-		const blueLines = await wrapText(ctx, blueText, 270);
+		const blueLines = wrapText(ctx, blueText, 270);
 		ctx.fillText(blueLines.join('\n'), 207, 90);
 		ctx.fillStyle = '#c31a41';
-		const redLines = await wrapText(ctx, redText, 165);
+		const redLines = wrapText(ctx, redText, 165);
 		ctx.fillText(redLines.join('\n'), 326, 236);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'dear-liberals.png' }] });
 	}

@@ -138,7 +138,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 		}
 		const font = monsterType === 'normal' ? 'Stone Serif LT Italic.ttf' : 'Matrix Book.ttf';
 		ctx.font = this.client.fonts.get(font).toCanvasString(27);
-		const wrappedEffect = await wrapText(ctx, effect, 690);
+		const wrappedEffect = wrapText(ctx, effect, 690);
 		const trimmed = wrappedEffect.slice(0, type === 'monster' ? 4 : 6);
 		ctx.fillText(trimmed.join('\n'), 63, 933 - (type === 'monster' ? 0 : 34));
 		ctx.font = this.client.fonts.get('Stone Serif.ttf').toCanvasString(22);

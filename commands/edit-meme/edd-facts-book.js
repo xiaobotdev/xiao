@@ -54,7 +54,7 @@ module.exports = class EddFactsBookCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, fact, 183);
+		const lines = wrapText(ctx, fact, 183);
 		ctx.fillText(lines.join('\n'), 119, 306, 183);
 		ctx.rotate(-15 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'edd-facts-book.png' }] });

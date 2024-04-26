@@ -54,7 +54,7 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, text, 334);
+		const lines = wrapText(ctx, text, 334);
 		const topMost = 240 - (((fontSize * lines.length) / 2) + ((10 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 10) * i);
@@ -66,7 +66,7 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(fontSize);
 		}
-		const bLines = await wrapText(ctx, text, 88);
+		const bLines = wrapText(ctx, text, 88);
 		const bTopMost = 645 - (((fontSize * bLines.length) / 2) + ((2 * (bLines.length - 1)) / 2));
 		for (let i = 0; i < bLines.length; i++) {
 			const height = bTopMost + ((fontSize + 2) * i);

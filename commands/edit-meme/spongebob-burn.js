@@ -60,7 +60,7 @@ module.exports = class SpongebobBurnCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, burn, 180);
+		const lines = wrapText(ctx, burn, 180);
 		ctx.fillText(lines.join('\n'), 55, 103);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(25);
 		ctx.fillText(person, 382, 26);

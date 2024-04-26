@@ -45,7 +45,7 @@ module.exports = class ReactionMemeCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(40);
-		const lines = await wrapText(ctx, text, base.width - 10);
+		const lines = wrapText(ctx, text, base.width - 10);
 		const lineBreakLen = text.split('\n').length;
 		const linesLen = (40 * lines.length)
 			+ (40 * (lineBreakLen - 1))

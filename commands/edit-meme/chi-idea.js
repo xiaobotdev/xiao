@@ -59,7 +59,7 @@ module.exports = class ChiIdeaCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('wildwordsroman.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, text, 83);
+		const lines = wrapText(ctx, text, 83);
 		const topMost = 137 - (((fontSize * lines.length) / 2) + ((5 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((fontSize + 5) * i);

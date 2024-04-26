@@ -50,7 +50,7 @@ module.exports = class SubtitleCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		ctx.fillStyle = 'yellow';
 		ctx.textAlign = 'center';
-		const lines = await wrapText(ctx, text, base.width - 10);
+		const lines = wrapText(ctx, text, base.width - 10);
 		if (!lines) return msg.reply('There\'s not enough width to subtitle this image.');
 		ctx.textBaseline = 'bottom';
 		const initial = base.height - ((lines.length - 1) * fontSize) - (fontSize / 2) - ((lines.length - 1) * 10);

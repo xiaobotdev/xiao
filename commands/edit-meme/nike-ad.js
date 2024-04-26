@@ -67,7 +67,7 @@ module.exports = class NikeAdCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		ctx.fillStyle = 'white';
 		ctx.textAlign = 'center';
-		const lines = await wrapText(ctx, `Believe in ${something}. Even if it means ${sacrifice}.`, data.width - 20);
+		const lines = wrapText(ctx, `Believe in ${something}. Even if it means ${sacrifice}.`, data.width - 20);
 		if (!lines) return msg.reply('There\'s not enough width to make a Nike ad with this image.');
 		const initial = data.height / 2;
 		for (let i = 0; i < lines.length; i++) {

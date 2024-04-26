@@ -53,7 +53,7 @@ module.exports = class SonicSaysCommand extends Command {
 			fontSize--;
 			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 		}
-		const lines = await wrapText(ctx, text, 185);
+		const lines = wrapText(ctx, text, 185);
 		ctx.fillStyle = 'white';
 		ctx.fillText(lines.join('\n'), 92, 67, 185);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sonic-says.png' }] });

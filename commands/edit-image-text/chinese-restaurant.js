@@ -49,7 +49,7 @@ module.exports = class ChineseRestaurantCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('Futura Condensed Bold.otf').toCanvasString(28);
-		const lines = await wrapText(ctx, text.toUpperCase(), 340);
+		const lines = wrapText(ctx, text.toUpperCase(), 340);
 		if (lines.length === 1) {
 			ctx.fillText(lines[0], base.width / 2, 288);
 		} else if (lines.length === 2) {

@@ -49,7 +49,7 @@ module.exports = class AlertCommand extends Command {
 		ctx.font = this.client.fonts.get('SF-Pro-Display-Medium.otf').toCanvasString(30);
 		ctx.fillStyle = '#1f1f1f';
 		ctx.textBaseline = 'top';
-		let text = await wrapText(ctx, message, 540);
+		let text = wrapText(ctx, message, 540);
 		text = text.length > 3 ? `${text.slice(0, 3).join('\n')}...` : text.join('\n');
 		ctx.fillText(text, 48, 178);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'alert.png' }] });
