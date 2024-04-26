@@ -214,7 +214,7 @@ module.exports = class TweetCommand extends Command {
 			const line = wrapped[currentLine];
 			const lineNoEmoji = line.split(emojiRegex());
 			const lineEmoji = line.match(emojiRegex());
-			const height = 23 + 9;
+			const height = 23 + 5;
 			if (!lineEmoji) {
 				ctx.fillText(line, x, y + (height * currentLine));
 				continue;
@@ -239,7 +239,7 @@ module.exports = class TweetCommand extends Command {
 	}
 
 	fillHashtags(ctx, wrappedText, x, y, emojiSize) {
-		const height = 23 + 9;
+		const height = 23 + 5;
 		let currentLine = 0;
 		for (const line of wrappedText) {
 			const words = line.split(' ');
