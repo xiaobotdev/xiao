@@ -76,7 +76,6 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 			ctx.font = this.client.fonts.get('Spongeboytt1.ttf').toCanvasString(fontSize);
 			metrics = ctx.measureText(lines.join('\n'));
 			lines = wrapText(ctx, text.toUpperCase(), 1800);
-			console.log(lines);
 		}
 		const topMost = (canvas.height / 2) - (((fontSize * lines.length) / 2) + ((60 * (lines.length - 1)) / 2));
 		for (let i = 0; i < lines.length; i++) {
