@@ -215,7 +215,7 @@ module.exports = class TweetCommand extends Command {
 				const linePart = lineNoEmoji[i];
 				ctx.fillText(linePart, currentX, y + (height * currentLine));
 				currentX += ctx.measureText(linePart).width;
-				const parsedEmoji = twemoji.parse(emoji[i]);
+				const parsedEmoji = twemoji.parse(lineEmoji[i]);
 				if (!parsedEmoji.length || !parsedEmoji[0].url) continue;
 				const { body } = await request.get(parsedEmoji[0].url);
 				const loadedEmoji = await loadImage(body);
