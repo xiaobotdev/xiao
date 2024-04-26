@@ -19,6 +19,11 @@ module.exports = class CatCommand extends Command {
 					url: 'https://thecatapi.com/',
 					reason: 'API',
 					reasonURL: 'https://docs.thecatapi.com/'
+				},
+				{
+					name: 'Cat Facts API',
+					url: 'https://catfact.ninja/',
+					reason: 'API'
 				}
 			]
 		});
@@ -29,6 +34,16 @@ module.exports = class CatCommand extends Command {
 			.get('https://api.thecatapi.com/v1/images/search')
 			.query({ limit: 1 })
 			.set({ 'x-api-key': THECATAPI_KEY });
-		return msg.say(facts[Math.floor(Math.random() * facts.length)], { files: [body[0].url] });
+		const fact = await this.getFact();
+		return msg.say(fact, { files: [body[0].url] });
+	}
+
+	async getFact() {
+		try {
+			const { body } = await request.get('https://catfact.ninja/fact');
+			return body.fact;
+		} catch {
+			return facts[Math.floor(Math.random() * facts.length)];
+		}
 	}
 };

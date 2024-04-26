@@ -19,6 +19,11 @@ module.exports = class DogCommand extends Command {
 					url: 'https://thedogapi.com/',
 					reason: 'API',
 					reasonURL: 'https://docs.thedogapi.com/'
+				},
+				{
+					name: 'Dog API',
+					url: 'https://kinduff.github.io/dog-api/',
+					reason: 'API'
 				}
 			]
 		});
@@ -29,6 +34,16 @@ module.exports = class DogCommand extends Command {
 			.get('https://api.thedogapi.com/v1/images/search')
 			.query({ limit: 1 })
 			.set({ 'x-api-key': THEDOGAPI_KEY });
-		return msg.say(facts[Math.floor(Math.random() * facts.length)], { files: [body[0].url] });
+		const fact = await this.getFact();
+		return msg.say(fact, { files: [body[0].url] });
+	}
+
+	async getFact() {
+		try {
+			const { body } = await request.get('https://dog-api.kinduff.com/api/facts');
+			return body.facts[0];
+		} catch {
+			return facts[Math.floor(Math.random() * facts.length)];
+		}
 	}
 };
