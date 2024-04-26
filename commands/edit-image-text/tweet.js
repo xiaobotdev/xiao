@@ -248,7 +248,7 @@ module.exports = class TweetCommand extends Command {
 				if (!word.startsWith('#') && !word.startsWith('@')) continue;
 				const preLen = ctx.measureText(`${words.slice(0, i).join(' ')} `).width;
 				const oldStyle = ctx.fillStyle;
-				ctx.fillStyle = 'blue';
+				ctx.fillStyle = '#1da1f2';
 				ctx.fillText(word, x + preLen, y + (height * currentLine));
 				ctx.fillStyle = oldStyle;
 			}
