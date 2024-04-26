@@ -194,7 +194,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.clip();
 		}
 		ctx.drawImage(avatar, 17, 84, 52, 52);
-		const errMsg = userData.err ? `_An error occurred fetching profile: \`${err.message}\`_` : null;
+		const errMsg = userData.err ? `_An error occurred fetching profile: \`${err.message}\`_` : undefined;
 		return msg.say(errMsg, { files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 	}
 
