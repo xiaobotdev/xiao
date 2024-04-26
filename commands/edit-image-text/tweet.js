@@ -256,7 +256,7 @@ module.exports = class TweetCommand extends Command {
 				avatar: defaultPfp,
 				avatarShape: 'Circle',
 				checkType: null,
-				followers: 0,
+				followers: 5,
 				err
 			};
 		}
