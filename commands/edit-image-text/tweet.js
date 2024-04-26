@@ -250,7 +250,7 @@ module.exports = class TweetCommand extends Command {
 				if (i !== 0) preWords += ' ';
 				const emoji = preWords.match(emojiRegex());
 				let preLen = ctx.measureText(preWords.replace(emojiRegex(), '')).width;
-				preLen += emoji.length * emojiSize;
+				if (emoji) preLen += emoji.length * emojiSize;
 				const oldStyle = ctx.fillStyle;
 				ctx.fillStyle = '#1da1f2';
 				ctx.fillText(word, x + preLen, y + (height * currentLine));
