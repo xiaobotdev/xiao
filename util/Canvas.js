@@ -206,7 +206,7 @@ module.exports = class CanvasUtil {
 		return shorten ? `${text}...` : text;
 	}
 
-	static wrapText(ctx, text, maxWidth) {
+	static wrapText(ctx, text, maxWidth, shouldChunk = false) {
 		const lines = [];
 		const wordsAndBreaks = text.split('\n');
 		for (let i = 0; i < wordsAndBreaks.length; i++) {
@@ -221,7 +221,7 @@ module.exports = class CanvasUtil {
 				const word = words[j];
 				if (ctx.measureText(`${currentLine} ${word}`).width <= maxWidth) {
 					currentLine += `${currentLine === '' ? '' : ' '}${word}`;
-				} else if (ctx.measureText(word).width > maxWidth) {
+				} else if (ctx.measureText(word).width > maxWidth && shouldChunk) {
 					const chunks = [];
 					let currentChunk = '';
 					for (let k = 0; k < word.length; k++) {
