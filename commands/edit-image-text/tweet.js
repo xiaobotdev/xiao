@@ -207,7 +207,7 @@ module.exports = class TweetCommand extends Command {
 		const emoji = text.match(emojiRegex());
 		if (!emoji) {
 			ctx.fillText(wrapped.join('\n'), x, y);
-			this.fillHashtags(ctx, wrapped, x, y);
+			this.fillHashtags(ctx, wrapped, x, y, emojiSize);
 			return ctx;
 		}
 		for (let currentLine = 0; currentLine < wrapped.length; currentLine++) {
@@ -234,11 +234,11 @@ module.exports = class TweetCommand extends Command {
 				currentX += emojiSize;
 			}
 		}
-		this.fillHashtags(ctx, wrapped, x, y);
+		this.fillHashtags(ctx, wrapped, x, y, emojiSize);
 		return ctx;
 	}
 
-	fillHashtags(ctx, wrappedText, x, y) {
+	fillHashtags(ctx, wrappedText, x, y, emojiSize) {
 		const height = 23 + 9;
 		let currentLine = 0;
 		for (const line of wrappedText) {
@@ -248,7 +248,9 @@ module.exports = class TweetCommand extends Command {
 				if (!word.startsWith('#') && !word.startsWith('@')) continue;
 				let preWords = words.slice(0, i).join(' ');
 				if (i !== 0) preWords += ' ';
-				const preLen = ctx.measureText(preWords).width;
+				const emoji = preWords.match(emojiRegex());
+				let preLen = ctx.measureText(preWords.replace(emojiRegex(), '')).width;
+				preLen += emoji.length * emojiSize;
 				const oldStyle = ctx.fillStyle;
 				ctx.fillStyle = '#1da1f2';
 				ctx.fillText(word, x + preLen, y + (height * currentLine));
