@@ -248,7 +248,7 @@ module.exports = class TweetCommand extends Command {
 				avatarShape: data.user.profileImageShape,
 				checkType,
 				followers: body.followersCount,
-				err: null
+				err: undefined
 			};
 		} catch (err) {
 			const defaultPfp = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'default.png'));
