@@ -129,7 +129,7 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillText(`@${userData.screenName}`, 80, 113);
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
-		await this.fillTextWithEmoji(ctx, text, 17, 160, 710, 26);
+		await this.fillTextWithEmoji(ctx, metrics, text, 17, 160, 710, 26);
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		const time = moment().format('h:mm A ∙ MMM D, YYYY ∙');
@@ -194,7 +194,7 @@ module.exports = class TweetCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 	}
 
-	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
+	async fillTextWithEmoji(ctx, metrics, text, x, y, maxLineLen, emojiSize) {
 		const wrapped = wrapText(ctx, text, maxLineLen, true);
 		const emoji = text.match(emojiRegex());
 		if (!emoji) {
@@ -205,14 +205,15 @@ module.exports = class TweetCommand extends Command {
 			const line = wrapped[currentLine];
 			const lineNoEmoji = line.split(emojiRegex());
 			const lineEmoji = line.match(emojiRegex());
+			const height = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
 			if (!lineEmoji) {
-				ctx.fillText(line, x, y + (23 * currentLine) + (9 * currentLine));
+				ctx.fillText(line, x, y + height * currentLine);
 				continue;
 			}
 			let currentX = x;
 			for (let i = 0; i < lineNoEmoji.length; i++) {
 				const linePart = lineNoEmoji[i];
-				ctx.fillText(linePart, currentX, y + (23 * currentLine) + (9 * currentLine));
+				ctx.fillText(linePart, currentX, y + height * currentLine);
 				currentX += ctx.measureText(linePart).width;
 				const parsedEmoji = twemoji.parse(emoji[i]);
 				if (!parsedEmoji.length || !parsedEmoji[0].url) continue;
@@ -220,7 +221,7 @@ module.exports = class TweetCommand extends Command {
 				const loadedEmoji = await loadImage(body);
 				loadedEmoji.width = emojiSize;
 				loadedEmoji.height = emojiSize;
-				ctx.drawImage(loadedEmoji, currentX, y + (23 * currentLine) + (9 * currentLine), emojiSize, emojiSize);
+				ctx.drawImage(loadedEmoji, currentX, y + height, emojiSize, emojiSize);
 				currentX += emojiSize;
 			}
 		}
