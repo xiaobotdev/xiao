@@ -8,7 +8,17 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'spongebob-time-card',
-			aliases: ['time-card', 'sb-time-card', 'spongebob-card', 'sb-card', 'sponge-card', 'sponge-time-card'],
+			aliases: [
+				'time-card',
+				'sb-time-card',
+				'spongebob-card',
+				'sb-card',
+				'sponge-card',
+				'sponge-time-card',
+				'sb-time',
+				'spongebob-time',
+				'sponge-time'
+			],
 			group: 'edit-image-text',
 			memberName: 'spongebob-time-card',
 			description: 'Sends a Spongebob Time Card with the text of your choice.',
