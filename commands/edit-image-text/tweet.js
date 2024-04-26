@@ -16,7 +16,7 @@ module.exports = class TweetCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'tweet',
-			aliases: ['fake-tweet', 'twitter-tweet', 'fake-twitter-tweet', 'x-post', 'x', 'fake-x-post'],
+			aliases: ['fake-tweet', 'twitter-tweet', 'fake-twitter-tweet', 'x-post', 'x', 'fake-x-post', 'excrete', 'xcrete'],
 			group: 'edit-image-text',
 			memberName: 'tweet',
 			description: 'Sends a Twitter tweet with the user and text of your choice.',
