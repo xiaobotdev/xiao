@@ -55,7 +55,7 @@ module.exports = class EjectCommand extends Command {
 	}
 
 	async run(msg, { user, imposter }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 128 });
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
 		if (imposter === '') {
