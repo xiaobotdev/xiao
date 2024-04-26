@@ -7,6 +7,7 @@ const twemoji = require('@twemoji/parser');
 const api = new TwitterOpenApi();
 const moment = require('moment');
 const request = require('node-superfetch');
+const { readFile } = require('fs/promises');
 const path = require('path');
 const { formatNumberK, randomRange } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
@@ -62,7 +63,7 @@ module.exports = class TweetCommand extends Command {
 
 	async run(msg, { user, text, image }) {
 		if (!this.guestClient) this.guestClient = await api.getGuestClient();
-		const userData = await this.fetchUser(msg, user);
+		const userData = await this.fetchUser(user);
 		const avatar = await loadImage(userData.avatar);
 		const base1 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-1.png'));
 		const base2 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-2.png'));
@@ -228,7 +229,7 @@ module.exports = class TweetCommand extends Command {
 		return ctx;
 	}
 
-	async fetchUser(msg, user) {
+	async fetchUser(user) {
 		try {
 			const { data } = await this.guestClient.getUserApi().getUserByScreenName({ screenName: user });
 			const body = data.user.legacy;
@@ -241,11 +242,11 @@ module.exports = class TweetCommand extends Command {
 				followers: body.followersCount
 			};
 		} catch {
-			const avatarRes = await request.get(msg.author.displayAvatarURL({ extension: 'png', size: 64 }));
+			const defaultPfp = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'default.png'));
 			return {
-				screenName: msg.author.username.slice(0, 15),
-				name: msg.member ? msg.member.displayName.slice(0, 50) : msg.author.username.slice(0, 50),
-				avatar: avatarRes.body,
+				screenName: user,
+				name: 'Unknown User',
+				avatar: defaultPfp,
 				verified: false,
 				followers: 0
 			};
