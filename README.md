@@ -762,8 +762,10 @@ Total: 510
    - [bunnies.io](https://www.bunnies.io/) (API)
 * **cat:**
    - [TheCatAPI](https://thecatapi.com/) ([API](https://docs.thecatapi.com/))
+   - [Cat Facts API](https://catfact.ninja/) (API)
 * **dog:**
    - [TheDogAPI](https://thedogapi.com/) ([API](https://docs.thedogapi.com/))
+   - [Dog API](https://kinduff.github.io/dog-api/) (API)
 * **duck:**
    - [Random-d.uk](https://random-d.uk/) ([API](https://random-d.uk/api))
 * **fox:**
