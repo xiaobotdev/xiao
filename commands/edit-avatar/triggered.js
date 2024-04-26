@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gif-encoder-2');
+const GIFEncoder = require('gifencoder');
 const request = require('node-superfetch');
 const path = require('path');
 const { drawImageWithTint } = require('../../util/Canvas');
@@ -45,7 +45,7 @@ module.exports = class TriggeredCommand extends Command {
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'triggered.png'));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
-		const encoder = new GIFEncoder(base.width, base.width, 'neuquant', true);
+		const encoder = new GIFEncoder(base.width, base.width);
 		const canvas = createCanvas(base.width, base.width);
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = 'white';

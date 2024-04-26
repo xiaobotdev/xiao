@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gif-encoder-2');
+const GIFEncoder = require('gifencoder');
 const request = require('node-superfetch');
 
 module.exports = class ShakeCommand extends Command {
@@ -38,7 +38,7 @@ module.exports = class ShakeCommand extends Command {
 		const base = await loadImage(body);
 		const ratio = base.width / base.height;
 		const height = 512 / ratio;
-		const encoder = new GIFEncoder(512, height, 'neuquant', true);
+		const encoder = new GIFEncoder(512, height);
 		const canvas = createCanvas(512, height);
 		const ctx = canvas.getContext('2d');
 		encoder.start();

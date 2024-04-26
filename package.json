@@ -50,7 +50,7 @@
 		"emoji-regex": "^10.3.0",
 		"fen-validator": "^2.0.1",
 		"font-finder": "^1.1.0",
-		"gif-encoder-2": "^1.0.5",
+		"gifencoder": "^2.0.1",
 		"gm": "^1.25.0",
 		"html-entities": "^2.5.2",
 		"image-to-ascii": "^3.2.0",

@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gif-encoder-2');
+const GIFEncoder = require('gifencoder');
 const { MersenneTwister19937, bool } = require('random-js');
 const request = require('node-superfetch');
 const path = require('path');
@@ -63,7 +63,7 @@ module.exports = class EjectCommand extends Command {
 			imposter = bool()(random);
 		}
 		const text = `${user.username} was${imposter ? ' ' : ' not '}An Imposter.`;
-		const encoder = new GIFEncoder(320, 180, 'neuquant', true);
+		const encoder = new GIFEncoder(320, 180);
 		const canvas = createCanvas(320, 180);
 		const ctx = canvas.getContext('2d');
 		ctx.textAlign = 'center';
