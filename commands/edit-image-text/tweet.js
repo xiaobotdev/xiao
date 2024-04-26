@@ -118,9 +118,9 @@ module.exports = class TweetCommand extends Command {
 		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
 		ctx.fillStyle = 'white';
 		ctx.fillText(userData.name, 80, 88);
-		if (userData.verified) {
+		if (userData.checkType) {
 			const verified = await loadImage(
-				path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'verified.png')
+				path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', `${userData.checkType}.png`)
 			);
 			const nameLen = ctx.measureText(userData.name).width;
 			ctx.drawImage(verified, 80 + nameLen + 3, 90, 20, 20);
@@ -187,12 +187,15 @@ module.exports = class TweetCommand extends Command {
 		ctx.fillStyle = '#71767b';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(18);
 		ctx.fillText('Bookmarks', currentLen, base2StartY + 75);
-		ctx.beginPath();
-		ctx.arc(17 + 26, 84 + 26, 26, 0, Math.PI * 2);
-		ctx.closePath();
-		ctx.clip();
+		if (userData.avatarShape === 'Circle') {
+			ctx.beginPath();
+			ctx.arc(17 + 26, 84 + 26, 26, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.clip();
+		}
 		ctx.drawImage(avatar, 17, 84, 52, 52);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
+		const errMsg = userData.err ? `_An error occurred fetching profile: \`${err.message}\`_` : null;
+		return msg.say(errMsg, { files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 	}
 
 	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
@@ -234,21 +237,29 @@ module.exports = class TweetCommand extends Command {
 			const { data } = await this.guestClient.getUserApi().getUserByScreenName({ screenName: user });
 			const body = data.user.legacy;
 			const avatarRes = await request.get(body.profileImageUrlHttps);
+			let checkType = null;
+			if (body.verifiedType === 'Government') checkType = 'gov';
+			else if (body.verifiedType === 'Business') checkType = 'business';
+			else if (data.user.isBlueVerified) checkType = 'blue';
 			return {
 				screenName: body.screenName,
 				name: body.name,
 				avatar: avatarRes.body,
-				verified: data.user.isBlueVerified,
-				followers: body.followersCount
+				avatarShape: data.user.profileImageShape,
+				checkType,
+				followers: body.followersCount,
+				err: null
 			};
-		} catch {
+		} catch (err) {
 			const defaultPfp = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'default.png'));
 			return {
 				screenName: user,
 				name: 'Unknown User',
 				avatar: defaultPfp,
-				verified: false,
-				followers: 0
+				avatarShape: 'Circle',
+				checkType: null,
+				followers: 0,
+				err
 			};
 		}
 	}
