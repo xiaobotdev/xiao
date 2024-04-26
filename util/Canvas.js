@@ -221,27 +221,32 @@ module.exports = class CanvasUtil {
 				const word = words[j];
 				if (ctx.measureText(`${currentLine} ${word}`).width <= maxWidth) {
 					currentLine += `${currentLine === '' ? '' : ' '}${word}`;
-				} else if (ctx.measureText(word).width > maxWidth && shouldChunk) {
-					const chunks = [];
-					let currentChunk = '';
-					for (let k = 0; k < word.length; k++) {
-						const char = word[k];
-						if (ctx.measureText(`${currentChunk}${char}`).width <= maxWidth) {
-							currentChunk += char;
-						} else {
+				} else if (ctx.measureText(word).width > maxWidth) {
+					if (shouldChunk) {
+						const chunks = [];
+						let currentChunk = '';
+						for (let k = 0; k < word.length; k++) {
+							const char = word[k];
+							if (ctx.measureText(`${currentChunk}${char}`).width <= maxWidth) {
+								currentChunk += char;
+							} else {
+								chunks.push(currentChunk);
+								currentChunk = char;
+							}
+						}
+						if (currentChunk !== '') {
 							chunks.push(currentChunk);
-							currentChunk = char;
+							}
+						for (let k = 0; k < chunks.length; k++) {
+							if (ctx.measureText(`${currentLine} ${chunks[k]}`).width > maxWidth) {
+								lines.push(currentLine.trim());
+								currentLine = '';
+							}
+							currentLine += `${currentLine === '' ? '' : ' '}${chunks[k]}`;
 						}
-					}
-					if (currentChunk !== '') {
-						chunks.push(currentChunk);
-					}
-					for (let k = 0; k < chunks.length; k++) {
-						if (ctx.measureText(`${currentLine} ${chunks[k]}`).width > maxWidth) {
-							lines.push(currentLine.trim());
-							currentLine = '';
-						}
-						currentLine += `${currentLine === '' ? '' : ' '}${chunks[k]}`;
+					} else {
+						if (currentLine !== '') lines.push(currentLine.trim());
+						currentLine = word;
 					}
 				} else {
 					lines.push(currentLine.trim());
