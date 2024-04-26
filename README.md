@@ -662,7 +662,7 @@ Total: 510
 * [emoji-regex](https://www.npmjs.com/package/emoji-regex)
 * [fen-validator](https://www.npmjs.com/package/fen-validator)
 * [font-finder](https://www.npmjs.com/package/font-finder)
-* [gif-encoder-2](https://www.npmjs.com/package/gif-encoder-2)
+* [gifencoder](https://www.npmjs.com/package/gifencoder)
 * [gm](https://www.npmjs.com/package/gm)
 * [html-entities](https://www.npmjs.com/package/html-entities)
 * [image-to-ascii](https://www.npmjs.com/package/image-to-ascii)

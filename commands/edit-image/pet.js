@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const GIFEncoder = require('gif-encoder-2');
+const GIFEncoder = require('gifencoder');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
@@ -32,7 +32,7 @@ module.exports = class PetCommand extends Command {
 	async run(msg, { image }) {
 		const { body } = await request.get(image);
 		const data = await loadImage(body);
-		const encoder = new GIFEncoder(112, 112, 'neuquant', true);
+		const encoder = new GIFEncoder(112, 112);
 		const canvas = createCanvas(112, 112);
 		const ctx = canvas.getContext('2d');
 		encoder.start();
