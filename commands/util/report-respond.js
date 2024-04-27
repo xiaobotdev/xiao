@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { EmbedBuilder } = require('discord.js');
 const types = ['reject', 'info', 'approve'];
-const typesColors = ['RED', 'YELLOW', 'GREEN'];
+const typesColors = ['Red', 'Yellow', 'Green'];
 const displaytypes = ['❌ Rejected', '❓ Need More Info', '✅ Accepted/Fixed'];
 
 module.exports = class ReportRespondCommand extends Command {
