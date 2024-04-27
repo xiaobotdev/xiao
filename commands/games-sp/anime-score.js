@@ -8,6 +8,8 @@ const searchGraphQL = stripIndents`
 		Page (page: $page) {
 			pageInfo {
 				total
+				lastPage
+				perPage
 			}
 			media (type: $type, popularity_greater: 50000, isAdult: false, averageScore_not: 0, sort: POPULARITY_DESC) {
 				id
@@ -98,8 +100,7 @@ module.exports = class AnimeScoreCommand extends Command {
 				.send({
 					variables: {
 						page: Math.ceil(selectedAnime / 50),
-						type: 'ANIME',
-						isAdult: false
+						type: 'ANIME'
 					},
 					query: searchGraphQL
 				});
@@ -119,12 +120,12 @@ module.exports = class AnimeScoreCommand extends Command {
 			.send({
 				variables: {
 					page: 0,
-					type: 'ANIME',
-					isAdult: false
+					type: 'ANIME'
 				},
 				query: searchGraphQL
 			});
-		this.totalAnime = body.data.Page.pageInfo.total;
+		const pageInfo = body.data.Page.pageInfo;
+		this.totalAnime = pageInfo.lastPage * pageInfo.perPage;
 		setTimeout(() => { this.totalAnime = null; }, 2.16e+7);
 		return this.totalAnime;
 	}
