@@ -32,7 +32,7 @@ module.exports = class ShrekCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		const danny = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'shrek.png'));
+		const shrek = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'shrek.png'));
 		const imgData = await request.get(image);
 		const faces = await this.client.detectFaces(imgData.body);
 		if (!faces) return msg.reply('There are no faces in this image.');
@@ -42,14 +42,14 @@ module.exports = class ShrekCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		for (const face of faces) {
-			const ratio = face.box.width / danny.width;
-			const height = danny.height * ratio;
+			const ratio = face.box.width / shrek.width;
+			const height = shrek.height * ratio;
 			ctx.drawImage(
-				danny,
+				shrek,
 				face.box.xMin - (face.box.width * 0.2),
 				face.box.yMin - (height / 2.5),
-				face.box.width * 1.4,
-				height * 1.4
+				face.box.width * 1.6,
+				height * 1.6
 			);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'shrek.png' }] });
