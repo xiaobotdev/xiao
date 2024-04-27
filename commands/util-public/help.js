@@ -69,7 +69,7 @@ module.exports = class HelpCommand extends Command {
 		if (command.nsfw) cmdHelpText += ' (NSFW)';
 		cmdHelpText += `\n${command.description}\n`;
 		if (command.details) cmdHelpText += `${command.details}\n`;
-		cmdHelpText += '\n\n';
+		cmdHelpText += '\n';
 		if (command.flags.length) {
 			const flags = command.flags.map(flag => `--${flag.key} (${flag.description})`).join('\n');
 			cmdHelpText += `**Flags:**\n${flags}\n`;
