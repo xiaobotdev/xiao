@@ -2,13 +2,15 @@ const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const semver = require('semver');
 const { stripIndents } = require('common-tags');
+const { reactIfAble } = require('../../util/Util');
 const { dependencies, devDependencies, optionalDependencies } = require('../../package');
+const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class DependencyUpdateCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'dependency-update',
-			aliases: ['dep-update', 'dependencies-update', 'npm-update', 'deps'],
+			aliases: ['dep-update', 'dependencies-update', 'npm-update', 'deps', 'update-deps'],
 			group: 'util',
 			memberName: 'dependency-update',
 			description: 'Checks for dependency updates.',
@@ -26,6 +28,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 	}
 
 	async run(msg) {
+		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
 		const needUpdate = [];
 		for (const [dep, ver] of Object.entries(dependencies)) {
 			const update = await this.parseUpdate(dep, ver);
@@ -47,6 +50,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 			const breaking = pkg.breaking ? ' ⚠️' : '';
 			return `${pkg.name} (${pkg.oldVer} -> ${pkg.newVer})${breaking}`;
 		});
+		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		return msg.say(stripIndents`
 			__**Package Updates Available:**__
 			${updatesList.join('\n')}
