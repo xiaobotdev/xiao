@@ -25,7 +25,7 @@ module.exports = class IpCommand extends Command {
 		const { body } = await request
 			.get('https://api.ipify.org/')
 			.query({ format: 'json' });
-		await msg.direct(body.ip);
-		return msg.say('📬 Sent the IP to your DMs!');
+		if (msg.guild) await msg.say('📬 Sent the IP to your DMs!');
+		return msg.direct(body.ip);
 	}
 };

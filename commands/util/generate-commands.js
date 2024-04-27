@@ -29,7 +29,7 @@ module.exports = class GenerateCommandsCommand extends Command {
 			})
 			.filter(cmds => cmds);
 		const text = `Total: ${this.client.registry.commands.size}\n${list.join('\n')}`;
-		await msg.direct({ files: [{ attachment: Buffer.from(text), name: 'commands.txt' }] });
-		return msg.say('📬 Sent `commands.txt` to your DMs!');
+		if (msg.guild) await msg.say('📬 Sent `commands.txt` to your DMs!');
+		return msg.direct({ files: [{ attachment: Buffer.from(text), name: 'commands.txt' }] });
 	}
 };

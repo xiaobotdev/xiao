@@ -36,7 +36,7 @@ module.exports = class GenerateCreditCommand extends Command {
 			})
 			.filter(cmds => cmds);
 		const file = Buffer.from(`## Credits\n### NPM Packages\n${npm}\n\n### Other Credits\n${list.join('\n')}`);
-		await msg.direct({ files: [{ attachment: file, name: 'credits.txt' }] });
-		return msg.say('📬 Sent `credits.txt` to your DMs!');
+		if (msg.guild) await msg.say('📬 Sent `credits.txt` to your DMs!');
+		return msg.direct({ files: [{ attachment: file, name: 'credits.txt' }] });
 	}
 };
