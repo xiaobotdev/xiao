@@ -46,10 +46,10 @@ module.exports = class ShrekCommand extends Command {
 			const height = shrek.height * ratio;
 			ctx.drawImage(
 				shrek,
-				face.box.xMin - (face.box.width * 0.2),
+				face.box.xMin - (face.box.width * 0.3),
 				face.box.yMin - (height / 2.5),
-				face.box.width * 1.6,
-				height * 1.6
+				face.box.width * 1.5,
+				height * 1.5
 			);
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'shrek.png' }] });
