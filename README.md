@@ -1299,6 +1299,7 @@ Total: 509
    - [Why We Protest](https://whyweprotest.net/) ([Anon Hat Image](https://whyweprotest.net/threads/big-ass-guy-fawkes-mask-images-thread.22719/))
    - [WebStockReview](https://webstockreview.net/) ([Devil Hat Image](https://webstockreview.net/explore/horn-clipart-purple-devil/))
    - [Becel](https://www.becel.ca/en-ca) (Becel Hat Image)
+   - [Joe Biden for President](https://joebiden.com/) (Biden Hat Image)
 * **he-lives-in-you:**
    - [Disney](https://www.disney.com/) ([Image, Original "The Lion King" Movie](https://movies.disney.com/the-lion-king))
 * **hearts:**
