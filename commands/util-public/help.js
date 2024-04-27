@@ -64,16 +64,19 @@ module.exports = class HelpCommand extends Command {
 				return msg.reply('Failed to send DM. You probably have DMs disabled.');
 			}
 		}
-		return msg.say(stripIndents`
-			__Command **${command.name}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
-			${command.description}${command.details ? `\n${command.details}` : ''}
-
-			**Flags:**
-			${command.flags.length ? command.flags.map(flag => `--${flag.key} (${flag.description})`).join('\n') : 'None'}
-			**Format:** ${command.usage()}
-			**Aliases:** ${command.aliases.join(', ') || 'None'}
-			**Group:** ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
-			**NSFW:** ${command.nsfw ? 'Yes' : 'No'}
-		`);
+		let cmdHelpText = `__Command **${command.name}**__`;
+		if (command.guildOnly) cmdHelpText += ' (Usable only in servers)';
+		if (command.nsfw) cmdHelpText += ' (NSFW)';
+		cmdHelpText += `\n${command.description}\n`;
+		if (command.details) cmdHelpText += `${command.details}\n`;
+		cmdHelpText += '\n\n';
+		if (command.flags.length) {
+			const flags = command.flags.map(flag => `--${flag.key} (${flag.description})`).join('\n');
+			cmdHelpText += `**Flags:**\n${flags}\n`;
+		}
+		cmdHelpText += `**Format:** ${command.usage()}\n`;
+		if (command.aliases.length) cmdHelpText += `**Aliases:** ${command.aliases.join(', ')}\n`;
+		cmdHelpText += `**Group:** ${command.group.name}\n`;
+		return msg.say(cmdHelpText);
 	}
 };
