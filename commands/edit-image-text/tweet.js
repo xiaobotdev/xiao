@@ -234,15 +234,14 @@ module.exports = class TweetCommand extends Command {
 				loadedEmoji.height = emojiSize;
 				ctx.drawImage(loadedEmoji, currentX, currentY, emojiSize, emojiSize);
 				currentX += emojiSize;
-				currentY += metrics.emHeightAscent + metrics.emHeightDescent;
 			}
+			currentY += metrics.emHeightAscent + metrics.emHeightDescent;
 		}
 		this.fillHashtags(ctx, wrapped, x, y, emojiSize);
 		return ctx;
 	}
 
 	fillHashtags(ctx, wrappedText, x, y, emojiSize) {
-		let currentLine = 0;
 		let currentY = y;
 		for (const line of wrappedText) {
 			const words = line.split(' ');
@@ -262,7 +261,6 @@ module.exports = class TweetCommand extends Command {
 			}
 			const metrics = ctx.measureText(line);
 			currentY += metrics.emHeightAscent + metrics.emHeightDescent;
-			currentLine++;
 		}
 		return ctx;
 	}
