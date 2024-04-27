@@ -290,6 +290,12 @@ client.on('guildCreate', async guild => {
 			return;
 		}
 	}
+	try {
+		await guild.members.fetch();
+		client.logger.info('[MEMBERS] Fetched all guild members for new server.');
+	} catch (err) {
+		client.logger.error(`[MEMBERS] Failed to fetch guild members for new server\n${err.stack}`);
+	}
 	if (guild.systemChannel && guild.systemChannel.permissionsFor(client.user).has(PermissionFlagsBits.SendMessages)) {
 		try {
 			const usage = client.registry.commands.get('help').usage('');
