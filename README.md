@@ -71,7 +71,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Start Xiao up!
 
 ## Commands
-Total: 509
+Total: 510
 
 ### Utility:
 
@@ -374,6 +374,7 @@ Total: 509
 * **danny-devito:** Draws Danny Devito's face onto the faces in an image.
 * **emoji-face:** Draws an emoji onto the faces in an image.
 * **eyes:** Draws emoji eyes onto the faces in an image.
+* **shrek:** Draws Shrek's face onto the faces in an image.
 
 ### Image Manipulation:
 
@@ -1133,6 +1134,8 @@ Total: 509
    - [Jackbox Games](https://www.jackboxgames.com/) ([Original "Word Spud" Game](https://www.jackboxgames.com/word-spud/))
 * **danny-devito:**
    - [Danny DeVito](https://twitter.com/dannydevito) (Himself)
+* **shrek:**
+   - [DreamWorks](https://www.dreamworks.com/) ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
 * **analog-clock:**
    - [Wikipedia](https://www.wikipedia.org/) ([Time Zone Data](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
    - [Neopets](http://www.neopets.com/) (Neopia Time Zone)
