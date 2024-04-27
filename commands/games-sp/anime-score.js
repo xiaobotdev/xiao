@@ -4,12 +4,12 @@ const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const logos = require('../../assets/json/logos');
 const searchGraphQL = stripIndents`
-	query ($page: Int, $type: MediaType, $isAdult: Boolean) {
+	query ($page: Int, $type: MediaType) {
 		Page (page: $page) {
 			pageInfo {
 				total
 			}
-			media (type: $type, popularity_greater: 2500, averageScore_not: 0, isAdult: $isAdult) {
+			media (type: $type, popularity_greater: 2500, averageScore_not: 0, sort: POPULARITY_DESC) {
 				id
 				averageScore
 				title {
