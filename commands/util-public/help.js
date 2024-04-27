@@ -70,7 +70,7 @@ module.exports = class HelpCommand extends Command {
 
 			**Flags:**
 			${command.flags.length ? command.flags.map(flag => `--${flag.key} (${flag.description})`).join('\n') : 'None'}
-			**Format:** ${command.usage(command.format || '')}
+			**Format:** ${command.usage()}
 			**Aliases:** ${command.aliases.join(', ') || 'None'}
 			**Group:** ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
 			**NSFW:** ${command.nsfw ? 'Yes' : 'No'}
