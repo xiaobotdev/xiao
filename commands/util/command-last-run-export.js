@@ -30,7 +30,7 @@ module.exports = class CommandLastRunExportCommand extends Command {
 
 	async run(msg) {
 		const result = this.client.exportLastRun();
-		await msg.direct({ files: [{ attachment: result, name: 'command-last-run.json' }] });
-		return msg.say('📬 Sent `command-last-run.json` to your DMs!');
+		if (msg.guild) await msg.say('📬 Sent `command-last-run.json` to your DMs!');
+		return msg.direct({ files: [{ attachment: result, name: 'command-last-run.json' }] });
 	}
 };

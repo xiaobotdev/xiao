@@ -24,7 +24,7 @@ module.exports = class CommandLeaderboardExportCommand extends Command {
 
 	async run(msg) {
 		const result = this.client.exportCommandLeaderboard();
-		await msg.direct({ files: [{ attachment: result, name: 'command-leaderboard.json' }] });
-		return msg.say('📬 Sent `command-leaderboard.json` to your DMs!');
+		if (msg.guild) await msg.say('📬 Sent `command-leaderboard.json` to your DMs!');
+		return msg.direct({ files: [{ attachment: result, name: 'command-leaderboard.json' }] });
 	}
 };

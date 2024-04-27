@@ -24,7 +24,7 @@ module.exports = class GenerateProcessEnvCommand extends Command {
 			line = line.replace('=', '');
 			return `${line}="${process.env[line] || ''}"`;
 		}).join('\n');
-		await msg.direct({ files: [{ attachment: Buffer.from(list), name: 'process.env.txt' }] });
-		return msg.say('📬 Sent `process.env.txt` to your DMs!');
+		if (msg.guild) await msg.say('📬 Sent `process.env.txt` to your DMs!');
+		return msg.direct({ files: [{ attachment: Buffer.from(list), name: 'process.env.txt' }] });
 	}
 };
