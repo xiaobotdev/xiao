@@ -51,7 +51,9 @@ module.exports = class NameRaterCommand extends Command {
 	run(msg, { name }) {
 		if (name instanceof User) name = name.username;
 		if (name.toLowerCase() === this.client.user.username.toLowerCase()) {
-			return msg.say(`<:${NAME_RATER_EMOJI_NAME}:${NAME_RATER_EMOJI_ID}> Yes, ${name}! What a perfect name! I'm speechless!`);
+			return msg.say(
+				`<:${NAME_RATER_EMOJI_NAME}:${NAME_RATER_EMOJI_ID}> Yes, ${name}! What a perfect name! I'm speechless!`
+			);
 		}
 		const random = MersenneTwister19937.seed(this.stringToSeed(name.toLowerCase()));
 		const quality = integer(0, texts.length - 1)(random);
