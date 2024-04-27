@@ -55,10 +55,15 @@ module.exports = class AnimeScoreCommand extends Command {
 				}
 			]
 		});
+
+		this.totalAnime = null;
 	}
 
 	async run(msg) {
-		const anime = await this.getRandomAnime(msg.channel.nsfw);
+		const anime = await this.getRandomAnime();
+		if (anime === 'ratelimited') {
+			return msg.reply('Sorry, looks like the command needs to cool down. Try again later.');
+		}
 		const embed = new EmbedBuilder()
 			.setColor(0x02A9FF)
 			.setAuthor({ name: 'AniList', iconURL: logos.anilist, url: 'https://anilist.co/' })
@@ -84,28 +89,43 @@ module.exports = class AnimeScoreCommand extends Command {
 		return msg.reply(`Nice job! It was **${anime.averageScore}%**!`);
 	}
 
-	async getRandomAnime(nsfw) {
-		const { body: initialBody } = await request
+	async getRandomAnime() {
+		try {
+			if (!this.totalAnime) await this.getTotalAnime();
+			const selectedAnime = Math.floor(Math.random() * this.totalAnime);
+			const { body } = await request
+				.post('https://graphql.anilist.co/')
+				.send({
+					variables: {
+						page: Math.ceil(selectedAnime / 50),
+						type: 'ANIME',
+						isAdult: false
+					},
+					query: searchGraphQL
+				});
+			const selected = body.data.Page.media[selectedAnime % 50];
+			if (!selected) return this.getRandomAnime();
+			return selected;
+		} catch (err) {
+			if (err.status === 429) return 'ratelimited';
+			throw err;
+		}
+	}
+
+	async getTotalAnime() {
+		if (this.totalAnime) return this.totalAnime;
+		const { body } = await request
 			.post('https://graphql.anilist.co/')
 			.send({
 				variables: {
 					page: 0,
 					type: 'ANIME',
-					isAdult: Boolean(nsfw)
+					isAdult: false
 				},
 				query: searchGraphQL
 			});
-		const selectedAnime = Math.floor(Math.random() * initialBody.data.Page.pageInfo.total);
-		const { body } = await request
-			.post('https://graphql.anilist.co/')
-			.send({
-				variables: {
-					page: Math.ceil(selectedAnime / 50),
-					type: 'ANIME',
-					isAdult: Boolean(nsfw)
-				},
-				query: searchGraphQL
-			});
-		return body.data.Page.media[selectedAnime % 50];
+		this.totalAnime = body.data.Page.pageInfo.total;
+		setTimeout(() => { this.totalAnime = null; }, 2.16e+7);
+		return this.totalAnime;
 	}
 };
