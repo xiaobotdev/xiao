@@ -210,18 +210,18 @@ module.exports = class TweetCommand extends Command {
 			this.fillHashtags(ctx, wrapped, x, y, emojiSize);
 			return ctx;
 		}
+		let currentY = y;
 		for (let currentLine = 0; currentLine < wrapped.length; currentLine++) {
 			const line = wrapped[currentLine];
-			const lineNoEmoji = line.split(emojiRegex());
 			const lineEmoji = line.match(emojiRegex());
 			let currentX = x;
-			let currentY = y;
 			const metrics = ctx.measureText(line);
 			if (!lineEmoji) {
 				ctx.fillText(line, x, currentY);
 				currentY += metrics.emHeightAscent + metrics.emHeightDescent;
 				continue;
 			}
+			const lineNoEmoji = line.split(emojiRegex());
 			for (let i = 0; i < lineNoEmoji.length; i++) {
 				const linePart = lineNoEmoji[i];
 				ctx.fillText(linePart, currentX, currentY);
