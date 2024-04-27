@@ -27,7 +27,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 * `MOCKING_EMOJI_ID` and `MOCKING_EMOJI_NAME` are for **mocking**. Defaults to nothing, it just won't be there.
 * `PORTAL_EMOJI_ID` and `PORTAL_EMOJI_NAME` are for **portal-send**. Defaults to "PORTAL".
 * `MEGA_EVOLVE_EMOJI_ID` and `MEGA_EVOLVE_EMOJI_NAME` are for **pokedex**. Defaults to "MEGA".
-* `NAME_RATER_EMOJI_ID` is for **name-rater**. Defaults to nothing, it just won't be there.
+* `NAME_RATER_EMOJI_ID` and `NAME_RATER_EMOJI_NAME` are for **name-rater**. Defaults to nothing, it just won't be there.
 
 #### API Keys, IDs, and Secrets
 * `ANILIST_USERNAME` is your username for [Anilist](https://anilist.co/home). Optional, defaults to "dragonfire535".
