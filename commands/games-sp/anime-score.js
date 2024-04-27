@@ -124,7 +124,7 @@ module.exports = class AnimeScoreCommand extends Command {
 				},
 				query: searchGraphQL
 			});
-		const pageInfo = body.data.Page.pageInfo;
+		const { pageInfo } = body.data.Page;
 		this.totalAnime = pageInfo.lastPage * pageInfo.perPage;
 		setTimeout(() => { this.totalAnime = null; }, 2.16e+7);
 		return this.totalAnime;
