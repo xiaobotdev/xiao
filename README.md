@@ -71,7 +71,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Start Xiao up!
 
 ## Commands
-Total: 510
+Total: 509
 
 ### Utility:
 
