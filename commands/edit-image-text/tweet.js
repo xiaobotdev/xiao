@@ -239,8 +239,8 @@ module.exports = class TweetCommand extends Command {
 	}
 
 	fillHashtags(ctx, wrappedText, x, y, emojiSize) {
-		const height = 23 + 5;
 		let currentLine = 0;
+		let currentY = y;
 		for (const line of wrappedText) {
 			const words = line.split(' ');
 			for (let i = 0; i < words.length; i++) {
@@ -254,9 +254,11 @@ module.exports = class TweetCommand extends Command {
 				if (emoji) preLen += emoji.length * emojiSize;
 				const oldStyle = ctx.fillStyle;
 				ctx.fillStyle = '#1da1f2';
-				ctx.fillText(word, x + preLen, y + (height * currentLine));
+				ctx.fillText(word, x + preLen, currentY);
 				ctx.fillStyle = oldStyle;
 			}
+			const metrics = ctx.measureText(line);
+			currentY += metrics.emHeightAscent + metrics.emHeightDescent;
 			currentLine++;
 		}
 		return ctx;
