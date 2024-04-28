@@ -84,7 +84,7 @@ module.exports = class TweetCommand extends Command {
 			imageHeight = imageData.height * imageHeightRatio;
 			const imageCanvas = createCanvas(740, imageHeight);
 			const imageCtx = imageCanvas.getContext('2d');
-			canvas.height += imageHeight + 15;
+			canvas.height += imageHeight + 30;
 			ctx.fillRect(0, base1.height, canvas.width, linesLen + imageHeight + 15);
 			const x = 0;
 			const y = 0;
@@ -95,7 +95,7 @@ module.exports = class TweetCommand extends Command {
 			imageCtx.drawImage(imageData, 0, 0, imageWidth, imageHeight);
 			this.roundedPath(imageCtx, radius, x, y, imageWidth, imageHeight);
 			imageCtx.strokeStyle = '#303336';
-			imageCtx.lineWidth = 10;
+			imageCtx.lineWidth = 5;
 			imageCtx.stroke();
 			ctx.drawImage(imageCanvas, 17, base1.height + linesLen, imageWidth, imageHeight);
 		}
