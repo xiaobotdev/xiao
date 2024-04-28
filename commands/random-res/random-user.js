@@ -12,7 +12,7 @@ module.exports = class RandomUserCommand extends Command {
 	}
 
 	run(msg) {
-		if (msg.channel.type === 'dm') {
+		if (!msg.guild) {
 			const members = [this.client.user, msg.channel.recipient];
 			return msg.say(`I choose ${members[Math.floor(Math.random() * members.length)].tag}!`);
 		}
