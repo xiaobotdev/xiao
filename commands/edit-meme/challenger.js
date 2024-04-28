@@ -133,18 +133,27 @@ module.exports = class ChallengerCommand extends Command {
 
 	centerInBox(ctx, img, boxX, boxY, boxWidth, boxHeight) {
 		const imgAspectRatio = img.width / img.height;
-		const boxAspectRatio = boxWidth / boxHeight;
-		let drawWidth, drawHeight;
-		if (imgAspectRatio > boxAspectRatio) {
-			drawHeight = boxHeight;
-			drawWidth = img.width * (drawHeight / img.height);
-		} else {
-			drawWidth = boxWidth;
-			drawHeight = img.height * (drawWidth / img.width);
-		}
-		const drawX = boxX + ((boxWidth - drawWidth) / 2);
-		const drawY = boxY + ((boxHeight - drawHeight) / 2);
-		ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+    	const boxAspectRatio = boxWidth / boxHeight;
+    	let drawWidth;
+		let drawHeight;
+    	if (imgAspectRatio > boxAspectRatio) {
+    		drawWidth = boxWidth;
+       		drawHeight = drawWidth / imgAspectRatio;
+        	if (drawHeight > boxHeight) {
+            	drawHeight = boxHeight;
+            	drawWidth = drawHeight * imgAspectRatio;
+        	}
+    	} else {
+        	drawHeight = boxHeight;
+        	drawWidth = drawHeight * imgAspectRatio;
+        	if (drawWidth > boxWidth) {
+            	drawWidth = boxWidth;
+            	drawHeight = drawWidth / imgAspectRatio;
+        	}
+    	}
+    	const drawX = boxX + ((boxWidth - drawWidth) / 2);
+    	const drawY = boxY + ((boxHeight - drawHeight) / 2);
+    	ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
 		return ctx;
 	}
 };
