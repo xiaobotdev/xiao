@@ -127,7 +127,6 @@ module.exports = class TweetCommand extends Command {
 			this.roundedPath(labelCtx, 3, 5, 5, 20, 20);
 			labelCtx.clip();
 			labelCtx.drawImage(labelImg, 5, 5, 20, 20);
-			this.roundedPath(labelCtx, 3, 0, 0, 30, 30);
 			labelCtx.save();
 			labelCtx.beginPath();
 			labelCtx.rect(0, 0, 30, 30);
