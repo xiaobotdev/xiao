@@ -1111,7 +1111,7 @@ Total: 510
    - [Cards Against Humanity](https://cardsagainsthumanity.com/) (Original Game, Card Data)
    - [JSON Against Humanity](https://www.crhallberg.com/cah/) (Card Data)
 * **chess:**
-   - [PNGkey.com](https://www.pngkey.com/) ([Piece Images](https://www.pngkey.com/maxpic/u2w7q8o0r5y3t4w7/))
+   - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) ([Piece Images](https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent))
    - [Chess.com](https://www.chess.com/) (Board Image)
 * **connect-four:**
    - [Hasbro](https://shop.hasbro.com/en-us) (Original "Connect Four" Game)
@@ -1341,7 +1341,10 @@ Total: 510
 * **catch:**
    - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
 * **challenger:**
-   - [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ) ([Image](https://www.youtube.com/watch?v=3FebRrXg0bk))
+   - [gman5846](https://www.deviantart.com/gman5846) ([Melee Image](https://www.deviantart.com/gman5846/art/SSBM-Challenger-Approaching-Template-861023507))
+   - [Kevster823](https://www.deviantart.com/kevster823) ([Brawl Image](https://www.deviantart.com/kevster823/art/SSBB-Challenger-Approaching-Template-401524280))
+   - [Jack The Awesomeness Gamer](https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ) ([Smash 4 Image](https://www.youtube.com/watch?v=3FebRrXg0bk))
+   - [MatthewThePrep](https://www.deviantart.com/matthewtheprep) ([Ultimate Image](https://www.deviantart.com/matthewtheprep/art/SSBU-Challenger-Approaching-meme-template-800422972))
    - [Nintendo](https://www.nintendo.com/) ([Original "Super Smash Bros." Game](https://www.smashbros.com/en_US/index.html))
 * **change-my-mind:**
    - [Steven Crowder](https://www.youtube.com/StevenCrowder) ([Image](https://twitter.com/scrowder/status/964577508447449088))
