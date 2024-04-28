@@ -5,15 +5,30 @@ const request = require('node-superfetch');
 const path = require('path');
 const { silhouette, hasAlpha, centerImagePart } = require('../../util/Canvas');
 const games = {
-	ultimate: {
-		x: 645,
-		y: 132,
-		size: 400
+	64: {
+		x: 197,
+		y: 100,
+		size: 100
+	},
+	melee: {
+		x: 450,
+		y: 153,
+		size: 165
+	},
+	brawl: {
+		x: 323,
+		y: 106,
+		size: 165
 	},
 	4: {
 		x: 484,
 		y: 98,
 		size: 256
+	},
+	ultimate: {
+		x: 645,
+		y: 132,
+		size: 400
 	}
 };
 
@@ -31,6 +46,18 @@ module.exports = class ChallengerCommand extends Command {
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
+				{
+					name: 'gman5846',
+					url: 'https://www.deviantart.com/gman5846',
+					reason: 'Melee Image',
+					reasonURL: 'https://www.deviantart.com/gman5846/art/SSBM-Challenger-Approaching-Template-861023507'
+				},
+				{
+					name: 'Kevster823',
+					url: 'https://www.deviantart.com/kevster823',
+					reason: 'Brawl Image',
+					reasonURL: 'https://www.deviantart.com/kevster823/art/SSBB-Challenger-Approaching-Template-401524280'
+				},
 				{
 					name: 'Jack The Awesomeness Gamer',
 					url: 'https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ',
