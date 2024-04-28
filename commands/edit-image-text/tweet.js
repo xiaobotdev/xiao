@@ -122,12 +122,12 @@ module.exports = class TweetCommand extends Command {
 		if (userData.label) {
 			const labelData = await request.get(userData.label);
 			const labelImg = await loadImage(labelData.body);
-			const labelCanvas = createCanvas(20, 20);
+			const labelCanvas = createCanvas(25, 25);
 			const labelCtx = labelCanvas.getContext('2d');
-			this.roundedPath(labelCtx, 5, 0, 0, 20, 20);
+			this.roundedPath(labelCtx, 3, 5, 5, 20, 20);
 			labelCtx.clip();
-			labelCtx.drawImage(labelImg, 0, 0, 20, 20);
-			this.roundedPath(labelCtx, 5, 0, 0, 20, 20);
+			labelCtx.drawImage(labelImg, 5, 5, 20, 20);
+			this.roundedPath(labelCtx, 3, 0, 0, 25, 25);
 			labelCtx.clip();
 			labelCtx.strokeStyle = '#303336';
 			labelCtx.lineWidth = 5;
