@@ -198,7 +198,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.closePath();
 			ctx.clip();
 		} else {
-			this.roundedPath(ctx, 10, 17, 84, 52, 52);
+			this.roundedPath(ctx, 5, 17, 84, 52, 52);
 			ctx.clip();
 		}
 		ctx.drawImage(avatar, 17, 84, 52, 52);
