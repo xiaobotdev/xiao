@@ -4,6 +4,18 @@ const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { silhouette, hasAlpha, centerImagePart } = require('../../util/Canvas');
+const games = {
+	ultimate: {
+		x: 645,
+		y: 132,
+		size: 400
+	},
+	4: {
+		x: 484,
+		y: 98,
+		size: 256
+	}
+};
 
 module.exports = class ChallengerCommand extends Command {
 	constructor(client) {
@@ -22,8 +34,14 @@ module.exports = class ChallengerCommand extends Command {
 				{
 					name: 'Jack The Awesomeness Gamer',
 					url: 'https://www.youtube.com/channel/UCIeA23B91hAeR1UuC2VDSdQ',
-					reason: 'Image',
+					reason: 'Smash 4 Image',
 					reasonURL: 'https://www.youtube.com/watch?v=3FebRrXg0bk'
+				},
+				{
+					name: 'MatthewThePrep',
+					url: 'https://www.deviantart.com/matthewtheprep',
+					reason: 'Ultimate Image',
+					reasonURL: 'https://www.deviantart.com/matthewtheprep/art/SSBU-Challenger-Approaching-meme-template-800422972'
 				},
 				{
 					name: 'Nintendo',
@@ -44,6 +62,12 @@ module.exports = class ChallengerCommand extends Command {
 			],
 			args: [
 				{
+					key: 'game',
+					type: 'string',
+					oneOf: Object.keys(games),
+					parse: game => game.toLowerCase()
+				},
+				{
 					key: 'image',
 					type: 'image-or-avatar',
 					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 256 })
@@ -52,15 +76,16 @@ module.exports = class ChallengerCommand extends Command {
 		});
 	}
 
-	async run(msg, { image, flags }) {
+	async run(msg, { game, image, flags }) {
 		const silhouetted = !(flags.show || flags.s);
-		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger.png'));
+		const gameData = games[game];
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'challenger', `${game}.png`));
 		const { body } = await request.get(image);
 		const data = await loadImage(body);
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		const { x, y, width, height } = centerImagePart(data, 256, 256, 484, 98);
+		const { x, y, width, height } = centerImagePart(data, gameData.size, gameData.size, gameData.x, gameData.y);
 		ctx.drawImage(silhouetted ? this.silhouetteImage(data) : data, x, y, width, height);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 	}
