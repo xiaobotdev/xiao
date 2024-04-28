@@ -118,7 +118,7 @@ module.exports = class ChallengerCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		const img = silhouetted ? this.silhouetteImage(data) : data;
-		centerInBox(ctx, img, gameData.x, gameData.y, gameData.maxWidth, gameData.maxHeight);
+		this.centerInBox(ctx, img, gameData.x, gameData.y, gameData.maxWidth, gameData.maxHeight);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 	}
 
