@@ -124,17 +124,13 @@ module.exports = class TweetCommand extends Command {
 			const labelImg = await loadImage(labelData.body);
 			const labelCanvas = createCanvas(30, 30);
 			const labelCtx = labelCanvas.getContext('2d');
+			this.roundedPath(labelCtx, 3, 0, 0, 30, 30);
+			labelCtx.clip();
+			labelCtx.fillStyle = '#303336';
+			labelCtx.fillRect(0, 0, 30, 30);
 			this.roundedPath(labelCtx, 3, 5, 5, 20, 20);
 			labelCtx.clip();
 			labelCtx.drawImage(labelImg, 5, 5, 20, 20);
-			labelCtx.save();
-			labelCtx.beginPath();
-			labelCtx.rect(0, 0, 30, 30);
-			labelCtx.clip();
-			labelCtx.strokeStyle = '#303336';
-			labelCtx.lineWidth = 5;
-			labelCtx.stroke();
-			labelCtx.restore();
 			ctx.drawImage(labelCanvas, 80 + nameLen + 3 + 20 + 3, 90, 30, 30);
 		}
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(17);
