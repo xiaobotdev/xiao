@@ -90,10 +90,10 @@ module.exports = class TweetCommand extends Command {
 			const y = 0;
 			const imageWidth = 740;
 			const radius = 15;
-			this.createImageBorder(imageCtx, radius, x, y, imageWidth, imageHeight);
+			this.roundedPath(imageCtx, radius, x, y, imageWidth, imageHeight);
 			imageCtx.clip();
 			imageCtx.drawImage(imageData, 0, 0, imageWidth, imageHeight);
-			this.createImageBorder(imageCtx, radius, x, y, imageWidth, imageHeight);
+			this.roundedPath(imageCtx, radius, x, y, imageWidth, imageHeight);
 			imageCtx.strokeStyle = '#303336';
 			imageCtx.lineWidth = 10;
 			imageCtx.stroke();
