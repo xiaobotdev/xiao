@@ -19,7 +19,8 @@ module.exports = class RandomUserCommand extends Command {
 			const members = [this.client.user, msg.channel.recipient];
 			member = members[Math.floor(Math.random() * members.length)];
 		}
-		if (member.id === this.client.user.id) return msg.say('I choose myself!');
-		return msg.say(`I choose ${member.tag}!`);
+		if (member.id === this.client.user.id) return msg.reply('I choose myself!');
+		if (member.id === msg.author.id) return msg.reply('I choose you!');
+		return msg.reply(`I choose ${member.tag}!`);
 	}
 };
