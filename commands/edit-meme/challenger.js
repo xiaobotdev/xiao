@@ -3,7 +3,7 @@ const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { silhouette, hasAlpha } = require('../../util/Canvas');
+const { silhouette, hasAlpha, centerImagePart } = require('../../util/Canvas');
 const games = {
 	64: {
 		x: 207,
@@ -118,7 +118,8 @@ module.exports = class ChallengerCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		const img = silhouetted ? this.silhouetteImage(data) : data;
-		this.centerInBox(ctx, img, gameData.x, gameData.y, gameData.maxWidth, gameData.maxHeight);
+		const { x, y, width, height } = centerImagePart(img, gameData.maxWidth, gameData.maxHeight, gameData.x, gameData.y);
+		ctx.drawImage(img, x, y, width, height);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 	}
 
@@ -129,31 +130,5 @@ module.exports = class ChallengerCommand extends Command {
 		ctx.drawImage(image, 0, 0);
 		silhouette(ctx, 0, 0, image.width, image.height);
 		return canvas;
-	}
-
-	centerInBox(ctx, img, boxX, boxY, boxWidth, boxHeight) {
-		const imgAspectRatio = img.width / img.height;
-    	const boxAspectRatio = boxWidth / boxHeight;
-    	let drawWidth;
-		let drawHeight;
-    	if (imgAspectRatio > boxAspectRatio) {
-    		drawWidth = boxWidth;
-       		drawHeight = drawWidth / imgAspectRatio;
-        	if (drawHeight > boxHeight) {
-            	drawHeight = boxHeight;
-            	drawWidth = drawHeight * imgAspectRatio;
-        	}
-    	} else {
-        	drawHeight = boxHeight;
-        	drawWidth = drawHeight * imgAspectRatio;
-        	if (drawWidth > boxWidth) {
-            	drawWidth = boxWidth;
-            	drawHeight = drawWidth / imgAspectRatio;
-        	}
-    	}
-    	const drawX = boxX + ((boxWidth - drawWidth) / 2);
-    	const drawY = boxY + ((boxHeight - drawHeight) / 2);
-    	ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
-		return ctx;
 	}
 };
