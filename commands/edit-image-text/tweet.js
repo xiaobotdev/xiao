@@ -106,7 +106,7 @@ module.exports = class TweetCommand extends Command {
 		const bookmarks = randomRange(Math.ceil(userData.followers * 0.000015), Math.ceil(userData.followers * 0.00002));
 		const views = randomRange(Math.ceil(userData.followers * 10), Math.ceil(userData.followers * 30));
 		ctx.drawImage(base1, 0, 0);
-		const base2StartY = base1.height + linesLen + (image ? imageHeight + 15 : 0);
+		const base2StartY = base1.height + linesLen + (image ? imageHeight + 30 : 0);
 		ctx.drawImage(base2, 0, base2StartY);
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('ChirpBold.ttf').toCanvasString(18);
