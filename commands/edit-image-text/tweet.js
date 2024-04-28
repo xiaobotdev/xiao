@@ -128,7 +128,6 @@ module.exports = class TweetCommand extends Command {
 			labelCtx.clip();
 			labelCtx.drawImage(labelImg, 5, 5, 20, 20);
 			this.roundedPath(labelCtx, 3, 0, 0, 30, 30);
-			labelCtx.clip();
 			labelCtx.strokeStyle = '#303336';
 			labelCtx.lineWidth = 5;
 			labelCtx.stroke();
