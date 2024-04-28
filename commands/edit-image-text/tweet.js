@@ -57,12 +57,9 @@ module.exports = class TweetCommand extends Command {
 				}
 			]
 		});
-
-		this.guestClient = null;
 	}
 
 	async run(msg, { user, text, image }) {
-		if (!this.guestClient) this.guestClient = await api.getGuestClient();
 		const userData = await this.fetchUser(user);
 		const avatar = await loadImage(userData.avatar);
 		const base1 = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'bg-1.png'));
@@ -285,7 +282,8 @@ module.exports = class TweetCommand extends Command {
 
 	async fetchUser(user) {
 		try {
-			const { data } = await this.guestClient.getUserApi().getUserByScreenName({ screenName: user });
+			const guestClient = await api.getGuestClient();
+			const { data } = await guestClient.getUserApi().getUserByScreenName({ screenName: user });
 			const body = data.user.legacy;
 			const avatarRes = await request.get(body.profileImageUrlHttps);
 			let checkType = null;
