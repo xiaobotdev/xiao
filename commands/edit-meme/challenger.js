@@ -3,32 +3,37 @@ const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const { silhouette, hasAlpha, centerImagePart } = require('../../util/Canvas');
+const { silhouette, hasAlpha } = require('../../util/Canvas');
 const games = {
 	64: {
-		x: 197,
-		y: 100,
-		size: 100
+		x: 207,
+		y: 91,
+		maxWidth: 80,
+		maxHeight: 123
 	},
 	melee: {
-		x: 450,
-		y: 153,
-		size: 165
+		x: 447,
+		y: 113,
+		maxWidth: 181,
+		maxHeight: 247
 	},
 	brawl: {
-		x: 323,
-		y: 106,
-		size: 165
+		x: 321,
+		y: 83,
+		maxWidth: 140,
+		maxHeight: 222
 	},
 	4: {
-		x: 484,
-		y: 98,
-		size: 256
+		x: 459,
+		y: 82,
+		maxWidth: 281,
+		maxHeight: 294
 	},
 	ultimate: {
-		x: 645,
-		y: 132,
-		size: 400
+		x: 612,
+		y: 80,
+		maxWidth: 500,
+		maxHeight: 500
 	}
 };
 
@@ -112,8 +117,8 @@ module.exports = class ChallengerCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		const { x, y, width, height } = centerImagePart(data, gameData.size, gameData.size, gameData.x, gameData.y);
-		ctx.drawImage(silhouetted ? this.silhouetteImage(data) : data, x, y, width, height);
+		const img = silhouetted ? this.silhouetteImage(data) : data;
+		centerInBox(ctx, img, gameData.x, gameData.y, gameData.maxWidth, gameData.maxHeight);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
 	}
 
@@ -124,5 +129,22 @@ module.exports = class ChallengerCommand extends Command {
 		ctx.drawImage(image, 0, 0);
 		silhouette(ctx, 0, 0, image.width, image.height);
 		return canvas;
+	}
+
+	centerInBox(ctx, img, boxX, boxY, boxWidth, boxHeight) {
+		const imgAspectRatio = img.width / img.height;
+		const boxAspectRatio = boxWidth / boxHeight;
+		let drawWidth, drawHeight;
+		if (imgAspectRatio > boxAspectRatio) {
+			drawHeight = boxHeight;
+			drawWidth = img.width * (drawHeight / img.height);
+		} else {
+			drawWidth = boxWidth;
+			drawHeight = img.height * (drawWidth / img.width);
+		}
+		const drawX = boxX + ((boxWidth - drawWidth) / 2);
+		const drawY = boxY + ((boxHeight - drawHeight) / 2);
+		ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+		return ctx;
 	}
 };
