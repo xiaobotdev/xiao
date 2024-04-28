@@ -80,19 +80,19 @@ module.exports = class TweetCommand extends Command {
 		if (image) {
 			const { body } = await request.get(image);
 			const imageData = await loadImage(body);
-			const imageHeightRatio = 740 / imageData.width;
+			const imageWidth = 740;
+			const imageHeightRatio = imageWidth / imageData.width;
 			imageHeight = imageData.height * imageHeightRatio;
-			const imageCanvas = createCanvas(740, imageHeight);
+			const imageCanvas = createCanvas(imageWidth, imageHeight);
 			const imageCtx = imageCanvas.getContext('2d');
 			canvas.height += imageHeight + 30;
 			ctx.fillRect(0, base1.height, canvas.width, linesLen + imageHeight + 30);
 			const x = 0;
 			const y = 0;
-			const imageWidth = 740;
 			const radius = 15;
 			this.roundedPath(imageCtx, radius, x, y, imageWidth, imageHeight);
 			imageCtx.clip();
-			imageCtx.drawImage(imageData, 0, 0, imageWidth, imageHeight);
+			imageCtx.drawImage(imageData, x, y, imageWidth, imageHeight);
 			this.roundedPath(imageCtx, radius, x, y, imageWidth, imageHeight);
 			imageCtx.strokeStyle = '#303336';
 			imageCtx.lineWidth = 5;
