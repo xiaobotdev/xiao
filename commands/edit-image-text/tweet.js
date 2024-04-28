@@ -97,7 +97,7 @@ module.exports = class TweetCommand extends Command {
 			imageCtx.strokeStyle = '#303336';
 			imageCtx.lineWidth = 5;
 			imageCtx.stroke();
-			ctx.drawImage(imageCanvas, 17, base1.height + linesLen, imageWidth, imageHeight + 15);
+			ctx.drawImage(imageCanvas, 17, base1.height + linesLen + 15, imageWidth, imageHeight);
 		}
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
 		const retweets = randomRange(Math.ceil(userData.followers * 0.00015), Math.ceil(userData.followers * 0.0002));
