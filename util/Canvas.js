@@ -275,20 +275,28 @@ module.exports = class CanvasUtil {
 		return { x, y, width, height };
 	}
 
-	static centerImagePart(data, maxWidth, maxHeight, widthOffset, heightOffest) {
-		let { width, height } = data;
-		if (width > maxWidth) {
-			const ratio = maxWidth / width;
-			width = maxWidth;
-			height *= ratio;
-		}
-		if (height > maxHeight) {
-			const ratio = maxHeight / height;
-			height = maxHeight;
-			width *= ratio;
-		}
-		const x = widthOffset + ((maxWidth / 2) - (width / 2));
-		const y = heightOffest + ((maxHeight / 2) - (height / 2));
-		return { x, y, width, height };
+	static centerImagePart(img, boxWidth, boxHeight, boxX, boxY) {
+		const imgAspectRatio = img.width / img.height;
+    	const boxAspectRatio = boxWidth / boxHeight;
+    	let drawWidth;
+		let drawHeight;
+    	if (imgAspectRatio > boxAspectRatio) {
+    		drawWidth = boxWidth;
+       		drawHeight = drawWidth / imgAspectRatio;
+        	if (drawHeight > boxHeight) {
+            	drawHeight = boxHeight;
+            	drawWidth = drawHeight * imgAspectRatio;
+        	}
+    	} else {
+        	drawHeight = boxHeight;
+        	drawWidth = drawHeight * imgAspectRatio;
+        	if (drawWidth > boxWidth) {
+            	drawWidth = boxWidth;
+            	drawHeight = drawWidth / imgAspectRatio;
+        	}
+    	}
+    	const drawX = boxX + ((boxWidth - drawWidth) / 2);
+    	const drawY = boxY + ((boxHeight - drawHeight) / 2);
+		return { x: drawX, y: drawY, width: drawWidth, height: drawHeight };
 	}
 };
