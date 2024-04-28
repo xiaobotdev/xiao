@@ -22,10 +22,10 @@ module.exports = class ChessCommand extends Command {
 			game: true,
 			credit: [
 				{
-					name: 'PNGkey.com',
-					url: 'https://www.pngkey.com/',
+					name: 'Wikimedia Commons',
+					url: 'https://commons.wikimedia.org/wiki/Main_Page',
 					reason: 'Piece Images',
-					reasonURL: 'https://www.pngkey.com/maxpic/u2w7q8o0r5y3t4w7/'
+					reasonURL: 'https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent'
 				},
 				{
 					name: 'Chess.com',
