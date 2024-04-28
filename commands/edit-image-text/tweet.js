@@ -128,10 +128,15 @@ module.exports = class TweetCommand extends Command {
 			labelCtx.clip();
 			labelCtx.drawImage(labelImg, 5, 5, 20, 20);
 			this.roundedPath(labelCtx, 3, 0, 0, 30, 30);
+			labelCtx.save();
+			labelCtx.beginPath();
+			labelCtx.rect(0, 0, 30, 30);
+			labelCtx.clip();
 			labelCtx.strokeStyle = '#303336';
 			labelCtx.lineWidth = 5;
 			labelCtx.stroke();
-			ctx.drawImage(labelCanvas, 80 + nameLen + 3 + 20 + 3, 90, 20, 20);
+			labelCtx.restore();
+			ctx.drawImage(labelCanvas, 80 + nameLen + 3 + 20 + 3, 90, 30, 30);
 		}
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(17);
 		ctx.fillStyle = '#71767b';
