@@ -90,19 +90,13 @@ module.exports = class TweetCommand extends Command {
 			const y = 0;
 			const imageWidth = 740;
 			const radius = 15;
-			imageCtx.beginPath();
-			imageCtx.moveTo(x + radius, y);
-			imageCtx.lineTo(x + imageWidth - radius, y);
-			imageCtx.quadraticCurveTo(x + imageWidth, y, x + imageWidth, y + radius);
-			imageCtx.lineTo(x + imageWidth, y + imageHeight - radius);
-			imageCtx.quadraticCurveTo(x + imageWidth, y + imageHeight, x + imageWidth - radius, y + imageHeight);
-			imageCtx.lineTo(x + radius, y + imageHeight);
-			imageCtx.quadraticCurveTo(x, y + imageHeight, x, y + imageHeight - radius);
-			imageCtx.lineTo(x, y + radius);
-			imageCtx.quadraticCurveTo(x, y, x + radius, y);
-			imageCtx.closePath();
+			this.createImageBorder(imageCtx, radius, x, y, imageWidth, imageHeight);
 			imageCtx.clip();
 			imageCtx.drawImage(imageData, 0, 0, imageWidth, imageHeight);
+			this.createImageBorder(imageCtx, radius, x, y, imageWidth, imageHeight);
+			imageCtx.strokeStyle = '#303336';
+			imageCtx.lineWidth = 10;
+			imageCtx.stroke();
 			ctx.drawImage(imageCanvas, 17, base1.height + linesLen, imageWidth, imageHeight);
 		}
 		const likes = randomRange(Math.ceil(userData.followers * 0.0015), Math.ceil(userData.followers * 0.002));
@@ -200,6 +194,21 @@ module.exports = class TweetCommand extends Command {
 		}
 		ctx.drawImage(avatar, 17, 84, 52, 52);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
+	}
+
+	roundedPath(ctx, radius, x, y, imageHeight, imageWidth) {
+		ctx.beginPath();
+		ctx.moveTo(x + radius, y);
+		ctx.lineTo(x + imageWidth - radius, y);
+		ctx.quadraticCurveTo(x + imageWidth, y, x + imageWidth, y + radius);
+		ctx.lineTo(x + imageWidth, y + imageHeight - radius);
+		ctx.quadraticCurveTo(x + imageWidth, y + imageHeight, x + imageWidth - radius, y + imageHeight);
+		ctx.lineTo(x + radius, y + imageHeight);
+		ctx.quadraticCurveTo(x, y + imageHeight, x, y + imageHeight - radius);
+		ctx.lineTo(x, y + radius);
+		ctx.quadraticCurveTo(x, y, x + radius, y);
+		ctx.closePath();
+		return ctx;
 	}
 
 	async fillTextWithEmoji(ctx, text, x, y, maxLineLen, emojiSize) {
