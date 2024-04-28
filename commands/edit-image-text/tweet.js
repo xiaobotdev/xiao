@@ -205,7 +205,7 @@ module.exports = class TweetCommand extends Command {
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tweet.png' }] });
 	}
 
-	roundedPath(ctx, radius, x, y, imageHeight, imageWidth) {
+	roundedPath(ctx, radius, x, y, imageWidth, imageHeight) {
 		ctx.beginPath();
 		ctx.moveTo(x + radius, y);
 		ctx.lineTo(x + imageWidth - radius, y);
