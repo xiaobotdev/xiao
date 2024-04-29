@@ -71,7 +71,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 22. Start Xiao up!
 
 ## Commands
-Total: 510
+Total: 511
 
 ### Utility:
 
@@ -392,6 +392,7 @@ Total: 510
 * **contrast:** Draws an image or a user's avatar but with contrast.
 * **convert-image:** Converts an image from one format to another.
 * **create-qr-code:** Converts text to a QR Code.
+* **crop-to-content:** Crops an image to its content.
 * **desaturate:** Draws an image or a user's avatar but desaturated.
 * **dexter:** Draws an image or a user's avatar over the screen of Dexter from Pokémon.
 * **distort:** Draws an image or a user's avatar but distorted.
