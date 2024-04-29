@@ -9,12 +9,10 @@ module.exports = class UserArgumentType extends ArgumentType {
 		const matches = val.match(/^(?:<@!?)?([0-9]+)>?$/);
 		if (matches) {
 			try {
-				console.log(matches);
 				const user = await msg.client.users.fetch(matches[1]);
 				if (!user) return false;
 				return true;
 			} catch (err) {
-				console.error(err);
 				return false;
 			}
 		}
