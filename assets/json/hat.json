@@ -1,70 +1,87 @@
 {
 	"anon": {
 		"file": "anon.png",
-		"comment": "Wow {{user}}, you look ready to hack!"
+		"comment": "Wow {{user}}, you look ready to hack!",
+		"commentMe": "I'm ready to hack!"
 	},
 	"ash": {
 		"file": "ash.png",
-		"comment": "How's that Pokédex coming along, {{user}}?"
+		"comment": "How's that Pokédex coming along, {{user}}?",
+		"commentMe": "I've caught 'em all, professor!"
 	},
 	"becel": {
 		"file": "becel.png",
-		"comment": "Bake Well, Cook Well and Live Well, {{user}}."
+		"comment": "Bake Well, Cook Well and Live Well, {{user}}.",
+		"commentMe": "There's butter on my head."
 	},
 	"biden": {
 		"file": "biden.png",
-		"comment": "[#Biden2024](<https://joebiden.com/>)!"
+		"comment": "[#Biden2024](<https://joebiden.com/>)!",
+		"commentMe": "[#Biden2024](<https://joebiden.com/>)!"
 	},
 	"birthday": {
 		"file": "birthday.png",
-		"comment": "Happy birthday, {{user}}!"
+		"comment": "Happy birthday, {{user}}!",
+		"commentMe": "Happy birthday to me!"
 	},
 	"christmas": {
 		"file": "christmas.png",
-		"comment": "Merry Christmas, {{user}}! I hope you've been good for Santa!"
+		"comment": "Merry Christmas, {{user}}! I hope you've been good for Santa!",
+		"commentMe": "Merry Christmas! I've been good this year!"
 	},
 	"devil": {
 		"file": "devil.png",
-		"comment": "Naughty little {{user}}! How's Hell going for ya?"
+		"comment": "Naughty little {{user}}! How's Hell going for ya?",
+		"commentMe": "Hehehe, wanna join me down here?"
 	},
 	"disguise": {
 		"file": "disguise.png",
-		"comment": "Huh? {{user}}? Where did you go?"
+		"comment": "Huh? {{user}}? Where did you go?",
+		"commentMe": "What? I'm not Xiao!"
 	},
 	"dunce": {
 		"file": "dunce.png",
-		"comment": "Hehe, {{user}}, you're so dumb!"
+		"comment": "Hehe, {{user}}, you're so dumb!",
+		"commentMe": "Hehe, I'm so dumb!"
 	},
 	"leprechaun": {
 		"file": "leprechaun.png",
-		"comment": "Hearts, stars, and horeshoes, clovers and blue moons, hourglasses, rainbows, and tasty red balloons!"
+		"comment": "Hearts, stars, and horeshoes, clovers and blue moons, hourglasses, rainbows, and tasty red balloons!",
+		"commentMe": "Hearts, stars, and horeshoes, clovers and blue moons, hourglasses, rainbows, and tasty red balloons!"
 	},
 	"mask": {
 		"file": "mask.png",
-		"comment": "Good job {{user}}! Don't wanna get anyone sick!"
+		"comment": "Good job {{user}}! Don't wanna get anyone sick!",
+		"commentMe": "Won't get sick from me!"
 	},
 	"megumin": {
 		"file": "megumin.png",
-		"comment": "Oh, blackness shrouded in light, frenzied blaze clad in night...\nIn the name of the crimson demons, let the collapse of thine origin manifest.\nSummon before me the root of thy power hidden within the lands of the kingdom of demise!\n\nEXPLOSION!"
+		"comment": "Oh, blackness shrouded in light, frenzied blaze clad in night...\nIn the name of the crimson demons, let the collapse of thine origin manifest.\nSummon before me the root of thy power hidden within the lands of the kingdom of demise!\n\nEXPLOSION!",
+		"commentMe": "Oh, blackness shrouded in light, frenzied blaze clad in night...\nIn the name of the crimson demons, let the collapse of thine origin manifest.\nSummon before me the root of thy power hidden within the lands of the kingdom of demise!\n\nEXPLOSION!"
 	},
 	"pilgrim": {
 		"file": "pilgrim.png",
-		"comment": "How's the turkey, {{user}}?"
+		"comment": "How's the turkey, {{user}}?",
+		"commentMe": "I love turkey!"
 	},
 	"pirate": {
 		"file": "pirate.png",
-		"comment": "Yo ho, yo ho, a pirate's life for me!"
+		"comment": "Yo ho, yo ho, a pirate's life for me!",
+		"commentMe": "Yo ho, yo ho, a pirate's life for me!"
 	},
 	"soviet": {
 		"file": "soviet.png",
-		"comment": "In United States, you break the law. In Soviet Russia, law breaks you."
+		"comment": "In United States, you break the law. In Soviet Russia, law breaks you.",
+		"commentMe": "In United States, you break the law. In Soviet Russia, law breaks you."
 	},
 	"tophat": {
 		"file": "tophat.png",
-		"comment": "Oh, {{user}}! Top of the morning to ya!"
+		"comment": "Oh, {{user}}! Top of the morning to ya!",
+		"commentMe": "Top of the morning to ya!"
 	},
 	"witch": {
 		"file": "witch.png",
-		"comment": "Whatcha got in that cauldron, {{user}}?"
+		"comment": "Whatcha got in that cauldron, {{user}}?",
+		"commentMe": "Ahahahaha! Want a taste of my potion?"
 	}
 }
