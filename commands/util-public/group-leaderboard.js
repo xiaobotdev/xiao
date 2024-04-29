@@ -23,7 +23,7 @@ module.exports = class GroupLeaderboardCommand extends Command {
 	}
 
 	run(msg, { page }) {
-		const groups = this.client.registry.groups.filter(group => group.groupID !== 'util').map(group => {
+		const groups = this.client.registry.groups.filter(group => group.id !== 'util').map(group => {
 			const uses = group.commands.reduce((a, b) => {
 				if (b.unknown || !b.uses) return a;
 				return a + b.uses;
