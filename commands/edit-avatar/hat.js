@@ -3,9 +3,8 @@ const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
-const fs = require('fs');
-const hats = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'hat'))
-	.map(hat => hat.replace('.png', ''));
+const hats = require('../../assets/json/hat');
+const hatsKeys = Object.keys(hats);
 
 module.exports = class HatCommand extends Command {
 	constructor(client) {
@@ -14,7 +13,7 @@ module.exports = class HatCommand extends Command {
 			group: 'edit-avatar',
 			memberName: 'hat',
 			description: 'Draws a hat over a user\'s avatar.',
-			details: `**Hats:** ${hats.join(', ')}`,
+			details: `**Hats:** ${hatsKeys.join(', ')}`,
 			throttling: {
 				usages: 2,
 				duration: 10
@@ -131,7 +130,7 @@ module.exports = class HatCommand extends Command {
 				{
 					key: 'type',
 					type: 'string',
-					oneOf: ['random', ...hats],
+					oneOf: ['random', ...hatsKeys],
 					parse: type => type.toLowerCase()
 				},
 				{
@@ -144,15 +143,17 @@ module.exports = class HatCommand extends Command {
 	}
 
 	async run(msg, { type, user }) {
-		if (type === 'random') type = hats[Math.floor(Math.random() * hats.length)];
+		if (type === 'random') type = hatsKeys[Math.floor(Math.random() * hatsKeys.length)];
+		const hat = hats[type];
 		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
-		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'hat', `${type}.png`));
+		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'hat', hat.file));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
 		const canvas = createCanvas(avatar.width, avatar.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(avatar, 0, 0);
 		ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: `${type}-hat.png` }] });
+		const comment = hat.comment.replace(/{{user}}/g, user.tag);
+		return msg.say(comment, { files: [{ attachment: canvas.toBuffer(), name: `${type}-hat.png` }] });
 	}
 };

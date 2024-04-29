@@ -1,0 +1,70 @@
+{
+	"anon": {
+		"file": "anon.png",
+		"comment": "Wow {{user}}, you look ready to hack!"
+	},
+	"ash": {
+		"file": "ash.png",
+		"comment": "How's that Pokédex coming along, {{user}}?"
+	},
+	"becel": {
+		"file": "becel.png",
+		"comment": "Bake Well, Cook Well and Live Well, {{user}}."
+	},
+	"biden": {
+		"file": "biden.png",
+		"comment": "[#Biden2024](https://joebiden.com/)!"
+	},
+	"birthday": {
+		"file": "birthday.png",
+		"comment": "Happy birthday, {{user}}!"
+	},
+	"christmas": {
+		"file": "christmas.png",
+		"comment": "Merry Christmas, {{user}}! I hope you've been good for Santa!"
+	},
+	"devil": {
+		"file": "devil.png",
+		"comment": "Naughty little {{user}}! How's Hell going for ya?"
+	},
+	"disguise": {
+		"file": "disguise.png",
+		"comment": "Huh? {{user}}? Where did you go?"
+	},
+	"dunce": {
+		"file": "dunce.png",
+		"comment": "Hehe, {{user}}, you're so dumb!"
+	},
+	"leprechaun": {
+		"file": "leprechaun.png",
+		"comment": "Hearts, stars, and horeshoes, clovers and blue moons, hourglasses, rainbows, and tasty red balloons!"
+	},
+	"mask": {
+		"file": "mask.png",
+		"comment": "Good job {{user}}! Don't wanna get anyone sick!"
+	},
+	"megumin": {
+		"file": "megumin.png",
+		"comment": "Oh, blackness shrouded in light, frenzied blaze clad in night...\nIn the name of the crimson demons, let the collapse of thine origin manifest.\nSummon before me the root of thy power hidden within the lands of the kingdom of demise!\n\nEXPLOSION!"
+	},
+	"pilgrim": {
+		"file": "pilgrim.png",
+		"comment": "How's the turkey, {{user}}?"
+	},
+	"pirate": {
+		"file": "pirate.png",
+		"comment": "Yo ho, yo ho, a pirate's life for me!"
+	},
+	"soviet": {
+		"file": "soviet.png",
+		"comment": "In the US, you break the law. In Soviet Russia, law breaks you."
+	},
+	"tophat": {
+		"file": "tophat.png",
+		"comment": "Oh, {{user}}! Top of the morning to ya!"
+	},
+	"witch": {
+		"file": "witch.png",
+		"comment": "Whatcha got in that cauldron, {{user}}?"
+	}
+}
