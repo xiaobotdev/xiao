@@ -13,7 +13,7 @@
 	},
 	"biden": {
 		"file": "biden.png",
-		"comment": "[#Biden2024](https://joebiden.com/)!"
+		"comment": "[#Biden2024](<https://joebiden.com/>)!"
 	},
 	"birthday": {
 		"file": "birthday.png",
