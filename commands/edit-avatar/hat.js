@@ -153,7 +153,7 @@ module.exports = class HatCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(avatar, 0, 0);
 		ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
-		const comment = hat.comment.replace(/{{user}}/g, user.tag);
+		const comment = user.id === this.client.user.id ? hat.commentMe : hat.comment.replace(/{{user}}/g, user.tag);
 		return msg.say(comment, { files: [{ attachment: canvas.toBuffer(), name: `${type}-hat.png` }] });
 	}
 };
