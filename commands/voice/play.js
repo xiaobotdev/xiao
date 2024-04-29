@@ -62,6 +62,7 @@ module.exports = class PlayCommand extends Command {
 	async searchForVideo(query, nsfw) {
 		if (ytdl.validateURL(query)) return ytdl.getURLVideoID(query);
 		if (ytdl.validateID(query)) return query;
+		if (!GOOGLE_KEY) return null;
 		const { body } = await request
 			.get('https://www.googleapis.com/youtube/v3/search')
 			.query({

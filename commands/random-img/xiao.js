@@ -52,6 +52,7 @@ module.exports = class XiaoCommand extends Command {
 		else if (site === 'deviant') result = `Art by <https://www.deviantart.com/${source[2]}>`;
 		else if (site === 'pixiv') result = `Art Source: <https://www.pixiv.net/en/artworks/${source[2]}>`;
 		else result = `Art by ${site}`;
+		if (!SAUCENAO_KEY) return result;
 		try {
 			const data = await this.sauceNao(img);
 			if (data && data[0].similarity > 90) {

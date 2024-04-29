@@ -82,7 +82,7 @@ module.exports = class HangmanCommand extends Command {
 				points++;
 			}
 		}
-		const defined = await this.defineWord(word);
+		const defined = WEBSTER_KEY ? await this.defineWord(word) : null;
 		if (word.length === confirmation.length || guessed) {
 			return msg.say(stripIndents`
 				You won, it was ${word}!

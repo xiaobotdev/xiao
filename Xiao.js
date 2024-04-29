@@ -103,6 +103,48 @@ client.on('ready', async () => {
 		client.logger.error(`[DISABLED] Error while disabling commands:\n${err.stack}`);
 	}
 
+	// Check for API keys and disable commands that need them if not present
+	if (!process.env.REDIS_HOST || !process.env.REDIS_PASS) {
+		client.logger.error('[REDIS] No REDIS_HOST or REDIS_PASS in env. Exiting process.');
+		process.exit(1);
+	}
+	if (!process.env.BITLY_KEY) {
+		client.registry.commands.get('shorten-url').disable();
+		client.logger.info('[DISABLED] No BITLY_KEY in env. shorten-url has been disabled.');
+	}
+	if (!process.env.CLEVERBOT_KEY) {
+		client.registry.commands.get('cleverbot').disable();
+		client.registry.commands.get('cleverbot-end').disable();
+		client.logger.info('[DISABLED] No CLEVERBOT_KEY in env. cleverbot and cleverbot-end have been disabled.');
+	}
+	if (!process.env.GITHUB_ACCESS_TOKEN) {
+		client.registry.commands.get('github').disable();
+		client.registry.commands.get('changelog').disable();
+		client.logger.info('[DISABLED] No GITHUB_ACCESS_TOKEN in env. github and changelog have been disabled.');
+	}
+	if (!process.env.GOV_KEY) {
+		client.registry.commands.get('apod').disable();
+		client.logger.info('[DISABLED] No GOV_KEY in env. apod has been disabled.');
+	}
+	if (!process.env.SPOTIFY_KEY || !process.env.SPOTIFY_SECRET) {
+		client.registry.commands.get('guess-song').disable();
+		client.logger.info('[DISABLED] No SPOTIFY_KEY or SPOTIFY_SECRET in env. guess-song has been disabled.');
+	}
+	if (!process.env.THECATAPI_KEY) {
+		client.registry.commands.get('cat').disable();
+		client.logger.info('[DISABLED] No THECATAPI_KEY in env. cat has been disabled.');
+	}
+	if (!process.env.THEDOGAPI_KEY) {
+		client.registry.commands.get('dog').disable();
+		client.logger.info('[DISABLED] No THEDOGAPI_KEY in env. dog has been disabled.');
+	}
+	if (!process.env.WEBSTER_KEY) {
+		client.registry.commands.get('word-of-the-day').disable();
+		client.registry.commands.get('word-chain').disable();
+		client.registry.commands.get('define').disable();
+		client.logger.info('[DISABLED] No WEBSTER_KEY in env. word-of-the-day, word-chain, and define have been disabled.');
+	}
+
 	// Import command-last-run.json
 	try {
 		const results = client.importLastRun();
