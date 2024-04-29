@@ -131,7 +131,7 @@ module.exports = class HatCommand extends Command {
 				{
 					key: 'type',
 					type: 'string',
-					oneOf: hats,
+					oneOf: ['random', ...hats],
 					parse: type => type.toLowerCase()
 				},
 				{
@@ -144,6 +144,7 @@ module.exports = class HatCommand extends Command {
 	}
 
 	async run(msg, { type, user }) {
+		if (type === 'random') type = hats[Math.floor(Math.random() * hats.length)];
 		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'hat', `${type}.png`));
 		const { body } = await request.get(avatarURL);
