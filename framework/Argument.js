@@ -55,7 +55,7 @@ module.exports = class Argument {
 		} else if (this.max !== null && this.min === null && this.typeID === 'string') {
 			return `It must be at most ${this.max} characters long.`;
 		} else if (this.type instanceof UnionType) {
-			return `It must be a ${list(this.type.map(type => type.typeID), 'or')}.`;
+			return `It must be a ${list(this.type.types.map(type => type.id), 'or')}.`;
 		}
 		return `It must be a ${this.typeID}.`;
 	}
