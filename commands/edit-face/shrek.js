@@ -34,7 +34,7 @@ module.exports = class ShrekCommand extends Command {
 	async run(msg, { image }) {
 		const shrek = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'shrek.png'));
 		const imgData = await request.get(image);
-		const faces = await this.client.detectFaces(imgData.body);
+		const faces = await this.client.tensorflow.detectFaces(imgData.body);
 		if (!faces) return msg.reply('There are no faces in this image.');
 		if (faces === 'size') return msg.reply('This image is too large.');
 		const base = await loadImage(imgData.body);

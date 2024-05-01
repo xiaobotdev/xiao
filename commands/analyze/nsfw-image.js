@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { isImageNSFW } = require('../../util/Util');
 const displayNames = {
 	Drawing: 'SFW (Drawing)',
 	Neutral: 'SFW',
@@ -33,7 +32,7 @@ module.exports = class NsfwImageCommand extends Command {
 
 	async run(msg, { image }) {
 		const { body } = await request.get(image);
-		const predictions = await isImageNSFW(this.client.nsfwModel, body, false);
+		const predictions = await this.client.tensorflow.isImageNSFW(body, false);
 		const formatted = predictions.map(result => {
 			const percentage = Math.round(result.probability * 100);
 			return `${percentage}% ${displayNames[result.className]}`;
