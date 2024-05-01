@@ -235,14 +235,6 @@ client.on('ready', async () => {
 		client.logger.error(`[TIMEZONES] Failed to set timezones\n${err.stack}`);
 	}
 
-	// Set up parse-domain
-	try {
-		await client.loadParseDomain();
-		client.logger.info('[PARSE DOMAIN] parse-domain loaded.');
-	} catch (err) {
-		client.logger.error(`[PARSE DOMAIN] Failed to load parse-domain\n${err.stack}`);
-	}
-
 	// Fetch adult site list
 	try {
 		await client.fetchAdultSiteList();
@@ -253,7 +245,7 @@ client.on('ready', async () => {
 
 	// Fetch NSFW model
 	try {
-		await client.loadNSFWModel();
+		await client.tensorflow.loadNSFWModel();
 		client.logger.info('[NSFW MODEL] Loaded NSFW model.');
 	} catch (err) {
 		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
@@ -261,7 +253,7 @@ client.on('ready', async () => {
 
 	// Set up face detection
 	try {
-		await client.loadFaceDetector();
+		await client.tensorflow.loadFaceDetector();
 		client.logger.info('[FACE DETECTOR] Loaded face detector.');
 	} catch (err) {
 		client.logger.error(`[FACE DETECTOR] Failed to load face detector\n${err.stack}`);

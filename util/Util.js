@@ -2,7 +2,6 @@ const { ActionRowBuilder, ButtonBuilder, PermissionFlagsBits, ButtonStyle, Compo
 const crypto = require('crypto');
 const request = require('node-superfetch');
 const fs = require('fs');
-const tf = require('@tensorflow/tfjs-node');
 let parseDomain;
 let ParseResultType;
 import('parse-domain').then(loadedModule => {
@@ -242,22 +241,6 @@ module.exports = class Util {
 			str = str.replace(uri, text);
 		}
 		return str;
-	}
-
-	static async isImageNSFW(model, image, bool = true) {
-		const img = await tf.node.decodeImage(image, 3);
-		const predictions = await model.classify(img);
-		img.dispose();
-		if (bool) {
-			const results = [];
-			results.push(predictions[0]);
-			for (const result of predictions) {
-				if (result.className === predictions[0].className) continue;
-				if (result.probability >= predictions[0].probability - 0.1) results.push(result);
-			}
-			return results.some(result => result.className !== 'Drawing' && result.className !== 'Neutral');
-		}
-		return predictions;
 	}
 
 	static async reactIfAble(msg, user, emoji, fallbackEmoji) {
