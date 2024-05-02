@@ -103,6 +103,7 @@ module.exports = class BoxChoosingCommand extends Command {
 					break;
 				}
 				await buttonPress.deferUpdate();
+				i++;
 			}
 		}
 		return gameMsg.edit({ content: script.end, components: [] });
