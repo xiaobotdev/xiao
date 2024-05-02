@@ -10,7 +10,6 @@ module.exports = class BoxChoosingCommand extends Command {
 			group: 'games-sp',
 			memberName: 'box-choosing',
 			description: 'Do you believe that there are choices in life? Taken from Higurashi Chapter 4.',
-			game: true,
 			credit: [
 				{
 					name: '07th Expansion',
