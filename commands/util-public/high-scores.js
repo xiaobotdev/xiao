@@ -18,26 +18,26 @@ module.exports = class HighScoresCommand extends Command {
 	}
 
 	async run(msg) {
-		const typingRaceGet = await this.client.redis.get('typing-test');
+		const typingRaceGet = await this.client.redis.db.get('typing-test');
 		const typingRace = typingRaceGet ? Number.parseInt(typingRaceGet, 10) : null;
-		const typingRaceUser = await this.client.redis.get('typing-test-user');
+		const typingRaceUser = await this.client.redis.db.get('typing-test-user');
 		const typingRaceUserDisplay = await fetchHSUserDisplay(this.client, typingRaceUser);
-		const anagramsGet = await this.client.redis.get('anagramica');
+		const anagramsGet = await this.client.redis.db.get('anagramica');
 		const anagrams = anagramsGet ? Number.parseInt(anagramsGet, 10) : null;
-		const anagramsUser = await this.client.redis.get('anagramica-user');
+		const anagramsUser = await this.client.redis.db.get('anagramica-user');
 		const anagramsUserDisplay = await fetchHSUserDisplay(this.client, anagramsUser);
 		const minesweeperScores = {};
 		const minesweeperUsers = {};
 		for (const size of minesweeperSizes) {
-			const minesweeperGet = await this.client.redis.get(`minesweeper-${size}`);
+			const minesweeperGet = await this.client.redis.db.get(`minesweeper-${size}`);
 			const minesweeper = minesweeperGet ? Number.parseInt(minesweeperGet, 10) : null;
-			const minesweeperUser = await this.client.redis.get(`minesweeper-${size}-user`);
+			const minesweeperUser = await this.client.redis.db.get(`minesweeper-${size}-user`);
 			minesweeperScores[size] = moment.duration(minesweeper).format('mm:ss');
 			minesweeperUsers[size] = await fetchHSUserDisplay(this.client, minesweeperUser);
 		}
-		const reactionTimeGet = await this.client.redis.get('reaction-time');
+		const reactionTimeGet = await this.client.redis.db.get('reaction-time');
 		const reactionTime = reactionTimeGet ? Number.parseInt(reactionTimeGet, 10) : null;
-		const reactionTimeUser = await this.client.redis.get('reaction-time-user');
+		const reactionTimeUser = await this.client.redis.db.get('reaction-time-user');
 		const reactionTimeUserDisplay = await fetchHSUserDisplay(this.client, reactionTimeUser);
 		const minesweeperDisplay = Object.entries(minesweeperScores)
 			.map(([size, score]) => `\`${size}x${size}\`: ${score} (Held by ${minesweeperUsers[size]})`)

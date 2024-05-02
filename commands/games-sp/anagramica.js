@@ -70,14 +70,14 @@ module.exports = class AnagramicaCommand extends Command {
 			filter,
 			time: time * 1000
 		});
-		const highScoreGet = await this.client.redis.get('anagramica');
+		const highScoreGet = await this.client.redis.db.get('anagramica');
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-		const highScoreUser = await this.client.redis.get('anagramica-user');
+		const highScoreUser = await this.client.redis.db.get('anagramica-user');
 		const scoreBeat = !highScore || highScore < points;
 		const user = await fetchHSUserDisplay(this.client, highScoreUser);
 		if (scoreBeat) {
-			await this.client.redis.set('anagramica', points);
-			await this.client.redis.set('anagramica-user', msg.author.id);
+			await this.client.redis.db.set('anagramica', points);
+			await this.client.redis.db.set('anagramica-user', msg.author.id);
 		}
 		const moreWords = shuffle(valid.filter(word => !picked.includes(word))).slice(0, 5);
 		if (!msgs.size) {

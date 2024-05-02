@@ -73,36 +73,6 @@ client.on('ready', async () => {
 	const decTalkFolderExists = await checkFileExists(path.join(__dirname, 'tmp', 'dec-talk'));
 	if (!decTalkFolderExists) await mkdir(path.join(__dirname, 'tmp', 'dec-talk'));
 
-	// Interval to change activity every minute
-	setInterval(() => {
-		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
-		const text = typeof activity.text === 'function' ? activity.text(client) : activity.text;
-		client.user.setActivity(text, { type: activity.type });
-	}, 60000);
-
-	// Import command-leaderboard.json
-	try {
-		const results = client.importCommandLeaderboard();
-		if (results) {
-			client.logger.info('[LEADERBOARD] command-leaderboard.json successfully loaded.');
-		} else {
-			client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
-		}
-	} catch (err) {
-		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
-	}
-
-	// Set up disabled commands
-	try {
-		const disabled = await client.redis.hgetall('disabled');
-		for (const command of Object.keys(disabled)) {
-			client.registry.commands.get(command).disable();
-			client.logger.info(`[DISABLED] Disabled the ${command} command.`);
-		}
-	} catch (err) {
-		client.logger.error(`[DISABLED] Error while disabling commands:\n${err.stack}`);
-	}
-
 	// Check for API keys and disable commands that need them if not present
 	if (!process.env.REDIS_HOST || !process.env.REDIS_PASS) {
 		client.logger.error('[REDIS] No REDIS_HOST or REDIS_PASS in env. Exiting process.');
@@ -143,6 +113,36 @@ client.on('ready', async () => {
 		client.registry.commands.get('word-chain').disable();
 		client.registry.commands.get('define').disable();
 		client.logger.info('[DISABLED] No WEBSTER_KEY in env. word-of-the-day, word-chain, and define have been disabled.');
+	}
+
+	// Interval to change activity every minute
+	setInterval(() => {
+		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
+		const text = typeof activity.text === 'function' ? activity.text(client) : activity.text;
+		client.user.setActivity(text, { type: activity.type });
+	}, 60000);
+
+	// Set up disabled commands
+	try {
+		const disabled = await client.redis.db.hgetall('disabled');
+		for (const command of Object.keys(disabled)) {
+			client.registry.commands.get(command).disable();
+			client.logger.info(`[DISABLED] Disabled the ${command} command.`);
+		}
+	} catch (err) {
+		client.logger.error(`[DISABLED] Error while disabling commands:\n${err.stack}`);
+	}
+
+	// Import command-leaderboard.json
+	try {
+		const results = client.importCommandLeaderboard();
+		if (results) {
+			client.logger.info('[LEADERBOARD] command-leaderboard.json successfully loaded.');
+		} else {
+			client.logger.error('[LEADERBOARD] command-leaderboard.json is not formatted correctly.');
+		}
+	} catch (err) {
+		client.logger.error(`[LEADERBOARD] Could not parse command-leaderboard.json:\n${err.stack}`);
 	}
 
 	// Import command-last-run.json
