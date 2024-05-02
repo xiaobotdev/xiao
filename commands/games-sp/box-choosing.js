@@ -41,7 +41,6 @@ module.exports = class BoxChoosingCommand extends Command {
 				end = true;
 				break;
 			}
-			gameMsg = await msg.say(typeof line === 'object' ? line.text : `${line}\n\n_Proceed?_`);
 			if (line.options) {
 				const choiceRows = new ActionRowBuilder();
 				for (const option of line.options) {
