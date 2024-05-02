@@ -211,6 +211,7 @@ module.exports = class Util {
 	}
 
 	static async isUrlNSFW(uri, siteList) {
+		if (!parseDomain || !ParseResultType) throw new Error('parse-domain still loading');
 		const parsed = new URL(uri);
 		const { type, domain, topLevelDomains } = parseDomain(parsed.hostname);
 		if (type !== ParseResultType.Listed) return null;
@@ -230,6 +231,7 @@ module.exports = class Util {
 	}
 
 	static stripNSFWURLs(str, siteList, text = '[redacted nsfw url]') {
+		if (!parseDomain || !ParseResultType) throw new Error('parse-domain still loading');
 		if (!str) return '';
 		const uris = str.match(/(https?:\/\/\S+)/g);
 		if (!uris) return str;

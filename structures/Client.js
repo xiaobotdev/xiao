@@ -1,14 +1,10 @@
 const CommandClient = require('../framework/Client');
 const request = require('node-superfetch');
-const { Collection } = require('@discordjs/collection');
 const winston = require('winston');
-const fontFinder = require('font-finder');
 const moment = require('moment-timezone');
-const fs = require('fs');
-const path = require('path');
 const Redis = require('./Redis');
 const Tensorflow = require('./Tensorflow');
-const Font = require('./Font');
+const FontManager = require('./fonts/FontManager');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
@@ -26,7 +22,7 @@ module.exports = class XiaoClient extends CommandClient {
 				winston.format.printf(log => `[${log.timestamp}] [${log.level.toUpperCase()}]: ${log.message}`)
 			)
 		});
-		this.fonts = new Collection();
+		this.fonts = new FontManager(this);
 		this.redis = Redis ? Redis.db : null;
 		this.timers = new TimerManager(this);
 		this.pokemon = new PokemonStore();
@@ -36,17 +32,6 @@ module.exports = class XiaoClient extends CommandClient {
 		this.tensorflow = new Tensorflow(this);
 		this.activities = activities;
 		this.adultSiteList = null;
-	}
-
-	async registerFontsIn(filepath) {
-		const files = fs.readdirSync(filepath);
-		for (const file of files) {
-			const metadata = await fontFinder.get(path.join(filepath, file));
-			const font = new Font(path.join(filepath, file), file, metadata);
-			this.fonts.set(file, font);
-			font.register();
-		}
-		return this.fonts;
 	}
 
 	setTimezones() {
