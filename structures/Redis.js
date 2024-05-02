@@ -1,22 +1,20 @@
 const Redis = require('ioredis');
 const { REDIS_HOST, REDIS_PASS } = process.env;
-const redis = new Redis({
-	port: 6379,
-	host: REDIS_HOST,
-	enableReadyCheck: true,
-	password: REDIS_PASS,
-	db: 0
-});
 
 module.exports = class RedisClient {
-	static get db() {
-		return redis;
-	}
+	constructor(client, host = REDIS_HOST, pass = REDIS_PASS) {
+		Object.defineProperty(this, 'client', { value: client });
 
-	static start() {
-		redis.on('connect', () => console.info('[REDIS][CONNECT]: Connecting...'));
-		redis.on('ready', () => console.info('[REDIS][READY]: Ready!'));
-		redis.on('error', error => console.error(`[REDIS][ERROR]: Encountered error:\n${error}`));
-		redis.on('reconnecting', () => console.warn('[REDIS][RECONNECT]: Reconnecting...'));
+		this.db = new Redis({
+			port: 6379,
+			host,
+			enableReadyCheck: true,
+			password: pass,
+			db: 0
+		});
+		this.db.on('connect', () => this.client.logger.info('[REDIS] Connecting...'));
+		this.db.on('ready', () => this.client.logger.info('[REDIS] Ready!'));
+		this.db.on('error', error => this.client.logger.error(`[REDIS] Encountered error:\n${error}`));
+		this.db.on('reconnecting', () => this.client.logger.warn('[REDIS] Reconnecting...'));
 	}
 };
