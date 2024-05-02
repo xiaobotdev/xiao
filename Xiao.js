@@ -246,9 +246,9 @@ client.on('ready', async () => {
 	// Set up nsfwjs
 	try {
 		await client.tensorflow.loadNSFWJS();
-		client.logger.info('[NSFW MODEL] Loaded NSFW model.');
+		client.logger.info('[NSFWJS] Loaded NSFWJS.');
 	} catch (err) {
-		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
+		client.logger.error(`[NSFWJS] Failed to load NSFWJS\n${err.stack}`);
 	}
 
 	// Set up face detection
