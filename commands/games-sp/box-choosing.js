@@ -84,7 +84,7 @@ module.exports = class BoxChoosingCommand extends Command {
 					new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
 					new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
 				);
-				gameMsg = await gameMsg.edit({ content: line, components: [proceedRows] });
+				gameMsg = await gameMsg.edit({ content: `${line}\n\n_Proceed?_`, components: [proceedRows] });
 				let buttonPress;
 				try {
 					buttonPress = await gameMsg.awaitMessageComponent({
