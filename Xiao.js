@@ -67,6 +67,9 @@ client.registry
 client.on('ready', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
 
+	// Set up Redis
+	client.redis.start();
+
 	// Make temp directories
 	const tmpFolderExists = await checkFileExists(path.join(__dirname, 'tmp'));
 	if (!tmpFolderExists) await mkdir(path.join(__dirname, 'tmp'));
