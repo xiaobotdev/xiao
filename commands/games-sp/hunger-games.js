@@ -73,11 +73,15 @@ module.exports = class HungerGamesCommand extends Command {
 					max: 1,
 					time: 30000
 				});
-				if (buttonPress.customId === 'false') return buttonPress.reply({ content: 'Too bad...', components: [] });
+				if (buttonPress.customId === 'false') {
+					await buttonPress.update({ content: text, components: [] });
+					return msg.reply('Too bad...', { components: [] });
+				}
 			} catch {
-				return buttonPress.reply({ content: 'See you next time!', components: [] });
+				await buttonPress.update({ content: text, components: [] });
+				return msg.reply('See you next time!', { components: [] });
 			}
-			buttonPress.update({ content: text, components: [] });
+			await buttonPress.update({ content: text, components: [] });
 			if (!bloodbath) sun = !sun;
 			if (bloodbath) bloodbath = false;
 		}
