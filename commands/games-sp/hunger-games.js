@@ -71,7 +71,7 @@ module.exports = class HungerGamesCommand extends Command {
 				buttonPress = await gameMsg.awaitMessageComponent({
 					filter: res => res.user.id === msg.author.id,
 					max: 1,
-					time: 30000
+					time: 120000
 				});
 				if (buttonPress.customId === 'false') {
 					await buttonPress.update({ content: text, components: [] });
