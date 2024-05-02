@@ -32,6 +32,7 @@ module.exports = class IsItDownCommand extends Command {
 	}
 
 	async run(msg, { url }) {
+		if (!parseDomain || !ParseResultType) return msg.reply('Give me a second, still getting ready.');
 		const { type, domain, topLevelDomains } = parseDomain(url.hostname);
 		if (type !== ParseResultType.Listed) return msg.reply('This domain is not supported.');
 		const { text } = await request

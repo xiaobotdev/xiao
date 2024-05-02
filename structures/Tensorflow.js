@@ -8,18 +8,17 @@ module.exports = class Tensorflow {
 	constructor(client) {
 		Object.defineProperty(this, 'client', { value: client });
 
-		this.nsfwModel = null;
-		this.faceModel = faceDetection.SupportedModels.MediaPipeFaceDetector;
+		this.nsfwjs = null;
 		this.faceDetector = null;
 	}
 
-	async loadNSFWModel() {
-		const nsfwModel = await nsfw.load(
+	async loadNSFWJS() {
+		const nsfwjs = await nsfw.load(
 			`${url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'nsfw', 'web_model')).href}/`,
 			{ type: 'graph' }
 		);
-		this.nsfwModel = nsfwModel;
-		return this.nsfwModel;
+		this.nsfwjs = nsfwjs;
+		return this.nsfwjs;
 	}
 
 	async loadFaceDetector() {
@@ -42,7 +41,7 @@ module.exports = class Tensorflow {
 
 	async isImageNSFW(image, bool = true) {
 		const img = await tfnode.node.decodeImage(image, 3);
-		const predictions = await this.nsfwModel.classify(img);
+		const predictions = await this.nsfwjs.classify(img);
 		img.dispose();
 		if (bool) {
 			const results = [];

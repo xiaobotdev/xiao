@@ -221,7 +221,7 @@ client.on('ready', async () => {
 
 	// Register all canvas fonts
 	try {
-		await client.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
+		await client.fonts.registerFontsIn(path.join(__dirname, 'assets', 'fonts'));
 		client.logger.info('[FONTS] All fonts loaded.');
 	} catch (err) {
 		client.logger.error(`[FONTS] Failed to load fonts\n${err.stack}`);
@@ -243,9 +243,9 @@ client.on('ready', async () => {
 		client.logger.error(`[ADULT SITES] Failed to fetch list\n${err.stack}`);
 	}
 
-	// Fetch NSFW model
+	// Set up nsfwjs
 	try {
-		await client.tensorflow.loadNSFWModel();
+		await client.tensorflow.loadNSFWJS();
 		client.logger.info('[NSFW MODEL] Loaded NSFW model.');
 	} catch (err) {
 		client.logger.error(`[NSFW MODEL] Failed to load NSFW model\n${err.stack}`);
