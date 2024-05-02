@@ -1,6 +1,7 @@
 const tfnode = require('@tensorflow/tfjs-node');
 const nsfw = require('nsfwjs');
 const faceDetection = require('@tensorflow-models/face-detection');
+const faceModel = faceDetection.SupportedModels.MediaPipeFaceDetector;
 const url = require('url');
 const path = require('path');
 
@@ -22,7 +23,7 @@ module.exports = class Tensorflow {
 	}
 
 	async loadFaceDetector() {
-		const faceDetector = await faceDetection.createDetector(this.faceModel, { runtime: 'tfjs', maxFaces: 10 });
+		const faceDetector = await faceDetection.createDetector(faceModel, { runtime: 'tfjs', maxFaces: 10 });
 		this.faceDetector = faceDetector;
 		return this.faceDetector;
 	}
