@@ -86,7 +86,7 @@ module.exports = class HungerGamesCommand extends Command {
 			And the winner is... **${remainingArr[0]}**!
 
 			__**Kills Leaderboard:**__
-			${this.makeLeaderboard(tributes, kills).join('\n')}
+			${this.makeLeaderboard(tributes, kills).join('\n') || 'No one killed anyone...'}
 		`);
 	}
 
