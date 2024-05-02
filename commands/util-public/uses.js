@@ -23,6 +23,9 @@ module.exports = class UsesCommand extends Command {
 		if (command.unknown || command.uses === undefined) {
 			return msg.reply('That command\'s usage stats aren\'t being tracked.');
 		}
+		if (command.ownerOnly && !this.client.isOwner(msg.author)) {
+			return msg.reply(`The \`${command.name}\` command can only be used by the bot owner(s).`);
+		}
 		return msg.say(`The \`${command.name}\` command has been used **${formatNumber(command.uses)}** times.`);
 	}
 };

@@ -23,6 +23,9 @@ module.exports = class LastRunCommand extends Command {
 		if (command.unknown || command.lastRun === undefined) {
 			return msg.reply('That command\'s usage stats aren\'t being tracked.');
 		}
+		if (command.ownerOnly && !this.client.isOwner(msg.author)) {
+			return msg.reply(`The \`${command.name}\` command can only be used by the bot owner(s).`);
+		}
 		if (!command.lastRun) return msg.reply(`The \`${command.name}\` command has never been run.`);
 		const displayTime = moment.utc(command.lastRun).format('MM/DD/YYYY h:mm A');
 		return msg.say(`The \`${command.name}\` command was last run on **${displayTime}**.`);
