@@ -29,14 +29,14 @@ module.exports = class TypingTestCommand extends Command {
 		});
 		const win = msgs.size && msgs.first().content.toLowerCase() === sentence;
 		const newScore = Date.now() - now;
-		const highScoreGet = await this.client.redis.get('typing-test');
+		const highScoreGet = await this.client.redis.db.get('typing-test');
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-		const highScoreUser = await this.client.redis.get('typing-test-user');
+		const highScoreUser = await this.client.redis.db.get('typing-test-user');
 		const scoreBeat = win && (!highScore || highScore > newScore);
 		const user = await fetchHSUserDisplay(this.client, highScoreUser);
 		if (scoreBeat) {
-			await this.client.redis.set('typing-test', newScore);
-			await this.client.redis.set('typing-test-user', msg.author.id);
+			await this.client.redis.db.set('typing-test', newScore);
+			await this.client.redis.db.set('typing-test-user', msg.author.id);
 		}
 		if (!msgs.size) return msg.reply('Sorry! You lose!');
 		if (msgs.first().content.toLowerCase() !== sentence) {

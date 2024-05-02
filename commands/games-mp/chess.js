@@ -65,7 +65,7 @@ module.exports = class ChessCommand extends Command {
 			const verification = await verify(msg.channel, opponent);
 			if (!verification) return msg.say('Looks like they declined...');
 		}
-		const resumeGame = await this.client.redis.get(`chess-${msg.author.id}`);
+		const resumeGame = await this.client.redis.db.get(`chess-${msg.author.id}`);
 		let game;
 		let whiteTime = time === 0 ? Infinity : time * 60000;
 		let blackTime = time === 0 ? Infinity : time * 60000;
@@ -85,9 +85,9 @@ module.exports = class ChessCommand extends Command {
 					blackTime = data.blackTime === -1 ? Infinity : data.blackTime;
 					whitePlayer = data.color === 'white' ? msg.author : opponent;
 					blackPlayer = data.color === 'black' ? msg.author : opponent;
-					await this.client.redis.del(`chess-${msg.author.id}`);
+					await this.client.redis.db.del(`chess-${msg.author.id}`);
 				} catch {
-					await this.client.redis.del(`chess-${msg.author.id}`);
+					await this.client.redis.db.del(`chess-${msg.author.id}`);
 					return msg.reply('An error occurred reading your saved game. It will be deleted.');
 				}
 			} else {
@@ -154,7 +154,7 @@ module.exports = class ChessCommand extends Command {
 				if (turn.first().content.toLowerCase() === 'end') break;
 				if (turn.first().content.toLowerCase() === 'save') {
 					const { author } = turn.first();
-					const alreadySaved = await this.client.redis.get(`chess-${author.id}`);
+					const alreadySaved = await this.client.redis.db.get(`chess-${author.id}`);
 					if (alreadySaved) {
 						await msg.say('You already have a saved game, do you want to overwrite it?');
 						const verification = await verify(msg.channel, author);
@@ -162,7 +162,7 @@ module.exports = class ChessCommand extends Command {
 					}
 					if (gameState.turn === 'black') blackTime -= new Date() - now;
 					if (gameState.turn === 'white') whiteTime -= new Date() - now;
-					await this.client.redis.set(
+					await this.client.redis.db.set(
 						`chess-${author.id}`,
 						this.exportGame(
 							game,

@@ -24,7 +24,7 @@ module.exports = class DisableCommand extends Command {
 		if (!command._enabled) return msg.say(`The \`${command.name}\` command is already disabled.`);
 		if (command.guarded) return msg.say(`The \`${command.name}\` command cannot be disabled.`);
 		command.disable();
-		await this.client.redis.hset('disabled', { [command.name]: true });
+		await this.client.redis.db.hset('disabled', { [command.name]: true });
 		return msg.say(`Disabled the \`${command.name}\` command.`);
 	}
 };

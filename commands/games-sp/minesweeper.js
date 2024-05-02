@@ -127,14 +127,14 @@ module.exports = class MinesweeperCommand extends Command {
 			}
 		}
 		const newScore = Date.now() - startTime;
-		const highScoreGet = await this.client.redis.get(`minesweeper-${size}`);
+		const highScoreGet = await this.client.redis.db.get(`minesweeper-${size}`);
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-		const highScoreUser = await this.client.redis.get(`minesweeper-${size}-user`);
+		const highScoreUser = await this.client.redis.db.get(`minesweeper-${size}-user`);
 		const scoreBeat = !cheatMode && win && (!highScore || highScore > newScore);
 		const user = await fetchHSUserDisplay(this.client, highScoreUser);
 		if (scoreBeat) {
-			await this.client.redis.set(`minesweeper-${size}`, newScore);
-			await this.client.redis.set(`minesweeper-${size}-user`, msg.author.id);
+			await this.client.redis.db.set(`minesweeper-${size}`, newScore);
+			await this.client.redis.db.set(`minesweeper-${size}-user`, msg.author.id);
 		}
 		if (win === null) return gameMsg.edit('Game ended due to inactivity.');
 		const newDisplayTime = moment.duration(newScore).format('mm:ss');

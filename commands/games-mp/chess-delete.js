@@ -12,9 +12,9 @@ module.exports = class ChessDeleteCommand extends Command {
 	}
 
 	async run(msg) {
-		const data = await this.client.redis.exists(`chess-${msg.author.id}`);
+		const data = await this.client.redis.db.exists(`chess-${msg.author.id}`);
 		if (!data) return msg.reply('You do not have a saved Chess game.');
-		await this.client.redis.del(`chess-${msg.author.id}`);
+		await this.client.redis.db.del(`chess-${msg.author.id}`);
 		return msg.say('Your saved game has been deleted.');
 	}
 };

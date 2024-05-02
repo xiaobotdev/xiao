@@ -41,14 +41,14 @@ module.exports = class GunfightCommand extends Command {
 			time: 30000
 		});
 		const newScore = Date.now() - now;
-		const highScoreGet = await this.client.redis.get('reaction-time');
+		const highScoreGet = await this.client.redis.db.get('reaction-time');
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-		const highScoreUser = await this.client.redis.get('reaction-time-user');
+		const highScoreUser = await this.client.redis.db.get('reaction-time-user');
 		const scoreBeat = !highScore || highScore > newScore;
 		const user = await fetchHSUserDisplay(this.client, highScoreUser);
 		if (scoreBeat) {
-			await this.client.redis.set('reaction-time', newScore);
-			await this.client.redis.set('reaction-time-user', winner.first().author.id);
+			await this.client.redis.db.set('reaction-time', newScore);
+			await this.client.redis.db.set('reaction-time-user', winner.first().author.id);
 		}
 		if (!winner.size) return msg.say('Oh... No one won.');
 		return msg.say(stripIndents`

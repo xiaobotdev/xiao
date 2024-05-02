@@ -43,14 +43,14 @@ module.exports = class TypingRaceCommand extends Command {
 			time: 30000
 		});
 		const newScore = Date.now() - now;
-		const highScoreGet = await this.client.redis.get('typing-test');
+		const highScoreGet = await this.client.redis.db.get('typing-test');
 		const highScore = highScoreGet ? Number.parseInt(highScoreGet, 10) : null;
-		const highScoreUser = await this.client.redis.get('typing-test-user');
+		const highScoreUser = await this.client.redis.db.get('typing-test-user');
 		const scoreBeat = winner.size && (!highScore || highScore > newScore);
 		const user = await fetchHSUserDisplay(this.client, highScoreUser);
 		if (scoreBeat) {
-			await this.client.redis.set('typing-test', newScore);
-			await this.client.redis.set('typing-test-user', winner.first().author.id);
+			await this.client.redis.db.set('typing-test', newScore);
+			await this.client.redis.db.set('typing-test-user', winner.first().author.id);
 		}
 		if (!winner.size) return msg.say('Oh... No one won.');
 		const wpm = (sentence.length / 5) / ((newScore / 1000) / 60);
