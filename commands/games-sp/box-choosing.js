@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
-const { stripIndents } = require('common-tags');
-const { verify } = require('../../util/Util');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const script = require('../../assets/json/box-choosing');
 
 module.exports = class BoxChoosingCommand extends Command {
@@ -35,49 +34,78 @@ module.exports = class BoxChoosingCommand extends Command {
 		let i = 0;
 		let path = 'before';
 		let end = false;
+		let gameMsg = await msg.say('Loading...');
 		while (!end) {
 			const line = script[path][i];
 			if (!line) {
 				end = true;
 				break;
 			}
-			await msg.say(typeof line === 'object' ? line.text : stripIndents`
-				${line}
-
-				_Proceed?_
-			`);
+			gameMsg = await msg.say(typeof line === 'object' ? line.text : `${line}\n\n_Proceed?_`);
 			if (line.options) {
-				const filter = res => res.author.id === msg.author.id && line.options.includes(res.content.toLowerCase());
-				const choose = await msg.channel.awaitMessages({
-					filter,
-					max: 1,
-					time: 120000
-				});
-				if (!choose.size) {
+				const choiceRows = new ActionRowBuilder();
+				for (const option of line.options) {
+					choiceRows.addComponents(
+						new ButtonBuilder().setCustomId(option).setLabel(option).setStyle(ButtonStyle.Primary)
+					);
+				}
+				choiceRows.addComponents(new ButtonBuilder().setCustomId('false').setLabel('End').setStyle(ButtonStyle.Danger));
+				gameMsg = await gameMsg.edit({ content: line.text, components: [choiceRows] });
+				let buttonPress;
+				try {
+					buttonPress = await gameMsg.awaitMessageComponent({
+						filter: res => res.user.id === msg.author.id,
+						max: 1,
+						time: 30000
+					});
+					if (buttonPress.customId === 'false') {
+						await buttonPress.deferUpdate();
+						end = true;
+						break;
+					}
+				} catch {
+					await buttonPress.deferUpdate();
 					end = true;
 					break;
 				}
 				path = '';
-				const pick = line.paths[line.options.indexOf(choose.first().content.toLowerCase())];
+				const pick = line.paths[line.options.indexOf(buttonPress.customId)];
 				if ((this.red.has(msg.author.id) && pick !== 'red') || (this.blue.has(msg.author.id) && pick !== 'blue')) {
 					path += 'both';
 					if (this.red.has(msg.author.id)) this.red.delete(msg.author.id);
 					if (this.blue.has(msg.author.id)) this.blue.delete(msg.author.id);
 				} else {
 					this[pick].add(msg.author.id);
-					setTimeout(() => { if (this[pick].has(msg.author.id)) this[pick].delete(msg.author.id); }, 600000);
 				}
 				path += pick;
 				i = 0;
+				await buttonPress.deferUpdate();
 			} else {
-				const verification = await verify(msg.channel, msg.author, { time: 120000 });
-				if (!verification) {
+				const proceedRows = new ActionRowBuilder().addComponents(
+					new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
+					new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
+				);
+				gameMsg = await gameMsg.edit({ content: line, components: [proceedRows] });
+				let buttonPress;
+				try {
+					buttonPress = await gameMsg.awaitMessageComponent({
+						filter: res => res.user.id === msg.author.id,
+						max: 1,
+						time: 30000
+					});
+					if (buttonPress.customId === 'false') {
+						await buttonPress.deferUpdate();
+						end = true;
+						break;
+					}
+				} catch {
+					await buttonPress.deferUpdate();
 					end = true;
 					break;
 				}
-				i++;
+				await buttonPress.deferUpdate();
 			}
 		}
-		return msg.say(script.end);
+		return gameMsg.edit({ content: script.end, components: [] });
 	}
 };
