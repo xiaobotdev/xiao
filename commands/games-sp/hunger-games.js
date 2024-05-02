@@ -1,6 +1,7 @@
 const Command = require('../../framework/Command');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { shuffle, removeDuplicates, verify } = require('../../util/Util');
+const { shuffle, removeDuplicates } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');
 
 module.exports = class HungerGamesCommand extends Command {
@@ -61,9 +62,23 @@ module.exports = class HungerGamesCommand extends Command {
 				`;
 			}
 			text += `\n\n_Proceed?_`;
-			await msg.say(text);
-			const verification = await verify(msg.channel, msg.author, { time: 120000 });
-			if (!verification) return msg.say('See you next time!');
+			const proceedRows = new ActionRowBuilder().addComponents(
+				new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
+				new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
+			);
+			const gameMsg = await msg.say(text, { components: [proceedRows] });
+			let buttonPress;
+			try {
+				buttonPress = await gameMsg.awaitMessageComponent({
+					filter: res => res.user.id === msg.author.id,
+					max: 1,
+					time: 30000
+				});
+				if (buttonPress.customId === 'false') return buttonPress.reply({ content: 'Too bad...', components: [] });
+			} catch {
+				return buttonPress.reply({ content: 'See you next time!', components: [] });
+			}
+			buttonPress.update(text, { components: [] });
 			if (!bloodbath) sun = !sun;
 			if (bloodbath) bloodbath = false;
 		}
