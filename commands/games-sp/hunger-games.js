@@ -78,7 +78,7 @@ module.exports = class HungerGamesCommand extends Command {
 			} catch {
 				return buttonPress.reply({ content: 'See you next time!', components: [] });
 			}
-			buttonPress.update(text, { components: [] });
+			buttonPress.update({ content: text, components: [] });
 			if (!bloodbath) sun = !sun;
 			if (bloodbath) bloodbath = false;
 		}
