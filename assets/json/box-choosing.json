@@ -9,8 +9,8 @@
 		"Now. Why don't you choose?\nThe red box, or the blue box?\n\n...It's all right, you won't lose anything by picking either one. ...Come on now.",
 		{
 			"text": "Open the red box or the blue box?",
-			"options": ["red", "blue", "red box", "blue box"],
-			"paths": ["red", "blue", "red", "blue"]
+			"options": ["Red", "Blue"],
+			"paths": ["red", "blue"]
 		}
 	],
 	"red": [
