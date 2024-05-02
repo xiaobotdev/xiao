@@ -61,12 +61,11 @@ module.exports = class HungerGamesCommand extends Command {
 					${deaths.join('\n')}
 				`;
 			}
-			text += `\n\n_Proceed?_`;
 			const proceedRows = new ActionRowBuilder().addComponents(
 				new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
 				new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
 			);
-			const gameMsg = await msg.say(text, { components: [proceedRows] });
+			const gameMsg = await msg.say(`${text}\n\n_Proceed?_`, { components: [proceedRows] });
 			let buttonPress;
 			try {
 				buttonPress = await gameMsg.awaitMessageComponent({
