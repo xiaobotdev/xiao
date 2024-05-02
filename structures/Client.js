@@ -23,7 +23,7 @@ module.exports = class XiaoClient extends CommandClient {
 			)
 		});
 		this.fonts = new FontManager(this);
-		this.redis = Redis ? Redis.db : null;
+		this.redis = Redis.db;
 		this.timers = new TimerManager(this);
 		this.pokemon = new PokemonStore();
 		this.dispatchers = new Map();
