@@ -111,7 +111,7 @@ module.exports = class HungerGamesCommand extends Command {
 		const deaths = [];
 		const turn = new Set(tributes.keys());
 		for (const tribute of tributes.values()) {
-			if (!turn.has(tribute)) continue;
+			if (!turn.has(tribute.name)) continue;
 			const valid = eventsArr.filter(event => {
 				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
 				if (event.requires && event.requires === 'food' && tribute.food <= 0) return false;
@@ -119,7 +119,7 @@ module.exports = class HungerGamesCommand extends Command {
 				return event.tributes <= turn.size && event.deaths < turn.size;
 			});
 			const event = valid[Math.floor(Math.random() * valid.length)];
-			turn.delete(tribute);
+			turn.delete(tribute.name);
 			if (event.tributes === 1) {
 				if (event.requires === 'food') tribute.food--;
 				if (event.spoils) {
@@ -128,7 +128,7 @@ module.exports = class HungerGamesCommand extends Command {
 					else tribute.weapon = spoils;
 				}
 				if (event.deaths.length === 1) {
-					deaths.push(tribute);
+					deaths.push(tribute.name);
 					tribute.dead = true;
 				}
 				results.push(this.parseEvent(event.text, [tribute]));
@@ -142,7 +142,7 @@ module.exports = class HungerGamesCommand extends Command {
 				}
 				if (event.killers.includes(1)) tribute.kills += event.deaths.length;
 				if (event.deaths.includes(1)) {
-					deaths.push(tribute);
+					deaths.push(tribute.name);
 					tribute.dead = true;
 				}
 				for (let i = 2; i <= event.tributes; i++) {
@@ -156,11 +156,11 @@ module.exports = class HungerGamesCommand extends Command {
 					}
 					if (event.killers.includes(i)) tribu.kills += event.deaths.length;
 					if (event.deaths.includes(i)) {
-						deaths.push(tribu);
+						deaths.push(tribu.name);
 						tribu.dead = true;
 					}
 					current.push(tribu);
-					turn.delete(tribu);
+					turn.delete(tribu.name);
 				}
 				results.push(this.parseEvent(event.text, current));
 			}
