@@ -92,7 +92,7 @@ module.exports = class HungerGamesCommand extends Command {
 			await buttonPress.update({ content: text, components: [] });
 			if (!bloodbath) sun = !sun;
 			if (bloodbath) bloodbath = false;
-		};
+		}
 		return msg.say(stripIndents`
 			And the winner is... **${players.filter(player => !player.dead).first().name}**!
 
