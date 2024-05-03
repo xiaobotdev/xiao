@@ -197,11 +197,11 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
-	static fillTextWithBreaks(ctx, text, x, y, maxLen, drawMultiBreaks = false) {
+	static fillTextWithBreaks(ctx, text, x, y, maxLen) {
 		const lines = text.split('\n');
 		let currentY = y;
 		for (const line of lines) {
-			if (line === '' && drawMultiBreaks) {
+			if (line === '') {
 				const metrics = ctx.measureText('a');
 				currentY += metrics.emHeightAscent + metrics.emHeightDescent;
 			} else {
@@ -213,11 +213,11 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
-	measureTextHeightWithBreaks(ctx, text, parseMultiBreaks = false) {
+	measureTextHeightWithBreaks(ctx, text) {
 		const lines = text.split('\n');
 		let result = 0;
 		for (const line of lines) {
-			if (line === '' && parseMultiBreaks) {
+			if (line === '') {
 				const metrics = ctx.measureText('a');
 				result += metrics.emHeightAscent + metrics.emHeightDescent;
 			} else {
