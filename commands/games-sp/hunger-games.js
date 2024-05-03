@@ -116,6 +116,7 @@ module.exports = class HungerGamesCommand extends Command {
 			const valid = eventsArr.filter(event => {
 				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
 				if (event.requires && event.requires === 'food' && tribute.food <= 0) return false;
+				if (event.requires && event.requires === '!food' && tribute.food !== 0) return false;
 				if (event.spoils && !event.spoils.includes('food') && tribute.weapon) return false;
 				return event.tributes <= turn.size && event.deaths < turn.size;
 			});
