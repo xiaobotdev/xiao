@@ -70,12 +70,12 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 		let fontSize = 345;
 		ctx.font = this.client.fonts.get('Spongeboytt1.ttf').toCanvasString(fontSize);
 		let lines = wrapText(ctx, text.toUpperCase(), 1800);
-		let longestLine = lines.sort((a, b) => ctx.measureText(b).width - ctx.measureText(a).width)[0];
+		let longestLine = ctx.measureText(lines.sort((a, b) => ctx.measureText(b).width - ctx.measureText(a).width)[0]).width;
 		let heightMetric = measureTextHeightWithBreaks(ctx, lines.join('\n'));
 		while (longestLine > 1800 || heightMetric > 1000) {
 			fontSize -= 10;
 			ctx.font = this.client.fonts.get('Spongeboytt1.ttf').toCanvasString(fontSize);
-			longestLine = lines.sort((a, b) => ctx.measureText(b).width - ctx.measureText(a).width)[0];
+			longestLine = ctx.measureText(lines.sort((a, b) => ctx.measureText(b).width - ctx.measureText(a).width)[0]).width;
 			heightMetric = measureTextHeightWithBreaks(ctx, lines.join('\n'));
 			lines = wrapText(ctx, text.toUpperCase(), 1800);
 		}
