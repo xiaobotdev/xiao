@@ -64,6 +64,6 @@ module.exports = class ZeroDialogueCommand extends Command {
 		let text = wrapText(ctx, quote, 425);
 		text = text.length > 2 ? `${text.slice(0, 2).join('\n')}...` : text.join('\n');
 		fillTextWithBreaks(ctx, text, 8, 8);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'zero-dialogue.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'zero-dialogue.png' }] });
 	}
 };

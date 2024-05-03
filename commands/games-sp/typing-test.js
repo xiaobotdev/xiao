@@ -80,6 +80,6 @@ module.exports = class TypingTestCommand extends Command {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'black';
 		ctx.fillText(sentence, canvas.width / 2, canvas.height / 2);
-		return canvas.toBuffer();
+		return canvas.toBuffer('image/png');
 	}
 };

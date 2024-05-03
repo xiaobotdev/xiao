@@ -80,7 +80,7 @@ module.exports = class MemeGenCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillText(bottomLines[i], base.width / 2, textHeight);
 		}
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'meme-gen.png' }] });
 	}

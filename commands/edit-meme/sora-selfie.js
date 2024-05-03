@@ -53,6 +53,6 @@ module.exports = class SoraSelfieCommand extends Command {
 		const width = Math.round(base.height * ratio);
 		ctx.drawImage(data, (base.width / 2) - (width / 2), 0, width, base.height);
 		ctx.drawImage(base, 0, 0);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sora-selfie.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'sora-selfie.png' }] });
 	}
 };

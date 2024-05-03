@@ -47,7 +47,7 @@ module.exports = class CommunistCommand extends Command {
 		ctx.globalAlpha = 0.5;
 		ctx.drawImage(base, x + (width / 20), y + (height / 20), width * 0.9, height * 0.9);
 		ctx.globalAlpha = 1;
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'communist.png' }] });
 	}

@@ -47,6 +47,6 @@ module.exports = class HeLivesInYouCommand extends Command {
 		ctx.rotate(-24 * (Math.PI / 180));
 		drawImageWithTint(ctx, avatar, '#00115d', 75, 160, 130, 150);
 		ctx.rotate(24 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'he-lives-in-you.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'he-lives-in-you.png' }] });
 	}
 };

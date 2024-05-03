@@ -44,6 +44,6 @@ module.exports = class WorseThanHitlerCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
 		ctx.drawImage(avatar, 47, 42, 140, 140);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'worse-than-hitler.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'worse-than-hitler.png' }] });
 	}
 };

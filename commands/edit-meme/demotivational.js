@@ -69,6 +69,6 @@ module.exports = class DemotivationalCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(27);
 		ctx.fillStyle = 'white';
 		ctx.fillText(shortenText(ctx, text, 610), 375, 565);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'demotivational-poster.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'demotivational-poster.png' }] });
 	}
 };

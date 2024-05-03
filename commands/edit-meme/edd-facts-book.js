@@ -57,6 +57,6 @@ module.exports = class EddFactsBookCommand extends Command {
 		const lines = wrapText(ctx, fact, 183);
 		fillTextWithBreaks(ctx, lines.join('\n'), 119, 306, 183);
 		ctx.rotate(-15 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'edd-facts-book.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'edd-facts-book.png' }] });
 	}
 };

@@ -76,6 +76,6 @@ module.exports = class GruPlanCommand extends Command {
 			fillTextWithBreaks(ctx, lines.join('\n'), x, y);
 			i++;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'gru-plan.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'gru-plan.png' }] });
 	}
 };

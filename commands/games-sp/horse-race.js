@@ -107,6 +107,6 @@ module.exports = class HorseRaceCommand extends Command {
 			ctx.font = this.client.fonts.get('Paladins.otf').toCanvasString(15);
 			ctx.fillText(horse.name, 251, 138 + (49 * i));
 		}
-		return { attachment: canvas.toBuffer(), name: 'leaderboard.png' };
+		return { attachment: canvas.toBuffer('image/png'), name: 'leaderboard.png' };
 	}
 };

@@ -91,6 +91,6 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			ctx.strokeText(luigiLines[i], 450, height);
 			ctx.fillText(luigiLines[i], 450, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'mario-bros-views.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'mario-bros-views.png' }] });
 	}
 };

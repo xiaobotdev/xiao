@@ -88,6 +88,6 @@ module.exports = class JeopardyCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
-		return canvas.toBuffer();
+		return canvas.toBuffer('image/png');
 	}
 };

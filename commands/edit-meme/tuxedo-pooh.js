@@ -77,6 +77,6 @@ module.exports = class TuxedoPoohCommand extends Command {
 			const height = tuxedoTopMost + ((fontSize + 10) * i);
 			ctx.fillText(tuxedoLines[i], 570, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tuxedo-pooh.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'tuxedo-pooh.png' }] });
 	}
 };

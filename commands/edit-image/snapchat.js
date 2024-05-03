@@ -60,6 +60,6 @@ module.exports = class SnapchatCommand extends Command {
 		ctx.globalAlpha = 1;
 		ctx.fillStyle = 'white';
 		ctx.fillText(text, base.width / 2, barPosition - (barHeight * 0.4));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'snapchat.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'snapchat.png' }] });
 	}
 };

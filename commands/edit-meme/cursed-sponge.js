@@ -47,6 +47,6 @@ module.exports = class CursedSpongeCommand extends Command {
 			if ((width + sponge.width) === (sponge.width * (rows > 1 ? 10 : amount))) width = 0;
 			else width += sponge.width;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'cursed-sponge.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'cursed-sponge.png' }] });
 	}
 };

@@ -45,7 +45,7 @@ module.exports = class RejctedCommand extends Command {
 		ctx.drawImage(data, 0, 0);
 		const { x, y, width, height } = centerImage(base, data);
 		ctx.drawImage(base, x, y, width, height);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'rejected.png' }] });
 	}

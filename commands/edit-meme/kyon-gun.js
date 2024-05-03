@@ -52,6 +52,6 @@ module.exports = class KyonGunCommand extends Command {
 		const width = Math.round(base.height * ratio);
 		ctx.drawImage(data, (base.width / 2) - (width / 2), 0, width, base.height);
 		ctx.drawImage(base, 0, 0);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'kyon-gun.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'kyon-gun.png' }] });
 	}
 };

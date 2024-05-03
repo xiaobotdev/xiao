@@ -48,6 +48,6 @@ module.exports = class LicensePlateCommand extends Command {
 		ctx.textBaseline = 'middle';
 		ctx.font = this.client.fonts.get('LicensePlate.ttf').toCanvasString(180);
 		ctx.fillText(text.toUpperCase(), base.width / 2, base.height / 2, 700);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'license-plate.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'license-plate.png' }] });
 	}
 };

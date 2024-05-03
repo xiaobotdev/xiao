@@ -147,7 +147,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		ctx.fillText(pokemon1.name, 128, 250, 175);
 		ctx.strokeText(pokemon2.name, 348, 250, 175);
 		ctx.fillText(pokemon2.name, 348, 250, 175);
-		return { attachment: canvas.toBuffer(), name };
+		return { attachment: canvas.toBuffer('image/png'), name };
 	}
 
 	calculateAdvantage(pkmn1, pkmn2) {

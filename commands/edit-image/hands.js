@@ -45,7 +45,7 @@ module.exports = class HandsCommand extends Command {
 		const ratio = data.width / base.width;
 		const height = base.height * ratio;
 		ctx.drawImage(base, 0, data.height - height, data.width, height);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'hands.png' }] });
 	}

@@ -85,6 +85,6 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spongebob-time-card.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'spongebob-time-card.png' }] });
 	}
 };

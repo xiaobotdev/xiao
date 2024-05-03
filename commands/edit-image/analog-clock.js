@@ -60,7 +60,7 @@ module.exports = class AnalogClockCommand extends Command {
 		this.drawNumbers(ctx, radius);
 		this.drawTime(ctx, radius, time);
 		return msg.say(`${subMain || sub || main}${parens}`, {
-			files: [{ attachment: canvas.toBuffer(), name: 'analog-clock.png' }]
+			files: [{ attachment: canvas.toBuffer('image/png'), name: 'analog-clock.png' }]
 		});
 	}
 

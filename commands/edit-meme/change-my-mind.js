@@ -57,6 +57,6 @@ module.exports = class ChangeMyMindCommand extends Command {
 		const lines = wrapText(ctx, text, 337);
 		fillTextWithBreaks(ctx, lines.join('\n'), 142, 430, 337);
 		ctx.rotate(24 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'change-my-mind.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'change-my-mind.png' }] });
 	}
 };

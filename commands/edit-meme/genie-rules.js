@@ -61,6 +61,6 @@ module.exports = class GenieRulesCommand extends Command {
 			const height = topMost + ((fontSize + 20) * i);
 			ctx.fillText(lines[i], 220, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'genie-rules.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'genie-rules.png' }] });
 	}
 };

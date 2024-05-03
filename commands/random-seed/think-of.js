@@ -88,6 +88,6 @@ module.exports = class ThinkOfCommand extends Command {
 		ctx.fillText(thought.text, 600, 296);
 		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
 		ctx.fillText(thought.emoji, 600, 100);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'think-of.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'think-of.png' }] });
 	}
 };

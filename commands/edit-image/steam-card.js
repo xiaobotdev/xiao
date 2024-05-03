@@ -68,6 +68,6 @@ module.exports = class SteamCardCommand extends Command {
 		ctx.fillText(name, 16, 25);
 		ctx.fillStyle = 'white';
 		ctx.fillText(name, 15, 24);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'steam-card.png' }] });
 	}
 };

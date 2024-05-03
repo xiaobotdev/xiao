@@ -47,6 +47,6 @@ module.exports = class FontCommand extends Command {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'black';
 		fillTextWithBreaks(ctx, lines.join('\n'), 25, 25);
-		return canvas.toBuffer();
+		return canvas.toBuffer('image/png');
 	}
 };

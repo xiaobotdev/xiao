@@ -65,6 +65,6 @@ module.exports = class ChiIdeaCommand extends Command {
 			const height = topMost + ((fontSize + 5) * i);
 			ctx.fillText(lines[i], 70, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'chi-idea.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'chi-idea.png' }] });
 	}
 };

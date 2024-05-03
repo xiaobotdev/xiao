@@ -59,6 +59,6 @@ module.exports = class IfThoseKidsCouldReadCommand extends Command {
 			const height = topMost + ((fontSize + 20) * i);
 			ctx.fillText(lines[i], 300, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'if-those-kids-could-read.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'if-those-kids-could-read.png' }] });
 	}
 };

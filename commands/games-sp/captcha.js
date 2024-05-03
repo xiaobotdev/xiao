@@ -41,7 +41,7 @@ module.exports = class CaptchaCommand extends Command {
 		ctx.strokeText(text, 15, 26);
 		await msg.reply(
 			'**You have 15 seconds, what does the captcha say?**',
-			{ files: [{ attachment: canvas.toBuffer(), name: 'captcha-quiz.png' }] }
+			{ files: [{ attachment: canvas.toBuffer('image/png'), name: 'captcha-quiz.png' }] }
 		);
 		const msgs = await msg.channel.awaitMessages({
 			filter: res => res.author.id === msg.author.id,

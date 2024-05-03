@@ -48,6 +48,6 @@ module.exports = class NewPasswordCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(60);
 		ctx.fillText(shortenText(ctx, weak, 780), 70, 191);
 		ctx.fillText(shortenText(ctx, strong, 780), 70, 667);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'new-password.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'new-password.png' }] });
 	}
 };
