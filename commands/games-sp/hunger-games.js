@@ -109,8 +109,9 @@ module.exports = class HungerGamesCommand extends Command {
 	makeEvents(tributes, eventsArr) {
 		const results = [];
 		const deaths = [];
-		const turn = new Set(tributes.keys());
-		for (const tribute of tributes.values()) {
+		const remaining = tributes.filter(tribute => !tribute.dead);
+		const turn = new Set(remaining.keys());
+		for (const tribute of remaining.values()) {
 			if (!turn.has(tribute.name)) continue;
 			const valid = eventsArr.filter(event => {
 				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
