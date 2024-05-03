@@ -35,7 +35,7 @@ module.exports = class WildPokemonCommand extends Command {
 				{
 					key: 'name',
 					type: 'string',
-					max: 9
+					max: 12
 				},
 				{
 					key: 'image',
