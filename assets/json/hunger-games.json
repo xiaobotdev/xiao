@@ -4,31 +4,36 @@
 			"text": "(Player1) grabs a shovel.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["shovel"]
 		},
 		{
 			"text": "(Player1) grabs a backpack and retreats.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) and (Player2) fight for a bag. (Player1) gives up and retreats.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": [null, "food"]
 		},
 		{
 			"text": "(Player1) and (Player2) fight for a bag. (Player2) gives up and retreats.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) finds a bow, some arrows, and a quiver.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["bow"]
 		},
 		{
 			"text": "(Player1) runs into the cornucopia and hides.",
@@ -40,85 +45,99 @@
 			"text": "(Player1) takes a handful of throwing knives.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["knives"]
 		},
 		{
 			"text": "(Player1) rips a mace out of (Player2)'s hands.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["mace"]
 		},
 		{
 			"text": "(Player1) finds a canteen full of water.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) stays at the cornucopia for resources.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) gathers as much food as they can.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) grabs a sword.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["sword"]
 		},
 		{
 			"text": "(Player1) takes a spear from inside the cornucopia.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["spear"]
 		},
 		{
 			"text": "(Player1) finds a bag full of explosives.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["explosives"]
 		},
 		{
 			"text": "(Player1) clutches a first aid kit and runs away.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["firstaid"]
 		},
 		{
 			"text": "(Player1) takes a sickle from inside the cornucopia.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["sickle"]
 		},
 		{
 			"text": "(Player1), (Player2), and (Player3) work together to get as many supplies as possible.",
 			"tributes": 3,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food", "food", "food"]
 		},
 		{
 			"text": "(Player1) runs away with a lighter and some rope.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["rope"]
 		},
 		{
 			"text": "(Player1) snatches a bottle of alcohol and a rag.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["firstaid"]
 		},
 		{
 			"text": "(Player1) finds a backpack full of camping equipment.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) grabs a backpack, not realizing it is empty.",
@@ -130,25 +149,29 @@
 			"text": "(Player1) breaks (Player2)'s nose for a basket of bread.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1), (Player2), (Player3), and (Player4) share everything they gathered before running.",
 			"tributes": 4,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food", "food", "food", "food"]
 		},
 		{
 			"text": "(Player1) retrieves a trident from inside the cornucopia.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["trident"]
 		},
 		{
 			"text": "(Player1) grabs a jar of fishing bait while (Player2) gets fishing gear.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["fishing", "fishing"]
 		},
 		{
 			"text": "(Player1) scares (Player2) away from the cornucopia.",
@@ -157,22 +180,18 @@
 			"killers": []
 		},
 		{
-			"text": "(Player1) grabs a shield leaning on the cornucopia.",
-			"tributes": 1,
-			"deaths": [],
-			"killers": []
-		},
-		{
 			"text": "(Player1) snatches a pair of sais.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["sais"]
 		},
 		{
 			"text": "(Player1) grabs a lone pair of pants.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["pant"]
 		},
 		{
 			"text": "(Player1) steps off their podium too soon and blows up.",
@@ -184,7 +203,8 @@
 			"text": "(Player1) throws a knife into (Player2)'s head.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["knives"]
 		},
 		{
 			"text": "(Player1) accidently steps on a landmine.",
@@ -214,7 +234,8 @@
 			"text": "(Player1) shoots an arrow into (Player2)'s head.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["bow"]
 		},
 		{
 			"text": "(Player1) cannot handle the circumstances and commits suicide.",
@@ -238,19 +259,22 @@
 			"text": "(Player1) decapitates (Player2) with a sword.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["sword"]
 		},
 		{
 			"text": "(Player1) spears (Player2) in the abdomen.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["spear"]
 		},
 		{
 			"text": "(Player1) sets (Player2) on fire with a molotov.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["molotov"]
 		},
 		{
 			"text": "(Player1) falls into a pit and dies.",
@@ -262,7 +286,8 @@
 			"text": "(Player1) stabs (Player2) while their back is turned.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["spear"]
 		},
 		{
 			"text": "(Player1) severely injures (Player2), but puts them out of their misery.",
@@ -280,19 +305,22 @@
 			"text": "(Player1) bashes (Player2)'s head in with a mace.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["mace"]
 		},
 		{
 			"text": "(Player1) pushes (Player2) off a cliff during a knife fight.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["knives"]
 		},
 		{
 			"text": "(Player1) throws a knife into (Player2)'s chest.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["knives"]
 		},
 		{
 			"text": "(Player1) is unable to convince (Player2) to not kill them.",
@@ -376,7 +404,8 @@
 			"text": "(Player1) kills (Player2) with a hatchet.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["hatchet"]
 		},
 		{
 			"text": "(Player1) and (Player2) fight (Player3) and (Player4). (Player1) and (Player2) survive.",
@@ -400,13 +429,15 @@
 			"text": "(Player1) severely slices (Player2) with a sword.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["sword"]
 		},
 		{
 			"text": "(Player1) strangles (Player2) with a rope.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["rope"]
 		},
 		{
 			"text": "(Player1) kills (Player2) for their supplies.",
@@ -418,13 +449,15 @@
 			"text": "(Player1) shoots an arrow at (Player2), but misses and kills (Player3) instead.",
 			"tributes": 3,
 			"deaths": [3],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["bow"]
 		},
 		{
 			"text": "(Player1) shoots a poisonous blow dart into (Player2)'s neck, slowly killing them.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["poison"]
 		},
 		{
 			"text": "(Player1) stabs (Player2) with a tree branch.",
@@ -436,7 +469,8 @@
 			"text": "(Player1) stabs (Player2) in the back with a trident.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["trident"]
 		},
 		{
 			"text": "(Player1), (Player2), and (Player3) get into a fight. (Player1) triumphantly kills them both.",
@@ -472,25 +506,29 @@
 			"text": "(Player1) kills (Player2) with a sickle.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["sickle"]
 		},
 		{
 			"text": "(Player1) and (Player2) fight for a bag. (Player1) strangles (Player2) with the straps and runs.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) and (Player2) fight for a bag. (Player2) strangles (Player1) with the straps and runs.",
 			"tributes": 2,
 			"deaths": [1],
-			"killers": [2]
+			"killers": [2],
+			"spoils": [null, "food"]
 		},
 		{
 			"text": "(Player1) repeatedly stabs (Player2) to death with sais.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"spoils": ["sais"]
 		}
 	],
 	"day": [
@@ -498,7 +536,8 @@
 			"text": "(Player1) goes hunting.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) injures themself.",
@@ -534,7 +573,8 @@
 			"text": "(Player1) fishes.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "fishing"
 		},
 		{
 			"text": "(Player1) camouflauges themself in the bushes.",
@@ -552,7 +592,8 @@
 			"text": "(Player1) makes a wooden spear.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["spear"]
 		},
 		{
 			"text": "(Player1) discovers a cave.",
@@ -582,31 +623,36 @@
 			"text": "(Player1) collects fruit from a tree.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) receives a hatchet from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["hatchet"]
 		},
 		{
 			"text": "(Player1) receives clean water from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) receives medical supplies from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["firstaid"]
 		},
 		{
 			"text": "(Player1) receives fresh food from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) searches for a water source.",
@@ -660,7 +706,8 @@
 			"text": "(Player1) practices their archery.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "bow"
 		},
 		{
 			"text": "(Player1) thinks about home.",
@@ -678,7 +725,8 @@
 			"text": "(Player1) tries to spear fish with a trident.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "trident"
 		},
 		{
 			"text": "(Player1) searches for firewood.",
@@ -702,7 +750,8 @@
 			"text": "(Player1) tends to (Player2)'s wounds.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "firstaid"
 		},
 		{
 			"text": "(Player1) sees smoke rising in the distance, but decides not to investigate.",
@@ -720,7 +769,8 @@
 			"text": "(Player1) makes a slingshot.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["slingshot"]
 		},
 		{
 			"text": "(Player1) travels to higher ground.",
@@ -768,7 +818,8 @@
 			"text": "(Player1) receives an explosive from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["explosives"]
 		},
 		{
 			"text": "(Player1) questions their sanity.",
@@ -780,13 +831,15 @@
 			"text": "(Player1) forces (Player2) to eat pant. (Player2) successfully does so.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "pant"
 		},
 		{
 			"text": "(Player1) forces (Player2) to eat pant. (Player2) chokes and dies.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "pant"
 		},
 		{
 			"text": "(Player1) catches (Player2) off guard and kills them.",
@@ -798,7 +851,8 @@
 			"text": "(Player1) throws a knife into (Player2)'s head.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1) begs for (Player2) to kill them. They reluctantly oblige, killing (Player1).",
@@ -822,7 +876,8 @@
 			"text": "(Player1) shoots an arrow into (Player2)'s head.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "bow"
 		},
 		{
 			"text": "(Player1) bleeds out due to untreated injuries.",
@@ -858,13 +913,15 @@
 			"text": "(Player1) taints (Player2)'s food, killing them.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1) decapitates (Player2) with a sword.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sword"
 		},
 		{
 			"text": "(Player1) dies from an infection.",
@@ -876,13 +933,15 @@
 			"text": "(Player1) spears (Player2) in the abdomen.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "spear"
 		},
 		{
 			"text": "(Player1) sets (Player2) on fire with a molotov.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "molotov"
 		},
 		{
 			"text": "(Player1) falls into a pit and dies.",
@@ -894,7 +953,8 @@
 			"text": "(Player1) stabs (Player2) while their back is turned.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1) severely injures (Player2), but puts them out of their misery.",
@@ -912,7 +972,8 @@
 			"text": "(Player1) bashes (Player2)'s head in with a mace.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "mace"
 		},
 		{
 			"text": "(Player1) attempts to climb a tree, but falls to their death.",
@@ -924,13 +985,15 @@
 			"text": "(Player1) pushes (Player2) off a cliff during a knife fight.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1) throws a knife into (Player2)'s chest.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1)'s trap kills (Player2).",
@@ -984,25 +1047,29 @@
 			"text": "(Player1) sets an explosive off, killing (Player2).",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) sets an explosive off, killing (Player2), and (Player3).",
 			"tributes": 3,
 			"deaths": [2, 3],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) sets an explosive off, killing (Player2), (Player3), and (Player4).",
 			"tributes": 4,
 			"deaths": [2, 3, 4],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) sets an explosive off, killing (Player2), (Player3), (Player4) and (Player5).",
 			"tributes": 5,
 			"deaths": [2, 3, 4, 5],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) kills (Player2) as they try to run.",
@@ -1032,19 +1099,22 @@
 			"text": "(Player1) dies from hunger.",
 			"tributes": 1,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "!food"
 		},
 		{
 			"text": "(Player1) dies from thirst.",
 			"tributes": 1,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "!food"
 		},
 		{
 			"text": "(Player1) kills (Player2) with a hatchet.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "hatchet"
 		},
 		{
 			"text": "(Player1) and (Player2) fight (Player3) and (Player4). (Player1) and (Player2) survive.",
@@ -1074,7 +1144,8 @@
 			"text": "(Player1) accidently detonates a land mine while trying to arm it.",
 			"tributes": 1,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) attacks (Player2), but (Player3) protects them, killing (Player1).",
@@ -1098,13 +1169,15 @@
 			"text": "(Player1) severely slices (Player2) with a sword.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sword"
 		},
 		{
 			"text": "(Player1) strangles (Player2) with a rope.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "rope"
 		},
 		{
 			"text": "(Player1) kills (Player2) for their supplies.",
@@ -1116,13 +1189,15 @@
 			"text": "(Player1) shoots an arrow at (Player2), but misses and kills (Player3) instead.",
 			"tributes": 3,
 			"deaths": [3],
-			"killers": [1]
+			"killers": [1],
+			"requires": "bow"
 		},
 		{
 			"text": "(Player1) shoots a poisonous blow dart into (Player2)'s neck, slowly killing them.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1), (Player2), and (Player3) successfully ambush and kill (Player4), (Player5), and (Player6).",
@@ -1170,19 +1245,22 @@
 			"text": "(Player1) poisons (Player2)'s drink, but mistakes it for their own and dies.",
 			"tributes": 2,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1) poisons (Player2)'s drink. They drink it and die.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1) stabs (Player2) in the back with a trident.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "trident"
 		},
 		{
 			"text": "(Player1) attempts to climb a tree, but falls on (Player2), killing them both.",
@@ -1212,7 +1290,8 @@
 			"text": "(Player1) kills (Player2) with a sickle.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sickle"
 		},
 		{
 			"text": "(Player1), (Player2), (Player3), (Player4), and (Player5) track down and kill (Player6).",
@@ -1248,7 +1327,8 @@
 			"text": "(Player1) repeatedly stabs (Player2) to death with sais.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sais"
 		},
 		{
 			"text": "(Player1) doodles in the dirt.",
@@ -1261,6 +1341,139 @@
 			"tributes": 1,
 			"deaths": [],
 			"killers": []
+		},
+		{
+			"text": "(Player1) finds a shovel.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["shovel"]
+		},
+		{
+			"text": "(Player1) digs a hole.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"requires": "shovel"
+		},
+		{
+			"text": "(Player1) repeatedly hits (Player2) in the face with a shovel until they die.",
+			"tributes": 2,
+			"deaths": [2],
+			"killers": [1],
+			"requires": "shovel"
+		},
+		{
+			"text": "(Player1) eats a quick meal.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"requires": "food"
+		},
+		{
+			"text": "(Player1) cooks a meal for (Player2).",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"requires": "food"
+		},
+		{
+			"text": "(Player1) quenches their thirst.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"requires": "food"
+		},
+		{
+			"text": "(Player1) receives a knife from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["knives"]
+		},
+		{
+			"text": "(Player1) receives a bow and some arrows from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["bow"]
+		},
+		{
+			"text": "(Player1) receives a mace from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["mace"]
+		},
+		{
+			"text": "(Player1) receives a sword from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["sword"]
+		},
+		{
+			"text": "(Player1) receives a spear from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["spear"]
+		},
+		{
+			"text": "(Player1) receives an explosive from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["explosives"]
+		},
+		{
+			"text": "(Player1) receives a sickle from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["sickle"]
+		},
+		{
+			"text": "(Player1) receives a rope from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["rope"]
+		},
+		{
+			"text": "(Player1) receives a trident from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["trident"]
+		},
+		{
+			"text": "(Player1) receives a pair of sais from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["sais"]
+		},
+		{
+			"text": "(Player1) receives pant from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["pant"]
+		},
+		{
+			"text": "(Player1) receives a molotov from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["molotov"]
+		},
+		{
+			"text": "(Player1) receives a bottle of poison from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["poison"]
 		}
 	],
 	"night": [
@@ -1322,7 +1535,8 @@
 			"text": "(Player1) tends to their wounds.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "firstaid"
 		},
 		{
 			"text": "(Player1) sees a fire, but stays hidden.",
@@ -1352,7 +1566,8 @@
 			"text": "(Player1) cooks their food before putting their fire out.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "food"
 		},
 		{
 			"text": "(Player1) and (Player2) run into each other and decide to truce for the night.",
@@ -1382,7 +1597,8 @@
 			"text": "(Player1) tries to treat their infection.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "firstaid"
 		},
 		{
 			"text": "(Player1) and (Player2) talk about the tributes still alive.",
@@ -1454,25 +1670,29 @@
 			"text": "(Player1) receives a hatchet from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["hatchet"]
 		},
 		{
 			"text": "(Player1) receives clean water from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) receives medical supplies from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["firstaid"]
 		},
 		{
 			"text": "(Player1) receives fresh food from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["food"]
 		},
 		{
 			"text": "(Player1) tries to sing themself to sleep.",
@@ -1496,7 +1716,8 @@
 			"text": "(Player1) tends to (Player2)'s wounds.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "firstaid"
 		},
 		{
 			"text": "(Player1) quietly hums.",
@@ -1532,7 +1753,8 @@
 			"text": "(Player1) receives an explosive from an unknown sponsor.",
 			"tributes": 1,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"spoils": ["explosives"]
 		},
 		{
 			"text": "(Player1) questions their sanity.",
@@ -1544,13 +1766,15 @@
 			"text": "(Player1) forces (Player2) to eat pant. (Player2) successfully does so.",
 			"tributes": 2,
 			"deaths": [],
-			"killers": []
+			"killers": [],
+			"requires": "pant"
 		},
 		{
 			"text": "(Player1) forces (Player2) to eat pant. (Player2) chokes and dies.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "pant"
 		},
 		{
 			"text": "(Player1) catches (Player2) off guard and kills them.",
@@ -1562,7 +1786,8 @@
 			"text": "(Player1) throws a knife into (Player2)'s head.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1) begs for (Player2) to kill them. They reluctantly oblige, killing (Player1).",
@@ -1586,7 +1811,8 @@
 			"text": "(Player1) shoots an arrow into (Player2)'s head.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "bow"
 		},
 		{
 			"text": "(Player1) bleeds out due to untreated injuries.",
@@ -1622,13 +1848,15 @@
 			"text": "(Player1) taints (Player2)'s food, killing them.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1) decapitates (Player2) with a sword.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sword"
 		},
 		{
 			"text": "(Player1) dies from an infection.",
@@ -1640,13 +1868,15 @@
 			"text": "(Player1) spears (Player2) in the abdomen.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "spear"
 		},
 		{
 			"text": "(Player1) sets (Player2) on fire with a molotov.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "molotov"
 		},
 		{
 			"text": "(Player1) falls into a pit and dies.",
@@ -1658,7 +1888,8 @@
 			"text": "(Player1) stabs (Player2) while their back is turned.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1) severely injures (Player2), but puts them out of their misery.",
@@ -1676,7 +1907,8 @@
 			"text": "(Player1) bashes (Player2)'s head in with a mace.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "mace"
 		},
 		{
 			"text": "(Player1) attempts to climb a tree, but falls to their death.",
@@ -1688,13 +1920,15 @@
 			"text": "(Player1) pushes (Player2) off a cliff during a knife fight.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1) throws a knife into (Player2)'s chest.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "knives"
 		},
 		{
 			"text": "(Player1)'s trap kills (Player2).",
@@ -1748,25 +1982,29 @@
 			"text": "(Player1) sets an explosive off, killing (Player2).",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) sets an explosive off, killing (Player2), and (Player3).",
 			"tributes": 3,
 			"deaths": [2, 3],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) sets an explosive off, killing (Player2), (Player3), and (Player4).",
 			"tributes": 4,
 			"deaths": [2, 3, 4],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) sets an explosive off, killing (Player2), (Player3), (Player4) and (Player5).",
 			"tributes": 5,
 			"deaths": [2, 3, 4, 5],
-			"killers": [1]
+			"killers": [1],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) kills (Player2) as they try to run.",
@@ -1796,19 +2034,22 @@
 			"text": "(Player1) dies from hunger.",
 			"tributes": 1,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "!food"
 		},
 		{
 			"text": "(Player1) dies from thirst.",
 			"tributes": 1,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "!food"
 		},
 		{
 			"text": "(Player1) kills (Player2) with a hatchet.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "hatchet"
 		},
 		{
 			"text": "(Player1) and (Player2) fight (Player3) and (Player4). (Player1) and (Player2) survive.",
@@ -1838,7 +2079,8 @@
 			"text": "(Player1) accidently detonates a land mine while trying to arm it.",
 			"tributes": 1,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "explosives"
 		},
 		{
 			"text": "(Player1) attacks (Player2), but (Player3) protects them, killing (Player1).",
@@ -1862,13 +2104,15 @@
 			"text": "(Player1) severely slices (Player2) with a sword.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sword"
 		},
 		{
 			"text": "(Player1) strangles (Player2) with a rope.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "rope"
 		},
 		{
 			"text": "(Player1) kills (Player2) for their supplies.",
@@ -1880,13 +2124,15 @@
 			"text": "(Player1) shoots an arrow at (Player2), but misses and kills (Player3) instead.",
 			"tributes": 3,
 			"deaths": [3],
-			"killers": [1]
+			"killers": [1],
+			"requires": "bow"
 		},
 		{
 			"text": "(Player1) shoots a poisonous blow dart into (Player2)'s neck, slowly killing them.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1), (Player2), and (Player3) successfully ambush and kill (Player4), (Player5), and (Player6).",
@@ -1934,19 +2180,22 @@
 			"text": "(Player1) poisons (Player2)'s drink, but mistakes it for their own and dies.",
 			"tributes": 2,
 			"deaths": [1],
-			"killers": []
+			"killers": [],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1) poisons (Player2)'s drink. They drink it and die.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "poison"
 		},
 		{
 			"text": "(Player1) stabs (Player2) in the back with a trident.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "trident"
 		},
 		{
 			"text": "(Player1) attempts to climb a tree, but falls on (Player2), killing them both.",
@@ -1976,7 +2225,8 @@
 			"text": "(Player1) kills (Player2) with a sickle.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sickle"
 		},
 		{
 			"text": "(Player1), (Player2), (Player3), (Player4), and (Player5) track down and kill (Player6).",
@@ -2012,13 +2262,126 @@
 			"text": "(Player1) repeatedly stabs (Player2) to death with sais.",
 			"tributes": 2,
 			"deaths": [2],
-			"killers": [1]
+			"killers": [1],
+			"requires": "sais"
 		},
 		{
 			"text": "(Player1) writes in their journal.",
 			"tributes": 1,
 			"deaths": [],
 			"killers": []
+		},
+		{
+			"text": "(Player1) repeatedly hits (Player2) in the face with a shovel until they die.",
+			"tributes": 2,
+			"deaths": [2],
+			"killers": [1],
+			"requires": "shovel"
+		},
+		{
+			"text": "(Player1) cooks a meal for themselves.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"requires": "food"
+		},
+		{
+			"text": "(Player1) cooks a meal for (Player2) while they chat around the fire.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"requires": "food"
+		},
+		{
+			"text": "(Player1) quenches their thirst by the fire.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"requires": "food"
+		},
+		{
+			"text": "(Player1) receives a knife from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["knives"]
+		},
+		{
+			"text": "(Player1) receives a bow and some arrows from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["bow"]
+		},
+		{
+			"text": "(Player1) receives a mace from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["mace"]
+		},
+		{
+			"text": "(Player1) receives a sword from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["sword"]
+		},
+		{
+			"text": "(Player1) receives a spear from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["spear"]
+		},
+		{
+			"text": "(Player1) receives a sickle from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["sickle"]
+		},
+		{
+			"text": "(Player1) receives a rope from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["rope"]
+		},
+		{
+			"text": "(Player1) receives a trident from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["trident"]
+		},
+		{
+			"text": "(Player1) receives a pair of sais from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["sais"]
+		},
+		{
+			"text": "(Player1) receives pant from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["pant"]
+		},
+		{
+			"text": "(Player1) receives a molotov from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["molotov"]
+		},
+		{
+			"text": "(Player1) receives a bottle of poison from an unknown sponsor.",
+			"tributes": 1,
+			"deaths": [],
+			"killers": [],
+			"spoils": ["poison"]
 		}
 	]
 }
