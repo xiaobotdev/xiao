@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { loadImage } = require('canvas');
+const { loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 
 module.exports = class ImageSizeCommand extends Command {

@@ -93,21 +93,20 @@ things, I'm not taking any chances.
 5. Create a file named `.env` and fill it out as shown in above and in `.env.example`.
 6. Run `apt update` and `apt upgrade` to install the latest dependencies of your distro.
 7. Run `apt install ffmpeg` to install ffmpeg.
-8. [Follow these instructions to install the dependencies for `node-canvas`](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Ubuntu-and-other-Debian-based-systems).
-9. Run `apt install liblqr-1-0-dev liblqr-1-0` to install liblqr (needed for ImageMagick).
-10. [Follow these instructions to install ImageMagick](https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/).
-11. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04). Remember to set up a password!
-12. Run `apt install libtool` so sodium can compile if necessary. **(Optional)**
-13. Download [the NSFW model](https://github.com/gantman/nsfw_model) and extract the contents to `<xiao folder>/tf_models/nsfw`.
-14. Download DECTalk and extract `dectalk.dll`, `dtalk_us.dic`, `MSVCRTd.DLL`, and `say.exe` to `dectalk/`. I cannot help you find this.
-15. Run `apt install wine` to install wine.
-16. Run `dpkg --add-architecture i386` to allow installation of wine32.
-17. Run `apt update` again.
-18. Run `apt install wine32` to install wine32.
-19. Run `apt install xvfb` to install xvfb.
-20. Run `yarn install --production` in the folder you cloned the bot.
-21. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
-22. Start Xiao up!
+8. Run `apt install liblqr-1-0-dev liblqr-1-0` to install liblqr (needed for ImageMagick).
+9. [Follow these instructions to install ImageMagick](https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/).
+10. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04). Remember to set up a password!
+11. Run `apt install libtool` so sodium can compile if necessary. **(Optional)**
+12. Download [the NSFW model](https://github.com/gantman/nsfw_model) and extract the contents to `<xiao folder>/tf_models/nsfw`.
+13. Download DECTalk and extract `dectalk.dll`, `dtalk_us.dic`, `MSVCRTd.DLL`, and `say.exe` to `dectalk/`. I cannot help you find this.
+14. Run `apt install wine` to install wine.
+15. Run `dpkg --add-architecture i386` to allow installation of wine32.
+16. Run `apt update` again.
+17. Run `apt install wine32` to install wine32.
+18. Run `apt install xvfb` to install xvfb.
+19. Run `yarn install --production` in the folder you cloned the bot.
+20. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
+21. Start Xiao up!
 
 ## Commands
 Total: 510
@@ -684,12 +683,12 @@ Total: 510
 * [@discordjs/opus](https://www.npmjs.com/package/@discordjs/opus)
 * [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
 * [@mediapipe/face_detection](https://www.npmjs.com/package/@mediapipe/face_detection)
+* [@napi-rs/canvas](https://www.npmjs.com/package/@napi-rs/canvas)
 * [@tensorflow-models/face-detection](https://www.npmjs.com/package/@tensorflow-models/face-detection)
 * [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
 * [@twemoji/parser](https://www.npmjs.com/package/@twemoji/parser)
 * [bombsweeper.js](https://www.npmjs.com/package/bombsweeper.js)
 * [bufferutil](https://www.npmjs.com/package/bufferutil)
-* [canvas](https://www.npmjs.com/package/canvas)
 * [cheerio](https://www.npmjs.com/package/cheerio)
 * [city-timezones](https://www.npmjs.com/package/city-timezones)
 * [cloc](https://www.npmjs.com/package/cloc)

@@ -1,8 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
-const { wrapText } = require('../../util/Canvas');
+const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class AlertCommand extends Command {
 	constructor(client) {
@@ -51,7 +51,7 @@ module.exports = class AlertCommand extends Command {
 		ctx.textBaseline = 'top';
 		let text = wrapText(ctx, message, 540);
 		text = text.length > 3 ? `${text.slice(0, 3).join('\n')}...` : text.join('\n');
-		ctx.fillText(text, 48, 178);
+		fillTextWithBreaks(ctx, text, 48, 178);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'alert.png' }] });
 	}
 };

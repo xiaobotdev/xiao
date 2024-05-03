@@ -1,8 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
-const { wrapText } = require('../../util/Canvas');
+const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class ReactionMemeCommand extends Command {
 	constructor(client) {
@@ -58,7 +58,7 @@ module.exports = class ReactionMemeCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.fillRect(0, 0, base.width, linesLen);
 		ctx.fillStyle = 'black';
-		ctx.fillText(lines.join('\n'), 5, 5);
+		fillTextWithBreaks(ctx, lines.join('\n'), 5, 5);
 		ctx.drawImage(base, 0, linesLen);
 		const attachment = canvas.toBuffer();
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');

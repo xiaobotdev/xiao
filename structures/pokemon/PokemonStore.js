@@ -1,6 +1,6 @@
 const { Collection } = require('@discordjs/collection');
 const request = require('node-superfetch');
-const { loadImage } = require('canvas');
+const { loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const Pokemon = require('./Pokemon');
 const MoveStore = require('./MoveStore');

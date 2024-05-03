@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const path = require('path');
 const { reactIfAble } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');

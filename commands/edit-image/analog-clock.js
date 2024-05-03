@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const moment = require('moment-timezone');
 const { firstUpperCase } = require('../../util/Util');
 

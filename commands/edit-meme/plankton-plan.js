@@ -1,8 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
-const { wrapText } = require('../../util/Canvas');
+const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
 const coord = [[240, 63], [689, 63], [705, 383], [220, 380]];
 
 module.exports = class PlanktonPlanCommand extends Command {
@@ -73,7 +73,7 @@ module.exports = class PlanktonPlanCommand extends Command {
 				ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(fontSize);
 			}
 			const lines = wrapText(ctx, step, 155);
-			ctx.fillText(lines.join('\n'), x, y);
+			fillTextWithBreaks(ctx, lines.join('\n'), x, y);
 			i++;
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'plankton-plan.png' }] });

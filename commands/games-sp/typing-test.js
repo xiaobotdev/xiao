@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const { stripIndents } = require('common-tags');
 const Diff = require('text-diff');
 const { fetchHSUserDisplay } = require('../../util/Util');
