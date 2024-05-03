@@ -10,7 +10,7 @@ const request = require('node-superfetch');
 const { readFile } = require('fs/promises');
 const path = require('path');
 const { formatNumberK, randomRange } = require('../../util/Util');
-const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
+const { wrapText, fillTextWithBreaks, measureTextHeightWithBreaks } = require('../../util/Canvas');
 
 module.exports = class TweetCommand extends Command {
 	constructor(client) {
@@ -68,8 +68,8 @@ module.exports = class TweetCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(23);
 		const lines = wrapText(ctx, text, 710, true);
-		const metrics = ctx.measureText(lines.join('\n'));
-		const linesLen = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent + 15;
+		const metrics = measureTextHeightWithBreaks(ctx, lines.join('\n'), true);
+		const linesLen = metrics + 15;
 		canvas.height += linesLen;
 		let imageHeight = 0;
 		ctx.fillStyle = 'black';
@@ -224,13 +224,18 @@ module.exports = class TweetCommand extends Command {
 		const wrapped = wrapText(ctx, text, maxLineLen, true);
 		const emoji = text.match(emojiRegex());
 		if (!emoji) {
-			fillTextWithBreaks(ctx, wrapped.join('\n'), x, y);
+			fillTextWithBreaks(ctx, wrapped.join('\n'), x, y, true);
 			this.fillHashtags(ctx, wrapped, x, y, emojiSize);
 			return ctx;
 		}
 		let currentY = y;
 		for (let currentLine = 0; currentLine < wrapped.length; currentLine++) {
 			const line = wrapped[currentLine];
+			if (line === '') {
+				const metrics = ctx.measureText('a');
+				currentY += metrics.emHeightAscent + metrics.emHeightDescent;
+				continue;
+			}
 			const lineEmoji = line.match(emojiRegex());
 			let currentX = x;
 			const metrics = ctx.measureText(line);
@@ -262,6 +267,11 @@ module.exports = class TweetCommand extends Command {
 	fillHashtags(ctx, wrappedText, x, y, emojiSize) {
 		let currentY = y;
 		for (const line of wrappedText) {
+			if (line === '') {
+				const metrics = ctx.measureText('a');
+				currentY += metrics.emHeightAscent + metrics.emHeightDescent;
+				continue;
+			}
 			const words = line.split(' ');
 			for (let i = 0; i < words.length; i++) {
 				const word = words[i];
