@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -76,6 +76,6 @@ module.exports = class WhiteboardCommand extends Command {
 			const height = resolveTopMost + ((fontSize + 10) * i);
 			ctx.fillText(resolveLines[i], 195, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'whiteboard.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'whiteboard.png' }] });
 	}
 };

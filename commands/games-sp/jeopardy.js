@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas } = require('canvas');
 const path = require('path');
 const { reactIfAble } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
@@ -88,6 +88,6 @@ module.exports = class JeopardyCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
-		return canvas.toBuffer('image/png');
+		return canvas.toBuffer();
 	}
 };

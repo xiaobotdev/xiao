@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const colors = 	{
 	Solid: 'black',
@@ -97,7 +97,7 @@ module.exports = class PeriodicTableCommand extends Command {
 		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;
 		return msg.say(
 			`**${element.name} (${element.symbol})** is a ${phase} in ${period}.`,
-			{ files: [{ attachment: canvas.toBuffer('image/png'), name: `${element.name}.png` }] }
+			{ files: [{ attachment: canvas.toBuffer(), name: `${element.name}.png` }] }
 		);
 	}
 

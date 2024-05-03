@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { contrast } = require('../../util/Canvas');
@@ -48,6 +48,6 @@ module.exports = class FoodBrokeCommand extends Command {
 		contrast(ctx, 23, 9, 125, 125);
 		ctx.drawImage(avatar, 117, 382, 75, 75);
 		contrast(ctx, 117, 382, 75, 75);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'food-broke.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'food-broke.png' }] });
 	}
 };

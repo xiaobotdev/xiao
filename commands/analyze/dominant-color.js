@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const ntc = require('ntcjs');
 const { rgbToHex } = require('../../util/Util');
@@ -37,7 +37,7 @@ module.exports = class DominantColorCommand extends Command {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		const name = ntc.name(hexColor);
 		return msg.say(`${hexColor.toUpperCase()} - ${name[1]}`, {
-			files: [{ attachment: canvas.toBuffer('image/png'), name: 'dominant-color.png' }]
+			files: [{ attachment: canvas.toBuffer(), name: 'dominant-color.png' }]
 		});
 	}
 };

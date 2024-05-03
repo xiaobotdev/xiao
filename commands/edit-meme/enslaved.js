@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
@@ -55,6 +55,6 @@ module.exports = class EnslavedCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(50);
 		ctx.fillText(name.toLowerCase(), 365, 400, 240);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'enslaved.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'enslaved.png' }] });
 	}
 };

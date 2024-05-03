@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -55,6 +55,6 @@ module.exports = class GandhiQuoteCommand extends Command {
 			const height = topMost + ((fontSize + 20) * i);
 			ctx.fillText(lines[i], 395, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'gandhi-quote.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'gandhi-quote.png' }] });
 	}
 };

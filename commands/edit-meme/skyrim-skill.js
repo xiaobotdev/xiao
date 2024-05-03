@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
@@ -64,7 +64,7 @@ module.exports = class SkyrimSkillCommand extends Command {
 		ctx.fillText(skill, 189 + 5, height + 75 + 3, 300);
 		ctx.fillStyle = 'white';
 		ctx.fillText(skill, 189, height + 75, 300);
-		const attachment = canvas.toBuffer('image/png');
+		const attachment = canvas.toBuffer();
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'skyrim-skill.png' }] });
 	}

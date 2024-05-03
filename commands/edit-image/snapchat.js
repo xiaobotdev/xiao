@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 
 module.exports = class SnapchatCommand extends Command {
@@ -60,6 +60,6 @@ module.exports = class SnapchatCommand extends Command {
 		ctx.globalAlpha = 1;
 		ctx.fillStyle = 'white';
 		ctx.fillText(text, base.width / 2, barPosition - (barHeight * 0.4));
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'snapchat.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'snapchat.png' }] });
 	}
 };

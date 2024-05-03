@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
@@ -49,6 +49,6 @@ module.exports = class CrushCommand extends Command {
 		ctx.drawImage(data, x, y, width, height);
 		ctx.rotate(3.79 * (Math.PI / 180));
 		ctx.drawImage(base, 0, 0);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'crush.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'crush.png' }] });
 	}
 };

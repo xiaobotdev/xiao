@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
@@ -45,6 +45,6 @@ module.exports = class LookAtThisPhotographCommand extends Command {
 		ctx.rotate(-13.5 * (Math.PI / 180));
 		ctx.drawImage(data, 280, 218, 175, 125);
 		ctx.rotate(13.5 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'look-at-this-photograph.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'look-at-this-photograph.png' }] });
 	}
 };

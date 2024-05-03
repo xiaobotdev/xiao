@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const jsChess = require('js-chess-engine');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const moment = require('moment');
 const validateFEN = require('fen-validator').default;
 const { stripIndents } = require('common-tags');
@@ -293,7 +293,7 @@ module.exports = class ChessCommand extends Command {
 				row -= 1;
 			}
 		}
-		return canvas.toBuffer('image/png');
+		return canvas.toBuffer();
 	}
 
 	async loadImages() {

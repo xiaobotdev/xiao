@@ -1,5 +1,5 @@
 const request = require('node-superfetch');
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas } = require('canvas');
 const path = require('path');
 const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
 const { cropToContent } = require('../../util/Canvas');
@@ -159,7 +159,7 @@ module.exports = class Pokemon {
 		const y = Math.floor(this.id / 12) * 30;
 		ctx.drawImage(this.store.sprites, x, y, 40, 30, 0, 0, 40, 30);
 		cropToContent(ctx, canvas, canvas.width, canvas.height);
-		return canvas.toBuffer('image/png');
+		return canvas.toBuffer();
 	}
 
 	async fetchSmogonTiers(...gens) {

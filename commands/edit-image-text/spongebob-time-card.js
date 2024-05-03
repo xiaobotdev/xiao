@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -85,6 +85,6 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 			ctx.fillStyle = 'black';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'spongebob-time-card.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spongebob-time-card.png' }] });
 	}
 };

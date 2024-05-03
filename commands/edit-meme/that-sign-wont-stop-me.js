@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -72,6 +72,6 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			const height = bTopMost + ((fontSize + 2) * i);
 			ctx.fillText(bLines[i], 280, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'that-sign-wont-stop-me.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'that-sign-wont-stop-me.png' }] });
 	}
 };

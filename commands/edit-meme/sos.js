@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 
 module.exports = class SosCommand extends Command {
@@ -56,6 +56,6 @@ module.exports = class SosCommand extends Command {
 		}
 		ctx.fillText(message.toUpperCase(), 362, 522);
 		ctx.rotate(-15 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'sos.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sos.png' }] });
 	}
 };
