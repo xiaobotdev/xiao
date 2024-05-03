@@ -49,7 +49,7 @@ module.exports = class HungerGamesCommand extends Command {
 				kills: 0,
 				weapon: null,
 				food: 2,
-				dead: true
+				dead: false
 			});
 		}
 		while (players.filter(player => !player.dead).size > 1) {
