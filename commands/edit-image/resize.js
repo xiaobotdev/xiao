@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 
 module.exports = class ResizeCommand extends Command {
@@ -43,6 +43,6 @@ module.exports = class ResizeCommand extends Command {
 		const canvas = createCanvas(width, height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(data, 0, 0, width, height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'resize.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'resize.png' }] });
 	}
 };

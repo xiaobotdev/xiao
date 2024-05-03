@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const { greyscale } = require('../../util/Canvas');
@@ -147,7 +147,7 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		ctx.fillText(pokemon1.name, 128, 250, 175);
 		ctx.strokeText(pokemon2.name, 348, 250, 175);
 		ctx.fillText(pokemon2.name, 348, 250, 175);
-		return { attachment: canvas.toBuffer('image/png'), name };
+		return { attachment: canvas.toBuffer(), name };
 	}
 
 	calculateAdvantage(pkmn1, pkmn2) {

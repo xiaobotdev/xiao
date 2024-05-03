@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 const coord = [[240, 63], [689, 63], [705, 383], [220, 380]];
@@ -76,6 +76,6 @@ module.exports = class PlanktonPlanCommand extends Command {
 			ctx.fillText(lines.join('\n'), x, y);
 			i++;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'plankton-plan.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'plankton-plan.png' }] });
 	}
 };

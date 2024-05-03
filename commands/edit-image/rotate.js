@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 
 module.exports = class RotateCommand extends Command {
@@ -43,7 +43,7 @@ module.exports = class RotateCommand extends Command {
 		ctx.drawImage(data, (canvas.width / 2) - (data.width / 2), (canvas.height / 2) - (data.height / 2));
 		ctx.translate(canvas.width / 2, canvas.height / 2);
 		ctx.rotate(-degrees * (Math.PI / 180));
-		const attachment = canvas.toBuffer('image/png');
+		const attachment = canvas.toBuffer();
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'rotate.png' }] });
 	}

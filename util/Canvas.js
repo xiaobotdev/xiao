@@ -1,4 +1,4 @@
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas } = require('canvas');
 
 module.exports = class CanvasUtil {
 	static greyscale(ctx, x, y, width, height) {

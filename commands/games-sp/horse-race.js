@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 const { stripIndents } = require('common-tags');
 const { shuffle, randomRange, formatTime } = require('../../util/Util');
@@ -107,6 +107,6 @@ module.exports = class HorseRaceCommand extends Command {
 			ctx.font = this.client.fonts.get('Paladins.otf').toCanvasString(15);
 			ctx.fillText(horse.name, 251, 138 + (49 * i));
 		}
-		return { attachment: canvas.toBuffer('image/png'), name: 'leaderboard.png' };
+		return { attachment: canvas.toBuffer(), name: 'leaderboard.png' };
 	}
 };

@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { MersenneTwister19937, integer } = require('random-js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { LOVER_USER_ID } = process.env;
@@ -88,6 +88,6 @@ module.exports = class ThinkOfCommand extends Command {
 		ctx.fillText(thought.text, 600, 296);
 		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
 		ctx.fillText(thought.emoji, 600, 100);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'think-of.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'think-of.png' }] });
 	}
 };

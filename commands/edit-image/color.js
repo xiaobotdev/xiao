@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas } = require('canvas');
 const ntc = require('ntcjs');
 
 module.exports = class ColorCommand extends Command {
@@ -33,7 +33,7 @@ module.exports = class ColorCommand extends Command {
 		ctx.fillStyle = color.toLowerCase();
 		ctx.fillRect(0, 0, 250, 250);
 		return msg.say(`${color.toUpperCase()} - ${name[1]}`, {
-			files: [{ attachment: canvas.toBuffer('image/png'), name: 'color.png' }]
+			files: [{ attachment: canvas.toBuffer(), name: 'color.png' }]
 		});
 	}
 };

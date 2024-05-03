@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { MersenneTwister19937, integer } = require('random-js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { percentColor } = require('../../util/Util');
@@ -93,7 +93,7 @@ module.exports = class ShipCommand extends Command {
 		ctx.fillText(this.calculateLevelText(level, self, owner, authorUser, botUser), 600, 296);
 		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
 		ctx.fillText(level > 49 ? '❤️' : '💔', 600, 100);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'ship.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ship.png' }] });
 	}
 
 	calculateLevelText(level, self, owner, authorUser, botUser) {

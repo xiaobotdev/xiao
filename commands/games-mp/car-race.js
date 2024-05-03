@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const path = require('path');
@@ -551,6 +551,6 @@ module.exports = class CarRaceCommand extends Command {
 				greyscale(ctx, bg.width - 110 - 125, 50, 125, 125);
 			}
 		}
-		return canvas.toBuffer('image/png');
+		return canvas.toBuffer();
 	}
 };

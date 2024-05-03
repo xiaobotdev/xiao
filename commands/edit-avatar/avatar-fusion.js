@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 
 module.exports = class AvatarFusionCommand extends Command {
@@ -42,6 +42,6 @@ module.exports = class AvatarFusionCommand extends Command {
 		ctx.globalAlpha = 0.5;
 		ctx.drawImage(baseAvatar, 0, 0);
 		ctx.drawImage(overlayAvatar, 0, 0, baseAvatar.width, baseAvatar.height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'avatar-fusion.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'avatar-fusion.png' }] });
 	}
 };

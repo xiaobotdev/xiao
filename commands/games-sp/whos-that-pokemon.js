@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const { reactIfAble } = require('../../util/Util');
 const { silhouette, centerImagePart } = require('../../util/Canvas');
@@ -149,6 +149,6 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			ctx.fillStyle = '#3c5aa6';
 			ctx.fillText(pokemon.name, 362, 158, 240);
 		}
-		return { attachment: canvas.toBuffer('image/png'), name };
+		return { attachment: canvas.toBuffer(), name };
 	}
 };

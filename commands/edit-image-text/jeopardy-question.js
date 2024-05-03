@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas } = require('canvas');
 const { wrapText } = require('../../util/Canvas');
 
 module.exports = class JeopardyQuestionCommand extends Command {
@@ -57,6 +57,6 @@ module.exports = class JeopardyQuestionCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'jeopardy-question.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'jeopardy-question.png' }] });
 	}
 };

@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { stripIndents } = require('common-tags');
@@ -145,7 +145,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 		ctx.fillStyle = monsterType === 'xyz' ? 'white' : 'black';
 		ctx.fillText(id.toString().padStart(8, '0'), 43, 1128);
 		ctx.fillText(`XIAO-EN${setID.toString().padStart(3, '0')}`, 589 - (monsterType === 'link' ? 58 : 0), 849);
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'yu-gi-oh-gen.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'yu-gi-oh-gen.png' }] });
 	}
 
 	squareImage(image) {

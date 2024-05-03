@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 const request = require('node-superfetch');
 const stackBlur = require('stackblur-canvas');
 
@@ -40,7 +40,7 @@ module.exports = class BlurCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(data, 0, 0);
 		stackBlur.canvasRGBA(canvas, 0, 0, canvas.width, canvas.height, radius);
-		const attachment = canvas.toBuffer('image/png');
+		const attachment = canvas.toBuffer();
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'blur.png' }] });
 	}

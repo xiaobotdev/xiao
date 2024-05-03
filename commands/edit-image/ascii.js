@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { loadImage } = require('@napi-rs/canvas');
+const { loadImage } = require('canvas');
 const imageToAscii = require('image-to-ascii');
 const request = require('node-superfetch');
 
