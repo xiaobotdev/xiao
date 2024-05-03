@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
@@ -45,6 +45,6 @@ module.exports = class ThisGuyCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		const { x, y, width, height } = centerImagePart(data, 361, 361, 76, 62);
 		ctx.drawImage(data, x, y, width, height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'this-guy.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'this-guy.png' }] });
 	}
 };

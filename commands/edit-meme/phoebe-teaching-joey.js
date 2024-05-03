@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const coord = [
 	[[136, 135], [416, 135]],
@@ -92,6 +92,6 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 			}
 			i++;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'phoebe-teaching-joey.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'phoebe-teaching-joey.png' }] });
 	}
 };

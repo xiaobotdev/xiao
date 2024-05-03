@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
@@ -62,7 +62,7 @@ module.exports = class FrameCommand extends Command {
 			ctx.drawImage(data, x, y, width, height);
 			ctx.drawImage(base, 0, 0);
 		}
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: `frame-${frame.file}` }] });
 	}

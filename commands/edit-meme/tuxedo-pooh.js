@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -77,6 +77,6 @@ module.exports = class TuxedoPoohCommand extends Command {
 			const height = tuxedoTopMost + ((fontSize + 10) * i);
 			ctx.fillText(tuxedoLines[i], 570, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'tuxedo-pooh.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'tuxedo-pooh.png' }] });
 	}
 };

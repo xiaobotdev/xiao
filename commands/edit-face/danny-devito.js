@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 
 module.exports = class DannyDevitoCommand extends Command {
@@ -52,6 +52,6 @@ module.exports = class DannyDevitoCommand extends Command {
 				height * 1.4
 			);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'danny-devito.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'danny-devito.png' }] });
 	}
 };

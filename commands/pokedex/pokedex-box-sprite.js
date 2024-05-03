@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const { cropToContent } = require('../../util/Canvas');
 
 module.exports = class PokedexBoxSpriteCommand extends Command {
@@ -90,7 +90,7 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 			const height = 30 * ratio;
 			ctx.drawImage(this.client.pokemon.sprites, x, y, 40, 30, 0, 0, 250, height);
 			cropToContent(ctx, canvas, canvas.width, canvas.height);
-			attachment = canvas.toBuffer();
+			attachment = canvas.toBuffer('image/png');
 		}
 		return msg.say(`#${pokemon.displayID} - ${pokemon.name}`, { files: [{ attachment, name: 'box.png' }] });
 	}

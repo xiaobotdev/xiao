@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -65,6 +65,6 @@ module.exports = class HighwaySignCommand extends Command {
 			ctx.fillText(lines[2], 318, 128);
 			ctx.fillText(lines[3], 318, 147);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'highway-sign.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'highway-sign.png' }] });
 	}
 };

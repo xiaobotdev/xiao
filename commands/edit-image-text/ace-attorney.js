@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { firstUpperCase } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
@@ -83,6 +83,6 @@ module.exports = class AceAttorneyCommand extends Command {
 		let text = wrapText(ctx, quote, 242);
 		text = text.length > 5 ? `${text.slice(0, 5).join('\n')}...` : text.join('\n');
 		ctx.fillText(text, 7, 199);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: `ace-attorney-${character}.png` }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: `ace-attorney-${character}.png` }] });
 	}
 };

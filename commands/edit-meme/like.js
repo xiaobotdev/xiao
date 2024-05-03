@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
@@ -45,7 +45,7 @@ module.exports = class LikeCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0, plate.width, height);
 		ctx.drawImage(plate, 0, height);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'like.png' }] });
 	}

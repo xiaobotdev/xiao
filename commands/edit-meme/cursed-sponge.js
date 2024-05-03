@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 
 module.exports = class CursedSpongeCommand extends Command {
@@ -47,6 +47,6 @@ module.exports = class CursedSpongeCommand extends Command {
 			if ((width + sponge.width) === (sponge.width * (rows > 1 ? 10 : amount))) width = 0;
 			else width += sponge.width;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'cursed-sponge.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'cursed-sponge.png' }] });
 	}
 };

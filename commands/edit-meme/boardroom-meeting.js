@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 
 module.exports = class BoardroomMeetingCommand extends Command {
@@ -70,6 +70,6 @@ module.exports = class BoardroomMeetingCommand extends Command {
 		ctx.fillText(suggestion1, 30, 251, 90);
 		ctx.fillText(suggestion2, 167, 258, 75);
 		ctx.fillText(final, 310, 269, 130);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'boardroom-meeting.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'boardroom-meeting.png' }] });
 	}
 };

@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
@@ -45,6 +45,6 @@ module.exports = class IHaveThePowerCommand extends Command {
 		ctx.rotate(18.3 * (Math.PI / 180));
 		ctx.drawImage(avatar, 332, -125, 175, 175);
 		ctx.rotate(-18.3 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'i-have-the-power.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'i-have-the-power.png' }] });
 	}
 };

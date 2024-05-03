@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 const characters = require('../../assets/json/undertale');
@@ -117,6 +117,6 @@ module.exports = class UndertaleCommand extends Command {
 		for (let i = 0; i < lines; i++) {
 			ctx.fillText(text[i], 174, 22 + (22 * i) + (22 * i) + (space * i));
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: `undertale-${character}.png` }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: `undertale-${character}.png` }] });
 	}
 };

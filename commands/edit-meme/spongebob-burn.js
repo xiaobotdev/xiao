@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -67,6 +67,6 @@ module.exports = class SpongebobBurnCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 		ctx.fillText(person, 119, 405);
 		ctx.fillText(person, 439, 434);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spongebob-burn.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'spongebob-burn.png' }] });
 	}
 };

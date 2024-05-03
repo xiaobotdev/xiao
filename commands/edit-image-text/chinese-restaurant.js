@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -65,6 +65,6 @@ module.exports = class ChineseRestaurantCommand extends Command {
 			ctx.fillText(lines[2], base.width / 2, 315);
 			ctx.fillText(lines[3], base.width / 2, 342);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'chinese-restaurant.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'chinese-restaurant.png' }] });
 	}
 };

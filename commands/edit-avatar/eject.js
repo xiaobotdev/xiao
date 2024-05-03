@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const GIFEncoder = require('gifencoder');
 const { MersenneTwister19937, bool } = require('random-js');
 const request = require('node-superfetch');

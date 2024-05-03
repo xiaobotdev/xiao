@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const { stripIndents } = require('common-tags');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
@@ -59,6 +59,6 @@ module.exports = class BeLikeBillCommand extends Command {
 			${name} is smart.
 			Be like ${name}.
 		`, 31, 80);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'be-like-bill.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'be-like-bill.png' }] });
 	}
 };

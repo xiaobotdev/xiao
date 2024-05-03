@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { silhouette, hasAlpha, centerImagePart } = require('../../util/Canvas');
@@ -120,7 +120,7 @@ module.exports = class ChallengerCommand extends Command {
 		const img = silhouetted ? this.silhouetteImage(data) : data;
 		const { x, y, width, height } = centerImagePart(img, gameData.maxWidth, gameData.maxHeight, gameData.x, gameData.y);
 		ctx.drawImage(img, x, y, width, height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'challenger.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'challenger.png' }] });
 	}
 
 	silhouetteImage(image) {

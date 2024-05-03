@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { shortenText } = require('../../util/Canvas');
@@ -58,6 +58,6 @@ module.exports = class SteamNowPlayingCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(14);
 		ctx.fillText(user.username, 80, 34);
 		ctx.fillText(shortenText(ctx, game, 200), 80, 70);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-now-playing.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'steam-now-playing.png' }] });
 	}
 };

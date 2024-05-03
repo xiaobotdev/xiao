@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 const coord = [[450, 129], [1200, 134], [450, 627], [1200, 627]];
@@ -76,6 +76,6 @@ module.exports = class GruPlanCommand extends Command {
 			ctx.fillText(lines.join('\n'), x, y);
 			i++;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'gru-plan.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'gru-plan.png' }] });
 	}
 };
