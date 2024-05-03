@@ -94,7 +94,7 @@ module.exports = class HungerGamesCommand extends Command {
 			if (bloodbath) bloodbath = false;
 		};
 		return msg.say(stripIndents`
-			And the winner is... **${players.first().name}**!
+			And the winner is... **${players.filter(player => !player.dead).first().name}**!
 
 			__**Kills Leaderboard:**__
 			${this.makeLeaderboard(players).join('\n') || 'No one killed anyone...'}
