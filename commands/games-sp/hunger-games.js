@@ -1,7 +1,8 @@
 const Command = require('../../framework/Command');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { Collection } = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
-const { shuffle, removeDuplicates } = require('../../util/Util');
+const { removeDuplicates } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');
 
 module.exports = class HungerGamesCommand extends Command {
@@ -41,15 +42,21 @@ module.exports = class HungerGamesCommand extends Command {
 		let sun = true;
 		let turn = 0;
 		let bloodbath = true;
-		const kills = {};
-		for (const tribute of tributes) kills[tribute] = 0;
-		const remaining = new Set(shuffle(tributes));
-		while (remaining.size > 1) {
+		const players = new Collection();
+		for (const tribute of tributes) {
+			players.set(tribute, {
+				name: tribute,
+				kills: 0,
+				weapon: null,
+				food: 2
+			});
+		}
+		while (players.size > 1) {
 			if (!bloodbath && sun) ++turn;
 			const sunEvents = bloodbath ? events.bloodbath : sun ? events.day : events.night;
 			const results = [];
 			const deaths = [];
-			this.makeEvents(remaining, kills, sunEvents, deaths, results);
+			this.makeEvents(players, kills, sunEvents, deaths, results);
 			let text = stripIndents`
 				__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}:**__
 				${results.join('\n')}
@@ -96,19 +103,30 @@ module.exports = class HungerGamesCommand extends Command {
 
 	parseEvent(event, tributes) {
 		for (let i = 0; i < 6; i++) {
-			event = event.replaceAll(`(Player${i + 1})`, `**${tributes[i]}**`);
+			event = event.replaceAll(`(Player${i + 1})`, `**${tributes[i].name}**`);
 		}
 		return event;
 	}
 
 	makeEvents(tributes, kills, eventsArr, deaths, results) {
-		const turn = new Set(tributes);
-		for (const tribute of tributes) {
+		const turn = new Set(tributes.keys());
+		for (const tribute of tributes.values()) {
 			if (!turn.has(tribute)) continue;
-			const valid = eventsArr.filter(event => event.tributes <= turn.size && event.deaths < turn.size);
+			const valid = eventsArr.filter(event => {
+				if (event.requires !== 'food' && event.requires !== tribute.weapon) return false;
+				if (event.requires === 'food' && tribute.food <= 0) return false;
+				if (event.spoils && !event.spoils.includes('food') && tribute.weapon) return false;
+				return event.tributes <= turn.size && event.deaths < turn.size;
+			});
 			const event = valid[Math.floor(Math.random() * valid.length)];
 			turn.delete(tribute);
 			if (event.tributes === 1) {
+				if (event.requires === 'food') tribute.food--;
+				if (event.spoils) {
+					const spoils = event.spoils[0];
+					if (spoils === 'food') tribute.food++;
+					else tribute.weapon = spoils;
+				}
 				if (event.deaths.length === 1) {
 					deaths.push(tribute);
 					tributes.delete(tribute);
@@ -116,15 +134,27 @@ module.exports = class HungerGamesCommand extends Command {
 				results.push(this.parseEvent(event.text, [tribute]));
 			} else {
 				const current = [tribute];
-				if (event.killers.includes(1)) kills[tribute] += event.deaths.length;
+				if (event.requires === 'food') tribute.food--;
+				if (event.spoils) {
+					const spoils = event.spoils[0];
+					if (spoils === 'food') tribute.food++;
+					else tribute.weapon = spoils;
+				}
+				if (event.killers.includes(1)) tribute.kills += event.deaths.length;
 				if (event.deaths.includes(1)) {
 					deaths.push(tribute);
 					tributes.delete(tribute);
 				}
 				for (let i = 2; i <= event.tributes; i++) {
 					const turnArr = Array.from(turn);
-					const tribu = turnArr[Math.floor(Math.random() * turnArr.length)];
-					if (event.killers.includes(i)) kills[tribu] += event.deaths.length;
+					const tribu = tributes.get(turnArr[Math.floor(Math.random() * turnArr.length)]);
+					if (event.requires === 'food') tribu.food--;
+					if (event.spoils) {
+						const spoils = event.spoils[i];
+						if (spoils === 'food') tribu.food++;
+						else tribu.weapon = spoils;
+					}
+					if (event.killers.includes(i)) tribu.kills += event.deaths.length;
 					if (event.deaths.includes(i)) {
 						deaths.push(tribu);
 						tributes.delete(tribu);
