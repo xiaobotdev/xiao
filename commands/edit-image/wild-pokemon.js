@@ -35,7 +35,7 @@ module.exports = class WildPokemonCommand extends Command {
 				{
 					key: 'name',
 					type: 'string',
-					max: 13
+					max: 9
 				},
 				{
 					key: 'image',
@@ -59,7 +59,7 @@ module.exports = class WildPokemonCommand extends Command {
 		ctx.letterSpacing = '6px';
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('PokemonGb.ttf').toCanvasString(18);
-		ctx.fillText(name.toUpperCase(), 110, 203, 215);
+		ctx.fillText(name.toUpperCase(), 106, 203, 215);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'wild-pokemon.png' }] });
 	}
 };
