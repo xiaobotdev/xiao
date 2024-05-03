@@ -15,11 +15,7 @@ module.exports = class FontArgument extends Argument {
 		});
 		if (found.size === 0) return false;
 		if (found.size === 1) return true;
-		const foundExact = found.filter(font => {
-			if (font.name.toLowerCase() === choice) return true;
-			if (font.filenameNoExt.toLowerCase() === choice) return true;
-			return false;
-		});
+		const foundExact = found.filter(font => font.filenameNoExt.toLowerCase() === choice);
 		if (foundExact.size === 1) return true;
 		return false;
 	}
