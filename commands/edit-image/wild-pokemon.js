@@ -56,10 +56,10 @@ module.exports = class WildPokemonCommand extends Command {
 		const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
 		pixelize(ctx, canvas, data, 0.30, x, y, width, height);
 		greyscale(ctx, x, y, width, height);
-		ctx.letterSpacing = '5px';
+		ctx.letterSpacing = '4px';
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('PokemonGb.ttf').toCanvasString(16);
-		ctx.fillText(name.toUpperCase(), 106, 203, 215);
+		ctx.fillText(name.toUpperCase(), 106, 205, 215);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'wild-pokemon.png' }] });
 	}
 };
