@@ -35,7 +35,7 @@
 		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@napi-rs/canvas": "^0.1.52",
 		"@tensorflow-models/face-detection": "^1.0.2",
-		"@tensorflow/tfjs-node": "^4.18.0",
+		"@tensorflow/tfjs-node": "^4.19.0",
 		"@twemoji/parser": "^15.1.1",
 		"bombsweeper.js": "^1.0.1",
 		"cheerio": "1.0.0-rc.12",
@@ -95,6 +95,6 @@
 		"eslint": "^9.1.1",
 		"eslint-config-amber": "^2.0.4",
 		"eslint-plugin-jsonc": "^2.15.1",
-		"globals": "^15.0.0"
+		"globals": "^15.1.0"
 	}
 }
