@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { createCanvas } = require('@napi-rs/canvas');
-const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
+const { wrapText, fillTextWithBreaks, measureTextHeightWithBreaks } = require('../../util/Canvas');
 
 module.exports = class FontCommand extends Command {
 	constructor(client) {
@@ -38,7 +38,7 @@ module.exports = class FontCommand extends Command {
 		ctxPre.font = this.client.fonts.get(font.filename).toCanvasString(50);
 		const len = ctxPre.measureText(text);
 		const lines = wrapText(ctxPre, text, 950);
-		const height = len.emHeightAscent + len.emHeightDescent;
+		const height = measureTextHeightWithBreaks(ctx, text);
 		const canvas = createCanvas(Math.min(len.width + 50, 1000), 50 + height);
 		const ctx = canvas.getContext('2d');
 		ctx.font = this.client.fonts.get(font.filename).toCanvasString(50);

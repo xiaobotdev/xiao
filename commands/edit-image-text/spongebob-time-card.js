@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
-const { wrapText } = require('../../util/Canvas');
+const { wrapText, measureTextHeightWithBreaks } = require('../../util/Canvas');
 
 module.exports = class SpongebobTimeCardCommand extends Command {
 	constructor(client) {
@@ -71,7 +71,8 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 		ctx.font = this.client.fonts.get('Spongeboytt1.ttf').toCanvasString(fontSize);
 		let lines = wrapText(ctx, text.toUpperCase(), 1800);
 		let metrics = ctx.measureText(lines.join('\n'));
-		while (metrics.width > 1800 || (metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent) > 1000) {
+		let heightMetric = measureTextHeightWithBreaks(ctx, lines.join('\n'));
+		while (metrics.width > 1800 || heightMetric > 1000) {
 			fontSize -= 10;
 			ctx.font = this.client.fonts.get('Spongeboytt1.ttf').toCanvasString(fontSize);
 			metrics = ctx.measureText(lines.join('\n'));
