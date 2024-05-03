@@ -50,7 +50,6 @@
 	"The `whos-that-pokemon` command will play a sound effect and the Pokémon's cry if both you and the bot are in a voice channel when the command is used.",
 	"The `pokedex` command will play the Pokémon's cry if both you and the bot are in a voice channel when the command is used.",
 	"Reminders in the `remind` command have a maximum length of ~24.84 days. This is due to how JavaScript timeouts work, anything higher than this will fire early, or possibly even instantly.",
-	"For a very long time, `yu-gi-oh-gen` only supported Effect Monsters. `yu-gi-oh-token` was also a seperate command, and did not allow any customization outside of the image.",
 	"In `minesweeper`, typing \"xyzzy\" at any point in the game will activate cheat mode, displaying where mines are on the board. No high scores can be saved in this mode, however.",
 	"The `car-race` command is full of various pop-culture cars, joke cars, and even things that aren't even cars, such as \"runner\", a literal olympic runner.",
 	"The \"donut\" color selection in `connect-four` is a reference to Pokémon's 4Kids dub, when rice balls were censored into jelly-filled donuts.",
