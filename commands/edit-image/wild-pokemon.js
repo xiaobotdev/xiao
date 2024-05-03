@@ -56,7 +56,7 @@ module.exports = class WildPokemonCommand extends Command {
 		const { x, y, width, height } = centerImagePart(data, 100, 100, 227, 11);
 		pixelize(ctx, canvas, data, 0.30, x, y, width, height);
 		greyscale(ctx, x, y, width, height);
-		ctx.letterSpacing = "5px";
+		ctx.letterSpacing = '5px';
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('PokemonGb.ttf').toCanvasString(16);
 		ctx.fillText(name.toUpperCase(), 110, 203, 215);
