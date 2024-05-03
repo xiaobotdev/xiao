@@ -110,7 +110,7 @@ things, I'm not taking any chances.
 22. Start Xiao up!
 
 ## Commands
-Total: 511
+Total: 510
 
 ### Utility:
 
@@ -480,7 +480,6 @@ Total: 511
 * **wanted:** Draws an image or a user's avatar over a wanted poster.
 * **wild-pokemon:** Draws an image or a user's avatar over a wild Pokémon appearance.
 * **you-died:** Sends a "You Died" screen over an image or a user's avatar.
-* **yu-gi-oh-gen:** Draws an image or a user's avatar on a Yu-Gi-Oh! Trading Card with the text of your choice.
 
 ### Image Text Manipulation:
 
@@ -1257,11 +1256,6 @@ Total: 511
    - [Jackster Productions](https://www.fontspace.com/jackster-productions) ([Pokemon GB Font](https://www.fontspace.com/pokemon-gb-font-f9621))
 * **you-died:**
    - [FromSoftware](https://www.fromsoftware.jp/ww/) (Image, Original "Dark Souls" Game)
-* **yu-gi-oh-gen:**
-   - [Konami](https://www.konami.com/en/) ([Images, Original "Yu-Gi-Oh!" Game](https://www.yugioh-card.com/en/))
-   - [sl777123](https://www.deviantart.com/sl777123) ([Card Base Templates](https://www.deviantart.com/sl777123/gallery/64574029/templates))
-   - [icycatelf](https://www.deviantart.com/icycatelf) ([Level/Rank Star Image](https://www.deviantart.com/icycatelf/art/Level-Star-Template-PSD-607344453))
-   - [bushin](https://www.cardmaker.net/profile/220983-bushin/) ([Fonts](https://www.cardmaker.net/forums/topic/308603-fonts-for-yu-gi-oh-card-making-with-multilingual-support/))
 * **ace-attorney:**
    - [Capcom](http://www.capcom.com/us/) ([Images, Original "Ace Attorney" Game](http://www.ace-attorney.com/))
    - [Enkidulga](https://www.dafont.com/profile.php?user=736583) ([Ace Attorney Font](https://www.dafont.com/ace-attorney.font))
