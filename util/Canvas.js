@@ -201,9 +201,14 @@ module.exports = class CanvasUtil {
 		const lines = text.split('\n');
 		let currentY = y;
 		for (const line of lines) {
-			ctx.fillText(line, x, currentY, maxLen);
-			const metrics = ctx.measureText(line);
-			currentY += metrics.emHeightAscent + metrics.emHeightDescent;
+			if (line === '') {
+				const metrics = ctx.measureText('a');
+				currentY += metrics.emHeightAscent + metrics.emHeightDescent;
+			} else {
+				ctx.fillText(line, x, currentY, maxLen);
+				const metrics = ctx.measureText(line);
+				currentY += metrics.emHeightAscent + metrics.emHeightDescent;
+			}
 		}
 		return ctx;
 	}
