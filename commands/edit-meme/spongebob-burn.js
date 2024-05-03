@@ -67,6 +67,6 @@ module.exports = class SpongebobBurnCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 		ctx.fillText(person, 119, 405);
 		ctx.fillText(person, 439, 434);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spongebob-burn.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'spongebob-burn.png' }] });
 	}
 };

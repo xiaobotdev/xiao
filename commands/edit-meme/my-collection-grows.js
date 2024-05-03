@@ -49,6 +49,6 @@ module.exports = class MyCollectionGrowsCommand extends Command {
 		ctx.drawImage(data, x, y, width, height);
 		ctx.rotate(14 * (Math.PI / 180));
 		ctx.drawImage(base, 0, 0);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'my-collection-grows.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'my-collection-grows.png' }] });
 	}
 };

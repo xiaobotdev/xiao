@@ -56,6 +56,6 @@ module.exports = class SonicSaysCommand extends Command {
 		const lines = wrapText(ctx, text, 185);
 		ctx.fillStyle = 'white';
 		fillTextWithBreaks(ctx, lines.join('\n'), 92, 67, 185);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'sonic-says.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'sonic-says.png' }] });
 	}
 };

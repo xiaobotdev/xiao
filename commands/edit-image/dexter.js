@@ -45,6 +45,6 @@ module.exports = class DexterCommand extends Command {
 		const { x, y, width, height } = centerImagePart(data, 225, 225, 234, 274);
 		ctx.drawImage(data, x, y, width, height);
 		ctx.rotate(11 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'dexter.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'dexter.png' }] });
 	}
 };

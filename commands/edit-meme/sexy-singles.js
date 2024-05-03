@@ -42,7 +42,7 @@ module.exports = class SexySinglesCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, plate.width, 0, width, plate.height);
 		ctx.drawImage(plate, 0, 0);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'sexy-singles.png' }] });
 	}

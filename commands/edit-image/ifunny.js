@@ -43,7 +43,7 @@ module.exports = class IfunnyCommand extends Command {
 		ctx.fillStyle = '#181619';
 		ctx.fillRect(0, canvas.height - base.height, canvas.width, base.height);
 		ctx.drawImage(base, canvas.width - base.width, canvas.height - base.height);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'ifunny.png' }] });
 	}

@@ -51,6 +51,6 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		const { x, y, width, height } = centerImagePart(data, 150, 150, 380, 511);
 		ctx.drawImage(data, x, y, width, height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'girl-worth-fighting-for.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'girl-worth-fighting-for.png' }] });
 	}
 };

@@ -77,6 +77,6 @@ module.exports = class DrakepostingCommand extends Command {
 			const height = yeahTopMost + ((fontSize + 10) * i);
 			ctx.fillText(yeahLines[i], 768, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'drakeposting.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'drakeposting.png' }] });
 	}
 };

@@ -52,6 +52,6 @@ module.exports = class DannyDevitoCommand extends Command {
 				height * 1.4
 			);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'danny-devito.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'danny-devito.png' }] });
 	}
 };

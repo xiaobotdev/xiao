@@ -293,7 +293,7 @@ module.exports = class ChessCommand extends Command {
 				row -= 1;
 			}
 		}
-		return canvas.toBuffer();
+		return canvas.toBuffer('image/png');
 	}
 
 	async loadImages() {

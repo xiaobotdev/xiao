@@ -90,7 +90,7 @@ module.exports = class FriendshipCommand extends Command {
 		ctx.fillText(this.calculateLevelText(level, self, owner, authorUser, botUser), 600, 296);
 		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(90);
 		ctx.fillText(level > 49 ? '👍' : '👎', 600, 100);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'friendship.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'friendship.png' }] });
 	}
 
 	calculateLevelText(level, self, owner, authorUser, botUser) {

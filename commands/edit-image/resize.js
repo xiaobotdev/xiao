@@ -43,6 +43,6 @@ module.exports = class ResizeCommand extends Command {
 		const canvas = createCanvas(width, height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(data, 0, 0, width, height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'resize.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'resize.png' }] });
 	}
 };

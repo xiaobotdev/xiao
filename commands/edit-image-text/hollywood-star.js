@@ -55,6 +55,6 @@ module.exports = class HollywoodStarCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.fillText(name.toLowerCase(), 288, 140);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'hollywood-star.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'hollywood-star.png' }] });
 	}
 };

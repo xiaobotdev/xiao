@@ -551,6 +551,6 @@ module.exports = class CarRaceCommand extends Command {
 				greyscale(ctx, bg.width - 110 - 125, 50, 125, 125);
 			}
 		}
-		return canvas.toBuffer();
+		return canvas.toBuffer('image/png');
 	}
 };

@@ -52,6 +52,6 @@ module.exports = class BeautifulCommand extends Command {
 		ctx.drawImage(avatar, 249, 24, 105, 105);
 		ctx.drawImage(avatar, 249, 223, 105, 105);
 		ctx.drawImage(base, 0, 0);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'beautiful.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'beautiful.png' }] });
 	}
 };

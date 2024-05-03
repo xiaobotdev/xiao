@@ -52,6 +52,6 @@ module.exports = class AlertCommand extends Command {
 		let text = wrapText(ctx, message, 540);
 		text = text.length > 3 ? `${text.slice(0, 3).join('\n')}...` : text.join('\n');
 		fillTextWithBreaks(ctx, text, 48, 178);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'alert.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'alert.png' }] });
 	}
 };

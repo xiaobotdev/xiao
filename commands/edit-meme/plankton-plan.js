@@ -76,6 +76,6 @@ module.exports = class PlanktonPlanCommand extends Command {
 			fillTextWithBreaks(ctx, lines.join('\n'), x, y);
 			i++;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'plankton-plan.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'plankton-plan.png' }] });
 	}
 };

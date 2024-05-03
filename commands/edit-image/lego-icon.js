@@ -54,6 +54,6 @@ module.exports = class LegoIconCommand extends Command {
 		ctx.clip();
 		const height = 764 / data.width;
 		ctx.drawImage(data, (base.width / 2) - (764 / 2), (base.height / 2) - (764 / 2), 764, data.height * height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'lego-icon.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'lego-icon.png' }] });
 	}
 };

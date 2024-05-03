@@ -78,6 +78,6 @@ module.exports = class TwoButtonsCommand extends Command {
 			lineOffset += 5;
 		}
 		ctx.rotate(12 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'two-buttons.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'two-buttons.png' }] });
 	}
 };

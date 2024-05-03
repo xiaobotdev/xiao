@@ -76,6 +76,6 @@ module.exports = class SpotifyNowPlayingCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 		ctx.fillText(artist, base.width / 2, 720);
 		ctx.fillText('Xiao\'s Picks', base.width / 2, 65);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spotify-now-playing.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'spotify-now-playing.png' }] });
 	}
 };

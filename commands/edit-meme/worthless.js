@@ -53,6 +53,6 @@ module.exports = class WorthlessCommand extends Command {
 		const center2 = centerImagePart(data, 75, 75, 625, 55);
 		ctx.drawImage(data, center2.x, center2.y, center2.width, center2.height);
 		ctx.rotate(-160 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'worthless.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'worthless.png' }] });
 	}
 };

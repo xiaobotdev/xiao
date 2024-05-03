@@ -92,6 +92,6 @@ module.exports = class PhoebeTeachingJoeyCommand extends Command {
 			}
 			i++;
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'phoebe-teaching-joey.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'phoebe-teaching-joey.png' }] });
 	}
 };

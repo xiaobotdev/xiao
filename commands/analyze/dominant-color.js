@@ -37,7 +37,7 @@ module.exports = class DominantColorCommand extends Command {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		const name = ntc.name(hexColor);
 		return msg.say(`${hexColor.toUpperCase()} - ${name[1]}`, {
-			files: [{ attachment: canvas.toBuffer(), name: 'dominant-color.png' }]
+			files: [{ attachment: canvas.toBuffer('image/png'), name: 'dominant-color.png' }]
 		});
 	}
 };

@@ -51,6 +51,6 @@ module.exports = class BeLikeBillCommand extends Command {
 		ctx.font = this.client.fonts.get('arialbd.ttf').toCanvasString(23);
 		const text = wrapText(ctx, texts[Math.floor(Math.random() * texts.length)].replaceAll('{{name}}', name), 569);
 		fillTextWithBreaks(ctx, `This is ${name}.\n\n${text.join('\n')}\n\n${name} is smart.\nBe like ${name}.`, 31, 80);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'be-like-bill.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'be-like-bill.png' }] });
 	}
 };

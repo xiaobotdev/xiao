@@ -63,7 +63,7 @@ module.exports = class SubtitleCommand extends Command {
 			ctx.fillStyle = 'yellow';
 			ctx.fillText(lines[i], base.width / 2, textHeight);
 		}
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'subtitle.png' }] });
 	}

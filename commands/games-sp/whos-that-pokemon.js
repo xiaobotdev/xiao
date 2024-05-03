@@ -149,6 +149,6 @@ module.exports = class WhosThatPokemonCommand extends Command {
 			ctx.fillStyle = '#3c5aa6';
 			ctx.fillText(pokemon.name, 362, 158, 240);
 		}
-		return { attachment: canvas.toBuffer(), name };
+		return { attachment: canvas.toBuffer('image/png'), name };
 	}
 };

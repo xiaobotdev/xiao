@@ -58,7 +58,7 @@ module.exports = class SipCommand extends Command {
 		ctx.drawImage(base, 0, 0, overlay.width, height);
 		if (direction === 'right') ctx.setTransform(1, 0, 0, 1, 0, 0);
 		ctx.drawImage(overlay, 0, 0);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'sip.png' }] });
 	}

@@ -56,6 +56,6 @@ module.exports = class AchievementCommand extends Command {
 		ctx.fillText('Achievement Get!', 60, 40);
 		ctx.fillStyle = '#ffffff';
 		ctx.fillText(shortenText(ctx, text, 230), 60, 60);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'achievement.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'achievement.png' }] });
 	}
 };

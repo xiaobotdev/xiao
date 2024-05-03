@@ -53,6 +53,6 @@ module.exports = class LisaPresentationCommand extends Command {
 		const arr = [];
 		for (let i = 0; i < 12; i++) arr.push(shortened);
 		fillTextWithBreaks(ctx, arr.join('\n'), 30, 27);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bart-chalkboard.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'bart-chalkboard.png' }] });
 	}
 };

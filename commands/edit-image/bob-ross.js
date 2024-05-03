@@ -52,6 +52,6 @@ module.exports = class BobRossCommand extends Command {
 		const { x, y, width, height } = centerImagePart(data, 440, 440, 15, 20);
 		ctx.drawImage(data, x, y, width, height);
 		ctx.drawImage(base, 0, 0);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bob-ross.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'bob-ross.png' }] });
 	}
 };

@@ -45,6 +45,6 @@ module.exports = class UglyCommand extends Command {
 		const { x, y, width, height } = centerImagePart(data, 170, 170, 120, 52);
 		ctx.drawImage(data, x, y, width, height);
 		ctx.drawImage(base, 0, 0);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'ugly.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'ugly.png' }] });
 	}
 };

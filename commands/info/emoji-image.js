@@ -39,6 +39,6 @@ module.exports = class EmojiImageCommand extends Command {
 		const canvas = createCanvas(512, 512);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(emojiImage, 0, 0, 512, 512);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'emoji-image.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'emoji-image.png' }] });
 	}
 };

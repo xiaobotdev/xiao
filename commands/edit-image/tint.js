@@ -37,7 +37,7 @@ module.exports = class TintCommand extends Command {
 		const canvas = createCanvas(data.width, data.height);
 		const ctx = canvas.getContext('2d');
 		drawImageWithTint(ctx, data, color, 0, 0, data.width, data.height);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'tint.png' }] });
 	}

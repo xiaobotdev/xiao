@@ -72,6 +72,6 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			const height = bTopMost + ((fontSize + 2) * i);
 			ctx.fillText(bLines[i], 280, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'that-sign-wont-stop-me.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'that-sign-wont-stop-me.png' }] });
 	}
 };

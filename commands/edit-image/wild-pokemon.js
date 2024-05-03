@@ -60,6 +60,6 @@ module.exports = class WildPokemonCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('PokemonGb.ttf').toCanvasString(16);
 		ctx.fillText(name.toUpperCase(), 106, 205, 215);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'wild-pokemon.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'wild-pokemon.png' }] });
 	}
 };

@@ -57,6 +57,6 @@ module.exports = class PillsCommand extends Command {
 			ctx.strokeText(lines[i], 183, height);
 			ctx.fillText(lines[i], 183, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'pills.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'pills.png' }] });
 	}
 };

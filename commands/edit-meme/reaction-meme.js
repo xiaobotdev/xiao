@@ -60,7 +60,7 @@ module.exports = class ReactionMemeCommand extends Command {
 		ctx.fillStyle = 'black';
 		fillTextWithBreaks(ctx, lines.join('\n'), 5, 5);
 		ctx.drawImage(base, 0, linesLen);
-		const attachment = canvas.toBuffer();
+		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
 		return msg.say({ files: [{ attachment, name: 'meme-gen-modern.png' }] });
 	}

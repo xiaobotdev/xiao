@@ -159,7 +159,7 @@ module.exports = class Pokemon {
 		const y = Math.floor(this.id / 12) * 30;
 		ctx.drawImage(this.store.sprites, x, y, 40, 30, 0, 0, 40, 30);
 		cropToContent(ctx, canvas, canvas.width, canvas.height);
-		return canvas.toBuffer();
+		return canvas.toBuffer('image/png');
 	}
 
 	async fetchSmogonTiers(...gens) {

@@ -60,6 +60,6 @@ module.exports = class CautionCommand extends Command {
 			const height = topMost + ((fontSize + 20) * i);
 			ctx.fillText(lines[i], base.width / 2, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'caution.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'caution.png' }] });
 	}
 };

@@ -57,6 +57,6 @@ module.exports = class JeopardyQuestionCommand extends Command {
 			ctx.fillStyle = 'white';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'jeopardy-question.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'jeopardy-question.png' }] });
 	}
 };

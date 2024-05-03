@@ -63,6 +63,6 @@ module.exports = class EmojiFaceCommand extends Command {
 				height * 1.4
 			);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'emoji-face.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'emoji-face.png' }] });
 	}
 };

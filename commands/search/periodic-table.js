@@ -97,7 +97,7 @@ module.exports = class PeriodicTableCommand extends Command {
 		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;
 		return msg.say(
 			`**${element.name} (${element.symbol})** is a ${phase} in ${period}.`,
-			{ files: [{ attachment: canvas.toBuffer(), name: `${element.name}.png` }] }
+			{ files: [{ attachment: canvas.toBuffer('image/png'), name: `${element.name}.png` }] }
 		);
 	}
 

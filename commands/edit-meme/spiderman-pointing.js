@@ -84,6 +84,6 @@ module.exports = class SpidermanPointingCommand extends Command {
 			ctx.strokeText(lines2[i], 596, height);
 			ctx.fillText(lines2[i], 596, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'spiderman-pointing.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'spiderman-pointing.png' }] });
 	}
 };

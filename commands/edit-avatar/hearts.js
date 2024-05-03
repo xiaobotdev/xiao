@@ -45,6 +45,6 @@ module.exports = class HeartsCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		drawImageWithTint(ctx, avatar, 'deeppink', 0, 0, avatar.width, avatar.height);
 		ctx.drawImage(base, 0, 0, avatar.width, avatar.height);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'hearts.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'hearts.png' }] });
 	}
 };
