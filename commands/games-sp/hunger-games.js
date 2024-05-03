@@ -100,7 +100,7 @@ module.exports = class HungerGamesCommand extends Command {
 	}
 
 	parseEvent(event, tributes) {
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < tributes.length; i++) {
 			event = event.replaceAll(`(Player${i + 1})`, `**${tributes[i].name}**`);
 		}
 		return event;
