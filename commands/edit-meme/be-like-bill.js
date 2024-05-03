@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const { stripIndents } = require('common-tags');
+const { stripIndent } = require('common-tags');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 const texts = require('../../assets/json/be-like-bill');
@@ -51,7 +51,7 @@ module.exports = class BeLikeBillCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		ctx.font = this.client.fonts.get('arialbd.ttf').toCanvasString(23);
 		const text = wrapText(ctx, texts[Math.floor(Math.random() * texts.length)].replaceAll('{{name}}', name), 569);
-		ctx.fillText(stripIndents`
+		ctx.fillText(stripIndent`
 			This is ${name}.
 
 			${text.join('\n')}
