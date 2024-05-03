@@ -55,9 +55,7 @@ module.exports = class HungerGamesCommand extends Command {
 		while (players.filter(player => !player.dead).size > 1) {
 			if (!bloodbath && sun) ++turn;
 			const sunEvents = bloodbath ? events.bloodbath : sun ? events.day : events.night;
-			const results = [];
-			const deaths = [];
-			this.makeEvents(players, sunEvents, deaths, results);
+			const { results, deaths } = this.makeEvents(players, sunEvents);
 			let text = stripIndents`
 				__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}:**__
 				${results.join('\n')}
@@ -108,13 +106,15 @@ module.exports = class HungerGamesCommand extends Command {
 		return event;
 	}
 
-	makeEvents(tributes, eventsArr, deaths, results) {
+	makeEvents(tributes, eventsArr) {
+		const results = [];
+		const deaths = [];
 		const turn = new Set(tributes.keys());
 		for (const tribute of tributes.values()) {
 			if (!turn.has(tribute)) continue;
 			const valid = eventsArr.filter(event => {
-				if (event.requires !== 'food' && event.requires !== tribute.weapon) return false;
-				if (event.requires === 'food' && tribute.food <= 0) return false;
+				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
+				if (event.requires && event.requires === 'food' && tribute.food <= 0) return false;
 				if (event.spoils && !event.spoils.includes('food') && tribute.weapon) return false;
 				return event.tributes <= turn.size && event.deaths < turn.size;
 			});
@@ -165,6 +165,7 @@ module.exports = class HungerGamesCommand extends Command {
 				results.push(this.parseEvent(event.text, current));
 			}
 		}
+		return { results, deaths };
 	}
 
 	makeLeaderboard(tributes) {
