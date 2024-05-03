@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -57,6 +57,6 @@ module.exports = class ChangeMyMindCommand extends Command {
 		const lines = wrapText(ctx, text, 337);
 		ctx.fillText(lines.join('\n'), 142, 430, 337);
 		ctx.rotate(24 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'change-my-mind.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'change-my-mind.png' }] });
 	}
 };

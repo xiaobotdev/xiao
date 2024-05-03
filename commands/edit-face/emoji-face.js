@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { GuildEmoji } = require('discord.js');
 const request = require('node-superfetch');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const twemoji = require('@twemoji/parser');
 
 module.exports = class EmojiFaceCommand extends Command {
@@ -63,6 +63,6 @@ module.exports = class EmojiFaceCommand extends Command {
 				height * 1.4
 			);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'emoji-face.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'emoji-face.png' }] });
 	}
 };

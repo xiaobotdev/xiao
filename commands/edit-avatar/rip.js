@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { greyscale } = require('../../util/Canvas');
@@ -67,6 +67,6 @@ module.exports = class RipCommand extends Command {
 		if (cause) ctx.fillText(cause, 438, 910, 500);
 		ctx.font = this.client.fonts.get('CoffinStone.otf').toCanvasString(37);
 		ctx.fillText('In Loving Memory of', 438, 292);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'rip.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'rip.png' }] });
 	}
 };

@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const moment = require('moment');
 const path = require('path');
 
@@ -63,6 +63,6 @@ module.exports = class CertificateCommand extends Command {
 		ctx.fillText(reason, 518, 273);
 		ctx.fillText(name, 518, 419);
 		ctx.fillText(moment().format('MM/DD/YYYY'), 309, 503);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'certificate.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'certificate.png' }] });
 	}
 };

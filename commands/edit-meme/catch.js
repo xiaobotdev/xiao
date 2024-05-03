@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { delay } = require('../../util/Util');
 
@@ -55,6 +55,6 @@ module.exports = class CatchCommand extends Command {
 		ctx.fillText(is.toUpperCase(), 163, 202);
 		await msg.channel.send({ files: [path.join(__dirname, '..', '..', 'assets', 'images', 'catch', 'part-1.png')] });
 		await delay(time * 1000);
-		return msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'part-2.png' }] });
+		return msg.channel.send({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'part-2.png' }] });
 	}
 };

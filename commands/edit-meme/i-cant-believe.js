@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { firstUpperCase } = require('../../util/Util');
 
@@ -54,6 +54,6 @@ module.exports = class ICantBelieveCommand extends Command {
 		ctx.fillStyle = '#13487b';
 		ctx.fillText(firstUpperCase(text.toLowerCase(), null), 13, 54, 171);
 		ctx.rotate(8 * (Math.PI / 180));
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'i-cant-believe.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'i-cant-believe.png' }] });
 	}
 };

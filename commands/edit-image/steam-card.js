@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 
@@ -68,6 +68,6 @@ module.exports = class SteamCardCommand extends Command {
 		ctx.fillText(name, 16, 25);
 		ctx.fillStyle = 'white';
 		ctx.fillText(name, 15, 24);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'steam-card.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'steam-card.png' }] });
 	}
 };

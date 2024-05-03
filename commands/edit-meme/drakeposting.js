@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { wrapText } = require('../../util/Canvas');
 
@@ -77,6 +77,6 @@ module.exports = class DrakepostingCommand extends Command {
 			const height = yeahTopMost + ((fontSize + 10) * i);
 			ctx.fillText(yeahLines[i], 768, height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'drakeposting.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'drakeposting.png' }] });
 	}
 };

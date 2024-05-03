@@ -1,4 +1,4 @@
-const { registerFont } = require('canvas');
+const { GlobalFonts } = require('@napi-rs/canvas');
 const weights = {
 	100: 'thin',
 	200: 'extraLight',
@@ -28,7 +28,7 @@ module.exports = class Font {
 	register() {
 		if (this.registered) return null;
 		this.registered = true;
-		return registerFont(this.path, { family: this.filenameNoExt, style: this.style, weight: this.weight });
+		return GlobalFonts.registerFromPath(this.path, this.filenameNoExt);
 	}
 
 	toCanvasString(size, shouldDoFallbacks = true) {

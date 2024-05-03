@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
@@ -59,6 +59,6 @@ module.exports = class MetamorphosisCommand extends Command {
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(20);
 		ctx.fillText(`le ${name.toLowerCase()}`, 345, 466, 330);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'metamorphosis.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'metamorphosis.png' }] });
 	}
 };

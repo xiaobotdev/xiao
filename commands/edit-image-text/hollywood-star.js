@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 
 module.exports = class HollywoodStarCommand extends Command {
@@ -55,6 +55,6 @@ module.exports = class HollywoodStarCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.fillText(name.toLowerCase(), 288, 140);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'hollywood-star.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'hollywood-star.png' }] });
 	}
 };

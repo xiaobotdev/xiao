@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 
 module.exports = class SpeedLimitCommand extends Command {
@@ -50,6 +50,6 @@ module.exports = class SpeedLimitCommand extends Command {
 		ctx.font = this.client.fonts.get('HWYGWDE.ttf').toCanvasString(360);
 		ctx.fillStyle = 'black';
 		ctx.fillText(limit.toUpperCase(), 313, 356, 475);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'speed-limit.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'speed-limit.png' }] });
 	}
 };

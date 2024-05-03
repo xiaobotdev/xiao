@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 
 module.exports = class FacesCommand extends Command {
 	constructor(client) {
@@ -40,6 +40,6 @@ module.exports = class FacesCommand extends Command {
 			ctx.fillRect(face.box.xMin, face.box.yMax, face.box.width + lineSize, lineSize);
 			ctx.fillRect(face.box.xMax, face.box.yMin, lineSize, face.box.height);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'faces.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'faces.png' }] });
 	}
 };

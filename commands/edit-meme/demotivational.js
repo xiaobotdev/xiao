@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const { shortenText, centerImagePart } = require('../../util/Canvas');
 
@@ -69,6 +69,6 @@ module.exports = class DemotivationalCommand extends Command {
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(27);
 		ctx.fillStyle = 'white';
 		ctx.fillText(shortenText(ctx, text, 610), 375, 565);
-		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'demotivational-poster.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'demotivational-poster.png' }] });
 	}
 };
