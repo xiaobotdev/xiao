@@ -1372,7 +1372,7 @@
 		},
 		{
 			"text": "(Player1) cooks a meal for (Player2).",
-			"tributes": 1,
+			"tributes": 2,
 			"deaths": [],
 			"killers": [],
 			"requires": "food"
@@ -2287,7 +2287,7 @@
 		},
 		{
 			"text": "(Player1) cooks a meal for (Player2) while they chat around the fire.",
-			"tributes": 1,
+			"tributes": 2,
 			"deaths": [],
 			"killers": [],
 			"requires": "food"
