@@ -1,8 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
-const { shortenText } = require('../../util/Canvas');
+const { shortenText, fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class LisaPresentationCommand extends Command {
 	constructor(client) {
@@ -52,7 +52,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		const shortened = shortenText(ctx, text.toUpperCase(), 500);
 		const arr = [];
 		for (let i = 0; i < 12; i++) arr.push(shortened);
-		ctx.fillText(arr.join('\n'), 30, 27);
+		fillTextWithBreaks(ctx, arr.join('\n'), 30, 27);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'bart-chalkboard.png' }] });
 	}
 };

@@ -1,7 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
+const { fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class AxisCultSignUpCommand extends Command {
 	constructor(client) {
@@ -69,7 +70,7 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		ctx.fillText(profession, 960, 2169);
 		ctx.fillText('Xiao', 960, 2370);
 		ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(123);
-		ctx.fillText('ERIS PADS\nHER CHEST!', 1037, 2874);
+		fillTextWithBreaks(ctx, 'ERIS PADS\nHER CHEST!', 1037, 2874);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/jpeg'), name: 'axis-cult-sign-up.jpg' }] });
 	}
 };

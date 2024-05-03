@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { GuildEmoji, PermissionFlagsBits } = require('discord.js');
 const twemoji = require('@twemoji/parser');
 const request = require('node-superfetch');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 
 module.exports = class EmojiImageCommand extends Command {
 	constructor(client) {

@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const { cropToContent } = require('../../util/Canvas');
 
 module.exports = class PokedexBoxSpriteCommand extends Command {

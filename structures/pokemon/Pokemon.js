@@ -1,5 +1,5 @@
 const request = require('node-superfetch');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const path = require('path');
 const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
 const { cropToContent } = require('../../util/Canvas');

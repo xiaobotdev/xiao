@@ -1,4 +1,4 @@
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 
 module.exports = class CanvasUtil {
 	static greyscale(ctx, x, y, width, height) {
@@ -194,6 +194,17 @@ module.exports = class CanvasUtil {
 		ctx.fillRect(x, y, width, height);
 		ctx.fillStyle = fillStyle;
 		ctx.globalAlpha = globalAlpha;
+		return ctx;
+	}
+
+	static fillTextWithBreaks(ctx, text, x, y, maxLen) {
+		const lines = text.split('\n');
+		let currentY = y;
+		for (const line of lines) {
+			ctx.fillText(line, x, currentY, maxLen);
+			const metrics = ctx.measureText(line);
+			currentY += metrics.emHeightAscent + metrics.emHeightDescent;
+		}
 		return ctx;
 	}
 

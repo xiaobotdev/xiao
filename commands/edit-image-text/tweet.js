@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const { TwitterOpenApi } = require('twitter-openapi-typescript');
 const emojiRegex = require('emoji-regex');
 const twemoji = require('@twemoji/parser');
@@ -10,7 +10,7 @@ const request = require('node-superfetch');
 const { readFile } = require('fs/promises');
 const path = require('path');
 const { formatNumberK, randomRange } = require('../../util/Util');
-const { wrapText } = require('../../util/Canvas');
+const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class TweetCommand extends Command {
 	constructor(client) {
@@ -224,7 +224,7 @@ module.exports = class TweetCommand extends Command {
 		const wrapped = wrapText(ctx, text, maxLineLen, true);
 		const emoji = text.match(emojiRegex());
 		if (!emoji) {
-			ctx.fillText(wrapped.join('\n'), x, y);
+			fillTextWithBreaks(ctx, wrapped.join('\n'), x, y);
 			this.fillHashtags(ctx, wrapped, x, y, emojiSize);
 			return ctx;
 		}

@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
-const { createCanvas } = require('canvas');
-const { wrapText } = require('../../util/Canvas');
+const { createCanvas } = require('@napi-rs/canvas');
+const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class FontCommand extends Command {
 	constructor(client) {
@@ -46,7 +46,7 @@ module.exports = class FontCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = 'black';
-		ctx.fillText(lines.join('\n'), 25, 25);
+		fillTextWithBreaks(ctx, lines.join('\n'), 25, 25);
 		return canvas.toBuffer();
 	}
 };

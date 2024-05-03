@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const ntc = require('ntcjs');
 const { rgbToHex } = require('../../util/Util');

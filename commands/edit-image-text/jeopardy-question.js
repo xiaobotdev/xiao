@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const { wrapText } = require('../../util/Canvas');
 
 module.exports = class JeopardyQuestionCommand extends Command {

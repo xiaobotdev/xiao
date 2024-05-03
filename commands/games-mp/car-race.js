@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 const path = require('path');

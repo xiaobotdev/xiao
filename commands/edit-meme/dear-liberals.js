@@ -1,8 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
-const { wrapText } = require('../../util/Canvas');
+const { wrapText, fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class DearLiberalsCommand extends Command {
 	constructor(client) {
@@ -69,10 +69,10 @@ module.exports = class DearLiberalsCommand extends Command {
 		ctx.fillStyle = '#002046';
 		ctx.font = this.client.fonts.get('Oswald-SemiBold.ttf').toCanvasString(27);
 		const blueLines = wrapText(ctx, blueText, 270);
-		ctx.fillText(blueLines.join('\n'), 207, 90);
+		fillTextWithBreaks(ctx, blueLines.join('\n'), 207, 90);
 		ctx.fillStyle = '#c31a41';
 		const redLines = wrapText(ctx, redText, 165);
-		ctx.fillText(redLines.join('\n'), 326, 236);
+		fillTextWithBreaks(ctx, redLines.join('\n'), 326, 236);
 		return msg.say({ files: [{ attachment: canvas.toBuffer(), name: 'dear-liberals.png' }] });
 	}
 };
