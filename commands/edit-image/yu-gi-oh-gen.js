@@ -115,7 +115,7 @@ module.exports = class YuGiOhGenCommand extends Command {
 		ctx.fillStyle = monsterType === 'xyz' || monsterType === 'link' ? 'white' : 'black';
 		ctx.textBaseline = 'top';
 		ctx.font = this.client.fonts.get('Matrix Small Caps.ttf').toCanvasString(87);
-		ctx.fillText(name, 60, 57, 620);
+		ctx.fillText(name, 60, 63, 620);
 		ctx.fillStyle = 'black';
 		if (type === 'monster') {
 			ctx.font = this.client.fonts.get('Stone Serif Small Caps.ttf').toCanvasString(31);
@@ -126,9 +126,9 @@ module.exports = class YuGiOhGenCommand extends Command {
 			typeStr += ' ]';
 			ctx.fillText(typeStr, 60, 894);
 			ctx.font = this.client.fonts.get('Stone Serif.ttf').toCanvasString(29);
-			ctx.fillText(atk.padStart(4, '  '), 514, 1079);
-			if (monsterType === 'link') ctx.fillText(def, 722, 1079);
-			else ctx.fillText(def.padStart(4, '  '), 675, 1079);
+			ctx.fillText(atk.padStart(4, '  '), 514, 1085);
+			if (monsterType === 'link') ctx.fillText(def, 722, 1085);
+			else ctx.fillText(def.padStart(4, '  '), 675, 1085);
 		} else if (type === 'spell') {
 			ctx.font = this.client.fonts.get('Stone Serif Small Caps.ttf').toCanvasString(35);
 			ctx.fillText('[ Spell Card ]', 479, 141);
