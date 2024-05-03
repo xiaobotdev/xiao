@@ -11,7 +11,7 @@ const weights = {
 	900: 'heavy',
 	950: 'extraBlack'
 };
-const fallbacks = ['Noto-Regular', 'Noto-CJK', 'NotoColorEmoji-Regular'];
+const fallbacks = ['Noto-Regular', 'Noto-CJK'];
 
 module.exports = class Font {
 	constructor(path, filename, metadata) {
