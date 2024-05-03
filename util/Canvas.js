@@ -201,7 +201,8 @@ module.exports = class CanvasUtil {
 		const lines = text.split('\n');
 		let currentY = y;
 		for (const line of lines) {
-			ctx.fillText(line, x, currentY, maxLen);
+			if (maxLen) ctx.fillText(line, x, currentY, maxLen);
+			else ctx.fillText(line, x, currentY);
 			const metrics = ctx.measureText(line);
 			currentY += metrics.emHeightAscent + metrics.emHeightDescent;
 		}
