@@ -213,7 +213,7 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
-	measureTextHeightWithBreaks(ctx, text) {
+	static measureTextHeightWithBreaks(ctx, text) {
 		const lines = text.split('\n');
 		let result = 0;
 		for (const line of lines) {
