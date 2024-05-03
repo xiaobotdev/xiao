@@ -48,15 +48,16 @@ module.exports = class HungerGamesCommand extends Command {
 				name: tribute,
 				kills: 0,
 				weapon: null,
-				food: 2
+				food: 2,
+				dead: true
 			});
 		}
-		while (players.size > 1) {
+		while (players.filter(player => !player.dead).size > 1) {
 			if (!bloodbath && sun) ++turn;
 			const sunEvents = bloodbath ? events.bloodbath : sun ? events.day : events.night;
 			const results = [];
 			const deaths = [];
-			this.makeEvents(players, kills, sunEvents, deaths, results);
+			this.makeEvents(players, sunEvents, deaths, results);
 			let text = stripIndents`
 				__**${bloodbath ? 'Bloodbath' : sun ? `Day ${turn}` : `Night ${turn}`}:**__
 				${results.join('\n')}
@@ -91,13 +92,12 @@ module.exports = class HungerGamesCommand extends Command {
 			await buttonPress.update({ content: text, components: [] });
 			if (!bloodbath) sun = !sun;
 			if (bloodbath) bloodbath = false;
-		}
-		const remainingArr = Array.from(remaining);
+		};
 		return msg.say(stripIndents`
-			And the winner is... **${remainingArr[0]}**!
+			And the winner is... **${players.first().name}**!
 
 			__**Kills Leaderboard:**__
-			${this.makeLeaderboard(tributes, kills).join('\n') || 'No one killed anyone...'}
+			${this.makeLeaderboard(players).join('\n') || 'No one killed anyone...'}
 		`);
 	}
 
@@ -108,7 +108,7 @@ module.exports = class HungerGamesCommand extends Command {
 		return event;
 	}
 
-	makeEvents(tributes, kills, eventsArr, deaths, results) {
+	makeEvents(tributes, eventsArr, deaths, results) {
 		const turn = new Set(tributes.keys());
 		for (const tribute of tributes.values()) {
 			if (!turn.has(tribute)) continue;
@@ -129,7 +129,7 @@ module.exports = class HungerGamesCommand extends Command {
 				}
 				if (event.deaths.length === 1) {
 					deaths.push(tribute);
-					tributes.delete(tribute);
+					tribute.dead = true;
 				}
 				results.push(this.parseEvent(event.text, [tribute]));
 			} else {
@@ -143,7 +143,7 @@ module.exports = class HungerGamesCommand extends Command {
 				if (event.killers.includes(1)) tribute.kills += event.deaths.length;
 				if (event.deaths.includes(1)) {
 					deaths.push(tribute);
-					tributes.delete(tribute);
+					tribute.dead = true;
 				}
 				for (let i = 2; i <= event.tributes; i++) {
 					const turnArr = Array.from(turn);
@@ -157,7 +157,7 @@ module.exports = class HungerGamesCommand extends Command {
 					if (event.killers.includes(i)) tribu.kills += event.deaths.length;
 					if (event.deaths.includes(i)) {
 						deaths.push(tribu);
-						tributes.delete(tribu);
+						tribu.dead = true;
 					}
 					current.push(tribu);
 					turn.delete(tribu);
@@ -167,22 +167,22 @@ module.exports = class HungerGamesCommand extends Command {
 		}
 	}
 
-	makeLeaderboard(tributes, kills) {
+	makeLeaderboard(tributes) {
 		let i = 0;
 		let previousPts = null;
 		let positionsMoved = 1;
 		return tributes
-			.filter(tribute => kills[tribute] > 0)
-			.sort((a, b) => kills[b] - kills[a])
+			.filter(tribute => tribute.kills > 0)
+			.sort((a, b) => b.kills - a.kills)
 			.map(tribute => {
-				if (previousPts === kills[tribute]) {
+				if (previousPts === tribute.kills) {
 					positionsMoved++;
 				} else {
 					i += positionsMoved;
 					positionsMoved = 1;
 				}
-				previousPts = kills[tribute];
-				return `**${i}.** ${tribute} (${kills[tribute]} Kill${kills[tribute] === 1 ? '' : 's'})`;
+				previousPts = tribute.kills;
+				return `**${i}.** ${tribute.name} (${tribute.kills} Kill${tribute.kills === 1 ? '' : 's'})`;
 			});
 	}
 };
