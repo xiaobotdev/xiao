@@ -131,7 +131,7 @@ module.exports = class HungerGamesCommand extends Command {
 			let event = valid[Math.floor(Math.random() * valid.length)];
 			if (!event) {
 				const fallback = eventsArr.filter(e => e.type === 'action' && event.deaths.length === 0);
-				event = fallback[Math.floor(Math.random() * fallback.length];
+				event = fallback[Math.floor(Math.random() * fallback.length)];
 			}
 			turn.delete(tribute.name);
 			if (event.tributes === 1) {
