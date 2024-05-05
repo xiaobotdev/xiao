@@ -205,7 +205,8 @@ module.exports = class HungerGamesCommand extends Command {
 			if (!tribute.weapon) {
 				types.push('weapon', 'weapon', 'weapon', 'weapon');
 			}
-			types.push('action', 'action');
+			types.push('action');
+			types.push('kill');
 		} else if (tribute.sanity > 60) {
 			if (tribute.food > 0) {
 				types.push('food', 'food', 'food', 'food');
