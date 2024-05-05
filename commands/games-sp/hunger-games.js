@@ -172,7 +172,7 @@ module.exports = class HungerGamesCommand extends Command {
 					const tribu = tributes.get(turnArr[Math.floor(Math.random() * turnArr.length)]);
 					if (event.requires === 'food') tribu.food--;
 					if (event.spoils) {
-						const spoils = event.spoils[i];
+						const spoils = event.spoils[i - 1];
 						if (spoils === 'food') tribu.food++;
 						if (spoils === '-food') tribu.food--;
 						else tribu.weapon = spoils;
@@ -184,7 +184,7 @@ module.exports = class HungerGamesCommand extends Command {
 					}
 					if (event.injured.includes(i)) tribu.injured = true;
 					if (event.cures.includes(i)) tribu.injured = false;
-					tribu.sanity += event.sanity[i];
+					tribu.sanity += event.sanity[i - 1];
 					current.push(tribu);
 					turn.delete(tribu.name);
 				}
