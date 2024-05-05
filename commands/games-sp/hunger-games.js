@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { Collection } = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
-const { removeDuplicates } = require('../../util/Util');
+const { removeDuplicates, shuffle } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');
 
 module.exports = class HungerGamesCommand extends Command {
@@ -49,7 +49,9 @@ module.exports = class HungerGamesCommand extends Command {
 				kills: 0,
 				weapon: null,
 				food: 2,
-				dead: false
+				sanity: 50,
+				dead: false,
+				injured: false
 			});
 		}
 		while (players.filter(player => !player.dead).size > 1) {
@@ -110,10 +112,13 @@ module.exports = class HungerGamesCommand extends Command {
 		const results = [];
 		const deaths = [];
 		const remaining = tributes.filter(tribute => !tribute.dead);
-		const turn = new Set(remaining.keys());
+		const turn = new Set(shuffle([...remaining.keys()]));
 		for (const tribute of remaining.values()) {
 			if (!turn.has(tribute.name)) continue;
+			const types = this.decideTypes(tribute);
+			const type = types[Math.floor(Math.random() * types.length)];
 			const valid = eventsArr.filter(event => {
+				if (event.type !== type) return false;
 				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
 				if (event.requires && event.requires === 'food' && tribute.food <= 0) return false;
 				if (event.requires && event.requires === '!food' && tribute.food !== 0) return false;
@@ -127,12 +132,16 @@ module.exports = class HungerGamesCommand extends Command {
 				if (event.spoils) {
 					const spoils = event.spoils[0];
 					if (spoils === 'food') tribute.food++;
+					if (spoils === '-food') tribute.food--;
 					else tribute.weapon = spoils;
 				}
 				if (event.deaths.length === 1) {
 					deaths.push(tribute.name);
 					tribute.dead = true;
 				}
+				if (event.injured.length === 1) tribute.injured = true;
+				if (event.cures.length === 1) tribute.injured = false;
+				tribute.sanity += event.sanity[0];
 				results.push(this.parseEvent(event.text, [tribute]));
 			} else {
 				const current = [tribute];
@@ -140,6 +149,7 @@ module.exports = class HungerGamesCommand extends Command {
 				if (event.spoils) {
 					const spoils = event.spoils[0];
 					if (spoils === 'food') tribute.food++;
+					if (spoils === '-food') tribute.food--;
 					else tribute.weapon = spoils;
 				}
 				if (event.killers.includes(1)) tribute.kills += event.deaths.length;
@@ -147,6 +157,9 @@ module.exports = class HungerGamesCommand extends Command {
 					deaths.push(tribute.name);
 					tribute.dead = true;
 				}
+				if (event.injured.includes(1)) tribute.injured = true;
+				if (event.cures.includes(1)) tribute.injured = false;
+				tribute.sanity += event.sanity[0];
 				for (let i = 2; i <= event.tributes; i++) {
 					const turnArr = Array.from(turn);
 					const tribu = tributes.get(turnArr[Math.floor(Math.random() * turnArr.length)]);
@@ -154,6 +167,7 @@ module.exports = class HungerGamesCommand extends Command {
 					if (event.spoils) {
 						const spoils = event.spoils[i];
 						if (spoils === 'food') tribu.food++;
+						if (spoils === '-food') tribu.food--;
 						else tribu.weapon = spoils;
 					}
 					if (event.killers.includes(i)) tribu.kills += event.deaths.length;
@@ -161,6 +175,9 @@ module.exports = class HungerGamesCommand extends Command {
 						deaths.push(tribu.name);
 						tribu.dead = true;
 					}
+					if (event.injured.includes(i)) tribu.injured = true;
+					if (event.cures.includes(i)) tribu.injured = false;
+					tribute.sanity += event.sanity[i];
 					current.push(tribu);
 					turn.delete(tribu.name);
 				}
@@ -168,6 +185,104 @@ module.exports = class HungerGamesCommand extends Command {
 			}
 		}
 		return { results, deaths };
+	}
+
+	decideTypes(tribute) {
+		const types = [];
+		if (tribute.sanity > 80) {
+			if (tribute.food > 0) {
+				types.push('food', 'food', 'food', 'food');
+			} else {
+				types.push('action', 'action', 'action', 'action');
+			}
+			if (tribute.injured) {
+				types.push('injured', 'injured', 'injured', 'action');
+			} else {
+				types.push('action', 'action', 'action', 'action');
+			}
+			if (!tribute.weapon) {
+				types.push('weapon', 'weapon', 'weapon', 'weapon');
+			}
+			types.push('action', 'action');
+		} else if (tribute.sanity > 60) {
+			if (tribute.food > 0) {
+				types.push('food', 'food', 'food', 'food');
+			} else {
+				types.push('action', 'action', 'action');
+				types.push('kill');
+			}
+			if (tribute.injured) {
+				types.push('injured', 'injured', 'injured');
+				types.push('suicide');
+			} else {
+				types.push('action', 'action', 'action');
+				types.push('kill');
+			}
+			if (!tribute.weapon) {
+				types.push('weapon', 'weapon', 'weapon', 'weapon');
+			}
+			types.push('kill');
+			types.push('action');
+		} else if (tribute.sanity > 40) {
+			if (tribute.food > 0) {
+				types.push('food', 'food', 'food');
+				types.push('kill');
+			} else {
+				types.push('action', 'action');
+				types.push('kill', 'kill');
+			}
+			if (tribute.injured) {
+				types.push('injured', 'injured');
+				types.push('suicide', 'suicide');
+			} else {
+				types.push('action', 'action');
+				types.push('kill', 'kill');
+			}
+			if (!tribute.weapon) {
+				types.push('weapon', 'weapon', 'weapon', 'weapon');
+			}
+			types.push('kill', 'kill');
+		} else if (tribute.sanity > 20) {
+			if (tribute.food > 0) {
+				types.push('food', 'food');
+				types.push('kill', 'kill');
+			} else {
+				types.push('action');
+				types.push('kill', 'kill', 'kill');
+			}
+			if (tribute.injured) {
+				types.push('injured');
+				types.push('suicide', 'suicide', 'suicide');
+			} else {
+				types.push('kill', 'kill', 'kill');
+				types.push('action');
+			}
+			if (!tribute.weapon) {
+				types.push('weapon', 'weapon', 'weapon', 'weapon');
+			}
+			types.push('kill', 'kill');
+		} else if (tribute.sanity > 10) {
+			if (tribute.food > 0) {
+				types.push('food');
+				types.push('kill', 'kill', 'kill');
+			} else {
+				types.push('kill', 'kill', 'kill', 'kill');
+			}
+			if (tribute.injured) {
+				types.push('suicide', 'suicide', 'suicide', 'suicide');
+			} else {
+				types.push('kill', 'kill', 'kill', 'kill');
+			}
+			if (!tribute.weapon) {
+				types.push('weapon', 'weapon', 'weapon', 'weapon');
+			}
+			types.push('kill', 'kill');
+		} else if (tribute.sanity <= 0) {
+			types.push('suicide');
+		} else {
+			types.push('action');
+		}
+		return types;
 	}
 
 	makeLeaderboard(tributes) {
