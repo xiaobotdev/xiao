@@ -128,7 +128,11 @@ module.exports = class HungerGamesCommand extends Command {
 				return event.tributes <= turn.size && event.deaths < turn.size;
 			});
 			const event = valid[Math.floor(Math.random() * valid.length)];
-			if (!event) console.log(tribute);
+			if (!event) {
+				console.log(tribute);
+				console.log(types);
+				console.log(valid);
+			}
 			turn.delete(tribute.name);
 			if (event.tributes === 1) {
 				if (event.requires === 'food') tribute.food--;
