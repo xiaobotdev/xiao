@@ -2982,7 +2982,7 @@
 		{
 			"text": "(Player1) bashes (Player2)'s head against a rock several times.",
 			"tributes": 2,
-			"type": "suicide",
+			"type": "kill",
 			"sanity": [-20, 0],
 			"injured": [],
 			"cures": [],
