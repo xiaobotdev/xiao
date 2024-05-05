@@ -266,7 +266,7 @@
 			"text": "(Player1) grabs a jar of fishing bait while (Player2) gets fishing gear.",
 			"tributes": 2,
 			"type": "weapon",
-			"sanity": [10],
+			"sanity": [10, 10],
 			"injured": [],
 			"cures": [],
 			"deaths": [],
