@@ -122,6 +122,8 @@ module.exports = class HungerGamesCommand extends Command {
 			const type = types[Math.floor(Math.random() * types.length)];
 			const valid = eventsArr.filter(event => {
 				if (event.type !== type) return false;
+				if (turn.size === 1 && event.deaths.length > 0) return false;
+				if (turn.size === 2 && event.deaths.length > 1) return false;
 				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
 				if (event.requires && event.requires === 'food' && tribute.food <= 0) return false;
 				if (event.requires && event.requires === '!food' && tribute.food !== 0) return false;
@@ -129,10 +131,6 @@ module.exports = class HungerGamesCommand extends Command {
 				return event.tributes <= turn.size && event.deaths <= turn.size;
 			});
 			const event = valid[Math.floor(Math.random() * valid.length)];
-			if (!event) {
-				console.log(tribute);
-				console.log(type);
-			}
 			turn.delete(tribute.name);
 			if (event.tributes === 1) {
 				if (event.requires === 'food') tribute.food--;
