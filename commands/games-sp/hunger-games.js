@@ -117,8 +117,8 @@ module.exports = class HungerGamesCommand extends Command {
 		for (const tributeKey of remainingArr) {
 			const tribute = tributes.get(tributeKey);
 			if (!turn.has(tribute.name)) continue;
-			const types = this.decideTypes(tribute);
-			if (turn.size === 1) removeFromArray(types, 'kill');
+		 let types = this.decideTypes(tribute);
+			if (turn.size === 1) types = removeFromArray(types, 'kill');
 			const type = types[Math.floor(Math.random() * types.length)];
 			const valid = eventsArr.filter(event => {
 				if (event.type !== type) return false;
