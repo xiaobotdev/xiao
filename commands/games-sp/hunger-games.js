@@ -246,8 +246,8 @@ module.exports = class HungerGamesCommand extends Command {
 				types.push('kill', 'kill');
 			}
 			if (tribute.injured) {
-				types.push('injury', 'injury');
-				types.push('suicide', 'suicide');
+				types.push('injury', 'injury', 'injury');
+				types.push('suicide');
 			} else {
 				types.push('action', 'action');
 				types.push('kill', 'kill');
@@ -265,8 +265,8 @@ module.exports = class HungerGamesCommand extends Command {
 				types.push('kill', 'kill', 'kill');
 			}
 			if (tribute.injured) {
-				types.push('injury');
-				types.push('suicide', 'suicide', 'suicide');
+				types.push('injury', 'injury', 'injury');
+				types.push('suicide');
 			} else {
 				types.push('kill', 'kill', 'kill');
 				types.push('action');
@@ -283,7 +283,8 @@ module.exports = class HungerGamesCommand extends Command {
 				types.push('kill', 'kill', 'kill', 'kill');
 			}
 			if (tribute.injured) {
-				types.push('suicide', 'suicide', 'suicide', 'suicide');
+				types.push('injury', 'injury', 'injury');
+				types.push('suicide');
 			} else {
 				types.push('kill', 'kill', 'kill', 'kill');
 			}
