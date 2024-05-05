@@ -130,7 +130,13 @@ module.exports = class HungerGamesCommand extends Command {
 			});
 			let event = valid[Math.floor(Math.random() * valid.length)];
 			if (!event) {
-				const fallback = eventsArr.filter(e => e.type === 'action' && e.deaths.length === 0);
+				const fallback = eventsArr.filter(e => {
+					if (e.type !== 'action') return false;
+					if (e.deaths.length > 0) return false;
+					if (e.requires && e.requires !== tribute.weapon) return false;
+					if (e.spoils && tribute.weapon) return false;
+					return e.tributes === 1;
+				});
 				event = fallback[Math.floor(Math.random() * fallback.length)];
 			}
 			turn.delete(tribute.name);
