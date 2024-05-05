@@ -52,7 +52,7 @@ module.exports = class ICantBelieveCommand extends Command {
 		ctx.strokeStyle = 'white';
 		ctx.strokeText(firstUpperCase(text.toLowerCase(), null), 13, 54, 171);
 		ctx.fillStyle = '#13487b';
-		ctx.fillText(firstUpperCase(text.toLowerCase(), null), 13, 54, 171);
+		ctx.fillText(firstUpperCase(text.toLowerCase(), null), 13, 64, 171);
 		ctx.rotate(8 * (Math.PI / 180));
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'i-cant-believe.png' }] });
 	}
