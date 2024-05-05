@@ -48,7 +48,7 @@ module.exports = class HungerGamesCommand extends Command {
 				name: tribute,
 				kills: 0,
 				weapon: null,
-				food: 2,
+				food: 0,
 				sanity: 50,
 				dead: false,
 				injured: false
