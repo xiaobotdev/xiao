@@ -61,11 +61,7 @@ module.exports = class Util {
 	}
 
 	static removeFromArray(arr, value) {
-		while (arr.indexOf(value) > -1) {
-			const index = arr.indexOf(value);
-			arr = arr.splice(index, 1);
-		}
-		return arr;
+		return arr.filter(i => i !== value);
 	}
 
 	static removeDuplicates(arr) {
