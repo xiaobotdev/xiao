@@ -113,8 +113,9 @@ module.exports = class HungerGamesCommand extends Command {
 		const deaths = [];
 		const remaining = tributes.filter(tribute => !tribute.dead);
 		const remainingArr = shuffle([...remaining.keys()]);
-		const turn = new Set(...remainingArr);
-		for (const tribute of remainingArr) {
+		const turn = new Set(remainingArr);
+		for (const tributeKey of remainingArr) {
+			const tribute = tributes.get(tributeKey);
 			if (!turn.has(tribute.name)) continue;
 			const types = this.decideTypes(tribute);
 			const type = types[Math.floor(Math.random() * types.length)];
