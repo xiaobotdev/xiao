@@ -122,13 +122,11 @@ module.exports = class HungerGamesCommand extends Command {
 			const type = types[Math.floor(Math.random() * types.length)];
 			const valid = eventsArr.filter(event => {
 				if (event.type !== type) return false;
-				if (turn.size === 1 && event.deaths.length > 0) return false;
-				if (turn.size === 2 && event.deaths.length > 1) return false;
 				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
 				if (event.requires && event.requires === 'food' && tribute.food <= 0) return false;
 				if (event.requires && event.requires === '!food' && tribute.food !== 0) return false;
 				if (event.spoils && !event.spoils.includes('food') && tribute.weapon) return false;
-				return event.tributes <= turn.size && event.deaths <= turn.size;
+				return event.tributes <= turn.size && event.deaths < turn.size;
 			});
 			const event = valid[Math.floor(Math.random() * valid.length)];
 			turn.delete(tribute.name);
