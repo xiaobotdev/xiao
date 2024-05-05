@@ -130,8 +130,7 @@ module.exports = class HungerGamesCommand extends Command {
 			const event = valid[Math.floor(Math.random() * valid.length)];
 			if (!event) {
 				console.log(tribute);
-				console.log(types);
-				console.log(valid);
+				console.log(type);
 			}
 			turn.delete(tribute.name);
 			if (event.tributes === 1) {
@@ -184,7 +183,7 @@ module.exports = class HungerGamesCommand extends Command {
 					}
 					if (event.injured.includes(i)) tribu.injured = true;
 					if (event.cures.includes(i)) tribu.injured = false;
-					tribute.sanity += event.sanity[i];
+					tribu.sanity += event.sanity[i];
 					current.push(tribu);
 					turn.delete(tribu.name);
 				}
