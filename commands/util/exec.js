@@ -36,13 +36,14 @@ module.exports = class ExecCommand extends Command {
 
 	async exec(command) {
 		let hrDiff;
+		const hrStart = process.hrtime();
 		try {
-			const hrStart = process.hrtime();
 			const { stdout } = await execAsync(command, { timeout: 30000, encoding: 'utf8' });
 			hrDiff = process.hrtime(hrStart);
 			return { err: false, std: stdout.trim(), hrDiff };
 		} catch (err) {
-			return { err: true, std: err.stderr.trim(), hrDiff: null };
+			hrDiff = process.hrtime(hrStart);
+			return { err: true, std: err.stderr.trim(), hrDiff };
 		}
 	}
 
