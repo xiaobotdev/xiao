@@ -61,6 +61,12 @@ module.exports = class Util {
 	}
 
 	static removeFromArray(arr, value) {
+		const index = arr.indexOf(value);
+		if (index > -1) return arr.splice(index, 1);
+		return arr;
+	}
+
+	static removeAllFromArray(arr, value) {
 		return arr.filter(i => i !== value);
 	}
 
