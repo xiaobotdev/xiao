@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { Collection } = require('@discordjs/collection');
 const { stripIndents } = require('common-tags');
-const { removeDuplicates, removeFromArray, shuffle } = require('../../util/Util');
+const { removeDuplicates, removeAllFromArray, shuffle } = require('../../util/Util');
 const events = require('../../assets/json/hunger-games');
 
 module.exports = class HungerGamesCommand extends Command {
@@ -118,7 +118,7 @@ module.exports = class HungerGamesCommand extends Command {
 			const tribute = tributes.get(tributeKey);
 			if (!turn.has(tribute.name)) continue;
 		 let types = this.decideTypes(tribute);
-			if (turn.size === 1) types = removeFromArray(types, 'kill');
+			if (turn.size === 1) types = removeAllFromArray(types, 'kill');
 			const type = types[Math.floor(Math.random() * types.length)];
 			const useWeapon = Math.floor(Math.random() * 3);
 			const valid = eventsArr.filter(event => {
