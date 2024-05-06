@@ -3,7 +3,7 @@ const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
-const { greyscale } = require('../../util/Canvas');
+const { greyscale, silhouette } = require('../../util/Canvas');
 const path = require('path');
 const advantages = require('../../assets/json/pokemon-advantage');
 
@@ -107,6 +107,14 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		const canvas = createCanvas(bg.width, bg.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bg, 0, 0);
+		const silhouetteCanvas1 = createCanvas(pkmn1.width, pkmn1.height);
+		const silhouetteCtx1 = silhouetteCanvas1.getContext('2d');
+		silhouetteCtx1.drawImage(pkmn1, 0, 0);
+		silhouette(silhouetteCtx1, 0, 0, pkmn1.width, pkmn1.height);
+		const silhouetteCanvas2 = createCanvas(pkmn2.width, pkmn2.height);
+		const silhouetteCtx2 = silhouetteCanvas2.getContext('2d');
+		silhouetteCtx2.drawImage(pkmn2, 0, 0);
+		silhouette(silhouetteCtx2, 0, 0, pkmn2.width, pkmn2.height);
 		if (winner) {
 			const stars = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'pokemon-advantage', 'stars.png')
@@ -114,6 +122,10 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			if (winner === true) {
 				ctx.drawImage(stars, 20, 0, 200, 200);
 				ctx.drawImage(stars, 250, 0, 200, 200);
+				ctx.globalAlpha = 0.5;
+				ctx.drawImage(silhouetteCanvas1, 36, 17, 175, 175);
+				ctx.drawImage(silhouetteCanvas2, 256, 17, 175, 175);
+				ctx.globalAlpha = 1;
 				ctx.drawImage(pkmn1, 41, 12, 175, 175);
 				ctx.drawImage(pkmn2, 261, 12, 175, 175);
 			} else if (winner.id === pokemon1.id) {
@@ -122,6 +134,10 @@ module.exports = class PokemonAdvantageCommand extends Command {
 				const greyCtx = greyCanvas.getContext('2d');
 				greyCtx.drawImage(pkmn2, 0, 0);
 				greyscale(greyCtx, 0, 0, pkmn2.width, pkmn2.height);
+				ctx.globalAlpha = 0.5;
+				ctx.drawImage(silhouetteCanvas1, 36, 17, 175, 175);
+				ctx.drawImage(silhouetteCanvas2, 256, 17, 175, 175);
+				ctx.globalAlpha = 1;
 				ctx.drawImage(greyCanvas, 261, 12, 175, 175);
 				ctx.drawImage(pkmn1, 41, 12, 175, 175);
 			} else if (winner.id === pokemon2.id) {
@@ -130,6 +146,10 @@ module.exports = class PokemonAdvantageCommand extends Command {
 				const greyCtx = greyCanvas.getContext('2d');
 				greyCtx.drawImage(pkmn1, 0, 0);
 				greyscale(greyCtx, 0, 0, pkmn1.width, pkmn1.height);
+				ctx.globalAlpha = 0.5;
+				ctx.drawImage(silhouetteCanvas1, 36, 17, 175, 175);
+				ctx.drawImage(silhouetteCanvas2, 256, 17, 175, 175);
+				ctx.globalAlpha = 1;
 				ctx.drawImage(greyCanvas, 41, 12, 175, 175);
 				ctx.drawImage(pkmn2, 261, 12, 175, 175);
 			}
@@ -141,6 +161,11 @@ module.exports = class PokemonAdvantageCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'bottom';
 		ctx.lineWidth = 8;
+		ctx.strokeStyle = 'black';
+		ctx.globalAlpha = 0.5;
+		ctx.strokeText(pokemon1.name, 123, 255, 175);
+		ctx.strokeText(pokemon2.name, 343, 255, 175);
+		ctx.globalAlpha = 1;
 		ctx.strokeStyle = '#3c5aa6';
 		ctx.fillStyle = '#ffcb05';
 		ctx.strokeText(pokemon1.name, 128, 250, 175);
