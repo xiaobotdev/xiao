@@ -77,8 +77,8 @@ module.exports = class EvalCommand extends Command {
 		}
 	}
 
-	makeResultMessages(result, hrDiff, input = null, lang = 'javascript', inspect = true) {
-		const inspected = (inspect ? util.inspect(result, { depth: 0 }) : result)
+	makeResultMessages(result, hrDiff, input = null) {
+		const inspected = util.inspect(result, { depth: 0 })
 			.replace(nlPattern, '\n')
 			.replace(this.sensitivePattern, '--snip--');
 		const split = inspected.split('\n');
@@ -87,19 +87,19 @@ module.exports = class EvalCommand extends Command {
 		const appendPart = inspected[last] !== '}' && inspected[last] !== ']' && inspected[last] !== '\''
 			? split[split.length - 1]
 			: inspected[last];
-		const prepend = `\`\`\`${lang}\n${prependPart}\n`;
+		const prepend = `\`\`\`javascript\n${prependPart}\n`;
 		const append = `\n${appendPart}\n\`\`\``;
 		if (input) {
 			return Util.splitMessage(tags.stripIndents`
 				*Executed in ${hrDiff[0] > 0 ? `${hrDiff[0]}s ` : ''}${hrDiff[1] / 1000000}ms.*
-				\`\`\`${lang}
+				\`\`\`javascript
 				${inspected}
 				\`\`\`
 			`, { maxLength: 1900, prepend, append });
 		} else {
 			return Util.splitMessage(tags.stripIndents`
 				*Callback executed after ${hrDiff[0] > 0 ? `${hrDiff[0]}s ` : ''}${hrDiff[1] / 1000000}ms.*
-				\`\`\`${lang}
+				\`\`\`javascript
 				${inspected}
 				\`\`\`
 			`, { maxLength: 1900, prepend, append });
