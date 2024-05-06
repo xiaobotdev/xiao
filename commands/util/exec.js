@@ -2,7 +2,6 @@ const Command = require('../../framework/Command');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
-const { stripIndents } = require('common-tags');
 
 module.exports = class ExecCommand extends Command {
 	constructor(client) {
@@ -25,20 +24,24 @@ module.exports = class ExecCommand extends Command {
 
 	async run(msg, { command }) {
 		const results = await this.exec(command);
-		return msg.reply(stripIndents`
-			_${results.err ? 'An error occurred:' : 'Successfully executed.'}_
-			\`\`\`sh
-			${results.std}
-			\`\`\`
-		`);
+		const msgs = this.client.registry.commands.get('eval')
+			.makeResultMessages(results.std, results.hrDiff, command, 'sh');
+		if (Array.isArray(msgs)) {
+			return msgs.map(item => msg.reply(item));
+		} else {
+			return msg.reply(msgs);
+		}
 	}
 
 	async exec(command) {
+		let hrDiff;
 		try {
+			const hrStart = process.hrtime();
 			const { stdout } = await execAsync(command, { timeout: 30000, encoding: 'utf8' });
-			return { err: false, std: stdout.trim() };
+			hrDiff = process.hrtime(hrStart);
+			return { err: false, std: stdout.trim(), hrDiff };
 		} catch (err) {
-			return { err: true, std: err.stderr.trim() };
+			return { err: true, std: err.stderr.trim(), hrDiff: null };
 		}
 	}
 };
