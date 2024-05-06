@@ -154,6 +154,10 @@ module.exports = class PokemonAdvantageCommand extends Command {
 				ctx.drawImage(pkmn2, 261, 12, 175, 175);
 			}
 		} else {
+			ctx.globalAlpha = 0.5;
+			ctx.drawImage(silhouetteCanvas1, 36, 17, 175, 175);
+			ctx.drawImage(silhouetteCanvas2, 256, 17, 175, 175);
+			ctx.globalAlpha = 1;
 			ctx.drawImage(pkmn1, 41, 12, 175, 175);
 			ctx.drawImage(pkmn2, 261, 12, 175, 175);
 		}
