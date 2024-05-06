@@ -2,6 +2,7 @@ require('dotenv').config();
 const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const { mkdir } = require('fs/promises');
 const path = require('path');
+const mathjs = require('mathjs');
 const { GatewayIntentBits, Partials, AllowedMentionsTypes, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
 const Client = require('./structures/Client');
 const client = new Client({
@@ -234,6 +235,12 @@ client.on('ready', async () => {
 	} catch (err) {
 		client.logger.error(`[TIMEZONES] Failed to set timezones\n${err.stack}`);
 	}
+
+	// Add bananas unit to mathjs
+	math.createUnit('banana', {
+		definition: '0.178 meters',
+		aliases: ['bananas']
+	});
 
 	// Fetch adult site list
 	try {

@@ -2,10 +2,6 @@ const Command = require('../../framework/Command');
 const math = require('mathjs');
 const { stripIndents } = require('common-tags');
 const { formatNumber } = require('../../util/Util');
-math.createUnit('banana', {
-	definition: '0.178 meters',
-	aliases: ['bananas']
-});
 
 module.exports = class UnitsCommand extends Command {
 	constructor(client) {
