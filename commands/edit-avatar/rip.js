@@ -67,7 +67,7 @@ module.exports = class RipCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.font = this.client.fonts.get('CoffinStone.otf').toCanvasString(62);
 		this.fillPressedText(ctx, user.username, 438, 330, 500);
-		if (cause) this.fillPressedText(ctx, cause, 438, 915, 500);
+		if (cause) this.fillPressedText(ctx, cause, 438, 920, 500);
 		ctx.font = this.client.fonts.get('CoffinStone.otf').toCanvasString(37);
 		this.fillPressedText(ctx, 'In Loving Memory of', 438, 292);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'rip.png' }] });
