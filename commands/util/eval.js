@@ -77,8 +77,8 @@ module.exports = class EvalCommand extends Command {
 		}
 	}
 
-	makeResultMessages(result, hrDiff, input = null, lang = 'javascript') {
-		const inspected = util.inspect(result, { depth: 0 })
+	makeResultMessages(result, hrDiff, input = null, lang = 'javascript', inspect = true) {
+		const inspected = (inspect ? util.inspect(result, { depth: 0 }) : result)
 			.replace(nlPattern, '\n')
 			.replace(this.sensitivePattern, '--snip--');
 		const split = inspected.split('\n');
