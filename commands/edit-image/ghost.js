@@ -35,7 +35,7 @@ module.exports = class GhostCommand extends Command {
 		ctx.globalAlpha = 0.25;
 		ctx.drawImage(data, 0, 0);
 		const attachment = canvas.toBuffer('image/png');
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'ghost.png' }] });
 	}
 };

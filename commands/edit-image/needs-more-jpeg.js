@@ -40,7 +40,7 @@ module.exports = class NeedsMoreJpegCommand extends Command {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(data, 0, 0);
 		const attachment = canvas.toBuffer('image/jpeg', { quality: quality / 10 });
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'needs-more-jpeg.jpeg' }] });
 	}
 };

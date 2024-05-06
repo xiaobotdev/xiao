@@ -48,7 +48,7 @@ module.exports = class FishEyeCommand extends Command {
 		ctx.drawImage(data, 0, 0);
 		fishEye(ctx, level, 0, 0, data.width, data.height);
 		const attachment = canvas.toBuffer('image/png');
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'fish-eye.png' }] });
 	}
 };

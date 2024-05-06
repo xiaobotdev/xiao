@@ -29,7 +29,7 @@ module.exports = class BunnyCommand extends Command {
 		let fileToSend;
 		let fileType = 'gif';
 		const gif = await request.get(body.media.gif);
-		if (Buffer.byteLength(gif.body) > 8e+6) {
+		if (Buffer.byteLength(gif.body) > 2.5e+7) {
 			const poster = await request.get(body.media.poster);
 			fileToSend = poster.body;
 			fileType = 'png';

@@ -35,7 +35,7 @@ module.exports = class DeepFryCommand extends Command {
 		desaturate(ctx, -20, 0, 0, data.width, data.height);
 		contrast(ctx, 0, 0, data.width, data.height);
 		const attachment = canvas.toBuffer('image/jpeg', { quality: 0.2 });
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'deep-fry.jpeg' }] });
 	}
 };
