@@ -45,7 +45,7 @@ module.exports = class GunCommand extends Command {
 		const width = base.width * ratio;
 		ctx.drawImage(base, data.width - width, data.height - (data.height / 2), width, data.height / 2);
 		const attachment = canvas.toBuffer('image/png');
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'gun.png' }] });
 	}
 };

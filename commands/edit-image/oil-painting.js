@@ -40,7 +40,7 @@ module.exports = class OilPaintingCommand extends Command {
 		magik.paint(5);
 		magik.setFormat('png');
 		const attachment = await magikToBuffer(magik);
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'old-painting.png' }] });
 	}
 };

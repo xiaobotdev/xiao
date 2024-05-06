@@ -34,7 +34,7 @@ module.exports = class GlitchCommand extends Command {
 		ctx.drawImage(data, 0, 0);
 		distort(ctx, 20, 0, 0, data.width, data.height, 5);
 		const attachment = canvas.toBuffer('image/png');
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'glitch.png' }] });
 	}
 };

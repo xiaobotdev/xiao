@@ -49,7 +49,7 @@ module.exports = class ThugLifeCommand extends Command {
 		const height = Math.round(width / ratio);
 		ctx.drawImage(base, (data.width / 2) - (width / 2), data.height - height, width, height);
 		const attachment = canvas.toBuffer('image/png');
-		if (Buffer.byteLength(attachment) > 8e+6) return msg.reply('Resulting image was above 8 MB.');
+		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'thug-life.png' }] });
 	}
 };
