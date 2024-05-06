@@ -29,7 +29,7 @@ module.exports = class Tensorflow {
 	}
 
 	async detectFaces(imgData) {
-		if (Buffer.byteLength(imgData) >= 4e+6) return 'size';
+		if (Buffer.byteLength(imgData) >= 8e+6) return 'size';
 		tfnode.setBackend('tensorflow');
 		const image = tfnode.node.decodeImage(imgData, 3);
 		tfnode.setBackend('cpu');
