@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const semver = require('semver');
-const { stripIndents } = require('common-tags');
 const { reactIfAble } = require('../../util/Util');
 const { dependencies, devDependencies, optionalDependencies } = require('../../package');
 const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
@@ -30,6 +29,7 @@ module.exports = class DependencyUpdateCommand extends Command {
 	async run(msg) {
 		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
 		const needUpdate = [];
+		const optionalNeedsUpdate = [];
 		for (const [dep, ver] of Object.entries(dependencies)) {
 			const update = await this.parseUpdate(dep, ver);
 			if (!update) continue;
@@ -38,23 +38,31 @@ module.exports = class DependencyUpdateCommand extends Command {
 		for (const [dep, ver] of Object.entries(devDependencies)) {
 			const update = await this.parseUpdate(dep, ver);
 			if (!update) continue;
-			needUpdate.push(update);
+			optionalNeedsUpdate.push(update);
 		}
 		for (const [dep, ver] of Object.entries(optionalDependencies)) {
 			const update = await this.parseUpdate(dep, ver);
 			if (!update) continue;
-			needUpdate.push(update);
+			optionalNeedsUpdate.push(update);
 		}
-		if (!needUpdate.length) return msg.say('All packages are up to date.');
+		if (!needUpdate.length && !optionalNeedsUpdate.length) return msg.say('👍 All packages are up to date.');
 		const updatesList = needUpdate.map(pkg => {
 			const breaking = pkg.breaking ? ' ⚠️' : '';
 			return `${pkg.name} (${pkg.oldVer} -> ${pkg.newVer})${breaking}`;
 		});
+		const optionalList = optionalNeedsUpdate.map(pkg => {
+			const breaking = pkg.breaking ? ' ⚠️' : '';
+			return `${pkg.name} (${pkg.oldVer} -> ${pkg.newVer})${breaking}`;
+		});
 		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
-		return msg.say(stripIndents`
-			__**Package Updates Available:**__
-			${updatesList.join('\n')}
-		`);
+		let result = '';
+		if (needUpdate.length) {
+			result += `__**Package Updates Available:**__\n${updatesList.join('\n')}`;
+		}
+		if (optionalNeedsUpdate.length) {
+			result += `\n\n__**Optional/Dev Updates Available:**__\n${optionalList.join('\n')}`;
+		}
+		return msg.say(result.trim());
 	}
 
 	async fetchVersion(dependency) {
