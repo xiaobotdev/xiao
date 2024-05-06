@@ -67,26 +67,26 @@ module.exports = class RipCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.font = this.client.fonts.get('CoffinStone.otf').toCanvasString(62);
 		this.fillPressedText(ctx, user.username, 438, 330, 500);
-		if (cause) this.fillPressedText(ctx, cause, 438, 910, 500);
+		if (cause) this.fillPressedText(ctx, cause, 438, 915, 500);
 		ctx.font = this.client.fonts.get('CoffinStone.otf').toCanvasString(37);
 		this.fillPressedText(ctx, 'In Loving Memory of', 438, 292);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'rip.png' }] });
 	}
 
 	fillPressedText(ctx, text, x, y, maxWidth) {
-		ctx.fillStyle = '#555555';
-		ctx.shadowColor = '#222222';
-		ctx.shadowOffsetX = -2;
-		ctx.shadowOffsetY = -2;
-		ctx.shadowBlur = 5;
-		ctx.fillText(text, x, y, maxWidth);
-		ctx.strokeStyle = '#FFFFFF';
-		ctx.lineWidth = 2;
-		ctx.strokeText(text, x, y, maxWidth);
-		ctx.shadowOffsetX = 2;
-		ctx.shadowOffsetY = 2;
-		ctx.shadowColor = '#999999';
-		ctx.fillText(text, x, y, maxWidth);
+        ctx.fillStyle = '#999999';
+        ctx.shadowColor = '#FFFFFF';
+        ctx.shadowOffsetX = -2;
+        ctx.shadowOffsetY = -2;
+    	ctx.shadowBlur = 2;
+        ctx.fillText(text, x, y, maxWidth);
+        ctx.shadowColor = '#666666';
+      	ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        ctx.fillText(text, x, y, maxWidth);
+    	ctx.fillStyle = '#333333';
+        ctx.fillText(text, x, y, maxWidth);
 		return ctx;
 	}
 };
