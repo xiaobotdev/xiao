@@ -96,16 +96,15 @@ things, I'm not taking any chances.
 8. Run `apt install liblqr-1-0-dev liblqr-1-0` to install liblqr (needed for ImageMagick).
 9. [Follow these instructions to install ImageMagick](https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/).
 10. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04). Remember to set up a password!
-11. Run `apt install libtool` so sodium can compile if necessary. **(Optional)**
-12. Download DECTalk and extract `dectalk.dll`, `dtalk_us.dic`, `MSVCRTd.DLL`, and `say.exe` to `dectalk/`. I cannot help you find this.
-13. Run `apt install wine` to install wine.
-14. Run `dpkg --add-architecture i386` to allow installation of wine32.
-15. Run `apt update` again.
-16. Run `apt install wine32` to install wine32.
-17. Run `apt install xvfb` to install xvfb.
-18. Run `yarn install --production` in the folder you cloned the bot.
-19. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
-20. Start Xiao up!
+11. Download DECTalk and extract `dectalk.dll`, `dtalk_us.dic`, `MSVCRTd.DLL`, and `say.exe` to `dectalk/`. I cannot help you find this.
+12. Run `apt install wine` to install wine.
+13. Run `dpkg --add-architecture i386` to allow installation of wine32.
+14. Run `apt update` again.
+15. Run `apt install wine32` to install wine32.
+16. Run `apt install xvfb` to install xvfb.
+17. Run `yarn install --production` in the folder you cloned the bot.
+18. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
+19. Start Xiao up!
 
 ## Commands
 Total: 510
