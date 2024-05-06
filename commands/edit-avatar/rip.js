@@ -49,6 +49,11 @@ module.exports = class RipCommand extends Command {
 	}
 
 	async run(msg, { user, cause }) {
+		if (!cause) {
+			const currentYear = new Date().getFullYear();
+			const createdYear = user.createdAt.getFullYear();
+			cause = `${createdYear}-${currentYear}`;
+		}
 		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'rip.png'));
 		const { body } = await request.get(avatarURL);
