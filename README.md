@@ -1546,10 +1546,6 @@ Total: 510
    - [RogerHub Final Grade Calculator](https://rogerhub.com/final-grade-calculator/) (Concept, Code)
 * **gravity:**
    - [NASA](https://www.nasa.gov/) ([Planet Gravity Data](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html))
-* **math:**
-   - [mathjs](https://mathjs.org/) (Expression Parser)
-* **units:**
-   - [mathjs](https://mathjs.org/) (Expression Parser)
 * **airhorn:**
    - [Discord](https://discord.com/) ([Airhorn Sounds](https://github.com/discord/airhornbot/tree/master/audio))
 * **animalese:**
