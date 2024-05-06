@@ -24,13 +24,6 @@ module.exports = class MathCommand extends Command {
 					key: 'expression',
 					type: 'string'
 				}
-			],
-			credit: [
-				{
-					name: 'mathjs',
-					url: 'https://mathjs.org/',
-					reason: 'Expression Parser'
-				}
 			]
 		});
 	}

@@ -16,13 +16,6 @@ module.exports = class UnitsCommand extends Command {
 			memberName: 'units',
 			description: 'Converts units to/from other units.',
 			details: '**Units:** <https://mathjs.org/docs/datatypes/units.html#reference>',
-			credit: [
-				{
-					name: 'mathjs',
-					url: 'https://mathjs.org/',
-					reason: 'Expression Parser'
-				}
-			],
 			args: [
 				{
 					key: 'amount',
