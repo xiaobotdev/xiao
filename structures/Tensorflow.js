@@ -2,8 +2,6 @@ const tfnode = require('@tensorflow/tfjs-node');
 const nsfw = require('nsfwjs');
 const faceDetection = require('@tensorflow-models/face-detection');
 const faceModel = faceDetection.SupportedModels.MediaPipeFaceDetector;
-const url = require('url');
-const path = require('path');
 
 module.exports = class Tensorflow {
 	constructor(client) {
@@ -14,10 +12,7 @@ module.exports = class Tensorflow {
 	}
 
 	async loadNSFWJS() {
-		const nsfwjs = await nsfw.load(
-			`${url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'nsfw', 'web_model')).href}/`,
-			{ type: 'graph' }
-		);
+		const nsfwjs = await nsfw.load();
 		this.nsfwjs = nsfwjs;
 		return this.nsfwjs;
 	}

@@ -21,9 +21,6 @@ blacklist.json
 # DECTalk
 dectalk/
 
-# Tensorflow Models
-tf_models/
-
 # Mac Files
 .DS_Store
 
