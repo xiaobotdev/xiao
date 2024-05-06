@@ -120,10 +120,10 @@ module.exports = class HungerGamesCommand extends Command {
 		 let types = this.decideTypes(tribute);
 			if (turn.size === 1) types = removeFromArray(types, 'kill');
 			const type = types[Math.floor(Math.random() * types.length)];
+			const useWeapon = Math.floor(Math.random() * 3);
 			const valid = eventsArr.filter(event => {
 				if (event.type !== type) return false;
 				if (event.type === 'kill' && tribute.weapon && !event.requires) {
-					const useWeapon = Math.floor(Math.random() * 3);
 					if (useWeapon) return false;
 				}
 				if (event.requires && event.requires !== 'food' && event.requires !== tribute.weapon) return false;
