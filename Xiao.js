@@ -266,6 +266,15 @@ client.on('ready', async () => {
 		client.logger.error(`[FACE DETECTOR] Failed to load face detector\n${err.stack}`);
 	}
 
+	// Set up stylize models
+	try {
+		await client.tensorflow.loadStyleModel();
+		await client.tensorflow.loadTransformerModel();
+		client.logger.info('[STYLIZE] Loaded stylize models.');
+	} catch (err) {
+		client.logger.error(`[STYLIZE] Failed to load stylize models\n${err.stack}`);
+	}
+
 	// Fetch all members
 	try {
 		for (const guild of client.guilds.cache.values()) {
