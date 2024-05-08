@@ -38,7 +38,7 @@ module.exports = class WikipediaCommand extends Command {
 				titles: query,
 				exintro: '',
 				explaintext: '',
-				pllimit: 20,
+				pllimit: 15,
 				piprop: 'original',
 				redirects: '',
 				formatversion: 2
@@ -59,6 +59,7 @@ module.exports = class WikipediaCommand extends Command {
 		}
 		const isDisambig = data.categories.some(category => category.title === 'Category:Disambiguation pages');
 		if (isDisambig) {
+			fact += '\n';
 			fact += data.links.map(link => link.title).join('\n');
 			fact += '\n';
 		} else {
