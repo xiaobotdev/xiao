@@ -73,15 +73,13 @@ module.exports = class Tensorflow {
 
 	async stylizeImage(image, styleImg) {
 		const imageTensor = await tf.node.decodeImage(image, 3);
-		const loadedImage = imageTensor.div(tf.scalar(255)).expandDims();
+		const loadedImage = imageTensor.toFloat().div(tf.scalar(255)).expandDims();
 		imageTensor.dispose();
 		const styleTensor = tf.node.decodeImage(styleImg, 3);
-		const loadedStyle = styleTensor.div(tf.scalar(255)).expandDims();
 		styleTensor.dispose();
-		const reshapedStyle = loadedStyle.reshape([1, 1, 1, 100]);
+		const loadedStyle = styleTensor.toFloat().div(tf.scalar(255)).expandDims();
+		const stylePrediction = await this.styleModel.predict(loadedStyle);
 		loadedStyle.dispose();
-		const stylePrediction = await this.styleModel.predict(reshapedStyle);
-		reshapedStyle.dispose();
 		const stylizedImage = await this.transformerModel.predict([loadedImage, stylePrediction.squeeze()]);
 		loadedImage.dispose();
 		stylePrediction.dispose();
