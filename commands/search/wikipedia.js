@@ -47,7 +47,7 @@ module.exports = class WikipediaCommand extends Command {
 		let thumbnail = data.thumbnail ? data.thumbnail.source : null;
 		if (!msg.channel.nsfw && thumbnail) {
 			const img = await request.get(data.thumbnail.source);
-			const nsfw = this.client.tensorflow.isImageNSFW(img.body);
+			const nsfw = await this.client.tensorflow.isImageNSFW(img.body);
 			if (nsfw) thumbnail = null;
 		}
 		const embed = new EmbedBuilder()
