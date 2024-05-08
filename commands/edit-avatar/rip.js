@@ -78,14 +78,14 @@ module.exports = class RipCommand extends Command {
 		ctx.shadowOffsetX = -2;
 		ctx.shadowOffsetY = -2;
 		ctx.shadowBlur = 2;
-		ctx.fillStyle = '#999999';
+		ctx.fillStyle = '#333333';
 		ctx.fillText(text, x, y, maxWidth);
 		ctx.shadowColor = '#FFFFFF';
 		ctx.shadowOffsetX = 2;
 		ctx.shadowOffsetY = 2;
 		ctx.shadowBlur = 2;
 		ctx.fillText(text, x, y, maxWidth);
-		ctx.fillStyle = '#333333';
+		ctx.fillStyle = '#999999';
 		ctx.shadowColor = 'transparent';
 		ctx.fillText(text, x, y, maxWidth);
 		return ctx;
