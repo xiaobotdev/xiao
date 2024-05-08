@@ -33,11 +33,12 @@ module.exports = class WikipediaCommand extends Command {
 			.get('https://en.wikipedia.org/w/api.php')
 			.query({
 				action: 'query',
-				prop: 'extracts|pageimages',
+				prop: 'extracts|pageimages|categories|links',
 				format: 'json',
 				titles: query,
 				exintro: '',
 				explaintext: '',
+				pllimit: 20,
 				piprop: 'original',
 				redirects: '',
 				formatversion: 2
@@ -56,14 +57,22 @@ module.exports = class WikipediaCommand extends Command {
 			fact = `${facts[0]}.`;
 			if (fact.length < 200 && facts.length > 1) fact += `${facts[1]}.`;
 		}
+		const isDisambig = data.categories.some(category => category.title === 'Category:Disambiguation pages');
+		if (isDisambig) {
+			fact += data.links.map(link => link.title).join('\n');
+			fact += '\n';
+		} else {
+			fact += ' ';
+		}
 		const url = `https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`;
+		fact += `[Read more...](${url})`;
 		const embed = new EmbedBuilder()
 			.setColor(0xE7E7E7)
 			.setTitle(data.title)
 			.setAuthor({ name: 'Wikipedia', iconURL: logos.wikipedia, url: 'https://www.wikipedia.org/' })
 			.setURL(url)
 			.setThumbnail(thumbnail)
-			.setDescription(`${fact} [Read more...](${url})`);
+			.setDescription(fact);
 		return msg.embed(embed);
 	}
 };
