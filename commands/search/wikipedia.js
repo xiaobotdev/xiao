@@ -61,7 +61,7 @@ module.exports = class WikipediaCommand extends Command {
 		const isDisambig = data.categories.some(category => category.title === 'Category:Disambiguation pages');
 		if (isDisambig) {
 			fact += '\n';
-			fact += data.links.map(link => link.title).join('\n');
+			fact += data.links.filter(link => link.ns === 0).map(link => link.title).join('\n');
 			fact += '\n';
 		} else {
 			fact += ' ';
