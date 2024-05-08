@@ -46,7 +46,7 @@ module.exports = class WikipediaCommand extends Command {
 		if (data.missing) return msg.say('Could not find any results.');
 		let thumbnail = data.original ? data.original.source : null;
 		if (!msg.channel.nsfw && thumbnail) {
-			const img = await request.get(data.original.source);
+			const img = await request.get(thumbnail);
 			const nsfw = await this.client.tensorflow.isImageNSFW(img.body);
 			if (nsfw) thumbnail = null;
 		}
