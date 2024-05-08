@@ -1,8 +1,9 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const gm = require('gm').subClass({ imageMagick: '7+' });
 const request = require('node-superfetch');
-const { magikToBuffer, reactIfAble } = require('../../util/Util');
+const { readFile } = require('fs/promises');
+const path = require('path');
+const { reactIfAble } = require('../../util/Util');
 const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class SketchCommand extends Command {
@@ -18,13 +19,6 @@ module.exports = class SketchCommand extends Command {
 				duration: 60
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'ImageMagick',
-					url: 'https://imagemagick.org/index.php',
-					reason: 'Image Manipulation'
-				}
-			],
 			args: [
 				{
 					key: 'image',
@@ -37,15 +31,11 @@ module.exports = class SketchCommand extends Command {
 
 	async run(msg, { image }) {
 		const { body } = await request.get(image);
+		const style = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'sketch.jpg'));
 		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
-		const magik = gm(body);
-		magik.colorspace('gray');
-		magik.out('-sketch');
-		magik.out('0x20+120');
-		magik.setFormat('png');
-		const attachment = await magikToBuffer(magik);
+		const attachment = await this.client.tensorflow.stylizeImage(body, style);
 		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
-		return msg.say({ files: [{ attachment, name: 'sketch.png' }] });
+		return msg.say({ files: [{ attachment, name: 'sketch.jpg' }] });
 	}
 };
