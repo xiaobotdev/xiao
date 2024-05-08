@@ -76,8 +76,8 @@ module.exports = class Tensorflow {
 		const loadedImage = imageTensor.toFloat().div(tf.scalar(255)).expandDims();
 		imageTensor.dispose();
 		const styleTensor = tf.node.decodeImage(styleImg, 3);
-		styleTensor.dispose();
 		const loadedStyle = styleTensor.toFloat().div(tf.scalar(255)).expandDims();
+		styleTensor.dispose();
 		const stylePrediction = await this.styleModel.predict(loadedStyle);
 		loadedStyle.dispose();
 		const stylizedImage = await this.transformerModel.predict([loadedImage, stylePrediction.squeeze()]);
