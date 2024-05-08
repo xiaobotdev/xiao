@@ -39,14 +39,15 @@ module.exports = class WikipediaCommand extends Command {
 				titles: query,
 				exintro: '',
 				explaintext: '',
+				piprop: 'original',
 				redirects: '',
 				formatversion: 2
 			});
 		const data = body.query.pages[0];
 		if (data.missing) return msg.say('Could not find any results.');
-		let thumbnail = data.thumbnail ? data.thumbnail.source : null;
+		let thumbnail = data.original ? data.original.source : null;
 		if (!msg.channel.nsfw && thumbnail) {
-			const img = await request.get(data.thumbnail.source);
+			const img = await request.get(data.original.source);
 			const nsfw = await this.client.tensorflow.isImageNSFW(img.body);
 			if (nsfw) thumbnail = null;
 		}
