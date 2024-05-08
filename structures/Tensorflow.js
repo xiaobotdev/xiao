@@ -1,7 +1,8 @@
-const tfnode = require('@tensorflow/tfjs-node');
+const tf = require('@tensorflow/tfjs-node');
 const nsfw = require('nsfwjs');
 const faceDetection = require('@tensorflow-models/face-detection');
 const faceModel = faceDetection.SupportedModels.MediaPipeFaceDetector;
+const path = require('path');
 
 module.exports = class Tensorflow {
 	constructor(client) {
@@ -9,6 +10,8 @@ module.exports = class Tensorflow {
 
 		this.nsfwjs = null;
 		this.faceDetector = null;
+		this.styleModel = null;
+		this.transformerModel = null;
 	}
 
 	async loadNSFWJS() {
@@ -23,20 +26,34 @@ module.exports = class Tensorflow {
 		return this.faceDetector;
 	}
 
+	async loadStyleModel() {
+		const model = await tf.loadGraphModel(path.join(__dirname, '..', 'tf_models', 'style_js', 'model.json'));
+		this.styleModel = model;
+		return this.styleModel;
+	}
+
+	async loadTransformerModel() {
+		const model = await tf.loadGraphModel(
+			path.join(__dirname, '..', 'tf_models', 'transformer_separable_js', 'model.json')
+		);
+		this.transformerModel = model;
+		return this.transformerModel;
+	}
+
 	async detectFaces(imgData) {
 		if (Buffer.byteLength(imgData) >= 8e+6) return 'size';
-		tfnode.setBackend('tensorflow');
-		const image = tfnode.node.decodeImage(imgData, 3);
-		tfnode.setBackend('cpu');
+		tf.setBackend('tensorflow');
+		const image = tf.node.decodeImage(imgData, 3);
+		tf.setBackend('cpu');
 		const faces = await this.faceDetector.estimateFaces(image);
-		tfnode.setBackend('tensorflow');
+		tf.setBackend('tensorflow');
 		image.dispose();
 		if (!faces || !faces.length) return null;
 		return faces;
 	}
 
 	async isImageNSFW(image, bool = true) {
-		const img = await tfnode.node.decodeImage(image, 3);
+		const img = await tf.node.decodeImage(image, 3);
 		const predictions = await this.nsfwjs.classify(img);
 		img.dispose();
 		if (bool) {
@@ -49,5 +66,22 @@ module.exports = class Tensorflow {
 			return results.some(result => result.className !== 'Drawing' && result.className !== 'Neutral');
 		}
 		return predictions;
+	}
+
+	async stylizeImage(image, styleImg) {
+		const imageTensor = await tf.node.decodeImage(image, 3);
+		const loadedImage = imageTensor.div(tf.scalar(255)).expandDims();
+		imageTensor.dispose();
+		const styleTensor = tf.node.decodeImage(styleImg, 3);
+		const loadedStyle = styleTensor.div(tf.scalar(255)).expandDims();
+		styleTensor.dispose();
+		const stylePrediction = await this.styleModel.predict(loadedStyle);
+		loadedStyle.dispose();
+		const stylizedImage = await this.transformerModel.predict([loadedImage, stylePrediction.squeeze()]);
+		loadedImage.dispose();
+		stylePrediction.dispose();
+		const buffer = await tf.node.encodePng(stylizedImage.squeeze());
+		stylizedImage.dispose();
+		return buffer;
 	}
 };
