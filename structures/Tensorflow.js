@@ -3,6 +3,7 @@ const nsfw = require('nsfwjs');
 const faceDetection = require('@tensorflow-models/face-detection');
 const faceModel = faceDetection.SupportedModels.MediaPipeFaceDetector;
 const path = require('path');
+const url = require('url');
 
 module.exports = class Tensorflow {
 	constructor(client) {
@@ -27,14 +28,16 @@ module.exports = class Tensorflow {
 	}
 
 	async loadStyleModel() {
-		const model = await tf.loadGraphModel(path.join(__dirname, '..', 'tf_models', 'style_js', 'model.json'));
+		const model = await tf.loadGraphModel(
+			url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'style_js', 'model.json')).href
+		);
 		this.styleModel = model;
 		return this.styleModel;
 	}
 
 	async loadTransformerModel() {
 		const model = await tf.loadGraphModel(
-			path.join(__dirname, '..', 'tf_models', 'transformer_separable_js', 'model.json')
+			url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'transformer_separable_js', 'model.json')).href
 		);
 		this.transformerModel = model;
 		return this.transformerModel;
