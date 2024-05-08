@@ -80,12 +80,13 @@ module.exports = class Tensorflow {
 		styleTensor.dispose();
 		const stylePrediction = await this.styleModel.predict(loadedStyle);
 		loadedStyle.dispose();
-		const stylizedImage = await this.transformerModel.predict([loadedImage, stylePrediction]);
+		const stylizedImage = (await this.transformerModel.predict([loadedImage, stylePrediction])).squeeze();
 		loadedImage.dispose();
 		stylePrediction.dispose();
-		stylizedImage.mul(255).toInt();
-		const buffer = await tf.node.encodeJpeg(stylizedImage.squeeze());
+		const encodedImg = stylizedImage.mul(255).toInt();
 		stylizedImage.dispose();
+		const buffer = await tf.node.encodeJpeg(encodedImg);
+		encodedImg.dispose();
 		return Buffer.from(buffer);
 	}
 };
