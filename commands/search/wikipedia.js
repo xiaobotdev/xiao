@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
-const { shorten } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 
 module.exports = class WikipediaCommand extends Command {
@@ -51,13 +50,20 @@ module.exports = class WikipediaCommand extends Command {
 			const nsfw = await this.client.tensorflow.isImageNSFW(img.body);
 			if (nsfw) thumbnail = null;
 		}
+		let fact = data.extract;
+		if (fact.length > 200) {
+			const facts = fact.split('.');
+			fact = `${facts[0]}.`;
+			if (fact.length < 200 && facts.length > 1) fact += `${facts[1]}.`;
+		}
+		const url = `https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`;
 		const embed = new EmbedBuilder()
 			.setColor(0xE7E7E7)
 			.setTitle(data.title)
 			.setAuthor({ name: 'Wikipedia', iconURL: logos.wikipedia, url: 'https://www.wikipedia.org/' })
-			.setURL(`https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`)
+			.setURL(url)
 			.setThumbnail(thumbnail)
-			.setDescription(shorten(data.extract.replaceAll('\n', '\n\n')));
+			.setDescription(`${fact} [Read more...](${url})`);
 		return msg.embed(embed);
 	}
 };
