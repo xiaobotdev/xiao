@@ -16,9 +16,10 @@ module.exports = class SketchCommand extends Command {
 			description: 'Draws an image or a user\'s avatar but sketched.',
 			throttling: {
 				usages: 1,
-				duration: 60
+				duration: 120
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
+			maxAttachmentSize: 2e+6,
 			args: [
 				{
 					key: 'image',
