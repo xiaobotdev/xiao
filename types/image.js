@@ -8,10 +8,13 @@ module.exports = class ImageArgument extends Argument {
 		super(client, 'image');
 	}
 
-	async validate(value, msg) {
+	async validate(value, msg, arg) {
 		const attachment = msg.attachments.first();
 		if (attachment) {
-			if (attachment.size > 8e+6) return 'Image size is above 8 MB.';
+			if (attachment.size > arg.maxAttachmentSize) {
+				const displaySize = Math.floor(arg.maxAttachmentSize / 1000000);
+				return `Image size is above ${displaySize} MB.`;
+			}
 			if (!fileTypeRe.test(attachment.name)) return 'Provided attachment is not an image.';
 			return true;
 		}

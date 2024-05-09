@@ -11,6 +11,7 @@ module.exports = class Argument {
 		this.min = typeof options.min === 'undefined' ? null : options.min;
 		this.max = typeof options.max === 'undefined' ? null : options.max;
 		this.oneOf = typeof options.oneOf === 'undefined' ? null : options.oneOf;
+		this.maxAttachmentSize = typeof options.maxAttachmentSize === 'undefined' ? null : options.maxAttachmentSize;
 		this.default = typeof options.default === 'undefined' ? null : options.default;
 		this.infinite = options.infinite || false;
 		this.avatarSize = options.avatarSize || 2048;
