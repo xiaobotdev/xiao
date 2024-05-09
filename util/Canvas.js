@@ -146,6 +146,18 @@ module.exports = class CanvasUtil {
 		return ctx;
 	}
 
+	static grain(ctx, x, y, width, height, amount = 10) {
+		const imageData = ctx.getImageData(x, y, width, height);
+		for (let i = 0; i < imageData.data.length; i += 4) {
+			const grain = (0.5 - Math.random()) * amount;
+			imageData.data[i] += grain;
+			imageData.data[i + 1] += grain;
+			imageData.data[i + 2] += grain;
+		}
+		ctx.putImageData(imageData, x, y);
+		return ctx;
+	}
+
 	static cropToContent(ctx, canvas, w, h) {
 		const pix = { x: [], y: [] };
 		const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
