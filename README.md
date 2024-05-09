@@ -107,7 +107,7 @@ things, I'm not taking any chances.
 19. Start Xiao up!
 
 ## Commands
-Total: 510
+Total: 512
 
 ### Utility:
 
@@ -452,6 +452,7 @@ Total: 510
 * **needs-more-jpeg:** Draws an image or a user's avatar as a low quality JPEG.
 * **noise:** Draws an image or a user's avatar but with noise.
 * **oil-painting:** Draws an image or a user's avatar but with oil paints.
+* **old-photo:** Draws an image or a user's avatar as an old-timey photo.
 * **pet:** Pets an image or a user's avatar.
 * **pixelize:** Draws an image or a user's avatar pixelized.
 * **pokemon-fusion:** Fuses two Generation I Pokémon together.
@@ -466,6 +467,7 @@ Total: 510
 * **sip:** Draws a user's avatar sipping tea.
 * **sketch:** Draws an image or a user's avatar but sketched.
 * **snapchat:** Creates a fake Snap from Snapchat with the image and text you provide.
+* **spaghetti:** Draws an image or a user's avatar but as spaghetti.
 * **spotify-now-playing:** Draws an image or a user's avatar on a Spotify album with the name and artist of your choice.
 * **square:** Draws an image or a user's avatar as a square.
 * **squish:** Draws an image or a user's avatar but squished across the X or Y axis.
@@ -1228,10 +1230,12 @@ Total: 510
 * **sip:**
    - [CoolClips.com](http://search.coolclips.com/) ([Image](http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/))
 * **sketch:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
+   - [reiinakano](https://github.com/reiinakano) ([Tensorflow Models](https://github.com/reiinakano/arbitrary-image-stylization-tfjs/))
 * **snapchat:**
    - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
    - [Snapchat](https://www.snapchat.com/) (Design)
+* **spaghetti:**
+   - [reiinakano](https://github.com/reiinakano) ([Tensorflow Models](https://github.com/reiinakano/arbitrary-image-stylization-tfjs/))
 * **spotify-now-playing:**
    - [Spotify](https://www.spotify.com/us/) (Original Design)
    - [Sam Thik](https://www.pinterest.com/Samthik/) ([Image](https://www.pinterest.com/pin/500251471109108490/))
