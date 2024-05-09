@@ -19,11 +19,11 @@ module.exports = class SketchCommand extends Command {
 				duration: 120
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			maxAttachmentSize: 2e+6,
 			args: [
 				{
 					key: 'image',
 					type: 'image-or-avatar',
+					maxAttachmentSize: 2e+6,
 					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512 })
 				}
 			]
