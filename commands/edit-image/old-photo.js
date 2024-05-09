@@ -48,14 +48,14 @@ module.exports = class OldPhotoCommand extends Command {
 		for (let i = 0; i < count; i++) {
 			const x = Math.random() * width;
 			const y = Math.random() * height;
-			const radius = 40 + Math.random() * 80;
+			const radius = 40 + (Math.random() * 80);
 			const type = Math.random() > 0.5 ? 'coffee' : 'water';
 			ctx.beginPath();
-			ctx.moveTo(x + radius * 0.6, y);
+			ctx.moveTo(x + (radius * 0.6), y);
 			for (let angle = 0; angle < 360; angle += Math.random() * 45) {
 				const angleRad = (angle * Math.PI) / 180;
-				const nextAngleRad = ((angle + Math.random() * 45) * Math.PI) / 180;
-				const arcRadius = radius * (0.6 + Math.random() * 0.4);
+				const nextAngleRad = ((angle + (Math.random() * 45)) * Math.PI) / 180;
+				const arcRadius = radius * (0.6 + (Math.random() * 0.4));
 				ctx.arc(x, y, arcRadius, angleRad, nextAngleRad, false);
 			}
 			ctx.closePath();
@@ -72,7 +72,7 @@ module.exports = class OldPhotoCommand extends Command {
 
 	tears(ctx, width, height, count = 6) {
 		for (let i = 0; i < count; i++) {
-			const x = Math.random() * width * 0.8 + width * 0.1;
+			const x = (Math.random() * width * 0.8) + (width * 0.1);
 			const yStart = Math.random() * height;
 			const yEnd = yStart + (Math.random() * 50) + 20;
 			ctx.beginPath();
