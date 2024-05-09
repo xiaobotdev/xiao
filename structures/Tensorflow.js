@@ -37,7 +37,7 @@ module.exports = class Tensorflow {
 
 	async loadTransformerModel() {
 		const model = await tf.loadGraphModel(
-			url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'transformer_separable_js', 'model.json')).href
+			url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'transformer_js', 'model.json')).href
 		);
 		this.transformerModel = model;
 		return this.transformerModel;
