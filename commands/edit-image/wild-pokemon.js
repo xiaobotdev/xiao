@@ -40,6 +40,7 @@ module.exports = class WildPokemonCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
+					avatarSize: 128,
 					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 128 })
 				}
 			]
