@@ -70,7 +70,7 @@ module.exports = class TweetCommand extends Command {
 		const lines = wrapText(ctx, text, 710, true);
 		const metrics = measureTextHeightWithBreaks(ctx, lines.join('\n'));
 		const linesLen = metrics + 5;
-		canvas.height += linesLen;
+		canvas.height += linesLen - 1;
 		let imageHeight = 0;
 		ctx.fillStyle = 'black';
 		ctx.fillRect(0, base1.height, canvas.width, linesLen);
@@ -202,7 +202,6 @@ module.exports = class TweetCommand extends Command {
 			ctx.clip();
 		}
 		ctx.drawImage(avatar, 17, 84, 52, 52);
-		canvas.height -= 1;
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'tweet.png' }] });
 	}
 
