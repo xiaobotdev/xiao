@@ -74,10 +74,10 @@ module.exports = class Tensorflow {
 	async stylizeImage(image, styleImg) {
 		const imageTensor = await tf.node.decodeImage(image, 3);
 		const [originalHeight, originalWidth] = imageTensor.shape.slice(0, 2);
-		const desiredWidth = 400;
+		const desiredHeight = 400;
 		const aspectRatio = originalWidth / originalHeight;
-		const newHeight = Math.round(desiredWidth / aspectRatio);
-		const resizedImage = tf.image.resizeBilinear(imageTensor, [newHeight, desiredWidth]);
+		const newWidth = Math.round(desiredHeight / aspectRatio);
+		const resizedImage = tf.image.resizeBilinear(imageTensor, [desiredHeight, newWidth]);
 		imageTensor.dispose();
 		const loadedImage = resizedImage.toFloat().div(tf.scalar(255)).expandDims();
 		resizedImage.dispose();
