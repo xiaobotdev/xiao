@@ -11,10 +11,10 @@ module.exports = class Argument {
 		this.min = typeof options.min === 'undefined' ? null : options.min;
 		this.max = typeof options.max === 'undefined' ? null : options.max;
 		this.oneOf = typeof options.oneOf === 'undefined' ? null : options.oneOf;
-		this.maxAttachmentSize = options.maxAttachmentSize || 8e+6;
+		this.maxAttachmentSize = typeof options.maxAttachmentSize === 'undefined' ? 8e+6 : options.maxAttachmentSize;
 		this.default = typeof options.default === 'undefined' ? null : options.default;
-		this.infinite = options.infinite || false;
-		this.avatarSize = options.avatarSize || 2048;
+		this.infinite = Boolean(options.infinite);
+		this.avatarSize = typeof options.avatarSize === 'undefined' ? 2048 : options.avatarSize;
 		this.validator = typeof options.validate === 'undefined' ? null : options.validate;
 		this.parser = typeof options.parse === 'undefined' ? null : options.parse;
 		this.emptyChecker = typeof options.isEmpty === 'undefined' ? null : options.isEmpty;
