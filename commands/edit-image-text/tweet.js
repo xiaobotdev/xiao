@@ -202,6 +202,7 @@ module.exports = class TweetCommand extends Command {
 			ctx.clip();
 		}
 		ctx.drawImage(avatar, 17, 84, 52, 52);
+		canvas.height -= 1;
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'tweet.png' }] });
 	}
 
