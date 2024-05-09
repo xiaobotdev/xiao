@@ -39,7 +39,6 @@ module.exports = class OldPhotoCommand extends Command {
 		grain(ctx, 0, 0, data.width, data.height);
 		this.stains(ctx, data.width, data.height);
 		this.tears(ctx, data.width, data.height);
-		this.wrinkles(ctx, data.width, data.height);
 		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'old-photo.png' }] });
@@ -71,7 +70,7 @@ module.exports = class OldPhotoCommand extends Command {
 		return ctx;
 	}
 
-	tears(ctx, width, height, count = 3) {
+	tears(ctx, width, height, count = 6) {
 		for (let i = 0; i < count; i++) {
 			const x = Math.random() * width * 0.8 + width * 0.1;
 			const yStart = Math.random() * height;
@@ -84,38 +83,6 @@ module.exports = class OldPhotoCommand extends Command {
 			}
 			ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
 			ctx.lineWidth = 2;
-			ctx.stroke();
-		}
-		return ctx;
-	}
-
-	wrinkles(ctx, width, height, count = 10) {
-		for (let i = 0; i < count; i++) {
-			const startX = Math.random() * width;
-			const startY = Math.random() * height;
-			const endX = startX + ((Math.random() * width) - startX) * 0.5;
-			const endY = startY + ((Math.random() * 30) - 15);
-			const controlX1 = startX + ((endX - startX) * 0.3) + ((Math.random() * 20) - 10);
-			const controlY1 = startY + ((Math.random() * 50) - 25);
-			const controlX2 = startX + ((endX - startX) * 0.6) + ((Math.random() * 20) - 10);
-			const controlY2 = startY + ((Math.random() * 50) - 25);
-			ctx.beginPath();
-			ctx.moveTo(startX, startY);
-			ctx.bezierCurveTo(controlX1, controlY1, controlX2, controlY2, endX, endY);
-			ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
-			ctx.lineWidth = 1 + Math.random();
-			ctx.stroke();
-			ctx.beginPath();
-			ctx.moveTo(startX, startY + 2);
-			ctx.bezierCurveTo(controlX1, controlY1 + 2, controlX2, controlY2 + 2, endX, endY + 2);
-			ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-			ctx.lineWidth = 2 + Math.random();
-			ctx.stroke();
-			ctx.beginPath();
-			ctx.moveTo(startX, startY - 2);
-			ctx.bezierCurveTo(controlX1, controlY1 - 2, controlX2, controlY2 - 2, endX, endY - 2);
-			ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-			ctx.lineWidth = 2 + Math.random();
 			ctx.stroke();
 		}
 		return ctx;
