@@ -77,7 +77,7 @@ module.exports = class Tensorflow {
 		const desiredHeight = 400;
 		const aspectRatio = originalWidth / originalHeight;
 		const newWidth = Math.round(desiredHeight / aspectRatio);
-		const resizedImage = tf.image.resizeBilinear(imageTensor, [desiredHeight, newWidth]);
+		const resizedImage = tf.image.resizeBilinear(imageTensor, [newWidth, desiredHeight]);
 		imageTensor.dispose();
 		const loadedImage = resizedImage.toFloat().div(tf.scalar(255)).expandDims();
 		resizedImage.dispose();
