@@ -114,7 +114,7 @@ module.exports = class TweetCommand extends Command {
 			const verified = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', `${userData.checkType}.png`)
 			);
-			ctx.drawImage(verified, 80 + nameLen + 3, 90, 20, 20);
+			ctx.drawImage(verified, 80 + nameLen + 3, 89, 20, 20);
 		}
 		if (userData.label) {
 			const labelData = await request.get(userData.label);
@@ -128,7 +128,7 @@ module.exports = class TweetCommand extends Command {
 			this.roundedPath(labelCtx, 3, 2, 2, 20, 20);
 			labelCtx.clip();
 			labelCtx.drawImage(labelImg, 2, 2, 20, 20);
-			ctx.drawImage(labelCanvas, 80 + nameLen + 3 + 20 + 3, 90, 20, 20);
+			ctx.drawImage(labelCanvas, 80 + nameLen + 3 + 20 + 3, 89, 20, 20);
 		}
 		ctx.font = this.client.fonts.get('ChirpRegular.ttf').toCanvasString(17);
 		ctx.fillStyle = '#71767b';
