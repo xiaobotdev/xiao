@@ -35,6 +35,7 @@ module.exports = class EnslavedCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
+					avatarSize: 256,
 					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 256 })
 				}
 			]

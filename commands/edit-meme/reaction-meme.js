@@ -33,6 +33,7 @@ module.exports = class ReactionMemeCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
+					avatarSize: 1024,
 					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 1024 })
 				}
 			]

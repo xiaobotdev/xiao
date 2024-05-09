@@ -21,7 +21,8 @@ module.exports = class ReadQRCodeCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					type: 'image-or-avatar'
+					type: 'image-or-avatar',
+					avatarSize: 256
 				}
 			]
 		});

@@ -30,7 +30,8 @@ module.exports = class ThugLifeCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
-					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 2048 })
+					avatarSize: 512,
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512 })
 				}
 			]
 		});

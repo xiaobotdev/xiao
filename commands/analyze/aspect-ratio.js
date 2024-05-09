@@ -18,7 +18,8 @@ module.exports = class AspectRatioCommand extends Command {
 			args: [
 				{
 					key: 'image',
-					type: 'image-or-avatar'
+					type: 'image-or-avatar',
+					avatarSize: 256
 				}
 			]
 		});
