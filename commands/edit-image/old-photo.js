@@ -33,6 +33,7 @@ module.exports = class OldPhotoCommand extends Command {
 		const data = await loadImage(body);
 		const canvas = createCanvas(data.width, data.height);
 		const ctx = canvas.getContext('2d');
+		ctx.drawImage(data);
 		vignette(ctx, data.width, data.height);
 		sepia(ctx, 0, 0, data.width, data.height);
 		grain(ctx, 0, 0, data.width, data.height);
