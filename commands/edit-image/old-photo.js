@@ -91,17 +91,31 @@ module.exports = class OldPhotoCommand extends Command {
 
 	wrinkles(ctx, width, height, count = 10) {
 		for (let i = 0; i < count; i++) {
-			const xStart = Math.random() * width;
-			const xEnd = (xStart + (Math.random() * width)) - xStart;
-			const y = Math.random() * height;
+			const startX = Math.random() * width;
+			const startY = Math.random() * height;
+			const endX = startX + ((Math.random() * width) - startX) * 0.5;
+			const endY = startY + ((Math.random() * 30) - 15);
+			const controlX1 = startX + ((endX - startX) * 0.3) + ((Math.random() * 20) - 10);
+			const controlY1 = startY + ((Math.random() * 50) - 25);
+			const controlX2 = startX + ((endX - startX) * 0.6) + ((Math.random() * 20) - 10);
+			const controlY2 = startY + ((Math.random() * 50) - 25);
 			ctx.beginPath();
-			ctx.moveTo(xStart, y);
-			for (let x = xStart; x < xEnd; x += 10) {
-				const sway = (Math.random() - 0.5) * 20;
-				ctx.lineTo(x, y + sway);
-			}
-			ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
-			ctx.lineWidth = 1;
+			ctx.moveTo(startX, startY);
+			ctx.bezierCurveTo(controlX1, controlY1, controlX2, controlY2, endX, endY);
+			ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
+			ctx.lineWidth = 1 + Math.random();
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(startX, startY + 2);
+			ctx.bezierCurveTo(controlX1, controlY1 + 2, controlX2, controlY2 + 2, endX, endY + 2);
+			ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+			ctx.lineWidth = 2 + Math.random();
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(startX, startY - 2);
+			ctx.bezierCurveTo(controlX1, controlY1 - 2, controlX2, controlY2 - 2, endX, endY - 2);
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+			ctx.lineWidth = 2 + Math.random();
 			ctx.stroke();
 		}
 		return ctx;
