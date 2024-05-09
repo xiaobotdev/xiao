@@ -47,24 +47,22 @@ module.exports = class OldPhotoCommand extends Command {
 		for (let i = 0; i < count; i++) {
 			const x = Math.random() * width;
 			const y = Math.random() * height;
-			const radius = 30 + (Math.random() * 70);
-			const r = 100 + (Math.random() * 55);
-			const g = 85 + (Math.random() * 70);
-			const b = 50 + (Math.random() * 30);
-			const color = `rgba(${r}, ${g}, ${b}, ${0.1 + (Math.random() * 0.4)})`;
+			const radius = 40 + Math.random() * 80;
+			const type = Math.random() > 0.5 ? 'coffee' : 'water';
 			ctx.beginPath();
-			const angleStep = (Math.PI * 2) / 10;
-			for (let angle = 0; angle < Math.PI * 2; angle += angleStep) {
-				const modRadius = radius + (Math.random() * 15);
-				ctx.lineTo(x + (modRadius * Math.cos(angle)), y + (modRadius * Math.sin(angle)));
+			ctx.moveTo(x + radius * 0.6, y);
+			for (let angle = 0; angle < 360; angle += Math.random() * 45) {
+				const angleRad = (angle * Math.PI) / 180;
+				const nextAngleRad = ((angle + Math.random() * 45) * Math.PI) / 180;
+				const arcRadius = radius * (0.6 + Math.random() * 0.4);
+				ctx.arc(x, y, arcRadius, angleRad, nextAngleRad, false);
 			}
 			ctx.closePath();
+			const baseColor = type === 'coffee' ? [101, 67, 33] : [173, 216, 230];
+			const opacity = type === 'coffee' ? 0.6 : 0.3;
 			const gradient = ctx.createRadialGradient(x, y, radius * 0.1, x, y, radius);
-			gradient.addColorStop(0, color);
-			const r2 = 100 + (Math.random() * 55);
-			const g2 = 85 + (Math.random() * 70);
-			const b2 = 50 + (Math.random() * 30);
-			gradient.addColorStop(1, `rgba(${r2}, ${g2}, ${b2}, 0)`);
+			gradient.addColorStop(0, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${opacity})`);
+			gradient.addColorStop(1, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0)`);
 			ctx.fillStyle = gradient;
 			ctx.fill();
 		}
