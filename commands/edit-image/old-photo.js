@@ -38,6 +38,8 @@ module.exports = class OldPhotoCommand extends Command {
 		sepia(ctx, 0, 0, data.width, data.height);
 		grain(ctx, 0, 0, data.width, data.height);
 		this.stains(ctx, data.width, data.height);
+		this.tears(ctx, data.width, data.height);
+		this.wrinkles(ctx, data.width, data.height);
 		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
 		return msg.say({ files: [{ attachment, name: 'old-photo.png' }] });
@@ -65,6 +67,42 @@ module.exports = class OldPhotoCommand extends Command {
 			gradient.addColorStop(1, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0)`);
 			ctx.fillStyle = gradient;
 			ctx.fill();
+		}
+		return ctx;
+	}
+
+	tears(ctx, width, height, count = 3) {
+		for (let i = 0; i < count; i++) {
+			const x = Math.random() * width * 0.8 + width * 0.1;
+			const yStart = Math.random() * height;
+			const yEnd = yStart + (Math.random() * 50) + 20;
+			ctx.beginPath();
+			ctx.moveTo(x, yStart);
+			for (let y = yStart; y < yEnd; y += 5) {
+				const sway = (Math.random() - 0.5) * 10;
+				ctx.lineTo(x + sway, y);
+			}
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+			ctx.lineWidth = 2;
+			ctx.stroke();
+		}
+		return ctx;
+	}
+
+	wrinkles(ctx, width, height, count = 10) {
+		for (let i = 0; i < count; i++) {
+			const xStart = Math.random() * width;
+			const xEnd = (xStart + (Math.random() * width)) - xStart;
+			const y = Math.random() * height;
+			ctx.beginPath();
+			ctx.moveTo(xStart, y);
+			for (let x = xStart; x < xEnd; x += 10) {
+				const sway = (Math.random() - 0.5) * 20;
+				ctx.lineTo(x, y + sway);
+			}
+			ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+			ctx.lineWidth = 1;
+			ctx.stroke();
 		}
 		return ctx;
 	}
