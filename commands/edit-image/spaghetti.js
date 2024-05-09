@@ -19,6 +19,14 @@ module.exports = class SpaghettiCommand extends Command {
 				duration: 120
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
+			credit: [
+				{
+					name: 'reiinakano',
+					url: 'https://github.com/reiinakano',
+					reason: 'Tensorflow Models',
+					reasonURL: 'https://github.com/reiinakano/arbitrary-image-stylization-tfjs/'
+				}
+			],
 			args: [
 				{
 					key: 'image',
