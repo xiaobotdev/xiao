@@ -84,7 +84,7 @@ module.exports = class JeopardyCommand extends Command {
 		for (let i = 0; i < lines.length; i++) {
 			const height = topMost + ((52 + 20) * i);
 			ctx.fillStyle = 'black';
-			ctx.fillText(lines[i], (canvas.width / 2) + 6, height + 6);
+			ctx.fillText(lines[i], (canvas.width / 2) + 3, height + 3);
 			ctx.fillStyle = 'white';
 			ctx.fillText(lines[i], canvas.width / 2, height);
 		}
