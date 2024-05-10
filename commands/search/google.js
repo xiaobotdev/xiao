@@ -27,7 +27,7 @@ module.exports = class GoogleCommand extends Command {
 	}
 
 	async run(msg, { query }) {
-		const results = await google.search(query, {
+		const { results } = await google.search(query, {
 			page: 0,
 			safe: !msg.channel.nsfw,
 			parse_ads: false,
