@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 const { reactIfAble } = require('../../util/Util');
 const { wrapText } = require('../../util/Canvas');
@@ -33,6 +33,12 @@ module.exports = class JeopardyCommand extends Command {
 					url: 'http://opti.netii.net/',
 					reason: 'Korinna Agency Font',
 					reasonURL: 'https://fontmeme.com/fonts/korinna-agency-font/'
+				},
+				{
+					name: 'DrewManDew',
+					url: 'https://www.deviantart.com/drewmandew/gallery',
+					reason: 'Blank Background Image',
+					reasonURL: 'https://www.deviantart.com/drewmandew/art/Blank-Jeopardy-Screen-780893853'
 				}
 			]
 		});
@@ -40,7 +46,7 @@ module.exports = class JeopardyCommand extends Command {
 
 	async run(msg) {
 		const question = await this.fetchQuestion();
-		const clueCard = this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
+		const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
 		const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
 		let playing = false;
 		if (msg.guild && connection && connection.canPlay) {
@@ -70,11 +76,11 @@ module.exports = class JeopardyCommand extends Command {
 		return body;
 	}
 
-	generateClueCard(question) {
+	async generateClueCard(question) {
+		const bg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'jeopardy.png'));
 		const canvas = createCanvas(1280, 720);
 		const ctx = canvas.getContext('2d');
-		ctx.fillStyle = '#030e78';
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		ctx.drawImage(bg, 0, 0);
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		ctx.fillStyle = 'white';

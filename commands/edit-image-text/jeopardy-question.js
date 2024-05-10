@@ -25,6 +25,12 @@ module.exports = class JeopardyQuestionCommand extends Command {
 					url: 'http://opti.netii.net/',
 					reason: 'Korinna Agency Font',
 					reasonURL: 'https://fontmeme.com/fonts/korinna-agency-font/'
+				},
+				{
+					name: 'DrewManDew',
+					url: 'https://www.deviantart.com/drewmandew/gallery',
+					reason: 'Blank Background Image',
+					reasonURL: 'https://www.deviantart.com/drewmandew/art/Blank-Jeopardy-Screen-780893853'
 				}
 			],
 			args: [
@@ -37,8 +43,8 @@ module.exports = class JeopardyQuestionCommand extends Command {
 		});
 	}
 
-	run(msg, { text }) {
-		const attachment = this.client.registry.commands.get('jeopardy').generateClueCard(text);
+	async run(msg, { text }) {
+		const attachment = await this.client.registry.commands.get('jeopardy').generateClueCard(text);
 		return msg.say({ files: [{ attachment, name: 'jeopardy-question.png' }] });
 	}
 };
