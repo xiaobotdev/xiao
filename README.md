@@ -107,7 +107,7 @@ things, I'm not taking any chances.
 19. Start Xiao up!
 
 ## Commands
-Total: 512
+Total: 513
 
 ### Utility:
 
@@ -273,6 +273,7 @@ Total: 512
 * **define:** Defines a word.
 * **frinkiac:** Input a line from the Simpsons to get the episode/season.
 * **github:** Responds with information on a GitHub repository.
+* **google:** Searches Google.
 * **google-autofill:** Responds with a list of the Google Autofill results for a particular query.
 * **gravatar:** Responds with the Gravatar for an email.
 * **http-cat:** Responds with a cat for an HTTP status code.
@@ -703,6 +704,7 @@ Total: 512
 * [font-finder](https://www.npmjs.com/package/font-finder)
 * [gifencoder](https://www.npmjs.com/package/gifencoder)
 * [gm](https://www.npmjs.com/package/gm)
+* [googlethis](https://www.npmjs.com/package/googlethis)
 * [html-entities](https://www.npmjs.com/package/html-entities)
 * [image-to-ascii](https://www.npmjs.com/package/image-to-ascii)
 * [ioredis](https://www.npmjs.com/package/ioredis)
@@ -901,6 +903,8 @@ Total: 512
    - [Frinkiac](https://frinkiac.com/) (API)
 * **github:**
    - [GitHub](https://github.com/) ([API](https://developer.github.com/v3/))
+* **google:**
+   - [Google](https://www.google.com/) (Search Results)
 * **google-autofill:**
    - [Google](https://www.google.com/) (Autofill API)
 * **gravatar:**
