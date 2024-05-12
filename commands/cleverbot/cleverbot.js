@@ -29,7 +29,7 @@ module.exports = class CleverbotCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		if (this.client.cleverbots.has(msg.channel.id)) {
+		if (this.client.cleverbots.has(msg.channel.id) && !text) {
 			return msg.say('There is already a Cleverbot conversation in this channel.');
 		}
 		const cleverbot = new Cleverbot(this.client, msg.channel.id, msg.author.id);
