@@ -303,15 +303,15 @@ client.on('messageCreate', async msg => {
 		msg.channel.sendTyping().catch(() => null);
 		try {
 			const response = await cleverbot.respond(msg.cleanContent);
-			await msg.channel.send(response);
+			await msg.reply(response);
 			return;
 		} catch (err) {
 			if (err.status === 503) {
-				await msg.channel.send('Monthly API limit reached. Ending conversation.');
+				await msg.reply('Monthly API limit reached. Ending conversation.');
 				client.cleverbots.delete(msg.channel.id);
 				return;
 			}
-			await msg.channel.send('Sorry, blacked out there for a second. Come again?');
+			await msg.reply('Sorry, blacked out there for a second. Come again?');
 			return;
 		}
 	}
