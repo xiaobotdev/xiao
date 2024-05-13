@@ -30,11 +30,12 @@ module.exports = class YodaCommand extends Command {
 	async run(msg, { message }) {
 		const data = new URLSearchParams();
 		data.append('YodaMe', message);
+		data.append('go', 'Convert+to+Yoda+Speak!');
 		const { text } = await request
-			.post('http://yodaspeak.co.uk/index.php')
+			.post('http://yodaspeak.co.uk/index.php#mainform')
 			.send(data, true)
 			.set({ 'Content-Type': 'application/x-www-form-urlencoded' });
 		const $ = cheerio.load(text);
-		return msg.say($('textarea[name="YodaSpeak"]').first().text().trim());
+		return msg.say($('textarea[name=\'YodaSpeak\']').first().text().trim());
 	}
 };
