@@ -32,7 +32,7 @@ module.exports = class YodaCommand extends Command {
 		data.append('YodaMe', message);
 		data.append('go', 'Convert+to+Yoda+Speak!');
 		const { text } = await request
-			.post('http://yodaspeak.co.uk/index.php#mainform')
+			.post('https://yodaspeak.co.uk/index.php#mainform')
 			.send(data, true)
 			.set({ 'Content-Type': 'application/x-www-form-urlencoded' });
 		const $ = cheerio.load(text);
