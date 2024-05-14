@@ -68,7 +68,7 @@ module.exports = class WikipediaCommand extends Command {
 			fact += ' ';
 		}
 		const url = `https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`;
-		face += embedURL('Read more...', url);
+		fact += embedURL('Read more...', url);
 		const embed = new EmbedBuilder()
 			.setColor(0xE7E7E7)
 			.setTitle(data.title)
