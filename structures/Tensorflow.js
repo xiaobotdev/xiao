@@ -29,7 +29,7 @@ module.exports = class Tensorflow {
 
 	async loadStyleModel() {
 		const model = await tf.loadGraphModel(
-			url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'style_js', 'model.json')).href
+			url.pathToFileURL(path.join(__dirname, '..', 'assets', 'tensorflow', 'style_js', 'model.json')).href
 		);
 		this.styleModel = model;
 		return this.styleModel;
@@ -37,7 +37,7 @@ module.exports = class Tensorflow {
 
 	async loadTransformerModel() {
 		const model = await tf.loadGraphModel(
-			url.pathToFileURL(path.join(__dirname, '..', 'tf_models', 'transformer_js', 'model.json')).href
+			url.pathToFileURL(path.join(__dirname, '..', 'assets', 'tensorflow', 'transformer_js', 'model.json')).href
 		);
 		this.transformerModel = model;
 		return this.transformerModel;
