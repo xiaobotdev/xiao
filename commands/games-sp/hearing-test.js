@@ -19,7 +19,6 @@ module.exports = class HearingTestCommand extends Command {
 			},
 			guildOnly: true,
 			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
-			game: true,
 			credit: [
 				{
 					name: 'Noise addicts',
