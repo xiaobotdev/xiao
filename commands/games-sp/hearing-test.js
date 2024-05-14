@@ -41,6 +41,7 @@ module.exports = class HearingTestCommand extends Command {
 		let range;
 		let previousAge = 'all';
 		let previousRange = 8;
+		connection.lock();
 		const gameMsg = await msg.say('Here\'s the first sound. Listen carefully!');
 		let buttonPress;
 		for (const { age: dataAge, khz, file } of data) {
@@ -79,6 +80,7 @@ module.exports = class HearingTestCommand extends Command {
 				components: []
 			});
 		}
+		connection.unlock();
 		if (age === 'all') {
 			return gameMsg.edit({
 				content: 'Everyone should be able to hear that. You cannot hear.',
