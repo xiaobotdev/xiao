@@ -5,6 +5,7 @@ module.exports = class VoiceDispatcher {
 		this.channel = channel;
 		this.player = createAudioPlayer();
 		getVoiceConnection(channel.guild.id).subscribe(this.player);
+		this.locked = false;
 	}
 
 	play(content) {
@@ -33,6 +34,16 @@ module.exports = class VoiceDispatcher {
 		return this.player.unpause();
 	}
 
+	lock() {
+		this.locked = true;
+		return this.locked;
+	}
+
+	unlock() {
+		this.locked = false;
+		return this.locked;
+	}
+
 	get connection() {
 		return getVoiceConnection(this.guild.id);
 	}
@@ -46,6 +57,6 @@ module.exports = class VoiceDispatcher {
 	}
 
 	get canPlay() {
-		return this.player.state.status === AudioPlayerStatus.Idle;
+		return this.player.state.status === AudioPlayerStatus.Idle && !this.locked;
 	}
 };
