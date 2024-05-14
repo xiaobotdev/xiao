@@ -1,6 +1,7 @@
 const Command = require('../../framework/Command');
 const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
+const { embedURL } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 
 module.exports = class WikipediaCommand extends Command {
@@ -67,7 +68,7 @@ module.exports = class WikipediaCommand extends Command {
 			fact += ' ';
 		}
 		const url = `https://en.wikipedia.org/wiki/${encodeURIComponent(query).replaceAll(')', '%29')}`;
-		fact += `[Read more...](${url})`;
+		face += embedURL('Read more...', url);
 		const embed = new EmbedBuilder()
 			.setColor(0xE7E7E7)
 			.setTitle(data.title)

@@ -125,7 +125,7 @@ module.exports = class MangaCommand extends Command {
 			.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
 			.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
 			.addField('❯ External Links', manga.externalLinks.length
-				? manga.externalLinks.map(link => `[${link.site}](${link.url})`).join(', ')
+				? manga.externalLinks.map(link => embedURL(link.site, link.url)).join(', ')
 				: 'None');
 		return msg.embed(embed);
 	}
