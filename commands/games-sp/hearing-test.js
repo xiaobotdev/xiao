@@ -45,7 +45,7 @@ module.exports = class HearingTestCommand extends Command {
 		let buttonPress;
 		for (const { age: dataAge, khz, file } of data) {
 			connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'hearing-test', file));
-			await delay(8000);
+			await delay(6000);
 			const rows = new ActionRowBuilder().addComponents(
 				new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
 				new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
