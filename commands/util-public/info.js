@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const { EmbedBuilder, version: djsVersion, PermissionFlagsBits } = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
+const os = require('os');
 const { formatNumber, embedURL } = require('../../util/Util');
 const { version } = require('../../package');
 const copyright = require('../../assets/json/copyright');
@@ -37,7 +38,7 @@ module.exports = class InfoCommand extends Command {
 			.addField('❯ Version', `v${version}`, true)
 			.addField('❯ Node.js', process.version, true)
 			.addField('❯ Discord.js', `v${djsVersion}`, true)
-			.addField('❯ Framework', 'Custom', true);
+			.addField('❯ OS', os.platform(), true);
 		return msg.embed(embed);
 	}
 };
