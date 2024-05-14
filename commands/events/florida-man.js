@@ -4,7 +4,7 @@ const { stripIndents } = require('common-tags');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { decode: decodeHTML } = require('html-entities');
-const { firstUpperCase } = require('../../util/Util');
+const { firstUpperCase, embedURL } = require('../../util/Util');
 const { months } = require('../../assets/json/month');
 
 module.exports = class FloridaManCommand extends Command {
@@ -48,7 +48,7 @@ module.exports = class FloridaManCommand extends Command {
 		return msg.say(stripIndents`
 			**${article.title}**
 			${firstUpperCase(months[month - 1])} ${day} — ${article.firstLine}
-			[Read more...](<https://floridamanbirthday.org/${months[month - 1]}-${day}>)
+			${embedURL('Read more...', `<https://floridamanbirthday.org/${months[month - 1]}-${day}>`)}
 		`, { files: [article.image] });
 	}
 

@@ -2,6 +2,7 @@ const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { EmbedBuilder } = require('discord.js');
 const { stripIndents } = require('common-tags');
+const { embedURL } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 
 module.exports = class MagicCommand extends Command {
@@ -75,8 +76,8 @@ module.exports = class MagicCommand extends Command {
 			embed.addField('❯ Loyalty', card.loyalty);
 		}
 		embed.addField('❯ Price', stripIndents`
-			**Non-Foil:** [${card.prices.usd ? `$${card.prices.usd}` : '???'}](${card.purchase_uris.tcgplayer})
-			**Foil:** [${card.prices.usd_foil ? `$${card.prices.usd_foil}` : '???'}](${card.purchase_uris.tcgplayer})
+			**Non-Foil:** ${embedURL(card.prices.usd ? `$${card.prices.usd}` : '???', card.purchase_uris.tcgplayer)}
+			**Foil:** ${embedURL(card.prices.usd_foil ? `$${card.prices.usd_foil}` : '???', card.purchase_uris.tcgplayer)}
 		`);
 		return msg.embed(embed);
 	}

@@ -1,6 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const sagiri = require('sagiri');
+const { embedURL } = require('../../util/Util');
 const { SAUCENAO_KEY } = process.env;
 const sagiriClient = sagiri(SAUCENAO_KEY);
 const fs = require('fs');
@@ -58,7 +59,9 @@ module.exports = class XiaoCommand extends Command {
 			if (data && data[0].similarity > 90) {
 				result = '';
 				const sauce = data[0];
-				if (sauce.authorName && sauce.authorUrl) result += `Art by [${sauce.authorName}](<${sauce.authorUrl}>) | `;
+				if (sauce.authorName && sauce.authorUrl) {
+					result += `Art by ${embedURL(sauce.authorName, `<${sauce.authorUrl}>`)} | `;
+				}
 				if (sauce.authorName && !sauce.authorUrl) result += `Art by ${sauce.authorName} | `;
 				result += `Art Source: <${sauce.url}>`;
 			}

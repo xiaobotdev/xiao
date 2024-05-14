@@ -132,7 +132,7 @@ module.exports = class AnimeCommand extends Command {
 			.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
 			.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
 			.addField('❯ External Links', anime.externalLinks.length
-				? anime.externalLinks.map(link => `[${link.site}](${link.url})`).join(', ')
+				? anime.externalLinks.map(link => embedURL(link.site, link.url)).join(', ')
 				: 'None');
 		return msg.embed(embed);
 	}

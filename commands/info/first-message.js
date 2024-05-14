@@ -1,5 +1,6 @@
 const Command = require('../../framework/Command');
 const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
+const { embedURL } = require('../../util/Util');
 
 module.exports = class FirstMessageCommand extends Command {
 	constructor(client) {
@@ -33,7 +34,7 @@ module.exports = class FirstMessageCommand extends Command {
 			.setDescription(message.content || 'No content.')
 			.setTimestamp(message.createdAt)
 			.setFooter({ text: `ID: ${message.id}` })
-			.addField('❯ Jump', `[Click Here to Jump](${message.url})`);
+			.addField('❯ Jump', embedURL('Click Here to Jump', message.url));
 		return msg.embed(embed);
 	}
 };

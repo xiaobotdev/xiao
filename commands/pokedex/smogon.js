@@ -1,5 +1,6 @@
 const Command = require('../../framework/Command');
 const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
+const { embedURL } = require('../../util/Util');
 const genGames = [null, 'rb', 'gs', 'rs', 'dp', 'bw', 'xy', 'sm', 'ss', 'sv'];
 const games = {
 	rb: 'Red/Blue',
@@ -71,7 +72,8 @@ module.exports = class SmogonCommand extends Command {
 			})
 			.setThumbnail(pokemon.spriteImageURL);
 		for (const game of fetchGames) {
-			embed.addField(`❯ ${games[game]}`, `[${pokemon.smogonTiers[game].join('/')}](${pokemon.smogonURL(game)})`, true);
+			const tiers = pokemon.smogonTiers[game];
+			embed.addField(`❯ ${games[game]}`, embedURL(tiers.join('/'), pokemon.smogonURL(game)), true);
 		}
 		if (fetchGames.length % 3 !== 0 && fetchGames.length > 3) {
 			for (let i = 0; i < 3 - (fetchGames.length % 3); i++) {
