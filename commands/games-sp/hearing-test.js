@@ -51,7 +51,7 @@ module.exports = class HearingTestCommand extends Command {
 				new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
 				new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
 			);
-			await gameMsg.edit('Did you hear that sound?', { components: [rows] });
+			await gameMsg.edit({ content: 'Did you hear that sound?', components: [rows] });
 			try {
 				buttonPress = await gameMsg.awaitMessageComponent({
 					filter: res => res.user.id === msg.author.id,
