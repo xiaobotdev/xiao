@@ -80,13 +80,13 @@ module.exports = class HearingTestCommand extends Command {
 			});
 		}
 		if (age === 'all') {
-			return buttonPress.update({
+			return gameMsg.edit({
 				content: 'Everyone should be able to hear that. You cannot hear.',
 				components: []
 			});
 		}
 		if (age === 'max') {
-			return buttonPress.update({
+			return gameMsg.edit({
 				content: stripIndents`
 					You can hear any frequency of which a human is capable.
 					The maximum frequency you were able to hear was **${range}000hz**.
@@ -94,7 +94,7 @@ module.exports = class HearingTestCommand extends Command {
 				components: []
 			});
 		}
-		return buttonPress.update({
+		return gameMsg.edit({
 			content: stripIndents`
 				You have the hearing of someone **${Number.parseInt(age, 10) + 1} or older**.
 				The maximum frequency you were able to hear was **${range}000hz**.
