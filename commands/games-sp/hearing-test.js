@@ -67,9 +67,9 @@ module.exports = class HearingTestCommand extends Command {
 				range = previousRange;
 				break;
 			}
-			if (buttonPress.customId !== 'true' && file === data[data.length - 1].file) {
-				age = previousAge;
-				range = previousRange;
+			if (file === data[data.length - 1].file) {
+				age = dataAge;
+				range = khz;
 				break;
 			}
 			previousAge = dataAge;
