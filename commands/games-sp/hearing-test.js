@@ -56,7 +56,7 @@ module.exports = class HearingTestCommand extends Command {
 				buttonPress = await gameMsg.awaitMessageComponent({
 					filter: res => res.user.id === msg.author.id,
 					max: 1,
-					time: 120000
+					time: 30000
 				});
 				if (buttonPress.customId === 'false') {
 					age = previousAge;
