@@ -16,7 +16,7 @@ module.exports = class Tensorflow {
 	}
 
 	async loadNSFWJS() {
-		const nsfwjs = await nsfw.load();
+		const nsfwjs = await nsfw.load('MobileNetV2');
 		this.nsfwjs = nsfwjs;
 		return this.nsfwjs;
 	}
