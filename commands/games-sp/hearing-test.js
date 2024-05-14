@@ -1,8 +1,8 @@
 const Command = require('../../framework/Command');
-const { PermissionFlagsBits } = require('discord.js');
+const { PermissionFlagsBits, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const path = require('path');
 const { stripIndents } = require('common-tags');
-const { delay, verify } = require('../../util/Util');
+const { delay } = require('../../util/Util');
 const data = require('../../assets/json/hearing-test');
 
 module.exports = class HearingTestCommand extends Command {
@@ -42,29 +42,65 @@ module.exports = class HearingTestCommand extends Command {
 		let range;
 		let previousAge = 'all';
 		let previousRange = 8;
+		const gameMsg = await msg.say('Here\'s the first sound. Listen carefully!');
+		let buttonPress;
 		for (const { age: dataAge, khz, file } of data) {
 			connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'hearing-test', file));
 			await delay(3500);
-			await msg.reply('Did you hear that sound? Reply with **[y]es** or **[n]o**.');
-			const heard = await verify(msg.channel, msg.author);
-			if (!heard || file === data[data.length - 1].file) {
+			const rows = new ActionRowBuilder().addComponents(
+				new ButtonBuilder().setCustomId('true').setLabel('Yes').setStyle(ButtonStyle.Success),
+				new ButtonBuilder().setCustomId('false').setLabel('No').setStyle(ButtonStyle.Danger)
+			);
+			await gameMsg.edit('Did you hear that sound?', { components: [rows] });
+			try {
+				buttonPress = await gameMsg.awaitMessageComponent({
+					filter: res => res.user.id === msg.author.id,
+					max: 1,
+					time: 120000
+				});
+				if (buttonPress.customId === 'false') {
+					age = previousAge;
+					range = previousRange;
+					break;
+				}
+			} catch {
+				age = previousAge;
+				range = previousRange;
+				break;
+			}
+			if (buttonPress.customId !== 'true' && file === data[data.length - 1].file) {
 				age = previousAge;
 				range = previousRange;
 				break;
 			}
 			previousAge = dataAge;
 			previousRange = khz;
+			await buttonPress.update({
+				content: 'Great! Here\'s the next one, listen carefully!',
+				components: []
+			});
 		}
-		if (age === 'all') return msg.reply('Everyone should be able to hear that. You cannot hear.');
+		if (age === 'all') {
+			return buttonPress.update({
+				content: 'Everyone should be able to hear that. You cannot hear.',
+				components: []
+			});
+		}
 		if (age === 'max') {
-			return msg.reply(stripIndents`
-				You can hear any frequency of which a human is capable.
-				The maximum frequency you were able to hear was **${range}000hz**.
-			`);
+			return buttonPress.update({
+				content: stripIndents`
+					You can hear any frequency of which a human is capable.
+					The maximum frequency you were able to hear was **${range}000hz**.
+				`,
+				components: []
+			});
 		}
-		return msg.reply(stripIndents`
-			You have the hearing of someone **${Number.parseInt(age, 10) + 1} or older**.
-			The maximum frequency you were able to hear was **${range}000hz**.
-		`);
+		return buttonPress.update({
+			content: stripIndents`
+				You have the hearing of someone **${Number.parseInt(age, 10) + 1} or older**.
+				The maximum frequency you were able to hear was **${range}000hz**.
+			`,
+			components: []
+		});
 	}
 };
