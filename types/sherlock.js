@@ -15,4 +15,8 @@ module.exports = class SherlockType extends Argument {
 	parse(value) {
 		return sherlock.parse(value);
 	}
+
+	example() {
+		return 'sleep 1 hour';
+	}
 };

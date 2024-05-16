@@ -15,4 +15,8 @@ module.exports = class UrlType extends Argument {
 		if (!validURL.isWebUri(value)) return new URL(`http://${value}`);
 		return new URL(value);
 	}
+
+	example() {
+		return '<https://discord.com>';
+	}
 };

@@ -15,6 +15,7 @@ module.exports = class Argument {
 		this.default = typeof options.default === 'undefined' ? null : options.default;
 		this.infinite = Boolean(options.infinite);
 		this.avatarSize = typeof options.avatarSize === 'undefined' ? 2048 : options.avatarSize;
+		this.examples = typeof options.examples === 'undefined' ? null : options.examples;
 		this.validator = typeof options.validate === 'undefined' ? null : options.validate;
 		this.parser = typeof options.parse === 'undefined' ? null : options.parse;
 		this.emptyChecker = typeof options.isEmpty === 'undefined' ? null : options.isEmpty;
@@ -38,6 +39,11 @@ module.exports = class Argument {
 	isEmpty(val, msg, arg) {
 		if (this.emptyChecker) return this.emptyChecker(val, msg, arg);
 		return this.type.isEmpty(val, msg, arg);
+	}
+
+	example(msg, arg) {
+		if (this.examples) return this.examples[Math.floor(Math.random() * this.examples.length)];
+		return this.type.example(msg, arg);
 	}
 
 	get invalidText() {

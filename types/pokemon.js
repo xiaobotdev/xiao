@@ -1,4 +1,5 @@
 const Argument = require('../framework/ArgumentType');
+const examples = ['Pikachu', 'Bulbasaur', 'Victini', 'Flygon'];
 
 module.exports = class PokemonArgument extends Argument {
 	constructor(client) {
@@ -13,5 +14,10 @@ module.exports = class PokemonArgument extends Argument {
 
 	parse(value) {
 		return this.client.pokemon.fetch(value);
+	}
+
+	example() {
+		if (this.client.pokemon.size) return this.client.pokemon.random().name;
+		return examples[Math.floor(Math.random() * examples.length)];
 	}
 };

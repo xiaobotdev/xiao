@@ -37,4 +37,9 @@ module.exports = class TimezoneType extends Argument {
 		}
 		return null;
 	}
+
+	example() {
+		const zones = moment.tz.names();
+		return zones[Math.floor(Math.random() * zones.length)];
+	}
 };

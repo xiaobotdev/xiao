@@ -21,4 +21,8 @@ module.exports = class MonthArgument extends Argument {
 		if (shorthand.includes(value.toLowerCase())) return shorthand.indexOf(value.toLowerCase()) + 1;
 		return null;
 	}
+
+	example() {
+		return months[Math.floor(Math.random() * months.length)];
+	}
 };

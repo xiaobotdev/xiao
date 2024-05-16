@@ -1,4 +1,5 @@
 const ArgumentType = require('../ArgumentType');
+const { randomRange } = require('../../util/Util');
 
 module.exports = class FloatArgumentType extends ArgumentType {
 	constructor(client) {
@@ -16,5 +17,12 @@ module.exports = class FloatArgumentType extends ArgumentType {
 
 	parse(val) {
 		return Number.parseFloat(val);
+	}
+
+	example(msg, arg) {
+		if (arg.oneOf) return arg.oneOf[Math.floor(Math.random() * arg.oneOf.length)];
+		const min = arg.min || 0;
+		const max = arg.max || 1000;
+		return randomRange(min, max);
 	}
 };

@@ -49,6 +49,17 @@ module.exports = class Command {
 		return `\`${this.client.commandPrefix}${this.name}${args}\` or \`@${this.client.user.tag} ${this.name}${args}\``;
 	}
 
+	example(msg) {
+		const args = this.args.map((arg, i) => {
+			const example = arg.example(msg, arg);
+			if (i !== args.length - 1 && example.includes(' ')) {
+				return `"${example}"`;
+			}
+			return example;
+		});
+		return `${this.client.commandPrefix}${this.name} ${args.join(' ')}`;
+	}
+
 	disable() {
 		this._enabled = false;
 	}

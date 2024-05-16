@@ -28,6 +28,11 @@ module.exports = class RoleArgumentType extends ArgumentType {
 		if (exactRoles.size === 1) return exactRoles.first();
 		return null;
 	}
+
+	example(msg) {
+		if (!msg.guild) return 'Administrator';
+		return msg.guild.roles.cache.random().name;
+	}
 };
 
 function nameFilterExact(search) {

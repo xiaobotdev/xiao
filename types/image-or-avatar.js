@@ -22,4 +22,8 @@ module.exports = class ImageOrAvatarArgument extends Argument {
 		return this.client.registry.types.get('image').isEmpty(value, msg, arg)
 			&& this.client.registry.types.get('user').isEmpty(value, msg, arg);
 	}
+
+	example(msg, arg) {
+		return this.client.registry.types.get('user').example(msg, arg);
+	}
 };

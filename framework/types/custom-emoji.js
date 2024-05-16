@@ -29,6 +29,11 @@ module.exports = class CustomEmojiArgumentType extends ArgumentType {
 		if (exactEmojis.size === 1) return exactEmojis.first();
 		return null;
 	}
+
+	example(msg) {
+		if (msg.guild && msg.guild.emojis.cache.size) return msg.guild.emojis.cache.random().toString();
+		return this.client.emojis.cache.random().toString();
+	}
 };
 
 function nameFilterExact(search) {

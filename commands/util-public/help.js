@@ -75,6 +75,7 @@ module.exports = class HelpCommand extends Command {
 			cmdHelpText += `**Flags:**\n${flags}\n`;
 		}
 		cmdHelpText += `**Format:** ${command.usage()}\n`;
+		cmdHelpText += `**Example:** ${command.example(msg)}\n`;
 		if (command.aliases.length) cmdHelpText += `**Aliases:** ${command.aliases.join(', ')}\n`;
 		cmdHelpText += `**Group:** ${command.group.name}\n`;
 		return msg.say(cmdHelpText);

@@ -34,4 +34,8 @@ module.exports = class FontArgument extends Argument {
 		if (foundExact.size === 1) return foundExact.first();
 		return null;
 	}
+
+	example() {
+		return this.client.fonts.random().filenameNoExt;
+	}
 };
