@@ -74,7 +74,12 @@ module.exports = class CommandClient extends Client {
 		const parsed = await this.dispatcher.parseMessage(msg);
 		if (parsed.error) {
 			const helpUsage = this.registry.commands.get('help').usage(parsed.command.name);
-			await msg.reply(`${parsed.error}\n\nUse ${helpUsage} for more information.`);
+			await msg.reply(stripIndents`
+				${parsed.error}
+
+				Use ${helpUsage} for more information.
+				Example: ${parsed.command.example(msg)}
+			`);
 			return;
 		}
 		const { command, args } = parsed;
