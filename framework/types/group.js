@@ -14,4 +14,8 @@ module.exports = class GroupArgumentType extends ArgumentType {
 	parse(val) {
 		return this.client.registry.findGroups(val).first();
 	}
+
+	example() {
+		return this.client.registry.groups.random().id;
+	}
 };

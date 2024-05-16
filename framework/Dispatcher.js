@@ -59,6 +59,7 @@ module.exports = class CommandDispatcher {
 								error: stripIndents`
 									The "${arg.label || arg.key}" argument is required.
 									${arg.invalidText}
+									Correct Usage Example: ${command.example(msg)}
 								`
 							};
 						}
@@ -75,6 +76,7 @@ module.exports = class CommandDispatcher {
 							error: stripIndents`
 								An invalid value was provided for one of the "${arg.label || arg.key}" arguments.
 								${arg.invalidText}
+								Correct Usage Example: ${command.example(msg)}
 							`
 						};
 					}
@@ -91,6 +93,7 @@ module.exports = class CommandDispatcher {
 						error: stripIndents`
 							The "${arg.label || arg.key}" argument is required.
 							${arg.invalidText}
+							Correct Usage Example: ${command.example(msg)}
 						`
 					};
 				} else {
@@ -107,6 +110,7 @@ module.exports = class CommandDispatcher {
 					error: stripIndents`
 						An invalid value was provided for the "${arg.label || arg.key}" argument.
 						${arg.invalidText}
+						Correct Usage Example: ${command.example(msg)}
 					`
 				};
 			}

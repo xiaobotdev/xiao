@@ -16,4 +16,8 @@ module.exports = class ArgumentType {
 	isEmpty(val) {
 		return !val;
 	}
+
+	example() {
+		return 'moo';
+	}
 };

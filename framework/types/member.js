@@ -36,6 +36,12 @@ module.exports = class MemberArgumentType extends ArgumentType {
 		if (exactMembers.size === 1) return exactMembers.first();
 		return null;
 	}
+
+	example(msg) {
+		if (msg.guild) return msg.guild.members.cache.random().tag;
+		const members = [this.client.user, msg.channel.recipient];
+		return members[Math.floor(Math.random() * members.length)].tag;
+	}
 };
 
 function memberFilterExact(search) {

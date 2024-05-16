@@ -2,6 +2,8 @@ const Argument = require('../framework/ArgumentType');
 const fileTypeRe = /\.(jpe?g|png|gif|jfif|bmp)(\?.+)?$/i;
 const request = require('node-superfetch');
 const validURL = require('valid-url');
+const logos = require('../../assets/json/logos');
+const logoKeys = Object.keys(logos);
 
 module.exports = class ImageArgument extends Argument {
 	constructor(client) {
@@ -40,5 +42,9 @@ module.exports = class ImageArgument extends Argument {
 	isEmpty(value, msg) {
 		if (msg.attachments.size) return false;
 		return !value;
+	}
+
+	example() {
+		return `<${logos[logoKeys[Math.floor(Math.random() * logoKeys.length)]]}>`;
 	}
 };
