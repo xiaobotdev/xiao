@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
-const facts = require('../../assets/json/dog-fact');
 const { THEDOGAPI_KEY } = process.env;
 
 module.exports = class DogCommand extends Command {
@@ -43,7 +42,7 @@ module.exports = class DogCommand extends Command {
 			const { body } = await request.get('https://dog-api.kinduff.com/api/facts');
 			return body.facts[0];
 		} catch {
-			return facts[Math.floor(Math.random() * facts.length)];
+			return 'Dogs are better than cats.';
 		}
 	}
 };
