@@ -20,8 +20,11 @@ module.exports = class StringArgumentType extends ArgumentType {
 	example(msg, arg) {
 		if (arg.oneOf) return arg.oneOf[Math.floor(Math.random() * arg.oneOf.length)];
 		let sentence = '';
-		while (sentence.length <= (arg.min || 50) || sentence.length <= (arg.max ? Math.min(arg.max, 100) : 100)) {
-			const valid = words.filter(word => sentence.length + word.length + 1 <= (arg.max || 100));
+		while (sentence.length <= (arg.max ? Math.min(arg.max, 50) : 50)) {
+			const valid = words.filter(word => {
+				const max = arg.max ? Math.min(arg.max, 50) : 50;
+				return sentence.length + word.length + 1 <= max;
+			});
 			if (!valid.length) break;
 			sentence += ` ${valid[Math.floor(Math.random() * valid.length)]}`;
 		}
