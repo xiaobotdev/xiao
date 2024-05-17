@@ -1,7 +1,6 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
-const facts = require('../../assets/json/cat-fact');
 const { THECATAPI_KEY } = process.env;
 
 module.exports = class CatCommand extends Command {
@@ -43,7 +42,7 @@ module.exports = class CatCommand extends Command {
 			const { body } = await request.get('https://catfact.ninja/fact');
 			return body.fact;
 		} catch {
-			return facts[Math.floor(Math.random() * facts.length)];
+			return 'Cats are better than dogs.';
 		}
 	}
 };
