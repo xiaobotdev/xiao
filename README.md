@@ -75,6 +75,7 @@ things, I'm not taking any chances.
 * `GITHUB_ACCESS_TOKEN` is your access token for GitHub. [Follow these steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) to make one.
 * `GOOGLE_KEY` is your API key for Google, used for the YouTube Data API. You can get one [here](https://console.cloud.google.com/apis/dashboard). You must also [activate the YouTube Data API](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com?q=search).
 * `GOV_KEY` is your API key for NASA. You get get one [here](https://api.nasa.gov/).
+* `IDIOT_URL` is a URL, ideally to the [Wikipedia page of an idiot](https://en.wikipedia.org/wiki/Donald_Trump). By default, it will reply with "_Stares at you._"
 * `SAUCENAO_KEY` is your API key for SauceNAO. Register, login, and click [here](https://saucenao.com/user.php?page=search-api) to get one.
 * `SPOTIFY_KEY` and `SPOTIFY_SECRET` are your key and secret for the Spotify API. You can get one by [following these instructions](https://developer.spotify.com/documentation/web-api).
 * `THECATAPI_KEY` is your API key for The Cat API. You can get one [here](https://thecatapi.com/).
@@ -107,7 +108,7 @@ things, I'm not taking any chances.
 19. Start Xiao up!
 
 ## Commands
-Total: 513
+Total: 514
 
 ### Utility:
 
@@ -235,6 +236,7 @@ Total: 513
 * **give-flower:** Gives Xiao Pai a flower.
 * **hello-world:** Hello world!
 * **hi:** Hello.
+* **idiot:** Sends a link to an idiot.
 * **rickroll:** Sends a link to the "Never Gonna Give You Up" music video.
 * **tableflip:** Flips a table... With animation!
 * **where-is-everybody:** Where is everybody?
