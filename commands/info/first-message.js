@@ -8,7 +8,6 @@ module.exports = class FirstMessageCommand extends Command {
 			name: 'first-message',
 			aliases: ['first-msg'],
 			group: 'info',
-			memberName: 'first-message',
 			description: 'Responds with the first message ever sent to a channel.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			args: [

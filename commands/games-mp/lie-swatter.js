@@ -10,7 +10,6 @@ module.exports = class LieSwatterCommand extends Command {
 		super(client, {
 			name: 'lie-swatter',
 			group: 'games-mp',
-			memberName: 'lie-swatter',
 			description: 'Players are given a fact and must quickly decide if it\'s True or a Lie.',
 			game: true,
 			credit: [

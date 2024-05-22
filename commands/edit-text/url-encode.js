@@ -6,7 +6,6 @@ module.exports = class URLEncodeCommand extends Command {
 			name: 'url-encode',
 			aliases: ['encode-url', 'encode-uri', 'uri-encode', 'encode-uri-component'],
 			group: 'edit-text',
-			memberName: 'url-encode',
 			description: 'Encodes text to URL-friendly characters.',
 			args: [
 				{

@@ -71,7 +71,6 @@ module.exports = class AnimeStaffCommand extends Command {
 			name: 'anime-staff',
 			aliases: ['anilist-staff', 'staff', 'manga-staff', 'ani-staff'],
 			group: 'search',
-			memberName: 'anime-staff',
 			description: 'Searches AniList for your query, getting staff results.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

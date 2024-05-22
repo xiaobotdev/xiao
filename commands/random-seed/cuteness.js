@@ -9,7 +9,6 @@ module.exports = class CutenessCommand extends Command {
 			name: 'cuteness',
 			aliases: ['cute'],
 			group: 'random-seed',
-			memberName: 'cuteness',
 			description: 'Determines a user\'s cuteness.',
 			args: [
 				{

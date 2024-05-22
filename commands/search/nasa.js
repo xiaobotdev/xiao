@@ -9,7 +9,6 @@ module.exports = class NASACommand extends Command {
 		super(client, {
 			name: 'nasa',
 			group: 'search',
-			memberName: 'nasa',
 			description: 'Searches NASA\'s image archive for your query.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

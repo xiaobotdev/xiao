@@ -10,7 +10,6 @@ module.exports = class ClocCommand extends Command {
 		super(client, {
 			name: 'cloc',
 			group: 'util-public',
-			memberName: 'cloc',
 			description: 'Responds with the bot\'s code line count.',
 			guarded: true,
 			clientPermissions: [PermissionFlagsBits.EmbedLinks]

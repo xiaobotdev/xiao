@@ -9,7 +9,6 @@ module.exports = class BoardroomMeetingCommand extends Command {
 			name: 'boardroom-meeting',
 			aliases: ['boardroom-suggestion', 'boardroom'],
 			group: 'edit-meme',
-			memberName: 'boardroom-meeting',
 			description: 'Sends a "Boardroom Meeting" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

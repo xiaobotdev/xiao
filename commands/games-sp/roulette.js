@@ -14,7 +14,6 @@ module.exports = class RouletteCommand extends Command {
 		super(client, {
 			name: 'roulette',
 			group: 'games-sp',
-			memberName: 'roulette',
 			description: 'Play a game of roulette.',
 			args: [
 				{

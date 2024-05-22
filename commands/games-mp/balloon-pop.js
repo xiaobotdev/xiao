@@ -8,7 +8,6 @@ module.exports = class BalloonPopCommand extends Command {
 			name: 'balloon-pop',
 			aliases: ['balloons'],
 			group: 'games-mp',
-			memberName: 'balloon-pop',
 			description: 'Don\'t let yourself be the last one to pump the balloon before it pops!',
 			game: true,
 			credit: [

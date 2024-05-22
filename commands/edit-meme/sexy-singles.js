@@ -11,7 +11,6 @@ module.exports = class SexySinglesCommand extends Command {
 			name: 'sexy-singles',
 			aliases: ['sexy-single', 'singles'],
 			group: 'edit-meme',
-			memberName: 'sexy-singles',
 			description: 'Sends an "Sexy Singles in Your Area" meme with the image of your choice.',
 			nsfw: true,
 			throttling: {

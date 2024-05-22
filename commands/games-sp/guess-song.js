@@ -14,7 +14,6 @@ module.exports = class GuessSongCommand extends Command {
 			name: 'guess-song',
 			aliases: ['song-guess', 'song-game', 'music-guess', 'guess-music', 'music-game'],
 			group: 'games-sp',
-			memberName: 'guess-song',
 			description: 'Guess what song is playing.',
 			throttling: {
 				usages: 2,

@@ -8,7 +8,6 @@ module.exports = class ChuckNorrisCommand extends Command {
 			name: 'chuck-norris',
 			aliases: ['norris'],
 			group: 'random-res',
-			memberName: 'chuck-norris',
 			description: 'Responds with a random Chuck Norris joke.',
 			credit: [
 				{

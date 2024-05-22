@@ -11,7 +11,6 @@ module.exports = class TwentyQuestionsCommand extends Command {
 			name: '20-questions',
 			aliases: ['twenty-questions', '20-q', 'twenty-q'],
 			group: 'games-sp',
-			memberName: '20-questions',
 			description: 'Think of something and 20Q will read your mind by asking a few simple questions.',
 			details: `**Games:** ${list(Object.keys(games))}`,
 			credit: [

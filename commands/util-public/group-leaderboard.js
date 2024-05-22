@@ -8,7 +8,6 @@ module.exports = class GroupLeaderboardCommand extends Command {
 			name: 'group-leaderboard',
 			aliases: ['grp-lb', 'grp-leaderboard', 'group-lb'],
 			group: 'util-public',
-			memberName: 'group-leaderboard',
 			description: 'Responds with the bot\'s most used command groups.',
 			guarded: true,
 			args: [

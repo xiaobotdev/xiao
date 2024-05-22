@@ -12,7 +12,6 @@ module.exports = class GithubCommand extends Command {
 			name: 'github',
 			aliases: ['repo', 'gh', 'github-repo', 'gh-repo'],
 			group: 'search',
-			memberName: 'github',
 			description: 'Responds with information on a GitHub repository.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

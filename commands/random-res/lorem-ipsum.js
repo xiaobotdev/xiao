@@ -9,7 +9,6 @@ module.exports = class LoremIpsumCommand extends Command {
 			name: 'lorem-ipsum',
 			aliases: ['lorem', 'ipsum'],
 			group: 'random-res',
-			memberName: 'lorem-ipsum',
 			description: 'Generates a randomized Lorem Ipsum placeholder text.',
 			args: [
 				{

@@ -9,7 +9,6 @@ module.exports = class ReactionTimeCommand extends Command {
 			name: 'reaction-time',
 			aliases: ['reaction', 'react', 'gunfight-sp', 'sp-gunfight'],
 			group: 'games-sp',
-			memberName: 'reaction-time',
 			description: 'Test your reaction time.',
 			game: true
 		});

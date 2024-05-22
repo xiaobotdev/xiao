@@ -10,7 +10,6 @@ module.exports = class NameRaterCommand extends Command {
 			name: 'name-rater',
 			aliases: ['name-rate', 'rate-name'],
 			group: 'random-seed',
-			memberName: 'name-rater',
 			description: 'Determines a name\'s quality.',
 			credit: [
 				{

@@ -20,7 +20,6 @@ module.exports = class SmogonCommand extends Command {
 			name: 'smogon',
 			aliases: ['pokemon-smogon', 'smogon-tier', 'pokémon-smogon', 'pkmn-smogon'],
 			group: 'pokedex',
-			memberName: 'smogon',
 			description: 'Responds with the Smogon tiers for a Pokémon.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

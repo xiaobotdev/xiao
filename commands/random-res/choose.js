@@ -6,7 +6,6 @@ module.exports = class ChooseCommand extends Command {
 			name: 'choose',
 			aliases: ['pick'],
 			group: 'random-res',
-			memberName: 'choose',
 			description: 'Chooses between options you provide.',
 			args: [
 				{

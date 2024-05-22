@@ -6,7 +6,6 @@ module.exports = class ReloadCommand extends Command {
 			name: 'reload',
 			aliases: ['reload-command', 'reload-cmd'],
 			group: 'util',
-			memberName: 'reload',
 			description: 'Reloads a command.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,

@@ -10,7 +10,6 @@ module.exports = class ICantBelieveCommand extends Command {
 			name: 'i-cant-believe',
 			aliases: ['not-butter', 'i-cant-believe-its-not', 'cant-believe', 'cant-believe-its-not'],
 			group: 'edit-meme',
-			memberName: 'i-cant-believe',
 			description: 'Sends a "I Can\'t believe it\'s not butter!" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

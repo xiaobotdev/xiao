@@ -7,7 +7,6 @@ module.exports = class AxisCultCommand extends Command {
 			name: 'axis-cult',
 			aliases: ['axis', 'axis-pray'],
 			group: 'random-res',
-			memberName: 'axis-cult',
 			description: 'Responds with a teaching of the Axis Cult.',
 			credit: [
 				{

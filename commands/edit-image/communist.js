@@ -11,7 +11,6 @@ module.exports = class CommunistCommand extends Command {
 			name: 'communist',
 			aliases: ['commie', 'communism'],
 			group: 'edit-image',
-			memberName: 'communist',
 			description: 'Draws the Communist flag over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

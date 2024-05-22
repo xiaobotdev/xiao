@@ -10,7 +10,6 @@ module.exports = class SpidermanPointingCommand extends Command {
 			name: 'spiderman-pointing',
 			aliases: ['spiderman-pointing-at-spiderman', 'spiderman', 'spiderman-point'],
 			group: 'edit-meme',
-			memberName: 'spiderman-pointing',
 			description: 'Sends a "Spiderman Pointing at Spiderman" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

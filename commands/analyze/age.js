@@ -5,7 +5,6 @@ module.exports = class AgeCommand extends Command {
 		super(client, {
 			name: 'age',
 			group: 'analyze',
-			memberName: 'age',
 			description: 'Responds with how old someone born in a certain year is.',
 			args: [
 				{

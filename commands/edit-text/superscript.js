@@ -8,7 +8,6 @@ module.exports = class SuperscriptCommand extends Command {
 			name: 'superscript',
 			aliases: ['tiny-text', 'small-text'],
 			group: 'edit-text',
-			memberName: 'superscript',
 			description: 'Converts text to tiny text.',
 			args: [
 				{

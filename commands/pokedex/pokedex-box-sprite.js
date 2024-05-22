@@ -30,7 +30,6 @@ module.exports = class PokedexBoxSpriteCommand extends Command {
 				'pkmn-box'
 			],
 			group: 'pokedex',
-			memberName: 'pokedex-box-sprite',
 			description: 'Responds with the box sprite of a Pokémon.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

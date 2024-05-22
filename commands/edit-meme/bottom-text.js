@@ -6,7 +6,6 @@ module.exports = class BottomTextCommand extends Command {
 		super(client, {
 			name: 'bottom-text',
 			group: 'edit-meme',
-			memberName: 'bottom-text',
 			description: 'Sends a bottom text meme.',
 			throttling: {
 				usages: 2,

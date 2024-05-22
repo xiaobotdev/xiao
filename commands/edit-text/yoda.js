@@ -7,7 +7,6 @@ module.exports = class YodaCommand extends Command {
 		super(client, {
 			name: 'yoda',
 			group: 'edit-text',
-			memberName: 'yoda',
 			description: 'Converts text to Yoda speak.',
 			credit: [
 				{

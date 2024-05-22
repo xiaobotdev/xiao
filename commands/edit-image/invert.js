@@ -9,7 +9,6 @@ module.exports = class InvertCommand extends Command {
 		super(client, {
 			name: 'invert',
 			group: 'edit-image',
-			memberName: 'invert',
 			description: 'Draws an image or a user\'s avatar but inverted.',
 			throttling: {
 				usages: 2,

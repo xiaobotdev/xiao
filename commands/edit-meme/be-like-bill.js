@@ -11,7 +11,6 @@ module.exports = class BeLikeBillCommand extends Command {
 			name: 'be-like-bill',
 			aliases: ['be-like'],
 			group: 'edit-meme',
-			memberName: 'be-like-bill',
 			description: 'Sends a "Be Like Bill" meme with the name of your choice.',
 			throttling: {
 				usages: 2,

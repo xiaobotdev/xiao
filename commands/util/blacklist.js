@@ -6,7 +6,6 @@ module.exports = class BlacklistCommand extends Command {
 		super(client, {
 			name: 'blacklist',
 			group: 'util',
-			memberName: 'blacklist',
 			description: 'Blacklists a user or server.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

@@ -6,7 +6,6 @@ module.exports = class AcrosticCommand extends Command {
 		super(client, {
 			name: 'acrostic',
 			group: 'random-res',
-			memberName: 'acrostic',
 			description: 'Creates an acrostic from any word or name.',
 			credit: [
 				{

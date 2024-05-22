@@ -6,7 +6,6 @@ module.exports = class ClapCommand extends Command {
 			name: 'clap',
 			aliases: ['clapping'],
 			group: 'edit-text',
-			memberName: 'clap',
 			description: 'Sends 👏 text 👏 like 👏 this.',
 			args: [
 				{

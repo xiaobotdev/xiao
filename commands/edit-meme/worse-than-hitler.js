@@ -10,7 +10,6 @@ module.exports = class WorseThanHitlerCommand extends Command {
 			name: 'worse-than-hitler',
 			aliases: ['hitler'],
 			group: 'edit-meme',
-			memberName: 'worse-than-hitler',
 			description: 'Draws a user\'s avatar over Family Guy\'s "Worse Than Hitler" meme.',
 			throttling: {
 				usages: 2,

@@ -8,7 +8,6 @@ module.exports = class SmashOrPassCommand extends Command {
 			name: 'smash-or-pass',
 			aliases: ['pass-or-smash', 'smash-pass', 'pass-smash'],
 			group: 'random-seed',
-			memberName: 'smash-or-pass',
 			description: 'Determines if a user is worthy of a smash or a pass.',
 			args: [
 				{

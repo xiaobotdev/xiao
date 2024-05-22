@@ -20,7 +20,6 @@ module.exports = class CommandLastRunExportCommand extends Command {
 				'export-last-run'
 			],
 			group: 'util',
-			memberName: 'command-last-run-export',
 			description: 'Exports a command last run JSON file.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

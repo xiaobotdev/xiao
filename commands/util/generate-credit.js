@@ -9,7 +9,6 @@ module.exports = class GenerateCreditCommand extends Command {
 			name: 'generate-credit',
 			aliases: ['gen-credit', 'generate-cred', 'gen-cred'],
 			group: 'util',
-			memberName: 'generate-credit',
 			description: 'Generates the credits list as a TXT file.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

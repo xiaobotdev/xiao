@@ -9,7 +9,6 @@ module.exports = class DogCommand extends Command {
 			name: 'dog',
 			aliases: ['puppy', 'dog-fact', 'puppy-fact', 'inu', 'inu-fact'],
 			group: 'random-img',
-			memberName: 'dog',
 			description: 'Responds with a random dog image and fact.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

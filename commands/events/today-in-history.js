@@ -9,7 +9,6 @@ module.exports = class TodayInHistoryCommand extends Command {
 			name: 'today-in-history',
 			aliases: ['today', 'history'],
 			group: 'events',
-			memberName: 'today-in-history',
 			description: 'Responds with an event that occurred today in history.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

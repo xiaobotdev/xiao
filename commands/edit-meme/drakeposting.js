@@ -10,7 +10,6 @@ module.exports = class DrakepostingCommand extends Command {
 			name: 'drakeposting',
 			aliases: ['drake'],
 			group: 'edit-meme',
-			memberName: 'drakeposting',
 			description: 'Sends a "Drakeposting" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

@@ -9,7 +9,6 @@ module.exports = class XKCDCommand extends Command {
 			name: 'xkcd',
 			aliases: ['kcd'],
 			group: 'search',
-			memberName: 'xkcd',
 			description: 'Responds with an XKCD comic, either today\'s, a random one, or a specific one.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

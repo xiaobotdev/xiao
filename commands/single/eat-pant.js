@@ -8,7 +8,6 @@ module.exports = class EatPantCommand extends Command {
 			name: 'eat-pant',
 			aliases: ['bort-sampson'],
 			group: 'single',
-			memberName: 'eat-pant',
 			description: 'Eat pant.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

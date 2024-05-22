@@ -6,7 +6,6 @@ module.exports = class EmbedCommand extends Command {
 		super(client, {
 			name: 'embed',
 			group: 'edit-text',
-			memberName: 'embed',
 			description: 'Sends text in an embed.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			args: [

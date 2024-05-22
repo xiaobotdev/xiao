@@ -7,7 +7,6 @@ module.exports = class SecurityKeyCommand extends Command {
 			name: 'security-key',
 			aliases: ['crypto', 'random-bytes'],
 			group: 'random-res',
-			memberName: 'security-key',
 			description: 'Responds with a random security key.'
 		});
 	}

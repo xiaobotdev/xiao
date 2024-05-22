@@ -13,7 +13,6 @@ module.exports = class ThinkOfCommand extends Command {
 			name: 'think-of',
 			aliases: ['thinks-of', 'thoughts-on', 't-of'],
 			group: 'random-seed',
-			memberName: 'think-of',
 			description: 'Determines what a user thinks of another user.',
 			throttling: {
 				usages: 2,

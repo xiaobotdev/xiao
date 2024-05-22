@@ -10,7 +10,6 @@ module.exports = class EmojiFaceCommand extends Command {
 			name: 'emoji-face',
 			aliases: ['emoji-f', 'e-face'],
 			group: 'edit-face',
-			memberName: 'emoji-face',
 			description: 'Draws an emoji onto the faces in an image.',
 			throttling: {
 				usages: 1,

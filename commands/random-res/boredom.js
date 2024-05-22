@@ -7,7 +7,6 @@ module.exports = class BoredomCommand extends Command {
 			name: 'boredom',
 			aliases: ['bored'],
 			group: 'random-res',
-			memberName: 'boredom',
 			description: 'Responds with a random activity to try when you\'re bored.',
 			credit: [
 				{

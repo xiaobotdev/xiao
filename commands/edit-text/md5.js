@@ -6,7 +6,6 @@ module.exports = class MD5Command extends Command {
 		super(client, {
 			name: 'md5',
 			group: 'edit-text',
-			memberName: 'md5',
 			description: 'Creates a hash of text with the MD5 algorithm.',
 			args: [
 				{

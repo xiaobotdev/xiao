@@ -8,7 +8,6 @@ module.exports = class JengaCommand extends Command {
 		super(client, {
 			name: 'jenga',
 			group: 'games-mp',
-			memberName: 'jenga',
 			description: 'Play a game of Jenga with another user or the AI.',
 			game: true,
 			credit: [

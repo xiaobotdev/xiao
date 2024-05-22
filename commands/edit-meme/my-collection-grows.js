@@ -11,7 +11,6 @@ module.exports = class MyCollectionGrowsCommand extends Command {
 			name: 'my-collection-grows',
 			aliases: ['my-collection-grows-richer', 'collection-grows', 'collection-grows-richer'],
 			group: 'edit-meme',
-			memberName: 'my-collection-grows',
 			description: 'Sends a "My collection grows richer" Nekopara meme with the text of your choice.',
 			throttling: {
 				usages: 2,

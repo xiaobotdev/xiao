@@ -6,7 +6,6 @@ module.exports = class TaxCommand extends Command {
 		super(client, {
 			name: 'tax',
 			group: 'edit-number',
-			memberName: 'tax',
 			description: 'Determines the total cost of something plus tax.',
 			args: [
 				{

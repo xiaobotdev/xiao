@@ -9,7 +9,6 @@ module.exports = class CaveCommand extends Command {
 			name: 'cave',
 			aliases: ['cavern', 'mine'],
 			group: 'single',
-			memberName: 'cave',
 			description: 'Sends a Minecraft cave that blends in with the chat.',
 			details: `**Types:** ${types.join(', ')}`,
 			clientPermissions: [PermissionFlagsBits.AttachFiles],

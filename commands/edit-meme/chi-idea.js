@@ -10,7 +10,6 @@ module.exports = class ChiIdeaCommand extends Command {
 			name: 'chi-idea',
 			aliases: ['idea', 'takagi-idea', 'i-have-an-idea'],
 			group: 'edit-meme',
-			memberName: 'chi-idea',
 			description: 'Sends a "Daddy, I\'ve got an idea!" Takagi-san meme with the text of your choice.',
 			throttling: {
 				usages: 2,

@@ -9,7 +9,6 @@ module.exports = class NeedsMoreJpegCommand extends Command {
 			name: 'needs-more-jpeg',
 			aliases: ['jpeg', 'jpegify'],
 			group: 'edit-image',
-			memberName: 'needs-more-jpeg',
 			description: 'Draws an image or a user\'s avatar as a low quality JPEG.',
 			throttling: {
 				usages: 2,

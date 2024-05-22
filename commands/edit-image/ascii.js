@@ -8,7 +8,6 @@ module.exports = class AsciiCommand extends Command {
 		super(client, {
 			name: 'ascii',
 			group: 'edit-image',
-			memberName: 'ascii',
 			description: 'Draws an image or a user\'s avatar but with ascii.',
 			throttling: {
 				usages: 2,

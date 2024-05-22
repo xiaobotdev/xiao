@@ -9,7 +9,6 @@ module.exports = class CircleCommand extends Command {
 			name: 'circle',
 			aliases: ['preview-avatar', 'preview-ava', 'preview-pfp'],
 			group: 'edit-image',
-			memberName: 'circle',
 			description: 'Draws an image or a user\'s avatar as a circle.',
 			throttling: {
 				usages: 2,

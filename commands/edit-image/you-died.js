@@ -11,7 +11,6 @@ module.exports = class YouDiedCommand extends Command {
 			name: 'you-died',
 			aliases: ['died', 'dead'],
 			group: 'edit-image',
-			memberName: 'you-died',
 			description: 'Sends a "You Died" screen over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

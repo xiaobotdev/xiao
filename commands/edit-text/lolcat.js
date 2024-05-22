@@ -7,7 +7,6 @@ module.exports = class LolcatCommand extends Command {
 		super(client, {
 			name: 'lolcat',
 			group: 'edit-text',
-			memberName: 'lolcat',
 			description: 'Converts text to lolcat.',
 			credit: [
 				{

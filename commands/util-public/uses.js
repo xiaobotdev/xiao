@@ -7,7 +7,6 @@ module.exports = class UsesCommand extends Command {
 			name: 'uses',
 			aliases: ['command-uses', 'cmd-uses'],
 			group: 'util-public',
-			memberName: 'uses',
 			description: 'Responds with a command\'s usage stats.',
 			guarded: true,
 			args: [

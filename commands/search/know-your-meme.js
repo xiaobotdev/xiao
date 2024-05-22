@@ -11,7 +11,6 @@ module.exports = class KnowYourMemeCommand extends Command {
 			name: 'know-your-meme',
 			aliases: ['kym', 'meme-info', 'meme-search'],
 			group: 'search',
-			memberName: 'know-your-meme',
 			description: 'Searches Know Your Meme for your query.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

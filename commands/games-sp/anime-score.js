@@ -44,7 +44,6 @@ module.exports = class AnimeScoreCommand extends Command {
 			name: 'anime-score',
 			aliases: ['guess-anime-score'],
 			group: 'games-sp',
-			memberName: 'anime-score',
 			description: 'See if you can guess what a random anime\'s score is.',
 			game: true,
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],

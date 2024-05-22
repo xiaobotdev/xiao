@@ -7,7 +7,6 @@ module.exports = class XiaoFactCommand extends Command {
 			name: 'xiao-fact',
 			aliases: ['iao-fact', 'bot-fact', 'easter-egg'],
 			group: 'random-res',
-			memberName: 'xiao-fact',
 			description: 'Responds with a random fact about Xiao.'
 		});
 	}

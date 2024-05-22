@@ -9,7 +9,6 @@ module.exports = class IslandCommand extends Command {
 		super(client, {
 			name: 'island',
 			group: 'games-mp',
-			memberName: 'island',
 			description: 'Who will be the final two left on the island after a series of vote-kicks?',
 			game: true,
 			guildOnly: true,

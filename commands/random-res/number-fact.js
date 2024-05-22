@@ -7,7 +7,6 @@ module.exports = class NumberFactCommand extends Command {
 			name: 'number-fact',
 			aliases: ['num-fact'],
 			group: 'random-res',
-			memberName: 'number-fact',
 			description: 'Responds with a random fact about a specific number.',
 			credit: [
 				{

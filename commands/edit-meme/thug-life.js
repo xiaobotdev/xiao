@@ -11,7 +11,6 @@ module.exports = class ThugLifeCommand extends Command {
 			name: 'thug-life',
 			aliases: ['thug'],
 			group: 'edit-meme',
-			memberName: 'thug-life',
 			description: 'Draws "Thug Life" over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

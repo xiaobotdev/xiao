@@ -8,7 +8,6 @@ module.exports = class TemmieCommand extends Command {
 			name: 'temmie',
 			aliases: ['temmie-speak'],
 			group: 'edit-text',
-			memberName: 'temmie',
 			description: 'Converts text to Temmie speak.',
 			credit: [
 				{

@@ -10,7 +10,6 @@ module.exports = class SteamCardCommand extends Command {
 			name: 'steam-card',
 			aliases: ['valve-card'],
 			group: 'edit-image',
-			memberName: 'steam-card',
 			description: 'Draws an image or a user\'s avatar on a Steam Trading Card.',
 			throttling: {
 				usages: 2,

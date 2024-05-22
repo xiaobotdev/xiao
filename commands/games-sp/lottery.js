@@ -8,7 +8,6 @@ module.exports = class LotteryCommand extends Command {
 			name: 'lottery',
 			aliases: ['lotto'],
 			group: 'games-sp',
-			memberName: 'lottery',
 			description: 'Attempt to win the lottery with 6 numbers.',
 			args: [
 				{

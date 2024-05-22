@@ -9,7 +9,6 @@ module.exports = class SosCommand extends Command {
 			name: 'sos',
 			aliases: ['esther-verkest', 'esther', 'help-sign'],
 			group: 'edit-meme',
-			memberName: 'sos',
 			description: 'Sends a "Esther Verkest\'s Help Sign" comic with the text of your choice.',
 			throttling: {
 				usages: 2,

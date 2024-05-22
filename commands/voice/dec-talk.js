@@ -15,7 +15,6 @@ module.exports = class DECTalkCommand extends Command {
 			name: 'dec-talk',
 			aliases: ['moonbase-alpha', 'dec', 'd-talk'],
 			group: 'voice',
-			memberName: 'dec-talk',
 			description: 'The world\'s best Text-to-Speech.',
 			guildOnly: true,
 			throttling: {

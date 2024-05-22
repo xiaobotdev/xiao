@@ -9,7 +9,6 @@ module.exports = class CursedSpongeCommand extends Command {
 			name: 'cursed-sponge',
 			aliases: ['sponge-snail'],
 			group: 'edit-meme',
-			memberName: 'cursed-sponge',
 			description: 'Sends a cursed sponge duplicated however many times you want.',
 			throttling: {
 				usages: 2,

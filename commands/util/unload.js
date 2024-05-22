@@ -6,7 +6,6 @@ module.exports = class UnloadCommand extends Command {
 			name: 'unload',
 			aliases: ['unload-command', 'unload-cmd', 'delete-command', 'delete-cmd'],
 			group: 'util',
-			memberName: 'unload',
 			description: 'Unloads a command.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,

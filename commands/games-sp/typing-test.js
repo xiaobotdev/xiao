@@ -10,7 +10,6 @@ module.exports = class TypingTestCommand extends Command {
 		super(client, {
 			name: 'typing-test',
 			group: 'games-sp',
-			memberName: 'typing-test',
 			description: 'See how fast you can type a sentence.',
 			game: true
 		});

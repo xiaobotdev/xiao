@@ -8,7 +8,6 @@ module.exports = class GenerateProcessEnvCommand extends Command {
 			name: 'generate-process-env',
 			aliases: ['gen-process-env', 'generate-env', 'gen-env'],
 			group: 'util',
-			memberName: 'generate-process-env',
 			description: 'Generates a backup list of Xiao\'s `process.env`.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

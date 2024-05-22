@@ -13,7 +13,6 @@ module.exports = class InfoCommand extends Command {
 			name: 'info',
 			aliases: ['stats', 'uptime', 'prefix', 'invite'],
 			group: 'util-public',
-			memberName: 'info',
 			description: 'Responds with detailed bot information.',
 			guarded: true,
 			clientPermissions: [PermissionFlagsBits.EmbedLinks]

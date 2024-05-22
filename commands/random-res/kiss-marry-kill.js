@@ -28,7 +28,6 @@ module.exports = class KissMarryKillCommand extends Command {
 				'mkf'
 			],
 			group: 'random-res',
-			memberName: 'kiss-marry-kill',
 			description: 'Determines who to kiss, who to marry, and who to kill.',
 			args: [
 				{

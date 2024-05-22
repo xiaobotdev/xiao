@@ -11,7 +11,6 @@ module.exports = class GuessLooksCommand extends Command {
 			name: 'guess-looks',
 			aliases: ['guess-my-looks'],
 			group: 'random-seed',
-			memberName: 'guess-looks',
 			description: 'Guesses what a user looks like.',
 			args: [
 				{

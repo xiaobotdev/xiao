@@ -7,7 +7,6 @@ module.exports = class CursiveCommand extends Command {
 		super(client, {
 			name: 'cursive',
 			group: 'edit-text',
-			memberName: 'cursive',
 			description: 'Converts text to cursive.',
 			args: [
 				{

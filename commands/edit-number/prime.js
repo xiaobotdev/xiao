@@ -7,7 +7,6 @@ module.exports = class PrimeCommand extends Command {
 			name: 'prime',
 			aliases: ['is-prime'],
 			group: 'edit-number',
-			memberName: 'prime',
 			description: 'Determines if a number is a prime number.',
 			args: [
 				{

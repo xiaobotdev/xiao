@@ -11,7 +11,6 @@ module.exports = class CardsAgainstHumanityCommand extends Command {
 			name: 'cards-against-humanity',
 			aliases: ['crude-cards', 'cah'],
 			group: 'games-mp',
-			memberName: 'cards-against-humanity',
 			description: 'Compete to see who can come up with the best card to fill in the blank.',
 			guildOnly: true,
 			nsfw: true,

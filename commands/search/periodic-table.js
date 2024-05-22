@@ -23,7 +23,6 @@ module.exports = class PeriodicTableCommand extends Command {
 			name: 'periodic-table',
 			aliases: ['element', 'p-table'],
 			group: 'search',
-			memberName: 'periodic-table',
 			description: 'Finds an element on the periodic table.',
 			throttling: {
 				usages: 2,

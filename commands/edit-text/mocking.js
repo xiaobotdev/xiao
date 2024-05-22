@@ -8,7 +8,6 @@ module.exports = class MockingCommand extends Command {
 			name: 'mocking',
 			aliases: ['mock'],
 			group: 'edit-text',
-			memberName: 'mocking',
 			description: 'SenDs TexT lIkE ThiS.',
 			args: [
 				{

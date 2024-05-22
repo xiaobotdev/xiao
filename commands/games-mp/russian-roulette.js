@@ -9,7 +9,6 @@ module.exports = class RussianRouletteCommand extends Command {
 			name: 'russian-roulette',
 			aliases: ['r-roulette', 'russia-gun'],
 			group: 'games-mp',
-			memberName: 'russian-roulette',
 			description: 'Who will pull the trigger and die first?',
 			game: true,
 			args: [

@@ -8,7 +8,6 @@ module.exports = class EmojifyCommand extends Command {
 			name: 'emojify',
 			aliases: ['regional-indicator', 'big-text'],
 			group: 'edit-text',
-			memberName: 'emojify',
 			description: 'Converts text to emoji form.',
 			args: [
 				{

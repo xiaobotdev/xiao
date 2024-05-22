@@ -10,7 +10,6 @@ module.exports = class TrueOrFalseCommand extends Command {
 			name: 'true-or-false',
 			aliases: ['true-false', 'tf', 'quiz-boolean'],
 			group: 'games-sp',
-			memberName: 'true-or-false',
 			description: 'Answer a true or false question.',
 			details: `**Difficulties:** ${difficulties.join(', ')}`,
 			credit: [

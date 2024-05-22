@@ -10,7 +10,6 @@ module.exports = class FishEyeCommand extends Command {
 			name: 'fish-eye',
 			aliases: ['bulge'],
 			group: 'edit-image',
-			memberName: 'fish-eye',
 			description: 'Draws an image or a user\'s avatar but with a fish-eye lens.',
 			throttling: {
 				usages: 2,

@@ -11,7 +11,6 @@ module.exports = class HatCommand extends Command {
 		super(client, {
 			name: 'hat',
 			group: 'edit-avatar',
-			memberName: 'hat',
 			description: 'Draws a hat over a user\'s avatar.',
 			details: `**Hats:** ${hatsKeys.join(', ')}`,
 			throttling: {

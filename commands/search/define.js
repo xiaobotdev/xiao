@@ -9,7 +9,6 @@ module.exports = class DefineCommand extends Command {
 			name: 'define',
 			aliases: ['dictionary', 'webster'],
 			group: 'search',
-			memberName: 'define',
 			description: 'Defines a word.',
 			credit: [
 				{

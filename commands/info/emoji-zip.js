@@ -10,7 +10,6 @@ module.exports = class EmojiZipCommand extends Command {
 			name: 'emoji-zip',
 			aliases: ['emojis-zip', 'emotes-zip', 'e-zip'],
 			group: 'info',
-			memberName: 'emoji-zip',
 			description: 'Responds with a ZIP file of the server\'s custom emoji.',
 			throttling: {
 				usages: 1,

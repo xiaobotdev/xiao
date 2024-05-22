@@ -14,7 +14,6 @@ module.exports = class ObstructionCommand extends Command {
 			name: 'obstruction',
 			aliases: ['obstruct'],
 			group: 'games-mp',
-			memberName: 'obstruction',
 			description: 'Play a game of Obstruction with another user.',
 			guildOnly: true,
 			game: true,

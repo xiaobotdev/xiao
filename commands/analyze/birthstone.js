@@ -8,7 +8,6 @@ module.exports = class BirthstoneCommand extends Command {
 		super(client, {
 			name: 'birthstone',
 			group: 'analyze',
-			memberName: 'birthstone',
 			description: 'Responds with the Birthstone for a month.',
 			args: [
 				{

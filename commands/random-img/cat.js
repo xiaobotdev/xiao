@@ -9,7 +9,6 @@ module.exports = class CatCommand extends Command {
 			name: 'cat',
 			aliases: ['neko', 'kitty', 'meow', 'cat-fact', 'neko-fact', 'kitty-fact', 'meow-fact'],
 			group: 'random-img',
-			memberName: 'cat',
 			description: 'Responds with a random cat image and fact.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

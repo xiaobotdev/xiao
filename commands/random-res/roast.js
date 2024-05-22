@@ -7,7 +7,6 @@ module.exports = class RoastCommand extends Command {
 			name: 'roast',
 			aliases: ['insult'],
 			group: 'random-res',
-			memberName: 'roast',
 			description: 'Roasts a user.',
 			args: [
 				{

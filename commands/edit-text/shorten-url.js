@@ -8,7 +8,6 @@ module.exports = class ShortenUrlCommand extends Command {
 			name: 'shorten-url',
 			aliases: ['short-url', 'bit-ly', 'bit.ly', 'url-shorten', 'url-short'],
 			group: 'edit-text',
-			memberName: 'shorten-url',
 			description: 'Shortens a URL using bit.ly.',
 			credit: [
 				{

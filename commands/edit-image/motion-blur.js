@@ -10,7 +10,6 @@ module.exports = class MotionBlurCommand extends Command {
 			name: 'motion-blur',
 			aliases: ['m-blur', 'motion'],
 			group: 'edit-image',
-			memberName: 'motion-blur',
 			description: 'Draws an image or a user\'s avatar with motion blur.',
 			throttling: {
 				usages: 2,

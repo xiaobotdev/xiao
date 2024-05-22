@@ -5,7 +5,6 @@ module.exports = class ReloadFileCommand extends Command {
 		super(client, {
 			name: 'reload-file',
 			group: 'util',
-			memberName: 'reload-file',
 			description: 'Reloads a file.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,

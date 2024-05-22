@@ -7,7 +7,6 @@ module.exports = class StopCommand extends Command {
 			name: 'stop',
 			aliases: ['stop-voice-channel', 'stop-vc', 'stop-voice', 'stop-music', 'stop-playing'],
 			group: 'util-voice',
-			memberName: 'stop',
 			description: 'Stops the current audio playing.',
 			guildOnly: true,
 			guarded: true

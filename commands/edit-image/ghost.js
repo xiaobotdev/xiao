@@ -8,7 +8,6 @@ module.exports = class GhostCommand extends Command {
 		super(client, {
 			name: 'ghost',
 			group: 'edit-image',
-			memberName: 'ghost',
 			description: 'Draws an image or a user\'s avatar but with a ghost-like transparency.',
 			throttling: {
 				usages: 2,

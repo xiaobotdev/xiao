@@ -9,7 +9,6 @@ module.exports = class HorseInfoCommand extends Command {
 			name: 'horse-info',
 			aliases: ['race-horse'],
 			group: 'games-sp',
-			memberName: 'horse-info',
 			description: 'Responds with detailed information on a horse.',
 			args: [
 				{

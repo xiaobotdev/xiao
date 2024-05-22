@@ -6,7 +6,6 @@ module.exports = class SpoilerLetterCommand extends Command {
 			name: 'spoiler-letter',
 			aliases: ['spoiler'],
 			group: 'edit-text',
-			memberName: 'spoiler-letter',
 			description: 'Sends text with each and every character as an individual spoiler.',
 			args: [
 				{

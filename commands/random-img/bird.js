@@ -8,7 +8,6 @@ module.exports = class BirdCommand extends Command {
 			name: 'bird',
 			aliases: ['birb'],
 			group: 'random-img',
-			memberName: 'bird',
 			description: 'Responds with a random image of a bird.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

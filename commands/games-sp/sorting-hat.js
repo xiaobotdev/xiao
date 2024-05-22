@@ -10,7 +10,6 @@ module.exports = class SortingHatCommand extends Command {
 			name: 'sorting-hat',
 			aliases: ['sorting-hat-quiz', 'hogwarts', 'hogwarts-house'],
 			group: 'games-sp',
-			memberName: 'sorting-hat',
 			description: 'Take a quiz to determine your Hogwarts house.',
 			game: true,
 			credit: [

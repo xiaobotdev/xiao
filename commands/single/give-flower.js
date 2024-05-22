@@ -5,7 +5,6 @@ module.exports = class GiveFlowerCommand extends Command {
 		super(client, {
 			name: 'give-flower',
 			group: 'single',
-			memberName: 'give-flower',
 			description: 'Gives Xiao Pai a flower.',
 			credit: [
 				{

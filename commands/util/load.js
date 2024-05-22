@@ -7,7 +7,6 @@ module.exports = class LoadCommand extends Command {
 			name: 'load',
 			aliases: ['load-command', 'load-cmd'],
 			group: 'util',
-			memberName: 'load',
 			description: 'Loads a new command.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,

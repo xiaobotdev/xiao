@@ -5,7 +5,6 @@ module.exports = class ReverseCommand extends Command {
 		super(client, {
 			name: 'reverse',
 			group: 'edit-text',
-			memberName: 'reverse',
 			description: 'Reverses text.',
 			args: [
 				{

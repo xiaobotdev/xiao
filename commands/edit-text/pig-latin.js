@@ -5,7 +5,6 @@ module.exports = class PigLatinCommand extends Command {
 		super(client, {
 			name: 'pig-latin',
 			group: 'edit-text',
-			memberName: 'pig-latin',
 			description: 'Converts text to pig latin.',
 			args: [
 				{

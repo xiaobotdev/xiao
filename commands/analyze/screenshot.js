@@ -9,7 +9,6 @@ module.exports = class ScreenshotCommand extends Command {
 			name: 'screenshot',
 			aliases: ['capture', 'ss'],
 			group: 'analyze',
-			memberName: 'screenshot',
 			description: 'Takes a screenshot of any webpage.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			throttling: {

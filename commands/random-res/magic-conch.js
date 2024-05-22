@@ -8,7 +8,6 @@ module.exports = class MagicConchCommand extends Command {
 			name: 'magic-conch',
 			aliases: ['magic-conch-shell', 'conch'],
 			group: 'random-res',
-			memberName: 'magic-conch',
 			description: 'Asks your question to the Magic Conch.',
 			credit: [
 				{

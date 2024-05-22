@@ -10,7 +10,6 @@ module.exports = class HighwaySignCommand extends Command {
 			name: 'highway-sign',
 			aliases: ['road-sign', 'road-work-sign', 'electronic-highway-sign'],
 			group: 'edit-image-text',
-			memberName: 'highway-sign',
 			description: 'Sends a highway sign sign with the text of your choice.',
 			throttling: {
 				usages: 2,

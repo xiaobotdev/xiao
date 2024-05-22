@@ -7,7 +7,6 @@ module.exports = class FlyCommand extends Command {
 		super(client, {
 			name: 'fly',
 			group: 'single',
-			memberName: 'fly',
 			description: 'Sends a fake fly that looks surprisngly real.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles]
 		});

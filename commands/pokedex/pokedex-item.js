@@ -7,7 +7,6 @@ module.exports = class PokedexItemCommand extends Command {
 			name: 'pokedex-item',
 			aliases: ['pokemon-item', 'pokémon-item', 'pokédex-item', 'pkmn-item'],
 			group: 'pokedex',
-			memberName: 'pokedex-item',
 			description: 'Searches the Pokédex for a Pokémon item.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

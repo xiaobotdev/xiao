@@ -6,7 +6,6 @@ module.exports = class URLDecodeCommand extends Command {
 			name: 'url-decode',
 			aliases: ['decode-url', 'decode-uri', 'uri-decode', 'decode-uri-component'],
 			group: 'edit-text',
-			memberName: 'url-decode',
 			description: 'Decodes URL characters to regular characters.',
 			args: [
 				{

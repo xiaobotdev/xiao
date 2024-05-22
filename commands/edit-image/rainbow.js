@@ -10,7 +10,6 @@ module.exports = class RainbowCommand extends Command {
 			name: 'rainbow',
 			aliases: ['gay'],
 			group: 'edit-image',
-			memberName: 'rainbow',
 			description: 'Draws a rainbow over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

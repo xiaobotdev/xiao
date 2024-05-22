@@ -10,7 +10,6 @@ module.exports = class OldPhotoCommand extends Command {
 			name: 'old-photo',
 			aliases: ['old', 'old-timey'],
 			group: 'edit-image',
-			memberName: 'old-photo',
 			description: 'Draws an image or a user\'s avatar as an old-timey photo.',
 			throttling: {
 				usages: 2,

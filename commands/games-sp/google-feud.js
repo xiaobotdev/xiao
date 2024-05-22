@@ -9,7 +9,6 @@ module.exports = class GoogleFeudCommand extends Command {
 		super(client, {
 			name: 'google-feud',
 			group: 'games-sp',
-			memberName: 'google-feud',
 			description: 'Attempt to determine the top suggestions for a Google search.',
 			game: true,
 			credit: [

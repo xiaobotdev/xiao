@@ -11,7 +11,6 @@ module.exports = class ApplesToApplesCommand extends Command {
 			name: 'apples-to-apples',
 			aliases: ['a2a'],
 			group: 'games-mp',
-			memberName: 'apples-to-apples',
 			description: 'Compete to see who can come up with the best card to match an adjective.',
 			guildOnly: true,
 			game: true,

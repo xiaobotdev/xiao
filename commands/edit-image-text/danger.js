@@ -10,7 +10,6 @@ module.exports = class DangerCommand extends Command {
 			name: 'danger',
 			aliases: ['danger-sign'],
 			group: 'edit-image-text',
-			memberName: 'danger',
 			description: 'Creates a danger sign with the text of your choice.',
 			throttling: {
 				usages: 2,

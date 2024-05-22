@@ -7,7 +7,6 @@ module.exports = class PhoneBlockCommand extends Command {
 			name: 'phone-block',
 			aliases: ['call-block'],
 			group: 'phone',
-			memberName: 'phone-block',
 			description: 'Gives instructions for blocking a channel or server.',
 			guildOnly: true,
 			args: [

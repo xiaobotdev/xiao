@@ -11,7 +11,6 @@ module.exports = class CrushCommand extends Command {
 			name: 'crush',
 			aliases: ['wolverine-crush'],
 			group: 'edit-meme',
-			memberName: 'crush',
 			description: 'Draws an image or a user\'s avatar as Wolverine\'s crush.',
 			throttling: {
 				usages: 2,

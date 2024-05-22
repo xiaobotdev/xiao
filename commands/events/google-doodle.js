@@ -8,7 +8,6 @@ module.exports = class GoogleDoodleCommand extends Command {
 		super(client, {
 			name: 'google-doodle',
 			group: 'events',
-			memberName: 'google-doodle',
 			description: 'Responds with a Google Doodle, either the latest one or a random one from the past.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

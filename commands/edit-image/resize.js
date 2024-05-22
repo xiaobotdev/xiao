@@ -8,7 +8,6 @@ module.exports = class ResizeCommand extends Command {
 		super(client, {
 			name: 'resize',
 			group: 'edit-image',
-			memberName: 'resize',
 			description: 'Draws an image or a user\'s avatar resized to the size you want.',
 			throttling: {
 				usages: 2,

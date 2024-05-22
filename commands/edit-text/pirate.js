@@ -8,7 +8,6 @@ module.exports = class PirateCommand extends Command {
 			name: 'pirate',
 			aliases: ['pirate-speak'],
 			group: 'edit-text',
-			memberName: 'pirate',
 			description: 'Converts text to pirate.',
 			credit: [
 				{

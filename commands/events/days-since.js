@@ -7,7 +7,6 @@ module.exports = class DaysSinceCommand extends Command {
 		super(client, {
 			name: 'days-since',
 			group: 'events',
-			memberName: 'days-since',
 			description: 'Responds with how many days there have been since a certain date.',
 			args: [
 				{

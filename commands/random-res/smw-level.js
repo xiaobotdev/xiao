@@ -7,7 +7,6 @@ module.exports = class SmwLevelCommand extends Command {
 			name: 'smw-level',
 			aliases: ['super-mario-world-level'],
 			group: 'random-res',
-			memberName: 'smw-level',
 			description: 'Responds with a random Super Mario World level name.',
 			credit: [
 				{

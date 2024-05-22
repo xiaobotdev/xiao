@@ -10,7 +10,6 @@ module.exports = class HandsCommand extends Command {
 			name: 'hands',
 			aliases: ['grab', 'pedo-hands'],
 			group: 'edit-image',
-			memberName: 'hands',
 			description: 'Draws creepy hands over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

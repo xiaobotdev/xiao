@@ -9,7 +9,6 @@ module.exports = class SnapchatCommand extends Command {
 			name: 'snapchat',
 			aliases: ['snap'],
 			group: 'edit-image',
-			memberName: 'snapchat',
 			description: 'Creates a fake Snap from Snapchat with the image and text you provide.',
 			throttling: {
 				usages: 2,

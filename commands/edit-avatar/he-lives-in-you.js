@@ -11,7 +11,6 @@ module.exports = class HeLivesInYouCommand extends Command {
 			name: 'he-lives-in-you',
 			aliases: ['mufasa', 'simba'],
 			group: 'edit-avatar',
-			memberName: 'he-lives-in-you',
 			description: 'Draws a user\'s avatar over Simba from The Lion King\'s reflection.',
 			throttling: {
 				usages: 2,

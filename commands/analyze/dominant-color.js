@@ -10,7 +10,6 @@ module.exports = class DominantColorCommand extends Command {
 			name: 'dominant-color',
 			aliases: ['dom-color', 'dominant-colour', 'dom-colour'],
 			group: 'analyze',
-			memberName: 'dominant-color',
 			description: 'Determines the dominant color of an image.',
 			throttling: {
 				usages: 2,

@@ -18,7 +18,6 @@ module.exports = class TweetCommand extends Command {
 			name: 'tweet',
 			aliases: ['fake-tweet', 'twitter', 'x-post', 'excrete', 'xcrete', 'crete'],
 			group: 'edit-image-text',
-			memberName: 'tweet',
 			description: 'Sends a Twitter tweet with the user and text of your choice.',
 			throttling: {
 				usages: 2,

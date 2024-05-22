@@ -11,7 +11,6 @@ module.exports = class RipCommand extends Command {
 			name: 'rip',
 			aliases: ['grave', 'grave-stone', 'rest-in-peace'],
 			group: 'edit-avatar',
-			memberName: 'rip',
 			description: 'Draws a user\'s avatar over a gravestone.',
 			throttling: {
 				usages: 2,

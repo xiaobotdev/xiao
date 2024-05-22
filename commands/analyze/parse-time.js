@@ -8,7 +8,6 @@ module.exports = class ParseTimeCommand extends Command {
 			name: 'parse-time',
 			aliases: ['analyze-time', 'sherlock'],
 			group: 'analyze',
-			memberName: 'parse-time',
 			description: 'Analyzes the time duration you provide and gives the result.',
 			args: [
 				{

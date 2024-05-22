@@ -8,7 +8,6 @@ module.exports = class GoogleCommand extends Command {
 			name: 'google',
 			aliases: ['google-this', 'search'],
 			group: 'search',
-			memberName: 'google',
 			description: 'Searches Google.',
 			credit: [
 				{

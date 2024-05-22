@@ -8,7 +8,6 @@ module.exports = class ButtCommand extends Command {
 			name: 'butt',
 			aliases: ['butts', 'ass', 'booty'],
 			group: 'random-seed',
-			memberName: 'butt',
 			description: 'Determines a user\'s butt quality.',
 			credit: [
 				{

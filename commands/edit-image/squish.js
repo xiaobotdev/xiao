@@ -10,7 +10,6 @@ module.exports = class SquishCommand extends Command {
 			name: 'squish',
 			aliases: ['stretch', 'flatten', 'flat'],
 			group: 'edit-image',
-			memberName: 'squish',
 			description: 'Draws an image or a user\'s avatar but squished across the X or Y axis.',
 			throttling: {
 				usages: 2,

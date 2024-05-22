@@ -7,7 +7,6 @@ module.exports = class OpinionCommand extends Command {
 		super(client, {
 			name: 'opinion',
 			group: 'random-res',
-			memberName: 'opinion',
 			description: 'Determines the opinion on something.',
 			args: [
 				{

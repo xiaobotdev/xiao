@@ -6,7 +6,6 @@ module.exports = class FactCoreCommand extends Command {
 		super(client, {
 			name: 'fact-core',
 			group: 'random-res',
-			memberName: 'fact-core',
 			description: 'Responds with a random Fact Core quote.',
 			credit: [
 				{

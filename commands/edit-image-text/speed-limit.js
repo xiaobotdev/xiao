@@ -9,7 +9,6 @@ module.exports = class SpeedLimitCommand extends Command {
 			name: 'speed-limit',
 			aliases: ['speed', 'speed-limit-sign'],
 			group: 'edit-image-text',
-			memberName: 'speed-limit',
 			description: 'Sends a Speed Limit sign with the limit of your choice.',
 			throttling: {
 				usages: 2,

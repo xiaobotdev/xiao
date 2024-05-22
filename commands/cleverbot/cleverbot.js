@@ -8,7 +8,6 @@ module.exports = class CleverbotCommand extends Command {
 			name: 'cleverbot',
 			aliases: ['clevs', 'chat'],
 			group: 'cleverbot',
-			memberName: 'cleverbot',
 			description: 'Starts a Cleverbot conversation.',
 			credit: [
 				{

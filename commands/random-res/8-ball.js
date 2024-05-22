@@ -8,7 +8,6 @@ module.exports = class EightBallCommand extends Command {
 			name: '8-ball',
 			aliases: ['magic-8-ball', 'eight-ball', 'magic-eight-ball'],
 			group: 'random-res',
-			memberName: '8-ball',
 			description: 'Asks your question to the Magic 8 Ball.',
 			credit: [
 				{

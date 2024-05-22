@@ -7,7 +7,6 @@ module.exports = class YoMamaCommand extends Command {
 			name: 'yo-mama',
 			aliases: ['your-mama'],
 			group: 'random-res',
-			memberName: 'yo-mama',
 			description: 'Responds with a random "Yo Mama" joke.',
 			credit: [
 				{

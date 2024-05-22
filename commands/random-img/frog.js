@@ -7,7 +7,6 @@ module.exports = class FrogCommand extends Command {
 			name: 'frog',
 			aliases: ['ribbit'],
 			group: 'random-img',
-			memberName: 'frog',
 			description: 'Responds with a random frog image.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

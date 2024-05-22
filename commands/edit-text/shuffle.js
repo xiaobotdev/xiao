@@ -6,7 +6,6 @@ module.exports = class ShuffleCommand extends Command {
 		super(client, {
 			name: 'shuffle',
 			group: 'edit-text',
-			memberName: 'shuffle',
 			description: 'Shuffles text.',
 			args: [
 				{

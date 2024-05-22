@@ -10,7 +10,6 @@ module.exports = class LikeCommand extends Command {
 			name: 'like',
 			aliases: ['liked', 'everyone-liked-that', 'liked-that', 'everyone-liked'],
 			group: 'edit-meme',
-			memberName: 'like',
 			description: 'Sends an "Everyone Liked That" meme with the image of your choice.',
 			throttling: {
 				usages: 2,

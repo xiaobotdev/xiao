@@ -8,7 +8,6 @@ module.exports = class PickANumberCommand extends Command {
 			name: 'pick-a-number',
 			aliases: ['pick-number', 'pick-a-number-between', 'pick-a-num', 'pick-num'],
 			group: 'games-mp',
-			memberName: 'pick-a-number',
 			description: 'Two players pick a number between 1 and 10. Whoever\'s closer wins.',
 			game: true,
 			args: [

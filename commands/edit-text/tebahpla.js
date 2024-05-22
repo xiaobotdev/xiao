@@ -8,7 +8,6 @@ module.exports = class TebahplaCommand extends Command {
 			name: 'tebahpla',
 			aliases: ['reverse-alphabet', 'alphabet-reverse'],
 			group: 'edit-text',
-			memberName: 'tebahpla',
 			description: 'Reverses the alphabet of text.',
 			args: [
 				{

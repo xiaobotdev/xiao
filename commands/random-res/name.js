@@ -7,7 +7,6 @@ module.exports = class NameCommand extends Command {
 		super(client, {
 			name: 'name',
 			group: 'random-res',
-			memberName: 'name',
 			description: 'Responds with a random name, with the gender of your choice.',
 			credit: [
 				{

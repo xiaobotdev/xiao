@@ -14,7 +14,6 @@ module.exports = class AvatarCommand extends Command {
 			name: 'avatar',
 			aliases: ['profile-picture', 'profile-pic', 'pfp', 'av'],
 			group: 'info',
-			memberName: 'avatar',
 			description: 'Responds with a user\'s avatar.',
 			args: [
 				{

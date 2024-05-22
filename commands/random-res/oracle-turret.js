@@ -6,7 +6,6 @@ module.exports = class OracleTurretCommand extends Command {
 		super(client, {
 			name: 'oracle-turret',
 			group: 'random-res',
-			memberName: 'oracle-turret',
 			description: 'Responds with a random Oracle Turret quote.',
 			credit: [
 				{

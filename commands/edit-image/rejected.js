@@ -11,7 +11,6 @@ module.exports = class RejctedCommand extends Command {
 			name: 'rejected',
 			aliases: ['reject'],
 			group: 'edit-image',
-			memberName: 'rejected',
 			description: 'Draws a "rejected" stamp over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

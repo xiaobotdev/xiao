@@ -14,7 +14,6 @@ module.exports = class HorseRaceCommand extends Command {
 			name: 'horse-race',
 			aliases: ['kentucky-derby'],
 			group: 'games-sp',
-			memberName: 'horse-race',
 			description: 'Bet on the fastest horse in a 6-horse race.',
 			throttling: {
 				usages: 2,

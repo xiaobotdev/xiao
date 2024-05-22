@@ -11,7 +11,6 @@ module.exports = class ApprovedCommand extends Command {
 			name: 'approved',
 			aliases: ['approve'],
 			group: 'edit-image',
-			memberName: 'approved',
 			description: 'Draws an "approved" stamp over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

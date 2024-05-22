@@ -10,7 +10,6 @@ module.exports = class SonicSaysCommand extends Command {
 			name: 'sonic-says',
 			aliases: ['sonic-say', 'sonic'],
 			group: 'edit-meme',
-			memberName: 'sonic-says',
 			description: 'Sends a "Sonic Says" meme with the quote of your choice.',
 			throttling: {
 				usages: 2,

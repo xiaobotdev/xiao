@@ -6,7 +6,6 @@ module.exports = class GenerateCommandsCommand extends Command {
 			name: 'generate-commands',
 			aliases: ['gen-commands', 'generate-cmds', 'gen-cmds'],
 			group: 'util',
-			memberName: 'generate-commands',
 			description: 'Generates the commands list as a TXT file.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

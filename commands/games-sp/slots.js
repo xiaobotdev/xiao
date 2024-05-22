@@ -7,7 +7,6 @@ module.exports = class SlotsCommand extends Command {
 		super(client, {
 			name: 'slots',
 			group: 'games-sp',
-			memberName: 'slots',
 			description: 'Play a game of slots.'
 		});
 	}

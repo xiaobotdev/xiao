@@ -20,7 +20,6 @@ module.exports = class SpongebobTimeCardCommand extends Command {
 				'sponge-time'
 			],
 			group: 'edit-image-text',
-			memberName: 'spongebob-time-card',
 			description: 'Sends a Spongebob Time Card with the text of your choice.',
 			throttling: {
 				usages: 2,

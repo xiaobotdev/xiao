@@ -10,7 +10,6 @@ module.exports = class WouldYouRatherCommand extends Command {
 			name: 'would-you-rather',
 			aliases: ['wy-rather', 'wyr'],
 			group: 'games-sp',
-			memberName: 'would-you-rather',
 			description: 'Responds with a random "Would you rather ...?" question.',
 			game: true,
 			credit: [

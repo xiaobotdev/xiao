@@ -6,7 +6,6 @@ module.exports = class HiCommand extends Command {
 			name: 'hi',
 			aliases: ['hello', 'hey', 'hoi', 'hola'],
 			group: 'single',
-			memberName: 'hi',
 			description: 'Hello.'
 		});
 	}

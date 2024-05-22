@@ -7,7 +7,6 @@ module.exports = class QuantumCoinCommand extends Command {
 			name: 'quantum-coin',
 			aliases: ['q-coin'],
 			group: 'random-res',
-			memberName: 'quantum-coin',
 			description: 'Flips a coin that lands on some form of nothing.'
 		});
 	}

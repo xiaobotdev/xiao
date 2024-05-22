@@ -7,7 +7,6 @@ module.exports = class OwOCommand extends Command {
 			name: 'owo',
 			aliases: ['furry-speak', 'fur-speak'],
 			group: 'edit-text',
-			memberName: 'owo',
 			description: 'OwO.',
 			credit: [
 				{

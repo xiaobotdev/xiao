@@ -7,7 +7,6 @@ module.exports = class LeetCommand extends Command {
 			name: 'leet',
 			aliases: ['l33t', 'leet-speak', 'l33t-speak', '1337', '1337-speak'],
 			group: 'edit-text',
-			memberName: 'leet',
 			description: 'Converts text to l33t speak.',
 			credit: [
 				{

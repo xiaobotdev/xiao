@@ -10,7 +10,6 @@ module.exports = class ThatSignWontStopMeCommand extends Command {
 			name: 'that-sign-wont-stop-me',
 			aliases: ['sign-wont-stop-me', 'i-cant-read', 'because-i-cant-read', 'dw-sign'],
 			group: 'edit-meme',
-			memberName: 'that-sign-wont-stop-me',
 			description: 'Sends a "That Sign Won\'t Stop Me, I Can\'t read!" meme with the presentation of your choice.',
 			throttling: {
 				usages: 2,

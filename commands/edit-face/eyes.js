@@ -8,7 +8,6 @@ module.exports = class EyesCommand extends Command {
 		super(client, {
 			name: 'eyes',
 			group: 'edit-face',
-			memberName: 'eyes',
 			description: 'Draws emoji eyes onto the faces in an image.',
 			throttling: {
 				usages: 1,

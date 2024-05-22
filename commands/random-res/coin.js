@@ -7,7 +7,6 @@ module.exports = class CoinCommand extends Command {
 			name: 'coin',
 			aliases: ['coin-flip', 'flip'],
 			group: 'random-res',
-			memberName: 'coin',
 			description: 'Flips a coin.'
 		});
 	}

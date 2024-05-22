@@ -10,7 +10,6 @@ module.exports = class LisaPresentationCommand extends Command {
 			name: 'bart-chalkboard',
 			aliases: ['bart', 'bart-chalk', 'bart-board'],
 			group: 'edit-meme',
-			memberName: 'bart-chalkboard',
 			description: 'Sends a "Bart Chalkboard" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

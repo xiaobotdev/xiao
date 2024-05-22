@@ -9,7 +9,6 @@ module.exports = class WhiteboardCommand extends Command {
 		super(client, {
 			name: 'whiteboard',
 			group: 'edit-meme',
-			memberName: 'whiteboard',
 			description: 'Sends a "Jim Halpert point to whiteboard" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

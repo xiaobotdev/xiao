@@ -9,7 +9,6 @@ module.exports = class AspectRatioCommand extends Command {
 			name: 'aspect-ratio',
 			aliases: ['aspect', 'ratio'],
 			group: 'analyze',
-			memberName: 'aspect-ratio',
 			description: 'Determines an image\'s aspect ratio.',
 			throttling: {
 				usages: 2,

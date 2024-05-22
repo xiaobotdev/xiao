@@ -5,7 +5,6 @@ module.exports = class RepeatCommand extends Command {
 		super(client, {
 			name: 'repeat',
 			group: 'edit-text',
-			memberName: 'repeat',
 			description: 'Repeat text over and over and over and over (etc).',
 			args: [
 				{

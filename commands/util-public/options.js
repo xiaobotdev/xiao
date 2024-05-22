@@ -7,7 +7,6 @@ module.exports = class OptionsCommand extends Command {
 			name: 'options',
 			aliases: ['options-list'],
 			group: 'util-public',
-			memberName: 'options',
 			description: 'Responds with a list of server options.',
 			guarded: true
 		});

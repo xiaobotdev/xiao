@@ -8,7 +8,6 @@ module.exports = class StatusButtonCommand extends Command {
 			name: 'status-button',
 			aliases: ['c99-nl'],
 			group: 'edit-avatar',
-			memberName: 'status-button',
 			description: 'Creates a Discord status button from c99.nl.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

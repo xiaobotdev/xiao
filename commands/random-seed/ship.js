@@ -18,7 +18,6 @@ module.exports = class ShipCommand extends Command {
 			name: 'ship',
 			aliases: ['compatability-meter', 'compatability', 'love-tester', 'love-test'],
 			group: 'random-seed',
-			memberName: 'ship',
 			description: 'Ships two users together.',
 			throttling: {
 				usages: 2,

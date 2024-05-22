@@ -9,7 +9,6 @@ module.exports = class LorcanaCommand extends Command {
 			name: 'lorcana',
 			aliases: ['lorcana-card'],
 			group: 'search',
-			memberName: 'lorcana',
 			description: 'Responds with info on a Lorcana card.',
 			credit: [
 				{

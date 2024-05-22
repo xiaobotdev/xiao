@@ -9,7 +9,6 @@ module.exports = class ImplodeCommand extends Command {
 		super(client, {
 			name: 'implode',
 			group: 'edit-image',
-			memberName: 'implode',
 			description: 'Draws an image or a user\'s avatar but imploded.',
 			throttling: {
 				usages: 2,

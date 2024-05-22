@@ -7,7 +7,6 @@ module.exports = class PokedexAbilityCommand extends Command {
 			name: 'pokedex-ability',
 			aliases: ['pokemon-ability', 'pokémon-ability', 'pokédex-ability', 'pkmn-ability'],
 			group: 'pokedex',
-			memberName: 'pokedex-ability',
 			description: 'Searches the Pokédex for a Pokémon ability.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

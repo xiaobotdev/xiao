@@ -8,7 +8,6 @@ module.exports = class BattleCommand extends Command {
 			name: 'battle',
 			aliases: ['fight', 'death-battle', 'rpg-battle'],
 			group: 'games-mp',
-			memberName: 'battle',
 			description: 'Engage in a turn-based battle against another user or the AI.',
 			game: true,
 			args: [

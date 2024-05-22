@@ -8,7 +8,6 @@ module.exports = class RotateCommand extends Command {
 		super(client, {
 			name: 'rotate',
 			group: 'edit-image',
-			memberName: 'rotate',
 			description: 'Draws an image or a user\'s avatar but rotated a number of degrees.',
 			throttling: {
 				usages: 2,

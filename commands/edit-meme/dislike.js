@@ -10,7 +10,6 @@ module.exports = class DislikeCommand extends Command {
 			name: 'dislike',
 			aliases: ['disliked', 'everyone-disliked-that', 'disliked-that', 'everyone-disliked'],
 			group: 'edit-meme',
-			memberName: 'dislike',
 			description: 'Sends an "Everyone Disliked That" meme with the image of your choice.',
 			throttling: {
 				usages: 2,

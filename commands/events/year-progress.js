@@ -6,7 +6,6 @@ module.exports = class YearProgressCommand extends Command {
 			name: 'year-progress',
 			aliases: ['year', 'year-prog', 'y-progress', 'y-prog'],
 			group: 'events',
-			memberName: 'year-progress',
 			description: 'Responds with the progress of the current year.'
 		});
 	}

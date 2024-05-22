@@ -6,7 +6,6 @@ module.exports = class ComplimentCommand extends Command {
 		super(client, {
 			name: 'compliment',
 			group: 'random-res',
-			memberName: 'compliment',
 			description: 'Compliments a user.',
 			args: [
 				{

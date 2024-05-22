@@ -8,7 +8,6 @@ module.exports = class PokedexCryCommand extends Command {
 			name: 'pokedex-cry',
 			aliases: ['pokemon-cry', 'pokémon-cry', 'pokédex-cry', 'pkmn-cry'],
 			group: 'pokedex',
-			memberName: 'pokedex-cry',
 			description: 'Plays a Pokémon\'s cry.',
 			userPermissions: [PermissionFlagsBits.Connect, PermissionFlagsBits.Speak],
 			throttling: {

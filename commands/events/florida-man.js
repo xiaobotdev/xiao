@@ -13,7 +13,6 @@ module.exports = class FloridaManCommand extends Command {
 			name: 'florida-man',
 			aliases: ['florida'],
 			group: 'events',
-			memberName: 'florida-man',
 			description: 'Responds with the Flordia man of the day.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

@@ -8,7 +8,6 @@ module.exports = class LastRunLeaderboardCommand extends Command {
 			name: 'last-run-leaderboard',
 			aliases: ['last-run-lb', 'lr-leaderboard', 'lr-lb'],
 			group: 'util-public',
-			memberName: 'last-run-leaderboard',
 			description: 'Responds with the bot\'s most recently run commands.',
 			guarded: true,
 			args: [

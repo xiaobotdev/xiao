@@ -17,7 +17,6 @@ module.exports = class MathCommand extends Command {
 			name: 'math',
 			aliases: ['mathematics', 'solve'],
 			group: 'edit-number',
-			memberName: 'math',
 			description: 'Evaluates a math expression.',
 			args: [
 				{

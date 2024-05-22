@@ -22,7 +22,6 @@ module.exports = class PokedexCommand extends Command {
 			name: 'pokedex',
 			aliases: ['pokemon', 'pokémon', 'pokédex', 'pkmn'],
 			group: 'pokedex',
-			memberName: 'pokedex',
 			description: 'Searches the Pokédex for a Pokémon.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

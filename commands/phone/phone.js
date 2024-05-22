@@ -7,7 +7,6 @@ module.exports = class PhoneCommand extends Command {
 			name: 'phone',
 			aliases: ['phone-call', 'call'],
 			group: 'phone',
-			memberName: 'phone',
 			description: 'Starts a phone call with a random server.',
 			throttling: {
 				usages: 1,

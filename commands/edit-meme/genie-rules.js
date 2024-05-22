@@ -10,7 +10,6 @@ module.exports = class GenieRulesCommand extends Command {
 			name: 'genie-rules',
 			aliases: ['genie', '4-rules', 'four-rules', 'there-are-four-rules', 'there-are-4-rules'],
 			group: 'edit-meme',
-			memberName: 'genie-rules',
 			description: 'Sends a "There are 4 rules" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

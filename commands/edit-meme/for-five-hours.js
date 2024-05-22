@@ -10,7 +10,6 @@ module.exports = class ForFiveHoursCommand extends Command {
 			name: 'for-five-hours',
 			aliases: ['its-beautiful-ive-looked-at-this-for-five-hours-now', 'its-beautiful'],
 			group: 'edit-meme',
-			memberName: 'for-five-hours',
 			description: 'Sends an "I\'ve looked at this for 5 hours now" meme with the image of your choice.',
 			throttling: {
 				usages: 2,
