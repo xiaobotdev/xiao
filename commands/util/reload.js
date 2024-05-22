@@ -15,7 +15,8 @@ module.exports = class ReloadCommand extends Command {
 				{
 					key: 'command',
 					label: 'command',
-					type: 'command'
+					type: 'command',
+					default: ''
 				}
 			]
 		});
@@ -24,10 +25,17 @@ module.exports = class ReloadCommand extends Command {
 	run(msg, { command }) {
 		this.client.exportCommandLeaderboard();
 		this.client.exportLastRun();
-		command.reload();
+		if (command) {
+			command.reload();
+		} else {
+			for (const cmd of this.client.registry.commands.values()) {
+				cmd.reload();
+			}
+		}
 		this.client.importCommandLeaderboard();
 		this.client.importLastRun();
 		this.client.registry.commands.get('cloc').cache = null;
+		if (!command) return msg.say('Reloaded all commands.');
 		return msg.say(`Reloaded the \`${command.name}\` command.`);
 	}
 };
