@@ -11,7 +11,7 @@ module.exports = class PoliceTapeCommand extends Command {
 			name: 'police-tape',
 			aliases: ['caution-tape'],
 			group: 'edit-image',
-			memberName: 'police tape',
+			memberName: 'police-tape',
 			description: 'Draws police tape over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,
