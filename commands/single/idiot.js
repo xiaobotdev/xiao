@@ -13,7 +13,7 @@ module.exports = class IdiotCommand extends Command {
 	}
 
 	run(msg) {
-		if (!IDIOT_URL) return msg.reply('_Stares at you._')
+		if (!IDIOT_URL) return msg.reply('_Stares at you._');
 		return msg.say(IDIOT_URL);
 	}
 };
