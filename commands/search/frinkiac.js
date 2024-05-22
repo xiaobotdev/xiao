@@ -9,7 +9,6 @@ module.exports = class FrinkiacCommand extends Command {
 			name: 'frinkiac',
 			aliases: ['the-simpsons', 'simpsons', 'simpson'],
 			group: 'search',
-			memberName: 'frinkiac',
 			description: 'Input a line from the Simpsons to get the episode/season.',
 			credit: [
 				{

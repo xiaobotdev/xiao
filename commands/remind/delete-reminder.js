@@ -6,7 +6,6 @@ module.exports = class DeleteReminderCommand extends Command {
 			name: 'delete-reminder',
 			aliases: ['delete-remind', 'delete-timer', 'del-reminder', 'del-remind', 'del-timer'],
 			group: 'remind',
-			memberName: 'delete-reminder',
 			description: 'Deletes your reminder(s) set in this channel.'
 		});
 	}

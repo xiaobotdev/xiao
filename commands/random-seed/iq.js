@@ -7,7 +7,6 @@ module.exports = class IQCommand extends Command {
 			name: 'iq',
 			aliases: ['intelligence-quotient'],
 			group: 'random-seed',
-			memberName: 'iq',
 			description: 'Determines a user\'s IQ.',
 			args: [
 				{

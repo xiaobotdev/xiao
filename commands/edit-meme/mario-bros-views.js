@@ -10,7 +10,6 @@ module.exports = class MarioBrosViewsCommand extends Command {
 			name: 'mario-bros-views',
 			aliases: ['mario-views', 'luigi-views', 'mario-luigi-views', 'mario-says', 'luigi-says'],
 			group: 'edit-meme',
-			memberName: 'mario-bros-views',
 			description: 'Sends a "Mario Bros. Views" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

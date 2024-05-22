@@ -11,7 +11,6 @@ module.exports = class GirlWorthFightingForCommand extends Command {
 			name: 'girl-worth-fighting-for',
 			aliases: ['a-girl-worth-fighting-for', 'ling'],
 			group: 'edit-meme',
-			memberName: 'girl-worth-fighting-for',
 			description: 'Draws an image or a user\'s avatar as the object of Ling\'s affection.',
 			throttling: {
 				usages: 2,

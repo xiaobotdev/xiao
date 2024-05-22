@@ -7,7 +7,6 @@ module.exports = class IdiotCommand extends Command {
 			name: 'idiot',
 			aliases: ['moron'],
 			group: 'single',
-			memberName: 'idiot',
 			description: 'Sends a link to an idiot.'
 		});
 	}

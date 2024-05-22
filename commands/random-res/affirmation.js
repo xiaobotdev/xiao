@@ -6,7 +6,6 @@ module.exports = class AffirmationCommand extends Command {
 		super(client, {
 			name: 'affirmation',
 			group: 'random-res',
-			memberName: 'affirmation',
 			description: 'Responds with a random affirmation.',
 			credit: [
 				{

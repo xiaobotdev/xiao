@@ -6,7 +6,6 @@ module.exports = class GradeCommand extends Command {
 			name: 'grade',
 			aliases: ['grade-calculator', 'grade-calc'],
 			group: 'edit-number',
-			memberName: 'grade',
 			description: 'Determines your grade on an assignment on an 100-point scale.',
 			args: [
 				{

@@ -9,7 +9,6 @@ module.exports = class PokedexCommand extends Command {
 			name: 'pokedex-stats',
 			aliases: ['pokemon-stats', 'pokémon-stats', 'pokédex-stats', 'pkmn-stats'],
 			group: 'pokedex',
-			memberName: 'pokedex-stats',
 			description: 'Responds with the stats for a Pokémon.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

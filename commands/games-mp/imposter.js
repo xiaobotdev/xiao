@@ -12,7 +12,6 @@ module.exports = class ImposterCommand extends Command {
 			name: 'imposter',
 			aliases: ['among-us'],
 			group: 'games-mp',
-			memberName: 'imposter',
 			description: 'Who is the imposter among us?',
 			guildOnly: true,
 			game: true,

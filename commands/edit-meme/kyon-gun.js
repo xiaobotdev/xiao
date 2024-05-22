@@ -10,7 +10,6 @@ module.exports = class KyonGunCommand extends Command {
 			name: 'kyon-gun',
 			aliases: ['kyon-snapped', 'endless-eight'],
 			group: 'edit-meme',
-			memberName: 'kyon-gun',
 			description: 'Draws an image or a user\'s avatar behind Kyon shooting a gun.',
 			throttling: {
 				usages: 2,

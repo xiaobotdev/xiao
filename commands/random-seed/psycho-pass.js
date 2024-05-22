@@ -8,7 +8,6 @@ module.exports = class PsychoPassCommand extends Command {
 			name: 'psycho-pass',
 			aliases: ['crime-coefficient'],
 			group: 'random-seed',
-			memberName: 'psycho-pass',
 			description: 'Determines your Crime Coefficient.',
 			credit: [
 				{

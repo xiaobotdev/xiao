@@ -11,7 +11,6 @@ module.exports = class HeartsCommand extends Command {
 			name: 'hearts',
 			aliases: ['heart'],
 			group: 'edit-avatar',
-			memberName: 'hearts',
 			description: 'Draws hearts around a user\'s avatar.',
 			throttling: {
 				usages: 2,

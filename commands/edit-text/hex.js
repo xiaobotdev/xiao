@@ -6,7 +6,6 @@ module.exports = class HexCommand extends Command {
 			name: 'hex',
 			aliases: ['hexidecimal'],
 			group: 'edit-text',
-			memberName: 'hex',
 			description: 'Converts text to hex.',
 			args: [
 				{

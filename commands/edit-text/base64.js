@@ -7,7 +7,6 @@ module.exports = class Base64Command extends Command {
 		super(client, {
 			name: 'base64',
 			group: 'edit-text',
-			memberName: 'base64',
 			description: 'Converts text to/from Base64.',
 			details: `**Modes:** ${modes.join(', ')}`,
 			args: [

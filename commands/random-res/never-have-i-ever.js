@@ -8,7 +8,6 @@ module.exports = class NeverHaveIEverCommand extends Command {
 			name: 'never-have-i-ever',
 			aliases: ['nhie', 'never-have-i', 'never-have', 'never-ever'],
 			group: 'random-res',
-			memberName: 'never-have-i-ever',
 			description: 'Responds with a random "Never Have I Ever..." statement.',
 			credit: [
 				{

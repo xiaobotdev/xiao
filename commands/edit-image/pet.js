@@ -12,7 +12,6 @@ module.exports = class PetCommand extends Command {
 		super(client, {
 			name: 'pet',
 			group: 'edit-image',
-			memberName: 'pet',
 			description: 'Pets an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

@@ -6,7 +6,6 @@ module.exports = class ScientificNotationCommand extends Command {
 			name: 'scientific-notation',
 			aliases: ['science-notation', 'exponential-notation'],
 			group: 'edit-number',
-			memberName: 'scientific-notation',
 			description: 'Converts a number to scientific notation.',
 			args: [
 				{

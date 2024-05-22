@@ -8,7 +8,6 @@ module.exports = class SquareCommand extends Command {
 		super(client, {
 			name: 'square',
 			group: 'edit-image',
-			memberName: 'square',
 			description: 'Draws an image or a user\'s avatar as a square.',
 			throttling: {
 				usages: 2,

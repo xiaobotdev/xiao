@@ -9,7 +9,6 @@ module.exports = class BunnyCommand extends Command {
 			name: 'bunny',
 			aliases: ['bun', 'rabbit', 'bunny-fact', 'bun-fact', 'rabbit-fact'],
 			group: 'random-img',
-			memberName: 'bunny',
 			description: 'Responds with a random bunny image and fact.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

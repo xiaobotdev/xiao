@@ -13,7 +13,6 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 			name: 'neko-atsume-password',
 			aliases: ['neko-atsume', 'neko-password', 'neko-atsume-pswd', 'neko-pswd'],
 			group: 'events',
-			memberName: 'neko-atsume-password',
 			description: 'Responds with today\'s Neko Atsume password.',
 			details: `**Locales:** ${locales.join(', ')}`,
 			credit: [

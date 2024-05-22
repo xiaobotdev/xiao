@@ -10,7 +10,6 @@ module.exports = class AxisCultSignUpCommand extends Command {
 			name: 'axis-cult-sign-up',
 			aliases: ['axis-sign-up'],
 			group: 'edit-image-text',
-			memberName: 'axis-cult-sign-up',
 			description: 'Sends an Axis Cult Sign-Up sheet for you. Join today!',
 			throttling: {
 				usages: 2,

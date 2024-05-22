@@ -16,7 +16,6 @@ module.exports = class ConnectFourCommand extends Command {
 			name: 'connect-four',
 			aliases: ['connect-4', 'c4'],
 			group: 'games-mp',
-			memberName: 'connect-four',
 			description: 'Play a game of Connect Four with another user or the AI.',
 			game: true,
 			credit: [

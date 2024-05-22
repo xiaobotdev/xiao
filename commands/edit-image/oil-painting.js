@@ -10,7 +10,6 @@ module.exports = class OilPaintingCommand extends Command {
 			name: 'oil-painting',
 			aliases: ['oil', 'paint', 'painting'],
 			group: 'edit-image',
-			memberName: 'oil-painting',
 			description: 'Draws an image or a user\'s avatar but with oil paints.',
 			throttling: {
 				usages: 2,

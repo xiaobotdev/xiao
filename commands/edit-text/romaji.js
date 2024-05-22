@@ -8,7 +8,6 @@ module.exports = class RomajiCommand extends Command {
 			name: 'romaji',
 			aliases: ['romajify', 'hepburn'],
 			group: 'edit-text',
-			memberName: 'romaji',
 			description: 'Converts Japanese text to Romaji.',
 			args: [
 				{

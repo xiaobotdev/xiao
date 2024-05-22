@@ -11,7 +11,6 @@ module.exports = class GruPlanCommand extends Command {
 			name: 'gru-plan',
 			aliases: ['grus-plan', 'gru'],
 			group: 'edit-meme',
-			memberName: 'gru-plan',
 			description: 'Sends a Gru\'s Plan meme with steps of your choice.',
 			throttling: {
 				usages: 2,

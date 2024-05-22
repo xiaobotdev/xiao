@@ -9,7 +9,6 @@ module.exports = class VignetteCommand extends Command {
 		super(client, {
 			name: 'vignette',
 			group: 'edit-image',
-			memberName: 'vignette',
 			description: 'Draws an image or a user\'s avatar with a vignette.',
 			throttling: {
 				usages: 2,

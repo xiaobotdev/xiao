@@ -8,7 +8,6 @@ module.exports = class DuckCommand extends Command {
 			name: 'duck',
 			aliases: ['ducky', 'quack'],
 			group: 'random-img',
-			memberName: 'duck',
 			description: 'Responds with a random duck image.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

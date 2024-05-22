@@ -10,7 +10,6 @@ module.exports = class CatchCommand extends Command {
 			name: 'catch',
 			aliases: ['everyone-caught-is', 'everyone-caught-is-a'],
 			group: 'edit-meme',
-			memberName: 'catch',
 			description: 'Catch users, revealing who is something.',
 			throttling: {
 				usages: 2,

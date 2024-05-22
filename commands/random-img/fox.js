@@ -7,7 +7,6 @@ module.exports = class FoxCommand extends Command {
 		super(client, {
 			name: 'fox',
 			group: 'random-img',
-			memberName: 'fox',
 			description: 'Responds with a random fox image.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

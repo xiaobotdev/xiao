@@ -14,7 +14,6 @@ module.exports = class TableflipCommand extends Command {
 			name: 'tableflip',
 			aliases: ['a-tableflip', 'animated-tableflip'],
 			group: 'single',
-			memberName: 'tableflip',
 			description: 'Flips a table... With animation!'
 		});
 	}

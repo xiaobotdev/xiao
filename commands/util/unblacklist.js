@@ -8,7 +8,6 @@ module.exports = class UnblacklistCommand extends Command {
 			name: 'unblacklist',
 			aliases: ['whitelist'],
 			group: 'util',
-			memberName: 'unblacklist',
 			description: 'Unblacklists a user or server.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

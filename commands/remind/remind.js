@@ -8,7 +8,6 @@ module.exports = class RemindCommand extends Command {
 			name: 'remind',
 			aliases: ['timer', 'remind-me'],
 			group: 'remind',
-			memberName: 'remind',
 			description: 'Sets a reminder.',
 			args: [
 				{

@@ -15,7 +15,6 @@ module.exports = class NobodyNameCommand extends Command {
 				'org-xiii-name'
 			],
 			group: 'edit-text',
-			memberName: 'nobody-name',
 			description: 'Converts a name into the Organization XIII style.',
 			credit: [
 				{

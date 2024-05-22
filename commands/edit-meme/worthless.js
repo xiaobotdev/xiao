@@ -11,7 +11,6 @@ module.exports = class WorthlessCommand extends Command {
 			name: 'worthless',
 			aliases: ['this-is-worthless'],
 			group: 'edit-meme',
-			memberName: 'worthless',
 			description: 'Draws an image or a user\'s avatar over Gravity Falls\' "This is worthless." meme.',
 			throttling: {
 				usages: 2,

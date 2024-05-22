@@ -6,7 +6,6 @@ module.exports = class IpCommand extends Command {
 		super(client, {
 			name: 'ip',
 			group: 'util',
-			memberName: 'ip',
 			description: 'Responds with the IP address the bot\'s server is running on.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,

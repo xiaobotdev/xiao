@@ -7,7 +7,6 @@ module.exports = class PauseCommand extends Command {
 			name: 'pause',
 			aliases: ['pause-voice-channel', 'pause-vc', 'pause-voice', 'pause-music', 'pause-playing'],
 			group: 'util-voice',
-			memberName: 'pause',
 			description: 'Pauses the current audio playing.',
 			guildOnly: true,
 			guarded: true

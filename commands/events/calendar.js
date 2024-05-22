@@ -10,7 +10,6 @@ module.exports = class CalendarCommand extends Command {
 			name: 'calendar',
 			aliases: ['cal'],
 			group: 'events',
-			memberName: 'calendar',
 			description: 'Responds with the calendar for a specific month and year.',
 			args: [
 				{

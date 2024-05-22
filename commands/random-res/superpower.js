@@ -7,7 +7,6 @@ module.exports = class SuperpowerCommand extends Command {
 		super(client, {
 			name: 'superpower',
 			group: 'random-res',
-			memberName: 'superpower',
 			description: 'Responds with a random superpower.',
 			credit: [
 				{

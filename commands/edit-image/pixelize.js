@@ -10,7 +10,6 @@ module.exports = class PixelizeCommand extends Command {
 			name: 'pixelize',
 			aliases: ['pixel'],
 			group: 'edit-image',
-			memberName: 'pixelize',
 			description: 'Draws an image or a user\'s avatar pixelized.',
 			throttling: {
 				usages: 2,

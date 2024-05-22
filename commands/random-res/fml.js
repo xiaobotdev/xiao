@@ -8,7 +8,6 @@ module.exports = class FmlCommand extends Command {
 			name: 'fml',
 			aliases: ['fuck-my-life', 'f-my-life'],
 			group: 'random-res',
-			memberName: 'fml',
 			description: 'Responds with a FML quote.',
 			nsfw: true,
 			credit: [

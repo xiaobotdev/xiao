@@ -7,7 +7,6 @@ module.exports = class LizardCommand extends Command {
 		super(client, {
 			name: 'lizard',
 			group: 'random-img',
-			memberName: 'lizard',
 			description: 'Responds with a random lizard image.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

@@ -10,7 +10,6 @@ module.exports = class SpotifyNowPlayingCommand extends Command {
 			name: 'spotify-now-playing',
 			aliases: ['now-playing-spotify', 'spotify', 'spotify-playing', 'playing-spotify'],
 			group: 'edit-image',
-			memberName: 'spotify-now-playing',
 			description: 'Draws an image or a user\'s avatar on a Spotify album with the name and artist of your choice.',
 			throttling: {
 				usages: 2,

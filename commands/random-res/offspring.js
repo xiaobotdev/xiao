@@ -7,7 +7,6 @@ module.exports = class OffspringCommand extends Command {
 			name: 'offspring',
 			aliases: ['sex'],
 			group: 'random-res',
-			memberName: 'offspring',
 			description: 'Determines if your new child will be a boy or a girl.'
 		});
 	}

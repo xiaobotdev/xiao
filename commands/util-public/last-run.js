@@ -7,7 +7,6 @@ module.exports = class LastRunCommand extends Command {
 			name: 'last-run',
 			aliases: ['command-last-run', 'cmd-last-run', 'cmd-run', 'command-run'],
 			group: 'util-public',
-			memberName: 'last-run',
 			description: 'Responds with a command\'s most recent run date.',
 			guarded: true,
 			args: [

@@ -10,7 +10,6 @@ module.exports = class ScrollOfTruthCommand extends Command {
 			name: 'scroll-of-truth',
 			aliases: ['truth', 'scroll', 'truth-scroll', 'scroll-truth'],
 			group: 'edit-meme',
-			memberName: 'scroll-of-truth',
 			description: 'Sends a "Scroll of Truth" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

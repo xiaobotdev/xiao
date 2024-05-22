@@ -13,7 +13,6 @@ module.exports = class GuesspionageCommand extends Command {
 		super(client, {
 			name: 'guesspionage',
 			group: 'games-mp',
-			memberName: 'guesspionage',
 			description: 'Tests your knowledge of humans as you guess how people responded to poll questions.',
 			guildOnly: true,
 			game: true,

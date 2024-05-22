@@ -9,7 +9,6 @@ module.exports = class WorthCommand extends Command {
 			name: 'worth',
 			aliases: ['self-worth'],
 			group: 'random-seed',
-			memberName: 'worth',
 			description: 'Determines how much a user is worth.',
 			args: [
 				{

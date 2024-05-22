@@ -10,7 +10,6 @@ module.exports = class NeopetsItemCommand extends Command {
 			name: 'neopets-item',
 			aliases: ['neo-item'],
 			group: 'search',
-			memberName: 'neopets-item',
 			description: 'Responds with information on a specific Neopets item.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

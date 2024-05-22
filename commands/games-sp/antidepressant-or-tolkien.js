@@ -24,7 +24,6 @@ module.exports = class AntidepressantOrTolkienCommand extends Command {
 				'a-or-t'
 			],
 			group: 'games-sp',
-			memberName: 'antidepressant-or-tokien',
 			description: 'See if you can guess if a word is an Antidepressant or Tolkien character.',
 			game: true,
 			credit: [

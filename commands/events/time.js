@@ -8,7 +8,6 @@ module.exports = class TimeCommand extends Command {
 			name: 'time',
 			aliases: ['time-zone'],
 			group: 'events',
-			memberName: 'time',
 			description: 'Responds with the current time in a particular location.',
 			details: '**Zones:** <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>',
 			credit: [

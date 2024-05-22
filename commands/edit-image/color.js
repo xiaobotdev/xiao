@@ -9,7 +9,6 @@ module.exports = class ColorCommand extends Command {
 			name: 'color',
 			aliases: ['colour'],
 			group: 'edit-image',
-			memberName: 'color',
 			description: 'Sends an image of the color you choose.',
 			throttling: {
 				usages: 2,

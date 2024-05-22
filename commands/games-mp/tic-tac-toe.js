@@ -11,7 +11,6 @@ module.exports = class TicTacToeCommand extends Command {
 			name: 'tic-tac-toe',
 			aliases: ['ttt', 'tic-tac'],
 			group: 'games-mp',
-			memberName: 'tic-tac-toe',
 			description: 'Play a game of tic-tac-toe with another user or the AI.',
 			game: true,
 			args: [

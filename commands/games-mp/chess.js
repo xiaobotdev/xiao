@@ -17,7 +17,6 @@ module.exports = class ChessCommand extends Command {
 		super(client, {
 			name: 'chess',
 			group: 'games-mp',
-			memberName: 'chess',
 			description: 'Play a game of Chess with another user or the AI.',
 			game: true,
 			credit: [

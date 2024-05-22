@@ -11,7 +11,6 @@ module.exports = class TarotCommand extends Command {
 			name: 'tarot',
 			aliases: ['tarot-reading'],
 			group: 'games-sp',
-			memberName: 'tarot',
 			description: 'Provides a fortune using Tarot cards.',
 			game: true,
 			credit: [

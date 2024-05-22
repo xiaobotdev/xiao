@@ -11,7 +11,6 @@ module.exports = class HearingTestCommand extends Command {
 			name: 'hearing-test',
 			aliases: ['hear-test', 'hear', 'hearing'],
 			group: 'games-sp',
-			memberName: 'hearing-test',
 			description: 'Test your hearing.',
 			throttling: {
 				usages: 2,

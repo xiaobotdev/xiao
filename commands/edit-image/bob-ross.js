@@ -11,7 +11,6 @@ module.exports = class BobRossCommand extends Command {
 			name: 'bob-ross',
 			aliases: ['ross'],
 			group: 'edit-image',
-			memberName: 'bob-ross',
 			description: 'Draws an image or a user\'s avatar over Bob Ross\' canvas.',
 			throttling: {
 				usages: 2,

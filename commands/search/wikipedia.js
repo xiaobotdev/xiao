@@ -9,7 +9,6 @@ module.exports = class WikipediaCommand extends Command {
 		super(client, {
 			name: 'wikipedia',
 			group: 'search',
-			memberName: 'wikipedia',
 			description: 'Searches Wikipedia for your query.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

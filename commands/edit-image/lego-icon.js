@@ -10,7 +10,6 @@ module.exports = class LegoIconCommand extends Command {
 			name: 'lego-icon',
 			aliases: ['icon-lego', 'lego-star-wars', 'lego-sw'],
 			group: 'edit-image',
-			memberName: 'lego-icon',
 			description: 'Edits an image or avatar onto a character icon from LEGO Star Wars.',
 			throttling: {
 				usages: 2,

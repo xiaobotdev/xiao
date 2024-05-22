@@ -10,7 +10,6 @@ module.exports = class WordOfTheDayCommand extends Command {
 			name: 'word-of-the-day',
 			aliases: ['daily-word', 'wotd', 'word-of-day'],
 			group: 'events',
-			memberName: 'word-of-the-day',
 			description: 'Responds with today\'s word of the day.',
 			credit: [
 				{

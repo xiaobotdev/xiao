@@ -8,7 +8,6 @@ module.exports = class GravatarCommand extends Command {
 		super(client, {
 			name: 'gravatar',
 			group: 'search',
-			memberName: 'gravatar',
 			description: 'Responds with the Gravatar for an email.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

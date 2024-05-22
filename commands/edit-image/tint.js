@@ -9,7 +9,6 @@ module.exports = class TintCommand extends Command {
 		super(client, {
 			name: 'tint',
 			group: 'edit-image',
-			memberName: 'tint',
 			description: 'Draws an image or a user\'s avatar but tinted a specific color.',
 			throttling: {
 				usages: 2,

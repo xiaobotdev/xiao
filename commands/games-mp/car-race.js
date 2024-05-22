@@ -23,7 +23,6 @@ module.exports = class CarRaceCommand extends Command {
 			name: 'car-race',
 			aliases: ['cars', 'race'],
 			group: 'games-mp',
-			memberName: 'car-race',
 			description: 'Race a car against another user or the AI.',
 			game: true,
 			credit: [

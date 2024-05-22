@@ -6,7 +6,6 @@ module.exports = class CleverbotEndCommand extends Command {
 			name: 'cleverbot-end',
 			aliases: ['clevs-end', 'chat-end', 'end'],
 			group: 'cleverbot',
-			memberName: 'cleverbot-end',
 			description: 'Ends the current Cleverbot chat.'
 		});
 	}

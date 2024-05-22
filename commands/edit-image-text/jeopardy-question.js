@@ -7,7 +7,6 @@ module.exports = class JeopardyQuestionCommand extends Command {
 			name: 'jeopardy-question',
 			aliases: ['clue-card', 'jeopardy-clue-card', 'jeopardy-clue'],
 			group: 'edit-image-text',
-			memberName: 'jeopardy-question',
 			description: 'Sends a Jeopardy Question with the text of your choice.',
 			throttling: {
 				usages: 2,

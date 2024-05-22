@@ -11,7 +11,6 @@ module.exports = class FireFrameCommand extends Command {
 			name: 'fire-frame',
 			aliases: ['hell-frame', 'burn-frame', 'flames-frame', 'fire', 'hell', 'burn', 'flames'],
 			group: 'edit-image',
-			memberName: 'fire-frame',
 			description: 'Draws a fiery border over an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

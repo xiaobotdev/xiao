@@ -11,7 +11,6 @@ module.exports = class QuizCommand extends Command {
 			name: 'quiz',
 			aliases: ['trivia'],
 			group: 'games-sp',
-			memberName: 'quiz',
 			description: 'Answer a quiz question.',
 			details: `**Difficulties:** ${difficulties.join(', ')}`,
 			game: true,

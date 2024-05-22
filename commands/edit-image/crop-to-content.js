@@ -9,7 +9,6 @@ module.exports = class CropToContentCommand extends Command {
 		super(client, {
 			name: 'crop-to-content',
 			group: 'edit-image',
-			memberName: 'crop-to-content',
 			description: 'Crops an image to its content.',
 			throttling: {
 				usages: 2,

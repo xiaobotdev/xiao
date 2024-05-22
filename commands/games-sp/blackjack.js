@@ -11,7 +11,6 @@ module.exports = class BlackjackCommand extends Command {
 			name: 'blackjack',
 			aliases: ['twenty-one', '21', 'bj'],
 			group: 'games-sp',
-			memberName: 'blackjack',
 			description: 'Play a game of blackjack.',
 			game: true,
 			args: [

@@ -9,7 +9,6 @@ module.exports = class BrazzersCommand extends Command {
 		super(client, {
 			name: 'brazzers',
 			group: 'edit-image',
-			memberName: 'brazzers',
 			description: 'Draws an image with the Brazzers logo in the corner.',
 			nsfw: true,
 			throttling: {

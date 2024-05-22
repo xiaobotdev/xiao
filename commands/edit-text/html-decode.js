@@ -7,7 +7,6 @@ module.exports = class HtmlDecodeCommand extends Command {
 			name: 'html-decode',
 			aliases: ['decode-html'],
 			group: 'edit-text',
-			memberName: 'html-decode',
 			description: 'Decodes HTML characters to regular characters.',
 			args: [
 				{

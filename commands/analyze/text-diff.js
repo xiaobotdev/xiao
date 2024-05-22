@@ -8,7 +8,6 @@ module.exports = class TextDiffCommand extends Command {
 			name: 'text-diff',
 			aliases: ['diff', 'percent-diff', 'name-diff'],
 			group: 'analyze',
-			memberName: 'text-diff',
 			description: 'Compares two different bits of text.',
 			args: [
 				{

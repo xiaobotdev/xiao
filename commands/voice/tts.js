@@ -12,7 +12,6 @@ module.exports = class TtsCommand extends Command {
 			name: 'tts',
 			aliases: ['text-to-speech'],
 			group: 'voice',
-			memberName: 'tts',
 			description: 'Say the text you provide in the accent you choose.',
 			guildOnly: true,
 			throttling: {

@@ -7,7 +7,6 @@ module.exports = class ChineseZodiacCommand extends Command {
 			name: 'chinese-zodiac',
 			aliases: ['chinese-zodiac-sign', 'c-zodiac', 'c-zodiac-sign'],
 			group: 'analyze',
-			memberName: 'chinese-zodiac',
 			description: 'Responds with the Chinese Zodiac Sign for the given year.',
 			args: [
 				{

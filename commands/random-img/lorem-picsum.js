@@ -8,7 +8,6 @@ module.exports = class LoremPicsumCommand extends Command {
 			name: 'lorem-picsum',
 			aliases: ['lorem-p', 'picsum'],
 			group: 'random-img',
-			memberName: 'lorem-picsum',
 			description: 'Responds with a random image of a certain size.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

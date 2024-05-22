@@ -10,7 +10,6 @@ module.exports = class ChocolateMilkCommand extends Command {
 			name: 'chocolate-milk',
 			aliases: ['milk', 'sip-milk', 'sip-chocolate-milk', 'choccy', 'sip-choccy'],
 			group: 'edit-image',
-			memberName: 'chocolate-milk',
 			description: 'Draws an image or user\'s avatar holding chocolate milk.',
 			throttling: {
 				usages: 2,

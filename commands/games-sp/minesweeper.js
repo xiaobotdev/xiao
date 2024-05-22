@@ -14,7 +14,6 @@ module.exports = class MinesweeperCommand extends Command {
 			name: 'minesweeper',
 			aliases: ['bombsweeper', 'mines', 'bombs', 'msweeper', 'minesweep', 'msweep'],
 			group: 'games-sp',
-			memberName: 'minesweeper',
 			description: 'Play a game of Minesweeper.',
 			clientPermissions: [PermissionFlagsBits.ManageMessages, PermissionFlagsBits.ReadMessageHistory],
 			game: true,

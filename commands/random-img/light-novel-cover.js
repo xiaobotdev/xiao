@@ -8,7 +8,6 @@ module.exports = class LightNovelCoverCommand extends Command {
 			name: 'light-novel-cover',
 			aliases: ['ln-cover'],
 			group: 'random-img',
-			memberName: 'light-novel-cover',
 			description: 'Responds with a randomly generated Light Novel cover.',
 			nsfw: true,
 			credit: [

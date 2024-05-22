@@ -6,7 +6,6 @@ module.exports = class DisableCommand extends Command {
 			name: 'disable',
 			aliases: ['disable-command', 'disable-cmd'],
 			group: 'util',
-			memberName: 'disable',
 			description: 'Disables a command.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

@@ -5,7 +5,6 @@ module.exports = class BubbleWrapCommand extends Command {
 		super(client, {
 			name: 'bubble-wrap',
 			group: 'games-sp',
-			memberName: 'bubble-wrap',
 			description: 'Pop some bubble wrap.',
 			args: [
 				{

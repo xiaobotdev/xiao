@@ -6,7 +6,6 @@ module.exports = class RateCommand extends Command {
 			name: 'rate',
 			aliases: ['rate-waifu'],
 			group: 'random-res',
-			memberName: 'rate',
 			description: 'Rates something.',
 			args: [
 				{

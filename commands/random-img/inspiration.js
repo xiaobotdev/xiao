@@ -8,7 +8,6 @@ module.exports = class InspirationCommand extends Command {
 			name: 'inspiration',
 			aliases: ['inspire', 'inspirobot'],
 			group: 'random-img',
-			memberName: 'inspiration',
 			description: 'Responds with a randomly generated inspiration.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

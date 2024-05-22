@@ -11,7 +11,6 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 			name: '3000-years',
 			aliases: ['3ky', '3k-years'],
 			group: 'edit-meme',
-			memberName: '3000-years',
 			description: 'Draws an image or a user\'s avatar over Pokémon\'s "It\'s been 3000 years" meme.',
 			throttling: {
 				usages: 2,

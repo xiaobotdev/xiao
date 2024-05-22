@@ -9,7 +9,6 @@ module.exports = class WhereIsEverybodyCommand extends Command {
 			name: 'where-is-everybody',
 			aliases: ['where-is-everyone', 'where-everybody', 'where-everyone'],
 			group: 'single',
-			memberName: 'where-is-everybody',
 			description: 'Where is everybody?',
 			throttling: {
 				usages: 1,

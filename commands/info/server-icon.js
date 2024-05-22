@@ -14,7 +14,6 @@ module.exports = class ServerIconCommand extends Command {
 			name: 'server-icon',
 			aliases: ['guild-icon', 's-icon', 'g-icon'],
 			group: 'info',
-			memberName: 'server-icon',
 			description: 'Responds with the server\'s icon.',
 			guildOnly: true,
 			clientPermissions: [PermissionFlagsBits.EmbedLinks]

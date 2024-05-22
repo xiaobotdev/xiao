@@ -8,7 +8,6 @@ module.exports = class ShrekCommand extends Command {
 		super(client, {
 			name: 'shrek',
 			group: 'edit-face',
-			memberName: 'shrek',
 			description: 'Draws Shrek\'s face onto the faces in an image.',
 			throttling: {
 				usages: 1,

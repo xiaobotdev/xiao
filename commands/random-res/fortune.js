@@ -8,7 +8,6 @@ module.exports = class FortuneCommand extends Command {
 			name: 'fortune',
 			aliases: ['fortune-cookie'],
 			group: 'random-res',
-			memberName: 'fortune',
 			description: 'Responds with a random fortune.'
 		});
 	}

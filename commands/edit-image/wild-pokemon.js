@@ -11,7 +11,6 @@ module.exports = class WildPokemonCommand extends Command {
 			name: 'wild-pokemon',
 			aliases: ['wild-pokemon-appears', 'wild-appears', 'wild-pokémon', 'wild-pokémon-appears', 'wild-pkmn'],
 			group: 'edit-image',
-			memberName: 'wild-pokemon',
 			description: 'Draws an image or a user\'s avatar over a wild Pokémon appearance.',
 			throttling: {
 				usages: 2,

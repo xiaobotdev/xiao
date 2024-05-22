@@ -9,7 +9,6 @@ module.exports = class SilhouetteCommand extends Command {
 		super(client, {
 			name: 'silhouette',
 			group: 'edit-image',
-			memberName: 'silhouette',
 			description: 'Draws a silhouette of an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

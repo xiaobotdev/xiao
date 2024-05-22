@@ -8,7 +8,6 @@ module.exports = class CurrencyCommand extends Command {
 			name: 'currency',
 			aliases: ['money-convert', 'convert-money'],
 			group: 'edit-number',
-			memberName: 'currency',
 			description: 'Converts currency from one currency to another.',
 			credit: [
 				{

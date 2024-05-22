@@ -10,7 +10,6 @@ module.exports = class GandhiQuoteCommand extends Command {
 			name: 'gandhi-quote',
 			aliases: ['gandhi', 'mahatma-gandhi', 'mahatma-gandhi-quote'],
 			group: 'edit-image-text',
-			memberName: 'gandhi-quote',
 			description: 'Makes Mahatma Gandhi say the quote you want.',
 			throttling: {
 				usages: 2,

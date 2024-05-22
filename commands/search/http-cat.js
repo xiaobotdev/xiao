@@ -7,7 +7,6 @@ module.exports = class HttpCatCommand extends Command {
 		super(client, {
 			name: 'http-cat',
 			group: 'search',
-			memberName: 'http-cat',
 			description: 'Responds with a cat for an HTTP status code.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

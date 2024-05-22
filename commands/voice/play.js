@@ -12,7 +12,6 @@ module.exports = class PlayCommand extends Command {
 			name: 'play',
 			aliases: ['play-music', 'music'],
 			group: 'voice',
-			memberName: 'play',
 			description: 'Plays a YouTube video in your voice channel.',
 			guildOnly: true,
 			throttling: {

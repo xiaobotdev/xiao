@@ -7,7 +7,6 @@ module.exports = class PokedexMoveCommand extends Command {
 			name: 'pokedex-move',
 			aliases: ['pokemon-move', 'pokémon-move', 'pokédex-move', 'pkmn-move'],
 			group: 'pokedex',
-			memberName: 'pokedex-move',
 			description: 'Searches the Pokédex for a Pokémon move.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

@@ -8,7 +8,6 @@ module.exports = class ShutdownCommand extends Command {
 			name: 'shutdown',
 			aliases: ['die', 'restart', 'process.exit', 'reboot'],
 			group: 'util',
-			memberName: 'shutdown',
 			description: 'Shuts down the bot.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,

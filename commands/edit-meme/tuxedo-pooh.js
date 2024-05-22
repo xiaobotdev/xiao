@@ -10,7 +10,6 @@ module.exports = class TuxedoPoohCommand extends Command {
 			name: 'tuxedo-pooh',
 			aliases: ['tuxedo-winnie', 'tuxedo-winnie-the-pooh', 'tux-pooh', 'tux-winnie', 'tux-winnie-the-pooh'],
 			group: 'edit-meme',
-			memberName: 'tuxedo-pooh',
 			description: 'Sends a "Tuxedo Winnie the Pooh" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

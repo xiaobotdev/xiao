@@ -12,7 +12,6 @@ module.exports = class SketchCommand extends Command {
 			name: 'sketch',
 			aliases: ['pencil-sketch'],
 			group: 'edit-image',
-			memberName: 'sketch',
 			description: 'Draws an image or a user\'s avatar but sketched.',
 			throttling: {
 				usages: 1,

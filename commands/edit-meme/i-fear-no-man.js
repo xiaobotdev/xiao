@@ -11,7 +11,6 @@ module.exports = class IFearNoManCommand extends Command {
 			name: 'i-fear-no-man',
 			aliases: ['i-fear-no', 'i-fear', 'it-scares-me'],
 			group: 'edit-meme',
-			memberName: 'i-fear-no-man',
 			description: 'Sends a "I fear no man" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

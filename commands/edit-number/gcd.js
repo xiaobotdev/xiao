@@ -7,7 +7,6 @@ module.exports = class GcdCommand extends Command {
 			name: 'gcd',
 			aliases: ['greatest-common-denominator'],
 			group: 'edit-number',
-			memberName: 'gcd',
 			description: 'Determines two numbers\' greatest common denominator.',
 			args: [
 				{

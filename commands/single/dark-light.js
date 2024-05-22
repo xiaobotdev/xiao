@@ -9,7 +9,6 @@ module.exports = class DarkLightCommand extends Command {
 			name: 'dark-light',
 			aliases: ['dark-theme-light-theme', 'light-theme-dark-theme', 'dark-theme', 'light-theme', 'dtlt'],
 			group: 'single',
-			memberName: 'dark-light',
 			description: 'Determines whether you use dark or light theme.',
 			details: `**Types:** ${types.join(', ')}`,
 			clientPermissions: [PermissionFlagsBits.AttachFiles],

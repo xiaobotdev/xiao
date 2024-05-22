@@ -19,7 +19,6 @@ module.exports = class AnimaleseCommand extends Command {
 		super(client, {
 			name: 'animalese',
 			group: 'voice',
-			memberName: 'animalese',
 			description: 'Makes animalese based on text.',
 			guildOnly: true,
 			throttling: {

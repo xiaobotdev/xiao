@@ -6,7 +6,6 @@ module.exports = class RandomUserCommand extends Command {
 			name: 'random-user',
 			aliases: ['member-roulette', 'user-roulette', 'random-member', 'someone', '@someone'],
 			group: 'random-res',
-			memberName: 'random-user',
 			description: 'Randomly chooses a member of the server.'
 		});
 	}

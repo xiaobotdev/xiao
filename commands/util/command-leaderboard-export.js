@@ -14,7 +14,6 @@ module.exports = class CommandLeaderboardExportCommand extends Command {
 				'export-command-leaderboard'
 			],
 			group: 'util',
-			memberName: 'command-leaderboard-export',
 			description: 'Exports a command leaderboard JSON file.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

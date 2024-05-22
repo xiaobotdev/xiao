@@ -10,7 +10,6 @@ module.exports = class PillsCommand extends Command {
 			name: 'pills',
 			aliases: ['hard-to-swallow-pills', 'hard-pills'],
 			group: 'edit-meme',
-			memberName: 'pills',
 			description: 'Sends a "Hard to Swallow Pills" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

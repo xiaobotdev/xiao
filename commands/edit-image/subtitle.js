@@ -10,7 +10,6 @@ module.exports = class SubtitleCommand extends Command {
 			name: 'subtitle',
 			aliases: ['closed-caption', 'closed-captions', 'cc', 'st'],
 			group: 'edit-image',
-			memberName: 'subtitle',
 			description: 'Adds subtitles to an image.',
 			throttling: {
 				usages: 2,

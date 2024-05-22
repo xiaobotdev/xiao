@@ -7,7 +7,6 @@ module.exports = class RuleCommand extends Command {
 			name: 'rule',
 			aliases: ['rule-of-the-internet'],
 			group: 'search',
-			memberName: 'rule',
 			description: 'Responds with a rule of the internet.',
 			args: [
 				{

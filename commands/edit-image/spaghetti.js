@@ -12,7 +12,6 @@ module.exports = class SpaghettiCommand extends Command {
 			name: 'spaghetti',
 			aliases: ['spaghet', 'pasta', 'spaghettify'],
 			group: 'edit-image',
-			memberName: 'spaghetti',
 			description: 'Draws an image or a user\'s avatar but as spaghetti.',
 			throttling: {
 				usages: 1,

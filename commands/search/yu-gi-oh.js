@@ -10,7 +10,6 @@ module.exports = class YuGiOhCommand extends Command {
 			name: 'yu-gi-oh',
 			aliases: ['ygo'],
 			group: 'search',
-			memberName: 'yu-gi-oh',
 			description: 'Responds with info on a Yu-Gi-Oh! card.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

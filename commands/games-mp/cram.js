@@ -12,7 +12,6 @@ module.exports = class CramCommand extends Command {
 			name: 'cram',
 			aliases: ['plugg', 'dots-and-pairs'],
 			group: 'games-mp',
-			memberName: 'cram',
 			description: 'Play a game of Cram with another user.',
 			guildOnly: true,
 			game: true,

@@ -10,7 +10,6 @@ module.exports = class IfThoseKidsCouldReadCommand extends Command {
 			name: 'if-those-kids-could-read',
 			aliases: ['if-those-kids-could', 'itkcr', 'itkc'],
 			group: 'edit-meme',
-			memberName: 'if-those-kids-could-read',
 			description: 'Sends a "If those kids could read, they\'d be very upset" meme with the text of your choice.',
 			throttling: {
 				usages: 2,

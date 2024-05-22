@@ -11,7 +11,6 @@ module.exports = class ApodCommand extends Command {
 			name: 'apod',
 			aliases: ['astronomy-picture-of-the-day'],
 			group: 'events',
-			memberName: 'apod',
 			description: 'Responds with today\'s Astronomy Picture of the Day.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

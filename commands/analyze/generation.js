@@ -7,7 +7,6 @@ module.exports = class GenerationCommand extends Command {
 			name: 'generation',
 			aliases: ['gen'],
 			group: 'analyze',
-			memberName: 'generation',
 			description: 'Responds with the Generation for the given year.',
 			args: [
 				{

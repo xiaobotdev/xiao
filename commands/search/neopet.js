@@ -14,7 +14,6 @@ module.exports = class NeopetCommand extends Command {
 		super(client, {
 			name: 'neopet',
 			group: 'search',
-			memberName: 'neopet',
 			description: 'Responds with the image of a specific Neopet.',
 			credit: [
 				{

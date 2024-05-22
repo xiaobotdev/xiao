@@ -76,7 +76,6 @@ module.exports = class MangaCommand extends Command {
 			name: 'manga',
 			aliases: ['anilist-manga', 'light-novel', 'ln', 'anilist-light-novel', 'anilist-ln'],
 			group: 'search',
-			memberName: 'manga',
 			description: 'Searches AniList for your query, getting manga results.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

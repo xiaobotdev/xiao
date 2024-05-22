@@ -8,7 +8,6 @@ module.exports = class ImageSizeCommand extends Command {
 			name: 'image-size',
 			aliases: ['img-size', 'size', 'dimensions', 'image-dimensions', 'img-dimensions'],
 			group: 'analyze',
-			memberName: 'image-size',
 			description: 'Determines the size of an image.',
 			throttling: {
 				usages: 2,

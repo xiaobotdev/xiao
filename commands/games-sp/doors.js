@@ -9,7 +9,6 @@ module.exports = class DoorsCommand extends Command {
 			name: 'doors',
 			aliases: ['door', 'door-opening', 'open-door', 'monty-hall'],
 			group: 'games-sp',
-			memberName: 'doors',
 			description: 'Open the right door, and you win the money! Make the wrong choice, and you get the fire!',
 			game: true,
 			credit: [

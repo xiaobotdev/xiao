@@ -10,7 +10,6 @@ module.exports = class JeopardyCommand extends Command {
 		super(client, {
 			name: 'jeopardy',
 			group: 'games-sp',
-			memberName: 'jeopardy',
 			description: 'Answer a Jeopardy question.',
 			throttling: {
 				usages: 2,

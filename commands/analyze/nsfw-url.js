@@ -7,7 +7,6 @@ module.exports = class NsfwUrlCommand extends Command {
 			name: 'nsfw-url',
 			aliases: ['nsfw-uri', 'url-nsfw', 'uri-nsfw'],
 			group: 'analyze',
-			memberName: 'nsfw-url',
 			description: 'Determines if a URL is NSFW.',
 			args: [
 				{

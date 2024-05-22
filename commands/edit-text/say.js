@@ -6,7 +6,6 @@ module.exports = class SayCommand extends Command {
 			name: 'say',
 			aliases: ['copy', 'echo'],
 			group: 'edit-text',
-			memberName: 'say',
 			description: 'Make me say what you want, master.',
 			args: [
 				{

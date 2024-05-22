@@ -10,7 +10,6 @@ module.exports = class DearLiberalsCommand extends Command {
 			name: 'dear-liberals',
 			aliases: ['turning-point-usa', 'ben-shapiro'],
 			group: 'edit-meme',
-			memberName: 'dear-liberals',
 			description: 'Sends a "Dear Liberals" meme with words of your choice.',
 			throttling: {
 				usages: 2,

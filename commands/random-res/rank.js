@@ -6,7 +6,6 @@ module.exports = class RankCommand extends Command {
 		super(client, {
 			name: 'rank',
 			group: 'random-res',
-			memberName: 'rank',
 			description: 'Ranks the options you provide.',
 			args: [
 				{

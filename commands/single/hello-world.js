@@ -5,7 +5,6 @@ module.exports = class HelloWorldCommand extends Command {
 		super(client, {
 			name: 'hello-world',
 			group: 'single',
-			memberName: 'hello-world',
 			description: 'Hello world!'
 		});
 	}

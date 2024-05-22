@@ -8,7 +8,6 @@ module.exports = class GooseCommand extends Command {
 			name: 'goose',
 			aliases: ['geese'],
 			group: 'random-img',
-			memberName: 'goose',
 			description: 'Responds with a random goose image.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

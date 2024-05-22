@@ -12,7 +12,6 @@ module.exports = class QuizDuelCommand extends Command {
 			name: 'quiz-duel',
 			aliases: ['trivia-duel'],
 			group: 'games-mp',
-			memberName: 'quiz-duel',
 			description: 'Answer a series of quiz questions against other opponents.',
 			game: true,
 			credit: [

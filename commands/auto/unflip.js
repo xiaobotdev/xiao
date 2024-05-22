@@ -5,7 +5,6 @@ module.exports = class UnflipCommand extends Command {
 		super(client, {
 			name: 'unflip',
 			group: 'auto',
-			memberName: 'unflip',
 			description: 'Unflips a table.',
 			patterns: [/\(╯°□°(\)|）)╯︵ ┻━┻/i]
 		});

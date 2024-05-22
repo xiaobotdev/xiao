@@ -7,7 +7,6 @@ module.exports = class SpamWarCommand extends Command {
 			name: 'spam-war',
 			aliases: ['spam-fight', 'spam-battle'],
 			group: 'games-mp',
-			memberName: 'spam-war',
 			description: 'See who can type more characters the fastest.',
 			guildOnly: true,
 			game: true,

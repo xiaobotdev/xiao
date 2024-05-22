@@ -8,7 +8,6 @@ module.exports = class WhosThatPokemonCryCommand extends Command {
 			name: 'whos-that-pokemon-cry',
 			aliases: ['who-pokemon-cry', 'whos-that-pokémon-cry', 'who-pokémon-cry', 'who-pkmn-cry'],
 			group: 'games-sp',
-			memberName: 'whos-that-pokemon-cry',
 			description: 'Guess who that Pokémon is, based on their cry.',
 			throttling: {
 				usages: 2,

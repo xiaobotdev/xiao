@@ -6,7 +6,6 @@ module.exports = class RickrollCommand extends Command {
 			name: 'rickroll',
 			aliases: ['never-gonna-give-you-up', 'rick-astley'],
 			group: 'single',
-			memberName: 'rickroll',
 			description: 'Sends a link to the "Never Gonna Give You Up" music video.',
 			credit: [
 				{

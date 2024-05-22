@@ -9,7 +9,6 @@ module.exports = class SwirlCommand extends Command {
 		super(client, {
 			name: 'swirl',
 			group: 'edit-image',
-			memberName: 'swirl',
 			description: 'Draws an image or a user\'s avatar but swirled.',
 			throttling: {
 				usages: 2,

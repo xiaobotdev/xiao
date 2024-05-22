@@ -9,7 +9,6 @@ module.exports = class DeepFryCommand extends Command {
 		super(client, {
 			name: 'deep-fry',
 			group: 'edit-meme',
-			memberName: 'deep-fry',
 			description: 'Draws an image or a user\'s avatar but deep-fried.',
 			throttling: {
 				usages: 2,

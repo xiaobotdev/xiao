@@ -6,7 +6,6 @@ module.exports = class CanYouNotCommand extends Command {
 			name: 'can-you-not',
 			aliases: ['can-u-not'],
 			group: 'auto',
-			memberName: 'can-you-not',
 			description: 'Can YOU not?',
 			patterns: [/^(can (you|u) not\??)$/i]
 		});

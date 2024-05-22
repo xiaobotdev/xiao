@@ -9,7 +9,6 @@ module.exports = class CaptchaCommand extends Command {
 			name: 'captcha',
 			aliases: ['captcha-quiz'],
 			group: 'games-sp',
-			memberName: 'captcha',
 			description: 'Try to guess what the captcha says.',
 			throttling: {
 				usages: 2,

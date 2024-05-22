@@ -16,7 +16,6 @@ module.exports = class PokerCommand extends Command {
 			name: 'poker',
 			aliases: ['texas-hold-em'],
 			group: 'games-mp',
-			memberName: 'poker',
 			description: `Play poker with up to ${max - 1} other users.`,
 			guildOnly: true,
 			game: true,

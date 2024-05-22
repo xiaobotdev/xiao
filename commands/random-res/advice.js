@@ -7,7 +7,6 @@ module.exports = class AdviceCommand extends Command {
 			name: 'advice',
 			aliases: ['advice-slip'],
 			group: 'random-res',
-			memberName: 'advice',
 			description: 'Responds with a random bit of advice.',
 			credit: [
 				{

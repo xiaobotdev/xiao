@@ -6,7 +6,6 @@ module.exports = class QuoteCommand extends Command {
 		super(client, {
 			name: 'quote',
 			group: 'random-res',
-			memberName: 'quote',
 			description: 'Responds with a random quote.',
 			credit: [
 				{

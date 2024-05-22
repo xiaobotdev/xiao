@@ -11,7 +11,6 @@ module.exports = class MetamorphosisCommand extends Command {
 			name: 'metamorphosis',
 			aliases: ['my-metamorphosis-begins', 'morph'],
 			group: 'edit-meme',
-			memberName: 'metamorphosis',
 			description: 'Sends a "My Metamorphosis Begins" meme with the image and text of your choice.',
 			throttling: {
 				usages: 2,

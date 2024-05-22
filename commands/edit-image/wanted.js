@@ -11,7 +11,6 @@ module.exports = class WantedCommand extends Command {
 			name: 'wanted',
 			aliases: ['wanted-poster'],
 			group: 'edit-image',
-			memberName: 'wanted',
 			description: 'Draws an image or a user\'s avatar over a wanted poster.',
 			throttling: {
 				usages: 2,

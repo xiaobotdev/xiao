@@ -8,7 +8,6 @@ module.exports = class ScrabbleScoreCommand extends Command {
 			name: 'scrabble-score',
 			aliases: ['scrabble'],
 			group: 'analyze',
-			memberName: 'scrabble-score',
 			description: 'Responds with the scrabble score of a word.',
 			credit: [
 				{

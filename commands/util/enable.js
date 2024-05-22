@@ -6,7 +6,6 @@ module.exports = class EnableCommand extends Command {
 			name: 'enable',
 			aliases: ['enable-command', 'enable-cmd'],
 			group: 'util',
-			memberName: 'enable',
 			description: 'Enables a command.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

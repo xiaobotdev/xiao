@@ -9,7 +9,6 @@ module.exports = class NimCommand extends Command {
 		super(client, {
 			name: 'nim',
 			group: 'games-mp',
-			memberName: 'nim',
 			description: 'Play a game of nim with another user or the AI.',
 			game: true,
 			args: [

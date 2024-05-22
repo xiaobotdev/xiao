@@ -7,7 +7,6 @@ module.exports = class ThiccCommand extends Command {
 			name: 'thicc',
 			aliases: ['thick'],
 			group: 'random-seed',
-			memberName: 'thicc',
 			description: 'Determines how thicc you are.',
 			args: [
 				{

@@ -10,7 +10,6 @@ module.exports = class ReportRespondCommand extends Command {
 			name: 'report-respond',
 			aliases: ['report-res'],
 			group: 'util',
-			memberName: 'report-respond',
 			description: 'Responds to a submitted report.',
 			details: 'Only the bot owner(s) may use this command.',
 			guarded: true,

@@ -11,7 +11,6 @@ module.exports = class EnslavedCommand extends Command {
 			name: 'enslaved',
 			aliases: ['ah-yes-enslaved', 'ah-yes', 'enslave'],
 			group: 'edit-meme',
-			memberName: 'enslaved',
 			description: 'Sends a "Ah yes, enslaved" meme with the image and text of your choice.',
 			throttling: {
 				usages: 2,

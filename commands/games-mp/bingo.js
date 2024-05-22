@@ -12,7 +12,6 @@ module.exports = class BingoCommand extends Command {
 		super(client, {
 			name: 'bingo',
 			group: 'games-mp',
-			memberName: 'bingo',
 			description: 'Play bingo with up to 99 other users.',
 			guildOnly: true,
 			game: true,

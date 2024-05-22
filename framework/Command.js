@@ -7,7 +7,6 @@ module.exports = class Command {
 		this.name = options.name.toLowerCase();
 		this.aliases = options.aliases ? options.aliases.map(alias => alias.toLowerCase()) : [];
 		this.groupID = options.group.toLowerCase();
-		this.memberName = options.memberName.toLowerCase();
 		this.description = options.description;
 		this.details = options.details || null;
 		this.flags = options.flags || [];
@@ -69,8 +68,8 @@ module.exports = class Command {
 	}
 
 	reload() {
-		delete require.cache[require.resolve(`../commands/${this.groupID}/${this.memberName}.js`)];
-		const NewCmd = require(`../commands/${this.groupID}/${this.memberName}.js`);
+		delete require.cache[require.resolve(`../commands/${this.groupID}/${this.name}.js`)];
+		const NewCmd = require(`../commands/${this.groupID}/${this.name}.js`);
 		this.client.registry.commands.delete(this.name);
 		this.client.registry.registerCommand(new NewCmd(this.client));
 	}

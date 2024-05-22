@@ -9,7 +9,6 @@ module.exports = class UnitsCommand extends Command {
 			name: 'units',
 			aliases: ['convert'],
 			group: 'edit-number',
-			memberName: 'units',
 			description: 'Converts units to/from other units.',
 			details: '**Units:** <https://mathjs.org/docs/datatypes/units.html#reference>',
 			args: [

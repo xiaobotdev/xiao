@@ -7,7 +7,6 @@ module.exports = class LevenshteinCommand extends Command {
 			name: 'levenshtein',
 			aliases: ['leven'],
 			group: 'analyze',
-			memberName: 'levenshtein',
 			description: 'Determines the levenshtein distance between two strings.',
 			args: [
 				{

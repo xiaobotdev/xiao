@@ -7,7 +7,6 @@ module.exports = class DickCommand extends Command {
 			name: 'dick',
 			aliases: ['dick-size', 'penis', 'penis-size', 'pee-pee', 'pee-pee-size', 'cock', 'cock-size', 'pp'],
 			group: 'random-seed',
-			memberName: 'dick',
 			description: 'Determines your dick size.',
 			nsfw: true,
 			args: [

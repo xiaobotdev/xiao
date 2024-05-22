@@ -13,7 +13,6 @@ module.exports = class PokemonAdvantageCommand extends Command {
 			name: 'pokemon-advantage',
 			aliases: ['pokemon-adv', 'pokémon-advantage', 'pokémon-adv', 'pkmn-advantage', 'pkmn-adv'],
 			group: 'games-sp',
-			memberName: 'pokemon-advantage',
 			description: 'Guess which Pokémon has the type advantage.',
 			throttling: {
 				usages: 2,

@@ -13,7 +13,6 @@ module.exports = class AnagramicaCommand extends Command {
 			name: 'anagramica',
 			aliases: ['anagram-game', 'anagram-quiz', 'anagram', 'anagrams'],
 			group: 'games-sp',
-			memberName: 'anagramica',
 			description: 'Try to find all the anagrams for a given set of letters.',
 			game: true,
 			credit: [

@@ -9,7 +9,6 @@ module.exports = class DotsAndBoxesCommand extends Command {
 			name: 'dots-and-boxes',
 			aliases: ['dots-boxes', 'dot-box', 'dot-and-box', 'territory-capture'],
 			group: 'games-mp',
-			memberName: 'dots-and-boxes',
 			description: 'Play a game of Dots and Boxes with another user.',
 			guildOnly: true,
 			game: true,

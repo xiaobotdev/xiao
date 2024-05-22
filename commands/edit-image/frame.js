@@ -12,7 +12,6 @@ module.exports = class FrameCommand extends Command {
 			name: 'frame',
 			aliases: ['picture-frame', 'photo-frame'],
 			group: 'edit-image',
-			memberName: 'frame',
 			description: 'Draws a frame around an image or a user\'s avatar.',
 			throttling: {
 				usages: 2,

@@ -10,7 +10,6 @@ module.exports = class UsElectionCommand extends Command {
 			name: 'us-election',
 			aliases: ['election', 'usa-election', 'presidential-election', 'president-election', `${year}-election`],
 			group: 'events',
-			memberName: 'us-election',
 			description: 'Responds with the odds of each canidate winning the presidential election.',
 			credit: [
 				{

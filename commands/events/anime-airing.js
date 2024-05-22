@@ -27,7 +27,6 @@ module.exports = class AnimeAiringCommand extends Command {
 			name: 'anime-airing',
 			aliases: ['anichart', 'airing-anime', 'seasonal-anime', 'anime-seasonal'],
 			group: 'events',
-			memberName: 'anime-airing',
 			description: 'Responds with a list of the anime that air today.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

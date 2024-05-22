@@ -7,7 +7,6 @@ module.exports = class ResumeCommand extends Command {
 			name: 'resume',
 			aliases: ['resume-voice-channel', 'resume-vc', 'resume-voice', 'resume-music', 'resume-playing'],
 			group: 'util-voice',
-			memberName: 'resume',
 			description: 'Resume the current audio playing.',
 			guildOnly: true,
 			guarded: true

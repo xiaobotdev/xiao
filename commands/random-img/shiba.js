@@ -8,7 +8,6 @@ module.exports = class ShibaCommand extends Command {
 			name: 'shiba',
 			aliases: ['shiba-inu', 'shibe', 'shibe-inu', 'doge'],
 			group: 'random-img',
-			memberName: 'shiba',
 			description: 'Responds with a random image of a Shiba Inu.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

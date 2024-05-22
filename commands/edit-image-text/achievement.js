@@ -10,7 +10,6 @@ module.exports = class AchievementCommand extends Command {
 			name: 'achievement',
 			aliases: ['minecraft-achievement', 'achieve'],
 			group: 'edit-image-text',
-			memberName: 'achievement',
 			description: 'Sends a Minecraft achievement with the text of your choice.',
 			throttling: {
 				usages: 2,

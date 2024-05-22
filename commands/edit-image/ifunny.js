@@ -9,7 +9,6 @@ module.exports = class IfunnyCommand extends Command {
 		super(client, {
 			name: 'ifunny',
 			group: 'edit-image',
-			memberName: 'ifunny',
 			description: 'Draws an image with the iFunny logo.',
 			throttling: {
 				usages: 2,

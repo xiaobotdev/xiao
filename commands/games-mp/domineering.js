@@ -12,7 +12,6 @@ module.exports = class DomineeringCommand extends Command {
 			name: 'domineering',
 			aliases: ['domineer', 'cross-cram', 'stop-gate'],
 			group: 'games-mp',
-			memberName: 'domineering',
 			description: 'Play a game of Domineering with another user.',
 			guildOnly: true,
 			game: true,

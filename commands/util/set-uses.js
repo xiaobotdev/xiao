@@ -16,7 +16,6 @@ module.exports = class SetUsesCommand extends Command {
 		super(client, {
 			name: 'set-uses',
 			group: 'util',
-			memberName: 'set-uses',
 			description: 'Changes command usage stats.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

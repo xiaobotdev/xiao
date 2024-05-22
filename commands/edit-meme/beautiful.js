@@ -10,7 +10,6 @@ module.exports = class BeautifulCommand extends Command {
 			name: 'beautiful',
 			aliases: ['this-is-beautiful', 'grunkle-stan'],
 			group: 'edit-meme',
-			memberName: 'beautiful',
 			description: 'Draws a user\'s avatar over Gravity Falls\' "Oh, this? This is beautiful." meme.',
 			throttling: {
 				usages: 2,

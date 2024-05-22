@@ -10,7 +10,6 @@ module.exports = class IHaveThePowerCommand extends Command {
 			name: 'i-have-the-power',
 			aliases: ['he-man'],
 			group: 'edit-avatar',
-			memberName: 'i-have-the-power',
 			description: 'Draws a user\'s avatar over He-Man\'s face.',
 			throttling: {
 				usages: 2,

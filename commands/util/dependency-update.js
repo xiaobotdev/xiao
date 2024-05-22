@@ -11,7 +11,6 @@ module.exports = class DependencyUpdateCommand extends Command {
 			name: 'dependency-update',
 			aliases: ['dep-update', 'dependencies-update', 'npm-update', 'deps', 'update-deps'],
 			group: 'util',
-			memberName: 'dependency-update',
 			description: 'Checks for dependency updates.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

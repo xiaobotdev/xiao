@@ -10,7 +10,6 @@ module.exports = class UrbanCommand extends Command {
 			name: 'urban',
 			aliases: ['urban-dictionary', 'ud'],
 			group: 'search',
-			memberName: 'urban',
 			description: 'Defines a word, but with Urban Dictionary.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

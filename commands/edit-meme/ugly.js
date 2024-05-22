@@ -11,7 +11,6 @@ module.exports = class UglyCommand extends Command {
 			name: 'ugly',
 			aliases: ['uglier', 'uglier-up-close'],
 			group: 'edit-meme',
-			memberName: 'ugly',
 			description: 'Draws an image or a user\'s avatar over the "It\'s even uglier up close" meme.',
 			throttling: {
 				usages: 2,

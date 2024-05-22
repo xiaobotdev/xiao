@@ -7,7 +7,6 @@ module.exports = class RomanCommand extends Command {
 			name: 'roman',
 			aliases: ['roman-numeral'],
 			group: 'edit-number',
-			memberName: 'roman',
 			description: 'Converts a number to roman numerals.',
 			args: [
 				{

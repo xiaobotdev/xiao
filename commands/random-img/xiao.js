@@ -15,7 +15,6 @@ module.exports = class XiaoCommand extends Command {
 			name: 'xiao',
 			aliases: ['xiao-pai', 'iao'],
 			group: 'random-img',
-			memberName: 'xiao',
 			description: 'Responds with a random image of Xiao Pai.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

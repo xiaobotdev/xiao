@@ -15,7 +15,6 @@ module.exports = class MorseCommand extends Command {
 			name: 'morse',
 			aliases: ['morse-code'],
 			group: 'voice',
-			memberName: 'morse',
 			description: 'Converts text to morse code.',
 			args: [
 				{

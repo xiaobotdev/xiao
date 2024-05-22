@@ -15,7 +15,6 @@ module.exports = class NsfwImageCommand extends Command {
 			name: 'nsfw-image',
 			aliases: ['nsfw', 'nsfw-img', 'img-nsfw', 'image-nsfw'],
 			group: 'analyze',
-			memberName: 'nsfw-image',
 			description: 'Determines if an image is NSFW.',
 			throttling: {
 				usages: 2,

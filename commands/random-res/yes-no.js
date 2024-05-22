@@ -8,7 +8,6 @@ module.exports = class YesNoCommand extends Command {
 			name: 'yes-no',
 			aliases: ['y-n'],
 			group: 'random-res',
-			memberName: 'yes-no',
 			description: 'Answers a yes/no question randomly.',
 			args: [
 				{

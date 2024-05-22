@@ -7,7 +7,6 @@ module.exports = class GoogleAutofillCommand extends Command {
 			name: 'google-autofill',
 			aliases: ['google-autocomplete', 'autofill', 'autocomplete'],
 			group: 'search',
-			memberName: 'google-autofill',
 			description: 'Responds with a list of the Google Autofill results for a particular query.',
 			credit: [
 				{

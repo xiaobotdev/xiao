@@ -10,7 +10,6 @@ module.exports = class AirhornCommand extends Command {
 		super(client, {
 			name: 'airhorn',
 			group: 'voice',
-			memberName: 'airhorn',
 			description: 'Plays an airhorn sound in a voice channel.',
 			guildOnly: true,
 			throttling: {

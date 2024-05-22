@@ -6,7 +6,6 @@ module.exports = class SHA256Command extends Command {
 		super(client, {
 			name: 'sha-256',
 			group: 'edit-text',
-			memberName: 'sha-256',
 			description: 'Creates a hash of text with the SHA-256 algorithm.',
 			args: [
 				{

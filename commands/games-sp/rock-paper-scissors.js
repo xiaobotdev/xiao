@@ -7,7 +7,6 @@ module.exports = class RockPaperScissorsCommand extends Command {
 			name: 'rock-paper-scissors',
 			aliases: ['rps'],
 			group: 'games-sp',
-			memberName: 'rock-paper-scissors',
 			description: 'Play Rock-Paper-Scissors.',
 			args: [
 				{

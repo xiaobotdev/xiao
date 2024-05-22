@@ -10,7 +10,6 @@ module.exports = class MemoryCommand extends Command {
 		super(client, {
 			name: 'memory',
 			group: 'games-sp',
-			memberName: 'memory',
 			description: 'Test your memory.',
 			game: true,
 			args: [

@@ -11,7 +11,6 @@ module.exports = class UltimateTattooCommand extends Command {
 			name: 'ultimate-tattoo',
 			aliases: ['the-ultimate-tattoo', 'tattoo'],
 			group: 'edit-meme',
-			memberName: 'ultimate-tattoo',
 			description: 'Draws an image or a user\'s avatar as "The Ultimate Tattoo".',
 			throttling: {
 				usages: 2,

@@ -83,7 +83,6 @@ module.exports = class AnimeCommand extends Command {
 			name: 'anime',
 			aliases: ['anilist-anime', 'ani', 'myanimelist', 'mal', 'mal-score'],
 			group: 'search',
-			memberName: 'anime',
 			description: 'Searches AniList for your query, getting anime results.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

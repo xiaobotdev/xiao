@@ -6,7 +6,6 @@ module.exports = class FactCommand extends Command {
 		super(client, {
 			name: 'fact',
 			group: 'random-res',
-			memberName: 'fact',
 			description: 'Responds with a random fact.',
 			credit: [
 				{

@@ -10,7 +10,6 @@ module.exports = class NPMCommand extends Command {
 		super(client, {
 			name: 'npm',
 			group: 'search',
-			memberName: 'npm',
 			description: 'Responds with information on an NPM package.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

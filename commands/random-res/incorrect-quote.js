@@ -7,7 +7,6 @@ module.exports = class IncorrectQuoteCommand extends Command {
 			name: 'incorrect-quote',
 			aliases: ['fake-quote', 'i-quote', 'f-quote', 'fq', 'scatter-patter'],
 			group: 'random-res',
-			memberName: 'incorrect-quote',
 			description: 'Generates an incorrect quote.',
 			credit: [
 				{

@@ -11,7 +11,6 @@ module.exports = class MindfulnessCommand extends Command {
 			name: 'mindfulness',
 			aliases: ['mindful'],
 			group: 'voice',
-			memberName: 'mindfulness',
 			description: 'Immerse yourself in some mindful quotes.',
 			guildOnly: true,
 			throttling: {

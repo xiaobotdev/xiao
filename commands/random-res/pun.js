@@ -9,7 +9,6 @@ module.exports = class PunCommand extends Command {
 		super(client, {
 			name: 'pun',
 			group: 'random-res',
-			memberName: 'pun',
 			description: 'Responds with a random pun.',
 			credit: [
 				{

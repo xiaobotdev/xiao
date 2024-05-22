@@ -10,7 +10,6 @@ module.exports = class SipCommand extends Command {
 			name: 'sip',
 			aliases: ['tea', 'sip-tea'],
 			group: 'edit-image',
-			memberName: 'sip',
 			description: 'Draws a user\'s avatar sipping tea.',
 			throttling: {
 				usages: 2,

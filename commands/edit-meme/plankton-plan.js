@@ -11,7 +11,6 @@ module.exports = class PlanktonPlanCommand extends Command {
 			name: 'plankton-plan',
 			aliases: ['planktons-plan', 'plankton'],
 			group: 'edit-meme',
-			memberName: 'plankton-plan',
 			description: 'Sends a Plankton\'s Plan meme with steps of your choice.',
 			throttling: {
 				usages: 2,

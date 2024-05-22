@@ -8,7 +8,6 @@ module.exports = class FacesCommand extends Command {
 			name: 'faces',
 			aliases: ['face'],
 			group: 'analyze',
-			memberName: 'faces',
 			description: 'Shows all detected faces in an image.',
 			throttling: {
 				usages: 1,

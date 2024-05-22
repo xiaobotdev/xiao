@@ -10,7 +10,6 @@ module.exports = class ReactionMemeCommand extends Command {
 			name: 'reaction-meme',
 			aliases: ['meme-gen-modern', 'mgm'],
 			group: 'edit-meme',
-			memberName: 'reaction-meme',
 			description: 'Sends a meme with the text and image of your choice.',
 			throttling: {
 				usages: 2,

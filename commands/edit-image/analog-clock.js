@@ -9,7 +9,6 @@ module.exports = class AnalogClockCommand extends Command {
 			name: 'analog-clock',
 			aliases: ['analog-time', 'analog-time-zone', 'clock', 'analog'],
 			group: 'edit-image',
-			memberName: 'analog-clock',
 			description: 'Draws an analog clock for a timezone.',
 			details: '**Zones:** <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>',
 			credit: [

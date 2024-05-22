@@ -7,7 +7,6 @@ module.exports = class CowSayCommand extends Command {
 			name: 'cow-say',
 			aliases: ['cow'],
 			group: 'edit-text',
-			memberName: 'cow-say',
 			description: 'Makes a cow say your text.',
 			credit: [
 				{

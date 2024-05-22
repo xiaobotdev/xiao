@@ -7,7 +7,6 @@ module.exports = class LightNovelTitleCommand extends Command {
 			name: 'light-novel-title',
 			aliases: ['ln-title'],
 			group: 'random-res',
-			memberName: 'light-novel-title',
 			description: 'Responds with a randomly generated Light Novel title.',
 			credit: [
 				{

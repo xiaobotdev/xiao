@@ -7,7 +7,6 @@ module.exports = class PhoneInfoCommand extends Command {
 			name: 'phone-info',
 			aliases: ['call-info', 'phone-call-info'],
 			group: 'phone',
-			memberName: 'phone-info',
 			description: 'Gives information on the current phone call.'
 		});
 	}

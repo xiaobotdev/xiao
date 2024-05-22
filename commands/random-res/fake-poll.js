@@ -8,7 +8,6 @@ module.exports = class FakePollCommand extends Command {
 			name: 'fake-poll',
 			aliases: ['phony-poll', 'f-poll'],
 			group: 'random-res',
-			memberName: 'fake-poll',
 			description: 'Randomly polls a bunch of fake users for their opinion on a yes/no question.',
 			args: [
 				{

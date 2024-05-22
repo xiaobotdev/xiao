@@ -10,7 +10,6 @@ module.exports = class NoiseCommand extends Command {
 		super(client, {
 			name: 'noise',
 			group: 'edit-image',
-			memberName: 'noise',
 			description: 'Draws an image or a user\'s avatar but with noise.',
 			details: `**Types:** ${types.join(', ')}`,
 			throttling: {

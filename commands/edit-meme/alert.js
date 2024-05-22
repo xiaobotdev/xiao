@@ -10,7 +10,6 @@ module.exports = class AlertCommand extends Command {
 			name: 'alert',
 			aliases: ['presidential-alert'],
 			group: 'edit-meme',
-			memberName: 'alert',
 			description: 'Sends a Presidential Alert message with the text of your choice.',
 			throttling: {
 				usages: 2,

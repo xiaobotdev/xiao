@@ -10,7 +10,6 @@ module.exports = class DemotivationalCommand extends Command {
 			name: 'demotivational',
 			aliases: ['demotivational-poster'],
 			group: 'edit-meme',
-			memberName: 'demotivational',
 			description: 'Draws an image or a user\'s avatar and the text you specify as a demotivational poster.',
 			throttling: {
 				usages: 2,

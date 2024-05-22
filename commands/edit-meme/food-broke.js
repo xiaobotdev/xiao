@@ -11,7 +11,6 @@ module.exports = class FoodBrokeCommand extends Command {
 			name: 'food-broke',
 			aliases: ['food-machine-broke'],
 			group: 'edit-meme',
-			memberName: 'food-broke',
 			description: 'Draws a user\'s avatar over the "Food Broke" meme.',
 			throttling: {
 				usages: 2,

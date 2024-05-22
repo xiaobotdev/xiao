@@ -8,7 +8,6 @@ module.exports = class EggsGetLaidCommand extends Command {
 			name: 'eggs-get-laid',
 			aliases: ['eggs-gets-laid'],
 			group: 'single',
-			memberName: 'eggs-get-laid',
 			description: 'Sends the ultimate roast.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

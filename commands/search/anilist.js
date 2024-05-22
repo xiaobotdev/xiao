@@ -19,7 +19,6 @@ module.exports = class AnilistCommand extends Command {
 			name: 'anilist',
 			aliases: ['anilist-user'],
 			group: 'search',
-			memberName: 'anilist',
 			description: 'Responds with user information for an Anilist user.',
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [

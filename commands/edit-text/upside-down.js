@@ -8,7 +8,6 @@ module.exports = class UpsideDownCommand extends Command {
 			name: 'upside-down',
 			aliases: ['u-down'],
 			group: 'edit-text',
-			memberName: 'upside-down',
 			description: 'Flips text upside-down.',
 			args: [
 				{

@@ -22,7 +22,6 @@ module.exports = class ZeroDialogueCommand extends Command {
 				'mm-zero'
 			],
 			group: 'edit-image-text',
-			memberName: 'zero-dialogue',
 			description: 'Sends a text box from Megaman Zero with the quote of your choice.',
 			throttling: {
 				usages: 2,

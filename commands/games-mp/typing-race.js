@@ -7,7 +7,6 @@ module.exports = class TypingRaceCommand extends Command {
 		super(client, {
 			name: 'typing-race',
 			group: 'games-mp',
-			memberName: 'typing-race',
 			description: 'Race a user to see who can type a sentence faster.',
 			guildOnly: true,
 			game: true,

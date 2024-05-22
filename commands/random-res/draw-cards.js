@@ -7,7 +7,6 @@ module.exports = class DrawCardsCommand extends Command {
 			name: 'draw-cards',
 			aliases: ['draw-hand'],
 			group: 'random-res',
-			memberName: 'draw-cards',
 			description: 'Draws a random hand of playing cards.',
 			flags: [
 				{

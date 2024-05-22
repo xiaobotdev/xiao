@@ -10,7 +10,6 @@ module.exports = class HoroscopeCommand extends Command {
 		super(client, {
 			name: 'horoscope',
 			group: 'events',
-			memberName: 'horoscope',
 			description: 'Responds with today\'s horoscope for a specific Zodiac sign.',
 			details: `**Signs:** ${signs.join(', ')}`,
 			clientPermissions: [PermissionFlagsBits.EmbedLinks],

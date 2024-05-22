@@ -7,7 +7,6 @@ module.exports = class RollCommand extends Command {
 			name: 'roll',
 			aliases: ['dice'],
 			group: 'random-res',
-			memberName: 'roll',
 			description: 'Rolls a dice with a minimum/maximum value of your choice.',
 			args: [
 				{

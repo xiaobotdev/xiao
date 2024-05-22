@@ -13,7 +13,6 @@ module.exports = class IsItDownCommand extends Command {
 			name: 'is-it-down',
 			aliases: ['website-down', 'web-down', 'site-down', 'is-down'],
 			group: 'analyze',
-			memberName: 'is-it-down',
 			description: 'Determines if a website is down or not.',
 			credit: [
 				{

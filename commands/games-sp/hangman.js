@@ -9,7 +9,6 @@ module.exports = class HangmanCommand extends Command {
 		super(client, {
 			name: 'hangman',
 			group: 'games-sp',
-			memberName: 'hangman',
 			description: 'Prevent a man from being hanged by guessing a word as fast as you can.',
 			game: true,
 			credit: [

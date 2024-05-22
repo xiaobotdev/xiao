@@ -10,7 +10,6 @@ module.exports = class BlurCommand extends Command {
 			name: 'blur',
 			aliases: ['gaussian', 'gaussian-blur', 'stackblur'],
 			group: 'edit-image',
-			memberName: 'blur',
 			description: 'Draws an image or a user\'s avatar but blurred.',
 			throttling: {
 				usages: 2,

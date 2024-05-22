@@ -10,7 +10,6 @@ module.exports = class NewPasswordCommand extends Command {
 			name: 'new-password',
 			aliases: ['strong-password', 'new-pswd', 'strong-pswd', 'new-pass', 'strong-pass'],
 			group: 'edit-meme',
-			memberName: 'new-password',
 			description: 'Sends a "Weak Password/Strong Password" meme with the passwords of your choice.',
 			throttling: {
 				usages: 2,

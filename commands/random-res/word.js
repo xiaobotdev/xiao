@@ -7,7 +7,6 @@ module.exports = class WordCommand extends Command {
 			name: 'word',
 			aliases: ['random-word'],
 			group: 'random-res',
-			memberName: 'word',
 			description: 'Responds with a random word.',
 			credit: [
 				{

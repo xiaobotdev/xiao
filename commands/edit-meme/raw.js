@@ -9,7 +9,6 @@ module.exports = class RawCommand extends Command {
 			name: 'raw',
 			aliases: ['doing-it-raw'],
 			group: 'edit-meme',
-			memberName: 'raw',
 			description: 'Sends a "Give me x, and I wouldn\'t mind doing it raw!" meme with the text of your choice.',
 			nsfw: true,
 			throttling: {

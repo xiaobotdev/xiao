@@ -11,7 +11,6 @@ module.exports = class ExecCommand extends Command {
 			name: 'exec',
 			aliases: ['execute', '$'],
 			group: 'util',
-			memberName: 'exec',
 			description: 'Executes a command-line application.',
 			ownerOnly: true,
 			guarded: true,

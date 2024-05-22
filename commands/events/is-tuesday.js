@@ -6,7 +6,6 @@ module.exports = class IsTuesdayCommand extends Command {
 			name: 'is-tuesday',
 			aliases: ['is-it-tuesday', 'tuesday'],
 			group: 'events',
-			memberName: 'is-tuesday',
 			description: 'Determines if today is Tuesday.'
 		});
 	}

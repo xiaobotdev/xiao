@@ -7,7 +7,6 @@ module.exports = class GithubZenCommand extends Command {
 			name: 'github-zen',
 			aliases: ['gh-zen'],
 			group: 'random-res',
-			memberName: 'github-zen',
 			description: 'Responds with a random GitHub design philosophy.',
 			credit: [
 				{

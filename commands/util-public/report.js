@@ -10,7 +10,6 @@ module.exports = class ReportCommand extends Command {
 			name: 'report',
 			aliases: ['bug', 'report-bug', 'feedback', 'contact', 'suggest', 'suggestion', 'abuse', 'report-abuse'],
 			group: 'util-public',
-			memberName: 'report',
 			description: 'Reports something to the bot owner(s).',
 			guarded: true,
 			args: [

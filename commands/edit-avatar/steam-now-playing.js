@@ -11,7 +11,6 @@ module.exports = class SteamNowPlayingCommand extends Command {
 			name: 'steam-now-playing',
 			aliases: ['now-playing'],
 			group: 'edit-avatar',
-			memberName: 'steam-now-playing',
 			description: 'Draws a user\'s avatar over a Steam "now playing" notification.',
 			throttling: {
 				usages: 2,

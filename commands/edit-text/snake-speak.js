@@ -6,7 +6,6 @@ module.exports = class SnakeSpeakCommand extends Command {
 			name: 'snake-speak',
 			aliases: ['snek-speak'],
 			group: 'edit-text',
-			memberName: 'snake-speak',
 			description: 'Convertsssss text to sssssnake ssssspeak.',
 			args: [
 				{

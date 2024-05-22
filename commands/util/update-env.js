@@ -7,7 +7,6 @@ module.exports = class UpdateEnvCommand extends Command {
 			name: 'update-env',
 			aliases: ['dotenv', 'update-process-env'],
 			group: 'util',
-			memberName: 'update-env',
 			description: 'Updates the bot\'s environment variables.',
 			details: 'Only the bot owner(s) may use this command.',
 			ownerOnly: true,

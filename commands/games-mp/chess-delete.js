@@ -6,7 +6,6 @@ module.exports = class ChessDeleteCommand extends Command {
 			name: 'chess-delete',
 			aliases: ['delete-chess', 'chess-del', 'del-chess'],
 			group: 'games-mp',
-			memberName: 'chess-delete',
 			description: 'Deletes your saved Chess game.'
 		});
 	}

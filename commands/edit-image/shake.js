@@ -10,7 +10,6 @@ module.exports = class ShakeCommand extends Command {
 			name: 'shake',
 			aliases: ['shook'],
 			group: 'edit-image',
-			memberName: 'shake',
 			description: 'Draws an image or a user\'s avatar shaking.',
 			throttling: {
 				usages: 2,

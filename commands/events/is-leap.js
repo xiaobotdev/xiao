@@ -7,7 +7,6 @@ module.exports = class IsLeapCommand extends Command {
 			name: 'is-leap',
 			aliases: ['is-leap-year', 'leap-year', 'leap'],
 			group: 'events',
-			memberName: 'is-leap',
 			description: 'Responds with if a year is a leap year.',
 			args: [
 				{

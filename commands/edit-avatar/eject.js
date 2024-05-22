@@ -12,7 +12,6 @@ module.exports = class EjectCommand extends Command {
 		super(client, {
 			name: 'eject',
 			group: 'edit-avatar',
-			memberName: 'eject',
 			description: 'Ejects a user.',
 			throttling: {
 				usages: 2,

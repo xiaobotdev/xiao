@@ -10,7 +10,6 @@ module.exports = class TwoButtonsCommand extends Command {
 			name: 'two-buttons',
 			aliases: ['buttons'],
 			group: 'edit-meme',
-			memberName: 'two-buttons',
 			description: 'Sends a "Two Buttons" meme with the buttons of your choice.',
 			throttling: {
 				usages: 2,

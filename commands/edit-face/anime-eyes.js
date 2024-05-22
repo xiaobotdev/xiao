@@ -9,7 +9,6 @@ module.exports = class AnimeEyesCommand extends Command {
 			name: 'anime-eyes',
 			aliases: ['ani-eyes', 'manga-eyes'],
 			group: 'edit-face',
-			memberName: 'anime-eyes',
 			description: 'Draws anime eyes onto the faces in an image.',
 			throttling: {
 				usages: 1,

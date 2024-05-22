@@ -8,7 +8,6 @@ module.exports = class WordSpudCommand extends Command {
 		super(client, {
 			name: 'word-spud',
 			group: 'games-mp',
-			memberName: 'word-spud',
 			description: 'Hot potato, but with words.',
 			guildOnly: true,
 			game: true,

@@ -10,7 +10,6 @@ module.exports = class CautionCommand extends Command {
 			name: 'caution',
 			aliases: ['caution-sign'],
 			group: 'edit-image-text',
-			memberName: 'caution',
 			description: 'Creates a caution sign with the text of your choice.',
 			throttling: {
 				usages: 2,

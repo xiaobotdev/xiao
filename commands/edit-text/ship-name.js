@@ -5,7 +5,6 @@ module.exports = class ShipNameCommand extends Command {
 		super(client, {
 			name: 'ship-name',
 			group: 'edit-text',
-			memberName: 'ship-name',
 			description: 'Creates a ship name from two names.',
 			args: [
 				{

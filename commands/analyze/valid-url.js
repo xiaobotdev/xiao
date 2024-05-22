@@ -7,7 +7,6 @@ module.exports = class ValidUrlCommand extends Command {
 			name: 'valid-url',
 			aliases: ['url-valid', 'url-test', 'test-url'],
 			group: 'analyze',
-			memberName: 'valid-url',
 			description: 'Tests whether a URL is valid or not.',
 			args: [
 				{

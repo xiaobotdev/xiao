@@ -8,7 +8,6 @@ module.exports = class YoffCommand extends Command {
 		super(client, {
 			name: 'yoff',
 			group: 'single',
-			memberName: 'yoff',
 			description: 'Posts a picture that truly defines modern art.',
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [

@@ -7,7 +7,6 @@ module.exports = class FormatNumberCommand extends Command {
 			name: 'format-number',
 			aliases: ['format-num', 'pretty-number', 'pretty-num', 'number', 'num'],
 			group: 'edit-number',
-			memberName: 'format-number',
 			description: 'Formats a number to look more readable.',
 			args: [
 				{
