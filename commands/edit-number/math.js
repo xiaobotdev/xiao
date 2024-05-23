@@ -21,7 +21,8 @@ module.exports = class MathCommand extends Command {
 			args: [
 				{
 					key: 'expression',
-					type: 'string'
+					type: 'string',
+					examples: ['2 + 2', '2 * 2', '2 / 2', '2 - 2']
 				}
 			]
 		});

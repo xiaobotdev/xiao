@@ -19,11 +19,13 @@ module.exports = class UnitsCommand extends Command {
 				{
 					key: 'base',
 					type: 'string',
+					examples: ['km', 'in'],
 					parse: base => base.toLowerCase()
 				},
 				{
 					key: 'target',
 					type: 'string',
+					examples: ['miles', 'cm'],
 					parse: target => target.toLowerCase()
 				}
 			]
