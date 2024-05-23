@@ -25,14 +25,16 @@ module.exports = class CurrencyCommand extends Command {
 				{
 					key: 'base',
 					type: 'string',
+					examples: ['USD'],
 					min: 3,
-					max: 3
+					max: 5
 				},
 				{
 					key: 'target',
 					type: 'string',
+					examples: ['JPY', 'GBP'],
 					min: 3,
-					max: 3
+					max: 5
 				}
 			]
 		});
