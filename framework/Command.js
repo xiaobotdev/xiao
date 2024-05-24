@@ -51,7 +51,7 @@ module.exports = class Command {
 	example(msg) {
 		const args = this.args.map((arg, i) => {
 			const example = arg.example(msg, arg);
-			if (arg.type === 'string' && i !== this.args.length - 1 && example.includes(' ')) {
+			if (arg.type.id === 'string' && i !== this.args.length - 1 && example.includes(' ')) {
 				return `"${example}"`;
 			}
 			return example;
