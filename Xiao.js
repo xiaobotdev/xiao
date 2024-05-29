@@ -3,7 +3,14 @@ const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
 const { mkdir } = require('fs/promises');
 const path = require('path');
 const math = require('mathjs');
-const { GatewayIntentBits, Partials, AllowedMentionsTypes, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
+const {
+	GatewayIntentBits,
+	Partials,
+	AllowedMentionsTypes,
+	PermissionFlagsBits,
+	EmbedBuilder,
+	ActivityType
+} = require('discord.js');
 const Client = require('./structures/Client');
 const client = new Client({
 	commandPrefix: XIAO_PREFIX,
@@ -117,6 +124,7 @@ client.on('ready', async () => {
 	}
 
 	// Interval to change activity every minute
+	client.user.setActivity('Good morning, world!', { type: ActivityType.Custom });
 	setInterval(() => {
 		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
 		const text = typeof activity.text === 'function' ? activity.text(client) : activity.text;
