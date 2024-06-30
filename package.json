@@ -3,7 +3,6 @@
 	"version": "152.0.2",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
-	"private": true,
 	"scripts": {
 		"test": "npm run lint",
 		"lint": "eslint .",
@@ -60,7 +59,7 @@
 		"jszip": "^3.10.1",
 		"kuroshiro": "^1.2.0",
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
-		"mathjs": "^13.0.0",
+		"mathjs": "^13.0.1",
 		"minimist": "^1.2.8",
 		"moment": "^2.30.1",
 		"moment-duration-format": "^2.3.2",
@@ -92,10 +91,10 @@
 		"zlib-sync": "^0.1.9"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.4.0",
-		"eslint": "^9.4.0",
+		"@eslint/js": "^9.6.0",
+		"eslint": "^9.6.0",
 		"eslint-config-amber": "^2.0.4",
 		"eslint-plugin-jsonc": "^2.16.0",
-		"globals": "^15.4.0"
+		"globals": "^15.6.0"
 	}
 }
