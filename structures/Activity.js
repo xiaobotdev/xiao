@@ -65,5 +65,9 @@ module.exports = [
 	{
 		text: client => `with ${formatNumber(client.registry.commands.size)} commands`,
 		type: ActivityType.Playing
+	},
+	{
+		text: client => `with ${formatNumber(client.registry.totalUses)} command uses`,
+		type: ActivityType.Playing
 	}
 ];

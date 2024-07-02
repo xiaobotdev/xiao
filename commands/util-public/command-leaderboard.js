@@ -32,6 +32,8 @@ module.exports = class CommandLeaderboardCommand extends Command {
 		return msg.say(stripIndents`
 			__**Command Usage Leaderboard (Page ${page}/${totalPages}):**__
 			${this.makeLeaderboard(commands, page).join('\n')}
+
+			_Total Uses: ${formatNumber(this.client.registry.totalUses)}_
 		`);
 	}
 

@@ -78,4 +78,13 @@ module.exports = class Registry {
 	registerDefaultTypes() {
 		return this.registerTypesIn(path.join(__dirname, 'types'));
 	}
+
+	get totalUses() {
+		let uses = 0;
+		for (const command of this.commands.values()) {
+			if (command.ownerOnly || command.unknown || command.uses === undefined) continue;
+			uses += command.uses;
+		}
+		return uses;
+	}
 };
