@@ -12,13 +12,18 @@ module.exports = class UsesCommand extends Command {
 			args: [
 				{
 					key: 'command',
-					type: 'command'
+					type: 'command',
+					default: ''
 				}
 			]
 		});
 	}
 
 	run(msg, { command }) {
+		if (!command) {
+			const uses = formatNumber(this.client.registry.totalUses);
+			return msg.say(`All commands have been used a total of **${uses}** times.`);
+		}
 		if (command.unknown || command.uses === undefined) {
 			return msg.reply('That command\'s usage stats aren\'t being tracked.');
 		}

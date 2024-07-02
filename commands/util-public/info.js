@@ -27,7 +27,7 @@ module.exports = class InfoCommand extends Command {
 			.setFooter({ text: copyright.join('\n') })
 			.addField('❯ Servers', formatNumber(this.client.guilds.cache.size), true)
 			.addField('❯ Commands', formatNumber(this.client.registry.commands.size), true)
-			.addField('❯ Shards', formatNumber(this.client.options.shardCount), true)
+			.addField('❯ Total Usage', formatNumber(this.client.registry.totalUses), true)
 			.addField('❯ Home Server',
 				this.client.options.invite ? embedURL('Invite', this.client.options.invite) : 'None', true)
 			.addField('❯ Invite', embedURL('Add Me', invite), true)
