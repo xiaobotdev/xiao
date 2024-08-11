@@ -33,7 +33,6 @@ module.exports = class CleverbotCommand extends Command {
 		}
 		const cleverbot = new Cleverbot(this.client, msg.channel.id, msg.author.id);
 		if (text) {
-			msg.channel.sendTyping().catch(() => null);
 			try {
 				const response = await cleverbot.respond(text);
 				return msg.reply(response);

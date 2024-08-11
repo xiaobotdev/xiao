@@ -71,6 +71,7 @@ module.exports = class CommandClient extends Client {
 		}
 
 		if (!this.dispatcher.isCommand(msg)) return;
+		await msg.channel.sendTyping();
 		const parsed = await this.dispatcher.parseMessage(msg);
 		if (parsed.error) {
 			const helpUsage = this.registry.commands.get('help').usage(parsed.command.name);
