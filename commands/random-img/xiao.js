@@ -1,9 +1,7 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
-const sagiri = require('sagiri');
 const { embedURL } = require('../../util/Util');
 const { SAUCENAO_KEY } = process.env;
-const sagiriClient = sagiri(SAUCENAO_KEY);
 const fs = require('fs');
 const path = require('path');
 const images = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao'));
@@ -33,6 +31,8 @@ module.exports = class XiaoCommand extends Command {
 		});
 
 		this.cache = new Map();
+		this.sagiri = null;
+		this.sagiriClient = null;
 	}
 
 	async run(msg) {
@@ -72,7 +72,9 @@ module.exports = class XiaoCommand extends Command {
 		return result;
 	}
 
-	sauceNao(img) {
+	async sauceNao(img) {
+		if (!this.sagiri) this.sagiri = await import('sagiri');
+		if (!this.sagiriClient) this.sagiriClient = this.sagiri(SAUCENAO_KEY);
 		return sagiriClient(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', img));
 	}
 };
