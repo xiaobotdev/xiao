@@ -34,7 +34,7 @@ module.exports = class TransCommand extends Command {
 		const canvas = createCanvas(data.width, data.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(data, 0, 0);
-		ctx.globalAlpha = 0.75;
+		ctx.globalAlpha = 0.6;
 		ctx.drawImage(transFlag, 0, 0, data.width, data.height);
 		const attachment = canvas.toBuffer('image/png');
 		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
