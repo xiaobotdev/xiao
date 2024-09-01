@@ -14,11 +14,6 @@
 		"comment": "Bake Well, Cook Well and Live Well, {{user}}.",
 		"commentMe": "There's butter on my head."
 	},
-	"biden": {
-		"file": "biden.png",
-		"comment": "[#Biden2024](<https://joebiden.com/>)!",
-		"commentMe": "[#Biden2024](<https://joebiden.com/>)!"
-	},
 	"birthday": {
 		"file": "birthday.png",
 		"comment": "Happy birthday, {{user}}!",

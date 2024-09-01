@@ -118,11 +118,6 @@ module.exports = class HatCommand extends Command {
 					name: 'Becel',
 					url: 'https://www.becel.ca/en-ca',
 					reason: 'Becel Hat Image'
-				},
-				{
-					name: 'Joe Biden for President',
-					url: 'https://joebiden.com/',
-					reason: 'Biden Hat Image'
 				}
 			],
 			args: [
