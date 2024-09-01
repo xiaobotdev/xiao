@@ -75,6 +75,6 @@ module.exports = class XiaoCommand extends Command {
 	async sauceNao(img) {
 		if (!this.sagiri) this.sagiri = await import('sagiri');
 		if (!this.sagiriClient) this.sagiriClient = this.sagiri(SAUCENAO_KEY);
-		return sagiriClient(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', img));
+		return this.sagiriClient(path.join(__dirname, '..', '..', 'assets', 'images', 'xiao', img));
 	}
 };
