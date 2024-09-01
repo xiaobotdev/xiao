@@ -478,6 +478,7 @@ Total: 514
 * **subtitle:** Adds subtitles to an image.
 * **swirl:** Draws an image or a user's avatar but swirled.
 * **tint:** Draws an image or a user's avatar but tinted a specific color.
+* **trans:** Draws an image or a user's avatar but with a Transgender flag on it.
 * **vignette:** Draws an image or a user's avatar with a vignette.
 * **wanted:** Draws an image or a user's avatar over a wanted poster.
 * **wild-pokemon:** Draws an image or a user's avatar over a wild Pokémon appearance.
