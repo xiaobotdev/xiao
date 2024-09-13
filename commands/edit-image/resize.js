@@ -30,7 +30,7 @@ module.exports = class ResizeCommand extends Command {
 				{
 					key: 'image',
 					type: 'image-or-avatar',
-					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 2048 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 2048, forceStatic: true })
 				}
 			]
 		});

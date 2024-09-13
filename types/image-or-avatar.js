@@ -15,7 +15,7 @@ module.exports = class ImageOrAvatarArgument extends Argument {
 		const image = this.client.registry.types.get('image').parse(value, msg, arg);
 		if (image) return image;
 		const user = await this.client.registry.types.get('user').parse(value, msg, arg);
-		return user.displayAvatarURL({ extension: 'png', size: arg.avatarSize });
+		return user.displayAvatarURL({ extension: 'png', size: arg.avatarSize, forceStatic: true });
 	}
 
 	isEmpty(value, msg, arg) {

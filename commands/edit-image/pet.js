@@ -23,7 +23,7 @@ module.exports = class PetCommand extends Command {
 					key: 'image',
 					type: 'image-or-avatar',
 					avatarSize: 128,
-					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 128 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true })
 				}
 			]
 		});

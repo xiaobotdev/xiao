@@ -66,8 +66,8 @@ module.exports = class ShipCommand extends Command {
 			const random = MersenneTwister19937.seed(calculated);
 			level = integer(0, 100)(random);
 		}
-		const firstAvatarURL = first.displayAvatarURL({ extension: 'png', size: 512 });
-		const secondAvatarURL = second.displayAvatarURL({ extension: 'png', size: 512 });
+		const firstAvatarURL = first.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
+		const secondAvatarURL = second.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
 		const firstAvatarData = await request.get(firstAvatarURL);
 		const firstAvatar = await loadImage(firstAvatarData.body);
 		const secondAvatarData = await request.get(secondAvatarURL);

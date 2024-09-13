@@ -45,7 +45,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 	}
 
 	async run(msg, { game, user }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 64 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 64, forceStatic: true });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'steam-now-playing.png'));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);

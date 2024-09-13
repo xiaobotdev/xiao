@@ -29,7 +29,7 @@ module.exports = class ThreeThousandYearsCommand extends Command {
 					key: 'image',
 					type: 'image-or-avatar',
 					avatarSize: 256,
-					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 256 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 256, forceStatic: true })
 				}
 			]
 		});

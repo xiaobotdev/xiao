@@ -32,7 +32,7 @@ module.exports = class SketchCommand extends Command {
 					type: 'image-or-avatar',
 					maxAttachmentSize: 2e+6,
 					avatarSize: 512,
-					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true })
 				}
 			]
 		});

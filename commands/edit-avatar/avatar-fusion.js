@@ -30,8 +30,8 @@ module.exports = class AvatarFusionCommand extends Command {
 	}
 
 	async run(msg, { overlay, base }) {
-		const baseAvatarURL = base.displayAvatarURL({ extension: 'png', size: 512 });
-		const overlayAvatarURL = overlay.displayAvatarURL({ extension: 'png', size: 512 });
+		const baseAvatarURL = base.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
+		const overlayAvatarURL = overlay.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
 		const baseAvatarData = await request.get(baseAvatarURL);
 		const baseAvatar = await loadImage(baseAvatarData.body);
 		const overlayAvatarData = await request.get(overlayAvatarURL);

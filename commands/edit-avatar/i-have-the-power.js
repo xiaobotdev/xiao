@@ -34,7 +34,7 @@ module.exports = class IHaveThePowerCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 256 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 256, forceStatic: true });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'i-have-the-power.png'));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);

@@ -49,7 +49,7 @@ module.exports = class EjectCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 128 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true });
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
 		const random = MersenneTwister19937.seed(user.id);
