@@ -88,10 +88,10 @@ module.exports = class PeriodicTableCommand extends Command {
 		}
 		ctx.fillStyle = 'black';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(45);
-		ctx.fillText(element.number, 250, 100);
+		ctx.fillText(element.number.toString(), 250, 100);
 		ctx.fillText(element.name, 250, 450);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(30);
-		ctx.fillText(element.atomic_mass || '?', 250, 400);
+		ctx.fillText(element.atomic_mass ? element.atomic_mass.toString() : '?', 250, 400);
 		const period = element.number === 0 ? element.period : `period ${element.period}`;
 		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;
 		return msg.say(
