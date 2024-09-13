@@ -36,7 +36,7 @@ module.exports = class FoodBrokeCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 128 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'food-broke.png'));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);

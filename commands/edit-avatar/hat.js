@@ -139,7 +139,7 @@ module.exports = class HatCommand extends Command {
 	async run(msg, { type, user }) {
 		if (type === 'random') type = hatsKeys[Math.floor(Math.random() * hatsKeys.length)];
 		const hat = hats[type];
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'hat', hat.file));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);

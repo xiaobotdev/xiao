@@ -18,7 +18,7 @@ module.exports = class AsciiCommand extends Command {
 					key: 'image',
 					type: 'image-or-avatar',
 					avatarSize: 512,
-					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512 })
+					default: msg => msg.author.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true })
 				}
 			]
 		});

@@ -36,7 +36,7 @@ module.exports = class HeartsCommand extends Command {
 	}
 
 	async run(msg, { user }) {
-		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512 });
+		const avatarURL = user.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'hearts.png'));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);

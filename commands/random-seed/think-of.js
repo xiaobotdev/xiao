@@ -60,8 +60,8 @@ module.exports = class ThinkOfCommand extends Command {
 			const random = MersenneTwister19937.seed(calculated);
 			thought = thoughts[integer(0, thoughts.length - 1)(random)];
 		}
-		const firstAvatarURL = first.displayAvatarURL({ extension: 'png', size: 512 });
-		const secondAvatarURL = second.displayAvatarURL({ extension: 'png', size: 512 });
+		const firstAvatarURL = first.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
+		const secondAvatarURL = second.displayAvatarURL({ extension: 'png', size: 512, forceStatic: true });
 		const firstAvatarData = await request.get(firstAvatarURL);
 		const firstAvatar = await loadImage(firstAvatarData.body);
 		const secondAvatarData = await request.get(secondAvatarURL);
