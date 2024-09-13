@@ -364,7 +364,9 @@ module.exports = class CarRaceCommand extends Command {
 		userData.car = await loadImage(
 			path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${car}.png`)
 		);
-		const userAvatar = await request.get(msg.author.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true }));
+		const userAvatar = await request.get(
+			msg.author.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true })
+		);
 		userData.avatar = await loadImage(userAvatar.body);
 		let difficulty;
 		const available = cars.filter(car2 => car !== car2);
