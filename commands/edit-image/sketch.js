@@ -1,9 +1,10 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
+const gm = require('gm').subClass({ imageMagick: '7+' });
 const request = require('node-superfetch');
 const { readFile } = require('fs/promises');
 const path = require('path');
-const { reactIfAble } = require('../../util/Util');
+const { magikToBuffer, reactIfAble } = require('../../util/Util');
 const { LOADING_EMOJI_ID, SUCCESS_EMOJI_ID } = process.env;
 
 module.exports = class SketchCommand extends Command {
@@ -26,6 +27,16 @@ module.exports = class SketchCommand extends Command {
 					reasonURL: 'https://github.com/reiinakano/arbitrary-image-stylization-tfjs/'
 				}
 			],
+			flags: [
+				{
+					key: 'classic',
+					description: 'Uses the old sketch method.'
+				},
+				{
+					key: 'c',
+					description: 'Alias for classic.'
+				}
+			],
 			args: [
 				{
 					key: 'image',
@@ -38,13 +49,25 @@ module.exports = class SketchCommand extends Command {
 		});
 	}
 
-	async run(msg, { image }) {
+	async run(msg, { image, flags }) {
 		const { body } = await request.get(image);
-		const style = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'sketch.jpg'));
 		await reactIfAble(msg, msg.author, LOADING_EMOJI_ID, '💬');
-		const attachment = await this.client.tensorflow.stylizeImage(body, style);
+		let format = 'jpg';
+		let attachment;
+		if (flags.classic || flags.c) {
+			const magik = gm(body);
+			magik.colorspace('gray');
+			magik.out('-sketch');
+			magik.out('0x20+120');
+			magik.setFormat('png');
+			attachment = await magikToBuffer(magik);
+			format = 'png';
+		} else {
+			const style = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'sketch.jpg'));
+			attachment = await this.client.tensorflow.stylizeImage(body, style);
+		}
 		await reactIfAble(msg, msg.author, SUCCESS_EMOJI_ID, '✅');
 		if (Buffer.byteLength(attachment) > 2.5e+7) return msg.reply('Resulting image was above 25 MB.');
-		return msg.say({ files: [{ attachment, name: 'sketch.jpg' }] });
+		return msg.say({ files: [{ attachment, name: `sketch.${format}` }] });
 	}
 };
