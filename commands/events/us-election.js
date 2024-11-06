@@ -24,7 +24,7 @@ module.exports = class UsElectionCommand extends Command {
 	async run(msg) {
 		const currentYear = new Date().getFullYear();
 		if (year !== currentYear) {
-			return msg.reply(`This command has not been updated to reflect the ${currentYear} election season.`);
+			return msg.reply(`This command has not been updated to reflect the ${year} election season.`);
 		}
 		const canidates = await this.getList();
 		const list = canidates.map(
