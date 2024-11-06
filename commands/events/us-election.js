@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
-const year = 2024;
+const year = 2028;
 
 module.exports = class UsElectionCommand extends Command {
 	constructor(client) {
