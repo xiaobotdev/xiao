@@ -106,7 +106,7 @@ module.exports = class AnimeCharacterCommand extends Command {
 			.set({ referer: 'nick is dum dum' })
 			.send({
 				variables: { id },
-				query: resultGraphQL,
+				query: resultGraphQL
 			});
 		return body.data.Character;
 	}
