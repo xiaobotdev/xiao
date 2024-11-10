@@ -96,6 +96,7 @@ module.exports = class AnimeScoreCommand extends Command {
 			const selectedAnime = Math.floor(Math.random() * this.totalAnime);
 			const { body } = await request
 				.post('https://graphql.anilist.co/')
+				.set({ referer: 'nick is dum dum' })
 				.send({
 					variables: {
 						page: Math.ceil(selectedAnime / 50),
@@ -116,6 +117,7 @@ module.exports = class AnimeScoreCommand extends Command {
 		if (this.totalAnime) return this.totalAnime;
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
+			.set({ referer: 'nick is dum dum' })
 			.send({
 				variables: {
 					page: 0,
