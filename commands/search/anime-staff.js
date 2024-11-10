@@ -117,6 +117,7 @@ module.exports = class AnimeStaffCommand extends Command {
 	async search(query) {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
+			.set({ referer: 'nick is dum dum' })
 			.send({
 				variables: { search: query },
 				query: searchGraphQL
@@ -128,6 +129,7 @@ module.exports = class AnimeStaffCommand extends Command {
 	async fetchStaff(id) {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
+			.set({ referer: 'nick is dum dum' })
 			.send({
 				variables: { id },
 				query: resultGraphQL
