@@ -49,6 +49,7 @@ module.exports = class AnilistCommand extends Command {
 	async search(query) {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
+			.set({ Referer: 'nick is dum dum' })
 			.send({
 				variables: { name: query },
 				query: searchGraphQL
