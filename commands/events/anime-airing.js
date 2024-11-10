@@ -57,6 +57,7 @@ module.exports = class AnimeAiringCommand extends Command {
 	async getList() {
 		const { body } = await request
 			.post('https://graphql.anilist.co/')
+			.set({ referer: 'nick is dum dum' })
 			.send({
 				variables: {
 					greater: Number.parseInt(today(9).getTime() / 1000, 10),
