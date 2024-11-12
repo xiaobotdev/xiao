@@ -49,7 +49,7 @@ module.exports = class PlayCommand extends Command {
 		const canPlay = this.canUseVideo(data, msg.channel.nsfw || false);
 		if (!canPlay) return msg.reply('I cannot play this video.');
 		if (canPlay === 'length') return msg.reply('This video is longer than 15 minutes, so I can\'t play it.');
-		await msg.reply('Is this the video you want to play? Type **[y]es** or **[n]o**.', {
+		await msg.reply('Is this the video you want to play? Reply with **[y]es** or **[n]o**.', {
 			embeds: [this.generateEmbed(data)]
 		});
 		const verification = await verify(msg.channel, msg.author);

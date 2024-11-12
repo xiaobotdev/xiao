@@ -80,7 +80,10 @@ module.exports = class PhoneCall {
 				: 'Declined the call.';
 			await this.recipient.send(`☎️ ${recipientMsg}`);
 			if (validation === 0 && canVoicemail) {
-				await this.origin.send(`☎️ **${this.recipient.guild.name}** didn't answer... Leave a voicemail?`);
+				await this.origin.send(stripIndents`
+					☎️ **${this.recipient.guild.name}** didn't answer... Leave a voicemail?
+					Reply with **[y]es** or **[n]o**.
+				`);
 				const voicemailValidation = await verify(this.origin, null);
 				if (voicemailValidation) {
 					await this.origin.send('☎️ Please leave your message (max 280 characters) after the beep. _Beep_.');
