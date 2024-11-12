@@ -26,7 +26,7 @@ module.exports = class GuessLooksCommand extends Command {
 		if (user.id === this.client.user.id) return msg.reply('Me? Just look at my avatar, dummy.');
 		const authorUser = user.id === msg.author.id;
 		if (this.client.isOwner(user)) {
-			if (authorUser) return msg.reply('You look amazing as always! ❤');
+			if (authorUser) return msg.reply('You look amazing as always, cutie! ❤');
 			return msg.reply(`${user.username} looks like a monkey, and smells like one too.`);
 		}
 		if (user.id === LOVER_USER_ID) {

@@ -28,7 +28,7 @@ module.exports = class ThiccCommand extends Command {
 	run(msg, { user }) {
 		if (this.client.isOwner(user)) {
 			if (user.id === msg.author.id) return msg.reply(`You are thi${'c'.repeat(100)}`);
-			return msg.reply(`They are thi. Not even one c.`);
+			return msg.reply(`She's thi. Not even one c.`);
 		}
 		const clientAuthor = user.id === this.client.user.id;
 		const random = MersenneTwister19937.seed(clientAuthor ? msg.author.id : user.id);

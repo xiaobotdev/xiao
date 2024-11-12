@@ -31,7 +31,7 @@ module.exports = class ButtCommand extends Command {
 		const authorUser = user.id === msg.author.id;
 		if (user.id === this.client.user.id) return msg.reply('Me? I think I have the best butt around!');
 		if (this.client.isOwner(user)) {
-			if (authorUser) return msg.reply('ur butt is godly, master');
+			if (authorUser) return msg.reply('ur butt is the best, mother');
 			return msg.reply(`${user.username}'s butt is... Something, I'll say that much.`);
 		}
 		const random = MersenneTwister19937.seed(user.id);

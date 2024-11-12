@@ -25,7 +25,7 @@ module.exports = class CoolnessCommand extends Command {
 		if (user.id === this.client.user.id) return msg.reply('Me? I think I\'m the very best, like no one ever was.');
 		if (this.client.isOwner(user)) {
 			if (authorUser) return msg.reply('You\'re the best owner a bot could ask for! ❤');
-			return msg.reply(`Don't tell them I said this but I think ${user.username} smells like a sack of diapers.`);
+			return msg.reply(`Don't tell her I said this but I think ${user.username} smells like a sack of diapers.`);
 		}
 		if (user.id === LOVER_USER_ID) return msg.reply(`${user.username} is by far the coolest person ever! ❤`);
 		const random = MersenneTwister19937.seed(user.id);
