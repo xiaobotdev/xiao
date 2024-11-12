@@ -61,7 +61,7 @@ module.exports = class TarotCommand extends Command {
 				One common meaning for this card is **${card.randomLightMeaning()}**.
 				However, beware, as it could also mean **${card.randomShadowMeaning()}**.
 
-				Would you like me to keep going? Type **[y]es** or **[n]o**.
+				Would you like me to keep going? Reply with **[y]es** or **[n]o**.
 			`, { files: [card.imagePath] });
 			const verification = await verify(msg.channel, msg.author);
 			if (!verification) break;
