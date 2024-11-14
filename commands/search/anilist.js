@@ -41,8 +41,11 @@ module.exports = class AnilistCommand extends Command {
 	async run(msg, { query }) {
 		const data = await this.search(query);
 		if (!data || !data.id || !data.name) return msg.say('Could not find any results.');
+		const { body } = await request
+			.get(`https://img.anili.st/user/${data.id}`)
+			.set({ Referer: 'nick is dum dum' });
 		return msg.say(`<https://anilist.co/user/${data.name}>`, {
-			files: [{ attachment: `https://img.anili.st/user/${data.id}`, name: 'anilist.png' }]
+			files: [{ attachment: body, name: 'anilist.png' }]
 		});
 	}
 
