@@ -36,7 +36,7 @@ const client = new Client({
 		GatewayIntentBits.MessageContent
 	]
 });
-const { formatNumber, checkFileExists } = require('./util/Util');
+const { formatNumber, list, checkFileExists } = require('./util/Util');
 
 client.registry
 	.registerDefaultTypes()
@@ -78,8 +78,29 @@ client.on('ready', async () => {
 	// Make temp directories
 	const tmpFolderExists = await checkFileExists(path.join(__dirname, 'tmp'));
 	if (!tmpFolderExists) await mkdir(path.join(__dirname, 'tmp'));
-	const decTalkFolderExists = await checkFileExists(path.join(__dirname, 'tmp', 'dec-talk'));
-	if (!decTalkFolderExists) await mkdir(path.join(__dirname, 'tmp', 'dec-talk'));
+	const decTalkTmpFolderExists = await checkFileExists(path.join(__dirname, 'tmp', 'dec-talk'));
+	if (!decTalkTmpFolderExists) await mkdir(path.join(__dirname, 'tmp', 'dec-talk'));
+
+	// Check for DECTalk files and disable it if not present
+	const dectalkFolderExists = await checkFileExists(path.join(__dirname, 'dectalk'));
+	if (dectalkFolderExists) {
+		const sayExists = await checkFileExists(path.join(__dirname, 'dectalk', 'say.exe'));
+		const dicExists = await checkFileExists(path.join(__dirname, 'dectalk', 'dtalk_us.dic'));
+		const dllExists = await checkFileExists(path.join(__dirname, 'dectalk', 'dectalk.dll'));
+		const msvExists = await checkFileExists(path.join(__dirname, 'dectalk', 'MSVCRTd.DLL'));
+		if (!sayExists || !dicExists || !dllExists || !msvExists) {
+			const missing = [];
+			if (!sayExists) missing.push('say.exe');
+			if (!dicExists) missing.push('dtalk_us.dic');
+			if (!dllExists) missing.push('dectalk.dll');
+			if (!msvExists) missing.push('MSVCRTd.DLL');
+			client.registry.commands.get('dec-talk').disable();
+			client.logger.info(`[DISABLED] ${list(missing)} not present in dectalk/ folder. dectalk has been disabled.`);
+		}
+	} else {
+		client.registry.commands.get('dec-talk').disable();
+		client.logger.info('[DISABLED] No dectalk/ folder. dectalk has been disabled.');
+	}
 
 	// Check for API keys and disable commands that need them if not present
 	if (!process.env.REDIS_HOST || !process.env.REDIS_PASS) {
