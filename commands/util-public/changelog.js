@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('discord.js');
 const request = require('node-superfetch');
 const { shorten, embedURL } = require('../../util/Util');
 const { GITHUB_ACCESS_TOKEN } = process.env;
-const XIAO_GITHUB_REPO_USERNAME = process.env.XIAO_GITHUB_REPO_USERNAME || 'dragonfire535';
+const XIAO_GITHUB_REPO_USERNAME = process.env.XIAO_GITHUB_REPO_USERNAME || 'lilyissillyyy';
 const XIAO_GITHUB_REPO_NAME = process.env.XIAO_GITHUB_REPO_NAME || 'xiao';
 
 module.exports = class ChangelogCommand extends Command {

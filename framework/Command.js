@@ -23,8 +23,8 @@ module.exports = class Command {
 		this.throttling = options.throttling || { usages: 2, duration: 5 };
 		this.credit = options.credit || [];
 		this.credit.push({
-			name: 'Dragon Fire',
-			url: 'https://github.com/dragonfire535',
+			name: 'Lily is Silly',
+			url: 'https://github.com/lilyissillyyy',
 			reason: 'Code'
 		});
 		this.uses = 0;

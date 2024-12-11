@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "152.4.5",
+	"version": "152.4.6",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/dragonfire535/xiao.git"
+		"url": "git+https://github.com/lilyissillyyy/xiao.git"
 	},
 	"keywords": [
 		"bot",
@@ -19,12 +19,12 @@
 		"discord-bot",
 		"discord-js"
 	],
-	"author": "dragonfire535 <danielbodendahl@gmail.com>",
+	"author": "lilyissillyyy",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/dragonfire535/xiao/issues"
+		"url": "https://github.com/lilyissillyyy/xiao/issues"
 	},
-	"homepage": "https://github.com/dragonfire535/xiao#readme",
+	"homepage": "https://github.com/lilyissillyyy/xiao#readme",
 	"engines": {
 		"node": ">=15"
 	},

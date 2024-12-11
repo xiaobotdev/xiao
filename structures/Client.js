@@ -37,7 +37,7 @@ module.exports = class XiaoClient extends CommandClient {
 	setTimezones() {
 		moment.tz.link('America/Vancouver|Neopia');
 		moment.tz.link('America/Los_Angeles|Discord');
-		moment.tz.link('America/New_York|Dragon');
+		moment.tz.link('America/New_York|Lily');
 	}
 
 	async fetchAdultSiteList(force = false) {
