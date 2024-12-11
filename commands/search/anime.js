@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 const { stripIndents } = require('common-tags');
 const { cleanAnilistHTML, embedURL } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
-const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'dragonfire535';
+const ANILIST_USERNAME = process.env.ANILIST_USERNAME || 'lilyissillyyy';
 const searchGraphQL = stripIndents`
 	query ($search: String, $type: MediaType, $isAdult: Boolean) {
 		anime: Page (perPage: 10) {

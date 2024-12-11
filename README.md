@@ -69,7 +69,7 @@ things, I'm not taking any chances.
 * `NAME_RATER_EMOJI_ID` and `NAME_RATER_EMOJI_NAME` are for **name-rater**. Defaults to nothing, it just won't be there.
 
 #### API Keys, IDs, and Secrets
-* `ANILIST_USERNAME` is your username for [Anilist](https://anilist.co/home). Optional, defaults to "dragonfire535".
+* `ANILIST_USERNAME` is your username for [Anilist](https://anilist.co/home). Optional, defaults to "lilyissillyyy".
 * `BITLY_KEY` is your API key for Bit.ly. You can get one [here](https://dev.bitly.com/docs/getting-started/authentication/).
 * `CLEVERBOT_KEY` is your API key for Cleverbot. You can get one [here](https://www.cleverbot.com/api/).
 * `GITHUB_ACCESS_TOKEN` is your access token for GitHub. [Follow these steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) to make one.
@@ -81,7 +81,7 @@ things, I'm not taking any chances.
 * `THECATAPI_KEY` is your API key for The Cat API. You can get one [here](https://thecatapi.com/).
 * `THEDOGAPI_KEY` is your API key for The Dog API. You can get one [here](https://thedogapi.com/).
 * `WEBSTER_KEY` is your API key for Merriam-Webster. You can get one [here](https://dictionaryapi.com/).
-* `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are the name and username of the GitHub repo where Xiao lives. These are optional, and default to "xiao" and "dragonfire535" respectively.
+* `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are the name and username of the GitHub repo where Xiao lives. These are optional, and default to "xiao" and "lilyissillyyy" respectively.
 
 ### Run (Linux)
 
@@ -89,7 +89,7 @@ things, I'm not taking any chances.
 
 1. Install [Node.js](https://nodejs.org/en/).
 2. Run `apt install git` to install git.
-3. Clone this repository with `git clone https://github.com/dragonfire535/xiao.git`.
+3. Clone this repository with `git clone https://github.com/lilyissillyyy/xiao.git`.
 4. Run `cd xiao` to move into the folder that you just created.
 5. Create a file named `.env` and fill it out as shown in above and in `.env.example`.
 6. Run `apt update` and `apt upgrade` to install the latest dependencies of your distro.
