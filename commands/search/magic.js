@@ -59,10 +59,13 @@ module.exports = class MagicCommand extends Command {
 		const isMDFC = Boolean(card.card_faces);
 		const oracleText = isMDFC ? card.card_faces.map(c => c.oracle_text).join('\n\n//\n\n') : card.oracle_text;
 		const manaCost = isMDFC ? card.card_faces.map(c => c.mana_cost).join(' // ') : card.mana_cost;
+		const img = card.card_faces && card.card_faces.length && card.card_faces[0].image_uris
+			? card.card_faces[0].image_uris.normal
+			: card.image_uris?.normal;
 		const embed = new EmbedBuilder()
 			.setURL(card.scryfall_uri)
 			.setColor(0x2B253A)
-			.setThumbnail(card.card_faces ? card.card_faces[0].image_uris.normal : card.image_uris.normal)
+			.setThumbnail(img || null)
 			.setDescription(`${manaCost} ${card.type_line}\n\n${oracleText}`)
 			.setAuthor({ name: 'Scryfall', iconURL: logos.scryfall, url: 'https://scryfall.com/' })
 			.setTitle(card.name);
