@@ -54,7 +54,7 @@
 		"googlethis": "github:CROSP/google-this",
 		"html-entities": "^2.5.2",
 		"image-to-ascii": "^3.2.1",
-		"ioredis": "^5.4.1",
+		"ioredis": "^5.4.2",
 		"js-chess-engine": "^1.0.2",
 		"jszip": "^3.10.1",
 		"kuroshiro": "^1.2.0",
@@ -85,16 +85,16 @@
 		"zip-to-timezone": "^1.2.1"
 	},
 	"optionalDependencies": {
-		"bufferutil": "^4.0.8",
+		"bufferutil": "^4.0.9",
 		"sodium-native": "^4.3.1",
 		"utf-8-validate": "^6.0.5",
 		"zlib-sync": "^0.1.9"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.16.0",
-		"eslint": "^9.16.0",
+		"@eslint/js": "^9.17.0",
+		"eslint": "^9.17.0",
 		"eslint-config-amber": "^2.0.4",
 		"eslint-plugin-jsonc": "^2.18.2",
-		"globals": "^15.13.0"
+		"globals": "^15.14.0"
 	}
 }
