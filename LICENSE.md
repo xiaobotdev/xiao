@@ -1,7 +1,7 @@
 Internet Systems Consortium license
 ===================================
 
-Copyright (c) 2017-2024, lilyissillyyy
+Copyright (c) 2017-2025, lilyissillyyy
 
 Permission to use, copy, modify, and/or distribute this software for any purpose
 with or without fee is hereby granted, provided that the above copyright notice
