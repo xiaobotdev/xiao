@@ -6,7 +6,7 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 
 > Will Xiao ever be public again?
 
-No.
+[No. :)](https://discord.com/api/oauth2/authorize?client_id=1219787468614795295&scope=bot&permissions=8)
 
 > Will Xiao ever support Slash Commands?
 
