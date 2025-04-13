@@ -71,9 +71,9 @@ module.exports = class CommandClient extends Client {
 		}
 
 		if (!this.dispatcher.isCommand(msg)) return;
-		await msg.channel.sendTyping();
 		const parsed = await this.dispatcher.parseMessage(msg);
 		if (parsed.error) {
+			await msg.channel.sendTyping();
 			const helpUsage = this.registry.commands.get('help').usage(parsed.command.name);
 			await msg.reply(stripIndents`
 				${parsed.error}
@@ -84,6 +84,7 @@ module.exports = class CommandClient extends Client {
 			return;
 		}
 		const { command, args } = parsed;
+		if (command.sendTyping) await msg.channel.sendTyping();
 		if (msg.guild && command.clientPermissions.length) {
 			for (const permission of command.clientPermissions) {
 				if (msg.channel.permissionsFor(this.user).has(permission)) continue;

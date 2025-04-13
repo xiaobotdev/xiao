@@ -21,6 +21,7 @@ module.exports = class Command {
 		this.guarded = options.guarded || false;
 		this.unknown = options.unknown || false;
 		this.throttling = options.throttling || { usages: 2, duration: 5 };
+		this.sendTyping = typeof options.sendTyping === 'undefined' ? true : Boolean(options.sendTyping);
 		this.credit = options.credit || [];
 		this.credit.push({
 			name: 'Lily is Silly',

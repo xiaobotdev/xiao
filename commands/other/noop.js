@@ -6,7 +6,8 @@ module.exports = class NoopCommand extends Command {
 			name: 'noop',
 			aliases: ['no-op', 'nop'],
 			group: 'other',
-			description: 'Does nothing.'
+			description: 'Does nothing.',
+			sendTyping: false
 		});
 	}
 
