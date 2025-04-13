@@ -6,7 +6,8 @@ module.exports = class HiCommand extends Command {
 			name: 'hi',
 			aliases: ['hello', 'hey', 'hoi', 'hola'],
 			group: 'single',
-			description: 'Hello.'
+			description: 'Hello.',
+			sendTyping: false
 		});
 	}
 
