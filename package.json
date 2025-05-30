@@ -35,7 +35,7 @@
 		"@napi-rs/canvas": "^0.1.67",
 		"@tensorflow-models/face-detection": "^1.0.3",
 		"@tensorflow/tfjs-node": "^4.22.0",
-		"@twemoji/parser": "^15.1.1",
+		"@twemoji/parser": "^16.0.0",
 		"bombsweeper.js": "^1.0.1",
 		"buffer": "^6.0.3",
 		"cheerio": "^1.0.0",
