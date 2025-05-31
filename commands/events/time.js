@@ -36,7 +36,7 @@ module.exports = class TimeCommand extends Command {
 	run(msg, { timeZone }) {
 		const time = moment().tz(timeZone).format('h:mm A');
 		const location = timeZone.split('/');
-		const word = location === 'lily' ? 'for' : 'is';
+		const word = location[0] === 'lily' ? 'for' : 'in';
 		const main = firstUpperCase(location[0], /[_ ]/);
 		const sub = location[1] ? firstUpperCase(location[1], /[_ ]/) : null;
 		const subMain = location[2] ? firstUpperCase(location[2], /[_ ]/) : null;
