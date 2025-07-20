@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { UserAgent } = require('user-agents');
+const UserAgent = require('user-agents');
 const { list } = require('../../util/Util');
 const moods = {
 	happy: 1,
