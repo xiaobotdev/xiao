@@ -1,5 +1,5 @@
 const Command = require('../../framework/Command');
-const { UserAgent } = require('user-agents');
+const UserAgent = require('user-agents');
 
 module.exports = class UserAgentCommand extends Command {
 	constructor(client) {
