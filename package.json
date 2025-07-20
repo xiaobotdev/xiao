@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "152.4.13",
+	"version": "152.5.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -78,6 +78,7 @@
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "github:marianoheller/tic-tac-toe-minimax",
 		"twitter-openapi-typescript": "^0.0.55",
+		"user-agents": "^1.1.605",
 		"valid-url": "^1.0.9",
 		"wavefile": "^11.0.0",
 		"winston": "^3.17.0",

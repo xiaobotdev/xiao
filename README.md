@@ -108,7 +108,7 @@ things, I'm not taking any chances.
 19. Start Xiao up!
 
 ## Commands
-Total: 514
+Total: 515
 
 ### Utility:
 
@@ -187,6 +187,7 @@ Total: 514
 * **smw-level:** Responds with a random Super Mario World level name.
 * **suggest-command:** Suggests a random command for you to try.
 * **superpower:** Responds with a random superpower.
+* **user-agent:** Responds with a random User Agent.
 * **word:** Responds with a random word.
 * **xiao-fact:** Responds with a random fact about Xiao.
 * **yes-no:** Answers a yes/no question randomly.
