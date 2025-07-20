@@ -44,9 +44,10 @@ module.exports = class NeopetCommand extends Command {
 
 	async run(msg, { pet, mood }) {
 		try {
+			const agent = new UserAgent();
 			const { body } = await request
 				.get(`http://pets.neopets.com/cpn/${encodeURIComponent(pet)}/${mood}/5.png`)
-				.set({ 'User-Agent': (new UserAgent()).toString() });
+				.set({ 'User-Agent': agent.toString() });
 			return msg.say({ files: [{ attachment: body, name: `${pet}-${mood}.png` }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
