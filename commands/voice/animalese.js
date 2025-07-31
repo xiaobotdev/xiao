@@ -21,6 +21,7 @@ module.exports = class AnimaleseCommand extends Command {
 			group: 'voice',
 			description: 'Makes animalese based on text.',
 			guildOnly: true,
+			sendTyping: false,
 			throttling: {
 				usages: 2,
 				duration: 10
