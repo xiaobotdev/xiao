@@ -17,6 +17,7 @@ module.exports = class DECTalkCommand extends Command {
 			group: 'voice',
 			description: 'The world\'s best Text-to-Speech.',
 			guildOnly: true,
+			sendTyping: false,
 			throttling: {
 				usages: 2,
 				duration: 10
