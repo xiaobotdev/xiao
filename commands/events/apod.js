@@ -30,7 +30,7 @@ module.exports = class ApodCommand extends Command {
 			**${body.title}**
 			${body.explanation}
 
-			_Image Credits: (${credit})[https://apod.nasa.gov/apod/astropix.html]_
+			_Image Credits: [${credit}](https://apod.nasa.gov/apod/astropix.html)_
 		`, { files: body.media_type === 'image' ? [body.url] : [] });
 	}
 };
