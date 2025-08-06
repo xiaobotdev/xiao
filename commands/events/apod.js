@@ -1,8 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
-const { shorten } = require('../../util/Util');
-const logos = require('../../assets/json/logos');
+const { stripIndents } = require('common-tags');
 const { GOV_KEY } = process.env;
 
 module.exports = class ApodCommand extends Command {
@@ -12,7 +10,6 @@ module.exports = class ApodCommand extends Command {
 			aliases: ['astronomy-picture-of-the-day'],
 			group: 'events',
 			description: 'Responds with today\'s Astronomy Picture of the Day.',
-			clientPermissions: [PermissionFlagsBits.EmbedLinks],
 			credit: [
 				{
 					name: 'NASA',
@@ -28,19 +25,12 @@ module.exports = class ApodCommand extends Command {
 		const { body } = await request
 			.get('https://api.nasa.gov/planetary/apod')
 			.query({ api_key: GOV_KEY });
-		const embed = new EmbedBuilder()
-			.setTitle(body.title)
-			.setDescription(shorten(body.explanation))
-			.setColor(0x2E528E)
-			.setAuthor({
-				name: 'Astronomy Picture of the Day',
-				iconURL: logos.nasa,
-				url: 'https://apod.nasa.gov/apod/astropix.html'
-			})
-			.setImage(body.media_type === 'image' ? body.url : null)
-			.setURL(body.url)
-			.setFooter({ text: `Image Credits: ${body.copyright ? body.copyright.replaceAll('\n', '/') : 'Public Domain'}` })
-			.setTimestamp();
-		return msg.embed(embed);
+		const credit = body.copyright ? body.copyright.replaceAll('\n', '/') : 'Public Domain';
+		return msg.say(stripIndents`
+			**${body.title}**
+			${body.explanation}
+
+			_Image Credits: (${credit})[https://apod.nasa.gov/apod/astropix.html]_
+		`, { files: body.media_type === 'image' ? [body.url] : [] });
 	}
 };
