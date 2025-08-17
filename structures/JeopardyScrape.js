@@ -2,6 +2,7 @@ const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
+const { checkFileExists } = require('../util/Util');
 const rounds = ['jeopardy_round', 'double_jeopardy_round', 'final_jeopardy_round'];
 
 module.exports = class JeopardyScrape {
@@ -92,7 +93,8 @@ module.exports = class JeopardyScrape {
 	}
 
 	async checkForUpdates() {
-		this.importData();
+		const fileExists = await checkFileExists(path.join(__dirname, '..', 'jeopardy.json'));
+		if (fileExists) this.importData();
 		const cluesBefore = this.clues.length;
 		const latestSeason = this.seasons[this.seasons.length - 1];
 		const seasons = await this.fetchSeasons();
