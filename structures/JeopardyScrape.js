@@ -18,7 +18,7 @@ module.exports = class JeopardyScrape {
 		const seasons = [];
 		$('table td a').each((j, elem) => {
 			const href = $(elem).attr('href');
-			seasons.push(href.split('id=')[1]);
+			seasons.push(href.split('season=')[1]);
 		});
 		return seasons.reverse();
 	}
