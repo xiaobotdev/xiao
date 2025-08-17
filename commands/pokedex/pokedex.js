@@ -94,6 +94,9 @@ module.exports = class PokedexCommand extends Command {
 			if (found.id === pokemon.id) return `**${found.name}**`;
 			return found.name;
 		}).join(' -> ');
+		const entry = pokemon.entries.length
+			? pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)]
+			: { text: 'No data.', version: '' };
 		const embed = new EmbedBuilder()
 			.setColor(0xED1C24)
 			.setAuthor({
@@ -103,7 +106,7 @@ module.exports = class PokedexCommand extends Command {
 			})
 			.setDescription(stripIndents`
 				**${pokemon.genus}**
-				${pokemon.entries.length ? pokemon.entries[Math.floor(Math.random() * pokemon.entries.length)] : 'No data.'}
+				${entry.text}${entry.version ? ` _(${entry.version})_` : ''}
 			`)
 			.setThumbnail(pokemon.spriteImageURL)
 			.addField('❯ Introduced In', games[genGames[pokemon.generation]], true)
