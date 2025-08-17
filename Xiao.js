@@ -304,6 +304,14 @@ client.on('ready', async () => {
 		client.logger.error(`[STYLIZE] Failed to load stylize models\n${err.stack}`);
 	}
 
+	// Update Jeopardy questions
+	try {
+		const newClues = await client.jeopardy.checkForUpdates();
+		client.logger.info(`[JEOPARDY] Added ${newClues} new Jeopardy clues.`);
+	} catch (err) {
+		client.logger.error(`[JEOPARDY] Failed to update Jeopardy clues\n${err.stack}`);
+	}
+
 	// Fetch all members
 	try {
 		for (const guild of client.guilds.cache.values()) {

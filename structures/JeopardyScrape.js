@@ -1,0 +1,114 @@
+const request = require('node-superfetch');
+const cheerio = require('cheerio');
+const fs = require('fs');
+const path = require('path');
+const rounds = ['jeopardy_round', 'double_jeopardy_round', 'final_jeopardy_round'];
+
+module.exports = class JeopardyScrape {
+	constructor() {
+		this.clues = [];
+		this.gameIDs = [];
+		this.seasons = [];
+	}
+
+	async fetchSeasons() {
+		const { text } = await request.get(`https://j-archive.com/listseasons.php`)
+		const $ = cheerio.load(text);
+		const seasons = [];
+		$('table td a').each((j, elem) => {
+			const href = $(elem).attr('href');
+			seasons.push(href.split('id=')[1]);
+		});
+		return seasons.reverse();
+	}
+
+	async fetchSeason(season) {
+		const { text } = await request.get(`https://j-archive.com/showseason.php`)
+			.query({ season });
+		const $ = cheerio.load(text);
+		const gameIDs = [];
+		$('table td a').each((j, elem) => {
+			const href = $(elem).attr('href');
+			gameIDs.push(href.split('id=')[1]);
+		});
+		return gameIDs;
+	}
+
+	async fetchClues(id) {
+		const { text } = await request.get('http://www.j-archive.com/showgame.php')
+			.query({ game_id: id });
+		const $ = cheerio.load(text);
+		const clues = [];
+		for (const round of rounds) {
+			const questions = $(`#${round} .clue`);
+			const categories = $(`#${round} .category_name`);
+			const categoryArr = [];
+			categories.each((i, elem) => categoryArr.push($(elem).text().toLowerCase()));
+			questions.each((i, elem) => {
+				const value = $(elem).find('td[class="clue_value"]').text();
+				const question = $(elem).find('td[class="clue_text"]').first().text();
+				const answer = $(elem).find('em[class="correct_response"]').text();
+				if (!question || !answer || !value) return;
+				clues.push({
+					question,
+					answer,
+					category: categoryArr[i % 6],
+					value: value.match(/[0-9]+/)[0],
+					gameID: id
+				});
+			});
+		}
+		return clues;
+	}
+
+	importData() {
+		const read = fs.readFileSync(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' });
+		const file = JSON.parse(read);
+		if (typeof file !== 'object' || Array.isArray(file)) return null;
+		if (!file.clues || !file.gameIDs || !file.seasons) return null;
+		for (const season of file.seasons) {
+			if (typeof season !== 'string') continue;
+			this.seasons.push(season);
+		}
+		for (const gameID of file.gameIDs) {
+			if (typeof gameID !== 'string') continue;
+			this.gameIDs.push(gameID);
+		}
+		for (const clue of file.clues) {
+			if (typeof clue !== 'string') continue;
+			this.clues.push(clue);
+		}
+		return file;
+	}
+
+	exportData() {
+		const buf = Buffer.from(JSON.stringify({
+			clues: this.clues,
+			gameIDs: this.gameIDs,
+			seasons: this.seasons
+		}));
+		fs.writeFileSync(path.join(__dirname, '..', 'jeopardy.json'), buf, { encoding: 'utf8' });
+		return buf;
+	}
+
+	async checkForUpdates() {
+		this.importData();
+		const cluesBefore = this.clues.length;
+		const latestSeason = this.seasons[this.seasons.length - 1];
+		const seasons = await this.fetchSeasons();
+		const newSeasons = seasons.filter(season => !this.seasons.includes(season));
+		this.seasons.push(...newSeasons);
+		if (latestSeason) newSeasons.push(latestSeason);
+		for (const season of newSeasons) {
+			const games = await this.fetchSeason(season);
+			const newGames = games.filter(game => !this.gameIDs.includes(game));
+			this.gameIDs.push(...newGames);
+			for (const gameID of newGames) {
+				const clues = await this.fetchClues(gameID);
+				this.clues.push(...clues);
+			}
+		}
+		this.exportData();
+		return this.clues.length - cluesBefore;
+	}
+};
