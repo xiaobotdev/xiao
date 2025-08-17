@@ -108,15 +108,21 @@
 	"weight": 3507.2,
 	"moveSet": [
 		{
-			"name": "Water Gun",
+			"move": {
+				"name": "Water Gun"
+			},
 			"level": 1
 		},
 		{
-			"name": "Water Gun",
+			"move": {
+				"name": "Water Gun"
+			},
 			"level": 1
 		},
 		{
-			"name": "Sky Attack",
+			"move": {
+				"name": "Sky Attack"
+			},
 			"level": 1
 		}
 	],
