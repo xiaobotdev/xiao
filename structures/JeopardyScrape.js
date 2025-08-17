@@ -12,7 +12,7 @@ module.exports = class JeopardyScrape {
 	}
 
 	async fetchSeasons() {
-		const { text } = await request.get(`https://j-archive.com/listseasons.php`)
+		const { text } = await request.get(`https://j-archive.com/listseasons.php`);
 		const $ = cheerio.load(text);
 		const seasons = [];
 		$('table td a').each((j, elem) => {
