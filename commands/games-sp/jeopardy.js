@@ -18,9 +18,9 @@ module.exports = class JeopardyCommand extends Command {
 			game: true,
 			credit: [
 				{
-					name: 'jService',
-					url: 'https://jservice.xyz/',
-					reason: 'API'
+					name: 'J! Archive',
+					url: 'https://j-archive.com/index.php',
+					reason: 'Clue Data'
 				},
 				{
 					name: 'Jeopardy',
@@ -44,7 +44,7 @@ module.exports = class JeopardyCommand extends Command {
 	}
 
 	async run(msg) {
-		const question = await this.fetchQuestion();
+		const question = this.client.jeopardy.clues[Math.floor(Math.random() * this.client.jeopardy.clues.length)];
 		const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
 		const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
 		let playing = false;
@@ -53,7 +53,7 @@ module.exports = class JeopardyCommand extends Command {
 			connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
 			await reactIfAble(msg, this.client.user, '🔉');
 		}
-		const category = question.category ? question.category.title.toUpperCase() : '';
+		const category = question.category ? question.category.toUpperCase() : '';
 		await msg.reply(`${category ? `The category is: **${category}**. ` : ''}30 seconds, good luck.`, {
 			files: [{ attachment: clueCard, name: 'clue-card.png' }]
 		});
@@ -68,11 +68,6 @@ module.exports = class JeopardyCommand extends Command {
 		const win = msgs.first().content.toLowerCase() === answer.toLowerCase();
 		if (!win) return msg.reply(`The answer was **${answer}**.`);
 		return msg.reply(`The answer was **${answer}**. Good job!`);
-	}
-
-	async fetchQuestion() {
-		const { body } = await request.get('https://jservice.xyz/api/random-clue');
-		return body;
 	}
 
 	async generateClueCard(question) {

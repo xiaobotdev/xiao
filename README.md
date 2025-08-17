@@ -1047,7 +1047,7 @@ Total: 515
 * **hunger-games:**
    - [BrantSteele](https://brantsteele.com/) ([Original "Hunger Games Simulator" Game](http://brantsteele.net/hungergames/reaping.php))
 * **jeopardy:**
-   - [jService](https://jservice.xyz/) (API)
+   - [J! Archive](https://j-archive.com/index.php) (Clue Data)
    - [Jeopardy](https://www.jeopardy.com/) (Music, Original Show)
    - [OPTIFONT](http://opti.netii.net/) ([Korinna Agency Font](https://fontmeme.com/fonts/korinna-agency-font/))
    - [DrewManDew](https://www.deviantart.com/drewmandew/gallery) ([Blank Background Image](https://www.deviantart.com/drewmandew/art/Blank-Jeopardy-Screen-780893853))
