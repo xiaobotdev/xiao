@@ -44,7 +44,7 @@ module.exports = class JeopardyCommand extends Command {
 
 	async run(msg) {
 		const question = this.client.jeopardy.clues[Math.floor(Math.random() * this.client.jeopardy.clues.length)];
-		const clueCard = await this.generateClueCard(question.question.replace(/<\/?i>/gi, ''));
+		const clueCard = await this.generateClueCard(question.question);
 		const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
 		let playing = false;
 		if (msg.guild && connection && connection.canPlay) {
@@ -62,11 +62,10 @@ module.exports = class JeopardyCommand extends Command {
 			time: 30000
 		});
 		if (playing) connection.stop();
-		const answer = question.answer.replace(/<\/?i>/gi, '*').replace(/\(|\)/g, '');
-		if (!msgs.size) return msg.reply(`Time's up, the answer was **${answer}**.`);
-		const win = msgs.first().content.toLowerCase() === answer.toLowerCase();
-		if (!win) return msg.reply(`The answer was **${answer}**.`);
-		return msg.reply(`The answer was **${answer}**. Good job!`);
+		if (!msgs.size) return msg.reply(`Time's up, the answer was **${question.answer}**.`);
+		const win = msgs.first().content.toLowerCase() === question.answer.toLowerCase();
+		if (!win) return msg.reply(`The answer was **${question.answer}**.`);
+		return msg.reply(`The answer was **${question.answer}**. Good job!`);
 	}
 
 	async generateClueCard(question) {
