@@ -17,6 +17,7 @@ config.json
 command-leaderboard.json
 command-last-run.json
 blacklist.json
+jeopardy.json
 
 # DECTalk
 dectalk/
