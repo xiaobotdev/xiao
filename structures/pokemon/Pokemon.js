@@ -1,7 +1,7 @@
 const request = require('node-superfetch');
 const { createCanvas } = require('@napi-rs/canvas');
 const path = require('path');
-const { removeDuplicates, firstUpperCase, delay } = require('../../util/Util');
+const { firstUpperCase, delay } = require('../../util/Util');
 const { cropToContent } = require('../../util/Canvas');
 const missingno = require('../../assets/json/missingno');
 const versions = require('../../assets/json/pokedex-location');
@@ -17,8 +17,9 @@ module.exports = class Pokemon {
 		this.entries = data.flavor_text_entries
 			.filter(entry => entry.language.name === 'en')
 			.map(entry => {
+				const text = entry.flavor_text.replace(/\n|\f|\r/g, ' ');
 				return {
-					text: entry.flavor_text.replace(/\n|\f|\r/g, ' '),
+					text,
 					version: versions[entry.version.name]
 				};
 			});
