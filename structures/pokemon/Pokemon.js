@@ -14,9 +14,14 @@ module.exports = class Pokemon {
 		this.name = data.names.length
 			? data.names.find(entry => entry.language.name === 'en').name
 			: slugName;
-		this.entries = removeDuplicates(data.flavor_text_entries
+		this.entries = data.flavor_text_entries
 			.filter(entry => entry.language.name === 'en')
-			.map(entry => entry.flavor_text.replace(/\n|\f|\r/g, ' ')));
+			.map(entry => {
+				return {
+					text: entry.flavor_text.replace(/\n|\f|\r/g, ' '),
+					version: versions[entry.version.name]
+				};
+			});
 		this.names = data.names.length
 			? data.names.map(entry => ({ name: entry.name, language: entry.language.name }))
 			: [{ name: slugName, language: 'en' }];

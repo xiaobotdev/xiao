@@ -19,7 +19,28 @@
 			"language": {
 				"name": "en"
 			},
-			"flavor_text": "Comment to be written."
+			"flavor_text": "Comment to be written.",
+			"version": {
+				"name": "red"
+			}
+		},
+		{
+			"language": {
+				"name": "en"
+			},
+			"flavor_text": "コメント さくせいちゅう",
+			"version": {
+				"name": "blue"
+			}
+		},
+		{
+			"language": {
+				"name": "en"
+			},
+			"flavor_text": "\u200B",
+			"version": {
+				"name": "yellow"
+			}
 		}
 	],
 	"id": 0,
