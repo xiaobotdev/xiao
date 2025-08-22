@@ -98,14 +98,13 @@ module.exports = class JeopardyScrape {
 		const cluesBefore = this.clues.length;
 		const latestSeason = this.seasons[this.seasons.length - 1];
 		const seasons = await this.fetchSeasons();
-		const newSeasons = seasons.filter(season => !this.seasons.includes(season));
-		this.seasons.push(...newSeasons);
-		if (latestSeason) newSeasons.push(latestSeason);
-		for (const season of newSeasons) {
+		for (const season of seasons) {
+			if (this.seasons.includes(season) && latestSeason !== season) continue;
+			if (!latestSeason === season) this.seasons.push(season);
 			const games = await this.fetchSeason(season);
-			const newGames = games.filter(game => !this.gameIDs.includes(game));
-			this.gameIDs.push(...newGames);
-			for (const gameID of newGames) {
+			for (const gameID of games) {
+				if (this.gameIDs.includes(gameID)) continue;
+				this.gameIDs.push(gameID);
 				const clues = await this.fetchClues(gameID);
 				this.clues.push(...clues);
 			}
