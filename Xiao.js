@@ -304,14 +304,6 @@ client.on('ready', async () => {
 		client.logger.error(`[STYLIZE] Failed to load stylize models\n${err.stack}`);
 	}
 
-	// Update Jeopardy questions
-	try {
-		const newClues = await client.jeopardy.checkForUpdates();
-		client.logger.info(`[JEOPARDY] Added ${newClues} new Jeopardy clues.`);
-	} catch (err) {
-		client.logger.error(`[JEOPARDY] Failed to update Jeopardy clues\n${err.stack}`);
-	}
-
 	// Fetch all members
 	try {
 		for (const guild of client.guilds.cache.values()) {
@@ -320,6 +312,20 @@ client.on('ready', async () => {
 		client.logger.info('[MEMBERS] Fetched all guild members.');
 	} catch (err) {
 		client.logger.error(`[MEMBERS] Failed to fetch guild members\n${err.stack}`);
+	}
+
+	// Update Jeopardy questions
+	try {
+		client.logger.info('[JEOPARDY] Starting Jeopardy clue update...');
+		const newClues = await client.jeopardy.checkForUpdates();
+		client.logger.info(`[JEOPARDY] Added ${newClues} new Jeopardy clues.`);
+		setInterval(() => {
+			client.jeopardy.checkForUpdates()
+				.then(count => client.logger.info(`[JEOPARDY] Added ${count} new Jeopardy clues.`))
+				.catch(err => client.logger.error(`[JEOPARDY] Failed to update Jeopardy clues\n${err.stack}`));
+		}, 8.64e+7);
+	} catch (err) {
+		client.logger.error(`[JEOPARDY] Failed to update Jeopardy clues\n${err.stack}`);
 	}
 });
 
