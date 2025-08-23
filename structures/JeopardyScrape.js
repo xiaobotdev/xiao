@@ -46,7 +46,8 @@ module.exports = class JeopardyScrape {
 			const categoryArr = [];
 			categories.each((i, elem) => categoryArr.push($(elem).text().toLowerCase()));
 			questions.each((i, elem) => {
-				const value = $(elem).find('td[class="clue_value"]').text();
+				let value = $(elem).find('td[class="clue_value"]').text();
+				if (!value) value = $(elem).find('td[class="clue_value_daily_double"]').text();
 				const question = $(elem).find('td[class="clue_text"]').first().text();
 				const answer = $(elem).find('em[class="correct_response"]').text();
 				if (!question || !answer) return;
