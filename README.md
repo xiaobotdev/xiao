@@ -108,7 +108,7 @@ things, I'm not taking any chances.
 19. Start Xiao up!
 
 ## Commands
-Total: 516
+Total: 517
 
 ### Utility:
 
@@ -317,12 +317,13 @@ Total: 516
 * **character-count:** Responds with the character count of text.
 * **chinese-zodiac:** Responds with the Chinese Zodiac Sign for the given year.
 * **dominant-color:** Determines the dominant color of an image.
+* **face-gender:** Determines the gender of a face.
 * **faces:** Shows all detected faces in an image.
-* **gender:** Determines the gender of a name.
 * **generation:** Responds with the Generation for the given year.
 * **image-size:** Determines the size of an image.
 * **is-it-down:** Determines if a website is down or not.
 * **levenshtein:** Determines the levenshtein distance between two strings.
+* **name-gender:** Determines the gender of a name.
 * **nsfw-image:** Determines if an image is NSFW.
 * **nsfw-url:** Determines if a URL is NSFW.
 * **parse-time:** Analyzes the time duration you provide and gives the result.
