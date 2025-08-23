@@ -108,7 +108,7 @@ things, I'm not taking any chances.
 19. Start Xiao up!
 
 ## Commands
-Total: 515
+Total: 516
 
 ### Utility:
 
@@ -693,6 +693,7 @@ Total: 515
 * [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
 * [@twemoji/parser](https://www.npmjs.com/package/@twemoji/parser)
 * [bombsweeper.js](https://www.npmjs.com/package/bombsweeper.js)
+* [buffer](https://www.npmjs.com/package/buffer)
 * [bufferutil](https://www.npmjs.com/package/bufferutil)
 * [cheerio](https://www.npmjs.com/package/cheerio)
 * [city-timezones](https://www.npmjs.com/package/city-timezones)
@@ -735,6 +736,7 @@ Total: 515
 * [text-diff](https://www.npmjs.com/package/text-diff)
 * [tictactoe-minimax-ai](https://www.npmjs.com/package/tictactoe-minimax-ai)
 * [twitter-openapi-typescript](https://www.npmjs.com/package/twitter-openapi-typescript)
+* [user-agents](https://www.npmjs.com/package/user-agents)
 * [utf-8-validate](https://www.npmjs.com/package/utf-8-validate)
 * [valid-url](https://www.npmjs.com/package/valid-url)
 * [wavefile](https://www.npmjs.com/package/wavefile)
@@ -843,7 +845,7 @@ Total: 515
 * **psycho-pass:**
    - [PSYCHO-PASS](http://psycho-pass.com/) (Original Anime)
    - [Tatsumaki](https://tatsumaki.xyz/) (Concept)
-   - [Psycho-Pass Wiki](https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki) ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index)))
+   - [Psycho-Pass Wiki](https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki) ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index%29))
 * **ship:**
    - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339) ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 * **thicc:**
