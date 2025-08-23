@@ -21,7 +21,7 @@ module.exports = class CommandClient extends Client {
 		this.blacklist = { user: [], guild: [] };
 		this._throttlingTimeouts = new Map();
 
-		this.once('ready', this.onceReady);
+		this.once('clientReady', this.onceReady);
 		this.on('messageCreate', this.onMessage);
 	}
 
