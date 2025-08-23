@@ -72,7 +72,7 @@ client.registry
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.on('ready', async () => {
+client.on('clientReady', async () => {
 	client.logger.info(`[READY] Logged in as ${client.user.tag}! ID: ${client.user.id}`);
 
 	// Make temp directories
