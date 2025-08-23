@@ -49,12 +49,12 @@ module.exports = class JeopardyScrape {
 				const value = $(elem).find('td[class="clue_value"]').text();
 				const question = $(elem).find('td[class="clue_text"]').first().text();
 				const answer = $(elem).find('em[class="correct_response"]').text();
-				if (!question || !answer || !value) return;
+				if (!question || !answer) return;
 				clues.push({
 					question,
 					answer,
 					category: categoryArr[i % 6],
-					value: value.match(/[0-9]+/)[0],
+					value: value ? value.match(/[0-9]+/)[0] : '0',
 					gameID: id
 				});
 			});
