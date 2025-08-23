@@ -101,7 +101,7 @@ module.exports = class JeopardyScrape {
 		const seasons = await this.fetchSeasons();
 		for (const season of seasons) {
 			if (this.seasons.includes(season) && latestSeason !== season) continue;
-			if (!latestSeason === season) this.seasons.push(season);
+			if (latestSeason !== season) this.seasons.push(season);
 			const games = await this.fetchSeason(season);
 			for (const gameID of games) {
 				if (this.gameIDs.includes(gameID)) continue;
