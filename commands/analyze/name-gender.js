@@ -1,11 +1,11 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 
-module.exports = class GenderCommand extends Command {
+module.exports = class NameGenderCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'gender',
-			aliases: ['guess-gender', 'gender-guess'],
+			name: 'name-gender',
+			aliases: ['guess-name-gender', 'name-gender-guess', 'gender-name'],
 			group: 'analyze',
 			description: 'Determines the gender of a name.',
 			credit: [
