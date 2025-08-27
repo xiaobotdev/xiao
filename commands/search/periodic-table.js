@@ -100,7 +100,9 @@ module.exports = class PeriodicTableCommand extends Command {
 		ctx.fillText(element.name, 250, 450);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(30);
 		ctx.fillText(element.atomic_mass ? element.atomic_mass.toString() : '?', 250, 400);
-		const period = element.number === 0 ? element.period : `period ${element.period}`;
+		const period = element.number === 0 || element.number === 1999
+			? element.period
+			: `period ${element.period}`;
 		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;
 		return msg.say(
 			`**${element.name} (${element.symbol})** is a ${phase} in ${period}.`,
