@@ -33,6 +33,7 @@
 		"@discordjs/voice": "^0.19.0",
 		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@napi-rs/canvas": "^0.1.77",
+		"@snazzah/davey": "^0.1.6",
 		"@tensorflow-models/face-detection": "^1.0.3",
 		"@tensorflow/tfjs-node": "^4.22.0",
 		"@twemoji/parser": "^16.0.0",
