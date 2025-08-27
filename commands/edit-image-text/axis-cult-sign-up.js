@@ -39,7 +39,7 @@ module.exports = class AxisCultSignUpCommand extends Command {
 				{
 					key: 'gender',
 					type: 'string',
-					oneOf: ['male', 'female']
+					oneOf: ['male', 'female', 'other']
 				},
 				{
 					key: 'age',

@@ -16,6 +16,14 @@ const batman = {
 	phase: 'Solid',
 	symbol: '🦇'
 };
+const jerktonium = {
+	name: 'Jerktonium',
+	atomic_mass: 240,
+	number: 1999,
+	period: 'Bikini Bottom',
+	phase: 'Solid',
+	symbol: 'Jt'
+};
 
 module.exports = class PeriodicTableCommand extends Command {
 	constructor(client) {
@@ -106,6 +114,7 @@ module.exports = class PeriodicTableCommand extends Command {
 			.get('https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json');
 		this.table = JSON.parse(text).elements;
 		this.table.unshift(batman);
+		this.table.unshift(jerktonium);
 		return this.table;
 	}
 };

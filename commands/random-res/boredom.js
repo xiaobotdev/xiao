@@ -11,7 +11,7 @@ module.exports = class BoredomCommand extends Command {
 			credit: [
 				{
 					name: 'Bored API',
-					url: 'https://www.boredapi.com/',
+					url: 'https://bored.api.lewagon.com/',
 					reason: 'API'
 				}
 			]
@@ -19,7 +19,7 @@ module.exports = class BoredomCommand extends Command {
 	}
 
 	async run(msg) {
-		const { body } = await request.get('https://www.boredapi.com/api/activity/');
+		const { body } = await request.get('https://bored.api.lewagon.com/api/activity/');
 		return msg.say(`${body.activity} (${body.type})`);
 	}
 };
