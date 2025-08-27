@@ -1,6 +1,10 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const genders = ['male', 'female', 'both'];
+const genders = {
+	masculine: 'male',
+	feminine: 'female',
+	any: ''
+};
 
 module.exports = class NameCommand extends Command {
 	constructor(client) {
@@ -21,7 +25,7 @@ module.exports = class NameCommand extends Command {
 					key: 'gender',
 					type: 'string',
 					default: 'both',
-					oneOf: genders,
+					oneOf: Object.keys(genders),
 					parse: gender => gender.toLowerCase()
 				}
 			]
@@ -34,7 +38,7 @@ module.exports = class NameCommand extends Command {
 			.query({
 				inc: 'name',
 				noinfo: '',
-				gender: gender === 'both' ? '' : gender,
+				gender: genders[gender],
 				nat: 'AU,US,CA,GB'
 			});
 		const data = body.results[0].name;

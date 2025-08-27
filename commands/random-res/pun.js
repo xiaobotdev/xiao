@@ -28,7 +28,7 @@ module.exports = class PunCommand extends Command {
 		if (body.type === 'twopart') {
 			return msg.say(stripIndents`
 				${body.setup}
-				${body.delivery}
+				||${body.delivery}||
 			`);
 		}
 		return msg.say(body.joke);

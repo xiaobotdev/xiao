@@ -12,6 +12,8 @@ module.exports = class OffspringCommand extends Command {
 	}
 
 	run(msg) {
+		const chance = Math.floor(Math.random() * 5500);
+		if (!chance) return msg.say('It\'s a... Wait, what is it?');
 		return msg.say(`It's a ${genders[Math.floor(Math.random() * genders.length)]}!`);
 	}
 };

@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { oneLine } = require('common-tags');
 const { MersenneTwister19937, integer } = require('random-js');
-const genders = ['male', 'female'];
+const genders = ['man', 'woman'];
 const { eyeColors, hairColors, hairStyles, extras } = require('../../assets/json/guess-looks');
 const { LOVER_USER_ID } = process.env;
 
@@ -44,7 +44,7 @@ module.exports = class GuessLooksCommand extends Command {
 		const extra = extras[integer(0, extras.length - 1)(random)];
 		return msg.reply(oneLine`
 			I think ${authorUser ? 'you are' : `${user.username} is`} a ${age} year old ${gender} with ${eyeColor} eyes
-			and ${hairStyle} ${hairColor} hair. ${authorUser ? 'You are' : `${gender === 'male' ? 'He' : 'She'} is`}
+			and ${hairStyle} ${hairColor} hair. ${authorUser ? 'You are' : `${gender === 'man' ? 'He' : 'She'} is`}
 			${feet}'${inches}" and weigh${authorUser ? '' : 's'} ${weight} pounds. Don't forget the ${extra}!
 		`);
 	}
