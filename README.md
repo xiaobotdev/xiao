@@ -108,7 +108,7 @@ things, I'm not taking any chances.
 19. Start Xiao up!
 
 ## Commands
-Total: 517
+Total: 514
 
 ### Utility:
 
@@ -195,7 +195,6 @@ Total: 517
 
 ### Random Image:
 
-* **bird:** Responds with a random image of a bird.
 * **bunny:** Responds with a random bunny image and fact.
 * **cat:** Responds with a random cat image and fact.
 * **dog:** Responds with a random dog image and fact.
@@ -207,7 +206,6 @@ Total: 517
 * **light-novel-cover:** Responds with a randomly generated Light Novel cover. (NSFW)
 * **lizard:** Responds with a random lizard image.
 * **lorem-picsum:** Responds with a random image of a certain size.
-* **shiba:** Responds with a random image of a Shiba Inu.
 * **xiao:** Responds with a random image of Xiao Pai.
 
 ### Seeded Randomizers:
@@ -256,7 +254,6 @@ Total: 517
 * **days-since:** Responds with how many days there have been since a certain date.
 * **days-until:** Responds with how many days there are until a certain date.
 * **florida-man:** Responds with the Flordia man of the day.
-* **google-doodle:** Responds with a Google Doodle, either the latest one or a random one from the past.
 * **horoscope:** Responds with today's horoscope for a specific Zodiac sign.
 * **is-leap:** Responds with if a year is a leap year.
 * **is-tuesday:** Determines if today is Tuesday.
@@ -804,8 +801,6 @@ Total: 517
    - [Grady Ward](https://en.wikipedia.org/wiki/Grady_Ward) ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
 * **yo-mama:**
    - [rdegges](https://github.com/rdegges) ([Joke Data](https://github.com/rdegges/yomomma-api/blob/master/jokes.txt))
-* **bird:**
-   - [shibe.online](https://shibe.online/) (API)
 * **bunny:**
    - [bunnies.io](https://www.bunnies.io/) (API)
 * **cat:**
@@ -830,8 +825,6 @@ Total: 517
    - [nekos.life](https://nekos.life/) (API)
 * **lorem-picsum:**
    - [Lorem Picsum](https://picsum.photos/) (API)
-* **shiba:**
-   - [shibe.online](https://shibe.online/) (API)
 * **xiao:**
    - [Marvelous](http://www.marv.jp/) ([Images, Original "Rune Factory 4" Game](http://www.runefactory4.com/index1.html))
    - [SauceNAO](https://saucenao.com/) (API)
