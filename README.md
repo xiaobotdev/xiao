@@ -687,6 +687,7 @@ Total: 514
 * [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
 * [@mediapipe/face_detection](https://www.npmjs.com/package/@mediapipe/face_detection)
 * [@napi-rs/canvas](https://www.npmjs.com/package/@napi-rs/canvas)
+* [@snazzah/davey](https://www.npmjs.com/package/@snazzah/davey)
 * [@tensorflow-models/face-detection](https://www.npmjs.com/package/@tensorflow-models/face-detection)
 * [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
 * [@twemoji/parser](https://www.npmjs.com/package/@twemoji/parser)
@@ -759,7 +760,7 @@ Total: 514
    - [Axis Order Bot](https://www.reddit.com/r/axisorderbot/wiki/index) (Prayer Data)
    - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/) (Original Anime)
 * **boredom:**
-   - [Bored API](https://www.boredapi.com/) (API)
+   - [Bored API](https://bored.api.lewagon.com/) (API)
 * **chuck-norris:**
    - [Chuck Norris](https://chucknorris.com/) (Himself)
    - [chucknorris.io](https://api.chucknorris.io/) ([API](https://api.chucknorris.io/))
@@ -872,8 +873,6 @@ Total: 514
    - [NASA](https://www.nasa.gov/) ([APOD API](https://api.nasa.gov/))
 * **florida-man:**
    - [floridamanbirthday.org](https://floridamanbirthday.org/) (News Data)
-* **google-doodle:**
-   - [Google](https://www.google.com/) ([Google Doodles API](https://www.google.com/doodles))
 * **horoscope:**
    - [astrology.TV](https://astrology.tv/) ([Horoscope Data](https://astrology.tv/horoscope/daily/))
 * **neko-atsume-password:**
@@ -996,10 +995,12 @@ Total: 514
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
    - [Smogon](https://www.smogon.com/) (Tier Data)
    - [Pokémon Showdown](https://play.pokemonshowdown.com/) ([Box Sprite Sheet](https://play.pokemonshowdown.com/sprites/))
-* **gender:**
-   - [Genderize.io](https://genderize.io/) (API)
+* **face-gender:**
+   - [Nyckel](https://www.nyckel.com/pretrained-classifiers/gender-detector/) (API)
 * **is-it-down:**
    - [Is It Down Right Now?](https://www.isitdownrightnow.com/) (API)
+* **name-gender:**
+   - [Genderize.io](https://genderize.io/) (API)
 * **read-qr-code:**
    - [goQR.me](http://goqr.me/) ([QR code API](http://goqr.me/api/))
 * **scrabble-score:**
