@@ -1,5 +1,9 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
+const genders = {
+	male: 'masculine',
+	female: 'feminine'
+};
 
 module.exports = class NameGenderCommand extends Command {
 	constructor(client) {
@@ -30,6 +34,7 @@ module.exports = class NameGenderCommand extends Command {
 			.get(`https://api.genderize.io/`)
 			.query({ name });
 		if (!body.gender) return msg.say(`I have no idea what gender ${body.name} is.`);
-		return msg.say(`I'm ${Math.round(body.probability * 100)}% sure ${body.name} is a ${body.gender} name.`);
+		const prob = Math.round(body.probability * 100);
+		return msg.say(`I'm ${prob}% sure ${body.name} is a ${genders[body.gender]} name.`);
 	}
 };
