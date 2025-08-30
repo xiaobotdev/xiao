@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "154.0.0",
+	"version": "155.0.0",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -53,7 +53,6 @@
 		"font-finder": "^1.1.0",
 		"gifencoder": "^2.0.1",
 		"gm": "^1.25.1",
-		"googlethis": "github:CROSP/google-this",
 		"html-entities": "^2.6.0",
 		"image-to-ascii": "^3.2.2",
 		"ioredis": "^5.7.0",

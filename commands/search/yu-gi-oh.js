@@ -39,10 +39,7 @@ module.exports = class YuGiOhCommand extends Command {
 		try {
 			const { body } = await request
 				.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
-				.query({
-					fname: card,
-					la: 'english'
-				});
+				.query({ fname: card });
 			const data = body.data[0];
 			const embed = new EmbedBuilder()
 				.setColor(0xBE5F1F)

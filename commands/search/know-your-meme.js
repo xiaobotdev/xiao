@@ -46,9 +46,13 @@ module.exports = class KnowYourMemeCommand extends Command {
 	async search(query) {
 		const { text } = await request
 			.get('https://knowyourmeme.com/search')
-			.query({ q: query });
+			.query({
+				q: query,
+				sort: 'views',
+				context: 'entries'
+			});
 		const $ = cheerio.load(text);
-		const location = $('.entry-grid-body').find('tr td a').first().attr('href');
+		const location = $('section[class="gallery"]').find('a[class="item"]').first().attr('href');
 		if (!location) return null;
 		return location;
 	}

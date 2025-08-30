@@ -1,25 +1,16 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const path = require('path');
+const { createCanvas } = require('@napi-rs/canvas');
 const colors = 	{
 	Solid: 'black',
 	Liquid: 'blue',
 	Gas: 'green'
 };
-const batman = {
-	name: 'Batman',
-	atomic_mass: 5.736e+28,
-	number: 0,
-	period: 'Gotham City',
-	phase: 'Solid',
-	symbol: '🦇'
-};
 const jerktonium = {
 	name: 'Jerktonium',
-	atomic_mass: 240,
-	number: 1999,
+	atomic_mass: 1999,
+	number: 0,
 	period: 'Bikini Bottom',
 	phase: 'Solid',
 	symbol: 'Jt'
@@ -86,21 +77,16 @@ module.exports = class PeriodicTableCommand extends Command {
 		ctx.fillStyle = 'white';
 		ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
 		ctx.textAlign = 'center';
-		if (element.number === 0) {
-			const batmanImg = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'batman.png'));
-			ctx.drawImage(batmanImg, 100, 166);
-		} else {
-			ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(210);
-			ctx.fillStyle = colors[element.phase] || 'gray';
-			ctx.fillText(element.symbol, 250, 320);
-		}
+		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(210);
+		ctx.fillStyle = colors[element.phase] || 'gray';
+		ctx.fillText(element.symbol, 250, 320);
 		ctx.fillStyle = 'black';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(45);
 		ctx.fillText(element.number.toString(), 250, 100);
 		ctx.fillText(element.name, 250, 450);
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(30);
 		ctx.fillText(element.atomic_mass ? element.atomic_mass.toString() : '?', 250, 400);
-		const period = element.number === 0 || element.number === 1999
+		const period = element.number === 0
 			? element.period
 			: `period ${element.period}`;
 		const phase = element.undiscovered ? `hypothetical ${element.phase || 'element'}` : element.phase;
@@ -115,7 +101,6 @@ module.exports = class PeriodicTableCommand extends Command {
 		const { text } = await request
 			.get('https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json');
 		this.table = JSON.parse(text).elements;
-		this.table.unshift(batman);
 		this.table.unshift(jerktonium);
 		return this.table;
 	}
