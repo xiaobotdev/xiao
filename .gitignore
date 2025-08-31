@@ -19,9 +19,6 @@ command-last-run.json
 blacklist.json
 jeopardy.json
 
-# DECTalk
-dectalk/
-
 # Mac Files
 .DS_Store
 
