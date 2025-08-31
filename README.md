@@ -35,12 +35,6 @@ Yes, several commands and functions rely on it.
 
 Only if you want to use the DECTalk command.
 
-> Where can I find DECTalk?
-
-Good question! I don't even remember where I found it, and I really can't help you. While it's
-probably considered abandonware and I doubt anyone would go after a private Discord bot of all
-things, I'm not taking any chances.
-
 ## Installing
 
 ### Filling Out `.env`
@@ -97,15 +91,14 @@ things, I'm not taking any chances.
 8. Run `apt install liblqr-1-0-dev liblqr-1-0` to install liblqr (needed for ImageMagick).
 9. [Follow these instructions to install ImageMagick](https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/).
 10. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04). Remember to set up a password!
-11. Download DECTalk and extract `dectalk.dll`, `dtalk_us.dic`, `MSVCRTd.DLL`, and `say.exe` to `dectalk/`. I cannot help you find this.
-12. Run `apt install wine` to install wine.
-13. Run `dpkg --add-architecture i386` to allow installation of wine32.
-14. Run `apt update` again.
-15. Run `apt install wine32` to install wine32.
-16. Run `apt install xvfb` to install xvfb.
-17. Run `yarn install --production` in the folder you cloned the bot.
-18. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
-19. Start Xiao up!
+11. Run `apt install wine` to install wine.
+12. Run `dpkg --add-architecture i386` to allow installation of wine32.
+13. Run `apt update` again.
+14. Run `apt install wine32` to install wine32.
+15. Run `apt install xvfb` to install xvfb.
+16. Run `yarn install --production` in the folder you cloned the bot.
+17. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
+18. Start Xiao up!
 
 ## Commands
 Total: 513
