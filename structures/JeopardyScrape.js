@@ -70,14 +70,17 @@ module.exports = class JeopardyScrape {
 		if (!file.clues || !file.gameIDs || !file.seasons) return null;
 		for (const season of file.seasons) {
 			if (typeof season !== 'string') continue;
+			if (this.seasons.includes(season)) continue;
 			this.seasons.push(season);
 		}
 		for (const gameID of file.gameIDs) {
 			if (typeof gameID !== 'string') continue;
+			if (this.gameIDs.includes(gameID)) continue;
 			this.gameIDs.push(gameID);
 		}
 		for (const clue of file.clues) {
 			if (typeof clue !== 'string') continue;
+			if (this.clues.includes(clue)) continue;
 			this.clues.push(clue);
 		}
 		return file;
