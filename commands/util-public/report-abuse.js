@@ -18,6 +18,6 @@ module.exports = class ReportAbuseCommand extends Command {
 	}
 
 	run(msg, { message }) {
-		return this.client.registry.commands.get('report').run(msg, { reason: 'abuse', message });
+		return this.client.registry.commands.get('report').run(msg, { reason: 3, message });
 	}
 };

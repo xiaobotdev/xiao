@@ -18,6 +18,6 @@ module.exports = class ReportBugCommand extends Command {
 	}
 
 	run(msg, { message }) {
-		return this.client.registry.commands.get('report').run(msg, { reason: 'bug', message });
+		return this.client.registry.commands.get('report').run(msg, { reason: 0, message });
 	}
 };
