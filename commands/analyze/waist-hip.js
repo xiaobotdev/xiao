@@ -1,10 +1,11 @@
 const Command = require('../../framework/Command');
+const { formatNumber } = require('../../util/Util');
 
 module.exports = class WaistHipCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'waist-hip',
-			aliases: ['waist-hip-ratio', 'w-h-ratio'],
+			aliases: ['waist-hip-ratio', 'w-h-ratio', 'whr'],
 			group: 'analyze',
 			description: 'Responds with the waist-hip ratio of measurements.',
 			args: [
@@ -25,7 +26,7 @@ module.exports = class WaistHipCommand extends Command {
 	}
 
 	run(msg, { waist, hip }) {
-		const ratio = waist / hip;
+		const ratio = formatNumber(waist / hip);
 		return msg.say(`The waist-hip ratio of someone with a ${waist} inch waist and ${hip} inch hips is **${ratio}**.`);
 	}
 };
