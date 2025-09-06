@@ -44,6 +44,6 @@ module.exports = class EyesCommand extends Command {
 			ctx.drawImage(eyes, leftEyeX, leftEyeY, eyeWidth, eyeHeight);
 			ctx.drawImage(eyes, rightEyeX, rightEyeY, eyeWidth, eyeHeight);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'eyes.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/jpeg'), name: 'eyes.jpeg' }] });
 	}
 };
