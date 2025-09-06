@@ -17,6 +17,6 @@ module.exports = class FeedbackCommand extends Command {
 	}
 
 	run(msg, { message }) {
-		return this.client.registry.commands.get('report').run(msg, { reason: 'feedback', message });
+		return this.client.registry.commands.get('report').run(msg, { reason: 1, message });
 	}
 };

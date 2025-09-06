@@ -18,6 +18,6 @@ module.exports = class SuggestCommand extends Command {
 	}
 
 	run(msg, { message }) {
-		return this.client.registry.commands.get('report').run(msg, { reason: 'suggestion', message });
+		return this.client.registry.commands.get('report').run(msg, { reason: 2, message });
 	}
 };
