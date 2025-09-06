@@ -18,7 +18,7 @@ module.exports = class CreateQRCodeCommand extends Command {
 		});
 	}
 
-	async run(msg, { text }) {
+	run(msg, { text }) {
 		const qr = this.createQRCode(text);
 		return msg.say({ files: [{ attachment: qr, name: 'qr-code.png' }] });
 	}
