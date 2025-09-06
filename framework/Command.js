@@ -19,6 +19,7 @@ module.exports = class Command {
 		this.guildOnly = options.guildOnly || false;
 		this.game = options.game || false;
 		this.guarded = options.guarded || false;
+		this.hidden = options.hidden || false;
 		this.unknown = options.unknown || false;
 		this.throttling = options.throttling || { usages: 2, duration: 5 };
 		this.sendTyping = typeof options.sendTyping === 'undefined' ? true : Boolean(options.sendTyping);
