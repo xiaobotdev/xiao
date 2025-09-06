@@ -1,7 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const GIFEncoder = require('gifencoder');
+const { GifEncoder } = require('@skyra/gifenc');
+const { buffer } = require('node:stream/consumers');
 const request = require('node-superfetch');
 
 module.exports = class ShakeCommand extends Command {
@@ -38,7 +39,8 @@ module.exports = class ShakeCommand extends Command {
 		const base = await loadImage(body);
 		const ratio = base.width / base.height;
 		const height = 512 / ratio;
-		const encoder = new GIFEncoder(512, height);
+		const encoder = new GifEncoder(512, height);
+		const stream = encoder.createReadStream();
 		const canvas = createCanvas(512, height);
 		const ctx = canvas.getContext('2d');
 		encoder.start();
@@ -52,7 +54,7 @@ module.exports = class ShakeCommand extends Command {
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
-		const attachment = encoder.out.getData();
+		const attachment = await buffer(stream);
 		return msg.say({ files: [{ attachment, name: 'shake.gif' }] });
 	}
 

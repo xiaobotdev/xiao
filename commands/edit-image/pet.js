@@ -1,7 +1,8 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const GIFEncoder = require('gifencoder');
+const { GifEncoder } = require('@skyra/gifenc');
+const { buffer } = require('node:stream/consumers');
 const request = require('node-superfetch');
 const path = require('path');
 const { centerImagePart } = require('../../util/Canvas');
@@ -32,7 +33,8 @@ module.exports = class PetCommand extends Command {
 	async run(msg, { image }) {
 		const { body } = await request.get(image);
 		const data = await loadImage(body);
-		const encoder = new GIFEncoder(112, 112);
+		const encoder = new GifEncoder(112, 112);
+		const stream = encoder.createReadStream();
 		const canvas = createCanvas(112, 112);
 		const ctx = canvas.getContext('2d');
 		encoder.start();
@@ -53,7 +55,7 @@ module.exports = class PetCommand extends Command {
 			else squish += 4;
 		}
 		encoder.finish();
-		const attachment = encoder.out.getData();
+		const attachment = await buffer(stream);
 		return msg.say({ files: [{ attachment, name: 'pet.gif' }] });
 	}
 };

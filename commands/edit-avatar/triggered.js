@@ -1,8 +1,9 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const GIFEncoder = require('gifencoder');
+const { GifEncoder } = require('@skyra/gifenc');
 const request = require('node-superfetch');
+const { buffer } = require('node:stream/consumers');
 const path = require('path');
 const { drawImageWithTint } = require('../../util/Canvas');
 const coord1 = [-25, -33, -42, -14];
@@ -44,7 +45,8 @@ module.exports = class TriggeredCommand extends Command {
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'triggered.png'));
 		const { body } = await request.get(avatarURL);
 		const avatar = await loadImage(body);
-		const encoder = new GIFEncoder(base.width, base.width);
+		const encoder = new GifEncoder(base.width, base.width);
+		const stream = encoder.createReadStream();
 		const canvas = createCanvas(base.width, base.width);
 		const ctx = canvas.getContext('2d');
 		ctx.fillStyle = 'white';
@@ -59,7 +61,7 @@ module.exports = class TriggeredCommand extends Command {
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
-		const attachment = encoder.out.getData();
+		const attachment = await buffer(stream);
 		return msg.say({ files: [{ attachment, name: 'triggered.gif' }] });
 	}
 };
