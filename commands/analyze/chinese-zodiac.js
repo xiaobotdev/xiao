@@ -19,6 +19,6 @@ module.exports = class ChineseZodiacCommand extends Command {
 	}
 
 	run(msg, { year }) {
-		return msg.say(`The Chinese Zodiac Sign for ${year} is ${signs[year % signs.length]}.`);
+		return msg.say(`The Chinese Zodiac Sign for ${year} is **${signs[year % signs.length]}**.`);
 	}
 };

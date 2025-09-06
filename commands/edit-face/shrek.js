@@ -51,6 +51,6 @@ module.exports = class ShrekCommand extends Command {
 				height * 1.5
 			);
 		}
-		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'shrek.png' }] });
+		return msg.say({ files: [{ attachment: canvas.toBuffer('image/jpeg'), name: 'shrek.jpeg' }] });
 	}
 };

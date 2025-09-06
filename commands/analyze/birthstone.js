@@ -20,7 +20,7 @@ module.exports = class BirthstoneCommand extends Command {
 
 	run(msg, { month }) {
 		const stone = stones[month - 1];
-		const alternate = stone.alternate ? ` Alternatively, you can also use ${list(stone.alternate, 'or')}.` : '';
-		return msg.say(`The Birthstone for ${firstUpperCase(months[month - 1])} is ${stone.primary}.${alternate}`);
+		const alternate = stone.alternate ? ` Alternatively, you can also use **${list(stone.alternate, 'or')}**.` : '';
+		return msg.say(`The Birthstone for ${firstUpperCase(months[month - 1])} is **${stone.primary}**.${alternate}`);
 	}
 };

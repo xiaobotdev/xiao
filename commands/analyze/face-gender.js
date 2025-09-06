@@ -28,6 +28,6 @@ module.exports = class FaceGenderCommand extends Command {
 		const { body } = await request
 			.post(`https://www.nyckel.com/v1/functions/gender-detector/invoke`)
 			.send({ data: image });
-		return msg.say(`I'm ${Math.round(body.confidence * 100)}% sure this is a ${body.labelName}.`);
+		return msg.say(`I'm ${Math.round(body.confidence * 100)}% sure this is a **${body.labelName}**.`);
 	}
 };
