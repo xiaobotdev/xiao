@@ -1,6 +1,6 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
-const QrCode = require('qrcode-reader');
+const { decodeQR } = require('qr/decode.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const { shorten } = require('../../util/Util');
 
@@ -29,21 +29,14 @@ module.exports = class ReadQRCodeCommand extends Command {
 		ctx.drawImage(img, 0, 0);
 		const imgData = ctx.getImageData(0, 0, img.width, img.height);
 		try {
-			const result = await this.readQrCode(imgData);
+			const result = await this.readQrCode(imgData, img.width, img.height);
 			return msg.reply(shorten(result, 2000));
 		} catch (err) {
 			return msg.reply(`Could not read QR Code: \`${err.message}\`.`);
 		}
 	}
 
-	readQrCode(imgData) {
-		const qr = new QrCode();
-		return new Promise((res, rej) => {
-			qr.callback = (err, value) => {
-				if (err) return rej(err);
-				return res(value);
-			}
-			return qr.decode(imgData);
-		});
+	readQrCode(imgData, width, height) {
+		return decodeQR({ width, height, data: imgData });
 	}
 };
