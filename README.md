@@ -1187,8 +1187,6 @@ Total: 518
    - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
 * **communist:**
    - [PNGFuel](https://www.pngfuel.com/) ([Image](https://www.pngfuel.com/free-png/osnol))
-* **create-qr-code:**
-   - [goQR.me](http://goqr.me/) ([QR code API](http://goqr.me/api/))
 * **dexter:**
    - [Pokémon](https://www.pokemon.com/us/) (Image, Original Anime)
 * **emboss:**
