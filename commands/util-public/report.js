@@ -8,7 +8,7 @@ module.exports = class ReportCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'report',
-			aliases: ['bug', 'report-bug', 'feedback', 'contact', 'suggest', 'suggestion', 'abuse', 'report-abuse'],
+			aliases: ['contact'],
 			group: 'util-public',
 			description: 'Reports something to the bot owner(s).',
 			guarded: true,
