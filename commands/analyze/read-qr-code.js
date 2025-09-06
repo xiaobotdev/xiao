@@ -43,7 +43,7 @@ module.exports = class ReadQRCodeCommand extends Command {
 				if (err) return rej(err);
 				return res(value);
 			}
-			qr.decode(imgData);
+			return qr.decode(imgData);
 		});
 	}
 };
