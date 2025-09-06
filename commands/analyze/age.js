@@ -20,6 +20,6 @@ module.exports = class AgeCommand extends Command {
 		const currentYear = new Date().getFullYear();
 		const age = currentYear - year;
 		if (age < 0) return msg.say(`Someone born in ${year} will be born in ${Math.abs(age)} years.`);
-		return msg.say(`Someone born in ${year} would be ${age} years old.`);
+		return msg.say(`Someone born in ${year} would be ${age} years old after their birthday.`);
 	}
 };

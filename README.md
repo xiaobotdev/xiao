@@ -101,7 +101,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 513
+Total: 514
 
 ### Utility:
 
@@ -321,6 +321,7 @@ Total: 513
 * **screenshot:** Takes a screenshot of any webpage.
 * **text-diff:** Compares two different bits of text.
 * **valid-url:** Tests whether a URL is valid or not.
+* **waist-hip:** Responds with the waist-hip ratio of measurements.
 * **zodiac-sign:** Responds with the Zodiac Sign for the given month/day.
 
 ### Single-Player Games:
