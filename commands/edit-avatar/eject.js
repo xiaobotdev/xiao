@@ -1,8 +1,9 @@
 const Command = require('../../framework/Command');
 const { PermissionFlagsBits } = require('discord.js');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const GIFEncoder = require('gifencoder');
+const { GifEncoder } = require('@skyra/gifenc');
 const { MersenneTwister19937, bool } = require('random-js');
+const { buffer } = require('node:stream/consumers');
 const request = require('node-superfetch');
 const path = require('path');
 const frameCount = 52;
@@ -55,7 +56,8 @@ module.exports = class EjectCommand extends Command {
 		const random = MersenneTwister19937.seed(user.id);
 		const imposter = bool()(random);
 		const text = `${user.username} was${imposter ? ' ' : ' not '}An Imposter.`;
-		const encoder = new GIFEncoder(320, 180);
+		const encoder = new GifEncoder(320, 180);
+		const stream = encoder.createReadStream();
 		const canvas = createCanvas(320, 180);
 		const ctx = canvas.getContext('2d');
 		ctx.textAlign = 'center';
@@ -97,7 +99,7 @@ module.exports = class EjectCommand extends Command {
 			encoder.addFrame(ctx);
 		}
 		encoder.finish();
-		const attachment = encoder.out.getData();
+		const attachment = await buffer(stream);
 		return msg.say({ files: [{ attachment, name: 'eject.gif' }] });
 	}
 };

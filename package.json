@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "155.2.1",
+	"version": "155.2.2",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -33,6 +33,7 @@
 		"@discordjs/voice": "^0.19.0",
 		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@napi-rs/canvas": "^0.1.78",
+		"@skyra/gifenc": "^1.0.1",
 		"@snazzah/davey": "^0.1.6",
 		"@tensorflow-models/face-detection": "^1.0.3",
 		"@tensorflow/tfjs-node": "^4.22.0",
@@ -51,7 +52,6 @@
 		"emoji-regex": "^10.5.0",
 		"fen-validator": "^2.0.1",
 		"font-finder": "^1.1.0",
-		"gifencoder": "^2.0.1",
 		"gm": "^1.25.1",
 		"html-entities": "^2.6.0",
 		"image-to-ascii": "^3.2.2",
