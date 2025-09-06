@@ -35,6 +35,6 @@ module.exports = class NameGenderCommand extends Command {
 			.query({ name });
 		if (!body.gender) return msg.say(`I have no idea what gender ${body.name} is.`);
 		const prob = Math.round(body.probability * 100);
-		return msg.say(`I'm ${prob}% sure ${body.name} is a ${genders[body.gender]} name.`);
+		return msg.say(`I'm ${prob}% sure ${body.name} is a **${genders[body.gender]}** name.`);
 	}
 };

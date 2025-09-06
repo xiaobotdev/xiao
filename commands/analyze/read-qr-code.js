@@ -1,5 +1,7 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
+const QrCode = require('qrcode-reader');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const { shorten } = require('../../util/Util');
 
 module.exports = class ReadQRCodeCommand extends Command {
@@ -9,14 +11,6 @@ module.exports = class ReadQRCodeCommand extends Command {
 			aliases: ['scan-qr-code', 'scan-qr', 'read-qr'],
 			group: 'analyze',
 			description: 'Reads a QR Code.',
-			credit: [
-				{
-					name: 'goQR.me',
-					url: 'http://goqr.me/',
-					reason: 'QR code API',
-					reasonURL: 'http://goqr.me/api/'
-				}
-			],
 			args: [
 				{
 					key: 'image',
@@ -28,11 +22,27 @@ module.exports = class ReadQRCodeCommand extends Command {
 	}
 
 	async run(msg, { image }) {
-		const { body } = await request
-			.get('https://api.qrserver.com/v1/read-qr-code/')
-			.query({ fileurl: image });
-		const data = body[0].symbol[0];
-		if (!data.data) return msg.reply(`Could not read QR Code: ${data.error}.`);
-		return msg.reply(shorten(data.data, 2000 - (msg.author.toString().length + 2)));
+		const { body } = await request.get(image);
+		const img = await loadImage(body);
+		const canvas = createCanvas(img);
+		const ctx = canvas.getContext('2d');
+		const imgData = ctx.getImageData(0, 0, img.width, img.height);
+		try {
+			const result = await this.readQrCode(imgData);
+			return msg.reply(shorten(result, 2000));
+		} catch (err) {
+			return msg.reply(`Could not read QR Code: \`${err.message}\`.`);
+		}
+	}
+
+	readQrCode(imgData) {
+		const qr = new QrCode();
+		return new Promise((res, rej) => {
+			qr.callback = (err, value) => {
+				if (err) return rej(err);
+				return res(value);
+			}
+			qr.decode(imgData);
+		});
 	}
 };

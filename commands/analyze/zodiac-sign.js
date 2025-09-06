@@ -27,7 +27,7 @@ module.exports = class ZodiacSignCommand extends Command {
 	run(msg, { month, day }) {
 		const sign = this.determineSign(month, day);
 		if (!sign) return msg.reply('Invalid day.');
-		return msg.say(`The Zodiac Sign for ${month}/${day} is ${sign.name}.`);
+		return msg.say(`The Zodiac Sign for ${month}/${day} is **${sign.name}**.`);
 	}
 
 	determineSign(month, day) {

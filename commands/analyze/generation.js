@@ -21,6 +21,6 @@ module.exports = class GenerationCommand extends Command {
 
 	run(msg, { year }) {
 		const generation = generations.find(gen => gen.start <= year && (gen.end ? gen.end >= year : true));
-		return msg.say(`Someone born in ${year} is part of: **${generation.name}**`);
+		return msg.say(`Someone born in ${year} is part of **${generation.name}**.`);
 	}
 };
