@@ -29,14 +29,14 @@ module.exports = class ReadQRCodeCommand extends Command {
 		ctx.drawImage(img, 0, 0);
 		const imgData = ctx.getImageData(0, 0, img.width, img.height);
 		try {
-			const result = await this.readQrCode(imgData, img.width, img.height);
+			const result = await this.readQrCode(imgData);
 			return msg.reply(shorten(result, 2000));
 		} catch (err) {
 			return msg.reply(`Could not read QR Code: \`${err.message}\`.`);
 		}
 	}
 
-	readQrCode(imgData, width, height) {
-		return decodeQR({ width, height, data: imgData });
+	readQrCode(imgData) {
+		return decodeQR(imgData);
 	}
 };
