@@ -24,8 +24,9 @@ module.exports = class ReadQRCodeCommand extends Command {
 	async run(msg, { image }) {
 		const { body } = await request.get(image);
 		const img = await loadImage(body);
-		const canvas = createCanvas(img);
+		const canvas = createCanvas(img.height, img.width);
 		const ctx = canvas.getContext('2d');
+		ctx.drawImage(img, 0, 0);
 		const imgData = ctx.getImageData(0, 0, img.width, img.height);
 		try {
 			const result = await this.readQrCode(imgData);
