@@ -101,7 +101,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 514
+Total: 518
 
 ### Utility:
 
@@ -109,6 +109,7 @@ Total: 514
 * **cloc:** Responds with the bot's code line count.
 * **command-leaderboard:** Responds with the bot's most used commands.
 * **credit:** Responds with a command's credits list.
+* **feedback:** Shortcut to send feedback.
 * **group-leaderboard:** Responds with the bot's most used command groups.
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **high-scores:** Responds with the high scores the bot has saved.
@@ -118,6 +119,9 @@ Total: 514
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
+* **report-abuse:** Shortcut to report abuse.
+* **report-bug:** Shortcut to report a bug.
+* **suggest:** Shortcut to suggest new features.
 * **unknown-command:** Displays help information for when an unknown command is used.
 * **uses:** Responds with a command's usage stats.
 
@@ -991,8 +995,6 @@ Total: 514
    - [Is It Down Right Now?](https://www.isitdownrightnow.com/) (API)
 * **name-gender:**
    - [Genderize.io](https://genderize.io/) (API)
-* **read-qr-code:**
-   - [goQR.me](http://goqr.me/) ([QR code API](http://goqr.me/api/))
 * **scrabble-score:**
    - [Hasbro](https://shop.hasbro.com/en-us) ([Original "Scrabble" Game](https://scrabble.hasbro.com/en-us))
 * **screenshot:**
