@@ -11,6 +11,11 @@
 .npmrc text eol=lf
 .env.example text eol=lf
 
+# DECTalk
+*.dll binary
+*.dic binary
+*.exe binary
+
 # Asset Files
 *.jpg binary
 *.png binary
