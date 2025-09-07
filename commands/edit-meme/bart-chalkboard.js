@@ -52,7 +52,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		ctx.font = this.client.fonts.get('akbar.ttf').toCanvasString(19);
 		ctx.fillStyle = 'white';
 		const shortened = shortenText(ctx, text.toUpperCase(), 500);
-		const len = ctx.measureText(shortened);
+		const len = ctx.measureText(shortened).width;
 		const arr = [];
 		for (let i = 0; i < 12; i++) arr.push(shortened);
 		fillTextWithBreaks(ctx, arr.join('\n'), 30, 27);
