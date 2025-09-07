@@ -41,7 +41,10 @@ module.exports = class LisaPresentationCommand extends Command {
 	}
 
 	async run(msg, { text }) {
-		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'bart-chalkboard.png'));
+		const base = await loadImage(
+			path.join(__dirname, '..', '..', 'assets', 'images', 'bart-chalkboard', 'chalkboard.png')
+		);
+		const bart = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'bart-chalkboard', 'bart.png'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
@@ -49,9 +52,11 @@ module.exports = class LisaPresentationCommand extends Command {
 		ctx.font = this.client.fonts.get('akbar.ttf').toCanvasString(19);
 		ctx.fillStyle = 'white';
 		const shortened = shortenText(ctx, text.toUpperCase(), 500);
+		const len = ctx.measureText(shortened);
 		const arr = [];
 		for (let i = 0; i < 12; i++) arr.push(shortened);
 		fillTextWithBreaks(ctx, arr.join('\n'), 30, 27);
+		ctx.drawImage(bart, Math.min(522, 30 + len), 142, 103, 212);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'bart-chalkboard.png' }] });
 	}
 };
