@@ -56,7 +56,7 @@ module.exports = class LisaPresentationCommand extends Command {
 		const arr = [];
 		for (let i = 0; i < 12; i++) arr.push(shortened);
 		fillTextWithBreaks(ctx, arr.join('\n'), 30, 27);
-		ctx.drawImage(bart, Math.min(522, 30 + len), 142, 103, 212);
+		ctx.drawImage(bart, Math.min(522, 30 + len - 5), 142, 103, 212);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'bart-chalkboard.png' }] });
 	}
 };
