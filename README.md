@@ -70,6 +70,7 @@ Only if you want to use the DECTalk command.
 * `GOOGLE_KEY` is your API key for Google, used for the YouTube Data API. You can get one [here](https://console.cloud.google.com/apis/dashboard). You must also [activate the YouTube Data API](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com?q=search).
 * `GOV_KEY` is your API key for NASA. You get get one [here](https://api.nasa.gov/).
 * `IDIOT_URL` is a URL, ideally to the [Wikipedia page of an idiot](https://en.wikipedia.org/wiki/Donald_Trump). By default, it will reply with "_Stares at you._"
+* `REMOVEBG_KEY` is your API key for remove.bg. You can get one [here](https://www.remove.bg/api).
 * `SAUCENAO_KEY` is your API key for SauceNAO. Register, login, and click [here](https://saucenao.com/user.php?page=search-api) to get one.
 * `SPOTIFY_KEY` and `SPOTIFY_SECRET` are your key and secret for the Spotify API. You can get one by [following these instructions](https://developer.spotify.com/documentation/web-api).
 * `THECATAPI_KEY` is your API key for The Cat API. You can get one [here](https://thecatapi.com/).
@@ -101,7 +102,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 518
+Total: 519
 
 ### Utility:
 
@@ -458,6 +459,7 @@ Total: 518
 * **police-tape:** Draws police tape over an image or a user's avatar.
 * **rainbow:** Draws a rainbow over an image or a user's avatar.
 * **rejected:** Draws a "rejected" stamp over an image or a user's avatar.
+* **remove-bg:** Removes the background from an image.
 * **resize:** Draws an image or a user's avatar resized to the size you want.
 * **rotate:** Draws an image or a user's avatar but rotated a number of degrees.
 * **sepia:** Draws an image or a user's avatar in sepia.
@@ -1223,6 +1225,8 @@ Total: 518
    - [PNG Arts](https://www.pngarts.com/) ([Image](https://www.pngarts.com/explore/94078))
 * **rejected:**
    - [Clipart Library](http://clipart-library.com/) ([Image](http://clipart-library.com/clipart/Rejected-Stamp-Transparent.htm))
+* **remove-bg:**
+   - [remove.bg](https://www.remove.bg/) ([API](https://www.remove.bg/api))
 * **sip:**
    - [CoolClips.com](http://search.coolclips.com/) ([Image](http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/))
 * **sketch:**
