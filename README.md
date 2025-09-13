@@ -72,7 +72,6 @@ Only if you want to use the DECTalk command.
 * `IDIOT_URL` is a URL, ideally to the [Wikipedia page of an idiot](https://en.wikipedia.org/wiki/Donald_Trump). By default, it will reply with "_Stares at you._"
 * `REMOVEBG_KEY` is your API key for remove.bg. You can get one [here](https://www.remove.bg/api).
 * `SAUCENAO_KEY` is your API key for SauceNAO. Register, login, and click [here](https://saucenao.com/user.php?page=search-api) to get one.
-* `SPOTIFY_KEY` and `SPOTIFY_SECRET` are your key and secret for the Spotify API. You can get one by [following these instructions](https://developer.spotify.com/documentation/web-api).
 * `THECATAPI_KEY` is your API key for The Cat API. You can get one [here](https://thecatapi.com/).
 * `THEDOGAPI_KEY` is your API key for The Dog API. You can get one [here](https://thedogapi.com/).
 * `WEBSTER_KEY` is your API key for Merriam-Webster. You can get one [here](https://dictionaryapi.com/).
@@ -102,7 +101,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 518
+Total: 517
 
 ### Utility:
 
@@ -343,7 +342,6 @@ Total: 518
 * **chance:** Attempt to win with a 1 in 1000 (or your choice) chance of winning.
 * **doors:** Open the right door, and you win the money! Make the wrong choice, and you get the fire!
 * **google-feud:** Attempt to determine the top suggestions for a Google search.
-* **guess-song:** Guess what song is playing.
 * **hangman:** Prevent a man from being hanged by guessing a word as fast as you can.
 * **hearing-test:** Test your hearing.
 * **horse-info:** Responds with detailed information on a horse.
@@ -1017,8 +1015,6 @@ Total: 518
 * **google-feud:**
    - [Google](https://www.google.com/) (Autofill API)
    - [Google Feud](http://www.googlefeud.com/) (Original Game)
-* **guess-song:**
-   - [Spotify](https://www.spotify.com/us/) ([API](https://developer.spotify.com/))
 * **hangman:**
    - [Grady Ward](https://en.wikipedia.org/wiki/Grady_Ward) ([Moby Word Lists](http://www.gutenberg.org/ebooks/3201))
    - [Merriam-Webster's Collegiate® Dictionary](https://www.merriam-webster.com/) ([API](https://dictionaryapi.com/products/api-collegiate-dictionary))

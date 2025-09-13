@@ -104,10 +104,6 @@ client.on('clientReady', async () => {
 		client.registry.commands.get('apod').disable();
 		client.logger.info('[DISABLED] No GOV_KEY in env. apod has been disabled.');
 	}
-	if (!process.env.SPOTIFY_KEY || !process.env.SPOTIFY_SECRET) {
-		client.registry.commands.get('guess-song').disable();
-		client.logger.info('[DISABLED] No SPOTIFY_KEY or SPOTIFY_SECRET in env. guess-song has been disabled.');
-	}
 	if (!process.env.THECATAPI_KEY) {
 		client.registry.commands.get('cat').disable();
 		client.logger.info('[DISABLED] No THECATAPI_KEY in env. cat has been disabled.');
