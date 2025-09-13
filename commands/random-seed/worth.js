@@ -16,13 +16,6 @@ module.exports = class WorthCommand extends Command {
 					type: 'user',
 					default: msg => msg.author
 				}
-			],
-			credit: [
-				{
-					name: 'AzuraApple',
-					url: 'https://github.com/AzuraApple',
-					reason: 'Concept'
-				}
 			]
 		});
 	}
