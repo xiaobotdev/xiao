@@ -321,7 +321,7 @@ Total: 517
 * **nsfw-url:** Determines if a URL is NSFW.
 * **parse-time:** Analyzes the time duration you provide and gives the result.
 * **read-qr-code:** Reads a QR Code.
-* **scrabble-score:** Responds with the scrabble score of a word.
+* **scrabble-score:** Responds with the Scrabble score of a word.
 * **screenshot:** Takes a screenshot of any webpage.
 * **text-diff:** Compares two different bits of text.
 * **valid-url:** Tests whether a URL is valid or not.
@@ -721,6 +721,7 @@ Total: 517
 * [ntcjs](https://www.npmjs.com/package/ntcjs)
 * [parse-domain](https://www.npmjs.com/package/parse-domain)
 * [pokersolver](https://www.npmjs.com/package/pokersolver)
+* [qr](https://www.npmjs.com/package/qr)
 * [random-js](https://www.npmjs.com/package/random-js)
 * [sagiri](https://www.npmjs.com/package/sagiri)
 * [semver](https://www.npmjs.com/package/semver)
@@ -832,7 +833,6 @@ Total: 517
    - [Pokémon](https://www.pokemon.com/us/) (Sprite)
 * **psycho-pass:**
    - [PSYCHO-PASS](http://psycho-pass.com/) (Original Anime)
-   - [Tatsumaki](https://tatsumaki.xyz/) (Concept)
    - [Psycho-Pass Wiki](https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki) ([Crime Coefficient Levels Data](https://psychopass.fandom.com/wiki/Crime_Coefficient_(Index%29))
 * **ship:**
    - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339) ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
@@ -841,12 +841,8 @@ Total: 517
 * **think-of:**
    - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339) ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 * **dark-light:**
-   - [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington) ([Image](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/))
-   - [u/AelinSA](https://www.reddit.com/user/AelinSA) ([Image](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magi))
    - [JoJo's Bizzare Adventure](http://www.araki-jojo.com/) (Original Anime)
-   - [u/MoonlightCapital](https://www.reddit.com/user/MoonlightCapital/) ([Image](https://www.reddit.com/r/discordapp/comments/a9fr7x/troll_your_friends_with_this/))
 * **eat-pant:**
-   - [u/_Ebb](https://www.reddit.com/user/_Ebb) ([Image](https://www.reddit.com/r/Ooer/comments/52z589/eat_pant_maaaaaaaan/))
    - [20th Century Fox](https://www.foxmovies.com/) ([Original "The Simpsons" Show](http://www.simpsonsworld.com/))
 * **eggs-get-laid:**
    - [KINMOZA!](http://www.kinmosa.com/) (Original Anime)
@@ -855,7 +851,7 @@ Total: 517
 * **rickroll:**
    - [Rick Astley](https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw) ([Original Music Video](https://www.youtube.com/watch?v=dQw4w9WgXcQ))
 * **where-is-everybody:**
-   - [DreamWorks](https://www.dreamworks.com/) ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
+   - [DreamWorks Animation](https://www.dreamworks.com/) ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
 * **yoff:**
    - [1Computer1](https://github.com/1Computer1) (Images)
 * **anime-airing:**
@@ -868,9 +864,7 @@ Total: 517
    - [astrology.TV](https://astrology.tv/) ([Horoscope Data](https://astrology.tv/horoscope/daily/))
 * **neko-atsume-password:**
    - [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/) (API, Original Game)
-   - [jasmaa](https://github.com/jasmaa/) ([API URL](https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4))
 * **time:**
-   - [Wikipedia](https://www.wikipedia.org/) ([Time Zone Data](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
    - [Neopets](http://www.neopets.com/) (Neopia Time Zone)
 * **today-in-history:**
    - [muffinlabs - Today in History](http://history.muffinlabs.com/) ([API](http://history.muffinlabs.com/#api))
@@ -991,7 +985,7 @@ Total: 517
 * **name-gender:**
    - [Genderize.io](https://genderize.io/) (API)
 * **scrabble-score:**
-   - [Hasbro](https://shop.hasbro.com/en-us) ([Original "Scrabble" Game](https://scrabble.hasbro.com/en-us))
+   - [Hasbro](https://shop.hasbro.com/en-us) ([Original "Scrabble" Game](https://shop.hasbro.com/en-us/scrabble-words))
 * **screenshot:**
    - [Thum.io](https://www.thum.io/) (API)
 * **20-questions:**
@@ -1009,9 +1003,6 @@ Total: 517
    - [MangaGamer.com](https://www.mangagamer.com/) ([Original Translation](https://store.steampowered.com/app/526490/Higurashi_When_They_Cry_Hou__Ch4_Himatsubushi/))
 * **captcha:**
    - [Christoph Mueller](https://www.fontsquirrel.com/fonts/list/foundry/christoph-mueller) ([Moms Typewriter Font](https://www.fontsquirrel.com/fonts/MomsTypewriter))
-* **doors:**
-   - [Mythbusters](https://go.discovery.com/tv-shows/mythbusters) (Concept)
-   - [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem) (Concept)
 * **google-feud:**
    - [Google](https://www.google.com/) (Autofill API)
    - [Google Feud](http://www.googlefeud.com/) (Original Game)
@@ -1021,11 +1012,7 @@ Total: 517
 * **hearing-test:**
    - [Noise addicts](http://www.noiseaddicts.com/) ([Sounds](http://www.noiseaddicts.com/2011/06/mosquito-ringtones/))
 * **horse-race:**
-   - [Ambition](https://ambition.com/) ([Image](https://help.ambition.com/hc/en-us/articles/360005048011-How-do-I-set-up-a-Leaderboard-Slide-))
-   - [Free SVG](https://freesvg.org/) ([Image](https://freesvg.org/race-horse))
    - [Iconian Fonts](https://www.fontspace.com/iconian-fonts) ([Paladins Font](https://www.fontspace.com/paladins-font-f32777))
-   - [Stadium Talk](https://www.stadiumtalk.com/) ([Horse Name Data](https://www.stadiumtalk.com/s/best-racehorse-names-be7b8ad6b49a42df))
-   - [LoveToKnow](https://www.lovetoknow.com/) ([Horse Name Data](https://horses.lovetoknow.com/horse-names/funny-horse-names))
 * **hunger-games:**
    - [BrantSteele](https://brantsteele.com/) ([Original "Hunger Games Simulator" Game](http://brantsteele.net/hungergames/reaping.php))
 * **jeopardy:**
@@ -1040,8 +1027,6 @@ Total: 517
    - [Pokémon](https://www.pokemon.com/us/) (Images, Original Game)
    - [PokéAPI](https://pokeapi.co/) (API)
    - [Serebii.net](https://www.serebii.net/index2.shtml) (Images)
-   - [Shutterstock](https://www.shutterstock.com/) ([Background Image](https://www.shutterstock.com/video/search/anime-zoom))
-   - [United States Judo Federation](https://www.usjf.com/) ([Stars Image](https://www.usjf.com/2019/11/five-star-dojo-program/))
    - [DaFont](https://www.dafont.com/) ([Pokemon Solid Font](https://www.dafont.com/pokemon.font))
    - [wavebeem](https://github.com/wavebeem) ([Type Advantage Data](https://github.com/wavebeem/pkmn.help/blob/master/src/data.ts))
 * **quiz:**
@@ -1052,7 +1037,6 @@ Total: 517
 * **tarot:**
    - [dariusk](https://github.com/dariusk) ([Tarot Reading Data](https://github.com/dariusk/corpora/blob/master/data/divination/tarot_interpretations.json))
    - [Tarot Card Meanings](https://www.tarotcardmeanings.net/) ([Images](https://www.tarotcardmeanings.net/tarotcards.htm))
-   - [Ask.Cards](http://askthecards.info/) (["Happy Squirrel" Card Reading and Image](http://askthecards.info/tarot_card_meanings/the_happy_squirrel.shtml))
    - [20th Century Fox](https://www.foxmovies.com/) ([Original "The Simpsons" Show, "Happy Squirrel" Concept](http://www.simpsonsworld.com/))
 * **true-or-false:**
    - [Open Trivia DB](https://opentdb.com/) ([API](https://opentdb.com/api_config.php))
@@ -1084,58 +1068,34 @@ Total: 517
    - [PAC-MAN Party](http://pacman.com/en/pac-man-games/pac-man-party) (Concept)
 * **car-race:**
    - [iStock](https://www.istockphoto.com/) ([Background Image](https://www.istockphoto.com/vector/side-view-of-a-road-with-a-crash-barrier-roadside-green-meadow-and-clear-blue-sky-gm1081596948-290039955))
-   - [Currituck County](https://co.currituck.nc.us/) ([Fireworks Image](https://co.currituck.nc.us/fireworks/))
-   - [Max Pixel](https://www.maxpixel.net/) ([Stars Image](https://www.maxpixel.net/Stars-Confetti-Curly-String-Balloons-Watercolor-5403247))
-   - [PNGkit](https://www.pngkit.com/) ([Earnhardt Car Image](https://www.pngkit.com/bigpic/u2r5r5o0a9y3w7q8/))
    - [Hendrick Motorsports](http://www.hendrickmotorsports.com/) (Earnhardt Car Original Design)
    - [Dale Earnhardt Jr.](https://www.dalejr.com/) (Earnhardt Car Original Driver)
-   - [Disneyclips.com](https://www.disneyclips.com/main.html) ([McQueen Car Image](https://www.disneyclips.com/images2/cars2.html))
    - [Disney](https://www.disney.com/) (McQueen/Herbie Cars Original Designs)
    - [Pixar Animation Studios](https://www.pixar.com/) ([McQueen Car Original Design](https://www.pixar.com/feature-films/cars))
-   - [NicolasDavila](https://www.deviantart.com/nicolasdavila) ([Reverb Car Image](https://www.deviantart.com/nicolasdavila/art/Reverb-Wireframe-Blueprint-777342814))
    - [Mattel](https://www.mattel.com/en-us) ([Reverb/Deora Cars Original Designs](https://hotwheels.mattel.com/shop))
    - [Sherif Saad](https://www.behance.net/SherifSaad) ([AE86 Car Image](https://www.behance.net/gallery/62672149/AE86-Tattoo))
    - [Initial D](https://initiald-portal.com/) (AE86 Car Original Design)
-   - [ClipArtBest](http://www.clipartbest.com/) ([Kitano Car Image](http://www.clipartbest.com/clipart-KinXey4XT))
    - [Electronic Arts](https://www.ea.com/) ([Kitano Car Original Design](https://www.ea.com/games/burnout))
-   - [Marien Bierhuizen](https://www.racedepartment.com/members/marien-bierhuizen.280739/) ([F1 Car Image](https://www.racedepartment.com/downloads/f2018-car-sideviews.22450/updates))
-   - [La Linea](https://www.lalinea.de/) ([Elise Car Image](https://www.lalinea.de/pkw/neuwagen/lotus/elise/roadster-2-tuerer/2011/))
    - [Lotus](https://www.lotuscars.com/en-US/) (Elise Car Original Design)
-   - [PNGkey.com](https://www.pngkey.com/) ([Sonic Car Image](https://www.pngkey.com/maxpic/u2e6y3t4a9o0a9a9/))
    - [SEGA](https://www.sega.com/) ([Sonic Car Original Design](https://www.sonicthehedgehog.com/))
    - [MinionFan1024](https://www.deviantart.com/minionfan1024) ([Anakin Car Image](https://www.deviantart.com/minionfan1024/art/Anakin-s-podracer-829694073))
    - [Star Wars](https://www.starwars.com/) (Anakin Car Original Design)
-   - [theraymachine](https://www.gran-turismo.com/ch/gtsport/user/profile/1679092/overview) ([DeLorean Car Image](https://www.gran-turismo.com/ch/gtsport/user/profile/1679092/gallery/all/decal/1679092/7359459034929333784))
    - [Back to the Future](https://www.backtothefuture.com/) (DeLorean Car Original Design)
-   - [Kevin Zino](https://codepen.io/natefr0st) ([Mario Car Image](https://codepen.io/natefr0st/pen/GrMrZV))
    - [Nintendo](https://www.nintendo.com/) ([Mario Car Original Design](https://mario.nintendo.com/))
    - [zekewhipper](https://www.deviantart.com/zekewhipper) ([Mach 5 Car Image](https://www.deviantart.com/zekewhipper/art/Mach-5-My-Version-112814534))
    - [Speed Racer](https://www.speedracergogogo.com/) (Mach 5 Car Original Design)
-   - [Iconscout](https://iconscout.com/) ([Runner Car Image](https://iconscout.com/illustrations/marathon-race))
-   - [pixabay](https://pixabay.com/) ([Cybertruck Car Image](https://pixabay.com/vectors/tesla-cybertruck-electric-car-4770084/))
    - [Tesla](https://www.tesla.com/) ([Cybertruck Car Original Design](https://www.tesla.com/cybertruck))
    - [Zero Error's randomised blog](http://yanko06.blogspot.com/) ([Lego Car Image](http://yanko06.blogspot.com/2016/03/nissan-240sx-lego-build.html))
    - [LEGO](https://www.lego.com/en-us) (Lego Car Original Design)
-   - [Stick PNG](https://www.stickpng.com/) ([Horse Car Image](https://www.stickpng.com/img/animals/horses/race-horse-side-view))
    - [DashieSparkle](https://www.deviantart.com/dashiesparkle) ([Rainbow Car Image](https://www.deviantart.com/dashiesparkle/art/Vector-475-Rainbow-Dash-58-609921260))
    - [Hasbro](https://shop.hasbro.com/en-us) ([Rainbow Car Original Design](https://mylittlepony.hasbro.com/en-us))
-   - [MotorBiscuit](https://www.motorbiscuit.com/) ([Pickup Car Image](https://www.motorbiscuit.com/1000-hp-nissan-franken-navara-worlds-best-pickup-says-builder/))
-   - [Lake Keowee Chrysler Dodge Jeep Ram](https://www.lakekeoweechryslerdodge.com/) ([Jeep Car Image](https://www.lakekeoweechryslerdodge.com/2017-jeep-wrangler-seneca--sc.htm))
    - [Jeep](https://www.jeep.com/) (Jeep Car Original Design)
-   - [The BLOODHOUND Project](https://www.bloodhoundlsr.com/) ([Bloodhound Car Image/Original Design](http://sendy.bloodhoundssc.com/w/r66GIuC7uX1SMJnEzBQclA/RYS3PGArp6y5QLtigCCOVA/3JZqlel0Hcux67634uBAdtpg))
-   - [PNGio.com](https://pngio.com/png) ([General Lee Car Image](https://pngio.com/images/png-a980119.html))
+   - [The BLOODHOUND Project](https://www.bloodhoundlsr.com/) (Bloodhound Car Image/Original Design)
    - [Warner Bros.](https://www.warnerbros.com/) (General Lee Car Original Design)
-   - [PicsArt](https://picsart.com/) ([Bean Car Image](https://picsart.com/i/287426979049211))
    - [Mr. Bean](https://www.mrbean.com/) (Bean Car Original Design)
-   - [SeekPNG](https://www.seekpng.com/) ([Herbie Car Image](https://www.seekpng.com/ima/u2q8r5a9y3t4w7u2/))
-   - [TVS Racing](https://www.tvsracing.com/) (Motorcycle Car Image)
    - [KYB Sport](https://kybsport.com/) ([Miku Car Image](https://kybsport.com/teams/gsr/))
    - [Goodsmile Racing](https://www.goodsmileracing.com/en/) (Miku Car Original Design)
-   - [KOSTYA_ex_tubli](https://www.gran-turismo.com/us/gtsport/user/profile/6290075/overview) ([Flintstones Car Image](https://www.gran-turismo.com/us/gtsport/user/discover/search/decal/decal/6290075/4684382513076895744))
    - [Hanna-Barbera](http://www.webrockonline.com/) (Flintstones Car Original Design)
-   - [Clipart Library](http://clipart-library.com/) ([Plane Car Image](http://clipart-library.com/clipart/228505.htm))
-   - [Pin Clipart](https://www.pinclipart.com/) ([Wheelchair Car Image](https://www.pinclipart.com/maxpin/xToJi/))
-   - [Clip Art Mag](http://clipartmag.com/) ([Deora Car Image](http://clipartmag.com/download-clipart-image#55-chevy-drawing-24.jpg))
 * **cards-against-humanity:**
    - [Cards Against Humanity](https://cardsagainsthumanity.com/) (Original Game, Card Data)
    - [JSON Against Humanity](https://www.crhallberg.com/cah/) (Card Data)
@@ -1164,62 +1124,28 @@ Total: 517
 * **danny-devito:**
    - [Danny DeVito](https://twitter.com/dannydevito) (Himself)
 * **shrek:**
-   - [DreamWorks](https://www.dreamworks.com/) ([Images, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
+   - [DreamWorks Animation](https://www.dreamworks.com/) ([Image, Original "Shrek" Movie](https://www.dreamworks.com/movies/shrek))
 * **analog-clock:**
-   - [Wikipedia](https://www.wikipedia.org/) ([Time Zone Data](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
    - [Neopets](http://www.neopets.com/) (Neopia Time Zone)
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
-* **approved:**
-   - [Redeeming God](https://redeeminggod.com/) ([Image](https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/))
 * **bob-ross:**
-   - [Know Your Meme](https://knowyourmeme.com/) ([Image](https://knowyourmeme.com/photos/1160348))
    - [Bob Ross](https://www.bobross.com/) (Himself)
 * **brazzers:**
    - [Brazzers](https://www.brazzers.com/) (Logo)
-* **charcoal:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
-* **communist:**
-   - [PNGFuel](https://www.pngfuel.com/) ([Image](https://www.pngfuel.com/free-png/osnol))
 * **dexter:**
    - [Pokémon](https://www.pokemon.com/us/) (Image, Original Anime)
-* **emboss:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
-* **fire-frame:**
-   - [susi1959](https://en.picmix.com/profile/susi1959) ([Image](https://en.picmix.com/stamp/FIRE-FRAME-ORANGE-cadre-feu-orange-360274))
 * **fish-eye:**
    - [Hackyon](http://www.hackyon.com/playground/fisheye/) (Fish-Eye Code)
-* **frame:**
-   - [www.aljanh.net](http://www.aljanh.net/) ([Classic Image](http://www.aljanh.net/frame-wallpapers/1508614706.html))
-* **glass-shatter:**
-   - [Platinum Designz](http://store.platinumdesignz.com/) ([Image](https://www.jing.fm/iclipt/u2q8u2a9o0t4i1q8/))
-* **gun:**
-   - [Luxoflux](http://www.luxoflux.com/) ([Image](https://knowyourmeme.com/memes/hand-pointing-a-gun))
-* **hands:**
-   - [Know Your Meme](https://knowyourmeme.com/) ([Image](https://knowyourmeme.com/photos/1583323-screen-reaching-emoji))
 * **ifunny:**
    - [iFunny](https://ifunny.co/) (Logo)
-* **implode:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
 * **lego-icon:**
    - [LEGO](https://www.lego.com/en-us) ([Original Design](https://store.steampowered.com/app/32440/LEGO_Star_Wars__The_Complete_Saga/))
    - [u/PowderedShmegma](https://www.reddit.com/user/PowderedShmegma/) ([Image](https://www.reddit.com/r/legostarwars/comments/eheb76/lego_sw_character_icon_template/))
-* **liquid-rescale:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
-* **noise:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
-* **oil-painting:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
 * **pokemon-fusion:**
    - [Pokémon](https://www.pokemon.com/us/) (Original Game)
    - [Pokemon Fusion](https://pokemon.alexonsager.net/) (Images)
-* **police-tape:**
-   - [PNG Arts](https://www.pngarts.com/) ([Image](https://www.pngarts.com/explore/94078))
-* **rejected:**
-   - [Clipart Library](http://clipart-library.com/) ([Image](http://clipart-library.com/clipart/Rejected-Stamp-Transparent.htm))
 * **remove-bg:**
    - [remove.bg](https://www.remove.bg/) ([API](https://www.remove.bg/api))
-* **sip:**
-   - [CoolClips.com](http://search.coolclips.com/) ([Image](http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/))
 * **sketch:**
    - [reiinakano](https://github.com/reiinakano) ([Tensorflow Models](https://github.com/reiinakano/arbitrary-image-stylization-tfjs/))
 * **snapchat:**
@@ -1229,18 +1155,13 @@ Total: 517
    - [reiinakano](https://github.com/reiinakano) ([Tensorflow Models](https://github.com/reiinakano/arbitrary-image-stylization-tfjs/))
 * **spotify-now-playing:**
    - [Spotify](https://www.spotify.com/us/) (Original Design)
-   - [Sam Thik](https://www.pinterest.com/Samthik/) ([Image](https://www.pinterest.com/pin/500251471109108490/))
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
-* **squish:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
 * **steam-card:**
    - [Steam](https://store.steampowered.com/) ([Original Design](https://steamcommunity.com/tradingcards/))
    - [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj) ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **subtitle:**
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
-* **swirl:**
-   - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
 * **wanted:**
    - [Tim's Printables](https://www.timvandevall.com/) ([Image](https://www.pinterest.com/pin/365002744774849370/))
 * **wild-pokemon:**
@@ -1256,7 +1177,7 @@ Total: 517
    - [Minecraft Achievement Generator](https://www.minecraftskinstealer.com/achievement/) (Image)
    - [Andrew Tyler](https://www.dafont.com/andrew-tyler.d2526) ([Minecraftia Font](https://www.dafont.com/minecraftia.font))
 * **axis-cult-sign-up:**
-   - [cheesecakejedi](https://imgur.com/user/cheesecakejedi) ([Image](https://imgur.com/gallery/quQTD))
+   - [cheesecakejedi](https://imgur.com/user/cheesecakejedi) (Image)
    - [hbl917070](https://github.com/hbl917070) ([Font](https://github.com/hbl917070/Konosuba-text))
    - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/) (Original Anime)
 * **caution:**
@@ -1267,7 +1188,6 @@ Total: 517
    - [Cheng Xiao](https://www.instagram.com/chengxiao_0715/) (Signature)
    - [Monotype](https://www.monotype.com/) ([Old English Text MT Font](https://catalog.monotype.com/family/monotype/monotype-old-english-text))
 * **chinese-restaurant:**
-   - [ATOM.SMASHER.ORG](http://atom.smasher.org/) ([Image](http://atom.smasher.org/chinese/))
    - [Fontsgeek](http://fontsgeek.com/) ([Futura Condensed Font](http://fontsgeek.com/fonts/Futura-Condensed-Bold))
 * **danger:**
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
@@ -1275,7 +1195,6 @@ Total: 517
 * **gandhi-quote:**
    - [GUST e-foundry](https://www.fontsquirrel.com/fonts/list/foundry/gust-e-foundry) ([Latin Modern Roman Font](https://www.fontsquirrel.com/fonts/Latin-Modern-Roman))
 * **highway-sign:**
-   - [ATOM.SMASHER.ORG](http://atom.smasher.org/) ([Image](http://atom.smasher.org/construction/))
    - [Ash Pikachu Font](https://www.dafont.com/ashpikachu099.d2541) ([Electronic Highway Sign Font](https://www.dafont.com/electronic-highway-sign.font))
 * **hollywood-star:**
    - [RedKid.Net](http://www.redkid.net/) ([Image](http://www.redkid.net/generator/star/))
@@ -1287,16 +1206,14 @@ Total: 517
    - [DrewManDew](https://www.deviantart.com/drewmandew/gallery) ([Blank Background Image](https://www.deviantart.com/drewmandew/art/Blank-Jeopardy-Screen-780893853))
 * **license-plate:**
    - [Dave Hansen](https://www.fontspace.com/dave-hansen) ([License Plate Font](https://www.fontspace.com/license-plate-font-f3359))
-   - [Pin Clipart](https://www.pinclipart.com/) ([Image](https://www.pinclipart.com/maxpin/bJxii/))
 * **speed-limit:**
-   - [RoadTrafficSigns](https://www.roadtrafficsigns.com/) ([Image](https://www.roadtrafficsigns.com/speed-limit-sign/speed-limit-70-sign/sku-x-r2-1-70.aspx))
    - [Ash Pikachu Font](https://www.dafont.com/ashpikachu099.d2541) ([Highway Gothic Font](https://www.dafont.com/highway-gothic.font))
 * **spongebob-time-card:**
    - [Nickelodeon](https://www.nick.com/) ([Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
    - [Spongebob Fanon](https://spongebob-new-fanon.fandom.com/wiki/SpongeBob_Fanon_Wiki) ([Images](https://spongebob-new-fanon.fandom.com/wiki/Gallery_of_Textless_Title_Cards))
    - [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc) ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
 * **tweet:**
-   - [Twitter](https://twitter.com/) ([Image, Chirp Font, API](https://developer.twitter.com/en/docs.html))
+   - [Twitter](https://twitter.com/) (Image, Chirp Font, API)
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **undertale:**
    - [UNDERTALE](https://undertale.com/) (Original Game)
@@ -1310,46 +1227,28 @@ Total: 517
 * **eject:**
    - [Wisq](https://www.youtube.com/channel/UCrOS0iXaZgW45AdbEznGXLA) ([Images](https://www.youtube.com/watch?v=yx4Hp8TBVtQ))
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
-   - [InnerSloth](https://innersloth.com/index.php) ([Original "Among Us" Game](https://innersloth.com/gameAmongUs.php))
+   - [InnerSloth](https://www.innersloth.com/) ([Original "Among Us" Game](https://www.innersloth.com/games/among-us/))
 * **hat:**
-   - [Go Nintendo](https://gonintendo.com/) ([Ash Hat Image](https://gonintendo.com/stories/306292))
-   - [freeiconspng.com](https://www.freeiconspng.com/) ([Birthday Hat Image](https://www.freeiconspng.com/img/43917))
-   - [Know Your Meme](https://knowyourmeme.com/) ([Christmas Hat Image](https://knowyourmeme.com/forums/just-for-fun/topics/24821-christmas-hat-thread))
    - [xertris](https://www.deviantart.com/xertris) ([Dunce Hat Image](https://www.deviantart.com/xertris/art/Dunce-Cap-634349483))
-   - [Clipart Library](http://clipart-library.com/) ([Leprechaun Hat Image](http://clipart-library.com/clipart/1107361.htm))
-   - [RedBubble - Akbar Mna](https://www.redbubble.com/en/people/akbarmna/shop) ([Megumin Hat Image](https://www.redbubble.com/people/akbarmna/works/25443591-megumins-hat-minimalistic?p=poster))
-   - [Gallery Yopriceville](https://gallery.yopriceville.com/) ([Pilgrim Hat Image](https://gallery.yopriceville.com/Free-Clipart-Pictures/Thanksgiving-PNG/Transparent_Brown_Pilgrim_Hat_PNG_Clipart))
-   - [DynamicPickaxe](http://dynamicpickaxe.com/) ([Pirate Hat Image](http://dynamicpickaxe.com/pirate-hat-clipart.html))
-   - [ClipartsFree](https://www.clipartsfree.net/) ([Top Hat Image](https://www.clipartsfree.net/clipart/51355-gray-top-hat-clipart.html))
-   - [KissClipart.com](https://www.kissclipart.com/) ([Witch Hat Image](https://www.kissclipart.com/halloween-witch-hat-clipart-witch-hat-clip-art-qfycyt/))
-   - [festivalclaca.cat](https://www.festivalclaca.cat/) ([Soviet Hat Image](https://www.festivalclaca.cat/maxvi/mmbwJ/))
    - [Pokémon](https://www.pokemon.com/us/) (Ash Hat Original Anime)
    - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/) (Megumin Hat Original Anime)
-   - [StickPNG](https://www.stickpng.com/) ([Mask Hat Image](https://www.stickpng.com/img/science/pandemic/white-surgical-face-mask-front-view))
-   - [Why We Protest](https://whyweprotest.net/) ([Anon Hat Image](https://whyweprotest.net/threads/big-ass-guy-fawkes-mask-images-thread.22719/))
-   - [WebStockReview](https://webstockreview.net/) ([Devil Hat Image](https://webstockreview.net/explore/horn-clipart-purple-devil/))
    - [Becel](https://www.becel.ca/en-ca) (Becel Hat Image)
 * **he-lives-in-you:**
    - [Disney](https://www.disney.com/) ([Image, Original "The Lion King" Movie](https://movies.disney.com/the-lion-king))
-* **hearts:**
-   - [Jessica Knable](https://picsart.com/u/jessicaknable) ([Image](https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212))
 * **i-have-the-power:**
    - [Mattel](https://www.mattel.com/en-us) (Image, Original "He-Man" Show)
 * **rip:**
-   - [vician](https://www.123rf.com/profile_vician) ([Image](https://www.123rf.com/profile_vician?mediapopup=13181623))
+   - [vician](https://www.123rf.com/profile_vician) (Image)
    - [Iconian Fonts](https://www.fontspace.com/iconian-fonts) ([Coffin Stone Font](https://www.fontspace.com/coffin-stone-font-f40998))
 * **status-button:**
    - [Discord Status Button](https://discord.c99.nl/) (API)
 * **steam-now-playing:**
    - [Steam](https://store.steampowered.com/) (Original Design)
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
-* **triggered:**
-   - [NotAWeebDev](https://github.com/NotAWeebDev/) ([Image](https://github.com/NotAWeebDev/Misaki/blob/2e44f9efb467028dcbae5a2c9f836d2e99860b85/assets/images/plate_triggered.png))
 * **3000-years:**
    - [Pokémon](https://www.pokemon.com/us/) (Image, Original Game)
 * **alert:**
    - [Apple](https://www.apple.com/) ([San Francisco Font](https://developer.apple.com/fonts/))
-   - [The Hill](https://thehill.com/) ([Image](https://thehill.com/policy/technology/409737-this-is-a-test-us-officials-test-presidential-alert))
 * **bart-chalkboard:**
    - [20th Century Fox](https://www.foxmovies.com/) ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
    - [Jon Bernhardt](http://web.mit.edu/jonb/www/) ([Akbar Font](https://www.wobblymusic.com/groening/akbar.html))
@@ -1358,7 +1257,6 @@ Total: 517
    - [Monotype](https://www.monotype.com/) ([Arial Font](https://catalog.monotype.com/family/monotype/arial))
 * **beautiful:**
    - [Disney](https://www.disney.com/) ([Original "Gravity Falls" Show](https://disneynow.com/shows/gravity-falls))
-   - [Tatsumaki](https://tatsumaki.xyz/) (Image)
 * **boardroom-meeting:**
    - [hejibits](https://hejibits.com/) ([Image](https://web.archive.org/web/20121226235748/https://hejibits.com/comics/outlook-oust/))
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
@@ -1389,15 +1287,12 @@ Total: 517
 * **distracted-boyfriend:**
    - [Antonio Guillem](http://antonioguillem.com/) ([Image](https://www.istockphoto.com/photo/gm493656728-77018851))
 * **drakeposting:**
-   - [Drake](https://drakeofficial.com/) ([Original "Hotline Bling" Music Video](https://youtu.be/uxpDa-c-4Mc))
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **edd-facts-book:**
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [Cartoon Network](https://www.cartoonnetworkme.com/) ([Image, Original "Ed, Edd n Eddy" TV Series](https://www.cartoonnetworkme.com/show/ed-edd-n-eddy))
 * **enslaved:**
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
-* **food-broke:**
-   - [@liltusk](https://twitter.com/liltusk) ([Image](https://twitter.com/liltusk/status/835719948597137408))
 * **for-five-hours:**
    - [NBC](https://www.nbc.com/) ([Image, Original "The Office" TV Series](https://www.nbc.com/the-office))
 * **genie-rules:**
@@ -1419,7 +1314,6 @@ Total: 517
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **kyon-gun:**
    - [The Melancholy of Haruhi Suzumiya](http://www.haruhi.tv/) (Original Anime)
-   - [Know Your Meme](https://knowyourmeme.com/) ([Image](https://knowyourmeme.com/photos/217992-endless-eight-kyon-kun-denwa))
 * **like:**
    - [Bethesda](https://bethesda.net/en/dashboard) ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 * **lisa-presentation:**
@@ -1428,7 +1322,6 @@ Total: 517
 * **look-at-this-photograph:**
    - [Nickelback](https://www.nickelback.com/) ([Image, Original "Photograph" Music Video](https://www.youtube.com/watch?v=BB0DU4DoPP4))
 * **look-what-karen-have:**
-   - [Know Your Meme](https://knowyourmeme.com/) ([Image](https://knowyourmeme.com/photos/1047091-kin-iro-mosaic-kinmoza))
    - [KINMOZA!](http://www.kinmosa.com/) (Original Anime)
 * **mario-bros-views:**
    - [Nintendo](https://www.nintendo.com/) ([Original "Super Mario Bros." Game](https://mario.nintendo.com/))
@@ -1472,7 +1365,6 @@ Total: 517
    - [Square Enix](https://square-enix-games.com/) ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
    - [@Candasaurus](https://twitter.com/Candasaurus) ([Image](https://twitter.com/Candasaurus/status/1041946636656599045))
 * **sos:**
-   - [Esther Verkest](https://www.facebook.com/Esther-Verkest-49667161749/) (Image)
    - [Walter E Stewart](https://www.1001freefonts.com/designer-walter-e-stewart-fontlisting.php) ([Sun Dried Font](https://www.1001freefonts.com/sun-dried.font))
 * **spiderman-pointing:**
    - [Marvel](https://www.marvel.com/) ([Image, Original "Spiderman" Comic](https://spiderman.marvelhq.com/))
@@ -1485,8 +1377,6 @@ Total: 517
    - [Missy Meyer](https://missymeyer.com/) ([Tragic Marker Font](https://missymeyer.com/tragic-marker-free-font))
 * **this-guy:**
    - [Warner Bros.](https://www.warnerbros.com/) ([Image, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
-* **thug-life:**
-   - [pngimg.com](https://pngimg.com/) ([Image](http://pngimg.com/download/58231))
 * **to-be-continued:**
    - [JoJo's Bizzare Adventure](http://www.araki-jojo.com/) (Original Anime)
 * **tuxedo-pooh:**
@@ -1544,14 +1434,11 @@ Total: 517
    - [Nintendo](https://www.nintendo.com/) ([Original "Animal Crossing" Game](https://animal-crossing.com/))
 * **dec-talk:**
    - [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm) (Original DECTalk Software)
-   - [NASA](https://www.nasa.gov/) ([Original "Moonbase Alpha" Game](https://store.steampowered.com/app/39000/Moonbase_Alpha/))
 * **mindfulness:**
    - [InspiroBot](https://inspirobot.me/) (API)
 * **play:**
    - [Google](https://www.google.com/) ([YouTube Data API](https://developers.google.com/youtube/v3/))
 * **tts:**
    - [Google](https://www.google.com/) (Translate TTS API)
-* **phone:**
-   - [Tatsumaki](https://tatsumaki.xyz/) (Concept)
 * **cleverbot:**
    - [Cleverbot](https://www.cleverbot.com/) ([API](https://www.cleverbot.com/api/))
