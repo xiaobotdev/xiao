@@ -22,12 +22,6 @@ module.exports = class AlertCommand extends Command {
 					url: 'https://www.apple.com/',
 					reason: 'San Francisco Font',
 					reasonURL: 'https://developer.apple.com/fonts/'
-				},
-				{
-					name: 'The Hill',
-					url: 'https://thehill.com/',
-					reason: 'Image',
-					reasonURL: 'https://thehill.com/policy/technology/409737-this-is-a-test-us-officials-test-presidential-alert'
 				}
 			],
 			args: [

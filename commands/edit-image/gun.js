@@ -15,14 +15,6 @@ module.exports = class GunCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'Luxoflux',
-					url: 'http://www.luxoflux.com/',
-					reason: 'Image',
-					reasonURL: 'https://knowyourmeme.com/memes/hand-pointing-a-gun'
-				}
-			],
 			args: [
 				{
 					key: 'image',

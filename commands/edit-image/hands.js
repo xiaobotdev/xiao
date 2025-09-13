@@ -16,14 +16,6 @@ module.exports = class HandsCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'Know Your Meme',
-					url: 'https://knowyourmeme.com/',
-					reason: 'Image',
-					reasonURL: 'https://knowyourmeme.com/photos/1583323-screen-reaching-emoji'
-				}
-			],
 			args: [
 				{
 					key: 'image',

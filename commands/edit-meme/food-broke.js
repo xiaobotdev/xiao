@@ -17,14 +17,6 @@ module.exports = class FoodBrokeCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: '@liltusk',
-					url: 'https://twitter.com/liltusk',
-					reason: 'Image',
-					reasonURL: 'https://twitter.com/liltusk/status/835719948597137408'
-				}
-			],
 			args: [
 				{
 					key: 'user',

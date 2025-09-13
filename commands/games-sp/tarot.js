@@ -27,12 +27,6 @@ module.exports = class TarotCommand extends Command {
 					reasonURL: 'https://www.tarotcardmeanings.net/tarotcards.htm'
 				},
 				{
-					name: 'Ask.Cards',
-					url: 'http://askthecards.info/',
-					reason: '"Happy Squirrel" Card Reading and Image',
-					reasonURL: 'http://askthecards.info/tarot_card_meanings/the_happy_squirrel.shtml'
-				},
-				{
 					name: '20th Century Fox',
 					url: 'https://www.foxmovies.com/',
 					reason: 'Original "The Simpsons" Show, "Happy Squirrel" Concept',

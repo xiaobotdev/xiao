@@ -17,14 +17,6 @@ module.exports = class RejctedCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'Clipart Library',
-					url: 'http://clipart-library.com/',
-					reason: 'Image',
-					reasonURL: 'http://clipart-library.com/clipart/Rejected-Stamp-Transparent.htm'
-				}
-			],
 			args: [
 				{
 					key: 'image',

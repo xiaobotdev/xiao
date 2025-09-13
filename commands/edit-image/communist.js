@@ -17,14 +17,6 @@ module.exports = class CommunistCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'PNGFuel',
-					url: 'https://www.pngfuel.com/',
-					reason: 'Image',
-					reasonURL: 'https://www.pngfuel.com/free-png/osnol'
-				}
-			],
 			args: [
 				{
 					key: 'image',

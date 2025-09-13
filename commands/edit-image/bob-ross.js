@@ -19,12 +19,6 @@ module.exports = class BobRossCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'Know Your Meme',
-					url: 'https://knowyourmeme.com/',
-					reason: 'Image',
-					reasonURL: 'https://knowyourmeme.com/photos/1160348'
-				},
-				{
 					name: 'Bob Ross',
 					url: 'https://www.bobross.com/',
 					reason: 'Himself'

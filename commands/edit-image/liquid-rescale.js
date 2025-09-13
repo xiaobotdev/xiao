@@ -16,13 +16,6 @@ module.exports = class LiquidRescaleCommand extends Command {
 				duration: 30
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'ImageMagick',
-					url: 'https://imagemagick.org/index.php',
-					reason: 'Image Manipulation'
-				}
-			],
 			args: [
 				{
 					key: 'image',

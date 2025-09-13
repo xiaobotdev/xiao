@@ -18,12 +18,6 @@ module.exports = class ChineseRestaurantCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'ATOM.SMASHER.ORG',
-					url: 'http://atom.smasher.org/',
-					reason: 'Image',
-					reasonURL: 'http://atom.smasher.org/chinese/'
-				},
-				{
 					name: 'Fontsgeek',
 					url: 'http://fontsgeek.com/',
 					reason: 'Futura Condensed Font',

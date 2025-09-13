@@ -37,18 +37,6 @@ module.exports = class PokemonAdvantageCommand extends Command {
 					reason: 'Images'
 				},
 				{
-					name: 'Shutterstock',
-					url: 'https://www.shutterstock.com/',
-					reason: 'Background Image',
-					reasonURL: 'https://www.shutterstock.com/video/search/anime-zoom'
-				},
-				{
-					name: 'United States Judo Federation',
-					url: 'https://www.usjf.com/',
-					reason: 'Stars Image',
-					reasonURL: 'https://www.usjf.com/2019/11/five-star-dojo-program/'
-				},
-				{
 					name: 'DaFont',
 					url: 'https://www.dafont.com/',
 					reason: 'Pokemon Solid Font',

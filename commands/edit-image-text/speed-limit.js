@@ -17,12 +17,6 @@ module.exports = class SpeedLimitCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'RoadTrafficSigns',
-					url: 'https://www.roadtrafficsigns.com/',
-					reason: 'Image',
-					reasonURL: 'https://www.roadtrafficsigns.com/speed-limit-sign/speed-limit-70-sign/sku-x-r2-1-70.aspx'
-				},
-				{
 					name: 'Ash Pikachu Font',
 					url: 'https://www.dafont.com/ashpikachu099.d2541',
 					reason: 'Highway Gothic Font',

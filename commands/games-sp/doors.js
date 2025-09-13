@@ -11,18 +11,6 @@ module.exports = class DoorsCommand extends Command {
 			group: 'games-sp',
 			description: 'Open the right door, and you win the money! Make the wrong choice, and you get the fire!',
 			game: true,
-			credit: [
-				{
-					name: 'Mythbusters',
-					url: 'https://go.discovery.com/tv-shows/mythbusters',
-					reason: 'Concept'
-				},
-				{
-					name: 'Monty Hall problem',
-					url: 'https://en.wikipedia.org/wiki/Monty_Hall_problem',
-					reason: 'Concept'
-				}
-			],
 			args: [
 				{
 					key: 'door',

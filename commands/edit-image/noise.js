@@ -17,13 +17,6 @@ module.exports = class NoiseCommand extends Command {
 				duration: 15
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'ImageMagick',
-					url: 'https://imagemagick.org/index.php',
-					reason: 'Image Manipulation'
-				}
-			],
 			args: [
 				{
 					key: 'type',

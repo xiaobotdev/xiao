@@ -19,12 +19,6 @@ module.exports = class LookWhatKarenHaveCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'Know Your Meme',
-					url: 'https://knowyourmeme.com/',
-					reason: 'Image',
-					reasonURL: 'https://knowyourmeme.com/photos/1047091-kin-iro-mosaic-kinmoza'
-				},
-				{
 					name: 'KINMOZA!',
 					url: 'http://www.kinmosa.com/',
 					reason: 'Original Anime'

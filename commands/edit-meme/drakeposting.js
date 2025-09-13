@@ -18,16 +18,10 @@ module.exports = class DrakepostingCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'Drake',
-					url: 'https://drakeofficial.com/',
-					reason: 'Original "Hotline Bling" Music Video',
-					reasonURL: 'https://youtu.be/uxpDa-c-4Mc'
-				},
-				{
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					reasonURL: 'https://fonts.google.com/noto'
 				}
 			],
 			args: [

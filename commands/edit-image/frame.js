@@ -18,14 +18,6 @@ module.exports = class FrameCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'www.aljanh.net',
-					url: 'http://www.aljanh.net/',
-					reason: 'Classic Image',
-					reasonURL: 'http://www.aljanh.net/frame-wallpapers/1508614706.html'
-				}
-			],
 			args: [
 				{
 					key: 'frame',

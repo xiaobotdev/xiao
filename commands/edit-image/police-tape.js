@@ -17,14 +17,6 @@ module.exports = class PoliceTapeCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'PNG Arts',
-					url: 'https://www.pngarts.com/',
-					reason: 'Image',
-					reasonURL: 'https://www.pngarts.com/explore/94078'
-				}
-			],
 			args: [
 				{
 					key: 'image',

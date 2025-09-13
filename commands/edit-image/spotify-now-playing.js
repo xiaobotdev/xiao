@@ -23,16 +23,10 @@ module.exports = class SpotifyNowPlayingCommand extends Command {
 					reason: 'Original Design'
 				},
 				{
-					name: 'Sam Thik',
-					url: 'https://www.pinterest.com/Samthik/',
-					reason: 'Image',
-					reasonURL: 'https://www.pinterest.com/pin/500251471109108490/'
-				},
-				{
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					reasonURL: 'https://fonts.google.com/noto'
 				}
 			],
 			args: [

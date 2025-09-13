@@ -16,13 +16,6 @@ module.exports = class SquishCommand extends Command {
 				duration: 60
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'ImageMagick',
-					url: 'https://imagemagick.org/index.php',
-					reason: 'Image Manipulation'
-				}
-			],
 			args: [
 				{
 					key: 'axis',

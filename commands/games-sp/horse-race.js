@@ -23,34 +23,10 @@ module.exports = class HorseRaceCommand extends Command {
 			game: true,
 			credit: [
 				{
-					name: 'Ambition',
-					url: 'https://ambition.com/',
-					reason: 'Image',
-					reasonURL: 'https://help.ambition.com/hc/en-us/articles/360005048011-How-do-I-set-up-a-Leaderboard-Slide-'
-				},
-				{
-					name: 'Free SVG',
-					url: 'https://freesvg.org/',
-					reason: 'Image',
-					reasonURL: 'https://freesvg.org/race-horse'
-				},
-				{
 					name: 'Iconian Fonts',
 					url: 'https://www.fontspace.com/iconian-fonts',
 					reason: 'Paladins Font',
 					reasonURL: 'https://www.fontspace.com/paladins-font-f32777'
-				},
-				{
-					name: 'Stadium Talk',
-					url: 'https://www.stadiumtalk.com/',
-					reason: 'Horse Name Data',
-					reasonURL: 'https://www.stadiumtalk.com/s/best-racehorse-names-be7b8ad6b49a42df'
-				},
-				{
-					name: 'LoveToKnow',
-					url: 'https://www.lovetoknow.com/',
-					reason: 'Horse Name Data',
-					reasonURL: 'https://horses.lovetoknow.com/horse-names/funny-horse-names'
 				}
 			]
 		});

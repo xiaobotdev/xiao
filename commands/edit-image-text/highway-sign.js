@@ -18,12 +18,6 @@ module.exports = class HighwaySignCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'ATOM.SMASHER.ORG',
-					url: 'http://atom.smasher.org/',
-					reason: 'Image',
-					reasonURL: 'http://atom.smasher.org/construction/'
-				},
-				{
 					name: 'Ash Pikachu Font',
 					url: 'https://www.dafont.com/ashpikachu099.d2541',
 					reason: 'Electronic Highway Sign Font',

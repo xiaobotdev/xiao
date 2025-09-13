@@ -17,14 +17,6 @@ module.exports = class HeartsCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'Jessica Knable',
-					url: 'https://picsart.com/u/jessicaknable',
-					reason: 'Image',
-					reasonURL: 'https://picsart.com/i/sticker-hearts-heart-borders-frames-round-frame-border-love-263412201018212'
-				}
-			],
 			args: [
 				{
 					key: 'user',

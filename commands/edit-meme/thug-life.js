@@ -17,14 +17,6 @@ module.exports = class ThugLifeCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'pngimg.com',
-					url: 'https://pngimg.com/',
-					reason: 'Image',
-					reasonURL: 'http://pngimg.com/download/58231'
-				}
-			],
 			args: [
 				{
 					key: 'image',
