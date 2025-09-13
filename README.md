@@ -102,7 +102,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 519
+Total: 518
 
 ### Utility:
 
@@ -531,7 +531,6 @@ Total: 519
 * **chi-idea:** Sends a "Daddy, I've got an idea!" Takagi-san meme with the text of your choice.
 * **crush:** Draws an image or a user's avatar as Wolverine's crush.
 * **cursed-sponge:** Sends a cursed sponge duplicated however many times you want.
-* **dear-liberals:** Sends a "Dear Liberals" meme with words of your choice.
 * **deep-fry:** Draws an image or a user's avatar but deep-fried.
 * **demotivational:** Draws an image or a user's avatar and the text you specify as a demotivational poster.
 * **dislike:** Sends an "Everyone Disliked That" meme with the image of your choice.
@@ -829,8 +828,6 @@ Total: 519
    - [SauceNAO](https://saucenao.com/) (API)
 * **butt:**
    - [iCrawl](https://github.com/iCrawl) ([Code, Concept](https://github.com/iCrawl/Tohru/blob/master/src/commands/fun/butts.js))
-* **cuteness:**
-   - [AzuraApple](https://github.com/AzuraApple) (Concept)
 * **friendship:**
    - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339) ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
 * **name-rater:**
@@ -845,8 +842,6 @@ Total: 519
    - [0vertime-dev](https://github.com/0vertime-dev) (Concept)
 * **think-of:**
    - [Attype Studio](https://www.dafont.com/fadli-ramadhan-iskandar.d7339) ([Pinky Cupid Font](https://www.dafont.com/pinky-cupid.font))
-* **worth:**
-   - [AzuraApple](https://github.com/AzuraApple) (Concept)
 * **dark-light:**
    - [u/LennyMcLennington](https://www.reddit.com/user/LennyMcLennington) ([Image](https://www.reddit.com/r/discordapp/comments/8t04ag/this_image_shows_different_text_depending_on/))
    - [u/AelinSA](https://www.reddit.com/user/AelinSA) ([Image](https://www.reddit.com/r/discordapp/comments/9krnhr/preach_the_message_of_the_möth_with_this_magi))
@@ -1382,7 +1377,6 @@ Total: 519
    - [MatthewThePrep](https://www.deviantart.com/matthewtheprep) ([Ultimate Image](https://www.deviantart.com/matthewtheprep/art/SSBU-Challenger-Approaching-meme-template-800422972))
    - [Nintendo](https://www.nintendo.com/) ([Original "Super Smash Bros." Game](https://www.smashbros.com/en_US/index.html))
 * **change-my-mind:**
-   - [Steven Crowder](https://www.youtube.com/StevenCrowder) ([Image](https://twitter.com/scrowder/status/964577508447449088))
    - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
 * **chi-idea:**
    - [u/THANOS_COPTER](https://www.reddit.com/user/THANOS_COPTER/) ([Image](https://www.reddit.com/r/Takagi_san/comments/gb4wdt/how_far_is_too_far/))
@@ -1392,9 +1386,6 @@ Total: 519
    - [Marvel](https://www.marvel.com/) ([Image, Original "X-Men" Comic](https://www.marvel.com/teams-and-groups/x-men))
 * **cursed-sponge:**
    - [Nickelodeon](https://www.nick.com/) ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
-* **dear-liberals:**
-   - [Turning Point USA](https://www.tpusa.com/) (Image)
-   - [Google](https://www.google.com/) ([Oswald Font](https://fonts.google.com/specimen/Oswald))
 * **demotivational:**
    - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
 * **dislike:**

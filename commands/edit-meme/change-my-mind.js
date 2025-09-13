@@ -18,12 +18,6 @@ module.exports = class ChangeMyMindCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'Steven Crowder',
-					url: 'https://www.youtube.com/StevenCrowder',
-					reason: 'Image',
-					reasonURL: 'https://twitter.com/scrowder/status/964577508447449088'
-				},
-				{
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
