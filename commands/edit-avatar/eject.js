@@ -30,13 +30,13 @@ module.exports = class EjectCommand extends Command {
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					reasonURL: 'https://fonts.google.com/noto'
 				},
 				{
 					name: 'InnerSloth',
-					url: 'https://innersloth.com/index.php',
+					url: 'https://www.innersloth.com/',
 					reason: 'Original "Among Us" Game',
-					reasonURL: 'https://innersloth.com/gameAmongUs.php'
+					reasonURL: 'https://www.innersloth.com/games/among-us/'
 				}
 			],
 			args: [

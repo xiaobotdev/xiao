@@ -111,6 +111,7 @@ module.exports = class UndertaleCommand extends Command {
 		ctx.font = this.client.fonts.get(font).toCanvasString(32);
 		ctx.fillStyle = 'white';
 		ctx.textBaseline = 'top';
+		if (character === 'temmie') quote = this.client.registry.commands.get('temmie').temmize(quote);
 		const text = wrapText(ctx, quote, 385);
 		const lines = text.length > 3 ? 3 : text.length;
 		for (let i = 0; i < lines; i++) {

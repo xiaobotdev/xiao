@@ -16,13 +16,6 @@ module.exports = class OilPaintingCommand extends Command {
 				duration: 15
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'ImageMagick',
-					url: 'https://imagemagick.org/index.php',
-					reason: 'Image Manipulation'
-				}
-			],
 			args: [
 				{
 					key: 'image',

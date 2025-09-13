@@ -20,12 +20,6 @@ module.exports = class NekoAtsumePasswordCommand extends Command {
 					name: 'Neko Atsume: Kitty Collector',
 					url: 'http://nekoatsume.com/en/',
 					reason: 'API, Original Game'
-				},
-				{
-					name: 'jasmaa',
-					url: 'https://github.com/jasmaa/',
-					reason: 'API URL',
-					reasonURL: 'https://github.com/jasmaa/nekoatsume-password-learner/blob/master/neko_pswd.py#L4'
 				}
 			],
 			args: [

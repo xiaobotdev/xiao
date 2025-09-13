@@ -16,11 +16,6 @@ module.exports = class PsychoPassCommand extends Command {
 					reason: 'Original Anime'
 				},
 				{
-					name: 'Tatsumaki',
-					url: 'https://tatsumaki.xyz/',
-					reason: 'Concept'
-				},
-				{
 					name: 'Psycho-Pass Wiki',
 					url: 'https://psychopass.fandom.com/wiki/Psycho-Pass_Wiki',
 					reason: 'Crime Coefficient Levels Data',

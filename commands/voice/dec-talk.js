@@ -28,12 +28,6 @@ module.exports = class DECTalkCommand extends Command {
 					name: 'Digital Equipment Corporation',
 					url: 'http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm',
 					reason: 'Original DECTalk Software'
-				},
-				{
-					name: 'NASA',
-					url: 'https://www.nasa.gov/',
-					reason: 'Original "Moonbase Alpha" Game',
-					reasonURL: 'https://store.steampowered.com/app/39000/Moonbase_Alpha/'
 				}
 			],
 			args: [

@@ -27,7 +27,7 @@ module.exports = class ScrollOfTruthCommand extends Command {
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					reasonURL: 'https://fonts.google.com/noto'
 				}
 			],
 			args: [

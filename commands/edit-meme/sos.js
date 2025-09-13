@@ -17,11 +17,6 @@ module.exports = class SosCommand extends Command {
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
 			credit: [
 				{
-					name: 'Esther Verkest',
-					url: 'https://www.facebook.com/Esther-Verkest-49667161749/',
-					reason: 'Image'
-				},
-				{
 					name: 'Walter E Stewart',
 					url: 'https://www.1001freefonts.com/designer-walter-e-stewart-fontlisting.php',
 					reason: 'Sun Dried Font',

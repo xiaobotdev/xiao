@@ -921,7 +921,7 @@ Total: 517
    - [npm](https://www.npmjs.com/) (API)
 * **periodic-table:**
    - [Bowserinator](https://github.com/Bowserinator/) ([Periodic Table Data](https://github.com/Bowserinator/Periodic-Table-JSON))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **urban:**
    - [Urban Dictionary](https://www.urbandictionary.com/) ([API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation))
 * **wikipedia:**
@@ -1168,7 +1168,7 @@ Total: 517
 * **analog-clock:**
    - [Wikipedia](https://www.wikipedia.org/) ([Time Zone Data](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
    - [Neopets](http://www.neopets.com/) (Neopia Time Zone)
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **approved:**
    - [Redeeming God](https://redeeminggod.com/) ([Image](https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/))
 * **bob-ross:**
@@ -1223,22 +1223,22 @@ Total: 517
 * **sketch:**
    - [reiinakano](https://github.com/reiinakano) ([Tensorflow Models](https://github.com/reiinakano/arbitrary-image-stylization-tfjs/))
 * **snapchat:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [Snapchat](https://www.snapchat.com/) (Design)
 * **spaghetti:**
    - [reiinakano](https://github.com/reiinakano) ([Tensorflow Models](https://github.com/reiinakano/arbitrary-image-stylization-tfjs/))
 * **spotify-now-playing:**
    - [Spotify](https://www.spotify.com/us/) (Original Design)
    - [Sam Thik](https://www.pinterest.com/Samthik/) ([Image](https://www.pinterest.com/pin/500251471109108490/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **squish:**
    - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
 * **steam-card:**
    - [Steam](https://store.steampowered.com/) ([Original Design](https://steamcommunity.com/tradingcards/))
    - [SinKillerJ Tachikawa](https://www.deviantart.com/sinkillerj) ([Template](https://www.deviantart.com/sinkillerj/art/Steam-Trading-Card-Template-GIMP-372156984))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **subtitle:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **swirl:**
    - [ImageMagick](https://imagemagick.org/index.php) (Image Manipulation)
 * **wanted:**
@@ -1260,7 +1260,7 @@ Total: 517
    - [hbl917070](https://github.com/hbl917070) ([Font](https://github.com/hbl917070/Konosuba-text))
    - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/) (Original Anime)
 * **caution:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) ([Image](https://commons.wikimedia.org/wiki/File:Caution_blank.svg))
 * **certificate:**
    - [Creative Certificates](https://www.creativecertificates.com/) ([Image](https://www.creativecertificates.com/award-certificate-templates/))
@@ -1270,7 +1270,7 @@ Total: 517
    - [ATOM.SMASHER.ORG](http://atom.smasher.org/) ([Image](http://atom.smasher.org/chinese/))
    - [Fontsgeek](http://fontsgeek.com/) ([Futura Condensed Font](http://fontsgeek.com/fonts/Futura-Condensed-Bold))
 * **danger:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) ([Image](https://commons.wikimedia.org/wiki/File:Danger_blank.svg))
 * **gandhi-quote:**
    - [GUST e-foundry](https://www.fontsquirrel.com/fonts/list/foundry/gust-e-foundry) ([Latin Modern Roman Font](https://www.fontsquirrel.com/fonts/Latin-Modern-Roman))
@@ -1297,7 +1297,7 @@ Total: 517
    - [nauticalspongeinc](https://www.fontspace.com/nauticalspongeinc) ([Spongeboytt1 Font](https://www.fontspace.com/spongeboytt1-font-f29761))
 * **tweet:**
    - [Twitter](https://twitter.com/) ([Image, Chirp Font, API](https://developer.twitter.com/en/docs.html))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **undertale:**
    - [UNDERTALE](https://undertale.com/) (Original Game)
    - [Demirramon](https://www.demirramon.com/) ([Images](https://www.demirramon.com/en/generators/undertale_text_box_generator))
@@ -1309,7 +1309,7 @@ Total: 517
    - [Megadreamer](https://www.deviantart.com/megadreamer) ([Megaman Zero Dialogue Font](https://www.deviantart.com/megadreamer/art/Megaman-Zero-dialog-font-513708688))
 * **eject:**
    - [Wisq](https://www.youtube.com/channel/UCrOS0iXaZgW45AdbEznGXLA) ([Images](https://www.youtube.com/watch?v=yx4Hp8TBVtQ))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [InnerSloth](https://innersloth.com/index.php) ([Original "Among Us" Game](https://innersloth.com/gameAmongUs.php))
 * **hat:**
    - [Go Nintendo](https://gonintendo.com/) ([Ash Hat Image](https://gonintendo.com/stories/306292))
@@ -1342,7 +1342,7 @@ Total: 517
    - [Discord Status Button](https://discord.c99.nl/) (API)
 * **steam-now-playing:**
    - [Steam](https://store.steampowered.com/) (Original Design)
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **triggered:**
    - [NotAWeebDev](https://github.com/NotAWeebDev/) ([Image](https://github.com/NotAWeebDev/Misaki/blob/2e44f9efb467028dcbae5a2c9f836d2e99860b85/assets/images/plate_triggered.png))
 * **3000-years:**
@@ -1361,11 +1361,11 @@ Total: 517
    - [Tatsumaki](https://tatsumaki.xyz/) (Image)
 * **boardroom-meeting:**
    - [hejibits](https://hejibits.com/) ([Image](https://web.archive.org/web/20121226235748/https://hejibits.com/comics/outlook-oust/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **bottom-text:**
    - [ShareFonts.net](https://www.wfonts.com/) ([Impact Font](https://www.wfonts.com/font/impact))
 * **catch:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **challenger:**
    - [gman5846](https://www.deviantart.com/gman5846) ([Melee Image](https://www.deviantart.com/gman5846/art/SSBM-Challenger-Approaching-Template-861023507))
    - [Kevster823](https://www.deviantart.com/kevster823) ([Brawl Image](https://www.deviantart.com/kevster823/art/SSBB-Challenger-Approaching-Template-401524280))
@@ -1373,7 +1373,7 @@ Total: 517
    - [MatthewThePrep](https://www.deviantart.com/matthewtheprep) ([Ultimate Image](https://www.deviantart.com/matthewtheprep/art/SSBU-Challenger-Approaching-meme-template-800422972))
    - [Nintendo](https://www.nintendo.com/) ([Original "Super Smash Bros." Game](https://www.smashbros.com/en_US/index.html))
 * **change-my-mind:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **chi-idea:**
    - [u/THANOS_COPTER](https://www.reddit.com/user/THANOS_COPTER/) ([Image](https://www.reddit.com/r/Takagi_san/comments/gb4wdt/how_far_is_too_far/))
    - [Teasing Master Takagi-san](https://takagi3.me/) (Original "Teasing Master Takagi-san" Manga)
@@ -1383,32 +1383,32 @@ Total: 517
 * **cursed-sponge:**
    - [Nickelodeon](https://www.nick.com/) ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
 * **demotivational:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **dislike:**
    - [Bethesda](https://bethesda.net/en/dashboard) ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 * **distracted-boyfriend:**
    - [Antonio Guillem](http://antonioguillem.com/) ([Image](https://www.istockphoto.com/photo/gm493656728-77018851))
 * **drakeposting:**
    - [Drake](https://drakeofficial.com/) ([Original "Hotline Bling" Music Video](https://youtu.be/uxpDa-c-4Mc))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **edd-facts-book:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [Cartoon Network](https://www.cartoonnetworkme.com/) ([Image, Original "Ed, Edd n Eddy" TV Series](https://www.cartoonnetworkme.com/show/ed-edd-n-eddy))
 * **enslaved:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **food-broke:**
    - [@liltusk](https://twitter.com/liltusk) ([Image](https://twitter.com/liltusk/status/835719948597137408))
 * **for-five-hours:**
    - [NBC](https://www.nbc.com/) ([Image, Original "The Office" TV Series](https://www.nbc.com/the-office))
 * **genie-rules:**
    - [u/Two-Tone-](https://www.reddit.com/user/Two-Tone-/) ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/bht9o6/i_made_an_hd_high_quality_version_of_the_4_rules/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **girl-worth-fighting-for:**
    - [Disney](https://www.disney.com/) ([Original "Mulan" Movie](https://movies.disney.com/mulan))
    - [u/SupremeMemesXD](https://www.reddit.com/user/SupremeMemesXD/) ([Image](https://www.reddit.com/r/MemeTemplatesOfficial/comments/8h39vi/girl_worth_fighting_for_template/))
 * **gru-plan:**
    - [Illumination](http://www.illumination.com/) ([Original "Despicable Me" Movie](http://www.despicable.me/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **i-cant-believe:**
    - [I Can't Believe It's Not Butter!](https://www.icantbelieveitsnotbutter.com/en) (Original Logo)
    - [Kong Font](https://www.dafont.com/kong-font.d8299) ([The Lord Night Font](https://www.dafont.com/the-lord-night.font))
@@ -1416,7 +1416,7 @@ Total: 517
    - [Valve](https://www.valvesoftware.com/en/) ([Image, Original "Team Fortress 2" Game](https://www.teamfortress.com/))
 * **if-those-kids-could-read:**
    - [20th Century Fox](https://www.foxmovies.com/) (Image, Original "King of the Hill" Show)
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **kyon-gun:**
    - [The Melancholy of Haruhi Suzumiya](http://www.haruhi.tv/) (Original Anime)
    - [Know Your Meme](https://knowyourmeme.com/) ([Image](https://knowyourmeme.com/photos/217992-endless-eight-kyon-kun-denwa))
@@ -1424,7 +1424,7 @@ Total: 517
    - [Bethesda](https://bethesda.net/en/dashboard) ([Image, Original "Fallout" Game](https://fallout.bethesda.net/en/))
 * **lisa-presentation:**
    - [20th Century Fox](https://www.foxmovies.com/) ([Image, Original "The Simpsons" Show](http://www.simpsonsworld.com/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **look-at-this-photograph:**
    - [Nickelback](https://www.nickelback.com/) ([Image, Original "Photograph" Music Video](https://www.youtube.com/watch?v=BB0DU4DoPP4))
 * **look-what-karen-have:**
@@ -1432,41 +1432,41 @@ Total: 517
    - [KINMOZA!](http://www.kinmosa.com/) (Original Anime)
 * **mario-bros-views:**
    - [Nintendo](https://www.nintendo.com/) ([Original "Super Mario Bros." Game](https://mario.nintendo.com/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **meme-gen:**
    - [ShareFonts.net](https://www.wfonts.com/) ([Impact Font](https://www.wfonts.com/font/impact))
 * **metamorphosis:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [Yeah I'm Stuck in the Void, Keep Scrolling](https://www.facebook.com/voidmanthing/) ([Image](https://www.facebook.com/voidmanthing/posts/125724262420450))
 * **my-collection-grows:**
    - [Nekopara](http://nekopara.com/main.html) ([Image, Original Anime](https://nekopara-anime.com/))
 * **new-password:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **nike-ad:**
    - [Nike](https://www.nike.com/) (Logo, Concept)
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **panik-kalm-panik:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **phoebe-teaching-joey:**
    - [Warner Bros.](https://www.warnerbros.com/) ([Images, Original "Friends" TV Series](https://www.warnerbros.com/tv/friends/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **pills:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **plankton-plan:**
    - [Nickelodeon](https://www.nick.com/) ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **raw:**
    - [Inside Scanlation](https://www.insidescanlation.com/) ([Wild Words Font](https://www.insidescanlation.com/etc/the-idiots-guide-to-editing-manga/guide/type/fonts.html))
 * **reaction-meme:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **scroll-of-truth:**
    - [Robotatertot](https://robotatertot.tumblr.com/) ([Image](https://robotatertot.tumblr.com/post/156736308530/truth))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **skyrim-skill:**
    - [Bethesda](https://bethesda.net/en/dashboard) ([Image, Original "The Elder Scrolls V: Skyrim" Game](https://elderscrolls.bethesda.net/en/skyrim))
    - [Fontsgeek](http://fontsgeek.com/) ([Futura Condensed Font](http://fontsgeek.com/fonts/Futura-Condensed-Regular))
 * **sonic-says:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [SEGA](https://www.sega.com/) ([Image, Original "Sonic the Hedgehog" Game](https://www.sonicthehedgehog.com/))
 * **sora-selfie:**
    - [Square Enix](https://square-enix-games.com/) ([Original "Kingdom Hearts" Game](https://www.kingdomhearts.com/home/us/))
@@ -1476,10 +1476,10 @@ Total: 517
    - [Walter E Stewart](https://www.1001freefonts.com/designer-walter-e-stewart-fontlisting.php) ([Sun Dried Font](https://www.1001freefonts.com/sun-dried.font))
 * **spiderman-pointing:**
    - [Marvel](https://www.marvel.com/) ([Image, Original "Spiderman" Comic](https://spiderman.marvelhq.com/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **spongebob-burn:**
    - [Nickelodeon](https://www.nick.com/) ([Image, Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **that-sign-wont-stop-me:**
    - [PBS Kids](https://pbskids.org/) ([Image, Original "Arthur" Show](https://pbskids.org/arthur/))
    - [Missy Meyer](https://missymeyer.com/) ([Tragic Marker Font](https://missymeyer.com/tragic-marker-free-font))
@@ -1491,9 +1491,9 @@ Total: 517
    - [JoJo's Bizzare Adventure](http://www.araki-jojo.com/) (Original Anime)
 * **tuxedo-pooh:**
    - [Disney](https://www.disney.com/) ([Original "Winnie the Pooh" Movie](https://winniethepooh.disney.com/))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **two-buttons:**
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
    - [Jake Clark](https://jake-clark.tumblr.com/) ([Image](https://twitter.com/jakeclarkdude/status/689141113584619524))
 * **ugly:**
    - [Nickelodeon](https://www.nick.com/) ([Original "Spongebob Squarepants" Show](https://www.nick.com/shows/spongebob-squarepants))
@@ -1503,7 +1503,7 @@ Total: 517
    - [Horst Faas](https://en.wikipedia.org/wiki/Horst_Faas) (Image)
 * **whiteboard:**
    - [NBC](https://www.nbc.com/) ([Image, Original "The Office" TV Series](https://www.nbc.com/the-office))
-   - [Google](https://www.google.com/) ([Noto Font](https://www.google.com/get/noto/))
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **worse-than-hitler:**
    - [20th Century Fox](https://www.foxmovies.com/) ([Image, Original "Family Guy" Show](https://www.fox.com/family-guy/))
 * **worthless:**

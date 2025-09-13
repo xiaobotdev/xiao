@@ -19,13 +19,6 @@ module.exports = class PhoneCommand extends Command {
 					default: '',
 					parse: count => count.toLowerCase()
 				}
-			],
-			credit: [
-				{
-					name: 'Tatsumaki',
-					url: 'https://tatsumaki.xyz/',
-					reason: 'Concept'
-				}
 			]
 		});
 	}

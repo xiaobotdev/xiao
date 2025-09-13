@@ -8,13 +8,13 @@ module.exports = class ScrabbleScoreCommand extends Command {
 			name: 'scrabble-score',
 			aliases: ['scrabble'],
 			group: 'analyze',
-			description: 'Responds with the scrabble score of a word.',
+			description: 'Responds with the Scrabble score of a word.',
 			credit: [
 				{
 					name: 'Hasbro',
 					url: 'https://shop.hasbro.com/en-us',
 					reason: 'Original "Scrabble" Game',
-					reasonURL: 'https://scrabble.hasbro.com/en-us'
+					reasonURL: 'https://shop.hasbro.com/en-us/scrabble-words'
 				}
 			],
 			args: [

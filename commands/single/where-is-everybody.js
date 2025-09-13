@@ -18,7 +18,7 @@ module.exports = class WhereIsEverybodyCommand extends Command {
 			userPermissions: [PermissionFlagsBits.MentionEveryone],
 			credit: [
 				{
-					name: 'DreamWorks',
+					name: 'DreamWorks Animation',
 					url: 'https://www.dreamworks.com/',
 					reasonURL: 'https://www.dreamworks.com/movies/shrek',
 					reason: 'Images, Original "Shrek" Movie'

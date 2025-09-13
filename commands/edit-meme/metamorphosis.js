@@ -22,7 +22,7 @@ module.exports = class MetamorphosisCommand extends Command {
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					reasonURL: 'https://fonts.google.com/noto'
 				},
 				{
 					name: 'Yeah I\'m Stuck in the Void, Keep Scrolling',

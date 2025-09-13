@@ -21,12 +21,6 @@ module.exports = class KyonGunCommand extends Command {
 					name: 'The Melancholy of Haruhi Suzumiya',
 					url: 'http://www.haruhi.tv/',
 					reason: 'Original Anime'
-				},
-				{
-					name: 'Know Your Meme',
-					url: 'https://knowyourmeme.com/',
-					reason: 'Image',
-					reasonURL: 'https://knowyourmeme.com/photos/217992-endless-eight-kyon-kun-denwa'
 				}
 			],
 			args: [

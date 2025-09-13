@@ -20,12 +20,6 @@ module.exports = class LicensePlateCommand extends Command {
 					url: 'https://www.fontspace.com/dave-hansen',
 					reason: 'License Plate Font',
 					reasonURL: 'https://www.fontspace.com/license-plate-font-f3359'
-				},
-				{
-					name: 'Pin Clipart',
-					url: 'https://www.pinclipart.com/',
-					reason: 'Image',
-					reasonURL: 'https://www.pinclipart.com/maxpin/bJxii/'
 				}
 			],
 			args: [

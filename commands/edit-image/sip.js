@@ -16,14 +16,6 @@ module.exports = class SipCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'CoolClips.com',
-					url: 'http://search.coolclips.com/',
-					reason: 'Image',
-					reasonURL: 'http://search.coolclips.com/m/vector/hand0007/Hands-holding-mug/'
-				}
-			],
 			args: [
 				{
 					key: 'image',

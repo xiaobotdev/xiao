@@ -20,8 +20,7 @@ module.exports = class AxisCultSignUpCommand extends Command {
 				{
 					name: 'cheesecakejedi',
 					url: 'https://imgur.com/user/cheesecakejedi',
-					reason: 'Image',
-					reasonURL: 'https://imgur.com/gallery/quQTD'
+					reason: 'Image'
 				},
 				{
 					name: 'hbl917070',

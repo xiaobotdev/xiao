@@ -21,8 +21,7 @@ module.exports = class RipCommand extends Command {
 				{
 					name: 'vician',
 					url: 'https://www.123rf.com/profile_vician',
-					reason: 'Image',
-					reasonURL: 'https://www.123rf.com/profile_vician?mediapopup=13181623'
+					reason: 'Image'
 				},
 				{
 					name: 'Iconian Fonts',

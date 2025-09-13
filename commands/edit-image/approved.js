@@ -17,14 +17,6 @@ module.exports = class ApprovedCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'Redeeming God',
-					url: 'https://redeeminggod.com/',
-					reason: 'Image',
-					reasonURL: 'https://redeeminggod.com/courses/gospel-dictionary/lessons/gospel-dictionary-approved/'
-				}
-			],
 			args: [
 				{
 					key: 'image',

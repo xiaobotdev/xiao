@@ -16,14 +16,6 @@ module.exports = class GlassShatterCommand extends Command {
 				duration: 10
 			},
 			clientPermissions: [PermissionFlagsBits.AttachFiles],
-			credit: [
-				{
-					name: 'Platinum Designz',
-					url: 'http://store.platinumdesignz.com/',
-					reason: 'Image',
-					reasonURL: 'https://www.jing.fm/iclipt/u2q8u2a9o0t4i1q8/'
-				}
-			],
 			args: [
 				{
 					key: 'image',

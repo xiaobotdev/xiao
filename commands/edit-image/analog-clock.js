@@ -13,12 +13,6 @@ module.exports = class AnalogClockCommand extends Command {
 			details: '**Zones:** <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>',
 			credit: [
 				{
-					name: 'Wikipedia',
-					url: 'https://www.wikipedia.org/',
-					reason: 'Time Zone Data',
-					reasonURL: 'https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
-				},
-				{
 					name: 'Neopets',
 					url: 'http://www.neopets.com/',
 					reason: 'Neopia Time Zone'
@@ -27,7 +21,7 @@ module.exports = class AnalogClockCommand extends Command {
 					name: 'Google',
 					url: 'https://www.google.com/',
 					reason: 'Noto Font',
-					reasonURL: 'https://www.google.com/get/noto/'
+					reasonURL: 'https://fonts.google.com/noto'
 				}
 			],
 			args: [
