@@ -89,6 +89,7 @@ module.exports = class JeopardyScrape {
 	}
 
 	exportData() {
+		if (!this.clues.length) this.importData();
 		const buf = Buffer.from(JSON.stringify({
 			clues: this.clues,
 			gameIDs: this.gameIDs,
