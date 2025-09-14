@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "158.0.0",
+	"version": "158.0.1",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -75,6 +75,7 @@
 		"sagiri": "^4.3.0",
 		"semver": "^7.7.2",
 		"sherlockjs": "^1.4.2",
+		"simdjson": "^0.9.2",
 		"stackblur-canvas": "^2.7.0",
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "github:marianoheller/tic-tac-toe-minimax",
