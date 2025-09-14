@@ -13,6 +13,7 @@ tmp/
 
 # Config Files
 .env
+.env.keys
 config.json
 command-leaderboard.json
 command-last-run.json
