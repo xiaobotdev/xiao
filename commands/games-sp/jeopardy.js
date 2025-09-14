@@ -43,6 +43,9 @@ module.exports = class JeopardyCommand extends Command {
 	}
 
 	async run(msg) {
+		if (!this.client.jeopardy.clues.length) {
+			return msg.reply('Hang tight! I\'m updating my clue database.');
+		}
 		const question = this.client.jeopardy.clues[Math.floor(Math.random() * this.client.jeopardy.clues.length)];
 		const clueCard = await this.generateClueCard(question.question);
 		const connection = msg.guild ? this.client.dispatchers.get(msg.guild.id) : null;
