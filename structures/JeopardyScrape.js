@@ -81,7 +81,7 @@ module.exports = class JeopardyScrape {
 		}
 		for (const clue of file.clues) {
 			if (typeof clue !== 'object' || Array.isArray(clue)) continue;
-			if (this.clues.includes(clue.question)) continue;
+			if (this.clues.some(c => c.question === clue.question && c.answer === clue.answer)) continue;
 			this.clues.push(clue);
 		}
 		this.imported = true;
