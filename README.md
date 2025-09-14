@@ -1,3 +1,9 @@
+# Xiao
+![Xiao](https://raw.githubusercontent.com/lilyissillyyy/xiao/refs/heads/master/Xiao.png)
+
+Xiao is a Discord bot coded in JavaScript with [discord.js](https://discord.js.org/). With over
+500 commands, she is one of the most feature-rich bots out there. Formerly XiaoBot.
+
 ## Agreement
 
 Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
