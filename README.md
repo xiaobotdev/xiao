@@ -83,6 +83,13 @@ Only if you want to use the DECTalk command.
 * `WEBSTER_KEY` is your API key for Merriam-Webster. You can get one [here](https://dictionaryapi.com/).
 * `XIAO_GITHUB_REPO_NAME` and `XIAO_GITHUB_REPO_USERNAME` are the name and username of the GitHub repo where Xiao lives. These are optional, and default to "xiao" and "lilyissillyyy" respectively.
 
+### Encrypting `.env`
+
+> This step is recommended to protect your keys, but is not required.
+
+1. Run `npm i -g @dotenvx/dotenvx`.
+2. Run `dotenvx encrypt`.
+
 ### Run (Linux)
 
 > Install instructions below are for Linux. She should work on Windows, but I can't guarantee anything.
