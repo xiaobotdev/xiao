@@ -101,7 +101,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 517
+Total: 518
 
 ### Utility:
 
@@ -181,6 +181,7 @@ Total: 517
 * **roast:** Roasts a user.
 * **roll:** Rolls a dice with a minimum/maximum value of your choice.
 * **security-key:** Responds with a random security key.
+* **shakespeare-insult:** Lets Shakespeare insult you.
 * **smw-level:** Responds with a random Super Mario World level name.
 * **suggest-command:** Suggests a random command for you to try.
 * **superpower:** Responds with a random superpower.
