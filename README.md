@@ -708,6 +708,7 @@ Total: 518
 * [discord.js](https://www.npmjs.com/package/discord.js)
 * [dotenv](https://www.npmjs.com/package/dotenv)
 * [emoji-regex](https://www.npmjs.com/package/emoji-regex)
+* [everything-json](https://www.npmjs.com/package/everything-json)
 * [fen-validator](https://www.npmjs.com/package/fen-validator)
 * [font-finder](https://www.npmjs.com/package/font-finder)
 * [gm](https://www.npmjs.com/package/gm)
