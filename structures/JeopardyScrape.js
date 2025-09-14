@@ -64,8 +64,8 @@ module.exports = class JeopardyScrape {
 		return clues;
 	}
 
-	importData() {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' });
+	async importData() {
+		const read = await fs.promises.readFile(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' });
 		const file = JSON.parse(read);
 		if (typeof file !== 'object' || Array.isArray(file)) return null;
 		if (!file.clues || !file.gameIDs || !file.seasons) return null;
@@ -89,7 +89,6 @@ module.exports = class JeopardyScrape {
 	}
 
 	exportData() {
-		if (!this.clues.length) this.importData();
 		const buf = Buffer.from(JSON.stringify({
 			clues: this.clues,
 			gameIDs: this.gameIDs,
@@ -102,7 +101,7 @@ module.exports = class JeopardyScrape {
 	async checkForUpdates() {
 		if (!this.imported) {
 			const fileExists = await checkFileExists(path.join(__dirname, '..', 'jeopardy.json'));
-			if (fileExists) this.importData();
+			if (fileExists) await this.importData();
 		}
 		const cluesBefore = this.clues.length;
 		const latestSeason = this.seasons[this.seasons.length - 1];
