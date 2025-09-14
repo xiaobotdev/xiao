@@ -80,7 +80,7 @@ module.exports = class JeopardyScrape {
 			this.gameIDs.push(gameID);
 		}
 		for (const clue of file.clues) {
-			if (typeof clue !== 'string') continue;
+			if (typeof clue !== 'object' || Array.isArray(clue)) continue;
 			if (this.clues.includes(clue)) continue;
 			this.clues.push(clue);
 		}
