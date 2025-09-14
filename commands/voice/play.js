@@ -1,7 +1,7 @@
 const Command = require('../../framework/Command');
 const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
-const ytdl = require('ytdl-core');
+const ytdl = require('@distube/ytdl-core');
 const { shorten, verify } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
 const { GOOGLE_KEY } = process.env;

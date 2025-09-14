@@ -695,6 +695,7 @@ Total: 518
 ### NPM Packages
 * [@discordjs/opus](https://www.npmjs.com/package/@discordjs/opus)
 * [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
+* [@distube/ytdl-core](https://www.npmjs.com/package/@distube/ytdl-core)
 * [@mediapipe/face_detection](https://www.npmjs.com/package/@mediapipe/face_detection)
 * [@napi-rs/canvas](https://www.npmjs.com/package/@napi-rs/canvas)
 * [@skyra/gifenc](https://www.npmjs.com/package/@skyra/gifenc)
@@ -752,7 +753,6 @@ Total: 518
 * [wavefile](https://www.npmjs.com/package/wavefile)
 * [winston](https://www.npmjs.com/package/winston)
 * [wuzzy](https://www.npmjs.com/package/wuzzy)
-* [ytdl-core](https://www.npmjs.com/package/ytdl-core)
 * [zip-to-timezone](https://www.npmjs.com/package/zip-to-timezone)
 * [zlib-sync](https://www.npmjs.com/package/zlib-sync)
 
