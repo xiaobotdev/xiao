@@ -28,7 +28,7 @@ module.exports = class ApodCommand extends Command {
 		const credit = body.copyright ? body.copyright.replaceAll('\n', '/') : 'Public Domain';
 		return msg.say(stripIndents`
 			**${body.title}**
-			${body.explanation}
+			${body.explanation}${body.media_type !== 'image' ? `\n${body.url}` : ''}
 
 			_Image Credits: [${credit}](https://apod.nasa.gov/apod/astropix.html)_
 		`, { files: body.media_type === 'image' ? [body.url] : [] });
