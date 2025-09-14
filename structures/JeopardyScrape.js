@@ -1,7 +1,7 @@
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const raji = require('raji');
+const { JSON } = require('everything-json');
 const path = require('path');
 const { checkFileExists } = require('../util/Util');
 const rounds = ['jeopardy_round', 'double_jeopardy_round', 'final_jeopardy_round'];
@@ -67,7 +67,7 @@ module.exports = class JeopardyScrape {
 
 	async importData() {
 		const read = await fs.promises.readFile(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' });
-		const file = await raji.parse(read);
+		const file = await JSON.parseAsync(read);
 		if (typeof file !== 'object' || Array.isArray(file)) return null;
 		if (!file.clues || !file.gameIDs || !file.seasons) return null;
 		for (const season of file.seasons) {
