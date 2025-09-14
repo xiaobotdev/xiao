@@ -56,7 +56,7 @@
 		"html-entities": "^2.6.0",
 		"image-to-ascii": "^3.2.2",
 		"ioredis": "^5.7.0",
-		"js-chess-engine": "^1.0.3",
+		"js-chess-engine": "1.0.2",
 		"jszip": "^3.10.1",
 		"kuroshiro": "^1.2.0",
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
