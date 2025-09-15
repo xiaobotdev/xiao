@@ -9,7 +9,7 @@ module.exports = class JoinCommand extends Command {
 		super(client, {
 			name: 'join',
 			aliases: ['join-voice-channel', 'join-vc', 'join-voice', 'join-channel', 'connect'],
-			group: 'util-voice',
+			group: 'util',
 			description: 'Joins your voice channel.',
 			guildOnly: true,
 			guarded: true,
