@@ -44,7 +44,6 @@ client.registry
 	.registerGroups([
 		['util', 'Utility (Owner)'],
 		['util-public', 'Utility'],
-		['util-voice', 'Utility (Voice)'],
 		['info', 'Discord Information'],
 		['random-res', 'Random Response'],
 		['random-img', 'Random Image'],

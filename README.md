@@ -73,7 +73,6 @@ Only if you want to use the DECTalk command.
 * `BITLY_KEY` is your API key for Bit.ly. You can get one [here](https://dev.bitly.com/docs/getting-started/authentication/).
 * `CLEVERBOT_KEY` is your API key for Cleverbot. You can get one [here](https://www.cleverbot.com/api/).
 * `GITHUB_ACCESS_TOKEN` is your access token for GitHub. [Follow these steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) to make one.
-* `GOOGLE_KEY` is your API key for Google, used for the YouTube Data API. You can get one [here](https://console.cloud.google.com/apis/dashboard). You must also [activate the YouTube Data API](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com?q=search).
 * `GOV_KEY` is your API key for NASA. You get get one [here](https://api.nasa.gov/).
 * `IDIOT_URL` is a URL, ideally to the [Wikipedia page of an idiot](https://en.wikipedia.org/wiki/Donald_Trump). By default, it will reply with "_Stares at you._"
 * `REMOVEBG_KEY` is your API key for remove.bg. You can get one [here](https://www.remove.bg/api).
@@ -114,7 +113,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 518
+Total: 515
 
 ### Utility:
 
@@ -127,8 +126,10 @@ Total: 518
 * **help:** Displays a list of available commands, or detailed information for a specific command.
 * **high-scores:** Responds with the high scores the bot has saved.
 * **info:** Responds with detailed bot information.
+* **join:** Joins your voice channel.
 * **last-run:** Responds with a command's most recent run date.
 * **last-run-leaderboard:** Responds with the bot's most recently run commands.
+* **leave:** Leaves the current voice channel.
 * **options:** Responds with a list of server options.
 * **ping:** Checks the bot's ping to the Discord server.
 * **report:** Reports something to the bot owner(s).
@@ -137,14 +138,6 @@ Total: 518
 * **suggest:** Shortcut to suggest new features.
 * **unknown-command:** Displays help information for when an unknown command is used.
 * **uses:** Responds with a command's usage stats.
-
-### Utility (Voice):
-
-* **join:** Joins your voice channel.
-* **leave:** Leaves the current voice channel.
-* **pause:** Pauses the current audio playing.
-* **resume:** Resume the current audio playing.
-* **stop:** Stops the current audio playing.
 
 ### Discord Information:
 
@@ -665,7 +658,6 @@ Total: 518
 * **dec-talk:** The world's best Text-to-Speech.
 * **mindfulness:** Immerse yourself in some mindful quotes.
 * **morse:** Converts text to morse code.
-* **play:** Plays a YouTube video in your voice channel.
 * **tts:** Say the text you provide in the accent you choose.
 
 ### Reminders:
@@ -695,7 +687,6 @@ Total: 518
 ### NPM Packages
 * [@discordjs/opus](https://www.npmjs.com/package/@discordjs/opus)
 * [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
-* [@distube/ytdl-core](https://www.npmjs.com/package/@distube/ytdl-core)
 * [@mediapipe/face_detection](https://www.npmjs.com/package/@mediapipe/face_detection)
 * [@napi-rs/canvas](https://www.npmjs.com/package/@napi-rs/canvas)
 * [@skyra/gifenc](https://www.npmjs.com/package/@skyra/gifenc)
@@ -1451,8 +1442,6 @@ Total: 518
    - [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm) (Original DECTalk Software)
 * **mindfulness:**
    - [InspiroBot](https://inspirobot.me/) (API)
-* **play:**
-   - [Google](https://www.google.com/) ([YouTube Data API](https://developers.google.com/youtube/v3/))
 * **tts:**
    - [Google](https://www.google.com/) (Translate TTS API)
 * **cleverbot:**
