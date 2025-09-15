@@ -6,7 +6,7 @@ module.exports = class LeaveCommand extends Command {
 		super(client, {
 			name: 'leave',
 			aliases: ['leave-voice-channel', 'leave-vc', 'leave-voice', 'leave-channel', 'disconnect'],
-			group: 'util',
+			group: 'util-public',
 			description: 'Leaves the current voice channel.',
 			guildOnly: true,
 			guarded: true
