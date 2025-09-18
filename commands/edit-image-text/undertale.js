@@ -82,7 +82,7 @@ module.exports = class UndertaleCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		let font = 'DeterminationMono.ttf';
 		let space = -3;
-		let y = 30;
+		let y = 28;
 		switch (character) {
 			case 'sans':
 				font = 'UndertaleSans.ttf';
@@ -119,7 +119,7 @@ module.exports = class UndertaleCommand extends Command {
 		const text = wrapText(ctx, quote, 385);
 		const lines = text.length > 3 ? 3 : text.length;
 		for (let i = 0; i < lines; i++) {
-			ctx.fillText(text[i], 174, y + (y * i) + (15 * i) + (space * i));
+			ctx.fillText(text[i], 174, y + (y * i) + (13 * i) + (space * i));
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: `undertale-${character}.png` }] });
 	}
