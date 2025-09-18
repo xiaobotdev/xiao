@@ -107,7 +107,7 @@ module.exports = class UndertaleCommand extends Command {
 			case 'ness':
 				font = 'apple_kid.ttf';
 				space = -2;
-				y = 25;
+				y = 20;
 				break;
 			case 'temmie':
 				quote = this.client.registry.commands.get('temmie').temmize(quote);
