@@ -65,8 +65,8 @@ module.exports = class EmojiEmojiRevolutionCommand extends Command {
 			else ++oPts;
 			await msg.say(stripIndents`
 				${winner} won this round!
-				**${msg.author.username}:** ${aPts}
-				**${opponent.username}:** ${oPts}
+				**${msg.author.globalName || msg.author.username}:** ${aPts}
+				**${opponent.globalName || opponent.username}:** ${oPts}
 			`);
 			if (lastTurnTimeout) lastTurnTimeout = false;
 		}

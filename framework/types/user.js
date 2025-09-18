@@ -48,12 +48,14 @@ module.exports = class UserArgumentType extends ArgumentType {
 
 function memberFilterExact(search) {
 	return mem => mem.user.username.toLowerCase() === search
+		|| (mem.user.globalName && mem.user.globalName.toLowerCase() === search)
 		|| (mem.nickname && mem.nickname.toLowerCase() === search)
 		|| mem.tag.toLowerCase() === search;
 }
 
 function memberFilterInexact(search) {
 	return mem => mem.user.username.toLowerCase().includes(search)
+		|| (mem.user.globalName && mem.user.globalName.toLowerCase().includes(search))
 		|| (mem.nickname && mem.nickname.toLowerCase().includes(search))
-		|| mem.user.tag.toLowerCase().includes(search);
+		|| mem.tag.toLowerCase().includes(search);
 }

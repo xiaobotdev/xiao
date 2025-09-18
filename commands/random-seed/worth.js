@@ -22,16 +22,17 @@ module.exports = class WorthCommand extends Command {
 
 	run(msg, { user }) {
 		const authorUser = user.id === msg.author.id;
+		const displayName = user.globalName || user.username;
 		if (user.id === this.client.user.id) return msg.reply('Me? I\'m worth $5/month. At least that\'s how much I cost.');
 		if (this.client.isOwner(user)) {
 			if (authorUser) return msg.reply('Infinity, you amazing owner! ❤');
-			return msg.reply(`${user.username}, as in my owner? Worthless. Absolutely worthless.`);
+			return msg.reply(`${displayName}, as in my owner? Worthless. Absolutely worthless.`);
 		}
 		if (user.id === LOVER_USER_ID) {
-			return msg.reply(`${user.username} is worth more than anyone else on this Earth! ❤`);
+			return msg.reply(`${displayName} is worth more than anyone else on this Earth! ❤`);
 		}
 		const random = MersenneTwister19937.seed(user.id);
 		const worth = integer(0, 1000000)(random);
-		return msg.reply(`${authorUser ? 'You are' : `${user.username} is`} worth $${formatNumber(worth)}.`);
+		return msg.reply(`${authorUser ? 'You are' : `${displayName} is`} worth $${formatNumber(worth)}.`);
 	}
 };

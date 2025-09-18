@@ -75,10 +75,10 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		} else {
 			ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(96);
 		}
-		ctx.fillText(msg.author.username, 960, 1558);
+		ctx.fillText(msg.author.globalName || msg.author.username, 960, 1558);
 		ctx.fillText(gender, 960, 1752);
 		ctx.fillText(age, 1700, 1752);
-		ctx.fillText('XXX-XXX-XXXX', 960, 1960);
+		ctx.fillText(msg.author.id, 960, 1960);
 		ctx.fillText(profession, 960, 2169);
 		ctx.fillText('Xiao', 960, 2370);
 		if (flags.english || flags.en) {

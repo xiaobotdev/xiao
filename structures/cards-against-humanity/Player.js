@@ -115,7 +115,7 @@ module.exports = class Player {
 			${hand.map((card, i) => `**${i + 1}.** ${escapeMarkdown(card)}`).join('\n')}
 
 			**${this.game.blackType} Card:** ${escapeMarkdown(black.text)}
-			**Card Czar:** ${this.game.czar.user.username}
+			**Card Czar:** ${this.game.czar.user.globalName || this.game.czar.user.username}
 			**Awesome Points:** ${this.points}
 			**Strikes:** ${this.strikes}/3
 
