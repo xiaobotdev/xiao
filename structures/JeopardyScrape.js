@@ -70,6 +70,7 @@ module.exports = class JeopardyScrape {
 		const file = await JSON.parseAsync(read);
 		if (typeof file !== 'object' || Array.isArray(file)) return null;
 		if (!file.clues || !file.gameIDs || !file.seasons) return null;
+		this.imported = true;
 		for (const season of file.seasons) {
 			if (typeof season !== 'string') continue;
 			if (this.seasons.includes(season)) continue;
@@ -85,7 +86,6 @@ module.exports = class JeopardyScrape {
 			if (this.clues.some(c => c.question === clue.question && c.answer === clue.answer)) continue;
 			this.clues.push(clue);
 		}
-		this.imported = true;
 		return file;
 	}
 
