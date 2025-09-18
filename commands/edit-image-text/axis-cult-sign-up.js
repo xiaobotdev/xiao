@@ -81,7 +81,11 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		ctx.fillText('XXX-XXX-XXXX', 960, 1960);
 		ctx.fillText(profession, 960, 2169);
 		ctx.fillText('Xiao', 960, 2370);
-		ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(123);
+		if (flags.english || flags.en) {
+			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(123);
+		} else {
+			ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(123);
+		}
 		fillTextWithBreaks(ctx, 'ERIS PADS\nHER CHEST!', 1037, 2874);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/jpeg'), name: 'axis-cult-sign-up.jpg' }] });
 	}
