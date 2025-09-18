@@ -114,7 +114,7 @@ module.exports = class UndertaleCommand extends Command {
 		const text = wrapText(ctx, quote, 385);
 		const lines = text.length > 3 ? 3 : text.length;
 		for (let i = 0; i < lines; i++) {
-			ctx.fillText(text[i], 174, 30 + (30 * i) + (20 * i) + (space * i));
+			ctx.fillText(text[i], 174, 30 + (30 * i) + (17 * i) + (space * i));
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: `undertale-${character}.png` }] });
 	}
