@@ -82,16 +82,19 @@ module.exports = class UndertaleCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		let font = 'DeterminationMono.ttf';
 		let space = -3;
+		let y = 30;
 		switch (character) {
 			case 'sans':
 				font = 'UndertaleSans.ttf';
 				quote = quote.toLowerCase();
 				space = -4;
+				y = 27;
 				break;
 			case 'papyrus':
 				font = 'UndertalePapyrus.ttf';
 				quote = quote.toUpperCase();
 				space = -5;
+				y = 27;
 				break;
 			case 'napstablook':
 				quote = quote.toLowerCase();
@@ -99,10 +102,12 @@ module.exports = class UndertaleCommand extends Command {
 			case 'gaster':
 				font = 'pixelated-wingdings.ttf';
 				space = -4;
+				y = 25;
 				break;
 			case 'ness':
 				font = 'apple_kid.ttf';
 				space = -2;
+				y = 25;
 				break;
 			case 'temmie':
 				quote = this.client.registry.commands.get('temmie').temmize(quote);
@@ -114,7 +119,7 @@ module.exports = class UndertaleCommand extends Command {
 		const text = wrapText(ctx, quote, 385);
 		const lines = text.length > 3 ? 3 : text.length;
 		for (let i = 0; i < lines; i++) {
-			ctx.fillText(text[i], 174, 30 + (30 * i) + (17 * i) + (space * i));
+			ctx.fillText(text[i], 174, x + (x * i) + (17 * i) + (space * i));
 		}
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: `undertale-${character}.png` }] });
 	}
