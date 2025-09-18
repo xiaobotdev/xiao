@@ -34,6 +34,16 @@ module.exports = class AxisCultSignUpCommand extends Command {
 					reason: 'Original Anime'
 				}
 			],
+			flags: [
+				{
+					key: 'english',
+					description: 'Displays the text in English.'
+				},
+				{
+					key: 'en',
+					description: 'Alias for english.'
+				}
+			],
 			args: [
 				{
 					key: 'gender',
@@ -55,12 +65,16 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		});
 	}
 
-	async run(msg, { gender, age, profession }) {
+	async run(msg, { gender, age, profession, flags }) {
 		const base = await loadImage(path.join(__dirname, '..', '..', 'assets', 'images', 'axis-cult-sign-up.jpg'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(96);
+		if (flags.english || flags.en) {
+			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(96);
+		} else {
+			ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(96);
+		}
 		ctx.fillText(msg.author.username, 960, 1558);
 		ctx.fillText(gender, 960, 1752);
 		ctx.fillText(age, 1700, 1752);
