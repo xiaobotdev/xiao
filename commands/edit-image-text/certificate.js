@@ -45,7 +45,7 @@ module.exports = class CertificateCommand extends Command {
 					key: 'name',
 					type: 'string',
 					max: 30,
-					default: msg => msg.author.username
+					default: msg => msg.author.globalName || msg.author.username
 				}
 			]
 		});

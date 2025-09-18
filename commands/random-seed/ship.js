@@ -84,8 +84,8 @@ module.exports = class ShipCommand extends Command {
 		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(40);
 		ctx.fillText('~Xiao\'s Compatability Meter~', 600, 15);
 		ctx.fillStyle = 'white';
-		ctx.fillText(first.username, 270, 448);
-		ctx.fillText(second.username, 930, 448);
+		ctx.fillText(first.globalName || first.username, 270, 448);
+		ctx.fillText(second.globalName || second.username, 930, 448);
 		ctx.font = this.client.fonts.get('Pinky Cupid.otf').toCanvasString(60);
 		ctx.fillStyle = percentColor(level / 100, percentColors);
 		ctx.fillText(`~${level}%~`, 600, 230);

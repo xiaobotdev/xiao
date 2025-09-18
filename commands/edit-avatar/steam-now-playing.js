@@ -55,7 +55,7 @@ module.exports = class SteamNowPlayingCommand extends Command {
 		ctx.drawImage(avatar, 26, 26, 41, 42);
 		ctx.fillStyle = '#90b93c';
 		ctx.font = this.client.fonts.get('Noto-Regular.ttf').toCanvasString(14);
-		ctx.fillText(user.username, 80, 34);
+		ctx.fillText(user.globalName || user.username, 80, 34);
 		ctx.fillText(shortenText(ctx, game, 200), 80, 70);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'steam-now-playing.png' }] });
 	}

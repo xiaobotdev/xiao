@@ -23,7 +23,7 @@ module.exports = class NameRaterCommand extends Command {
 					key: 'name',
 					type: 'string',
 					max: 25,
-					default: msg => msg.author.username,
+					default: msg => msg.author.globalName || msg.author.username,
 					validate: async name => {
 						const matches = name.match(/^(?:<@!?)([0-9]+)>$/);
 						if (matches) {
@@ -48,7 +48,7 @@ module.exports = class NameRaterCommand extends Command {
 	}
 
 	run(msg, { name }) {
-		if (name instanceof User) name = name.username;
+		if (name instanceof User) name = name.globalName || name.username;
 		if (name.toLowerCase() === this.client.user.username.toLowerCase()) {
 			return msg.say(
 				`<:${NAME_RATER_EMOJI_NAME}:${NAME_RATER_EMOJI_ID}> Yes, ${name}! What a perfect name! I'm speechless!`

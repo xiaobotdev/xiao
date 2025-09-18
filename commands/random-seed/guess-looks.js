@@ -24,13 +24,14 @@ module.exports = class GuessLooksCommand extends Command {
 
 	run(msg, { user }) {
 		if (user.id === this.client.user.id) return msg.reply('Me? Just look at my avatar, dummy.');
+		const displayName = user.globalName || user.username;
 		const authorUser = user.id === msg.author.id;
 		if (this.client.isOwner(user)) {
 			if (authorUser) return msg.reply('You look amazing as always, cutie! ❤');
-			return msg.reply(`${user.username} looks like a monkey, and smells like one too.`);
+			return msg.reply(`${displayName} looks like a monkey, and smells like one too.`);
 		}
 		if (user.id === LOVER_USER_ID) {
-			return msg.reply(`Know what perfection looks like? That's what ${user.username} looks like. ❤`);
+			return msg.reply(`Know what perfection looks like? That's what ${displayName} looks like. ❤`);
 		}
 		const random = MersenneTwister19937.seed(user.id);
 		const gender = genders[integer(0, genders.length - 1)(random)];
@@ -43,7 +44,7 @@ module.exports = class GuessLooksCommand extends Command {
 		const weight = integer(50, 300)(random);
 		const extra = extras[integer(0, extras.length - 1)(random)];
 		return msg.reply(oneLine`
-			I think ${authorUser ? 'you are' : `${user.username} is`} a ${age} year old ${gender} with ${eyeColor} eyes
+			I think ${authorUser ? 'you are' : `${displayName} is`} a ${age} year old ${gender} with ${eyeColor} eyes
 			and ${hairStyle} ${hairColor} hair. ${authorUser ? 'You are' : `${gender === 'man' ? 'He' : 'She'} is`}
 			${feet}'${inches}" and weigh${authorUser ? '' : 's'} ${weight} pounds. Don't forget the ${extra}!
 		`);
