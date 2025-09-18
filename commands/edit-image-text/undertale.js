@@ -88,13 +88,13 @@ module.exports = class UndertaleCommand extends Command {
 				font = 'UndertaleSans.ttf';
 				quote = quote.toLowerCase();
 				space = -4;
-				y = 27;
+				y = 26;
 				break;
 			case 'papyrus':
 				font = 'UndertalePapyrus.ttf';
 				quote = quote.toUpperCase();
 				space = -5;
-				y = 27;
+				y = 26;
 				break;
 			case 'napstablook':
 				quote = quote.toLowerCase();
@@ -102,12 +102,12 @@ module.exports = class UndertaleCommand extends Command {
 			case 'gaster':
 				font = 'pixelated-wingdings.ttf';
 				space = -4;
-				y = 25;
+				y = 20;
 				break;
 			case 'ness':
 				font = 'apple_kid.ttf';
 				space = -2;
-				y = 20;
+				y = 22;
 				break;
 			case 'temmie':
 				quote = this.client.registry.commands.get('temmie').temmize(quote);
