@@ -74,11 +74,12 @@ module.exports = class SortingHatCommand extends Command {
 		}
 		const houseResult = Object.keys(points).filter(h => points[h] > 0).sort((a, b) => points[b] - points[a]);
 		const totalPoints = houseResult.reduce((a, b) => a + points[b], 0);
+		const lb = houseResult.map(house => `${houses[house]}: ${Math.round((points[house] / totalPoints) * 100)}%`).join('\n');
 		return msg.say(stripIndents`
 			You are a member of... **${houses[houseResult[0]]}**!
 			_${descriptions[houseResult[0]]}_
 
-			${houseResult.map(house => `${houses[house]}: ${Math.round((points[house] / totalPoints) * 100)}%`).join('\n')}
+			${houseResult[0] === 'b' ? '' : lb}
 		`);
 	}
 };
