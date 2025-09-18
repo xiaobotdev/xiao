@@ -36,12 +36,12 @@ module.exports = class AxisCultSignUpCommand extends Command {
 			],
 			flags: [
 				{
-					key: 'english',
-					description: 'Displays the text in English.'
+					key: 'classic',
+					description: 'Displays the text in KONOSUBA\'s language.'
 				},
 				{
-					key: 'en',
-					description: 'Alias for english.'
+					key: 'c',
+					description: 'Alias for classic.'
 				}
 			],
 			args: [
@@ -70,10 +70,10 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		if (flags.english || flags.en) {
-			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(96);
-		} else {
+		if (flags.classic || flags.c) {
 			ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(96);
+		} else {
+			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(96);
 		}
 		ctx.fillText(msg.author.globalName || msg.author.username, 960, 1558);
 		ctx.fillText(gender, 960, 1752);
@@ -81,10 +81,10 @@ module.exports = class AxisCultSignUpCommand extends Command {
 		ctx.fillText(msg.author.id, 960, 1960);
 		ctx.fillText(profession, 960, 2169);
 		ctx.fillText('Xiao', 960, 2370);
-		if (flags.english || flags.en) {
-			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(123);
-		} else {
+		if (flags.classic || flags.c) {
 			ctx.font = this.client.fonts.get('Konosuba.ttf').toCanvasString(123);
+		} else {
+			ctx.font = this.client.fonts.get('TragicMarker.otf').toCanvasString(123);
 		}
 		fillTextWithBreaks(ctx, 'ERIS PADS\nHER CHEST!', 1037, 2874);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/jpeg'), name: 'axis-cult-sign-up.jpg' }] });
