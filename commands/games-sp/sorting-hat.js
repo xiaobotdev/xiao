@@ -68,13 +68,15 @@ module.exports = class SortingHatCommand extends Command {
 			});
 			if (!choice.size) return msg.say('Oh no, you ran out of time! Too bad.');
 			if (choice.first().content.toUpperCase() === 'END') return msg.say('See you next time!');
-			const answer = answers[choices.indexOf(choice.first().content.toUpperCase())];
+			const answer = answers[choices.indexOf(choice.first().content.toUpperCase()) - 1];
 			for (const [house, amount] of Object.entries(answer.points)) points[house] += amount;
 			++turn;
 		}
 		const houseResult = Object.keys(points).filter(h => points[h] > 0).sort((a, b) => points[b] - points[a]);
 		const totalPoints = houseResult.reduce((a, b) => a + points[b], 0);
-		const lb = houseResult.map(house => `${houses[house]}: ${Math.round((points[house] / totalPoints) * 100)}%`).join('\n');
+		const lb = houseResult.map(
+			house => `${houses[house]}: ${Math.round((points[house] / totalPoints) * 100)}%`
+		).join('\n');
 		return msg.say(stripIndents`
 			You are a member of... **${houses[houseResult[0]]}**!
 			_${descriptions[houseResult[0]]}_

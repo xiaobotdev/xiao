@@ -1285,7 +1285,7 @@
 					{
 						"text": "No, I agree with her.",
 						"points": {
-							"b": 100
+							"b": 99999999
 						}
 					}
 				]
