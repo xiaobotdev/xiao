@@ -82,7 +82,7 @@ module.exports = class UndertaleCommand extends Command {
 		ctx.drawImage(base, 0, 0);
 		let font = 'DeterminationMono.ttf';
 		let space = -3;
-		let y = 28;
+		let y = 31;
 		switch (character) {
 			case 'sans':
 				font = 'UndertaleSans.ttf';
