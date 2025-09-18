@@ -113,7 +113,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 515
+Total: 514
 
 ### Utility:
 
