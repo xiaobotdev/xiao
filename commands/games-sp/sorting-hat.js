@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const { shuffle } = require('../../util/Util');
 const { questions, houses, descriptions } = require('../../assets/json/sorting-hat');
-const choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'END'];
+const choices = ['END', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
 
 module.exports = class SortingHatCommand extends Command {
 	constructor(client) {
@@ -57,10 +57,10 @@ module.exports = class SortingHatCommand extends Command {
 			const answers = shuffle(question.answers);
 			await msg.say(stripIndents`
 				**${turn}.** ${question.text} _(Type \`end\` to end)_
-				${answers.map((answer, i) => `- **${choices[i]}.** ${answer.text}`).join('\n')}
+				${answers.map((answer, i) => `- **${choices[i + 1]}.** ${answer.text}`).join('\n')}
 			`);
 			const filter = res =>
-				res.author.id === msg.author.id && choices.slice(0, answers.length).includes(res.content.toUpperCase());
+				res.author.id === msg.author.id && choices.slice(0, answers.length + 1).includes(res.content.toUpperCase());
 			const choice = await msg.channel.awaitMessages({
 				filter,
 				max: 1,
