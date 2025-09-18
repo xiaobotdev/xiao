@@ -2,7 +2,7 @@ const Command = require('../../framework/Command');
 const { stripIndents } = require('common-tags');
 const { shuffle } = require('../../util/Util');
 const { questions, houses, descriptions } = require('../../assets/json/sorting-hat');
-const choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
+const choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'END'];
 
 module.exports = class SortingHatCommand extends Command {
 	constructor(client) {
@@ -33,17 +33,20 @@ module.exports = class SortingHatCommand extends Command {
 			g: 0,
 			s: 0,
 			h: 0,
-			r: 0
+			r: 0,
+			b: 0
 		};
 		const blacklist = [];
 		const questionNums = ['2', '3', '4', '5', '6', '7'];
 		let turn = 1;
-		while (turn < 9) {
+		while (turn < 10) {
 			let question;
 			if (turn === 1) {
 				question = questions.first[Math.floor(Math.random() * questions.first.length)];
 			} else if (turn === 8) {
 				question = questions.last[Math.floor(Math.random() * questions.last.length)];
+			} else if (turn === 9) {
+				question = questions.bigot[0];
 			} else {
 				const possible = questionNums.filter(num => !blacklist.includes(num));
 				const value = possible[Math.floor(Math.random() * possible.length)];
@@ -53,7 +56,7 @@ module.exports = class SortingHatCommand extends Command {
 			}
 			const answers = shuffle(question.answers);
 			await msg.say(stripIndents`
-				**${turn}.** ${question.text}
+				**${turn}.** ${question.text} _(Type \`end\` to end)_
 				${answers.map((answer, i) => `- **${choices[i]}.** ${answer.text}`).join('\n')}
 			`);
 			const filter = res =>
@@ -65,6 +68,7 @@ module.exports = class SortingHatCommand extends Command {
 			});
 			if (!choice.size) return msg.say('Oh no, you ran out of time! Too bad.');
 			const answer = answers[choices.indexOf(choice.first().content.toUpperCase())];
+			if (answer === 'END') return msg.say('See you next time!');
 			for (const [house, amount] of Object.entries(answer.points)) points[house] += amount;
 			++turn;
 		}
