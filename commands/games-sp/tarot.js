@@ -27,6 +27,12 @@ module.exports = class TarotCommand extends Command {
 					reasonURL: 'https://www.tarotcardmeanings.net/tarotcards.htm'
 				},
 				{
+					name: 'u/BaffleBlend',
+					url: 'https://www.reddit.com/user/BaffleBlend/',
+					reason: 'Happy Squirrel Image',
+					reasonURL: 'https://www.reddit.com/r/tarot/comments/1ir71t1/'
+				},
+				{
 					name: '20th Century Fox',
 					url: 'https://www.foxmovies.com/',
 					reason: 'Original "The Simpsons" Show, "Happy Squirrel" Concept',
