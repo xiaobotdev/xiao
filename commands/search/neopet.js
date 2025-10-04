@@ -1,6 +1,5 @@
 const Command = require('../../framework/Command');
-const request = require('node-superfetch');
-const UserAgent = require('user-agents');
+const petImage = require('neopet-image-finder');
 const { list } = require('../../util/Util');
 const moods = {
 	happy: 1,
@@ -44,11 +43,8 @@ module.exports = class NeopetCommand extends Command {
 
 	async run(msg, { pet, mood }) {
 		try {
-			const agent = new UserAgent();
-			const { body } = await request
-				.get(`http://pets.neopets.com/cpn/${encodeURIComponent(pet)}/${mood}/5.png`)
-				.set({ 'User-Agent': agent.toString() });
-			return msg.say({ files: [{ attachment: body, name: `${pet}-${mood}.png` }] });
+			const petImg = await petImage(pet, { mood, size: 5 });
+			return msg.say({ files: [{ attachment: petImg.data, name: `${pet}-${mood}.png` }] });
 		} catch (err) {
 			if (err.status === 404) return msg.say('Could not find any results.');
 			throw err;
