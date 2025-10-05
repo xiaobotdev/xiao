@@ -22,6 +22,16 @@ module.exports = class NeopetCommand extends Command {
 					reason: 'Pet Image Data, Original Game'
 				}
 			],
+			flags: [
+				{
+					key: 'portrait',
+					description: 'Gets a small portrait of the pet.'
+				},
+				{
+					key: 'p',
+					description: 'Alias for portrait.'
+				}
+			],
 			args: [
 				{
 					key: 'pet',
@@ -41,8 +51,8 @@ module.exports = class NeopetCommand extends Command {
 		});
 	}
 
-	async run(msg, { pet, mood }) {
-		const petImg = await petImage(pet, { mood, size: 5 });
+	async run(msg, { pet, mood, flags }) {
+		const petImg = await petImage(pet, { mood, size: flags.portrait ? 6 : 5 });
 		if (!petImg) return msg.say('Could not find any results.');
 		return msg.say({ files: [{ attachment: petImg.data, name: `${pet}-${mood}.png` }] });
 	}
