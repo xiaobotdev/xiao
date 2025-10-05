@@ -52,7 +52,7 @@ module.exports = class NeopetCommand extends Command {
 	}
 
 	async run(msg, { pet, mood, flags }) {
-		const petImg = await petImage(pet, { mood, size: flags.portrait ? 6 : 5 });
+		const petImg = await petImage(pet, { mood, size: (flags.portrait || flags.p) ? 6 : 5 });
 		if (!petImg) return msg.say('Could not find any results.');
 		return msg.say({ files: [{ attachment: petImg.data, name: `${pet}-${mood}.png` }] });
 	}
