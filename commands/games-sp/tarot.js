@@ -43,7 +43,7 @@ module.exports = class TarotCommand extends Command {
 				{
 					key: 'question',
 					type: 'string',
-					max: 50
+					max: 100
 				}
 			]
 		});
