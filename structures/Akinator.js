@@ -89,7 +89,7 @@ class Akinator {
 		}
 		if (!correct && keepGoing) {
 			const params = new URLSearchParams();
-			params.append('step', this.currentStep.toString());
+			params.append('step', (this.currentStep + 1).toString());
 			params.append('sid', '1');
 			params.append('cm', this.childMode);
 			params.append('progression', this.progress);
@@ -100,7 +100,6 @@ class Akinator {
 				.post(`https://${this.region}.akinator.com/exclude`)
 				.send(params.toString(), true)
 				.set({
-					Accept: 'application/json',
 					'Content-Length': params.toString().length,
 					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 				});
