@@ -100,23 +100,9 @@ class Akinator {
 				.post(`https://${this.region}.akinator.com/exclude`)
 				.send(params.toString(), true)
 				.set({
-					Accept: '*/*',
-					'Accept-Encoding': 'gzip, deflate, br, zstd',
-					'Accept-Language': 'en-US,en;q=0.5',
-					'Alt-Used': 'en.akinator.com',
-					Connection: 'keep-alive',
+					Accept: 'application/json',
 					'Content-Length': params.toString().length,
 					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-					DNT: 1,
-					Host: 'en.akinator.com',
-					Origin: 'https://en.akinator.com',
-					Priority: 'u=0',
-					Referer: 'https://en.akinator.com/game',
-					'Sec-Fetch-Dest': 'empty',
-					'Sec-Fetch-Mode': 'cors',
-					'Sec-Fetch-Site': 'same-origin',
-					'Sec-GPC': '1',
-					'X-Requested-With': 'XMLHttpRequest'
 				});
 			this.test = Buffer.from(text);
 			this.guessed = null;
