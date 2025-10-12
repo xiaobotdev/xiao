@@ -96,10 +96,11 @@ class Akinator {
 			params.append('session', this.session);
 			params.append('signature', this.signature);
 			params.append('forward_answer', '1');
-			const { body } = await request
+			const { body, text } = await request
 				.post(`https://${this.region}.akinator.com/exclude`)
 				.send(params, true)
 				.set({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+			console.log(text);
 			this.guessed = null;
 			this.stepLastProposition = body.step;
 			this.progress = body.progression;
