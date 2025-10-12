@@ -25,7 +25,6 @@ class Akinator {
 	async start() {
 		const { text } = await request
 			.post(`https://${this.region}.akinator.com/game`)
-			.set({ 'User-Agent': this.agent.toString() })
 			.send({
 				sid: '1',
 				cm: this.childMode
@@ -42,7 +41,6 @@ class Akinator {
 	async step(answer) {
 		const { body } = await request
 			.post(`https://${this.region}.akinator.com/answer`)
-			.set({ 'User-Agent': this.agent.toString() })
 			.send({
 				step: this.currentStep.toString(),
 				progression: this.progress,
@@ -72,7 +70,6 @@ class Akinator {
 	async back() {
 		const { body } = await request
 			.post(`https://${this.region}.akinator.com/cancel_answer`)
-			.set({ 'User-Agent': this.agent.toString() })
 			.send({
 				step: this.currentStep.toString(),
 				progression: this.progress,
