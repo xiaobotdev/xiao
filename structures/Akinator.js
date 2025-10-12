@@ -90,7 +90,7 @@ class Akinator {
 		if (!correct && keepGoing) {
 			const { body, text } = await request
 				.post(`https://${this.region}.akinator.com/exclude`)
-				.send({
+				.attach({
 					step: this.currentStep.toString(),
 					sid: '1',
 					cm: this.childMode,
