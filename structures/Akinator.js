@@ -1,6 +1,5 @@
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
-const UserAgent = require('user-agents');
 const regions = ['en', 'ar', 'cn', 'de', 'es', 'fr', 'il', 'it', 'jp', 'kr', 'nl', 'pt', 'ru', 'tr', 'id'];
 const answers = ['Yes', 'No', 'Don\'t know', 'Probably', 'Probably not'];
 
@@ -19,7 +18,6 @@ class Akinator {
 		this.signature = null;
 		this.guessed = null;
 		this.akiWin = null;
-		this.agent = new UserAgent();
 	}
 
 	async start() {
@@ -101,10 +99,7 @@ class Akinator {
 			const { body, text } = await request
 				.post(`https://${this.region}.akinator.com/exclude`)
 				.send(params.toString(), true)
-				.set({
-					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-					'User-Agent': this.agent.toString()
-				});
+				.set({ 'Content-Type': 'application/x-www-form-urlencoded' });
 			console.log(text);
 			this.guessed = null;
 			this.stepLastProposition = body.step;
