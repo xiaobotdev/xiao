@@ -101,7 +101,7 @@ class Akinator {
 			const { body, text } = await request
 				.post(`https://${this.region}.akinator.com/exclude`)
 				.send(params.toString(), true)
-				.set({ 
+				.set({
 					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 					'User-Agent': this.agent.toString()
 				});
