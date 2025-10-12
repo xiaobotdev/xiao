@@ -100,7 +100,7 @@ class Akinator {
 				.post(`https://${this.region}.akinator.com/exclude`)
 				.send(params.toString(), true)
 				.set({ 'Content-Type': 'application/x-www-form-urlencoded' });
-			console.log(text);
+			this.test = Buffer.from(text);
 			this.guessed = null;
 			this.stepLastProposition = body.step;
 			this.progress = body.progression;
