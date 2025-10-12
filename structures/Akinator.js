@@ -88,7 +88,7 @@ class Akinator {
 			return this;
 		}
 		if (!correct && keepGoing) {
-			const { body, text } = await request
+			const { body } = await request
 				.post(`https://${this.region}.akinator.com/exclude`)
 				.attach({
 					step: this.currentStep.toString(),
@@ -96,9 +96,9 @@ class Akinator {
 					cm: this.childMode,
 					progression: this.progress,
 					session: this.session,
-					signature: this.signature
+					signature: this.signature,
+					forward_answer: '1'
 				});
-			console.log(text);
 			this.guessed = null;
 			this.stepLastProposition = body.step;
 			this.progress = body.progression;
