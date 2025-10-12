@@ -101,7 +101,7 @@ class Akinator {
 				.send(params.toString(), true)
 				.set({
 					'Content-Length': params.toString().length,
-					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 				});
 			this.guessed = null;
 			this.stepLastProposition = body.step;
