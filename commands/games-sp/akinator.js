@@ -105,9 +105,6 @@ module.exports = class AkinatorCommand extends Command {
 					break;
 				} else if (buttonPress.customId === 'false') {
 					await aki.guess(false, true);
-					if (aki.test) {
-						await msg.channel.send({ files: [{ attachment: aki.test, name: 'test.txt' }] });
-					}
 					guessedLastTurn = true;
 				}
 			} else {
