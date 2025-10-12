@@ -1,5 +1,6 @@
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
+const UserAgent = require('user-agents');
 const regions = ['en', 'ar', 'cn', 'de', 'es', 'fr', 'il', 'it', 'jp', 'kr', 'nl', 'pt', 'ru', 'tr', 'id'];
 const answers = ['Yes', 'No', 'Don\'t know', 'Probably', 'Probably not'];
 
@@ -18,11 +19,13 @@ class Akinator {
 		this.signature = null;
 		this.guessed = null;
 		this.akiWin = null;
+		this.agent = new UserAgent();
 	}
 
 	async start() {
 		const { text } = await request
 			.post(`https://${this.region}.akinator.com/game`)
+			.set({ 'User-Agent': this.agent.toString() })
 			.send({
 				sid: '1',
 				cm: this.childMode
@@ -39,6 +42,7 @@ class Akinator {
 	async step(answer) {
 		const { body } = await request
 			.post(`https://${this.region}.akinator.com/answer`)
+			.set({ 'User-Agent': this.agent.toString() })
 			.send({
 				step: this.currentStep.toString(),
 				progression: this.progress,
@@ -68,6 +72,7 @@ class Akinator {
 	async back() {
 		const { body } = await request
 			.post(`https://${this.region}.akinator.com/cancel_answer`)
+			.set({ 'User-Agent': this.agent.toString() })
 			.send({
 				step: this.currentStep.toString(),
 				progression: this.progress,
@@ -98,8 +103,11 @@ class Akinator {
 			params.append('forward_answer', '1');
 			const { body, text } = await request
 				.post(`https://${this.region}.akinator.com/exclude`)
-				.send(params, true)
-				.set({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+				.send(params.toString(), true)
+				.set({ 
+					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+					'User-Agent': this.agent.toString()
+				});
 			console.log(text);
 			this.guessed = null;
 			this.stepLastProposition = body.step;
