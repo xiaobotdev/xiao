@@ -88,17 +88,18 @@ class Akinator {
 			return this;
 		}
 		if (!correct && keepGoing) {
+			const params = new URLSearchParams();
+			params.append('step', this.currentStep.toString());
+			params.append('sid', '1');
+			params.append('cm', this.childMode);
+			params.append('progression', this.progress);
+			params.append('session', this.session);
+			params.append('signature', this.signature);
+			params.append('forward_answer', '1');
 			const { body } = await request
 				.post(`https://${this.region}.akinator.com/exclude`)
-				.attach({
-					step: this.currentStep.toString(),
-					sid: '1',
-					cm: this.childMode,
-					progression: this.progress,
-					session: this.session,
-					signature: this.signature,
-					forward_answer: '1'
-				});
+				.send(params, true)
+				.set({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
 			this.guessed = null;
 			this.stepLastProposition = body.step;
 			this.progress = body.progression;
