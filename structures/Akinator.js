@@ -98,6 +98,7 @@ class Akinator {
 					session: this.session,
 					signature: this.signature
 				});
+			console.log(body);
 			this.guessed = null;
 			this.stepLastProposition = body.step;
 			this.progress = body.progression;
