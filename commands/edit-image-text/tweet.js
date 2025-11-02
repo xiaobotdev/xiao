@@ -41,7 +41,7 @@ module.exports = class TweetCommand extends Command {
 				{
 					key: 'user',
 					type: 'string',
-					max: 20
+					max: 25
 				},
 				{
 					key: 'text',
@@ -292,18 +292,16 @@ module.exports = class TweetCommand extends Command {
 	}
 
 	async fetchUser(user) {
-		if (user === 'me') {
-		}
 		try {
-			const matches = val.match(/^(?:<@!?)?([0-9]+)>?$/);
+			const matches = user.match(/^(?:<@!?)?([0-9]+)>?$/);
 			if (matches) {
-				const user = await this.client.users.fetch(matches[1]);
-				if (!user) throw new Error('User not found');
-				const avaURL = user.displayAvatarURL({ extension: 'png', size: 64, forceStatic: true });
+				const found = await this.client.users.fetch(matches[1]);
+				if (!found) throw new Error('User not found');
+				const avaURL = found.displayAvatarURL({ extension: 'png', size: 64, forceStatic: true });
 				const avatarRes = await request.get(avaURL);
 				return {
-					screenName: user.username,
-					name: user.globalName || user.username,
+					screenName: found.username,
+					name: found.globalName || found.username,
 					avatar: avatarRes.body,
 					avatarShape: 'Circle',
 					checkType: null,
