@@ -1,5 +1,5 @@
 const Argument = require('../framework/ArgumentType');
-const fileTypeRe = /\.(jpe?g|png|gif|jfif|bmp)(\?.+)?$/i;
+const fileTypeRe = /\.(jpe?g|png|gif|jfif|bmp|webp)(\?.+)?$/i;
 const request = require('node-superfetch');
 const validURL = require('valid-url');
 const logos = require('../assets/json/logos');
