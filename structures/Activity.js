@@ -4,70 +4,82 @@ const { formatNumber } = require('../util/Util');
 module.exports = [
 	{
 		text: 'Rune Factory 4',
+		emoji: '🎮',
 		type: ActivityType.Playing
 	},
 	{
 		text: 'Rune Factory 4 Special',
+		emoji: '🎮',
 		type: ActivityType.Playing
 	},
 	{
-		text: 'with your heart',
-		type: ActivityType.Playing
+		text: 'Playing with your heart',
+		emoji: '❤️',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'you eat pant',
-		type: ActivityType.Watching
+		text: 'Watching you eat pant',
+		emoji: '👖',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'anime',
-		type: ActivityType.Watching
+		text: 'Watching anime',
+		emoji: '📺',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'over the inn',
-		type: ActivityType.Watching
+		text: 'Watching over the inn',
+		emoji: '🏡',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'at the inn',
-		type: ActivityType.Playing
+		text: 'Playing at the inn',
+		emoji: '🏡',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'in Selphia',
-		type: ActivityType.Playing
+		text: 'Playing in Selphia',
+		emoji: '🗺️',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'with Amber',
-		type: ActivityType.Playing
+		text: 'Playing with Amber',
+		emoji: '🍁',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'with a cardboard box',
-		type: ActivityType.Playing
+		text: 'Playing with a cardboard box',
+		emoji: '📦',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'in the fridge',
-		type: ActivityType.Playing
+		text: 'Playing in the fridge',
+		emoji: '🥚',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'with a knife',
-		type: ActivityType.Playing
+		text: 'Playing with a knife',
+		emoji: '🔪',
+		type: ActivityType.Custom
 	},
 	{
-		text: 'with a murderous cow',
-		type: ActivityType.Playing
-	},
-	{
-		text: 'with a linter',
-		type: ActivityType.Playing
+		text: 'Playing with a murderous cow',
+		emoji: '🐄',
+		type: ActivityType.Custom
 	},
 	{
 		text: client => `${formatNumber(client.guilds.cache.size)} servers`,
-		type: ActivityType.Watching
+		emoji: '👀',
+		type: ActivityType.Custom
 	},
 	{
-		text: client => `with ${formatNumber(client.registry.commands.size)} commands`,
-		type: ActivityType.Playing
+		text: client => `${formatNumber(client.registry.commands.size)} commands`,
+		emoji: '🤖',
+		type: ActivityType.Custom
 	},
 	{
-		text: client => `with ${formatNumber(client.registry.totalUses)} command uses`,
-		type: ActivityType.Playing
+		text: client => `${formatNumber(client.registry.totalUses)} command uses`,
+		emoji: '🤖',
+		type: ActivityType.Custom
 	}
 ];
