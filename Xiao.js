@@ -119,11 +119,11 @@ client.on('clientReady', async () => {
 	}
 
 	// Interval to change activity every minute
-	client.user.setActivity('Good morning, world!', { type: ActivityType.Custom });
+	client.user.setActivity('Good morning, world!', { type: ActivityType.Custom, state: '☀️' });
 	setInterval(() => {
 		const activity = client.activities[Math.floor(Math.random() * client.activities.length)];
 		const text = typeof activity.text === 'function' ? activity.text(client) : activity.text;
-		client.user.setActivity(text, { type: activity.type });
+		client.user.setActivity(text, { type: activity.type, state: activity.emoji });
 	}, 60000);
 
 	// Set up disabled commands
