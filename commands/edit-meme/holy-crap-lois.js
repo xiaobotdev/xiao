@@ -22,7 +22,7 @@ module.exports = class HolyCrapLoisCommand extends Command {
 					name: '20th Century Fox',
 					url: 'https://www.foxmovies.com/',
 					reason: 'Image, Original "Family Guy" Show'
-				},
+				}
 			],
 			args: [
 				{
@@ -43,7 +43,7 @@ module.exports = class HolyCrapLoisCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		const { x, y, width, height } = centerImagePart(data, 424, 424, 0, 40);
+		const { x, y, width, height } = centerImagePart(data, 414, 414, 10, 50);
 		ctx.drawImage(data, x, y, width, height);
 		ctx.drawImage(door, 0, 0);
 		return msg.say({ files: [{ attachment: canvas.toBuffer('image/png'), name: 'holy-crap-lois.png' }] });
