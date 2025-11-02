@@ -113,7 +113,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 514
+Total: 515
 
 ### Utility:
 
@@ -548,6 +548,7 @@ Total: 514
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
+* **holy-crap-lois:** Draws an image or a user\'s avatar at the door to Peter Griffin's house.
 * **i-cant-believe:** Sends a "I Can't believe it's not butter!" meme with the text of your choice.
 * **i-fear-no-man:** Sends a "I fear no man" meme with the text of your choice.
 * **if-those-kids-could-read:** Sends a "If those kids could read, they'd be very upset" meme with the text of your choice.
@@ -1311,6 +1312,8 @@ Total: 514
 * **gru-plan:**
    - [Illumination](http://www.illumination.com/) ([Original "Despicable Me" Movie](http://www.despicable.me/))
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
+* **holy-crap-lois:**
+   - [20th Century Fox](https://www.foxmovies.com/) (Image, Original "Family Guy" Show)
 * **i-cant-believe:**
    - [I Can't Believe It's Not Butter!](https://www.icantbelieveitsnotbutter.com/en) (Original Logo)
    - [Kong Font](https://www.dafont.com/kong-font.d8299) ([The Lord Night Font](https://www.dafont.com/the-lord-night.font))
